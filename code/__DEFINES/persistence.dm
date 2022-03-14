@@ -9,3 +9,5 @@
 // Directories
 
 #define PERSISTENCE_MAP_ROOT_DIRECTORY					"data/persistence/maps"
+
+#define PERSISTENCE_VARIABLE_TOKEN_LENGTH -1

@@ -271,6 +271,12 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
+"ajB" = (
+/obj/machinery/vending/assist{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/maintenance/tool_storage)
 "ajL" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
@@ -1232,7 +1238,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "aYU" = (
@@ -1990,7 +1998,9 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CE_quarters)
 "bBr" = (
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/fitness{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
@@ -2116,7 +2126,9 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "bFh" = (
-/obj/machinery/vending/security,
+/obj/machinery/vending/security{
+	dir = 4
+	},
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
@@ -2867,6 +2879,7 @@
 	dir = 4
 	},
 /obj/machinery/vending/wallmed1{
+	dir = 8;
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
@@ -3956,7 +3969,9 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "cUK" = (
-/obj/machinery/vending/security,
+/obj/machinery/vending/security{
+	dir = 1
+	},
 /obj/machinery/newscaster/security_unit{
 	pixel_y = -32
 	},
@@ -4030,7 +4045,9 @@
 /area/ai_upload)
 "daY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/vending/hydroseeds,
+/obj/machinery/vending/hydroseeds{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "dbc" = (
@@ -4725,6 +4742,7 @@
 	dir = 8
 	},
 /obj/machinery/vending/wallmed_airlock{
+	dir = 4;
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6597,7 +6615,9 @@
 	dir = 4;
 	pixel_x = -28
 	},
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 4
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -10198,7 +10218,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "hhC" = (
@@ -10275,7 +10297,9 @@
 /turf/simulated/floor/airless/ceiling,
 /area/crew_quarters/sleep/HOP_quarters)
 "hkL" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "hlp" = (
@@ -11111,7 +11135,9 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "hLS" = (
-/obj/machinery/vending/assist,
+/obj/machinery/vending/assist{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "hMb" = (
@@ -11893,7 +11919,9 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "ilr" = (
-/obj/machinery/lapvend,
+/obj/machinery/lapvend{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "ilt" = (
@@ -12193,7 +12221,9 @@
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "itM" = (
-/obj/machinery/vending/tool,
+/obj/machinery/vending/tool{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "ivK" = (
@@ -13201,7 +13231,9 @@
 /area/security/brig)
 "jhL" = (
 /obj/structure/table/steel,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	dir = 8
+	},
 /obj/machinery/light{
 	dir = 4
 	},
@@ -16416,7 +16448,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/vending/tool,
+/obj/machinery/vending/tool{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "lyf" = (
@@ -17042,6 +17076,7 @@
 	dir = 4
 	},
 /obj/machinery/vending/wallmed1{
+	dir = 8;
 	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_x = 28
@@ -17943,7 +17978,9 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "mAS" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 1
+	},
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
@@ -18771,7 +18808,9 @@
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "net" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 4
+	},
 /turf/simulated/floor/carpet,
 /area/medical/patient_wing)
 "nfb" = (
@@ -18960,7 +18999,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/prison)
 "nlJ" = (
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/fitness{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
@@ -19156,7 +19197,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "nsE" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 4
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -20203,7 +20246,9 @@
 /turf/simulated/floor/grass,
 /area/security/brig)
 "oiM" = (
-/obj/machinery/vending/medical,
+/obj/machinery/vending/medical{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/exploration/excursion_dock)
 "oiQ" = (
@@ -20942,7 +20987,9 @@
 /area/exploration/meeting)
 "oHO" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	dir = 8
+	},
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -23089,7 +23136,9 @@
 /area/crew_quarters/lounge)
 "qaR" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/bar_alc/full{
+	dir = 8
+	},
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
@@ -24658,7 +24707,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/vending/cola,
+/obj/machinery/vending/cola{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "qVA" = (
@@ -26262,6 +26313,7 @@
 	dir = 8
 	},
 /obj/machinery/vending/wallmed_airlock{
+	dir = 4;
 	pixel_x = -32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -27806,7 +27858,9 @@
 /area/hallway/secondary/docking_hallway)
 "sVx" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "sVA" = (
@@ -27872,7 +27926,9 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "sXA" = (
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/fitness{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "sXD" = (
@@ -28311,7 +28367,9 @@
 /area/crew_quarters/sleep/CE_quarters)
 "trn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/vending/hydronutrients,
+/obj/machinery/vending/hydronutrients{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "trz" = (
@@ -30471,7 +30529,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
 "uVn" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "uVt" = (
@@ -30503,7 +30563,9 @@
 /turf/simulated/wall/r_wall,
 /area/ai_upload)
 "uWs" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 4
+	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/carpet,
 /area/medical/patient_wing)
@@ -31126,7 +31188,9 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "vqN" = (
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/fitness{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/breakroom)
 "vqX" = (
@@ -32346,7 +32410,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "vZi" = (
@@ -32466,7 +32532,9 @@
 /turf/simulated/wall,
 /area/library)
 "wdq" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/tram)
 "wdw" = (
@@ -34447,7 +34515,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "xte" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "xts" = (
@@ -35022,7 +35092,9 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/vending/fishing,
+/obj/machinery/vending/fishing{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "xOL" = (
@@ -35148,7 +35220,9 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "xSb" = (
@@ -48690,7 +48764,7 @@ sWX
 nzg
 llU
 lXQ
-hLS
+ajB
 ksy
 hCO
 gMN

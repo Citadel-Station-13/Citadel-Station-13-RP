@@ -409,7 +409,9 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "jk" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 1
+	},
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -1364,7 +1366,9 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "Au" = (
-/obj/machinery/vending/cola,
+/obj/machinery/vending/cola{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Ay" = (
@@ -1424,7 +1428,9 @@
 /turf/simulated/wall/r_wall,
 /area/lavaland/central/base/common)
 "Bf" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "Bp" = (
@@ -1464,7 +1470,9 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "BM" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/mineral/equipment_vendor{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Ce" = (
@@ -1646,7 +1654,9 @@
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/central/base/common)
 "Fq" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 1
+	},
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -2479,7 +2489,9 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "VA" = (
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/fitness{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "VD" = (

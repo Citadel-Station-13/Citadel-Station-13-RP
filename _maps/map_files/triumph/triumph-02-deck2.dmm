@@ -1949,7 +1949,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
 "fI" = (
-/obj/machinery/smartfridge/drying_rack,
+/obj/machinery/smartfridge/seeds,
 /turf/simulated/floor/tiled/techfloor,
 /area/hydroponics)
 "fJ" = (
@@ -6822,7 +6822,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "sS" = (
-/obj/machinery/smartfridge/food,
+/obj/machinery/smartfridge/produce/persistent,
 /turf/simulated/wall,
 /area/crew_quarters/kitchen)
 "sT" = (
@@ -7463,7 +7463,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "uw" = (
-/obj/machinery/smartfridge,
+/obj/machinery/smartfridge/produce/persistent,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "ux" = (
@@ -7640,6 +7640,11 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	layer = 3.3;
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -8044,9 +8049,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 4
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/machinery/smartfridge/drying_rack,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "wj" = (
@@ -8141,7 +8144,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "wA" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
 "wC" = (
@@ -16809,7 +16814,9 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/cable/green,
-/obj/machinery/vending/dinnerware,
+/obj/machinery/vending/dinnerware{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
 "VS" = (
@@ -17402,8 +17409,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "Xp" = (
-/obj/machinery/seed_storage/garden,
 /obj/machinery/camera/network/civilian,
+/obj/machinery/vending/hydroseeds,
 /turf/simulated/floor/tiled/techfloor,
 /area/hydroponics)
 "Xq" = (
@@ -17766,13 +17773,10 @@
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "Ym" = (
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
-	},
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/smartfridge/sheets/persistent,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "Yn" = (
@@ -17890,10 +17894,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
-"YE" = (
-/obj/machinery/smartfridge,
-/turf/simulated/wall,
-/area/crew_quarters/kitchen)
 "YF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -24581,7 +24581,7 @@ SG
 SG
 Qb
 ky
-YE
+Zy
 sU
 ub
 mM

@@ -1064,7 +1064,9 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/east/unexplored)
 "uJ" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 1
+	},
 /obj/machinery/light{
 	icon_state = "tube-broken";
 	status = 2
@@ -1713,6 +1715,12 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"Hb" = (
+/obj/machinery/vending/cola{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "HN" = (
 /obj/structure/bed/chair/backed_red{
 	dir = 4
@@ -1740,6 +1748,12 @@
 "HT" = (
 /obj/structure/barricade,
 /turf/simulated/floor/wood/lavaland,
+/area/lavaland/east/colony)
+"If" = (
+/obj/machinery/vending/fitness{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "IC" = (
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -19292,7 +19306,7 @@ hM
 hM
 AV
 Ml
-YO
+If
 hM
 hM
 hM
@@ -19434,7 +19448,7 @@ xH
 hM
 Po
 aW
-fC
+Hb
 hM
 Tl
 Uj

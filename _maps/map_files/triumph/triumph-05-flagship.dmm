@@ -74,6 +74,7 @@
 	pixel_y = 32
 	},
 /obj/machinery/vending/wallmed1{
+	dir = 8;
 	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_x = 28
@@ -585,7 +586,9 @@
 	},
 /area/centcom/specops)
 "aZ" = (
-/obj/machinery/vending/security,
+/obj/machinery/vending/security{
+	dir = 4
+	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1444,7 +1447,9 @@
 	},
 /area/centcom/specops)
 "cp" = (
-/obj/machinery/vending/engivend,
+/obj/machinery/vending/engivend{
+	dir = 4
+	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1517,6 +1522,7 @@
 /area/centcom/specops)
 "cu" = (
 /obj/machinery/vending/cigarette{
+	dir = 1;
 	name = "hacked cigarette machine";
 	prices = list();
 	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
@@ -1528,6 +1534,7 @@
 /area/centcom/specops)
 "cv" = (
 /obj/machinery/vending/cola{
+	dir = 1;
 	name = "hacked Robust Softdrinks";
 	prices = list()
 	},
@@ -1793,7 +1800,9 @@
 /turf/unsimulated/wall,
 /area/centcom/main_hall)
 "cQ" = (
-/obj/machinery/vending/tool,
+/obj/machinery/vending/tool{
+	dir = 4
+	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2754,7 +2763,9 @@
 	},
 /area/tdome/tdomeobserve)
 "eK" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 8
+	},
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -2912,7 +2923,9 @@
 	},
 /area/tdome/tdomeobserve)
 "fd" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 8
+	},
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -2986,7 +2999,9 @@
 /obj/effect/floor_decal/corner/blue/diagonal{
 	dir = 4
 	},
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 1
+	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "fk" = (
@@ -4079,7 +4094,9 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/vending/dinnerware,
+/obj/machinery/vending/dinnerware{
+	dir = 1
+	},
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -6329,7 +6346,9 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "lH" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
 	},
@@ -6341,7 +6360,9 @@
 	},
 /area/centcom/medical)
 "lI" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/green/border,
 /turf/unsimulated/floor/steel{
@@ -6385,7 +6406,9 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 10
 	},
-/obj/machinery/smartfridge/chemistry/virology,
+/obj/machinery/smartfridge/chemistry/virology{
+	dir = 4
+	},
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -8636,7 +8659,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/machinery/vending/medical,
+/obj/machinery/vending/medical{
+	dir = 8
+	},
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -8888,6 +8913,7 @@
 /area/centcom/medical)
 "qu" = (
 /obj/machinery/vending/wallmed1{
+	dir = 1;
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -9342,7 +9368,9 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/holding)
 "rg" = (
-/obj/machinery/vending/security,
+/obj/machinery/vending/security{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
@@ -9542,7 +9570,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 9
 	},
-/obj/machinery/vending/medical,
+/obj/machinery/vending/medical{
+	dir = 4
+	},
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -9870,19 +9900,25 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "sy" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "sz" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "sA" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
@@ -10493,7 +10529,9 @@
 	},
 /area/centcom/medical)
 "tH" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 4
+	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "tI" = (
@@ -10509,7 +10547,9 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "tK" = (
-/obj/machinery/vending/cola,
+/obj/machinery/vending/cola{
+	dir = 8
+	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "tL" = (
@@ -14289,21 +14329,27 @@
 	},
 /area/centcom/restaurant)
 "Ar" = (
-/obj/machinery/vending/sovietsoda,
+/obj/machinery/vending/sovietsoda{
+	dir = 1
+	},
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "As" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 1
+	},
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/restaurant)
 "At" = (
-/obj/machinery/vending/cola,
+/obj/machinery/vending/cola{
+	dir = 1
+	},
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -14346,7 +14392,9 @@
 	},
 /area/centcom/security)
 "Ax" = (
-/obj/machinery/smartfridge/drinks,
+/obj/machinery/smartfridge/drinks{
+	dir = 1
+	},
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -14361,7 +14409,9 @@
 /area/centcom/bar)
 "Az" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	dir = 1
+	},
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -14369,7 +14419,9 @@
 /area/centcom/bar)
 "AA" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/chemical_dispenser/bar_alc/full{
+	dir = 1
+	},
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -16292,6 +16344,15 @@
 /obj/machinery/door/airlock/command,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
+"Tn" = (
+/obj/machinery/vending/coffee{
+	dir = 1
+	},
+/turf/unsimulated/floor/steel{
+	icon = 'icons/turf/floors_vr.dmi';
+	icon_state = "wood"
+	},
+/area/centcom/restaurant)
 "TF" = (
 /obj/machinery/turretid/lethal{
 	check_access = 0;
@@ -28182,7 +28243,7 @@ vG
 vG
 vG
 vG
-Aq
+Tn
 vq
 iQ
 iQ

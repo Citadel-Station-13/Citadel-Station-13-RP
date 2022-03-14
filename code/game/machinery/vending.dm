@@ -6,11 +6,8 @@
 	desc = "A generic vending machine."
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "generic"
-	anchored = 1
-	density = 1
-
-	var/icon_vend //Icon_state when vending
-	var/icon_deny //Icon_state when denying access
+	anchored = TRUE
+	density = TRUE
 
 	// Power
 	use_power = USE_POWER_IDLE
@@ -179,9 +176,10 @@
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 		playsound(src, W.usesound, 50, 1)
-		overlays.Cut()
 		if(panel_open)
-			overlays += image(icon, "[initial(icon_state)]-panel")
+			add_overlay("[initial(icon_state)]-panel")
+		else
+			cut_overlay("[initial(icon_state)]-panel")
 
 		SSnanoui.update_uis(src)  // Speaker switch is on the main UI, not wires UI
 		return
@@ -427,7 +425,7 @@
 		if((href_list["vend"]) && (vend_ready) && (!currently_vending))
 			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
 				to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
-				flick(icon_deny,src)
+				flick("[icon_state]-deny",src)
 				playsound(src.loc, 'sound/machines/deniedbeep.ogg', 50, 0)
 				return
 
@@ -464,7 +462,7 @@
 /obj/machinery/vending/proc/vend(datum/stored_item/vending_product/R, mob/user)
 	if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
 		to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
-		flick(icon_deny,src)
+		flick("[icon_state]-deny",src)
 		playsound(src.loc, 'sound/machines/deniedbeep.ogg', 50, 0)
 		return
 	vend_ready = 0 //One thing at a time!!
@@ -495,8 +493,7 @@
 			last_reply = world.time
 
 	use_power(vend_power_usage)	//actuators and stuff
-	if(icon_vend) //Show the vending animation if needed
-		flick(icon_vend,src)
+	flick("[icon_state]-vend",src)
 	spawn(vend_delay)
 		R.get_product(get_turf(src))
 		if(has_logs)
@@ -675,7 +672,6 @@
 	name = "Booze-O-Mat"
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	icon_state = "boozeomat"
-	icon_deny = "boozeomat-deny"
 	products = list(/obj/item/reagent_containers/food/drinks/glass2/square = 10,
 					/obj/item/reagent_containers/food/drinks/glass2/rocks = 10,
 					/obj/item/reagent_containers/food/drinks/glass2/shake = 10,
@@ -753,7 +749,6 @@
 	desc = "A vending machine which dispenses hot drinks."
 	product_ads = "Have a drink!;Drink up!;It's good for you!;Would you like a hot joe?;I'd kill for some coffee!;The best beans in the galaxy.;Only the finest brew for you.;Mmmm. Nothing like a coffee.;I like coffee, don't you?;Coffee helps you work!;Try some tea.;We hope you like the best!;Try our new chocolate!;Admin conspiracies"
 	icon_state = "coffee"
-	icon_vend = "coffee-vend"
 	vend_delay = 34
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	vend_power_usage = 85000 //85 kJ to heat a 250 mL cup of coffee
@@ -780,8 +775,7 @@
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
 	desc = "A softdrink vendor provided by Robust Industries, LLC."
-	icon_state = "Cola_Machine" //VOREStation Edit
-	icon_vend = "Cola_Machine-purchase" //VOREStation Edit
+	icon_state = "Cola_Machine"
 	product_slogans = "Robust Softdrinks: More robust than a toolbox to the head!"
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."
 	products = list(/obj/item/reagent_containers/food/drinks/cans/battery = 10,
@@ -843,7 +837,6 @@
 	desc = "Cartridges for PDAs."
 	product_slogans = "Carts to go!"
 	icon_state = "cart"
-	icon_deny = "cart-deny"
 	req_access = list(access_hop)
 	products = list(/obj/item/cartridge/medical = 10,/obj/item/cartridge/engineering = 10,/obj/item/cartridge/security = 10,
 					/obj/item/cartridge/janitor = 10,/obj/item/cartridge/signal/science = 10,/obj/item/pda/heads = 10,
@@ -885,7 +878,6 @@
 	name = "NanoMed Plus"
 	desc = "Medical drug dispenser."
 	icon_state = "med"
-	icon_deny = "med-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	req_access = list(access_medical)
 	products = list(/obj/item/reagent_containers/glass/bottle/antitoxin = 4,/obj/item/reagent_containers/glass/bottle/inaprovaline = 4,
@@ -913,7 +905,6 @@
 	desc = "A wall-mounted version of the NanoMed."
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?"
 	icon_state = "wallmed"
-	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
 	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/reagent_containers/hypospray/autoinjector = 4,/obj/item/healthanalyzer = 1)
 	contraband = list(/obj/item/reagent_containers/syringe/antitoxin = 4,/obj/item/reagent_containers/syringe/antiviral = 4,/obj/item/reagent_containers/pill/tox = 1)
@@ -939,7 +930,6 @@
 	name = "NanoMed"
 	desc = "A wall-mounted version of the NanoMed, containing only vital first aid equipment."
 	icon_state = "wallmed"
-	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
 	products = list(/obj/item/reagent_containers/hypospray/autoinjector = 5,/obj/item/reagent_containers/syringe/antitoxin = 3,/obj/item/stack/medical/bruise_pack = 3,
 					/obj/item/stack/medical/ointment =3,/obj/item/healthanalyzer = 3)
@@ -952,7 +942,6 @@
 	desc = "A security equipment vendor."
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
-	icon_deny = "sec-deny"
 	req_access = list(access_security)
 	products = list(/obj/item/handcuffs = 8,/obj/item/grenade/flashbang = 4,/obj/item/flash = 5,
 					/obj/item/reagent_containers/food/snacks/donut/normal = 12,/obj/item/storage/box/evidence = 6,
@@ -967,8 +956,7 @@
 	desc = "A plant nutrients vendor."
 	product_slogans = "Aren't you glad you don't have to fertilize the natural way?;Now with 50% less stink!;Plants are people too!"
 	product_ads = "We like plants!;Don't you want some?;The greenest thumbs ever.;We like big plants.;Soft soil..."
-	icon_state = "nutri"
-	icon_deny = "nutri-deny"
+	icon_state = "nutri_generic"
 	products = list(/obj/item/reagent_containers/glass/bottle/eznutrient = 6,/obj/item/reagent_containers/glass/bottle/left4zed = 4,/obj/item/reagent_containers/glass/bottle/robustharvest = 3,/obj/item/plantspray/pests = 20,
 					/obj/item/reagent_containers/syringe = 5,/obj/item/reagent_containers/glass/beaker = 4,/obj/item/storage/bag/plants = 5)
 	premium = list(/obj/item/reagent_containers/glass/bottle/ammonia = 10,/obj/item/reagent_containers/glass/bottle/diethylamine = 5)
@@ -979,8 +967,7 @@
 	desc = "When you need seeds fast!"
 	product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection on the station!;Also certain mushroom varieties available, more for experts! Get certified today!"
 	product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
-	icon_state = "seeds"
-
+	icon_state = "seeds_generic"
 	products = list(/obj/item/seeds/bananaseed = 3,/obj/item/seeds/berryseed = 3,/obj/item/seeds/carrotseed = 3,/obj/item/seeds/chantermycelium = 3,/obj/item/seeds/chiliseed = 3,
 					/obj/item/seeds/cornseed = 3, /obj/item/seeds/eggplantseed = 3, /obj/item/seeds/potatoseed = 3, /obj/item/seeds/replicapod = 3,/obj/item/seeds/soyaseed = 3,
 					/obj/item/seeds/sunflowerseed = 3,/obj/item/seeds/tomatoseed = 3,/obj/item/seeds/towermycelium = 3,/obj/item/seeds/wheatseed = 3,/obj/item/seeds/appleseed = 3,
@@ -1073,7 +1060,6 @@
 	name = "YouTool"
 	desc = "Tools for tools."
 	icon_state = "tool"
-	icon_deny = "tool-deny"
 	//req_access = list(access_maint_tunnels) //Maintenance access
 	products = list(/obj/item/stack/cable_coil/random = 10,/obj/item/tool/crowbar = 5,/obj/item/weldingtool = 3,/obj/item/tool/wirecutters = 5,
 					/obj/item/tool/wrench = 5,/obj/item/analyzer = 5,/obj/item/t_scanner = 5,/obj/item/tool/screwdriver = 5,
@@ -1088,7 +1074,6 @@
 	name = "Engi-Vend"
 	desc = "Spare tool vending. What? Did you expect some witty description?"
 	icon_state = "engivend"
-	icon_deny = "engivend-deny"
 	req_access = list(access_engine_equip)
 	products = list(/obj/item/geiger = 4,/obj/item/clothing/glasses/meson = 2,/obj/item/multitool = 4,/obj/item/cell/high = 10,
 					/obj/item/airlock_electronics = 10,/obj/item/module/power_control = 10,
@@ -1111,7 +1096,6 @@
 	name = "Robco Tool Maker"
 	desc = "Everything you need for do-it-yourself station repair."
 	icon_state = "engi"
-	icon_deny = "engi-deny"
 	req_access = list(access_engine_equip)
 	products = list(/obj/item/clothing/under/rank/chief_engineer = 4,/obj/item/clothing/under/rank/engineer = 4,/obj/item/clothing/shoes/orange = 4,/obj/item/clothing/head/hardhat = 4,
 					/obj/item/storage/belt/utility = 4,/obj/item/clothing/glasses/meson = 4,/obj/item/clothing/gloves/yellow = 4, /obj/item/tool/screwdriver = 12,
@@ -1129,7 +1113,6 @@
 	name = "Robotech Deluxe"
 	desc = "All the tools you need to create your own robot army."
 	icon_state = "robotics"
-	icon_deny = "robotics-deny"
 	req_access = list(access_robotics)
 	products = list(/obj/item/clothing/suit/storage/toggle/labcoat = 4,/obj/item/clothing/under/rank/roboticist = 4,/obj/item/stack/cable_coil = 4,/obj/item/flash = 4,
 					/obj/item/cell/high = 12, /obj/item/assembly/prox_sensor = 3,/obj/item/assembly/signaler = 3,/obj/item/healthanalyzer = 3,
@@ -1264,7 +1247,6 @@
 	name = "Food-O-Mat"
 	desc = "A technological marvel, supposedly able to cook or mix a large variety of food or drink."
 	icon_state = "boozeomat"
-	icon_deny = "boozeomat-deny"
 	products = list(/obj/item/tray = 8,
 					/obj/item/material/kitchen/utensil/fork = 6,
 					/obj/item/material/knife/plastic = 6,
@@ -1298,7 +1280,6 @@
 	name = "Custom Food-O-Mat"
 	desc = "Do you think Joan cooks? Of course not. Lazy squirrel!"
 	icon_state = "boozeomat"
-	icon_deny = "boozeomat-deny"
 	products = list(/obj/item/tray = 6,
 					/obj/item/material/kitchen/utensil/fork = 6,
 					/obj/item/material/knife/plastic = 6,
@@ -1481,7 +1462,6 @@
 	desc = "A vendor using compressed matter cartridges to store large amounts of basic station uniforms."
 	product_ads = "Don't get caught naked!;Pick up your uniform!;Using compressed matter cartridges and VERY ETHICAL labor practices, we bring you the uniforms you need!;No uniform? No problem!;We've got your covered!;The Basics is not responsible for being crushed under the amount of things inside our machines. DO NOT VEND IN EXCESS!!"
 	icon_state = "loadout"
-	icon_vend = "loadout-purchase"
 	vend_delay = 16
 	products = list(/obj/item/pda = 25,
 					/obj/item/radio/headset = 25,
@@ -1508,7 +1488,6 @@
 	desc = "A special vendor for accessories."
 	product_ads = "Want shinies? We have the shinies.;Need that special something to complete your outfit? We have what you need!;Ditch that old dull dangly something you've got and pick up one of our shinies!;Bracelets, collars, scarfs rings and more! We have the fancy things you need!;Does your pet need a collar? We don't judge! Keep them in line with one of one of ours!;Top of the line materials! 'Hand crafted' goods!"
 	icon_state = "accessory"
-	icon_vend = "accessory-purchase"
 	vend_delay = 6
 	products = list(/obj/item/clothing/accessory = 5,
 					/obj/item/clothing/accessory/armband/med/color = 10,
@@ -1738,7 +1717,6 @@
 	desc = "A special vendor using compressed matter cartridges to store large amounts of clothing."
 	product_ads = "Tired of your grey jumpsuit? Spruce yourself up!;We have the outfit for you!;Don't let that grey jumpsuit get you down, get a ROBUST outfit right now!;Using compressed matter catridges and VERY ETHICAL labor practices to bring YOU the clothing you crave!;Are you sure you want to go to work in THAT?;All of our wares have a whole TWO pockets!"
 	icon_state = "clothing"
-	icon_vend = "clothing-purchase"
 	vend_delay = 16
 	products = list(/obj/item/clothing/under/bathrobe = 5,
 					/obj/item/clothing/under/dress/black_corset = 5,
@@ -2151,7 +2129,6 @@
 	desc = "A special vendor for devices and gadgets."
 	product_ads = "You can't RESIST our great deals!;Feeling disconnected? We have a gadget for you!;You know you have the capacity to buy our capacitors!;FILL THAT HOLE IN YOUR HEART WITH OUR PLASTIC DISTRACTIONS!!!;Devices for everyone! Chips Co.!;ROBUST INVENTORY, GREAT PRICES! ;DON'T FORGET THE oyPAD 13s PRO! ON SALE NOW, ONLY ONE THOUSAND THALERS!"
 	icon_state = "gadgets"
-	icon_vend = "gadgets-purchase"
 	vend_delay = 11
 	products = list(/obj/item/clothing/suit/circuitry = 1,
 					/obj/item/clothing/head/circuitry = 1,
@@ -2231,7 +2208,6 @@
 	desc = "A special vendor using compressed matter cartridges to store large amounts of overwear!"
 	product_ads = "Dress your best! It's what big D would want.;Overwear for all occasions!;Big D has what you need if what you need is some form of jacket!;Need a new hoodie? Bid D has you covered.;Big D says you need a new suit!;Big D smiles when he sees you in one of his coats!"
 	icon_state = "suit"
-	icon_vend = "suit-purchase"
 	vend_delay = 16
 	products = list(/obj/item/clothing/suit/storage/apron = 5,
 					/obj/item/clothing/suit/storage/flannel/aqua = 5,
@@ -2419,7 +2395,7 @@
 	name = "Thespian's Delight"
 	desc = "Sometimes nerds need costumes!"
 	product_ads = "Don't let your art be stifled!;Remember, practice makes perfect!;Break a leg!;Don't make me get the cane!;Thespian's Delight entering stage right!;Costumes for your acting needs!"
-	icon_state = "Theater_b"
+	icon_state = "theater"
 	products = list(/obj/item/clothing/suit/storage/hooded/carp_costume = 3,
 					/obj/item/clothing/suit/storage/hooded/carp_costume = 3,
 					/obj/item/clothing/suit/chickensuit = 3,
@@ -2691,7 +2667,6 @@
 	desc = "An illicit injector vendor stocked and maintained by the allegedly defunct pharmaceuticals company Glukoz Ltd."
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "rxvendor"
-	icon_vend = "rxvendor"
 	product_slogans = "Glukoz Pharmavenda, voted top street pharmaceuticals vendor, 2519!"
 	product_ads = "Back so soon?;The hits keep comin'!;If you can afford it, it's only a habit!;Who's gonna know?;In a pinch? It's just a pinch!;Remove the cap!;You'll be back!"
 	products = list(/obj/item/reagent_containers/hypospray/glukoz = 10,

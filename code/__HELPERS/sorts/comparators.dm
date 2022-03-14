@@ -114,3 +114,6 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
 	return A.priority - B.priority
+
+/proc/cmp_stored_item_name(datum/stored_item/A, datum/stored_item/B)
+	return sorttext(B.item_name, A.item_name)

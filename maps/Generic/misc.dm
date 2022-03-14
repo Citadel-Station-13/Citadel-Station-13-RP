@@ -21,31 +21,6 @@
 	return TRUE
 */
 
-////////////////////////////////////////////////////////////////////
-
-/obj/machinery/smartfridge/chemistry/chemvator
-	name = "\improper Smart Chemavator - Upper"
-	desc = "A refrigerated storage unit for medicine and chemical storage. Now sporting a fancy system of pulleys to lift bottles up and down."
-	var/obj/machinery/smartfridge/chemistry/chemvator/attached
-
-/obj/machinery/smartfridge/chemistry/chemvator/down/Destroy()
-	attached = null
-	return ..()
-
-/obj/machinery/smartfridge/chemistry/chemvator/down
-	name = "\improper Smart Chemavator - Lower"
-
-/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize()
-// /obj/machinery/smartfridge/chemistry/chemvator/down/Initialize(mapload) // Triumph variant had initialize at mapload. Dont know why, leaving this here for reference -Bloop
-	. = ..()
-	var/obj/machinery/smartfridge/chemistry/chemvator/above = locate(/obj/machinery/smartfridge/chemistry/chemvator,get_zstep(src,UP))
-	if(istype(above))
-		above.attached = src
-		attached = above
-		item_records = attached.item_records
-	else
-		to_chat(world,"<span class='danger'>[src] at [x],[y],[z] cannot find the unit above it!</span>")
-
 ///////////////////////////////////////////////////////////////////
 
 // TRAM STATION

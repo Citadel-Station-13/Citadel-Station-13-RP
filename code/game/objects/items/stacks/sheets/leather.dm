@@ -177,10 +177,25 @@
 	var/wetness = 30 //Reduced when exposed to high temperautres
 	var/drying_threshold_temperature = 500 //Kelvin to start drying
 	no_variants = FALSE
+	max_amount = 20
 
 /obj/fiftyspawner/wetleather
 	name = "stack of wet leather"
 	type_to_spawn = /obj/item/stack/wetleather
+
+/obj/item/stack/wetleather/examine(var/mob/user)
+	. = ..()
+	. += description_info
+	. += "\The [src] is [get_dryness_text()]."
+
+/obj/item/stack/wetleather/proc/get_dryness_text()
+	if(wetness > 20)
+		return "wet"
+	if(wetness > 10)
+		return "damp"
+	if(wetness)
+		return "almost dry"
+	return "dry"
 
 //Step one - dehairing.
 /obj/item/stack/animalhide/attackby(obj/item/W as obj, mob/user as mob)
@@ -205,24 +220,22 @@
 	else
 		..()
 
-//Step two - This was originally busted washing machine code. Now it's a sink attack.
-
 //Step three - drying
 /obj/item/stack/wetleather/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	..()
 	if(exposed_temperature >= drying_threshold_temperature)
 		wetness--
 		if(wetness == 0)
-			//Try locating an exisitng stack on the tile and add to there if possible
-			for(var/obj/item/stack/material/leather/HS in src.loc)
-				if(HS.amount < 50)
-					HS.amount++
-					src.use(1)
-					wetness = initial(wetness)
-					break
-			//If it gets to here it means it did not find a suitable stack on the tile.
-			var/obj/item/stack/material/leather/HS = new(src.loc)
-			HS.amount = 1
-			wetness = initial(wetness)
-			src.use(1)
+			dry()
 
+/obj/item/stack/wetleather/proc/dry()
+	var/obj/item/stack/material/leather/L = new(src.loc, get_amount())
+	use(get_amount())
+	return L
+
+/obj/item/stack/wetleather/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
+	. = ..()
+	if(.) // If it transfers any, do a weighted average of the wetness
+		var/obj/item/stack/wetleather/W = S
+		var/oldamt = W.amount - .
+		W.wetness = round(((oldamt * W.wetness) + (. * wetness)) / W.amount)

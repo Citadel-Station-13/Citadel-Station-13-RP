@@ -680,7 +680,9 @@
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "cy" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "cz" = (
@@ -1469,7 +1471,9 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "fv" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 4
+	},
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -3677,6 +3681,7 @@
 /area/tcommsat/entrance)
 "nc" = (
 /obj/machinery/vending/wallmed1{
+	dir = 8;
 	pixel_x = 32
 	},
 /obj/structure/table/bench/wooden,
@@ -4283,6 +4288,7 @@
 /area/engineering/hallway)
 "pa" = (
 /obj/machinery/vending/wallmed1{
+	dir = 8;
 	pixel_x = 32
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
@@ -5264,7 +5270,9 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "ss" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "sx" = (
@@ -5726,7 +5734,9 @@
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
 "tR" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "tS" = (
@@ -6037,7 +6047,9 @@
 	name = "Station Intercom (General)";
 	pixel_x = -26
 	},
-/obj/machinery/vending/cola,
+/obj/machinery/vending/cola{
+	dir = 4
+	},
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
@@ -11689,6 +11701,7 @@
 	pixel_y = 26
 	},
 /obj/machinery/vending/wallmed_airlock{
+	dir = 8;
 	name = "Toxi Treatment NanoMed";
 	pixel_x = 32
 	},
@@ -12753,6 +12766,7 @@
 	dir = 8
 	},
 /obj/machinery/vending/wallmed_airlock{
+	dir = 4;
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
@@ -15103,6 +15117,7 @@
 "ZN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/vending/wallmed1{
+	dir = 8;
 	pixel_x = 32
 	},
 /obj/effect/floor_decal/techfloor/orange{

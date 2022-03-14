@@ -567,7 +567,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "auK" = (
-/obj/machinery/smartfridge/chemistry/chemvator,
+/obj/machinery/smartfridge/secure/medbay,
 /turf/simulated/wall,
 /area/medical/chemistry)
 "avV" = (
@@ -1478,7 +1478,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "blD" = (
-/obj/machinery/vending/medical,
+/obj/machinery/vending/medical{
+	dir = 8
+	},
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
@@ -1783,7 +1785,9 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "bAu" = (
@@ -2379,7 +2383,9 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
 	},
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "bXb" = (
@@ -2869,7 +2875,9 @@
 /area/maintenance/fpmaint2)
 "ctD" = (
 /obj/machinery/light,
-/obj/machinery/smartfridge/secure/extract,
+/obj/machinery/smartfridge/secure/extract{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "ctM" = (
@@ -4109,7 +4117,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "dsM" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "duo" = (
@@ -5022,7 +5032,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/breakroom)
 "een" = (
@@ -6734,7 +6746,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/vending/medical,
+/obj/machinery/vending/medical{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "fAJ" = (
@@ -11183,6 +11197,7 @@
 /area/triumph/station/stairs_three)
 "jiJ" = (
 /obj/machinery/vending/wallmed1{
+	dir = 1;
 	name = "Emergency NanoMed";
 	pixel_y = -30
 	},
@@ -12480,7 +12495,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora_storage)
 "kmZ" = (
-/obj/machinery/vending/cola,
+/obj/machinery/vending/cola{
+	dir = 1
+	},
 /obj/effect/floor_decal/corner/beige{
 	dir = 10
 	},
@@ -14999,7 +15016,9 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/machinery/vending/hydroseeds,
+/obj/machinery/vending/hydroseeds{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "mof" = (
@@ -16568,7 +16587,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/breakroom)
 "nDI" = (
@@ -18369,6 +18390,9 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
+/obj/machinery/smartfridge/secure/extract{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "oWF" = (
@@ -18931,7 +18955,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "ppz" = (
-/obj/machinery/vending/hydroseeds,
+/obj/machinery/vending/hydroseeds{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "ppR" = (
@@ -19096,7 +19122,9 @@
 /turf/simulated/floor/grass,
 /area/medical/psych_ward)
 "pvt" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak/surgery)
 "pvP" = (
@@ -19417,7 +19445,9 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "pCF" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "pCH" = (
@@ -19754,7 +19784,9 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 10
 	},
-/obj/machinery/vending/medical,
+/obj/machinery/vending/medical{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/medical/surgeryprep)
 "pNm" = (
@@ -20127,7 +20159,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "pXl" = (
-/obj/machinery/vending/hydronutrients,
+/obj/machinery/vending/hydronutrients{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "pXD" = (
@@ -21284,7 +21318,9 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/machinery/vending/hydronutrients,
+/obj/machinery/vending/hydronutrients{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "qQl" = (
@@ -23665,7 +23701,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/breakroom)
 "sCe" = (
@@ -24820,7 +24858,9 @@
 /obj/machinery/camera/network/civilian{
 	dir = 8
 	},
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "tsh" = (
@@ -26028,7 +26068,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "upL" = (
-/obj/machinery/vending/fitness,
+/obj/machinery/vending/fitness{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "uqz" = (
@@ -26750,7 +26792,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/vending/cola,
+/obj/machinery/vending/cola{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "uSE" = (
@@ -28117,6 +28161,7 @@
 "vZx" = (
 /obj/structure/bed/roller,
 /obj/machinery/vending/wallmed1{
+	dir = 8;
 	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_x = 28
@@ -30149,7 +30194,9 @@
 /turf/simulated/wall,
 /area/medical/patient_a)
 "xxY" = (
-/obj/machinery/vending/snack,
+/obj/machinery/vending/snack{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "xyh" = (
@@ -30581,7 +30628,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/vending/medical,
+/obj/machinery/vending/medical{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
 	},
