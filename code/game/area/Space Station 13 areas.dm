@@ -896,6 +896,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/maintenance/trash_pit
 	name = "\improper Trash Pit"
+	flags = RAD_SHIELDED|AREA_FLAG_IS_NOT_PERSISTENT
 
 /area/maintenance/cargo_research
 	name = "Cargo Research Maintenance"

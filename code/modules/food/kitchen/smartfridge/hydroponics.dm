@@ -6,8 +6,8 @@
 /obj/machinery/smartfridge/produce/persistent
 	persistent = /datum/persistent/storage/smartfridge/produce
 
-//obj/machinery/smartfridge/produce/persistent_lossy
-//	persistent = /datum/persistent/storage/smartfridge/produce/lossy
+/obj/machinery/smartfridge/produce/persistent_lossy
+	persistent = /datum/persistent/storage/smartfridge/produce/lossy
 
 /obj/machinery/smartfridge/produce/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/))

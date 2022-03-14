@@ -2170,9 +2170,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "yv" = (
-/obj/machinery/smartfridge{
-	req_access = ""
-	},
+/obj/machinery/smartfridge,
 /turf/simulated/wall,
 /area/talon/decktwo/kitchen)
 "yx" = (
