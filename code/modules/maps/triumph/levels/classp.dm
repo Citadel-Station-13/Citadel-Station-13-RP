@@ -7,8 +7,8 @@
 	base_target_pressure = 100.1
 	minimum_pressure = 100.1
 	maximum_pressure = 100.1
-	minimum_temp = 259.3
-	maximum_temp = 269.3
+	minimum_temp = 225.3
+	maximum_temp = 230.3
 
 #define FROZEN_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_FROZEN
 #define FROZEN_TURF_CREATE(x)	x/classp/initial_gas_mix=ATMOSPHERE_ID_FROZEN
