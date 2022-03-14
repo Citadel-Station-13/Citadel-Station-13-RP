@@ -1,0 +1,7 @@
+author: "Fuckeronipasta"
+delete-after: True
+changes: 
+  - rscadd: "Female gendered sprites for many outfits."
+  - rscadd: "Some outfits not connected to the loadout (with the gendered variation as well)."
+  - rscadd: "Dropdown selections for the baggy turtlenecks, female scrubs, branded jumpsuits, and futuristic jumpsuits."
+  - spellcheck: "Some more misspellings/bad grammar I found while working."
