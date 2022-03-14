@@ -134,6 +134,6 @@
 	return UI_CLOSE
 
 /mob/living/carbon/human/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE)
-	// if(dna.check_mutation(TK) && tkMaxRangeCheck(src, src_object))
-	// 	return UI_INTERACTIVE
+	if((TK in mutations) && (get_dist(src, src_object) <= 2))
+		return UI_INTERACTIVE
 	return ..()

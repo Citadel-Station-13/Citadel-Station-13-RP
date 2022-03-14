@@ -177,6 +177,9 @@
 	recipes += new/datum/stack_recipe("wooden panel", /obj/structure/window/wooden, 1, time = 10, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("noticeboard", /obj/structure/noticeboard, 1)
 
+	recipes += new /datum/stack_recipe("painting easel", /obj/structure/easel, 5, one_per_turf = TRUE, time = 20, on_floor = TRUE, supplied_material = "[name]")
+	recipes += new /datum/stack_recipe("painting frame", /obj/item/frame/painting, 5, one_per_turf = TRUE, time = 20, on_floor = TRUE, supplied_material = "[name]")
+
 /datum/material/wood/hardwood/generate_recipes()
 	//we're not going to ..() since we want to override the list entirely, to cut out all the stuff it'd inherit from wood - important, or else we'd have to fuss around with more subtypes to stop people turning hardwood into regular wood
 	recipes = list()
@@ -309,6 +312,12 @@
 	recipes += new/datum/stack_recipe("shrine seal", /obj/structure/shrine_seal, 2, time = 5 SECONDS)
 	recipes += new/datum/stack_recipe("cloth rag", /obj/item/reagent_containers/glass/rag, 1, time = 2 SECONDS)
 	recipes += new/datum/stack_recipe("woven string", /obj/item/weaponcrafting/string, 1, time = 10)
+
+	recipes += new /datum/stack_recipe("painting canvas (11x11)", /obj/item/canvas, 2, time = 2 SECONDS, pass_stack_color = FALSE, supplied_material = "[name]")
+	recipes += new /datum/stack_recipe("painting canvas (19x19)", /obj/item/canvas/nineteen_nineteen, 3, time = 2 SECONDS, pass_stack_color = FALSE, supplied_material = "[name]")
+	recipes += new /datum/stack_recipe("painting canvas (23x19)", /obj/item/canvas/twentythree_nineteen, 4, time = 3 SECONDS, pass_stack_color = FALSE, supplied_material = "[name]")
+	recipes += new /datum/stack_recipe("painting canvas (23x23), AI", /obj/item/canvas/twentythree_twentythree, 5, time = 3 SECONDS, pass_stack_color = FALSE, supplied_material = "[name]")
+	recipes += new /datum/stack_recipe("painting canvas (24x24)", /obj/item/canvas/twentyfour_twentyfour, 6, time = 3 SECONDS, pass_stack_color = FALSE, supplied_material = "[name]")
 
 /datum/material/resin/generate_recipes()
 	recipes = list()

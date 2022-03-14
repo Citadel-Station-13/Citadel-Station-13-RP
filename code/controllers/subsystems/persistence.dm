@@ -5,6 +5,10 @@ SUBSYSTEM_DEF(persistence)
 	var/list/tracking_values = list()
 	var/list/persistence_datums = list()
 
+	/// Places our subsystem can spawn paintings (helps with art spawning differently across maps)
+	var/list/obj/structure/sign/painting/painting_frames = list()
+	var/list/all_paintings = list()
+	var/list/unpicked_paintings = list()
 
 /datum/controller/subsystem/persistence/Initialize(mapload)
 	. = ..()
@@ -33,7 +37,7 @@ SUBSYSTEM_DEF(persistence)
 	if(!A || (A.flags & AREA_FLAG_IS_NOT_PERSISTENT))
 		return
 
-	if(!(T.z in GLOB.using_map.station_levels))
+	if(!(T.z in GLOB.using_map.persist_levels))
 		return
 
 	if(!tracking_values[track_type])
