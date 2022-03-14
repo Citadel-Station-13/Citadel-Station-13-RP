@@ -13,7 +13,7 @@
 /// Gaia PlanetAtmos IDs
 #define ATMOSPHERE_ID_GAIA				/datum/atmosphere/planet/gaia_planet
 /// Frozen World Atmos ID
-#define ATMOSPHERE_ID_FROZEN			/datum/atmosphere/planet/frozen_planet
+#define ATMOSPHERE_ID_FROZEN			/datum/atmosphere/planet/classp
 /// Mining Planet PlanetAtmos IDs
 #define ATMOSPHERE_ID_MININGPLANET				/datum/atmosphere/planet/mining_planet
 /// Triumph Planet Atmos ID (If needed)

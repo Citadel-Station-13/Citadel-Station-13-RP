@@ -162,29 +162,34 @@
 	base_turf = /turf/simulated/floor/outdoors/dirt
 
 // Frozen planet world areas
-/area/frozen_planet
-	name = "Frozen Planet"
+/area/class_p
+	name = "Class P World"
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/dirt
 	requires_power = 0
 	dynamic_lighting = 1
 
-/area/frozen_planet/facility
-	name = "Frozen Planet - Facility"
+/area/class_p/facility
+	name = "Facility"
 	requires_power = 1
 	icon_state = "red"
 	dynamic_lighting = 1
 
-/area/frozen_planet/ruins
-	name = "Frozen Planet - Ruins"
+/area/class_p/ruins
+	name = "Ruins"
 	icon_state = "green"
 	dynamic_lighting = 1
 
-/area/frozen_planet/outside
-	name = "Frozen Planet - Outside (UE)"
+/area/class_p/explored
+	name = "Class P World - Explored (E)"
 	icon_state = "yellow"
 	dynamic_lighting = 1
-	
+
+/area/class_p/unexplored
+	name = "Class P World - Unexplored (UE)"
+	icon_state = "red"
+	dynamic_lighting = 1
+
 //Gaia planet world areas
 /area/gaia_planet
 	name = "Gaia Planet"
@@ -270,42 +275,42 @@
 */
 
 // Desert Planet world areas
-/area/poi_h
+/area/class_h
 	name = "Class H World"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 	requires_power = 0
 	dynamic_lighting = 1
-	
-/area/poi_h/POIs/WW_Town
+
+/area/class_h/POIs/WW_Town
 	name = "Ghost Town"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/POIs/landing_pad
+/area/class_h/POIs/landing_pad
 	name = "Prefab Homestead"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/POIs/solar_farm
+/area/class_h/POIs/solar_farm
 	name = "Prefab Solar Farm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/POIs/dirt_farm
+/area/class_h/POIs/dirt_farm
 	name = "Abandoned Farmstead"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/POIs/graveyard
+/area/class_h/POIs/graveyard
 	name = "Desert Graveyard"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/POIs/goldmine
+/area/class_h/POIs/goldmine
 	name = "Desert Goldmine"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/explored
+/area/class_h/explored
 	name = "Class H World - Explored (E)"
 	icon_state = "explored"
 	dynamic_lighting = 1
 
-/area/poi_h/unexplored
+/area/class_h/unexplored
 	name = "Class H World - Unexplored (UE)"
 	icon_state = "unexplored"
 	dynamic_lighting = 1
@@ -1091,3 +1096,4 @@
 /area/awaymission/academy/academygate
 	icon_state = "purple"
 
+// The Frozen Temple POI

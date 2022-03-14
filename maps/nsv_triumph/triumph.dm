@@ -8,7 +8,7 @@
 	#include "triumph_telecomms.dm"
 	#include "triumph_overmap.dm"
 	#include "classh.dm"
-	#include "frozen_planet.dm"
+	#include "classp.dm"
 	#include "gaia_planet.dm"
 	#include "lavaland.dm"
 

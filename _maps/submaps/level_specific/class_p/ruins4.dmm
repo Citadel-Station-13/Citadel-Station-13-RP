@@ -1,51 +1,51 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/outdoors/snow/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
 "e" = (
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/outdoors/snow/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
 "m" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/classp,
+/area/class_p/ruins)
 "n" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/classp,
+/area/class_p/ruins)
 "s" = (
 /obj/effect/spider/cocoon,
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/classp,
+/area/class_p/ruins)
 "t" = (
 /obj/effect/spider/stickyweb,
 /obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/outdoors/snow/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
 "w" = (
 /obj/structure/flora/tree/pine,
-/turf/simulated/floor/outdoors/snow/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
 "B" = (
-/turf/simulated/wall/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/wall/classp,
+/area/class_p/ruins)
 "F" = (
-/turf/simulated/floor/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/classp,
+/area/class_p/ruins)
 "I" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
 "S" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/snow/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
 
 (1,1,1) = {"
 a

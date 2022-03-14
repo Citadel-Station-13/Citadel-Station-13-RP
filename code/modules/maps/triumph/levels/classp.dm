@@ -1,5 +1,5 @@
 
-/datum/atmosphere/planet/frozen_planet
+/datum/atmosphere/planet/classp
 	base_gases = list(
 	/datum/gas/oxygen = 0.23,
 	/datum/gas/nitrogen = 0.77
@@ -11,7 +11,7 @@
 	maximum_temp = 269.3
 
 #define FROZEN_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_FROZEN
-#define FROZEN_TURF_CREATE(x)	x/frozen_world/initial_gas_mix=ATMOSPHERE_ID_FROZEN
+#define FROZEN_TURF_CREATE(x)	x/classp/initial_gas_mix=ATMOSPHERE_ID_FROZEN
 
 FROZEN_TURF_CREATE(/turf/simulated/wall/planetary/frozen)
 
@@ -23,8 +23,6 @@ FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/red)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/red)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/blue)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/green)
-FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
-FROZEN_TURF_CREATE(/turf/simulated/floor/snow2)
 FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
 FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/shelfice)
 FROZEN_TURF_CREATE(/turf/simulated/mineral)
@@ -33,8 +31,12 @@ FROZEN_TURF_CREATE(/turf/simulated/mineral/floor)
 FROZEN_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 //Exterior Turfs for weather effects.
-/turf/simulated/floor/frozen_world/outdoors
+/turf/simulated/floor/classp/outdoors
 	outdoors = TRUE
 
-/turf/simulated/floor/wood/frozen_world/outdoors
+/turf/simulated/floor/wood/classp/outdoors
 	outdoors = TRUE
+
+/turf/simulated/floor/outdoors/snow/classp/no_tree
+	tree_chance = 0
+	deadtree_chance = 0

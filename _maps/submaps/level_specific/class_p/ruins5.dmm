@@ -1,40 +1,40 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/wall/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/wall/classp,
+/area/class_p/ruins)
 "f" = (
-/turf/simulated/floor/old_tile/green/frozen_world{
+/turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/frozen_planet/ruins)
+/area/class_p/ruins)
 "i" = (
-/turf/simulated/floor/outdoors/snow/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
 "v" = (
 /obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/outdoors/snow/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
 "B" = (
 /obj/structure/loot_pile/mecha/gygax,
-/turf/simulated/floor/outdoors/snow/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
 "C" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
 "G" = (
-/turf/simulated/floor/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/classp,
+/area/class_p/ruins)
 "R" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/frozen_world,
-/area/frozen_planet/ruins)
+/turf/simulated/floor/classp,
+/area/class_p/ruins)
 
 (1,1,1) = {"
 a

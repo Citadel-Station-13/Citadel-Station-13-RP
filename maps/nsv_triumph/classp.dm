@@ -1,20 +1,20 @@
-var/datum/planet/frozen_planet/planet_frozen_planet = null
+var/datum/planet/classp/planet_classp = null
 
-/datum/time/frozen_planet
+/datum/time/classp
 	seconds_in_day = 2 HOURS
 
-/datum/planet/frozen_planet
-	name = "Frozen Class world"
+/datum/planet/classp
+	name = "Class-P Frozen Planet"
 	desc = "A frosted world that seems stuck in time."
-	current_time = new /datum/time/frozen_planet()
+	current_time = new /datum/time/classp()
 	expected_z_levels = list(15) // Debug testing.
 
-/datum/planet/frozen_planet/New()
+/datum/planet/classp/New()
 	..()
-	planet_frozen_planet = src
-	weather_holder = new /datum/weather_holder/frozen_planet(src)
+	planet_classp = src
+	weather_holder = new /datum/weather_holder/classp(src)
 
-/datum/planet/frozen_planet/update_sun()
+/datum/planet/classp/update_sun()
 	..()
 	var/datum/time/time = current_time
 	var/length_of_day = time.seconds_in_day / 10 / 60 / 60
@@ -94,12 +94,12 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 		update_sun_deferred(2, new_brightness, new_color)
 
 
-/datum/weather_holder/frozen_planet
+/datum/weather_holder/classp
 	temperature = T0C
 	allowed_weather_types = list(
-		WEATHER_LIGHT_SNOW	= new /datum/weather/frozen_planet/light_snow(),
-		WEATHER_SNOW		= new /datum/weather/frozen_planet/snow(),
-		WEATHER_BLIZZARD	= new /datum/weather/frozen_planet/blizzard()
+		WEATHER_LIGHT_SNOW	= new /datum/weather/classp/light_snow(),
+		WEATHER_SNOW		= new /datum/weather/classp/snow(),
+		WEATHER_BLIZZARD	= new /datum/weather/classp/blizzard()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_LIGHT_SNOW	= 50,
@@ -107,12 +107,12 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 		WEATHER_BLIZZARD	= 25
 		)
 
-/datum/weather/frozen_planet
-	name = "frozen_planet base"
+/datum/weather/classp
+	name = "classp base"
 	temp_high = 260.15 // -19c
 	temp_low = 269.15  // -10c
 
-/datum/weather/frozen_planet/light_snow
+/datum/weather/classp/light_snow
 	name = "light snow"
 	icon_state = "snowfall_light"
 	temp_high = 235.15
@@ -129,7 +129,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 		"It begins to snow lightly.",
 		)
 
-/datum/weather/frozen_planet/snow
+/datum/weather/classp/snow
 	name = "moderate snow"
 	icon_state = "snowfall_med"
 	temp_high = 230.15
@@ -153,7 +153,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 	outdoor_sounds_type = /datum/looping_sound/weather/outside_snow
 	indoor_sounds_type = /datum/looping_sound/weather/inside_snow
 
-/datum/weather/frozen_planet/snow/process_effects()
+/datum/weather/classp/snow/process_effects()
 	..()
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
@@ -163,7 +163,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
 						T.chill()
 
-/datum/weather/frozen_planet/blizzard
+/datum/weather/classp/blizzard
 	name = "blizzard"
 	icon_state = "snowfall_heavy"
 	temp_high = 215.15
@@ -185,7 +185,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 	outdoor_sounds_type = /datum/looping_sound/weather/outside_blizzard
 	indoor_sounds_type = /datum/looping_sound/weather/inside_blizzard
 
-/datum/weather/frozen_planet/blizzard/process_effects()
+/datum/weather/classp/blizzard/process_effects()
 	..()
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
@@ -194,3 +194,20 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
 						T.chill()
+
+//Base Turf to determine the fancy treegen.
+/turf/simulated/floor/outdoors/snow/classp
+	name = "snow"
+	desc = "A layer of many tiny bits of frozen water. It's hard to tell how deep it is."
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "snow"
+	outdoors = 1
+	var/tree_chance = 10
+	var/deadtree_chance = 5
+
+/turf/simulated/floor/outdoors/snow/classp/Initialize(mapload)
+	if(tree_chance && prob(tree_chance) && !check_density())
+		new /obj/structure/flora/tree/pine(src)
+	if(deadtree_chance && prob(deadtree_chance) && !check_density())
+		new /obj/structure/flora/tree/dead(src)
+	. = ..()
