@@ -3,7 +3,7 @@
 /turf/simulated/floor/outdoors/snow/classp,
 /area/class_p/ruins)
 "j" = (
-/turf/simulated/floor/classp,
+/turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "m" = (
 /turf/simulated/wall/classp,
@@ -12,22 +12,21 @@
 /obj/structure/fireplace{
 	pixel_y = 19
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "F" = (
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "L" = (
 /obj/structure/table/gamblingtable,
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purcarpet/classp,
 /area/class_p/ruins)
 "M" = (
-/obj/structure/flora/tree/pine,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/ruins)
 "N" = (
 /obj/structure/closet/crate/secure/loot,
@@ -35,16 +34,16 @@
 /area/class_p/ruins)
 "O" = (
 /obj/structure/bed,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purcarpet/classp,
 /area/class_p/ruins)
 "Q" = (
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/ruins)
 "S" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purcarpet/classp,
 /area/class_p/ruins)
 "W" = (
 /turf/simulated/floor/wood/classp,
@@ -57,7 +56,7 @@ a
 a
 a
 a
-M
+a
 a
 a
 a
@@ -66,7 +65,7 @@ a
 "}
 (2,1,1) = {"
 a
-M
+a
 a
 a
 Q
@@ -75,18 +74,18 @@ a
 a
 a
 a
-M
+a
 a
 "}
 (3,1,1) = {"
 a
 a
-a
 M
-a
-a
-a
-a
+M
+M
+M
+M
+M
 M
 a
 a
@@ -95,28 +94,28 @@ a
 (4,1,1) = {"
 a
 a
-a
+M
 m
 m
 m
 m
 m
-a
-a
 M
 M
+a
+a
 "}
 (5,1,1) = {"
 a
-M
 a
+M
 m
 z
 W
 N
 m
 m
-a
+M
 m
 a
 "}
@@ -129,29 +128,29 @@ W
 j
 F
 j
-a
-a
-a
+M
+M
+M
 a
 "}
 (7,1,1) = {"
 a
 a
-a
+M
 m
 S
 S
 j
-a
-a
-a
-a
+M
+M
+M
+M
 a
 "}
 (8,1,1) = {"
 a
-M
 a
+M
 m
 O
 L
@@ -159,34 +158,34 @@ W
 m
 m
 m
-a
+M
 a
 "}
 (9,1,1) = {"
 a
 a
-a
+M
 m
 m
 m
 m
 m
-a
-a
-a
+M
+M
+M
 a
 "}
 (10,1,1) = {"
 a
-M
+a
 Q
-a
-a
-a
-a
-a
-a
 M
+M
+M
+M
+M
+M
+a
 Q
 a
 "}
@@ -195,18 +194,17 @@ a
 a
 a
 a
-M
 a
 a
 a
-M
+a
+a
 a
 a
 a
 "}
 (12,1,1) = {"
 a
-M
 a
 a
 a
@@ -216,5 +214,6 @@ a
 a
 a
 a
-M
+a
+a
 "}

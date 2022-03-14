@@ -4,47 +4,46 @@
 /area/class_p/ruins)
 "e" = (
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/ruins)
 "m" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/classp,
+/turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "n" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "s" = (
 /obj/effect/spider/cocoon,
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/classp,
+/turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "t" = (
 /obj/effect/spider/stickyweb,
 /obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/ruins)
 "w" = (
-/obj/structure/flora/tree/pine,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/ruins)
 "B" = (
 /turf/simulated/wall/classp,
 /area/class_p/ruins)
 "F" = (
-/turf/simulated/floor/classp,
+/turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "I" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/ruins)
 "S" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/ruins)
 
 (1,1,1) = {"
@@ -57,97 +56,97 @@ a
 a
 a
 a
-w
+a
 a
 a
 "}
 (2,1,1) = {"
 a
+a
 w
-a
-a
-a
-a
-a
-a
-a
-a
-a
+w
+w
+w
+w
+w
+w
+w
+w
 a
 "}
 (3,1,1) = {"
 a
-a
-a
 w
+w
+a
 B
 S
 I
 B
-a
-a
 w
+w
+a
 a
 "}
 (4,1,1) = {"
+a
 w
-a
-a
-a
+w
+w
 B
-a
+w
 m
 B
-a
-a
-a
+w
+w
+w
 a
 "}
 (5,1,1) = {"
 a
-a
+w
 B
 B
 B
 m
-a
+w
 B
 B
 B
-a
+w
 a
 "}
 (6,1,1) = {"
 a
-a
-a
+w
+w
 S
 n
 s
-a
+w
 F
 n
 S
-a
+w
 a
 "}
 (7,1,1) = {"
 a
-a
+w
 S
-a
+w
 F
 F
 n
 m
 S
 S
-a
+w
 a
 "}
 (8,1,1) = {"
 a
-a
+w
 B
 B
 B
@@ -156,62 +155,62 @@ s
 B
 B
 B
-a
+w
 a
 "}
 (9,1,1) = {"
 a
-a
-a
-a
+w
+w
+w
 B
 t
-a
+w
 B
-a
-a
-a
+w
+w
+w
 a
 "}
 (10,1,1) = {"
 a
 w
-a
+w
 a
 B
-a
+w
 S
 B
-a
-a
 w
+w
+a
 a
 "}
 (11,1,1) = {"
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+w
+w
+w
+w
+w
+w
+w
+w
+w
+w
 a
 "}
 (12,1,1) = {"
 a
 a
-w
 a
 a
 a
 a
 a
 a
-w
+a
+a
 a
 a
 "}

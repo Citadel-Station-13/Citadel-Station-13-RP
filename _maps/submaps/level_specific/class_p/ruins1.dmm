@@ -3,7 +3,7 @@
 /turf/simulated/floor/outdoors/snow/classp,
 /area/class_p/ruins)
 "k" = (
-/turf/simulated/floor/classp,
+/turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "C" = (
 /turf/simulated/floor/old_tile/green/classp{
@@ -32,12 +32,12 @@
 "Q" = (
 /obj/structure/table/survival_pod,
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/classp,
+/turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "R" = (
 /obj/structure/table,
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/classp,
+/turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "S" = (
 /obj/structure/table,
@@ -48,14 +48,13 @@
 	},
 /area/class_p/ruins)
 "T" = (
-/obj/structure/flora/tree/pine,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/ruins)
 "W" = (
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
 /area/class_p/ruins)
 
 (1,1,1) = {"
@@ -76,25 +75,25 @@ a
 a
 a
 E
-a
-a
-a
+T
+T
+T
 E
-a
+T
 E
 E
 E
 a
 "}
 (3,1,1) = {"
+a
+a
 T
-a
-a
-a
-a
-a
-a
-a
+T
+T
+T
+T
+T
 k
 Q
 E
@@ -103,11 +102,11 @@ a
 (4,1,1) = {"
 a
 a
-a
+T
 H
-a
-a
-a
+T
+T
+T
 C
 C
 k
@@ -116,44 +115,44 @@ a
 "}
 (5,1,1) = {"
 a
-a
-a
 T
-a
-a
-a
-a
+T
+T
+T
+T
+T
+T
 k
-a
+T
 E
 a
 "}
 (6,1,1) = {"
 a
 E
-a
-a
-a
+T
+T
+T
 k
 k
-a
-a
-a
-a
+T
+T
+T
+T
 a
 "}
 (7,1,1) = {"
 a
-a
-a
-a
-a
-k
-k
-k
-a
 T
-a
+T
+T
+T
+k
+k
+k
+T
+T
+T
 a
 "}
 (8,1,1) = {"
@@ -162,11 +161,11 @@ E
 k
 S
 R
-a
+T
 k
 k
-a
-a
+T
+T
 E
 a
 "}
@@ -176,9 +175,9 @@ E
 N
 C
 k
-a
-a
-a
+T
+T
+T
 W
 a
 E
@@ -186,14 +185,14 @@ a
 "}
 (10,1,1) = {"
 a
-a
+T
 k
 k
 C
-a
-a
-a
-a
+T
+T
+T
+T
 a
 a
 a
@@ -223,6 +222,6 @@ a
 a
 a
 a
-T
+a
 a
 "}

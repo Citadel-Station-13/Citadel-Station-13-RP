@@ -20,12 +20,19 @@ FROZEN_TURF_CREATE(/turf/simulated/wall/snowbrick)
 FROZEN_TURF_CREATE(/turf/simulated/floor)
 FROZEN_TURF_CREATE(/turf/simulated/floor/wood)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/red)
-FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/red)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/blue)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/green)
 FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
+FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/shelfice)
+FROZEN_TURF_CREATE(/turf/simulated/floor/carpet/purcarpet)
+FROZEN_TURF_CREATE(/turf/simulated/shuttle/floor)
+FROZEN_TURF_CREATE(/turf/simulated/shuttle/floor/black)
+FROZEN_TURF_CREATE(/turf/simulated/shuttle/floor/purple)
+FROZEN_TURF_CREATE(/turf/simulated/shuttle/floor/red)
+FROZEN_TURF_CREATE(/turf/simulated/shuttle/floor/yellow)
 FROZEN_TURF_CREATE(/turf/simulated/mineral)
+FROZEN_TURF_CREATE(/turf/simulated/mineral/cave)
 FROZEN_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 FROZEN_TURF_CREATE(/turf/simulated/mineral/floor)
 FROZEN_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
@@ -40,3 +47,12 @@ FROZEN_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 /turf/simulated/floor/outdoors/snow/classp/no_tree
 	tree_chance = 0
 	deadtree_chance = 0
+
+/turf/simulated/floor/old_tile/red/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/old_tile/blue/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/old_tile/green/outdoors
+	outdoors = TRUE
