@@ -331,14 +331,52 @@
 	name = "Security Uniform - Corporate"
 	path = /obj/item/clothing/under/rank/security/corp
 
+/datum/gear/restricted/security/uniform/corporate_fem
+	name = "Security Uniform - Corporate - Female"
+	path = /obj/item/clothing/under/rank/security/corp_fem
+
 /datum/gear/restricted/security/uniform/corporate/detective
 	name = "Detective Uniform - Corporate"
 	path = /obj/item/clothing/under/det/corporate
 	allowed_roles = list("Detective", "Head of Security")
 
+/datum/gear/restricted/security/uniform/corporate/detective_fem
+	name = "Detective Uniform - Corporate - Female"
+	path = /obj/item/clothing/under/det/corporate_fem
+	allowed_roles = list("Detective", "Head of Security")
+
+/datum/gear/restricted/security/uniform/detective/fem
+	name = "Detective Uniform - Suit - Female"
+	path = /obj/item/clothing/under/det_fem
+	allowed_roles = list("Detective", "Head of Security")
+
+/datum/gear/restricted/security/uniform/detective/fem/tan
+	name = "Detective Uniform - Tan - Female"
+	path = /obj/item/clothing/under/det/grey_fem
+	allowed_roles = list("Detective", "Head of Security")
+
+/datum/gear/restricted/security/uniform/detective/fem/spiffy
+	name = "Detective Uniform - Spiffy - Female"
+	path = /obj/item/clothing/under/det/black_fem
+	allowed_roles = list("Detective", "Head of Security")
+
+/datum/gear/restricted/security/uniform/detective/fem/tidy
+	name = "Detective Uniform - Semi-Tidy - Female"
+	path = /obj/item/clothing/under/det/waistcoat_fem
+	allowed_roles = list("Detective", "Head of Security")
+
+/datum/gear/restricted/security/uniform/detective/fem/serious
+	name = "Detective Uniform - Serious - Female"
+	path = /obj/item/clothing/under/det/grey/waistcoat_fem
+
 /datum/gear/restricted/security/uniform/corporate/warden //before this was changed it was called the corpwarsuit. shame there's no full borg in a hard rock cafe shirt.
 	name = "Warden Uniform - Corporate"
 	path = /obj/item/clothing/under/rank/warden/corp
+	allowed_roles = list("Head of Security", "Warden")
+
+/datum/gear/restricted/security/uniform/corporate/warden_fem
+	name = "Warden Uniform - Corporate - Female"
+	path = /obj/item/clothing/under/rank/warden/corp_fem
 	allowed_roles = list("Head of Security", "Warden")
 
 /datum/gear/restricted/security/uniform/corporate/hos
@@ -346,13 +384,26 @@
 	path = /obj/item/clothing/under/rank/head_of_security/corp
 	allowed_roles = list("Head of Security")
 
+/datum/gear/restricted/security/uniform/corporate/hos_fem
+	name = "Head of Security Uniform - Corporate - Female"
+	path = /obj/item/clothing/under/rank/head_of_security/corp_fem
+
 /datum/gear/restricted/security/uniform/navyblue
 	name = "Security Uniform - Navy Blue"
 	path = /obj/item/clothing/under/rank/security/navyblue
 
+/datum/gear/restricted/security/uniform/navyblue_fem
+	name = "Security Uniform - Navy Blue - Female"
+	path = /obj/item/clothing/under/rank/security/navyblue_fem
+
 /datum/gear/restricted/security/uniform/navyblue/warden
 	name = "Warden Uniform - Navy Blue"
 	path = /obj/item/clothing/under/rank/warden/navyblue
+	allowed_roles = list("Head of Security", "Warden")
+
+/datum/gear/restricted/security/uniform/navyblue/warden_fem
+	name = "Warden Uniform - Navy Blue - Female"
+	path = /obj/item/clothing/under/rank/warden/navyblue_fem
 	allowed_roles = list("Head of Security", "Warden")
 
 /datum/gear/restricted/security/uniform/navyblue/hos
@@ -360,9 +411,18 @@
 	path = /obj/item/clothing/under/rank/head_of_security/navyblue
 	allowed_roles = list("Head of Security")
 
+/datum/gear/restricted/security/uniform/navyblue/hos_fem
+	name = "Head of Security Funiform - Navy Blue - Female"
+	path = /obj/item/clothing/under/rank/head_of_security/navyblue_fem
+	allowed_roles = list("Head of Security")
+
 /datum/gear/restricted/security/uniform/turtleneck
 	name = "Security Turtleneck"
 	path = /obj/item/clothing/under/rank/security/turtleneck
+
+/datum/gear/restricted/security/uniform/turtleneck_fem
+	name = "Security Turtleneck - Female"
+	path = /obj/item/clothing/under/rank/security/turtleneck_fem
 
 /datum/gear/restricted/security/uniform/turtleneck/alt
 	name = "Security Turtleneck - Alternative"
@@ -377,9 +437,18 @@
 	name = "Security Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitsec
 
+/datum/gear/restricted/security/uniform/bodysuit_fem
+	name = "Security Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit/bodysuitsec_fem
+
 /datum/gear/restricted/security/uniform/bodysuit/command
 	name = "Security Command Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitseccom
+	allowed_roles = list("Head of Security", "Warden")
+
+/datum/gear/restricted/security/uniform/bodysuit/command_fem
+	name = "Security Command Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit/bodysuitseccom_fem
 	allowed_roles = list("Head of Security", "Warden")
 
 /datum/gear/restricted/security/uniform/coveralls
@@ -580,6 +649,10 @@
 	name = "Medical Turtleneck"
 	path = /obj/item/clothing/under/rank/medical/turtleneck
 
+/datum/gear/restricted/medical/uniform/turtleneck_fem
+	name = "Medical Turtleneck - Female"
+	path = /obj/item/clothing/under/rank/medical/turtleneck_fem
+
 /datum/gear/restricted/medical/uniform/turtleneck/alt
 	name = "Medical Turtleneck - Alternative"
 	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/medical
@@ -617,8 +690,16 @@
 	path = /obj/item/clothing/under/parameduniskirtdark
 
 /datum/gear/restricted/medical/uniform/bodysuit
-	name = "Medical Bodysuit EMT"
+	name = "Medical Bodysuit - EMT"
 	path = /obj/item/clothing/under/bodysuit/bodysuitemt
+
+/datum/gear/restricted/medical/uniform/bodysuit_fem
+	name = "Medical Bodysuit - EMT - Female"
+	path = /obj/item/clothing/under/bodysuit/bodysuitemt_fem
+
+/datum/gear/restricted/medical/uniform/psych_fem
+	name = "Psychologist's Turtleneck - Female"
+	path = /obj/item/clothing/under/rank/psych/turtleneck_fem
 
 //Suit
 /datum/gear/restricted/medical/suit/wintercoat
@@ -779,8 +860,16 @@
 	name = "Engineering Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuithazard
 
+/datum/gear/restricted/engineering/uniform/bodysuit_fem
+	name = "Engineering Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit/bodysuithazard_fem
+
 /datum/gear/restricted/engineering/uniform/turtleneck
 	name = "Engineering Turtleneck"
+	path = /obj/item/clothing/under/rank/engineer/turtleneck
+
+/datum/gear/restricted/engineering/uniform/turtleneck_fem
+	name = "Engineering Turtleneck - Female"
 	path = /obj/item/clothing/under/rank/engineer/turtleneck
 
 /datum/gear/restricted/engineering/uniform/turtleneck/alt
@@ -901,6 +990,11 @@
 /datum/gear/restricted/supply/uniform/bodysuit_miner
 	name = "Mining Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitminer
+	allowed_roles = list("Quartermaster", "Shaft Miner")
+
+/datum/gear/restricted/supply/uniform/bodysuit_miner_fem
+	name = "Mining Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit/bodysuitminer_fem
 	allowed_roles = list("Quartermaster", "Shaft Miner")
 
 /datum/gear/restricted/supply/uniform/turtleneck
@@ -1026,6 +1120,10 @@
 /datum/gear/restricted/science/uniform/turtleneck
 	name = "Science Turtleneck"
 	path = /obj/item/clothing/under/rank/scientist/turtleneck
+
+/datum/gear/restricted/science/uniform/turtleneck_fem
+	name = "Science Turtleneck - Female"
+	path = /obj/item/clothing/under/rank/scientist/turtleneck_fem
 
 /datum/gear/restricted/science/uniform/turtleneck/alt
 	name = "Science Turtleneck - Alt"
@@ -1176,6 +1274,10 @@
 /datum/gear/restricted/command/uniform/bodysuit
 	name = "Command Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitcommand
+
+/datum/gear/restricted/command/uniform/bodysuit_fem
+	name = "Command Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit/bodysuitcommand_fem
 
 //Suit
 /datum/gear/restricted/command/suit/operations_coat
@@ -1333,6 +1435,11 @@
 	allowed_roles = list("Internal Affairs Agent")
 
 //*Janitor
+/datum/gear/restricted/misc/uniform/janitor_fem
+	name = "Janitor's Jumpsuit - Female"
+	path = /obj/item/clothing/under/rank/janitor_fem
+	allowed_roles = list("Janitor")
+
 /datum/gear/restricted/misc/uniform/janitor_alt
 	name = "Janitor Jumpsuit - Alt"
 	path = /obj/item/clothing/under/rank/janitor/starcon
@@ -1363,11 +1470,21 @@
 /datum/gear/restricted/misc/uniform/bodysuit_explo/command
 	name = "Exploration Command Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitexplocom
-	allowed_roles = list("Research Director","Pathfinder")
+	allowed_roles = list("Research Director", "Pathfinder")
+
+/datum/gear/restricted/misc/uniform/bodysuit_explo/command_fem
+	name = "Exploration Command Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit/bodysuitexplocom_fem
+	allowed_roles = list("Research Director", "Pathfinder")
 
 /datum/gear/restricted/misc/uniform/bodysuit_explo
 	name = "Exploration Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitexplo
+	allowed_roles = list("Research Director", "Pathfinder", "Explorer", "Field Medic", "Pilot")
+
+/datum/gear/restricted/misc/uniform/bodysuit_explo_fem
+	name = "Exploration Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit/bodysuitexplo_fem
 	allowed_roles = list("Research Director", "Pathfinder", "Explorer", "Field Medic", "Pilot")
 
 /datum/gear/restricted/misc/suit/wintercoat_field_medic
