@@ -166,53 +166,47 @@
 	name = "Class P World"
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/dirt
-	requires_power = 0
+	requires_power = 1
 	dynamic_lighting = 1
 
 /area/class_p/facility
 	name = "Facility"
-	requires_power = 1
 	icon_state = "red"
-	dynamic_lighting = 1
 
 /area/class_p/ruins
 	name = "Ruins"
 	icon_state = "green"
-	dynamic_lighting = 1
 
 /area/class_p/explored
 	name = "Class P World - Explored (E)"
 	icon_state = "yellow"
-	dynamic_lighting = 1
 
 /area/class_p/unexplored
 	name = "Class P World - Unexplored (UE)"
 	icon_state = "red"
-	dynamic_lighting = 1
 
 //Gaia planet world areas
 /area/gaia_planet
 	name = "Gaia Planet"
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/dirt
-	requires_power = 0
+	requires_power = 1
 	dynamic_lighting = 1
 
 /area/gaia_planet/inside
 	name = "Gaia Planet - Inside (E)"
 	icon_state = "red"
-	dynamic_lighting = 1
 
 /area/gaia_planet/outside
 	name = "Gaia Planet - Outside (UE)"
 	icon_state = "yellow"
-	dynamic_lighting = 1
 
 // Mining Planet world areas
 /area/mining_planet
 	name = "Mining Planet"
 	icon_state = "away"
 	base_turf = /turf/simulated/mineral/floor/
+	requires_power = 1
 	dynamic_lighting = 1
 
 /area/mining_planet/explored
@@ -229,6 +223,7 @@
 	name = "Class D World"
 	icon_state = "away"
 	base_turf = /turf/simulated/mineral/floor/classd
+	requires_power = 1
 	dynamic_lighting = 1
 
 /area/class_d/explored
@@ -315,7 +310,7 @@
 /area/class_h
 	name = "Class H World"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
-	requires_power = 0
+	requires_power = 1
 	dynamic_lighting = 1
 	icon_state = "away"
 
@@ -374,12 +369,10 @@
 /area/class_h/explored
 	name = "Class H World - Explored (E)"
 	icon_state = "explored"
-	dynamic_lighting = 1
 
 /area/class_h/unexplored
 	name = "Class H World - Unexplored (UE)"
 	icon_state = "unexplored"
-	dynamic_lighting = 1
 
 //Debris field
 /area/shuttle/excursion/debrisfield
@@ -666,6 +659,7 @@
 	name = "Lava Land"
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/lavaland
+	requires_power = 1
 	dynamic_lighting = 1
 
 /area/lavaland/horrors
@@ -685,21 +679,14 @@
 	base_turf = /turf/simulated/floor/outdoors/lavaland
 	requires_power = 0
 
-/area/lavaland
-	name = "Lava Land"
-	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-	dynamic_lighting = 1
-
 /area/lavaland/central/base
 	name = "Lava Land (Center) - Mining Base"
 	icon_state = "green"
-	requires_power = 0
 
 /area/lavaland/central/base/common
 	name = "Lava Land (Center) - Mining Base"
 	icon_state = "blue"
-	requires_power = 1
+
 /area/lavaland/central/explored
 	name = "Lava Land (Center) - Thoroughfare"
 	icon_state = "red"
@@ -711,7 +698,6 @@
 /area/lavaland/central/transit
 	name = "Lava Land (Center) - Transit"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/north/explored
 	name = "Lava Land (North) - Thoroughfare"
@@ -740,12 +726,10 @@
 /area/lavaland/east/colony
 	name = "Lava Land (East) - Colony"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/east/transit
 	name = "Lava Land (East) - Transit"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/east/lab
 	name = "Lava Land (East) - S4"
@@ -753,17 +737,14 @@
 /area/lavaland/east/lab/core
 	name = "Lava Land (East) - S4"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/east/lab/containment
 	name = "Lava Land (East) - S4 Containment"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/east/lab/bunker
 	name = "Lava Land (East) - S4 Bunker"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/west/explored
 	name = "Lava Land (West) - Thoroughfare"
@@ -780,7 +761,6 @@
 /area/lavaland/dungeon/facility
 	name = "Lava Land (Dungeon) - Pump Facility"
 	icon_state = "blue"
-	requires_power = 1
 
 // Aerostat
 /area/shuttle/excursion/away_aerostat

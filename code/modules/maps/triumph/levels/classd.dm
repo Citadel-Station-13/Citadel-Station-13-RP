@@ -136,6 +136,7 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 	outdoors = 1
 	color = "#eaa17c"
 	base_icon_state = "asteroid"
+	initial_gas_mix = ATMOSPHERE_ID_CLASSD
 	turf_layers = list(/turf/simulated/mineral/floor/classd)
 	initial_flooring = /decl/flooring/outdoors/classd
 

@@ -4,7 +4,7 @@ var/datum/planet/classd/planet_classd = null
 	seconds_in_day = 1 HOURS
 
 /datum/planet/classd
-	name = "Class D Moon"
+	name = "Class-D Moon"
 	desc = "A rocky moon which has recently had its quarantine lifted following a campaign of nuclear bombings and mercenary \
 	forces deploying to eradicate a large xenomorph infestation."
 	current_time = new /datum/time/classd()
@@ -94,8 +94,6 @@ var/datum/planet/classd/planet_classd = null
 	spawn(1)
 		update_sun_deferred(2, new_brightness, new_color)
 
-
-
 /datum/weather_holder/classd
 	temperature = T0C
 	allowed_weather_types = list(
@@ -103,8 +101,8 @@ var/datum/planet/classd/planet_classd = null
 		WEATHER_FALLOUT		= new /datum/weather/classd/fallout()
 		)
 	roundstart_weather_chances = list(
-		WEATHER_CLEAR		= 95,
-		WEATHER_FALLOUT		= 5
+		WEATHER_CLEAR		= 75,
+		WEATHER_FALLOUT		= 25
 		)
 
 /datum/weather/classd
@@ -115,8 +113,8 @@ var/datum/planet/classd/planet_classd = null
 /datum/weather/classd/clear
 	name = "clear"
 	transition_chances = list(
-		WEATHER_CLEAR	 = 85,
-		WEATHER_FALLOUT	 = 15
+		WEATHER_CLEAR	 = 65,
+		WEATHER_FALLOUT	 = 35
 		)
 	transition_messages = list(
 		"The radioactive storm clears.",
@@ -132,8 +130,8 @@ var/datum/planet/classd/planet_classd = null
 	light_color = "#CCFFCC"
 	flight_failure_modifier = 30
 	transition_chances = list(
-		WEATHER_CLEAR	= 60,
-		WEATHER_FALLOUT = 40
+		WEATHER_CLEAR	= 50,
+		WEATHER_FALLOUT = 50
 		)
 	observed_message = "Radioactive soot and ash rains down from the heavens."
 	transition_messages = list(
