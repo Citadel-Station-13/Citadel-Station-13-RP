@@ -171,7 +171,7 @@
 
 /datum/map_template/triumph_lateload/away_h_world/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/poi_h/unexplored, /datum/map_template/submap/level_specific/class_h)
+	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/class_h/unexplored, /datum/map_template/submap/level_specific/class_h)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
@@ -201,19 +201,19 @@
 
 
 // Frozen Planet Zone.
-/datum/map_template/triumph_lateload/frozen_planet
-	name = "Frozen Planet - Z4 Planet"
+/datum/map_template/triumph_lateload/away_p_world
+	name = "ExoPlanet - Z4 Planet"
 	desc = "A Cold Frozen Planet."
-	mappath = "_maps/map_levels/140x140//frozen_planet.dmm"
-	associated_map_datum = /datum/map_z_level/triumph_lateload/frozen_planet
+	mappath = "_maps/map_levels/140x140//Class_P.dmm"
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_p_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
-/datum/map_template/triumph_lateload/frozen_planet/on_map_loaded(z)
+/datum/map_template/triumph_lateload/away_p_world/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_FROZEN_PLANET), 125, /area/frozen_planet/ruins, /datum/map_template/submap/level_specific/frozen_planet)
+	seed_submaps(list(Z_LEVEL_FROZEN_PLANET), 125, /area/class_p/ruins, /datum/map_template/submap/level_specific/class_p)
 
 
-/datum/map_z_level/triumph_lateload/frozen_planet
+/datum/map_z_level/triumph_lateload/away_p_world
 	name = "Away Mission - Frozen Planet"
 	z = Z_LEVEL_FROZEN_PLANET
 

@@ -154,7 +154,7 @@
 		list("ExoPlanet - Z1 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z2 Planet"), // Desert Exoplanet
 		list("Gaia Planet - Z3 Planet"), // Gaia Planet
-		list("Frozen Planet - Z4 Planet"), // Frozen Planet
+		list("ExoPlanet - Z4 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
 		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)")
@@ -181,7 +181,7 @@
 
 	planet_datums_to_make = list(/datum/planet/lavaland,
 								/datum/planet/classh,
-								/datum/planet/frozen_planet,
+								/datum/planet/classp,
 								/datum/planet/gaia_planet)
 
 /datum/map/triumph/perform_map_generation()

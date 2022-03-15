@@ -339,7 +339,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	color = "#33BB33"
 
-/obj/effect/overmap/visitable/sector/frozen_planet
+/obj/effect/overmap/visitable/sector/class_p
 	name = "Frozen Planet"
 	desc = "A world shrouded in cold and snow that seems to never let up."
 	scanner_desc = @{"[i]Information[/i]: A planet with a very cold atmosphere. Possible life signs detected."}
