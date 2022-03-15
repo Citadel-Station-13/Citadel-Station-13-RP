@@ -57,7 +57,7 @@
 			else
 				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
 				return 0
-		if(ismob(src)) //VOREStation Edit Start. Are they a mob, and are they currently flying??
+		else if(ismob(src)) //VOREStation Edit Start. Are they a mob, and are they currently flying??
 			var/mob/H = src
 			if(H.flying)
 				if(H.incapacitated(INCAPACITATION_ALL))
