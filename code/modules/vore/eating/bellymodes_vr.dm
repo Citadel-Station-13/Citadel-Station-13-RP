@@ -2,8 +2,10 @@
 /obj/belly/proc/process_belly(var/times_fired,var/wait) //Passed by controller
 	//robot stuff
 	var/maxnutrition = 1000000 //previously this was uncapped, normal nutrition is i think 0-1000. 1 million should be a fine cap
+	/* Lets not gimp vore-synths any more than other people
 	if(owner.isSynthetic())
 		maxnutrition = 450
+	*/
 	if((times_fired < next_process) || !contents.len)
 		recent_sound = FALSE
 		return SSBELLIES_IGNORED

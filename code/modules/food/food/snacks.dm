@@ -3296,7 +3296,7 @@
 /obj/item/reagent_containers/food/snacks/voxjerky
 	name = "vox jerky"
 	desc = "Dehydrated Vox meat, cut into tough strips. A good source of protein, if you have strong teeth."
-	icon_state = "voxjerky"
+	icon_state = "vox_jerky"
 	nutriment_amt = 6
 	nutriment_desc = list("spicy teriyaki" = 6)
 

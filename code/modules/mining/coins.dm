@@ -18,21 +18,21 @@
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
 
-/obj/item/coin/gold
-	name = "gold coin"
-	icon_state = "coin_gold"
+/obj/item/coin/iron
+	name = "iron coin"
+	icon_state = "coin_iron"
+
+/obj/item/coin/copper
+	name = "copper coin"
+	icon_state = "coin_copper"
 
 /obj/item/coin/silver
 	name = "silver coin"
 	icon_state = "coin_silver"
 
-/obj/item/coin/diamond
-	name = "diamond coin"
-	icon_state = "coin_diamond"
-
-/obj/item/coin/iron
-	name = "iron coin"
-	icon_state = "coin_iron"
+/obj/item/coin/gold
+	name = "gold coin"
+	icon_state = "coin_gold"
 
 /obj/item/coin/phoron
 	name = "solid phoron coin"
@@ -42,9 +42,29 @@
 	name = "uranium coin"
 	icon_state = "coin_uranium"
 
+/obj/item/coin/diamond
+	name = "diamond coin"
+	icon_state = "coin_diamond"
+
 /obj/item/coin/platinum
 	name = "platinum coin"
+	icon_state = "coin_platinum"
+
+/obj/item/coin/durasteel
+	name = "adamantine coin"
 	icon_state = "coin_adamantine"
+
+/obj/item/coin/mhydrogen
+	name = "mythril coin"
+	icon_state = "coin_mythril"
+
+/obj/item/coin/bananium
+	name = "bananium coin"
+	icon_state = "coin_clown"
+
+/obj/item/coin/supermatter
+	name = "supermatter coin"
+	icon_state = "coin_supermatter"
 
 /obj/item/coin/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack/cable_coil))

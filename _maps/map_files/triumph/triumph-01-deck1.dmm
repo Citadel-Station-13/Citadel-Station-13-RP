@@ -3196,10 +3196,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "ln" = (
-/obj/random/trash,
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
-/turf/simulated/floor/wood,
-/area/maintenance/dormitory)
+/obj/structure/railing,
+/obj/structure/closet/crate/mimic/closet/cointoss,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "lp" = (
 /obj/machinery/camera/network/engineering{
 	dir = 8
@@ -12988,9 +12988,9 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "Su" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
+/obj/structure/closet/crate/mimic/cointoss,
+/turf/simulated/floor/carpet,
+/area/maintenance/dormitory)
 "Sw" = (
 /obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -22212,7 +22212,7 @@ ID
 ib
 Tt
 Uy
-ht
+Su
 jd
 Px
 fN
@@ -22781,7 +22781,7 @@ ib
 RM
 wT
 lV
-ln
+YP
 ib
 fN
 fN
@@ -26567,7 +26567,7 @@ fN
 LO
 ID
 dv
-iu
+ln
 qb
 Se
 jV
@@ -30850,7 +30850,7 @@ ID
 We
 dv
 vK
-Su
+Yb
 NL
 bh
 Yq

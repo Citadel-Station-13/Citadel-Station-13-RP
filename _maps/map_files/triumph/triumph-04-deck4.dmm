@@ -972,6 +972,10 @@
 	},
 /turf/simulated/floor,
 /area/security/brig)
+"aME" = (
+/obj/structure/closet/crate/mimic/cointoss,
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "aMF" = (
 /obj/structure/closet,
 /obj/random/maintenance/clean,
@@ -6047,7 +6051,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "ete" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
 /obj/random/maintenance/security,
 /obj/random/trash,
 /turf/simulated/floor/tiled,
@@ -12898,7 +12901,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "iUB" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "iVA" = (
@@ -13736,9 +13739,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "jBs" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
-/turf/simulated/floor/wood/broken,
-/area/maintenance/security/starboard)
+/obj/structure/closet/crate/mimic/cointoss,
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "jCa" = (
 /obj/machinery/door/firedoor,
 /obj/effect/map_helper/airlock/door/int_door,
@@ -14714,9 +14717,9 @@
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "krE" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/obj/structure/closet/crate/mimic/closet/cointoss,
 /turf/simulated/floor/plating,
-/area/maintenance/security/starboard)
+/area/maintenance/central)
 "krQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -43652,7 +43655,7 @@ sNf
 qPI
 wQz
 iEQ
-kKQ
+jBs
 amB
 rXs
 fgy
@@ -45950,7 +45953,7 @@ lJa
 lJa
 kqL
 gMN
-gMN
+aME
 kpY
 mkI
 ygn
@@ -46525,7 +46528,7 @@ wfb
 gvV
 fIg
 rYP
-jBs
+vbZ
 rYP
 qtH
 gMN
@@ -49195,7 +49198,7 @@ ruS
 lXy
 xMk
 bKz
-rSb
+krE
 tvx
 skw
 vrq
@@ -49468,7 +49471,7 @@ ini
 oxJ
 rnG
 lZG
-rSb
+iUB
 rSb
 rrW
 xMk
@@ -50229,7 +50232,7 @@ iWf
 lsu
 jYA
 myb
-krE
+gMN
 aSO
 nIK
 nIK
@@ -51328,7 +51331,7 @@ xMk
 uXq
 tyW
 bKd
-iUB
+rSb
 gUv
 cQt
 fWb

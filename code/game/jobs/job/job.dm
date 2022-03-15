@@ -191,3 +191,6 @@
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), slot_back)
 		if(5)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/messenger(H), slot_back)
+		if(6)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack/rig(H), slot_back)
+
