@@ -193,4 +193,3 @@
 	name = "light blue headtail cloth"
 	icon_state = "skrell_cloth_lblue_male"
 	item_state_slots = list(slot_r_hand_str = "egg2", slot_l_hand_str = "egg2")
-	
