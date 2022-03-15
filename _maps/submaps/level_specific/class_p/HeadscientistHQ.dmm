@@ -232,9 +232,9 @@
 /area/submap/HeadscientistHQ)
 "jF" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
@@ -596,7 +596,10 @@
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "AW" = (
-/obj/machinery/power/smes/buildable/point_of_interest,
+/obj/structure/cable/green,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
 /turf/simulated/shuttle/floor/black/classp,
 /area/submap/HeadscientistHQ)
 "Bs" = (
@@ -659,6 +662,20 @@
 	dir = 6
 	},
 /obj/machinery/light,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Ds" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "DW" = (
@@ -810,10 +827,11 @@
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "JO" = (
-/obj/machinery/power/terminal{
-	dir = 4
+/obj/machinery/power/smes/buildable/point_of_interest,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
 	},
-/obj/structure/cable/green,
 /turf/simulated/shuttle/floor/black/classp,
 /area/submap/HeadscientistHQ)
 "JX" = (
@@ -1056,10 +1074,16 @@
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "VI" = (
-/obj/structure/cable/green{
-	d1 = 2;
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 4;
+	pixel_y = -32;
+	req_access = null;
+	start_charge = 0
+	},
+/obj/structure/cable{
 	d2 = 4;
-	icon_state = "2-4"
+	icon_state = "0-4"
 	},
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
@@ -2871,7 +2895,7 @@ ve
 EO
 ve
 PM
-nd
+VI
 YH
 pb
 sr
@@ -2922,7 +2946,7 @@ Tj
 Tj
 Tj
 PM
-nd
+Ds
 YH
 jt
 kh
@@ -3022,8 +3046,8 @@ jB
 WE
 Tj
 Tj
-VI
-Bw
+Tj
+nd
 JO
 YH
 YH
@@ -3074,7 +3098,7 @@ LF
 Tj
 UP
 jF
-nd
+Bw
 AW
 YH
 YH
