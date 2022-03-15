@@ -7058,6 +7058,7 @@
 	landmark_tag = "tether_excursion_hangar";
 	name = "Excursion Shuttle Dock"
 	},
+/obj/effect/overmap/visitable/ship/landable/excursion,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "axK" = (
@@ -10220,12 +10221,12 @@
 	id_tag = "expshuttle_docker";
 	pixel_y = 28
 	},
+/obj/effect/map_helper/airlock/atmos/pump_out_internal,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "medivac_docker_pump_out_external"
 	},
-/obj/effect/map_helper/airlock/atmos/pump_out_internal,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "aLO" = (
@@ -19279,6 +19280,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "kah" = (
+/obj/machinery/computer/shuttle_control/explore/excursion,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cockpit)
 "kaC" = (

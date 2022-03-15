@@ -4248,6 +4248,9 @@
 /area/crew_quarters/fitness)
 "lY" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/computer/shuttle_control/explore/mining{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "lZ" = (
@@ -9413,6 +9416,10 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
+"Ap" = (
+/obj/effect/shuttle_landmark/triumph/deck2/port,
+/turf/space,
+/area/space)
 "Aq" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -10272,6 +10279,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_10)
+"CO" = (
+/obj/effect/shuttle_landmark/triumph/deck2/starboard,
+/turf/space,
+/area/space)
 "CP" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -13495,6 +13506,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/shuttle_landmark/triumph/deck2/mining,
+/obj/effect/overmap/visitable/ship/landable/mining,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "MF" = (
@@ -17713,6 +17726,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"Yf" = (
+/obj/effect/shuttle_landmark/triumph/deck2/trade,
+/turf/space,
+/area/space)
 "Yg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -22273,7 +22290,7 @@ ii
 ii
 ii
 ii
-ii
+Yf
 ii
 SA
 ys
@@ -28629,7 +28646,7 @@ ii
 ii
 ii
 ii
-ii
+Ap
 ii
 ii
 ii
@@ -34667,7 +34684,7 @@ ii
 ii
 ii
 ii
-ii
+CO
 ii
 ii
 ii
