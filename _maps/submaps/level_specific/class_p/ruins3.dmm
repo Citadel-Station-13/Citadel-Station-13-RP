@@ -8,12 +8,6 @@
 "m" = (
 /turf/simulated/wall/classp,
 /area/class_p/ruins)
-"z" = (
-/obj/structure/fireplace{
-	pixel_y = 19
-	},
-/turf/simulated/floor/classp/outdoors,
-/area/class_p/ruins)
 "F" = (
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
@@ -110,7 +104,7 @@ a
 a
 M
 m
-z
+j
 W
 N
 m
