@@ -169,10 +169,12 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 		WEATHER_HAIL = 5
 		)
 	observed_message = "It is snowing lightly."
-	transition_messages = list(
-		"Small snowflakes begin to fall from above.",
-		"It begins to snow lightly.",
-		)
+	effect_message = list(
+		"<I>The gentle breeze lifts tiny particles of falling snow past you.</I>",
+		"<I>Cool wind rushes over your senses as the breeze softly stirs and spirals around you.</I>",
+		"<I>A momentary pause in wind leaves the air still before it finds its peaceful rhythm again.</I>",
+		"<I>Blanketed cold envelops you as the wind carries its chilled embrace.</I>"
+	)
 
 /datum/weather/lythios43c/snow
 	name = "moderate snow"
@@ -189,9 +191,11 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 		WEATHER_OVERCAST = 5
 		)
 	observed_message = "It is snowing."
-	transition_messages = list(
-		"It's starting to snow.",
-		"The air feels much colder as snowflakes fall from above."
+	effect_message = list(
+		"<I>Snow falls gently around you with a quiet pattering song.</I>",
+		"<I>Cool wind rushes over your senses as the breeze softly stirs and spirals around you.</I>",
+		"<I>A momentary pause in wind leaves the air still before it finds its peaceful rhythm again.</I>",
+		"<I>Blanketed cold envelops you as the wind carries its chilled embrace.</I>"
 	)
 
 /datum/weather/lythios43c/snow/process_effects()
@@ -227,6 +231,11 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 		WEATHER_OVERCAST = 5
 		)
 	observed_message = "A blizzard blows snow everywhere."
+	effect_message = list(
+		"<I>Distant howling wind swirls up to meet you as the blizzard tempers and flares.</I>",
+		"<I>Cool wind rushes over your senses as the strong wing stirs and spirals around you.</I>",
+		"<I>A strong gust of wind rushes past you.</I>"
+	)
 	transition_messages = list(
 		"Strong winds howl around you as a blizzard appears.",
 		"It starts snowing heavily, and it feels extremly cold now."

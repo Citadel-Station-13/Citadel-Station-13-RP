@@ -346,10 +346,6 @@
 "gT" = (
 /turf/space/transit/east,
 /area/space)
-"hf" = (
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/shuttle,
-/turf/space,
-/area/space)
 "hp" = (
 /obj/effect/step_trigger/lost_in_space,
 /turf/space/transit/east,
@@ -7358,7 +7354,7 @@ My
 sa
 aa
 aa
-hf
+aa
 aa
 aa
 aa
@@ -10028,7 +10024,7 @@ aa
 aa
 aa
 aa
-hf
+aa
 aa
 aa
 aa
@@ -15404,8 +15400,8 @@ aa
 aa
 aa
 aa
-hf
-hf
+aa
+aa
 aa
 aa
 aa

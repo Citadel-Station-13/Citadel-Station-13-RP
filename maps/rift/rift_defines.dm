@@ -162,14 +162,14 @@
 								 Z_LEVEL_ROGUEMINE_4)
 */
 	lateload_z_levels = list(
-		list("Lythios - Misc","Lythios - Ships",), // Stock Triumph lateload maps
+		//list("Lythios - Misc","Lythios - Ships",), // Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
 		list("Away Mission - Mining Planet"),//Mining planet
 		list("ExoPlanet - Z1 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z2 Planet"), // Desert Exoplanet
 		list("Gaia Planet - Z3 Planet"), // Gaia Planet
-		list("Forzen Planet - Z4 Planet"), // Frozen Planet
+		list("Frozen Planet - Z4 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
 		list("Away Mission - Lava Land"),
@@ -256,7 +256,7 @@
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
-/datum/map_z_level/tether/station/surface_mid
+/datum/map_z_level/rift/station/surface_mid
 	z = Z_LEVEL_SURFACE_MID
 	name = "Surface 2"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
@@ -264,7 +264,7 @@
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
-/datum/map_z_level/tether/station/surface_high
+/datum/map_z_level/rift/station/surface_high
 	z = Z_LEVEL_SURFACE_HIGH
 	name = "Surface 3"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
@@ -272,53 +272,17 @@
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
 
-/datum/map_z_level/lythios/colony
+/datum/map_z_level/rift/colony
 	z = Z_LEVEL_CENTCOM
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
-/datum/map_z_level/lythios/misc
-	z = Z_LEVEL_MISC
+/datum/map_z_level/rift/ships
+	z = Z_LEVEL_SHIPS
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
 
-/*
-/datum/map_z_level/tether/wilderness
-	name = "Wilderness"
-	flags = MAP_LEVEL_PLAYER
-	var/activated = 0
-	var/list/frozen_mobs = list()
-
-/datum/map_z_level/tether/wilderness/proc/activate_mobs()
-	if(activated && isemptylist(frozen_mobs))
-		return
-	activated = 1
-	for(var/mob/living/simple_animal/M in frozen_mobs)
-		M.life_disabled = 0
-		frozen_mobs -= M
-	frozen_mobs.Cut()
-
-/datum/map_z_level/tether/wilderness/wild_1
-	z = Z_LEVEL_SURFACE_WILDERNESS_1
-
-/datum/map_z_level/tether/wilderness/wild_2
-	z = Z_LEVEL_SURFACE_WILDERNESS_2
-
-/datum/map_z_level/tether/wilderness/wild_3
-	z = Z_LEVEL_SURFACE_WILDERNESS_3
-
-/datum/map_z_level/tether/wilderness/wild_4
-	z = Z_LEVEL_SURFACE_WILDERNESS_4
-
-/datum/map_z_level/tether/wilderness/wild_5
-	z = Z_LEVEL_SURFACE_WILDERNESS_5
-
-/datum/map_z_level/tether/wilderness/wild_6
-	z = Z_LEVEL_SURFACE_WILDERNESS_6
-
-/datum/map_z_level/tether/wilderness/wild_crash
-	z = Z_LEVEL_SURFACE_WILDERNESS_CRASH
-
-/datum/map_z_level/tether/wilderness/wild_ruins
-	z = Z_LEVEL_SURFACE_WILDERNESS_RUINS
-*/
+/datum/map_z_level/rift/misc
+	z = Z_LEVEL_MISC
+	name = "Misc"
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT

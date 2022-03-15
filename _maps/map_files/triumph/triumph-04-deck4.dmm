@@ -793,10 +793,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
-"aFu" = (
-/obj/effect/shuttle_landmark/automatic/station_dockpoint1,
-/turf/space,
-/area/space)
 "aFw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/lino,
@@ -1492,8 +1488,6 @@
 	id_tag = "courser_docker";
 	pixel_x = 25
 	},
-/obj/effect/shuttle_landmark/triumph/deck4/courser,
-/obj/effect/overmap/visitable/ship/landable/courser,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "bim" = (
@@ -6266,13 +6260,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/chapel/main)
-"eCd" = (
-/obj/machinery/computer/shuttle_control/explore/excursion{
-	dir = 4;
-	req_one_access = null
-	},
-/turf/simulated/floor/tiled,
-/area/shuttle/excursion/cockpit)
 "eCD" = (
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
@@ -8678,13 +8665,6 @@
 	dir = 8
 	},
 /area/exploration/pilot_prep)
-"giI" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
-	},
-/obj/effect/overmap/visitable/ship/triumph,
-/turf/simulated/floor/tiled/dark,
-/area/bridge)
 "giY" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -14831,8 +14811,6 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "kvk" = (
-/obj/effect/shuttle_landmark/triumph/deck4/civvie,
-/obj/effect/overmap/visitable/ship/landable/civvie,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
@@ -22783,14 +22761,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
-"pTM" = (
-/obj/effect/overmap/visitable/ship/landable/excursion,
-/obj/effect/shuttle_landmark/triumph/deck4/excursion,
-/obj/structure/handrail{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/shuttle/excursion/general)
 "pUS" = (
 /turf/simulated/wall,
 /area/hallway/primary/aft)
@@ -24607,10 +24577,6 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "qTZ" = (
-/obj/machinery/computer/shuttle_control/explore/civvie{
-	dir = 8;
-	req_one_access = null
-	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
 "qUs" = (
@@ -25869,10 +25835,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
-"rIM" = (
-/obj/effect/shuttle_landmark/automatic/station_dockpoint2,
-/turf/space,
-/area/space)
 "rIS" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -27651,7 +27613,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/computer/shuttle_control/explore/courser,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "sPW" = (
@@ -29030,10 +28991,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
-"tUV" = (
-/obj/effect/shuttle_landmark/triumph/deck4/excursion_space,
-/turf/space,
-/area/space)
 "tUY" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall,
@@ -37313,7 +37270,7 @@ xsI
 tuX
 oik
 xhB
-eCd
+xOw
 sWo
 tuX
 xsI
@@ -39155,7 +39112,7 @@ cyS
 eLS
 nnI
 fUd
-pTM
+dOp
 kdF
 dOp
 pSB
@@ -39208,7 +39165,7 @@ nIK
 nIK
 nIK
 nIK
-tUV
+nIK
 nIK
 nIK
 nIK
@@ -47489,7 +47446,7 @@ nIK
 nIK
 nIK
 nIK
-aFu
+nIK
 nIK
 cgx
 nHU
@@ -49631,7 +49588,7 @@ oEc
 lAR
 crT
 nIK
-rIM
+nIK
 nIK
 nIK
 nIK
@@ -53650,7 +53607,7 @@ baP
 kWa
 lYt
 vmI
-giI
+ubE
 euH
 vlb
 pox

@@ -35,6 +35,18 @@
 /area/rift/surfaceeva
 	name = "\improper Primary Surface EVA"
 
+/area/rift/surfaceeva/aa/surface_north
+	name = "\improper Surface One - North Anti-Air Battery"
+
+/area/rift/surfaceeva/aa/surface_south
+	name = "\improper Surface One - South Anti-Air Battery"
+
+/area/rift/surfaceeva/aa/cliff_north
+	name = "\improper Surface Three - North Anti-Air Battery"
+
+/area/rift/surfaceeva/aa/cliff_south
+	name = "\improper Surface Three - South Anti-Air Battery"
+
 /area/rift/surfaceeva/cargodock
 	name = "\improper Cargo Dock"
 	icon_state = "quart"
