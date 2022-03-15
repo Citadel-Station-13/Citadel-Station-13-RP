@@ -16,6 +16,15 @@
 /mob/living/simple_mob/humanoid/merc/ranged/ionrifle,
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
+"aA" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
 "aE" = (
 /obj/machinery/power/solar_control,
 /obj/structure/cable/green{
@@ -71,6 +80,11 @@
 /obj/machinery/door/airlock/external/glass/bolted,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/fans/tiny,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "cI" = (
@@ -88,6 +102,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"dP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
 "en" = (
@@ -165,9 +183,22 @@
 	},
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
+"hD" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
 "hY" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
@@ -179,6 +210,14 @@
 /obj/machinery/autolathe,
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
+"iz" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
 "jq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
@@ -188,12 +227,26 @@
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "jB" = (
-/obj/machinery/power/port_gen/pacman,
+/obj/machinery/atmospherics/portables_connector,
 /turf/simulated/shuttle/floor/black/classp,
+/area/submap/HeadscientistHQ)
+"jF" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "jG" = (
 /obj/machinery/r_n_d/protolathe,
 /turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"kh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "kr" = (
 /obj/structure/sandbag,
@@ -255,6 +308,12 @@
 /obj/item/inducer/sci,
 /turf/simulated/floor/classp/outdoors,
 /area/template_noop)
+"ml" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
 "mX" = (
 /obj/machinery/cryopod{
 	dir = 2
@@ -310,6 +369,13 @@
 "pX" = (
 /turf/simulated/floor/classp/outdoors,
 /area/template_noop)
+"qB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
 "rm" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -342,6 +408,14 @@
 	},
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
+"sr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
 "sz" = (
 /obj/structure/fence/corner{
 	dir = 1
@@ -351,6 +425,12 @@
 "sV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"tC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
 "tD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -416,6 +496,13 @@
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
+"vn" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
 "ws" = (
 /obj/machinery/computer/ship/engines,
 /obj/effect/decal/cleanable/dirt,
@@ -445,19 +532,25 @@
 "yo" = (
 /turf/simulated/shuttle/floor/yellow/classp,
 /area/submap/HeadscientistHQ)
+"yt" = (
+/obj/machinery/door/airlock/glass_science,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
 "yP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "yR" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+/obj/structure/shuttle/engine/heater{
+	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
-/area/template_noop)
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
 "zD" = (
 /obj/effect/decal/cleanable/blood,
 /mob/living/simple_mob/humanoid/merc/ranged/space,
@@ -466,6 +559,9 @@
 "zG" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_mob/humanoid/merc/ranged/garand,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
 "zK" = (
@@ -507,6 +603,15 @@
 /obj/machinery/mech_recharger,
 /obj/machinery/power/terminal,
 /turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Bw" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "By" = (
 /obj/effect/decal/cleanable/dirt,
@@ -574,6 +679,10 @@
 /obj/random/trash,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
+"Fh" = (
+/obj/machinery/atmospherics/pipe/tank/phoron,
+/turf/simulated/shuttle/floor/black/classp,
+/area/submap/HeadscientistHQ)
 "Fi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/shuttle/floor/yellow/classp,
@@ -589,9 +698,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/HeadscientistHQ)
+"Fv" = (
+/obj/structure/anomaly_container,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
 "FA" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
 	},
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/submap/HeadscientistHQ)
@@ -626,6 +745,11 @@
 	},
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
+"Ga" = (
+/obj/machinery/door/airlock/glass_security,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
 "Gr" = (
 /obj/machinery/media/jukebox,
 /obj/machinery/light{
@@ -636,7 +760,20 @@
 "Gs" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_mob/humanoid/merc/ranged/space,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Gt" = (
+/obj/machinery/power/port_gen/pacman,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"GZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "Hb" = (
 /turf/simulated/mineral/cave/classp,
@@ -649,6 +786,15 @@
 "Hz" = (
 /obj/machinery/computer/rdconsole,
 /turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"IH" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
 /area/submap/HeadscientistHQ)
 "IL" = (
 /obj/structure/fence{
@@ -664,11 +810,20 @@
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "JO" = (
-/obj/machinery/power/smes/buildable/point_of_interest{
-	inputting = 1000
+/obj/machinery/power/terminal{
+	dir = 4
 	},
+/obj/structure/cable/green,
 /turf/simulated/shuttle/floor/black/classp,
 /area/submap/HeadscientistHQ)
+"JX" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
 "Ki" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -718,6 +873,9 @@
 /area/submap/HeadscientistHQ)
 "KK" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "Ln" = (
@@ -741,6 +899,15 @@
 /obj/effect/decal/mecha_wreckage/durand,
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
+"LF" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
 "LV" = (
 /obj/machinery/ion_engine{
 	dir = 8
@@ -751,9 +918,27 @@
 /mob/living/simple_mob/humanoid/merc/ranged,
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
+"Nb" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
 "ND" = (
 /obj/machinery/computer/shuttle_control,
 /turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"NX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"OL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "OR" = (
 /obj/structure/table/rack/shelf,
@@ -774,11 +959,24 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/shuttle/floor/yellow/classp,
 /area/submap/HeadscientistHQ)
+"PM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
 "Qz" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"QT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "Rn" = (
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
@@ -824,6 +1022,11 @@
 	},
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
+"Ui" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
 "Ux" = (
 /obj/machinery/computer/ship/sensors,
 /turf/simulated/shuttle/floor/yellow/classp,
@@ -841,17 +1044,24 @@
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
 "Vq" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
-/area/template_noop)
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
 "Vz" = (
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"VI" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "VJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -882,6 +1092,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"WE" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "WI" = (
 /obj/structure/table/steel_reinforced,
@@ -920,6 +1137,18 @@
 /area/template_noop)
 "YH" = (
 /turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"YW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Zc" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "Zh" = (
 /obj/machinery/deployable/barrier,
@@ -2073,7 +2302,7 @@ YH
 YH
 ix
 UV
-UV
+Gt
 YH
 IS
 fJ
@@ -2124,7 +2353,7 @@ YH
 Dm
 UV
 UV
-UV
+Gt
 YH
 IS
 WI
@@ -2531,19 +2760,19 @@ Yi
 YH
 Tv
 Xf
-Xf
-UV
-xT
-Bz
-Tj
+Vq
+dP
+yt
+Zc
+GZ
 Lo
 sV
 yP
-ve
-nd
-Tw
-cN
-cN
+QT
+Ui
+Ga
+YW
+qB
 Vz
 VJ
 YH
@@ -2586,11 +2815,11 @@ zG
 uz
 YH
 Bz
-Tj
+PM
 OX
 YH
 zZ
-Tj
+PM
 nd
 YH
 BD
@@ -2633,19 +2862,19 @@ Yi
 YH
 ZT
 Xf
-Xf
+NX
 Dj
 YH
 Bz
-Tj
+PM
 ve
 EO
 ve
-Tj
+PM
 nd
 YH
 pb
-Hl
+sr
 By
 Kp
 YH
@@ -2684,19 +2913,19 @@ Yi
 YH
 kL
 UV
-UV
+tC
 FT
 YH
-Bz
+hD
+PM
 Tj
 Tj
 Tj
-Tj
-Tj
+PM
 nd
 YH
 jt
-jt
+kh
 jt
 Bs
 YH
@@ -2735,19 +2964,19 @@ Yi
 YH
 Qz
 UV
-UV
+tC
 ap
 cp
 Ki
 hY
-Tj
-Tj
-Tj
+OL
+OL
+OL
 KK
 Dn
 YH
 sc
-jt
+kh
 jt
 Aj
 YH
@@ -2786,19 +3015,19 @@ Yi
 YH
 kW
 UV
-UV
+tC
 YH
 YH
 jB
-Bz
+WE
 Tj
 Tj
-Tj
-nd
+VI
+Bw
 JO
 YH
 YH
-jt
+kh
 jt
 un
 YH
@@ -2837,19 +3066,19 @@ Yi
 YH
 kI
 kI
-kI
+Fv
 YH
 YH
-jB
-Bz
+Fh
+LF
 Tj
 UP
-Tj
+jF
 nd
 AW
 YH
 YH
-Xa
+vn
 jt
 un
 YH
@@ -2888,7 +3117,7 @@ Yi
 YH
 YH
 YH
-YH
+ml
 YH
 YH
 YH
@@ -2900,7 +3129,7 @@ FK
 YH
 YH
 YH
-YH
+ml
 YH
 YH
 YH
@@ -2938,22 +3167,22 @@ Yi
 Yi
 YH
 FA
-FA
-FA
+yR
+Nb
 YH
 Cg
 Yi
 Yi
 Yi
 Yi
+JX
 Yi
-Vq
 Yi
 Yi
 YH
-FA
-FA
-FA
+aA
+yR
+IH
 YH
 Yi
 Yi
@@ -2997,8 +3226,8 @@ Yi
 Yi
 Yi
 Yi
+JX
 Yi
-Vq
 Yi
 Yi
 Yi
@@ -3048,8 +3277,8 @@ Yi
 Yi
 Yi
 Yi
+JX
 Yi
-Vq
 Yi
 Yi
 Yi
@@ -3099,8 +3328,8 @@ Yi
 Yi
 Rn
 Yi
+JX
 Yi
-Vq
 Yi
 Yi
 Yi
@@ -3150,8 +3379,8 @@ Rn
 Yi
 Yi
 Yi
+JX
 Yi
-Vq
 Yi
 ay
 Yi
@@ -3201,8 +3430,8 @@ Yi
 Yi
 Yi
 zD
+JX
 Yi
-Vq
 Yi
 Yi
 Yi
@@ -3252,8 +3481,8 @@ Yi
 Yi
 Yi
 Yi
+JX
 Yi
-Vq
 WP
 WP
 WP
@@ -3303,8 +3532,8 @@ Yi
 Yi
 Yi
 Yi
+JX
 Yi
-Vq
 WP
 WP
 WP
@@ -3354,8 +3583,8 @@ FW
 FW
 FW
 FW
-FW
-yR
+iz
+Yi
 WP
 WP
 WP

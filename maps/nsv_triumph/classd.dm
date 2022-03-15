@@ -1,25 +1,21 @@
-///Currently a copy is in /map/tether as tether_class_d_weather_holder. Annoyingly has to be there to be loaded properly, will see if I can find a better way of doing this later
+var/datum/planet/classd/planet_classd = null
 
-/*var/datum/planet/class_d/planet_class_d = null
-
-/datum/time/class_d
+/datum/time/classd
 	seconds_in_day = 1 HOURS
 
-/datum/planet/class_d
-	name = "Virgo - 5"
-	desc = "A rocky moon which has recently had its quarantine lifted following a campaign of nuclear bombings and mercinary \
-	forces fighting to whipe out a large xenomorph infestation."
-	current_time = new /datum/time/class_d()
-	expected_z_levels = Z_LEVEL_CLASS_D
-	planetary_wall_type = /turf/unsimulated/wall/planetary/class_d
+/datum/planet/classd
+	name = "Class D Moon"
+	desc = "A rocky moon which has recently had its quarantine lifted following a campaign of nuclear bombings and mercenary \
+	forces deploying to eradicate a large xenomorph infestation."
+	current_time = new /datum/time/classd()
+	expected_z_levels = list(12)
 
-
-/datum/planet/class_d/New()
+/datum/planet/classd/New()
 	..()
-	planet_class_d = src
-	weather_holder = new /datum/weather_holder/class_d(src)
+	planet_classd = src
+	weather_holder = new /datum/weather_holder/classd(src)
 
-/datum/planet/class_d/update_sun()
+/datum/planet/classd/update_sun()
 	..()
 	var/datum/time/time = current_time
 	var/length_of_day = time.seconds_in_day / 10 / 60 / 60
@@ -100,23 +96,23 @@
 
 
 
-/datum/weather_holder/class_d
+/datum/weather_holder/classd
 	temperature = T0C
 	allowed_weather_types = list(
-		WEATHER_CLEAR		= new /datum/weather/class_d/clear(),
-		WEATHER_FALLOUT		= new /datum/weather/class_d/fallout()
+		WEATHER_CLEAR		= new /datum/weather/classd/clear(),
+		WEATHER_FALLOUT		= new /datum/weather/classd/fallout()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 95,
 		WEATHER_FALLOUT		= 5
 		)
 
-/datum/weather/class_d
-	name = "class_d base"
+/datum/weather/classd
+	name = "classd base"
 	temp_high	= 203
 	temp_low 	= 203
 
-/datum/weather/class_d/clear
+/datum/weather/classd/clear
 	name = "clear"
 	transition_chances = list(
 		WEATHER_CLEAR	 = 85,
@@ -129,7 +125,7 @@
 	sky_visible = TRUE
 	observed_message = "The stars are visible overhead."
 
-/datum/weather/class_d/fallout
+/datum/weather/classd/fallout
 	name = "fallout"
 	icon_state = "fallout"
 	light_modifier = 0.7
@@ -154,7 +150,7 @@
 	var/fallout_rad_low = RAD_LEVEL_HIGH
 	var/fallout_rad_high = RAD_LEVEL_VERY_HIGH
 
-/datum/weather/class_d/fallout/process_effects()
+/datum/weather/classd/fallout/process_effects()
 	..()
 	for(var/thing in living_mob_list)
 		var/mob/living/L = thing
@@ -168,7 +164,7 @@
 
 // This makes random tiles near people radioactive for awhile.
 // Tiles far away from people are left alone, for performance.
-/datum/weather/class_d/fallout/proc/irradiate_nearby_turf(mob/living/L)
+/datum/weather/classd/fallout/proc/irradiate_nearby_turf(mob/living/L)
 	if(!istype(L))
 		return
 	var/list/turfs = RANGE_TURFS(world.view, L)
@@ -177,5 +173,3 @@
 		return
 	if(T.outdoors)
 		SSradiation.radiate(T, rand(fallout_rad_low, fallout_rad_high))
-
-*/

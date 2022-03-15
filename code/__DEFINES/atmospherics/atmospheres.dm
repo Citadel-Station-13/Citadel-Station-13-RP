@@ -25,4 +25,4 @@
 #define ATMOSPHERE_ID_LAVALAND			/datum/atmosphere/planet/lavaland
 
 /// Class D planetary atmosphere ID
-#define ATMOSPHERE_ID_CLASSD			/datum/atmosphere/planet/class_d
+#define ATMOSPHERE_ID_CLASSD			/datum/atmosphere/planet/classd

@@ -180,6 +180,7 @@
 	lateload_single_pick = null //Nothing right now.
 
 	planet_datums_to_make = list(/datum/planet/lavaland,
+								/datum/planet/classd,
 								/datum/planet/classh,
 								/datum/planet/classp,
 								/datum/planet/gaia_planet)

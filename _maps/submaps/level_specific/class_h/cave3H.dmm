@@ -4,28 +4,28 @@
 /area/template_noop)
 "c" = (
 /turf/simulated/mineral/vacuum,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "n" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /turf/simulated/mineral/floor/classh,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "p" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/ammo_all,
 /obj/random/ammo_all,
 /obj/random/ammo_all,
 /turf/simulated/mineral/floor/classh,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "q" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/medical/pillbottle,
 /obj/random/medical/pillbottle,
 /obj/random/medical/pillbottle,
 /turf/simulated/mineral/floor/classh,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "r" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/cash,
@@ -34,17 +34,17 @@
 /obj/random/cash,
 /obj/random/cash,
 /turf/simulated/mineral/floor/classh,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "t" = (
 /turf/simulated/mineral/classh,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "z" = (
 /obj/random/humanoidremains,
 /turf/simulated/mineral/floor/classh,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "T" = (
 /turf/simulated/mineral/floor/classh,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 
 (1,1,1) = {"
 a

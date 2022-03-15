@@ -225,54 +225,91 @@
 	icon_state = "yellow"
 
 // Class D world areas
-/* Moved to Class D's .dm file and edited. Remove before merging
-/area/poi_d/POIs/ship
-	name = "Crashed Ship Fragment"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+/area/class_d
+	name = "Class D World"
+	icon_state = "away"
+	base_turf = /turf/simulated/mineral/floor/classd
+	dynamic_lighting = 1
 
-/area/poi_d/explored
+/area/class_d/explored
 	name = "Class D World - Explored (E)"
 	icon_state = "explored"
 
-/area/poi_d/unexplored
+/area/class_d/unexplored
 	name = "Class D World - Unexplored (UE)"
 	icon_state = "unexplored"
 
-/area/poi_d
-	name = "Class D World"
-	icon_state = "away"
-	base_turf = /turf/simulated/mineral/floor/vacuum
-	dynamic_lighting = 1
+/area/class_d/unexplored/underground // Caves would be protected from weather. Still valid for POI generation do to being a dependent of /area/poi_d/unexplored
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
-/area/poi_d/plains
+/area/class_d/explored/underground
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
+
+/area/class_d/wildcat_mining_base
+	name = "Abandoned Facility"
+	icon_state = "blue"
+	requires_power = TRUE
+
+/area/class_d/wildcat_mining_base/exterior_power
+	name = "Exterior Power"
+
+/area/class_d/wildcat_mining_base/refueling_outbuilding
+	name = "Refueling Outbuilding"
+
+/area/class_d/wildcat_mining_base/warehouse
+	name = "Warehouse"
+
+/area/class_d/wildcat_mining_base/exterior_workshop
+	name = "Exterior Workshop"
+
+/area/class_d/wildcat_mining_base/interior
+	base_turf = /turf/simulated/floor/classd/indoors
+
+/area/class_d/wildcat_mining_base/interior/main_room
+	name = "Main Room"
+
+/area/class_d/wildcat_mining_base/interior/utility_room
+	name = "Utility Room"
+
+/area/class_d/wildcat_mining_base/interior/bunk_room
+	name = "Bunk Room"
+
+/area/class_d/wildcat_mining_base/interior/bathroom
+	name = "Bathroom"
+
+/area/class_d/POIs/ship
+	name = "Crashed Ship Fragment"
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
+
+/area/class_d/plains
 	name = "Class D World Plains"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+	base_turf = /turf/simulated/mineral/floor/classd
 
-/area/poi_d/crater
+/area/class_d/crater
 	name = "Class D World Crater"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+	base_turf = /turf/simulated/mineral/floor/classd
 
-/area/poi_d/Mountain
+/area/class_d/Mountain
 	name = "Class D World Mountain"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
-/area/poi_d/Crevices
+/area/class_d/Crevices
 	name = "Class D World Crevices"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
-/area/poi_d/POIs/solar_farm
+/area/class_d/POIs/solar_farm
 	name = "Prefab Solar Farm"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+	base_turf = /turf/simulated/mineral/floor/classd
 
-/area/poi_d/POIs/landing_pad
+/area/class_d/POIs/landing_pad
 	name = "Prefab Homestead"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+	base_turf = /turf/simulated/mineral/floor/classd
 	requires_power = FALSE
 
-/area/poi_d/POIs/reactor
+/area/class_d/POIs/reactor
 	name = "Prefab Reactor"
-	base_turf = /turf/simulated/mineral/floor/vacuum
-*/
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
+
 
 // Desert Planet world areas
 /area/class_h
@@ -280,6 +317,7 @@
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 	requires_power = 0
 	dynamic_lighting = 1
+	icon_state = "away"
 
 /area/class_h/POIs/WW_Town
 	name = "Ghost Town"
@@ -303,6 +341,34 @@
 
 /area/class_h/POIs/goldmine
 	name = "Desert Goldmine"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/ranch
+	name = "Abandoned Ranch"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/saloon
+	name = "Saloon"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/temple
+	name = "Old Temple"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/tomb
+	name = "Old Tomb"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/AuxiliaryResearchFacility
+	name = "Research Facility"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/vault
+	name = "Desert Bunker"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/covert_post
+	name = "Clown Listening Post"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/explored

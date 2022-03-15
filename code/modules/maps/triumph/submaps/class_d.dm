@@ -113,4 +113,3 @@
 	name = "Possessed Mech Cave"
 	suffix = "Possesed_mech_cave.dmm"
 	cost = 5
-
