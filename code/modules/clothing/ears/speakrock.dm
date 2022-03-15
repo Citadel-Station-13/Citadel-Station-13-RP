@@ -41,3 +41,4 @@
     icon_state = "auraphones_off"
     desc = "A hand-made series of headphones. Featuring a unique, bowman-inspired design, each is made with the individual in mind."
     adhoc_fallback = TRUE
+    
