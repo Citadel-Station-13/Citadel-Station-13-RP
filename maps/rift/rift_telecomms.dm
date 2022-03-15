@@ -8,20 +8,41 @@
 	listening_level = Z_LEVEL_UNDERGROUND
 	autolinkers = list("rus_relay")
 
+/obj/machinery/telecomms/relay/preset/centcom/rift/under_shallow
+	listening_level = Z_LEVEL_UNDERGROUND
+
 /obj/machinery/telecomms/relay/preset/rift/under_deep
 	id = "Underground Relay 2"
 	listening_level = Z_LEVEL_UNDERGROUND_DEEP
 	autolinkers = list("rud_relay")
+
+/obj/machinery/telecomms/relay/preset/centcom/rift/under_deep
+	listening_level = Z_LEVEL_UNDERGROUND_DEEP
 
 /obj/machinery/telecomms/relay/preset/rift/base_low
 	id = "Base Relay 1"
 	listening_level = Z_LEVEL_SURFACE_LOW
 	autolinkers = list("rbl_relay")
 
+/obj/machinery/telecomms/relay/preset/centcom/rift/base_low
+	listening_level = Z_LEVEL_SURFACE_LOW
+
 /obj/machinery/telecomms/relay/preset/rift/base_mid
 	id = "Base Relay 2"
 	listening_level = Z_LEVEL_SURFACE_MID
 	autolinkers = list("rbm_relay")
+
+/obj/machinery/telecomms/relay/preset/centcom/rift/base_mid
+	listening_level = Z_LEVEL_SURFACE_MID
+
+/obj/machinery/telecomms/relay/preset/rift/base_high
+	id = "Base Relay 3"
+	listening_level = Z_LEVEL_SURFACE_HIGH
+	autolinkers = list("rbh_relay")
+
+/obj/machinery/telecomms/relay/preset/centcom/rift/base_high
+	listening_level = Z_LEVEL_SURFACE_HIGH
+
 /*
 /obj/machinery/telecomms/relay/preset/tether/sci_outpost
 	id = "Science Outpost Relay"
@@ -38,14 +59,18 @@
 	id = "Hub"
 	network = "tcommsat"
 	autolinkers = list("hub",
-		"rbl_relay", "rbm_relay",
+		"rus_relay", "rud_relay", "rbl_relay", "rbm_relay", "rbh_relay",
 		"c_relay", "m_relay", "r_relay", "sci_o_relay", "ud_relay",
 		"science", "medical", "supply", "service", "common", "command", "engineering", "security", "explorer", "unused",
 		"hb_relay", "receiverA", "broadcasterA"
 	)
 
 /obj/machinery/telecomms/receiver/preset_right/rift
+//	id = "triumph_rx"
 	freq_listening = list(AI_FREQ, SCI_FREQ, MED_FREQ, SUP_FREQ, SRV_FREQ, COMM_FREQ, ENG_FREQ, SEC_FREQ, ENT_FREQ, EXP_FREQ)
+
+/obj/machinery/telecomms/broadcaster/preset_right/rift
+//	id = "triumph_tx"
 
 /obj/machinery/telecomms/bus/preset_two/rift
 	freq_listening = list(SUP_FREQ, SRV_FREQ, EXP_FREQ)
@@ -104,10 +129,10 @@
 		num2text(EXP_FREQ) = list(access_explorer)
 	)
 
-/obj/item/device/multitool/rift_buffered
+/obj/item/multitool/rift_buffered
 	name = "pre-linked multitool (rift hub)"
-	desc = "This multitool has already been linked to the Atlas telecomms hub and can be used to link multiple machines to the hub, including relays." //cit edit - it's not one use
+	desc = "This multitool has already been linked to the Atlas telecomms hub and can be used to configure one (1) relay."
 
-/obj/item/multitool/tether_buffered/Initialize()
+/obj/item/multitool/rift_buffered/Initialize()
 	. = ..()
 	buffer = locate(/obj/machinery/telecomms/hub/preset/rift)

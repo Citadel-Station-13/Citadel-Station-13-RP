@@ -75,8 +75,8 @@
 		Z_LEVEL_SURFACE_HIGH))
 
 	station_name  = "NSB Atlas"
-	station_short = "Raytheon"
-	dock_name     = "NSC Raytheon Orbital Relay"
+	station_short = "Atlas"
+	dock_name     = "NSS Raytheon Orbital Relay"
 	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
@@ -84,10 +84,10 @@
 	company_short = "NT"
 	starsys_name  = "Lythios-43"
 
-	shuttle_docked_message = "The scheduled NSV Herra spaceplane flight to the %dock_name% has arrived. It will depart in approximately %ETD%."
-	shuttle_leaving_dock = "The NSV Herra has left the station. Estimate %ETA% until the spaceplane arrives at the %dock_name%."
-	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The NSV Herra will be arriving shortly. Those departing should proceed to departures within %ETA%."
-	shuttle_name = "Automated Spaceplane"
+	shuttle_docked_message = "The scheduled NSV Herrera shuttle flight to the %dock_name% has arrived. It will depart in approximately %ETD%."
+	shuttle_leaving_dock = "The NSV Herrera has left the station. Estimate %ETA% until the shuttle arrives at the %dock_name%."
+	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The NSV Herrera will be arriving shortly. Those departing should proceed to departures within %ETA%."
+	shuttle_name = "NSV Herrera"
 	shuttle_recall_message = "The scheduled crew transfer flight has been cancelled."
 	emergency_shuttle_docked_message = "The evacuation flight has landed at the landing pad. You have approximately %ETD% to board the vessel."
 	emergency_shuttle_leaving_dock = "The emergency flight has left the station. Estimate %ETA% until the vessel arrives at %dock_name%."
@@ -162,7 +162,7 @@
 								 Z_LEVEL_ROGUEMINE_4)
 */
 	lateload_z_levels = list(
-		//list("Lythios - Misc","Lythios - Ships",), // Stock Triumph lateload maps
+		list("Rift - Misc","Rift - Ships",), // Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
 		list("Away Mission - Mining Planet"),//Mining planet

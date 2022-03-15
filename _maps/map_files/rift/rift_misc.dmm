@@ -1944,6 +1944,9 @@
 "Fb" = (
 /turf/unsimulated/map/edge,
 /area/overmap)
+"FQ" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/shuttle/supply)
 "Gx" = (
 /obj/item/chess/wrook,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -8675,6 +8678,7 @@ Fb
 ap
 aq
 ap
+FQ
 uc
 uc
 uc
@@ -8682,8 +8686,7 @@ uc
 uc
 uc
 uc
-uc
-uc
+FQ
 ap
 aq
 ap
@@ -8816,8 +8819,8 @@ Fb
 (48,1,1) = {"
 ap
 aq
-uc
-uc
+FQ
+FQ
 ug
 ug
 ug
@@ -8825,8 +8828,8 @@ ug
 ug
 ug
 ug
-uc
-uc
+FQ
+FQ
 aq
 ap
 ap
@@ -9384,8 +9387,8 @@ Fb
 (52,1,1) = {"
 ap
 aq
-uc
-uc
+FQ
+FQ
 ug
 ug
 tf
@@ -9393,8 +9396,8 @@ ug
 ug
 ug
 ug
-uc
-uc
+FQ
+FQ
 aq
 ap
 ap
@@ -9527,7 +9530,7 @@ Fb
 ap
 aq
 ap
-uc
+FQ
 uc
 uc
 uc
@@ -9535,7 +9538,7 @@ NJ
 NJ
 uc
 uc
-uc
+FQ
 ap
 aq
 ap

@@ -16151,11 +16151,7 @@
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
 "Fh" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "escape_shuttle_hatch_station";
-	locked = 1;
+/obj/machinery/door/airlock/glass_external/public{
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -16239,11 +16235,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "escape_shuttle_hatch_station";
-	locked = 1;
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external/public{
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -16251,18 +16244,6 @@
 "GH" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/terminal)
-"GJ" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/status_display{
-	pixel_y = 32
-	},
-/obj/structure/bed/chair/shuttle{
-	material = /datum/material/plastic
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/shuttle/escape)
 "GR" = (
 /obj/machinery/computer/station_alert/all,
 /obj/structure/table/reinforced,
@@ -16418,11 +16399,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "escape_shuttle_hatch_station";
-	locked = 1;
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external/public{
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -16432,6 +16410,22 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/escape)
+"Jx" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "emergency_medical"
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "JB" = (
 /obj/effect/floor_decal/borderfloor{
@@ -16480,6 +16474,16 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/escape)
+"Kp" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "escape_shuttle_hatch_station";
+	locked = 1;
+	name = "Shuttle Hatch"
+	},
+/turf/space,
+/area/space)
 "Kq" = (
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = -26
@@ -16671,6 +16675,22 @@
 /obj/item/radio,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
+"NM" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/door/blast/regular/open{
+	id = "emergency_shuttle_lockdown";
+	name = "Emergency Shuttle Blast Door"
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "emergency_security"
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/escape)
 "NY" = (
 /obj/structure/railing{
 	dir = 4
@@ -16768,8 +16788,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/terminal)
 "Pw" = (
-/obj/machinery/door/airlock/glass_medical/polarized{
-	id_tint = "emergency_medical";
+/obj/machinery/door/airlock/medical{
 	name = "Shuttle Medical"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -16924,6 +16943,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"Sc" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Shuttle Hatch"
+	},
+/turf/space,
+/area/space)
 "Sf" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/borderfloor{
@@ -16987,9 +17012,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Ta" = (
-/obj/machinery/door/airlock/glass_command/polarized{
-	id_tag = null;
-	id_tint = "emergency_cockpit";
+/obj/machinery/door/airlock/command{
 	name = "Cockpit"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -17031,18 +17054,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
-"TS" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/status_display{
-	pixel_y = 32
-	},
-/obj/structure/bed/chair/shuttle{
-	material = /datum/material/plastic
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/shuttle/escape)
 "TZ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -17128,8 +17139,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "UX" = (
-/obj/machinery/door/airlock/glass_security/polarized{
-	id_tint = "emergency_security";
+/obj/machinery/door/airlock/security{
 	name = "Shuttle Security"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -20435,8 +20445,8 @@ Ud
 Gy
 Th
 RV
-rF
-rF
+NM
+NM
 RV
 YS
 rD
@@ -20993,8 +21003,8 @@ rD
 MR
 MR
 SF
-QL
-TS
+tA
+Xm
 To
 Xm
 UU
@@ -21018,13 +21028,13 @@ rD
 rD
 rs
 hP
+Kp
 hP
 hP
 hP
 hP
 hP
-hP
-hP
+Sc
 hP
 hP
 hP
@@ -21160,13 +21170,13 @@ rD
 rD
 rE
 hP
+Kp
 hP
 hP
 hP
 hP
 hP
-hP
-hP
+Sc
 hP
 hP
 hP
@@ -21448,13 +21458,13 @@ hP
 hP
 hP
 hP
+Kp
 hP
 hP
 hP
 hP
 hP
-hP
-hP
+Sc
 hP
 hP
 hP
@@ -21728,13 +21738,13 @@ rD
 rD
 rs
 hP
+Kp
 hP
 hP
 hP
 hP
 hP
-hP
-hP
+Sc
 hP
 hP
 hP
@@ -21845,8 +21855,8 @@ rD
 MR
 MR
 Et
-QL
-GJ
+tA
+fP
 To
 fP
 UU
@@ -21870,13 +21880,13 @@ rD
 rD
 rs
 hP
+Kp
 hP
 hP
 hP
 hP
 hP
-hP
-hP
+Sc
 hP
 hP
 hP
@@ -22423,8 +22433,8 @@ Ud
 QA
 Yw
 Fl
-Gg
-Gg
+Jx
+Jx
 Fl
 RK
 rD

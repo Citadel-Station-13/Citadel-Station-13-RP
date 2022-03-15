@@ -10,16 +10,16 @@
 	#include "rift_telecomms.dm"
 	#include "rift_lythios-43c.dm"
 
+	#define USING_MAP_DATUM /datum/map/rift
+
+	#include "submaps/_rift_submaps.dm"
+
 	#include "../../_maps/map_files/rift/rift-01-underground2.dmm"
 	#include "../../_maps/map_files/rift/rift-02-underground1.dmm"
 	#include "../../_maps/map_files/rift/rift-03-surface1.dmm"
 	#include "../../_maps/map_files/rift/rift-04-surface2.dmm"
 	#include "../../_maps/map_files/rift/rift-05-surface3.dmm"
 	#include "../../_maps/map_files/rift/rift-06-orbital.dmm"
-	#include "../../_maps/map_files/rift/rift_misc.dmm"
-	#include "../../_maps/map_files/rift/rift_ships.dmm"
-
-	#define USING_MAP_DATUM /datum/map/rift
 
 #elif !defined(MAP_OVERRIDE)
 

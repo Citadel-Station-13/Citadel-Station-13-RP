@@ -12,6 +12,10 @@
 /area/crew_quarters/panic_shelter
 	name = "\improper Panic Shelter"
 
+/area/bridge/bunker
+	name = "\improper Command Bunker"
+	icon_state = "bridge"
+
 /area/crew_quarters/maint_dorm
 	name = "\improper Maintenance - Unknown"
 
