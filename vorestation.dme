@@ -3664,6 +3664,7 @@
 #include "maps\Generic\step_triggers.dm"
 #include "maps\Generic\telecomms.dm"
 #include "maps\Generic\turbolifts.dm"
+#include "maps\nsv_triumph\triumph.dm"
 #include "maps\overmap\shuttles\ninja.dm"
 #include "maps\overmap\shuttles\pirateskiff.dm"
 #include "maps\overmap\shuttles\skipjack.dm"
