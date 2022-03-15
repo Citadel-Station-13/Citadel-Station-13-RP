@@ -1,0 +1,6 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds more coins.
+tweak: Updates the Mint."
+  - rscadd: "Adds a coin bank machine."
