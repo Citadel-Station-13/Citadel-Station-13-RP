@@ -77,6 +77,11 @@
 	rolled_down = -1
 	rolled_sleeves = -1
 
+/obj/item/clothing/under/rank/engineer/turtleneck_fem
+	name = "engineering turtleneck"
+	desc = "It's a stylish turtleneck with minor radiation shielding. Nobody's going to see it behind the voidsuit, thought."
+	icon_state = "turtle_eng_fem"
+
 /obj/item/clothing/under/rank/roboticist
 	desc = "It's a slimming black jumpsuit with reinforced seams; great for industrial work."
 	name = "roboticist's jumpsuit"
