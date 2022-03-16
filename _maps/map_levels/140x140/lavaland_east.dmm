@@ -80,7 +80,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "aW" = (
-/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/mob/living/simple_mob/mechanical/cyber_horror/surt{
+	name = "Julia Harding";
+	desc = "What was once a woman, now twisted and warped by machine. A heavy layer of volcanic ash clings to what little organic portions remain. You can spot a decaying ID on it: 'Julia Hardi..'"
+	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ba" = (
@@ -803,9 +806,19 @@
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"oU" = (
+/mob/living/simple_mob/mechanical/cyber_horror/surt{
+	name = "Julia Harding";
+	desc = "What was once a woman, now twisted and warped by machine. A heavy layer of volcanic ash clings to what little organic portions remain. You can spot a decaying ID on it: 'Julia Hardi..'"
+	},
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/colony)
 "oY" = (
 /obj/effect/decal/cleanable/blood,
-/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/mob/living/simple_mob/mechanical/cyber_horror/surt{
+	name = "Julia Harding";
+	desc = "What was once a woman, now twisted and warped by machine. A heavy layer of volcanic ash clings to what little organic portions remain. You can spot a decaying ID on it: 'Julia Hardi..'"
+	},
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "pj" = (
@@ -946,7 +959,10 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "sx" = (
-/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/mob/living/simple_mob/mechanical/cyber_horror/surt{
+	name = "Julia Harding";
+	desc = "What was once a woman, now twisted and warped by machine. A heavy layer of volcanic ash clings to what little organic portions remain. You can spot a decaying ID on it: 'Julia Hardi..'"
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
@@ -1101,7 +1117,10 @@
 /area/lavaland/east/colony)
 "vk" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/mob/living/simple_mob/mechanical/cyber_horror/surt{
+	name = "Julia Harding";
+	desc = "What was once a woman, now twisted and warped by machine. A heavy layer of volcanic ash clings to what little organic portions remain. You can spot a decaying ID on it: 'Julia Hardi..'"
+	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "vs" = (
@@ -1425,7 +1444,10 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "AN" = (
-/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/mob/living/simple_mob/mechanical/cyber_horror/surt{
+	name = "Julia Harding";
+	desc = "What was once a woman, now twisted and warped by machine. A heavy layer of volcanic ash clings to what little organic portions remain. You can spot a decaying ID on it: 'Julia Hardi..'"
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
 	},
@@ -1672,7 +1694,10 @@
 	},
 /obj/effect/gibspawner/generic,
 /obj/item/melee/nanite_knife,
-/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/mob/living/simple_mob/mechanical/cyber_horror/surt{
+	name = "Julia Harding";
+	desc = "What was once a woman, now twisted and warped by machine. A heavy layer of volcanic ash clings to what little organic portions remain. You can spot a decaying ID on it: 'Julia Hardi..'"
+	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "FJ" = (
@@ -14610,7 +14635,7 @@ rS
 rS
 rS
 rS
-rS
+oU
 rS
 rS
 rS
