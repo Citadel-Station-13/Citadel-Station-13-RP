@@ -72,8 +72,9 @@ var/list/mob_hat_cache = list()
 	..()
 
 /mob/living/silicon/robot/drone/ghost()
-	if(..())
-		shut_down()
+	. = ..()
+	if (!ckey)
+		death()
 
 /mob/living/silicon/robot/drone/is_sentient()
 	return FALSE
