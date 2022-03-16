@@ -14,7 +14,7 @@
 
 /obj/item/clothing/suit/storage/toggle/AltClick()	// This only works for things that can be toggled, of course.
 	..()
-	toggle()
+	ToggleButtons()
 
 /obj/item/clothing/suit/storage/attack_hand(mob/user as mob)
 	if (pockets.handle_attack_hand(user))
@@ -37,27 +37,26 @@
 /obj/item/clothing/suit/storage/toggle
 	flags_inv = HIDEHOLSTER
 	var/open = 0	//0 is closed, 1 is open, -1 means it won't be able to toggle
-	verb/toggle()
-		set name = "Toggle Coat Buttons"
-		set category = "Object"
-		set src in usr
-		if(!usr.canmove || usr.stat || usr.restrained())
-			return 0
+	action_button_name = "Toggle Coat Buttons"
 
-		if(open == 1) //Will check whether icon state is currently set to the "open" or "closed" state and switch it around with a message to the user
-			open = 0
-			icon_state = initial(icon_state)
-			flags_inv = HIDETIE|HIDEHOLSTER
-			to_chat(usr, "You button up the coat.")
-		else if(open == 0)
-			open = 1
-			icon_state = "[icon_state]_open"
-			flags_inv = HIDEHOLSTER
-			to_chat(usr, "You unbutton the coat.")
-		else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
-			to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
-			return
-		update_clothing_icon()	//so our overlays update
+/obj/item/clothing/suit/storage/toggle/ui_action_click()
+	ToggleButtons()
+
+/obj/item/clothing/suit/storage/toggle/proc/ToggleButtons()
+	if(open == 1) //Will check whether icon state is currently set to the "open" or "closed" state and switch it around with a message to the user
+		open = 0
+		icon_state = initial(icon_state)
+		flags_inv = HIDETIE|HIDEHOLSTER
+		to_chat(usr, "You button up the coat.")
+	else if(open == 0)
+		open = 1
+		icon_state = "[icon_state]_open"
+		flags_inv = HIDEHOLSTER
+		to_chat(usr, "You unbutton the coat.")
+	else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
+		to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
+		return
+	update_clothing_icon()	//so our overlays update
 
 
 /obj/item/clothing/suit/storage/hooded/toggle

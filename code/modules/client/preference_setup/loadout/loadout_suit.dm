@@ -421,3 +421,7 @@ datum/gear/suit/duster
 /datum/gear/suit/jacket_darkfur
 	name = "Vexatious Coat w/ Dark Fur Lining"
 	path = /obj/item/clothing/suit/darkfur
+
+/datum/gear/suit/vainglorious
+	name = "Vainglorious Hoodie"
+	path = /obj/item/clothing/suit/storage/hooded/vainglorious

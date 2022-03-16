@@ -194,3 +194,10 @@
 	armor = list("melee" = 70, "bullet" = 20, "laser" = 35, "energy" = 25, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
+
+//Vainglorious
+
+/obj/item/clothing/head/hood/vainglorious
+	name = "Vainglorious hood"
+	desc = "A hood attached to a Vainglorious hoodie."
+	icon_state = "vainglorious"
