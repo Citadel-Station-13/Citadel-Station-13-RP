@@ -161,63 +161,6 @@
 	icon_state = "shuttle2"
 	base_turf = /turf/simulated/floor/outdoors/dirt
 
-// Frozen planet world areas
-/area/class_p
-	name = "Class P World"
-	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/dirt
-	requires_power = 1
-	dynamic_lighting = 1
-
-/area/class_p/facility
-	name = "Facility"
-	icon_state = "red"
-
-/area/class_p/ruins
-	name = "Ruins"
-	icon_state = "green"
-
-/area/class_p/explored
-	name = "Class P World - Explored (E)"
-	icon_state = "yellow"
-
-/area/class_p/unexplored
-	name = "Class P World - Unexplored (UE)"
-	icon_state = "red"
-
-//Gaia planet world areas
-/area/gaia_planet
-	name = "Gaia Planet"
-	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/dirt
-	requires_power = 1
-	dynamic_lighting = 1
-
-/area/gaia_planet/inside
-	name = "Gaia Planet - Inside (E)"
-	icon_state = "red"
-
-/area/gaia_planet/outside
-	name = "Gaia Planet - Outside (UE)"
-	icon_state = "yellow"
-
-// Mining Planet world areas
-/area/mining_planet
-	name = "Mining Planet"
-	icon_state = "away"
-	base_turf = /turf/simulated/mineral/floor/
-	requires_power = 1
-	dynamic_lighting = 1
-
-/area/mining_planet/explored
-	name = "Mining Planet - Explored (E)"
-	icon_state = "red"
-	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
-
-/area/mining_planet/unexplored
-	name = "Mining Planet - Unexplored (UE)"
-	icon_state = "yellow"
-
 // Class D world areas
 /area/class_d
 	name = "Class D World"
@@ -277,19 +220,19 @@
 	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
 /area/class_d/plains
-	name = "Class D World Plains"
+	name = "Plains"
 	base_turf = /turf/simulated/mineral/floor/classd
 
 /area/class_d/crater
-	name = "Class D World Crater"
+	name = "Crater"
 	base_turf = /turf/simulated/mineral/floor/classd
 
 /area/class_d/Mountain
-	name = "Class D World Mountain"
+	name = "Mountain"
 	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
 /area/class_d/Crevices
-	name = "Class D World Crevices"
+	name = "Crevices"
 	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
 /area/class_d/POIs/solar_farm
@@ -305,6 +248,22 @@
 	name = "Prefab Reactor"
 	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
+// Class G world areas
+/area/class_g
+	name = "Class G World"
+	icon_state = "away"
+	base_turf = /turf/simulated/mineral/floor/
+	requires_power = 1
+	dynamic_lighting = 1
+
+/area/class_g/explored
+	name = "Class G World - Explored (E)"
+	icon_state = "red"
+	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+
+/area/class_g/unexplored
+	name = "Class G World - Unexplored (UE)"
+	icon_state = "yellow"
 
 // Desert Planet world areas
 /area/class_h
@@ -373,6 +332,46 @@
 /area/class_h/unexplored
 	name = "Class H World - Unexplored (UE)"
 	icon_state = "unexplored"
+
+//Gaia planet world areas
+/area/class_m
+	name = "Class M World"
+	icon_state = "away"
+	base_turf = /turf/simulated/floor/outdoors/dirt
+	requires_power = 1
+	dynamic_lighting = 1
+
+/area/class_m/inside
+	name = "Class M World - Inside (E)"
+	icon_state = "red"
+
+/area/class_m/outside
+	name = "Class M World - Outside (UE)"
+	icon_state = "yellow"
+
+// Frozen planet world areas
+/area/class_p
+	name = "Class P World"
+	icon_state = "away"
+	base_turf = /turf/simulated/floor/outdoors/dirt
+	requires_power = 1
+	dynamic_lighting = 1
+
+/area/class_p/facility
+	name = "Facility"
+	icon_state = "red"
+
+/area/class_p/ruins
+	name = "Ruins"
+	icon_state = "green"
+
+/area/class_p/explored
+	name = "Class P World - Explored (E)"
+	icon_state = "yellow"
+
+/area/class_p/unexplored
+	name = "Class P World - Unexplored (UE)"
+	icon_state = "red"
 
 //Debris field
 /area/shuttle/excursion/debrisfield

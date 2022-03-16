@@ -150,11 +150,11 @@
 		list("Triumph - Misc","Triumph - Ships",), // Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
-		list("Away Mission - Mining Planet"),//Mining planet
-		list("ExoPlanet - Z1 Planet"), // Rogue Exoplanet
-		list("ExoPlanet - Z2 Planet"), // Desert Exoplanet
-		list("Gaia Planet - Z3 Planet"), // Gaia Planet
-		list("ExoPlanet - Z4 Planet"), // Frozen Planet
+		list("ExoPlanet - Z1 Planet"),//Mining planet
+		list("ExoPlanet - Z2 Planet"), // Rogue Exoplanet
+		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet
+		list("ExoPlanet - Z4 Planet"), // Gaia Planet
+		list("ExoPlanet - Z5 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
 		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)")
@@ -180,10 +180,11 @@
 	lateload_single_pick = null //Nothing right now.
 
 	planet_datums_to_make = list(/datum/planet/lavaland,
+								/datum/planet/classg,
 								/datum/planet/classd,
 								/datum/planet/classh,
 								/datum/planet/classp,
-								/datum/planet/gaia_planet)
+								/datum/planet/classm)
 
 /datum/map/triumph/perform_map_generation()
 	return 1

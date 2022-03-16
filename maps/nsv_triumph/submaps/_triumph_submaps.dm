@@ -62,25 +62,6 @@
 	name = "Away Mission - Pirate Base"
 	z = Z_LEVEL_PIRATEBASE
 
-// Mining Planet
-#include "mining_planet/_miningplanet.dm"
-
-/datum/map_template/triumph_lateload/away_mining_planet
-	name = "Away Mission - Mining Planet"
-	desc = "Mining Plante. For the miners to get actual supplies."
-	mappath = "_maps/map_levels/140x140/mining_planet.dmm"
-	associated_map_datum = /datum/map_z_level/triumph_lateload/away_mining_planet
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
-
-/datum/map_z_level/triumph_lateload/away_mining_planet
-	name = "Away Mission - Mining Planet"
-	z = Z_LEVEL_MININGPLANET
-
-/datum/map_template/triumph_lateload/away_mining_planet/on_map_loaded(z)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
-	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
-
 // lavaland start
 #include "lavaland/_lavaland.dm"
 /datum/map_template/triumph_lateload/lavaland
@@ -142,9 +123,26 @@
 /obj/effect/landmark/map_data/lavaland_east
     height = 3
 
+// Class G Mining Planet Exploration Zone
+/datum/map_template/triumph_lateload/away_g_world
+	name = "ExoPlanet - Z1 Planet"
+	desc = "A mineral rich planet."
+	mappath = "_maps/map_levels/140x140/Class_G.dmm"
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_g_world
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_z_level/triumph_lateload/away_g_world
+	name = "Away Mission - Mining Planet"
+	z = Z_LEVEL_MININGPLANET
+
+/datum/map_template/triumph_lateload/away_g_world/on_map_loaded(z)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
+	new /datum/random_map/noise/ore/classg(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
+
 // Class D Rogue Planet Exploration Zone.
 /datum/map_template/triumph_lateload/away_d_world
-	name = "ExoPlanet - Z1 Planet"
+	name = "ExoPlanet - Z2 Planet"
 	desc = "A random unknown planet."
 	mappath = "_maps/map_levels/140x140/Class_D.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_d_world
@@ -163,7 +161,7 @@
 
 // Class H Desert Planet Exploration Zone.
 /datum/map_template/triumph_lateload/away_h_world
-	name = "ExoPlanet - Z2 Planet"
+	name = "ExoPlanet - Z3 Planet"
 	desc = "A random unknown planet."
 	mappath = "_maps/map_levels/140x140/Class_H.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_h_world
@@ -181,28 +179,27 @@
 	z = Z_LEVEL_DESERT_PLANET
 
 // Gaia Planet Zone.
-/datum/map_template/triumph_lateload/gaia_planet
-	name = "Gaia Planet - Z3 Planet"
+/datum/map_template/triumph_lateload/away_m_world
+	name = "ExoPlanet - Z4 Planet"
 	desc = "A lush Gaia Class Planet."
-	mappath = "_maps/map_levels/140x140/gaia_planet.dmm"
-	associated_map_datum = /datum/map_z_level/triumph_lateload/gaia_planet
+	mappath = "_maps/map_levels/140x140/Class_M.dmm"
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_m_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
-/datum/map_template/triumph_lateload/gaia_planet/on_map_loaded(z)
+/datum/map_template/triumph_lateload/away_m_world/on_map_loaded(z)
 	. = ..()
 //	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/poi_h/unexplored, /datum/map_template/submap/level_specific/class_h)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
 
-/datum/map_z_level/triumph_lateload/gaia_planet
+/datum/map_z_level/triumph_lateload/away_m_world
 	name = "Away Mission - Gaia Planet"
 	z = Z_LEVEL_GAIA_PLANET
 
-
 // Frozen Planet Zone.
 /datum/map_template/triumph_lateload/away_p_world
-	name = "ExoPlanet - Z4 Planet"
+	name = "ExoPlanet - Z5 Planet"
 	desc = "A Cold Frozen Planet."
 	mappath = "_maps/map_levels/140x140//Class_P.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_p_world
