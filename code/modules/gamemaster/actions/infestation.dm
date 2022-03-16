@@ -101,7 +101,10 @@
 			spawn_types = list(/mob/living/simple_mob/animal/passive/mouse/gray, /mob/living/simple_mob/animal/passive/mouse/brown, /mob/living/simple_mob/animal/passive/mouse/white)
 			vermstring = "mice"
 		if(VERM_LIZARDS)
-			spawn_types = list(/mob/living/simple_mob/animal/passive/lizard)
+			if(prob(1))//makes lizards less of a joke
+				spawn_types = list(/mob/living/simple_mob/animal/space/alien/drone)
+			else
+				spawn_types = list(/mob/living/simple_mob/animal/passive/lizard)
 			vermstring = "lizards"
 		if(VERM_SPIDERS)
 			spawn_types = list(/obj/effect/spider/spiderling)
