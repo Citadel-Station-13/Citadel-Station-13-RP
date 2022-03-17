@@ -13,6 +13,7 @@
 	var/head_content = ""
 	var/content = ""
 	var/static/datum/asset/simple/namespaced/common/common_asset = get_asset_datum(/datum/asset/simple/namespaced/common)
+	var/written_text = WRITTEN_SKIP
 
 
 /datum/browser/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, atom/nref = null)
@@ -87,11 +88,13 @@
 </html>"}
 
 /datum/browser/proc/get_content()
-	return {"
+	. = {"
 	[get_header()]
 	[content]
 	[get_footer()]
 	"}
+	if(written_text != WRITTEN_SKIP)
+		. = user.handle_reading_literacy(user, ., digital = (written_text == WRITTEN_DIGITAL))
 
 
 /datum/browser/proc/open(use_onclose = TRUE)
@@ -123,3 +126,10 @@
 		user << browse(null, "window=[window_id]")
 	else
 		WARNING("Browser [title] tried to close with a null ID")
+
+//Nebula subtypes
+/datum/browser/written_physical
+	written_text = WRITTEN_PHYSICAL
+
+/datum/browser/written_digital
+	written_text = WRITTEN_DIGITAL
