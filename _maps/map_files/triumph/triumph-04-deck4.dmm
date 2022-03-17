@@ -6774,6 +6774,7 @@
 /obj/machinery/camera/network/exploration{
 	dir = 4
 	},
+/obj/item/paper_bin,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "eLn" = (
