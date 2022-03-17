@@ -305,6 +305,8 @@
 	. = list()
 	var/us = isnull(base_layer)? layer : base_layer
 	for(var/mob/M in range(1, src))
+		if(M.plane != plane)
+			continue
 		if(us == (isnull(M.base_layer)? M.layer : M.base_layer))
 			. += M
 
