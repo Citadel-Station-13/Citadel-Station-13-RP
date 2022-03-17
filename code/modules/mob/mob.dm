@@ -1242,6 +1242,8 @@ mob/proc/yank_out_object()
 	return client && (client.eye == src)
 
 //From Nebula, 
+#define FEEDBACK_YOU_LACK_DEXTERITY SPAN_WARNING("You don't have the dexterity to do this!")
+
 /mob/proc/check_dexterity(var/dex_level, var/silent)
 	. = has_dexterity(dex_level)
 	if(!. && !silent)
@@ -1249,6 +1251,8 @@ mob/proc/yank_out_object()
 
 /mob/proc/has_dexterity(var/dex_level)
 	. = TRUE
+
+
 // these two are used by browsers, which are used for scanners - LordME
 /mob/proc/handle_reading_literacy(var/mob/user, var/text_content, var/skip_delays, var/digital = FALSE)
 	if(!skip_delays)

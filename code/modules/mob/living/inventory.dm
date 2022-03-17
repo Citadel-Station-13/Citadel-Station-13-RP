@@ -175,3 +175,20 @@
 	if((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )))
 		return 1
 	return 0
+
+//Additions for baymed
+/mob/living/get_active_held_item_slot()
+	. = held_item_slot_selected
+	if(. && !(. in held_item_slots))
+		held_item_slot_selected = null
+		. = null
+
+/mob/living/get_inactive_held_items()
+	for(var/bp in (held_item_slots - get_active_held_item_slot()))
+		var/datum/inventory_slot/inv_slot = held_item_slots[bp]
+		var/obj/item/thing = inv_slot?.holding
+		if(istype(thing))
+			LAZYADD(., thing)
+
+/mob/living/is_holding_offhand(var/thing)
+	. = (thing in get_inactive_held_items())

@@ -1394,3 +1394,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(germ_level < syringe_infection_queued)
 		germ_level = syringe_infection_queued
 	syringe_infection_queued = null
+
+//Baymed addition, dexterity
+/obj/item/organ/external/proc/get_dexterity()
+	if(model)
+		var/decl/prosthetics_manufacturer/R = GET_DECL(model)
+		if(R)
+			return R.manual_dexterity
+	if(species)
+		return species.get_manual_dexterity(owner)

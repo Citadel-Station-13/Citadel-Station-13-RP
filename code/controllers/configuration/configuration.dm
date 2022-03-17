@@ -20,6 +20,9 @@
 	var/list/mode_reports
 	var/list/mode_false_report_weight
 	*/
+	//Baymed dexterity add
+	var/dex_malus_brainloss_threshold = 30 //The threshold of when brainloss begins to affect dexterity. 
+
 
 	var/motd
 
