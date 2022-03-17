@@ -54,7 +54,7 @@
 	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
 
 	/// base layer - defaults to layer
-	var/baes_layer
+	var/base_layer
 	/// relative layer - position this atom should be in within things of the same base layer. defaults to 0
 	var/relative_layer = 0
 
