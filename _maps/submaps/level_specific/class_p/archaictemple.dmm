@@ -6,6 +6,12 @@
 /obj/item/bedsheet/purple,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
+"ax" = (
+/obj/structure/prop/lock/projectile{
+	lockID = "dmirr"
+	},
+/turf/simulated/floor/classp,
+/area/class_p/POIs/archaic_temple)
 "aK" = (
 /obj/structure/bookcase,
 /obj/item/book/tome,
@@ -81,7 +87,7 @@
 /area/class_p/POIs/archaic_temple)
 "gr" = (
 /turf/template_noop,
-/area/class_p/ruins)
+/area/template_noop)
 "gC" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/everburn/black,
@@ -130,7 +136,7 @@
 "jJ" = (
 /obj/effect/trap/pop_up/thrower,
 /turf/simulated/mineral/cave,
-/area/class_p/ruins)
+/area/template_noop)
 "jS" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/decal/cleanable/dirt,
@@ -293,15 +299,6 @@
 	},
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
-"rg" = (
-/obj/structure/grille/cult,
-/obj/structure/window/reinforced/polarized/full{
-	color = "#222222";
-	name = "reflective window";
-	opacity = 1
-	},
-/turf/simulated/floor/classp,
-/area/class_p/POIs/archaic_temple)
 "rq" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/trap/delayed/wood/classp{
@@ -345,7 +342,7 @@
 /area/class_p/POIs/archaic_temple)
 "rU" = (
 /turf/simulated/floor/outdoors/snow/classp,
-/area/class_p/ruins)
+/area/template_noop)
 "se" = (
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
@@ -501,6 +498,11 @@
 "zY" = (
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
+"zZ" = (
+/obj/structure/table/rack/steel,
+/obj/machinery/artifact,
+/turf/simulated/floor/silver/classp,
+/area/class_p/POIs/archaic_temple)
 "Ac" = (
 /obj/structure/table/marble,
 /obj/item/coin/copper,
@@ -582,13 +584,6 @@
 "Dl" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/crystal/classp,
-/area/class_p/POIs/archaic_temple)
-"Dv" = (
-/obj/structure/prop/prism/externalcont{
-	degrees_from_north = 180;
-	dialID = null
-	},
-/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "Dy" = (
 /obj/machinery/door/blast/puzzle{
@@ -732,7 +727,7 @@
 /area/class_p/POIs/archaic_temple)
 "Ij" = (
 /turf/simulated/floor/outdoors/ice/classp,
-/area/class_p/ruins)
+/area/template_noop)
 "Iw" = (
 /obj/structure/table/rack/steel,
 /obj/item/ectoplasm{
@@ -759,16 +754,16 @@
 	},
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
-"JC" = (
-/obj/structure/prop/prism/externalcont{
-	degrees_from_north = 270
-	},
-/turf/simulated/floor/classp,
-/area/class_p/POIs/archaic_temple)
 "JL" = (
 /turf/simulated/floor/trap/phoron/classp{
 	id = "master_trigger"
 	},
+/area/class_p/POIs/archaic_temple)
+"JN" = (
+/obj/structure/prop/prism/externalcont{
+	degrees_from_north = 270
+	},
+/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "JP" = (
 /obj/structure/table/hardwoodtable,
@@ -947,6 +942,13 @@
 	},
 /turf/simulated/floor/diamond,
 /area/class_p/POIs/archaic_temple)
+"RF" = (
+/obj/structure/prop/prism/externalcont{
+	degrees_from_north = 180;
+	dialID = null
+	},
+/turf/simulated/floor/classp,
+/area/class_p/POIs/archaic_temple)
 "Sc" = (
 /turf/simulated/floor/trap/delayed/crystal/classp{
 	id = "display_room"
@@ -966,7 +968,7 @@
 /area/class_p/POIs/archaic_temple)
 "TM" = (
 /turf/simulated/mineral/cave,
-/area/class_p/ruins)
+/area/template_noop)
 "Ua" = (
 /obj/effect/trap/pop_up/flame{
 	id = "entry_corridor"
@@ -1102,9 +1104,12 @@
 	},
 /turf/simulated/floor/bmarble/classp,
 /area/class_p/POIs/archaic_temple)
-"YL" = (
-/obj/structure/prop/lock/projectile{
-	lockID = "dmirr"
+"YG" = (
+/obj/structure/grille/cult,
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
 	},
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
@@ -2768,7 +2773,7 @@ Zc
 Zc
 Mq
 kE
-oW
+zZ
 so
 JL
 JT
@@ -2881,11 +2886,11 @@ qo
 qo
 qo
 Mq
-Dv
-YL
+RF
+ax
 Mq
 Mq
-rg
+YG
 Mq
 Mq
 TM
@@ -2938,7 +2943,7 @@ se
 UJ
 qo
 Mq
-JC
+JN
 se
 se
 se
