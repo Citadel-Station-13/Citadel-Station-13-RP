@@ -19,6 +19,7 @@
 #include "code\global.dm"
 #include "code\names.dm"
 #include "code\world.dm"
+#include "code\__DEFINES\_bitfields.dm"
 #include "code\__DEFINES\_globals.dm"
 #include "code\__DEFINES\_lists.dm"
 #include "code\__DEFINES\_planes+layers.dm"
