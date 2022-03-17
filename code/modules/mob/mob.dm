@@ -281,8 +281,8 @@
 	return 1
 
 /mob/verb/set_self_relative_layer()
-	name = "Set relative layer"
-	desc = "Set your relative layer to other mobs on the same layer as yourself"
+	set name = "Set relative layer"
+	set desc = "Set your relative layer to other mobs on the same layer as yourself"
 	set src = usr
 
 	var/new_layer = input(src, "What do you want to shift your layer to? (-100 to 100)", "Set Relative Layer", clamp(relative_layer, -100, 100))
@@ -290,14 +290,14 @@
 	set_relative_layer(new_layer)
 
 /mob/verb/shift_relative_behind(mob/M as mob in get_relative_shift_targets())
-	name = "Move Behind"
-	desc = "Move behind of a mob with the same base layer as yourself"
+	set name = "Move Behind"
+	set desc = "Move behind of a mob with the same base layer as yourself"
 
 	set_relative_layer(M.relative_layer - 1)
 
 /mob/verb/shift_relative_infront(mob/M as mob in get_relative_shift_targets())
-	name = "Move Infront"
-	desc = "Move infront of a mob with the same base layer as yourself"
+	set name = "Move Infront"
+	set desc = "Move infront of a mob with the same base layer as yourself"
 
 	set_relative_layer(M.relative_layer + 1)
 
