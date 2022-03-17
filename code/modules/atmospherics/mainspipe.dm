@@ -250,6 +250,7 @@
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/manifold/update_icon_state()
+	. = ..()
 	icon_state = "manifold[invisibility ? "-f" : "" ]"
 
 /obj/machinery/atmospherics/mains_pipe/manifold/hidden
@@ -300,6 +301,7 @@
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/manifold4w/update_icon_state()
+	. = ..()
 	icon_state = "manifold4w[invisibility ? "-f" : "" ]"
 
 /obj/machinery/atmospherics/mains_pipe/manifold4w/hidden
@@ -361,6 +363,7 @@
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/split/update_icon_state()
+	. = ..()
 	icon_state = "split-[icon_type][invisibility ? "-f" : "" ]"
 
 /obj/machinery/atmospherics/mains_pipe/split/return_network(A)

@@ -78,7 +78,7 @@
 				target.update_filters()
 				. = TRUE
 		if("mass_apply")
-			if(!check_rights_for(usr.client, R_FUN))
+			if(!check_rights(R_FUN))
 				to_chat(usr, SPAN_DANGER("Stay in your lane, jannie."))
 				return
 			var/target_path = text2path(params["path"])

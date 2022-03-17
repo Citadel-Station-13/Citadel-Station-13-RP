@@ -66,7 +66,7 @@
 	if(!seed)
 		return
 	if(!plant_controller)
-		addtimer(CALLBAKC(src, /atom/proc/update_desc), 250) // ugly hack, should mean roundstart plants are fine.
+		addtimer(CALLBACK(src, /atom/proc/update_desc), 250) // ugly hack, should mean roundstart plants are fine.
 	if(!plant_controller)
 		to_chat(world, "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
 		qdel(src)
