@@ -8,6 +8,7 @@
 	density = 0
 
 /obj/structure/table/bench/update_desc()
+	. = ..()
 	if(material)
 		name = "[material.display_name] bench"
 	else

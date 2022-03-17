@@ -319,6 +319,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: None
 // Description: Self explanatory
 /obj/item/communicator/update_icon_state()
+	. = ..()
 	if(video_source)
 		icon_state = "communicator_wave"
 		return
@@ -352,6 +353,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	slot_flags = SLOT_GLOVES
 
 /obj/item/communicator/watch/update_icon_state()
+	. = ..()
 	if(video_source)
 		icon_state = "commwatch-video"
 		return

@@ -211,7 +211,7 @@
 	anchored = 1
 	dir = WEST
 
-	var/base_icon_state = "cryopod_0" //VOREStation Edit - New Icon
+	base_icon_state = "cryopod_0" //VOREStation Edit - New Icon
 	var/occupied_icon_state = "cryopod_1" //VOREStation Edit - New Icon
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"

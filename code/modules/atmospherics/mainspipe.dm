@@ -144,6 +144,7 @@
 		setDir(4)
 
 /obj/machinery/atmospherics/mains_pipe/simple/update_icon_state()
+	. = ..()
 	if(nodes[1] && nodes[2])
 		icon_state = "intact[invisibility ? "-f" : "" ]"
 

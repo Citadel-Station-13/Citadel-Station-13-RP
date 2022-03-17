@@ -330,7 +330,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 /atom/proc/bitmask_smooth()
 	var/new_junction = NONE
 
-	for(var/direction in GLOB.cardinals) //Cardinal case first.
+	for(var/direction in GLOB.cardinal) //Cardinal case first.
 		SET_ADJ_IN_DIR(src, new_junction, direction, direction)
 
 	if(!(new_junction & (NORTH|SOUTH)) || !(new_junction & (EAST|WEST)))

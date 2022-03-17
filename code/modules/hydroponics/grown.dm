@@ -62,7 +62,7 @@
 	catalogue_data = seed.catalog_data_grown
 
 /obj/item/reagent_containers/food/snacks/grown/update_desc()
-
+	. = ..()
 	if(!seed)
 		return
 	if(!plant_controller)
