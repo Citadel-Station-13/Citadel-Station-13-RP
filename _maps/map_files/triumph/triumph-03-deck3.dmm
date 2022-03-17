@@ -1478,9 +1478,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "blD" = (
-/obj/machinery/vending/medical{
-	dir = 8
-	},
+/obj/machinery/vending/medical,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
@@ -1785,9 +1783,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/obj/machinery/vending/cigarette{
-	dir = 1
-	},
+/obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "bAu" = (
@@ -2383,9 +2379,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
 	},
-/obj/machinery/vending/coffee{
-	dir = 1
-	},
+/obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "bXb" = (
@@ -4117,9 +4111,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "dsM" = (
-/obj/machinery/vending/coffee{
-	dir = 1
-	},
+/obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "duo" = (
@@ -5032,9 +5024,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
-/obj/machinery/vending/cigarette{
-	dir = 1
-	},
+/obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/breakroom)
 "een" = (
@@ -6746,9 +6736,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/vending/medical{
-	dir = 8
-	},
+/obj/machinery/vending/medical,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "fAJ" = (
@@ -19445,9 +19433,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "pCF" = (
-/obj/machinery/vending/cigarette{
-	dir = 1
-	},
+/obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "pCH" = (
@@ -19784,9 +19770,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 10
 	},
-/obj/machinery/vending/medical{
-	dir = 1
-	},
+/obj/machinery/vending/medical,
 /turf/simulated/floor/tiled,
 /area/medical/surgeryprep)
 "pNm" = (
@@ -20159,9 +20143,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "pXl" = (
-/obj/machinery/vending/hydronutrients{
-	dir = 1
-	},
+/obj/machinery/vending/hydronutrients,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "pXD" = (
@@ -21318,9 +21300,7 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/machinery/vending/hydronutrients{
-	dir = 1
-	},
+/obj/machinery/vending/hydronutrients,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "qQl" = (
@@ -23701,9 +23681,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
-/obj/machinery/vending/snack{
-	dir = 1
-	},
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/breakroom)
 "sCe" = (
@@ -24858,9 +24836,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 8
 	},
-/obj/machinery/vending/snack{
-	dir = 8
-	},
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "tsh" = (
@@ -26068,9 +26044,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "upL" = (
-/obj/machinery/vending/fitness{
-	dir = 1
-	},
+/obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "uqz" = (
@@ -26792,9 +26766,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/vending/cola{
-	dir = 8
-	},
+/obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "uSE" = (
@@ -30194,9 +30166,7 @@
 /turf/simulated/wall,
 /area/medical/patient_a)
 "xxY" = (
-/obj/machinery/vending/snack{
-	dir = 1
-	},
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "xyh" = (
@@ -30628,9 +30598,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/vending/medical{
-	dir = 1
-	},
+/obj/machinery/vending/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
 	},
