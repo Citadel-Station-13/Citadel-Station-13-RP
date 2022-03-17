@@ -1,6 +1,34 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"av" = (
+/obj/structure/bed{
+	material = "wood"
+	},
+/obj/item/bedsheet/purple,
+/turf/simulated/floor/wood/classp,
+/area/space)
 "aY" = (
-/turf/simulated/floor/trap/crystal/classp,
+/mob/living/simple_mob/living_statue{
+	name = "eroded male statue"
+	},
+/turf/simulated/floor/crystal/classp,
+/area/space)
+"bv" = (
+/obj/structure/bed{
+	material = "wood"
+	},
+/turf/simulated/floor/wood/classp,
+/area/space)
+"bJ" = (
+/obj/effect/trap/pop_up/buzzsaw{
+	id = "vault"
+	},
+/turf/simulated/floor/gold/classp,
+/area/space)
+"ct" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/trap/delayed/bmarble/classp{
+	id = "east_hall_2"
+	},
 /area/space)
 "cz" = (
 /obj/effect/trap/pop_up/flame{
@@ -10,18 +38,53 @@
 	id = "entry_corridor"
 	},
 /area/space)
+"dv" = (
+/turf/simulated/floor/trap/delayed/wmarble/classp{
+	id = "east_hall_1"
+	},
+/area/space)
+"dN" = (
+/obj/effect/trap/pop_up/flame{
+	id = "entry_corridor"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/crystal/classp,
+/area/space)
 "ef" = (
-/obj/machinery/door/blast/puzzle,
-/turf/simulated/floor/outdoors/dirt/classp,
+/obj/structure/simple_door/hardwood,
+/turf/simulated/floor/wood/classp,
 /area/space)
 "eh" = (
-/turf/simulated/floor/trap/wood/classp,
+/obj/structure/bookcase,
+/obj/item/spellbook/oneuse/charge,
+/turf/simulated/floor/wood/classp,
+/area/space)
+"et" = (
+/obj/structure/prop/prism/externalcont,
+/turf/simulated/floor/classp,
+/area/space)
+"eJ" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/black,
+/turf/simulated/floor/classp,
 /area/space)
 "fB" = (
-/turf/simulated/floor/trap/delayed/gold/classp,
+/mob/living/simple_mob/living_statue{
+	name = "eroded male statue"
+	},
+/turf/simulated/floor/silver/classp,
 /area/space)
 "fQ" = (
 /turf/simulated/floor/outdoors/mud/classp,
+/area/space)
+"fS" = (
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
+	},
+/obj/structure/grille/cult,
+/turf/simulated/floor/classp,
 /area/space)
 "gr" = (
 /turf/template_noop,
@@ -31,10 +94,27 @@
 /obj/item/flame/candle/everburn/black,
 /turf/simulated/floor/bmarble/classp,
 /area/space)
+"gS" = (
+/obj/structure/boulder,
+/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/area/space)
 "hQ" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/everburn/black,
 /turf/simulated/floor/wood/classp,
+/area/space)
+"if" = (
+/obj/structure/prop/lock/projectile{
+	lockID = "anak"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/classp,
+/area/space)
+"ik" = (
+/obj/structure/statue/marble/male{
+	name = "eroded male statue"
+	},
+/turf/simulated/floor/silver/classp,
 /area/space)
 "iX" = (
 /turf/simulated/floor/wmarble/classp,
@@ -51,14 +131,27 @@
 /area/space)
 "jJ" = (
 /obj/effect/trap/pop_up/thrower,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/mineral/cave,
+/area/space)
+"jS" = (
+/obj/structure/table/hardwoodtable,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classp,
 /area/space)
 "kr" = (
 /obj/structure/bookcase,
 /turf/simulated/floor/wood/classp,
 /area/space)
 "kE" = (
-/turf/simulated/floor/trap/delayed/bmarble/classp,
+/obj/effect/trap/launcher/fireball_aoe{
+	dir = 1;
+	id = "vault;
+	pixel_y = -32
+	},
+/obj/structure/table/marble,
+/obj/item/clothing/head/helmet/space/void/wizard,
+/obj/item/clothing/suit/space/void/wizard,
+/turf/simulated/floor/silver/classp,
 /area/space)
 "kJ" = (
 /obj/structure/table/marble,
@@ -70,21 +163,74 @@
 	},
 /turf/simulated/floor/wood/classp,
 /area/space)
-"md" = (
-/obj/structure/table/hardwoodtable,
+"lc" = (
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
+	},
+/obj/structure/grille/cult,
+/turf/simulated/floor/trap/delayed/plating/classp{
+	id = "tunnel_south"
+	},
+/area/space)
+"lf" = (
+/obj/effect/trap/pit/deep{
+	id = "tunnel_north"
+	},
+/turf/simulated/floor/classp,
+/area/space)
+"lh" = (
+/obj/structure/statue/marble/female{
+	name = "eroded female statue"
+	},
 /turf/simulated/floor/gold/classp,
 /area/space)
-"mp" = (
-/turf/simulated/floor/trap/gold/classp,
+"md" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/flame/candle/candelabra/everburn,
+/turf/simulated/floor/gold/classp,
+/area/space)
+"mr" = (
+/obj/effect/trap/pop_up/spear{
+	id = "west_hall_3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wmarble/classp,
+/area/space)
+"mx" = (
+/obj/structure/simple_door/phoron,
+/turf/simulated/floor/wmarble/classp,
+/area/space)
+"my" = (
+/obj/structure/grille/cult,
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
+	},
+/turf/simulated/floor/trap/delayed/plating/classp{
+	id = "tunnel_class_south"
+	},
 /area/space)
 "mN" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/wmarble/classp,
 /area/space)
-"nD" = (
-/turf/simulated/floor/trap/phoron/classp{
-	id = "master_trigger"
+"nd" = (
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
 	},
+/obj/structure/grille/cult,
+/turf/simulated/floor/trap/delayed/plating/classp{
+	id = "tunnel_west"
+	},
+/area/space)
+"nD" = (
+/obj/structure/simple_door/phoron,
+/turf/simulated/floor/phoron/classp,
 /area/space)
 "nX" = (
 /obj/structure/table/bench/wooden,
@@ -93,45 +239,99 @@
 "od" = (
 /turf/simulated/floor/silver/classp,
 /area/space)
+"oq" = (
+/obj/structure/statue/marble/male{
+	density = 0;
+	name = "shimmering male statue"
+	},
+/turf/simulated/floor/phoron/classp,
+/area/space)
 "ot" = (
 /turf/simulated/floor/wood/classp,
 /area/space)
-"oW" = (
-/turf/simulated/floor/trap/delayed/silver/classp,
+"oZ" = (
+/obj/effect/trap/pit/punji{
+	id = "west_hall_2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wmarble/classp,
 /area/space)
 "qo" = (
 /turf/simulated/wall/ironphoron/classp,
 /area/space)
-"qE" = (
-/obj/effect/trap/pop_up/pillar,
-/turf/simulated/floor/outdoors/dirt/classp,
+"rq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/trap/delayed/wood/classp{
+	id = "library"
+	},
 /area/space)
-"rE" = (
-/obj/effect/trap/launcher/fireball_aoe{
+"rt" = (
+/obj/structure/table/hardwoodtable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/artifact,
+/obj/structure/window/phoronbasic{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
-/area/space)
-"rF" = (
-/obj/effect/trap/pop_up/flame{
-	id = "entry_corridor"
+/obj/structure/window/phoronbasic{
+	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/obj/structure/window/phoronbasic,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/turf/simulated/floor/phoron/classp,
+/area/space)
+"ru" = (
+/obj/structure/bed{
+	material = "wood"
+	},
+/obj/item/bedsheet,
+/turf/simulated/floor/wood/classp,
+/area/space)
+"rE" = (
+/obj/structure/simple_door/phoron,
+/turf/simulated/floor/crystal/classp,
+/area/space)
+"rO" = (
+/obj/structure/boulder,
+/turf/simulated/floor/outdoors/mud/classp,
 /area/space)
 "rU" = (
 /turf/simulated/floor/outdoors/snow/classp,
 /area/space)
-"sH" = (
-/obj/effect/trap/pop_up/spear,
-/turf/simulated/floor/outdoors/dirt/classp,
+"se" = (
+/turf/simulated/floor/classp,
 /area/space)
-"sV" = (
-/turf/simulated/floor/trap/silver/classp,
+"sj" = (
+/obj/structure/prop/prism/externalcont{
+	dialID = "bchar"
+	},
+/turf/simulated/floor/classp,
+/area/space)
+"sW" = (
+/obj/structure/prop/prismcontrol{
+	dialID = "anak";
+	name = "Sundial of Anak-Hun-Tamuun"
+	},
+/obj/structure/table/marble,
+/turf/simulated/floor/outdoors/mud/classp,
+/area/space)
+"tc" = (
+/obj/machinery/door/blast/puzzle{
+	icon = 'icons/obj/doors/material_doors.dmi';
+	icon_state = "metal";
+	lockID = "bchar";
+	name = "enchanted door"
+	},
+/turf/simulated/floor/crystal/classp,
 /area/space)
 "te" = (
 /obj/structure/table/hardwoodtable,
-/obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/gold/classp,
+/area/space)
+"tt" = (
+/obj/structure/simple_door/phoron,
+/turf/simulated/floor/bmarble/classp,
 /area/space)
 "tY" = (
 /obj/structure/bed/chair/wood/wings{
@@ -139,23 +339,53 @@
 	},
 /turf/simulated/floor/wood/classp,
 /area/space)
-"we" = (
-/obj/effect/trap/launcher/fireball_aoe{
-	dir = 8
+"uh" = (
+/obj/structure/statue/marble/female{
+	name = "eroded female statue"
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/floor/phoron/classp,
+/area/space)
+"uk" = (
+/obj/structure/statue/marble/female{
+	name = "eroded female statue"
+	},
+/turf/simulated/floor/silver/classp,
+/area/space)
+"we" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/everburn/black,
+/turf/simulated/floor/classp,
 /area/space)
 "xl" = (
 /turf/simulated/floor/trap/delayed/crystal/classp{
 	id = "entry_corridor"
 	},
 /area/space)
-"xR" = (
-/turf/simulated/floor/trap/delayed/phoron/classp,
+"xO" = (
+/obj/structure/simple_door/gold,
+/turf/simulated/floor/wood/classp,
+/area/space)
+"xQ" = (
+/obj/effect/trap/pit/deep{
+	id = "tunnel_class_south"
+	},
+/turf/simulated/floor/classp,
+/area/space)
+"yw" = (
+/obj/structure/statue/marble/male{
+	name = "eroded male statue"
+	},
+/turf/simulated/floor/gold/classp,
 /area/space)
 "zk" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood/classp,
+/area/space)
+"zz" = (
+/obj/effect/trap/pop_up/spear{
+	id = "west_hall_3"
+	},
+/turf/simulated/floor/wmarble/classp,
 /area/space)
 "zC" = (
 /turf/simulated/floor/water/indoors/classp,
@@ -163,11 +393,37 @@
 "zY" = (
 /turf/simulated/floor/gold/classp,
 /area/space)
+"Ak" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classp,
+/area/space)
+"Ar" = (
+/obj/effect/trap/launcher/dart{
+	dir = 1;
+	id = "east_hall_2";
+	pixel_y = -32
+	},
+/turf/simulated/floor/wmarble/classp,
+/area/space)
+"At" = (
+/obj/effect/decal/cleanable/blood/writing{
+	desc = "It looks like blood."
+	},
+/turf/simulated/floor/wood/classp,
+/area/space)
 "AM" = (
-/turf/simulated/mineral/floor/classp,
+/obj/structure/statue/marble/male{
+	name = "eroded male statue"
+	},
+/turf/simulated/floor/crystal/classp,
 /area/space)
 "AN" = (
 /turf/simulated/floor/crystal/classp,
+/area/space)
+"Bk" = (
+/obj/structure/boulder,
+/turf/simulated/floor/wmarble/classp,
 /area/space)
 "Br" = (
 /obj/effect/trap/pop_up/flame{
@@ -175,21 +431,125 @@
 	},
 /turf/simulated/floor/phoron/classp,
 /area/space)
+"Bw" = (
+/turf/simulated/bone,
+/area/space)
 "BF" = (
 /obj/structure/closet/cabinet,
 /turf/simulated/floor/wood/classp,
 /area/space)
-"Ee" = (
-/turf/simulated/wall/solidrock,
+"BP" = (
+/obj/structure/boulder,
+/turf/simulated/floor/bmarble/classp,
 /area/space)
-"Ek" = (
-/turf/simulated/floor/trap/delayed/wmarble/classp,
+"BS" = (
+/obj/effect/trap/pit/deep{
+	id = "tunnel_class_north"
+	},
+/turf/simulated/floor/classp,
+/area/space)
+"Ci" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/artifact,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/turf/simulated/floor/gold/classp,
+/area/space)
+"Dl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/crystal/classp,
+/area/space)
+"Dy" = (
+/obj/machinery/door/blast/puzzle{
+	icon = 'icons/obj/doors/material_doors.dmi';
+	icon_state = "metal";
+	lockID = "dmirr";
+	name = "enchanted door"
+	},
+/turf/simulated/floor/gold/classp,
+/area/space)
+"DA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wmarble/classp,
+/area/space)
+"DI" = (
+/obj/effect/trap/pop_up/spear{
+	id = "west_hall_1"
+	},
+/turf/simulated/floor/wmarble/classp,
+/area/space)
+"Ee" = (
+/obj/structure/statue/marble/female{
+	name = "eroded female statue"
+	},
+/turf/simulated/floor/crystal/classp,
+/area/space)
+"EY" = (
+/obj/structure/simple_door/hardwood,
+/turf/simulated/floor/trap/wood/classp{
+	id = "west_hall_3"
+	},
+/area/space)
+"EZ" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/obj/item/material/shard/phoron,
+/turf/simulated/floor/gold/classp,
 /area/space)
 "Fg" = (
 /turf/simulated/floor/phoron/classp,
 /area/space)
-"GE" = (
-/turf/simulated/floor/trap/phoron/classp,
+"Fp" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classp,
+/area/space)
+"Fu" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 8
+	},
+/turf/simulated/floor/wood/classp,
+/area/space)
+"Fw" = (
+/turf/simulated/floor/trap/delayed/wood/classp{
+	id = "library"
+	},
+/area/space)
+"FF" = (
+/obj/effect/trap/pit/deep{
+	id = "tunnel_east"
+	},
+/turf/simulated/floor/classp,
+/area/space)
+"FY" = (
+/obj/structure/bed/chair/wood/wings,
+/turf/simulated/floor/wood/classp,
+/area/space)
+"GF" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/gold/classp,
+/area/space)
+"GP" = (
+/obj/effect/trap/pit/punji{
+	id = "library"
+	},
+/turf/simulated/floor/wood/classp,
 /area/space)
 "He" = (
 /obj/structure/table/hardwoodtable,
@@ -204,6 +564,32 @@
 	},
 /turf/simulated/floor/phoron/classp,
 /area/space)
+"Hw" = (
+/turf/simulated/floor/trap/wmarble/classp{
+	id = "east_hall_1"
+	},
+/area/space)
+"HB" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic,
+/obj/item/material/shard/phoron,
+/turf/simulated/floor/phoron/classp,
+/area/space)
+"HM" = (
+/obj/effect/trap/pop_up/pillar,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/crystal/classp,
+/area/space)
+"Ia" = (
+/obj/structure/boulder,
+/turf/simulated/floor/crystal/classp,
+/area/space)
 "Ij" = (
 /turf/simulated/floor/outdoors/ice/classp,
 /area/space)
@@ -212,14 +598,69 @@
 	id = "entry_corridor"
 	},
 /area/space)
+"Jv" = (
+/turf/simulated/floor/trap/gold/classp{
+	id = "vault"
+	},
+/area/space)
+"Jw" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 1
+	},
+/turf/simulated/floor/wood/classp,
+/area/space)
+"JL" = (
+/turf/simulated/floor/trap/phoron/classp{
+	id = "master_trigger"
+	},
+/area/space)
 "JP" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wmarble/classp,
 /area/space)
+"JT" = (
+/turf/simulated/floor/trap/delayed/gold/classp{
+	id = "master_trigger"
+	},
+/area/space)
+"JU" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/candelabra/everburn,
+/turf/simulated/floor/outdoors/mud/classp,
+/area/space)
+"Kf" = (
+/obj/effect/trap/pop_up/spear{
+	id = "west_hall_3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/bmarble/classp,
+/area/space)
+"Kl" = (
+/mob/living/simple_mob/living_statue{
+	name = "eroded male statue"
+	},
+/turf/simulated/floor/phoron/classp,
+/area/space)
 "Ks" = (
 /turf/simulated/floor/bmarble/classp,
 /area/space)
+"Ku" = (
+/obj/structure/simple_door/gold,
+/turf/simulated/floor/crystal/classp,
+/area/space)
+"Kv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/bmarble/classp,
+/area/space)
+"KP" = (
+/obj/effect/trap/launcher/dart{
+	id = "east_hall_1";
+	pixel_y = 32
+	},
+/turf/simulated/floor/bmarble/classp,
+/area/space)
 "La" = (
+/obj/structure/simple_door/hardwood,
 /turf/simulated/floor/trap/wood/classp{
 	id = "headmaster_office"
 	},
@@ -229,12 +670,63 @@
 /obj/item/flame/candle/black,
 /turf/simulated/floor/wood/classp,
 /area/space)
-"Lq" = (
-/turf/simulated/floor/trap/delayed/wood/classp,
+"LP" = (
+/obj/structure/prop/prism/incremental{
+	degrees_from_north = 180
+	},
+/turf/simulated/floor/classp,
+/area/space)
+"Mq" = (
+/turf/simulated/wall/dungeon,
+/area/space)
+"Mx" = (
+/obj/structure/grille/cult,
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
+	},
+/turf/simulated/floor/trap/delayed/plating/classp{
+	id = "tunnel_class_north"
+	},
+/area/space)
+"Nk" = (
+/obj/machinery/door/blast/puzzle{
+	icon = 'icons/turf/wall_masks.dmi';
+	icon_state = "bone";
+	lockID = "anak";
+	name = "old bone wall"
+	},
+/turf/simulated/floor/classp,
 /area/space)
 "Nt" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/crystal/classp,
+/area/space)
+"NS" = (
+/turf/simulated/floor/trap/delayed/wmarble/classp{
+	id = "west_hall_1"
+	},
+/area/space)
+"Ol" = (
+/obj/effect/decal/cleanable/generic,
+/turf/simulated/floor/wood/classp,
+/area/space)
+"Oo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/phoron/classp,
+/area/space)
+"OI" = (
+/obj/structure/prop/prism/externalcont{
+	degrees_from_north = 180;
+	dialID = "anak"
+	},
+/turf/simulated/floor/classp,
+/area/space)
+"OJ" = (
+/obj/structure/boulder,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/classp,
 /area/space)
 "Pe" = (
 /obj/effect/trap/launcher/fireball_aoe{
@@ -244,41 +736,202 @@
 	},
 /turf/simulated/floor/wood/classp,
 /area/space)
-"Qx" = (
-/turf/simulated/floor/trap/delayed/crystal/classp,
+"Py" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/silver/classp,
 /area/space)
-"RF" = (
-/obj/effect/trap/pop_up/buzzsaw,
-/turf/simulated/floor/outdoors/dirt/classp,
+"PM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classp,
+/area/space)
+"PU" = (
+/obj/effect/trap/pit/deep{
+	id = "tunnel_west"
+	},
+/turf/simulated/floor/classp,
+/area/space)
+"QV" = (
+/obj/structure/bed{
+	material = "wood"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/bedsheet/purple,
+/turf/simulated/floor/wood/classp,
+/area/space)
+"Rv" = (
+/obj/structure/table/marble,
+/obj/structure/prop/prismcontrol{
+	dialID = "bchar";
+	name = "The Blind Wheel of B'chardamz"
+	},
+/turf/simulated/floor/classp,
+/area/space)
+"Sc" = (
+/turf/simulated/floor/trap/delayed/crystal/classp{
+	id = "display_room"
+	},
 /area/space)
 "Sz" = (
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/black,
 /turf/simulated/floor/bmarble/classp,
 /area/space)
+"Tw" = (
+/obj/structure/statue/marble/female{
+	density = 0;
+	name = "shimmering female statue"
+	},
+/turf/simulated/floor/phoron/classp,
+/area/space)
 "TM" = (
 /turf/simulated/mineral/cave,
+/area/space)
+"Ua" = (
+/obj/effect/trap/pop_up/flame{
+	id = "entry_corridor"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/phoron/classp,
+/area/space)
+"Ug" = (
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
+	},
+/obj/structure/grille/cult,
+/turf/simulated/floor/trap/delayed/plating/classp{
+	id = "tunnel_east"
+	},
+/area/space)
+"Uh" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/obj/item/material/shard/phoron,
+/obj/item/material/shard/phoron,
+/turf/simulated/floor/gold/classp,
+/area/space)
+"Us" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/artifact,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/turf/simulated/floor/phoron/classp,
+/area/space)
+"UJ" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/classp,
+/area/space)
+"UR" = (
+/obj/effect/trap/pop_up/pillar,
+/turf/simulated/floor/crystal/classp,
 /area/space)
 "Vb" = (
 /turf/simulated/floor/trap/wood/classp{
 	id = "headmaster_desk"
 	},
 /area/space)
-"VR" = (
-/turf/simulated/floor/trap/bmarble/classp,
+"Vk" = (
+/turf/simulated/floor/trap/wmarble/classp{
+	id = "east_hall_2"
+	},
 /area/space)
-"We" = (
-/turf/simulated/floor/outdoors/dirt/classp,
+"Vq" = (
+/obj/structure/prop/lock{
+	lockID = "dmirr";
+	name = "The Gate of Dmirr"
+	},
+/turf/simulated/floor/silver/classp,
+/area/space)
+"VM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/trap/delayed/crystal/classp{
+	id = "display_room"
+	},
+/area/space)
+"Wc" = (
+/obj/structure/simple_door/hardwood,
+/turf/simulated/floor/trap/wood/classp{
+	id = "west_hall_2"
+	},
+/area/space)
+"WM" = (
+/obj/structure/prop/lock/projectile{
+	lockID = "bchar"
+	},
+/turf/simulated/floor/classp,
+/area/space)
+"Xi" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/obj/item/material/shard/phoron,
+/obj/item/material/shard/phoron,
+/turf/simulated/floor/gold/classp,
+/area/space)
+"XB" = (
+/obj/effect/trap/pit/punji{
+	id = "west_hall_2"
+	},
+/turf/simulated/floor/wood/classp,
 /area/space)
 "XL" = (
 /obj/structure/statue/bone{
 	desc = "A towering menhir of bone, perhaps the colossal fang of some fallen beast.";
 	name = "The Fang of Agrim'Maw"
 	},
+/obj/effect/decal/cleanable/greenglow,
 /turf/simulated/floor/outdoors/grass/heavy/interior/classp,
 /area/space)
-"XX" = (
-/turf/simulated/floor/trap/wmarble/classp,
+"Yd" = (
+/obj/effect/trap/pit/punji{
+	id = "library"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classp,
+/area/space)
+"Yg" = (
+/obj/effect/trap/pit{
+	id = "west_hall_1"
+	},
+/turf/simulated/floor/bmarble/classp,
+/area/space)
+"YP" = (
+/obj/effect/trap/launcher/fireball_aoe{
+	dir = 1;
+	id = "vault;
+	pixel_y = -32
+	},
+/obj/structure/table/marble,
+/turf/simulated/floor/silver/classp,
+/area/space)
+"YS" = (
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
+	},
+/obj/structure/grille/cult,
+/turf/simulated/floor/trap/delayed/plating/classp{
+	id = "tunnel_north"
+	},
 /area/space)
 "Zc" = (
 /obj/effect/trap/pop_up/flame{
@@ -297,6 +950,15 @@
 	},
 /turf/simulated/floor/phoron/classp,
 /area/space)
+"Zs" = (
+/obj/effect/trap/launcher/fireball{
+	dir = 4;
+	id = "entry_corridor";
+	pixel_x = -32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/phoron/classp,
+/area/space)
 "Zu" = (
 /obj/effect/trap/pop_up/flame{
 	id = "entry_corridor"
@@ -307,6 +969,12 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/phoron/classp,
+/area/space)
+"Zw" = (
+/obj/effect/trap/pit/deep{
+	id = "tunnel_south"
+	},
+/turf/simulated/floor/classp,
 /area/space)
 "ZV" = (
 /turf/simulated/floor/outdoors/grass/heavy/interior/classp,
@@ -400,12 +1068,12 @@ rU
 rU
 rU
 rU
+rU
+rU
+rU
 TM
-TM
-TM
-TM
-TM
-TM
+rU
+rU
 gr
 gr
 gr
@@ -454,14 +1122,14 @@ rU
 rU
 rU
 rU
+rU
+rU
+rU
 TM
 TM
 TM
-TM
-TM
-TM
-TM
-TM
+rU
+rU
 TM
 TM
 TM
@@ -512,12 +1180,12 @@ rU
 rU
 TM
 TM
+rU
 TM
 TM
 TM
-TM
-TM
-TM
+rU
+rU
 TM
 TM
 TM
@@ -569,15 +1237,15 @@ TM
 TM
 TM
 TM
+rU
+rU
+TM
+rU
+rU
 TM
 TM
 TM
 TM
-TM
-TM
-TM
-AM
-AM
 TM
 TM
 TM
@@ -623,19 +1291,19 @@ rU
 TM
 TM
 TM
-iX
+Bk
 qo
 TM
 TM
+rU
+rU
+rU
 TM
 TM
 TM
 TM
 TM
-AM
-AM
-AM
-AM
+Ij
 TM
 TM
 TM
@@ -678,7 +1346,7 @@ TM
 TM
 TM
 TM
-Ks
+BP
 iX
 Ks
 qo
@@ -689,14 +1357,14 @@ TM
 TM
 TM
 TM
-AM
-AM
-AM
-AM
-AM
 TM
 TM
-AM
+Ij
+Ij
+Ij
+TM
+TM
+Ij
 TM
 TM
 TM
@@ -725,8 +1393,8 @@ rU
 rU
 rU
 rU
-TM
-TM
+rU
+rU
 TM
 TM
 TM
@@ -745,16 +1413,16 @@ qo
 qo
 TM
 TM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
 TM
-AM
-AM
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+TM
+Ij
+Ij
 TM
 TM
 TM
@@ -779,40 +1447,40 @@ rU
 rU
 rU
 rU
-TM
-TM
-TM
-TM
-TM
-TM
-TM
+rU
+rU
+rU
+rU
+rU
 TM
 qo
-ot
-ot
-ot
+qo
+qo
+bv
+FY
+hQ
 qo
 qo
 iX
 qo
 qo
-ot
-ot
-ot
+av
+FY
+zk
 qo
 TM
 TM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -834,41 +1502,41 @@ rU
 rU
 rU
 rU
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
+rU
+rU
+rU
+rU
+rU
+rU
+rU
 TM
 qo
+OI
+qo
+At
 ot
-ot
-ot
-ot
+PM
+ef
 iX
 Ks
 iX
+ef
 ot
-ot
-ot
+PM
 ot
 qo
 TM
 TM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -890,17 +1558,17 @@ rU
 rU
 rU
 rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
 TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
+qo
+se
 qo
 qo
 qo
@@ -917,16 +1585,16 @@ qo
 TM
 TM
 TM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -946,45 +1614,45 @@ rU
 rU
 rU
 rU
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
 TM
 TM
 qo
-ot
-ot
-ot
+se
+qo
+zk
+Ol
+bv
 qo
 iX
 Ks
-iX
+zz
 qo
+bv
 ot
-ot
-ot
+tY
 qo
 TM
 TM
 TM
 TM
-AM
-AM
-AM
-AM
-AM
+Ij
+Ij
+Ij
+Ij
+Ij
 TM
-AM
-AM
-AM
-AM
+Ij
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -1002,31 +1670,31 @@ gr
 rU
 rU
 rU
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
 TM
 TM
 qo
+UJ
+qo
+Fp
 ot
 ot
-ot
-ot
+ef
 Ks
 iX
-Ks
+Kf
+EY
 ot
 ot
-ot
-ot
+jS
 qo
 TM
 TM
@@ -1034,15 +1702,15 @@ TM
 TM
 TM
 TM
-AM
-AM
+Ij
+Ij
 TM
 TM
 TM
-AM
-AM
-AM
-AM
+Ij
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -1058,28 +1726,28 @@ gr
 rU
 rU
 rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
 TM
-TM
-TM
-TM
-XX
-VR
-sV
-mp
-GE
-aY
-eh
-TM
-TM
-TM
+qo
+se
 qo
 qo
 qo
 qo
 qo
 iX
-Ks
-iX
+Kv
+mr
 qo
 qo
 qo
@@ -1098,9 +1766,9 @@ TM
 TM
 TM
 TM
-AM
-AM
-AM
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -1114,33 +1782,33 @@ gr
 gr
 rU
 rU
-TM
-TM
-TM
-TM
-TM
-Ek
-kE
-oW
-fB
-xR
-Qx
-Lq
-TM
-TM
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
 TM
 qo
-ot
-ot
+se
+qo
+jS
+Jw
 ot
 qo
+Kv
+DA
 Ks
-iX
-Ks
 qo
-ot
-ot
-ot
+QV
+Lh
+Jw
 qo
 TM
 TM
@@ -1156,9 +1824,9 @@ qo
 TM
 TM
 TM
-AM
-AM
-AM
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -1171,32 +1839,32 @@ gr
 gr
 rU
 rU
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-We
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
+rU
 jJ
-We
-TM
 TM
 qo
+se
+qo
+av
 ot
-ot
-ot
-ot
-iX
+XB
+Wc
+oZ
 Ks
 iX
+ef
 ot
-ot
-ot
+PM
 ot
 qo
 TM
@@ -1204,18 +1872,18 @@ TM
 qo
 ZV
 fQ
-fQ
-fQ
-fQ
-ZV
-fQ
+JU
+sW
+JU
+gS
+rO
 qo
 TM
 TM
-AM
-AM
-AM
-AM
+Ij
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -1228,28 +1896,28 @@ gr
 gr
 gr
 rU
+rU
+rU
+rU
+rU
 TM
 TM
 TM
+rU
+TM
+rU
+rU
 TM
 TM
-TM
-TM
-ef
-TM
-TM
-We
-RF
-We
-TM
-TM
+qo
+se
 qo
 qo
 qo
 qo
 qo
 Ks
-iX
+NS
 Ks
 qo
 qo
@@ -1265,16 +1933,16 @@ ZV
 ZV
 ZV
 fQ
-fQ
+rO
 TM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -1284,6 +1952,9 @@ gr
 (18,1,1) = {"
 gr
 gr
+rU
+rU
+rU
 TM
 TM
 TM
@@ -1292,26 +1963,23 @@ TM
 TM
 TM
 TM
-TM
-TM
-TM
-We
-rF
-We
+rU
 TM
 TM
 qo
-ot
+UJ
+qo
+bv
 ot
 ot
 qo
-iX
-Ks
-iX
+DI
+Yg
+DI
 qo
+ru
 ot
-ot
-ot
+jS
 qo
 TM
 TM
@@ -1324,15 +1992,15 @@ Ij
 ZV
 ZV
 TM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
-AM
+TM
+Ij
+TM
+TM
+TM
+Ij
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -1341,34 +2009,34 @@ gr
 (19,1,1) = {"
 gr
 gr
+rU
+rU
 TM
-TM
-TM
+qo
 qo
 qo
 qo
 qo
 qo
-qo
 TM
-TM
-We
-qE
-We
+rU
+rU
 TM
 TM
 qo
+se
+qo
+Lh
+Jw
 ot
-ot
-ot
-ot
+ef
 Ks
 iX
 Ks
-ot
-ot
-ot
-ot
+ef
+Ol
+PM
+Fu
 qo
 TM
 TM
@@ -1384,12 +2052,12 @@ TM
 TM
 TM
 TM
-TM
-TM
-AM
-AM
-AM
-AM
+Ij
+Ij
+Ij
+Ij
+Ij
+Ij
 TM
 TM
 TM
@@ -1398,8 +2066,8 @@ gr
 (20,1,1) = {"
 gr
 gr
-TM
-TM
+rU
+rU
 TM
 qo
 Ij
@@ -1409,26 +2077,26 @@ Ij
 qo
 TM
 TM
-We
-sH
-We
+TM
 TM
 TM
 qo
-qo
-qo
-qo
-qo
-qo
-iX
+se
 qo
 qo
 qo
 qo
 qo
 qo
-TM
-TM
+mx
+qo
+qo
+qo
+qo
+qo
+qo
+qo
+qo
 qo
 fQ
 fQ
@@ -1438,15 +2106,15 @@ Ij
 fQ
 fQ
 qo
-We
-We
-We
-We
+se
+se
+TM
+Ij
 TM
 TM
 TM
-AM
-AM
+Ij
+Ij
 TM
 TM
 TM
@@ -1455,8 +2123,8 @@ gr
 (21,1,1) = {"
 gr
 gr
-TM
-TM
+rU
+rU
 TM
 qo
 Ij
@@ -1466,12 +2134,12 @@ Ij
 qo
 TM
 TM
-rE
-We
-We
 TM
 TM
 TM
+qo
+se
+se
 qo
 qo
 zY
@@ -1483,27 +2151,27 @@ zY
 zY
 qo
 qo
-TM
-TM
-TM
 qo
-fQ
-ZV
-ZV
-fQ
-ZV
-ZV
-fQ
 qo
-We
-We
-We
-We
-We
-We
+sj
+fS
+fQ
+ZV
+ZV
+fQ
+ZV
+ZV
+fQ
+fS
+UJ
+et
+se
+Ij
+Ij
 TM
-AM
-AM
+TM
+Ij
+Ij
 TM
 TM
 TM
@@ -1512,8 +2180,8 @@ TM
 (22,1,1) = {"
 gr
 gr
-TM
-TM
+rU
+rU
 TM
 qo
 Ij
@@ -1523,26 +2191,26 @@ zC
 qo
 TM
 TM
-we
-We
-IE
 TM
 TM
 TM
 qo
+LP
+lf
+YS
 zY
 zY
 AN
 AN
 AN
-AN
+Dl
 AN
 zY
 zY
-qo
-TM
-TM
-TM
+lc
+Zw
+if
+PU
 qo
 ZV
 fQ
@@ -1552,16 +2220,16 @@ fQ
 fQ
 ZV
 qo
-We
-We
-We
-ef
-We
-Ee
-Ee
-Ee
-AM
-AM
+se
+se
+UJ
+TM
+TM
+TM
+TM
+TM
+Ij
+Ij
 TM
 TM
 TM
@@ -1569,12 +2237,12 @@ TM
 (23,1,1) = {"
 gr
 gr
-TM
-TM
+rU
+rU
 TM
 qo
 Ks
-iX
+DA
 Ks
 iX
 qo
@@ -1583,28 +2251,28 @@ TM
 TM
 TM
 TM
-TM
-TM
-TM
 qo
+se
+se
+qo
+GF
+Dl
+AN
+AN
+AN
+Dl
+Dl
+Dl
 zY
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-zY
+qo
+qo
+qo
+nd
 qo
 qo
 qo
 qo
-qo
-qo
-qo
-qo
-AN
+Ku
 qo
 qo
 qo
@@ -1612,39 +2280,39 @@ qo
 TM
 TM
 TM
-Ee
-Ee
-Ee
-qo
-qo
-qo
-qo
-qo
-Ee
-Ee
+TM
+TM
+TM
+Mq
+Mq
+Dy
+Dy
+Mq
+TM
+TM
 "}
 (24,1,1) = {"
 gr
 gr
-TM
-TM
-TM
+rU
+rU
+rU
 qo
 qo
-ot
-ot
+PM
+PM
 qo
 qo
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
 qo
 qo
-qo
-qo
-qo
-qo
-qo
-qo
-qo
-zY
+GF
 AN
 zY
 od
@@ -1654,43 +2322,43 @@ zY
 AN
 zY
 qo
-od
+uk
 qo
-Fg
+oq
 qo
-od
+uk
 qo
-zY
+yw
 AN
-zY
+lh
 qo
-od
+uk
 qo
-Fg
+Kl
 TM
 TM
-qo
-qo
-qo
-qo
+Mq
+Mq
+Mq
+Mq
 od
 od
 od
-qo
-qo
-Ee
+Mq
+Mq
+TM
 "}
 (25,1,1) = {"
 gr
 gr
-TM
-TM
-TM
+rU
+rU
+rU
 qo
-AN
+AM
 ot
 ot
-AN
+Ee
 qo
 Hh
 Zc
@@ -1698,35 +2366,35 @@ Hh
 Zc
 jo
 Zc
-Hh
+Zs
 qo
 zY
 zY
 AN
 od
-Fg
+Oo
 zY
 Fg
 od
 AN
-zY
+GF
 qo
 AN
 AN
 AN
 AN
 AN
+Dl
 AN
 AN
-AN
+Dl
 AN
 AN
 AN
 AN
 AN
 TM
-TM
-qo
+Mq
 od
 od
 od
@@ -1734,134 +2402,134 @@ Fg
 zY
 Fg
 od
-qo
-Ee
+Mq
+TM
 "}
 (26,1,1) = {"
 gr
 gr
-TM
-TM
-TM
+rU
+rU
+rU
+ef
 ot
 ot
 ot
 ot
-ot
-Fg
+nD
 AN
-Br
-AN
+Ua
+Dl
 Br
 AN
 cz
+Dl
+nD
 AN
+Dl
+Dl
+Py
+GF
 Fg
+zY
+od
 AN
-AN
+Dl
+rE
 AN
 od
 zY
-Fg
+od
+zY
+od
+zY
+Py
+zY
+od
+zY
+od
 zY
 od
 AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
+tc
+Jv
+bJ
+zY
+zY
+Fg
+zY
+kE
+Mq
 TM
-AN
-zY
-zY
-zY
-zY
-Fg
-zY
-od
-qo
-Ee
 "}
 (27,1,1) = {"
 gr
 gr
-TM
-TM
-TM
+rU
+rU
+rU
+ef
 ot
 ot
-ot
-ot
-ot
-AN
+PM
+PM
+rE
 Fg
 Zc
-Fg
-Zc
-Fg
+Oo
+dN
+Oo
 Zc
 IE
-AN
+rE
 AN
 AN
 AN
 od
 zY
 Fg
+GF
+Py
+Dl
+AN
+rE
+AN
+Py
+GF
+od
+zY
+od
+zY
+Py
+GF
+Py
+zY
+od
 zY
 od
 AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
+tc
+Jv
+bJ
+zY
+zY
+Fg
+zY
+YP
+Mq
 TM
-AN
-zY
-zY
-zY
-zY
-Fg
-zY
-od
-qo
-Ee
 "}
 (28,1,1) = {"
 gr
 gr
-TM
-TM
+rU
+rU
 TM
 qo
-AN
-ot
-ot
-AN
+Ee
+PM
+PM
+aY
 qo
 AN
 Zu
@@ -1877,11 +2545,14 @@ AN
 od
 Fg
 zY
-Fg
+Oo
 od
 AN
 zY
 qo
+Dl
+Dl
+Dl
 AN
 AN
 AN
@@ -1889,30 +2560,27 @@ AN
 AN
 AN
 AN
+Dl
 AN
 AN
 AN
 AN
-AN
-AN
-AN
+Mq
+od
+od
+od
+JL
+JT
+JL
+od
+Mq
 TM
-qo
-od
-od
-od
-Fg
-zY
-Fg
-od
-qo
-Ee
 "}
 (29,1,1) = {"
 gr
 gr
-TM
-TM
+rU
+rU
 TM
 qo
 qo
@@ -1920,13 +2588,13 @@ ot
 ot
 qo
 qo
-qo
-qo
-qo
-qo
-qo
-qo
-qo
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
 qo
 qo
 zY
@@ -1939,37 +2607,37 @@ zY
 AN
 zY
 qo
-od
+ik
 qo
-Fg
+Tw
 qo
-od
+fB
 qo
-zY
+lh
 AN
-zY
+lh
 qo
-od
+ik
 qo
-Fg
+uh
+qo
 TM
+Mq
+Mq
+Mq
+Mq
+od
+Vq
+od
+Mq
+Mq
 TM
-qo
-qo
-qo
-qo
-od
-od
-od
-qo
-qo
-Ee
 "}
 (30,1,1) = {"
 gr
 gr
-TM
-TM
+rU
+rU
 TM
 qo
 Ks
@@ -1982,15 +2650,15 @@ TM
 TM
 TM
 TM
-TM
-TM
-TM
+qo
+UJ
+UJ
 qo
 zY
 AN
 AN
-AN
-AN
+Dl
+Dl
 AN
 AN
 AN
@@ -1998,12 +2666,15 @@ zY
 qo
 qo
 qo
+Ug
 qo
 qo
 qo
 qo
+Ku
 qo
-AN
+qo
+qo
 qo
 qo
 qo
@@ -2011,22 +2682,19 @@ qo
 TM
 TM
 TM
-Ee
-Ee
-Ee
-qo
-qo
-qo
-qo
-qo
-Ee
-Ee
+Mq
+Mq
+Mq
+Mq
+Mq
+TM
+TM
 "}
 (31,1,1) = {"
 gr
 gr
-TM
-TM
+rU
+rU
 TM
 qo
 zC
@@ -2037,52 +2705,52 @@ qo
 TM
 TM
 TM
-nD
-TM
-TM
 TM
 TM
 qo
+se
+UJ
+fS
 zY
 zY
 AN
 AN
-AN
-AN
+Dl
+Dl
 AN
 zY
 zY
+fS
+UJ
 qo
-TM
-TM
-TM
-TM
+FF
+qo
 qo
 Sz
-iX
+DA
 od
 iX
 Sz
 qo
+UJ
+se
+UJ
+qo
 TM
 TM
 TM
 TM
 TM
 TM
-Ee
-Ee
-Ee
-Ee
-Ee
-Ee
-Ee
+TM
+TM
+TM
 rU
 "}
 (32,1,1) = {"
 gr
 gr
-TM
+rU
 TM
 TM
 qo
@@ -2096,9 +2764,9 @@ TM
 TM
 TM
 TM
-TM
-TM
-TM
+qo
+se
+se
 qo
 qo
 zY
@@ -2110,21 +2778,21 @@ zY
 zY
 qo
 qo
-TM
-TM
-TM
-TM
 qo
+qo
+LP
+BS
+Mx
 JP
 od
 zY
-od
+Py
 JP
+my
+xQ
+WM
+se
 qo
-TM
-TM
-TM
-TM
 TM
 qo
 qo
@@ -2139,7 +2807,7 @@ rU
 (33,1,1) = {"
 gr
 gr
-TM
+rU
 TM
 TM
 qo
@@ -2150,9 +2818,9 @@ Ij
 qo
 TM
 TM
-TM
-TM
-TM
+Mq
+Mq
+Mq
 qo
 qo
 qo
@@ -2161,7 +2829,7 @@ qo
 qo
 qo
 qo
-Ks
+tt
 qo
 qo
 qo
@@ -2175,13 +2843,13 @@ qo
 Sz
 iX
 od
-iX
+DA
 gC
 qo
-TM
-TM
-TM
-TM
+UJ
+UJ
+UJ
+qo
 TM
 qo
 kr
@@ -2197,30 +2865,30 @@ rU
 gr
 gr
 rU
-TM
-TM
-qo
-qo
-qo
-qo
-qo
-qo
-TM
-TM
-TM
-TM
+rU
 TM
 qo
-zk
-ot
-zk
-ot
-zk
 qo
+qo
+qo
+qo
+qo
+TM
+TM
+Mq
+we
+se
+qo
+Ci
+od
+Us
+od
+EZ
+Mq
 zY
 iX
 zY
-qo
+Mq
 kr
 kr
 kr
@@ -2231,7 +2899,7 @@ qo
 qo
 qo
 qo
-ot
+xO
 qo
 qo
 qo
@@ -2254,6 +2922,8 @@ rU
 gr
 gr
 rU
+rU
+rU
 TM
 TM
 TM
@@ -2262,27 +2932,25 @@ TM
 TM
 TM
 TM
-TM
-TM
-TM
-TM
-TM
-qo
-ot
-ot
-ot
-ot
-ot
-ot
+Mq
+Rv
+se
+Nk
+od
+Sc
+HM
+Dl
+od
+ef
 iX
 Ks
-iX
+Hw
+ef
 ot
+GP
+Ol
 ot
-ot
-ot
-ot
-ot
+PM
 ot
 qo
 zY
@@ -2311,32 +2979,32 @@ gr
 gr
 gr
 rU
+rU
+rU
 TM
 TM
 TM
+rU
+rU
+rU
 TM
 TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
+Mq
+eJ
+se
 qo
-zk
-ot
-ot
-ot
-zk
-qo
+Us
+AN
+od
+Dl
+Us
+Mq
+KP
+DA
 Ks
-iX
-Ks
-qo
+Mq
 kr
-ot
+rq
 Lh
 zk
 ot
@@ -2345,7 +3013,7 @@ qo
 Fg
 nX
 Lh
-ot
+PM
 nX
 Lh
 nX
@@ -2357,7 +3025,7 @@ qo
 qo
 nX
 nX
-ot
+Ol
 qo
 TM
 TM
@@ -2368,47 +3036,47 @@ gr
 gr
 rU
 rU
+rU
+rU
+rU
+rU
+rU
+rU
 TM
+rU
+rU
 TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-TM
-qo
-ot
-ot
-zk
-ot
-ot
-qo
-iX
-Ks
-iX
-qo
+Mq
+Mq
+Mq
+Bw
+od
+UR
+rt
+VM
+od
+Mq
+DA
+Kv
+Ar
+Mq
 kr
-ot
-nX
+GP
+Ak
 nX
 ot
 kr
 qo
 zY
 nX
-zk
-ot
+jS
+PM
 nX
 zk
 nX
 Lh
-ot
-AN
+Ol
+Dl
 AN
 AN
 La
@@ -2426,47 +3094,47 @@ gr
 rU
 rU
 rU
+rU
+rU
+rU
+rU
+rU
 TM
 TM
-TM
-TM
-TM
-TM
-TM
-TM
+rU
 TM
 TM
 TM
 TM
 qo
-zk
-ot
-ot
-ot
-zk
-qo
+Xi
+Dl
+GF
+AN
+Ci
+Mq
+KP
+dv
 Ks
-iX
-Ks
-qo
+Mq
 kr
 ot
-ot
+PM
 ot
 ot
 kr
 qo
 zY
 ot
-ot
-ot
+PM
+PM
 ot
 ot
 ot
 ot
 ot
 He
-AN
+Dl
 AN
 qo
 qo
@@ -2485,47 +3153,47 @@ rU
 rU
 rU
 rU
+rU
+rU
+rU
+rU
 TM
 TM
 TM
 TM
 TM
 TM
-TM
-TM
-TM
-TM
-qo
-ot
-ot
-zk
-ot
-ot
-qo
+Bw
+od
+AN
+Us
+UR
+od
+Mq
 iX
-Ks
-iX
-qo
+Kv
+Ar
+Mq
 kr
-ot
+PM
+Ak
 nX
-nX
-ot
+GP
 kr
 qo
 zY
 ot
+Ol
 ot
 ot
 ot
 ot
-ot
-ot
+PM
 ot
 Nt
+Dl
 AN
-AN
-qo
+OJ
 TM
 TM
 TM
@@ -2544,30 +3212,30 @@ rU
 rU
 rU
 rU
+rU
+rU
 TM
 TM
 TM
 TM
-TM
-TM
-TM
+rU
 TM
 qo
-zk
-ot
-ot
-ot
-zk
-qo
-Ks
-iX
-Ks
-qo
+Us
+Sc
+od
+Dl
+HB
+Mq
+KP
+DA
+ct
+Mq
 kr
 ot
 zk
 hQ
-ot
+Fw
 kr
 qo
 zY
@@ -2575,14 +3243,14 @@ nX
 zk
 ot
 nX
-zk
-nX
-zk
+jS
+Ak
+jS
 ot
 AN
 AN
-AN
-qo
+Ia
+TM
 TM
 TM
 TM
@@ -2606,40 +3274,40 @@ TM
 TM
 TM
 TM
+rU
+rU
 TM
-TM
-TM
-qo
-ot
-ot
-ot
-ot
-ot
-ot
-iX
+Bw
+od
+Dl
+HM
+AN
+od
+ef
+Vk
 Ks
 iX
+ef
 ot
+PM
 ot
-ot
-ot
-ot
-ot
-ot
+PM
+Yd
+Ol
 qo
 Fg
 nX
 hQ
 ot
-nX
-zk
+Ak
+jS
 nX
 Lh
 ot
 ot
 zY
 qo
-qo
+TM
 TM
 TM
 TM
@@ -2663,23 +3331,23 @@ rU
 rU
 TM
 TM
-TM
+rU
 TM
 TM
 qo
-zk
-ot
-zk
-ot
-zk
-qo
+Uh
+od
+Us
+od
+Ci
+Mq
 Ks
 iX
 Ks
-qo
+Mq
 kr
 kr
-kr
+eh
 kr
 kr
 kr
@@ -2720,8 +3388,8 @@ rU
 rU
 rU
 TM
-TM
-TM
+rU
+rU
 TM
 qo
 qo
@@ -2850,8 +3518,8 @@ TM
 TM
 TM
 TM
-TM
-TM
+rU
+rU
 TM
 TM
 TM
@@ -2905,10 +3573,10 @@ TM
 TM
 TM
 TM
-TM
-TM
-TM
-TM
+rU
+rU
+rU
+rU
 TM
 TM
 TM
@@ -2961,10 +3629,10 @@ gr
 gr
 gr
 TM
-TM
-TM
-TM
-TM
+rU
+rU
+rU
+rU
 TM
 TM
 TM
