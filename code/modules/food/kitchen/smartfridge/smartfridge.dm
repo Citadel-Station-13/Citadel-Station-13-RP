@@ -261,3 +261,15 @@
 			to_chat(usr, "<span class='warning'>Access denied.</span>")
 			return TRUE
 	return ..()
+
+// Cook's Food Display
+/obj/machinery/smartfridge/food
+	name = "\improper Hot Foods Display"
+	desc = "A climated storage for dishes waiting to be eaten"
+
+/obj/machinery/smartfridge/food/accept_check(obj/item/O as obj)
+	if(istype(O,/obj/item/reagent_containers/food/snacks) && !istype(O,/obj/item/reagent_containers/food/snacks/grown)) //No fruits
+		return TRUE
+	if(istype(O,/obj/item/reagent_containers/food/condiment)) // Condiments need storage as well
+		return TRUE
+	return FALSE

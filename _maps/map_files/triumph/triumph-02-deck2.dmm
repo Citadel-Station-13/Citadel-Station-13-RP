@@ -1235,12 +1235,6 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
-"dQ" = (
-/obj/structure/sign/painting/public{
-	pixel_x = -32
-	},
-/turf/simulated/floor/wood,
-/area/quartermaster/foyer)
 "dR" = (
 /obj/machinery/appliance/cooker/fryer,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1955,7 +1949,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
 "fI" = (
-/obj/machinery/smartfridge/seeds,
+/obj/machinery/smartfridge/drying_rack,
 /turf/simulated/floor/tiled/techfloor,
 /area/hydroponics)
 "fJ" = (
@@ -6828,7 +6822,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "sS" = (
-/obj/machinery/smartfridge/produce,
+/obj/machinery/smartfridge/food,
 /turf/simulated/wall,
 /area/crew_quarters/kitchen)
 "sT" = (
@@ -7469,7 +7463,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "uw" = (
-/obj/machinery/smartfridge/produce,
+/obj/machinery/smartfridge,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "ux" = (
@@ -8050,7 +8044,9 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 4
 	},
-/obj/machinery/smartfridge/drying_rack,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "wj" = (
@@ -13250,9 +13246,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/sign/painting/public{
-	pixel_x = 32
-	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "LB" = (
@@ -16362,12 +16355,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
-"UL" = (
-/obj/structure/sign/painting/public{
-	pixel_x = -32
-	},
-/turf/simulated/floor/carpet/turcarpet,
-/area/crew_quarters/recreation_area_hallway)
 "UM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -17415,8 +17402,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "Xp" = (
+/obj/machinery/seed_storage/garden,
 /obj/machinery/camera/network/civilian,
-/obj/machinery/vending/hydroseeds,
 /turf/simulated/floor/tiled/techfloor,
 /area/hydroponics)
 "Xq" = (
@@ -17779,12 +17766,12 @@
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "Ym" = (
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/machinery/firealarm{
 	layer = 3.3;
 	pixel_y = 26
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -17903,6 +17890,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
+"YE" = (
+/obj/machinery/smartfridge,
+/turf/simulated/wall,
+/area/crew_quarters/kitchen)
 "YF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -24590,7 +24581,7 @@ SG
 SG
 Qb
 ky
-Zy
+YE
 sU
 ub
 mM
@@ -28146,7 +28137,7 @@ rL
 Rs
 gV
 OA
-UL
+WV
 rO
 LP
 zh
@@ -28558,7 +28549,7 @@ uT
 nc
 of
 SK
-dQ
+uT
 mQ
 mQ
 mQ
