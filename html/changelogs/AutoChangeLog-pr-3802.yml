@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - bugfix: "Fixed Maintdrones not indicating that they have been abandond when the player inside ghosts."
