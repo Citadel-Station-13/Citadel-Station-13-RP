@@ -293,9 +293,12 @@
 	},
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
-"qY" = (
-/obj/structure/prop/prism/externalcont{
-	degrees_from_north = 270
+"rg" = (
+/obj/structure/grille/cult,
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
 	},
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
@@ -580,6 +583,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
+"Dv" = (
+/obj/structure/prop/prism/externalcont{
+	degrees_from_north = 180;
+	dialID = null
+	},
+/turf/simulated/floor/classp,
+/area/class_p/POIs/archaic_temple)
 "Dy" = (
 /obj/machinery/door/blast/puzzle{
 	color = "#1F1A04";
@@ -639,11 +649,10 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Fq" = (
-/obj/structure/prop/prism/externalcont{
-	degrees_from_north = 180;
-	dialID = null
+/obj/effect/decal/cleanable/blood/writing{
+	desc = "It looks like blood."
 	},
-/turf/simulated/floor/classp,
+/turf/simulated/wall/ironphoron/classp,
 /area/class_p/POIs/archaic_temple)
 "Fu" = (
 /obj/structure/bed/chair/wood/wings{
@@ -750,6 +759,12 @@
 	},
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
+"JC" = (
+/obj/structure/prop/prism/externalcont{
+	degrees_from_north = 270
+	},
+/turf/simulated/floor/classp,
+/area/class_p/POIs/archaic_temple)
 "JL" = (
 /turf/simulated/floor/trap/phoron/classp{
 	id = "master_trigger"
@@ -810,15 +825,6 @@
 /obj/structure/table/hardwoodtable,
 /obj/item/flame/candle/black,
 /turf/simulated/floor/wood/classp,
-/area/class_p/POIs/archaic_temple)
-"Lt" = (
-/obj/structure/grille/cult,
-/obj/structure/window/reinforced/polarized/full{
-	color = "#222222";
-	name = "reflective window";
-	opacity = 1
-	},
-/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "LP" = (
 /obj/structure/prop/prism/incremental{
@@ -1096,6 +1102,12 @@
 	},
 /turf/simulated/floor/bmarble/classp,
 /area/class_p/POIs/archaic_temple)
+"YL" = (
+/obj/structure/prop/lock/projectile{
+	lockID = "dmirr"
+	},
+/turf/simulated/floor/classp,
+/area/class_p/POIs/archaic_temple)
 "YP" = (
 /obj/effect/trap/launcher/fireball_aoe{
 	dir = 1;
@@ -1164,12 +1176,6 @@
 /area/class_p/POIs/archaic_temple)
 "Zx" = (
 /turf/simulated/floor/water/acid,
-/area/class_p/POIs/archaic_temple)
-"ZO" = (
-/obj/structure/prop/lock/projectile{
-	lockID = "dmirr"
-	},
-/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "ZV" = (
 /turf/simulated/floor/outdoors/grass/heavy/interior/classp,
@@ -1707,7 +1713,7 @@ TM
 TM
 qo
 OI
-qo
+Fq
 At
 ot
 PM
@@ -2875,11 +2881,11 @@ qo
 qo
 qo
 Mq
-Fq
-ZO
+Dv
+YL
 Mq
 Mq
-Lt
+rg
 Mq
 Mq
 TM
@@ -2932,7 +2938,7 @@ se
 UJ
 qo
 Mq
-qY
+JC
 se
 se
 se
