@@ -98,24 +98,20 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 		return
 
 //Sandbag Barricades
-
-//To Add/Test:
-//Table icon gen/checking.
-//Climbing over a la table
-var/list/sandbag_icon_cache = list()
-
 /obj/structure/sandbag
 	name = "sandbag barricade"
 	desc = "A barrier made of stacked sandbags."
-	icon = 'icons/obj/tables.dmi'
-	icon_state = "sandbags"
-	anchored = 1
-	density = 1
+	icon = 'icons/obj/smooth_structures/sandbags.dmi'
+	icon_state = "sandbags-0"
+	base_icon_state = "sandbags"
+	anchored = TRUE
+	density = TRUE
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_SANDBAGS)
+	canSmoothWith = list(SMOOTH_GROUP_SANDBAGS)
 	var/health = 100
 	var/maxhealth = 100
 	var/vestigial = TRUE
-
-	connections = list("nw0", "ne0", "sw0", "se0")
 
 /obj/structure/sandbag/Initialize(mapload, material_name)
 	. = ..()
@@ -222,91 +218,3 @@ var/list/sandbag_icon_cache = list()
 		new /obj/item/ore/glass(src.loc)
 	qdel(src)
 	return
-
-/proc/get_sandbag_image(var/icon/sicon,var/siconstate,var/sdir)
-	var/icon_cache_key = "\ref[sicon]-[siconstate]-[sdir]"
-	var/image/I = sandbag_icon_cache[icon_cache_key]
-	if(!I)
-		I = image(icon = sicon, icon_state = siconstate, dir = sdir)
-		sandbag_icon_cache[icon_cache_key] = I
-
-	return I
-
-/obj/structure/sandbag/update_icon()
-	if(vestigial)
-		icon_state = "sandbags"
-		overlays.Cut()
-
-		for(var/i = 1 to 4)
-			var/image/I = get_sandbag_image(icon, "sandbags_[connections[i]]", 1<<(i-1))
-			overlays += I
-
-		overlays.Cut()
-		var/type = 0
-		var/sandbagdirs = 0
-		for(var/direction in list(turn(dir,90), turn(dir,-90)) )
-			var/obj/structure/sandbag/S = locate(/obj/structure/sandbag ,get_step(src,direction))
-			if (S && S.dir == src.dir)
-				type++
-				sandbagdirs |= direction
-
-		type = "[type]"
-		if (type=="1")
-			if (sandbagdirs & turn(dir,90))
-				type += "-"
-			if (sandbagdirs & turn(dir,-90))
-				type += "+"
-
-// set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
-/obj/structure/sandbag/update_connections(propagate=0)
-	if(!vestigial)
-		connections = list("0", "0", "0", "0")
-		if(propagate)
-			for(var/obj/structure/sandbag/S in orange(src, 1))
-				S.update_connections()
-				S.update_icon()
-			return
-
-	var/list/blocked_dirs = list()
-	for(var/obj/structure/window/W in get_turf(src))
-		if(W.is_fulltile())
-			connections = list("0", "0", "0", "0")
-			return
-		blocked_dirs |= W.dir
-
-	for(var/D in list(NORTH, SOUTH, EAST, WEST) - blocked_dirs)
-		var/turf/T = get_step(src, D)
-		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir == GLOB.reverse_dir[D])
-				blocked_dirs |= D
-				break
-			else
-				if(W.dir != D) // it's off to the side
-					blocked_dirs |= W.dir|D // blocks the diagonal
-
-	for(var/D in list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST) - blocked_dirs)
-		var/turf/T = get_step(src, D)
-
-		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir & GLOB.reverse_dir[D])
-				blocked_dirs |= D
-				break
-
-	// Blocked cardinals block the adjacent diagonals too. Prevents weirdness with tables.
-	for(var/x in list(NORTH, SOUTH))
-		for(var/y in list(EAST, WEST))
-			if((x in blocked_dirs) || (y in blocked_dirs))
-				blocked_dirs |= x|y
-
-	var/list/connection_dirs = list()
-
-	for(var/obj/structure/sandbag/S in orange(src, 1))
-		var/S_dir = get_dir(src, S)
-		if(S_dir in blocked_dirs)
-			continue
-		if(propagate)
-			spawn(0)
-				S.update_connections()
-				S.update_icon()
-
-	connections = dirs_to_corner_states(connection_dirs)
