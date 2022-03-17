@@ -101,7 +101,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 /obj/structure/sandbag
 	name = "sandbag barricade"
 	desc = "A barrier made of stacked sandbags."
-	icon = 'icons/obj/smooth_structures/sandbags.dmi'
+	icon = 'icons/obj/structures/sandbags.dmi'
 	icon_state = "sandbags-0"
 	base_icon_state = "sandbags"
 	anchored = TRUE
