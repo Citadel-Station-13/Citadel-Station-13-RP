@@ -7,6 +7,7 @@
 	// new sheets, how do you know the age of the stack? If you want sheets to 'decay', see go_missing_chance
 	entries_decay_at = 0
 	entry_decay_weight = 0
+	// // // //
 
 	var/max_storage = 0
 	var/store_per_type = FALSE // If true, will store up to max_storage for each type stored

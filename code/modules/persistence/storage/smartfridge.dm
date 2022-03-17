@@ -51,20 +51,13 @@
 
 		// Delete some stacks if we want
 		if(stacks_go_missing)
-			var/fuzzy = rand(-5,5)
-			switch(count / max_amount)
-				if(0 to 1)
-					count -= 10+fuzzy // 1 stack or less, lose 10
-				if(1 to 10)
-					count -= max_amount+fuzzy // 1 to 10 stacks, lose a stack
-				if(10 to INFINITY)
-					count -= max_amount*3+fuzzy // 10+ stacks, lose 3 stacks
+			var/fuzzy = rand(55,65)*0.01 // loss of 35-45% with rounding down
+			count = round(count*fuzzy)
 			if(count <= 0)
 				continue
 
 		while(count > 0)
-			inst = new real_path
-			inst.amount = min(count, max_amount)
+			inst = new real_path(null, min(count, max_amount))
 			count -= inst.get_amount()
 			. += inst
 
@@ -78,6 +71,16 @@
 /datum/persistent/storage/smartfridge/produce/lossy
 	name = "fruit storage lossy"
 	go_missing_chance = 12.5 // 10% loss between rounds
+
+/datum/persistent/storage/smartfridge/produce/generate_items(var/list/L)			// Mostly same as storage/generate_items() but without converting string to path
+	. = list()
+	for(var/fruit_type in L)
+		for(var/i in 1 to L[fruit_type])
+			if(prob(go_missing_chance))
+				continue
+			var/atom/A = create_item(fruit_type)
+			if(!QDELETED(A))
+				. += A
 
 /datum/persistent/storage/smartfridge/produce/create_item(var/seedtype)
 	return new /obj/item/reagent_containers/food/snacks/grown(null, seedtype) // Smartfridge will be stock()ed with it, loc is unimportant

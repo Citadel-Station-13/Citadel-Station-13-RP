@@ -1,7 +1,6 @@
 /obj/machinery/smartfridge/drying_rack
 	name = "\improper Drying Rack"
 	desc = "A machine for drying plants."
-	wrenchable = 1
 	icon_state = "drying_rack"
 	icon_base = "drying_rack"
 
@@ -9,12 +8,12 @@
 	if(istype(O, /obj/item/reagent_containers/food/snacks/))
 		var/obj/item/reagent_containers/food/snacks/S = O
 		if (S.dried_type)
-			return 1
+			return TRUE
 
 	if(istype(O, /obj/item/stack/wetleather))
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 /obj/machinery/smartfridge/drying_rack/process()
 	..()

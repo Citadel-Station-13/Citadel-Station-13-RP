@@ -22,7 +22,7 @@
 	var/locked = 0
 	var/scan_id = 1
 	var/is_secure = 0
-	var/wrenchable = 0
+	var/wrenchable = TRUE
 	var/datum/wires/smartfridge/wires = null
 	var/persistent = null // Path of persistence datum used to track contents
 

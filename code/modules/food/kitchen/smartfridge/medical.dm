@@ -5,12 +5,12 @@
 
 /obj/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/glass/))
-		return 1
+		return TRUE
 	if(istype(O,/obj/item/storage/pill_bottle/))
-		return 1
+		return TRUE
 	if(istype(O,/obj/item/reagent_containers/pill/))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/secure/virology
 	name = "\improper Refrigerated Virus Storage"
@@ -20,10 +20,10 @@
 
 /obj/machinery/smartfridge/secure/virology/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/glass/beaker/vial/))
-		return 1
+		return TRUE
 	if(istype(O,/obj/item/virusdish/))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/chemistry //Is this used anywhere? It's not secure.
 	name = "\improper Smart Chemical Storage"
@@ -31,8 +31,8 @@
 
 /obj/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_containers))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/chemistry/virology //Same
 	name = "\improper Smart Virus Storage"

@@ -6,7 +6,7 @@
 /datum/persistent/paintings/SetFilename()
 	filename = "data/persistent/paintings.json"
 
-/datum/persistent/paintings/Initialize()
+/datum/persistent/paintings/Initialize(mapload)
 	. = ..()
 	if(fexists(filename))
 		SSpersistence.all_paintings = json_decode(file2text(filename))
@@ -46,6 +46,7 @@
 			else
 				log_and_message_admins("Attempted to delete a painting, but failed.")
 			over --
+
 
 	if(fexists(filename))
 		fdel(filename)

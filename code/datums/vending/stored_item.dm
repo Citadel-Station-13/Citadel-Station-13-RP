@@ -2,11 +2,12 @@
 *	Datum that holds the instances and information about the items stored. Currently used in SmartFridges and Vending Machines.
 */
 /datum/stored_item
-		var/item_name = "name"	//Name of the item(s) displayed
-		var/item_path = null
-		var/amount = 0
-		var/list/instances		//What items are actually stored
-		var/stored				//The thing holding it is
+	var/item_name = "name"	//Name of the item(s) displayed
+	var/item_desc
+	var/item_path = null
+	var/amount = 0
+	var/list/instances		//What items are actually stored
+	var/stored				//The thing holding it is
 
 /datum/stored_item/New(var/stored, var/path, var/name = null, var/amount = 0)
 	src.item_path = path
@@ -59,6 +60,12 @@
 		var/new_product = new item_path(stored)
 		instances += new_product
 
+/datum/stored_item/proc/refill_products(var/refill_amount)
+	if(!instances)
+		init_products()
+	for(var/i = 1 to refill_amount)
+		var/new_product = new item_path(stored)
+		instances += new_product
 
 /datum/stored_item/stack/get_amount()
 	return amount
@@ -68,7 +75,7 @@
 	if(.)
 		var/obj/item/stack/S = product
 		if(istype(S))
-			amount += S.amount
+			amount += S.get_amount()
 
 /datum/stored_item/stack/get_product(var/product_location, var/count)
 	if(!LAZYLEN(instances))
@@ -89,6 +96,8 @@
 		for(var/obj/item/stack/T as anything in instances)
 			if(count <= 0)
 				break
+			if(T.get_amount() <= count)
+				instances -=T
 			count -= T.transfer_to(S, count)
 
 	S.forceMove(product_location)
