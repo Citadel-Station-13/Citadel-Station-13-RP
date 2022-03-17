@@ -280,7 +280,7 @@
 	log_emote("POINTED: [key_name(src)] pointed at [A] ([COORD(A)]).")
 	return 1
 
-/mob/verb/set_relative_layer()
+/mob/verb/set_self_relative_layer()
 	name = "Set relative layer"
 	desc = "Set your relative layer to other mobs on the same layer as yourself"
 	set src = usr
