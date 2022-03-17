@@ -6,7 +6,7 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "donutbox"
 	name = "donut box"
-	max_storage_space = ITEMSIZE_COST_SMALL * 6
+	max_storage_space = ITEM_SIZE_COST_SMALL * 6
 	can_hold = list(/obj/item/reagent_containers/food/snacks/donut)
 	foldable = /obj/item/stack/material/cardboard
 	starts_with = list(/obj/item/reagent_containers/food/snacks/donut/normal = 6)
@@ -30,7 +30,7 @@
 	icon_state = "wormcan"
 	name = "can of worms"
 	desc = "You probably do want to open this can of worms."
-	max_storage_space = ITEMSIZE_COST_TINY * 6
+	max_storage_space = ITEM_SIZE_COST_TINY * 6
 	can_hold = list(
 		/obj/item/reagent_containers/food/snacks/wormsickly,
 		/obj/item/reagent_containers/food/snacks/worm,
@@ -50,7 +50,7 @@
 	icon_state = "wormcan_sickly"
 	name = "can of sickly worms"
 	desc = "You probably don't want to open this can of worms."
-	max_storage_space = ITEMSIZE_COST_TINY * 6
+	max_storage_space = ITEM_SIZE_COST_TINY * 6
 	starts_with = list(/obj/item/reagent_containers/food/snacks/wormsickly = 6)
 
 /obj/item/storage/box/wormcan/sickly/update_icon(var/itemremoved = 0)
@@ -61,7 +61,7 @@
 	icon_state = "wormcan_deluxe"
 	name = "can of deluxe worms"
 	desc = "You absolutely want to open this can of worms."
-	max_storage_space = ITEMSIZE_COST_TINY * 6
+	max_storage_space = ITEM_SIZE_COST_TINY * 6
 	starts_with = list(/obj/item/reagent_containers/food/snacks/wormdeluxe = 6)
 
 /obj/item/storage/box/wormcan/deluxe/update_icon(var/itemremoved = 0)
@@ -75,7 +75,7 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"
-	max_storage_space = ITEMSIZE_COST_TINY * 3
+	max_storage_space = ITEM_SIZE_COST_TINY * 3
 	sharp = 1
 	edge = 1
 	force = 15

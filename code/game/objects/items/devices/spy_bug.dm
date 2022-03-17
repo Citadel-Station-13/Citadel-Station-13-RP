@@ -4,7 +4,7 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "camgrenade"
 	item_state = "empgrenade"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	force = 0
 	throwforce = 5.0
 	throw_range = 15
@@ -45,7 +45,7 @@
 	icon_state = "camgrenadebroken"
 	item_state = "empgrenade"
 	force = 5.0
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throwforce = 5.0
 	throw_range = 15
 	throw_speed = 3
@@ -58,7 +58,7 @@
 	icon_state = "eshield"
 	item_state = "nothing"
 	layer = TURF_LAYER+0.2
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 	origin_tech = list(TECH_ENGINEERING = 1, TECH_ILLEGAL = 3) //crush it and you lose the data
 	force = 0
@@ -73,7 +73,7 @@
 	icon_state = "eshield"
 	item_state = "nothing"
 	layer = TURF_LAYER+0.2
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1, TECH_ILLEGAL = 3)
 	camtype = /obj/machinery/camera/bug/spy
@@ -127,7 +127,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "forensic0"
 	item_state = "electronic"
-	w_class  = ITEMSIZE_SMALL
+	w_class  = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 
 	var/operating = 0

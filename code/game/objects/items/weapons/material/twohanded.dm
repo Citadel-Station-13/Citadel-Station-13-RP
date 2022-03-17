@@ -17,7 +17,7 @@
  * Twohanded
  */
 /obj/item/material/twohanded
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	var/wielded = 0
 	var/force_wielded = 0
 	var/force_unwielded
@@ -100,7 +100,7 @@
 	dulled_divisor = 0.6	//Still metal on a stick
 	sharp = 1
 	edge = 1
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	slot_flags = SLOT_BACK
 	force_wielded = 30
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
@@ -198,7 +198,7 @@
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	description_info = "This weapon can strike from two tiles away, and over certain objects such as tables, or other people."
 	force = 10
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	slot_flags = SLOT_BACK
 	force_divisor = 0.35 			// 10 when wielded with hardness 30 (glass)
 	unwielded_force_divisor = 0.1
@@ -286,7 +286,7 @@
 	unwielded_force_divisor = 0.25
 	force_divisor = 0.6 // 9/36 with hardness 60 (steel) and 0.25 unwielded divisor
 	hitsound = 'sound/weapons/heavysmash.ogg'
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	slowdown = 1.5
 	dulled_divisor = 0.95	//Still metal on a stick
 	sharp = 0

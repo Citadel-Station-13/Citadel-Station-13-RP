@@ -10,7 +10,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	flags = NOCONDUCT
 	unacidable = 0 //tissues does dissolve in acid
 	drop_sound = 'sound/effects/splat.ogg'
@@ -157,7 +157,7 @@
 	icon_state = "waxcomb"
 	matter = list("wax" = 100)
 	volume = 30
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,30)
 	prefill = list("honey" = 30)
@@ -168,7 +168,7 @@
 	icon_state = "waxcomb"
 	matter = list("wax" = 100)
 	volume = 30
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,30)
 	prefill = list("cherryjelly" = 30)

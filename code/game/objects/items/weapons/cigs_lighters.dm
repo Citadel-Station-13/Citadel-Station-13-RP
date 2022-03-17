@@ -30,7 +30,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "match_unlit"
 	var/burnt = 0
 	var/smoketime = 5
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	origin_tech = list(TECH_MATERIAL = 1)
 	slot_flags = SLOT_EARS
 	attack_verb = list("burnt", "singed")
@@ -268,7 +268,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cig"
 	item_state = "cig"
 	throw_speed = 0.5
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
 	attack_verb = list("burnt", "singed")
 	type_butt = /obj/item/cigbutt
@@ -382,7 +382,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A manky old cigarette butt."
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "cigbutt"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 	throwforce = 1
 
@@ -523,7 +523,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items.dmi'
 	icon_state = "lighter-g"
 	item_state = "lighter-g"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	throwforce = 4
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")

@@ -4,9 +4,9 @@
 
 /obj/item/clothing/suit/storage/Initialize(mapload)
 	. = ..()
-	pockets = new/obj/item/storage/internal(src, slots, ITEMSIZE_SMALL)	// Fit only pocket sized items
-	pockets.max_w_class = ITEMSIZE_SMALL				// Fit only pocket sized items
-	pockets.max_storage_space = ITEMSIZE_COST_SMALL * 2
+	pockets = new/obj/item/storage/internal(src, slots, ITEM_SIZE_SMALL)	// Fit only pocket sized items
+	pockets.max_w_class = ITEM_SIZE_SMALL				// Fit only pocket sized items
+	pockets.max_storage_space = ITEM_SIZE_COST_SMALL * 2
 
 /obj/item/clothing/suit/storage/Destroy()
 	QDEL_NULL(pockets)
@@ -90,8 +90,8 @@
 /obj/item/clothing/suit/storage/vest/heavy/Initialize(mapload)
 	. = ..()
 	pockets = new/obj/item/storage/internal(src)
-	pockets.max_w_class = ITEMSIZE_SMALL
-	pockets.max_storage_space = ITEMSIZE_COST_SMALL * 4
+	pockets.max_w_class = ITEM_SIZE_SMALL
+	pockets.max_storage_space = ITEM_SIZE_COST_SMALL * 4
 
 /obj/item/clothing/suit/storage/vest
 	var/icon_badge

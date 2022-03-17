@@ -3,7 +3,7 @@
 	icon_state = "spleen"
 	organ_tag = O_SPLEEN
 	parent_organ = BP_TORSO
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 	var/spleen_tick = 20 // The number of ticks between Spleen cycles.
 	var/spleen_efficiency = 1 // A multiplier for how efficient this spleen is.

@@ -65,11 +65,11 @@ obj/check_airflow_movable(n)
 	if(isnull(w_class))
 		if(n < dense_pressure) return 0 //most non-item objs don't have a w_class yet
 	switch(w_class)
-		if(ITEMSIZE_TINY,ITEMSIZE_SMALL)
+		if(ITEM_SIZE_TINY,ITEM_SIZE_SMALL)
 			if(n < lightest_pressure) return 0
-		if(ITEMSIZE_NORMAL)
+		if(ITEM_SIZE_NORMAL)
 			if(n < light_pressure) return 0
-		if(ITEMSIZE_LARGE,ITEMSIZE_HUGE)
+		if(ITEM_SIZE_LARGE,ITEM_SIZE_HUGE)
 			if(n < medium_pressure) return 0
 		else
 			if(n < dense_pressure) return 0

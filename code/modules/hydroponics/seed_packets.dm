@@ -7,7 +7,7 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 	name = "packet of seeds"
 	icon = 'icons/obj/seeds.dmi'
 	icon_state = "blank"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 	var/seed_type
 	var/datum/seed/seed

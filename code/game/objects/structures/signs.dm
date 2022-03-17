@@ -5,7 +5,7 @@
 	density = 0
 	plane = OBJ_PLANE //VOREStation Edit
 	layer = ABOVE_JUNK_LAYER //VOREStation Edit
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 
 /obj/structure/sign/ex_act(severity)
 	switch(severity)
@@ -39,7 +39,7 @@
 	name = "sign"
 	desc = ""
 	icon = 'icons/obj/decals.dmi'
-	w_class = ITEMSIZE_NORMAL		//big
+	w_class = ITEM_SIZE_NORMAL		//big
 	var/sign_state = ""
 
 /obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob)	//construction

@@ -31,7 +31,7 @@
 	desc = "The Security Cart Key used to start it."
 	icon = 'icons/obj/vehicles_vr.dmi'
 	icon_state = "securikey"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 /obj/vehicle/train/security/trolley
 	name = "Train trolley"

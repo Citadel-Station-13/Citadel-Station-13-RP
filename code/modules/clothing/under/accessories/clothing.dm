@@ -55,7 +55,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
@@ -255,7 +255,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/hawaii/red
@@ -282,7 +282,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/wcoat/red
@@ -334,7 +334,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	slot = ACCESSORY_SLOT_DECOR
 
 /obj/item/clothing/accessory/buttonup/untucked
@@ -352,7 +352,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(

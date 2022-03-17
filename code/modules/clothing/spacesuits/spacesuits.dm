@@ -67,7 +67,7 @@
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	update_icon_define = INV_SPACESUIT_DEF_ICON
 	icon_state = "space"
-	w_class = ITEMSIZE_HUGE // So you can't fit this in your bag and be prepared at all times.
+	w_class = ITEM_SIZE_HUGE // So you can't fit this in your bag and be prepared at all times.
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	flags = PHORONGUARD

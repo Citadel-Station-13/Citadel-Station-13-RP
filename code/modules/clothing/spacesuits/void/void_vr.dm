@@ -150,7 +150,7 @@
 	species_restricted = list("exclude",SPECIES_DIONA,SPECIES_VOX)	//this thing can autoadapt
 	icon = 'icons/obj/clothing/suits_vr.dmi'
 	breach_threshold = 6 //this thing is basically tissue paper
-	w_class = ITEMSIZE_NORMAL //if it's snug, high-tech, and made of relatively soft materials, it should be much easier to store!
+	w_class = ITEM_SIZE_NORMAL //if it's snug, high-tech, and made of relatively soft materials, it should be much easier to store!
 
 /obj/item/clothing/suit/space/void/autolok
 	sprite_sheets = list(

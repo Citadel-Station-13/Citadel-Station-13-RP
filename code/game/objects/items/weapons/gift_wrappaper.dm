@@ -20,7 +20,7 @@
 	. = ..()
 	pixel_x = rand(-10,10)
 	pixel_y = rand(-10,10)
-	if(w_class > 0 && w_class < ITEMSIZE_LARGE)
+	if(w_class > 0 && w_class < ITEM_SIZE_LARGE)
 		icon_state = "gift[w_class]"
 	else
 		icon_state = "gift[pick(1, 2, 3)]"
@@ -217,7 +217,7 @@
 	..()
 	if (!( locate(/obj/structure/table, src.loc) ))
 		to_chat(user, "<span class='warning'>You MUST put the paper on a table!</span>")
-	if (W.w_class < ITEMSIZE_LARGE)
+	if (W.w_class < ITEM_SIZE_LARGE)
 		var/obj/item/I = user.get_inactive_hand()
 		if(I.is_wirecutter())
 			var/a_used = 2 ** (src.w_class - 1)

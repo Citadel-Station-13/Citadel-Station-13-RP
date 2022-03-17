@@ -12,7 +12,7 @@
 	force = 5
 	throwforce = 6
 	preserve_item = 1
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	origin_tech = list(TECH_BIO = 4, TECH_POWER = 2)
 	action_button_name = "Remove/Replace Paddles"
 
@@ -170,7 +170,7 @@
 	desc = "A belt-equipped defibrillator that can be rapidly deployed."
 	icon_state = "defibcompact"
 	item_state = "defibcompact"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_BIO = 5, TECH_POWER = 3)
 
@@ -203,7 +203,7 @@
 	gender = PLURAL
 	force = 2
 	throwforce = 6
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 
 	var/safety = 1 //if you can zap people with the paddles on harm mode
 	var/combat = 0 //If it can be used to revive people wearing thick clothing (e.g. spacesuits)

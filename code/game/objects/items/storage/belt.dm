@@ -4,8 +4,8 @@
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utility"
 	storage_slots = 7
-	max_storage_space = ITEMSIZE_COST_NORMAL * 7 //This should ensure belts always have enough room to store whatever.
-	max_w_class = ITEMSIZE_NORMAL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 7 //This should ensure belts always have enough room to store whatever.
+	max_w_class = ITEM_SIZE_NORMAL
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
@@ -155,7 +155,7 @@
 	name = "security belt"
 	desc = "Can hold security gear like handcuffs and flashes."
 	icon_state = "security"
-	max_w_class = ITEMSIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 	can_hold = list(
 		/obj/item/grenade,
 		/obj/item/reagent_containers/spray/pepper,
@@ -193,7 +193,7 @@
 	desc = "A belt for holding forensics equipment."
 	icon_state = "security"
 	storage_slots = 7
-	max_w_class = ITEMSIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 	can_hold = list(
 		/obj/item/tape_recorder,
 		/obj/item/barrier_tape_roll,
@@ -236,7 +236,7 @@
 	desc = "A versatile bandolier fitted with eight pouches that can hold a wide variety of items such as tools, small melee weapons, batteries, ammunition, and more; ideal for any pathfinder who has too much stuff and not enough pockets."
 	icon_state = "bandolier"
 	storage_slots = 7
-	max_storage_space = ITEMSIZE_COST_NORMAL * 7
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 7
 	show_above_suit = 1
 	can_hold = list(
 		/obj/item/grenade,
@@ -377,8 +377,8 @@
 	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
 	icon_state = "swat"
 	storage_slots = 9
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 7
+	max_w_class = ITEM_SIZE_NORMAL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 7
 
 /obj/item/storage/belt/security/tactical/bandolier
 	name = "combat belt"
@@ -390,8 +390,8 @@
 	desc = "A bandolier used to hold spikes, and only spikes."
 	icon_state = "bandolier"
 	storage_slots = 14
-	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = ITEMSIZE_COST_SMALL * 14
+	max_w_class = ITEM_SIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_SMALL * 14
 	can_hold = list(/obj/item/melee/spike)
 	starts_with = list(/obj/item/melee/spike = 14)
 
@@ -400,7 +400,7 @@
 	desc = "A belt used to hold most janitorial supplies."
 	icon_state = "janitor"
 	storage_slots = 7
-	max_w_class = ITEMSIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 	can_hold = list(
 		/obj/item/clothing/glasses,
 		/obj/item/flashlight,
@@ -459,9 +459,9 @@
 	desc = "A dorky fannypack for keeping small items in."
 	icon_state = "fannypack_leather"
 	item_state = "fannypack_leather"
-	max_w_class = ITEMSIZE_SMALL
+	max_w_class = ITEM_SIZE_SMALL
 	storage_slots = null
-	max_storage_space = ITEMSIZE_COST_NORMAL * 2
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 2
 
 /obj/item/storage/belt/fannypack/black
  	name = "black fannypack"
@@ -542,7 +542,7 @@
 	desc = "Belts like these were popular on old Earth, but were largely supplanted by modular holsters. This gunbelt is too bulky to be comfortably anchored to clothes without support."
 	icon_state = "dual_holster"
 	storage_slots = 2
-	max_w_class = ITEMSIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 	can_hold = list(
 		/obj/item/gun/energy/alien,
 		/obj/item/gun/energy/captain,
@@ -585,7 +585,7 @@
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon_state = "quiver"
 	storage_slots = 15
-	max_w_class = ITEMSIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 	can_hold = list(
 		/obj/item/ammo_casing/arrow
 		)

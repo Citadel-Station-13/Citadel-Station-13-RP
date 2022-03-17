@@ -7,7 +7,7 @@
 /obj/item/material/kitchen/utensil
 	drop_sound = 'sound/items/drop/knife.ogg'
 	pickup_sound = 'sound/items/pickup/knife.ogg'
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	thrown_force_divisor = 1
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("attacked", "stabbed", "poked")

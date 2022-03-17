@@ -12,7 +12,7 @@
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "wirer-wire"
 	item_state = "wirer"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/datum/integrated_io/selected_io = null
 	var/mode = WIRE
 

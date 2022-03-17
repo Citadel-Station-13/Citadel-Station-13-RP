@@ -1,7 +1,7 @@
 /obj/item/clothing/accessory/shiny
 	icon_override = 'icons/mob/modular_shiny_vr.dmi'
 	icon = 'icons/obj/clothing/modular_shiny_vr.dmi'
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	desc = "Shiny! They look like they need to be attached to something, else they'll just fall off."
 
 /obj/item/clothing/accessory/shiny/gloves

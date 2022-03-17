@@ -4,7 +4,7 @@
 	desc = "A small power cell designed to power handheld devices."
 	icon_state = "dcell"
 	item_state = "egg6"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	force = 0
 	throw_speed = 5
 	throw_range = 7

@@ -6,7 +6,7 @@
 	item_state_slots = list(slot_r_hand_str = "", slot_l_hand_str = "")
 	appearance_flags = RESET_COLOR	// Stops has_suit's color from being multiplied onto the accessory
 	slot_flags = SLOT_TIE
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/slot = ACCESSORY_SLOT_DECOR
 	var/obj/item/clothing/has_suit = null		// The suit the tie may be attached to
 	var/image/inv_overlay = null				// Overlay used when attached to clothing.
@@ -390,7 +390,7 @@
 	desc = "A simple silver bracelet with a clasp."
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "bracelet"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_TIE
 	slot = ACCESSORY_SLOT_DECOR
 

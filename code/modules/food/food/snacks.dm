@@ -22,7 +22,7 @@
 	//Generally applied during modification cooking with oven/fryer
 	//Used to stop deepfried meat from looking like slightly tanned raw meat, and make it actually look cooked
 	center_of_mass = list("x"=16, "y"=16)
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	force = 1
 
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
@@ -2469,7 +2469,7 @@
 // sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
 
 /obj/item/reagent_containers/food/snacks/sliceable
-	w_class = ITEMSIZE_NORMAL //Whole pizzas and cakes shouldn't fit in a pocket, you can slice them if you want to do that.
+	w_class = ITEM_SIZE_NORMAL //Whole pizzas and cakes shouldn't fit in a pocket, you can slice them if you want to do that.
 
 /**
  *  A food item slice
@@ -5430,7 +5430,7 @@ END CITADEL CHANGE */
 	icon_state = "worm_sickly"
 	nutriment_amt = 1
 	nutriment_desc = list("bugflesh" = 1)
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 /obj/item/reagent_containers/food/snacks/wormsickly/Initialize(mapload)
 	. = ..()
@@ -5443,7 +5443,7 @@ END CITADEL CHANGE */
 	icon_state = "worm"
 	nutriment_amt = 1
 	nutriment_desc = list("bugflesh" = 1)
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 /obj/item/reagent_containers/food/snacks/worm/Initialize(mapload)
 	. = ..()
@@ -5456,7 +5456,7 @@ END CITADEL CHANGE */
 	icon_state = "worm_deluxe"
 	nutriment_amt = 5
 	nutriment_desc = list("bugflesh" = 1)
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 /obj/item/reagent_containers/food/snacks/wormdeluxe/Initialize(mapload)
 	. = ..()
@@ -5470,7 +5470,7 @@ END CITADEL CHANGE */
 	icon_state = "siffruit"
 	nutriment_amt = 2
 	nutriment_desc = list("tart" = 1)
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 /obj/item/reagent_containers/food/snacks/siffruit/Initialize(mapload)
 	. = ..()
@@ -5793,7 +5793,7 @@ END CITADEL CHANGE */
 	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "wings5"
 	var/startswith = 5
-	max_storage_space = ITEMSIZE_COST_SMALL * 5
+	max_storage_space = ITEM_SIZE_COST_SMALL * 5
 	can_hold = list(/obj/item/reagent_containers/food/snacks/chickenwing)
 	foldable = null
 
@@ -6009,7 +6009,7 @@ END CITADEL CHANGE */
 	icon = 'icons/obj/food48x48_vr.dmi'
 	icon_state = "monkfish_raw"
 	nutriment_amt = 30
-	w_class = ITEMSIZE_HUGE //Is that a monkfish in your pocket, or are you just happy to see me?
+	w_class = ITEM_SIZE_HUGE //Is that a monkfish in your pocket, or are you just happy to see me?
 	slice_path = /obj/item/reagent_containers/food/snacks/monkfishfillet
 	slices_num = 6
 	trash = /obj/item/reagent_containers/food/snacks/sliceable/monkfishremains
@@ -6049,7 +6049,7 @@ END CITADEL CHANGE */
 	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "monkfish_remains"
 	desc = "the work of a madman."
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	nutriment_amt = 10
 	slice_path = /obj/item/clothing/head/fish
 	slices_num = 1

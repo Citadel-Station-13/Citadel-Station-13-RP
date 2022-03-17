@@ -7,7 +7,7 @@
 	throwforce = 2.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("called", "rang")
 	hitsound = 'sound/weapons/ring.ogg'
 
@@ -21,7 +21,7 @@
 	anchored = 0.0
 	var/stored_matter = 0
 	var/mode = 1
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 
 /obj/item/soap
 	name = "soap"
@@ -30,7 +30,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "soap"
 	flags = NOCONDUCT
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	slot_flags = SLOT_HOLSTER
 	throwforce = 0
 	throw_speed = 4
@@ -58,7 +58,7 @@
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
 	throwforce = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 3
 	throw_range = 15
@@ -100,7 +100,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "c_tube"
 	throwforce = 1
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throw_speed = 4
 	throw_range = 5
 
@@ -115,7 +115,7 @@
 			)
 	force = 5.0
 	throwforce = 7.0
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
@@ -188,7 +188,7 @@
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
 		)
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	force = 3
 	var/on = 0
 
@@ -200,7 +200,7 @@
 				"You hear an ominous click.")
 		icon_state = "whitecane1out"
 		item_state_slots = list(slot_r_hand_str = "whitecane", slot_l_hand_str = "whitecane")
-		w_class = ITEMSIZE_NORMAL
+		w_class = ITEM_SIZE_NORMAL
 		force = 5
 		attack_verb = list("smacked", "struck", "cracked", "beaten")
 	else
@@ -209,7 +209,7 @@
 		"You hear a click.")
 		icon_state = "whitecane1in"
 		item_state_slots = list(slot_r_hand_str = null, slot_l_hand_str = null)
-		w_class = ITEMSIZE_SMALL
+		w_class = ITEM_SIZE_SMALL
 		force = 3
 		attack_verb = list("hit", "poked", "prodded")
 
@@ -239,7 +239,7 @@
 	desc = "Better keep this safe."
 	icon_state = "nucleardisk"
 	item_state = "card-id"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /*
 /obj/item/game_kit
@@ -251,7 +251,7 @@
 	var/data = ""
 	var/base_url = "http://svn.slurm.us/public/spacestation13/misc/game_kit"
 	item_state = "sheet-metal"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 */
 
 /obj/item/gift
@@ -262,7 +262,7 @@
 	var/size = 3.0
 	var/obj/item/gift = null
 	item_state = "gift"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 
 /obj/item/caution
 	desc = "Caution! Wet Floor!"
@@ -273,7 +273,7 @@
 	throwforce = 3.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("warned", "cautioned", "smashed")
 
 /obj/item/caution/attackby(var/obj/item/D, mob/user as mob)
@@ -307,7 +307,7 @@
 	var/mob/currentUser = null
 	var/obj/item/radio/origradio = null
 	flags = ONBELT
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	item_state = "radio"
 	throw_speed = 4
 	throw_range = 20
@@ -327,7 +327,7 @@
 	slot_flags = SLOT_BELT
 	item_state = "radio"
 	throwforce = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throw_speed = 4
 	throw_range = 20
 	matter = list(DEFAULT_WALL_MATERIAL = 100)
@@ -346,7 +346,7 @@
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("bludgeoned", "whacked", "disciplined")
 
 /obj/item/staff/broom
@@ -371,13 +371,13 @@
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/module
 	icon = 'icons/obj/module.dmi'
 	icon_state = "std_module"
 	item_state = "std_mod"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/mtype = 1						// 1=electronic 2=hardware
 
 /obj/item/module/card_reader
@@ -422,7 +422,7 @@
 	name = "camera bug"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "flash"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	item_state = "electronic"
 	throw_speed = 4
 	throw_range = 20
@@ -459,7 +459,7 @@
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigarpacket"
 	item_state = "cigarpacket"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	throwforce = 2
 	var/cigarcount = 6
 	flags = ONBELT
@@ -483,7 +483,7 @@
 	name = "rapid part exchange device"
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts."
 	icon_state = "RPED"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	can_hold = list(/obj/item/stock_parts)
 	storage_slots = 100
 	use_to_pickup = 1
@@ -491,7 +491,7 @@
 	allow_quick_empty = 1
 	collection_mode = 1
 	display_contents_with_number = 1
-	max_w_class = ITEMSIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 	max_storage_space = 200
 	var/panel_req = TRUE
 
@@ -499,7 +499,7 @@
 	name = "advanced rapid part exchange device"
 	desc = "A special mechanical module made to store, sort, and apply standard machine parts.  This one has a greatly upgraded storage capacity"
 	icon_state = "RPED"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	can_hold = list(/obj/item/stock_parts)
 	storage_slots = 200
 	use_to_pickup = 1
@@ -507,7 +507,7 @@
 	allow_quick_empty = 1
 	collection_mode = 1
 	display_contents_with_number = 1
-	max_w_class = ITEMSIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 	max_storage_space = 400
 
 /obj/item/storage/part_replacer/adv/discount_bluespace
@@ -540,7 +540,7 @@
 	desc = "What?"
 	gender = PLURAL
 	icon = 'icons/obj/stock_parts.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/rating = 1
 
 /obj/item/stock_parts/Initialize(mapload)

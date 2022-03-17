@@ -613,7 +613,7 @@ END OF CITADEL CHANGE */
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "pom_mob"
 
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	on = 0
 	brightness_on = 5
 	light_overlay = null
@@ -708,7 +708,7 @@ END OF CITADEL CHANGE */
 	armor = list(melee = 50, bullet = 40, laser = 45, energy = 25, bomb = 50, bio = 100, rad = 50) //These values were taken from the combat rigs and adjusted to be weaker than said rigs.
 	slowdown = 0
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "joansuit"
@@ -1653,7 +1653,7 @@ END OF CITADEL CHANGES */
 	item_state = null
 	icon_override = null
 	slot_flags = SLOT_GLOVES | SLOT_TIE
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	slot = ACCESSORY_SLOT_ARMBAND
 
 //AegisOA:Xander Bevin
@@ -1680,7 +1680,7 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_onmob_vr.dmi'
 	icon_state = "goldenstring"
 	item_state = "goldenstring"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_TIE
 
 //Chaoko99: Aika Hisakawa

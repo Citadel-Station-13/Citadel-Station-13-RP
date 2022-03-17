@@ -217,7 +217,7 @@
 	throwforce = 10.0
 	throw_speed = 2
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	var/created_name = "Cleanbot"
 
 /obj/item/bucket_sensor/attackby(var/obj/item/W, var/mob/user)

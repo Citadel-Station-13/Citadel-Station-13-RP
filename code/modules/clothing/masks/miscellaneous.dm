@@ -3,7 +3,7 @@
 	desc = "To stop that awful noise."
 	icon_state = "muzzle"
 	body_parts_covered = FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	gas_transfer_coefficient = 0.90
 	voicechange = 1
 
@@ -13,7 +13,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "tape_cross"
 	item_state_slots = list(slot_r_hand_str = null, slot_l_hand_str = null)
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 /obj/item/clothing/mask/muzzle/Initialize(mapload)
 	. = ..()
@@ -30,7 +30,7 @@
 	desc = "A sterile mask designed to help prevent the spread of diseases."
 	icon_state = "sterile"
 	item_state_slots = list(slot_r_hand_str = "sterile", slot_l_hand_str = "sterile")
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	body_parts_covered = FACE
 	item_flags = FLEXIBLEMATERIAL
 	gas_transfer_coefficient = 0.90
@@ -84,7 +84,7 @@
 	icon_state = "blueneckscarf"
 	body_parts_covered = FACE
 	item_flags = FLEXIBLEMATERIAL
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	gas_transfer_coefficient = 0.90
 
 /obj/item/clothing/mask/redscarf
@@ -93,7 +93,7 @@
 	icon_state = "redwhite_scarf"
 	body_parts_covered = FACE
 	item_flags = FLEXIBLEMATERIAL
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	gas_transfer_coefficient = 0.90
 
 /obj/item/clothing/mask/greenscarf
@@ -102,7 +102,7 @@
 	icon_state = "green_scarf"
 	body_parts_covered = FACE
 	item_flags = FLEXIBLEMATERIAL
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	gas_transfer_coefficient = 0.90
 
 /obj/item/clothing/mask/ninjascarf
@@ -111,7 +111,7 @@
 	icon_state = "ninja_scarf"
 	body_parts_covered = FACE
 	item_flags = FLEXIBLEMATERIAL
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	gas_transfer_coefficient = 0.90
 	siemens_coefficient = 0
 
@@ -120,28 +120,28 @@
 	name = "nock mask (blue, scarab)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_scarab"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	body_parts_covered = HEAD|FACE
 
 /obj/item/clothing/mask/nock_demon
 	name = "nock mask (purple, demon)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_demon"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	body_parts_covered = HEAD|FACE
 
 /obj/item/clothing/mask/nock_life
 	name = "nock mask (green, life)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_life"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	body_parts_covered = HEAD|FACE
 
 /obj/item/clothing/mask/nock_ornate
 	name = "nock mask (red, ornate)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_ornate"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	body_parts_covered = HEAD|FACE
 
 /obj/item/clothing/mask/horsehead/Initialize(mapload)
@@ -190,7 +190,7 @@
 	item_state_slots = list(slot_r_hand_str = "bandblack", slot_l_hand_str = "bandblack")
 	item_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
 	body_parts_covered = FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	gas_transfer_coefficient = 0.10
 	permeability_coefficient = 0.50
 
@@ -202,7 +202,7 @@
 /obj/item/clothing/mask/bandana
 	name = "black bandana"
 	desc = "A fine black bandana with nanotech lining. Can be worn on the head or face."
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	flags_inv = HIDEFACE
 	slot_flags = SLOT_MASK|SLOT_HEAD
 	body_parts_covered = FACE

@@ -45,8 +45,8 @@
 /obj/item/storage/secure/briefcase/ml3m_pack_med
 	name = "\improper ML-3 \'Medigun\' kit"
 	desc = "A storage case for a multi-purpose healing gun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/ml3m_pack_med/PopulateContents()
 	new /obj/item/gun/projectile/cell_loaded/medical(src)
@@ -58,8 +58,8 @@
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo
 	name = "\improper Advanced ML-3 \'Medigun\' kit"
 	desc = "A storage case for a multi-purpose healing gun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo/PopulateContents()
 	new /obj/item/gun/projectile/cell_loaded/medical/cmo(src)

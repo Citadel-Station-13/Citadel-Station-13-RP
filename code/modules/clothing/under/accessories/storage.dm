@@ -7,7 +7,7 @@
 
 	var/slots = 5
 	var/obj/item/storage/internal/hold
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	on_rolled = list("down" = "none")
 	var/hide_on_roll = FALSE
 
@@ -15,7 +15,7 @@
 	. = ..()
 	hold = new/obj/item/storage/internal(src)
 	hold.max_storage_space = slots * 2
-	hold.max_w_class = ITEMSIZE_SMALL
+	hold.max_w_class = ITEM_SIZE_SMALL
 	if (!hide_on_roll)
 		on_rolled["down"] = icon_state
 
@@ -115,7 +115,7 @@
 
 /obj/item/clothing/accessory/storage/knifeharness/Initialize(mapload)
 	. = ..()
-	hold.max_storage_space = ITEMSIZE_COST_SMALL * 2
+	hold.max_storage_space = ITEM_SIZE_COST_SMALL * 2
 	hold.can_hold = list(/obj/item/material/knife/machete/hatchet/unathiknife,\
 	/obj/item/material/knife,\
 	/obj/item/material/knife/plastic)

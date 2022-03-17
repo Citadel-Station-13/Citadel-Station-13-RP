@@ -11,7 +11,7 @@
 	excavation_amount = 1
 	drill_sound = 'sound/weapons/thudswoosh.ogg'
 	drill_verb = "brushing"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/pickaxe/one_pick
 	name = "2cm pick"
@@ -24,7 +24,7 @@
 	excavation_amount = 2
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/pickaxe/two_pick
 	name = "4cm pick"
@@ -37,7 +37,7 @@
 	excavation_amount = 4
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/pickaxe/three_pick
 	name = "6cm pick"
@@ -50,7 +50,7 @@
 	excavation_amount = 6
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/pickaxe/four_pick
 	name = "8cm pick"
@@ -63,7 +63,7 @@
 	excavation_amount = 8
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/pickaxe/five_pick
 	name = "10cm pick"
@@ -76,7 +76,7 @@
 	excavation_amount = 10
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/pickaxe/six_pick
 	name = "12cm pick"
@@ -89,7 +89,7 @@
 	excavation_amount = 12
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/pickaxe/hand
 	name = "hand pickaxe"
@@ -102,7 +102,7 @@
 	excavation_amount = 30
 	drill_sound = 'sound/items/Crowbar.ogg'
 	drill_verb = "clearing"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pack for holding pickaxes
@@ -114,7 +114,7 @@
 	desc = "A set of picks for excavation."
 	item_state = "syringe_kit"
 	storage_slots = 7
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	can_hold = list(/obj/item/pickaxe/brush,
 	/obj/item/pickaxe/one_pick,
 	/obj/item/pickaxe/two_pick,
@@ -123,8 +123,8 @@
 	/obj/item/pickaxe/five_pick,
 	/obj/item/pickaxe/six_pick,
 	/obj/item/pickaxe/hand)
-	max_storage_space = ITEMSIZE_COST_SMALL * 9
-	max_w_class = ITEMSIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_SMALL * 9
+	max_w_class = ITEM_SIZE_SMALL
 	use_to_pickup = 1
 
 /obj/item/storage/excavation/PopulateContents()

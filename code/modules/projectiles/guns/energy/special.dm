@@ -5,7 +5,7 @@
 	item_state = "ionrifle"
 	wielded_item_state = "ionrifle-wielded"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 4)
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	force = 10
 	slot_flags = SLOT_BACK
 	projectile_type = /obj/item/projectile/ion
@@ -19,7 +19,7 @@
 	desc = "The NT Mk63 EW Pan is a man portable anti-armor weapon designed to disable mechanical threats, produced by NT. This model sacrifices capacity for portability."
 	icon_state = "ionpistol"
 	item_state = null
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	force = 5
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	charge_cost = 480
@@ -88,7 +88,7 @@
 	icon_state = "riotgun"
 	item_state = "c20r"
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	projectile_type = /obj/item/projectile/meteor
 	cell_type = /obj/item/cell/potato
 	charge_cost = 100
@@ -103,7 +103,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
 	item_state = "pen"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_BELT
 	one_handed_penalty = 0
 
@@ -119,7 +119,7 @@
 	name = "phoron pistol"
 	desc = "A specialized firearm designed to fire lethal bolts of phoron."
 	icon_state = "toxgun"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
 	projectile_type = /obj/item/projectile/energy/phoron
 
@@ -132,7 +132,7 @@
 	item_icons = null
 	icon_state = "staff"
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	charge_cost = 480
 	projectile_type = /obj/item/projectile/change
 	origin_tech = null
@@ -185,7 +185,7 @@ obj/item/gun/energy/staff/focus
 	icon_state = "dakkalaser"
 	item_state = "dakkalaser"
 	wielded_item_state = "dakkalaser-wielded"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
 	projectile_type = /obj/item/projectile/energy/blue_pellet
 	cell_type = /obj/item/cell/device/weapon/recharge
@@ -209,7 +209,7 @@ obj/item/gun/energy/staff/focus
 	icon_state = "mhdhowitzer"
 	item_state = "mhdhowitzer"
 	wielded_item_state = "mhdhowitzer-wielded"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
 	projectile_type = /obj/item/projectile/beam/tungsten
@@ -320,7 +320,7 @@ obj/item/gun/energy/staff/focus
 	desc = "An anomalous weapon, long kept secure. It has recently been acquired by NanoTrasen's Paracausal Monitoring Division. How did it get here?"
 	force = 5
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	projectile_type = /obj/item/projectile/bullet/pistol/medium/silver
 	origin_tech = null
 	fire_delay = 10		//Old pistol

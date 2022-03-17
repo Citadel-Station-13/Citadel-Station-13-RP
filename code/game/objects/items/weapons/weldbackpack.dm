@@ -4,7 +4,7 @@
 	slot_flags = SLOT_BACK
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "welderpack"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	var/max_fuel = 350
 	var/obj/item/nozzle = null //Attached welder, or other spray device.
 	var/nozzle_type = /obj/item/weldingtool/tubefed
@@ -156,6 +156,6 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "welderpack-e"
 	item_state = "welderpack"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	max_fuel = 100
 	nozzle_type = /obj/item/weldingtool/tubefed/survival

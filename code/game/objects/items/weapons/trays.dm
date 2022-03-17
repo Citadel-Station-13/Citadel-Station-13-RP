@@ -10,7 +10,7 @@
 	throwforce = 10.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	matter = list(DEFAULT_WALL_MATERIAL = 3000)
 	var/list/carrying = list() // List of things on the tray. - Doohl
 	var/max_carry = 10
@@ -157,9 +157,9 @@
 	var/val = 0 // value to return
 
 	for(var/obj/item/I in carrying)
-		if(I.w_class == ITEMSIZE_TINY)
+		if(I.w_class == ITEM_SIZE_TINY)
 			val ++
-		else if(I.w_class == ITEMSIZE_SMALL)
+		else if(I.w_class == ITEM_SIZE_SMALL)
 			val += 3
 		else
 			val += 5
@@ -175,9 +175,9 @@
 	for(var/obj/item/I in loc)
 		if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/item/projectile) )
 			var/add = 0
-			if(I.w_class == ITEMSIZE_TINY)
+			if(I.w_class == ITEM_SIZE_TINY)
 				add = 1
-			else if(I.w_class == ITEMSIZE_SMALL)
+			else if(I.w_class == ITEM_SIZE_SMALL)
 				add = 3
 			else
 				add = 5

@@ -11,9 +11,9 @@
 		SPECIES_TESHARI = 'icons/mob/species/teshari/back.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/back.dmi'
 		)
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	slot_flags = SLOT_BACK
-	max_w_class = ITEMSIZE_LARGE
+	max_w_class = ITEM_SIZE_LARGE
 	max_storage_space = INVENTORY_STANDARD_SPACE
 	var/flippable = 0
 	var/side = 0 //0 = right, 1 = left
@@ -46,8 +46,8 @@
 	desc = "A backpack that opens into a localized pocket of Blue Space."
 	origin_tech = list(TECH_BLUESPACE = 4)
 	icon_state = "holdingpack"
-	max_w_class = ITEMSIZE_LARGE
-	max_storage_space = ITEMSIZE_COST_NORMAL * 14 // 56
+	max_w_class = ITEM_SIZE_LARGE
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 14 // 56
 	storage_cost = INVENTORY_STANDARD_SPACE + 1
 
 /obj/item/storage/backpack/holding/duffle
@@ -80,9 +80,9 @@
 	desc = "Space Santa uses this to deliver toys to all the nice children in space in Christmas! Wow, it's pretty big!"
 	icon_state = "giftbag0"
 	item_state_slots = list(slot_r_hand_str = "giftbag", slot_l_hand_str = "giftbag")
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 100 // can store a ton of shit!
+	w_class = ITEM_SIZE_LARGE
+	max_w_class = ITEM_SIZE_NORMAL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 100 // can store a ton of shit!
 	item_state_slots = null
 
 /obj/item/storage/backpack/cultpack
@@ -394,9 +394,9 @@
 	desc = "A small, fashionable bag typically worn over the shoulder."
 	icon_state = "purse"
 	item_state_slots = list(slot_r_hand_str = "lgpurse", slot_l_hand_str = "lgpurse")
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 5
+	w_class = ITEM_SIZE_LARGE
+	max_w_class = ITEM_SIZE_NORMAL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 5
 
 //Parachutes
 /obj/item/storage/backpack/parachute
@@ -404,7 +404,7 @@
 	desc = "A specially made backpack, designed to help one survive jumping from incredible heights. It sacrifices some storage space for that added functionality."
 	icon_state = "parachute"
 	item_state_slots = list(slot_r_hand_str = "backpack", slot_l_hand_str = "backpack")
-	max_storage_space = ITEMSIZE_COST_NORMAL * 5
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 5
 
 /obj/item/storage/backpack/parachute/examine(mob/user)
 	. = ..()

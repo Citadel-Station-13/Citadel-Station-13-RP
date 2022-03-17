@@ -285,7 +285,7 @@
 	slot_flags = SLOT_BELT
 	force = 10
 	throwforce = 3
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	damtype = HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
 
@@ -412,7 +412,7 @@
 	name = "life crystal"
 	desc = "A small crystal with four little dots in it. It feels slightly warm to the touch. \
 	Read manual before use! Can be worn, held, or attached to uniform. NOTE: Device contains antimatter."
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_override = 'icons/vore/custom_items_vr.dmi'
@@ -517,8 +517,8 @@
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	storage_slots = 2
 	can_hold = list(/obj/item/clothing/accessory/collar/vmcrystal)
-	max_storage_space = ITEMSIZE_COST_SMALL * 2
-	w_class = ITEMSIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_SMALL * 2
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/storage/box/vmcrystal/Initialize(mapload)
 	. = ..()
@@ -534,7 +534,7 @@
 	item_state_slots = list(slot_r_hand_str = "browncanemob_r", slot_l_hand_str = "browncanemob_l")
 	force = 5.0
 	throwforce = 7.0
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
@@ -553,7 +553,7 @@
     item_state_slots = list(slot_r_hand_str = "alexiswandmob_r", slot_l_hand_str = "alexiswandmob_l")
     force = 1.0
     throwforce = 2.0
-    w_class = ITEMSIZE_SMALL
+    w_class = ITEM_SIZE_SMALL
     matter = list(DEFAULT_WALL_MATERIAL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
     hitsound = 'sound/weapons/sparkle.ogg'
@@ -1150,7 +1150,7 @@
 	desc = "A tiny supplemental battery for powering something or someone synthetic."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "dragor_dot"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 	attack_self(mob/user as mob)
 		if(user.ckey == "pontifexminimus")
@@ -1256,7 +1256,7 @@
 	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
 	var/cell_type = /obj/item/cell/device/weapon
@@ -1545,7 +1545,7 @@
 	desc = "That's unusual."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 	var/tele_name
 	var/obj/item/perfect_tele/tele_hand
@@ -1835,7 +1835,7 @@
 	sharp = 0
 	edge = 0
 	throwforce = 7
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
 	lightcolor = "#CC33FF"
@@ -1910,8 +1910,8 @@
 
 	can_hold = list(/obj/item/melee/baton/fluff/stunstaff)
 
-	w_class = ITEMSIZE_HUGE
-	max_w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
+	max_w_class = ITEM_SIZE_HUGE
 	max_storage_space = 16
 
 /obj/item/storage/backpack/fluff/stunstaff/Initialize(mapload)
@@ -1988,12 +1988,12 @@
 	slot_flags = SLOT_BACK | SLOT_OCLOTHING
 	active_force = 15
 	active_throwforce = 7
-	active_w_class = ITEMSIZE_LARGE
+	active_w_class = ITEM_SIZE_LARGE
 	force = 1
 	throwforce = 1
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', slot_back_str = 'icons/vore/custom_items_vr.dmi', slot_wear_suit_str = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
@@ -2113,7 +2113,7 @@
     icon = 'icons/vore/custom_items_vr.dmi'
     icon_state = "jazzcamcorder"
     item_state = "jazzcamcorder"
-    w_class = ITEMSIZE_LARGE
+    w_class = ITEM_SIZE_LARGE
     slot_flags = SLOT_BELT
     var/obj/machinery/camera/network/thunder/camera
 

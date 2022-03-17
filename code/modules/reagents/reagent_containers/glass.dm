@@ -13,7 +13,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	flags = OPENCONTAINER | NOCONDUCT
 	unacidable = 1 //glass doesn't dissolve in acid
 	drop_sound = 'sound/items/drop/bottle.ogg'
@@ -228,7 +228,7 @@
 	icon_state = "vial"
 	matter = list("glass" = 250)
 	volume = 30
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,30)
 	flags = OPENCONTAINER
@@ -246,7 +246,7 @@
 	icon_state = "bucket"
 	item_state = "bucket"
 	matter = list(DEFAULT_WALL_MATERIAL = 200)
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
@@ -305,7 +305,7 @@ obj/item/reagent_containers/glass/bucket/wood
 	icon_state = "woodbucket"
 	item_state = "woodbucket"
 	matter = list("wood" = 50)
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
@@ -341,7 +341,7 @@ obj/item/reagent_containers/glass/bucket/wood
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler_bottle"
 	matter = list("glass" = 2000)
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120

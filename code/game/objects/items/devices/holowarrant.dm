@@ -5,7 +5,7 @@
 	icon_state = "holowarrant"
 	item_state = "flashtool"
 	throwforce = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throw_speed = 4
 	throw_range = 10
 	var/datum/data/record/warrant/active

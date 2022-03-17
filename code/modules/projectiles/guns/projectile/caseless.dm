@@ -3,7 +3,7 @@
 	desc = "A rifle cooked up in NanoTrasen's R&D labs that operates with Kraut Space Magic™ clockwork internals. Uses solid phoron 5mm caseless rounds."
 	icon_state = "caseless"
 	item_state = "caseless"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	caliber = "5mm caseless"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
@@ -26,7 +26,7 @@
 	desc = "A relic dating back to the Xenomorph Wars and the former primary battle rifle of the  United Solar Marine Corps. Loads using 10x24mm caseless Magazines"
 	icon_state = "usmc"
 	item_state = "usmc"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	caliber = "10mmCL"
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK

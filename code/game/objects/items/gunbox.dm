@@ -44,7 +44,7 @@
 	desc = "A secure box containing a Detective's sidearm."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "gunbox"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 /obj/item/gunbox/attack_self(mob/living/user)
 	var/list/options = list()
@@ -65,7 +65,7 @@
 	desc = "A secure box containing a marksman rifle."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "gunbox"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 /obj/item/gunbox/marksman/attack_self(mob/living/user)
 	var/list/options = list()

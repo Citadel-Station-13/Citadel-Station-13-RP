@@ -731,7 +731,7 @@ var/global/list/light_type_cache = list()
 	icon = 'icons/obj/lighting.dmi'
 	force = 2
 	throwforce = 5
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	var/status = 0		// LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN
 	var/base_state
 	var/switchcount = 0	// number of times switched
@@ -756,7 +756,7 @@ var/global/list/light_type_cache = list()
 	brightness_power = 1
 
 /obj/item/light/tube/large
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	name = "large light tube"
 	brightness_range = 12
 	brightness_power = 1
@@ -867,4 +867,4 @@ var/global/list/light_type_cache = list()
 	desc = "A lamp shade for a lamp."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lampshade"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY

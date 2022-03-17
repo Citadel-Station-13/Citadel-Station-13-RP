@@ -21,7 +21,7 @@
 	icon_state = "hatchet"
 	force_divisor = 0.2 // 12 with hardness 60 (steel)
 	thrown_force_divisor = 0.75 // 15 with weight 20 (steel)
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	sharp = 1
 	edge = 1
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
@@ -73,7 +73,7 @@
 	force_divisor = 0.25 // 5 with weight 20 (steel)
 	thrown_force_divisor = 0.25 // as above
 	dulled_divisor = 0.75	//Still metal on a long pole
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 
 /obj/item/material/minihoe/plasteel
@@ -92,7 +92,7 @@
 	fragile = 1
 	force_divisor = 0.01
 	thrown_force_divisor = 0.10
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("mushed", "splatted", "splooshed", "splushed") // Words that totally exist.
 
 /obj/item/material/snow/snowball/attack_self(mob/user as mob)
@@ -128,7 +128,7 @@
 	active = 0
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	edge = 1
 	sharp = 1
 	force_divisor = 0.7 //42 When Wielded in line with a sword
@@ -138,7 +138,7 @@
 /obj/item/material/butterfly/saw/update_force()
 	if(active)
 		..() //Updates force.
-		w_class = ITEMSIZE_HUGE
+		w_class = ITEM_SIZE_HUGE
 		can_cleave = TRUE
 		force_divisor = 0.4 //24 when wielded, Gains cleave and is better than a machete
 		icon_state = "sawcleaver_open"

@@ -3,7 +3,7 @@
 	desc = "MAGGOT."
 	icon_state = "rocket"
 	item_state = "rocket"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	throw_speed = 2
 	throw_range = 10
 	force = 5.0

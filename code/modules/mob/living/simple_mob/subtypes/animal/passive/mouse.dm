@@ -23,7 +23,7 @@
 
 	mob_size = MOB_MINISCULE
 	pass_flags = PASSTABLE
-	can_pull_size = ITEMSIZE_TINY
+	can_pull_size = ITEM_SIZE_TINY
 	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
 	density = 0

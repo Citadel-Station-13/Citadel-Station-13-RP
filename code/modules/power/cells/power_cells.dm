@@ -94,7 +94,7 @@
 	desc = "A small one-time-use chemical battery for synthetic crew when they are low on power in emergency situations."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "fbp_cell"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/amount = 100
 	var/used = FALSE
 

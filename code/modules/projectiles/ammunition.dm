@@ -5,7 +5,7 @@
 	icon_state = "s-casing"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throwforce = 1
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	preserve_item = 1
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
@@ -71,7 +71,7 @@
 	item_state = "syringe_kit"
 	matter = list(DEFAULT_WALL_MATERIAL = 500)
 	throwforce = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throw_speed = 4
 	throw_range = 10
 	preserve_item = 1

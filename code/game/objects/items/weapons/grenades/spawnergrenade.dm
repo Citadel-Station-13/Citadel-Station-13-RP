@@ -75,5 +75,5 @@
 	force = 8.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	deliveryamt = 6

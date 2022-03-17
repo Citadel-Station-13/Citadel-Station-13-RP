@@ -8,7 +8,7 @@
 	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	matter = list(DEFAULT_WALL_MATERIAL = 1000)
 	recoil = 0
 	projectile_type = /obj/item/projectile/bullet/pistol/strong	//Only used for chameleon guns

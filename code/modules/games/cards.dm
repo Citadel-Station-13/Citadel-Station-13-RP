@@ -4,7 +4,7 @@
 	var/back_icon = "card_back"
 
 /obj/item/deck
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	icon = 'icons/obj/playing_cards.dmi'
 	var/list/cards = list()
 	var/cooldown = 0 // to prevent spam shuffle
@@ -280,7 +280,7 @@
 
 	icon_state = "card_pack"
 	icon = 'icons/obj/playing_cards.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	var/list/cards = list()
 	var/parentdeck = null // This variable is added here so that card pack dependent card can be mixed together by defining a "parentdeck" for them
 	drop_sound = 'sound/items/drop/paper.ogg'
@@ -307,7 +307,7 @@
 	icon_state = "empty"
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 	var/concealed = 0
 	var/list/cards = list()

@@ -3,7 +3,7 @@
 	desc = "A small empty jar."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "jar"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	matter = list("glass" = 200)
 	flags = NOBLUDGEON
 	var/list/accept_mobs = list(/mob/living/simple_mob/animal/passive/lizard, /mob/living/simple_mob/animal/passive/mouse, /mob/living/simple_mob/animal/sif/leech, /mob/living/simple_mob/animal/sif/frostfly, /mob/living/simple_mob/animal/sif/glitterfly)

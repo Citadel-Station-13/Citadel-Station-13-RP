@@ -3,7 +3,7 @@
 	desc = "An arcane weapon wielded by the followers of Nar-Sie."
 	icon_state = "cultblade"
 	origin_tech = list(TECH_COMBAT = 1, TECH_ARCANE = 1)
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	force = 30
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -114,7 +114,7 @@
 	icon_state = "cult_armour"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
 	desc = "A bulky suit of armour, bristling with spikes. It looks space-worthy."
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	allowed = list(/obj/item/book/tome,/obj/item/melee/cultblade,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
 	slowdown = 1
 	armor = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 30, rad = 30)

@@ -161,7 +161,7 @@
 // Ears: headsets, earmuffs and tiny objects
 /obj/item/clothing/ears
 	name = "ears"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	throwforce = 2
 	slot_flags = SLOT_EARS
 	sprite_sheets = list(
@@ -209,7 +209,7 @@
 
 /obj/item/clothing/ears/offear
 	name = "Other ear"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	icon = 'icons/mob/screen1_Midnight.dmi'
 	icon_state = "block"
 	slot_flags = SLOT_EARS | SLOT_TWOEARS
@@ -230,7 +230,7 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
 		)
 	gender = PLURAL //Carn: for grammarically correct text-parsing
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	icon = 'icons/obj/clothing/gloves.dmi'
 	siemens_coefficient = 0.9
 	blood_sprite_state = "bloodyhands"
@@ -351,7 +351,7 @@
 
 /obj/item/clothing/gloves/ring
 	name = "ring"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	icon = 'icons/obj/clothing/rings.dmi'
 	gender = NEUTER
 	species_restricted = list("exclude", SPECIES_DIONA)
@@ -372,7 +372,7 @@
 		)
 	body_parts_covered = HEAD
 	slot_flags = SLOT_HEAD
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	blood_sprite_state = "helmetblood"
 
 	var/light_overlay = "helmet_light"
@@ -702,7 +702,7 @@
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	preserve_item = 1
 
 	var/taurized = FALSE //Easier than trying to 'compare icons' to see if it's a taur suit
@@ -769,7 +769,7 @@
 	slot_flags = SLOT_ICLOTHING
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	equip_sound = 'sound/items/jumpsuit_equip.ogg'
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	show_messages = 1
 	blood_sprite_state = "uniformblood"
 

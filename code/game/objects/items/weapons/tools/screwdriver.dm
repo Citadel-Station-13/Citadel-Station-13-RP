@@ -9,7 +9,7 @@
 	slot_flags = SLOT_BELT | SLOT_EARS
 	tool_behaviour = TOOL_SCREWDRIVER
 	force = 6
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	throwforce = 5
 	throw_speed = 3
 	throw_range = 5
@@ -117,7 +117,7 @@
 	item_state = "screwdriver_black"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
 	slowdown = 0.1
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	usesound = 'sound/effects/uncloak.ogg'
 	toolspeed = 0.4
 	random_color = FALSE
@@ -140,7 +140,7 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
 	force = 8
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throwforce = 8
 	throw_speed = 2
 	throw_range = 3//it's heavier than a screw driver/wrench, so it does more damage, but can't be thrown as far

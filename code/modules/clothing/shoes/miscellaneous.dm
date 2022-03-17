@@ -117,7 +117,7 @@ obj/item/clothing/shoes/sandal/clogs
 	icon_state = "slippers_worn"
 	item_state_slots = list(slot_r_hand_str = "slippers", slot_l_hand_str = "slippers")
 	force = 0
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/clothing/shoes/laceup
 	name = "black oxford  shoes"
@@ -172,7 +172,7 @@ obj/item/clothing/shoes/sandal/clogs
 	icon_state = "clothwrap"
 	item_state = "clothwrap"
 	force = 0
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	species_restricted = null
 	drop_sound = 'sound/items/drop/clothing.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'

@@ -15,7 +15,7 @@
 	throw_speed = 2
 	throw_range = 8
 	slot_flags = SLOT_BELT
-	max_storage_space = ITEMSIZE_COST_SMALL * 7 // 14
+	max_storage_space = ITEM_SIZE_COST_SMALL * 7 // 14
 //	var/list/icon_variety // VOREStation edit
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
@@ -123,7 +123,7 @@
 	icon = 'icons/obj/storage.dmi' // VOREStation edit
 	icon_state = "surgerykit"
 	item_state = "firstaid-surgery"
-	max_w_class = ITEMSIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 	max_storage_space = 25			//update this when necessary!
 
 	can_hold = list(
@@ -153,13 +153,13 @@
 	name = "clotting kit"
 	desc = "Contains chemicals to stop bleeding."
 	icon_state = "clottingkit" // VOREStation edit
-	max_storage_space = ITEMSIZE_COST_SMALL * 7
+	max_storage_space = ITEM_SIZE_COST_SMALL * 7
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting = 8)
 
 /obj/item/storage/firstaid/bonemed
 	name = "bone repair kit"
 	desc = "Contains chemicals to mend broken bones."
-	max_storage_space = ITEMSIZE_COST_SMALL * 7
+	max_storage_space = ITEM_SIZE_COST_SMALL * 7
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/bonemed = 8)
 
 /*
@@ -173,14 +173,14 @@
 	drop_sound = 'sound/items/drop/pillbottle.ogg'
 	pickup_sound = 'sound/items/pickup/pillbottle.ogg'
 	item_state_slots = list(slot_r_hand_str = "contsolid", slot_l_hand_str = "contsolid")
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	can_hold = list(/obj/item/reagent_containers/pill,/obj/item/dice,/obj/item/paper)
 	allow_quick_gather = 1
 	allow_quick_empty = 1
 	use_to_pickup = 1
 	use_sound = null
-	max_storage_space = ITEMSIZE_COST_TINY * 14
-	max_w_class = ITEMSIZE_TINY
+	max_storage_space = ITEM_SIZE_COST_TINY * 14
+	max_w_class = ITEM_SIZE_TINY
 
 	var/label_text = ""
 	var/labeled = 0 // Citadel Change - Used in labeling

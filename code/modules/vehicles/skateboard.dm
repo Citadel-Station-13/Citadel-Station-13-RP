@@ -346,7 +346,7 @@
 	throwforce = 3.0
 	throw_speed = 2
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	var/build_step = 0
 
 /obj/item/heavy_skateboard_frame
@@ -358,7 +358,7 @@
 	throwforce = 6.0
 	throw_speed = 2
 	throw_range = 4
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	var/build_step = 0
 
 //Basic Board Construction

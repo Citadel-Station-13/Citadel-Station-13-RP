@@ -12,7 +12,7 @@ AI MODULES
 	icon_state = "std_mod"
 	desc = "An AI Module for transmitting encrypted instructions to the AI."
 	force = 5.0
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throwforce = 5.0
 	throw_speed = 3
 	throw_range = 15

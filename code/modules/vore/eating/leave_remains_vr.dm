@@ -79,7 +79,7 @@
 	force = 0
 	throwforce = 0
 	item_state = "bone"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/pred_ckey
 	var/pred_name
 

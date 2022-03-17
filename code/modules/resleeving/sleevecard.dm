@@ -11,7 +11,7 @@
 	icon_state = "pai"
 	item_state = "electronic"
 
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_DATA = 2)
 	show_messages = 0

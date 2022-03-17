@@ -497,7 +497,7 @@
 		if (stat & MAINT)
 			to_chat(user,"<span class='warning'>You need to install the wiring and electronics first.</span>")
 			return
-		if(W.w_class != ITEMSIZE_NORMAL)
+		if(W.w_class != ITEM_SIZE_NORMAL)
 			to_chat(user,"\The [W] is too [W.w_class < 3? "small" : "large"] to work here.")
 			return
 
@@ -668,7 +668,7 @@
 		if ((stat & BROKEN) \
 				&& !opened \
 				&& W.force >= 5 \
-				&& W.w_class >= ITEMSIZE_SMALL )
+				&& W.w_class >= ITEM_SIZE_SMALL )
 			user.visible_message("<span class='danger'>The [src.name] has been hit with the [W.name] by [user.name]!</span>", \
 				"<span class='danger'>You hit the [src.name] with your [W.name]!</span>", \
 				"You hear a bang!")

@@ -4,7 +4,7 @@
 	body_parts_covered = HANDS|ARMS
 	overgloves = 1
 	punch_force = 3
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	drop_sound = 'sound/items/drop/metalshield.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 

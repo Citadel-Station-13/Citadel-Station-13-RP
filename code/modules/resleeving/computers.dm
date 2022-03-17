@@ -448,5 +448,5 @@
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "harddisk"
 	item_state = "card-id"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/list/datum/transhuman/mind_record/stored = list()

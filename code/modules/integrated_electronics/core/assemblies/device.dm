@@ -69,7 +69,7 @@
 	icon_state = "setup_device"
 	desc = "It's a tiny electronic device with specific use for attaching to other devices."
 	var/obj/item/assembly/electronic_assembly/holder
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	max_components = IC_COMPONENTS_BASE * 3/4
 	max_complexity = IC_COMPLEXITY_BASE * 3/4
 

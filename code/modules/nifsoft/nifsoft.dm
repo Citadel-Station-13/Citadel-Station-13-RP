@@ -178,7 +178,7 @@
 		slot_l_hand_str = 'icons/mob/items/lefthand_vr.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_vr.dmi',
 		)
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/datum/nifsoft/stored = null
 
 /obj/item/disk/nifsoft/afterattack(var/A, mob/user, flag, params)

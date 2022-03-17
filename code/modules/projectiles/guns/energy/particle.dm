@@ -15,7 +15,7 @@
 	jurisdictions including NT space, APP guns are officially classed as mining equipment rather than firearms."
 	fire_sound = 'sound/weapons/blaster.ogg'
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	projectile_type = /obj/item/projectile/bullet/particle
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2, TECH_MATERIAL = 2)
 	fire_delay = 10
@@ -31,7 +31,7 @@
 	desc = "An antiparticle projector gun with an enhanced power-generation unit."
 	slot_flags = SLOT_BELT
 	force = 8 //looks heavier than a pistol
-	w_class = ITEMSIZE_LARGE	//bigger than a pistol, too.
+	w_class = ITEM_SIZE_LARGE	//bigger than a pistol, too.
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	self_recharge = 1
@@ -52,7 +52,7 @@
 	projectile_type = /obj/item/projectile/bullet/particle/heavy
 	battery_lock = 1
 	fire_delay = 15 // fires faster than a laser cannon. c'mon, it's an awesome-but-impractical endgame gun.
-	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	w_class = ITEM_SIZE_HUGE // So it can't fit in a backpack.
 	force = 10
 	one_handed_penalty = 60 // The thing's heavy and huge.
 	accuracy = 70
@@ -162,7 +162,7 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "pressurelock"
 	desc = "A safety interlock that can be installed in an antiparticle projector. It prevents the weapon from discharging in pressurised environments."
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
 // projectiles below

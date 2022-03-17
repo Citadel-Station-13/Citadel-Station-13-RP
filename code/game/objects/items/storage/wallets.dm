@@ -4,7 +4,7 @@
 	storage_slots = 10
 	icon = 'icons/obj/wallet.dmi'
 	icon_state = "wallet-orange"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	can_hold = list(
 		/obj/item/spacecash,
 		/obj/item/card,

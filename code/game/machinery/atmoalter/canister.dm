@@ -4,7 +4,7 @@
 	icon_state = "yellow"
 	density = 1
 	var/health = 100.0
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 	layer = TABLE_LAYER	// Above catwalks, hopefully below other things
 

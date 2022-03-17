@@ -43,7 +43,7 @@
 	icon_override = 'icons/obj/gun/ballistic.dmi'
 	item_state = "battlerifle_i"
 	item_icons = null
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	recoil = 2 // The battlerifle was known for its nasty recoil.
 	max_shells = 36
 	caliber = "9.5x40mm"
@@ -72,7 +72,7 @@
 	desc = "The X-9MM is a select-fire personal defense weapon designed in-house by Xing Private Security. It was made to compete with the WT550 Saber, but never caught on with NanoTrasen. Uses 9mm rounds."
 	icon_state = "pdw"
 	item_state = "c20r" // Placeholder
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	caliber = "9mm"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
@@ -103,7 +103,7 @@
 	item_icons = list(slot_r_hand_str = 'icons/obj/gun/energy.dmi', slot_l_hand_str = 'icons/obj/gun/energy.dmi') // WORK YOU FUCKING CUNT PIECE OF SHIT BASTARD STUPID BITCH ITEM ICON AAAAHHHH
 	item_state_slots = list(slot_r_hand_str = "ge_pistol_r", slot_l_hand_str = "ge_pistol_l")
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	force = 10
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
@@ -217,7 +217,7 @@ END OF CITADEL CHANGES */
 	desc = "An STG-560 built by RauMauser. Experience the terror of the Siegfried line, redone for the 26th century! The Kaiser would be proud. Uses unique 7.92x33mm Kurz rounds."
 	icon_state = "stg60"
 	item_state = "arifle"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	max_shells = 30
 	caliber = "7.92x33mm"
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_ILLEGAL = 6)
@@ -308,7 +308,7 @@ END OF CITADEL CHANGES */
 	fire_sound = 'sound/weapons/Taser.ogg'
 	charge_cost = 100
 	force = 8
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	fire_delay = 6
 	pixel_x = -16
 
@@ -405,7 +405,7 @@ END OF CITADEL CHANGES */
 	magazine_type = /obj/item/ammo_magazine/m380
 	allowed_magazines = list(/obj/item/ammo_magazine/m380)
 	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 
@@ -460,7 +460,7 @@ END OF CITADEL CHANGES */
 	desc = "The FS 9x19mm \"Sol\" is a compact and reliable submachine gun. Uses 9mm rounds."
 	icon_state = "SMG-IS"
 	item_state = "wt550"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	slot_flags = SLOT_BELT
 	caliber = "9mm"
 	magazine_type = /obj/item/ammo_magazine/m9mm
@@ -494,7 +494,7 @@ END OF CITADEL CHANGES */
 	desc = "The FS PDW E \"Martin\" is small holdout e-gun. Don't miss!"
 	icon_state = "PDW"
 	item_state = "gun"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	projectile_type = /obj/item/projectile/beam/stun
 	charge_cost = 1200
 	charge_meter = 0
@@ -803,7 +803,7 @@ END OF CITADEL CHANGES */
 	fire_sound = 'sound/weapons/laser_holdout_1.wav'
 	phase_power = 100
 
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	charge_cost = 600
 	modifystate = "holdoutkill"
 	firemodes = list(

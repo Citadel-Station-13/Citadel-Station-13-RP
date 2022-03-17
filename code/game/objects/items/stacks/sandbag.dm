@@ -4,7 +4,7 @@
 	desc = "A bag designed to be filled with sand."
 	singular_name = "empty sandbag"
 	icon_state = "sandbag_empty"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	force = 1
 	throwforce = 1
 	throw_speed = 5
@@ -51,7 +51,7 @@
 	desc = "This is a synthetic bag tightly packed with sand. It is designed to provide structural support and serve as a portable barrier."
 	singular name = "sandbag"
 	icon_state = "sandbags"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	force = 10
 	throwforce = 15
 	throw_speed = 3

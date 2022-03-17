@@ -4,7 +4,7 @@
 	desc = "Equipment for medical hound. A mounted sleeper that stabilizes patients and can inject reagents in the borg's reserves."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "sleeper"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	var/mob/living/carbon/patient = null
 	var/mob/living/silicon/robot/hound = null
 	var/inject_amount = 10
@@ -70,7 +70,7 @@
 			return
 		if(istype(target, /obj/item) || istype(target, /obj/effect/decal/remains))
 			var/obj/target_obj = target
-			if(target_obj.w_class > ITEMSIZE_LARGE)
+			if(target_obj.w_class > ITEM_SIZE_LARGE)
 				to_chat(user, "<span class='warning'>\The [target] is too large to fit into your [src.name]</span>")
 				return
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [target.name] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")

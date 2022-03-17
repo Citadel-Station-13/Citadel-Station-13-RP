@@ -8,7 +8,7 @@
 
 	icon_state = "augment_laser"
 
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 
 	organ_tag = O_AUG_L_FOREARM
 
@@ -50,7 +50,7 @@
 
 	icon_state = "augment_dart"
 
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 	integrated_object_type = /obj/item/gun/energy/crossbow
 
@@ -61,7 +61,7 @@
 	desc = "An augment that fits neatly into the hand, useful for determining the usefulness of an object for research."
 	icon_state = "augment_box"
 
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 	integrated_object_type = /obj/item/portable_scanner
 
@@ -98,7 +98,7 @@
 
 	organ_tag = O_AUG_R_UPPERARM
 
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 	integrated_object_type = null
 
@@ -147,7 +147,7 @@
 
 	organ_tag = O_AUG_R_UPPERARM
 
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 	integrated_object_type = null
 

@@ -9,7 +9,7 @@
 	item_state = null
 	item_icons = null
 
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 4)
 	slot_flags = null
 	projectile_type = /obj/item/projectile/beam/stun
@@ -41,13 +41,13 @@
 	throwforce = 5
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 5)
 
 	var/active = 0
 	var/active_force = 30
 	var/active_throwforce = 20
-	var/active_w_class = ITEMSIZE_LARGE
+	var/active_w_class = ITEM_SIZE_LARGE
 	var/active_embed_chance = 0		//In the off chance one of these is supposed to embed, you can just tweak this var
 	sharp = 0
 	edge = 0

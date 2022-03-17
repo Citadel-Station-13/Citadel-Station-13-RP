@@ -66,7 +66,7 @@
 	name = "large memory stick"
 	desc = "This stick of memory can hold up up to sixteen pieces of data."
 	icon_state = "memory16"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_DATA = 4)
 	power_draw_per_use = 8

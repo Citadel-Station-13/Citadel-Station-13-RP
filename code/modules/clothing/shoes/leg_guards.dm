@@ -4,7 +4,7 @@
 	body_parts_covered = LEGS|FEET
 	slowdown = SHOES_SLOWDOWN+0.5
 	species_restricted = null	//Unathi and Taj can wear leg armor now
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	step_volume_mod = 1.3
 	can_hold_knife = TRUE
 	drop_sound = 'sound/items/drop/boots.ogg'

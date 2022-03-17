@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	slot_flags = SLOT_BELT
 	throw_speed = 2
 	throw_range = 9
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	show_messages = 1
 
 	// Bluespace radios talk directly to telecomms equipment
@@ -837,7 +837,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	force = 5
 	throwforce = 6
 	preserve_item = 1
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	action_button_name = "Remove/Replace Handset"
 
 	var/obj/item/radio/bluespace_handset/linked/handset = /obj/item/radio/bluespace_handset/linked
@@ -929,7 +929,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	bluespace_radio = TRUE
 	icon_state = "signaller"
 	slot_flags = null
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 
 /obj/item/radio/bluespace_handset/linked
 	var/obj/item/bluespace_radio/base_unit

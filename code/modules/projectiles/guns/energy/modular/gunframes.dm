@@ -26,7 +26,7 @@
 	desc = "A basic modular energy weapon. This rifle has the capability to mount two cores."
 	cores = 2
 	icon_state = "mod_rifle"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 
 /obj/item/gun/energy/modular/rifle/tribeam
 	name = "tribeam modular energy rifle"
@@ -37,7 +37,7 @@
 	name = "compact modular energy pistol"
 	desc = "A compact energy pistol that can fit into a pocket. However, only the laser core can be replaced. All the other components are purpose-built for their size and are integrated into the frame."
 	icon_state = "taserblue"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/gun/energy/modular/compact/Initialize(mapload)
 	. = ..()
@@ -61,7 +61,7 @@
 	battery_lock = TRUE
 	cell_type = /obj/item/cell/device/weapon/modcannon
 	icon_state = "mod_cannon"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 /obj/item/gun/energy/modular/cannon/Initialize(mapload)
 	. = ..()
@@ -79,7 +79,7 @@
 	battery_lock = TRUE
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	icon_state = "modnuc"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 
 /obj/item/gun/energy/modular/nuke/Initialize(mapload)

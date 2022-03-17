@@ -6,7 +6,7 @@
 	slot_flags = SLOT_BELT
 	force = 10
 	throwforce = 7
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
@@ -23,7 +23,7 @@
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	force = 35
 	throwforce = 15
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -41,7 +41,7 @@
 	slot_flags = SLOT_BELT
 	force = 5
 	throwforce = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	var/open = FALSE
 
 /obj/item/melee/umbrella/Initialize(mapload)
@@ -74,7 +74,7 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 30
 	throwforce = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	sharp = 1
 	edge = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -109,7 +109,7 @@
 	desc = "You shouldn't be seeing this. Contact an Admin."
 	icon_state = "skateboard"
 	icon = 'icons/obj/weapons.dmi'
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BELT
 	force = 10
 	throwforce = 7
@@ -172,7 +172,7 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 30
 	throwforce = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	sharp = 1
 	edge = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -194,7 +194,7 @@
 	slot_flags = SLOT_BELT
 	force = 30
 	throwforce = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	sharp = 1
 	edge = 1
 	attack_verb = list("grasped", "torn", "cut", "pierced", "lashed")

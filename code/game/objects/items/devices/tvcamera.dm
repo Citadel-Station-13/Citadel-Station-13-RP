@@ -4,7 +4,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "camcorder"
 	item_state = "camcorder"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	slot_flags = SLOT_BELT
 	var/channel = "Tether News Feed"
 	var/obj/machinery/camera/network/thunder/camera

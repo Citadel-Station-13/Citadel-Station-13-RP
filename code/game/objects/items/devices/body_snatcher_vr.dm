@@ -6,7 +6,7 @@
 	icon_state = "sleevemate" //Give this a fancier sprite later.
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	matter = list(DEFAULT_WALL_MATERIAL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2, TECH_ILLEGAL = 1)
 

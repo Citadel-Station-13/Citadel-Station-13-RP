@@ -5,7 +5,7 @@
 	var/label = null
 	var/labels_left = 30
 	var/mode = 0	//off or on.
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/hand_labeler/attack()
 	return

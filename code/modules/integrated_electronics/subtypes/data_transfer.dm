@@ -41,13 +41,13 @@
 /obj/item/integrated_circuit/transfer/multiplexer/large
 	name = "eight multiplexer"
 	number_of_inputs = 8
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	icon_state = "mux8"
 
 /obj/item/integrated_circuit/transfer/multiplexer/huge
 	name = "sixteen multiplexer"
 	icon_state = "mux16"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	number_of_inputs = 16
 
 /obj/item/integrated_circuit/transfer/demultiplexer
@@ -88,13 +88,13 @@
 /obj/item/integrated_circuit/transfer/demultiplexer/large
 	name = "eight demultiplexer"
 	icon_state = "dmux8"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	number_of_outputs = 8
 
 /obj/item/integrated_circuit/transfer/demultiplexer/huge
 	name = "sixteen demultiplexer"
 	icon_state = "dmux16"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	number_of_outputs = 16
 
 /obj/item/integrated_circuit/transfer/pulsedemultiplexer
@@ -134,11 +134,11 @@
 /obj/item/integrated_circuit/transfer/pulsedemultiplexer/large
 	name = "eight pulse demultiplexer"
 	icon_state = "dmux8"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	number_of_outputs = 8
 
 /obj/item/integrated_circuit/transfer/pulsedemultiplexer/huge
 	name = "sixteen pulse demultiplexer"
 	icon_state = "dmux16"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	number_of_outputs = 16

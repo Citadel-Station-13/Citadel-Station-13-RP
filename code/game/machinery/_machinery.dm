@@ -96,7 +96,7 @@ Class Procs:
 /obj/machinery
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = ITEM_SIZE_NO_CONTAINER
 	layer = UNDER_JUNK_LAYER
 
 	var/stat = 0

@@ -20,7 +20,7 @@
 	icon_state = "augment_shades"
 	dead_icon = "augment_shades_dead"
 
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 	organ_tag = O_AUG_EYES
 

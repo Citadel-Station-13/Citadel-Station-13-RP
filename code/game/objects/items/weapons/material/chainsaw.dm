@@ -6,9 +6,9 @@
 	item_state = "chainsaw0"
 	var/on = 0
 	var/max_fuel = 100
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	slot_flags = SLOT_BACK
 	var/active_force = 55
 	var/inactive_force = 10
@@ -133,7 +133,7 @@ obj/item/chainsaw/proc/turnOn(mob/user as mob)
 	slot_flags = SLOT_BELT
 	force = 30
 	throwforce = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	sharp = 1
 	edge = 1
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")

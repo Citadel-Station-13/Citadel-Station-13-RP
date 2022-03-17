@@ -9,7 +9,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	throwforce = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
 	matter = list(DEFAULT_WALL_MATERIAL = 200)

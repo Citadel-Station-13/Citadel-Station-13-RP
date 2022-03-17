@@ -15,7 +15,7 @@ var/list/global/tank_gauge_cache = list()
 	var/gauge_cap = 6
 
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 
 	force = 5.0
 	throwforce = 10.0

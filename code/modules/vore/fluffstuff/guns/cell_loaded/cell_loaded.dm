@@ -209,7 +209,7 @@
 	icon_state = "nsfw_batt"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throwforce = 1
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	var/shots_left = 4
 
 	leaves_residue = 0
@@ -239,8 +239,8 @@
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid
 	name = "hybrid cell-loaded gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid/PopulateContents()
 	new /obj/item/gun/projectile/cell_loaded(src)
@@ -259,8 +259,8 @@
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat
 	name = "military cell-loaded gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat/PopulateContents()
 	new /obj/item/gun/projectile/cell_loaded(src)

@@ -5,7 +5,7 @@
 	desc = "A portable anti-armour rifle fitted with a scope, the HI PTR-7 Rifle was originally designed to used against armoured exosuits. It is capable of punching through windows and non-reinforced walls with ease. Fires armor piercing 14.5mm shells."
 	icon_state = "heavysniper"
 	item_state_slots = list(slot_r_hand_str = "l6closed-empty", slot_l_hand_str = "l6closed-empty") // placeholder
-	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	w_class = ITEM_SIZE_HUGE // So it can't fit in a backpack.
 	force = 10
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
@@ -74,7 +74,7 @@
 	desc = "The SVD, also known as the Dragunov, is mass produced with an Optical Sniper Sight so simple that even Ivan can use it. Too bad for you that the inscriptions are written in Russian. Uses 7.62mm rounds."
 	icon_state = "SVD"
 	item_state = "SVD"
-	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	w_class = ITEM_SIZE_HUGE // So it can't fit in a backpack.
 	force = 10
 	slot_flags = SLOT_BACK // Needs a sprite.
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)

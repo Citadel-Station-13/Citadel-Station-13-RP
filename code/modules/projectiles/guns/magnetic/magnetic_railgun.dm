@@ -8,7 +8,7 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_MAGNET = 4)
 	projectile_type = /obj/item/projectile/bullet/magnetic/slug
 	power_cost = 300
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BELT
 	loaded = /obj/item/rcd_ammo/large
 	slowdown = 1	// Slowdown equals slowdown_worn, until we decide to import the system to differentiate between held and worn items
@@ -68,7 +68,7 @@
 	slowdown_worn = 2
 
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = ITEM_SIZE_NO_CONTAINER
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0, move_delay=null, one_handed_penalty=15, burst_accuracy=null, dispersion=null),
@@ -148,7 +148,7 @@
 	icon_state = "peacemaker"
 	item_state = "revolver"
 
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 
 	initial_cell_type = /obj/item/cell/high
 	initial_capacitor_type = /obj/item/stock_parts/capacitor

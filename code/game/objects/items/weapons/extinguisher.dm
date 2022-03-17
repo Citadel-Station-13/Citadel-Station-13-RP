@@ -6,7 +6,7 @@
 	item_state = "fire_extinguisher"
 	hitsound = 'sound/weapons/smash.ogg'
 	throwforce = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	throw_speed = 2
 	throw_range = 10
 	force = 10
@@ -29,7 +29,7 @@
 	item_state = "miniFE"
 	hitsound = null	//it is much lighter, after all.
 	throwforce = 2
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	force = 3.0
 	max_water = 150
 	spray_particles = 3

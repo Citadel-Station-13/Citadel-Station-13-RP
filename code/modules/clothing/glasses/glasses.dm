@@ -14,7 +14,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses
 	name = "glasses"
 	icon = 'icons/obj/clothing/glasses.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	slot_flags = SLOT_EYES
 	plane_slots = list(slot_glasses)
 	var/vision_flags = 0
@@ -513,7 +513,7 @@ BLIND     // can't see anything
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "tape_cross"
 	item_state_slots = list(slot_r_hand_str = null, slot_l_hand_str = null)
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 /obj/item/clothing/glasses/sunglasses/prescription
 	name = "prescription sunglasses"

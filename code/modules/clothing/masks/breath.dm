@@ -5,7 +5,7 @@
 	item_state_slots = list(slot_r_hand_str = "breath", slot_l_hand_str = "breath")
 	item_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
 	body_parts_covered = FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	gas_transfer_coefficient = 0.10
 	permeability_coefficient = 0.50
 	var/hanging = 0

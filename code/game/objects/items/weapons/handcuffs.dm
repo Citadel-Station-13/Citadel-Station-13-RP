@@ -6,7 +6,7 @@
 	icon_state = "handcuff"
 	slot_flags = SLOT_BELT
 	throwforce = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1)
@@ -236,7 +236,7 @@ var/last_chew = 0
 	icon = 'icons/obj/items.dmi'
 	icon_state = "legcuff"
 	throwforce = 0
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	breakouttime = 300	//Deciseconds = 30s = 0.5 minute
 	cuff_type = "legcuffs"

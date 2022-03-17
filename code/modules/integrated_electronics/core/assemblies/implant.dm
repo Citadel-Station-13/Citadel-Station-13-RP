@@ -5,7 +5,7 @@
 	name = "electronic implant"
 	icon_state = "setup_implant"
 	desc = "It's a case, for building very tiny electronics with."
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	max_components = IC_COMPONENTS_BASE / 2
 	max_complexity = IC_COMPLEXITY_BASE / 2
 	var/obj/item/implant/integrated_circuit/implant = null

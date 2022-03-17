@@ -66,7 +66,7 @@
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	origin_tech = list(TECH_MATERIAL = 2)
 	matter = list("glass" = 7500, DEFAULT_WALL_MATERIAL = 1000)
 	attack_verb = list("shoved", "bashed")
@@ -190,7 +190,7 @@
 	force = 16
 	slowdown = 2
 	throwforce = 15 //Massive piece of metal
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 /obj/item/shield/riot/tower/swat
 	name = "swat shield"
@@ -293,7 +293,7 @@
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/lrange = 1.5
 	var/lpower = 1.5
 	var/lcolor = "#006AFF"
@@ -331,7 +331,7 @@
 	if (active)
 		force = 10
 		update_icon()
-		w_class = ITEMSIZE_LARGE
+		w_class = ITEM_SIZE_LARGE
 		slot_flags = null
 		playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>\The [src] is now active.</span>")
@@ -339,7 +339,7 @@
 	else
 		force = 3
 		update_icon()
-		w_class = ITEMSIZE_TINY
+		w_class = ITEM_SIZE_TINY
 		slot_flags = SLOT_EARS
 		playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>\The [src] can now be concealed.</span>")
@@ -391,7 +391,7 @@
 	throwforce = 3
 	throw_speed = 3
 	throw_range = 4
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	var/active = 0
 /*
 /obj/item/shield/energy/IsShield()
@@ -409,14 +409,14 @@
 		force = 8
 		throwforce = 5
 		throw_speed = 2
-		w_class = ITEMSIZE_LARGE
+		w_class = ITEM_SIZE_LARGE
 		slot_flags = SLOT_BACK
 		to_chat(user, "<span class='notice'>You extend \the [src].</span>")
 	else
 		force = 3
 		throwforce = 3
 		throw_speed = 3
-		w_class = ITEMSIZE_NORMAL
+		w_class = ITEM_SIZE_NORMAL
 		slot_flags = null
 		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
 

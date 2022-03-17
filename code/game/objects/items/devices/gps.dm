@@ -5,7 +5,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	desc = "Triangulates the approximate co-ordinates using a nearby satellite network. Alt+click to toggle power."
 	icon = 'icons/obj/gps.dmi'
 	icon_state = "gps-gen"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 500)

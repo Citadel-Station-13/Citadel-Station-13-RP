@@ -5,7 +5,7 @@
 	desc = "A permit for something."
 	icon = 'icons/obj/card_cit.dmi'
 	icon_state = "permit-generic"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot = ACCESSORY_SLOT_MEDAL
 	var/owner = 0	//To prevent people from just renaming the thing if they steal it
 

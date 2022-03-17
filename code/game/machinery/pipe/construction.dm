@@ -13,7 +13,7 @@ Buildable meters
 	icon = 'icons/obj/pipe-item.dmi'
 	icon_state = "simple"
 	item_state = "buildpipe"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	level = 2
 	var/piping_layer = PIPING_LAYER_DEFAULT
 	var/dispenser_class // Tells the dispenser what orientations we support, so RPD can show previews.
@@ -258,7 +258,7 @@ Buildable meters
 	icon = 'icons/obj/pipe-item.dmi'
 	icon_state = "meter"
 	item_state = "buildpipe"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	var/piping_layer = PIPING_LAYER_DEFAULT
 
 /obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)

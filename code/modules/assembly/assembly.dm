@@ -3,7 +3,7 @@
 	desc = "A small electronic device that should never exist."
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = ""
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	matter = list(DEFAULT_WALL_MATERIAL = 100)
 	throwforce = 2
 	throw_speed = 3

@@ -25,7 +25,7 @@ var/list/marker_beacon_colors = list(
 	icon_state = "marker"
 	max_amount = 100
 	no_variants = TRUE
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/picked_color = "random"
 
 /obj/item/stack/marker_beacon/ten

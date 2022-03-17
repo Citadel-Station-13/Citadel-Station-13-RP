@@ -6,7 +6,7 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	canhear_range = 2
 	flags = NOBLOODY
 	var/circuit = /obj/item/circuitboard/intercom

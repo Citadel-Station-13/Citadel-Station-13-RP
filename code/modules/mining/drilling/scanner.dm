@@ -89,7 +89,7 @@
 	name = "advanced ore detector"
 	desc = "A compact, complex device used to quickly locate ore deep underground around you."
 	icon_state = "mining-scanner" //thank you eris spriters
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
 	scanrange = 5

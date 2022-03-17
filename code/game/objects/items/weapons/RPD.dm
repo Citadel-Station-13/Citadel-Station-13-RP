@@ -14,7 +14,7 @@
 	throwforce = 10
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	matter = list(DEFAULT_WALL_MATERIAL = 50000, "glass" = 25000)
 	var/datum/effect_system/spark_spread/spark_system
 	var/working = 0

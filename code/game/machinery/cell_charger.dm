@@ -145,7 +145,7 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
 		)
 	item_state = "syringe_kit"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	matter = list(DEFAULT_WALL_MATERIAL = 4000,"glass" = 1000)
 
 /obj/item/cell_charger_kit/attack_self(mob/user)

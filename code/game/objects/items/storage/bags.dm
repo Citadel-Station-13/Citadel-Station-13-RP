@@ -38,9 +38,9 @@
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = ITEMSIZE_SMALL * 21
+	w_class = ITEM_SIZE_LARGE
+	max_w_class = ITEM_SIZE_SMALL
+	max_storage_space = ITEM_SIZE_SMALL * 21
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear)
 
@@ -66,8 +66,8 @@
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_LARGE
+	max_w_class = ITEM_SIZE_SMALL
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear)
 
@@ -84,9 +84,9 @@
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
-	w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 25
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 25
+	max_w_class = ITEM_SIZE_NORMAL
 	can_hold = list(/obj/item/ore)
 	var/stored_ore = list()
 	var/last_update = 0
@@ -189,15 +189,15 @@
 	name = "plant bag"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "plantbag"
-	max_storage_space = ITEMSIZE_COST_NORMAL * 25
-	max_w_class = ITEMSIZE_NORMAL
-	w_class = ITEMSIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 25
+	max_w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_SMALL
 	can_hold = list(/obj/item/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/grown)
 
 /obj/item/storage/bag/plants/large
 	name = "large plant bag"
-	w_class = ITEMSIZE_SMALL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 45
+	w_class = ITEM_SIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 45
 
 // -----------------------------
 //        Sheet Snatcher
@@ -212,7 +212,7 @@
 	desc = "A patented storage system designed for any kind of mineral sheet."
 
 	var/capacity = 300; //the number of sheets it can carry.
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	storage_slots = 7
 
 	allow_quick_empty = 1 // this function is superceded
@@ -346,9 +346,9 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "cashbag"
 	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."
-	max_storage_space = ITEMSIZE_COST_NORMAL * 25
-	max_w_class = ITEMSIZE_NORMAL
-	w_class = ITEMSIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 25
+	max_w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_SMALL
 	can_hold = list(/obj/item/coin,/obj/item/spacecash)
 
 	// -----------------------------
@@ -360,7 +360,7 @@
 	icon_state = "chembag"
 	desc = "A bag for storing pills, patches, and bottles."
 	max_storage_space = 200
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	slowdown = 1
 	can_hold = list(/obj/item/reagent_containers/pill,/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/glass/bottle)
 
@@ -372,9 +372,9 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "foodbag"
 	desc = "A bag for storing foods of all kinds."
-	max_storage_space = ITEMSIZE_COST_NORMAL * 25
-	max_w_class = ITEMSIZE_NORMAL
-	w_class = ITEMSIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 25
+	max_w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_SMALL
 	can_hold = list(/obj/item/reagent_containers/food/snacks,/obj/item/reagent_containers/food/condiment)
 
 	// -----------------------------
@@ -385,9 +385,9 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "detbag"
 	desc = "A bag for storing investigation things. You know, securely."
-	max_storage_space = ITEMSIZE_COST_NORMAL * 15
-	max_w_class = ITEMSIZE_NORMAL
-	w_class = ITEMSIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 15
+	max_w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_SMALL
 	can_hold = list(/obj/item/forensics/swab,/obj/item/sample/print,/obj/item/sample/fibers,/obj/item/evidencebag)
 
 /obj/item/storage/bag/dogborg
@@ -395,9 +395,9 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "foodbag"
 	desc = "A bag for storing things of all kinds."
-	max_storage_space = ITEMSIZE_COST_NORMAL * 25
-	max_w_class = ITEMSIZE_NORMAL
-	w_class = ITEMSIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 25
+	max_w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_SMALL
 	can_hold = list(/obj/item/reagent_containers/food/snacks,/obj/item/reagent_containers/food/condiment,
 	/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/glass/bottle,/obj/item/coin,/obj/item/spacecash,
 	/obj/item/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/grown,/obj/item/reagent_containers/pill)

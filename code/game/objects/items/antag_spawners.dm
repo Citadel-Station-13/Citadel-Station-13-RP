@@ -1,5 +1,5 @@
 /obj/item/antag_spawner
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	var/used = 0
 	var/ghost_query_type = null
 	var/searching = FALSE

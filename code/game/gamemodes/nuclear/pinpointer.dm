@@ -3,7 +3,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "pinoff"
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	item_state = "electronic"
 	throw_speed = 4
 	throw_range = 20

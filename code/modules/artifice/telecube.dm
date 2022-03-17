@@ -23,7 +23,7 @@
 	description_info = "Ctrl-Clicking on this object will attempt to activate its unique ability."
 	icon = 'icons/obj/props/telecube.dmi'
 	icon_state = "cube"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 7, TECH_POWER = 6, TECH_BLUESPACE = 7, TECH_ANOMALY = 2, TECH_PRECURSOR = 2)
 
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/telecube)

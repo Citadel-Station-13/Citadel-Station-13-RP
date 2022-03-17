@@ -61,9 +61,9 @@
 	desc = "A small case for safely carrying sharps around."
 	icon_state = "syringe_case"
 
-	w_class = ITEMSIZE_SMALL
-	max_w_class = ITEMSIZE_TINY
-	max_storage_space = ITEMSIZE_TINY * 6 //Capable of holding six syringes
+	w_class = ITEM_SIZE_SMALL
+	max_w_class = ITEM_SIZE_TINY
+	max_storage_space = ITEM_SIZE_TINY * 6 //Capable of holding six syringes
 
 	//Can hold syringes and autoinjectors, but also pills if you really wanted. Syringe-shaped objects like pens and cigarettes also fit, but why would you do that?
 	can_hold = list(/obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray/autoinjector,

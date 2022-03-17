@@ -5,7 +5,7 @@
 	icon_state = "candle1"
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	light_color = "#E09D37"
 	var/wax = 2000
 	var/icon_type = "candle"
@@ -76,7 +76,7 @@
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "smallcandle"
 	icon_type = "smallcandle"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/flame/candle/white
 	name = "white candle"
@@ -84,7 +84,7 @@
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "whitecandle"
 	icon_type = "whitecandle"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/flame/candle/black
 	name = "black candle"
@@ -92,14 +92,14 @@
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "blackcandle"
 	icon_type = "blackcandle"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/flame/candle/candelabra
 	name = "candelabra"
 	desc = "a small gold candelabra. The cups that hold the candles save some of the wax from dripping off, allowing the candles to burn longer."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candelabra"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	wax = 20000
 
 /obj/item/flame/candle/candelabra/update_icon()

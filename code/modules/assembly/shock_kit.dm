@@ -5,7 +5,7 @@
 	var/obj/item/clothing/head/helmet/part1 = null
 	var/obj/item/radio/electropack/part2 = null
 	var/status = 0
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 /obj/item/assembly/shock_kit/Destroy()
 	qdel(part1)

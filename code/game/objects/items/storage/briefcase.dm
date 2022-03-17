@@ -5,9 +5,9 @@
 	force = 8.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 4
+	w_class = ITEM_SIZE_LARGE
+	max_w_class = ITEM_SIZE_NORMAL
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 4
 	use_sound = 'sound/items/storage/briefcase.ogg'
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
@@ -19,9 +19,9 @@
 	icon_state = "clutch"
 	item_state_slots = list(slot_r_hand_str = "smpurse", slot_l_hand_str = "smpurse")
 	force = 0
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = ITEMSIZE_COST_SMALL * 4
+	w_class = ITEM_SIZE_NORMAL
+	max_w_class = ITEM_SIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_SMALL * 4
 
 /obj/item/storage/briefcase/crafted
 	desc = "Hand crafted suitcase made of leather and cloth."

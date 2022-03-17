@@ -17,7 +17,7 @@
 	item_state = "pen"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throwforce = 0
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	throw_speed = 7
 	throw_range = 15
 	matter = list(DEFAULT_WALL_MATERIAL = 10)
@@ -131,7 +131,7 @@
 	item_state = "pen"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throwforce = 3
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	throw_speed = 7
 	throw_range = 15
 	armor_penetration = 20
@@ -140,7 +140,7 @@
 	var/active_embed_chance = 0
 	var/active_force = 15
 	var/active_throwforce = 30
-	var/active_w_class = ITEMSIZE_NORMAL
+	var/active_w_class = ITEM_SIZE_NORMAL
 	var/active_icon_state
 	var/default_icon_state
 
@@ -298,7 +298,7 @@
 	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonred"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	attack_verb = list("attacked", "coloured")
 	colour = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB

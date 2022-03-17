@@ -10,7 +10,7 @@
 	tool_behaviour = TOOL_WRENCH
 	force = 6
 	throwforce = 7
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
@@ -48,7 +48,7 @@
 	slot_flags = SLOT_BELT
 	force = 8
 	throwforce = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	slowdown = 0.1
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked", "warped", "blasted")
@@ -90,7 +90,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	force = 8
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throwforce = 8
 	attack_verb = list("drilled", "screwed", "jabbed")
 	toolspeed = 0.25

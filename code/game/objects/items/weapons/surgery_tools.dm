@@ -12,7 +12,7 @@
 	name = "Surgical tool"
 	desc = "This shouldn't be here, ahelp it."
 	icon = 'icons/obj/surgery.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/helpforce = 0	//For help intent things
 	drop_sound = 'sound/items/drop/weldingtool.ogg'
 	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
@@ -65,7 +65,7 @@
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 10000)
 	force = 15.0
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("drilled")
 
@@ -85,7 +85,7 @@
 	force = 10.0
 	sharp = 1
 	edge = 1
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 	throwforce = 5.0
 	throw_speed = 3
@@ -148,7 +148,7 @@
 	icon_state = "saw3"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	force = 15.0
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	throwforce = 9.0
 	throw_speed = 3
 	throw_range = 5
@@ -165,7 +165,7 @@
 	item_state = "saw3"
 	hitsound = 'sound/weapons/emitter2.ogg'
 	damtype = SEARING
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	origin_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 6)
 	matter = list(DEFAULT_WALL_MATERIAL = 12500)
 	attack_verb = list("attacked", "slashed", "seared", "cut")
@@ -313,7 +313,7 @@
 	force = 10.0
 	sharp = 1
 	edge = 1
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 	throwforce = 5.0
 	throw_speed = 3
@@ -334,7 +334,7 @@
 	desc = "An admittedly complex, yet still inferior tool, this bone saw uses knapped volcanic glass as cutting teeth."
 	icon_state = "saw_bone"
 	force = 15.0
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	throwforce = 9.0
 	throw_speed = 3
 	throw_range = 5

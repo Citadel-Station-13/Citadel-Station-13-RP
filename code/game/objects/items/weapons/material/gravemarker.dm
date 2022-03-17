@@ -2,7 +2,7 @@
 	name = "grave marker"
 	desc = "An object used in marking graves."
 	icon_state = "gravemarker"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	fragile = 1
 	force_divisor = 0.65
 	thrown_force_divisor = 0.25

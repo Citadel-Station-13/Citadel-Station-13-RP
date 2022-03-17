@@ -5,7 +5,7 @@
 	icon_state = "pizza_voucher"
 	var/spent = FALSE
 	var/special_delivery = FALSE
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/pizzavoucher/Initialize(mapload)
 	. = ..()

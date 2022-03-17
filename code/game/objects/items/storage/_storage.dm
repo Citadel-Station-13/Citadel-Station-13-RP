@@ -12,14 +12,14 @@
 		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
 		)
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	show_messages = 1
 
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
 	var/list/is_seeing = new/list() //List of mobs which are currently seeing the contents of this item's storage
-	var/max_w_class = ITEMSIZE_SMALL //Max size of objects that this object can store (in effect only if can_hold isn't set)
-	var/max_storage_space = ITEMSIZE_COST_SMALL * 4 //The sum of the storage costs of all the items in this storage item.
+	var/max_w_class = ITEM_SIZE_SMALL //Max size of objects that this object can store (in effect only if can_hold isn't set)
+	var/max_storage_space = ITEM_SIZE_COST_SMALL * 4 //The sum of the storage costs of all the items in this storage item.
 	var/storage_slots = null //The number of storage slots in this container.  If null, it uses the volume-based storage instead.
 	var/obj/screen/storage/boxes = null
 	var/obj/screen/storage/storage_start = null //storage UI
@@ -671,18 +671,18 @@
 		return storage_cost
 	else
 		switch(w_class)
-			if(ITEMSIZE_TINY)
-				return ITEMSIZE_COST_TINY
-			if(ITEMSIZE_SMALL)
-				return ITEMSIZE_COST_SMALL
-			if(ITEMSIZE_NORMAL)
-				return ITEMSIZE_COST_NORMAL
-			if(ITEMSIZE_LARGE)
-				return ITEMSIZE_COST_LARGE
-			if(ITEMSIZE_HUGE)
-				return ITEMSIZE_COST_HUGE
+			if(ITEM_SIZE_TINY)
+				return ITEM_SIZE_COST_TINY
+			if(ITEM_SIZE_SMALL)
+				return ITEM_SIZE_COST_SMALL
+			if(ITEM_SIZE_NORMAL)
+				return ITEM_SIZE_COST_NORMAL
+			if(ITEM_SIZE_LARGE)
+				return ITEM_SIZE_COST_LARGE
+			if(ITEM_SIZE_HUGE)
+				return ITEM_SIZE_COST_HUGE
 			else
-				return ITEMSIZE_COST_NO_CONTAINER
+				return ITEM_SIZE_COST_NO_CONTAINER
 
 /obj/item/storage/proc/make_exact_fit()
 	storage_slots = contents.len

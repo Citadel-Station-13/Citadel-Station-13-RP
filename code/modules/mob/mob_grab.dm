@@ -33,7 +33,7 @@
 
 	abstract = 1
 	item_state = "nothing"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 
 /obj/item/grab/Initialize(mapload, mob/victim)

@@ -46,8 +46,8 @@
 /obj/item/storage/secure/briefcase/nsfw_pack
 	name = "\improper NT-102b \'NSFW\' gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack/PopulateContents()
 	new /obj/item/gun/projectile/cell_loaded/combat(src)
@@ -58,8 +58,8 @@
 /obj/item/storage/secure/briefcase/nsfw_pack_hos
 	name = "\improper NT-102b \'NSFW\' gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hos/PopulateContents()
 	new /obj/item/gun/projectile/cell_loaded/combat(src)

@@ -75,7 +75,7 @@ END OF CITADEL CHANGES */
 	This license expires on DD/Month/YYYY and must be renewed by CentCom prior to this date."}
 	icon = 'icons/obj/card.dmi'
 	icon_state = "guest"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 // END - PROTOTYPE
 */
 

@@ -1,7 +1,7 @@
 /obj/item/suit_cooling_unit
 	name = "portable suit cooling unit"
 	desc = "A portable heat sink and liquid cooled radiator that can be hooked up to a space suit's existing temperature controls to provide industrial levels of cooling."
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	icon = 'icons/obj/device.dmi'
 	icon_state = "suitcooler0"
 	slot_flags = SLOT_BACK
@@ -206,7 +206,7 @@
 /obj/item/suit_cooling_unit/emergency
 	icon_state = "esuitcooler"
 	cell = /obj/item/cell
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 
 /obj/item/suit_cooling_unit/emergency/updateicon()
 	return

@@ -57,7 +57,7 @@
 	desc = "It's a bird!"
 	icon_state = null
 	item_icons = null
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/holder/bird/sync(var/mob/living/simple_mob/SM)
 	..()

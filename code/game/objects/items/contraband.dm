@@ -47,7 +47,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 /obj/item/stolenpackage/attack_self(mob/user)
 		// Another way of doing this. Commented out because the other method is better for this application.
@@ -172,7 +172,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 /obj/item/stolenpackageplus/attack_self(mob/user)
 		var/loot = pick(/obj/item/clothing/glasses/thermal,

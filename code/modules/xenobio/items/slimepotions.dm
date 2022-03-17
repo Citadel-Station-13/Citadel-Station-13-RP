@@ -4,7 +4,7 @@
 	name = "slime agent"
 	desc = "A flask containing strange, mysterious substances excreted by a slime."
 	icon = 'icons/obj/chemical.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	origin_tech = list(TECH_BIO = 4)
 
 // This is actually applied to an extract, so no attack() overriding needed.

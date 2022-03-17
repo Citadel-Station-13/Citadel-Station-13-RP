@@ -1,7 +1,7 @@
 /obj/item/clothing/accessory/collar/lifecrystal
 	name = "\improper Vey-Med Life-Alert"
 	desc = "A small crystal with a single light on its surface. It's supposed to notify an offsite facility if you're dead for too long."
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "khlife"

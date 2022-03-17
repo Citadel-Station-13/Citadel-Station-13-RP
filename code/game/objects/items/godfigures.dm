@@ -8,7 +8,7 @@
 	throw_speed = 1
 	throw_range = 4
 	throwforce = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/godfig/attack_self(mob/user)
 	resprite_figure(user)

@@ -7,7 +7,7 @@
 	icon_override = 'icons/vore/custom_guns_vr.dmi'
 	item_state = "laser" //placeholder
 
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 4)
 	slot_flags = null
 	fire_sound = 'sound/weapons/Gunshot_light.ogg'

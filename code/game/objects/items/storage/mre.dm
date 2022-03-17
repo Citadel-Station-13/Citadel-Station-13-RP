@@ -7,8 +7,8 @@ MRE Stuff
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 1, meat pizza."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "mre"
-	max_storage_space = ITEMSIZE_COST_SMALL * 6
-	max_w_class = ITEMSIZE_SMALL
+	max_storage_space = ITEM_SIZE_COST_SMALL * 6
+	max_w_class = ITEM_SIZE_SMALL
 	var/opened = FALSE
 	starts_with = list(
 	/obj/item/storage/mrebag,
@@ -213,8 +213,8 @@ MRE Stuff
 	icon = 'icons/obj/food.dmi'
 	icon_state = "pouch_medium"
 	storage_slots = 1
-	w_class = ITEMSIZE_SMALL
-	max_w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
+	max_w_class = ITEM_SIZE_SMALL
 	var/opened = FALSE
 	starts_with = list(/obj/item/reagent_containers/food/snacks/slice/meatpizza/filled)
 

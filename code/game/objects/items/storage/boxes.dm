@@ -25,7 +25,7 @@
 	icon_state = "box"
 	item_state = "syringe_kit"
 	var/foldable = /obj/item/stack/material/cardboard	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
-	max_w_class = ITEMSIZE_SMALL
+	max_w_class = ITEM_SIZE_SMALL
 	max_storage_space = INVENTORY_BOX_SPACE
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
@@ -431,7 +431,7 @@
 	desc = "A small box of 'Space-Proof' premium matches."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "matchbox"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_BELT
 	can_hold = list(/obj/item/flame/match)
 	starts_with = list(/obj/item/flame/match = 10)
@@ -461,7 +461,7 @@
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	storage_slots = 24
 	can_hold = list(/obj/item/light/tube, /obj/item/light/bulb)
-	max_storage_space = ITEMSIZE_COST_SMALL * 24 //holds 24 items of w_class 2
+	max_storage_space = ITEM_SIZE_COST_SMALL * 24 //holds 24 items of w_class 2
 	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
 
 /obj/item/storage/box/lights/bulbs
@@ -487,9 +487,9 @@
 	icon_state = "portafreezer"
 	item_state_slots = list(slot_r_hand_str = "medicalpack", slot_l_hand_str = "medicalpack")
 	foldable = null
-	max_w_class = ITEMSIZE_NORMAL
+	max_w_class = ITEM_SIZE_NORMAL
 	can_hold = list(/obj/item/organ)
-	max_storage_space = ITEMSIZE_COST_NORMAL * 5 // Formally 21.  Odd numbers are bad.
+	max_storage_space = ITEM_SIZE_COST_NORMAL * 5 // Formally 21.  Odd numbers are bad.
 	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
 
 /obj/item/storage/box/freezer/Entered(var/atom/movable/AM)

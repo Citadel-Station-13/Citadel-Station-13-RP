@@ -7,7 +7,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "whetstone"
 	force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/repair_amount = 5
 	var/repair_time = 40
 

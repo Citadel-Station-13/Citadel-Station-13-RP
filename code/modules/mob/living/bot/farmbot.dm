@@ -319,7 +319,7 @@
 	var/build_step = 0
 	var/created_name = "Farmbot"
 	var/obj/tank
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 
 
 /obj/item/farmbot_arm_assembly/Initialize(mapload, theTank)

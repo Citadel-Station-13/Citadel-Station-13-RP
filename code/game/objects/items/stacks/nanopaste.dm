@@ -7,7 +7,7 @@
 	origin_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)
 	amount = 10
 	toolspeed = 0.75 //Used in surgery, shouldn't be the same speed as a normal screwdriver on mechanical organ repair.
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	no_variants = FALSE
 	var/restoration_external = 5
 	var/restoration_internal = 20

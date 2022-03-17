@@ -4,7 +4,7 @@
 	icon_state = "taperecorder_empty"
 	item_state = "analyzer"
 	icon = 'icons/obj/device.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 	matter = list(DEFAULT_WALL_MATERIAL = 60,"glass" = 30)
 
@@ -367,7 +367,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "tape_white"
 	item_state = "analyzer"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	matter = list(DEFAULT_WALL_MATERIAL=20, "glass"=5)
 	force = 1
 	throwforce = 0

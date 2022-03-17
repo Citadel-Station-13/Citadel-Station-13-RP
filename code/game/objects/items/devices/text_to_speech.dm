@@ -3,7 +3,7 @@
 	desc = "A device that speaks an inputted message. Given to crew which can not speak properly or at all."
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/named
 
 /obj/item/text_to_speech/attack_self(mob/user as mob)

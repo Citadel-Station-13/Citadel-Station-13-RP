@@ -7,7 +7,7 @@
 	icon_state_menu = "menu"
 	hardware_flag = PROGRAM_TABLET
 	max_hardware_size = 1
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	light_strength = 2					// Same as PDAs
 
 /obj/item/modular_computer/tablet/lease

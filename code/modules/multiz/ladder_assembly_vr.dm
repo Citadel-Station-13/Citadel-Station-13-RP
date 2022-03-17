@@ -9,7 +9,7 @@
 	density = 0
 	opacity = 0
 	anchored = 0
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
 	var/state = 0
 	var/created_name = null

@@ -5,7 +5,7 @@
 	item_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE
 	body_parts_covered = FACE|EYES
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	item_state_slots = list(slot_r_hand_str = "gas_alt", slot_l_hand_str = "gas_alt")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
@@ -45,7 +45,7 @@
 	icon_state = "halfgas"
 	siemens_coefficient = 0.7
 	body_parts_covered = FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 0, bomb = 0, bio = 55, rad = 0)
 	var/hanging = FALSE
 	flags_inv = HIDEFACE

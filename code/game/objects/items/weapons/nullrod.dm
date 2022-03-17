@@ -9,7 +9,7 @@
 	throw_speed = 1
 	throw_range = 4
 	throwforce = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 

@@ -3,7 +3,7 @@
 	anchored = 1
 	density = 1
 	plane = PLATING_PLANE
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	var/state = 0
 	var/health = 200
 	var/max_health = 200

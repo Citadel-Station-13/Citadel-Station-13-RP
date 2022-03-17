@@ -7,7 +7,7 @@
 	desc = "A multi-deployable, multi-instrument, finely crafted multi-purpose tool. The envy of engineers everywhere."
 	siemens_coefficient = 1
 	force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_switchtool.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_switchtool.dmi')

@@ -3,7 +3,7 @@
 	desc = "A dice with six sides."
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "d66"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	var/sides = 6
 	var/result = 6
 	var/currently_throwing = FALSE
@@ -139,7 +139,7 @@
 	desc = "A cup used to conceal and hold dice."
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "dicecup"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	storage_slots = 6
 	can_hold = list(
 		/obj/item/dice,

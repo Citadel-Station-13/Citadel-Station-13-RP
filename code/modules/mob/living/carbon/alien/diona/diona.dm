@@ -14,7 +14,7 @@
 	universal_understand = 0
 	universal_speak = 0      // Dionaea do not need to speak to people other than other dionaea.
 
-	can_pull_size = ITEMSIZE_SMALL
+	can_pull_size = ITEM_SIZE_SMALL
 	can_pull_mobs = MOB_PULL_SMALLER
 
 	holder_type = /obj/item/holder/diona

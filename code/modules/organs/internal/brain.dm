@@ -9,7 +9,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	vital = 1
 	icon_state = "brain2"
 	force = 1.0
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throwforce = 1.0
 	throw_speed = 3
 	throw_range = 5

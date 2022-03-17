@@ -50,7 +50,7 @@ var/list/civilian_cartridges = list(
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "cart"
 	item_state = "electronic"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	drop_sound = 'sound/items/drop/component.ogg'
 	pickup_sound = 'sound/items/pickup/component.ogg'
 

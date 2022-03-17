@@ -8,7 +8,7 @@
 	icon_override = 'icons/mob/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 
 /obj/item/clothing/accessory/armor/on_attached(var/obj/item/clothing/S, var/mob/user)
 	if(ishuman(user))
@@ -37,7 +37,7 @@
 	icon_override = 'icons/mob/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	gender = PLURAL
 	slot = ACCESSORY_SLOT_ARMOR_S
 	slots = 2
@@ -294,7 +294,7 @@
 //	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
 	icon_state = "solflag"
 	slot = ACCESSORY_SLOT_ARMOR_M
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/clothing/accessory/armor/tag/sifguard
 	name = "\improper Sif Defense Force crest"

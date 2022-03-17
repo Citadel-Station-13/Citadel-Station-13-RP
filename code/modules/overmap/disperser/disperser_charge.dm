@@ -3,7 +3,7 @@
 	desc = "A charge to power the obstruction removal ballista with. It looks impossibly round and shiny. This charge does not have a defined purpose."
 	icon = 'icons/obj/munitions.dmi'
 	icon_state = "slug"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	density = TRUE
 	//  atom_flags =  ATOM_FLAG_NO_TEMP_CHANGE | ATOM_FLAG_CLIMBABLE
 	var/chargetype

@@ -3,7 +3,7 @@
 	desc = "A hand-held emergency light."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flashlight"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	slot_flags = SLOT_BELT
 	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 20)
 	action_button_name = "Toggle Flashlight"
@@ -245,7 +245,7 @@
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	slot_flags = SLOT_EARS
 	brightness_on = 2
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	power_use = 0
 
 /obj/item/flashlight/color	//Default color is blue, just roll with it.
@@ -275,7 +275,7 @@
 	flashlight_colour = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
 	force = 10
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	attack_verb = list ("smacked", "thwacked", "thunked")
 	matter = list(DEFAULT_WALL_MATERIAL = 200,"glass" = 50)
 	hitsound = "swing_hit"
@@ -286,7 +286,7 @@
 	icon_state = "penlight"
 	item_state = null
 	brightness_on = 2
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	power_use = 0
 
 // the desk lamps are a bit special
@@ -296,7 +296,7 @@
 	icon_state = "lamp"
 	force = 10
 	brightness_on = 5
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	power_use = 0
 	on = 1
 
@@ -321,7 +321,7 @@
 /obj/item/flashlight/flare
 	name = "flare"
 	desc = "A red standard-issue flare. There are instructions on the side reading 'pull cord, make light'."
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	brightness_on = 8 // Pretty bright.
 	flashlight_power = 0.8
 	flashlight_colour = LIGHT_COLOR_FLARE
@@ -386,7 +386,7 @@
 /obj/item/flashlight/glowstick
 	name = "green glowstick"
 	desc = "A green military-grade glowstick."
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	brightness_on = 4
 	flashlight_power = 0.9
 	flashlight_colour = "#49F37C"
@@ -460,7 +460,7 @@
 	icon_state = "floor1" //not a slime extract sprite but... something close enough!
 	item_state = "slime"
 	flashlight_colour = "#FFF423"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	brightness_on = 6
 	on = 1 //Bio-luminesence has one setting, on.
 	power_use = 0

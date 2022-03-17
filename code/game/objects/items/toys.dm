@@ -97,7 +97,7 @@
 	force = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "syndballoon"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 
 /obj/item/toy/nanotrasenballoon
 	name = "criminal balloon"
@@ -108,7 +108,7 @@
 	force = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "ntballoon"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 
 /*
  * Fake telebeacon
@@ -143,7 +143,7 @@
 		icon_r_hand = 'icons/mob/items/righthand_guns.dmi',
 		)
 	slot_flags = SLOT_HOLSTER
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("attacked", "struck", "hit")
 	var/bullets = 5
 
@@ -236,7 +236,7 @@
 	desc = "It's nerf or nothing! Ages 8 and up."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "foamdart"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 
 /obj/effect/foam_dart_dummy
@@ -260,7 +260,7 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
 		)
 	var/active = 0.0
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("attacked", "struck", "hit")
 
 	attack_self(mob/user as mob)
@@ -269,12 +269,12 @@
 			to_chat(user, "<span class='notice'>You extend the plastic blade with a quick flick of your wrist.</span>")
 			playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 			src.icon_state = "swordblue"
-			src.w_class = ITEMSIZE_LARGE
+			src.w_class = ITEM_SIZE_LARGE
 		else
 			to_chat(user, "<span class='notice'>You push the plastic blade back down into the handle.</span>")
 			playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 			src.icon_state = "sword0"
-			src.w_class = ITEMSIZE_SMALL
+			src.w_class = ITEM_SIZE_SMALL
 
 		if(istype(user,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = user
@@ -297,7 +297,7 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 5
 	throwforce = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
 
 /*
@@ -308,7 +308,7 @@
 	desc = "Wow!"
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "snappop"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 	throw_impact(atom/hit_atom)
 		..()
@@ -414,7 +414,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "bosunwhistle"
 	var/cooldown = 0
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_HOLSTER
 
 /obj/item/toy/bosunwhistle/attack_self(mob/user as mob)
@@ -885,7 +885,7 @@
 	desc = "A small toy plushie. It's very cute."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "nymphplushie"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	var/last_message = 0
 	var/pokephrase = "Uww!"
 
@@ -1297,7 +1297,7 @@
 		slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
 		)
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	attack_verb = list("attacked", "slashed", "stabbed", "poked")
 
 //Flowers fake & real
@@ -1307,7 +1307,7 @@
 	desc = "A lovely bouquet of flowers. Smells nice!"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "bouquet"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/toy/bouquet/fake
 	name = "plastic bouquet"
@@ -1318,7 +1318,7 @@
 	desc = "A pretend horse on a stick for any aspiring little cowboy to ride."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "stickhorse"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 
 //////////////////////////////////////////////////////
 //				Magic 8-Ball / Conch				//
@@ -1352,7 +1352,7 @@
 // DND Character minis. Use the naming convention (type)character for the icon states.
 /obj/item/toy/character
 	icon = 'icons/obj/toy.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	pixel_z = 5
 
 /obj/item/toy/character/alien
@@ -1402,7 +1402,7 @@
 	desc = "A little toy model AI core!"// with real law announcing action!" //Alas, requires a rewrite of how ion laws work.
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "AI"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/cooldown = 0
 /*
 /obj/item/toy/AI/attack_self(mob/user)
@@ -1421,7 +1421,7 @@
 	desc = "An action figure modeled after 'The Owl', defender of justice."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "owlprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/owl/attack_self(mob/user)
@@ -1440,7 +1440,7 @@
 	desc = "An action figure modeled after 'The Griffin', criminal mastermind."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "griffinprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/griffin/attack_self(mob/user)
@@ -1459,7 +1459,7 @@
 	desc = "A detailed miniature figure based on the 'Cyan Cowgirl', fastest gun on the Frontier."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "cowgirlprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/cowgirlprize/attack_self(mob/user)
@@ -1478,7 +1478,7 @@
 	desc = "A detailed miniature figure based on the 'Snake Oil Salesman', villain and cheat, scourge of the Frontier."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "snakeoilprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/snakeoilprize/attack_self(mob/user)
@@ -1498,7 +1498,7 @@
 	name = "toddler"
 	desc = "This baby looks almost real. Wait, did it just burp?"
 	force = 5
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	slot_flags = SLOT_BACK
 */
 
@@ -1516,7 +1516,7 @@
 	desc = "Tiny cute Christmas tree."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "tinyxmastree"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	force = 1
 	throwforce = 1
 
@@ -1530,9 +1530,9 @@
 	slot_flags = SLOT_BACK
 	var/cooldowntime = 20
 	var/static/list/dakimakura_options = list("Callie","Casca","Chaika","Elisabeth","Foxy Grandpa","Haruko","Holo","Ian","Jolyne","Kurisu","Marie","Mugi","Nar'Sie","Patchouli","Plutia","Rei","Reisen","Naga","Squid","Squigly","Tomoko","Toriel","Umaru","Yaranaika","Yoko") //Kurisu is the ideal girl." - Me, Logos.
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	slot_flags = SLOT_BACK
-	max_w_class = ITEMSIZE_SMALL
+	max_w_class = ITEM_SIZE_SMALL
 	max_storage_space = INVENTORY_BOX_SPACE
 
 /obj/item/storage/daki/attack_self(mob/living/user)

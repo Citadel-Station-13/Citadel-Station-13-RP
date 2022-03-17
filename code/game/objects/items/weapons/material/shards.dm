@@ -7,7 +7,7 @@
 	icon_state = "large"
 	sharp = 1
 	edge = 1
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	force_divisor = 0.25 // 7.5 with hardness 30 (glass)
 	thrown_force_divisor = 0.5
 	item_state = "shard-glass"

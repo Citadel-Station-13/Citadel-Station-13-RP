@@ -12,7 +12,7 @@
 	desc = "An emergency shelter programmed into construction nanomachines. It has a license for use printed on the bottom."
 	icon_state = "houseball"
 	icon = 'icons/obj/device_alt.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	var/template_id = "shelter_alpha"
 	var/datum/map_template/shelter/template
 	var/used = FALSE

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures_vr.dmi' // VOREStation Edit - New icons
 	density = 1
 	can_atmos_pass = ATMOS_PASS_DENSITY
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 
 	layer = WINDOW_LAYER
 	pressure_resistance = 4*ONE_ATMOSPHERE

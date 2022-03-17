@@ -6,7 +6,7 @@
 	flags = NOBLUDGEON
 	slot_flags = SLOT_BELT
 	req_access = list(access_heads)
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1)
 
 	var/locked = 1

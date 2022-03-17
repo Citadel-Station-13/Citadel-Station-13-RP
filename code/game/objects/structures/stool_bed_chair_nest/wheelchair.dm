@@ -220,7 +220,7 @@
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "wheelchair_folded"
 	item_state = "wheelchair"
-	w_class = ITEMSIZE_HUGE // Can't be put in backpacks. Oh well.
+	w_class = ITEM_SIZE_HUGE // Can't be put in backpacks. Oh well.
 	/// What we unfold to
 	var/unfolded_type = /obj/structure/bed/chair/wheelchair
 

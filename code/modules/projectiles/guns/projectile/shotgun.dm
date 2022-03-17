@@ -4,7 +4,7 @@
 	icon_state = "shotgun"
 	item_state = "shotgun"
 	max_shells = 4
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	force = 10
 	slot_flags = SLOT_BACK
 	caliber = "12g"
@@ -73,7 +73,7 @@
 	desc = "A heavily modified Hephaestus Industries KS-40. This version bears multiple after-market mods, including a laser sight to help compensate for its shortened stock. 'Property of the Warden' has been etched into the side of the reciever. Uses 12g rounds."
 	icon_state = "shotgun_w"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
 obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
@@ -124,7 +124,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	load_method = SINGLE_CASING|SPEEDLOADER
 	handle_casings = CYCLE_CASINGS
 	max_shells = 2
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	force = 10
 	slot_flags = SLOT_BACK
 	caliber = "12g"
@@ -168,7 +168,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 		if(do_after(user, 30))	//SHIT IS STEALTHY EYYYYY
 			icon_state = "sawnshotgun"
 			item_state = "sawnshotgun"
-			w_class = ITEMSIZE_NORMAL
+			w_class = ITEM_SIZE_NORMAL
 			force = 5
 			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally) - or in a holster, why not.
@@ -187,7 +187,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	accuracy = 40
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	force = 5
 	one_handed_penalty = 5
 
@@ -208,7 +208,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	load_method = SINGLE_CASING|SPEEDLOADER
 	handle_casings = CYCLE_CASINGS
 	max_shells = 4
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	force = 5
 	accuracy = 40
 	slot_flags = SLOT_BACK
@@ -232,7 +232,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	force = 15
 
 //Flaregun Code that may work?
@@ -244,7 +244,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	load_method = SINGLE_CASING
 	handle_casings = CYCLE_CASINGS
 	max_shells = 1
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	force = 5
 	slot_flags = SLOT_BELT
 	caliber = "12g"
@@ -280,7 +280,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	handle_casings = CYCLE_CASINGS
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	max_shells = 1
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	force = 25
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)

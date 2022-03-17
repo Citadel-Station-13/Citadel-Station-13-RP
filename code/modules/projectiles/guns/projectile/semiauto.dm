@@ -3,7 +3,7 @@
 	desc = "This is the vintage semi-automatic rifle that famously helped win the second World War. What the hell it's doing aboard a space station in the 26th century, you can only imagine. Uses 7.62mm rounds."
 	icon_state = "garand"
 	item_state = "boltaction"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BACK
@@ -27,7 +27,7 @@
 	icon_state = "sgarand"
 	pin = /obj/item/firing_pin/explorer
 	magazine_type = /obj/item/ammo_magazine/m762garand/sniperhunter
-	w_class = ITEMSIZE_HUGE // We don't need this fitting in backpacks.
+	w_class = ITEM_SIZE_HUGE // We don't need this fitting in backpacks.
 	accuracy = 70 //Forced missing fucking sucks ass
 	scoped_accuracy = 100
 

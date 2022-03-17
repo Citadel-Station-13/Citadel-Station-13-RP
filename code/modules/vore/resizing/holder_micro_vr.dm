@@ -6,7 +6,7 @@
 	icon_state = "micro"
 	icon_override = 'icons/mob/head_vr.dmi'
 	slot_flags = SLOT_FEET | SLOT_HEAD | SLOT_ID
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	item_icons = list() // No in-hand sprites (for now, anyway, we could totally add some)
 	pixel_y = 0			// Override value from parent.
 

@@ -6,7 +6,7 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "harpoon-2"
 
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 
 	throw_speed = 4
 	throw_range = 20

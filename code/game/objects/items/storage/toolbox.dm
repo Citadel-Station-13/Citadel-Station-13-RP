@@ -8,9 +8,9 @@
 	throwforce = 10
 	throw_speed = 1
 	throw_range = 7
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_SMALL * 7 //enough to hold all starting contents
+	w_class = ITEM_SIZE_LARGE
+	max_w_class = ITEM_SIZE_NORMAL
+	max_storage_space = ITEM_SIZE_COST_SMALL * 7 //enough to hold all starting contents
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("robusted")
 	drop_sound = 'sound/items/drop/toolbox.ogg'
@@ -100,13 +100,13 @@
 	throwforce = 0
 
 /obj/item/storage/toolbox/lunchbox
-	max_storage_space = ITEMSIZE_COST_SMALL * 4 //slightly smaller than a toolbox
+	max_storage_space = ITEM_SIZE_COST_SMALL * 4 //slightly smaller than a toolbox
 	name = "rainbow lunchbox"
 	icon_state = "lunchbox_rainbow"
 	item_state_slots = list(slot_r_hand_str = "toolbox_pink", slot_l_hand_str = "toolbox_pink")
 	desc = "A little lunchbox. This one is the colors of the rainbow!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_NORMAL
+	max_w_class = ITEM_SIZE_SMALL
 	var/filled = FALSE
 	attack_verb = list("lunched")
 
@@ -203,7 +203,7 @@
 	icon_state = "lunchbox_survival"
 	item_state_slots = list(slot_r_hand_str = "toolbox_syndi", slot_l_hand_str = "toolbox_syndi")
 	desc = "A little lunchbox. This one seems to be much sturdier than normal, made of a durable steel!"
-	max_storage_space = ITEMSIZE_COST_SMALL * 6
+	max_storage_space = ITEM_SIZE_COST_SMALL * 6
 
 /obj/item/storage/toolbox/lunchbox/survival/zaddat
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 6)

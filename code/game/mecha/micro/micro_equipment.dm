@@ -5,7 +5,7 @@
 /////////////////////////////
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/microlaser
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	desc = "A mounted laser-carbine for light exosuits."
 	equip_cooldown = 10 // same as the laser carbine
 	name = "\improper WS-19 \"Torch\" laser carbine"
@@ -18,7 +18,7 @@
 	required_type = list(/obj/mecha/micro/sec)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/microheavy
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	desc = "A mounted laser cannon for light exosuits."
 	equip_cooldown = 30 // same as portable
 	name = "\improper PC-20 \"Lance\" light laser cannon"
@@ -31,7 +31,7 @@
 	required_type = list(/obj/mecha/micro/sec)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	desc = "A mounted taser for light exosuits."
 	name = "\improper TS-12 \"Suppressor\" integrated taser"
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'
@@ -44,7 +44,7 @@
 	required_type = list(/obj/mecha/micro/sec)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/microshotgun
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	desc = "A mounted combat shotgun with integrated ammo-lathe."
 	name = "\improper Remington C-12 \"Boomstick\""
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'
@@ -83,7 +83,7 @@
 
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/microflashbang
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	desc = "A mounted grenade launcher for smaller mechs."
 	name = "\improper FP-20 mounted grenade launcher"
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'
@@ -102,7 +102,7 @@
 /////////////////////////////
 
 /obj/item/mecha_parts/mecha_equipment/tool/drill/micro
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	name = "drill"
 	desc = "This is the drill that'll sorta poke holes in the heavens!"
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'
@@ -154,7 +154,7 @@
 
 
 /obj/item/mecha_parts/mecha_equipment/tool/micro/orescoop
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	name = "Mounted ore box"
 	desc = "A mounted ore scoop and hopper, for gathering ores."
 	icon = 'icons/mecha/mecha_equipment_vr.dmi'

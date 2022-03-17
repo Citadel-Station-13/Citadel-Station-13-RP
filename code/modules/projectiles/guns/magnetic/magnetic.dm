@@ -6,7 +6,7 @@
 	icon = 'icons/obj/railgun.dmi'
 	one_handed_penalty = 15
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_ILLEGAL = 2, TECH_MAGNET = 4)
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 
 	var/obj/item/cell/cell                              // Currently installed powercell.
 	var/obj/item/stock_parts/capacitor/capacitor        // Installed capacitor. Higher rating == faster charge between shots.
@@ -203,7 +203,7 @@
 	item_state = "coilgun"
 	icon = 'icons/obj/railgun.dmi'
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_PHORON = 4, TECH_ILLEGAL = 5, TECH_MAGNET = 4)
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 
 	removable_components = TRUE
 	gun_unreliable = 0

@@ -118,7 +118,7 @@
 	name = "silenced pistol"
 	desc = "A small, quiet,  easily concealable gun. Uses .45 rounds."
 	icon_state = "silenced_pistol"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	caliber = ".45"
 	silenced = 1
 	fire_delay = 1
@@ -190,7 +190,7 @@
 	desc = "The Lumoco Arms P3 Whisper. A compact, easily concealable gun, though it's only compatible with compact magazines. Uses 9mm rounds."
 	icon_state = "pistol"
 	item_state = null
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	caliber = "9mm"
 	silenced = 0
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
@@ -212,7 +212,7 @@
 			to_chat(user, "<span class='notice'>You unscrew [silenced] from [src].</span>")
 			user.put_in_hands(silenced)
 			silenced = 0
-			w_class = ITEMSIZE_SMALL
+			w_class = ITEM_SIZE_SMALL
 			update_icon()
 			return
 	..()
@@ -225,7 +225,7 @@
 		user.drop_item()
 		to_chat(user, "<span class='notice'>You screw [I] onto [src].</span>")
 		silenced = I	//dodgy?
-		w_class = ITEMSIZE_NORMAL
+		w_class = ITEM_SIZE_NORMAL
 		I.loc = src		//put the silencer into the gun
 		update_icon()
 		return
@@ -243,7 +243,7 @@
 	desc = "a silencer"
 	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "silencer"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/gun/projectile/pirate
 	name = "zip gun"
@@ -285,7 +285,7 @@
 	desc = "It's not size of your gun that matters, just the size of your load. Uses .357 rounds." //OHHH MYYY~
 	icon_state = "derringer"
 	item_state = "concealed"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	handle_casings = CYCLE_CASINGS //player has to take the old casing out manually before reloading
 	load_method = SINGLE_CASING
@@ -375,7 +375,7 @@
 	item_state = "revolver"
 	caliber = "organic"
 	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	magazine_type = /obj/item/ammo_magazine/mcompressedbio/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "forensic"
 	var/list/stored = list()
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	item_state = "electronic"
 	flags = NOBLUDGEON
 	slot_flags = SLOT_BELT

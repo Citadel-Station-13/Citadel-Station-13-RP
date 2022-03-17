@@ -4,15 +4,15 @@
 	icon_state = "pneumatic"
 	item_state = "pneumatic"
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	fire_sound_text = "a loud whoosh of moving air"
 	fire_delay = 50
 	fire_sound = 'sound/weapons/grenade_launcher.ogg' // Formerly tablehit1.ogg but I like this better -Ace
 	one_handed_penalty = 10
 
 	var/fire_pressure                                   // Used in fire checks/pressure checks.
-	var/max_w_class = ITEMSIZE_NORMAL                   // Hopper intake size.
-	var/max_storage_space = ITEMSIZE_COST_NORMAL * 5    // Total internal storage size.
+	var/max_w_class = ITEM_SIZE_NORMAL                   // Hopper intake size.
+	var/max_storage_space = ITEM_SIZE_COST_NORMAL * 5    // Total internal storage size.
 	var/obj/item/tank/tank = null                // Tank of gas for use in firing the cannon.
 
 	var/obj/item/storage/item_storage

@@ -3,7 +3,7 @@
 	desc = "A fancy silver-plated digital pocket watch. Looks expensive."
 	icon = 'icons/obj/deadringer.dmi'
 	icon_state = "deadringer"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT | SLOT_TIE
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/activated = 0

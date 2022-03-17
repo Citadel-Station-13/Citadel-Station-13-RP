@@ -278,7 +278,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	throw_speed = 1
 	throw_range = 5
 	throwforce = 0
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	flags = NOBLOODY
 	var/active = 0
 
@@ -304,13 +304,13 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	if (active)
 		force = 30
 		item_state = "[icon_state]_blade"
-		w_class = ITEMSIZE_LARGE
+		w_class = ITEM_SIZE_LARGE
 		playsound(src, 'sound/weapons/saberon.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>[src] is now active.</span>")
 	else
 		force = 3
 		item_state = "[icon_state]"
-		w_class = ITEMSIZE_SMALL
+		w_class = ITEM_SIZE_SMALL
 		playsound(src, 'sound/weapons/saberoff.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
 
@@ -347,7 +347,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	icon_state = "basketball"
 	name = "basketball"
 	desc = "Here's your chance, do your dance at the Space Jam."
-	w_class = ITEMSIZE_LARGE //Stops people from hiding it in their bags/pockets
+	w_class = ITEM_SIZE_LARGE //Stops people from hiding it in their bags/pockets
 	drop_sound = 'sound/items/drop/basketball.ogg'
 	pickup_sound = 'sound/items/pickup/basketball.ogg'
 

@@ -76,7 +76,7 @@
 	It can also teleport someone else, by throwing it at them or attacking them with it."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "slime_crystal_small"
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
 	force = 1 //Needs a token force to ensure you can attack because for some reason you can't attack with 0 force things
 
@@ -108,7 +108,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "slime_crystal_large"
 	uses = 1
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 4)
 
 

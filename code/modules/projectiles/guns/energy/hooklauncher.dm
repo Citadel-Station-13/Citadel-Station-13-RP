@@ -24,7 +24,7 @@
 	icon_state = "seal-signet"
 	item_state = "concealed"
 
-	w_class = ITEMSIZE_TINY
+	w_class = ITEM_SIZE_TINY
 
 	cell_type = /obj/item/cell/device/weapon/recharge/alien
 	battery_lock = TRUE

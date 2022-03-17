@@ -7,7 +7,7 @@
 	wielded_item_state = "laser-wielded"
 	fire_delay = 8
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
@@ -48,7 +48,7 @@
 	item_state = "retro"
 	desc = "An older model of the basic lasergun. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	projectile_type = /obj/item/projectile/beam
 	fire_delay = 10 //old technology
 
@@ -111,7 +111,7 @@
 	desc = "A rare weapon, handcrafted by a now defunct specialty manufacturer on Luna for a small fortune. It's certainly aged well."
 	force = 5
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	projectile_type = /obj/item/projectile/beam
 	origin_tech = null
 	fire_delay = 10		//Old pistol
@@ -130,7 +130,7 @@
 	projectile_type = /obj/item/projectile/beam/heavylaser/cannon
 	battery_lock = 1
 	fire_delay = 20
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	one_handed_penalty = 90 // The thing's heavy and huge.
 	accuracy = 75
 	charge_cost = 600
@@ -170,7 +170,7 @@
 	charge_cost = 600
 	fire_delay = 35
 	force = 10
-	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	w_class = ITEM_SIZE_HUGE // So it can't fit in a backpack.
 	accuracy = 25 //shooting at the hip
 	scoped_accuracy = 80
 //	requires_two_hands = 1
@@ -204,7 +204,7 @@
 	charge_cost = 1300
 	fire_delay = 20
 	force = 8
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	accuracy = 70
 	scoped_accuracy = 95
 	var/scope_multiplier = 1.5
@@ -272,7 +272,7 @@
 	desc = "A automatic laser weapon resembling a Tommy-Gun. Designed by Cybersun Industries to be a man portable supressive fire laser weapon."
 	icon_state = "tommylas"
 	item_state = "tommylas"
-	w_class = ITEMSIZE_LARGE
+	w_class = ITEM_SIZE_LARGE
 	slot_flags = SLOT_BACK
 	charge_cost = 60 // 40 shots, lay down the firepower
 	projectile_type = /obj/item/projectile/beam/weaklaser
@@ -290,7 +290,7 @@
 	desc = "A homemade (and somehow safe) laser gun designed around shooting single powerful laser beam draining the cell entirely. Better not miss and better have spare cells."
 	icon_state = "ziplas"
 	item_state = "ziplas"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	slot_flags = SLOT_BELT|SLOT_BACK
 	charge_cost = 1500 //You got 1 shot...
 	projectile_type = /obj/item/projectile/beam/heavylaser //But it hurts a lot

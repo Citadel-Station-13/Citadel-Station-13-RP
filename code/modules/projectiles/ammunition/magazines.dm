@@ -140,7 +140,7 @@
 /obj/item/ammo_magazine/m45tommydrum
 	name = "Tommy Gun drum magazine (.45)"
 	icon_state = "tommy-drum"
-	w_class = ITEMSIZE_NORMAL // Bulky ammo doesn't fit in your pockets!
+	w_class = ITEM_SIZE_NORMAL // Bulky ammo doesn't fit in your pockets!
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/a45
 	matter = list(DEFAULT_WALL_MATERIAL = 3750)
@@ -221,7 +221,7 @@
 	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
 	icon_state = "usmc-large"
 	caliber = "10mmCL"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	matter = list(DEFAULT_WALL_MATERIAL = 8500)
 	mag_type = MAGAZINE
 	max_ammo = 96
@@ -659,7 +659,7 @@
 	caliber = "5.45mm"
 	matter = list(DEFAULT_WALL_MATERIAL = 10000)
 	ammo_type = /obj/item/ammo_casing/a545
-	w_class = ITEMSIZE_NORMAL // This should NOT fit in your pocket!!
+	w_class = ITEM_SIZE_NORMAL // This should NOT fit in your pocket!!
 	max_ammo = 50
 	multiple_sprites = 1
 

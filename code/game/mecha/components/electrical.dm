@@ -3,7 +3,7 @@
 	name = "mecha electrical harness"
 	icon = 'icons/mecha/mech_component.dmi'
 	icon_state = "board"
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 
 	component_type = MECH_ELECTRIC

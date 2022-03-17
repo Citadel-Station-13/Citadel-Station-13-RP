@@ -15,11 +15,11 @@
 	proc/get_max_wclass(var/obj/item/organ/external/affected)
 		switch (affected.organ_tag)
 			if (BP_HEAD)
-				return ITEMSIZE_TINY
+				return ITEM_SIZE_TINY
 			if (BP_TORSO)
-				return ITEMSIZE_NORMAL
+				return ITEM_SIZE_NORMAL
 			if (BP_GROIN)
-				return ITEMSIZE_SMALL
+				return ITEM_SIZE_SMALL
 		return 0
 
 	proc/get_cavity(var/obj/item/organ/external/affected)

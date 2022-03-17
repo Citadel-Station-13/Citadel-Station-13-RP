@@ -14,7 +14,7 @@
 	name = "tile"
 	singular_name = "tile"
 	desc = "A non-descript floor tile"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	max_amount = 60
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'

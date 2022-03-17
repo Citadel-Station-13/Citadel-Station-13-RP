@@ -7,7 +7,7 @@
 	flags = OPENCONTAINER|NOBLUDGEON
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	throwforce = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	throw_speed = 2
 	throw_range = 10
 	amount_per_transfer_from_this = 10
@@ -165,7 +165,7 @@
 	icon_state = "chemsprayer"
 	item_state = "chemsprayer"
 	throwforce = 3
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	possible_transfer_amounts = null
 	volume = 600
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
@@ -220,7 +220,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "squirtgun"
 	item_state = "squirtgun"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	volume = 100
 	var/pumped = TRUE
 
@@ -248,5 +248,5 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "squirtgun_nt"
 	item_state = "squirtgun_nt"
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	volume = 101

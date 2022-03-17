@@ -12,7 +12,7 @@
 	throwforce = 10.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 1, TECH_PHORON = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 500)
 	var/status = 0

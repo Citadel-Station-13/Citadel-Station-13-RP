@@ -5,7 +5,7 @@
 	item_state = "syringe_0"
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 1000)
 	var/obj/item/implant/imp = null
 	var/active = 1

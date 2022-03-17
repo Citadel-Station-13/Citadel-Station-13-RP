@@ -8,7 +8,7 @@ var/global/list/stool_cache = list() //haha stool
 	icon_state = "stool_preview" //set for the map
 	force = 10
 	throwforce = 10
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 	var/base_icon = "stool_base"
 	var/datum/material/material
 	var/datum/material/padding_material

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "detailer"
 	item_flags = NOBLUDGEON
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEM_SIZE_SMALL
 	var/detail_color = COLOR_ASSEMBLY_WHITE
 	var/list/color_list = list(
 		"black" = COLOR_ASSEMBLY_BLACK,
