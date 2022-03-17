@@ -6,16 +6,16 @@
 /obj/item/bedsheet/purple,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
-"ax" = (
-/obj/structure/prop/lock/projectile{
-	lockID = "dmirr"
-	},
-/turf/simulated/floor/classp,
-/area/class_p/POIs/archaic_temple)
 "aK" = (
 /obj/structure/bookcase,
 /obj/item/book/tome,
 /turf/simulated/floor/wood/classp,
+/area/class_p/POIs/archaic_temple)
+"bp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/trap/delayed/wmarble/classp{
+	id = "west_hall_4"
+	},
 /area/class_p/POIs/archaic_temple)
 "bv" = (
 /obj/structure/bed{
@@ -74,7 +74,7 @@
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
 "fQ" = (
-/turf/simulated/floor/outdoors/mud/classp,
+/turf/simulated/floor/outdoors/mud/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "fS" = (
 /obj/structure/window/reinforced/polarized/full{
@@ -124,11 +124,6 @@
 /turf/simulated/floor/wmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "jo" = (
-/obj/effect/trap/launcher/fireball{
-	dir = 4;
-	id = "entry_corridor";
-	pixel_x = -32
-	},
 /turf/simulated/floor/trap/delayed/phoron/classp{
 	id = "entry_corridor"
 	},
@@ -136,7 +131,7 @@
 "jJ" = (
 /obj/effect/trap/pop_up/thrower,
 /turf/simulated/mineral/cave,
-/area/template_noop)
+/area/class_p/POIs/archaic_temple)
 "jS" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/decal/cleanable/dirt,
@@ -154,7 +149,7 @@
 /obj/structure/window/phoronbasic{
 	dir = 1
 	},
-/obj/item/gun/magic/staff/puzzle_key,
+/obj/item/gun/energy/puzzle_key,
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "kE" = (
@@ -171,6 +166,7 @@
 /obj/effect/trap/pit/tentacle{
 	id = "headmaster_desk"
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "kV" = (
@@ -180,12 +176,12 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "lc" = (
+/obj/structure/grille/cult,
 /obj/structure/window/reinforced/polarized/full{
 	color = "#222222";
 	name = "reflective window";
 	opacity = 1
 	},
-/obj/structure/grille/cult,
 /turf/simulated/floor/trap/delayed/plating/classp{
 	id = "tunnel_south"
 	},
@@ -194,6 +190,7 @@
 /obj/effect/trap/pit/deep{
 	id = "tunnel_north"
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "lh" = (
@@ -242,12 +239,12 @@
 /turf/simulated/floor/wmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "nd" = (
+/obj/structure/grille/cult,
 /obj/structure/window/reinforced/polarized/full{
 	color = "#222222";
 	name = "reflective window";
 	opacity = 1
 	},
-/obj/structure/grille/cult,
 /turf/simulated/floor/trap/delayed/plating/classp{
 	id = "tunnel_west"
 	},
@@ -255,6 +252,12 @@
 "nD" = (
 /obj/structure/simple_door/phoron,
 /turf/simulated/floor/phoron/classp,
+/area/class_p/POIs/archaic_temple)
+"nE" = (
+/obj/structure/prop/lock/projectile{
+	lockID = "dmirr"
+	},
+/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "nX" = (
 /obj/structure/table/bench/wooden,
@@ -288,6 +291,12 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wmarble/classp,
+/area/class_p/POIs/archaic_temple)
+"pe" = (
+/obj/structure/prop/prism/externalcont{
+	degrees_from_north = 270
+	},
+/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "qo" = (
 /turf/simulated/wall/ironphoron/classp,
@@ -338,7 +347,7 @@
 /area/class_p/POIs/archaic_temple)
 "rO" = (
 /obj/structure/boulder,
-/turf/simulated/floor/outdoors/mud/classp,
+/turf/simulated/floor/outdoors/mud/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "rU" = (
 /turf/simulated/floor/outdoors/snow/classp,
@@ -347,7 +356,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "sj" = (
-/obj/structure/prop/prism/externalcont{
+/obj/structure/prop/prism/incremental/externalcont{
 	dialID = "bchar"
 	},
 /turf/simulated/floor/classp,
@@ -375,7 +384,7 @@
 	name = "Sundial of Anak-Hun-Tamuun"
 	},
 /obj/structure/table/marble,
-/turf/simulated/floor/outdoors/mud/classp,
+/turf/simulated/floor/outdoors/mud/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "tc" = (
 /obj/machinery/door/blast/puzzle{
@@ -398,6 +407,12 @@
 /area/class_p/POIs/archaic_temple)
 "tt" = (
 /obj/structure/simple_door/phoron,
+/turf/simulated/floor/bmarble/classp,
+/area/class_p/POIs/archaic_temple)
+"tw" = (
+/obj/effect/trap/pit{
+	id = "west_hall_4"
+	},
 /turf/simulated/floor/bmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "tY" = (
@@ -446,6 +461,7 @@
 /obj/effect/trap/pit/deep{
 	id = "tunnel_class_south"
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "yg" = (
@@ -453,7 +469,7 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "yt" = (
-/turf/simulated/floor/outdoors/ice/classp,
+/turf/simulated/floor/outdoors/ice/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "yw" = (
 /obj/structure/statue/marble/male{
@@ -498,11 +514,6 @@
 "zY" = (
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
-"zZ" = (
-/obj/structure/table/rack/steel,
-/obj/machinery/artifact,
-/turf/simulated/floor/silver/classp,
-/area/class_p/POIs/archaic_temple)
 "Ac" = (
 /obj/structure/table/marble,
 /obj/item/coin/copper,
@@ -514,26 +525,22 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Ar" = (
-/obj/effect/trap/launcher/dart{
-	dir = 1;
-	id = "east_hall_2";
-	pixel_y = -32
+/obj/effect/trap/launcher/fireball{
+	dir = 4;
+	id = "entry_corridor"
 	},
-/turf/simulated/floor/wmarble/classp,
+/turf/simulated/wall/dungeon,
 /area/class_p/POIs/archaic_temple)
 "At" = (
-/obj/effect/decal/cleanable/blood/writing{
-	desc = "It looks like blood."
-	},
+/obj/effect/decal/cleanable/blood/drip,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Au" = (
 /obj/effect/trap/launcher/fireball{
 	dir = 8;
-	id = "master_trigger";
-	pixel_x = 32
+	id = "master_trigger"
 	},
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/wall/dungeon,
 /area/class_p/POIs/archaic_temple)
 "AM" = (
 /obj/structure/statue/marble/male{
@@ -564,6 +571,7 @@
 /obj/effect/trap/pit/deep{
 	id = "tunnel_class_north"
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "Ci" = (
@@ -644,10 +652,11 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Fq" = (
-/obj/effect/decal/cleanable/blood/writing{
-	desc = "It looks like blood."
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/trap/pop_up/pillar{
+	id = "display_room"
 	},
-/turf/simulated/wall/ironphoron/classp,
+/turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
 "Fu" = (
 /obj/structure/bed/chair/wood/wings{
@@ -664,6 +673,7 @@
 /obj/effect/trap/pit/deep{
 	id = "tunnel_east"
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "FY" = (
@@ -675,7 +685,8 @@
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
 "GP" = (
-/obj/effect/trap/pit/punji{
+/obj/effect/trap/pit/bone_breaker,
+/obj/effect/trap/pit/blood/deep{
 	id = "library_2"
 	},
 /turf/simulated/floor/wood/classp,
@@ -692,12 +703,16 @@
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
 "Hh" = (
-/obj/effect/trap/launcher/fireball{
-	dir = 4;
-	id = "entry_corridor";
-	pixel_x = -32
+/obj/structure/grille/cult,
+/obj/structure/window/reinforced/polarized/full{
+	name = "illusory mirror";
+	opacity = 1
 	},
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/floor/classp,
+/area/class_p/POIs/archaic_temple)
+"Hp" = (
+/obj/effect/ceiling,
+/turf/simulated/mineral/cave,
 /area/class_p/POIs/archaic_temple)
 "Hw" = (
 /turf/simulated/floor/trap/wmarble/classp{
@@ -717,7 +732,9 @@
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "HM" = (
-/obj/effect/trap/pop_up/pillar,
+/obj/effect/trap/pop_up/pillar{
+	id = "display_room"
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
@@ -726,7 +743,7 @@
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
 "Ij" = (
-/turf/simulated/floor/outdoors/ice/classp,
+/turf/simulated/mineral/cave,
 /area/template_noop)
 "Iw" = (
 /obj/structure/table/rack/steel,
@@ -736,7 +753,7 @@
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
 "ID" = (
-/turf/simulated/floor/water/acid/deep,
+/turf/simulated/floor/water/acid/deep/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "IE" = (
 /turf/simulated/floor/trap/phoron/classp{
@@ -754,16 +771,17 @@
 	},
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
+"Jy" = (
+/obj/structure/prop/prism/externalcont{
+	degrees_from_north = 180;
+	dialID = null
+	},
+/turf/simulated/floor/classp,
+/area/class_p/POIs/archaic_temple)
 "JL" = (
 /turf/simulated/floor/trap/phoron/classp{
 	id = "master_trigger"
 	},
-/area/class_p/POIs/archaic_temple)
-"JN" = (
-/obj/structure/prop/prism/externalcont{
-	degrees_from_north = 270
-	},
-/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "JP" = (
 /obj/structure/table/hardwoodtable,
@@ -777,7 +795,7 @@
 "JU" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn,
-/turf/simulated/floor/outdoors/mud/classp,
+/turf/simulated/floor/outdoors/mud/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "Kf" = (
 /obj/effect/trap/pop_up/spear{
@@ -805,10 +823,10 @@
 /area/class_p/POIs/archaic_temple)
 "KP" = (
 /obj/effect/trap/launcher/dart{
-	id = "east_hall_1";
-	pixel_y = 32
+	dir = 1;
+	id = "east_hall_2"
 	},
-/turf/simulated/floor/bmarble/classp,
+/turf/simulated/wall/dungeon,
 /area/class_p/POIs/archaic_temple)
 "La" = (
 /obj/structure/simple_door/hardwood,
@@ -881,7 +899,7 @@
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "OI" = (
-/obj/structure/prop/prism/externalcont{
+/obj/structure/prop/prism/incremental/externalcont{
 	degrees_from_north = 180;
 	dialID = "anak"
 	},
@@ -899,15 +917,13 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Pe" = (
-/obj/effect/trap/launcher/fireball_aoe{
-	dir = 1;
-	id = "headmaster_office";
-	pixel_y = -32
+/obj/effect/trap/pit/blood/deep{
+	id = "library_2"
 	},
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Pm" = (
-/obj/effect/trap/pit/punji{
+/obj/effect/trap/pit/blood/deep{
 	id = "library_1"
 	},
 /turf/simulated/floor/wood/classp,
@@ -924,6 +940,7 @@
 /obj/effect/trap/pit/deep{
 	id = "tunnel_west"
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "QV" = (
@@ -942,13 +959,6 @@
 	},
 /turf/simulated/floor/diamond,
 /area/class_p/POIs/archaic_temple)
-"RF" = (
-/obj/structure/prop/prism/externalcont{
-	degrees_from_north = 180;
-	dialID = null
-	},
-/turf/simulated/floor/classp,
-/area/class_p/POIs/archaic_temple)
 "Sc" = (
 /turf/simulated/floor/trap/delayed/crystal/classp{
 	id = "display_room"
@@ -966,9 +976,14 @@
 	},
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
+"TF" = (
+/obj/structure/table/rack/steel,
+/obj/machinery/artifact,
+/turf/simulated/floor/silver/classp,
+/area/class_p/POIs/archaic_temple)
 "TM" = (
 /turf/simulated/mineral/cave,
-/area/template_noop)
+/area/class_p/POIs/archaic_temple)
 "Ua" = (
 /obj/effect/trap/pop_up/flame{
 	id = "entry_corridor"
@@ -977,12 +992,12 @@
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "Ug" = (
+/obj/structure/grille/cult,
 /obj/structure/window/reinforced/polarized/full{
 	color = "#222222";
 	name = "reflective window";
 	opacity = 1
 	},
-/obj/structure/grille/cult,
 /turf/simulated/floor/trap/delayed/plating/classp{
 	id = "tunnel_east"
 	},
@@ -1019,7 +1034,9 @@
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "UR" = (
-/obj/effect/trap/pop_up/pillar,
+/obj/effect/trap/pop_up/pillar{
+	id = "display_room"
+	},
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
 "Vb" = (
@@ -1092,26 +1109,17 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior/classp,
 /area/class_p/POIs/archaic_temple)
 "Yd" = (
-/obj/effect/trap/pit/punji{
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/trap/pit/blood/deep{
 	id = "library_1"
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Yg" = (
-/obj/effect/trap/pit{
-	id = "west_hall_1"
+/obj/effect/trap/launcher/dart{
+	id = "east_hall_1"
 	},
-/turf/simulated/floor/bmarble/classp,
-/area/class_p/POIs/archaic_temple)
-"YG" = (
-/obj/structure/grille/cult,
-/obj/structure/window/reinforced/polarized/full{
-	color = "#222222";
-	name = "reflective window";
-	opacity = 1
-	},
-/turf/simulated/floor/classp,
+/turf/simulated/wall/dungeon,
 /area/class_p/POIs/archaic_temple)
 "YP" = (
 /obj/effect/trap/launcher/fireball_aoe{
@@ -1142,34 +1150,16 @@
 "Zc" = (
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
-"Zf" = (
-/obj/effect/trap/launcher/fireball{
-	dir = 8;
-	id = "master_trigger";
-	pixel_x = 32
-	},
-/obj/effect/trap/pop_up/flame{
-	id = "entry_corridor"
-	},
-/turf/simulated/floor/phoron/classp,
-/area/class_p/POIs/archaic_temple)
 "Zs" = (
-/obj/effect/trap/launcher/fireball{
-	dir = 4;
-	id = "entry_corridor";
-	pixel_x = -32
+/obj/effect/trap/launcher/fireball_aoe{
+	dir = 1;
+	id = "headmaster_office"
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/phoron/classp,
+/turf/simulated/wall/ironphoron/classp,
 /area/class_p/POIs/archaic_temple)
 "Zu" = (
 /obj/effect/trap/pop_up/flame{
 	id = "entry_corridor"
-	},
-/obj/effect/trap/launcher/fireball{
-	dir = 8;
-	id = "master_trigger";
-	pixel_x = 32
 	},
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
@@ -1177,10 +1167,20 @@
 /obj/effect/trap/pit/deep{
 	id = "tunnel_south"
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "Zx" = (
-/turf/simulated/floor/water/acid,
+/turf/simulated/floor/water/acid/classp/indoors,
+/area/class_p/POIs/archaic_temple)
+"ZM" = (
+/obj/structure/grille/cult,
+/obj/structure/window/reinforced/polarized/full{
+	color = "#222222";
+	name = "reflective window";
+	opacity = 1
+	},
+/turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "ZV" = (
 /turf/simulated/floor/outdoors/grass/heavy/interior/classp,
@@ -1277,7 +1277,7 @@ rU
 rU
 rU
 rU
-TM
+Ij
 rU
 rU
 gr
@@ -1331,9 +1331,9 @@ rU
 rU
 rU
 rU
-TM
-TM
-TM
+Ij
+Ij
+Ij
 rU
 rU
 TM
@@ -1387,9 +1387,9 @@ rU
 TM
 TM
 rU
-TM
-TM
-TM
+Ij
+Ij
+Ij
 rU
 rU
 TM
@@ -1445,7 +1445,7 @@ TM
 TM
 rU
 rU
-TM
+Ij
 rU
 rU
 TM
@@ -1509,7 +1509,7 @@ TM
 TM
 TM
 TM
-Ij
+yt
 TM
 TM
 TM
@@ -1565,12 +1565,12 @@ TM
 TM
 TM
 TM
-Ij
-Ij
-Ij
+yt
+yt
+yt
 TM
 TM
-Ij
+yt
 TM
 TM
 TM
@@ -1620,15 +1620,15 @@ qo
 TM
 TM
 TM
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
+yt
+yt
 TM
-Ij
-Ij
+yt
+yt
 TM
 TM
 TM
@@ -1676,17 +1676,17 @@ zk
 qo
 TM
 TM
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
 TM
 TM
 TM
@@ -1718,9 +1718,9 @@ TM
 TM
 qo
 OI
-Fq
+Hh
 At
-ot
+At
 PM
 ef
 iX
@@ -1733,16 +1733,16 @@ ot
 qo
 TM
 TM
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
 TM
 TM
 TM
@@ -1774,7 +1774,7 @@ TM
 TM
 TM
 qo
-se
+ZM
 qo
 qo
 qo
@@ -1791,16 +1791,16 @@ qo
 TM
 TM
 TM
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
 TM
 TM
 TM
@@ -1849,16 +1849,16 @@ TM
 TM
 TM
 TM
-Ij
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
+yt
 TM
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
 TM
 TM
 TM
@@ -1908,15 +1908,15 @@ TM
 TM
 TM
 TM
-Ij
-Ij
+yt
+yt
 TM
 TM
 TM
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
 TM
 TM
 TM
@@ -1972,9 +1972,9 @@ TM
 TM
 TM
 TM
-Ij
-Ij
-Ij
+yt
+yt
+yt
 TM
 TM
 TM
@@ -2009,7 +2009,7 @@ Jw
 ot
 qo
 Kv
-DA
+bp
 Ks
 qo
 QV
@@ -2030,9 +2030,9 @@ qo
 TM
 TM
 TM
-Ij
-Ij
-Ij
+yt
+yt
+yt
 TM
 TM
 TM
@@ -2066,7 +2066,7 @@ ot
 XB
 Wc
 oZ
-Ks
+tw
 iX
 ef
 ot
@@ -2086,10 +2086,10 @@ rO
 qo
 TM
 TM
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
 TM
 TM
 TM
@@ -2141,14 +2141,14 @@ ZV
 fQ
 rO
 TM
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
 TM
 TM
 TM
@@ -2160,7 +2160,7 @@ gr
 gr
 rU
 rU
-rU
+TM
 TM
 TM
 TM
@@ -2180,7 +2180,7 @@ ot
 ot
 qo
 DI
-Yg
+Ks
 DI
 qo
 ru
@@ -2199,14 +2199,14 @@ ZV
 ZV
 TM
 TM
-Ij
+yt
 TM
 TM
 TM
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
 TM
 TM
 TM
@@ -2258,12 +2258,12 @@ TM
 TM
 TM
 TM
-Ij
-Ij
-Ij
-Ij
-Ij
-Ij
+yt
+yt
+yt
+yt
+yt
+yt
 TM
 TM
 TM
@@ -2315,12 +2315,12 @@ qo
 se
 se
 TM
-Ij
+yt
 TM
 TM
 TM
-Ij
-Ij
+yt
+yt
 TM
 TM
 TM
@@ -2360,7 +2360,7 @@ qo
 qo
 qo
 sj
-fS
+ZM
 fQ
 ZV
 ZV
@@ -2368,16 +2368,16 @@ fQ
 ZV
 ZV
 fQ
-fS
+ZM
 UJ
 et
 se
-Ij
-Ij
+yt
+yt
 TM
 TM
-Ij
-Ij
+yt
+yt
 TM
 TM
 TM
@@ -2434,8 +2434,8 @@ TM
 TM
 TM
 TM
-Ij
-Ij
+yt
+yt
 TM
 TM
 TM
@@ -2483,10 +2483,10 @@ qo
 qo
 qo
 qo
-TM
-TM
-TM
-TM
+Hp
+Hp
+Hp
+Hp
 TM
 TM
 Mq
@@ -2509,13 +2509,13 @@ PM
 PM
 qo
 qo
+Ar
 Mq
+Ar
 Mq
+Ar
 Mq
-Mq
-Mq
-Mq
-Mq
+Ar
 qo
 qo
 GF
@@ -2541,8 +2541,8 @@ qo
 uk
 qo
 Kl
-TM
-TM
+Hp
+Hp
 Mq
 Mq
 Mq
@@ -2566,13 +2566,13 @@ ot
 ot
 Ee
 qo
-Hh
+Fg
 Zc
-Hh
+Fg
 XH
 jo
 Zc
-Zs
+Oo
 qo
 zY
 zY
@@ -2599,7 +2599,7 @@ Zc
 Zc
 Zc
 Zc
-TM
+Hp
 Mq
 fB
 mp
@@ -2740,9 +2740,9 @@ qo
 Zc
 Zu
 Zc
-Au
+Fg
 xl
-Zf
+Zu
 Zc
 qo
 zY
@@ -2773,7 +2773,7 @@ Zc
 Zc
 Mq
 kE
-zZ
+TF
 so
 JL
 JT
@@ -2795,11 +2795,11 @@ ot
 qo
 qo
 Mq
+Au
 Mq
+Au
 Mq
-Mq
-Mq
-Mq
+Au
 Mq
 qo
 qo
@@ -2827,7 +2827,7 @@ ik
 qo
 uh
 qo
-TM
+Hp
 Mq
 Mq
 Mq
@@ -2886,11 +2886,11 @@ qo
 qo
 qo
 Mq
-RF
-ax
+Jy
+nE
 Mq
 Mq
-YG
+Hh
 Mq
 Mq
 TM
@@ -2926,7 +2926,7 @@ Dl
 Zc
 zY
 zY
-fS
+ZM
 UJ
 qo
 FF
@@ -2943,10 +2943,10 @@ se
 UJ
 qo
 Mq
-JN
+pe
 se
 se
-se
+ZM
 et
 Mq
 TM
@@ -3056,7 +3056,7 @@ UJ
 UJ
 UJ
 qo
-TM
+qo
 qo
 zm
 rF
@@ -3129,7 +3129,7 @@ gr
 gr
 rU
 rU
-rU
+TM
 TM
 TM
 TM
@@ -3204,8 +3204,8 @@ Zc
 od
 Dl
 Us
-Mq
-KP
+Yg
+Ks
 DA
 Ks
 Mq
@@ -3264,10 +3264,10 @@ od
 Mq
 DA
 Kv
-Ar
-Mq
+iX
+KP
 iV
-GP
+Pe
 Ak
 nX
 ot
@@ -3288,8 +3288,8 @@ Zc
 La
 ot
 ot
-Pe
-qo
+ot
+Zs
 TM
 TM
 rU
@@ -3318,8 +3318,8 @@ Dl
 GF
 Zc
 Ci
-Mq
-KP
+Yg
+Ks
 dv
 Ks
 Mq
@@ -3378,8 +3378,8 @@ od
 Mq
 iX
 Kv
-Ar
-Mq
+iX
+KP
 iV
 PM
 Ak
@@ -3432,8 +3432,8 @@ Sc
 od
 Dl
 HB
-Mq
-KP
+Yg
+Ks
 DA
 ct
 Mq
@@ -3486,7 +3486,7 @@ TM
 qo
 od
 Dl
-HM
+Fq
 Zc
 od
 ef

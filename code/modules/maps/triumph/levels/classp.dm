@@ -82,3 +82,15 @@ FROZEN_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 /turf/simulated/floor/old_tile/green/outdoors
 	outdoors = TRUE
+
+/turf/simulated/floor/outdoors/mud/classp/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/outdoors/ice/classp/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/water/acid/classp/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/water/acid/deep/classp/indoors
+	outdoors = FALSE
