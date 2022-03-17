@@ -2,7 +2,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 
 /atom/movable/screen/color_matrix_proxy_view
 	name = "color_matrix_proxy_view"
-	// del_on_map_removal = FALSE
+	del_on_map_removal = FALSE
 	layer = OBJ_PLANE
 	plane = OBJ_PLANE
 
@@ -37,7 +37,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 	if (!client)
 		return
 
-	for (var/plane_master_type in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
+	for (var/plane_master_type in subtypesof(/atom/movable/screen/plane_master)) // - /atom/movable/screen/plane_master/blackness)
 		var/atom/movable/screen/plane_master/plane_master = new plane_master_type()
 		plane_master.screen_loc = "[assigned_map]:CENTER"
 		client?.screen |= plane_master
