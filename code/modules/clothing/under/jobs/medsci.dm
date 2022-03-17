@@ -76,9 +76,16 @@
 	name = "science turtleneck"
 	desc = "It's a stylish turtleneck weaved with an explosive-resistant, comfortable mesh. You don't have to look like a dork to be a dork."
 	icon_state = "turtle_sci"
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 10, bio = 0, rad = 0)
 	item_state_slots = list(slot_r_hand_str = "purple", slot_l_hand_str = "purple")
 	rolled_down = -1
 	rolled_sleeves = -1
+
+/obj/item/clothing/under/rank/scientist/turtleneck_fem
+	name = "science turtleneck"
+	desc = "It's a stylish turtleneck weaved with an explosive-resistant, comfortable mesh. You don't have to look like a dork to be a dork."
+	icon_state = "turtle_sci_fem"
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 10, bio = 0, rad = 0)
 
 /obj/item/clothing/under/rank/chemist
 	desc = "It's made of a special fiber that gives special protection against biohazards. It has a chemist rank stripe on it."
@@ -248,6 +255,11 @@
 	rolled_down = -1
 	rolled_sleeves = -1
 
+/obj/item/clothing/under/rank/medical/turtleneck_fem
+	name = "medical turtleneck"
+	desc = "It's a stylish turtleneck made of bioresistant fiber. Look good, save lives- what more could you want?"
+	icon_state = "turtle_med_fem"
+
 /obj/item/clothing/under/rank/medical/paramedic
 	name = "short sleeve medical jumpsuit"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one has a cross on the chest denoting that the wearer is trained medical personnel."
@@ -263,11 +275,23 @@
 	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
+/obj/item/clothing/under/rank/medical/scrubs_fem
+	name = "blue scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in baby blue."
+	icon_state = "scrubsblue_fem"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+
 /obj/item/clothing/under/rank/medical/scrubs/green
 	name = "green scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in dark green."
 	icon_state = "scrubsgreen"
 	item_state_slots = list(slot_r_hand_str = "green", slot_l_hand_str = "green")
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+
+/obj/item/clothing/under/rank/medical/scrubs_fem/green
+	name = "green scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in dark green."
+	icon_state = "scrubsgreen_fem"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /obj/item/clothing/under/rank/medical/scrubs/purple
@@ -277,6 +301,12 @@
 	item_state_slots = list(slot_r_hand_str = "purple", slot_l_hand_str = "purple")
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
+/obj/item/clothing/under/rank/medical/scrubs_fem/purple
+	name = "purple scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in deep purple."
+	icon_state = "scrubspurple_fem"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+
 /obj/item/clothing/under/rank/medical/scrubs/black
 	name = "black scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in black."
@@ -284,11 +314,23 @@
 	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
+/obj/item/clothing/under/rank/medical/scrubs_fem/black
+	name = "black scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in black."
+	icon_state = "scrubsblack_fem"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+
 /obj/item/clothing/under/rank/medical/scrubs/navyblue
 	name = "navy blue scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in navy blue."
 	icon_state = "scrubsnavyblue"
 	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+
+/obj/item/clothing/under/rank/medical/scrubs_fem/navyblue
+	name = "navy blue scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in navy blue."
+	icon_state = "scrubsnavyblue_fem"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /obj/item/clothing/under/rank/psych
@@ -303,6 +345,11 @@
 	icon_state = "psychturtle"
 	item_state_slots = list(slot_r_hand_str = "psyche", slot_l_hand_str = "psyche")
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/psych/turtleneck_fem
+	name = "psychologist's turtleneck"
+	desc = "A turqouise turtleneck and a pair of dark blue slacks, belonging to a psychologist."
+	icon_state = "psychturtle"
 
 /*
  * Medsci, unused (i think) stuff

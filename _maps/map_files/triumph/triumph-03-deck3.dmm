@@ -23847,7 +23847,6 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
@@ -25607,11 +25606,11 @@
 /area/medical/resleeving)
 "tUb" = (
 /obj/machinery/light/small{
-	dir = 8
+	dir = 4
 	},
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "tUL" = (
 /turf/simulated/wall,
 /area/rnd/xenobiology)
@@ -27447,10 +27446,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
-"vrz" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "vsf" = (
 /obj/structure/table/reinforced,
 /obj/item/paicard,
@@ -33416,7 +33411,7 @@ pCH
 gpN
 sQl
 iCM
-tUb
+pCH
 pXl
 slN
 pYD
@@ -34279,7 +34274,7 @@ uiL
 pRL
 qKL
 uHP
-rhL
+tUb
 iQL
 hgV
 eAd
@@ -36951,7 +36946,7 @@ shT
 wpE
 boQ
 njF
-vrz
+sQl
 hnF
 czP
 ezT

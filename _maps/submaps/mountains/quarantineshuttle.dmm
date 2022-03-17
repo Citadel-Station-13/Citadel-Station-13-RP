@@ -361,7 +361,7 @@
 /area/submap/cave/qShuttle)
 "aZ" = (
 /obj/effect/decal/remains/human,
-/obj/item/clothing/under/mbill{
+/obj/item/clothing/under/brandjumpsuit/mbill{
 	desc = "A uniform belonging to Major Bill's Transportation, a shipping megacorporation. This looks at least a few decades out of date.";
 	name = "\improper old Major Bill's uniform"
 	},
@@ -481,7 +481,7 @@
 	dir = 8
 	},
 /obj/effect/decal/remains/human,
-/obj/item/clothing/under/mbill{
+/obj/item/clothing/under/brandjumpsuit/mbill{
 	desc = "A uniform belonging to Major Bill's Transportation, a shipping megacorporation. This looks at least a few decades out of date.";
 	name = "\improper old Major Bill's uniform"
 	},
