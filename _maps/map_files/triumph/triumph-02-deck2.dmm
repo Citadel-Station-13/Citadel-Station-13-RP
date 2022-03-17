@@ -6828,7 +6828,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "sS" = (
-/obj/machinery/smartfridge/produce/persistent_lossy,
+/obj/machinery/smartfridge/produce,
 /turf/simulated/wall,
 /area/crew_quarters/kitchen)
 "sT" = (
@@ -7469,7 +7469,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "uw" = (
-/obj/machinery/smartfridge/produce/persistent_lossy,
+/obj/machinery/smartfridge/produce,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "ux" = (
@@ -7646,11 +7646,6 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
-	},
-/obj/machinery/firealarm{
-	dir = 1;
-	layer = 3.3;
-	pixel_y = -26
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -17787,7 +17782,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/smartfridge/sheets/persistent_lossy,
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "Yn" = (
