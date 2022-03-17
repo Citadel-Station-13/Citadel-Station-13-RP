@@ -5,22 +5,22 @@
 #define CANDLE_LUM 3 // For how bright candles are.
 
 // Item inventory slot bitmasks.
-#define SLOT_OCLOTHING  0x1
-#define SLOT_ICLOTHING  0x2
-#define SLOT_GLOVES     0x4
-#define SLOT_EYES       0x8
-#define SLOT_EARS       0x10
-#define SLOT_MASK       0x20
-#define SLOT_HEAD       0x40
-#define SLOT_FEET       0x80
-#define SLOT_ID         0x100
-#define SLOT_BELT       0x200
-#define SLOT_BACK       0x400
-#define SLOT_POCKET     0x800  // This is to allow items with a w_class of 3 or 4 to fit in pockets.
-#define SLOT_DENYPOCKET 0x1000  // This is to  deny items with a w_class of 2 or 1 from fitting in pockets.
-#define SLOT_TWOEARS    0x2000
-#define SLOT_TIE        0x4000
-#define SLOT_HOLSTER	0x8000 //16th bit - higher than this will overflow
+#define SLOT_OCLOTHING  BITFLAG(1)
+#define SLOT_ICLOTHING  BITFLAG(2)
+#define SLOT_GLOVES     BITFLAG(3)
+#define SLOT_EYES       BITFLAG(4)
+#define SLOT_EARS       BITFLAG(5)
+#define SLOT_MASK       BITFLAG(6)
+#define SLOT_HEAD       BITFLAG(7)
+#define SLOT_FEET       BITFLAG(8)
+#define SLOT_ID         BITFLAG(9)
+#define SLOT_BELT       BITFLAG(10)
+#define SLOT_BACK       BITFLAG(11)
+#define SLOT_POCKET     BITFLAG(12)  // This is to allow items with a w_class of 3 or 4 to fit in pockets.
+#define SLOT_DENYPOCKET BITFLAG(13)  // This is to  deny items with a w_class of 2 or 1 from fitting in pockets.
+#define SLOT_TWOEARS    BITFLAG(14)
+#define SLOT_TIE        BITFLAG(15)
+#define SLOT_HOLSTER	BITFLAG(16) //16th bit - higher than this will overflow / will it tho
 
 #define ACCESSORY_SLOT_UTILITY	0x1
 #define ACCESSORY_SLOT_WEAPON	0x2
