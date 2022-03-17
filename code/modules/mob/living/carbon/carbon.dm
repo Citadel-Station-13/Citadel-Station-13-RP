@@ -357,3 +357,7 @@
 	if(does_not_breathe)
 		return FALSE
 	return ..()
+
+//From Nebula, part of my bay(nebula) med port
+/mob/living/carbon/has_dexterity(var/dex_level)
+	. = ..() && (species.get_manual_dexterity() >= dex_level)

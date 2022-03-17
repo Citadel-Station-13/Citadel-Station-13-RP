@@ -258,6 +258,23 @@
 	var/silk_max_reserve = 500
 	var/silk_color = "#FFFFFF"
 
+	//Put here from autohiss.dm because I am fed up with ctrl clicks leading me there
+	var/list/autohiss_basic_map = null
+	var/list/autohiss_extra_map = null
+	var/list/autohiss_exempt = null
+
+	//Put here from custom_species.dm same as autohiss
+	//var/vore_numbing = 0
+	var/gets_food_nutrition = TRUE // If this is set to 0, the person can't get nutrition from food.
+	var/metabolism = 0.0015
+	var/lightweight = FALSE //Oof! Nonhelpful bump stumbles.
+	var/trashcan = FALSE //It's always sunny in the wrestling ring.
+	var/base_species = null // Unused outside of a few species
+	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
+
+	//additions from Nebula for baymed
+	var/manual_dexterity = DEXTERITY_FULL
+
 /datum/species/New()
 	if(hud_type)
 		hud = new hud_type()
@@ -569,3 +586,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		I.appearance = equip_overlays[image_key]
 		return I
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+//Part of the baymed port
+/datum/species/proc/get_manual_dexterity(var/mob/living/carbon/human/H)
+	. = manual_dexterity
