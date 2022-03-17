@@ -34,3 +34,9 @@
 	suffix = "HeadscientistHQ.dmm"
 	allow_duplicates = 0
 	cost = 30
+
+/datum/map_template/submap/level_specific/class_p/ArcaneTemple
+	name = "Arcane Temple"
+	suffix = "archaictemple.dmm"
+	allow_duplicates = 0
+	cost = 30

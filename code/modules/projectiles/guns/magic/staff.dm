@@ -107,3 +107,13 @@
 	item_state = "locker"
 	max_charges = 6
 	recharge_rate = 4
+
+/obj/item/gun/magic/staff/puzzle_key
+	name = "Key of Anak-Hun-Tamuun"
+	desc = "An arcane stave that fires a powerful energy blast. Why was this just left laying around here?"
+	fire_sound = 'sound/magic/staff_change.ogg'
+	ammo_type = /obj/item/ammo_casing/magic/puzzle
+	icon_state = "staffofchaos"
+	item_state = "staffofchaos"
+	max_charges = 1
+	recharge_rate = 4

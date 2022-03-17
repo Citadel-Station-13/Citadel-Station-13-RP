@@ -373,6 +373,10 @@
 	name = "Class P World - Unexplored (UE)"
 	icon_state = "red"
 
+/area/class_p/POIs/archaic_temple
+	name = "Archaic Temple"
+	icon_state = "purple"
+
 //Debris field
 /area/shuttle/excursion/debrisfield
 	name = "\improper Excursion Shuttle - Debris Field"

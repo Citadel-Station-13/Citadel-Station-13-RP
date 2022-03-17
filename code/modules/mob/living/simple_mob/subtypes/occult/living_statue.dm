@@ -7,8 +7,8 @@
 	icon_state = "human_male"
 	gender = NEUTER
 	catalogue_data = list()
-	//var/cannot_be_seen = 1
-	//var/mob/living/creator = null
+	var/cannot_be_seen = 1
+	var/mob/living/creator = null
 
 	faction = list("statue")
 
@@ -54,6 +54,7 @@
 	speak_chance = 0
 	wander = FALSE
 
+/*
 /datum/ai_holder/simple_mob/statue/walk_to_destination()
 	. = ..()
 	var/turf/T = get_turf(src)
@@ -75,8 +76,8 @@
 			return 1
 	else
 		return ..()
+*/
 
-/*
 // No movement while seen code.
 
 /mob/living/simple_mob/living_statue/Initialize(mapload, var/mob/living/creator)
@@ -132,7 +133,6 @@
 				if(!M.eye_blind)
 					return M
 	return null
-*/
 
 // Cannot talk
 
