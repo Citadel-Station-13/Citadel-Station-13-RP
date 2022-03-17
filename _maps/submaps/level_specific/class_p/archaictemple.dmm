@@ -145,12 +145,10 @@
 "kE" = (
 /obj/effect/trap/launcher/fireball_aoe{
 	dir = 1;
-	id = "vault;
+	id = "vault";
 	pixel_y = -32
 	},
 /obj/structure/table/marble,
-/obj/item/clothing/head/helmet/space/void/wizard,
-/obj/item/clothing/suit/space/void/wizard,
 /turf/simulated/floor/silver/classp,
 /area/space)
 "kJ" = (
@@ -916,10 +914,12 @@
 "YP" = (
 /obj/effect/trap/launcher/fireball_aoe{
 	dir = 1;
-	id = "vault;
+	id = "vault";
 	pixel_y = -32
 	},
 /obj/structure/table/marble,
+/obj/item/clothing/head/helmet/space/void/wizard,
+/obj/item/clothing/suit/space/void/wizard,
 /turf/simulated/floor/silver/classp,
 /area/space)
 "YS" = (
@@ -2458,7 +2458,7 @@ zY
 zY
 Fg
 zY
-kE
+YP
 Mq
 TM
 "}
@@ -2515,7 +2515,7 @@ zY
 zY
 Fg
 zY
-YP
+kE
 Mq
 TM
 "}
