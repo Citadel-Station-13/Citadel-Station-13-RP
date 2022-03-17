@@ -4019,7 +4019,10 @@ END CITADEL CHANGE */
 	composition_reagent = "slimejelly"
 
 /mob/living/carbon/alien/diona
-	composition_reagent = "nutriment"//Dionae are plants, so eating them doesn't give animal protein
+	composition_reagent = "nutriment"//Dionae arent plants, so eating them doesn't give animal protein
+
+/mob/living/carbon/alien/diona/has_dexterity()
+	return FALSE
 
 /mob/living/simple_mob/slime
 	composition_reagent = "slimejelly"

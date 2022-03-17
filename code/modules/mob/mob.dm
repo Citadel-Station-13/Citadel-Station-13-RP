@@ -1240,3 +1240,23 @@ mob/proc/yank_out_object()
  */
 /mob/proc/allow_examine(atom/A)
 	return client && (client.eye == src)
+
+//From Nebula, 
+/mob/proc/check_dexterity(var/dex_level, var/silent)
+	. = has_dexterity(dex_level)
+	if(!. && !silent)
+		to_chat(src, FEEDBACK_YOU_LACK_DEXTERITY)
+
+/mob/proc/has_dexterity(var/dex_level)
+	. = TRUE
+// these two are used by browsers, which are used for scanners - LordME
+/mob/proc/handle_reading_literacy(var/mob/user, var/text_content, var/skip_delays, var/digital = FALSE)
+	if(!skip_delays)
+		to_chat(src, SPAN_WARNING("You can't make heads or tails of the words."))
+	. = stars(text_content, 5)
+
+/mob/proc/handle_writing_literacy(var/mob/user, var/text_content, var/skip_delays)
+	if(!skip_delays)
+		to_chat(src, SPAN_WARNING("You scrawl down some meaningless lines."))
+	. = stars(text_content, 5)
+

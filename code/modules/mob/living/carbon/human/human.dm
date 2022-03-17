@@ -1644,3 +1644,26 @@
 
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
+
+//Additions from Nebula for baymed
+/mob/living/carbon/human/check_dexterity(var/dex_level = DEXTERITY_FULL, var/silent, var/force_active_hand)
+	if(isnull(force_active_hand))
+		force_active_hand = get_active_held_item_slot()
+	var/obj/item/organ/external/active_hand = get_organ(force_active_hand)
+	var/dex_malus = 0
+	if(getBrainLoss() && getBrainLoss() > config.dex_malus_brainloss_threshold) ///brainloss shouldn't instantly cripple you, so the effects only start once past the threshold and escalate from there.
+		dex_malus = round(clamp(round(getBrainLoss()-config.dex_malus_brainloss_threshold)/10, DEXTERITY_NONE, DEXTERITY_FULL))
+	if(!active_hand)
+		if(!silent)
+			to_chat(src, SPAN_WARNING("Your hand is missing!"))
+		return FALSE
+	if(!active_hand.is_usable())
+		to_chat(src, SPAN_WARNING("Your [active_hand.name] is unusable!"))
+		return
+	if((active_hand.get_dexterity()-dex_malus) < dex_level)
+		if(!silent && !dex_malus)
+			to_chat(src, SPAN_WARNING("Your [active_hand.name] doesn't have the dexterity to use that!"))
+		else if(!silent)
+			to_chat(src, SPAN_WARNING("Your [active_hand.name] doesn't respond properly!"))
+		return FALSE
+	return TRUE

@@ -4,16 +4,16 @@
 #define DEAD        2
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
-#define CANSTUN     0x1
-#define CANWEAKEN   0x2
-#define CANPARALYSE 0x4
-#define CANPUSH     0x8
-#define LEAPING     0x10
-#define HIDING      0x20
-#define PASSEMOTES  0x40    // Mob has a cortical borer or holders inside of it that need to see emotes.
-#define GODMODE     0x1000
-#define FAKEDEATH   0x2000  // Replaces stuff like changeling.changeling_fakedeath.
-#define DISFIGURED  0x4000  // Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
+#define CANSTUN     BITFLAG(1)
+#define CANWEAKEN   BITFLAG(2)
+#define CANPARALYSE BITFLAG(3)
+#define CANPUSH     BITFLAG(4)
+#define LEAPING     BITFLAG(5)
+#define HIDING      BITFLAG(6)
+#define PASSEMOTES  BITFLAG(7)  // Mob has a cortical borer or holders inside of it that need to see emotes.
+#define GODMODE     BITFLAG(8)
+#define FAKEDEATH   BITFLAG(9)  // Replaces stuff like changeling.changeling_fakedeath.
+#define DISFIGURED  BITFLAG(10)  // Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
 
 // Grab levels.
 #define GRAB_PASSIVE    1
@@ -344,16 +344,16 @@
 // Now includes bitflags, so to target two classes you just do 'MOB_CLASS_ANIMAL|MOB_CLASS_HUMANOID'
 #define MOB_CLASS_NONE 			NONE	// Default value, and used to invert for _ALL.
 
-#define MOB_CLASS_PLANT			(1<<0)		// Unused at the moment.
-#define MOB_CLASS_ANIMAL		(1<<1)		// Animals and beasts like spiders, saviks, and bears.
-#define MOB_CLASS_HUMANOID		(1<<2)		// Non-robotic humanoids, including /simple_mob and /carbon/humans and their alien variants.
-#define MOB_CLASS_SYNTHETIC		(1<<3)		// Silicons, mechanical simple mobs, FBPs, and anything else that would pass is_synthetic()
-#define MOB_CLASS_SLIME			(1<<4)		// Everyone's favorite xenobiology specimen (and maybe prometheans?).
-#define MOB_CLASS_ABERRATION	(1<<5)		// Weird shit.
-#define MOB_CLASS_DEMONIC		(1<<6)		// Cult stuff.
-#define MOB_CLASS_BOSS			(1<<7)		// Future megafauna hopefully someday.
-#define MOB_CLASS_ILLUSION		(1<<8)		// Fake mobs, e.g. Technomancer illusions.
-#define MOB_CLASS_PHOTONIC		(1<<9)		// Holographic mobs like holocarp, similar to _ILLUSION, but that make no attempt to hide their true nature.
+#define MOB_CLASS_PLANT			BITFLAG(0)		// Unused at the moment.
+#define MOB_CLASS_ANIMAL		BITFLAG(1)		// Animals and beasts like spiders, saviks, and bears.
+#define MOB_CLASS_HUMANOID		BITFLAG(2)		// Non-robotic humanoids, including /simple_mob and /carbon/humans and their alien variants.
+#define MOB_CLASS_SYNTHETIC		BITFLAG(3)		// Silicons, mechanical simple mobs, FBPs, and anything else that would pass is_synthetic()
+#define MOB_CLASS_SLIME			BITFLAG(4)		// Everyone's favorite xenobiology specimen (and maybe prometheans?).
+#define MOB_CLASS_ABERRATION	BITFLAG(5)		// Weird shit.
+#define MOB_CLASS_DEMONIC		BITFLAG(6)		// Cult stuff.
+#define MOB_CLASS_BOSS			BITFLAG(7)		// Future megafauna hopefully someday.
+#define MOB_CLASS_ILLUSION		BITFLAG(8)		// Fake mobs, e.g. Technomancer illusions.
+#define MOB_CLASS_PHOTONIC		BITFLAG(9)		// Holographic mobs like holocarp, similar to _ILLUSION, but that make no attempt to hide their true nature.
 
 #define MOB_CLASS_ALL			(~MOB_CLASS_NONE)
 
@@ -411,29 +411,29 @@
 #define BODY_LAYER		-100
 
 // Clothing flags, organized in roughly top-bottom
-#define EXAMINE_SKIPHELMET			0x0001
-#define EXAMINE_SKIPEARS			0x0002
-#define EXAMINE_SKIPEYEWEAR			0x0004
-#define EXAMINE_SKIPMASK			0x0008
-#define EXAMINE_SKIPJUMPSUIT		0x0010
-#define EXAMINE_SKIPTIE				0x0020
-#define EXAMINE_SKIPHOLSTER			0x0040
-#define EXAMINE_SKIPSUITSTORAGE		0x0080
-#define EXAMINE_SKIPBACKPACK		0x0100
-#define EXAMINE_SKIPGLOVES			0x0200
-#define EXAMINE_SKIPBELT			0x0400
-#define EXAMINE_SKIPSHOES			0x0800
+#define EXAMINE_SKIPHELMET			BITFLAG(1)
+#define EXAMINE_SKIPEARS			BITFLAG(2)
+#define EXAMINE_SKIPEYEWEAR			BITFLAG(3)
+#define EXAMINE_SKIPMASK			BITFLAG(4)
+#define EXAMINE_SKIPJUMPSUIT		BITFLAG(5)
+#define EXAMINE_SKIPTIE				BITFLAG(6)
+#define EXAMINE_SKIPHOLSTER			BITFLAG(7)
+#define EXAMINE_SKIPSUITSTORAGE		BITFLAG(8)
+#define EXAMINE_SKIPBACKPACK		BITFLAG(9)
+#define EXAMINE_SKIPGLOVES			BITFLAG(10)
+#define EXAMINE_SKIPBELT			BITFLAG(11)
+#define EXAMINE_SKIPSHOES			BITFLAG(12)
 
 // Body flags
-#define EXAMINE_SKIPHEAD			0x0001
-#define EXAMINE_SKIPEYES			0x0002
-#define EXAMINE_SKIPFACE			0x0004
-#define EXAMINE_SKIPBODY			0x0008
-#define EXAMINE_SKIPGROIN			0x0010
-#define EXAMINE_SKIPARMS			0x0020
-#define EXAMINE_SKIPHANDS			0x0040
-#define EXAMINE_SKIPLEGS			0x0080
-#define EXAMINE_SKIPFEET			0x0100
+#define EXAMINE_SKIPHEAD			BITFLAG(1)
+#define EXAMINE_SKIPEYES			BITFLAG(2)
+#define EXAMINE_SKIPFACE			BITFLAG(3)
+#define EXAMINE_SKIPBODY			BITFLAG(4)
+#define EXAMINE_SKIPGROIN			BITFLAG(5)
+#define EXAMINE_SKIPARMS			BITFLAG(6)
+#define EXAMINE_SKIPHANDS			BITFLAG(7)
+#define EXAMINE_SKIPLEGS			BITFLAG(8)
+#define EXAMINE_SKIPFEET			BITFLAG(9)
 
 //Protean organs
 #define O_ORCH		"orchestrator"
@@ -475,3 +475,13 @@
 //event species
 #define SPECIES_WEREBEAST			"Werebeast"
 #define SPECIES_SHADEKIN			"Shadekin"
+
+//Additions for baymed
+#define DEXTERITY_NONE            0
+#define DEXTERITY_SIMPLE_MACHINES 1
+#define DEXTERITY_KEYBOARDS       2
+#define DEXTERITY_TOUCHSCREENS    3
+#define DEXTERITY_GRIP            4
+#define DEXTERITY_WEAPONS         5
+#define DEXTERITY_COMPLEX_TOOLS   6
+#define DEXTERITY_FULL            7
