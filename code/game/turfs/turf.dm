@@ -21,6 +21,9 @@
 
 	var/changing_turf = FALSE
 
+	///Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
+	var/list/fixed_underlay = null
+
 	// General properties.
 	var/icon_old = null
 	var/pathweight = 1			// How much does it cost to pathfind over this turf?

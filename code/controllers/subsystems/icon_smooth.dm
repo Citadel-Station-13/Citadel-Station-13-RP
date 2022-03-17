@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(icon_smooth)
 		cached.len--
 		if(QDELETED(smoothing_atom) || !(smoothing_atom.smoothing_flags & SMOOTH_QUEUED))
 			continue
-		if(smoothing_atom.flags_1 & INITIALIZED_1)
+		if(smoothing_atom.flags & INITIALIZED)
 			smoothing_atom.smooth_icon()
 		else
 			deferred += smoothing_atom
@@ -78,6 +78,6 @@ SUBSYSTEM_DEF(icon_smooth)
 /datum/controller/subsystem/icon_smooth/proc/remove_from_queues(atom/thing)
 	thing.smoothing_flags &= ~SMOOTH_QUEUED
 	smooth_queue -= thing
-	if(blueprint_queue)
-		blueprint_queue -= thing
+	// if(blueprint_queue)
+	// 	blueprint_queue -= thing
 	deferred -= thing

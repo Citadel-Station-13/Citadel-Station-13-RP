@@ -61,12 +61,12 @@
 		force = 1
 	catalogue_data = seed.catalog_data_grown
 
-/obj/item/reagent_containers/food/snacks/grown/proc/update_desc()
+/obj/item/reagent_containers/food/snacks/grown/update_desc()
 
 	if(!seed)
 		return
 	if(!plant_controller)
-		sleep(250) // ugly hack, should mean roundstart plants are fine.
+		addtimer(CALLBAKC(src, /atom/proc/update_desc), 250) // ugly hack, should mean roundstart plants are fine.
 	if(!plant_controller)
 		to_chat(world, "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
 		qdel(src)

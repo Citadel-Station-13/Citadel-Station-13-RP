@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define PREVENT_CLICK_UNDER			(1<<19)	// Prevent clicking things below it on the same turf eg. doors/ fulltile windows.
 #define HOLOGRAM					(1<<20)
 #define PREVENT_CONTENTS_EXPLOSION	(1<<21)	// should not get harmed if this gets caught by an explosion?
-#define HTML_USE_INITAL_ICON_1		(1<<22)
+#define HTML_USE_INITAL_ICON		(1<<22)
 
 ///TURF FLAGS
 #define NO_JAUNT					(1<<0)	// This is used in literally one place, turf.dm, to block ethereal jaunt.
