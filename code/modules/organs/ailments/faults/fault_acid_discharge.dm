@@ -7,3 +7,4 @@
 	var/datum/reagents/metabolism/bloodstr_reagents = organ.owner.get_injected_reagents()
 	if(bloodstr_reagents)
 		bloodstr_reagents.add_reagent(/decl/material/liquid/acid, rand(1, 3))
+		

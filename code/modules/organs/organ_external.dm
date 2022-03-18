@@ -1405,4 +1405,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(R)
 			return R.manual_dexterity
 	if(species)
-		return species.get_manual_dexterity(owner)*/
+		return species.get_manual_dexterity(owner)
+*/
+

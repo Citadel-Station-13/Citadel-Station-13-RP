@@ -2,6 +2,7 @@
 /****************************************************
 					WOUNDS
 ****************************************************/
+/*
 /datum/wound
 	// number representing the current stage
 	var/current_stage = 0
@@ -411,3 +412,4 @@ datum/wound/puncture/massive
 
 /datum/wound/lost_limb/can_merge(var/datum/wound/other)
 	return FALSE //cannot be merged
+*/
