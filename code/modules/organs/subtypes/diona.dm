@@ -33,7 +33,7 @@
 	w_class = ITEM_SIZE_HUGE
 	body_part = UPPER_TORSO
 	vital = 1
-	cannot_amputate = 1
+	limb_flags = 0
 	parent_organ = null
 	gendered_icon = 1
 
