@@ -26,4 +26,22 @@
 
 #define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
 
-//thank you Kevin for not running checks again, now I have to update one file with a comment - Papalus
+#define SPAN_ITALIC(X) "<span class='italic'>[X]</span>"
+
+#define SPAN_BOLD(X) "<span class='bold'>[X]</span>"
+
+#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
+
+#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
+
+#define SPAN_STYLE(style, X) "<span style=\"[style]\">[X]</span>"
+
+#define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+
+#define SPAN_OCCULT(X) "<span class='cult'>[X]</span>"
+
+#define SPAN_MFAUNA(X) "<span class='mfauna'>[X]</span>"
+
+#define SPAN_SUBTLE(X) "<span class='subtle'>[X]</span>"
+
+#define SPAN_INFO(X) "<span class='info'>[X]</span>"
