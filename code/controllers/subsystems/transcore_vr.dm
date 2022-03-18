@@ -50,8 +50,7 @@ SUBSYSTEM_DEF(transcore)
 
 		//We're in an organ, at least.
 		var/obj/item/organ/external/EO = imp.loc
-		log_debug("Implant needs rework")
-		var/mob/living/carbon/human/H = null//EO.owner
+		var/mob/living/carbon/human/H = EO.owner
 		if(!H)
 			implants -= imp
 			continue
