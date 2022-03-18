@@ -229,7 +229,7 @@
 
 /datum/gear/donator/aura
 	name = "KNIGHT-brand Melodic headset"
-	path = /obj/item/clothing/ears/earmuffs/headphones/aura
+	path = /obj/item/radio/headset/speak_n_rock/aura
 	ckeywhitelist = list("theknightofaura")
 
 /datum/gear/donator/dancer_scarf

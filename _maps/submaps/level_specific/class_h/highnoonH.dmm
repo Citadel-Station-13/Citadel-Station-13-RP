@@ -5,12 +5,12 @@
 /obj/item/ammo_magazine/clip/c762/hunter,
 /obj/item/ammo_magazine/clip/c762/hunter,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "dt" = (
 /obj/structure/table/rack/shelf,
 /obj/random/toolbox,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "dy" = (
 /obj/structure/table/woodentable,
 /obj/fiftyspawner/phoron,
@@ -18,12 +18,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "dI" = (
 /obj/structure/bed/padded,
 /obj/effect/landmark/corpse/syndicatesoldier,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "dR" = (
 /obj/structure/table/woodentable,
 /obj/item/gun/projectile/revolver/detective45,
@@ -31,26 +31,26 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "eT" = (
 /mob/living/simple_mob/humanoid/merc/ranged/poi,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "fG" = (
 /obj/structure/closet/wardrobe/grey,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "hI" = (
 /obj/structure/toilet{
 	dir = 4;
 	pixel_x = -10
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "iD" = (
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "iO" = (
 /obj/structure/table/gamblingtable,
 /obj/item/deck/cards,
@@ -62,56 +62,56 @@
 /obj/random/cash,
 /obj/random/cash,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "ju" = (
 /obj/structure/table/bench/wooden,
 /mob/living/simple_mob/humanoid/merc/melee/poi,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "nG" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "nU" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/shotgunshells,
 /obj/item/storage/box/shotgunshells,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "ou" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "oL" = (
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "oU" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "pP" = (
 /obj/structure/bed,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "qh" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "rw" = (
 /obj/random/multiple/minevault,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "tV" = (
 /obj/structure/closet/wardrobe/white,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "ua" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/bar_alc/full,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "ug" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -121,94 +121,94 @@
 	},
 /obj/structure/bed/pod,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "vV" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "wA" = (
 /mob/living/simple_mob/humanoid/merc/ranged/poi,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "wL" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "wR" = (
 /obj/structure/bed/padded,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "xz" = (
 /obj/structure/table/rack/shelf,
 /obj/item/ammo_magazine/clip/c762,
 /obj/item/ammo_magazine/clip/c762,
 /obj/item/ammo_magazine/clip/c762,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "yT" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Ab" = (
 /obj/item/moneybag/vault,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Ao" = (
 /obj/random/multiple/large_corp_crate/no_weapons,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Bf" = (
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Ci" = (
 /mob/living/simple_mob/humanoid/merc/ranged/smg,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Ep" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Eu" = (
 /obj/machinery/door/window/holowindoor,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Gz" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "GA" = (
 /obj/structure/table/woodentable,
 /obj/item/clothing/accessory/stethoscope,
 /obj/random/medical/pillbottle,
 /obj/random/medical/pillbottle,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "GS" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "KK" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Lo" = (
 /mob/living/simple_mob/humanoid/merc/ranged/deagle,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "LH" = (
 /obj/structure/bed/chair/wood,
 /mob/living/simple_mob/humanoid/merc/ranged/poi,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "LP" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -216,85 +216,85 @@
 	},
 /obj/structure/bed/pod,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "ML" = (
 /mob/living/simple_mob/humanoid/merc/ranged/ionrifle,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "NK" = (
 /obj/structure/table/woodentable,
 /obj/item/clothing/accessory/badge/sheriff,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Pd" = (
 /obj/structure/closet/wardrobe/red,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "PE" = (
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "PP" = (
 /obj/structure/table/woodentable,
 /obj/random/firstaid,
 /obj/random/firstaid,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "PR" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Rw" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "RG" = (
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Sy" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "SP" = (
 /obj/structure/bed/double,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "SU" = (
 /obj/structure/table/rack/shelf,
 /obj/item/ammo_magazine/clip/c762/ap,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "SX" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Tk" = (
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "TA" = (
 /obj/structure/closet/wardrobe/yellow,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Vd" = (
 /mob/living/simple_mob/humanoid/merc/ranged/ionrifle,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Vx" = (
 /obj/structure/table/rack/shelf,
 /obj/item/gun/projectile/shotgun/pump/rifle,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Wm" = (
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier,
 /obj/machinery/light/small,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 "Xx" = (
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/WW_Town)
+/area/class_h/POIs/WW_Town)
 
 (1,1,1) = {"
 GS
