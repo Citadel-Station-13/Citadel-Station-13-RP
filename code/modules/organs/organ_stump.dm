@@ -1,3 +1,4 @@
+/*
 /obj/item/organ/external/stump
 	name = "limb stump"
 	icon_name = ""
@@ -26,3 +27,4 @@
 
 /obj/item/organ/external/stump/is_usable()
 	return 0
+*/

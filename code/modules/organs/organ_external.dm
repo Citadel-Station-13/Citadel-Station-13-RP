@@ -1,7 +1,7 @@
 /****************************************************
 				EXTERNAL ORGANS
 ****************************************************/
-
+/*
 //These control the damage thresholds for the various ways of removing limbs
 #define DROPLIMB_THRESHOLD_EDGE 5
 #define DROPLIMB_THRESHOLD_TEAROFF 2
@@ -1405,4 +1405,4 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(R)
 			return R.manual_dexterity
 	if(species)
-		return species.get_manual_dexterity(owner)
+		return species.get_manual_dexterity(owner)*/

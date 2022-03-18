@@ -2,6 +2,7 @@
 /****************************************************
 				INTERNAL ORGANS DEFINES
 ****************************************************/
+/*
 /obj/item/organ/internal
 	var/dead_icon // Icon to use when the organ has died.
 
@@ -39,3 +40,4 @@
 // Eyes are defined in eyes.dm
 // Liver is defined in liver.dm. The process here was different than the process in liver.dm, so I just kept the one in liver.dm
 // Appendix is defined in appendix.dm
+*/

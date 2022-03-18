@@ -1,3 +1,4 @@
+/*
 var/list/organ_cache = list()
 
 /obj/item/organ
@@ -505,3 +506,4 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/heal_damage_a(amount)
 	if (can_recover())
 		damage = between(0, damage - round(amount, 0.1), max_damage)
+*/
