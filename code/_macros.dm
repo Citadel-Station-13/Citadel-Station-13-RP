@@ -30,15 +30,7 @@
 
 #define SPAN_BOLD(X) "<span class='bold'>[X]</span>"
 
-#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
-
-#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
-
 #define SPAN_STYLE(style, X) "<span style=\"[style]\">[X]</span>"
-
-#define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
-
-#define SPAN_OCCULT(X) "<span class='cult'>[X]</span>"
 
 #define SPAN_MFAUNA(X) "<span class='mfauna'>[X]</span>"
 
