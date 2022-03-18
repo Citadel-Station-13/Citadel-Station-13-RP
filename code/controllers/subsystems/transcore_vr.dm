@@ -34,7 +34,6 @@ SUBSYSTEM_DEF(transcore)
 
 	INTERNAL_PROCESS_STEP(SSTRANSCORE_IMPLANTS,TRUE,process_implants,cost_implants,SSTRANSCORE_BACKUPS)
 //	INTERNAL_PROCESS_STEP(SSTRANSCORE_BACKUPS,FALSE,process_backups,cost_backups,SSTRANSCORE_IMPLANTS)
-
 /datum/controller/subsystem/transcore/proc/process_implants(resumed = 0)
 	if (!resumed)
 		src.current_run = implants.Copy()
@@ -51,7 +50,8 @@ SUBSYSTEM_DEF(transcore)
 
 		//We're in an organ, at least.
 		var/obj/item/organ/external/EO = imp.loc
-		var/mob/living/carbon/human/H = EO.owner
+		log_debug("Implant needs rework")
+		var/mob/living/carbon/human/H = null//EO.owner
 		if(!H)
 			implants -= imp
 			continue
