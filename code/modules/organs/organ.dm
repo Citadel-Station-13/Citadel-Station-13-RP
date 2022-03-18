@@ -60,7 +60,7 @@
 		return
 	
 	if(max_damage)
-		min_broken_damage = FLOOR(max_damage / 2)
+		min_broken_damage = FLOOR(max_damage / 2 , 1)
 	else
 		max_damage = min_broken_damage * 2
 
@@ -138,11 +138,11 @@
 	// Adjust limb health proportinate to total species health.
 	var/total_health_coefficient = scale_max_damage_to_species_health ? (species.total_health / DEFAULT_SPECIES_HEALTH) : 1
 	if(max_damage)
-		max_damage = max(1, FLOOR(max_damage * total_health_coefficient))
-		min_broken_damage = max(1, FLOOR(max_damage * 0.5))
+		max_damage = max(1, FLOOR(max_damage * total_health_coefficient, 1))
+		min_broken_damage = max(1, FLOOR(max_damage * 0.5, 1))
 	else
-		min_broken_damage = max(1, FLOOR(min_broken_damage * total_health_coefficient))
-		max_damage = max(1, FLOOR(min_broken_damage * 2))
+		min_broken_damage = max(1, FLOOR(min_broken_damage * total_health_coefficient, 1))
+		max_damage = max(1, FLOOR(min_broken_damage * 2, 1))
 
 /obj/item/organ/proc/die()
 	damage = max_damage
