@@ -1193,3 +1193,9 @@ obj/item/clothing/suit/kamishimo
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
 	icon_state = "capformal"
 */
+
+//Someone's on the line.
+/obj/item/clothing/suit/storage/toggle/letterman
+	name = "worn letterman jacket"
+	desc = "A worn varsity letterman jacket. Some of the faded stains around the cuffs are rather suspicious."
+	icon_state = "varsity_letterman"

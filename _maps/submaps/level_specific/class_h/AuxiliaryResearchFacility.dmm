@@ -5,52 +5,52 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ag" = (
 /obj/structure/bookcase/manuals/xenoarchaeology,
 /obj/structure/bookcase/manuals/research_and_development,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "al" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1;
 	pixel_x = 16
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "an" = (
 /obj/structure/girder/displaced,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "ax" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 4
 	},
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "az" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "aA" = (
 /obj/machinery/door/airlock/glass_security,
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "aB" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "aC" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/orangedouble,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "aG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/warning{
@@ -58,26 +58,26 @@
 	},
 /mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "aI" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "bi" = (
 /obj/machinery/door/blast/regular/open{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "bt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "bF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "bL" = (
 /obj/structure/railing{
 	dir = 1
@@ -86,24 +86,24 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "bR" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "bX" = (
 /obj/structure/simple_door/wood,
 /obj/structure/simple_door/silver,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "bY" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "cl" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -115,17 +115,17 @@
 	dir = 1
 	},
 /turf/simulated/floor/fixed,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "cm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "cs" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "cx" = (
 /obj/structure/table/rack,
 /obj/effect/decal/cleanable/dirt,
@@ -133,30 +133,30 @@
 /obj/item/grenade/concussion/frag,
 /obj/item/grenade/concussion/frag,
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "cA" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "cE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "cF" = (
 /obj/structure/bookcase,
 /turf/simulated/floor/carpet/purcarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "cO" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "db" = (
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "dd" = (
 /obj/effect/floor_decal/transit/orange{
 	dir = 8
@@ -165,28 +165,28 @@
 	dir = 1
 	},
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "du" = (
 /obj/structure/undies_wardrobe,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "dF" = (
 /obj/machinery/artifact_scanpad,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "dH" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "dW" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 1
 	},
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "eb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -195,38 +195,38 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ec" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ed" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ek" = (
 /obj/structure/table/bench/standard,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ex" = (
 /obj/effect/floor_decal/techfloor/orange/corner,
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "eD" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "fd" = (
 /obj/structure/table/bench/wooden,
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "fe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -234,36 +234,36 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "fk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/flicker{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "fm" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/anomaly_container,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "fn" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "fo" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "fw" = (
 /obj/structure/flora/pottedplant/large,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "fD" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/decal/cleanable/dirt,
@@ -271,46 +271,46 @@
 	dir = 4
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "fE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "fI" = (
 /obj/machinery/light/flicker{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "fT" = (
 /obj/item/reagent_containers/glass/beaker,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "gp" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "gu" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/plating,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "gU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "gV" = (
 /obj/machinery/light/flicker{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "gX" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "hn" = (
 /obj/effect/floor_decal/carpet{
 	dir = 6
@@ -323,14 +323,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ho" = (
 /turf/simulated/floor/plating,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "hr" = (
 /obj/random/trash,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "hw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -338,11 +338,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "hL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "hO" = (
 /obj/effect/floor_decal/carpet{
 	pixel_x = 16
@@ -350,7 +350,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "hR" = (
 /obj/structure/railing{
 	dir = 4
@@ -360,11 +360,11 @@
 	},
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "hT" = (
 /obj/structure/barricade,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "hZ" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -372,7 +372,7 @@
 	pixel_y = 5
 	},
 /turf/simulated/wall/durasteel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "iB" = (
 /obj/machinery/light/small/emergency{
 	dir = 4
@@ -382,53 +382,53 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "iC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "iH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stolenpackage,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ja" = (
 /mob/living/simple_mob/humanoid/merc/melee/sword,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "jg" = (
 /obj/effect/floor_decal/carpet{
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "jk" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "jw" = (
 /obj/structure/flora/pottedplant/large,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "jC" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_mob/mechanical/cyber_horror,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "jD" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "jM" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_mob/mechanical/cyber_horror/corgi,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "jN" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/bar_alc/full,
@@ -436,7 +436,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ke" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced/holowindow{
@@ -447,7 +447,7 @@
 	},
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "kn" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
@@ -458,7 +458,7 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "kq" = (
 /obj/structure/table/standard,
 /obj/structure/bedsheetbin,
@@ -466,43 +466,43 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ks" = (
 /obj/effect/decal/cleanable/blood,
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ky" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "kF" = (
 /obj/machinery/light/small/flicker,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "kM" = (
 /obj/machinery/blackbox_recorder,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "kU" = (
 /obj/machinery/autolathe,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "kW" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small/emergency{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "la" = (
 /obj/structure/railing{
 	dir = 8
@@ -512,31 +512,31 @@
 	},
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "ld" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/material/phoron,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "lk" = (
 /obj/machinery/dna_scannernew,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "lp" = (
 /obj/effect/decal/cleanable/blood/gibs/robot/up,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "lr" = (
 /obj/structure/table/bench,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "lz" = (
 /obj/effect/floor_decal/carpet{
 	dir = 4;
@@ -544,16 +544,16 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "lH" = (
 /obj/effect/floor_decal/rust,
 /obj/item/stack/material/phoron,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "lT" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "lZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -563,7 +563,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "mk" = (
 /obj/structure/table/standard,
 /obj/random/energy,
@@ -571,7 +571,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "mx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/holowindow{
@@ -585,68 +585,68 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "mA" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/cups,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "nj" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "nw" = (
 /obj/structure/closet/firecloset/full/double,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "nC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "nF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "nX" = (
 /obj/structure/closet/hydrant,
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "od" = (
 /obj/item/stolenpackage,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "of" = (
 /obj/structure/bookcase/manuals/xenoarchaeology,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "og" = (
 /obj/structure/flora/tree/jungle_small,
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 8
 	},
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "oh" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "op" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "or" = (
 /obj/structure/closet/l3closet/scientist/double,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ot" = (
 /obj/structure/railing{
 	dir = 8
@@ -655,33 +655,33 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ov" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "oA" = (
 /obj/effect/floor_decal/transit/orange{
 	dir = 8
 	},
 /obj/effect/floor_decal/transit/orange,
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "oE" = (
 /obj/structure/cryofeed{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "oF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /obj/machinery/power/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "oR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/human,
@@ -689,22 +689,22 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "oV" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/orangedouble,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "pv" = (
 /obj/structure/table/bench/padded,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "pw" = (
 /mob/living/simple_mob/humanoid/merc/ranged/garand,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "pz" = (
 /obj/effect/floor_decal/carpet{
 	dir = 10
@@ -717,61 +717,61 @@
 	pixel_x = 16
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "pJ" = (
 /obj/random/trash,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "pQ" = (
 /obj/effect/decal/cleanable/blood/gibs/robot/down,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "pR" = (
 /obj/structure/flora/pottedplant/large,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "qb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "qf" = (
 /obj/effect/floor_decal/carpet{
 	dir = 4;
 	pixel_y = 16
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "qA" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "qD" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "qR" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "qW" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "rg" = (
 /obj/structure/barricade,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "rl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/gun/energy/taser/xeno,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "rm" = (
 /obj/structure/railing{
 	dir = 1
@@ -780,13 +780,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "rn" = (
 /obj/effect/floor_decal/transit/orange{
 	dir = 4
 	},
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "rx" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8;
@@ -799,12 +799,12 @@
 	pixel_x = 16
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "rG" = (
 /obj/structure/table/bench/padded,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "rH" = (
 /obj/structure/table/standard,
 /obj/item/inducer/sci,
@@ -812,59 +812,59 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "rW" = (
 /obj/machinery/optable,
 /obj/effect/floor_decal/industrial/danger/full,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "sg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "sh" = (
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "si" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "sk" = (
 /obj/machinery/light/flicker{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "sq" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_mob/humanoid/merc/ranged/garand,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "th" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "tr" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "tv" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "tC" = (
 /obj/structure/table/rack,
 /obj/item/gun/energy/sniperrifle,
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "tE" = (
 /obj/effect/floor_decal/carpet{
 	dir = 9
@@ -875,28 +875,28 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "tU" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "up" = (
 /obj/structure/flora/pottedplant/large,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "uI" = (
 /obj/structure/table/rack,
 /obj/item/gun/projectile/shotgun/doublebarrel,
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "uP" = (
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "uW" = (
 /obj/structure/window/reinforced/holowindow{
 	dir = 1
@@ -910,20 +910,20 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "uY" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "vd" = (
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "vt" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "vu" = (
 /obj/structure/table/bench/wooden,
 /obj/structure/table/bench/wooden,
@@ -931,26 +931,26 @@
 	dir = 4
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "vI" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "vS" = (
 /obj/effect/floor_decal/transit/orange,
 /obj/effect/floor_decal/transit/orange{
 	dir = 4
 	},
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "vV" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "vY" = (
 /obj/structure/window/reinforced/holowindow{
 	dir = 1
@@ -963,18 +963,18 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "wc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/apc,
 /turf/simulated/floor/plating,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "wg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "wo" = (
 /obj/structure/table/rack,
 /obj/item/grenade/spawnergrenade/manhacks/mercenary,
@@ -985,11 +985,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "wr" = (
 /mob/living/simple_mob/mechanical/cyber_horror,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ww" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -997,75 +997,75 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "wz" = (
 /obj/machinery/light/small/emergency{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "wA" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "wE" = (
 /obj/effect/floor_decal/transit/orange{
 	dir = 8
 	},
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "wR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "wS" = (
 /obj/structure/table/bench,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "xc" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "xl" = (
 /obj/random/trash,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "xy" = (
 /obj/random/trash,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "xA" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_mob/mechanical/cyber_horror/vox,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "xT" = (
 /obj/machinery/door/airlock/security/armory,
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "xX" = (
 /obj/structure/table/bench,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "yb" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "yo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "yv" = (
 /obj/structure/railing{
 	dir = 4
@@ -1073,13 +1073,13 @@
 /obj/structure/railing,
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "yG" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "yO" = (
 /obj/structure/table/glass,
 /obj/effect/decal/cleanable/dirt,
@@ -1087,22 +1087,22 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "zc" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "zf" = (
 /obj/effect/decal/remains/human,
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "zj" = (
 /obj/machinery/door/airlock/maintenance/rnd,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "zp" = (
 /obj/structure/railing{
 	dir = 4
@@ -1112,7 +1112,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "zs" = (
 /obj/structure/railing{
 	dir = 1
@@ -1122,37 +1122,37 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "zF" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "zK" = (
 /obj/machinery/light/flicker,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "zM" = (
 /obj/effect/floor_decal/corner/red/border,
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "zY" = (
 /obj/structure/table/marble,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Aa" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ag" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Al" = (
 /obj/machinery/door/blast/regular{
 	dir = 4
@@ -1162,7 +1162,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Am" = (
 /obj/machinery/shower{
 	dir = 1
@@ -1172,21 +1172,21 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/freezer,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ax" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "AF" = (
 /obj/machinery/light/small/emergency{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "AK" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "AT" = (
 /obj/effect/floor_decal/carpet{
 	dir = 6
@@ -1199,31 +1199,31 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "AW" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Bf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Bk" = (
 /turf/simulated/mineral/cave,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "Bl" = (
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Bx" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_mob/humanoid/merc,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "BA" = (
 /obj/effect/floor_decal/carpet{
 	dir = 9
@@ -1233,28 +1233,28 @@
 	pixel_x = 16
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "BF" = (
 /obj/effect/floor_decal/techfloor/corner,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "BR" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "BU" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_mob/humanoid/merc/melee/sword,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ca" = (
 /obj/machinery/mecha_part_fabricator,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Cn" = (
 /obj/effect/floor_decal/carpet{
 	pixel_x = 16
@@ -1262,23 +1262,23 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Cp" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Cz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/material/durasteel,
 /obj/item/stack/material/durasteel,
 /obj/item/stack/material/durasteel,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "CC" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "CI" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
@@ -1287,11 +1287,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "CL" = (
 /obj/machinery/cryopod,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "CS" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
@@ -1299,7 +1299,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "CV" = (
 /obj/effect/floor_decal/carpet{
 	dir = 5
@@ -1307,77 +1307,77 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "CX" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Dl" = (
 /obj/effect/floor_decal/corner/red/border,
 /mob/living/simple_mob/humanoid/merc/ranged/smg,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Dp" = (
 /obj/structure/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Dz" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "DA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "DC" = (
 /obj/structure/flora/pottedplant/large,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "DH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "DM" = (
 /obj/random/trash,
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "DT" = (
 /mob/living/simple_mob/humanoid/merc/ranged/deagle,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "Ef" = (
 /obj/structure/table/marble,
 /obj/machinery/recharger,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ei" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ej" = (
 /obj/effect/floor_decal/corner/red/border,
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Er" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ED" = (
 /obj/effect/floor_decal/carpet{
 	dir = 6
@@ -1388,18 +1388,18 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "EE" = (
 /obj/machinery/photocopier,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "EJ" = (
 /mob/living/simple_mob/humanoid/merc/melee/sword,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Fg" = (
 /obj/structure/railing{
 	dir = 4
@@ -1409,7 +1409,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Fl" = (
 /obj/effect/floor_decal/carpet{
 	dir = 6
@@ -1419,73 +1419,73 @@
 	pixel_y = 16
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Fo" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Fs" = (
 /obj/structure/flora/pottedplant/large,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "FH" = (
 /obj/machinery/dnaforensics,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Gb" = (
 /obj/structure/table/bench,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Gp" = (
 /obj/structure/barricade,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "Gr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Gt" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "GB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/purcarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Hb" = (
 /obj/item/stack/material/silver,
 /obj/item/stack/material/silver,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Hk" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Hm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/water/deep/indoors,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ht" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Hv" = (
 /obj/structure/reagent_dispensers/acid,
 /turf/simulated/wall/durasteel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "HA" = (
 /obj/effect/floor_decal/carpet{
 	dir = 5
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "HJ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -1497,30 +1497,30 @@
 	dir = 1
 	},
 /turf/simulated/floor/fixed,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "HL" = (
 /obj/machinery/artifact_analyser,
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ii" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8;
 	pixel_y = 16
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ij" = (
 /obj/structure/table/bench/wooden,
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "In" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "IB" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8;
@@ -1538,7 +1538,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "IO" = (
 /obj/structure/table/rack,
 /obj/item/gun/energy/ionrifle/pistol,
@@ -1546,90 +1546,90 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "IP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
 /turf/simulated/floor/plating,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "IY" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Jq" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Jv" = (
 /obj/structure/bookcase/manuals/medical,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Jy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "JJ" = (
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "JK" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small/flicker,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "JR" = (
 /obj/structure/table/bench,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "JT" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ke" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Kq" = (
 /obj/structure/railing,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "KD" = (
 /obj/effect/decal/remains/human,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "KG" = (
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "KM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "KS" = (
 /obj/effect/floor_decal/rust,
 /mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "KT" = (
 /obj/structure/railing{
 	dir = 8
@@ -1639,51 +1639,51 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ld" = (
 /obj/structure/coatrack,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Lm" = (
 /obj/machinery/door/airlock/glass_research,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Lr" = (
 /obj/structure/closet/hydrant,
 /turf/simulated/wall/iron,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Lx" = (
 /obj/machinery/light,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ly" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "LC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "LK" = (
 /obj/machinery/light/small/flicker,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "LU" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "LV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ma" = (
 /obj/machinery/door/blast/regular/open{
 	dir = 4
@@ -1696,70 +1696,70 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Mb" = (
 /obj/effect/floor_decal/rust,
 /obj/item/stack/material/phoron,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Mg" = (
 /obj/item/mecha_parts/mecha_equipment/repair_droid,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Mh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Mq" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "MC" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "MN" = (
 /turf/simulated/floor/carpet/purcarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "MP" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "MX" = (
 /obj/random/trash,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Na" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Nb" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "NC" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "NF" = (
 /obj/random/trash_pile,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "NU" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/holowindow,
@@ -1771,7 +1771,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "NX" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8;
@@ -1785,18 +1785,18 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Oe" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "On" = (
 /turf/template_noop,
 /area/template_noop)
 "Oo" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ow" = (
 /obj/structure/grille,
 /obj/structure/grille,
@@ -1809,19 +1809,19 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "OG" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_mob/humanoid/merc/ranged/smg,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Pb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Pg" = (
 /obj/structure/table/standard,
 /obj/structure/bedsheetbin,
@@ -1829,28 +1829,28 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Pr" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "Pu" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/freezer,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "PF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "PJ" = (
 /obj/effect/decal/remains/robot,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "PK" = (
 /obj/structure/simple_door/silver,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "PQ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -1860,11 +1860,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/fixed,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Qy" = (
 /obj/structure/closet/hydrant,
 /turf/simulated/wall/durasteel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "QT" = (
 /obj/structure/table/rack,
 /obj/item/storage/box/shotgunammo/large,
@@ -1872,39 +1872,39 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "QY" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Rb" = (
 /obj/machinery/door/airlock/research,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/barricade,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Rf" = (
 /obj/machinery/light/flicker{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Rk" = (
 /obj/structure/anomaly_container,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Rl" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Rm" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1;
@@ -1912,33 +1912,33 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Rq" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Rx" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/glass2/pitcher,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "RQ" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Sg" = (
 /turf/simulated/floor/water/deep/indoors,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Sj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Sl" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -1946,7 +1946,7 @@
 	},
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "Ss" = (
 /obj/structure/railing{
 	dir = 1
@@ -1956,55 +1956,55 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Sv" = (
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "SU" = (
 /obj/item/storage/box/shotgunammo,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Te" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Tl" = (
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Tm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ts" = (
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Tu" = (
 /turf/simulated/wall/solidrock,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "TG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/freezer,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "TI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "TK" = (
 /turf/simulated/wall/iron,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "TM" = (
 /mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "TZ" = (
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/blast/regular/open{
@@ -2015,81 +2015,81 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Un" = (
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Uu" = (
 /obj/structure/anomaly_container,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "UI" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Vp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/techfloor/corner,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Vr" = (
 /obj/structure/window/reinforced/holowindow{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Vt" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "VC" = (
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "VE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "VH" = (
 /obj/random/trash,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "VK" = (
 /mob/living/simple_mob/humanoid/merc/ranged/poi,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "VL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/cell/apc,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "VM" = (
 /obj/structure/bookcase,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "VO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "VS" = (
 /turf/simulated/wall/durasteel,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Wj" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall/iron,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Wk" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Wl" = (
 /obj/structure/railing{
 	dir = 8
@@ -2099,72 +2099,72 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Wv" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Xa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /obj/item/stack/material/phoron,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Xt" = (
 /obj/machinery/artifact_harvester,
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Xw" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/bar_soft/full,
 /turf/simulated/floor/lino,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "XD" = (
 /obj/structure/table/glass,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "XG" = (
 /turf/simulated/floor/outdoors/dirt,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "XK" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "XP" = (
 /obj/random/trash,
 /obj/effect/floor_decal/corner/red/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "XQ" = (
 /obj/structure/flora/tree/jungle_small,
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "XR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "XT" = (
 /obj/structure/reagent_dispensers/peppertank,
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "XU" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "XY" = (
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Yg" = (
 /obj/effect/floor_decal/carpet{
 	dir = 10
@@ -2177,14 +2177,14 @@
 	pixel_y = 16
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Yi" = (
 /obj/effect/floor_decal/transit/orange,
 /obj/effect/floor_decal/transit/orange{
 	dir = 8
 	},
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Yl" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -2194,22 +2194,22 @@
 	dir = 4
 	},
 /turf/simulated/floor/fixed,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ym" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Yo" = (
 /obj/machinery/light/small/flicker,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Yv" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techmaint,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Yx" = (
 /obj/effect/floor_decal/carpet{
 	dir = 4;
@@ -2220,19 +2220,19 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "YA" = (
 /obj/random/trash_pile,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "YC" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "YH" = (
 /obj/effect/floor_decal/transit/orange{
 	dir = 4
@@ -2241,43 +2241,43 @@
 	dir = 1
 	},
 /turf/simulated/floor/grass,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "YM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "YP" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "YS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "YY" = (
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Zc" = (
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ze" = (
 /turf/simulated/wall,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Zl" = (
 /turf/simulated/wall/r_wall,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "Zw" = (
 /obj/structure/table/glass,
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ZC" = (
 /turf/simulated/floor/wood,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ZD" = (
 /obj/structure/railing{
 	dir = 4
@@ -2286,7 +2286,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ZG" = (
 /obj/machinery/light/small/flicker{
 	dir = 1
@@ -2295,20 +2295,20 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ZH" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ZP" = (
 /obj/structure/bookcase,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 "ZZ" = (
 /obj/machinery/light/small/flicker,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
-/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility)
+/area/class_h/POIs/AuxiliaryResearchFacility)
 
 (1,1,1) = {"
 On

@@ -1,6 +1,4 @@
-// Datums //
-
-/datum/atmosphere/planet/class_d
+/datum/atmosphere/planet/classd
 	base_gases = list(
 	/datum/gas/nitrogen = 0.01
 	)
@@ -10,21 +8,19 @@
 	minimum_temp = 203
 	maximum_temp = 203
 
-// Turfmakers
-
+//Turfmakers
 #define CLASSD_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_CLASSD
-#define CLASSD_TURF_CREATE(x)	x/class_d/initial_gas_mix=ATMOSPHERE_ID_CLASSD;x/class_d/color="#eaa17c"
+#define CLASSD_TURF_CREATE(x)	x/classd/initial_gas_mix=ATMOSPHERE_ID_CLASSD;x/classd/color="#eaa17c"
 
-
-//Previously vacuum turfs were used, bad!
-CLASSD_TURF_CREATE(/turf/unsimulated/wall/planetary)
+CLASSD_TURF_CREATE(/turf/simulated/wall/planetary)
+CLASSD_TURF_CREATE(/turf/simulated/wall)
 CLASSD_TURF_CREATE(/turf/simulated/floor)
 CLASSD_TURF_CREATE(/turf/simulated/floor/reinforced)
 CLASSD_TURF_CREATE(/turf/simulated/floor/tiled)
 CLASSD_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
 CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
-CLASSD_TURF_CREATE(/turf/simulated/wall)
+CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/dirt)
 CLASSD_TURF_CREATE(/turf/simulated/mineral)
 CLASSD_TURF_CREATE(/turf/simulated/mineral/floor)
 CLASSD_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
@@ -33,8 +29,8 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
 // Now to make this a planet //
 
-/obj/effect/overmap/visitable/sector/class_d
-	name = "Virgo 5"
+/obj/effect/overmap/visitable/sector/classd
+	name = "Class D Moon"
 	desc = "A rocky planet with radioactive hazards abundant."
 	scanner_desc = @{"[i]Stellar Body[/i]:
 [i]Class[/i]: D-Class Planet
@@ -43,37 +39,37 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 	icon_state = "globe"
 	in_space = 0
 	color = "#eaa17c"
-	initial_generic_waypoints = list("class_d_east","class_d_west","class_d_north","class_d_south")
+	initial_generic_waypoints = list("classd_east","classd_west","classd_north","classd_south")
 
 // Shuttle landing area waypoints
 
-/obj/effect/shuttle_landmark/premade/class_d/east
+/obj/effect/shuttle_landmark/premade/classd/east
 	name = "Class D - Eastern Zone"
-	landmark_tag = "class_d_east"
+	landmark_tag = "classd_east"
 
-/obj/effect/shuttle_landmark/premade/class_d/west
+/obj/effect/shuttle_landmark/premade/classd/west
 	name = "Class D - Western Zone"
-	landmark_tag = "class_d_west"
+	landmark_tag = "classd_west"
 
-/obj/effect/shuttle_landmark/premade/class_d/north
+/obj/effect/shuttle_landmark/premade/classd/north
 	name = "Class D - Northern Zone"
-	landmark_tag = "class_d_north"
+	landmark_tag = "classd_north"
 
-/obj/effect/shuttle_landmark/premade/class_d/south
+/obj/effect/shuttle_landmark/premade/classd/south
 	name = "Class D - Southern Zone"
-	landmark_tag = "class_d_south"
+	landmark_tag = "classd_south"
 
 ///Ore Seeding
 
 //This is a special subtype of the thing that generates ores on a map
 //It will generate more rich ores because of the lower numbers than the normal one
-/datum/random_map/noise/ore/class_d
-	descriptor = "class_d ore distribution map"
+/datum/random_map/noise/ore/classd
+	descriptor = "classd ore distribution map"
 	deep_val = 0.6 //More riches, normal is 0.7 and 0.8
 	rare_val = 0.5
 
 //The check_map_sanity proc is sometimes unsatisfied with how AMAZING our ores are
-/datum/random_map/noise/ore/class_d/check_map_sanity()
+/datum/random_map/noise/ore/classd/check_map_sanity()
 	var/rare_count = 0
 	var/surface_count = 0
 	var/deep_count = 0
@@ -118,9 +114,8 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 		/mob/living/simple_mob/animal/giant_spider/webslinger = 2
 	)
 
-
-	obj/tether_away_spawner/class_d/crater
-	name = "Virgo 5 Crater Spawner"
+	obj/tether_away_spawner/classd/crater
+	name = "Class D Crater Spawner"
 	faction = "crater"
 	atmos_comp = TRUE
 	prob_spawn = 100
@@ -132,136 +127,49 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 		/mob/living/simple_mob/mechanical/corrupt_maint_drone = 2
 	)
 
-
-
-
 // Turfs
+/turf/simulated/floor/outdoors/classd
+	name = "irradiated sand"
+	desc = "It literally glows in the dark."
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+	outdoors = 1
+	color = "#eaa17c"
+	base_icon_state = "asteroid"
+	initial_gas_mix = ATMOSPHERE_ID_CLASSD
+	turf_layers = list(/turf/simulated/mineral/floor/classd)
+	initial_flooring = /decl/flooring/outdoors/classd
 
 ///Indoor usage turfs with Class D's Atmos. Unaffected by weather etc (Important because radioactive fallout will happen on a regular basis!)
-/turf/simulated/floor/class_d_indoors
+/turf/simulated/floor/classd/indoors
 	color = "#eaa17c"
 	initial_gas_mix = ATMOSPHERE_ID_CLASSD
 	outdoors = FALSE
 
-/turf/simulated/mineral/class_d_indoors
+/turf/simulated/mineral/classd/indoors
 	color = "#eaa17c"
 	initial_gas_mix = ATMOSPHERE_ID_CLASSD
 	outdoors = FALSE
 
-/turf/simulated/mineral/floor/class_d_indoors
+/turf/simulated/mineral/floor/classd/indoors
 	color = "#eaa17c"
 	initial_gas_mix = ATMOSPHERE_ID_CLASSD
 	outdoors = FALSE
 
-/turf/simulated/floor/tiled/class_d_indoors
+/turf/simulated/floor/tiled/classd/indoors
 	color = "#eaa17c"
 	initial_gas_mix = ATMOSPHERE_ID_CLASSD
 	outdoors = FALSE
 
-/turf/simulated/wall/class_d_indoors
+/turf/simulated/wall/classd/indoors
 	color = "#eaa17c"
 	initial_gas_mix = ATMOSPHERE_ID_CLASSD
 	outdoors = FALSE
 
 // Unused Turfs (For now)
 /*
-/turf/simulated/floor/reinforced/class_d_indoors
+/turf/simulated/floor/reinforced/classd_indoors
 	color = "#eaa17c"
 	initial_gas_mix = ATMOSPHERE_ID_CLASSD
 	outdoors = FALSE
 */
-
-
-
-// Areas
-
-
-/area/poi_d
-	name = "Class D World"
-	icon_state = "away"
-	base_turf = /turf/simulated/mineral/floor/class_d
-	dynamic_lighting = 1
-
-/area/poi_d/explored
-	name = "Class D World - Explored (E)"
-	icon_state = "explored"
-
-/area/poi_d/unexplored
-	name = "Class D World - Unexplored (UE)"
-	icon_state = "unexplored"
-
-/area/poi_d/unexplored/underground // Caves would be protected from weather. Still valid for POI generation do to being a dependent of /area/poi_d/unexplored
-	base_turf = /turf/simulated/mineral/floor/class_d_indoors
-
-/area/poi_d/explored/underground
-	base_turf = /turf/simulated/mineral/floor/class_d_indoors
-
-
-/// Landing areas and base areas
-
-/area/poi_d/wildcat_mining_base
-	name = "Abandoned Facility"
-	icon_state = "blue"
-	requires_power = TRUE
-
-/area/poi_d/wildcat_mining_base/exterior_power
-	name = "Exterior Power"
-
-/area/poi_d/wildcat_mining_base/refueling_outbuilding
-	name = "Refueling Outbuilding"
-
-/area/poi_d/wildcat_mining_base/warehouse
-	name = "Warehouse"
-
-/area/poi_d/wildcat_mining_base/exterior_workshop
-	name = "Exterior Workshop"
-
-/area/poi_d/wildcat_mining_base/interior
-	base_turf = /turf/simulated/floor/class_d_indoors
-
-/area/poi_d/wildcat_mining_base/interior/main_room
-	name = "Main Room"
-
-/area/poi_d/wildcat_mining_base/interior/utility_room
-	name = "Utility Room"
-
-/area/poi_d/wildcat_mining_base/interior/bunk_room
-	name = "Bunk Room"
-
-/area/poi_d/wildcat_mining_base/interior/bathroom
-	name = "Bathroom"
-
-///POI Areas and Misc Areas
-
-/area/poi_d/POIs/ship
-	name = "Crashed Ship Fragment"
-	base_turf = /turf/simulated/mineral/floor/class_d_indoors
-
-/area/poi_d/plains
-	name = "Class D World Plains"
-	base_turf = /turf/simulated/mineral/floor/class_d
-
-/area/poi_d/crater
-	name = "Class D World Crater"
-	base_turf = /turf/simulated/mineral/floor/class_d
-
-/area/poi_d/Mountain
-	name = "Class D World Mountain"
-	base_turf = /turf/simulated/mineral/floor/class_d_indoors
-
-/area/poi_d/Crevices
-	name = "Class D World Crevices"
-	base_turf = /turf/simulated/mineral/floor/class_d_indoors
-
-/area/poi_d/POIs/solar_farm
-	name = "Prefab Solar Farm"
-	base_turf = /turf/simulated/mineral/floor/class_d
-
-/area/poi_d/POIs/landing_pad
-	name = "Prefab Homestead"
-	base_turf = /turf/simulated/mineral/floor/class_d
-	requires_power = FALSE
-
-/area/poi_d/POIs/reactor
-	name = "Prefab Reactor"
-	base_turf = /turf/simulated/mineral/floor/class_d_indoors

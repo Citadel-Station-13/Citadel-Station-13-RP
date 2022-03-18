@@ -534,10 +534,20 @@ var/list/flooring_types
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = null
 
-
 /decl/flooring/outdoors/lavaland
 	name = "ash sand"
 	desc = "Soft and ominous."
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_base = "asteroid"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/decl/flooring/outdoors/classd
+	name = "irradiated sand"
+	desc = "It literally glows in the dark."
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_base = "asteroid"
 	footstep_sounds = list("human" = list(

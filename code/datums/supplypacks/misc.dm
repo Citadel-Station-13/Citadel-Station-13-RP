@@ -300,3 +300,25 @@
 	cost = 300
 	containertype = /obj/structure/closet/crate
 	containername = "Hoverboard Crate"
+
+/datum/supply_pack/misc/colored_lights
+	name = "Colored Lights Bundle"
+	contains = list(
+			/obj/item/storage/box/lights/bulbs_colored = 2,
+			/obj/item/storage/box/lights/tubes_colored = 2,
+			/obj/item/storage/box/lights/mixed_colored = 1
+			)
+	cost = 50
+	containertype = /obj/structure/closet/crate
+	containername = "Colored Lights crate"
+
+/datum/supply_pack/misc/neon_lights
+	name = "Neon Lights Bundle"
+	contains = list(
+			/obj/item/storage/box/lights/bulbs_neon = 2,
+			/obj/item/storage/box/lights/tubes_neon = 2,
+			/obj/item/storage/box/lights/mixed_neon = 1
+			)
+	cost = 50
+	containertype = /obj/structure/closet/crate
+	containername = "Neon Lights crate"

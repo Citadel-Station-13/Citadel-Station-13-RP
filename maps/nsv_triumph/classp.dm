@@ -109,14 +109,14 @@ var/datum/planet/classp/planet_classp = null
 
 /datum/weather/classp
 	name = "classp base"
-	temp_high = 260.15 // -19c
-	temp_low = 269.15  // -10c
+	temp_high = 225.3 // -48c
+	temp_low = 230.3  // -13c
 
 /datum/weather/classp/light_snow
 	name = "light snow"
 	icon_state = "snowfall_light"
-	temp_high = 235.15
-	temp_low = 	225.15
+	temp_high = 225.3
+	temp_low = 	220.3
 	light_modifier = 0.7
 	transition_chances = list(
 		WEATHER_OVERCAST = 25,
@@ -132,8 +132,8 @@ var/datum/planet/classp/planet_classp = null
 /datum/weather/classp/snow
 	name = "moderate snow"
 	icon_state = "snowfall_med"
-	temp_high = 230.15
-	temp_low = 220.15
+	temp_high = 220.3
+	temp_low = 215.3
 	wind_high = 2
 	wind_low = 0
 	light_modifier = 0.5
@@ -166,8 +166,8 @@ var/datum/planet/classp/planet_classp = null
 /datum/weather/classp/blizzard
 	name = "blizzard"
 	icon_state = "snowfall_heavy"
-	temp_high = 215.15
-	temp_low = 200.15
+	temp_high = 215.3
+	temp_low = 200.3
 	wind_high = 4
 	wind_low = 2
 	light_modifier = 0.3
@@ -204,6 +204,7 @@ var/datum/planet/classp/planet_classp = null
 	outdoors = 1
 	var/tree_chance = 10
 	var/deadtree_chance = 5
+	initial_gas_mix = ATMOSPHERE_ID_FROZEN
 
 /turf/simulated/floor/outdoors/snow/classp/Initialize(mapload)
 	if(tree_chance && prob(tree_chance) && !check_density())
