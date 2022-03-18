@@ -1264,3 +1264,35 @@ mob/proc/yank_out_object()
 		to_chat(src, SPAN_WARNING("You scrawl down some meaningless lines."))
 	. = stars(text_content, 5)
 
+/mob/proc/UpdateLyingBuckledAndVerbStatus()
+	var/last_lying = lying
+	if(!resting && cannot_stand() && can_stand_overridden())
+		lying = 0
+	else if(buckled)
+		anchored = 1
+		if(istype(buckled))
+			if(buckled.buckle_lying == -1)
+				lying = incapacitated(INCAPACITATION_KNOCKDOWN)
+			else
+				lying = buckled.buckle_lying
+			if(buckled.buckle_movable)
+				anchored = 0
+	else
+		lying = incapacitated(INCAPACITATION_KNOCKDOWN)
+
+	if(lying)
+		set_density(0)
+		drop_held_items()
+	else
+		set_density(initial(density))
+
+	reset_layer()
+
+	//Temporarily moved here from the various life() procs
+	//I'm fixing stuff incrementally so this will likely find a better home.
+	//It just makes sense for now. ~Carn
+	if( update_icon )	//forces a full overlay update
+		update_icon = 0
+		update_icon()
+	if( lying != last_lying )
+		update_transform()

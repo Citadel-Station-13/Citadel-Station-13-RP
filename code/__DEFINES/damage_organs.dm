@@ -65,3 +65,34 @@
 #define INFECTION_LEVEL_TWO   500
 #define INFECTION_LEVEL_THREE 1000
 #define INFECTION_LEVEL_MAX   1500
+
+//Baymed pull
+// enum-ish values for surgery conditions
+#define OPERATE_DENY     0
+#define OPERATE_PASSABLE 1
+#define OPERATE_OKAY     2
+#define OPERATE_IDEAL    3
+
+#define MODULAR_BODYPART_INVALID    0 // Cannot be detached or reattached.
+#define MODULAR_BODYPART_PROSTHETIC 1 // Can be detached or reattached freely.
+#define MODULAR_BODYPART_CYBERNETIC 2 // Can be detached or reattached to compatible parent organs.
+
+// Organ flag defines.
+#define ORGAN_FLAG_CAN_AMPUTATE   BITFLAG(0) // The organ can be amputated.
+#define ORGAN_FLAG_CAN_BREAK      BITFLAG(1) // The organ can be broken.
+#define ORGAN_FLAG_CAN_STAND      BITFLAG(2) // The organ contributes to standing.
+#define ORGAN_FLAG_HAS_TENDON     BITFLAG(3) // The organ can have its tendon cut.
+#define ORGAN_FLAG_FINGERPRINT    BITFLAG(4) // The organ has a fingerprint.
+#define ORGAN_FLAG_HEALS_OVERKILL BITFLAG(5) // The organ heals from overkill damage.
+#define ORGAN_FLAG_DEFORMED       BITFLAG(6) // The organ is permanently disfigured.
+
+// Droplimb types.
+#define DISMEMBER_METHOD_EDGE  0
+#define DISMEMBER_METHOD_BLUNT 1
+#define DISMEMBER_METHOD_BURN  2
+#define DISMEMBER_METHOD_ACID  3
+
+// Robotics hatch_state defines.
+#define HATCH_CLOSED 0
+#define HATCH_UNSCREWED 1
+#define HATCH_OPENED 2

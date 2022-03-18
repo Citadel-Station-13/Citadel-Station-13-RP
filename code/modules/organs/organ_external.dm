@@ -63,9 +63,9 @@
 	var/can_grasp                      // It would be more appropriate if these two were named "affects_grasp" and "affects_stand" at this point
 	var/can_stand                      // Modifies stance tally/ability to stand.
 	var/disfigured = 0                 // Scarred/burned beyond recognition.
-	var/cannot_amputate                // Impossible to amputate.
-	var/cannot_break                   // Impossible to fracture.
-	var/cannot_gib                     // Impossible to gib, distinct from amputation.
+	//var/cannot_amputate                // Impossible to amputate.
+	//var/cannot_break                   // Impossible to fracture.
+	//var/cannot_gib                     // Impossible to gib, distinct from amputation.
 	var/joint = "joint"                // Descriptive string used in dislocation.
 	var/amputation_point               // Descriptive string used in amputation.
 	var/dislocated = 0    // If you target a joint, you can dislocate the limb, impairing it's usefulness and causing pain
@@ -83,6 +83,9 @@
 
 	/// makes this dumb as fuck mechanic slightly less awful - records queued syringe infections instead of a spawn()
 	var/syringe_infection_queued
+
+	// A bitfield for a collection of limb behavior flags. Baymed port
+	var/limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/Destroy()
 
@@ -340,7 +343,7 @@
 
 	//If limb took enough damage, try to cut or tear it off
 	if(owner && loc == owner && !is_stump())
-		if(!cannot_amputate && config_legacy.limbs_can_break && (brute_dam + burn_dam) >= (max_damage * config_legacy.organ_health_multiplier))
+		if((limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && config_legacy.limbs_can_break && (brute_dam + burn_dam) >= (max_damage * config_legacy.organ_health_multiplier))
 			//organs can come off in three cases
 			//1. If the damage source is edge_eligible and the brute damage dealt exceeds the edge threshold, then the organ is cut off.
 			//2. If the damage amount dealt exceeds the disintegrate threshold, the organ is completely obliterated.

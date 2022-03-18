@@ -779,7 +779,7 @@
 			T_ext.droplimb(1,DROPLIMB_EDGE) //Clean cut so it doesn't kill the prey completely.
 
 			//Is it groin/chest? You can't remove those.
-			if(T_ext.cannot_amputate)
+			if(!(T_ext.limb_flags & ORGAN_FLAG_CAN_AMPUTATE))
 				T.apply_damage(25, BRUTE, T_ext)
 				visible_message("<span class='danger'>[src] severely damages [T]'s [T_ext.name]!</span>")
 			else if(B)

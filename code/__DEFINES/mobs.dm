@@ -248,10 +248,12 @@
 #define SYNTH_BLOOD_COLOUR "#030303"
 #define SYNTH_FLESH_COLOUR "#575757"
 
-#define BP_IS_BRITTLE(org)  ((org) && ((org).status == ORGAN_BRITTLE))
-#define BP_IS_CRYSTAL(org)  ((org) && ((org).robotic == ORGAN_CRYSTAL))
-#define BP_IS_ROBOTIC(org)  ((org) && ((org).robotic == ORGAN_ROBOT))
-#define BP_IS_ASSISTED(org) ((org) && ((org).robotic == ORGAN_ASSISTED))
+// Prosthetic helpers.
+#define BP_IS_PROSTHETIC(org) (!QDELETED(org) && (org.status & ORGAN_PROSTHETIC))
+#define BP_IS_ASSISTED(org)   (!QDELETED(org) && (org.status & ORGAN_ASSISTED))
+#define BP_IS_BRITTLE(org)    (!QDELETED(org) && (org.status & ORGAN_BRITTLE))
+#define BP_IS_CRYSTAL(org)    (!QDELETED(org) && (org.status & ORGAN_CRYSTAL))
+#define BP_IS_ROBOTIC(org)    BP_IS_PROSTHETIC(org)
 
 #define MOB_PULL_NONE 0
 #define MOB_PULL_SMALLER 1
