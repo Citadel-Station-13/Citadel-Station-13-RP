@@ -2,29 +2,44 @@
 "a" = (
 /obj/effect/overmap/visitable/sector/mining_planet,
 /turf/unsimulated/mineral/triumph,
-/area/mining_planet/unexplored)
+/area/class_g/unexplored)
 "f" = (
 /turf/unsimulated/mineral/triumph,
-/area/mining_planet/unexplored)
+/area/class_g/unexplored)
 "j" = (
-/obj/effect/shuttle_landmark/automatic,
-/turf/simulated/mineral/floor/ignore_cavegen/mining_planet,
-/area/mining_planet/explored)
+/obj/effect/shuttle_landmark/automatic{
+	docking_controller = "mining_planet"
+	},
+/turf/simulated/mineral/floor/ignore_cavegen/classg,
+/area/class_g/explored)
+"l" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "mining_planet";
+	layer = 3.3;
+	name = "Mining Dock Controller";
+	pixel_y = 30
+	},
+/turf/simulated/mineral/floor/ignore_cavegen/classg,
+/area/class_g/explored)
 "r" = (
-/turf/simulated/mineral/floor/ignore_cavegen/mining_planet,
-/area/mining_planet/explored)
+/turf/simulated/mineral/floor/ignore_cavegen/classg,
+/area/class_g/explored)
 "w" = (
-/turf/simulated/mineral/rich/triumph/mining_planet,
-/area/mining_planet/unexplored)
+/turf/simulated/mineral/rich/triumph/classg,
+/area/class_g/unexplored)
 "A" = (
-/turf/simulated/mineral/triumph/mining_planet,
-/area/mining_planet/unexplored)
+/turf/simulated/mineral/triumph/classg,
+/area/class_g/unexplored)
 "F" = (
-/turf/simulated/mineral/floor/ignore_cavegen/mining_planet,
-/area/mining_planet/unexplored)
+/turf/simulated/mineral/floor/ignore_cavegen/classg,
+/area/class_g/unexplored)
 "N" = (
-/turf/simulated/mineral/floor/mining_planet,
-/area/mining_planet/unexplored)
+/turf/simulated/mineral/floor/classg,
+/area/class_g/unexplored)
+"W" = (
+/turf/simulated/wall/classg,
+/area/class_g/explored)
 
 (1,1,1) = {"
 f
@@ -292,8 +307,8 @@ f
 f
 f
 f
-r
-r
+W
+l
 r
 r
 r

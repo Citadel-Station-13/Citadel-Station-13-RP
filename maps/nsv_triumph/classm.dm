@@ -1,20 +1,20 @@
-var/datum/planet/gaia_planet/planet_gaia_planet = null
+var/datum/planet/classm/planet_classm = null
 
-/datum/time/gaia_planet
+/datum/time/classm
 	seconds_in_day = 3 HOURS
 
-/datum/planet/gaia_planet
-	name = "Gaia Class world"
-	desc = "A beautiful lush planet that is owned by the Happy Days and Sunshine Corporation."
-	current_time = new /datum/time/gaia_planet()
+/datum/planet/classm
+	name = "Class-M Gaia Planet"
+	desc = "A beautiful, lush planet that is owned by the Happy Days and Sunshine Corporation."
+	current_time = new /datum/time/classm()
 	expected_z_levels = list(14) // Debug testing.
 
-/datum/planet/gaia_planet/New()
+/datum/planet/classm/New()
 	..()
-	planet_gaia_planet = src
-	weather_holder = new /datum/weather_holder/gaia_planet(src)
+	planet_classm = src
+	weather_holder = new /datum/weather_holder/classm(src)
 
-/datum/planet/gaia_planet/update_sun()
+/datum/planet/classm/update_sun()
 	..()
 	var/datum/time/time = current_time
 	var/length_of_day = time.seconds_in_day / 10 / 60 / 60
@@ -94,14 +94,14 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 		update_sun_deferred(2, new_brightness, new_color)
 
 
-/datum/weather_holder/gaia_planet
+/datum/weather_holder/classm
 	temperature = T0C
 	allowed_weather_types = list(
-		WEATHER_CLEAR		= new /datum/weather/gaia_planet/clear(),
-		WEATHER_OVERCAST	= new /datum/weather/gaia_planet/overcast(),
-		WEATHER_RAIN		= new /datum/weather/gaia_planet/rain(),
-		WEATHER_STORM		= new /datum/weather/gaia_planet/storm(),
-		WEATHER_BLOOD_MOON	= new /datum/weather/gaia_planet/blood_moon(),
+		WEATHER_CLEAR		= new /datum/weather/classm/clear(),
+		WEATHER_OVERCAST	= new /datum/weather/classm/overcast(),
+		WEATHER_RAIN		= new /datum/weather/classm/rain(),
+		WEATHER_STORM		= new /datum/weather/classm/storm(),
+		WEATHER_BLOOD_MOON	= new /datum/weather/classm/blood_moon(),
 		)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 75,
@@ -111,12 +111,12 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 		WEATHER_BLOODMOON	= 1
 		)
 
-/datum/weather/gaia_planet
-	name = "gaia_planet base"
+/datum/weather/classm
+	name = "classm base"
 	temp_high = 293.15 // 20c
 	temp_low = 303.15  // 30c
 
-/datum/weather/gaia_planet/clear
+/datum/weather/classm/clear
 	name = "clear"
 	transition_chances = list(
 		WEATHER_CLEAR = 90,
@@ -130,7 +130,7 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 	sky_visible = TRUE
 	observed_message = "The sky is clear."
 
-/datum/weather/gaia_planet/overcast
+/datum/weather/classm/overcast
 	name = "overcast"
 	light_modifier = 0.8
 	transition_chances = list(
@@ -147,7 +147,7 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 		)
 
 
-/datum/weather/gaia_planet/rain
+/datum/weather/classm/rain
 	name = "rain"
 	icon_state = "rain"
 	wind_high = 2
@@ -165,7 +165,7 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 		"The sky is dark, and rain falls down upon you."
 	)
 
-/datum/weather/gaia_planet/rain/process_effects()
+/datum/weather/classm/rain/process_effects()
 	..()
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -191,7 +191,7 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 			if(show_message)
 				to_chat(L, effect_message)
 
-/datum/weather/gaia_planet/storm
+/datum/weather/classm/storm
 	name = "storm"
 	icon_state = "storm"
 	wind_high = 4
@@ -217,7 +217,7 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 		WEATHER_OVERCAST = 5
 		)
 
-/datum/weather/gaia_planet/storm/process_effects()
+/datum/weather/classm/storm/process_effects()
 	..()
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -248,7 +248,7 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 
 // This gets called to do lightning periodically.
 // There is a seperate function to do the actual lightning strike, so that badmins can play with it.
-/datum/weather/gaia_planet/storm/proc/handle_lightning()
+/datum/weather/classm/storm/proc/handle_lightning()
 	if(world.time < next_lightning_strike)
 		return // It's too soon to strike again.
 	next_lightning_strike = world.time + rand(min_lightning_cooldown, max_lightning_cooldown)
@@ -256,7 +256,7 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 	lightning_strike(T)
 
 
-/datum/weather/gaia_planet/blood_moon
+/datum/weather/classm/blood_moon
 	name = "blood moon"
 	light_modifier = 0.5
 	light_color = "#FF0000"

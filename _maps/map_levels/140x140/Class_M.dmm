@@ -2,56 +2,56 @@
 "ab" = (
 /obj/item/melee/umbrella/random,
 /obj/structure/closet/lasertag/blue,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "ah" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "aj" = (
 /obj/machinery/appliance/mixer/candy,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "ao" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "aN" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "aS" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "aW" = (
 /obj/structure/bed/chair/wood/wings,
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/inside)
 "ba" = (
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "bg" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "bm" = (
 /obj/machinery/door/airlock{
 	name = "Restroom"
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "br" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/orangedouble,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "bs" = (
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "bu" = (
 /obj/structure/mirror{
 	dir = 4;
@@ -61,69 +61,69 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "bA" = (
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/inside)
 "bD" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "bE" = (
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
 	},
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "bK" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "co" = (
 /mob/living/simple_mob/animal/passive/bird/ringneck_dove,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "cs" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "cu" = (
 /obj/structure/flora/tree/jungle_small,
 /mob/living/simple_mob/animal/passive/mouse/brown,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "cw" = (
 /mob/living/simple_mob/animal/passive/fish/bass,
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "cL" = (
 /obj/structure/fence,
 /obj/structure/fence/corner,
-/turf/simulated/floor/outdoors/beach/sand/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/beach/sand/classm,
+/area/class_m/outside)
 "cU" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "cY" = (
 /obj/structure/closet/athletic_mixed,
 /obj/item/melee/umbrella/random,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "dw" = (
 /obj/structure/flora/ausbushes/palebush,
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "dQ" = (
 /obj/structure/sink{
 	pixel_y = 22
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "dY" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
@@ -151,17 +151,17 @@
 	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "eo" = (
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "ep" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "eu" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
@@ -170,19 +170,19 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "ex" = (
 /obj/structure/table/marble,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/machinery/reagentgrinder,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "eA" = (
 /obj/structure/flora/pottedplant/thinbush,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "eT" = (
 /obj/structure/sink{
 	dir = 4;
@@ -192,15 +192,15 @@
 	pixel_x = 28
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "fe" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "fg" = (
 /obj/structure/bonfire,
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "fx" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -208,18 +208,18 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "fC" = (
 /obj/structure/sink/puddle{
 	pixel_y = 6
 	},
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "fI" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "fJ" = (
 /obj/structure/closet/crate/hydroponics,
 /obj/structure/flora/ausbushes/brflowers,
@@ -230,8 +230,8 @@
 /obj/item/analyzer/plant_analyzer,
 /obj/item/analyzer/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "fU" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -239,12 +239,12 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "gm" = (
 /obj/machinery/biogenerator,
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/outside)
 "gn" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -252,83 +252,83 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "gp" = (
 /obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "gy" = (
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "gE" = (
 /obj/structure/fence/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/beach/sand/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/beach/sand/classm,
+/area/class_m/outside)
 "gF" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/genericbush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "gG" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "gS" = (
 /obj/structure/table/rack,
 /obj/item/material/fishing_net,
 /obj/item/material/fishing_net,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "gV" = (
 /mob/living/simple_mob/animal/passive/bird/parrot/cockatiel/grey,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "gZ" = (
 /obj/item/reagent_containers/glass/bucket/wood,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "hm" = (
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/beach/sand/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/beach/sand/classm,
+/area/class_m/outside)
 "hr" = (
 /mob/living/simple_mob/animal/passive/fish/solarfish,
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "hv" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/greendouble,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "hx" = (
 /obj/structure/fence/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "hH" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "hS" = (
 /obj/structure/flora/tree/jungle_small,
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "ib" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -336,12 +336,12 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "id" = (
 /obj/structure/closet/wardrobe,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "ih" = (
 /obj/structure/fence/corner{
 	dir = 1
@@ -349,8 +349,8 @@
 /obj/structure/fence/post{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/beach/sand/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/beach/sand/classm,
+/area/class_m/outside)
 "il" = (
 /obj/structure/toilet{
 	dir = 1
@@ -359,85 +359,85 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "iw" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "iH" = (
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "iK" = (
 /obj/structure/table/marble,
 /obj/item/material/kitchen/rollingpin,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "iO" = (
 /obj/machinery/icecream_vat,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "iY" = (
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "jd" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/inside)
 "jg" = (
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "jj" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
 /turf/simulated/floor/carpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "jp" = (
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
 /obj/machinery/gear_painter,
 /turf/simulated/floor/carpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "jr" = (
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/structure/table/bench/marble,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "jz" = (
-/turf/simulated/floor/water/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/classm,
+/area/class_m/outside)
 "jF" = (
 /obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "jH" = (
 /obj/structure/flora/pottedplant/crystal,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "jN" = (
 /obj/structure/bed/chair/wood/wings,
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "kd" = (
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/outside)
 "kz" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -446,31 +446,31 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "kU" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/reagentgrinder,
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/outside)
 "lp" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "ls" = (
-/turf/simulated/mineral/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/classm,
+/area/class_m/outside)
 "lv" = (
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/carpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "lG" = (
-/turf/simulated/floor/water/shoreline/corner/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/shoreline/corner/classm,
+/area/class_m/outside)
 "lJ" = (
 /obj/structure/closet/chefcloset,
 /obj/item/glass_jar,
@@ -484,120 +484,120 @@
 /obj/item/packageWrap,
 /obj/item/packageWrap,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "lL" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/bluedouble,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "ma" = (
 /obj/machinery/door/window/westright{
 	name = "Self-Service Bar"
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "mb" = (
 /obj/machinery/vending/cola,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "mi" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "mm" = (
 /obj/item/stool/padded,
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "mr" = (
 /obj/structure/flora/pottedplant/subterranean,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "mI" = (
 /obj/machinery/door/airlock{
 	id_tag = "room7";
 	name = "Room 7"
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "mO" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "mP" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "mT" = (
 /obj/structure/fence/end,
-/turf/simulated/floor/water/shoreline/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/shoreline/classm,
+/area/class_m/outside)
 "mY" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "na" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /obj/structure/sign/double/barsign{
 	pixel_y = 32
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "ne" = (
 /obj/structure/closet/athletic_mixed,
 /obj/item/melee/umbrella/random,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "no" = (
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "nr" = (
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "nx" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/purpledouble,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "nG" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "nK" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "nW" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "ob" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "oc" = (
 /obj/machinery/light,
 /obj/structure/closet/crate/trashcart,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "om" = (
 /mob/living/simple_mob/animal/passive/cat,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "on" = (
 /obj/structure/table/rack,
 /obj/item/material/fishing_net,
@@ -605,8 +605,8 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "oA" = (
 /obj/structure/railing{
 	dir = 1
@@ -614,12 +614,12 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "oC" = (
 /obj/machinery/door/airlock/glass,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "pa" = (
 /obj/machinery/microwave,
 /obj/structure/table/marble,
@@ -627,7 +627,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "pb" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -639,37 +639,37 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "pn" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "po" = (
 /obj/item/bone/skull/unknown,
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "pv" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "pF" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "pQ" = (
 /obj/structure/fence,
 /obj/structure/fence/corner,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "pR" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "pU" = (
 /obj/structure/railing{
 	dir = 4
@@ -677,24 +677,24 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "pV" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "qa" = (
 /obj/structure/closet/secure_closet/hydroponics{
 	req_access = list(28)
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "qd" = (
 /obj/structure/closet/secure_closet,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "qj" = (
 /obj/machinery/button/remote/airlock{
 	id = "room1";
@@ -703,40 +703,40 @@
 	pixel_y = -4;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "qk" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "ql" = (
-/turf/simulated/floor/water/shoreline/corner/gaia_world{
+/turf/simulated/floor/water/shoreline/corner/classm{
 	dir = 1
 	},
-/area/gaia_planet/outside)
+/area/class_m/outside)
 "qI" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
 /turf/simulated/floor/carpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "qQ" = (
 /obj/machinery/vending/fishing,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "qR" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "qX" = (
 /obj/machinery/icecream_vat,
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "qZ" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -748,16 +748,16 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "re" = (
 /obj/structure/fence/corner{
 	dir = 1
 	},
-/turf/simulated/floor/water/shoreline/gaia_world{
+/turf/simulated/floor/water/shoreline/classm{
 	dir = 4
 	},
-/area/gaia_planet/outside)
+/area/class_m/outside)
 "rl" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_containers/food/drinks/bottle/cream,
@@ -766,39 +766,39 @@
 /obj/item/reagent_containers/food/drinks/bottle/cream,
 /obj/item/reagent_containers/food/drinks/bottle/cream,
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "rm" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "rC" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "rD" = (
 /obj/item/stool/padded,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "rE" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/structure/railing,
 /obj/structure/table/bench/marble,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "rT" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "rX" = (
 /obj/machinery/shower{
 	dir = 4
@@ -810,15 +810,15 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "rZ" = (
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "sd" = (
 /obj/structure/fence/door,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "sk" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_soft/full,
@@ -828,8 +828,8 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "sp" = (
 /obj/item/melee/umbrella,
 /obj/item/melee/umbrella,
@@ -843,21 +843,21 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "sr" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/yellowdouble,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "ss" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "sL" = (
 /obj/item/ore,
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "sW" = (
 /obj/machinery/shower{
 	dir = 1
@@ -869,11 +869,11 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "tb" = (
 /obj/structure/flora/ausbushes/sunnybush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "tc" = (
 /obj/structure/sign/warning/secure_area/armory{
 	desc = "Hello! We here at the Happy Days and Sunshine Corporation we strive to ensure all our locations are a safe haven for ALL to enjoy. As such we very kindly ask that you put away any guns or other forms of weapons you may have in your craft. Violation of such will result in a small fine to make up for the breach of this request. Again, we here at the Happy Days and Sunshine Corporation thank you for your compliance. Please enjoy the facility and knowledge that you're safe here.";
@@ -881,24 +881,24 @@
 	pixel_y = -32
 	},
 /obj/machinery/light,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "tf" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "tm" = (
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "tp" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "tz" = (
 /obj/item/bone/ribs,
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "tB" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -907,92 +907,92 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "tK" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "tS" = (
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "tX" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "ua" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "uo" = (
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/inside)
 "us" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/inside)
 "uv" = (
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "uF" = (
 /obj/machinery/smartfridge,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "uM" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "uW" = (
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "vd" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "ve" = (
 /obj/machinery/vending/snack,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "vi" = (
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/outside)
 "vn" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "vt" = (
 /obj/machinery/door/airlock{
 	id_tag = "restroom";
 	name = "Restroom"
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "vx" = (
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "vJ" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -1000,123 +1000,123 @@
 /obj/structure/window/reinforced,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "vR" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "vX" = (
 /obj/item/ore/coal,
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "vY" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/dropper,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/material/knife/butch,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "wa" = (
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "wl" = (
 /obj/structure/flora/ausbushes/genericbush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "wp" = (
 /obj/structure/table/rack,
 /obj/item/material/fishing_rod/modern/strong,
 /obj/item/material/fishing_net,
 /obj/item/material/fishing_rod/modern/strong,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "wt" = (
 /obj/machinery/vending/cola,
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "ww" = (
 /obj/machinery/vending/dinnerware,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "wD" = (
-/turf/simulated/floor/water/shoreline/gaia_world{
+/turf/simulated/floor/water/shoreline/classm{
 	dir = 4
 	},
-/area/gaia_planet/outside)
+/area/class_m/outside)
 "wI" = (
 /obj/structure/flora/pottedplant/minitree,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "xc" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "xr" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "xv" = (
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/beach/sand/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/beach/sand/classm,
+/area/class_m/outside)
 "xB" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "xI" = (
 /obj/structure/flora/tree/jungle_small,
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "yd" = (
 /obj/structure/closet/crate/trashcart,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "yk" = (
 /obj/structure/table/marble,
 /obj/machinery/microwave,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "yq" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/rainbowdouble,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "yF" = (
 /obj/structure/flora/tree/jungle_small,
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "yJ" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /mob/living/simple_mob/animal/passive/snake,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "yM" = (
 /obj/machinery/door/airlock{
 	id_tag = "room2";
 	name = "Room 2"
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "yQ" = (
 /mob/living/simple_mob/animal/passive/fox,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "yW" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "yY" = (
 /obj/machinery/shower{
 	dir = 4
@@ -1128,24 +1128,24 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "za" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "zg" = (
 /obj/machinery/light,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "zj" = (
 /mob/living/simple_mob/animal/passive/bird/european_robin,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "zy" = (
 /obj/structure/flora/ausbushes/brflowers,
 /mob/living/simple_mob/animal/passive/bird/european_robin,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "zH" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
@@ -1172,26 +1172,26 @@
 	pixel_x = 8;
 	pixel_y = 16
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "zJ" = (
 /obj/machinery/computer/arcade/battle,
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "zK" = (
 /obj/machinery/appliance/mixer/cereal,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "zT" = (
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
 /obj/machinery/vending/giftvendor,
 /turf/simulated/floor/carpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Ah" = (
 /obj/machinery/light{
 	dir = 1
@@ -1199,8 +1199,8 @@
 /obj/structure/sign/greencross{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "Al" = (
 /obj/machinery/button/remote/airlock{
 	id = "room4";
@@ -1209,33 +1209,33 @@
 	pixel_y = -2;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Am" = (
 /turf/simulated/wall/wood,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Ao" = (
 /obj/machinery/vending/fishing,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "Aq" = (
 /obj/machinery/seed_storage/garden,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "AH" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "AL" = (
 /obj/structure/sink/kitchen{
 	dir = 8;
 	name = "sink";
 	pixel_x = 13
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Be" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/log{
@@ -1247,8 +1247,8 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Bp" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -1258,30 +1258,30 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Bs" = (
 /obj/structure/grille,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "Bv" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "By" = (
 /obj/item/ore/coal,
 /obj/item/ore/coal,
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "BE" = (
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "BJ" = (
 /obj/structure/sign/warning/secure_area/armory{
 	desc = "Hello! We here at the Happy Days and Sunshine Corporation we strive to ensure all our locations are a safe haven for ALL to enjoy. As such we very kindly ask that you put away any guns or other forms of weapons you may have in your craft. Violation of such will result in a small fine to make up for the breach of this request. Again, we here at the Happy Days and Sunshine Corporation thank you for your compliance. Please enjoy the facility and knowledge that you're safe here.";
@@ -1291,78 +1291,78 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "BU" = (
-/turf/simulated/floor/outdoors/beach/sand/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/beach/sand/classm,
+/area/class_m/outside)
 "Ca" = (
 /obj/item/ore/coal,
 /obj/item/ore/coal,
 /obj/item/ore/coal,
 /obj/item/ore/coal,
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "Ce" = (
 /obj/machinery/biogenerator,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "CC" = (
 /mob/living/simple_mob/animal/passive/fish/perch,
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "CD" = (
 /obj/structure/table/woodentable,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "CE" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "CZ" = (
 /mob/living/bot/farmbot{
 	replaces_nutriment = 1
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "Dc" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Df" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/machinery/light_switch{
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Di" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Dj" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "Dp" = (
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "Dv" = (
 /obj/structure/flora/pottedplant/flower,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "DD" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "DI" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -1370,33 +1370,33 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "DJ" = (
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "DU" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/item/reagent_containers/glass/bucket,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "DY" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/genericbush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "DZ" = (
-/turf/simulated/floor/water/shoreline/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/shoreline/classm,
+/area/class_m/outside)
 "El" = (
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "Eo" = (
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/outside)
 "Ex" = (
 /obj/item/bee_pack,
 /obj/item/honey_frame,
@@ -1411,64 +1411,64 @@
 	desc = "All you need to start your own honey farm.";
 	name = "beekeeping crate"
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "Ez" = (
 /obj/structure/fence/corner{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "ED" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "EL" = (
 /obj/structure/table/marble,
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "EN" = (
 /obj/machinery/honey_extractor,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "EQ" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/structure/table/glass,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "Fl" = (
 /obj/machinery/vending/hydronutrients,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "Fq" = (
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Fv" = (
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "FA" = (
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "FC" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "FJ" = (
 /turf/simulated/floor/carpet/purcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "FT" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/structure/flora/pottedplant/minitree,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "Ga" = (
 /obj/structure/closet/crate/hydroponics,
 /obj/item/material/minihoe,
@@ -1478,41 +1478,41 @@
 /obj/item/analyzer/plant_analyzer,
 /obj/item/analyzer/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "Gb" = (
 /obj/structure/table/marble,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Gd" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Ge" = (
 /obj/machinery/seed_extractor,
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/outside)
 "Gp" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "GC" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/structure/railing,
 /obj/structure/table/bench/marble,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "GH" = (
 /obj/machinery/door/airlock{
 	id_tag = "room1";
 	name = "Room 1"
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "GN" = (
 /obj/machinery/shower{
 	dir = 8
@@ -1522,11 +1522,11 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Hl" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "Hm" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
@@ -1536,32 +1536,32 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Hn" = (
 /obj/item/melee/umbrella/random,
 /obj/structure/closet/lasertag/red,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Hr" = (
 /obj/machinery/vending/hydronutrients,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "Hz" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/curtain/black,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "HC" = (
 /obj/effect/overmap/visitable/sector/gaia_planet,
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "HE" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "HP" = (
 /obj/item/melee/umbrella,
 /obj/item/melee/umbrella,
@@ -1572,15 +1572,15 @@
 /obj/item/melee/umbrella,
 /obj/item/melee/umbrella,
 /obj/structure/table/rack,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "HW" = (
 /obj/structure/table/marble,
 /obj/machinery/cash_register/civilian{
 	req_access = null
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Iq" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -1589,7 +1589,7 @@
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Iz" = (
 /obj/machinery/button/remote/airlock{
 	id = "room3";
@@ -1598,135 +1598,135 @@
 	pixel_y = -2;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "IK" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "IM" = (
 /obj/structure/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "IP" = (
 /obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Jb" = (
 /obj/machinery/gibber,
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Jr" = (
 /obj/item/melee/umbrella/random,
 /obj/structure/closet/lasertag/blue,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "JE" = (
 /obj/structure/fence/post{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "JW" = (
 /obj/machinery/chem_master/condimaster,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "JX" = (
 /obj/machinery/smartfridge/drying_rack,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "JY" = (
 /obj/machinery/door/airlock{
 	id_tag = "room4";
 	name = "Room 4"
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "JZ" = (
 /obj/machinery/vending/dinnerware,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Ke" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "Kh" = (
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Km" = (
 /obj/machinery/washing_machine,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Kt" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/structure/table/bench/marble,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "Ky" = (
 /obj/machinery/door/window/westleft,
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "KB" = (
 /obj/structure/table/gamblingtable,
 /obj/item/deck/holder,
 /obj/item/deck/tarot,
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "KH" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/structure/flora/pottedplant/minitree,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "KM" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "KR" = (
 /obj/structure/railing,
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/inside)
 "KY" = (
 /obj/structure/fence/post,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "KZ" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "Lg" = (
 /obj/machinery/appliance/cooker/fryer,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Lk" = (
 /obj/item/stool,
-/turf/simulated/floor/outdoors/beach/sand/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/beach/sand/classm,
+/area/class_m/outside)
 "Lt" = (
 /obj/structure/table/marble,
 /obj/structure/window/reinforced{
@@ -1735,8 +1735,8 @@
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/reagent_containers/food/drinks/shaker,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "LA" = (
 /obj/machinery/button/remote/airlock{
 	id = "room5";
@@ -1744,130 +1744,130 @@
 	pixel_x = -25;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "LS" = (
 /obj/machinery/vending/wallmed1{
 	pixel_x = -32
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "LW" = (
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Mb" = (
 /obj/machinery/vending/sovietsoda,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "MG" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_alc/full,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "MK" = (
 /obj/structure/flora/tree/jungle,
 /mob/living/simple_mob/animal/passive/mouse/brown,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "ML" = (
 /mob/living/simple_mob/animal/passive/snake,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "MV" = (
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "Nb" = (
 /obj/structure/railing,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "Ne" = (
-/turf/simulated/wall/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/wall/classm,
+/area/class_m/inside)
 "NC" = (
 /obj/machinery/vending/wallmed1{
 	pixel_x = 32
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "NE" = (
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/inside)
 "NM" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Oi" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "Oo" = (
-/turf/simulated/wall/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/wall/classm,
+/area/class_m/outside)
 "Ox" = (
 /obj/machinery/door/airlock{
 	id_tag = "room3";
 	name = "Room 3"
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "OD" = (
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "OE" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "OM" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "ON" = (
 /obj/machinery/door/airlock/glass{
 	name = "Self-Service Bar"
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "OU" = (
 /obj/structure/sign/warning/secure_area/armory{
 	desc = "Hello! We here at the Happy Days and Sunshine Corporation we strive to ensure all our locations are a safe haven for ALL to enjoy. As such we very kindly ask that you put away any guns or other forms of weapons you may have in your craft. Violation of such will result in a small fine to make up for the breach of this request. Again, we here at the Happy Days and Sunshine Corporation thank you for your compliance. Please enjoy the facility and knowledge that you're safe here.";
 	name = "NO WEAPONS BEYOND THIS POINT";
 	pixel_x = 32
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "Pa" = (
 /obj/structure/flora/tree/jungle_small,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "Pe" = (
 /obj/structure/undies_wardrobe,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Pf" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "Pu" = (
 /obj/structure/flora/ausbushes,
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "Pv" = (
 /obj/machinery/door/airlock{
 	id_tag = "room6";
 	name = "Room 6"
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Qa" = (
 /obj/machinery/button/remote/airlock{
 	id = "restroom";
@@ -1877,19 +1877,19 @@
 	specialfunctions = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Qi" = (
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/wood/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/inside)
 "Qp" = (
 /obj/machinery/door/airlock/glass{
 	name = "Automated Resort"
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "QE" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
@@ -1916,31 +1916,31 @@
 	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "QH" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/gaia_planet/outside)
+/area/class_m/outside)
 "QI" = (
 /obj/item/ore/coal,
 /obj/item/ore/coal,
 /obj/item/ore/coal,
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "QL" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/rddouble,
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "QQ" = (
 /mob/living/simple_mob/animal/passive/bird/azure_tit/tweeter,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "QV" = (
 /obj/machinery/vending/boozeomat{
 	req_access = null
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Rc" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -1949,51 +1949,51 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Rk" = (
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "gaia_1"
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "Rp" = (
 /obj/machinery/door/airlock{
 	name = "Kitchen";
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Rr" = (
 /obj/structure/bonfire,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "Rt" = (
 /obj/machinery/door/airlock/freezer{
 	name = "Kitchen Cold Room";
 	req_access = null
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "RB" = (
 /mob/living/simple_mob/animal/passive/fish/salmon,
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "RF" = (
-/turf/simulated/floor/water/shoreline/gaia_world{
+/turf/simulated/floor/water/shoreline/classm{
 	dir = 6
 	},
-/area/gaia_planet/outside)
+/area/class_m/outside)
 "RG" = (
 /obj/structure/table/gamblingtable,
 /obj/item/storage/pill_bottle/dice,
 /obj/item/storage/dicecup/loaded,
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "RU" = (
 /obj/machinery/door/window/eastright,
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Sj" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -2001,13 +2001,13 @@
 /obj/structure/window/reinforced,
 /obj/structure/table/marble,
 /obj/item/hand_labeler,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "So" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "SB" = (
 /obj/machinery/shower{
 	pixel_y = 16
@@ -2019,47 +2019,47 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "SE" = (
 /obj/structure/table/marble,
 /obj/item/glass_jar,
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "SS" = (
 /obj/structure/fence/post{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/beach/sand/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/beach/sand/classm,
+/area/class_m/outside)
 "SV" = (
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "gaia_2"
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/outside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "Td" = (
-/turf/simulated/floor/water/shoreline/gaia_world{
+/turf/simulated/floor/water/shoreline/classm{
 	dir = 8
 	},
-/area/gaia_planet/outside)
+/area/class_m/outside)
 "Ti" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Tr" = (
 /obj/structure/table/marble,
 /obj/item/material/knife/butch,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Tu" = (
 /obj/structure/table/gamblingtable,
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Tx" = (
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "TD" = (
 /obj/machinery/button/remote/airlock{
 	id = "room6";
@@ -2068,43 +2068,43 @@
 	pixel_y = -4;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "TP" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/curtain/open/bed,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "Ua" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Uq" = (
 /obj/machinery/seed_extractor,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "Ux" = (
 /obj/structure/kitchenspike,
 /turf/simulated/floor/tiled/freezer,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "UD" = (
 /mob/living/simple_mob/animal/passive/mouse/brown,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "UQ" = (
 /turf/simulated/mineral/floor,
-/area/gaia_planet/outside)
+/area/class_m/outside)
 "UW" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
 /turf/simulated/floor/carpet/turcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Vc" = (
 /mob/living/simple_mob/animal/passive/fish/rockfish,
-/turf/simulated/floor/water/deep/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/water/deep/classm,
+/area/class_m/outside)
 "Ve" = (
 /obj/structure/closet/secure_closet/hydroponics{
 	req_access = list(28)
@@ -2112,51 +2112,51 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "Vi" = (
 /obj/item/bone,
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "Vm" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "Vs" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "Vy" = (
 /obj/machinery/vending/snack,
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "Vz" = (
 /obj/item/melee/umbrella/random,
 /obj/structure/closet/lasertag/red,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "VG" = (
 /obj/structure/table/marble,
 /obj/machinery/reagentgrinder,
 /obj/item/hand_labeler,
 /turf/simulated/floor/tiled/dark,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "VH" = (
 /obj/structure/flora/bush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "VX" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "Wa" = (
 /obj/structure/railing{
 	dir = 8
@@ -2164,46 +2164,46 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "Wc" = (
 /obj/structure/flora/pottedplant/largebush,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Wj" = (
 /obj/item/ore/coal,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/dirt/classm,
+/area/class_m/outside)
 "Wk" = (
 /obj/machinery/vending/fitness,
-/turf/simulated/floor/tiled/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "Wz" = (
 /obj/structure/flora/pottedplant/orientaltree,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "WT" = (
 /obj/machinery/vending/wallmed1{
 	pixel_x = 32
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "WY" = (
 /obj/machinery/vending/hydroseeds,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "Xd" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Xv" = (
 /obj/machinery/door/airlock/glass{
 	name = "Weapon storage"
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Xz" = (
 /obj/machinery/button/remote/airlock{
 	id = "room2";
@@ -2212,22 +2212,22 @@
 	pixel_y = -4;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "XA" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/structure/table/bench/marble,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "XB" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/structure/table/glass,
-/turf/simulated/floor/tiled/gaia_world/outdoors,
-/area/gaia_planet/inside)
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/inside)
 "XE" = (
 /obj/structure/table/standard,
 /obj/structure/bedsheetbin,
@@ -2236,16 +2236,16 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "XI" = (
-/turf/simulated/floor/water/shoreline/gaia_world{
+/turf/simulated/floor/water/shoreline/classm{
 	dir = 10
 	},
-/area/gaia_planet/outside)
+/area/class_m/outside)
 "XR" = (
 /obj/machinery/light/flamp,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "XY" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/glass/rag,
@@ -2254,12 +2254,12 @@
 	},
 /obj/item/melee/umbrella/random,
 /obj/item/material/knife/plastic,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Yp" = (
 /obj/machinery/light/flamp,
 /turf/simulated/floor/carpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Yx" = (
 /obj/structure/table/marble,
 /obj/machinery/cash_register/civilian{
@@ -2267,26 +2267,26 @@
 	req_access = null
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "YA" = (
 /turf/simulated/floor/tiled/white,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "YP" = (
 /obj/machinery/computer/arcade/orion_trail,
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "YW" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
 /turf/simulated/floor/carpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "YZ" = (
 /obj/machinery/vending/wallmed1{
 	pixel_x = -32
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Zb" = (
 /obj/item/stack/material/log{
 	amount = 50
@@ -2294,15 +2294,15 @@
 /obj/item/stack/material/log{
 	amount = 50
 	},
-/turf/simulated/mineral/floor/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/mineral/floor/classm,
+/area/class_m/outside)
 "Zd" = (
 /obj/machinery/vending/fishing,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Zf" = (
 /turf/simulated/floor/carpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "Zn" = (
 /obj/machinery/button/remote/airlock{
 	id = "room7";
@@ -2311,49 +2311,49 @@
 	pixel_y = 26;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Zr" = (
 /obj/machinery/door/airlock{
 	id_tag = "room5";
 	name = "Room 5"
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Zx" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "ZC" = (
 /obj/structure/table/marble,
 /obj/machinery/light/small,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "ZF" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/gaia_planet/inside)
+/area/class_m/inside)
 "ZN" = (
 /obj/structure/fireplace{
 	pixel_y = 24
 	},
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "ZO" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "ZS" = (
 /obj/structure/table/rack,
 /obj/item/melee/umbrella,
 /obj/item/melee/umbrella,
 /obj/item/melee/umbrella,
 /obj/item/melee/umbrella,
-/turf/simulated/floor/wood/gaia_world,
-/area/gaia_planet/inside)
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 
 (1,1,1) = {"
 Ez

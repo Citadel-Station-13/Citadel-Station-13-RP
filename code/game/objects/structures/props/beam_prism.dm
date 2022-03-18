@@ -204,7 +204,7 @@
 			P.remote_dial = src
 		return
 	spawn()
-		for(var/obj/structure/prop/prism/P in orange(src, world.view)) //Don't search a huge area.
+		for(var/obj/structure/prop/prism/P in orange(src, 30)) //Don't search a huge area. //Second note. I widened this area because the dial search area was ridiculously small.
 			if(P.dialID == dialID && !P.remote_dial && P.external_control_lock)
 				my_turrets |= P
 				P.remote_dial = src

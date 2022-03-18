@@ -39,6 +39,18 @@
 		if(NAMEOF(src, color))
 			add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
 
+switch(var_name)
+		if(NAMEOF(src, base_layer), NAMEOF(src, layer))
+			set_base_layer(var_value)
+		if(NAMEOF(src, relative_layer))
+			set_relative_layer(var_value)
+
+/atom/vv_get_var(var_name)
+	switch(var_name)
+		if(NAMEOF(src, base_layer))
+			return debug_variable(isnull(base_layer)? layer : base_layer, vars[var_name], 0, src)
+	return ..()
+
 /**
   * Return the markup to for the dropdown list for the VV panel for this atom
   *
