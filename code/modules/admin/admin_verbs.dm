@@ -239,6 +239,7 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/change_weather,
 	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
+	/datum/admins/proc/view_persistent_data,
 	/client/proc/simple_DPS
 	)
 
