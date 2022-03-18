@@ -238,6 +238,21 @@
 /obj/item/coin/diamond,
 /turf/simulated/floor/wmarble/classp,
 /area/class_p/POIs/archaic_temple)
+"na" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/obj/random/tool/alien,
+/turf/simulated/floor/phoron/classp,
+/area/class_p/POIs/archaic_temple)
 "nd" = (
 /obj/structure/grille/cult,
 /obj/structure/window/reinforced/polarized/full{
@@ -317,7 +332,6 @@
 "rt" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/artifact,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -328,6 +342,7 @@
 /obj/structure/window/phoronbasic{
 	dir = 1
 	},
+/obj/random/great_helm,
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "ru" = (
@@ -453,6 +468,21 @@
 	id = "entry_corridor"
 	},
 /area/class_p/POIs/archaic_temple)
+"xx" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/obj/item/archaeological_find,
+/turf/simulated/floor/gold/classp,
+/area/class_p/POIs/archaic_temple)
 "xO" = (
 /obj/structure/simple_door/gold,
 /turf/simulated/floor/wood/classp,
@@ -576,7 +606,6 @@
 /area/class_p/POIs/archaic_temple)
 "Ci" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/artifact,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -587,6 +616,7 @@
 /obj/structure/window/phoronbasic{
 	dir = 1
 	},
+/obj/random/crusader_armor,
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
 "Dl" = (
@@ -828,6 +858,23 @@
 	},
 /turf/simulated/wall/dungeon,
 /area/class_p/POIs/archaic_temple)
+"KQ" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/obj/item/melee/changeling/claw/greater{
+	name = "The Claw of Birnam Doomsayer"
+	},
+/turf/simulated/floor/phoron/classp,
+/area/class_p/POIs/archaic_temple)
 "La" = (
 /obj/structure/simple_door/hardwood,
 /turf/simulated/floor/trap/wood/classp{
@@ -898,6 +945,23 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
+"OG" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/obj/item/melee/cursedblade{
+	name = "Xeq'quinnh's Crystal Blade"
+	},
+/turf/simulated/floor/gold/classp,
+/area/class_p/POIs/archaic_temple)
 "OI" = (
 /obj/structure/prop/prism/incremental/externalcont{
 	degrees_from_north = 180;
@@ -927,6 +991,21 @@
 	id = "library_1"
 	},
 /turf/simulated/floor/wood/classp,
+/area/class_p/POIs/archaic_temple)
+"Pq" = (
+/obj/structure/table/hardwoodtable,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
+/obj/item/material/knife/machete/hatchet/unathiknife,
+/turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "Py" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1016,7 +1095,6 @@
 /area/class_p/POIs/archaic_temple)
 "Us" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/artifact,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -1027,6 +1105,7 @@
 /obj/structure/window/phoronbasic{
 	dir = 1
 	},
+/obj/item/archaeological_find,
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "UJ" = (
@@ -3087,7 +3166,7 @@ vD
 Mq
 Ci
 od
-Us
+Pq
 od
 EZ
 Mq
@@ -3317,7 +3396,7 @@ Xi
 Dl
 GF
 Zc
-Ci
+xx
 Yg
 Ks
 dv
@@ -3372,7 +3451,7 @@ TM
 qo
 od
 Zc
-Us
+KQ
 UR
 od
 Mq
@@ -3543,9 +3622,9 @@ TM
 qo
 Uh
 od
-Us
+na
 od
-Ci
+OG
 Mq
 Ks
 iX
