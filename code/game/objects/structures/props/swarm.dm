@@ -1,4 +1,4 @@
-/obj/structure/cult/pylon/swarm
+/*/obj/structure/cult/pylon/swarm
 	name = "Swarm Construct"
 	desc = "A small pod."
 	icon = 'icons/mob/swarmbot.dmi'
@@ -148,3 +148,4 @@
 		else
 			to_chat(user, "You hit \the [src]!")
 		playsound(get_turf(src),impact_sound, 75, 1)
+*/
