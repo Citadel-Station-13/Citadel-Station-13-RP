@@ -7,7 +7,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "e" = (
 /obj/structure/closet/coffin,
 /obj/item/clothing/gloves/ring/material/gold,
@@ -23,42 +23,42 @@
 /obj/item/bone/leg,
 /obj/item/bone/leg,
 /turf/simulated/floor/wmarble,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "i" = (
 /obj/structure/fence/corner{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "j" = (
 /obj/structure/fence/door/locked{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "k" = (
 /obj/structure/fence/door/locked{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "l" = (
 /obj/structure/fence/cut/large{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "n" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wmarble,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "s" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "v" = (
 /obj/structure/fence/corner,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "y" = (
 /obj/structure/closet/coffin,
 /obj/item/clothing/gloves/ring/material/silver,
@@ -74,57 +74,57 @@
 /obj/item/bone/leg,
 /obj/item/bone/leg,
 /turf/simulated/floor/wmarble,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "C" = (
 /obj/structure/fence/corner{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "D" = (
 /obj/item/material/gravemarker{
 	material = MAT_WOOD
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "F" = (
 /obj/item/flame/lighter/zippo/engraved,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "H" = (
 /turf/simulated/wall/sandstone/classh,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "K" = (
 /obj/structure/fence{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "O" = (
 /obj/structure/fence/cut/large{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "T" = (
 /obj/item/shovel,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "U" = (
 /obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "X" = (
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 "Y" = (
 /obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/graveyard)
+/area/class_h/POIs/graveyard)
 
 (1,1,1) = {"
 a

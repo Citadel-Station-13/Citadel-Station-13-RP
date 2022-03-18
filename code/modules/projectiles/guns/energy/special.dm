@@ -394,3 +394,19 @@ obj/item/gun/energy/staff/focus
 	projectile_type = /obj/item/projectile/bullet/burstbullet/service    //Formerly: obj/item/projectile/bullet/gyro. A little too robust.
 	fire_delay = 20
 	charge_cost = 800	//Three shots.
+
+/obj/item/gun/energy/puzzle_key
+	name = "Key of Anak-Hun-Tamuun"
+	desc = "An arcane stave that fires a powerful energy blast. Why was this just left laying around here?"
+	fire_sound = 'sound/magic/staff_change.ogg'
+	icon = 'icons/obj/gun/magic.dmi'
+	icon_state = "staffofchaos"
+	item_state = "staffofchaos"
+	force = 5
+	charge_meter = 0
+	projectile_type = /obj/item/projectile/beam/emitter
+	fire_delay = 10
+	charge_cost = 800
+	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	battery_lock = 1
+	one_handed_penalty = 0

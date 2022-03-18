@@ -206,7 +206,7 @@
 /datum/map_z_level/tether_lateload/away_fueldepot
 	name = "Away Mission - Fuel Depot"
 
-// Class D (Virgo 5)
+// Class D
 
 /datum/map_template/tether_lateload/away_class_d
 	name = "Class D - Mountains and Rock Plains"
@@ -216,12 +216,11 @@
 
 /datum/map_template/tether_lateload/away_class_d/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 200, /area/poi_d/unexplored, /datum/map_template/submap/level_specific/class_d)
-	new /datum/random_map/noise/ore/class_d(null, 1, 1, z, 64, 64)
+	seed_submaps(list(z), 200, /area/class_d/unexplored, /datum/map_template/submap/level_specific/class_d)
+	new /datum/random_map/noise/ore/classd(null, 1, 1, z, 64, 64)
 
 /datum/map_z_level/tether_lateload/away_class_d
 	name = "Away Mission - Class D"
-
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Gateway submaps go here

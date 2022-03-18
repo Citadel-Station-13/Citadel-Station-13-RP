@@ -161,154 +161,221 @@
 	icon_state = "shuttle2"
 	base_turf = /turf/simulated/floor/outdoors/dirt
 
-// Frozen planet world areas
-/area/frozen_planet
-	name = "Frozen Planet"
-	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/dirt
-	requires_power = 0
-	dynamic_lighting = 1
-
-/area/frozen_planet/facility
-	name = "Frozen Planet - Facility"
-	requires_power = 1
-	icon_state = "red"
-	dynamic_lighting = 1
-
-/area/frozen_planet/ruins
-	name = "Frozen Planet - Ruins"
-	icon_state = "green"
-	dynamic_lighting = 1
-
-/area/frozen_planet/outside
-	name = "Frozen Planet - Outside (UE)"
-	icon_state = "yellow"
-	dynamic_lighting = 1
-	
-//Gaia planet world areas
-/area/gaia_planet
-	name = "Gaia Planet"
-	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/dirt
-	requires_power = 0
-	dynamic_lighting = 1
-
-/area/gaia_planet/inside
-	name = "Gaia Planet - Inside (E)"
-	icon_state = "red"
-	dynamic_lighting = 1
-
-/area/gaia_planet/outside
-	name = "Gaia Planet - Outside (UE)"
-	icon_state = "yellow"
-	dynamic_lighting = 1
-
-// Mining Planet world areas
-/area/mining_planet
-	name = "Mining Planet"
-	icon_state = "away"
-	base_turf = /turf/simulated/mineral/floor/
-	dynamic_lighting = 1
-
-/area/mining_planet/explored
-	name = "Mining Planet - Explored (E)"
-	icon_state = "red"
-	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
-
-/area/mining_planet/unexplored
-	name = "Mining Planet - Unexplored (UE)"
-	icon_state = "yellow"
-
 // Class D world areas
-/* Moved to Class D's .dm file and edited. Remove before merging
-/area/poi_d/POIs/ship
-	name = "Crashed Ship Fragment"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+/area/class_d
+	name = "Class D World"
+	icon_state = "away"
+	base_turf = /turf/simulated/mineral/floor/classd
+	requires_power = 1
+	dynamic_lighting = 1
 
-/area/poi_d/explored
+/area/class_d/explored
 	name = "Class D World - Explored (E)"
 	icon_state = "explored"
 
-/area/poi_d/unexplored
+/area/class_d/unexplored
 	name = "Class D World - Unexplored (UE)"
 	icon_state = "unexplored"
 
-/area/poi_d
-	name = "Class D World"
-	icon_state = "away"
-	base_turf = /turf/simulated/mineral/floor/vacuum
-	dynamic_lighting = 1
+/area/class_d/unexplored/underground // Caves would be protected from weather. Still valid for POI generation do to being a dependent of /area/poi_d/unexplored
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
-/area/poi_d/plains
-	name = "Class D World Plains"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+/area/class_d/explored/underground
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
-/area/poi_d/crater
-	name = "Class D World Crater"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+/area/class_d/wildcat_mining_base
+	name = "Abandoned Facility"
+	icon_state = "blue"
+	requires_power = TRUE
 
-/area/poi_d/Mountain
-	name = "Class D World Mountain"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+/area/class_d/wildcat_mining_base/exterior_power
+	name = "Exterior Power"
 
-/area/poi_d/Crevices
-	name = "Class D World Crevices"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+/area/class_d/wildcat_mining_base/refueling_outbuilding
+	name = "Refueling Outbuilding"
 
-/area/poi_d/POIs/solar_farm
+/area/class_d/wildcat_mining_base/warehouse
+	name = "Warehouse"
+
+/area/class_d/wildcat_mining_base/exterior_workshop
+	name = "Exterior Workshop"
+
+/area/class_d/wildcat_mining_base/interior
+	base_turf = /turf/simulated/floor/classd/indoors
+
+/area/class_d/wildcat_mining_base/interior/main_room
+	name = "Main Room"
+
+/area/class_d/wildcat_mining_base/interior/utility_room
+	name = "Utility Room"
+
+/area/class_d/wildcat_mining_base/interior/bunk_room
+	name = "Bunk Room"
+
+/area/class_d/wildcat_mining_base/interior/bathroom
+	name = "Bathroom"
+
+/area/class_d/POIs/ship
+	name = "Crashed Ship Fragment"
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
+
+/area/class_d/plains
+	name = "Plains"
+	base_turf = /turf/simulated/mineral/floor/classd
+
+/area/class_d/crater
+	name = "Crater"
+	base_turf = /turf/simulated/mineral/floor/classd
+
+/area/class_d/Mountain
+	name = "Mountain"
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
+
+/area/class_d/Crevices
+	name = "Crevices"
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
+
+/area/class_d/POIs/solar_farm
 	name = "Prefab Solar Farm"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+	base_turf = /turf/simulated/mineral/floor/classd
 
-/area/poi_d/POIs/landing_pad
+/area/class_d/POIs/landing_pad
 	name = "Prefab Homestead"
-	base_turf = /turf/simulated/mineral/floor/vacuum
+	base_turf = /turf/simulated/mineral/floor/classd
 	requires_power = FALSE
 
-/area/poi_d/POIs/reactor
+/area/class_d/POIs/reactor
 	name = "Prefab Reactor"
-	base_turf = /turf/simulated/mineral/floor/vacuum
-*/
+	base_turf = /turf/simulated/mineral/floor/classd/indoors
+
+// Class G world areas
+/area/class_g
+	name = "Class G World"
+	icon_state = "away"
+	base_turf = /turf/simulated/mineral/floor/
+	requires_power = 1
+	dynamic_lighting = 1
+
+/area/class_g/explored
+	name = "Class G World - Explored (E)"
+	icon_state = "red"
+	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+
+/area/class_g/unexplored
+	name = "Class G World - Unexplored (UE)"
+	icon_state = "yellow"
 
 // Desert Planet world areas
-/area/poi_h
+/area/class_h
 	name = "Class H World"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
-	requires_power = 0
+	requires_power = 1
 	dynamic_lighting = 1
-	
-/area/poi_h/POIs/WW_Town
+	icon_state = "away"
+
+/area/class_h/POIs/WW_Town
 	name = "Ghost Town"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/POIs/landing_pad
+/area/class_h/POIs/landing_pad
 	name = "Prefab Homestead"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/POIs/solar_farm
+/area/class_h/POIs/solar_farm
 	name = "Prefab Solar Farm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/POIs/dirt_farm
+/area/class_h/POIs/dirt_farm
 	name = "Abandoned Farmstead"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/POIs/graveyard
+/area/class_h/POIs/graveyard
 	name = "Desert Graveyard"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/POIs/goldmine
+/area/class_h/POIs/goldmine
 	name = "Desert Goldmine"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-/area/poi_h/explored
+/area/class_h/POIs/ranch
+	name = "Abandoned Ranch"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/saloon
+	name = "Saloon"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/temple
+	name = "Old Temple"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/tomb
+	name = "Old Tomb"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/AuxiliaryResearchFacility
+	name = "Research Facility"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/vault
+	name = "Desert Bunker"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/POIs/covert_post
+	name = "Clown Listening Post"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/class_h/explored
 	name = "Class H World - Explored (E)"
 	icon_state = "explored"
-	dynamic_lighting = 1
 
-/area/poi_h/unexplored
+/area/class_h/unexplored
 	name = "Class H World - Unexplored (UE)"
 	icon_state = "unexplored"
+
+//Gaia planet world areas
+/area/class_m
+	name = "Class M World"
+	icon_state = "away"
+	base_turf = /turf/simulated/floor/outdoors/dirt
+	requires_power = 1
 	dynamic_lighting = 1
+
+/area/class_m/inside
+	name = "Class M World - Inside (E)"
+	icon_state = "red"
+
+/area/class_m/outside
+	name = "Class M World - Outside (UE)"
+	icon_state = "yellow"
+
+// Frozen planet world areas
+/area/class_p
+	name = "Class P World"
+	icon_state = "away"
+	base_turf = /turf/simulated/floor/outdoors/dirt
+	requires_power = 1
+	dynamic_lighting = 1
+
+/area/class_p/facility
+	name = "Facility"
+	icon_state = "red"
+
+/area/class_p/ruins
+	name = "Ruins"
+	icon_state = "green"
+
+/area/class_p/explored
+	name = "Class P World - Explored (E)"
+	icon_state = "yellow"
+
+/area/class_p/unexplored
+	name = "Class P World - Unexplored (UE)"
+	icon_state = "red"
+
+/area/class_p/POIs/archaic_temple
+	name = "Archaic Temple"
+	icon_state = "purple"
 
 //Debris field
 /area/shuttle/excursion/debrisfield
@@ -595,6 +662,7 @@
 	name = "Lava Land"
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/lavaland
+	requires_power = 1
 	dynamic_lighting = 1
 
 /area/lavaland/horrors
@@ -614,21 +682,14 @@
 	base_turf = /turf/simulated/floor/outdoors/lavaland
 	requires_power = 0
 
-/area/lavaland
-	name = "Lava Land"
-	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-	dynamic_lighting = 1
-
 /area/lavaland/central/base
 	name = "Lava Land (Center) - Mining Base"
 	icon_state = "green"
-	requires_power = 0
 
 /area/lavaland/central/base/common
 	name = "Lava Land (Center) - Mining Base"
 	icon_state = "blue"
-	requires_power = 1
+
 /area/lavaland/central/explored
 	name = "Lava Land (Center) - Thoroughfare"
 	icon_state = "red"
@@ -640,7 +701,6 @@
 /area/lavaland/central/transit
 	name = "Lava Land (Center) - Transit"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/north/explored
 	name = "Lava Land (North) - Thoroughfare"
@@ -669,12 +729,10 @@
 /area/lavaland/east/colony
 	name = "Lava Land (East) - Colony"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/east/transit
 	name = "Lava Land (East) - Transit"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/east/lab
 	name = "Lava Land (East) - S4"
@@ -682,17 +740,14 @@
 /area/lavaland/east/lab/core
 	name = "Lava Land (East) - S4"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/east/lab/containment
 	name = "Lava Land (East) - S4 Containment"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/east/lab/bunker
 	name = "Lava Land (East) - S4 Bunker"
 	icon_state = "blue"
-	requires_power = 1
 
 /area/lavaland/west/explored
 	name = "Lava Land (West) - Thoroughfare"
@@ -709,7 +764,6 @@
 /area/lavaland/dungeon/facility
 	name = "Lava Land (Dungeon) - Pump Facility"
 	icon_state = "blue"
-	requires_power = 1
 
 // Aerostat
 /area/shuttle/excursion/away_aerostat
@@ -1091,3 +1145,4 @@
 /area/awaymission/academy/academygate
 	icon_state = "purple"
 
+// The Frozen Temple POI
