@@ -314,6 +314,7 @@
 			continue
 		if(us == (isnull(M.base_layer)? M.layer : M.base_layer))
 			. += M
+	. -= src
 
 /mob/proc/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
 	return
