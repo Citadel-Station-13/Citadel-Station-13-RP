@@ -64,3 +64,8 @@
 	if(hud_used)
 		if (hud_used.move_intent)
 			hud_used.move_intent.icon_state = intent == "walk" ? "walking" : "running"
+
+/mob/living/UpdateLyingBuckledAndVerbStatus()
+	..()
+	if(lying)
+		stop_aiming(no_message=1)
