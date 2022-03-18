@@ -1,7 +1,0 @@
-author: "TheKnightofAura"
-delete-after: True
-changes: 
-  - rscadd: "my new donator item, complete with better code"
-  - rscadd: "the code my donator item works off of, pending some balance discussion."
-  - rscdel: "my old donator item"
-  - bugfix: "sillycon's silly"
