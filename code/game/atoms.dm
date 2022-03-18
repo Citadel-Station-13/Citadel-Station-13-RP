@@ -53,6 +53,11 @@
 	var/list/our_overlays	//our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate
 	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
 
+	/// base layer - defaults to layer
+	var/base_layer
+	/// relative layer - position this atom should be in within things of the same base layer. defaults to 0
+	var/relative_layer = 0
+
 /atom/New(loc, ...)
 	// During dynamic mapload (reader.dm) this assigns the var overrides from the .dmm file
 	// Native BYOND maploading sets those vars before invoking New(), by doing this FIRST we come as close to that behavior as we can.
@@ -839,3 +844,23 @@
 
 /atom/proc/is_drainable()
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)
+
+/**
+ * set the new base layer we should be on
+ */
+/atom/proc/set_base_layer(new_layer)
+	ASSERT(isnum(new_layer))
+	base_layer = new_layer
+	// rel layer being null is fine
+	layer = base_layer + 0.000001 * relative_layer
+
+/**
+ * set the relative layer within our layer we should be on
+ */
+/atom/proc/set_relative_layer(new_layer)
+	ASSERT(isnum(new_layer))
+	if(isnull(base_layer))
+		base_layer = layer
+	relative_layer = new_layer
+	// base layer being null isn't
+	layer = base_layer + 0.000001 * relative_layer

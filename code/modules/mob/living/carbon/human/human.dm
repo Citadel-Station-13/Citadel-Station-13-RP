@@ -1578,7 +1578,7 @@
 		if(stat == DEAD || paralysis || weakened || stunned || restrained() || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs()) //stunned/knocked down by something that isn't the rest verb? Note: This was tried with INCAPACITATION_STUNNED, but that refused to work. //VORE EDIT: Check for has_buckled_mobs() (taur riding)
 			reveal(null)
 		else
-			layer = HIDING_LAYER
+			set_base_layer(HIDING_LAYER)
 
 /mob/living/carbon/human/proc/get_display_species()
 	//Shows species in tooltip
