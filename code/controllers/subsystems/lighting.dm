@@ -28,24 +28,30 @@ SUBSYSTEM_DEF(lighting)
 	return ..()
 
 /datum/controller/subsystem/lighting/fire(resumed, init_tick_checks)
-	MC_SPLIT_TICK_INIT(3)
 	if(!init_tick_checks)
+		MC_SPLIT_TICK_INIT(3)
 		MC_SPLIT_TICK
-	var/i = 0
-	for (i in 1 to GLOB.lighting_update_lights.len)
-		var/datum/light_source/L = GLOB.lighting_update_lights[i]
-
-		L.update_corners()
-
-		L.needs_update = LIGHTING_NO_UPDATE
-
-		if(init_tick_checks)
+		while(GLOB.lighting_update_lights.len)
+			var/datum/light_source/L = GLOB.lighting_update_lights[GLOB.lighting_update_lights.len--]
+			L.update_corners()
+			L.needs_update = LIGHTING_NO_UPDATE
 			CHECK_TICK
-		else if (MC_TICK_CHECK)
-			break
-	if (i)
-		GLOB.lighting_update_lights.Cut(1, i+1)
-		i = 0
+	else
+		var/i = 0
+		for (i in 1 to GLOB.lighting_update_lights.len)
+			var/datum/light_source/L = GLOB.lighting_update_lights[i]
+
+			L.update_corners()
+
+			L.needs_update = LIGHTING_NO_UPDATE
+
+			if(init_tick_checks)
+				CHECK_TICK
+			else if (MC_TICK_CHECK)
+				break
+		if (i)
+			GLOB.lighting_update_lights.Cut(1, i+1)
+			i = 0
 
 	if(!init_tick_checks)
 		MC_SPLIT_TICK
