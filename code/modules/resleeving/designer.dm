@@ -1,5 +1,5 @@
 // Little define makes it cleaner to read the tripple color values out of mobs.
-#define MOB_HEX_COLOR(M, V) "#[num2hex(M.r_##V, 2)][num2hex(M.g_##V, 2)][num2hex(M.b_##V, 2)]"
+#define MOB_HEX_COLOR(M, V) "#[num2hex(M.##V_, 2)][num2hex(M.g_##V, 2)][num2hex(M.b_##V, 2)]"
 
 /obj/machinery/computer/transhuman/designer
 	name = "body design console"
@@ -118,21 +118,21 @@
 
 		temp = list("styleHref" = "hair_style", "style" = mannequin.h_style)
 		if(mannequin.species && (mannequin.species.appearance_flags & HAS_HAIR_COLOR))
-			temp["color"] = MOB_HEX_COLOR(mannequin, hair)
+			temp["color"] = mannequin.hair_colour
 			temp["colorHref"] = "hair_color"
 		styles["Hair"] = temp
 
 		temp = list("styleHref" = "facial_style", "style" = mannequin.f_style)
 		if(mannequin.species && (mannequin.species.appearance_flags & HAS_HAIR_COLOR))
-			temp["color"] = MOB_HEX_COLOR(mannequin, facial)
+			temp["color"] = mannequin.facial_hair_colour
 			temp["colorHref"] = "facial_color"
 		styles["Facial"] = temp
 
 		if(mannequin.species && (mannequin.species.appearance_flags & HAS_EYE_COLOR))
-			styles["Eyes"] = list("colorHref" = "eye_color", "color" = MOB_HEX_COLOR(mannequin, eyes))
+			styles["Eyes"] = list("colorHref" = "eye_color", "color" = mannequin.eye_colour
 
 		if(mannequin.species && (mannequin.species.appearance_flags & HAS_SKIN_COLOR))
-			styles["Body Color"] = list("colorHref" = "skin_color", "color" = MOB_HEX_COLOR(mannequin, skin))
+			styles["Body Color"] = list("colorHref" = "skin_color", "color" = mannequin.skin_colour
 
 		var/datum/preferences/designer/P = new()
 		apply_markings_to_prefs(mannequin, P)

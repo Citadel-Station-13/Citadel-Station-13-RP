@@ -189,7 +189,7 @@
 	update_icon(var/mob/living/carbon/human/user)
 		if(!istype(user)) return
 		var/icon/ears = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "kitty")
-		ears.Blend(rgb(user.r_hair, user.g_hair, user.b_hair), ICON_ADD)
+		ears.Blend(user.hair_colour, ICON_ADD)
 
 		var/icon/earbit = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "kittyinner")
 		ears.Blend(earbit, ICON_OVERLAY)

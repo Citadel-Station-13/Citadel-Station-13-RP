@@ -1,8 +1,6 @@
 /mob/living/carbon/human
 	//Hair colour and style
-	var/r_hair = 0
-	var/g_hair = 0
-	var/b_hair = 0
+	var/hair_colour =        COLOR_BLACK
 	var/h_style = "Bald"
 
 	//Hair gradients
@@ -12,22 +10,17 @@
 	var/grad_style = "None"
 
 	//Facial hair colour and style
-	var/r_facial = 0
-	var/g_facial = 0
-	var/b_facial = 0
+	var/facial_hair_colour = COLOR_BLACK
 	var/f_style = "Shaved"
 
 	//Eye colour
-	var/r_eyes = 0
-	var/g_eyes = 0
-	var/b_eyes = 0
+	var/eye_colour =         COLOR_BLACK
 
 	var/s_tone = 0	//Skin tone
 
 	//Skin colour
-	var/r_skin = 238 // TO DO: Set defaults for other races.
-	var/g_skin = 206
-	var/b_skin = 179
+	var/skin_colour =        COLOR_BLACK
+	
 
 	var/skin_state = SKIN_NORMAL
 
@@ -76,7 +69,6 @@
 	var/g_synth							//Same as above
 	var/b_synth							//Same as above
 	var/synth_markings = 0				//Enables/disables markings on synth parts.
-	var/s_base							//For adherent coloring....
 
 
 	//var/size_multiplier = 1 //multiplier for the mob's icon size //VOREStation Edit (Moved to /mob/living)

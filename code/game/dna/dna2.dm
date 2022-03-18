@@ -118,7 +118,6 @@ var/global/list/datum/gene/dna_genes[0]
 	var/list/body_descriptors = null
 	var/list/genetic_modifiers = list() // Modifiers with the MODIFIER_GENETIC flag are saved.  Note that only the type is saved, not an instance.
 
-	var/s_base = ""
 // Make a copy of this strand.
 // USE THIS WHEN COPYING STUFF OR YOU'LL GET CORRUPTION!
 /datum/dna/proc/Clone()
@@ -135,7 +134,6 @@ var/global/list/datum/gene/dna_genes[0]
 	new_dna.custom_ask=custom_ask //VOREStaton Edit
 	new_dna.custom_whisper=custom_whisper //VOREStaton Edit
 	new_dna.custom_exclaim=custom_exclaim //VOREStaton Edit
-	new_dna.s_base=s_base
 	for(var/b=1;b<=DNA_SE_LENGTH;b++)
 		new_dna.SE[b]=SE[b]
 		if(b<=DNA_UI_LENGTH)
@@ -254,33 +252,31 @@ var/global/list/datum/gene/dna_genes[0]
 
 	// VORE Station Edit End
 
-	SetUIValueRange(DNA_UI_HAIR_R,    character.r_hair,    255,    1)
-	SetUIValueRange(DNA_UI_HAIR_G,    character.g_hair,    255,    1)
-	SetUIValueRange(DNA_UI_HAIR_B,    character.b_hair,    255,    1)
+	SetUIValueRange(DNA_UI_HAIR_R,  HEX_RED(character.hair_colour),          255, 1)
+	SetUIValueRange(DNA_UI_HAIR_G,  HEX_GREEN(character.hair_colour),        255, 1)
+	SetUIValueRange(DNA_UI_HAIR_B,  HEX_BLUE(character.hair_colour),         255, 1)
 
-	SetUIValueRange(DNA_UI_BEARD_R,   character.r_facial,  255,    1)
-	SetUIValueRange(DNA_UI_BEARD_G,   character.g_facial,  255,    1)
-	SetUIValueRange(DNA_UI_BEARD_B,   character.b_facial,  255,    1)
+	SetUIValueRange(DNA_UI_BEARD_R, HEX_RED(character.facial_hair_colour),   255, 1)
+	SetUIValueRange(DNA_UI_BEARD_G, HEX_GREEN(character.facial_hair_colour), 255, 1)
+	SetUIValueRange(DNA_UI_BEARD_B, HEX_BLUE(character.facial_hair_colour),  255, 1)
 
-	SetUIValueRange(DNA_UI_EYES_R,    character.r_eyes,    255,    1)
-	SetUIValueRange(DNA_UI_EYES_G,    character.g_eyes,    255,    1)
-	SetUIValueRange(DNA_UI_EYES_B,    character.b_eyes,    255,    1)
+	SetUIValueRange(DNA_UI_EYES_R,  HEX_RED(character.eye_colour),           255, 1)
+	SetUIValueRange(DNA_UI_EYES_G,  HEX_GREEN(character.eye_colour),         255, 1)
+	SetUIValueRange(DNA_UI_EYES_B,  HEX_BLUE(character.eye_colour),          255, 1)
 
-	SetUIValueRange(DNA_UI_SKIN_R,    character.r_skin,    255,    1)
-	SetUIValueRange(DNA_UI_SKIN_G,    character.g_skin,    255,    1)
-	SetUIValueRange(DNA_UI_SKIN_B,    character.b_skin,    255,    1)
+	SetUIValueRange(DNA_UI_SKIN_R,  HEX_RED(character.skin_colour),          255, 1)
+	SetUIValueRange(DNA_UI_SKIN_G,  HEX_GREEN(character.skin_colour),        255, 1)
+	SetUIValueRange(DNA_UI_SKIN_B,  HEX_BLUE(character.skin_colour),         255, 1)
 
-	SetUIValueRange(DNA_UI_SKIN_TONE, 35-character.s_tone, 220,    1) // Value can be negative.
+	SetUIValueRange(DNA_UI_SKIN_TONE, 35-character.s_tone, 220,           1) // Value can be negative.
 
-	SetUIState(DNA_UI_GENDER,         character.gender!=MALE,        1)
+	SetUIState(DNA_UI_GENDER, character.gender!=MALE, 1)
 
 	SetUIValueRange(DNA_UI_HAIR_STYLE,  hair,  hair_styles_list.len,       1)
 	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, facial_hair_styles_list.len,1)
 
 	body_markings.Cut()
-	//s_base = character.s_base //doesn't work, fuck me
 	for(var/obj/item/organ/external/E in character.organs)
-		E.s_base = s_base
 		if(E.markings.len)
 			body_markings[E.organ_tag] = E.markings.Copy()
 

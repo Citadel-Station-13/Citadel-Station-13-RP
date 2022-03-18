@@ -44,26 +44,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/backbag = 2						//backpack type
 	var/pdachoice = 1					//PDA type
 	var/h_style = "Bald"				//Hair type
-	var/r_hair = 0						//Hair color
-	var/g_hair = 0						//Hair color
-	var/b_hair = 0						//Hair color
+	var/hair_colour = "#000000"		//Hair color
 	var/grad_style = "None"				//Gradient style
 	var/r_grad = 0						//Gradient color
 	var/g_grad = 0						//Gradient color
 	var/b_grad = 0						//Gradient color
 	var/grad_wingstyle = "None"			//Gradient style
 	var/f_style = "Shaved"				//Face hair type
-	var/r_facial = 0					//Face hair color
-	var/g_facial = 0					//Face hair color
-	var/b_facial = 0					//Face hair color
+	var/facial_hair_colour = "#000000"	//Face hair color
 	var/s_tone = 0						//Skin tone
-	var/r_skin = 238					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
-	var/g_skin = 206					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
-	var/b_skin = 179					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
-	var/s_base = ""						//For Adherent
-	var/r_eyes = 0						//Eye color
-	var/g_eyes = 0						//Eye color
-	var/b_eyes = 0						//Eye color
+	var/skin_colour = "#EECEB3"		//Skin color 
+	var/eye_colour = "#000000"			//Eye color
 	var/species = SPECIES_HUMAN         //Species datum to use.
 	var/species_preview                 //Used for the species selection window.
 	var/list/alternate_languages = list() //Secondary language(s)
@@ -403,7 +394,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	// VOREStation Edit - Sync up all their organs and species one final time
 	character.force_update_organs()
-//	character.s_base = s_base //doesn't work, fuck me
 
 	if(icon_updates)
 		character.force_update_limbs()

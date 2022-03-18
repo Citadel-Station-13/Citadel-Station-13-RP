@@ -115,14 +115,10 @@
 	prefs.g_eyes	= character.g_eyes
 	prefs.b_eyes	= character.b_eyes
 	prefs.h_style	= character.h_style
-	prefs.r_hair	= character.r_hair
-	prefs.g_hair	= character.g_hair
-	prefs.b_hair	= character.b_hair
+	prefs.hair_colour	= character.hair_colour
 	prefs.f_style	= character.f_style
-	prefs.r_facial	= character.r_facial
-	prefs.g_facial	= character.g_facial
-	prefs.b_facial	= character.b_facial
-	prefs.r_skin	= character.r_skin
+	prefs.facial_hair_colour	= character.facial_hair_colour
+	prefs.skin_colour	= character.skin_colour
 	prefs.g_skin	= character.g_skin
 	prefs.b_skin	= character.b_skin
 	prefs.s_tone	= character.s_tone

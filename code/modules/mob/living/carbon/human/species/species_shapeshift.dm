@@ -66,12 +66,8 @@ var/list/wrapped_species_by_ref = list()
 	..()
 	wrapped_species_by_ref["\ref[H]"] = default_form
 	if(monochromatic)
-		H.r_hair =   H.r_skin
-		H.g_hair =   H.g_skin
-		H.b_hair =   H.b_skin
-		H.r_facial = H.r_skin
-		H.g_facial = H.g_skin
-		H.b_facial = H.b_skin
+		H.hair_colour = H.skin_colour
+		H.facial_hair_colour = H.skin_colour
 
 	for(var/obj/item/organ/external/E in H.organs)
 		E.sync_colour_to_human(H)
@@ -200,12 +196,8 @@ var/list/wrapped_species_by_ref = list()
 
 	var/datum/species/shapeshifter/S = species
 	if(S.monochromatic)
-		r_hair =   r_skin
-		g_hair =   g_skin
-		b_hair =   b_skin
-		r_facial = r_skin
-		g_facial = g_skin
-		b_facial = b_skin
+		hair_colour = skin_colour
+		facial_hair_colour = skin_colour
 
 	for(var/obj/item/organ/external/E in organs)
 		E.sync_colour_to_human(src)

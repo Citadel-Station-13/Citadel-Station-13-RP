@@ -452,7 +452,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 					grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_style])
 					grad_s.Blend(hair_s, ICON_AND)
 					grad_s.Blend(rgb(r_grad, g_grad, b_grad), ICON_MULTIPLY)
-				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
+				hair_s.Blend(hair_colour, ICON_MULTIPLY)
 				if(hair_s_add)
 					hair_s.Blend(hair_s_add, ICON_ADD)
 				if(grad_s)
@@ -930,7 +930,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 //TODO: Is this the appropriate place for this, and not on species...?
 /mob/living/carbon/human/proc/get_tail_icon()
-	var/icon_key = "[species.get_race_key(src)][r_skin][g_skin][b_skin][r_hair][g_hair][b_hair]"
+	var/icon_key = "[species.get_race_key(src)][HEX_RED(skin_colour)][HEX_GREEN(skin_colour)][HEX_BLUE(skin_colour)][HEX_RED(hair_colour)][HEX_GREEN(hair_colour)][HEX_BLUE(hair_colour)]"
 	var/icon/tail_icon = tail_icon_cache[icon_key]
 	if(!tail_icon)
 		//generate a new one
@@ -943,7 +943,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		var/use_species_tail = species.get_tail_hair(src)
 		if(use_species_tail)
 			var/icon/hair_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]_[use_species_tail]_s")	//VOREStation edit -- Suffix icon state string with '_s' to compensate for diff in .dmi b/w us & Polaris.
-			hair_icon.Blend(rgb(r_hair, g_hair, b_hair), species.color_mult ? ICON_MULTIPLY : ICON_ADD)				//VOREStation edit -- Check for species color_mult
+			hair_icon.Blend(hair_colour, species.color_mult ? ICON_MULTIPLY : ICON_ADD)				//VOREStation edit -- Check for species color_mult
 			tail_icon.Blend(hair_icon, ICON_OVERLAY)
 		tail_icon_cache[icon_key] = tail_icon
 

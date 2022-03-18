@@ -39,9 +39,7 @@
 
 /datum/preferences/proc/randomize_hair_color(var/target = "hair")
 	if(prob (75) && target == "facial") // Chance to inherit hair color
-		r_facial = r_hair
-		g_facial = g_hair
-		b_facial = b_hair
+		facial_hair_colour = hair_colour
 		return
 
 	var/red
@@ -89,13 +87,9 @@
 
 	switch(target)
 		if("hair")
-			r_hair = red
-			g_hair = green
-			b_hair = blue
+			hair_colour = rgb(red, green, blue)
 		if("facial")
-			r_facial = red
-			g_facial = green
-			b_facial = blue
+			facial_hair_colour = rgb(red, green, blue)
 
 /datum/preferences/proc/randomize_eyes_color()
 	var/red
@@ -141,9 +135,7 @@
 	green = max(min(green + rand (-25, 25), 255), 0)
 	blue = max(min(blue + rand (-25, 25), 255), 0)
 
-	r_eyes = red
-	g_eyes = green
-	b_eyes = blue
+	eye_colour = rgb(red, blue, green)
 
 /datum/preferences/proc/randomize_skin_color()
 	var/red

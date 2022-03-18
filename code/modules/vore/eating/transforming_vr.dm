@@ -23,9 +23,9 @@
 	if(!istype(M) || !istype(O))
 		return 0
 
-	if(M.r_hair != O.r_hair || M.g_hair != O.g_hair || M.b_hair != O.b_hair)
+	if(M.hair_colour != O.hair_colour)
 		return 1
-	if(M.r_facial != O.r_facial || M.g_facial != O.g_facial || M.b_facial != O.b_facial)
+	if(M.facial_hair_colour != O.facial_hair_colour)
 		return 1
 	if(M.h_style != O.h_style || M.f_style != O.f_style)
 		return 1
@@ -36,12 +36,8 @@
 	if(!istype(M) || !istype(O))
 		return
 
-	M.r_hair = O.r_hair
-	M.g_hair = O.g_hair
-	M.b_hair = O.b_hair
-	M.r_facial = O.r_facial
-	M.g_facial = O.g_facial
-	M.b_facial = O.b_facial
+	M.hair_colour = O.hair_colour
+	M.facial_hair_colour = O.facial_hair_colour
 	M.h_style = O.h_style
 	M.f_style = O.f_style
 	M.update_hair()
