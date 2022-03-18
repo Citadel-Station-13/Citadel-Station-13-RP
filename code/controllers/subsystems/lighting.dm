@@ -28,8 +28,8 @@ SUBSYSTEM_DEF(lighting)
 	return ..()
 
 /datum/controller/subsystem/lighting/fire(resumed, init_tick_checks)
+	MC_SPLIT_TICK_INIT(3)
 	if(!init_tick_checks)
-		MC_SPLIT_TICK_INIT(3)
 		MC_SPLIT_TICK
 		while(GLOB.lighting_update_lights.len)
 			var/datum/light_source/L = GLOB.lighting_update_lights[GLOB.lighting_update_lights.len--]
