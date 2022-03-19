@@ -4892,7 +4892,6 @@
 	icon_state = null;
 	name = "stairs"
 	},
-/mob/living/carbon/human/dummy/mannequin/mummy,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tradeport/cyndishow)
 "rF" = (
@@ -10541,7 +10540,6 @@
 /area/shuttle/trade_ship/general)
 "MM" = (
 /obj/effect/decal/cleanable/blood/drip,
-/mob/living/carbon/human/dummy/mannequin/samurai,
 /turf/simulated/floor/outdoors/ice,
 /area/tradeport/cyndishow)
 "MN" = (
@@ -11412,7 +11410,6 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
 	},
-/mob/living/carbon/human/dummy/mannequin/scarecrow,
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
 "Qd" = (
@@ -12278,9 +12275,6 @@
 /area/shuttle/trade_ship/cockpit)
 "Tc" = (
 /obj/effect/decal/cleanable/blood/drip,
-/mob/living/carbon/human/dummy/mannequin/animegirl{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "Te" = (
