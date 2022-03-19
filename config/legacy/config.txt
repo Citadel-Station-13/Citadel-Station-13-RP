@@ -455,3 +455,6 @@ ENGINE_MAP Supermatter Engine,Edison's Bane
 ## Uncomment to allow specific solar control computers to set themselves up.
 ## This requires solar controller computers in the map to be set up to use it, with the auto_start variable.
 # AUTOSTART_SOLARS
+
+## Comment this out if you don't want to use the 'nightshift lighting' subsystem to adjust lights based on ingame time
+ENABLE_NIGHT_SHIFTS
