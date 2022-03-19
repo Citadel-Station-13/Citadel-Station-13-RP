@@ -1999,6 +1999,7 @@
 	},
 /obj/item/tank/jetpack/oxygen,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/pain,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/explorer_prep)
 "bAh" = (
@@ -7538,6 +7539,7 @@
 /obj/machinery/camera/network/exploration,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/pain,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/explorer_prep)
 "fgy" = (
@@ -11572,6 +11574,7 @@
 /obj/item/tank/jetpack/oxygen,
 /obj/item/tank/oxygen,
 /obj/item/suit_cooling_unit,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "hVJ" = (
