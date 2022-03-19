@@ -268,8 +268,6 @@
 
 	var/list/gamemode_cache = list()
 
-	// whether or not to use the nightshift subsystem to perform lighting changes
-	var/static/enable_night_shifts = FALSE
 
 /datum/configuration_legacy/New()
 	var/list/L = subtypesof(/datum/game_mode)
@@ -864,9 +862,6 @@
 
 				if("second_topic_limit")
 					config_legacy.second_topic_limit = text2num(value)
-
-				if("enable_night_shifts")
-					config_legacy.enable_night_shifts = TRUE
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
