@@ -1,8 +1,0 @@
-author: "Captain277"
-delete-after: True
-changes: 
-  - bugfix: "Fixes bad Class D shuttle landmarks."
-  - bugfix: "Fixes bad Class H paths.
-tweak: Rearranges poorly nested map datums."
-  - rscadd: "New Dungeon POI.
-tweak: Changes Gaia and Mining to Class M and G."
