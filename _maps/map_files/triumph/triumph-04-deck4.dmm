@@ -14586,7 +14586,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 5
 	},
-/obj/machinery/suit_cycler/exploration,
+/obj/machinery/suit_cycler/medical,
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "kbd" = (
