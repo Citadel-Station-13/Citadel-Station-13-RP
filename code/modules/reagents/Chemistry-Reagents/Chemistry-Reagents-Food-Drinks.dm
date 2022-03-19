@@ -3958,6 +3958,18 @@ End Citadel Change */
 	glass_name = "Green Stuff"
 	glass_desc = "Tyrmalin grog aggressively blended with unfiltered absinthe."
 
+/datum/reagent/ethanol/goliathspit
+	name = "Goliath Spit"
+	id = "goliathspit"
+	description = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
+	taste_description = "faint, tangy sweetness"
+	color = "#CCCC99"
+	strength = 50
+	adj_temp = -5
+
+	glass_name = "Goliath Spit"
+	glass_desc = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
+
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
 ///////////////////////////////////////////////
@@ -4701,4 +4713,3 @@ End Citadel Change */
 
 	glass_name = "Crystal Dr. Gibb"
 	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
-
