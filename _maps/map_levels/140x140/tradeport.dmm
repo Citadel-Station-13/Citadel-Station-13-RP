@@ -906,14 +906,13 @@
 	dir = 4
 	},
 /obj/machinery/airlock_sensor{
-	frequency = 8018;
+	frequency = 1380;
 	id_tag = "tradeport_hangar_docker";
-	master_tag = null;
 	pixel_x = 25
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
-	frequency = 8018;
+	frequency = 1380;
 	id_tag = "tradeport_hangar_docker_pump"
 	},
 /obj/structure/cable/yellow{
@@ -1028,13 +1027,15 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "dz" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+/obj/machinery/door/airlock/external/glass{
+	req_access = list(160)
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/tradeport/dock)
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
+	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/neutral,
+/area/tradeport/commons)
 "dA" = (
 /obj/machinery/body_scanconsole,
 /obj/effect/floor_decal/corner/blue/border{
@@ -2126,7 +2127,7 @@
 /area/space)
 "hN" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 8018;
+	frequency = 1380;
 	id_tag = "tradeport_hangar_docker";
 	pixel_x = -25
 	},
@@ -2798,13 +2799,6 @@
 /turf/simulated/floor/grass,
 /area/tradeport/safarizoo)
 "ko" = (
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 8018;
-	master_tag = "tradeport_hangar_docker";
-	pixel_x = 25;
-	pixel_y = -5
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
@@ -2814,6 +2808,12 @@
 /obj/machinery/door/airlock/glass_external{
 	frequency = null;
 	name = "Ship Hatch"
+	},
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "tradeport_hangar_docker";
+	pixel_x = 25;
+	pixel_y = -5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -3489,6 +3489,14 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
+/obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1380;
+	master_tag = "tradeport_hangar_dock";
+	pixel_x = 25;
+	pixel_y = -5
+	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "mT" = (
@@ -3819,6 +3827,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "nP" = (
@@ -4681,6 +4690,12 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	cycle_to_external_air = null;
+	frequency = 1380;
+	id_tag = "tradeport_hangar_dock";
+	pixel_x = -25
+	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "qD" = (
@@ -4875,8 +4890,16 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1380;
+	master_tag = "tradeport_hangar_dock";
+	pixel_x = -25;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled/neutral,
-/area/tradeport/facility)
+/area/tradeport/commons)
 "rA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -5643,6 +5666,14 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/spine)
+"ur" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8;
+	frequency = 8018;
+	id_tag = "tradeport_hangar_dock"
+	},
+/turf/simulated/floor/tiled/neutral,
+/area/tradeport/commons)
 "us" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -6001,17 +6032,16 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tradeport/medical)
 "vD" = (
-/obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 8018;
-	master_tag = "tradeport_hangar_docker";
-	pixel_x = -25;
-	pixel_y = 5
-	},
 /obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = null;
 	name = "Ship Hatch"
+	},
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "tradeport_hangar_docker";
+	pixel_x = -25;
+	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -8023,15 +8053,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/machinery/alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -22;
 	req_one_access = list(160)
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
@@ -8336,31 +8366,17 @@
 /turf/simulated/floor/airless,
 /area/space)
 "El" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	cycle_to_external_air = null;
+/obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "tradeport_hangar_dock";
-	pixel_y = -25;
-	req_one_access = null;
-	tag_airpump = null;
-	tag_chamber_sensor = null;
-	tag_exterior_door = null;
-	tag_exterior_sensor = null;
-	tag_interior_door = null
+	pixel_x = 25
 	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/tradeport/dock)
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/tiled/neutral,
+/area/tradeport/commons)
 "Em" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8539,10 +8555,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable/yellow,
 /obj/machinery/power/apc/alarms_hidden{
 	pixel_y = -28;
 	req_access = list(160)
+	},
+/obj/structure/cable/yellow{
+	d2 = 2;
+	dir = 4;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
@@ -11741,13 +11761,14 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/commons)
 "Rb" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "tradeport_hangar_dock_pump"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/tradeport/dock)
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/neutral,
+/area/tradeport/commons)
 "Rd" = (
 /obj/structure/railing{
 	dir = 8
@@ -29070,7 +29091,7 @@ Bw
 jP
 XM
 XM
-dz
+XM
 EU
 ZM
 Ty
@@ -29212,7 +29233,7 @@ OQ
 WY
 WY
 XM
-Rb
+XM
 CR
 ZM
 yC
@@ -29497,7 +29518,7 @@ iR
 Lp
 WY
 Pr
-El
+BK
 ZM
 qC
 Vy
@@ -29782,10 +29803,10 @@ Kq
 dg
 ko
 ly
-Vk
+dz
 Vy
-ex
-Dw
+Rb
+ur
 Vy
 mS
 Vy
@@ -29925,7 +29946,7 @@ WY
 Lp
 LL
 Jq
-qC
+El
 Zl
 Vy
 Wd
