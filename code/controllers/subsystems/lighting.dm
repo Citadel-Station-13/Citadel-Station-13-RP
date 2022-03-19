@@ -34,14 +34,15 @@ SUBSYSTEM_DEF(lighting)
 	// why do we split logic?
 	// because here on citrp, code standards like "don't delete shit during init" is often not enforced
 	// meaning the subsystem will crash out of this loop if something is deleted mid-process, which can happen if CHECK_TICK is running in init
-	if(!init_tick_checks)
-		MC_SPLIT_TICK
+	if(init_tick_checks)
 		while(GLOB.lighting_update_lights.len)
-			var/datum/light_source/L = GLOB.lighting_update_lights[GLOB.lighting_update_lights.len--]
+			var/datum/light_source/L = GLOB.lighting_update_lights[GLOB.lighting_update_lights.len]
+			--GLOB.lighting_update_lights.len
 			L.update_corners()
 			L.needs_update = LIGHTING_NO_UPDATE
 			CHECK_TICK
 	else
+		MC_SPLIT_TICK
 		i = 0
 		for (i in 1 to GLOB.lighting_update_lights.len)
 			var/datum/light_source/L = GLOB.lighting_update_lights[i]
