@@ -90,6 +90,7 @@
 	name = "Palm Taser"
 	desc = "A LAEP5 'Little Thunder' tiny concealable taser pistol designed for the civilian self defense market. Attaches to the palm of the hand with a stylish leather strap to delivers a powerful single stun blast onto an unsuspecting target"
 	icon_state = "civtas"
+	modifystate = "civtas"
 	item_state = "concealed"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3, TECH_POWER = 3)
 	projectile_type = /obj/item/projectile/energy/electrode/stunshot
