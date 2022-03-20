@@ -192,7 +192,6 @@
 // Just open the gosh darn doors!  Also we avoid having a physical docking controller obj for gameplay reasons.
 /datum/shuttle/autodock/ferry/emergency
 	var/tag_door_station = "escape_shuttle_hatch_station"
-	var/tag_door_offsite = "escape_shuttle_hatch_offsite"
 	var/frequency = 1380 // Why this frequency? BECAUSE! Thats what someone decided once.
 	var/datum/radio_frequency/radio_connection
 
@@ -200,7 +199,7 @@
 	..()
 	// Open Doorsunes // ????? what -Werewolf
 	var/datum/signal/signal = new
-	signal.data["tag"] = location ? tag_door_offsite : tag_door_station
+	signal.data["tag"] = tag_door_station
 	signal.data["command"] = "secure_open"
 	post_signal(signal)
 
@@ -208,7 +207,7 @@
 	..()
 	// Close Doorsunes
 	var/datum/signal/signal = new
-	signal.data["tag"] = location ? tag_door_offsite : tag_door_station
+	signal.data["tag"] = tag_door_station
 	signal.data["command"] = "secure_close"
 	post_signal(signal)
 
@@ -218,6 +217,11 @@
 		return radio_connection.post_signal(src, signal, filter)
 	else
 		qdel(signal)
+
+//	Supply Shuttle roofing for the planetmap
+
+/datum/shuttle/autodock/ferry/supply
+	ceiling_type = /turf/simulated/floor/plasteel/lythios43c
 
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////

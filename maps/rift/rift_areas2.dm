@@ -3,6 +3,10 @@
 // Rift Snowflake Areas
 //
 
+/area/rift/surfacebase/shuttle
+	name = "\improper Shuttle Pad"
+	icon_state = "dk_yellow"
+
 /area/maintenance/substation/atmos
 	name = "\improper Atmospherics Substation"
 
@@ -538,7 +542,7 @@
 	name = "\improper AI Maintenance"
 	sound_env = SEWER_PIPE
 
-/area/tether/station/public_meeting_room
+/area/rift/station/public_meeting_room
 	name = "Public Meeting Room"
 	icon_state = "blue"
 	sound_env = SMALL_SOFTFLOOR

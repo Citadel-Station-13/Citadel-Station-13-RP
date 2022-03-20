@@ -132,7 +132,13 @@ var/global/list/engineering_networks = list(
 
 //Tether-unique network cameras
 /obj/machinery/camera/network/tether
+	network = list(NETWORK_TETHER)
+
+/obj/machinery/camera/network/triumph
 	network = list(NETWORK_TRIUMPH)
+
+/obj/machinery/camera/network/rift
+	network = list(NETWORK_LYTHIOS)
 
 /obj/machinery/camera/network/tcomms
 	network = list(NETWORK_TCOMMS)

@@ -66,11 +66,11 @@
 	)
 
 /obj/machinery/telecomms/receiver/preset_right/rift
-//	id = "triumph_rx"
+//	id = "rift_rx"
 	freq_listening = list(AI_FREQ, SCI_FREQ, MED_FREQ, SUP_FREQ, SRV_FREQ, COMM_FREQ, ENG_FREQ, SEC_FREQ, ENT_FREQ, EXP_FREQ)
 
 /obj/machinery/telecomms/broadcaster/preset_right/rift
-//	id = "triumph_tx"
+//	id = "rift_tx"
 
 /obj/machinery/telecomms/bus/preset_two/rift
 	freq_listening = list(SUP_FREQ, SRV_FREQ, EXP_FREQ)

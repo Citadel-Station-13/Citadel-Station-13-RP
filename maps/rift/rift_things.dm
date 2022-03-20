@@ -181,19 +181,19 @@
 */
 
 // Tram departure cryo doors that turn into ordinary airlock doors at round end
-/obj/machinery/cryopod/robot/door/tram
-	name = "\improper Tram Station"
+/obj/machinery/cryopod/robot/door/shuttle/rift
+	name = "\improper Shuttle Station"
 	icon = 'icons/obj/doors/Doorextglass.dmi'
 	icon_state = "door_closed"
 	can_atmos_pass = ATMOS_PASS_NO
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
-	desc = "The tram station you might've came in from.  You could leave the base easily using this."
-	on_store_message = "has departed on the tram."
+	desc = "The shuttle bay you might've came in from. You could leave the base easily using this."
+	on_store_message = "has departed on an automated shuttle."
 	on_store_name = "Travel Oversight"
-	on_enter_occupant_message = "The tram arrives at the platform; you step inside and take a seat."
-	on_store_visible_message_1 = "'s speakers chime, anouncing a tram has arrived to take"
-	on_store_visible_message_2 = "to the colony"
+	on_enter_occupant_message = "A shuttle arrives at the platform; you step inside and take a seat."
+	on_store_visible_message_1 = "'s speakers chime, anouncing a shuttle has arrived to take"
+	on_store_visible_message_2 = "to the orbital relay"
 	time_till_despawn = 10 SECONDS
 	spawnpoint_type = /datum/spawnpoint/tram
 /obj/machinery/cryopod/robot/door/tram/process()

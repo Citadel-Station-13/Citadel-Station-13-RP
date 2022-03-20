@@ -9,24 +9,19 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/open)
 		SSplanets.addTurf(src)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor)
-/turf/simulated/floor/lythios43c_indoors
-	initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C
+
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/plasteel)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/reinforced)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
-/turf/simulated/floor/tiled/steel_dirty/lythios43c
-	outdoors = TRUE
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-/turf/simulated/floor/outdoors/dirt/lythios43c
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_state = "asteroid"
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
-/turf/simulated/floor/outdoors/snow
+/turf/simulated/floor/outdoors/snow/lythios43c
 	turf_layers = list(
 		/turf/simulated/floor/outdoors/ice/lythios43c
 		)

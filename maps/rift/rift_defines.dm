@@ -13,30 +13,12 @@
 #define Z_LEVEL_MISC					8
 #define Z_LEVEL_SHIPS					9
 
-#define Z_LEVEL_DEBRISFIELD				10
-#define Z_LEVEL_PIRATEBASE				11
-#define Z_LEVEL_MININGPLANET			12
-#define Z_LEVEL_UNKNOWN_PLANET			13
-#define Z_LEVEL_DESERT_PLANET			14
-#define Z_LEVEL_GAIA_PLANET				15
-#define Z_LEVEL_FROZEN_PLANET			16
-
-#define Z_LEVEL_ROGUEMINE_1				17
-#define Z_LEVEL_ROGUEMINE_2				18
-#define Z_LEVEL_ROGUEMINE_3				19
-#define Z_LEVEL_ROGUEMINE_4				20
-
-#define Z_LEVEL_TRADEPORT				21
-
-#define Z_LEVEL_TALON1					22
-#define Z_LEVEL_TALON2					23
-
 /datum/map/rift
 	name = "Rift"
 	full_name = "NSB Atlas"
 	path = "rift"
 
-	use_overmap = TRUE
+	use_overmap = FALSE
 	overmap_z = Z_LEVEL_MISC
 	overmap_size = 60
 	overmap_event_areas = 50
@@ -76,7 +58,7 @@
 
 	station_name  = "NSB Atlas"
 	station_short = "Atlas"
-	dock_name     = "NSS Raytheon Orbital Relay"
+	dock_name     = "NSS Raytheon"
 	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
@@ -84,13 +66,13 @@
 	company_short = "NT"
 	starsys_name  = "Lythios-43"
 
-	shuttle_docked_message = "The scheduled NSV Herrera shuttle flight to the %dock_name% has arrived. It will depart in approximately %ETD%."
-	shuttle_leaving_dock = "The NSV Herrera has left the station. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The NSV Herrera will be arriving shortly. Those departing should proceed to departures within %ETA%."
+	shuttle_docked_message = "The scheduled NSV Herrera shuttle flight to the %dock_name% orbital relay has arrived. It will depart in approximately %ETD%."
+	shuttle_leaving_dock = "The NSV Herrera has left the station. Estimate %ETA% until the shuttle arrives at the %dock_name% orbital relay."
+	shuttle_called_message = "A scheduled crew transfer to the %dock_name% orbital relay is occuring. The NSV Herrera will be arriving shortly. Those departing should proceed to departures within %ETA%."
 	shuttle_name = "NSV Herrera"
 	shuttle_recall_message = "The scheduled crew transfer flight has been cancelled."
 	emergency_shuttle_docked_message = "The evacuation flight has landed at the landing pad. You have approximately %ETD% to board the vessel."
-	emergency_shuttle_leaving_dock = "The emergency flight has left the station. Estimate %ETA% until the vessel arrives at %dock_name%."
+	emergency_shuttle_leaving_dock = "The emergency flight has left the station. Estimate %ETA% until the vessel arrives at %dock_name% orbital relay."
 	emergency_shuttle_called_message = "An emergency evacuation has begun, and an emergency response flight has been called. It will arrive at the landing pad in approximately %ETA%."
 	emergency_shuttle_recall_message = "The evacuation flight has been cancelled."
 
@@ -110,8 +92,8 @@
 							NETWORK_RESEARCH_OUTPOST,
 							NETWORK_ROBOTS,
 							NETWORK_SECURITY,
-							NETWORK_TCOMMS//,
-//							NETWORK_LYTHIOS
+							NETWORK_TCOMMS,
+							NETWORK_LYTHIOS
 							)
 	secondary_networks = list(
 							NETWORK_ERT,
@@ -127,32 +109,36 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage")
+	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage"/*,"Beruang Trading Corp Cryo"*/)
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
 
-	meteor_strike_areas = list(/area/rift/surfacebase/outside/outside3)
+	meteor_strike_areas = null
 
 	default_skybox = /datum/skybox_settings/lythios
 
-/*
 	unit_test_exempt_areas = list(
-		/area/rift/surfacebase/outside/outside1,
+		/area/tether/surfacebase/outside/outside1,
+		/area/tether/elevator,
 		/area/vacant/vacant_site,
 		/area/vacant/vacant_site/east,
 		/area/crew_quarters/sleep/Dorm_1/holo,
 		/area/crew_quarters/sleep/Dorm_3/holo,
 		/area/crew_quarters/sleep/Dorm_5/holo,
-		/area/crew_quarters/sleep/Dorm_7/holo)
+		/area/crew_quarters/sleep/Dorm_7/holo,
+		/area/looking_glass/lg_1,
+		/area/rnd/miscellaneous_lab)
+
 	unit_test_exempt_from_atmos = list(
-		/area/engineering/atmos/intake, // Outside,
+		/area/engineering/atmos_intake, // Outside,
 		/area/rnd/external, //  Outside,
-		/area/tether/surfacebase/mining_main/external, // Outside,
-		/area/tether/surfacebase/mining_main/airlock, //  Its an airlock,
 		/area/tether/surfacebase/emergency_storage/rnd,
-		/area/tether/surfacebase/emergency_storage/atrium)
-*/
+		/area/tether/surfacebase/emergency_storage/atrium,
+		/area/tether/surfacebase/lowernortheva, // it airlock
+		/area/tether/surfacebase/lowernortheva/external, //it outside
+		/area/tether/surfacebase/security/gasstorage) //it maint
+
 /* Finish this when you have a ship and the locations for it to access
 	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
 	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
@@ -162,7 +148,7 @@
 								 Z_LEVEL_ROGUEMINE_4)
 */
 	lateload_z_levels = list(
-		list("Rift - Misc","Rift - Ships",), // Stock Rift lateload maps
+		list("Rift - Misc","Rift - Ships") // Stock Rift lateload maps
 	)
 
 	ai_shell_restricted = TRUE
@@ -171,15 +157,7 @@
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_DEBRISFIELD,
-		Z_LEVEL_PIRATEBASE,
-		Z_LEVEL_MININGPLANET,
-		Z_LEVEL_UNKNOWN_PLANET,
-		Z_LEVEL_DESERT_PLANET,
-		Z_LEVEL_GAIA_PLANET,
-		Z_LEVEL_FROZEN_PLANET,
-		Z_LEVEL_TRADEPORT)
+		Z_LEVEL_SURFACE_HIGH)
 
 /*	belter_docked_z = 		list(Z_LEVEL_SPACE_HIGH)
 	belter_transit_z =	 	list(Z_LEVEL_MISC)

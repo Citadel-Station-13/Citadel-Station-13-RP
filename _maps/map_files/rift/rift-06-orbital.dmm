@@ -10,7 +10,7 @@
 	pixel_y = 2
 	},
 /obj/item/storage/firstaid/adv,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "ad" = (
 /turf/unsimulated/wall/planetary/virgo3b,
@@ -3376,7 +3376,7 @@
 /obj/structure/bed/chair/shuttle{
 	material = /datum/material/plastic
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "fQ" = (
 /obj/structure/table/rack,
@@ -5048,7 +5048,7 @@
 	dir = 4;
 	name = "holding cell"
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "jz" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
@@ -6463,7 +6463,7 @@
 /obj/machinery/computer/rdservercontrol{
 	badmin = 1;
 	dir = 1;
-	name = "Master R&amp;D Server Controller"
+	name = "Master RnD Server Controller"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -9440,12 +9440,10 @@
 /area/centcom/security)
 "rn" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 8;
-	icon_state = "borderfloor"
+	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 8;
-	icon_state = "borderfloorcorner2"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -9543,16 +9541,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/escape)
-"rG" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8;
-	icon_state = "borderfloor"
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/centcom/terminal)
 "rH" = (
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
@@ -9779,12 +9767,10 @@
 /area/shuttle/escape)
 "sj" = (
 /obj/effect/floor_decal/borderfloor/corner{
-	dir = 8;
-	icon_state = "borderfloorcorner"
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/danger/corner{
-	dir = 1;
-	icon_state = "dangercorner"
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/terminal)
@@ -9955,7 +9941,7 @@
 /area/shuttle/escape)
 "sE" = (
 /obj/machinery/vending/medical,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "sF" = (
 /obj/structure/bed/chair{
@@ -10136,7 +10122,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "sX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
@@ -10146,8 +10132,7 @@
 /area/shuttle/escape)
 "sY" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 6;
-	icon_state = "borderfloor"
+	dir = 6
 	},
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/structure/bed/chair/shuttle{
@@ -10788,12 +10773,10 @@
 /area/centcom/main_hall)
 "up" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 5;
-	icon_state = "borderfloor"
+	dir = 5
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 5;
-	icon_state = "borderfloorcorner2"
+	dir = 5
 	},
 /obj/structure/handrail,
 /turf/simulated/floor/tiled/steel_grid,
@@ -11143,7 +11126,7 @@
 	dir = 1;
 	material = /datum/material/plastic
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "vd" = (
 /obj/machinery/door/firedoor,
@@ -12067,7 +12050,7 @@
 /area/centcom/security)
 "wD" = (
 /obj/structure/bed/roller,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "wE" = (
 /obj/machinery/computer/secure_data{
@@ -12328,7 +12311,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "xb" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -16075,7 +16058,7 @@
 /obj/structure/handrail{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "Er" = (
 /obj/structure/bed/chair/shuttle{
@@ -16089,12 +16072,11 @@
 /obj/item/paper_bin,
 /obj/item/folder/blue,
 /obj/item/pen,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Ew" = (
 /obj/effect/floor_decal/borderfloor/corner{
-	dir = 8;
-	icon_state = "borderfloorcorner"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -16171,12 +16153,12 @@
 	pixel_y = 2
 	},
 /obj/item/storage/firstaid/surgery,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "FF" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/crew,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "FL" = (
 /obj/item/gun/energy/stripper,
@@ -16219,7 +16201,7 @@
 "Gp" = (
 /obj/machinery/computer/communications,
 /obj/structure/table/reinforced,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Gy" = (
 /obj/structure/shuttle/engine/heater{
@@ -16236,6 +16218,12 @@
 	dir = 8
 	},
 /obj/structure/fans/tiny,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 5
+	},
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Shuttle Hatch"
 	},
@@ -16247,7 +16235,7 @@
 "GR" = (
 /obj/machinery/computer/station_alert/all,
 /obj/structure/table/reinforced,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Ha" = (
 /obj/machinery/button/windowtint{
@@ -16258,7 +16246,7 @@
 /obj/structure/bed/chair/shuttle{
 	material = /datum/material/plastic
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "He" = (
 /obj/structure/table/reinforced,
@@ -16268,7 +16256,7 @@
 	},
 /obj/item/storage/secure/briefcase,
 /obj/item/multitool,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Hh" = (
 /turf/unsimulated/floor{
@@ -16288,7 +16276,7 @@
 "Hx" = (
 /obj/item/handcuffs,
 /obj/structure/table/standard,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "HA" = (
 /obj/structure/window/reinforced{
@@ -16298,7 +16286,7 @@
 	dir = 4;
 	material = /datum/material/plastic
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "HB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
@@ -16343,7 +16331,7 @@
 	pixel_x = -24;
 	pixel_y = 24
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "IB" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -16359,8 +16347,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 8;
-	icon_state = "borderfloorcorner2"
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_grid,
@@ -16373,7 +16360,7 @@
 /obj/structure/handrail{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "Ji" = (
 /obj/structure/shuttle/engine/heater,
@@ -16392,6 +16379,13 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"Jl" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8;
+	material = /datum/material/plastic
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Jq" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -16400,6 +16394,12 @@
 	dir = 4
 	},
 /obj/structure/fans/tiny,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 6
+	},
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Shuttle Hatch"
 	},
@@ -16429,12 +16429,10 @@
 /area/shuttle/escape)
 "JB" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 4;
-	icon_state = "borderfloor"
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6;
-	icon_state = "borderfloorcorner2"
+	dir = 6
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 8;
@@ -16489,8 +16487,7 @@
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/borderfloor{
-	dir = 6;
-	icon_state = "borderfloor"
+	dir = 6
 	},
 /obj/structure/handrail{
 	dir = 1
@@ -16543,16 +16540,14 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Lw" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 4;
-	icon_state = "borderfloor"
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6;
-	icon_state = "borderfloorcorner2"
+	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -16566,16 +16561,13 @@
 /area/shuttle/escape)
 "LC" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 8;
-	icon_state = "borderfloor"
+	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 8;
-	icon_state = "borderfloorcorner2"
+	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 10;
-	icon_state = "borderfloorcorner2"
+	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -16583,7 +16575,7 @@
 /obj/structure/bed/chair/shuttle{
 	material = /datum/material/plastic
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "LZ" = (
 /obj/machinery/sleeper{
@@ -16592,7 +16584,7 @@
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = 26
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Mk" = (
 /obj/item/grenade/supermatter,
@@ -16609,6 +16601,13 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
+"Mr" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4;
+	material = /datum/material/plastic
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
 "Mt" = (
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
@@ -16634,7 +16633,7 @@
 	pixel_x = 24;
 	pixel_y = 26
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "MJ" = (
 /obj/machinery/door/blast/regular,
@@ -16673,7 +16672,7 @@
 	pixel_y = 2
 	},
 /obj/item/radio,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "NM" = (
 /obj/structure/grille,
@@ -16703,8 +16702,7 @@
 	},
 /obj/machinery/meter,
 /obj/effect/floor_decal/borderfloorblack{
-	dir = 9;
-	icon_state = "borderfloor_black"
+	dir = 9
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -16717,8 +16715,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/danger/corner{
-	dir = 8;
-	icon_state = "dangercorner"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/terminal)
@@ -16743,7 +16740,7 @@
 /area/shuttle/escape)
 "OL" = (
 /obj/machinery/vending/blood,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "OM" = (
 /obj/machinery/power/pointdefense,
@@ -16791,7 +16788,7 @@
 /obj/machinery/door/airlock/medical{
 	name = "Shuttle Medical"
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "PL" = (
 /obj/structure/railing{
@@ -16802,16 +16799,13 @@
 /area/centcom/terminal)
 "PR" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 4;
-	icon_state = "borderfloor"
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6;
-	icon_state = "borderfloorcorner2"
+	dir = 6
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 5;
-	icon_state = "borderfloorcorner2"
+	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -16846,7 +16840,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "QL" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
@@ -16880,14 +16874,14 @@
 /obj/structure/bed/chair/shuttle{
 	material = /datum/material/plastic
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "RA" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/bed/chair,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "RH" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -16905,12 +16899,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "RP" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 4;
-	icon_state = "borderfloor"
+	dir = 4
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 8;
@@ -16930,12 +16923,10 @@
 /area/shuttle/escape)
 "Sa" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 4;
-	icon_state = "borderfloor"
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 5;
-	icon_state = "borderfloorcorner2"
+	dir = 5
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 8;
@@ -16955,8 +16946,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 10;
-	icon_state = "borderfloorcorner2"
+	dir = 10
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_grid,
@@ -16969,8 +16959,7 @@
 /area/shuttle/escape)
 "Ss" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor"
+	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 1
@@ -16982,8 +16971,7 @@
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/borderfloor{
-	dir = 10;
-	icon_state = "borderfloor"
+	dir = 10
 	},
 /obj/structure/handrail{
 	dir = 1
@@ -16998,16 +16986,14 @@
 /area/shuttle/escape)
 "SF" = (
 /obj/machinery/pointdefense_control,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "SN" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor"
+	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4;
-	icon_state = "borderfloorcorner2"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
@@ -17015,13 +17001,13 @@
 /obj/machinery/door/airlock/command{
 	name = "Cockpit"
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "Td" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Th" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
@@ -17039,7 +17025,7 @@
 /area/shuttle/escape)
 "To" = (
 /obj/structure/window/reinforced,
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "TF" = (
 /obj/machinery/turretid/lethal{
@@ -17059,8 +17045,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger"
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/terminal)
@@ -17075,12 +17060,11 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "Uh" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 8;
-	icon_state = "borderfloorcorner_black"
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -17130,10 +17114,9 @@
 	dir = 4
 	},
 /obj/structure/bed/chair{
-	dir = 1;
-	icon_state = "chair_preview"
+	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "UU" = (
 /turf/simulated/floor/tiled/steel_grid,
@@ -17142,7 +17125,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Shuttle Security"
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "UY" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -17185,7 +17168,7 @@
 "VX" = (
 /obj/structure/medical_stand/anesthetic,
 /obj/structure/bed/roller,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "We" = (
 /obj/machinery/sleep_console{
@@ -17196,7 +17179,7 @@
 	pixel_x = -24;
 	pixel_y = -8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Wt" = (
 /turf/simulated/floor/tiled/steel,
@@ -17209,7 +17192,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "Xa" = (
 /obj/machinery/space_heater,
@@ -17219,12 +17202,10 @@
 /area/centcom/specops)
 "Xd" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 9;
-	icon_state = "borderfloor"
+	dir = 9
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 10;
-	icon_state = "borderfloorcorner2"
+	dir = 10
 	},
 /obj/structure/handrail,
 /turf/simulated/floor/tiled/steel_grid,
@@ -17233,7 +17214,7 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Xm" = (
 /obj/structure/window/reinforced{
@@ -17242,7 +17223,7 @@
 /obj/structure/bed/chair/shuttle{
 	material = /datum/material/plastic
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "XA" = (
 /obj/structure/table/steel_reinforced,
@@ -17276,13 +17257,12 @@
 "Yk" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Yl" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/borderfloor{
-	dir = 10;
-	icon_state = "borderfloor"
+	dir = 10
 	},
 /obj/effect/floor_decal/industrial/danger{
 	dir = 10
@@ -17295,8 +17275,7 @@
 	},
 /obj/machinery/meter,
 /obj/effect/floor_decal/borderfloorblack{
-	dir = 5;
-	icon_state = "borderfloor_black"
+	dir = 5
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -17318,7 +17297,7 @@
 	dir = 8;
 	material = /datum/material/plastic
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "YR" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -20724,8 +20703,8 @@ Gj
 RQ
 LF
 En
-Ed
-Ed
+Mr
+Mr
 QL
 RA
 RL
@@ -20865,13 +20844,13 @@ QL
 LF
 IZ
 LF
-UU
-UU
+si
+si
 xa
 QL
 Rr
-UU
-UU
+si
+si
 vc
 MR
 Jv
@@ -21000,20 +20979,20 @@ lF
 rs
 rD
 rD
-MR
+QL
 MR
 SF
 tA
 Xm
 To
 Xm
-UU
+si
 YP
 YP
 QL
 Ha
-UU
-UU
+si
+si
 Hx
 QL
 Ou
@@ -21147,9 +21126,9 @@ He
 Td
 Ly
 Xd
-UU
+si
 LC
-UU
+si
 rn
 Sw
 MR
@@ -21428,7 +21407,7 @@ rD
 sB
 Gp
 Lf
-UU
+si
 Ta
 si
 QW
@@ -21715,9 +21694,9 @@ NB
 Xk
 Tk
 up
-UU
+si
 PR
-UU
+si
 Lw
 Kq
 MR
@@ -21852,21 +21831,21 @@ lF
 rs
 rD
 rD
-MR
+QL
 MR
 Et
 tA
 fP
 To
 fP
-UU
+si
 HA
 HA
 QL
 We
-UU
-Ed
-Ed
+si
+Mr
+Mr
 QL
 Yt
 Jj
@@ -22001,13 +21980,13 @@ QL
 LF
 Wz
 LF
-UU
-UU
+si
+si
 xa
 QL
 LZ
-UU
-UU
+si
+si
 xa
 MR
 Jv
@@ -22144,13 +22123,13 @@ Vy
 HG
 LF
 QD
-Er
-Er
+Jl
+Jl
 QL
 sE
-UU
-UU
-UU
+si
+si
+si
 OL
 Sy
 RV
@@ -22713,23 +22692,23 @@ ph
 ph
 mQ
 rp
-rG
-rG
-rG
-rG
-rG
-rG
-rG
-rG
-rG
-rG
-rG
-rG
+OS
+OS
+OS
+OS
+OS
+OS
+OS
+OS
+OS
+OS
+OS
+OS
 Oz
 rH
 sj
-rG
-rG
+OS
+OS
 rp
 hP
 hP
