@@ -1171,13 +1171,31 @@ obj/item/clothing/suit/kamishimo
 		ACCESSORY_SLOT_OVER\
 		|ACCESSORY_SLOT_UTILITY)
 
-/obj/item/clothing/suit/ghost_sheet
-	name = "ghost sheet"
-	desc = "The hands float by themselves, so it's extra spooky."
-	icon_state = "ghost_sheet"
-	item_state = "ghost_sheet"
-	throwforce = 0
-	throw_speed = 1
-	throw_range = 2
-	flags_inv = HIDEFACE|BLOCKHAIR
-	body_parts_covered = HEAD|UPPER_TORSO|LOWER_TORSO|LEGS
+//Main's Formal Coats
+/obj/item/clothing/suit/storage/parade_coat
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal"
+
+/obj/item/clothing/suit/storage/parade_coat/hos
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "hosformal"
+
+/obj/item/clothing/suit/storage/parade_coat/centcom
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "centcomformal"
+
+/* For when I gender these later.
+/obj/item/clothing/suit/storage/parade_coat/female
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal"
+*/
+
+//Someone's on the line.
+/obj/item/clothing/suit/storage/toggle/letterman
+	name = "worn letterman jacket"
+	desc = "A worn varsity letterman jacket. Some of the faded stains around the cuffs are rather suspicious."
+	icon_state = "varsity_letterman"

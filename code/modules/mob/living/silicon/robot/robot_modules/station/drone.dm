@@ -23,6 +23,8 @@
 	src.modules += new /obj/item/extinguisher(src)
 	src.modules += new /obj/item/pipe_painter(src)
 	src.modules += new /obj/item/floor_painter(src)
+	src.modules += new /obj/item/t_scanner(src)
+	src.modules += new /obj/item/analyzer(src)
 
 	robot.internals = new/obj/item/tank/jetpack/carbondioxide(src)
 	src.modules += robot.internals

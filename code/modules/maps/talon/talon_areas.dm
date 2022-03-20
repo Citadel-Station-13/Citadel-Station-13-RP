@@ -1,3 +1,5 @@
+// Not commenting these out so the talon maps can still be opened in StrongDMM and such -Bloop
+
 /area/talon
 	name = "\improper ITV Talon"
 	icon = 'icons/turf/areas_vr_talon.dmi'

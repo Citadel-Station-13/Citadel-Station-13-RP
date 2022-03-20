@@ -309,7 +309,6 @@
 	s.set_up(3, 1, src)
 	s.start()
 	qdel(src)
-	return
 
 /mob/living/bot/medbot/confirmTarget(var/mob/living/carbon/human/H)
 	if(!..())
@@ -403,10 +402,6 @@
 	var/created_name = "Medibot" //To preserve the name if it's a unique medbot I guess
 	var/skin = null //Same as medbot, set to tox or ointment for the respective kits.
 	w_class = ITEMSIZE_NORMAL
-
-/obj/item/firstaid_arm_assembly/Initialize(mapload)
-	. = ..()
-	return INITIALIZE_HINT_QDEL
 
 /obj/item/firstaid_arm_assembly/LateInitialize()
 	. = ..()

@@ -23,6 +23,9 @@
 		var/obj/item/clothing/head/hood/H = new hoodtype(src)
 		hood = H
 
+/obj/item/clothing/suit/storage/hooded/AltClick()
+	ToggleHood()
+
 /obj/item/clothing/suit/storage/hooded/ui_action_click()
 	ToggleHood()
 
@@ -495,3 +498,16 @@
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+
+//Vainglorious
+
+/obj/item/clothing/suit/storage/hooded/vainglorious
+	name = "Vainglorious hoodie"
+	desc = "A sleeveless hoodie produced by AFW. Lightweight and sporty, it doesn't seem to offer much protection from the elements, but it's undeniably stylish."
+	icon_state = "vainglorious"
+	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	flags_inv = HIDEHOLSTER
+	hoodtype = /obj/item/clothing/head/hood/vainglorious
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)

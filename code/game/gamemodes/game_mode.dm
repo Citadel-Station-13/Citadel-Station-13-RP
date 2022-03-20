@@ -281,12 +281,12 @@ var/global/list/additional_antag_types = list()
 	var/is_antag_mode = (antag_templates && antag_templates.len)
 	check_victory()
 	if(is_antag_mode)
-		sleep(10)
+		CHECK_TICK
 		for(var/datum/antagonist/antag in antag_templates)
-			sleep(10)
+			CHECK_TICK
 			antag.check_victory()
 			antag.print_player_summary()
-		sleep(10)
+		CHECK_TICK
 		print_ownerless_uplinks()
 
 	var/clients = 0
@@ -295,13 +295,11 @@ var/global/list/additional_antag_types = list()
 	var/ghosts = 0
 	var/escaped_humans = 0
 	var/escaped_total = 0
-	var/escaped_on_pod_1 = 0
-	var/escaped_on_pod_2 = 0
-	var/escaped_on_pod_3 = 0
-	var/escaped_on_pod_5 = 0
 	var/escaped_on_shuttle = 0
 
-	var/list/area/escape_locations = list(/area/shuttle/escape/centcom, /area/shuttle/escape_pod1/centcom, /area/shuttle/escape_pod2/centcom, /area/shuttle/escape_pod3/centcom, /area/shuttle/escape_pod5/centcom)
+	var/list/area/escape_locations = list(/area/shuttle/escape/centcom, /area/shuttle/escape_pod1/centcom, 
+		/area/shuttle/escape_pod2/centcom, /area/shuttle/escape_pod3/centcom, /area/shuttle/escape_pod5/centcom,
+		/area/shuttle/escape,/area/centcom/terminal)
 
 	for(var/mob/M in player_list)
 		if(M.client)
@@ -318,15 +316,6 @@ var/global/list/additional_antag_types = list()
 
 				if(M.loc && M.loc.loc && M.loc.loc.type == /area/shuttle/escape/centcom)
 					escaped_on_shuttle++
-
-				if(M.loc && M.loc.loc && M.loc.loc.type == /area/shuttle/escape_pod1/centcom)
-					escaped_on_pod_1++
-				if(M.loc && M.loc.loc && M.loc.loc.type == /area/shuttle/escape_pod2/centcom)
-					escaped_on_pod_2++
-				if(M.loc && M.loc.loc && M.loc.loc.type == /area/shuttle/escape_pod3/centcom)
-					escaped_on_pod_3++
-				if(M.loc && M.loc.loc && M.loc.loc.type == /area/shuttle/escape_pod5/centcom)
-					escaped_on_pod_5++
 
 			if(isobserver(M))
 				ghosts++
@@ -353,14 +342,7 @@ var/global/list/additional_antag_types = list()
 		feedback_set("escaped_total",escaped_total)
 	if(escaped_on_shuttle > 0)
 		feedback_set("escaped_on_shuttle",escaped_on_shuttle)
-	if(escaped_on_pod_1 > 0)
-		feedback_set("escaped_on_pod_1",escaped_on_pod_1)
-	if(escaped_on_pod_2 > 0)
-		feedback_set("escaped_on_pod_2",escaped_on_pod_2)
-	if(escaped_on_pod_3 > 0)
-		feedback_set("escaped_on_pod_3",escaped_on_pod_3)
-	if(escaped_on_pod_5 > 0)
-		feedback_set("escaped_on_pod_5",escaped_on_pod_5)
+
 
 	send2irc("ROUND END", "A round of [src.name] has ended - [surviving_total] survivors, [ghosts] ghosts.")
 

@@ -226,13 +226,16 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	update_icon()
 	ui_interact(user)
 
+/obj/item/communicator/AltClick(mob/user)
+	attack_self(user)
+
 // Proc: MouseDrop()
 //Same thing PDAs do
 /obj/item/communicator/MouseDrop(obj/over_object as obj)
 	var/mob/M = usr
 	if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
 		return
-	if(!istype(over_object, /obj/screen))
+	if(!istype(over_object, /atom/movable/screen))
 		return attack_self(M)
 	return
 
@@ -316,6 +319,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: None
 // Description: Self explanatory
 /obj/item/communicator/update_icon_state()
+	. = ..()
 	if(video_source)
 		icon_state = "communicator_wave"
 		return
@@ -349,6 +353,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	slot_flags = SLOT_GLOVES
 
 /obj/item/communicator/watch/update_icon_state()
+	. = ..()
 	if(video_source)
 		icon_state = "commwatch-video"
 		return
@@ -362,4 +367,3 @@ var/global/list/obj/item/communicator/all_communicators = list()
 		return
 
 	icon_state = initial(icon_state)
-

@@ -151,3 +151,24 @@
 	icon_state = "punctured"
 	drop_sound = 'sound/items/drop/soda.ogg'
 	pickup_sound = 'sound/items/pickup/soda.ogg'
+
+/obj/item/trash/broken_arrow
+	name = "\improper broken arrow"
+	desc = "This arrow shaft shattered under the stress of impact. It's useless."
+	icon_state = "brokenarrow"
+
+/obj/item/trash/brownies
+	name = "brownie tray"
+	icon_state = "waffles"
+
+/obj/item/trash/snacktray
+	name = "snacktray"
+	icon_state = "waffles"
+
+/obj/item/trash/dipbowl
+	name = "dip bowl"
+	icon_state = "waffles"
+
+/obj/item/trash/chipbasket
+	name = "empty basket"
+	icon_state = "waffles"

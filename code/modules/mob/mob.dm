@@ -6,7 +6,7 @@
 	qdel(hud_used)
 	clear_fullscreen()
 	if(client)
-		for(var/obj/screen/movable/spell_master/spell_master in spell_masters)
+		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
 			qdel(spell_master)
 		remove_screen_obj_references()
 		client.screen = list()
@@ -259,7 +259,7 @@
 	set name = "Point To"
 	set category = "Object"
 
-	if(!src || !isturf(src.loc) || !(A in view(src.loc)))
+	if(!src || !isturf(src.loc) || !(A in view(14, src)))
 		return 0
 	if(istype(A, /obj/effect/decal/point))
 		return 0
@@ -272,12 +272,49 @@
 	P.invisibility = invisibility
 	P.plane = ABOVE_PLANE
 	P.layer = FLY_LAYER
-	P.pixel_x = A.pixel_x
-	P.pixel_y = A.pixel_y
+	P.pixel_x = A.pixel_x + world.icon_size * (x - A.x)
+	P.pixel_y = A.pixel_y + world.icon_size * (y - A.y)
+	animate(P, pixel_x = A.pixel_x, pixel_y = A.pixel_y, time = 0.5 SECONDS, easing = QUAD_EASING)
 	QDEL_IN(P, 2 SECONDS)
 	face_atom(A)
+	log_emote("POINTED --> at [A] ([COORD(A)]).", src)
 	return 1
 
+/mob/verb/set_self_relative_layer()
+	set name = "Set relative layer"
+	set desc = "Set your relative layer to other mobs on the same layer as yourself"
+	set src = usr
+	set category = "IC"
+
+	var/new_layer = input(src, "What do you want to shift your layer to? (-100 to 100)", "Set Relative Layer", clamp(relative_layer, -100, 100))
+	new_layer = clamp(new_layer, -100, 100)
+	set_relative_layer(new_layer)
+
+/mob/verb/shift_relative_behind(mob/M as mob in get_relative_shift_targets())
+	set name = "Move Behind"
+	set desc = "Move behind of a mob with the same base layer as yourself"
+	set src = usr
+	set category = "IC"
+
+	set_relative_layer(M.relative_layer - 1)
+
+/mob/verb/shift_relative_infront(mob/M as mob in get_relative_shift_targets())
+	set name = "Move Infront"
+	set desc = "Move infront of a mob with the same base layer as yourself"
+	set src = usr
+	set category = "IC"
+
+	set_relative_layer(M.relative_layer + 1)
+
+/mob/proc/get_relative_shift_targets()
+	. = list()
+	var/us = isnull(base_layer)? layer : base_layer
+	for(var/mob/M in range(1, src))
+		if(M.plane != plane)
+			continue
+		if(us == (isnull(M.base_layer)? M.layer : M.base_layer))
+			. += M
+	. -= src
 
 /mob/proc/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
 	return
@@ -288,17 +325,6 @@
 	set src = usr
 
 	return
-
-/*
-/mob/verb/dump_source()
-
-	var/master = "<PRE>"
-	for(var/t in typesof(/area))
-		master += text("[]\n", t)
-		//Foreach goto(26)
-	src << browse(master)
-	return
-*/
 
 /mob/verb/memory()
 	set name = "Notes"
@@ -1100,7 +1126,7 @@ mob/proc/yank_out_object()
 		exploit_record += exploitmsg
 
 /client/proc/check_has_body_select()
-	return mob && mob.hud_used && istype(mob.zone_sel, /obj/screen/zone_sel)
+	return mob && mob.hud_used && istype(mob.zone_sel, /atom/movable/screen/zone_sel)
 
 /client/verb/body_toggle_head()
 	set name = "body-toggle-head"
@@ -1140,7 +1166,7 @@ mob/proc/yank_out_object()
 /client/proc/toggle_zone_sel(list/zones)
 	if(!check_has_body_select())
 		return
-	var/obj/screen/zone_sel/selector = mob.zone_sel
+	var/atom/movable/screen/zone_sel/selector = mob.zone_sel
 	selector.set_selected_zone(next_list_item(mob.zone_sel.selecting,zones))
 
 // This handles setting the client's color variable, which makes everything look a specific color.

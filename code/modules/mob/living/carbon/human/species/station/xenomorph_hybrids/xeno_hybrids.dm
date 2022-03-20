@@ -43,11 +43,10 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
-        /mob/living/carbon/human/proc/sprint,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		//mob/living/carbon/human/proc/neurotoxin,//need the acid organ which I dont wanna just give them
-		/mob/living/carbon/human/proc/resin,
-		/mob/living/carbon/human/proc/hybrid_plant,//replaced from the normal to place a singular /obj/effect/alien/weeds
+		/mob/living/carbon/human/proc/hybrid_resin,
+		/mob/living/carbon/human/proc/hybrid_plant,//replaced from the normal weed node to place a singular weed
         /mob/living/carbon/human/proc/active_heal
 		)
 
@@ -55,7 +54,7 @@
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
 	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
 	blood_volume = 560	//Baseline
-	darksight = 4 //Better hunters in the dark.
+	darksight = 5 //Better hunters in the dark.
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
 	slowdown = -0.2//Speedboost Tesh have -0.5
@@ -89,7 +88,6 @@
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine,
 		O_RESIN =    	/obj/item/organ/internal/xenos/resinspinner,
-		O_HIVE =		/obj/item/organ/internal/xenos/weak_hivenode
 		)
 	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
@@ -135,8 +133,3 @@
 
         H.nutrition += heal_amount
 
-/obj/item/organ/internal/xenos/weak_hivenode//For hybrids to allow them to use resin doors
-	name = "underdeveloped hive node"
-	parent_organ = BP_TORSO
-	icon_state = "xenode"
-	organ_tag = O_HIVE

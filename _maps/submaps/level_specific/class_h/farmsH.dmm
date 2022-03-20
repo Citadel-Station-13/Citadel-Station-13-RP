@@ -1,11 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "d" = (
 /obj/item/corncob,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "f" = (
 /obj/structure/table/woodentable,
 /obj/item/flame/lighter/zippo,
@@ -13,7 +13,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "g" = (
 /obj/structure/closet/crate,
 /obj/item/reagent_containers/food/condiment/flour,
@@ -26,41 +26,41 @@
 /obj/item/reagent_containers/food/condiment/flour,
 /obj/item/reagent_containers/food/condiment/flour,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "h" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "m" = (
 /obj/structure/sink/puddle,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "o" = (
 /turf/simulated/wall/sandstone/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "p" = (
 /obj/machinery/vending/hydronutrients{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "r" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "s" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "v" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "w" = (
 /obj/item/bedsheet/browndouble,
 /obj/structure/bed/double,
@@ -68,29 +68,29 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "y" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "z" = (
 /obj/structure/bonfire,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "A" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "F" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "J" = (
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "K" = (
 /obj/structure/closet/crate,
 /obj/fiftyspawner/log,
@@ -100,10 +100,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "M" = (
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "N" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/frontier,
@@ -118,29 +118,29 @@
 /obj/item/gun/projectile/shotgun/doublebarrel/pellet,
 /obj/item/storage/box/shotgunshells,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "O" = (
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "P" = (
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "S" = (
 /obj/machinery/botany,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "U" = (
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "W" = (
 /obj/machinery/vending/hydroseeds,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 "Z" = (
 /obj/structure/bed/chair/wood/wings,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/dirt_farm)
+/area/class_h/POIs/dirt_farm)
 
 (1,1,1) = {"
 a

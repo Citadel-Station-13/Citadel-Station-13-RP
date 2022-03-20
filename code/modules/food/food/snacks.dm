@@ -387,8 +387,19 @@
 	nutriment_amt = 5
 	nutriment_desc = list("sugar" = 3, "protein" = 2)
 	slot_flags = SLOT_MASK
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/masks_vr.dmi', SPECIES_VOX = 'icons/mob/species/vox/masks.dmi', SPECIES_TAJ = 'icons/mob/species/tajaran/mask_vr.dmi', SPECIES_UNATHI = 'icons/mob/species/unathi/mask_vr.dmi', SPECIES_SERGAL = 'icons/mob/species/sergal/mask_vr.dmi', SPECIES_NEVREAN = 'icons/mob/species/nevrean/mask_vr.dmi', SPECIES_ZORREN_HIGH = 'icons/mob/species/fox/mask_vr.dmi', SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi', SPECIES_AKULA = 'icons/mob/species/akula/mask_vr.dmi', SPECIES_VULPKANIN = 'icons/mob/species/vulpkanin/mask.dmi', SPECIES_XENOCHIMERA = 'icons/mob/species/tajaran/mask_vr.dmi')
-
+	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/teshari/masks.dmi',
+		SPECIES_VOX = 'icons/mob/species/vox/masks.dmi',
+		SPECIES_TAJ = 'icons/mob/species/tajaran/mask_vr.dmi',
+		SPECIES_UNATHI = 'icons/mob/species/unathi/mask_vr.dmi',
+		SPECIES_SERGAL = 'icons/mob/species/sergal/mask_vr.dmi',
+		SPECIES_NEVREAN = 'icons/mob/species/nevrean/mask_vr.dmi',
+		SPECIES_ZORREN_HIGH = 'icons/mob/species/fox/mask_vr.dmi',
+		SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi',
+		SPECIES_AKULA = 'icons/mob/species/akula/mask_vr.dmi',
+		SPECIES_VULPKANIN = 'icons/mob/species/vulpkanin/mask.dmi',
+		SPECIES_XENOCHIMERA = 'icons/mob/species/tajaran/mask_vr.dmi'
+		)
 /obj/item/reagent_containers/food/snacks/dtreat/Initialize(mapload)
 	. = ..()
 	bitesize = 1
@@ -3285,7 +3296,7 @@
 /obj/item/reagent_containers/food/snacks/voxjerky
 	name = "vox jerky"
 	desc = "Dehydrated Vox meat, cut into tough strips. A good source of protein, if you have strong teeth."
-	icon_state = "voxjerky"
+	icon_state = "vox_jerky"
 	nutriment_amt = 6
 	nutriment_desc = list("spicy teriyaki" = 6)
 
@@ -3360,7 +3371,7 @@
 /obj/item/reagent_containers/food/snacks/bun/Initialize(mapload)
 	. = ..()
 
-/* BEGIN CITADEL CHANGE - Moved to /modular_citadel/code/modules/food/food/snacks.dm for Aurora kitchen port
+/* BEGIN CITADEL CHANGE - Moved to /code/modules/food/food/snacks.dm for Aurora kitchen port
 /obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_containers/food/snacks/meatball))
@@ -3856,7 +3867,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/macncheese
 	name = "macaroni and cheese"
 	desc = "The perfect combination of noodles and dairy."
-	icon = 'modular_citadel/icons/obj/food_cit.dmi'
+	icon = 'icons/obj/food_cit.dmi'
 	icon_state = "macncheese"
 	trash = /obj/item/trash/snack_bowl
 	nutriment_amt = 9

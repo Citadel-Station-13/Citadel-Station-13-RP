@@ -232,7 +232,7 @@
 /obj/item/storage/fancy/cigarettes
 	name = "\improper pack of Trans-Stellar Duty-frees"
 	desc = "A ubiquitous brand of cigarettes, found in every major spacefaring corporation in the universe. As mild and flavorless as it gets."
-	icon = 'modular_citadel/icons/obj/cigarettes.dmi'
+	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigpacket"
 	item_state_slots = list(slot_r_hand_str = "cigpacket", slot_l_hand_str = "cigpacket")
 	w_class = ITEMSIZE_TINY

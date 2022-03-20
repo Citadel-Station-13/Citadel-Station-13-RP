@@ -272,7 +272,7 @@
 	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
 
 /datum/riding/simple_mob/handle_vehicle_layer()
-	ridden.layer = initial(ridden.layer)
+	ridden.set_base_layer(initial(ridden.layer))
 
 /datum/riding/simple_mob/ride_check(mob/living/M)
 	var/mob/living/L = ridden

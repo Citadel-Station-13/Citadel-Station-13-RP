@@ -10,7 +10,7 @@ var/list/ventcrawl_machinery = list(
 	/obj/item/holder,
 	/obj/machinery/camera,
 	/obj/belly,
-	/obj/screen
+	/atom/movable/screen
 	)
 	//VOREStation Edit : added /obj/belly, to this list, travis is complaining about this in his indentation check
 	//mob/living/simple_mob/borer, //VORESTATION AI TEMPORARY REMOVAL REPLACE BACK IN LIST WHEN RESOLVED //VOREStation Edit

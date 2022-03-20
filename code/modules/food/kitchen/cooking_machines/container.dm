@@ -3,7 +3,7 @@
 //which can be checked against recipe requirements in order to cook recipes that require several things
 
 /obj/item/reagent_containers/cooking_container
-	icon = 'modular_citadel/icons/obj/cooking_machines.dmi'
+	icon = 'icons/obj/cooking_machines.dmi'
 	var/shortname
 	var/max_space = 20//Maximum sum of w-classes of foods in this container at once
 	var/max_reagents = 80//Maximum units of reagents

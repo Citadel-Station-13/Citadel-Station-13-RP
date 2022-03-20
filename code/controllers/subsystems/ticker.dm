@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(ticker)
 
 	//station_explosion used to be a variable for every mob's hud. Which was a waste!
 	//Now we have a general cinematic centrally held within the gameticker....far more efficient!
-	var/obj/screen/cinematic = null
+	var/atom/movable/screen/cinematic = null
 
 	var/static/round_start_time
 	var/static/list/round_start_events

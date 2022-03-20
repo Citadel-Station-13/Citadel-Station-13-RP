@@ -487,7 +487,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/MouseDrop(obj/over_object as obj, src_location, over_location)
 	var/mob/M = usr
-	if((!istype(over_object, /obj/screen)) && can_use())
+	if((!istype(over_object, /atom/movable/screen)) && can_use())
 		return attack_self(M)
 	return
 

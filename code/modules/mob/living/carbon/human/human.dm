@@ -21,8 +21,6 @@
 	var/active_regen_delay = 300
 	var/spam_flag = FALSE	//throws byond:tm: errors if placed in human/emote, but not here
 
-	var/old_slow
-	var/old_hunger
 	var/healing = FALSE
 
 /mob/living/carbon/human/Initialize(mapload, var/new_species = null)
@@ -41,10 +39,6 @@
 		name = real_name
 		if(mind)
 			mind.name = real_name
-
-		old_slow = species.slowdown
-		old_hunger = species.hunger_factor
-
 
 	nutrition = rand(200,400)
 
@@ -684,7 +678,7 @@
 		I.additional_flash_effects(number)
 	return number
 
-/mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/flash)
 	if(internal_organs_by_name[O_EYES]) // Eyes are fucked, not a 'weak point'.
 		var/obj/item/organ/internal/eyes/I = internal_organs_by_name[O_EYES]
 		I.additional_flash_effects(intensity)
@@ -1583,7 +1577,7 @@
 		if(stat == DEAD || paralysis || weakened || stunned || restrained() || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs()) //stunned/knocked down by something that isn't the rest verb? Note: This was tried with INCAPACITATION_STUNNED, but that refused to work. //VORE EDIT: Check for has_buckled_mobs() (taur riding)
 			reveal(null)
 		else
-			layer = HIDING_LAYER
+			set_base_layer(HIDING_LAYER)
 
 /mob/living/carbon/human/proc/get_display_species()
 	//Shows species in tooltip

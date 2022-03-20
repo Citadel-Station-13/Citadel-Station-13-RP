@@ -23,9 +23,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 //Nanotech Implant Foundation
 /obj/item/nif
 	name = "nanite implant framework"
-	desc = "A somewhat diminished knockoff of a Vey-Med nano working surface, in a box. Can print new \
-	implants inside living hosts on the fly based on software uploads. Must be surgically \
-	implanted in the head to work. May eventually wear out and break."
+	desc = "A standard Nanotrasen nanotechnology fabricator, now the size of an antique stamp. Prints new \
+	implants inside hosts based on software uploads. Must be surgically \
+	implanted in the head to work. Being on the bleeding edge of knockoff technology, it will likely wear out and break."
 
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "nif_0"
@@ -582,8 +582,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 /obj/item/nif/authentic
 	name = "\improper Vey-Med NIF"
-	desc = "An actual Vey-Med working surface, in a box. From a society slightly less afraid \
-	of self-replicating nanotechnology. Basically just a high-endurance NIF."
+	desc = "A genuine Vey-Med nanotechnology fabricator, now the size of a shiny antique stamp. \
+	Far more durable than any knockoffs on the market."
 	durability = 1000
 	id = NIF_ID_VEYMED
 

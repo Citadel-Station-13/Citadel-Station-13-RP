@@ -51,6 +51,7 @@
 	linked = O
 
 /obj/item/storage/laundry_basket/update_icon_state()
+	. = ..()
 	if(contents.len)
 		icon_state = "laundry-full"
 	else
