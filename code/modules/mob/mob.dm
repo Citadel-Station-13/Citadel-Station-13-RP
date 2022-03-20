@@ -6,7 +6,7 @@
 	qdel(hud_used)
 	clear_fullscreen()
 	if(client)
-		for(var/obj/screen/movable/spell_master/spell_master in spell_masters)
+		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
 			qdel(spell_master)
 		remove_screen_obj_references()
 		client.screen = list()
@@ -277,7 +277,7 @@
 	animate(P, pixel_x = A.pixel_x, pixel_y = A.pixel_y, time = 0.5 SECONDS, easing = QUAD_EASING)
 	QDEL_IN(P, 2 SECONDS)
 	face_atom(A)
-	log_emote("POINTED: [key_name(src)] pointed at [A] ([COORD(A)]).")
+	log_emote("POINTED --> at [A] ([COORD(A)]).", src)
 	return 1
 
 /mob/verb/set_self_relative_layer()
@@ -1126,7 +1126,7 @@ mob/proc/yank_out_object()
 		exploit_record += exploitmsg
 
 /client/proc/check_has_body_select()
-	return mob && mob.hud_used && istype(mob.zone_sel, /obj/screen/zone_sel)
+	return mob && mob.hud_used && istype(mob.zone_sel, /atom/movable/screen/zone_sel)
 
 /client/verb/body_toggle_head()
 	set name = "body-toggle-head"
@@ -1166,7 +1166,7 @@ mob/proc/yank_out_object()
 /client/proc/toggle_zone_sel(list/zones)
 	if(!check_has_body_select())
 		return
-	var/obj/screen/zone_sel/selector = mob.zone_sel
+	var/atom/movable/screen/zone_sel/selector = mob.zone_sel
 	selector.set_selected_zone(next_list_item(mob.zone_sel.selecting,zones))
 
 // This handles setting the client's color variable, which makes everything look a specific color.

@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define PREVENT_CLICK_UNDER			(1<<19)	// Prevent clicking things below it on the same turf eg. doors/ fulltile windows.
 #define HOLOGRAM					(1<<20)
 #define PREVENT_CONTENTS_EXPLOSION	(1<<21)	// should not get harmed if this gets caught by an explosion?
-
+#define HTML_USE_INITAL_ICON		(1<<22)
 
 ///TURF FLAGS
 #define NO_JAUNT					(1<<0)	// This is used in literally one place, turf.dm, to block ethereal jaunt.
@@ -66,6 +66,22 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define EXCITED_CLEANUP				(1<<4)	// Should this tile be cleaned up and reinserted into an excited group?
 #define NO_LAVA_GEN					(1<<5)	// Blocks lava rivers being generated on the turf
 #define NO_RUINS					(1<<6)	// Blocks ruins spawning on the turf
+
+// Update flags for [/atom/proc/update_appearance]
+/// Update the atom's name
+#define UPDATE_NAME (1<<0)
+/// Update the atom's desc
+#define UPDATE_DESC (1<<1)
+/// Update the atom's icon state
+#define UPDATE_ICON_STATE (1<<2)
+/// Update the atom's overlays
+#define UPDATE_OVERLAYS (1<<3)
+/// Update the atom's greyscaling
+#define UPDATE_GREYSCALE (1<<4)
+/// Update the atom's smoothing. (More accurately, queue it for an update)
+#define UPDATE_SMOOTHING (1<<5)
+/// Update the atom's icon
+#define UPDATE_ICON (UPDATE_ICON_STATE|UPDATE_OVERLAYS)
 
 // Flags for pass_flags. - Used in /atom/var/pass_flags
 #define PASSTABLE				(1<<0)

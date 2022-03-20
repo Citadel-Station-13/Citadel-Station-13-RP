@@ -12,12 +12,12 @@
 	// Stuff needed to render the map
 	var/map_name
 	var/const/default_map_size = 15
-	var/obj/screen/map_view/cam_screen
+	var/atom/movable/screen/map_view/cam_screen
 	/// All the plane masters that need to be applied.
 	var/list/cam_plane_masters
-	var/obj/screen/background/cam_background
-	var/obj/screen/background/cam_foreground
-	var/obj/screen/skybox/local_skybox
+	var/atom/movable/screen/background/cam_background
+	var/atom/movable/screen/background/cam_foreground
+	var/atom/movable/screen/skybox/local_skybox
 	// Stuff for moving cameras
 	var/turf/last_camera_turf
 
@@ -38,7 +38,7 @@
 	cam_plane_masters = get_tgui_plane_masters()
 
 	for(var/plane in cam_plane_masters)
-		var/obj/screen/instance = plane
+		var/atom/movable/screen/instance = plane
 		instance.assigned_map = map_name
 		instance.del_on_map_removal = FALSE
 		instance.screen_loc = "[map_name]:CENTER"
