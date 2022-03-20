@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(apcs)
+
 #define CRITICAL_APC_EMP_PROTECTION 10 // EMP effect duration is divided by this number if the APC has "critical" flag
 //update_state
 #define UPDATE_CELL_IN 1
@@ -168,6 +170,7 @@
 /obj/machinery/power/apc/Initialize(mapload, ndir, building = FALSE)
 	. = ..()
 	wires = new(src)
+	GLOB.apcs += src
 
 	// offset 24 pixels in direction of dir
 	// this allows the APC to be embedded in a wall, yet still inside an area
@@ -188,6 +191,7 @@
 		src.update_icon()
 
 /obj/machinery/power/apc/Destroy()
+	GLOB.apcs -= src
 	src.update()
 	area.apc = null
 	area.power_light = 0
@@ -892,6 +896,8 @@
 				to_chat(usr, "<span class='warning'>[src]'s night lighting circuit breaker is still cycling!</span>")
 				return 0
 			last_nightshift_switch = world.time
+			nightshift_setting = params["nightshift"]
+			update_nightshift()
 		if("charge")
 			chargemode = !chargemode
 			if(!chargemode)
@@ -1384,8 +1390,6 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 		name = "[area.name] APC"
 	update()
 
-#undef APC_UPDATE_ICON_COOLDOWN
-
 /obj/machinery/power/apc/proc/set_nightshift(on, var/automated)
 	set waitfor = FALSE
 	if(automated && istype(area, /area/shuttle))
@@ -1405,3 +1409,5 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	for(var/obj/machinery/light/L in area)
 		L.nightshift_mode(new_state)
 		CHECK_TICK
+
+#undef APC_UPDATE_ICON_COOLDOWN

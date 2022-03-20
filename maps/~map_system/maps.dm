@@ -174,7 +174,7 @@ var/list/all_maps = list()
 
 // Boolean for if we should use SSnightshift night hours
 /datum/map/proc/get_nightshift()
-	return get_night(2) //Defaults to z2, This is where we start our maps.
+	return get_night(1) //Defaults to z1, customize however you want on your own maps
 
 /datum/map/proc/setup_map()
 	return
