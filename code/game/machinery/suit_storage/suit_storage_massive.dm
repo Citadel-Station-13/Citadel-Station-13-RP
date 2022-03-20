@@ -11,11 +11,11 @@
 	density = 1
 
 	var/list/obj/item/clothing/suit/space/suits = list()
-	var/suit_stored_TYPE = /obj/item/clothing/suit/space
+	var/suit_stored_TYPE = /obj/item/clothing/suit/space/void
 	var/suit_amount
 
 	var/list/obj/item/clothing/head/helmet/space/helmets = list()
-	var/helmet_stored_TYPE = /obj/item/clothing/head/helmet/space
+	var/helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void
 	var/helmet_amount
 
 	var/list/obj/item/clothing/mask/masks = list()
