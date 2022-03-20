@@ -1038,12 +1038,6 @@
 	},
 /turf/simulated/floor/outdoors/snow/classp,
 /area/class_p/unexplored)
-"Tn" = (
-/mob/living/simple_mob/animal/space/tree{
-	faction = "frozen"
-	},
-/turf/simulated/floor/outdoors/snow/classp,
-/area/class_p/ruins)
 "Tr" = (
 /obj/structure/blob/normal,
 /obj/machinery/light,
@@ -2193,7 +2187,7 @@ TP
 TP
 TP
 TP
-TP
+wQ
 TP
 TP
 TP
@@ -6689,7 +6683,7 @@ TP
 TP
 TP
 TP
-TP
+wQ
 TP
 TP
 TP
@@ -8788,7 +8782,7 @@ zK
 zK
 zK
 zK
-Tn
+zK
 zK
 zK
 zK
@@ -8997,7 +8991,7 @@ TP
 TP
 TP
 TP
-TP
+wQ
 TP
 TP
 TP
@@ -11390,7 +11384,7 @@ zK
 zK
 zK
 TP
-TP
+wQ
 TP
 TP
 hC
@@ -12163,7 +12157,7 @@ zK
 zK
 zK
 zK
-Tn
+zK
 zK
 zK
 zK
@@ -12516,7 +12510,7 @@ zK
 zK
 zK
 zK
-Tn
+zK
 zK
 zK
 zK
@@ -12793,7 +12787,7 @@ zK
 zK
 zK
 zK
-Tn
+zK
 zK
 zK
 zK
@@ -15453,7 +15447,7 @@ zK
 zK
 zK
 zK
-Tn
+zK
 zK
 zK
 zK
@@ -18863,7 +18857,7 @@ zK
 zK
 zK
 zK
-Tn
+zK
 zK
 zK
 zK
@@ -19193,7 +19187,7 @@ zK
 zK
 zK
 zK
-Tn
+zK
 zK
 zK
 zK
@@ -20335,7 +20329,7 @@ zK
 zK
 zK
 zK
-TP
+wQ
 TP
 TP
 TP
@@ -20392,7 +20386,7 @@ TP
 TP
 TP
 TP
-TP
+wQ
 TP
 zK
 zK
@@ -20865,7 +20859,7 @@ TP
 TP
 TP
 TP
-TP
+wQ
 TP
 TP
 TP
