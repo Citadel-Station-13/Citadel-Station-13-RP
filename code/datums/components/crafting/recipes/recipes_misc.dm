@@ -280,8 +280,8 @@
 	result = /obj/item/tool/screwdriver/brass
 	reqs = list(/obj/item/tool/screwdriver = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1,
-				/datum/reagent/water  = 15)
+				/obj/item/stack/material/brass = 1
+				)
 	time = 40
 	//always_available = FALSE
 	subcategory = CAT_TOOL
@@ -294,8 +294,8 @@
 	result = /obj/item/weldingtool/brass
 	reqs = list(/obj/item/weldingtool = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1,
-				/datum/reagent/water  = 15)
+				/obj/item/stack/material/brass = 1
+				)
 	time = 40
 	//always_available = FALSE
 	subcategory = CAT_TOOL
@@ -308,8 +308,8 @@
 	result = /obj/item/tool/wirecutters/brass
 	reqs = list(/obj/item/tool/wirecutters = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1,
-				/datum/reagent/water  = 15)
+				/obj/item/stack/material/brass = 1
+				)
 	time = 40
 	//always_available = FALSE
 	subcategory = CAT_TOOL
@@ -322,8 +322,8 @@
 	result = /obj/item/tool/crowbar/brass
 	reqs = list(/obj/item/tool/crowbar = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1,
-				/datum/reagent/water  = 15)
+				/obj/item/stack/material/brass = 1
+				)
 	time = 40
 	//always_available = FALSE
 	subcategory = CAT_TOOL
@@ -336,8 +336,8 @@
 	result = /obj/item/tool/wrench/brass
 	reqs = list(/obj/item/tool/wrench = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1,
-				/datum/reagent/water  = 15)
+				/obj/item/stack/material/brass = 1
+				)
 	time = 40
 	//always_available = FALSE
 	subcategory = CAT_TOOL

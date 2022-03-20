@@ -158,6 +158,7 @@
 	update_icon()
 
 /obj/item/shield/riot/flash/update_icon_state()
+	. = ..()
 	if(!embedded_flash || embedded_flash.broken)
 		icon_state = "riot"
 		item_state = "riot"
