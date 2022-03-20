@@ -1653,7 +1653,7 @@
 	},
 /obj/item/flame/candle,
 /obj/machinery/door/blast/shutters{
-	dir = 2;
+	dir = 4;
 	id = "bar_shutters";
 	name = "Bar Shutters"
 	},
@@ -2052,7 +2052,7 @@
 "eF" = (
 /obj/structure/table/standard,
 /obj/item/phone,
-/obj/item/folder/white_rd{
+/obj/item/folder/blue{
 	pixel_x = 12
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4236,7 +4236,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/machinery/disposal,
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "kc" = (
@@ -4372,12 +4372,15 @@
 /area/hallway/secondary/docking_hallway2)
 "ks" = (
 /obj/structure/table/standard,
-/obj/item/multitool/rift_buffered,
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
+	},
+/obj/item/paper/monitorkey,
+/obj/item/multitool/rift_buffered{
+	pixel_y = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -4485,13 +4488,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "kG" = (
-/obj/machinery/recharge_station,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 6
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "kH" = (
@@ -4754,6 +4757,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
+"ly" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/structure/table/glass,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/docking_hallway)
 "lz" = (
 /obj/structure/flora/pottedplant/crystal,
 /turf/simulated/floor/wood,
@@ -7931,6 +7940,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hop)
+"xa" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/structure/table/glass,
+/obj/machinery/holoplant{
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/docking_hallway)
 "xb" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -8152,6 +8170,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner{
 	dir = 1
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
 "xM" = (
@@ -12245,6 +12264,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner{
 	dir = 4
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
 "ME" = (
@@ -12266,7 +12286,7 @@
 /area/crew_quarters/heads/hop)
 "MH" = (
 /obj/machinery/disposal,
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "MK" = (
@@ -12494,10 +12514,10 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/full,
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "Nx" = (
@@ -14218,6 +14238,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
 "Ub" = (
@@ -30616,7 +30637,7 @@ VK
 RJ
 oX
 oX
-RS
+xa
 fc
 Pb
 bY
@@ -30810,7 +30831,7 @@ xE
 RJ
 oX
 oX
-RS
+ly
 fc
 RH
 lA
@@ -31586,7 +31607,7 @@ VK
 RJ
 oX
 oX
-RS
+ly
 VB
 qm
 ap
@@ -31780,7 +31801,7 @@ xE
 RJ
 oX
 oX
-RS
+xa
 VB
 ao
 kl

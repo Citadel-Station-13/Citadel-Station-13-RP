@@ -143,6 +143,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "bunker"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/panic_shelter)
 "aA" = (
@@ -10285,6 +10289,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/panic_shelter)
 "rG" = (

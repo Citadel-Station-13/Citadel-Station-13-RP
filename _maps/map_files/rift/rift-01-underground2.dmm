@@ -1722,9 +1722,6 @@
 	pixel_y = 24
 	},
 /obj/structure/toilet,
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/panic_shelter)
 "dI" = (
@@ -1998,6 +1995,9 @@
 	dir = 5
 	},
 /obj/structure/curtain/open/shower,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/panic_shelter)
 "eh" = (
@@ -3406,7 +3406,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/panic_shelter)
 "gL" = (
@@ -3424,6 +3424,9 @@
 /obj/item/radio,
 /obj/item/radio,
 /obj/structure/table/rack/shelf,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/panic_shelter)
 "gM" = (
@@ -4764,6 +4767,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/camera/network/civilian,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/panic_shelter)
 "jF" = (
@@ -5200,8 +5206,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "kl" = (
-/obj/structure/table/rack,
-/obj/random/maintenance/clean,
+/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "km" = (
@@ -5210,10 +5215,12 @@
 /area/maintenance/chapel)
 "kn" = (
 /obj/item/trash/candle,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "ko" = (
 /obj/effect/rune,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "kp" = (
@@ -6542,9 +6549,9 @@
 	name = "\improper Central Atmospherics Maintenance"
 	})
 "mN" = (
-/obj/structure/table/reinforced,
 /obj/item/storage/pill_bottle/dice,
 /obj/item/deck/cards,
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/panic_shelter)
 "mO" = (
@@ -6928,6 +6935,8 @@
 "ny" = (
 /obj/structure/railing,
 /obj/structure/closet,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "nz" = (
@@ -7509,8 +7518,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/cryo/station)
 "oU" = (
-/obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets,
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/panic_shelter)
 "oV" = (
@@ -8332,13 +8341,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/panic_shelter)
 "qB" = (
-/obj/structure/table/rack,
 /obj/structure/bedsheetbin,
 /obj/item/storage/fancy/candle_box,
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/panic_shelter)
 "qC" = (
@@ -9426,6 +9435,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo/mining)
+"uL" = (
+/obj/structure/closet/crate,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "uM" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -9584,17 +9602,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "ws" = (
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/cargo/mining)
+/area/maintenance/chapel)
 "wy" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/gas,
@@ -9847,6 +9857,11 @@
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"xY" = (
+/obj/structure/table/rack,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
 "yb" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -10057,6 +10072,7 @@
 "At" = (
 /obj/item/trash/candle,
 /obj/machinery/light/small/emergency,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "Av" = (
@@ -10186,6 +10202,13 @@
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"Bt" = (
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock/refinery)
 "Bw" = (
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
@@ -10382,6 +10405,11 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"DV" = (
+/obj/structure/railing,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "DY" = (
 /obj/machinery/light{
 	dir = 4
@@ -10419,6 +10447,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"Ey" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo/mining)
 "Ez" = (
 /obj/structure/railing{
 	dir = 1
@@ -10432,10 +10472,6 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "EI" = (
-/obj/machinery/light_switch{
-	pixel_x = 11;
-	pixel_y = 24
-	},
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"
@@ -10508,6 +10544,12 @@
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/quartermaster/belterdock/refinery)
+"EW" = (
+/obj/machinery/floodlight,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "EX" = (
 /obj/structure/bed/chair/backed_red{
 	dir = 4
@@ -10534,9 +10576,6 @@
 "Fb" = (
 /obj/machinery/hyperpad{
 	dir = 9
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/miningdock)
@@ -10712,6 +10751,12 @@
 	dir = 4
 	},
 /area/quartermaster/belterdock/refinery)
+"Ga" = (
+/obj/structure/closet,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/engineering,
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "Gd" = (
 /obj/effect/floor_decal/chapel{
 	dir = 8
@@ -10888,6 +10933,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
+"HW" = (
+/obj/random/cutout,
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "HZ" = (
 /obj/structure/railing,
 /obj/structure/closet/crate,
@@ -10910,6 +10959,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo/mining)
+"Ix" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/miningdock)
 "Iy" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/fancy/candle_box{
@@ -11066,6 +11124,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"Jx" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "JC" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -11078,6 +11143,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"JL" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
 "JP" = (
 /turf/simulated/wall,
 /area/maintenance/cargo/mining)
@@ -11228,6 +11297,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/miningdock)
+"LJ" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo/mining)
 "LQ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -11374,6 +11449,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"MP" = (
+/obj/structure/table/rack,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "MR" = (
 /obj/effect/landmark/start{
 	name = "Chaplain"
@@ -11409,6 +11489,12 @@
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"MX" = (
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/chapel/observation)
 "Na" = (
 /obj/structure/railing{
 	dir = 1
@@ -11423,6 +11509,9 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/undertwo)
+"Ng" = (
+/turf/unsimulated/floor/sky/depths,
+/area/rift/surfacebase/underground/under2)
 "Ni" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/monotile,
@@ -11680,6 +11769,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
+"Px" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/loot_pile/maint/trash,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "PF" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -11766,12 +11863,6 @@
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/stoutbush{
 	pixel_y = 12
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "chapel_crematorium";
-	name = "Crematorium Door control";
-	pixel_x = -6;
-	pixel_y = -26
 	},
 /turf/simulated/floor/wood,
 /area/chapel/observation)
@@ -12112,6 +12203,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"Vj" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo/mining)
 "Vo" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/borderfloor/corner2,
@@ -12164,6 +12260,11 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/gear)
+"VD" = (
+/obj/structure/catwalk,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "VF" = (
 /obj/structure/table/rack,
 /obj/item/shovel,
@@ -12273,6 +12374,16 @@
 "WT" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/observation)
+"WX" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/structure/closet/hydrant{
+	dir = 4;
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/crew_quarters/panic_shelter)
 "WZ" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -25
@@ -12512,13 +12623,17 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/undertwo)
 "Za" = (
-/obj/machinery/status_display{
-	pixel_y = -32
-	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 1;
+	id = "chapel_crematorium";
+	name = "Crematorium Door control";
+	pixel_x = 6;
+	pixel_y = -26
 	},
 /turf/simulated/floor/wood,
 /area/chapel/observation)
@@ -23588,9 +23703,9 @@ VS
 kg
 rf
 ks
-ks
-ks
 kk
+xY
+JL
 aW
 aa
 aW
@@ -24327,7 +24442,7 @@ aa
 aa
 aa
 bO
-Bw
+ws
 Bl
 Un
 xL
@@ -24521,8 +24636,8 @@ aa
 aa
 aa
 bO
-Bw
-Bl
+ws
+VD
 UF
 WT
 WT
@@ -24715,8 +24830,8 @@ aa
 aa
 aa
 bO
-Bw
-Bl
+ws
+VD
 Un
 SQ
 Hj
@@ -24909,10 +25024,10 @@ aa
 aa
 aa
 bO
-Bw
-Bl
+ws
+VD
 Un
-WT
+MX
 WT
 WT
 RT
@@ -25103,7 +25218,7 @@ aa
 aa
 aa
 bO
-Bw
+ws
 Bl
 Un
 SQ
@@ -25879,7 +25994,7 @@ aa
 aa
 aa
 bO
-Bw
+ws
 Bl
 bO
 km
@@ -26073,8 +26188,8 @@ aa
 aa
 aa
 bO
-Bw
-Bl
+Jx
+VD
 xk
 kn
 ko
@@ -26267,10 +26382,10 @@ aa
 aa
 aa
 bO
-Bw
-Bl
+EW
+VD
 bO
-Bw
+HW
 kn
 CX
 Aw
@@ -26461,7 +26576,7 @@ aa
 aa
 aa
 bO
-Bw
+MP
 Bl
 bO
 bO
@@ -26655,7 +26770,7 @@ aa
 aa
 aa
 bO
-Bw
+Ga
 Bl
 bO
 aa
@@ -26849,7 +26964,7 @@ aa
 aa
 aa
 bO
-Bw
+uL
 Bl
 bO
 aa
@@ -27043,7 +27158,7 @@ aa
 aa
 aa
 bO
-Bw
+km
 Bl
 bO
 aa
@@ -27238,7 +27353,7 @@ aa
 aa
 bO
 Bw
-Bl
+VD
 bO
 aa
 aa
@@ -27432,7 +27547,7 @@ aa
 aa
 bO
 Bw
-Bl
+VD
 bO
 aa
 aa
@@ -27625,8 +27740,8 @@ aa
 aa
 aa
 bO
-rz
-Bl
+DV
+VD
 bO
 aa
 aa
@@ -27819,8 +27934,8 @@ aa
 aa
 aa
 bO
-rz
-Bl
+DV
+VD
 bO
 aa
 aa
@@ -28013,7 +28128,7 @@ aa
 aa
 aa
 bO
-rz
+DV
 Bl
 bO
 aa
@@ -28207,7 +28322,7 @@ aa
 aa
 aa
 bO
-rz
+DV
 Bl
 bO
 aa
@@ -28401,7 +28516,7 @@ aa
 aa
 aa
 bO
-rz
+DV
 Bl
 bO
 aa
@@ -28609,7 +28724,7 @@ fV
 fL
 mT
 mU
-pt
+WX
 pt
 pC
 ab
@@ -29953,7 +30068,7 @@ aa
 aa
 aa
 bO
-rz
+DV
 Bl
 bO
 uQ
@@ -30147,8 +30262,8 @@ aa
 aa
 aa
 bO
-rz
-Bl
+DV
+VD
 xk
 Tg
 Tg
@@ -30341,8 +30456,8 @@ aa
 aa
 aa
 bO
-Bw
-uw
+ws
+Px
 bO
 Iq
 Iq
@@ -32291,10 +32406,10 @@ vO
 Tg
 XS
 JP
-aa
-aa
-aa
-aa
+Ng
+Ng
+Ng
+Ng
 aa
 aa
 Mj
@@ -32485,9 +32600,9 @@ vO
 Tg
 XS
 JP
-aa
-aa
-aa
+Vj
+Vj
+Vj
 EQ
 EQ
 EQ
@@ -32495,7 +32610,7 @@ EQ
 RU
 EU
 Qc
-MU
+Bt
 FW
 MU
 Xm
@@ -32679,12 +32794,12 @@ GX
 Tg
 XS
 JP
-aa
-aa
-aa
+Ze
+Ze
+Ze
 EQ
 Pl
-Pl
+Ix
 Pl
 Nk
 Jn
@@ -32873,9 +32988,9 @@ vO
 Tg
 XS
 JP
-aa
-aa
-aa
+Ze
+Ze
+Ze
 EQ
 Fb
 IU
@@ -33067,9 +33182,9 @@ vO
 Tg
 XS
 JP
-aa
-aa
-aa
+LJ
+Ze
+Ze
 EQ
 JR
 RD
@@ -33261,9 +33376,9 @@ vO
 Tg
 XS
 JP
-aa
-aa
-aa
+Ze
+Ze
+Ze
 EQ
 Ta
 LI
@@ -33455,9 +33570,9 @@ vO
 Tg
 Ez
 JP
-aa
-aa
-aa
+Ze
+Ze
+Ze
 EQ
 EQ
 vH
@@ -33650,7 +33765,7 @@ Tg
 Fy
 JP
 JP
-JP
+wJ
 JP
 JP
 HZ
@@ -33844,8 +33959,8 @@ Tg
 XS
 JP
 IR
-ws
 yb
+Ey
 Ff
 ZH
 Tg
