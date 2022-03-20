@@ -911,10 +911,10 @@ Drinks Data
 /datum/reagent/drink/virginsexonthebeach
 	glass_icon_state = "virginsexonthebeachglass"
 
-/datum/reagent/drink/phobos
+/datum/reagent/ethanol/phobos
 	glass_icon_state = "phobos"
 
-/datum/reagent/drink/greenstuff
+/datum/reagent/ethanol/greenstuff
 	glass_icon_state = "greenstuff"
 
 /datum/reagent/ethanol/russianbastard
