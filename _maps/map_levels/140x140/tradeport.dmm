@@ -246,8 +246,15 @@
 /obj/structure/sign/poster{
 	pixel_y = -32
 	},
-/obj/structure/table/rack/shelf/steel,
-/obj/item/bluespace_radio/commerce,
+/obj/structure/table/standard,
+/obj/item/duct_tape_roll{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/duct_tape_roll{
+	pixel_x = -2;
+	pixel_y = -1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "aV" = (
@@ -7446,9 +7453,9 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_access = list(160)
 	},
-/obj/item/gun/energy/taser/civ,
-/obj/item/gun/energy/taser/civ,
-/obj/item/gun/energy/taser/civ,
+/obj/item/gun/energy/civtas,
+/obj/item/gun/energy/civtas,
+/obj/item/gun/energy/civtas,
 /obj/random/energy,
 /obj/random/handgun,
 /obj/random/weapon/guarenteed,
@@ -10071,7 +10078,8 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "Lc" = (
-/obj/machinery/exonet_node,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/bluespace_radio/commerce,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "Li" = (
