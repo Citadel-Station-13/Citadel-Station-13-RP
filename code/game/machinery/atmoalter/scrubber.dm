@@ -46,6 +46,7 @@
 	..(severity)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/update_icon_state()
+	. = ..()
 	if(on && cell && cell.charge)
 		icon_state = "pscrubber:1"
 	else

@@ -17,14 +17,14 @@
 	src.slot_info = list()
 
 	var/list/hud_elements = list()
-	var/obj/screen/using
-	var/obj/screen/inventory/inv_box
+	var/atom/movable/screen/using
+	var/atom/movable/screen/inventory/inv_box
 
 	// Draw the various inventory equipment slots.
 	var/has_hidden_gear
 	for(var/gear_slot in hud_data.gear)
 
-		inv_box = new /obj/screen/inventory()
+		inv_box = new /atom/movable/screen/inventory()
 		inv_box.icon = ui_style
 		inv_box.color = ui_color
 		inv_box.alpha = ui_alpha
@@ -46,7 +46,7 @@
 			src.adding += inv_box
 
 	if(has_hidden_gear)
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = "toggle"
 		using.icon = ui_style
 		using.icon_state = "other"
@@ -59,7 +59,7 @@
 	// Draw the attack intent dialogue.
 	if(hud_data.has_a_intent)
 
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = "act_intent"
 		using.icon = ui_style
 		using.icon_state = "intent_"+mymob.a_intent
@@ -77,7 +77,7 @@
 		ico = new(ui_style, "black")
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),1,ico.Height()/2,ico.Width()/2,ico.Height())
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = INTENT_HELP
 		using.icon = ico
 		using.screen_loc = ui_acti
@@ -89,7 +89,7 @@
 		ico = new(ui_style, "black")
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),ico.Width()/2,ico.Height()/2,ico.Width(),ico.Height())
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = INTENT_DISARM
 		using.icon = ico
 		using.screen_loc = ui_acti
@@ -101,7 +101,7 @@
 		ico = new(ui_style, "black")
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),ico.Width()/2,1,ico.Width(),ico.Height()/2)
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = INTENT_GRAB
 		using.icon = ico
 		using.screen_loc = ui_acti
@@ -113,7 +113,7 @@
 		ico = new(ui_style, "black")
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),1,1,ico.Width()/2,ico.Height()/2)
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = INTENT_HARM
 		using.icon = ico
 		using.screen_loc = ui_acti
@@ -124,7 +124,7 @@
 		//end intent small hud objects
 
 	if(hud_data.has_m_intent)
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = "mov_intent"
 		using.icon = ui_style
 		using.icon_state = (mymob.m_intent == "run" ? "running" : "walking")
@@ -135,7 +135,7 @@
 		move_intent = using
 
 	if(hud_data.has_drop)
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = "drop"
 		using.icon = ui_style
 		using.icon_state = "act_drop"
@@ -146,7 +146,7 @@
 
 	if(hud_data.has_hands)
 
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = "equip"
 		using.icon = ui_style
 		using.icon_state = "act_equip"
@@ -155,7 +155,7 @@
 		using.alpha = ui_alpha
 		src.adding += using
 
-		inv_box = new /obj/screen/inventory/hand()
+		inv_box = new /atom/movable/screen/inventory/hand()
 		inv_box.hud = src
 		inv_box.name = "r_hand"
 		inv_box.icon = ui_style
@@ -170,7 +170,7 @@
 		src.adding += inv_box
 		slot_info["[slot_r_hand]"] = inv_box.screen_loc
 
-		inv_box = new /obj/screen/inventory/hand()
+		inv_box = new /atom/movable/screen/inventory/hand()
 		inv_box.hud = src
 		inv_box.name = "l_hand"
 		inv_box.icon = ui_style
@@ -185,7 +185,7 @@
 		src.adding += inv_box
 		slot_info["[slot_l_hand]"] = inv_box.screen_loc
 
-		using = new /obj/screen/inventory()
+		using = new /atom/movable/screen/inventory()
 		using.name = "hand"
 		using.icon = ui_style
 		using.icon_state = "hand1"
@@ -194,7 +194,7 @@
 		using.alpha = ui_alpha
 		src.adding += using
 
-		using = new /obj/screen/inventory()
+		using = new /atom/movable/screen/inventory()
 		using.name = "hand"
 		using.icon = ui_style
 		using.icon_state = "hand2"
@@ -204,7 +204,7 @@
 		src.adding += using
 
 	if(hud_data.has_resist)
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = "resist"
 		using.icon = ui_style
 		using.icon_state = "act_resist"
@@ -214,7 +214,7 @@
 		src.hotkeybuttons += using
 
 	if(hud_data.has_throw)
-		mymob.throw_icon = new /obj/screen()
+		mymob.throw_icon = new /atom/movable/screen()
 		mymob.throw_icon.icon = ui_style
 		mymob.throw_icon.icon_state = "act_throw_off"
 		mymob.throw_icon.name = "throw"
@@ -224,7 +224,7 @@
 		src.hotkeybuttons += mymob.throw_icon
 		hud_elements |= mymob.throw_icon
 
-		mymob.pullin = new /obj/screen()
+		mymob.pullin = new /atom/movable/screen()
 		mymob.pullin.icon = ui_style
 		mymob.pullin.icon_state = "pull0"
 		mymob.pullin.name = "pull"
@@ -233,7 +233,7 @@
 		hud_elements |= mymob.pullin
 
 	if(hud_data.has_internals)
-		mymob.internals = new /obj/screen()
+		mymob.internals = new /atom/movable/screen()
 		mymob.internals.icon = ui_style
 		mymob.internals.icon_state = "internal[target?.internal? 1 : 0]"
 		mymob.internals.name = "internal"
@@ -241,28 +241,28 @@
 		hud_elements |= mymob.internals
 
 	if(hud_data.has_warnings)
-		mymob.oxygen = new /obj/screen()
+		mymob.oxygen = new /atom/movable/screen()
 		mymob.oxygen.icon = ui_style
 		mymob.oxygen.icon_state = "oxy0"
 		mymob.oxygen.name = "oxygen"
 		mymob.oxygen.screen_loc = ui_oxygen
 		hud_elements |= mymob.oxygen
 
-		mymob.toxin = new /obj/screen()
+		mymob.toxin = new /atom/movable/screen()
 		mymob.toxin.icon = ui_style
 		mymob.toxin.icon_state = "tox0"
 		mymob.toxin.name = "toxin"
 		mymob.toxin.screen_loc = ui_toxin
 		hud_elements |= mymob.toxin
 
-		mymob.fire = new /obj/screen()
+		mymob.fire = new /atom/movable/screen()
 		mymob.fire.icon = ui_style
 		mymob.fire.icon_state = "fire0"
 		mymob.fire.name = "fire"
 		mymob.fire.screen_loc = ui_fire
 		hud_elements |= mymob.fire
 
-		mymob.healths = new /obj/screen()
+		mymob.healths = new /atom/movable/screen()
 		mymob.healths.icon = ui_style
 		mymob.healths.icon_state = "health0"
 		mymob.healths.name = "health"
@@ -270,7 +270,7 @@
 		hud_elements |= mymob.healths
 
 	if(hud_data.has_pressure)
-		mymob.pressure = new /obj/screen()
+		mymob.pressure = new /atom/movable/screen()
 		mymob.pressure.icon = ui_style
 		mymob.pressure.icon_state = "pressure0"
 		mymob.pressure.name = "pressure"
@@ -278,7 +278,7 @@
 		hud_elements |= mymob.pressure
 
 	if(hud_data.has_bodytemp)
-		mymob.bodytemp = new /obj/screen()
+		mymob.bodytemp = new /atom/movable/screen()
 		mymob.bodytemp.icon = ui_style
 		mymob.bodytemp.icon_state = "temp1"
 		mymob.bodytemp.name = "body temperature"
@@ -286,14 +286,14 @@
 		hud_elements |= mymob.bodytemp
 
 	if(target.isSynthetic()) //are we a synth?
-		mymob.synthbattery_icon = new /obj/screen()
+		mymob.synthbattery_icon = new /atom/movable/screen()
 		mymob.synthbattery_icon.icon = 'icons/mob/screen1_robot.dmi' //dont define a new ui_style when we are only changing a single entry
 		mymob.synthbattery_icon.icon_state = "charge0" //use the power cell icons for robots; burger icons OUT
 		mymob.synthbattery_icon.name = "cell"
 		mymob.synthbattery_icon.screen_loc = ui_nutrition
 		hud_elements |= mymob.synthbattery_icon
 	else //resume business as usual otherwise
-		mymob.nutrition_icon = new /obj/screen()
+		mymob.nutrition_icon = new /atom/movable/screen()
 		mymob.nutrition_icon.icon = ui_style
 		mymob.nutrition_icon.icon_state = "nutrition0"
 		mymob.nutrition_icon.name = "nutrition"
@@ -301,41 +301,41 @@
 		hud_elements |= mymob.nutrition_icon
 
 	//VOREStation Addition begin
-	mymob.shadekin_dark_display = new /obj/screen/shadekin/darkness()
+	mymob.shadekin_dark_display = new /atom/movable/screen/shadekin/darkness()
 	mymob.shadekin_dark_display.screen_loc = ui_shadekin_dark_display
 	mymob.shadekin_dark_display.icon_state = "dark"
 	hud_elements |= mymob.shadekin_dark_display
 
-	mymob.shadekin_energy_display = new /obj/screen/shadekin/energy()
+	mymob.shadekin_energy_display = new /atom/movable/screen/shadekin/energy()
 	mymob.shadekin_energy_display.screen_loc = ui_shadekin_energy_display
 	mymob.shadekin_energy_display.icon_state = "energy0"
 	hud_elements |= mymob.shadekin_energy_display
 
-	mymob.xenochimera_danger_display = new /obj/screen/xenochimera/danger_level()
+	mymob.xenochimera_danger_display = new /atom/movable/screen/xenochimera/danger_level()
 	mymob.xenochimera_danger_display.screen_loc = ui_xenochimera_danger_display
 	mymob.xenochimera_danger_display.icon_state = "danger00"
 	hud_elements |= mymob.xenochimera_danger_display
 	//VOREStation Addition end
 
-	mymob.ling_chem_display = new /obj/screen/ling/chems()
+	mymob.ling_chem_display = new /atom/movable/screen/ling/chems()
 	mymob.ling_chem_display.screen_loc = ui_ling_chemical_display
 	mymob.ling_chem_display.icon_state = "ling_chems"
 	hud_elements |= mymob.ling_chem_display
 
-	mymob.wiz_instability_display = new /obj/screen/wizard/instability()
+	mymob.wiz_instability_display = new /atom/movable/screen/wizard/instability()
 	mymob.wiz_instability_display.screen_loc = ui_wiz_instability_display
 	mymob.wiz_instability_display.icon_state = "wiz_instability_none"
 	hud_elements |= mymob.wiz_instability_display
 
-	mymob.wiz_energy_display = new/obj/screen/wizard/energy()
+	mymob.wiz_energy_display = new/atom/movable/screen/wizard/energy()
 	mymob.wiz_energy_display.screen_loc = ui_wiz_energy_display
 	mymob.wiz_energy_display.icon_state = "wiz_energy"
 	hud_elements |= mymob.wiz_energy_display
 
 
-	mymob.pain = new /obj/screen( null )
+	mymob.pain = new /atom/movable/screen( null )
 
-	mymob.zone_sel = new /obj/screen/zone_sel( null )
+	mymob.zone_sel = new /atom/movable/screen/zone_sel( null )
 	mymob.zone_sel.icon = ui_style
 	mymob.zone_sel.color = ui_color
 	mymob.zone_sel.alpha = ui_alpha
@@ -344,7 +344,7 @@
 	hud_elements |= mymob.zone_sel
 
 	/*
-	mymob.crafting = new /obj/screen/crafting(null)
+	mymob.crafting = new /atom/movable/screen/crafting(null)
 	mymob.crafting.icon = ui_style
 	mymob.crafting.color = ui_color
 	mymob.crafting.alpha = ui_alpha
@@ -352,23 +352,23 @@
 	*/
 
 	//Handle the gun settings buttons
-	mymob.gun_setting_icon = new /obj/screen/gun/mode(null)
+	mymob.gun_setting_icon = new /atom/movable/screen/gun/mode(null)
 	mymob.gun_setting_icon.icon = ui_style
 	mymob.gun_setting_icon.color = ui_color
 	mymob.gun_setting_icon.alpha = ui_alpha
 	hud_elements |= mymob.gun_setting_icon
 
-	mymob.item_use_icon = new /obj/screen/gun/item(null)
+	mymob.item_use_icon = new /atom/movable/screen/gun/item(null)
 	mymob.item_use_icon.icon = ui_style
 	mymob.item_use_icon.color = ui_color
 	mymob.item_use_icon.alpha = ui_alpha
 
-	mymob.gun_move_icon = new /obj/screen/gun/move(null)
+	mymob.gun_move_icon = new /atom/movable/screen/gun/move(null)
 	mymob.gun_move_icon.icon = ui_style
 	mymob.gun_move_icon.color = ui_color
 	mymob.gun_move_icon.alpha = ui_alpha
 
-	mymob.radio_use_icon = new /obj/screen/gun/radio(null)
+	mymob.radio_use_icon = new /atom/movable/screen/gun/radio(null)
 	mymob.radio_use_icon.icon = ui_style
 	mymob.radio_use_icon.color = ui_color
 	mymob.radio_use_icon.alpha = ui_alpha
@@ -403,21 +403,21 @@
 	all_underwear.Cut()
 	regenerate_icons()
 
-/obj/screen/ling
+/atom/movable/screen/ling
 	invisibility = 101
 
-/obj/screen/ling/chems
+/atom/movable/screen/ling/chems
 	name = "chemical storage"
 	icon_state = "power_display"
 
-/obj/screen/wizard
+/atom/movable/screen/wizard
 	invisibility = 101
 
-/obj/screen/wizard/instability
+/atom/movable/screen/wizard/instability
 	name = "instability"
 	icon_state = "instability-1"
 	invisibility = 0
 
-/obj/screen/wizard/energy
+/atom/movable/screen/wizard/energy
 	name = "energy"
 	icon_state = "wiz_energy"
