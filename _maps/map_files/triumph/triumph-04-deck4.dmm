@@ -20392,7 +20392,7 @@
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/item/storage/firstaid{
+/obj/item/storage/firstaid/regular{
 	pixel_x = -2;
 	pixel_y = -1
 	},
@@ -29309,8 +29309,8 @@
 "tQv" = (
 /obj/structure/table/reinforced,
 /obj/item/roller,
-/obj/item/storage/firstaid,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled,
 /area/exploration/excursion_dock)
 "tSf" = (
@@ -33652,10 +33652,6 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
-"wDx" = (
-/obj/machinery/suit_cycler/medical,
-/turf/simulated/floor/tiled,
-/area/exploration/explorer_prep)
 "wDz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -43250,7 +43246,7 @@ nIK
 nIK
 nIK
 sJC
-wDx
+gBY
 cVO
 vcE
 fhd
