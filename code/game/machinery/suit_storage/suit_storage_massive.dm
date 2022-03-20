@@ -109,7 +109,7 @@
 				var/obj/item/clothing/shoes/boot_selection = input(user, "Which Boots would you like to remove?", "Remove Contents") as null|anything in boots
 				if(istype(boot_selection))
 					boot_selection.loc = src.loc
-					LAZYREMOVE(suits, boot_selection)
+					LAZYREMOVE(boots, boot_selection)
 					update_amounts()
 			if("Mask")
 				if(mask_amount <= 0)
@@ -117,7 +117,7 @@
 				var/obj/item/clothing/mask/mask_selection = input(user, "Which Mask would you like to remove?", "Remove Contents") as null|anything in masks
 				if(istype(mask_selection))
 					mask_selection.loc = src.loc
-					LAZYREMOVE(suits, mask_selection)
+					LAZYREMOVE(masks, mask_selection)
 					update_amounts()
 		return 1
 	return 0
