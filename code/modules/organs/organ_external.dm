@@ -254,11 +254,11 @@
 				qdel(W)
 				break
 			parent.update_damages()
-
+*/
 /****************************************************
 			   DAMAGE PROCS
 ****************************************************/
-
+/*
 /obj/item/organ/external/proc/is_damageable(var/additional_damage = 0)
 	//Continued damage to vital organs can kill you, and robot organs don't count towards total damage so no need to cap them.
 	return (vital || (robotic >= ORGAN_ROBOT) || brute_dam + burn_dam + additional_damage < max_damage)
@@ -455,9 +455,9 @@
 	return 1
 
 
-/*
-This function completely restores a damaged organ to perfect condition.
-*/
+
+//This function completely restores a damaged organ to perfect condition.
+
 /obj/item/organ/external/rejuvenate(var/ignore_prosthetic_prefs)
 	damage_state = "00"
 	status = 0
@@ -557,11 +557,11 @@ This function completely restores a damaged organ to perfect condition.
 				break
 		if(W)
 			wounds += W
-
+*/
 /****************************************************
 			   PROCESSING & UPDATING
 ****************************************************/
-
+/*
 //external organs handle brokenness a bit differently when it comes to damage. Instead brute_dam is checked inside process()
 //this also ensures that an external organ cannot be "broken" without broken_description being set.
 /obj/item/organ/external/is_broken()
@@ -605,7 +605,7 @@ This function completely restores a damaged organ to perfect condition.
 		update_germs()
 	else
 		..()
-
+*/
 //Updating germ levels. Handles organ germ levels and necrosis.
 /*
 The INFECTION_LEVEL values defined in setup.dm control the time it takes to reach the different
@@ -625,6 +625,7 @@ INFECTION_LEVEL_THREE	above this germ level the player will take additional toxi
 
 Note that amputating the affected organ does in fact remove the infection from the player's body.
 */
+/*
 /obj/item/organ/external/proc/update_germs()
 
 	if(robotic >= ORGAN_ROBOT || (owner.species && (owner.species.flags & IS_PLANT || (owner.species.flags & NO_INFECT)))) //Robotic limbs shouldn't be infected, nor should nonexistant limbs.
@@ -632,13 +633,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return
 
 	if(owner.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
-		//** Syncing germ levels with external wounds
+		//** Syncing germ levels with external wounds*/
 		handle_germ_sync()
 
-		//** Handle antibiotics and curing infections
+		//** Handle antibiotics and curing infections*/
 		handle_antibiotics()
 
-		//** Handle the effects of infections
+		//** Handle the effects of infections*/
 		handle_germ_effects()
 
 /obj/item/organ/external/proc/handle_germ_sync()
@@ -842,11 +843,11 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(robotic >= ORGAN_NANOFORM && damage >= max_damage)
 			droplimb(TRUE, DROPLIMB_BURN)
 		//VOREStation Add End
-
+*/
 /****************************************************
 			   DISMEMBERMENT
 ****************************************************/
-
+/*
 //Handles dismemberment
 /obj/item/organ/external/proc/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children = null)
 
@@ -965,11 +966,11 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(victim.r_hand)
 		if(istype(victim.r_hand,/obj/item/material/twohanded))
 			victim.r_hand.update_held_icon()
-
+*/
 /****************************************************
 			   HELPERS
 ****************************************************/
-
+/*
 /obj/item/organ/external/proc/is_stump()
 	return 0
 
@@ -1406,5 +1407,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 			return R.manual_dexterity
 	if(species)
 		return species.get_manual_dexterity(owner)
+)
 */
 
