@@ -275,6 +275,8 @@
 	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
 	if(!is_FBP() && S.min_age > 18)
 		min_age = S.min_age
+	if(S.is_elder)
+		return S.min_age
 	return min_age
 
 /datum/category_item/player_setup_item/proc/get_max_age()
@@ -289,6 +291,8 @@
 			return 220
 		if(PREF_FBP_SOFTWARE)
 			return 150
+	if(S.is_elder)
+		return S.max_age
 	return S.max_age // welp
 
 /datum/category_item/player_setup_item/proc/color_square(red, green, blue, hex)

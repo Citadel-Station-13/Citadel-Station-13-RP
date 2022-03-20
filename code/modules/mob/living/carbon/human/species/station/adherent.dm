@@ -28,6 +28,7 @@
 	rarity_value =            6
 	min_age =                 10000
 	max_age =                 12000
+	is_elder = TRUE	//These guys old as fuuuuuck
 //	antaghud_offset_y =       14
 	warning_low_pressure =    50
 	hazard_low_pressure =     -1
