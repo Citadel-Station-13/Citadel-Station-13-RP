@@ -277,7 +277,7 @@
 	animate(P, pixel_x = A.pixel_x, pixel_y = A.pixel_y, time = 0.5 SECONDS, easing = QUAD_EASING)
 	QDEL_IN(P, 2 SECONDS)
 	face_atom(A)
-	log_emote("POINTED: [key_name(src)] pointed at [A] ([COORD(A)]).")
+	log_emote("POINTED --> at [A] ([COORD(A)]).", src)
 	return 1
 
 /mob/verb/set_self_relative_layer()
