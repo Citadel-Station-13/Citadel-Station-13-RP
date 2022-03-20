@@ -50,7 +50,6 @@
 
 	var/min_age = 18
 	var/max_age = 70
-	var/is_elder = FALSE	//Set to True to allow a species to override the min_age. SHOULD be used to increase the min_age, NEVER to decrease it.
 
 	// Language/culture vars.
 	var/default_language = LANGUAGE_GALCOM					// Default language is used when 'say' is used without modifiers.
