@@ -230,7 +230,7 @@
 		H.visible_message("<span class = 'warning'> <b>[H] looks ready to burst!</b></span>")
 		to_chat(H,"<span class = 'notice'><b>We are ready.</b></span>")
 		var/spell/targeted/chimera/hatch_pop/S = new /spell/targeted/chimera/hatch_pop(H)
-		var/master_type = /obj/screen/movable/spell_master/chimera
+		var/master_type = /atom/movable/screen/movable/spell_master/chimera
 		H.add_spell(S, "cult", master_type)
 
 

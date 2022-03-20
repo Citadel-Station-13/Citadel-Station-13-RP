@@ -81,6 +81,8 @@
 #define VV_HK_ADD_REAGENT "addreagent"
 #define VV_HK_TRIGGER_EMP "empulse"
 #define VV_HK_TRIGGER_EXPLOSION "explode"
+#define VV_HK_EDIT_FILTERS "edit_filters"
+#define VV_HK_EDIT_COLOR_MATRIX "edit_color_matrix"
 
 /*
 // /obj

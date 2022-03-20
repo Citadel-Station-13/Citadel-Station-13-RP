@@ -95,7 +95,7 @@ var/global/photo_count = 0
 
 	if((istype(usr, /mob/living/carbon/human)))
 		var/mob/living/carbon/human/M = usr
-		if(!( istype(over_object, /obj/screen) ))
+		if(!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 		playsound(loc, "rustle", 50, 1, -5)
 		if((!( M.restrained() ) && !( M.stat ) && M.back == src))
