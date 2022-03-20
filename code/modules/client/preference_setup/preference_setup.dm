@@ -291,8 +291,6 @@
 			return 220
 		if(PREF_FBP_SOFTWARE)
 			return 150
-	if(S.is_elder)
-		return S.max_age
 	return S.max_age // welp
 
 /datum/category_item/player_setup_item/proc/color_square(red, green, blue, hex)
