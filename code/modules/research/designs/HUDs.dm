@@ -38,6 +38,7 @@
 	build_path = /obj/item/clothing/glasses/material
 	sort_string = "EAAAD"
 
+/* Graviton't
 /datum/design/item/hud/graviton_visor
 	name = "graviton visor"
 	id = "graviton_goggles"
@@ -45,6 +46,7 @@
 	materials = list(MAT_PLASTEEL = 2000, "glass" = 3000, MAT_PHORON = 1500)
 	build_path = /obj/item/clothing/glasses/graviton
 	sort_string = "EAAAE"
+*/
 
 /datum/design/item/hud/omni
 	name = "AR glasses"
