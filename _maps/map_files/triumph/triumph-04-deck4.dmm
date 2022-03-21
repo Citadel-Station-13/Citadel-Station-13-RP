@@ -1586,7 +1586,6 @@
 "bky" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_security{
-	id_tag = null;
 	layer = 2.8;
 	name = "Security";
 	req_one_access = list(1,38)
@@ -1874,7 +1873,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_security{
 	name = "Firing Range";
-	req_access = null;
 	req_one_access = list(1,2,4)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2663,9 +2661,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = null
-	},
+/obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "bWc" = (
@@ -3262,8 +3258,6 @@
 /area/shuttle/courser/general)
 "crT" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/shield_diffuser,
@@ -3414,7 +3408,6 @@
 "cwG" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_security{
-	id_tag = null;
 	layer = 2.8;
 	name = "Security";
 	req_one_access = list(1,38)
@@ -5366,9 +5359,7 @@
 	pixel_y = 25
 	},
 /obj/effect/map_helper/airlock/door/int_door,
-/obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = null
-	},
+/obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "dTt" = (
@@ -5735,6 +5726,10 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
+"edh" = (
+/obj/machinery/suit_storage_closet,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "edw" = (
 /mob/living/simple_mob/animal/passive/honkpet,
 /turf/simulated/floor/carpet/gaycarpet,
@@ -8139,8 +8134,6 @@
 /area/bridge/hallway)
 "fAZ" = (
 /obj/structure/table/rack,
-/obj/item/clothing/suit/space/void,
-/obj/item/clothing/head/helmet/space/void,
 /obj/item/suit_cooling_unit,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -8148,6 +8141,10 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "fBb" = (
@@ -8563,9 +8560,7 @@
 	master_tag = "expshuttle_docker";
 	pixel_x = 24
 	},
-/obj/machinery/door/airlock/voidcraft/vertical{
-	id_tag = null
-	},
+/obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/shuttle/plating,
 /area/shuttle/excursion/general)
 "fVF" = (
@@ -13959,9 +13954,7 @@
 "jCa" = (
 /obj/machinery/door/firedoor,
 /obj/effect/map_helper/airlock/door/int_door,
-/obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = null
-	},
+/obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "jCj" = (
@@ -13991,9 +13984,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 8;
-	name = "Gateway Prep";
-	req_access = null;
-	req_one_access = null
+	name = "Gateway Prep"
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
@@ -14620,13 +14611,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "expshuttle_docker";
-	pixel_x = -22;
-	tag_airpump = null;
-	tag_chamber_sensor = null;
-	tag_exterior_door = null;
-	tag_exterior_sensor = null;
-	tag_interior_door = null;
-	tag_interior_sensor = null
+	pixel_x = -22
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
@@ -16773,8 +16758,7 @@
 	dir = 4;
 	frequency = 1380;
 	id_tag = "deck4_dockarm2";
-	pixel_x = -26;
-	req_one_access = null
+	pixel_x = -26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -19817,8 +19801,7 @@
 	frequency = 1380;
 	id_tag = "deck4_dockarm1";
 	pixel_x = -26;
-	pixel_y = 1;
-	req_one_access = null
+	pixel_y = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -21124,8 +21107,6 @@
 /area/security/interrogation)
 "oEc" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -22704,9 +22685,7 @@
 /area/triumph/surfacebase/tram)
 "pFz" = (
 /obj/effect/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = null
-	},
+/obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "pFE" = (
@@ -23135,9 +23114,7 @@
 	name = "Shuttle Lockdown";
 	opacity = 0
 	},
-/obj/machinery/door/airlock/voidcraft/vertical{
-	id_tag = null
-	},
+/obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "pTM" = (
@@ -23974,7 +23951,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_security{
 	name = "Firing Range";
-	req_access = null;
 	req_one_access = list(1,2,4)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -24818,6 +24794,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
+"qPb" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "qPg" = (
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
@@ -24956,8 +24938,7 @@
 /area/exploration/pilot_prep)
 "qTZ" = (
 /obj/machinery/computer/shuttle_control/explore/civvie{
-	dir = 8;
-	req_one_access = null
+	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
@@ -27554,16 +27535,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "sFB" = (
-/obj/item/clothing/suit/space/void,
-/obj/item/clothing/head/helmet/space/void,
-/obj/structure/table/rack,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/item/suit_cooling_unit,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "sFD" = (
@@ -28176,8 +28147,7 @@
 	id = "cockpit_lockdown";
 	name = "Cockpit Lockdown";
 	pixel_x = -30;
-	pixel_y = 5;
-	req_access = null
+	pixel_y = 5
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
@@ -30255,8 +30225,6 @@
 /area/exploration)
 "uxk" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
 	name = "Docking Port Airlock"
 	},
 /obj/effect/map_helper/airlock/door/int_door,
@@ -30779,8 +30747,7 @@
 /obj/machinery/button/windowtint{
 	dir = 4;
 	id = "sauna_tint";
-	pixel_x = -25;
-	req_access = null
+	pixel_x = -25
 	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
@@ -34854,8 +34821,6 @@
 /area/exploration/excursion_dock)
 "xsS" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/shield_diffuser,
@@ -46082,7 +46047,7 @@ nPD
 nPD
 nPD
 nPD
-sFB
+qPb
 fPV
 bOS
 tXj
@@ -46508,7 +46473,7 @@ nIK
 nIK
 nIK
 nPD
-sFB
+edh
 uQF
 vRK
 rpB
