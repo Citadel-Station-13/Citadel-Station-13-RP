@@ -321,7 +321,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			quench()
 	return ..()
 
-/obj/item/clothing/mask/smokable/cigarette_import
+/obj/item/clothing/mask/smokable/cigarette/import
 	name = "cigarette"
 	desc = "A roll of tobacco and blended herbs."
 	icon_state = "cigimp"
@@ -334,7 +334,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 15
 	max_smoketime = 300
 	smoketime = 300
-	var/nicotine_amt = 2
+	nicotine_amt = 2
 
 ////////////
 // CIGARS //

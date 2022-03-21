@@ -1674,5 +1674,5 @@
 	name = "Mary On a Cross"
 	id = "maryonacross"
 	result = "maryonacross"
-	required_reagents = list("bloodymary" = 2, "blood" = 1, "holy water" = 1, "vodka" = 1)
+	required_reagents = list("bloodymary" = 2, "blood" = 1, "holywater" = 1, "vodka" = 1)
 	result_amount = 5
