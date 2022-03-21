@@ -17,12 +17,12 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	circuit = /obj/item/circuitboard/pointdefense_control
 	var/list/targets = list()  // Targets being engaged by associated batteries
 	var/id_tag = null
-/*
+
 /obj/machinery/pointdefense_control/Initialize(mapload)
 	. = ..()
 	if(id_tag)
 		//No more than 1 controller please.
-		for(var/thing in pointdefense_controllers)
+		for(var/thing in GLOB.pointdefense_controllers)
 			var/obj/machinery/pointdefense_control/PC = thing
 			if(PC != src && PC.id_tag == id_tag)
 				warning("Two [src] with the same id_tag of [id_tag]")
@@ -37,7 +37,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(!id_tag)
 		. += "[desc_panel_image("multitool")]to set ident tag"
 
-/obj/machinery/pointdefense_control/tgui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/pointdefense_control/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "PointDefenseControl") // 400, 600
@@ -46,10 +46,10 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 /obj/machinery/pointdefense_control/attack_hand(mob/user)
 	if(..())
 		return TRUE
-	tgui_interact(user)
+	ui_interact(user)
 	return TRUE
 
-/obj/machinery/pointdefense_control/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/pointdefense_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 
@@ -70,14 +70,14 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			PD.Deactivate()
 		return TRUE
 
-/obj/machinery/pointdefense_control/tgui_data(mob/user)
+/obj/machinery/pointdefense_control/ui_data(mob/user)
 	var/list/data = list()
 	data["id"] = id_tag
 	var/list/turrets = list()
 	if(id_tag)
 		var/list/connected_z_levels = GetConnectedZlevels(get_z(src))
-		for(var/i = 1 to LAZYLEN(pointdefense_turrets))
-			var/obj/machinery/power/pointdefense/PD = pointdefense_turrets[i]
+		for(var/i = 1 to LAZYLEN(GLOB.pointdefense_turrets))
+			var/obj/machinery/power/pointdefense/PD = GLOB.pointdefense_turrets[i]
 			if(!(PD.id_tag == id_tag && (get_z(PD) in connected_z_levels)))
 				continue
 			var/list/turret = list()
@@ -96,9 +96,9 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 /obj/machinery/pointdefense_control/attackby(var/obj/item/W, var/mob/user)
 	if(W?.is_multitool())
 		var/new_ident = input(user, "Enter a new ident tag.", "[src]", id_tag) as null|text
-		if(new_ident && new_ident != id_tag && user.Adjacent(src) && CanInteract(user, GLOB.tgui_physical_state))
+		if(new_ident && new_ident != id_tag && user.Adjacent(src) && CanInteract(user, GLOB.physical_state))
 			// Check for duplicate controllers with this ID
-			for(var/thing in pointdefense_controllers)
+			for(var/thing in GLOB.pointdefense_controllers)
 				var/obj/machinery/pointdefense_control/PC = thing
 				if(PC != src && PC.id_tag == id_tag)
 					to_chat(user, "<span class='warning'>The [new_ident] network already has a controller.</span>")
@@ -113,7 +113,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(default_part_replacement(user, W))
 		return
 	return ..()
-*/
+
 //
 // The acutal point defense battery
 //
@@ -137,7 +137,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	var/rotation_speed = 0.25 SECONDS  //How quickly we turn to face threats
 	var/engaging = null // The meteor we're shooting at
 	var/id_tag = null
-/*
+
 /obj/machinery/power/pointdefense/Initialize()
 	. = ..()
 	// TODO - Remove this bit once machines are converted to Initialize
@@ -167,7 +167,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/power/pointdefense/default_unfasten_wrench(var/mob/user, var/obj/item/weapon/W, var/time)
+/obj/machinery/power/pointdefense/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time)
 	if((. = ..()))
 		src.transform = null // Reset rotation if we're anchored/unanchored
 
@@ -207,7 +207,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(!id_tag)
 		return null
 	var/list/connected_z_levels = GetConnectedZlevels(get_z(src))
-	for(var/thing in pointdefense_controllers)
+	for(var/thing in GLOB.pointdefense_controllers)
 		var/obj/machinery/pointdefense_control/PDC = thing
 		if(PDC.id_tag == id_tag && (get_z(PDC) in connected_z_levels))
 			return PDC
@@ -215,7 +215,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 /obj/machinery/power/pointdefense/attackby(var/obj/item/W, var/mob/user)
 	if(W?.is_multitool())
 		var/new_ident = input(user, "Enter a new ident tag.", "[src]", id_tag) as null|text
-		if(new_ident && new_ident != id_tag && user.Adjacent(src) && CanInteract(user, GLOB.tgui_physical_state))
+		if(new_ident && new_ident != id_tag && user.Adjacent(src) && CanInteract(user, GLOB.physical_state))
 			to_chat(user, "<span class='notice'>You register [src] with the [new_ident] network.</span>")
 			id_tag = new_ident
 		return
@@ -236,7 +236,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			return FALSE
 	return TRUE
 
-/obj/machinery/power/pointdefense/proc/Shoot(var/target)
+/obj/machinery/power/pointdefense/proc/Shoot(var/datum/weakref/target)
 	var/obj/effect/meteor/M = target.resolve()
 	if(!istype(M))
 		engaging = null
@@ -248,9 +248,9 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	addtimer(CALLBACK(src, .proc/finish_shot, target), rotation_speed)
 	animate(src, transform = rot_matrix, rotation_speed, easing = SINE_EASING)
 
-	set_dir(ATAN2(transform.b, transform.a) > 0 ? NORTH : SOUTH)
+	setDir(arctan(transform.b, transform.a) > 0 ? NORTH : SOUTH)
 
-/obj/machinery/power/pointdefense/proc/finish_shot(var/target)
+/obj/machinery/power/pointdefense/proc/finish_shot(var/datum/weakref/target)
 
 	var/obj/machinery/pointdefense_control/PC = get_controller()
 	engaging = null
@@ -261,7 +261,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(!istype(M))
 		return
 	if(use_power_oneoff(active_power_usage) < active_power_usage)
-		var/datum/effect/system/spark_spread/s = new /datum/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
 		visible_message("[src] sputters as browns out while attempting to fire.")
@@ -279,9 +279,9 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(!active)
 		return
 	/*
-	var/desiredir = ATAN2(transform.b, transform.a) > 0 ? NORTH : SOUTH
+	var/desiredir = arctan(transform.b, transform.a) > 0 ? NORTH : SOUTH
 	if(dir != desiredir)
-		set_dir(desiredir)
+		setDir(desiredir)
 	*/
 
 	if(LAZYLEN(GLOB.meteor_list) > 0)
@@ -301,12 +301,12 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 	// Compile list of known targets
 	var/list/existing_targets = list()
-	for(var/WR in PC.targets)
+	for(var/datum/weakref/WR in PC.targets)
 		var/obj/effect/meteor/M = WR.resolve()
 		existing_targets += M
 
 	// First, try and acquire new targets
-	var/list/potential_targets = meteor_list.Copy() - existing_targets
+	var/list/potential_targets = GLOB.meteor_list.Copy() - existing_targets
 	for(var/obj/effect/meteor/M in potential_targets)
 		if(targeting_check(M))
 			var/target = M
@@ -370,4 +370,3 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	active = FALSE
 	update_icon()
 	return TRUE
-*/
