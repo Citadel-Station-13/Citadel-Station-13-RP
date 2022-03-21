@@ -341,6 +341,7 @@
 	name = "\improper pack of Black Stars"
 	desc = "A rare brand of imported herbal cigarettes. The package smells faintly of allspice."
 	icon_state = "BSpacket"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette_import = 6)
 	brand = "\improper Black Star"
 
 /obj/item/storage/fancy/cigar
