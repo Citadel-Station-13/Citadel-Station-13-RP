@@ -2,7 +2,7 @@
 #define MED_DATA_MAINT	3	// Records maintenance
 #define MED_DATA_RECORD	4	// Record
 #define MED_DATA_V_DATA	5	// Virus database
-#define MED_DATA_MEDBOT	6	// Medbot monitor
+#define MED_DATA_MEDIBOT	6	// Medibot monitor
 
 #define FIELD(N, V, E) list(field = N, value = V, edit = E)
 #define MED_FIELD(N, V, E, LB) list(field = N, value = V, edit = E, line_break = LB)
@@ -172,27 +172,27 @@
 				for(var/ID in virusDB)
 					var/datum/data/record/v = virusDB[ID]
 					data["virus"] += list(list("name" = v.fields["name"], "D" = "\ref[v]"))
-			if(MED_DATA_MEDBOT)
-				data["medbots"] = list()
-				for(var/mob/living/bot/medbot/M in GLOB.mob_list)
+			if(MED_DATA_MEDIBOT)
+				data["medibots"] = list()
+				for(var/mob/living/bot/medibot/M in GLOB.mob_list)
 					if(M.z != z)
 						continue
 					var/turf/T = get_turf(M)
 					if(T)
-						var/medbot = list()
+						var/medibot = list()
 						var/area/A = get_area(T)
-						medbot["name"] = M.name
-						medbot["area"] = A.name
-						medbot["x"] = T.x
-						medbot["y"] = T.y
-						medbot["on"] = M.on
+						medibot["name"] = M.name
+						medibot["area"] = A.name
+						medibot["x"] = T.x
+						medibot["y"] = T.y
+						medibot["on"] = M.on
 						if(!isnull(M.reagent_glass) && M.use_beaker)
-							medbot["use_beaker"] = 1
-							medbot["total_volume"] = M.reagent_glass.reagents.total_volume
-							medbot["maximum_volume"] = M.reagent_glass.reagents.maximum_volume
+							medibot["use_beaker"] = 1
+							medibot["total_volume"] = M.reagent_glass.reagents.total_volume
+							medibot["maximum_volume"] = M.reagent_glass.reagents.maximum_volume
 						else
-							medbot["use_beaker"] = 0
-						data["medbots"] += list(medbot)
+							medibot["use_beaker"] = 0
+						data["medibots"] += list(medibot)
 
 	data["modal"] = ui_modal_data(src)
 	return data
@@ -262,7 +262,7 @@
 				active1 = null
 				active2 = null
 			if("screen")
-				screen = clamp(text2num(params["screen"]) || 0, MED_DATA_R_LIST, MED_DATA_MEDBOT)
+				screen = clamp(text2num(params["screen"]) || 0, MED_DATA_R_LIST, MED_DATA_MEDIBOT)
 				active1 = null
 				active2 = null
 			if("vir")
