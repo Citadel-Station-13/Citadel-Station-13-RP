@@ -3900,7 +3900,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/structure/bed/chair/sofa/right{
+/obj/structure/bed/chair/sofa/left{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -7880,25 +7880,20 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "vM" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "bar_inner";
-	locked = 1;
-	name = "Bar Internal Access"
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1379;
-	master_tag = "bar_dock";
-	name = "interior access button";
+/obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "triumph_annex_dock";
 	pixel_x = 26
+	},
+/obj/machinery/door/airlock/glass_external{
+	name = "Bar Internal Access"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -8269,7 +8264,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/structure/bed/chair/sofa/left{
+/obj/structure/bed/chair/sofa/black/right{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -8744,13 +8739,15 @@
 "ys" = (
 /obj/machinery/airlock_sensor{
 	dir = 1;
-	id_tag = "bar_sensor";
+	id_tag = "triumph_annex_dock";
 	pixel_x = -22
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	frequency = 1379;
-	id_tag = "bar_pump"
+	frequency = 1380;
+	id_tag = "triumph_annex_dock_pump"
 	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "yt" = (
@@ -12399,13 +12396,6 @@
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "IW" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "bar_outer";
-	locked = 1;
-	name = "Bar External Access"
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -12413,6 +12403,10 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/shield_diffuser,
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/glass_external{
+	name = "Bar External Access"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "IX" = (
@@ -13635,13 +13629,10 @@
 	use_power = 0
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	id_tag = "bar_dock";
+	frequency = 1380;
+	id_tag = "triumph_annex_dock";
 	pixel_x = 26;
-	pixel_y = -1;
-	tag_airpump = "bar_pump";
-	tag_chamber_sensor = "bar_sensor";
-	tag_exterior_door = "bar_outer";
-	tag_interior_door = "bar_inner"
+	pixel_y = -1
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -14560,7 +14551,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "PK" = (
 /obj/machinery/mineral/processing_unit_console{
@@ -14755,14 +14746,11 @@
 /area/hallway/primary/starboard)
 "Qh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/firedoor,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "bar_inner";
-	locked = 1;
 	name = "Bar Internal Access"
 	},
-/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "Qi" = (
@@ -15542,21 +15530,16 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_10)
 "SA" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "bar_outer";
-	locked = 1;
-	name = "Bar External Access"
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/shield_diffuser,
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1379;
-	master_tag = "bar_dock";
-	name = "exterior access button";
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "triumph_annex_dock";
 	pixel_x = -24
+	},
+/obj/machinery/door/airlock/glass_external{
+	name = "Bar External Access"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -16777,7 +16760,7 @@
 /area/station/stairs_two)
 "VO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "VP" = (
 /obj/structure/cable/green{
@@ -17727,7 +17710,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "Yf" = (
-/obj/effect/shuttle_landmark/triumph/deck2/trade,
+/obj/effect/shuttle_landmark/triumph/deck2/trade{
+	docking_controller = null
+	},
 /turf/space,
 /area/space)
 "Yg" = (
