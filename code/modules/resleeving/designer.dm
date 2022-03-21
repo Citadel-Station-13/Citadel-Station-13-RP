@@ -129,10 +129,10 @@
 		styles["Facial"] = temp
 
 		if(mannequin.species && (mannequin.species.appearance_flags & HAS_EYE_COLOR))
-			styles["Eyes"] = list("colorHref" = "eye_color", "color" = mannequin.eye_colour
+			styles["Eyes"] = list("colorHref" = "eye_color", "color" = mannequin.eye_colour)
 
 		if(mannequin.species && (mannequin.species.appearance_flags & HAS_SKIN_COLOR))
-			styles["Body Color"] = list("colorHref" = "skin_color", "color" = mannequin.skin_colour
+			styles["Body Color"] = list("colorHref" = "skin_color", "color" = mannequin.skin_colour)
 
 		var/datum/preferences/designer/P = new()
 		apply_markings_to_prefs(mannequin, P)
