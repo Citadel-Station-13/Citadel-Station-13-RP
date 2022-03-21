@@ -1,4 +1,4 @@
 author: "Captain277"
 delete-after: True
 changes: 
-  - bugfix: "Brass alloying fixed."
+  - rscadd: "Adds the Goliath Spit drink."

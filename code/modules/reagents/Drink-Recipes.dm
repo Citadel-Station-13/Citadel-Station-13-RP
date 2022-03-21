@@ -1578,7 +1578,7 @@
 	result = "desire to die"
 	required_reagents = list("deathbell" = 1, "nuclearwaste" = 1)
 	result_amount = 2
-	
+
 /datum/chemical_reaction/drink/raspberrybeesknees
 	name = "Raspberry Bee's Knees"
 	id = "raspberrybeesknees"
@@ -1662,3 +1662,10 @@
 	result = "grapesmoothie"
 	required_reagents = list("grapejuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
 	result_amount = 5 // fuck linters
+
+/datum/chemical_reaction/drinks/goliath
+	name = "Goliath Spit"
+	id = "goliathspit"
+	result = "goliathspit"
+	required_reagents = list("whiskey" = 1, "cider" = 1, "tonic" = 1, "ice" = 1, "honey" = 1)
+	result_amount = 5

@@ -434,11 +434,11 @@ Drinks Data
 /datum/reagent/ethanol/unsweettea
 	glass_icon_state = "unsweetteaglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
-	
+
 /datum/reagent/drink/sweettea
 	glass_icon_state = "sweetteaglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
-	
+
 /datum/reagent/ethanol/originalsin
 	glass_icon_state = "originalsinglass"
 	glass_center_of_mass = list("x"=16, "y"=9)
@@ -446,15 +446,15 @@ Drinks Data
 /datum/reagent/ethanol/lovemaker
 	glass_icon_state = "lovemaker2"
 	glass_center_of_mass = list("x"=16, "y"=8)
-	
+
 /datum/reagent/drink/soda/orangeale
 	glass_icon_state = "orangeale"
 	glass_center_of_mass = list("x"=16, "y"=8)
-	
+
 /datum/reagent/ethanol/slimeshot
 	glass_icon_state = "namedbullet"
 	glass_center_of_mass = list("x"=16, "y"=8)
-	
+
 /datum/reagent/ethanol/beer
 	glass_icon_state = "beerglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
@@ -911,10 +911,10 @@ Drinks Data
 /datum/reagent/drink/virginsexonthebeach
 	glass_icon_state = "virginsexonthebeachglass"
 
-/datum/reagent/drink/phobos
+/datum/reagent/ethanol/phobos
 	glass_icon_state = "phobos"
 
-/datum/reagent/drink/greenstuff
+/datum/reagent/ethanol/greenstuff
 	glass_icon_state = "greenstuff"
 
 /datum/reagent/ethanol/russianbastard
@@ -962,3 +962,6 @@ Drinks Data
 
 /datum/reagent/drink/grapesmoothie
 	glass_icon_state = "grapesmoothie" // fuck linters
+
+/datum/reagent/ethanol/goliathspit
+	glass_icon_state = "goliathspit"
