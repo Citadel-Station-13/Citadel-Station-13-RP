@@ -6,11 +6,6 @@
 /obj/item/bedsheet/purple,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
-"aK" = (
-/obj/structure/bookcase,
-/obj/item/book/tome,
-/turf/simulated/floor/wood/classp,
-/area/class_p/POIs/archaic_temple)
 "bp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/trap/delayed/wmarble/classp{
@@ -3402,7 +3397,7 @@ Ks
 dv
 Ks
 Mq
-aK
+iV
 ot
 PM
 ot
