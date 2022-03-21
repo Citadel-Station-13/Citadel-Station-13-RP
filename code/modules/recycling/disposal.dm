@@ -214,7 +214,6 @@
 
 // leave the disposal
 /obj/machinery/disposal/proc/go_out(mob/user)
-
 	if (user.client)
 		user.client.eye = user.client.mob
 		user.client.perspective = MOB_PERSPECTIVE
@@ -224,11 +223,11 @@
 
 // ai as human but can't flush
 /obj/machinery/disposal/attack_ai(mob/user as mob)
-	interact(user, 1)
+	add_hiddenprint(user)
+	ui_interact(user)
 
 // human interact with machine
 /obj/machinery/disposal/attack_hand(mob/user as mob)
-
 	if(stat & BROKEN)
 		return
 
@@ -238,91 +237,69 @@
 
 	// Clumsy folks can only flush it.
 	if(user.IsAdvancedToolUser(1))
-		interact(user, 0)
+		ui_interact(user)
 	else
 		flush = !flush
 		update()
 	return
 
 // user interaction
-/obj/machinery/disposal/interact(mob/user, var/ai=0)
+/obj/machinery/disposal/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DisposalBin")
+		ui.open()
 
-	src.add_fingerprint(user)
-	if(stat & BROKEN)
-		user.unset_machine()
-		return
+/obj/machinery/disposal/ui_data(mob/user)
+	var/list/data = list()
 
-	var/dat = "<head><title>Waste Disposal Unit</title></head><body><TT><B>Waste Disposal Unit</B><HR>"
+	data["isAI"] = isAI(user)
+	data["flushing"] = flush
+	data["mode"] = mode
+	data["pressure"] = round(clamp(100* air_contents.return_pressure() / (SEND_PRESSURE), 0, 100),1)
 
-	if(!ai)  // AI can't pull flush handle
-		if(flush)
-			dat += "Disposal handle: <A href='?src=\ref[src];handle=0'>Disengage</A> <B>Engaged</B>"
-		else
-			dat += "Disposal handle: <B>Disengaged</B> <A href='?src=\ref[src];handle=1'>Engage</A>"
+	return data
 
-		dat += "<BR><HR><A href='?src=\ref[src];eject=1'>Eject contents</A><HR>"
-
-	if(mode <= 0)
-		dat += "Pump: <B>Off</B> <A href='?src=\ref[src];pump=1'>On</A><BR>"
-	else if(mode == 1)
-		dat += "Pump: <A href='?src=\ref[src];pump=0'>Off</A> <B>On</B> (pressurizing)<BR>"
-	else
-		dat += "Pump: <A href='?src=\ref[src];pump=0'>Off</A> <B>On</B> (idle)<BR>"
-
-	var/per = 100* air_contents.return_pressure() / (SEND_PRESSURE)
-
-	dat += "Pressure: [round(per, 1)]%<BR></body>"
-
-
-	user.set_machine(src)
-	user << browse(dat, "window=disposal;size=360x170")
-	onclose(user, "disposal")
-
-// handle machine interaction
-
-/obj/machinery/disposal/Topic(href, href_list)
-	if(usr.loc == src)
-		to_chat(usr, "<font color='red'>You cannot reach the controls from inside.</font>")
-		return
-
-	if(mode==-1 && !href_list["eject"]) // only allow ejecting if mode is -1
-		to_chat(usr, "<font color='red'>The disposal units power is disabled.</font>")
-		return
+/obj/machinery/disposal/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return
+		return TRUE
+
+	if(usr.loc == src)
+		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside.</span>")
+		return TRUE
+
+	if(mode==-1 && action != "eject") // If the mode is -1, only allow ejection
+		to_chat(usr, "<span class='warning'>The disposal units power is disabled.</span>")
+		return TRUE
 
 	if(stat & BROKEN)
+		return TRUE
+
+	add_fingerprint(usr)
+
+	if(flushing)
 		return
-	if(usr.stat || usr.restrained() || src.flushing)
-		return
 
-	if(istype(src.loc, /turf))
-		usr.set_machine(src)
-
-		if(href_list["close"])
-			usr.unset_machine()
-			usr << browse(null, "window=disposal")
-			return
-
-		if(href_list["pump"])
-			if(text2num(href_list["pump"]))
-				mode = 1
-			else
-				mode = 0
+	if(isturf(loc))
+		if(action == "pumpOn")
+			mode = 1
+			update()
+		if(action == "pumpOff")
+			mode = 0
 			update()
 
-		if(!isAI(usr))
-			if(href_list["handle"])
-				flush = text2num(href_list["handle"])
+		if(!issilicon(usr))
+			if(action == "engageHandle")
+				flush = 1
+				update()
+			if(action == "disengageHandle")
+				flush = 0
 				update()
 
-			if(href_list["eject"])
+			if(action == "eject")
 				eject()
-	else
-		usr << browse(null, "window=disposal")
-		usr.unset_machine()
-		return
-	return
+
+	return TRUE
 
 // eject the contents of the disposal unit
 /obj/machinery/disposal/proc/eject()

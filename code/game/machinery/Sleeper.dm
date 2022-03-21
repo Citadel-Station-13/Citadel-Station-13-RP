@@ -296,7 +296,7 @@
 
 /obj/machinery/sleeper/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return
+		return TRUE
 	if(!controls_inside && usr == occupant)
 		return
 	if(panel_open)

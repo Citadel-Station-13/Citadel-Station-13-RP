@@ -212,6 +212,13 @@ Class Procs:
 /obj/machinery/proc/inoperable(var/additional_flags = 0)
 	return (stat & (NOPOWER | BROKEN | additional_flags))
 
+// Duplicate of below because we don't want to fuck around with CanUseTopic in TGUI
+// TODO: Replace this with can_interact from /tg/
+/obj/machinery/ui_status(mob/user)
+	if(!interact_offline && (stat & (NOPOWER | BROKEN)))
+		return UI_CLOSE
+	return ..()
+
 /obj/machinery/CanUseTopic(var/mob/user)
 	if(!interact_offline && (stat & (NOPOWER | BROKEN)))
 		return UI_CLOSE

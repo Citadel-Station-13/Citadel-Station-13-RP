@@ -152,7 +152,7 @@
 
 /datum/wires/ui_act(action, list/params)
 	if(..())
-		return
+		return TRUE
 
 	var/mob/user = usr
 	if(!interactable(user))

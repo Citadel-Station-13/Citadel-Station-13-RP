@@ -138,7 +138,7 @@
 
 /obj/machinery/atmospherics/unary/cryo_cell/ui_act(action, params)
 	if(..() || usr == occupant)
-		return
+		return TRUE
 
 	. = TRUE
 	switch(action)

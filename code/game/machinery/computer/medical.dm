@@ -171,7 +171,7 @@
 				data["virus"] = list()
 				for(var/ID in virusDB)
 					var/datum/data/record/v = virusDB[ID]
-					data["virus"] += list(list("name" = v.fields["name"], "D" = v))
+					data["virus"] += list(list("name" = v.fields["name"], "D" = "\ref[v]"))
 			if(MED_DATA_MEDBOT)
 				data["medbots"] = list()
 				for(var/mob/living/bot/medbot/M in GLOB.mob_list)
@@ -199,7 +199,7 @@
 
 /obj/machinery/computer/med_data/ui_act(action, params)
 	if(..())
-		return
+		return TRUE
 
 	if(!data_core.general.Find(active1))
 		active1 = null
@@ -267,16 +267,9 @@
 				active2 = null
 			if("vir")
 				var/datum/data/record/v = locate(params["vir"])
-				var/list/payload = list(
-					id = v.fields["id"],
-					name = v.fields["name"],
-					max_stages = "Unknown",
-					spread_text = v.fields["spread type"],
-					cure = v.fields["antigen"],
-					desc = v.fields["description"],
-					severity = "Unknown"
-				);
-				ui_modal_message(src, "virus", "", null, payload)
+				if(!istype(v))
+					return FALSE
+				ui_modal_message(src, "virus", "", null, v.fields["tgui_description"])
 			if("del_all")
 				for(var/datum/data/record/R in data_core.medical)
 					qdel(R)
@@ -509,3 +502,6 @@
 	icon_screen = "medlaptop"
 	throwpass = 1 //VOREStation Edit - Really???
 	density = FALSE			//THIS IS A LAPTOP.	--CITADEL EDIT
+
+#undef FIELD
+#undef MED_FIELD

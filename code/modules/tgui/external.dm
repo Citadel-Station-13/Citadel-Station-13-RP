@@ -13,8 +13,9 @@
  *
  * required user mob The mob who opened/is using the UI.
  * optional ui datum/tgui The UI to be updated, if it exists.
+ * optional parent_ui datum/tgui A parent UI that, when closed, closes this UI as well.
  */
-/datum/proc/ui_interact(mob/user, datum/tgui/ui)
+/datum/proc/ui_interact(mob/user, datum/tgui/ui = null, datum/tgui/parent_ui = null)
 	return FALSE // Not implemented.
 
 /**
@@ -27,7 +28,7 @@
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_data(mob/user)
+/datum/proc/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	return list() // Not implemented.
 
 /**

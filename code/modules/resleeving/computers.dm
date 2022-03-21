@@ -234,7 +234,7 @@
 
 /obj/machinery/computer/transhuman/resleeving/ui_act(action, params)
 	if(..())
-		return
+		return TRUE
 
 	. = TRUE
 	switch(ui_modal_act(src, action, params))
