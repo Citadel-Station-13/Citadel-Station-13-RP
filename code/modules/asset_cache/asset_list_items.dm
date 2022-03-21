@@ -547,7 +547,22 @@
 	for(var/i = 1 to 4)
 		assets["bottle-[i].png"] = icon('icons/obj/chemical.dmi', "bottle-[i]")
 
-	return ..()
+//Cloning pod sprites for UIs
+/datum/asset/simple/namespaced/cloning
+	keep_local_name = TRUE
+
+/datum/asset/simple/namespaced/cloning/register()
+	assets["pod_idle.gif"] = icon('icons/obj/cloning.dmi', "pod_idle")
+	assets["pod_cloning.gif"] = icon('icons/obj/cloning.dmi', "pod_cloning")
+	assets["pod_mess.gif"] = icon('icons/obj/cloning.dmi', "pod_mess")
+
+/datum/asset/simple/namespaced/cloning/resleeving
+/datum/asset/simple/namespaced/cloning/resleeving/register()
+	// This intentionally does not call the parent. Duplicate assets are not allowed.
+	assets["sleeve_empty.gif"] = icon('icons/obj/machines/implantchair.dmi', "implantchair")
+	assets["sleeve_occupied.gif"] = icon('icons/obj/machines/implantchair.dmi', "implantchair_on")
+	assets["synthprinter.gif"] = icon('icons/obj/machines/synthpod.dmi', "pod_0")
+	assets["synthprinter_working.gif"] = icon('icons/obj/machines/synthpod.dmi', "pod_1")
 
 // Nanomaps
 /datum/asset/simple/nanomaps

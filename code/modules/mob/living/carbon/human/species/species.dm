@@ -75,22 +75,23 @@
 	var/female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
 
 	// Combat vars.
-	var/total_health = 100									// Point at which the mob will enter crit.
-	var/list/unarmed_types = list(							// Possible unarmed attacks that the mob will use in combat,
+	var/total_health = 100				// Point at which the mob will enter crit.
+	var/list/unarmed_types = list(		// Possible unarmed attacks that the mob will use in combat,
 		/datum/unarmed_attack,
 		/datum/unarmed_attack/bite
 		)
-	var/list/unarmed_attacks = null							// For empty hand harm-intent attack
-	var/brute_mod =     1									// Physical damage multiplier.
-	var/burn_mod =      1									// Burn damage multiplier.
-	var/oxy_mod =       1									// Oxyloss modifier
-	var/toxins_mod =    1									// Toxloss modifier
-	var/radiation_mod = 1									// Radiation modifier
-	var/flash_mod =     1									// Stun from blindness modifier.
-	var/flash_burn =    0									// how much damage to take from being flashed if light hypersensitive
-	var/sound_mod =     1									// Stun from sounds, I.E. flashbangs.
-	var/chemOD_mod =	1									// Damage modifier for overdose
-	var/vision_flags = SEE_SELF								// Same flags as glasses.
+	var/list/unarmed_attacks = null		// For empty hand harm-intent attack
+	var/brute_mod = 1					// Physical damage multiplier.
+	var/burn_mod = 1					// Burn damage multiplier.
+	var/oxy_mod = 1						// Oxyloss modifier
+	var/toxins_mod = 1					// Toxloss modifier
+	var/radiation_mod = 1				// Radiation modifier
+	var/flash_mod = 1					// Stun from blindness modifier.
+	var/flash_burn = 0					// how much damage to take from being flashed if light hypersensitive
+	var/sound_mod = 1					// Stun from sounds, I.E. flashbangs.
+	var/chemOD_threshold = 1			// Multiplier to overdose threshold; lower = easier overdosing
+	var/chemOD_mod = 1					// Damage modifier for overdose
+	var/vision_flags = SEE_SELF			// Same flags as glasses.
 
 	// Death vars.
 	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
@@ -166,8 +167,8 @@
 	var/health_hud_intensity = 1							// This modifies how intensely the health hud is colored.
 
 	// Body/form vars.
-	var/list/inherent_verbs = list()									// Species-specific verbs.
-	var/list/inherent_spells = list()									// Species-specific spells.
+	var/list/inherent_verbs = list()						// Species-specific verbs.
+	var/list/inherent_spells = list()						// Species-specific spells.
 	var/has_fine_manipulation = 1							// Can use small items.
 	var/siemens_coefficient = 1								// The lower, the thicker the skin and better the insulation.
 	var/darksight = 2										// Native darksight distance.

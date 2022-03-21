@@ -145,7 +145,7 @@ var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret
 //wIP - PORT ALL OF THESE TO SUBSYSTEMS AND GET RID OF THE WHOLE LIST PROCESS THING
 // Fancy-pants START/STOP_PROCESSING() macros that lets us custom define what the list is.
 #define START_PROCESSING_IN_LIST(DATUM, LIST) \
-if (!(DATUM.datum_flags & DF_ISPROCESSING)) {\
+if(!(DATUM.datum_flags & DF_ISPROCESSING)) {\
 	LIST += DATUM;\
 	DATUM.datum_flags |= DF_ISPROCESSING\
 }
@@ -164,3 +164,8 @@ if (!(DATUM.datum_flags & DF_ISPROCESSING)) {\
 
 #define START_PROCESSING_POWER_OBJECT(Datum) START_PROCESSING_IN_LIST(Datum, global.processing_power_items)
 #define STOP_PROCESSING_POWER_OBJECT(Datum) STOP_PROCESSING_IN_LIST(Datum, global.processing_power_items)
+
+// Computer login types
+#define LOGIN_TYPE_NORMAL 1
+#define LOGIN_TYPE_AI 2
+#define LOGIN_TYPE_ROBOT 3

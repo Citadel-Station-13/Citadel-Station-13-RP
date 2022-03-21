@@ -307,7 +307,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 	var/real_title = assignment
 
 	for(var/datum/data/record/t in data_core.general)
-		if (t)
+		if(t)
 			if(t.fields["name"] == name)
 				foundrecord = t
 				break
@@ -420,7 +420,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		L.fields["image"]		= icon(cached_character_icon(H), dir = SOUTH)
 		L.fields["antagfac"]	= H.antag_faction
 		L.fields["antagvis"]	= H.antag_vis
-		L.fields["offmap"]      = hidden
+		L.fields["offmap"]		= hidden
 		if(H.exploit_record && !jobban_isbanned(H, "Records"))
 			L.fields["exploit_record"] = H.exploit_record
 		else

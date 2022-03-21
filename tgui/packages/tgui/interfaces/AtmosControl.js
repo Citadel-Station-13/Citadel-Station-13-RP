@@ -40,10 +40,10 @@ export const AtmosControlContent = (props, context) => {
           <Button
             key={alarm.name}
             content={alarm.name}
-            color={alarm.danger === 2
-              ? 'bad'
-              : alarm.danger === 1
-                ? 'average'
+            color={alarm.danger === 2 
+              ? 'bad' 
+              : alarm.danger === 1 
+                ? 'average' 
                 : ''}
             onClick={() => act('alarm', { 'alarm': alarm.ref })} />
         ))}
@@ -57,7 +57,7 @@ export const AtmosControlContent = (props, context) => {
       <Box height="526px" mb="0.5rem" overflow="hidden">
         <NanoMap onZoom={v => setZoom(v)}>
           {sortedAlarms
-            .filter(x =>
+            .filter(x => 
               (~~x.z === ~~config.mapZLevel)
             ).map(cm => (
               <NanoMap.Marker
@@ -84,12 +84,12 @@ export const AtmosControlContent = (props, context) => {
           onClick={() => setTabIndex(0)}>
           <Icon name="table" /> Alarm View
         </Tabs.Tab>
-        {/* <Tabs.Tab
+        <Tabs.Tab
           key="MapView"
           selected={1 === tabIndex}
           onClick={() => setTabIndex(1)}>
           <Icon name="map-marked-alt" /> Map View
-        </Tabs.Tab> */}
+        </Tabs.Tab>
       </Tabs>
       <Box m={2}>
         {body}

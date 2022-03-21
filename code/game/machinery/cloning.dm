@@ -23,7 +23,8 @@
 			break
 	return selected
 
-#define CLONE_BIOMASS 30 //VOREstation Edit
+#define CLONE_BIOMASS 30
+#define MINIMUM_HEAL_LEVEL 40
 
 /obj/machinery/clonepod
 	name = "cloning pod"
@@ -46,16 +47,12 @@
 	var/list/containers = list()	// Beakers for our liquid biomass
 	var/container_limit = 3			// How many beakers can the machine hold?
 
+	var/speed_coeff
+	var/efficiency
+
 /obj/machinery/clonepod/Initialize(mapload, newdir)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/console_screen(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 2)
-
+	default_apply_parts()
 	RefreshParts()
 	update_icon()
 
@@ -298,14 +295,16 @@
 	return 1
 
 /obj/machinery/clonepod/RefreshParts()
-	..()
-	var/rating = 0
-	for(var/obj/item/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/stock_parts/scanning_module) || istype(P, /obj/item/stock_parts/manipulator))
-			rating += P.rating
+	speed_coeff = 0
+	efficiency = 0
+	for(var/obj/item/stock_parts/scanning_module/S in component_parts)
+		efficiency += S.rating
+	for(var/obj/item/stock_parts/manipulator/P in component_parts)
+		speed_coeff += P.rating
+	heal_level = max(min((efficiency * 15) + 10, 100), MINIMUM_HEAL_LEVEL)
 
-	heal_level = rating * 10 - 20
-	heal_rate = round(rating / 4)
+/obj/machinery/clonepod/proc/get_completion()
+	. = (100 * ((occupant.health + 100) / (heal_level + 100)))
 
 /obj/machinery/clonepod/verb/eject()
 	set name = "Eject Cloner"

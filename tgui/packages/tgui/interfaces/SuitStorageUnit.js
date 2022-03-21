@@ -43,7 +43,6 @@ const SuitStorageUnitContent = (props, context) => {
     suit,
     helmet,
     mask,
-    boots,
   } = data;
 
   return (
@@ -114,15 +113,6 @@ const SuitStorageUnitContent = (props, context) => {
               disabled={!mask}
               onClick={() => act('dispense', {
                 item: 'mask',
-              })} />
-          </LabeledList.Item>
-          <LabeledList.Item label="Boots">
-            <Button
-              icon={boots ? 'square' : 'square-o'}
-              content={boots || 'Empty'}
-              disabled={!boots}
-              onClick={() => act('dispense', {
-                item: 'boots',
               })} />
           </LabeledList.Item>
         </LabeledList>
