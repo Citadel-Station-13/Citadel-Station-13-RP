@@ -194,7 +194,7 @@ var/list/all_maps = list()
 		else if (srcz in station_levels)
 			return list(srcz)
 		else
-			return list()
+			return list(srcz)
 
 /datum/map/proc/get_zlevel_name(var/index)
 	var/datum/map_z_level/Z = zlevels["[index]"]
