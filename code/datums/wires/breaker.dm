@@ -1,6 +1,6 @@
 /datum/wires/breakerbox
 	holder_type = /obj/machinery/power/breakerbox
-	wire_count = 2
+	wire_count = 4
 	proper_name = "Breaker box"
 
 /datum/wires/smes/New(atom/_holder)
