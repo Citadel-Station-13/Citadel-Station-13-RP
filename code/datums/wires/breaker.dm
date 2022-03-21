@@ -1,10 +1,10 @@
 /datum/wires/breakerbox
 	holder_type = /obj/machinery/power/breakerbox
-	wire_count = 4
+	wire_count = 2
 	proper_name = "Breaker box"
 
-/datum/wires/smes/New(atom/_holder)
-	wires = list(WIRE_SMES_RCON, WIRE_IDSCAN)
+/datum/wires/breakerbox/New(atom/_holder)
+	wires = list(WIRE_POWER, WIRE_IDSCAN)
 	return ..()
 
 /datum/wires/breakerbox/interactable(mob/user)
