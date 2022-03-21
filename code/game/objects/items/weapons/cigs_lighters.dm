@@ -321,6 +321,21 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			quench()
 	return ..()
 
+/obj/item/clothing/mask/smokable/cigarette_import
+	name = "cigarette"
+	desc = "A roll of tobacco and blended herbs."
+	icon_state = "cigimp"
+	item_state = "cigimp"
+	throw_speed = 0.5
+	w_class = ITEMSIZE_TINY
+	slot_flags = SLOT_EARS | SLOT_MASK
+	attack_verb = list("burnt", "singed")
+	type_butt = /obj/item/cigbutt/imp
+	chem_volume = 15
+	max_smoketime = 300
+	smoketime = 300
+	var/nicotine_amt = 2
+
 ////////////
 // CIGARS //
 ////////////
@@ -403,6 +418,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	user.update_inv_wear_mask(0)
 	user.update_inv_l_hand(0)
 	user.update_inv_r_hand(1)
+
+/obj/item/cigbutt/imp
+	name = "cigarette butt"
+	desc = "A manky old cigarette butt."
 
 /////////////////
 //SMOKING PIPES//

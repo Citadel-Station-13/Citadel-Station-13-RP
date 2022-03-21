@@ -961,7 +961,10 @@ Drinks Data
 	glass_icon_state = "applesmoothie"
 
 /datum/reagent/drink/grapesmoothie
-	glass_icon_state = "grapesmoothie" // fuck linters
+	glass_icon_state = "grapesmoothie"
 
 /datum/reagent/ethanol/goliathspit
 	glass_icon_state = "goliathspit"
+
+/datum/reagent/ethanol/maryonacross
+	glass_icon_state = "maryonacross"

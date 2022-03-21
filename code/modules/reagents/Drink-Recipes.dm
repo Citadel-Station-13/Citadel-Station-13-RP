@@ -1669,3 +1669,10 @@
 	result = "goliathspit"
 	required_reagents = list("whiskey" = 1, "cider" = 1, "tonic" = 1, "ice" = 1, "honey" = 1)
 	result_amount = 5
+
+/datum/chemical_reaction/drinks/maryonacross
+	name = "Mary On a Cross"
+	id = "maryonacross"
+	result = "maryonacross"
+	required_reagents = list("bloodymary" = 2, "blood" = 1, "holy water" = 1, "vodka" = 1)
+	result_amount = 5
