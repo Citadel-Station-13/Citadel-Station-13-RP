@@ -422,6 +422,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/cigbutt/imp
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt."
+	icon_state = "cigimpbutt"
 
 /////////////////
 //SMOKING PIPES//
