@@ -201,3 +201,8 @@
 	name = "Vainglorious hood"
 	desc = "A hood attached to a Vainglorious hoodie."
 	icon_state = "vainglorious"
+
+/obj/item/clothing/head/hood/raincoat
+	name = "raincoat hood"
+	desc = "A hood attached to a raincoat."
+	icon_state = "raincoat"

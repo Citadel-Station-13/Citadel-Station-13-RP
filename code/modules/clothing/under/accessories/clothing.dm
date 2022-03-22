@@ -98,6 +98,18 @@
 	icon_state = "blueponcho"
 	item_state = "blueponcho"
 
+/obj/item/clothing/accessory/poncho/rough
+	name = "rough half cloak"
+	desc = "The latest fashion innovations by the Nanotrasen Uniform & Fashion Department have provided the brilliant invention of slicing a regular cloak in half! All the ponce, half the cost!"
+	icon_state = "roughcloak"
+	item_state = "roughcloak"
+
+/obj/item/clothing/accessory/poncho/rough/tan
+	name = "rough half cloak"
+	desc = "The latest fashion innovations by the Nanotrasen Uniform & Fashion Department have provided the brilliant invention of slicing a regular cloak in half! All the ponce, half the cost!"
+	icon_state = "roughcloak_tan"
+	item_state = "roughcloak_tan"
+
 /obj/item/clothing/accessory/poncho/roles/security
 	name = "security poncho"
 	desc = "A simple, comfortable cloak without sleeves. This one is black and red, standard NanoTrasen Security colors."
