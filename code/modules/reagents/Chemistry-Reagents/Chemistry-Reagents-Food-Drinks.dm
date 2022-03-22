@@ -3970,6 +3970,17 @@ End Citadel Change */
 	glass_name = "Goliath Spit"
 	glass_desc = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
 
+/datum/reagent/ethanol/maryonacross
+	name = "Mary On a Cross"
+	id = "maryonacross"
+	description = "Not just another Bloody Mary. Mary on a cross."
+	taste_description = "copper, tomatoes, and heretical sweetness"
+	color = "#B40000"
+	strength = 30
+
+	glass_name = "Mary On a Cross"
+	glass_desc = "Not just another Bloody Mary. Mary on a cross."
+
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
 ///////////////////////////////////////////////
