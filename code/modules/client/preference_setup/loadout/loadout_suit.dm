@@ -453,3 +453,7 @@ datum/gear/suit/duster
 		var/obj/item/clothing/suit/storage/pullover/pullover = pullover_style
 		pullovers[initial(pullover.name)] = pullover
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(pullovers, /proc/cmp_text_asc))
+
+/datum/gear/suit/antediluvian
+	name = "Antediluvian Cloak"
+	path = /obj/item/clothing/accessory/poncho/antediluvian

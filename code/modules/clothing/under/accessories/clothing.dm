@@ -496,3 +496,17 @@
 	name = "green asymmetrical jacket"
 	desc = "Insultingly avant-garde in aqua."
 	icon_state = "asym_green"
+
+//Antediluvian
+
+/obj/item/clothing/accessory/poncho/antediluvian
+	name = "Antediluvian cloak"
+	desc = "An off white cloak with a golden lining, held on by a golden clasp. The back of the cloak bears an unfamiliar device, which seems to have served as a significator of social status."
+	icon_state = "antediluvian_cloak"
+	item_state = "antediluvian_cloak"
+
+/obj/item/clothing/accessory/antediluvian
+	name = "Antediluvian loincloth"
+	desc = "A narrow black loincloth. Based on its cut and the multitude of connection points, it seems this cloth served a decorative purpose, rather than providing utility."
+	icon_state = "antediluvian_loin"
+	slot = ACCESSORY_SLOT_DECOR
