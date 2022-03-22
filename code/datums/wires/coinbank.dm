@@ -1,37 +1,39 @@
 /datum/wires/coinbank
 	holder_type = /obj/machinery/coinbank
 	wire_count = 3
+	proper_name = "Coin Bank"
 
-var/const/COINBANK_WIRE_ELECTRIFY	= 1
-var/const/COINBANK_WIRE_THROW		= 2
+/datum/wires/coinbank/New(atom/_holder)
+	wires = list(WIRE_ELECTRIFY, WIRE_THROW_ITEM)
+	return ..()
 
-/datum/wires/coinbank/CanUse(var/mob/living/L)
+/datum/wires/coinbank/interactable(mob/user)
 	var/obj/machinery/coinbank/C = holder
 	if(C.panel_open)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
-/datum/wires/coinbank/GetInteractWindow()
+/datum/wires/coinbank/get_status()
 	var/obj/machinery/coinbank/C = holder
-	. += ..()
-	. += "<BR>The orange light is [C.seconds_electrified ? "off" : "on"].<BR>"
-	. += "The red light is [C.shoot_inventory ? "off" : "blinking"].<BR>"
+	. = ..()
+	. += "The orange light is [C.seconds_electrified ? "off" : "on"]."
+	. += "The red light is [C.shoot_inventory ? "off" : "blinking"]."
 
-/datum/wires/coinbank/UpdatePulsed(var/index)
+/datum/wires/coinbank/on_pulse(wire)
 	var/obj/machinery/coinbank/C = holder
-	switch(index)
-		if(SMARTFRIDGE_WIRE_THROW)
+	switch(wire)
+		if(WIRE_THROW_ITEM)
 			C.shoot_inventory = !C.shoot_inventory
-		if(SMARTFRIDGE_WIRE_ELECTRIFY)
+		if(WIRE_ELECTRIFY)
 			C.seconds_electrified = 30
 
-/datum/wires/coinbank/UpdateCut(var/index, var/mended)
+/datum/wires/coinbank/on_cut(wire, mend)
 	var/obj/machinery/coinbank/C = holder
-	switch(index)
-		if(COINBANK_WIRE_THROW)
-			C.shoot_inventory = !mended
-		if(COINBANK_WIRE_ELECTRIFY)
-			if(mended)
+	switch(wire)
+		if(WIRE_THROW_ITEM)
+			C.shoot_inventory = !mend
+		if(WIRE_ELECTRIFY)
+			if(mend)
 				C.seconds_electrified = 0
 			else
 				C.seconds_electrified = -1

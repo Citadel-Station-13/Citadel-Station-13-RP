@@ -164,7 +164,7 @@
 	if(..())
 		return
 	add_hiddenprint(user)
-	if(wires.IsIndexCut(AIRLOCK_WIRE_LIGHT))
+	if(wires.is_cut(WIRE_BOLT_LIGHT))
 		to_chat(user, "The lights are not responsive to your command.")
 		return
 	lights = !lights
