@@ -1,0 +1,5 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds new premium cigarette brand."
+  - rscadd: "Adds new drink."
