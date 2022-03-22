@@ -3,9 +3,6 @@
 var/global/hire_nebula = 0
 var/can_call_traders = 1
 
-//I'm disabling this for now, until Overmaps/Nebula Gas is reinstated.
-
-/*
 /client/proc/trader_ship()
 	set name = "Hire Nebula Gas Employees"
 	set category = "Special Verbs"
@@ -63,4 +60,3 @@ proc/trigger_trader_visit()
 	hire_nebula = 1
 
 	sleep(600 * 5)
-*/

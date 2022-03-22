@@ -3,11 +3,12 @@
 /turf/template_noop,
 /area/template_noop)
 "e" = (
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
 "i" = (
+/obj/structure/inflatable/door,
 /turf/simulated/shuttle/floor,
-/area/poi_d/explored)
+/area/class_d/explored)
 "p" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -20,37 +21,37 @@
 	pixel_y = 28
 	},
 /turf/simulated/shuttle/floor,
-/area/poi_d/explored)
+/area/class_d/explored)
 "r" = (
 /obj/structure/door_assembly{
 	icon_state = "door_as_gext3"
 	},
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
 "u" = (
 /obj/item/tool/crowbar/red,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
 "v" = (
 /obj/structure/shuttle/engine/propulsion/burst{
 	dir = 8
 	},
 /turf/simulated/shuttle/wall,
-/area/poi_d/explored)
+/area/class_d/explored)
 "w" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor,
-/area/poi_d/explored)
+/area/class_d/explored)
 "z" = (
 /obj/structure/grille,
 /obj/structure/shuttle/window,
 /turf/simulated/shuttle/floor,
-/area/poi_d/explored)
+/area/class_d/explored)
 "C" = (
 /turf/simulated/shuttle/wall,
-/area/poi_d/explored)
+/area/class_d/explored)
 "D" = (
 /obj/random/humanoidremains,
 /obj/item/clothing/suit/space/emergency{
@@ -61,8 +62,8 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/tank/emergency/oxygen,
 /obj/item/clothing/mask/breath,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
 "K" = (
 /obj/random/humanoidremains,
 /obj/structure/bed/chair{
@@ -70,7 +71,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/shuttle/floor,
-/area/poi_d/explored)
+/area/class_d/explored)
 
 (1,1,1) = {"
 a

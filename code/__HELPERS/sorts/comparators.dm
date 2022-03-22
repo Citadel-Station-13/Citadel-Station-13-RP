@@ -59,6 +59,9 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_subsystem_priority(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return a.priority - b.priority
 
+/proc/cmp_filter_data_priority(list/A, list/B)
+	return A["priority"] - B["priority"]
+
 /proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
 	return a.timeToRun - b.timeToRun
 
@@ -111,3 +114,6 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_surgery_priority_asc(datum/surgery_step/A, datum/surgery_step/B)
 	return B.priority - A.priority
+
+/proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
+	return A.priority - B.priority

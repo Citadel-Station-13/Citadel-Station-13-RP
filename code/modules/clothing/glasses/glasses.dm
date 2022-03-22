@@ -25,7 +25,7 @@ BLIND     // can't see anything
 	var/off_state = "degoggles"
 	var/active = 1
 	var/activation_sound = 'sound/items/goggles_charge.ogg'
-	var/obj/screen/overlay = null
+	var/atom/movable/screen/overlay = null
 	var/list/away_planes //Holder for disabled planes
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
@@ -852,3 +852,11 @@ BLIND     // can't see anything
 		SPECIES_VOX = 'icons/mob/species/vox/eyes.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/eyes.dmi'
 		)
+
+/obj/item/clothing/glasses/welding/laconic
+	name = "laconic goggles"
+	desc = "Welding goggles fashioned out of brass. Brass goggles."
+	icon_state = "laconic-g"
+	item_state_slots = list(slot_r_hand_str = "welding-g", slot_l_hand_str = "welding-g")
+	action_button_name = "Adjust Goggles"
+	matter = list("brass" = 1500, "glass" = 1000)

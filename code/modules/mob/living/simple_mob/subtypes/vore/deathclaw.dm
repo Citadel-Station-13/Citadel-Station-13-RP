@@ -38,23 +38,11 @@
 	mount_offset_x = 5
 	mount_offset_y = 30
 
+	randomized = TRUE
 	mod_min = 90
 	mod_max = 140
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/deathclaw
-
-//Randomization Code
-/mob/living/simple_mob/vore/aggressive/deathclaw/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/deathclaw

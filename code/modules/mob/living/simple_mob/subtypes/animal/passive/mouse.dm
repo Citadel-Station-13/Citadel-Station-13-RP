@@ -19,6 +19,7 @@
 
 	maxHealth = 5
 	health = 5
+	randomized = TRUE
 
 	mob_size = MOB_MINISCULE
 	pass_flags = PASSTABLE
@@ -38,7 +39,10 @@
 	has_langs = list("Mouse")
 
 	holder_type = /obj/item/holder/mouse
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+
+	meat_amount = 1
+	bone_amount = 1
+	hide_amount = 1
 
 	say_list_type = /datum/say_list/mouse
 
@@ -48,19 +52,6 @@
 
 	no_vore = 1 //Mice can't eat others due to the amount of bugs caused by it.
 	vore_taste = "cheese"
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/mouse/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/passive/mouse/Initialize(mapload)
 	. = ..()
@@ -140,18 +131,7 @@
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
-
-//Unrandomized pet.
-/mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize(mapload)
 	. = ..()

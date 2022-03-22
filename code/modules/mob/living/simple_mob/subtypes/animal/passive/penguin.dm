@@ -19,6 +19,7 @@
 	maxHealth = 20
 	health = 20
 	minbodytemp = 175 // Same as Sif mobs.
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "pushes aside"
@@ -31,7 +32,9 @@
 
 	has_langs = list("Bird")
 
+	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken/penguin
+	bone_amount = 1
 
 /mob/living/simple_mob/animal/passive/penguin/tux
 	name = "Tux"

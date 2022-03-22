@@ -1,56 +1,56 @@
 // Shoelocker
 /datum/gear/shoes
-	display_name = "Sandals"
+	name = "Sandals"
 	path = /obj/item/clothing/shoes/sandal
 	slot = slot_shoes
 	sort_category = "Shoes and Footwear"
 
 /datum/gear/shoes/jackboots
-	display_name = "Jackboots"
+	name = "Jackboots"
 	path = /obj/item/clothing/shoes/boots/jackboots
 
 /datum/gear/shoes/kneeboots
-	display_name = "Jackboots - Knee-Length"
+	name = "Jackboots - Knee-Length"
 	path = /obj/item/clothing/shoes/boots/jackboots/knee
 
 /datum/gear/shoes/thighboots
-	display_name = "Jackboots - Thigh-Length"
+	name = "Jackboots - Thigh-Length"
 	path = /obj/item/clothing/shoes/boots/jackboots/thigh
 
 /datum/gear/shoes/toeless
-	display_name = "Toe-Less Jackboots"
+	name = "Toe-Less Jackboots"
 	path = /obj/item/clothing/shoes/boots/jackboots/toeless
 
 /datum/gear/shoes/toelessknee
-	display_name = "Toe-Less Jackboots - Knee-Length"
+	name = "Toe-Less Jackboots - Knee-Length"
 	path = /obj/item/clothing/shoes/boots/jackboots/toeless/knee
 
 /datum/gear/shoes/toelessthigh
-	display_name = "Toe-Less Jackboots - Thigh-Length"
+	name = "Toe-Less Jackboots - Thigh-Length"
 	path = /obj/item/clothing/shoes/boots/jackboots/toeless/thigh
 
 /datum/gear/shoes/workboots
-	display_name = "Workboots"
+	name = "Workboots"
 	path = /obj/item/clothing/shoes/boots/workboots
 
 /datum/gear/shoes/workboots/toeless
-	display_name = "Toe-Less Workboots"
+	name = "Toe-Less Workboots"
 	path = /obj/item/clothing/shoes/boots/workboots/toeless
 
 /datum/gear/shoes/black
-	display_name = "Shoes - Black"
+	name = "Shoes - Black"
 	path = /obj/item/clothing/shoes/black
 
 /datum/gear/shoes/blue
-	display_name = "Shoes - Blue"
+	name = "Shoes - Blue"
 	path = /obj/item/clothing/shoes/blue
 
 /datum/gear/shoes/brown
-	display_name = "Shoes - Brown"
+	name = "Shoes - Brown"
 	path = /obj/item/clothing/shoes/brown
 
 /datum/gear/shoes/lacey
-	display_name = "Shoes, Oxford Selection"
+	name = "Shoes, Oxford Selection"
 	path = /obj/item/clothing/shoes/laceup
 
 /datum/gear/shoes/lacey/New()
@@ -62,35 +62,35 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(laces, /proc/cmp_text_asc))
 
 /datum/gear/shoes/green
-	display_name = "Shoes - Green"
+	name = "Shoes - Green"
 	path = /obj/item/clothing/shoes/green
 
 /datum/gear/shoes/orange
-	display_name = "Shoes - Orange"
+	name = "Shoes - Orange"
 	path = /obj/item/clothing/shoes/orange
 
 /datum/gear/shoes/purple
-	display_name = "Shoes - Purple"
+	name = "Shoes - Purple"
 	path = /obj/item/clothing/shoes/purple
 
 /datum/gear/shoes/rainbow
-	display_name = "Shoes - Rainbow"
+	name = "Shoes - Rainbow"
 	path = /obj/item/clothing/shoes/rainbow
 
 /datum/gear/shoes/red
-	display_name = "Shoes - Red"
+	name = "Shoes - Red"
 	path = /obj/item/clothing/shoes/red
 
 /datum/gear/shoes/white
-	display_name = "Shoes - White"
+	name = "Shoes - White"
 	path = /obj/item/clothing/shoes/white
 
 /datum/gear/shoes/yellow
-	display_name = "Shoes - Yellow"
+	name = "Shoes - Yellow"
 	path = /obj/item/clothing/shoes/yellow
 
 /datum/gear/shoes/hitops/
-	display_name = "High-Tops - Selection"
+	name = "High-Tops - Selection"
 	path = /obj/item/clothing/shoes/hitops/
 
 /datum/gear/shoes/hitops/New()
@@ -102,7 +102,7 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(hitops, /proc/cmp_text_asc))
 
 /datum/gear/shoes/flipflops
-	display_name = "Flip Flops"
+	name = "Flip Flops"
 	path = /obj/item/clothing/shoes/flipflop
 
 /datum/gear/shoes/flipflops/New()
@@ -110,7 +110,7 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/shoes/athletic
-	display_name = "Athletic Shoes"
+	name = "Athletic Shoes"
 	path = /obj/item/clothing/shoes/athletic
 
 /datum/gear/shoes/athletic/New()
@@ -118,7 +118,7 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/shoes/skater
-	display_name = "Skater Shoes"
+	name = "Skater Shoes"
 	path = /obj/item/clothing/shoes/skater
 
 /datum/gear/shoes/skater/New()
@@ -126,7 +126,7 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/shoes/flats
-	display_name = "Flats"
+	name = "Flats"
 	path = /obj/item/clothing/shoes/flats/white/color
 
 /datum/gear/shoes/flats/New()
@@ -134,37 +134,37 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/shoes/cowboy
-	display_name = "Cowboy Boots"
+	name = "Cowboy Boots"
 	path = /obj/item/clothing/shoes/boots/cowboy
 
 /datum/gear/shoes/cowboy/classic
-	display_name = "Cowboy Boots - Classic"
+	name = "Cowboy Boots - Classic"
 	path = /obj/item/clothing/shoes/boots/cowboy/classic
 
 /datum/gear/shoes/cowboy/snakeskin
-	display_name = "Cowboy Boots - Snakeskin"
+	name = "Cowboy Boots - Snakeskin"
 	path = /obj/item/clothing/shoes/boots/cowboy/snakeskin
 
 /datum/gear/shoes/jungle
-	display_name = "Jungle Boots"
+	name = "Jungle Boots"
 	path = /obj/item/clothing/shoes/boots/jungle
 	cost = 2
 
 /datum/gear/shoes/duty
-	display_name = "Duty Boots"
+	name = "Duty Boots"
 	path = 	/obj/item/clothing/shoes/boots/duty
 	cost = 2
 
 /datum/gear/shoes/dress
-	display_name = "Shoes - Dress"
+	name = "Shoes - Dress"
 	path = 	/obj/item/clothing/shoes/dress
 
 /datum/gear/shoes/dress/white
-	display_name = "Shoes - Dress - White"
+	name = "Shoes - Dress - White"
 	path = 	/obj/item/clothing/shoes/dress/white
 
 /datum/gear/shoes/heels
-	display_name = "High Heels"
+	name = "High Heels"
 	path = /obj/item/clothing/shoes/heels
 
 /datum/gear/shoes/heels/New()
@@ -172,41 +172,49 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/shoes/slippers
-	display_name = "Bunny Slippers"
+	name = "Bunny Slippers"
 	path = /obj/item/clothing/shoes/slippers
 
 /datum/gear/shoes/boots/winter
-	display_name = "Winter Boots"
+	name = "Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter
 
 /datum/gear/shoes/circuitry
-	display_name = "Boots - Circuitry"
+	name = "Boots - Circuitry"
 	path = /obj/item/clothing/shoes/circuitry
 
 /datum/gear/shoes/cowboy/black
-	display_name = "Cowboy Boots - Black"
+	name = "Cowboy Boots - Black"
 	path = /obj/item/clothing/shoes/cowboyboots/black
 
 /datum/gear/shoes/black/cuffs
-	display_name = "Legwraps - Black"
+	name = "Legwraps - Black"
 	path = /obj/item/clothing/shoes/black/cuffs
 
 /datum/gear/shoes/black/cuffs/blue
-	display_name = "Legwraps - Blue"
+	name = "Legwraps - Blue"
 	path = /obj/item/clothing/shoes/black/cuffs/blue
 
 /datum/gear/shoes/black/cuffs/red
-	display_name = "Legwraps - Red"
+	name = "Legwraps - Red"
 	path = /obj/item/clothing/shoes/black/cuffs/red
 
 /datum/gear/shoes/siren
-	display_name = "Boots - Siren"
+	name = "Boots - Siren"
 	path = /obj/item/clothing/shoes/boots/fluff/siren
 
 /datum/gear/shoes/footwraps
-	display_name = "Cloth Footwraps (Colorable)"
+	name = "Cloth Footwraps (Colorable)"
 	path = /obj/item/clothing/shoes/footwraps
 
 /datum/gear/shoes/footwraps/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/shoes/laconic
+	name = "Laconic Field Boots"
+	path = /obj/item/clothing/shoes/boots/laconic
+
+/datum/gear/shoes/bountyskin
+	name = "Bounty Hunter's Heels"
+	path = /obj/item/clothing/shoes/bountyskin

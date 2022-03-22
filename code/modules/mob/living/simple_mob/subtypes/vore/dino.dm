@@ -7,6 +7,10 @@
 	icon_state = "dino"
 	icon = 'icons/mob/vore.dmi'
 
+	maxHealth = 20
+	health = 20
+	randomized = TRUE
+
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
 	// By default, this is what most vore mobs are capable of.
@@ -35,19 +39,6 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
-
-//Randomization Code
-/mob/living/simple_mob/vore/aggressive/dino/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/dino

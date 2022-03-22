@@ -110,6 +110,9 @@
 	desc = "It's a special backpack made exclusively for officers."
 	icon_state = "captainpack"
 
+/obj/item/storage/backpack/captain/talon
+	name = "talon captain's backpack"
+	desc = "It's a special backpack made exclusively for the Talon's captain."
 /obj/item/storage/backpack/industrial
 	name = "industrial backpack"
 	desc = "It's a tough backpack for the daily grind of station life."
@@ -139,6 +142,11 @@
 	name = "chemistry backpack"
 	desc = "It's an orange backpack which was designed to hold beakers, pill bottles and bottles."
 	icon_state = "chempack"
+
+/obj/item/storage/backpack/voyager
+	name = "voyager backpack"
+	desc = "A leather pack designed for expeditions, covered in multi-purpose pouches and pockets."
+	icon_state = "explorerpack"
 
 /*
  * Duffle Types
@@ -171,6 +179,10 @@
 	name = "Facility Director's dufflebag"
 	desc = "A large dufflebag for holding extra captainly goods."
 	icon_state = "duffle_captain"
+
+/obj/item/storage/backpack/dufflebag/captain/talon
+	name = "talon captain's dufflebag"
+	desc = "A large dufflebag for holding extra loot."
 
 /obj/item/storage/backpack/dufflebag/med
 	name = "medical dufflebag"
@@ -268,6 +280,20 @@
 	icon_state = "satchel-cap"
 	item_state_slots = list(slot_r_hand_str = "captainpack", slot_l_hand_str = "captainpack")
 
+/obj/item/storage/backpack/satchel/cap/talon
+	name = "Talon captain's satchel"
+	desc = "An exclusive satchel for the Talon's captain."
+
+/obj/item/storage/backpack/satchel/voyager
+	name = "voyager satchel"
+	desc = "A leather satchel designed for expeditions."
+	icon_state = "satchel_explorer"
+
+/obj/item/storage/backpack/satchel/bone
+	name = "bone satchel"
+	desc = "A grotesque satchel made of sinew and bone."
+	icon_state = "satchel_bone"
+
 //ERT backpacks.
 /obj/item/storage/backpack/ert
 	name = "emergency response team backpack"
@@ -338,6 +364,10 @@
 	icon_state = "courierbagcom"
 	item_state_slots = list(slot_r_hand_str = "captainpack", slot_l_hand_str = "captainpack")
 
+/obj/item/storage/backpack/messenger/com/talon
+	name = "captain's messenger bag"
+	desc = "A special backpack worn over one shoulder.  This one bears the insignia of the ITV Talon's captain."
+
 /obj/item/storage/backpack/messenger/engi
 	name = "engineering messenger bag"
 	icon_state = "courierbagengi"
@@ -357,6 +387,44 @@
 /obj/item/storage/backpack/messenger/black
 	icon_state = "courierbagblk"
 
+//RIG Spines
+/obj/item/storage/backpack/rig
+	name = "resource integration gear"
+	desc = "An advanced system that mounts to the user's spine to serve as a load bearing structure with medical utilities. More complex variants have a wider array of functions and uses."
+	icon_state = "civilian_rig"
+	item_state_slots = list(slot_r_hand_str = "backpack", slot_l_hand_str = "backpack")
+
+/*
+/obj/item/storage/backpack/rig/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/storage/backpack/rig/process(mob/living/M)
+	if(M.health <= M.maxHealth)
+		update_icon()
+
+/obj/item/storage/backpack/rig/update_icon(mob/living/M)
+	if(M.stat > 1) // Dead
+		icon_state = "[initial(icon_state)]_0"
+		item_state = "[initial(icon_state)]_0"
+		M.update_inv_back()
+	else if(round((M.health/M.getMaxHealth())*100) <= 25)
+		icon_state = "[initial(icon_state)]_25"
+		item_state = "[initial(icon_state)]_25"
+		M.update_inv_back()
+	else if(round((M.health/M.getMaxHealth())*100) <= 50)
+		icon_state = "[initial(icon_state)]_50"
+		item_state = "[initial(icon_state)]_50"
+		M.update_inv_back()
+	else if(round((M.health/M.getMaxHealth())*100) <= 75)
+		icon_state = "[initial(icon_state)]_75"
+		item_state = "[initial(icon_state)]_75"
+		M.update_inv_back()
+	else
+		icon_state = "[initial(icon_state)]"
+		item_state = "[initial(icon_state)]"
+		M.update_inv_back()
+*/
 
 //Purses
 /obj/item/storage/backpack/purse

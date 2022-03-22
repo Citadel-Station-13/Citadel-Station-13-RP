@@ -439,6 +439,22 @@
 	var/last_event = 0
 	var/rad_power = 7.5
 
+/obj/machinery/door/airlock/bananium
+	name = "Bananium Airlock"
+	desc = "An absolute atrocity."
+	icon = 'icons/obj/doors/Doorbananium.dmi'
+	mineral = "bananium"
+	open_sound_powered = 'sound/items/bikehorn.ogg'
+	close_sound_powered = 'sound/items/bikehorn.ogg'
+
+/obj/machinery/door/airlock/silencium
+	name = "Silencium Airlock"
+	desc = "The pinnacle of noise cancelling door technology."
+	icon = 'icons/obj/doors/Doorsilencium.dmi'
+	mineral = "silencium"
+	open_sound_powered = 'sound/effects/footstep/carpet1.ogg'
+	close_sound_powered = 'sound/effects/footstep/carpet1.ogg'
+
 /obj/machinery/door/airlock/process(delta_time)
 	// Deliberate no call to parent.
 	if(main_power_lost_until > 0 && world.time >= main_power_lost_until)
@@ -572,6 +588,19 @@
 	req_one_access = list()
 	normalspeed = FALSE // So it closes faster and hopefully keeps the warm air inside.
 	hackProof = TRUE //VOREStation Edit - No borgos
+
+//"Red" Armory Door
+/obj/machinery/door/airlock/security/armory
+	name = "Red Armory"
+	//color = ""
+
+/obj/machinery/door/airlock/security/armory/allowed(mob/user)
+	if(get_security_level() in list("green","blue"))
+		return FALSE
+
+	return ..(user)
+
+
 
 /*
 About the new airlock wires panel:

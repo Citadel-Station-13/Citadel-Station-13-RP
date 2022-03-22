@@ -49,7 +49,8 @@
 	popup.open()
 	return
 
-/obj/item/card/id/proc/update_name()
+/obj/item/card/id/update_name()
+	. = ..()
 	name = "[src.registered_name]'s ID Card ([src.assignment])"
 
 /obj/item/card/id/proc/set_id_photo(var/mob/M)
@@ -338,7 +339,7 @@
 	name = "xenobiologist ID"
 	assignment = "Xenobiologist"
 	rank = "Xenobiologist"
-	job_access_type = /datum/job/xenobiologist
+	job_access_type = /datum/job/scientist // /datum/job/xenobiologist
 
 /obj/item/card/id/science/roboticist
 	name = "roboticist ID"

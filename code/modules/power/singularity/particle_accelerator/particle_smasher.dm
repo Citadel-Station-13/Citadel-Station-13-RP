@@ -208,7 +208,7 @@
 /obj/machinery/particle_smasher/proc/DoCraft(var/datum/particle_smasher_recipe/recipe)
 	if(!recipe)
 		return
-	
+
 	target.use(1)
 
 	if(reagent_container)
@@ -221,8 +221,7 @@
 			if(thing)
 				qdel(thing)
 
-	var/result = recipe.result
-	var/obj/item/stack/material/M = new result(drop_location())
+	new recipe.result(drop_location())
 	update_icon()
 
 /obj/machinery/particle_smasher/Exited(atom/movable/AM)

@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define PREVENT_CLICK_UNDER			(1<<19)	// Prevent clicking things below it on the same turf eg. doors/ fulltile windows.
 #define HOLOGRAM					(1<<20)
 #define PREVENT_CONTENTS_EXPLOSION	(1<<21)	// should not get harmed if this gets caught by an explosion?
-
+#define HTML_USE_INITAL_ICON		(1<<22)
 
 ///TURF FLAGS
 #define NO_JAUNT					(1<<0)	// This is used in literally one place, turf.dm, to block ethereal jaunt.
@@ -66,6 +66,22 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define EXCITED_CLEANUP				(1<<4)	// Should this tile be cleaned up and reinserted into an excited group?
 #define NO_LAVA_GEN					(1<<5)	// Blocks lava rivers being generated on the turf
 #define NO_RUINS					(1<<6)	// Blocks ruins spawning on the turf
+
+// Update flags for [/atom/proc/update_appearance]
+/// Update the atom's name
+#define UPDATE_NAME (1<<0)
+/// Update the atom's desc
+#define UPDATE_DESC (1<<1)
+/// Update the atom's icon state
+#define UPDATE_ICON_STATE (1<<2)
+/// Update the atom's overlays
+#define UPDATE_OVERLAYS (1<<3)
+/// Update the atom's greyscaling
+#define UPDATE_GREYSCALE (1<<4)
+/// Update the atom's smoothing. (More accurately, queue it for an update)
+#define UPDATE_SMOOTHING (1<<5)
+/// Update the atom's icon
+#define UPDATE_ICON (UPDATE_ICON_STATE|UPDATE_OVERLAYS)
 
 // Flags for pass_flags. - Used in /atom/var/pass_flags
 #define PASSTABLE				(1<<0)
@@ -83,3 +99,30 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define PRIVILEGES_PAI		(1<<1)
 #define PRIVILEGES_BOT		(1<<2)
 #define PRIVILEGES_DRONE	(1<<3)
+
+//Mob mobility var flags
+/// any flag
+#define CHECK_MOBILITY(target, flags) (target.mobility_flags & flags)
+#define CHECK_ALL_MOBILITY(target, flags) CHECK_MULTIPLE_BITFIELDS(target.mobility_flags, flags)
+
+/// can move
+#define MOBILITY_MOVE			(1<<0)
+/// can, and is, standing up.
+#define MOBILITY_STAND			(1<<1)
+/// can pickup items
+#define MOBILITY_PICKUP			(1<<2)
+/// can use items and interact with world objects like opening closets/etc
+#define MOBILITY_USE			(1<<3)
+/// can use interfaces like consoles
+#define MOBILITY_UI				(1<<4)
+/// can use storage item
+#define MOBILITY_STORAGE		(1<<5)
+/// can pull things
+#define MOBILITY_PULL			(1<<6)
+/// can hold non-nodropped items voluntarily
+#define MOBILITY_HOLD			(1<<7)
+/// Can resist out of buckling, grabs, cuffs, etc, in the usual order (buckle --> cuffs --> grab)
+#define MOBILITY_RESIST			(1<<8)
+
+#define MOBILITY_FLAGS_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_PICKUP | MOBILITY_USE | MOBILITY_UI | MOBILITY_STORAGE | MOBILITY_PULL | MOBILITY_RESIST)
+#define MOBILITY_FLAGS_ANY_INTERACTION (MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_UI | MOBILITY_STORAGE)

@@ -128,9 +128,8 @@ var/datum/species/shapeshifter/promethean/prometheans
 		"Rapala", "Neaera", "Stok", "Farwa", "Sobaka",
 		"Wolpin", "Saru", "Sparra")
 
-	var/heal_rate = 0.35 //As of writing, original was 0.2 - speeds up regen
 	active_regen_mult = 0.66 //As of writing, original was 1 (good)
-
+	heal_rate = 0.35
 	color_mult = 1
 	trashcan = 1 //They have goopy bodies. They can just dissolve things within them.
 
@@ -182,46 +181,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 	spawn(1)
 		if(H)
 			H.gib()
-
-/datum/species/shapeshifter/promethean/handle_environment_special(var/mob/living/carbon/human/H)
-/* VOREStation Removal - Too crazy with our uncapped hunger and slowdown stuff.
-	var/turf/T = H.loc
-	if(istype(T))
-		var/obj/effect/decal/cleanable/C = locate() in T
-		if(C && !(H.shoes || (H.wear_suit && (H.wear_suit.body_parts_covered & FEET))))
-			qdel(C)
-			if (istype(T, /turf/simulated))
-				var/turf/simulated/S = T
-				S.dirt = 0
-
-			H.nutrition = min(500, max(0, H.nutrition + rand(15, 30)))
-VOREStation Removal End */
-	// Heal remaining damage.
-	if(H.fire_stacks >= 0)
-		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())
-			var/nutrition_cost = 0
-			var/nutrition_debt = H.getBruteLoss()
-			var/starve_mod = 1
-			if(H.nutrition <= 25)
-				starve_mod = 0.75
-			H.adjustBruteLoss(-heal_rate * starve_mod)
-			nutrition_cost += nutrition_debt - H.getBruteLoss()
-
-			nutrition_debt = H.getFireLoss()
-			H.adjustFireLoss(-heal_rate * starve_mod)
-			nutrition_cost += nutrition_debt - H.getFireLoss()
-
-			nutrition_debt = H.getOxyLoss()
-			H.adjustOxyLoss(-heal_rate * starve_mod)
-			nutrition_cost += nutrition_debt - H.getOxyLoss()
-
-			nutrition_debt = H.getToxLoss()
-			H.adjustToxLoss(-heal_rate * starve_mod)
-			nutrition_cost += nutrition_debt - H.getToxLoss()
-			H.nutrition -= (2 * nutrition_cost) //Costs Nutrition when damage is being repaired, corresponding to the amount of damage being repaired.
-			H.nutrition = max(0, H.nutrition) //Ensure it's not below 0.
-	//else//VOREStation Removal
-		//H.adjustToxLoss(2*heal_rate)	// Doubled because 0.5 is miniscule, and fire_stacks are capped in both directions
 
 /datum/species/shapeshifter/promethean/get_blood_colour(var/mob/living/carbon/human/H)
 	return (H ? rgb(H.r_skin, H.g_skin, H.b_skin) : ..())

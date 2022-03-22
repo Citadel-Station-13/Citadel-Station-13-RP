@@ -4,38 +4,38 @@
 /area/template_noop)
 "q" = (
 /obj/random/roguemineloot,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "s" = (
-/turf/simulated/mineral/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/classd/indoors,
+/area/class_d/explored)
 "u" = (
 /obj/item/storage/bag/ore,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "K" = (
 /obj/random/obstruction,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "M" = (
 /obj/random/outcrop,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "N" = (
 /obj/structure/closet/crate/miningcar,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "R" = (
 /obj/item/flashlight/lantern,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "S" = (
 /obj/random/obstruction,
-/turf/simulated/mineral/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/classd/indoors,
+/area/class_d/explored)
 "W" = (
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 
 (1,1,1) = {"
 a

@@ -18,6 +18,7 @@
 	faction = "otie"
 	maxHealth = 150
 	health = 150
+	randomized = TRUE
 	minbodytemp = 200
 	melee_damage_lower = 2
 	melee_damage_upper = 7 //Don't break my bones bro
@@ -46,18 +47,9 @@
 	var/tamed = 0
 	var/tame_chance = 50 //It's a fiddy-fiddy default you may get a buddy pal or you may get mauled and ate. Win-win!
 
-//Randomization Code
-/mob/living/simple_mob/otie/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
+	meat_amount = 6
+	bone_amount = 2
+	hide_amount = 2
 
 // Activate Noms!
 
@@ -193,6 +185,12 @@
 	icon_rest = "sechotie_rest"
 	icon_dead = "sechotie-dead"
 	maxbodytemp = 1000
+
+/mob/living/simple_mob/otie/security/phoron/red/Frankie
+	name = "Frankie"
+	desc = "Madame Foster's personal guard dog, Frankie!  It seems he's gotten some new toys, a metal band on his head lets him manipulate objects with the power of his mind!  What do giant dogs even think about all day?"
+	mod_min = 150
+	mod_max = 150
 
 /mob/living/simple_mob/otie/attackby(var/obj/item/O, var/mob/user) // Trade donuts for bellybrig victims.
 	if(istype(O, /obj/item/reagent_containers/food))

@@ -328,3 +328,45 @@
 	beakers += B1
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
+
+/obj/item/grenade/chem_grenade/lube
+	name = "lubricant grenade"
+	desc = "Originally exported from Columbina, the popularity of this gag item quickly faded."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/lube/Initialize(mapload)
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent("fluorosurfactant", 40)
+	B2.reagents.add_reagent("lube", 10)
+	B2.reagents.add_reagent("water", 40)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"
+
+/obj/item/grenade/chem_grenade/lube_tactical
+	name = "tactical lubricant grenade"
+	desc = "Utilized by Cloumbina Commandos, this variant of the lubricant grenade delivers a more focused payload."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/lube_tactical/Initialize(mapload)
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent("fluorosurfactant", 40)
+	B2.reagents.add_reagent("lube", 40)
+	B2.reagents.add_reagent("water", 10)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"

@@ -356,7 +356,7 @@
 
 /datum/lore/organization/tsc/vey_med
 	name = "Vey-Medical" //The Wiki displays them as Vey-Medical.
-	short_name = "Vey-Med"
+	short_name = "Vey-Med "
 	acronym = "VM"
 	desc = "Vey-Medical, often referred to simply as Vey-Med is notable for being largely owned and opperated by Skrell. \
 	Despite their alien origin, Vey-Med has obtained market dominance on the Frontier due to the quality and reliability \
@@ -606,7 +606,7 @@
 		"John Spilsbury", "John Rockefeller", "Sarah Breedlove", "Mary Katherine Goddard",
 		"Helena Rubenstein", "Levi Strauss", "Melitta Bentz", "Estee Lauder",
 		"Jamsetji Tata", "Masaru Ibuka",)
-	destination_names = list("a Free Trade Union office", "FTU HQ")
+	destination_names = list("a Free Trade Union office", "FTU HQ", "an FTU freeport")
 
 //has to be disabled entirely or else the system will runtime any time MBT comes up
 /datum/lore/organization/tsc/mbt
@@ -944,7 +944,7 @@
 	name = "Wulf Aeronautics"
 	short_name = "Wulf Aero "
 	acronym = "WUFA"
-	desc = "Wulf Aeronautics is the chief producer of transport and hauling spacecraft. A favorite contractor of the CWS, Wulf manufactures most of their \
+	desc = "Wulf Aeronautics is the chief producer of transport and hauling spacecraft. A favorite contractor of the Confederation, Wulf manufactures most of their \
 	diplomatic and logistics craft, and does a brisk business with most other TSCs. The quiet reliance of the economy on their craft has kept them out of \
 	the spotlight and uninvolved in other corporations' back-room dealings; nobody is willing to try to undermine Wulf Aerospace in case it bites them in \
 	the ass, and everyone knows that trying to buy out the company would start a bidding war from which nobody would escape the PR fallout."
@@ -1111,6 +1111,7 @@
 			"a local salvage yard",
 			"a nearby system"
 			)
+
 /datum/lore/organization/tsc/chimera
 	name = "Chimera Genetics Corp."
 	short_name = "Chimera "
@@ -1315,7 +1316,7 @@
 		
 	org_type = "smugglers"
 
-	ship_prefixes = list ("suspected smuggler" = "an illegal smuggling", "possible smuggler" = "an illegal smuggling") //as assigned by control, second part shouldn't even come up
+	ship_prefixes = list ("suspected smuggler" = "an illegal smuggling", "possible smuggler" = "an illegal smuggling", "suspected bootlegger" = "a contraband smuggling") //as assigned by control, second part shouldn't even come up
 	//blank out our shipnames for redesignation
 	ship_names = list(
 			"Morally Bankrupt",
@@ -1484,7 +1485,7 @@
 	or ransomed back for a healthy sum. Pirates seek to seize the assets of others to get rich, rather than make an honest thaler themselves. \
 	<br><br> In contrast to the colorful Ue-Katish and sneaky Vox, common pirates tend to be rough, practical, and brutally efficient in their work. System Defense units \
 	practice rapid response drills, and in most systems it's only a matter of minutes before The Law arrives unless the pirate is able to isolate their target and prevent \
-	them from sending a distress signal.Complicating matters is the infrequent use of privateers by various minor colonial governments, mercenaries turning to piracy during \
+	them from sending a distress signal. Complicating matters is the infrequent use of privateers by various minor colonial governments, mercenaries turning to piracy during \
 	hard times, and illegal salvage operations."
 	history = ""
 	work = ""
@@ -1673,7 +1674,7 @@
 		
 	org_type = "pirate"
 
-	ship_prefixes = list("Ue-Katish pirate" = "a raiding", "Ue-Katish bandit" = "a raiding", "Ue-Katish raider" = "a raiding", "Ue-Katish enforcer" = "an enforcement")
+	ship_prefixes = list("Ue-Katish pirate" = "a raiding", "Ue-Katish bandit" = "a raiding", "Ue-Katish raider" = "a raiding", "Ue-Katish enforcer" = "an enforcement", "Ue-Katish corsair" = "a raiding")
 	ship_names = list(
 			"Keqxuer'xeu's Prize",
 			"Xaeker'qux' Bounty",
@@ -1774,7 +1775,7 @@
 	short_name = "OriCon "
 	acronym = "TOC"
 	desc = "The Orion Confederation is a decentralized confederation of human governmental entities based on Luna, Sol, which defines top-level law for their member states. \
-	Member states receive various benefits such as defensive pacts, trade agreements, social support and funding, and being able to participate	in the Colonial Assembly. \
+	Member states receive various benefits such as defensive pacts, trade agreements, social support and funding, and being able to participate in the Colonial Assembly. \
 	The majority, but not all human territories are members of The Orion Confederation.  As such, The Orion Confederation is a major power and defacto represents humanity \
 	on the galactic stage. Military flight operations fall under the banner of the JSDF."
 	history = "" // Todo
@@ -2301,3 +2302,57 @@
 			"active distress signal",
 			"an active incident site"
 			)
+
+// Space Alien Rats.
+/datum/lore/organization/gov/altevian_hegemony
+	name = "The Altevian Hegemony" 
+	short_name = "Altevian Hegemony"
+	acronym = "AH"
+	desc = "The Altevians are a space-faring race of rodents that resemble Earth-like rats. They do not have a place they call home in terms of a planet, and instead have massive multiple-kilometer-long colony-ships that are constantly on the move and typically keep operations outside of known populated systems to not eat the resources from others. Their primary focus is trade and slavage operations and can be expected to be seen around both densely populated and empty systems for their work."
+	history = ""
+	work = "salvage and trade operators"
+	headquarters = "AH-CV Migrant"
+	motto = ""
+	org_type = "government"
+
+	ship_prefixes = list("AH-DV" = "a diplomatic", "AH-EV" = "an exploration", "AH-FV" = "a fueling", "AH-FV" = "a cargo", "AH-SV" = "a research", "AH-TV" = "a colony-transporter", "AH-RV" = "an emergency response", "AH-RV" = "a response", "AH-MV" = "a medical")
+	ship_names = list(
+			"Platinum",
+			"Warson",
+			"Mane",
+			"Holland",
+			"Arauz",
+			"Diamond",
+			"Gold",
+			"Steam",
+			"Boiler",
+			"Slip",
+			"Lavender",
+			"Wheel",
+			"Stuntson",
+			"Desto",
+			"Palos",
+			"Matterson",
+			"Mill",
+			"Smoke",
+			"Squeakson",
+			"Rabion",
+			"Strikedown",
+			"Cluster",
+			"Ratling",
+			"Archaeologist",
+			"Beaker"
+			)
+	destination_names = list(
+			"the AH-CV Migrant flagship",
+			"one of our research colony-ships",
+			"the AH-CV Lotus",
+			"the AH-CV Anvil",
+			"the AH-CV Generations",
+			"the AH-CV Galley",
+			"the AH-CV Prosperity",
+			"the AH-CV Kitsap",
+			"the AH-CV Diamondback",
+			"one of our colony-ships",
+			"one of our production fleets"
+			) 

@@ -5,8 +5,9 @@
 	var/total_volume = 0
 	var/maximum_volume = 100
 	var/atom/my_atom = null
+	var/reagents_holder_flags
 
-/datum/reagents/New(var/max = 100, atom/A = null)
+/datum/reagents/New(var/max = 100, atom/A = null, new_flags = NONE)
 	..()
 	maximum_volume = max
 	my_atom = A
@@ -21,6 +22,8 @@
 			if(!D.name)
 				continue
 			SSchemistry.chemical_reagents[D.id] = D
+
+	reagents_holder_flags = new_flags
 
 /datum/reagents/Destroy()
 	STOP_PROCESSING(SSchemistry, src)
@@ -459,3 +462,15 @@
 	trans_to(T, total_volume, multiplier, copy)
 	if (total_volume <= 0)
 		qdel(src)
+
+/datum/reagents/proc/conditional_update_move(atom/A, Running = 0)
+	var/list/cached_reagents = reagent_list
+	for(var/datum/reagent/R in cached_reagents)
+		R.on_move (A, Running)
+	update_total()
+
+/datum/reagents/proc/conditional_update(atom/A)
+	var/list/cached_reagents = reagent_list
+	for(var/datum/reagent/R in cached_reagents)
+		R.on_update (A)
+	update_total()

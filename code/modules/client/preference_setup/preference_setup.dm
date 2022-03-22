@@ -230,7 +230,7 @@
 	. = OnTopic(href, href_list, usr)
 
 	if(. & TOPIC_UPDATE_PREVIEW)
-		pref_mob.client.prefs.preview_icon = null
+		pref_mob.client.prefs.update_preview_icon()
 	if(. & TOPIC_REFRESH)
 		pref_mob.client.prefs.ShowChoices(usr)
 
@@ -271,11 +271,12 @@
 	return 0 //Something went wrong!
 
 /datum/category_item/player_setup_item/proc/get_min_age() //Minimum limit is 18
-	var/min_age = 18
 	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
-	if(!is_FBP() && S.min_age > 18)
-		min_age = S.min_age
-	return min_age
+	if(S.min_age > 18)
+		return S.min_age
+	else if(!is_FBP())
+		S.min_age = 18
+	return S.min_age
 
 /datum/category_item/player_setup_item/proc/get_max_age()
 	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]

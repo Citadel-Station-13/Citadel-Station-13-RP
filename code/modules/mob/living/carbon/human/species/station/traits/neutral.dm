@@ -113,3 +113,109 @@
 	..(S,H)
 	H.verbs |= /mob/living/proc/glow_toggle
 	H.verbs |= /mob/living/proc/glow_color
+
+// Body shape traits
+/datum/trait/taller
+	name = "Taller"
+	desc = "Your body is taller than average."
+	cost = 0
+//	custom_only = FALSE
+	var_changes = list("icon_scale_y" = 1.09)
+	excludes = list(/datum/trait/tall, /datum/trait/short, /datum/trait/shorter)
+
+/datum/trait/taller/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.update_transform()
+
+/datum/trait/tall
+	name = "Tall"
+	desc = "Your body is a bit taller than average."
+	cost = 0
+//	custom_only = FALSE
+	var_changes = list("icon_scale_y" = 1.05)
+	excludes = list(/datum/trait/taller, /datum/trait/short, /datum/trait/shorter)
+
+/datum/trait/tall/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.update_transform()
+
+/datum/trait/short
+	name = "Short"
+	desc = "Your body is a bit shorter than average."
+	cost = 0
+//	custom_only = FALSE
+	var_changes = list("icon_scale_y" = 0.95)
+	excludes = list(/datum/trait/taller, /datum/trait/tall, /datum/trait/shorter)
+
+/datum/trait/short/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.update_transform()
+
+/datum/trait/shorter
+	name = "Shorter"
+	desc = "You are shorter than average."
+	cost = 0
+//	custom_only = FALSE
+	var_changes = list("icon_scale_y" = 0.915)
+	excludes = list(/datum/trait/taller, /datum/trait/tall, /datum/trait/short)
+
+/datum/trait/shorter/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.update_transform()
+
+/datum/trait/fat
+	name = "Overweight"
+	desc = "You are heavier than average."
+	cost = 0
+//	custom_only = FALSE
+	var_changes = list("icon_scale_x" = 1.054)
+	excludes = list(/datum/trait/obese, /datum/trait/thin, /datum/trait/thinner)
+
+/datum/trait/fat/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.update_transform()
+
+/datum/trait/obese
+	name = "Obese"
+	desc = "You are much heavier than average."
+	cost = 0
+//	custom_only = FALSE
+	var_changes = list("icon_scale_x" = 1.095)
+	excludes = list(/datum/trait/fat, /datum/trait/thin, /datum/trait/thinner)
+
+/datum/trait/obese/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.update_transform()
+
+/datum/trait/thin
+	name = "Thin"
+	desc = "You are skinnier than average."
+	cost = 0
+//	custom_only = FALSE
+	var_changes = list("icon_scale_x" = 0.945)
+	excludes = list(/datum/trait/fat, /datum/trait/obese, /datum/trait/thinner)
+
+/datum/trait/thin/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.update_transform()
+
+/datum/trait/thinner
+	name = "Very Thin"
+	desc = "You are much skinnier than average."
+	cost = 0
+//	custom_only = FALSE
+	var_changes = list("icon_scale_x" = 0.905)
+	excludes = list(/datum/trait/fat, /datum/trait/obese, /datum/trait/thin)
+
+/datum/trait/thinner/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.update_transform()
+
+/datum/trait/antiseptic_saliva
+	name = "Antiseptic Saliva"
+	desc = "Your saliva has especially strong antiseptic properties that can be used to heal small wounds."
+	cost = 0
+
+/datum/trait/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.verbs |= /mob/living/carbon/human/proc/lick_wounds

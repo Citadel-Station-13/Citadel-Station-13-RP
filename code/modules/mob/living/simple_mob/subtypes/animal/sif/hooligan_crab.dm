@@ -32,8 +32,9 @@
 	icon_state = "sif_crab"
 	icon_living = "sif_crab"
 	icon_dead = "sif_crab_dead"
-	icon_scale_x = 1.5
-	icon_scale_y = 1.5
+	randomized = TRUE
+	mod_min = 100
+	mod_max = 150
 
 	faction = "crabs"
 
@@ -72,6 +73,7 @@
 	attack_edge = TRUE
 	melee_attack_delay = 1 SECOND
 
+	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/crab
 
 	response_help  = "pets"

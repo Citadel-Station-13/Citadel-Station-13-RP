@@ -56,6 +56,7 @@
 #define DNA_UI_WING2_G     37
 #define DNA_UI_WING2_B     38
 #define DNA_UI_LENGTH      38
+#define DNA_BASE_COLOR	   39
 
 #define DNA_SE_LENGTH 49 // original was UI+11
 // For later:
@@ -71,7 +72,7 @@ var/global/list/dna_activity_bounds[DNA_SE_LENGTH]
 // Used to determine what each block means (admin hax and species stuff on /vg/, mostly)
 var/global/list/assigned_blocks[DNA_SE_LENGTH]
 
-var/global/list/datum/dna/gene/dna_genes[0]
+var/global/list/datum/gene/dna_genes[0]
 
 /////////////////
 // GENE DEFINES
@@ -105,6 +106,10 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	var/base_species = "Human"
 	var/list/species_traits = list()
 	var/blood_color = "#A10808"
+	var/custom_say
+	var/custom_ask
+	var/custom_whisper
+	var/custom_exclaim
 	// VOREStation
 
 	// New stuff
@@ -113,6 +118,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	var/list/body_descriptors = null
 	var/list/genetic_modifiers = list() // Modifiers with the MODIFIER_GENETIC flag are saved.  Note that only the type is saved, not an instance.
 
+	var/s_base = ""
 // Make a copy of this strand.
 // USE THIS WHEN COPYING STUFF OR YOU'LL GET CORRUPTION!
 /datum/dna/proc/Clone()
@@ -125,6 +131,11 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	new_dna.base_species=base_species //VOREStation Edit
 	new_dna.species_traits=species_traits.Copy() //VOREStation Edit
 	new_dna.blood_color=blood_color //VOREStation Edit
+	new_dna.custom_say=custom_say //VOREStaton Edit
+	new_dna.custom_ask=custom_ask //VOREStaton Edit
+	new_dna.custom_whisper=custom_whisper //VOREStaton Edit
+	new_dna.custom_exclaim=custom_exclaim //VOREStaton Edit
+	new_dna.s_base=s_base
 	for(var/b=1;b<=DNA_SE_LENGTH;b++)
 		new_dna.SE[b]=SE[b]
 		if(b<=DNA_UI_LENGTH)
@@ -194,8 +205,8 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		src.base_species = CS.base_species
 		src.blood_color = CS.blood_color
 
-	if(istype(character.species,/datum/species/xenochimera))
-		var/datum/species/xenochimera/CS = character.species
+	if(istype(character.species,/datum/species/shapeshifter/xenochimera))
+		var/datum/species/shapeshifter/xenochimera/CS = character.species
 		//src.species_traits = CS.traits.Copy() //No traits
 		src.base_species = CS.base_species
 		src.blood_color = CS.blood_color
@@ -205,6 +216,11 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		//src.species_traits = CS.traits.Copy() //No traits
 		src.base_species = CS.base_species
 		src.blood_color = CS.blood_color
+
+	src.custom_say = character.custom_say
+	src.custom_ask = character.custom_ask
+	src.custom_whisper = character.custom_whisper
+	src.custom_exclaim = character.custom_exclaim
 
 	// +1 to account for the none-of-the-above possibility
 	SetUIValueRange(DNA_UI_EAR_STYLE,	ear_style + 1,     ear_styles_list.len  + 1,  1)
@@ -262,7 +278,9 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, facial_hair_styles_list.len,1)
 
 	body_markings.Cut()
+	//s_base = character.s_base //doesn't work, fuck me
 	for(var/obj/item/organ/external/E in character.organs)
+		E.s_base = s_base
 		if(E.markings.len)
 			body_markings[E.organ_tag] = E.markings.Copy()
 

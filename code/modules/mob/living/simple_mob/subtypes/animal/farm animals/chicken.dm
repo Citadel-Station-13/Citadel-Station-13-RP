@@ -44,6 +44,8 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	health = 10
 	maxHealth = 10
 
+	randomized = TRUE
+
 	pass_flags = PASSTABLE
 	mob_size = MOB_SMALL
 
@@ -58,22 +60,10 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken
+	bone_amount = 1
 
 	var/eggsleft = 0
 	var/body_color
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/chicken/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/passive/chicken/Initialize(mapload)
 	. = ..()
@@ -170,7 +160,6 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	say_list_type = /datum/say_list/chick
 
 	meat_amount = 1
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/amount_grown = 0
 

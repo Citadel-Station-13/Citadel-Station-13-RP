@@ -57,6 +57,13 @@
 	var/harm_intent_damage = 3		// How much an unarmed harm click does to this mob.
 	var/meat_amount = 0				// How much meat to drop from this mob when butchered
 	var/obj/meat_type				// The meat object to drop
+	var/bone_amount = 0
+	var/obj/bone_type
+	var/hide_amount = 0
+	var/obj/hide_type
+	var/exotic_amount = 0
+	var/obj/exotic_type
+	var/list/harvest_type = list()
 	var/list/loot_list = list()		// The list of lootable objects to drop, with "/path = prob%" structure
 	var/obj/item/card/id/myid// An ID card if they have one to give them access to stuff.
 
@@ -158,10 +165,25 @@
 	//Randomization code base
 	var/mod_min = 70
 	var/mod_max = 130
+	var/randomized = FALSE
+
+//randomization code.
+/mob/living/simple_mob/proc/randomize()
+	if(randomized == TRUE)
+		var/mod = rand(mod_min,mod_max)/100
+		size_multiplier = mod
+		maxHealth = round(maxHealth*mod)
+		health = round(health*mod)
+		melee_damage_lower = round(melee_damage_lower*mod)
+		melee_damage_upper = round(melee_damage_upper*mod)
+		movement_cooldown = round(movement_cooldown*mod)
+		meat_amount = round(meat_amount*mod)
+		update_icons()
 
 /mob/living/simple_mob/Initialize(mapload)
 	verbs -= /mob/verb/observe
 	health = maxHealth
+	randomize()
 
 	for(var/L in has_langs)
 		languages |= GLOB.all_languages[L]
@@ -280,19 +302,49 @@
 
 
 // Harvest an animal's delicious byproducts
-/mob/living/simple_mob/proc/harvest(var/mob/user)
-	var/actual_meat_amount = max(1,(meat_amount/2))
-	if(meat_type && actual_meat_amount>0 && (stat == DEAD))
-		for(var/i=0;i<actual_meat_amount;i++)
-			var/obj/item/meat = new meat_type(get_turf(src))
-			meat.name = "[src.name] [meat.name]"
-		if(issmall(src))
-			user.visible_message("<span class='danger'>[user] chops up \the [src]!</span>")
-			new/obj/effect/decal/cleanable/blood/splatter(get_turf(src))
-			qdel(src)
-		else
-			user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
-			gib()
+/mob/living/simple_mob/proc/harvest(mob/user)
+	var/actual_meat_amount = pick(0, meat_amount)
+	var/actual_bone_amount = pick(0, bone_amount)
+	var/actual_hide_amount = pick(0, hide_amount)
+	var/actual_exotic_amount = pick(0, exotic_amount)
+	if(stat != DEAD)
+		return
+	if(meat_type)
+		for(var/i in 1 to actual_meat_amount)
+			var/obj/item/meat = new meat_type(drop_location())
+			meat.name = "[name] [meat.name]"
+	if(bone_type)
+		for(var/i in 1 to actual_bone_amount)
+			var/obj/item/bone = new bone_type(drop_location())
+			bone.name = "[bone.name]"
+	if(hide_type)
+		for(var/i in 1 to actual_hide_amount)
+			new hide_type(drop_location())
+	if(exotic_type)
+		for(var/i in 1 to actual_exotic_amount)
+			new exotic_type(drop_location())
+	if(issmall(src))
+		user?.visible_message("<span class='danger'>[user] chops up \the [src]!</span>")
+		new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+		qdel(src)
+	else
+		user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
+		gib()
+
+/* Replace the above ^^^^ with this if enabling the butchering component.
+/mob/living/simple_mob/gib()
+	if(butcher_results || guaranteed_butcher_results)
+		var/list/butcher = list()
+		if(butcher_results)
+			butcher += butcher_results
+		if(guaranteed_butcher_results)
+			butcher += guaranteed_butcher_results
+		var/atom/Tsec = drop_location()
+		for(var/path in butcher)
+			for(var/i in 1 to butcher[path])
+				new path(Tsec)
+	..()
+*/
 
 /mob/living/simple_mob/is_sentient()
 	return mob_class & MOB_CLASS_HUMANOID|MOB_CLASS_ANIMAL|MOB_CLASS_SLIME // Update this if needed.

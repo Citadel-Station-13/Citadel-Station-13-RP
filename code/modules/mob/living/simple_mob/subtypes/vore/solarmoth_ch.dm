@@ -39,6 +39,7 @@
 
 	movement_cooldown = 5
 
+	meat_amount = 4
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
 
 	response_help = "pokes"
@@ -170,6 +171,30 @@
 	//light
 	mycolour = COLOR_BLUE
 
+/mob/living/simple_mob/vore/solarmoth/lunarmoth/Life()
+	. = ..()
+	if(icon_state != icon_dead)
+		var/datum/gas_mixture/env = loc.return_air()
+		var/transfer_moles = 0.35 * env.total_moles
+		var/datum/gas_mixture/removed = env.remove(transfer_moles)
+		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
+		if(heat_transfer > 0 && env.temperature > T0C - 275)
+			heat_transfer = min(heat_transfer , heating_power)
+			removed.add_thermal_energy(heat_transfer)
+
+		else if(heat_transfer < 0 && env.temperature > set_temperature)
+			heating_power = original_temp*100
+			heat_transfer = min(heat_transfer , heating_power)
+			removed.add_thermal_energy(heat_transfer)
+
+		else
+			return
+
+		env.merge(removed)
+
+	if(!nospampls)
+		chilltheglass() //shatter and broken calls for glass and lights. Also some special thing.
+
 /mob/living/simple_mob/vore/solarmoth/lunarmoth/proc/chilltheglass() //Why does a coldfusion moth do this? science -shark
 	nospampls = 1
 	if(prob(25))
@@ -189,10 +214,5 @@
 
 	spawn(100)
 		nospampls = 0
-
-/mob/living/simple_mob/vore/solarmoth/lunarmoth/Life()
-	..()
-	if(!nospampls)
-		chilltheglass() //shatter and broken calls for glass and lights. Also some special thing.
 
 

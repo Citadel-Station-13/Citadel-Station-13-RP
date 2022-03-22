@@ -19,6 +19,9 @@
 
 	maxHealth = 40
 	health = 40
+	randomized = TRUE
+	mod_min = 80
+	mod_max = 130
 
 	harm_intent_damage = 8
 
@@ -27,6 +30,7 @@
 	attack_armor_pen = 5	//It's a horror from beyond, I ain't gotta explain 5 AP
 	attack_sharp = 1
 	attack_edge = 1
+	taser_kill = 0 //See the Above on why you can't tase it.
 
 	attacktext = list("chomped")
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -35,18 +39,10 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
-//Randomization Code
-/mob/living/simple_mob/creature/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
+	hide_amount = 4
+	hide_type = /obj/item/stack/hairlesshide
+	exotic_amount = 3
+	exotic_type = /obj/item/stack/sinew
 
 // Strong Variant
 /mob/living/simple_mob/creature/strong

@@ -122,3 +122,18 @@
 			R.amount = R.max_amount
 
 	return ..()
+
+//Clown Ops!
+/obj/structure/closet/syndicate/clownops/personal
+	desc = "It's a storage unit for operative gear."
+
+	starts_with = list(
+		/obj/item/tank/jetpack/oxygen,
+		/obj/item/clothing/mask/gas/clown_hat,
+		/obj/item/clothing/under/rank/clown,
+		/obj/item/bikehorn,
+		/obj/item/bananapeel,
+		/obj/item/card/id/syndicate,
+		/obj/item/assembly/mousetrap/armed,
+		/obj/item/grenade/chem_grenade/lube_tactical,
+		/obj/item/clothing/shoes/clown_shoes)

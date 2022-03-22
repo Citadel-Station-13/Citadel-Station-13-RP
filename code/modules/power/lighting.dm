@@ -761,6 +761,54 @@ var/global/list/light_type_cache = list()
 	brightness_range = 12
 	brightness_power = 1
 
+//Colored Light Tubes
+
+//Standard Rainbow
+/obj/item/light/tube/red
+	color = "#da0205"
+	brightness_color = "#da0205"
+
+/obj/item/light/tube/orange
+	color = "#da7c02"
+	brightness_color = "#da7c02"
+
+/obj/item/light/tube/yellow
+	color = "#e0d100"
+	brightness_color = "#e0d100"
+
+/obj/item/light/tube/green
+	color = "#1db100"
+	brightness_color = "#1db100"
+
+/obj/item/light/tube/blue
+	color = "#0011ff"
+	brightness_color = "#0011ff"
+
+/obj/item/light/tube/purple
+	color = "#7902da"
+	brightness_color = "#7902da"
+
+//Neons
+/obj/item/light/tube/neon_pink
+	color = "#e00f8e"
+	brightness_color = "#e00f8e"
+
+/obj/item/light/tube/neon_blue
+	color = "#0fa7e0"
+	brightness_color = "#0fa7e0"
+
+/obj/item/light/tube/neon_green
+	color = "#91ff00"
+	brightness_color = "#91ff00"
+
+/obj/item/light/tube/neon_yellow
+	color = "#fbff00"
+	brightness_color = "#fbff00"
+
+/obj/item/light/tube/neon_white
+	color = "#ffffff"
+	brightness_color = "#ffffff"
+
 /obj/item/light/bulb
 	name = "light bulb"
 	desc = "A replacement light bulb."
@@ -776,10 +824,64 @@ var/global/list/light_type_cache = list()
 	..()
 	shatter()
 
+//Colored Light Bulbs
+
+//Standard Rainbow
 /obj/item/light/bulb/red
 	brightness_range = 4
 	color = "#da0205"
 	brightness_color = "#da0205"
+
+/obj/item/light/bulb/orange
+	brightness_range = 4
+	color = "#da7c02"
+	brightness_color = "#da7c02"
+
+/obj/item/light/bulb/yellow
+	brightness_range = 4
+	color = "#e0d100"
+	brightness_color = "#e0d100"
+
+/obj/item/light/bulb/green
+	brightness_range = 4
+	color = "#1db100"
+	brightness_color = "#1db100"
+
+/obj/item/light/bulb/blue
+	brightness_range = 4
+	color = "#0011ff"
+	brightness_color = "#0011ff"
+
+/obj/item/light/bulb/purple
+	brightness_range = 4
+	color = "#7902da"
+	brightness_color = "#7902da"
+
+//Neons
+/obj/item/light/bulb/neon_pink
+	brightness_range = 4
+	color = "#e00f8e"
+	brightness_color = "#e00f8e"
+
+/obj/item/light/bulb/neon_blue
+	brightness_range = 4
+	color = "#0fa7e0"
+	brightness_color = "#0fa7e0"
+
+/obj/item/light/bulb/neon_green
+	brightness_range = 4
+	color = "#91ff00"
+	brightness_color = "#91ff00"
+
+/obj/item/light/bulb/neon_yellow
+	brightness_range = 4
+	color = "#fbff00"
+	brightness_color = "#fbff00"
+
+/obj/item/light/bulb/neon_white
+	brightness_range = 4
+	color = "#ffffff"
+	brightness_color = "#ffffff"
 
 /obj/item/light/bulb/fire
 	name = "fire bulb"

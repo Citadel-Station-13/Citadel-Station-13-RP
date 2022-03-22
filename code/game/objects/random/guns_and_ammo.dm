@@ -30,7 +30,7 @@
 				prob(2);/obj/item/gun/energy/ionrifle/pistol,
 				prob(3);/obj/item/gun/energy/toxgun,
 				prob(4);/obj/item/gun/energy/taser,
-				prob(4);/obj/item/gun/energy/taser/civ,
+				prob(4);/obj/item/gun/energy/civtas,
 				prob(2);/obj/item/gun/energy/crossbow/largecrossbow,
 				prob(4);/obj/item/gun/energy/stunrevolver)
 
@@ -208,7 +208,7 @@
 			),
 			prob(1);list(
 				/obj/item/gun/projectile/automatic/p90,
-				/obj/item/ammo_magazine/m9mmp90
+				/obj/item/ammo_magazine/m57x28mmp90
 			),
 			prob(1);list(
 				/obj/item/gun/projectile/automatic/mini_uzi/taj,

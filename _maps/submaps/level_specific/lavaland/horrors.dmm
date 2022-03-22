@@ -2,7 +2,7 @@
 "a" = (
 /obj/structure/table/woodentable,
 /obj/item/flame/candle/candelabra/everburn,
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "c" = (
 /obj/structure/table/woodentable,
@@ -10,38 +10,50 @@
 	dat = "The majority of the text has faded or been defaced. Several snippets of prayers are legible, but not enough to determine their intent. The phrases 'Great Designer', 'change', and 'flesh' appear repeatedly.";
 	name = "Tenets of The Great Designer"
 	},
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/horrors)
+"d" = (
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/horrors)
 "i" = (
 /obj/structure/girder,
-/turf/simulated/floor,
+/turf/simulated/floor/lavaland,
+/area/lavaland/horrors)
+"j" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/structure/bed/chair/pew/left{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "k" = (
 /turf/simulated/wall/r_wall,
 /area/lavaland/horrors)
-"m" = (
+"n" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/horrors)
 "o" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/table/bench/sifwooden/padded,
-/turf/simulated/floor/bmarble,
+/obj/structure/bed/chair/pew/right{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "q" = (
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "u" = (
 /turf/template_noop,
 /area/template_noop)
 "v" = (
 /obj/structure/girder/displaced,
-/turf/simulated/floor,
+/turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "x" = (
 /obj/structure/statue/gold/rd,
-/turf/simulated/floor/bmarble,
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "y" = (
 /obj/effect/floor_decal/asteroid,
@@ -49,16 +61,16 @@
 /area/lavaland/horrors)
 "A" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor,
+/turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "E" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "I" = (
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
-"M" = (
+"K" = (
 /turf/simulated/floor/outdoors/lavaland,
 /area/template_noop)
 "N" = (
@@ -67,33 +79,32 @@
 "O" = (
 /obj/item/flame/candle/candelabra/everburn,
 /obj/structure/table/woodentable,
-/turf/simulated/floor/bmarble,
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "P" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/horrors)
+"Q" = (
+/obj/effect/decal/cleanable/generic,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/horrors)
 "U" = (
 /obj/structure/table,
 /obj/item/flame/candle/candelabra,
-/turf/simulated/floor,
-/area/lavaland/horrors)
-"V" = (
-/obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "X" = (
-/turf/simulated/floor,
+/turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "Y" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/table/bench/sifwooden/padded,
-/turf/simulated/floor/bmarble,
-/area/lavaland/horrors)
-"Z" = (
-/turf/simulated/floor/outdoors/lavaland,
+/obj/structure/bed/chair/pew/left{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 
 (1,1,1) = {"
@@ -116,15 +127,15 @@ u
 (2,1,1) = {"
 u
 N
-Z
+d
 N
 N
 N
 u
-M
+K
 u
-M
-M
+K
+K
 u
 u
 u
@@ -132,16 +143,16 @@ u
 "}
 (3,1,1) = {"
 u
-Z
-Z
-Z
-Z
-Z
-Z
-Z
-Z
-Z
-m
+d
+d
+d
+d
+d
+d
+d
+d
+d
+n
 N
 N
 u
@@ -149,16 +160,16 @@ u
 "}
 (4,1,1) = {"
 u
-Z
-m
-Z
-Z
-Z
-Z
-Z
-Z
-Z
-Z
+d
+n
+d
+d
+d
+d
+d
+d
+d
+d
 N
 N
 u
@@ -167,7 +178,7 @@ u
 (5,1,1) = {"
 u
 N
-Z
+d
 k
 k
 k
@@ -175,7 +186,7 @@ k
 y
 X
 i
-V
+Q
 N
 N
 u
@@ -189,7 +200,7 @@ k
 E
 Y
 I
-o
+j
 I
 Y
 U
@@ -217,7 +228,7 @@ u
 "}
 (8,1,1) = {"
 u
-M
+K
 k
 x
 I
@@ -227,8 +238,8 @@ I
 I
 I
 I
-Z
-Z
+d
+d
 u
 u
 "}
@@ -238,11 +249,11 @@ u
 k
 O
 I
-o
+j
 P
 Y
 I
-o
+j
 I
 X
 N
@@ -279,7 +290,7 @@ k
 k
 k
 k
-Z
+d
 u
 u
 "}
@@ -287,16 +298,16 @@ u
 u
 u
 N
-Z
-Z
-Z
-V
-Z
-m
-Z
-Z
-Z
-Z
+d
+d
+d
+Q
+d
+n
+d
+d
+d
+d
 u
 u
 "}
@@ -306,14 +317,14 @@ u
 N
 N
 N
-Z
-Z
-Z
-Z
-Z
-Z
-Z
-Z
+d
+d
+d
+d
+d
+d
+d
+d
 u
 u
 "}
@@ -324,14 +335,14 @@ u
 u
 u
 u
-M
-M
-M
-M
-M
-M
-M
-M
+K
+K
+K
+K
+K
+K
+K
+K
 u
 "}
 (15,1,1) = {"

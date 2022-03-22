@@ -156,12 +156,18 @@
 		return anchored ? ATMOS_PASS_NO : ATMOS_PASS_YES // If it's anchored, it'll block air.
 	return ATMOS_PASS_YES // Don't stop airflow from the other sides.
 
-/obj/structure/window/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSGLASS))
-		return 1
-	if(get_dir(O.loc, target) == dir)
-		return 0
-	return 1
+/obj/structure/window/CheckExit(atom/movable/AM, turf/target)
+	if(is_fulltile())
+		return TRUE
+	if(AM.checkpass(PASSGLASS))
+		return TRUE
+	if(get_dir(AM.loc, target) == dir)
+		return FALSE
+	return TRUE
+
+/obj/structure/window/setDir(newdir)
+	. = ..()
+	update_nearby_tiles(need_rebuild = TRUE)
 
 /obj/structure/window/hitby(AM as mob|obj)
 	..()
@@ -283,12 +289,14 @@
 			update_nearby_icons()
 			update_verbs()
 			playsound(src, W.usesound, 75, 1)
+			update_nearby_tiles(need_rebuild = TRUE)
 			to_chat(user, "<span class='notice'>You have [anchored ? "" : "un"]fastened the frame [anchored ? "to" : "from"] the floor.</span>")
 		else if(!reinf)
 			anchored = !anchored
 			update_nearby_icons()
 			update_verbs()
 			playsound(src, W.usesound, 75, 1)
+			update_nearby_tiles(need_rebuild = TRUE)
 			to_chat(user, "<span class='notice'>You have [anchored ? "" : "un"]fastened the window [anchored ? "to" : "from"] the floor.</span>")
 	else if(W.is_crowbar() && reinf && state <= 1)
 		state = 1 - state
@@ -347,7 +355,7 @@
 
 
 /obj/structure/window/verb/rotate_counterclockwise()
-	set name = "Rotate Window Counterclockwise"
+	set name = "Rotate Counterclockwise" // Temporary fix until someone more intelligent figures out how to add proper rotation verbs to the panels
 	set category = "Object"
 	set src in oview(1)
 
@@ -361,15 +369,11 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	src.setDir(turn(src.dir, 90))
+	setDir(turn(dir, 90))
 	updateSilicate()
-	update_nearby_tiles(need_rebuild=1)
-	return
-
 
 /obj/structure/window/verb/rotate_clockwise()
-	set name = "Rotate Window Clockwise"
+	set name = "Rotate Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
@@ -383,11 +387,8 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	src.setDir(turn(src.dir, 270))
+	setDir(turn(dir, 270))
 	updateSilicate()
-	update_nearby_tiles(need_rebuild=1)
-	return
 
 /obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
 	. = ..(mapload)
@@ -404,9 +405,8 @@
 
 	ini_dir = dir
 
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles(need_rebuild = TRUE)
 	update_nearby_icons()
-
 
 /obj/structure/window/Destroy()
 	density = 0
@@ -418,10 +418,12 @@
 
 /obj/structure/window/Move()
 	var/ini_dir = dir
-	update_nearby_tiles(need_rebuild=1)
-	..()
+	. = ..()
 	setDir(ini_dir)
-	update_nearby_tiles(need_rebuild=1)
+
+/obj/structure/window/Moved()
+	. = ..()
+	update_nearby_tiles(need_rebuild = TRUE)
 
 //checks if this window is full-tile one
 /obj/structure/window/proc/is_fulltile()
@@ -662,6 +664,48 @@
 		return TRUE
 	. = ..()
 
+/obj/structure/window/wooden
+	name = "wooden panel"
+	desc = "A set of wooden panelling, designed to hide the drab grey walls."
+	icon_state = "woodpanel"
+	basestate = "woodpanel"
+	glasstype = /obj/item/stack/material/wood
+	shardtype = /obj/item/material/shard/wood
+	maximal_heat = T0C + 300 // Same as wooden walls "melting"
+	damage_per_fire_tick = 2.0
+	maxhealth = 10.0
+	force_threshold = 3
+	opacity = 1
+
+/obj/structure/window/wooden/take_damage(var/damage = 0,  var/sound_effect = 1)
+	var/initialhealth = health
+
+	health = max(0, health - damage)
+
+	if(health <= 0)
+		shatter()
+	else
+		if(sound_effect)
+			playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
+		if(health < maxhealth / 4 && initialhealth >= maxhealth / 4)
+			visible_message("[src] looks like it's about to fall apart!" )
+			update_icon()
+		else if(health < maxhealth / 2 && initialhealth >= maxhealth / 2)
+			visible_message("[src] looks seriously damaged!" )
+			update_icon()
+		else if(health < maxhealth * 3/4 && initialhealth >= maxhealth * 3/4)
+			visible_message("Cracks begin to appear in [src]!" )
+			update_icon()
+	return
+
+/obj/structure/window/wooden/shatter(var/display_message = 1)
+	playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
+	if(display_message)
+		visible_message("[src] falls apart!")
+	new shardtype(loc)
+	qdel(src)
+	return
+
 /obj/structure/window/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
@@ -678,3 +722,4 @@
 			qdel(src)
 			return TRUE
 	return FALSE
+

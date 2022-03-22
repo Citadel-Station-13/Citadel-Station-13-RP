@@ -1311,6 +1311,42 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		if(1e12 to 1e15-1)
 			return "[round(number / 1e12, 0.1)] T[symbol]" // tera
 
+
+//Center's an image.
+//Requires:
+//The Image
+//The x dimension of the icon file used in the image
+//The y dimension of the icon file used in the image
+// eg: center_image(I, 32,32)
+// eg2: center_image(I, 96,96)
+
+/proc/center_image(var/image/I, x_dimension = 0, y_dimension = 0)
+	if(!I)
+		return
+
+	if(!x_dimension || !y_dimension)
+		return
+
+	if((x_dimension == world.icon_size) && (y_dimension == world.icon_size))
+		return I
+
+	//Offset the image so that it's bottom left corner is shifted this many pixels
+	//This makes it infinitely easier to draw larger inhands/images larger than world.iconsize
+	//but still use them in game
+	var/x_offset = -((x_dimension/world.icon_size)-1)*(world.icon_size*0.5)
+	var/y_offset = -((y_dimension/world.icon_size)-1)*(world.icon_size*0.5)
+
+	//Correct values under world.icon_size
+	if(x_dimension < world.icon_size)
+		x_offset *= -1
+	if(y_dimension < world.icon_size)
+		y_offset *= -1
+
+	I.pixel_x = x_offset
+	I.pixel_y = y_offset
+
+	return I
+
 //ultra range (no limitations on distance, faster than range for distances > 8); including areas drastically decreases performance
 /proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
 	if(!dist)
@@ -1596,39 +1632,39 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 /proc/get_tgui_plane_masters()
 	. = list()
 	// 'Utility' planes
-	. += new /obj/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
-	. += new /obj/screen/plane_master/lighting							//Lighting system (but different!)
-	. += new /obj/screen/plane_master/ghosts							//Ghosts!
-	. += new /obj/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
+	. += new /atom/movable/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
+	. += new /atom/movable/screen/plane_master/lighting							//Lighting system (but different!)
+	. += new /atom/movable/screen/plane_master/ghosts							//Ghosts!
+	. += new /atom/movable/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
 
-	. += new /obj/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
-	. += new /obj/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
-	. += new /obj/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
-	. += new /obj/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
-	. += new /obj/screen/plane_master{plane = PLANE_CH_WANTED}			//Wanted status
-	. += new /obj/screen/plane_master{plane = PLANE_CH_IMPLOYAL}		//Loyalty implants
-	. += new /obj/screen/plane_master{plane = PLANE_CH_IMPTRACK}		//Tracking implants
-	. += new /obj/screen/plane_master{plane = PLANE_CH_IMPCHEM}		//Chemical implants
-	. += new /obj/screen/plane_master{plane = PLANE_CH_SPECIAL}		//"Special" role stuff
-	. += new /obj/screen/plane_master{plane = PLANE_CH_STATUS_OOC}		//OOC status HUD
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_WANTED}			//Wanted status
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPLOYAL}		//Loyalty implants
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPTRACK}		//Tracking implants
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPCHEM}		//Chemical implants
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_SPECIAL}		//"Special" role stuff
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS_OOC}		//OOC status HUD
 
-	. += new /obj/screen/plane_master{plane = PLANE_ADMIN1}			//For admin use
-	. += new /obj/screen/plane_master{plane = PLANE_ADMIN2}			//For admin use
-	. += new /obj/screen/plane_master{plane = PLANE_ADMIN3}			//For admin use
+	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN1}			//For admin use
+	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN2}			//For admin use
+	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN3}			//For admin use
 
-	. += new /obj/screen/plane_master{plane = PLANE_MESONS} 			//Meson-specific things like open ceilings.
-	// . += new /obj/screen/plane_master{plane = PLANE_BUILDMODE}			//Things that only show up while in build mode
+	. += new /atom/movable/screen/plane_master{plane = PLANE_MESONS} 			//Meson-specific things like open ceilings.
+	// . += new /atom/movable/screen/plane_master{plane = PLANE_BUILDMODE}			//Things that only show up while in build mode
 
 	// Real tangible stuff planes
-	. += new /obj/screen/plane_master/main{plane = TURF_PLANE}
-	. += new /obj/screen/plane_master/main{plane = OBJ_PLANE}
-	. += new /obj/screen/plane_master/main{plane = MOB_PLANE}
-	// . += new /obj/screen/plane_master/cloaked								//Cloaked atoms!
+	. += new /atom/movable/screen/plane_master/main{plane = TURF_PLANE}
+	. += new /atom/movable/screen/plane_master/main{plane = OBJ_PLANE}
+	. += new /atom/movable/screen/plane_master/main{plane = MOB_PLANE}
+	// . += new /atom/movable/screen/plane_master/cloaked								//Cloaked atoms!
 
 	//VOREStation Add - Random other plane masters
-	. += new /obj/screen/plane_master{plane = PLANE_CH_STATUS_R}			//Right-side status icon
-	. += new /obj/screen/plane_master{plane = PLANE_CH_HEALTH_VR}			//Health bar but transparent at 100
-	. += new /obj/screen/plane_master{plane = PLANE_CH_BACKUP}				//Backup implant status
-	. += new /obj/screen/plane_master{plane = PLANE_CH_VANTAG}				//Vore Antags
-	. += new /obj/screen/plane_master{plane = PLANE_AUGMENTED}				//Augmented reality
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS_R}			//Right-side status icon
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_HEALTH_VR}			//Health bar but transparent at 100
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_BACKUP}				//Backup implant status
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_VANTAG}				//Vore Antags
+	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}				//Augmented reality
 	//VOREStation Add End

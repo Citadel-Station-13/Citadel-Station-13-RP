@@ -45,7 +45,7 @@
 		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
 			return
 
-		if (!( istype(over_object, /obj/screen) ))
+		if (!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 
 		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
@@ -56,7 +56,7 @@
 		if (( usr.restrained() ) || ( usr.stat ))
 			return
 
-		if ((src.loc == usr) && !(istype(over_object, /obj/screen)) && !usr.unEquip(src))
+		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
 			return
 
 		switch(over_object.name)
@@ -241,6 +241,18 @@
 				to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
+	if(istype(W, /obj/item/ore/bluespace_crystal))
+		if(!bcell)
+			var/obj/item/ore/bluespace_crystal/BSC = W
+			var/obj/item/melee/baton/cattleprod/teleprod/S = new /obj/item/melee/baton/cattleprod/teleprod
+			qdel(src)
+			qdel(BSC)
+			user.put_in_hands(S)
+			to_chat(user, "<span class='notice'>You place the bluespace crystal firmly into the igniter.</span>")
+		else
+			user.visible_message("<span class='warning'>You can't put the crystal onto the stunprod while it has a power cell installed!</span>")
+	else
+		return ..()
 
 /obj/item/melee/baton/get_description_interaction()
 	var/list/results = list()
@@ -253,6 +265,28 @@
 	results += ..()
 
 	return results
+
+/obj/item/melee/baton/cattleprod/teleprod
+	name = "telebaton"
+	desc = "An ."
+	icon_state = "stunprod_nocell"
+	item_state = "prod"
+	force = 3
+	throwforce = 5
+	stunforce = 0
+	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
+	hitcost = 2500
+	attack_verb = list("poked")
+	slot_flags = null
+
+/obj/item/melee/baton/cattleprod/teleprod/apply_hit_effect(mob/living/L, mob/living/carbon/user, shoving = FALSE)//handles making things teleport when hit
+	. = ..()
+	if(!. || L.anchored)
+		return
+	do_teleport(L, get_turf(L), 15)
+
+/obj/item/melee/baton/cattleprod/attackby(obj/item/I, mob/user, params)//handles sticking a crystal onto a stunprod to make a teleprod
+
 
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
 /obj/item/melee/baton/shocker

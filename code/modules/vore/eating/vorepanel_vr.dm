@@ -337,7 +337,27 @@
 			dat += "<a style='background:#173d15;' href='?src=\ref[src];togglehealbelly=1'>Toggle Healbelly Permission (Currently: ON)</a>"
 		if(FALSE)
 			dat += "<a style='background:#990000;' href='?src=\ref[src];togglehealbelly=1'>Toggle Healbelly Permission (Currently: OFF)</a>"
-
+	// forgive me, for i have sinned by not refactoring this massive jumble of yikes instead of copypasting more..
+	switch(user.permit_sizegun)
+		if(TRUE)
+			dat += "<a style='background:#173d15;' href='?src=\ref[src];toggle_permit_sizegun=1'>Allow Sizegun (Currently: ON)</a>"
+		if(FALSE)
+			dat += "<a style='background:#990000;' href='?src=\ref[src];toggle_permit_sizegun=1'>Allow Sizegun (Currently: OFF)</a>"
+	switch(user.permit_size_trample)
+		if(TRUE)
+			dat += "<a style='background:#173d15;' href='?src=\ref[src];toggle_permit_trample=1'>Permit Step-On (Size >75%) (Currently: ON)</a>"
+		if(FALSE)
+			dat += "<a style='background:#990000;' href='?src=\ref[src];toggle_permit_trample=1'>Permit Step-On  (Size >75%) (Currently: OFF)</a>"
+	switch(user.permit_size_pickup)
+		if(TRUE)
+			dat += "<a style='background:#173d15;' href='?src=\ref[src];toggle_permit_pickup=1'>Permit Instant Pickup (Size >75%) (Currently: ON)</a>"
+		if(FALSE)
+			dat += "<a style='background:#990000;' href='?src=\ref[src];toggle_permit_pickup=1'>Permit Instant Pickup (Size >75%) (Currently: OFF)</a>"
+	switch(user.permit_stripped)
+		if(TRUE)
+			dat += "<a style='background:#173d15;' href='?src=\ref[src];toggle_permit_stripped=1'>Allow Stripper Gun (Currently: ON)</a>"
+		if(FALSE)
+			dat += "<a style='background:#990000;' href='?src=\ref[src];toggle_permit_stripped=1'>Allow Stripper Gun (Currently: OFF)</a>"
 	switch(user.can_be_drop_prey)
 		if(TRUE)
 			dat += "<br><a style='background:#173d15;' href='?src=\ref[src];toggle_dropnom_prey=1'>Toggle Prey Spontaneous Vore (Currently: ON)</a>"
@@ -944,6 +964,22 @@
 
 		if(user.client.prefs_vr)
 			user.client.prefs_vr.devourable = user.devourable
+
+	if(href_list["toggle_permit_sizegun"])
+		user.permit_sizegun = !user.permit_sizegun
+		user.client.prefs_vr?.permit_sizegun = user.permit_sizegun
+
+	if(href_list["toggle_permit_trample"])
+		user.permit_size_trample = !user.permit_size_trample
+		user.client.prefs_vr?.permit_size_trample = user.permit_size_trample
+
+	if(href_list["toggle_permit_pickup"])
+		user.permit_size_pickup = !user.permit_size_pickup
+		user.client.prefs_vr?.permit_size_pickup = user.permit_size_pickup
+
+	if(href_list["toggle_permit_stripped"])
+		user.permit_stripped = !user.permit_stripped
+		user.client.prefs_vr?.permit_stripped = user.permit_stripped
 
 	if(href_list["toggledfeed"])
 		var/choice = alert(user, "This button is to toggle your ability to be fed to or by others vorishly. Force Feeding is currently: [user.feeding ? "Allowed" : "Prevented"]", "", "Allow Feeding", "Cancel", "Prevent Feeding")

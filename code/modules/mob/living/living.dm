@@ -798,7 +798,7 @@ default behaviour is:
 	update_canmove()
 
 //called when the mob receives a bright flash
-/mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/flash)
 	if(override_blindness_check || !(disabilities & BLIND))
 		overlay_fullscreen("flash", type)
 		spawn(25)
@@ -1016,8 +1016,8 @@ default behaviour is:
 
 /mob/living/update_transform()
 	// First, get the correct size.
-	var/desired_scale_x = size_multiplier
-	var/desired_scale_y = size_multiplier
+	var/desired_scale_x = size_multiplier * icon_scale_x
+	var/desired_scale_y = size_multiplier * icon_scale_y
 
 	// Now for the regular stuff.
 	var/matrix/M = matrix()
@@ -1100,7 +1100,7 @@ default behaviour is:
 	src.throw_mode_off()
 	if(usr.stat || !target)
 		return
-	if(target.type == /obj/screen) return
+	if(target.type == /atom/movable/screen) return
 
 	var/atom/movable/item = src.get_active_hand()
 
@@ -1211,3 +1211,11 @@ default behaviour is:
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
+
+/mob/living/proc/OpenCraftingMenu()
+	return
+
+/* Enable this one if you're enabling the butchering component. Otherwise it's useless.
+/mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
+	return
+*/

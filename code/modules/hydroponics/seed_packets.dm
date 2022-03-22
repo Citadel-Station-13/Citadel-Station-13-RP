@@ -24,8 +24,10 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 	update_appearance()
 
 //Updates strings and icon appropriately based on seed datum.
-/obj/item/seeds/proc/update_appearance()
-	if(!seed) return
+/obj/item/seeds/update_appearance()
+	. = ..()
+	if(!seed)
+		return
 
 	// Update icon.
 	overlays.Cut()
@@ -313,6 +315,9 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/durian
 	seed_type = "durian"
+
+/obj/item/seeds/disho
+	seed_type = "disho"
 
 /obj/item/seeds/vanilla
 	seed_type = "vanilla"

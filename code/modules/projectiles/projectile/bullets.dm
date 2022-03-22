@@ -68,6 +68,10 @@
 	fire_sound = 'sound/weapons/weaponsounds_smallpistolshot.ogg'
 	damage = 20
 
+/obj/item/projectile/bullet/pistol/lap //Light Armor Piercing
+	damage = 20
+	armor_penetration = 10
+
 /obj/item/projectile/bullet/pistol/ap
 	damage = 15
 	armor_penetration = 30
@@ -189,6 +193,13 @@
 	range_step = 1
 	spread_step = 10
 
+/obj/item/projectile/bullet/pellet/shotgun_improvised
+	name = "shrapnel"
+	damage = 1
+	pellets = 10
+	range_step = 1
+	spread_step = 10
+
 /obj/item/projectile/bullet/pellet/shotgun/flak
 	damage = 2 //The main weapon using these fires four at a time, usually with different destinations. Usually.
 	range_step = 2
@@ -230,9 +241,18 @@
 
 /obj/item/projectile/bullet/shotgun/ion/on_hit(var/atom/target, var/blocked = 0)
 	..()
-	empulse(target, 0, 0, 0, 0)	//Only affects what it hits
+	empulse(target, 0, 0, 2, 0)	//Only affects what it hits
 	return 1
 
+//Frag shot
+/obj/item/projectile/bullet/shotgun/frag12
+	name ="frag12 slug"
+	damage = 25
+
+/obj/item/projectile/bullet/shotgun/frag12/on_hit(atom/target, blocked = FALSE)
+	..()
+	explosion(target, -1, 0, 1)
+	return 1
 
 /* "Rifle" rounds */
 
@@ -356,6 +376,14 @@
 	name = "incendiary bullet"
 	icon_state = "bullet_alt"
 	damage = 15
+	damage_type = BURN
+	incendiary = 1
+	flammability = 2
+
+/obj/item/projectile/bullet/incendiary/shotgun
+	name = "dragonsbreath pellet"
+	icon_state = "bullet_alt"
+	damage = 10
 	damage_type = BURN
 	incendiary = 1
 	flammability = 2

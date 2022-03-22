@@ -35,6 +35,9 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	faction = "virgo3b"
 	maxHealth = 100
 	health = 100
+	randomized = TRUE
+	mod_min = 90
+	mod_max = 140
 	movement_cooldown = 12
 
 	say_list_type = /datum/say_list/gaslamp
@@ -63,18 +66,7 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	min_n2 = 0
 	max_n2 = 0
 
-//Randomization Code
-/mob/living/simple_mob/animal/passive/gaslamp/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
+	exotic_amount = 5
 
 /datum/say_list/gaslamp
 	emote_see = list("looms", "sways gently")

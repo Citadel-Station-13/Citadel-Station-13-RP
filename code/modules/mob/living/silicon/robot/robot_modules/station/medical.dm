@@ -26,7 +26,8 @@
 					"L3P1-D0T" = "Glitterfly-Surgeon",
 					"Miss M" = "miss-medical",
 					"Coffical" = "coffin-Medical",
-					"Coffcue" = "coffin-Rescue"
+					"Coffcue" = "coffin-Rescue",
+					"X-88" = "xeightyeight-medical"
 
 					)
 
@@ -112,12 +113,15 @@
 	src.modules += new /obj/item/dogborg/jaws/small(src) //In case a patient is being attacked by carp.
 	src.modules += new /obj/item/dogborg/boop_module(src) //Boop the crew.
 	src.modules += new /obj/item/healthanalyzer(src) // See who's hurt specificially.
+	src.modules += new /obj/item/autopsy_scanner(src)
+	src.modules += new /obj/item/roller_holder(src) // Sometimes you just can't buckle someone to yourself because of taurcode. this is for those times.
+	src.modules += new /obj/item/reagent_scanner/adv(src)
 	src.modules += new /obj/item/reagent_containers/syringe(src) //In case the chemist is nice!
 	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)//For holding the chemicals when the chemist is nice
 	// src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
 	src.modules += new /obj/item/shockpaddles/robot/hound(src) //Paws of life
 	src.emag 	 = new /obj/item/dogborg/pounce(src) //Pounce
-  
+
 	//New surgery tools + grippers
 	src.modules += new /obj/item/surgical/scalpel/cyborg(src)
 	src.modules += new /obj/item/surgical/hemostat/cyborg(src)
@@ -166,8 +170,8 @@
 	L.charge_costs = list(1000)
 	L.synths = list(medicine)
 	src.modules += K
-	src.modules += L 
-	src.modules += P 
+	src.modules += L
+	src.modules += P
 	// END CITADEL CHANGES
 
 	R.icon = 'icons/mob/widerobot_vr.dmi'

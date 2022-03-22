@@ -1,7 +1,7 @@
 /datum/map_template/submap/level_specific/class_d
 	name = "Class D POIs"
 	desc = "Submaps for Class D Worlds"
-	allow_duplicates = TRUE
+	allow_duplicates = FALSE
 	prefix = "_maps/submaps/level_specific/class_d/"
 
 /datum/map_template/submap/level_specific/class_d/broken_reactor_D
@@ -108,3 +108,8 @@
 	suffix = "hiddenbunkerD.dmm"
 	cost = 25
 	fixed_orientation = TRUE
+
+/datum/map_template/submap/level_specific/class_d/Possesed_mech_cave
+	name = "Possessed Mech Cave"
+	suffix = "Possesed_mech_cave.dmm"
+	cost = 5

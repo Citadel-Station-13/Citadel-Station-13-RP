@@ -27,7 +27,7 @@
 	else if(retracted_bolt && loaded.len)
 		to_chat(user, "<span class='notice'>You cycle the loaded round into the chamber, allowing you to fire.</span>")
 	else
-		to_chat(user, "<span class='notice'>You cycle the boly back into position, leaving the gun empty.</span>")
+		to_chat(user, "<span class='notice'>You cycle the bolt back into position, leaving the gun empty.</span>")
 	icon_state = initial(icon_state)
 	retracted_bolt = 0
 
@@ -89,5 +89,35 @@
 	caliber = "7.62mm"
 	ammo_type = /obj/item/ammo_casing/a762
 
+/obj/item/gun/projectile/contender/pipegun
+	name = "improvised pipe rifle"
+	desc = "A single shot, handmade pipe rifle. It almost functions like a bolt action. Accepts shotgun shells."
+	icon_state = "pipegun"
+	icon_retracted = "pipegun-empty"
+	item_state = "revolver"
+	caliber = "12g"
+	ammo_type = /obj/item/ammo_casing/a12g/improvised
+	projectile_type = /obj/item/projectile/bullet/shotgun
+	var/unstable = 1
+	var/jammed
 
-
+/obj/item/gun/projectile/contender/pipegun/consume_next_projectile(mob/user as mob)
+	. = ..()
+	if(.)
+		if(unstable)
+			switch(rand(1,100))
+				if(1 to 10)
+					to_chat(user, "<span class='danger'>The pipe bursts open as the gun backfires!</span>")
+					explosion(get_turf(src), -1, 0, 2, 3)
+					qdel(src)
+				if(11 to 39)
+					to_chat(user, "<span class='notice'>The [src] misfires!</span>")
+					playsound(src, 'sound/machines/button.ogg', 25)
+					handle_click_empty()
+					return
+				if(40 to 100)
+					return 1
+		if(jammed)
+			to_chat(user, "<span class='notice'>The [src] is jammed!</span>")
+			handle_click_empty()
+			return

@@ -398,6 +398,7 @@
 	icon_state = "beanie"
 	addblends = "beanie_a"
 	body_parts_covered = 0
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/beanie_loose
 	name = "loose beanie"
@@ -405,6 +406,7 @@
 	icon_state = "beanie_hang"
 	addblends = "beanie_hang_a"
 	body_parts_covered = 0
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/beretg
 	name = "beret"
@@ -559,35 +561,29 @@
 	desc = "A simple crown, fashioned out of gold."
 	icon_state = "crown"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/crown/fancy
 	name = "coronation crown"
 	desc = "An opulent crown, crafted for ceremonial purposes."
 	icon_state = "fancycrown"
-	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/scarecrow
 	name = "field hat"
 	desc = "A ragged burlap hat, bleached and worn by years of exposure to blistering sunlight."
 	icon_state = "scarecrow_hat"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/holiday
 	name = "red holiday hat"
 	desc = "A floppy, fur lined cap. Made famous by an Old Earth mythical figure."
 	icon_state = "christmashat"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/holiday/green
 	name = "green holiday hat"
 	desc = "A floppy, fur lined cap. Made famous by a cabal of toy crafting elves."
 	icon_state = "christmashatg"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/telegram
 	name = "telegram cap"
@@ -617,3 +613,56 @@
 	name = "replica kabuto"
 	desc = "An authentic antique, this helmet from old Earth belongs to an ancient martial tradition. The advent of firearms made this style of protection obsolete. Unfortunately, this remains the case. This version appears less sturdy."
 	icon_state = "kabuto_colorable"
+
+/obj/item/clothing/head/ankh
+	name = "aegyptian circlet"
+	desc = "Perfect for when you want to deliver a stern look from on high."
+	icon_state = "ankh"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/roman_replica
+	name = "Roman Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. The material is too flimsy to provide protection."
+	icon_state = "roman"
+
+/obj/item/clothing/head/romancent_replica
+	name = "Roman Crested Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. The material is too flimsy to provide protection."
+	icon_state = "roman_c"
+
+/obj/item/clothing/head/imperial_replica
+	name = "imperial soldier helmet"
+	desc = "Reproduction headgear fashioned after the standard helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
+	icon_state = "ge_helm"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'
+
+/obj/item/clothing/head/imperial_officer_replica
+	name = "imperial officer helmet"
+	desc = "Reproduction headgear fashioned after the officer's helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
+	icon_state = "ge_helmcent"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'
+
+/obj/item/clothing/head/papersack
+	name = "paper sack hat"
+	desc = "A paper sack with crude holes cut out for eyes. Useful for hiding one's identity or ugliness."
+	icon_state = "paperbag_None"
+	flags_inv = BLOCKHAIR|HIDEFACE
+
+/obj/item/clothing/head/papersack/smiley
+	name = "paper sack hat"
+	desc = "A paper sack with crude holes cut out for eyes and a sketchy smile drawn on the front. Not creepy at all."
+	icon_state = "paperbag_SmileyFace"
+	flags_inv = BLOCKHAIR|HIDEFACE
+
+/obj/item/clothing/head/ghost_sheet
+	name = "ghost sheet"
+	desc = "The hands float by themselves, so it's extra spooky."
+	icon_state = "ghost_sheet"
+	item_state = "ghost_sheet"
+	throwforce = 0
+	throw_speed = 1
+	throw_range = 2
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|HEAD|FACE
+	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEGLOVES|HIDETIE|HIDEHOLSTER

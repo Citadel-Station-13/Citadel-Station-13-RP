@@ -63,7 +63,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /*
 //mob traits
 #define TRAIT_BLIND 			"blind"
+*/
 #define TRAIT_MUTE				"mute"
+/*
 #define TRAIT_EMOTEMUTE			"emotemute"
 #define TRAIT_DEAF				"deaf"
 #define TRAIT_NEARSIGHT			"nearsighted"
@@ -80,7 +82,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DEATHCOMA			"deathcoma" //Causes death-like unconsciousness
 #define TRAIT_FAKEDEATH			"fakedeath" //Makes the owner appear as dead to most forms of medical examination
 #define TRAIT_DISFIGURED		"disfigured"
+*/
 #define TRAIT_XENO_HOST			"xeno_host"	//Tracks whether we're gonna be a baby alien's mummy.
+#define TRAIT_MIMING			"miming" //Tracks whether you're a mime or not.
+/*
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
 #define TRAIT_SLEEPIMMUNE		"sleep_immunity"
@@ -157,6 +162,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // item traits
 */
 #define TRAIT_NODROP            "nodrop"
+#define TRAIT_DISRUPTED			"disrupted"
 /*
 #define TRAIT_T_RAY_VISIBLE     "t-ray-visible" // Visible on t-ray scanners if the atom/var/level == 1
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
@@ -198,6 +204,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 #define ROUNDSTART_TRAIT "roundstart" //cannot be removed without admin intervention
 #define JOB_TRAIT "job"
+#define TRAIT_MIME "mime" //Mime trait.
 /*
 #define CYBORG_ITEM_TRAIT "cyborg-item"
 */
@@ -208,7 +215,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define CURSED_ITEM_TRAIT "cursed-item" // The item is magically cursed
 #define ABSTRACT_ITEM_TRAIT "abstract-item"
 #define STATUS_EFFECT_TRAIT "status-effect"
+*/
 #define CLOTHING_TRAIT "clothing"
+/*
 #define GLASSES_TRAIT "glasses"
 #define VEHICLE_TRAIT "vehicle" // inherited from riding vehicles
 #define INNATE_TRAIT "innate"

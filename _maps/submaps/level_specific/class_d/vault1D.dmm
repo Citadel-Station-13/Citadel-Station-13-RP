@@ -1,13 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "b" = (
-/turf/simulated/wall/iron,
-/area/poi_d/explored)
+/turf/simulated/wall/classd/indoors,
+/area/class_d/explored)
 "c" = (
 /turf/template_noop,
 /area/template_noop)
 "d" = (
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "e" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/crate/mimic/cointoss,
@@ -15,18 +15,18 @@
 /obj/random/medical/lite,
 /obj/random/medical/lite,
 /obj/random/medical/lite,
-/turf/simulated/floor/airless,
-/area/poi_d/explored)
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored)
 "f" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/crate/mimic/safe,
 /obj/random/energy,
-/turf/simulated/floor/airless,
-/area/poi_d/explored)
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored)
 "N" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/airless,
-/area/poi_d/explored)
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored)
 
 (1,1,1) = {"
 b

@@ -21,6 +21,7 @@
 
 	maxHealth = 20
 	health = 20
+	randomized = TRUE
 
 	movement_cooldown = 8 // SLOW-ASS MUTHAFUCKA, I hope.
 
@@ -35,18 +36,9 @@
 	say_list_type = /datum/say_list/snake
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
 
-//Randomization Code
-/mob/living/simple_mob/animal/passive/snake/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
+	bone_amount = 5
+	hide_amount = 1
+	hide_type = /obj/item/stack/hairlesshide
 
 /datum/say_list/snake
 	emote_hear = list("hisses")
@@ -60,18 +52,7 @@
 
 	var/turns_since_scan = 0
 	var/obj/movement_target
-
-//Unrandom the pet
-/mob/living/simple_mob/animal/passive/snake/noodle/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/snake/noodle/Life()
 	..()

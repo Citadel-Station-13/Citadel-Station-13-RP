@@ -19,6 +19,7 @@
 
 	health = 20
 	maxHealth = 20
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "bops"
@@ -32,22 +33,12 @@
 
 	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/corgi
+	bone_amount = 2
+	hide_amount = 5
+	hide_type = /obj/item/stack/animalhide/corgi
 
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/dog/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/passive/dog/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/newspaper))
@@ -136,18 +127,7 @@
 /mob/living/simple_mob/animal/passive/dog/corgi/puppy/Bockscar
 	name = "Bockscar"
 	real_name = "Bockscar"
-
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/dog/corgi/puppy/Bockscar/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE
 
 //Sir Pogsley. (Sec Pet)
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley
@@ -158,18 +138,7 @@
 	makes_dirt = FALSE
 	var/turns_since_scan = 0
 	var/obj/movement_target
-
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Life()
 	..()
@@ -228,18 +197,7 @@
 	var/turns_since_scan = 0
 	var/obj/movement_target
 	makes_dirt = FALSE	//VOREStation edit: no more dirt
-
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/dog/corgi/Ian/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/dog/corgi/Ian/Life()
 	..()
@@ -304,17 +262,7 @@
 	response_harm   = "kicks"
 	var/turns_since_scan = 0
 	var/puppies = 0
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE
 
 //Lisa already has a cute bow!
 /mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Topic(href, href_list)
@@ -368,15 +316,4 @@
 	real_name = "Spice"	//Intended to hold the name without altering it.
 	gender = FEMALE
 	desc = "It's a tamaskan, the name Spice can be found on its collar."
-
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/dog/tamaskan/Spice/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE

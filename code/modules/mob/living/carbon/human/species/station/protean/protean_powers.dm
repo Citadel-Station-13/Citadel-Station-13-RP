@@ -142,7 +142,7 @@
 		return
 
 	//Not enough resources (AND spends the resources, should be the last check)
-	if(!(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < min(10000, refactory.max_storage)))
+	if(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < min(10000, refactory.max_storage))
 		to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 		return
 
@@ -271,6 +271,9 @@
 	else if(stat)
 		to_chat(src,"<span class='warning'>You can only do this while not stunned.</span>")
 		return
+	else if(HAS_TRAIT(src, TRAIT_DISRUPTED))
+		to_chat(src,"<span class='warning'>You can't do this while disrupted!</span>")
+		return
 	else
 		nano_intoblob()
 
@@ -307,9 +310,9 @@
 		to_chat(user,"<span class='warning'>You don't have a working refactory module!</span>")
 		return
 
-	var/nagmessage = "Adjust your mass to be a size between 25 to 200%. Up-sizing consumes metal, downsizing returns metal."
+	var/nagmessage = "Adjust your mass to be a size between 75 to 200%. Up-sizing consumes metal, downsizing returns metal."
 	var/new_size = input(user, nagmessage, "Pick a Size", user.size_multiplier*100) as num|null
-	if(!new_size || !ISINRANGE(new_size,25,200))
+	if(!new_size || !ISINRANGE(new_size, 75, 200))
 		return
 
 	var/size_factor = new_size/100

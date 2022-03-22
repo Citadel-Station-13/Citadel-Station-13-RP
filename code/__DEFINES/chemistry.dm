@@ -31,6 +31,7 @@
 #define IS_SHADEKIN 13
 #define IS_ALRAUNE 14
 #define IS_APIDAEN 15
+#define IS_XENOHYBRID 16
 
 #define CE_STABLE "stable" // Inaprovaline
 #define CE_ANTIBIOTIC "antibiotic" // Antibiotics
@@ -64,3 +65,14 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define MAX_UNITS_PER_AUTO 5 // Max amount of units in an autoinjector.
 #define MAX_UNITS_PER_BOTTLE 60 // Max amount of units in a bottle (it's volume)
 #define MAX_CUSTOM_NAME_LEN 64 // Max length of a custom pill/condiment/whatever
+
+//reagents_holder_flags defines
+#define INJECTABLE		(1<<0)	// Makes it possible to add reagents through droppers and syringes.
+#define DRAWABLE		(1<<1)	// Makes it possible to remove reagents through syringes.
+
+#define REFILLABLE		(1<<2)	// Makes it possible to add reagents through any reagent container.
+#define DRAINABLE		(1<<3)	// Makes it possible to remove reagents through any reagent container.
+
+#define TRANSPARENT		(1<<4)	// Used on containers which you want to be able to see the reagents off.
+#define AMOUNT_VISIBLE	(1<<5)	// For non-transparent containers that still have the general amount of reagents in them visible.
+#define NO_REACT        (1<<6)  // Applied to a reagent holder, the contents will not react with each other.

@@ -19,11 +19,11 @@
 	var/min_damage = 0
 
 	// is the wound bandaged?
-	var/bandaged = 0
+	var/bandaged = FALSE
 	// Similar to bandaged, but works differently
-	var/clamped = 0
+	var/clamped = FALSE
 	// is the wound salved?
-	var/salved = 0
+	var/salved = FALSE
 	// is the wound disinfected?
 	var/disinfected = 0
 	var/created = 0
@@ -37,7 +37,7 @@
 	// stages such as "cut", "deep cut", etc.
 	var/list/stages
 	// internal wounds can only be fixed through surgery
-	var/internal = 0
+	var/internal = FALSE
 	// maximum stage at which bleeding should still happen. Beyond this stage bleeding is prevented.
 	var/max_bleeding_stage = 0
 	// one of CUT, PIERCE, BRUISE, BURN
@@ -46,7 +46,8 @@
 	// the maximum amount of damage that this wound can have and still autoheal
 	var/autoheal_cutoff = 10
 
-
+	// whether this wound starts infected regardless of damage level
+	var/forced_infected = FALSE
 
 
 	// helper lists
@@ -119,19 +120,29 @@
 		src.germ_level = max(src.germ_level, other.germ_level)
 		src.created = max(src.created, other.created)	//take the newer created time
 
+	//forces an infection, and bleeding regardless of damage or stage
+	proc/force_infect()
+		bleed_threshold = 4 	//Will always start bleeding, making the infection worse if untreated
+		forced_infected = TRUE
+		germ_level = INFECTION_LEVEL_ONE + 1
 	// checks if wound is considered open for external infections
 	// untreated cuts (and bleeding bruises) and burns are possibly infectable, chance higher if wound is bigger
 	proc/infection_check()
-		if (damage < 10)	//small cuts, tiny bruises, and moderate burns shouldn't be infectable.
-			return 0
-		if (is_treated() && damage < 25)	//anything less than a flesh wound (or equivalent) isn't infectable if treated properly
-			return 0
 		if (disinfected)
-			germ_level = 0	//reset this, just in case
-			return 0
-
+			if(germ_level > INFECTION_LEVEL_ONE)
+				germ_level = 0	//reset this, just in case
+			forced_infected = FALSE
+			return FALSE
+		if (damage < 10 && !forced_infected)	//small cuts, tiny bruises, and moderate burns shouldn't be infectable.
+			return FALSE
+		if (is_treated() && damage < 25)	//anything less than a flesh wound (or equivalent) isn't infectable if treated properly
+			return FALSE
 		if (damage_type == BRUISE && !bleeding()) //bruises only infectable if bleeding
-			return 0
+			return FALSE
+
+
+		if(forced_infected) //This wound is forced to be infected, circumventing damage requirements, check after making sure it's not bleeding and isn't disinfected
+			return TRUE
 
 		var/dam_coef = round(damage/10)
 		switch (damage_type)
@@ -142,7 +153,7 @@
 			if (CUT)
 				return prob(dam_coef*20)
 
-		return 0
+		return FALSE
 
 	proc/bandage()
 		bandaged = 1
@@ -295,7 +306,7 @@
 	max_bleeding_stage = 3
 	stages = list("big gaping wound" = 60, "healing gaping wound" = 40, "large blood soaked clot" = 25, "large angry scar" = 10, "large straight scar" = 0)
 
-datum/wound/cut/massive
+/datum/wound/cut/massive
 	max_bleeding_stage = 3
 	stages = list("massive wound" = 70, "massive healing wound" = 50, "massive blood soaked clot" = 25, "massive angry scar" = 10,  "massive jagged scar" = 0)
 
@@ -365,7 +376,7 @@ datum/wound/puncture/massive
 
 /** INTERNAL BLEEDING **/
 /datum/wound/internal_bleeding
-	internal = 1
+	internal = TRUE
 	stages = list("severed artery" = 30, "cut artery" = 20, "damaged artery" = 10, "bruised artery" = 5)
 	autoheal_cutoff = 5
 	max_bleeding_stage = 4	//all stages bleed. It's called internal bleeding after all.
@@ -399,4 +410,4 @@ datum/wound/puncture/massive
 	..(damage_amt)
 
 /datum/wound/lost_limb/can_merge(var/datum/wound/other)
-	return 0 //cannot be merged
+	return FALSE //cannot be merged

@@ -126,7 +126,7 @@
 		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/melee/telebaton,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/security/hos,
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/gps/security/hos,
 		/obj/item/flashlight/maglight,
@@ -157,13 +157,19 @@
 	starts_with = list(
 		/obj/item/clothing/head/helmet/HoS,
 		/obj/item/clothing/head/helmet/HoS/hat,
+		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/vest/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
 		/obj/item/clothing/under/rank/head_of_security/corp,
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated,
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt,
+		/obj/item/clothing/under/rank/head_of_security/turtleneck,
+		/obj/item/clothing/under/oricon/mildress/marine/command/fake,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
+		/obj/item/clothing/suit/storage/vest/hos_overcoat,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
+		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/clothing/suit/dress/marine/command/hos,
 		/obj/item/clothing/head/helmet/dermal,
 		/obj/item/radio/headset/heads/hos,
@@ -171,8 +177,6 @@
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/storage/belt/security,
 		/obj/item/clothing/accessory/holster/waist,
-		/obj/item/clothing/head/beret/sec/corporate/hos,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/under/bodysuit/bodysuitseccom)
 
@@ -201,13 +205,8 @@
 		/obj/item/melee/baton/loaded,
 		/obj/item/gun/energy/gun/multiphase,
 		/obj/item/melee/telebaton,
-		/obj/item/clothing/head/beret/sec/corporate/hos,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
-		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/gps/security/hos,
-		/obj/item/flashlight/maglight,
-		/obj/item/clothing/under/rank/head_of_security/turtleneck)
-
+		/obj/item/flashlight/maglight)
 
 /obj/structure/closet/secure_closet/warden
 	name = "warden's locker"
@@ -342,7 +341,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
-		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/gloves/forensic,
 		/obj/item/gun/projectile/revolver/detective45,
 		/obj/item/ammo_magazine/s45/rubber,
 		/obj/item/ammo_magazine/s45/rubber,
@@ -450,7 +449,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 //Custom NT Security Lockers, Only found at central command
 /obj/structure/closet/secure_closet/nanotrasen_security
 	name = "NanoTrasen security officer's locker"
-	icon = 'icons/obj/closet_vr.dmi'
+	icon = 'icons/obj/closet.dmi'
 	icon_state = "secC1"
 	icon_closed = "secC"
 	icon_locked = "secC1"
@@ -498,7 +497,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/nanotrasen_commander
 	name = "NanoTrasen commander's locker"
-	icon = 'icons/obj/closet_vr.dmi'
+	icon = 'icons/obj/closet.dmi'
 	icon_state = "secC1"
 	icon_closed = "secC"
 	icon_locked = "secC1"
@@ -552,7 +551,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/nanotrasen_warden
 	name = "NanoTrasen warden's locker"
-	icon = 'icons/obj/closet_vr.dmi'
+	icon = 'icons/obj/closet.dmi'
 	icon_state = "secC1"
 	icon_closed = "secC"
 	icon_locked = "secC1"

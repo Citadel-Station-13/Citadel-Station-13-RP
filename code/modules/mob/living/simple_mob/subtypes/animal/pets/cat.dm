@@ -18,6 +18,8 @@
 
 	movement_cooldown = 0.5 SECONDS
 
+	randomized = TRUE
+
 	see_in_dark = 6 // Not sure if this actually works.
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
@@ -32,18 +34,10 @@
 	var/named = FALSE //have I been named yet?
 	var/friend_name = null //VOREStation Edit - Lock befriending to this character
 
-//Randomization Code
-/mob/living/simple_mob/animal/passive/cat/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
+	meat_amount = 2
+	bone_amount = 2
+	hide_amount = 5
+	hide_type = /obj/item/stack/animalhide/cat
 
 /mob/living/simple_mob/animal/passive/cat/Initialize(mapload)
 	icon_living = "[initial(icon_state)]"
@@ -127,18 +121,7 @@
 	item_state = "cat"
 	named = TRUE
 	makes_dirt = 0 //Vorestation Edit
-
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/chicken/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/cat/kitten
 	name = "kitten"
@@ -172,18 +155,7 @@
 	item_state = "cat3"
 	named = TRUE
 	holder_type = /obj/item/holder/cat/fluff/bones
-
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/cat/bones/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE
 
 // VOREStation Edit - Adds generic tactical kittens
 /obj/item/holder/cat/kitten

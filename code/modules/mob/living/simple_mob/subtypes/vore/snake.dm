@@ -22,6 +22,7 @@
 	faction = "snake"
 	maxHealth = 200
 	health = 200
+	randomized = TRUE
 
 	melee_damage_lower = 5
 	melee_damage_upper = 12
@@ -34,19 +35,6 @@
 	pixel_y = -16
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
-
-//Randomization Code
-/mob/living/simple_mob/vore/aggressive/giant_snake/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/giant_snake

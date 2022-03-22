@@ -20,6 +20,10 @@
 	health = 50
 	maxHealth = 50
 
+	mod_min = 80
+	mod_max = 150
+	randomized = TRUE
+
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
@@ -28,25 +32,10 @@
 	say_list_type = /datum/say_list/cow
 
 	meat_amount = 6
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	bone_amount = 4
+	hide_amount = 6
 
 	var/datum/reagents/udder = null
-
-	mod_min = 80
-	mod_max = 150
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/cow/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/passive/cow/Initialize(mapload)
 	. = ..()

@@ -55,30 +55,22 @@
 
 	maxHealth = 100
 	health = 100
+	randomized = TRUE
 
 	harm_intent_damage = 5
 	melee_damage_lower = 25
 	melee_damage_upper = 25
 	attack_sharp = TRUE
 	attack_edge = TRUE
+	taser_kill = 0
 
 	attacktext = list("slashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
+	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/alien/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
+	hide_amount = 2
+	hide_type = /obj/item/stack/xenochitin
 
 /datum/category_item/catalogue/fauna/feral_alien/drone
 	name = "Feral Xenomorph - Drone"
@@ -210,6 +202,7 @@
 	maxHealth = 1000
 	health = 1000
 	meat_amount = 5
+	hide_amount = 5
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress)
 
 	pixel_x = -16
@@ -238,6 +231,7 @@
 	maxHealth = 600
 	health = 600
 	meat_amount = 10
+	hide_amount = 10
 	melee_damage_lower = 15
 	melee_damage_upper = 25
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother)

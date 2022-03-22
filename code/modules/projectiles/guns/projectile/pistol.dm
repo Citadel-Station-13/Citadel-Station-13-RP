@@ -55,7 +55,6 @@
 	options["NT Mk. 58"] = "secguncomp"
 	options["NT Mk. 58 Custom"] = "secgundark"
 	options["Colt M1911"] = "colt"
-	options["FiveSeven"] = "fnseven"
 	options["USP"] = "usp"
 	options["H&K VP"] = "VP78"
 	options["P08 Luger"] = "p08"
@@ -83,10 +82,10 @@
 
 /obj/item/gun/projectile/sec
 	name = ".45 pistol"
-	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. Uses .45 rounds."
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash)
+	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash, /obj/item/ammo_magazine/m45/practice)
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -104,8 +103,8 @@
 	magazine_type = /obj/item/ammo_magazine/m45/flash
 
 /obj/item/gun/projectile/sec/wood
-	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. This one has a sweet wooden grip. Uses .45 rounds."
-	name = "custom .45 Pistol"
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
+	name = "custom .45 pistol"
 	icon_state = "secgundark"
 
 /obj/item/gun/projectile/sec/wood/update_icon()
@@ -333,6 +332,7 @@
 		icon_state = "[initial(icon_state)]-e"
 
 /obj/item/gun/projectile/p92x/sec
+	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. This one is a less-lethal variant that only accepts 9mm rubber or flash magazines."
 	magazine_type = /obj/item/ammo_magazine/m9mm/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/flash)
 
@@ -367,3 +367,44 @@
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
 	ammo_type = /obj/item/ammo_casing/a9mm/silver
 	holy = TRUE
+
+/obj/item/gun/projectile/clown_pistol
+	name = "clown pistol"
+	desc = "This curious weapon feeds from a compressed biomatter cartridge, and seems to fabricate its ammunition from that supply."
+	icon_state = "clownpistol"
+	item_state = "revolver"
+	caliber = "organic"
+	load_method = MAGAZINE
+	w_class = ITEMSIZE_SMALL
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
+	magazine_type = /obj/item/ammo_magazine/mcompressedbio/compact
+	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
+	projectile_type = /obj/item/projectile/bullet/organic
+
+/obj/item/gun/projectile/clown_pistol/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"
+
+/obj/item/gun/projectile/fnseven
+	name = "5.7 sidearm"
+	desc = "This classic sidearm design utilizes an adaptable round considered to be superior to 9mm parabellum. It shares a round type with the H90K."
+	icon_state = "fnseven"
+	caliber = "5.7x28mm"
+	load_method = MAGAZINE
+	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
+	magazine_type = /obj/item/ammo_magazine/m57x28mm
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm)
+	projectile_type = /obj/item/projectile/bullet/pistol
+
+/obj/item/gun/projectile/fnseven/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "fnseven"
+	else
+		icon_state = "fnseven-e"
+
+/obj/item/gun/projectile/fnseven/pathfinder
+	pin = /obj/item/firing_pin/explorer

@@ -52,6 +52,7 @@
 
 	maxHealth = 15
 	health = 15
+	randomized = TRUE
 
 	armor = list(
 				"melee" = 5,
@@ -87,19 +88,6 @@
 	say_list_type = /datum/say_list/roach
 	holder_type = /obj/item/holder/roach
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
-
-//Randomization Code
-/mob/living/simple_mob/animal/roach/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/roach/Initialize(mapload)
 	. = ..()
@@ -185,7 +173,7 @@
 		amount_grown = 1
 	get_light_and_color(parent)
 
-/mob/living/simple_mob/animal/roach/roachling/Destroy()
+/mob/living/simple_mob/animal/roach/roachling/death()
 	STOP_PROCESSING(SSobj, src)
 	walk(src, 0) // Because we might have called walk_to, we must stop the walk loop or BYOND keeps an internal reference to us forever.
 	return ..()

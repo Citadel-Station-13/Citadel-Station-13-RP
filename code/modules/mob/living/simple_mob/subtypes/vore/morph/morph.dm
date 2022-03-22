@@ -38,7 +38,6 @@
 	attack_sound = 'sound/effects/blobattack.ogg'
 
 	meat_amount = 2
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	showvoreprefs = 0
 	vore_active = 1
@@ -51,7 +50,7 @@
 	var/morph_time = 0
 	var/our_size_multiplier = 1
 	var/static/list/blacklist_typecache = typecacheof(list(
-	/obj/screen,
+	/atom/movable/screen,
 	/obj/singularity,
 	/mob/living/simple_mob/vore/hostile/morph,
 	/obj/effect))

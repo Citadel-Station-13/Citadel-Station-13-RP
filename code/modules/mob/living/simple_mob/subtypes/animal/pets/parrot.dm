@@ -16,24 +16,16 @@
 	has_langs = list("Galactic Common", "Bird")
 	catalogue_data = list(/datum/category_item/catalogue/fauna/parrot)
 
+	randomized = TRUE
+
 	ai_holder_type = /datum/ai_holder/simple_mob/passive/parrot
 
 	// A headset, so that talking parrots can yell at the crew over comms.
 	// If set to a type, on initialize it will be instantiated into that type.
 	var/obj/item/radio/headset/my_headset = null
 
-//Randomization Code
-/mob/living/simple_mob/animal/passive/bird/parrot/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
+	meat_amount = 1
+	bone_amount = 1
 
 // Say list
 /datum/say_list/bird/polly
@@ -135,18 +127,7 @@
 	tt_desc = "E Ara macao"
 	my_headset = /obj/item/radio/headset/headset_eng
 	say_list_type = /datum/say_list/bird/polly
-
-//Unrandom the pet
-/mob/living/simple_mob/animal/passive/bird/parrot/polly/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE
 
 // Best Bird with best headset.
 /mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate

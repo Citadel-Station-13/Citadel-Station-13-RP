@@ -262,3 +262,14 @@
 							/obj/item/stock_parts/console_screen = 1,
 							/obj/item/healthanalyzer = 1,
 							/obj/item/stack/material/glass/reinforced = 2)
+
+/obj/item/circuitboard/arf_generator
+	name = T_BOARD("atmospheric field generator")
+	build_path = /obj/machinery/atmospheric_field_generator
+	board_type = new /datum/frame/frame_types/arfgs
+	origin_tech = list(TECH_MAGNET = 4, TECH_POWER = 4, TECH_BIO = 3)
+	req_components = list(
+							/obj/item/stock_parts/micro_laser/high = 2,	//field emitters
+							/obj/item/stock_parts/scanning_module = 1,	//atmosphere sensor
+							/obj/item/stock_parts/capacitor/adv = 1,		//for the JUICE
+							/obj/item/stack/cable_coil = 10)

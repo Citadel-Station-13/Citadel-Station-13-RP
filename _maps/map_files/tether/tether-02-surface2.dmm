@@ -1387,6 +1387,9 @@
 	dir = 9
 	},
 /obj/item/mirrortool,
+/obj/item/paper{
+	info = "In the event all other methods of revival fail, your last resort should be to resleeve the patient. This should always be a last resort, as the process of resleeving will result in memory loss dependent on the patients last time of backup- this could be the entire shift, had they not completed a manual backup while on the facility. The procedure is as follows. Use the resleeving control console to print out the body of your patient. Once it is done, move the new body from the grower pod, to the resleeving pod. Using the mirror installation tool, or surgery if necessary, remove the mirror from the deceased patient. (It would be good to then dispose of the old body to prevent the patient seeing themselves.) Eject the mirror from the tool, and insert it into the resleeving console. Select 'View Current Mind' and press 'Sleeve'. The console will automatically move the mirror into the newly printed body, and your patient will be resleeved. Your patient will likely be confused, and will need some help and time adjusting to the news of their demise."
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/resleeving)
 "acc" = (

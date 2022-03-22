@@ -10,29 +10,27 @@
 /obj/item/bedsheet/hos,
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/effect/landmark{
 	name = "Syndicate-Spawn"
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "ad" = (
 /obj/structure/table/glass,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "ae" = (
 /obj/structure/bed/padded,
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/item/bedsheet/clown{
@@ -40,16 +38,16 @@
 	name = "Dave's bedsheet"
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "af" = (
 /obj/structure/table/glass,
 /obj/item/handcuffs/fuzzy,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "ag" = (
@@ -59,8 +57,8 @@
 /area/antag/antag_base)
 "ah" = (
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "ai" = (
@@ -75,7 +73,6 @@
 	req_one_access = list(150)
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -97,7 +94,6 @@
 /obj/item/gun/projectile/automatic/sts35,
 /obj/item/gun/projectile/automatic/sts35,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -109,7 +105,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -121,7 +116,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -135,7 +129,6 @@
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -150,7 +143,6 @@
 /obj/item/storage/box/frags,
 /obj/item/storage/box/frags,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -165,24 +157,20 @@
 /obj/item/storage/box/sniperammo,
 /obj/item/gun/projectile/heavysniper,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "aq" = (
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "ar" = (
 /obj/machinery/newscaster{
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -194,7 +182,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -202,9 +189,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 2
-	},
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -221,9 +206,7 @@
 	},
 /area/antag/antag_base)
 "au" = (
-/obj/structure/window/reinforced{
-	dir = 2
-	},
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -240,9 +223,7 @@
 	},
 /area/antag/antag_base)
 "av" = (
-/obj/structure/window/reinforced{
-	dir = 2
-	},
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -274,7 +255,6 @@
 /obj/item/ammo_magazine/s44,
 /obj/item/gun/projectile/revolver/consul,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -288,7 +268,6 @@
 /obj/item/gun/projectile/shotgun/pump/combat,
 /obj/item/gun/projectile/shotgun/pump/combat,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -308,7 +287,6 @@
 /obj/item/gun/projectile/luger,
 /obj/item/gun/projectile/luger/brown,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -324,7 +302,6 @@
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -339,7 +316,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -368,7 +344,6 @@
 /obj/item/melee/telebaton,
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -466,7 +441,6 @@
 	req_one_access = list(999)
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -511,7 +485,6 @@
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -534,7 +507,6 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -556,7 +528,6 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -578,7 +549,6 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -587,7 +557,6 @@
 	icon_state = "plant-21"
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -626,8 +595,7 @@
 	req_one_access = list(150)
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/antag/antag_base)
 "aY" = (
@@ -643,8 +611,7 @@
 /obj/structure/bed/padded,
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/effect/landmark{
 	name = "Syndicate-Spawn"
@@ -659,7 +626,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -668,7 +634,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -706,7 +671,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -737,7 +701,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -757,7 +720,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -766,7 +728,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -780,7 +741,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -794,7 +754,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -810,7 +769,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -824,7 +782,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -878,7 +835,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -895,7 +851,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -907,7 +862,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -916,7 +870,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -925,7 +878,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -940,7 +892,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -959,7 +910,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -976,7 +926,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -985,7 +934,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -993,7 +941,6 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack/corner2,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1002,14 +949,12 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "bz" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1023,7 +968,6 @@
 	pixel_y = -32
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1032,7 +976,6 @@
 	name = "Syndicate-Uplink"
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1044,7 +987,6 @@
 	pixel_y = -32
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1053,7 +995,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1068,7 +1009,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1098,7 +1038,6 @@
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1107,7 +1046,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1117,7 +1055,6 @@
 /obj/item/clothing/mask/gas/voice,
 /obj/item/clothing/mask/gas/voice,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1129,7 +1066,6 @@
 /obj/item/rig/merc/empty,
 /obj/item/rig/merc/empty,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1139,7 +1075,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1149,7 +1084,6 @@
 	req_one_access = list(150)
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1166,7 +1100,6 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1178,7 +1111,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1186,8 +1118,8 @@
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "bO" = (
@@ -1222,19 +1154,18 @@
 	pixel_y = 12
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "bP" = (
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "bQ" = (
@@ -1243,15 +1174,15 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "bR" = (
 /obj/machinery/vending/sovietsoda,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "bS" = (
@@ -1263,7 +1194,6 @@
 /obj/item/clothing/suit/storage/vest/heavy/merc,
 /obj/item/clothing/suit/storage/vest/heavy/merc,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1275,15 +1205,15 @@
 /obj/item/reagent_containers/food/snacks/sandwich,
 /obj/item/reagent_containers/food/snacks/sandwich,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "bU" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "bV" = (
@@ -1295,7 +1225,6 @@
 "bW" = (
 /obj/machinery/mech_recharger,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1305,7 +1234,6 @@
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1321,7 +1249,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1337,7 +1264,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1355,7 +1281,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1373,7 +1298,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1415,7 +1339,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1431,7 +1354,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1456,8 +1378,8 @@
 	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "cg" = (
@@ -1465,8 +1387,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "ch" = (
@@ -1476,8 +1398,8 @@
 	name = "Mike's donut box"
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "ci" = (
@@ -1493,8 +1415,8 @@
 	pixel_y = 2
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "cj" = (
@@ -1502,8 +1424,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "ck" = (
@@ -1516,7 +1438,6 @@
 /obj/item/storage/box/smokes,
 /obj/item/storage/box/frags,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1537,7 +1458,6 @@
 /obj/item/flashlight/maglight,
 /obj/item/flashlight/maglight,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1558,7 +1478,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1567,8 +1486,8 @@
 	icon_state = "plant-21"
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "co" = (
@@ -1576,8 +1495,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "cp" = (
@@ -1589,7 +1508,6 @@
 /obj/item/storage/box/syndie_kit/combat_armor,
 /obj/item/storage/box/syndie_kit/combat_armor,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1605,7 +1523,6 @@
 	},
 /obj/item/card/emag,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1629,7 +1546,6 @@
 	pixel_y = -32
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1646,7 +1562,6 @@
 	pixel_y = -32
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1680,7 +1595,6 @@
 /obj/item/plastique,
 /obj/item/plastique,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1694,7 +1608,6 @@
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1704,7 +1617,6 @@
 	req_one_access = list(150)
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1713,8 +1625,8 @@
 	icon_state = "plant-20"
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/antag/antag_base)
 "cx" = (
@@ -1730,7 +1642,6 @@
 /obj/item/clothing/mask/gas/voice,
 /obj/item/clothing/mask/gas/voice,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1749,14 +1660,12 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "cz" = (
 /obj/structure/closet/secure_closet/medical_wall{
 	pixel_x = -32;
-	pixel_y = 0;
 	req_access = list(150)
 	},
 /obj/item/stack/medical/splint,
@@ -1776,18 +1685,15 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "cA" = (
 /obj/machinery/door/window{
-	dir = 4;
 	name = "Cell";
 	req_access = list(150)
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1796,7 +1702,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1811,7 +1716,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1833,7 +1737,6 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1847,7 +1750,6 @@
 /obj/item/material/knife/tacknife/combatknife,
 /obj/effect/floor_decal/borderfloorblack,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1860,7 +1762,6 @@
 /obj/item/binoculars,
 /obj/effect/floor_decal/borderfloorblack,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1874,7 +1775,6 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/effect/floor_decal/borderfloorblack,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1887,7 +1787,6 @@
 /obj/item/radio,
 /obj/effect/floor_decal/borderfloorblack,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1901,7 +1800,6 @@
 /obj/item/pinpointer/nukeop,
 /obj/effect/floor_decal/borderfloorblack,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1918,7 +1816,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1929,11 +1826,9 @@
 /obj/machinery/vending/nifsoft_shop{
 	categories = 111;
 	emagged = 1;
-	name = "Hacked NIFSoft Shop";
-	prices = list()
+	name = "Hacked NIFSoft Shop"
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1942,7 +1837,6 @@
 	intercept = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1952,14 +1846,12 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "cN" = (
 /obj/structure/bed,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -1996,7 +1888,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2020,7 +1911,6 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2028,7 +1918,6 @@
 /obj/item/reagent_containers/hypospray,
 /obj/structure/table/steel,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2038,7 +1927,6 @@
 	req_one_access = list(150)
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2047,7 +1935,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2063,14 +1950,12 @@
 	},
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "cW" = (
 /obj/effect/floor_decal/rust,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2079,7 +1964,6 @@
 	name = "Rick"
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2091,7 +1975,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2114,7 +1997,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2124,14 +2006,12 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "dc" = (
 /obj/effect/floor_decal/borderfloorblack,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2142,7 +2022,6 @@
 	pixel_y = -32
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2153,7 +2032,6 @@
 	},
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2162,7 +2040,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2172,8 +2049,7 @@
 	req_one_access = list(150)
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/antag/antag_base)
 "dh" = (
@@ -2181,7 +2057,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2225,7 +2100,6 @@
 	},
 /obj/structure/table/steel,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2234,26 +2108,22 @@
 	pixel_y = 32
 	},
 /obj/structure/window/reinforced/tinted{
-	dir = 4;
-	icon_state = "twindow"
+	dir = 4
 	},
 /obj/item/soap/syndie,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/antag/antag_base)
 "dm" = (
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/antag/antag_base)
 "dn" = (
 /obj/structure/toilet,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/antag/antag_base)
 "do" = (
@@ -2287,7 +2157,6 @@
 /obj/machinery/atmospherics/unary/cryo_cell,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2295,7 +2164,6 @@
 /obj/machinery/atmospherics/unary/freezer,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2382,7 +2250,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2392,8 +2259,7 @@
 	req_one_access = list(150)
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/antag/antag_base)
 "dF" = (
@@ -2413,28 +2279,23 @@
 /area/antag/antag_base)
 "dH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8;
-	icon_state = "map"
+	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "dI" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "dJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9;
-	icon_state = "intact"
+	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2458,7 +2319,6 @@
 /obj/structure/table/steel,
 /obj/effect/floor_decal/borderfloorblack,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2475,7 +2335,6 @@
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2484,36 +2343,29 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/tinted{
-	dir = 4;
-	icon_state = "twindow"
+	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/antag/antag_base)
 "dO" = (
 /obj/machinery/washing_machine,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/antag/antag_base)
 "dP" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/mirror{
 	dir = 4;
-	pixel_x = 28;
-	pixel_y = 0
+	pixel_x = 28
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/antag/antag_base)
 "dQ" = (
@@ -2566,7 +2418,6 @@
 "dV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2590,7 +2441,6 @@
 	pixel_y = -25
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2601,14 +2451,12 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "dZ" = (
 /obj/structure/bed/roller,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2723,7 +2571,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2737,7 +2584,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
@@ -2761,7 +2607,6 @@
 /area/shuttle/mercenary)
 "en" = (
 /obj/machinery/door/airlock/glass_external{
-	density = 1;
 	frequency = 1331;
 	id_tag = "merc_shuttle_outer";
 	name = "Ship External Access";
@@ -2780,7 +2625,6 @@
 	master_tag = "merc_shuttle";
 	name = "exterior access button";
 	pixel_x = -25;
-	pixel_y = 0;
 	req_access = list(150)
 	},
 /obj/effect/floor_decal/corner_steel_grid{
@@ -2795,7 +2639,6 @@
 /area/shuttle/mercenary)
 "eo" = (
 /obj/machinery/door/airlock/glass_external{
-	density = 1;
 	frequency = 1331;
 	id_tag = "merc_shuttle_outer";
 	name = "Ship External Access";
@@ -2834,7 +2677,6 @@
 	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
-	dir = 1;
 	icon_state = "shutter0";
 	id = "syndieshutters_infirmary";
 	name = "Blast Shutters";
@@ -2873,10 +2715,11 @@
 /obj/effect/shuttle_landmark/shuttle_initializer{
 	base_area = /area/space;
 	base_turf = /turf/space;
+	desc = "This is the datum the shuttle_type  should refer to, putting it here so it doesnt get lost-Bloop /datum/shuttle/autodock/multi/mercenary";
 	docking_controller = "merc_base";
 	landmark_tag = "merc_base";
 	name = "The Hideaway";
-	shuttle_type = /datum/shuttle/autodock/multi/mercenary
+	shuttle_type = null
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_dred"
@@ -2910,9 +2753,7 @@
 /area/shuttle/mercenary)
 "ey" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/machinery/sleeper{
 	dir = 8
@@ -2961,9 +2802,7 @@
 	id_tag = "merc_shuttle_pump"
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -2994,7 +2833,6 @@
 /obj/machinery/vending/medical{
 	density = 0;
 	pixel_x = 32;
-	pixel_y = 0;
 	req_access = null
 	},
 /turf/simulated/shuttle/floor{
@@ -3034,8 +2872,6 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1331;
 	id_tag = "merc_shuttle";
-	pixel_x = 0;
-	pixel_y = 0;
 	req_access = list(150)
 	},
 /turf/simulated/shuttle/wall/dark,
@@ -3062,7 +2898,6 @@
 	master_tag = "merc_shuttle";
 	name = "interior access button";
 	pixel_x = -25;
-	pixel_y = 0;
 	req_access = list(150)
 	},
 /turf/simulated/shuttle/floor{
@@ -3135,7 +2970,6 @@
 "eX" = (
 /obj/structure/sink{
 	dir = 8;
-	icon_state = "sink";
 	pixel_x = -12;
 	pixel_y = 8
 	},
@@ -3167,11 +3001,9 @@
 /area/shuttle/mercenary)
 "fb" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
-	icon_state = "warningcorner";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor{
@@ -3188,7 +3020,6 @@
 /area/shuttle/mercenary)
 "fd" = (
 /obj/effect/floor_decal/industrial/warning/corner{
-	icon_state = "warningcorner";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor{
@@ -3197,7 +3028,6 @@
 /area/shuttle/mercenary)
 "fe" = (
 /obj/structure/closet/secure_closet/medical_wall{
-	pixel_x = 0;
 	pixel_y = 32;
 	req_access = list(150)
 	},
@@ -3225,9 +3055,7 @@
 /area/shuttle/mercenary)
 "fg" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -3262,9 +3090,7 @@
 /area/shuttle/mercenary)
 "fl" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
@@ -3304,9 +3130,7 @@
 	},
 /obj/item/surgical/hemostat,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	dir = 4
 	},
 /obj/item/surgical/surgicaldrill,
 /turf/simulated/shuttle/floor,
@@ -3324,7 +3148,6 @@
 	icon_state = "mfloor5"
 	},
 /obj/machinery/light/small{
-	icon_state = "bulb1";
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -3359,13 +3182,10 @@
 "fy" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/closet/secure_closet/medical_wall{
 	pixel_x = 32;
-	pixel_y = 0;
 	req_access = list(150)
 	},
 /obj/item/tank/anesthetic,
@@ -3379,7 +3199,6 @@
 /area/shuttle/mercenary)
 "fz" = (
 /obj/structure/shuttle/engine/heater{
-	icon_state = "heater";
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless,
@@ -3390,7 +3209,6 @@
 	frequency = 1213;
 	name = "Syndicate Intercom";
 	pixel_x = -32;
-	pixel_y = 0;
 	subspace_transmission = 1;
 	syndie = 1
 	},
@@ -3420,15 +3238,12 @@
 	desc = "Talk through this. Evilly";
 	frequency = 1213;
 	name = "Syndicate Intercom";
-	pixel_x = 0;
 	pixel_y = -32;
 	subspace_transmission = 1;
 	syndie = 1
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -3622,9 +3437,7 @@
 "fW" = (
 /obj/structure/bed/chair,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -3649,9 +3462,7 @@
 /obj/structure/closet/syndicate,
 /obj/item/clothing/mask/gas,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/item/clothing/head/helmet,
 /obj/item/clothing/shoes/boots/jackboots,
@@ -3698,9 +3509,7 @@
 /obj/item/reagent_containers/food/snacks/tastybread,
 /obj/item/reagent_containers/food/snacks/tastybread,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
@@ -3767,7 +3576,6 @@
 /obj/machinery/power/emitter/gyrotron/anchored{
 	desc = "It is a heavy duty pulse laser emitter.";
 	dir = 8;
-	icon_state = "emitter-off";
 	name = "pulse laser"
 	},
 /turf/space,
@@ -3820,8 +3628,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/button/remote/blast_door{
 	id = "smindicate";
-	name = "ship lockdown control";
-	pixel_x = 0
+	name = "ship lockdown control"
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -3852,9 +3659,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -3865,7 +3670,6 @@
 	desc = "Talk through this. Evilly";
 	frequency = 1213;
 	name = "Syndicate Intercom";
-	pixel_x = 0;
 	pixel_y = -32;
 	subspace_transmission = 1;
 	syndie = 1
@@ -3901,7 +3705,6 @@
 	desc = "Talk through this. Evilly";
 	frequency = 1213;
 	name = "Syndicate Intercom";
-	pixel_x = 0;
 	pixel_y = -32;
 	subspace_transmission = 1;
 	syndie = 1
@@ -3909,9 +3712,7 @@
 /obj/structure/closet/syndicate,
 /obj/item/clothing/mask/gas,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/item/clothing/head/helmet,
 /obj/item/clothing/shoes/boots/jackboots,
@@ -3924,9 +3725,7 @@
 /area/shuttle/mercenary)
 "gw" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/structure/table/rack,
 /turf/simulated/shuttle/floor{
@@ -3953,8 +3752,8 @@
 /area/shuttle/mercenary)
 "gA" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion_r";
-	dir = 4
+	dir = 4;
+	icon_state = "propulsion_r"
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
@@ -3987,9 +3786,7 @@
 /obj/structure/bed/padded,
 /obj/item/bedsheet/hos,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -4095,14 +3892,11 @@
 /area/shuttle/mercenary)
 "gN" = (
 /obj/structure/mirror{
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
@@ -4149,16 +3943,13 @@
 	frequency = 1213;
 	name = "Syndicate Intercom";
 	pixel_x = -32;
-	pixel_y = 0;
 	subspace_transmission = 1;
 	syndie = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/visible{
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/light/small{
-	icon_state = "bulb1";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor{
@@ -4219,7 +4010,6 @@
 /area/shuttle/mercenary)
 "gZ" = (
 /obj/structure/closet/secure_closet/medical_wall{
-	pixel_x = 0;
 	pixel_y = -32;
 	req_access = list(150)
 	},
@@ -4245,15 +4035,12 @@
 	desc = "Talk through this. Evilly";
 	frequency = 1213;
 	name = "Syndicate Intercom";
-	pixel_x = 0;
 	pixel_y = -32;
 	subspace_transmission = 1;
 	syndie = 1
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -4261,9 +4048,7 @@
 /area/shuttle/mercenary)
 "hb" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_black"
@@ -4273,9 +4058,7 @@
 /obj/item/storage/box/frags,
 /obj/structure/table/reinforced,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	dir = 4
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_black"
@@ -4298,9 +4081,7 @@
 "hf" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/shuttle/floor{
@@ -4309,9 +4090,7 @@
 /area/shuttle/mercenary)
 "hg" = (
 /obj/machinery/embedded_controller/radio/airlock/phoron{
-	id_tag = "merc_south_airlock";
-	pixel_x = 0;
-	pixel_y = 0
+	id_tag = "merc_south_airlock"
 	},
 /turf/simulated/shuttle/wall/dark,
 /area/shuttle/mercenary)
@@ -4319,8 +4098,7 @@
 /obj/machinery/access_button/airlock_exterior{
 	command = "cycle_interior";
 	master_tag = "merc_south_airlock";
-	pixel_x = -25;
-	pixel_y = 0
+	pixel_x = -25
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/door/airlock/glass_external/public{
@@ -4361,9 +4139,7 @@
 	id_tag = "merc_south_airlock_pump"
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -4391,22 +4167,6 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	frequency = 1379;
 	scrub_id = "merc_south_airlock_scrubber"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/mercenary)
-"ho" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 2
-	},
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "syndieshutters_workshop";
-	name = "Blast Shutters";
-	opacity = 0
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/mercenary)
@@ -4443,7 +4203,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "syndieshutters_workshop";
 	name = "remote shutter control";
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/shuttle/floor{
@@ -4473,8 +4232,7 @@
 "hu" = (
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "merc_south_airlock";
-	pixel_x = -25;
-	pixel_y = 0
+	pixel_x = -25
 	},
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
@@ -4542,8 +4300,8 @@
 /area/shuttle/mercenary)
 "hy" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion_l";
-	dir = 4
+	dir = 4;
+	icon_state = "propulsion_l"
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
@@ -5904,7 +5662,7 @@ gF
 fu
 fh
 gF
-ho
+hw
 aa
 aa
 aa
@@ -5966,7 +5724,7 @@ fu
 fu
 fh
 gF
-ho
+hw
 aa
 aa
 aa
@@ -6028,7 +5786,7 @@ gF
 fu
 fh
 gF
-ho
+hw
 aa
 aa
 aa

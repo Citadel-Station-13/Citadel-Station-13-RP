@@ -1684,6 +1684,9 @@ End Citadel Change */
 	nutrition = 1
 	color = "#302000"
 
+	glass_name = "Dry Ramen"
+	glass_desc = "A glass of dry noodles. Wait, why did you put this into a glass?"
+
 /datum/reagent/drink/hot_ramen
 	name = "Hot Ramen"
 	id = "hot_ramen"
@@ -1694,6 +1697,9 @@ End Citadel Change */
 	nutrition = 5
 	adj_temp = 5
 
+	glass_name = "Hot Ramen"
+	glass_desc = "A glass of spicy noodles. Wait, why did you put this into a glass?"
+
 /datum/reagent/drink/hell_ramen
 	name = "Hell Ramen"
 	id = "hell_ramen"
@@ -1703,6 +1709,9 @@ End Citadel Change */
 	reagent_state = REAGENT_LIQUID
 	color = "#302000"
 	nutrition = 5
+
+	glass_name = "Hell Ramen"
+	glass_desc = "A glass of extremely spicy noodles. Wait, why did you put this into a glass?"
 
 /datum/reagent/drink/hell_ramen/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -2316,6 +2325,9 @@ End Citadel Change */
 	taste_description = "minty"
 	strength = 90
 
+	glass_name = "Peppermint Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, minty taste."
+
 /datum/reagent/ethanol/peachschnapps
 	name = "Peach Schnapps"
 	id = "schnapps_pea"
@@ -2323,12 +2335,18 @@ End Citadel Change */
 	taste_description = "peachy"
 	strength = 90
 
+	glass_name = "Peach Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, peachy taste."
+
 /datum/reagent/ethanol/lemonadeschnapps
 	name = "Lemonade Schnapps"
 	id = "schnapps_lem"
 	description = "A flavoured grain liqueur with a fresh, lemony taste."
 	taste_description = "lemony"
 	strength = 90
+
+	glass_name = "Lemonade Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, lemony taste."
 
 /datum/reagent/ethanol/wine/champagne
 	name = "Champagne"
@@ -2339,7 +2357,6 @@ End Citadel Change */
 
 	glass_name = "Champagne"
 	glass_desc = "An even classier looking drink."
-
 
 /datum/reagent/ethanol/cider
 	name = "Cider"
@@ -3705,6 +3722,9 @@ End Citadel Change */
 	taste_description = "mint infused whiskey"
 	strength = 80
 
+	glass_name = "Mint Julep"
+	glass_desc = "Really not just watery whiskey.. I think."
+
 /datum/reagent/ethanol/planterspunch
 	name = "Planters Punch"
 	id = "planterspunch"
@@ -3723,12 +3743,18 @@ End Citadel Change */
 	taste_description = "stronge coffee infused booze"
 	strength = 35
 
+	glass_name = "Olympus Mons"
+	glass_desc = "For those that need the extra kick."
+
 /datum/reagent/ethanol/sazerac
 	name = "Sazerac"
 	id = "sazerac"
 	description = "When a regular whiskey cocktail isn't enough."
 	taste_description = "a strong bite of flavor"
 	strength = 20
+
+	glass_name = "Sazerac"
+	glass_desc = "When a regular whiskey cocktail isn't enough."
 
 /datum/reagent/ethanol/junglejuice
 	name = "Jungle Juice"
@@ -3737,12 +3763,18 @@ End Citadel Change */
 	taste_description = "fruits and bad decisions"
 	strength = 55
 
+	glass_name = "Jungle Juice"
+	glass_desc = "An overload of sweetness and sugary goodness."
+
 /datum/reagent/ethanol/gimlet
 	name = "Gimlet"
 	id = "gimlet"
 	description = "For those who want to look fancy with their gin."
 	taste_description = "lime infused tree"
 	strength = 20
+
+	glass_name = "Gimlet"
+	glass_desc = "For those who want to look fancy with their gin."
 
 /datum/reagent/ethanol/firepunch
 	name = "Fire Punch"
@@ -3751,6 +3783,9 @@ End Citadel Change */
 	taste_description = "rum and sugar"
 	strength = 70
 	targ_temp = 300
+
+	glass_name = "Fire Punch"
+	glass_desc = "A spicy take on a summer classic."
 
 /datum/reagent/ethanol/alcsassafras
 	name = "CC's Hard Rootbeer"
@@ -3923,6 +3958,18 @@ End Citadel Change */
 	glass_name = "Green Stuff"
 	glass_desc = "Tyrmalin grog aggressively blended with unfiltered absinthe."
 
+/datum/reagent/ethanol/goliathspit
+	name = "Goliath Spit"
+	id = "goliathspit"
+	description = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
+	taste_description = "faint, tangy sweetness"
+	color = "#CCCC99"
+	strength = 50
+	adj_temp = -5
+
+	glass_name = "Goliath Spit"
+	glass_desc = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
+
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
 ///////////////////////////////////////////////
@@ -4087,7 +4134,7 @@ End Citadel Change */
 	name = "Corn Oil"
 	id = "cornoil"
 	description = "An oil derived from various types of corn."
-	
+
 /datum/reagent/nutriment/triglyceride/oil/tallow
 	name = "Tallow"
 	id = "tallow"
@@ -4445,3 +4492,224 @@ End Citadel Change */
 
 	glass_center_of_mass = list("x"=16, "y"=9)
 
+/datum/reagent/ethanol/russianbastard
+	name = "Russian Bastard"
+	id = "russianbastard"
+	description = "A White Russian gone awry."
+	taste_description = "milky grain alcohol"
+	color = "#9fbbd8"
+	strength = 30
+
+	glass_name = "Russian Bastard"
+	glass_desc = "A White Russian gone awry."
+
+/datum/reagent/ethanol/willtolive
+	name = "A Will to Live"
+	id = "willtolive"
+	description = "Often lost and now found."
+	taste_description = "the strength to go on"
+	color = "#9ce454"
+	strength = 30
+
+	glass_name = "A Will to Live"
+	glass_desc = "Often lost and now found."
+
+/datum/reagent/ethanol/desiretodie
+	name = "A Desire to Die"
+	id = "desiretodie"
+	description = "A horrid concoction of deathbell and nuclear waste. Is this really necessary?"
+	taste_description = "radioactivity and alcohol poisoning"
+	color = "#6c3c94"
+	strength = 10
+
+	glass_name = "A Desire to Die"
+	glass_desc = "Deathbell and nuclear waste. The bane of your liver."
+
+/datum/reagent/ethanol/desiretodie/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien == IS_DIONA)
+		return
+	M.bloodstr.add_reagent("radium", 0.3)
+
+/datum/reagent/ethanol/desiretodie/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien == IS_DIONA)
+		return
+	M.ingested.add_reagent("radium", 0.25)
+
+/datum/reagent/drink/raspberrybeesknees
+	name = "Raspberry Bee's Knees"
+	id = "raspberrybeesknees"
+	description = "The sweetness of berries and honey, combined with a lemony tang to produce a drink that's the bee's knees."
+	taste_description = "fruity sweetness with a lemony tang"
+	color = "#ff859a"
+
+	glass_name = "Raspberry Bee's Knees"
+	glass_desc = "The sweetness of berries and honey, combined with a lemony tang to produce a drink that's the bee's knees."
+
+/datum/reagent/ethanol/sidecar
+	name = "Sidecar"
+	id = "sidecar"
+	description = "The daiquiri's dry cousin."
+	taste_description = "sickly sweetness"
+	color = "#be5227"
+	strength = 10
+
+	glass_name = "Sidecar"
+	glass_desc = "The daiquiri's dry cousin."
+
+/datum/reagent/ethanol/french75
+	name = "French 75"
+	id = "french75"
+	description = "Named after a field artillery gun. Enough said."
+	taste_description = "the impact of a 75mm shell"
+	color = "#d8d4ad"
+	strength = 35
+
+	glass_name = "French 75"
+	glass_desc = "Named after a field artillery gun. Enough said."
+
+/datum/reagent/ethanol/french76
+	name = "French 76"
+	id = "french76"
+	description = "A French 75 with the gin substituted for vodka."
+	taste_description = "the impact of a harder 75mm shell"
+	color = "#d8d4ad"
+	strength = 25
+
+	glass_name = "French 76"
+	glass_desc = "A French 75 with the gin substituted for vodka."
+
+/datum/reagent/ethanol/lastword
+	name = "Last Word"
+	id = "lastword"
+	description = "Made on Terra when and where alcohol was illegal. How defiant."
+	taste_description = "sweet and sour defiance"
+	color = "#f1e362"
+	strength = 30
+
+	glass_name = "Last Word"
+	glass_desc = "Made on Terra when and where alcohol was illegal. How defiant."
+
+/datum/reagent/drink/watermelonsmoothie
+	name = "Watermelon Smoothie"
+	id = "watermelonsmoothie"
+	description = "Icy watermelon juice mixed with milk and cream."
+	taste_description = "creamy watermelon"
+	color = "#ff4e65"
+
+	glass_name = "Watermelon Smoothie"
+	glass_desc = "Icy watermelon juice mixed with milk and cream."
+
+/datum/reagent/drink/orangesmoothie
+	name = "Orange Smoothie"
+	id = "orangesmoothie"
+	description = "Icy orange juice mixed with milk and cream."
+	taste_description = "creamy oranges"
+	color = "#ffe386"
+
+	glass_name = "Orange Smoothie"
+	glass_desc = "Icy orange juice mixed with milk and cream."
+
+/datum/reagent/drink/limesmoothie
+	name = "Lime Smoothie"
+	id = "limesmoothie"
+	description = "Icy lime juice mixed with milk and cream."
+	taste_description = "creamy limes"
+	color = "#e1f392"
+
+	glass_name = "Lime Smoothie"
+	glass_desc = "Icy lime juice mixed with milk and cream."
+
+/datum/reagent/drink/lemonsmoothie
+	name = "Lemon Smoothie"
+	id = "lemonsmoothie"
+	description = "Icy lemon juice mixed with milk and cream."
+	taste_description = "creamy lemons"
+	color = "#feffc8"
+
+	glass_name = "Lemon Smoothie"
+	glass_desc = "Icy lemon juice mixed with milk and cream."
+
+/datum/reagent/drink/berrysmoothie
+	name = "Berry Smoothie"
+	id = "berrysmoothie"
+	description = "Icy berry juice mixed with milk and cream."
+	taste_description = "creamy berries"
+	color = "#eb89ff"
+
+	glass_name = "Berry Smoothie"
+	glass_desc = "Icy berry juice mixed with milk and cream."
+
+/datum/reagent/drink/applesmoothie
+	name = "Apple Smoothie"
+	id = "applesmoothie"
+	description = "Icy apple juice mixed with milk and cream."
+	taste_description = "creamy apples"
+	color = "#f0e19e"
+
+	glass_name = "Apple Smoothie"
+	glass_desc = "Icy apple juice mixed with milk and cream."
+
+/datum/reagent/drink/grapesmoothie
+	name = "Grape Smoothie"
+	id = "grapesmoothie"
+	description = "Icy grape juice mixed with milk and cream."
+	taste_description = "creamy grapes"
+	color = "#e9a0ff"
+
+	glass_name = "Grape Smoothie"
+	glass_desc = "Icy grape juice mixed with milk and cream." // fuck linters
+
+/datum/reagent/drink/battery
+	name = "Battery"
+	id = "battery"
+	description = "A very bitter-sugary and bright neon green energy drink."
+	taste_description = "bitter sugary neon green"
+	color = "#00ff49"
+	adj_dizzy = -5
+	adj_drowsy = -3
+	adj_sleepy = -2
+
+	glass_name = "Battery"
+	glass_desc = "A very bitter-sugary and bright neon green energy drink."
+	//shocked it works, however when poured into metaglass it shows as brown instead of neon green. Will try to fix this if I can.
+
+/datum/reagent/drink/ramune
+	name = "Ramone"
+	id = "ramune"
+	description = "A sweet marble soda flavored like melon."
+	taste_description = "fizzy melon soda"
+	color = "#E5E5E5"
+
+	glass_name = "Ramone"
+	glass_desc = "A sweet marble soda flavored like melon."
+
+/datum/reagent/drink/dumbjuice
+	name = "DUMB BITCH JUICE!"
+	id = "dumbjuice"
+	description = "A-...uh...it doesn't seem to have much of a taste?"
+	taste_description = "bad choices made easy"
+	color = "#fce5cd"
+
+	glass_name = "DUMB BITCH JUICE!"
+	glass_desc = "A-...uh...it doesn't seem to have much of a taste?"
+/datum/reagent/drink/greentea
+	name = "Green Tea"
+	id = "greentea"
+	description = "A very bitter, yet aromatic green tea."
+	taste_description = "elegant notes of matcha"
+	color = "#51761d"
+
+	glass_name = "Green Tea"
+	glass_desc = "A very bitter, yet aromatic green tea."
+
+/datum/reagent/drink/crystalgibb
+	name = "Crystal Dr. Gibb"
+	id = "crystalgibb"
+	description = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+	taste_description = "clear cherry soda"
+	color = "#0000"
+
+	glass_name = "Crystal Dr. Gibb"
+	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"

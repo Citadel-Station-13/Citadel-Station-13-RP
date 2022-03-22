@@ -2,6 +2,10 @@
 	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	item_flags = THICKMATERIAL
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER\
+		|ACCESSORY_SLOT_MEDAL\
+		|ACCESSORY_SLOT_INSIGNIA)
 
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
@@ -138,7 +142,7 @@
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 20* ONE_ATMOSPHERE
 	siemens_coefficient = 0.6
-
+	valid_accessory_slots = null
 
 /obj/item/clothing/suit/armor/swat/officer
 	name = "officer jacket"
@@ -229,6 +233,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 50, bio = 0, rad = 40)
 	siemens_coefficient = 0.4
+	valid_accessory_slots = null
 	var/block_chance = 20
 
 /obj/item/clothing/suit/armor/alien/tank
@@ -255,6 +260,7 @@
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 20, bio = 0, rad = 0)
+	valid_accessory_slots = null
 
 //Commander
 /obj/item/clothing/suit/armor/vest/ert/command
@@ -341,6 +347,14 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	flags_inv = HIDETIE|HIDEHOLSTER
 
+/obj/item/clothing/suit/storage/vest/hos_overcoat
+	name = "security overcoat"
+	desc = "A fashionable leather overcoat lined with a lightweight, yet tough armor."
+	icon_state = "leathercoat-sec"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	flags_inv = HIDETIE|HIDEHOLSTER
+	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+
 //Jensen cosplay gear
 /obj/item/clothing/suit/storage/vest/hoscoat/jensen
 	name = "armored trenchcoat"
@@ -356,25 +370,25 @@
 	icon_badge = "pcrcvest_badge"
 	icon_nobadge = "pcrcvest_nobadge"
 
-/obj/item/clothing/suit/storage/vest/solgov
-	name = "\improper Solar Confederate Government armored vest"
-	desc = "A synthetic armor vest. This one is marked with the crest of the Solar Confederate Government."
+/obj/item/clothing/suit/storage/vest/oricon
+	name = "\improper Orion Confederation armored vest"
+	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation."
 	icon_state = "solvest"
 	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 
-/obj/item/clothing/suit/storage/vest/solgov/heavy
-	name = "\improper Solar Confederate Government heavy armored vest"
+/obj/item/clothing/suit/storage/vest/oricon/heavy
+	name = "\improper Orion Confederation heavy armored vest"
 	desc = "A synthetic armor vest with PEACEKEEPER printed in distinctive blue lettering on the chest. This one has added webbing and ballistic plates."
 	icon_state = "solwebvest"
 
-/obj/item/clothing/suit/storage/vest/solgov/security
+/obj/item/clothing/suit/storage/vest/oricon/security
 	name = "master at arms heavy armored vest"
 	desc = "A synthetic armor vest with MASTER AT ARMS printed in silver lettering on the chest. This one has added webbing and ballistic plates."
 	icon_state = "secwebvest"
 
-/obj/item/clothing/suit/storage/vest/solgov/command
+/obj/item/clothing/suit/storage/vest/oricon/command
 	name = "command heavy armored vest"
-	desc = "A synthetic armor vest with Solar Confederate Government printed in detailed gold lettering on the chest. This one has added webbing and ballistic plates."
+	desc = "A synthetic armor vest with Orion Confederation printed in detailed gold lettering on the chest. This one has added webbing and ballistic plates."
 	icon_state = "comwebvest"
 
 /obj/item/clothing/suit/storage/vest/tactical //crack at a more balanced mid-range armor, minor improvements over standard vests, with the idea "modern" combat armor would focus on energy weapon protection.
@@ -519,12 +533,14 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.6
+	valid_accessory_slots = null
 
 /obj/item/clothing/suit/armor/combat/syndicate
 	name = "syndicate combat vest"
 	desc = "A heavily armored vest worn over a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
 	icon_state = "syndievest"
 	blood_overlay_type = "armor"
+	valid_accessory_slots = null
 
 //Modular plate carriers
 /obj/item/clothing/suit/armor/pcarrier
@@ -645,6 +661,13 @@
 	icon_state = "riot"
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/riot, /obj/item/clothing/accessory/armor/tag/sec)
 
+//Clown Op Carrier
+/obj/item/clothing/suit/armor/pcarrier/clownop
+	name = "clown commando plate carrier"
+	desc = "A lightweight red and white plate carrier vest. It can be equipped with armor plates, but provides no protection of its own. Honk."
+	icon_state = "clowncarrier"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium)
+
 
 //PARA Armor
 /obj/item/clothing/suit/armor/vest/para
@@ -681,6 +704,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 	action_button_name = "Enable Coat Sigils"
+	valid_accessory_slots = null
 
 /obj/item/clothing/suit/armor/heavy
 	name = "heavy armor"
@@ -703,6 +727,7 @@
 	icon = 'icons/mob/taursuits_wolf_vr.dmi'
 	icon_state = "heavy_wolf_armor"
 	item_state = "heavy_wolf_armor"
+	valid_accessory_slots = null
 	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
 		if(..())
 			if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
@@ -761,3 +786,10 @@
 	name = "imperial centurion armor"
 	desc = "Not all heroes wear capes, but it'd be cooler if they did."
 	icon_state = "ge_armorcent"
+
+/obj/item/clothing/suit/armor/bone
+	name = "bone armor"
+	desc = "A tribal armor plate, crafted from animal bone."
+	icon_state = "bonearmor"
+	armor = list("melee" = 35, "bullet" = 25, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "wound" = 10)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS

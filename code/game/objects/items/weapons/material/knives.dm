@@ -97,6 +97,10 @@
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
 	applies_material_colour = 1
 
+/obj/item/material/knife/tacknife/combatknife/bone
+	icon_state = "boneknife"
+	default_material = "bone"
+
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
 /obj/item/material/knife/tacknife/boot
@@ -168,7 +172,7 @@
 			"<span class='notice'>You retract [src], folding it away with a click and a hiss.</span>",
 			"<span class='notice'>You hear a threatening click and a hiss.</span>"
 			)
-		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+		playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 	else
 		to_chat(user, "Something fucked up and the armblade got out of a module. Please report this bug.")
 		qdel(src)
@@ -182,6 +186,12 @@
 	applies_material_colour = FALSE
 	default_material = "plasteel" //VOREStation Edit
 	toolspeed = 2 // Use a real axe if you want to chop logs.
+
+/obj/item/material/knife/tacknife/survival/bone
+	name = "primitive survival knife"
+	desc = "A hunting grade survival knife with a sleek leather grip."
+	applies_material_colour =TRUE
+	default_material = "bone" //VOREStation Edit
 
 /obj/item/material/knife/machete/deluxe
 	name = "deluxe machete"
@@ -343,3 +353,61 @@
 			return
 		hide_signal = !hide_signal
 		to_chat(usr, "You set the device to [hide_signal ? "not " : ""]broadcast a signal while scanning for other signals.")
+
+// Knife Material Variants
+/obj/item/material/butterfly/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/butterfly/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/butterfly/switchblade/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/butterfly/switchblade/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/butterfly/boxcutter/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/butterfly/boxcutter/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/tacknife/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/knife/tacknife/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/tacknife/combatknife/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/knife/tacknife/combatknife/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/hook/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/knife/hook/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/ritual/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/knife/ritual/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/butch/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/knife/butch/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/machete/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/machete/deluxe/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/tacknife/survival/durasteel
+	default_material = "durasteel"

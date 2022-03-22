@@ -21,6 +21,9 @@
 
 	var/changing_turf = FALSE
 
+	///Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
+	var/list/fixed_underlay = null
+
 	// General properties.
 	var/icon_old = null
 	var/pathweight = 1			// How much does it cost to pathfind over this turf?
@@ -117,7 +120,32 @@
 
 /turf/attack_hand(mob/user)
 	. = ..()
-	user.move_pulled_towards(src)
+	//QOL feature, clicking on turf can toggle doors, unless pulling something
+	if(!user.pulling)
+		var/obj/machinery/door/airlock/AL = locate(/obj/machinery/door/airlock) in src.contents
+		if(AL)
+			AL.attack_hand(user)
+			return TRUE
+		var/obj/machinery/door/firedoor/FD = locate(/obj/machinery/door/firedoor) in src.contents
+		if(FD)
+			FD.attack_hand(user)
+			return TRUE
+
+	if(!(user.canmove) || user.restrained() || !(user.pulling))
+		return 0
+	if(user.pulling.anchored || !isturf(user.pulling.loc))
+		return 0
+	if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
+		return 0
+	if(ismob(user.pulling))
+		var/mob/M = user.pulling
+		var/atom/movable/t = M.pulling
+		M.stop_pulling()
+		step(user.pulling, get_dir(user.pulling.loc, src))
+		M.start_pulling(t)
+	else
+		step(user.pulling, get_dir(user.pulling.loc, src))
+	return 1
 
 /turf/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage))
@@ -159,7 +187,7 @@
 	var/area/A = T.loc
 	if((istype(A) && !(A.has_gravity)) || (istype(T,/turf/space)))
 		return
-	if(istype(O, /obj/screen))
+	if(istype(O, /atom/movable/screen))
 		return
 	if(user.restrained() || user.stat || user.stunned || user.paralysis || (!user.lying && !istype(user, /mob/living/silicon/robot)))
 		return

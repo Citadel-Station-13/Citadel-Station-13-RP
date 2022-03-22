@@ -334,6 +334,12 @@
 	color = "#0099cc"
 	default_type = MAT_SIFWOOD
 
+/obj/item/stack/material/wood/hard
+	name = "hardwood plank"
+	color = "#42291a"
+	default_type = MAT_HARDWOOD
+	description_info = "Rich, lustrous hardwood, imported from offworld at moderate expense. Mostly used for luxurious furniture, and not very good for weapons or other structures."
+
 /obj/item/stack/material/log
 	name = "log"
 	icon_state = "sheet-log"
@@ -352,6 +358,12 @@
 	default_type = MAT_SIFLOG
 	color = "#0099cc"
 	plank_type = /obj/item/stack/material/wood/sif
+
+/obj/item/stack/material/log/hard
+	name = "hardwood log"
+	default_type = MAT_HARDLOG
+	color = "#6f432a"
+	plank_type = /obj/item/stack/material/wood/hard
 
 /obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
 	if(!istype(W) || W.force <= 0)
@@ -472,6 +484,33 @@
 	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
 	icon_state = "sheet-mime"
 	default_type = "silencium"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/brass
+	name = "brass"
+	desc = "This stable alloy is often used in complex mechanisms due to its versatility, softness, and solid head conduction."
+	icon_state = "sheet-brass"
+	default_type = "brass"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/bone
+	name = "bone"
+	desc = "These dense calcium structures are a common support system for organic life."
+	icon_state = "sheet-bone"
+	default_type = "bone"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/copper
+	name = "copper"
+	desc = "This common metal remains a popular choice as an electrical and thermal conductor due to how easily it can be worked."
+	icon_state = "sheet-copper"
+	default_type = "copper"
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'

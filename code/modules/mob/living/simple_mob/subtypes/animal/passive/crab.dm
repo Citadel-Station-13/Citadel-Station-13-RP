@@ -18,46 +18,25 @@
 	icon_dead = "crab_dead"
 
 	mob_size = MOB_SMALL
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stomps"
 	friendly = "pinches"
 
+	meat_amount = 1
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/crab
 
 	say_list_type = /datum/say_list/crab
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/crab/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 //COFFEE! SQUEEEEEEEEE!
 /mob/living/simple_mob/animal/passive/crab/Coffee
 	name = "Coffee"
 	real_name = "Coffee"
 	desc = "It's Coffee, the other pet!"
+	randomized = FALSE
 
-//Unrandom Pet
-/mob/living/simple_mob/animal/passive/chicken/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
 // Sif!
 
 /datum/category_item/catalogue/fauna/sif_crab

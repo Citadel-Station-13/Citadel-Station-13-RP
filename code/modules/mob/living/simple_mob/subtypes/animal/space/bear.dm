@@ -23,6 +23,7 @@
 
 	maxHealth = 125
 	health = 125
+	randomized = TRUE
 
 	movement_cooldown = 0.5 SECONDS
 
@@ -34,22 +35,12 @@
 	melee_attack_delay = 1 SECOND
 	attacktext = list("mauled")
 
+	meat_amount = 5
 	meat_type = /obj/item/reagent_containers/food/snacks/bearmeat
+	bone_amount = 3
+	hide_amount = 5
 
 	say_list_type = /datum/say_list/bear
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/bear/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /datum/say_list/bear
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")

@@ -135,7 +135,7 @@
 /datum/reagent/toxin/phoron/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	M.adjust_fire_stacks(removed / 5)
-	if(alien == IS_VOX)
+	if(alien == IS_VOX || alien == IS_XENOHYBRID)
 		return
 	M.take_organ_damage(0, removed * 0.1) //being splashed directly with phoron causes minor chemical burns
 	if(prob(50))
@@ -145,6 +145,8 @@
 	if(alien == IS_VOX)
 		M.adjustOxyLoss(-100 * removed) //5 oxyloss healed per tick.
 		return //You're wasting plasma (a semi-limited chemical) to save someone, so it might as well be somewhat strong.
+	if(alien == IS_XENOHYBRID)//They have an organ that uses phoron
+		return
 	if(alien == IS_SLIME)
 		M.adjust_fire_stacks(removed * 3) //Not quite 'converting' it. It's like mixing fuel into a jelly. You get explosive, or at least combustible, jelly.
 	..()
@@ -184,6 +186,15 @@
 	M.adjustToxLoss(strength * removed)
 	if(prob(5))
 		M.vomit()
+
+/datum/reagent/toxin/mold/miasma
+	name = "Miasma"
+	id = "miasma"
+	description = "A toxic cloud of decay, caused by the rotting of corpses."
+	taste_description = "rot and decay"
+	reagent_state = REAGENT_GAS
+	color = "#006000"
+	strength = 10
 
 /datum/reagent/toxin/expired_medicine
 	name = "Expired Medicine"

@@ -5,170 +5,167 @@
 "b" = (
 /obj/effect/alien/weeds,
 /mob/living/simple_mob/animal/space/alien/sentinel,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "f" = (
 /obj/effect/alien/weeds,
 /mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "h" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds,
 /mob/living/simple_mob/animal/space/alien/queen/empress,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "i" = (
 /obj/effect/alien/weeds,
 /obj/random/multiple/minevault,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "j" = (
 /obj/effect/alien/weeds,
 /obj/random/multiple/voidsuit/mining,
 /obj/random/humanoidremains,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "k" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds/node,
 /mob/living/simple_mob/animal/space/alien/drone,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "m" = (
 /obj/effect/alien/resin/wall,
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "n" = (
 /obj/effect/alien/weeds,
 /obj/random/tetheraid,
 /obj/item/gun/energy/phasegun/pistol,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "p" = (
-/turf/simulated/mineral/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/classd/indoors,
+/area/class_d/explored)
 "q" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "r" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "s" = (
 /obj/effect/alien/weeds,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "t" = (
 /obj/structure/simple_door/resin,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
-"v" = (
-/turf/simulated/mineral/floor/vacuum,
-/area/template_noop)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "w" = (
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "x" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds,
 /mob/living/simple_mob/animal/space/alien/sentinel,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "y" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/resin/wall,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "z" = (
 /obj/effect/alien/weeds,
 /mob/living/simple_mob/animal/space/alien,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "B" = (
 /obj/effect/alien/weeds,
 /obj/item/storage/secure/briefcase/money,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "D" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds,
 /obj/random/humanoidremains,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "E" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds,
 /obj/random/energy,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "H" = (
 /obj/effect/alien/weeds,
 /obj/random/trash_pile,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "K" = (
 /obj/effect/alien/weeds,
 /obj/random/medical/pillbottle,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "L" = (
 /obj/effect/alien/weeds,
 /obj/random/humanoidremains,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "M" = (
 /obj/effect/alien/resin/wall,
 /obj/effect/alien/weeds,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "O" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds,
 /obj/random/tetheraid,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "P" = (
 /obj/effect/alien/weeds,
-/obj/structure/mob_spawner/scanner/xenos,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/obj/effect/alien/egg,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "R" = (
 /obj/effect/alien/weeds,
 /obj/random/energy,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "T" = (
 /obj/effect/alien/resin/wall,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "U" = (
 /obj/effect/alien/weeds,
 /mob/living/simple_mob/animal/space/alien/drone,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "W" = (
 /obj/effect/alien/weeds,
 /obj/random/medical,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "X" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds/node,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "Z" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds,
 /obj/structure/simple_door/resin,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 
 (1,1,1) = {"
 a
@@ -542,7 +539,7 @@ p
 w
 w
 w
-v
+w
 "}
 (18,1,1) = {"
 a
@@ -564,7 +561,7 @@ w
 w
 w
 w
-v
+w
 "}
 (19,1,1) = {"
 a
@@ -582,11 +579,11 @@ p
 p
 p
 a
-v
-v
-v
-v
-v
+w
+w
+w
+w
+w
 "}
 (20,1,1) = {"
 a
@@ -606,7 +603,7 @@ a
 a
 a
 a
-v
-v
-v
+w
+w
+w
 "}

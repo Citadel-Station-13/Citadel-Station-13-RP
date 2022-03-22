@@ -5,6 +5,7 @@
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "nest"
+	color = "#261438"
 	var/health = 100
 
 /obj/structure/bed/nest/update_icon()
@@ -50,7 +51,7 @@
 	if(istype(victim) && locate(/obj/item/organ/internal/xenos/hivenode) in victim.internal_organs)
 		return
 
-	if(istype(xenos) && !(locate(/obj/item/organ/internal/xenos/hivenode) in xenos.internal_organs))
+	if(istype(xenos) && !((locate(/obj/item/organ/internal/xenos/hivenode) in xenos.internal_organs)))
 		return
 
 	if(M == usr)

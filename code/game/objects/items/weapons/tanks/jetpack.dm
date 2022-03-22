@@ -113,8 +113,6 @@
 	desc = "It's a jetpack. This description should not see the light of day (well, space-day.). If you can see this, report it on the bug tracker."
 	var/obj/item/rig/holder
 
-
-
 /obj/item/tank/jetpack/rig/allow_thrust(num, mob/living/user as mob)
 
 	if(!(src.on))
@@ -136,3 +134,9 @@
 		return 1
 	qdel(G)
 	return
+
+/obj/item/tank/jetpack/improvised
+	name = "improvised jetpack"
+	desc = "A jetpack made from two air tanks, a fire extinguisher and some atmospherics equipment. It doesn't look like it can hold much."
+	icon_state = "jetpack-improvised"
+	volume_rate = 5000

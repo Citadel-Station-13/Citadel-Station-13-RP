@@ -1,0 +1,972 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aF" = (
+/obj/item/ammo_casing/spent,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"bZ" = (
+/obj/machinery/floodlight,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"cj" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"dN" = (
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"ea" = (
+/obj/item/ammo_casing/spent,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"ep" = (
+/obj/item/beartrap{
+	anchored = 1;
+	deployed = 1;
+	icon_state = "beartrap1"
+	},
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"et" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/firstaid/combat,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"eY" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"gV" = (
+/obj/structure/closet/crate/secure/loot,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"jz" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/stack/material/wood{
+	amount = 10
+	},
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"jW" = (
+/obj/structure/fence/door/opened{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"jX" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/structure/lattice,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"lC" = (
+/obj/structure/closet/crate/miningcar,
+/obj/random/plushielarge,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"lJ" = (
+/obj/item/ammo_casing/spent,
+/obj/structure/lattice,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"nS" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"oi" = (
+/obj/structure/table/rack,
+/obj/random/multiple/underdark/miningdrills,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"sB" = (
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"sP" = (
+/obj/item/ammo_casing/spent,
+/obj/structure/foamedmetal,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"sX" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"tb" = (
+/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill,
+/obj/structure/table/rack,
+/obj/item/gps/survival/on,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"uy" = (
+/obj/structure/fence/cut/large,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"vI" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"xj" = (
+/obj/machinery/mining/drill,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"yh" = (
+/obj/structure/fence/cut/medium{
+	dir = 8
+	},
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"yo" = (
+/obj/item/stack/material/wood{
+	amount = 10
+	},
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"yC" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/suit/sexyminer,
+/obj/item/clothing/suit/sexyminer,
+/obj/item/clothing/suit/sexyminer,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"AP" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"AR" = (
+/obj/item/beartrap,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"CE" = (
+/obj/item/stack/material/wood{
+	amount = 10
+	},
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Ew" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/beartrap,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"EC" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"FG" = (
+/obj/structure/ore_box,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Gl" = (
+/obj/structure/table/rack,
+/obj/item/ammo_casing/a12g/flare,
+/obj/item/ammo_casing/a12g/flare,
+/obj/item/ammo_casing/a12g/flare,
+/obj/item/ammo_casing/a12g/flare,
+/obj/item/ammo_casing/a12g/flare,
+/obj/item/ammo_casing/a12g/flare,
+/obj/item/gun/projectile/shotgun/flare,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"GP" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Ia" = (
+/obj/structure/fence/cut/large{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"IN" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/toy/figure/miner,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Jc" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/lattice,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Ky" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/mob/living/simple_mob/mechanical/mecha/ripley/pirate/last_stand_merc,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"KW" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/box/flare,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Ot" = (
+/obj/structure/barricade,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Pz" = (
+/obj/machinery/mining/brace,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"PI" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/firstaid/surgery,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"PU" = (
+/turf/simulated/wall/classd/indoors,
+/area/class_d/explored/underground)
+"Qd" = (
+/obj/item/ammo_casing/spent,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Rm" = (
+/obj/structure/barricade,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Ru" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Sg" = (
+/obj/item/ammo_casing/spent,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/lattice,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Sl" = (
+/obj/structure/closet/crate/miningcar,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"To" = (
+/obj/item/ammo_casing/spent,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"TN" = (
+/obj/structure/fence/corner,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
+"Vr" = (
+/obj/structure/foamedmetal,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"VV" = (
+/obj/random/outcrop,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"WS" = (
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"WZ" = (
+/obj/item/beartrap,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"XC" = (
+/obj/structure/lattice,
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored/underground)
+"XI" = (
+/obj/structure/sign/signnew/danger,
+/turf/simulated/mineral/classd/indoors,
+/area/class_d/explored/underground)
+"Yl" = (
+/obj/effect/gibspawner/robot,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Yp" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"Zr" = (
+/obj/machinery/floodlight,
+/turf/simulated/floor/classd/indoors,
+/area/class_d/explored/underground)
+"ZU" = (
+/turf/simulated/mineral/classd/indoors,
+/area/class_d/explored/underground)
+
+(1,1,1) = {"
+dN
+ZU
+ZU
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+ZU
+ZU
+ZU
+dN
+"}
+(2,1,1) = {"
+ZU
+ZU
+ZU
+dN
+dN
+dN
+ZU
+ZU
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+ZU
+ZU
+ZU
+"}
+(3,1,1) = {"
+dN
+ZU
+ZU
+dN
+dN
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+dN
+dN
+dN
+dN
+ZU
+ZU
+"}
+(4,1,1) = {"
+dN
+dN
+dN
+dN
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+dN
+ZU
+dN
+"}
+(5,1,1) = {"
+dN
+ep
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+PU
+Zr
+PU
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+dN
+dN
+dN
+"}
+(6,1,1) = {"
+dN
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+lC
+WS
+Rm
+sB
+AP
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+dN
+dN
+"}
+(7,1,1) = {"
+dN
+ZU
+ZU
+PU
+PU
+PU
+PU
+ZU
+ZU
+ZU
+Ot
+eY
+WS
+sB
+Qd
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+dN
+dN
+"}
+(8,1,1) = {"
+dN
+ZU
+PU
+PU
+sB
+sB
+sX
+yo
+WZ
+sB
+WS
+To
+To
+XC
+AR
+gV
+gV
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+dN
+"}
+(9,1,1) = {"
+dN
+ZU
+PU
+Rm
+Sl
+sB
+jz
+sB
+Qd
+sB
+lJ
+EC
+WS
+jX
+WS
+To
+WS
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+dN
+"}
+(10,1,1) = {"
+dN
+ZU
+PU
+Zr
+yo
+Rm
+WZ
+Qd
+lJ
+XC
+lJ
+eY
+Ot
+jX
+WS
+WS
+WS
+WS
+FG
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+"}
+(11,1,1) = {"
+dN
+ZU
+ZU
+WS
+Ew
+EC
+ZU
+sB
+WS
+GP
+XC
+AR
+XC
+XC
+WS
+eY
+WS
+GP
+FG
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+"}
+(12,1,1) = {"
+dN
+ZU
+ZU
+WS
+To
+To
+ZU
+VV
+WS
+WS
+XC
+XC
+sB
+PU
+ZU
+ZU
+WS
+WS
+VV
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+"}
+(13,1,1) = {"
+dN
+ZU
+ZU
+WS
+EC
+ZU
+ZU
+WS
+GP
+To
+PU
+Yp
+Qd
+PU
+ZU
+Zr
+Ot
+EC
+WS
+VV
+ZU
+ZU
+ZU
+dN
+dN
+"}
+(14,1,1) = {"
+dN
+ZU
+ZU
+WS
+eY
+ZU
+ZU
+WS
+Ot
+ZU
+PU
+sB
+Ky
+nS
+sB
+sB
+XC
+WS
+WS
+To
+ZU
+ZU
+ZU
+dN
+dN
+"}
+(15,1,1) = {"
+dN
+ZU
+ZU
+WS
+WS
+ZU
+ZU
+WS
+WS
+ZU
+PU
+tb
+sB
+sB
+Qd
+XC
+XC
+XC
+Sg
+Zr
+ZU
+ZU
+ZU
+dN
+dN
+"}
+(16,1,1) = {"
+dN
+ZU
+ZU
+CE
+Rm
+PU
+PU
+Pz
+WS
+WS
+bZ
+Ot
+Jc
+jX
+sB
+XC
+XC
+XC
+Rm
+PU
+ZU
+ZU
+dN
+dN
+dN
+"}
+(17,1,1) = {"
+dN
+ZU
+ZU
+WS
+WZ
+sB
+PU
+xj
+EC
+WS
+WS
+EC
+lJ
+lJ
+sB
+jX
+Rm
+sB
+Gl
+PU
+ZU
+ZU
+dN
+dN
+dN
+"}
+(18,1,1) = {"
+dN
+ZU
+ZU
+ZU
+To
+sB
+PU
+Pz
+WS
+EC
+sB
+Yl
+XC
+XC
+Qd
+XC
+sX
+sB
+oi
+PU
+ZU
+ZU
+dN
+dN
+dN
+"}
+(19,1,1) = {"
+dN
+cj
+ZU
+ZU
+Vr
+sP
+ZU
+ZU
+WS
+AR
+Qd
+Qd
+XC
+lJ
+Rm
+sB
+sB
+sB
+oi
+PU
+ZU
+ZU
+dN
+dN
+dN
+"}
+(20,1,1) = {"
+dN
+cj
+XI
+ZU
+sP
+Vr
+ZU
+ZU
+WS
+XC
+jX
+jX
+XC
+sB
+Rm
+IN
+et
+PI
+KW
+PU
+ZU
+ZU
+dN
+dN
+dN
+"}
+(21,1,1) = {"
+dN
+Ia
+dN
+Ot
+CE
+To
+ZU
+ZU
+sB
+XC
+WS
+Ru
+sB
+To
+sB
+PU
+PU
+PU
+PU
+PU
+ZU
+ZU
+dN
+dN
+dN
+"}
+(22,1,1) = {"
+dN
+yh
+aF
+vI
+ea
+Ot
+ZU
+ZU
+Zr
+sB
+VV
+WS
+Ot
+WS
+yC
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+dN
+"}
+(23,1,1) = {"
+dN
+cj
+dN
+dN
+dN
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+ep
+dN
+dN
+"}
+(24,1,1) = {"
+dN
+TN
+jW
+uy
+uy
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+dN
+dN
+dN
+dN
+"}
+(25,1,1) = {"
+dN
+dN
+dN
+dN
+dN
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+ZU
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+dN
+"}

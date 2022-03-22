@@ -280,3 +280,8 @@
 	cost = 45
 	allow_duplicates = FALSE
 	discard_prob = 50
+
+/datum/map_template/submap/level_specific/debrisfield/clownship
+	name = "Drifting Covert Shuttle"
+	suffix = "clownship.dmm"
+	cost = 20

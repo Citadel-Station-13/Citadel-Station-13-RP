@@ -74,3 +74,25 @@
 	num_fragments = 20
 	spread_range = 3
 	explosion_size = 1
+
+/obj/item/grenade/explosive/ied
+	name = "improvised explosive device"
+	desc = "A crude explosive device made out of common household materials, designed to rupture and send shrapnel out in a wide radius."
+	icon_state = "ied"
+	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong)
+	num_fragments = 20
+	spread_range = 3
+	explosion_size = 1
+	det_time = 20
+	var/range = 3
+	var/list/times
+
+/obj/item/grenade/explosive/ied/Initialize()
+	. = ..()
+	times = list("5" = 10, "-1" = 20, "[rand(30,80)]" = 50, "[rand(65,180)]" = 20)// "Premature, Dud, Short Fuse, Long Fuse"=[weighting value]
+	det_time = text2num(pickweight(times))
+	if(det_time < 0) //checking for 'duds'
+		range = 1
+		det_time = rand(30,80)
+	else
+		range = pick(2,2,2,3,3,3,4)

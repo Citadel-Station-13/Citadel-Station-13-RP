@@ -22,6 +22,7 @@
 		"uranium" = /obj/item/ore/uranium,
 		"gold" = /obj/item/ore/gold,
 		"silver" = /obj/item/ore/silver,
+		"copper" = /obj/item/ore/copper,
 		"diamond" = /obj/item/ore/diamond,
 		"phoron" = /obj/item/ore/phoron,
 		"osmium" = /obj/item/ore/osmium,

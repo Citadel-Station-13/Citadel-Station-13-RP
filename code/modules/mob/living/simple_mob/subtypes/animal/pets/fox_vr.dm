@@ -22,6 +22,7 @@
 	movement_cooldown = 0.5
 	see_in_dark = 6
 	mob_size = MOB_SMALL //Foxes are not smaller than cats so bumping them up to small
+	randomized = TRUE
 
 	faction = "fox"
 
@@ -35,25 +36,14 @@
 
 	meat_amount = 1
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/fox
+	bone_amount = 1
+	hide_amount = 3
 
 	say_list_type = /datum/say_list/fox
 	ai_holder_type = /datum/ai_holder/simple_mob/fox
 
 	var/turns_since_scan = 0
 	var/mob/flee_target
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/fox/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /datum/say_list/fox
 	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Awoo","Tchoff")
@@ -220,18 +210,7 @@
 	var/mob/living/friend = null // Our best pal, who we'll follow. awoo.
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
 	makes_dirt = FALSE	// No more dirt
-
-//Unrandom the pet
-/mob/living/simple_mob/animal/passive/fox/renault/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = maxHealth
-    health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
-    movement_cooldown = movement_cooldown
-    meat_amount = meat_amount
-    update_icons()
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/fox/renault/init_vore()
 	..()

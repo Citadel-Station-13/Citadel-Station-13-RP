@@ -21,6 +21,8 @@
 	health = 40
 	maxHealth = 40
 
+	randomized = TRUE
+
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
@@ -33,22 +35,11 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 
 	meat_amount = 4
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	bone_amount = 2
+	hide_amount = 3
+	exotic_amount = 2
 
 	var/datum/reagents/udder = null
-
-//Randomization Code
-/mob/living/simple_mob/animal/goat/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/goat/Initialize(mapload)
 	. = ..()

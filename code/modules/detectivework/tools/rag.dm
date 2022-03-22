@@ -19,9 +19,9 @@
 	w_class = ITEMSIZE_TINY
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "rag"
-	amount_per_transfer_from_this = 5
-	possible_transfer_amounts = list(5)
-	volume = 10
+	amount_per_transfer_from_this = 3
+	possible_transfer_amounts = list(3)
+	volume = 4
 	can_be_placed_into = null
 	flags = OPENCONTAINER | NOBLUDGEON
 	unacidable = 0
@@ -61,7 +61,8 @@
 	. = ..()
 	update_name()
 
-/obj/item/reagent_containers/glass/rag/proc/update_name()
+/obj/item/reagent_containers/glass/rag/update_name()
+	. = ..()
 	if(on_fire)
 		name = "burning [initial(name)]"
 	else if(reagents.total_volume)

@@ -1,14 +1,3 @@
-// Byond direction defines, because I want to put them somewhere.
-// #define NORTH 1
-// #define SOUTH 2
-// #define EAST 4
-// #define WEST 8
-
-#define TEXT_NORTH			"[NORTH]"
-#define TEXT_SOUTH			"[SOUTH]"
-#define TEXT_EAST			"[EAST]"
-#define TEXT_WEST			"[WEST]"
-
 /// world.icon_size
 #define PIXELS 32
 
@@ -54,7 +43,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 #define PROCESS_KILL	26	// Used to trigger removal from a processing list.
-#define MAX_GEAR_COST	15	// Used in chargen for accessory loadout limit.
+#define MAX_GEAR_COST					15	// Used in chargen for accessory loadout limit.
+#define MAX_GEAR_COST_HOLIDAY_SPAM		30
 
 
 // For secHUDs and medHUDs and variants. The number is the location of the image on the list hud_list of humans.
@@ -170,6 +160,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAT_STEEL			"steel"
 #define MAT_PLASTIC			"plastic"
 #define MAT_GLASS			"glass"
+#define MAT_COPPER			"copper"
 #define MAT_SILVER			"silver"
 #define MAT_GOLD			"gold"
 #define MAT_URANIUM			"uranium"
@@ -181,6 +172,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAT_LOG				"log"
 #define MAT_SIFWOOD			"alien wood"
 #define MAT_SIFLOG			"alien log"
+#define MAT_HARDWOOD			"hardwood"
+#define MAT_HARDLOG			"hardwood log"
 #define MAT_STEELHULL		"steel hull"
 #define MAT_PLASTEEL		"plasteel"
 #define MAT_PLASTEELHULL	"plasteel hull"
@@ -279,7 +272,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define DEPARTMENT_EVERYONE			"everyone"
 #define DEPARTMENT_PLANET			"exploration"
 #define DEPARTMENT_OFFDUTY			"offduty"
-#define DEPARTMENT_TALON			"talon"
+#define DEPARTMENT_TALON			"talon"			// Leaving this definition in place, can perhaps use it in the future but removing it will require digging into other stuff im not comfortable with -BLoop
+#define DEPARTMENT_TRADE			"trade"
 
 // vorstation off-duty time
 #define PTO_SECURITY		"Security"

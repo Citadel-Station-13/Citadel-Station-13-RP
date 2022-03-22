@@ -385,6 +385,7 @@
 				prob(3);/obj/item/coin/phoron,
 				prob(1);/obj/item/coin/uranium,
 				prob(2);/obj/item/coin/platinum,
+				prob(1);/obj/item/coin/durasteel,
 				prob(1);/obj/item/coin/diamond)
 
 /obj/random/action_figure
@@ -842,7 +843,7 @@
 					prob(4);/obj/item/ammo_magazine/m45uzi,\
 					prob(4);/obj/item/ammo_magazine/m9mml,\
 					prob(4);/obj/item/ammo_magazine/m9mmt,\
-					prob(4);/obj/item/ammo_magazine/m9mmp90,\
+					prob(4);/obj/item/ammo_magazine/m57x28mmp90,\
 					prob(4);/obj/item/ammo_magazine/m10mm,\
 					prob(4);/obj/item/ammo_magazine/m545/small,\
 					prob(3);/obj/item/ammo_magazine/clip/c10mm,\

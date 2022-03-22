@@ -4,9 +4,6 @@
 # In the event that multiple org members are to be informed of changes
 # to the same file or dir, add them to the end under Multiple Owners
 
-#deathride58
-/modular_citadel/ @deathride58
-
-#LetterJay 
-/modular_citadel/code/modules/client/loadout/__donator.dm @LetterJay 
+#LetterJay
+/code/modules/client/preference_setup/loadout/loadout_donator.dm @LetterJay
 /SQL/database_changelog.txt @LetterJay

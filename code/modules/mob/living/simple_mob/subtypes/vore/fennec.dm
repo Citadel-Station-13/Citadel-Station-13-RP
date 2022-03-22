@@ -20,6 +20,7 @@
 	faction = "fennec"
 	maxHealth = 30
 	health = 30
+	randomized = TRUE
 
 	response_help = "pats the"
 	response_disarm = "gently pushes aside the"
@@ -32,19 +33,6 @@
 
 	say_list_type = /datum/say_list/fennec
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
-
-//Randomization Code
-/mob/living/simple_mob/vore/fennec/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 // Activate Noms!
 /mob/living/simple_mob/vore/fennec

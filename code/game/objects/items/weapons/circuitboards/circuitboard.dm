@@ -51,4 +51,15 @@
 		else
 			for(var/i in 1 to comp_amt)
 				M.component_parts += new comp_path(contain_parts ? M : null)
-	return
+
+/obj/item/circuitboard/examine(mob/user)
+	. = ..()
+	if(LAZYLEN(req_components))
+		var/list/nice_list = list()
+		for(var/B in req_components)
+			var/atom/A = B
+			if(!ispath(A))
+				continue
+			nice_list += list("[req_components[A]] [initial(A.name)]")
+		. += "<span class='notice'>Required components: [english_list(nice_list)].</span>"
+

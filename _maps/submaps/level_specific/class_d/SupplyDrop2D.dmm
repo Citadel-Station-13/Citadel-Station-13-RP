@@ -4,51 +4,43 @@
 /area/template_noop)
 "b" = (
 /turf/template_noop,
-/area/space)
-"c" = (
-/turf/simulated/floor/airless,
-/area/space)
+/area/class_d/explored)
 "d" = (
 /obj/structure/girder/displaced,
 /turf/template_noop,
-/area/space)
+/area/class_d/explored)
 "e" = (
 /turf/simulated/wall/titanium,
-/area/space)
+/area/class_d/explored)
 "f" = (
-/turf/simulated/floor/reinforced/airless,
-/area/space)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 "g" = (
 /obj/structure/loot_pile/maint/junk,
-/turf/simulated/floor/reinforced/airless,
-/area/space)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 "h" = (
 /obj/item/flashlight,
-/turf/simulated/floor/reinforced/airless,
-/area/space)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 "i" = (
 /obj/structure/loot_pile/maint/technical,
-/obj/item/gps/internal/poi,
 /obj/item/cell/device/weapon/empty,
 /obj/item/cell/device/weapon/empty,
-/turf/simulated/floor/reinforced/airless,
-/area/space)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 "j" = (
 /obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/reinforced/airless,
-/area/space)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 "k" = (
 /obj/structure/girder,
 /turf/template_noop,
-/area/space)
-"l" = (
-/obj/structure/loot_pile/maint/trash,
-/turf/simulated/floor/reinforced/airless,
-/area/space)
+/area/class_d/explored)
 "m" = (
 /obj/structure/loot_pile/maint/trash,
-/turf/simulated/floor/airless,
-/area/space)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 
 (1,1,1) = {"
 a
@@ -87,12 +79,12 @@ k
 b
 "}
 (5,1,1) = {"
-c
+f
 f
 g
 i
-c
-l
+f
+m
 m
 "}
 (6,1,1) = {"

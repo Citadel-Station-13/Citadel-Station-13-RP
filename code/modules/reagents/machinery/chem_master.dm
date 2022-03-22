@@ -275,7 +275,7 @@
 				if("create_bottle_multiple")
 					if(condi || !reagents.total_volume)
 						return
-					ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
+					ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, 2, 5)//two bottles on default
 				if("change_bottle_style")
 					var/list/choices = list()
 					for(var/i = 1 to MAX_BOTTLE_SPRITE)
@@ -425,7 +425,7 @@
 							to_chat(usr, "<span class='notice'>Not enough reagents to create these injectors!</span>")
 							return
 
-						var/obj/item/reagent_containers/hypospray/autoinjector/A = new(loc)
+						var/obj/item/reagent_containers/hypospray/autoinjector/empty/A = new(loc)
 						A.name = "[answer] autoinjector"
 						A.pixel_x = rand(-7, 7) // random position
 						A.pixel_y = rand(-7, 7)

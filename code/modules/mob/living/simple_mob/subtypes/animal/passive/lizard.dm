@@ -19,6 +19,7 @@
 	health = 5
 	maxHealth = 5
 	mob_size = MOB_MINISCULE
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "shoos"
@@ -32,18 +33,9 @@
 
 	say_list_type = /datum/say_list/lizard
 
-//Randomization Code
-/mob/living/simple_mob/animal/passive/lizard/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
+	meat_amount = 1
+	bone_amount = 1
+	hide_amount = 1
 
 /mob/living/simple_mob/animal/passive/lizard/large
 	desc = "A cute, big lizard."
@@ -55,7 +47,7 @@
 
 	attack_sharp = TRUE
 
-	mod_min = 80
+	mod_min = 90
 	mod_max = 200
 
 /mob/living/simple_mob/animal/passive/lizard/large/defensive

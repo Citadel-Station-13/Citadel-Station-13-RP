@@ -4,7 +4,7 @@
 
 
 
-/datum/species/xenochimera //Scree's race.
+/datum/species/shapeshifter/xenochimera //Scree's race.
 	name = SPECIES_XENOCHIMERA
 	name_plural = "Xenochimeras"
 	icobase = 'icons/mob/human_races/r_xenochimera.dmi'
@@ -19,14 +19,13 @@
 	base_species = "Xenochimera"
 	selects_bodytype = TRUE
 
-	num_alternate_languages = 2
+	num_alternate_languages = 5
 	secondary_langs = list("Sol Common")
 
 	//color_mult = 1 //It seemed to work fine in testing, but I've been informed it's unneeded.
 	tail = "tail" //Scree's tail. Can be disabled in the vore tab by choosing "hide species specific tail sprite"
 	icobase_tail = 1
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/reconstitute_form,
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
@@ -40,7 +39,7 @@
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
-		/mob/living/carbon/human/proc/lick_wounds ,
+		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/resp_biomorph,
 		/mob/living/carbon/human/proc/biothermic_adapt,
 		/mob/living/carbon/human/proc/atmos_biomorph,
@@ -53,11 +52,28 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_wings,
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
-		/mob/living/carbon/human/proc/regenerate) //Xenochimera get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/shapeshifter_select_shape,
+		/mob/living/carbon/human/proc/commune
+		) //Xenochimera get all the special verbs since they can't select traits.
 
+	inherent_spells = list(
+		/spell/targeted/chimera/thermal_sight,
+		/spell/targeted/chimera/voice_mimic,
+		/spell/targeted/chimera/regenerate,
+		/spell/targeted/chimera/hatch,
+		/spell/targeted/chimera/no_breathe
+	)
+
+	var/list/feral_spells = list(
+		/spell/aoe_turf/dissonant_shriek
+	)
+
+	var/list/removable_spells = list()
+
+	var/has_feral_spells = FALSE
 	virus_immune = 1 // They practically ARE one.
 	min_age = 18
-	max_age = 80
+	max_age = 200
 
 	blurb = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \
 	Widely known for their voracious nature and violent tendencies when stressed or left unfed for long periods of time. \
@@ -95,6 +111,14 @@
 		"Your skin prickles in the heat."
 		)
 
+	valid_transform_species = list(
+		"Human", "Unathi", "Tajara", "Skrell",
+		"Diona", "Teshari", "Monkey","Sergal",
+		"Akula","Nevrean","Highlander Zorren",
+		"Flatland Zorren", "Vulpkanin", "Vasilissan",
+		"Rapala", "Neaera", "Stok", "Farwa", "Sobaka",
+		"Wolpin", "Saru", "Sparra", "Vox")
+
 	//primitive_form = "Farwa"
 
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE//Whitelisted as restricted is broken.
@@ -113,13 +137,15 @@
 		O_INTESTINE =	/obj/item/organ/internal/intestine/xenochimera
 		)
 
+	heal_rate = 0.5
+	infect_wounds = 1
 	flesh_color = "#AFA59E"
 	base_color 	= "#333333"
 	blood_color = "#14AD8B"
 
 	reagent_tag = IS_CHIMERA
 
-/datum/species/xenochimera/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/handle_environment_special(var/mob/living/carbon/human/H)
 	//If they're KO'd/dead, they're probably not thinking a lot about much of anything.
 	if(!H.stat)
 		handle_feralness(H)
@@ -146,9 +172,51 @@
 		if(temp_diff >= 50)
 			H.shock_stage = min(H.shock_stage + (temp_diff/20), 160) // Divided by 20 is the same as previous numbers, but a full scale
 			H.eye_blurry = max(5,H.eye_blurry)
+	..()
 
+/datum/species/shapeshifter/xenochimera/add_inherent_spells(var/mob/living/carbon/human/H)
+	var/master_type = /atom/movable/screen/movable/spell_master/chimera
+	var/atom/movable/screen/movable/spell_master/chimera/new_spell_master = new master_type
 
-/datum/species/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
+	if(!H.spell_masters)
+		H.spell_masters = list()
+
+	if(H.client)
+		H.client.screen += new_spell_master
+	new_spell_master.spell_holder = H
+	H.spell_masters.Add(new_spell_master)
+
+	for(var/spell_to_add in inherent_spells)
+		var/spell/S = new spell_to_add(H)
+		H.add_spell(S, "cult", master_type)
+
+/datum/species/shapeshifter/xenochimera/proc/add_feral_spells(var/mob/living/carbon/human/H)
+	if(!has_feral_spells)
+		var/check = FALSE
+		var/master_type = /atom/movable/screen/movable/spell_master/chimera
+		for(var/spell/S as anything in feral_spells)
+			var/spell/spell_to_add = new S(H)
+			check = H.add_spell(spell_to_add, "cult", master_type)
+			removable_spells += spell_to_add
+		if(check)
+			has_feral_spells = TRUE
+		else
+			return
+	else
+		return
+
+/datum/species/shapeshifter/xenochimera/proc/remove_feral_spells(var/mob/living/carbon/human/H)
+	for(var/spell/S as anything in removable_spells)
+		S.remove_self(H)
+	removable_spells.Cut()
+	has_feral_spells = FALSE
+
+/datum/species/shapeshifter/xenochimera/handle_post_spawn(mob/living/carbon/human/H)
+	..()
+	for(var/spell/S as anything in feral_spells)
+		S = new S(H)
+
+/datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
 	//Low-ish nutrition has messages and eventually feral
 	var/hungry = H.nutrition <= 200
@@ -227,6 +295,10 @@
 		//we're feral
 		feral_state = TRUE
 
+		//We check if the current spell list already has feral spells.
+		if(!has_feral_spells)
+			add_feral_spells(H)
+
 		//Shock due to mostly halloss. More feral.
 		if(shock && 2.5*H.halloss >= H.traumatic_shock)
 			danger = TRUE
@@ -255,6 +327,8 @@
 		//Did we just finish being feral?
 		if(!feral)
 			feral_state = FALSE
+			if(has_feral_spells)
+				remove_feral_spells(H)
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
 			update_xenochimera_hud(H, danger, feral_state)
@@ -338,7 +412,7 @@
 	// HUD update time
 	update_xenochimera_hud(H, danger, feral_state)
 
-/datum/species/xenochimera/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
 	ASSERT(to_copy)
 	ASSERT(istype(H))
 
@@ -347,7 +421,7 @@
 	if(istext(to_copy))
 		to_copy = GLOB.all_species[to_copy]
 
-	var/datum/species/xenochimera/new_copy = new()
+	var/datum/species/shapeshifter/xenochimera/new_copy = new()
 
 	//Initials so it works with a simple path passed, or an instance
 	new_copy.base_species = to_copy.name
@@ -377,14 +451,14 @@
 
 	return new_copy
 
-/datum/species/xenochimera/get_bodytype()
+/datum/species/shapeshifter/xenochimera/get_bodytype()
 	return base_species
 
-/datum/species/xenochimera/get_race_key()
+/datum/species/shapeshifter/xenochimera/get_race_key()
 	var/datum/species/real = GLOB.all_species[base_species]
 	return real.race_key
 
-/datum/species/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
+/datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
 	if(H.xenochimera_danger_display)
 		H.xenochimera_danger_display.invisibility = 0
 		if(danger && feral)
@@ -398,21 +472,21 @@
 
 	return
 
-/obj/screen/xenochimera
+/atom/movable/screen/xenochimera
 	icon = 'icons/mob/chimerahud.dmi'
 	invisibility = 101
 
-/obj/screen/xenochimera/danger_level
+/atom/movable/screen/xenochimera/danger_level
 	name = "danger level"
 	icon_state = "danger00"		//first number is bool of whether or not we're in danger, second is whether or not we're feral
 	alpha = 200
 
 //Verbs Follow
 
-/mob/living/carbon/human/proc/resp_biomorph(mob/user)
+/mob/living/carbon/human/proc/resp_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Respiratory Biomorph"
 	set desc = "Changes the gases we need to breathe."
-	set category = "Abilities"
+	set category = "Chimera"
 
 	var/list/gas_choices = list(
 		"oxygen" = /datum/gas/oxygen,
@@ -420,80 +494,202 @@
 		"nitrogen" = /datum/gas/nitrogen,
 		"carbon dioxide" = /datum/gas/carbon_dioxide
 	)
-	var/choice = input(user, "How should we adapt our respiration?") as null|anything in gas_choices
-	if(!choice)
+	var/choice
+	if(target && target != src)
+		choice= input(src, "How should we modify their respiration?") as null|anything in gas_choices
+	if(target == src)
+		choice = input(src, "How should we adapt our respiration?") as null|anything in gas_choices
+	if(!choice || !target)
+		return
+	if(target.isSynthetic())
+		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
 		return
 	var/resp_biomorph = gas_choices[choice]
-	to_chat(user,"You begin modifying your internal structure!")
-	if(do_after(user,15 SECONDS))
+	if(target == src)
+		to_chat(src,"<span class = 'Notice'>We begin modifying our internal structure.</span>")
+	else
+		target.visible_message("<span class = 'danger'>[src] begins to burrow their digits into [target], slithering down their throat!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your throat and into your chest...</span>")
+	if(do_after(src,15 SECONDS))
 		switch(resp_biomorph)
 			if(/datum/gas/oxygen)
-				species.breath_type = /datum/gas/oxygen
-				species.poison_type = /datum/gas/phoron
-				species.exhale_type = /datum/gas/carbon_dioxide
+				target.species.breath_type = /datum/gas/oxygen
+				target.species.poison_type = /datum/gas/phoron
+				target.species.exhale_type = /datum/gas/carbon_dioxide
 			if(/datum/gas/phoron)
-				species.breath_type = /datum/gas/phoron
-				species.poison_type = /datum/gas/oxygen
-				species.exhale_type = /datum/gas/nitrogen
+				target.species.breath_type = /datum/gas/phoron
+				target.species.poison_type = null
+				target.species.exhale_type = /datum/gas/nitrogen
 			if(/datum/gas/nitrogen)
-				species.breath_type = /datum/gas/nitrogen
-				species.poison_type = /datum/gas/carbon_dioxide
+				target.species.breath_type = /datum/gas/nitrogen
+				target.species.poison_type = null
 			if(/datum/gas/carbon_dioxide)
-				species.breath_type = /datum/gas/carbon_dioxide
-				species.exhale_type = /datum/gas/oxygen
+				target.species.breath_type = /datum/gas/carbon_dioxide
+				target.species.exhale_type = /datum/gas/oxygen
+		if(target == src)
+			to_chat("<span class = 'Notice'>It is done.</span>")
+		else
+			if(prob(10))
+				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
+				virus2.makerandom()
+				infect_virus2(target, virus2)
+				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
+		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
 
-/mob/living/carbon/human/proc/biothermic_adapt(mob/user)
+
+/mob/living/carbon/human/proc/biothermic_adapt(mob/living/carbon/human/target in view(1))
 	set name = "Biothermic Adaptation"
 	set desc = "Changes our core body temperature."
-	set category = "Abilities"
+	set category = "Chimera"
 
-	var/biothermic_adapt = input(user, "How should we modify our core temperature?") as null|anything in list("warm-blooded", "cold-blooded", "hot-blooded")
-	if(!biothermic_adapt)
+	var/list/temperature_options = list(
+	"warm-blooded",
+	"cold-blooded",
+	"hot-blooded"
+	)
+
+	var/biothermic_adapt
+	if(target && target != src)
+		biothermic_adapt = input(src, "How should we modify their core temperature?") as null|anything in temperature_options
+	if(target == src)
+		biothermic_adapt = input(src, "How should we modify our core temperature?") as null|anything in temperature_options
+
+	if(!biothermic_adapt || !target)
 		return
-	to_chat(user,"You begin modifying your internal structure!")
-	if(do_after(user,15 SECONDS))
+	if(target.isSynthetic())
+		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
+		return
+	if(target == src)
+		to_chat(src, "<span class = 'Notice'>We begin modifying our internal biothermic structure.</span>")
+	else
+		target.visible_message("<span class = 'danger'>[src] has fleshy tendrils emerge and begin slither inside the veins of [target]!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your skin, your veins suddenly feeling as if they have bugs crawling inside...</span>")
+	if(do_after(src,15 SECONDS))
 		switch(biothermic_adapt)
-			if("warm-blooded")
-				species.cold_discomfort_level = 285
-				species.heat_discomfort_level = 315
-			if("cold-blooded")
-				species.cold_discomfort_level = T0C+21
-			if("hot-blooded")
-				species.heat_discomfort_level = T0C+19
+			if("warm-blooded")	//reverts to default
+				target.species.cold_discomfort_level = 285
+				target.species.cold_level_1 = 260
+				target.species.cold_level_2 = 180
+				target.species.cold_level_3 = 100
 
-/mob/living/carbon/human/proc/atmos_biomorph(mob/user)
+				target.species.breath_cold_level_1 = 240
+				target.species.breath_cold_level_2 = 160
+				target.species.breath_cold_level_3 = 80
+
+				target.species.heat_level_1 = 360
+				target.species.heat_level_2 = 400
+				target.species.heat_level_3 = 1000
+
+				target.species.breath_heat_level_1 = 380
+				target.species.breath_heat_level_2 = 450
+				target.species.breath_heat_level_3 = 1250
+
+				target.species.heat_discomfort_level = 315
+			if("cold-blooded")
+				target.species.cold_discomfort_level = T0C+21
+
+				target.species.cold_level_1 = T0C+19
+				target.species.cold_level_2 = T0C
+				target.species.cold_level_3 = T0C - 15
+
+				target.species.breath_cold_level_1 = T0C + 5
+				target.species.breath_cold_level_2 = T0C - 10
+				target.species.breath_cold_level_3 = T0C - 25
+
+				target.species.heat_level_1 = 1000
+				target.species.heat_level_2 = 1200
+				target.species.heat_level_3 = 1400
+
+				target.species.breath_heat_level_1 = 800
+				target.species.breath_heat_level_2 = 1000
+				target.species.breath_heat_level_3 = 1200
+
+			if("hot-blooded")
+				target.species.cold_level_1 = T0C - 75
+				target.species.cold_level_2 = T0C - 100
+				target.species.cold_level_3 = T0C - 125
+
+				target.species.breath_cold_level_1 = T0C - 75
+				target.species.breath_cold_level_2 = T0C - 100
+				target.species.breath_cold_level_3 = T0C - 125
+
+				target.species.heat_level_1 = T0C + 25
+				target.species.heat_level_2 = T0C + 50
+				target.species.heat_level_3 = T0C + 100
+
+				target.species.breath_heat_level_1 = T0C + 50
+				target.species.breath_heat_level_2 = T0C + 75
+				target.species.breath_heat_level_3 = T0C + 100
+
+				target.species.heat_discomfort_level = T0C+19
+		if(target == src)
+			to_chat(src, "<span class = 'Notice'>It is done.</span>")
+		else
+			if(prob(10))
+				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
+				virus2.makerandom()
+				infect_virus2(target, virus2)
+				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
+		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
+
+/mob/living/carbon/human/proc/atmos_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Atmospheric Biomorph"
 	set desc = "Changes our sensitivity to atmospheric pressure."
-	set category = "Abilities"
+	set category = "Chimera"
 
-	var/atmos_biomorph = input(user, "How should we adapt our rigidity?") as null|anything in list("flexible", "compact", "elastic")
-	if(!atmos_biomorph)
+
+	var/list/pressure_options = list(
+	"flexible",
+	"compact",
+	"elastic"
+	)
+	var/atmos_biomorph
+	if(target && target != src)
+		atmos_biomorph = input(src, "How should we modify their atmospheric sensitivity?") as null|anything in pressure_options
+	if(target == src)
+		atmos_biomorph = input(src, "How should we modify our atmospheric sensitivity?") as null|anything in pressure_options
+	if(!atmos_biomorph || !target)
 		return
-	to_chat(user,"You begin modifying your internal structure!")
-	if(do_after(user,15 SECONDS))
+	if(target.isSynthetic())
+		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
+		return
+	if(target == src)
+		to_chat("<span class = 'Notice'>We begin modifying our skin...</span>")
+	else
+		target.visible_message("<span class = 'danger'>[src] has fleshy tendrils emerge and begin to merge and mold with [target]!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your skin, it begins to feel foreign and dead, emanating from them...</span>")
+	if(do_after(src,15 SECONDS))
 		switch(atmos_biomorph)
 			if("flexible")
-				species.warning_low_pressure = WARNING_LOW_PRESSURE
-				species.hazard_low_pressure = -1
-				species.warning_high_pressure = WARNING_HIGH_PRESSURE
-				species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
-			if("rigid")
-				species.warning_low_pressure = 50
-				species.hazard_low_pressure = -1
+				target.species.warning_low_pressure = WARNING_LOW_PRESSURE
+				target.species.hazard_low_pressure = -1
+				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
+				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
+			if("compact")
+				target.species.warning_low_pressure = 50
+				target.species.hazard_low_pressure = -1
 			if("elastic")
-				species.warning_high_pressure = WARNING_HIGH_PRESSURE + 50
-				species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 100
+				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE + 200
+				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 400
 
-/mob/living/carbon/human/proc/vocal_biomorph(mob/user)
+		if(target == src)
+			to_chat(src, "<span class = 'notice'>It is done.</span>")
+		else
+			if(prob(10))
+				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
+				virus2.makerandom()
+				infect_virus2(target, virus2)
+				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
+		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
+
+
+/mob/living/carbon/human/proc/vocal_biomorph()
 	set name = "Vocalization Biomorph"
 	set desc = "Changes our speech pattern."
-	set category = "Abilities"
+	set category = "Chimera"
 
-	var/vocal_biomorph = input(user, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
+	var/vocal_biomorph = input(src, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
 	if(!vocal_biomorph)
 		return
-	to_chat(user, "You begin modifying your internal structure!")
-	if(do_after(user,15 SECONDS))
+	to_chat(src, "You begin modifying your internal structure!")
+	if(do_after(src,15 SECONDS))
 		switch(vocal_biomorph)
 			if("common")
 				return
@@ -525,8 +721,16 @@
 	tail = "tail" //Spider tail.
 	icobase_tail = 1
 
+	is_weaver = TRUE
+	silk_reserve = 500
+	silk_max_reserve = 1000
+
 	inherent_verbs = list(
-		/mob/proc/weaveWebBindings,
+		/mob/living/carbon/human/proc/check_silk_amount,
+		/mob/living/carbon/human/proc/toggle_silk_production,
+		/mob/living/carbon/human/proc/weave_structure,
+		/mob/living/carbon/human/proc/weave_item,
+		/mob/living/carbon/human/proc/set_silk_color,
 		/mob/living/carbon/human/proc/tie_hair
 		)
 

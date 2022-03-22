@@ -50,6 +50,11 @@
 	icon_state = "oracarpet"
 	initial_flooring = /decl/flooring/carpet/oracarpet
 
+/turf/simulated/floor/carpet/arcadecarpet
+	name = "arcade carpet"
+	icon_state = "arcade"
+	initial_flooring = /decl/flooring/carpet/arcadecarpet
+
 /turf/simulated/floor/bluegrid
 	name = "mainframe floor"
 	icon = 'icons/turf/flooring/circuit.dmi'
@@ -320,6 +325,75 @@
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "darkmarble"
 	initial_flooring = /decl/flooring/bmarble
+
+/turf/simulated/floor/bananium
+	name = "bananium"
+	desc = "This floor feels vaguely springy and rubbery, and has an almost pleasant bounce when stepped on."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "bananium"
+	initial_flooring = /decl/flooring/bananium
+
+/turf/simulated/floor/bananium/Entered(atom/A)
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.hovering) // Flying things shouldn't make footprints.
+			return ..()
+		playsound(src, 'sound/items/bikehorn.ogg', 75, 1)
+	..()
+
+/turf/simulated/floor/silencium
+	name = "silencium"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "silencium"
+	initial_flooring = /decl/flooring/silencium
+
+/turf/simulated/floor/plasteel
+	name = "plasteel"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "plasteel"
+	initial_flooring = /decl/flooring/plasteel
+
+/turf/simulated/floor/durasteel
+	name = "durasteel"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "durasteel"
+	initial_flooring = /decl/flooring/durasteel
+
+/turf/simulated/floor/silver
+	name = "silver"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "silver"
+	initial_flooring = /decl/flooring/silver
+
+/turf/simulated/floor/gold
+	name = "gold"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "gold"
+	initial_flooring = /decl/flooring/gold
+
+/turf/simulated/floor/phoron
+	name = "phoron"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "phoron"
+	initial_flooring = /decl/flooring/phoron
+
+/turf/simulated/floor/uranium
+	name = "uranium"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "uranium"
+	initial_flooring = /decl/flooring/uranium
+
+/turf/simulated/floor/diamond
+	name = "diamond"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "diamond"
+	initial_flooring = /decl/flooring/diamond
+
+/turf/simulated/floor/brass
+	name = "clockwork floor"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "clockwork_floor"
+	initial_flooring = /decl/flooring/brass
 
 //ATMOS PREMADES
 /turf/simulated/floor/reinforced/airless

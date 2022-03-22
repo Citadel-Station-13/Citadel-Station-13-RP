@@ -1808,7 +1808,9 @@
 	id_tag = "sci_outpost_inner";
 	locked = 1
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "eb" = (
@@ -1823,7 +1825,9 @@
 	id_tag = "sci_outpost_inner";
 	locked = 1
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "ec" = (
@@ -1960,7 +1964,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
 "es" = (
@@ -1969,7 +1975,9 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Toxins Workroom"
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
 "et" = (
@@ -2419,7 +2427,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 2
+	dir = 2;
+	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -2636,7 +2645,9 @@
 /obj/machinery/door/airlock/glass_science{
 	name = "General Gasworks"
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/mixing)
 "fq" = (
@@ -2699,7 +2710,8 @@
 /area/rnd/outpost)
 "fw" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 8
+	dir = 8;
+	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -2947,7 +2959,8 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 1
+	dir = 1;
+	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -3169,7 +3182,9 @@
 	name = "Science Outpost Substation";
 	req_one_access = list(10,47)
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
 "gf" = (
@@ -3396,7 +3411,8 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 1
+	dir = 1;
+	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -3432,7 +3448,8 @@
 	pixel_x = -24
 	},
 /obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 1
+	dir = 1;
+	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -3639,7 +3656,9 @@
 /obj/machinery/door/airlock/glass_science{
 	name = "Toxins Mixing"
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/heating)
 "gW" = (
@@ -4185,7 +4204,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	req_one_access = list(18, 47)
+	},
 /obj/machinery/door/airlock/science{
 	name = "Research Outpost"
 	},
@@ -4680,7 +4701,9 @@
 /obj/machinery/door/airlock/science{
 	name = "Toxins Storage"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	req_one_access = list(18, 47)
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -5296,7 +5319,9 @@
 	req_access = list(65);
 	req_one_access = list(47)
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
 "ki" = (
@@ -5400,7 +5425,9 @@
 /turf/simulated/wall,
 /area/rnd/outpost/breakroom)
 "kt" = (
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	req_one_access = list(18, 47)
+	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -5608,7 +5635,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	req_one_access = list(18, 47)
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -5810,7 +5839,9 @@
 /obj/machinery/door/airlock/maintenance/rnd{
 	name = "Anomaly Storage"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "lb" = (
@@ -5827,7 +5858,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	req_one_access = list(18, 47)
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
@@ -5888,7 +5921,9 @@
 /obj/effect/floor_decal/corner/purple/bordercorner{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	req_one_access = list(18, 47)
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
@@ -6216,7 +6251,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	req_one_access = list(18, 47)
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -6465,7 +6502,9 @@
 	req_access = list(65);
 	req_one_access = list(47)
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18, 47)
+	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -6586,7 +6625,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
+	dir = 2;
+	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -6689,7 +6729,8 @@
 /area/rnd/outpost/anomaly_lab)
 "ms" = (
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 1
+	dir = 1;
+	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -6805,7 +6846,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass/hidden{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "mG" = (
@@ -6993,7 +7036,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass/hidden{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "mU" = (
@@ -7225,7 +7270,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 1
+	dir = 1;
+	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -7425,7 +7471,9 @@
 /area/rnd/outpost/anomaly_lab)
 "nP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	req_one_access = list(18, 47)
+	},
 /obj/machinery/door/airlock/glass_science{
 	name = "Anomaly Testing Airlock Access"
 	},
@@ -7448,7 +7496,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 1
+	dir = 1;
+	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -7556,7 +7605,9 @@
 /obj/machinery/door/airlock/glass_science{
 	name = "Xenoarch Storage"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	req_one_access = list(18, 47)
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -7662,7 +7713,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	req_one_access = list(18, 47)
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "op" = (

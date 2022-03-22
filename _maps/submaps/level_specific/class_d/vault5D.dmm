@@ -4,69 +4,69 @@
 /area/template_noop)
 "b" = (
 /obj/effect/alien/resin/wall,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "c" = (
 /obj/structure/simple_door/resin,
 /obj/effect/alien/weeds,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "d" = (
 /obj/effect/alien/weeds,
 /obj/structure/bed/nest,
 /obj/item/gun/projectile/p92x/large,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "e" = (
 /obj/effect/alien/weeds,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "f" = (
 /obj/effect/alien/weeds,
 /obj/item/clothing/suit/storage/vest/tactical,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "g" = (
 /obj/effect/alien/weeds,
 /obj/structure/bed/nest,
 /obj/fiftyspawner/osmium,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "h" = (
 /obj/effect/alien/weeds,
 /obj/random/multiple/minevault,
 /mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "i" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/egg,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "j" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/weeds/node,
 /mob/living/simple_mob/animal/space/alien/queen/empress,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "k" = (
 /obj/effect/alien/weeds,
 /obj/item/clothing/head/helmet/tac,
 /obj/item/gun/projectile/SVD,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "A" = (
 /obj/effect/alien/weeds,
 /obj/structure/bed/nest,
 /obj/fiftyspawner/durasteel,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 "X" = (
 /obj/effect/alien/weeds,
 /obj/structure/bed/nest,
 /obj/fiftyspawner/phoron,
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/explored)
+/turf/simulated/mineral/floor/classd/indoors,
+/area/class_d/explored)
 
 (1,1,1) = {"
 a

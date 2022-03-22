@@ -36,6 +36,10 @@
 	say_list_type = /datum/say_list/BigTim
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
 
+	meat_amount = 2
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/human
+	bone_amount = 3
+
 /mob/living/simple_mob/horror/BigTim/death()
 	playsound(src, 'sound/h_sounds/shitty_tim.ogg', 50, 1)
 	..()

@@ -36,6 +36,9 @@
 	say_list_type = /datum/say_list/Sally
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
 
+	hide_amount = 10
+	exotic_amount = 5
+
 /mob/living/simple_mob/horror/Sally/death()
 	playsound(src, 'sound/h_sounds/lynx.ogg', 50, 1)
 	..()
