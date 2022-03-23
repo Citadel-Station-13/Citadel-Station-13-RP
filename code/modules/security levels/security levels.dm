@@ -64,10 +64,6 @@
 				else
 					security_announcement_down.Announce("[config_legacy.alert_desc_red_downto]", "Attention! Code red!", new_sound = 'sound/misc/voyalert.ogg')
 				security_level = SEC_LEVEL_RED
-				/*	- At the time of commit, setting status displays didn't work properly
-				var/obj/machinery/computer/communications/CC = locate(/obj/machinery/computer/communications,world)
-				if(CC)
-					CC.post_status("alert", "redalert")*/
 			if(SEC_LEVEL_DELTA)
 				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/effects/alert_levels/deltaklaxon.ogg')
 				security_level = SEC_LEVEL_DELTA
@@ -85,6 +81,10 @@
 			GLOB.lore_atc.reroute_traffic(TRUE) // Tell them fuck off we're busy.
 		else
 			GLOB.lore_atc.reroute_traffic(FALSE)
+
+		spawn()
+			SSnightshift.check_nightshift()
+
 		admin_chat_message(message = "Security level is now: [uppertext(get_security_level())]", color = "#CC2222") //VOREStation Add
 
 /proc/get_security_level()

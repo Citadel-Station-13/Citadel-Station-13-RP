@@ -30,7 +30,7 @@
 				prob(2);/obj/item/gun/energy/ionrifle/pistol,
 				prob(3);/obj/item/gun/energy/toxgun,
 				prob(4);/obj/item/gun/energy/taser,
-				prob(4);/obj/item/gun/energy/taser/civ,
+				prob(4);/obj/item/gun/energy/civtas,
 				prob(2);/obj/item/gun/energy/crossbow/largecrossbow,
 				prob(4);/obj/item/gun/energy/stunrevolver)
 

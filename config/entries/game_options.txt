@@ -14,3 +14,6 @@ ENGINE_SUBMAP EngineSubmap_RUST 40
 ENGINE_SUBMAP EngineSubmap_Tesla 20
 ## Singulo
 ENGINE_SUBMAP EngineSubmap_Singulo 20
+
+## Comment this out if you don't want to use the 'nightshift lighting' subsystem to adjust lights based on ingame time.
+NIGHTSHIFTS_ENABLED

@@ -870,7 +870,8 @@
 	contraband = list(/obj/item/flame/lighter/zippo = 4)
 	premium = list(/obj/item/storage/fancy/cigar = 5,
 					/obj/item/storage/fancy/cigarettes/carcinomas = 5,
-					/obj/item/storage/fancy/cigarettes/professionals = 5)
+					/obj/item/storage/fancy/cigarettes/professionals = 5,
+					/obj/item/storage/fancy/cigarettes/blackstars = 5)
 	prices = list(/obj/item/storage/fancy/cigarettes = 12,
 					/obj/item/storage/fancy/cigarettes/dromedaryco = 15,
 					/obj/item/storage/fancy/cigarettes/killthroat = 17,

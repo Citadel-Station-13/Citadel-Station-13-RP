@@ -8,3 +8,6 @@
 
 /datum/config_entry/flag/allow_holidays
 	config_entry_value = TRUE
+
+/datum/config_entry/flag/nightshifts_enabled
+	config_entry_value = TRUE
