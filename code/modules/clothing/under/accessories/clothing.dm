@@ -510,3 +510,9 @@
 	desc = "A narrow black loincloth. Based on its cut and the multitude of connection points, it seems this cloth served a decorative purpose, rather than providing utility."
 	icon_state = "antediluvian_loin"
 	slot = ACCESSORY_SLOT_DECOR
+
+/obj/item/clothing/accessory/antediluvian_gloves
+	name = "Antediluvian bracers"
+	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection."
+	icon_state = "antediluvian"
+	//body_parts_covered = HANDS|ARMS

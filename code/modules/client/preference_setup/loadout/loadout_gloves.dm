@@ -140,7 +140,3 @@
 /datum/gear/gloves/bountyskin
 	name = "Bounty Hunter's Gloves"
 	path = /obj/item/clothing/gloves/bountyskin
-
-/datum/gear/gloves/antediluvian
-	name = "Antediluvian Bracers"
-	path = /obj/item/clothing/gloves/antediluvian

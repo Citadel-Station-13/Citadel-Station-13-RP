@@ -381,3 +381,7 @@
 	name = "Antediluvian Loincloth"
 	path = /obj/item/clothing/accessory/antediluvian
 	cost = 1
+
+/datum/gear/accessory/antediluvian_gloves
+	name = "Antediluvian Bracers"
+	path = /obj/item/clothing/accessory/antediluvian_gloves

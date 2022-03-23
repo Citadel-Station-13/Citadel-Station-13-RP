@@ -620,13 +620,3 @@
 	cold_protection = HANDS
 	heat_protection = HANDS
 	armor = list("melee" = 15, "bullet" = 5, "laser" = 5, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 15, "acid" = 0)
-
-//Antediluvian Suit
-
-/obj/item/clothing/gloves/antediluvian
-	name = "Antediluvian bracers"
-	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection."
-	icon_state = "antediluvian"
-	body_parts_covered = HANDS|ARMS
-	overgloves = 1
-	fingerprint_chance = 100
