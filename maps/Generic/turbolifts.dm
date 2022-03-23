@@ -7,10 +7,10 @@
 	wall_type = null // Don't make walls
 
 	areas_to_use = list(
-		/area/turbolift/t_ship/level1,
-		/area/turbolift/t_ship/level2,
+		/area/turbolift/t_ship/level4,
 		/area/turbolift/t_ship/level3,
-		/area/turbolift/t_ship/level4
+		/area/turbolift/t_ship/level2,
+		/area/turbolift/t_ship/level1
 		)
 
 

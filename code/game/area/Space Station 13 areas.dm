@@ -3424,31 +3424,31 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 	requires_power = FALSE
 
-/area/turbolift/t_ship/level1
-	name = "Deck 1"
-	lift_floor_label = "Deck 1"
+/area/turbolift/t_ship/level4//needs renaming once the deck is not being edited...
+	name = "Deck 4"
+	lift_floor_label = "Deck 4"
 	lift_floor_name = "Engineering, Reactor, Telecomms, Trash Pit, Atmospherics"
-	lift_announce_str = "Arriving at Deck 1."
+	lift_announce_str = "Arriving at Deck 4."
 	base_turf = /turf/simulated/floor/plating
 
 
-/area/turbolift/t_ship/level2
-	name = "Deck 2"
-	lift_floor_label = "Deck 2"
-	lift_floor_name = "Dorms, Cargo, Mining, Bar, Cafe, Solars, Shops"
-	lift_announce_str = "Arriving at Deck 2."
-
-/area/turbolift/t_ship/level3
+/area/turbolift/t_ship/level3//needs renaming once the deck is not being edited...
 	name = "Deck 3"
 	lift_floor_label = "Deck 3"
-	lift_floor_name = "Medical, Science, Holo Deck, Teleporter"
+	lift_floor_name = "Dorms, Cargo, Mining, Bar, Cafe, Solars, Shops"
 	lift_announce_str = "Arriving at Deck 3."
 
-/area/turbolift/t_ship/level4
-	name = "Deck 4"
-	lift_floor_label = "Deck 4"
+/area/turbolift/t_ship/level2//needs renaming once the deck is not being edited...
+	name = "Deck 2"
+	lift_floor_label = "Deck 2"
+	lift_floor_name = "Medical, Science, Holo Deck, Teleporter"
+	lift_announce_str = "Arriving at Deck 2."
+
+/area/turbolift/t_ship/level1//needs renaming once the deck is not being edited...
+	name = "Deck 1"
+	lift_floor_label = "Deck 1"
 	lift_floor_name = "Exploration, Arrivals & Departures, Security, Command, Chapel, Sauna, Docking Arm, Library, Garden, Tool Storage"
-	lift_announce_str = "Arriving at Deck 4."
+	lift_announce_str = "Arriving at Deck 1."
 
 
 //Debug/Code areas
