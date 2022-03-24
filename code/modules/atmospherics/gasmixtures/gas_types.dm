@@ -410,3 +410,10 @@ datum/gas/hydrogen/deuterium
 	)
 	neutron_absorption = 5
 	neutron_cross_section = 3*/
+
+//Special gas type that are very powerful and shouldnt be avaiable in large portions
+datum/gas/vimur
+	id = "vimur"
+	name = "Vimur"
+	specific_heat = 500	// J/(mol*K) //250% the heat capacity of phoron
+	molar_mass = 0.054 // Standard Mass of xenon
