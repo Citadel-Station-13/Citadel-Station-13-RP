@@ -57,9 +57,14 @@
         new /datum/data/mining_equipment("Stock Parts - Advanced Matter Bin",       /obj/item/stock_parts/matter_bin/adv,       200),
 
 		//Special Resources which the vendor is the primary source off:
-		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 			/obj/item/tank/vimur, 100),
-		new /datum/data/mining_equipment("Special Parts - TEG Voucher", 		/obj/item/engineering_voucher/teg, 100),
-		new /datum/data/mining_equipment("Special Parts - Collector Voucher", 	/obj/item/engineering_voucher/collectors, 100)
+		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 				/obj/item/tank/vimur, 100),
+		new /datum/data/mining_equipment("Special Parts - TEG Voucher", 			/obj/item/engineering_voucher/teg, 100),
+		new /datum/data/mining_equipment("Special Parts - SM Core Voucher", 		/obj/item/engineering_voucher/smcore, 100),
+		new /datum/data/mining_equipment("Special Parts - Fusion Core Voucher",		/obj/item/engineering_voucher/fusion_core, 100),
+		new /datum/data/mining_equipment("Special Parts - Fuel Injector Voucher",	/obj/item/engineering_voucher/fusion_fuel_injector, 100),
+		new /datum/data/mining_equipment("Special Parts - Gyrotrons Voucher", 		/obj/item/engineering_voucher/gyrotrons, 100),
+		new /datum/data/mining_equipment("Special Parts - Fuel compressor Voucher",	/obj/item/engineering_voucher/fuel_compressor, 100),
+		new /datum/data/mining_equipment("Special Parts - Collector Voucher", 		/obj/item/engineering_voucher/collectors, 100)
     )
 
 /obj/machinery/mineral/equipment_vendor/interact(mob/user)
@@ -176,17 +181,46 @@
 	name = "used " + name
 	redeemable_for = null
 	icon_state = "engineering_voucher_used"
-	desc = "An used voucher that could be used to be redeemed for something at the cargo console"
+	desc = "An used voucher that was used to redeem for something at the cargo console"
 
 /obj/item/engineering_voucher/teg
 	name = "Thermo-Electric Generator voucher"
-	desc = "A voucher redeemable at any NT cargo department to shipment of a Thermo-Electric Generator"
+	desc = "A voucher redeemable, at any NT cargo department, for shipment of a Thermo-Electric Generator"
 	icon_state = "engineering_voucher"
 	redeemable_for = new /datum/supply_pack/eng/teg
 
 /obj/item/engineering_voucher/collectors
 	name = "Radiation Collector voucher"
-	desc = "A voucher redeemable at any NT cargo department to shipment of crate of radiation collectors"
+	desc = "A voucher redeemable, at any NT cargo department, for shipment of crate of radiation collectors"
 	icon_state = "engineering_voucher"
 	redeemable_for = new /datum/supply_pack/eng/engine/collector
 
+/obj/item/engineering_voucher/smcore
+	name = "Supermatter Core voucher"
+	desc = "A voucher redeemable, at any NT cargo department, for shipment of a Supermatter core"
+	icon_state = "engineering_voucher"
+	redeemable_for = new /datum/supply_pack/eng/smbig
+
+	/obj/item/engineering_voucher/fusion_core
+	name = "Fusion Core voucher"
+	desc = "A voucher redeemable, at any NT cargo department, for shipment of a fusion core"
+	icon_state = "engineering_voucher"
+	redeemable_for = new /datum/supply_pack/eng/fusion_core
+
+/obj/item/engineering_voucher/fusion_fuel_injector
+	name = "Fuel Injector voucher"
+	desc = "A voucher redeemable, at any NT cargo department, for shipment of a fusion fuel injector"
+	icon_state = "engineering_voucher"
+	redeemable_for = new /datum/supply_pack/eng/fusion_fuel_injector
+
+/obj/item/engineering_voucher/gyrotrons
+	name = "Gyrotron voucher"
+	desc = "A voucher redeemable, at any NT cargo department, for shipment of Gyrotrons"
+	icon_state = "engineering_voucher"
+	redeemable_for = new /datum/supply_pack/eng/gyrotron
+
+/obj/item/engineering_voucher/fuel_compressor
+	name = "Fuel compressor voucher"
+	desc = "A voucher redeemable, at any NT cargo department, for shipment of a Fuel rod compressor"
+	icon_state = "engineering_voucher"
+	redeemable_for = new /datum/supply_pack/eng/fusion_fuel_compressor
