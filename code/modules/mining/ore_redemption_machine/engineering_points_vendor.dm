@@ -54,7 +54,11 @@
         new /datum/data/mining_equipment("Stock Parts - Advanced Scanning Module",  /obj/item/stock_parts/scanning_module/adv,  200),
         new /datum/data/mining_equipment("Stock Parts - Nano-Manipulator",          /obj/item/stock_parts/manipulator/nano,     200),
         new /datum/data/mining_equipment("Stock Parts - High-Power Micro-Laser",    /obj/item/stock_parts/micro_laser/high,     200),
-        new /datum/data/mining_equipment("Stock Parts - Advanced Matter Bin",       /obj/item/stock_parts/matter_bin/adv,       200)
+        new /datum/data/mining_equipment("Stock Parts - Advanced Matter Bin",       /obj/item/stock_parts/matter_bin/adv,       200),
+
+		//Special Resources which the vendor is the primary source off:
+		new /datum/data/mining_equipment("Special Parts - Vimur Tank", /obj/item/tank/coolant, 100)
+			
     )
 
 /obj/machinery/mineral/equipment_vendor/interact(mob/user)
@@ -119,3 +123,48 @@
 			flick(icon_deny, src)
 	updateUsrDialog()
 
+/obj/item/tank/coolant
+	name = "Vimur tank"
+	desc = "Contains Vimur. A gas with very high thermal capacity. Probably not so smart to breath."
+	icon = 'icons/obj/tank_vr.dmi'
+	icon_state = "coolant"
+	gauge_icon = null
+	slot_flags = null	//they have no straps!
+
+/obj/item/tank/coolant/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/vimur, (10*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C))
+
+/obj/item/engineering_voucher
+	name = "equipment voucher"
+	desc = "An used voucher that could be used to be redeemed for something at the cargo console"
+	icon = 'icons/obj/vouchers.dmi'
+	icon_state = "engineering_voucher_used"
+	w_class = ITEMSIZE_SMALL
+	var/datum/supply_pack/redeemable_for = null
+
+/obj/item/engineering_voucher/proc/redeem(var/mob/user)
+	if(!redeemable_for)
+		to_chat(user, SPAN_WARNING("[src] has already been used"))
+		return
+	var/datum/supply_order/order = new /datum/supply_order
+
+
+/obj/item/engineering_voucher/teg
+	name = "Thermo-Electric Generator voucher"
+	desc = "A voucher redeemable at any NT cargo department to shipment of a Thermo-Electric Generator"
+	icon_state = "engineering_voucher_used"
+	redeemable_for = new /datum/supply_pack/eng/teg
+
+/*/datum/supply_order
+	var/ordernum							// Unfabricatable index
+	var/index								// Fabricatable index
+	var/datum/supply_pack/object = null
+	var/cost								// Cost of the supply pack (Fabricatable) (Changes not reflected when purchasing supply packs, this is cosmetic only)
+	var/name								// Name of the supply pack datum (Fabricatable)
+	var/ordered_by = null					// Who requested the order
+	var/comment = null						// What reason was given for the order
+	var/approved_by = null					// Who approved the order
+	var/ordered_at							// Date and time the order was requested at
+	var/approved_at							// Date and time the order was approved at
+	var/status								// [Requested, Accepted, Denied, Shipped]*/
