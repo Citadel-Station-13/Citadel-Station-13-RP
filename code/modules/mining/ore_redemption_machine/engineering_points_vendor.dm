@@ -201,7 +201,7 @@
 	icon_state = "engineering_voucher"
 	redeemable_for = new /datum/supply_pack/eng/smbig
 
-	/obj/item/engineering_voucher/fusion_core
+/obj/item/engineering_voucher/fusion_core
 	name = "Fusion Core voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for shipment of a fusion core"
 	icon_state = "engineering_voucher"
