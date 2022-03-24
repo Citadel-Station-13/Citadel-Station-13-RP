@@ -37,7 +37,7 @@
 			to_chat(user, "<span class='info'>There's no survey points left on [src].</span>")
 
 		if(engineering_points)
-			C.engineering_points += engineering_points
+			C.engineer_points += engineering_points
 			to_chat(user, "<span class='info'>You transfer [engineering_points] engineering points to [C].</span>")
 			engineering_points = 0
 		else
