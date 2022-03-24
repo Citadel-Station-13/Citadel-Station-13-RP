@@ -57,8 +57,9 @@
         new /datum/data/mining_equipment("Stock Parts - Advanced Matter Bin",       /obj/item/stock_parts/matter_bin/adv,       200),
 
 		//Special Resources which the vendor is the primary source off:
-		new /datum/data/mining_equipment("Special Parts - Vimur Tank", /obj/item/tank/coolant, 100)
-			
+		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 			/obj/item/tank/coolant, 100),
+		new /datum/data/mining_equipment("Special Parts - TEG Voucher", 		/obj/item/engineering_voucher/teg, 100),
+		new /datum/data/mining_equipment("Special Parts - Collector Voucher", 	/obj/item/engineering_voucher/collectors, 100)
     )
 
 /obj/machinery/mineral/equipment_vendor/interact(mob/user)
@@ -148,23 +149,43 @@
 		to_chat(user, SPAN_WARNING("[src] has already been used"))
 		return
 	var/datum/supply_order/order = new /datum/supply_order
+	
+	var/idname = "*None Provided*"
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		idname = H.get_authentification_name()
+	else if(issilicon(user))
+		idname = user.real_name
 
+	order.ordernum = ++SSsupply.ordernum		// Ordernum is used to track the order between the playerside list of orders and the adminside list
+	order.index = order.ordernum	// Index can be fabricated, or falsified. Ordernum is a permanent marker used to track the order
+	order.object = redeemable_for
+	order.name = redeemable_for.name
+	order.cost = 0
+	order.ordered_by = idname
+	order.comment = "Voucher redemption"
+	order.ordered_at = stationdate2text() + " - " + stationtime2text()
+	order.status = SUP_ORDER_APPROVED		//auto approved
+	order.approved_by = "[src]"
+	order.approved_at = stationdate2text() + " - " + stationtime2text()
+
+	SSsupply.order_history += order//tell supply the order exists.
+	SSsupply.adm_order_history += order
+	
+	name = "used " + name
+	redeemable_for = null
+	icon_state = "engineering_voucher_used"
+	desc = "An used voucher that could be used to be redeemed for something at the cargo console"
 
 /obj/item/engineering_voucher/teg
 	name = "Thermo-Electric Generator voucher"
 	desc = "A voucher redeemable at any NT cargo department to shipment of a Thermo-Electric Generator"
-	icon_state = "engineering_voucher_used"
+	icon_state = "engineering_voucher"
 	redeemable_for = new /datum/supply_pack/eng/teg
 
-/*/datum/supply_order
-	var/ordernum							// Unfabricatable index
-	var/index								// Fabricatable index
-	var/datum/supply_pack/object = null
-	var/cost								// Cost of the supply pack (Fabricatable) (Changes not reflected when purchasing supply packs, this is cosmetic only)
-	var/name								// Name of the supply pack datum (Fabricatable)
-	var/ordered_by = null					// Who requested the order
-	var/comment = null						// What reason was given for the order
-	var/approved_by = null					// Who approved the order
-	var/ordered_at							// Date and time the order was requested at
-	var/approved_at							// Date and time the order was approved at
-	var/status								// [Requested, Accepted, Denied, Shipped]*/
+/obj/item/engineering_voucher/collectors
+	name = "Radiation Collector voucher"
+	desc = "A voucher redeemable at any NT cargo department to shipment of crate of radiation collectors"
+	icon_state = "engineering_voucher"
+	redeemable_for = new /datum/supply_pack/eng/engine/collector
+
