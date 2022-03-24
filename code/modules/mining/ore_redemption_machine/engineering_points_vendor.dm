@@ -57,7 +57,7 @@
         new /datum/data/mining_equipment("Stock Parts - Advanced Matter Bin",       /obj/item/stock_parts/matter_bin/adv,       200),
 
 		//Special Resources which the vendor is the primary source off:
-		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 			/obj/item/tank/coolant, 100),
+		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 			/obj/item/tank/vimur, 100),
 		new /datum/data/mining_equipment("Special Parts - TEG Voucher", 		/obj/item/engineering_voucher/teg, 100),
 		new /datum/data/mining_equipment("Special Parts - Collector Voucher", 	/obj/item/engineering_voucher/collectors, 100)
     )
@@ -124,17 +124,18 @@
 			flick(icon_deny, src)
 	updateUsrDialog()
 
-/obj/item/tank/coolant
+/obj/item/tank/vimur
 	name = "Vimur tank"
 	desc = "Contains Vimur. A gas with very high thermal capacity. Probably not so smart to breath."
 	icon = 'icons/obj/tank_vr.dmi'
 	icon_state = "coolant"
 	gauge_icon = null
 	slot_flags = null	//they have no straps!
+	volume = 500//Standard tanks have 70, we up that alot, a cannister has 1000, but we want this to be worth our points.
 
 /obj/item/tank/coolant/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/vimur, (10*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C))
+	src.air_contents.adjust_gas(/datum/gas/vimur, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/engineering_voucher
 	name = "equipment voucher"
