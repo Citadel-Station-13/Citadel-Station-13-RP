@@ -417,3 +417,6 @@ datum/gas/vimur
 	name = "Vimur"
 	specific_heat = 500	// J/(mol*K) //250% the heat capacity of phoron
 	molar_mass = 0.054 // Standard Mass of xenon
+
+	gas_overlay = "vimur"
+	moles_visible = 0.1
