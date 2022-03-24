@@ -1,5 +1,7 @@
 GLOBAL_VAR_INIT(timezoneOffset, 0) // The difference betwen midnight (of the host computer) and 0 world.ticks.
 
+GLOBAL_VAR_INIT(gametime_offset, 432000) // 12:00 in seconds
+
 GLOBAL_VAR_INIT(TAB, "&nbsp;&nbsp;&nbsp;&nbsp;")
 GLOBAL_VAR_INIT(Debug2, FALSE)
 

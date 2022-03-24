@@ -268,6 +268,7 @@
 
 	var/list/gamemode_cache = list()
 
+
 /datum/configuration_legacy/New()
 	var/list/L = subtypesof(/datum/game_mode)
 	for (var/T in L)
