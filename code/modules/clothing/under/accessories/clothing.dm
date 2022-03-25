@@ -128,6 +128,33 @@
 	icon_state = "cargoponcho"
 	item_state = "cargoponcho"
 
+//Rough Cloaks
+/obj/item/clothing/accessory/poncho/rough_cloak
+	name = "rough half cloak"
+	desc = "The latest fashion innovations by the Nanotrasen Uniform & Fashion Department have provided the brilliant invention of slicing a regular cloak in half! All the ponce, half the cost!"
+	icon_state = "roughcloak"
+	item_state = "roughcloak"
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	action_button_name = "Adjust Cloak"
+
+/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]_open"
+		flags_inv = HIDETIE|HIDEHOLSTER
+		to_chat(user, "You flip the cloak over your shoulder.")
+	else
+		src.icon_state = initial(icon_state)
+		flags_inv = HIDEHOLSTER
+		to_chat(user, "You pull the cloak over your shoulder.")
+	update_icon()
+	update_clothing_icon()	//so our mob-overlays update
+
+/obj/item/clothing/accessory/poncho/rough_cloak/tan
+	icon_state = "roughcloak_tan"
+	item_state = "roughcloak_tan"
+
 /*
  * Cloak
  */
