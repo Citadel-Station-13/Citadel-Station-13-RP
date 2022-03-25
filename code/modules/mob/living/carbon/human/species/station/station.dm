@@ -47,7 +47,7 @@
 	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
-	wikilink="https://wiki.vore-station.net/Human"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Humanity"
 
 /datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
 	return SPECIES_HUMAN
@@ -164,7 +164,7 @@
 
 	color_mult = 1
 	gluttonous = 0
-	wikilink="https://wiki.vore-station.net/Unathi"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Unathi"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
@@ -260,7 +260,7 @@
 		)
 
 	color_mult = 1
-	wikilink="https://wiki.vore-station.net/Tajaran"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Tajarans"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
@@ -345,7 +345,7 @@
 		)
 
 	color_mult = 1
-	wikilink="https://wiki.vore-station.net/Skrell"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Skrell"
 
 /datum/species/skrell/can_breathe_water()
 	return TRUE
@@ -498,7 +498,7 @@
 	lifespan, but due to their lust for violence, only a handful have ever survived beyond the age of 80, such as the infamous and \
 	legendary General Rain Silves who is claimed to have lived to 5000."
 
-	wikilink="https://wiki.vore-station.net/Backstory#Sergal"
+	wikilink=""
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/sergal)
 
@@ -547,6 +547,7 @@
 	//brute_mod = 1.15
 	//burn_mod =  1.15
 	//gluttonous = 1
+	water_movement = -4
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SKRELLIAN
@@ -568,7 +569,7 @@
 	surviving in open air for long periods of time. However, Akula even today still require a high humidity environment to avoid drying out \
 	after a few days, which would make life on an arid world like Virgo-Prime nearly impossible if it were not for Skrellean technology to aid them."
 
-	wikilink="https://wiki.vore-station.net/Backstory#Akula"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Akula"
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/akula)
 
@@ -617,7 +618,7 @@
 	over and over again. Consequently, they struggle to make copies of same things. Both genders have a voice that echoes a lot. Their natural \
 	tone oscillates between tenor and soprano. They are excessively noisy when they quarrel in their native language."
 
-	wikilink="https://wiki.vore-station.net/Backstory#Nevrean"
+	wikilink=""
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nevrean)
 
@@ -658,7 +659,7 @@
 	mountainous areas, they have a differing societal structure than the Flatland Zorren having a more feudal social structure, like the Flatland Zorren, \
 	the Highland Zorren have also only recently been hired by the Trans-Stellar Corporations, but thanks to the different social structure they seem to \
 	have adjusted better to their new lives. Though similar fox-like beings have been seen they are different than the Zorren."
-	wikilink="https://wiki.vore-station.net/Zorren"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Zorren"
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/zorren,
 						/datum/category_item/catalogue/fauna/highzorren)
@@ -705,7 +706,7 @@
 	mountainous areas, they have a differing societal structure than the Flatland Zorren having a more feudal social structure, like the Flatland Zorren, \
 	the Highland Zorren have also only recently been hired by the Trans-Stellar Corporations, but thanks to the different social structure they \
 	seem to have adjusted better to their new lives. Though similar fox-like beings have been seen they are different than the Zorren."
-	wikilink="https://wiki.vore-station.net/Zorren"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Zorren"
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/zorren,
 						/datum/category_item/catalogue/fauna/flatzorren)
@@ -757,7 +758,7 @@
 	to the degree it can cause conflict with more rigorous and strict authorities. They speak a guttural language known as 'Canilunzt' \
     which has a heavy emphasis on utilizing tail positioning and ear twitches to communicate intent."
 
-	wikilink="https://wiki.vore-station.net/Backstory#Vulpkanin"
+	wikilink=""
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vulpkanin)
 
@@ -800,7 +801,7 @@
 	who are known for having massive winged arms and talons as feet. They've been clocked at speeds of over 35 miler per hour chasing the planet's many fish-like fauna.\
 	The Rapalan's home-world 'Verita' is a strangely habitable gas giant, while no physical earth exists, there are fertile floating islands orbiting around the planet from past asteroid activity."
 
-	wikilink="https://wiki.vore-station.net/Backstory#Rapala"
+	wikilink=""
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/rapala)
 
@@ -825,7 +826,7 @@
 	but next to no verifiable evidence to their existence. However, they have recently been more verifiably \
 	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have \
 	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something more fitting for black-eyes	//CIT ADDENDUM: since we're not really on the tether anymore we'll need a bullshit reason as to why we have shadekin on a ship
-	wikilink = "https://wiki.vore-station.net/Shadekin"
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 
 	language = LANGUAGE_SHADEKIN
 	name_language = LANGUAGE_SHADEKIN
