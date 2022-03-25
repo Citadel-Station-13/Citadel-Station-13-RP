@@ -39,7 +39,7 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
     . += "Current Power draw reads [power_drawn]."
     . += "There are [points_stored] points up for claims."
     . += "The circuit looks [temperature_damage ? "damaged" : "intact"]."
-    . += "The miner is running at [efficency]% Efficency."
+    . += "The miner is running at [efficency*100]% Efficency."
     . += "[name] currently needs [GLOB.power_per_point] Joules per point."
     . += "A total of [GLOB.points_mined + 1100000] points has been mined."
     
@@ -87,9 +87,7 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
     if(W.is_screwdriver())
         repair(user, 10, 1)//Screwdriver doesnt really repair anything.
     if(W.is_multitool())
-        if(temperature_damage)
-            to_chat(user, SPAN_WARNING("[src]'s circuit has taken thermal Damage, Efficency is reduced by [temperature_damage]%"))
-            repair(user, 30, 10)
+        repair(user, 30, 10)
     return ..()
 
 /obj/machinery/power/crypto_miner/proc/switch_mode(mob/user)
