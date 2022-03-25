@@ -148,7 +148,6 @@
 		src.icon_state = initial(icon_state)
 		flags_inv = HIDEHOLSTER
 		to_chat(user, "You pull the cloak over your shoulder.")
-	update_icon()
 	update_clothing_icon()	//so our mob-overlays update
 
 /obj/item/clothing/accessory/poncho/rough_cloak/tan
