@@ -39,7 +39,7 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
     . += "The circuit looks [temperature_damage ? "damaged" : "intact"]."
     . += "The miner is running at [efficency*100]% Efficency."
     . += "[name] currently needs [GLOB.power_per_point] Joules per point."
-    . += "A total of [GLOB.points_mined + 1100000] points has been mined."
+    . += "A total of [GLOB.points_mined] points has been mined."
     
 
 /obj/machinery/power/crypto_miner/process(delta_time)
