@@ -89,7 +89,7 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
 /obj/machinery/power/crypto_miner/AltClick(mob/user)
     if(Adjacent(user))
         mode = !mode
-        to_chat(user, SPAN_NOTICE("You turn [src] [mode ? on : off]."))
+        to_chat(user, SPAN_NOTICE("You turn [src] [mode ? "on" : "off"]."))
 
 /obj/machinery/power/crypto_miner/proc/heat_environ(var/power_used)
     var/datum/gas_mixture/env = loc.return_air()
