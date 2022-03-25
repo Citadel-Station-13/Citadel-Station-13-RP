@@ -208,11 +208,11 @@ datum/gear/suit/duster
 
 /datum/gear/suit/halfcloak
 	name = "Rough Half Cloak (Tan)"
-	path = /obj/item/clothing/accessory/poncho/rough/tan
+	path = /obj/item/clothing/suit/storage/toggle/rough_cloak/tan
 
 /datum/gear/suit/halfcloak/colorable
 	name = "Rough Half Cloak (Colorable)"
-	path = /obj/item/clothing/accessory/poncho/rough
+	path = /obj/item/clothing/suit/storage/toggle/rough_cloak
 
 /datum/gear/suit/halfcloak/colorable/New()
 	..()
