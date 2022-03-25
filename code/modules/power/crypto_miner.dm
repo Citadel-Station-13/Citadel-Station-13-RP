@@ -34,26 +34,34 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
     var/temperature_damage = 0//If not sufficently cooled the circuits take damage and calculations get weaker, at 100 we condsider the circuit fried and it needs repairs/replacement
 
 
-/obj/machinery/power/crypto_miner/Initialize()
-    //START_PROCESSING(SSobj, src)
+/obj/machinery/power/crypto_miner/examine(mob/user)
     . = ..()
+    . += "Current Power draw reads [power_drawn]."
+    . += "There are [points_stored] points up for claims."
+    . += "The circuit looks [temperature_damage ? "damaged" : "intact"]."
+    . += "The miner is running at [efficency]% Efficency."
+    . += "[name] currently needs [GLOB.power_per_point] Joules per point."
+    . += "A total of [GLOB.points_mined + 1100000] points has been mined."
+    
 
 /obj/machinery/power/crypto_miner/process(delta_time)
-    if(!powernet || !mode)
+    if(!powernet)
         return
     switch (mode)
+        if(0)
+            power_drawn = 0
         if(1)
             power_drawn += draw_power(power_level)
         if(2)
             power_drawn += draw_power(surplus())
         if(3)
             power_drawn += draw_power(avail())
-    if(!power_drawn || prob(5))//5% to just not make points
-        return
     
     heat_environ(power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
     process_thermal_properties()//calculates damage and efficency
-
+    
+    if(!power_drawn || prob(5))//5% to just not make points
+        return
 
     if (power_drawn > GLOB.power_per_point)
         var/newpoints = round((power_drawn / GLOB.power_per_point) * efficency)
@@ -103,18 +111,13 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
     if(Adjacent(user))
         switch_mode(user)
 
-/obj/machinery/power/CtrlClick(mob/user)
-    START_PROCESSING(SSobj, src)
-    to_chat(user, SPAN_NOTICE("You try to start the [name]."))
-
 /obj/machinery/power/crypto_miner/proc/heat_environ(var/power_used)
     var/datum/gas_mixture/env = loc.return_air()
     if(!env)
+        if(temperature_damage < 100)
+            temperature_damage++
         return
-    var/datum/gas_mixture/removed = env.remove_ratio(0.99)
-    if(!removed)
-        return
-    removed.add_thermal_energy(power_used)
+    env.add_thermal_energy(power_used)
 
 /obj/machinery/power/crypto_miner/proc/process_thermal_properties()
     var/datum/gas_mixture/env = loc.return_air()
