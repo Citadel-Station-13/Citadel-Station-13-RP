@@ -58,7 +58,7 @@
         new /datum/data/mining_equipment("Stock Parts - Advanced Matter Bin",       /obj/item/stock_parts/matter_bin/adv,       200),
 
 		//Special Resources which the vendor is the primary source off:
-		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 				/obj/item/tank/vimur, 100),
+		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 				/obj/item/tank/vimur, 50),
 		new /datum/data/mining_equipment("Special Parts - TEG Voucher", 			/obj/item/engineering_voucher/teg, 100),
 		new /datum/data/mining_equipment("Special Parts - SM Core Voucher", 		/obj/item/engineering_voucher/smcore, 100),
 		new /datum/data/mining_equipment("Special Parts - Fusion Core Voucher",		/obj/item/engineering_voucher/fusion_core, 100),
