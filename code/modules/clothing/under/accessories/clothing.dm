@@ -142,10 +142,12 @@
 /obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_open"
+		src.item_state = "[item_state]_open"
 		flags_inv = HIDETIE|HIDEHOLSTER
 		to_chat(user, "You flip the cloak over your shoulder.")
 	else
 		src.icon_state = initial(icon_state)
+		src.item_state = initial(item_state)
 		flags_inv = HIDEHOLSTER
 		to_chat(user, "You pull the cloak over your shoulder.")
 	update_clothing_icon()	//so our mob-overlays update
