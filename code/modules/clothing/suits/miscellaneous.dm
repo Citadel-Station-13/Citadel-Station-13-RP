@@ -1214,7 +1214,6 @@ obj/item/clothing/suit/kamishimo
 	name = "rough half cloak"
 	desc = "The latest fashion innovations by the Nanotrasen Uniform & Fashion Department have provided the brilliant invention of slicing a regular cloak in half! All the ponce, half the cost!"
 	icon_state = "roughcloak"
-	item_state = "roughcloak"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
 	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
@@ -1228,7 +1227,7 @@ obj/item/clothing/suit/kamishimo
 		to_chat(usr, "You pull the cloak over your shoulder.")
 	else if(open == 0)
 		open = 1
-		icon_state = "[icon_state]_flip"
+		icon_state = "[icon_state]_open"
 		flags_inv = HIDEHOLSTER
 		to_chat(usr, "You flip the cloak over your shoulder.")
 	else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
@@ -1238,4 +1237,3 @@ obj/item/clothing/suit/kamishimo
 
 /obj/item/clothing/suit/storage/toggle/rough_cloak/tan
 	icon_state = "roughcloak_tan"
-	item_state = "roughcloak_tan"
