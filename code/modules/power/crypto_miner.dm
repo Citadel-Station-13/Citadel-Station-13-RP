@@ -20,9 +20,7 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
     density = 1.0
     var/mode = 0
     //Modes 0 = Off
-    //1 = 100 kW
-    //2 = Surplus
-    //3 = ALL THE POWER!
+    //1 = On
     var/power_level = 100 KILOWATTS
     var/points_stored = 0
     var/power_drawn = 0
@@ -45,17 +43,10 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
     
 
 /obj/machinery/power/crypto_miner/process(delta_time)
-    if(!powernet)
+    if(!powernet || !mode)
         return
-    switch (mode)
-        if(0)
-            power_drawn = 0
-        if(1)
-            power_drawn += draw_power(power_level)
-        if(2)
-            power_drawn += draw_power(surplus())
-        if(3)
-            power_drawn += draw_power(avail())
+
+    power_drawn += draw_power(power_level)
     
     heat_environ(power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
     process_thermal_properties()//calculates damage and efficency
@@ -84,30 +75,22 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
         return
     if(W.is_wirecutter())
         repair(user, 20, 5)
+        return
     if(W.is_screwdriver())
         repair(user, 10, 1)//Screwdriver doesnt really repair anything.
+        return
     if(W.is_multitool())
-        repair(user, 30, 10)
+        var/new_power_level = input("What Power would you like to draw from the network?", "Power level Controls", power_level) as num|null
+        if(new_power_level > 0)
+            power_level = new_power_level
+        return
     return ..()
 
-/obj/machinery/power/crypto_miner/proc/switch_mode(mob/user)
-    switch(mode)
-        if(3)
-            mode = 0
-            to_chat(user, SPAN_NOTICE("You turn the [name] off."))
-        if(2)
-            mode = 3
-            to_chat(user, SPAN_NOTICE("You set the [name] to draw as much power as possible."))
-        if(1)
-            mode = 2
-            to_chat(user, SPAN_NOTICE("You set the [name] to draw as much power as avaiable."))
-        if(0)
-            mode = 1
-            to_chat(user, SPAN_NOTICE("You set the [name] to draw [power_level] Watts."))
 
 /obj/machinery/power/crypto_miner/AltClick(mob/user)
     if(Adjacent(user))
-        switch_mode(user)
+        mode = !mode
+        to_chat(user, SPAN_NOTICE("You turn [src] [mode ? on : off]."))
 
 /obj/machinery/power/crypto_miner/proc/heat_environ(var/power_used)
     var/datum/gas_mixture/env = loc.return_air()
