@@ -56,7 +56,6 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
 
     if (power_drawn > GLOB.power_per_point)
         var/newpoints = round((power_drawn / GLOB.power_per_point) * efficency)
-        points_stored += newpoints
         power_drawn -= newpoints*(GLOB.power_per_point)
         points_stored += newpoints
         GLOB.points_mined += newpoints
@@ -118,7 +117,8 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
         temperature_damage++
 
     if(temperature_damage)
-        efficency = clamp(efficency - (temperature_damage/100),0,1)//One thermal damage means a reduction of 1% on the total efficency
+        efficency = efficency - (temperature_damage/100)//One thermal damage means a reduction of 1% on the total efficency
+    efficency = clamp(efficency, 0,1)
 
 /obj/machinery/power/crypto_miner/proc/repair(var/mob/user,var/delay,var/damage_repaired)
     if(temperature_damage)
