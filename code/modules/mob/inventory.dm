@@ -153,6 +153,12 @@ var/list/slot_equipment_priority = list( \
 /mob/proc/put_in_inactive_hand(var/obj/item/W)
 	return 0 // As above.
 
+//Puts the item on the face mask slot
+/mob/proc/put_in_mask(var/obj/item/W)
+	if(lying || !istype(W))
+		return 0
+	return 1
+
 //Puts the item our active hand if possible. Failing that it tries other hands. Returns TRUE on success.
 //If both fail it drops it on the floor and returns FALSE.
 //This is probably the main one you need to know :)

@@ -397,6 +397,16 @@ This saves us from having to call add_fingerprint() any time something is put in
 //Puts the item into our inactive hand if possible. returns 1 on success.
 /mob/living/carbon/human/put_in_inactive_hand(var/obj/item/W)
 	return (hand ? put_in_r_hand(W) : put_in_l_hand(W))
+	
+/mob/living/carbon/human/put_in_mask(var/obj/item/W)
+	if(!..() || mask)
+		return 0
+	W.forceMove(src)
+	mask = W
+	W.equipped(src,slot_wear_mask)
+	W.add_fingerprint(src)
+	update_inv_wear_mask()
+	return 1
 
 /mob/living/carbon/human/put_in_l_hand(var/obj/item/W)
 	if(!..() || l_hand)
