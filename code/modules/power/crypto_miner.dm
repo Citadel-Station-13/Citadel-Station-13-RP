@@ -46,12 +46,15 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
     if(!powernet || !mode)
         return
 
+    if(temperature_damage >= 100)//Once the circuit is fried, turn off
+        return
+
     power_drawn += draw_power(power_level)
     
     heat_environ(power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
     process_thermal_properties()//calculates damage and efficency
     
-    if(!power_drawn || prob(5))//5% to just not make points
+    if(!power_drawn)
         return
 
     if (power_drawn > GLOB.power_per_point)
