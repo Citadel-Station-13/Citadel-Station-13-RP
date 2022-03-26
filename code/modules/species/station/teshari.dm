@@ -5,6 +5,7 @@
 	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \
 	hunting skills that emphasized taking out their prey without themselves getting hit."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/teshari)
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Teshari"
 
 	min_age = 18
 	max_age = 75
