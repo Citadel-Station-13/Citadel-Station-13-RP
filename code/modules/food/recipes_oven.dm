@@ -491,7 +491,7 @@
 
 /datum/recipe/honeycake
 	appliance = OVEN
-	reagents = list("milk" = 5, "flour" = 15, "egg" = 5, "honey" = 5)
+	reagents = list("milk" = 5, "flour" = 10, "egg" = 5, "honey" = 5)
 	result = /obj/item/reagent_containers/food/snacks/honeycake
 
 /datum/recipe/pancakes

@@ -1539,5 +1539,5 @@ I said no!
 /datum/recipe/frenchonionsoup
 	fruit = list("onion" = 1)
 	items = list(/obj/item/reagent_containers/food/snacks/cheesewedge)
-	reagents = list("sodiumchloride" = 1, "sugar" = 1)
+	reagents = list("water" = 10, "sodiumchloride" = 1, "sugar" = 1)
 	result = /obj/item/reagent_containers/food/snacks/frenchonionsoup
