@@ -1944,6 +1944,7 @@
 #include "code\modules\culture_descriptor\culture\cultures_hidden_xenomorph.dm"
 #include "code\modules\culture_descriptor\culture\cultures_ipc.dm"
 #include "code\modules\culture_descriptor\culture\cultures_skrell.dm"
+#include "code\modules\culture_descriptor\culture\cultures_teshari.dm"
 #include "code\modules\culture_descriptor\culture\cultures_unathi.dm"
 #include "code\modules\culture_descriptor\culture\cultures_vox.dm"
 #include "code\modules\culture_descriptor\faction\_faction.dm"

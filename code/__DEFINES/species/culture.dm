@@ -61,7 +61,7 @@
 #define CULTURE_SKRELL_TALUM    "Talum-Katish"
 #define CULTURE_SKRELL_RASKINTA "Raskinta-Katish"
 
-#define HOME_SYSTEM_QERRBALAK  "Qerrbalak"
+#define HOME_SYSTEM_QERRBALAK   "Qerrbalak"
 
 // Adherent cultures.
 #define CULTURE_ADHERENT             "The Vigil"
@@ -127,3 +127,6 @@
 #define CULTURE_XENOMORPH_S    "Xenomorph Sentinel"
 #define CULTURE_XENOMORPH_Q    "Xenomorph Queen"
 #define FACTION_XENOMORPH      "Xenomorph Hive"
+
+// Teshari cultures
+#define CULTURE_TESHARI   "Common Pack"

@@ -158,6 +158,20 @@
 	//species_language = LANGUAGE_SCHECHI
 
 
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			CULTURE_TESHARI
+		),
+		TAG_HOMEWORLD = list(
+			HOME_SYSTEM_QERRBALAK
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
+
+
 /datum/species/teshari/equip_survival_gear(var/mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H),slot_shoes)
