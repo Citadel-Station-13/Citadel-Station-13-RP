@@ -112,7 +112,7 @@
 	if(istype(culture))
 		culture.caste_number++
 		H.real_name = culture.get_random_name(H)
-		H.setName(H.real_name)
+		H.name = H.real_name
 	..()
 
 /datum/species/xenos/handle_environment_special(var/mob/living/carbon/human/H)

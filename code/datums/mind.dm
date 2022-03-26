@@ -51,8 +51,8 @@
 
 	var/has_been_rev = 0//Tracks if this mind has been a rev or not
 
-	var//faction 			//associated faction
-	var/datum/changeling/changeling		//changeling holder
+	var/faction // Associated faction
+	var/datum/changeling/changeling // Changeling holder
 
 	var/isholy = FALSE //is this person a chaplain or admin role allowed to use bibles
 
