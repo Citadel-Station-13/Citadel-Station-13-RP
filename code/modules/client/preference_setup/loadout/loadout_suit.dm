@@ -457,3 +457,7 @@ datum/gear/suit/duster
 /datum/gear/suit/antediluvian
 	name = "Antediluvian Cloak"
 	path = /obj/item/clothing/accessory/poncho/antediluvian
+
+/datum/gear/suit/rainponcho
+	name = "Plastic Raincoat"
+	path = /obj/item/clothing/suit/storage/hooded/rainponcho

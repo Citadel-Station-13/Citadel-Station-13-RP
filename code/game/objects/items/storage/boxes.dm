@@ -668,3 +668,11 @@
 
 /obj/item/storage/secure/briefcase/trashmoney
 	starts_with = list(/obj/item/spacecash/c200 = 10)
+
+/obj/item/storage/box/rainponcho
+	name = "foil raincoat pouch"
+	icon_state = "rainponcho"
+	foldable = null
+	storage_slots = 1
+	can_hold = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
+	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)

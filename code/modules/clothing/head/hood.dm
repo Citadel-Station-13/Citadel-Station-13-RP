@@ -206,3 +206,8 @@
 	name = "raincoat hood"
 	desc = "A hood attached to a raincoat."
 	icon_state = "raincoat"
+
+/obj/item/clothing/head/hood/rainponcho
+	name = "plastic raincoat hood"
+	desc = "A hood attached to a plastic raincoat."
+	icon_state = "rainponcho"

@@ -522,3 +522,13 @@
 	hoodtype = /obj/item/clothing/head/hood/raincoat
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)
+
+/obj/item/clothing/suit/storage/hooded/rainponcho
+	name = "plastic raincoat"
+	desc = "A thin plastic poncho meant to protect you from rain. It's cheap, and it won't keep you dry for long."
+	icon_state = "rainponcho"
+	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	hoodtype = /obj/item/clothing/head/hood/rainponcho
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)
