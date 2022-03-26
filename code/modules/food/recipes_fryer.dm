@@ -169,3 +169,13 @@
 		/obj/item/reagent_containers/food/snacks/meat
 	)
 	result = /obj/item/storage/box/wings //This is kinda like the donut box.
+
+/datum/recipe/schnitzel
+	appliance = FRYER
+	reagents = list("sodiumchloride" = 1, "blackpepper" = 1, "batter" = 10)
+	fruit = list("onion" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/reagent_containers/food/snacks/meat,
+	)
+	result = /obj/item/reagent_containers/food/snacks/schnitzel

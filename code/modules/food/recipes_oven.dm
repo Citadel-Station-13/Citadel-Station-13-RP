@@ -299,13 +299,19 @@
 				return 0
 		return . */
 
+/datum/recipe/pretzel
+	appliance = OVEN
+	items = list(/obj/item/reagent_containers/food/snacks/dough)
+	reagents = list("water" = 5, "sodiumchloride" = 2)
+	result = /obj/item/reagent_containers/food/snacks/pretzel
+	result_quantity = 2
+
 /datum/recipe/poppypretzel
 	appliance = OVEN
 	fruit = list("poppy" = 1)
 	items = list(/obj/item/reagent_containers/food/snacks/dough)
 	result = /obj/item/reagent_containers/food/snacks/poppypretzel
 	result_quantity = 2
-
 
 /datum/recipe/cracker
 	appliance = OVEN
@@ -482,6 +488,11 @@
 	appliance = OVEN
 	items = list(/obj/item/organ/internal/brain)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/braincake
+
+/datum/recipe/honeycake
+	appliance = OVEN
+	reagents = list("milk" = 5, "flour" = 15, "egg" = 5, "honey" = 5)
+	result = /obj/item/reagent_containers/food/snacks/honeycake
 
 /datum/recipe/pancakes
 	appliance = OVEN

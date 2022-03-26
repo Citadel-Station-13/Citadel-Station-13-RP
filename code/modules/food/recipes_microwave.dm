@@ -1481,3 +1481,63 @@ I said no!
 		/obj/item/holder/fuhrer
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/reich
+
+/datum/recipe/fruitsalad
+	fruit = list("apple" = 1, "berries" = 1, "banana" = 1, "cherry" = 1)
+	reagents = list("milk" = 10, "cream" = 5)
+	result = /obj/item/reagent_containers/food/snacks/fruitsalad
+
+/datum/recipe/mushroompasta
+	fruit = list("mushroom" = 1)
+	items = list(/obj/item/reagent_containers/food/snacks/spagetti)
+	reagents = list("water" = 5)
+	result = /obj/item/reagent_containers/food/snacks/mushroompasta
+
+/datum/recipe/carbonara
+	items = list(
+		/obj/item/reagent_containers/food/snacks/spagetti,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/meat
+	)
+	reagents = list("water" = 5, "sodiumchloride" = 1, "blackpepper" = 1)
+	result = /obj/item/reagent_containers/food/snacks/carbonara
+
+/datum/recipe/bloodsausage
+	items = list(
+		/obj/item/reagent_containers/food/snacks/sausage
+	)
+	reagents = list("blood" = 15)
+	result = /obj/item/reagent_containers/food/snacks/bloodsausage
+
+/datum/recipe/weisswurst
+	fruit = list("onion" = 1, "lemon" = 1)
+	items = list(/obj/item/reagent_containers/food/snacks/sausage)
+	reagents = list("water" = 15, "sodiumchloride" = 1)
+	result = /obj/item/reagent_containers/food/snacks/weisswurst
+
+/datum/recipe/sauerkraut
+	fruit = list("cabbage" = 1)
+	reagents = list("water" = 5, "sodiumchloride" = 1)
+	result = /obj/item/reagent_containers/food/snacks/sauerkraut
+
+/datum/recipe/kimchi
+	fruit = list("cabbage" = 1, "whitebeet" = 1)
+	reagents = list("water" = 5, "sodiumchloride" = 2, "blackpepper" = 2, "sugar" = 2)
+	result = /obj/item/reagent_containers/food/snacks/kimchi
+
+/datum/recipe/chickensatay
+	fruit = list("peanut" = 1, "lime" = 1)
+	items = list(
+		/obj/item/stack/rods,
+		/obj/item/reagent_containers/food/snacks/meat/chicken,
+		/obj/item/reagent_containers/food/snacks/yellowcurry
+	)
+	reagents = list("water" = 5, "milk" = 5, "soysauce" = 5, "sodiumchloride" = 1, "sugar" = 1)
+	result = /obj/item/reagent_containers/food/snacks/chickensatay
+
+/datum/recipe/frenchonionsoup
+	fruit = list("onion" = 1)
+	items = list(/obj/item/reagent_containers/food/snacks/cheesewedge)
+	reagents = list("sodiumchloride" = 1, "sugar" = 1)
+	result = /obj/item/reagent_containers/food/snacks/frenchonionsoup
