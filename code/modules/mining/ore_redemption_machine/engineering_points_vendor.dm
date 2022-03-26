@@ -25,7 +25,7 @@
 		new /datum/data/mining_equipment("50 Point Transfer Card",		    /obj/item/card/mining_point_card/engineering,				    50),
 		new /datum/data/mining_equipment("Umbrella",					    /obj/item/melee/umbrella/random,								20),
 		new /datum/data/mining_equipment("Space Cash",					    /obj/item/spacecash/c100,									    100),
-		new /datum/data/mining_equipment("Hardsuit - Control Module",       /obj/item/rig/industrial,									    200),
+		new /datum/data/mining_equipment("Hardsuit - Control Module",       /obj/item/rig/industrial,									    100),
 		new /datum/data/mining_equipment("Hardsuit - Plasma Cutter",	    /obj/item/rig_module/device/plasmacutter,						100),
 		new /datum/data/mining_equipment("Hardsuit - Maneuvering Jets",	    /obj/item/rig_module/maneuvering_jets,							125),
 		new /datum/data/mining_equipment("Hardsuit - Intelligence Storage",	/obj/item/rig_module/ai_container,								250),
@@ -36,6 +36,7 @@
 		new /datum/data/mining_equipment("Nanopaste Tube",				    /obj/item/stack/nanopaste,										100),
 		//Mining vendor steals - Ends
         //Power tools like the CE gets, if kev comes crying: https://cdn.discordapp.com/attachments/296237931587305472/956517623519141908/unknown.png
+		new /datum/data/mining_equipment("Advanced Voidsuit",							/obj/item/rig/ce,									200),
         new /datum/data/mining_equipment("Power Tool - Hand Drill",                     /obj/item/tool/screwdriver/power,                   100),
         new /datum/data/mining_equipment("Power Tool - Jaws of life",                   /obj/item/tool/crowbar/power,                       100),
         new /datum/data/mining_equipment("Power Tool - Experimental Welder",            /obj/item/weldingtool/experimental,                 100),
@@ -67,6 +68,7 @@
 		new /datum/data/mining_equipment("Special Parts - Gyrotrons Voucher", 		/obj/item/engineering_voucher/gyrotrons, 100),
 		new /datum/data/mining_equipment("Special Parts - Fuel compressor Voucher",	/obj/item/engineering_voucher/fuel_compressor, 100),
 		new /datum/data/mining_equipment("Special Parts - Collector Voucher", 		/obj/item/engineering_voucher/collectors, 100)
+		//voucher: Solar crate, Vimur canister
     )
 
 /obj/machinery/mineral/equipment_vendor/engineering/interact(mob/user)
