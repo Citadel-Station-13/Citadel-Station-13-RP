@@ -1217,6 +1217,16 @@ mob/proc/yank_out_object()
 		else
 			registered_z = null
 
+GLOBAL_LIST_EMPTY_TYPED(living_players_by_zlevel, /list)
+/mob/living/update_client_z(new_z)//To see on which Zs we have living players
+	var/precall_reg_z = registered_z
+	. = ..() // will update registered_z if necessary
+	if(precall_reg_z != registered_z) // parent did work, let's do work too
+		if(precall_reg_z)
+			GLOB.living_players_by_zlevel[precall_reg_z] -= src
+		if(registered_z)
+			GLOB.living_players_by_zlevel[registered_z] += src
+
 /mob/onTransitZ(old_z, new_z)
 	..()
 	update_client_z(new_z)
