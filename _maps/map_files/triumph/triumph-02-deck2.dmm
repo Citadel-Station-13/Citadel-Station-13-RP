@@ -2591,13 +2591,13 @@
 /area/quartermaster/miningdock)
 "ho" = (
 /obj/structure/bed/padded,
-/obj/item/bedsheet/blue,
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/random/bedsheet,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "hp" = (
@@ -3019,7 +3019,7 @@
 /area/hydroponics)
 "iw" = (
 /obj/structure/bed/double/padded,
-/obj/item/bedsheet/clowndouble,
+/obj/random/bedsheet/double,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
 "ix" = (
@@ -3120,7 +3120,7 @@
 /area/maintenance/dormitory)
 "iN" = (
 /obj/structure/bed/double/padded,
-/obj/item/bedsheet/clowndouble,
+/obj/random/bedsheet/double,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "iO" = (
@@ -4898,7 +4898,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "nx" = (
-/obj/item/bedsheet/blue,
 /obj/structure/bed/padded,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
@@ -4908,6 +4907,7 @@
 	pixel_x = -2;
 	pixel_y = -28
 	},
+/obj/random/bedsheet,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "ny" = (
@@ -9151,11 +9151,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "zv" = (
-/obj/item/bedsheet/blue,
 /obj/structure/bed/padded,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
 	},
+/obj/random/bedsheet,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "zy" = (
@@ -9872,13 +9872,13 @@
 /area/hallway/primary/port)
 "BD" = (
 /obj/structure/bed/padded,
-/obj/item/bedsheet/blue,
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/random/bedsheet,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "BG" = (
@@ -10528,7 +10528,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/bed/double/padded,
-/obj/item/bedsheet/browndouble,
+/obj/random/bedsheet/double,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "DH" = (
@@ -11395,7 +11395,7 @@
 	pixel_y = -24
 	},
 /obj/structure/bed/double/padded,
-/obj/item/bedsheet/greendouble,
+/obj/random/bedsheet/double,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_11)
 "Ga" = (
@@ -13425,7 +13425,7 @@
 /area/maintenance/dormitory)
 "Mo" = (
 /obj/structure/bed/padded,
-/obj/item/bedsheet/blue,
+/obj/random/bedsheet,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
 "Mp" = (
@@ -14311,7 +14311,7 @@
 /area/hallway/primary/port)
 "OU" = (
 /obj/structure/bed/double/padded,
-/obj/item/bedsheet/clowndouble,
+/obj/random/bedsheet/double,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_10)
 "OV" = (
@@ -17348,7 +17348,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/bed/double/padded,
-/obj/item/bedsheet/bluedouble,
+/obj/random/bedsheet/double,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
 "Xk" = (
