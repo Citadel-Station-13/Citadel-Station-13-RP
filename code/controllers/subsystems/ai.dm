@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(ai)
 	if (!resumed)
 		src.currentrun = processing.Copy()
 		//Addition from vorestation to not simulate levels with no living players
-		process_z.Cut()
+	if(!process_z)
 		var/level = 1
 		while(process_z.len < GLOB.living_players_by_zlevel.len)
 			process_z.len++
