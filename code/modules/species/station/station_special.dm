@@ -909,7 +909,7 @@
 		O_EYES =     /obj/item/organ/internal/eyes,
 		O_STOMACH =	 /obj/item/organ/internal/stomach,
 		O_INTESTINE =/obj/item/organ/internal/intestine,
-		H_STOMACH =  /obj/item/organ/internal/honey_stomach
+		O_HSTOMACH =  /obj/item/organ/internal/honey_stomach
 		)
 
 //Did you know it's actually called a honey stomach? I didn't!
@@ -918,7 +918,7 @@
 	icon_state = "innards"
 	name = "honey stomach"
 	desc = "A squishy enzymatic processor that turns airborne pollen into nectar."
-	organ_tag = H_STOMACH
+	organ_tag = O_HSTOMACH
 	var/generated_reagents = list("honey" = 5)
 	var/usable_volume = 50
 	var/transfer_amount = 50
