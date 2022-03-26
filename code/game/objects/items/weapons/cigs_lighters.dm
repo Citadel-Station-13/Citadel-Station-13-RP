@@ -512,10 +512,19 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 500
 	nicotine_amt = 0
 
+	/obj/item/clothing/mask/smokable/cigarette/blunt
+	name = "blunt"
+	desc = "This probably shouldn't ever show up."
+	icon_state = "blunt"
+	max_smoketime = 750
+	smoketime = 750
+	nicotine_amt = 0
+
 /obj/item/rollingpaper
 	name = "rolling paper"
 	desc = "A small, thin piece of easily flammable paper, commonly used for rolling and smoking various dried plants."
 	icon = 'icons/obj/cigarettes.dmi'
+	w_class = ITEMSIZE_TINY
 	icon_state = "cig paper"
 
 /obj/item/rollingpaper/attackby(obj/item/W as obj, mob/user as mob)
@@ -533,6 +542,30 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		J.desc = "A joint lovingly rolled and filled with [G.name]. Blaze it."
 		qdel(G)
 		qdel(src)
+
+/obj/item/rollingblunt
+	name = "blunt paper"
+	desc = "A small, thin piece of tobacco-based paper, commonly used for rolling and smoking various dried plants."
+	icon = 'icons/obj/cigarettes.dmi'
+	w_class = ITEMSIZE_TINY
+	icon_state = "blunt paper"
+
+/obj/item/rollingblunt/attackby(obj/item/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/grown/G = W
+		if (!G.dry)
+			to_chat(user, "<span class='notice'>[G] must be dried before you roll it into [src].</span>")
+			return
+		var/obj/item/clothing/mask/smokable/cigarette/joint/J = new /obj/item/clothing/mask/smokable/cigarette/joint(user.loc)
+		to_chat(usr,"<span class='notice'>You roll the [G.name] into a blunt!</span>")
+		J.add_fingerprint(user)
+		if(G.reagents)
+			G.reagents.trans_to_obj(J, G.reagents.total_volume)
+		J.name = "[G.name] blunt"
+		J.desc = "A blunt lovingly rolled and filled with [G.name]. Blaze it."
+		qdel(G)
+		qdel(src)
+
 
 /////////
 //ZIPPO//
