@@ -60,7 +60,7 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
     if (power_drawn > GLOB.power_per_point)
         var/newpoints = round((power_drawn / GLOB.power_per_point) * efficency)
         power_drawn -= newpoints*(GLOB.power_per_point)
-        points_stored += newpoints
+        points_stored += newpoints * 2// double it, because fuck its difficult to keep the miner cool
         GLOB.points_mined += newpoints
         GLOB.power_per_point = round(1 MEGAWATTS * (1.00276 ** GLOB.points_mined))//1.00276 doubles the first time at 250 points, which is the most expansive item in the vendor currently
 
