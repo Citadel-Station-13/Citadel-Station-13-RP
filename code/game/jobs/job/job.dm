@@ -28,7 +28,7 @@
 	var/has_headset = TRUE					//Do people with this job need to be given headsets and told how to use them?  E.g. Cyborgs don't.
 
 	var/account_allowed = 1					// Does this job type come with a station account?
-	var/economic_modifier = 2				// With how much does this job modify the initial account amount?
+	var/economic_power = 2				// With how much does this job modify the initial account amount?
 
 	var/outfit_type							// What outfit datum does this job use in its default title?
 
@@ -76,17 +76,28 @@
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
-	var/income = 1
-	if(H.client)
-		switch(H.client.prefs.economic_status)
-			if(CLASS_UPPER)		income = 1.30
-			if(CLASS_UPMID)		income = 1.15
-			if(CLASS_MIDDLE)	income = 1
-			if(CLASS_LOWMID)	income = 0.75
-			if(CLASS_LOWER)		income = 0.50
+	// Calculate our pay and apply all relevant modifiers.
+	var/money_amount = rand(75, 100) * economic_power
+
+	// Get an average economic power for our cultures.
+	var/culture_mod =   0
+	var/culture_count = 0
+	for(var/token in H.cultural_info)
+		var/decl/cultural_info/culture = H.get_cultural_value(token)
+		if(culture && !isnull(culture.economic_power))
+			culture_count++
+			culture_mod += culture.economic_power
+	if(culture_count)
+		culture_mod /= culture_count
+	money_amount *= culture_mod
+
+	// Apply other mods.
+	money_amount *= GLOB.using_map.salary_modifier
+
+	if(money_amount <= 0)
+		return // You are too poor for an account.
 
 	// Give them an account in the station database
-	var/money_amount = (rand(15,40) + rand(15,40)) * income * economic_modifier * ECO_MODIFIER //VOREStation Edit - Smoothed peaks, ECO_MODIFIER rather than per-species ones.
 	var/datum/money_account/M = create_account(H.real_name, money_amount, null, offmap_spawn)
 	if(H.mind)
 		var/remembered_info = ""
@@ -193,4 +204,3 @@
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/messenger(H), slot_back)
 		if(6)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/rig(H), slot_back)
-

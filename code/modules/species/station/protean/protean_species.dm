@@ -2,13 +2,15 @@
 #define METAL_PER_TICK 100
 
 /datum/species/protean
-	name =             SPECIES_PROTEAN
-	name_plural =      "Proteans"
-	blurb =            "Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
-						<i>VERY</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
-						of millions of tiny nanites working in concert to maintain cohesion."
-	show_ssd =         "totally quiescent"
-	death_message =    "rapidly loses cohesion, dissolving into a cloud of gray dust..."
+	name = SPECIES_PROTEAN
+	name_plural = "Proteans"
+	description =
+		"Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
+		<i>VERY</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
+		of millions of tiny nanites working in concert to maintain cohesion."
+
+	show_ssd = "totally quiescent"
+	death_message = "rapidly loses cohesion, dissolving into a cloud of gray dust..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/decal/cleanable/ash
 
@@ -18,12 +20,9 @@
 	flesh_color = "#505050"
 	base_color = "#FFFFFF" //Color mult, start out with this
 
-	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | CONTAMINATION_IMMUNE
+	flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | CONTAMINATION_IMMUNE
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
-	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-	health_hud_intensity = 2
-	num_alternate_languages = 5  // Let's not make them know every language, past me.
-	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	color_mult = TRUE
 
 	darksight = 3 // Major darksight is a bit much, regular one will do for the moment.
@@ -146,6 +145,12 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
+
+
+	//health_hud_intensity = 2
+	//num_alternate_languages = 5  // Let's not make them know every language, past me.
+	//assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+
 
 /datum/species/protean/New()
 	..()

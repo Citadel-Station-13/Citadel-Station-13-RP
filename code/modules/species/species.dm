@@ -5,10 +5,10 @@
 /datum/species
 
 	// Descriptors and strings.
-	var/name												// Species name.
-	var/name_plural											// Pluralized name (since "[name]s" is not always valid)
-	var/blurb = "A completely nondescript species."			// A brief lore summary for use in the chargen screen.
-	var/list/catalogue_data = null							// A list of /datum/category_item/catalogue datums, for the cataloguer, or null.
+	var/name // Species name.
+	var/name_plural // Pluralized name (since "[name]s" is not always valid)
+	var/description = "A completely nondescript species." // A brief lore summary for use in the chargen screen.
+	var/list/catalogue_data = null // A list of /datum/category_item/catalogue datums, for the cataloguer, or null.
 
 	// Icon/appearance vars.
 	var/icobase = 'icons/mob/human_races/r_human.dmi'		// Normal icon set.
@@ -51,19 +51,10 @@
 	var/min_age = 18
 	var/max_age = 70
 
-	// Language/culture vars.
-	var/default_language = LANGUAGE_GALCOM					// Default language is used when 'say' is used without modifiers.
-	var/language = LANGUAGE_GALCOM							// Default racial language, if any.
-	var/list/species_language = list(LANGUAGE_GALCOM)		// Used on the Character Setup screen
-	var/list/secondary_langs = list()						// The names of secondary languages that are available to this species.
+	// Speech vars.
+	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	var/list/speech_sounds = list()							// A list of sounds to potentially play when speaking.
 	var/list/speech_chance = list()							// The likelihood of a speech sound playing.
-	var/num_alternate_languages = 0							// How many secondary languages are available to select at character creation
-	var/name_language = LANGUAGE_GALCOM						// The language to use when determining names for this species, or null to use the first name/last name generator
-
-	// The languages the species can't speak without an assisted organ.
-	// This list is a guess at things that no one other than the parent species should be able to speak
-	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX) //VOREStation Edit
 
 	//Soundy emotey things.
 	var/scream_verb = "screams"
@@ -192,7 +183,17 @@
 	var/gluttonous											// Can eat some mobs. 1 for mice, 2 for monkeys, 3 for people.
 
 	var/rarity_value = 1									// Relative rarity/collector value for this species.
-	var/economic_modifier = 2								// How much money this species makes
+
+	var/list/available_cultural_info = list(
+		TAG_CULTURE = list(CULTURE_OTHER),
+		TAG_HOMEWORLD = list(HOME_SYSTEM_STATELESS),
+		TAG_FACTION = list(FACTION_OTHER),
+		TAG_RELIGION = list(RELIGION_OTHER, RELIGION_ATHEISM, RELIGION_AGNOSTICISM)
+	)
+
+	var/list/force_cultural_info = list()
+	var/list/default_cultural_info = list()
+	var/list/additional_available_cultural_info = list()
 
 	// Determines the organs that the species spawns with and
 	var/list/has_organ = list(								// which required-organ checks are conducted.
@@ -259,6 +260,29 @@
 	var/silk_color = "#FFFFFF"
 
 /datum/species/New()
+	for(var/token in ALL_CULTURAL_TAGS)
+
+		var/force_val = force_cultural_info[token]
+		if(force_val)
+			default_cultural_info[token] = force_val
+			available_cultural_info[token] = list(force_val)
+
+		else if(additional_available_cultural_info[token])
+			if(!available_cultural_info[token])
+				available_cultural_info[token] = list()
+			available_cultural_info[token] |= additional_available_cultural_info[token]
+
+		else if(!LAZYLEN(available_cultural_info[token]))
+			var/list/map_systems = GLOB.using_map.available_cultural_info[token]
+			available_cultural_info[token] = map_systems.Copy()
+
+		if(LAZYLEN(available_cultural_info[token]) && !default_cultural_info[token])
+			var/list/avail_systems = available_cultural_info[token]
+			default_cultural_info[token] = avail_systems[1]
+
+		if(!default_cultural_info[token])
+			default_cultural_info[token] = GLOB.using_map.default_cultural_info[token]
+
 	if(hud_type)
 		hud = new hud_type()
 	else
@@ -286,7 +310,7 @@
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
 
-/datum/species/proc/sanitize_name(var/name)
+/datum/species/proc/old_sanitize_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)
 
 GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(

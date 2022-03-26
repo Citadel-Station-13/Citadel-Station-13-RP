@@ -2,9 +2,6 @@
 	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	num_alternate_languages = 3 //cit lore change
-	language = LANGUAGE_VERNAL
-	species_language = LANGUAGE_VERNAL
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
 	total_health = 100 //standard
 	brute_mod = 1 //nothing special
@@ -67,7 +64,7 @@
 
 	reagent_tag = IS_ALRAUNE
 
-	blurb = "Alraunes are an uncommon sight in space. Their bodies are reminiscent of that of plants, and yet they share many\
+	description = "Alraunes are an uncommon sight in space. Their bodies are reminiscent of that of plants, and yet they share many\
 	traits with other humanoid beings, occasionally mimicking their forms to lure in prey.\
 	\
 	Most Alraune are rather opportunistic in nature, being primarily self-serving; however, this does not mean they are selfish or unable to empathise with others.\
@@ -75,13 +72,13 @@
 	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset."
 
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/plant),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin/unbreakable/plant),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/unbreakable/plant),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/unbreakable/plant),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/unbreakable/plant),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg/unbreakable/plant),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/unbreakable/plant),
+		BP_TORSO = list("path" = /obj/item/organ/external/chest/unbreakable/plant),
+		BP_GROIN = list("path" = /obj/item/organ/external/groin/unbreakable/plant),
+		BP_HEAD = list("path" = /obj/item/organ/external/head/unbreakable/plant),
+		BP_L_ARM = list("path" = /obj/item/organ/external/arm/unbreakable/plant),
+		BP_R_ARM = list("path" = /obj/item/organ/external/arm/right/unbreakable/plant),
+		BP_L_LEG = list("path" = /obj/item/organ/external/leg/unbreakable/plant),
+		BP_R_LEG = list("path" = /obj/item/organ/external/leg/right/unbreakable/plant),
 		BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable/plant),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable/plant),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable/plant),
@@ -90,12 +87,18 @@
 
 	// limited organs, 'cause they're simple
 	has_organ = list(
-		O_LIVER =    /obj/item/organ/internal/liver/alraune,
-		O_KIDNEYS =  /obj/item/organ/internal/kidneys/alraune,
-		O_BRAIN =    /obj/item/organ/internal/brain/alraune,
-		O_EYES =     /obj/item/organ/internal/eyes/alraune,
-		O_FRUIT =    /obj/item/organ/internal/fruitgland,
+		O_LIVER = /obj/item/organ/internal/liver/alraune,
+		O_KIDNEYS = /obj/item/organ/internal/kidneys/alraune,
+		O_BRAIN = /obj/item/organ/internal/brain/alraune,
+		O_EYES = /obj/item/organ/internal/eyes/alraune,
+		O_FRUIT = /obj/item/organ/internal/fruitgland,
 		)
+
+
+	//num_alternate_languages = 3 //cit lore change
+	//language = LANGUAGE_VERNAL
+	//species_language = LANGUAGE_VERNAL
+
 
 /datum/species/alraune/can_breathe_water()
 	return TRUE //eh, why not? Aquatic plants are a thing.

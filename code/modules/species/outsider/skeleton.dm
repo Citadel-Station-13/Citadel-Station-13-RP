@@ -3,10 +3,8 @@
 	name_plural = "Skeletons"
 	icobase = 'icons/mob/human_races/r_skeleton.dmi'
 	primitive_form = "Monkey"
-	language = "Sol Common"
 	unarmed_types = list(/datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/sharp)	//Bones are pointy, fight me.
-	blurb = "Spooky Scary Skeletons!"
-	name_language = null // Use the first-name last-name generator rather than a language scrambler
+	description = "Spooky Scary Skeletons!"
 	min_age = 18
 	max_age = 110
 	health_hud_intensity = 1.5
@@ -51,3 +49,6 @@
 	heat_level_3 = 4000
 
 	body_temperature = T20C
+
+	//language = "Sol Common"
+	//name_language = null // Use the first-name last-name generator rather than a language scrambler

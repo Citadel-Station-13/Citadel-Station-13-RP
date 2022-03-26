@@ -17,7 +17,7 @@
 	selection_color = "#AD6BAD"
 	idtype = /obj/item/card/id/science/head
 	req_admin_notify = 1
-	economic_modifier = 15
+	economic_power = 15
 	access = list(access_rd, access_heads, access_tox, access_genetics, access_morgue,
 						access_tox_storage, access_teleporter, access_sec_doors,
 						access_research, access_robotics, access_xenobiology, access_ai_upload, access_tech_storage,
@@ -66,7 +66,7 @@
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
 	idtype = /obj/item/card/id/science/scientist
-	economic_modifier = 7
+	economic_power = 7
 	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch, access_xenobotany)
 	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch, access_xenobiology, access_xenobotany)
 
@@ -133,13 +133,13 @@
 	title_blurb = "A Xenobiologist studies esoteric lifeforms, usually in the relative safety of their lab. They attempt to find ways to benefit \
 						from the byproducts of these lifeforms, and their main subject at present is the Giant Slime."
 	title_outfit = /decl/hierarchy/outfit/job/science/xenobiologist
-						
+
 /datum/alt_title/scientist/xenobotanist
 	title = "Xenobotanist"
 	title_blurb = "A Xenobotanist grows and cares for a variety of abnormal, custom made, and frequently dangerous plant life. When the products of these plants \
 					are both safe and beneficial to the station, they may choose to introduce it to the rest of the crew."
 	title_outfit = /decl/hierarchy/outfit/job/science/xenobiologist
-					
+
 /* Demoted to alt title for now
 //////////////////////////////////
 //			Xenobiologist
@@ -156,7 +156,7 @@
 	selection_color = "#633D63"
 	idtype = /obj/item/card/id/science/xenobiologist
 	pto_type = PTO_SCIENCE
-	economic_modifier = 7
+	economic_power = 7
 	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_hydroponics, access_tox)
 	minimal_access = list(access_research, access_xenobiology, access_hydroponics, access_tox_storage,access_tox)
 
@@ -193,7 +193,7 @@
 	spawn_positions = 2
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
-	economic_modifier = 7
+	economic_power = 7
 	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobotany, access_hydroponics)
 	minimal_access = list(access_research, access_xenobotany, access_hydroponics, access_tox_storage)
 	pto_type = PTO_SCIENCE
@@ -228,7 +228,7 @@
 	spawn_positions = 2
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
-	economic_modifier = 5
+	economic_power = 5
 	pto_type = PTO_SCIENCE
 	access = list(access_robotics, access_tox, access_tox_storage, access_tech_storage, access_morgue, access_research, access_tox) //As a job that handles so many corpses, it makes sense for them to have morgue access.
 	minimal_access = list(access_robotics, access_tech_storage, access_morgue, access_research, access_tox) //As a job that handles so many corpses, it makes sense for them to have morgue access.

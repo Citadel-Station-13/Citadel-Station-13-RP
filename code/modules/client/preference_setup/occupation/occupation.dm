@@ -12,58 +12,55 @@
 	sort_order = 1
 
 /datum/category_item/player_setup_item/occupation/load_character(var/savefile/S)
-	S["alternate_option"]	>> pref.alternate_option
-	S["job_civilian_high"]	>> pref.job_civilian_high
-	S["job_civilian_med"]	>> pref.job_civilian_med
-	S["job_civilian_low"]	>> pref.job_civilian_low
-	S["job_medsci_high"]	>> pref.job_medsci_high
-	S["job_medsci_med"]		>> pref.job_medsci_med
-	S["job_medsci_low"]		>> pref.job_medsci_low
-	S["job_engsec_high"]	>> pref.job_engsec_high
-	S["job_engsec_med"]		>> pref.job_engsec_med
-	S["job_engsec_low"]		>> pref.job_engsec_low
-	//VOREStation Add
-	S["job_talon_low"]		>> pref.job_talon_low
-	S["job_talon_med"]		>> pref.job_talon_med
-	S["job_talon_high"]		>> pref.job_talon_high
-	//VOREStation Add End
-	S["player_alt_titles"]	>> pref.player_alt_titles
+	from_file(S["alternate_option"], pref.alternate_option)
+	from_file(S["job_civilian_high"], pref.job_civilian_high)
+	from_file(S["job_civilian_med"], pref.job_civilian_med)
+	from_file(S["job_civilian_low"], pref.job_civilian_low)
+	from_file(S["job_medsci_high"], pref.job_medsci_high)
+	from_file(S["job_medsci_med"], pref.job_medsci_med)
+	from_file(S["job_medsci_low"], pref.job_medsci_low)
+	from_file(S["job_engsec_high"], pref.job_engsec_high)
+	from_file(S["job_engsec_med"], pref.job_engsec_med)
+	from_file(S["job_engsec_low"], pref.job_engsec_low)
+	from_file(S["player_alt_titles"], pref.player_alt_titles)
+	// Talon
+	from_file(S["job_talon_low"], pref.job_talon_low)
+	from_file(S["job_talon_med"], pref.job_talon_med)
+	from_file(S["job_talon_high"], pref.job_talon_high)
 
 /datum/category_item/player_setup_item/occupation/save_character(var/savefile/S)
-	S["alternate_option"]	<< pref.alternate_option
-	S["job_civilian_high"]	<< pref.job_civilian_high
-	S["job_civilian_med"]	<< pref.job_civilian_med
-	S["job_civilian_low"]	<< pref.job_civilian_low
-	S["job_medsci_high"]	<< pref.job_medsci_high
-	S["job_medsci_med"]		<< pref.job_medsci_med
-	S["job_medsci_low"]		<< pref.job_medsci_low
-	S["job_engsec_high"]	<< pref.job_engsec_high
-	S["job_engsec_med"]		<< pref.job_engsec_med
-	S["job_engsec_low"]		<< pref.job_engsec_low
-	//VOREStation Add
-	S["job_talon_low"]		<< pref.job_talon_low
-	S["job_talon_med"]		<< pref.job_talon_med
-	S["job_talon_high"]		<< pref.job_talon_high
-	//VOREStation Add End
-	S["player_alt_titles"]	<< pref.player_alt_titles
+	to_file(S["alternate_option"], pref.alternate_option)
+	to_file(S["job_civilian_high"], pref.job_civilian_high)
+	to_file(S["job_civilian_med"], pref.job_civilian_med)
+	to_file(S["job_civilian_low"], pref.job_civilian_low)
+	to_file(S["job_medsci_high"], pref.job_medsci_high)
+	to_file(S["job_medsci_med"], pref.job_medsci_med)
+	to_file(S["job_medsci_low"], pref.job_medsci_low)
+	to_file(S["job_engsec_high"], pref.job_engsec_high)
+	to_file(S["job_engsec_med"], pref.job_engsec_med)
+	to_file(S["job_engsec_low"], pref.job_engsec_low)
+	to_file(S["player_alt_titles"], pref.player_alt_titles)
+	// Talon
+	to_file(S["job_talon_low"], pref.job_talon_low)
+	to_file(S["job_talon_med"], pref.job_talon_med)
+	to_file(S["job_talon_high"], pref.job_talon_high)
 
 /datum/category_item/player_setup_item/occupation/sanitize_character()
-	pref.alternate_option	= sanitize_integer(pref.alternate_option, 0, 2, initial(pref.alternate_option))
-	pref.job_civilian_high	= sanitize_integer(pref.job_civilian_high, 0, 65535, initial(pref.job_civilian_high))
-	pref.job_civilian_med	= sanitize_integer(pref.job_civilian_med, 0, 65535, initial(pref.job_civilian_med))
-	pref.job_civilian_low	= sanitize_integer(pref.job_civilian_low, 0, 65535, initial(pref.job_civilian_low))
-	pref.job_medsci_high	= sanitize_integer(pref.job_medsci_high, 0, 65535, initial(pref.job_medsci_high))
-	pref.job_medsci_med		= sanitize_integer(pref.job_medsci_med, 0, 65535, initial(pref.job_medsci_med))
-	pref.job_medsci_low		= sanitize_integer(pref.job_medsci_low, 0, 65535, initial(pref.job_medsci_low))
-	pref.job_engsec_high	= sanitize_integer(pref.job_engsec_high, 0, 65535, initial(pref.job_engsec_high))
-	pref.job_engsec_med 	= sanitize_integer(pref.job_engsec_med, 0, 65535, initial(pref.job_engsec_med))
-	pref.job_engsec_low 	= sanitize_integer(pref.job_engsec_low, 0, 65535, initial(pref.job_engsec_low))
-	//VOREStation Add
-	pref.job_talon_high		= sanitize_integer(pref.job_talon_high, 0, 65535, initial(pref.job_talon_high))
-	pref.job_talon_med 		= sanitize_integer(pref.job_talon_med, 0, 65535, initial(pref.job_talon_med))
-	pref.job_talon_low 		= sanitize_integer(pref.job_talon_low, 0, 65535, initial(pref.job_talon_low))
-	//VOREStation Add End
+	pref.alternate_option = sanitize_integer(pref.alternate_option, 0, 2, initial(pref.alternate_option))
+	pref.job_civilian_high = sanitize_integer(pref.job_civilian_high, 0, 65535, initial(pref.job_civilian_high))
+	pref.job_civilian_med = sanitize_integer(pref.job_civilian_med, 0, 65535, initial(pref.job_civilian_med))
+	pref.job_civilian_low = sanitize_integer(pref.job_civilian_low, 0, 65535, initial(pref.job_civilian_low))
+	pref.job_medsci_high = sanitize_integer(pref.job_medsci_high, 0, 65535, initial(pref.job_medsci_high))
+	pref.job_medsci_med = sanitize_integer(pref.job_medsci_med, 0, 65535, initial(pref.job_medsci_med))
+	pref.job_medsci_low = sanitize_integer(pref.job_medsci_low, 0, 65535, initial(pref.job_medsci_low))
+	pref.job_engsec_high = sanitize_integer(pref.job_engsec_high, 0, 65535, initial(pref.job_engsec_high))
+	pref.job_engsec_med = sanitize_integer(pref.job_engsec_med, 0, 65535, initial(pref.job_engsec_med))
+	pref.job_engsec_low = sanitize_integer(pref.job_engsec_low, 0, 65535, initial(pref.job_engsec_low))
 	if(!(pref.player_alt_titles)) pref.player_alt_titles = new()
+	// Talon
+	pref.job_talon_high = sanitize_integer(pref.job_talon_high, 0, 65535, initial(pref.job_talon_high))
+	pref.job_talon_med = sanitize_integer(pref.job_talon_med, 0, 65535, initial(pref.job_talon_med))
+	pref.job_talon_low = sanitize_integer(pref.job_talon_low, 0, 65535, initial(pref.job_talon_low))
 
 	if(!job_master)
 		return

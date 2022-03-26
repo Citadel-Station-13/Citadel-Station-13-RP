@@ -5,7 +5,7 @@
 	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	tail = "tail"
 	icobase_tail = 1
-	blurb = "Very little is known about these creatures. They appear to be largely mammalian in appearance. \
+	description = "Very little is known about these creatures. They appear to be largely mammalian in appearance. \
 	Seemingly very rare to encounter, there have been widespread myths of these creatures the galaxy over, \
 	but next to no verifiable evidence to their existence. However, they have recently been more verifiably \
 	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have \
@@ -13,8 +13,6 @@
 	wikilink = "https://wiki.vore-station.net/Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
 
-	language = LANGUAGE_SHADEKIN
-	assisted_langs = list()
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/shadekin, /datum/unarmed_attack/bite/sharp/shadekin)
 	rarity_value = 15	//INTERDIMENSIONAL FLUFFERS
 
@@ -102,6 +100,11 @@
 									   /datum/power/shadekin/regenerate_other,
 									   /datum/power/shadekin/create_shade)
 	var/list/shadekin_ability_datums = list()
+
+
+	//language = LANGUAGE_SHADEKIN
+	//assisted_langs = list()
+
 
 /datum/species/shadekin/New()
 	..()

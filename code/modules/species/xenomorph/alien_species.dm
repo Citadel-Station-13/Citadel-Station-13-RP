@@ -2,10 +2,6 @@
 /datum/species/xenos
 	name = SPECIES_XENO
 	name_plural = "Xenomorphs"
-
-	default_language = "Xenomorph"
-	language = "Hivemind"
-	assisted_langs = list()
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
 	hud_type = /datum/hud_data/alien
 	rarity_value = 3
@@ -60,8 +56,8 @@
 	swap_flags = ~HEAVY
 	push_flags = (~HEAVY) ^ ROBOT
 
-	var/alien_number = 0
-	var/caste_name = "creature" // Used to update alien name.
+	//var/alien_number = 0
+	//var/caste_name = "creature" // Used to update alien name.
 	var/weeds_heal_rate = 1     // Health regen on weeds.
 	var/weeds_plasma_rate = 5   // Plasma regen on weeds.
 
@@ -79,18 +75,28 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unseverable/xeno)
 		)
 
+
+	//default_language = "Xenomorph"
+	//language = "Hivemind"
+	//assisted_langs = list()
+
+
+	force_cultural_info = list(
+		TAG_CULTURE = CULTURE_XENOPHAGE_D,
+		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
+		TAG_FACTION = FACTION_XENOPHAGE,
+		TAG_RELIGION = RELIGION_OTHER
+	)
+
+
 /datum/species/xenos/get_bodytype()
 	return SPECIES_XENO
-
-/datum/species/xenos/get_random_name()
-	return "alien [caste_name] ([alien_number])"
 
 /datum/species/xenos/can_understand(var/mob/other)
 
 	if(istype(other,/mob/living/carbon/alien/larva))
-		return 1
-
-	return 0
+		return TRUE
+	return FALSE
 
 /datum/species/xenos/hug(var/mob/living/carbon/human/H,var/mob/living/target)
 	H.visible_message("<span class='notice'>[H] caresses [target] with its scythe-like arm.</span>", \
@@ -102,10 +108,11 @@
 		H.mind.assigned_role = "Alien"
 		H.mind.special_role = "Alien"
 
-	alien_number++ //Keep track of how many aliens we've had so far.
-	H.real_name = "alien [caste_name] ([alien_number])"
-	H.name = H.real_name
-
+	var/decl/cultural_info/culture/hidden/xenophage/culture = SSculture.get_culture(force_cultural_info[TAG_CULTURE])
+	if(istype(culture))
+		culture.caste_number++
+		H.real_name = culture.get_random_name(H)
+		H.SetName(H.real_name)
 	..()
 
 /datum/species/xenos/handle_environment_special(var/mob/living/carbon/human/H)
@@ -168,7 +175,7 @@
 
 /datum/species/xenos/drone
 	name = SPECIES_XENO_DRONE
-	caste_name = "drone"
+	//caste_name = "drone"
 	weeds_plasma_rate = 15
 	slowdown = 1
 	tail = "xenos_drone_tail"
@@ -209,7 +216,7 @@
 /datum/species/xenos/hunter
 	name = SPECIES_XENO_HUNTER
 	weeds_plasma_rate = 5
-	caste_name = "hunter"
+	//caste_name = "hunter"
 	slowdown = -2
 	total_health = 150
 	tail = "xenos_hunter_tail"
@@ -236,10 +243,19 @@
 		/mob/living/carbon/human/proc/regurgitate
 		)
 
+
+	force_cultural_info = list(
+		TAG_CULTURE = CULTURE_XENOPHAGE_H,
+		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
+		TAG_FACTION = FACTION_XENOPHAGE,
+		TAG_RELIGION = RELIGION_OTHER
+	)
+
+
 /datum/species/xenos/sentinel
 	name = SPECIES_XENO_SENTINEL
 	weeds_plasma_rate = 10
-	caste_name = "sentinel"
+	//caste_name = "sentinel"
 	slowdown = 0
 	total_health = 200
 	tail = "xenos_sentinel_tail"
@@ -268,13 +284,22 @@
 		/mob/living/carbon/human/proc/acidspit
 		)
 
+
+	force_cultural_info = list(
+		TAG_CULTURE = CULTURE_XENOPHAGE_S,
+		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
+		TAG_FACTION = FACTION_XENOPHAGE,
+		TAG_RELIGION = RELIGION_OTHER
+	)
+
+
 /datum/species/xenos/queen
 
 	name = SPECIES_XENO_QUEEN
 	total_health = 250
 	weeds_heal_rate = 5
 	weeds_plasma_rate = 20
-	caste_name = "queen"
+	//caste_name = "queen"
 	slowdown = 4
 	tail = "xenos_queen_tail"
 	rarity_value = 10
@@ -310,15 +335,12 @@
 		/mob/living/carbon/human/proc/resin
 		)
 
-/datum/species/xenos/queen/handle_login_special(var/mob/living/carbon/human/H)
-	..()
-	// Make sure only one official queen exists at any point.
-	if(!alien_queen_exists(1,H))
-		H.real_name = "alien queen ([alien_number])"
-		H.name = H.real_name
-	else
-		H.real_name = "alien princess ([alien_number])"
-		H.name = H.real_name
+	force_cultural_info = list(
+		TAG_CULTURE = CULTURE_XENOPHAGE_Q,
+		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
+		TAG_FACTION = FACTION_XENOPHAGE,
+		TAG_RELIGION = RELIGION_OTHER
+	)
 
 /datum/hud_data/alien
 

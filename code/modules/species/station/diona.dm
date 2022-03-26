@@ -17,17 +17,12 @@
 	health_hud_intensity = 2.5
 	item_slowdown_mod = 0.1
 
-	num_alternate_languages = 2
-	name_language = LANGUAGE_ROOTLOCAL
-	species_language = LANGUAGE_ROOTLOCAL
-	secondary_langs = list(LANGUAGE_ROOTGLOBAL)
-	assisted_langs = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
 	min_age = 18
 	max_age = 300
 
-	economic_modifier = 4
+	//economic_power = 4
 
-	blurb = "Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective \
+	description = "Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective \
 	species hailing from Epsilon Ursae Minoris. Each 'diona' is a cluster of numerous cat-sized organisms called nymphs; \
 	there is no effective upper limit to the number that can fuse in gestalt, and reports exist	of the Epsilon Ursae \
 	Minoris primary being ringed with a cloud of singing space-station-sized entities.<br/><br/>The Dionaea coexist peacefully with \
@@ -92,6 +87,21 @@
 	genders = list(PLURAL)
 
 	wikilink="https://wiki.vore-station.net/Diona"
+
+	//num_alternate_languages = 2
+	//name_language = LANGUAGE_ROOTLOCAL
+	//species_language = LANGUAGE_ROOTLOCAL
+	//secondary_langs = list(LANGUAGE_ROOTGLOBAL)
+	//assisted_langs = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(CULTURE_DIONA),
+		TAG_HOMEWORLD = list(HOME_SYSTEM_DIONAEA),
+		TAG_FACTION = list(FACTION_OTHER),
+		TAG_RELIGION = list(RELIGION_OTHER)
+	)
+
 
 /datum/species/diona/can_understand(var/mob/other)
 	var/mob/living/carbon/alien/diona/D = other

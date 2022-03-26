@@ -3,14 +3,10 @@
 	name_plural = "Phoronoids"
 	icobase = 'icons/mob/human_races/r_plasmaman_sb.dmi'
 	primitive_form = null
-	language = LANGUAGE_GALCOM
-	species_language = LANGUAGE_BONES
-	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
-	blurb = "Phoronoids are a race rarely seen by most, tending to keep to themselves throughout known space. \
+	description = "Phoronoids are a race rarely seen by most, tending to keep to themselves throughout known space. \
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans. \
 	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and phoron in."
-	name_language = null // name randomisers are fucking weird
 	min_age = 18
 	max_age = 180
 	health_hud_intensity = 1.5
@@ -69,6 +65,13 @@
 	heat_level_3 = 800 //Default 1000
 
 	body_temperature = T20C
+
+
+	//name_language = null // name randomisers are fucking weird
+	//language = LANGUAGE_GALCOM
+	//species_language = LANGUAGE_BONES
+	//num_alternate_languages = 3
+
 
 /datum/species/plasmaman/handle_environment_special(var/mob/living/carbon/human/H)
 	var/turf/T = H.loc

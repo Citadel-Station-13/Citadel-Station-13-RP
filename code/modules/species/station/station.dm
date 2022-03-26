@@ -3,22 +3,17 @@
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
+	description = "Humanity originated in the Sol system, and over the last five centuries has spread \
 	colonies across a wide swathe of space. They hold a wide range of forms and creeds.<br/><br/> \
 	While the Orion Confederation government represents humanity at large, on the Frontier powerful corporate \
 	interests, rampant cyber and bio-augmentation initiatives, and secretive factions make life on most human \
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
-	num_alternate_languages = 3
-	species_language = LANGUAGE_SOL_COMMON
-	secondary_langs = list(LANGUAGE_SOL_COMMON, LANGUAGE_TERMINUS)
-	name_language = null // Use the first-name last-name generator rather than a language scrambler
-	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 	min_age = 18
 	max_age = 130
 
-	economic_modifier = 10
+	//economic_power = 10
 
 	health_hud_intensity = 1.5
 
@@ -39,8 +34,7 @@
 		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
 
-	inherent_verbs = list(
-		/mob/living/carbon/human/proc/tie_hair)
+	inherent_verbs = list(/mob/living/carbon/human/proc/tie_hair)
 
 	color_mult = 1
 	icobase = 'icons/mob/human_races/r_human_vr.dmi'
@@ -48,6 +42,22 @@
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
 	wikilink="https://wiki.vore-station.net/Human"
+
+
+	//num_alternate_languages = 3
+	//species_language = LANGUAGE_SOL_COMMON
+	//secondary_langs = list(LANGUAGE_SOL_COMMON, LANGUAGE_TERMINUS)
+	//name_language = null // Use the first-name last-name generator rather than a language scrambler
+	//assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			CULTURE_HUMAN,
+			CULTURE_HUMAN_VATGROWN
+		)
+	)
+
 
 /datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
 	return SPECIES_HUMAN
@@ -71,18 +81,12 @@
 	item_slowdown_mod = 0.25
 	mob_size = MOB_LARGE
 	blood_volume = 840
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_UNATHI)
-	name_language = LANGUAGE_UNATHI
-	species_language = LANGUAGE_UNATHI
 	health_hud_intensity = 2.5
 
 	min_age = 18
 	max_age = 260
 
-	economic_modifier = 10
-
-	blurb = "A heavily reptillian species, Unathi hail from the \
+	description = "A heavily reptillian species, Unathi hail from the \
 	Uuosa-Eso system, which roughly translates to 'burning mother'.<br/><br/>Coming from a harsh, inhospitable \
 	planet, they mostly hold ideals of honesty, virtue, proficiency and bravery above all \
 	else, frequently even their own lives. They prefer warmer temperatures than most species and \
@@ -121,13 +125,13 @@
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/claw
 
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unathi),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin/unathi),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/unathi),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
+		BP_TORSO = list("path" = /obj/item/organ/external/chest/unathi),
+		BP_GROIN = list("path" = /obj/item/organ/external/groin/unathi),
+		BP_HEAD = list("path" = /obj/item/organ/external/head/unathi),
+		BP_L_ARM = list("path" = /obj/item/organ/external/arm),
+		BP_R_ARM = list("path" = /obj/item/organ/external/arm/right),
+		BP_L_LEG = list("path" = /obj/item/organ/external/leg),
+		BP_R_LEG = list("path" = /obj/item/organ/external/leg/right),
 		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
@@ -136,13 +140,13 @@
 
 	//No kidneys or appendix
 	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart/unathi,
-		O_LUNGS =    /obj/item/organ/internal/lungs/unathi,
-		O_LIVER =    /obj/item/organ/internal/liver/unathi,
-		O_BRAIN =    /obj/item/organ/internal/brain/unathi,
-		O_EYES =     /obj/item/organ/internal/eyes,
-		O_STOMACH =		/obj/item/organ/internal/stomach/unathi,
-		O_INTESTINE =	/obj/item/organ/internal/intestine/unathi
+		O_HEART = /obj/item/organ/internal/heart/unathi,
+		O_LUNGS = /obj/item/organ/internal/lungs/unathi,
+		O_LIVER = /obj/item/organ/internal/liver/unathi,
+		O_BRAIN = /obj/item/organ/internal/brain/unathi,
+		O_EYES = /obj/item/organ/internal/eyes,
+		O_STOMACH = /obj/item/organ/internal/stomach/unathi,
+		O_INTESTINE = /obj/item/organ/internal/intestine/unathi
 		)
 
 
@@ -169,6 +173,37 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
+
+
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_UNATHI)
+	//name_language = LANGUAGE_UNATHI
+	//species_language = LANGUAGE_UNATHI
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			CULTURE_UNATHI
+		),
+		TAG_HOMEWORLD = list(
+			HOME_SYSTEM_MOGHES
+		),
+		TAG_FACTION = list(
+			FACTION_UNATHI_POLAR,
+			FACTION_UNATHI_DESERT,
+			FACTION_UNATHI_SAVANNAH,
+			FACTION_UNATHI_DIAMOND_PEAK,
+			FACTION_UNATHI_SALT_SWAMP
+		),
+		TAG_RELIGION =  list(
+			RELIGION_UNATHI_STRATAGEM,
+			RELIGION_UNATHI_PRECURSOR,
+			RELIGION_UNATHI_VINE,
+			RELIGION_UNATHI_LIGHTS,
+			RELIGION_OTHER
+		)
+	)
+
 
 /datum/species/unathi/equip_survival_gear(var/mob/living/carbon/human/H)
 	..()
@@ -199,9 +234,9 @@
 	min_age = 18
 	max_age = 80
 
-	economic_modifier = 10
+	//economic_power = 10
 
-	blurb = "The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system. \
+	description = "The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system. \
 	While reaching to the stars independently from outside influences, the humans engaged them in peaceful trade contact \
 	and have accelerated the fledgling culture into the interstellar age. Their history is full of war and highly fractious \
 	governments, something that permeates even to today's times. They prefer colder, tundra-like climates, much like their \
@@ -277,17 +312,12 @@
 	deform = 'icons/mob/human_races/r_def_skrell_vr.dmi'
 	primitive_form = SPECIES_MONKEY_SKRELL
 	unarmed_types = list(/datum/unarmed_attack/punch)
-	blurb = "An amphibious species, Skrell come from the star system known as Qerr'Vallis, which translates to 'Star of \
+	description = "An amphibious species, Skrell come from the star system known as Qerr'Vallis, which translates to 'Star of \
 	the royals' or 'Light of the Crown'.<br/><br/>Skrell are a highly advanced and logical race who live under the rule \
 	of the Qerr'Katish, a caste within their society which keeps the empire of the Skrell running smoothly. Skrell are \
 	herbivores on the whole and tend to be co-operative with the other species of the galaxy, although they rarely reveal \
 	the secrets of their empire to their allies."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)
-	name_language = LANGUAGE_SKRELLIAN
-	species_language = LANGUAGE_SKRELLIAN
-	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	health_hud_intensity = 2
 
 	water_movement = -3
@@ -295,7 +325,7 @@
 	min_age = 18
 	max_age = 130
 
-	economic_modifier = 10
+	//economic_power = 10
 
 	darksight = 4
 	flash_mod = 1.2
@@ -347,6 +377,39 @@
 	color_mult = 1
 	wikilink="https://wiki.vore-station.net/Skrell"
 
+
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)
+	//name_language = LANGUAGE_SKRELLIAN
+	//species_language = LANGUAGE_SKRELLIAN
+	//assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			CULTURE_SKRELL_QERR,
+			CULTURE_SKRELL_MALISH,
+			CULTURE_SKRELL_KANIN,
+			CULTURE_SKRELL_TALUM,
+			CULTURE_SKRELL_RASKINTA
+		),
+		TAG_HOMEWORLD = list(
+			HOME_SYSTEM_QERRBALAK
+		),
+		TAG_FACTION = list(
+			FACTION_OTHER,
+			FACTION_EXPEDITIONARY,
+			FACTION_NANOTRASEN
+		),
+		TAG_RELIGION = list(
+			RELIGION_OTHER,
+			RELIGION_ATHEISM,
+			RELIGION_DEISM,
+			RELIGION_AGNOSTICISM
+		)
+	)
+
+
 /datum/species/skrell/can_breathe_water()
 	return TRUE
 
@@ -373,7 +436,7 @@
 
 	minimum_breath_pressure = 20 //have fun with underpressures. any higher than this and they'll be even less suitible for life on the station
 
-	economic_modifier = 3
+	economic_power = 3
 
 	min_age = 18
 	max_age = 90
@@ -919,4 +982,3 @@
 
 /datum/species/shadekin/can_breathe_water()
 	return TRUE	//they dont quite breathe
-

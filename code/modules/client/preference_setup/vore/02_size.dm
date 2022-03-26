@@ -19,32 +19,32 @@
 	sort_order = 2
 
 /datum/category_item/player_setup_item/vore/size/load_character(var/savefile/S)
-	S["size_multiplier"]	>> pref.size_multiplier
-	S["weight_vr"]			>> pref.weight_vr
-	S["weight_gain"]		>> pref.weight_gain
-	S["weight_loss"]		>> pref.weight_loss
-	S["fuzzy"]				>> pref.fuzzy
+	from_file(S["size_multiplier"], pref.size_multiplier)
+	from_file(S["weight_vr"], pref.weight_vr)
+	from_file(S["weight_gain"], pref.weight_gain)
+	from_file(S["weight_loss"], pref.weight_loss)
+	from_file(S["fuzzy"], pref.fuzzy)
 
 /datum/category_item/player_setup_item/vore/size/save_character(var/savefile/S)
-	S["size_multiplier"]	<< pref.size_multiplier
-	S["weight_vr"]			<< pref.weight_vr
-	S["weight_gain"]		<< pref.weight_gain
-	S["weight_loss"]		<< pref.weight_loss
-	S["fuzzy"]				<< pref.fuzzy
+	to_file(S["size_multiplier"], pref.size_multiplier)
+	from_file(S["weight_vr"], pref.weight_vr)
+	from_file(S["weight_gain"], pref.weight_gain)
+	from_file(S["weight_loss"], pref.weight_loss)
+	from_file(S["fuzzy"], pref.fuzzy)
 
 /datum/category_item/player_setup_item/vore/size/sanitize_character()
-	pref.weight_vr			= sanitize_integer(pref.weight_vr, WEIGHT_MIN, WEIGHT_MAX, initial(pref.weight_vr))
-	pref.weight_gain		= sanitize_integer(pref.weight_gain, WEIGHT_CHANGE_MIN, WEIGHT_CHANGE_MAX, initial(pref.weight_gain))
-	pref.weight_loss		= sanitize_integer(pref.weight_loss, WEIGHT_CHANGE_MIN, WEIGHT_CHANGE_MAX, initial(pref.weight_loss))
-	pref.fuzzy				= sanitize_integer(pref.fuzzy, 0, 1, initial(pref.fuzzy))
+	pref.weight_vr = sanitize_integer(pref.weight_vr, WEIGHT_MIN, WEIGHT_MAX, initial(pref.weight_vr))
+	pref.weight_gain = sanitize_integer(pref.weight_gain, WEIGHT_CHANGE_MIN, WEIGHT_CHANGE_MAX, initial(pref.weight_gain))
+	pref.weight_loss = sanitize_integer(pref.weight_loss, WEIGHT_CHANGE_MIN, WEIGHT_CHANGE_MAX, initial(pref.weight_loss))
+	pref.fuzzy = sanitize_integer(pref.fuzzy, 0, 1, initial(pref.fuzzy))
 	if(pref.size_multiplier == null || pref.size_multiplier < RESIZE_TINY || pref.size_multiplier > RESIZE_HUGE)
 		pref.size_multiplier = initial(pref.size_multiplier)
 
 /datum/category_item/player_setup_item/vore/size/copy_to_mob(var/mob/living/carbon/human/character)
-	character.weight			= pref.weight_vr
-	character.weight_gain		= pref.weight_gain
-	character.weight_loss		= pref.weight_loss
-	character.fuzzy				= pref.fuzzy
+	character.weight = pref.weight_vr
+	character.weight_gain = pref.weight_gain
+	character.weight_loss = pref.weight_loss
+	character.fuzzy = pref.fuzzy
 	character.resize(pref.size_multiplier, animate = FALSE)
 
 /datum/category_item/player_setup_item/vore/size/content(var/mob/user)

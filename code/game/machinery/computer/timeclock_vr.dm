@@ -97,7 +97,7 @@
 				"title" = job.title,
 				"departments" = english_list(job.departments),
 				"selection_color" = job.selection_color,
-				"economic_modifier" = job.economic_modifier,
+				"economic_power" = job.economic_power,
 				"timeoff_factor" = job.timeoff_factor,
 				"pto_department" = job.pto_type
 			)

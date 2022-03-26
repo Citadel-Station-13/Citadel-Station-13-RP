@@ -66,12 +66,7 @@ Variables you may want to make use of are:
 	name_plural = SPECIES_EVENT1
 	primitive_form = SPECIES_MONKEY
 	unarmed_types = list(/datum/unarmed_attack/stomp/event1, /datum/unarmed_attack/kick/event1, /datum/unarmed_attack/punch/event1, /datum/unarmed_attack/bite/event1)
-	blurb = "We're not quite sure where these things came from. Are you?"
-	num_alternate_languages = 3
-	species_language = LANGUAGE_GALCOM
-	secondary_langs = list()
-	assisted_langs = list()
-	name_language = null // Use the first-name last-name generator rather than a language scrambler
+	description = "We're not quite sure where these things came from. Are you?"
 
 	min_age = 18
 	max_age = 999
@@ -115,6 +110,14 @@ Variables you may want to make use of are:
 	var/waterbreathing = 0
 	var/overcome_gravity = 0
 	var/hover = 0
+
+
+	//num_alternate_languages = 3
+	//species_language = LANGUAGE_GALCOM
+	//secondary_langs = list()
+	//assisted_langs = list()
+	//name_language = null // Use the first-name last-name generator rather than a language scrambler
+
 
 /datum/species/event1/proc/set_limbset(var/setnum = 1) //Will require existing ones to be respawned for changes to take effect.
 	switch(setnum)

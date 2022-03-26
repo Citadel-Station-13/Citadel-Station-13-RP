@@ -95,11 +95,10 @@
 	var/backbag = 2		//Which backpack type the player has chosen.
 	var/pdachoice = 1	//Which PDA type the player has chosen.
 
-	// General information
-	var/home_system = ""
-	var/citizenship = ""
-	var/personal_faction = ""
-	var/religion = ""
+	// General Information
+	var/list/cultural_info = list()
+
+	// Legacy Virgo Information
 	var/antag_faction = ""
 	var/antag_vis = ""
 

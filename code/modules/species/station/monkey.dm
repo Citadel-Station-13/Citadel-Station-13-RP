@@ -1,15 +1,13 @@
 /datum/species/monkey
 	name = SPECIES_MONKEY
 	name_plural = "Monkeys"
-	blurb = "Ook."
+	description = "Ook."
 
 	icobase = 'icons/mob/human_races/monkeys/r_monkey.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_monkey.dmi'
 	damage_overlays = 'icons/mob/human_races/masks/dam_monkey.dmi'
 	damage_mask = 'icons/mob/human_races/masks/dam_mask_monkey.dmi'
 	blood_mask = 'icons/mob/human_races/masks/blood_monkey.dmi'
-	language = null
-	default_language = "Chimpanzee"
 	greater_form = SPECIES_HUMAN
 	mob_size = MOB_SMALL
 	has_fine_manipulation = 0
@@ -54,6 +52,18 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 		)
 
+
+	//language = null
+	//default_language = "Chimpanzee"
+
+
+	force_cultural_info = list(
+		TAG_CULTURE = CULTURE_MONKEY,
+		TAG_HOMEWORLD = HOME_SYSTEM_STATELESS,
+		TAG_FACTION = FACTION_TEST_SUBJECTS
+	)
+
+
 /datum/species/monkey/handle_npc(var/mob/living/carbon/human/H)
 	if(H.stat != CONSCIOUS)
 		return
@@ -64,9 +74,6 @@
 
 	..()
 
-/datum/species/monkey/get_random_name()
-	return "[lowertext(name)] ([rand(100,999)])"
-
 /datum/species/monkey/tajaran
 	name = SPECIES_MONKEY_TAJ
 	name_plural = "Farwa"
@@ -75,14 +82,22 @@
 	deform = 'icons/mob/human_races/monkeys/r_farwa.dmi'
 
 	greater_form = SPECIES_TAJ
-	default_language = "Farwa"
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
 	tail = "farwatail"
 
+
+	//default_language = "Farwa"
+
+
+	force_cultural_info = list(
+		TAG_CULTURE = CULTURE_FARWA,
+		TAG_HOMEWORLD = HOME_SYSTEM_STATELESS,
+		TAG_FACTION = FACTION_TEST_SUBJECTS
+	)
+
 /datum/species/monkey/skrell
 	name = SPECIES_MONKEY_SKRELL
-	name_plural = "Neaera"
 
 	icobase = 'icons/mob/human_races/monkeys/r_neaera.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_neaera.dmi'
@@ -94,9 +109,19 @@
 	reagent_tag = IS_SKRELL
 	tail = null
 
+
+	//name_plural = "Neaera"
+
+
+	force_cultural_info = list(
+		TAG_CULTURE = CULTURE_NEARA,
+		TAG_HOMEWORLD = HOME_SYSTEM_STATELESS,
+		TAG_FACTION = FACTION_TEST_SUBJECTS
+	)
+
+
 /datum/species/monkey/unathi
 	name = SPECIES_MONKEY_UNATHI
-	name_plural = "Stok"
 
 	icobase = 'icons/mob/human_races/monkeys/r_stok.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_stok.dmi'
@@ -108,6 +133,17 @@
 	base_color = "#066000"
 	reagent_tag = IS_UNATHI
 
+
+	//name_plural = "Stok"
+
+
+	force_cultural_info = list(
+		TAG_CULTURE = CULTURE_STOK,
+		TAG_HOMEWORLD = HOME_SYSTEM_STATELESS,
+		TAG_FACTION = FACTION_TEST_SUBJECTS
+	)
+
+
 /datum/species/monkey/shark
 	name = SPECIES_MONKEY_AKULA
 	name_plural = "Sobaka"
@@ -115,7 +151,10 @@
 	deform = 'icons/mob/human_races/monkeys/r_sobaka_vr.dmi'
 	tail = null //The tail is part of its body due to tail using the "icons/effects/species.dmi" file. It must be null, or they'll have a chimp tail.
 	greater_form = "Akula"
-	default_language = "Skrellian" //Closest we have.
+
+
+	//default_language = "Skrellian" //Closest we have.
+
 
 /datum/species/monkey/sergal
 	name = SPECIES_MONKEY_SERGAL
@@ -123,7 +162,10 @@
 	icobase = 'icons/mob/human_races/monkeys/r_sergaling_vr.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_sergaling_vr.dmi'
 	tail = null
-	default_language = LANGUAGE_SAGARU
+
+
+	//default_language = LANGUAGE_SAGARU
+
 
 /datum/species/monkey/sparra
 	name = SPECIES_MONKEY_NEVREAN
@@ -132,23 +174,9 @@
 	tail = null
 	icobase = 'icons/mob/human_races/monkeys/r_sparra_vr.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_sparra_vr.dmi'
-	default_language = LANGUAGE_BIRDSONG
 
 
-/* Example from Polaris code
-/datum/species/monkey/tajaran
-	name = "Farwa"
-	name_plural = "Farwa"
-
-	icobase = 'icons/mob/human_races/monkeys/r_farwa.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_farwa.dmi'
-
-	greater_form = "Tajaran"
-	default_language = "Farwa"
-	flesh_color = "#AFA59E"
-	base_color = "#333333"
-	tail = "farwatail"
-*/
+	//default_language = LANGUAGE_BIRDSONG
 
 /datum/species/monkey/vulpkanin
 	name = SPECIES_MONKEY_VULPKANIN
@@ -158,10 +186,13 @@
 	deform = 'icons/mob/human_races/monkeys/r_wolpin.dmi'
 
 	greater_form = "Vulpkanin"
-	default_language = LANGUAGE_CANILUNZT
 	flesh_color = "#966464"
 	base_color = "#000000"
 	tail = null
+
+
+	//default_language = LANGUAGE_CANILUNZT
+
 
 //INSERT CODE HERE SO MONKEYS CAN BE SPAWNED.
 //Also, M was added to the end of the spawn names to signify that it's a monkey, since some names were conflicting.

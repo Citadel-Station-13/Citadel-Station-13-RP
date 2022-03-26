@@ -26,38 +26,38 @@
 	sort_order = 7
 
 /datum/category_item/player_setup_item/vore/traits/load_character(var/savefile/S)
-	S["custom_species"]	>> pref.custom_species
-	S["custom_base"]	>> pref.custom_base
-	S["pos_traits"]		>> pref.pos_traits
-	S["neu_traits"]		>> pref.neu_traits
-	S["neg_traits"]		>> pref.neg_traits
-	S["blood_color"]	>> pref.blood_color
+	from_file(S["custom_species"], pref.custom_species)
+	from_file(S["custom_base"], pref.custom_base)
+	from_file(S["pos_traits"], pref.pos_traits)
+	from_file(S["neu_traits"], pref.neu_traits)
+	from_file(S["neg_traits"], pref.neg_traits)
+	from_file(S["blood_color"], pref.blood_color)
 
-	S["traits_cheating"]>> pref.traits_cheating
-	S["max_traits"]		>> pref.max_traits
-	S["trait_points"]	>> pref.starting_trait_points
+	from_file(S["traits_cheating"], pref.traits_cheating)
+	from_file(S["max_traits"], pref.max_traits)
+	from_file(S["trait_points"], pref.starting_trait_points)
 
-	S["custom_say"]		>> pref.custom_say
-	S["custom_whisper"]	>> pref.custom_whisper
-	S["custom_ask"]		>> pref.custom_ask
-	S["custom_exclaim"]	>> pref.custom_exclaim
+	from_file(S["custom_say"], pref.custom_say)
+	from_file(S["custom_whisper"], pref.custom_whisper)
+	from_file(S["custom_ask"], pref.custom_ask)
+	from_file(S["custom_exclaim"], pref.custom_exclaim)
 
 /datum/category_item/player_setup_item/vore/traits/save_character(var/savefile/S)
-	S["custom_species"]	<< pref.custom_species
-	S["custom_base"]	<< pref.custom_base
-	S["pos_traits"]		<< pref.pos_traits
-	S["neu_traits"]		<< pref.neu_traits
-	S["neg_traits"]		<< pref.neg_traits
-	S["blood_color"]	<< pref.blood_color
+	to_file(S["custom_species"], pref.custom_species)
+	to_file(S["custom_base"], pref.custom_base)
+	to_file(S["pos_traits"], pref.pos_traits)
+	to_file(S["neu_traits"], pref.neu_traits)
+	to_file(S["neg_traits"], pref.neg_traits)
+	to_file(S["blood_color"], pref.blood_color)
 
-	S["traits_cheating"]<< pref.traits_cheating
-	S["max_traits"]		<< pref.max_traits
-	S["trait_points"]	<< pref.starting_trait_points
+	to_file(S["traits_cheating"], pref.traits_cheating)
+	to_file(S["max_traits"], pref.max_traits)
+	to_file(S["trait_points"], pref.starting_trait_points)
 
-	S["custom_say"]		<< pref.custom_say
-	S["custom_whisper"]	<< pref.custom_whisper
-	S["custom_ask"]		<< pref.custom_ask
-	S["custom_exclaim"]	<< pref.custom_exclaim
+	to_file(S["custom_say"], pref.custom_say)
+	to_file(S["custom_whisper"], pref.custom_whisper)
+	to_file(S["custom_ask"], pref.custom_ask)
+	to_file(S["custom_exclaim"], pref.custom_exclaim)
 
 /datum/category_item/player_setup_item/vore/traits/sanitize_character()
 	if(!pref.pos_traits) pref.pos_traits = list()

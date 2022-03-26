@@ -9,17 +9,17 @@
 	sort_order = 4
 
 /datum/category_item/player_setup_item/vore/resleeve/load_character(var/savefile/S)
-	S["resleeve_lock"]		>> pref.resleeve_lock
-	S["resleeve_scan"]		>> pref.resleeve_scan
+	from_file(S["resleeve_lock"], pref.resleeve_lock)
+	from_file(S["resleeve_scan"], pref.resleeve_scan)
 
 
 /datum/category_item/player_setup_item/vore/resleeve/save_character(var/savefile/S)
-	S["resleeve_lock"]		<< pref.resleeve_lock
-	S["resleeve_scan"]		<< pref.resleeve_scan
+	to_file(S["resleeve_lock"], pref.resleeve_lock)
+	to_file(S["resleeve_scan"], pref.resleeve_scan)
 
 /datum/category_item/player_setup_item/vore/resleeve/sanitize_character()
-	pref.resleeve_lock		= sanitize_integer(pref.resleeve_lock, 0, 1, initial(pref.resleeve_lock))
-	pref.resleeve_scan		= sanitize_integer(pref.resleeve_scan, 0, 1, initial(pref.resleeve_scan))
+	pref.resleeve_lock = sanitize_integer(pref.resleeve_lock, 0, 1, initial(pref.resleeve_lock))
+	pref.resleeve_scan = sanitize_integer(pref.resleeve_scan, 0, 1, initial(pref.resleeve_scan))
 
 /datum/category_item/player_setup_item/vore/resleeve/copy_to_mob(var/mob/living/carbon/human/character)
 	if(character && !istype(character,/mob/living/carbon/human/dummy))

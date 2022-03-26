@@ -230,33 +230,7 @@
 #define O_VENTC "morphoplastic node"
 #define O_VRLINK "virtual node"
 
-#define O_ALL list(
-	O_ACID,
-	O_ANCHOR,
-	O_AREJECT,
-	O_CELL,
-	O_EGG,
-	O_FACT,
-	O_FRUIT,
-	O_GBLADDER,
-	O_HIVE,
-	O_HSTOMACH,
-	O_MOUTH,
-	O_NUTRIENT,
-	O_ORCH,
-	O_PLASMA,
-	O_POLYP,
-	O_REGBRUTE,
-	O_REGBURN,
-	O_REGOXY,
-	O_REGTOX,
-	O_RESIN,
-	O_RESPONSE,
-	O_STANDARD,
-	O_STRATA,
-	O_VENTC,
-	O_VRLINK
-	)
+#define O_ALL list(O_ACID, O_ANCHOR, O_AREJECT, O_CELL, O_EGG, O_FACT, O_FRUIT, O_GBLADDER, O_HIVE, O_HSTOMACH, O_MOUTH, O_NUTRIENT, O_ORCH, O_PLASMA, O_POLYP, O_REGBRUTE, O_REGBURN, O_REGOXY, O_REGTOX, O_RESIN, O_RESPONSE, O_STANDARD, O_STRATA, O_VENTC, O_VRLINK)
 
 
 // External organs, aka limbs
@@ -272,19 +246,7 @@
 #define BP_L_FOOT "l_foot"
 #define BP_R_FOOT "r_foot"
 
-#define BP_ALL list(
-	BP_HEAD,
-	BP_TORSO,
-	BP_GROIN,
-	BP_L_ARM,
-	BP_R_ARM,
-	BP_L_HAND,
-	BP_R_HAND,
-	BP_L_LEG,
-	BP_R_LEG,
-	BP_L_FOOT,
-	BP_R_FOOT
-	)
+#define BP_ALL list(BP_HEAD, BP_TORSO, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
 #define BP_FLOAT  "floatation disc"
 #define BP_JETS  "maneuvering jets"

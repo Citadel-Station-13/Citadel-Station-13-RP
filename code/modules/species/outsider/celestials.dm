@@ -1,12 +1,9 @@
 /datum/species/auril
 	name = SPECIES_AURIL
 	name_plural = "Auril"
-	default_language = LANGUAGE_GALCOM
-	language = LANGUAGE_ENOCHIAN
-	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 
-	blurb = "The Auril are humanoids that resemble the angelic figures of Old Earth Christian myth. The resemblance, however, \
+	description = "The Auril are humanoids that resemble the angelic figures of Old Earth Christian myth. The resemblance, however, \
 	is surface-level. Auril are an alien species from the Daedal system, which is the only system in the galaxy inhabited to a \
 	major scale by the Auril. They are perfectionists, conformists, and obedient to authority - in that order. Their high-pressure \
 	society on Sanctum, their homeworld, leads to some abandoning this mindset entirely, however, which in turn causes them to \
@@ -45,12 +42,14 @@
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color)
 
+
+	//default_language = LANGUAGE_GALCOM
+	//language = LANGUAGE_ENOCHIAN
+	//num_alternate_languages = 3
+
 /datum/species/dremachir
 	name = SPECIES_DREMACHIR
 	name_plural = "Dremachir"
-	default_language = LANGUAGE_GALCOM
-	language = LANGUAGE_DAEMON
-	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
 	blurb = "Dremachir lore is still a work in progress. They are not actual supernatural creatures. They are aliens. \
@@ -84,3 +83,8 @@
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal)
+
+
+	//default_language = LANGUAGE_GALCOM
+	//language = LANGUAGE_DAEMON
+	//num_alternate_languages = 3

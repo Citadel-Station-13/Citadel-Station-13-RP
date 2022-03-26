@@ -14,7 +14,7 @@
 	min_age = 18
 	max_age = 75
 
-	economic_modifier = 6
+	economic_power = 6
 
 	health_hud_intensity = 3
 

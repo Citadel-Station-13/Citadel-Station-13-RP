@@ -3,14 +3,9 @@
 	name_plural = "Vox"
 	icobase = 'icons/mob/human_races/r_vox_old.dmi'
 	deform = 'icons/mob/human_races/r_def_vox_old.dmi'
-	default_language = LANGUAGE_VOX
-	language = LANGUAGE_GALCOM
-	species_language = LANGUAGE_VOX
-	num_alternate_languages = 1
-	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
 	rarity_value = 4
-	blurb = "The Vox are the broken remnants of a once-proud race, now reduced to little more than \
+	description = "The Vox are the broken remnants of a once-proud race, now reduced to little more than \
 	scavenging vermin who prey on isolated stations, ships or planets to keep their own ancient arkships \
 	alive. They are four to five feet tall, reptillian, beaked, tailed and quilled; human crews often \
 	refer to them as 'shitbirds' for their violent and offensive nature, as well as their horrible \
@@ -96,9 +91,34 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-/datum/species/vox/get_random_name(var/gender)
-	var/datum/language/species_language = GLOB.all_languages[default_language]
-	return species_language.get_random_name(gender)
+
+	//default_language = LANGUAGE_VOX
+	//language = LANGUAGE_GALCOM
+	//species_language = LANGUAGE_VOX
+	//num_alternate_languages = 1
+	//assisted_langs = list(LANGUAGE_ROOTGLOBAL)
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			CULTURE_VOX_ARKSHIP,
+			CULTURE_VOX_SALVAGER,
+			CULTURE_VOX_RAIDER
+		),
+		TAG_HOMEWORLD = list(
+			HOME_SYSTEM_VOX_ARK,
+			HOME_SYSTEM_VOX_SHROUD,
+			HOME_SYSTEM_VOX_SHIP
+		),
+		TAG_FACTION = list(
+			FACTION_VOX_RAIDER,
+			FACTION_VOX_CREW,
+			FACTION_VOX_APEX
+		),
+		TAG_RELIGION = list(
+			RELIGION_VOX
+		)
+	)
 
 /datum/species/vox/equip_survival_gear(var/mob/living/carbon/human/H, var/extendedtank = 0,var/comprehensive = 0)
 	. = ..()

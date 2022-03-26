@@ -5,7 +5,6 @@
 	icobase = 'icons/mob/human_races/r_shadow.dmi'
 	deform = 'icons/mob/human_races/r_shadow.dmi'
 
-	language = "Sol Common" //todo?
 	unarmed_types = list(/datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/sharp)
 	light_dam = 2
 	darksight = 8
@@ -25,7 +24,8 @@
 
 	genders = list(NEUTER)
 
-	assisted_langs = list()
+	//language = LANGUAGE_GALCOM
+	//assisted_langs = list()
 
 /datum/species/shadow/handle_death(var/mob/living/carbon/human/H)
 	spawn(1)

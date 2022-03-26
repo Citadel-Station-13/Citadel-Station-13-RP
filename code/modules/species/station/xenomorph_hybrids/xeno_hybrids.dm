@@ -6,12 +6,11 @@
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	num_alternate_languages = 2
 
 	min_age = 18
-	max_age = 150//Xenomorphs probably get pretty old if not shot dead
+	max_age = 150 // Xenomorphs probably get pretty old if not shot dead
 
-	blurb = "Xenohybrids are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
+	description = "Xenohybrids are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
 	Xenohybrids are civilised and capable of communicating with other species, without knowing their language. \
 	Over the years crusading the stars xenomorphs gathered genetic material of almost all known species(and probably some unknown as well), \
 	allowing Xenohybrids to reproduce with most other species. This reproduction is not as invasive as the facehuggers of their relatives, \
@@ -21,13 +20,8 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
 
 	//primitive_form = "" //None for these guys
-	language = "Xenomorph"
-	name_language = "Xenomorph"
-	species_language = "Xenomorph"
-	secondary_langs = list("Xenomorph")
-	num_alternate_languages = 3
 
-	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
+	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE // Chitin like VASILISSANs should have the same flags
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
@@ -47,7 +41,7 @@
 		//mob/living/carbon/human/proc/neurotoxin,//need the acid organ which I dont wanna just give them
 		/mob/living/carbon/human/proc/hybrid_resin,
 		/mob/living/carbon/human/proc/hybrid_plant,//replaced from the normal weed node to place a singular weed
-        /mob/living/carbon/human/proc/active_heal
+		/mob/living/carbon/human/proc/active_heal
 		)
 
 	total_health = 110	//Exoskeleton makes you tougher than baseline
@@ -87,49 +81,56 @@
 		O_PLASMA =		/obj/item/organ/internal/xenos/plasmavessel/hunter,//Important for the xenomorph abilities, hunter to have a pretty small plasma capacity
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine,
-		O_RESIN =    	/obj/item/organ/internal/xenos/resinspinner,
+		O_RESIN =		/obj/item/organ/internal/xenos/resinspinner,
 		)
 	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
 	reagent_tag = IS_XENOHYBRID
 
+
+	//language = "Xenomorph"
+	//name_language = "Xenomorph"
+	//species_language = "Xenomorph"
+	//secondary_langs = list("Xenomorph")
+	//num_alternate_languages = 3
+
+
 /datum/species/xenohybrid/can_breathe_water()
 	return TRUE	//they dont quite breathe
 
 /datum/species/xenohybrid/handle_environment_special(var/mob/living/carbon/human/H)
-    if(H.healing)
+	if(H.healing)
 
-        var/heal_amount = min(H.nutrition, 200) / 50 //Not to much else we might as well give them a diona like healing
-        H.nutrition = max(H.nutrition-heal_amount,0)
+		var/heal_amount = min(H.nutrition, 200) / 50 //Not to much else we might as well give them a diona like healing
+		H.nutrition = max(H.nutrition-heal_amount,0)
 
-        if(H.resting)
-            heal_amount *= 1.05//resting allows you to heal a little faster
-        var/fire_damage = H.getFireLoss()
-        if(fire_damage >= heal_amount)
-            H.adjustFireLoss(-heal_amount)
-            heal_amount = 0;
-            return
-        if(fire_damage < heal_amount)
-            H.adjustFireLoss(-heal_amount)
-            heal_amount -= fire_damage
-        
-        var/trauma_damage = H.getBruteLoss()
-        if(trauma_damage >= heal_amount)
-            H.adjustBruteLoss(-heal_amount)
-            heal_amount = 0;
-            return
-        if(trauma_damage < heal_amount)
-            H.adjustBruteLoss(-heal_amount)
-            heal_amount -= trauma_damage
+		if(H.resting)
+			heal_amount *= 1.05//resting allows you to heal a little faster
+		var/fire_damage = H.getFireLoss()
+		if(fire_damage >= heal_amount)
+			H.adjustFireLoss(-heal_amount)
+			heal_amount = 0;
+			return
+		if(fire_damage < heal_amount)
+			H.adjustFireLoss(-heal_amount)
+			heal_amount -= fire_damage
 
-        var/posion_damage = H.getToxLoss()
-        if(posion_damage >= heal_amount)
-            H.adjustToxLoss(-heal_amount)
-            heal_amount = 0;
-            return
-        if(posion_damage < heal_amount)
-            H.adjustToxLoss(-heal_amount)
-            heal_amount -= posion_damage
+		var/trauma_damage = H.getBruteLoss()
+		if(trauma_damage >= heal_amount)
+			H.adjustBruteLoss(-heal_amount)
+			heal_amount = 0;
+			return
+		if(trauma_damage < heal_amount)
+			H.adjustBruteLoss(-heal_amount)
+			heal_amount -= trauma_damage
 
-        H.nutrition += heal_amount
+		var/posion_damage = H.getToxLoss()
+		if(posion_damage >= heal_amount)
+			H.adjustToxLoss(-heal_amount)
+			heal_amount = 0;
+			return
+		if(posion_damage < heal_amount)
+			H.adjustToxLoss(-heal_amount)
+			heal_amount -= posion_damage
 
+		H.nutrition += heal_amount

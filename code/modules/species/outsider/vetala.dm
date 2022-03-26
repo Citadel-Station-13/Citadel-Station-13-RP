@@ -1,13 +1,10 @@
 /datum/species/vetala_ruddy
 	name = SPECIES_VETALA_RUDDY
 	name_plural = "Vetalan"
-	default_language = LANGUAGE_GALCOM
-	language = LANGUAGE_GALCOM
-	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws, /datum/unarmed_attack/bite)
 	rarity_value = 4
 
-	blurb = "The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
+	description = "The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
 	At some point during their former life, each Vetalan was exposed to an aggressive and highly adaptable \
 	pathogen. Although the source of the pathogen remains unclear, its ability to jump across species and its \
 	methodical transmissibility vectors suggest an artificial origin. Vetalans are divided into two primary \
@@ -68,6 +65,11 @@
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/lick_wounds)
 
+
+	//default_language = LANGUAGE_GALCOM
+	//language = LANGUAGE_GALCOM
+	//num_alternate_languages = 3
+
 /datum/species/vetala_pale
 	name = SPECIES_VETALA_PALE
 	name_plural = "Vetalan"
@@ -77,7 +79,7 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws, /datum/unarmed_attack/bite)
 	rarity_value = 4
 
-	blurb =	"The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
+	description =	"The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
 	At some point during their former life, each Vetalan was exposed to an aggressive and highly adaptable \
 	pathogen. Although the source of the pathogen remains unclear, its ability to jump across species and its \
 	methodical transmissibility vectors suggest an artificial origin. Vetalans are divided into two primary \

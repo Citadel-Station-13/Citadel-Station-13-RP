@@ -2,28 +2,28 @@
 	var/list/all_underwear
 	var/list/all_underwear_metadata
 
-/datum/category_item/player_setup_item/general/equipment
+/datum/category_item/player_setup_item/physical/equipment
 	name = "Clothing"
-	sort_order = 4
+	sort_order = 3
 
-/datum/category_item/player_setup_item/general/equipment/load_character(var/savefile/S)
-	S["all_underwear"] >> pref.all_underwear
-	S["all_underwear_metadata"] >> pref.all_underwear_metadata
-	S["backbag"]	>> pref.backbag
-	S["pdachoice"]	>> pref.pdachoice
-	S["communicator_visibility"]	>> pref.communicator_visibility
-	S["ringtone"]	>> pref.ringtone
+/datum/category_item/player_setup_item/physical/equipment/load_character(var/savefile/S)
+	from_file(S["all_underwear"], pref.all_underwear)
+	from_file(S["all_underwear_metadata"], pref.all_underwear_metadata)
+	from_file(S["backbag"], pref.backbag)
+	from_file(S["pdachoice"], pref.pdachoice)
+	from_file(S["communicator_visibility"], pref.communicator_visibility)
+	from_file(S["ringtone"], pref.ringtone)
 
-/datum/category_item/player_setup_item/general/equipment/save_character(var/savefile/S)
-	S["all_underwear"] << pref.all_underwear
-	S["all_underwear_metadata"] << pref.all_underwear_metadata
-	S["backbag"]	<< pref.backbag
-	S["pdachoice"]	<< pref.pdachoice
-	S["communicator_visibility"]	<< pref.communicator_visibility
-	S["ringtone"]	<< pref.ringtone
+/datum/category_item/player_setup_item/physical/equipment/save_character(var/savefile/S)
+	to_file(S["all_underwear"], pref.all_underwear)
+	to_file(S["all_underwear_metadata"], pref.all_underwear_metadata)
+	to_file(S["backbag"], pref.backbag)
+	to_file(S["pdachoice"], pref.pdachoice)
+	to_file(S["communicator_visibility"], pref.communicator_visibility)
+	to_file(S["ringtone"], pref.ringtone)
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/general/equipment/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/physical/equipment/copy_to_mob(var/mob/living/carbon/human/character)
 	character.all_underwear.Cut()
 	character.all_underwear_metadata.Cut()
 
@@ -46,7 +46,7 @@
 		pref.pdachoice = 1
 	character.pdachoice = pref.pdachoice
 
-/datum/category_item/player_setup_item/general/equipment/sanitize_character()
+/datum/category_item/player_setup_item/physical/equipment/sanitize_character()
 	if(!islist(pref.gear)) pref.gear = list()
 
 	if(!istype(pref.all_underwear))
@@ -77,7 +77,7 @@
 	pref.pdachoice	= sanitize_integer(pref.pdachoice, 1, pdachoicelist.len, initial(pref.pdachoice))
 	pref.ringtone	= sanitize(pref.ringtone, 20)
 
-/datum/category_item/player_setup_item/general/equipment/content()
+/datum/category_item/player_setup_item/physical/equipment/content()
 	. = list()
 	. += "<b>Equipment:</b><br>"
 	for(var/datum/category_group/underwear/UWC in GLOB.global_underwear.categories)
@@ -96,7 +96,7 @@
 
 	return jointext(.,null)
 
-/datum/category_item/player_setup_item/general/equipment/proc/get_metadata(var/underwear_category, var/datum/gear_tweak/gt)
+/datum/category_item/player_setup_item/physical/equipment/proc/get_metadata(var/underwear_category, var/datum/gear_tweak/gt)
 	var/metadata = pref.all_underwear_metadata[underwear_category]
 	if(!metadata)
 		metadata = list()
@@ -108,12 +108,12 @@
 		metadata["[gt]"] = tweak_data
 	return tweak_data
 
-/datum/category_item/player_setup_item/general/equipment/proc/set_metadata(var/underwear_category, var/datum/gear_tweak/gt, var/new_metadata)
+/datum/category_item/player_setup_item/physical/equipment/proc/set_metadata(var/underwear_category, var/datum/gear_tweak/gt, var/new_metadata)
 	var/list/metadata = pref.all_underwear_metadata[underwear_category]
 	metadata["[gt]"] = new_metadata
 
 
-/datum/category_item/player_setup_item/general/equipment/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/physical/equipment/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["change_backpack"])
 		var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference", backbaglist[pref.backbag]) as null|anything in backbaglist
 		if(!isnull(new_backbag) && CanUseTopic(user))

@@ -3,25 +3,25 @@
 	sort_order = 1
 
 /datum/category_item/player_setup_item/skills/load_character(var/savefile/S)
-	S["skills"]					>> pref.skills
-	S["used_skillpoints"]		>> pref.used_skillpoints
-	S["skill_specialization"]	>> pref.skill_specialization
+	from_file(S["skills"], pref.skills)
+	from_file(S["used_skillpoints"], pref.used_skillpoints)
+	from_file(S["skill_specialization"], pref.skill_specialization)
 
 /datum/category_item/player_setup_item/skills/save_character(var/savefile/S)
-	S["skills"]					<< pref.skills
-	S["used_skillpoints"]		<< pref.used_skillpoints
-	S["skill_specialization"]	<< pref.skill_specialization
+	to_file(S["skills"], pref.skills)
+	to_file(S["used_skillpoints"], pref.used_skillpoints)
+	to_file(S["skill_specialization"], pref.skill_specialization)
 
 /datum/category_item/player_setup_item/skills/sanitize_character()
-	if(SKILLS == null)				setup_skills()
-	if(!pref.skills)				pref.skills = list()
-	if(!pref.skills.len)			pref.ZeroSkills()
-	if(pref.used_skillpoints < 0)	pref.used_skillpoints = 0
+	if(SKILLS == null) setup_skills()
+	if(!pref.skills) pref.skills = list()
+	if(!pref.skills.len) pref.ZeroSkills()
+	if(pref.used_skillpoints < 0) pref.used_skillpoints = 0
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/skills/copy_to_mob(var/mob/living/carbon/human/character)
-	character.skills			= pref.skills
-	character.used_skillpoints	= pref.used_skillpoints
+	character.skills = pref.skills
+	character.used_skillpoints = pref.used_skillpoints
 
 /datum/category_item/player_setup_item/skills/content()
 	. = list()

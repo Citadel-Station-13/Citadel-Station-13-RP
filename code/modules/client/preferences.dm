@@ -57,15 +57,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/g_facial = 0					//Face hair color
 	var/b_facial = 0					//Face hair color
 	var/s_tone = 0						//Skin tone
-	var/r_skin = 238					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
-	var/g_skin = 206					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
-	var/b_skin = 179					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
+	var/r_skin = 238					//Skin color
+	var/g_skin = 206					//Skin color
+	var/b_skin = 179					//Skin color
 	var/s_base = ""						//For Adherent
 	var/r_eyes = 0						//Eye color
 	var/g_eyes = 0						//Eye color
 	var/b_eyes = 0						//Eye color
-	var/species = SPECIES_HUMAN         //Species datum to use.
-	var/species_preview                 //Used for the species selection window.
+	var/species = SPECIES_HUMAN //Species datum to use.
 	var/list/alternate_languages = list() //Secondary language(s)
 	var/list/language_prefixes = list() //Kanguage prefix keys
 	var/list/gear						//Left in for Legacy reasons, will no longer save.
@@ -76,7 +75,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/r_synth							//Used with synth_color to color synth parts that normaly can't be colored.
 	var/g_synth							//Same as above
 	var/b_synth							//Same as above
-	var/synth_markings = 1				//Enable/disable markings on synth parts. //VOREStation Edit - 1 by default
+	var/synth_markings = 1				//Enable/disable markings on synth parts.
 
 		//Some faction information.
 	var/home_system = "Unset"           //System of birth.
@@ -396,7 +395,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.set_species(species)
 	// Special Case: This references variables owned by two different datums, so do it here.
 	if(be_random_name)
-		real_name = random_name(identifying_gender,species)
+		var/decl/cultural_info/culture = cultural_info[TAG_CULTURE]
+		if(culture) real_name = culture.get_random_name(indentifying_gender)
 
 	// Ask the preferences datums to apply their own settings to the new mob
 	player_setup.copy_to_mob(character)
@@ -411,6 +411,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.update_mutations()
 		character.update_underwear()
 		character.update_hair()
+
+	for(var/token in cultural_info)
+		character.set_cultural_value(token, cultural_info[token], defer_language_update = TRUE)
+	character.update_languages()
+	for(var/lang in alternate_languages)
+		character.add_language(lang)
 
 	if(LAZYLEN(character.descriptors))
 		for(var/entry in body_descriptors)

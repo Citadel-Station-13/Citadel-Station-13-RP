@@ -20,17 +20,17 @@ var/XENOMORPH_EGG 	= "Xenomorph"
 	sort_order = 3
 
 /datum/category_item/player_setup_item/vore/egg/load_character(var/savefile/S)
-	S["vore_egg_type"]		>> pref.vore_egg_type
+	from_file(S["vore_egg_type"], pref.vore_egg_type)
 
 /datum/category_item/player_setup_item/vore/egg/save_character(var/savefile/S)
-	S["vore_egg_type"]		<< pref.vore_egg_type
+	to_file(S["vore_egg_type"], pref.vore_egg_type)
 
 /datum/category_item/player_setup_item/vore/egg/sanitize_character()
 	var/valid_vore_egg_types = global_vore_egg_types
-	pref.vore_egg_type	 = sanitize_inlist(pref.vore_egg_type, valid_vore_egg_types, initial(pref.vore_egg_type))
+	pref.vore_egg_type = sanitize_inlist(pref.vore_egg_type, valid_vore_egg_types, initial(pref.vore_egg_type))
 
 /datum/category_item/player_setup_item/vore/egg/copy_to_mob(var/mob/living/carbon/human/character)
-	character.vore_egg_type	= pref.vore_egg_type
+	character.vore_egg_type = pref.vore_egg_type
 
 /datum/category_item/player_setup_item/vore/egg/content(var/mob/user)
 	. += "<br>"

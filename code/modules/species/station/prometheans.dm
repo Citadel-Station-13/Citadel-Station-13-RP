@@ -3,16 +3,16 @@ var/datum/species/shapeshifter/promethean/prometheans
 // Species definition follows.
 /datum/species/shapeshifter/promethean
 
-	name =             SPECIES_PROMETHEAN
-	name_plural =      "Prometheans"
-	blurb =            "Prometheans (Macrolimus artificialis) are a species of artificially-created gelatinous humanoids, \
+	name = SPECIES_PROMETHEAN
+	name_plural = "Prometheans"
+	description = "Prometheans (Macrolimus artificialis) are a species of artificially-created gelatinous humanoids, \
 	chiefly characterized by their primarily liquid bodies and ability to change their bodily shape and color in order to  \
 	mimic many forms of life. Derived from the Aetolian giant slime (Macrolimus vulgaris) inhabiting the warm, tropical planet \
 	of Aetolus, they are a relatively new lab-created sapient species, and as such many things about them have yet to be comprehensively studied. \
 	What has Science done?"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/promethean)
-	show_ssd =         "totally quiescent"
-	death_message =    "rapidly loses cohesion, splattering across the ground..."
+	show_ssd = "totally quiescent"
+	death_message = "rapidly loses cohesion, splattering across the ground..."
 	knockout_message = "collapses inwards, forming a disordered puddle of goo."
 	remains_type = /obj/effect/decal/cleanable/ash
 
@@ -20,19 +20,15 @@ var/datum/species/shapeshifter/promethean/prometheans
 	flesh_color = "#05FFFB"
 
 	hunger_factor = 0.07 //As of writing, original was 0.1 - Slows hunger rate (some more)
-	reagent_tag =      IS_SLIME
-	mob_size =         MOB_MEDIUM
-	bump_flag =        SLIME
+	reagent_tag = IS_SLIME
+	mob_size = MOB_MEDIUM
+	bump_flag = SLIME
 	push_flags = ~HEAVY
 	swap_flags = ~HEAVY
-	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
+	flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
-	spawn_flags		 = SPECIES_CAN_JOIN
+	spawn_flags = SPECIES_CAN_JOIN
 	health_hud_intensity = 2
-	num_alternate_languages = 2 // citadel change, not stuck with one other lang
-	species_language = LANGUAGE_SOL_COMMON
-	secondary_langs = list(LANGUAGE_SOL_COMMON)	// For some reason, having this as their species language does not allow it to be chosen.
-	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)	// Prometheans are weird, let's just assume they can use basically any language.
 
 	breath_type = null
 	poison_type = null
@@ -42,19 +38,19 @@ var/datum/species/shapeshifter/promethean/prometheans
 	male_cough_sounds = list('sound/effects/slime_squish.ogg')
 	female_cough_sounds = list('sound/effects/slime_squish.ogg')
 
-	min_age =		18
-	max_age =		80
+	min_age = 18
+	max_age = 80
 
-	economic_modifier = 3
+	economic_power = 3
 
-	gluttonous =	0
-	virus_immune =	1
-	blood_volume =	560
+	gluttonous = 0
+	virus_immune = 1
+	blood_volume = 560
 	slowdown = -0.2 // citadel change
-	brute_mod =		0.5 // citadel change, used to be 0.75
-	burn_mod =		2
-	oxy_mod =		0
-	flash_mod =		0.5 //No centralized, lensed eyes.
+	brute_mod = 0.5 // citadel change, used to be 0.75
+	burn_mod = 2
+	oxy_mod = 0
+	flash_mod = 0.5 //No centralized, lensed eyes.
 	item_slowdown_mod = 0.66 // citadel change, used to be 1.33
 
 	cloning_modifier = /datum/modifier/cloning_sickness/promethean
@@ -134,6 +130,13 @@ var/datum/species/shapeshifter/promethean/prometheans
 	trashcan = 1 //They have goopy bodies. They can just dissolve things within them.
 
 	wikilink="https://wiki.vore-station.net/Promethean"
+
+
+	//num_alternate_languages = 2 // citadel change, not stuck with one other lang
+	//species_language = LANGUAGE_SOL_COMMON
+	//secondary_langs = list(LANGUAGE_SOL_COMMON)	// For some reason, having this as their species language does not allow it to be chosen.
+	//assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)	// Prometheans are weird, let's just assume they can use basically any language.
+
 
 /datum/species/shapeshifter/promethean/New()
 	..()

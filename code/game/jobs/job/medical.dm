@@ -17,7 +17,7 @@
 	selection_color = "#026865"
 	idtype = /obj/item/card/id/medical/head
 	req_admin_notify = 1
-	economic_modifier = 10
+	economic_power = 10
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
@@ -64,7 +64,7 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/doctor
-	economic_modifier = 7
+	economic_power = 7
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor
@@ -136,7 +136,7 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/chemist
-	economic_modifier = 5
+	economic_power = 5
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
 	minimal_player_age = 3
@@ -174,7 +174,7 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/geneticist
-	economic_modifier = 7
+	economic_power = 7
 	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_research)
 	minimal_access = list(access_medical, access_morgue, access_genetics, access_research)
 
@@ -194,7 +194,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	economic_modifier = 5
+	economic_power = 5
 	supervisors = "the Chief Medical Officer"
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
@@ -244,7 +244,7 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/paramedic
-	economic_modifier = 4
+	economic_power = 4
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic

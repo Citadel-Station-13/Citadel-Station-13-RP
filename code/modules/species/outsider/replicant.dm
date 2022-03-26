@@ -7,12 +7,7 @@
 	name_plural = "Replicants"
 	primitive_form = SPECIES_MONKEY
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	blurb = "The remnants of some lost or dead race's research. These seem relatively normal."
-	num_alternate_languages = 3
-	species_language = LANGUAGE_GALCOM
-	secondary_langs = list(LANGUAGE_TERMINUS)
-	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
-	name_language = LANGUAGE_TERMINUS
+	description = "The remnants of some lost or dead race's research. These seem relatively normal."
 
 	blood_color = "#aaaadd"
 
@@ -66,14 +61,19 @@
 		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
 
+
+	//num_alternate_languages = 3
+	//species_language = LANGUAGE_GALCOM
+	//secondary_langs = list(LANGUAGE_TERMINUS)
+	//assisted_langs = list(LANGUAGE_ROOTGLOBAL)
+	//name_language = LANGUAGE_TERMINUS
+
+
 /datum/species/shapeshifter/replicant/alpha
 	name = SPECIES_REPLICANT_ALPHA
-	blurb = "The remnants of some lost or dead race's research. These seem caustic."
+	description = "The remnants of some lost or dead race's research. These seem caustic."
 
 	blood_color = "#55ff55"
-
-	species_language = LANGUAGE_SIGN
-	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_SOL_COMMON, LANGUAGE_SKRELLIANFAR)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
@@ -103,14 +103,16 @@
 		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
 
+
+	//species_language = LANGUAGE_SIGN
+	//assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_SOL_COMMON, LANGUAGE_SKRELLIANFAR)
+
+
 /datum/species/shapeshifter/replicant/beta
 	name = SPECIES_REPLICANT_BETA
-	blurb = "The remnants of some lost or dead race's research. These seem elastic."
+	description = "The remnants of some lost or dead race's research. These seem elastic."
 
 	blood_color = "#C0C0C0"
-
-	species_language = LANGUAGE_SIGN
-	secondary_langs = list(LANGUAGE_TERMINUS, LANGUAGE_ROOTGLOBAL)	// Radio-waves.
 
 	has_organ = list(
 		O_HEART =		/obj/item/organ/internal/heart/replicant/rage,
@@ -128,3 +130,7 @@
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
+
+
+	//species_language = LANGUAGE_SIGN
+	//secondary_langs = list(LANGUAGE_TERMINUS, LANGUAGE_ROOTGLOBAL)	// Radio-waves.

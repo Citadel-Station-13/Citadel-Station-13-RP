@@ -675,11 +675,6 @@
 			E.handle_implant(new_character)
 			E.post_implant(new_character)
 
-	for(var/lang in client.prefs.alternate_languages)
-		var/datum/language/chosen_language = GLOB.all_languages[lang]
-		if(chosen_language)
-			if(is_lang_whitelisted(src,chosen_language) || (new_character.species && (chosen_language.name in new_character.species.secondary_langs)))
-				new_character.add_language(lang)
 	// And uncomment this, too.
 	//new_character.dna.UpdateSE()
 
@@ -688,7 +683,7 @@
 	new_character.update_icons_body()
 	new_character.update_eyes()
 
-	new_character.key = key		//Manually transfer the key to log them in
+	new_character.key = key // Manually transfer the key to log them in
 
 	return new_character
 
@@ -702,16 +697,13 @@
 	popup.open()
 
 /mob/new_player/Move()
-	return 0
+	return FALSE
 
 /mob/new_player/proc/close_spawn_windows()
 
 	src << browse(null, "window=latechoices") //closes late choices window
 	src << browse(null, "window=preferences_window") //closes the player setup window
 	panel.close()
-
-/mob/new_player/proc/has_admin_rights()
-	return check_rights(R_ADMIN, 0, src)
 
 /mob/new_player/get_species()
 	var/datum/species/chosen_species

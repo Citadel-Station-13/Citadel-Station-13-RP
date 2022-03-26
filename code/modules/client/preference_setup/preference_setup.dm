@@ -2,14 +2,19 @@
 #define PREF_FBP_POSI "posi"
 #define PREF_FBP_SOFTWARE "software"
 
-/datum/category_group/player_setup_category/general_preferences
-	name = "General"
+/datum/category_group/player_setup_category/physical_preferences
+	name = "Physical"
 	sort_order = 1
-	category_item_type = /datum/category_item/player_setup_item/general
+	category_item_type = /datum/category_item/player_setup_item/physical
+
+/datum/category_group/player_setup_category/background_preferences
+	name = "Background"
+	sort_order = 2
+	category_item_type = /datum/category_item/player_setup_item/background
 
 /datum/category_group/player_setup_category/skill_preferences
 	name = "Skills"
-	sort_order = 2
+	sort_order = 3
 	category_item_type = /datum/category_item/player_setup_item/skills
 
 /datum/category_group/player_setup_category/appearance_preferences
@@ -29,8 +34,16 @@
 */ //VOREStation Removal End
 /datum/category_group/player_setup_category/global_preferences
 	name = "Global"
-	sort_order = 6
+	sort_order = 7
 	category_item_type = /datum/category_item/player_setup_item/player_global
+
+/* //Not added yet.
+/datum/category_group/player_setup_category/law_pref
+	name = "Laws"
+	sort_order = 7
+	sort_order = 8
+	category_item_type = /datum/category_item/player_setup_item/law_pref
+*/
 
 /****************************
 * Category Collection Setup *

@@ -828,7 +828,7 @@ var/list/admin_verbs_event_manager = list(
 		deadmin_holder.reassociate()
 		log_admin("[src] re-admined themself.")
 		message_admins("[src] re-admined themself.", 1)
-		to_chat(src, "<span class='interface'>You now have the keys to control the planet, or atleast a small space station</span>")
+		to_chat(src, "<span class='interface'>You now have the keys to control the planet, or at least [GLOB.using_map.full_name].</span>")
 		verbs -= /client/proc/readmin_self
 
 /client/proc/deadmin_self()

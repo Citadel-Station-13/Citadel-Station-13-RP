@@ -1,60 +1,60 @@
-/datum/category_item/player_setup_item/general/flavor
+/datum/category_item/player_setup_item/physical/flavor
 	name = "Flavor"
-	sort_order = 6
+	sort_order = 4
 
-/datum/category_item/player_setup_item/general/flavor/load_character(var/savefile/S)
-	S["flavor_texts_general"]	>> pref.flavor_texts["general"]
-	S["flavor_texts_head"]		>> pref.flavor_texts["head"]
-	S["flavor_texts_face"]		>> pref.flavor_texts["face"]
-	S["flavor_texts_eyes"]		>> pref.flavor_texts["eyes"]
-	S["flavor_texts_torso"]		>> pref.flavor_texts["torso"]
-	S["flavor_texts_arms"]		>> pref.flavor_texts["arms"]
-	S["flavor_texts_hands"]		>> pref.flavor_texts["hands"]
-	S["flavor_texts_legs"]		>> pref.flavor_texts["legs"]
-	S["flavor_texts_feet"]		>> pref.flavor_texts["feet"]
+/datum/category_item/player_setup_item/physical/flavor/load_character(var/savefile/S)
+	from_file(S["flavor_texts_general"], pref.flavor_texts["general"])
+	from_file(S["flavor_texts_head"], pref.flavor_texts["head"])
+	from_file(S["flavor_texts_face"], pref.flavor_texts["face"])
+	from_file(S["flavor_texts_eyes"], pref.flavor_texts["eyes"])
+	from_file(S["flavor_texts_torso"], pref.flavor_texts["torso"])
+	from_file(S["flavor_texts_arms"], pref.flavor_texts["arms"])
+	from_file(S["flavor_texts_hands"], pref.flavor_texts["hands"])
+	from_file(S["flavor_texts_legs"], pref.flavor_texts["legs"])
+	from_file(S["flavor_texts_feet"], pref.flavor_texts["feet"])
 
 	//Flavour text for robots.
-	S["flavour_texts_robot_Default"] >> pref.flavour_texts_robot["Default"]
+	from_file(S["flavour_texts_robot_Default"], pref.flavour_texts_robot["Default"])
 	for(var/module in robot_module_types)
-		S["flavour_texts_robot_[module]"] >> pref.flavour_texts_robot[module]
+		from_file(S["flavour_texts_robot_[module]"], pref.flavour_texts_robot[module])
 
-/datum/category_item/player_setup_item/general/flavor/save_character(var/savefile/S)
-	S["flavor_texts_general"]	<< pref.flavor_texts["general"]
-	S["flavor_texts_head"]		<< pref.flavor_texts["head"]
-	S["flavor_texts_face"]		<< pref.flavor_texts["face"]
-	S["flavor_texts_eyes"]		<< pref.flavor_texts["eyes"]
-	S["flavor_texts_torso"]		<< pref.flavor_texts["torso"]
-	S["flavor_texts_arms"]		<< pref.flavor_texts["arms"]
-	S["flavor_texts_hands"]		<< pref.flavor_texts["hands"]
-	S["flavor_texts_legs"]		<< pref.flavor_texts["legs"]
-	S["flavor_texts_feet"]		<< pref.flavor_texts["feet"]
+/datum/category_item/player_setup_item/physical/flavor/save_character(var/savefile/S)
+	to_file(S["flavor_texts_general"], pref.flavor_texts["general"])
+	to_file(S["flavor_texts_head"], pref.flavor_texts["head"])
+	to_file(S["flavor_texts_face"], pref.flavor_texts["face"])
+	to_file(S["flavor_texts_eyes"], pref.flavor_texts["eyes"])
+	to_file(S["flavor_texts_torso"], pref.flavor_texts["torso"])
+	to_file(S["flavor_texts_arms"], pref.flavor_texts["arms"])
+	to_file(S["flavor_texts_hands"], pref.flavor_texts["hands"])
+	to_file(S["flavor_texts_legs"], pref.flavor_texts["legs"])
+	to_file(S["flavor_texts_feet"], pref.flavor_texts["feet"])
 
-	S["flavour_texts_robot_Default"] << pref.flavour_texts_robot["Default"]
+	to_file(S["flavour_texts_robot_Default"], pref.flavour_texts_robot["Default"])
 	for(var/module in robot_module_types)
-		S["flavour_texts_robot_[module]"] << pref.flavour_texts_robot[module]
+		to_file(S["flavour_texts_robot_[module]"], pref.flavour_texts_robot[module])
 
-/datum/category_item/player_setup_item/general/flavor/sanitize_character()
+/datum/category_item/player_setup_item/physical/flavor/sanitize_character()
 	return
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/general/flavor/copy_to_mob(var/mob/living/carbon/human/character)
-	character.flavor_texts["general"]	= pref.flavor_texts["general"]
-	character.flavor_texts["head"]		= pref.flavor_texts["head"]
-	character.flavor_texts["face"]		= pref.flavor_texts["face"]
-	character.flavor_texts["eyes"]		= pref.flavor_texts["eyes"]
-	character.flavor_texts["torso"]		= pref.flavor_texts["torso"]
-	character.flavor_texts["arms"]		= pref.flavor_texts["arms"]
-	character.flavor_texts["hands"]		= pref.flavor_texts["hands"]
-	character.flavor_texts["legs"]		= pref.flavor_texts["legs"]
-	character.flavor_texts["feet"]		= pref.flavor_texts["feet"]
-	character.ooc_notes 				= pref.metadata //VOREStation Add
+/datum/category_item/player_setup_item/physical/flavor/copy_to_mob(var/mob/living/carbon/human/character)
+	character.flavor_texts["general"] = pref.flavor_texts["general"]
+	character.flavor_texts["head"] = pref.flavor_texts["head"]
+	character.flavor_texts["face"] = pref.flavor_texts["face"]
+	character.flavor_texts["eyes"] = pref.flavor_texts["eyes"]
+	character.flavor_texts["torso"] = pref.flavor_texts["torso"]
+	character.flavor_texts["arms"] = pref.flavor_texts["arms"]
+	character.flavor_texts["hands"] = pref.flavor_texts["hands"]
+	character.flavor_texts["legs"] = pref.flavor_texts["legs"]
+	character.flavor_texts["feet"] = pref.flavor_texts["feet"]
+	character.ooc_notes = pref.metadata
 
-/datum/category_item/player_setup_item/general/flavor/content(var/mob/user)
+/datum/category_item/player_setup_item/physical/flavor/content(var/mob/user)
 	. += "<b>Flavor:</b><br>"
 	. += "<a href='?src=\ref[src];flavor_text=open'>Set Flavor Text</a><br/>"
 	. += "<a href='?src=\ref[src];flavour_text_robot=open'>Set Robot Flavor Text</a><br/>"
 
-/datum/category_item/player_setup_item/general/flavor/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/physical/flavor/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["flavor_text"])
 		switch(href_list["flavor_text"])
 			if("open")
@@ -85,7 +85,7 @@
 
 	return ..()
 
-/datum/category_item/player_setup_item/general/flavor/proc/SetFlavorText(mob/user)
+/datum/category_item/player_setup_item/physical/flavor/proc/SetFlavorText(mob/user)
 	var/HTML = "<body>"
 	HTML += "<tt><center>"
 	HTML += "<b>Set Flavour Text</b> <hr />"
@@ -122,7 +122,7 @@
 	user << browse(HTML, "window=flavor_text;size=430x300")
 	return
 
-/datum/category_item/player_setup_item/general/flavor/proc/SetFlavourTextRobot(mob/user)
+/datum/category_item/player_setup_item/physical/flavor/proc/SetFlavourTextRobot(mob/user)
 	var/HTML = "<body>"
 	HTML += "<tt><center>"
 	HTML += "<b>Set Robot Flavour Text</b> <hr />"

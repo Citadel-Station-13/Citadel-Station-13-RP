@@ -29,7 +29,7 @@
 	total_positions = 3
 	spawn_positions = 3
 	selection_color = "#afccb8"
-	economic_modifier = 6
+	economic_power = 6
 	minimal_player_age = 14
 	pto_type = null
 	access = list(access_trader)
