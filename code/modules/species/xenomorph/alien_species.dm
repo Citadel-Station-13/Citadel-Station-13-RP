@@ -76,15 +76,15 @@
 		)
 
 
-	//default_language = "Xenomorph"
-	//language = "Hivemind"
+	//default_language = LANGUAGE_XENOMORPH
+	//language = LANGUAGE_XENOMORPH_HIVE
 	//assisted_langs = list()
 
 
 	force_cultural_info = list(
-		TAG_CULTURE = CULTURE_XENOPHAGE_D,
+		TAG_CULTURE = CULTURE_XENOMORPH_D,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
-		TAG_FACTION = FACTION_XENOPHAGE,
+		TAG_FACTION = FACTION_XENOMORPH,
 		TAG_RELIGION = RELIGION_OTHER
 	)
 
@@ -108,11 +108,11 @@
 		H.mind.assigned_role = "Alien"
 		H.mind.special_role = "Alien"
 
-	var/decl/cultural_info/culture/hidden/xenophage/culture = SSculture.get_culture(force_cultural_info[TAG_CULTURE])
+	var/decl/cultural_info/culture/hidden/xenomorph/culture = SSculture.get_culture(force_cultural_info[TAG_CULTURE])
 	if(istype(culture))
 		culture.caste_number++
 		H.real_name = culture.get_random_name(H)
-		H.SetName(H.real_name)
+		H.setName(H.real_name)
 	..()
 
 /datum/species/xenos/handle_environment_special(var/mob/living/carbon/human/H)
@@ -245,9 +245,9 @@
 
 
 	force_cultural_info = list(
-		TAG_CULTURE = CULTURE_XENOPHAGE_H,
+		TAG_CULTURE = CULTURE_XENOMORPH_H,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
-		TAG_FACTION = FACTION_XENOPHAGE,
+		TAG_FACTION = FACTION_XENOMORPH,
 		TAG_RELIGION = RELIGION_OTHER
 	)
 
@@ -286,9 +286,9 @@
 
 
 	force_cultural_info = list(
-		TAG_CULTURE = CULTURE_XENOPHAGE_S,
+		TAG_CULTURE = CULTURE_XENOMORPH_S,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
-		TAG_FACTION = FACTION_XENOPHAGE,
+		TAG_FACTION = FACTION_XENOMORPH,
 		TAG_RELIGION = RELIGION_OTHER
 	)
 
@@ -336,9 +336,9 @@
 		)
 
 	force_cultural_info = list(
-		TAG_CULTURE = CULTURE_XENOPHAGE_Q,
+		TAG_CULTURE = CULTURE_XENOMORPH_Q,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
-		TAG_FACTION = FACTION_XENOPHAGE,
+		TAG_FACTION = FACTION_XENOMORPH,
 		TAG_RELIGION = RELIGION_OTHER
 	)
 

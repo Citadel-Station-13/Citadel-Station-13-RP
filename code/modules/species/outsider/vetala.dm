@@ -73,9 +73,6 @@
 /datum/species/vetala_pale
 	name = SPECIES_VETALA_PALE
 	name_plural = "Vetalan"
-	default_language = LANGUAGE_GALCOM
-	language = LANGUAGE_GALCOM
-	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws, /datum/unarmed_attack/bite)
 	rarity_value = 4
 
@@ -146,3 +143,8 @@
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/lick_wounds)
+
+
+	//default_language = LANGUAGE_GALCOM
+	//language = LANGUAGE_GALCOM
+	//num_alternate_languages = 3

@@ -67,8 +67,8 @@
 				for(var/checklang in culture.secondary_langs)
 					allowed_languages[checklang] = TRUE
 
-	for(var/thing in all_languages)
-		var/datum/language/lang = all_languages[thing]
+	for(var/thing in GLOB.all_languages)
+		var/datum/language/lang = GLOB.all_languages[thing]
 		if(user.has_admin_rights() || (!(lang.flags & RESTRICTED) && (lang.flags & WHITELISTED) && is_alien_whitelisted(user, lang)))
 			allowed_languages[thing] = TRUE
 
@@ -85,7 +85,7 @@
 	var/preference_mob = preference_mob()
 	rebuild_language_cache(preference_mob)
 	for(var/L in pref.alternate_languages)
-		var/datum/language/lang = all_languages[L]
+		var/datum/language/lang = GLOB.all_languages[L]
 		if(!lang || !is_allowed_language(preference_mob, lang))
 			pref.alternate_languages -= L
 	if(LAZYLEN(free_languages))
@@ -93,7 +93,7 @@
 			pref.alternate_languages -= lang
 			pref.alternate_languages.Insert(1, lang)
 
-	pref.alternate_languages = uniquelist(pref.alternate_languages)
+	pref.alternate_languages = uniqueList(pref.alternate_languages)
 	if(pref.alternate_languages.len > MAX_LANGUAGES)
 		pref.alternate_languages.Cut(MAX_LANGUAGES + 1)
 

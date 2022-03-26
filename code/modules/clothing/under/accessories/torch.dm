@@ -223,7 +223,7 @@ badges
 		return
 	var/decl/cultural_info/culture = H.get_cultural_value(TAG_RELIGION)
 	var/religion = culture ? culture.name : "Unset"
-	desc = "[initial(desc)]\nName: [H.real_name] ([H.get_species()])" : ""]\nReligion: [religion]\nBlood type: [H.b_type]"
+	desc = "[initial(desc)]\nName: [H.real_name] ([H.get_species()])\nReligion: [religion]\nBlood type: [H.b_type]"
 
 /obj/item/clothing/accessory/badge/oricon/representative
 	name = "representative's badge"

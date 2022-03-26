@@ -5,14 +5,14 @@
 // Species definition follows.
 /datum/species/shapeshifter/promethean/avatar
 
-	name =             SPECIES_VR
-	name_plural =      "Virtual Reality Avatars"
-	blurb =            "A 3-dimensional representation of some sort of animate object used to display the presence and actions of some-one or -thing using a virtual reality program."
-	show_ssd =         "eerily still"
-	death_message =    "flickers briefly, their gear falling in a heap on the floor around their motionless body."
+	name = SPECIES_VR
+	name_plural = "Virtual Reality Avatars"
+	description = "A 3-dimensional representation of some sort of animate object used to display the presence and actions of some-one or -thing using a virtual reality program."
+	show_ssd = "eerily still"
+	death_message = "flickers briefly, their gear falling in a heap on the floor around their motionless body."
 	knockout_message = "has been knocked unconscious!"
 
-	spawn_flags =		SPECIES_IS_RESTRICTED
+	spawn_flags = SPECIES_IS_RESTRICTED
 
 	speech_bubble_appearance = "cyber"
 
@@ -26,8 +26,8 @@
 	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_VOX, SPECIES_MONKEY, SPECIES_SKELETON)
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	has_organ =     list(O_BRAIN = /obj/item/organ/internal/brain/slime, O_EYES = /obj/item/organ/internal/eyes) // Slime core.
-	heal_rate = 0		// Avatars don't naturally heal like prometheans, at least not for now
+	has_organ = list(O_BRAIN = /obj/item/organ/internal/brain/slime, O_EYES = /obj/item/organ/internal/eyes) // Slime core.
+	heal_rate = 0 // Avatars don't naturally heal like prometheans, at least not for now
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,

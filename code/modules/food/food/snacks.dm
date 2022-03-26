@@ -1788,8 +1788,9 @@
 	bitesize = 12
 	filling_color = "#ADAC7F"
 
-	var/wrapped = 0
-	var/monkey_type = "Monkey"
+	var/wrapped = FALSE
+	var/growing = FALSE
+	var/monkey_type = /mob/living/carbon/human/monkey
 
 /obj/item/reagent_containers/food/snacks/monkeycube/Initialize(mapload)
 	. = ..()
@@ -1800,24 +1801,21 @@
 		Unwrap(user)
 
 /obj/item/reagent_containers/food/snacks/monkeycube/proc/Expand()
-	src.visible_message("<span class='notice'>\The [src] expands!</span>")
-	var/mob/living/carbon/human/H = new(get_turf(src))
-	H.set_species(monkey_type)
-	H.real_name = H.species.get_random_name()
-	H.name = H.real_name
-	if(ismob(loc))
-		var/mob/M = loc
-		M.unEquip(src)
-	qdel(src)
-	return 1
+	if(!growing)
+		growing = 1
+		src.visible_message("<span class='notice'>\The [src] expands!</span>")
+		var/mob/monkey = new monkey_type
+		monkey.dropInto(src.loc)
+		qdel(src)
 
 /obj/item/reagent_containers/food/snacks/monkeycube/proc/Unwrap(mob/user as mob)
 	icon_state = "monkeycube"
 	desc = "Just add water!"
-	to_chat(user, "You unwrap the cube.")
-	wrapped = 0
+	to_chat(user, SPAN_NOTICE("You unwrap \the [src]."))
+	wrapped = FALSE
 	flags |= OPENCONTAINER
-	return
+	//var/trash = new /obj/item/trash/cubewrapper(get_turf(user))
+	//user.put_in_hands(trash)
 
 /obj/item/reagent_containers/food/snacks/monkeycube/On_Consume(var/mob/M)
 	if(ishuman(M))
@@ -1835,31 +1833,31 @@
 	desc = "Still wrapped in some paper."
 	icon_state = "monkeycubewrap"
 	flags = 0
-	wrapped = 1
+	wrapped = TRUE
 
 /obj/item/reagent_containers/food/snacks/monkeycube/farwacube
 	name = "farwa cube"
-	monkey_type = "Farwa"
+	monkey_type = /mob/living/carbon/human/farwa
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/farwacube
 	name = "farwa cube"
-	monkey_type = "Farwa"
+	monkey_type = /mob/living/carbon/human/farwa
 
 /obj/item/reagent_containers/food/snacks/monkeycube/stokcube
 	name = "stok cube"
-	monkey_type = "Stok"
+	monkey_type = /mob/living/carbon/human/stok
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/stokcube
 	name = "stok cube"
-	monkey_type = "Stok"
+	monkey_type = /mob/living/carbon/human/stok
 
 /obj/item/reagent_containers/food/snacks/monkeycube/neaeracube
 	name = "neaera cube"
-	monkey_type = "Neaera"
+	monkey_type = /mob/living/carbon/human/neaera
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/neaeracube
 	name = "neaera cube"
-	monkey_type = "Neaera"
+	monkey_type = /mob/living/carbon/human/neaera
 
 /obj/item/reagent_containers/food/snacks/spellburger
 	name = "Spell Burger"

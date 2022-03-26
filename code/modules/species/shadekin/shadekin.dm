@@ -120,8 +120,8 @@
 /datum/species/shadekin/get_bodytype()
 	return SPECIES_SHADEKIN
 
-/datum/species/shadekin/get_random_name()
-	return "shadekin"
+///datum/species/shadekin/get_random_name()
+//	return "shadekin"
 
 /datum/species/shadekin/handle_environment_special(var/mob/living/carbon/human/H)
 	handle_shade(H)

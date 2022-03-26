@@ -4,7 +4,7 @@
 	default_language = LANGUAGE_XENOMORPH
 	additional_langs = list(LANGUAGE_XENOMORPH_HIVE)
 	description = "Skree!"
-	mob_faction = "xenophage"
+	mob_faction = "xenomorph"
 	additional_langs = list("Hivemind")
 	secondary_langs = null
 	economic_power = 0

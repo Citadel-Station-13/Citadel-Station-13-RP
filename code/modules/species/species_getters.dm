@@ -89,7 +89,7 @@
 		if("heat")
 			if(covered)
 				to_chat(H, "<span class='danger'>[pick(heat_discomfort_strings)]</span>")
-
+/*
 /datum/species/proc/get_random_name(var/gender)
 	if(!name_language)
 		if(gender == FEMALE)
@@ -103,7 +103,7 @@
 	if(!species_language)
 		return "unknown"
 	return species_language.get_random_name(gender)
-
+*/
 /datum/species/proc/get_vision_flags(var/mob/living/carbon/human/H)
 	return vision_flags
 

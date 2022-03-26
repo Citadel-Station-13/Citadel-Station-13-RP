@@ -134,7 +134,8 @@
 				spawn(1)
 					var/newname = sanitizeSafe(input(vox,"Enter a name, or leave blank for the default name.", "Name change","") as text, MAX_NAME_LEN)
 					if(!newname || newname == "")
-						var/datum/language/L = GLOB.all_languages[vox.species.default_language]
+						var/decl/cultural_info/culture = SSculture.cultural_info_by_name[SPECIES_VOX]
+						var/datum/language/L = GLOB.all_languages[ culture.default_language]
 						newname = L.get_random_name()
 					vox.real_name = newname
 					vox.name = vox.real_name

@@ -4,7 +4,6 @@
 	name_plural = "Dionaea"
 	icobase = 'icons/mob/human_races/r_diona.dmi'
 	deform = 'icons/mob/human_races/r_def_plant.dmi'
-	language = LANGUAGE_ROOTLOCAL
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/diona)
 	//primitive_form = "Nymph"
 	slowdown = 2.5
@@ -20,7 +19,6 @@
 	min_age = 18
 	max_age = 300
 
-	//economic_power = 4
 
 	description = "Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective \
 	species hailing from Epsilon Ursae Minoris. Each 'diona' is a cluster of numerous cat-sized organisms called nymphs; \
@@ -88,6 +86,9 @@
 
 	wikilink="https://wiki.vore-station.net/Diona"
 
+
+	//economic_power = 4
+	//language = LANGUAGE_ROOTLOCAL
 	//num_alternate_languages = 2
 	//name_language = LANGUAGE_ROOTLOCAL
 	//species_language = LANGUAGE_ROOTLOCAL

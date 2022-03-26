@@ -1,20 +1,13 @@
 /datum/species/teshari
 	name = SPECIES_TESHARI
 	name_plural = "Tesharii"
-	blurb = "A race of feathered raptors who developed alongside the Skrell, inhabiting \
+	description = "A race of feathered raptors who developed alongside the Skrell, inhabiting \
 	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \
 	hunting skills that emphasized taking out their prey without themselves getting hit."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/teshari)
 
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
-	name_language = LANGUAGE_SCHECHI
-	species_language = LANGUAGE_SCHECHI
-
 	min_age = 18
 	max_age = 75
-
-	economic_power = 6
 
 	health_hud_intensity = 3
 
@@ -35,54 +28,54 @@
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
-	icobase	= 'icons/mob/human_races/r_teshari_vr.dmi'
-	deform	= 'icons/mob/human_races/r_teshari_vr.dmi'
-	damage_mask	= 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
-	blood_mask	= 'icons/mob/human_races/masks/blood_teshari.dmi'
-	damage_overlays	  = 'icons/mob/human_races/masks/dam_teshari.dmi'
+	icobase = 'icons/mob/human_races/r_teshari_vr.dmi'
+	deform = 'icons/mob/human_races/r_teshari_vr.dmi'
+	damage_mask = 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
+	blood_mask = 'icons/mob/human_races/masks/blood_teshari.dmi'
+	damage_overlays = 'icons/mob/human_races/masks/dam_teshari.dmi'
 	suit_storage_icon = 'icons/mob/species/teshari/belt_mirror.dmi'
 	icobase_tail = 1
-	color_mult	 = 1
+	color_mult = 1
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
 
-	slowdown	= -0.5
-	snow_movement = -1		// Ignores light snow
-	item_slowdown_mod = 1.25	// Tiny birds don't like heavy things
+	slowdown = -0.5
+	snow_movement = -1 // Ignores light snow
+	item_slowdown_mod = 1.25 // Tiny birds don't like heavy things
 	total_health = 75
-	brute_mod	 = 1.1
-	burn_mod	 = 1.1
-	mob_size	 = MOB_SMALL
-	pass_flags	 = PASSTABLE
-	holder_type	 = /obj/item/holder/human
+	brute_mod = 1.1
+	burn_mod = 1.1
+	mob_size = MOB_SMALL
+	pass_flags = PASSTABLE
+	holder_type = /obj/item/holder/human
 //	short_sighted = 1
-	gluttonous	 = 1
+	gluttonous = 1
 	blood_volume = 400
 	hunger_factor = 0.2
 
 	ambiguous_genders = TRUE
 
-	spawn_flags	= SPECIES_CAN_JOIN
+	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
-	bump_flag	= MONKEY
-	swap_flags	= MONKEY|SLIME|SIMPLE_ANIMAL
-	push_flags	= MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
+	bump_flag = MONKEY
+	swap_flags = MONKEY|SLIME|SIMPLE_ANIMAL
+	push_flags = MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
 
-	cold_level_1 = 180			// Default 260
-	cold_level_2 = 130			// Default 200
-	cold_level_3 = 70			// Default 120
+	cold_level_1 = 180 // Default 260
+	cold_level_2 = 130 // Default 200
+	cold_level_3 = 70 // Default 120
 
-	breath_cold_level_1 = 180	// Default 240 - Lower is better
-	breath_cold_level_2 = 100	// Default 180
-	breath_cold_level_3 = 60	// Default 100
+	breath_cold_level_1 = 180 // Default 240 - Lower is better
+	breath_cold_level_2 = 100 // Default 180
+	breath_cold_level_3 = 60 // Default 100
 
-	heat_level_1 = 320			// Default 360
-	heat_level_2 = 370			// Default 400
-	heat_level_3 = 600			// Default 1000
+	heat_level_1 = 320 // Default 360
+	heat_level_2 = 370 // Default 400
+	heat_level_3 = 600 // Default 1000
 
-	breath_heat_level_1 = 350	// Default 380 - Higher is better
-	breath_heat_level_2 = 400	// Default 450
-	breath_heat_level_3 = 800	// Default 1250
+	breath_heat_level_1 = 350 // Default 380 - Higher is better
+	breath_heat_level_2 = 400 // Default 450
+	breath_heat_level_3 = 800 // Default 1250
 
 	heat_discomfort_level = 295
 	heat_discomfort_strings = list(
@@ -156,6 +149,14 @@
 		/obj/item/clothing/suit/space,
 		/obj/item/clothing/suit/straight_jacket
 	)
+
+
+	//economic_power = 6
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
+	//name_language = LANGUAGE_SCHECHI
+	//species_language = LANGUAGE_SCHECHI
+
 
 /datum/species/teshari/equip_survival_gear(var/mob/living/carbon/human/H)
 	..()

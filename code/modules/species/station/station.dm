@@ -225,10 +225,6 @@
 	flash_mod = 1.1
 	metabolic_rate = 1.1
 	gluttonous = 0
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_SIIK, LANGUAGE_AKHANI, LANGUAGE_ALAI)
-	name_language = LANGUAGE_SIIK
-	species_language = LANGUAGE_SIIK
 	health_hud_intensity = 2.5
 
 	min_age = 18
@@ -300,6 +296,13 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
+
+
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_SIIK, LANGUAGE_AKHANI, LANGUAGE_ALAI)
+	//name_language = LANGUAGE_SIIK
+	//species_language = LANGUAGE_SIIK
+
 
 /datum/species/tajaran/equip_survival_gear(var/mob/living/carbon/human/H)
 	..()
@@ -427,21 +430,14 @@
 	metabolic_rate = 0.7 //did u know if your ancestors starved ur body will actually start in starvation mode?
 	gluttonous = 0
 	taste_sensitivity = TASTE_SENSITIVE
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_ZADDAT, LANGUAGE_UNATHI)
-	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_SOL_COMMON, LANGUAGE_AKHANI, LANGUAGE_SIIK, LANGUAGE_GUTTER) //limited vocal range; can talk Unathi and magical Galcom but not much else
-	name_language = LANGUAGE_ZADDAT
-	species_language = LANGUAGE_ZADDAT
 	health_hud_intensity = 2.5
 
 	minimum_breath_pressure = 20 //have fun with underpressures. any higher than this and they'll be even less suitible for life on the station
 
-	economic_power = 3
-
 	min_age = 18
 	max_age = 90
 
-	blurb = "The Zaddat are an Unathi client race only recently introduced to OriCon space. Having evolved on \
+	description = "The Zaddat are an Unathi client race only recently introduced to OriCon space. Having evolved on \
 	the high-pressure and post-apocalyptic world of Xohok, Zaddat require an environmental suit called a Shroud \
 	to survive in usual planetary and station atmospheres. Despite these restrictions, worsening conditions on \
 	Xohok and the blessing of the Moghes Hegemony have lead the Zaddat to enter human space in search of work \
@@ -492,6 +488,15 @@
 
 	descriptors = list()
 	// no wiki link exists for Zaddat yet
+
+
+	//economic_power = 3
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_ZADDAT, LANGUAGE_UNATHI)
+	//assisted_langs = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_SOL_COMMON, LANGUAGE_AKHANI, LANGUAGE_SIIK, LANGUAGE_GUTTER) //limited vocal range; can talk Unathi and magical Galcom but not much else
+	//name_language = LANGUAGE_ZADDAT
+	//species_language = LANGUAGE_ZADDAT
+
 
 /datum/species/zaddat/equip_survival_gear(var/mob/living/carbon/human/H)
 	..()
@@ -544,15 +549,12 @@
 	//brute_mod = 1.15
 	//burn_mod =  1.15
 	//gluttonous = 1
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_SAGARU)
-	name_language = LANGUAGE_SAGARU
 	color_mult = 1
 
 	min_age = 18
 	max_age = 80
 
-	blurb = "There are two subspecies of Sergal; Southern and Northern. Northern sergals are a highly aggressive race \
+	description = "There are two subspecies of Sergal; Southern and Northern. Northern sergals are a highly aggressive race \
 	that lives in the plains and tundra of their homeworld. They are characterized by long, fluffy fur bodies with cold colors; \
 	usually with white abdomens, somewhat short ears, and thick faces. Southern sergals are much more docile and live in the \
 	Gold Ring City and are scattered around the outskirts in rural areas and small towns. They usually have short, brown or yellow \
@@ -597,6 +599,12 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 		)
 
+
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_SAGARU)
+	//name_language = LANGUAGE_SAGARU
+
+
 /datum/species/akula
 	name = SPECIES_AKULA
 	name_plural = "Akula"
@@ -610,9 +618,6 @@
 	//brute_mod = 1.15
 	//burn_mod =  1.15
 	//gluttonous = 1
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_SKRELLIAN)
-	name_language = LANGUAGE_SKRELLIAN
 	color_mult = 1
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	inherent_verbs = list(
@@ -623,7 +628,7 @@
 	min_age = 18
 	max_age = 80
 
-	blurb = "The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark. \
+	description = "The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark. \
 	They were first discovered as a primitive race of underwater dwelling tribal creatures by the Skrell. At first they were not believed \
 	to be noteworthy, but the Akula proved to be such swift and clever learners that the Skrell reclassified them as sentients. Allegedly, \
 	the Akula were also the first sentient life that the Skrell had ever encountered beside themselves, and thus the two species became swift \
@@ -644,6 +649,12 @@
 	base_color = "#777777"
 	blood_color = "#1D2CBF"
 
+
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_SKRELLIAN)
+	//name_language = LANGUAGE_SKRELLIAN
+
+
 /datum/species/akula/can_breathe_water()
 	return TRUE // Surprise, SHERKS.
 
@@ -660,9 +671,6 @@
 	//brute_mod = 1.15
 	//burn_mod =  1.15
 	//gluttonous = 1
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_BIRDSONG)
-	name_language = LANGUAGE_BIRDSONG
 	color_mult = 1
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
@@ -674,7 +682,7 @@
 	min_age = 18
 	max_age = 80
 
-	blurb = "Nevreans are a race of avian and dinosaur-like creatures living on Tal. They belong to a group of races that hails from Eltus, \
+	description = "Nevreans are a race of avian and dinosaur-like creatures living on Tal. They belong to a group of races that hails from Eltus, \
 	in the Vilous system. Unlike sergals whom they share a star system with, their species is a very peaceful one. They possess remarkable \
 	intelligence and very skillful hands that are put use for constructing precision instruments, but tire-out fast when repeatedly working \
 	over and over again. Consequently, they struggle to make copies of same things. Both genders have a voice that echoes a lot. Their natural \
@@ -698,6 +706,11 @@
 		"Your overheated skin itches."
 		)
 
+
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_BIRDSONG)
+	//name_language = LANGUAGE_BIRDSONG
+
 /datum/species/hi_zoxxen
 	name = SPECIES_ZORREN_HIGH
 	name_plural = "Zorren"
@@ -706,15 +719,12 @@
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_TERMINUS)
-	name_language = LANGUAGE_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
 	min_age = 18
 	max_age = 80
 
-	blurb = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
+	description = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
 	and the other with longer fur that is a bit more vibrant. The long-eared, short-furred Zorren have come to be known as Flatland Zorren as that \
 	is where most of their settlements are located. The Flatland Zorren are somewhat tribal and shamanistic as they have only recently started to be \
 	hired by the Trans-Stellar Corporations. The other variety of Zorren are known as Highland Zorren as they frequently settle in hilly and/or \
@@ -745,6 +755,12 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
+
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_TERMINUS)
+	//name_language = LANGUAGE_TERMINUS
+
+
 /datum/species/fl_zorren
 	name = SPECIES_ZORREN_FLAT
 	name_plural = "Zorren"
@@ -753,15 +769,12 @@
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_TERMINUS)
-	name_language = LANGUAGE_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
 	min_age = 18
 	max_age = 80
 
-	blurb = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
+	description = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
 	and the other with longer fur that is a bit more vibrant. The long-eared, short-furred Zorren have come to be known as Flatland Zorren as that is \
 	where most of their settlements are located. The Flatland Zorren are somewhat tribal and shamanistic as they have only recently started to be \
 	hired by the Trans-Stellar Corporations. The other variety of Zorren are known as Highland Zorren as they frequently settle in hilly and/or \
@@ -792,33 +805,34 @@
 		"Your overheated skin itches."
 		)
 
+
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_TERMINUS)
+	//name_language = LANGUAGE_TERMINUS
+
 /datum/species/vulpkanin
 	name = SPECIES_VULPKANIN
 	name_plural = "Vulpkanin"
 	icobase = 'icons/mob/human_races/r_vulpkanin.dmi'
 	deform = 'icons/mob/human_races/r_vulpkanin.dmi'
 //	path = /mob/living/carbon/human/vulpkanin
-//	default_language = "Sol Common"
-	secondary_langs = list(LANGUAGE_CANILUNZT)
-	name_language = LANGUAGE_CANILUNZT
 	primitive_form = "Wolpin"
 	tail = "vulptail"
 	tail_animation = 'icons/mob/species/vulpkanin/tail.dmi' // probably need more than just one of each, but w/e
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	darksight = 5 //worse than cats, but better than lizards. -- Poojawa
 //	gluttonous = 1
-	num_alternate_languages = 3
 	color_mult = 1
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	blurb = "Vulpkanin are a species of sharp-witted canine-pideds residing on the planet Altam just barely within the \
+	description = "Vulpkanin are a species of sharp-witted canine-pideds residing on the planet Altam just barely within the \
 	dual-star Vazzend system. Their politically de-centralized society and independent natures have led them to become a species and \
 	culture both feared and respected for their scientific breakthroughs. Discovery, loyalty, and utilitarianism dominates their lifestyles \
 	to the degree it can cause conflict with more rigorous and strict authorities. They speak a guttural language known as 'Canilunzt' \
-    which has a heavy emphasis on utilizing tail positioning and ear twitches to communicate intent."
+	which has a heavy emphasis on utilizing tail positioning and ear twitches to communicate intent."
 
 	wikilink="https://wiki.vore-station.net/Backstory#Vulpkanin"
 
@@ -835,6 +849,13 @@
 	min_age = 18
 	max_age = 80
 
+
+	//default_language = "Sol Common"
+	//secondary_langs = list(LANGUAGE_CANILUNZT)
+	//name_language = LANGUAGE_CANILUNZT
+	//num_alternate_languages = 3
+
+
 /datum/species/harpy
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
@@ -843,9 +864,6 @@
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_BIRDSONG)
-	name_language = null
 	color_mult = 1
 	inherent_verbs = list(
 		/mob/living/proc/flying_toggle,
@@ -858,7 +876,7 @@
 
 	base_color = "#EECEB3"
 
-	blurb = "An Avian species, coming from a distant planet, the Rapalas are the very proud race.\
+	description = "An Avian species, coming from a distant planet, the Rapalas are the very proud race.\
 	Sol researchers have commented on them having a very close resemblance to the mythical race called 'Harpies',\
 	who are known for having massive winged arms and talons as feet. They've been clocked at speeds of over 35 miler per hour chasing the planet's many fish-like fauna.\
 	The Rapalan's home-world 'Verita' is a strangely habitable gas giant, while no physical earth exists, there are fertile floating islands orbiting around the planet from past asteroid activity."
@@ -877,24 +895,25 @@
 		"Your overheated skin itches."
 		)
 
+
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_BIRDSONG)
+	//name_language = null
+
+
 /datum/species/crew_shadekin
 	name = SPECIES_SHADEKIN_CREW
 	name_plural = "Black-Eyed Shadekin"
 	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	tail = "tail"
-	blurb = "Very little is known about these creatures. They appear to be largely mammalian in appearance. \
+	description = "Very little is known about these creatures. They appear to be largely mammalian in appearance. \
 	Seemingly very rare to encounter, there have been widespread myths of these creatures the galaxy over, \
 	but next to no verifiable evidence to their existence. However, they have recently been more verifiably \
 	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have \
 	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something more fitting for black-eyes	//CIT ADDENDUM: since we're not really on the tether anymore we'll need a bullshit reason as to why we have shadekin on a ship
 	wikilink = "https://wiki.vore-station.net/Shadekin"
 
-	language = LANGUAGE_SHADEKIN
-	name_language = LANGUAGE_SHADEKIN
-	species_language = LANGUAGE_SHADEKIN
-	secondary_langs = list(LANGUAGE_SHADEKIN)
-	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	rarity_value = 5	//INTERDIMENSIONAL FLUFFERS
 
@@ -976,6 +995,14 @@
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/crewkin),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/crewkin)
 		)
+
+
+	//language = LANGUAGE_SHADEKIN
+	//name_language = LANGUAGE_SHADEKIN
+	//species_language = LANGUAGE_SHADEKIN
+	//secondary_langs = list(LANGUAGE_SHADEKIN)
+	//num_alternate_languages = 3
+
 
 /datum/species/shadekin/get_bodytype()
 	return SPECIES_SHADEKIN

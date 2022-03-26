@@ -4,8 +4,7 @@
 /datum/species/protean
 	name = SPECIES_PROTEAN
 	name_plural = "Proteans"
-	description =
-		"Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
+	description = "Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
 		<i>VERY</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
 		of millions of tiny nanites working in concert to maintain cohesion."
 

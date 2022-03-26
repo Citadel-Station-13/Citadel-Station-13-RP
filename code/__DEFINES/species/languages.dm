@@ -59,3 +59,11 @@
 #define LANGUAGE_SQUEAKISH "Squeakish"
 
 #define LANGUAGE_SHADEKIN "Shadekin Empathy"
+
+// Temp loc for new languages
+#define LANGUAGE_ALIUM "Alium"
+#define LANGUAGE_XENOMORPH "Xenomorph"
+#define LANGUAGE_XENOMORPH_HIVE "Hivemind"
+#define LANGUAGE_SPACER "Spacer"
+#define LANGUAGE_INDEPENDENT "Independent"
+#define LANGUAGE_LUNAR "Selenian"

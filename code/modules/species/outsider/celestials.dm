@@ -52,7 +52,7 @@
 	name_plural = "Dremachir"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
-	blurb = "Dremachir lore is still a work in progress. They are not actual supernatural creatures. They are aliens. \
+	description = "Dremachir lore is still a work in progress. They are not actual supernatural creatures. They are aliens. \
 	They are not obsessed human genemodders. They're just a race of aliens that look like demonss. It's a big galaxy."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dremachir)
 

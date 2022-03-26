@@ -34,7 +34,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	pref.age = sanitize_integer(pref.age, get_min_age(), get_max_age(), initial(pref.age))
 	pref.biological_gender = sanitize_inlist(pref.biological_gender, get_genders(), pick(get_genders()))
 	pref.identifying_gender = (pref.identifying_gender in all_genders_define_list) ? pref.identifying_gender : pref.biological_gender
-	pref.nickname = old_sanitize_name(pref.nickname)
+	pref.nickname = sanitizeName(pref.nickname)
 	pref.spawnpoint = sanitize_inlist(pref.spawnpoint, spawntypes, initial(pref.spawnpoint))
 	pref.be_random_name = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
 	// This is a bit noodly. If pref.cultural_info[TAG_CULTURE] is null, then we haven't finished loading/sanitizing, which means we might purge
@@ -42,7 +42,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	if(pref.cultural_info[TAG_CULTURE])
 		var/decl/cultural_info/check = SSculture.get_culture(pref.cultural_info[TAG_CULTURE])
 		if(check)
-			pref.real_name = check.old_sanitize_name(pref.real_name, pref.species)
+			pref.real_name = check.sanitize_name(pref.real_name, pref.species)
 			if(!pref.real_name)
 				pref.real_name = random_name(pref.identifying_gender, pref.species)
 
@@ -90,7 +90,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 		if (!isnull(raw_name) && CanUseTopic(user))
 
 			var/decl/cultural_info/check = SSculture.get_culture(pref.cultural_info[TAG_CULTURE])
-			var/new_name = check.old_sanitize_name(raw_name, pref.species, is_FBP())
+			var/new_name = check.sanitize_name(raw_name, pref.species, is_FBP())
 			if(new_name)
 				pref.real_name = new_name
 				return TOPIC_REFRESH

@@ -41,7 +41,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 	min_age = 18
 	max_age = 80
 
-	economic_power = 3
 
 	gluttonous = 0
 	virus_immune = 1
@@ -132,6 +131,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	wikilink="https://wiki.vore-station.net/Promethean"
 
 
+	//economic_power = 3
 	//num_alternate_languages = 2 // citadel change, not stuck with one other lang
 	//species_language = LANGUAGE_SOL_COMMON
 	//secondary_langs = list(LANGUAGE_SOL_COMMON)	// For some reason, having this as their species language does not allow it to be chosen.

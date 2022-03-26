@@ -13,6 +13,7 @@
 	// Icon/appearance vars.
 	var/icobase = 'icons/mob/human_races/r_human.dmi'		// Normal icon set.
 	var/deform = 'icons/mob/human_races/r_def_human.dmi'	// Mutated icon set.
+	var/preview_icon = 'icons/mob/human_races/human/preview.dmi'
 
 	var/speech_bubble_appearance = "normal"					// Part of icon_state to use for speech bubbles when talking.	See talk.dmi for available icons.
 	var/fire_icon_state = "humanoid"						// The icon_state used inside OnFire.dmi for when on fire.
@@ -593,3 +594,150 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		I.appearance = equip_overlays[image_key]
 		return I
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+/datum/species/proc/get_description(var/header, var/append, var/verbose = TRUE, var/skip_detail, var/skip_photo)
+	var/list/damage_types = list(
+		"physical trauma" = brute_mod,
+		"burns" = burn_mod,
+		"lack of air" = oxy_mod,
+		"poison" = toxins_mod
+	)
+	if(!header)
+		header = "<center><h2>[name]</h2></center><hr/>"
+	var/dat = list()
+	dat += "[header]"
+	dat += "<table padding='8px'>"
+	dat += "<tr>"
+	dat += "<td width = 400>"
+	if(verbose || length(description) <= MAX_DESC_LEN)
+		dat += "[description]"
+	else
+		dat += "[copytext(description, 1, MAX_DESC_LEN)] \[...\]"
+	if(append)
+		dat += "<br>[append]"
+	dat += "</td>"
+	if(!skip_photo)
+		dat += "<td width = 200 align='center'>"
+		if(!skip_photo)
+			usr << browse_rsc(icon(icon = preview_icon, icon_state = ""), "species_preview_[name].png")
+			dat += "<img src='species_preview_[name].png' width='64px' height='64px'><br/><br/>"
+		if(!skip_detail)
+			dat += "<small>"
+			if(spawn_flags & SPECIES_CAN_JOIN)
+				dat += "</br><b>Often present among humans.</b>"
+			if(spawn_flags & SPECIES_IS_WHITELISTED)
+				dat += "</br><b>Whitelist restricted.</b>"
+			if(!has_organ[O_HEART])
+				dat += "</br><b>Does not have blood.</b>"
+			if(!has_organ[O_LUNGS])
+				dat += "</br><b>Does not breathe.</b>"
+			if(flags & NO_SCAN)
+				dat += "</br><b>Does not have DNA.</b>"
+			if(flags & NO_PAIN)
+				dat += "</br><b>Does not feel pain.</b>"
+			if(flags & NO_MINOR_CUT)
+				dat += "</br><b>Has thick skin/scales.</b>"
+			if(flags & NO_SLIP)
+				dat += "</br><b>Has excellent traction.</b>"
+			if(flags & NO_POISON)
+				dat += "</br><b>Immune to most poisons.</b>"
+			if(appearance_flags & HAS_SKIN_TONE)
+				dat += "</br><b>Has a variety of skin tones.</b>"
+			if(appearance_flags & HAS_SKIN_COLOR)
+				dat += "</br><b>Has a variety of skin colours.</b>"
+			if(appearance_flags & HAS_EYE_COLOR)
+				dat += "</br><b>Has a variety of eye colours.</b>"
+			if(flags & IS_PLANT)
+				dat += "</br><b>Has a plantlike physiology.</b>"
+			if(slowdown)
+				dat += "</br><b>Moves [slowdown > 0 ? "slower" : "faster"] than most.</b>"
+			for(var/kind in damage_types)
+				if(damage_types[kind] > 1)
+					dat += "</br><b>Vulnerable to [kind].</b>"
+				else if(damage_types[kind] < 1)
+					dat += "</br><b>Resistant to [kind].</b>"
+			/*if(has_organ[breathing_organ])
+				dat += "</br><b>They breathe [gas_data.name[breath_type]].</b>"
+				dat += "</br><b>They exhale [gas_data.name[exhale_type]].</b>"
+			if(LAZYLEN(poison_types))
+				dat += "</br><b>[capitalize(english_list(poison_types))] [LAZYLEN(poison_types) == 1 ? "is" : "are"] poisonous to them.</b>"*/
+			dat += "</small>"
+		dat += "</td>"
+	dat += "</tr>"
+	dat += "</table><hr/>"
+	return jointext(dat, null)
+/*
+/datum/category_item/player_setup_item/physical/body/proc/SetSpecies(mob/user)
+	if(!pref.species_preview || !(pref.species_preview in GLOB.all_species))
+		pref.species_preview = SPECIES_HUMAN
+	var/datum/species/current_species = GLOB.all_species[pref.species_preview]
+	var/dat = "<body>"
+	dat += "<center><h2>[current_species.name] \[<a href='?src=\ref[src];show_species=1'>change</a>\]</h2></center><hr/>"
+	dat += "<table padding='8px'>"
+	dat += "<tr>"
+	if(current_species.wikilink)
+		dat += "<td width = 400>[current_species.blurb]<br><br>See <a href=[current_species.wikilink]>the wiki</a> for more details.</td>"
+	else
+		dat += "<td width = 400>[current_species.blurb]</td>"
+	dat += "<td width = 200 align='center'>"
+	if("preview" in icon_states(current_species.icobase))
+		usr << browse_rsc(icon(current_species.icobase,"preview"), "species_preview_[current_species.name].png")
+		dat += "<img src='species_preview_[current_species.name].png' width='64px' height='64px'><br/><br/>"
+	dat += "<b>Language:</b> [current_species.species_language]<br/>"
+	dat += "<small>"
+	if(current_species.spawn_flags & SPECIES_CAN_JOIN)
+		switch(current_species.rarity_value)
+			if(1 to 2)
+				dat += "</br><b>Often present on human stations.</b>"
+			if(3 to 4)
+				dat += "</br><b>Rarely present on human stations.</b>"
+			if(5)
+				dat += "</br><b>Unheard of on human stations.</b>"
+			else
+				dat += "</br><b>May be present on human stations.</b>"
+	if(current_species.spawn_flags & SPECIES_IS_WHITELISTED)
+		dat += "</br><b>Whitelist restricted.</b>"
+	if(!current_species.has_organ[O_HEART])
+		dat += "</br><b>Does not have a circulatory system.</b>"
+	if(!current_species.has_organ[O_LUNGS])
+		dat += "</br><b>Does not have a respiratory system.</b>"
+	if(current_species.flags & NO_SCAN)
+		dat += "</br><b>Does not have DNA.</b>"
+	if(current_species.flags & NO_PAIN)
+		dat += "</br><b>Does not feel pain.</b>"
+	if(current_species.flags & NO_SLIP)
+		dat += "</br><b>Has excellent traction.</b>"
+	if(current_species.flags & NO_POISON)
+		dat += "</br><b>Immune to most poisons.</b>"
+	if(current_species.appearance_flags & HAS_SKIN_TONE)
+		dat += "</br><b>Has a variety of skin tones.</b>"
+	if(current_species.appearance_flags & BASE_SKIN_COLOR)
+		dat += "</br><b>Has a small number of base skin colors.</b>"
+	if(current_species.appearance_flags & HAS_SKIN_COLOR)
+		dat += "</br><b>Has a variety of skin colours.</b>"
+	if(current_species.appearance_flags & HAS_EYE_COLOR)
+		dat += "</br><b>Has a variety of eye colours.</b>"
+	if(current_species.flags & IS_PLANT)
+		dat += "</br><b>Has a plantlike physiology.</b>"
+	dat += "</small></td>"
+	dat += "</tr>"
+	dat += "</table><center><hr/>"
+
+	var/restricted = 0
+
+	if(!(current_species.spawn_flags & SPECIES_CAN_JOIN))
+		restricted = 2
+	else if(!is_alien_whitelisted(preference_mob(),current_species))
+		restricted = 1
+
+	if(restricted)
+		if(restricted == 1)
+			dat += "<font color='red'><b>You cannot play as this species.</br><small>If you wish to be whitelisted, you can make an application post on <a href='?src=\ref[user];preference=open_whitelist_forum'>the forums</a>.</small></b></font></br>"
+		else if(restricted == 2)
+			dat += "<font color='red'><b>You cannot play as this species.</br><small>This species is not available for play as a station race..</small></b></font></br>"
+	if(!restricted || check_rights(R_ADMIN, 0) || current_species.spawn_flags & SPECIES_WHITELIST_SELECTABLE)	//selectability
+		dat += "\[<a href='?src=\ref[src];set_species=[pref.species_preview]'>select</a>\]"
+	dat += "</center></body>"
+
+	user << browse(dat, "window=species;size=700x400")
+*/

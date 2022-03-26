@@ -103,15 +103,13 @@
 	deform = 'icons/mob/human_races/monkeys/r_neaera.dmi'
 
 	greater_form = SPECIES_SKRELL
-	default_language = "Neaera"
 	flesh_color = "#8CD7A3"
 	blood_color = "#1D2CBF"
 	reagent_tag = IS_SKRELL
 	tail = null
 
 
-	//name_plural = "Neaera"
-
+	//default_language = "Neaera"
 
 	force_cultural_info = list(
 		TAG_CULTURE = CULTURE_NEARA,
@@ -128,14 +126,12 @@
 
 	tail = "stoktail"
 	greater_form = SPECIES_UNATHI
-	default_language = "Stok"
 	flesh_color = "#34AF10"
 	base_color = "#066000"
 	reagent_tag = IS_UNATHI
 
 
-	//name_plural = "Stok"
-
+	//default_language = "Stok"
 
 	force_cultural_info = list(
 		TAG_CULTURE = CULTURE_STOK,

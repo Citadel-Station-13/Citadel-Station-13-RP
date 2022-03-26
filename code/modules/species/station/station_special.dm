@@ -11,16 +11,13 @@
 	deform = 'icons/mob/human_races/r_def_xenochimera.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	rarity_value = 4
-	darksight = 8		//critters with instincts to hide in the dark need to see in the dark - about as good as tajara.
-	slowdown = -0.2		//scuttly, but not as scuttly as a tajara or a teshari.
-	brute_mod = 0.8		//About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
-	burn_mod =  1.15	//As vulnerable to burn as a Tajara.
-	radiation_mod = 1.15	//To help simulate the volatility of a living 'viral' cluster.
+	darksight = 8 // Critters with instincts to hide in the dark need to see in the dark - about as good as tajara.
+	slowdown = -0.2 // Scuttly, but not as scuttly as a tajara or a teshari.
+	brute_mod = 0.8 // About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
+	burn_mod = 1.15 // As vulnerable to burn as a Tajara.
+	radiation_mod = 1. 	// To help simulate the volatility of a living 'viral' cluster.
 	base_species = "Xenochimera"
 	selects_bodytype = TRUE
-
-	num_alternate_languages = 5
-	secondary_langs = list("Sol Common")
 
 	//color_mult = 1 //It seemed to work fine in testing, but I've been informed it's unneeded.
 	tail = "tail" //Scree's tail. Can be disabled in the vore tab by choosing "hide species specific tail sprite"
@@ -75,7 +72,7 @@
 	min_age = 18
 	max_age = 200
 
-	blurb = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \
+	description = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \
 	Widely known for their voracious nature and violent tendencies when stressed or left unfed for long periods of time. \
 	Most, if not all chimeras possess the ability to undergo some type of regeneration process, at the cost of energy."
 
@@ -144,6 +141,11 @@
 	blood_color = "#14AD8B"
 
 	reagent_tag = IS_CHIMERA
+
+
+	//num_alternate_languages = 5
+	//secondary_langs = list("Sol Common")
+
 
 /datum/species/shapeshifter/xenochimera/handle_environment_special(var/mob/living/carbon/human/H)
 	//If they're KO'd/dead, they're probably not thinking a lot about much of anything.
@@ -710,13 +712,11 @@
 	icobase = 'icons/mob/human_races/r_spider.dmi'
 	deform = 'icons/mob/human_races/r_def_spider.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp, /datum/unarmed_attack/bite/sharp/numbing)
-	darksight = 8		//Can see completely in the dark. They are spiders, after all. Not that any of this matters because people will be using custom race.
-	slowdown = -0.15	//Small speedboost, as they've got a bunch of legs. Or something. I dunno.
-	brute_mod = 0.8		//20% brute damage reduction
-	burn_mod =  1.15	//15% burn damage increase. They're spiders. Aerosol can+lighter = dead spiders.
+	darksight = 8 // Can see completely in the dark. They are spiders, after all. Not that any of this matters because people will be using custom race.
+	slowdown = -0.15 // Small speedboost, as they've got a bunch of legs. Or something. I dunno.
+	brute_mod = 0.8 // 20% brute damage reduction
+	burn_mod = 1.15 // 15% burn damage increase. They're spiders. Aerosol can+lighter = dead spiders.
 
-	num_alternate_languages = 2
-	secondary_langs = list(LANGUAGE_VESPINAE)
 	color_mult = 1
 	tail = "tail" //Spider tail.
 	icobase_tail = 1
@@ -737,7 +737,7 @@
 	min_age = 18
 	max_age = 80
 
-	blurb = "Vasilissans are a tall, lanky, spider like people. \
+	description = "Vasilissans are a tall, lanky, spider like people. \
 	Each having four eyes, an extra four, large legs sprouting from their back, and a chitinous plating on their body, and the ability to spit webs \
 	from their mandible lined mouths.  They are a recent discovery by Nanotrasen, only being discovered roughly seven years ago.  \
 	Before they were found they built great cities out of their silk, being united and subjugated in warring factions under great Star Queens  \
@@ -761,6 +761,11 @@
 	flesh_color = "#AFA59E" //Gray-ish. Not sure if this is really needed, but eh.
 	base_color 	= "#333333" //Blackish-gray
 	blood_color = "#0952EF" //Spiders have blue blood.
+
+
+	//num_alternate_languages = 2
+	//secondary_langs = list(LANGUAGE_VESPINAE)
+
 
 /datum/species/spider/handle_environment_special(var/mob/living/carbon/human/H)
 	if(H.stat == DEAD) // If they're dead they won't need anything.
@@ -796,16 +801,13 @@
 	hunger_factor = 0.4
 	darksight = 8
 	mob_size = MOB_LARGE
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_CANILUNZT)
-	name_language = LANGUAGE_CANILUNZT
 	primitive_form = "Wolpin"
 	color_mult = 1
 
 	min_age = 18
 	max_age = 200
 
-	blurb = "Big buff werewolves. These are a limited functionality event species that are not balanced for regular gameplay. Adminspawn only."
+	description = "Big buff werewolves. These are a limited functionality event species that are not balanced for regular gameplay. Adminspawn only."
 
 	wikilink="N/A"
 
@@ -840,6 +842,12 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 		)
 
+
+	//num_alternate_languages = 3
+	//secondary_langs = list(LANGUAGE_CANILUNZT)
+	//name_language = LANGUAGE_CANILUNZT
+
+
 /////////////////////
 /////INSECTOIDS/////
 /////////////////////
@@ -849,13 +857,11 @@
 	icobase = 'icons/mob/human_races/r_def_apidaen.dmi'
 	deform = 'icons/mob/human_races/r_def_apidaen.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	darksight = 6		//Not quite as good as spiders. Meant to represent compound eyes and/or better hearing.
-	slowdown = -0.10	//Speed boost similar to spiders, slightly nerfed due to two less legs.
-	brute_mod = 0.8		//20% brute damage reduction seems fitting to match spiders, due to exoskeletons.
-	burn_mod =  1.15	//15% burn damage increase, the same as spiders. For the same reason.
+	darksight = 6	 // Not quite as good as spiders. Meant to represent compound eyes and/or better hearing.
+	slowdown = -0.10 // Speed boost similar to spiders, slightly nerfed due to two less legs.
+	brute_mod = 0.8	 // 20% brute damage reduction seems fitting to match spiders, due to exoskeletons.
+	burn_mod = 1.15	 // 15% burn damage increase, the same as spiders. For the same reason.
 
-	num_alternate_languages = 2
-	secondary_langs = list(LANGUAGE_VESPINAE)
 	color_mult = 1
 	tail = "tail" //Bee tail. I've desaturated it for the sprite sheet.
 	icobase_tail = 1
@@ -873,7 +879,7 @@
 	min_age = 18
 	max_age = 80
 
-	blurb = "Apidaens are an insectoid race from the far galactic rim. \
+	description = "Apidaens are an insectoid race from the far galactic rim. \
 	Although they have only recently been formally acknowledged on the Galactic stage, Apidaens are an aged and advanced spacefaring civilization. \
 	Although their exact phyisololgy changes based on caste or other unknown selective qualities, Apidaens generally possess compound eyes, \
 	between four to six limbs, and wings. Apidaens are able to produce a substance molecularly identical to honey in what is considered to be \
@@ -911,6 +917,11 @@
 		O_INTESTINE =/obj/item/organ/internal/intestine,
 		O_HSTOMACH =  /obj/item/organ/internal/honey_stomach
 		)
+
+
+	//num_alternate_languages = 2
+	//secondary_langs = list(LANGUAGE_VESPINAE)
+
 
 //Did you know it's actually called a honey stomach? I didn't!
 /obj/item/organ/internal/honey_stomach
