@@ -84,7 +84,7 @@
 
 	genders = list(PLURAL)
 
-	wikilink="https://wiki.vore-station.net/Diona"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
 
 
 	//economic_power = 4
