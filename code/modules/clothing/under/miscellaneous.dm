@@ -1964,3 +1964,8 @@
     if(worn_state == "antediluvian_d_s")
         worn_state = "antediluvian_s"
 */
+
+/obj/item/clothing/under/hasie
+	name = "Hasie skirt"
+	desc = "A daring combination of dark charcoals and vibrant reds and whites, the Hasie skirt/vest combo knows what it's doing. Sporting a low cut charcoal miniskirt and matching midriff button-up, this ensemble wows with the incredible color contrast of its two-tone vest."
+	icon_state = "hasie"

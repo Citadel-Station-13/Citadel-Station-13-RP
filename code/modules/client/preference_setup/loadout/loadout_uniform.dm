@@ -754,3 +754,7 @@ Swimsuits
 /datum/gear/uniform/antediluvian
 	name = "Antediluvian Corset"
 	path = /obj/item/clothing/under/antediluvian
+
+/datum/gear/uniform/hasie
+	name = "Hasie Designer Skirt/Vest"
+	path = /obj/item/clothing/under/hasie
