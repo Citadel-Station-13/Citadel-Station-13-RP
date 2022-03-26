@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(ai)
 		if(!L?.loc)
 			continue
 
-		if(process_z[get_z(L)] || !L.low_priority)//check if we need to process the AI as there is no living player here
+		if(LAZYACCESS(process_z, get_z(L)) || !L.low_priority)//check if we need to process the AI as there is no living player here
 			if(times_fired % 4 == 0 && A.holder.stat != DEAD)
 				A.handle_strategicals()
 			if(A.holder.stat != DEAD) // The /TG/ version checks stat twice, presumably in-case processing somehow got the mob killed in that instant.
