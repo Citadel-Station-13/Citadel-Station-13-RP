@@ -1,7 +1,7 @@
 /decl/cultural_info/culture/adherent
 	name = CULTURE_ADHERENT_REMNANT
 	language = LANGUAGE_ADHERENT
-	additional_langs = list(LANGUAGE_GALCOM)
+	optional_languages = list(LANGUAGE_GALCOM)
 
 
 /decl/cultural_info/culture/adherent/council

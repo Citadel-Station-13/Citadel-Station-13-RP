@@ -129,11 +129,11 @@
 #define CULTURE_XENOMORPH_Q    "Xenomorph Queen"
 #define FACTION_XENOMORPH      "Xenomorph Hive"
 
-// Teshari Cultures
+// Teshari Cultures.
 #define CULTURE_TESHARI   "Common Pack"
 
 
-// Apidaen Cultures
+// Apidaen Cultures.
 #define CULTURE_APIDAEN "Colony Member"
 
 #define FACTION_APIDAEN_ROYAL "Apidae Royalty"
@@ -142,4 +142,26 @@
 #define FACTION_APIDAEN_DRONE "Drone Caste"
 #define FACTION_APIDAEN_DEVIANT "Deviant"
 
-#define HOME_WORLD_APIDAEN "Deneb System"
+#define HOME_SYSTEM_DENEB "Deneb System"
+
+
+// Tajaran Cultures.
+#define CULTURE_TAJARA "Hharar"
+#define CULTURE_TAJARA_ZHAN "Zhan-Khazan"
+#define CULTURE_TAJARA_MSAI "M'sai"
+#define CULTURE_TAJARA_NJARIR "Njarir’Akhran"
+
+#define FACTION_TAJARA "The Confederate Commonwealth"
+#define FACTION_TAJARA_PRA "The People’s Republic of Ahdomai"
+#define FACTION_TAJARA_DPRA "The Democratic People’s Republic of Ahdomai"
+#define FACTION_TAJARA_NKA "New Kingdom of Ahdomai"
+#define FACTION_TAJARA_FC "Free Cities"
+#define FACTION_TAJARA_SPACER "Spacers"
+
+#define HOME_SYSTEM_AHDOMAI "Ahdomai"
+#define HOME_SYSTEM_CCSS "CCSS"
+#define HOME_SYSTEM_RASKARA "Raskara Moon Habitats"
+#define HOME_SYSTEM_HROZAMAL "Hro'zamal"
+
+#define RELIGION_TAJARA_SRANDARR "Tajr-kii S'randarr"
+#define RELIGION_TAJARA_MESSA "Tajr-kii Messa"

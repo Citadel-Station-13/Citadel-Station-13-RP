@@ -21,7 +21,7 @@
 
 /decl/cultural_info/culture/temp/
 	default_language = LANGUAGE_GALCOM
-	additional_langs = list(LANGUAGE_GALCOM)
+	optional_languages = list(LANGUAGE_GALCOM)
 	hidden = TRUE
 	description = "This is a Temporary holder for your species' language."
 
@@ -45,7 +45,7 @@
 
 /decl/cultural_info/culture/hidden/xenomorph/temp
 	name = TEMP_CULTURE_XENOHYBRID
-	additional_langs = list(LANGUAGE_GALCOM, LANGUAGE_XENOMORPH_HIVE)
+	optional_languages = list(LANGUAGE_GALCOM, LANGUAGE_XENOMORPH_HIVE)
 
 /decl/cultural_info/culture/temp/alraune
 	name = TEMP_CULTURE_ALARUNE

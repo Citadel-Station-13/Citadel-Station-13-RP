@@ -19,7 +19,7 @@
 	description = "You came from the void between the stars."
 	language = null
 	secondary_langs = null
-	additional_langs = null
+	optional_languages = null
 	distance = null
 	capital = null
 	economic_power = null

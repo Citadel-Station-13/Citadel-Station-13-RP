@@ -1,6 +1,6 @@
 /decl/cultural_info/location/qerrbalak
 	name = HOME_SYSTEM_QERRBALAK
-	additional_langs = list(LANGUAGE_GALCOM)
+	optional_languages = list(LANGUAGE_GALCOM)
 	secondary_langs = list(
 		LANGUAGE_SKRELLIAN,
 		LANGUAGE_SIGN,

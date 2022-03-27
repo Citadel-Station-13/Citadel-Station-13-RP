@@ -6,7 +6,7 @@
 	var/language = LANGUAGE_GALCOM
 	var/name_language
 	var/default_language
-	var/list/additional_langs
+	var/list/optional_languages
 	var/list/secondary_langs
 	var/common_langs
 	var/has_common_langs = TRUE
@@ -24,18 +24,18 @@
 		name_language = default_language
 
 	// Remove any overlap for the sake of presentation.
-	if(LAZYLEN(additional_langs))
-		additional_langs -= language
-		additional_langs -= name_language
-		additional_langs -= default_language
-		UNSETEMPTY(additional_langs)
+	if(LAZYLEN(optional_languages))
+		optional_languages -= language
+		optional_languages -= name_language
+		optional_languages -= default_language
+		UNSETEMPTY(optional_languages)
 
 	if(LAZYLEN(secondary_langs))
 		secondary_langs -= language
 		secondary_langs -= name_language
 		secondary_langs -= default_language
-		if(LAZYLEN(additional_langs))
-			secondary_langs -= additional_langs
+		if(LAZYLEN(optional_languages))
+			secondary_langs -= optional_languages
 		UNSETEMPTY(secondary_langs)
 
 /decl/cultural_info/proc/get_random_name(var/gender)
@@ -91,4 +91,4 @@
 	if(language) . |= language
 	if(default_language) . |= default_language
 	if(name_language) . |= name_language
-	if(LAZYLEN(additional_langs)) . |= additional_langs
+	if(LAZYLEN(optional_languages)) . |= optional_languages

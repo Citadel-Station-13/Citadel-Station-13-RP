@@ -5,7 +5,7 @@
 	and destroyed stations. The dionaea themselves were found in scattered orbits around each of the three stars, singing to \
 	each other across the inky void."
 	language = LANGUAGE_ROOTLOCAL
-	additional_langs = list(LANGUAGE_ROOTGLOBAL)
+	optional_languages = list(LANGUAGE_ROOTGLOBAL)
 	secondary_langs = list(LANGUAGE_SIGN, LANGUAGE_SPACER)
 	ruling_body = "The Diona Chorus"
 	distance = "63 light years"

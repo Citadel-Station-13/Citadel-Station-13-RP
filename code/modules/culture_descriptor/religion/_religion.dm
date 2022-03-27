@@ -4,4 +4,4 @@
 	language = null
 	economic_power = null
 	secondary_langs = null
-	additional_langs = null
+	optional_languages = null

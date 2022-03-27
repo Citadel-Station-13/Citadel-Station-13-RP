@@ -84,7 +84,7 @@
 	"nai","ou","kah","oa","ama","uuk","bel","chi","ayt","kay","kas","akor","tam","yir","enai")
 
 /datum/language/tajsign
-	name = LANGUAGE_ALAI
+	name = LANGUAGE_SIIK_TAJR
 	desc = "A standardized Tajaran sign language that was developed in Zarraya and gradually adopted by other nations, incorporating \
 			hand gestures and movements of the ears and tail."
 	signlang_verb = list("gestures with their hands", "gestures with their ears and tail", "gestures with their ears, tail and hands")

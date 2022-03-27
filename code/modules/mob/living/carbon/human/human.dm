@@ -1252,7 +1252,7 @@
 				free_languages    |= GLOB.all_languages[check.language]
 			if(check.name_language)
 				free_languages    |= GLOB.all_languages[check.name_language]
-			for(var/lang in check.additional_langs)
+			for(var/lang in check.optional_languages)
 				free_languages    |= GLOB.all_languages[lang]
 			for(var/lang in check.get_spoken_languages())
 				permitted_languages |= GLOB.all_languages[lang]
