@@ -24,8 +24,7 @@
 	default_language = LANGUAGE_GALCOM
 	additional_langs = list(LANGUAGE_GALCOM)
 	hidden = TRUE
-	description = "This is a Temporary holder for your\
-	species' language."
+	description = "This is a Temporary holder for your species' language."
 
 
 /decl/cultural_info/culture/temp/shadekin

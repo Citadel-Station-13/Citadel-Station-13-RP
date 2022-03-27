@@ -441,16 +441,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		if(!choice || !(choice in GLOB.all_species))
 			return
 
-		var/datum/species/setting_species
-
-		if(GLOB.all_species[href_list["set_species"]])
-			setting_species = GLOB.all_species[href_list["set_species"]]
-		else
-			return TOPIC_NOACTION
-
-		if(((!(setting_species.spawn_flags & SPECIES_CAN_JOIN)) || (!is_alien_whitelisted(preference_mob(),setting_species))) && !check_rights(R_ADMIN, 0) && !(setting_species.spawn_flags & SPECIES_WHITELIST_SELECTABLE))
-			return TOPIC_NOACTION
-
 		var/prev_species = pref.species
 		pref.species = choice
 		if(prev_species != pref.species)
@@ -492,7 +482,62 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			pref.cultural_info = mob_species.default_cultural_info.Copy()
 
 			return TOPIC_REFRESH_UPDATE_PREVIEW
+/*
+	else if(href_list["set_species"])
+		user << browse(null, "window=species")
+		if(!pref.species_preview || !(pref.species_preview in GLOB.all_species))
+			return TOPIC_NOACTION
 
+		var/datum/species/setting_species
+
+		if(GLOB.all_species[href_list["set_species"]])
+			setting_species = GLOB.all_species[href_list["set_species"]]
+		else
+			return TOPIC_NOACTION
+
+		if(((!(setting_species.spawn_flags & SPECIES_CAN_JOIN)) || (!is_alien_whitelisted(preference_mob(),setting_species))) && !check_rights(R_ADMIN, 0) && !(setting_species.spawn_flags & SPECIES_WHITELIST_SELECTABLE))
+			return TOPIC_NOACTION
+
+		var/prev_species = pref.species
+		pref.species = href_list["set_species"]
+		if(prev_species != pref.species)
+			if(!(pref.biological_gender in mob_species.genders))
+				pref.set_biological_gender(mob_species.genders[1])
+			pref.custom_species = null //VOREStation Edit - This is cleared on species changes
+
+			//grab one of the valid hair styles for the newly chosen species
+			var/list/valid_hairstyles = pref.get_valid_hairstyles()
+
+			if(valid_hairstyles.len)
+				pref.h_style = pick(valid_hairstyles)
+			else
+				//this shouldn't happen
+				pref.h_style = hair_styles_list["Bald"]
+
+			//grab one of the valid facial hair styles for the newly chosen species
+			var/list/valid_facialhairstyles = pref.get_valid_facialhairstyles()
+
+			if(valid_facialhairstyles.len)
+				pref.f_style = pick(valid_facialhairstyles)
+			else
+				//this shouldn't happen
+				pref.f_style = facial_hair_styles_list["Shaved"]
+
+			//reset hair colour and skin colour
+			pref.r_hair = 0//hex2num(copytext(new_hair, 2, 4))
+			pref.g_hair = 0//hex2num(copytext(new_hair, 4, 6))
+			pref.b_hair = 0//hex2num(copytext(new_hair, 6, 8))
+			pref.s_tone = 0
+
+			reset_limbs() // Safety for species with incompatible manufacturers; easier than trying to do it case by case.
+			pref.body_markings.Cut() // Basically same as above.
+
+			var/min_age = get_min_age()
+			var/max_age = get_max_age()
+			pref.age = max(min(pref.age, max_age), min_age)
+
+			return TOPIC_REFRESH_UPDATE_PREVIEW
+*/
 	else if(href_list["hair_color"])
 		if(!has_flag(mob_species, HAS_HAIR_COLOR))
 			return TOPIC_NOACTION
