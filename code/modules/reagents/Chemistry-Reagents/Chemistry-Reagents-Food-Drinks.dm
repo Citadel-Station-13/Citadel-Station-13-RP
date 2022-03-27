@@ -4151,6 +4151,14 @@ End Citadel Change */
 	id = "tallow"
 	description = "An liquidized form of animal fat, useful for adding that extra heart stopping potential to any of your deep fried food products."
 
+//Brine, for treating certain meats and food product fermentation.
+
+/datum/reagent/brine
+	name = "Brine"
+	id = "brine"
+	color = "#a1d1e7"
+	description = "A mixture of water, enzymes, sugar, and salt used to trigger fermentation in certain food products."
+
 //Protein! Get your mind out of the gutter.
 /datum/reagent/nutriment/protein // Bad for Skrell!
 	name = "animal protein"
@@ -4714,6 +4722,16 @@ End Citadel Change */
 
 	glass_name = "Green Tea"
 	glass_desc = "A very bitter, yet aromatic green tea."
+
+/datum/reagent/drink/crystalgibb
+	name = "Crystal Dr. Gibb"
+	id = "crystalgibb"
+	description = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+	taste_description = "clear cherry soda"
+	color = "#0000"
+
+	glass_name = "Crystal Dr. Gibb"
+	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
 
 /datum/reagent/drink/crystalgibb
 	name = "Crystal Dr. Gibb"

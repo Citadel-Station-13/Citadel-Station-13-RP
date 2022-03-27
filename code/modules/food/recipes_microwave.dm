@@ -1518,12 +1518,12 @@ I said no!
 
 /datum/recipe/sauerkraut
 	fruit = list("cabbage" = 1)
-	reagents = list("water" = 5, "sodiumchloride" = 1)
+	reagents = list("brine" = 5)
 	result = /obj/item/reagent_containers/food/snacks/sauerkraut
 
 /datum/recipe/kimchi
 	fruit = list("cabbage" = 1, "whitebeet" = 1)
-	reagents = list("water" = 5, "sodiumchloride" = 2, "blackpepper" = 2, "sugar" = 2)
+	reagents = list("brine" = 5, "blackpepper" = 2)
 	result = /obj/item/reagent_containers/food/snacks/kimchi
 
 /datum/recipe/chickensatay
