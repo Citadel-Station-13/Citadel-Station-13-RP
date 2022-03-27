@@ -144,8 +144,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 		TAG_HOMEWORLD = list(
 		),
 		TAG_FACTION = list(
-		),
-		TAG_RELIGION = list(
 		)
 	)
 

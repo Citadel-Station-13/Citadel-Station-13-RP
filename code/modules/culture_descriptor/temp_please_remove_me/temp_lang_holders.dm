@@ -9,7 +9,6 @@
 #define TEMP_CULTURE_PROMETHEAN "Temp Promethean Culture"
 #define TEMP_CULTURE_VASILISSAN "Temp Vasilissan Culture"
 #define TEMP_CULTURE_WEREBEAST "Temp Werebeast Culture"
-#define TEMP_CULTURE_APIDAEN "Temp Apidaen Culture"
 #define TEMP_CULTURE_ZADDAT "Temp Zaddat Culture"
 #define TEMP_CULTURE_SERGAL "Temp Sergal Culture"
 #define TEMP_CULTURE_AKULA "Temp Akula Culture"
@@ -68,10 +67,6 @@
 	name = TEMP_CULTURE_WEREBEAST
 	name_language = LANGUAGE_CANILUNZT
 	secondary_langs = LANGUAGE_CANILUNZT
-
-/decl/cultural_info/culture/temp/apidaen
-	name = TEMP_CULTURE_APIDAEN
-	secondary_langs = LANGUAGE_VESPINAE
 
 /decl/cultural_info/culture/temp/zaddat
 	name = TEMP_CULTURE_ZADDAT

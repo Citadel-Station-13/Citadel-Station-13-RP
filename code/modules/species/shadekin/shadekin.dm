@@ -113,8 +113,6 @@
 		TAG_HOMEWORLD = list(
 		),
 		TAG_FACTION = list(
-		),
-		TAG_RELIGION = list(
 		)
 	)
 

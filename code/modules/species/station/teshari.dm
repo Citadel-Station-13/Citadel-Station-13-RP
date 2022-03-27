@@ -162,12 +162,10 @@
 		TAG_CULTURE = list(
 			CULTURE_TESHARI
 		),
-		TAG_HOMEWORLD = list(
+		TAG_HOMEWORLD += list(
 			HOME_SYSTEM_QERRBALAK
 		),
 		TAG_FACTION = list(
-		),
-		TAG_RELIGION = list(
 		)
 	)
 

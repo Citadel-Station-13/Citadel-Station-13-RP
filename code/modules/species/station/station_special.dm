@@ -773,8 +773,6 @@
 		TAG_HOMEWORLD = list(
 		),
 		TAG_FACTION = list(
-		),
-		TAG_RELIGION = list(
 		)
 	)
 
@@ -866,8 +864,6 @@
 		TAG_HOMEWORLD = list(
 		),
 		TAG_FACTION = list(
-		),
-		TAG_RELIGION = list(
 		)
 	)
 
@@ -948,14 +944,18 @@
 
 	available_cultural_info = list(
 		TAG_CULTURE = list(
-			TEMP_CULTURE_APIDAEN
+			CULTURE_APIDAEN
 		),
-		TAG_HOMEWORLD = list(
+		TAG_HOMEWORLD += list(
+			HOME_WORLD_APIDAEN
 		),
 		TAG_FACTION = list(
+			FACTION_APIDAEN_DEVIANT,
+			FACTION_APIDAEN_DRONE,
+			FACTION_APIDAEN_WAR,
+			FACTION_APIDAEN_SCH,
+			FACTION_APIDAEN_ROYAL
 		),
-		TAG_RELIGION = list(
-		)
 	)
 
 //Did you know it's actually called a honey stomach? I didn't!

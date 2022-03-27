@@ -54,7 +54,7 @@
 #define RELIGION_THELEMA       "Thelema"
 #define RELIGION_SPIRITUALISM  "Spiritualism"
 
-// Skrellian cultures.
+// Skrellian Cultures.
 #define CULTURE_SKRELL_QERR     "Qerr-Katish"
 #define CULTURE_SKRELL_MALISH   "Malish-Katish"
 #define CULTURE_SKRELL_KANIN    "Kanin-Katish"
@@ -63,18 +63,18 @@
 
 #define HOME_SYSTEM_QERRBALAK   "Qerrbalak"
 
-// Adherent cultures.
+// Adherent Cultures.
 #define CULTURE_ADHERENT_REMNANT "The Remnant"
 #define CULTURE_ADHERENT_COUNCIL "Council of Separation"
 
-#define HOME_SYSTEM_ADHERENT         "Canon"
-#define HOME_SYSTEM_ADHERENT_MOURNER "Monument World"
+#define HOME_SYSTEM_ADHERENT_THEIM "Theim Prime"
+#define HOME_SYSTEM_ADHERENT_COLONY "Abandoned Colony"
 
-#define FACTION_ADHERENT_PRESERVERS  "Preservers"
-#define FACTION_ADHERENT_LOYALISTS   "Loyalists"
+#define FACTION_ADHERENT_KEEPERS "Keepers"
+#define FACTION_ADHERENT_SEEKERS "Seekers"
 #define FACTION_ADHERENT_SEPARATISTS "Seperatists"
 
-// Vox cultures.
+// Vox Cultures.
 #define CULTURE_VOX_ARKSHIP    "Arkship Crew"
 #define CULTURE_VOX_SALVAGER   "Salvager Crew"
 #define CULTURE_VOX_RAIDER     "Raider Crew"
@@ -89,24 +89,24 @@
 
 #define RELIGION_VOX           "Auralis Reverence"
 
-// IPC cultures.
+// IPC Cultures.
 #define CULTURE_POSITRONICS    "Union Member"
 
 #define HOME_SYSTEM_ROOT       "Root"
 
 #define FACTION_POSITRONICS    "Positronic Union"
 
-// Diona cultures.
+// Diona Cultures.
 #define CULTURE_DIONA          "Diona Chorus"
 
 #define HOME_SYSTEM_DIONAEA    "Epsilon Ursae Minoris"
 
-// Serpentid cultures.
+// Serpentid Cultures.
 #define CULTURE_SERPENTID      "Serpentid Labourer"
 
 #define HOME_SYSTEM_SERPENTIDS "Tau-Wilo"
 
-// Unathi cultures.
+// Unathi Cultures.
 #define CULTURE_UNATHI              "Moghes Hegemony"
 
 #define HOME_SYSTEM_MOGHES          "Moghes"
@@ -122,12 +122,24 @@
 #define RELIGION_UNATHI_VINE         "Hand of the Vine"
 #define RELIGION_UNATHI_LIGHTS       "The Fruitful Lights"
 
-// Xenomorph cultures.
+// Xenomorph Cultures.
 #define CULTURE_XENOMORPH_D    "Xenomorph Drone"
 #define CULTURE_XENOMORPH_H    "Xenomorph Hunter"
 #define CULTURE_XENOMORPH_S    "Xenomorph Sentinel"
 #define CULTURE_XENOMORPH_Q    "Xenomorph Queen"
 #define FACTION_XENOMORPH      "Xenomorph Hive"
 
-// Teshari cultures
+// Teshari Cultures
 #define CULTURE_TESHARI   "Common Pack"
+
+
+// Apidaen Cultures
+#define CULTURE_APIDAEN "Colony Member"
+
+#define FACTION_APIDAEN_ROYAL "Apidae Royalty"
+#define FACTION_APIDAEN_SCH "Apidae Sholars"
+#define FACTION_APIDAEN_WAR "Apidae Warrior Caste"
+#define FACTION_APIDAEN_DRONE "Drone Caste"
+#define FACTION_APIDAEN_DEVIANT "Deviant"
+
+#define HOME_WORLD_APIDAEN "Deneb System"
