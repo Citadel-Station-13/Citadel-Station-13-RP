@@ -35,7 +35,6 @@
 #define LANGUAGE_SKRELLIANFAR "High Skrellian"
 #define LANGUAGE_MINBUS "Minbus"
 #define LANGUAGE_EVENT1 "Occursus"
-#define LANGUAGE_AKHANI "Akhani"
 #define LANGUAGE_ZADDAT "Vedahq"
 #define LANGUAGE_GIBBERISH "Babel"
 #define LANGUAGE_VERNAL "Vernal"

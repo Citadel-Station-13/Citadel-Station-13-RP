@@ -2,7 +2,6 @@
 	name = CULTURE_TESHARI
 	language = LANGUAGE_SCHECHI
 	name_language = LANGUAGE_SCHECHI
-	default_language = LANGUAGE_SCHECHI
 	optional_languages = list(LANGUAGE_GALCOM, LANGUAGE_SCHECHI)
 	economic_power = 6
 	description = "Most Teshari are organized in packs, and basically their entire social life revolves around and among the pack.\
