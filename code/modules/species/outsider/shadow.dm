@@ -25,7 +25,7 @@
 	genders = list(NEUTER)
 
 	//language = LANGUAGE_GALCOM
-	//assisted_langs = list()
+	assisted_langs = list()
 
 	// Bay doesn't even have culture for these.
 

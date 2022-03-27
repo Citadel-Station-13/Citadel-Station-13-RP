@@ -8,6 +8,9 @@
 	var/default_language
 	var/list/additional_langs
 	var/list/secondary_langs
+	var/common_langs
+	var/has_common_langs = TRUE
+//	var/list/max_languages = 20 // Implementing later, going to use the species one for now.
 	var/category
 	var/subversive_potential = 0
 	var/hidden
@@ -34,8 +37,6 @@
 		if(LAZYLEN(additional_langs))
 			secondary_langs -= additional_langs
 		UNSETEMPTY(secondary_langs)
-
-	..()
 
 /decl/cultural_info/proc/get_random_name(var/gender)
 	var/datum/language/_language
@@ -87,7 +88,7 @@
 
 /decl/cultural_info/proc/get_spoken_languages()
 	. = list()
-	if(language)                  . |= language
-	if(default_language)          . |= default_language
-	if(name_language)             . |= name_language
+	if(language) . |= language
+	if(default_language) . |= default_language
+	if(name_language) . |= name_language
 	if(LAZYLEN(additional_langs)) . |= additional_langs

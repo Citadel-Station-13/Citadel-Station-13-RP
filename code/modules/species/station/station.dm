@@ -43,7 +43,7 @@
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Humanity"
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//species_language = LANGUAGE_SOL_COMMON
 	//secondary_langs = list(LANGUAGE_SOL_COMMON, LANGUAGE_TERMINUS)
 	//name_language = null // Use the first-name last-name generator rather than a language scrambler
@@ -173,7 +173,7 @@
 		)
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_UNATHI)
 	//name_language = LANGUAGE_UNATHI
 	//species_language = LANGUAGE_UNATHI
@@ -295,7 +295,7 @@
 		)
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_SIIK, LANGUAGE_AKHANI, LANGUAGE_ALAI)
 	//name_language = LANGUAGE_SIIK
 	//species_language = LANGUAGE_SIIK
@@ -377,7 +377,7 @@
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Skrell"
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)
 	//name_language = LANGUAGE_SKRELLIAN
 	//species_language = LANGUAGE_SKRELLIAN
@@ -486,7 +486,7 @@
 
 
 	//economic_power = 3
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_ZADDAT, LANGUAGE_UNATHI)
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_SOL_COMMON, LANGUAGE_AKHANI, LANGUAGE_SIIK, LANGUAGE_GUTTER) //limited vocal range; can talk Unathi and magical Galcom but not much else
 	//name_language = LANGUAGE_ZADDAT
@@ -607,7 +607,7 @@
 		)
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_SAGARU)
 	//name_language = LANGUAGE_SAGARU
 
@@ -669,7 +669,7 @@
 	blood_color = "#1D2CBF"
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_SKRELLIAN)
 	//name_language = LANGUAGE_SKRELLIAN
 
@@ -738,7 +738,7 @@
 		)
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_BIRDSONG)
 	//name_language = LANGUAGE_BIRDSONG
 
@@ -800,7 +800,7 @@
 		)
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_TERMINUS)
 	//name_language = LANGUAGE_TERMINUS
 
@@ -862,7 +862,7 @@
 		)
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_TERMINUS)
 	//name_language = LANGUAGE_TERMINUS
 
@@ -922,7 +922,7 @@
 	//default_language = "Sol Common"
 	//secondary_langs = list(LANGUAGE_CANILUNZT)
 	//name_language = LANGUAGE_CANILUNZT
-	//num_alternate_languages = 3
+	max_languages = 4
 
 
 	available_cultural_info = list(
@@ -977,7 +977,7 @@
 		)
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_BIRDSONG)
 	//name_language = null
 
@@ -1094,7 +1094,7 @@
 	//name_language = LANGUAGE_SHADEKIN
 	//species_language = LANGUAGE_SHADEKIN
 	//secondary_langs = list(LANGUAGE_SHADEKIN)
-	//num_alternate_languages = 3
+	max_languages = 4
 
 
 	available_cultural_info = list(

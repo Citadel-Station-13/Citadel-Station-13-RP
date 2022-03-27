@@ -53,9 +53,10 @@
 	var/max_age = 70
 
 	// Speech vars.
+	var/max_languages = 4 //How many secondary languages are available to select at character creation
 	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
-	var/list/speech_sounds = list()							// A list of sounds to potentially play when speaking.
-	var/list/speech_chance = list()							// The likelihood of a speech sound playing.
+	var/list/speech_sounds = list() // A list of sounds to potentially play when speaking.
+	var/list/speech_chance = list() // The likelihood of a speech sound playing.
 
 	//Soundy emotey things.
 	var/scream_verb = "screams"

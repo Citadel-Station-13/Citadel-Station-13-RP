@@ -44,7 +44,7 @@
 
 	//default_language = LANGUAGE_GALCOM
 	//language = LANGUAGE_ENOCHIAN
-	//num_alternate_languages = 3
+	max_languages = 4
 
 
 	available_cultural_info = list(
@@ -97,7 +97,7 @@
 
 	//default_language = LANGUAGE_GALCOM
 	//language = LANGUAGE_DAEMON
-	//num_alternate_languages = 3
+	max_languages = 4
 
 
 	available_cultural_info = list(

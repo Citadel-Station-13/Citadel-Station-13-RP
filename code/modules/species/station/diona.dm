@@ -88,7 +88,7 @@
 
 	//economic_power = 4
 	//language = LANGUAGE_ROOTLOCAL
-	//num_alternate_languages = 2
+	max_languages = 3
 	//name_language = LANGUAGE_ROOTLOCAL
 	//species_language = LANGUAGE_ROOTLOCAL
 	//secondary_langs = list(LANGUAGE_ROOTGLOBAL)

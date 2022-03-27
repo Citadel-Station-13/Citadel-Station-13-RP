@@ -64,7 +64,8 @@
 #define HOME_SYSTEM_QERRBALAK   "Qerrbalak"
 
 // Adherent cultures.
-#define CULTURE_ADHERENT             "The Vigil"
+#define CULTURE_ADHERENT_REMNANT "The Remnant"
+#define CULTURE_ADHERENT_COUNCIL "Council of Separation"
 
 #define HOME_SYSTEM_ADHERENT         "Canon"
 #define HOME_SYSTEM_ADHERENT_MOURNER "Monument World"

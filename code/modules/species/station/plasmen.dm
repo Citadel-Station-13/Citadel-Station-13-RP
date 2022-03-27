@@ -70,7 +70,7 @@
 	//name_language = null // name randomisers are fucking weird
 	//language = LANGUAGE_GALCOM
 	//species_language = LANGUAGE_BONES
-	//num_alternate_languages = 3
+	max_languages = 4
 
 
 	available_cultural_info = list(

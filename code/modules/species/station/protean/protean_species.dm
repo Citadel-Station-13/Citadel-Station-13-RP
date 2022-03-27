@@ -82,11 +82,11 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	heat_level_2 = INFINITY
 	heat_level_3 = INFINITY
 
-	body_temperature =      290
+	body_temperature = 290
 
-	siemens_coefficient =   1.1 // Changed in accordance to the 'what to do now' section of the rework document
+	siemens_coefficient = 1.1 // Changed in accordance to the 'what to do now' section of the rework document
 
-	rarity_value =          5
+	rarity_value = 5
 
 	has_organ = list(
 		O_BRAIN = /obj/item/organ/internal/mmi_holder/posibrain/nano,
@@ -147,7 +147,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	var/monochromatic = FALSE //IGNORE ME
 
 
-	//num_alternate_languages = 5  // Let's not make them know every language, past me.
+	max_languages = 6  // Let's not make them know every language, past me.
 
 	// Assisted Langs are still used. As there is a physical requirement.
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)

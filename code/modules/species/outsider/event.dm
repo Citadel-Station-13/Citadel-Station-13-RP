@@ -114,7 +114,7 @@ Variables you may want to make use of are:
 	// Doesn't need a culture as it's a admin/event species,
 	// though I will leave this for possible future reference. - Zandario
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//species_language = LANGUAGE_GALCOM
 	//secondary_langs = list()
 	//assisted_langs = list()

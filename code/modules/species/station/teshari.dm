@@ -152,7 +152,7 @@
 
 
 	//economic_power = 6
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
 	//name_language = LANGUAGE_SCHECHI
 	//species_language = LANGUAGE_SCHECHI

@@ -1,16 +1,15 @@
-#define MAX_LANGUAGES 4
-
 /datum/category_item/player_setup_item/background/languages
 	name = "Languages"
 	sort_order = 2
 	var/list/allowed_languages
 	var/list/free_languages
+	var/number_of_langs
 
 /datum/category_item/player_setup_item/background/languages/load_character(var/savefile/S)
 	from_file(S["language"], pref.alternate_languages)
 
 /datum/category_item/player_setup_item/background/languages/save_character(var/savefile/S)
-	to_file(S["language"],   pref.alternate_languages)
+	to_file(S["language"], pref.alternate_languages)
 
 /datum/category_item/player_setup_item/background/languages/sanitize_character()
 	if(!islist(pref.alternate_languages))
@@ -36,13 +35,13 @@
 		return TOPIC_REFRESH
 
 	else if(href_list["add_language"])
-
-		if(pref.alternate_languages.len >= MAX_LANGUAGES)
+		var/datum/species/S = GLOB.all_species[pref.species]
+		if(pref.alternate_languages.len >= (S.max_languages))
 			alert(user, "You have already selected the maximum number of languages!")
 			return
 
 		sanitize_alt_languages()
-		var/list/available_languages = allowed_languages - free_languages
+		var/list/available_languages = (allowed_languages + 1) - free_languages
 		if(!LAZYLEN(available_languages))
 			alert(user, "There are no additional languages available to select.")
 		else
@@ -51,6 +50,7 @@
 				pref.alternate_languages |= new_lang
 				return TOPIC_REFRESH
 	. = ..()
+
 
 /datum/category_item/player_setup_item/background/languages/proc/rebuild_language_cache(var/mob/user)
 	allowed_languages = list()
@@ -84,18 +84,25 @@
 		pref.alternate_languages = list()
 	var/preference_mob = preference_mob()
 	rebuild_language_cache(preference_mob)
+
 	for(var/L in pref.alternate_languages)
 		var/datum/language/lang = GLOB.all_languages[L]
 		if(!lang || !is_allowed_language(preference_mob, lang))
 			pref.alternate_languages -= L
+
 	if(LAZYLEN(free_languages))
 		for(var/lang in free_languages)
 			pref.alternate_languages -= lang
 			pref.alternate_languages.Insert(1, lang)
 
+	var/datum/species/S = GLOB.all_species[pref.species]
+	if(pref.species)
+		if(!istype(S))
+			return
+
 	pref.alternate_languages = uniqueList(pref.alternate_languages)
-	if(pref.alternate_languages.len > MAX_LANGUAGES)
-		pref.alternate_languages.Cut(MAX_LANGUAGES + 1)
+	if(pref.alternate_languages.len > S.max_languages)
+		pref.alternate_languages.Cut(S.max_languages + 1)
 
 /datum/category_item/player_setup_item/background/languages/proc/get_language_text()
 	sanitize_alt_languages()
@@ -106,8 +113,7 @@
 				LAZYADD(., "- [lang] (required).<br>")
 			else
 				LAZYADD(., "- [lang] <a href='?src=\ref[src];remove_language=[i]'>Remove.</a><br>")
-	if(pref.alternate_languages.len < MAX_LANGUAGES)
-		var/remaining_langs = MAX_LANGUAGES - pref.alternate_languages.len
+	var/datum/species/S = GLOB.all_species[pref.species]
+	if(pref.alternate_languages.len < S.max_languages)
+		var/remaining_langs = S.max_languages - pref.alternate_languages.len
 		LAZYADD(., "- <a href='?src=\ref[src];add_language=1'>add</a> ([remaining_langs] remaining)<br>")
-
-#undef MAX_LANGUAGES

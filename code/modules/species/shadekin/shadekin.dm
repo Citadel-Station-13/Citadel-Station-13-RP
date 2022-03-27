@@ -103,7 +103,7 @@
 
 
 	//language = LANGUAGE_SHADEKIN
-	//assisted_langs = list()
+	assisted_langs = list()
 
 
 	available_cultural_info = list(

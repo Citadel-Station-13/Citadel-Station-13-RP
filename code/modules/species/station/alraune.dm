@@ -95,7 +95,7 @@
 		)
 
 
-	//num_alternate_languages = 3 //cit lore change
+	max_languages = 4 //cit lore change
 	//language = LANGUAGE_VERNAL
 	//species_language = LANGUAGE_VERNAL
 

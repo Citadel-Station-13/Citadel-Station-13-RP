@@ -95,8 +95,8 @@
 	//default_language = LANGUAGE_VOX
 	//language = LANGUAGE_GALCOM
 	//species_language = LANGUAGE_VOX
-	//num_alternate_languages = 1
-	//assisted_langs = list(LANGUAGE_ROOTGLOBAL)
+	max_languages = 2
+	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
 
 
 	available_cultural_info = list(

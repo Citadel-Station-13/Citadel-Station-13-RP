@@ -61,12 +61,13 @@
 
 	//language = LANGUAGE_ADHERENT
 	//species_language = LANGUAGE_ADHERENT
-	//num_alternate_languages = 2
+	max_languages = 3
 
 
 	available_cultural_info = list(
 		TAG_CULTURE = list(
-			CULTURE_ADHERENT
+			CULTURE_ADHERENT_REMNANT,
+			CULTURE_ADHERENT_COUNCIL
 		),
 		TAG_HOMEWORLD = list(
 			HOME_SYSTEM_ADHERENT,

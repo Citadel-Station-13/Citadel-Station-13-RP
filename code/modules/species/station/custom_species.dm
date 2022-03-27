@@ -48,7 +48,7 @@
 
 
 	//name_language = null // Use the first-name last-name generator rather than a language scrambler
-	//num_alternate_languages = 3
+	max_languages = 4
 	//assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 

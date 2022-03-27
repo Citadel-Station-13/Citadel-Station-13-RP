@@ -143,7 +143,7 @@
 	reagent_tag = IS_CHIMERA
 
 
-	//num_alternate_languages = 5
+	max_languages = 6
 	//secondary_langs = list("Sol Common")
 
 
@@ -762,7 +762,7 @@
 	blood_color = "#0952EF" //Spiders have blue blood.
 
 
-	//num_alternate_languages = 2
+	max_languages = 3
 	//secondary_langs = list(LANGUAGE_VESPINAE)
 
 
@@ -854,7 +854,7 @@
 		)
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//secondary_langs = list(LANGUAGE_CANILUNZT)
 	//name_language = LANGUAGE_CANILUNZT
 
@@ -942,7 +942,7 @@
 		)
 
 
-	//num_alternate_languages = 2
+	max_languages = 3
 	//secondary_langs = list(LANGUAGE_VESPINAE)
 
 

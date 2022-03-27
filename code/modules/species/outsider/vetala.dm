@@ -67,7 +67,7 @@
 
 	//default_language = LANGUAGE_GALCOM
 	//language = LANGUAGE_GALCOM
-	//num_alternate_languages = 3
+	max_languages = 4
 
 
 /datum/species/vetala_pale
@@ -146,6 +146,6 @@
 
 	//default_language = LANGUAGE_GALCOM
 	//language = LANGUAGE_GALCOM
-	//num_alternate_languages = 3
+	max_languages = 4
 
 	// No special data so no Temp culture

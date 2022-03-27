@@ -62,7 +62,7 @@
 		)
 
 
-	//num_alternate_languages = 3
+	max_languages = 4
 	//species_language = LANGUAGE_GALCOM
 	//secondary_langs = list(LANGUAGE_TERMINUS)
 	//assisted_langs = list(LANGUAGE_ROOTGLOBAL)
@@ -118,7 +118,7 @@
 
 
 	//species_language = LANGUAGE_SIGN
-	//assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_SOL_COMMON, LANGUAGE_SKRELLIANFAR)
+	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_SOL_COMMON, LANGUAGE_SKRELLIANFAR)
 
 
 /datum/species/shapeshifter/replicant/beta

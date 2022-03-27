@@ -8,4 +8,4 @@
 	additional_langs = list(LANGUAGE_GALCOM)
 
 /decl/cultural_info/culture/ipc/sanitize_name(var/new_name)
-	return sanitizeName(new_name, allow_numbers = 1)
+	return sanitizeName(new_name, allow_numbers = TRUE)

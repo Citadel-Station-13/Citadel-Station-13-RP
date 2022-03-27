@@ -28,7 +28,7 @@
 	var/has_headset = TRUE					//Do people with this job need to be given headsets and told how to use them?  E.g. Cyborgs don't.
 
 	var/account_allowed = 1					// Does this job type come with a station account?
-	var/economic_power = 2				// With how much does this job modify the initial account amount?
+	var/economic_power = 2					// With how much does this job modify the initial account amount?
 
 	var/outfit_type							// What outfit datum does this job use in its default title?
 
@@ -80,7 +80,7 @@
 	var/money_amount = rand(75, 100) * economic_power
 
 	// Get an average economic power for our cultures.
-	var/culture_mod =   0
+	var/culture_mod = 0
 	var/culture_count = 0
 	for(var/token in H.cultural_info)
 		var/decl/cultural_info/culture = H.get_cultural_value(token)

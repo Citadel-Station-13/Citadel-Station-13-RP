@@ -2,7 +2,9 @@
 	name = CULTURE_XENOMORPH_D
 	language = LANGUAGE_XENOMORPH
 	default_language = LANGUAGE_XENOMORPH
-	additional_langs = list(LANGUAGE_XENOMORPH_HIVE)
+	secondary_langs = list(
+		LANGUAGE_XENOMORPH_HIVE
+		)
 	var/caste_name = "drone"
 	var/caste_number = 0
 
