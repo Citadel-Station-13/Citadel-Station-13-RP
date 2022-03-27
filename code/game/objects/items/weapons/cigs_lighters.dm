@@ -512,7 +512,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 500
 	nicotine_amt = 0
 
-	/obj/item/clothing/mask/smokable/cigarette/blunt
+/obj/item/clothing/mask/smokable/cigarette/blunt
 	name = "blunt"
 	desc = "This probably shouldn't ever show up."
 	icon_state = "blunt"
