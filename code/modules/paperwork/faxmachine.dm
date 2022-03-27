@@ -215,6 +215,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	message_chat_admins(sender, faxname, sent, faxid, font_colour)
 	// VoreStation Edit End
 	//Citadel edit:
-	new /datum/admin_help(msg, sender.client, FALSE)
+	if (istype(sent, /obj/item/paper))
+		var/obj/item/paper/sent_p = sent
+		new /datum/admin_help(sent_p.info, sender.client, FALSE)
 	//End of citadel edit
 
