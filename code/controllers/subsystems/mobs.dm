@@ -22,17 +22,9 @@ SUBSYSTEM_DEF(mobs)
 	..("P: [global.GLOB.mob_list.len] | S: [slept_mobs]")
 
 /datum/controller/subsystem/mobs/fire(resumed = 0)
-	var/list/busy_z_levels = src.busy_z_levels
-
 	if (!resumed)
 		slept_mobs = 0
 		src.currentrun = GLOB.mob_list.Copy()
-		busy_z_levels.Cut()
-		for(var/played_mob in player_list)
-			if(!played_mob || isobserver(played_mob))
-				continue
-			var/mob/pm = played_mob
-			busy_z_levels |= pm.z
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
@@ -44,11 +36,6 @@ SUBSYSTEM_DEF(mobs)
 		if(QDELETED(M))
 			GLOB.mob_list -= M
 		else
-			// Right now mob.Life() is unstable enough I think we need to use a try catch.
-			// Obviously we should try and get rid of this for performance reasons when we can.
-			if(M.low_priority && !(M.z in busy_z_levels))
-				slept_mobs++
-				continue
 			M.Life(times_fired)
 
 		if (MC_TICK_CHECK)
