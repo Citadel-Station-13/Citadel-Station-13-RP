@@ -19,9 +19,10 @@
 
 /datum/category_item/player_setup_item/background/records/content(var/mob/user)
 	. = list()
-	. += "<br/><b>Records</b>:<br/>"
+
+	. += "<br><b>Records</b>:"
 	if(jobban_isbanned(user, "Records"))
-		. += "<span class='danger'>You are banned from using character records.</span><br>"
+		. += "[SPAN_WARNING("You are banned from using character records.")]"
 	else
 		. += "Medical Records:<br>"
 		. += "<a href='?src=\ref[src];set_medical_records=1'>[TextPreview(pref.med_record,40)]</a><br><br>"
