@@ -6246,3 +6246,136 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 8)
 	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/carbonara
+	name = "carbonara"
+	desc = "A hearty pasta dish containing shredded cheese, meat, and egg."
+	icon_state = "carbonara"
+	nutriment_amt = 10
+	nutriment_desc = list("noodles" = 5, "cheese" = 3, "meat" = 3, "egg" = 2)
+
+/obj/item/reagent_containers/food/snacks/carbonara/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 4
+
+/obj/item/reagent_containers/food/snacks/mushroompasta
+	name = "mushroom pasta"
+	desc = "A hearty pasta dish topped with sliced and diced mushrooms."
+	icon_state = "mushroompasta"
+	nutriment_amt = 10
+	nutriment_desc = list("noodles" = 5, "mushroom" = 3)
+
+/obj/item/reagent_containers/food/snacks/mushroompasta/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 4
+
+/obj/item/reagent_containers/food/snacks/bloodsausage
+	name = "blood sausage"
+	desc = "Savory sausage meat stuffed with blood and cooked."
+	icon_state = "bloodsausage"
+	nutriment_amt = 9
+	nutriment_desc = list("protein" = 4, "blood" = 4)
+
+/obj/item/reagent_containers/food/snacks/bloodsausage/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 4)
+	reagents.add_reagent("blood", 4)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/weisswurst
+	name = "weisswurst"
+	desc = "An old Terran recipe, weisswurst is traditionally sucked out of the casing, instead of eaten whole."
+	icon_state = "weisswurst"
+	nutriment_amt = 9
+	nutriment_desc = list("protein" = 3, "onion" = 2, "lemon" = 2)
+
+/obj/item/reagent_containers/food/snacks/weisswurst/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/sauerkraut
+	name = "sauerkraut"
+	desc = "Fermented cabbage, often used as a dressing on other foods, or as a fiber supplement."
+	icon_state = "sauerkraut"
+	nutriment_amt = 7
+	nutriment_desc = list("sour cabbage" = 4, "sour water" = 3)
+
+/obj/item/reagent_containers/food/snacks/sauerkraut/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nutriment", 7)
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/kimchi
+	name = "kimchi"
+	desc = "A medley of heavily spiced fermented vegetables. Primarily cabbage."
+	icon_state = "kimchi"
+	nutriment_amt = 7
+	nutriment_desc = list("fermented cabbage" = 5, "mixed spices" = 2)
+
+/obj/item/reagent_containers/food/snacks/kimchi/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nutriment", 7)
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/honeycake
+	name = "honey cake"
+	desc = "A pre-War Terran dish, this honeyed layer cake has outlasted its progenitors."
+	icon_state = "honeycake"
+	nutriment_amt = 8
+	nutriment_desc = list("honey" = 3, "pastry" = 3)
+
+/obj/item/reagent_containers/food/snacks/honeycake/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("honey", 3)
+	reagents.add_reagent("nutriment", 6)
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/pretzel
+	name = "pretzel"
+	desc = "It's all twisted up!"
+	icon_state = "pretzel"
+	nutriment_amt = 7
+	nutriment_desc = list("pretzel" = 7)
+
+/obj/item/reagent_containers/food/snacks/pretzel/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/chickensatay
+	name = "chicken satay"
+	desc = "Chicken on a skewer, coated in a creamy peanut sauce."
+	icon_state = "chickensatay"
+	nutriment_amt = 8
+	nutriment_desc = list("peanut" = 3, "chicken" = 3, "spices" = 2)
+
+/obj/item/reagent_containers/food/snacks/chickensatay/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 5)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/schnitzel
+	name = "schnitzel"
+	desc = "Tenderized meat, coated in breading and fried to perfection."
+	icon_state = "schnitzel"
+	nutriment_amt = 6
+	nutriment_desc = list("meat" = 5, "breading" = 2)
+
+/obj/item/reagent_containers/food/snacks/schnitzel/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 7)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/frenchonionsoup
+	name = "french onion soup"
+	desc = "A creamy onion soup topped with a crust of melted cheese."
+	icon_state = "frenchonionsoup"
+	nutriment_amt = 5
+	nutriment_desc = list("onion" = 5, "beef stock" = 2, "cheese" = 2)
+
+/obj/item/reagent_containers/food/snacks/frenchonionsoup/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nutriment", 7)
+	bitesize = 2
