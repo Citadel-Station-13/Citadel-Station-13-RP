@@ -1541,3 +1541,22 @@ I said no!
 	items = list(/obj/item/reagent_containers/food/snacks/cheesewedge)
 	reagents = list("water" = 10, "sodiumchloride" = 1, "sugar" = 1)
 	result = /obj/item/reagent_containers/food/snacks/frenchonionsoup
+
+/datum/recipe/bananasplit
+	fruit = list("banana" = 1, "cherries" = 1)
+	reagents = list("milk" = 5, "ice" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/chocolatebar,
+		/obj/item/reagent_containers/food/snacks/icecream,
+		/obj/item/reagent_containers/food/snacks/icecream
+	)
+	result = /obj/item/reagent_containers/food/snacks/bananasplit
+
+/datum/recipe/wormburger
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/meat
+	)
+	result = /obj/item/reagent_containers/food/snacks/wormburger
