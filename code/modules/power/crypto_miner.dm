@@ -82,7 +82,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
         default_deconstruction_screwdriver(user, W)
     if(W.is_multitool())
         var/new_power_level = input("What Power would you like to draw from the network?", "Power level Controls", power_level) as num|null
-        if(istype(new_power_level))
+        if(new_power_level != null)
             power_level = max(new_power_level, 0)
             to_chat(user, "You set the Power Level to [power_level] Watts.")
         return
