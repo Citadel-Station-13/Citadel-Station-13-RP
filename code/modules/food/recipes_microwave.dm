@@ -1483,7 +1483,7 @@ I said no!
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/reich
 
 /datum/recipe/fruitsalad
-	fruit = list("apple" = 1, "berries" = 1, "banana" = 1, "cherry" = 1)
+	fruit = list("apple" = 1, "berries" = 1, "banana" = 1, "cherries" = 1)
 	reagents = list("milk" = 10, "cream" = 5)
 	result = /obj/item/reagent_containers/food/snacks/fruitsalad
 
