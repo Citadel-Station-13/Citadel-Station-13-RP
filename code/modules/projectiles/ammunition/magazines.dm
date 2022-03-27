@@ -957,3 +957,14 @@
 
 /obj/item/ammo_magazine/mcompressedbio/large/banana
 	icon_state = "bio_large_banana"
+
+/obj/item/ammo_magazine/biovial
+	name = "bio-vial (Liquid Wax)"
+	desc = "Biological Munitions Vials, commonly referred to as bio-vials, contain liquid biomatter of some form, for use in exotic weapons systems. This one accepts wax globules."
+	icon_state = "bio_vial"
+	mag_type = MAGAZINE
+	caliber = "apidean"
+	ammo_type = /obj/item/ammo_casing/organic/wax
+	matter = list("wax" = 1000)
+	max_ammo = 10
+	multiple_sprites = 1

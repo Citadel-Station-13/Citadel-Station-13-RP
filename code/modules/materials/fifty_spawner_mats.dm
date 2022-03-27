@@ -163,3 +163,7 @@
 /obj/fiftyspawner/bone
 	name = "stack of bones"
 	type_to_spawn = /obj/item/stack/material/bone
+
+/obj/fiftyspawner/wax
+	name = "pile of wax"
+	type_to_spawn = /obj/item/stack/material/wax
