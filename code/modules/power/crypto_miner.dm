@@ -11,9 +11,8 @@
 GLOBAL_VAR_INIT(points_mined, 0)
 GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 /obj/machinery/power/crypto_miner
-    name = "CRyP70 - 9er"
-    desc = "The 'CRyP70 - 9er' offers crypto ethusiasts the perfect opportunity to live their dreams of becoming a crypto millionare, simply insert power, wait, and become rich! No garuntees. Use a multitool to configure the powerlevel, powerlevel of zero or below mean the device is off."
-    //desc_alt = "The CRyP70 - 9er is the most complex heater on the market."
+    name = "Encryption Reinforcing Heater"
+    desc = "This device uses massive amounts of electric energy to create entropy levels. These Entropy levels are used to reinforce encryptions of NT communications.<br> Use a multitool to configure the powerlevel, powerlevel of zero or below mean the device is off."
     icon = 'icons/misc/Consoles_and_Servers.dmi'
     icon_state = "vbox_0"
     anchored = TRUE
