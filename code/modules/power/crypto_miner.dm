@@ -9,24 +9,21 @@
  * Can be configured on how much power it draws or just wipes all avaiable power.
  */
 GLOBAL_VAR_INIT(points_mined, 0)
-GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
+GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 /obj/machinery/power/crypto_miner
     name = "CRyP70 - 9er"
-    desc = "The 'CRyP70 - 9er' offers crypto ethusiasts the perfect opportunity to live their dreams of becoming a crypto millionare, simply insert power, wait, and become rich! No garuntees."
+    desc = "The 'CRyP70 - 9er' offers crypto ethusiasts the perfect opportunity to live their dreams of becoming a crypto millionare, simply insert power, wait, and become rich! No garuntees. Use a multitool to configure the powerlevel, powerlevel of zero or below mean the device is off."
     //desc_alt = "The CRyP70 - 9er is the most complex heater on the market."
     icon = 'icons/misc/Consoles_and_Servers.dmi'
     icon_state = "vbox_0"
     anchored = TRUE
     density = 1.0
-    var/mode = 0
-    //Modes 0 = Off
-    //1 = On
-    var/power_level = 100 KILOWATTS
+    var/power_level = 0//used to determin wether the device is on or not
     var/points_stored = 0
     var/power_drawn = 0
     var/safe_storage_temp = 350//Kelvin // just being exposed to temperatures above this should case damage to the circuits.
     var/optimal_temperature = 200//Kelvin
-    var/unsafe_lower_temp = 100//Kelvin, semiconductors dont like being frozen and operated at the same time
+    var/unsafe_lower_temp = 0//Kelvin, semiconductors dont like being frozen and operated at the same time removed for now, its hard enough to juggle anyway
     var/efficency = 0//the cooler the environment is the more efficent the calculations work, and the more points are generated per Megawatt(shouldnt go over 1)
     //also factors damage to the machine in.
     var/temperature_damage = 0//If not sufficently cooled the circuits take damage and calculations get weaker, at 100 we condsider the circuit fried and it needs repairs/replacement
@@ -34,24 +31,27 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
 
 /obj/machinery/power/crypto_miner/examine(mob/user)
     . = ..()
-    . += "Current Power draw reads [power_drawn]."
-    . += "There are [points_stored] points up for claims."
-    . += "The circuit looks [temperature_damage ? "damaged" : "intact"]."
-    . += "The miner is running at [efficency*100]% Efficency."
-    . += "[name] currently needs [GLOB.power_per_point] Joules per point."
-    . += "A total of [GLOB.points_mined] points has been mined."
+    if(GLOB.points_mined)//Only show this if someone actually mined 
+        . += "[src] is [power_level? "on":"off"]. Current Power Level reads [power_level]."
+        . += "Progress to next Point: [(power_drawn/GLOB.power_per_point) *100] %"
+        . += "There are [points_stored] points up for claims."
+        . += "The circuit looks [temperature_damage ? "damaged" : "intact"]. <i>Damage: [temperature_damage]%</i>"
+        . += "The miner is running at [efficency*100]% Efficency."
+        . += "[name] currently needs [GLOB.power_per_point] Joules per point."
+        . += "A total of [GLOB.points_mined] points has been mined."
     
 
 /obj/machinery/power/crypto_miner/process(delta_time)
-    if(!powernet || !mode)
+    if(!powernet || !power_level || !anchored)
         return
 
     if(temperature_damage >= 100)//Once the circuit is fried, turn off
+        power_level = 0
         return
 
-    power_drawn += draw_power(power_level)
-    
-    heat_environ(power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
+    var/new_power_drawn = draw_power(power_level)
+    power_drawn += new_power_drawn
+    heat_environ(new_power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
     process_thermal_properties()//calculates damage and efficency
     
     if(!power_drawn)
@@ -60,7 +60,7 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
     if (power_drawn > GLOB.power_per_point)
         var/newpoints = round((power_drawn / GLOB.power_per_point) * efficency)
         power_drawn -= newpoints*(GLOB.power_per_point)
-        points_stored += newpoints * 2// double it, because fuck its difficult to keep the miner cool
+        points_stored += newpoints
         GLOB.points_mined += newpoints
         GLOB.power_per_point = round(1 MEGAWATTS * (1.00276 ** GLOB.points_mined))//1.00276 doubles the first time at 250 points, which is the most expansive item in the vendor currently
 
@@ -79,20 +79,15 @@ GLOBAL_VAR_INIT(power_per_point, 1 MEGAWATTS)
         repair(user, 20, 5)
         return
     if(W.is_screwdriver())
-        repair(user, 10, 1)//Screwdriver doesnt really repair anything.
-        return
+        default_deconstruction_screwdriver(user, W)
     if(W.is_multitool())
         var/new_power_level = input("What Power would you like to draw from the network?", "Power level Controls", power_level) as num|null
-        if(new_power_level > 0)
-            power_level = new_power_level
+        if(istype(new_power_level))
+            power_level = max(new_power_level, 0)
+            to_chat(user, "You set the Power Level to [power_level] Watts.")
         return
     return ..()
 
-
-/obj/machinery/power/crypto_miner/AltClick(mob/user)
-    if(Adjacent(user))
-        mode = !mode
-        to_chat(user, SPAN_NOTICE("You turn [src] [mode ? "on" : "off"]."))
 
 /obj/machinery/power/crypto_miner/proc/heat_environ(var/power_used)
     var/datum/gas_mixture/env = loc.return_air()
