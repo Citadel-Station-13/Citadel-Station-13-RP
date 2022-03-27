@@ -29,20 +29,21 @@
 	breath_type = null
 	poison_type = null
 
-	virus_immune =	1
-	blood_volume =	0
-	min_age =		18
-	max_age =		200
+	virus_immune = 1
+	blood_volume = 0
 
-	total_health =	200
+	max_age = 200
+
+	total_health = 200
+	health_hud_intensity = 2
 	/// damage to blob
 	var/damage_to_blob = 100
 
-	brute_mod =		1
-	burn_mod =		1
-	oxy_mod =		0
+	brute_mod = 1
+	burn_mod = 1
+	oxy_mod = 0
 	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
-	toxins_mod =	0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
+	toxins_mod = 0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
 
 	hunger_factor = 0.04 // Better power storage, perhaps? This is not additive. Whoops
  /*
@@ -146,9 +147,10 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	var/monochromatic = FALSE //IGNORE ME
 
 
-	//health_hud_intensity = 2
 	//num_alternate_languages = 5  // Let's not make them know every language, past me.
-	//assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+
+	// Assisted Langs are still used. As there is a physical requirement.
+	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 
 /datum/species/protean/New()

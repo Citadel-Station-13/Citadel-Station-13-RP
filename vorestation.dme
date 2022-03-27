@@ -1968,6 +1968,7 @@
 #include "code\modules\culture_descriptor\religion\religions_human.dm"
 #include "code\modules\culture_descriptor\religion\religions_unathi.dm"
 #include "code\modules\culture_descriptor\religion\religions_vox.dm"
+#include "code\modules\culture_descriptor\temp_please_remove_me\temp_lang_holders.dm"
 #include "code\modules\customitems\item_spawning.dm"
 #include "code\modules\detectivework\forensics.dm"
 #include "code\modules\detectivework\microscope\dnascanner.dm"

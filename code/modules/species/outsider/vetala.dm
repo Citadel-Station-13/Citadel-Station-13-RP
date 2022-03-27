@@ -32,7 +32,6 @@
 	blood_color = "#ce4a4a"
 	base_color = "#EECEB3"
 
-	min_age = 18
 	max_age = 200
 
 	//Nocturnal and photosensitive.
@@ -69,6 +68,7 @@
 	//default_language = LANGUAGE_GALCOM
 	//language = LANGUAGE_GALCOM
 	//num_alternate_languages = 3
+
 
 /datum/species/vetala_pale
 	name = SPECIES_VETALA_PALE
@@ -108,7 +108,6 @@
 	blood_color = "#720d0d"
 	base_color = "#EECEB3"
 
-	min_age = 18
 	max_age = 200
 
 	//Nocturnal and photosensitive.
@@ -148,3 +147,5 @@
 	//default_language = LANGUAGE_GALCOM
 	//language = LANGUAGE_GALCOM
 	//num_alternate_languages = 3
+
+	// No special data so no Temp culture

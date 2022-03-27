@@ -22,10 +22,8 @@
 	blood_color = "#856A16"
 	base_color = "#DED2AD"
 
-	min_age = 18
-
 	//Angels glow in the dark.
-	has_glowing_eyes = 1
+	has_glowing_eyes = TRUE
 
 	//Physical resistances and Weaknesses.
 	//item_slowdown_mod = 0.5		//The Hardy debate is not settled yet.
@@ -40,12 +38,26 @@
 		/mob/living/proc/start_wings_hovering,
 		/mob/living/proc/toggle_pass_table,
 		/mob/living/proc/glow_toggle,
-		/mob/living/proc/glow_color)
+		/mob/living/proc/glow_color
+		)
 
 
 	//default_language = LANGUAGE_GALCOM
 	//language = LANGUAGE_ENOCHIAN
 	//num_alternate_languages = 3
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_AURIL
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 /datum/species/dremachir
 	name = SPECIES_DREMACHIR
@@ -68,10 +80,8 @@
 	blood_color = "#27173D"
 	base_color = "#580412"
 
-	min_age = 18
-
 	//Demons glow in the dark.
-	has_glowing_eyes = 1
+	has_glowing_eyes = TRUE
 	darksight = 7
 
 	//Physical resistances and Weaknesses.
@@ -88,3 +98,16 @@
 	//default_language = LANGUAGE_GALCOM
 	//language = LANGUAGE_DAEMON
 	//num_alternate_languages = 3
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_DREMACHIR
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)

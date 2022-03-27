@@ -5,7 +5,7 @@
 	primitive_form = "Monkey"
 	unarmed_types = list(/datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/sharp)	//Bones are pointy, fight me.
 	description = "Spooky Scary Skeletons!"
-	min_age = 18
+
 	max_age = 110
 	health_hud_intensity = 1.5
 
@@ -52,3 +52,6 @@
 
 	//language = "Sol Common"
 	//name_language = null // Use the first-name last-name generator rather than a language scrambler
+
+
+	// Bay doesn't even have culture for these.

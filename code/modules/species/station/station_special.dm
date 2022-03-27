@@ -69,7 +69,7 @@
 
 	var/has_feral_spells = FALSE
 	virus_immune = 1 // They practically ARE one.
-	min_age = 18
+
 	max_age = 200
 
 	description = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \
@@ -734,7 +734,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	description = "Vasilissans are a tall, lanky, spider like people. \
@@ -765,6 +764,19 @@
 
 	//num_alternate_languages = 2
 	//secondary_langs = list(LANGUAGE_VESPINAE)
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_VASILISSAN
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 
 /datum/species/spider/handle_environment_special(var/mob/living/carbon/human/H)
@@ -804,7 +816,6 @@
 	primitive_form = "Wolpin"
 	color_mult = 1
 
-	min_age = 18
 	max_age = 200
 
 	description = "Big buff werewolves. These are a limited functionality event species that are not balanced for regular gameplay. Adminspawn only."
@@ -848,6 +859,19 @@
 	//name_language = LANGUAGE_CANILUNZT
 
 
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_WEREBEAST
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
+
+
 /////////////////////
 /////INSECTOIDS/////
 /////////////////////
@@ -876,7 +900,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	description = "Apidaens are an insectoid race from the far galactic rim. \
@@ -922,6 +945,18 @@
 	//num_alternate_languages = 2
 	//secondary_langs = list(LANGUAGE_VESPINAE)
 
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_APIDAEN
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 //Did you know it's actually called a honey stomach? I didn't!
 /obj/item/organ/internal/honey_stomach

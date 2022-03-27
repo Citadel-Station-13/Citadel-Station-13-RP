@@ -7,7 +7,7 @@
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
-	min_age = 18
+
 	max_age = 150 // Xenomorphs probably get pretty old if not shot dead
 
 	description = "Xenohybrids are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
@@ -93,6 +93,14 @@
 	//species_language = "Xenomorph"
 	//secondary_langs = list("Xenomorph")
 	//num_alternate_languages = 3
+
+	// Literally copy-pated the normal xenomorph cultures with a culture override for langs.
+	force_cultural_info = list(
+		TAG_CULTURE = TEMP_CULTURE_XENOHYBRID,
+		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
+		TAG_FACTION = FACTION_XENOMORPH,
+		TAG_RELIGION = RELIGION_OTHER
+	)
 
 
 /datum/species/xenohybrid/can_breathe_water()

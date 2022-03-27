@@ -38,7 +38,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 	male_cough_sounds = list('sound/effects/slime_squish.ogg')
 	female_cough_sounds = list('sound/effects/slime_squish.ogg')
 
-	min_age = 18
 	max_age = 80
 
 
@@ -135,7 +134,20 @@ var/datum/species/shapeshifter/promethean/prometheans
 	//num_alternate_languages = 2 // citadel change, not stuck with one other lang
 	//species_language = LANGUAGE_SOL_COMMON
 	//secondary_langs = list(LANGUAGE_SOL_COMMON)	// For some reason, having this as their species language does not allow it to be chosen.
-	//assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)	// Prometheans are weird, let's just assume they can use basically any language.
+	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)	// Prometheans are weird, let's just assume they can use basically any language.
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_PROMETHEAN
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 
 /datum/species/shapeshifter/promethean/New()

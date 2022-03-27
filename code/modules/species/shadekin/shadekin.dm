@@ -106,6 +106,19 @@
 	//assisted_langs = list()
 
 
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_SHADEKIN
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
+
+
 /datum/species/shadekin/New()
 	..()
 	inherent_verbs += list(

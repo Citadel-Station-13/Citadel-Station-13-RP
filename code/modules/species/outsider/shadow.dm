@@ -27,6 +27,8 @@
 	//language = LANGUAGE_GALCOM
 	//assisted_langs = list()
 
+	// Bay doesn't even have culture for these.
+
 /datum/species/shadow/handle_death(var/mob/living/carbon/human/H)
 	spawn(1)
 		new /obj/effect/decal/cleanable/ash(H.loc)

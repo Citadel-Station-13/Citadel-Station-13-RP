@@ -10,7 +10,7 @@
 	metabolic_rate = 0.75 // slow metabolism
 	item_slowdown_mod = 0.25 //while they start slow, they don't get much slower
 	bloodloss_rate = 0.1 //While they do bleed, they bleed out VERY slowly
-	min_age = 18
+
 	max_age = 500 //cit lore change
 	health_hud_intensity = 1.5
 	base_species = SPECIES_ALRAUNE
@@ -98,6 +98,19 @@
 	//num_alternate_languages = 3 //cit lore change
 	//language = LANGUAGE_VERNAL
 	//species_language = LANGUAGE_VERNAL
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_ALARUNE
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 
 /datum/species/alraune/can_breathe_water()

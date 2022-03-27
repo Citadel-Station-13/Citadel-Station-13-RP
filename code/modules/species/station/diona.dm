@@ -16,7 +16,6 @@
 	health_hud_intensity = 2.5
 	item_slowdown_mod = 0.1
 
-	min_age = 18
 	max_age = 300
 
 

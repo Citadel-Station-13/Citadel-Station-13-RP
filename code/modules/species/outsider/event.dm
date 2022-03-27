@@ -68,7 +68,6 @@ Variables you may want to make use of are:
 	unarmed_types = list(/datum/unarmed_attack/stomp/event1, /datum/unarmed_attack/kick/event1, /datum/unarmed_attack/punch/event1, /datum/unarmed_attack/bite/event1)
 	description = "We're not quite sure where these things came from. Are you?"
 
-	min_age = 18
 	max_age = 999
 
 	health_hud_intensity = 1.5
@@ -111,6 +110,9 @@ Variables you may want to make use of are:
 	var/overcome_gravity = 0
 	var/hover = 0
 
+
+	// Doesn't need a culture as it's a admin/event species,
+	// though I will leave this for possible future reference. - Zandario
 
 	//num_alternate_languages = 3
 	//species_language = LANGUAGE_GALCOM

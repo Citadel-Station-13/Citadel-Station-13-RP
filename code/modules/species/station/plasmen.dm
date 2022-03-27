@@ -7,7 +7,7 @@
 	description = "Phoronoids are a race rarely seen by most, tending to keep to themselves throughout known space. \
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans. \
 	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and phoron in."
-	min_age = 18
+
 	max_age = 180
 	health_hud_intensity = 1.5
 	rarity_value = 5
@@ -71,6 +71,19 @@
 	//language = LANGUAGE_GALCOM
 	//species_language = LANGUAGE_BONES
 	//num_alternate_languages = 3
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_PHORONOID
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 
 /datum/species/plasmaman/handle_environment_special(var/mob/living/carbon/human/H)

@@ -21,7 +21,6 @@
 	you select and set this species as your species. Please look at the VORE tab if you select this species."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/custom_species)
 
-	min_age = 18
 	max_age = 200
 	health_hud_intensity = 2
 	inherent_verbs = list(

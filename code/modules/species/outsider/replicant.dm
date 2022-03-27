@@ -13,7 +13,7 @@
 
 	show_ssd = "eerily still."
 
-	min_age = 18
+
 	max_age = 999
 
 	health_hud_intensity = 1.5
@@ -67,6 +67,19 @@
 	//secondary_langs = list(LANGUAGE_TERMINUS)
 	//assisted_langs = list(LANGUAGE_ROOTGLOBAL)
 	//name_language = LANGUAGE_TERMINUS
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_REPLICANT
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 
 /datum/species/shapeshifter/replicant/alpha

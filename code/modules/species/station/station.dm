@@ -10,7 +10,6 @@
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
 
-	min_age = 18
 	max_age = 130
 
 	//economic_power = 10
@@ -83,7 +82,6 @@
 	blood_volume = 840
 	health_hud_intensity = 2.5
 
-	min_age = 18
 	max_age = 260
 
 	description = "A heavily reptillian species, Unathi hail from the \
@@ -227,7 +225,6 @@
 	gluttonous = 0
 	health_hud_intensity = 2.5
 
-	min_age = 18
 	max_age = 80
 
 	//economic_power = 10
@@ -325,7 +322,6 @@
 
 	water_movement = -3
 
-	min_age = 18
 	max_age = 130
 
 	//economic_power = 10
@@ -434,7 +430,6 @@
 
 	minimum_breath_pressure = 20 //have fun with underpressures. any higher than this and they'll be even less suitible for life on the station
 
-	min_age = 18
 	max_age = 90
 
 	description = "The Zaddat are an Unathi client race only recently introduced to OriCon space. Having evolved on \
@@ -493,9 +488,22 @@
 	//economic_power = 3
 	//num_alternate_languages = 3
 	//secondary_langs = list(LANGUAGE_ZADDAT, LANGUAGE_UNATHI)
-	//assisted_langs = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_SOL_COMMON, LANGUAGE_AKHANI, LANGUAGE_SIIK, LANGUAGE_GUTTER) //limited vocal range; can talk Unathi and magical Galcom but not much else
+	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_SOL_COMMON, LANGUAGE_AKHANI, LANGUAGE_SIIK, LANGUAGE_GUTTER) //limited vocal range; can talk Unathi and magical Galcom but not much else
 	//name_language = LANGUAGE_ZADDAT
 	//species_language = LANGUAGE_ZADDAT
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_ZADDAT
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 
 /datum/species/zaddat/equip_survival_gear(var/mob/living/carbon/human/H)
@@ -551,7 +559,6 @@
 	//gluttonous = 1
 	color_mult = 1
 
-	min_age = 18
 	max_age = 80
 
 	description = "There are two subspecies of Sergal; Southern and Northern. Northern sergals are a highly aggressive race \
@@ -605,6 +612,19 @@
 	//name_language = LANGUAGE_SAGARU
 
 
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_SERGAL
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
+
+
 /datum/species/akula
 	name = SPECIES_AKULA
 	name_plural = "Akula"
@@ -625,7 +645,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	description = "The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark. \
@@ -655,6 +674,19 @@
 	//name_language = LANGUAGE_SKRELLIAN
 
 
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_AKULA
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
+
+
 /datum/species/akula/can_breathe_water()
 	return TRUE // Surprise, SHERKS.
 
@@ -679,7 +711,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	description = "Nevreans are a race of avian and dinosaur-like creatures living on Tal. They belong to a group of races that hails from Eltus, \
@@ -711,6 +742,20 @@
 	//secondary_langs = list(LANGUAGE_BIRDSONG)
 	//name_language = LANGUAGE_BIRDSONG
 
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_NEVREAN
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
+
+
 /datum/species/hi_zoxxen
 	name = SPECIES_ZORREN_HIGH
 	name_plural = "Zorren"
@@ -721,7 +766,6 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
-	min_age = 18
 	max_age = 80
 
 	description = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
@@ -761,6 +805,19 @@
 	//name_language = LANGUAGE_TERMINUS
 
 
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_ZORREN
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
+
+
 /datum/species/fl_zorren
 	name = SPECIES_ZORREN_FLAT
 	name_plural = "Zorren"
@@ -771,7 +828,6 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
-	min_age = 18
 	max_age = 80
 
 	description = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
@@ -810,6 +866,20 @@
 	//secondary_langs = list(LANGUAGE_TERMINUS)
 	//name_language = LANGUAGE_TERMINUS
 
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_ZORREN
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
+
+
 /datum/species/vulpkanin
 	name = SPECIES_VULPKANIN
 	name_plural = "Vulpkanin"
@@ -846,7 +916,6 @@
 	flesh_color = "#966464"
 	base_color = "#B43214"
 
-	min_age = 18
 	max_age = 80
 
 
@@ -854,6 +923,19 @@
 	//secondary_langs = list(LANGUAGE_CANILUNZT)
 	//name_language = LANGUAGE_CANILUNZT
 	//num_alternate_languages = 3
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_VULPKANIN
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 
 /datum/species/harpy
@@ -871,7 +953,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	base_color = "#EECEB3"
@@ -900,6 +981,18 @@
 	//secondary_langs = list(LANGUAGE_BIRDSONG)
 	//name_language = null
 
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_RAPALA
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 /datum/species/crew_shadekin
 	name = SPECIES_SHADEKIN_CREW
@@ -1002,6 +1095,19 @@
 	//species_language = LANGUAGE_SHADEKIN
 	//secondary_langs = list(LANGUAGE_SHADEKIN)
 	//num_alternate_languages = 3
+
+
+	available_cultural_info = list(
+		TAG_CULTURE = list(
+			TEMP_CULTURE_SHADEKIN
+		),
+		TAG_HOMEWORLD = list(
+		),
+		TAG_FACTION = list(
+		),
+		TAG_RELIGION = list(
+		)
+	)
 
 
 /datum/species/shadekin/get_bodytype()
