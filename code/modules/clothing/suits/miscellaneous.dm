@@ -1212,5 +1212,5 @@ obj/item/clothing/suit/kamishimo
 
 /obj/item/clothing/suit/storage/umbral
 	name = "Umbral Duster"
-	desc = "WIP"
+	desc = "This thick duster, constructed out of black leather and red suede, presents an utterly demonic profile. Adorned with chased silver chains, anchored into the very fabric itself in the device of an esoteric skull, this jacket will fit in anywhere. As long as it's a leather club or metal concert."
 	icon_state = "umbral"
