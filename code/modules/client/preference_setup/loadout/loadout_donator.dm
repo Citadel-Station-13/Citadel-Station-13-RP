@@ -235,24 +235,29 @@
 /datum/gear/donator/dancer_scarf
 	name = "belly dancer headscarf"
 	path = /obj/item/clothing/head/donator/dancer
-	ckeywhitelist = list("jembo")
+	ckeywhitelist = list("phishman")
 
 /datum/gear/donator/dancer_veil
 	name = "belly dancer veil"
 	path = /obj/item/clothing/mask/donator/dancer
-	ckeywhitelist = list("jembo")
+	ckeywhitelist = list("phishman")
 
 /datum/gear/donator/dancer_gloves
 	name = "belly dancer sleeves"
 	path = /obj/item/clothing/gloves/donator/dancer
-	ckeywhitelist = list("jembo")
+	ckeywhitelist = list("phishman")
 
 /datum/gear/donator/dancer_costume
 	name = "belly dancer costume"
 	path = /obj/item/clothing/under/donator/dancer
-	ckeywhitelist = list("jembo")
+	ckeywhitelist = list("phishman")
 
 /datum/gear/donator/dancer_wraps
 	name = "belly dancer footwraps"
 	path = /obj/item/clothing/shoes/donator/dancer
-	ckeywhitelist = list("jembo")
+	ckeywhitelist = list("phishman")
+
+/datum/gear/donator/iacccoat
+	name = "connor's coat"
+	path = /obj/item/clothing/suit/storage/umbral
+	ckeywhitelist = list("iamcrystalclear")
