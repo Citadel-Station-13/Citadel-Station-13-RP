@@ -1287,6 +1287,11 @@
 	icon_state = "bear_space"
 	pokephrase = "Mission is Grrrreen!"
 
+/obj/item/toy/plushie/doll
+	name = "Black and white doll"
+	icon_state = "doll"
+	pokephrase = ""
+
 //Toy cult sword
 /obj/item/toy/cultsword
 	name = "foam sword"
