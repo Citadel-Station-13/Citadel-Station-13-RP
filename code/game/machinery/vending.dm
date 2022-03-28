@@ -865,6 +865,7 @@
 					/obj/item/storage/fancy/cigarettes/jerichos = 5,
 					/obj/item/storage/fancy/cigarettes/menthols = 5,
 					/obj/item/storage/rollingpapers = 5,
+					/obj/item/storage/rollingblunts = 5,
 					/obj/item/storage/box/matches = 10,
 					/obj/item/flame/lighter/random = 4)
 	contraband = list(/obj/item/flame/lighter/zippo = 4)
@@ -879,6 +880,7 @@
 					/obj/item/storage/fancy/cigarettes/jerichos = 22,
 					/obj/item/storage/fancy/cigarettes/menthols = 18,
 					/obj/item/storage/rollingpapers = 10,
+					/obj/item/storage/rollingblunts = 17,
 					/obj/item/storage/box/matches = 1,
 					/obj/item/flame/lighter/random = 2)
 
