@@ -165,3 +165,17 @@
 
 #define RELIGION_TAJARA_SRANDARR "Tajr-kii S'randarr"
 #define RELIGION_TAJARA_MESSA "Tajr-kii Messa"
+
+//Xeno Hybrid Cultures
+#define FACTION_XENOHYBRID_NEOMORPH "Neomorph Family"
+#define FACTION_XENOHYBRID_NORMAL "Xenomorph Hybrid"
+#define FACTION_XENOHYBRID_CONVERTEE "Converted Xenomorph"
+
+#define CULTURE_XENOHYBRID_NEOMORPH "Neomorph"
+#define CULTURE_XENOHYBRID_LAB "Labrat"
+#define CULTURE_XENOHYBRID_HUMAN "Human Culture"
+
+#define HOME_SYSTEM_BERGAKUNGEN "Bergakungen"
+
+#define RELIGION_XENOHYBRID_HIVE "Greater Voice"
+#define RELIGION_XENOHYBRID_CONVERSION "Gift of Conversion"
