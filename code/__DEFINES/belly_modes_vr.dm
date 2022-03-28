@@ -48,3 +48,18 @@
 #define MIN_NUTRITION_TO_GAIN	450	// Above this amount you will gain weight
 #define MAX_NUTRITION_TO_LOSE	50	// Below this amount you will lose weight
 // #define WEIGHT_PER_NUTRITION	0.0285 // Tuned so 1050 (nutrition for average mob) = 30 lbs
+
+// Shadekin Defines
+#define NOT_WHILE_SHIFTED 1
+#define ONLY_WHILE_SHIFTED 2
+#define SHIFTED_OR_NOT 3
+
+#define BLUE_EYES 1
+#define RED_EYES 2
+#define PURPLE_EYES 3
+#define YELLOW_EYES 4
+#define GREEN_EYES 5
+#define ORANGE_EYES 6
+
+#define AB_PHASE_SHIFTED	0x1
+#define AB_SHADE_REGEN		0x2

@@ -367,10 +367,9 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		G.fields["m_stat"]		= "Stable"
 		G.fields["sex"]			= gender2text(H.gender)
 		G.fields["species"]		= H.get_species()
-		G.fields["home_system"]	= H.home_system
-		G.fields["citizenship"]	= H.citizenship
-		G.fields["faction"]		= H.personal_faction
-		G.fields["religion"]	= H.religion
+		G.fields["home_system"]	= H.get_cultural_value(TAG_HOMEWORLD)
+		G.fields["faction"]		= H.get_cultural_value(TAG_FACTION)
+		G.fields["religion"]	= H.get_cultural_value(TAG_RELIGION)
 		if(H.gen_record && !jobban_isbanned(H, "Records"))
 			G.fields["notes"] = H.gen_record
 
@@ -413,14 +412,13 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		L.fields["enzymes"]		= H.dna.SE // Used in respawning
 		L.fields["identity"]	= H.dna.UI // "
 		L.fields["species"]		= H.get_species()
-		L.fields["home_system"]	= H.home_system
-		L.fields["citizenship"]	= H.citizenship
-		L.fields["faction"]		= H.personal_faction
-		L.fields["religion"]	= H.religion
+		L.fields["home_system"]	= H.get_cultural_value(TAG_HOMEWORLD)
+		L.fields["faction"]		= H.get_cultural_value(TAG_FACTION)
+		L.fields["religion"]	= H.get_cultural_value(TAG_RELIGION)
 		L.fields["image"]		= icon(cached_character_icon(H), dir = SOUTH)
 		L.fields["antagfac"]	= H.antag_faction
 		L.fields["antagvis"]	= H.antag_vis
-		L.fields["offmap"]      = hidden
+		L.fields["offmap"]		= hidden
 		if(H.exploit_record && !jobban_isbanned(H, "Records"))
 			L.fields["exploit_record"] = H.exploit_record
 		else
@@ -459,7 +457,6 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 	G.fields["m_stat"] = "Stable"
 	G.fields["species"] = SPECIES_HUMAN
 	G.fields["home_system"]	= "Unknown"
-	G.fields["citizenship"]	= "Unknown"
 	G.fields["faction"]		= "Unknown"
 	G.fields["religion"]	= "Unknown"
 	G.fields["photo_front"]	= front

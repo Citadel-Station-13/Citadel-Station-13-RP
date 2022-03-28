@@ -3,42 +3,42 @@
 	sort_order = 1
 
 /datum/category_item/player_setup_item/player_global/ui/load_preferences(var/savefile/S)
-	S["UI_style"]		>> pref.UI_style
-	S["UI_style_color"]	>> pref.UI_style_color
-	S["UI_style_alpha"]	>> pref.UI_style_alpha
-	S["ooccolor"]		>> pref.ooccolor
-	S["tooltipstyle"]	>> pref.tooltipstyle
-	S["client_fps"]		>> pref.client_fps
+	from_file(S["UI_style"], pref.UI_style)
+	from_file(S["UI_style_color"], pref.UI_style_color)
+	from_file(S["UI_style_alpha"], pref.UI_style_alpha)
+	from_file(S["ooccolor"], pref.ooccolor)
+	from_file(S["tooltipstyle"], pref.tooltipstyle)
+	from_file(S["client_fps"], pref.client_fps)
 
 /datum/category_item/player_setup_item/player_global/ui/save_preferences(var/savefile/S)
-	S["UI_style"]		<< pref.UI_style
-	S["UI_style_color"]	<< pref.UI_style_color
-	S["UI_style_alpha"]	<< pref.UI_style_alpha
-	S["ooccolor"]		<< pref.ooccolor
-	S["tooltipstyle"]	<< pref.tooltipstyle
-	S["client_fps"]		<< pref.client_fps
+	to_file(S["UI_style"], pref.UI_style)
+	to_file(S["UI_style_color"], pref.UI_style_color)
+	to_file(S["UI_style_alpha"], pref.UI_style_alpha)
+	to_file(S["ooccolor"], pref.ooccolor)
+	to_file(S["tooltipstyle"], pref.tooltipstyle)
+	to_file(S["client_fps"], pref.client_fps)
 
 /datum/category_item/player_setup_item/player_global/ui/sanitize_preferences()
-	pref.UI_style		= sanitize_inlist(pref.UI_style, all_ui_styles, initial(pref.UI_style))
-	pref.UI_style_color	= sanitize_hexcolor(pref.UI_style_color, 6, 1, default = initial(pref.UI_style_color))
-	pref.UI_style_alpha	= sanitize_integer(pref.UI_style_alpha, 0, 255, initial(pref.UI_style_alpha))
-	pref.ooccolor		= sanitize_ooccolor(sanitize_hexcolor(pref.ooccolor, 6, 1, initial(pref.ooccolor)))
-	pref.tooltipstyle	= sanitize_inlist(pref.tooltipstyle, all_tooltip_styles, initial(pref.tooltipstyle))
-	pref.client_fps		= sanitize_integer(pref.client_fps, 0, MAX_CLIENT_FPS, initial(pref.client_fps))
+	pref.UI_style = sanitize_inlist(pref.UI_style, all_ui_styles, initial(pref.UI_style))
+	pref.UI_style_color = sanitize_hexcolor(pref.UI_style_color, 6, 1, default = initial(pref.UI_style_color))
+	pref.UI_style_alpha = sanitize_integer(pref.UI_style_alpha, 0, 255, initial(pref.UI_style_alpha))
+	pref.ooccolor = sanitize_ooccolor(sanitize_hexcolor(pref.ooccolor, 6, 1, initial(pref.ooccolor)))
+	pref.tooltipstyle = sanitize_inlist(pref.tooltipstyle, all_tooltip_styles, initial(pref.tooltipstyle))
+	pref.client_fps = sanitize_integer(pref.client_fps, 0, MAX_CLIENT_FPS, initial(pref.client_fps))
 
 /datum/category_item/player_setup_item/player_global/ui/content(var/mob/user)
 	. = "<b>UI Style:</b> <a href='?src=\ref[src];select_style=1'><b>[pref.UI_style]</b></a><br>"
 	. += "<b>Custom UI</b> (recommended for White UI):<br>"
 	. += "-Color: <a href='?src=\ref[src];select_color=1'><b>[pref.UI_style_color]</b></a> [color_square(hex = pref.UI_style_color)] <a href='?src=\ref[src];reset=ui'>reset</a><br>"
-	. += "-Alpha(transparency): <a href='?src=\ref[src];select_alpha=1'><b>[pref.UI_style_alpha]</b></a> <a href='?src=\ref[src];reset=alpha'>reset</a><br>"
+	. += "-Alpha(transparency): <a href='?src=\ref[src];select_alpha=1'><b>[pref.UI_style_alpha]</b></a>ï¿½<a href='?src=\ref[src];reset=alpha'>reset</a><br>"
 	. += "<b>Tooltip Style:</b> <a href='?src=\ref[src];select_tooltip_style=1'><b>[pref.tooltipstyle]</b></a><br>"
 	. += "<b>Client FPS:</b> <a href='?src=\ref[src];select_client_fps=1'><b>[pref.client_fps]</b></a><br>"
 	if(can_select_ooc_color(user))
-		. += "<b>OOC Color:</b> "
+		. += "<b>OOC Color:</b>ï¿½"
 		if(pref.ooccolor == initial(pref.ooccolor))
 			. += "<a href='?src=\ref[src];select_ooc_color=1'><b>Using Default</b></a><br>"
 		else
-			. += "<a href='?src=\ref[src];select_ooc_color=1'><b>[pref.ooccolor]</b></a> <table style='display:inline;' bgcolor='[pref.ooccolor]'><tr><td>__</td></tr></table> <a href='?src=\ref[src];reset=ooc'>reset</a><br>"
+			. += "<a href='?src=\ref[src];select_ooc_color=1'><b>[pref.ooccolor]</b></a> <table style='display:inline;' bgcolor='[pref.ooccolor]'><tr><td>__</td></tr></table>ï¿½<a href='?src=\ref[src];reset=ooc'>reset</a><br>"
 
 /datum/category_item/player_setup_item/player_global/ui/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["select_style"])

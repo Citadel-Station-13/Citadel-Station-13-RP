@@ -18,7 +18,7 @@
 	disallow_jobhop = TRUE
 	pto_type = PTO_SECURITY
 	req_admin_notify = 1
-	economic_modifier = 10
+	economic_power = 10
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory,
 						access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
 						access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
@@ -66,7 +66,7 @@
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/warden
 	pto_type = PTO_SECURITY
-	economic_modifier = 5
+	economic_power = 5
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 5
@@ -93,7 +93,7 @@
 	idtype = /obj/item/card/id/security/detective
 	access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, access_brig) //Vorestation edit - access_brig
 	minimal_access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
-	economic_modifier = 5
+	economic_power = 5
 	minimal_player_age = 3
 
 	outfit_type = /decl/hierarchy/outfit/job/security/detective
@@ -128,7 +128,7 @@
 	supervisors = "the Head of Security"
 	idtype = /obj/item/card/id/security/officer
 	selection_color = "#601C1C"
-	economic_modifier = 4
+	economic_power = 4
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3

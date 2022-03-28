@@ -23,7 +23,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
 	minimal_player_age = 14
-	economic_modifier = 20
+	economic_power = 20
 
 	minimum_character_age = 25
 	ideal_character_age = 70 // Old geezer captains ftw
@@ -82,7 +82,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	selection_color = "#1D1D4F"
 	req_admin_notify = 1
 	minimal_player_age = 10
-	economic_modifier = 10
+	economic_power = 10
 
 	minimum_character_age = 25
 	ideal_character_age = 50
@@ -134,7 +134,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	supervisors = "command staff"
 	selection_color = "#1D1D4F"
 	minimal_player_age = 5
-	economic_modifier = 7
+	economic_power = 7
 
 	access = list(access_heads, access_keycard_auth)
 	minimal_access = list(access_heads, access_keycard_auth)

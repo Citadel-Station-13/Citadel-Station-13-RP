@@ -34,8 +34,9 @@
 		else
 			set_species()
 
-	if(species)
-		real_name = species.get_random_name(gender)
+	var/decl/cultural_info/culture = SSculture.get_culture(cultural_info[TAG_CULTURE])
+	if(culture)
+		real_name = culture.get_random_name(gender, species.name)
 		name = real_name
 		if(mind)
 			mind.name = real_name
@@ -1145,24 +1146,12 @@
 
 		if(species.name && species.name == new_species && species.name != "Custom Species")
 			return
-		if(species.language)
-			remove_language(species.language)
-		if(species.default_language)
-			remove_language(species.default_language)
-		for(var/datum/language/L in species.assisted_langs)
-			remove_language(L)
-		// Clear out their species abilities.
+		// Clear out their species abilities.1
 		species.remove_inherent_verbs(src)
 		species.remove_inherent_spells(src)
 		holder_type = null
 
 	species = GLOB.all_species[new_species]
-
-	if(species.language)
-		add_language(species.language)
-
-	if(species.default_language)
-		add_language(species.default_language)
 
 	if(species.icon_scale_x != 1 || species.icon_scale_y != 1)
 		update_transform()
@@ -1223,6 +1212,20 @@
 	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
 	update_hud()
 
+	var/update_lang
+	for(var/token in ALL_CULTURAL_TAGS)
+		if(species.force_cultural_info && species.force_cultural_info[token])
+			update_lang = TRUE
+			set_cultural_value(token, species.force_cultural_info[token], defer_language_update = TRUE)
+		else if(!cultural_info[token] || !(cultural_info[token] in species.available_cultural_info[token]))
+			update_lang = TRUE
+			set_cultural_value(token, species.default_cultural_info[token], defer_language_update = TRUE)
+
+	if(update_lang)
+		languages.Cut()
+		default_language = null
+		update_languages()
+
 	//A slew of bits that may be affected by our species change
 	regenerate_icons()
 
@@ -1232,6 +1235,44 @@
 		return 1
 	else
 		return 0
+
+/mob/living/carbon/human/proc/update_languages()
+
+	var/list/permitted_languages = list()
+	var/list/free_languages = list()
+	var/list/default_languages = list()
+
+	for(var/thing in cultural_info)
+		var/decl/cultural_info/check = cultural_info[thing]
+		if(istype(check))
+			if(check.default_language)
+				free_languages    |= GLOB.all_languages[check.default_language]
+				default_languages |= GLOB.all_languages[check.default_language]
+			if(check.language)
+				free_languages    |= GLOB.all_languages[check.language]
+			if(check.name_language)
+				free_languages    |= GLOB.all_languages[check.name_language]
+			for(var/lang in check.optional_languages)
+				free_languages    |= GLOB.all_languages[lang]
+			for(var/lang in check.get_spoken_languages())
+				permitted_languages |= GLOB.all_languages[lang]
+
+	for(var/thing in languages)
+		var/datum/language/lang = thing
+		if(lang in permitted_languages)
+			continue
+		if(!(lang.flags & RESTRICTED) && (lang.flags & WHITELISTED) && is_alien_whitelisted(src, lang))
+			continue
+		if(lang == default_language)
+			default_language = null
+		remove_language(lang.name)
+
+	for(var/thing in free_languages)
+		var/datum/language/lang = thing
+		add_language(lang.name)
+
+	if(LAZYLEN(default_languages) && isnull(default_language))
+		default_language = default_languages[1]
 
 /mob/living/carbon/human/proc/bloody_doodle()
 	set category = "IC"
@@ -1643,3 +1684,14 @@
 
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
+
+/mob/living/carbon/human/proc/set_cultural_value(var/token, var/decl/cultural_info/_culture, var/defer_language_update)
+	if(!istype(_culture))
+		_culture = SSculture.get_culture(_culture)
+	if(istype(_culture))
+		cultural_info[token] = _culture
+		if(!defer_language_update)
+			update_languages()
+
+/mob/living/carbon/human/proc/get_cultural_value(var/token)
+	return cultural_info[token]

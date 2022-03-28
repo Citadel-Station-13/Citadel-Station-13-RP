@@ -7,18 +7,18 @@
 	sort_order = 2
 
 /datum/category_item/player_setup_item/player_global/settings/load_preferences(var/savefile/S)
-	S["lastchangelog"]        >> pref.lastchangelog
-	S["lastnews"]             >> pref.lastnews
-	S["default_slot"]	      >> pref.default_slot
-	S["preferences"]          >> pref.preferences_enabled
-	S["preferences_disabled"] >> pref.preferences_disabled
+	from_file(S["lastchangelog"], pref.lastchangelog)
+	from_file(S["lastnews"], pref.lastnews)
+	from_file(S["default_slot"], pref.default_slot)
+	from_file(S["preferences"], pref.preferences_enabled)
+	from_file(S["preferences_disabled"], pref.preferences_disabled)
 
 /datum/category_item/player_setup_item/player_global/settings/save_preferences(var/savefile/S)
-	S["lastchangelog"]        << pref.lastchangelog
-	S["lastnews"]             << pref.lastnews
-	S["default_slot"]         << pref.default_slot
-	S["preferences"]          << pref.preferences_enabled
-	S["preferences_disabled"] << pref.preferences_disabled
+	to_file(S["lastchangelog"], pref.lastchangelog)
+	to_file(S["lastnews"], pref.lastnews)
+	to_file(S["default_slot"], pref.default_slot)
+	to_file(S["preferences"], pref.preferences_enabled)
+	to_file(S["preferences_disabled"], pref.preferences_disabled)
 
 /datum/category_item/player_setup_item/player_global/settings/sanitize_preferences()
 	// Ensure our preferences are lists.

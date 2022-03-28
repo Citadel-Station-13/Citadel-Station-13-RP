@@ -58,7 +58,7 @@
 			var/amount = 300
 			water_breath.adjust_gas("oxygen", amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
-			return water_breath
+			return return_air()
 		else
 			var/gasid = "carbon_dioxide"
 			if(ishuman(L))

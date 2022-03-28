@@ -1276,3 +1276,6 @@ GLOBAL_LIST_EMPTY_TYPED(living_players_by_zlevel, /list)
  */
 /mob/proc/allow_examine(atom/A)
 	return client && (client.eye == src)
+
+/mob/proc/has_admin_rights()
+	return check_rights(R_ADMIN, 0, src)

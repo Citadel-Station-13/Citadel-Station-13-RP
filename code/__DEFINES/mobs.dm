@@ -125,11 +125,11 @@
 #define INV_LCUFF_DEF_ICON 'icons/mob/mob.dmi'
 
 // Character's economic class
-#define CLASS_UPPER 		"Wealthy"
-#define CLASS_UPMID			"Well-off"
-#define CLASS_MIDDLE 		"Average"
-#define CLASS_LOWMID		"Underpaid"
-#define CLASS_LOWER			"Poor"
+#define CLASS_UPPER "Wealthy"
+#define CLASS_UPMID "Well-off"
+#define CLASS_MIDDLE "Average"
+#define CLASS_LOWMID "Underpaid"
+#define CLASS_LOWER "Poor"
 
 #define ECONOMIC_CLASS		list(CLASS_UPPER,CLASS_UPMID,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWER)
 
@@ -177,16 +177,17 @@
 #define MODIFIER_GENETIC	1	// Modifiers with this flag will be copied to mobs who get cloned.
 
 // Bodyparts and organs.
-#define O_EYES     "eyes"
-#define O_HEART    "heart"
-#define O_LUNGS    "lungs"
-#define O_BRAIN    "brain"
-#define O_LIVER    "liver"
-#define O_KIDNEYS  "kidneys"
+#define O_MOUTH "mouth"
+#define O_EYES "eyes"
+#define O_HEART "heart"
+#define O_LUNGS "lungs"
+#define O_BRAIN "brain"
+#define O_LIVER "liver"
+#define O_KIDNEYS "kidneys"
 #define O_APPENDIX "appendix"
-#define O_VOICE    "voicebox"
-#define O_SPLEEN   "spleen"
-#define O_STOMACH  "stomach"
+#define O_VOICE "voicebox"
+#define O_SPLEEN "spleen"
+#define O_STOMACH "stomach"
 #define O_INTESTINE "intestine"
 #define O_STANDARD list(O_EYES, O_HEART, O_LUNGS, O_BRAIN, O_LIVER, O_KIDNEYS, O_SPLEEN, O_APPENDIX, O_VOICE, O_STOMACH, O_INTESTINE)
 
@@ -205,41 +206,47 @@
 #define O_AUG_PELVIC "pelvic augment"
 
 // Non-Standard organs
-#define O_MOUTH    "mouth"
-#define O_CELL     "cell"
-#define O_PLASMA   "plasma vessel"
-#define O_HIVE     "hive node"
-#define O_NUTRIENT "nutrient vessel"
-#define O_STRATA   "neural strata"
-#define O_RESPONSE "response node"
+#define O_ACID "acid gland"
+#define O_ANCHOR "anchoring ligament"
+#define O_AREJECT "immune hub"
+#define O_CELL "cell"
+#define O_EGG "egg sac"
+#define O_FACT "refactory"
+#define O_FRUIT "fruit gland"
 #define O_GBLADDER "gas bladder"
-#define O_POLYP    "polyp segment"
-#define O_ANCHOR   "anchoring ligament"
+#define O_HIVE "hive node"
+#define O_HSTOMACH "honey stomach"
+#define O_NUTRIENT "nutrient vessel"
+#define O_ORCH "orchestrator"
+#define O_PLASMA "plasma vessel"
+#define O_POLYP "polyp segment"
 #define O_REGBRUTE "pneumoregenitor"
-#define O_REGBURN  "thermoregenitor"
-#define O_REGOXY   "respiroregenitor"
-#define O_REGTOX   "toxoregenitor"
-#define O_ACID     "acid gland"
-#define O_EGG      "egg sac"
-#define O_RESIN    "resin spinner"
-#define O_AREJECT  "immune hub"
-#define O_VENTC    "morphoplastic node"
-#define O_VRLINK   "virtual node"
-#define O_ALL list(O_STANDARD, O_MOUTH, O_CELL, O_PLASMA, O_HIVE, O_NUTRIENT, O_STRATA, O_RESPONSE, O_GBLADDER, O_POLYP, O_ANCHOR, O_REGBRUTE, O_REGBURN, O_REGOXY, O_REGTOX, O_ACID, O_EGG, O_RESIN, O_AREJECT, O_VENTC, O_VRLINK)
+#define O_REGBURN "thermoregenitor"
+#define O_REGOXY "respiroregenitor"
+#define O_REGTOX "toxoregenitor"
+#define O_RESIN "resin spinner"
+#define O_RESPONSE "response node"
+#define O_STRATA "neural strata"
+#define O_VENTC "morphoplastic node"
+#define O_VRLINK "virtual node"
+
+#define O_ALL list(O_ACID, O_ANCHOR, O_AREJECT, O_CELL, O_EGG, O_FACT, O_FRUIT, O_GBLADDER, O_HIVE, O_HSTOMACH, O_MOUTH, O_NUTRIENT, O_ORCH, O_PLASMA, O_POLYP, O_REGBRUTE, O_REGBURN, O_REGOXY, O_REGTOX, O_RESIN, O_RESPONSE, O_STANDARD, O_STRATA, O_VENTC, O_VRLINK)
+
 
 // External organs, aka limbs
-#define BP_L_FOOT "l_foot"
-#define BP_R_FOOT "r_foot"
-#define BP_L_LEG  "l_leg"
-#define BP_R_LEG  "r_leg"
+#define BP_HEAD "head"
+#define BP_TORSO "torso"
+#define BP_GROIN "groin"
+#define BP_L_ARM "l_arm"
+#define BP_R_ARM "r_arm"
 #define BP_L_HAND "l_hand"
 #define BP_R_HAND "r_hand"
-#define BP_L_ARM  "l_arm"
-#define BP_R_ARM  "r_arm"
-#define BP_HEAD   "head"
-#define BP_TORSO  "torso"
-#define BP_GROIN  "groin"
-#define BP_ALL list(BP_GROIN, BP_TORSO, BP_HEAD, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG)
+#define BP_L_LEG "l_leg"
+#define BP_R_LEG "r_leg"
+#define BP_L_FOOT "l_foot"
+#define BP_R_FOOT "r_foot"
+
+#define BP_ALL list(BP_HEAD, BP_TORSO, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
 #define BP_FLOAT  "floatation disc"
 #define BP_JETS  "maneuvering jets"
@@ -282,57 +289,6 @@
 #define BORG_BRAINTYPE_POSI		"Robot"
 #define BORG_BRAINTYPE_DRONE	"Drone"
 #define BORG_BRAINTYPE_AI_SHELL	"AI Shell"
-
-// 'Regular' species.
-#define SPECIES_HUMAN			"Human"
-#define SPECIES_HUMAN_VATBORN	"Vatborn"
-#define SPECIES_UNATHI			"Unathi"
-#define SPECIES_SKRELL			"Skrell"
-#define SPECIES_TESHARI			"Teshari"
-#define SPECIES_TAJ				"Tajara"
-#define SPECIES_PROMETHEAN		"Promethean"
-#define SPECIES_DIONA			"Diona"
-#define SPECIES_VOX				"Vox"
-#define SPECIES_ZADDAT			"Zaddat"
-#define SPECIES_ADHERENT		"Adherent"
-
-// Monkey and alien monkeys.
-#define SPECIES_MONKEY			"Monkey"
-#define SPECIES_MONKEY_TAJ		"Farwa"
-#define SPECIES_MONKEY_SKRELL	"Neaera"
-#define SPECIES_MONKEY_UNATHI	"Stok"
-
-// Virtual Reality IDs.
-#define SPECIES_VR				"Virtual Reality Avatar"
-#define SPECIES_VR_HUMAN		"Virtual Reality Human"
-#define SPECIES_VR_UNATHI		"Virtual Reality Unathi"
-#define SPECIES_VR_TAJ			"Virtual Reality Tajara" // NO CHANGING.
-#define SPECIES_VR_SKRELL		"Virtual Reality Skrell"
-#define SPECIES_VR_TESHARI		"Virtual Reality Teshari"
-#define SPECIES_VR_DIONA		"Virtual Reality Diona"
-#define SPECIES_VR_MONKEY		"Virtual Reality Monkey"
-#define SPECIES_VR_SKELETON		"Virtual Reality Skeleton"
-#define SPECIES_VR_VOX			"Virtual Reality Vox"
-
-// Ayyy IDs.
-#define SPECIES_XENO			"Xenomorph"
-#define SPECIES_XENO_DRONE		"Xenomorph Drone"
-#define SPECIES_XENO_HUNTER		"Xenomorph Hunter"
-#define SPECIES_XENO_SENTINEL	"Xenomorph Sentinel"
-#define SPECIES_XENO_QUEEN		"Xenomorph Queen"
-
-// Misc species. Mostly unused but might as well be complete.
-#define SPECIES_SHADOW			"Shadow"
-#define SPECIES_SKELETON		"Skeleton"
-#define SPECIES_GOLEM			"Golem"
-#define SPECIES_EVENT1			"X Occursus"
-#define SPECIES_EVENT2			"X Anomalous"
-#define SPECIES_EVENT3			"X Unowas"
-
-// Replicant types. Currently only used for alien pods and events.
-#define SPECIES_REPLICANT		"Replicant"
-#define SPECIES_REPLICANT_ALPHA	"Alpha Replicant"
-#define SPECIES_REPLICANT_BETA	"Beta Replicant"
 
 // Used to seperate simple animals by ""intelligence"".
 #define SA_PLANT	1
@@ -434,44 +390,3 @@
 #define EXAMINE_SKIPHANDS			0x0040
 #define EXAMINE_SKIPLEGS			0x0080
 #define EXAMINE_SKIPFEET			0x0100
-
-//Protean organs
-#define O_ORCH		"orchestrator"
-#define O_FACT		"refactory"
-
-//Alraune organs
-#define A_FRUIT	"fruit gland"
-
-//Apidean organs
-#define H_STOMACH "honey stomach"
-
-//species defines
-#define SPECIES_AKULA			"Akula"
-#define SPECIES_ALRAUNE			"Alraune"
-#define SPECIES_NEVREAN			"Nevrean"
-#define SPECIES_PROTEAN			"Protean"
-#define SPECIES_RAPALA			"Rapala"
-#define SPECIES_SERGAL			"Sergal"
-#define SPECIES_SHADEKIN_CREW   "Black-Eyed Shadekin"
-#define SPECIES_VASILISSAN		"Vasilissan"
-#define SPECIES_VULPKANIN		"Vulpkanin"
-#define SPECIES_XENOCHIMERA		"Xenochimera"
-#define SPECIES_XENOHYBRID		"Xenomorph Hybrid"
-#define SPECIES_ZORREN_FLAT		"Flatland Zorren"
-#define SPECIES_ZORREN_HIGH		"Highlander Zorren"
-#define SPECIES_CUSTOM			"Custom Species"
-#define SPECIES_PLASMAMAN		"Phoronoid"
-#define SPECIES_APIDAEN			"Apidaen"
-#define SPECIES_VETALA_RUDDY	"Ruddy Vetalan"
-#define SPECIES_VETALA_PALE		"Pale Vetalan"
-#define SPECIES_AURIL			"Auril"
-#define SPECIES_DREMACHIR		"Dremachir"
-//#define SPECIES_ADHERENT		"Adherent" //leaving this in in case I need it, delete if not needed - Papalus
-//monkey species
-#define SPECIES_MONKEY_AKULA		"Sobaka"
-#define SPECIES_MONKEY_NEVREAN		"Sparra"
-#define SPECIES_MONKEY_SERGAL		"Saru"
-#define SPECIES_MONKEY_VULPKANIN	"Wolpin"
-//event species
-#define SPECIES_WEREBEAST			"Werebeast"
-#define SPECIES_SHADEKIN			"Shadekin"

@@ -72,26 +72,22 @@ proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
 
 		return f_style
 
-proc/sanitize_name(name, species = SPECIES_HUMAN)
+// Keeping for now for backwards compatibility
+proc/old_sanitize_name(name, species = SPECIES_HUMAN)
 	var/datum/species/current_species
 	if(species)
 		current_species = GLOB.all_species[species]
 
-	return current_species ? current_species.sanitize_name(name) : sanitizeName(name, MAX_NAME_LEN)
+	return current_species ? current_species.old_sanitize_name(name) : sanitizeName(name, MAX_NAME_LEN)
 
 proc/random_name(gender, species = SPECIES_HUMAN)
-
-	var/datum/species/current_species
 	if(species)
-		current_species = GLOB.all_species[species]
-
-	if(!current_species || current_species.name_language == null)
-		if(gender==FEMALE)
-			return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
-		else
-			return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
-	else
-		return current_species.get_random_name(gender)
+		var/datum/species/current_species = GLOB.all_species[species]
+		if(current_species)
+			var/decl/cultural_info/current_culture = SSculture.get_culture(current_species.default_cultural_info[TAG_CULTURE])
+			if(current_culture)
+				return current_culture.get_random_name(gender)
+	return capitalize(pick(gender == FEMALE ? first_names_female : first_names_male)) + " " + capitalize(pick(last_names))
 
 proc/random_skin_tone()
 	switch(pick(60;"caucasian", 15;"afroamerican", 10;"african", 10;"latino", 5;"albino"))

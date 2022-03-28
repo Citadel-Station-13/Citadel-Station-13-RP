@@ -11,7 +11,7 @@
 	access = list()
 	minimal_access = list()
 	minimal_player_age = 14
-	economic_modifier = 20
+	economic_power = 20
 	whitelist_only = 1
 	latejoin_only = 1
 	outfit_type = /decl/hierarchy/outfit/job/centcom_officer
@@ -37,7 +37,7 @@
 	access = list()
 	minimal_access = list()
 	minimal_player_age = 14
-	economic_modifier = 20
+	economic_power = 20
 	whitelist_only = 1
 	latejoin_only = 1
 	outfit_type = /decl/hierarchy/outfit/job/emergency_responder
@@ -61,7 +61,7 @@
 	spawn_positions = 1
 	supervisors = "the spirit of laughter"
 	selection_color = "#515151"
-	economic_modifier = 1
+	economic_power = 1
 	access = list(access_entertainment)
 	minimal_access = list(access_entertainment)
 	job_description = "A Clown is there to entertain the crew and keep high morale using various harmless pranks and ridiculous jokes!"
@@ -93,7 +93,7 @@
 	spawn_positions = 1
 	supervisors = "the spirit of performance"
 	selection_color = "#515151"
-	economic_modifier = 1
+	economic_power = 1
 	access = list(access_entertainment)
 	minimal_access = list(access_entertainment)
 	job_description = "A Mime is there to entertain the crew and keep high morale using unbelievable performances and acting skills!"

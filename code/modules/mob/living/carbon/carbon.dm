@@ -340,11 +340,6 @@
 		else
 			return GLOB.all_languages[LANGUAGE_GIBBERISH]
 
-	if(!species)
-		return null
-
-	return species.default_language ? GLOB.all_languages[species.default_language] : null
-
 /mob/living/carbon/proc/should_have_organ(var/organ_check)
 	return 0
 

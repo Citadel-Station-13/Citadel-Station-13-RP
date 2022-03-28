@@ -133,6 +133,59 @@ var/list/all_maps = list()
 
 	var/list/planet_datums_to_make = list() // Types of `/datum/planet`s that will be instantiated by SSPlanets.
 
+
+	//Economy stuff
+	var/starting_money = 75000		 // Money in station account
+	var/department_money = 5000		 // Money in department accounts
+	var/salary_modifier	= 1			 // Multiplier to starting character money
+	var/station_departments = list() // Gets filled automatically depending on jobs allowed
+
+	var/list/available_cultural_info = list(
+		TAG_HOMEWORLD = list(
+			HOME_SYSTEM_EARTH,
+			HOME_SYSTEM_LUNA,
+			HOME_SYSTEM_MARS,
+			HOME_SYSTEM_VENUS,
+			HOME_SYSTEM_CERES,
+			HOME_SYSTEM_PLUTO,
+			HOME_SYSTEM_TAU_CETI,
+			HOME_SYSTEM_OTHER
+		),
+		TAG_FACTION = list(
+			FACTION_SOL_CENTRAL,
+			FACTION_TERRAN_CONFED,
+			FACTION_NANOTRASEN,
+			FACTION_FREETRADE,
+			FACTION_XYNERGY,
+			FACTION_EXPEDITIONARY,
+			FACTION_OTHER
+		),
+		TAG_CULTURE = list(
+			CULTURE_HUMAN,
+			CULTURE_OTHER
+		),
+		TAG_RELIGION = list(
+			RELIGION_OTHER,
+			RELIGION_JUDAISM,
+			RELIGION_HINDUISM,
+			RELIGION_BUDDHISM,
+			RELIGION_ISLAM,
+			RELIGION_CHRISTIANITY,
+			RELIGION_AGNOSTICISM,
+			RELIGION_DEISM,
+			RELIGION_ATHEISM,
+			RELIGION_THELEMA,
+			RELIGION_SPIRITUALISM
+		))
+
+	var/list/default_cultural_info = list(
+		TAG_HOMEWORLD = HOME_SYSTEM_MARS,
+		TAG_FACTION = FACTION_SOL_CENTRAL,
+		TAG_CULTURE = CULTURE_HUMAN,
+		TAG_RELIGION = RELIGION_AGNOSTICISM
+	)
+
+
 /datum/map/New()
 	..()
 	if(zlevel_datum_type)

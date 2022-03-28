@@ -6,43 +6,48 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	biological_gender = gender
 	identifying_gender = gender
 
-/datum/category_item/player_setup_item/general/basic
+/datum/category_item/player_setup_item/physical/basic
 	name = "Basic"
 	sort_order = 1
 
-/datum/category_item/player_setup_item/general/basic/load_character(var/savefile/S)
-	S["real_name"]				>> pref.real_name
-	S["nickname"]				>> pref.nickname
-	S["name_is_always_random"]	>> pref.be_random_name
-	S["gender"]					>> pref.biological_gender
-	S["id_gender"]				>> pref.identifying_gender
-	S["age"]					>> pref.age
-	S["spawnpoint"]				>> pref.spawnpoint
-	S["OOC_Notes"]				>> pref.metadata
+/datum/category_item/player_setup_item/physical/basic/load_character(var/savefile/S)
+	from_file(S["real_name"], pref.real_name)
+	from_file(S["nickname"], pref.nickname)
+	from_file(S["name_is_always_random"], pref.be_random_name)
+	from_file(S["gender"], pref.biological_gender)
+	from_file(S["id_gender"], pref.identifying_gender)
+	from_file(S["age"], pref.age)
+	from_file(S["spawnpoint"], pref.spawnpoint)
+	from_file(S["OOC_Notes"], pref.metadata)
 
-/datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
-	S["real_name"]				<< pref.real_name
-	S["nickname"]				<< pref.nickname
-	S["name_is_always_random"]	<< pref.be_random_name
-	S["gender"]					<< pref.biological_gender
-	S["id_gender"]				<< pref.identifying_gender
-	S["age"]					<< pref.age
-	S["spawnpoint"]				<< pref.spawnpoint
-	S["OOC_Notes"]				<< pref.metadata
+/datum/category_item/player_setup_item/physical/basic/save_character(var/savefile/S)
+	to_file(S["real_name"], pref.real_name)
+	to_file(S["nickname"], pref.nickname)
+	to_file(S["name_is_always_random"], pref.be_random_name)
+	to_file(S["gender"], pref.biological_gender)
+	to_file(S["gender"], pref.identifying_gender)
+	to_file(S["age"], pref.age)
+	to_file(S["spawnpoint"], pref.spawnpoint)
+	to_file(S["OOC_Notes"], pref.metadata)
 
-/datum/category_item/player_setup_item/general/basic/sanitize_character()
-	pref.age                = sanitize_integer(pref.age, get_min_age(), get_max_age(), initial(pref.age))
-	pref.biological_gender  = sanitize_inlist(pref.biological_gender, get_genders(), pick(get_genders()))
+/datum/category_item/player_setup_item/physical/basic/sanitize_character()
+	pref.age = sanitize_integer(pref.age, get_min_age(), get_max_age(), initial(pref.age))
+	pref.biological_gender = sanitize_inlist(pref.biological_gender, get_genders(), pick(get_genders()))
 	pref.identifying_gender = (pref.identifying_gender in all_genders_define_list) ? pref.identifying_gender : pref.biological_gender
-	pref.real_name		= sanitize_name(pref.real_name, pref.species, is_FBP())
-	if(!pref.real_name)
-		pref.real_name      = random_name(pref.identifying_gender, pref.species)
-	pref.nickname		= sanitize_name(pref.nickname)
-	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, spawntypes, initial(pref.spawnpoint))
-	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
+	pref.nickname = sanitizeName(pref.nickname)
+	pref.spawnpoint = sanitize_inlist(pref.spawnpoint, spawntypes, initial(pref.spawnpoint))
+	pref.be_random_name = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
+	// This is a bit noodly. If pref.cultural_info[TAG_CULTURE] is null, then we haven't finished loading/sanitizing, which means we might purge
+	// numbers or w/e from someone's name by comparing them to the map default. So we just don't bother sanitizing at this point otherwise.
+	if(pref.cultural_info[TAG_CULTURE])
+		var/decl/cultural_info/check = SSculture.get_culture(pref.cultural_info[TAG_CULTURE])
+		if(check)
+			pref.real_name = check.sanitize_name(pref.real_name, pref.species)
+			if(!pref.real_name)
+				pref.real_name = random_name(pref.identifying_gender, pref.species)
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/general/basic/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/physical/basic/copy_to_mob(var/mob/living/carbon/human/character)
 	if(config_legacy.humans_need_surnames)
 		var/firstspace = findtext(pref.real_name, " ")
 		var/name_length = length(pref.real_name)
@@ -62,7 +67,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	character.identifying_gender = pref.identifying_gender
 	character.age = pref.age
 
-/datum/category_item/player_setup_item/general/basic/content()
+/datum/category_item/player_setup_item/physical/basic/content()
 	. = list()
 	. += "<b>Name:</b> "
 	. += "<a href='?src=\ref[src];rename=1'><b>[pref.real_name]</b></a><br>"
@@ -70,20 +75,22 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	. += "<a href='?src=\ref[src];always_random_name=1'>Always Random Name: [pref.be_random_name ? "Yes" : "No"]</a><br>"
 	. += "<b>Nickname:</b> "
 	. += "<a href='?src=\ref[src];nickname=1'><b>[pref.nickname]</b></a>"
-	. += "<br>"
+	. += "<hr>"
 	. += "<b>Biological Sex:</b> <a href='?src=\ref[src];bio_gender=1'><b>[gender2text(pref.biological_gender)]</b></a><br>"
 	. += "<b>Pronouns:</b> <a href='?src=\ref[src];id_gender=1'><b>[gender2text(pref.identifying_gender)]</b></a><br>"
 	. += "<b>Age:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
-	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
+	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a>"
 	if(config_legacy.allow_Metadata)
-		. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
+		. += "<br><b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
 	. = jointext(.,null)
 
-/datum/category_item/player_setup_item/general/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/physical/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["rename"])
 		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null
 		if (!isnull(raw_name) && CanUseTopic(user))
-			var/new_name = sanitize_name(raw_name, pref.species, is_FBP())
+
+			var/decl/cultural_info/check = SSculture.get_culture(pref.cultural_info[TAG_CULTURE])
+			var/new_name = check.sanitize_name(raw_name, pref.species, is_FBP())
 			if(new_name)
 				pref.real_name = new_name
 				return TOPIC_REFRESH
@@ -102,7 +109,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	else if(href_list["nickname"])
 		var/raw_nickname = input(user, "Choose your character's nickname:", "Character Nickname")  as text|null
 		if (!isnull(raw_nickname) && CanUseTopic(user))
-			var/new_nickname = sanitize_name(raw_nickname, pref.species, is_FBP())
+			var/new_nickname = old_sanitize_name(raw_nickname, pref.species, is_FBP())
 			if(new_nickname)
 				pref.nickname = new_nickname
 				return TOPIC_REFRESH
@@ -147,7 +154,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 
 	return ..()
 
-/datum/category_item/player_setup_item/general/basic/proc/get_genders()
+/datum/category_item/player_setup_item/physical/basic/proc/get_genders()
 	var/datum/species/S
 	if(pref.species)
 		S = GLOB.all_species[pref.species]

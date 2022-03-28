@@ -330,9 +330,9 @@
 	// Now we start using the player_setup objects to do stuff!
 	var/datum/category_collection/CC = P.player_setup
 	var/datum/category_group/CG = CC.categories_by_name["General"]
-	var/datum/category_item/player_setup_item/general/body/B = CG.items_by_name["Body"]
+	var/datum/category_item/player_setup_item/physical/body/B = CG.items_by_name["Body"]
 	ASSERT(istype(B))
-	var/datum/category_item/player_setup_item/general/basic/G = CG.items_by_name["Basic"]
+	var/datum/category_item/player_setup_item/physical/basic/G = CG.items_by_name["Basic"]
 	ASSERT(istype(G))
 	CG = CC.categories_by_name["Species Customization"]
 	var/datum/category_item/player_setup_item/vore/ears/E = CG.items_by_name["Appearance"]
