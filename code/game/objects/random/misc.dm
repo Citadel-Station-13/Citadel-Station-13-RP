@@ -1157,3 +1157,54 @@
 				prob(2);list(/obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer/rigged),
 				prob(1);list(/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill),
 				)
+
+//Random Bedsheet Spawner
+/obj/random/bedsheet
+	name = "random bedsheet"
+	desc = "Used to spawn a random bedsheet."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "sheet"
+
+/obj/random/bedsheet/item_to_spawn()
+	return pick(/obj/item/bedsheet/red,
+				/obj/item/bedsheet/orange,
+				/obj/item/bedsheet/yellow,
+				/obj/item/bedsheet/green,
+				/obj/item/bedsheet/blue,
+				/obj/item/bedsheet/purple,
+				/obj/item/bedsheet/brown,
+				/obj/item/bedsheet/rainbow,
+				/obj/item/bedsheet/captain,
+				/obj/item/bedsheet/hop,
+				/obj/item/bedsheet/rd,
+				/obj/item/bedsheet/ce,
+				/obj/item/bedsheet/hos,
+				/obj/item/bedsheet/medical,
+				/obj/item/bedsheet/ian,
+				/obj/item/bedsheet/clown,
+				/obj/item/bedsheet/mime,
+				/obj/item/bedsheet/cosmos)
+
+/obj/random/bedsheet/double
+	name = "random double bedsheet"
+	desc = "Used to spawn a random double-bedsheet."
+	icon_state = "doublesheet"
+
+/obj/random/bedsheet/double/item_to_spawn()
+	return pick(/obj/item/bedsheet/reddouble,
+				/obj/item/bedsheet/orangedouble,
+				/obj/item/bedsheet/yellowdouble,
+				/obj/item/bedsheet/greendouble,
+				/obj/item/bedsheet/bluedouble,
+				/obj/item/bedsheet/purpledouble,
+				/obj/item/bedsheet/browndouble,
+				/obj/item/bedsheet/rainbowdouble,
+				/obj/item/bedsheet/captaindouble,
+				/obj/item/bedsheet/hopdouble,
+				/obj/item/bedsheet/rddouble,
+				/obj/item/bedsheet/cedouble,
+				/obj/item/bedsheet/hosdouble,
+				/obj/item/bedsheet/iandouble,
+				/obj/item/bedsheet/clowndouble,
+				/obj/item/bedsheet/mimedouble,
+				/obj/item/bedsheet/cosmosdouble)
