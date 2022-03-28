@@ -1209,3 +1209,8 @@ obj/item/clothing/suit/kamishimo
 	name = "pullover hoodie (NT)"
 	desc = "A plain-colored hoodie with no zipper to speak of. The exonet debate on whether it's hotter to watch one get pulled off or zipped open still rages on. You could prove one of the sides right today! This one is dyed in NT colors and has the trademark NanoTrasen logo!"
 	icon_state = "hoodie_pullover_NT"
+
+/obj/item/clothing/suit/storage/umbral
+	name = "Umbral Duster"
+	desc = "WIP"
+	icon_state = "umbral"
