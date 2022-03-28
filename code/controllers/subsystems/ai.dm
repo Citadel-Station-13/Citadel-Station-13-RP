@@ -22,8 +22,10 @@ SUBSYSTEM_DEF(ai)
 		src.currentrun = processing.Copy()
 		process_z.Cut()//
 		slept_mobs = 0
-		for(var/mob/player in GLOB.living_players_by_zlevel)
-			LAZYDISTINCTADD(process_z, player)
+		for(var/player in GLOB.living_players_by_zlevel)
+			log_qdel("Found [player]")
+			//LAZYDISTINCTADD(process_z, player.z)
+
 
 
 	//cache for sanic speed (lists are references anyways)
@@ -39,7 +41,7 @@ SUBSYSTEM_DEF(ai)
 		var/mob/living/L = A.holder
 		if(!L?.loc)
 			continue
-		if(LAZYFIND(process_z,get_z(L)) || !L.low_priority)
+		if(LAZYFIND(process_z,L?.z) || !L.low_priority)
 			if(times_fired % 4 == 0 && A.holder.stat != DEAD)
 				A.handle_strategicals()
 			if(A.holder.stat != DEAD) // The /TG/ version checks stat twice, presumably in-case processing somehow got the mob killed in that instant.
