@@ -1,3 +1,19 @@
+/obj/turbolift_map_holder/rift
+	name = "Atlas Lift"
+	depth = 5
+	lift_size_x = 2
+	lift_size_y = 2
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+
+	areas_to_use = list(
+		/area/turbolift/runder/level2,
+		/area/turbolift/runder/level1,
+		/area/turbolift/rsurface/level1,
+		/area/turbolift/rsurface/level2,
+		/area/turbolift/rsurface/level3
+		)
+
 /obj/turbolift_map_holder/triumph
 	name = "Triumph Climber"
 	depth = 4
@@ -32,6 +48,7 @@
 		)
 
 
-
+/* SHUT UP
 /datum/turbolift
 	music = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')  // Woo elevator music!
+*/

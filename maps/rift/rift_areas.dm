@@ -13,33 +13,38 @@
 // Elevator areas.
 /area/turbolift
 	delay_time = 1 SECONDS
-//	forced_ambience = list('sound/music/elevator.ogg')
 	dynamic_lighting = FALSE //Temporary fix for elevator lighting
 
 /area/turbolift/runder/level2
 	name = "under (level 2)"
 	lift_floor_label = "Underground 2"
-	lift_floor_name = "Engineering, Supermatter"
+	lift_floor_name = "Atmospherics, Chapel, Mining, Bunker"
 	lift_announce_str = "Arriving at underground level two."
 	base_turf = /turf/simulated/floor/plating
 
 /area/turbolift/runder/level1
 	name = "under (level 1)"
 	lift_floor_label = "Underground 1"
-	lift_floor_name = "Engineering, Atmospherics, Storage"
+	lift_floor_name = "Engineering"
 	lift_announce_str = "Arriving at underground level one."
 
 /area/turbolift/rsurface/level1
-	name = "surface (level 0)"
-	lift_floor_label = "Surface 0"
-	lift_floor_name = "Storage, Cargo, Surface EVA"
-	lift_announce_str = "Arriving at surface level zero."
-
-/area/turbolift/rsurface/level2
 	name = "surface (level 1)"
 	lift_floor_label = "Surface 1"
-	lift_floor_name = "Level 1"
+	lift_floor_name = "Cargo, Tool Storage, EVA Equipment, Surface EVA"
 	lift_announce_str = "Arriving at surface level one."
+
+/area/turbolift/rsurface/level2
+	name = "surface (level 2)"
+	lift_floor_label = "Surface 2"
+	lift_floor_name = "Medical, Security, Science, Dorms, Cafe"
+	lift_announce_str = "Arriving at surface level two."
+
+/area/turbolift/rsurface/level3
+	name = "surface (level 3)"
+	lift_floor_label = "Surface 3"
+	lift_floor_name = "Bar, Kitchen, Bridge, Exploration, Arrivals"
+	lift_announce_str = "Arriving at surface level two."
 
 /*
 /area/turbolift/t_station/level1

@@ -13,8 +13,20 @@
 /area/engineering/atmos/atmos_lobby
 	name = "\improper Atmospherics Lobby"
 
-/area/crew_quarters/panic_shelter
-	name = "\improper Panic Shelter"
+/area/medical/recovery_room
+	name = "\improper Recovery Room"
+
+/area/crew_quarters/public_bunker
+	name = "\improper Public Bunker"
+
+/area/crew_quarters/public_bunker/dorm_one
+	name = "\improper Public Bunker Dorm 1"
+
+/area/crew_quarters/public_bunker/dorm_two
+	name = "\improper Public Bunker Dorm 2"
+
+/area/crew_quarters/public_bunker/dorm_three
+	name = "\improper Public Bunker Dorm 3"
 
 /area/bridge/bunker
 	name = "\improper Command Bunker"
@@ -23,8 +35,8 @@
 /area/crew_quarters/maint_dorm
 	name = "\improper Maintenance - Unknown"
 
-/area/maintenance/panic_shelter
-	name = "\improper Panic Shelter Maintenance"
+/area/maintenance/public_bunker
+	name = "\improper Public Bunker Maintenance"
 
 /area/maintenance/maint_bar
 	name = "\improper Maintenance Bar"

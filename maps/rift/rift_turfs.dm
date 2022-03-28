@@ -23,11 +23,12 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
 /turf/simulated/floor/outdoors/snow/lythios43c
 	turf_layers = list(
-		/turf/simulated/floor/outdoors/ice/lythios43c
+		/turf/simulated/floor/outdoors/safeice/lythios43c
 		)
 
-LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
-
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+	outdoors = FALSE
 
 /turf/simulated/mineral/icerock
 	initial_gas_mix = GAS_STRING_STP

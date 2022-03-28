@@ -12,9 +12,10 @@ var/list/mining_overlay_cache = list()
 	name = "rock"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "rock"
-	var/rock_side_icon_state = "rock_side"
+	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/sand_icon_state = "asteroid"
 	var/rock_icon_state = "rock"
+	var/rock_side_icon_state = "rock_side"
 	var/random_icon = 0
 	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
@@ -50,6 +51,7 @@ var/list/mining_overlay_cache = list()
 	random_icon = 1
 
 /turf/simulated/mineral/icerock
+	name = "icerock"
 	icon_state = "icerock"
 	rock_side_icon_state = "icerock_side"
 	sand_icon_state = "ice"
@@ -57,7 +59,7 @@ var/list/mining_overlay_cache = list()
 	random_icon = 1
 
 /turf/unsimulated/mineral/icerock
-	name = "impassable rock"
+	name = "impassable icerock"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "icerock-dark"
 	density = 1
@@ -96,12 +98,8 @@ turf/simulated/mineral/floor/light_corner
 
 /turf/simulated/mineral/floor/icerock
 	name = "ice"
-	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "ice"
-	density = 0
-	opacity = 0
-	blocks_air = 0
-	can_build_into_floor = TRUE
+	sand_icon_state = "ice"
 
 /turf/simulated/mineral/proc/make_floor()
 	if(!density && !opacity)
@@ -188,8 +186,8 @@ turf/simulated/mineral/floor/light_corner
 	if(density)
 		if(mineral)
 			name = "[mineral.display_name] deposit"
-		else
-			name = "rock"
+//		else
+//			name = "rock"
 
 		icon = 'icons/turf/walls.dmi'
 		icon_state = rock_icon_state
@@ -208,8 +206,8 @@ turf/simulated/mineral/floor/light_corner
 
 	//We are a sand floor
 	else
-		name = "sand"
-		icon = 'icons/turf/flooring/asteroid.dmi'
+//		name = "sand" why reset our prior definitions?
+		icon = sand_icon // So that way we can source from other files.
 		icon_state = sand_icon_state
 
 		if(sand_dug)

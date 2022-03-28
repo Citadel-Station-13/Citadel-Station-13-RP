@@ -22,28 +22,6 @@
 	anchored = TRUE
 	density = FALSE
 
-/obj/turbolift_map_holder/rift
-	name = "Atlas Lift"
-	depth = 4
-	lift_size_x = 3
-	lift_size_y = 3
-	icon = 'icons/obj/turbolift_preview_3x3.dmi'
-	wall_type = null // Don't make walls
-
-	areas_to_use = list(
-		/area/turbolift/runder/level2,
-		/area/turbolift/runder/level1,
-		/area/turbolift/rsurface/level1,
-		/area/turbolift/rsurface/level2
-		)
-
-/datum/turbolift
-//	music = list('sound/music/elevator.ogg')  // Woo elevator music!
-
-/obj/machinery/atmospherics/unary/vent_pump/positive
-	use_power = USE_POWER_IDLE
-	icon_state = "map_vent_out"
-	external_pressure_bound = ONE_ATMOSPHERE * 1.1
 /*
 /obj/effect/step_trigger/teleporter/to_mining/New()
 	..()
@@ -195,7 +173,8 @@
 	on_store_visible_message_1 = "'s speakers chime, anouncing a shuttle has arrived to take"
 	on_store_visible_message_2 = "to the orbital relay"
 	time_till_despawn = 10 SECONDS
-	spawnpoint_type = /datum/spawnpoint/tram
+	spawnpoint_type = /datum/spawnpoint/shuttle
+
 /obj/machinery/cryopod/robot/door/tram/process()
 	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
@@ -304,10 +283,6 @@
 	"Bunking"			= new/datum/holodeck_program(/area/houseboat/holodeck/bunking, list()),
 	"Turn Off" 			= new/datum/holodeck_program(/area/houseboat/holodeck/off, list())
 	)
-
-// Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
-/obj/machinery/power/supermatter/touch_map_edge()
-	qdel(src)
 
 //Airlock antitox vendor
 /obj/machinery/vending/wallmed_airlock
