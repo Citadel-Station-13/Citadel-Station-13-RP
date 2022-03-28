@@ -1,5 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "Added SSnightshift"
-  - refactor: "Converted time_in_ticks to time_in_ds"

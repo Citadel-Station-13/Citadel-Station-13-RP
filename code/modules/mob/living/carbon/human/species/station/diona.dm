@@ -91,7 +91,7 @@
 
 	genders = list(PLURAL)
 
-	wikilink="https://wiki.vore-station.net/Diona"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
 
 /datum/species/diona/can_understand(var/mob/other)
 	var/mob/living/carbon/alien/diona/D = other

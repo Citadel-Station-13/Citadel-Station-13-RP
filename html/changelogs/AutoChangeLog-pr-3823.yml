@@ -1,7 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "TGUI Wires"
-  - rscadd: "Bay's Point Defense Batteries"
-  - rscadd: "Bay's Advanced Shield Generators"
-  - soundadd: "Grabbed some sound files we didn't have which will be used it further ports"
