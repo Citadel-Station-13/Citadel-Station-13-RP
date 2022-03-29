@@ -1,16 +1,16 @@
-SUBSYSTEM_DEF(culture)
-	name = "Culture"
-	init_order = SS_INIT_CULTURE
+SUBSYSTEM_DEF(lore)
+	name = "Lore"
+	init_order = INIT_ORDER_LORE
 	flags = SS_NO_FIRE
 
 	var/list/cultural_info_by_name = list()
 	var/list/cultural_info_by_path = list()
 	var/list/tagged_info = list()
 
-/datum/controller/subsystem/culture/proc/get_all_entries_tagged_with(var/token)
+/datum/controller/subsystem/lore/proc/get_all_entries_tagged_with(var/token)
 	return tagged_info[token]
 
-/datum/controller/subsystem/culture/Initialize(timeofday)
+/datum/controller/subsystem/lore/Initialize(timeofday)
 	. = ..()
 	for(var/ftype in typesof(/decl/cultural_info)-/decl/cultural_info)
 		var/decl/cultural_info/culture = ftype
@@ -27,5 +27,5 @@ SUBSYSTEM_DEF(culture)
 			var/list/tag_list = tagged_info[culture.category]
 			tag_list[culture.name] = culture
 
-/datum/controller/subsystem/culture/proc/get_culture(var/culture_ident)
+/datum/controller/subsystem/lore/proc/get_culture(var/culture_ident)
 	return cultural_info_by_name[culture_ident] ? cultural_info_by_name[culture_ident] : cultural_info_by_path[culture_ident]

@@ -108,7 +108,7 @@
 		H.mind.assigned_role = "Alien"
 		H.mind.special_role = "Alien"
 
-	var/decl/cultural_info/culture/hidden/xenomorph/culture = SSculture.get_culture(force_cultural_info[TAG_CULTURE])
+	var/decl/cultural_info/culture/hidden/xenomorph/culture = SSlore.get_culture(force_cultural_info[TAG_CULTURE])
 	if(istype(culture))
 		culture.caste_number++
 		H.real_name = culture.get_random_name(H)
