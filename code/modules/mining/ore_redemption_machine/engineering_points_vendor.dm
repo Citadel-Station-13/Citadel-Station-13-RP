@@ -34,7 +34,7 @@
 		new /datum/data/mining_equipment("Nanopaste Tube",				    /obj/item/stack/nanopaste,										10),
 		//Mining vendor steals - Ends
         //Power tools like the CE gets, if kev comes crying: https://cdn.discordapp.com/attachments/296237931587305472/956517623519141908/unknown.png
-		new /datum/data/mining_equipment("Advanced Voidsuit",							/obj/item/rig/ce,									200),
+		new /datum/data/mining_equipment("Advanced Voidsuit",							/obj/item/rig/ce,									150),
         new /datum/data/mining_equipment("Power Tool - Hand Drill",                     /obj/item/tool/screwdriver/power,                   80),
         new /datum/data/mining_equipment("Power Tool - Jaws of life",                   /obj/item/tool/crowbar/power,                       80),
         new /datum/data/mining_equipment("Power Tool - Experimental Welder",            /obj/item/weldingtool/experimental,                 80),
@@ -43,12 +43,6 @@
         new /datum/data/mining_equipment("Power Tool - Long Range Atmosphere scanner",  /obj/item/analyzer/longrange,                       80),
 		//new /datum/data/mining_equipment("Power Tool - Holofan Projector", 				/obj/item/holosign_creator/combifan,				80),
         new /datum/data/mining_equipment("Superior Welding Goggles",                    /obj/item/clothing/glasses/welding/superior,        50),
-        //Level 1 Stock parts, not really a good deal but doesnt need resources.
-        new /datum/data/mining_equipment("Stock Parts - Capacitor",                 /obj/item/stock_parts/capacitor,        5),
-        new /datum/data/mining_equipment("Stock Parts - Scanning Module",           /obj/item/stock_parts/scanning_module,  5),
-        new /datum/data/mining_equipment("Stock Parts - Micro-Manipulator",         /obj/item/stock_parts/manipulator,      5),
-        new /datum/data/mining_equipment("Stock Parts - Micro-Laser",               /obj/item/stock_parts/micro_laser,      5),
-        new /datum/data/mining_equipment("Stock Parts - Matter Bin",                /obj/item/stock_parts/matter_bin,       5),
         
         //Level 2 stock parts, to make engineering kinda self sufficent for minor upgrades but the parts are also kinda expansive
         new /datum/data/mining_equipment("Stock Parts - Advanced Capacitor",        /obj/item/stock_parts/capacitor/adv,        20),
@@ -58,7 +52,7 @@
         new /datum/data/mining_equipment("Stock Parts - Advanced Matter Bin",       /obj/item/stock_parts/matter_bin/adv,       20),
 
 		//Special Resources which the vendor is the primary source off:
-		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 				new /obj/item/tank/vimur, 25),
+		new /datum/data/mining_equipment("Special Parts - Vimur Tank", 				/obj/item/tank/vimur, 25),
 		new /datum/data/mining_equipment("Special Parts - TEG Voucher", 			/obj/item/engineering_voucher/teg, 20),
 		new /datum/data/mining_equipment("Special Parts - SM Core Voucher", 		/obj/item/engineering_voucher/smcore, 40),
 		new /datum/data/mining_equipment("Special Parts - Fusion Core Voucher",		/obj/item/engineering_voucher/fusion_core, 20),
@@ -141,9 +135,10 @@
 	slot_flags = null	//they have no straps!
 	volume = 500//Standard tanks have 70, we up that alot, a cannister has 1000, but we want this to be worth our points.
 
-/obj/item/tank/coolant/Initialize(mapload)
+/obj/item/tank/vimur/Initialize(mapload)
 	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/vimur, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	return .
 
 /obj/item/engineering_voucher
 	name = "equipment voucher"
