@@ -94,14 +94,30 @@
 	//secondary_langs = list("Xenomorph")
 	max_languages = 4
 
-	// Literally copy-pated the normal xenomorph cultures with a culture override for langs.
-	forced_lore_info = list(
-		TAG_CULTURE = TEMP_CULTURE_XENOHYBRID,
-		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
-		TAG_FACTION = FACTION_XENOMORPH,
-		TAG_RELIGION = RELIGION_OTHER
+	available_lore_info = list(
+		TAG_CULTURE = list(
+			CULTURE_XENOHYBRID_NEOMORPH,
+			CULTURE_XENOHYBRID_LAB,
+			CULTURE_XENOHYBRID_HUMAN,
+			CULTURE_OTHER
+		),
+		TAG_HOMEWORLD = list(
+			HOME_SYSTEM_BERGAKUNGEN,
+			HOME_SYSTEM_STATELESS,
+			HOME_SYSTEM_OTHER,
+			HOME_SYSTEM_DEEP_SPACE
+		),
+		TAG_FACTION = list(
+			FACTION_XENOHYBRID_NEOMORPH,
+			FACTION_XENOHYBRID_NORMAL,
+			FACTION_XENOHYBRID_CONVERTEE
+		),
+		TAG_RELIGION = list(
+			RELIGION_XENOHYBRID_HIVE,
+			RELIGION_XENOHYBRID_CONVERSION,
+			RELIGION_OTHER
+		)
 	)
-
 
 /datum/species/xenohybrid/can_breathe_water()
 	return TRUE	//they dont quite breathe
