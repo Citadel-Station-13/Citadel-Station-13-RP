@@ -1937,3 +1937,35 @@
     name = "chiming dress"
     desc = "This stylish yet rugged dress is inspired by recovered depictions of ancient Surt's native inhabitants. Composed of many integrated panels, it allows for excellent breathability whilst also retaining a strong profile."
     icon_state = "chiming_dress"
+
+//Antediluvian
+
+/obj/item/clothing/under/antediluvian
+	name = "Antediluvian corset"
+	desc = "This metallic corset and sturdy cloth bustier provide very little coverage. A dismountable sheer bodystocking integrated into the clothing retains some modesty. It is unknown whether it serveed ceremonial or official purpose."
+	icon_state = "antediluvian"
+	item_state = "antediluvian"
+	rolled_sleeves = -1
+	rolled_down = -1
+	//action_button_name = "Reconfigure Suit"
+
+/*
+/obj/item/clothing/under/antediluvian/verb/switchsprite()
+    set name = "Reconfigure Suit"
+    set category = "Object"
+    set src in usr
+    if(!istype(usr, /mob/living))
+        return
+    if(usr.stat)
+        return
+    to_chat(usr, "You rearrange the suit's configuration.")
+    if(worn_state == "antediluvian_s")
+        worn_state = "antediluvian_d_s"
+    if(worn_state == "antediluvian_d_s")
+        worn_state = "antediluvian_s"
+*/
+
+/obj/item/clothing/under/hasie
+	name = "Hasie skirt"
+	desc = "A daring combination of dark charcoals and vibrant reds and whites, the Hasie skirt/vest combo knows what it's doing. Sporting a low cut charcoal miniskirt and matching midriff button-up, this ensemble wows with the incredible color contrast of its two-tone vest."
+	icon_state = "hasie"

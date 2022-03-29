@@ -183,3 +183,11 @@
 	required_reagents = list("protein" = 3, "nutriment" = 1)
 	catalysts = list("enzyme" = 5)
 	result_amount = 4
+
+/datum/chemical_reaction/food/brine
+	name = "Brine"
+	id = "brine"
+	result = "brine"
+	required_reagents = list("water" = 5, "sodiumchloride" = 1, "sugar" = 1)
+	catalysts = list("enzyme" = 5)
+	result_amount = 5
