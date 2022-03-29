@@ -89,7 +89,7 @@
 
 /turf/unsimulated/floor/sky/depths/Initialize(mapload)
 	. = ..()
-		set_light(0, 0, "#FFFFFF")
+	set_light(0, 0, "#FFFFFF")
 
 /turf/unsimulated/floor/sky/depths/Initialize(mapload)
 	skyfall_levels = list(z+1)

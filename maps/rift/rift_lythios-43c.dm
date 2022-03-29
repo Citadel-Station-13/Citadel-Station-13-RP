@@ -12,7 +12,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 						Z_LEVEL_UNDERGROUND,
 						Z_LEVEL_SURFACE_LOW,
 						Z_LEVEL_SURFACE_MID,
-						Z_LEVEL_SURFACE_HIGH
+						Z_LEVEL_SURFACE_HIGH,
+						Z_LEVEL_WEST_PLAIN
 						)
 	planetary_wall_type = /turf/unsimulated/wall/planetary/lythios43c
 

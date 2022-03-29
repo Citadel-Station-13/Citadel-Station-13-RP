@@ -27,6 +27,42 @@
 	name = "Ships"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
 
+
+/datum/map_template/rift_lateload/west_plains
+	name = "Rift - Western Plains"
+	desc = "A sweeping, desolate plain to the west of the colony."
+	mappath = "_maps/map_files/rift/rift-07-west_plains.dmm"
+
+	associated_map_datum = /datum/map_z_level/rift_lateload/west_plains
+
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_z_level/rift_lateload/west_plains
+	name = "Western Plains"
+	z = Z_LEVEL_WEST_PLAIN
+
+/datum/map_template/rift_lateload/west_cavern
+	name = "Rift - Western Caverns"
+	desc = "A labyrinthine cave network below the western plains."
+	mappath = "_maps/map_files/rift/rift-western_cave.dmm"
+
+	associated_map_datum = /datum/map_z_level/rift_lateload/west_cavern
+
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_z_level/rift_lateload/west_cavern
+	name = "Western Caverns"
+	z = Z_LEVEL_WEST_CAVERN
+
+/*
+//Use this template to update the Western Z when POIs are created for it.
+/datum/map_template/triumph_lateload/lavaland/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_LAVALAND), 40, /area/lavaland/central/unexplored, /datum/map_template/submap/level_specific/lavaland)
+	new /datum/random_map/noise/ore/lavaland(null, 1, 1, Z_LEVEL_LAVALAND, 64, 64)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_LAVALAND, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
+*/
+
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missions
 /*
