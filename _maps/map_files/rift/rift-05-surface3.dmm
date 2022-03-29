@@ -5165,7 +5165,7 @@
 /area/bridge/meeting_room)
 "mA" = (
 /obj/effect/decal/mecha_wreckage/ripley,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "mC" = (
 /obj/structure/cable/green{
@@ -6217,7 +6217,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/cafeteria)
 "qG" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "qH" = (
 /obj/item/paper_bin,
@@ -6879,7 +6879,7 @@
 /area/hallway/secondary/docking_hallway)
 "sH" = (
 /obj/effect/spider/cocoon,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "sK" = (
 /obj/effect/floor_decal/techfloor{
@@ -7473,7 +7473,7 @@
 /area/crew_quarters/heads/hop)
 "uw" = (
 /obj/effect/spider/spiderling/virgo,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "uy" = (
 /obj/effect/floor_decal/industrial/halfstair{
@@ -8464,7 +8464,7 @@
 /area/maintenance/station/exploration)
 "xA" = (
 /mob/living/simple_mob/animal/giant_spider/nurse,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "xC" = (
 /obj/machinery/door/airlock/glass_research{
@@ -8546,7 +8546,7 @@
 /area/crew_quarters/bar)
 "xR" = (
 /mob/living/simple_mob/animal/giant_spider/frost,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "xS" = (
 /turf/unsimulated/wall/planetary/lythios43c,
@@ -8616,7 +8616,7 @@
 /area/crew_quarters/kitchen)
 "ya" = (
 /obj/machinery/crystal/lava,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "yb" = (
 /obj/effect/floor_decal/spline/plain{
@@ -8632,7 +8632,7 @@
 /area/rift/surfacebase/shuttle)
 "yd" = (
 /obj/structure/snowman/spider,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "yg" = (
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -9329,7 +9329,7 @@
 /area/crew_quarters/bar_backroom)
 "As" = (
 /mob/living/simple_mob/animal/giant_spider/carrier,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "At" = (
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -11420,7 +11420,7 @@
 /area/hallway/secondary/docking_hallway)
 "HF" = (
 /obj/item/pickaxe,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "HH" = (
 /obj/machinery/papershredder,
@@ -11451,7 +11451,7 @@
 /area/exploration/meeting)
 "HK" = (
 /obj/effect/decal/remains/unathi,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "HL" = (
 /obj/effect/overlay/snow/floor/pointy,
@@ -12137,7 +12137,7 @@
 "JV" = (
 /obj/random/humanoidremains,
 /obj/random/multiple/voidsuit/vintage,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "JX" = (
 /turf/simulated/wall/r_wall,
@@ -12481,7 +12481,7 @@
 /area/exploration/explorer_prep)
 "KZ" = (
 /obj/effect/spider/eggcluster/small/frost,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Lg" = (
 /obj/machinery/vending/snack{
@@ -12901,7 +12901,7 @@
 /area/bridge/meeting_room)
 "MN" = (
 /obj/item/digestion_remains/ribcage,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "MO" = (
 /obj/structure/barricade,
@@ -14558,7 +14558,7 @@
 "Sr" = (
 /obj/effect/spider/eggcluster,
 /obj/random/multiple/corp_crate,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "St" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -14954,7 +14954,7 @@
 /area/rift/stairwell/primary/surfacethree)
 "Ub" = (
 /obj/effect/decal/mecha_wreckage/gygax,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Ud" = (
 /obj/machinery/door/airlock/maintenance/int{
@@ -15029,7 +15029,7 @@
 /area/security/checkpoint2)
 "Up" = (
 /obj/effect/spider/eggcluster,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Us" = (
 /obj/structure/table/rack/shelf,
@@ -15128,7 +15128,7 @@
 /area/rift/surfacebase/shuttle)
 "UF" = (
 /obj/effect/decal/remains/deer,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "UG" = (
 /obj/effect/floor_decal/borderfloor{
@@ -15252,7 +15252,7 @@
 /area/hydroponics)
 "Vb" = (
 /obj/effect/spider/eggcluster/small,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Vd" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -15365,7 +15365,7 @@
 /area/bridge/bunker)
 "Vp" = (
 /obj/random/multiple/voidsuit/mining,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Vw" = (
 /obj/effect/overlay/snow/floor/pointy{
@@ -15838,7 +15838,7 @@
 /area/crew_quarters/captain)
 "Xd" = (
 /obj/machinery/crystal/ice,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Xe" = (
 /obj/structure/railing{
@@ -15879,7 +15879,7 @@
 /area/bridge)
 "Xh" = (
 /obj/machinery/crystal,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Xk" = (
 /obj/effect/overlay/snow/floor,
@@ -16023,7 +16023,7 @@
 /area/exploration)
 "XH" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "XJ" = (
 /obj/machinery/vending/boozeomat{
@@ -16134,7 +16134,7 @@
 /area/crew_quarters/bar)
 "Yb" = (
 /mob/living/simple_mob/animal/giant_spider/nurse/queen,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Yd" = (
 /obj/structure/flora/ausbushes/ywflowers,

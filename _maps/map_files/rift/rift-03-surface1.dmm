@@ -13620,7 +13620,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/maint_bar)
 "yp" = (
 /obj/machinery/door/airlock/maintenance/common,
@@ -15807,7 +15807,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/maint_bar)
 "CR" = (
 /obj/structure/cable/green{
@@ -19770,7 +19770,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/maint_bar)
 "KI" = (
 /obj/machinery/hologram/holopad,

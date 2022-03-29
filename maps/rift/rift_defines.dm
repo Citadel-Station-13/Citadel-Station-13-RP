@@ -18,7 +18,7 @@
 	full_name = "NSB Atlas"
 	path = "rift"
 
-	use_overmap = FALSE
+	use_overmap = TRUE
 	overmap_z = Z_LEVEL_MISC
 	overmap_size = 60
 	overmap_event_areas = 50

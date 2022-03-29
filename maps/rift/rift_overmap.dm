@@ -1,19 +1,16 @@
-/obj/effect/overmap/visitable/ship/triumph
-	name = "NSV Triumph"	// Name of the location on the overmap.
-	desc = "The Triumph is one of the many ships that is a part of the NDV Marksmans Fleet in this sector"
-
-	scanner_desc = @{"[i]Registration[/i]: NSV Triumph
-[i]Class[/i]: Science Vessel
-[i]Transponder[/i]: Transmitting (CIV), NanoTrasen IFF
-[b]Notice[/b]: NanoTrasen Vessel, authorized personnel only"}
-
-	icon_state = "ship"
-	vessel_mass = 100000
-	burn_delay = 2 SECONDS
-	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
-	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
-	// The waypoints that are avaliable once you are at this Navpoint
-	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW", "triumph_mining_port")
+/obj/effect/overmap/visitable/sector/lythios43c
+	name = "Lythios 43c"	// Name of the location on the overmap.
+	desc = "A cold, desolate iceball world. Home to the NSB Atlas, a far-frontier research base set up by NanoTrasen shortly after establishing in this sector."
+	scanner_desc = @{"[i]Registration[/i]: NSB Atlas
+[i]Class[/i]: ALPHA SITE
+[i]Transponder[/i]: Transmitting (MIL), NanoTrasen IFF
+[b]Notice[/b]: RESTRICTED AREA, authorized personnel only"}
+	base = TRUE
+	icon_state = "globe"
+	color = "#5bbbd3"
+	start_x = 15
+	start_y = 10
+/*	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW", "triumph_mining_port")
 
 	initial_restricted_waypoints = list(
 		"Excursion Shuttle" = list("triumph_excursion_hangar"),
@@ -24,6 +21,46 @@
 		"Mining Shuttle" = list("triumph_mining_port")
 		)
 
+	extra_z_levels = list(
+		Z_LEVEL_SURFACE_MINE,
+		Z_LEVEL_SOLARS,
+		Z_LEVEL_PLAINS,
+		Z_LEVEL_UNDERDARK
+	)
+
+	levels_for_distress = list(
+		Z_LEVEL_OFFMAP1,
+		Z_LEVEL_BEACH,
+		Z_LEVEL_AEROSTAT,
+		Z_LEVEL_DEBRISFIELD,
+		Z_LEVEL_FUELDEPOT,
+		Z_LEVEL_CLASS_D
+		)
+*/
+
+/obj/effect/overmap/visitable/sector/lythios43c/Crossed(var/atom/movable/AM)
+	. = ..()
+	announce_atc(AM,going = FALSE)
+
+/obj/effect/overmap/visitable/sector/lythios43c/Uncrossed(var/atom/movable/AM)
+	. = ..()
+	announce_atc(AM,going = TRUE)
+
+/obj/effect/overmap/visitable/sector/lythios43c/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
+	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] ATC control area."
+	//For landables, we need to see if their shuttle is cloaked
+	if(istype(AM, /obj/effect/overmap/visitable/ship/landable))
+		var/obj/effect/overmap/visitable/ship/landable/SL = AM //Phew
+		var/datum/shuttle/autodock/multi/shuttle = SSshuttle.shuttles[SL.shuttle]
+		if(!istype(shuttle) || !shuttle.cloaked) //Not a multishuttle (the only kind that can cloak) or not cloaked
+			GLOB.lore_atc.msg(message)
+
+	//For ships, it's safe to assume they're big enough to not be sneaky
+	else if(istype(AM, /obj/effect/overmap/visitable/ship))
+		GLOB.lore_atc.msg(message)
+
+
+/* I don't know either.
 //////////////////////////////////////////////////////////////////////////
 // There is literally a dm file for triumph shuttles, why are these here//
 //////////////////////////////////////////////////////////////////////////
@@ -233,4 +270,4 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 		"Dart EMT Shuttle" = list("nebula_pad_5"),
 		"Civilian Transport" = list("nebula_pad_6")
 		)
-*/
+*/*/

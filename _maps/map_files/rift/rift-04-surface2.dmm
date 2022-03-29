@@ -7454,7 +7454,7 @@
 /obj/effect/overlay/snow/floor/edges{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside2)
 "nR" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -9736,7 +9736,7 @@
 /obj/effect/overlay/snow/floor/edges{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/asmaint2)
 "sd" = (
 /obj/structure/closet/secure_closet/security,
@@ -10290,7 +10290,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside2)
 "tm" = (
 /obj/machinery/vending/security,
@@ -10614,7 +10614,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "tQ" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/medbay)
 "tR" = (
 /obj/random/junk,
@@ -12024,7 +12024,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside2)
 "wt" = (
 /obj/structure/cable/green{
@@ -19391,7 +19391,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/asmaint2)
 "Jz" = (
 /obj/machinery/floodlight,
@@ -21127,7 +21127,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/research/rnd)
 "MD" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -22237,7 +22237,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/medbay)
 "OD" = (
 /obj/structure/table/reinforced,
@@ -22723,7 +22723,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/triumph/surfacebase/sauna)
 "Pw" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/asmaint2)
 "Px" = (
 /obj/structure/grille,
@@ -23414,7 +23414,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/research/rnd)
 "QN" = (
 /obj/effect/floor_decal/techfloor{
@@ -24559,7 +24559,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/medbay)
 "SP" = (
 /obj/item/arrow/rod,
@@ -25791,7 +25791,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/asmaint2)
 "Vd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -28357,7 +28357,7 @@
 /obj/effect/overlay/snow/floor/edges{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/research/rnd)
 "ZE" = (
 /obj/structure/table/glass,

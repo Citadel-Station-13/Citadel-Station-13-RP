@@ -27,7 +27,7 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
 		)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+/turf/simulated/floor/outdoors/safeice/indoors
 	outdoors = FALSE
 
 /turf/simulated/mineral/icerock

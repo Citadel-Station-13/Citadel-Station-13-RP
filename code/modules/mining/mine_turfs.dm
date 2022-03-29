@@ -187,7 +187,7 @@ turf/simulated/mineral/floor/light_corner
 		if(mineral)
 			name = "[mineral.display_name] deposit"
 //		else
-//			name = "rock"
+//			name = "rock" why reset the name? 
 
 		icon = 'icons/turf/walls.dmi'
 		icon_state = rock_icon_state
