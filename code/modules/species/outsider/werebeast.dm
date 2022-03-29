@@ -60,7 +60,7 @@
 	//name_language = LANGUAGE_CANILUNZT
 
 
-	available_cultural_info = list(
+	available_lore_info = list(
 		TAG_CULTURE = list(
 			TEMP_CULTURE_WEREBEAST
 		),

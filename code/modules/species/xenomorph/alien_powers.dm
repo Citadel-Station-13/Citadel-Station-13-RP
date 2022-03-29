@@ -6,8 +6,8 @@
 			continue
 		if(!Q.key || !Q.client || Q.stat)
 			continue
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/proc/gain_plasma(var/amount)
 

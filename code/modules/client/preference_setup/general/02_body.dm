@@ -479,7 +479,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			var/max_age = get_max_age()
 			pref.age = max(min(pref.age, max_age), min_age)
 
-			pref.cultural_info = mob_species.default_cultural_info.Copy()
+			pref.lore_info = mob_species.default_lore_info.Copy()
 
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 /*

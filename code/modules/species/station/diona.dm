@@ -95,7 +95,7 @@
 	//assisted_langs = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
 
 
-	available_cultural_info = list(
+	available_lore_info = list(
 		TAG_CULTURE = list(CULTURE_DIONA),
 		TAG_HOMEWORLD = list(HOME_SYSTEM_DIONAEA),
 		TAG_FACTION = list(FACTION_OTHER),

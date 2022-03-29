@@ -186,16 +186,16 @@
 
 	var/rarity_value = 1									// Relative rarity/collector value for this species.
 
-	var/list/available_cultural_info = list(
+	var/list/available_lore_info = list(
 		TAG_CULTURE = list(CULTURE_OTHER),
 		TAG_HOMEWORLD = list(HOME_SYSTEM_STATELESS),
 		TAG_FACTION = list(FACTION_OTHER),
 		TAG_RELIGION = list(RELIGION_OTHER, RELIGION_ATHEISM, RELIGION_AGNOSTICISM)
 	)
 
-	var/list/force_cultural_info = list()
-	var/list/default_cultural_info = list()
-	var/list/additional_available_cultural_info = list()
+	var/list/forced_lore_info = list()
+	var/list/default_lore_info = list()
+	var/list/additional_available_lore_info = list()
 
 	// Determines the organs that the species spawns with and
 	var/list/has_organ = list(								// which required-organ checks are conducted.
@@ -264,26 +264,26 @@
 /datum/species/New()
 	for(var/token in ALL_CULTURAL_TAGS)
 
-		var/force_val = force_cultural_info[token]
+		var/force_val = forced_lore_info[token]
 		if(force_val)
-			default_cultural_info[token] = force_val
-			available_cultural_info[token] = list(force_val)
+			default_lore_info[token] = force_val
+			available_lore_info[token] = list(force_val)
 
-		else if(additional_available_cultural_info[token])
-			if(!available_cultural_info[token])
-				available_cultural_info[token] = list()
-			available_cultural_info[token] |= additional_available_cultural_info[token]
+		else if(additional_available_lore_info[token])
+			if(!available_lore_info[token])
+				available_lore_info[token] = list()
+			available_lore_info[token] |= additional_available_lore_info[token]
 
-		else if(!LAZYLEN(available_cultural_info[token]))
-			var/list/map_systems = GLOB.using_map.available_cultural_info[token]
-			available_cultural_info[token] = map_systems.Copy()
+		else if(!LAZYLEN(available_lore_info[token]))
+			var/list/map_systems = GLOB.using_map.available_lore_info[token]
+			available_lore_info[token] = map_systems.Copy()
 
-		if(LAZYLEN(available_cultural_info[token]) && !default_cultural_info[token])
-			var/list/avail_systems = available_cultural_info[token]
-			default_cultural_info[token] = avail_systems[1]
+		if(LAZYLEN(available_lore_info[token]) && !default_lore_info[token])
+			var/list/avail_systems = available_lore_info[token]
+			default_lore_info[token] = avail_systems[1]
 
-		if(!default_cultural_info[token])
-			default_cultural_info[token] = GLOB.using_map.default_cultural_info[token]
+		if(!default_lore_info[token])
+			default_lore_info[token] = GLOB.using_map.default_lore_info[token]
 
 	if(hud_type)
 		hud = new hud_type()

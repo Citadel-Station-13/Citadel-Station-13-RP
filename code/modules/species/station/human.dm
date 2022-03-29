@@ -50,7 +50,7 @@
 	//assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 
-	available_cultural_info = list(
+	available_lore_info = list(
 		TAG_CULTURE = list(
 			CULTURE_HUMAN,
 			CULTURE_HUMAN_VATGROWN
@@ -186,9 +186,9 @@
 	base_color = "#EECEB3"
 
 
-	additional_available_cultural_info = list(
+	additional_available_lore_info = list(
 		TAG_CULTURE = list(CULTURE_HUMAN_VATGROWN)
 	)
-	default_cultural_info = list(
+	default_lore_info = list(
 		TAG_CULTURE = CULTURE_HUMAN_VATGROWN
 	)

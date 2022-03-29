@@ -137,7 +137,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)	// Prometheans are weird, let's just assume they can use basically any language.
 
 
-	available_cultural_info = list(
+	available_lore_info = list(
 		TAG_CULTURE = list(
 			TEMP_CULTURE_PROMETHEAN
 		),

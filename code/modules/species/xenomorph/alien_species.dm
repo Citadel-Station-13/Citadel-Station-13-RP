@@ -81,7 +81,7 @@
 	//assisted_langs = list()
 
 
-	force_cultural_info = list(
+	forced_lore_info = list(
 		TAG_CULTURE = CULTURE_XENOMORPH_D,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
 		TAG_FACTION = FACTION_XENOMORPH,
@@ -108,7 +108,7 @@
 		H.mind.assigned_role = "Alien"
 		H.mind.special_role = "Alien"
 
-	var/decl/cultural_info/culture/hidden/xenomorph/culture = SSculture.get_culture(force_cultural_info[TAG_CULTURE])
+	var/decl/lore_info/culture/hidden/xenomorph/culture = SSlore.get_culture(forced_lore_info[TAG_CULTURE])
 	if(istype(culture))
 		culture.caste_number++
 		H.real_name = culture.get_random_name(H)
@@ -244,7 +244,7 @@
 		)
 
 
-	force_cultural_info = list(
+	forced_lore_info = list(
 		TAG_CULTURE = CULTURE_XENOMORPH_H,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
 		TAG_FACTION = FACTION_XENOMORPH,
@@ -285,7 +285,7 @@
 		)
 
 
-	force_cultural_info = list(
+	forced_lore_info = list(
 		TAG_CULTURE = CULTURE_XENOMORPH_S,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
 		TAG_FACTION = FACTION_XENOMORPH,
@@ -335,7 +335,7 @@
 		/mob/living/carbon/human/proc/resin
 		)
 
-	force_cultural_info = list(
+	forced_lore_info = list(
 		TAG_CULTURE = CULTURE_XENOMORPH_Q,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
 		TAG_FACTION = FACTION_XENOMORPH,

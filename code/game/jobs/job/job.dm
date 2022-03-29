@@ -82,8 +82,8 @@
 	// Get an average economic power for our cultures.
 	var/culture_mod = 0
 	var/culture_count = 0
-	for(var/token in H.cultural_info)
-		var/decl/cultural_info/culture = H.get_cultural_value(token)
+	for(var/token in H.lore_info)
+		var/decl/lore_info/culture = H.get_cultural_value(token)
 		if(culture && !isnull(culture.economic_power))
 			culture_count++
 			culture_mod += culture.economic_power

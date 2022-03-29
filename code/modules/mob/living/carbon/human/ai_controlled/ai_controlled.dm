@@ -139,6 +139,6 @@
 
 /mob/living/carbon/human/ai_controlled/replicant/Initialize(mapload)
 	. = ..()
-	var/decl/cultural_info/C = SSculture.get_culture(species.default_cultural_info[TAG_CULTURE])
+	var/decl/lore_info/C = SSlore.get_culture(species.default_lore_info[TAG_CULTURE])
 	name = C.get_random_name()
 	add_modifier(/datum/modifier/homeothermic, 0, null)

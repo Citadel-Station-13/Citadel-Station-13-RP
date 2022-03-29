@@ -95,7 +95,7 @@
 	max_languages = 4
 
 	// Literally copy-pated the normal xenomorph cultures with a culture override for langs.
-	force_cultural_info = list(
+	forced_lore_info = list(
 		TAG_CULTURE = TEMP_CULTURE_XENOHYBRID,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
 		TAG_FACTION = FACTION_XENOMORPH,

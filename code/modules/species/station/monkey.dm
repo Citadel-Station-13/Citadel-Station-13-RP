@@ -57,7 +57,7 @@
 	//default_language = "Chimpanzee"
 
 
-	force_cultural_info = list(
+	forced_lore_info = list(
 		TAG_CULTURE = CULTURE_MONKEY,
 		TAG_HOMEWORLD = HOME_SYSTEM_STATELESS,
 		TAG_FACTION = FACTION_TEST_SUBJECTS
@@ -90,7 +90,7 @@
 	//default_language = "Farwa"
 
 
-	force_cultural_info = list(
+	forced_lore_info = list(
 		TAG_CULTURE = CULTURE_FARWA,
 		TAG_HOMEWORLD = HOME_SYSTEM_STATELESS,
 		TAG_FACTION = FACTION_TEST_SUBJECTS
@@ -111,7 +111,7 @@
 
 	//default_language = "Neaera"
 
-	force_cultural_info = list(
+	forced_lore_info = list(
 		TAG_CULTURE = CULTURE_NEARA,
 		TAG_HOMEWORLD = HOME_SYSTEM_STATELESS,
 		TAG_FACTION = FACTION_TEST_SUBJECTS
@@ -133,7 +133,7 @@
 
 	//default_language = "Stok"
 
-	force_cultural_info = list(
+	forced_lore_info = list(
 		TAG_CULTURE = CULTURE_STOK,
 		TAG_HOMEWORLD = HOME_SYSTEM_STATELESS,
 		TAG_FACTION = FACTION_TEST_SUBJECTS

@@ -73,7 +73,7 @@
 	//secondary_langs = list(LANGUAGE_VESPINAE)
 
 
-	available_cultural_info = list(
+	available_lore_info = list(
 		TAG_CULTURE = list(
 			CULTURE_APIDAEN
 		),
