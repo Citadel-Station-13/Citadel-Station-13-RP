@@ -4351,6 +4351,8 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "pj" = (
@@ -4436,8 +4438,7 @@
 "pw" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
 	input_tag = "atmos_out";
-	name = "Waste Ejector Valve";
-	output_tag = null
+	name = "Waste Ejector Valve"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
@@ -6831,8 +6832,7 @@
 /area/space)
 "xs" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	id_tag = null
+	dir = 8
 	},
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
@@ -7150,9 +7150,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/structure/table/reinforced,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
+/obj/machinery/mineral/equipment_vendor/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "yz" = (
@@ -11915,6 +11913,9 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/power/crypto_miner{
+	anchored = 0
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "OR" = (
@@ -13456,8 +13457,7 @@
 /area/maintenance/engi_engine)
 "TY" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	id_tag = null
+	dir = 8
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,

@@ -11,6 +11,7 @@
 	var/icon_deny = "mining-deny"
 	var/obj/item/card/id/inserted_id
 	//VOREStation Edit Start - Heavily modified list
+	var/child = FALSE//To tell topic() to bypass this iteration of it
 	var/list/prize_list = list(
 		new /datum/data/mining_equipment("1 Marker Beacon",				/obj/item/stack/marker_beacon,										10),
 		new /datum/data/mining_equipment("10 Marker Beacons",			/obj/item/stack/marker_beacon/ten,									100),
@@ -151,7 +152,8 @@
 /obj/machinery/mineral/equipment_vendor/Topic(href, href_list)
 	if(..())
 		return 1
-
+	if(child)
+		return 0
 	if(href_list["choice"])
 		if(istype(inserted_id))
 			if(href_list["choice"] == "eject")

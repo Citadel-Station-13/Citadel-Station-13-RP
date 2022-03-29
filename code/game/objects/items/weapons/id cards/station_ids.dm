@@ -32,6 +32,7 @@
 
 	var/mining_points = 0	// For redeeming at mining equipment vendors
 	var/survey_points = 0	// For redeeming at explorer equipment vendors.
+	var/engineer_points = 0	// For redeeming at engineering equipment vendors
 
 /obj/item/card/id/examine(mob/user)
 	. = ..()
