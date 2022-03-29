@@ -1,9 +1,9 @@
 /decl/lore_info/culture/xenomorph_hybrid
-	name = CULTURE_XENOHYBRID_HUMAN
-	language = LANGUAGE_XENOMORPH
-	default_language = LANGUAGE_XENOMORPH
+    name = CULTURE_XENOHYBRID_HUMAN
+    language = LANGUAGE_XENOMORPH
+    default_language = LANGUAGE_XENOMORPH
     economic_power = 1
-	description = "You grew up in a family that lived in a human colony/settelment/city. Most of your neighbours, \
+    description = "You grew up in a family that lived in a human colony/settelment/city. Most of your neighbours, \
         childhood friends and classmates probably were humans, or one of the thousands of human subspecies. \
         Some people might have acted suspicious around you, but the general behaviour towards you and your kind was not worse\
         than how the same people treated other humans."
