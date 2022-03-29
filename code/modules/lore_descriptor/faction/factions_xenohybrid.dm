@@ -1,5 +1,5 @@
 
-/decl/cultural_info/faction/xenomorph_hybrid
+/decl/lore_info/faction/xenomorph_hybrid
     name = FACTION_XENOHYBRID_NORMAL
     language = LANGUAGE_XENOMORPH
     secondary_langs = list(LANGUAGE_GALCOM, LANGUAGE_SOL_COMMON)
@@ -9,7 +9,7 @@
     You are the result of one of these nights. At least one of your parents is related to a Xenomorph, probably over a bunch of corners.\
     Many Xenohybrids live among the humans in the orion confederacy. You are one of them."
 
-/decl/cultural_info/faction/xenomorph_hybrid/neomorph
+/decl/lore_info/faction/xenomorph_hybrid/neomorph
     name = FACTION_XENOHYBRID_NEOMORPH
     language = LANGUAGE_XENOMORPH
     secondary_langs = list(LANGUAGE_GALCOM)
@@ -19,7 +19,7 @@
         And even though relatively new to the galactic scene, the family heads knew how to leverage that fairly decently,\
         ensuring wealth for the generations to come. You were born to the neomorph family, or one of its many offshoots somewhere in the galaxy."
 
-/decl/cultural_info/faction/xenomorph_hybrid/convertee
+/decl/lore_info/faction/xenomorph_hybrid/convertee
     name = FACTION_XENOHYBRID_CONVERTEE
     language = LANGUAGE_XENOMORPH
     secondary_langs = list(LANGUAGE_GALCOM, LANGUAGE_SOL_COMMON)
