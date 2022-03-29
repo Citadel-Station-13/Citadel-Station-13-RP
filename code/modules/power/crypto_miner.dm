@@ -13,8 +13,8 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 /obj/machinery/power/crypto_miner
     name = "Encryption Reinforcing Heater"
     desc = "This device uses massive amounts of electric energy to create entropy levels. These Entropy levels are used to reinforce encryptions of NT communications.<br> Use a multitool to configure the powerlevel, powerlevel of zero or below mean the device is off."
-    icon = 'icons/misc/Consoles_and_Servers.dmi' //salvageable.dmi
-    icon_state = "vbox_0"
+    icon = 'icons/obj/salvageable.dmi' //salvageable.dmi
+    icon_state = "data0"
     anchored = TRUE
     density = 1.0
     var/power_level = 0//used to determin wether the device is on or not
