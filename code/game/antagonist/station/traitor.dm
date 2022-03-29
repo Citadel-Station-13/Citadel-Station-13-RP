@@ -95,7 +95,7 @@ var/datum/antagonist/traitor/traitors
 	var/list/dudes = list()
 	for(var/mob/living/carbon/human/man in player_list)
 		if(man.client)
-			var/decl/cultural_info/culture = man.get_cultural_value(TAG_FACTION)
+			var/decl/lore_info/culture = man.get_cultural_value(TAG_FACTION)
 			if(culture && prob(culture.subversive_potential))
 				dudes += man
 		dudes -= traitor_mob

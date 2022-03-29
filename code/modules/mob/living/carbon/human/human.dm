@@ -34,7 +34,7 @@
 		else
 			set_species()
 
-	var/decl/cultural_info/culture = SSlore.get_culture(cultural_info[TAG_CULTURE])
+	var/decl/lore_info/culture = SSlore.get_culture(lore_info[TAG_CULTURE])
 	if(culture)
 		real_name = culture.get_random_name(gender, species.name)
 		name = real_name
@@ -1214,12 +1214,12 @@
 
 	var/update_lang
 	for(var/token in ALL_CULTURAL_TAGS)
-		if(species.force_cultural_info && species.force_cultural_info[token])
+		if(species.forced_lore_info && species.forced_lore_info[token])
 			update_lang = TRUE
-			set_cultural_value(token, species.force_cultural_info[token], defer_language_update = TRUE)
-		else if(!cultural_info[token] || !(cultural_info[token] in species.available_cultural_info[token]))
+			set_cultural_value(token, species.forced_lore_info[token], defer_language_update = TRUE)
+		else if(!lore_info[token] || !(lore_info[token] in species.available_lore_info[token]))
 			update_lang = TRUE
-			set_cultural_value(token, species.default_cultural_info[token], defer_language_update = TRUE)
+			set_cultural_value(token, species.default_lore_info[token], defer_language_update = TRUE)
 
 	if(update_lang)
 		languages.Cut()
@@ -1242,8 +1242,8 @@
 	var/list/free_languages = list()
 	var/list/default_languages = list()
 
-	for(var/thing in cultural_info)
-		var/decl/cultural_info/check = cultural_info[thing]
+	for(var/thing in lore_info)
+		var/decl/lore_info/check = lore_info[thing]
 		if(istype(check))
 			if(check.default_language)
 				free_languages    |= GLOB.all_languages[check.default_language]
@@ -1685,13 +1685,13 @@
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
 
-/mob/living/carbon/human/proc/set_cultural_value(var/token, var/decl/cultural_info/_culture, var/defer_language_update)
+/mob/living/carbon/human/proc/set_cultural_value(var/token, var/decl/lore_info/_culture, var/defer_language_update)
 	if(!istype(_culture))
 		_culture = SSlore.get_culture(_culture)
 	if(istype(_culture))
-		cultural_info[token] = _culture
+		lore_info[token] = _culture
 		if(!defer_language_update)
 			update_languages()
 
 /mob/living/carbon/human/proc/get_cultural_value(var/token)
-	return cultural_info[token]
+	return lore_info[token]

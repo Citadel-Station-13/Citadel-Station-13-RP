@@ -2,17 +2,17 @@
 	var/datum/species/S = GLOB.all_species[pref.species]; \
 	if(!S) { \
 		write_to = list(); \
-	} else if(S.force_cultural_info[check_key]) { \
-		write_to = list(S.force_cultural_info[check_key] = TRUE); \
+	} else if(S.forced_lore_info[check_key]) { \
+		write_to = list(S.forced_lore_info[check_key] = TRUE); \
 	} else { \
 		write_to = list(); \
-		for(var/cul in S.available_cultural_info[check_key]) { \
+		for(var/cul in S.available_lore_info[check_key]) { \
 			write_to[cul] = TRUE; \
 		} \
 	}
 
 /datum/preferences
-	var/list/cultural_info = list()
+	var/list/lore_info = list()
 
 /datum/category_item/player_setup_item/background/culture
 	name = "Culture"
@@ -27,33 +27,33 @@
 	..()
 
 /datum/category_item/player_setup_item/background/culture/sanitize_character()
-	if(!islist(pref.cultural_info))
-		pref.cultural_info = list()
+	if(!islist(pref.lore_info))
+		pref.lore_info = list()
 	for(var/token in tokens)
 		var/list/_cultures
 		GET_ALLOWED_VALUES(_cultures, token)
 		if(!LAZYLEN(_cultures))
-			pref.cultural_info[token] = GLOB.using_map.default_cultural_info[token]
+			pref.lore_info[token] = GLOB.using_map.default_lore_info[token]
 		else
-			var/current_value = pref.cultural_info[token]
+			var/current_value = pref.lore_info[token]
 			if(!current_value|| !_cultures[current_value])
-				pref.cultural_info[token] = _cultures[1]
+				pref.lore_info[token] = _cultures[1]
 
 /datum/category_item/player_setup_item/background/culture/load_character(var/savefile/S)
 	for(var/token in tokens)
 		var/load_val
 		from_file(S[token], load_val)
-		pref.cultural_info[token] = load_val
+		pref.lore_info[token] = load_val
 
 /datum/category_item/player_setup_item/background/culture/save_character(var/savefile/S)
 	for(var/token in tokens)
-		to_file(S[token], pref.cultural_info[token])
+		to_file(S[token], pref.lore_info[token])
 
 /datum/category_item/player_setup_item/background/culture/content()
 	. = list()
 	for(var/token in tokens)
-		var/decl/cultural_info/culture = SSlore.get_culture(pref.cultural_info[token])
-		var/title = "<b>[tokens[token]]<a href='?src=\ref[src];set_[token]=1'><small>?</small></a>:</b><a href='?src=\ref[src];set_[token]=2'>[pref.cultural_info[token]]</a>"
+		var/decl/lore_info/culture = SSlore.get_culture(pref.lore_info[token])
+		var/title = "<b>[tokens[token]]<a href='?src=\ref[src];set_[token]=1'><small>?</small></a>:</b><a href='?src=\ref[src];set_[token]=2'>[pref.lore_info[token]]</a>"
 		var/append_text = "<a href='?src=\ref[src];toggle_verbose_[token]=1'>[hidden[token] ? "Expand" : "Collapse"]</a>"
 		. += culture.get_description(title, append_text, verbose = !hidden[token])
 	. = jointext(.,null)
@@ -86,11 +86,11 @@
 				GET_ALLOWED_VALUES(valid_values, token)
 
 			if(valid_values[choice])
-				var/decl/cultural_info/culture = SSlore.get_culture(choice)
+				var/decl/lore_info/culture = SSlore.get_culture(choice)
 				if(check_href == 1)
 					user << browse(culture.get_description(), "window=[token];size=700x400")
 				else
-					pref.cultural_info[token] = choice
+					pref.lore_info[token] = choice
 				return TOPIC_REFRESH
 	. = ..()
 

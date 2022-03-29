@@ -3,8 +3,8 @@ SUBSYSTEM_DEF(lore)
 	init_order = INIT_ORDER_LORE
 	flags = SS_NO_FIRE
 
-	var/list/cultural_info_by_name = list()
-	var/list/cultural_info_by_path = list()
+	var/list/lore_info_by_name = list()
+	var/list/lore_info_by_path = list()
 	var/list/tagged_info = list()
 
 /datum/controller/subsystem/lore/proc/get_all_entries_tagged_with(var/token)
@@ -12,15 +12,15 @@ SUBSYSTEM_DEF(lore)
 
 /datum/controller/subsystem/lore/Initialize(timeofday)
 	. = ..()
-	for(var/ftype in typesof(/decl/cultural_info)-/decl/cultural_info)
-		var/decl/cultural_info/culture = ftype
+	for(var/ftype in typesof(/decl/lore_info)-/decl/lore_info)
+		var/decl/lore_info/culture = ftype
 		if(!initial(culture.name))
 			continue
 		culture = new culture
-		if(cultural_info_by_name[culture.name])
+		if(lore_info_by_name[culture.name])
 			crash_with("Duplicate cultural datum ID - [culture.name] - [ftype]")
-		cultural_info_by_name[culture.name] = culture
-		cultural_info_by_path[ftype] = culture
+		lore_info_by_name[culture.name] = culture
+		lore_info_by_path[ftype] = culture
 		if(culture.category && !culture.hidden)
 			if(!tagged_info[culture.category])
 				tagged_info[culture.category] = list()
@@ -28,4 +28,4 @@ SUBSYSTEM_DEF(lore)
 			tag_list[culture.name] = culture
 
 /datum/controller/subsystem/lore/proc/get_culture(var/culture_ident)
-	return cultural_info_by_name[culture_ident] ? cultural_info_by_name[culture_ident] : cultural_info_by_path[culture_ident]
+	return lore_info_by_name[culture_ident] ? lore_info_by_name[culture_ident] : lore_info_by_path[culture_ident]

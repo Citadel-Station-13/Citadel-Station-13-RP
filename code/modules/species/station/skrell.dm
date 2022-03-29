@@ -77,7 +77,7 @@
 	//assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 
-	available_cultural_info = list(
+	available_lore_info = list(
 		TAG_CULTURE = list(
 			CULTURE_SKRELL_QERR,
 			CULTURE_SKRELL_MALISH,

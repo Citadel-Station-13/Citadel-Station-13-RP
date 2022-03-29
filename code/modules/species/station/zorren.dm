@@ -47,7 +47,7 @@
 	//name_language = LANGUAGE_TERMINUS
 
 
-	available_cultural_info = list(
+	available_lore_info = list(
 		TAG_CULTURE = list(
 			TEMP_CULTURE_ZORREN
 		),
@@ -107,7 +107,7 @@
 	//name_language = LANGUAGE_TERMINUS
 
 
-	available_cultural_info = list(
+	available_lore_info = list(
 		TAG_CULTURE = list(
 			TEMP_CULTURE_ZORREN
 		),

@@ -395,7 +395,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.set_species(species)
 	// Special Case: This references variables owned by two different datums, so do it here.
 	if(be_random_name)
-		var/decl/cultural_info/culture = cultural_info[TAG_CULTURE]
+		var/decl/lore_info/culture = lore_info[TAG_CULTURE]
 		if(culture) real_name = culture.get_random_name(identifying_gender)
 
 	// Ask the preferences datums to apply their own settings to the new mob
@@ -412,8 +412,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.update_underwear()
 		character.update_hair()
 
-	for(var/token in cultural_info)
-		character.set_cultural_value(token, cultural_info[token], defer_language_update = TRUE)
+	for(var/token in lore_info)
+		character.set_cultural_value(token, lore_info[token], defer_language_update = TRUE)
 	character.update_languages()
 	for(var/lang in alternate_languages)
 		character.add_language(lang)

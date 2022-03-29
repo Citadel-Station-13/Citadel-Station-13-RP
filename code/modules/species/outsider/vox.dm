@@ -99,7 +99,7 @@
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
 
 
-	available_cultural_info = list(
+	available_lore_info = list(
 		TAG_CULTURE = list(
 			CULTURE_VOX_ARKSHIP,
 			CULTURE_VOX_SALVAGER,

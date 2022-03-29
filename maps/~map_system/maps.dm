@@ -140,7 +140,7 @@ var/list/all_maps = list()
 	var/salary_modifier	= 1			 // Multiplier to starting character money
 	var/station_departments = list() // Gets filled automatically depending on jobs allowed
 
-	var/list/available_cultural_info = list(
+	var/list/available_lore_info = list(
 		TAG_HOMEWORLD = list(
 			HOME_SYSTEM_EARTH,
 			HOME_SYSTEM_LUNA,
@@ -178,7 +178,7 @@ var/list/all_maps = list()
 			RELIGION_SPIRITUALISM
 		))
 
-	var/list/default_cultural_info = list(
+	var/list/default_lore_info = list(
 		TAG_HOMEWORLD = HOME_SYSTEM_MARS,
 		TAG_FACTION = FACTION_SOL_CENTRAL,
 		TAG_CULTURE = CULTURE_HUMAN,

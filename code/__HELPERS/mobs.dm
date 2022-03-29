@@ -84,7 +84,7 @@ proc/random_name(gender, species = SPECIES_HUMAN)
 	if(species)
 		var/datum/species/current_species = GLOB.all_species[species]
 		if(current_species)
-			var/decl/cultural_info/current_culture = SSlore.get_culture(current_species.default_cultural_info[TAG_CULTURE])
+			var/decl/lore_info/current_culture = SSlore.get_culture(current_species.default_lore_info[TAG_CULTURE])
 			if(current_culture)
 				return current_culture.get_random_name(gender)
 	return capitalize(pick(gender == FEMALE ? first_names_female : first_names_male)) + " " + capitalize(pick(last_names))

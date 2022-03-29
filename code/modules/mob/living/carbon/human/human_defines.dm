@@ -96,7 +96,7 @@
 	var/pdachoice = 1	//Which PDA type the player has chosen.
 
 	// General Information
-	var/list/cultural_info = list()
+	var/list/lore_info = list()
 
 	// Legacy Virgo Information
 	var/antag_faction = ""
