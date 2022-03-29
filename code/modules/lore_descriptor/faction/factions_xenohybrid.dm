@@ -2,7 +2,7 @@
 /decl/lore_info/faction/xenomorph_hybrid
     name = FACTION_XENOHYBRID_NORMAL
     language = LANGUAGE_XENOMORPH
-    secondary_langs = list(LANGUAGE_GALCOM, LANGUAGE_SOL_COMMON)
+    secondary_langs = list(LANGUAGE_GALCOM)
     optional_languages = LANGUAGE_SOL_COMMON
     economic_power = 1
     description = "Ever since the Siege of Bergakunge ended have Humans and Xenohybrids or Neomorphs shared habitats, dorm rooms, or even Beds. \
@@ -22,7 +22,7 @@
 /decl/lore_info/faction/xenomorph_hybrid/convertee
     name = FACTION_XENOHYBRID_CONVERTEE
     language = LANGUAGE_XENOMORPH
-    secondary_langs = list(LANGUAGE_GALCOM, LANGUAGE_SOL_COMMON)
+    secondary_langs = list(LANGUAGE_GALCOM)
     optional_languages = list(LANGUAGE_SOL_COMMON)
     economic_power = 0.5
     description = "Xenomorphs are one of the most vicious predators in the galaxy, not just killing but directly using their prey as breeding grounds, \
