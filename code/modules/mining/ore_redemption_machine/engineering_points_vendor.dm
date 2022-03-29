@@ -41,7 +41,7 @@
         new /datum/data/mining_equipment("Power Tool - Upgraded T-Ray Scanner",         /obj/item/t_scanner/upgraded,                       80),
         new /datum/data/mining_equipment("Power Tool - Advanced T-Ray Scanner",         /obj/item/t_scanner/advanced,                       80),
         new /datum/data/mining_equipment("Power Tool - Long Range Atmosphere scanner",  /obj/item/analyzer/longrange,                       80),
-		new /datum/data/mining_equipment("Power Tool - Holofan Projector", 				/obj/item/holosign_creator/combifan,				80),
+		//new /datum/data/mining_equipment("Power Tool - Holofan Projector", 				/obj/item/holosign_creator/combifan,				80),
         new /datum/data/mining_equipment("Superior Welding Goggles",                    /obj/item/clothing/glasses/welding/superior,        50),
         //Level 1 Stock parts, not really a good deal but doesnt need resources.
         new /datum/data/mining_equipment("Stock Parts - Capacitor",                 /obj/item/stock_parts/capacitor,        5),
