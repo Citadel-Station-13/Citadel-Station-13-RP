@@ -3,7 +3,6 @@
 #define TEMP_CULTURE_DREMACHIR "Temp Dremachir Culture"
 #define TEMP_CULTURE_AURIL "Temp Auril Culture"
 #define TEMP_CULTURE_REPLICANT "Temp Replicant Culture"
-#define TEMP_CULTURE_XENOHYBRID "Temp Xeno-Hybrid Culture"
 #define TEMP_CULTURE_ALARUNE "Temp Alarune Culture"
 #define TEMP_CULTURE_PHORONOID "Temp Phoronoid Culture"
 #define TEMP_CULTURE_PROMETHEAN "Temp Promethean Culture"
@@ -42,10 +41,6 @@
 /decl/lore_info/culture/temp/replicant
 	name = TEMP_CULTURE_REPLICANT
 	language = LANGUAGE_TERMINUS
-
-/decl/lore_info/culture/hidden/xenomorph/temp
-	name = TEMP_CULTURE_XENOHYBRID
-	optional_languages = list(LANGUAGE_GALCOM, LANGUAGE_XENOMORPH_HIVE)
 
 /decl/lore_info/culture/temp/alraune
 	name = TEMP_CULTURE_ALARUNE
