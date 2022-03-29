@@ -226,7 +226,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 
 	gas_flags = GAS_FLAG_FUSION_FUEL
 
-datum/gas/carbon_monoxide
+/datum/gas/carbon_monoxide
 	id = "carbon monoxide"
 	name = "Carbon Monoxide"
 	//lore_text = "A highly poisonous gas."
@@ -238,7 +238,7 @@ datum/gas/carbon_monoxide
 	//taste_description = "stale air"
 	//metabolism = 0.05 // As with helium.
 
-datum/gas/methyl_bromide
+/datum/gas/methyl_bromide
 	id = "methyl bromide"
 	name = "Methyl Bromide"
 	//lore_text = "A once-popular fumigant and weedkiller."
@@ -252,7 +252,7 @@ datum/gas/methyl_bromide
 	)
 	value = 0.25*/
 
-datum/gas/nitrodioxide
+/datum/gas/nitrodioxide
 	id = "nitrogen dioxide"
 	name = "Nitrogen Dioxide"
 	//color = "#ca6409"
@@ -262,7 +262,7 @@ datum/gas/nitrodioxide
 	//gas_symbol_html = "NO<sub>2</sub>"
 	//gas_symbol = "NO2"
 
-datum/gas/nitricoxide
+/datum/gas/nitricoxide
 	id = "nitric oxide"
 	name = "Nitric Oxide"
 	specific_heat = 10
@@ -271,7 +271,7 @@ datum/gas/nitricoxide
 	//gas_symbol_html = "NO"
 	//gas_symbol = "NO"
 
-datum/gas/methane
+/datum/gas/methane
 	id = "methane"
 	name = "Methane"
 	specific_heat = 30
@@ -280,7 +280,7 @@ datum/gas/methane
 	//gas_symbol_html = "CH<sub>4</sub>"
 	//gas_symbol = "CH4"
 
-datum/gas/argon
+/datum/gas/argon
 	id = "argon"
 	name = "Argon"
 	//lore_text = "Just when you need it, all of your supplies argon."
@@ -291,7 +291,7 @@ datum/gas/argon
 	//value = 0.25
 
 // If narcosis is ever simulated, krypton has a narcotic potency seven times greater than regular airmix.
-datum/gas/krypton
+/datum/gas/krypton
 	id = "krypton"
 	name = "Krypton"
 	specific_heat = 5
@@ -300,7 +300,7 @@ datum/gas/krypton
 	//gas_symbol = "Kr"
 	//value = 0.25
 
-datum/gas/neon
+/datum/gas/neon
 	id = "neon"
 	name = "Neon"
 	specific_heat = 20
@@ -309,7 +309,7 @@ datum/gas/neon
 	//gas_symbol = "Ne"
 	//value = 0.25
 
-datum/gas/ammonia
+/datum/gas/ammonia
 	id = "Ammonia"
 	name = "ammonia"
 	specific_heat = 20
@@ -324,7 +324,7 @@ datum/gas/ammonia
 	//metabolism = REM * 0.5
 	//overdose = 5
 
-datum/gas/xenon
+/datum/gas/xenon
 	id = "Xenon"
 	name = "xenon"
 	specific_heat = 3
@@ -333,7 +333,7 @@ datum/gas/xenon
 	//gas_symbol = "Xe"
 	//value = 0.25
 
-datum/gas/chlorine
+/datum/gas/chlorine
 	id = "chlorine"
 	name = "Chlorine"
 	//color = "#c5f72d"
@@ -349,7 +349,7 @@ datum/gas/chlorine
 	heating_products = null
 	toxicity = 15*/
 
-datum/gas/sulfur_dioxide
+/datum/gas/sulfur_dioxide
 	id = "sulfur dioxide"
 	name = "Sulfur Dioxide"
 	specific_heat = 30
@@ -361,7 +361,7 @@ datum/gas/sulfur_dioxide
 		/decl/material/gas/oxygen = 0.5
 	)*/
 
-datum/gas/hydrogen
+/datum/gas/hydrogen
 	id = "hydrogen"
 	name = "Hydrogen"
 	//lore_text = "A colorless, flammable gas."
@@ -379,7 +379,7 @@ datum/gas/hydrogen
 	)
 	value = 0.4*/
 
-datum/gas/hydrogen/tritium
+/datum/gas/hydrogen/tritium
 	id = "tritium"
 	name = "Tritium"
 	/*lore_text = "A radioactive isotope of hydrogen. Useful as a fusion reactor fuel material."
@@ -390,7 +390,7 @@ datum/gas/hydrogen/tritium
 	gas_symbol_html = "T"
 	gas_symbol = "T"*/
 
-datum/gas/hydrogen/deuterium
+/datum/gas/hydrogen/deuterium
 	id = "Deuterium"
 	name = "Deuterium"
 	/*lore_text = "One of the two stable isotopes of hydrogen; also known as heavy hydrogen. Useful as a chemically synthesised fusion reactor fuel material."
@@ -412,7 +412,7 @@ datum/gas/hydrogen/deuterium
 	neutron_cross_section = 3*/
 
 //Special gas type that are very powerful and shouldnt be avaiable in large portions
-datum/gas/vimur
+/datum/gas/vimur
 	id = "vimur"
 	name = "Vimur"
 	specific_heat = 500	// J/(mol*K) //250% the heat capacity of phoron
