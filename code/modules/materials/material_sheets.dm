@@ -520,8 +520,8 @@
 	name = "wax"
 	singular_name = "wax piece"
 	desc = "Soft substance produced by bees. Used to make candles."
-	icon = 'icons/obj/beekeeping.dmi'
-	icon_state = "wax"
+	icon_state = "sheet-rtransparent"
+	apply_colour = 1
 	default_type = "wax"
+	no_variants = FALSE
 	pass_color = TRUE
-	strict_color_stacking = TRUE
