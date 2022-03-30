@@ -38,23 +38,23 @@
 	icon_state = "alarm0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
 	power_channel = ENVIRON
 	req_one_access = list(access_atmospherics, access_engine_equip)
 	var/alarm_id = null
-	var/breach_detection = 1 // Whether to use automatic breach detection or not
+	var/breach_detection = TRUE // Whether to use automatic breach detection or not
 	var/frequency = 1439
 	//var/skipprocess = 0 //Experimenting
 	var/alarm_frequency = 1437
-	var/remote_control = 0
+	var/remote_control = FALSE
 	var/rcon_setting = 2
 	var/rcon_time = 0
-	var/locked = 1
-	panel_open = 0 // If it's been screwdrivered open.
-	var/aidisabled = 0
+	var/locked = TRUE
+	panel_open = FALSE // If it's been screwdrivered open.
+	var/aidisabled = FALSE
 	var/shorted = 0
 	circuit = /obj/item/circuitboard/airalarm
 
@@ -98,9 +98,9 @@
 /obj/machinery/alarm/server/Initialize(mapload)
 	. = ..()
 	req_access = list(access_rd, access_atmospherics, access_engine_equip)
-	TLV["oxygen"] =			list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
-	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
-	TLV["phoron"] =			list(-1.0, -1.0, 0, 0.5) // Partial pressure, kpa
+	TLV[GAS_OXYGEN] =		list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
+	TLV[GAS_CO2] =			list(-1.0, -1.0, 5, 10) // Partial pressure, kpa
+	TLV[GAS_PHORON] =		list(-1.0, -1.0, 0, 0.5) // Partial pressure, kpa
 	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
 	TLV["pressure"] =		list(0,ONE_ATMOSPHERE*0.10,ONE_ATMOSPHERE*1.40,ONE_ATMOSPHERE*1.60) /* kpa */
 	TLV["temperature"] =	list(20, 40, 140, 160) // K
@@ -129,9 +129,9 @@
 		wires = new(src)
 
 	// breathable air according to human/Life()
-	TLV["oxygen"] =			list(16, 19, 135, 140) // Partial pressure, kpa
-	TLV["carbon dioxide"] = list(-1.0, -1.0, 5, 10) // Partial pressure, kpa
-	TLV["phoron"] =			list(-1.0, -1.0, 0, 0.5) // Partial pressure, kpa
+	TLV[GAS_OXYGEN] =		list(16, 19, 135, 140) // Partial pressure, kpa
+	TLV[GAS_CO2] =			list(-1.0, -1.0, 5, 10) // Partial pressure, kpa
+	TLV[GAS_PHORON] =		list(-1.0, -1.0, 0, 0.5) // Partial pressure, kpa
 	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
 	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
 	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
@@ -244,9 +244,9 @@
 		other_moles += environment.gas[g] //this is only going to be used in a partial pressure calc, so we don't need to worry about group_multiplier here.
 
 	pressure_dangerlevel = get_danger_level(environment_pressure, TLV["pressure"])
-	oxygen_dangerlevel = get_danger_level(environment.gas[/datum/gas/oxygen]*partial_pressure, TLV["oxygen"])
-	co2_dangerlevel = get_danger_level(environment.gas[/datum/gas/carbon_dioxide]*partial_pressure, TLV["carbon dioxide"])
-	phoron_dangerlevel = get_danger_level(environment.gas[/datum/gas/phoron]*partial_pressure, TLV["phoron"])
+	oxygen_dangerlevel = get_danger_level(environment.gas[/datum/gas/oxygen]*partial_pressure, TLV[GAS_OXYGEN])
+	co2_dangerlevel = get_danger_level(environment.gas[/datum/gas/carbon_dioxide]*partial_pressure, TLV[GAS_CO2])
+	phoron_dangerlevel = get_danger_level(environment.gas[/datum/gas/phoron]*partial_pressure, TLV[GAS_PHORON])
 	temperature_dangerlevel = get_danger_level(environment.temperature, TLV["temperature"])
 	other_dangerlevel = get_danger_level(other_moles*partial_pressure, TLV["other"])
 
@@ -581,10 +581,11 @@
 			var/thresholds[0]
 
 			var/list/gas_names = list(
-				"oxygen"         = "O<sub>2</sub>",
-				"carbon dioxide" = "CO<sub>2</sub>",
-				"phoron"         = "Toxin",
-				"other"          = "Other")
+				GAS_OXYGEN = "O<sub>2</sub>",
+				GAS_CO2    = "CO<sub>2</sub>",
+				GAS_PHORON = "Toxin",
+				"other"    = "Other")
+
 			for(var/g in gas_names)
 				thresholds[++thresholds.len] = list("name" = gas_names[g], "settings" = list())
 				selected = TLV[g]
