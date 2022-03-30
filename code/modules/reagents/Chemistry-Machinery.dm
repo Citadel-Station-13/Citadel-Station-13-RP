@@ -283,7 +283,7 @@
 	It may also identify the liquid contents of unknown objects."
 	description_info = "This machine will try to tell you what reagents are inside of something capable of holding reagents. \
 	It is also used to 'identify' specific reagent-based objects with their properties obscured from inspection by normal means."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/machines/chemical.dmi'
 	icon_state = "chem_analyzer"
 	density = TRUE
 	anchored = TRUE

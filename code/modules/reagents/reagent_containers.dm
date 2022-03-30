@@ -35,15 +35,15 @@
 
 /obj/item/reagent_containers/proc/standard_dispenser_refill(var/mob/user, var/obj/structure/reagent_dispensers/target) // This goes into afterattack
 	if(!istype(target))
-		return 0
+		return FALSE
 
 	if(!target.reagents || !target.reagents.total_volume)
 		to_chat(user, "<span class='notice'>[target] is empty.</span>")
-		return 1
+		return TRUE
 
 	if(reagents && !reagents.get_free_space())
 		to_chat(user, "<span class='notice'>[src] is full.</span>")
-		return 1
+		return TRUE
 
 	var/trans = target.reagents.trans_to_obj(src, target:amount_per_transfer_from_this)
 	to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")

@@ -208,7 +208,7 @@
 			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
 			label_text = tmp_label
 			update_name_label()
-			labeled = 1 // Citadel Change - Overlay for labels
+			labeled = TRUE // Citadel Change - Overlay for labels
 			update_icon() // Citadel Change - Overlay for labels
 	else
 		..()
@@ -262,86 +262,86 @@
 	. = ..()
 	if(base_icon == "pill_canister")
 		verbs += /obj/item/storage/pill_bottle/proc/choose_color
-	update_icon() // END Citadel Changes - Bottle recoloring
+	update_icon()
 
 /obj/item/storage/pill_bottle/antitox
 	name = "bottle of Dylovene pills"
 	desc = "Contains pills used to counter toxins."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
-	bottle_color = "green" // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE
+	bottle_color = "green"
 	starts_with = list(/obj/item/reagent_containers/pill/antitox = 7)
 
 /obj/item/storage/pill_bottle/bicaridine
 	name = "bottle of Bicaridine pills"
 	desc = "Contains pills used to stabilize the severely injured."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	bottle_color = "red" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/bicaridine = 7)
 
 /obj/item/storage/pill_bottle/dexalin_plus
 	name = "bottle of Dexalin Plus pills"
 	desc = "Contains pills used to treat extreme cases of oxygen deprivation."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	bottle_color = "blue" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/dexalin_plus = 7)
 
 /obj/item/storage/pill_bottle/dermaline
 	name = "bottle of Dermaline pills"
 	desc = "Contains pills used to treat burn wounds."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/dermaline = 7)
 
 /obj/item/storage/pill_bottle/dylovene
 	name = "bottle of Dylovene pills"
 	desc = "Contains pills used to treat toxic substances in the blood."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	bottle_color = "green" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/dylovene = 7)
 
 /obj/item/storage/pill_bottle/inaprovaline
 	name = "bottle of Inaprovaline pills"
 	desc = "Contains pills used to stabilize patients."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	bottle_color = "blue" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/inaprovaline = 7)
 
 /obj/item/storage/pill_bottle/kelotane
 	name = "bottle of kelotane pills"
 	desc = "Contains pills used to treat burns."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/kelotane = 7)
 
 /obj/item/storage/pill_bottle/spaceacillin
 	name = "bottle of Spaceacillin pills"
 	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	bottle_color = "white" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/spaceacillin = 7)
 
 /obj/item/storage/pill_bottle/tramadol
 	name = "bottle of Tramadol pills"
 	desc = "Contains pills used to relieve pain."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	bottle_color = "purple" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/tramadol = 7)
 
 /obj/item/storage/pill_bottle/citalopram
 	name = "bottle of Citalopram pills"
 	desc = "Contains pills used to stabilize a patient's mood."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/citalopram = 7)
 
 /obj/item/storage/pill_bottle/carbon
 	name = "bottle of Carbon pills"
 	desc = "Contains pills used to neutralise chemicals in the stomach."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	bottle_color = "black" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/carbon = 7)
 
 /obj/item/storage/pill_bottle/iron
 	name = "bottle of Iron pills"
 	desc = "Contains pills used to aid in blood regeneration."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = TRUE // Citadel Change - Recoloring - There are a lot of these.
 	bottle_color = "black" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/iron = 7)
 

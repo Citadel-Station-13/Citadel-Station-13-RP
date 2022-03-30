@@ -1,6 +1,6 @@
 /obj/machinery/chemical_dispenser
 	name = "chemical dispenser"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/machines/chemical.dmi'
 	icon_state = "dispenser"
 
 	var/list/spawn_cartridges = null // Set to a list of types to spawn one of each on New()
