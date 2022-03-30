@@ -2,18 +2,18 @@
 	name = "canister"
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "yellow"
-	density = 1
+	density = TRUE
 	var/health = 100.0
 	w_class = ITEMSIZE_HUGE
 
 	layer = TABLE_LAYER	// Above catwalks, hopefully below other things
 
-	var/valve_open = 0
+	var/valve_open = FALSE
 	var/release_pressure = ONE_ATMOSPHERE
 	var/release_flow_rate = ATMOS_DEFAULT_VOLUME_PUMP //in L/s
 
 	var/canister_color = "yellow"
-	var/can_label = 1
+	var/can_label = TRUE
 	start_pressure = 45 * ONE_ATMOSPHERE
 	pressure_resistance = 7 * ONE_ATMOSPHERE
 	var/temperature_resistance = 1000 + T0C
@@ -30,47 +30,47 @@
 	name = "Canister: \[N2O\]"
 	icon_state = "redws"
 	canister_color = "redws"
-	can_label = 0
+	can_label = FALSE
 
 /obj/machinery/portable_atmospherics/canister/nitrogen
 	name = "Canister: \[N2\]"
 	icon_state = "red"
 	canister_color = "red"
-	can_label = 0
+	can_label = FALSE
 
 /obj/machinery/portable_atmospherics/canister/oxygen
 	name = "Canister: \[O2\]"
 	icon_state = "blue"
 	canister_color = "blue"
-	can_label = 0
+	can_label = FALSE
 
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled
 	name = "Canister: \[O2 (Cryo)\]"
 
 /obj/machinery/portable_atmospherics/canister/phoron
 	name = "Canister \[Phoron\]"
-	icon_state = "orangeps"
-	canister_color = "orangeps"
-	can_label = 0
+	icon_state = "orange"
+	canister_color = "orange"
+	can_label = FALSE
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide
 	name = "Canister \[CO2\]"
 	icon_state = "black"
 	canister_color = "black"
-	can_label = 0
+	can_label = FALSE
 
 /obj/machinery/portable_atmospherics/canister/air
 	name = "Canister \[Air\]"
 	icon_state = "grey"
 	canister_color = "grey"
-	can_label = 0
+	can_label = FALSE
 
 /obj/machinery/portable_atmospherics/canister/air/airlock
 	start_pressure = 3 * ONE_ATMOSPHERE
 
 /obj/machinery/portable_atmospherics/canister/empty/
 	start_pressure = 0
-	can_label = 1
+	can_label = TRUE
 
 /obj/machinery/portable_atmospherics/canister/empty/oxygen
 	name = "Canister: \[O2\]"
@@ -78,8 +78,8 @@
 	canister_color = "blue"
 /obj/machinery/portable_atmospherics/canister/empty/phoron
 	name = "Canister \[Phoron\]"
-	icon_state = "orangeps"
-	canister_color = "orangeps"
+	icon_state = "orange"
+	canister_color = "orange"
 /obj/machinery/portable_atmospherics/canister/empty/nitrogen
 	name = "Canister \[N2\]"
 	icon_state = "red"
@@ -255,9 +255,9 @@ update_flag
 				src.update_icon()
 
 	if(air_contents.return_pressure() < 1)
-		can_label = 1
+		can_label = TRUE
 	else
-		can_label = 0
+		can_label = FALSE
 
 	air_contents.react() //cooking up air cans - add phoron and oxygen, then heat above PHORON_MINIMUM_BURN_TEMPERATURE
 
@@ -397,7 +397,7 @@ update_flag
 				"\[N2O\]" = "redws", \
 				"\[N2\]" = "red", \
 				"\[O2\]" = "blue", \
-				"\[Phoron\]" = "orangeps", \
+				"\[Phoron\]" = "orange", \
 				"\[CO2\]" = "black", \
 				"\[Air\]" = "grey", \
 				"\[CAUTION\]" = "yellow", \
