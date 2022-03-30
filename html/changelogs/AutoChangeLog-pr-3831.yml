@@ -1,6 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - rscadd: "Adds a Crypto Mining server that turns power into engineering points"
-  - rscadd: "Adds a vendor to spend Engineering points."
-  - bugfix: "Fixes subtypes of the equipment vendor trying to vend twice"
