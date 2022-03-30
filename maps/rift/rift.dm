@@ -10,10 +10,17 @@
 	#include "rift_telecomms.dm"
 	#include "rift_overmap.dm"
 	#include "rift_lythios-43c.dm"
+	#include "classd.dm"
+	#include "classg.dm"
+	#include "classh.dm"
+	#include "classm.dm"
+	#include "classp.dm"
+	#include "lavaland.dm"
 
 	#define USING_MAP_DATUM /datum/map/rift
 
 	#include "submaps/_rift_submaps.dm"
+	#include "submaps/lavaland/_lavaland.dm"
 
 	#include "../../_maps/map_files/rift/rift-01-underground2.dmm"
 	#include "../../_maps/map_files/rift/rift-02-underground1.dmm"
