@@ -44,7 +44,7 @@
 
 	loot_list = list(/obj/item/material/knife/tacknife = 100)
 
-	//corpse = /obj/effect/landmark/mobcorpse/pirate
+	corpse = /obj/effect/landmark/mobcorpse/pirate/melee
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/pirate
@@ -59,6 +59,8 @@
 	movement_cooldown = 4
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
+
+	corpse = /obj/effect/landmark/mobcorpse/pirate/melee_armor
 
 ///////////////////////////////
 //		Machete Priate
@@ -86,7 +88,7 @@
 
 	loot_list = list(/obj/item/material/knife/machete = 100)
 
-	//corpse = /obj/effect/landmark/mobcorpse/pirate
+	corpse = /obj/effect/landmark/mobcorpse/pirate/melee_machete
 
 //Armored Variant
 
@@ -98,6 +100,8 @@
 	movement_cooldown = 3
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/machete = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
+
+	corpse = /obj/effect/landmark/mobcorpse/pirate/melee_machete_armor
 
 ///////////////////////////////
 //		E-Sword Priate
@@ -120,6 +124,8 @@
 
 	loot_list = list(/obj/item/melee/energy/sword/pirate = 100)
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/melee_energy
+
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/las/armored
 	name = "Armored Duelist"
@@ -130,6 +136,8 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/melee_energy_armor
+
 
 ///////////////////////////////
 //		Shield Pirate
@@ -139,6 +147,8 @@
 	desc = "Does what he wants cause a pirate is free. This one carries a shield for added protection."
 	icon_state = "piratemelee-shield"
 	icon_living = "piratemelee-shield"
+
+	corpse = /obj/effect/landmark/mobcorpse/pirate/melee_shield
 
 //This Should Allow all childs of the shield priate to block
 /mob/living/simple_mob/humanoid/pirate/shield/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -174,6 +184,8 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/shield/riot/tower = 100)
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/melee_shield_armor
+
 ///////////////////////////////
 //	Shield Machete Pirate
 ///////////////////////////////
@@ -198,6 +210,8 @@
 
 	loot_list = list(/obj/item/material/knife/machete = 100)
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/melee_shield_machete
+
 // Armored Variant
 /mob/living/simple_mob/humanoid/pirate/shield/machete/armored
 	name = "Armored Sword and Boarder"
@@ -207,6 +221,8 @@
 	movement_cooldown = 4
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/machete = 100, /obj/item/shield/riot/tower = 100)
+
+	corpse = /obj/effect/landmark/mobcorpse/pirate/melee_shield_machete_armor
 
 ///////////////////////////////
 //		Pirate Pistolier
@@ -230,6 +246,8 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/ranged
+
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/armored
@@ -240,6 +258,8 @@
 	movement_cooldown = 4
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/projectile/pirate = 100, /obj/item/clothing/accessory/armor/armorplate/bulletproof = 100)
+
+	corpse = /obj/effect/landmark/mobcorpse/pirate/ranged_armor
 
 ///////////////////////////////
 //		Pirate Blunderbuster
@@ -263,6 +283,8 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/ranged_blunderbuss
+
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/shotgun/armored
 	name = "Armored Blunderbuster"
@@ -272,6 +294,8 @@
 	movement_cooldown = 4
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/projectile/shotgun/doublebarrel/sawn = 100, /obj/item/clothing/accessory/armor/armorplate/bulletproof = 100)
+
+	corpse = /obj/effect/landmark/mobcorpse/pirate/ranged_blunderbuss_armor
 
 ///////////////////////////////
 //		Pirate Ziplas
@@ -295,6 +319,8 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/ranged_laser
+
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/handcannon/armored
 	name = "Armored Handcannon"
@@ -304,6 +330,8 @@
 	movement_cooldown = 4
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/energy/zip = 100, /obj/item/clothing/accessory/armor/armorplate/bulletproof = 100)
+
+	corpse = /obj/effect/landmark/mobcorpse/pirate/ranged_laser_armor
 
 ///////////////////////////////
 //		First Mate
@@ -326,6 +354,7 @@
 
 	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/mate
 
 ///////////////////////////////
 //		Mate Pistolier
@@ -355,6 +384,8 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/mate/pistol
+
 /mob/living/simple_mob/humanoid/pirate/mate/ranged/bosun /// Special Mech Pilot Pirate
 	name = "Bosun"
 	desc = "An oily pirate mechanist. Thankfully he has but an old laser to defend himself with."
@@ -363,6 +394,8 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
+
+	corpse = /obj/effect/landmark/mobcorpse/pirate/bosun
 
 ///////////////////////////////
 //		Mate Sweeper
@@ -390,6 +423,8 @@
 
 	loot_list = list(/obj/item/gun/projectile/shotgun/doublebarrel/quad = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/mate/shotgun
+
 ///////////////////////////////
 //		Mate Marksman
 ///////////////////////////////
@@ -416,6 +451,8 @@
 
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump/rifle = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
+	corpse = /obj/effect/landmark/mobcorpse/pirate/mate/rifle
+
 ///////////////////////////////
 //		Pirate Captain
 ///////////////////////////////
@@ -434,7 +471,7 @@
 	projectilesound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	base_attack_cooldown = 5
 
-	//corpse = /obj/effect/landmark/mobcorpse/pirate/ranged
+	corpse = /obj/effect/landmark/mobcorpse/pirate/captain
 
 	loot_list = list(/obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100) //Belt of pistols
 
