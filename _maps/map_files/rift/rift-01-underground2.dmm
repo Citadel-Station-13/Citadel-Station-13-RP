@@ -133,7 +133,7 @@
 /area/crew_quarters/public_bunker)
 "av" = (
 /obj/structure/grille,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/lythios43c,
 /area/engineering/engine_room)
 "aw" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
@@ -146,7 +146,7 @@
 	use_power = 1;
 	volume_rate = 700
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/lythios43c,
 /area/engineering/engine_room)
 "ax" = (
 /obj/effect/floor_decal/techfloor{

@@ -44,7 +44,7 @@
 /datum/map_template/rift_lateload/west_cavern
 	name = "Rift - Western Caverns"
 	desc = "A labyrinthine cave network below the western plains."
-	mappath = "_maps/map_files/rift/rift-western_cave.dmm"
+	mappath = "_maps/map_files/rift/rift-08-west_caves.dmm"
 
 	associated_map_datum = /datum/map_z_level/rift_lateload/west_cavern
 
