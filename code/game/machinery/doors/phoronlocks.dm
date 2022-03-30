@@ -14,7 +14,7 @@
 //
 
 obj/machinery/airlock_sensor/phoron
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/machines/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "phoronlock sensor"
 	var/previousPhoron

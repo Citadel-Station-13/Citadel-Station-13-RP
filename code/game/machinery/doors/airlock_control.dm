@@ -146,12 +146,12 @@ obj/machinery/door/airlock/Destroy()
 	return ..()
 
 obj/machinery/airlock_sensor
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/machines/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "airlock sensor"
 	desc = "Sends atmospheric readings to a nearby controller."
 
-	anchored = 1
+	anchored = TRUE
 	power_channel = ENVIRON
 
 	var/id_tag
@@ -161,7 +161,7 @@ obj/machinery/airlock_sensor
 
 	var/datum/radio_frequency/radio_connection
 
-	var/on = 1
+	var/on = TRUE
 	var/alert = 0
 	var/previousPressure
 
@@ -231,11 +231,11 @@ obj/machinery/airlock_sensor/airlock_exterior/shuttle/return_air()
 	return T.return_air()
 
 obj/machinery/access_button
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/machines/airlock_machines.dmi'
 	icon_state = "access_button_standby"
 	name = "access button"
 
-	anchored = 1
+	anchored = TRUE
 	power_channel = ENVIRON
 
 	var/master_tag
@@ -244,7 +244,7 @@ obj/machinery/access_button
 
 	var/datum/radio_frequency/radio_connection
 
-	var/on = 1
+	var/on = TRUE
 
 
 obj/machinery/access_button/update_icon()

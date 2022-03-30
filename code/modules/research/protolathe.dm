@@ -21,13 +21,7 @@
 
 /obj/machinery/r_n_d/protolathe/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
-	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/r_n_d/protolathe/process(delta_time)

@@ -1,15 +1,15 @@
 /obj/machinery/mech_sensor
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/machines/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "mechatronic sensor"
 	desc = "Regulates mech movement."
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	throwpass = 1
 	use_power = USE_POWER_IDLE
 	layer = ON_WINDOW_LAYER
 	power_channel = EQUIP
-	var/on = 0
+	var/on = FALSE
 	var/id_tag = null
 
 	var/frequency = 1379
@@ -32,7 +32,7 @@
 			if(istype(ME, /obj/item/mecha_parts/mecha_equipment/tool/sleeper))
 				var/obj/item/mecha_parts/mecha_equipment/tool/sleeper/S = ME
 				if(S.occupant != null)
-					return 0
+					return FALSE
 
 	return istype(O, /obj/mecha) || istype(O, /obj/vehicle)
 

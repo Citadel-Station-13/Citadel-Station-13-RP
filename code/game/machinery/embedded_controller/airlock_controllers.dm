@@ -63,11 +63,11 @@
 
 //Access controller for door control - used in virology and the like
 /obj/machinery/embedded_controller/radio/airlock/access_controller
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/machines/airlock_machines.dmi'
 	icon_state = "access_control_standby"
 
 	name = "Access Controller"
-	tag_secure = 1
+	tag_secure = TRUE
 	valid_actions = list("cycle_ext_door", "cycle_int_door", "force_ext", "force_int")
 
 

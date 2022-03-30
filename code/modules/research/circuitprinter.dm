@@ -26,11 +26,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 
 /obj/machinery/r_n_d/circuit_imprinter/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
-	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/r_n_d/circuit_imprinter/process(delta_time)

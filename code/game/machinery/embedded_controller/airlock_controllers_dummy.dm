@@ -2,7 +2,7 @@
 // TGUITODO: Actually make these weird things work... well, as much as possible.
 /obj/machinery/dummy_airlock_controller
 	name = "airlock control terminal"
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/machines/airlock_machines.dmi'
 	icon_state = "airlock_control_standby"
 	layer = OBJ_LAYER
 	var/id_tag

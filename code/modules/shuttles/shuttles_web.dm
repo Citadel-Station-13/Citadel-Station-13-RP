@@ -438,7 +438,7 @@
 //A sensor for detecting air outside shuttles! Handy, that.
 /obj/machinery/shuttle_sensor
 	name = "environment sensor"
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/machines/airlock_machines.dmi'
 	icon_state = "airlock_sensor_standby"
 	var/id_tag
 

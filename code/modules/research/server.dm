@@ -1,6 +1,6 @@
 /obj/machinery/r_n_d/server
 	name = "R&D Server"
-	icon = 'icons/obj/machines/research_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "server"
 	var/datum/research/files
 	var/health = 100
@@ -9,7 +9,7 @@
 	var/id_with_upload_string = ""		//String versions for easy editing in map editor.
 	var/id_with_download_string = ""
 	var/server_id = 0
-	var/produces_heat = 1
+	var/produces_heat = TRUE
 	idle_power_usage = 800
 	var/delay = 10
 	req_access = list(access_rd) //Only the R&D can change server settings.
@@ -17,10 +17,7 @@
 
 /obj/machinery/r_n_d/server/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stack/cable_coil(src)
-	component_parts += new /obj/item/stack/cable_coil(src)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/r_n_d/server/Destroy()
