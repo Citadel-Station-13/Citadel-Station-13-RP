@@ -1199,3 +1199,18 @@ obj/item/clothing/suit/kamishimo
 	name = "worn letterman jacket"
 	desc = "A worn varsity letterman jacket. Some of the faded stains around the cuffs are rather suspicious."
 	icon_state = "varsity_letterman"
+
+/obj/item/clothing/suit/storage/pullover
+	name = "pullover hoodie"
+	desc = "A plain-colored hoodie with no zipper to speak of. The exonet debate on whether it's hotter to watch one get pulled off or zipped open still rages on. You could prove one of the sides right today!"
+	icon_state = "hoodie_pullover"
+
+/obj/item/clothing/suit/storage/pullover/nt
+	name = "pullover hoodie (NT)"
+	desc = "A plain-colored hoodie with no zipper to speak of. The exonet debate on whether it's hotter to watch one get pulled off or zipped open still rages on. You could prove one of the sides right today! This one is dyed in NT colors and has the trademark NanoTrasen logo!"
+	icon_state = "hoodie_pullover_NT"
+
+/obj/item/clothing/suit/storage/umbral
+	name = "Umbral Duster"
+	desc = "This thick duster, constructed out of black leather and red suede, presents an utterly demonic profile. Adorned with chased silver chains, anchored into the very fabric itself in the device of an esoteric skull, this jacket will fit in anywhere. As long as it's a leather club or metal concert."
+	icon_state = "umbral"

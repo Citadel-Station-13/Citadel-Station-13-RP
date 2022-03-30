@@ -3958,6 +3958,29 @@ End Citadel Change */
 	glass_name = "Green Stuff"
 	glass_desc = "Tyrmalin grog aggressively blended with unfiltered absinthe."
 
+/datum/reagent/ethanol/goliathspit
+	name = "Goliath Spit"
+	id = "goliathspit"
+	description = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
+	taste_description = "faint, tangy sweetness"
+	color = "#CCCC99"
+	strength = 50
+	adj_temp = -5
+
+	glass_name = "Goliath Spit"
+	glass_desc = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
+
+/datum/reagent/ethanol/maryonacross
+	name = "Mary On a Cross"
+	id = "maryonacross"
+	description = "Not just another Bloody Mary. Mary on a cross."
+	taste_description = "copper, tomatoes, and heretical sweetness"
+	color = "#B40000"
+	strength = 30
+
+	glass_name = "Mary On a Cross"
+	glass_desc = "Not just another Bloody Mary. Mary on a cross."
+
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
 ///////////////////////////////////////////////
@@ -4127,6 +4150,14 @@ End Citadel Change */
 	name = "Tallow"
 	id = "tallow"
 	description = "An liquidized form of animal fat, useful for adding that extra heart stopping potential to any of your deep fried food products."
+
+//Brine, for treating certain meats and food product fermentation.
+
+/datum/reagent/brine
+	name = "Brine"
+	id = "brine"
+	color = "#a1d1e7"
+	description = "A mixture of water, enzymes, sugar, and salt used to trigger fermentation in certain food products."
 
 //Protein! Get your mind out of the gutter.
 /datum/reagent/nutriment/protein // Bad for Skrell!
@@ -4702,3 +4733,12 @@ End Citadel Change */
 	glass_name = "Crystal Dr. Gibb"
 	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
 
+/datum/reagent/drink/crystalgibb
+	name = "Crystal Dr. Gibb"
+	id = "crystalgibb"
+	description = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+	taste_description = "clear cherry soda"
+	color = "#0000"
+
+	glass_name = "Crystal Dr. Gibb"
+	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"

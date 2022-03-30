@@ -865,12 +865,14 @@
 					/obj/item/storage/fancy/cigarettes/jerichos = 5,
 					/obj/item/storage/fancy/cigarettes/menthols = 5,
 					/obj/item/storage/rollingpapers = 5,
+					/obj/item/storage/rollingblunts = 5,
 					/obj/item/storage/box/matches = 10,
 					/obj/item/flame/lighter/random = 4)
 	contraband = list(/obj/item/flame/lighter/zippo = 4)
 	premium = list(/obj/item/storage/fancy/cigar = 5,
 					/obj/item/storage/fancy/cigarettes/carcinomas = 5,
-					/obj/item/storage/fancy/cigarettes/professionals = 5)
+					/obj/item/storage/fancy/cigarettes/professionals = 5,
+					/obj/item/storage/fancy/cigarettes/blackstars = 5)
 	prices = list(/obj/item/storage/fancy/cigarettes = 12,
 					/obj/item/storage/fancy/cigarettes/dromedaryco = 15,
 					/obj/item/storage/fancy/cigarettes/killthroat = 17,
@@ -878,6 +880,7 @@
 					/obj/item/storage/fancy/cigarettes/jerichos = 22,
 					/obj/item/storage/fancy/cigarettes/menthols = 18,
 					/obj/item/storage/rollingpapers = 10,
+					/obj/item/storage/rollingblunts = 17,
 					/obj/item/storage/box/matches = 1,
 					/obj/item/flame/lighter/random = 2)
 
@@ -1178,6 +1181,7 @@
 					/obj/item/toy/plushie/bear_soda = 2,
 					/obj/item/toy/plushie/bear_bloody = 2,
 					/obj/item/toy/plushie/bear_space = 1,
+					/obj/item/toy/plushie/doll = 3,
 					/obj/item/storage/daki = 10)
 	premium = list(/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
 					/obj/item/storage/trinketbox = 2)
@@ -1215,6 +1219,7 @@
 					/obj/item/toy/plushie/bear_soda = 35,
 					/obj/item/toy/plushie/bear_bloody = 35,
 					/obj/item/toy/plushie/bear_space = 50,
+					/obj/item/toy/plushie/doll = 50,
 					/obj/item/storage/daki = 100)
 
 /obj/machinery/vending/fishing
@@ -1930,6 +1935,7 @@
 					/obj/item/storage/box/fluff/swimsuit/captain = 5,
 					/obj/item/storage/box/fluff/swimsuit/highclass = 3,
 					/obj/item/storage/box/fluff/swimsuit/latex = 3,
+					/obj/item/storage/box/rainponcho = 5,
 					/obj/item/clothing/under/utility = 5,
 					/obj/item/clothing/under/utility/grey = 5,
 					/obj/item/clothing/under/utility/blue = 5,
@@ -2132,6 +2138,7 @@
 					/obj/item/storage/box/fluff/swimsuit/captain = 25,
 					/obj/item/storage/box/fluff/swimsuit/highclass = 40,
 					/obj/item/storage/box/fluff/swimsuit/latex = 40,
+					/obj/item/storage/box/rainponcho = 10,
 					/obj/item/clothing/under/utility = 25,
 					/obj/item/clothing/under/utility/grey = 25,
 					/obj/item/clothing/under/utility/blue = 25,

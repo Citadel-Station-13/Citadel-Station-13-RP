@@ -1187,7 +1187,7 @@
 			if(-90 to -80)			severity = 8
 			if(-95 to -90)			severity = 9
 			if(-INFINITY to -95)	severity = 10
-		overlay_fullscreen("crit", /obj/screen/fullscreen/crit, severity)
+		overlay_fullscreen("crit", /atom/movable/screen/fullscreen/crit, severity)
 	else //Alive
 		clear_fullscreen("crit")
 		//Oxygen damage overlay
@@ -1201,7 +1201,7 @@
 				if(35 to 40)		severity = 5
 				if(40 to 45)		severity = 6
 				if(45 to INFINITY)	severity = 7
-			overlay_fullscreen("oxy", /obj/screen/fullscreen/oxy, severity)
+			overlay_fullscreen("oxy", /atom/movable/screen/fullscreen/oxy, severity)
 		else
 			clear_fullscreen("oxy")
 
@@ -1217,7 +1217,7 @@
 				if(55 to 70)		severity = 4
 				if(70 to 85)		severity = 5
 				if(85 to INFINITY)	severity = 6
-			overlay_fullscreen("brute", /obj/screen/fullscreen/brute, severity)
+			overlay_fullscreen("brute", /atom/movable/screen/fullscreen/brute, severity)
 		else
 			clear_fullscreen("brute")
 
@@ -1339,13 +1339,13 @@
 					else
 						bodytemp.icon_state = "temp0"
 		if(blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 
 		else
 			clear_fullscreens()
 
 		if(blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 
 		else if(!machine)
 			clear_fullscreens()
@@ -1354,12 +1354,12 @@
 			if(glasses)					//to every /obj/item
 				var/obj/item/clothing/glasses/G = glasses
 				if(!G.prescription)
-					set_fullscreen(disabilities & NEARSIGHTED, "impaired", /obj/screen/fullscreen/impaired, 1)
+					set_fullscreen(disabilities & NEARSIGHTED, "impaired", /atom/movable/screen/fullscreen/impaired, 1)
 			else if (!nif || !nif.flag_check(NIF_V_CORRECTIVE,NIF_FLAGS_VISION))	//VOREStation Edit - NIF
-				set_fullscreen(disabilities & NEARSIGHTED, "impaired", /obj/screen/fullscreen/impaired, 1)
+				set_fullscreen(disabilities & NEARSIGHTED, "impaired", /atom/movable/screen/fullscreen/impaired, 1)
 
-		set_fullscreen(eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
-		set_fullscreen(druggy, "high", /obj/screen/fullscreen/high)
+		set_fullscreen(eye_blurry, "blurry", /atom/movable/screen/fullscreen/blurry)
+		set_fullscreen(druggy, "high", /atom/movable/screen/fullscreen/high)
 
 		if(config_legacy.welder_vision)
 			var/found_welder

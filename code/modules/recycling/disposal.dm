@@ -668,7 +668,7 @@
 	var/health = 10 	// health points 0-10
 	plane = PLATING_PLANE
 	layer = DISPOSAL_LAYER	// slightly lower than wires and other pipes
-	var/base_icon_state	// initial icon state on map
+	base_icon_state	// initial icon state on map
 	var/sortType = ""
 	var/subtype = 0
 	// new pipe, set the icon_state as on map

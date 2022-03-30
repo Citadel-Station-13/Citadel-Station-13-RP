@@ -131,9 +131,9 @@
 	add_shadekin_abilities(H)
 
 /datum/species/shadekin/proc/add_shadekin_abilities(var/mob/living/carbon/human/H)
-	if(!H.ability_master || !istype(H.ability_master, /obj/screen/movable/ability_master/shadekin))
+	if(!H.ability_master || !istype(H.ability_master, /atom/movable/screen/movable/ability_master/shadekin))
 		H.ability_master = null
-		H.ability_master = new /obj/screen/movable/ability_master/shadekin(H)
+		H.ability_master = new /atom/movable/screen/movable/ability_master/shadekin(H)
 	for(var/datum/power/shadekin/P in shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
 			H.verbs += P.verbpath

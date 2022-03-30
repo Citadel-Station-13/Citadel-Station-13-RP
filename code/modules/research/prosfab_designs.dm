@@ -278,13 +278,13 @@
 
 /datum/design/item/prosfab/augment
 	category = list("Augments")
+	build_type = PROSFAB
 	time = 20
 	materials = list(DEFAULT_WALL_MATERIAL = 3750, "glass" = 1750)
 
 /datum/design/item/prosfab/augment/hand
 	name = "resonant analyzer"
 	id = "aug_hand"
-	req_tech = list(TECH_BIO = 3, TECH_MAGNET = 4, TECH_DATA = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "plastic" = 500)
 	build_path = /obj/item/organ/internal/augment/armmounted/hand
 

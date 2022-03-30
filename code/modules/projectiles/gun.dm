@@ -71,7 +71,7 @@
 
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
-	var/obj/screen/auto_target/auto_target
+	var/atom/movable/screen/auto_target/auto_target
 	var/shooting = 0
 	var/next_fire_time = 0
 
@@ -349,7 +349,7 @@
 		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
 			return
 
-		if (!( istype(over_object, /obj/screen) ))
+		if (!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 
 		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
@@ -360,7 +360,7 @@
 		if (( usr.restrained() ) || ( usr.stat ))
 			return
 
-		if ((src.loc == usr) && !(istype(over_object, /obj/screen)) && !usr.unEquip(src))
+		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
 			return
 
 		switch(over_object.name)

@@ -58,6 +58,7 @@
 					"Cyborg Modules",
 					"Prosthetics",
 					"Prosthetics, Internal",
+					"Augments",
 					"Cyborg Parts",
 					"Cyborg Internals",
 					"Cybernetics",

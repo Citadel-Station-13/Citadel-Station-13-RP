@@ -110,6 +110,7 @@
 		))
 
 /obj/item/storage/box/papersack/update_icon_state()
+	. = ..()
 	if(contents.len == 0)
 		icon_state = "[item_state]"
 	else
