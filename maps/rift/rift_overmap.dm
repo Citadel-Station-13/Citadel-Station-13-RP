@@ -21,6 +21,7 @@
 		"Mining Shuttle" = list("triumph_mining_port")
 		)
 
+
 	extra_z_levels = list(
 		Z_LEVEL_SURFACE_MINE,
 		Z_LEVEL_SOLARS,
@@ -119,7 +120,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Pirate Skiff"
 
-/*/datum/shuttle/autodock/overmap/pirate
+/datum/shuttle/autodock/overmap/pirate
 	name = "Pirate Skiff"
 	warmup_time = 3
 	shuttle_area = list(/area/shuttle/pirate/cockpit, /area/shuttle/pirate/general, /area/shuttle/pirate/cargo)
@@ -270,4 +271,4 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 		"Dart EMT Shuttle" = list("nebula_pad_5"),
 		"Civilian Transport" = list("nebula_pad_6")
 		)
-*/*/
+*/

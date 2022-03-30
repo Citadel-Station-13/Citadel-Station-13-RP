@@ -4654,12 +4654,6 @@
 	pixel_x = -6;
 	pixel_y = -26
 	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "cargo_bay";
-	pixel_x = 6;
-	pixel_y = -28
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/secondary/cargo_hallway)
 "iC" = (
@@ -9469,6 +9463,14 @@
 "qW" = (
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/tankstorage)
+"qY" = (
+/obj/effect/map_effect/portal/master/side_a{
+	dir = 4;
+	name = "center_to_westplain_s";
+	portal_id = "westplainstep2"
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "qZ" = (
 /obj/machinery/suspension_gen,
 /obj/effect/floor_decal/borderfloor,
@@ -12692,6 +12694,33 @@
 "wq" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/chemistry_lab)
+"wr" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Cargo Airlock";
+	req_one_access = list(31)
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "main_ext_blast";
+	name = "Surface External Blast Door"
+	},
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 4;
+	icon_state = "shutter0";
+	id = "cargo_shuttle_shutter";
+	name = "Cargo shuttle access shutter";
+	opacity = 0
+	},
+/obj/structure/fans/tiny,
+/obj/effect/map_helper/airlock/door/simple,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "cargo_bay";
+	pixel_x = 38;
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/surfaceeva/cargodock)
 "ws" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
@@ -19054,6 +19083,14 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/rift/surfacebase/outside/outside1)
+"IZ" = (
+/obj/effect/map_effect/portal/master/side_a{
+	dir = 4;
+	name = "center_to_westplain";
+	portal_id = "westplainstep"
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "Ja" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -19982,6 +20019,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
+"Le" = (
+/obj/effect/map_effect/portal/line/side_a{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "Lf" = (
 /turf/simulated/floor/wood,
 /area/maintenance/lowmedbaymaint)
@@ -27640,28 +27683,28 @@ hi
 hi
 hi
 hi
-hi
-OI
-hi
-hi
-hi
-hi
-hi
-hi
-hi
-hi
-hi
-hi
-hi
-OI
-hi
-hi
-hi
-hi
-hi
-hi
-hi
-hi
+ew
+Gr
+ew
+ew
+IZ
+Le
+Le
+Le
+Le
+Le
+Le
+ew
+ew
+Gr
+ew
+qY
+Le
+Le
+Le
+ew
+ew
+ew
 hi
 hi
 hi
@@ -38491,7 +38534,7 @@ aO
 hs
 nc
 nm
-nm
+wr
 hs
 aO
 aO

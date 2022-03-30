@@ -482,3 +482,29 @@
 	layer = ABOVE_WINDOW_LAYER
 /obj/structure/noticeboard
 	layer = ABOVE_WINDOW_LAYER
+
+/obj/effect/step_trigger/teleporter/to_rift_wcavern
+	icon = 'icons/obj/structures/stairs_64x64.dmi'
+	icon_state = ""
+	invisibility = 0
+/obj/effect/step_trigger/teleporter/to_rift_wcavern/Initialize()
+	. = ..()
+	teleport_x = x
+	teleport_y = y
+	for(var/z_num in GLOB.using_map.zlevels)
+		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
+		if(Z.name == "Western Caverns")
+			teleport_z = Z.z
+
+/obj/effect/step_trigger/teleporter/from_rift_wcavern
+	icon = 'icons/obj/structures/stairs_64x64.dmi'
+	icon_state = ""
+	invisibility = 0
+/obj/effect/step_trigger/teleporter/from_rift_wcavern/Initialize()
+	. = ..()
+	teleport_x = x
+	teleport_y = y
+	for(var/z_num in GLOB.using_map.zlevels)
+		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
+		if(Z.name == "Western Plains")
+			teleport_z = Z.z

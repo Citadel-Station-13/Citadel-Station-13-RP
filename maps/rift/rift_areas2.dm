@@ -662,3 +662,11 @@
 	excluded |= /area/hallway/station/upper
 	..()
 Do this eventually. */
+
+/area/rift/surfacebase/outside/west
+	name = "Western Plains Surface"
+	icon_state = "green"
+
+/area/rift/surfacebase/outside/west_caves
+	name = "Western Plains Caverns"
+	icon_state = "red"

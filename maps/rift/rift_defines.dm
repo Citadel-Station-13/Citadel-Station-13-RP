@@ -1,17 +1,16 @@
-//Atmosphere properties
-#define LYTHIOS43C_SET_ATMOS	initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C
-#define LYTHIOS43C_TURF_CREATE(x)	x/lythios43c/initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C;x/lythios43c/outdoors=TRUE;x/lythios43c/allow_gas_overlays = FALSE
-#define LYTHIOS43C_TURF_CREATE_UN(x)	x/lythios43c/initial_gas_mix=ATMOSPHERE_ID_LYTHIOS43C
-
 //Normal map defs
 #define Z_LEVEL_UNDERGROUND_DEEP		2
 #define Z_LEVEL_UNDERGROUND				3
 #define Z_LEVEL_SURFACE_LOW				4
 #define Z_LEVEL_SURFACE_MID				5
 #define Z_LEVEL_SURFACE_HIGH			6
+
 #define Z_LEVEL_CENTCOM					7
 #define Z_LEVEL_MISC					8
 #define Z_LEVEL_SHIPS					9
+
+#define Z_LEVEL_WEST_PLAIN				10
+#define Z_LEVEL_WEST_CAVERN				11
 
 /datum/map/rift
 	name = "Rift"
@@ -148,7 +147,7 @@
 								 Z_LEVEL_ROGUEMINE_4)
 */
 	lateload_z_levels = list(
-		list("Rift - Misc","Rift - Ships") // Stock Rift lateload maps
+		list("Rift - Misc","Rift - Ships","Rift - Western Plains","Rift - Western Caverns") // Stock Rift lateload maps
 	)
 
 	ai_shell_restricted = TRUE
@@ -244,12 +243,6 @@
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
-/datum/map_z_level/rift/ships
-	z = Z_LEVEL_SHIPS
-	name = "Misc"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
-
-/datum/map_z_level/rift/misc
-	z = Z_LEVEL_MISC
-	name = "Misc"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
+/datum/map_z_level/rift/west_plains
+	z = Z_LEVEL_WEST_PLAIN
+	name = "Western Plains"
