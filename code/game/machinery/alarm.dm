@@ -812,22 +812,22 @@ FIRE ALARM
 /obj/machinery/firealarm
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
-	icon = 'icons/obj/monitors.dmi'
-	icon_state = "fire0"
+	icon = 'icons/obj/machines/firealarm.dmi'
+	icon_state = "casing"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	var/detecting = 1.0
-	var/working = 1.0
+	var/detecting = TRUE
+	var/working = TRUE
 	var/time = 10.0
 	var/timing = 0.0
-	var/lockdownbyai = 0
-	anchored = 1.0
+	var/lockdownbyai = FALSE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = ENVIRON
 	var/last_process = 0
-	panel_open = 0
+	panel_open = FALSE
 	var/seclevel
 	circuit = /obj/item/circuitboard/firealarm
 	var/alarms_hidden = FALSE //If the alarms from this machine are visible on consoles
@@ -838,22 +838,24 @@ FIRE ALARM
 /obj/machinery/firealarm/update_icon()
 	cut_overlays()
 
+	icon_state = "casing"
 	if(panel_open)
+		add_overlay("b2") // b[buildstage]
 		set_light(0)
 		return
 
 	if(stat & BROKEN)
-		icon_state = "firex"
+		add_overlay("broken")
 		set_light(0)
 	else if(stat & NOPOWER)
-		icon_state = "firep"
+		add_overlay("firep")
 		set_light(0)
 	else
 		if(!detecting)
-			icon_state = "fire1"
-			set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
-		else
-			icon_state = "fire0"
+			add_overlay("fire1")
+			set_light(0.25, 0.1, 1, 2, COLOR_RED)
+		else if(z in GLOB.using_map.contact_levels)
+			add_overlay("fire0")
 			switch(seclevel)
 				if("green")	set_light(l_range = 2, l_power = 0.25, l_color = "#00ff00")
 				if("yellow")	set_light(l_range = 2, l_power = 0.25, l_color = "#ffff00")

@@ -1,14 +1,14 @@
 /obj/item/modular_computer/console
 	name = "console"
 	desc = "A stationary computer."
-	icon = 'icons/obj/modular_console_vr.dmi' //VOREStation Edit
+	icon = 'icons/obj/modular_console.dmi'
 	icon_state = "console"
 	icon_state_unpowered = "console"
 	icon_state_screensaver = "standby"
 	icon_state_menu = "menu"
 	hardware_flag = PROGRAM_CONSOLE
 	anchored = TRUE
-	density = 1
+	density = TRUE
 	base_idle_power_usage = 100
 	base_active_power_usage = 500
 	max_hardware_size = 3

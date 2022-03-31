@@ -509,7 +509,7 @@
 /obj/machinery/power/rtg
 	name = "radioisotope thermoelectric generator"
 	desc = "A simple nuclear power generator, used in small outposts to reliably provide power for decades."
-	icon = 'icons/obj/power_vr.dmi'
+	icon = 'icons/obj/power.dmi'
 	icon_state = "rtg"
 	density = TRUE
 	use_power = USE_POWER_OFF

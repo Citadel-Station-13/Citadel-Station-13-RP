@@ -74,7 +74,7 @@
 /obj/item/digestion_remains
 	name = "bone"
 	desc = "A bleached bone. It's very non-descript and its hard to tell what species or part of the body it came from."
-	icon = 'icons/obj/bones_vr.dmi'
+	icon = 'icons/obj/bones.dmi'
 	icon_state = "generic"
 	force = 0
 	throwforce = 0

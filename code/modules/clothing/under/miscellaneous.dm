@@ -1807,7 +1807,7 @@
 /obj/item/clothing/under/permit
 	name = "public nudity permit"
 	desc = "This permit entitles the bearer to conduct their duties without a uniform. Normally issued to furred crewmembers or those with nothing to hide."
-	icon = 'icons/obj/card_cit.dmi'
+	icon = 'icons/obj/card.dmi'
 	icon_state = "permit-civilian"
 	body_parts_covered = 0
 	equip_sound = null

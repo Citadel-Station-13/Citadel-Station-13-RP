@@ -1,7 +1,7 @@
 /obj/machinery/fitness
 	name = "workout equipment"
 	desc = "A utility often used to lose weight."
-	icon = 'icons/obj/machines/fitness_machines_vr.dmi'
+	icon = 'icons/obj/machines/fitness_machines.dmi'
 	anchored = 1
 	use_power = USE_POWER_OFF
 	idle_power_usage = 0
@@ -84,7 +84,7 @@
 
 /obj/machinery/scale
 	name = "scale"
-	icon = 'icons/obj/machines/fitness_machines_vr.dmi'
+	icon = 'icons/obj/machines/fitness_machines.dmi'
 	icon_state = "scale"
 	desc = "A scale used to measure ones weight relative to their size and species."
 	anchored = 1 // Set to 0 when we can construct or dismantle these.

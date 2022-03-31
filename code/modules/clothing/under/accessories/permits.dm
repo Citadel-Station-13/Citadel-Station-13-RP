@@ -3,7 +3,7 @@
 /obj/item/clothing/accessory/permit
 	name = "permit"
 	desc = "A permit for something."
-	icon = 'icons/obj/card_cit.dmi'
+	icon = 'icons/obj/card.dmi'
 	icon_state = "permit-generic"
 	w_class = ITEMSIZE_TINY
 	slot = ACCESSORY_SLOT_MEDAL
@@ -59,4 +59,3 @@
 /obj/item/clothing/accessory/permit/gun/planetside
 	name = "explorer weapon permit"
 	desc = "A card indicating that the owner is allowed to carry weaponry during active exploration missions."
-

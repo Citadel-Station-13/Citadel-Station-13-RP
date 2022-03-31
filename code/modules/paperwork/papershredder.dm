@@ -4,11 +4,10 @@
 /obj/machinery/papershredder
 	name = "paper shredder"
 	desc = "For those documents you don't want seen."
-	icon = 'icons/obj/papershredder.dmi'
-	icon_state = "shredder-off"
-	var/shred_anim = "shredder-shredding"
-	density = 1
-	anchored = 1
+	icon = 'icons/obj/bureaucracy.dmi'
+	icon_state = "papershredder0"
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 200
@@ -27,11 +26,7 @@
 
 /obj/machinery/papershredder/Initialize(mapload, newdir)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/motor(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
+	default_apply_parts()
 	RefreshParts()
 	update_icon()
 
@@ -66,7 +61,6 @@
 			user.drop_from_inventory(W)
 			qdel(W)
 			playsound(src.loc, 'sound/items/pshred.ogg', 75, 1)
-			flick(shred_anim, src)
 			if(paperamount > max_paper)
 				to_chat(user,"<span class='danger'>\The [src] was too full, and shredded paper goes everywhere!</span>")
 				for(var/i=(paperamount-max_paper);i>0;i--)
@@ -131,15 +125,7 @@
 		update_icon()
 
 /obj/machinery/papershredder/update_icon()
-	overlays.Cut()
-	if(operable())
-		icon_state = "shredder-on"
-	else
-		icon_state = "shredder-off"
-	// Fullness overlay
 	overlays += "shredder-[max(0,min(5,FLOOR(paperamount/max_paper*5, 1)))]"
-	if (panel_open)
-		overlays += "panel_open"
 
 //
 // Shredded Paper Item

@@ -1,13 +1,13 @@
 /obj/machinery/computer
 	name = "computer"
-	icon = 'icons/obj/computer_vr.dmi'
+	icon = 'icons/obj/computer.dmi'
 	icon_state = "computer"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	active_power_usage = 300
-	var/processing = 0
+	var/processing = FALSE
 
 	var/icon_keyboard = "generic_key"
 	var/icon_screen = "generic"
@@ -25,8 +25,8 @@
 
 /obj/machinery/computer/process(delta_time)
 	if(stat & (NOPOWER|BROKEN))
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/machinery/computer/emp_act(severity)
 	if(prob(20/severity)) set_broken()

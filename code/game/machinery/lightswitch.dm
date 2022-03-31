@@ -4,7 +4,7 @@
 /obj/machinery/light_switch
 	name = "light switch"
 	desc = "It turns lights on and off. What are you, simple?"
-	icon = 'icons/obj/power_vr.dmi' // VOREStation Edit
+	icon = 'icons/obj/power.dmi' // VOREStation Edit
 	icon_state = "light1"
 	anchored = 1.0
 	use_power = USE_POWER_IDLE

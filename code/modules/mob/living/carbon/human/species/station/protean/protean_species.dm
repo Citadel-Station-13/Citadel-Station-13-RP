@@ -385,7 +385,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /obj/item/clothing/accessory/permit/nanotech
 	name = "\improper P.A.N. card"
 	desc = "This is a 'Permit for Advanced Nanotechnology' card. It allows the owner to possess and operate advanced nanotechnology on NanoTrasen property. It must be renewed on a monthly basis."
-	icon = 'icons/obj/card_cit.dmi'
+	icon = 'icons/obj/card.dmi'
 	icon_state = "permit-pan"
 /obj/item/clothing/accessory/permit/nanotech/set_name(var/new_name)
 	owner = 1

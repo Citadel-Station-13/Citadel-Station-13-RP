@@ -1,7 +1,7 @@
 /obj/machinery/autolathe
 	name = "autolathe"
 	desc = "It produces items using metal and glass."
-	icon = 'icons/obj/stationobjs_vr.dmi'
+	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1

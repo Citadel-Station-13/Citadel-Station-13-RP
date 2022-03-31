@@ -2,7 +2,7 @@
 	name = "distress beacon trigger"
 	desc = "WARNING: Will deploy ship's distress beacon and request help. Misuse may result in fines and jail time."
 	description_info = "Using this device (smashing the glas on harm intent, and then pressing the button) will send a message to people on other z-levels requesting their aid. It may take them a while to come get you, as they'll need to prepare. You should only use this if you really need it."
-	icon = 'icons/obj/objects_vr.dmi'
+	icon = 'icons/obj/objects.dmi'
 	icon_state = "panicbutton"
 	anchored = TRUE
 

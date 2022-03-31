@@ -14,14 +14,14 @@
 /obj/item/card
 	name = "card"
 	desc = "Does card things."
-	icon = 'icons/obj/card_cit.dmi'
+	icon = 'icons/obj/card.dmi'
 	icon_state = "generic"
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	var/associated_account_number = 0
 
 	var/list/initial_sprite_stack = list("")
-	var/base_icon = "icons/obj/card_cit.dmi"
+	var/base_icon = "icons/obj/card.dmi"
 	var/list/sprite_stack
 
 	var/list/files = list(  )

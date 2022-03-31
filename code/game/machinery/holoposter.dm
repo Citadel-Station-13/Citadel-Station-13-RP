@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 /obj/machinery/holoposter
 	name = "Holographic Poster"
 	desc = "A wall-mounted holographic projector displaying advertisements by all manner of factions. How much do they pay to advertise here?"
-	icon = 'icons/obj/holoposter_vr.dmi'
+	icon = 'icons/obj/holoposter.dmi'
 	icon_state = "off"
 	anchored = 1
 	use_power = 1
@@ -113,4 +113,3 @@ GLOBAL_LIST_EMPTY(holoposters)
 /obj/machinery/holoposter/emp_act()
 	stat |= BROKEN
 	update_icon()
-

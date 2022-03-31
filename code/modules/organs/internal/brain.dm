@@ -155,7 +155,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	can_assist = FALSE
 
 /obj/item/organ/internal/brain/slime
-	icon = 'icons/obj/surgery_vr.dmi' // Vorestation edit
+	icon = 'icons/obj/surgery.dmi'
 	name = "slime core"
 	desc = "A complex, organic knot of jelly and crystalline particles."
 	icon_state = "core"
@@ -165,7 +165,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	flags = OPENCONTAINER
 
 /obj/item/organ/internal/brain/slime/is_open_container()
-	return 1
+	return TRUE
 
 /obj/item/organ/internal/brain/slime/Initialize(mapload)
 	. = ..()

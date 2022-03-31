@@ -43,7 +43,7 @@
         new /datum/data/mining_equipment("Power Tool - Long Range Atmosphere scanner",  /obj/item/analyzer/longrange,                       80),
 		//new /datum/data/mining_equipment("Power Tool - Holofan Projector", 				/obj/item/holosign_creator/combifan,				80),
         new /datum/data/mining_equipment("Superior Welding Goggles",                    /obj/item/clothing/glasses/welding/superior,        50),
-        
+
         //Level 2 stock parts, to make engineering kinda self sufficent for minor upgrades but the parts are also kinda expansive
         new /datum/data/mining_equipment("Stock Parts - Advanced Capacitor",        /obj/item/stock_parts/capacitor/adv,        20),
         new /datum/data/mining_equipment("Stock Parts - Advanced Scanning Module",  /obj/item/stock_parts/scanning_module/adv,  20),
@@ -129,7 +129,7 @@
 /obj/item/tank/vimur
 	name = "Vimur tank"
 	desc = "Contains Vimur. A gas with very high thermal capacity. Probably not so smart to breath."
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "coolant"
 	gauge_icon = null
 	slot_flags = null	//they have no straps!
@@ -153,7 +153,7 @@
 		to_chat(user, SPAN_WARNING("[src] has already been used"))
 		return
 	var/datum/supply_order/order = new /datum/supply_order
-	
+
 	var/idname = "*None Provided*"
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -175,7 +175,7 @@
 
 	SSsupply.order_history += order//tell supply the order exists.
 	SSsupply.adm_order_history += order
-	
+
 	name = "used " + name
 	redeemable_for = null
 	icon_state = "engineering_voucher_used"

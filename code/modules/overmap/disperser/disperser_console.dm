@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/ship/disperser
 	name = "obstruction removal ballista control"
-	icon = 'icons/obj/computer_vr.dmi'
+	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "security_key"
 	icon_screen = "disperser"
 	light_color = "#7faaff"

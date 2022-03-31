@@ -82,7 +82,7 @@
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
 	desc = "A watertank."
-	icon = 'icons/obj/objects_vr.dmi' //VOREStation Edit
+	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
 	amount_per_transfer_from_this = 10
 
@@ -102,7 +102,7 @@
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
 	desc = "A fueltank."
-	icon = 'icons/obj/objects_vr.dmi' //VOREStation Edit
+	icon = 'icons/obj/objects.dmi'
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 	var/modded = 0
@@ -125,7 +125,7 @@
 /obj/structure/reagent_dispensers/foam
 	name = "foamtank"
 	desc = "A foam tank."
-	icon = 'icons/obj/objects_vr.dmi'
+	icon = 'icons/obj/objects.dmi'
 	icon_state = "foamtank"
 	amount_per_transfer_from_this = 10
 
@@ -442,7 +442,7 @@
 	name = "tallow tank"
 	desc = "A fifty-litre tank of commercial-grade tallow, intended for use in large scale deep fryers. Store in a cool, dark place"
 	icon = 'icons/obj/objects.dmi'
-	icon_state = "oiltank"
+	icon_state = "tallowtank"
 	amount_per_transfer_from_this = 120
 
 /obj/structure/reagent_dispensers/tallow/Initialize()

@@ -137,8 +137,9 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	masters[A] = hologram
 	set_light(2)			//pad lighting
 	icon_state = "holopad1"
+	flick("holopadload", src)
 	A.holo = src
-	return 1
+	return TRUE
 
 /obj/machinery/hologram/holopad/proc/clear_holo(mob/living/silicon/ai/user)
 	if(user.holo == src)

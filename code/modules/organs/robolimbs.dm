@@ -316,7 +316,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 /datum/robolimb/veymed
 	company = "Vey-Med"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_main_vr.dmi' //Vorestation edit, fixing the color application
+	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_main_vr.dmi'
 	unavailable_to_build = 1
 	lifelike = 1
 	skin_tone = 1
@@ -542,7 +542,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 
 /obj/item/disk/limb/eggnerdltd
 	company = "Eggnerd Prototyping Ltd."
-	icon = 'icons/obj/items_vr.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "verkdisk"
 
 //Brass Variant of Eggnerd
@@ -555,7 +555,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 
 /obj/item/disk/limb/vulkanwrks
 	company = "Vulcan Brassworks Inc."
-	icon = 'icons/obj/items_vr.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "datadisk2"
 
 
@@ -585,7 +585,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 
 /obj/item/disk/limb/eggnerdltdred
 	company = "Eggnerd Prototyping Ltd. (Red)"
-	icon = 'icons/obj/items_vr.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "verkdisk"
 
 

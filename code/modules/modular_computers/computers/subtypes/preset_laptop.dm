@@ -32,9 +32,9 @@
 	battery_module.charge_to_full()
 
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite
-	icon_state_unpowered = "adv-laptop-open"
-	icon_state = "adv-laptop-open"
-	icon_state_closed = "adv-laptop-closed"
+	icon_state_unpowered = "elite-open"
+	icon_state = "elite-open"
+	icon_state_closed = "elite-closed"
 
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite/install_default_hardware()
 	..()
@@ -47,11 +47,10 @@
 	battery_module = new/obj/item/computer_hardware/battery_module/super(src)
 	battery_module.charge_to_full()
 
-//VOREStation Add Start
 /obj/item/modular_computer/laptop/preset/custom_loadout/rugged
 	name = "rugged laptop computer"
 	desc = "A rugged portable computer."
-	icon = 'icons/obj/modular_laptop_vr.dmi'
+	icon = 'icons/obj/modular_laptop.dmi'
 	max_damage = 300
 	broken_damage = 200
 
@@ -65,4 +64,3 @@
 	card_slot = new/obj/item/computer_hardware/card_slot(src)
 	battery_module = new/obj/item/computer_hardware/battery_module/super(src)
 	battery_module.charge_to_full()
-//VOREStation Add End

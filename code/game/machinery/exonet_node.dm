@@ -2,17 +2,17 @@
 	name = "exonet node"
 	desc = null // Gets written in New()
 	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "exonet_node"
+	icon_state = "exonet"
 	idle_power_usage = 2500
-	density = 1
-	var/on = 1
-	var/toggle = 1
+	density = TRUE
+	var/on = TRUE
+	var/toggle = TRUE
 
 	var/allow_external_PDAs = 1
 	var/allow_external_communicators = 1
 	var/allow_external_newscasters = 1
 
-	var/opened = 0
+	var/opened = FALSE
 
 	var/list/logs = list() // Gets written to by exonet's send_message() function.
 
@@ -23,16 +23,7 @@
 /obj/machinery/exonet_node/map/Initialize(mapload, newdir)
 	. = ..()
 
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/subspace/ansible(src)
-	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/stock_parts/subspace/crystal(src)
-	component_parts += new /obj/item/stock_parts/subspace/treatment(src)
-	component_parts += new /obj/item/stock_parts/subspace/treatment(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 2)
+	default_apply_parts()
 	RefreshParts()
 
 	desc = "This machine is one of many, many nodes inside [GLOB.using_map.starsys_name]'s section of the Exonet, connecting the [GLOB.using_map.station_short] to the rest of the system, at least \

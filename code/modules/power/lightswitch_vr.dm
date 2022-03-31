@@ -8,7 +8,7 @@
 /obj/item/frame/lightswitch
 	name = "light switch frame"
 	desc = "Used for building light switches."
-	icon = 'icons/obj/power_vr.dmi'
+	icon = 'icons/obj/power.dmi'
 	icon_state = "lightswitch-s1"
 	build_machine_type = /obj/structure/construction/lightswitch
 	refund_amt = 2
@@ -17,7 +17,7 @@
 /obj/structure/construction/lightswitch
 	name = "light switch frame"
 	desc = "A light switch under construction."
-	icon = 'icons/obj/power_vr.dmi'
+	icon = 'icons/obj/power.dmi'
 	icon_state = "lightswitch-s1"
 	base_icon = "lightswitch-s"
 	build_machine_type = /obj/machinery/light_switch

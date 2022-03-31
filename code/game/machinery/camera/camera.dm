@@ -1,7 +1,7 @@
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/monitors_vr.dmi' //VOREStation Edit - New Icons
+	icon = 'icons/obj/monitors.dmi'
 	icon_state = "camera"
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
@@ -13,7 +13,7 @@
 	var/c_tag = null
 	var/c_tag_order = 999
 	var/status = 1
-	anchored = 1.0
+	anchored = TRUE
 	var/invuln = 0
 	var/bugged = 0
 	var/obj/item/camera_assembly/assembly = null
