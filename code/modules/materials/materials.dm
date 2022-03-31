@@ -1228,7 +1228,7 @@ var/list/name_to_material
 /datum/material/wax
 	name = "wax"
 	stack_type = /obj/item/stack/material/wax
-	icon_colour = "#fff343"
+	icon_colour = "#ebe6ac"
 	melting_point = T0C+300
 	weight = 1
 	hardness = 20
