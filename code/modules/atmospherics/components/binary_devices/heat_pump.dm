@@ -4,7 +4,6 @@
 #define EFFICENCY_MULT 1
 #define EFFICENCY_LIMIT_MULT 1
 
-
 /obj/machinery/atmospherics/binary/heat_pump
     name = "heat pump"
     desc = "A heat pump, used to transfer heat between two pipe systems."
@@ -119,10 +118,11 @@
     //Now we are at the point where we need to actively pump
     var/efficiency = get_thermal_efficency()
     var/energy_transfered = 0
+    CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
+
+    energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
     
-    energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),4*power_rating,-4*power_rating)
-    
-    var/power_draw = abs(energy_transfered/4)
+    var/power_draw = abs(energy_transfered/performance_factor)
     air2.add_thermal_energy(energy_transfered*efficiency)
     air1.add_thermal_energy(-energy_transfered*efficiency)
     if (power_draw >= 0)
