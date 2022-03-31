@@ -42,6 +42,7 @@ var/global/list/all_pipe_recipes = null
 			new /datum/pipe_recipe/pipe("Omni Gas Filter",		/obj/machinery/atmospherics/omni/atmos_filter),
 		),
 		"Heat Exchange" = list(
+			new /datum/pipe_recipe/pipe("Heat pump",			/obj/machinery/atmospherics/binary/heat_pump),
 			new /datum/pipe_recipe/pipe("Pipe",					/obj/machinery/atmospherics/pipe/simple/heat_exchanging),
 			new /datum/pipe_recipe/pipe("Junction",				/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction),
 			new /datum/pipe_recipe/pipe("Heat Exchanger",		/obj/machinery/atmospherics/unary/heat_exchanger),
