@@ -611,7 +611,7 @@
 /datum/recipe/rumham
 	appliance = OVEN
 	reagents = list("rum" = 10)
-	fruit = list("cherries" = 1)
+	fruit = list("cherries" = 1, "spineapple" = 1)
 	reagent_mix = RECIPE_REAGENT_REPLACE
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ham

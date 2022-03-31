@@ -23,11 +23,17 @@
 /obj/item/tool/wrench/Initialize(mapload)
 	. = ..()
 	if(random_color)
-		switch(pick("nocolor","red"))
+		switch(pick("nocolor","red","yellow","green","blue"))
 			if ("nocolor")
 				icon_state = "wrench"
 			if ("red")
 				icon_state = "wrench_red"
+			if ("yellow")
+				icon_state = "wrench_yellow"
+			if ("green")
+				icon_state = "wrench_green"
+			if ("blue")
+				icon_state = "wrench_blue"
 
 /obj/item/tool/wrench/is_wrench()
 	return TRUE

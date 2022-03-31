@@ -537,7 +537,7 @@
 /obj/item/weldingtool/welder_spear
 	name = "welder spear"
 	desc = "A miniature welder attached to a spear, providing more reach. Typically used by Tyrmalin workers."
-	icon_state = "miniwelder"
+	icon_state = "welderspear"
 	max_fuel = 10
 	w_class = ITEMSIZE_NORMAL
 	matter = list(MAT_METAL = 50, MAT_GLASS = 10)
