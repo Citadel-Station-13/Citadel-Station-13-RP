@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	icon_state = "apc0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_OFF
 	req_access = list(access_engine_equip)
 	var/area/area
@@ -87,13 +87,13 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/lighting = POWERCHAN_ON_AUTO
 	var/equipment = POWERCHAN_ON_AUTO
 	var/environ = POWERCHAN_ON_AUTO
-	var/operating = 1
-	var/charging = 0
-	var/chargemode = 1
+	var/operating = TRUE
+	var/charging = FALSE
+	var/chargemode = TRUE
 	var/chargecount = 0
-	var/locked = 1
-	var/coverlocked = 1
-	var/aidisabled = 0
+	var/locked = TRUE
+	var/coverlocked = TRUE
+	var/aidisabled = FALSE
 	var/obj/machinery/power/terminal/terminal = null
 	var/lastused_light = 0
 	var/lastused_equip = 0
@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/lastused_total = 0
 	var/main_status = 0
 	var/mob/living/silicon/ai/hacker = null // Malfunction var. If set AI hacked the APC and has full control.
-	var/wiresexposed = 0
+	var/wiresexposed = FALSE
 	powernet = 0		// set so that APCs aren't found as powernet nodes //Hackish, Horrible, was like this before I changed it :(
 	var/debug= 0
 	var/autoflag= 0		// 0 = off, 1= eqp and lights off, 2 = eqp off, 3 = all on.
@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/drain_power(var/drain_check, var/surge, var/amount = 0)
 
 	if(drain_check)
-		return 1
+		return TRUE
 
 	//This makes sure fully draining an APC cell won't break the cell charging.
 	charging = 0
@@ -177,15 +177,15 @@ GLOBAL_LIST_EMPTY(apcs)
 	if (building)
 		setDir(ndir)
 
-	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
-	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
+	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? -22 : 22)
+	pixel_y = (src.dir & 3)? (src.dir ==1 ? -22 : 22) : 0
 	if(!building)
 		autobuild()
 	else
 		area = get_area(src)
 		area.apc = src
-		opened = 1
-		operating = 0
+		opened = TRUE
+		operating = FALSE
 		name = "[area.name] APC"
 		stat |= MAINT
 		src.update_icon()

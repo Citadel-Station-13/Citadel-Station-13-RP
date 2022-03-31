@@ -2,7 +2,7 @@
 	anchored = FALSE
 	density = TRUE
 	icon = 'icons/obj/atmos.dmi'
-	icon_state = "sheater0"
+	icon_state = "sheater"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
 	var/obj/item/cell/cell
@@ -19,11 +19,13 @@
 
 /obj/machinery/space_heater/update_icon()
 	overlays.Cut()
-	icon_state = "sheater[on]"
 	if(panel_open)
-		overlays  += "sheater-open"
+		add_overlay("[initial(icon_state)]-open")
 	if(on)
+		add_overlay("[initial(icon_state)]-heat")
 		set_light(3, 3, "#FFCC00")
+	else if(cell)
+		add_overlay("[initial(icon_state)]-standby")
 	else
 		set_light(0)
 
