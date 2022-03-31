@@ -641,3 +641,22 @@ var/list/flooring_types
 	build_type = null
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = null
+
+/decl/flooring/wax
+	name = "wax floor"
+	desc = "Soft wax sheets shaped into tile sheets. It's a little squishy, and leaves a waxy residue when touched."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "wax"
+	damage_temperature = T0C+200
+	build_type = /obj/item/stack/tile/wax
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/honeycomb
+	name = "honeycomb floor"
+	desc = "A shallow layer of honeycomb. Some pods have been filled with honey and sealed over in wax, while others are vacant."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "honeycomb"
+	has_damage_range = 6
+	damage_temperature = T0C+200
+	build_type = /obj/item/stack/tile/honeycomb
+	flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER

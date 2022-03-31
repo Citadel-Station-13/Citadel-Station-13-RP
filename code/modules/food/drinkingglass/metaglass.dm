@@ -968,3 +968,6 @@ Drinks Data
 
 /datum/reagent/ethanol/maryonacross
 	glass_icon_state = "maryonacross"
+
+/datum/reagent/ethanol/royaljelly
+	glass_icon_state = "royaljelly"
