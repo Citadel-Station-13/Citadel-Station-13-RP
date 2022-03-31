@@ -30,6 +30,34 @@
     var/lowest_temp = TCMB
     var/on = 0
 
+/obj/machinery/atmospherics/binary/heat_pump/CtrlClick(mob/user)
+    if (Adjacent(user))
+        add_hiddenprint(user)
+        if(powered())
+            to_chat(user, "You toggle the power to the [src] [on ? "Off" : "On"].")
+            update_use_power(!use_power)
+            on != on
+            update_icon()
+        else
+            to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+
+/obj/machinery/atmospherics/binary/heat_pump/CtrlShiftClick(mob/user)
+    if(Adjacent(user))
+        add_hiddenprint(user)
+        if (powered())
+            to_chat(user, "You set the target temperature of the [src] to default.")
+            target_temp = T20C
+        else
+            to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+
+/obj/machinery/atmospherics/binary/heat_pump/AltClick(mob/user)
+    if(Adjacent(user))
+        add_hiddenprint(user)
+        if (powered())
+            to_chat(user, "You set the target temperature of the [src] to [TCMB] Kelvin.")
+            target_temp = TCMB
+        else
+            to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
 
 /obj/machinery/atmospherics/binary/heat_pump/Initialize(mapload)
     . = ..()
