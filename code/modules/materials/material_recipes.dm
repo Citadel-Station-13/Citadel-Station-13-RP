@@ -419,3 +419,10 @@
 /datum/material/sinew/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("sinew restraints", /obj/item/handcuffs/sinew, 1)
+
+/datum/material/wax/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe("candle", /obj/item/flame/candle, 1)
+	recipes += new/datum/stack_recipe("wax floor tile", /obj/item/stack/tile/wax, 1, 4, 20)
+	recipes += new/datum/stack_recipe("honeycomb floor tile", /obj/item/stack/tile/honeycomb, 1, 4, 20)
+	recipes += new/datum/stack_recipe("wax globule", /obj/item/ammo_casing/organic/wax, 1)

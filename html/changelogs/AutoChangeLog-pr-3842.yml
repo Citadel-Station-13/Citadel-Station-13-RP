@@ -1,0 +1,7 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds two new wax floor tiles."
+  - rscadd: "Adds wax crafting recipes."
+  - rscadd: "Three Apidean themed guns."
+  - rscadd: "More food recipes."
