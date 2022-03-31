@@ -201,6 +201,12 @@
 			thermitemelt(user)
 			return
 
+		else if (istype(W, /obj/item/melee/thermalcutter))
+			var/obj/item/melee/thermalcutter/TC = W
+			if(TC.remove_fuel(0,user))
+				thermitemelt(user)
+				return
+
 		else if( istype(W, /obj/item/melee/energy/blade) )
 			var/obj/item/melee/energy/blade/EB = W
 
@@ -252,6 +258,16 @@
 		//	cut_delay *= 0.7 // Tools themselves now can shorten the time it takes.
 		else if(istype(W,/obj/item/melee/energy/blade))
 			dismantle_sound = "sparks"
+			dismantle_verb = "slicing"
+			cut_delay *= 0.5
+		else if (istype(W, /obj/item/melee/thermalcutter))
+			var/obj/item/melee/thermalcutter/TC = W
+			if(!TC.isOn())
+				return
+			if(!TC.remove_fuel(0,user))
+				to_chat(user, "<span class='notice'>You need more fuel to complete this task.</span>")
+				return
+			dismantle_sound = 'sound/items/Welder.ogg'
 			dismantle_verb = "slicing"
 			cut_delay *= 0.5
 		else if(istype(W,/obj/item/pickaxe))
@@ -319,6 +335,15 @@
 						return
 				else if (istype(W, /obj/item/pickaxe/plasmacutter))
 					cut_cover = 1
+				else if (istype(W, /obj/item/melee/thermalcutter))
+					var/obj/item/melee/thermalcutter/TC = W
+					if(!TC.isOn())
+						return
+					if(TC.remove_fuel(0,user))
+						cut_cover = 1
+					else
+						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+						return
 				if(cut_cover)
 					to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
 					playsound(src, W.usesound, 100, 1)

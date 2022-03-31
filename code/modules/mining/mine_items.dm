@@ -125,7 +125,6 @@
 	drill_verb = "picking"
 	sharp = 1
 
-
 /*****************************Shovel********************************/
 
 /obj/item/shovel

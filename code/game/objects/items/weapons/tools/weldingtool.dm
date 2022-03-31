@@ -533,6 +533,18 @@
 	toolspeed = 1.75
 	eye_safety_modifier = 2
 
+//Welder Spear
+/obj/item/weldingtool/welder_spear
+	name = "welder spear"
+	desc = "A miniature welder attached to a spear, providing more reach. Typically used by Tyrmalin workers."
+	icon_state = "miniwelder"
+	max_fuel = 10
+	w_class = ITEMSIZE_NORMAL
+	matter = list(MAT_METAL = 50, MAT_GLASS = 10)
+	toolspeed = 1.5
+	eye_safety_modifier = 1 // Safer on eyes.
+	reach = 2
+
 /*
  * Electric/Arc Welder
  */
