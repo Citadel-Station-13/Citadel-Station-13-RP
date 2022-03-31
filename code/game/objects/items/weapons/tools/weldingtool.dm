@@ -136,7 +136,7 @@
 /obj/item/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity)
 		return
-	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if(istype(O, /obj/structure/reagent_dispensers/fueltank) || istype(O, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,O) <= 1)
 		if(!welding && max_fuel)
 			O.reagents.trans_to_obj(src, max_fuel)
 			to_chat(user, "<span class='notice'>You refill [src].</span>")

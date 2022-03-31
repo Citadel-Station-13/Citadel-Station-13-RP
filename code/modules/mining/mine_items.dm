@@ -211,7 +211,7 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 				turnOff()
 			if(31 to 100)
 				return
-	if (istype(A, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,A) <= 1)
+	if (istype(A, /obj/structure/reagent_dispensers/fueltank) || istype(A, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,A) <= 1)
 		to_chat(usr, "<span class='notice'>You begin filling the tank on the [src].</span>")
 		if(do_after(usr, 15))
 			A.reagents.trans_to_obj(src, max_fuel)

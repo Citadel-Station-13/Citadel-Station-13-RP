@@ -100,7 +100,7 @@
 /obj/item/grenade/explosive/ied/tyrmalin
 	name = "\improper Tyrmalin mining charge"
 	desc = "A stick of dynamite with a crude blasting cap and timer assembly attached. These volatile explosives are frequently used by Tyrmalin for blast mining. It does not look safe."
-	icon_state = "golincharge"
+	icon_state = "goblincharge"
 	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 10
 	spread_range = 3
@@ -115,7 +115,7 @@
 /obj/item/grenade/explosive/ied/tyrmalin/large
 	name = "\improper Tyrmalin heavy-duty mining charge"
 	desc = "A hefty bundle of hastily rigged dynamite. These bulky explosives are preferred for Tyrmalin blast mining operations. It does not look safe."
-	icon_state = "golincharge_big"
+	icon_state = "goblincharge_big"
 	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/strong, /obj/item/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 30
 	spread_range = 5
