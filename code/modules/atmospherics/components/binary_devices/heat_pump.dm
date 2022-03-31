@@ -36,7 +36,7 @@
         if(powered())
             to_chat(user, "You toggle the power to the [src] [on ? "Off" : "On"].")
             update_use_power(!use_power)
-            on != on
+            on = !on
             update_icon()
         else
             to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
