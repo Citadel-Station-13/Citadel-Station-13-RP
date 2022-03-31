@@ -352,4 +352,4 @@
 	desc = "These armored goggles help to augment the sight of the wearer. Initially designed to allow the user to enter a fully immersive digital environment, they have since been phased out in favor of NIFs and personal VR suites."
 	icon = 'icons/obj/clothing/hats_vr.dmi'
 	icon_override = 'icons/mob/head_vr.dmi'
-	icon_state = "cyberpunkgoggles"
+	icon_state = "cyberpunkgoggle"
