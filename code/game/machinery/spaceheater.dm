@@ -2,33 +2,50 @@
 	anchored = FALSE
 	density = TRUE
 	icon = 'icons/obj/atmos.dmi'
-	icon_state = "sheater"
+	icon_state = "sheater-off"
+	base_icon_state = "sheater"
 	name = "space heater"
-	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
+	desc = "Made by Space Amish using traditional space techniques, this heater/cooler is guaranteed not to set the station on fire. Warranty void if used in engines."
 	var/obj/item/cell/cell
 	var/cell_type = /obj/item/cell/high
 	var/on = FALSE
-	var/set_temperature = T0C + 20	//K
+	var/set_temperature = T0C + 30	//K
 	var/heating_power = 40000
 
 /obj/machinery/space_heater/Initialize(mapload, newdir)
 	. = ..()
 	if(cell_type)
 		cell = new cell_type(src)
-	update_icon()
+	update_appearance()
 
+/obj/machinery/space_heater/update_icon_state()
+	. = ..()
+	if(cell)
+		icon_state = "[base_icon_state]-[on ? "heat" : "off"]"
+		if(powered() && on)
+			set_light(3, 3, "#FFCC00")
+		else
+			set_light(0)
+	else
+		icon_state = "[base_icon_state]-standby"
+
+/obj/machinery/space_heater/update_overlays()
+	. = ..()
+	if(panel_open)
+		. += "[base_icon_state]-open"
+/*
 /obj/machinery/space_heater/update_icon()
 	overlays.Cut()
 	if(panel_open)
-		add_overlay("[initial(icon_state)]-open")
-	if(on)
-		add_overlay("[initial(icon_state)]-heat")
-		set_light(3, 3, "#FFCC00")
+		add_overlay("[base_icon_state]-open")
 	else if(cell)
-		add_overlay("[initial(icon_state)]-standby")
+		icon_state = "[base_icon_state]-standby"
+	else if(on)
+		icon_state = "[base_icon_state]-heat"
+		set_light(3, 3, "#FFCC00")
 	else
 		set_light(0)
-
+*/
 /obj/machinery/space_heater/examine(mob/user)
 	..(user)
 
@@ -40,9 +57,10 @@
 	return
 
 /obj/machinery/space_heater/powered()
+	. = ..()
 	if(cell && cell.charge)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/space_heater/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))

@@ -48,7 +48,7 @@ var/list/mob_hat_cache = list()
 	mob_always_swap = 1
 
 	mob_size = MOB_SMALL // pulled here from a _vr file
-	
+
 	//Used for self-mailing.
 	var/mail_destination = ""
 	var/obj/machinery/drone_fabricator/master_fabricator
@@ -82,6 +82,7 @@ var/list/mob_hat_cache = list()
 /mob/living/silicon/robot/drone/construction
 	name = "construction drone"
 	icon_state = "constructiondrone"
+	item_state = "constructiondrone"
 	law_type = /datum/ai_laws/construction_drone
 	module_type = /obj/item/robot_module/drone/construction
 	hat_x_offset = 1
