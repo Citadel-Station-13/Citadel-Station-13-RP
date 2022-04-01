@@ -6443,3 +6443,56 @@ END CITADEL CHANGE */
 	reagents.add_reagent("protein", 4)
 	reagents.add_reagent("rum", 8)
 	bitesize = 2
+
+//Tyrmalin Imported Foods
+/obj/item/reagent_containers/food/snacks/cavemoss_can
+	name = "Momma Toecutter's Cavemoss"
+	desc = "Freshly harvested from the eastern cisterns on Goss-Aguz. Sorted by trained Meex and carefully sealed in Momma Toecutters canning facility."
+	icon_state = "cavemosscan"
+	trash = /obj/item/trash/cavemoss
+	filling_color = "#015f01"
+	nutriment_amt = 5
+	nutriment_desc = list("mossy fungus" = 5)
+
+/obj/item/reagent_containers/food/snacks/cavemoss_can/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/diggerstew_can
+	name = "Momma Toecutter's Canned Digger's Stew"
+	desc = "Only the freshest ingredients collected on Goss-Aguz. Contains Deepworms, Caveroot and Black Tubers. A taste from home!"
+	icon_state = "diggerstewcan"
+	trash = /obj/item/trash/diggerstew
+	filling_color = "#64482d"
+	nutriment_amt = 5
+	nutriment_desc = list("mushroom" = 1, "carrot" = 1, "bugflesh" = 3)
+
+/obj/item/reagent_containers/food/snacks/diggerstew_can/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/canned_bettles
+	name = "Grom's Green Ham In a Can"
+	desc = "Pickled insect meats in a acidic sauce."
+	icon_state = "cavemosscan"
+	trash = /obj/item/trash/canned_beetles
+	filling_color = "#759c75"
+	nutriment_amt = 5
+	nutriment_desc = list("mushroom" = 2, "bugflesh" = 3)
+
+/obj/item/reagent_containers/food/snacks/canned_beetles/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/rust_can
+	name = "Iron Soup"
+	desc = "A particular Tyrmalin delicacy made from slag."
+	icon_state = "cavemosscan"
+	trash = /obj/item/trash/rust_can
+	filling_color = "#7a3f07"
+	nutriment_amt = 5
+	nutriment_desc = list("iron" = 3, "water" = 2)
+
+/obj/item/reagent_containers/food/snacks/rust_can/Initialize(mapload)
+	. = ..()
+	bitesize = 2

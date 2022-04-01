@@ -334,52 +334,18 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Apidean Culture crate"
 
-/datum/supply_pack/misc/weaponry_apidean
-	name = "Apidean Weaponry Crate"
-	contains = list(
-			/obj/item/gun/projectile/apinae_stinger = 1,
-			/obj/item/gun/projectile/apinae_pistol = 2,
-			/obj/item/grenade/spawnergrenade/manhacks/apidean = 3
-			)
-	cost = 100
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "Apidean Weaponry crate"
-	access = access_security
-
 //WIP Needs more stuff.
 /datum/supply_pack/misc/culture_tyrmalin
 	name = "Tyrmalin Culture Crate"
 	contains = list(
 			/obj/item/tool/wrench/goblin = 2,
-			/obj/item/weldingtool/welder_spear = 2
+			/obj/item/weldingtool/welder_spear = 2,
+			/obj/item/clothing/accessory/skullcodpiece = 2,
+			/obj/item/reagent_containers/food/snacks/cavemoss_can = 2,
+			/obj/item/reagent_containers/food/snacks/diggerstew_can = 2,
+			/obj/item/reagent_containers/food/snacks/canned_bettles = 2,
+			/obj/item/reagent_containers/food/snacks/rust_can = 2
 			)
 	cost = 50
 	containertype = /obj/structure/closet/crate
 	containername = "Tyrmalin Culture crate"
-
-/datum/supply_pack/misc/mining_tyrmalin
-	name = "Tyrmalin Mining Crate"
-	contains = list(
-			/obj/item/melee/thermalcutter = 1,
-			/obj/item/pickaxe/tyrmalin = 2,
-			/obj/item/grenade/explosive/ied/tyrmalin/large = 1,
-			/obj/item/grenade/explosive/ied/tyrmalin = 2
-			)
-	cost = 100
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "Tyrmalin Mining crate"
-	access = access_mining
-
-/* //Code the weapons first.
-/datum/supply_pack/misc/weaponry_tyrmalin
-	name = "Apidean Weaponry Crate"
-	contains = list(
-			/obj/item/gun/projectile/apinae_stinger = 1,
-			/obj/item/gun/projectile/apinae_pistol = 2,
-			/obj/item/grenade/spawnergrenade/manhacks/apidean = 3
-			)
-	cost = 100
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "Apidean Weaponry crate"
-	access = access_security
-*/

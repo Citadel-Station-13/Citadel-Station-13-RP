@@ -526,6 +526,7 @@
 	projectile_type = /obj/item/projectile/bullet/srmrocket
 	caliber = "rocket"
 	matter = list(DEFAULT_WALL_MATERIAL = 10000)
+	var/loadable = TRUE
 
 /obj/item/ammo_casing/cap
 	name = "cap"

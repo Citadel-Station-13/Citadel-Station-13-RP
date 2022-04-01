@@ -165,17 +165,7 @@
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Magnetic weapon crate"
 	access = access_armory
-	
-/datum/supply_pack/munitions/usmc
-	name = "Weapons - M41A Pulse Rifle"
-	contains = list(/obj/item/gun/projectile/caseless/usmc,
-		/obj/item/ammo_magazine/m10x24mm/small = 2
-		)
-	cost = 150
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = " United Sol Marine Corps Surplus Crate"
-	access = access_armory
-	
+
 /datum/supply_pack/munitions/shotgunammo
 	name = "Ammunition - Shotgun shells"
 	contains = list(
@@ -245,3 +235,30 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "frontier phaser crate"
 	access = access_explorer
+
+//Culture Update
+/datum/supply_pack/munitions/weaponry_apidean
+	name = "Apidean Weaponry Crate"
+	contains = list(
+			/obj/item/gun/projectile/apinae_stinger = 1,
+			/obj/item/gun/projectile/apinae_pistol = 2,
+			/obj/item/grenade/spawnergrenade/manhacks/apidean = 3
+			)
+	cost = 150
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "Apidean Weaponry crate"
+	access = access_security
+
+//WIP More guns being crafted.
+/datum/supply_pack/misc/weaponry_tyrmalin
+	name = "Tyrmalin Weaponry Crate"
+	contains = list(
+			/obj/item/gun/energy/ermitter = 1,
+			/obj/item/gun/launcher/rocket/tyrmalin = 1,
+			/obj/item/ammo_casing/rocket = 2,
+			/obj/item/gun/projectile/pirate/junker_pistol = 2
+			)
+	cost = 175
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "Tyrmalin Weaponry crate"
+	access = access_security
