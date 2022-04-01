@@ -161,10 +161,10 @@
 /datum/supply_pack/randomised/robotics/exosuit_mod
 	num_contained = 1
 	contains = list(
-			/obj/item/kit/paint/ripley,
-			/obj/item/kit/paint/ripley/death,
-			/obj/item/kit/paint/ripley/flames_red,
-			/obj/item/kit/paint/ripley/flames_blue
+			/obj/random/paintkit,
+			/obj/random/paintkit,
+			/obj/random/paintkit,
+			/obj/random/paintkit
 			)
 	name = "Random APLU modkit"
 	cost = 200
@@ -173,17 +173,17 @@
 
 /datum/supply_pack/randomised/robotics/exosuit_mod/durand
 	contains = list(
-			/obj/item/kit/paint/durand,
-			/obj/item/kit/paint/durand/seraph,
-			/obj/item/kit/paint/durand/phazon
+			/obj/random/paintkit/durand,
+			/obj/random/paintkit/durand,
+			/obj/random/paintkit/durand
 			)
 	name = "Random Durand exosuit modkit"
 
 /datum/supply_pack/randomised/robotics/exosuit_mod/gygax
 	contains = list(
-			/obj/item/kit/paint/gygax,
-			/obj/item/kit/paint/gygax/darkgygax,
-			/obj/item/kit/paint/gygax/recitence
+			/obj/random/paintkit/gygax,
+			/obj/random/paintkit/gygax,
+			/obj/random/paintkit/gygax
 			)
 	name = "Random Gygax exosuit modkit"
 
