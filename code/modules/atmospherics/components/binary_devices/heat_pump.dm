@@ -152,9 +152,9 @@
         air2.temperature = new_temperature
 
 /obj/machinery/atmospherics/binary/heat_pump/proc/check_passive_opportunity()
-    if((target_temp < air2.temperature) && (air1.temperature < air2.temperature))
+    if((target_temp < air2.temperature) && (air1.temperature < air2.temperature - 5))//Little offsets to prevent just constant passive flow for minor temperature differences
         return TRUE
-    if((target_temp > air2.temperature) && (air1.temperature > air2.temperature))
+    if((target_temp > air2.temperature) && (air1.temperature > air2.temperature + 5))
         return TRUE
     return FALSE
     
