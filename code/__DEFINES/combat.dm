@@ -95,13 +95,13 @@
 //Cuff resist speeds
 #define FAST_CUFFBREAK 1
 #define INSTANT_CUFFBREAK 2
-
+/*
 //Grab levels
 #define GRAB_PASSIVE 0
 #define GRAB_AGGRESSIVE 1
 #define GRAB_NECK 2
 #define GRAB_KILL 3
-
+*/
 //Grab breakout odds
 #define BASE_GRAB_RESIST_CHANCE 60 //base chance for whether or not you can escape from a grab
 
