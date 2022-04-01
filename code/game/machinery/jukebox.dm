@@ -33,6 +33,7 @@
 	var/current_genre = "Electronic" //What is our current genre?
 	var/list/genres = list("Arcade", "Alternative", "Classical and Orchestral", "Country and Western", "Disco, Funk, Soul, and R&B", "Electronic", "Folk and Indie", "Hip-Hop and Rap", "Jazz and Lounge", "Metal", "Pop", "Rock", "Sol Common Precursors") //Avaliable genres.
 	var/datum/track/current_track
+	var/datum/track/april_fools_track
 	var/list/datum/track/tracks = list(
 		new/datum/track("Beyond", 'sound/ambience/ambispace.ogg'),
 		new/datum/track("Clouds of Fire", 'sound/music/clouds.s3m'),
@@ -82,6 +83,8 @@
 				continue
 			if(T.secret)
 				secret_tracks |= T
+			if(T.title == "Never Gonna Give You Up")
+				april_fools_track = T
 			if(T.emag)
 				emag_tracks |=T
 			else
@@ -113,7 +116,10 @@
 			if(JUKEMODE_RANDOM)
 				var/previous_track = current_track
 				do
-					current_track = pick(tracks)
+					if((Holiday == "April Fool's Day") && (prob(25)))
+						current_track = april_fools_track
+					else
+						current_track = pick(tracks)
 				while(current_track == previous_track && tracks.len > 1)
 			if(JUKEMODE_REPEAT_SONG)
 				current_track = current_track
