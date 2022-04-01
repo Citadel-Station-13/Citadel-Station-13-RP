@@ -179,3 +179,11 @@
 		/obj/item/reagent_containers/food/snacks/cutlet
 	)
 	result = /obj/item/reagent_containers/food/snacks/schnitzel
+
+/datum/recipe/churro
+	appliance = FRYER
+	reagents = list("sugar" = 5, "batter" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/dough
+	)
+	result = /obj/item/reagent_containers/food/snacks/churro

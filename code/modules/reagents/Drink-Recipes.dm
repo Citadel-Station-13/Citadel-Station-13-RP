@@ -1676,3 +1676,10 @@
 	result = "maryonacross"
 	required_reagents = list("bloodymary" = 2, "blood" = 1, "holywater" = 1, "vodka" = 1)
 	result_amount = 5
+
+/datum/chemical_reaction/drinks/royaljelly
+	name = "Royal Jelly"
+	id = "royaljelly"
+	result = "royaljelly"
+	required_reagents = list("winebrandy" = 2, "honey" = 3)
+	result_amount = 5

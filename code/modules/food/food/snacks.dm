@@ -6381,3 +6381,65 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("nutriment", 7)
 	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/bananasplit
+	name = "banana split"
+	desc = "An ice cream sundae featuring bisected bananas topped with chocolate, whipped cream, and cherries."
+	icon_state = "banana_split"
+	nutriment_amt = 6
+	nutriment_desc = list("banana" = 3, "chocolate" = 1, "cream" = 2)
+
+/obj/item/reagent_containers/food/snacks/bananasplit/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("banana", 4)
+	reagents.add_reagent("nutriment", 2)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/wormburger
+	name = "worm burger"
+	desc = "A burger topped with worms. They're still alive."
+	icon_state = "wormburger"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "worms" = 2, "meat" = 1)
+
+/obj/item/reagent_containers/food/snacks/wormburger/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/churro
+	name = "churro"
+	desc = "Deep fried dough dusted in cinnamon."
+	icon_state = "churro"
+	nutriment_amt = 4
+	nutriment_desc = list("dough" = 3, "sweetness" = 1, "cinnamon" = 1)
+
+/obj/item/reagent_containers/food/snacks/churro/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nutriment", 5)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/ham
+	name = "ham"
+	desc = "A hearty chunk of brined pork."
+	icon_state = "ham"
+	nutriment_amt = 8
+	nutriment_desc = list("meat" = 5, "salt" = 3)
+
+/obj/item/reagent_containers/food/snacks/ham/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/rumham
+	name = "rum ham"
+	desc = "Drinking your food? That...is genius!"
+	icon_state = "rumham"
+	nutriment_amt = 6
+	nutriment_desc = list("meat" = 3, "salt" = 3, "rum" = 6)
+
+/obj/item/reagent_containers/food/snacks/rumham/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 4)
+	reagents.add_reagent("rum", 8)
+	bitesize = 2
