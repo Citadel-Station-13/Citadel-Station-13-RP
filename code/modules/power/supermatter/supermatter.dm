@@ -41,10 +41,10 @@
 /obj/machinery/power/supermatter
 	name = "Supermatter"
 	desc = "A strangely translucent and iridescent crystal. <font color='red'>You get headaches just from looking at it.</font>"
-	icon = 'icons/obj/engine.dmi'
+	icon = 'icons/obj/supermatter.dmi'
 	icon_state = "darkmatter"
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	light_range = 4
 
 	var/gasefficency = 0.25
@@ -525,7 +525,7 @@
 /obj/item/broken_sm
 	name = "shattered supermatter plinth"
 	desc = "The shattered remains of a supermatter shard plinth. It doesn't look safe to be around."
-	icon = 'icons/obj/engine.dmi'
+	icon = 'icons/obj/supermatter.dmi'
 	icon_state = "darkmatter_broken"
 
 /obj/item/broken_sm/Initialize(mapload)

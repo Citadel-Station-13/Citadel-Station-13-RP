@@ -269,6 +269,13 @@ var/const/MAX_ACTIVE_TIME = 400
 				if(prob(25))
 					src.visible_message("<span class='notice'>\The [src] skitters[pick(" away"," around","")].</span>")
 
+// LAMAAAAAARRRRRRR
+/obj/item/clothing/mask/facehugger/lamarr
+	name = "Lamarr"
+	desc = "The Research Director's pet, a domesticated and debeaked xenomorph facehugger. Friendly, but may still try to couple with your head."
+	sterile = TRUE
+
+
 // Simple Mob Conversion. Leaving this commented out because I really don't want to actually have to convert this.
 /*
 

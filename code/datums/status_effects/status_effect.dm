@@ -80,11 +80,12 @@
 		return
 	duration = world.time + original_duration
 
-/**
-  * Multiplied to clickdelays
-  */
-/datum/status_effect/proc/action_cooldown_mod()
+//clickdelay/nextmove modifiers!
+/datum/status_effect/proc/nextmove_modifier()
 	return 1
+
+/datum/status_effect/proc/nextmove_adjust()
+	return 0
 
 ////////////////
 // ALERT HOOK //
@@ -94,6 +95,10 @@
 	name = "Curse of Mundanity"
 	desc = "You don't feel any different..."
 	var/datum/status_effect/attached_effect
+
+/atom/movable/screen/alert/status_effect/Destroy()
+	attached_effect = null //Don't keep a ref now
+	return ..()
 
 //////////////////
 // HELPER PROCS //

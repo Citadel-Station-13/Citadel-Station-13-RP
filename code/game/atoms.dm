@@ -1033,3 +1033,11 @@
 	relative_layer = new_layer
 	// base layer being null isn't
 	layer = base_layer + 0.000001 * relative_layer
+
+/**
+ * This proc is called when an atom in our contents has it's [Destroy][/atom/proc/Destroy] called
+ *
+ * Default behaviour is to simply send [COMSIG_ATOM_CONTENTS_DEL]
+ */
+/atom/proc/handle_atom_del(atom/deleting_atom)
+	SEND_SIGNAL(src, COMSIG_ATOM_CONTENTS_DEL, deleting_atom)

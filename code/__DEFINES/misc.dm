@@ -542,7 +542,8 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 		"pink"		= "lightgrey"		\
 	)
 
-#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
-#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
+#define SPAN_ALERT(X) "<span class='alert'>[X]</span>"
 #define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 #define SPAN_OCCULT(X) "<span class='cult'>[X]</span>"
+#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
