@@ -189,3 +189,11 @@
 /obj/item/trash/rust_can
 	name = "Iron Soup"
 	icon_state = "rust_can"
+
+/obj/item/trash/alraune_bar
+	name = "Alraune snack bar"
+	icon_state = "alraunesnack"
+
+/obj/item/trash/bugsnacks
+	name = "Bugsnacks"
+	icon_state = "bugsnacks"

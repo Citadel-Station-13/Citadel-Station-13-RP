@@ -328,13 +328,15 @@
 			/obj/fiftyspawner/wax = 2,
 			/obj/item/healthanalyzer/apidean = 1,
 			/obj/item/analyzer/apidean = 1,
-			/obj/item/reagent_scanner/apidean = 1
+			/obj/item/reagent_scanner/apidean = 1,
+			/mob/living/bot/medbot/apidean,
+			/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead = 2,
+			/obj/item/reagent_containers/food/drinks/bottle/royaljelly = 1
 			)
 	cost = 50
 	containertype = /obj/structure/closet/crate
 	containername = "Apidean Culture crate"
 
-//WIP Needs more stuff.
 /datum/supply_pack/misc/culture_tyrmalin
 	name = "Tyrmalin Culture Crate"
 	contains = list(
@@ -344,8 +346,21 @@
 			/obj/item/reagent_containers/food/snacks/cavemoss_can = 2,
 			/obj/item/reagent_containers/food/snacks/diggerstew_can = 2,
 			/obj/item/reagent_containers/food/snacks/canned_bettles = 2,
-			/obj/item/reagent_containers/food/snacks/rust_can = 2
+			/obj/item/reagent_containers/food/snacks/rust_can = 2,
+			/obj/item/reagent_containers/food/drinks/bottle/phobos = 1,
+			/obj/item/reagent_containers/food/drinks/bottle/greenstuff = 1
 			)
 	cost = 50
 	containertype = /obj/structure/closet/crate
 	containername = "Tyrmalin Culture crate"
+
+/datum/supply_pack/misc/culture_alraune
+	name = "Alraune Culture Crate"
+	contains = list(
+			/obj/item/reagent_containers/food/snacks/alraune_bar = 3,
+			/obj/item/reagent_containers/food/snacks/bugsnacks = 3,
+			/obj/item/reagent_containers/food/drinks/cans/alraune = 3
+			)
+	cost = 50
+	containertype = /obj/structure/closet/crate
+	containername = "Alraune Culture crate"

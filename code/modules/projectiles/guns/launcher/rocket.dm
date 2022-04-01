@@ -16,6 +16,7 @@
 	throw_distance = 30
 	var/max_rockets = 1
 	var/list/rockets = new/list()
+	var/caliber = "rocket"
 
 /obj/item/gun/launcher/rocket/examine(mob/user)
 	. = ..()

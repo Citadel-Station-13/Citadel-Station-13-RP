@@ -286,17 +286,23 @@
 	new_desc = "An up-armored power loader design often favored by pirates."
 	new_icon = "pirate"
 
-/obj/item/kit/paint/ripley/battered
+/obj/item/kit/paint/ripley/junker
 	name = "\"Scrapper\" APLU customisation kit"
 	new_name = "APLU \"Scrapper\""
 	new_desc = "Even the simple power loader is considered a luxury on the Frontier. Some colonies have maintained one single model for decades."
-	new_icon = "riple_battered"
+	new_icon = "ripley_junker"
+
+/obj/item/kit/paint/ripley/battered
+	name = "\"Battle Damaged\" APLU customisation kit"
+	new_name = "APLU \"Battle Damaged\""
+	new_desc = "Overconfident Roboticists and pilots will often rush into combat with a power loader. It is a testament to the design that some can still operate in this condition."
+	new_icon = "ripley_battered"
 
 /obj/item/kit/paint/ripley/medical
 	name = "\"Caduceus\" APLU customisation kit"
 	new_name = "APLU \"Caduceus\""
 	new_desc = "Power loaders are slow and bulky, making them poor fits for medical work. Sometimes, however, they may be all that's available."
-	new_icon = "med_ripley"
+	new_icon = "ripley_med"
 
 /obj/item/kit/paint/ripley/sovjet
 	name = "\"Old Red\" APLU customisation kit"
@@ -308,7 +314,7 @@
 	name = "\"Arnold\" APLU customisation kit"
 	new_name = "APLU \"Arnold\""
 	new_desc = "Power loaders are loud, and clunky. Poorly suited for jungle operations of any kind, this camo paint job is likely only cosmetic."
-	new_icon = "camo_ripley"
+	new_icon = "ripley_camo"
 
 /obj/item/kit/paint/ripley/clown
 	name = "\"CR3AM-P13\" APLU customisation kit"

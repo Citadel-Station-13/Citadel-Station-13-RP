@@ -1221,6 +1221,7 @@
 				/obj/item/kit/paint/ripley/flames_red,
 				/obj/item/kit/paint/ripley/flames_blue,
 				/obj/item/kit/paint/ripley/pirate,
+				/obj/item/kit/paint/ripley/junker,
 				/obj/item/kit/paint/ripley/battered,
 				/obj/item/kit/paint/ripley/medical,
 				/obj/item/kit/paint/ripley/sovjet,

@@ -249,14 +249,14 @@
 	containername = "Apidean Weaponry crate"
 	access = access_security
 
-//WIP More guns being crafted.
 /datum/supply_pack/misc/weaponry_tyrmalin
 	name = "Tyrmalin Weaponry Crate"
 	contains = list(
 			/obj/item/gun/energy/ermitter = 1,
 			/obj/item/gun/launcher/rocket/tyrmalin = 1,
 			/obj/item/ammo_casing/rocket = 2,
-			/obj/item/gun/projectile/pirate/junker_pistol = 2
+			/obj/item/gun/projectile/pirate/junker_pistol = 2,
+			/obj/item/gun/energy/ionrifle/pistol/tyrmalin = 1
 			)
 	cost = 175
 	containertype = /obj/structure/closet/crate/secure/gear
