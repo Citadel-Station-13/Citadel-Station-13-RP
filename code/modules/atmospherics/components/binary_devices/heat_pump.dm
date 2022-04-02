@@ -27,7 +27,10 @@
     */  
     var/target_temp = T20C
     var/lowest_temp = TCMB
+    var/max_temp = 99999999//Need to bottle it somewhere, the sun's core has 15 million kelvin
+
     var/on = 0
+    var/efficiency = 0
 
 /obj/machinery/atmospherics/binary/heat_pump/CtrlClick(mob/user)
     if (Adjacent(user))
@@ -91,24 +94,24 @@
 
 /obj/machinery/atmospherics/binary/heat_pump/attackby(obj/item/W, mob/user)
     if(istype(W, /obj/item/pen))
-		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
-		new_name = trim(new_name)
-		name = (new_name? new_name : name)
-		return
-	if (!W.is_wrench())
-		return ..()
-	if (!(stat & NOPOWER) && use_power)
-		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
-		return 1
-	add_fingerprint(user)
-	playsound(src, W.usesound, 50, 1)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
-		user.visible_message( \
-			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
-			"<span class='notice'>You have unfastened \the [src].</span>", \
-			"You hear ratchet.")
-		deconstruct()
+        var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
+        new_name = trim(new_name)
+        name = (new_name? new_name : name)
+        return
+    if (!W.is_wrench())
+        return ..()
+    if (!(stat & NOPOWER) && use_power)
+        to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
+        return 1
+    add_fingerprint(user)
+    playsound(src, W.usesound, 50, 1)
+    to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+    if (do_after(user, 40 * W.toolspeed))
+        user.visible_message( \
+            "<span class='notice'>\The [user] unfastens \the [src].</span>", \
+            "<span class='notice'>You have unfastened \the [src].</span>", \
+            "You hear ratchet.")
+        deconstruct()
 
 /obj/machinery/atmospherics/binary/heat_pump/attack_hand(user as mob)
 	if(..())
@@ -137,15 +140,14 @@
         return//No need to pump while there is passive flow occuring
 
     //Now we are at the point where we need to actively pump
-    var/efficiency = get_thermal_efficency()
+    efficiency = get_thermal_efficency()
     var/energy_transfered = 0
     CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
 
     energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
     
     var/power_draw = abs(energy_transfered/performance_factor)
-    air2.add_thermal_energy(energy_transfered*efficiency)//this currently means you can draw energy from a 2.7Kelvin gas.
-    air1.add_thermal_energy(-energy_transfered*efficiency)//But because efficency is shit like this, you dont really have a benefit from it.
+    air2.add_thermal_energy(-air1.add_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
     if (power_draw >= 0)
         last_power_draw = power_draw
         use_power(power_draw)
@@ -190,10 +192,11 @@
     data["target_temp"] = target_temp
     data["current_temp"] = air2.temperature
     data["sink_temp"] = air1.temperature
-    data["power_level"] = power_rating
-    data["max_power_level"] = max_power_rating
     data["on"] = on
     data["lowest_temp"] = lowest_temp
+    data["highest_temp"] = max_temp
+    data["efficency"] = efficiency
+
 
     return data
 
