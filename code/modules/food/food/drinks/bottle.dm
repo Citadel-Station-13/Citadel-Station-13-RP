@@ -689,10 +689,10 @@
 /obj/item/reagent_containers/food/drinks/bottle/rotgut
 	name = "Throt-Throt's Select Rotgut"
 	desc = "Brewed in sunless caverns, this beastly alcohol will put hair on your chest."
-	icon_state = "rotgut"
+	icon_state = "rotgutbottle"
 	center_of_mass = list("x"=5, "y"=4)
 
-/obj/item/reagent_containers/food/drinks/bottle/moonshine/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/bottle/rotgut/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("rotgut", 100)
 
