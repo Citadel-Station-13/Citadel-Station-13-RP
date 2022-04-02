@@ -1,0 +1,22 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds two new cosmetic skins for wrenches, as well as the ability for random colored wrench spawning."
+  - rscadd: "Adds Tyrmalin Mining Charges, Tyrmalin Excavator drill, thermal cutter, welder spear."
+  - rscadd: "Apidean Scanners: Health, Atmospheric, and Reagent, Drone Grenade, Throne and Stool"
+  - rscadd: "Adds Wax Chemistry Reaction"
+  - rscadd: "Adds Culture and Weapon Crates: Apidean and Tyrmalin"
+  - rscadd: "Adds more cosmetic stirrup style stockings."
+  - rscadd: "Adds prescription welding goggles."
+  - rscadd: "Adds portable fuel tanks."
+  - rscadd: "New guns - Junker Pistol, Ermitter Rifle, Rokkitlauncher, Botbuster, Warplock Jezzail"
+  - rscadd: "Snack Foods - Canned Cavemoss, Canned Digger Stew, Canned Beetles, Canned Iron Soup, Snack Bar, Bugsnacks"
+  - rscadd: "Recipes - Spider Wing Fangchu, Steamed Spider, Spider Loaf, Bear Ribs, Sapling's Delight, Blue Cheese"
+  - rscadd: "Drinks - Green Stuff, Phobos, Royal Jelly, Moonshine, Ambrosia Mead, Rotgut (Bottles) & Loam Nutri-Juice, Gondola Energy Drink, Geometer Energy Drink (Cans)"
+  - rscadd: "Mecha Paint Kits & Randomizer for Maps
+remove: Duplicate/Fake Mecha Paint Kits
+tweak: Changes Mead recipe from 1 Sugar, 1 Water, 5 Enzyme to 1 Honey, 1 Water, 5 Enzyme"
+  - rscadd: "Apidean \"Beebot\" Medbot"
+  - rscadd: "Colored Medbot Subtypes"
+  - rscadd: "Collapsible Missile Launcher"
+  - rscadd: "Memorial Wall"
