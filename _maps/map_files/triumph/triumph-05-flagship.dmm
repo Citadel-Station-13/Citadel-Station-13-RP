@@ -339,8 +339,8 @@
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
-/obj/item/gun/launcher/rocket,
-/obj/item/gun/launcher/rocket,
+/obj/item/gun/projectile/rocket,
+/obj/item/gun/projectile/rocket,
 /obj/item/gun/projectile/automatic/l6_saw,
 /obj/item/gun/projectile/automatic/l6_saw,
 /obj/item/ammo_magazine/m545saw,
@@ -16164,6 +16164,15 @@
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/security)
+"KZ" = (
+/obj/structure/statue/marble/venus{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "Lf" = (
 /obj/machinery/vending/cola,
 /turf/simulated/shuttle/floor/darkred,
@@ -16233,6 +16242,14 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
+"NO" = (
+/obj/structure/statue/marble/venus{
+	pixel_y = -5
+	},
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "OD" = (
 /obj/machinery/power/port_gen/pacman,
 /turf/unsimulated/floor{
@@ -16248,6 +16265,12 @@
 /obj/item/defib_kit,
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
+"Pq" = (
+/obj/structure/memorial,
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "Qd" = (
 /obj/machinery/computer/communications{
 	dir = 4
@@ -16288,6 +16311,11 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
+"Tb" = (
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "Td" = (
 /obj/machinery/door/airlock/command,
 /turf/simulated/shuttle/floor/white,
@@ -25760,9 +25788,9 @@ wJ
 xh
 wI
 wI
-xI
 wI
-wI
+KZ
+Tb
 ze
 wI
 xh
@@ -25903,8 +25931,8 @@ xh
 wI
 wI
 wI
-wI
-wI
+Pq
+Tb
 wI
 wI
 xh
@@ -26045,8 +26073,8 @@ xh
 wI
 wI
 wI
-xh
-wI
+Tb
+Tb
 wI
 ze
 xh
@@ -26187,8 +26215,8 @@ xh
 wI
 xI
 wI
-wI
-wI
+NO
+Tb
 wI
 wI
 xh

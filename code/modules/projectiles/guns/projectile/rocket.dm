@@ -1,29 +1,22 @@
-/obj/item/gun/launcher/rocket
+/obj/item/gun/projectile/rocket
 	name = "rocket launcher"
 	desc = "MAGGOT."
 	icon_state = "rocket"
 	item_state = "rocket"
+	caliber = "rocket"
+	max_shells = 1
+	load_method = SINGLE_CASING
 	w_class = ITEMSIZE_LARGE
 	throw_speed = 2
 	throw_range = 10
 	force = 5.0
-	slot_flags = 0
+	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 5)
 	fire_sound = 'sound/weapons/rpg.ogg'
 	one_handed_penalty = 30
 
-	release_force = 15
-	throw_distance = 30
-	var/max_rockets = 1
-	var/list/rockets = new/list()
-	var/caliber = "rocket"
-
-/obj/item/gun/launcher/rocket/examine(mob/user)
-	. = ..()
-	if(get_dist(user, src) <= 2)
-		. += "<font color='blue'>[rockets.len] / [max_rockets] rockets.</font>"
-
-/obj/item/gun/launcher/rocket/proc/load(obj/item/ammo_casing/rocket/R, mob/user)
+/*
+/obj/item/gun/projectile/rocket/proc/load(obj/item/ammo_casing/rocket/R, mob/user)
 	if(R.loadable)
 		if(rockets.len >= max_rockets)
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
@@ -35,7 +28,7 @@
 		return
 	to_chat(user, "<span class='warning'>[R] doesn't seem to fit in the [src]!</span>")
 
-/obj/item/gun/launcher/rocket/proc/unload(mob/user)
+/obj/item/gun/projectile/rocket/proc/unload(mob/user)
 	if(rockets.len)
 		var/obj/item/ammo_casing/rocket/R = rockets[rockets.len]
 		rockets.len--
@@ -45,20 +38,18 @@
 	else
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 
-/obj/item/gun/launcher/rocket/attackby(obj/item/I, mob/user)
+/obj/item/gun/projectile/rocket/attackby(obj/item/I, mob/user)
 	if((istype(I, /obj/item/ammo_casing/rocket)))
 		load(I, user)
 	else
 		..()
 
-/obj/item/gun/launcher/rocket/attack_hand(mob/user)
+/obj/item/gun/projectile/rocket/attack_hand(mob/user)
 	if(user.get_inactive_hand() == src)
 		unload(user)
 	else
 		..()
 
-//According to grenade launcher code, this broke?
-/*
 /obj/item/gun/launcher/rocket/consume_next_projectile()
 	if(rockets.len)
 		var/obj/item/ammo_casing/rocket/I = rockets[1]
@@ -67,12 +58,12 @@
 	return null
 */
 
-/obj/item/gun/launcher/rocket/handle_post_fire(mob/user, atom/target)
+/obj/item/gun/projectile/rocket/handle_post_fire(mob/user, atom/target)
 	message_admins("[key_name_admin(user)] fired a rocket from a rocket launcher ([src.name]) at [target].")
 	log_game("[key_name_admin(user)] used a rocket launcher ([src.name]) at [target].")
 	..()
 
-/obj/item/gun/launcher/rocket/tyrmalin
+/obj/item/gun/projectile/rocket/tyrmalin
 	name = "rokkit launcher"
 	desc = "MAGGOT."
 	icon_state = "rokkitlauncher"
@@ -80,7 +71,7 @@
 	var/unstable = 1
 	var/jammed = 0
 
-/obj/item/gun/launcher/rocket/tyrmalin/consume_next_projectile(mob/user as mob)
+/obj/item/gun/projectile/rocket/tyrmalin/consume_next_projectile(mob/user as mob)
 	. = ..()
 	if(.)
 		if(unstable)

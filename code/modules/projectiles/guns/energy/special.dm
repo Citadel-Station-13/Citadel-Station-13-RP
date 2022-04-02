@@ -439,10 +439,10 @@ obj/item/gun/energy/staff/focus
 	desc = "Deceptively primitive in appearance, this finely tuned rifle uses an onboard reactor to stimulate the growth of an anomalous crystal. Fragments of this crystal are utilized as ammunition by the weapon."
 	icon_state = "warplockgun"
 	item_state = "huntrifle"
-	projectile_type = /obj/item/projectile/energy/dart
+	projectile_type = /obj/item/projectile/bullet/cyanideround/jezzail
 	fire_delay = 20
 	charge_cost = 600
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	cell_type = /obj/item/cell/device/weapon
 	battery_lock = 1
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_LARGE

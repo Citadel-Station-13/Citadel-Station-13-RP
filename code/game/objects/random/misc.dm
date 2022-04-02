@@ -812,7 +812,7 @@
 					prob(1);/obj/item/gun/projectile/deagle/gold,\
 					prob(1);/obj/item/gun/energy/imperial,\
 					prob(1);/obj/item/gun/projectile/automatic/as24,\
-					prob(1);/obj/item/gun/launcher/rocket,\
+					prob(1);/obj/item/gun/projectile/rocket,\
 					prob(1);/obj/item/gun/launcher/grenade,\
 					prob(1);/obj/item/gun/projectile/gyropistol,\
 					prob(1);/obj/item/gun/projectile/heavysniper,\
