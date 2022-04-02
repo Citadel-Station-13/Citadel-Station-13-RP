@@ -6497,7 +6497,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/cavemoss_can
 	name = "Momma Toecutter's Cavemoss"
 	desc = "Freshly harvested from the eastern cisterns on Goss-Aguz. Sorted by trained Meex and carefully sealed in Momma Toecutters canning facility."
-	icon_state = "cavemosscan"
+	icon_state = "cavemoss_can"
 	trash = /obj/item/trash/cavemoss
 	filling_color = "#015f01"
 	nutriment_amt = 5
@@ -6510,7 +6510,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/diggerstew_can
 	name = "Momma Toecutter's Canned Digger's Stew"
 	desc = "Only the freshest ingredients collected on Goss-Aguz. Contains Deepworms, Caveroot and Black Tubers. A taste from home!"
-	icon_state = "diggerstewcan"
+	icon_state = "diggerstew_can"
 	trash = /obj/item/trash/diggerstew
 	filling_color = "#64482d"
 	nutriment_amt = 5
@@ -6523,7 +6523,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/canned_bettles
 	name = "Grom's Green Ham In a Can"
 	desc = "Pickled insect meats in a acidic sauce."
-	icon_state = "cavemosscan"
+	icon_state = "canned_beetles"
 	trash = /obj/item/trash/canned_beetles
 	filling_color = "#759c75"
 	nutriment_amt = 5
@@ -6536,7 +6536,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/rust_can
 	name = "Iron Soup"
 	desc = "A particular Tyrmalin delicacy made from slag."
-	icon_state = "cavemosscan"
+	icon_state = "rust_can"
 	trash = /obj/item/trash/rust_can
 	filling_color = "#7a3f07"
 	nutriment_amt = 5

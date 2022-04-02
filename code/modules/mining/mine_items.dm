@@ -235,6 +235,7 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	return reagents.get_reagent_amount("fuel")
 
 /obj/item/pickaxe/tyrmalin/examine(mob/user)
+	. = ..()
 	if(max_fuel)
 		. += "<span class = 'notice'>The [src] feels like it contains roughtly [get_fuel()] units of fuel left.</span>"
 
