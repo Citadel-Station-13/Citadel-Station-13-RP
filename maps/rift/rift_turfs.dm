@@ -18,6 +18,10 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/steel_grid)
 
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/techfloor/grid)
+
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/techfloor)
+
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
@@ -30,7 +34,11 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
 /turf/simulated/floor/outdoors/safeice/indoors
-	outdoors = FALSE
+	outdoors = FALSE /* So that we don't get weather effects for the ice used indoors. Convuluted, I know, but this
+	means I don't need another, almost identical turf to be created. */
+
+/turf/simulated/floor/plating/lythios43c/outdoors
+	outdoors = TRUE
 
 /turf/simulated/mineral/icerock
 	initial_gas_mix = GAS_STRING_STP

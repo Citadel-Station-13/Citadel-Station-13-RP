@@ -6364,6 +6364,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
+"lC" = (
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside1)
 "lD" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/table/wooden_reinforced,
@@ -11139,6 +11146,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"tN" = (
+/obj/structure/catwalk,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "tO" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12847,7 +12858,7 @@
 	},
 /obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/plating,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "wF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -13119,6 +13130,13 @@
 "xe" = (
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
+"xf" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "xg" = (
 /obj/machinery/door/airlock/maintenance/rnd,
@@ -13698,7 +13716,8 @@
 /area/maintenance/security/lower)
 "yt" = (
 /obj/structure/railing,
-/turf/unsimulated/wall/seperator,
+/obj/effect/blocker,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "yu" = (
 /obj/effect/zone_divider,
@@ -15018,7 +15037,7 @@
 "AY" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/plating,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "AZ" = (
 /obj/effect/zone_divider,
@@ -15828,7 +15847,7 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "CM" = (
 /obj/structure/cable/green{
@@ -16759,7 +16778,8 @@
 "Eu" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/unsimulated/wall/seperator,
+/obj/effect/blocker,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "Ev" = (
 /obj/structure/bookcase,
@@ -19202,7 +19222,8 @@
 /area/tether/surfacebase/entertainment/backstage)
 "Je" = (
 /obj/effect/zone_divider,
-/turf/unsimulated/wall/seperator,
+/obj/effect/blocker,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "Jf" = (
 /turf/simulated/wall,
@@ -19493,7 +19514,8 @@
 /turf/simulated/wall/r_wall,
 /area/rift/surfacebase/outside/outside1)
 "JP" = (
-/turf/unsimulated/wall/seperator,
+/obj/effect/blocker,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "JQ" = (
 /obj/structure/cable/green{
@@ -21372,6 +21394,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
+/area/rift/surfacebase/outside/outside1)
+"Ny" = (
+/obj/structure/catwalk,
+/obj/structure/railing,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside1)
 "Nz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -23536,7 +23566,7 @@
 	name = "center_to_westplain";
 	portal_id = "westplainstep"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "RK" = (
 /obj/structure/table/standard,
@@ -28027,8 +28057,8 @@ Le
 Le
 Le
 MY
-DJ
-DJ
+tN
+tN
 AY
 RU
 Le
@@ -28221,8 +28251,8 @@ Le
 Le
 Le
 MY
-DJ
-DJ
+tN
+tN
 AY
 RU
 Le
@@ -28415,8 +28445,8 @@ Le
 Le
 Le
 MY
-DJ
-DJ
+tN
+tN
 AY
 RU
 Le
@@ -28609,8 +28639,8 @@ Le
 Le
 Le
 MY
-DJ
-DJ
+tN
+tN
 AY
 RU
 Le
@@ -28803,8 +28833,8 @@ Le
 Le
 Le
 MY
-DJ
-DJ
+tN
+lC
 AY
 RU
 Le
@@ -28997,9 +29027,9 @@ Le
 Le
 Le
 MY
+lC
 DJ
-DJ
-AY
+Ny
 RU
 Le
 Le
@@ -29772,10 +29802,10 @@ aZ
 aa
 aa
 aa
-aa
+dx
 FX
 FX
-FX
+xf
 xe
 aa
 aa

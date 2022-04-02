@@ -16224,7 +16224,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/machinery/door/airlock/glass_external/public{
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "escape_shuttle_hatch_station";
+	locked = 1;
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -16400,7 +16404,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
-/obj/machinery/door/airlock/glass_external/public{
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "escape_shuttle_hatch_station";
+	locked = 1;
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/floor/tiled/steel_grid,

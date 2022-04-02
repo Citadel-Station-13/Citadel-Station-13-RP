@@ -3281,6 +3281,9 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/chargebay)
 "gv" = (
@@ -3552,6 +3555,12 @@
 /obj/effect/floor_decal/corner/purple/bordercorner{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "gX" = (
@@ -3577,8 +3586,9 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/purple/bordercorner2,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
@@ -3740,6 +3750,9 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/chargebay)
 "hl" = (
@@ -3879,6 +3892,12 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "hu" = (
@@ -3886,6 +3905,12 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/machinery/light,
 /obj/structure/curtain/medical,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "hv" = (
@@ -4202,7 +4227,7 @@
 "ib" = (
 /obj/structure/girder,
 /obj/effect/overlay/snow/floor,
-/turf/space,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/medbay)
 "ic" = (
 /obj/machinery/alarm{
@@ -4227,6 +4252,7 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
+/obj/structure/curtain/open/shower/security,
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
 "ie" = (
@@ -5980,6 +6006,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"lm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/assembly/robotics)
 "ln" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -6336,6 +6371,10 @@
 /obj/random/maintenance/security,
 /turf/simulated/floor/wood,
 /area/maintenance/security/upper)
+"lW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel,
+/area/assembly/chargebay)
 "lX" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -6345,6 +6384,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "lY" = (
@@ -8316,6 +8357,8 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "pr" = (
@@ -11922,6 +11965,9 @@
 	dir = 10
 	},
 /obj/machinery/space_heater,
+/obj/effect/landmark{
+	name = "blobstart"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/dormitory)
 "wj" = (
@@ -13494,6 +13540,8 @@
 	id = "mech_bay_int";
 	name = "Mech Bay Blast Door"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/chargebay)
 "zj" = (
@@ -13542,6 +13590,9 @@
 	dir = 6
 	},
 /obj/random/cutout,
+/obj/effect/landmark{
+	name = "morphspawn"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/dormitory)
 "zn" = (
@@ -15794,6 +15845,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
+"Dw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/assembly/robotics)
 "Dx" = (
 /obj/machinery/photocopier,
 /obj/effect/floor_decal/spline/plain{
@@ -16676,6 +16736,15 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside2)
+"EO" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel,
+/area/assembly/chargebay)
 "EP" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -18579,6 +18648,10 @@
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/pinpointer{
+	pixel_x = 14
+	},
+/obj/item/stamp/hos,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "Ie" = (
@@ -23991,14 +24064,8 @@
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
 "RQ" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8
-	},
 /obj/structure/toilet{
 	pixel_y = 9
-	},
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
@@ -24519,6 +24586,10 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/chargebay)
 "SM" = (
@@ -25282,11 +25353,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
@@ -46197,7 +46270,7 @@ Tc
 hn
 BH
 tD
-Bs
+Dw
 hd
 zz
 Hb
@@ -46384,14 +46457,14 @@ nF
 Dg
 gn
 sX
-gt
-mh
-mh
+EO
+lW
+lW
 SL
 zi
 lX
 pq
-Bs
+lm
 he
 zz
 FF

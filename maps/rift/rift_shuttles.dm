@@ -54,25 +54,25 @@
 
 // Exclusive landmark for docking *inside* the station
 
-/obj/effect/shuttle_landmark/triumph/deck4/excursion
-	name = "NSV Triumph - Excursion Hanger"
-	landmark_tag = "triumph_excursion_hangar"
+/obj/effect/shuttle_landmark/rift/deck3/excursion
+	name = "NSB Atlas - Exploration Shuttle Pad"
+	landmark_tag = "rift_excursion_pad"
 	docking_controller = "expshuttle_dock"
-	base_turf = /turf/simulated/floor/tiled/techfloor/grid
-	base_area = /area/exploration/excursion_dock
+	base_turf = /turf/simulated/floor/reinforced/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
 
-/obj/effect/shuttle_landmark/triumph/deck4/courser
-	name = "NSV Triumph - Courser Hanger"
-	landmark_tag = "triumph_courser_hangar"
+/obj/effect/shuttle_landmark/rift/deck3/courser
+	name = "NSB Atlas - Courser Hanger"
+	landmark_tag = "rift_courser_hangar"
 	docking_controller = "courser_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/exploration/courser_dock
 
 // ON STATION NAV POINTS
 
-/obj/effect/shuttle_landmark/triumph/deck4/excursion_space
-	name = "Near NSV Triumph (SW)"
-	landmark_tag = "triumph_space_SW"
+/obj/effect/shuttle_landmark/rift/deck4/excursion_space
+	name = "NSB Atlas Airspace (SW)"
+	landmark_tag = "rift_space_SW"
 	base_turf = /turf/space
 	base_area = /area/space
 
@@ -231,36 +231,19 @@
 /datum/shuttle/autodock/overmap/excursion
 	name = "Excursion Shuttle"
 	warmup_time = 0
-	current_location = "triumph_excursion_hangar"
-	docking_controller_tag = "expshuttle_dock"
-	shuttle_area = list(/area/shuttle/excursion/triumph)
+	current_location = "rift_excursion_pad"
+	docking_controller_tag = "expshuttle_docker"
+	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
 	fuel_consumption = 3
-
+	move_direction = WEST
 
 // The 'ship' of the excursion shuttle
 /obj/effect/overmap/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
-	desc = "The traditional Excursion Shuttle."
-	vessel_mass = 8000
+	desc = "The Mk2 Excursion Shuttle. NT Approved!"
+	vessel_mass = 9000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Shuttle"
-
-
-// EXCURSION SHUTTLE DATA
-
-/datum/shuttle/autodock/overmap/excursion
-	name = "Excursion Shuttle"
-	warmup_time = 0
-	shuttle_area = list(/area/shuttle/excursion/triumph)
-	//shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
-	current_location = "triumph_excursion_hangar"
-	docking_controller_tag = "expshuttle_docker"
-	landmark_transition = "nav_transit_exploration"
-	move_time = 20
-
-/area/shuttle/excursion/triumph
-	name = "Excursion Shuttle"
-	icon_state = "shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/excursion
 	name = "short jump console"
@@ -275,7 +258,6 @@
 	docking_controller_tag = "courser_dock"
 	shuttle_area = list(/area/shuttle/courser)
 	fuel_consumption = 3
-
 
 // The 'ship' of the courser
 /obj/effect/overmap/visitable/ship/landable/courser
