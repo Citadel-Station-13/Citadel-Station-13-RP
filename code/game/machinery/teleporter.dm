@@ -12,8 +12,6 @@
 
 /obj/machinery/computer/teleporter/Initialize(mapload)
 	id = "[rand(1000, 9999)]"
-	underlays.Cut()
-	underlays += image('icons/obj/stationobjs.dmi', icon_state = "telecomp-wires")	//VOREStation Edit: different direction for wires to account for dirs
 	. = ..()
 	var/obj/machinery/teleport/station/station
 	var/obj/machinery/teleport/hub/hub
@@ -156,17 +154,17 @@
 
 /obj/machinery/teleport
 	name = "teleport"
-	icon = 'icons/obj/stationobjs.dmi'
-	density = 1
-	anchored = 1.0
-	var/lockeddown = 0
+	icon = 'icons/obj/teleporter.dmi'
+	density = TRUE
+	anchored = TRUE
+	var/lockeddown = FALSE
 
 /obj/machinery/teleport/hub
 	name = "teleporter hub"
 	desc = "It's the hub of a teleporting machine."
 	icon_state = "tele0"
 	dir = 4
-	var/accurate = 0
+	var/accurate = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
@@ -175,19 +173,8 @@
 
 /obj/machinery/teleport/hub/Initialize(mapload)
 	. = ..()
-	underlays.Cut()
-	underlays += image('icons/obj/stationobjs.dmi', icon_state = "tele-wires")
 
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 10)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/teleport/hub/Bumped(M as mob|obj)
@@ -313,8 +300,8 @@
 	desc = "It's the station thingy of a teleport thingy." //seriously, wtf.
 	icon_state = "controller"
 	dir = 4
-	var/active = 0
-	var/engaged = 0
+	var/active = FALSE
+	var/engaged = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
@@ -323,14 +310,8 @@
 
 /obj/machinery/teleport/station/Initialize(mapload)
 	. = ..()
-	overlays.Cut()
-	overlays += image('icons/obj/stationobjs.dmi', icon_state = "controller-wires")
 
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/console_screen(src)
-	component_parts += new /obj/item/stock_parts/capacitor(src)
-	component_parts += new /obj/item/stock_parts/capacitor(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 10)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/teleport/station/attackby(var/obj/item/W)

@@ -499,7 +499,7 @@
 "Fq" = (
 /obj/item/bikehorn,
 /obj/item/toy/bosunwhistle,
-/obj/item/storage/bible,
+/obj/item/storage/book,
 /obj/item/storage/photo_album,
 /obj/item/storage/trinketbox,
 /obj/item/storage/briefcase/clutch,
@@ -843,7 +843,7 @@
 /area/abductor/interior)
 "WC" = (
 /obj/structure/prop/alien/computer{
-	
+
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)

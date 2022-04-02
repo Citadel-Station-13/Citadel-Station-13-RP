@@ -96,7 +96,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "ar" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio/intercom{
 	dir = 8
 	},
@@ -114,7 +114,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "at" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio/intercom{
 	dir = 8
 	},
@@ -167,13 +167,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "aA" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio/phone,
 /obj/random_multi/single_item/sfr_headset,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "aB" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio/intercom/syndicate{
 	desc = "Talk through this.";
 	name = "station intercom (General)"
@@ -182,7 +182,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "aC" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio,
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/hyper;
@@ -229,7 +229,7 @@
 	dir = 8
 	},
 /obj/random_multi/single_item/sfr_headset,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "aI" = (
@@ -248,7 +248,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "aL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/material/knife/machete/hatchet,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/material/minihoe,

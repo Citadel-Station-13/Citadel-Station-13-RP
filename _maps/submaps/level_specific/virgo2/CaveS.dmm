@@ -69,7 +69,7 @@
 /turf/simulated/floor,
 /area/submap/virgo2/CaveS)
 "x" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/survivalcapsule,
 /turf/simulated/floor,
 /area/submap/virgo2/CaveS)

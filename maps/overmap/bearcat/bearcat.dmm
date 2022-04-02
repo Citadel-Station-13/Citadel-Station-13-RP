@@ -282,7 +282,7 @@
 "aA" = (
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/alarm{
 	dir = 8;
 	icon_state = "alarm0";
@@ -509,7 +509,7 @@
 	},
 /area/ship/scrap/command/captain)
 "aP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"

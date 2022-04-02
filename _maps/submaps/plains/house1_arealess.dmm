@@ -260,7 +260,7 @@
 /turf/simulated/floor/wood,
 /area/template_noop)
 "ba" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/action_figure,
 /obj/item/flashlight/lantern,
 /turf/simulated/floor/carpet/sblucarpet,

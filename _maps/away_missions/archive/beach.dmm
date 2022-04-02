@@ -92,21 +92,21 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)
 "v" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/manual/barman_recipes,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)
 "w" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/shaker,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)
 "x" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)
 "y" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/glasses/sunglasses,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)
@@ -140,7 +140,7 @@
 /turf/unsimulated/beach/sand,
 /area/awaymission/beach)
 "I" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)

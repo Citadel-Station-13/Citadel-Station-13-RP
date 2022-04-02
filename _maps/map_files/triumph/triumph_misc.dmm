@@ -96,7 +96,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
 "aS" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "aT" = (
@@ -231,14 +231,14 @@
 /obj/structure/window/reinforced/holowindow{
 	dir = 8
 	},
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bv" = (
 /obj/structure/window/reinforced/holowindow{
 	dir = 1
 	},
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bw" = (
@@ -349,7 +349,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bJ" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/structure/window/reinforced/holowindow,
 /obj/structure/window/reinforced/holowindow{
 	dir = 8
@@ -357,12 +357,12 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bK" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/structure/window/reinforced/holowindow,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bL" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/structure/window/reinforced/holowindow,
 /obj/structure/window/reinforced/holowindow{
 	dir = 4
@@ -384,7 +384,7 @@
 /obj/structure/window/reinforced/holowindow{
 	dir = 8
 	},
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bO" = (
@@ -436,7 +436,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
 "bS" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
 "bT" = (
@@ -595,21 +595,21 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "cw" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/effect/floor_decal/carpet{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cx" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cy" = (
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cz" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/effect/floor_decal/carpet{
 	dir = 4
 	},
@@ -1101,7 +1101,7 @@
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
 "eq" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_meetinghall)
 "er" = (
@@ -1560,7 +1560,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_basic)
 "gc" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_basic)
 "gd" = (
@@ -1758,7 +1758,7 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
 "hO" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
 "hP" = (

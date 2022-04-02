@@ -67,7 +67,7 @@
 	},
 /area/wizard_station)
 "ak" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
 	on = 0;
 	pixel_x = -3;
@@ -138,7 +138,7 @@
 	},
 /area/wizard_station)
 "as" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/status_display{
 	layer = 4;
 	pixel_x = 0;
@@ -159,13 +159,13 @@
 	pixel_y = 30
 	},
 /obj/structure/bedsheetbin,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
 /area/wizard_station)
 "au" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/item/radio/intercom{
@@ -182,7 +182,7 @@
 	},
 /area/wizard_station)
 "av" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/radio/headset,
 /obj/item/spacecash/c500,
 /turf/unsimulated/floor{
@@ -239,7 +239,7 @@
 	},
 /area/wizard_station)
 "aB" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paicard,
 /turf/unsimulated/floor{
 	dir = 8;
@@ -247,7 +247,7 @@
 	},
 /area/wizard_station)
 "aC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/manual/security_space_law,
 /turf/unsimulated/floor{
 	dir = 8;
@@ -274,7 +274,7 @@
 	},
 /area/wizard_station)
 "aG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/shoes/boots/workboots,
 /obj/item/clothing/under/technomancer,
 /obj/item/clothing/head/technomancer,
@@ -332,7 +332,7 @@
 /turf/template_noop,
 /area/wizard_station)
 "aP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/librarycomp{
 	pixel_y = 6
 	},
@@ -472,14 +472,14 @@
 	},
 /area/wizard_station)
 "bf" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/arrow/quill,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/wizard_station)
 "bg" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/stock_parts/matter_bin/super,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -531,7 +531,7 @@
 	},
 /area/wizard_station)
 "bn" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/stack/telecrystal,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -560,7 +560,7 @@
 	},
 /area/wizard_station)
 "bp" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/head/philosopher_wig,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -636,14 +636,14 @@
 	},
 /area/wizard_station)
 "bz" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/mmi/radio_enabled,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/wizard_station)
 "bA" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/material/knife/ritual,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -681,7 +681,7 @@
 	},
 /area/wizard_station)
 "bE" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/xenos_claw,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -689,21 +689,21 @@
 	},
 /area/wizard_station)
 "bF" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/coin/diamond,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/wizard_station)
 "bG" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/broken_device,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/wizard_station)
 "bH" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/organ/internal/stack,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -730,7 +730,7 @@
 	},
 /area/wizard_station)
 "bK" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cell_charger,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -738,7 +738,7 @@
 	},
 /area/wizard_station)
 "bL" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/book/manual/ripley_build_and_repair,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -747,7 +747,7 @@
 /area/wizard_station)
 "bM" = (
 /obj/item/suit_cooling_unit,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/newscaster{
 	layer = 3.3;
 	pixel_x = 0;
@@ -780,7 +780,7 @@
 	},
 /area/wizard_station)
 "bP" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/toy/sword,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -793,7 +793,7 @@
 	pixel_x = 0;
 	pixel_y = 32
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/gun/energy/laser/practice,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -807,7 +807,7 @@
 	},
 /area/wizard_station)
 "bS" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/book/manual/engineering_hacking,
 /obj/item/radio/intercom{
 	desc = "Talk through this. Evilly";
@@ -876,7 +876,7 @@
 	},
 /area/wizard_station)
 "bZ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/book/manual/robotics_cyborgs,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -1087,14 +1087,14 @@
 	},
 /area/wizard_station)
 "cz" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
 	},
 /area/wizard_station)
 "cA" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

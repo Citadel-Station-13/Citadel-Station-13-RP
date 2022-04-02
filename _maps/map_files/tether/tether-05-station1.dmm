@@ -1203,11 +1203,11 @@
 /area/hallway/station/atrium)
 "acD" = (
 /obj/item/reagent_containers/food/snacks/donut/cherryjelly,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/grass,
 /area/hallway/station/atrium)
 "acE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "cafe2";
@@ -1437,7 +1437,7 @@
 /turf/simulated/floor/water/pool,
 /area/hallway/station/atrium)
 "adl" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/grass,
 /area/hallway/station/atrium)
 "adm" = (
@@ -2769,7 +2769,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "afv" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/donut/normal,
 /turf/simulated/floor/grass,
 /area/hallway/station/atrium)
@@ -4168,7 +4168,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "ahJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paicard,
 /turf/simulated/floor/grass,
 /area/hallway/station/atrium)
@@ -5186,7 +5186,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/crew)
 "akN" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -5279,7 +5279,7 @@
 /turf/simulated/floor/wood/broken,
 /area/maintenance/abandonedlibrary)
 "akW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/tool,
 /obj/random/medical,
 /turf/simulated/floor/plating,
@@ -5902,7 +5902,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
 "ami" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "cafe2";
@@ -5943,7 +5943,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_airlock)
 "amm" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cafe2";
@@ -6090,7 +6090,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "amC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "cafe2";
@@ -6101,7 +6101,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
 "amD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "cafe2";
@@ -6122,7 +6122,7 @@
 	layer = 3.1;
 	name = "Cafe Shutters"
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/condiment/small/sugar,
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
@@ -7188,7 +7188,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "aoT" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper,
 /obj/item/pen,
 /obj/machinery/newscaster{
@@ -7634,7 +7634,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/junk,
 /turf/simulated/floor/carpet,
 /area/maintenance/abandonedlibrary)
@@ -7820,13 +7820,13 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "apV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/maintenance,
 /obj/random/mouseremains,
 /turf/simulated/floor/carpet,
 /area/maintenance/abandonedlibrary)
 "apW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/maintenance/abandonedlibrary)
 "apX" = (
@@ -7860,7 +7860,7 @@
 /turf/simulated/floor/carpet,
 /area/maintenance/abandonedlibrary)
 "aqc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -8378,7 +8378,7 @@
 /turf/simulated/floor/wood,
 /area/maintenance/abandonedlibraryconference)
 "aqV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 1;
 	pixel_y = 5
@@ -8496,7 +8496,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/backup)
 "arm" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -8510,7 +8510,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/backup)
 "aro" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -8528,7 +8528,7 @@
 /turf/simulated/floor/wood,
 /area/maintenance/abandonedlibraryconference)
 "arp" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/packageWrap,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -8602,7 +8602,7 @@
 /turf/simulated/open,
 /area/maintenance/station/eng_lower)
 "arD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibraryconference)
 "arE" = (
@@ -8628,7 +8628,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "arG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 8;
@@ -8676,7 +8676,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/chips,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
@@ -8848,7 +8848,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/manual/supermatter_engine{
 	pixel_x = -3
 	},
@@ -8928,7 +8928,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "ass" = (
@@ -9556,7 +9556,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "atH" = (
@@ -11176,7 +11176,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/secondary/teleporter)
 "axs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 1;
 	pixel_y = 5
@@ -11287,7 +11287,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/backup)
 "axI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -11542,7 +11542,7 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "ayF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/cups,
 /obj/machinery/light{
 	dir = 4
@@ -11923,7 +11923,7 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aAs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -11932,7 +11932,7 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aAt" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/blue,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
@@ -16461,7 +16461,7 @@
 /area/crew_quarters/sleep/cryo)
 "bfo" = (
 /obj/structure/window/reinforced,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/engineering/foyer)
 "bft" = (
@@ -18175,7 +18175,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave{
 	pixel_x = -3;
 	pixel_y = 7
@@ -18644,7 +18644,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "dQD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/red,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -18727,7 +18727,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "dZO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/manual/security_space_law,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -19965,7 +19965,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "gVb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/blue,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -20742,7 +20742,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/gravity_gen)
 "iPb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -21444,7 +21444,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/donut{
 	pixel_y = 12
 	},
@@ -22579,7 +22579,7 @@
 	pixel_x = 24
 	},
 /obj/item/storage/box/cups,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "nWg" = (
@@ -23372,7 +23372,7 @@
 /area/tether/exploration/equipment)
 "pIY" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/donkpockets{
 	pixel_y = 7
 	},
@@ -26739,7 +26739,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "xwD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/item/folder/blue{
 	pixel_y = 15
@@ -26906,7 +26906,7 @@
 /turf/simulated/floor,
 /area/constructionsite)
 "xJM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7

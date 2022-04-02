@@ -296,7 +296,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/awaymission/BMPship3)
 "bk" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/spacecash/c500,
 /obj/item/spacecash/c100,
 /turf/simulated/floor/wood,

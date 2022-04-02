@@ -272,19 +272,19 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "bC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/gun/projectile,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "bD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "bF" = (
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "bG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/manual/barman_recipes,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
@@ -306,21 +306,21 @@
 	},
 /area/awaymission/wwmines)
 "bK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/manual/chef_recipes,
 /turf/simulated/floor{
 	dir = 5
 	},
 /area/awaymission/wwmines)
 "bL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor{
 	dir = 5
 	},
 /area/awaymission/wwmines)
 "bM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -452,7 +452,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwgov)
 "cg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper{
 	info = " The miners in the town have become sick and almost all production has stopped. They, in a fit of delusion, tossed all of their mining equipment into the furnaces.  They all claimed the same thing. A voice beckoning them to lay down their arms. Stupid miners.";
 	name = "Planer Saul's Journal: Page 4"
@@ -462,7 +462,7 @@
 	},
 /area/awaymission/wwmines)
 "ch" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/gun/projectile,
 /turf/simulated/floor{
 	dir = 5
@@ -484,11 +484,11 @@
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "cq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "cr" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor,
 /area/awaymission/wwgov)
@@ -531,18 +531,18 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "cC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
 "cD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/gloves/yellow,
 /obj/item/multitool,
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
 "cF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
 "cG" = (
@@ -605,12 +605,12 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/wwgov)
 "cV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/monkeysdelight,
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "cX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/stew,
 /turf/simulated/floor,
 /area/awaymission/wwgov)
@@ -627,12 +627,12 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread,
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "df" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/sliceable/lemoncake,
 /turf/simulated/floor,
 /area/awaymission/wwgov)
@@ -670,12 +670,12 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
 "dq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/wine,
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "dr" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
@@ -683,7 +683,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "ds" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/patron,
 /turf/simulated/floor,
 /area/awaymission/wwgov)
@@ -739,7 +739,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/computer/security/telescreen/entertainment,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
@@ -804,22 +804,22 @@
 	},
 /area/awaymission/wwmines)
 "dY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/donut/slimejelly,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "dZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/coffee,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "ea" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/donut/jelly,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "eb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/donut/normal,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
@@ -884,7 +884,7 @@
 	},
 /area/awaymission/wwmines)
 "eo" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "ep" = (
@@ -946,7 +946,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "eG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/coffee,
 /obj/item/reagent_containers/food/snacks/donut/slimejelly,
 /turf/simulated/floor/carpet,
@@ -1080,7 +1080,7 @@
 /turf/simulated/mineral{
 	icon_state = "sandstone0";
 	mineral = "sandstone";
-	
+
 	},
 /area/awaymission/wwmines)
 "fo" = (
@@ -1114,7 +1114,7 @@
 /turf/simulated/mineral,
 /area/awaymission/wwmines)
 "fw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "fy" = (
@@ -1199,7 +1199,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "fS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/gun/projectile/shotgun,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
@@ -1273,7 +1273,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/gun/projectile/revolver,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)

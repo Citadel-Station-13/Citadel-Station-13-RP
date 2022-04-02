@@ -63,7 +63,7 @@
 /turf/simulated/floor/wood/broken,
 /area/submap/DJOutpost1)
 "m" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio/phone,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/DJOutpost1)
@@ -79,7 +79,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/DJOutpost1)
 "q" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio,
 /obj/structure/cable/yellow,
 /turf/simulated/floor/wood/broken,
@@ -109,7 +109,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/DJOutpost1)
 "y" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio/intercom/syndicate{
 	desc = "Talk through this.";
 	name = "station intercom (General)"

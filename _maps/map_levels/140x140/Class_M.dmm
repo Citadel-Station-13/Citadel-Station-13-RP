@@ -23,7 +23,7 @@
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
 "aS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/outdoors/dirt/classm,
 /area/class_m/outside)
 "aW" = (
@@ -35,7 +35,7 @@
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
 "bg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/class_m/inside)
 "bm" = (
@@ -1003,7 +1003,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "vR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/turcarpet,
 /area/class_m/inside)
 "vX" = (
@@ -1056,7 +1056,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "xc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "xr" = (
@@ -1312,7 +1312,7 @@
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
 "CD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -1690,7 +1690,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_m/inside)
 "KB" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/item/deck/holder,
 /obj/item/deck/tarot,
 /turf/simulated/floor/carpet/turcarpet,
@@ -1985,7 +1985,7 @@
 	},
 /area/class_m/outside)
 "RG" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/item/storage/pill_bottle/dice,
 /obj/item/storage/dicecup/loaded,
 /turf/simulated/floor/carpet/turcarpet,
@@ -2054,7 +2054,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "Tu" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /turf/simulated/floor/carpet/turcarpet,
 /area/class_m/inside)
 "Tx" = (
@@ -2077,7 +2077,7 @@
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside)
 "Ua" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_m/inside)
 "Uq" = (

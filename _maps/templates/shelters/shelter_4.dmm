@@ -274,7 +274,7 @@
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)
 "D" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)
 "E" = (

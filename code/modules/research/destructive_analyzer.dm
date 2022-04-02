@@ -6,7 +6,7 @@ It is used to destroy hand-held objects and advance technological research. Cont
 Note: Must be placed within 3 tiles of the R&D Console
 */
 
-/obj/machinery/r_n_d/destructive_analyzer
+/obj/machinery/rnd/destructive_analyzer
 	name = "destructive analyzer"
 	icon_state = "d_analyzer"
 	var/obj/item/loaded_item = null
@@ -17,18 +17,18 @@ Note: Must be placed within 3 tiles of the R&D Console
 	active_power_usage = 2500
 	var/rped_recycler_ready = TRUE
 
-/obj/machinery/r_n_d/destructive_analyzer/Initialize(mapload)
+/obj/machinery/rnd/destructive_analyzer/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	RefreshParts()
 
-/obj/machinery/r_n_d/destructive_analyzer/RefreshParts()
+/obj/machinery/rnd/destructive_analyzer/RefreshParts()
 	var/T = 0
 	for(var/obj/item/stock_parts/S in component_parts)
 		T += S.rating
 	decon_mod = T * 0.1
 
-/obj/machinery/r_n_d/destructive_analyzer/update_icon()
+/obj/machinery/rnd/destructive_analyzer/update_icon()
 	if(panel_open)
 		icon_state = "d_analyzer_t"
 	else if(loaded_item)
@@ -36,7 +36,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 	else
 		icon_state = "d_analyzer"
 
-/obj/machinery/r_n_d/destructive_analyzer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/rnd/destructive_analyzer/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy right now.</span>")
 		return
@@ -79,7 +79,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 		return 1
 	return
 
-/obj/machinery/r_n_d/destructive_analyzer/MouseDrop_T(atom/dropping, mob/living/user)
+/obj/machinery/rnd/destructive_analyzer/MouseDrop_T(atom/dropping, mob/living/user)
 	if(istype(dropping, /obj/item/storage/part_replacer))
 		var/obj/item/storage/part_replacer/replacer = dropping
 		replacer.hide_from(user)
@@ -92,7 +92,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 		if(!rped_recycler_ready)
 			to_chat(user, "<span class='notice'>\The [src]'s stock parts recycler isn't ready yet.</span>")
 			return 0
-		var/obj/machinery/r_n_d/protolathe/lathe_to_fill = linked_console.linked_lathe
+		var/obj/machinery/rnd/protolathe/lathe_to_fill = linked_console.linked_lathe
 		var/lowest_rating = INFINITY // We want the lowest-part tier rating in the RPED so we only recycle the lowest-tier parts.
 		for(var/obj/item/B in replacer.contents)
 			if(B.rped_rating() < lowest_rating)
@@ -116,6 +116,6 @@ Note: Must be placed within 3 tiles of the R&D Console
 	else
 		..()
 
-/obj/machinery/r_n_d/destructive_analyzer/proc/rped_ready()
+/obj/machinery/rnd/destructive_analyzer/proc/rped_ready()
 	rped_recycler_ready = TRUE
 	playsound(get_turf(src), 'sound/machines/chime.ogg', 50, 1)

@@ -713,7 +713,7 @@
 /area/engineering/portnacelle)
 "cF" = (
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = -14
 	},
 /turf/simulated/floor/plating,
@@ -914,7 +914,7 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = -14
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1521,7 +1521,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/shield_gen/external/advanced,
+/obj/machinery/power/shield_generator,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "fE" = (
@@ -1927,7 +1927,7 @@
 /turf/simulated/wall/r_wall,
 /area/tcommsat/entrance)
 "gT" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/dormitory)
 "gV" = (
@@ -3372,7 +3372,7 @@
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/atmos)
 "lV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/maintenance/security,
 /turf/simulated/floor/wood,
 /area/maintenance/dormitory)
@@ -4195,7 +4195,7 @@
 "oN" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_y = 14
+	pixel_y = -14
 	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -4230,7 +4230,7 @@
 "oR" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_y = 14
+	pixel_y = -14
 	},
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -4277,7 +4277,7 @@
 /area/engineering/engine_monitoring)
 "oW" = (
 /obj/item/deck/cards,
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "oX" = (
@@ -5295,7 +5295,7 @@
 /area/engineering/starboardnacelle)
 "sz" = (
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = -14
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -6513,7 +6513,7 @@
 /area/space)
 "wA" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/shield_gen,
+/obj/machinery/power/shield_generator,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "wE" = (
@@ -6675,7 +6675,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "wT" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/maintenance,
 /turf/simulated/floor/wood,
 /area/maintenance/dormitory)
@@ -7173,7 +7173,7 @@
 /turf/simulated/wall/r_wall,
 /area/tcommsat/computer)
 "yD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
 /area/maintenance/dormitory)
@@ -7428,7 +7428,7 @@
 	dir = 8
 	},
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = -14
 	},
 /turf/simulated/floor/tiled,
@@ -7768,8 +7768,7 @@
 /area/engineering/engine_airlock)
 "Bo" = (
 /obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
+	dir = 8;
 	pixel_x = 14
 	},
 /obj/machinery/light{
@@ -8323,7 +8322,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -8628,8 +8627,7 @@
 "Ep" = (
 /obj/machinery/firealarm{
 	dir = 4;
-	layer = 3.3;
-	pixel_x = 14
+	pixel_x = -14
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -9407,7 +9405,7 @@
 	dir = 1;
 	pixel_y = -12
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Gx" = (
@@ -11677,7 +11675,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "Od" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/maintenance,
 /turf/simulated/floor/carpet,
 /area/maintenance/dormitory)
@@ -12703,7 +12701,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "RB" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "RE" = (
@@ -12988,7 +12986,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/rig/ce/equipped,
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = -14
 	},
 /turf/simulated/floor/tiled,
@@ -13097,7 +13095,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/maintenance/engi_engine)
 "SH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/maintenance/dormitory)
 "SK" = (
@@ -13563,7 +13561,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "Uy" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light_construct{
 	dir = 8
 	},
@@ -14506,7 +14504,7 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = -14
 	},
 /turf/simulated/floor/tiled/white,

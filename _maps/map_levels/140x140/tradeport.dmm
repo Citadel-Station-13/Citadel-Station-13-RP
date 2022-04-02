@@ -95,7 +95,7 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "ar" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
@@ -173,7 +173,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "aH" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/cell/hyper,
 /obj/item/cell/high,
 /obj/item/cell/high,
@@ -215,7 +215,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "aO" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig/internalaffairs,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -579,7 +579,7 @@
 /turf/simulated/wall,
 /area/tradeport/commons)
 "ch" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -769,7 +769,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport)
 "cM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 22;
@@ -868,7 +868,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/gun/projectile/automatic/as24{
 	desc = "Never ask to speak to the manager.";
 	name = "Kate"
@@ -1677,7 +1677,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
 "ge" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "clerk";
@@ -1717,7 +1717,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/dark,
@@ -3328,7 +3328,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "mm" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
@@ -3462,7 +3462,7 @@
 /area/tradeport/safari)
 "mL" = (
 /obj/structure/window/reinforced,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/material/kitchen/rollingpin/durasteel,
 /obj/item/material/knife/butch/plasteel,
 /turf/simulated/floor/tiled/freezer,
@@ -3752,7 +3752,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "nD" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -4230,7 +4230,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "pi" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clipboard,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/trade_ship/general)
@@ -4251,7 +4251,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "pm" = (
@@ -4479,7 +4479,7 @@
 /area/tradeport/cyndishow)
 "pV" = (
 /obj/item/material/ashtray/plastic,
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
 "pX" = (
@@ -4580,7 +4580,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "qm" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cyndi";
@@ -4761,7 +4761,7 @@
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
 "qQ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "clerk";
@@ -5403,7 +5403,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "tp" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/lightreplacer,
 /obj/item/reagent_containers/spray/cleaner,
@@ -5827,7 +5827,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "vc" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/structure/window/reinforced,
 /obj/item/storage/briefcase/fission{
 	starts_with = list(/obj/item/coin/supermatter, /obj/item/coin/supermatter, /obj/item/coin/supermatter)
@@ -6434,7 +6434,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "wW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/deck/cards,
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
@@ -6721,7 +6721,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "xH" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "xI" = (
@@ -7232,7 +7232,7 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/safari)
 "zy" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cyndi";
@@ -7497,7 +7497,7 @@
 /turf/simulated/floor/airless,
 /area/tradeport/expansion)
 "AB" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "clerk";
@@ -7790,7 +7790,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "BO" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/plushie,
 /obj/random/plushie,
 /obj/random/plushie,
@@ -7932,7 +7932,7 @@
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
 "Cw" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cyndi";
@@ -8195,7 +8195,7 @@
 /area/tradeport/cyndishow)
 "Dn" = (
 /obj/structure/window/reinforced,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "Do" = (
@@ -8679,7 +8679,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
 "Fu" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/integrated_circuit_printer/upgraded,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -8913,7 +8913,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "Gw" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/stack/material/phoron{
 	amount = 25
 	},
@@ -8940,7 +8940,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "GH" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/grenade/chem_grenade/metalfoam,
 /obj/item/grenade/chem_grenade/metalfoam,
 /obj/item/grenade/chem_grenade/metalfoam,
@@ -9353,7 +9353,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "Iz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
@@ -9392,7 +9392,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
 "IC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
@@ -9815,7 +9815,7 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/space)
 "Kc" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/button/remote/blast_door{
 	id = "tradebridgeshutters";
 	name = "remote shutter control";
@@ -11128,7 +11128,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "OQ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/backpack/rig{
 	pixel_x = -2;
 	pixel_y = 2
@@ -12890,7 +12890,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
 "Vv" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/toolbox/syndicate{
 	pixel_x = 3;
 	pixel_y = 5
@@ -13018,7 +13018,7 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "VU" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cyndi";
@@ -13419,7 +13419,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "Xl" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{

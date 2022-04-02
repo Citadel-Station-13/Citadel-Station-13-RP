@@ -31,7 +31,7 @@
 /turf/simulated/wall/r_wall,
 /area/maintenance/tether_midpoint)
 "en" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
@@ -44,14 +44,14 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "fe" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/machinery/camera/network/civilian{
 	dir = 9
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "fC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/flora/pottedplant/small{
 	pixel_y = 8
 	},
@@ -134,14 +134,14 @@
 /turf/simulated/open,
 /area/maintenance/tether_midpoint)
 "nu" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_soft/full{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "pq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/flora/pottedplant/smallcactus{
 	pixel_y = 8
 	},
@@ -178,7 +178,7 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "rQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
@@ -263,7 +263,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "vI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
@@ -280,7 +280,7 @@
 /turf/simulated/floor/plating,
 /area/tether/midpoint)
 "vW" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -480,7 +480,7 @@
 /turf/simulated/floor/plating,
 /area/tether/midpoint)
 "Jw" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/reagent_containers/glass/rag,
 /turf/simulated/floor/wood,
@@ -562,7 +562,7 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "QG" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "Rl" = (
@@ -653,14 +653,14 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/tether/elevator)
 "Xi" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_alc/full{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "Xs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "Xu" = (

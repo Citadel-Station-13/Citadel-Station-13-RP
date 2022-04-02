@@ -27,7 +27,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 /datum/looping_sound/deep_fryer
 	start_sound = 'sound/machines/kitchen/fryer/deep_fryer_immerse.ogg' //my immersions
 	start_length = 10
@@ -103,3 +102,31 @@
 	end_sound = 'sound/machines/air_pump/airpumpshutdown.ogg'
 	volume = 15
 	pref_check = /datum/client_preference/air_pump_noise
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/datum/looping_sound/server
+	mid_sounds = list('sound/machines/tcomms/tcomms_mid1.ogg'=1,'sound/machines/tcomms/tcomms_mid2.ogg'=1,'sound/machines/tcomms/tcomms_mid3.ogg'=1,'sound/machines/tcomms/tcomms_mid4.ogg'=1,\
+										'sound/machines/tcomms/tcomms_mid5.ogg'=1,'sound/machines/tcomms/tcomms_mid6.ogg'=1,'sound/machines/tcomms/tcomms_mid7.ogg'=1)
+	mid_length = 1.8 SECONDS
+	extra_range = -4.5
+	volume = 50
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/datum/looping_sound/computer
+	start_sound = 'sound/machines/computer/computer_start.ogg'
+	start_length = 7.2 SECONDS
+	mid_sounds = list('sound/machines/computer/computer_mid1.ogg'=1, 'sound/machines/computer/computer_mid2.ogg'=1)
+	mid_length = 1.8 SECONDS
+	end_sound = 'sound/machines/computer/computer_end.ogg'
+	volume = 3
+	extra_range = -5.5
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/datum/looping_sound/gravgen
+	mid_sounds = list('sound/machines/gravgen/gravgen_mid1.ogg'=1,'sound/machines/gravgen/gravgen_mid2.ogg'=1,'sound/machines/gravgen/gravgen_mid3.ogg'=1,'sound/machines/gravgen/gravgen_mid4.ogg'=1,)
+	mid_length = 1.8 SECONDS
+	extra_range = 10
+	volume = 70

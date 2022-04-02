@@ -4,8 +4,8 @@
 /obj/effect/shield
 	name = "energy shield"
 	desc = "An impenetrable field of energy, capable of blocking anything as long as it's active."
-	icon = 'icons/obj/machines/shielding_vr.dmi'
-	icon_state = "shield_normal"
+	icon = 'icons/obj/machines/shielding.dmi'
+	icon_state = "shield"
 	anchored = TRUE
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
@@ -15,30 +15,52 @@
 	var/disabled_for = 0
 	var/diffused_for = 0
 	can_atmos_pass = ATMOS_PASS_YES
+	var/enabled_icon_state
 
-/obj/effect/shield/update_icon()
-	if(gen && gen.check_flag(MODEFLAG_PHOTONIC) && !disabled_for && !diffused_for)
-		set_opacity(1)
+/obj/effect/shield/proc/update_visuals()
+	update_iconstate()
+	update_color()
+	update_glow()
+	update_opacity()
+
+/obj/effect/shield/proc/update_iconstate()
+	if(!enabled_icon_state)
+		enabled_icon_state = icon_state
+
+	if(disabled_for || diffused_for)
+		icon_state = "shield_broken"
+		overlays.Cut() //NOT ssoverlays
 	else
-		set_opacity(0)
+		icon_state = enabled_icon_state
+		flags |= OVERLAY_QUEUED //Trick SSoverlays
+		SSoverlays.queue += src
 
-	if(gen && gen.check_flag(MODEFLAG_OVERCHARGE))
-		icon_state = "shield_overcharged"
+/obj/effect/shield/proc/update_color()
+	if(disabled_for || diffused_for)
+		color = "#FFA500"
+	else if(gen?.check_flag(MODEFLAG_OVERCHARGE))
+		color = "#FE6666"
 	else
-		icon_state = "shield_normal"
+		color = "#00AAFF"
 
+/obj/effect/shield/proc/update_glow()
 	if(density)
 		set_light(3, 3, "#66FFFF")
 	else
 		set_light(0)
 
+/obj/effect/shield/proc/update_opacity()
+	if(gen?.check_flag(MODEFLAG_PHOTONIC) && !disabled_for && !diffused_for)
+		set_opacity(1)
+	else
+		set_opacity(0)
 
 // Prevents singularities and pretty much everything else from moving the field segments away.
 // The only thing that is allowed to move us is the Destroy() proc.
 /obj/effect/shield/forceMove()
 	if(QDELING(src))
 		return ..()
-	return 0
+	return FALSE
 
 /obj/effect/shield/Destroy()
 	if(can_atmos_pass != ATMOS_PASS_YES)
@@ -59,12 +81,11 @@
 	if(gen)
 		gen.damaged_segments |= src
 	disabled_for += duration
-	set_density(0)
-	set_invisibility(INVISIBILITY_MAXIMUM)
-	update_nearby_tiles()
-	update_icon()
-	update_explosion_resistance()
 
+	set_density(0)
+	update_visuals()
+	update_nearby_tiles() //Force ZAS update
+	update_explosion_resistance()
 
 // Regenerates this shield segment.
 /obj/effect/shield/proc/regenerate()
@@ -76,25 +97,23 @@
 
 	if(!disabled_for && !diffused_for)
 		set_density(1)
-		set_invisibility(0)
-		update_nearby_tiles()
-		update_icon()
+		update_visuals()
+		update_nearby_tiles() //Force ZAS update
 		update_explosion_resistance()
 		gen.damaged_segments -= src
 
-
 /obj/effect/shield/proc/diffuse(var/duration)
 	// The shield is trying to counter diffusers. Cause lasting stress on the shield.
-	if(gen.check_flag(MODEFLAG_BYPASS) && !disabled_for)
+	if(gen?.check_flag(MODEFLAG_BYPASS) && !disabled_for)
 		take_damage(duration * rand(8, 12), SHIELD_DAMTYPE_EM)
 		return
 
 	diffused_for = max(duration, 0)
-	gen.damaged_segments |= src
+	gen?.damaged_segments |= src
+
 	set_density(0)
-	set_invisibility(INVISIBILITY_MAXIMUM)
-	update_nearby_tiles()
-	update_icon()
+	update_visuals()
+	update_nearby_tiles() //Force ZAS update
 	update_explosion_resistance()
 
 /obj/effect/shield/attack_generic(var/source, var/damage, var/emote)
@@ -179,20 +198,20 @@
 	// Somehow we don't have a generator. This shouldn't happen. Delete the shield.
 	if(!gen)
 		qdel(src)
-		return 1
+		return TRUE
 
 	if(disabled_for || diffused_for)
-		return 1
+		return TRUE
 
 	if(mover)
 		return mover.can_pass_shield(gen)
-	return 1
+	return TRUE
 
 /obj/effect/shield/proc/set_can_atmos_pass(var/new_value)
 	if(new_value == can_atmos_pass)
 		return
 	can_atmos_pass = new_value
-	update_nearby_tiles()
+	update_nearby_tiles() //Force ZAS update
 
 
 // EMP. It may seem weak but keep in mind that multiple shield segments are likely to be affected.
@@ -219,7 +238,7 @@
 		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_HEAT)
 	else if (proj.damage_type == BRUTE)
 		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_PHYSICAL)
-	else
+	else //TODO - This will never happen because of get_structure_damage() only returning values for BRUTE and BURN damage types
 		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_EM)
 
 
@@ -267,7 +286,7 @@
 
 	// Update airflow - If atmospheric we block air as long as we're enabled (density works for this)
 	set_can_atmos_pass(gen.check_flag(MODEFLAG_ATMOSPHERIC) ? ATMOS_PASS_DENSITY : ATMOS_PASS_YES)
-	update_icon()
+	update_visuals()
 	update_explosion_resistance()
 
 /obj/effect/shield/proc/update_explosion_resistance()
@@ -281,7 +300,7 @@
 //
 /obj/effect/temp_visual/shield_impact_effect
 	name = "shield impact"
-	icon = 'icons/obj/machines/shielding_vr.dmi'
+	icon = 'icons/obj/machines/shielding.dmi'
 	icon_state = "shield_impact"
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER

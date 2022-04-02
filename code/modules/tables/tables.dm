@@ -1,23 +1,24 @@
 var/list/table_icon_cache = list()
 
 /obj/structure/table
-	name = "table frame"
-	icon = 'icons/obj/tables.dmi'
-	icon_state = "frame"
+	name = "table"
+	icon = 'icons/obj/smooth_structures/table.dmi'
+	icon_state = "table-0"
+	base_icon_state = "table"
 	desc = "It's a table, for putting things on. Or standing on, if you really want to."
-	density = 1
-	anchored = 1
-	climbable = 1
+	density = TRUE
+	anchored = TRUE
+	climbable = TRUE
 	layer = TABLE_LAYER
-	throwpass = 1
+	throwpass = TRUE
 	surgery_odds = 66
 	var/flipped = 0
 	var/maxhealth = 10
 	var/health = 10
 
 	// For racks.
-	var/can_reinforce = 1
-	var/can_plate = 1
+	var/can_reinforce = TRUE
+	var/can_plate = TRUE
 
 	var/manipulating = 0
 	var/datum/material/material = null
@@ -25,7 +26,7 @@ var/list/table_icon_cache = list()
 
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.
 	// Convert if/when you can easily get stacks of these.
-	var/carpeted = 0
+	var/carpeted = FALSE
 	var/carpeted_type = /obj/item/stack/tile/carpet
 
 	connections = list("nw0", "ne0", "sw0", "se0")
@@ -34,6 +35,10 @@ var/list/table_icon_cache = list()
 	var/item_place = TRUE
 	/// Do people pixel-place items or center place?
 	var/item_pixel_place = TRUE
+
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_TABLES)
+	canSmoothWith = list(SMOOTH_GROUP_TABLES)
 
 /obj/structure/table/proc/update_material()
 	var/old_maxhealth = maxhealth
@@ -80,7 +85,6 @@ var/list/table_icon_cache = list()
 	if(mapload)		// screw off
 		return INITIALIZE_HINT_LATELOAD
 	else
-		update_connections(TRUE)
 		update_icon()
 		update_desc()
 		update_material()
@@ -122,7 +126,7 @@ var/list/table_icon_cache = list()
 
 	if(carpeted && W.is_crowbar())
 		user.visible_message("<span class='notice'>\The [user] removes the carpet from \the [src].</span>",
-		                              "<span class='notice'>You remove the carpet from \the [src].</span>")
+									  "<span class='notice'>You remove the carpet from \the [src].</span>")
 		new carpeted_type(loc)
 		carpeted = 0
 		update_icon()
@@ -132,7 +136,7 @@ var/list/table_icon_cache = list()
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
 			user.visible_message("<span class='notice'>\The [user] adds \the [C] to \the [src].</span>",
-			                              "<span class='notice'>You add \the [C] to \the [src].</span>")
+										  "<span class='notice'>You add \the [C] to \the [src].</span>")
 			carpeted = 1
 			carpeted_type = W.type
 			update_icon()
@@ -273,14 +277,14 @@ var/list/table_icon_cache = list()
 	if(manipulating) return M
 	manipulating = 1
 	user.visible_message("<span class='notice'>\The [user] begins removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>",
-	                              "<span class='notice'>You begin removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>")
+								  "<span class='notice'>You begin removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>")
 	if(sound)
 		playsound(src.loc, sound, 50, 1)
 	if(!do_after(user, delay))
 		manipulating = 0
 		return M
 	user.visible_message("<span class='notice'>\The [user] removes the [M.display_name] [what] from \the [src].</span>",
-	                              "<span class='notice'>You remove the [M.display_name] [what] from \the [src].</span>")
+								  "<span class='notice'>You remove the [M.display_name] [what] from \the [src].</span>")
 	new M.stack_type(src.loc)
 	manipulating = 0
 	return null
@@ -296,13 +300,13 @@ var/list/table_icon_cache = list()
 		return
 	manipulating = TRUE
 	user.visible_message("<span class='notice'>\The [user] begins dismantling \the [src].</span>",
-	                              "<span class='notice'>You begin dismantling \the [src].</span>")
+								  "<span class='notice'>You begin dismantling \the [src].</span>")
 	playsound(src, W.usesound, 50, 1)
 	if(!do_after(user, 20 * W.toolspeed))
 		manipulating = FALSE
 		return
 	user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>",
-	                              "<span class='notice'>You dismantle \the [src].</span>")
+								  "<span class='notice'>You dismantle \the [src].</span>")
 	new /obj/item/stack/material/steel(src.loc)
 	qdel(src)
 
@@ -353,123 +357,11 @@ var/list/table_icon_cache = list()
 
 	return I
 
-/obj/structure/table/update_icon()
-	if(flipped != 1)
-		icon_state = "blank"
-		overlays.Cut()
-
-		// Base frame shape. Mostly done for glass/diamond tables, where this is visible.
-		for(var/i = 1 to 4)
-			var/image/I = get_table_image(icon, connections[i], 1<<(i-1))
-			overlays += I
-
-		// Standard table image
-		if(material)
-			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[material.icon_base]_[connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
-				overlays += I
-
-		// Reinforcements
-		if(reinforced)
-			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[reinforced.icon_reinf]_[connections[i]]", 1<<(i-1), reinforced.icon_colour, 255 * reinforced.opacity)
-				overlays += I
-
-		if(carpeted)
-			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "carpet_[connections[i]]", 1<<(i-1))
-				overlays += I
-	else
-		overlays.Cut()
-		var/type = 0
-		var/tabledirs = 0
-		for(var/direction in list(turn(dir,90), turn(dir,-90)) )
-			var/obj/structure/table/T = locate(/obj/structure/table ,get_step(src,direction))
-			if (T && T.flipped == 1 && T.dir == src.dir && material && T.material && T.material.name == material.name)
-				type++
-				tabledirs |= direction
-
-		type = "[type]"
-		if (type=="1")
-			if (tabledirs & turn(dir,90))
-				type += "-"
-			if (tabledirs & turn(dir,-90))
-				type += "+"
-
-		icon_state = "flip[type]"
-		if(material)
-			var/image/I = image(icon, "[material.icon_base]_flip[type]")
-			I.color = material.icon_colour
-			I.alpha = 255 * material.opacity
-			overlays += I
-			name = "[material.display_name] table"
-		else
-			name = "table frame"
-
-		if(reinforced)
-			var/image/I = image(icon, "[reinforced.icon_reinf]_flip[type]")
-			I.color = reinforced.icon_colour
-			I.alpha = 255 * reinforced.opacity
-			overlays += I
-
-		if(carpeted)
-			overlays += "carpet_flip[type]"
-
-// set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
-/obj/structure/table/update_connections(propagate=0)
-	if(!material)
-		connections = list("0", "0", "0", "0")
-		if(propagate)
-			for(var/obj/structure/table/T in orange(src, 1))
-				T.update_connections()
-				T.update_icon()
-		return
-
-	var/list/blocked_dirs = list()
-	for(var/obj/structure/window/W in get_turf(src))
-		if(W.is_fulltile())
-			connections = list("0", "0", "0", "0")
-			return
-		blocked_dirs |= W.dir
-
-	for(var/D in list(NORTH, SOUTH, EAST, WEST) - blocked_dirs)
-		var/turf/T = get_step(src, D)
-		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir == GLOB.reverse_dir[D])
-				blocked_dirs |= D
-				break
-			else
-				if(W.dir != D) // it's off to the side
-					blocked_dirs |= W.dir|D // blocks the diagonal
-
-	for(var/D in list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST) - blocked_dirs)
-		var/turf/T = get_step(src, D)
-
-		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir & GLOB.reverse_dir[D])
-				blocked_dirs |= D
-				break
-
-	// Blocked cardinals block the adjacent diagonals too. Prevents weirdness with tables.
-	for(var/x in list(NORTH, SOUTH))
-		for(var/y in list(EAST, WEST))
-			if((x in blocked_dirs) || (y in blocked_dirs))
-				blocked_dirs |= x|y
-
-	var/list/connection_dirs = list()
-
-	for(var/obj/structure/table/T in orange(src, 1))
-		var/T_dir = get_dir(src, T)
-		if(T_dir in blocked_dirs)
-			continue
-		if(material && T.material && material.name == T.material.name && flipped == T.flipped)
-			connection_dirs |= T_dir
-		if(propagate)
-			spawn(0)
-				T.update_connections()
-				T.update_icon()
-
-	connections = dirs_to_corner_states(connection_dirs)
+/obj/structure/table/update_icon(updates=ALL)
+	. = ..()
+	if((updates & UPDATE_SMOOTHING) && (smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK)))
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
 
 #define CORNER_NONE 0
 #define CORNER_COUNTERCLOCKWISE 1

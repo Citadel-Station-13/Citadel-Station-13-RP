@@ -3,10 +3,13 @@
 	desc = "Different from the Middle Ages version."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "rack"
+	base_icon_state = null
 	can_plate = 0
 	can_reinforce = 0
 	flipped = -1
 	item_pixel_place = FALSE
+	smoothing_groups = null //Don't smooth with anything
+	canSmoothWith = null
 
 /obj/structure/table/rack/Initialize(mapload)
 	. = ..()

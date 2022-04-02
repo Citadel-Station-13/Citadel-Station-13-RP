@@ -1,9 +1,9 @@
 /obj/machinery/washing_machine
 	name = "Washing Machine"
 	icon = 'icons/obj/machines/washing_machine.dmi'
-	icon_state = "wm_10"
-	density = 1
-	anchored = 1.0
+	icon_state = "wm_1"
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/washing
 	var/state = 1
 	//1 = empty, open door
@@ -75,7 +75,10 @@
 		usr.loc = src.loc
 
 /obj/machinery/washing_machine/update_icon()
-	icon_state = "wm_[state][panel_open]"
+	cut_overlays()
+	icon_state = "wm_[state]"
+	if(panel_open)
+		add_overlay("panel")
 
 /obj/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
 	if(state == 2 && washing.len < 1)

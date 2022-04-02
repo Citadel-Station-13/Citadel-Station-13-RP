@@ -26,6 +26,12 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	unacidable = TRUE
 	use_power = USE_POWER_OFF
 	var/sprite_number = 0
+	///Audio for when the gravgen is on
+	var/datum/looping_sound/gravgen/soundloop
+
+/obj/machinery/gravity_generator/main/Initialize(mapload)
+	. = ..()
+	soundloop = new(list(src), TRUE)
 
 	pixel_y = 16
 
@@ -62,6 +68,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	if(main_part)
 		qdel(main_part)
 	set_broken()
+	QDEL_NULL(soundloop)
 	return ..()
 
 //
@@ -317,11 +324,13 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	var/alert = FALSE
 	if(SSticker.IsRoundInProgress())
 		if(new_state) // If we turned on and the game is live.
+			soundloop.start()
 			if(gravity_in_level() == FALSE)
 				alert = TRUE
 				investigate_log("was brought online and is now producing gravity for this level.", "gravity")
 				message_admins("The gravity generator was brought online [ADMIN_JMP(src)]")
 		else
+			soundloop.stop()
 			if(gravity_in_level() == TRUE)
 				alert = TRUE
 				investigate_log("was brought offline and there is now no gravity for this level.", "gravity")

@@ -31,7 +31,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "t" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "v" = (

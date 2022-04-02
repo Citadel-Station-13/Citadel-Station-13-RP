@@ -5902,7 +5902,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/medical/morgue)
 "aiY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
@@ -5976,7 +5976,7 @@
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/detective/officeb)
 "ajf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
@@ -6485,7 +6485,7 @@
 /turf/simulated/wall,
 /area/maintenance/lower/public_garden_maintenence/upper)
 "ajW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /obj/machinery/button/windowtint/multitint{
 	id = "detoffice1";
@@ -6495,7 +6495,7 @@
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/detective/officea)
 "ajX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/cigarettes,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6509,7 +6509,7 @@
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/detective/officea)
 "ajY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/pen/blue{
@@ -6528,7 +6528,7 @@
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/detective/officeb)
 "akb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/pen/blue{
@@ -6542,7 +6542,7 @@
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/detective/officeb)
 "akc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/cigarettes,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6556,7 +6556,7 @@
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/detective/officeb)
 "akd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /obj/machinery/button/windowtint/multitint{
 	id = "detoffice0";
@@ -19566,28 +19566,28 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "aIT" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/flora/pottedplant/small{
 	pixel_y = 12
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aIU" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/photocopier/faxmachine{
 	department = "Command Conf Room"
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aIV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_soft/full{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aIW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/cups,
 /obj/machinery/camera/network/command{
 	dir = 9
@@ -20383,7 +20383,7 @@
 	},
 /area/server)
 "aKM" = (
-/obj/machinery/r_n_d/server/robotics,
+/obj/machinery/rnd/server/robotics,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -20642,11 +20642,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "aLm" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/lino,
 /area/maintenance/lower/south)
 "aLn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -21036,7 +21036,7 @@
 	},
 /area/server)
 "aMh" = (
-/obj/machinery/r_n_d/server/core,
+/obj/machinery/rnd/server/core,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -29001,7 +29001,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "bdl" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/teapot,
 /turf/simulated/floor/wood,
 /area/maintenance/lower/atmos)

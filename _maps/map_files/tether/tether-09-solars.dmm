@@ -6647,7 +6647,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "mm" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/donkpockets,
 /obj/machinery/light_switch{
 	dir = 4;
@@ -7113,7 +7113,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "nf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/vending/wallmed1{
 	pixel_x = -30
 	},
@@ -7132,7 +7132,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "ni" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -7746,7 +7746,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "ot" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "ou" = (
@@ -7816,7 +7816,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "oB" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/donut,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
@@ -7841,7 +7841,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "oI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /obj/machinery/light{
 	dir = 8
@@ -7963,7 +7963,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "oX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/recharger,
 /obj/machinery/light{
 	dir = 8

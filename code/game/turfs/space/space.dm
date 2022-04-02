@@ -76,7 +76,7 @@
 	var/power = CONFIG_GET(number/starlight)
 	if(power)
 		for(var/t in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
-			if(isspaceturf(t))
+			if(isspace(t))
 				//let's NOT update this that much pls
 				continue
 			set_light(power)

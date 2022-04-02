@@ -28,7 +28,7 @@
 
 /obj/item/tool/crowbar/red
 	icon = 'icons/obj/tools.dmi'
-	icon_state = "red_crowbar"
+	icon_state = "crowbar_red"
 	item_state = "crowbar_red"
 
 /obj/item/tool/crowbar/bone

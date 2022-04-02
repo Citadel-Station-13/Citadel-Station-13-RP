@@ -249,13 +249,13 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "aC" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/chemical_dispenser/ert,
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "aD" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/chemical_dispenser/biochemistry/full,
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/simulated/shuttle/floor/black,
@@ -759,7 +759,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bB" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/box/pillbottles,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
@@ -1243,11 +1243,11 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "cz" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "cA" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/button/remote/blast_door{
 	id = "ertbridgeshutters";
 	name = "remote shutter control";
@@ -1329,7 +1329,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/firstaid/surgery,
 /obj/item/stack/nanopaste,
 /turf/simulated/shuttle/floor/black,
@@ -1412,7 +1412,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
@@ -1439,7 +1439,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/belt/utility/full,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
@@ -1495,7 +1495,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dc" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/mounted/taser,
 /obj/item/rig_module/mounted/taser,
 /obj/item/rig_module/mounted/taser,
@@ -1518,7 +1518,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dg" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/device/drill,
 /obj/item/rig_module/device/drill,
 /obj/item/rig_module/maneuvering_jets,
@@ -1554,7 +1554,7 @@
 /obj/item/aiModule/paladin,
 /obj/item/aiModule/robocop,
 /obj/item/aiModule/safeguard,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/smes_coil,
 /obj/item/smes_coil,
 /obj/item/t_scanner/advanced,
@@ -1565,7 +1565,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
@@ -1581,7 +1581,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dm" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/fiftyspawner/phoron,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
@@ -1667,21 +1667,21 @@
 /turf/simulated/floor/carpet,
 /area/shuttle/specops/centcom)
 "dv" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/rescue_pharm,
 /obj/item/rig_module/sprinter,
 /obj/item/rig_module/sprinter,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dw" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/mounted,
 /obj/item/rig_module/mounted/egun,
 /obj/item/rig_module/mounted/egun,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dx" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/chem_dispenser/combat,
 /obj/item/rig_module/chem_dispenser/combat,
 /obj/item/rig_module/chem_dispenser/injector,
@@ -1691,7 +1691,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dy" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/device/rcd,
 /obj/item/rig_module/device/rcd,
 /obj/item/rig_module/device/plasmacutter,
@@ -1699,7 +1699,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dz" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/mask/gas/half,
 /obj/item/clothing/mask/gas/half,
 /obj/item/clothing/mask/gas/half,
@@ -1757,7 +1757,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
@@ -1768,14 +1768,14 @@
 /turf/simulated/floor/carpet,
 /area/shuttle/specops/centcom)
 "dF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/stamp/centcomm,
 /obj/item/storage/box/cdeathalarm_kit,
 /obj/item/storage/box/trackimp,
 /turf/simulated/floor/carpet,
 /area/shuttle/specops/centcom)
 "dG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/pinpointer/advpinpointer,
 /obj/item/aicard,
 /turf/simulated/floor/carpet,

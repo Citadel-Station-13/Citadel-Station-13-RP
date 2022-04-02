@@ -42,7 +42,7 @@
 		return
 	if(!ask_questions)
 		return
-	var/obj/item/storage/bible/B = locate(/obj/item/storage/bible) in H
+	var/obj/item/storage/book/B = locate(/obj/item/storage/book) in H
 	if(!B)
 		return
 	spawn(0)

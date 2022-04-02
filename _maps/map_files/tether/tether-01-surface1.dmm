@@ -377,7 +377,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralstairwell)
 "aaJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/white,
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
@@ -556,7 +556,7 @@
 /turf/simulated/wall,
 /area/maintenance/lower/trash_pit)
 "aaV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/plushie/ian{
 	dir = 8;
 	pixel_y = 6
@@ -692,7 +692,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/paramed)
 "abf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/toy/plushie/therapy/blue,
 /obj/machinery/power/apc{
 	dir = 1;
@@ -771,7 +771,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/paramed)
 "abj" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/plushie,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
@@ -911,7 +911,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/public_garden_maintenence)
 "abz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light_construct{
 	dir = 1
 	},
@@ -1062,7 +1062,7 @@
 /turf/simulated/wall,
 /area/maintenance/lower/mining_eva)
 "abU" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_y = 4
 	},
@@ -1446,7 +1446,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
 "acC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
 	pixel_x = -5;
 	pixel_y = 4
@@ -1495,7 +1495,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/paramed)
 "acF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/computer/med_data/laptop{
 	dir = 1
 	},
@@ -2535,7 +2535,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
 "ael" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clipboard,
 /obj/machinery/light,
 /turf/simulated/floor/carpet/blue,
@@ -3678,7 +3678,7 @@
 /area/rnd/hardstorage)
 "afY" = (
 /obj/machinery/camera/network/civilian,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/condiment/small/sugar,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
@@ -4442,7 +4442,7 @@
 /turf/simulated/floor/plating,
 /area/storage/surface_eva)
 "ahF" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
@@ -4868,7 +4868,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "aik" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
@@ -4877,7 +4877,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/testingroom)
 "ail" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
@@ -5064,7 +5064,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/testingroom)
 "aiG" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/assembly/infra,
 /obj/item/assembly/igniter,
 /obj/item/assembly/igniter,
@@ -5624,7 +5624,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "ajz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = 24
@@ -6986,7 +6986,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/xenoflora)
 "alL" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio,
 /obj/item/radio,
 /turf/simulated/floor/tiled,
@@ -11630,7 +11630,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "atX" = (
@@ -12957,7 +12957,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -13460,7 +13460,7 @@
 "awM" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/window/brigdoor/northright,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/monotile,
 /area/security/checkpoint)
 "awN" = (
@@ -17387,7 +17387,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/visitor_dining)
 "aCQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/visitor_dining)
 "aCR" = (
@@ -20435,7 +20435,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "aId" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm3)
@@ -20603,7 +20603,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/visitor_dining)
 "aIw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -20637,7 +20637,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/flora/pottedplant/small{
 	pixel_y = 12
 	},
@@ -21080,7 +21080,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore)
 "aJm" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/condiment/small/sugar,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -21088,7 +21088,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/visitor_dining)
 "aJn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -22175,7 +22175,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aLg" = (
@@ -22221,7 +22221,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/condiment/small/sugar,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/visitor_dining)
@@ -22615,7 +22615,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "aLS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -22637,13 +22637,13 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "aLU" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/donkpockets,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "aLV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
@@ -23915,7 +23915,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "aOq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -23937,13 +23937,13 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "aOs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/donkpockets,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "aOt" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
@@ -24997,7 +24997,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "aQi" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -25014,7 +25014,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "aQk" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/donkpockets,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/light_switch{
@@ -25024,7 +25024,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "aQl" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
@@ -26095,7 +26095,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "aSq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -26113,7 +26113,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "aSs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/donkpockets,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/light_switch{
@@ -26123,7 +26123,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "aSt" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
@@ -27212,7 +27212,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos_intake)
 "aUE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/mask/smokable/cigarette/joint{
 	desc = "Ever been to orbit?"
 	},
@@ -27364,7 +27364,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light_construct,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
@@ -28255,7 +28255,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aWB" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aWC" = (
@@ -28769,7 +28769,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aXG" = (
@@ -29331,7 +29331,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/maintDorm2)
 "aZQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/maintDorm2)
 "aZR" = (
@@ -29347,7 +29347,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/maintDorm1)
 "aZU" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/fancy/markers,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm1)
@@ -29414,7 +29414,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/maintDorm2)
 "bao" = (
@@ -29449,7 +29449,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "baA" = (
@@ -35223,7 +35223,7 @@
 	dir = 1;
 	pixel_y = -25
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
@@ -36671,7 +36671,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "qlj" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -37339,7 +37339,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tether/surfacebase/security/brig/bathroom)
 "rTn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/flora/pottedplant/small,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)

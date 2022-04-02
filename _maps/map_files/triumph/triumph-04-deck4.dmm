@@ -137,7 +137,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai/foyer)
 "afM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -150,7 +150,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/handcuffs,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
@@ -447,7 +447,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/civilian_hallway_mid)
 "apN" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
@@ -932,7 +932,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "aKb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/recharger,
 /obj/machinery/alarm{
 	dir = 8;
@@ -1011,7 +1011,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/freezer,
 /area/triumph/surfacebase/sauna)
 "aNk" = (
@@ -1774,7 +1774,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "bqD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/matches,
 /turf/simulated/floor/wood,
 /area/maintenance/security/starboard)
@@ -2023,7 +2023,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "bAK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CE_quarters)
 "bBr" = (
@@ -2079,7 +2079,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "bDu" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/item/storage/pill_bottle/dice_nerd,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
@@ -2524,7 +2524,7 @@
 /area/triumph/surfacebase/sauna)
 "bQT" = (
 /obj/item/book/manual/standard_operating_procedure,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/fancy/cigarettes/dromedaryco,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
@@ -2542,7 +2542,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "bRB" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/sleep/CE_quarters)
@@ -2640,7 +2640,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
 "bVo" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /turf/simulated/floor/wood/broken,
@@ -3232,7 +3232,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "crd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/duct_tape_roll,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
@@ -3283,7 +3283,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/civilian_hallway_mid)
 "ctm" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /turf/simulated/floor/wood,
 /area/maintenance/security/starboard)
@@ -3353,7 +3353,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "cuC" = (
 /obj/item/book/manual/standard_operating_procedure,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/fancy/cigarettes/dromedaryco,
 /obj/machinery/light{
 	dir = 1
@@ -3567,7 +3567,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/chapel/main)
 "cCL" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
@@ -4322,7 +4322,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "dnm" = (
@@ -4339,7 +4339,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/retail_scanner/security,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -4521,7 +4521,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "dtl" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/instrument/guitar,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
@@ -4995,7 +4995,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "dGk" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/duct_tape_piece,
 /obj/item/camera,
 /obj/item/retail_scanner/civilian{
@@ -5274,7 +5274,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "dQj" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/tram)
 "dQv" = (
@@ -5446,7 +5446,7 @@
 /turf/simulated/floor/plating,
 /area/chapel/office)
 "dWA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "dWJ" = (
@@ -5568,7 +5568,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/station/stairs_one)
 "dZO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -5793,7 +5793,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "egk" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = 1;
 	pixel_y = 9
@@ -5962,7 +5962,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "enf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CMO_quarters)
@@ -6459,7 +6459,7 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "eEv" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
@@ -6468,7 +6468,7 @@
 	dir = 8;
 	name = "Warden's Desk"
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -6569,7 +6569,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "eGK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/radio/off,
 /obj/item/megaphone,
 /obj/item/storage/box/glasses/rocks,
@@ -6630,7 +6630,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "west bump";
@@ -6776,7 +6776,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration)
 "eLm" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/camera/network/exploration{
 	dir = 4
 	},
@@ -6983,11 +6983,11 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "ePE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "eQf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/manual/standard_operating_procedure,
 /obj/item/hand_labeler,
 /turf/simulated/floor/tiled,
@@ -7198,7 +7198,7 @@
 /area/shuttle/courser/general)
 "eWH" = (
 /obj/item/flame/candle/candelabra/everburn,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/maintenance/security/starboard)
 "eWL" = (
@@ -7614,7 +7614,7 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "fhX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -8122,7 +8122,7 @@
 /turf/simulated/floor/carpet,
 /area/security/warden)
 "fAN" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_soft/full{
 	dir = 8
 	},
@@ -8247,7 +8247,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "fFI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/mist,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
@@ -8255,7 +8255,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/tram)
 "fHg" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/item/storage/dicecup/loaded,
 /obj/item/deck/cards,
 /turf/simulated/floor/plating,
@@ -8382,7 +8382,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "fMM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/fancy/heartbox,
 /turf/simulated/floor/carpet,
 /area/maintenance/security/starboard)
@@ -8547,7 +8547,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "fTt" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "fUd" = (
@@ -8599,7 +8599,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "fVV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "fVZ" = (
@@ -8638,7 +8638,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "fXM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = 1;
 	pixel_y = 9
@@ -8650,7 +8650,7 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "fXQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -8823,7 +8823,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "gjx" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle/candelabra,
 /turf/simulated/floor/wood,
 /area/hallway/secondary/docking_hallway)
@@ -8895,7 +8895,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "glO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/photocopier/faxmachine{
 	department = "Pathfinder's Office"
 	},
@@ -9083,7 +9083,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled,
 /area/security/lobby)
@@ -9646,7 +9646,7 @@
 "gLy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/library)
@@ -9908,7 +9908,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "gUv" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/item/storage/pill_bottle/dice,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/central)
@@ -11058,7 +11058,7 @@
 	dir = 4;
 	pixel_x = -12
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle/candelabra,
 /turf/simulated/floor/wood,
 /area/hallway/secondary/docking_hallway)
@@ -11147,7 +11147,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/recharger,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CMO_quarters)
@@ -11265,7 +11265,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "hMd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -11369,7 +11369,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "hQd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/accessory/permit/gun,
 /obj/item/clothing/accessory/permit/gun,
 /obj/item/clothing/accessory/permit/gun,
@@ -11445,7 +11445,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "hRR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/dtreat,
 /obj/item/reagent_containers/food/snacks/dtreat,
 /obj/item/reagent_containers/food/snacks/dtreat,
@@ -11629,7 +11629,7 @@
 /area/teleporter)
 "hWX" = (
 /obj/structure/flora/pottedplant/stoutbush,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "hXk" = (
@@ -11763,7 +11763,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/carpet,
 /area/security/brig)
@@ -12095,7 +12095,7 @@
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/mist,
 /obj/item/reagent_containers/food/drinks/bottle/patron,
 /turf/simulated/floor/wood,
@@ -12371,7 +12371,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "iwe" = (
 /obj/item/binoculars,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
@@ -12725,7 +12725,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "iHh" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -12901,7 +12901,7 @@
 	},
 /obj/item/tvcamera,
 /obj/item/tvcamera,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/newscaster{
 	pixel_y = 30
 	},
@@ -13121,7 +13121,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "iVA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
@@ -13188,7 +13188,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/handcuffs,
 /obj/machinery/light,
 /turf/simulated/floor/carpet,
@@ -13285,7 +13285,7 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "jeX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
@@ -13590,7 +13590,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/mimeoffice)
 "joY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/photocopier/faxmachine{
 	department = "Head of Security"
 	},
@@ -14023,7 +14023,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration)
 "jFs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
@@ -14503,7 +14503,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CMO_quarters)
 "jYz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/handcuffs/legcuffs/fuzzy,
 /obj/item/clothing/glasses/sunglasses/blindfold,
 /turf/simulated/floor/wood,
@@ -14513,7 +14513,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "jZa" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/nullrod,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -14588,7 +14588,7 @@
 /turf/simulated/floor/tiled/white,
 /area/exploration/medical)
 "kbd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
@@ -14610,7 +14610,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "kdc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
@@ -14704,7 +14704,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/mimeoffice)
 "kgr" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/keycard_auth{
 	pixel_x = -28;
 	pixel_y = 6
@@ -14759,7 +14759,7 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/excursion/cargo)
 "kim" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/glasses/meta,
 /obj/item/storage/box/glasses/meta,
 /obj/machinery/light_switch{
@@ -14780,7 +14780,7 @@
 	id = "det_office";
 	pixel_x = -23
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
@@ -14845,7 +14845,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "kno" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/computer/skills,
 /obj/item/perfect_tele{
 	desc = "Seems absurd, doesn't it? Yet, here we are. This handheld device is capable of producing bluespace teleportation beacons, and can be activated to translocate the user or a target of their choice to any linked beacon. This one is the Facility Director's.";
@@ -14857,7 +14857,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "kor" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/stamp/hos,
 /obj/item/hand_labeler,
 /obj/item/flashlight/lamp/green{
@@ -14926,7 +14926,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration)
 "kra" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper{
 	desc = "";
 	info = "The Chief of Security at CentCom is debating a new policy. It's not official yet, and probably won't be since it's hard to enforce, but I suggest following it anyway. That policy is, if a security officer claims they need more than two extra magazines (or batteries) to go on routine patrols, fire them. If they cannot subdue a single suspect using all that ammo, they are not competent as Security.\[br]-Jeremiah Acacius";
@@ -14951,7 +14951,7 @@
 	pixel_x = -4;
 	pixel_y = 2
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "krE" = (
@@ -15031,7 +15031,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "kuS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/tape_recorder,
 /obj/item/paper_bin{
 	pixel_x = -3;
@@ -15438,7 +15438,7 @@
 	pixel_x = 0;
 	pixel_y = 14
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/item/pen,
@@ -15589,7 +15589,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "kQE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
@@ -15692,7 +15692,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "kTz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light/small,
 /obj/machinery/light_switch{
 	pixel_y = -26
@@ -15839,7 +15839,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "kYP" = (
@@ -16051,7 +16051,7 @@
 /turf/simulated/floor/wood/broken,
 /area/maintenance/security/starboard)
 "lgi" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/stack/material/wood{
 	amount = 50
 	},
@@ -16674,7 +16674,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "lxU" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_soft/full,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
@@ -18363,7 +18363,7 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge/meeting_room)
 "mFj" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/glasses/meta,
 /obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/carpet/tealcarpet,
@@ -19178,7 +19178,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/towel/random,
 /obj/item/towel/random,
 /obj/item/towel/random,
@@ -19728,7 +19728,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/security/prison)
 "nDv" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/manual/security_space_law,
 /obj/item/flashlight/lamp/green{
 	pixel_x = -5;
@@ -19860,7 +19860,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/civvie/general)
 "nKH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/codex/lore/news,
 /turf/simulated/floor/wood,
 /area/library)
@@ -20073,7 +20073,7 @@
 /turf/simulated/wall,
 /area/library/study)
 "nTv" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
 /turf/simulated/floor/wood/broken,
@@ -20170,7 +20170,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "nXg" = (
@@ -20373,7 +20373,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "oeL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/library)
 "oeN" = (
@@ -20393,7 +20393,7 @@
 "ofz" = (
 /obj/item/flashlight/lamp/green,
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/glasses/omnihud/all,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -20626,7 +20626,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/recharger,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/sleep/CE_quarters)
@@ -20682,7 +20682,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/prison/cell_block)
 "omF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/glasses/meta,
 /obj/item/clothing/gloves/black,
 /turf/simulated/floor/wood,
@@ -20738,7 +20738,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "onR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /obj/machinery/light/small{
 	dir = 4
@@ -21094,7 +21094,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "oCV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/maintenance/central)
 "oDb" = (
@@ -21172,7 +21172,7 @@
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "oFz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/item/pen,
@@ -21239,11 +21239,11 @@
 /obj/structure/closet/hydrant{
 	pixel_x = 32
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "oHO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_soft/full,
 /obj/machinery/light/small{
 	dir = 4
@@ -21666,7 +21666,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pathfinder_office)
 "oVk" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cell_charger,
 /obj/machinery/light{
 	dir = 8;
@@ -21712,7 +21712,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "oVJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/sleep/CE_quarters)
 "oWd" = (
@@ -21855,7 +21855,7 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
 "pak" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/folder/red,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -21918,7 +21918,7 @@
 /obj/random/unidentified_medicine/combat_medicine,
 /obj/random/unidentified_medicine/combat_medicine,
 /obj/random/unidentified_medicine/combat_medicine,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CMO_quarters)
 "pcx" = (
@@ -22460,7 +22460,7 @@
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "pui" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/library)
@@ -22783,7 +22783,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "pJe" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "pJn" = (
@@ -22980,7 +22980,7 @@
 /turf/simulated/floor,
 /area/hallway/secondary/docking_hallway)
 "pON" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
@@ -23237,7 +23237,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "pWC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/photocopier/faxmachine{
 	department = "Library Conference Room"
 	},
@@ -23420,7 +23420,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/lounge)
 "qaR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_alc/full,
 /obj/machinery/alarm{
 	dir = 8;
@@ -23669,7 +23669,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CMO_quarters)
 "qhg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/manual/security_space_law,
 /obj/item/flashlight/lamp/green{
 	pixel_x = -5;
@@ -23867,7 +23867,7 @@
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "qnw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -24102,7 +24102,7 @@
 /turf/simulated/floor/tiled,
 /area/security/range)
 "qtH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper{
 	info = "Look to the mice for answers.";
 	name = "strange note"
@@ -24398,7 +24398,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "qBE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
@@ -24821,7 +24821,7 @@
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "qPI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "qPL" = (
@@ -24984,7 +24984,7 @@
 /obj/machinery/chemical_dispenser/bar_soft/full{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/maintenance/security/starboard)
 "qVl" = (
@@ -25957,7 +25957,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "rCt" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/lounge)
@@ -26697,7 +26697,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "scv" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp{
 	pixel_y = 10
 	},
@@ -26906,7 +26906,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "skS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/fancy/crayons,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -27268,7 +27268,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "syF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -27559,7 +27559,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/sleep/CE_quarters)
 "sFX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/toy/plushie/penguin_baby,
 /obj/machinery/recharger,
 /turf/simulated/floor/carpet/bcarpet,
@@ -28301,11 +28301,11 @@
 /turf/simulated/floor/plating,
 /area/security/hanger)
 "tby" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/freezer,
 /area/triumph/surfacebase/sauna)
 "tbC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/handcuffs/fuzzy,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -29158,7 +29158,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/paicard,
 /turf/simulated/floor/wood,
@@ -29240,7 +29240,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "tMK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/broken,
 /area/vacant/vacant_bar)
 "tMS" = (
@@ -29401,7 +29401,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/photocopier/faxmachine{
 	department = "Warden's Office"
 	},
@@ -29677,7 +29677,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "ufH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/librarycomp,
 /turf/simulated/floor/wood,
 /area/library)
@@ -29827,7 +29827,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clipboard,
 /obj/item/tool/wrench,
 /obj/item/tool/crowbar,
@@ -30753,7 +30753,7 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "uQZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/mist,
 /obj/item/reagent_containers/food/drinks/bottle/limejuice,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
@@ -30771,7 +30771,7 @@
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
 "uRx" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/flask/shiny,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/HOP_quarters)
@@ -30834,7 +30834,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "uUo" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/photo_album{
 	pixel_y = -10
 	},
@@ -30875,7 +30875,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cell_charger,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
@@ -31806,7 +31806,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "vzq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -31878,7 +31878,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "vAH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "vAL" = (
@@ -31922,7 +31922,7 @@
 /area/security/security_lockerroom)
 "vBD" = (
 /obj/machinery/chemical_dispenser/bar_alc/full,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -32606,7 +32606,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/excursion_dock)
 "vUq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CMO_quarters)
 "vUs" = (
@@ -32672,7 +32672,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/triumph/station/stairs_four)
 "vVM" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/stamp/denied{
 	pixel_x = 5
 	},
@@ -33324,7 +33324,7 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "wsk" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -33483,7 +33483,7 @@
 /area/crew_quarters/sleep/CE_quarters)
 "wyl" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -33511,7 +33511,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -33635,7 +33635,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "wDl" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "wDz" = (
@@ -33757,7 +33757,7 @@
 /turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "wHh" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "wHt" = (
@@ -34094,7 +34094,7 @@
 /area/security/range)
 "wTA" = (
 /obj/machinery/light/small,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/radio/intercom{
 	pixel_y = -24
@@ -34179,7 +34179,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/universal_translator,
 /obj/item/tape_recorder,
 /turf/simulated/floor/tiled,
@@ -34218,7 +34218,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/medical)
 "wZj" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -34312,7 +34312,7 @@
 	pixel_y = 2
 	},
 /obj/item/megaphone,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
@@ -34490,7 +34490,7 @@
 /area/hallway/primary/aft)
 "xiY" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "xjj" = (
@@ -34789,7 +34789,7 @@
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "xsg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/photocopier/faxmachine{
 	department = "Captain's Office"
 	},
@@ -34927,7 +34927,7 @@
 /turf/simulated/wall,
 /area/triumph/surfacebase/tram)
 "xwI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/shaker,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
@@ -35015,7 +35015,7 @@
 /turf/simulated/wall/r_wall,
 /area/security/security_processing)
 "xAr" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /obj/machinery/light_switch{
 	dir = 8;
@@ -35638,7 +35638,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "xUn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/maintenance/security/starboard)
@@ -35713,7 +35713,7 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "xXe" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_soft/full,
 /turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/sleep/CMO_quarters)
@@ -35753,7 +35753,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "xYJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/gin,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -35988,7 +35988,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "yis" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/item/paicard,
 /turf/simulated/floor/carpet/bcarpet,

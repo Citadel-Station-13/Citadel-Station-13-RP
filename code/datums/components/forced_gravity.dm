@@ -12,7 +12,7 @@
 	gravity = forced_value
 
 /datum/component/forced_gravity/proc/gravity_check(datum/source, turf/location, list/gravs)
-	if(!ignore_space && isspaceturf(location))
+	if(!ignore_space && isspace(location))
 		return
 	gravs += gravity
 

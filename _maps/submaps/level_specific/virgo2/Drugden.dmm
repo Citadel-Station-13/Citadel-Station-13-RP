@@ -35,7 +35,7 @@
 /turf/simulated/floor/carpet,
 /area/submap/virgo2/Drugd)
 "k" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/pill/happy{
 	name = "pill"
 	},
@@ -65,7 +65,7 @@
 /turf/simulated/floor/carpet,
 /area/submap/virgo2/Drugd)
 "r" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/pill/methylphenidate{
 	name = "pill"
 	},
@@ -98,7 +98,7 @@
 /turf/simulated/floor/carpet,
 /area/submap/virgo2/Drugd)
 "x" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /obj/item/reagent_containers/syringe/drugs,
 /turf/simulated/floor/carpet,
@@ -199,7 +199,7 @@
 /turf/simulated/floor,
 /area/submap/virgo2/Drugd)
 "P" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/pill/tramadol{
 	name = "pill"
 	},
@@ -214,12 +214,12 @@
 /turf/simulated/floor,
 /area/submap/virgo2/Drugd)
 "T" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/carpet,
 /area/submap/virgo2/Drugd)
 "U" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/syringe/drugs,
 /turf/simulated/floor/carpet,
 /area/submap/virgo2/Drugd)

@@ -1612,7 +1612,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/stack/rods,
 /obj/item/stack/rods,
 /obj/item/stack/material/glass/phoronglass,
@@ -1624,7 +1624,7 @@
 	},
 /area/centcom/specops)
 "cy" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/box/survival/comp,
 /obj/item/storage/box/survival/comp,
 /obj/item/storage/box/survival/comp,
@@ -1706,7 +1706,7 @@
 /obj/item/aiModule/paladin,
 /obj/item/aiModule/robocop,
 /obj/item/aiModule/safeguard,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1717,7 +1717,7 @@
 /obj/item/clothing/glasses/welding/superior,
 /obj/item/clothing/glasses/welding/superior,
 /obj/item/clothing/glasses/welding/superior,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/glasses/welding/superior,
 /obj/item/grenade/chem_grenade/metalfoam,
 /obj/item/grenade/chem_grenade/metalfoam,
@@ -1848,7 +1848,7 @@
 	},
 /area/centcom/specops)
 "cU" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/gloves/yellow,
 /obj/item/clothing/gloves/yellow,
 /obj/item/clothing/gloves/yellow,
@@ -1866,7 +1866,7 @@
 	},
 /area/centcom/specops)
 "cV" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
@@ -2353,7 +2353,7 @@
 	},
 /area/centcom/control)
 "dR" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/rnd/circuit_imprinter,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -2540,14 +2540,14 @@
 	},
 /area/centcom/control)
 "el" = (
-/obj/machinery/r_n_d/destructive_analyzer,
+/obj/machinery/rnd/destructive_analyzer,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "em" = (
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "en" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/rnd/protolathe,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "eo" = (
@@ -2688,7 +2688,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "eB" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/rnd/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -5469,7 +5469,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
@@ -5485,7 +5485,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/radio/off,
 /obj/item/megaphone,
 /obj/machinery/camera/network/crescent,
@@ -5501,7 +5501,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/handcuffs,
 /turf/unsimulated/floor{
 	dir = 5;
@@ -6242,7 +6242,7 @@
 	},
 /area/centcom/command)
 "lz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 10;
 	pixel_y = 12
@@ -6261,7 +6261,7 @@
 	},
 /area/centcom/command)
 "lA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/stamp/hos,
 /turf/unsimulated/floor{
 	dir = 5;
@@ -6269,7 +6269,7 @@
 	},
 /area/centcom/command)
 "lB" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/computer/skills{
 	pixel_y = 4
 	},
@@ -6288,7 +6288,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	desc = "It's a table..it has some scratch marks 'the commander likes to fuck me here'."
 	},
 /obj/effect/floor_decal/borderfloorblack/corner2{
@@ -6442,7 +6442,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lU" = (
-/obj/machinery/r_n_d/server/centcom,
+/obj/machinery/rnd/server/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lV" = (
@@ -6584,7 +6584,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -6718,7 +6718,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 6
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/flask/barflask{
 	pixel_x = -4;
 	pixel_y = 8
@@ -7848,7 +7848,7 @@
 	},
 /area/centcom/command)
 "ov" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -8434,7 +8434,7 @@
 	},
 /area/centcom/command)
 "py" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -8442,7 +8442,7 @@
 	},
 /area/centcom/command)
 "pz" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/folder/red_hos,
@@ -8451,7 +8451,7 @@
 	},
 /area/centcom/command)
 "pA" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/paper_bin{
@@ -8463,7 +8463,7 @@
 	},
 /area/centcom/command)
 "pB" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/pen,
@@ -8493,7 +8493,7 @@
 	},
 /area/centcom/command)
 "pF" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/folder/blue_captain,
@@ -8502,7 +8502,7 @@
 	},
 /area/centcom/command)
 "pG" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/folder/blue_hop,
@@ -8511,7 +8511,7 @@
 	},
 /area/centcom/command)
 "pH" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/megaphone,
@@ -8704,7 +8704,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "qd" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/folder/white_cmo,
@@ -8713,7 +8713,7 @@
 	},
 /area/centcom/command)
 "qe" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/reagent_containers/food/drinks/cup{
@@ -8725,7 +8725,7 @@
 	},
 /area/centcom/command)
 "qf" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/folder/white_rd,
@@ -8734,7 +8734,7 @@
 	},
 /area/centcom/command)
 "qg" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/storage/briefcase{
@@ -8746,7 +8746,7 @@
 	},
 /area/centcom/command)
 "qh" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/reagent_containers/food/drinks/cup{
@@ -8757,7 +8757,7 @@
 	},
 /area/centcom/command)
 "qi" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/item/folder/yellow_ce,
@@ -9741,7 +9741,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "sk" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/structure/flora/pottedplant{
@@ -11427,7 +11427,7 @@
 	},
 /area/centcom/bathroom)
 "vP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/carpet{
 	dir = 8
 	},
@@ -11444,7 +11444,7 @@
 	},
 /area/centcom/restaurant)
 "vQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/carpet{
 	dir = 1
 	},
@@ -11455,7 +11455,7 @@
 	},
 /area/centcom/restaurant)
 "vR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/carpet{
 	dir = 4
 	},
@@ -12349,7 +12349,7 @@
 	},
 /area/centcom/restaurant)
 "xk" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/fries,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -12357,7 +12357,7 @@
 	},
 /area/centcom/restaurant)
 "xl" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/cheeseburger{
 	pixel_x = 3;
 	pixel_y = 3
@@ -12378,7 +12378,7 @@
 	},
 /area/centcom/restaurant)
 "xn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/grilledcheese,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -12386,7 +12386,7 @@
 	},
 /area/centcom/restaurant)
 "xo" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/meatballsoup,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -12678,7 +12678,7 @@
 	},
 /area/centcom/main_hall)
 "xJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/hotdog,
 /obj/item/reagent_containers/food/snacks/hotdog{
 	pixel_x = -5;
@@ -12690,7 +12690,7 @@
 	},
 /area/centcom/restaurant)
 "xK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/bigbiteburger,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -12698,7 +12698,7 @@
 	},
 /area/centcom/restaurant)
 "xL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/roastbeef,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -12706,7 +12706,7 @@
 	},
 /area/centcom/restaurant)
 "xM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/meatsteak,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -12734,7 +12734,7 @@
 	},
 /area/centcom/bathroom)
 "xP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/carpet{
 	dir = 8
 	},
@@ -12845,7 +12845,7 @@
 	},
 /area/centcom/restaurant)
 "xZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/carpet{
 	dir = 8
 	},
@@ -13280,7 +13280,7 @@
 	},
 /area/centcom/restaurant)
 "yH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/pastatomato,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -13288,7 +13288,7 @@
 	},
 /area/centcom/restaurant)
 "yI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/meatballspagetti,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -13621,7 +13621,7 @@
 	},
 /area/centcom/main_hall)
 "zf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/kitsuneudon,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -13629,7 +13629,7 @@
 	},
 /area/centcom/restaurant)
 "zg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/lasagna,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -14022,7 +14022,7 @@
 	},
 /area/centcom/bar)
 "zM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -14082,7 +14082,7 @@
 /turf/unsimulated/wall,
 /area/centcom/bar)
 "zV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/grenadine,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -14090,7 +14090,7 @@
 	},
 /area/centcom/bar)
 "zW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/cola,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -14098,7 +14098,7 @@
 	},
 /area/centcom/bar)
 "zX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/cash_register/civilian,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -14106,7 +14106,7 @@
 	},
 /area/centcom/bar)
 "zY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/space_mountain_wind,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -14114,7 +14114,7 @@
 	},
 /area/centcom/bar)
 "zZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/toastedsandwich{
 	pixel_y = 10
 	},
@@ -14124,7 +14124,7 @@
 	},
 /area/centcom/bar)
 "Aa" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -15826,7 +15826,7 @@
 	},
 /area/centcom/command)
 "Dm" = (
-/obj/machinery/r_n_d/server/centcom,
+/obj/machinery/rnd/server/centcom,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
@@ -16341,7 +16341,7 @@
 	},
 /area/centcom/control)
 "UC" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
@@ -16394,7 +16394,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
 "XA" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/smes_coil,
 /obj/item/smes_coil,
 /obj/item/t_scanner/advanced,

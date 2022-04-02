@@ -534,11 +534,10 @@
 
 
 /proc/is_relay_online()
-    for(var/obj/machinery/telecomms/relay/M in world)
-        if(M.stat == 0)
-            return 1
-    return 0
-
+	for(var/obj/machinery/telecomms/relay/M in world)
+		if(M.stat == 0)
+			return TRUE
+	return FALSE
 /obj/machinery/computer/communications/proc/post_status(var/command, var/data1, var/data2)
 
 	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)

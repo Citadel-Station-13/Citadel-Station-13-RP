@@ -1,11 +1,11 @@
 /obj/structure/reagent_dispensers
 	name = "Dispenser"
 	desc = "..."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "watertank"
+	icon = 'icons/obj/chemical_tanks.dmi'
+	icon_state = "water"
 	layer = TABLE_LAYER
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	pressure_resistance = 2*ONE_ATMOSPHERE
 
 	// var/obj/item/hose_connector/input/active/InputSocket
@@ -15,15 +15,10 @@
 	var/possible_transfer_amounts = list(10,25,50,100)
 
 /obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
-		return
-
-/obj/structure/reagent_dispensers/Destroy()
-	// QDEL_NULL(InputSocket)
-	// QDEL_NULL(OutputSocket)
-
-	..()
+	return
 
 /obj/structure/reagent_dispensers/Initialize()
+	. = ..()
 	var/datum/reagents/R = new/datum/reagents(5000)
 	reagents = R
 	R.my_atom = src
@@ -35,7 +30,12 @@
 	// OutputSocket = new(src)
 	// OutputSocket.carrier = src
 
-	. = ..()
+
+/obj/structure/reagent_dispensers/Destroy()
+	// QDEL_NULL(InputSocket)
+	// QDEL_NULL(OutputSocket)
+
+	..()
 
 /obj/structure/reagent_dispensers/examine(mob/user)
 	. = ..()
@@ -82,8 +82,7 @@
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
 	desc = "A watertank."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "watertank"
+	icon_state = "water"
 	amount_per_transfer_from_this = 10
 
 /obj/structure/reagent_dispensers/watertank/Initialize()
@@ -93,7 +92,7 @@
 /obj/structure/reagent_dispensers/watertank/high
 	name = "high-capacity water tank"
 	desc = "A highly-pressurized water tank made to hold vast amounts of water.."
-	icon_state = "watertank_high"
+	icon_state = "water_high"
 
 /obj/structure/reagent_dispensers/watertank/high/Initialize()
 	. = ..()
@@ -102,10 +101,9 @@
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
 	desc = "A fueltank."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "weldtank"
+	icon_state = "fuel"
 	amount_per_transfer_from_this = 10
-	var/modded = 0
+	var/modded = FALSE
 	var/obj/item/assembly_holder/rig = null
 
 /obj/structure/reagent_dispensers/fueltank/Initialize()
@@ -116,7 +114,7 @@
 /obj/structure/reagent_dispensers/fueltank/high
 	name = "high-capacity fuel tank"
 	desc = "A highly-pressurized fuel tank made to hold vast amounts of fuel."
-	icon_state = "weldtank_high"
+	icon_state = "fuel_high"
 
 /obj/structure/reagent_dispensers/fueltank/high/Initialize()
 	. = ..()
@@ -143,7 +141,6 @@
 	if (W.is_wrench()) //can't wrench it shut, it's always open
 		return
 	return ..()
-//VOREStation Add End
 
 /obj/structure/reagent_dispensers/fueltank/examine(mob/user)
 	. = ..()
@@ -167,8 +164,8 @@
 	if (W.is_wrench())
 		user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
 			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
-		modded = modded ? 0 : 1
-		playsound(src, W.usesound, 75, 1)
+		modded = modded ? FALSE : TRUE
+		playsound(src, W.usesound, 75, TRUE)
 		if (modded)
 			message_admins("[key_name_admin(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
 			log_game("[key_name(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel.")
@@ -245,10 +242,9 @@
 /obj/structure/reagent_dispensers/peppertank
 	name = "Pepper Spray Refiller"
 	desc = "Refills pepper spray canisters."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "peppertank"
-	anchored = 1
-	density = 0
+	icon_state = "pepper"
+	anchored = TRUE
+	density = FALSE
 	amount_per_transfer_from_this = 45
 
 /obj/structure/reagent_dispensers/peppertank/Initialize()
@@ -260,10 +256,9 @@
 	name = "Water-Cooler"
 	desc = "A machine that dispenses water to drink."
 	amount_per_transfer_from_this = 5
-	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
-	anchored = 1
+	anchored = TRUE
 	var/bottle = 0
 	var/cups = 0
 	var/cupholder = 0
@@ -291,9 +286,9 @@
 
 	if (src.anchored || usr:stat)
 		to_chat(usr, "It is fastened to the floor!")
-		return 0
+		return FALSE
 	setDir(turn(dir, 270))
-	return 1
+	return TRUE
 
 /obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_wrench())
@@ -399,8 +394,7 @@
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
 	desc = "A beer keg."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "beertankTEMP"
+	icon_state = "beer"
 	amount_per_transfer_from_this = 10
 
 /obj/structure/reagent_dispensers/beerkeg/Initialize()
@@ -416,10 +410,9 @@
 /obj/structure/reagent_dispensers/virusfood
 	name = "Virus Food Dispenser"
 	desc = "A dispenser of virus food. Yum."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "virusfoodtank"
+	icon_state = "virus_food"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/reagent_dispensers/virusfood/Initialize()
 	. = ..()
@@ -428,10 +421,9 @@
 /obj/structure/reagent_dispensers/acid
 	name = "Sulphuric Acid Dispenser"
 	desc = "A dispenser of acid for industrial processes."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "acidtank"
+	icon_state = "acid"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/reagent_dispensers/acid/Initialize()
 	. = ..()
@@ -441,8 +433,7 @@
 /obj/structure/reagent_dispensers/tallow
 	name = "tallow tank"
 	desc = "A fifty-litre tank of commercial-grade tallow, intended for use in large scale deep fryers. Store in a cool, dark place"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "tallowtank"
+	icon_state = "vat"
 	amount_per_transfer_from_this = 120
 
 /obj/structure/reagent_dispensers/tallow/Initialize()
@@ -465,7 +456,7 @@
 	name = "fueltank"
 	desc = "A fueltank."
 	icon = 'icons/obj/objects.dmi'
-	icon_state = "weldtank"
+	icon_state = "fuel"
 	amount_per_transfer_from_this = 10
 
 /obj/structure/reagent_dispenser/he3/Initialize()
@@ -477,9 +468,9 @@
 	name = "Oil Dispenser"
 	desc = "A dispenser of crude oil for industrial processes."
 	icon = 'icons/obj/objects.dmi'
-	icon_state = "oiltank"
+	icon_state = "oil"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/reagent_dispensers/oil/Initialize()
 	. = ..()

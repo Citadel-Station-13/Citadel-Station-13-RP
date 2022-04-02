@@ -4,7 +4,7 @@ a /datum/desgin on the linked R&D console. You can then print them out in a fasi
 using metal and glass, it uses glass and reagents (usually sulphuric acid).
 */
 
-/obj/machinery/r_n_d/circuit_imprinter
+/obj/machinery/rnd/circuit_imprinter
 	name = "Circuit Imprinter"
 	icon_state = "circuit_imprinter"
 	flags = OPENCONTAINER
@@ -24,12 +24,12 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	idle_power_usage = 30
 	active_power_usage = 2500
 
-/obj/machinery/r_n_d/circuit_imprinter/Initialize(mapload)
+/obj/machinery/rnd/circuit_imprinter/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	RefreshParts()
 
-/obj/machinery/r_n_d/circuit_imprinter/process(delta_time)
+/obj/machinery/rnd/circuit_imprinter/process(delta_time)
 	..()
 	if(stat)
 		update_icon()
@@ -55,7 +55,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			busy = 0
 			update_icon()
 
-/obj/machinery/r_n_d/circuit_imprinter/RefreshParts()
+/obj/machinery/rnd/circuit_imprinter/RefreshParts()
 	var/T = 0
 	for(var/obj/item/reagent_containers/glass/G in component_parts)
 		T += G.reagents.maximum_volume
@@ -69,7 +69,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	mat_efficiency = max(1 - (T - 1) / 4, 0.2)
 	speed = T
 
-/obj/machinery/r_n_d/circuit_imprinter/update_icon()
+/obj/machinery/rnd/circuit_imprinter/update_icon()
 	if(panel_open)
 		icon_state = "circuit_imprinter_t"
 	else if(busy)
@@ -77,13 +77,13 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	else
 		icon_state = "circuit_imprinter"
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/TotalMaterials()
+/obj/machinery/rnd/circuit_imprinter/proc/TotalMaterials()
 	var/t = 0
 	for(var/f in materials)
 		t += materials[f]
 	return t
 
-/obj/machinery/r_n_d/circuit_imprinter/dismantle()
+/obj/machinery/rnd/circuit_imprinter/dismantle()
 	for(var/obj/I in component_parts)
 		if(istype(I, /obj/item/reagent_containers/glass/beaker))
 			reagents.trans_to_obj(I, reagents.total_volume)
@@ -95,7 +95,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 				S.amount = round(materials[f] / SHEET_MATERIAL_AMOUNT)
 	..()
 
-/obj/machinery/r_n_d/circuit_imprinter/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/rnd/circuit_imprinter/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
 		return 1
@@ -158,15 +158,15 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	updateUsrDialog()
 	return
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/addToQueue(var/datum/design/D)
+/obj/machinery/rnd/circuit_imprinter/proc/addToQueue(var/datum/design/D)
 	queue += D
 	return
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/removeFromQueue(var/index)
+/obj/machinery/rnd/circuit_imprinter/proc/removeFromQueue(var/index)
 	queue.Cut(index, index + 1)
 	return
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/canBuild(var/datum/design/D)
+/obj/machinery/rnd/circuit_imprinter/proc/canBuild(var/datum/design/D)
 	for(var/M in D.materials)
 		if(materials[M] < (D.materials[M] * mat_efficiency))
 			return 0
@@ -175,7 +175,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			return 0
 	return 1
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/getLackingMaterials(var/datum/design/D)
+/obj/machinery/rnd/circuit_imprinter/proc/getLackingMaterials(var/datum/design/D)
 	var/ret = ""
 	for(var/M in D.materials)
 		if(materials[M] < D.materials[M])
@@ -189,7 +189,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			ret += C
 	return ret
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/build(var/datum/design/D)
+/obj/machinery/rnd/circuit_imprinter/proc/build(var/datum/design/D)
 	var/power = active_power_usage
 	for(var/M in D.materials)
 		power += round(D.materials[M] / 5)

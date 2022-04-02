@@ -51,7 +51,7 @@
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)
 "l" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio/intercom{
 	icon_state = "intercom";
 	dir = 8
@@ -140,7 +140,7 @@
 	},
 /area/submap/virgo2/DJOutpost1)
 "v" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/trash/candle,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)
@@ -156,7 +156,7 @@
 /obj/item/book/codex/lore/vir,
 /obj/item/book/manual/excavation,
 /obj/item/book/manual/engineering_construction,
-/obj/item/storage/bible,
+/obj/item/storage/book,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)
 "y" = (
@@ -164,13 +164,13 @@
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)
 "z" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio/phone,
 /obj/random_multi/single_item/sfr_headset,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)
 "A" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio/intercom/syndicate{
 	desc = "Talk through this.";
 	name = "station intercom (General)"
@@ -179,7 +179,7 @@
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)
 "B" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio,
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/hyper;
@@ -213,7 +213,7 @@
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)
 "F" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/unajerky,
 /obj/machinery/light{
 	icon_state = "tube1";
@@ -243,7 +243,7 @@
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)
 "J" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/material/knife/machete/hatchet,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/material/minihoe,

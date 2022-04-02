@@ -30,7 +30,7 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "et" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/firstaid/combat,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
@@ -184,7 +184,7 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "IN" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/toy/figure/miner,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
@@ -201,7 +201,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
 "KW" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/box/flare,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
@@ -214,7 +214,7 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "PI" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)

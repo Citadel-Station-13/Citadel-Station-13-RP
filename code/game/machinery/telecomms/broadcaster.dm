@@ -12,15 +12,14 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 /obj/machinery/telecomms/broadcaster
 	name = "Subspace Broadcaster"
-	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "broadcaster"
 	desc = "A dish-shaped machine used to broadcast processed subspace signals."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 25
 	machinetype = 5
-	produces_heat = 0
+	produces_heat = FALSE
 	delay = 7
 	circuit = /obj/item/circuitboard/telecomms/broadcaster
 	//Vars only used if you're using the overmap
@@ -30,7 +29,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	//Linked bluespace radios
 	var/list/linked_radios_weakrefs = list()
 
-/obj/machinery/telecomms/broadcaster/Initialize()
+/obj/machinery/telecomms/broadcaster/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -61,7 +60,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		recentmessages.Add(signal_message)
 
 		if(signal.data["slow"] > 0)
-			sleep(signal.data["slow"]) // simulate the network lag if necessary
+			sleep(signal.data["slow"]) //Simulate the network lag if necessary
 
 		signal.data["level"] |= GLOB.using_map.get_map_levels(listening_level, TRUE, overmap_range)
 
@@ -71,7 +70,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			if(istype(R))
 				LAZYDISTINCTADD(forced_radios, R)
 
-	   /** #### - Normal Broadcast - #### **/
+		/** #### - Normal Broadcast - #### **/
 		if(signal.data["type"] == SIGNAL_NORMAL)
 			/* ###### Broadcast a message using signal.data ###### */
 			Broadcast_Message(signal.data["connection"], signal.data["mob"],
@@ -92,8 +91,8 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 								  signal.data["compression"], listening_level, forced_radios)
 
 
-	   /** #### - Artificial Broadcast - #### **/
-	   			// (Imitates a mob)
+		/** #### - Artificial Broadcast - #### **/
+			// (Imitates a mob)
 
 		if(signal.data["type"] == SIGNAL_FAKE)
 
@@ -132,15 +131,14 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 /obj/machinery/telecomms/allinone
 	name = "Telecommunications Mainframe"
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "allinone"
+	icon_state = "AAS"
 	desc = "A compact machine used for portable subspace telecommuniations processing."
-	density = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
-	anchored = 1
 	machinetype = 6
-	produces_heat = 0
+	produces_heat = FALSE
 	var/intercept = 0 // if nonzero, broadcasts all messages to syndicate channel
 	var/overmap_range = 0 //Same turf
 
@@ -749,4 +747,3 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	//to_world_log("Level: [signal.data["level"]] - Done: [signal.data["done"]]")
 
 	return signal
-

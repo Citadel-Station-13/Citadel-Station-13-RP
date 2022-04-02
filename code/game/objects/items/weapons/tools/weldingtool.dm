@@ -540,7 +540,7 @@
 /obj/item/weldingtool/electric	//AND HIS WELDING WAS ELECTRIC
 	name = "electric welding tool"
 	desc = "A welder which runs off of electricity."
-	icon_state = "arcwelder"
+	icon_state = "upindwelder"
 	max_fuel = 0	//We'll handle the consumption later.
 	item_state = "ewelder"
 	var/obj/item/cell/power_supply //What type of power cell this uses

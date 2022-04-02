@@ -350,7 +350,7 @@
 /turf/simulated/floor/lino,
 /area/submap/Diner)
 "bg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/lino,
 /area/submap/Diner)
@@ -368,12 +368,12 @@
 /turf/simulated/floor/lino,
 /area/submap/Diner)
 "bl" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/cell/high,
 /turf/simulated/floor/lino,
 /area/submap/Diner)
 "bm" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/lino,
 /area/submap/Diner)
 "bn" = (

@@ -1170,12 +1170,12 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/awaymission/spacebattle/cruiser)
 "gR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/awaymission/spacebattle/cruiser)
 "gS" = (
@@ -1247,7 +1247,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "hl" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /turf/simulated/floor/wood,
 /area/awaymission/spacebattle/cruiser)
@@ -1380,7 +1380,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "hI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/instrument/violin,
 /turf/simulated/floor/wood,
 /area/awaymission/spacebattle/cruiser)

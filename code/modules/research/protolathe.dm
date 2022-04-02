@@ -1,4 +1,4 @@
-/obj/machinery/r_n_d/protolathe
+/obj/machinery/rnd/protolathe
 	name = "Protolathe"
 	icon_state = "protolathe"
 	flags = OPENCONTAINER
@@ -19,12 +19,12 @@
 
 	hidden_materials = list(MAT_PLASTEEL, MAT_DURASTEEL, MAT_VERDANTIUM, MAT_MORPHIUM, MAT_METALHYDROGEN, MAT_SUPERMATTER)
 
-/obj/machinery/r_n_d/protolathe/Initialize(mapload)
+/obj/machinery/rnd/protolathe/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	RefreshParts()
 
-/obj/machinery/r_n_d/protolathe/process(delta_time)
+/obj/machinery/rnd/protolathe/process(delta_time)
 	..()
 	if(stat)
 		update_icon()
@@ -50,13 +50,13 @@
 			busy = 0
 			update_icon()
 
-/obj/machinery/r_n_d/protolathe/proc/TotalMaterials() //returns the total of all the stored materials. Makes code neater.
+/obj/machinery/rnd/protolathe/proc/TotalMaterials() //returns the total of all the stored materials. Makes code neater.
 	var/t = 0
 	for(var/f in materials)
 		t += materials[f]
 	return t
 
-/obj/machinery/r_n_d/protolathe/RefreshParts()
+/obj/machinery/rnd/protolathe/RefreshParts()
 	var/T = 0
 	for(var/obj/item/reagent_containers/glass/G in component_parts)
 		T += G.reagents.maximum_volume
@@ -70,12 +70,12 @@
 	mat_efficiency = max(1 - (T - 2) / 8, 0.2)
 	speed = T / 2
 
-/obj/machinery/r_n_d/protolathe/dismantle()
+/obj/machinery/rnd/protolathe/dismantle()
 	for(var/f in materials)
 		eject_materials(f, -1)
 	..()
 
-/obj/machinery/r_n_d/protolathe/update_icon()
+/obj/machinery/rnd/protolathe/update_icon()
 	if(panel_open)
 		icon_state = "protolathe_t"
 	else if(busy)
@@ -85,7 +85,7 @@
 			flick("protolathe_u", src) // If lid WAS closed, show opening animation
 		icon_state = "protolathe"
 
-/obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/rnd/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
 		return 1
@@ -150,15 +150,15 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/addToQueue(var/datum/design/D)
+/obj/machinery/rnd/protolathe/proc/addToQueue(var/datum/design/D)
 	queue += D
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/removeFromQueue(var/index)
+/obj/machinery/rnd/protolathe/proc/removeFromQueue(var/index)
 	queue.Cut(index, index + 1)
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/canBuild(var/datum/design/D)
+/obj/machinery/rnd/protolathe/proc/canBuild(var/datum/design/D)
 	for(var/M in D.materials)
 		if(materials[M] < (D.materials[M] * mat_efficiency))
 			return 0
@@ -167,7 +167,7 @@
 			return 0
 	return 1
 
-/obj/machinery/r_n_d/protolathe/proc/getLackingMaterials(var/datum/design/D)
+/obj/machinery/rnd/protolathe/proc/getLackingMaterials(var/datum/design/D)
 	var/ret = ""
 	for(var/M in D.materials)
 		if(materials[M] < D.materials[M])
@@ -181,7 +181,7 @@
 			ret += C
 	return ret
 
-/obj/machinery/r_n_d/protolathe/proc/build(var/datum/design/D)
+/obj/machinery/rnd/protolathe/proc/build(var/datum/design/D)
 	var/power = active_power_usage
 	for(var/M in D.materials)
 		power += round(D.materials[M] / 5)
@@ -199,7 +199,7 @@
 				for(var/i in new_item.matter)
 					new_item.matter[i] = new_item.matter[i] * mat_efficiency
 
-/obj/machinery/r_n_d/protolathe/proc/eject_materials(var/material, var/amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
+/obj/machinery/rnd/protolathe/proc/eject_materials(var/material, var/amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 	var/recursive = amount == -1 ? 1 : 0
 	material = lowertext(material)
 	var/obj/item/stack/material/mattype

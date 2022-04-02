@@ -14,10 +14,22 @@
 	var/list/blend_objects = newlist() // Objects which to blend with
 	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
 
-/obj/structure/Destroy()
-	if(parts)
-		new parts(loc)
+/obj/structure/Initialize(mapload)
 	. = ..()
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+		if(smoothing_flags & SMOOTH_CORNERS)
+			icon_state = ""
+
+/obj/structure/Destroy()
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH_NEIGHBORS(src)
+	return ..()
+
+/obj/structure/ui_act(action, params)
+	add_fingerprint(usr)
+	return ..()
 
 /obj/structure/attack_hand(mob/user)
 	if(breakable)

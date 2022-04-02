@@ -590,7 +590,7 @@
 "cf" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Airlock";
-	
+
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)
@@ -607,7 +607,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/challenge/end)
 "ci" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
@@ -645,13 +645,13 @@
 /turf/space,
 /area)
 "cq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/melee/chainofcommand,
 /obj/item/stamp,
 /turf/simulated/floor/carpet,
 /area/awaymission/challenge/end)
 "cr" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper{
 	info = "Congratulations,<br><br>Your station has been selected to carry out the Gateway Project.<br><br>The equipment will be shipped to you at the start of the next quarter.<br> You are to prepare a secure location to house the equipment as outlined in the attached documents.<br><br>--Nanotrasen Blue Space Research";
 	name = "Confidential Correspondence, Pg 1"
@@ -660,7 +660,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/challenge/end)
 "cs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 1;
 	pixel_y = 5
@@ -678,7 +678,7 @@
 "cx" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Security";
-	
+
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
@@ -703,7 +703,7 @@
 "cB" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrator";
-	
+
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
@@ -1002,7 +1002,7 @@
 "dm" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Gateway Access";
-	
+
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)

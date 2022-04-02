@@ -13,11 +13,11 @@
 /turf/template_noop,
 /area/submap/PooledR)
 "e" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/template_noop,
 /area/submap/PooledR)
 "f" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/material/knife,
 /turf/template_noop,
 /area/submap/PooledR)
@@ -26,7 +26,7 @@
 /turf/template_noop,
 /area/submap/PooledR)
 "h" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/gun/energy/retro{
 	cell_type = /obj/item/cell/device/weapon/empty
 	},

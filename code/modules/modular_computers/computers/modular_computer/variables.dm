@@ -12,6 +12,11 @@
 	var/last_battery_percent = 0							// Used for deciding if battery percentage has chandged
 	var/last_world_time = "00:00"
 	var/list/last_header_icons
+	///Looping sound for when the computer is on
+	var/datum/looping_sound/computer/soundloop
+	///Whether or not this modular computer uses the looping sound
+	var/looping_sound = TRUE
+
 	var/computer_emagged = FALSE							// Whether the computer is emagged.
 	var/apc_powered = FALSE									// Set automatically. Whether the computer used APC power last tick.
 	var/base_active_power_usage = 50						// Power usage when the computer is open (screen is active) and can be interacted with. Remember hardware can use power too.

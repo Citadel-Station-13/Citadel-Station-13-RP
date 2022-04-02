@@ -26,7 +26,7 @@
 /turf/simulated/floor/airless,
 /area/space/debrisfield/foodstand)
 "f" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/condiment/coldsauce{
 	pixel_x = 4;
 	pixel_y = 16
@@ -41,7 +41,7 @@
 /turf/simulated/floor/airless,
 /area/space/debrisfield/foodstand)
 "g" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/airless,
 /area/space/debrisfield/foodstand)
@@ -64,18 +64,18 @@
 /turf/simulated/floor/airless,
 /area/space/debrisfield/foodstand)
 "k" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/taco,
 /obj/item/reagent_containers/food/snacks/taco,
 /turf/simulated/floor/airless,
 /area/space/debrisfield/foodstand)
 "l" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/taco,
 /turf/simulated/floor/airless,
 /area/space/debrisfield/foodstand)
 "m" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/cash_register{
 	dir = 1
 	},

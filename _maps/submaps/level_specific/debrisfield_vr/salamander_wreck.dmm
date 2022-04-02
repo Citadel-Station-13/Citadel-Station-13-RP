@@ -1079,7 +1079,7 @@
 	name = "Shop Shutters";
 	opacity = 0
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/window/brigdoor/eastleft{
 	layer = 2.9;
 	open_layer = 2.9;
@@ -1525,7 +1525,7 @@
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "Kn" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 4;
@@ -1610,7 +1610,7 @@
 	name = "Shop Shutters";
 	opacity = 0
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/window/brigdoor/eastright{
 	layer = 2.9;
 	open_layer = 2.9;
@@ -1721,7 +1721,7 @@
 	},
 /area/shuttle/salamander_wreck_galley)
 "Sb" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 4;

@@ -95,7 +95,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/med_surg)
 "aD" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
@@ -136,7 +136,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
 "aQ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/firstaid/surgery,
 /obj/machinery/light{
 	dir = 8
@@ -569,14 +569,14 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/eng_storage)
 "eP" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/item/storage/box/cdeathalarm_kit,
 /obj/item/storage/box/cdeathalarm_kit,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "eX" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/item/storage/box/backup_kit,
 /obj/item/storage/box/backup_kit,
@@ -612,7 +612,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
 "fx" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/sprinter,
 /obj/machinery/light{
 	dir = 8
@@ -629,7 +629,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "fE" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/mounted,
 /obj/item/rig_module/mounted/egun,
 /obj/item/rig_module/mounted/egun,
@@ -638,7 +638,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "fP" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/chem_dispenser/combat,
 /obj/item/rig_module/chem_dispenser/combat,
 /obj/item/rig_module/chem_dispenser/injector,
@@ -650,7 +650,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "fU" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/device/rcd,
 /obj/item/rig_module/device/rcd,
 /obj/item/rig_module/device/plasmacutter,
@@ -658,7 +658,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "fZ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/device/drill,
 /obj/item/rig_module/device/drill,
 /obj/item/rig_module/maneuvering_jets,
@@ -1523,7 +1523,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/barracks)
 "mJ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/fiftyspawner/durasteel,
 /obj/fiftyspawner/durasteel,
 /obj/fiftyspawner/durasteel,
@@ -1818,7 +1818,7 @@
 /turf/space,
 /area/ship/ert/engine)
 "nY" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
@@ -1977,7 +1977,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "pa" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/belt/medical/emt,
 /obj/item/storage/belt/medical/emt,
 /obj/item/storage/belt/medical/emt,
@@ -2075,7 +2075,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
 "pq" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/bodybag/cryobag,
 /obj/item/bodybag/cryobag,
 /obj/item/bodybag/cryobag,
@@ -2120,7 +2120,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/med)
 "pA" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/hallways_aft)
@@ -2166,7 +2166,7 @@
 /turf/simulated/wall/shull,
 /area/ship/ert/mech_bay)
 "pM" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig_module/mounted/taser,
 /obj/item/rig_module/mounted/taser,
 /obj/item/rig_module/mounted/taser,
@@ -2211,7 +2211,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_dl)
 "pY" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
@@ -2271,7 +2271,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/fiftyspawner/uranium,
 /obj/fiftyspawner/uranium,
 /turf/simulated/floor/tiled/techfloor,
@@ -2404,7 +2404,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 23
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
 "rA" = (
@@ -2480,7 +2480,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/med)
 "sf" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/machinery/chemical_dispenser/ert,
 /turf/simulated/floor/tiled/techfloor,
@@ -3005,7 +3005,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/atmos)
 "wt" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/firstaid/bonemed,
 /obj/item/storage/firstaid/clotting,
 /obj/effect/floor_decal/corner/yellow{
@@ -3281,7 +3281,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
 "yl" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/hallways_aft)
@@ -3291,7 +3291,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
 "yp" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/firstaid/fire{
 	pixel_x = 2;
 	pixel_y = 2
@@ -3354,7 +3354,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
 "yG" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -3365,7 +3365,7 @@
 /turf/simulated/wall/shull,
 /area/ship/ert/med)
 "yJ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/chemical_dispenser/biochemistry/full,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/machinery/light,
@@ -3439,7 +3439,7 @@
 	pixel_y = 24;
 	req_access = list(103)
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
 "zk" = (
@@ -3542,7 +3542,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/implantpad,
 /obj/item/implanter,
 /turf/simulated/floor/wood,
@@ -3583,7 +3583,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "Ar" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/fiftyspawner/phoron,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
@@ -3636,7 +3636,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "AL" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/box/pillbottles,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/med)
@@ -3967,7 +3967,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "Du" = (
@@ -4014,7 +4014,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/atmos)
 "DM" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/firstaid/surgery,
 /obj/item/storage/firstaid/surgery,
 /obj/item/surgical/bone_clamp,
@@ -4159,7 +4159,7 @@
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
 "EA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/trackimp,
 /obj/item/storage/box/cdeathalarm_kit,
 /obj/item/stamp/centcomm,
@@ -4364,7 +4364,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways_aft)
 "FX" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
@@ -4409,7 +4409,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_dl)
 "Ga" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/recharger,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -4763,7 +4763,7 @@
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
 "IL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/aicard,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -4775,7 +4775,7 @@
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
 "IZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
@@ -4803,7 +4803,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_st)
 "Jc" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/firstaid/toxin{
 	pixel_x = 2;
 	pixel_y = 2
@@ -5007,7 +5007,7 @@
 	dir = 1
 	},
 /obj/item/paper/vonbraun_shields,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "Kf" = (
@@ -5124,7 +5124,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "KM" = (
@@ -5158,7 +5158,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
 "KT" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
@@ -5304,7 +5304,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "LV" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
@@ -5462,7 +5462,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/ert_ship_boat)
 "MX" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/accessory/storage/brown_vest,
 /obj/item/clothing/accessory/storage/brown_vest,
 /obj/item/clothing/accessory/storage/brown_vest,
@@ -6080,7 +6080,7 @@
 /obj/item/aiModule/paladin,
 /obj/item/aiModule/robocop,
 /obj/item/aiModule/safeguard,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/smes_coil,
 /obj/item/smes_coil,
 /obj/item/t_scanner/advanced,
@@ -6275,7 +6275,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 23
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
@@ -6305,7 +6305,7 @@
 	dir = 8
 	},
 /obj/structure/railing/grey,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "Sp" = (
@@ -6623,13 +6623,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/teleporter)
 "UY" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/chemical_dispenser/full,
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/med)
 "Vg" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/recharger,
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -6729,7 +6729,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/teleporter)
 "Wl" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/light{
 	dir = 1
 	},

@@ -89,7 +89,7 @@
 /area/shuttle/blue_fo)
 "am" = (
 /obj/structure/bed/alien{
-	icon = 'icons/obj/abductor_vr.dmi'
+	icon = 'icons/obj/abductor.dmi'
 	},
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/techfloor,
@@ -238,7 +238,7 @@
 /obj/item/perfect_tele_beacon{
 	icon_state = "beacon";
 	tele_name = "Hybrid Shuttle";
-	
+
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor/grid,

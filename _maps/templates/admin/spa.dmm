@@ -14,7 +14,7 @@
 /turf/simulated/floor/plating,
 /area/submap/spa)
 "ad" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle/everburn,
 /turf/simulated/floor/wood,
 /area/submap/spa)
@@ -33,7 +33,7 @@
 /turf/simulated/floor/plating,
 /area/submap/spa)
 "ah" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/towel,
 /obj/item/towel,
 /obj/item/towel,
@@ -230,11 +230,11 @@
 /turf/simulated/floor/wood,
 /area/submap/spa)
 "aO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/submap/spa)
 "aP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/wood,
 /area/submap/spa)
@@ -264,7 +264,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/spa)
 "aV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -324,7 +324,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/spa)
 "bf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -414,7 +414,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/spa)
 "bs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -464,22 +464,22 @@
 /turf/simulated/floor/grass,
 /area/submap/spa)
 "bz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/drinkbottle,
 /turf/simulated/floor/wood,
 /area/submap/spa)
 "bA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/toy,
 /turf/simulated/floor/wood,
 /area/submap/spa)
 "bB" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/action_figure,
 /turf/simulated/floor/wood,
 /area/submap/spa)
 "bC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -564,7 +564,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/spa)
 "bP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/button/remote/airlock{
 	dir = 8;
 	id = "spadorm2";
@@ -575,7 +575,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/spa)
 "bQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/button/remote/airlock{
 	dir = 4;
 	id = "spadorm4";
@@ -586,7 +586,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/spa)
 "bR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/button/remote/airlock{
 	dir = 8;
 	id = "spadorm6";
@@ -597,7 +597,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/spa)
 "bS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/button/remote/airlock{
 	dir = 4;
 	id = "spadorm8";

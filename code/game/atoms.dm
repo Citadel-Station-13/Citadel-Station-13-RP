@@ -865,7 +865,7 @@
 		return max_grav
 */
 
-	if(isspaceturf(T)) // Turf never has gravity
+	if(isspace(T)) // Turf never has gravity
 		return 0
 
 	var/area/A = get_area(T)

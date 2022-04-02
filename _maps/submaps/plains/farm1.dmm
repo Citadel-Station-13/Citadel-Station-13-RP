@@ -119,13 +119,13 @@
 	},
 /area/submap/farm1)
 "y" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/matches,
 /obj/item/flame/match,
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "z" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "A" = (
@@ -141,7 +141,7 @@
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "C" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/fancy/candle_box,
 /turf/simulated/floor/wood,
 /area/submap/farm1)
@@ -171,7 +171,7 @@
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "I" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/trash/candle,
 /turf/simulated/floor/wood,
 /area/submap/farm1)

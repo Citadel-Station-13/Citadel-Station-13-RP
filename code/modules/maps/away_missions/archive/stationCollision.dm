@@ -49,7 +49,7 @@
 
 /obj/effect/landmark/sc_bible_spawner/Initialize()
 	. = ..()
-	var/obj/item/storage/bible/B = new /obj/item/storage/bible/booze(src.loc)
+	var/obj/item/storage/book/B = new /obj/item/storage/book/booze(src.loc)
 	B.name = "The Holy book of the Geometer"
 	B.deity_name = "Narsie"
 	B.icon_state = "melted"

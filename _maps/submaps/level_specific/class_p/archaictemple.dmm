@@ -84,7 +84,7 @@
 /turf/template_noop,
 /area/template_noop)
 "gC" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/item/flame/candle/everburn/black,
 /turf/simulated/floor/bmarble/classp,
 /area/class_p/POIs/archaic_temple)
@@ -93,7 +93,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior/classp,
 /area/class_p/POIs/archaic_temple)
 "hQ" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/item/flame/candle/everburn/black,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
@@ -128,12 +128,12 @@
 /turf/simulated/mineral/cave,
 /area/class_p/POIs/archaic_temple)
 "jS" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "ky" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -165,7 +165,7 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "kV" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/artifact,
 /turf/simulated/floor/wood/classp,
@@ -195,7 +195,7 @@
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
 "md" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
@@ -234,7 +234,7 @@
 /turf/simulated/floor/wmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "na" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -325,7 +325,7 @@
 	},
 /area/class_p/POIs/archaic_temple)
 "rt" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/window/phoronbasic{
 	dir = 4
@@ -411,7 +411,7 @@
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
 "te" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/machinery/artifact,
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
@@ -464,7 +464,7 @@
 	},
 /area/class_p/POIs/archaic_temple)
 "xx" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -509,12 +509,12 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "zg" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/item/spellbook/oneuse/smoke,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "zk" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "zm" = (
@@ -600,7 +600,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "Ci" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -655,7 +655,7 @@
 	},
 /area/class_p/POIs/archaic_temple)
 "EZ" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 8
 	},
@@ -723,7 +723,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "He" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/item/flame/candle/everburn/black,
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
@@ -745,7 +745,7 @@
 	},
 /area/class_p/POIs/archaic_temple)
 "HB" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -809,7 +809,7 @@
 	},
 /area/class_p/POIs/archaic_temple)
 "JP" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /turf/simulated/floor/wmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "JT" = (
@@ -854,7 +854,7 @@
 /turf/simulated/wall/dungeon,
 /area/class_p/POIs/archaic_temple)
 "KQ" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -877,7 +877,7 @@
 	},
 /area/class_p/POIs/archaic_temple)
 "Lh" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/item/flame/candle/black,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
@@ -916,7 +916,7 @@
 /turf/simulated/floor/diamond,
 /area/class_p/POIs/archaic_temple)
 "Nt" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/machinery/artifact,
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
@@ -941,7 +941,7 @@
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "OG" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -970,7 +970,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "OM" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/book,
 /turf/simulated/floor/wood/classp,
@@ -988,7 +988,7 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Pq" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -1039,7 +1039,7 @@
 	},
 /area/class_p/POIs/archaic_temple)
 "Sz" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/item/flame/candle/black,
 /turf/simulated/floor/bmarble/classp,
 /area/class_p/POIs/archaic_temple)
@@ -1077,7 +1077,7 @@
 	},
 /area/class_p/POIs/archaic_temple)
 "Uh" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 8
 	},
@@ -1089,7 +1089,7 @@
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
 "Us" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -1151,7 +1151,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "Xi" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},

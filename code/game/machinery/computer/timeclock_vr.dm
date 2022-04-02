@@ -7,7 +7,7 @@
 //
 /obj/machinery/computer/timeclock
 	name = "timeclock terminal"
-	icon = 'icons/obj/machines/timeclock_vr.dmi'
+	icon = 'icons/obj/machines/timeclock.dmi'
 	icon_state = "timeclock"
 	icon_keyboard = null
 	light_color = "#0099ff"
@@ -256,7 +256,7 @@
 	frame_style = FRAME_STYLE_WALL
 	x_offset = 30
 	y_offset = 30
-	icon_override = 'icons/obj/machines/timeclock_vr.dmi'
+	icon_override = 'icons/obj/machines/timeclock.dmi'
 
 /datum/frame/frame_types/timeclock_terminal/get_icon_state(var/state)
 	return "timeclock_b[state]"

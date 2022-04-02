@@ -349,7 +349,7 @@
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aT" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cash_register/trader{
 	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
 	dir = 8;
@@ -982,7 +982,7 @@
 /turf/space,
 /area/space)
 "ci" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cash_register/trader{
 	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
 	name = "Fuel Depot Register"
@@ -1256,7 +1256,7 @@
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "fl" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/toolbox,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
@@ -1378,7 +1378,7 @@
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "Xl" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cash_register/trader{
 	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
 	dir = 1;
@@ -1391,7 +1391,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "Yd" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cash_register/trader{
 	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
 	dir = 4;
@@ -1400,7 +1400,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "Ys" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 

@@ -34,10 +34,10 @@
 //  their 'connected' friend! Try to use the appropriate top/bottom ones for good looks.
 /obj/structure/fake_stairs
 	name = "use a subtype! - stairs"
-	icon = 'icons/obj/stairs.dmi'
-	density = 1
+	icon = 'icons/obj/stairs_64x64.dmi'
+	density = TRUE
 	opacity = 0
-	anchored = 1
+	anchored = TRUE
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER
@@ -47,7 +47,7 @@
 	var/obj/structure/fake_stairs/target //Don't set this manually, let it do it!
 	var/stepoff_dir
 
-/obj/structure/fake_stairs/Initialize(var/mapload)
+/obj/structure/fake_stairs/Initialize(mapload)
 	. = ..()
 
 	for(var/obj/structure/fake_stairs/FS in world)
@@ -64,7 +64,7 @@
 	target = null
 	return ..()
 
-/obj/structure/fake_stairs/Bumped(var/atom/movable/AM)
+/obj/structure/fake_stairs/Bumped(atom/movable/AM)
 	if(!target)
 		return
 	target.take(AM)

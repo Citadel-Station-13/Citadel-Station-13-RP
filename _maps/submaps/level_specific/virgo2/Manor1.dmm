@@ -17,7 +17,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "ae" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -40,7 +40,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aj" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/mask/smokable/cigarette/cigar,
 /obj/item/material/ashtray/glass,
 /turf/simulated/floor/holofloor/wood,
@@ -51,11 +51,11 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "al" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "am" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -84,7 +84,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "at" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /obj/effect/decal/cleanable/blood/gibs/robot,
 /turf/simulated/floor/holofloor/wood,
@@ -100,7 +100,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/mop,
 /obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/holofloor/wood,
@@ -114,7 +114,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "az" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/trash/candle,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -124,12 +124,12 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/maglight,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -142,17 +142,17 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/pen,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -204,7 +204,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/material/kitchen/utensil/fork,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -261,7 +261,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -364,7 +364,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -433,7 +433,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/fancy/candle_box,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -459,7 +459,7 @@
 /area/submap/virgo2/Manor1)
 "bR" = (
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bS" = (
@@ -484,7 +484,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/bedsheetbin,
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/holofloor/wood,
@@ -500,7 +500,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "ca" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/melee/umbrella/random,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -517,7 +517,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "cd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -528,7 +528,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "cf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/wallet/random,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
@@ -703,7 +703,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/virgo2/Manor1)
 "cM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)

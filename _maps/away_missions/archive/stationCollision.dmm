@@ -1172,7 +1172,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "eX" = (
-/obj/machinery/r_n_d/server{
+/obj/machinery/rnd/server{
 	stat = 1
 	},
 /turf/simulated/floor/airless,
@@ -1289,18 +1289,18 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "fz" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/rnd/circuit_imprinter,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "fA" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/rnd/protolathe,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "fB" = (
-/obj/machinery/r_n_d/destructive_analyzer,
+/obj/machinery/rnd/destructive_analyzer,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -1433,7 +1433,7 @@
 /turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
 "fU" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
 	pixel_x = -3;
 	pixel_y = 5
@@ -1568,7 +1568,7 @@
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gx" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle,
 /turf/simulated/floor/airless,
 /area/awaymission/midblock)
@@ -1720,7 +1720,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/midblock)
 "gQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /turf/simulated/floor/airless,
 /area/awaymission/midblock)
@@ -1854,7 +1854,7 @@
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "ho" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "hr" = (
@@ -2685,7 +2685,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/southblock)
 "jY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/awaymission/southblock)
 "jZ" = (
@@ -2869,7 +2869,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/southblock)
 "kD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/awaymission/southblock)

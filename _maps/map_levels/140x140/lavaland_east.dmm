@@ -45,7 +45,7 @@
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/east/transit)
 "aC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/sign/poster/nanotrasen{
 	pixel_y = 32
 	},
@@ -348,7 +348,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "gF" = (
-/obj/structure/table/fancyblack,
+/obj/structure/table/wood/fancy/black,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
@@ -432,7 +432,7 @@
 /turf/simulated/mineral/rich/triumph/lavaland,
 /area/lavaland/east/colony)
 "jz" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/item/flame/candle/everburn,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
@@ -650,7 +650,7 @@
 /turf/simulated/wall/wood/lavaland,
 /area/lavaland/east/colony)
 "mX" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
@@ -1045,7 +1045,7 @@
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "tW" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "tZ" = (
@@ -1244,7 +1244,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "xk" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
 "xm" = (
@@ -1662,7 +1662,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "FC" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
@@ -1811,7 +1811,7 @@
 /turf/simulated/mineral/ignore_mapgen/lavaland,
 /area/lavaland/east/explored)
 "JO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "JX" = (
@@ -1852,7 +1852,7 @@
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/east/transit)
 "Kx" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -1981,7 +1981,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "NY" = (
-/obj/structure/table/hardwoodtable,
+/obj/structure/table/wood/hard,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
@@ -2119,7 +2119,7 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/east/explored)
 "QK" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
@@ -2225,7 +2225,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Sj" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/trash/lollipop_stick,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -2365,7 +2365,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Uj" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Um" = (

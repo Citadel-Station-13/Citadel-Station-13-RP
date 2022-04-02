@@ -1030,7 +1030,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "dJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/cell/device/weapon/recharge/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
@@ -1039,7 +1039,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside/nospawn)
 "dL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "dM" = (
@@ -1775,7 +1775,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "fT" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/projectile,
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
@@ -2109,7 +2109,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
 "hc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/pill/happy{
 	name = "pill"
 	},
@@ -2135,7 +2135,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
 "hi" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/pill/methylphenidate{
 	name = "pill"
 	},
@@ -2168,7 +2168,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
 "ho" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /obj/item/reagent_containers/syringe/drugs,
 /turf/simulated/floor/carpet,
@@ -2268,7 +2268,7 @@
 /turf/simulated/floor,
 /area/awaymission/snow_outpost/dark)
 "hG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/pill/tramadol{
 	name = "pill"
 	},
@@ -2287,12 +2287,12 @@
 /turf/simulated/floor,
 /area/awaymission/snow_outpost/dark)
 "hK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
 "hL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/syringe/drugs,
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
@@ -2618,7 +2618,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "iS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "iT" = (

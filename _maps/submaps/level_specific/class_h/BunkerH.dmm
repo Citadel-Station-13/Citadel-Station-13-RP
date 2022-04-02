@@ -76,7 +76,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/vault)
 "dP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/drinkbottle,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light,
@@ -358,7 +358,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/vault)
 "Dt" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/mre,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled,

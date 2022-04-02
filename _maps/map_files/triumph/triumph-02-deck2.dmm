@@ -34,7 +34,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/recreation_area_hallway)
@@ -359,7 +359,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "aV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/coffee_shop)
 "aW" = (
@@ -485,7 +485,7 @@
 	},
 /obj/structure/flora/pottedplant/smalltree,
 /obj/machinery/firealarm{
-	layer = 3.3;
+	layer = 3.4;
 	pixel_x = 4;
 	pixel_y = 14
 	},
@@ -737,7 +737,7 @@
 /area/crew_quarters/fitness)
 "ck" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -1150,7 +1150,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "dA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
@@ -1739,7 +1739,7 @@
 /area/crew_quarters/sleep/Dorm_10)
 "ff" = (
 /obj/structure/sink/kitchen{
-	pixel_y = 28
+	pixel_y = 17
 	},
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
@@ -2670,7 +2670,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 32
 	},
@@ -3593,7 +3593,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/radio/intercom{
 	pixel_y = -20
 	},
@@ -3662,7 +3662,7 @@
 /area/maintenance/dormitory)
 "kf" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -3719,7 +3719,7 @@
 /area/crew_quarters/freezer)
 "ku" = (
 /obj/machinery/firealarm{
-	layer = 3.3;
+	layer = 3.4;
 	pixel_y = 14
 	},
 /obj/machinery/camera/network/civilian,
@@ -4243,7 +4243,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "lW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/instrument/glockenspiel,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
@@ -6758,7 +6758,7 @@
 	},
 /obj/structure/flora/pottedplant/smalltree,
 /obj/machinery/firealarm{
-	layer = 3.3;
+	layer = 3.4;
 	pixel_x = 4;
 	pixel_y = 14
 	},
@@ -6928,7 +6928,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "tb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
@@ -7276,7 +7276,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "tX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_scanner,
 /obj/item/paper_bin,
 /obj/item/pen,
@@ -7845,7 +7845,7 @@
 	dir = 8
 	},
 /obj/machinery/firealarm{
-	layer = 3.3;
+	layer = 3.4;
 	pixel_x = 4;
 	pixel_y = 14
 	},
@@ -8252,7 +8252,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/recharger,
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/recreation_area_hallway)
@@ -9040,7 +9040,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "zf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/instrument/harmonica,
 /obj/machinery/recharger,
 /turf/simulated/floor/wood,
@@ -9562,7 +9562,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = 14
 	},
 /obj/structure/disposalpipe/segment,
@@ -9819,7 +9819,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/port)
 "Bx" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/instrument/accordion,
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 32
@@ -9946,7 +9946,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
@@ -10505,7 +10505,7 @@
 /area/maintenance/bar/lower)
 "Dy" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -10779,7 +10779,7 @@
 /area/triumph/surfacebase/mining_main/refinery)
 "Et" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/flora/pottedplant/small,
 /turf/simulated/floor/wood,
 /area/station/stairs_two)
@@ -10850,7 +10850,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "ED" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/cup{
 	pixel_x = 8;
 	pixel_y = 12
@@ -11619,7 +11619,7 @@
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "GD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/gloves/boxing/yellow{
 	pixel_x = -6;
 	pixel_y = 7
@@ -11651,7 +11651,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "GN" = (
@@ -12982,7 +12982,7 @@
 /obj/machinery/alarm{
 	pixel_y = 12
 	},
-/obj/structure/table/fancyblack,
+/obj/structure/table/wood/fancy/black,
 /obj/structure/spirit_board/prop,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
@@ -13696,7 +13696,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/bar/lower)
 "Nc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/recharger,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
@@ -13765,7 +13765,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "Nn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/flora/pottedplant/shoot,
 /obj/item/instrument/saxophone,
 /turf/simulated/floor/wood,
@@ -13860,7 +13860,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "NA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/flora/pottedplant/decorative,
 /obj/machinery/button/remote/airlock{
 	dir = 4;
@@ -14573,7 +14573,7 @@
 	dir = 4;
 	pixel_x = -14
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/flora/pottedplant/largebush,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
@@ -15075,7 +15075,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/station/stairs_two)
 "Rm" = (
@@ -15593,7 +15593,7 @@
 /area/vacant/vacant_shop)
 "SD" = (
 /obj/structure/sink{
-	dir = 8;
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 2
 	},
@@ -15897,7 +15897,7 @@
 	pixel_x = 13
 	},
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = 14
 	},
 /turf/simulated/floor/tiled/dark,
@@ -16511,7 +16511,7 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "Vd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -31
 	},
@@ -16659,7 +16659,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/port)
 "Vy" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/reagentgrinder,
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/packageWrap,
@@ -16695,7 +16695,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/radio/intercom{
 	pixel_y = -20
 	},
@@ -17422,7 +17422,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "Xn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/flora/pottedplant/fern,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
@@ -17653,7 +17653,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
 "XP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -31
 	},
@@ -17796,7 +17796,7 @@
 /area/vacant/vacant_shop)
 "Ym" = (
 /obj/machinery/firealarm{
-	layer = 3.3;
+	layer = 3.4;
 	pixel_y = 14
 	},
 /obj/machinery/light{

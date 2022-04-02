@@ -534,26 +534,26 @@
 /turf/simulated/floor/carpet,
 /area/shuttle/trade)
 "bt" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/inflatable_duck,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bu" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/stack/material/mhydrogen,
 /obj/item/stack/material/diamond,
 /obj/item/stack/material/sandstone,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bv" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/rig/internalaffairs,
 /obj/item/clothing/head/helmet/space/void/wizard,
 /obj/item/clothing/suit/space/void/wizard,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bw" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/tool,
 /obj/random/tool,
 /obj/random/tool,
@@ -562,7 +562,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bx" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/toolbox,
 /obj/random/toolbox,
 /obj/random/toolbox,
@@ -627,7 +627,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bG" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/firstaid,
 /obj/random/firstaid,
 /obj/random/firstaid,
@@ -653,7 +653,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bK" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
@@ -698,7 +698,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bQ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/medical,
 /obj/random/medical,
 /obj/random/medical,
@@ -714,7 +714,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bS" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/coin/uranium,
 /obj/item/coin/silver,
 /obj/item/coin/platinum,
@@ -733,7 +733,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bU" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/cell/high,
 /obj/item/cell/high,
 /obj/item/cell/hyper,
@@ -842,7 +842,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "ce" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
@@ -1162,11 +1162,11 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/trade)
 "cQ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cR" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/button/remote/blast_door{
 	id = "tradebridgeshutters";
 	name = "remote shutter control";
@@ -1296,7 +1296,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/contraband/poster,
 /obj/item/contraband/poster,
 /obj/item/contraband/poster,
@@ -1312,7 +1312,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dh" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/plushie,
 /obj/random/plushie,
 /obj/random/plushie,
@@ -1331,7 +1331,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dj" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/gloves/black,
 /obj/item/clothing/gloves/blue,
 /obj/item/clothing/gloves/brown,
@@ -1379,7 +1379,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "do" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/contraband,
 /obj/random/contraband,
 /obj/random/contraband,
@@ -1406,7 +1406,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "ds" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/head/bearpelt,
 /obj/item/clothing/head/bowler,
 /obj/item/clothing/head/caphat/cap,
@@ -1497,7 +1497,7 @@
 /turf/simulated/floor/carpet,
 /area/shuttle/trade)
 "dB" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/action_figure,
 /obj/random/action_figure,
 /obj/random/action_figure,
@@ -1507,7 +1507,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dC" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/lipstick/black,
 /obj/item/lipstick/jade,
 /obj/item/lipstick/purple,
@@ -1516,7 +1516,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dD" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/accessory/holster/hip,
 /obj/item/clothing/accessory/holster/armpit,
 /obj/item/clothing/accessory/holster/armpit,
@@ -1545,7 +1545,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dE" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/under/cheongsam,
 /obj/item/clothing/under/hosformalmale,
 /obj/item/clothing/under/hosformalfem,
@@ -1575,7 +1575,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dF" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/suit/hgpirate,
 /obj/item/clothing/suit/imperium_monk,
 /obj/item/clothing/suit/leathercoat,
@@ -1623,7 +1623,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
@@ -1634,11 +1634,11 @@
 /turf/simulated/floor/carpet,
 /area/shuttle/trade)
 "dK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/shuttle/trade)
 "dL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard,
 /turf/simulated/floor/carpet,
 /area/shuttle/trade)

@@ -222,7 +222,7 @@
 "aJ" = (
 /obj/item/clothing/suit/space/void/wizard,
 /obj/item/clothing/head/helmet/space/void/wizard,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/awaymission/academy/headmaster)
 "aK" = (
@@ -290,17 +290,17 @@
 /turf/simulated/floor/wood,
 /area/awaymission/academy/headmaster)
 "aW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "aX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/blue,
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "aY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -310,31 +310,31 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "aZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/staff,
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "ba" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/hand_labeler,
 /turf/simulated/floor/wood,
 /area/awaymission/academy/headmaster)
 "bb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/pen/invisible,
 /turf/simulated/floor/wood,
 /area/awaymission/academy/headmaster)
 "bd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/pen/red,
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "be" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "bf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -344,17 +344,17 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "bg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/tea,
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "bh" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /turf/simulated/floor/wood,
 /area/awaymission/academy/headmaster)
 "bk" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/blue,
 /turf/simulated/floor/wood,
 /area/awaymission/academy/headmaster)
@@ -843,11 +843,11 @@
 /turf/simulated/floor/greengrid,
 /area/awaymission/academy/classrooms)
 "dc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/awaymission/academy/classrooms)
 "dd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/staff,
 /turf/simulated/floor/wood,
 /area/awaymission/academy/classrooms)
@@ -971,7 +971,7 @@
 /turf/simulated/floor/grass,
 /area/awaymission/academy/headmaster)
 "dA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor,
 /area/awaymission/academy/classrooms)
@@ -1005,7 +1005,7 @@
 /turf/simulated/floor,
 /area/awaymission/academy/classrooms)
 "dH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor,
 /area/awaymission/academy/classrooms)
 "dJ" = (

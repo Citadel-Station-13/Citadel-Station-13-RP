@@ -117,7 +117,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/carpfarm/base)
 "ax" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/lino,
 /area/awaymission/carpfarm/base)
 "ay" = (
@@ -246,7 +246,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "aR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/action_figure,
 /turf/simulated/floor/lino,
 /area/awaymission/carpfarm/base)

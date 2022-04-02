@@ -776,7 +776,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "jg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "jk" = (
@@ -848,7 +848,7 @@
 /turf/simulated/wall/rshull,
 /area/talon/decktwo/vault)
 "jY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
 "jZ" = (
@@ -1391,7 +1391,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/talon/decktwo/lifeboat)
 "pg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/pilot,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
@@ -1680,7 +1680,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "sA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/engineer,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
@@ -2951,7 +2951,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "Gc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/security,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
@@ -3035,7 +3035,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "GR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/medical,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
@@ -3908,7 +3908,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/pilot_room)
 "PS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "Qa" = (
@@ -4028,7 +4028,7 @@
 /turf/simulated/wall,
 /area/talon/decktwo/vault)
 "RX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/tablet,
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
@@ -4394,7 +4394,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "VO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
 "VP" = (
@@ -4519,7 +4519,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 32
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "XA" = (

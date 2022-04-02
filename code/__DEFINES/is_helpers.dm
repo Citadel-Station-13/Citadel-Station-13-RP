@@ -14,7 +14,7 @@
 
 #define isopenspace(A) istype(A, /turf/simulated/open)
 
-#define isspaceturf(A) istype(A, /turf/space)
+#define isspace(A) istype(A, /turf/space)
 
 #define ismineralturf(A) istype(A, /turf/simulated/mineral)
 
@@ -37,7 +37,14 @@
 
 #define isairlock(A) istype(A, /obj/machinery/door/airlock)
 
-#define isbelly(A)		istype(A, /obj/belly)
+#define isbelly(A) istype(A, /obj/belly)
+
+#define isbook(O) (is_type_in_typecache(O, GLOB.book_types))
+
+GLOBAL_LIST_INIT(book_types, typecacheof(list(
+	/obj/item/book,
+	/obj/item/spellbook,
+	/obj/item/storage/book)))
 
 //Areas
 

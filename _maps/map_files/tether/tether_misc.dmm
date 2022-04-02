@@ -68,7 +68,7 @@
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "ak" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/structure/window/reinforced/holowindow{
 	dir = 4
 	},
@@ -150,7 +150,7 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "aw" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/structure/window/reinforced/holowindow{
 	dir = 4
 	},
@@ -304,7 +304,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
 "aS" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "aT" = (
@@ -450,7 +450,7 @@
 /obj/structure/window/reinforced/holowindow{
 	dir = 1
 	},
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bw" = (
@@ -548,7 +548,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bJ" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/structure/window/reinforced/holowindow,
 /obj/structure/window/reinforced/holowindow{
 	dir = 8
@@ -556,12 +556,12 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bK" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/structure/window/reinforced/holowindow,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bL" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/structure/window/reinforced/holowindow,
 /obj/structure/window/reinforced/holowindow{
 	dir = 4
@@ -630,7 +630,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
 "bS" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
 "bT" = (
@@ -829,21 +829,21 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "cw" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/effect/floor_decal/carpet{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cx" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cy" = (
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cz" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /obj/effect/floor_decal/carpet{
 	dir = 4
 	},
@@ -1438,7 +1438,7 @@
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
 "eq" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_meetinghall)
 "es" = (
@@ -1886,7 +1886,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_basic)
 "gc" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_basic)
 "gd" = (
@@ -1972,7 +1972,7 @@
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "gJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/stewedsoymeat,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
@@ -2128,7 +2128,7 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
 "hK" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
 "hL" = (
@@ -2176,7 +2176,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
 "hS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/cash_register/civilian,
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
@@ -2270,7 +2270,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "iK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/meatsteak,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
@@ -2384,7 +2384,7 @@
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "kU" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/grenadine,
 /obj/machinery/light{
 	dir = 8
@@ -2592,12 +2592,12 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "oe" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/lasagna,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "ol" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/toastedsandwich{
 	pixel_y = 10
 	},
@@ -3223,7 +3223,7 @@
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/security)
 "xG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/roastbeef,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
@@ -3395,7 +3395,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "zF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/space_mountain_wind,
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
@@ -3604,7 +3604,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Cw" = (
-/obj/machinery/r_n_d/server/centcom,
+/obj/machinery/rnd/server/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Cy" = (
@@ -3665,7 +3665,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/escape)
 "CJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/burrito_cheese_spicy,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
@@ -4027,7 +4027,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/escape)
 "If" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/meatballsoup,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
@@ -4249,7 +4249,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "KP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/grilledcheese,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
@@ -4451,7 +4451,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/escape)
 "Pf" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/wood{
 	dir = 5
 	},
 /obj/structure/flora/pottedplant{
@@ -5780,7 +5780,7 @@
 /turf/simulated/floor/plating/eris/under,
 /area/shuttle/escape)
 "Wz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/fries,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
@@ -5928,7 +5928,7 @@
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "Xe" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "Xf" = (
@@ -6030,12 +6030,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "Xz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/pastatomato,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "XA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/meatballspagetti,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
@@ -6075,7 +6075,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "XK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/cheeseburger{
 	pixel_x = 3;
 	pixel_y = 3
@@ -6255,7 +6255,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "Yq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/cola,
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
@@ -6282,12 +6282,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "Yu" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/kitsuneudon,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "Yv" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/hotdog,
 /obj/item/reagent_containers/food/snacks/hotdog{
 	pixel_x = -5;
@@ -6296,7 +6296,7 @@
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "Yw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/bigbiteburger,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)

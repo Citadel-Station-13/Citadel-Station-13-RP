@@ -210,7 +210,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/mothership/breakroom)
 "az" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/blue,
 /area/mothership/breakroom)
 "aA" = (
@@ -259,7 +259,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/mothership/breakroom)
 "aE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/codex,
 /turf/simulated/floor/carpet/blue,
 /area/mothership/breakroom)
@@ -419,17 +419,17 @@
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "aY" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/chemical_dispenser/bar_alc/full,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "aZ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/chemical_dispenser/bar_soft/full,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "ba" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
@@ -477,7 +477,7 @@
 "bj" = (
 /obj/machinery/door/window/northleft,
 /obj/machinery/door/window/southleft,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
@@ -490,7 +490,7 @@
 "bm" = (
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/glass/bucket,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/material/minihoe,
 /obj/item/material/minihoe,
 /obj/item/material/knife,
@@ -593,7 +593,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "bx" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/microwave,
 /obj/machinery/light{
 	dir = 1
@@ -604,7 +604,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "bz" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
 	},
@@ -617,7 +617,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "bA" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/book/manual/chef_recipes,
 /obj/item/reagent_containers/food/condiment/enzyme{
 	layer = 5
@@ -635,7 +635,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "bB" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/reagentgrinder,
 /obj/item/storage/box/beakers,
 /obj/machinery/button/remote/blast_door{
@@ -986,7 +986,7 @@
 /area/mothership/kitchen)
 "cm" = (
 /obj/machinery/appliance/cooker/fryer,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
@@ -994,7 +994,7 @@
 /area/mothership/kitchen)
 "cn" = (
 /obj/machinery/appliance/cooker/oven,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
@@ -1002,7 +1002,7 @@
 /area/mothership/kitchen)
 "co" = (
 /obj/machinery/appliance/cooker/grill,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
@@ -1062,7 +1062,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/eva)
 "cA" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/toolbox/syndicate/powertools,
 /obj/item/multitool,
 /obj/machinery/light{
@@ -1071,7 +1071,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/eva)
 "cB" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
@@ -1112,7 +1112,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/eva)
 "cG" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio/off,
 /obj/item/radio/off,
 /obj/item/radio/off,
@@ -1377,7 +1377,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/eva)
 "cZ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
@@ -1862,7 +1862,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/dorm1)
 "ea" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /obj/machinery/status_display{
 	pixel_y = 29
@@ -1949,7 +1949,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/dorm2)
 "ej" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /obj/machinery/status_display{
 	pixel_y = 29
@@ -2547,7 +2547,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/surgery)
 "fr" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/fiftyspawner/phoron,
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled/white,
@@ -2559,7 +2559,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/chemistry)
 "ft" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/reagent_containers/dropper,
@@ -2727,7 +2727,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/chemical_dispenser/biochemistry/full,
 /turf/simulated/floor/tiled/white,
 /area/mothership/chemistry)
@@ -2739,7 +2739,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/chemistry)
 "fP" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/window/westleft,
 /obj/machinery/door/window/eastright,
 /obj/machinery/door/firedoor/glass,
@@ -2891,7 +2891,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
 "gb" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/firstaid/surgery,
 /obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
@@ -2902,7 +2902,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/surgery)
 "gc" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/box/gloves,
 /obj/machinery/firealarm{
 	dir = 1;
@@ -2926,7 +2926,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/surgery)
 "ge" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/beakers,
@@ -3095,14 +3095,14 @@
 /area/mothership/security)
 "gC" = (
 /obj/machinery/recharger,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
 "gD" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cell_charger,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -3508,7 +3508,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
 "hm" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/retail_scanner/security,
 /obj/item/retail_scanner/security,
 /obj/structure/reagent_dispensers/peppertank{
@@ -3523,7 +3523,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
 "hn" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/accessory/badge/holo/cord,
 /obj/item/clothing/accessory/badge/holo/cord,
 /obj/item/clothing/accessory/badge/holo/cord,
@@ -3606,7 +3606,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/processing)
 "hE" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/recharger,
 /obj/item/tool/screwdriver,
 /turf/simulated/floor/tiled/white,
@@ -3796,7 +3796,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "hT" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/folder/red{
 	pixel_x = 2;
 	pixel_y = 4
@@ -3812,7 +3812,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "hV" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/box/evidence,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -3827,7 +3827,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "hX" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/defib_kit/compact/combat/loaded,
 /turf/simulated/floor/tiled/white,
 /area/mothership/treatment)
@@ -3868,7 +3868,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/treatment)
 "id" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
@@ -3879,7 +3879,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/dorm3)
 "if" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /obj/machinery/status_display{
 	pixel_y = -29
@@ -3911,7 +3911,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/dorm4)
 "ii" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /obj/machinery/status_display{
 	pixel_y = -29
@@ -3940,7 +3940,7 @@
 /turf/simulated/wall/rpshull,
 /area/mothership/processing)
 "im" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/camera,
 /obj/item/retail_scanner/security,
 /turf/simulated/floor/tiled/steel_grid,
@@ -4073,7 +4073,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "iD" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
@@ -4106,7 +4106,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/treatment)
 "iI" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/box/bodybags,
 /obj/item/storage/box/bodybags{
 	pixel_x = 2;
@@ -4130,7 +4130,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/corner/lightorange{
 	dir = 5
 	},
@@ -4249,7 +4249,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "iT" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -4285,7 +4285,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "iZ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
@@ -4296,7 +4296,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "jb" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/reagent_containers/glass/bottle/biomass,
 /obj/item/reagent_containers/glass/bottle/biomass,
 /obj/item/reagent_containers/glass/bottle/biomass,
@@ -4393,7 +4393,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "jm" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -4649,7 +4649,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/borderfloor/shifted{
 	dir = 1
 	},
@@ -4759,7 +4759,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "jV" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
@@ -4869,7 +4869,7 @@
 /turf/simulated/wall/rpshull,
 /area/mothership/morgue)
 "ke" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/morgue)
 "kf" = (
@@ -5018,7 +5018,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "kt" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/stamp/ward,
 /obj/item/stamp/denied{
 	pixel_x = 5
@@ -5049,7 +5049,7 @@
 	pixel_y = 2
 	},
 /obj/item/storage/firstaid/adv,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -5064,7 +5064,7 @@
 	pixel_y = 2
 	},
 /obj/item/storage/firstaid/toxin,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/white,
 /area/mothership/medical)
 "kA" = (
@@ -5073,7 +5073,7 @@
 	pixel_y = 2
 	},
 /obj/item/storage/firstaid/combat,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/white,
 /area/mothership/medical)
 "kB" = (
@@ -5098,7 +5098,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/dorm5)
 "kE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /obj/machinery/status_display{
 	pixel_y = 29
@@ -5132,7 +5132,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/dorm6)
 "kJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /obj/machinery/status_display{
 	pixel_y = 29
@@ -5168,7 +5168,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "kN" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -5399,12 +5399,12 @@
 /turf/simulated/floor/wood,
 /area/mothership/dorm6)
 "ld" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/retail_scanner/security,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "le" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
@@ -5430,7 +5430,7 @@
 	pixel_y = 2
 	},
 /obj/item/storage/firstaid/fire,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/white,
 /area/mothership/medical)
 "lj" = (
@@ -5439,7 +5439,7 @@
 	pixel_y = 2
 	},
 /obj/item/storage/firstaid/o2,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/white,
 /area/mothership/medical)
 "lk" = (
@@ -5448,7 +5448,7 @@
 	pixel_y = 2
 	},
 /obj/item/storage/firstaid/regular,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/white,
 /area/mothership/medical)
 "ll" = (
@@ -5697,7 +5697,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "lI" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cell_charger,
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
@@ -5862,7 +5862,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "lX" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/tool/crowbar,
 /obj/item/tool/screwdriver,
 /obj/item/tool/wrench,
@@ -5987,7 +5987,7 @@
 /turf/simulated/wall/rpshull,
 /area/mothership/rnd)
 "mj" = (
-/obj/machinery/r_n_d/destructive_analyzer,
+/obj/machinery/rnd/destructive_analyzer,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "mk" = (
@@ -6137,7 +6137,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "mD" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/window/westleft,
 /obj/machinery/door/window/eastright,
 /obj/machinery/door/firedoor/glass,
@@ -6239,21 +6239,21 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mO" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/rnd/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "mP" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/rnd/protolathe,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "mQ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cell_charger,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "mR" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
@@ -6815,7 +6815,7 @@
 /area/mothership/rnd)
 "nO" = (
 /obj/item/defib_kit/jumper_kit,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/robotanalyzer,
 /obj/machinery/light,
 /obj/machinery/alarm{
@@ -7386,7 +7386,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "oV" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "oW" = (
@@ -8018,7 +8018,7 @@
 /turf/simulated/floor/greengrid,
 /area/mothership/telecomms2)
 "qo" = (
-/obj/machinery/r_n_d/server/centcom,
+/obj/machinery/rnd/server/centcom,
 /turf/simulated/floor/greengrid,
 /area/mothership/telecomms2)
 "qp" = (
@@ -8246,7 +8246,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "re" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/recharger,
 /obj/structure/cable/cyan{
 	d2 = 8;
@@ -8261,7 +8261,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rf" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/computer/skills,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
@@ -8338,7 +8338,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "ro" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/carpet/oracarpet,
 /area/mothership/engineering)
 "rp" = (
@@ -8441,7 +8441,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rF" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -9634,7 +9634,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "Kc" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},

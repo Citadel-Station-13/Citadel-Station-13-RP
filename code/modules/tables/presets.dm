@@ -1,22 +1,24 @@
 //TABLE PRESETS
 /obj/structure/table/standard
-	icon_state = "plain_preview"
-	color = "#EEEEEE"
+	icon = 'icons/obj/smooth_structures/table_greyscale.dmi'
+	icon_state = "table_greyscale-0"
+	base_icon_state = "table_greyscale"
 
 /obj/structure/table/standard/Initialize(mapload)
 	material = get_material_by_name(DEFAULT_TABLE_MATERIAL)
 	return ..()
 
 /obj/structure/table/steel
-	icon_state = "plain_preview"
-	color = "#666666"
+	icon = 'icons/obj/smooth_structures/table.dmi'
+	icon_state = "table-0"
+	base_icon_state = "table"
+	//material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/structure/table/steel/Initialize(mapload)
 	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
 	return ..()
 
 /obj/structure/table/marble
-	icon_state = "stone_preview"
 	color = "#CCCCCC"
 
 /obj/structure/table/marble/Initialize(mapload)
@@ -24,25 +26,26 @@
 	return ..()
 
 /obj/structure/table/reinforced
-	icon_state = "reinf_preview"
-	color = "#EEEEEE"
+	name = "reinforced table"
+	desc = "A reinforced version of the four legged table."
+	icon = 'icons/obj/smooth_structures/reinforced_table.dmi'
+	icon_state = "reinforced_table-0"
+	base_icon_state = "reinforced_table"
 
 /obj/structure/table/reinforced/Initialize(mapload)
 	material = get_material_by_name(DEFAULT_TABLE_MATERIAL)
 	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
 	return ..()
 
-/obj/structure/table/steel_reinforced
-	icon_state = "reinf_preview"
+/obj/structure/table/reinforced/steel
 	color = "#666666"
 
-/obj/structure/table/steel_reinforced/Initialize(mapload)
+/obj/structure/table/reinforced/steel/Initialize(mapload)
 	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
 	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
 	return ..()
 
 /obj/structure/table/wooden_reinforced
-	icon_state = "reinf_preview"
 	color = "#824B28"
 
 /obj/structure/table/wooden_reinforced/Initialize(mapload)
@@ -50,16 +53,19 @@
 	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
 	return ..()
 
-/obj/structure/table/woodentable
-	icon_state = "plain_preview"
-	color = "#824B28"
+/obj/structure/table/wood
+	desc = "Do not apply fire to this. Rumour says it burns easily."
+	icon = 'icons/obj/smooth_structures/wood_table.dmi'
+	icon_state = "wood_table-0"
+	base_icon_state = "wood_table"
+	smoothing_groups = list(SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
+	canSmoothWith = list(SMOOTH_GROUP_WOOD_TABLES)
 
-/obj/structure/table/woodentable/Initialize(mapload)
+/obj/structure/table/wood/Initialize(mapload)
 	material = get_material_by_name("wood")
 	return ..()
 
 /obj/structure/table/sifwoodentable
-	icon_state = "plain_preview"
 	color = "#824B28"
 
 /obj/structure/table/sifwoodentable/Initialize(mapload)
@@ -67,7 +73,6 @@
 	return ..()
 
 /obj/structure/table/sifwooden_reinforced
-	icon_state = "reinf_preview"
 	color = "#824B28"
 
 /obj/structure/table/sifwooden_reinforced/Initialize(mapload)
@@ -75,26 +80,34 @@
 	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
 	return ..()
 
-/obj/structure/table/hardwoodtable
-	icon_state = "stone_preview"
+/obj/structure/table/wood/hard
 	color = "#42291a"
 
-/obj/structure/table/hardwoodtable/Initialize(mapload)
+/obj/structure/table/wood/hard/Initialize(mapload)
 	material = get_material_by_name("hardwood")
 	return ..()
 
-/obj/structure/table/gamblingtable
-	icon_state = "gamble_preview"
+/obj/structure/table/wood/poker
+	name = "gambling table"
+	desc = "A seedy table for seedy dealings in seedy places."
+	icon = 'icons/obj/smooth_structures/poker_table.dmi'
+	icon_state = "poker_table-0"
+	base_icon_state = "poker_table"
 
-/obj/structure/table/gamblingtable/Initialize(mapload)
+/obj/structure/table/wood/poker/Initialize(mapload)
 	material = get_material_by_name("wood")
 	carpeted = 1
 	return ..()
 
 /obj/structure/table/glass
-	icon_state = "plain_preview"
-	color = "#00E1FF"
-	alpha = 77 // 0.3 * 255
+	icon = 'icons/obj/smooth_structures/glass_table.dmi'
+	icon_state = "glass_table-0"
+	base_icon_state = "glass_table"
+	material = list(/datum/material/glass = 2000)
+	smoothing_groups = list(SMOOTH_GROUP_GLASS_TABLES)
+	canSmoothWith = list(SMOOTH_GROUP_GLASS_TABLES)
+	//color = "#00E1FF"
+	//alpha = 77 // 0.3 * 255
 
 /obj/structure/table/glass/Initialize(mapload)
 	material = get_material_by_name("glass")
@@ -117,10 +130,10 @@
 	material = get_material_by_name("holo[DEFAULT_TABLE_MATERIAL]")
 	return ..()
 
-/obj/structure/table/woodentable/holotable
+/obj/structure/table/wood/holotable
 	icon_state = "holo_preview"
 
-/obj/structure/table/woodentable/holotable/Initialize(mapload)
+/obj/structure/table/wood/holotable/Initialize(mapload)
 	material = get_material_by_name("holowood")
 	return ..()
 

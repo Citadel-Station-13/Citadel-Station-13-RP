@@ -19,7 +19,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "k" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "m" = (
@@ -77,7 +77,7 @@
 /area/lavaland/idleruins)
 "R" = (
 /obj/item/reagent_containers/spray/plantbgone,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "S" = (

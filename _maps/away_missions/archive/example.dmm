@@ -436,7 +436,7 @@
 "bG" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Restrooms";
-	
+
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/example)
@@ -463,7 +463,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/example)
 "bL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/awaymission/example)
 "bN" = (
@@ -476,7 +476,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/example)
 "bO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/wine,
 /turf/simulated/floor/wood,
 /area/awaymission/example)
@@ -501,7 +501,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/example)
 "bU" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/validsalad,
 /turf/simulated/floor/wood,
 /area/awaymission/example)

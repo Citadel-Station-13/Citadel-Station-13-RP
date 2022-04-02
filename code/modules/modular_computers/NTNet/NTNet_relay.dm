@@ -5,6 +5,7 @@
 	use_power = USE_POWER_ACTIVE
 	active_power_usage = 20000 //20kW, apropriate for machine that keeps massive cross-Zlevel wireless network operational.
 	idle_power_usage = 100
+	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "bus"
 	anchored = 1
 	density = 1
@@ -22,18 +23,16 @@
 // TODO: Implement more logic here. For now it's only a placeholder.
 /obj/machinery/ntnet_relay/operable()
 	if(!..(EMPED))
-		return 0
+		return FALSE
 	if(dos_failure)
-		return 0
+		return FALSE
 	if(!enabled)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/machinery/ntnet_relay/update_icon()
-	if(operable())
-		icon_state = "bus"
-	else
-		icon_state = "bus_off"
+	icon_state = "[initial(icon_state)][panel_open ? "_o" : null][operable() ? null : "_off"]"
+	return ..()
 
 /obj/machinery/ntnet_relay/process(delta_time)
 	if(operable())

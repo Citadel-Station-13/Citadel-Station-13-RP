@@ -942,7 +942,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)
 "cr" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/clothing/head/pirate,
 /obj/item/clothing/glasses/thermal/plain/monocle,
 /turf/simulated/shuttle/floor/darkred,

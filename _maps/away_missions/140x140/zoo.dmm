@@ -236,7 +236,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "aJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/spacecash/c500,
 /obj/item/spacecash/c100,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
@@ -1014,7 +1014,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/zoo/tradeship)
 "db" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "dc" = (
@@ -1269,7 +1269,7 @@
 /area/awaymission/zoo/tradeship)
 "dO" = (
 /obj/structure/window/reinforced,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "dP" = (
@@ -1482,7 +1482,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "er" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
@@ -1493,7 +1493,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "es" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/newscaster{
 	pixel_x = 32
 	},
@@ -1795,7 +1795,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "fl" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-09";
 	name = "Esteban";
@@ -1909,7 +1909,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "fE" = (
@@ -2086,7 +2086,7 @@
 /turf/simulated/shuttle/plating,
 /area/awaymission/zoo/tradeship)
 "gh" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
@@ -2097,11 +2097,11 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/zoo/tradeship)
 "gi" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet,
 /area/awaymission/zoo/tradeship)
 "gj" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/modular_computer/laptop/preset,
 /turf/simulated/floor/carpet,
 /area/awaymission/zoo/tradeship)
@@ -3808,7 +3808,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "kd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "ke" = (
@@ -8649,7 +8649,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "wB" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/door/window/brigdoor/northleft{
 	name = "lost and found"
 	},

@@ -39,18 +39,18 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Smol3)
 "h" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper{
 	desc = "Lamen's Hunter Shack! Selling freshly hunted meat for six thalers a slab. Support Locale hunters! Also selling Getmore Products for 3 thalers a bag, or 2 thalers for a bottle of water. Please place all payments into the nearbye bag."
 	},
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Smol3)
 "i" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Smol3)
 "j" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/spacecash/c200,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Smol3)

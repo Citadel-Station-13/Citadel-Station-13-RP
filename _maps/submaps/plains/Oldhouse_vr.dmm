@@ -17,7 +17,7 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "af" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
@@ -44,7 +44,7 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "al" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "am" = (
@@ -79,7 +79,7 @@
 	},
 /area/submap/Oldhouse)
 "at" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper,
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/wood,
@@ -111,7 +111,7 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "az" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/stack/material/wood,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
@@ -133,12 +133,12 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "aE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/trash/candle,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "aF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/pen/blue,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
@@ -148,7 +148,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "aH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
@@ -164,13 +164,13 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "aK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper,
 /obj/item/paper,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "aL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper/crumpled,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
@@ -216,7 +216,7 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "aT" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/backpack/satchel,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
@@ -244,13 +244,13 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "aY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood{
 	icon_state = "wood_broken6"
 	},
 /area/submap/Oldhouse)
 "aZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood{
 	icon_state = "wood_broken2"
 	},

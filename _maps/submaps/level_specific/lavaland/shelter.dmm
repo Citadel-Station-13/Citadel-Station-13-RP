@@ -21,7 +21,7 @@
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "r" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "x" = (

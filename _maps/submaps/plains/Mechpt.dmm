@@ -15,25 +15,25 @@
 /area/submap/Mechpt)
 "e" = (
 /obj/structure/railing,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/chips,
 /turf/template_noop,
 /area/submap/Mechpt)
 "f" = (
 /obj/structure/railing,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/cell/high,
 /obj/item/cell/high,
 /turf/template_noop,
 /area/submap/Mechpt)
 "g" = (
 /obj/structure/railing,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/template_noop,
 /area/submap/Mechpt)
 "h" = (
 /obj/structure/railing,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/spacecash/c10,
 /obj/item/spacecash/c10,
 /turf/template_noop,
@@ -91,7 +91,7 @@
 	 icon_state = "railing0";
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/template_noop,
 /area/submap/Mechpt)
@@ -100,7 +100,7 @@
 	 icon_state = "railing0";
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/spacecash/c50,
 /turf/template_noop,
 /area/submap/Mechpt)
@@ -109,7 +109,7 @@
 	 icon_state = "railing0";
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/cell/high,
 /obj/item/cell/device/weapon,
 /turf/template_noop,
@@ -119,7 +119,7 @@
 	 icon_state = "railing0";
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/template_noop,
 /area/submap/Mechpt)

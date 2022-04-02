@@ -740,7 +740,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "Fd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "FJ" = (
@@ -789,7 +789,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "Il" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/dungeon/facility)
 "IL" = (

@@ -336,7 +336,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			if("6")
 				if(!bibledelay)
 
-					var/obj/item/storage/bible/B = new /obj/item/storage/bible(src.loc)
+					var/obj/item/storage/book/B = new /obj/item/storage/book(src.loc)
 					if(SSticker && ( SSticker.Bible_icon_state && SSticker.Bible_item_state) )
 						B.icon_state = SSticker.Bible_icon_state
 						B.item_state = SSticker.Bible_item_state

@@ -12,7 +12,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "dy" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/fiftyspawner/phoron,
 /obj/machinery/light/small{
 	dir = 8
@@ -25,7 +25,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "dR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/gun/projectile/revolver/detective45,
 /obj/machinery/light/small{
 	dir = 4
@@ -52,7 +52,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "iO" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/item/deck/cards,
 /obj/random/cash,
 /obj/random/cash,
@@ -73,7 +73,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "nU" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/shotgunshells,
 /obj/item/storage/box/shotgunshells,
 /turf/simulated/floor/wood/classh,
@@ -108,7 +108,7 @@
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "ua" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_alc/full,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
@@ -131,7 +131,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "wL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
@@ -147,7 +147,7 @@
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "yT" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "Ab" = (
@@ -185,7 +185,7 @@
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "GA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/accessory/stethoscope,
 /obj/random/medical/pillbottle,
 /obj/random/medical/pillbottle,
@@ -222,7 +222,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "NK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/accessory/badge/sheriff,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
@@ -234,7 +234,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "PP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/firstaid,
 /obj/random/firstaid,
 /turf/simulated/floor/wood/classh,
@@ -244,7 +244,7 @@
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Rw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "RG" = (

@@ -4851,7 +4851,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
 "aqI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /obj/item/nullrod,
 /turf/simulated/floor/carpet/bcarpet,
@@ -5744,7 +5744,7 @@
 /area/vacant/vacant_restaurant_upper)
 "asZ" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_restaurant_upper)
@@ -6943,7 +6943,7 @@
 /turf/simulated/floor,
 /area/chapel/office)
 "axo" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/office)
@@ -7291,7 +7291,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/general)
 "ayD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/machinery/button/windowtint{
 	id = "pathfinder_office";
@@ -8832,7 +8832,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "aGP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
 "aGU" = (
@@ -8906,7 +8906,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "aHf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle/everburn,
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
@@ -9102,7 +9102,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "aHA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -9674,7 +9674,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/mre,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/lounge)
@@ -10477,7 +10477,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/cargo)
 "aMV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/hallway/station/port)
 "aMW" = (
@@ -11367,7 +11367,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "aPY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/yellow{
 	pixel_y = 5
 	},
@@ -12108,7 +12108,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
 "aSx" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -2;
 	pixel_y = 8
@@ -12957,7 +12957,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
 "aVn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/disposalpipe/segment,
 /obj/item/flashlight/lamp{
 	pixel_x = 2;
@@ -13127,7 +13127,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/general)
 "aVO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
@@ -15245,7 +15245,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/button/windowtint{
 	id = "visitor_meeting"
 	},
@@ -15374,7 +15374,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/visitorhallway/office)
 "dDo" = (
@@ -15406,7 +15406,7 @@
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "dEr" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/glasses/meta,
 /obj/machinery/light_switch{
 	name = "light switch ";
@@ -15714,7 +15714,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/lipstick/random,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/lounge)
@@ -16685,7 +16685,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/visitorhallway/office)
 "fLn" = (
@@ -17250,7 +17250,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "gxS" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
 "gAh" = (
@@ -17509,7 +17509,7 @@
 	dir = 1;
 	name = "security camera"
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/white,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
@@ -17622,7 +17622,7 @@
 /area/quartermaster/office)
 "hfe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -18741,7 +18741,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "jgM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -18792,7 +18792,7 @@
 /area/maintenance/station/cargo)
 "jnd" = (
 /obj/structure/table/wooden_reinforced,
-/obj/item/storage/bible,
+/obj/item/storage/book,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "joh" = (
@@ -19313,7 +19313,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
 "kcF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paicard,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
@@ -19738,7 +19738,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/lounge)
 "kLj" = (
@@ -19764,7 +19764,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/red,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
@@ -19968,7 +19968,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "lpt" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/cassette_tape/random,
 /obj/machinery/light,
 /turf/simulated/floor/wood,
@@ -20102,7 +20102,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/lounge)
 "lMb" = (
@@ -20985,7 +20985,7 @@
 	dir = 8
 	},
 /obj/structure/table/wooden_reinforced,
-/obj/item/storage/bible,
+/obj/item/storage/book,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "nqi" = (
@@ -20996,7 +20996,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/station/visitorhallway/lounge)
 "nvX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/photocopier/faxmachine{
 	department = "Pathfinder's Office";
 	pixel_x = 2;
@@ -21115,7 +21115,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "nCo" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/coin,
 /obj/machinery/light/small,
 /turf/simulated/floor/wood,
@@ -21734,7 +21734,7 @@
 /area/tether/station/visitorhallway/laundry)
 "oEH" = (
 /obj/item/deck/cards,
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
 "oFb" = (
@@ -22036,7 +22036,7 @@
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "oYF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
@@ -22677,7 +22677,7 @@
 	},
 /area/tether/exploration)
 "qbt" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/visitorhallway/office)
 "qcI" = (
@@ -23762,7 +23762,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/visitorhallway/office)
 "rVd" = (
@@ -24298,7 +24298,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "tcQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/blue,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
@@ -24680,7 +24680,7 @@
 /area/quartermaster/storage)
 "tEW" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/item/deck/cards,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_x = 5;
@@ -24690,7 +24690,7 @@
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
 "tEX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 1;
 	pixel_y = 5
@@ -25213,7 +25213,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/pilot_office)
 "uHT" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 1;
 	pixel_y = 5
@@ -25438,7 +25438,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "vex" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/wood,
@@ -25700,7 +25700,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
 "vFZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle/white,
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
@@ -26298,7 +26298,7 @@
 /turf/simulated/floor,
 /area/hallway/station/port)
 "wNc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/cassette_tape/random,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
@@ -26734,7 +26734,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/exploration/pilot_office)
 "xvr" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},

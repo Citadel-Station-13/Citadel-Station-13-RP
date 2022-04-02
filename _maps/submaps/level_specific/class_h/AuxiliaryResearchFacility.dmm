@@ -135,7 +135,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "cA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /turf/simulated/floor/lino,
 /area/class_h/POIs/AuxiliaryResearchFacility)
@@ -291,7 +291,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "gu" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "gU" = (
@@ -430,7 +430,7 @@
 /turf/simulated/floor/reinforced,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "jN" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_alc/full,
 /obj/machinery/light{
 	dir = 4
@@ -587,7 +587,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "mA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/cups,
 /turf/simulated/floor/lino,
 /area/class_h/POIs/AuxiliaryResearchFacility)
@@ -657,7 +657,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "ov" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/classh,
@@ -1322,7 +1322,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Dp" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
@@ -1594,7 +1594,7 @@
 /turf/simulated/floor/lino,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "JT" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Ke" = (
@@ -1918,7 +1918,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Rx" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/glass2/pitcher,
 /turf/simulated/floor/lino,
 /area/class_h/POIs/AuxiliaryResearchFacility)
@@ -2086,7 +2086,7 @@
 /turf/simulated/wall/iron,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Wk" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/AuxiliaryResearchFacility)
@@ -2118,7 +2118,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Xw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_soft/full,
 /turf/simulated/floor/lino,
 /area/class_h/POIs/AuxiliaryResearchFacility)

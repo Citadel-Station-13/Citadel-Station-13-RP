@@ -1,7 +1,9 @@
-/obj/machinery/r_n_d/server
-	name = "R&D Server"
+/obj/machinery/rnd/server
+	name = "\improper R&D Server"
+	desc = "A computer system running a deep neural network that processes arbitrary information to contain data useable in the development of new technologies."
 	icon = 'icons/obj/machines/research.dmi'
-	icon_state = "server"
+	icon_state = "RD-server-on"
+	base_icon_state = "RD-server"
 	var/datum/research/files
 	var/health = 100
 	var/list/id_with_upload = list()	//List of R&D consoles with upload to server access.
@@ -15,22 +17,27 @@
 	req_access = list(access_rd) //Only the R&D can change server settings.
 	circuit = /obj/item/circuitboard/rdserver
 
-/obj/machinery/r_n_d/server/Initialize(mapload)
+/obj/machinery/rnd/server/Initialize(mapload)
 	. = ..()
+	name += " [num2hex(rand(1,65535), -1)]" //gives us a random four-digit hex number as part of the name. Y'know, for fluff.
 	default_apply_parts()
 	RefreshParts()
 
-/obj/machinery/r_n_d/server/Destroy()
+/obj/machinery/rnd/server/Destroy()
 	griefProtection()
 	..()
 
-/obj/machinery/r_n_d/server/RefreshParts()
+/obj/machinery/rnd/server/RefreshParts()
 	var/tot_rating = 0
 	for(var/obj/item/stock_parts/SP in src)
 		tot_rating += SP.rating
 	idle_power_usage /= max(1, tot_rating)
 
-/obj/machinery/r_n_d/server/Initialize(mapload)
+/obj/machinery/rnd/server/update_icon_state()
+	icon_state = "[base_icon_state]-[(stat & EMPED || stat & NOPOWER) ? "off" : "on"]"
+	return ..()
+
+/obj/machinery/rnd/server/Initialize(mapload)
 	. = ..()
 	if(!files)
 		files = new /datum/research(src)
@@ -46,7 +53,7 @@
 		for(var/N in temp_list)
 			id_with_download += text2num(N)
 
-/obj/machinery/r_n_d/server/process(delta_time)
+/obj/machinery/rnd/server/process(delta_time)
 	var/datum/gas_mixture/environment = loc.return_air()
 	switch(environment.temperature)
 		if(0 to T0C)
@@ -68,24 +75,24 @@
 		produce_heat()
 		delay = initial(delay)
 
-/obj/machinery/r_n_d/server/emp_act(severity)
+/obj/machinery/rnd/server/emp_act(severity)
 	griefProtection()
 	..()
 
-/obj/machinery/r_n_d/server/ex_act(severity)
+/obj/machinery/rnd/server/ex_act(severity)
 	griefProtection()
 	..()
 
 //Backup files to CentCom to help admins recover data after greifer attacks
-/obj/machinery/r_n_d/server/proc/griefProtection()
-	for(var/obj/machinery/r_n_d/server/centcom/C in machines)
+/obj/machinery/rnd/server/proc/griefProtection()
+	for(var/obj/machinery/rnd/server/centcom/C in machines)
 		for(var/datum/tech/T in files.known_tech)
 			C.files.AddTech2Known(T)
 		for(var/datum/design/D in files.known_designs)
 			C.files.AddDesign2Known(D)
 		C.files.RefreshResearch()
 
-/obj/machinery/r_n_d/server/proc/produce_heat()
+/obj/machinery/rnd/server/proc/produce_heat()
 	if(!produces_heat)
 		return
 
@@ -108,7 +115,7 @@
 
 			env.merge(removed)
 
-/obj/machinery/r_n_d/server/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/rnd/server/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
 		return
 	if(default_deconstruction_crowbar(user, O))
@@ -116,14 +123,14 @@
 	if(default_part_replacement(user, O))
 		return
 
-/obj/machinery/r_n_d/server/centcom
+/obj/machinery/rnd/server/centcom
 	name = "Central R&D Database"
 	server_id = -1
 
-/obj/machinery/r_n_d/server/centcom/proc/update_connections()
+/obj/machinery/rnd/server/centcom/proc/update_connections()
 	var/list/no_id_servers = list()
 	var/list/server_ids = list()
-	for(var/obj/machinery/r_n_d/server/S in machines)
+	for(var/obj/machinery/rnd/server/S in machines)
 		switch(S.server_id)
 			if(-1)
 				continue
@@ -132,7 +139,7 @@
 			else
 				server_ids += S.server_id
 
-	for(var/obj/machinery/r_n_d/server/S in no_id_servers)
+	for(var/obj/machinery/rnd/server/S in no_id_servers)
 		var/num = 1
 		while(!S.server_id)
 			if(num in server_ids)
@@ -142,7 +149,7 @@
 				server_ids += num
 		no_id_servers -= S
 
-/obj/machinery/r_n_d/server/centcom/process(delta_time)
+/obj/machinery/rnd/server/centcom/process(delta_time)
 	return PROCESS_KILL //don't need process()
 
 /obj/machinery/computer/rdservercontrol
@@ -152,7 +159,7 @@
 	light_color = "#a97faa"
 	circuit = /obj/item/circuitboard/rdservercontrol
 	var/screen = 0
-	var/obj/machinery/r_n_d/server/temp_server
+	var/obj/machinery/rnd/server/temp_server
 	var/list/servers = list()
 	var/list/consoles = list()
 	var/badmin = 0
@@ -174,7 +181,7 @@
 		temp_server = null
 		consoles = list()
 		servers = list()
-		for(var/obj/machinery/r_n_d/server/S in machines)
+		for(var/obj/machinery/rnd/server/S in machines)
 			if(S.server_id == text2num(href_list["access"]) || S.server_id == text2num(href_list["data"]) || S.server_id == text2num(href_list["transfer"]))
 				temp_server = S
 				break
@@ -187,7 +194,7 @@
 			screen = 2
 		else if(href_list["transfer"])
 			screen = 3
-			for(var/obj/machinery/r_n_d/server/S in machines)
+			for(var/obj/machinery/rnd/server/S in machines)
 				if(S == src)
 					continue
 				servers += S
@@ -237,8 +244,8 @@
 		if(0) //Main Menu
 			dat += "Connected Servers:<BR><BR>"
 
-			for(var/obj/machinery/r_n_d/server/S in machines)
-				if(istype(S, /obj/machinery/r_n_d/server/centcom) && !badmin)
+			for(var/obj/machinery/rnd/server/S in machines)
+				if(istype(S, /obj/machinery/rnd/server/centcom) && !badmin)
 					continue
 				dat += "[S.name] || "
 				dat += "<A href='?src=\ref[src];access=[S.server_id]'> Access Rights</A> | "
@@ -281,7 +288,7 @@
 		if(3) //Server Data Transfer
 			dat += "[temp_server.name] Server to Server Transfer<BR><BR>"
 			dat += "Send Data to what server?<BR>"
-			for(var/obj/machinery/r_n_d/server/S in servers)
+			for(var/obj/machinery/rnd/server/S in servers)
 				dat += "[S.name] <A href='?src=\ref[src];send_to=[S.server_id]'> (Transfer)</A><BR>"
 			dat += "<HR><A href='?src=\ref[src];main=1'>Main Menu</A>"
 	user << browse("<TITLE>R&D Server Control</TITLE><HR>[dat]", "window=server_control;size=575x400")
@@ -291,19 +298,23 @@
 /obj/machinery/computer/rdservercontrol/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
-		emagged = 1
+		emagged = TRUE
 		to_chat(user, "<span class='notice'>You you disable the security protocols.</span>")
 		src.updateUsrDialog()
-		return 1
+		return TRUE
 
-/obj/machinery/r_n_d/server/robotics
+/obj/machinery/rnd/server/robotics
 	name = "Robotics R&D Server"
 	id_with_upload_string = "1;2"
 	id_with_download_string = "1;2"
 	server_id = 2
 
-/obj/machinery/r_n_d/server/core
+/obj/machinery/rnd/server/core
 	name = "Core R&D Server"
 	id_with_upload_string = "1"
 	id_with_download_string = "1"
 	server_id = 1
+
+/obj/machinery/rnd/server/core/Initialize(mapload)
+	add_overlay("RD-server-objective-stripes")
+	. = ..()

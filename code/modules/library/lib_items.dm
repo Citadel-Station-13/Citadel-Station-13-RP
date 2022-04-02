@@ -14,17 +14,38 @@
 /obj/structure/bookcase
 	name = "bookcase"
 	icon = 'icons/obj/library.dmi'
-	icon_state = "book-0"
-	anchored = 1
-	density = 1
-	opacity = 1
+	icon_state = "bookempty"
+	desc = "A great place for storing knowledge."
+	anchored = FALSE
+	density = TRUE
+	opacity = FALSE
+	/// When enabled, books_to_load number of random books will be generated for this bookcase when first interacted with.
+	var/load_random_books = FALSE
+	/// The category of books to pick from when populating random books.
+	var/random_category = null
+	/// How many random books to generate.
+	var/books_to_load = 2
+
+/obj/structure/bookcase/examine(mob/user)
+	. = ..()
+	if(!anchored)
+		. += SPAN_NOTICE("The <i>bolts</i> on the bottom are unsecured.")
+	else
+		. += SPAN_NOTICE("It's secured in place with <b>bolts</b>.")
 
 /obj/structure/bookcase/Initialize(mapload)
 	. = ..()
+	if(!mapload)
+		return
+	anchored = TRUE
 	for(var/obj/item/I in loc)
 		if(istype(I, /obj/item/book))
 			I.loc = src
-	update_icon()
+	for(var/obj/item/I in loc)
+		if(!isbook(I))
+			continue
+		I.forceMove(src)
+	update_appearance()
 
 /obj/structure/bookcase/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/book))
@@ -66,6 +87,13 @@
 			else
 				choice.loc = get_turf(src)
 			update_icon()
+
+/obj/structure/bookcase/update_icon_state()
+	var/amount = length(contents)
+	if(load_random_books)
+		amount += books_to_load
+	icon_state = "book-[clamp(amount, 0, 5)]"
+	return ..()
 
 /obj/structure/bookcase/ex_act(severity)
 	switch(severity)

@@ -14,7 +14,7 @@
 */
 
 /obj/machinery/telecomms
-	icon = 'icons/obj/stationobjs.dmi' //VOREStation Add
+	icon = 'icons/obj/machines/telecomms.dmi'
 	var/list/links = list() // list of machines this machine is linked to
 	var/traffic = 0 // value increases as traffic increases
 	var/netspeed = 5 // how much traffic to lose per tick (50 gigabytes/second * netspeed)
@@ -24,16 +24,18 @@
 
 	var/list/freq_listening = list() // list of frequencies to tune into: if none, will listen to all
 
-	var/machinetype = 0 // just a hacky way of preventing alike machines from pairing
-	var/toggled = 1 	// Is it toggled on
-	var/on = 1
-	var/integrity = 100 // basically HP, loses integrity by heat
-	var/produces_heat = 1	//whether the machine will produce heat when on.
-	var/delay = 10 // how many process() ticks to delay per heat
-	var/long_range_link = 0	// Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
-	var/hide = 0				// Is it a hidden machine?
-	var/listening_level = 0	// 0 = auto set in New() - this is the z level that the machine is listening to.
+	var/machinetype = 0		 // just a hacky way of preventing alike machines from pairing
+	var/toggled = TRUE		 // Is it toggled on
+	var/on = TRUE
+	var/integrity = 100		 // Basically HP, loses integrity by heat
+	var/produces_heat = TRUE // Whether the machine will produce heat when on.
+	var/delay = 10			 // How many process() ticks to delay per heat
+	var/long_range_link = FALSE	// Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
+	var/hide = FALSE		 // Is it a hidden machine?
+	var/listening_level = 0	 // 0 = auto set in New() - this is the z level that the machine is listening to.
 
+	///Looping sounds for any servers
+	var/datum/looping_sound/server/soundloop
 
 /obj/machinery/telecomms/proc/relay_information(datum/signal/signal, filter, copysig, amount = 20)
 	// relay signal to all linked machinery that are of type [filter]. If signal has been sent [amount] times, stop sending
@@ -61,7 +63,7 @@
 		if(amount && send_count >= amount)
 			break
 		if(machine.loc.z != listening_level)
-			if(long_range_link == 0 && machine.long_range_link == 0)
+			if(!long_range_link && !machine.long_range_link)
 				continue
 		// If we're sending a copy, be sure to create the copy for EACH machine and paste the data
 		var/datum/signal/copy
@@ -102,15 +104,16 @@
 /obj/machinery/telecomms/proc/is_freq_listening(datum/signal/signal)
 	// return 1 if found, 0 if not found
 	if(!signal)
-		return 0
+		return FALSE
 	if((signal.frequency in freq_listening) || (!freq_listening.len))
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
-/obj/machinery/telecomms/Initialize()
-	GLOB.telecomms_list += src
+/obj/machinery/telecomms/Initialize(mapload)
 	. = ..()
+	soundloop = new(list(src), on)
+	GLOB.telecomms_list += src
 
 	//Set the listening_level if there's none.
 	if(!listening_level)
@@ -132,6 +135,7 @@
 
 /obj/machinery/telecomms/Destroy()
 	GLOB.telecomms_list -= src
+	QDEL_NULL(soundloop)
 	for(var/obj/machinery/telecomms/comm in GLOB.telecomms_list)
 		comm.links -= src
 	links = list()
@@ -148,20 +152,21 @@
 					links |= T
 
 /obj/machinery/telecomms/update_icon()
-	if(on)
-		icon_state = initial(icon_state)
-	else
-		icon_state = "[initial(icon_state)]_off"
+	icon_state = "[initial(icon_state)][panel_open ? "_o" : null][on ? null : "_off"]"
+	return ..()
 
 /obj/machinery/telecomms/proc/update_power()
 
 	if(toggled)
 		if(stat & (BROKEN|NOPOWER|EMPED) || integrity <= 0) // if powered, on. if not powered, off. if too damaged, off
-			on = 0
+			on = FALSE
+			soundloop.stop()
 		else
-			on = 1
+			on = TRUE
+			soundloop.start()
 	else
-		on = 0
+		on = FALSE
+		soundloop.stop()
 
 /obj/machinery/telecomms/process()
 	update_power()
@@ -187,26 +192,24 @@
 /obj/machinery/telecomms/proc/checkheat()
 	// Checks heat from the environment and applies any integrity damage
 	var/datum/gas_mixture/environment = loc.return_air()
-	var/damage_chance = 0                           // Percent based chance of applying 1 integrity damage this tick
+	var/damage_chance = 0					// Percent based chance of applying 1 integrity damage this tick
 	switch(environment.temperature)
-		if((T0C + 40) to (T0C + 70))                // 40C-70C, minor overheat, 10% chance of taking damage
+		if((T0C + 40) to (T0C + 70))		// 40C-70C, minor overheat, 10% chance of taking damage
 			damage_chance = 10
-		if((T0C + 70) to (T0C + 130))				// 70C-130C, major overheat, 25% chance of taking damage
+		if((T0C + 70) to (T0C + 130))		// 70C-130C, major overheat, 25% chance of taking damage
 			damage_chance = 25
-		if((T0C + 130) to (T0C + 200))              // 130C-200C, dangerous overheat, 50% chance of taking damage
+		if((T0C + 130) to (T0C + 200))		// 130C-200C, dangerous overheat, 50% chance of taking damage
 			damage_chance = 50
-		if((T0C + 200) to INFINITY)					// More than 200C, INFERNO. Takes damage every tick.
+		if((T0C + 200) to INFINITY)			// More than 200C, INFERNO. Takes damage every tick.
 			damage_chance = 100
 	if (damage_chance && prob(damage_chance))
 		integrity = between(0, integrity - 1, 100)
-
 
 	if(delay > 0)
 		delay--
 	else if(on)
 		produce_heat()
 		delay = initial(delay)
-
 
 
 /obj/machinery/telecomms/proc/produce_heat()
@@ -244,15 +247,14 @@
 
 /obj/machinery/telecomms/receiver
 	name = "Subspace Receiver"
-	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "broadcast receiver"
 	desc = "This machine has a dish-like shape and green lights. It is designed to detect and process subspace radio activity."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 600
 	machinetype = 1
-	produces_heat = 0
+	produces_heat = FALSE
 	circuit = /obj/item/circuitboard/telecomms/receiver
 	//Vars only used if you're using the overmap
 	var/overmap_range = 0
@@ -332,16 +334,15 @@
 
 /obj/machinery/telecomms/hub
 	name = "Telecommunication Hub"
-	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "hub"
 	desc = "A mighty piece of hardware used to send/receive massive amounts of data."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1600
 	machinetype = 7
 	circuit = /obj/item/circuitboard/telecomms/hub
-	long_range_link = 1
+	long_range_link = TRUE
 	netspeed = 40
 
 /obj/machinery/telecomms/hub/Initialize()
@@ -369,20 +370,19 @@
 
 /obj/machinery/telecomms/relay
 	name = "Telecommunication Relay"
-	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "relay"
 	desc = "A mighty piece of hardware used to send massive amounts of data far away."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 600
 	machinetype = 8
 	produces_heat = 0
 	circuit = /obj/item/circuitboard/telecomms/relay
 	netspeed = 5
-	long_range_link = 1
-	var/broadcasting = 1
-	var/receiving = 1
+	long_range_link = TRUE
+	var/broadcasting = TRUE
+	var/receiving = TRUE
 
 /obj/machinery/telecomms/relay/Initialize()
 	. = ..()
@@ -429,11 +429,10 @@
 
 /obj/machinery/telecomms/bus
 	name = "Bus Mainframe"
-	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "bus"
 	desc = "A mighty piece of hardware used to send massive amounts of data quickly."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1000
 	machinetype = 2
@@ -485,17 +484,16 @@
 
 /obj/machinery/telecomms/processor
 	name = "Processor Unit"
-	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "processor"
 	desc = "This machine is used to process large quantities of information."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 600
 	machinetype = 3
 	delay = 5
 	circuit = /obj/item/circuitboard/telecomms/processor
-	var/process_mode = 1 // 1 = Uncompress Signals, 0 = Compress Signals
+	var/process_mode = TRUE // TRUE = Uncompress Signals, FALSE = Compress Signals
 
 /obj/machinery/telecomms/processor/Initialize()
 	. = ..()
@@ -527,11 +525,10 @@
 
 /obj/machinery/telecomms/server
 	name = "Telecommunication Server"
-	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "comm_server"
 	desc = "A machine used to store data and network statistics."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	machinetype = 4
@@ -539,16 +536,16 @@
 	var/list/log_entries = list()
 	var/list/stored_names = list()
 	var/list/TrafficActions = list()
-	var/logs = 0 // number of logs
-	var/totaltraffic = 0 // gigabytes (if > 1024, divide by 1024 -> terrabytes)
+	var/logs = 0		 // Number of logs
+	var/totaltraffic = 0 // Gigabytes (if > 1024, divide by 1024 -> terrabytes)
 
-	var/list/memory = list()	// stored memory
-	var/rawcode = ""	// the code to compile (raw text)
-	var/autoruncode = 0		// 1 if the code is set to run every time a signal is picked up
+	var/list/memory = list() // Stored memory
+	var/rawcode = ""		 // The code to compile (raw text)
+	var/autoruncode = FALSE	 // If the code is set to run every time a signal is picked up
 
-	var/encryption = "null" // encryption key: ie "password"
-	var/salt = "null"		// encryption salt: ie "123comsat"
-							// would add up to md5("password123comsat")
+	var/encryption = "null"	 // Encryption key: ie "password"
+	var/salt = "null"		 // Encryption salt: ie "123comsat"
+							 // Would add up to md5("password123comsat")
 	var/obj/item/radio/headset/server_radio = null
 
 /obj/machinery/telecomms/server/Initialize(mapload)

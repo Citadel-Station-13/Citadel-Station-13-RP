@@ -19,7 +19,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/ranch)
 "g" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/ranch)
 "i" = (

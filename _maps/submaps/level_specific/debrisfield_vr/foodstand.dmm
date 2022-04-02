@@ -19,7 +19,7 @@
 /turf/simulated/floor/wood,
 /area/submap/debrisfield_vr/foodstand)
 "f" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/condiment/coldsauce,
 /obj/item/reagent_containers/food/condiment/ketchup,
 /obj/item/reagent_containers/food/condiment/hotsauce,
@@ -27,7 +27,7 @@
 /turf/simulated/floor/wood,
 /area/submap/debrisfield_vr/foodstand)
 "g" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
 /area/submap/debrisfield_vr/foodstand)
@@ -50,19 +50,19 @@
 /turf/simulated/floor/wood,
 /area/submap/debrisfield_vr/foodstand)
 "k" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/cash_register{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/submap/debrisfield_vr/foodstand)
 "l" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/taco,
 /turf/simulated/floor/wood,
 /area/submap/debrisfield_vr/foodstand)
 "m" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/submap/debrisfield_vr/foodstand)
 

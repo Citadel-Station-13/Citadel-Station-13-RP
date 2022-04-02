@@ -129,13 +129,13 @@
 	},
 /area/submap/farm1)
 "z" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/box/matches,
 /obj/item/flame/match,
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "A" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "B" = (
@@ -155,7 +155,7 @@
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "E" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/fancy/candle_box,
 /turf/simulated/floor/wood,
 /area/submap/farm1)
@@ -185,7 +185,7 @@
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "K" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/trash/candle,
 /turf/simulated/floor/wood,
 /area/submap/farm1)

@@ -181,7 +181,7 @@ item_path: /obj/item/clothing/head/fluff/pink_tiara
 {
 ckey: deepindigo
 character_name: Amina Dae-Kouri
-item_path: /obj/item/storage/bible/fluff/amina
+item_path: /obj/item/storage/book/fluff/amina
 }
 
 {

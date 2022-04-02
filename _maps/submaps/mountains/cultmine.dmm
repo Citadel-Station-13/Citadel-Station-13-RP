@@ -34,7 +34,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
 "ag" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/fancy/cigar,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
@@ -799,8 +799,8 @@
 /turf/simulated/floor/greengrid,
 /area/submap/cave/cultmine)
 "cY" = (
-/obj/structure/table/woodentable,
-/obj/item/storage/bible/booze,
+/obj/structure/table/wood,
+/obj/item/storage/book/booze,
 /turf/simulated/floor/lino,
 /area/submap/cave/cultmine)
 "cZ" = (
@@ -830,12 +830,12 @@
 /area/submap/cave/cultmine)
 "dd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/storage/bible/booze,
+/obj/item/storage/book/booze,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "de" = (
 /obj/structure/table/steel,
-/obj/item/storage/bible/booze,
+/obj/item/storage/book/booze,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "df" = (
@@ -937,7 +937,7 @@
 /turf/simulated/floor/lino,
 /area/submap/cave/cultmine)
 "dy" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/contraband,
 /turf/simulated/floor/lino,
 /area/submap/cave/cultmine)

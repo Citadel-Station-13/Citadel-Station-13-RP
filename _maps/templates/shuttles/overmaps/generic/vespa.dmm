@@ -993,7 +993,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/soap/nanotrasen,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin1)
@@ -1024,7 +1024,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin2)
@@ -1055,7 +1055,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin3)
 "cJ" = (
@@ -1085,7 +1085,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin4)
 "cM" = (
@@ -1115,7 +1115,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin5)
@@ -1146,7 +1146,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/soap/nanotrasen,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin6)
@@ -1177,7 +1177,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin7)
 "cV" = (
@@ -1207,7 +1207,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin8)
 "cY" = (
@@ -1237,7 +1237,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin9)
@@ -2472,7 +2472,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "fM" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/corner/blue/border{
 	icon_state = "bordercolor";
 	dir = 1
@@ -2480,7 +2480,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "fN" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/corner/blue/border{
 	icon_state = "bordercolor";
 	dir = 5
@@ -3128,7 +3128,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/corner/blue/border{
 	icon_state = "bordercolor";
 	dir = 4
@@ -3556,7 +3556,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
 "hy" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "hz" = (
@@ -4259,7 +4259,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/button/remote/blast_door{
 	id = "bridgeD";
 	name = "window shutters button"
@@ -5198,7 +5198,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "jR" = (
@@ -7993,12 +7993,12 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "oF" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
@@ -8352,7 +8352,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ship/expe/corridor4)
 "pm" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/steel,
 /obj/effect/floor_decal/borderfloorblack{
@@ -8415,7 +8415,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "pt" = (
@@ -8434,7 +8434,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/cell_charger,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
@@ -9084,7 +9084,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicaleq)
 "qv" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/fiftyspawner/plasteel,
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -9109,7 +9109,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "qx" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "qy" = (
@@ -9252,7 +9252,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/corner/blue/border{
 	icon_state = "bordercolor";
 	dir = 1
@@ -9269,7 +9269,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
 "qM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/corner/blue/border{
 	icon_state = "bordercolor";
 	dir = 1
@@ -9277,7 +9277,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
 "qN" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/corner/blue/border{
 	icon_state = "bordercolor";
 	dir = 5
@@ -9574,7 +9574,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical1)
 "rx" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
 /obj/effect/floor_decal/borderfloorblack{
@@ -9588,7 +9588,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "ry" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/toolbox/electrical,
 /obj/item/storage/toolbox/electrical,
 /obj/effect/floor_decal/borderfloorblack,
@@ -9894,7 +9894,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/corner/blue/border{
 	icon_state = "bordercolor";
 	dir = 4
@@ -10539,7 +10539,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/paper_bin,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
@@ -10548,7 +10548,7 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/pen,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
@@ -10557,7 +10557,7 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/folder/white,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
@@ -10566,7 +10566,7 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/universal_translator,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
@@ -11157,20 +11157,20 @@
 /area/ship/expe/expedition)
 "ux" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "uy" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/folder/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "uz" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "uA" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/universal_translator,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
@@ -11616,7 +11616,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
 "vw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
@@ -12099,27 +12099,27 @@
 	icon_state = "bordercolor";
 	dir = 10
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "wD" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/pen,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "wE" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/folder/red,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "wF" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/photocopier/faxmachine,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
@@ -12673,7 +12673,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/paper_bin,
 /obj/item/pen,
 /turf/simulated/floor/tiled/techfloor,

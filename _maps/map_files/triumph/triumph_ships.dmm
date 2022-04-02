@@ -152,7 +152,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "gd" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/picnic)
 "ge" = (
@@ -198,7 +198,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "gn" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/houseboat/holodeck/bunking)
 "go" = (
@@ -267,7 +267,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/thunderdome)
 "gz" = (
-/obj/structure/table/woodentable/holotable,
+/obj/structure/table/wood/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/houseboat/holodeck/gaming)
 "gA" = (

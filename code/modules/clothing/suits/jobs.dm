@@ -43,7 +43,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv = HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/chaplain_hood
-	allowed = list (/obj/item/storage/bible)
+	allowed = list (/obj/item/storage/book)
 
 //Chaplain but spookier
 /obj/item/clothing/suit/storage/hooded/chaplain_hoodie/whiteout

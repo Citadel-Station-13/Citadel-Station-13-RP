@@ -47,12 +47,15 @@
 	install_default_hardware()
 	if(hard_drive)
 		install_default_programs()
+	if(looping_sound)
+		soundloop = new(list(src), enabled)
 	update_icon()
 	update_verbs()
 
 /obj/item/modular_computer/Destroy()
 	kill_program(1)
 	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(soundloop)
 	for(var/obj/item/computer_hardware/CH in src.get_all_components())
 		uninstall_component(null, CH)
 		qdel(CH)
@@ -104,6 +107,8 @@
 			to_chat(user, "You send an activation signal to \the [src], turning it on")
 		else
 			to_chat(user, "You press the power button and start up \the [src]")
+		if(looping_sound)
+			soundloop.start()
 		enable_computer(user)
 
 	else // Unpowered
@@ -139,6 +144,8 @@
 	for(var/datum/computer_file/program/P in idle_threads)
 		P.kill_program(1)
 		idle_threads.Remove(P)
+	if(looping_sound)
+		soundloop.stop()
 	if(loud)
 		visible_message("\The [src] shuts down.")
 	enabled = 0

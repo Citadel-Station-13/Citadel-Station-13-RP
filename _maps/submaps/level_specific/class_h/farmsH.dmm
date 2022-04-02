@@ -7,7 +7,7 @@
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/class_h/POIs/dirt_farm)
 "f" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/lighter/zippo,
 /obj/machinery/light/small{
 	dir = 8
@@ -53,7 +53,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/dirt_farm)
 "s" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/dirt_farm)

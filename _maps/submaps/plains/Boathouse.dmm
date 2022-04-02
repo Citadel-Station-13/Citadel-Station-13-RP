@@ -23,7 +23,7 @@
 /turf/template_noop,
 /area/submap/Boathouse)
 "ah" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/template_noop,
 /area/submap/Boathouse)
 "ai" = (
@@ -57,7 +57,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Boathouse)
 "an" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
@@ -77,17 +77,17 @@
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "ar" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/deck/cards,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Boathouse)
 "as" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/chips,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Boathouse)
 "at" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/trash/candle,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
@@ -102,23 +102,23 @@
 /turf/simulated/floor/water,
 /area/submap/Boathouse)
 "ax" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/whiskey,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Boathouse)
 "ay" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Boathouse)
 "az" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/barrier_tape_roll,
 /obj/random/firstaid,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "aA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
@@ -139,13 +139,13 @@
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "aG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/oar,
 /obj/item/oar,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "aI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/random/powercell,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
@@ -173,14 +173,14 @@
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "aN" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "aO" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/Boathouse)
 "aP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/material/knife,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
@@ -189,12 +189,12 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/Boathouse)
 "aR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/bag/trash,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "aS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/lighter,
 /obj/item/storage/fancy/candle_box,
 /turf/simulated/floor/wood,
@@ -228,12 +228,12 @@
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "aY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/Boathouse)
 "aZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/Boathouse)
 "ba" = (

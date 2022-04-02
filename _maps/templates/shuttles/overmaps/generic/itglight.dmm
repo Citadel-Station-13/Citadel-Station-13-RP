@@ -337,7 +337,7 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/shuttlebay)
 "bv" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -443,7 +443,7 @@
 /turf/simulated/floor/carpet,
 /area/itglight/readyroom)
 "cf" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/structure/cable/pink{
 	d1 = 4;
 	d2 = 8;
@@ -616,7 +616,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_y = -23
@@ -655,7 +655,7 @@
 /turf/simulated/floor/tiled/white,
 /area/itglight/restrooms)
 "dB" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
@@ -734,7 +734,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/mre/random,
 /obj/random/plushie,
 /obj/random/contraband,
@@ -858,7 +858,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "eI" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/material/kitchen/rollingpin,
 /obj/item/book/manual/chef_recipes,
 /obj/item/reagent_containers/food/condiment/enzyme{
@@ -921,7 +921,7 @@
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/itglight/cockpit)
 "fb" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/eris/dark/monofloor,
@@ -1021,7 +1021,7 @@
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/itglight/cockpit)
 "gc" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/reagentgrinder,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/eris/cafe,
@@ -1208,7 +1208,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "hk" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/item/paper/Dauntless,
 /turf/simulated/floor/tiled/eris/dark/monofloor,
@@ -1259,7 +1259,7 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
 "hw" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
@@ -1420,7 +1420,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/mre/random,
 /obj/random/plushie,
 /obj/random/contraband,
@@ -1567,7 +1567,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/itglightshuttle)
 "iU" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
@@ -1622,7 +1622,7 @@
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/itglight/cockpit)
 "jo" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
@@ -1645,7 +1645,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "jE" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
@@ -2029,7 +2029,7 @@
 /turf/simulated/floor,
 /area/itglight/portengi)
 "mf" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/storage/box/sinpockets,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/metingroom)
@@ -2308,7 +2308,7 @@
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
 "on" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -2535,7 +2535,7 @@
 /area/itglight/portengi)
 "pE" = (
 /obj/machinery/microwave,
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "pG" = (
@@ -2669,14 +2669,14 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "qK" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/metingroom)
 "qN" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/metingroom)
 "qR" = (
@@ -2777,7 +2777,7 @@
 /turf/simulated/floor/airless,
 /area/itglight/starboardsolars)
 "rg" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -3296,14 +3296,14 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/porthighsec)
 "wj" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/porthighsec)
 "wk" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/porthighsec)
 "wm" = (
@@ -4259,7 +4259,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/mre/random,
 /obj/random/plushie,
 /obj/random/contraband,
@@ -4552,7 +4552,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/storage/mre/random,
 /obj/random/plushie,
 /obj/random/contraband,
@@ -5990,7 +5990,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/itglightshuttle)
 "LJ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -6077,7 +6077,7 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)
 "Mm" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/item/radio,
 /obj/item/radio,
 /obj/item/radio,
@@ -6525,7 +6525,7 @@
 /turf/simulated/floor,
 /area/itglight/starboardengi)
 "OA" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/random/mre,
 /obj/random/mre,
@@ -6560,7 +6560,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/itglight/shuttlebay)
 "OF" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/random/mre,
 /obj/random/mre,
 /obj/random/mre,
@@ -6589,7 +6589,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/itglightshuttle)
 "OJ" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/lockers)
 "OT" = (
@@ -8163,7 +8163,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/itglight/showers)
 "Zd" = (
-/obj/structure/table/steel_reinforced,
+/obj/structure/table/reinforced/steel,
 /obj/machinery/chemical_dispenser/bar_soft/full,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)

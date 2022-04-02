@@ -925,7 +925,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "di" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -2441,7 +2441,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "hd" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/rnd/protolathe,
 /turf/simulated/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -2611,7 +2611,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/rnd/circuit_imprinter,
 /turf/simulated/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -2623,7 +2623,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/r_n_d/destructive_analyzer,
+/obj/machinery/rnd/destructive_analyzer,
 /turf/simulated/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -2996,7 +2996,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/solars)
 "ip" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_x = -2;
 	pixel_y = 7
@@ -3010,13 +3010,13 @@
 	},
 /area/awaymission/labs/militarydivision)
 "iq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor{
 	icon_state = "wood"
 	},
 /area/awaymission/labs/militarydivision)
 "ir" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/melee/classic_baton,
 /turf/simulated/floor{
 	icon_state = "wood"
@@ -3197,7 +3197,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "iQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/material/ashtray/glass{
 	pixel_y = 2
 	},
@@ -3206,7 +3206,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "iR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor{
 	icon_state = "carpet"
 	},
@@ -3387,7 +3387,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "jo" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/folder/blue,
 /obj/structure/cable{
 	d1 = 4;
@@ -3399,7 +3399,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "jp" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -6120,7 +6120,7 @@
 	},
 /area/awaymission/labs/command)
 "pZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 1;
 	pixel_y = 5
@@ -6131,7 +6131,7 @@
 	},
 /area/awaymission/labs/command)
 "qa" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor{
 	icon_state = "wood"
 	},
@@ -6175,7 +6175,7 @@
 	},
 /area/awaymission/labs/command)
 "qh" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/material/sword/katana{
 	desc = "A well-weathered sword meant to be kept at the side of an officer. It is not meant for real combat.";
 	force = 15;
@@ -6313,7 +6313,7 @@
 	},
 /area/awaymission/labs/command)
 "qC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper{
 	icon_state = "paper_words";
 	info = "<center><u>Research Weekly Report</u></center><br><br>As of this day (Dec 26, 2556), the research division of Outpost Zeta has made signifcant strides in the development of safe-to-use nanoaugmentations based upon Soghun genetic structure. Though the unfortunate death of Commander Karl was a result of an earlier, more potent batch, his passing has brought great wisdom to our division and through his dead, infected tissue, we are very close to isolating the gene responsible for the fatal abnormal mutation.<br><br>Should current schedules and effort remain steady, we are expected to produce a far safer serum in no less than seven days. All data has been saved and uploaded to the main company development server via the nearby telecommunications satellite.<br><br>In our firearms department, development of a weapon that fires x-ray beams has proved successful. The weapon is not to be confused with a laser weapon - lasers are primitive tools that simply burn flesh. This weapon is capable of firing toxic beams that poison and harm the target's biological functions, much more painful than a laser burn. Similarly, even after the firefight is over with, or in the event of a retreat, the harmful toxins will remain in the affected individual's bloodstream and cause great discomfort. Your signature and stamp will be required for field tests with the emergency response commandos, Overseer.<br><br>End report.<br><br>-Doctor Jenkins";
@@ -6385,7 +6385,7 @@
 	},
 /area/awaymission/labs/command)
 "qP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/book/manual/security_space_law,
 /turf/simulated/floor{
 	icon_state = "wood"
@@ -7339,7 +7339,7 @@
 	},
 /area/awaymission/labs/medical)
 "tB" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /turf/simulated/floor,
 /area/awaymission/labs/security)
 "tC" = (

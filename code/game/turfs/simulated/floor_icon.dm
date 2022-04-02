@@ -145,7 +145,7 @@ var/image/no_ceiling_image = null
 				is_linked = TRUE
 
 		//If it's space or openspace, use the space_smooth setting
-		else if(isspaceturf(T) || isopenspace(T))
+		else if(isspace(T) || isopenspace(T))
 			if(space_smooth == SMOOTH_ALL)
 				is_linked = TRUE
 

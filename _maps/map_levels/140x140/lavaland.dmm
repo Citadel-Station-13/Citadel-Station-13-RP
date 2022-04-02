@@ -1059,7 +1059,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "tv" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -1068,7 +1068,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "tE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -1163,7 +1163,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "vE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/recharger,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -1450,7 +1450,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Bx" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -1934,7 +1934,7 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "Kq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -2314,7 +2314,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/central/base/common)
 "Ss" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},

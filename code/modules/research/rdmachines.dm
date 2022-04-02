@@ -2,7 +2,7 @@
 
 //All devices that link into the R&D console fall into thise type for easy identification and some shared procs.
 
-/obj/machinery/r_n_d
+/obj/machinery/rnd
 	name = "R&D Device"
 	icon = 'icons/obj/machines/research.dmi'
 	density = TRUE
@@ -14,22 +14,22 @@
 	var/list/materials = list()		// Materials this machine can accept.
 	var/list/hidden_materials = list()	// Materials this machine will not display, unless it contains them. Must be in the materials list as well.
 
-/obj/machinery/r_n_d/attack_hand(mob/user as mob)
+/obj/machinery/rnd/attack_hand(mob/user as mob)
 	return
 
-/obj/machinery/r_n_d/proc/getMaterialType(var/name)
+/obj/machinery/rnd/proc/getMaterialType(var/name)
 	var/datum/material/M = get_material_by_name(name)
 	if(M && M.stack_type)
 		return M.stack_type
 	return null
 
-/obj/machinery/r_n_d/proc/getMaterialName(var/type)
+/obj/machinery/rnd/proc/getMaterialName(var/type)
 	if(istype(type, /obj/item/stack/material))
 		var/obj/item/stack/material/M = type
 		return M.material.name
 	return null
 
-/obj/machinery/r_n_d/proc/eject(var/material, var/amount)
+/obj/machinery/rnd/proc/eject(var/material, var/amount)
 	if(!(material in materials))
 		return
 	var/obj/item/stack/material/sheetType = getMaterialType(material)

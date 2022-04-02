@@ -15,7 +15,7 @@
 /turf/simulated/floor/classp/outdoors,
 /area/class_p/ruins)
 "L" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/table/wood/poker,
 /obj/random/triumph/uncertain,
 /turf/simulated/floor/carpet/purcarpet/classp,
 /area/class_p/ruins)

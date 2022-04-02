@@ -4,10 +4,10 @@
 /obj/machinery/atmospherics/unary/freezer
 	name = "gas cooling system"
 	desc = "Cools gas when connected to pipe network"
-	icon = 'icons/obj/Cryogenic2_vr.dmi'
+	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "freezer_0"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_OFF
 	idle_power_usage = 5			// 5 Watts for thermostat related circuitry
 	circuit = /obj/item/circuitboard/unary_atmos/cooler

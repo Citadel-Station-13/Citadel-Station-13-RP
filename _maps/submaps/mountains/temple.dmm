@@ -81,7 +81,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/AbandonedTemple)
 "q" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/lighter/zippo/royal,
 /obj/item/clothing/mask/smokable/pipe,
 /turf/simulated/floor/carpet/turcarpet,
@@ -107,7 +107,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/AbandonedTemple)
 "v" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper,
 /obj/item/pen/fountain,
 /turf/simulated/floor/carpet/turcarpet,
@@ -122,7 +122,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "y" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/AbandonedTemple)
@@ -165,7 +165,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/AbandonedTemple)
 "G" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/paper/alien{
 	desc = "";
 	icon_state = "alienpaper_words";
