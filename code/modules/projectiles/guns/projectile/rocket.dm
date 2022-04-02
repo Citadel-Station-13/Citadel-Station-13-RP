@@ -79,14 +79,22 @@
 				if(1 to 10)
 					to_chat(user, "<span class='danger'>The rocket primer activates early!</span>")
 					icon_state = "rokkitlauncher-malfunction"
-					if(do_after(user, 20))
-						explosion(get_turf(src), -1, 0, 2, 3)
-						qdel(src)
+					spawn(rand(1,5))
+						if(src && !jammed)
+							visible_message("<span class='critical'>\The [src] detonates!</span>")
+							jammed = 1
+							explosion(get_turf(src), -1, 0, 2, 3)
+							qdel(chambered)
+							qdel(src)
+					return ..()
 				if(11 to 29)
 					to_chat(user, "<span class='notice'>The rocket flares out in the tube!</span>")
 					playsound(src, 'sound/machines/button.ogg', 25)
 					icon_state = "rokkitlauncher-broken"
 					jammed = 1
+					name = "broken rokkit launcher"
+					desc = "The tube has burst outwards like a sausage."
+					qdel(chambered)
 					handle_click_empty()
 					return
 				if(30 to 100)
