@@ -89,6 +89,27 @@
 /obj/machinery/atmospherics/binary/heat_pump/hide(var/i)
 	update_underlays()
 
+/obj/machinery/atmospherics/binary/heat_pump/attackby(obj/item/W, mob/user)
+    if(istype(W, /obj/item/pen))
+		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
+		new_name = trim(new_name)
+		name = (new_name? new_name : name)
+		return
+	if (!W.is_wrench())
+		return ..()
+	if (!(stat & NOPOWER) && use_power)
+		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
+		return 1
+	add_fingerprint(user)
+	playsound(src, W.usesound, 50, 1)
+	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+	if (do_after(user, 40 * W.toolspeed))
+		user.visible_message( \
+			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
+			"<span class='notice'>You have unfastened \the [src].</span>", \
+			"You hear ratchet.")
+		deconstruct()
+
 /obj/machinery/atmospherics/binary/heat_pump/attack_hand(user as mob)
 	if(..())
 		return
@@ -123,8 +144,8 @@
     energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
     
     var/power_draw = abs(energy_transfered/performance_factor)
-    air2.add_thermal_energy(energy_transfered*efficiency)
-    air1.add_thermal_energy(-energy_transfered*efficiency)
+    air2.add_thermal_energy(energy_transfered*efficiency)//this currently means you can draw energy from a 2.7Kelvin gas.
+    air1.add_thermal_energy(-energy_transfered*efficiency)//But because efficency is shit like this, you dont really have a benefit from it.
     if (power_draw >= 0)
         last_power_draw = power_draw
         use_power(power_draw)
