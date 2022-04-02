@@ -596,3 +596,24 @@
 		/obj/item/reagent_containers/food/snacks/cheesewedge
 	)
 	result = /obj/item/reagent_containers/food/snacks/macncheese
+
+/datum/recipe/ham
+	appliance = OVEN
+	reagents = list("brine" = 15)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/reagent_containers/food/snacks/meat
+	)
+	result = /obj/item/reagent_containers/food/snacks/ham
+
+/datum/recipe/rumham
+	appliance = OVEN
+	reagents = list("rum" = 10)
+	fruit = list("cherries" = 1)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ham
+	)
+	result = /obj/item/reagent_containers/food/snacks/rumham

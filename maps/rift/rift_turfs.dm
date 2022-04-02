@@ -8,13 +8,15 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/open)
 	if(outdoors)
 		SSplanets.addTurf(src)
 
-LYTHIOS43C_TURF_CREATE(/turf/simulated/floor)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/plating)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/plasteel)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/reinforced)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
+
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/steel_grid)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 
@@ -44,6 +46,7 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock/floor)
+LYTHIOS43C_TURF_CREATE(/turf/unsimulated/icerock)
 	//This proc is responsible for ore generation on surface turfs
 /turf/simulated/mineral/icerock/lythios43c/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
@@ -113,9 +116,6 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock/floor)
 
 //Unsimulated
 
-/turf/unsimulated/icerock/lythios43c
-	blocks_air = TRUE
-
 /turf/unsimulated/floor/steel
 	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "steel"
@@ -123,7 +123,7 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock/floor)
 /turf/unsimulated/wall
 	blocks_air = 1
 
-/turf/unsimulated/wall/planetary
+/turf/unsimulated/icerock/lythios43c
 	blocks_air = 0
 
 // Some turfs to make floors look better in centcom tram station.

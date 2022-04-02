@@ -84,8 +84,8 @@
 /turf/unsimulated/floor/sky/depths
 	name = "darkness"
 	desc = "A straight drop down into the depths below."
+	skyfall_levels = "Western Caverns"
 	color ="#303030"
-
 
 /turf/unsimulated/floor/sky/depths/Initialize(mapload)
 	. = ..()

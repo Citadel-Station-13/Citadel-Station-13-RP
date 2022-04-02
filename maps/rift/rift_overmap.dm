@@ -10,6 +10,12 @@
 	color = "#5bbbd3"
 	start_x = 15
 	start_y = 10
+
+	extra_z_levels = list(
+		Z_LEVEL_WEST_PLAIN,
+		Z_LEVEL_WEST_CAVERN
+	)
+
 /*	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW", "triumph_mining_port")
 
 	initial_restricted_waypoints = list(

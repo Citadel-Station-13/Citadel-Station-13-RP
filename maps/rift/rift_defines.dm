@@ -242,7 +242,3 @@
 	z = Z_LEVEL_CENTCOM
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-
-/datum/map_z_level/rift/west_plains
-	z = Z_LEVEL_WEST_PLAIN
-	name = "Western Plains"
