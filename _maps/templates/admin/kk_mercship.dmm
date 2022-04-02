@@ -571,9 +571,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "cq" = (
-/obj/structure/closet/crate{
-	dir = 2
-	},
+/obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/ship/manta/hallways_star)
 "cr" = (
@@ -6702,7 +6700,7 @@
 /area/ship/manta/barracks)
 "Fx" = (
 /obj/structure/table/rack,
-/obj/item/gun/launcher/rocket,
+/obj/item/gun/projectile/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
@@ -6782,9 +6780,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/machinery/shield_gen{
-	
-	},
+/obj/machinery/shield_gen,
 /obj/structure/cable/orange{
 	d2 = 2;
 	icon_state = "0-2"
@@ -9080,9 +9076,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "RZ" = (
-/obj/structure/closet/crate{
-	dir = 2
-	},
+/obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/ship/manta/dock_port)
 "Sa" = (

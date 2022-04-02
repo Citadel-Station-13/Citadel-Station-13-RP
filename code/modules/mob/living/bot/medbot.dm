@@ -455,6 +455,15 @@
 	desc = "An organic creature heavily augmented with components from a medical drone. It was made to assist nurses in Apidaen hives."
 	icon_state = "beebot"
 
+/mob/living/bot/medbot/apidean/update_icons()
+	overlays.Cut()
+	if(skin)
+		overlays += image('icons/obj/aibots.dmi', "beebot_[skin]")
+	if(busy)
+		icon_state = "beebots"
+	else
+		icon_state = "beebot[on]"
+
 /mob/living/bot/medbot/apidean/handleIdle()
 	if(vocal && prob(1))
 		var/message_options = list(
