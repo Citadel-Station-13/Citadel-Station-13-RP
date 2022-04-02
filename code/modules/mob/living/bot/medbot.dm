@@ -453,7 +453,7 @@
 /mob/living/bot/medbot/apidean
 	name = "\improper Apidean Beebot"
 	desc = "An organic creature heavily augmented with components from a medical drone. It was made to assist nurses in Apidaen hives."
-	icon_state = "beebot"
+	icon_state = "beebot0"
 
 /mob/living/bot/medbot/apidean/update_icons()
 	overlays.Cut()

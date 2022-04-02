@@ -1347,7 +1347,6 @@
 #include "code\game\objects\structures\loot_piles.dm"
 #include "code\game\objects\structures\map_blocker_vr.dm"
 #include "code\game\objects\structures\medical_stand_vr.dm"
-#include "code\game\objects\structures\memorial.dm"
 #include "code\game\objects\structures\mineral_bath.dm"
 #include "code\game\objects\structures\mirror.dm"
 #include "code\game\objects\structures\mop_bucket.dm"

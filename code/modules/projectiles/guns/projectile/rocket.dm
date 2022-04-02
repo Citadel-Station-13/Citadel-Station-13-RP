@@ -63,9 +63,47 @@
 	log_game("[key_name_admin(user)] used a rocket launcher ([src.name]) at [target].")
 	..()
 
+/obj/item/gun/projectile/rocket/collapsible
+	name = "collapsible missile launcher"
+	desc = "A one-shot missile launcher designed with portability in mind. This disposable launcher must be extended before it can fire."
+	icon_state = "missile"
+	item_state = "missile"
+	w_class = ITEMSIZE_NORMAL
+	slot_flags = SLOT_BELT
+	handle_casings = HOLD_CASINGS
+	ammo_type = /obj/item/ammo_casing/rocket
+	var/collapsed = 1
+	var/empty = 0
+
+/obj/item/gun/projectile/rocket/collapsible/special_check(mob/user)
+	if(collapsed)
+		to_chat(user, "<span class='warning'>[src] is collapsed! You must extend it before firing!</span>")
+		return 0
+	return ..()
+
+/obj/item/gun/projectile/rocket/collapsible/attack_self(mob/user, obj/item/gun/G)
+	if(collapsed)
+		to_chat(user, "<span class='notice'>You pull out the tube on the [src], readying the weapon to be fired.</span>")
+		icon_state = "[initial(icon_state)]-extended"
+		item_state = "[initial(item_state)]-extended"
+		collapsed = 0
+	else if(!collapsed && empty)
+		to_chat(user, "<span class='danger'>You cannot collapse the [src] after it has been fired!</span>")
+		return
+	else
+		to_chat(user, "<span class='notice'>You push the tube back into the [src], collapsing the weapon.</span>")
+		icon_state = "[initial(icon_state)]"
+		item_state = "[initial(item_state)]"
+		collapsed = 1
+
+/obj/item/gun/projectile/rocket/collapsible/consume_next_projectile(mob/user as mob)
+	. = ..()
+	icon_state = "[initial(icon_state)]-empty"
+	empty = 1
+
 /obj/item/gun/projectile/rocket/tyrmalin
 	name = "rokkit launcher"
-	desc = "MAGGOT."
+	desc = "A sloppily machined tube designed to function as a recoilless rifle. Sometimes used by Tyrmalin defense teams, it draws skeptical looks even amongst their ranks."
 	icon_state = "rokkitlauncher"
 	item_state = "rocket"
 	var/unstable = 1
