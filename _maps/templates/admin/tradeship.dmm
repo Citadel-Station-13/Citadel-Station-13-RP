@@ -1120,11 +1120,11 @@
 "cL" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/warning,
-/obj/item/kit/paint/gygax/darkgygax,
-/obj/item/kit/paint/gygax/recitence,
+/obj/item/kit/paint/gygax,
+/obj/item/kit/paint/gygax,
 /obj/item/kit/paint/durand,
-/obj/item/kit/paint/durand/phazon,
-/obj/item/kit/paint/durand/seraph,
+/obj/item/kit/paint/durand,
+/obj/item/kit/paint/durand,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cM" = (

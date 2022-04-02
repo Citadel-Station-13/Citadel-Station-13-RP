@@ -343,6 +343,14 @@
 	damage = 40
 	damage_type = TOX
 
+/obj/item/projectile/bullet/cyanideround/jezzail
+	name = "toxic penetrator shard"
+	damage = 25
+	armor_penetration = 20
+	agony = 5
+	embed_chance = 1
+	damage_type = TOX
+
 /obj/item/projectile/bullet/burstbullet
 	name = "exploding bullet"
 	fire_sound = 'sound/effects/Explosion1.ogg'

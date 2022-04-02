@@ -201,6 +201,12 @@
 			thermitemelt(user)
 			return
 
+		else if (istype(W, /obj/item/melee/thermalcutter))
+			var/obj/item/melee/thermalcutter/TC = W
+			if(TC.remove_fuel(0,user))
+				thermitemelt(user)
+				return
+
 		else if( istype(W, /obj/item/melee/energy/blade) )
 			var/obj/item/melee/energy/blade/EB = W
 
@@ -254,11 +260,24 @@
 			dismantle_sound = "sparks"
 			dismantle_verb = "slicing"
 			cut_delay *= 0.5
+		else if (istype(W, /obj/item/melee/thermalcutter))
+			var/obj/item/melee/thermalcutter/TC = W
+			if(!TC.isOn())
+				return
+			if(!TC.remove_fuel(0,user))
+				to_chat(user, "<span class='notice'>You need more fuel to complete this task.</span>")
+				return
+			dismantle_sound = 'sound/items/Welder.ogg'
+			dismantle_verb = "slicing"
+			cut_delay *= 0.5
 		else if(istype(W,/obj/item/pickaxe))
 			var/obj/item/pickaxe/P = W
-			dismantle_verb = P.drill_verb
-			dismantle_sound = P.drill_sound
-			cut_delay -= P.digspeed
+			if(!active)
+				return
+			else
+				dismantle_verb = P.drill_verb
+				dismantle_sound = P.drill_sound
+				cut_delay -= P.digspeed
 
 		if(dismantle_verb)
 
@@ -318,7 +337,19 @@
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
 				else if (istype(W, /obj/item/pickaxe/plasmacutter))
-					cut_cover = 1
+					if(!active)
+						return
+					else
+						cut_cover = 1
+				else if (istype(W, /obj/item/melee/thermalcutter))
+					var/obj/item/melee/thermalcutter/TC = W
+					if(!TC.isOn())
+						return
+					if(TC.remove_fuel(0,user))
+						cut_cover = 1
+					else
+						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+						return
 				if(cut_cover)
 					to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
 					playsound(src, W.usesound, 100, 1)
@@ -371,7 +402,10 @@
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
 				else if(istype(W, /obj/item/pickaxe/plasmacutter))
-					cut_cover = 1
+					if(!active)
+						return
+					else
+						cut_cover = 1
 				if(cut_cover)
 					to_chat(user, "<span class='notice'>You begin slicing through the support rods.</span>")
 					playsound(src, W.usesound, 100, 1)

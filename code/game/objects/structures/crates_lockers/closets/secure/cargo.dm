@@ -98,6 +98,7 @@
 		/obj/item/clothing/glasses/material,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/miner,
 		/obj/item/clothing/shoes/boots/winter/mining,
+		/obj/item/reagent_containers/portable_fuelcan/miniature,
 		/obj/item/stack/marker_beacon/thirty)
 
 /obj/structure/closet/secure_closet/miner/Initialize(mapload)

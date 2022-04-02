@@ -426,3 +426,5 @@
 	recipes += new/datum/stack_recipe("wax floor tile", /obj/item/stack/tile/wax, 1, 4, 20)
 	recipes += new/datum/stack_recipe("honeycomb floor tile", /obj/item/stack/tile/honeycomb, 1, 4, 20)
 	recipes += new/datum/stack_recipe("wax globule", /obj/item/ammo_casing/organic/wax, 1)
+	recipes += new/datum/stack_recipe("royal throne", /obj/structure/bed/chair/apidean, 20, time = 10, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("apidean stool", /obj/structure/bed/chair/apidean_stool, 5, time = 5, one_per_turf = 1, on_floor = 1)
