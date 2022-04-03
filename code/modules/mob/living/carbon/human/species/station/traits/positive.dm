@@ -184,7 +184,7 @@
 /datum/trait/size_change
 	name = "Sizeshift"
 	desc = "Lets you shift sizes by yourself. Remember that abusing size mechanics is against the rules!"
-	cost = 4
+	cost = 2
 
 /datum/trait/size_change/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
