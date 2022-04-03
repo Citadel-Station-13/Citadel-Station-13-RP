@@ -388,27 +388,64 @@
 	else
 		icon_state = "[initial(icon_state)]-e"
 
+//Exploration/Pathfinder Sidearms
 /obj/item/gun/projectile/fnseven
-	name = "5.7 sidearm"
-	desc = "This classic sidearm design utilizes an adaptable round considered to be superior to 9mm parabellum. It shares a round type with the H90K."
-	icon_state = "fnseven"
+	name = "NT-57 'LES'"
+	desc = "The NT-57 'LES' (Light Expeditionary Sidearm) is a tried and tested pistol often issued to Pathfinders. Featuring a polymer frame, collapsible stock, and integrated optics, the LES is lightweight and reliably functions in nearly any hazardous environment, including vacuum."
+	icon_state = "nt57"
+	item_state = "pistol"
 	caliber = "5.7x28mm"
 	load_method = MAGAZINE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	magazine_type = /obj/item/ammo_magazine/m57x28mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm)
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/item/projectile/bullet/pistol/lap
+	one_handed_penalty = 30
+	var/collapsible = 1
+	var/extended = 0
 
 /obj/item/gun/projectile/fnseven/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "nt57"
+	else
+		icon_state = "nt57-e"
+
+/obj/item/gun/projectile/fnseven/attack_self(mob/user, obj/item/gun/G)
+	if(collapsible && !extended)
+		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
+		icon_state = "[initial(icon_state)]-extended"
+		w_class = ITEMSIZE_LARGE
+		one_handed_penalty = 10
+		extended = 1
+	else if(!collapsible)
+		to_chat(user, "<span class='danger'>The [src] doesn't have a stock!</span>")
+		return
+	else
+		to_chat(user, "<span class='notice'>You push the stock back into the [src], makingg it more compact.</span>")
+		icon_state = "[initial(icon_state)]"
+		w_class = ITEMSIZE_NORMAL
+		one_handed_penalty = 30
+		extended = 0
+
+/obj/item/gun/projectile/fnseven/pathfinder
+	pin = /obj/item/firing_pin/explorer
+
+/obj/item/gun/projectile/fnseven/vintage
+	name = "5.7 sidearm"
+	desc = "This classic sidearm design utilizes an adaptable round considered to be superior to 9mm parabellum. It shares a round type with the H90K."
+	icon_state = "fnseven"
+	collapsible = 0
+	extended = 1
+
+/obj/item/gun/projectile/fnseven/vintage/update_icon()
 	..()
 	if(ammo_magazine)
 		icon_state = "fnseven"
 	else
 		icon_state = "fnseven-e"
 
-/obj/item/gun/projectile/fnseven/pathfinder
-	pin = /obj/item/firing_pin/explorer
-
+//Apidean Weapons
 /obj/item/gun/projectile/apinae_pistol
 	name = "\improper Apinae Enforcer pistol"
 	desc = "Used by Hive-guards to detain deviants."
@@ -425,6 +462,7 @@
 /obj/item/gun/projectile/apinae_pistol/update_icon()
 	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
 
+//Tyrmalin Weapons
 /obj/item/gun/projectile/pirate/junker_pistol
 	name = "scrap pistol"
 	desc = "A strange handgun made from industrial parts. It appears to accept multiple rounds thanks to an internal magazine. Favored by Tyrmalin wannabe-gunslingers."
