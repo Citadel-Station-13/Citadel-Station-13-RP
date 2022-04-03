@@ -4,7 +4,7 @@
 	. = ..()
 	if(SSopenspace.subsystem_initialized && !AM.invisibility && isobj(AM))
 		var/turf/T = GetAbove(src)
-		if(isopenspace(T))
+		if(isopenturf(T))
 			// log_debug("[T] ([T.x],[T.y],[T.z]) queued for update for [src].Entered([AM])")
 			SSopenspace.add_turf(T, 1)
 
@@ -12,7 +12,7 @@
 	..()
 	if(SSopenspace.subsystem_initialized && !AM.invisibility && isobj(AM))
 		var/turf/T = GetAbove(src)
-		if(isopenspace(T))
+		if(isopenturf(T))
 			// log_debug("[T] ([T.x],[T.y],[T.z]) queued for update for [src].Exited([AM])")
 			SSopenspace.add_turf(T, 1)
 
@@ -20,7 +20,7 @@
 	. = ..()
 	if(SSopenspace.subsystem_initialized && !invisibility && isturf(loc))
 		var/turf/T = GetAbove(src)
-		if(isopenspace(T))
+		if(isopenturf(T))
 			// log_debug("[T] ([T.x],[T.y],[T.z]) queued for update for [src].update_icon()")
 			SSopenspace.add_turf(T, 1)
 
@@ -28,6 +28,6 @@
 /obj/Destroy()
 	if(SSopenspace.subsystem_initialized && !invisibility && isturf(loc))
 		var/turf/T = GetAbove(src)
-		if(isopenspace(T))
+		if(isopenturf(T))
 			SSopenspace.add_turf(T, 1)
 	. = ..() // Important that this be at the bottom, or we will have been moved to nullspace.
