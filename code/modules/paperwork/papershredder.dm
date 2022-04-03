@@ -131,7 +131,7 @@
 		update_icon()
 
 /obj/machinery/papershredder/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(operable())
 		icon_state = "shredder-on"
 	else

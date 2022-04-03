@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	return 0
 
 /obj/machinery/power/smes/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(stat & BROKEN)	return
 
 	overlays += image('icons/obj/power.dmi', "smes-op[outputting]")
@@ -548,4 +548,3 @@ GLOBAL_LIST_EMPTY(smeses)
 	charge = 2e6
 	input_level = 100000
 	output_level = 200000
-

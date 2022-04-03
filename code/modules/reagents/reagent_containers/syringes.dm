@@ -231,7 +231,7 @@
 	return
 /* VOREStation Edit - See syringes_vr.dm
 /obj/item/reagent_containers/syringe/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
 	if(mode == SYRINGE_BROKEN)
 		icon_state = "broken"

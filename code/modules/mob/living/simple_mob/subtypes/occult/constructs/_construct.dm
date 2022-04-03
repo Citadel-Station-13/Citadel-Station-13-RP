@@ -188,4 +188,4 @@
 	set_light(2, -2, l_color = "#FFFFFF")
 
 /mob/living/simple_mob/construct/proc/remove_glow()
-	overlays.Cut()
+	cut_overlays()

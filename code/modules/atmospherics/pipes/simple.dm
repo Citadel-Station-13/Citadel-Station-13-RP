@@ -109,7 +109,7 @@
 
 	alpha = 255
 
-	overlays.Cut()
+	cut_overlays()
 
 	if(node1 && node2)
 		overlays += icon_manager.get_atmos_icon("pipe", , pipe_color, "[pipe_icon]intact[icon_connect_type]")

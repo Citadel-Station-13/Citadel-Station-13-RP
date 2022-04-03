@@ -30,12 +30,12 @@
 
 		if(chargelevel != newlevel)
 
-			overlays.Cut()
+			cut_overlays()
 			overlays += "ccharger-o[newlevel]"
 
 			chargelevel = newlevel
 	else
-		overlays.Cut()
+		cut_overlays()
 
 /obj/machinery/cell_charger/examine(mob/user)
 	. = ..()

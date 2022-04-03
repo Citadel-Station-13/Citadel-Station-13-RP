@@ -43,7 +43,7 @@
 
 
 /obj/machinery/power/smes/batteryrack/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(stat & BROKEN)	return
 
 	if(!br_cache)
@@ -127,7 +127,7 @@
 
 
 /obj/machinery/power/smes/batteryrack/makeshift/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(stat & BROKEN)	return
 
 	if (output_attempt)

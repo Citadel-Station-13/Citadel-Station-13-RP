@@ -87,7 +87,7 @@
 
 	alpha = 255
 
-	overlays.Cut()
+	cut_overlays()
 	overlays += icon_manager.get_atmos_icon("manifold", , pipe_color, "4way" + icon_connect_type)
 	overlays += icon_manager.get_atmos_icon("manifold", , , "clamps_4way" + icon_connect_type)
 	underlays.Cut()

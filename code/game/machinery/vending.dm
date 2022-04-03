@@ -179,7 +179,7 @@
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 		playsound(src, W.usesound, 50, 1)
-		overlays.Cut()
+		cut_overlays()
 		if(panel_open)
 			overlays += image(icon, "[initial(icon_state)]-panel")
 

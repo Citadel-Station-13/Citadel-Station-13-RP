@@ -91,7 +91,7 @@
 
 /obj/structure/window/proc/updateSilicate()
 	if (overlays)
-		overlays.Cut()
+		cut_overlays()
 	update_icon()
 
 	var/image/img = image(src)
@@ -448,7 +448,7 @@
 /obj/structure/window/update_icon()
 	//A little cludge here, since I don't know how it will work with slim windows. Most likely VERY wrong.
 	//this way it will only update full-tile ones
-	overlays.Cut()
+	cut_overlays()
 	if(!is_fulltile())
 		icon_state = "[basestate]"
 		return
@@ -722,4 +722,3 @@
 			qdel(src)
 			return TRUE
 	return FALSE
-

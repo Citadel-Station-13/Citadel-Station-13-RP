@@ -235,7 +235,7 @@
 	var/stored_cap_width = 4 //length of sprite for start and end of the box representing the stored item
 	var/storage_width = min( round( 224 * max_storage_space/baseline_max_storage_space ,1) ,274) //length of sprite for the box representing total storage space
 
-	storage_start.overlays.Cut()
+	storage_start.cut_overlays()
 
 	var/matrix/M = matrix()
 	M.Scale((storage_width-storage_cap_width*2+3)/32,1)
@@ -714,7 +714,7 @@
 	var/closed_state
 
 /obj/item/storage/trinketbox/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(open)
 		icon_state = open_state
 

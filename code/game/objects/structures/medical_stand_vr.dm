@@ -29,7 +29,7 @@
 	update_icon()
 
 /obj/structure/medical_stand/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
 	if (tank)
 		if (breather)
@@ -441,4 +441,3 @@
 	spawn_type = /obj/item/tank/anesthetic
 	mask_type = /obj/item/clothing/mask/breath/medical
 	is_loosen = FALSE
-

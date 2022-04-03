@@ -403,7 +403,7 @@
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")
 		playsound(src, O.usesound, 50, 1)
-		overlays.Cut()
+		cut_overlays()
 		if(panel_open)
 			overlays += image(icon, icon_panel)
 		SSnanoui.update_uis(src)

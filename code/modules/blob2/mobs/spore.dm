@@ -61,7 +61,7 @@
 		set_light(0)
 
 	if(is_infesting)
-		overlays.Cut()
+		cut_overlays()
 		icon = infested.icon
 		overlays = infested.overlays
 		var/mutable_appearance/blob_head_overlay = mutable_appearance('icons/mob/blob.dmi', "blob_head")

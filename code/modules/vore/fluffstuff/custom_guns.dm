@@ -388,7 +388,7 @@ END OF CITADEL CHANGES */
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 4)
 
 /obj/item/gun/projectile/lamia/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(!ammo_magazine)
 		return
 	var/ratio = ammo_magazine.stored_ammo.len * 100 / ammo_magazine.max_ammo
@@ -451,7 +451,7 @@ END OF CITADEL CHANGES */
 		overlays += "inspector_on"
 
 /obj/item/gun/projectile/revolver/consul/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	update_charge()
 
 // No idea what this is for.
@@ -485,7 +485,7 @@ END OF CITADEL CHANGES */
 
 /obj/item/gun/projectile/automatic/sol/update_icon()
 	icon_state = (ammo_magazine)? "SMG-IS" : "SMG-IS-empty"
-	overlays.Cut()
+	cut_overlays()
 	update_charge()
 
 //HoP gun

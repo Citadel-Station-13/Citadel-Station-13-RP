@@ -783,7 +783,7 @@ About the new airlock wires panel:
 
 
 /obj/machinery/door/airlock/update_icon()
-	if(overlays) overlays.Cut()
+	if(overlays) cut_overlays()
 	if(density)
 		if(locked && lights && src.arePowerSystemsOn())
 			icon_state = "door_locked"
@@ -811,7 +811,7 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/do_animate(animation)
 	switch(animation)
 		if("opening")
-			if(overlays) overlays.Cut()
+			if(overlays) cut_overlays()
 			if(p_open)
 				spawn(2) // The only work around that works. Downside is that the door will be gone for a millisecond.
 					flick("o_door_opening", src)  //can not use flick due to BYOND bug updating overlays right before flicking
@@ -820,7 +820,7 @@ About the new airlock wires panel:
 				flick("door_opening", src)//[stat ? "_stat":]
 				update_icon()
 		if("closing")
-			if(overlays) overlays.Cut()
+			if(overlays) cut_overlays()
 			if(p_open)
 				spawn(2)
 					flick("o_door_closing", src)

@@ -71,7 +71,7 @@
 
 /obj/item/holder/proc/sync(var/mob/living/M)
 	dir = 2
-	overlays.Cut()
+	cut_overlays()
 	icon = M.icon
 	icon_state = M.icon_state
 	item_state = M.item_state

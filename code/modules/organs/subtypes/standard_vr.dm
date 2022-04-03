@@ -3,7 +3,7 @@
 /obj/item/organ/external/head/vr/get_icon()
 
 	..()
-	overlays.Cut()
+	cut_overlays()
 	if(!owner || !owner.species)
 		return
 

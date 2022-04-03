@@ -120,7 +120,7 @@
 	updateicon()
 
 /mob/living/simple_animal/construct/updateicon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(do_glow)
 		add_glow()
@@ -433,7 +433,7 @@
 	set_light(2, -2, l_color = "#FFFFFF")
 
 /mob/living/simple_animal/construct/proc/remove_glow()
-	overlays.Cut()
+	cut_overlays()
 
 ////////////////HUD//////////////////////
 

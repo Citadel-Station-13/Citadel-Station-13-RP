@@ -61,7 +61,7 @@ Slime specific procs go here.
 		GenerateAdult()
 
 /mob/living/simple_mob/xeno/slime/proc/GenerateChild()
-	overlays.Cut()
+	cut_overlays()
 	name = "[nameVar] baby slime"
 	real_name = "[nameVar] baby slime"
 	desc = "A shifting blob of [nameVar] goo."
@@ -75,7 +75,7 @@ Slime specific procs go here.
 	return 1
 
 /mob/living/simple_mob/xeno/slime/proc/GenerateAdult()
-	overlays.Cut()
+	cut_overlays()
 	name = "[nameVar] slime"
 	real_name = "[nameVar] slime"
 	desc = "A shifting mass of [nameVar] goo."
@@ -85,7 +85,7 @@ Slime specific procs go here.
 	GenerateAdultIcon()
 
 /mob/living/simple_mob/xeno/slime/proc/GenerateAdultIcon()	//Hack and slash adventure game to make slimes have no color on light effects later
-	overlays.Cut()
+	cut_overlays()
 	var/image/Img = new(src.icon)
 	Img.icon_state = "slime adult"
 	Img.color = traitdat.traits[TRAIT_XENO_COLOR]

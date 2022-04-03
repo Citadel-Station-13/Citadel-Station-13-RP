@@ -73,7 +73,7 @@
 	update_icon()
 
 /obj/item/reagent_containers/organic/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
 	if (!is_open_container())
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")

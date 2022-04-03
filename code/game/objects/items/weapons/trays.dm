@@ -18,7 +18,7 @@
 /obj/item/tray/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	user.setClickCooldown(user.get_attack_speed(src))
 	// Drop all the things. All of them.
-	overlays.Cut()
+	cut_overlays()
 	for(var/obj/item/I in carrying)
 		I.loc = M.loc
 		carrying.Remove(I)
@@ -204,7 +204,7 @@
 			noTable = 1
 
 		if(isturf(loc) && !(locate(/mob/living) in src.loc))
-			overlays.Cut()
+			cut_overlays()
 			for(var/obj/item/I in carrying)
 				I.forceMove(src.loc)
 				carrying.Remove(I)

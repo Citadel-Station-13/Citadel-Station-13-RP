@@ -70,7 +70,7 @@
 /obj/item/modular_computer/update_icon()
 	icon_state = icon_state_unpowered
 
-	overlays.Cut()
+	cut_overlays()
 	if(bsod)
 		overlays.Add("bsod")
 		return

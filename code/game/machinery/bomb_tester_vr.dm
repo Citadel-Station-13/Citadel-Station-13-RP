@@ -62,7 +62,7 @@
 		simulation_finish()
 
 /obj/machinery/bomb_tester/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(tank1)
 		overlays += image(icon, "[icon_name]-tank1")
 	if(tank2)

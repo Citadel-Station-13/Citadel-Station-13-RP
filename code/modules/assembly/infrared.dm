@@ -67,7 +67,7 @@
 	STOP_PROCESSING(SSfastprocess, src)
 
 /obj/item/assembly/infra/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	attached_overlays = list()
 	if(on)
 		overlays += "infrared_on"

@@ -35,7 +35,7 @@
 	return ..()
 
 /obj/item/paperplane/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/list/stamped = internalPaper.stamped
 	if(!stamped)
 		stamped = new

@@ -48,7 +48,7 @@
 
 /datum/crafting_recipe/medbot
 	name = "Medbot"
-	result = /mob/living/bot/medbot
+	result = /mob/living/bot/medibot
 	reqs = list(/obj/item/healthanalyzer = 1,
 				/obj/item/storage/firstaid = 1,
 				/obj/item/assembly/prox_sensor = 1,

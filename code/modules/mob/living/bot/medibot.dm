@@ -7,10 +7,11 @@
 	can stabilize a severely injured worker as easily as it can treat a minor scrape."
 	value = CATALOGUER_REWARD_TRIVIAL
 
-/mob/living/bot/medbot
+/mob/living/bot/medibot
 	name = "Medibot"
 	desc = "A little medical robot. He looks somewhat underwhelmed."
-	icon_state = "medibot0"
+	icon = 'icons/obj/bots/medibot.dmi'
+	icon_state = "medibot"
 	req_one_access = list(access_robotics, access_medical)
 	botcard_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/medbot)
@@ -34,7 +35,7 @@
 	var/treatment_emag = "toxin"
 	var/declare_treatment = 0 //When attempting to treat a patient, should it notify everyone wearing medhuds?
 
-/mob/living/bot/medbot/handleIdle()
+/mob/living/bot/medibot/handleIdle()
 	if(vocal && prob(1))
 		var/message_options = list(
 			"Radar, put a mask on!" = 'sound/voice/medbot/mradar.ogg',
@@ -47,36 +48,36 @@
 		say(message)
 		playsound(loc, message_options[message], 50, 0)
 
-/mob/living/bot/medbot/handleAdjacentTarget()
+/mob/living/bot/medibot/handleAdjacentTarget()
 	UnarmedAttack(target)
 
-/mob/living/bot/medbot/handlePanic()	// Speed modification based on alert level.
+/mob/living/bot/medibot/handlePanic()	// Speed modification based on alert level.
 	. = 0
 	switch(get_security_level())
-		if("green")
+		if(SEC_LEVEL_GREEN)
 			. = 0
 
-		if("yellow")
-			. = 0
-
-		if("violet")
+		if(SEC_LEVEL_BLUE)
 			. = 1
 
-		if("orange")
-			. = 0
-
-		if("blue")
-			. = 1
-
-		if("red")
+		if(SEC_LEVEL_YELLOW)
 			. = 2
 
-		if("delta")
-			. = 2
+		if(SEC_LEVEL_VIOLET)
+			. = 3
+
+		if(SEC_LEVEL_ORANGE)
+			. = 4
+
+		if(SEC_LEVEL_RED)
+			. = 5
+
+		if(SEC_LEVEL_DELTA) //FAST AS FUCK BOOOYYEEEE
+			. = 6
 
 	return .
 
-/mob/living/bot/medbot/lookForTargets()
+/mob/living/bot/medibot/lookForTargets()
 	for(var/mob/living/carbon/human/H in view(7, src)) // Time to find a patient!
 		if(confirmTarget(H))
 			target = H
@@ -94,7 +95,7 @@
 				last_newpatient_speak = world.time
 			break
 
-/mob/living/bot/medbot/UnarmedAttack(var/mob/living/carbon/human/H)
+/mob/living/bot/medibot/UnarmedAttack(var/mob/living/carbon/human/H)
 	if(!..())
 		return
 
@@ -115,7 +116,7 @@
 	if(declare_treatment)
 		var/area/location = get_area(src)
 		GLOB.global_announcer.autosay("[src] is treating <b>[H]</b> in <b>[location]</b>", "[src]", "Medical")
-	busy = 1
+	busy = TRUE
 	update_icons()
 	if(do_mob(src, H, 30))
 		if(t == 1)
@@ -134,7 +135,7 @@
 				)
 			var/message = pick(death_messages)
 			say(message)
-			playsound(loc, death_messages[message], 50, 0)
+			playsound(loc, death_messages[message], 50, FALSE)
 
 	// This is down here for the same reason as above.
 	else
@@ -149,21 +150,22 @@
 					)
 				var/message = pick(possible_messages)
 				say(message)
-				playsound(loc, possible_messages[message], 50, 0)
+				playsound(loc, possible_messages[message], 50, FALSE)
 
-	busy = 0
+	busy = FALSE
 	update_icons()
 
-/mob/living/bot/medbot/update_icons()
-	overlays.Cut()
+/mob/living/bot/medibot/update_overlays()
+	. = ..()
+	cut_overlays()
 	if(skin)
-		overlays += image('icons/obj/aibots.dmi', "medskin_[skin]")
+		add_overlay("[skin]")
 	if(busy)
-		icon_state = "medibots"
+		add_overlay("[base_icon_state]-[on ? "on" : "off"]")
 	else
-		icon_state = "medibot[on]"
+		add_overlay("[base_icon_state]-[on ? "on" : "off"]")
 
-/mob/living/bot/medbot/attack_hand(var/mob/user)
+/mob/living/bot/medibot/attack_hand(var/mob/user)
 	var/dat
 	dat += "<TT><B>Automatic Medical Unit v1.0</B></TT><BR><BR>"
 	dat += "Status: <A href='?src=\ref[src];power=1'>[on ? "On" : "Off"]</A><BR>"
@@ -200,7 +202,7 @@
 	onclose(user, "automed")
 	return
 
-/mob/living/bot/medbot/attackby(var/obj/item/O, var/mob/user)
+/mob/living/bot/medibot/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/reagent_containers/glass))
 		if(locked)
 			to_chat(user, "<span class='notice'>You cannot insert a beaker because the panel is locked.</span>")
@@ -217,7 +219,7 @@
 	else
 		..()
 
-/mob/living/bot/medbot/Topic(href, href_list)
+/mob/living/bot/medibot/Topic(href, href_list)
 	if(..())
 		return
 	usr.set_machine(src)
@@ -263,7 +265,7 @@
 	attack_hand(usr)
 	return
 
-/mob/living/bot/medbot/emag_act(var/remaining_uses, var/mob/user)
+/mob/living/bot/medibot/emag_act(var/remaining_uses, var/mob/user)
 	. = ..()
 	if(!emagged)
 		if(user)
@@ -271,15 +273,15 @@
 		visible_message("<span class='warning'>[src] buzzes oddly!</span>")
 		flick("medibot_spark", src)
 		target = null
-		busy = 0
-		emagged = 1
-		on = 1
+		busy = FALSE
+		emagged = TRUE
+		on = TRUE
 		update_icons()
-		. = 1
+		. = TRUE
 	ignore_list |= user
 
-/mob/living/bot/medbot/explode()
-	on = 0
+/mob/living/bot/medibot/explode()
+	on = FALSE
 	visible_message("<span class='danger'>[src] blows apart!</span>")
 	var/turf/Tsec = get_turf(src)
 
@@ -301,18 +303,18 @@
 	s.start()
 	qdel(src)
 
-/mob/living/bot/medbot/confirmTarget(var/mob/living/carbon/human/H)
+/mob/living/bot/medibot/confirmTarget(var/mob/living/carbon/human/H)
 	if(!..())
-		return 0
+		return FALSE
 
 	if(H.isSynthetic()) // Don't treat FBPs
-		return 0
+		return FALSE
 
 	if(H.stat == DEAD) // He's dead, Jim
-		return 0
+		return FALSE
 
 	if(H.suiciding)
-		return 0
+		return FALSE
 
 	if(emagged)
 		return treatment_emag
@@ -425,23 +427,30 @@
 					qdel(W)
 					to_chat(user, "<span class='notice'>You complete the Medibot! Beep boop.</span>")
 					var/turf/T = get_turf(src)
-					var/mob/living/bot/medbot/S = new /mob/living/bot/medbot(T)
+					var/mob/living/bot/medibot/S = new /mob/living/bot/medibot(T)
 					S.skin = skin
 					S.name = created_name
 					user.drop_from_inventory(src)
 					qdel(src)
 
 //Subtypes & Cosmetics
-/mob/living/bot/medbot/yellow
+/mob/living/bot/medibot/yellow
+	name = "Bruises"
 	skin = "ointment"
 
-/mob/living/bot/medbot/green
-	skin = "tox"
+/mob/living/bot/medibot/green
+	name = "\improper Toxic"
+	skin = "antitoxin"
 
-/mob/living/bot/medbot/blue
+/mob/living/bot/medibot/blue
+	name = "\improper Lifeless"
 	skin = "o2"
 
-/mob/living/bot/medbot/mysterious
+/mob/living/bot/medibot/red
+	name = "\improper Super Medibot"
+	skin = "advfirstaid"
+
+/mob/living/bot/medibot/mysterious
 	name = "\improper Mysterious Medibot"
 	desc = "International Medibot of mystery."
 	skin = "bezerk"
@@ -450,13 +459,21 @@
 	treatment_oxy		= "dexalin"
 	treatment_tox		= "anti_toxin"
 
-/mob/living/bot/medbot/apidean
+/mob/living/bot/medibot/purple
+	name = "\improper Leaky"
+	skin = "clottingkit"
+
+/mob/living/bot/medibot/pink
+	name = "\improper Pinky"
+	skin = "pinky"
+
+/mob/living/bot/medibot/apidean
 	name = "\improper Apidean Beebot"
 	desc = "An organic creature heavily augmented with components from a medical drone. It was made to assist nurses in Apidaen hives."
 	icon_state = "beebot0"
 
-/mob/living/bot/medbot/apidean/update_icons()
-	overlays.Cut()
+/mob/living/bot/medibot/apidean/update_icons()
+	cut_overlays()
 	if(skin)
 		overlays += image('icons/obj/aibots.dmi', "beebot_[skin]")
 	if(busy)
@@ -464,7 +481,7 @@
 	else
 		icon_state = "beebot[on]"
 
-/mob/living/bot/medbot/apidean/handleIdle()
+/mob/living/bot/medibot/apidean/handleIdle()
 	if(vocal && prob(1))
 		var/message_options = list(
 			"Bzzz bzzz!" = 'sound/voice/moth/scream_moth.ogg',

@@ -180,7 +180,7 @@
 	..()
 
 /obj/vehicle/bike/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
 	if(custom_icon)
 		if(on)

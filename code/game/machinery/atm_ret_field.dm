@@ -191,7 +191,7 @@
 	//light_on = TRUE
 
 /obj/structure/atmospheric_retention_field/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/list/dirs = list()
 	for(var/obj/structure/atmospheric_retention_field/F in orange(src,1))
 		dirs += get_dir(src, F)

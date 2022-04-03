@@ -389,7 +389,7 @@
 
 /obj/structure/reagent_dispensers/water_cooler/update_icon()
 	icon_state = "water_cooler"
-	overlays.Cut()
+	cut_overlays()
 	var/image/I
 	if(bottle)
 		I = image(icon, "water_cooler_bottle")

@@ -303,7 +303,7 @@
 	updateUsrDialog()
 
 /obj/machinery/autolathe/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
 	icon_state = initial(icon_state)
 

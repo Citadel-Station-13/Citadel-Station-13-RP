@@ -170,7 +170,7 @@
 		update_icon()
 
 /atom/movable/screen/zone_sel/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	overlays += image('icons/mob/zone_sel.dmi', "[selecting]")
 
 //Crafting Screen Port
@@ -503,7 +503,7 @@
 	if(!handcuff_overlay)
 		var/state = (hud.l_hand_hud_object == src) ? "l_hand_hud_handcuffs" : "r_hand_hud_handcuffs"
 		handcuff_overlay = image("icon"='icons/mob/screen_gen.dmi', "icon_state"=state)
-	overlays.Cut()
+	cut_overlays()
 	if(hud.mymob && iscarbon(hud.mymob))
 		var/mob/living/carbon/C = hud.mymob
 		if(C.handcuffed)

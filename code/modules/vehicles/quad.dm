@@ -80,7 +80,7 @@
 
 /obj/vehicle/train/engine/quadbike/update_icon()
 	..()
-	overlays.Cut()
+	cut_overlays()
 	if(custom_frame)
 		var/image/Bodypaint = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_a", layer = src.layer)
 		Bodypaint.color = paint_color
@@ -239,7 +239,7 @@
 
 /obj/vehicle/train/trolley/trailer/update_icon()
 	..()
-	overlays.Cut()
+	cut_overlays()
 
 	var/image/Bodypaint = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[initial(icon_state)]_a", layer = src.layer)
 	Bodypaint.color = paint_color

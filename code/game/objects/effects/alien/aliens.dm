@@ -218,7 +218,7 @@
 
 /obj/effect/alien/weeds/proc/updateWeedOverlays()
 
-	overlays.Cut()
+	cut_overlays()
 
 	if(!weedImageCache || !weedImageCache.len)
 		weedImageCache = list()

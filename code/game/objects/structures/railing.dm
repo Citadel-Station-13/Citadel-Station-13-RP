@@ -115,7 +115,7 @@
 /obj/structure/railing/update_icon(var/UpdateNeighgors = 1)
 	NeighborsCheck(UpdateNeighgors)
 	//layer = (dir == SOUTH) ? FLY_LAYER : initial(layer) // wtf does this even do
-	overlays.Cut()
+	cut_overlays()
 	if (!check || !anchored)//|| !anchored
 		icon_state = "railing0"
 	else

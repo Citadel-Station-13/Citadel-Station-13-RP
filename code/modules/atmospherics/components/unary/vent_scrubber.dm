@@ -63,7 +63,7 @@
 	if(!check_icon_cache())
 		return
 
-	overlays.Cut()
+	cut_overlays()
 
 	var/scrubber_icon = "scrubber"
 

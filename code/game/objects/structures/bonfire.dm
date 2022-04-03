@@ -184,7 +184,7 @@
 			L.IgniteMob()
 
 /obj/structure/bonfire/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(burning)
 		var/state
 		switch(get_fuel_amount())
@@ -363,7 +363,7 @@
 			O.fire_act(null, 1000, 500)
 
 /obj/structure/fireplace/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(burning)
 		var/state
 		switch(get_fuel_amount())

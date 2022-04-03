@@ -54,7 +54,7 @@
 
 //Update icons from /tg/, so fancy! Use this more!
 /obj/item/gun/energy/protector/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/ratio = 0
 
 	/* Don't have one for this gun
