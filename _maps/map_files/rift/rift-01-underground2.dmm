@@ -4673,6 +4673,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "jR" = (
@@ -7726,8 +7729,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/red{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
+/obj/machinery/power/apc/super{
 	dir = 1;
 	name = "north bump";
 	pixel_y = 24
@@ -8823,6 +8825,7 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 9
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "sb" = (
@@ -9688,12 +9691,6 @@
 /area/maintenance/lower/atmos{
 	name = "\improper Central Atmospherics Maintenance"
 	})
-"zh" = (
-/obj/machinery/hyperpad{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/quartermaster/miningdock)
 "zi" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
@@ -9825,9 +9822,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "AA" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -9961,10 +9955,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
-"BE" = (
-/obj/machinery/hyperpad,
-/turf/simulated/floor/tiled/techmaint,
-/area/quartermaster/miningdock)
 "BG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
@@ -10303,12 +10293,6 @@
 /obj/effect/zone_divider,
 /turf/simulated/wall/r_wall,
 /area/maintenance/engi_engine)
-"Fb" = (
-/obj/machinery/hyperpad{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/quartermaster/miningdock)
 "Fe" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -10758,12 +10742,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
-"IU" = (
-/obj/machinery/hyperpad{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/quartermaster/miningdock)
 "IV" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/lino,
@@ -10879,12 +10857,6 @@
 "JP" = (
 /turf/simulated/wall,
 /area/maintenance/cargo/mining)
-"JR" = (
-/obj/machinery/hyperpad{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/quartermaster/miningdock)
 "JW" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
@@ -11019,12 +10991,6 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
-"LI" = (
-/obj/machinery/hyperpad{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/miningdock)
 "LJ" = (
 /obj/machinery/light/small{
@@ -11619,7 +11585,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "RD" = (
-/obj/machinery/hyperpad/centre,
+/obj/machinery/hyperpad/centre{
+	map_pad_id = "lavaland_station";
+	map_pad_link_id = "lavaland_away";
+	newcolor = "#fcba03"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/miningdock)
 "RL" = (
@@ -11727,12 +11697,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/observation)
-"Ta" = (
-/obj/machinery/hyperpad{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/quartermaster/miningdock)
 "Td" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11871,9 +11835,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "Uw" = (
-/obj/machinery/hyperpad{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/miningdock)
 "UF" = (
@@ -11946,6 +11907,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "Vu" = (
@@ -32729,9 +32691,9 @@ Ze
 Ze
 Ze
 EQ
-Fb
-IU
-zh
+Uw
+Uw
+Uw
 RU
 FX
 HV
@@ -32923,9 +32885,9 @@ LJ
 Ze
 cM
 EQ
-JR
+Uw
 RD
-BE
+Uw
 RU
 Kc
 JW
@@ -33117,8 +33079,8 @@ aR
 Ze
 ek
 EQ
-Ta
-LI
+Uw
+Uw
 Uw
 RU
 Yz

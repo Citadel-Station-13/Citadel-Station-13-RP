@@ -124,6 +124,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/west)
+"P" = (
+/obj/effect/landmark/map_data/lythiosplains,
+/turf/unsimulated/mineral/icerock,
+/area/rift/surfacebase/outside/west)
 "R" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/industrial/warning{
@@ -364,7 +368,7 @@ a
 a
 a
 a
-a
+P
 "}
 (2,1,1) = {"
 a

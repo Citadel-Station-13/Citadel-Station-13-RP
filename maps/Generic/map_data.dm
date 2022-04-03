@@ -14,6 +14,10 @@
 /obj/effect/landmark/map_data/lythios43c
     height = 5
 
+// Lythios West Plains
+/obj/effect/landmark/map_data/lythiosplains
+    height = 2
+
 // See beach.dm for more details on this. Placeholder for now to stop compiling issues -Bloop
 /obj/away_mission_init/beachcave
 	name = "away mission initializer - beachcave"

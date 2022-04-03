@@ -37,9 +37,6 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
 	outdoors = FALSE /* So that we don't get weather effects for the ice used indoors. Convuluted, I know, but this
 	means I don't need another, almost identical turf to be created. */
 
-/turf/simulated/floor/plating/lythios43c/outdoors
-	outdoors = TRUE
-
 /turf/simulated/mineral/icerock
 	initial_gas_mix = GAS_STRING_STP
 

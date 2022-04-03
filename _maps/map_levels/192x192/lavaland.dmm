@@ -29,7 +29,7 @@
 	map_pad_link_id = "lavaland_station";
 	newcolor = "#fcba03"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
 "bJ" = (
 /mob/living/simple_mob/construct/shade/surt,
@@ -42,7 +42,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
 "ch" = (
 /obj/structure/sign/warning{
@@ -788,7 +788,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
 "pf" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -1181,7 +1181,7 @@
 /area/lavaland/central/base/common)
 "uh" = (
 /obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
 "ui" = (
 /obj/structure/table/marble,
@@ -1287,7 +1287,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
 "ws" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1505,7 +1505,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
 "zO" = (
 /obj/machinery/door/airlock/glass_external{
@@ -1868,7 +1868,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
 "KN" = (
 /obj/structure/closet/secure_closet/personal,
@@ -2158,7 +2158,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
 "Ru" = (
 /obj/machinery/door/airlock{
@@ -2662,7 +2662,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
 "Zg" = (
 /obj/machinery/shower{

@@ -785,15 +785,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
 "cd" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
@@ -819,11 +819,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint)
 "cf" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/structure/railing,
 /obj/structure/cable{
 	d1 = 1;
@@ -834,9 +829,17 @@
 /area/maintenance/substation/surface_one)
 "cg" = (
 /obj/machinery/power/breakerbox/activated,
-/obj/structure/cable,
 /obj/structure/railing{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
@@ -852,6 +855,10 @@
 	d1 = 16;
 	d2 = 0;
 	icon_state = "16-0"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/open,
 /area/maintenance/substation/surface_one)
@@ -1471,13 +1478,13 @@
 /obj/effect/floor_decal/corner/red/bordercorner{
 	dir = 8
 	},
-/obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint)
 "dk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/security/checkpoint)
 "dl" = (
@@ -2461,19 +2468,20 @@
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
 "eR" = (
-/obj/machinery/firealarm{
-	dir = 3;
-	pixel_y = 24
-	},
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/machinery/power/apc{
-	dir = 4;
-	pixel_x = 24
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfaceeva)
@@ -3606,6 +3614,10 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
@@ -6369,7 +6381,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "lD" = (
 /obj/effect/floor_decal/rust,
@@ -6684,13 +6696,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "east bump";
-	pixel_x = 28
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/outside/outside1)
@@ -12955,6 +12967,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_south)
 "wQ" = (
@@ -13709,6 +13722,9 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_north)
 "ys" = (
@@ -14065,6 +14081,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/super{
+	dir = 4;
 	name = "east bump";
 	pixel_x = 24
 	},
@@ -19065,6 +19082,9 @@
 	},
 /obj/effect/overlay/snow/floor/pointy,
 /obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_north)
 "IK" = (
@@ -21401,7 +21421,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "Nz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -27020,6 +27040,9 @@
 	},
 /obj/effect/overlay/snow/floor/pointy,
 /obj/effect/zone_divider,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "Yz" = (
@@ -29028,7 +29051,7 @@ Le
 Le
 MY
 lC
-DJ
+UN
 Ny
 RU
 Le

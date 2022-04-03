@@ -12,6 +12,17 @@
 #define Z_LEVEL_WEST_PLAIN				10
 #define Z_LEVEL_WEST_CAVERN				11
 
+#define Z_LEVEL_DEBRISFIELD				12
+#define Z_LEVEL_PIRATEBASE				13
+#define Z_LEVEL_MININGPLANET			14
+#define Z_LEVEL_UNKNOWN_PLANET			15
+#define Z_LEVEL_DESERT_PLANET			16
+#define Z_LEVEL_GAIA_PLANET				17
+#define Z_LEVEL_FROZEN_PLANET			18
+
+#define Z_LEVEL_LAVALAND				21
+#define Z_LEVEL_LAVALAND_EAST			22
+
 /datum/map/rift
 	name = "Rift"
 	full_name = "NSB Atlas"
