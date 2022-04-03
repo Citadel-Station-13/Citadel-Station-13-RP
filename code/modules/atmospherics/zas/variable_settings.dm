@@ -30,7 +30,8 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 		/datum/variable_setting_entry/atmos/phoron/contamination_loss = 0.02,
 		/datum/variable_setting_entry/atmos/phoron/hallucination = FALSE,
 		/datum/variable_setting_entry/atmos/n2o/hallucination = TRUE,
-		/datum/variable_setting_entry/atmos/hepipes/thermal_conductivity = 23500
+		/datum/variable_setting_entry/atmos/hepipes/thermal_conductivity = 23500,
+		/datum/variable_setting_entry/atmos/heatpump/performance_factor = 8
 	)
 	presets = list(
 	"ZAS - Standard" = list(
@@ -292,3 +293,7 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 /datum/variable_setting_entry/atmos/hepipes/thermal_conductivity
 	name = "Thermal Conductivity in cW / (m * K)"
 	desc = "How well do these pipes conduct?"
+
+/datum/variable_setting_entry/atmos/heatpump/performance_factor
+	name = "Heat pump performance factor"
+	desc = "The Amount of thermal energy moved per electric energy expanded."
