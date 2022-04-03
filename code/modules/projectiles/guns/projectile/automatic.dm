@@ -581,8 +581,8 @@ obj/item/gun/projectile/automatic/automat/taj
 	one_handed_penalty = 10
 
 	firemodes = list(
-		list(mode_name="semiauto", burst=1, fire_delay=0),
-		list(mode_name="3-round bursts", burst=3, burst_delay=1, fire_delay=4, move_delay=4, burst_accuracy = list(60,40,30,20,15), dispersion = list(0.6, 1.0, 1.0))
+		list(mode_name="standard fire", burst=2, fire_delay=0),
+		list(mode_name="double tap", burst=4, burst_delay=1, fire_delay=4, move_delay=2, burst_accuracy = list(40,30,20,15), dispersion = list(0.6, 0.6, 1.0, 1.0))
 		)
 
 /obj/item/gun/projectile/automatic/wt274/update_icon()
