@@ -406,27 +406,31 @@
 
 /obj/item/gun/projectile/fnseven/update_icon()
 	..()
-	if(ammo_magazine)
+	if(!extended && ammo_magazine)
 		icon_state = "nt57"
+	else if(extended && ammo_magazine)
+		icon_state = "nt57_extended"
+	else if(extended && !ammo_magazine)
+		icon_state = "nt57_extended-e"
 	else
 		icon_state = "nt57-e"
 
 /obj/item/gun/projectile/fnseven/attack_self(mob/user, obj/item/gun/G)
 	if(collapsible && !extended)
 		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
-		icon_state = "[initial(icon_state)]_extended"
 		w_class = ITEMSIZE_LARGE
 		one_handed_penalty = 10
 		extended = 1
+		update_icon()
 	else if(!collapsible)
 		to_chat(user, "<span class='danger'>The [src] doesn't have a stock!</span>")
 		return
 	else
 		to_chat(user, "<span class='notice'>You push the stock back into the [src], making it more compact.</span>")
-		icon_state = "[initial(icon_state)]"
 		w_class = ITEMSIZE_NORMAL
 		one_handed_penalty = 30
 		extended = 0
+		update_icon()
 
 /obj/item/gun/projectile/fnseven/pathfinder
 	pin = /obj/item/firing_pin/explorer

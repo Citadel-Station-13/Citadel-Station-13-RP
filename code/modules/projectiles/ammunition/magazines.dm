@@ -121,6 +121,16 @@
 /obj/item/ammo_magazine/m45uzi/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/m45uzi/wt274
+	name = "double-stack magazine (.45)"
+	icon_state = "wt274"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/a45
+	matter = list(DEFAULT_WALL_MATERIAL = 2400)
+	caliber = ".45"
+	max_ammo = 32
+	multiple_sprites = 1
+
 /obj/item/ammo_magazine/m45tommy
 	name = "Tommy Gun magazine (.45)"
 	icon_state = "tommy-mag"
