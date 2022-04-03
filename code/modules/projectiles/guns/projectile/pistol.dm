@@ -414,7 +414,7 @@
 /obj/item/gun/projectile/fnseven/attack_self(mob/user, obj/item/gun/G)
 	if(collapsible && !extended)
 		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
-		icon_state = "[initial(icon_state)]-extended"
+		icon_state = "[initial(icon_state)]_extended"
 		w_class = ITEMSIZE_LARGE
 		one_handed_penalty = 10
 		extended = 1
@@ -422,7 +422,7 @@
 		to_chat(user, "<span class='danger'>The [src] doesn't have a stock!</span>")
 		return
 	else
-		to_chat(user, "<span class='notice'>You push the stock back into the [src], makingg it more compact.</span>")
+		to_chat(user, "<span class='notice'>You push the stock back into the [src], making it more compact.</span>")
 		icon_state = "[initial(icon_state)]"
 		w_class = ITEMSIZE_NORMAL
 		one_handed_penalty = 30
