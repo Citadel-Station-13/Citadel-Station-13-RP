@@ -6659,7 +6659,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "ms" = (
-/turf/unsimulated/mineral/icerock,
+/turf/unsimulated/wall/planetary/lythios43c{
+	desc = "Glacial permafrost, compacted harder than stone.";
+	icon_state = "icerock-dark"
+	},
 /area/rift/surfacebase/underground/under1)
 "mt" = (
 /obj/structure/railing{
@@ -10415,7 +10418,7 @@
 	name = "Port Engineering Maintenance"
 	})
 "sj" = (
-/obj/item/pickaxe/hand,
+/obj/item/pickaxe,
 /turf/simulated/floor/outdoors/snow,
 /area/security/prison)
 "sk" = (
@@ -11252,8 +11255,8 @@
 "vA" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
 /obj/effect/blocker,
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "vE" = (
@@ -11272,7 +11275,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "wU" = (
@@ -11373,7 +11376,7 @@
 /area/vacant/vacant_site)
 "Bn" = (
 /obj/effect/zone_divider,
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "BP" = (
@@ -11441,7 +11444,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "EN" = (
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "ES" = (
@@ -11561,12 +11564,6 @@
 	},
 /turf/simulated/open,
 /area/engineering/engine_balcony)
-"If" = (
-/obj/effect/zone_divider,
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/obj/effect/blocker,
-/turf/simulated/sky/lythios43c,
-/area/rift/surfacebase/underground/under1)
 "Iz" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -11754,11 +11751,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/vacant/vacant_site)
-"NE" = (
-/obj/effect/blocker,
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
-/turf/simulated/sky/lythios43c,
-/area/rift/surfacebase/underground/under1)
 "NO" = (
 /turf/simulated/floor/tiled/steel,
 /area/vacant/vacant_site)
@@ -11799,7 +11791,7 @@
 "Pd" = (
 /obj/effect/blocker,
 /obj/effect/zone_divider,
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Pw" = (
@@ -11809,7 +11801,7 @@
 "PI" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "PZ" = (
@@ -11930,7 +11922,10 @@
 /area/maintenance/engineering/upper)
 "TZ" = (
 /obj/effect/zone_divider,
-/turf/unsimulated/mineral/icerock,
+/turf/unsimulated/wall/planetary/lythios43c{
+	desc = "Glacial permafrost, compacted harder than stone.";
+	icon_state = "icerock-dark"
+	},
 /area/rift/surfacebase/underground/under1)
 "Ue" = (
 /obj/structure/catwalk,
@@ -11948,7 +11943,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "Uu" = (
-/turf/unsimulated/mineral/icerock,
+/turf/unsimulated/mineral/icerock/lythios43c,
 /area/security/prison)
 "UD" = (
 /obj/structure/catwalk,
@@ -12003,8 +11998,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "Vx" = (
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
 /obj/effect/blocker,
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "VO" = (
@@ -12182,7 +12177,7 @@
 "Zl" = (
 /obj/effect/zone_divider,
 /obj/effect/blocker,
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Zu" = (
@@ -12227,30 +12222,30 @@
 /area/hallway/secondary/engineering_hallway)
 
 (1,1,1) = {"
-NE
-NE
-NE
-NE
-NE
-NE
-NE
-NE
-NE
-NE
-NE
-NE
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
 Pd
-NE
-NE
-NE
-NE
-NE
-NE
-NE
-NE
-NE
-NE
-NE
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
+Vx
 Zl
 Vx
 Vx
@@ -12263,7 +12258,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12275,7 +12270,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12287,7 +12282,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12299,7 +12294,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12311,7 +12306,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12323,7 +12318,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12335,7 +12330,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12347,7 +12342,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12359,7 +12354,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12371,7 +12366,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12407,7 +12402,7 @@ Vx
 Vx
 Vx
 Vx
-If
+Zl
 Vx
 Vx
 Vx
@@ -12421,7 +12416,7 @@ Vx
 Vx
 "}
 (2,1,1) = {"
-NE
+Vx
 EN
 EN
 EN
@@ -12615,7 +12610,7 @@ EN
 Vx
 "}
 (3,1,1) = {"
-NE
+Vx
 EN
 EN
 EN
@@ -12809,7 +12804,7 @@ EN
 Vx
 "}
 (4,1,1) = {"
-NE
+Vx
 EN
 EN
 EN
@@ -13003,7 +12998,7 @@ EN
 Vx
 "}
 (5,1,1) = {"
-NE
+Vx
 EN
 EN
 EN
@@ -13197,7 +13192,7 @@ EN
 Vx
 "}
 (6,1,1) = {"
-NE
+Vx
 EN
 EN
 EN
@@ -13391,7 +13386,7 @@ EN
 Vx
 "}
 (7,1,1) = {"
-NE
+Vx
 EN
 EN
 EN
@@ -13585,7 +13580,7 @@ EN
 Vx
 "}
 (8,1,1) = {"
-NE
+Vx
 EN
 EN
 EN
@@ -13779,7 +13774,7 @@ EN
 Vx
 "}
 (9,1,1) = {"
-NE
+Vx
 EN
 EN
 EN
@@ -13973,7 +13968,7 @@ aa
 ms
 "}
 (10,1,1) = {"
-NE
+Vx
 EN
 EN
 EN
@@ -14167,7 +14162,7 @@ aa
 ms
 "}
 (11,1,1) = {"
-NE
+Vx
 EN
 EN
 EN
@@ -28764,7 +28759,7 @@ Zu
 Zu
 IA
 Zu
-sj
+IA
 LN
 IA
 IC
@@ -29151,7 +29146,7 @@ Zu
 Zu
 vE
 IA
-IA
+sj
 IC
 My
 BP

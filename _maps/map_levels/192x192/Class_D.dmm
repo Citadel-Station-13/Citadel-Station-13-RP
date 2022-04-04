@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ai" = (
-/turf/unsimulated/mineral,
+/turf/simulated/mineral/classd/indoors,
 /area/class_d/explored)
 "aj" = (
 /obj/mob_spawner/alien/hard,

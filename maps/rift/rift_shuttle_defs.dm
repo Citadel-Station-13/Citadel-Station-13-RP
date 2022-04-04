@@ -180,7 +180,7 @@
 //////////////////////////////////////////////////////////////
 // RogueMiner "Belter: Shuttle
 // TODO - Not implemented yet on new map
-
+/*
 /datum/shuttle/autodock/ferry/belter
 	name = "Belter"
 	location = FERRY_LOCATION_STATION
@@ -196,7 +196,7 @@
 	move_time = move_time + rand(-5, 10) //30s max, 15s min, probably leaning towards higher values.
 	..()
 
-
+*/
 //////////////////////////////////////////////////////////////
 // CC Lewdship shuttle
 // DISABLED - cruiser has been removed entirely

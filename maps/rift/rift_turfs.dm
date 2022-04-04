@@ -37,6 +37,9 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
 	outdoors = FALSE /* So that we don't get weather effects for the ice used indoors. Convuluted, I know, but this
 	means I don't need another, almost identical turf to be created. */
 
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+	outdoors = FALSE
+
 /turf/simulated/mineral/icerock
 	initial_gas_mix = GAS_STRING_STP
 
@@ -51,7 +54,7 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock/floor)
-LYTHIOS43C_TURF_CREATE(/turf/unsimulated/icerock)
+LYTHIOS43C_TURF_CREATE(/turf/unsimulated/mineral/icerock)
 	//This proc is responsible for ore generation on surface turfs
 /turf/simulated/mineral/icerock/lythios43c/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
@@ -129,7 +132,7 @@ LYTHIOS43C_TURF_CREATE(/turf/unsimulated/icerock)
 	blocks_air = 1
 
 /turf/unsimulated/icerock/lythios43c
-	blocks_air = 0
+	blocks_air = 1
 
 // Some turfs to make floors look better in centcom tram station.
 

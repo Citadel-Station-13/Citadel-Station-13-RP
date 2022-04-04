@@ -7,7 +7,9 @@
         "rift-03-surface1.dmm",
         "rift-04-surface2.dmm",
         "rift-05-surface3.dmm",
-        "rift-06-orbital.dmm"
+        "rift-06-west_caves.dmm",
+        "rift-07-west_plains.dmm",
+        "rift-08-orbital.dmm"
    ],
    "traits":[
       {
@@ -15,7 +17,7 @@
         "Station":true,
         "Linkage":null,
         "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/safeice/indoors",
+        "Baseturf":"/turf/simulated/floor/outdoors/safeice/lythios43c/indoors",
     		"FacilityWeaponLock":true
       },
       {
@@ -52,6 +54,22 @@
         "Gravity":true,
         "Baseturf":"/turf/simulated/open",
 	    	"FacilityWeaponLock":true
+      },
+      {
+        "Up":1,
+        "Station":false,
+        "Linkage":null,
+        "Gravity":true,
+        "Baseturf":"/turf/simulated/floor/outdoors/safeice/lythios43c/indoors",
+        "FacilityWeaponLock":false
+      },
+      {
+        "Down":-1,
+        "Station":false,
+        "Linkage":null,
+        "Gravity":true,
+        "Baseturf":"/turf/simulated/floor/outdoors/safeice/lythios43c",
+        "FacilityWeaponLock":false
       },
       {
         "Station":false,

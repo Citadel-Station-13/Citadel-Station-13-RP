@@ -5,7 +5,7 @@
 // Shared landmark for docking at the station
 
 //Replace when we've got the map working and can actually place docking points
-
+/*
 /obj/effect/shuttle_landmark/automatic/station_dockpoint1
 	name = "Station Docking Point 1"
 	landmark_tag = "nav_station_docking1"
@@ -19,33 +19,27 @@
 	docking_controller = "deck4_dockarm2"
 	base_turf = /turf/space
 	base_area = /area/space
-
+*/
 
 // Exclusive landmark for docking at the station
 
 /obj/effect/shuttle_landmark/triumph/deck4/civvie
-	name = "NSV Triumph - Civilian Transport Dock"
-	landmark_tag = "triumph_civvie_home"
+	name = "NSB Atlas - Civilian Transport Pad"
+	landmark_tag = "rift_civvie_home"
 	docking_controller = "civvie_dock"
-	base_turf = /turf/space
-	base_area = /area/space
+	base_turf = /turf/simulated/floor/reinforced/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/triumph/deck3/emt
-	name = "NSV Triumph - EMT Shuttle Dock"
-	landmark_tag = "triumph_emt_dock"
+	name = "NSB Atlas - EMT Shuttle Dock"
+	landmark_tag = "rift_emt_dock"
 	docking_controller = "emt_shuttle_dock"
-	base_turf = /turf/space
-	base_area = /area/space
-
-/obj/effect/shuttle_landmark/triumph/deck2/mining
-	name = "NSV Triumph Mining Dock"
-	landmark_tag = "triumph_mining_port"
-	base_turf = /turf/space
-	base_area = /area/space
+	base_turf = /turf/simulated/floor/reinforced/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/triumph/deck2/trade
-	name = "NSV Triumph Annex Dock"
-	landmark_tag = "triumph_annex_dock"
+	name = "NSB Atlas - Trade Dock"
+	landmark_tag = "rift_trade_dock"
 	base_turf = /turf/space
 	base_area = /area/space
 
@@ -70,81 +64,64 @@
 
 // ON STATION NAV POINTS
 
-/obj/effect/shuttle_landmark/rift/deck4/excursion_space
-	name = "NSB Atlas Airspace (SW)"
-	landmark_tag = "rift_space_SW"
-	base_turf = /turf/space
-	base_area = /area/space
+/obj/effect/shuttle_landmark/rift/deck4/excursion_sky
+	name = "NSB Atlas Airspace (SE)"
+	landmark_tag = "rift_airspace_SE"
+	base_turf = /turf/simulated/sky/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
 
-/obj/effect/shuttle_landmark/triumph/deck3/port
-	name = "Near NSV Triumph (Port Deck 3)"
-	landmark_tag = "triumph_space_port_3"
-	base_turf = /turf/space
-	base_area = /area/space
+/obj/effect/shuttle_landmark/rift/deck4/east
+	name = "NSB Atlas Airspace (E)"
+	landmark_tag = "rift_airspace_E"
+	base_turf = /turf/simulated/sky/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
 
-/obj/effect/shuttle_landmark/triumph/deck3/starboard
-	name = "Near NSV Triumph (Starboard Deck 3)"
-	landmark_tag = "triumph_space_starboard_3"
-	base_turf = /turf/space
-	base_area = /area/space
+/obj/effect/shuttle_landmark/rift/deck4/northeast
+	name = "NSB Atlas Airspace (NE)"
+	landmark_tag = "rift_airspace_NE"
+	base_turf = /turf/simulated/sky/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
 
-/obj/effect/shuttle_landmark/triumph/deck2/port
-	name = "Near NSV Triumph (Port Deck 2)"
-	landmark_tag = "triumph_space_port_2"
-	base_turf = /turf/space
-	base_area = /area/space
-
-/obj/effect/shuttle_landmark/triumph/deck2/starboard
-	name = "Near NSV Triumph (Starboard Deck 2)"
-	landmark_tag = "triumph_space_starboard_2"
-	base_turf = /turf/space
-	base_area = /area/space
-
-/obj/effect/shuttle_landmark/triumph/deck1/port
-	name = "Near NSV Triumph (Port Deck 1)"
-	landmark_tag = "triumph_space_port_1"
-	base_turf = /turf/space
-	base_area = /area/space
-
-/obj/effect/shuttle_landmark/triumph/deck1/starboard
-	name = "Near NSV Triumph (Starboard Deck 1)"
-	landmark_tag = "triumph_space_starboard_1"
-	base_turf = /turf/space
-	base_area = /area/space
+/obj/effect/shuttle_landmark/rift/deck4/north
+	name = "SB Atlas Airspace (N)"
+	landmark_tag = "rift_airspace_N"
+	base_turf = /turf/simulated/sky/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
 
 // OFF-STATION NAV POINTS
 
+/obj/effect/shuttle_landmark/rift/away/plains
+	name = "NSB Atlas Western Plains"
+	landmark_tag = "rift_plains"
+	base_turf = /turf/simulated/floor/outdoors/snow/lythios43c
+	base_area = /area/rift/surfacebase/outside/west
 
 // TRANSIT NAV POINTS
 
-/obj/effect/shuttle_landmark/transit/triumph/excursion
+/obj/effect/shuttle_landmark/transit/rift/excursion
 	name = "In transit"
 	landmark_tag = "nav_transit_exploration"
 
-/obj/effect/shuttle_landmark/transit/triumph/courser
+/obj/effect/shuttle_landmark/transit/rift/courser
 	name = "In transit"
 	landmark_tag = "nav_transit_courser"
 
-/obj/effect/shuttle_landmark/transit/triumph/pirate
+/obj/effect/shuttle_landmark/transit/rift/pirate
 	name = "In transit"
 	landmark_tag = "nav_transit_pirate"
 
-/obj/effect/shuttle_landmark/transit/triumph/civvie
+/obj/effect/shuttle_landmark/transit/rift/civvie
 	name = "In transit"
 	landmark_tag = "nav_transit_civvie"
 
-/obj/effect/shuttle_landmark/transit/triumph/mining
-	name = "In transit"
-	landmark_tag = "nav_transit_mining"
-
-/obj/effect/shuttle_landmark/transit/triumph/trade
+/obj/effect/shuttle_landmark/transit/rift/trade
 	name = "In transit"
 	landmark_tag = "nav_transit_trade"
 
-/obj/effect/shuttle_landmark/transit/triumph/emt
+/obj/effect/shuttle_landmark/transit/rift/emt
 	name = "In transit"
 	landmark_tag = "nav_transit_emt"
-
+/*
 ////////////////////////////////////////
 // Triumph custom shuttle implemnetations
 ////////////////////////////////////////
@@ -179,7 +156,6 @@
 	shuttle_tag = "Trade"
 	req_one_access = list(access_trader)
 
-/*
 /obj/machinery/computer/shuttle_control/cruiser_shuttle
 	name = "cruiser shuttle control console"
 	shuttle_tag = "Cruiser Shuttle"
@@ -258,6 +234,7 @@
 	docking_controller_tag = "courser_dock"
 	shuttle_area = list(/area/shuttle/courser)
 	fuel_consumption = 3
+	move_direction = WEST
 
 // The 'ship' of the courser
 /obj/effect/overmap/visitable/ship/landable/courser
@@ -275,7 +252,7 @@
 	warmup_time = 0
 	shuttle_area = list(/area/shuttle/courser/cockpit, /area/shuttle/courser/general, /area/shuttle/courser/battery)
 	//shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
-	current_location = "triumph_courser_hangar"
+	current_location = "rift_courser_hangar"
 	docking_controller_tag = "courser_docker"
 	landmark_transition = "nav_transit_courser"
 	move_time = 15
@@ -295,7 +272,7 @@
 	name = "Civilian Transport"
 	warmup_time = 10
 	shuttle_area = list(/area/shuttle/civvie/cockpit, /area/shuttle/civvie/general)
-	current_location = "triumph_civvie_home"
+	current_location = "rift_civvie_home"
 	docking_controller_tag = "civvie_docker"
 	landmark_transition = "nav_transit_civvie"
 	fuel_consumption = 10
@@ -308,26 +285,6 @@
 /obj/machinery/computer/shuttle_control/explore/civvie
 	name = "civilian jump console"
 	shuttle_tag = "Civilian Transport"
-
-
-// Mining Shuttle
-
-/datum/shuttle/autodock/overmap/mining
-	name = "Mining Shuttle"
-	warmup_time = 10
-	shuttle_area = list(/area/shuttle/mining_ship/general)
-	current_location = "triumph_mining_port"
-	docking_controller_tag = "mining_docker"
-	landmark_transition = "nav_transit_mining"
-	move_time = 30
-
-/area/shuttle/mining
-	name = "Mining Shuttle"
-	icon_state = "shuttle"
-
-/obj/machinery/computer/shuttle_control/explore/mining
-	name = "mining jump console"
-	shuttle_tag = "Mining Shuttle"
 
 // TRADE SHIP
 /datum/shuttle/autodock/overmap/trade
@@ -355,10 +312,10 @@
 	name = "Dart EMT Shuttle"
 	warmup_time = 5
 	shuttle_area = list(/area/shuttle/emt/general, /area/shuttle/emt/cockpit)
-	current_location = "triumph_emt_dock"
+	current_location = "rift_emt_dock"
 	docking_controller_tag = "emt_shuttle_docker"
 	landmark_transition = "nav_transit_emt"
-	move_time = 20
+	move_time = 10
 
 /area/shuttle/emt
 	name = "Dart EMT Shuttle"

@@ -27,33 +27,6 @@
 	name = "Ships"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
 
-
-/datum/map_template/rift_lateload/west_plains
-	name = "Rift - Western Plains"
-	desc = "A sweeping, desolate plain to the west of the colony."
-	mappath = "_maps/map_files/rift/rift-07-west_plains.dmm"
-
-	associated_map_datum = /datum/map_z_level/rift_lateload/west_plains
-
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
-
-/datum/map_z_level/rift_lateload/west_plains
-	name = "Western Plains"
-	z = Z_LEVEL_WEST_PLAIN
-
-/datum/map_template/rift_lateload/west_cavern
-	name = "Rift - Western Caverns"
-	desc = "A labyrinthine cave network below the western plains."
-	mappath = "_maps/map_files/rift/rift-08-west_caves.dmm"
-
-	associated_map_datum = /datum/map_z_level/rift_lateload/west_cavern
-
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
-
-/datum/map_z_level/rift_lateload/west_cavern
-	name = "Western Caverns"
-	z = Z_LEVEL_WEST_CAVERN
-
 //Use this template to update the Western Z when POIs are created for it.
 /datum/map_template/rift_lateload/lavaland/on_map_loaded(z)
 	. = ..()
@@ -95,25 +68,6 @@
 /datum/map_z_level/rift_lateload/away_piratebase
 	name = "Away Mission - Pirate Base"
 	z = Z_LEVEL_PIRATEBASE
-
-// Mining Planet
-#include "mining_planet/_miningplanet.dm"
-
-/datum/map_template/rift_lateload/away_mining_planet
-	name = "Away Mission - Mining Planet"
-	desc = "Mining Plante. For the miners to get actual supplies."
-	mappath = "_maps/map_levels/192x192/mining_planet.dmm"
-	associated_map_datum = /datum/map_z_level/rift_lateload/away_mining_planet
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
-
-/datum/map_z_level/rift_lateload/away_mining_planet
-	name = "Away Mission - Mining Planet"
-	z = Z_LEVEL_MININGPLANET
-
-/datum/map_template/rift_lateload/away_mining_planet/on_map_loaded(z)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
-	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
 
 // lavaland start
 #include "lavaland/_lavaland.dm"
@@ -176,9 +130,26 @@
 /obj/effect/landmark/map_data/lavaland_east
     height = 3
 
+// Class G Mining Planet Exploration Zone
+/datum/map_template/rift_lateload/away_g_world
+	name = "ExoPlanet - Z1 Planet"
+	desc = "A mineral rich planet."
+	mappath = "_maps/map_levels/192x192/Class_G.dmm"
+	associated_map_datum = /datum/map_z_level/rift_lateload/away_g_world
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_z_level/rift_lateload/away_g_world
+	name = "Away Mission - Mining Planet"
+	z = Z_LEVEL_MININGPLANET
+
+/datum/map_template/rift_lateload/away_g_world/on_map_loaded(z)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
+	new /datum/random_map/noise/ore/classg(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
+
 // Class D Rogue Planet Exploration Zone.
 /datum/map_template/rift_lateload/away_d_world
-	name = "ExoPlanet - Z1 Planet"
+	name = "ExoPlanet - Z2 Planet"
 	desc = "A random unknown planet."
 	mappath = "_maps/map_levels/192x192/Class_D.dmm"
 	associated_map_datum = /datum/map_z_level/rift_lateload/away_d_world
@@ -186,7 +157,7 @@
 
 /datum/map_template/rift_lateload/away_d_world/on_map_loaded(z)
 	. = ..()
-//	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/poi_d/unexplored, /datum/map_template/submap/level_specific/class_d)
+	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/class_d/unexplored, /datum/map_template/submap/level_specific/class_d)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
@@ -197,7 +168,7 @@
 
 // Class H Desert Planet Exploration Zone.
 /datum/map_template/rift_lateload/away_h_world
-	name = "ExoPlanet - Z2 Planet"
+	name = "ExoPlanet - Z3 Planet"
 	desc = "A random unknown planet."
 	mappath = "_maps/map_levels/192x192/Class_H.dmm"
 	associated_map_datum = /datum/map_z_level/rift_lateload/away_h_world
@@ -205,7 +176,7 @@
 
 /datum/map_template/rift_lateload/away_h_world/on_map_loaded(z)
 	. = ..()
-//	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/poi_h/unexplored, /datum/map_template/submap/level_specific/class_h)
+	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/class_h/unexplored, /datum/map_template/submap/level_specific/class_h)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
@@ -215,45 +186,44 @@
 	z = Z_LEVEL_DESERT_PLANET
 
 // Gaia Planet Zone.
-/datum/map_template/rift_lateload/gaia_planet
-	name = "Gaia Planet - Z3 Planet"
+/datum/map_template/rift_lateload/away_m_world
+	name = "ExoPlanet - Z4 Planet"
 	desc = "A lush Gaia Class Planet."
-	mappath = "_maps/map_levels/192x192/gaia_planet.dmm"
-	associated_map_datum = /datum/map_z_level/rift_lateload/gaia_planet
+	mappath = "_maps/map_levels/192x192/Class_M.dmm"
+	associated_map_datum = /datum/map_z_level/rift_lateload/away_m_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
-/datum/map_template/rift_lateload/gaia_planet/on_map_loaded(z)
+/datum/map_template/rift_lateload/away_m_world/on_map_loaded(z)
 	. = ..()
 //	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/poi_h/unexplored, /datum/map_template/submap/level_specific/class_h)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
 
-/datum/map_z_level/rift_lateload/gaia_planet
+/datum/map_z_level/rift_lateload/away_m_world
 	name = "Away Mission - Gaia Planet"
 	z = Z_LEVEL_GAIA_PLANET
 
-
 // Frozen Planet Zone.
-/datum/map_template/rift_lateload/frozen_planet
-	name = "Frozen Planet - Z4 Planet"
+/datum/map_template/rift_lateload/away_p_world
+	name = "ExoPlanet - Z5 Planet"
 	desc = "A Cold Frozen Planet."
-	mappath = "_maps/map_levels/192x192//frozen_planet.dmm"
-	associated_map_datum = /datum/map_z_level/rift_lateload/frozen_planet
+	mappath = "_maps/map_levels/192x192//Class_P.dmm"
+	associated_map_datum = /datum/map_z_level/rift_lateload/away_p_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
-/datum/map_template/rift_lateload/frozen_planet/on_map_loaded(z)
+/datum/map_template/rift_lateload/away_p_world/on_map_loaded(z)
 	. = ..()
-//	seed_submaps(list(Z_LEVEL_FROZEN_PLANET), 125, /area/frozen_planet/ruins, /datum/map_template/submap/level_specific/frozen_planet)
+	seed_submaps(list(Z_LEVEL_FROZEN_PLANET), 125, /area/class_p/ruins, /datum/map_template/submap/level_specific/class_p)
 
 
-/datum/map_z_level/rift_lateload/frozen_planet
+/datum/map_z_level/rift_lateload/away_p_world
 	name = "Away Mission - Frozen Planet"
 	z = Z_LEVEL_FROZEN_PLANET
 
 // Trade post
 #include "space/trade_port/_tradeport.dm"
-/*
+
 /datum/map_template/rift_lateload/away_tradeport
 	name = "Away Mission - Trade Port"
 	desc = "A space gas station! Stretch your legs!"
@@ -264,7 +234,7 @@
 /datum/map_z_level/rift_lateload/away_tradeport
 	name = "Away Mission - Trade Port"
 	z = Z_LEVEL_TRADEPORT
-*/
+
 //////////////////////////////////////////////////////////////////////////////////////
 // Code Shenanigans for rift lateload maps
 /datum/map_template/rift_lateload
@@ -329,53 +299,6 @@
 		message_admins("\The [A] fell out of the sky.")
 		var/mob/living/L = A
 		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
-/*
-//// MINING LEVELS
-/datum/map_template/rift_lateload/roguemines1
-	name = "Asteroid Belt 1"
-	desc = "Mining, but rogue. Zone 1"
-	mappath = "_maps/map_levels/192x192/roguemining/rogue_mine1.dmm"
 
-	associated_map_datum = /datum/map_z_level/rift_lateload/roguemines1
-
-/datum/map_z_level/rift_lateload/roguemines1
-	name = "Belt 1"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	z = Z_LEVEL_ROGUEMINE_1
-
-/datum/map_template/rift_lateload/tether_roguemines2
-	name = "Asteroid Belt 2"
-	desc = "Mining, but rogue. Zone 2"
-	mappath = "_maps/map_levels/192x192/roguemining/rogue_mine2.dmm"
-
-	associated_map_datum = /datum/map_z_level/rift_lateload/roguemines2
-
-/datum/map_z_level/rift_lateload/roguemines2
-	name = "Belt 2"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	z = Z_LEVEL_ROGUEMINE_2
-
-/datum/map_template/rift_lateload/tether_roguemines3
-	name = "Asteroid Belt 3"
-	desc = "Mining, but rogue. Zone 3"
-	mappath = "_maps/map_levels/192x192/roguemining/rogue_mine3.dmm"
-
-	associated_map_datum = /datum/map_z_level/rift_lateload/roguemines3
-
-/datum/map_z_level/rift_lateload/roguemines3
-	name = "Belt 3"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	z = Z_LEVEL_ROGUEMINE_3
-
-/datum/map_template/rift_lateload/tether_roguemines4
-	name = "Asteroid Belt 4"
-	desc = "Mining, but rogue. Zone 4"
-	mappath = "_maps/map_levels/192x192/roguemining/rogue_mine4.dmm"
-
-	associated_map_datum = /datum/map_z_level/rift_lateload/roguemines4
-
-/datum/map_z_level/rift_lateload/roguemines4
-	name = "Belt 4"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	z = Z_LEVEL_ROGUEMINE_4
-*/
+/obj/effect/step_trigger/zlevel_fall/cavernfall
+	var/static/target_z = Z_LEVEL_WEST_CAVERN

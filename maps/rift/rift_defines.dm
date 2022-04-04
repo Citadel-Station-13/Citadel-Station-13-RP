@@ -5,23 +5,24 @@
 #define Z_LEVEL_SURFACE_MID				5
 #define Z_LEVEL_SURFACE_HIGH			6
 
-#define Z_LEVEL_CENTCOM					7
-#define Z_LEVEL_MISC					8
-#define Z_LEVEL_SHIPS					9
+#define Z_LEVEL_WEST_CAVERN				7
+#define Z_LEVEL_WEST_PLAIN				8
 
-#define Z_LEVEL_WEST_PLAIN				10
-#define Z_LEVEL_WEST_CAVERN				11
+#define Z_LEVEL_CENTCOM					9
+#define Z_LEVEL_MISC					10
+#define Z_LEVEL_SHIPS					11
 
 #define Z_LEVEL_DEBRISFIELD				12
 #define Z_LEVEL_PIRATEBASE				13
-#define Z_LEVEL_MININGPLANET			14
-#define Z_LEVEL_UNKNOWN_PLANET			15
-#define Z_LEVEL_DESERT_PLANET			16
-#define Z_LEVEL_GAIA_PLANET				17
-#define Z_LEVEL_FROZEN_PLANET			18
+#define Z_LEVEL_MININGPLANET			14 // CLASS G
+#define Z_LEVEL_UNKNOWN_PLANET			15 // CLASS D
+#define Z_LEVEL_DESERT_PLANET			16 // CLASS H
+#define Z_LEVEL_GAIA_PLANET				17 // CLASS M
+#define Z_LEVEL_FROZEN_PLANET			18 // CLASS P
+#define Z_LEVEL_TRADEPORT				19
 
-#define Z_LEVEL_LAVALAND				21
-#define Z_LEVEL_LAVALAND_EAST			22
+#define Z_LEVEL_LAVALAND				20
+#define Z_LEVEL_LAVALAND_EAST			21
 
 /datum/map/rift
 	name = "Rift"
@@ -52,12 +53,15 @@
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH)
+		Z_LEVEL_SURFACE_HIGH,
+		Z_LEVEL_WEST_PLAIN)
 	player_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH)
+		Z_LEVEL_SURFACE_HIGH,
+		Z_LEVEL_WEST_PLAIN,
+		Z_LEVEL_WEST_CAVERN)
 
 	holomap_smoosh = list(list(
 		Z_LEVEL_UNDERGROUND_DEEP,
@@ -119,7 +123,7 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage"/*,"Beruang Trading Corp Cryo"*/)
+	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
@@ -129,8 +133,8 @@
 	default_skybox = /datum/skybox_settings/lythios
 
 	unit_test_exempt_areas = list(
-		/area/tether/surfacebase/outside/outside1,
-		/area/tether/elevator,
+		/area/rift/surfacebase/outside/outside1,
+		/area/rift/turbolift,
 		/area/vacant/vacant_site,
 		/area/vacant/vacant_site/east,
 		/area/crew_quarters/sleep/Dorm_1/holo,
@@ -142,12 +146,7 @@
 
 	unit_test_exempt_from_atmos = list(
 		/area/engineering/atmos_intake, // Outside,
-		/area/rnd/external, //  Outside,
-		/area/tether/surfacebase/emergency_storage/rnd,
-		/area/tether/surfacebase/emergency_storage/atrium,
-		/area/tether/surfacebase/lowernortheva, // it airlock
-		/area/tether/surfacebase/lowernortheva/external, //it outside
-		/area/tether/surfacebase/security/gasstorage) //it maint
+		/area/rnd/external) //  Outside,
 
 /* Finish this when you have a ship and the locations for it to access
 	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
@@ -157,8 +156,22 @@
 						 	 	 Z_LEVEL_ROGUEMINE_3,
 								 Z_LEVEL_ROGUEMINE_4)
 */
+
+	lavaland_levels =		list(Z_LEVEL_LAVALAND,
+								 Z_LEVEL_LAVALAND_EAST)
+
 	lateload_z_levels = list(
-		list("Rift - Misc","Rift - Ships","Rift - Western Plains","Rift - Western Caverns") // Stock Rift lateload maps
+		list("Rift - Misc","Rift - Ships"), // Stock Rift lateload maps
+		list("Debris Field - Z1 Space"), // Debris Field
+		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
+		list("ExoPlanet - Z1 Planet"),//Mining planet
+		list("ExoPlanet - Z2 Planet"), // Rogue Exoplanet
+		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet
+		list("ExoPlanet - Z4 Planet"), // Gaia Planet
+		list("ExoPlanet - Z5 Planet"), // Frozen Planet
+//		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
+		list("Away Mission - Trade Port"), // Trading Post
+		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)")
 	)
 
 	ai_shell_restricted = TRUE
@@ -169,36 +182,30 @@
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH)
 
-/*	belter_docked_z = 		list(Z_LEVEL_SPACE_HIGH)
-	belter_transit_z =	 	list(Z_LEVEL_MISC)
-	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
-						 		 Z_LEVEL_ROGUEMINE_2)
+	mining_station_z =		list(Z_LEVEL_UNDERGROUND_DEEP)
+	mining_outpost_z =		list(Z_LEVEL_WEST_PLAIN)
 
-	mining_station_z =		list(Z_LEVEL_SPACE_HIGH)
-	mining_outpost_z =		list(Z_LEVEL_SURFACE_MINE)
-*/
 	lateload_single_pick = null //Nothing right now.
 
-	planet_datums_to_make = list(/datum/planet/lythios43c)
+	planet_datums_to_make = list(/datum/planet/lythios43c,
+		/datum/planet/lavaland,
+		/datum/planet/classg,
+		/datum/planet/classd,
+		/datum/planet/classh,
+		/datum/planet/classp,
+		/datum/planet/classm)
 
-/datum/map/lythios/perform_map_generation()
+/datum/map/rift/perform_map_generation()
+
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx, world.maxy) // Create the mining Z-level.
+	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_WEST_CAVERN, 64, 64)         // Create the mining ore distribution map.
+
 	return 1
 
 /datum/skybox_settings/lythios/New()
 	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
 	return icon_state
 
-/* ERRORS - Lacks Z_LEVEL_SURFACE_MINE etc..
-/datum/map/lythios/perform_map_generation()
-
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SURFACE_MINE, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SURFACE_MINE, 64, 64)         // Create the mining ore distribution map.
-
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SOLARS, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SOLARS, 64, 64)         // Create the mining ore distribution map.
-
-	return 1
-*/
 /*
 // For making the 6-in-1 holomap, we calculate some offsets
 #define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
@@ -216,7 +223,7 @@
 	z = Z_LEVEL_UNDERGROUND_DEEP
 	name = "Underground 2"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/floor/outdoors/ice/lythios43c
+	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 
 /datum/map_z_level/rift/station/underground_shallow
 	z = Z_LEVEL_UNDERGROUND
@@ -253,3 +260,15 @@
 	z = Z_LEVEL_CENTCOM
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
+
+/datum/map_z_level/rift/caves
+	z = Z_LEVEL_WEST_CAVERN
+	name = "Western Caves"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
+
+/datum/map_z_level/rift/plains
+	z = Z_LEVEL_WEST_PLAIN
+	name = "Western Plains"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c

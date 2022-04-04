@@ -9320,6 +9320,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/unsimulated/floor/sky/depths,
 /area/quartermaster/miningdock)
 "wm" = (
@@ -9412,6 +9413,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/unsimulated/floor/sky/depths,
 /area/quartermaster/miningdock)
 "wV" = (
@@ -10042,6 +10044,7 @@
 /area/maintenance/chapel)
 "CY" = (
 /obj/machinery/door/airlock/lift,
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "CZ" = (
@@ -10394,6 +10397,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/unsimulated/floor/sky/depths,
 /area/quartermaster/miningdock)
 "FM" = (
@@ -11206,6 +11210,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/undertwo)
 "Ng" = (
+/obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/unsimulated/floor/sky/depths,
 /area/rift/surfacebase/underground/under2)
 "Ni" = (
@@ -12116,7 +12121,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "Xh" = (
-/turf/unsimulated/mineral/icerock,
+/turf/unsimulated/wall/planetary/lythios43c{
+	desc = "Glacial permafrost, compacted harder than stone.";
+	icon_state = "icerock-dark"
+	},
 /area/rift/surfacebase/underground/under2)
 "Xk" = (
 /obj/structure/catwalk,

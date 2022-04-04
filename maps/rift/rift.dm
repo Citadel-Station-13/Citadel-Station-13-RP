@@ -20,14 +20,15 @@
 	#define USING_MAP_DATUM /datum/map/rift
 
 	#include "submaps/_rift_submaps.dm"
-	#include "submaps/lavaland/_lavaland.dm"
 
 	#include "../../_maps/map_files/rift/rift-01-underground2.dmm"
 	#include "../../_maps/map_files/rift/rift-02-underground1.dmm"
 	#include "../../_maps/map_files/rift/rift-03-surface1.dmm"
 	#include "../../_maps/map_files/rift/rift-04-surface2.dmm"
 	#include "../../_maps/map_files/rift/rift-05-surface3.dmm"
-	#include "../../_maps/map_files/rift/rift-06-orbital.dmm"
+	#include "../../_maps/map_files/rift/rift-06-west_caves.dmm"
+	#include "../../_maps/map_files/rift/rift-07-west_plains.dmm"
+	#include "../../_maps/map_files/rift/rift-08-orbital.dmm"
 
 #elif !defined(MAP_OVERRIDE)
 

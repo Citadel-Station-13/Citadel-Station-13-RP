@@ -8,7 +8,7 @@ var/datum/planet/classd/planet_classd = null
 	desc = "A rocky moon which has recently had its quarantine lifted following a campaign of nuclear bombings and mercenary \
 	forces deploying to eradicate a large xenomorph infestation."
 	current_time = new /datum/time/classd()
-	expected_z_levels = list(12)
+	expected_z_levels = list(15)
 
 /datum/planet/classd/New()
 	..()
