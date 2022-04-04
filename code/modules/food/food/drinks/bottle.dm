@@ -275,7 +275,7 @@
 	icon_state = "whiterumbottle"
 	center_of_mass = list("x"=16, "y"=8)
 
-/obj/item/reagent_containers/food/drinks/bottle/rum/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/bottle/whiterum/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("whiterum", 100)
 
