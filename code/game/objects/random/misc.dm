@@ -812,7 +812,7 @@
 					prob(1);/obj/item/gun/projectile/deagle/gold,\
 					prob(1);/obj/item/gun/energy/imperial,\
 					prob(1);/obj/item/gun/projectile/automatic/as24,\
-					prob(1);/obj/item/gun/launcher/rocket,\
+					prob(1);/obj/item/gun/projectile/rocket,\
 					prob(1);/obj/item/gun/launcher/grenade,\
 					prob(1);/obj/item/gun/projectile/gyropistol,\
 					prob(1);/obj/item/gun/projectile/heavysniper,\
@@ -1208,3 +1208,49 @@
 				/obj/item/bedsheet/clowndouble,
 				/obj/item/bedsheet/mimedouble,
 				/obj/item/bedsheet/cosmosdouble)
+
+/obj/random/paintkit
+	name = "random paint kit (APLU)"
+	desc = "Used to spawn a random APLU paint kit."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "modkit"
+
+/obj/random/paintkit/item_to_spawn()
+	return pick(/obj/item/kit/paint/ripley,
+				/obj/item/kit/paint/ripley/death,
+				/obj/item/kit/paint/ripley/flames_red,
+				/obj/item/kit/paint/ripley/flames_blue,
+				/obj/item/kit/paint/ripley/pirate,
+				/obj/item/kit/paint/ripley/junker,
+				/obj/item/kit/paint/ripley/battered,
+				/obj/item/kit/paint/ripley/medical,
+				/obj/item/kit/paint/ripley/sovjet,
+				/obj/item/kit/paint/ripley/arnold,
+				/obj/item/kit/paint/ripley/clown,
+				/obj/item/kit/paint/ripley/dreadnought)
+
+/obj/random/paintkit/gygax
+	name = "random paint kit (Gygax)"
+	desc = "Used to spawn a random Gygax paint kit."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "modkit"
+
+/obj/random/paintkit/gygax/item_to_spawn()
+	return pick(/obj/item/kit/paint/gygax,
+				/obj/item/kit/paint/gygax/blue,
+				/obj/item/kit/paint/gygax/green,
+				/obj/item/kit/paint/gygax/turtle,
+				/obj/item/kit/paint/gygax/mad_jack,
+				/obj/item/kit/paint/gygax/osbourne,
+				/obj/item/kit/paint/gygax/carp)
+
+/obj/random/paintkit/durand
+	name = "random paint kit (Durand)"
+	desc = "Used to spawn a random Durand paint kit."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "modkit"
+
+/obj/random/paintkit/durand/item_to_spawn()
+	return pick(/obj/item/kit/paint/durand,
+				/obj/item/kit/paint/durand/paladin,
+				/obj/item/kit/paint/durand/turtle)

@@ -527,6 +527,11 @@
 	caliber = "rocket"
 	matter = list(DEFAULT_WALL_MATERIAL = 10000)
 
+/obj/item/ammo_casing/rocket/weak
+	name = "low-yield rocket shell"
+	projectile_type = /obj/item/projectile/bullet/srmrocket/weak
+	matter = list(DEFAULT_WALL_MATERIAL = 5000)
+
 /obj/item/ammo_casing/cap
 	name = "cap"
 	desc = "A cap for children toys."
@@ -546,8 +551,18 @@
 	desc = "Globular biomatter rendered and ready for compression."
 	caliber = "organic"
 	icon_state = "globule"
+	color = "#FFE0E2"
 	projectile_type = /obj/item/projectile/bullet/organic
 	matter = list("flesh" = 100)
+
+/obj/item/ammo_casing/organic/wax
+	name = "wax globule"
+	desc = "Tacky wax rendered semi-solid and ready for compression."
+	caliber = "apidean"
+	icon_state = "globule"
+	color = "#E6E685"
+	projectile_type = /obj/item/projectile/bullet/organic/wax
+	matter = list("wax" = 100)
 
 //Arrows
 /obj/item/ammo_casing/arrow

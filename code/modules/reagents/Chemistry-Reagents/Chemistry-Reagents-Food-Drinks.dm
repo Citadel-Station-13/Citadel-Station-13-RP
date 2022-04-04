@@ -3993,6 +3993,30 @@ End Citadel Change */
 	glass_name = "Mary On a Cross"
 	glass_desc = "Not just another Bloody Mary. Mary on a cross."
 
+/datum/reagent/ethanol/royaljelly
+	name = "Royal Jelly"
+	id = "royaljelly"
+	description = "A drink usually enjoyed by only the highest castes of Apinae society. Incredibly sweet, it is said to have enormous health benefits."
+	taste_description = "honey and royalty"
+	color = "#f0d76b"
+	strength = 20
+
+	glass_name = "Royal Jelly"
+	glass_desc = "A drink usually enjoyed by only the highest castes of Apinae society. Incredibly sweet, it is said to have enormous health benefits."
+
+//This functions the same as Doctor's Delight, except it gets you drunk too.
+/datum/reagent/ethanol/royaljelly/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien == IS_DIONA)
+		return
+	M.adjustOxyLoss(-4 * removed)
+	M.heal_organ_damage(2 * removed, 2 * removed)
+	M.adjustToxLoss(-2 * removed)
+	if(M.dizziness)
+		M.dizziness = max(0, M.dizziness - 15)
+	if(M.confused)
+		M.Confuse(-5)
+
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
 ///////////////////////////////////////////////

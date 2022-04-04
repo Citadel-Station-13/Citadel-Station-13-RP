@@ -27,6 +27,7 @@
 	var/drill_sound = 'sound/weapons/Genhit.ogg'
 	var/drill_verb = "drilling"
 	sharp = 1
+	var/active = 1
 
 	var/excavation_amount = 200
 	var/destroy_artefacts = FALSE // some mining tools will destroy artefacts completely while avoiding side-effects.
@@ -124,6 +125,126 @@
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
 	drill_verb = "picking"
 	sharp = 1
+
+//Snowflake drill that works like a chainsaw! How fun. Honestly they should probably all work like this or something. I dunno. Might be a fun mining overhaul later.
+/obj/item/pickaxe/tyrmalin
+	name = "\improper Tyrmalin excavator"
+	desc = "A mining drill build from scrap parts, often found on Tyrmalin mining operations. No two are alike."
+	icon_state = "goblindrill"
+	item_state = "goblindrill"
+	destroy_artefacts = TRUE
+	var/max_fuel = 100
+	active = 0
+	var/jam_chance = TRUE
+
+/obj/item/pickaxe/tyrmalin/Initialize(mapload)
+	. = ..()
+	var/datum/reagents/R = new/datum/reagents(max_fuel)
+	reagents = R
+	R.my_atom = src
+	R.add_reagent("fuel", max_fuel)
+	START_PROCESSING(SSobj, src)
+
+/obj/item/pickaxe/tyrmalin/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
+	if(active) return
+
+	to_chat(user, "You start pulling the string on \the [src].")
+	//visible_message("[usr] starts pulling the string on the [src].")
+
+	if(max_fuel <= 0)
+		if(do_after(user, 15))
+			to_chat(user, "\The [src] won't start!")
+		else
+			to_chat(user, "You fumble with the string.")
+	else
+		if(do_after(user, 15))
+			to_chat(user, "You start \the [src] up with a loud grinding!")
+			//visible_message("[usr] starts \the [src] up with a loud grinding!")
+			attack_verb = list("shredded", "ripped", "torn")
+			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
+			force = 15
+			sharp = 1
+			active = 1
+			update_icon()
+		else
+			to_chat(user, "You fumble with the string.")
+
+/obj/item/pickaxe/tyrmalin/proc/turnOff(mob/user as mob)
+	if(!active) return
+	to_chat(user, "You switch the gas nozzle on the drill, turning it off.")
+	attack_verb = list("bluntly hit", "beat", "knocked")
+	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
+	force = 3
+	edge = 0
+	sharp = 0
+	active = 0
+	update_icon()
+
+/obj/item/pickaxe/tyrmalin/attack_self(mob/user as mob)
+	if(!active)
+		turnOn(user)
+	else
+		turnOff(user)
+
+/obj/item/pickaxe/tyrmalin/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+	if(!proximity) return
+	..()
+	if(active)
+		playsound(src, 'sound/weapons/chainsaw_attack.ogg',40,1)
+	if(A && active)
+		if(get_fuel() > 0)
+			reagents.remove_reagent("fuel", 1)
+		if(istype(A,/obj/structure/window))
+			var/obj/structure/window/W = A
+			W.shatter()
+		else if(istype(A,/obj/structure/grille))
+			new /obj/structure/grille/broken(A.loc)
+			new /obj/item/stack/rods(A.loc)
+			qdel(A)
+	if(jam_chance && active)
+		switch(rand(1,100))
+			if(1 to 30)
+				turnOff()
+			if(31 to 100)
+				return
+	if (istype(A, /obj/structure/reagent_dispensers/fueltank) || istype(A, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,A) <= 1)
+		to_chat(usr, "<span class='notice'>You begin filling the tank on the [src].</span>")
+		if(do_after(usr, 15))
+			A.reagents.trans_to_obj(src, max_fuel)
+			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
+			to_chat(usr, "<span class='notice'>[src] succesfully refueled.</span>")
+		else
+			to_chat(usr, "<span class='notice'>Don't move while you're refilling the [src].</span>")
+
+/obj/item/pickaxe/tyrmalin/process(delta_time)
+	if(!active)
+		return
+
+	if(get_fuel() > 0)
+		reagents.remove_reagent("fuel", 1)
+		playsound(src, 'sound/weapons/chainsaw_turnoff.ogg',15,1)
+	if(get_fuel() <= 0)
+		to_chat(usr, "\The [src] sputters to a stop!")
+		turnOff()
+
+/obj/item/pickaxe/tyrmalin/proc/get_fuel()
+	return reagents.get_reagent_amount("fuel")
+
+/obj/item/pickaxe/tyrmalin/examine(mob/user)
+	if(max_fuel)
+		. += "<span class = 'notice'>The [src] feels like it contains roughtly [get_fuel()] units of fuel left.</span>"
+
+/obj/item/pickaxe/tyrmalin/update_icon()
+	if(active)
+		icon_state = "goblindrill1"
+		item_state = "goblindrill1"
+	else
+		icon_state = "goblindrill"
+		item_state = "goblindrill"
 
 
 /*****************************Shovel********************************/

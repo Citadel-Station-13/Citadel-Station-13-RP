@@ -408,3 +408,31 @@
 
 /obj/item/gun/projectile/fnseven/pathfinder
 	pin = /obj/item/firing_pin/explorer
+
+/obj/item/gun/projectile/apinae_pistol
+	name = "\improper Apinae Enforcer pistol"
+	desc = "Used by Hive-guards to detain deviants."
+	icon_state = "apipistol"
+	item_state = "florayield"
+	caliber = "apidean"
+	load_method = MAGAZINE
+	w_class = ITEMSIZE_SMALL
+	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_BIO = 5)
+	magazine_type = /obj/item/ammo_magazine/biovial
+	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
+	projectile_type = /obj/item/projectile/bullet/organic/wax
+
+/obj/item/gun/projectile/apinae_pistol/update_icon()
+	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+
+/obj/item/gun/projectile/pirate/junker_pistol
+	name = "scrap pistol"
+	desc = "A strange handgun made from industrial parts. It appears to accept multiple rounds thanks to an internal magazine. Favored by Tyrmalin wannabe-gunslingers."
+	icon_state = "junker_pistol"
+	item_state = "revolver"
+	load_method = SINGLE_CASING
+	w_class = ITEMSIZE_SMALL
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
+	recoil = 3
+	handle_casings = CYCLE_CASINGS
+	max_shells = 3
