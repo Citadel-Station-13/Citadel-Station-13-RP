@@ -24,7 +24,7 @@
 	var/input_cap = 1 MEGAWATTS         // Currently set input limit. Set to 0 to disable limits altogether. The shield will try to input this value per tick at most
 	var/upkeep_power_usage = 0          // Upkeep power usage last tick.
 	var/upkeep_multiplier = 1           // Multiplier of upkeep values.
-	var/power_coefficient = 1			// Multiplier of overall power usage (for mappers, subtypes, etc)
+	var/power_coefficient = 1           // Multiplier of overall power usage (for mappers, subtypes, etc)
 	var/power_usage = 0                 // Total power usage last tick.
 	var/overloaded = 0                  // Whether the field has overloaded and shut down to regenerate.
 	var/hacked = 0                      // Whether the generator has been hacked by cutting the safety wire.
@@ -382,7 +382,7 @@
 		shutdown_field()
 	else
 		current_energy = 0
-		overloaded = 1
+		overloaded = TRUE
 		for(var/obj/effect/shield/S in field_segments)
 			S.fail(1)
 
