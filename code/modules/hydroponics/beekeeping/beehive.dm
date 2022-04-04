@@ -233,32 +233,6 @@
 		user.drop_from_inventory(src)
 		qdel(src)
 
-/obj/item/stack/material/wax
-	name = "wax"
-	singular_name = "wax piece"
-	desc = "Soft substance produced by bees. Used to make candles."
-	icon = 'icons/obj/beekeeping.dmi'
-	icon_state = "wax"
-	default_type = "wax"
-	pass_color = TRUE
-	strict_color_stacking = TRUE
-
-/obj/item/stack/material/wax/Initialize(mapload, new_amount, merge)
-	. = ..()
-	recipes = wax_recipes
-
-/datum/material/wax
-	name = "wax"
-	stack_type = /obj/item/stack/material/wax
-	icon_colour = "#fff343"
-	melting_point = T0C+300
-	weight = 1
-	pass_stack_colors = TRUE
-
-var/global/list/datum/stack_recipe/wax_recipes = list( \
-	new/datum/stack_recipe("candle", /obj/item/flame/candle) \
-)
-
 /obj/item/bee_pack
 	name = "bee pack"
 	desc = "Contains a queen bee and some worker bees. Everything you'll need to start a hive!"

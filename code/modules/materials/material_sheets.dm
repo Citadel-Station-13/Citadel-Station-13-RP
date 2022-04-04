@@ -514,3 +514,14 @@
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'
+
+//Moved out of beehive.dm in conjunction with the primary material.
+/obj/item/stack/material/wax
+	name = "wax"
+	singular_name = "wax piece"
+	desc = "Soft substance produced by bees. Used to make candles."
+	icon_state = "sheet-rtransparent"
+	apply_colour = 1
+	default_type = "wax"
+	no_variants = FALSE
+	pass_color = TRUE

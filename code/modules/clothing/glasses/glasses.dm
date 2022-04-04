@@ -491,6 +491,11 @@ BLIND     // can't see anything
 		update_clothing_icon()
 		usr.update_action_buttons()
 
+/obj/item/clothing/glasses/welding/prescription
+	name = "prescription welding goggles"
+	desc = "Protects the eyes from welders, approved by the mad scientist association. These ones have prescription lenses."
+	prescription = 1
+
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"
 	desc = "Welding goggles made from more expensive materials, strangely smells like potatoes."

@@ -675,3 +675,65 @@
 /obj/item/reagent_containers/food/drinks/bottle/small/sassafras/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sassafras", 60)
+
+/obj/item/reagent_containers/food/drinks/bottle/moonshine
+	name = "jug of moonshine"
+	desc = "This incredibly powerful alcohol can be used as a fuel, paint thinner, or social lubricant."
+	icon_state = "moonshine"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/moonshine/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("moonshine", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/rotgut
+	name = "Throt-Throt's Select Rotgut"
+	desc = "Brewed in sunless caverns, this beastly alcohol will put hair on your chest."
+	icon_state = "rotgutbottle"
+	center_of_mass = list("x"=5, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/rotgut/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("rotgut", 100)
+
+//Tyrmalin Food Imports
+/obj/item/reagent_containers/food/drinks/bottle/greenstuff
+	name = "Grom's Green Stuff"
+	desc = "The classic brand, direct from Goss-Aguz."
+	icon_state = "greenstuffbottle"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/greenstuff/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("greenstuff", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/phobos
+	name = "Phobos Extra"
+	desc = "Every bottle is brewed in the caustic industrial districts of Mars."
+	icon_state = "phobosbottle"
+	center_of_mass = list("x"=12, "y"=14)
+
+/obj/item/reagent_containers/food/drinks/bottle/phobos/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("phobos", 100)
+
+//Apidean Food Imports
+/obj/item/reagent_containers/food/drinks/bottle/royaljelly
+	name = "Wax-Sealed Royal Jelly"
+	desc = "A expensive import from the Denebian colonies, dipped in wax found only in the Queen's chambers."
+	icon_state = "royaljellybottle"
+	center_of_mass = list("x"=10, "y"=8)
+
+/obj/item/reagent_containers/food/drinks/bottle/royaljelly/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("royaljelly", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead
+	name = "Ambrosia Mead"
+	desc = "The drink of the Gods, made by the Apidaen hives. Disclaimer: We do not worship any gods. Only our queens."
+	icon_state = "ambrosia_mead"
+	center_of_mass = list("x"=4, "y"=12)
+
+/obj/item/reagent_containers/food/drinks/bottle/royaljelly/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("mead", 100)

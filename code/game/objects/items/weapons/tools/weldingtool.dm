@@ -136,7 +136,7 @@
 /obj/item/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity)
 		return
-	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if(istype(O, /obj/structure/reagent_dispensers/fueltank) || istype(O, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,O) <= 1)
 		if(!welding && max_fuel)
 			O.reagents.trans_to_obj(src, max_fuel)
 			to_chat(user, "<span class='notice'>You refill [src].</span>")
@@ -532,6 +532,18 @@
 	max_fuel = 5
 	toolspeed = 1.75
 	eye_safety_modifier = 2
+
+//Welder Spear
+/obj/item/weldingtool/welder_spear
+	name = "welder spear"
+	desc = "A miniature welder attached to a spear, providing more reach. Typically used by Tyrmalin workers."
+	icon_state = "welderspear"
+	max_fuel = 10
+	w_class = ITEMSIZE_NORMAL
+	matter = list(MAT_METAL = 50, MAT_GLASS = 10)
+	toolspeed = 1.5
+	eye_safety_modifier = 1 // Safer on eyes.
+	reach = 2
 
 /*
  * Electric/Arc Welder

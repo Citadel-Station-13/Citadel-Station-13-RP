@@ -343,6 +343,16 @@
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 
+/datum/crafting_recipe/welder_spear
+	name = "Welder Spear"
+	result = /obj/item/weldingtool/welder_spear
+	reqs = list(/obj/item/handcuffs/cable = 1,
+				/obj/item/stack/rods = 1,
+				/obj/item/weldingtool/mini = 1)
+	time = 40
+	category = CAT_TOOL
+	subcategory = CAT_MISCELLANEOUS
+
 /* Not gonna code this right now. This is bound to be nuts.
 /datum/crafting_recipe/rcl
 	name = "Makeshift Rapid Cable Layer"
