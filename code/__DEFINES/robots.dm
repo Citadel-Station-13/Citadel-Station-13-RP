@@ -12,7 +12,7 @@
 #define BOT_CLEANING      7 // cleaning (cleanbots)
 #define BOT_REPAIRING     8 // repairing hull breaches (floorbots)
 #define BOT_MOVING        9 // for clean/floor/med bots, when moving.
-#define BOT_HEALING      10 // healing people (medbots)
+#define BOT_HEALING      10 // healing people (medibots)
 #define BOT_RESPONDING   11 // responding to a call from the AI
 #define BOT_DELIVER      12 // moving to deliver
 #define BOT_GO_HOME      13 // returning to home

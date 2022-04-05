@@ -46,8 +46,8 @@
 	time = 40
 	category = CAT_ROBOT
 
-/datum/crafting_recipe/medbot
-	name = "Medbot"
+/datum/crafting_recipe/medibot
+	name = "Medibot"
 	result = /mob/living/bot/medibot
 	reqs = list(/obj/item/healthanalyzer = 1,
 				/obj/item/storage/firstaid = 1,

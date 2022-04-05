@@ -63,7 +63,7 @@
 <BR><A href='?src=\ref[src];screen=2'>List Records</A>
 <BR>
 <BR><A href='?src=\ref[src];screen=5'>Virus Database</A>
-<BR><A href='?src=\ref[src];screen=6'>Medbot Tracking</A>
+<BR><A href='?src=\ref[src];screen=6'>Medibot Tracking</A>
 <BR>
 <BR><A href='?src=\ref[src];screen=3'>Record Maintenance</A>
 <BR><A href='?src=\ref[src];logout=1'>{Log Out}</A><BR>
