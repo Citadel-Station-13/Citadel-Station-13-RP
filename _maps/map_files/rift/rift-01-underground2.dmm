@@ -262,9 +262,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "aQ" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
@@ -304,9 +302,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "aX" = (
 /obj/structure/catwalk,
 /obj/machinery/firealarm{
@@ -325,9 +321,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "aZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 5
@@ -371,9 +365,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "bc" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/engineering/pumpstation)
@@ -401,9 +393,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "be" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/industrial/danger,
@@ -413,9 +403,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "bf" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -424,9 +412,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "bg" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -435,9 +421,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "bh" = (
 /obj/structure/catwalk,
 /obj/random/mob/mouse,
@@ -453,9 +437,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "bi" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -475,9 +457,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "bk" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small,
@@ -493,9 +473,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "bl" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
@@ -528,9 +506,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "bn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 8
@@ -706,9 +682,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "bI" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/plating,
@@ -1178,9 +1152,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "cO" = (
 /obj/machinery/air_sensor{
 	frequency = 1438;
@@ -1226,9 +1198,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "cU" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -1444,9 +1414,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "du" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 6
@@ -1577,9 +1545,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "dH" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -2217,9 +2183,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "eO" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -4328,9 +4292,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "jh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4414,9 +4376,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "jq" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
@@ -4427,9 +4387,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "jr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -5958,9 +5916,7 @@
 "mf" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6100,9 +6056,7 @@
 /area/engineering/turbine_room)
 "ms" = (
 /turf/simulated/wall,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mt" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -6122,9 +6076,7 @@
 /area/shuttle/cryo/station)
 "mu" = (
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mv" = (
 /obj/structure/railing,
 /obj/structure/table/rack,
@@ -6133,16 +6085,12 @@
 /obj/random/maintenance/clean,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mw" = (
 /obj/structure/railing,
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mx" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -6158,9 +6106,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mz" = (
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/turbine_room)
@@ -6236,45 +6182,33 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mI" = (
 /obj/structure/railing,
 /obj/structure/closet/firecloset/full,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mJ" = (
 /obj/structure/railing,
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mK" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mL" = (
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mM" = (
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mN" = (
 /obj/item/storage/pill_bottle/dice,
 /obj/item/deck/cards,
@@ -6285,18 +6219,14 @@
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mP" = (
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mQ" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6400,25 +6330,19 @@
 /obj/structure/railing,
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mY" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/powered/pump/filled,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "mZ" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "na" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -6549,9 +6473,7 @@
 	},
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "nl" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -6752,17 +6674,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "nH" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "nI" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor/glass,
@@ -6783,9 +6701,7 @@
 /obj/random/maintenance/clean,
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "nL" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister/empty,
@@ -7361,9 +7277,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "pd" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -7585,9 +7499,7 @@
 	},
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "pw" = (
 /obj/machinery/computer/cryopod{
 	pixel_x = 32
@@ -9352,9 +9264,7 @@
 /obj/random/maintenance/clean,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "wz" = (
 /obj/effect/floor_decal/chapel{
 	dir = 1
@@ -9690,9 +9600,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "zi" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
@@ -10507,9 +10415,7 @@
 /obj/random/maintenance/engineering,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "Gw" = (
 /obj/structure/closet/secure_closet/miner,
 /turf/simulated/floor/tiled/techmaint,
@@ -11096,9 +11002,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "MD" = (
 /obj/item/paper_bin,
 /obj/structure/table/woodentable,
@@ -11290,9 +11194,7 @@
 /obj/structure/railing,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "NP" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/hologram/holopad,
@@ -11522,9 +11424,7 @@
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "Qg" = (
 /obj/structure/ore_box,
 /obj/effect/floor_decal/borderfloor{
@@ -11956,9 +11856,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "VD" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/rust,
@@ -12166,9 +12064,7 @@
 "XC" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos{
-	name = "\improper Central Atmospherics Maintenance"
-	})
+/area/maintenance/lower/atmos)
 "XG" = (
 /obj/effect/floor_decal/chapel{
 	dir = 8

@@ -386,7 +386,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "bh" = (
 /obj/structure/grille,
 /obj/effect/floor_decal/industrial/warning,
@@ -883,40 +883,30 @@
 /turf/simulated/wall{
 	can_open = 1
 	},
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "cm" = (
 /obj/structure/table/standard,
 /obj/item/trash/plate,
 /obj/item/reagent_containers/food/condiment/cursed,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "cn" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "co" = (
 /obj/item/circuitboard/microwave,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "cp" = (
 /obj/structure/table/standard,
 /obj/item/whetstone,
 /obj/item/stack/cable_coil,
 /obj/item/material/knife,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "cq" = (
 /obj/structure/table/rack/shelf,
 /obj/machinery/alarm{
@@ -973,22 +963,16 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "cu" = (
 /obj/machinery/light_construct,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "cv" = (
 /obj/structure/table/standard,
 /obj/structure/frame,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "cw" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
@@ -1004,9 +988,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "cx" = (
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
@@ -1048,9 +1030,7 @@
 /obj/structure/grille,
 /obj/structure/foamedmetal,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "cD" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1440,9 +1420,7 @@
 	},
 /obj/machinery/disposal,
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "di" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -2724,9 +2702,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "fg" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
@@ -2787,9 +2763,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "fl" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/yellow{
 	dir = 8
@@ -2806,9 +2780,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "fn" = (
 /obj/machinery/computer/station_alert/security,
 /obj/effect/floor_decal/borderfloor{
@@ -2928,9 +2900,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "fv" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -2945,14 +2915,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/qm)
 "fw" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/turf/simulated/wall,
+/area/maintenance/research/lower)
 "fx" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -2998,9 +2962,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "fG" = (
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
@@ -3081,9 +3043,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "fN" = (
 /obj/structure/disposalpipe/tagger/partial{
 	name = "partial tagger - Sorting Office";
@@ -3147,9 +3107,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "fV" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -3261,9 +3219,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "gc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -3275,9 +3231,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "gd" = (
 /obj/machinery/computer/security/mining{
 	dir = 1
@@ -6531,7 +6485,7 @@
 "lT" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
+/area/maintenance/research/lower)
 "lU" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
@@ -7252,9 +7206,7 @@
 /area/quartermaster/delivery)
 "nf" = (
 /turf/simulated/wall,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "ng" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -7267,9 +7219,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "nh" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -7368,9 +7318,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "np" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing{
@@ -7390,9 +7338,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "nr" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -7422,9 +7368,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "nt" = (
 /obj/machinery/door/airlock/glass_mining{
 	name = "Cargo Airlock";
@@ -7459,23 +7403,17 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "nv" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "nw" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "nx" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -7493,9 +7431,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "ny" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
@@ -7527,9 +7463,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "nA" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -7945,7 +7879,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "oo" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light{
@@ -7986,9 +7920,7 @@
 /area/server)
 "os" = (
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "ot" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -8003,9 +7935,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "ou" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 8
@@ -8068,9 +7998,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "oz" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -8085,9 +8013,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "oA" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -8108,9 +8034,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "oB" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -8122,9 +8046,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "oC" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8169,9 +8091,7 @@
 "oG" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "oH" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -8263,9 +8183,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "oP" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -8313,7 +8231,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/hallway)
 "oS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -8391,9 +8309,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "oY" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
@@ -9427,7 +9343,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "ra" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -9440,9 +9356,7 @@
 /area/maintenance/tool_storage)
 "rb" = (
 /turf/simulated/wall,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "rc" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
@@ -9454,14 +9368,10 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "rd" = (
 /turf/simulated/wall/r_wall,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "re" = (
 /obj/machinery/door/airlock{
 	name = "Showers and Decontamination"
@@ -9484,9 +9394,7 @@
 /obj/random/maintenance/engineering,
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "rg" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -9495,16 +9403,12 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "rh" = (
 /obj/structure/ladder/up,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "ri" = (
 /obj/structure/railing{
 	dir = 4
@@ -9516,9 +9420,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "rj" = (
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled/steel,
@@ -9535,14 +9437,10 @@
 /obj/random/trash_pile,
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "rm" = (
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "rn" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hopdouble,
@@ -9551,16 +9449,12 @@
 "ro" = (
 /obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/space)
 "rp" = (
 /obj/machinery/space_heater,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "rq" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -9600,9 +9494,7 @@
 	},
 /obj/effect/overlay/snow/wall,
 /turf/simulated/floor/plating/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/space)
 "rt" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_eva{
@@ -9627,9 +9519,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/space)
 "rw" = (
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(10,47)
@@ -9770,9 +9660,7 @@
 /obj/structure/catwalk,
 /obj/structure/railing,
 /turf/simulated/open/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/space)
 "rG" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -9802,9 +9690,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "rI" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -9851,24 +9737,18 @@
 	dir = 4
 	},
 /turf/simulated/open/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/space)
 "rM" = (
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/space)
 "rN" = (
 /obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/open/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/space)
 "rO" = (
 /obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -10044,9 +9924,7 @@
 	dir = 1
 	},
 /turf/simulated/open/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/space)
 "sj" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -10128,9 +10006,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/space)
 "sr" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -10514,9 +10390,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "sW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -11047,9 +10921,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "tJ" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -11060,9 +10932,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "tK" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -11385,7 +11255,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "uk" = (
 /obj/structure/railing{
 	dir = 1
@@ -11664,9 +11534,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "uG" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/brown/bordercorner,
@@ -11676,9 +11544,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "uH" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -11691,9 +11557,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "uI" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -11706,9 +11570,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "uJ" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -11721,9 +11583,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "uK" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -11734,9 +11594,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "uL" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -11750,9 +11608,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "uM" = (
 /turf/simulated/wall/r_wall,
 /area/rift/turbolift/maint)
@@ -12561,9 +12417,7 @@
 	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "wg" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -12868,7 +12722,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
+/area/maintenance/research/lower)
 "wL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -12935,9 +12789,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "wU" = (
 /obj/structure/table/woodentable,
 /obj/item/flame/candle,
@@ -13041,7 +12893,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "xd" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -13115,20 +12967,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/medical/medbay_emt_bay)
 "xm" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/purple/bordercorner2{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/obj/effect/floor_decal/rust,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/research/lower)
 "xn" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -13213,7 +13055,7 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/maintenance/tool_storage)
+/area/maintenance/research/lower)
 "xw" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_science{
@@ -13671,9 +13513,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "yz" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -14610,9 +14450,7 @@
 /turf/simulated/wall{
 	can_open = 1
 	},
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "AA" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/simulated/floor/plating,
@@ -14781,9 +14619,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "AT" = (
 /obj/structure/closet/excavation,
 /obj/structure/window/reinforced{
@@ -14805,7 +14641,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "AU" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/effect/floor_decal/industrial/outline/red,
@@ -15187,8 +15023,8 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/secondary/civilian_hallway_mid)
 "BK" = (
-/turf/simulated/floor/tiled/monotile,
-/area/rift/surfacebase/outside/outside1)
+/turf/simulated/floor/plating,
+/area/maintenance/research/lower)
 "BL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -15358,14 +15194,10 @@
 "Ce" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "Cf" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "Cg" = (
 /obj/structure/railing{
 	dir = 8
@@ -15379,7 +15211,7 @@
 "Cj" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
+/area/maintenance/research/lower)
 "Ck" = (
 /obj/machinery/door/airlock/maintenance/int{
 	req_one_access = list(38)
@@ -15528,9 +15360,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "CE" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -15938,14 +15768,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "Dr" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/turf/simulated/wall,
+/area/rnd/xenoarch_storage)
 "Ds" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Confinement Processing";
@@ -16108,7 +15932,7 @@
 "DJ" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
+/area/maintenance/research/lower)
 "DK" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
@@ -16304,7 +16128,7 @@
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "Ed" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -16529,9 +16353,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "EF" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
@@ -17091,9 +16913,7 @@
 "FO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "FP" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
@@ -17476,9 +17296,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "GC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -17598,9 +17416,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "GO" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -17665,7 +17481,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "GU" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
@@ -17740,9 +17556,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "Hd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -18067,7 +17881,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
+/area/maintenance/research/lower)
 "HF" = (
 /obj/structure/table/reinforced,
 /obj/item/forensics/sample_kit,
@@ -18218,9 +18032,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "HV" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/grille,
@@ -18522,9 +18334,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "ID" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
@@ -18791,7 +18601,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
+/area/maintenance/research/lower)
 "Jj" = (
 /turf/simulated/wall,
 /area/hallway/secondary/civilian_hallway_mid)
@@ -19401,7 +19211,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
+/area/maintenance/research/lower)
 "KE" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -20811,7 +20621,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "Nt" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
@@ -21358,7 +21168,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
+/area/maintenance/research/lower)
 "OC" = (
 /obj/structure/bookcase{
 	name = "bookcase (Fiction)"
@@ -21775,7 +21585,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "Pw" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -22313,9 +22123,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "QB" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
@@ -22568,7 +22376,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "Rd" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -22623,9 +22431,7 @@
 "Ri" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "Rk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -22811,19 +22617,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "RC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/turf/simulated/wall/r_wall,
+/area/rnd/xenoarch_storage)
 "RD" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
@@ -23330,9 +23125,7 @@
 "SL" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_grid,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "SM" = (
 /obj/structure/table/woodentable,
 /obj/machinery/newscaster{
@@ -23918,9 +23711,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "Ug" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -24654,7 +24445,7 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "VD" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -24685,9 +24476,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "VI" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -25202,7 +24991,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
+/area/rnd/xenoarch_storage)
 "WH" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -25369,7 +25158,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
+/area/maintenance/research/lower)
 "WW" = (
 /obj/effect/floor_decal/rust,
 /obj/item/stool,
@@ -26013,9 +25802,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/foyer{
-	name = "\improper Cargo Bay Lobby"
-	})
+/area/quartermaster/foyer)
 "Yl" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
@@ -26548,9 +26335,7 @@
 /obj/structure/foamedmetal,
 /obj/structure/grille,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Surface Engineering EVA Maintenance"
-	})
+/area/maintenance/engineering/upper)
 "Zw" = (
 /obj/effect/decal/cleanable/vomit{
 	icon_state = "vomit_3";
@@ -40906,11 +40691,11 @@ rd
 rd
 rd
 Cf
-rb
-rd
-rd
-yX
-yX
+Dr
+RC
+RC
+Dr
+Dr
 aO
 aO
 aO
@@ -41100,11 +40885,11 @@ Md
 mm
 ZT
 Cf
-rb
+Dr
 Rc
 Pv
 GT
-yX
+Dr
 aO
 aO
 aO
@@ -41294,11 +41079,11 @@ wF
 xK
 ZT
 SL
-rb
+Dr
 Ec
 bg
 qZ
-yX
+Dr
 aO
 aO
 aO
@@ -41488,11 +41273,11 @@ YN
 xK
 ZT
 Cf
-rb
+Dr
 VC
 uj
 xc
-yX
+Dr
 aO
 aO
 aO
@@ -41682,11 +41467,11 @@ AB
 Su
 ZT
 Cf
-rb
+Dr
 WG
 Ns
 AT
-yX
+Dr
 aO
 aO
 aO
@@ -41876,11 +41661,11 @@ ZT
 ZT
 ZT
 wj
-rb
-yX
+Dr
+Dr
 on
-yX
-yX
+Dr
+Dr
 aO
 aO
 aO
@@ -42072,9 +41857,9 @@ lE
 cx
 UV
 lE
-RC
-xm
-fw
+Un
+UV
+BA
 aO
 aO
 aO
@@ -42267,8 +42052,8 @@ OW
 Oz
 Kj
 oR
-BK
-BK
+Ae
+Ae
 aO
 aO
 aO
@@ -42460,9 +42245,9 @@ yc
 GI
 Xm
 Us
-Dr
-Dr
-Dr
+yc
+yc
+yc
 aO
 aO
 aO
@@ -43612,14 +43397,14 @@ Fg
 Fq
 RN
 wK
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
 zo
 XP
 MI
@@ -43999,14 +43784,14 @@ FL
 TA
 zP
 RN
-aY
-aY
-aY
-aY
+BK
+BK
+BK
+BK
 OB
 KD
-aY
-aY
+BK
+BK
 DJ
 Cj
 DJ
@@ -44203,10 +43988,10 @@ yN
 OZ
 OZ
 OZ
-aY
-aY
-aY
-aY
+BK
+BK
+BK
+BK
 DJ
 BD
 BD
@@ -44402,8 +44187,8 @@ zO
 zO
 zO
 Cj
-yX
-aO
+fw
+fw
 aO
 aO
 aO
@@ -44595,9 +44380,9 @@ ma
 Dc
 YF
 zO
-aY
-aY
-aO
+BK
+BK
+fw
 aO
 aO
 aO
@@ -44789,9 +44574,9 @@ Th
 YF
 YF
 zO
-aY
-aY
-aO
+BK
+BK
+fw
 aO
 aO
 aO
@@ -44983,9 +44768,9 @@ HN
 HN
 Yp
 zO
-aY
-aY
-aO
+BK
+BK
+fw
 aO
 aO
 aO
@@ -45177,9 +44962,9 @@ Cc
 xn
 sN
 zO
-aY
-aY
-aO
+BK
+BK
+fw
 aO
 aO
 aO
@@ -45371,9 +45156,9 @@ YT
 NR
 FI
 zO
-aY
-aY
-aO
+BK
+BK
+fw
 aO
 aO
 aO
@@ -45565,9 +45350,9 @@ lO
 JZ
 JZ
 zO
-aY
-aY
-aO
+BK
+BK
+fw
 aO
 aO
 aO
@@ -45759,9 +45544,9 @@ As
 Dn
 JZ
 zO
-aY
-aY
-aO
+BK
+BK
+fw
 aO
 aO
 aO
@@ -45930,8 +45715,8 @@ qu
 qD
 qH
 qN
-nM
-qN
+fw
+lT
 lT
 lT
 RN
@@ -45953,9 +45738,9 @@ zO
 zO
 zO
 zO
-aY
-aY
-aO
+BK
+BK
+fw
 aO
 aO
 aO
@@ -46125,31 +45910,31 @@ oa
 Eg
 bi
 xv
-bi
+xm
 DJ
 DJ
 DJ
 DJ
 DJ
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aO
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+fw
 aO
 aO
 aO
@@ -46318,32 +46103,32 @@ qC
 qN
 qN
 qo
-nM
-qC
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aO
+fw
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+BK
+fw
 aO
 aO
 aO
@@ -46508,36 +46293,36 @@ Gz
 aN
 CE
 aN
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-yX
-aO
+nM
+nM
+nM
+nM
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
 aO
 aO
 aO

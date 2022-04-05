@@ -212,11 +212,6 @@
 "aG" = (
 /turf/simulated/wall,
 /area/maintenance/engineering/upper)
-"aH" = (
-/turf/simulated/wall,
-/area/hallway/primary/central_two{
-	name = "\improper Central Primary Hallway - Underground One"
-	})
 "aI" = (
 /obj/structure/closet/firecloset/full,
 /obj/structure/railing{
@@ -5464,11 +5459,6 @@
 "kk" = (
 /turf/simulated/floor/tiled/dark,
 /area/engineering/lower/atmos_lockers)
-"kl" = (
-/turf/simulated/wall,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
 "km" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 8
@@ -6726,9 +6716,7 @@
 "my" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "mz" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -8804,9 +8792,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "pF" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -10353,9 +10339,7 @@
 /area/hallway/secondary/engineering_hallway)
 "sa" = (
 /turf/simulated/wall,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sb" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -10414,9 +10398,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sj" = (
 /obj/item/pickaxe,
 /turf/simulated/floor/outdoors/snow,
@@ -10644,9 +10626,7 @@
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sL" = (
 /obj/structure/inflatable/door,
 /turf/simulated/floor/plating,
@@ -10660,18 +10640,14 @@
 	},
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sN" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sO" = (
 /obj/structure/railing{
 	dir = 1
@@ -10679,9 +10655,7 @@
 /obj/structure/closet/crate,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sP" = (
 /obj/structure/railing{
 	dir = 1
@@ -10692,22 +10666,16 @@
 /obj/item/clothing/head/hardhat/red,
 /obj/random/contraband,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sQ" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sR" = (
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sS" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
@@ -10725,9 +10693,7 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sU" = (
 /obj/structure/railing{
 	dir = 8
@@ -10735,9 +10701,7 @@
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sV" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
@@ -10751,9 +10715,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sX" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -10762,9 +10724,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /turf/simulated/wall,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "sZ" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor/pointy{
@@ -10780,9 +10740,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tb" = (
 /obj/structure/lattice,
 /turf/simulated/sky/lythios43c,
@@ -10805,9 +10763,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tf" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -10816,9 +10772,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tg" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -10827,9 +10781,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "th" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -10838,9 +10790,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "ti" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -10849,9 +10799,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tj" = (
 /obj/effect/floor_decal/borderfloorblack/cee{
 	dir = 1
@@ -10862,15 +10810,11 @@
 "tk" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tl" = (
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tm" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -10879,9 +10823,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tn" = (
 /obj/structure/railing{
 	dir = 8
@@ -10895,9 +10837,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "to" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -10906,9 +10846,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tp" = (
 /obj/structure/railing{
 	dir = 8
@@ -10919,9 +10857,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tq" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/engineering,
@@ -10934,9 +10870,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tr" = (
 /obj/structure/railing{
 	dir = 8
@@ -10944,9 +10878,7 @@
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "ts" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -10967,9 +10899,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tt" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -10983,9 +10913,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tu" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/cable/green{
@@ -11159,9 +11087,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tD" = (
 /obj/structure/railing{
 	dir = 8
@@ -11169,9 +11095,7 @@
 /obj/structure/closet/firecloset/full,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tE" = (
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
@@ -11184,9 +11108,7 @@
 	dir = 4
 	},
 /turf/simulated/open,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "tI" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -11342,9 +11264,7 @@
 "AB" = (
 /obj/effect/zone_divider,
 /turf/simulated/wall,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "AP" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -11358,9 +11278,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "AQ" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/ladder{
@@ -11402,9 +11320,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "CH" = (
 /obj/effect/landmark/start{
 	name = "Station Engineer"
@@ -11416,9 +11332,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "Dx" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
@@ -11458,9 +11372,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "EV" = (
 /obj/structure/catwalk,
 /obj/structure/cable/cyan{
@@ -11623,9 +11535,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "Kb" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -11670,9 +11580,7 @@
 "Lr" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "LF" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -11682,9 +11590,7 @@
 /obj/structure/catwalk,
 /obj/effect/zone_divider,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Port Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "LG" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -11818,9 +11724,7 @@
 /obj/effect/floor_decal/rust,
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "Rj" = (
 /obj/machinery/firealarm{
 	dir = 3;
@@ -11847,9 +11751,7 @@
 "RA" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "Su" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12050,9 +11952,7 @@
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "WQ" = (
 /obj/structure/railing{
 	dir = 1
@@ -12071,9 +11971,7 @@
 /obj/random/cigarettes,
 /obj/item/flame/lighter/random,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering{
-	name = "Starboard Engineering Maintenance"
-	})
+/area/maintenance/engineering)
 "Xw" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -23385,11 +23283,11 @@ aa
 aa
 aa
 aa
-aH
 bA
 bA
 bA
-aH
+bA
+bA
 aa
 aa
 aa
@@ -23579,7 +23477,7 @@ aa
 aa
 aa
 aa
-aH
+bA
 bQ
 dN
 rb
@@ -30200,7 +30098,7 @@ LG
 Wu
 QX
 Xg
-kl
+sa
 sR
 sR
 sR
@@ -30394,7 +30292,7 @@ bG
 Cr
 RA
 CI
-kl
+sa
 sR
 sR
 sR
@@ -30585,17 +30483,17 @@ bG
 bG
 bG
 bG
-kl
+sa
 EU
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
 jo
 jo
 jo
@@ -30802,7 +30700,7 @@ to
 to
 to
 tC
-kl
+sa
 aa
 aa
 aa
@@ -30996,7 +30894,7 @@ tp
 tq
 tr
 tD
-kl
+sa
 aa
 aa
 aa
@@ -31156,41 +31054,41 @@ jG
 am
 am
 sK
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
-kl
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
+sa
 aa
 aa
 aa
@@ -31351,7 +31249,7 @@ mA
 am
 my
 sN
-kl
+sa
 aa
 aa
 aa
@@ -31545,7 +31443,7 @@ oN
 am
 my
 sO
-kl
+sa
 aa
 aa
 aa
@@ -31739,7 +31637,7 @@ am
 am
 my
 sP
-kl
+sa
 aa
 aa
 aa
@@ -31933,7 +31831,7 @@ my
 my
 my
 sQ
-kl
+sa
 aa
 aa
 aa
@@ -32127,7 +32025,7 @@ JW
 pE
 pE
 sR
-kl
+sa
 aa
 aa
 aa
@@ -32317,11 +32215,11 @@ Fe
 Xc
 Gq
 my
-kl
-kl
-kl
-kl
-kl
+sa
+sa
+sa
+sa
+sa
 aa
 aa
 aa
@@ -32510,8 +32408,8 @@ NO
 Xc
 Xc
 xf
-kl
-kl
+sa
+sa
 aa
 aa
 aa

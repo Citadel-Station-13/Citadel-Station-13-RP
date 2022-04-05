@@ -349,8 +349,6 @@
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
-/obj/item/gun/launcher/rocket,
-/obj/item/gun/launcher/rocket,
 /obj/item/gun/projectile/automatic/l6_saw,
 /obj/item/gun/projectile/automatic/l6_saw,
 /obj/item/ammo_magazine/m545saw,
@@ -16224,11 +16222,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "escape_shuttle_hatch_station";
-	locked = 1;
+/obj/machinery/door/airlock/glass_external/public{
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -16404,11 +16398,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "escape_shuttle_hatch_station";
-	locked = 1;
+/obj/machinery/door/airlock/glass_external/public{
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/floor/tiled/steel_grid,

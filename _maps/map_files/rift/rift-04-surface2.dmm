@@ -461,9 +461,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "aY" = (
 /obj/machinery/floodlight,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2446,9 +2444,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "eM" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -3198,9 +3194,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "gk" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/cable/green{
@@ -4100,9 +4094,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "hL" = (
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/sleeper)
@@ -4256,9 +4248,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "id" = (
 /obj/machinery/recharge_station,
 /obj/structure/window/reinforced/tinted/frosted{
@@ -4294,9 +4284,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "ig" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4502,9 +4490,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "iB" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -4733,9 +4719,7 @@
 	},
 /obj/structure/window/reinforced/tinted/frosted,
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "iX" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -4806,9 +4790,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "je" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -5095,9 +5077,7 @@
 	},
 /obj/machinery/camera/network/research,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "jD" = (
 /obj/machinery/light/small,
 /obj/machinery/power/apc{
@@ -5293,9 +5273,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "jY" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/monotile,
@@ -5351,9 +5329,7 @@
 	},
 /obj/machinery/camera/network/research,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "kd" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -5477,9 +5453,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "kn" = (
 /obj/structure/frame{
 	anchored = 1
@@ -5808,9 +5782,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "kO" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -6575,9 +6547,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "ml" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -6680,9 +6650,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "mu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 6
@@ -7667,9 +7635,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "oc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -7681,9 +7647,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "od" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
@@ -8443,9 +8407,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "pt" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -8517,9 +8479,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "pz" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -8584,9 +8544,7 @@
 /obj/structure/railing,
 /obj/structure/stairs/spawner/east,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "pG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -9033,9 +8991,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "qH" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 8
@@ -9389,9 +9345,7 @@
 /area/medical/chemistry)
 "ro" = (
 /turf/simulated/open,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "rp" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -9464,9 +9418,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "rv" = (
 /obj/structure/catwalk,
 /obj/machinery/alarm{
@@ -10042,9 +9994,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "su" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -10387,9 +10337,7 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "tl" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 8
@@ -10526,9 +10474,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "tz" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
@@ -10704,9 +10650,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "tO" = (
 /obj/structure/table/reinforced,
 /obj/machinery/reagentgrinder,
@@ -10832,9 +10776,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "uf" = (
 /obj/machinery/transhuman/resleever,
 /obj/effect/floor_decal/corner/paleblue{
@@ -10921,9 +10863,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "uk" = (
 /obj/machinery/shower{
 	pixel_y = 17
@@ -11198,9 +11138,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "uJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11826,9 +11764,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "vO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12265,9 +12201,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/machinery/camera/network/research,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "wF" = (
 /obj/structure/railing{
 	dir = 4
@@ -12488,9 +12422,7 @@
 "wY" = (
 /obj/structure/stairs/spawner/east,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "wZ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/space_heater,
@@ -12614,9 +12546,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "xm" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/mist,
@@ -12988,9 +12918,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "xX" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -13009,9 +12937,7 @@
 	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "ya" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -13465,9 +13391,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "yT" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -13613,9 +13537,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "zg" = (
 /obj/item/radio/intercom{
 	pixel_y = -24
@@ -13659,9 +13581,7 @@
 "zj" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "zk" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Locker Room";
@@ -13839,9 +13759,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "zC" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -13910,9 +13828,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "zI" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -14815,9 +14731,7 @@
 /area/medical/surgery)
 "Bp" = (
 /turf/simulated/wall,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Bq" = (
 /obj/machinery/door/window/brigdoor/westright{
 	dir = 1;
@@ -15624,9 +15538,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "CN" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/cable/green{
@@ -15658,9 +15570,7 @@
 "CP" = (
 /obj/structure/railing,
 /turf/simulated/open,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "CQ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -15687,9 +15597,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "CT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -16080,9 +15988,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "DI" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/nifsofts_medical,
@@ -16548,9 +16454,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Eq" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -16671,9 +16575,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "EA" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -16943,9 +16845,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "EV" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -17112,9 +17012,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Fm" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -17188,9 +17086,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Fu" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -17363,9 +17259,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "FL" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -17923,9 +17817,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "GF" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -17986,9 +17878,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "GJ" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rsurface/level2)
@@ -18540,9 +18430,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "HI" = (
 /obj/random/trash,
 /obj/structure/mirror{
@@ -18711,9 +18599,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "HW" = (
 /obj/structure/railing{
 	dir = 8
@@ -18863,9 +18749,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Im" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
@@ -18917,9 +18801,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Ir" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monotile,
@@ -19396,9 +19278,7 @@
 /area/rift/surfacebase/outside/outside2)
 "Jg" = (
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Jh" = (
 /obj/structure/toilet{
 	pixel_y = 9
@@ -19751,9 +19631,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "JQ" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/white{
@@ -20101,9 +19979,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Kv" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -20388,9 +20264,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "KX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
@@ -20952,9 +20826,7 @@
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/purple/bordercorner2,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "LV" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -21349,9 +21221,7 @@
 /obj/machinery/door/airlock/maintenance/rnd,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "MF" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
@@ -21415,9 +21285,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "MK" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -21931,9 +21799,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "NK" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/nif/bad,
@@ -22989,9 +22855,7 @@
 /area/hallway/primary/surfacetwo)
 "PB" = (
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "PC" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light{
@@ -23358,9 +23222,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Qk" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -23816,9 +23678,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Rd" = (
 /obj/structure/inflatable/door,
 /turf/simulated/floor/plating,
@@ -23854,9 +23714,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Rg" = (
 /obj/machinery/alarm{
 	desc = " ";
@@ -23933,9 +23791,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Rn" = (
 /obj/structure/table/reinforced,
 /obj/machinery/photocopier,
@@ -24065,9 +23921,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "RB" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -24172,9 +24026,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "RL" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
@@ -24666,9 +24518,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "SE" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
@@ -25080,9 +24930,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Tr" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/fire{
@@ -25586,9 +25434,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Ul" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
@@ -25637,9 +25483,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Up" = (
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_y = 16
@@ -25908,9 +25752,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "UR" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -26237,9 +26079,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Vy" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
@@ -27018,9 +26858,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "WT" = (
 /obj/structure/railing{
 	dir = 8
@@ -27066,9 +26904,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "WZ" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -27181,9 +27017,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Xi" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
@@ -27641,9 +27475,7 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "XW" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -28369,9 +28201,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "Zo" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
@@ -28620,9 +28450,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rnd/hallway{
-	name = "\improper Research Upper Hallway"
-	})
+/area/rnd/research/researchdivision)
 "ZF" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
