@@ -26746,6 +26746,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"uRJ" = (
+/mob/living/bot/medibot/medass,
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "uRN" = (
 /obj/machinery/light{
 	dir = 4
@@ -40953,7 +40957,7 @@ ujM
 rMx
 saO
 iHe
-vMK
+uRJ
 mzf
 fWw
 dTK
