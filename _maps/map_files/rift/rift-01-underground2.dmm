@@ -1018,11 +1018,10 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "cz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent_scrubber{
 	dir = 1;
 	frequency = 1438;
-	name = "Gas Scrubber";
-	use_power = 0
+	name = "Gas Scrubber"
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
@@ -1222,10 +1221,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "cW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent_scrubber{
 	frequency = 1438;
-	name = "Gas Scrubber";
-	use_power = 0
+	name = "Gas Scrubber"
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
@@ -10786,6 +10784,23 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo/mining)
+"Kv" = (
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	name = "Supermatter Core Blast Door"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/machinery/alarm{
+	desc = " ";
+	pixel_y = 24
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_core)
 "Kx" = (
 /obj/machinery/light{
 	dir = 8
@@ -27203,7 +27218,7 @@ bo
 bx
 iV
 bQ
-cw
+Kv
 cw
 cw
 bQ

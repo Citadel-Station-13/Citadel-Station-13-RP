@@ -29,6 +29,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 9
 	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "ac" = (
@@ -369,6 +374,11 @@
 /obj/machinery/alarm{
 	desc = " ";
 	pixel_y = 24
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
@@ -1661,6 +1671,11 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "de" = (
@@ -1791,6 +1806,17 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
+"dq" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Public External Airlock"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/hallway/secondary/docking_hallway)
 "dr" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -1910,9 +1936,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "dy" = (
-/obj/machinery/light/spot{
-	pixel_y = 32
-	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/emt/cockpit)
 "dz" = (
@@ -2619,6 +2642,11 @@
 "eI" = (
 /obj/effect/landmark/away,
 /obj/machinery/hologram/holopad,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway)
 "eJ" = (
@@ -3512,6 +3540,11 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "gt" = (
@@ -3569,14 +3602,17 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "gy" = (
-/obj/machinery/atmospherics/pipe/tank/air{
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/power/smes/buildable{
+	charge = 1.5e+007;
+	cur_coils = 3
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/cable/cyan{
-	d1 = 1;
 	d2 = 4;
-	icon_state = "1-4"
+	icon_state = "0-4"
 	},
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
@@ -4275,6 +4311,15 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
+"hN" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "hO" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4933,6 +4978,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "iZ" = (
@@ -5047,6 +5097,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
+"jm" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "jn" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
@@ -5775,6 +5834,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "kK" = (
@@ -6170,9 +6230,9 @@
 /area/maintenance/commandmaint)
 "lq" = (
 /obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
@@ -6412,10 +6472,8 @@
 	name = "south bump";
 	pixel_y = -24
 	},
-/obj/structure/cable/cyan{
-	d2 = 8;
-	icon_state = "0-8"
-	},
+/obj/structure/cable/cyan,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "lW" = (
@@ -6540,7 +6598,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/bridge)
 "mh" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/machinery/light/spot{
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/cockpit)
 "mi" = (
 /obj/machinery/power/apc{
@@ -6851,10 +6912,6 @@
 /area/bridge/bunker)
 "mQ" = (
 /obj/structure/table/steel,
-/obj/item/tank/phoron{
-	pixel_x = 5;
-	pixel_y = 6
-	},
 /obj/machinery/cell_charger,
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 9
@@ -7137,6 +7194,8 @@
 	dir = 8;
 	light_range = 12
 	},
+/obj/item/storage/toolbox/mechanical,
+/obj/item/tank/phoron,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/cockpit)
 "nx" = (
@@ -7187,7 +7246,7 @@
 /obj/effect/shuttle_landmark/rift/deck3/courser,
 /obj/effect/overmap/visitable/ship/landable/courser,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "nC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -7223,6 +7282,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
+"nG" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/secondary/docking_hallway)
 "nH" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -7378,6 +7445,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
+"nU" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "nW" = (
 /obj/structure/flora/pottedplant/minitree{
 	pixel_y = 12
@@ -7410,6 +7486,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
+"nY" = (
+/obj/structure/shuttle/engine/heater,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/emt/general)
 "nZ" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
@@ -7569,6 +7654,15 @@
 	pixel_y = 30
 	},
 /obj/structure/bed/chair/shuttle,
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable/cyan{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "oq" = (
@@ -9055,7 +9149,7 @@
 /obj/machinery/door/airlock/voidcraft/vertical,
 /obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "rB" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -9435,12 +9529,16 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "ss" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 4
+/obj/structure/bed/chair/shuttle{
+	dir = 1
 	},
-/obj/structure/railing,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/emt/cockpit)
 "st" = (
 /obj/machinery/photocopier/faxmachine{
 	department = "Command Meeting Room"
@@ -9923,22 +10021,21 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "tw" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
+/obj/machinery/light/small{
+	dir = 8
 	},
-/obj/structure/cable/cyan{
-	d2 = 2;
-	icon_state = "0-2"
+/obj/machinery/power/terminal,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
 	},
 /obj/structure/cable/cyan{
 	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d2 = 4;
+	icon_state = "1-4"
 	},
-/obj/machinery/light/small{
-	dir = 8
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
@@ -10441,11 +10538,13 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "uy" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 4
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
+/turf/simulated/shuttle/wall/voidcraft/green,
+/area/shuttle/civvie/general)
 "uz" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
@@ -11225,6 +11324,20 @@
 	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
+"we" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/hallway/secondary/docking_hallway)
 "wf" = (
 /obj/structure/sink{
 	dir = 4;
@@ -11973,6 +12086,14 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
+"xD" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "xE" = (
 /obj/effect/landmark/shuttle,
 /obj/effect/floor_decal/industrial/halfstair{
@@ -12223,7 +12344,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "yf" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -12242,6 +12363,11 @@
 "yh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/general)
@@ -12502,26 +12628,19 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "yJ" = (
-/obj/machinery/meter,
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/cyan{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
-	dir = 4
-	},
 /obj/machinery/light/small{
 	dir = 8
+	},
+/obj/machinery/power/terminal,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -12601,7 +12720,15 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "yS" = (
-/obj/machinery/power/terminal,
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 10
+	},
+/obj/machinery/meter,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "yT" = (
@@ -12818,6 +12945,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/hop)
+"zu" = (
+/obj/structure/railing,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "zw" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
@@ -13379,13 +13515,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "AE" = (
-/obj/machinery/atmospherics/pipe/tank/air{
-	dir = 1
+/obj/machinery/power/smes/buildable{
+	charge = 1.5e+007;
+	cur_coils = 3
 	},
 /obj/structure/cable/cyan{
-	d1 = 1;
 	d2 = 4;
-	icon_state = "1-4"
+	icon_state = "0-4"
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -13404,13 +13540,13 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
 "AI" = (
-/obj/structure/cable/cyan{
-	d2 = 8;
-	icon_state = "0-8"
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 1
 	},
-/obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
-	cur_coils = 3
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -13628,6 +13764,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
+"Bi" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/docking_hallway)
 "Bj" = (
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
@@ -13662,6 +13806,11 @@
 "Bo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
@@ -13924,6 +14073,15 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable/cyan{
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
@@ -14290,6 +14448,14 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/cafeteria)
+"CP" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/docking_hallway)
 "CQ" = (
 /obj/structure/railing{
 	dir = 8
@@ -14452,8 +14618,13 @@
 /turf/simulated/floor/tiled/monotile,
 /area/bridge)
 "Dm" = (
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/excursion/cargo)
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/emt/general)
 "Dn" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
@@ -14551,6 +14722,11 @@
 "Dz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/general)
@@ -14658,6 +14834,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
+"DL" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/courser/cockpit)
 "DM" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/folder/blue_captain,
@@ -15131,11 +15310,13 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfaceeva/aa/cliff_north)
 "EQ" = (
-/obj/machinery/atmospherics/unary/engine/bigger{
-	dir = 8
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/excursion/cargo)
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/civvie/general)
 "ER" = (
 /obj/structure/railing/grey,
 /obj/machinery/light{
@@ -15552,6 +15733,11 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "FL" = (
@@ -15932,6 +16118,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway)
+"GF" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "GG" = (
 /obj/structure/toilet{
 	pixel_y = 9
@@ -16206,6 +16401,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 9
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "Hj" = (
@@ -16278,7 +16478,7 @@
 /area/shuttle/excursion/cargo)
 "Hp" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Hq" = (
 /obj/machinery/vending/fitness{
 	dir = 4
@@ -16402,7 +16602,7 @@
 /area/bridge/bridge_hallway)
 "HB" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "HC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -16516,7 +16716,7 @@
 "HS" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "HT" = (
 /turf/simulated/wall/r_wall,
 /area/ai)
@@ -16568,7 +16768,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Ia" = (
 /obj/structure/sign/department/bar{
 	pixel_x = -32;
@@ -16597,6 +16797,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 10
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "Ic" = (
@@ -16607,7 +16812,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "Ie" = (
 /obj/structure/closet/crate/secure{
 	name = "Plutonics Crate";
@@ -16656,7 +16861,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "Ii" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
@@ -16861,7 +17066,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "IC" = (
 /obj/machinery/vending/coffee{
 	dir = 4
@@ -16979,7 +17184,7 @@
 	},
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "IP" = (
 /obj/machinery/power/terminal,
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -17002,7 +17207,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "IR" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -17035,14 +17240,14 @@
 	},
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "IV" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "IW" = (
 /obj/structure/handrail,
 /obj/machinery/airlock_sensor{
@@ -17429,6 +17634,26 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
+"JL" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/docking_hallway)
 "JM" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/meter,
@@ -17438,7 +17663,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "JN" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -17631,7 +17856,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "Kf" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -17927,7 +18152,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "KL" = (
 /obj/structure/fuel_port{
 	pixel_y = 30
@@ -17943,7 +18168,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 9
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "KP" = (
@@ -18032,7 +18257,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "Lc" = (
 /obj/machinery/computer/ship/sensors{
 	dir = 4
@@ -18270,9 +18495,25 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/ai)
+"LG" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/hallway/secondary/docking_hallway)
 "LH" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "LI" = (
 /obj/structure/table/wooden_reinforced,
@@ -18494,7 +18735,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Mi" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -18532,7 +18773,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Mm" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
@@ -18575,7 +18816,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 6
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "Mr" = (
@@ -18787,7 +19028,7 @@
 /obj/structure/handrail,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "MN" = (
 /obj/item/digestion_remains/ribcage,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
@@ -18878,7 +19119,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Nc" = (
 /obj/machinery/conveyor{
 	id = "courser_magazine_1"
@@ -18889,7 +19130,7 @@
 	name = "Magazine One Input"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Nd" = (
 /obj/structure/girder,
 /obj/effect/overlay/snow/floor/pointy{
@@ -18943,7 +19184,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "Nj" = (
 /obj/machinery/door/airlock/maintenance/engi{
 	name = "Elevator Shaft Access";
@@ -19155,7 +19396,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "NE" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Ground Defence Access"
@@ -19179,7 +19420,7 @@
 	},
 /obj/machinery/computer/shuttle_control/explore/courser,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "NI" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -19213,7 +19454,7 @@
 	pixel_y = 8
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "NM" = (
 /obj/machinery/computer/borgupload,
 /turf/simulated/floor/tiled/techfloor,
@@ -19402,7 +19643,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Od" = (
 /obj/machinery/computer/ship/engines{
 	dir = 4
@@ -19455,7 +19696,7 @@
 	id = "courser_magazine_1"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Oi" = (
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
@@ -19483,7 +19724,7 @@
 	name = "Cannon Magazine One"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Ol" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -19688,7 +19929,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "OI" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -19867,10 +20108,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "OY" = (
 /turf/simulated/wall,
 /area/maintenance/bar/lower)
+"OZ" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/courser/cockpit)
 "Pb" = (
 /obj/machinery/computer/secure_data,
 /obj/effect/floor_decal/borderfloor{
@@ -20043,6 +20287,11 @@
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "Pu" = (
@@ -20312,7 +20561,7 @@
 	name = "shuttle beacon"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "Qc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -20346,7 +20595,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Qf" = (
 /obj/machinery/newscaster{
 	pixel_y = -32
@@ -20444,7 +20693,7 @@
 	pixel_y = -34
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Qp" = (
 /obj/structure/sign/warning/hot_exhaust{
 	pixel_y = -32
@@ -20530,19 +20779,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Qy" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	name = "battery hatch"
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "QA" = (
 /obj/machinery/light,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "QB" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
@@ -20774,7 +21023,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "QY" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -20785,7 +21034,7 @@
 	name = "Cannon Chamber Shroud"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "QZ" = (
 /obj/machinery/telecomms/processor/preset_three,
 /turf/simulated/floor/tiled/dark{
@@ -21314,7 +21563,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "Sf" = (
@@ -21333,7 +21582,7 @@
 	id = "courser_battery"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Sh" = (
 /obj/machinery/holoposter{
 	pixel_y = -32
@@ -21370,7 +21619,7 @@
 	id = "courser_battery"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Sn" = (
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -21784,7 +22033,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "To" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -21799,6 +22048,15 @@
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
+"Tp" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Tq" = (
 /obj/structure/railing{
 	dir = 4
@@ -21846,7 +22104,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Tx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -21904,7 +22162,7 @@
 	name = "Cannon Barrel Shutter"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "TC" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
@@ -22082,7 +22340,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "Ub" = (
 /obj/effect/decal/mecha_wreckage/gygax,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
@@ -22421,6 +22679,11 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "UL" = (
@@ -22449,7 +22712,7 @@
 	},
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "UR" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/locker/laundry_arrival)
@@ -22511,7 +22774,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "UY" = (
-/obj/machinery/power/terminal,
+/obj/machinery/atmospherics/unary/heater{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "UZ" = (
@@ -22828,7 +23098,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "VN" = (
 /obj/machinery/door/blast/regular{
 	dir = 2;
@@ -22855,16 +23125,16 @@
 	id = "courser_magazine_2"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "VR" = (
-/obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
-	cur_coils = 3
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 8
+	},
 /obj/structure/cable/cyan{
+	d1 = 1;
 	d2 = 8;
-	icon_state = "0-8"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
@@ -22945,7 +23215,7 @@
 	name = "Cannon Magazine Two"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Wa" = (
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
@@ -23080,7 +23350,7 @@
 /obj/machinery/recharge_station,
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "Ws" = (
 /obj/structure/closet/crate,
 /obj/item/stock_parts/subspace/amplifier,
@@ -23103,7 +23373,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "Wv" = (
 /obj/machinery/smartfridge,
 /turf/simulated/wall,
@@ -23170,7 +23440,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "WC" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 10
@@ -23193,7 +23463,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "WE" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
@@ -23294,7 +23564,7 @@
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "WN" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -23500,7 +23770,7 @@
 /obj/structure/handrail,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Xj" = (
 /turf/unsimulated/wall/planetary/lythios43c{
 	desc = "Glacial permafrost, compacted harder than stone.";
@@ -23623,7 +23893,7 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "Xw" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
@@ -23652,7 +23922,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "XA" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -23698,7 +23968,7 @@
 	name = "Magazine Two Input"
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "XD" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -23778,7 +24048,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "XP" = (
 /obj/machinery/telecomms/bus/preset_one,
 /turf/simulated/floor/tiled/dark{
@@ -24278,7 +24548,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "YX" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/paleblue{
@@ -24467,7 +24737,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/cockpit)
 "Zt" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -24504,6 +24774,24 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
+"Zy" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside3)
+"Zz" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "ZA" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -24555,7 +24843,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/exploration/courser_dock)
+/area/shuttle/courser/general)
 "ZJ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -37219,9 +37507,9 @@ EJ
 DQ
 UD
 us
-us
-NG
-IA
+LH
+Zy
+Tp
 IA
 NG
 cH
@@ -37408,14 +37696,14 @@ Rq
 Mb
 EU
 Mk
-yT
+uy
 Bo
-Mk
-Mk
-us
-mn
+EQ
+EQ
+xD
+zu
 pX
-IA
+GF
 IA
 Hd
 cH
@@ -37609,7 +37897,7 @@ jq
 us
 mn
 jp
-IA
+GF
 IA
 eo
 eo
@@ -37803,7 +38091,7 @@ jq
 us
 mn
 jp
-IA
+GF
 IA
 sG
 Wo
@@ -37997,13 +38285,13 @@ Mk
 us
 tI
 jp
-IA
-IA
-sG
-GN
-GN
-sG
-ve
+jm
+hN
+dq
+LG
+LG
+dq
+Bi
 xJ
 QL
 Eu
@@ -38197,7 +38485,7 @@ eo
 Sc
 Sc
 gm
-cf
+JL
 xJ
 RS
 gm
@@ -39361,7 +39649,7 @@ Uu
 gm
 gm
 Hq
-oX
+nG
 oX
 an
 SJ
@@ -39555,7 +39843,7 @@ Uu
 Mw
 VK
 RJ
-oX
+nG
 oX
 xa
 fc
@@ -39749,7 +40037,7 @@ Uu
 Mw
 xE
 RJ
-oX
+nG
 oX
 ly
 fc
@@ -39943,7 +40231,7 @@ Uu
 gm
 gm
 mK
-oX
+nG
 oX
 an
 SJ
@@ -40331,7 +40619,7 @@ Uu
 gm
 gm
 mK
-oX
+nG
 oX
 an
 UR
@@ -40525,7 +40813,7 @@ Uu
 Mw
 VK
 RJ
-oX
+nG
 oX
 Pw
 VB
@@ -40577,8 +40865,8 @@ Pl
 Ot
 Ld
 Ld
-Dm
-EQ
+Ld
+Ld
 Ld
 Ld
 LA
@@ -40719,7 +41007,7 @@ Uu
 Mw
 xE
 RJ
-oX
+nG
 oX
 VS
 VB
@@ -40771,8 +41059,8 @@ QN
 Ot
 Iy
 us
-Dm
-Dm
+us
+us
 us
 Qp
 LA
@@ -40913,7 +41201,7 @@ Uu
 gm
 gm
 SE
-oX
+nG
 oX
 an
 UR
@@ -41158,8 +41446,8 @@ dw
 Vm
 zF
 tc
-uy
-ss
+uz
+yA
 me
 me
 me
@@ -41352,8 +41640,8 @@ Cp
 ll
 Zu
 EB
-LH
-LH
+IA
+IA
 cH
 cH
 cH
@@ -42265,13 +42553,13 @@ us
 us
 mj
 jp
-IA
-IA
-sG
-Wo
-Wo
-sG
-ve
+Zz
+hN
+dq
+we
+we
+dq
+CP
 xJ
 db
 WN
@@ -42459,7 +42747,7 @@ us
 us
 mn
 jp
-IA
+GF
 IA
 sG
 GN
@@ -42525,9 +42813,9 @@ JD
 Hp
 Ih
 JM
-HB
-Hp
-HB
+OZ
+DL
+OZ
 Wq
 YW
 Hp
@@ -42653,7 +42941,7 @@ us
 us
 mn
 jp
-IA
+GF
 IA
 eo
 eo
@@ -42829,7 +43117,7 @@ cH
 cH
 Nk
 us
-aM
+dy
 aM
 gJ
 kJ
@@ -42847,7 +43135,7 @@ Fp
 us
 mn
 AF
-IA
+GF
 IA
 Hn
 fq
@@ -42917,7 +43205,7 @@ NH
 OX
 UP
 WB
-HB
+OZ
 Hp
 Ye
 AC
@@ -43041,7 +43329,7 @@ us
 us
 us
 NG
-IA
+GF
 IA
 NG
 cH
@@ -43105,13 +43393,13 @@ AC
 yN
 Nv
 Hp
-HB
+OZ
 Lb
-HB
+OZ
 Qb
-HB
+OZ
 WD
-HB
+OZ
 HB
 Ye
 AC
@@ -43219,7 +43507,7 @@ Nk
 us
 bL
 gn
-hI
+ss
 lq
 mm
 nR
@@ -43230,12 +43518,12 @@ vt
 xG
 Aw
 Dc
-us
-us
-us
-us
-NG
-IA
+LH
+xD
+xD
+xD
+Zy
+nU
 IA
 NG
 cH
@@ -43301,9 +43589,9 @@ Nv
 Hp
 IQ
 Mh
-Hp
-Hp
-Hp
+DL
+DL
+DL
 WM
 ZI
 rA
@@ -43411,7 +43699,7 @@ cH
 cH
 Nk
 us
-aM
+dy
 aM
 iY
 lU
@@ -43422,9 +43710,9 @@ qP
 uL
 mE
 yh
-mE
+Dm
 Dz
-Gh
+nY
 Fp
 us
 mn

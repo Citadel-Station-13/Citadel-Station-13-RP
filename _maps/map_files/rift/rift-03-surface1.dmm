@@ -9,13 +9,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/recoveryrestroom)
 "ac" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 4;
-	name = "Atmospherics";
-	sortType = "Atmospherics"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
+/obj/effect/floor_decal/rust,
+/obj/structure/table/rack,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/plushie,
+/obj/random/maintenance/cargo,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
 "ad" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -33,261 +34,27 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/recoveryrestroom)
 "af" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 4;
-	name = "Janitor Closet";
-	sortType = "Janitor Closet"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
+/obj/effect/floor_decal/rust,
+/obj/structure/table/rack,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/contraband,
+/obj/random/maintenance/cargo,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
 "ag" = (
-/obj/structure/disposalpipe/sortjunction/flipped{
-	dir = 1;
-	name = "Cargo Bay";
-	sortType = "Cargo Bay"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
+/obj/effect/floor_decal/rust,
+/obj/structure/closet/crate,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/contraband,
+/obj/random/maintenance/cargo,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
 "ah" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"ai" = (
-/obj/structure/disposalpipe/tagger{
-	dir = 8;
-	name = "package tagger - Trash";
-	sort_tag = "Trash"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aj" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"ak" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 1;
-	name = "Bar";
-	sortType = "Bar"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"al" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 1;
-	name = "Kitchen";
-	sortType = "Kitchen"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"am" = (
-/obj/structure/disposalpipe/sortjunction/flipped{
-	name = "Chemistry";
-	sortType = "Chemistry"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"an" = (
-/obj/structure/disposalpipe/junction{
-	dir = 2;
-	icon_state = "pipe-j2"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"ao" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"ap" = (
-/obj/structure/disposalpipe/sortjunction/wildcard/flipped{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aq" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 2;
-	name = "CE Office";
-	sortType = "CE Office"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"ar" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 4;
-	name = "Library";
-	sortType = "Library"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"as" = (
-/obj/structure/disposalpipe/sortjunction/flipped{
-	name = "Engineering Break Room";
-	sortType = "Engineering Break Room"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"at" = (
-/obj/structure/disposalpipe/tagger/partial{
-	name = "partial tagger - Sorting Office";
-	sort_tag = "Sorting Office"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"au" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"av" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 8;
-	name = "Chapel";
-	sortType = "Chapel"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aw" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 8;
-	name = "Primary Tool Storage";
-	sortType = "Primary Tool Storage"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"ax" = (
-/obj/structure/disposalpipe/sortjunction/flipped{
-	name = "HoP Office";
-	sortType = "HoP Office"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"ay" = (
-/obj/structure/disposalpipe/sortjunction{
-	name = "CMO Office";
-	sortType = "CMO Office"
-	},
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"az" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 1;
-	name = "Security";
-	sortType = "Security"
-	},
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aA" = (
-/obj/structure/disposalpipe/sortjunction/flipped{
-	dir = 4;
-	name = "Morgue";
-	sortType = "Morgue"
-	},
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aB" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 2;
-	name = "Engineering";
-	sortType = "Engineering"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aC" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 1;
-	name = "QM Office";
-	sortType = "QM Office"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aD" = (
-/obj/structure/disposalpipe/sortjunction/flipped{
-	dir = 1;
-	name = "Sorting Office";
-	sortType = "Sorting Office"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aE" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 8;
-	name = "Exploration Hangar";
-	sortType = "Exploration Hangar"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aF" = (
-/obj/structure/disposalpipe/sortjunction{
-	name = "RD Office";
-	sortType = "RD Office"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aG" = (
-/obj/structure/disposalpipe/sortjunction/flipped{
-	name = "Trash";
-	sortType = "Trash"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aH" = (
-/obj/structure/disposalpipe/sortjunction/untagged/flipped{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aI" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 2;
-	name = "Forensics Lab";
-	sortType = "Forensics Lab"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aJ" = (
-/obj/structure/disposalpipe/sortjunction{
-	name = "Research";
-	sortType = "Research"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aK" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 4;
-	name = "Hydroponics";
-	sortType = "Hydroponics"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aL" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 4;
-	name = "Robotics";
-	sortType = "Robotics"
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"aM" = (
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
 "aN" = (
 /turf/simulated/wall,
 /area/maintenance/starboard)
@@ -12758,6 +12525,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "xa" = (
+/obj/random/cutout,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "xb" = (
@@ -14665,12 +14433,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "Bh" = (
-/obj/machinery/door/window/brigdoor/southleft{
-	dir = 4;
-	id = "Mental 1";
-	name = "Mental Patient Cell 1";
-	req_access = list(5)
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -14690,6 +14452,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "Mental 1";
+	name = "Mental Patient Cell 1"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_1)
@@ -15500,12 +15266,6 @@
 /turf/simulated/wall,
 /area/rnd/hallway)
 "CX" = (
-/obj/machinery/door/window/brigdoor/southright{
-	dir = 4;
-	id = "Mental 2";
-	name = "Mental Patient Cell 2";
-	req_access = list(5)
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -15525,6 +15285,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "Mental 2";
+	name = "Mental Patient Cell 2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_2)
@@ -18924,11 +18688,6 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/starboard)
-"Kh" = (
-/turf/simulated/wall{
-	can_open = 1
-	},
 /area/maintenance/starboard)
 "Ki" = (
 /obj/machinery/atmospherics/binary/pump,
@@ -37387,10 +37146,10 @@ aa
 aa
 aa
 aa
-JV
-aO
-aO
-aO
+xe
+aa
+aa
+aa
 aO
 aO
 aO
@@ -37580,7 +37339,7 @@ aa
 aa
 aa
 aa
-aa
+aO
 JV
 aO
 aO
@@ -37770,11 +37529,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+aO
+aO
+aO
+aO
+aO
 JV
 aO
 aO
@@ -37960,15 +37719,15 @@ xe
 Hb
 Hb
 xe
-xe
-xe
-xe
-xe
-xe
-xe
-xe
-xe
-xe
+JV
+JV
+JV
+JV
+JV
+JV
+JV
+JV
+JV
 yu
 JV
 JV
@@ -38151,13 +37910,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aO
+aO
+aO
+aO
+aO
+aO
+aO
 aO
 aO
 aO
@@ -41680,7 +41439,7 @@ Rp
 Rp
 Rp
 Rp
-Rp
+Os
 Dp
 Dp
 Dp
@@ -45952,7 +45711,7 @@ xJ
 MC
 MC
 MC
-HI
+ag
 MC
 aN
 CE
@@ -45961,8 +45720,8 @@ aN
 aN
 aN
 aN
-xX
-xX
+aN
+CE
 IW
 IW
 IW
@@ -46144,7 +45903,7 @@ YM
 YM
 xJ
 MC
-HI
+ac
 HI
 HI
 MC
@@ -46338,9 +46097,9 @@ xJ
 xJ
 xJ
 MC
-HI
+af
 xa
-xa
+ah
 MC
 xX
 wg
@@ -48867,7 +48626,7 @@ aN
 xX
 aN
 aN
-Kh
+xX
 aN
 aN
 aN
@@ -52821,15 +52580,15 @@ ME
 Gm
 DU
 aO
-ac
-ak
-aq
-av
-ay
-aB
-aE
-aI
-aK
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
 aO
 aO
 aO
@@ -53015,15 +52774,15 @@ Og
 Wn
 DU
 aO
-af
-al
-ar
-aw
-az
-aC
-aF
-aJ
-aL
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
 aO
 aO
 aO
@@ -53209,15 +52968,15 @@ Og
 SD
 DU
 aO
-ag
-am
-as
-ax
-aA
-aD
-aG
-aa
-aa
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
 aO
 aO
 aO
@@ -53403,15 +53162,15 @@ Og
 Og
 DU
 aO
-aa
-aa
-aa
-aa
-Hb
-aa
-aa
-aa
-aa
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
 aO
 aO
 aO
@@ -53597,15 +53356,15 @@ Zq
 Og
 DU
 aO
-ah
-an
-at
-aa
-Hb
-aa
-ah
-an
-aM
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
 aO
 aO
 aO
@@ -53791,15 +53550,15 @@ KW
 Og
 DU
 aO
-ai
-ao
-aa
-aa
-Hb
-aa
-aH
-aD
-au
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
 aO
 aO
 aO
@@ -53985,15 +53744,15 @@ IB
 Og
 DU
 aO
-aj
-ap
-au
-aa
-Hb
-aa
-aa
-aa
-aa
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
+aO
 aO
 aO
 aO
