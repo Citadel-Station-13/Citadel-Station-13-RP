@@ -67,54 +67,9 @@
 		GLOB.lore_atc.msg(message)
 
 
-/* I don't know either.
 //////////////////////////////////////////////////////////////////////////
 // There is literally a dm file for triumph shuttles, why are these here//
 //////////////////////////////////////////////////////////////////////////
-// EXCURSION SHUTTLE DATA
-/obj/effect/overmap/visitable/ship/landable/excursion
-	name = "Excursion Shuttle"
-	desc = "A modified Excursion shuttle thats seen in use of the Marksman fleet of NanoTrasen."
-	fore_dir = WEST
-	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Excursion Shuttle"
-
-/datum/shuttle/autodock/overmap/excursion
-	name = "Excursion Shuttle"
-	warmup_time = 2
-	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
-	current_location = "triumph_excursion_hangar"
-	docking_controller_tag = "expshuttle_docker"
-
-/area/shuttle/excursion
-	name = "Excursion Shuttle"
-	icon_state = "shuttle"
-
-/obj/machinery/computer/shuttle_control/explore/excursion
-	name = "short jump console"
-	shuttle_tag = "Excursion Shuttle"
-	req_one_access = list(access_pilot)
-
-//Courser Shuttle Data
-/obj/effect/overmap/visitable/ship/landable/courser
-	name = "Courser Scouting Vessel"
-	desc = "Where there's a cannon, there's a way."
-	fore_dir = EAST
-	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Courser Scouting Vessel"
-
-// Public Civilian Shuttle
-
-/obj/effect/overmap/visitable/ship/landable/civvie
-	name = "Civilian Transport"
-	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
-	fore_dir = EAST
-	vessel_mass = 15000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Civilian Transport"
-
 
 // Vox Pirate ship (Yaya, yous be giving us all your gear now.)
 
@@ -137,37 +92,6 @@
 /obj/machinery/computer/shuttle_control/explore/pirate
 	name = "short jump raiding console"
 	shuttle_tag = "Pirate Skiff"
-*/
-
-// Mining Shuttle
-
-/obj/effect/overmap/visitable/ship/landable/mining
-	name = "Mining Shuttle"
-	desc = "It ain't much, but it's honest work."
-	fore_dir = WEST
-	vessel_mass = 7000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Mining Shuttle"
-
-// Trade Shuttle
-
-/obj/effect/overmap/visitable/ship/landable/trade
-	name = "Beruang Trade Ship"
-	desc = "You know our motto: 'We deliver!'"
-	fore_dir = WEST
-	vessel_mass = 25000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Beruang Trade Ship"
-
-//EMT Shuttle
-
-/obj/effect/overmap/visitable/ship/landable/emt
-	name = "Dart EMT Shuttle"
-	desc = "The budget didn't allow for flashing lights."
-	fore_dir = EAST
-	vessel_mass = 9000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Dart EMT Shuttle"
 
 // STATIC PLANET/BASE LOCATIONS
 

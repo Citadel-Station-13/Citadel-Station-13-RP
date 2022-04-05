@@ -1073,10 +1073,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/testing_lab)
-"gR" = (
-/mob/living/simple_mob/animal/passive/gaslamp,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west)
 "gS" = (
 /obj/machinery/atmospherics/unary/heat_exchanger,
 /obj/structure/window/basic,
@@ -1282,10 +1278,6 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/outpost/mixing)
-"iK" = (
-/mob/living/simple_mob/animal/passive/gaslamp,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "iL" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -30340,7 +30332,7 @@ Nl
 Nl
 BG
 OJ
-iK
+OJ
 Tq
 ek
 ek
@@ -39886,7 +39878,7 @@ sv
 sv
 sv
 sv
-gR
+sv
 sv
 sv
 sv

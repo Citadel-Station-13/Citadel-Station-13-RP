@@ -23,25 +23,25 @@
 
 // Exclusive landmark for docking at the station
 
-/obj/effect/shuttle_landmark/triumph/deck4/civvie
+/obj/effect/shuttle_landmark/rift/deck3/civvie
 	name = "NSB Atlas - Civilian Transport Pad"
 	landmark_tag = "rift_civvie_home"
 	docking_controller = "civvie_dock"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
-/obj/effect/shuttle_landmark/triumph/deck3/emt
-	name = "NSB Atlas - EMT Shuttle Dock"
+/obj/effect/shuttle_landmark/rift/deck3/emt
+	name = "NSB Atlas - EMT Shuttle Pad"
 	landmark_tag = "rift_emt_dock"
 	docking_controller = "emt_shuttle_dock"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
-/obj/effect/shuttle_landmark/triumph/deck2/trade
-	name = "NSB Atlas - Trade Dock"
+/obj/effect/shuttle_landmark/rift/deck3/trade
+	name = "NSB Atlas - Trade Pad"
 	landmark_tag = "rift_trade_dock"
-	base_turf = /turf/space
-	base_area = /area/space
+	base_turf = /turf/simulated/floor/reinforced/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
 
 // Shared landmark for docking *inside* the station
 
@@ -213,11 +213,11 @@
 	fuel_consumption = 3
 	move_direction = WEST
 
-// The 'ship' of the excursion shuttle
 /obj/effect/overmap/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
 	desc = "The Mk2 Excursion Shuttle. NT Approved!"
-	vessel_mass = 9000
+	fore_dir = WEST
+	vessel_mass = 10000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Shuttle"
 
@@ -225,25 +225,6 @@
 	name = "short jump console"
 	shuttle_tag = "Excursion Shuttle"
 	req_one_access = list(access_pilot)
-
-//Courser Scout Vessel
-/datum/shuttle/autodock/overmap/courser
-	name = "Courser Scouting Vessel"
-	warmup_time = 0
-	current_location = "triumph_courser_hangar"
-	docking_controller_tag = "courser_dock"
-	shuttle_area = list(/area/shuttle/courser)
-	fuel_consumption = 3
-	move_direction = WEST
-
-// The 'ship' of the courser
-/obj/effect/overmap/visitable/ship/landable/courser
-	name = "Courser Scouting Vessel"
-	desc = "A lightweight reconnaissance ship repurposed for expeditionary field work."
-	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Courser Scouting Vessel"
-
 
 // COURSER SHUTTLE DATA
 
@@ -256,6 +237,14 @@
 	docking_controller_tag = "courser_docker"
 	landmark_transition = "nav_transit_courser"
 	move_time = 15
+
+/obj/effect/overmap/visitable/ship/landable/courser
+	name = "Courser Scouting Vessel"
+	desc = "Where there's a cannon, there's a way."
+	fore_dir = WEST
+	vessel_mass = 8000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Courser Scouting Vessel"
 
 /area/shuttle/courser
 	name = "Courser Scouting Vessel"
@@ -278,6 +267,14 @@
 	fuel_consumption = 10
 	move_time = 30
 
+/obj/effect/overmap/visitable/ship/landable/civvie
+	name = "Civilian Transport"
+	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
+	fore_dir = NORTH
+	vessel_mass = 15000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Civilian Transport"
+
 /area/shuttle/civvie
 	name = "Civilian Transport"
 	icon_state = "shuttle"
@@ -296,6 +293,14 @@
 	//landmark_transition = "nav_transit_trade"
 	fuel_consumption = 5
 	move_time = 10
+
+/obj/effect/overmap/visitable/ship/landable/trade
+	name = "Beruang Trade Ship"
+	desc = "You know our motto: 'We deliver!'"
+	fore_dir = WEST
+	vessel_mass = 25000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Beruang Trade Ship"
 
 /area/shuttle/trade_ship
 	name = "Beruang Trade Ship"
@@ -316,6 +321,14 @@
 	docking_controller_tag = "emt_shuttle_docker"
 	landmark_transition = "nav_transit_emt"
 	move_time = 10
+
+/obj/effect/overmap/visitable/ship/landable/emt
+	name = "Dart EMT Shuttle"
+	desc = "The budget didn't allow for flashing lights."
+	fore_dir = NORTH
+	vessel_mass = 9000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Dart EMT Shuttle"
 
 /area/shuttle/emt
 	name = "Dart EMT Shuttle"

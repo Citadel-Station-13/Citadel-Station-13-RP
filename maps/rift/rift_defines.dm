@@ -265,7 +265,7 @@
 	z = Z_LEVEL_WEST_CAVERN
 	name = "Western Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
+	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
 
 /datum/map_z_level/rift/plains
 	z = Z_LEVEL_WEST_PLAIN

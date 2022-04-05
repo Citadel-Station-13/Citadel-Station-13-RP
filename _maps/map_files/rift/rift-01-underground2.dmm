@@ -1018,10 +1018,9 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "cz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1;
-	frequency = 1438;
-	name = "Gas Scrubber"
+	scrubbing_gas = list(/datum/gas/carbon_dioxide)
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
@@ -1221,9 +1220,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "cW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
-	frequency = 1438;
-	name = "Gas Scrubber"
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	scrubbing_gas = list(/datum/gas/carbon_dioxide)
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)

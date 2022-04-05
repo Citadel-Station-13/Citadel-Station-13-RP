@@ -23731,6 +23731,15 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/medbay_primary_storage)
+"Ri" = (
+/obj/structure/table/bench/steel,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/blue)
 "Rj" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -47201,7 +47210,7 @@ qE
 gx
 fT
 oE
-Hv
+Ri
 Hv
 Mv
 dk

@@ -8647,6 +8647,10 @@
 	name = "north bump";
 	pixel_y = 24
 	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
 "pw" = (
@@ -10743,7 +10747,7 @@
 /area/maintenance/engineering)
 "tb" = (
 /obj/structure/lattice,
-/turf/simulated/sky/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "tc" = (
 /obj/effect/floor_decal/borderfloorblack/cee,
@@ -10753,7 +10757,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "td" = (
-/turf/simulated/sky/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "te" = (
 /obj/structure/cable{
