@@ -650,24 +650,18 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/projectile/revolver/detective45,
-/obj/item/gun/projectile/revolver/detective45,
-/obj/item/ammo_magazine/s45,
-/obj/item/ammo_magazine/s45,
-/obj/item/ammo_magazine/s45,
-/obj/item/ammo_magazine/s45,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/gun/projectile/p92x,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/s44,
+/obj/item/gun/projectile/revolver/combat,
+/obj/item/gun/projectile/revolver/combat,
+/obj/item/gun/projectile/revolver/combat,
+/obj/item/gun/projectile/revolver/combat,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -886,30 +880,29 @@
 	},
 /area/centcom/specops)
 "br" = (
-/obj/structure/table/reinforced,
 /obj/item/storage/box/flashshells,
 /obj/item/storage/box/flashshells,
 /obj/item/storage/box/stunshells,
 /obj/item/storage/box/stunshells,
 /obj/item/storage/box/beanbags,
 /obj/item/storage/box/beanbags,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "bs" = (
-/obj/structure/table/reinforced,
 /obj/item/storage/box/handcuffs{
 	pixel_x = 3;
 	pixel_y = 3
 	},
 /obj/item/storage/box/handcuffs,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "bt" = (
-/obj/structure/table/reinforced,
 /obj/item/material/knife/tacknife/combatknife,
 /obj/item/material/knife/tacknife/combatknife,
 /obj/item/material/knife/tacknife/combatknife,
@@ -922,12 +915,12 @@
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "bu" = (
-/obj/structure/table/reinforced,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -948,28 +941,29 @@
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "bv" = (
-/obj/structure/table/reinforced,
 /obj/item/storage/belt/security/tactical,
 /obj/item/storage/belt/security/tactical,
 /obj/item/storage/belt/security/tactical,
 /obj/item/storage/belt/security/tactical,
 /obj/item/storage/belt/security/tactical,
 /obj/item/storage/belt/security/tactical,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "bw" = (
-/obj/structure/table/reinforced,
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1219,10 +1213,10 @@
 	},
 /area/centcom/specops)
 "bU" = (
-/obj/structure/table/reinforced,
 /obj/item/megaphone,
 /obj/item/storage/box/trackimp,
 /obj/item/storage/box/cdeathalarm_kit,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -1239,17 +1233,8 @@
 	},
 /area/centcom/specops)
 "bW" = (
-/obj/structure/table/reinforced,
-/obj/item/ammo_casing/nsfw_batt/stun,
-/obj/item/ammo_casing/nsfw_batt/stun,
-/obj/item/ammo_casing/nsfw_batt/stun,
-/obj/item/ammo_casing/nsfw_batt,
-/obj/item/ammo_casing/nsfw_batt,
-/obj/item/ammo_casing/nsfw_batt,
-/obj/item/ammo_casing/nsfw_batt/net,
-/obj/item/ammo_casing/nsfw_batt/net,
-/obj/item/ammo_magazine/nsfw_mag,
-/obj/item/gun/projectile/nsfw,
+/obj/structure/table/steel_reinforced,
+/obj/item/gun/energy/netgun,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -1298,10 +1283,10 @@
 	},
 /area/centcom/specops)
 "cb" = (
-/obj/structure/table/reinforced,
 /obj/item/aicard,
 /obj/item/pinpointer/advpinpointer,
 /obj/item/stamp/centcomm,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -1318,11 +1303,11 @@
 	},
 /area/centcom/specops)
 "cd" = (
-/obj/structure/table/reinforced,
 /obj/item/clothing/accessory/holster/hip,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m44,
-/obj/item/gun/projectile/deagle,
+/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/s44,
+/obj/item/gun/projectile/revolver/combat,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -1339,8 +1324,8 @@
 	},
 /area/centcom/specops)
 "cf" = (
-/obj/structure/table/reinforced,
 /obj/item/pda/ert,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -1363,7 +1348,6 @@
 	},
 /area/centcom/specops)
 "ci" = (
-/obj/structure/table/reinforced,
 /obj/item/pda/ert,
 /obj/item/pda/ert,
 /obj/item/pda/ert,
@@ -1373,12 +1357,12 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "cj" = (
-/obj/structure/table/reinforced,
 /obj/item/megaphone,
 /obj/item/megaphone,
 /obj/item/megaphone,
@@ -1388,6 +1372,7 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1399,10 +1384,10 @@
 /obj/item/clothing/accessory/holster/waist,
 /obj/item/clothing/accessory/holster/waist,
 /obj/item/clothing/accessory/holster/waist,
-/obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1414,16 +1399,15 @@
 /obj/item/clothing/accessory/holster/hip,
 /obj/item/clothing/accessory/holster/hip,
 /obj/item/clothing/accessory/holster/hip,
-/obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "cm" = (
-/obj/structure/table/reinforced,
 /obj/item/storage/box/flashbangs,
 /obj/item/handcuffs,
 /obj/item/flash,
@@ -1432,6 +1416,7 @@
 /obj/item/gun/energy/stunrevolver,
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/material/knife/tacknife/combatknife,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -1447,9 +1432,9 @@
 	},
 /area/centcom/specops)
 "co" = (
-/obj/structure/table/reinforced,
 /obj/item/gun/energy/gun/nuclear,
 /obj/item/hand_tele,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -1462,7 +1447,6 @@
 	},
 /area/centcom/specops)
 "cq" = (
-/obj/structure/table/reinforced,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
@@ -1475,12 +1459,12 @@
 /obj/item/clothing/accessory/storage/black_drop_pouches,
 /obj/item/clothing/accessory/storage/black_drop_pouches,
 /obj/item/clothing/accessory/storage/black_drop_pouches,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "cr" = (
-/obj/structure/table/reinforced,
 /obj/item/tool/crowbar,
 /obj/item/tool/crowbar,
 /obj/item/tool/crowbar,
@@ -1499,18 +1483,19 @@
 /obj/item/flashlight,
 /obj/item/flashlight,
 /obj/item/flashlight,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "cs" = (
-/obj/structure/table/reinforced,
 /obj/item/stamp/centcomm,
 /obj/item/pen,
 /obj/item/paper_bin{
 	pixel_x = 1;
 	pixel_y = 9
 	},
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1522,7 +1507,7 @@
 /obj/item/clothing/accessory/holster/armpit,
 /obj/item/clothing/accessory/holster/armpit,
 /obj/item/clothing/accessory/holster/armpit,
-/obj/structure/table/reinforced,
+/obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

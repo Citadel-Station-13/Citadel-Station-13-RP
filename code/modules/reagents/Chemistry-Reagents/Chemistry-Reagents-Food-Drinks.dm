@@ -2204,6 +2204,18 @@ End Citadel Change */
 	glass_name = "Rum"
 	glass_desc = "Makes you want to buy a ship and just go pillaging."
 
+/datum/reagent/ethanol/whiterum
+	name = "White Rum"
+	id = "whiterum"
+	description = "Now in all-new coconut!"
+	taste_description = "milky coconut"
+	taste_mult = 1.1
+	color = "#e0e0e0"
+	strength = 20
+
+	glass_name = "White Rum"
+	glass_desc = "Makes you want to buy a ship and just go pillaging."
+
 /datum/reagent/ethanol/sake
 	name = "Sake"
 	id = "sake"

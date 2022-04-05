@@ -96,8 +96,14 @@
 		item_state = "[initial(item_state)]"
 		collapsed = 1
 
+/obj/item/gun/projectile/rocket/collapsible/examine(mob/user)
+	. = ..()
+	return
+
 /obj/item/gun/projectile/rocket/collapsible/consume_next_projectile(mob/user as mob)
 	. = ..()
+	name = "spent collapsible missile launcher"
+	desc = "This missile launcher has been used. It is no longer able to fire."
 	icon_state = "[initial(icon_state)]-empty"
 	empty = 1
 

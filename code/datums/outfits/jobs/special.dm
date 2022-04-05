@@ -5,10 +5,10 @@
 	l_ear = /obj/item/radio/headset/centcom
 	shoes = /obj/item/clothing/shoes/laceup
 	id_type = /obj/item/card/id/centcom
-	pda_type = /obj/item/pda/centcom
+	belt = /obj/item/gun/energy/pulse_pistol
 	gloves = /obj/item/clothing/gloves/white
 	head = /obj/item/clothing/head/beret/centcom/officer
-	r_pocket = /obj/item/pda/heads
+	r_pocket = /obj/item/pda/centcom
 	id_pda_assignment = "CentCom Officer"
 
 /decl/hierarchy/outfit/job/emergency_responder
@@ -20,7 +20,8 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	back = /obj/item/storage/backpack/satchel
 	id_type = /obj/item/card/id/centcom/ERT
-	pda_type = /obj/item/pda/centcom
+	belt = /obj/item/gun/energy/pulse_pistol
+	r_pocket = /obj/item/pda/centcom
 	flags = OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
 
 	post_equip(var/mob/living/carbon/human/H)

@@ -697,6 +697,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/peachschnapps = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/lemonadeschnapps = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/rum = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/whiterum = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/sake = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/tequilla = 5,

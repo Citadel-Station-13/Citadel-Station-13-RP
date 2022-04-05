@@ -791,8 +791,9 @@
 					prob(4);/obj/item/gun/projectile/deagle/taj,\
 					prob(4);/obj/item/material/knife/tacknife/combatknife,\
 					prob(4);/obj/item/melee/energy/sword,\
-					prob(4);/obj/item/gun/projectile/automatic/mini_uzi,\
+					prob(2);/obj/item/gun/projectile/automatic/mini_uzi,\
 					prob(2);/obj/item/gun/projectile/automatic/mini_uzi/taj,\
+					prob(4);/obj/item/gun/projectile/automatic/wt274,\
 					prob(4);/obj/item/gun/projectile/contender,\
 					prob(4);/obj/item/gun/projectile/contender/tacticool,\
 					prob(4);/obj/item/gun/projectile/contender/taj,\
@@ -841,6 +842,7 @@
 					prob(4);/obj/item/ammo_magazine/clip/c45,\
 					prob(4);/obj/item/ammo_magazine/clip/c9mm,\
 					prob(4);/obj/item/ammo_magazine/m45uzi,\
+					prob(4);/obj/item/ammo_magazine/m45uzi/wt274,\
 					prob(4);/obj/item/ammo_magazine/m9mml,\
 					prob(4);/obj/item/ammo_magazine/m9mmt,\
 					prob(4);/obj/item/ammo_magazine/m57x28mmp90,\
