@@ -94,19 +94,10 @@
 /area/security/security_cell_hallway)
 "ax" = (
 /obj/effect/zone_divider,
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing{
+/obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "aF" = (
 /obj/structure/cable/heavyduty{
@@ -122,29 +113,17 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "aH" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/structure/railing{
+/obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "aI" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/structure/railing{
+/obj/structure/railing,
+/obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
-/turf/simulated/floor/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "aN" = (
 /turf/simulated/wall,
@@ -648,11 +627,6 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
 "ce" = (
@@ -689,11 +663,6 @@
 /obj/machinery/power/breakerbox/activated,
 /obj/structure/railing{
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
 	},
 /obj/structure/cable{
 	d2 = 4;
@@ -2798,9 +2767,10 @@
 /area/maintenance/starboard)
 "fA" = (
 /obj/structure/cable/heavyduty{
-	icon_state = "2-8"
+	icon_state = "4-8"
 	},
-/obj/structure/railing{
+/obj/structure/railing,
+/obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
 /turf/simulated/floor/lythios43c,
@@ -13305,9 +13275,7 @@
 /area/maintenance/security/lower)
 "yt" = (
 /obj/structure/railing,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
+/obj/effect/blocker,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "yu" = (
@@ -14197,10 +14165,8 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "Al" = (
-/obj/effect/zone_divider,
-/obj/structure/cable/ender{
-	icon_state = "4-8";
-	id = "surface-solars"
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
@@ -21000,15 +20966,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/surfacebase/outside/outside1)
 "On" = (
-/obj/effect/map_effect/portal/master/side_a{
-	dir = 4;
-	name = "center_to_westplain";
-	portal_id = "westplainstep"
+/obj/effect/zone_divider,
+/obj/structure/cable/ender{
+	icon_state = "4-8";
+	id = "surface-solars"
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
-/obj/structure/railing,
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "Oo" = (
@@ -21505,10 +21467,13 @@
 /turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
 "Pj" = (
-/obj/effect/map_effect/portal/line/side_a{
+/obj/structure/cable/heavyduty{
+	icon_state = "2-8"
+	},
+/obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "Pk" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -22110,7 +22075,12 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "Qw" = (
@@ -22718,10 +22688,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "RJ" = (
-/obj/structure/catwalk,
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
+/obj/effect/map_effect/portal/master/side_a{
+	dir = 4;
+	name = "center_to_westplain";
+	portal_id = "westplainstep"
 	},
+/obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "RK" = (
@@ -23904,12 +23876,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
-"Ut" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "Uu" = (
 /turf/simulated/wall,
 /area/lawoffice)
@@ -25104,11 +25070,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/testingroom)
-"WJ" = (
-/obj/effect/blocker,
-/obj/structure/railing,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "WK" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -26813,18 +26774,18 @@ Je
 JP
 JP
 JP
-WJ
-On
-Pj
-Pj
+JP
+JP
+JP
+JP
 yt
 RJ
 CL
 wE
-Je
-JP
-JP
-JP
+ax
+aH
+aI
+fA
 JP
 JP
 JP
@@ -27007,8 +26968,8 @@ RU
 Le
 Le
 Le
-MY
-za
+Le
+Le
 Le
 Le
 MY
@@ -27017,8 +26978,8 @@ tN
 AY
 RU
 Le
-Le
-Le
+MY
+za
 Le
 Le
 Le
@@ -27201,8 +27162,8 @@ RU
 Le
 Le
 Le
-MY
-za
+Le
+Le
 Le
 Le
 MY
@@ -27211,8 +27172,8 @@ tN
 AY
 RU
 Le
-Le
-Le
+MY
+za
 Le
 Le
 Le
@@ -27395,8 +27356,8 @@ RU
 Le
 Le
 Le
-MY
-za
+Le
+Le
 Le
 Le
 MY
@@ -27405,8 +27366,8 @@ tN
 AY
 RU
 Le
-Le
-Le
+MY
+za
 Le
 Le
 Le
@@ -27589,8 +27550,8 @@ RU
 Le
 Le
 Le
-MY
-za
+Le
+Le
 Le
 Le
 MY
@@ -27599,8 +27560,8 @@ tN
 AY
 RU
 Le
-Le
-Le
+MY
+za
 Le
 Le
 Le
@@ -27783,8 +27744,8 @@ RU
 Le
 Le
 Le
-MY
-za
+Le
+Le
 Le
 Le
 MY
@@ -27793,8 +27754,8 @@ lC
 AY
 RU
 Le
-Le
-Le
+MY
+za
 Le
 Le
 Le
@@ -27977,8 +27938,8 @@ RU
 Le
 Le
 Le
-MY
-za
+Le
+Le
 Le
 Le
 MY
@@ -27987,8 +27948,8 @@ UN
 Ny
 RU
 Le
-Le
-Le
+MY
+za
 Le
 Le
 Le
@@ -28171,8 +28132,8 @@ RU
 Le
 Le
 Le
-MY
-za
+Le
+Le
 Le
 Le
 gy
@@ -28181,8 +28142,8 @@ UN
 JB
 JO
 Le
-Le
-Le
+MY
+za
 Le
 Le
 Le
@@ -28365,8 +28326,8 @@ RU
 Le
 Le
 Le
-MY
-za
+Le
+Le
 Le
 Le
 PO
@@ -28375,8 +28336,8 @@ GH
 ST
 AZ
 Le
-Le
-Le
+MY
+za
 Le
 Le
 Le
@@ -28560,8 +28521,8 @@ Le
 Le
 Le
 aZ
-Ut
-aZ
+Mk
+Mk
 Mk
 aZ
 Ek
@@ -28569,9 +28530,9 @@ tM
 WK
 JO
 Mk
-Mk
-Mk
-Mk
+aZ
+Al
+aZ
 Le
 Le
 Le
@@ -28753,9 +28714,9 @@ xe
 aa
 aa
 aa
-aZ
-aZ
-aZ
+aa
+aa
+aa
 aa
 dx
 FX
@@ -28763,8 +28724,8 @@ FX
 xf
 xe
 aa
-aa
-aa
+aZ
+aZ
 aZ
 aa
 aa
@@ -28947,9 +28908,9 @@ Hb
 xe
 xe
 xe
-JO
-Al
-JO
+xe
+xe
+xe
 xe
 xe
 vi
@@ -28957,9 +28918,9 @@ vi
 vi
 Rs
 xe
-xe
-xe
-xe
+JO
+On
+JO
 xe
 xe
 xe
@@ -29141,8 +29102,8 @@ xe
 aa
 aa
 aa
-dx
-za
+aa
+aa
 aa
 aa
 aa
@@ -29151,8 +29112,8 @@ aa
 aa
 xe
 aa
-aa
-aa
+dx
+za
 aa
 aa
 aa
@@ -29335,8 +29296,8 @@ xe
 aa
 aa
 aa
-dx
-za
+aa
+aa
 aa
 aa
 aa
@@ -29345,8 +29306,8 @@ aa
 aa
 xe
 aa
-aa
-aa
+dx
+za
 aa
 aa
 aa
@@ -29529,19 +29490,19 @@ xe
 aa
 aa
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+xe
+aa
 dx
-fA
-aH
-aH
-aI
+Pj
 Qu
-Qu
-Qu
-ax
-Do
-Do
-Do
-Do
 Do
 Do
 Do

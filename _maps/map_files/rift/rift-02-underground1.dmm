@@ -2194,7 +2194,7 @@
 	req_one_access = list(10)
 	},
 /obj/item/paper{
-	info = "To set up the Supermatter Agitation engine, first start by adding phoron tanks to each radiation collector and turning them on. After that, ensure the SME chamber is clear, and adjust the air alarm to SCRUB nitrogen and oxygen. Once the scrubbers are set, add phoron into the SME chamber via the provided canisters and the supply line. Once phoron has been added to the loop, go upstairs again, lock down the SME chamber, open the emitter blast door, and fire it at the Supermatter Crystal, how many shots is not important and can even be left firing continuously with limited supervision. Finally, set the SMES and output power to the station. Congratulations, you've managed to set up the Supermatter Agitation engine at a basic level.";
+	info = "To set up the Supermatter Agitation engine, first start by placing the radiation collectors into the SME chamber, then add phoron tanks to each radiation collector and turn them on. After that, ensure the SME chamber is clear, and adjust the air alarm to SCRUB nitrogen and oxygen. Once the scrubbers are set, add phoron into the SME chamber via the provided canisters and the supply line. Once phoron has been added to the loop, go upstairs again, lock down the SME chamber, open the emitter blast door, and fire it at the Supermatter Crystal, how many shots is not important and can even be left firing continuously with limited supervision. Finally, set the SMES and output power to the station. Congratulations, you've managed to set up the Supermatter Agitation engine at a basic level.";
 	name = "Supermatter Agitation engine guide"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -6243,11 +6243,6 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
 "lG" = (
@@ -10006,11 +10001,9 @@
 	},
 /obj/machinery/power/breakerbox/activated,
 /obj/structure/cable{
-	d1 = 1;
 	d2 = 4;
-	icon_state = "1-4"
+	icon_state = "0-4"
 	},
-/obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
 "rC" = (
@@ -11348,19 +11341,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
-"Er" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/orange/border{
-	dir = 4
-	},
-/obj/machinery/power/sensor{
-	name = "Master - Powernet Sensor";
-	name_tag = "Master"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/engineering_hallway)
 "EN" = (
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
@@ -11417,6 +11397,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/break_room)
+"FJ" = (
+/obj/structure/cable/cyan{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/reinforced,
+/area/engineering/engine_core)
 "FM" = (
 /obj/item/pickaxe/hand,
 /obj/structure/table/bench/wooden,
@@ -11720,6 +11707,13 @@
 	dir = 4
 	},
 /turf/simulated/open,
+/area/engineering/engine_core)
+"QH" = (
+/obj/structure/cable/cyan,
+/obj/machinery/camera/network/engine{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "QX" = (
 /obj/structure/railing{
@@ -25061,7 +25055,7 @@ is
 SK
 gh
 gH
-Er
+gH
 mx
 mK
 mP
@@ -27984,9 +27978,9 @@ lY
 lY
 gz
 gz
-cH
+FJ
 mS
-jN
+QH
 gz
 gz
 gL

@@ -5061,6 +5061,7 @@
 	dir = 8
 	},
 /obj/machinery/light/small,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
 "jg" = (
@@ -18331,11 +18332,6 @@
 "Lh" = (
 /obj/machinery/power/breakerbox/activated,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
 	},
@@ -20659,11 +20655,6 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
 "Qk" = (
@@ -22901,6 +22892,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "Vi" = (
+/obj/structure/table/rack,
+/obj/random/toolbox,
+/obj/random/maintenance,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
 "Vj" = (

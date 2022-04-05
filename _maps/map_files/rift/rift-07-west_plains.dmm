@@ -530,10 +530,10 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "dC" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
+/obj/structure/railing{
+	dir = 8
 	},
-/turf/simulated/floor/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "dG" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -732,10 +732,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "eS" = (
+/obj/effect/blocker,
 /obj/structure/railing,
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "eU" = (
@@ -1795,22 +1793,9 @@
 /area/rnd/outpost/heating)
 "mp" = (
 /obj/structure/railing{
-	dir = 8
+	dir = 4
 	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "mv" = (
 /obj/machinery/vending/fitness{
@@ -1832,6 +1817,22 @@
 /obj/item/melee/umbrella/random,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
+"mC" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
+"mJ" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing,
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "mL" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light{
@@ -2256,10 +2257,9 @@
 /area/rnd/outpost/mixing)
 "pn" = (
 /obj/structure/railing{
-	dir = 4
+	dir = 8
 	},
-/obj/structure/railing,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "po" = (
 /obj/structure/cable/green{
@@ -2632,8 +2632,12 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "qZ" = (
-/obj/effect/blocker,
-/obj/structure/railing,
+/obj/effect/map_effect/portal/master/side_b{
+	dir = 8;
+	name = "westplain_to_center";
+	portal_id = "westplainstep"
+	},
+/obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "rb" = (
@@ -3498,10 +3502,9 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
 "we" = (
-/obj/structure/railing{
+/obj/effect/map_effect/portal/line/side_b{
 	dir = 8
 	},
-/obj/structure/railing,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "wg" = (
@@ -4071,16 +4074,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "zL" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 8;
-	name = "westplain_to_center";
-	portal_id = "westplainstep"
-	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/railing,
-/turf/simulated/floor/lythios43c,
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 8
+	},
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "zM" = (
 /obj/structure/window/reinforced{
@@ -5723,9 +5721,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "Ki" = (
-/obj/structure/cable/ender{
-	icon_state = "4-8";
-	id = "surface-solars"
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -6002,10 +6005,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "LC" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "LF" = (
 /obj/machinery/portable_atmospherics/canister/empty/nitrous_oxide,
@@ -6098,10 +6105,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/analysis)
 "Me" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
 	},
-/turf/simulated/open/lythios43c,
+/obj/structure/catwalk,
+/turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Mp" = (
 /obj/effect/floor_decal/corner/purple/full{
@@ -6729,10 +6737,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "PJ" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing,
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "PL" = (
 /obj/structure/bed/chair/wood{
@@ -6754,21 +6766,11 @@
 /turf/simulated/floor,
 /area/rnd/outpost/storage)
 "PO" = (
-/obj/structure/railing{
-	dir = 4
+/obj/structure/cable/ender{
+	icon_state = "4-8";
+	id = "surface-solars"
 	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "PR" = (
 /obj/structure/window/basic/full,
@@ -7560,8 +7562,8 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "2-4"
+/obj/structure/railing{
+	dir = 4
 	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -38306,9 +38308,9 @@ bA
 bA
 ZK
 eg
-eg
-eg
-eg
+Jf
+Ki
+Jf
 eg
 eg
 eg
@@ -38490,18 +38492,18 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
 je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -38684,18 +38686,18 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
 je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -38878,18 +38880,18 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
 je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -39072,18 +39074,18 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
 je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -39266,18 +39268,18 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
 je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -39460,18 +39462,18 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
 je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -39654,18 +39656,18 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
 je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -39848,18 +39850,18 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
 je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -40042,20 +40044,20 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
 je
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-mp
-PJ
-we
 sv
 sv
 sv
@@ -40236,20 +40238,20 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
 je
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PO
-LC
-pn
 sv
 sv
 sv
@@ -40429,19 +40431,19 @@ sv
 sv
 sv
 sv
+mp
+mp
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 Mv
 je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -40622,20 +40624,20 @@ sv
 sv
 sv
 sv
+Mv
+Yd
+Yd
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 Mv
-je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+LC
 sv
 sv
 sv
@@ -40816,10 +40818,9 @@ sv
 sv
 sv
 sv
-sv
-sv
 Mv
-je
+Yd
+Yd
 sv
 sv
 sv
@@ -40830,6 +40831,7 @@ sv
 sv
 sv
 sv
+Me
 sv
 sv
 sv
@@ -41011,10 +41013,8 @@ sv
 sv
 sv
 sv
-sv
-Mv
-je
-sv
+pn
+pn
 sv
 sv
 sv
@@ -41024,6 +41024,8 @@ sv
 sv
 sv
 sv
+sv
+Me
 sv
 sv
 sv
@@ -41206,8 +41208,6 @@ sv
 sv
 sv
 sv
-Mv
-je
 sv
 sv
 sv
@@ -41218,6 +41218,8 @@ sv
 sv
 sv
 sv
+sv
+Me
 sv
 sv
 sv
@@ -41400,18 +41402,18 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Mv
-je
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PJ
 sv
 sv
 sv
@@ -41594,18 +41596,18 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+uj
+uj
+uj
+sv
+sv
 Mv
 je
-sv
-sv
-sv
-uj
-uj
-uj
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -41788,9 +41790,9 @@ sv
 sv
 sv
 sv
-or
-Ki
-or
+sv
+sv
+sv
 sv
 Mv
 qX
@@ -41798,9 +41800,9 @@ qX
 Hz
 sv
 sv
-sv
-sv
-sv
+or
+PO
+or
 sv
 sv
 sv
@@ -41983,8 +41985,8 @@ Yd
 Yd
 Yd
 or
-or
-or
+sv
+sv
 sv
 or
 vB
@@ -41992,9 +41994,9 @@ Ja
 Pg
 or
 sv
-sv
-sv
-sv
+or
+or
+or
 sv
 sv
 sv
@@ -42176,19 +42178,19 @@ Yd
 Yd
 Yd
 Yd
-or
-dC
-or
 Yd
+dC
+dC
+dC
 wm
 xC
 xC
 Vk
 bL
-Yd
-Yd
-Yd
-Yd
+dC
+or
+mC
+or
 Yd
 sv
 sv
@@ -42370,8 +42372,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 or
@@ -42380,8 +42382,8 @@ pP
 nk
 or
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -42564,8 +42566,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -42574,8 +42576,8 @@ pP
 cl
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -42758,8 +42760,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -42768,8 +42770,8 @@ PZ
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -42952,8 +42954,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -42962,8 +42964,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -43146,8 +43148,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -43156,8 +43158,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -43340,8 +43342,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -43350,8 +43352,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -43534,8 +43536,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -43544,8 +43546,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -43728,8 +43730,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -43738,8 +43740,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -43922,8 +43924,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -43932,8 +43934,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -44116,8 +44118,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -44126,8 +44128,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -44310,8 +44312,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -44320,8 +44322,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -44504,8 +44506,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -44514,8 +44516,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -44698,8 +44700,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -44708,8 +44710,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -44892,8 +44894,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -44902,8 +44904,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -45086,8 +45088,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -45096,8 +45098,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -45280,8 +45282,8 @@ Yd
 Yd
 Yd
 Yd
-Lb
-je
+Yd
+Yd
 Yd
 Yd
 Lb
@@ -45290,8 +45292,8 @@ TL
 Df
 Yd
 Yd
-Yd
-Yd
+Lb
+je
 Yd
 Yd
 Yd
@@ -45474,18 +45476,18 @@ WF
 WF
 WF
 WF
-qZ
-zL
-Me
-Me
+WF
+WF
+WF
+WF
 eS
-ji
+qZ
 ji
 ES
-WF
-WF
-WF
-WF
+we
+we
+zL
+mJ
 WF
 WF
 WF
