@@ -269,6 +269,16 @@
 	. = ..()
 	reagents.add_reagent("rum", 100)
 
+/obj/item/reagent_containers/food/drinks/bottle/whiterum
+	name = "Captain Pete's Cuban White Rum"
+	desc = "A milky, white alternative to Cuban Spiced! Tastes like coconut."
+	icon_state = "whiterumbottle"
+	center_of_mass = list("x"=16, "y"=8)
+
+/obj/item/reagent_containers/food/drinks/bottle/whiterum/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("whiterum", 100)
+
 /obj/item/reagent_containers/food/drinks/bottle/holywater
 	name = "Flask of Holy Water"
 	desc = "A flask of the chaplain's holy water."
