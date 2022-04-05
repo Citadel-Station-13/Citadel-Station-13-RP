@@ -26,6 +26,7 @@
 		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger,											750),
 		new /datum/data/mining_equipment("Plush Toy",					/obj/random/plushie,												300),
 		new /datum/data/mining_equipment("GPS Device",					/obj/item/gps/mining,										100),
+		new /datum/data/mining_equipment("Portable Fuel Can",			/obj/item/reagent_containers/portable_fuelcan,		250),
 		// TODO new /datum/data/mining_equipment("Advanced Scanner",	/obj/item/t_scanner/adv_mining_scanner,						800),
 		new /datum/data/mining_equipment("Fulton Beacon",				/obj/item/fulton_core,												500),
 		new /datum/data/mining_equipment("Shelter Capsule",				/obj/item/survivalcapsule,									500),

@@ -1,8 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /mob/living/simple_mob/mechanical/viscerator{
-	maxbodytemp = 900;
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/returnhome
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/returnhome;
+	maxbodytemp = 900
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/template_noop)
@@ -22,10 +22,10 @@
 /area/submap/virgo2/Rockybase)
 "af" = (
 /mob/living/simple_mob/mechanical/combat_drone{
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome;
 	desc = "An automated combat drone with an aged apperance.";
 	faction = "syndicate";
-	maxbodytemp = 900;
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome
+	maxbodytemp = 900
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -47,9 +47,7 @@
 "ak" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
-	pixel_x = 5;
-	pixel_y = 0
+	pixel_x = 5
 	},
 /obj/structure/curtain/open/shower,
 /obj/machinery/light/small{
@@ -73,9 +71,7 @@
 "ap" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /obj/item/soap,
@@ -177,9 +173,7 @@
 "aJ" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
-	pixel_x = 5;
-	pixel_y = 0
+	pixel_x = 5
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -187,9 +181,7 @@
 "aK" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -204,7 +196,6 @@
 /obj/item/grenade/chem_grenade/cleaner,
 /obj/item/grenade/chem_grenade/cleaner,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -246,23 +237,18 @@
 "aS" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "aT" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -335,7 +321,6 @@
 "bh" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -354,10 +339,10 @@
 /area/submap/virgo2/Rockybase)
 "bl" = (
 /mob/living/simple_mob/mechanical/combat_drone{
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome;
 	desc = "An automated combat drone with an aged apperance.";
 	faction = "syndicate";
-	maxbodytemp = 900;
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome
+	maxbodytemp = 900
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -396,7 +381,7 @@
 /area/submap/virgo2/Rockybase)
 "bt" = (
 /obj/structure/table/standard,
-/obj/item/kit/paint/gygax/darkgygax,
+/obj/item/kit/paint/gygax,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bu" = (
@@ -570,8 +555,7 @@
 /area/submap/virgo2/Rockybase)
 "bY" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -606,8 +590,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -662,15 +645,14 @@
 "cp" = (
 /obj/machinery/vending/robotics,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cq" = (
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /obj/machinery/light{
 	dir = 8
@@ -687,8 +669,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -704,7 +685,6 @@
 /area/submap/virgo2/Rockybase)
 "cs" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /obj/structure/cable{
@@ -728,9 +708,7 @@
 "cv" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/item/mecha_parts/part/gygax_left_arm,
 /turf/simulated/floor/tiled/techfloor/virgo2,

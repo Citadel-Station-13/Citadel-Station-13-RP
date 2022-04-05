@@ -697,6 +697,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/peachschnapps = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/lemonadeschnapps = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/rum = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/whiterum = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/sake = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/tequilla = 5,
@@ -797,9 +798,9 @@
 					/obj/item/reagent_containers/food/drinks/cans/cola = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
- /obj/item/reagent_containers/food/drinks/cans/iced_tea = 10)
+ 					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10)
 	contraband = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6,
-				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 1)
+				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 4, /obj/item/reagent_containers/food/drinks/cans/geometer = 2)
 	prices = list(/obj/item/reagent_containers/food/drinks/cans/cola = 1,/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1,
 					/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 1,/obj/item/reagent_containers/food/drinks/cans/starkist = 1,
 					/obj/item/reagent_containers/food/drinks/cans/waterbottle = 2,/obj/item/reagent_containers/food/drinks/cans/space_up = 1,

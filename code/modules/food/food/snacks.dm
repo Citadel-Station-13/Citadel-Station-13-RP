@@ -2608,7 +2608,34 @@
 /obj/item/reagent_containers/food/snacks/slice/tofubread/filled
 	filled = TRUE
 
+/obj/item/reagent_containers/food/snacks/sliceable/spidermeatbread
+	name = "spidermeatbread loaf"
+	desc = "The culinary base of every self-respecting eloquent gentleman. Extra itchy."
+	icon_state = "spiderbread"
+	slice_path = /obj/item/reagent_containers/food/snacks/slice/spidermeatbread
+	slices_num = 5
+	filling_color = "#8AFF75"
+	nutriment_desc = list("spider meat" = 5, "bread" = 5)
+	nutriment_amt = 10
 
+/obj/item/reagent_containers/food/snacks/sliceable/spidermeatbread/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 20)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/slice/spidermeatbread
+	name = "spidermeatbread slice"
+	desc = "A slice of delicious meatbread. Extra itchy."
+	icon_state = "spiderbreadslice"
+	trash = /obj/item/trash/plate
+	filling_color = "#cfff75"
+	bitesize = 2
+	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/spidermeatbread
+
+/obj/item/reagent_containers/food/snacks/slice/spidermeatbread/filled
+	filled = TRUE
+
+//Cake
 /obj/item/reagent_containers/food/snacks/sliceable/carrotcake
 	name = "Carrot Cake"
 	desc = "A favorite dessert of a certain wascally wabbit. Not a lie."
@@ -2824,6 +2851,28 @@
 	desc = "A wedge of delicious Cheddar. The cheese wheel it was cut from can't have gone far."
 	icon_state = "cheesewedge"
 	filling_color = "#FFF700"
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel
+	name = "Blue Cheese wheel"
+	desc = "A big wheel of moldy blue cheese."
+	icon_state = "bluecheesewheel"
+	slice_path = /obj/item/reagent_containers/food/snacks/bluecheesewedge
+	slices_num = 5
+	filling_color = "#f1f0c8"
+	nutriment_desc = list("sour cheese" = 10)
+	nutriment_amt = 10
+
+/obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 10)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/bluecheesewedge
+	name = "Blue Cheese wedge"
+	desc = "A wedge of moldy blue cheese. The cheese wheel it was cut from can't have gone far."
+	icon_state = "bluecheesewedge"
+	filling_color = "#f1f0c8"
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/sliceable/birthdaycake
@@ -6442,4 +6491,138 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 4)
 	reagents.add_reagent("rum", 8)
+	bitesize = 2
+
+//Tyrmalin Imported Foods
+/obj/item/reagent_containers/food/snacks/cavemoss_can
+	name = "Momma Toecutter's Cavemoss"
+	desc = "Freshly harvested from the eastern cisterns on Goss-Aguz. Sorted by trained Meex and carefully sealed in Momma Toecutters canning facility."
+	icon_state = "cavemoss_can"
+	trash = /obj/item/trash/cavemoss
+	filling_color = "#015f01"
+	nutriment_amt = 5
+	nutriment_desc = list("mossy fungus" = 5)
+
+/obj/item/reagent_containers/food/snacks/cavemoss_can/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/diggerstew_can
+	name = "Momma Toecutter's Canned Digger's Stew"
+	desc = "Only the freshest ingredients collected on Goss-Aguz. Contains Deepworms, Caveroot and Black Tubers. A taste from home!"
+	icon_state = "diggerstew_can"
+	trash = /obj/item/trash/diggerstew
+	filling_color = "#64482d"
+	nutriment_amt = 5
+	nutriment_desc = list("mushroom" = 1, "carrot" = 1, "bugflesh" = 3)
+
+/obj/item/reagent_containers/food/snacks/diggerstew_can/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/canned_bettles
+	name = "Grom's Green Ham In a Can"
+	desc = "Pickled insect meats in a acidic sauce."
+	icon_state = "canned_beetles"
+	trash = /obj/item/trash/canned_beetles
+	filling_color = "#759c75"
+	nutriment_amt = 5
+	nutriment_desc = list("mushroom" = 2, "bugflesh" = 3)
+
+/obj/item/reagent_containers/food/snacks/canned_beetles/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/rust_can
+	name = "Iron Soup"
+	desc = "A particular Tyrmalin delicacy made from slag."
+	icon_state = "rust_can"
+	trash = /obj/item/trash/rust_can
+	filling_color = "#7a3f07"
+	nutriment_amt = 5
+	nutriment_desc = list("iron" = 3, "water" = 2)
+
+/obj/item/reagent_containers/food/snacks/rust_can/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+//Alraune Imported Foods
+/obj/item/reagent_containers/food/snacks/alraune_bar
+	name = "Alraune snack bar"
+	desc = "A bar of compressed insect meat and fertilizer. As Alraune do not need to eat in the tradiational sense, this is viewed as more of a luxury item."
+	icon_state = "alraunesnack"
+	trash = /obj/item/trash/alraune_bar
+	filling_color = "#331f0c"
+	nutriment_amt = 5
+	nutriment_desc = list("bugflesh" = 3, "soil" = 1, "dirt" = 1)
+
+/obj/item/reagent_containers/food/snacks/alraune_bar/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/bugsnacks
+	name = "Bugsnacks"
+	desc = "A colorful box full of dried beetles. They come in various colors. There are some arguments about which color tastes best."
+	icon_state = "bugsnacks"
+	trash = /obj/item/trash/bugsnacks
+	filling_color = "#69b810"
+	nutriment_amt = 5
+	nutriment_desc = list("bugflesh" = 3, "sugar" = 2)
+
+/obj/item/reagent_containers/food/snacks/bugsnacks/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/spider_wingfangchu
+	name = "Spider Wing Fang Chu"
+	desc = "An acidic Soup made from spider-meat."
+	icon_state = "spiderwingfangchu"
+	trash = /obj/item/trash/snack_bowl
+	filling_color = "#b0fc37"
+
+/obj/item/reagent_containers/food/snacks/spider_wingfangchu/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/steamedspider
+	name = "Steamed Spider Leg"
+	desc = "A steamed spider leg boiled in butter. Delectable!"
+	icon_state = "steamedspider"
+	filling_color = "#c7d4b1"
+
+/obj/item/reagent_containers/food/snacks/steamedspider/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/ribplate_bear
+	name = "plate of bear ribs"
+	desc = "A half-rack of massive bear ribs, brushed with some sort of honey-glaze. Why are there no napkins on board?"
+	icon_state = "bear_ribs"
+	trash = /obj/item/trash/plate
+	filling_color = "#632e08"
+	nutriment_amt = 12
+	nutriment_desc = list("barbecue" = 6, "bear meat" = 6)
+
+/obj/item/reagent_containers/food/snacks/ribplate_bear/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 10)
+	reagents.add_reagent("triglyceride", 6)
+	reagents.add_reagent("blackpepper", 1)
+	reagents.add_reagent("honey", 10)
+	bitesize = 4
+
+/obj/item/reagent_containers/food/snacks/saplingsdelight
+	name = "Sapling's Delight"
+	desc = "A plate of loose soil filled with worms. They're still alive."
+	icon_state = "wormplate"
+	trash = /obj/item/trash/plate
+	filling_color = "#2b1e14"
+	nutriment_amt = 7
+	nutriment_desc = list("dirt" = 3, "worms" = 4)
+
+/obj/item/reagent_containers/food/snacks/saplingsdelight/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 7)
 	bitesize = 2

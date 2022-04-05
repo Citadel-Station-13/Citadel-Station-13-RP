@@ -91,9 +91,7 @@
 "ax" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
-	pixel_x = 5;
-	pixel_y = 0
+	pixel_x = 5
 	},
 /obj/structure/curtain/open/shower,
 /obj/machinery/light/small{
@@ -107,9 +105,7 @@
 "az" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /obj/item/soap,
@@ -191,7 +187,6 @@
 /obj/structure/table/standard,
 /obj/item/modular_computer/laptop/preset/custom_loadout/cheap,
 /obj/effect/floor_decal/corner/red/border{
-	icon_state = "bordercolor";
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
@@ -199,7 +194,6 @@
 "aP" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/red/border{
-	icon_state = "bordercolor";
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -208,7 +202,6 @@
 /obj/structure/table/rack,
 /obj/item/gun/projectile/pistol,
 /obj/effect/floor_decal/corner/red/border{
-	icon_state = "bordercolor";
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -217,7 +210,6 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/gun/taser,
 /obj/effect/floor_decal/corner/red/border{
-	icon_state = "bordercolor";
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -227,7 +219,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/red/border{
-	icon_state = "bordercolor";
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -235,7 +226,6 @@
 "aT" = (
 /obj/machinery/vending/coffee,
 /obj/effect/floor_decal/corner/red/border{
-	icon_state = "bordercolor";
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
@@ -252,7 +242,6 @@
 "aW" = (
 /obj/machinery/vending/hydronutrients,
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
@@ -260,7 +249,6 @@
 "aX" = (
 /obj/structure/closet/crate/hydroponics,
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
@@ -268,9 +256,7 @@
 "aY" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
-	pixel_x = 5;
-	pixel_y = 0
+	pixel_x = 5
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/hydro,
@@ -278,9 +264,7 @@
 "aZ" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/hydro,
@@ -295,7 +279,6 @@
 /obj/item/grenade/chem_grenade/cleaner,
 /obj/item/grenade/chem_grenade/cleaner,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -313,7 +296,6 @@
 	name = "Note"
 	},
 /obj/effect/floor_decal/corner/red/border{
-	icon_state = "bordercolor";
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -331,7 +313,6 @@
 "bg" = (
 /obj/machinery/vending/security,
 /obj/effect/floor_decal/corner/red/border{
-	icon_state = "bordercolor";
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -345,7 +326,6 @@
 /area/submap/Rockybase)
 "bi" = (
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -353,12 +333,9 @@
 "bj" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -366,14 +343,11 @@
 "bk" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Rockybase)
@@ -409,7 +383,6 @@
 /obj/structure/table/standard,
 /obj/item/paper_bin,
 /obj/effect/floor_decal/corner/red/border{
-	icon_state = "bordercolor";
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
@@ -449,7 +422,6 @@
 "by" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -460,7 +432,6 @@
 /area/submap/Rockybase)
 "bA" = (
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 8
 	},
 /mob/living/bot/farmbot{
@@ -472,11 +443,9 @@
 "bB" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -615,7 +584,7 @@
 /area/submap/Rockybase)
 "cc" = (
 /obj/structure/table/standard,
-/obj/item/kit/paint/gygax/darkgygax,
+/obj/item/kit/paint/gygax,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cd" = (
@@ -751,9 +720,7 @@
 "cy" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Rockybase)
@@ -776,8 +743,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
@@ -823,8 +789,7 @@
 /area/submap/Rockybase)
 "cK" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Rockybase)
@@ -861,8 +826,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -931,7 +895,6 @@
 "dd" = (
 /obj/machinery/vending/robotics,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -962,8 +925,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -974,7 +936,6 @@
 /area/submap/Rockybase)
 "dh" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -999,7 +960,6 @@
 "dj" = (
 /obj/item/mecha_parts/part/gygax_right_leg,
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1007,9 +967,7 @@
 "dk" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/item/mecha_parts/part/gygax_left_arm,
 /turf/simulated/floor/tiled/hydro,
@@ -1047,7 +1005,6 @@
 "dq" = (
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1111,7 +1068,6 @@
 "dC" = (
 /obj/machinery/vending/hydroseeds,
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
@@ -1119,7 +1075,6 @@
 "dD" = (
 /obj/structure/closet/crate/secure/hydrosec,
 /obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
 	dir = 6
 	},
 /turf/simulated/floor/tiled,

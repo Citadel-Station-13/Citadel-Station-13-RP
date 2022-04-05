@@ -1,0 +1,12 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds the NT-57."
+  - rscadd: "Adds the NT-R-7."
+  - rscadd: "Adds the WT274 AB-SMG.
+tweak: Updates the names of pulse weapons.
+tweak: Returns the pulse sidearm to CCOs.
+tweak: Rearranges gun icons.
+tweak: Changes weapon randomspawn rates."
+  - rscdel: "Removes gun.dmi and gun2.dmi"
+  - rscdel: "Comments out the M1911-P"

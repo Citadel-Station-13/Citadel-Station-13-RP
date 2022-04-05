@@ -527,6 +527,11 @@
 	caliber = "rocket"
 	matter = list(DEFAULT_WALL_MATERIAL = 10000)
 
+/obj/item/ammo_casing/rocket/weak
+	name = "low-yield rocket shell"
+	projectile_type = /obj/item/projectile/bullet/srmrocket/weak
+	matter = list(DEFAULT_WALL_MATERIAL = 5000)
+
 /obj/item/ammo_casing/cap
 	name = "cap"
 	desc = "A cap for children toys."

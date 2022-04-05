@@ -1214,3 +1214,9 @@ obj/item/clothing/suit/kamishimo
 	name = "Umbral Duster"
 	desc = "This thick duster, constructed out of black leather and red suede, presents an utterly demonic profile. Adorned with chased silver chains, anchored into the very fabric itself in the device of an esoteric skull, this jacket will fit in anywhere. As long as it's a leather club or metal concert."
 	icon_state = "umbral"
+
+//Pending shift to Donator.
+/obj/item/clothing/suit/storage/toggle/pariah
+	name = "Springtime Pariah Moto Jacket"
+	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
+	icon_state = "pariah"
