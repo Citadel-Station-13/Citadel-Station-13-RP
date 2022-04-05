@@ -165,22 +165,22 @@
 			. = 0
 
 		if(SEC_LEVEL_BLUE)
-			. = 1
+			. = 0
 
 		if(SEC_LEVEL_YELLOW)
-			. = 2
+			. = 1
 
 		if(SEC_LEVEL_VIOLET)
-			. = 3
+			. = 1
 
 		if(SEC_LEVEL_ORANGE)
-			. = 4
+			. = 2
 
 		if(SEC_LEVEL_RED)
-			. = 5
+			. = 3
 
 		if(SEC_LEVEL_DELTA) //FAST AS FUCK BOOOYYEEEE
-			. = 6
+			. = 4
 
 	return .
 
