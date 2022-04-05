@@ -2293,9 +2293,7 @@
 	},
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "eE" = (
 /obj/structure/railing,
 /obj/machinery/light/small{
@@ -2303,9 +2301,7 @@
 	},
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "eF" = (
 /obj/structure/railing{
 	dir = 8
@@ -9427,9 +9423,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "rk" = (
 /turf/simulated/wall,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rl" = (
 /obj/structure/railing{
 	dir = 4
@@ -9497,9 +9491,7 @@
 /area/space)
 "rt" = (
 /turf/simulated/wall/r_wall,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "ru" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/engi{
@@ -9511,9 +9503,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rv" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
@@ -9529,9 +9519,7 @@
 	name = "Surface External Blast Door"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rx" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -9541,18 +9529,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "ry" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
 /obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/tiled/steel_grid,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rz" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small{
@@ -9563,9 +9547,7 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rA" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -9622,9 +9604,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rD" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -9636,9 +9616,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rE" = (
 /obj/machinery/door/airlock/maintenance/rnd,
 /obj/structure/catwalk,
@@ -9675,9 +9653,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rH" = (
 /obj/structure/flora/pottedplant/tall,
 /obj/effect/floor_decal/borderfloor{
@@ -9718,9 +9694,7 @@
 	req_one_access = list(10,47)
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rK" = (
 /obj/structure/grille,
 /obj/structure/railing{
@@ -9728,9 +9702,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rL" = (
 /obj/structure/catwalk,
 /obj/structure/railing{
@@ -9755,38 +9727,28 @@
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rP" = (
 /obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rQ" = (
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rR" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rS" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rT" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
@@ -9794,9 +9756,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rU" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -9805,46 +9765,34 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rV" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rW" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rX" = (
 /obj/machinery/atmospherics/unary/heater{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rY" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "rZ" = (
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sa" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -9853,9 +9801,7 @@
 	anchored = 1
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sb" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 4
@@ -9864,60 +9810,46 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sc" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sd" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "se" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sf" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sg" = (
 /obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sh" = (
 /obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "si" = (
 /obj/structure/catwalk,
 /obj/structure/railing{
@@ -9935,9 +9867,7 @@
 	},
 /obj/effect/overlay/snow/wall,
 /turf/simulated/floor/plating/lythios43c,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sk" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 4
@@ -9953,17 +9883,13 @@
 	on = 1
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sm" = (
 /obj/structure/grille,
 /obj/structure/railing,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sn" = (
 /obj/structure/catwalk,
 /obj/machinery/alarm{
@@ -9971,9 +9897,7 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "so" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small,
@@ -9982,9 +9906,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sp" = (
 /obj/structure/railing{
 	dir = 1
@@ -9992,9 +9914,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/powered/pump/filled,
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "sq" = (
 /obj/structure/railing{
 	dir = 1
@@ -10946,9 +10866,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "tL" = (
 /obj/effect/overlay/snow/floor/pointy,
 /obj/machinery/power/pointdefense,
@@ -11226,9 +11144,7 @@
 	name = "Surface External Blast Door"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "ui" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -11242,9 +11158,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "uj" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -11272,9 +11186,7 @@
 	on = 1
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "ul" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -12428,9 +12340,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel_grid,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "wi" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -15549,9 +15459,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "CV" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -18180,9 +18088,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "Il" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -19189,9 +19095,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "KC" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/structure/cable/green{
@@ -20441,9 +20345,7 @@
 "Nc" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/engineering/engine_eva{
-	name = "\improper Engineering Surface EVA"
-	})
+/area/engineering/engine_eva)
 "Nd" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -41666,7 +41568,7 @@ Dr
 on
 Dr
 Dr
-aO
+cL
 aO
 aO
 aO
@@ -41860,7 +41762,7 @@ lE
 Un
 UV
 BA
-aO
+cL
 aO
 aO
 aO
@@ -42054,7 +41956,7 @@ Kj
 oR
 Ae
 Ae
-aO
+cL
 aO
 aO
 aO
@@ -42248,7 +42150,7 @@ Us
 yc
 yc
 yc
-aO
+cL
 aO
 aO
 aO
