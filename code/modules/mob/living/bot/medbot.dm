@@ -34,15 +34,6 @@
 	var/treatment_emag = "toxin"
 	var/declare_treatment = 0 //When attempting to treat a patient, should it notify everyone wearing medhuds?
 
-/mob/living/bot/medbot/mysterious
-	name = "\improper Mysterious Medibot"
-	desc = "International Medibot of mystery."
-	skin = "bezerk"
-	treatment_brute		= "bicaridine"
-	treatment_fire		= "dermaline"
-	treatment_oxy		= "dexalin"
-	treatment_tox		= "anti_toxin"
-
 /mob/living/bot/medbot/handleIdle()
 	if(vocal && prob(1))
 		var/message_options = list(
@@ -309,7 +300,6 @@
 	s.set_up(3, 1, src)
 	s.start()
 	qdel(src)
-	return
 
 /mob/living/bot/medbot/confirmTarget(var/mob/living/carbon/human/H)
 	if(!..())
@@ -404,10 +394,6 @@
 	var/skin = null //Same as medbot, set to tox or ointment for the respective kits.
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/firstaid_arm_assembly/Initialize(mapload)
-	. = ..()
-	return INITIALIZE_HINT_QDEL
-
 /obj/item/firstaid_arm_assembly/LateInitialize()
 	. = ..()
 	if(skin)
@@ -444,3 +430,47 @@
 					S.name = created_name
 					user.drop_from_inventory(src)
 					qdel(src)
+
+//Subtypes & Cosmetics
+/mob/living/bot/medbot/yellow
+	skin = "ointment"
+
+/mob/living/bot/medbot/green
+	skin = "tox"
+
+/mob/living/bot/medbot/blue
+	skin = "o2"
+
+/mob/living/bot/medbot/mysterious
+	name = "\improper Mysterious Medibot"
+	desc = "International Medibot of mystery."
+	skin = "bezerk"
+	treatment_brute		= "bicaridine"
+	treatment_fire		= "dermaline"
+	treatment_oxy		= "dexalin"
+	treatment_tox		= "anti_toxin"
+
+/mob/living/bot/medbot/apidean
+	name = "\improper Apidean Beebot"
+	desc = "An organic creature heavily augmented with components from a medical drone. It was made to assist nurses in Apidaen hives."
+	icon_state = "beebot0"
+
+/mob/living/bot/medbot/apidean/update_icons()
+	overlays.Cut()
+	if(skin)
+		overlays += image('icons/obj/aibots.dmi', "beebot_[skin]")
+	if(busy)
+		icon_state = "beebots"
+	else
+		icon_state = "beebot[on]"
+
+/mob/living/bot/medbot/apidean/handleIdle()
+	if(vocal && prob(1))
+		var/message_options = list(
+			"Bzzz bzzz!" = 'sound/voice/moth/scream_moth.ogg',
+			"Chk scchk hhk!" = 'sound/voice/moth/mothchitter.ogg',
+			"Hhhk bzchk." = 'sound/voice/moth/mothsqueak.ogg',
+			)
+		var/message = pick(message_options)
+		say(message)
+		playsound(loc, message_options[message], 50, 0)

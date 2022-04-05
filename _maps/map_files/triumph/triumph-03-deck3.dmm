@@ -1035,6 +1035,9 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/research,
+/obj/structure/reagent_dispensers/acid{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "aOn" = (
@@ -3023,6 +3026,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"czy" = (
+/obj/machinery/door/airlock/science{
+	name = "Circuitry Workshop";
+	req_access = list(7);
+	req_one_access = list(7)
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/hallway)
 "czP" = (
 /turf/simulated/wall,
 /area/maintenance/research)
@@ -3473,6 +3484,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "cTH" = (
@@ -6568,11 +6580,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "ftw" = (
-/obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/light/small,
+/obj/machinery/media/jukebox,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "ful" = (
@@ -9666,6 +9678,9 @@
 /obj/item/integrated_circuit_printer,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
@@ -21936,11 +21951,6 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "rnQ" = (
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/obj/machinery/media/jukebox,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
@@ -23837,7 +23847,6 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
@@ -24721,9 +24730,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/acid{
-	pixel_y = 30
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -25600,11 +25606,11 @@
 /area/medical/resleeving)
 "tUb" = (
 /obj/machinery/light/small{
-	dir = 8
+	dir = 4
 	},
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "tUL" = (
 /turf/simulated/wall,
 /area/rnd/xenobiology)
@@ -27440,10 +27446,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
-"vrz" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "vsf" = (
 /obj/structure/table/reinforced,
 /obj/item/paicard,
@@ -33409,7 +33411,7 @@ pCH
 gpN
 sQl
 iCM
-tUb
+pCH
 pXl
 slN
 pYD
@@ -34272,7 +34274,7 @@ uiL
 pRL
 qKL
 uHP
-rhL
+tUb
 iQL
 hgV
 eAd
@@ -36944,7 +36946,7 @@ shT
 wpE
 boQ
 njF
-vrz
+sQl
 hnF
 czP
 ezT
@@ -41209,7 +41211,7 @@ rqX
 rqX
 gCR
 gCR
-rqX
+czy
 rqX
 nDo
 nDo

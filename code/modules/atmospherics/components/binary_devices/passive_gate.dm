@@ -243,6 +243,11 @@
 	return
 
 /obj/machinery/atmospherics/binary/passive_gate/attackby(var/obj/item/W as obj, var/mob/user as mob)
+	if(istype(W, /obj/item/pen))
+		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
+		new_name = trim(new_name)
+		name = (new_name? new_name : name)
+		return
 	if (!W.is_wrench())
 		return ..()
 	if (unlocked)

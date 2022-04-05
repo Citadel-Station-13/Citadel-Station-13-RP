@@ -60,6 +60,10 @@
 	icon_state = "retro"
 	cell_type = null
 
+/obj/item/gun/energy/retro/apidean
+	name = "apidean retro laser"
+	icon_state = "apilaser"
+	desc = "An older model of the basic lasergun. This version's casing has been painted yellow. Originating from, and carried by, Apidean combatants, it's unclear where they obtained them."
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_pistol
 	name = "Precursor Alpha Weapon - Appendageheld Laser"

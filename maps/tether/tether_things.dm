@@ -22,7 +22,7 @@
 		)
 
 /datum/turbolift
-	music = list('sound/music/elevator.ogg')  // Woo elevator music!
+	music = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')  // Woo elevator music!
 */
 //////////////////////////////////////////
 

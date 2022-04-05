@@ -25,6 +25,8 @@
 	var/movement_type = GROUND
 	/// The orbiter component of the thing we're orbiting.
 	var/datum/component/orbiter/orbiting
+	///Used for the calculate_adjacencies proc for icon smoothing.
+	var/can_be_unanchored = FALSE
 	/// Our default glide_size.
 	var/default_glide_size = 0
 

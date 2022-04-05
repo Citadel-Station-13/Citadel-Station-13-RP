@@ -1684,6 +1684,9 @@ End Citadel Change */
 	nutrition = 1
 	color = "#302000"
 
+	glass_name = "Dry Ramen"
+	glass_desc = "A glass of dry noodles. Wait, why did you put this into a glass?"
+
 /datum/reagent/drink/hot_ramen
 	name = "Hot Ramen"
 	id = "hot_ramen"
@@ -1694,6 +1697,9 @@ End Citadel Change */
 	nutrition = 5
 	adj_temp = 5
 
+	glass_name = "Hot Ramen"
+	glass_desc = "A glass of spicy noodles. Wait, why did you put this into a glass?"
+
 /datum/reagent/drink/hell_ramen
 	name = "Hell Ramen"
 	id = "hell_ramen"
@@ -1703,6 +1709,9 @@ End Citadel Change */
 	reagent_state = REAGENT_LIQUID
 	color = "#302000"
 	nutrition = 5
+
+	glass_name = "Hell Ramen"
+	glass_desc = "A glass of extremely spicy noodles. Wait, why did you put this into a glass?"
 
 /datum/reagent/drink/hell_ramen/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -2195,6 +2204,18 @@ End Citadel Change */
 	glass_name = "Rum"
 	glass_desc = "Makes you want to buy a ship and just go pillaging."
 
+/datum/reagent/ethanol/whiterum
+	name = "White Rum"
+	id = "whiterum"
+	description = "Now in all-new coconut!"
+	taste_description = "milky coconut"
+	taste_mult = 1.1
+	color = "#e0e0e0"
+	strength = 20
+
+	glass_name = "White Rum"
+	glass_desc = "Makes you want to buy a ship and just go pillaging."
+
 /datum/reagent/ethanol/sake
 	name = "Sake"
 	id = "sake"
@@ -2316,6 +2337,9 @@ End Citadel Change */
 	taste_description = "minty"
 	strength = 90
 
+	glass_name = "Peppermint Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, minty taste."
+
 /datum/reagent/ethanol/peachschnapps
 	name = "Peach Schnapps"
 	id = "schnapps_pea"
@@ -2323,12 +2347,18 @@ End Citadel Change */
 	taste_description = "peachy"
 	strength = 90
 
+	glass_name = "Peach Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, peachy taste."
+
 /datum/reagent/ethanol/lemonadeschnapps
 	name = "Lemonade Schnapps"
 	id = "schnapps_lem"
 	description = "A flavoured grain liqueur with a fresh, lemony taste."
 	taste_description = "lemony"
 	strength = 90
+
+	glass_name = "Lemonade Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, lemony taste."
 
 /datum/reagent/ethanol/wine/champagne
 	name = "Champagne"
@@ -2339,7 +2369,6 @@ End Citadel Change */
 
 	glass_name = "Champagne"
 	glass_desc = "An even classier looking drink."
-
 
 /datum/reagent/ethanol/cider
 	name = "Cider"
@@ -3705,6 +3734,9 @@ End Citadel Change */
 	taste_description = "mint infused whiskey"
 	strength = 80
 
+	glass_name = "Mint Julep"
+	glass_desc = "Really not just watery whiskey.. I think."
+
 /datum/reagent/ethanol/planterspunch
 	name = "Planters Punch"
 	id = "planterspunch"
@@ -3723,12 +3755,18 @@ End Citadel Change */
 	taste_description = "stronge coffee infused booze"
 	strength = 35
 
+	glass_name = "Olympus Mons"
+	glass_desc = "For those that need the extra kick."
+
 /datum/reagent/ethanol/sazerac
 	name = "Sazerac"
 	id = "sazerac"
 	description = "When a regular whiskey cocktail isn't enough."
 	taste_description = "a strong bite of flavor"
 	strength = 20
+
+	glass_name = "Sazerac"
+	glass_desc = "When a regular whiskey cocktail isn't enough."
 
 /datum/reagent/ethanol/junglejuice
 	name = "Jungle Juice"
@@ -3737,12 +3775,18 @@ End Citadel Change */
 	taste_description = "fruits and bad decisions"
 	strength = 55
 
+	glass_name = "Jungle Juice"
+	glass_desc = "An overload of sweetness and sugary goodness."
+
 /datum/reagent/ethanol/gimlet
 	name = "Gimlet"
 	id = "gimlet"
 	description = "For those who want to look fancy with their gin."
 	taste_description = "lime infused tree"
 	strength = 20
+
+	glass_name = "Gimlet"
+	glass_desc = "For those who want to look fancy with their gin."
 
 /datum/reagent/ethanol/firepunch
 	name = "Fire Punch"
@@ -3751,6 +3795,9 @@ End Citadel Change */
 	taste_description = "rum and sugar"
 	strength = 70
 	targ_temp = 300
+
+	glass_name = "Fire Punch"
+	glass_desc = "A spicy take on a summer classic."
 
 /datum/reagent/ethanol/alcsassafras
 	name = "CC's Hard Rootbeer"
@@ -3923,6 +3970,53 @@ End Citadel Change */
 	glass_name = "Green Stuff"
 	glass_desc = "Tyrmalin grog aggressively blended with unfiltered absinthe."
 
+/datum/reagent/ethanol/goliathspit
+	name = "Goliath Spit"
+	id = "goliathspit"
+	description = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
+	taste_description = "faint, tangy sweetness"
+	color = "#CCCC99"
+	strength = 50
+	adj_temp = -5
+
+	glass_name = "Goliath Spit"
+	glass_desc = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
+
+/datum/reagent/ethanol/maryonacross
+	name = "Mary On a Cross"
+	id = "maryonacross"
+	description = "Not just another Bloody Mary. Mary on a cross."
+	taste_description = "copper, tomatoes, and heretical sweetness"
+	color = "#B40000"
+	strength = 30
+
+	glass_name = "Mary On a Cross"
+	glass_desc = "Not just another Bloody Mary. Mary on a cross."
+
+/datum/reagent/ethanol/royaljelly
+	name = "Royal Jelly"
+	id = "royaljelly"
+	description = "A drink usually enjoyed by only the highest castes of Apinae society. Incredibly sweet, it is said to have enormous health benefits."
+	taste_description = "honey and royalty"
+	color = "#f0d76b"
+	strength = 20
+
+	glass_name = "Royal Jelly"
+	glass_desc = "A drink usually enjoyed by only the highest castes of Apinae society. Incredibly sweet, it is said to have enormous health benefits."
+
+//This functions the same as Doctor's Delight, except it gets you drunk too.
+/datum/reagent/ethanol/royaljelly/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien == IS_DIONA)
+		return
+	M.adjustOxyLoss(-4 * removed)
+	M.heal_organ_damage(2 * removed, 2 * removed)
+	M.adjustToxLoss(-2 * removed)
+	if(M.dizziness)
+		M.dizziness = max(0, M.dizziness - 15)
+	if(M.confused)
+		M.Confuse(-5)
+
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
 ///////////////////////////////////////////////
@@ -4092,6 +4186,14 @@ End Citadel Change */
 	name = "Tallow"
 	id = "tallow"
 	description = "An liquidized form of animal fat, useful for adding that extra heart stopping potential to any of your deep fried food products."
+
+//Brine, for treating certain meats and food product fermentation.
+
+/datum/reagent/brine
+	name = "Brine"
+	id = "brine"
+	color = "#a1d1e7"
+	description = "A mixture of water, enzymes, sugar, and salt used to trigger fermentation in certain food products."
 
 //Protein! Get your mind out of the gutter.
 /datum/reagent/nutriment/protein // Bad for Skrell!
@@ -4667,3 +4769,12 @@ End Citadel Change */
 	glass_name = "Crystal Dr. Gibb"
 	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
 
+/datum/reagent/drink/crystalgibb
+	name = "Crystal Dr. Gibb"
+	id = "crystalgibb"
+	description = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+	taste_description = "clear cherry soda"
+	color = "#0000"
+
+	glass_name = "Crystal Dr. Gibb"
+	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"

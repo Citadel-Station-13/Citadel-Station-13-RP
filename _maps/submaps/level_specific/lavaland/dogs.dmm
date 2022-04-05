@@ -2,20 +2,27 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"j" = (
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/bosses)
 "k" = (
 /obj/structure/catwalk,
 /obj/structure/closet/crate,
 /obj/random/multiple/treasure,
 /obj/item/bone/skull,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/bosses)
 "m" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/bosses)
+"p" = (
+/obj/structure/catwalk,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 "B" = (
 /mob/living/simple_mob/vore/aggressive/corrupthound/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 "D" = (
 /obj/structure/loot_pile/surface/bones,
@@ -27,6 +34,10 @@
 /area/lavaland/bosses)
 "O" = (
 /obj/effect/decal/remains/unathi,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/area/lavaland/bosses)
+"R" = (
+/mob/living/simple_mob/vore/aggressive/corrupthound/surt,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "T" = (
@@ -34,14 +45,18 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "U" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/bosses)
+"W" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "X" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "Z" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 
 (1,1,1) = {"
@@ -102,12 +117,12 @@ U
 Z
 Z
 X
-Z
+j
 U
-Z
-Z
-Z
-Z
+j
+j
+j
+j
 U
 a
 a
@@ -119,11 +134,11 @@ U
 Z
 Z
 T
-Z
+W
 m
-Z
-B
-Z
+W
+R
+j
 I
 U
 a
@@ -135,13 +150,13 @@ a
 U
 Z
 B
-Z
-Z
+j
+j
 U
-Z
-Z
-Z
-Z
+j
+j
+j
+j
 U
 a
 a
@@ -152,13 +167,13 @@ a
 U
 Z
 Z
-Z
-Z
+W
+j
 U
-Z
-Z
-Z
-Z
+j
+j
+W
+j
 U
 a
 a
@@ -186,13 +201,13 @@ a
 U
 Z
 Z
-Z
-Z
+W
+j
 U
 D
-Z
-Z
-Z
+j
+W
+j
 U
 a
 a
@@ -203,13 +218,13 @@ a
 U
 Z
 O
-Z
-Z
+j
+j
 U
-Z
+j
 X
-Z
-Z
+j
+j
 U
 a
 a
@@ -221,9 +236,9 @@ U
 Z
 B
 Z
-Z
+p
 m
-Z
+p
 Z
 Z
 Z
@@ -242,7 +257,7 @@ Z
 U
 Z
 Z
-Z
+p
 Z
 U
 a

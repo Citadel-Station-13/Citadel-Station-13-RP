@@ -275,6 +275,11 @@
 	item_state_slots = list(slot_r_hand_str = "detective", slot_l_hand_str = "detective")
 	desc = "A grey fedora - either the cornerstone of a reporter's style or a poor attempt at looking cool, depending on the person wearing it."
 
+/obj/item/clothing/head/fedora/floppy
+	name = "wide brimmed hat"
+	desc = "A dark fedora with an incredibly wide brim. It's very avant garde."
+	icon_state = "floppy"
+	item_state_slots = list(slot_r_hand_str = "witch", slot_l_hand_str = "witch")
 
 /obj/item/clothing/head/feathertrilby
 	name = "feather trilby"
@@ -398,6 +403,7 @@
 	icon_state = "beanie"
 	addblends = "beanie_a"
 	body_parts_covered = 0
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/beanie_loose
 	name = "loose beanie"
@@ -405,6 +411,7 @@
 	icon_state = "beanie_hang"
 	addblends = "beanie_hang_a"
 	body_parts_covered = 0
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/beretg
 	name = "beret"

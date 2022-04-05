@@ -1,13 +1,13 @@
-/obj/screen/shadekin
+/atom/movable/screen/shadekin
 	icon = 'icons/mob/shadekin_hud.dmi'
 	invisibility = 101
 
-/obj/screen/shadekin/darkness
+/atom/movable/screen/shadekin/darkness
 	name = "darkness"
 	icon_state = "dark"
 	alpha = 150
 
-/obj/screen/shadekin/energy
+/atom/movable/screen/shadekin/energy
 	name = "energy"
 	icon_state = "energy0"
 	alpha = 150
@@ -15,7 +15,7 @@
 
 
 
-/obj/screen/movable/ability_master/shadekin
+/atom/movable/screen/movable/ability_master/shadekin
 	name = "Shadekin Abilities"
 	icon = 'icons/mob/screen_spells.dmi'
 	icon_state = "grey_spell_ready"
@@ -27,26 +27,26 @@
 
 	screen_loc = ui_spell_master
 
-/obj/screen/movable/ability_master/shadekin/update_abilities(forced = 0, mob/user)		//Different proc to prevent indexing
+/atom/movable/screen/movable/ability_master/shadekin/update_abilities(forced = 0, mob/user)		//Different proc to prevent indexing
 	update_icon()
 	if(user && user.client)
 		if(!(src in user.client.screen))
 			user.client.screen += src
-	for(var/obj/screen/ability/ability in ability_objects)
+	for(var/atom/movable/screen/ability/ability in ability_objects)
 		ability.update_icon(forced)
 
-/obj/screen/ability/verb_based/shadekin
+/atom/movable/screen/ability/verb_based/shadekin
 	icon_state = "grey_spell_base"
 	background_base_state = "grey"
 
-/obj/screen/movable/ability_master/proc/add_shadekin_ability(var/object_given, var/verb_given, var/name_given, var/ability_icon_given, var/arguments)
+/atom/movable/screen/movable/ability_master/proc/add_shadekin_ability(var/object_given, var/verb_given, var/name_given, var/ability_icon_given, var/arguments)
 	if(!object_given)
 		message_admins("ERROR: add_shadekin_ability() was not given an object in its arguments.")
 	if(!verb_given)
 		message_admins("ERROR: add_shadekin_ability() was not given a verb/proc in its arguments.")
 	if(get_ability_by_proc_ref(verb_given))
 		return // Duplicate
-	var/obj/screen/ability/verb_based/shadekin/A = new /obj/screen/ability/verb_based/shadekin()
+	var/atom/movable/screen/ability/verb_based/shadekin/A = new /atom/movable/screen/ability/verb_based/shadekin()
 	A.ability_master = src
 	A.object_used = object_given
 	A.verb_to_call = verb_given

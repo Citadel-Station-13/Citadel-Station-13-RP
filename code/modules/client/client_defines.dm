@@ -57,7 +57,7 @@
 
 	preload_rsc = PRELOAD_RSC
 
-	var/global/obj/screen/click_catcher/void
+	var/global/atom/movable/screen/click_catcher/void
 
 	var/lastping = 0
 	var/avgping = 0

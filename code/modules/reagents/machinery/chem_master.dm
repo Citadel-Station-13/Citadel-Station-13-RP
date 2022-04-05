@@ -425,7 +425,7 @@
 							to_chat(usr, "<span class='notice'>Not enough reagents to create these injectors!</span>")
 							return
 
-						var/obj/item/reagent_containers/hypospray/autoinjector/A = new(loc)
+						var/obj/item/reagent_containers/hypospray/autoinjector/empty/A = new(loc)
 						A.name = "[answer] autoinjector"
 						A.pixel_x = rand(-7, 7) // random position
 						A.pixel_y = rand(-7, 7)

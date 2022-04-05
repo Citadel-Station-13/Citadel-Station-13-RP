@@ -1,7 +1,7 @@
 //SC Exploration Secure Closets Port
 /obj/structure/closet/secure_closet/explorer
 	name = "explorer locker"
-	icon = 'icons/obj/closet_vr.dmi'
+	icon = 'icons/obj/closet.dmi'
 	icon_state = "secureexp1"
 	icon_closed = "secureexp"
 	icon_locked = "secureexp1"
@@ -184,7 +184,7 @@
 //Pathfinder
 /obj/structure/closet/secure_closet/pathfinder
 	name = "pathfinder locker"
-	icon = 'icons/obj/closet_vr.dmi'
+	icon = 'icons/obj/closet.dmi'
 	icon_state = "secureexp1"
 	icon_closed = "secureexp"
 	icon_locked = "secureexp1"

@@ -4,7 +4,7 @@
 /obj/machinery/vending
 	name = "Vendomat"
 	desc = "A generic vending machine."
-	icon = 'icons/obj/vending_vr.dmi' //VOREStation Edit - Eris vending machine sprites
+	icon = 'icons/obj/vending.dmi'
 	icon_state = "generic"
 	anchored = 1
 	density = 1
@@ -697,6 +697,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/peachschnapps = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/lemonadeschnapps = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/rum = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/whiterum = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/sake = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/tequilla = 5,
@@ -797,9 +798,9 @@
 					/obj/item/reagent_containers/food/drinks/cans/cola = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
- /obj/item/reagent_containers/food/drinks/cans/iced_tea = 10)
+ 					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10)
 	contraband = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6,
-				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 1)
+				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 4, /obj/item/reagent_containers/food/drinks/cans/geometer = 2)
 	prices = list(/obj/item/reagent_containers/food/drinks/cans/cola = 1,/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1,
 					/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 1,/obj/item/reagent_containers/food/drinks/cans/starkist = 1,
 					/obj/item/reagent_containers/food/drinks/cans/waterbottle = 2,/obj/item/reagent_containers/food/drinks/cans/space_up = 1,
@@ -865,12 +866,14 @@
 					/obj/item/storage/fancy/cigarettes/jerichos = 5,
 					/obj/item/storage/fancy/cigarettes/menthols = 5,
 					/obj/item/storage/rollingpapers = 5,
+					/obj/item/storage/rollingblunts = 5,
 					/obj/item/storage/box/matches = 10,
 					/obj/item/flame/lighter/random = 4)
 	contraband = list(/obj/item/flame/lighter/zippo = 4)
 	premium = list(/obj/item/storage/fancy/cigar = 5,
 					/obj/item/storage/fancy/cigarettes/carcinomas = 5,
-					/obj/item/storage/fancy/cigarettes/professionals = 5)
+					/obj/item/storage/fancy/cigarettes/professionals = 5,
+					/obj/item/storage/fancy/cigarettes/blackstars = 5)
 	prices = list(/obj/item/storage/fancy/cigarettes = 12,
 					/obj/item/storage/fancy/cigarettes/dromedaryco = 15,
 					/obj/item/storage/fancy/cigarettes/killthroat = 17,
@@ -878,6 +881,7 @@
 					/obj/item/storage/fancy/cigarettes/jerichos = 22,
 					/obj/item/storage/fancy/cigarettes/menthols = 18,
 					/obj/item/storage/rollingpapers = 10,
+					/obj/item/storage/rollingblunts = 17,
 					/obj/item/storage/box/matches = 1,
 					/obj/item/flame/lighter/random = 2)
 
@@ -1035,7 +1039,7 @@
 	products = list(
 	/obj/item/tray = 8,
 	/obj/item/material/kitchen/utensil/fork = 6,
-	/obj/item/material/knife = 6,
+	/obj/item/material/knife/plastic = 6,
 	/obj/item/material/kitchen/utensil/spoon = 6,
 	/obj/item/material/knife = 3,
 	/obj/item/material/kitchen/rollingpin = 2,
@@ -1044,7 +1048,6 @@
 	/obj/item/glass_extra/stick = 15,
 	/obj/item/glass_extra/straw = 15,
 	/obj/item/clothing/suit/chef/classic = 2,
-	/obj/item/storage/bag/food = 2,
 	/obj/item/storage/toolbox/lunchbox = 3,
 	/obj/item/storage/toolbox/lunchbox/heart = 3,
 	/obj/item/storage/toolbox/lunchbox/cat = 3,
@@ -1053,7 +1056,12 @@
 	/obj/item/storage/toolbox/lunchbox/cti = 3,
 	/obj/item/storage/toolbox/lunchbox/nymph = 3,
 	/obj/item/storage/toolbox/lunchbox/syndicate = 3,
-	/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3)
+	/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3,
+	/obj/item/trash/bowl = 30,
+	/obj/item/reagent_containers/cooking_container/oven = 5,
+	/obj/item/reagent_containers/cooking_container/fryer = 4
+	)
+
 	contraband = list(/obj/item/material/knife/butch = 2)
 
 /obj/machinery/vending/sovietsoda
@@ -1174,6 +1182,7 @@
 					/obj/item/toy/plushie/bear_soda = 2,
 					/obj/item/toy/plushie/bear_bloody = 2,
 					/obj/item/toy/plushie/bear_space = 1,
+					/obj/item/toy/plushie/doll = 3,
 					/obj/item/storage/daki = 10)
 	premium = list(/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
 					/obj/item/storage/trinketbox = 2)
@@ -1211,6 +1220,7 @@
 					/obj/item/toy/plushie/bear_soda = 35,
 					/obj/item/toy/plushie/bear_bloody = 35,
 					/obj/item/toy/plushie/bear_space = 50,
+					/obj/item/toy/plushie/doll = 50,
 					/obj/item/storage/daki = 100)
 
 /obj/machinery/vending/fishing
@@ -1253,34 +1263,7 @@
 					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4)
 
 //Custom vendors
-/obj/machinery/vending/dinnerware
-	name = "Dinnerware"
-	desc = "A kitchen and restaurant equipment vendor."
-	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
-	icon_state = "dinnerware"
-	products = list(
-	/obj/item/tray = 8,
-	/obj/item/material/kitchen/utensil/fork = 6,
-	/obj/item/material/knife/plastic = 6,
-	/obj/item/material/kitchen/utensil/spoon = 6,
-	/obj/item/material/knife = 3,
-	/obj/item/material/kitchen/rollingpin = 2,
-	/obj/item/reagent_containers/food/drinks/glass2/square = 8,
-	/obj/item/reagent_containers/food/drinks/glass2/shake = 8,
-	/obj/item/glass_extra/stick = 15,
-	/obj/item/glass_extra/straw = 15,
-	/obj/item/clothing/suit/chef/classic = 2,
-	/obj/item/storage/toolbox/lunchbox = 3,
-	/obj/item/storage/toolbox/lunchbox/heart = 3,
-	/obj/item/storage/toolbox/lunchbox/cat = 3,
-	/obj/item/storage/toolbox/lunchbox/nt = 3,
-	/obj/item/storage/toolbox/lunchbox/mars = 3,
-	/obj/item/storage/toolbox/lunchbox/cti = 3,
-	/obj/item/storage/toolbox/lunchbox/nymph = 3,
-	/obj/item/storage/toolbox/lunchbox/syndicate = 3,
-	/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3,
-	/obj/item/trash/bowl = 30)
-	contraband = list(/obj/item/material/knife/butch = 2)
+
 
 //I want this not just as part of the zoo. ;v
 /obj/machinery/vending/food
@@ -1809,10 +1792,10 @@
 					/obj/item/clothing/under/color/white = 5,
 					/obj/item/clothing/under/color/yellow = 5,
 					/obj/item/clothing/under/color/yellowgreen = 5,
-					/obj/item/clothing/under/aether = 5,
-					/obj/item/clothing/under/focal = 5,
-					/obj/item/clothing/under/hephaestus = 5,
-					/obj/item/clothing/under/wardt = 5,
+					/obj/item/clothing/under/brandjumpsuit/aether = 5,
+					/obj/item/clothing/under/brandjumpsuit/focal = 5,
+					/obj/item/clothing/under/brandjumpsuit/hephaestus = 5,
+					/obj/item/clothing/under/brandjumpsuit/wardt = 5,
 					/obj/item/clothing/under/kilt = 5,
 					/obj/item/clothing/under/fluff/latexmaid = 5,
 					/obj/item/clothing/under/dress/lilacdress = 5,
@@ -1846,7 +1829,7 @@
 					/obj/item/clothing/under/permit = 5,
 					/obj/item/clothing/under/oldwoman = 5,
 					/obj/item/clothing/under/frontier = 5,
-					/obj/item/clothing/under/mbill = 5,
+					/obj/item/clothing/under/brandjumpsuit/mbill = 5,
 					/obj/item/clothing/under/pants/baggy/ = 5,
 					/obj/item/clothing/under/pants/baggy/classicjeans = 5,
 					/obj/item/clothing/under/pants/baggy/mustangjeans = 5,
@@ -1951,7 +1934,9 @@
 					/obj/item/storage/box/fluff/swimsuit/medical = 5,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 5,
 					/obj/item/storage/box/fluff/swimsuit/captain = 5,
-					/obj/item/storage/box/fluff/swimsuit/highclass = 5,
+					/obj/item/storage/box/fluff/swimsuit/highclass = 3,
+					/obj/item/storage/box/fluff/swimsuit/latex = 3,
+					/obj/item/storage/box/rainponcho = 5,
 					/obj/item/clothing/under/utility = 5,
 					/obj/item/clothing/under/utility/grey = 5,
 					/obj/item/clothing/under/utility/blue = 5,
@@ -2010,10 +1995,10 @@
 					/obj/item/clothing/under/color/white = 25,
 					/obj/item/clothing/under/color/yellow = 25,
 					/obj/item/clothing/under/color/yellowgreen = 25,
-					/obj/item/clothing/under/aether = 25,
-					/obj/item/clothing/under/focal = 25,
-					/obj/item/clothing/under/hephaestus = 25,
-					/obj/item/clothing/under/wardt = 25,
+					/obj/item/clothing/under/brandjumpsuit/aether = 25,
+					/obj/item/clothing/under/brandjumpsuit/focal = 25,
+					/obj/item/clothing/under/brandjumpsuit/hephaestus = 25,
+					/obj/item/clothing/under/brandjumpsuit/wardt = 25,
 					/obj/item/clothing/under/kilt = 25,
 					/obj/item/clothing/under/fluff/latexmaid = 25,
 					/obj/item/clothing/under/dress/lilacdress = 25,
@@ -2047,7 +2032,7 @@
 					/obj/item/clothing/under/permit = 25,
 					/obj/item/clothing/under/oldwoman = 25,
 					/obj/item/clothing/under/frontier = 25,
-					/obj/item/clothing/under/mbill = 25,
+					/obj/item/clothing/under/brandjumpsuit/mbill = 25,
 					/obj/item/clothing/under/pants/baggy/ = 25,
 					/obj/item/clothing/under/pants/baggy/classicjeans = 25,
 					/obj/item/clothing/under/pants/baggy/mustangjeans = 25,
@@ -2152,7 +2137,9 @@
 					/obj/item/storage/box/fluff/swimsuit/medical = 25,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 25,
 					/obj/item/storage/box/fluff/swimsuit/captain = 25,
-					/obj/item/storage/box/fluff/swimsuit/highclass = 25,
+					/obj/item/storage/box/fluff/swimsuit/highclass = 40,
+					/obj/item/storage/box/fluff/swimsuit/latex = 40,
+					/obj/item/storage/box/rainponcho = 10,
 					/obj/item/clothing/under/utility = 25,
 					/obj/item/clothing/under/utility/grey = 25,
 					/obj/item/clothing/under/utility/blue = 25,

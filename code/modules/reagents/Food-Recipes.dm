@@ -74,7 +74,7 @@
 	result_amount = 15
 
 /datum/chemical_reaction/food/cheesewheel
-	name = "Cheesewheel"
+	name = "Cheese wheel"
 	id = "cheesewheel"
 	result = null
 	required_reagents = list("milk" = 40)
@@ -85,6 +85,20 @@
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel(location)
+	return
+
+/datum/chemical_reaction/food/bluecheesewheel
+	name = "Blue Cheese wheel"
+	id = "bluecheesewheel"
+	result = null
+	required_reagents = list("milk" = 40, "virusfood" = 5)
+	catalysts = list("enzyme" = 5)
+	result_amount = 1
+
+/datum/chemical_reaction/food/bluecheesewheel/on_reaction(var/datum/reagents/holder, var/created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/food/snacks/sliceable/bluecheesewheel(location)
 	return
 
 /datum/chemical_reaction/food/meatball
@@ -183,3 +197,11 @@
 	required_reagents = list("protein" = 3, "nutriment" = 1)
 	catalysts = list("enzyme" = 5)
 	result_amount = 4
+
+/datum/chemical_reaction/food/brine
+	name = "Brine"
+	id = "brine"
+	result = "brine"
+	required_reagents = list("water" = 5, "sodiumchloride" = 1, "sugar" = 1)
+	catalysts = list("enzyme" = 5)
+	result_amount = 5

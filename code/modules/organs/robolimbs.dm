@@ -326,18 +326,10 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	//robo_brute_mod = 1.1 //VOREStation Edit
 	//robo_burn_mod = 1.1 //VOREStation Edit
 
-/datum/robolimb/veymed_skrell
+/datum/robolimb/veymed/skrell
 	company = "Vey-Med - Skrell"
-	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_skrell.dmi'
-	unavailable_to_build = 1
-	lifelike = 1
-	skin_color = TRUE
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_TAJ, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_DIONA, SPECIES_ZADDAT)
 	blood_color = "#4451cf"
-	speech_bubble_appearance = "normal"
-	robo_brute_mod = 1.05
-	robo_burn_mod = 1.05
 
 // thanks kraso
 /datum/robolimb/moth

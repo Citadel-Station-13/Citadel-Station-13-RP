@@ -354,7 +354,7 @@
 
 /obj/item/gun/projectile/r9
 	name = "C96-Red 9"
-	desc = "A variation on the Mauser C-96 the first semi firearm ever to be widely adopted by a human military. This version is chambered for 9mm and reloads using Stipper Clips."
+	desc = "A variation on the Mauser C-96 - the first semi firearm ever to be widely adopted by a human military. This version is chambered for 9mm and reloads using stripper clips."
 	icon_state = "r9"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL =1) //VERY OLD
 	caliber = "9mm"
@@ -388,23 +388,93 @@
 	else
 		icon_state = "[initial(icon_state)]-e"
 
+//Exploration/Pathfinder Sidearms
 /obj/item/gun/projectile/fnseven
-	name = "5.7 sidearm"
-	desc = "This classic sidearm design utilizes an adaptable round considered to be superior to 9mm parabellum. It shares a round type with the H90K."
-	icon_state = "fnseven"
+	name = "NT-57 'LES'"
+	desc = "The NT-57 'LES' (Light Expeditionary Sidearm) is a tried and tested pistol often issued to Pathfinders. Featuring a polymer frame, collapsible stock, and integrated optics, the LES is lightweight and reliably functions in nearly any hazardous environment, including vacuum."
+	icon_state = "nt57"
+	item_state = "pistol"
 	caliber = "5.7x28mm"
 	load_method = MAGAZINE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	magazine_type = /obj/item/ammo_magazine/m57x28mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm)
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/item/projectile/bullet/pistol/lap
+	one_handed_penalty = 30
+	var/collapsible = 1
+	var/extended = 0
 
 /obj/item/gun/projectile/fnseven/update_icon()
+	..()
+	if(!extended && ammo_magazine)
+		icon_state = "nt57"
+	else if(extended && ammo_magazine)
+		icon_state = "nt57_extended"
+	else if(extended && !ammo_magazine)
+		icon_state = "nt57_extended-e"
+	else
+		icon_state = "nt57-e"
+
+/obj/item/gun/projectile/fnseven/attack_self(mob/user, obj/item/gun/G)
+	if(collapsible && !extended)
+		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
+		w_class = ITEMSIZE_LARGE
+		one_handed_penalty = 10
+		extended = 1
+		update_icon()
+	else if(!collapsible)
+		to_chat(user, "<span class='danger'>The [src] doesn't have a stock!</span>")
+		return
+	else
+		to_chat(user, "<span class='notice'>You push the stock back into the [src], making it more compact.</span>")
+		w_class = ITEMSIZE_NORMAL
+		one_handed_penalty = 30
+		extended = 0
+		update_icon()
+
+/obj/item/gun/projectile/fnseven/pathfinder
+	pin = /obj/item/firing_pin/explorer
+
+/obj/item/gun/projectile/fnseven/vintage
+	name = "5.7 sidearm"
+	desc = "This classic sidearm design utilizes an adaptable round considered to be superior to 9mm parabellum. It shares a round type with the H90K."
+	icon_state = "fnseven"
+	collapsible = 0
+	extended = 1
+
+/obj/item/gun/projectile/fnseven/vintage/update_icon()
 	..()
 	if(ammo_magazine)
 		icon_state = "fnseven"
 	else
 		icon_state = "fnseven-e"
 
-/obj/item/gun/projectile/fnseven/pathfinder
-	pin = /obj/item/firing_pin/explorer
+//Apidean Weapons
+/obj/item/gun/projectile/apinae_pistol
+	name = "\improper Apinae Enforcer pistol"
+	desc = "Used by Hive-guards to detain deviants."
+	icon_state = "apipistol"
+	item_state = "florayield"
+	caliber = "apidean"
+	load_method = MAGAZINE
+	w_class = ITEMSIZE_SMALL
+	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_BIO = 5)
+	magazine_type = /obj/item/ammo_magazine/biovial
+	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
+	projectile_type = /obj/item/projectile/bullet/organic/wax
+
+/obj/item/gun/projectile/apinae_pistol/update_icon()
+	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+
+//Tyrmalin Weapons
+/obj/item/gun/projectile/pirate/junker_pistol
+	name = "scrap pistol"
+	desc = "A strange handgun made from industrial parts. It appears to accept multiple rounds thanks to an internal magazine. Favored by Tyrmalin wannabe-gunslingers."
+	icon_state = "junker_pistol"
+	item_state = "revolver"
+	load_method = SINGLE_CASING
+	w_class = ITEMSIZE_SMALL
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
+	recoil = 3
+	handle_casings = CYCLE_CASINGS
+	max_shells = 3

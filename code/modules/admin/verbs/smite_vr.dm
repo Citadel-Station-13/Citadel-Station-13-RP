@@ -252,7 +252,7 @@ This smite is also slated for transfer to the non Vore section shortly. Will coi
 	var/tip = pick(bad_tips)
 	to_chat(target, "<span class='notice' style='font: small-caps bold large monospace!important'>Tip of the day:</span><br><span class='notice'>[tip]</span>")
 
-	var/obj/screen/loader = new(target)
+	var/atom/movable/screen/loader = new(target)
 	loader.name = "Autosaving..."
 	loader.desc = "A disc icon that represents your game autosaving. Please wait."
 	loader.icon = 'icons/obj/discs_vr.dmi'

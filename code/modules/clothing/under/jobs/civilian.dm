@@ -14,6 +14,7 @@
 
 /obj/item/clothing/under/rank/bartender/skirt_pleated
 	name = "bartender's pleated skirt"
+	desc = "Short, and to the point."
 	icon_state = "barman_skirt"
 	rolled_sleeves = -1
 
@@ -40,6 +41,7 @@
 
 /obj/item/clothing/under/rank/cargo/skirt_pleated
 	name = "quartermaster's pleated skirt"
+	desc = "Skiiiiiirt! It's pleated!"
 	icon_state = "qm_skirt"
 
 /obj/item/clothing/under/rank/cargo/jeans
@@ -74,6 +76,7 @@
 
 /obj/item/clothing/under/rank/cargotech/skirt_pleated
 	name = "cargo technician's pleated skirt"
+	desc = "Skiiiiiirt! It's pleated!"
 	icon_state = "cargo_skirt"
 
 /obj/item/clothing/under/rank/chaplain
@@ -95,6 +98,7 @@
 
 /obj/item/clothing/under/rank/chef/skirt_pleated
 	name = "chef's pleated skirt"
+	desc = "It's a skirt of which is given only to the most <b>ludicrous</b> of spacebound chefs."
 	icon_state = "chef_skirt"
 
 /obj/item/clothing/under/rank/clown
@@ -111,6 +115,7 @@
 
 /obj/item/clothing/under/rank/head_of_personnel/skirt_pleated
 	name = "head of personnel's pleated skirt"
+	desc = "A semi formal uniform given only to Heads of Personnel."
 	icon_state = "hop_skirt"
 
 /obj/item/clothing/under/rank/head_of_personnel_whimsy
@@ -152,9 +157,17 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/janitor_fem
+	name = "janitor's jumpsuit"
+	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
+	icon_state = "janitor_fem"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+
 /obj/item/clothing/under/rank/janitor/skirt_pleated
 	name = "janitor's pleated skirt"
+	desc = "The official pleated skirt of the local janitor. It bears minor protection from biohazards."
 	icon_state = "janitor_skirt"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /obj/item/clothing/under/lawyer
 	desc = "Slick threads."
@@ -273,3 +286,11 @@
 			"Teshari" = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'
 			)
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot2)
+
+// The things folks do for fashion...
+/obj/item/clothing/under/rank/janitor/starcon
+	name = "janitor's uniform"
+	desc = "It's the official uniform of the station's janitor with minor modifications. It has minor protection from biohazards, but not from the harshness of space."
+	icon = 'icons/obj/clothing/uniforms_cit.dmi'
+	icon_override = 'icons/mob/uniform_cit.dmi'
+	icon_state = "janitor_sc"

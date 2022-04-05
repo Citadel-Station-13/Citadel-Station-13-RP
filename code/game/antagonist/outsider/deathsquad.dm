@@ -46,7 +46,7 @@ var/datum/antagonist/deathsquad/deathsquad
 		player.equip_to_slot_or_del(new /obj/item/disk/nuclear(player), slot_r_store)
 	else
 		player.equip_to_slot_or_del(new /obj/item/plastique(player), slot_l_store)
-	player.equip_to_slot_or_del(new /obj/item/gun/projectile/revolver/mateba(player), slot_belt)
+	player.equip_to_slot_or_del(new /obj/item/gun/projectile/revolver/combat(player), slot_belt)
 	player.equip_to_slot_or_del(new /obj/item/gun/energy/pulse_rifle(player), slot_r_hand)
 	player.equip_to_slot_or_del(new /obj/item/rig/ert/assetprotection(player), slot_back)
 	player.equip_to_slot_or_del(new /obj/item/melee/energy/sword(player), slot_s_store)

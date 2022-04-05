@@ -121,6 +121,16 @@
 /obj/item/ammo_magazine/m45uzi/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/m45uzi/wt274
+	name = "double-stack magazine (.45)"
+	icon_state = "wt274"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/a45
+	matter = list(DEFAULT_WALL_MATERIAL = 2400)
+	caliber = ".45"
+	max_ammo = 32
+	multiple_sprites = 1
+
 /obj/item/ammo_magazine/m45tommy
 	name = "Tommy Gun magazine (.45)"
 	icon_state = "tommy-mag"
@@ -460,14 +470,14 @@
 /////// 5.7x28mm ////////
 /obj/item/ammo_magazine/m57x28mm
 	name = "magazine (5.7x28mm)"
-	desc = "A sturdy double stack magazine with a reinforced spring, designed for withstanding rough treatment."
+	desc = "A durable top-loading magazine, designed for withstanding rough treatment."
 	icon_state = "fiveseven"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
 	matter = list(DEFAULT_WALL_MATERIAL = 300, "copper" = 300)
 	caliber = "5.7x28mm"
 	ammo_type = /obj/item/ammo_casing/a57x28mm
-	max_ammo = 15
+	max_ammo = 20
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m57x28mm/ap
@@ -511,6 +521,62 @@
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
 
 /obj/item/ammo_magazine/m57x28mm/large/empty
+	initial_ammo = 0
+
+//Vintage Mags
+/obj/item/ammo_magazine/m57x28mm/vintage
+	name = "vinage magazine (5.7x28mm)"
+	desc = "A sturdy double stack magazine with a reinforced spring, designed for withstanding rough treatment."
+	icon_state = "fiveseven_old"
+	origin_tech = list(TECH_COMBAT = 2)
+	mag_type = MAGAZINE
+	matter = list(DEFAULT_WALL_MATERIAL = 300, "copper" = 300)
+	caliber = "5.7x28mm"
+	ammo_type = /obj/item/ammo_casing/a57x28mm
+	max_ammo = 15
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m57x28mm/vintage/ap
+	name = "magazine (5.7x28mm armor piercing)"
+	desc = "A standard capacity magazine loaded with armor piercing bullets."
+	ammo_mark = "ap"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
+
+/obj/item/ammo_magazine/m57x28mm/vintage/hp
+	name = "magazine (5.7x28mm hollow-point)"
+	ammo_mark = "hp"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
+
+/obj/item/ammo_magazine/m57x28mm/vintage/hunter
+	name = "magazine (5.7x28mm hunter)"
+	ammo_mark = "hunter"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
+
+/obj/item/ammo_magazine/m57x28mm/vintage/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/m57x28mm/vintage/large
+	name = "large capacity vintage magazine (5.7x28mm)"
+	icon_state = "fiveseven_highcap"
+	max_ammo = 30
+	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
+
+/obj/item/ammo_magazine/m57x28mm/vintage/large/ap
+	name = "large capacity magazine (5.7x28mm armor piercing)"
+	desc = "A high capacity magazine loaded with armor piercing bullets."
+	ammo_mark = "ap"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
+/obj/item/ammo_magazine/m57x28mm/vintage/large/hp
+	name = "large capacity magazine (5.7x28mm hollow-point)"
+	ammo_mark = "hp"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
+
+/obj/item/ammo_magazine/m57x28mm/vintage/large/hunter
+	name = "large capacity magazine (5.7x28mm hunter)"
+	ammo_mark = "hunter"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
+
+/obj/item/ammo_magazine/m57x28mm/vintage/large/empty
 	initial_ammo = 0
 
 //p90
@@ -957,3 +1023,14 @@
 
 /obj/item/ammo_magazine/mcompressedbio/large/banana
 	icon_state = "bio_large_banana"
+
+/obj/item/ammo_magazine/biovial
+	name = "bio-vial (Liquid Wax)"
+	desc = "Biological Munitions Vials, commonly referred to as bio-vials, contain liquid biomatter of some form, for use in exotic weapons systems. This one accepts wax globules."
+	icon_state = "bio_vial"
+	mag_type = MAGAZINE
+	caliber = "apidean"
+	ammo_type = /obj/item/ammo_casing/organic/wax
+	matter = list("wax" = 1000)
+	max_ammo = 10
+	multiple_sprites = 1

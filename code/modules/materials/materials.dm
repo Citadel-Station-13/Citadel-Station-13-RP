@@ -1223,3 +1223,14 @@ var/list/name_to_material
 	hardness = 30
 	conductivity = 35
 	stack_type = /obj/item/stack/material/copper
+
+//Moving this here. It was in beehive.dm for some reason.
+/datum/material/wax
+	name = "wax"
+	stack_type = /obj/item/stack/material/wax
+	icon_colour = "#ebe6ac"
+	melting_point = T0C+300
+	weight = 1
+	hardness = 20
+	integrity = 100
+	pass_stack_colors = TRUE

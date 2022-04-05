@@ -453,12 +453,12 @@
 					message = "[pick(laughs)]"
 					if(!spam_flag)
 						if(get_gender() == MALE)
-							var/list/laughsounds = list('modular_citadel/sound/voice/laughs/masclaugh1.ogg', 'modular_citadel/sound/voice/laughs/masclaugh2.ogg')
+							var/list/laughsounds = list('sound/voice/laughs/masclaugh1.ogg', 'sound/voice/laughs/masclaugh2.ogg')
 							playsound(loc, pick(laughsounds), 50, 1, -1)
 							spam_flag = TRUE
 							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 						else
-							playsound(loc, 'modular_citadel/sound/voice/laughs/femlaugh.ogg', 50, 1, -1)
+							playsound(loc, 'sound/voice/laughs/femlaugh.ogg', 50, 1, -1)
 							spam_flag = TRUE
 							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 					m_type = 2
@@ -951,14 +951,14 @@
 		if ("awoo")
 			m_type = 2
 			message = "lets out an awoo."
-			playsound(loc, 'modular_citadel/sound/voice/awoo.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/awoo.ogg', 50, 1, -1)
 		if ("nya")
 			message = "lets out a nya."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/nya.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/nya.ogg', 50, 1, -1)
 		if ("nyaha")
 			if(!spam_flag)
-				var/list/catlaugh = list('modular_citadel/sound/voice/catpeople/nyaha.ogg', 'modular_citadel/sound/voice/catpeople/nyahaha1.ogg', 'modular_citadel/sound/voice/catpeople/nyahaha2.ogg', 'modular_citadel/sound/voice/catpeople/nyahehe.ogg')
+				var/list/catlaugh = list('sound/voice/catpeople/nyaha.ogg', 'sound/voice/catpeople/nyahaha1.ogg', 'sound/voice/catpeople/nyahaha2.ogg', 'sound/voice/catpeople/nyahehe.ogg')
 				playsound(loc, pick(catlaugh), 50, 1, -1)
 				spam_flag = TRUE
 				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
@@ -968,7 +968,7 @@
 		if ("peep")
 			message = "peeps like a bird."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/peep.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/peep.ogg', 50, 1, -1)
 		if("chirp")
 			message = "chirps!"
 			playsound(src.loc, 'sound/misc/nymphchirp.ogg', 50, 0)
@@ -976,19 +976,19 @@
 		if ("weh")
 			message = "lets out a weh."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/weh.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/weh.ogg', 50, 1, -1)
 		if ("merp")
 			message = "lets out a merp."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/merp.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/merp.ogg', 50, 1, -1)
 		if ("bark")
 			message = "lets out a bark."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/bark2.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/bark2.ogg', 50, 1, -1)
 		if ("hiss")
 			message = "lets out a hiss."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/hiss.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/hiss.ogg', 50, 1, -1)
 		if ("squeak")
 			message = "lets out a squeak."
 			m_type = 2
@@ -1029,12 +1029,12 @@
 		if ("purr")
 			message = "purrs softly."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/purr.ogg', 50, 1, -1)
 		if ("clak")
 			if(!spam_flag)
 				var/msg = list("<font color='grey' size='2'>CLAKS!</font>", "claks!")
 				message = "[pick(msg)]"
-				playsound(loc, 'modular_citadel/sound/spooky/boneclak.ogg', 50, 1, 1)
+				playsound(loc, 'sound/spooky/boneclak.ogg', 50, 1, 1)
 				spam_flag = TRUE
 				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 			m_type = 2

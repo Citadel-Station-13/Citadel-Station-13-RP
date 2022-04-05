@@ -25,7 +25,7 @@ BLIND     // can't see anything
 	var/off_state = "degoggles"
 	var/active = 1
 	var/activation_sound = 'sound/items/goggles_charge.ogg'
-	var/obj/screen/overlay = null
+	var/atom/movable/screen/overlay = null
 	var/list/away_planes //Holder for disabled planes
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
@@ -490,6 +490,11 @@ BLIND     // can't see anything
 			to_chat(usr, "You push \the [src] up out of your face.")
 		update_clothing_icon()
 		usr.update_action_buttons()
+
+/obj/item/clothing/glasses/welding/prescription
+	name = "prescription welding goggles"
+	desc = "Protects the eyes from welders, approved by the mad scientist association. These ones have prescription lenses."
+	prescription = 1
 
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"
