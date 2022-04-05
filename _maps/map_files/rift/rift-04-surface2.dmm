@@ -17141,11 +17141,11 @@
 /area/assembly/robotics)
 "FG" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/adv,
 /obj/item/storage/firstaid/adv{
 	pixel_x = 4;
 	pixel_y = 4
 	},
+/obj/item/storage/firstaid/adv,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
@@ -18590,7 +18590,6 @@
 /area/medical/medbay_primary_storage)
 "Id" = (
 /obj/item/folder/red_hos,
-/obj/item/stamp/hos,
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,

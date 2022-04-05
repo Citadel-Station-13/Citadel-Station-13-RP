@@ -4520,6 +4520,7 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/super{
+	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},
