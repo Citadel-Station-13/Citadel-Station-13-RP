@@ -2162,6 +2162,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
 "dS" = (
@@ -11555,6 +11560,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/cable/cyan,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
 "wC" = (
