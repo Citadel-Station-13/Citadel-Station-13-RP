@@ -329,7 +329,7 @@
 			/obj/item/healthanalyzer/apidean = 1,
 			/obj/item/analyzer/apidean = 1,
 			/obj/item/reagent_scanner/apidean = 1,
-			/mob/living/bot/medbot/apidean,
+			/mob/living/bot/medbot/apidean = 1,
 			/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead = 2,
 			/obj/item/reagent_containers/food/drinks/bottle/royaljelly = 1
 			)
