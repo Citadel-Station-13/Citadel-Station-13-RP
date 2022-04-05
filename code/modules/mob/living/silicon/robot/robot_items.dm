@@ -399,7 +399,7 @@
 	set category = "Object"
 	set src in range(0)
 
-	var/N = input("How much damage should the shield absorb?") in list("5","10","25","50","75","100")
+	var/N = input("How much damage should the shield absorb?") in list("10","20","30","40","50","60")
 	if (N)
 		shield_level = text2num(N)/100
 
