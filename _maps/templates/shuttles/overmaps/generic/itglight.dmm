@@ -4065,7 +4065,7 @@
 /area/itglight/passengersleeping)
 "AH" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/healthanalyzer,
 /obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";

@@ -17,7 +17,6 @@
 	botcard_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/medibot)
 
-	var/skin = null //Set to "tox", "ointment" or "o2" for the other two firstaid kits.
 	var/healthanalyzer = /obj/item/healthanalyzer
 	var/firstaid = /obj/item/storage/firstaid
 
@@ -43,21 +42,6 @@
 	skin = new_skin
 	busy = FALSE //So medibots don't spawn bugged.
 	update_icon()
-/*
-/mob/living/bot/medibot/update_icon()
-	. = ..()
-	cut_overlays()
-	if(skin)
-		add_overlay("[base_icon_state]-[skin]")
-	add_overlay("[base_icon_state]-scanner")
-	if(busy)
-		add_overlay("[base_icon_state]-arm-syringe")
-		add_overlay("[base_icon_state]-flash")
-		return
-	else
-		add_overlay("[base_icon_state]-[on]")
-	add_overlay("[base_icon_state]-arm")
-*/
 
 /mob/living/bot/medibot/update_icon()
 	. = ..()
@@ -75,7 +59,6 @@
 			add_overlay("[base_icon_state]-spark")
 		else
 			add_overlay("[base_icon_state]-[on]")
-
 
 //Subtypes & Cosmetics
 /mob/living/bot/medibot/fire
@@ -445,7 +428,6 @@
 	base_icon_state = "medkit"
 	w_class = ITEMSIZE_NORMAL
 	created_name = "Medibot" //To preserve the name if it's a unique medibot I guess
-	var/skin = null //Same as medibot, set to tox or ointment for the respective kits.
 	var/healthanalyzer = /obj/item/healthanalyzer
 	var/firstaid = /obj/item/storage/firstaid
 
@@ -456,9 +438,9 @@
 			add_overlay("[base_icon_state]-[skin]")
 		add_overlay("[base_icon_state]-arm")
 
-/obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/S, mob/user, params)
+/obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/I, mob/user, params)
 
-	if((!istype(S, /obj/item/robot_parts/l_arm)) && (!istype(S, /obj/item/robot_parts/r_arm)))
+	if(istype(I, /obj/item/robot_parts/l_arm) || istype(I, /obj/item/robot_parts/r_arm) || (istype(I, /obj/item/organ/external/arm) && ((I.name == "robotic right arm") || (I.name == "robotic left arm"))))
 		return ..()
 
 	if(contents.len >= 1)
@@ -490,10 +472,10 @@
 		A.skin = "bezerk"
 
 	user.put_in_hands(A)
-	to_chat(user, SPAN_NOTICE("You add [S] to [src]."))
-	A.robot_arm = S.type
+	to_chat(user, SPAN_NOTICE("You add [I] to [src]."))
+	A.robot_arm = I.type
 	A.firstaid = type
-	qdel(S)
+	qdel(I)
 	qdel(src)
 
 /obj/item/bot_assembly/medibot/attackby(obj/item/W, mob/user, params)

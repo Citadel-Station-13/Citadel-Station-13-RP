@@ -4275,7 +4275,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
 	},
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/fighter)
 "hH" = (

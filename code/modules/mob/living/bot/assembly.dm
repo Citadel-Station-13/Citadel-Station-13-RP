@@ -7,6 +7,7 @@
 	var/created_name
 	var/build_step = ASSEMBLY_FIRST_STEP
 	var/robot_arm = /obj/item/robot_parts/l_arm
+	var/skin = null //Same as medibot, set to tox or ointment for the respective kits.
 
 /obj/item/bot_assembly/attackby(obj/item/I, mob/user, params)
 	..()
@@ -28,3 +29,8 @@
 		return FALSE
 	user.drop_item()
 	return TRUE
+
+/obj/item/bot_assembly/proc/is_valid_arm(obj/item/I, mob/user)
+	if(istype(I, /obj/item/robot_parts/l_arm) || istype(I, /obj/item/robot_parts/r_arm) || (istype(I, /obj/item/organ/external/arm) && ((I.name == "robotic right arm") || (I.name == "robotic left arm"))))
+		return TRUE
+	return FALSE
