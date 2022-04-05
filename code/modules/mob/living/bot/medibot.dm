@@ -473,6 +473,20 @@
 	else if(istype(src, /obj/item/storage/firstaid/adv))
 		A.created_name = "\improper Super Medibot"
 		A.skin = "advfirstaid"
+	else if(istype(src, /obj/item/storage/firstaid/clotting))
+		A.created_name = "\improper Leaky"
+		A.skin = "clottingkit"
+	else if(istype(src, /obj/item/storage/firstaid/bonemed))
+		A.created_name = "\improper Pinky"
+		A.skin = "bonemed"
+	else if(istype(src, /obj/item/storage/firstaid/mysterious))
+		A.created_name = "\improper Mysterious Medibot"
+		A.desc = "International Medibot of mystery."
+		A.skin = "bezerk"
+		A.treatment_brute = "bicaridine"
+		A.treatment_fire  = "dermaline"
+		A.treatment_oxy   = "dexalin"
+		A.treatment_tox   = "anti_toxin"
 
 	user.put_in_hands(A)
 	to_chat(user, SPAN_NOTICE("You add [S] to [src]."))
