@@ -410,21 +410,9 @@
 
 /obj/item/bot_assembly/floorbot/Initialize()
 	. = ..()
-	update_icon()
-
-/obj/item/bot_assembly/floorbot/update_icon()
-	..()
-	switch(build_step)
-		if(ASSEMBLY_FIRST_STEP)
-			desc = initial(desc)
-			name = initial(name)
-			icon_state = "toolbox-[skin]"
-			add_overlay("[base_icon_state]-tile")
-
-		if(ASSEMBLY_SECOND_STEP)
-			desc = "It's a toolbox with tiles sticking out the top and a sensor attached."
-			name = "incomplete floorbot assembly"
-			add_overlay("[base_icon_state]-prox-[skin]")
+	spawn(1)
+		add_overlay("[base_icon_state]-[skin]")
+		add_overlay("[base_icon_state]-tile")
 
 /obj/item/bot_assembly/floorbot/attackby(obj/item/W, mob/user, params)
 	..()
@@ -432,10 +420,12 @@
 		if(ASSEMBLY_FIRST_STEP)
 			if(isprox(W))
 				user.drop_item()
-				to_chat(user, SPAN_NOTICE("You add the health sensor to [src]."))
+				to_chat(user, SPAN_NOTICE("You add the proximity sensor to [src]."))
 				qdel(W)
+				name = "incomplete floorbot assembly"
+				desc = "It's a toolbox with tiles sticking out the top and a sensor attached."
+				add_overlay("[base_icon_state]-prox-[skin]")
 				build_step++
-				update_icon()
 
 		if(ASSEMBLY_SECOND_STEP)
 			if(is_valid_arm(W))

@@ -420,24 +420,6 @@
 
 /* Construction */
 
-/obj/item/bot_assembly/medibot
-	name = "incomplete medibot assembly"
-	desc = "A first aid kit with a robot arm permanently grafted to it."
-	icon = 'icons/obj/bots/medibots.dmi'
-	icon_state = "medibot"
-	base_icon_state = "medkit"
-	w_class = ITEMSIZE_NORMAL
-	created_name = "Medibot" //To preserve the name if it's a unique medibot I guess
-	var/healthanalyzer = /obj/item/healthanalyzer
-	var/firstaid = /obj/item/storage/firstaid
-
-/obj/item/bot_assembly/medibot/Initialize()
-	. = ..()
-	spawn(1)
-		if(skin)
-			add_overlay("[base_icon_state]-[skin]")
-		add_overlay("[base_icon_state]-arm")
-
 /obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/I, mob/user, params)
 
 	if(istype(I, /obj/item/robot_parts/l_arm) || istype(I, /obj/item/robot_parts/r_arm) || (istype(I, /obj/item/organ/external/arm) && ((I.name == "robotic right arm") || (I.name == "robotic left arm"))))
@@ -477,6 +459,25 @@
 	A.firstaid = type
 	qdel(I)
 	qdel(src)
+
+/obj/item/bot_assembly/medibot
+	name = "incomplete medibot assembly"
+	desc = "A first aid kit with a robot arm permanently grafted to it."
+	icon = 'icons/obj/bots/medibots.dmi'
+	icon_state = "medibot"
+	base_icon_state = "medkit"
+	w_class = ITEMSIZE_NORMAL
+	created_name = "Medibot" //To preserve the name if it's a unique medibot I guess
+	var/healthanalyzer = /obj/item/healthanalyzer
+	var/firstaid = /obj/item/storage/firstaid
+
+/obj/item/bot_assembly/medibot/Initialize()
+	. = ..()
+	spawn(1)
+		if(skin)
+			add_overlay("[base_icon_state]-[skin]")
+		add_overlay("[base_icon_state]-arm")
+
 
 /obj/item/bot_assembly/medibot/attackby(obj/item/W, mob/user, params)
 	..()
