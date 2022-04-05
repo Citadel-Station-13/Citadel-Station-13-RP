@@ -11829,6 +11829,21 @@
 	icon_state = "icerock-dark"
 	},
 /area/rift/surfacebase/underground/under1)
+"Ud" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/structure/cable{
+	d1 = 16;
+	d2 = 0;
+	icon_state = "16-0"
+	},
+/obj/structure/cable,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "Ue" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -24464,7 +24479,7 @@ si
 si
 si
 si
-si
+Ud
 si
 si
 si
