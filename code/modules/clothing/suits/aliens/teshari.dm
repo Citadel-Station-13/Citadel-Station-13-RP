@@ -337,7 +337,7 @@
 	icon_state = "tesh_hood_bo"
 	item_state_slots = list(slot_r_hand_str = "tesh_hood_bo", slot_l_hand_str = "tesh_hood_bo")
 	flags_inv = BLOCKHAIR
-	body_parts_covered = HEAD|FACE
+	body_parts_covered = HEAD
 	cold_protection = HEAD|FACE
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
