@@ -6981,6 +6981,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 6
 	},
+/obj/structure/closet/secure_closet/cargotech,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "mT" = (
@@ -25712,6 +25713,14 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
+"XT" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/brown/bordercorner2,
+/obj/structure/closet/secure_closet/cargotech,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/office)
 "XU" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin,
@@ -44643,7 +44652,7 @@ fZ
 lk
 YY
 EX
-mR
+XT
 na
 uB
 uC
