@@ -84,7 +84,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	return
 
 /obj/machinery/magma_pump/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(on)
 		set_light(3, 3, "#FFCC00")
 		src.icon_state = "[icon_state]_1"
@@ -222,7 +222,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	return
 
 /obj/machinery/magma_reservoir/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(on)
 		set_light(3, 3, "#FFCC00")
 		src.icon_state = "[icon_state]_1"

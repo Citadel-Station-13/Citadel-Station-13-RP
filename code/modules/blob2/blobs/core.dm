@@ -102,7 +102,7 @@ var/list/blob_cores = list()
 	return ..()
 
 /obj/structure/blob/core/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	color = null
 	var/mutable_appearance/blob_overlay = mutable_appearance('icons/mob/blob.dmi', "blob")
 	if(overmind)

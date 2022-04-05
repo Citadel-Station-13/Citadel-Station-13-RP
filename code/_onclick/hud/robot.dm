@@ -177,7 +177,7 @@ var/atom/movable/screen/robot_inventory
 	mymob.zone_sel = new /atom/movable/screen/zone_sel()
 	mymob.zone_sel.icon = ui_style
 	mymob.zone_sel.alpha = ui_alpha
-	mymob.zone_sel.cut_overlays()
+	mymob.zone_sel.overlays.Cut()
 	mymob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]")
 
 	//Handle the gun settings buttons

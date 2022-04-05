@@ -44,7 +44,7 @@
 
 /obj/structure/vehiclecage/update_icon()
 	..()
-	cut_overlays()
+	overlays.Cut()
 	underlays.Cut()
 
 	var/image/framepaint = new(icon = 'icons/obj/storage.dmi', icon_state = "[initial(icon_state)]_a", layer = MOB_LAYER + 1.1)

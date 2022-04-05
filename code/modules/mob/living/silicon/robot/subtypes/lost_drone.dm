@@ -23,7 +23,7 @@
 
 	mmi = new /obj/item/mmi/digital/robot(src) // Explicitly a drone.
 	module = new /obj/item/robot_module/robot/lost(src)
-	cut_overlays()
+	overlays.Cut()
 	init_id()
 
 	updatename("Lost")

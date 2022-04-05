@@ -409,7 +409,7 @@
 		name = "a playing card"
 		desc = "A playing card."
 
-	cut_overlays()
+	overlays.Cut()
 
 
 	if(cards.len == 1)

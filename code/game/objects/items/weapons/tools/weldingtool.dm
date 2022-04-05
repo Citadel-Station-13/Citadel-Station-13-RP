@@ -194,7 +194,7 @@
 
 /obj/item/weldingtool/update_icon()
 	..()
-	cut_overlays()
+	overlays.Cut()
 	// Welding overlay.
 	if(welding)
 		var/image/I = image(icon, src, "[icon_state]-on")

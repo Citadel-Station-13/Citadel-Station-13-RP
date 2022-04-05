@@ -323,7 +323,7 @@
 
 /obj/machinery/teleport/station/Initialize(mapload)
 	. = ..()
-	cut_overlays()
+	overlays.Cut()
 	overlays += image('icons/obj/stationobjs.dmi', icon_state = "controller-wires")
 
 	component_parts = list()

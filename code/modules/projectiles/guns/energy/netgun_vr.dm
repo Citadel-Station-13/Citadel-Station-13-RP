@@ -18,7 +18,7 @@
 	)
 
 /obj/item/gun/energy/netgun/update_icon()
-	cut_overlays()
+	overlays.Cut()
 
 	if(power_supply)
 		var/ratio = power_supply.charge / power_supply.maxcharge

@@ -150,10 +150,10 @@
 /obj/structure/closet/crate/secure/Initialize(mapload)
 	. = ..()
 	if(locked)
-		cut_overlays()
+		overlays.Cut()
 		overlays += redlight
 	else
-		cut_overlays()
+		overlays.Cut()
 		overlays += greenlight
 
 /obj/structure/closet/crate/secure/can_open()
@@ -178,7 +178,7 @@
 	if(user)
 		for(var/mob/O in viewers(user, 3))
 			O.show_message( "<span class='notice'>The crate has been [locked ? null : "un"]locked by [user].</span>", 1)
-	cut_overlays()
+	overlays.Cut()
 	overlays += locked ? redlight : greenlight
 
 /obj/structure/closet/crate/secure/verb/verb_togglelock()
@@ -214,7 +214,7 @@
 
 /obj/structure/closet/crate/secure/emag_act(var/remaining_charges, var/mob/user)
 	if(!broken)
-		cut_overlays()
+		overlays.Cut()
 		overlays += emag
 		overlays += sparks
 		spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*
@@ -230,10 +230,10 @@
 	if(!broken && !opened  && prob(50/severity))
 		if(!locked)
 			src.locked = 1
-			cut_overlays()
+			overlays.Cut()
 			overlays += redlight
 		else
-			cut_overlays()
+			overlays.Cut()
 			overlays += emag
 			overlays += sparks
 			spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*

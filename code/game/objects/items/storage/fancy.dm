@@ -428,7 +428,7 @@
 /obj/item/storage/lockbox/vials/update_icon(var/itemremoved = 0)
 	var/total_contents = contents.len - itemremoved
 	icon_state = "vialbox[total_contents]"
-	cut_overlays()
+	overlays.Cut()
 	if (!broken)
 		overlays += image(icon, src, "led[locked]")
 		if(locked)

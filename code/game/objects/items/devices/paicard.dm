@@ -284,14 +284,14 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 
 /obj/item/paicard/proc/removePersonality()
 	src.pai = null
-	src.cut_overlays()
+	src.overlays.Cut()
 	src.overlays += "pai-off"
 
 /obj/item/paicard
 	var/current_emotion = 1
 /obj/item/paicard/proc/setEmotion(var/emotion)
 	if(pai)
-		src.cut_overlays()
+		src.overlays.Cut()
 		switch(emotion)
 			if(1) src.overlays += "pai-happy"
 			if(2) src.overlays += "pai-cat"

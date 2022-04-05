@@ -223,7 +223,7 @@
 
 /obj/machinery/status_display/proc/remove_display()
 	if(overlays.len)
-		cut_overlays()
+		overlays.Cut()
 	if(maptext)
 		maptext = ""
 

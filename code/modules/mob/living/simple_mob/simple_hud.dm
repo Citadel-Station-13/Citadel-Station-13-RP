@@ -213,7 +213,7 @@
 	zone_sel.icon = ui_style
 	zone_sel.color = ui_color
 	zone_sel.alpha = ui_alpha
-	zone_sel.cut_overlays()
+	zone_sel.overlays.Cut()
 	zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[zone_sel.selecting]")
 	hud_elements |= zone_sel
 

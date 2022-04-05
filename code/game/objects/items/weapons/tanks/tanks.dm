@@ -148,7 +148,7 @@ var/list/global/tank_gauge_cache = list()
 						assy.a_right = null
 						src.proxyassembly.assembly = null
 						qdel(assy)
-				src.cut_overlays()
+				src.overlays.Cut()
 				last_gauge_pressure = 0
 				update_gauge()
 
@@ -381,7 +381,7 @@ var/list/global/tank_gauge_cache = list()
 		return
 
 	last_gauge_pressure = gauge_pressure
-	cut_overlays()
+	overlays.Cut()
 	add_bomb_overlay()
 	var/indicator = "[gauge_icon][(gauge_pressure == -1) ? "overload" : gauge_pressure]"
 	if(!tank_gauge_cache[indicator])

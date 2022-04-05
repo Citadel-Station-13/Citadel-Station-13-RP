@@ -46,7 +46,7 @@
 
 
 /obj/item/flamethrower/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(igniter)
 		overlays += "+igniter[status]"
 	if(ptank)

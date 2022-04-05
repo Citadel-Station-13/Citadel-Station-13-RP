@@ -108,7 +108,7 @@
 
 		if(!anchored)
 			user.show_message(text("<span class='warning'>[src] can now be moved.</span>"))
-			cut_overlays()
+			overlays.Cut()
 
 		else if(anchored)
 			user.show_message(text("<span class='warning'>[src] is now secured.</span>"))

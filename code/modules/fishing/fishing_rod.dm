@@ -79,7 +79,7 @@
 	return ..()
 
 /obj/item/material/fishing_rod/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	..()
 	if(strung)
 		overlays += image(icon, "[icon_state]_string")

@@ -41,7 +41,7 @@
 	if(anchored)
 		..()
 	else
-		cut_overlays()
+		overlays.Cut()
 		set_light(0)		// No glow from closed laptops
 		icon_state = icon_state_closed
 

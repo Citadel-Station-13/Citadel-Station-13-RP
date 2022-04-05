@@ -61,7 +61,7 @@
 	else if(W.is_wirecutter())
 		to_chat(user, "You cut the tag off the bodybag")
 		src.name = "body bag"
-		src.cut_overlays()
+		src.overlays.Cut()
 		return
 
 /obj/structure/closet/body_bag/store_mobs(var/stored_units)

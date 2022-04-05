@@ -434,7 +434,7 @@
 
 
 /obj/machinery/door/firedoor/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(density)
 		icon_state = "door_closed"
 		if(prying)

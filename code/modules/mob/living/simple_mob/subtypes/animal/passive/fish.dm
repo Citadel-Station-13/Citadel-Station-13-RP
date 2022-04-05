@@ -210,7 +210,7 @@
 	update_icon()
 
 /mob/living/simple_mob/animal/passive/fish/icebass/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	..()
 	if(!dorsal_image)
 		dorsal_image = image(icon, "[icon_state]_mask-body")
@@ -278,7 +278,7 @@
 	head_color = rgb(rand(min_red,max_red), rand(min_green,max_green), rand(min_blue,max_blue))
 
 /mob/living/simple_mob/animal/passive/fish/rockfish/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	..()
 	if(!head_image)
 		head_image = image(icon, "[icon_state]_mask")

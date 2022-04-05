@@ -510,7 +510,7 @@
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 		playsound(src, O.usesound, 50, 1)
-		cut_overlays()
+		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, "[initial(icon_state)]-panel")
 	else if((O.is_wirecutter() || istype(O, /obj/item/multitool)) && panel_open)

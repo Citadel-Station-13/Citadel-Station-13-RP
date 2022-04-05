@@ -424,7 +424,7 @@
 			icon_state += "0"
 		return
 	if(stat)
-		cut_overlays()
+		overlays.Cut()
 		return
 	if(program)
 		overlays = list(program.overlay)

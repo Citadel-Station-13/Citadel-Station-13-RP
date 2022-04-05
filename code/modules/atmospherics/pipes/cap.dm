@@ -53,7 +53,7 @@
 
 	alpha = 255
 
-	cut_overlays()
+	overlays.Cut()
 	overlays += icon_manager.get_atmos_icon("pipe", , pipe_color, "cap[icon_connect_type]")
 
 /obj/machinery/atmospherics/pipe/cap/atmos_init()

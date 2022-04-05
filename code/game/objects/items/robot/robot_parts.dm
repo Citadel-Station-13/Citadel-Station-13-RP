@@ -70,7 +70,7 @@
 	updateicon()
 
 /obj/item/robot_parts/robot_suit/proc/updateicon()
-	src.cut_overlays()
+	src.overlays.Cut()
 	if(src.l_arm)
 		src.overlays += "l_arm+o"
 	if(src.r_arm)

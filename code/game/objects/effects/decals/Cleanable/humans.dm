@@ -196,7 +196,7 @@ var/global/list/image/splatter_cache=list()
 	blood.Blend(basecolor,ICON_MULTIPLY)
 
 	icon = blood
-	cut_overlays()
+	overlays.Cut()
 	overlays += giblets
 
 /obj/effect/decal/cleanable/blood/gibs/up

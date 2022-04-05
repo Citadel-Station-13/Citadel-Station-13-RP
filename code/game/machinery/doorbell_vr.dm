@@ -33,7 +33,7 @@
 	update_icon()
 
 /obj/machinery/doorbell_chime/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(panel_open)
 		overlays += "dbchime-open"
 	if(inoperable())

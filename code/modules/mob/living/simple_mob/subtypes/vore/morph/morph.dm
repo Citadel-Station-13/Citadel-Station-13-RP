@@ -135,7 +135,7 @@
 	icon_state = initial(icon_state)
 	size_multiplier = 0
 	resize(our_size_multiplier)
-	cut_overlays()
+	overlays.Cut()
 	density = initial(density)
 
 	//Baseline stats

@@ -161,7 +161,7 @@ var/const/tk_maxrange = 15
 	return
 
 /obj/item/tk_grab/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(focus && focus.icon && focus.icon_state)
 		overlays += icon(focus.icon,focus.icon_state)
 	return

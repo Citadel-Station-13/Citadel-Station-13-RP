@@ -35,7 +35,7 @@
 		qdel(src)
 
 /obj/item/spacecash/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	name = "[worth] Thaler\s"
 	if(worth in list(1000,500,200,100,50,20,10,1))
 		icon_state = "spacecash[worth]"

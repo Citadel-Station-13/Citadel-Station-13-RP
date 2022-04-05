@@ -127,7 +127,7 @@ var/global/list/image/fluidtrack_cache=list()
 			update_icon()
 
 	update_icon()
-		cut_overlays()
+		overlays.Cut()
 		color = "#FFFFFF"
 		var/truedir=0
 

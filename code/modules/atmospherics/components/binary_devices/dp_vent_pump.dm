@@ -64,7 +64,7 @@
 	if(!check_icon_cache())
 		return
 
-	cut_overlays()
+	overlays.Cut()
 
 	var/vent_icon = "vent"
 

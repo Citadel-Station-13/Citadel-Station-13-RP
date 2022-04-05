@@ -72,7 +72,7 @@
 		network2.update = 1
 
 /obj/machinery/atmospherics/pipeturbine/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if (dP > 10)
 		overlays += image('icons/obj/pipeturbine.dmi', "moto-turb")
 	if (kin_energy > 100000)

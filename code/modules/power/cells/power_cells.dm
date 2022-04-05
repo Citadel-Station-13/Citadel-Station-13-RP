@@ -122,7 +122,7 @@
 		return
 	used = TRUE
 	desc += " This one has already been used."
-	cut_overlays()
+	overlays.Cut()
 	target.nutrition += amount
 	user.custom_emote(message = "connects \the [src] to [user == target ? "their" : "[target]'s"] charging port, expending it.")
 

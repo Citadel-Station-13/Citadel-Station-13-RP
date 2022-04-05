@@ -78,7 +78,7 @@
 
 /obj/item/material/fishing_net/update_icon() // Also updates name and desc
 	underlays.Cut()
-	cut_overlays()
+	overlays.Cut()
 
 	..()
 

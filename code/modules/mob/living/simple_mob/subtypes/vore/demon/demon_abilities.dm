@@ -36,7 +36,7 @@
 			var/obj/belly/B = belly
 			B.escapable = initial(B.escapable)
 
-		cut_overlays()
+		overlays.Cut()
 		alpha = initial(alpha)
 		invisibility = initial(invisibility)
 		see_invisible = initial(see_invisible)
@@ -93,7 +93,7 @@
 			var/obj/belly/B = belly
 			B.escapable = FALSE
 
-		cut_overlays()
+		overlays.Cut()
 		flick("phaseout",src)
 		sleep(30)
 		invisibility = INVISIBILITY_LEVEL_TWO
@@ -149,7 +149,7 @@
 		var/obj/belly/B = belly
 		B.escapable = FALSE
 
-	cut_overlays()
+	overlays.Cut()
 	flick("phaseout",src)
 	sleep(30)
 	invisibility = INVISIBILITY_LEVEL_TWO
@@ -170,7 +170,7 @@
 			var/obj/belly/B = belly
 			B.escapable = initial(B.escapable)
 
-		cut_overlays()
+		overlays.Cut()
 		alpha = initial(alpha)
 		invisibility = initial(invisibility)
 		see_invisible = initial(see_invisible)

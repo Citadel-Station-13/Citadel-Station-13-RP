@@ -48,7 +48,7 @@ var/list/mob_hat_cache = list()
 	mob_always_swap = 1
 
 	mob_size = MOB_SMALL // pulled here from a _vr file
-
+	
 	//Used for self-mailing.
 	var/mail_destination = ""
 	var/obj/machinery/drone_fabricator/master_fabricator
@@ -147,7 +147,7 @@ var/list/mob_hat_cache = list()
 
 /mob/living/silicon/robot/drone/updateicon()
 
-	cut_overlays()
+	overlays.Cut()
 	if(stat == 0)
 		overlays += "eyes-[icon_state]"
 	else

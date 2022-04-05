@@ -167,7 +167,7 @@
 	update_icon()
 
 /obj/machinery/station_map/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(stat & BROKEN)
 		icon_state = "station_mapb"
 	else if((stat & NOPOWER) || !anchored)

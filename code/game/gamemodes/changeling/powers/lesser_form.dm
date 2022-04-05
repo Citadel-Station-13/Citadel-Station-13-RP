@@ -67,7 +67,7 @@
 	C.transforming = 1
 	C.canmove = 0
 	C.icon = null
-	C.cut_overlays()
+	C.overlays.Cut()
 	C.invisibility = 101
 	var/atom/movable/overlay/animation = new /atom/movable/overlay( C.loc )
 	animation.icon_state = "blank"

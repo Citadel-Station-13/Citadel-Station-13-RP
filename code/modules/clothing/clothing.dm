@@ -652,7 +652,7 @@
 	update_icon()
 
 /obj/item/clothing/shoes/update_icon()
-	cut_overlays() //This removes all the overlays on the sprite and then goes down a checklist adding them as required.
+	overlays.Cut() //This removes all the overlays on the sprite and then goes down a checklist adding them as required.
 	if(blood_DNA)
 		add_blood()
 	if(holding)

@@ -7,6 +7,6 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
-	cut_overlays()
+	overlays.Cut()
 	if(hat)
 		overlays |= get_hat_icon(hat, 0, -8)

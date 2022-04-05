@@ -149,7 +149,7 @@
 		return
 	if(!starter)
 		return
-	cut_overlays()
+	overlays.Cut()
 
 	rpm = 0.9* rpm + 0.1 * rpmtarget
 	var/datum/gas_mixture/environment = inturf.return_air()
@@ -247,7 +247,7 @@
 		return
 	if(!compressor.starter)
 		return
-	cut_overlays()
+	overlays.Cut()
 
 	// This is the power generation function. If anything is needed it's good to plot it in EXCEL before modifying
 	// the TURBGENQ and TURBGENG values

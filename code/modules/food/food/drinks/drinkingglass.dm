@@ -118,7 +118,7 @@
 	matter = list("glass" = 175)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass/on_reagent_change()
-	cut_overlays()
+	overlays.Cut()
 
 	if(reagents.total_volume)
 		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "[icon_state]1")
@@ -146,7 +146,7 @@
 	icon_state = pick("fitness-cup_black", "fitness-cup_red", "fitness-cup_black")
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/on_reagent_change()
-	cut_overlays()
+	overlays.Cut()
 
 	if(reagents.total_volume)
 		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "fitness-cup10")

@@ -200,7 +200,7 @@
 		desc += "<br>It is capable of repairing burn damage."
 
 /obj/machinery/recharge_station/proc/build_overlays()
-	cut_overlays()
+	overlays.Cut()
 	switch(round(chargepercentage()))
 		if(1 to 20)
 			overlays += image('icons/obj/objects.dmi', "statn_c0")

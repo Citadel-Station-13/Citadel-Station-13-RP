@@ -330,7 +330,7 @@
 		load = dummy_load.actual_load
 		dummy_load.actual_load = null
 		qdel(dummy_load)
-		cut_overlays()
+		overlays.Cut()
 	..()
 
 //-------------------------------------------

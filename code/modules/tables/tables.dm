@@ -356,7 +356,7 @@ var/list/table_icon_cache = list()
 /obj/structure/table/update_icon()
 	if(flipped != 1)
 		icon_state = "blank"
-		cut_overlays()
+		overlays.Cut()
 
 		// Base frame shape. Mostly done for glass/diamond tables, where this is visible.
 		for(var/i = 1 to 4)
@@ -380,7 +380,7 @@ var/list/table_icon_cache = list()
 				var/image/I = get_table_image(icon, "carpet_[connections[i]]", 1<<(i-1))
 				overlays += I
 	else
-		cut_overlays()
+		overlays.Cut()
 		var/type = 0
 		var/tabledirs = 0
 		for(var/direction in list(turn(dir,90), turn(dir,-90)) )

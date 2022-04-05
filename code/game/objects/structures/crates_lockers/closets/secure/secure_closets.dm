@@ -146,7 +146,7 @@
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
 /obj/structure/closet/secure_closet/update_icon()//Putting the sealed stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
-	cut_overlays()
+	overlays.Cut()
 
 	if(!opened)
 		if(broken)

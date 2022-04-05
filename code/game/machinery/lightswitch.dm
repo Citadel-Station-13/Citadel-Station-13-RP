@@ -37,7 +37,7 @@
 		overlay = image(icon, "light1-overlay")
 		overlay.plane = PLANE_LIGHTING_ABOVE
 
-	cut_overlays()
+	overlays.Cut()
 	if(stat & NOPOWER)
 		icon_state = "light-p"
 		set_light(0)

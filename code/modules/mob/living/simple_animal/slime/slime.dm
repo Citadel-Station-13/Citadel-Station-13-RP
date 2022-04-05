@@ -142,7 +142,7 @@
 		else
 			icon_state = "[icon_state_override ? "[icon_state_override] slime" : "slime"] [is_adult ? "adult" : "baby"][victim ? " eating":""]"
 
-	cut_overlays()
+	overlays.Cut()
 	if(stat != DEAD)
 		var/image/I = image(icon, src, "slime light")
 		I.appearance_flags = RESET_COLOR

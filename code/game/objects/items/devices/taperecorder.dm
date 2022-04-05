@@ -379,7 +379,7 @@
 
 
 /obj/item/cassette_tape/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(ruined)
 		overlays += "ribbonoverlay"
 

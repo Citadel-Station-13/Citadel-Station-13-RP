@@ -988,7 +988,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/update_icon()
 	..()
 
-	cut_overlays()
+	overlays.Cut()
 	if(new_message || new_news)
 		overlays += image(icon, "pda-r")
 

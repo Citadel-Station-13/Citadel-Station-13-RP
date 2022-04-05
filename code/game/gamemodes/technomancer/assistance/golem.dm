@@ -110,7 +110,7 @@
 	qdel(src)
 
 /mob/living/simple_animal/technomancer_golem/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	overlays += sword_image
 	overlays += spell_image
 	update_modifier_visuals()

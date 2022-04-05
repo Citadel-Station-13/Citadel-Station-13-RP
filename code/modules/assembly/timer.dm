@@ -55,7 +55,7 @@
 
 
 /obj/item/assembly/timer/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	attached_overlays = list()
 	if(timing)
 		overlays += "timer_timing"

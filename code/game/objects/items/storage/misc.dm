@@ -16,7 +16,7 @@
 	update_icon()
 
 /obj/item/storage/box/donut/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	var/i = 0
 	for(var/obj/item/reagent_containers/food/snacks/donut/D in contents)
 		overlays += image('icons/obj/food.dmi', "[i][D.overlay_state]")

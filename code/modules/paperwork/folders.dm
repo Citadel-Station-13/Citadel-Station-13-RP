@@ -57,7 +57,7 @@
 	icon_state = "folder_hos"
 
 /obj/item/folder/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(contents.len)
 		overlays += "folder_paper"
 	return

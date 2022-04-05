@@ -21,7 +21,7 @@ var/list/blob_nodes = list()
 	return ..()
 
 /obj/structure/blob/node/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	color = null
 	var/mutable_appearance/blob_overlay = mutable_appearance('icons/mob/blob.dmi', "blob")
 	if(overmind)

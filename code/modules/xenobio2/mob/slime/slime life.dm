@@ -46,7 +46,7 @@ Slime specific life events go here.
 			if(is_child)
 				icon_state = "slime baby dead"
 			else
-				cut_overlays()
+				overlays.Cut()
 				icon_state = "slime adult dead"
 				color = traitdat.traits[TRAIT_XENO_COLOR]
 
