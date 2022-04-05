@@ -6,7 +6,7 @@
 	},
 /area/rift/surfacebase/outside/west_caves)
 "w" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "L" = (
 /obj/effect/step_trigger/zlevel_fall/cavernfall,

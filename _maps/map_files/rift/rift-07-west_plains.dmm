@@ -17,6 +17,7 @@
 	name = "westplain_to_center";
 	portal_id = "westplainstep"
 	},
+/obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "i" = (
@@ -52,6 +53,7 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "v" = (
+/obj/structure/catwalk,
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 8
 	},
@@ -109,6 +111,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
+/obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
 "K" = (

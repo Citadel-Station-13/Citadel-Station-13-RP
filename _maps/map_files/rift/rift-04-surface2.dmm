@@ -8670,6 +8670,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
+"pQ" = (
+/obj/effect/blocker,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside2)
 "pR" = (
 /obj/structure/railing{
 	dir = 8
@@ -28868,200 +28872,201 @@
 /area/medical/surgery_hallway)
 
 (1,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
 "}
 (2,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -29252,10 +29257,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (3,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -29446,10 +29451,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (4,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -29640,10 +29645,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (5,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -29834,10 +29839,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (6,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -30028,10 +30033,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (7,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -30222,10 +30227,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (8,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -30416,10 +30421,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (9,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -30610,10 +30615,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (10,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -30804,10 +30809,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (11,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -30998,10 +31003,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (12,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -31192,10 +31197,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (13,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -31386,10 +31391,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (14,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -31580,10 +31585,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (15,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -31774,10 +31779,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (16,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -31968,10 +31973,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (17,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -32162,10 +32167,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (18,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -32356,10 +32361,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (19,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -32550,10 +32555,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (20,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -32744,10 +32749,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (21,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -32938,10 +32943,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (22,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -33132,10 +33137,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (23,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -33326,10 +33331,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (24,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -33520,10 +33525,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (25,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -33714,10 +33719,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (26,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -33908,10 +33913,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (27,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -34102,10 +34107,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (28,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -34296,10 +34301,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (29,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -34490,10 +34495,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (30,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -34684,10 +34689,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (31,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -34878,10 +34883,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (32,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -35072,10 +35077,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (33,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -35266,10 +35271,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (34,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -35460,10 +35465,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (35,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -35654,10 +35659,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (36,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -35848,10 +35853,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (37,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -36042,10 +36047,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (38,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -36236,10 +36241,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (39,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -36430,10 +36435,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (40,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -36624,10 +36629,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (41,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -36818,10 +36823,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (42,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -37012,10 +37017,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (43,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -37206,10 +37211,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (44,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -37400,10 +37405,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (45,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -37594,10 +37599,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (46,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -37788,10 +37793,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (47,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -37982,10 +37987,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (48,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -38176,10 +38181,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (49,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -38370,10 +38375,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (50,1,1) = {"
+pQ
 aa
 aa
 aa
@@ -38564,11 +38569,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+pQ
 "}
 (51,1,1) = {"
-aa
+pQ
 aa
 aa
 aa
@@ -38759,10 +38763,10 @@ aa
 aa
 aa
 aa
-aa
+pQ
 "}
 (52,1,1) = {"
-aa
+pQ
 aa
 aa
 aa
@@ -38953,10 +38957,10 @@ aa
 aa
 aa
 aa
-aa
+pQ
 "}
 (53,1,1) = {"
-aa
+pQ
 aa
 aa
 aa
@@ -39150,7 +39154,7 @@ ac
 pX
 "}
 (54,1,1) = {"
-aa
+pQ
 aa
 aa
 aa
@@ -39344,7 +39348,7 @@ ac
 pX
 "}
 (55,1,1) = {"
-aa
+pQ
 aa
 aa
 aa
@@ -39538,7 +39542,7 @@ ac
 pX
 "}
 (56,1,1) = {"
-aa
+pQ
 aa
 aa
 aa

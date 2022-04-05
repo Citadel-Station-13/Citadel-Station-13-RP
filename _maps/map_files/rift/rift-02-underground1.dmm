@@ -10785,7 +10785,7 @@
 	})
 "tb" = (
 /obj/structure/lattice,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "tc" = (
 /obj/effect/floor_decal/borderfloorblack/cee,
@@ -10795,7 +10795,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "td" = (
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "te" = (
 /obj/structure/cable{
@@ -11555,7 +11555,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Id" = (
 /obj/structure/railing,
@@ -12136,7 +12136,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/safeice/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Ya" = (
 /obj/structure/symbol/sa,
