@@ -22,7 +22,7 @@
 		/datum/category_item/catalogue/technology/bot/ed209/slime,
 		/datum/category_item/catalogue/technology/bot/farmbot,
 		/datum/category_item/catalogue/technology/bot/floorbot,
-		/datum/category_item/catalogue/technology/bot/medbot,
+		/datum/category_item/catalogue/technology/bot/medibot,
 		/datum/category_item/catalogue/technology/bot/mulebot,
 		/datum/category_item/catalogue/technology/bot/secbot,
 		/datum/category_item/catalogue/technology/bot/secbot/slime
@@ -35,19 +35,19 @@
 	icon = 'icons/obj/aibots.dmi'
 	layer = MOB_LAYER
 	universal_speak = 1
-	density = 0
+	density = FALSE
 	silicon_privileges = PRIVILEGES_BOT
 
 	makes_dirt = FALSE	// No more dirt from Beepsky
 
 	var/obj/item/card/id/botcard = null
 	var/list/botcard_access = list()
-	var/on = 1
-	var/open = 0
-	var/locked = 1
-	var/emagged = 0
+	var/on = TRUE
+	var/open = FALSE
+	var/locked = TRUE
+	var/emagged = FALSE
 	var/light_strength = 3
-	var/busy = 0
+	var/busy = TRUE
 
 	var/obj/access_scanner = null
 	var/list/req_access = list()
@@ -59,8 +59,8 @@
 	var/list/target_path = list()
 	var/turf/obstacle = null
 
-	var/wait_if_pulled = 0 // Only applies to moving to the target
-	var/will_patrol = 0 // If set to 1, will patrol, duh
+	var/wait_if_pulled = FALSE // Only applies to moving to the target
+	var/will_patrol = FALSE // If set to 1, will patrol, duh
 	var/patrol_speed = 1 // How many times per tick we move when patrolling
 	var/target_speed = 2 // Ditto for chasing the target
 	var/panic_on_alert = FALSE	// Will the bot go faster when the alert level is raised?
@@ -71,6 +71,7 @@
 	var/target_patience = 5
 	var/frustration = 0
 	var/max_frustration = 0
+	var/robot_arm = /obj/item/robot_parts/r_arm
 
 /mob/living/bot/Initialize(mapload)
 	. = ..()

@@ -1,4 +1,4 @@
-/datum/category_item/catalogue/technology/bot/medbot
+/datum/category_item/catalogue/technology/bot/medibot
 	name = "Bot - Medibot"
 	desc = "Medibots have become vital additions to hazardous workplaces \
 	across the galaxy. A common sight on the Frontier, Medibots utilize \
@@ -10,13 +10,16 @@
 /mob/living/bot/medibot
 	name = "Medibot"
 	desc = "A little medical robot. He looks somewhat underwhelmed."
-	icon = 'icons/obj/bots/medibot.dmi'
+	icon = 'icons/obj/bots/medibots.dmi'
 	icon_state = "medibot"
+	base_icon_state = "medkit"
 	req_one_access = list(access_robotics, access_medical)
 	botcard_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
-	catalogue_data = list(/datum/category_item/catalogue/technology/bot/medbot)
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/medibot)
 
 	var/skin = null //Set to "tox", "ointment" or "o2" for the other two firstaid kits.
+	var/healthanalyzer = /obj/item/healthanalyzer
+	var/firstaid = /obj/item/storage/firstaid
 
 	//AI vars
 	var/last_newpatient_speak = 0
@@ -34,6 +37,105 @@
 	var/treatment_virus = "spaceacillin"
 	var/treatment_emag = "toxin"
 	var/declare_treatment = 0 //When attempting to treat a patient, should it notify everyone wearing medhuds?
+
+/mob/living/bot/medibot/Initialize(mapload, new_skin)
+	. = ..()
+	skin = new_skin
+	busy = FALSE //So medibots don't spawn bugged.
+	update_icon()
+/*
+/mob/living/bot/medibot/update_icon()
+	. = ..()
+	cut_overlays()
+	if(skin)
+		add_overlay("[base_icon_state]-[skin]")
+	add_overlay("[base_icon_state]-scanner")
+	if(busy)
+		add_overlay("[base_icon_state]-arm-syringe")
+		add_overlay("[base_icon_state]-flash")
+		return
+	else
+		add_overlay("[base_icon_state]-[on]")
+	add_overlay("[base_icon_state]-arm")
+*/
+
+/mob/living/bot/medibot/update_icon()
+	. = ..()
+	cut_overlays()
+
+	if(skin)
+		icon_state = "[base_icon_state]-[skin]"
+	add_overlay("[base_icon_state]-scanner")
+	if(busy)
+		add_overlay("[base_icon_state]-arm-syringe")
+		add_overlay("[base_icon_state]-flash")
+	else
+		add_overlay("[base_icon_state]-arm")
+		if(emagged)
+			add_overlay("[base_icon_state]-spark")
+		else
+			add_overlay("[base_icon_state]-[on]")
+
+
+//Subtypes & Cosmetics
+/mob/living/bot/medibot/fire
+	name = "\improper Mr. Burns"
+	skin = "burn"
+
+/mob/living/bot/medibot/toxin
+	name = "\improper Toxic"
+	skin = "antitoxin"
+
+/mob/living/bot/medibot/o2
+	name = "\improper Lifeless"
+	skin = "o2"
+
+/mob/living/bot/medibot/red
+	name = "\improper Super Medibot"
+	skin = "advfirstaid"
+
+/mob/living/bot/medibot/mysterious
+	name = "\improper Mysterious Medibot"
+	desc = "International Medibot of mystery."
+	skin = "bezerk"
+	treatment_brute = "bicaridine"
+	treatment_fire  = "dermaline"
+	treatment_oxy   = "dexalin"
+	treatment_tox   = "anti_toxin"
+
+/mob/living/bot/medibot/purple
+	name = "\improper Leaky"
+	skin = "clottingkit"
+
+/mob/living/bot/medibot/pink
+	name = "\improper Pinky"
+	skin = "pinky"
+
+/mob/living/bot/medibot/apidean
+	name = "\improper Apidean Beebot"
+	desc = "An organic creature heavily augmented with components from a medical drone. It was made to assist nurses in Apidaen hives."
+	icon_state = "beebot0"
+	base_icon_state = "beebot"
+
+/mob/living/bot/medibot/apidean/update_icons()
+	cut_overlays()
+	if(skin)
+		add_overlay("[base_icon_state]-[skin]")
+	if(busy)
+		icon_state = "beebots"
+	else
+		icon_state = "beebot[on]"
+
+/mob/living/bot/medibot/apidean/handleIdle()
+	if(vocal && prob(1))
+		var/message_options = list(
+			"Bzzz bzzz!" = 'sound/voice/moth/scream_moth.ogg',
+			"Chk scchk hhk!" = 'sound/voice/moth/mothchitter.ogg',
+			"Hhhk bzchk." = 'sound/voice/moth/mothsqueak.ogg',
+			)
+		var/message = pick(message_options)
+		say(message)
+		playsound(loc, message_options[message], 50, 0)
 
 /mob/living/bot/medibot/handleIdle()
 	if(vocal && prob(1))
@@ -112,7 +214,7 @@
 	if(!t)
 		return
 
-	visible_message("<span class='warning'>[src] is trying to inject [H]!</span>")
+	visible_message(SPAN_WARNING("[src] is trying to inject [H]!"))
 	if(declare_treatment)
 		var/area/location = get_area(src)
 		GLOB.global_announcer.autosay("[src] is treating <b>[H]</b> in <b>[location]</b>", "[src]", "Medical")
@@ -123,9 +225,9 @@
 			reagent_glass.reagents.trans_to_mob(H, injection_amount, CHEM_BLOOD)
 		else
 			H.reagents.add_reagent(t, injection_amount)
-		visible_message("<span class='warning'>[src] injects [H] with the syringe!</span>")
+		visible_message(SPAN_WARNING("[src] injects [H] with the syringe!"))
 
-	if(H.stat == DEAD) // This is down here because this proc won't be called again due to losing a target because of parent AI loop.
+	if(H.stat == DEAD) //This is down here because this proc won't be called again due to losing a target because of parent AI loop.
 		target = null
 		if(vocal)
 			var/death_messages = list(
@@ -154,16 +256,6 @@
 
 	busy = FALSE
 	update_icons()
-
-/mob/living/bot/medibot/update_overlays()
-	. = ..()
-	cut_overlays()
-	if(skin)
-		add_overlay("[skin]")
-	if(busy)
-		add_overlay("[base_icon_state]-[on ? "on" : "off"]")
-	else
-		add_overlay("[base_icon_state]-[on ? "on" : "off"]")
 
 /mob/living/bot/medibot/attack_hand(var/mob/user)
 	var/dat
@@ -205,16 +297,16 @@
 /mob/living/bot/medibot/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/reagent_containers/glass))
 		if(locked)
-			to_chat(user, "<span class='notice'>You cannot insert a beaker because the panel is locked.</span>")
+			to_chat(user, SPAN_NOTICE("You cannot insert a beaker because the panel is locked."))
 			return
 		if(!isnull(reagent_glass))
-			to_chat(user, "<span class='notice'>There is already a beaker loaded.</span>")
+			to_chat(user, SPAN_NOTICE("There is already a beaker loaded."))
 			return
 
 		user.drop_item()
 		O.loc = src
 		reagent_glass = O
-		to_chat(user, "<span class='notice'>You insert [O].</span>")
+		to_chat(user, SPAN_NOTICE("You insert [O]."))
 		return
 	else
 		..()
@@ -254,7 +346,7 @@
 			reagent_glass.loc = get_turf(src)
 			reagent_glass = null
 		else
-			to_chat(usr, "<span class='notice'>You cannot eject the beaker because the panel is locked.</span>")
+			to_chat(usr, SPAN_NOTICE("You cannot eject the beaker because the panel is locked."))
 
 	else if ((href_list["togglevoice"]) && (!locked || issilicon(usr)))
 		vocal = !vocal
@@ -269,9 +361,9 @@
 	. = ..()
 	if(!emagged)
 		if(user)
-			to_chat(user, "<span class='warning'>You short out [src]'s reagent synthesis circuits.</span>")
-		visible_message("<span class='warning'>[src] buzzes oddly!</span>")
-		flick("medibot_spark", src)
+			to_chat(user, SPAN_WARNING("You short out [src]'s reagent synthesis circuits."))
+		visible_message(SPAN_WARNING("[src] buzzes oddly!"))
+		flick("[base_icon_state]-light-spark", src)
 		target = null
 		busy = FALSE
 		emagged = TRUE
@@ -282,7 +374,7 @@
 
 /mob/living/bot/medibot/explode()
 	on = FALSE
-	visible_message("<span class='danger'>[src] blows apart!</span>")
+	visible_message(SPAN_DANGER("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/storage/firstaid(Tsec)
@@ -340,154 +432,78 @@
 
 /* Construction */
 
-/obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/S, mob/user as mob)
-	if ((!istype(S, /obj/item/robot_parts/l_arm)) && (!istype(S, /obj/item/robot_parts/r_arm)))
-		..()
-		return
-
-	if(contents.len >= 1)
-		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
-		return
-
-	var/obj/item/firstaid_arm_assembly/A = new /obj/item/firstaid_arm_assembly
-	if(istype(src, /obj/item/storage/firstaid/fire))
-		A.skin = "ointment"
-	else if(istype(src, /obj/item/storage/firstaid/toxin))
-		A.skin = "tox"
-	else if(istype(src, /obj/item/storage/firstaid/o2))
-		A.skin = "o2"
-
-	qdel(S)
-	user.put_in_hands(A)
-	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
-	user.drop_from_inventory(src)
-	qdel(src)
-
-/obj/item/storage/firstaid/attackby(var/obj/item/organ/external/S, mob/user as mob)
-	if (!istype(S, /obj/item/organ/external/arm) || S.robotic != ORGAN_ROBOT)
-		..()
-		return
-
-	if(contents.len >= 1)
-		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
-		return
-
-	var/obj/item/firstaid_arm_assembly/A = new /obj/item/firstaid_arm_assembly
-	if(istype(src, /obj/item/storage/firstaid/fire))
-		A.skin = "ointment"
-	else if(istype(src, /obj/item/storage/firstaid/toxin))
-		A.skin = "tox"
-	else if(istype(src, /obj/item/storage/firstaid/o2))
-		A.skin = "o2"
-
-	qdel(S)
-	user.put_in_hands(A)
-	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
-	user.drop_from_inventory(src)
-	qdel(src)
-
-/obj/item/firstaid_arm_assembly
-	name = "first aid/robot arm assembly"
+/obj/item/bot_assembly/medibot
+	name = "incomplete medibot assembly"
 	desc = "A first aid kit with a robot arm permanently grafted to it."
-	icon = 'icons/obj/aibots.dmi'
-	icon_state = "firstaid_arm"
-	var/build_step = 0
-	var/created_name = "Medibot" //To preserve the name if it's a unique medbot I guess
-	var/skin = null //Same as medbot, set to tox or ointment for the respective kits.
+	icon = 'icons/obj/bots/medibots.dmi'
+	icon_state = "medibot"
+	base_icon_state = "medkit"
 	w_class = ITEMSIZE_NORMAL
+	created_name = "Medibot" //To preserve the name if it's a unique medibot I guess
+	var/skin = null //Same as medibot, set to tox or ointment for the respective kits.
+	var/healthanalyzer = /obj/item/healthanalyzer
+	var/firstaid = /obj/item/storage/firstaid
 
-/obj/item/firstaid_arm_assembly/LateInitialize()
+/obj/item/bot_assembly/medibot/Initialize()
 	. = ..()
-	if(skin)
-		overlays += image('icons/obj/aibots.dmi', "kit_skin_[src.skin]")
+	spawn(1)
+		if(skin)
+			add_overlay("[base_icon_state]-[skin]")
+		add_overlay("[base_icon_state]-arm")
 
-/obj/item/firstaid_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/S, mob/user, params)
+
+	if((!istype(S, /obj/item/robot_parts/l_arm)) && (!istype(S, /obj/item/robot_parts/r_arm)))
+		return ..()
+
+	if(contents.len >= 1)
+		to_chat(user, SPAN_NOTICE("You need to empty [src] out first."))
+		return
+
+	var/obj/item/bot_assembly/medibot/A = new /obj/item/bot_assembly/medibot
+	if(istype(src, /obj/item/storage/firstaid/fire))
+		A.created_name = "\improper Mr. Burns"
+		A.skin = "burn"
+	else if(istype(src, /obj/item/storage/firstaid/toxin))
+		A.created_name = "\improper Toxic"
+		A.skin = "toxin"
+	else if(istype(src, /obj/item/storage/firstaid/o2))
+		A.created_name = "\improper Lifeless"
+		A.skin = "o2"
+	else if(istype(src, /obj/item/storage/firstaid/adv))
+		A.created_name = "\improper Super Medibot"
+		A.skin = "advfirstaid"
+
+	user.put_in_hands(A)
+	to_chat(user, SPAN_NOTICE("You add [S] to [src]."))
+	A.robot_arm = S.type
+	A.firstaid = type
+	qdel(S)
+	qdel(src)
+
+/obj/item/bot_assembly/medibot/attackby(obj/item/W, mob/user, params)
 	..()
-	if(istype(W, /obj/item/pen))
-		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
-		if(!t)
-			return
-		if(!in_range(src, usr) && loc != usr)
-			return
-		created_name = t
-	else
-		switch(build_step)
-			if(0)
-				if(istype(W, /obj/item/healthanalyzer))
-					user.drop_item()
-					qdel(W)
-					build_step++
-					to_chat(user, "<span class='notice'>You add the health sensor to [src].</span>")
-					name = "First aid/robot arm/health analyzer assembly"
-					overlays += image('icons/obj/aibots.dmi', "na_scanner")
+	switch(build_step)
+		if(ASSEMBLY_FIRST_STEP)
+			if(istype(W, /obj/item/healthanalyzer))
+				user.drop_item()
+				healthanalyzer = W.type
+				to_chat(user, SPAN_NOTICE("You add the health sensor to [src]."))
+				qdel(W)
+				name = "First aid/robot arm/health analyzer assembly"
+				add_overlay("[base_icon_state]-scanner")
+				build_step++
 
-			if(1)
-				if(isprox(W))
-					user.drop_item()
-					qdel(W)
-					to_chat(user, "<span class='notice'>You complete the Medibot! Beep boop.</span>")
-					var/turf/T = get_turf(src)
-					var/mob/living/bot/medibot/S = new /mob/living/bot/medibot(T)
-					S.skin = skin
-					S.name = created_name
-					user.drop_from_inventory(src)
-					qdel(src)
-
-//Subtypes & Cosmetics
-/mob/living/bot/medibot/yellow
-	name = "Bruises"
-	skin = "ointment"
-
-/mob/living/bot/medibot/green
-	name = "\improper Toxic"
-	skin = "antitoxin"
-
-/mob/living/bot/medibot/blue
-	name = "\improper Lifeless"
-	skin = "o2"
-
-/mob/living/bot/medibot/red
-	name = "\improper Super Medibot"
-	skin = "advfirstaid"
-
-/mob/living/bot/medibot/mysterious
-	name = "\improper Mysterious Medibot"
-	desc = "International Medibot of mystery."
-	skin = "bezerk"
-	treatment_brute		= "bicaridine"
-	treatment_fire		= "dermaline"
-	treatment_oxy		= "dexalin"
-	treatment_tox		= "anti_toxin"
-
-/mob/living/bot/medibot/purple
-	name = "\improper Leaky"
-	skin = "clottingkit"
-
-/mob/living/bot/medibot/pink
-	name = "\improper Pinky"
-	skin = "pinky"
-
-/mob/living/bot/medibot/apidean
-	name = "\improper Apidean Beebot"
-	desc = "An organic creature heavily augmented with components from a medical drone. It was made to assist nurses in Apidaen hives."
-	icon_state = "beebot0"
-
-/mob/living/bot/medibot/apidean/update_icons()
-	cut_overlays()
-	if(skin)
-		overlays += image('icons/obj/aibots.dmi', "beebot_[skin]")
-	if(busy)
-		icon_state = "beebots"
-	else
-		icon_state = "beebot[on]"
-
-/mob/living/bot/medibot/apidean/handleIdle()
-	if(vocal && prob(1))
-		var/message_options = list(
-			"Bzzz bzzz!" = 'sound/voice/moth/scream_moth.ogg',
-			"Chk scchk hhk!" = 'sound/voice/moth/mothchitter.ogg',
-			"Hhhk bzchk." = 'sound/voice/moth/mothsqueak.ogg',
-			)
-		var/message = pick(message_options)
-		say(message)
-		playsound(loc, message_options[message], 50, 0)
+		if(ASSEMBLY_SECOND_STEP)
+			if(isprox(W))
+				if(!can_finish_build(W, user))
+					return
+				qdel(W)
+				var/mob/living/bot/medibot/S = new(drop_location(), skin)
+				to_chat(user, SPAN_NOTICE("You complete the Medibot! Beep boop."))
+				S.name = created_name
+				S.firstaid = firstaid
+				S.robot_arm = robot_arm
+				S.healthanalyzer = healthanalyzer
+				user.drop_from_inventory(src)
+				qdel(src)

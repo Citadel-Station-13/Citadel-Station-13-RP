@@ -177,7 +177,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 			A.overlays = oo;\
 		}\
 		else{\
-			A.cut_overlays();\
+			A.overlays.Cut();\
 		}\
 		A.flags &= ~OVERLAY_QUEUED;\
 	} while(FALSE)
