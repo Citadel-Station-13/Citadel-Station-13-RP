@@ -111,6 +111,11 @@
 	name = "\improper Pinky"
 	skin = "pinky"
 
+/mob/living/bot/medibot/medass //Don't laugh, she's trying her hardest :(
+	name = "\improper Miss Bandages"
+	desc = "A little medical robot. This one looks very busy."
+	skin = "assistant"
+
 /mob/living/bot/medibot/apidean
 	name = "\improper Apidean Beebot"
 	desc = "An organic creature heavily augmented with components from a medical drone. It was made to assist nurses in Apidaen hives."
@@ -479,14 +484,10 @@
 	else if(istype(src, /obj/item/storage/firstaid/bonemed))
 		A.created_name = "\improper Pinky"
 		A.skin = "bonemed"
-	else if(istype(src, /obj/item/storage/firstaid/mysterious))
+	else if(istype(src, /obj/item/storage/firstaid/combat))
 		A.created_name = "\improper Mysterious Medibot"
-		A.desc = "International Medibot of mystery."
+		A.desc = "International Medibot of mystery. Though after a closer look, it looks like a fraud."
 		A.skin = "bezerk"
-		A.treatment_brute = "bicaridine"
-		A.treatment_fire  = "dermaline"
-		A.treatment_oxy   = "dexalin"
-		A.treatment_tox   = "anti_toxin"
 
 	user.put_in_hands(A)
 	to_chat(user, SPAN_NOTICE("You add [S] to [src]."))
