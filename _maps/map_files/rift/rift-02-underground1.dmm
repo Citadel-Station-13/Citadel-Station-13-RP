@@ -10785,7 +10785,7 @@
 	})
 "tb" = (
 /obj/structure/lattice,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "tc" = (
 /obj/effect/floor_decal/borderfloorblack/cee,
@@ -10795,7 +10795,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "td" = (
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "te" = (
 /obj/structure/cable{
@@ -11257,7 +11257,7 @@
 /obj/effect/zone_divider,
 /obj/effect/blocker,
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "vE" = (
 /obj/item/storage/excavation,
@@ -11276,7 +11276,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "wU" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -11377,7 +11377,7 @@
 "Bn" = (
 /obj/effect/zone_divider,
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "BP" = (
 /turf/simulated/floor/tiled/steel,
@@ -11445,7 +11445,7 @@
 /area/hallway/secondary/engineering_hallway)
 "EN" = (
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "ES" = (
 /obj/structure/bonfire/permanent,
@@ -11555,7 +11555,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Id" = (
 /obj/structure/railing,
@@ -11792,7 +11792,7 @@
 /obj/effect/blocker,
 /obj/effect/zone_divider,
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Pw" = (
 /obj/structure/musician/piano/unanchored,
@@ -11802,7 +11802,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "PZ" = (
 /obj/structure/catwalk,
@@ -12000,7 +12000,7 @@
 "Vx" = (
 /obj/effect/blocker,
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "VO" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -12136,7 +12136,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Ya" = (
 /obj/structure/symbol/sa,
@@ -12178,7 +12178,7 @@
 /obj/effect/zone_divider,
 /obj/effect/blocker,
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Zu" = (
 /turf/simulated/mineral/icerock,

@@ -10,12 +10,12 @@
 /area/rift/surfacebase/outside/west_caves)
 "L" = (
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "P" = (
 /obj/effect/blocker,
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/open/lythios43c,
+/turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 
 (1,1,1) = {"
