@@ -71,8 +71,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #define SHOES_LAYER				10		//Shoe-slot item
 #define GLOVES_LAYER			11		//Glove-slot item
 #define BELT_LAYER				12		//Belt-slot item
-#define TAIL_LAYER				13		//Some species have tails to render //This should before Suits, otherwise you get your tail connection rendering over your coat.
-#define SUIT_LAYER				14		//Suit-slot item
+#define SUIT_LAYER				13		//Suit-slot item
+#define TAIL_LAYER				14		//Some species have tails to render
 #define GLASSES_LAYER			15		//Eye-slot item
 #define BELT_LAYER_ALT			16		//Belt-slot item (when set to be above suit via verb)
 #define SUIT_STORE_LAYER		17		//Suit storage-slot item
