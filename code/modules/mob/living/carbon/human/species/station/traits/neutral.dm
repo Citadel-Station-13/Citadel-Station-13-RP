@@ -219,3 +219,12 @@
 /datum/trait/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
+	
+/datum/trait/size_change
+	name = "Sizeshift"
+	desc = "Lets you shift sizes by yourself. Remember that abusing size mechanics is against the rules!"
+	cost = 0
+
+/datum/trait/size_change/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.verbs |= /mob/living/proc/set_size
