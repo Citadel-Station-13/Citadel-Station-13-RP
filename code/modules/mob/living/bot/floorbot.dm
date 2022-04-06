@@ -411,7 +411,7 @@
 /obj/item/bot_assembly/floorbot/Initialize()
 	. = ..()
 	spawn(1)
-		add_overlay("[base_icon_state]-[skin]")
+		icon_state = "[base_icon_state]-[skin]"
 		add_overlay("[base_icon_state]-tile")
 
 /obj/item/bot_assembly/floorbot/attackby(obj/item/W, mob/user, params)
