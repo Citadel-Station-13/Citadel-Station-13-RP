@@ -422,8 +422,9 @@
 
 /obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/I, mob/user, params)
 
-	if(istype(I, /obj/item/robot_parts/l_arm) || istype(I, /obj/item/robot_parts/r_arm) || (istype(I, /obj/item/organ/external/arm) && ((I.name == "robotic right arm") || (I.name == "robotic left arm"))))
-		return ..()
+	if ((!istype(I, /obj/item/robot_parts/l_arm)) && (!istype(I, /obj/item/robot_parts/r_arm)))
+		..()
+		return
 
 	if(contents.len >= 1)
 		to_chat(user, SPAN_NOTICE("You need to empty [src] out first."))

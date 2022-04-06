@@ -31,6 +31,6 @@
 	return TRUE
 
 /obj/item/bot_assembly/proc/is_valid_arm(obj/item/I, mob/user)
-	if(istype(I, /obj/item/robot_parts/l_arm) || istype(I, /obj/item/robot_parts/r_arm) || (istype(I, /obj/item/organ/external/arm) && ((I.name == "robotic right arm") || (I.name == "robotic left arm"))))
+	if(istype(I, /obj/item/robot_parts/l_arm) || istype(I, /obj/item/robot_parts/r_arm) || (istype(I, /obj/item/organ/external/arm) && (I.name == "robotic right arm") || (I.name == "robotic left arm")))
 		return TRUE
 	return FALSE
