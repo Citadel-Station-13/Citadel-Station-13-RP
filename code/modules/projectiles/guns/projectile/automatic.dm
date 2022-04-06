@@ -602,8 +602,18 @@ obj/item/gun/projectile/automatic/automat/taj
 	magazine_type = /obj/item/ammo_magazine/mfoam/smg
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/smg)
 
+/obj/item/gun/projectile/automatic/advanced_smg/foam/update_icon()
+	..()
+	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-empty"
+	return
+
 /obj/item/gun/projectile/automatic/advanced_smg/foam/blue
 	icon_state = "toy_smg_blue"
+
+/obj/item/gun/projectile/automatic/advanced_smg/foam/blue/update_icon()
+	..()
+	icon_state = (ammo_magazine)? "toy_smg_blue" : "toy_smg_blue-empty"
+	return
 
 //Foam c20r
 /obj/item/gun/projectile/automatic/c20r/foam
@@ -618,6 +628,14 @@ obj/item/gun/projectile/automatic/automat/taj
 	projectile_type = /obj/item/projectile/bullet/reusable/foam
 	one_handed_penalty = 5
 
+/obj/item/gun/projectile/automatic/c20r/foam/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "toy_c20r-[round(ammo_magazine.stored_ammo.len,4)]"
+	else
+		icon_state = "toy_c20r"
+	return
+
 //Foam LMG
 /obj/item/gun/projectile/automatic/l6_saw/foam
 	name = "toy light machine gun"
@@ -630,3 +648,12 @@ obj/item/gun/projectile/automatic/automat/taj
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/lmg)
 	projectile_type = /obj/item/projectile/bullet/reusable/foam
 	one_handed_penalty = 45 //It's plastic.
+
+/obj/item/gun/projectile/automatic/l6_saw/foam/update_icon()
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
+		icon_state = "toy_lmg[cover_open ? "open" : "closed"]mag"
+		item_state = icon_state
+	else
+		icon_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 25) : "-empty"]"
+		item_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
+	update_held_icon()
