@@ -7255,6 +7255,7 @@
 	id_tag = "courser_docker";
 	pixel_x = 25
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "nC" = (
@@ -7489,7 +7490,7 @@
 	dir = 8;
 	frequency = 1380;
 	id_tag = "expshuttle_dock";
-	pixel_x = 32;
+	pixel_x = 24;
 	req_one_access = list(19,43,67)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10683,6 +10684,21 @@
 /obj/structure/inflatable,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
+"uQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "courser_dock";
+	pixel_y = 24;
+	req_one_access = list(19,43,67)
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/courser_dock)
 "uR" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -10986,6 +11002,7 @@
 	pixel_y = 8
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
+	cycle_to_external_air = 1;
 	dir = 1;
 	frequency = 1380;
 	id_tag = "emt_shuttle_docker";
@@ -12354,10 +12371,13 @@
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
 /obj/effect/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	frequency = 1380;
+	id_tag = "courser_exterior_sensor";
 	master_tag = "courser_docker";
-	pixel_x = 24
+	pixel_x = 24;
+	pixel_y = -8
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -17677,6 +17697,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "civvie_dock";
+	pixel_y = 24;
+	req_one_access = list(67)
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "JM" = (
@@ -22064,6 +22090,7 @@
 /area/shuttle/courser/general)
 "To" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
+	cycle_to_external_air = 1;
 	frequency = 1380;
 	id_tag = "civvie_docker";
 	pixel_x = -28
@@ -22713,6 +22740,12 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "emt_shuttle_dock";
+	pixel_y = 24;
+	req_one_access = list(5,67)
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
@@ -24402,6 +24435,7 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/rift/surfacebase/outside/outside3;
 	base_turf = /turf/simulated/floor/reinforced/lythios43c;
+	docking_controller = null;
 	landmark_tag = "escape_rift";
 	name = "Escape Shuttle Atlas"
 	},
@@ -42653,7 +42687,7 @@ AC
 dZ
 JR
 AC
-JD
+uQ
 Hp
 Ic
 IV

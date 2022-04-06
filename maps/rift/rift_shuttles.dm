@@ -23,16 +23,23 @@
 
 // Exclusive landmark for docking at the station
 
+/obj/effect/shuttle_landmark/rift/deck3/excursion
+	name = "NSB Atlas - Exploration Shuttle Pad"
+	landmark_tag = "rift_excursion_pad"
+	docking_controller = "expshuttle_dock"
+	base_turf = /turf/simulated/floor/reinforced/lythios43c
+	base_area = /area/rift/surfacebase/outside/outside3
+
 /obj/effect/shuttle_landmark/rift/deck3/civvie
 	name = "NSB Atlas - Civilian Transport Pad"
-	landmark_tag = "rift_civvie_home"
+	landmark_tag = "rift_civvie_pad"
 	docking_controller = "civvie_dock"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/rift/deck3/emt
 	name = "NSB Atlas - EMT Shuttle Pad"
-	landmark_tag = "rift_emt_dock"
+	landmark_tag = "rift_emt_pad"
 	docking_controller = "emt_shuttle_dock"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
@@ -48,17 +55,10 @@
 
 // Exclusive landmark for docking *inside* the station
 
-/obj/effect/shuttle_landmark/rift/deck3/excursion
-	name = "NSB Atlas - Exploration Shuttle Pad"
-	landmark_tag = "rift_excursion_pad"
-	docking_controller = "expshuttle_dock"
-	base_turf = /turf/simulated/floor/reinforced/lythios43c
-	base_area = /area/rift/surfacebase/outside/outside3
-
 /obj/effect/shuttle_landmark/rift/deck3/courser
 	name = "NSB Atlas - Courser Hanger"
 	landmark_tag = "rift_courser_hangar"
-	docking_controller = "courser_dock"
+	docking_controller = "courser_docker"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/exploration/courser_dock
 
@@ -261,7 +261,7 @@
 	name = "Civilian Transport"
 	warmup_time = 10
 	shuttle_area = list(/area/shuttle/civvie/cockpit, /area/shuttle/civvie/general)
-	current_location = "rift_civvie_home"
+	current_location = "rift_civvie_pad"
 	docking_controller_tag = "civvie_docker"
 	landmark_transition = "nav_transit_civvie"
 	fuel_consumption = 10
@@ -271,7 +271,7 @@
 	name = "Civilian Transport"
 	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
 	fore_dir = NORTH
-	vessel_mass = 15000
+	vessel_mass = 12000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Civilian Transport"
 
@@ -317,7 +317,7 @@
 	name = "Dart EMT Shuttle"
 	warmup_time = 5
 	shuttle_area = list(/area/shuttle/emt/general, /area/shuttle/emt/cockpit)
-	current_location = "rift_emt_dock"
+	current_location = "rift_emt_pad"
 	docking_controller_tag = "emt_shuttle_docker"
 	landmark_transition = "nav_transit_emt"
 	move_time = 10

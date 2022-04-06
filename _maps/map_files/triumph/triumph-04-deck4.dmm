@@ -807,10 +807,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
-"aFu" = (
-/obj/effect/shuttle_landmark/automatic/station_dockpoint1,
-/turf/space,
-/area/space)
 "aFw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/lino,
@@ -1522,7 +1518,6 @@
 	id_tag = "courser_docker";
 	pixel_x = 25
 	},
-/obj/effect/shuttle_landmark/triumph/deck4/courser,
 /obj/effect/overmap/visitable/ship/landable/courser,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -8807,13 +8802,6 @@
 	dir = 8
 	},
 /area/exploration/pilot_prep)
-"giI" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
-	},
-/obj/effect/overmap/visitable/ship/triumph,
-/turf/simulated/floor/tiled/dark,
-/area/bridge)
 "giY" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -15045,7 +15033,6 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "kvk" = (
-/obj/effect/shuttle_landmark/triumph/deck4/civvie,
 /obj/effect/overmap/visitable/ship/landable/civvie,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
@@ -23119,7 +23106,6 @@
 /area/shuttle/excursion/general)
 "pTM" = (
 /obj/effect/overmap/visitable/ship/landable/excursion,
-/obj/effect/shuttle_landmark/triumph/deck4/excursion,
 /obj/structure/handrail{
 	dir = 4
 	},
@@ -26192,10 +26178,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
-"rIM" = (
-/obj/effect/shuttle_landmark/automatic/station_dockpoint2,
-/turf/space,
-/area/space)
 "rIS" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -29391,10 +29373,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
-"tUV" = (
-/obj/effect/shuttle_landmark/triumph/deck4/excursion_space,
-/turf/space,
-/area/space)
 "tUY" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall,
@@ -39594,7 +39572,7 @@ nIK
 nIK
 nIK
 nIK
-tUV
+nIK
 nIK
 nIK
 nIK
@@ -47875,7 +47853,7 @@ nIK
 nIK
 nIK
 nIK
-aFu
+nIK
 nIK
 cgx
 nHU
@@ -50017,7 +49995,7 @@ oEc
 lAR
 crT
 nIK
-rIM
+nIK
 nIK
 nIK
 nIK
@@ -54036,7 +54014,7 @@ baP
 kWa
 lYt
 vmI
-giI
+ubE
 euH
 vlb
 pox

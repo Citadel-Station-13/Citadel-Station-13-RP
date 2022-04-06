@@ -12,7 +12,7 @@
 
 /datum/map_z_level/rift_lateload/misc
 	name = "Misc"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
 /datum/map_template/rift_lateload/rift_ships
 	name = "Rift - Ships"
@@ -25,7 +25,7 @@
 
 /datum/map_z_level/rift_lateload/ships
 	name = "Ships"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
 //Use this template to update the Western Z when POIs are created for it.
 /datum/map_template/rift_lateload/lavaland/on_map_loaded(z)

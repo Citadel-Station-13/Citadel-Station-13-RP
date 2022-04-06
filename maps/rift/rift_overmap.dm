@@ -1,15 +1,30 @@
 /obj/effect/overmap/visitable/sector/lythios43c
 	name = "Lythios 43c"	// Name of the location on the overmap.
 	desc = "A cold, desolate iceball world. Home to the NSB Atlas, a far-frontier research base set up by NanoTrasen shortly after establishing in this sector."
-	scanner_desc = @{"[i]Registration[/i]: NSB Atlas
-[i]Class[/i]: ALPHA SITE
-[i]Transponder[/i]: Transmitting (MIL), NanoTrasen IFF
-[b]Notice[/b]: RESTRICTED AREA, authorized personnel only"}
+	scanner_desc = @{"[b][i]Registration[/i][/b]: NSB Atlas
+[b][i]Class[/i][/b]: ALPHA SITE
+[b][i]Transponder[/i][/b]: Transmitting (MIL), NanoTrasen IFF
+[b][i]Notice[/i][/b]: RESTRICTED AREA, authorized personnel only"}
 	base = TRUE
 	icon_state = "globe"
 	color = "#5bbbd3"
 	start_x = 15
 	start_y = 10
+	initial_generic_waypoints = list(
+		"rift_airspace_SE",
+		"rift_airspace_E",
+		"rift_airspace_NE",
+		"rift_airspace_N",
+		"rift_plains",
+		)
+
+	initial_restricted_waypoints = list(
+		"Excursion Shuttle" = list("rift_excursion_pad"),
+		"Courser Scouting Vessel" = list("rift_courser_hangar"),
+		"Civilian Transport" = list("rift_civvie_pad"),
+		"Dart EMT Shuttle" = list("rift_emt_pad"),
+		"Beruang Trade Ship" = list("rift_trade_dock")
+		)
 
 	extra_z_levels = list(
 		Z_LEVEL_WEST_PLAIN,
@@ -26,14 +41,6 @@
 		"Beruang Trade Ship" = list("triumph_annex_dock"),
 		"Mining Shuttle" = list("triumph_mining_port")
 		)
-
-
-	extra_z_levels = list(
-		Z_LEVEL_SURFACE_MINE,
-		Z_LEVEL_SOLARS,
-		Z_LEVEL_PLAINS,
-		Z_LEVEL_UNDERDARK
-	)
 
 	levels_for_distress = list(
 		Z_LEVEL_OFFMAP1,

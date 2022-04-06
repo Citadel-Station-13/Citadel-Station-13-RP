@@ -16155,7 +16155,7 @@
 /area/shuttle/escape)
 "FF" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/crew,
+/obj/machinery/computer/communications,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "FL" = (
@@ -16197,8 +16197,8 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/escape)
 "Gp" = (
-/obj/machinery/computer/communications,
 /obj/structure/table/reinforced,
+/obj/machinery/computer/shuttle_control/emergency,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Gy" = (
@@ -16231,8 +16231,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/terminal)
 "GR" = (
-/obj/machinery/computer/station_alert/all,
 /obj/structure/table/reinforced,
+/obj/machinery/computer/crew,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "Ha" = (
@@ -16303,6 +16303,7 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/centcom/terminal;
 	base_turf = /turf/unsimulated/floor/techfloor_grid;
+	docking_controller = null;
 	landmark_tag = "escape_cc";
 	name = "Escape Shuttle Centcom"
 	},

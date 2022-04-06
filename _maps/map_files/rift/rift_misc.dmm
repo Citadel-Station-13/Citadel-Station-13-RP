@@ -569,6 +569,7 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space/transit/south;
+	docking_controller = null;
 	landmark_tag = "escape_transit";
 	name = "Escape Shuttle Transit"
 	},

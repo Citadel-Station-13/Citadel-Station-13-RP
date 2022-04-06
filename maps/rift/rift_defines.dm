@@ -180,7 +180,9 @@
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH)
+		Z_LEVEL_SURFACE_HIGH,
+		Z_LEVEL_MISC,
+		Z_LEVEL_SHIPS)
 
 	mining_station_z =		list(Z_LEVEL_UNDERGROUND_DEEP)
 	mining_outpost_z =		list(Z_LEVEL_WEST_PLAIN)
@@ -256,11 +258,6 @@
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
 
-/datum/map_z_level/rift/colony
-	z = Z_LEVEL_CENTCOM
-	name = "Orbital Relay"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-
 /datum/map_z_level/rift/caves
 	z = Z_LEVEL_WEST_CAVERN
 	name = "Western Caves"
@@ -272,3 +269,18 @@
 	name = "Western Plains"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
+
+/datum/map_z_level/rift/colony
+	z = Z_LEVEL_CENTCOM
+	name = "Orbital Relay"
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
+
+/datum/map_z_level/rift/misc
+	z = Z_LEVEL_MISC
+	name = "Misc"
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
+
+/datum/map_z_level/rift/ships
+	z = Z_LEVEL_SHIPS
+	name = "Ships"
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
