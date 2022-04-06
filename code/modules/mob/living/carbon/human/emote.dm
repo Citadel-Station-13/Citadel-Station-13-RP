@@ -30,7 +30,7 @@
 				m_type = 1
 
 		//Machine-only emotes
-		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze", "honk", "buzz2", "warn", "chime")
+		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze", "honk", "buzz2", "warn", "chime", "startup", "shutdown", "error", "die")
 
 			if(!isSynthetic())
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
@@ -77,6 +77,18 @@
 			else if(act == "scary")
 				display_msg = "emits a disconcerting tone"
 				use_sound = 'sound/machines/synth_scary.ogg'
+			else if(act == "startup")
+				display_msg = "chimes to life"
+				use_sound = 'sound/machines/synth_startup.ogg'
+			else if(act == "shutdown")
+				display_msg = "emits a nostalgic tone as they fall silent"
+				use_sound = 'sound/machines/synth_shutdown.ogg'
+			else if(act == "error")
+				display_msg = "experiences a system error"
+				use_sound = 'sound/machines/synth_error.ogg'
+			else if(act == "die")
+				display_msg = "crumples, their chassis colder and more lifeless than average"
+				use_sound = 'sound/machines/synth_gameover.ogg'
 			else if(act == "rcough")
 				display_msg = "emits a robotic cough"
 				if(get_gender() == FEMALE)
@@ -234,6 +246,20 @@
 				m_type = 2
 				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					m_type = 1
+
+		if("ara")
+			message = "aras"
+			var/use_sound
+			use_sound = pick('sound/voice/ara_ara1.ogg','sound/voice/ara_ara2.ogg')
+			playsound(src.loc, use_sound, 50, 0)
+
+		if("amoan")
+			message = "moans in a rather lewd manner"
+			playsound(src.loc, 'sound/voice/anime_moan.ogg', 50, 0)
+
+		if("uwu")
+			message = "lets out a devious noise"
+			playsound(src.loc, 'sound/voice/uwu.ogg', 50, 0)
 
 		if ("drool")
 			message = "drools."
@@ -955,7 +981,9 @@
 		if ("nya")
 			message = "lets out a nya."
 			m_type = 2
-			playsound(loc, 'sound/voice/nya.ogg', 50, 1, -1)
+			var/use_sound
+			use_sound = pick('sound/voice/nya.ogg','sound/voice/nya1.ogg','sound/voice/nya2.ogg')
+			playsound(src.loc, use_sound, 50, 0)
 		if ("nyaha")
 			if(!spam_flag)
 				var/list/catlaugh = list('sound/voice/catpeople/nyaha.ogg', 'sound/voice/catpeople/nyahaha1.ogg', 'sound/voice/catpeople/nyahaha2.ogg', 'sound/voice/catpeople/nyahehe.ogg')
