@@ -71,8 +71,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #define SHOES_LAYER				10		//Shoe-slot item
 #define GLOVES_LAYER			11		//Glove-slot item
 #define BELT_LAYER				12		//Belt-slot item
-#define SUIT_LAYER				13		//Suit-slot item
-#define TAIL_LAYER				14		//Some species have tails to render
+#define TAIL_LAYER				13		//Some species have tails to render //This should before Suits, otherwise you get your tail connection rendering over your coat.
+#define SUIT_LAYER				14		//Suit-slot item
 #define GLASSES_LAYER			15		//Eye-slot item
 #define BELT_LAYER_ALT			16		//Belt-slot item (when set to be above suit via verb)
 #define SUIT_STORE_LAYER		17		//Suit storage-slot item
@@ -90,7 +90,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #define TAIL_LAYER_ALT			29		//VOREStation edit. Simply move this up a number if things are added.
 #define MODIFIER_EFFECTS_LAYER	30		//Effects drawn by modifiers
 #define FIRE_LAYER				31		//'Mob on fire' overlay layer
-#define MOB_WATER_LAYER				32		//'Mob submerged' overlay layer
+#define MOB_WATER_LAYER			32		//'Mob submerged' overlay layer
 #define TARGETED_LAYER			33		//'Aimed at' overlay layer
 #define TOTAL_LAYERS			33		//VOREStation edit. <---- KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
 //////////////////////////////////
