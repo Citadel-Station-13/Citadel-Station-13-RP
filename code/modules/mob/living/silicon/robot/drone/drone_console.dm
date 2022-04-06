@@ -34,14 +34,14 @@
 /obj/machinery/computer/drone_control/ui_data(mob/user)
 	var/list/data = list()
 
-	data["drones"] = list()
-	for(var/mob/living/silicon/robot/drone/D in GLOB.mob_list)
-		if(D.z != z)
+	var/list/drones = list()
+	for(var/mob/living/silicon/robot/drone/D in mob_list)
+		if(!(D.z in using_map.get_map_levels(z, TRUE, 0)))
 			continue
 		if(D.foreign_droid)
 			continue
 
-		data["drones"].Add(list(list(
+		drones.Add(list(list(
 			"name" = D.real_name,
 			"active" = D.stat != 2,
 			"charge" = D.cell.charge,
@@ -49,6 +49,7 @@
 			"loc" = "[get_area(D)]",
 			"ref" = "\ref[D]",
 		)))
+	data["drones"] = drones
 
 	data["fabricator"] = dronefab
 	data["fabPower"] = dronefab?.produce_drones
