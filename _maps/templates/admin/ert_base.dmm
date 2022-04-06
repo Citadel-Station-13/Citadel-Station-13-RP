@@ -1528,7 +1528,7 @@
 "dh" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/meter,
-/obj/machinery/shield_gen,
+/obj/machinery/power/shield_generator,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "di" = (
@@ -1719,7 +1719,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/shield_gen/external,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dB" = (

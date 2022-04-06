@@ -5,7 +5,7 @@
 		if(direction == UP)	// On a turf below, trying to enter
 			return 0
 		if(direction == DOWN)	// On a turf above, trying to enter
-			return !density && isopenspace(GetAbove(src))
+			return !density && isopenturf(GetAbove(src))
 
 /turf/simulated/open/CanZPass(atom, direction)
 	return 1
@@ -75,7 +75,7 @@
 /turf/simulated/open/examine(mob/user)
 	. = ..()
 	var/depth = 1
-	for(var/T = GetBelow(src); isopenspace(T); T = GetBelow(T))
+	for(var/T = GetBelow(src); isopenturf(T); T = GetBelow(T))
 		depth += 1
 	. += "It is about [depth] levels deep."
 
@@ -87,7 +87,7 @@
 	update_icon_edge()// Add - Get grass into open spaces and whatnot.
 	var/turf/below = GetBelow(src)
 	if(below)
-		var/below_is_open = isopenspace(below)
+		var/below_is_open = isopenturf(below)
 
 		if(below_is_open)
 			underlays = below.underlays
