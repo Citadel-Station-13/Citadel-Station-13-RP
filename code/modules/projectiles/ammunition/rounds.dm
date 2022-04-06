@@ -603,3 +603,20 @@
 	desc = "It's a plunger, for plunging."
 	icon_state = "plunger"
 	projectile_type = /obj/item/projectile/bullet/reusable/plunger
+
+//Foam Darts
+/obj/item/ammo_casing/foam
+	name = "foam dart"
+	desc = "A soft projectile made out of orange foam with a blue plastic tip."
+	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	caliber = "foamdart"
+	icon_state = "foamdart"
+	throwforce = 0 //good luck hitting someone with the pointy end of the arrow
+	throw_speed = 3
+	caseless = 1
+
+/obj/item/ammo_casing/foam/riot
+	name = "riot dart"
+	desc = "A flexible projectile made out of hardened orange foam with a red plastic tip."
+	projectile_type = /obj/item/projectile/bullet/reusable/foam/riot
+	icon_state = "foamdart_riot"

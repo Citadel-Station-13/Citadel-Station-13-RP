@@ -465,3 +465,21 @@
 	throwforce = 5.0
 	throw_speed = 2
 	throw_range = 6
+
+//Foam Shield
+/obj/item/shield/riot/foam
+	name = "foam riot shield"
+	desc = "A shield for close quarters engagement.  It looks sturdy enough to withstand foam weapons, and nothing more."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "foamriot"
+	slot_flags = SLOT_BACK
+	base_block_chance = 5
+	force = 0
+	throwforce = 0
+	throw_speed = 2
+	throw_range = 6
+	matter = list("plastic" = 7500, "foam" = 1000)
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
+			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			)

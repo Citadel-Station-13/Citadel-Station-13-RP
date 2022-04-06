@@ -287,3 +287,18 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	sharp = 1
 	edge = 1
 	holy = TRUE
+
+//Foam Shotguns
+/obj/item/gun/projectile/shotgun/pump/foam
+	name = "toy shotgun"
+	desc = "A relatively faithful recreation of a pump action shotgun, this one only accepts foam darts."
+	icon_state = "toy_shotgun"
+	max_shells = 8
+	force = 5
+	caliber = "foamdart"
+	ammo_type = /obj/item/ammo_casing/foam
+	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	one_handed_penalty = 5
+
+/obj/item/gun/projectile/shotgun/pump/foam/blue
+	icon_state = "toy_shotgun_blue"

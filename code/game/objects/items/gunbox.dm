@@ -79,3 +79,62 @@
 			if(istype(AM, /obj/item/gun))
 				to_chat(user, "You have chosen \the [AM]. Say hello to your new friend.")
 		qdel(src)
+
+//Foam Gunboxes
+/obj/item/gunbox/donksoft
+	name = "DONKsoft gun box (pistol)"
+	desc = "A cardboard box containing a DONKsoft weapon."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "donkbox"
+
+/obj/item/gunbox/donksoft/attack_self(mob/living/user)
+	var/list/options = list()
+	options["Classic DONKsoft Pistol"] = list(/obj/item/gun/projectile/pistol/foam, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
+	options["Blue DONKsoft Pistol"] = list(/obj/item/gun/projectile/pistol/foam/blue, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
+	options["DONKsoft Automag"] = list(/obj/item/gun/projectile/pistol/foam/magnum, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
+	var/choice = input(user,"What toy is in this box?") as null|anything in options
+	if(src && choice)
+		var/list/things_to_spawn = options[choice]
+		for(var/new_type in things_to_spawn) // Spawn all the things, the gun and the ammo.
+			var/atom/movable/AM = new new_type(get_turf(src))
+			if(istype(AM, /obj/item/gun))
+				to_chat(user, "You have pulled out \the [AM]. Say hello to your new friend.")
+		qdel(src)
+
+/obj/item/gunbox/donksoft/shotgun
+	name = "DONKsoft gun box (shotgun)"
+	desc = "A cardboard box containing a DONKsoft weapon."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "donkbox2"
+
+/obj/item/gunbox/donksoft/shotgun/attack_self(mob/living/user)
+	var/list/options = list()
+	options["Classic DONKsoft Shotgun"] = list(/obj/item/gun/projectile/shotgun/pump/foam, /obj/item/storage/box/foamdart, /obj/item/storage/box/foamdart)
+	options["Blue DONKsoft Shotgun"] = list(/obj/item/gun/projectile/shotgun/pump/foam/blue, /obj/item/storage/box/foamdart, /obj/item/storage/box/foamdart)
+	var/choice = input(user,"What toy is in this box?") as null|anything in options
+	if(src && choice)
+		var/list/things_to_spawn = options[choice]
+		for(var/new_type in things_to_spawn) // Spawn all the things, the gun and the ammo.
+			var/atom/movable/AM = new new_type(get_turf(src))
+			if(istype(AM, /obj/item/gun))
+				to_chat(user, "You have pulled out \the [AM]. Say hello to your new friend.")
+		qdel(src)
+
+/obj/item/gunbox/donksoft/smg
+	name = "DONKsoft gun box (smg)"
+	desc = "A cardboard box containing a DONKsoft weapon."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "donkbox3"
+
+/obj/item/gunbox/donksoft/shotgun/attack_self(mob/living/user)
+	var/list/options = list()
+	options["Classic DONKsoft SMG"] = list(/obj/item/gun/projectile/automatic/advanced_smg/foam, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
+	options["Blue DONKsoft SMG"] = list(/obj/item/gun/projectile/automatic/advanced_smg/foam/blue, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
+	var/choice = input(user,"What toy is in this box?") as null|anything in options
+	if(src && choice)
+		var/list/things_to_spawn = options[choice]
+		for(var/new_type in things_to_spawn) // Spawn all the things, the gun and the ammo.
+			var/atom/movable/AM = new new_type(get_turf(src))
+			if(istype(AM, /obj/item/gun))
+				to_chat(user, "You have pulled out \the [AM]. Say hello to your new friend.")
+		qdel(src)

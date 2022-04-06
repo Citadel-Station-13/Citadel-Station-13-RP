@@ -478,3 +478,24 @@
 	recoil = 3
 	handle_casings = CYCLE_CASINGS
 	max_shells = 3
+
+//Donksoft Weapons
+/obj/item/gun/projectile/pistol/foam
+	name = "toy pistol"
+	desc = "The Donk Co line of DONKsoft weapons is taking the galaxy by storm. Made of quality plastic, nothing launches darts better."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "toy_pistol"
+	item_state = null
+	w_class = ITEMSIZE_SMALL
+	caliber = "foamdart"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/mfoam/pistol
+	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/pistol)
+
+/obj/item/gun/projectile/pistol/foam/blue
+	icon_state = "toy_pistol_blue"
+
+/obj/item/gun/projectile/pistol/foam/magnum
+	name = "toy automag"
+	icon_state = "toy_pistol_orange"
+	w_class = ITEMSIZE_NORMAL
