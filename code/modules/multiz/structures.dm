@@ -506,7 +506,7 @@
 	var/obj/structure/stairs/top/T 	  = new(T2)
 	var/obj/structure/stairs/middle/M = new(B2)
 	var/obj/structure/stairs/bottom/B = new(B1)
-	if(!isopenspace(O))
+	if(!isopenturf(O))
 		O = new(O)
 
 	B.dir = dir

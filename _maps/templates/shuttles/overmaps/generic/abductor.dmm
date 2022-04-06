@@ -821,7 +821,7 @@
 /turf/simulated/shuttle/floor/alien,
 /area/abductor/interior)
 "VT" = (
-/obj/machinery/shield_gen,
+/obj/machinery/power/shield_generator/charged,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
@@ -843,7 +843,7 @@
 /area/abductor/interior)
 "WC" = (
 /obj/structure/prop/alien/computer{
-	
+
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
