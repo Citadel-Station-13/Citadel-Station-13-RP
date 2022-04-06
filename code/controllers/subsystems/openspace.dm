@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(openspace)
 	turfs_to_process += T
 	if(recursive > 0)
 		var/turf/above = GetAbove(T)
-		if(above && isopenspace(above))
+		if(above && isopenturf(above))
 			add_turf(above, recursive)
 
 // Do the initial updates of open space turfs when the game starts. This will lag!

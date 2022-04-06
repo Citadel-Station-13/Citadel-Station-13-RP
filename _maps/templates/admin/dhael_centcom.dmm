@@ -15207,7 +15207,7 @@
 	},
 /area/centcom/specops)
 "Mw" = (
-/obj/machinery/shield_gen/external,
+/obj/machinery/power/shield_generator/charged,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -15490,7 +15490,7 @@
 	},
 /area/centcom/bathroom)
 "TW" = (
-/obj/machinery/shield_gen,
+/obj/machinery/power/shield_generator/charged,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
