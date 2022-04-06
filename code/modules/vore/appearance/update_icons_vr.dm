@@ -14,7 +14,7 @@ var/global/list/wing_icon_cache = list()
 	return null
 
 
-/mob/living/carbon/human/proc/get_tail_image()
+/mob/living/carbon/human/proc/get_tail_image(front)
 	//If you are FBP with tail style and didn't set a custom one
 	var/datum/robolimb/model = isSynthetic()
 	if(istype(model) && model.includes_tail && !tail_style)
@@ -23,12 +23,15 @@ var/global/list/wing_icon_cache = list()
 		return image(tail_s)
 
 	//If you have a custom tail selected
-	if(tail_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL && !isTaurTail(tail_style)))
-		var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state)
+	//if(tail_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL && !isTaurTail(tail_style)))
+		//var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state)
+	if(tail_style && (!(wear_suit && wear_suit.flags_inv & HIDETAIL) || !tail_style.clothing_can_hide))
+		var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = wagging && tail_style.ani_state ? tail_style.ani_state : (tail_style.front_behind_system? (tail_style.icon_state + (front? "_FRONT" : "_BEHIND")) : tail_style.icon_state))
 		if(tail_style.do_colouration)
 			tail_s.Blend(rgb(src.r_tail, src.g_tail, src.b_tail), tail_style.color_blend_mode)
 		if(tail_style.extra_overlay)
-			var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay)
+			//var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay)
+			var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.front_behind_system? (tail_style.extra_overlay + (front? "_FRONT" : "_BEHIND")) : tail_style.extra_overlay)
 			if(wagging && tail_style.ani_state)
 				overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay_w)
 				overlay.Blend(rgb(src.r_tail2, src.g_tail2, src.b_tail2), tail_style.color_blend_mode)
@@ -38,6 +41,9 @@ var/global/list/wing_icon_cache = list()
 				overlay.Blend(rgb(src.r_tail2, src.g_tail2, src.b_tail2), tail_style.color_blend_mode)
 				tail_s.Blend(overlay, ICON_OVERLAY)
 				qdel(overlay)
+
+		if(tail_style.center)
+			center_image(tail_style, tail_style.dimension_x, tail_style.dimension_y)
 
 		if(isTaurTail(tail_style))
 			var/datum/sprite_accessory/tail/taur/taurtype = tail_style

@@ -908,17 +908,23 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		return
 
 	remove_layer(TAIL_LAYER)
-	remove_layer(TAIL_LAYER_ALT) // VOREStation Edit - START - Alt Tail Layer
+	remove_layer(TAIL_LAYER_ALT)
 
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
 
-	var/image/vr_tail_image = get_tail_image()
+	overlays_standing[used_tail_layer] = list()
+
+	var/image/vr_tail_image = get_tail_image(TRUE)
 	if(vr_tail_image)
 		vr_tail_image.layer = BODY_LAYER+used_tail_layer
-		overlays_standing[used_tail_layer] = vr_tail_image
+		//overlays_standing[used_tail_layer] = vr_tail_image
+		overlays_standing[used_tail_layer] += vr_tail_image
+
+	if(tail_style?.front_behind_system)
+		var/image/vr_tail_image_2 = get_tail_image(FALSE)
+		vr_tail_image_2.layer = BODY_LAYER - used_tail_layer
+		overlays_standing[used_tail_layer] += vr_tail_image_2
 		apply_layer(used_tail_layer)
-		return
-	// VOREStation Edit - END
 
 	var/species_tail = species.get_tail(src) // Species tail icon_state prefix.
 
@@ -950,7 +956,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	return tail_icon
 
 /mob/living/carbon/human/proc/set_tail_state(var/t_state)
-	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER // VOREStation Edit - START - Alt Tail Layer
+	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
 	var/image/tail_overlay = overlays_standing[used_tail_layer]
 
 	remove_layer(TAIL_LAYER)
@@ -962,7 +968,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			tail_overlay.icon_state = t_state
 			. = tail_overlay
 
-	apply_layer(used_tail_layer) // VOREStation Edit - END
+	apply_layer(used_tail_layer)
 
 //Not really once, since BYOND can't do that.
 //Update this if the ability to flick() images or make looping animation start at the first frame is ever added.

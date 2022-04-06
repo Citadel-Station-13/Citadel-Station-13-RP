@@ -16,6 +16,8 @@
 	var/center = FALSE
 	var/dimension_x = 32
 	var/dimension_y = 32
+	/// use front/behind, citadel snowflake for now
+	var/front_behind_system = FALSE
 
 /*
 ////////////////////////////
@@ -733,8 +735,6 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	var/desc = "You should not see this..."
 	var/ani_state // State when flapping/animated
 	var/extra_overlay_w // Flapping state for extra overlay
-	/// use front/behind, citadel snowflake for now
-	var/front_behind_system = FALSE
 
 /datum/sprite_accessory/wing/shock //Unable to split the tail from the wings in the sprite, so let's just classify it as wings.
 	name = "pharoah hound tail (Shock Diamond)"
@@ -1604,56 +1604,64 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	extra_overlay = "deertail_mark"
 
 /datum/sprite_accessory/tail/teshari_fluffytail
+	icon = 'icons/mob/vore/teshari-accessories.dmi'
 	name = "Teshari tail"
 	desc = ""
 	icon_state = "teshari_fluffytail"
 	extra_overlay = "teshari_fluffytail_mark"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+	front_behind_system = TRUE
 
 /datum/sprite_accessory/tail/special/teshtailfeathered
+	icon = 'icons/mob/vore/teshari-accessories.dmi'
 	name = "Teshari tail alt"
 	desc = ""
-	icon_state = "teshtail_s"
-	extra_overlay = "teshtail_feathers_s"
+	icon_state = "teshtail"
+	extra_overlay = "teshtail_feathers"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+	front_behind_system = TRUE
 
 /datum/sprite_accessory/tail/tesh_pattern_male
-	icon = 'icons/mob/vore/tails_vr.dmi'
+	icon = 'icons/mob/vore/teshari-accessories.dmi'
 	name = "Teshari male tail pattern"
 	desc = ""
-	icon_state = "teshtail_s"
+	icon_state = "teshtail"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshpattern_male_tail"
+	front_behind_system = TRUE
 
 /datum/sprite_accessory/tail/tesh_pattern_male_alt
-	icon = 'icons/mob/vore/tails_vr.dmi'
+	icon = 'icons/mob/vore/teshari-accessories.dmi'
 	name = "Teshari male tail alt. pattern"
 	desc = ""
-	icon_state = "teshtail_s"
+	icon_state = "teshtail"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshpattern_male_alt"
+	front_behind_system = TRUE
 
 /datum/sprite_accessory/tail/tesh_pattern_fem
-	icon = 'icons/mob/vore/tails_vr.dmi'
+	icon = 'icons/mob/vore/teshari-accessories.dmi'
 	name = "Teshari female tail pattern"
 	desc = ""
-	icon_state = "teshtail_s"
+	icon_state = "teshtail"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshpattern_fem_tail"
+	front_behind_system = TRUE
 
 /datum/sprite_accessory/tail/tesh_pattern_fem_alt
-	icon = 'icons/mob/vore/tails_vr.dmi'
+	icon = 'icons/mob/vore/teshari-accessories.dmi'
 	name = "Teshari male tail alt. pattern"
 	desc = ""
-	icon_state = "teshtail_s"
+	icon_state = "teshtail"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshpattern_fem_alt"
+	front_behind_system = TRUE
 
 /datum/sprite_accessory/tail/beaver
 	name = "beaver tail, colorable"
