@@ -47,7 +47,7 @@
 	var/locked = TRUE
 	var/emagged = FALSE
 	var/light_strength = 3
-	var/busy = TRUE
+	var/busy = FALSE //Are they doing something?
 	var/skin = null // For variants of a bot, like Burn medkit Medibots!
 
 	var/obj/access_scanner = null

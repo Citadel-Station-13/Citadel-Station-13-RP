@@ -40,7 +40,6 @@
 /mob/living/bot/medibot/Initialize(mapload, new_skin)
 	. = ..()
 	skin = new_skin
-	busy = FALSE //So medibots don't spawn bugged.
 	update_icon()
 
 /mob/living/bot/medibot/update_icon()

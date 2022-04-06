@@ -37,7 +37,6 @@
 /mob/living/bot/floorbot/Initialize(mapload, new_skin)
 	. = ..()
 	skin = new_skin
-	busy = FALSE //So medibots don't spawn bugged.
 	update_icon()
 
 /mob/living/bot/floorbot/update_icon()
