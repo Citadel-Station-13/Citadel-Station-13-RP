@@ -498,6 +498,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mfoam/pistol
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/pistol)
+	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/projectile/pistol/foam/blue
 	icon_state = "toy_pistol_blue"

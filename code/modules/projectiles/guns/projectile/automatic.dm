@@ -601,6 +601,7 @@ obj/item/gun/projectile/automatic/automat/taj
 	caliber = "foamdart"
 	magazine_type = /obj/item/ammo_magazine/mfoam/smg
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/smg)
+	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/projectile/automatic/advanced_smg/foam/update_icon()
 	..()
@@ -627,6 +628,7 @@ obj/item/gun/projectile/automatic/automat/taj
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/c20)
 	projectile_type = /obj/item/projectile/bullet/reusable/foam
 	one_handed_penalty = 5
+	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/projectile/automatic/c20r/foam/update_icon()
 	..()
@@ -648,6 +650,7 @@ obj/item/gun/projectile/automatic/automat/taj
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/lmg)
 	projectile_type = /obj/item/projectile/bullet/reusable/foam
 	one_handed_penalty = 45 //It's plastic.
+	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/projectile/automatic/l6_saw/foam/update_icon()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))

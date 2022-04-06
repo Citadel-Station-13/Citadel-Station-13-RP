@@ -299,6 +299,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	ammo_type = /obj/item/ammo_casing/foam
 	projectile_type = /obj/item/projectile/bullet/reusable/foam
 	one_handed_penalty = 5
+	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/projectile/shotgun/pump/foam/blue
 	icon_state = "toy_shotgun_blue"
