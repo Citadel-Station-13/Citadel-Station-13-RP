@@ -205,7 +205,7 @@
 	containertype = /obj/structure/closet/crate
 	containername = "DONKsoft Skirmish crate"
 
-/datum/supply_pack/recreation/donksoft
+/datum/supply_pack/recreation/donksoft_exotic
 	name = "DONKsoft Exotic Weaponry Bundle"
 	contains = list(
 			/obj/item/gun/projectile/automatic/c20r/foam = 2,
