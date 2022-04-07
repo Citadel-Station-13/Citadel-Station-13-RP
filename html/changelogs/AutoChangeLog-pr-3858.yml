@@ -1,5 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "Shield Generator TGUI"
-  - imageadd: "Animated shield sprites"
