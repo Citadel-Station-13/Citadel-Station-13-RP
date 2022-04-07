@@ -507,6 +507,10 @@
 	else
 		icon_state = "[initial(icon_state)]-e"
 
+/obj/item/gun/projectile/pistol/foam/handle_suicide(mob/living/user)
+	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	mouthshoot = 0
+	return
 
 /obj/item/gun/projectile/pistol/foam/blue
 	icon_state = "toy_pistol_blue"

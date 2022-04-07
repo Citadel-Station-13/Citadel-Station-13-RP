@@ -608,6 +608,11 @@ obj/item/gun/projectile/automatic/automat/taj
 	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-empty"
 	return
 
+/obj/item/gun/projectile/automatic/advanged_smg/foam/handle_suicide(mob/living/user)
+	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	mouthshoot = 0
+	return
+
 /obj/item/gun/projectile/automatic/advanced_smg/foam/blue
 	icon_state = "toy_smg_blue"
 
@@ -638,6 +643,11 @@ obj/item/gun/projectile/automatic/automat/taj
 		icon_state = "toy_c20r"
 	return
 
+/obj/item/gun/projectile/automatic/c20r/foam/handle_suicide(mob/living/user)
+	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	mouthshoot = 0
+	return
+
 //Foam LMG
 /obj/item/gun/projectile/automatic/l6_saw/foam
 	name = "toy light machine gun"
@@ -660,3 +670,8 @@ obj/item/gun/projectile/automatic/automat/taj
 		icon_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 25) : "-empty"]"
 		item_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
 	update_held_icon()
+
+/obj/item/gun/projectile/automatic/l6_saw/foam/handle_suicide(mob/living/user)
+	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	mouthshoot = 0
+	return
