@@ -87,7 +87,7 @@
 				display_msg = "experiences a system error"
 				use_sound = 'sound/machines/synth_error.ogg'
 			else if(act == "die")
-				display_msg = "crumples, their chassis colder and more lifeless than average"
+				display_msg = "crumples, their chassis colder and more lifeless than usual"
 				use_sound = 'sound/machines/synth_gameover.ogg'
 			else if(act == "rcough")
 				display_msg = "emits a robotic cough"
