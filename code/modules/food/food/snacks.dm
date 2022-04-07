@@ -6482,7 +6482,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/rumham
 	name = "rum ham"
-	desc = "Drinking your food? That...is genius!"
+	desc = "EATING your booze? That...is genius!"
 	icon_state = "rumham"
 	nutriment_amt = 6
 	nutriment_desc = list("meat" = 3, "salt" = 3, "rum" = 6)
