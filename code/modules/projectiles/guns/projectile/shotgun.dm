@@ -292,6 +292,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 /obj/item/gun/projectile/shotgun/pump/foam
 	name = "toy shotgun"
 	desc = "A relatively faithful recreation of a pump action shotgun, this one only accepts foam darts."
+	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_shotgun"
 	max_shells = 8
 	force = 5
@@ -306,5 +307,20 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	mouthshoot = 0
 	return
 
+/obj/item/gun/projectile/shotgun/pump/foam/pump(mob/M as mob)
+	playsound(M, action_sound, 60, 1)
+
+	if(chambered)//We have a shell in the chamber
+		chambered = null
+
+	if(loaded.len)
+		var/obj/item/ammo_casing/AC = loaded[1] //load next casing.
+		loaded -= AC //Remove casing from loaded list.
+		chambered = AC
+
+	if(animated_pump)//This affects all bolt action and shotguns.
+		flick("[icon_state]-cycling", src)//This plays any pumping
+
+	update_icon()
 /obj/item/gun/projectile/shotgun/pump/foam/blue
 	icon_state = "toy_shotgun_blue"

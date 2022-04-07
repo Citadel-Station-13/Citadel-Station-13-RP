@@ -614,6 +614,8 @@
 	throwforce = 0 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
 	caseless = 1
+	drop_sound = 'sound/items/drop/accessory.ogg'
+	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/ammo_casing/foam/riot
 	name = "riot dart"
