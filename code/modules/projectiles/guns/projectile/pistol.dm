@@ -500,6 +500,14 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/pistol)
 	fire_sound = 'sound/items/syringeproj.ogg'
 
+/obj/item/gun/projectile/pistol/foam/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"
+
+
 /obj/item/gun/projectile/pistol/foam/blue
 	icon_state = "toy_pistol_blue"
 
