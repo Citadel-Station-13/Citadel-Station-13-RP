@@ -32,7 +32,7 @@
 /datum/map_template/shelter/proc/add_roof(turf/deploy_location)
 	var/affected = get_affected_turfs(deploy_location, centered=TRUE)
 	for(var/turf/T in affected)
-		if(isopenspace(T))
+		if(isopenturf(T))
 			T.ChangeTurf(/turf/simulated/shuttle/floor/voidcraft)
 
 /datum/map_template/shelter/proc/annihilate_plants(turf/deploy_location)
