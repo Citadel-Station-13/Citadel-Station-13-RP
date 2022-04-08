@@ -676,3 +676,20 @@
 	storage_slots = 1
 	can_hold = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
 	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
+
+//Foam Darts
+/obj/item/storage/box/foamdart
+	name = "box of foam darts"
+	desc = "It has a picture of some foam darts on it."
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "foambox"
+	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	starts_with = list(/obj/item/ammo_casing/foam = 20)
+	drop_sound = 'sound/items/drop/ammobox.ogg'
+	pickup_sound = 'sound/items/pickup/ammobox.ogg'
+
+/obj/item/storage/box/foamdart/riot
+	name = "box of riot darts"
+	desc = "It has a picture of some angry looking foam darts on it."
+	icon_state = "foambox_riot"
+	starts_with = list(/obj/item/ammo_casing/foam/riot = 20)

@@ -199,6 +199,13 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
 	projectile_type = /obj/item/projectile/bullet/pistol
 
+/obj/item/gun/projectile/pistol/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"
+
 /obj/item/gun/projectile/pistol/flash
 	name = "compact signal pistol"
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact/flash
@@ -478,3 +485,37 @@
 	recoil = 3
 	handle_casings = CYCLE_CASINGS
 	max_shells = 3
+
+//Donksoft Weapons
+/obj/item/gun/projectile/pistol/foam
+	name = "toy pistol"
+	desc = "The Donk Co line of DONKsoft weapons is taking the galaxy by storm. Made of quality plastic, nothing launches darts better."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "toy_pistol"
+	item_state = null
+	w_class = ITEMSIZE_SMALL
+	caliber = "foamdart"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/mfoam/pistol
+	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/pistol)
+	fire_sound = 'sound/items/syringeproj.ogg'
+
+/obj/item/gun/projectile/pistol/foam/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"
+
+/obj/item/gun/projectile/pistol/foam/handle_suicide(mob/living/user)
+	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	mouthshoot = 0
+	return
+
+/obj/item/gun/projectile/pistol/foam/blue
+	icon_state = "toy_pistol_blue"
+
+/obj/item/gun/projectile/pistol/foam/magnum
+	name = "toy automag"
+	icon_state = "toy_pistol_orange"
+	w_class = ITEMSIZE_NORMAL
