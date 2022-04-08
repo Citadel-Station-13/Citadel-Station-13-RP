@@ -608,7 +608,7 @@ obj/item/gun/projectile/automatic/automat/taj
 	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-empty"
 	return
 
-/obj/item/gun/projectile/automatic/advanged_smg/foam/handle_suicide(mob/living/user)
+/obj/item/gun/projectile/automatic/advanced_smg/foam/handle_suicide(mob/living/user)
 	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
 	mouthshoot = 0
 	return

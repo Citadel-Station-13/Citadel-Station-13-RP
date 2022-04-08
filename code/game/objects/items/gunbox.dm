@@ -126,7 +126,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "donkbox3"
 
-/obj/item/gunbox/donksoft/shotgun/attack_self(mob/living/user)
+/obj/item/gunbox/donksoft/smg/attack_self(mob/living/user)
 	var/list/options = list()
 	options["Classic DONKsoft SMG"] = list(/obj/item/gun/projectile/automatic/advanced_smg/foam, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
 	options["Blue DONKsoft SMG"] = list(/obj/item/gun/projectile/automatic/advanced_smg/foam/blue, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
