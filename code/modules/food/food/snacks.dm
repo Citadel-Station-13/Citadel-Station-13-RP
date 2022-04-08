@@ -4244,6 +4244,14 @@ END CITADEL CHANGE */
 	nutriment_desc = list("butter" = 1)
 	nutriment_amt = 0
 
+/obj/item/reagent_containers/food/snacks/spreads/butter/Crossed(atom/movable/AM as mob|obj)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
+	if (istype(AM, /mob/living))
+		var/mob/living/M = AM
+		M.slip("the [src.name]",4)
+
 /obj/item/reagent_containers/food/snacks/spreads/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("triglyceride", 20)
