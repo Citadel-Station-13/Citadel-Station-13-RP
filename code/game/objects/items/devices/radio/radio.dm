@@ -321,6 +321,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(!radio_connection)
 		set_frequency(frequency)
 
+	if(loc == M)
+		playsound(loc, "sound/effects/walkietalkie.ogg", 15, 0, -1, -1)
+
 	/* Quick introduction:
 		This new radio system uses a very robust FTL signaling technology unoriginally
 		dubbed "subspace" which is somewhat similar to 'blue-space' but can't

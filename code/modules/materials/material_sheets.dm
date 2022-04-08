@@ -271,6 +271,7 @@
 	icon_state = "sheet-super"
 	item_state = "diamond"
 	default_type = MAT_SUPERMATTER
+	no_variants = FALSE
 	apply_colour = TRUE
 
 /obj/item/stack/material/supermatter/proc/update_mass()	// Due to how dangerous they can be, the item will get heavier and larger the more are in the stack.

@@ -1034,3 +1034,73 @@
 	matter = list("wax" = 1000)
 	max_ammo = 10
 	multiple_sprites = 1
+
+//Foam
+/obj/item/ammo_magazine/mfoam
+	name = "abstract toy magazine"
+	desc = "You shouldn't be seeing this, contact a Maintainer!"
+	icon_state = "toy_pistol"
+	mag_type = MAGAZINE
+	matter = list("plastic" = 480)
+	caliber = "foamdart"
+	ammo_type = /obj/item/ammo_casing/foam
+	max_ammo = 8
+	multiple_sprites = 1
+
+//Foam Pistol
+/obj/item/ammo_magazine/mfoam/pistol
+	name = "toy pistol magazine"
+	desc = "A plastic pistol magazine for foam darts!"
+
+/obj/item/ammo_magazine/mfoam/pistol/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/mfoam/pistol/riot
+	name = "toy pistol magazine (riot)"
+	ammo_type = /obj/item/ammo_casing/foam/riot
+
+//Foam c20r
+/obj/item/ammo_magazine/mfoam/c20
+	name = "toy c20r magazine"
+	desc = "A plastic recreation of the classic c20r submachine gun."
+	icon_state = "toy_c20"
+	matter = list("plastic" = 1500)
+	max_ammo = 20
+
+/obj/item/ammo_magazine/mfoam/c20/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/mfoam/c20/riot
+	name = "toy c20r magazine (riot)"
+	ammo_type = /obj/item/ammo_casing/foam/riot
+
+//Foam LMG
+/obj/item/ammo_magazine/mfoam/lmg
+	name = "toy magazine box"
+	desc = "A heavy plastic box designed to hold belts of foam darts! Wow!"
+	icon_state = "toy_lmg"
+	matter = list("plastic" = 10000)
+	w_class = ITEMSIZE_NORMAL
+	max_ammo = 50
+
+/obj/item/ammo_magazine/mfoam/lmg/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/mfoam/lmg/riot
+	name = "toy magazine box (riot)"
+	ammo_type = /obj/item/ammo_casing/foam/riot
+
+//Foam SMGs
+/obj/item/ammo_magazine/mfoam/smg
+	name = "toy submachine gun magazine"
+	desc = "A plastic recreation of a double-stack submachine gun magazine."
+	icon_state = "toy_smg"
+	matter = list("plastic" = 1200)
+	max_ammo = 20
+
+/obj/item/ammo_magazine/mfoam/smg/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/mfoam/smg/riot
+	name = "toy submachine gun magazine (riot)"
+	ammo_type = /obj/item/ammo_casing/foam/riot

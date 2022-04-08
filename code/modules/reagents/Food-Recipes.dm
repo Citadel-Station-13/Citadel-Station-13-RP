@@ -92,7 +92,6 @@
 	id = "bluecheesewheel"
 	result = null
 	required_reagents = list("milk" = 40, "virusfood" = 5)
-	catalysts = list("enzyme" = 5)
 	result_amount = 1
 
 /datum/chemical_reaction/food/bluecheesewheel/on_reaction(var/datum/reagents/holder, var/created_volume)

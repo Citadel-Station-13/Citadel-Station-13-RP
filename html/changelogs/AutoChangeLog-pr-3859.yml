@@ -1,0 +1,4 @@
+author: "yeayea130"
+delete-after: True
+changes: 
+  - balance: "Capped borg shielding percentage at 60% maximum"

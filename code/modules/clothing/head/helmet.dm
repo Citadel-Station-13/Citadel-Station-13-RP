@@ -353,3 +353,12 @@
 	icon = 'icons/obj/clothing/hats_vr.dmi'
 	icon_override = 'icons/mob/head_vr.dmi'
 	icon_state = "cyberpunkgoggle"
+
+//Strange Plate Armor
+/obj/item/clothing/head/helmet/kettle
+	name = "KTL plate helmet"
+	desc = "These rare helmets are believed to originate from an isolationist human society on the Eastern Rim. The meaning of the designation is unknown, leading to the popular moniker 'Kettle'."
+	icon_state = "kettle"
+
+/obj/item/clothing/head/helmet/kettle/eyes
+	icon_state = "kettle_eyes"

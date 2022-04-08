@@ -1,0 +1,11 @@
+author: "Funkeronipasta"
+delete-after: True
+changes: 
+  - rscadd: "*startup"
+  - rscadd: "*shutdown"
+  - rscadd: "*error"
+  - rscadd: "*die"
+  - rscadd: "*ara"
+  - rscadd: "*amoan"
+  - rscadd: "*uwu
+edit: *nya"
