@@ -2861,7 +2861,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "fg" = (
 /obj/effect/overlay/snow/floor/pointy,
@@ -3032,7 +3032,6 @@
 /obj/item/clothing/suit/armor/captain,
 /obj/item/clothing/head/helmet/space/capspace,
 /obj/item/clothing/mask/gas,
-/obj/item/card/id/gold/captain/spare,
 /obj/machinery/door/window/brigdoor/westright{
 	dir = 2;
 	name = "Facility Director's Storage";
@@ -4457,7 +4456,7 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/cargo,
 /turf/simulated/floor/plating,
-/area/hallway/primary/surfacethree)
+/area/hydroponics)
 "id" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -5146,7 +5145,7 @@
 /turf/simulated/wall{
 	can_open = 1
 	},
-/area/hallway/primary/surfacethree)
+/area/hydroponics)
 "js" = (
 /turf/simulated/wall,
 /area/crew_quarters/locker/laundry_arrival)
@@ -8803,9 +8802,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/locker/laundry_arrival)
 "qN" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 1
-	},
 /obj/structure/bed/chair/comfy/brown,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -10575,7 +10571,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "uB" = (
-/obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/undies_wardrobe,
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
@@ -11936,6 +11931,21 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"xk" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/closet/medical_wall{
+	pixel_y = -32
+	},
+/obj/item/storage/firstaid/toxin,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacethree)
 "xl" = (
 /turf/simulated/wall,
 /area/rift/stairwell/primary/surfacethree)
@@ -17697,12 +17707,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "civvie_dock";
-	pixel_y = 24;
-	req_one_access = list(67)
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "JM" = (
@@ -18234,7 +18238,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "KR" = (
-/obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
@@ -18385,7 +18388,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Lk" = (
 /turf/simulated/floor/tiled/techmaint,
@@ -18619,6 +18622,7 @@
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/item/card/id/gold/captain/spare,
 /obj/item/pinpointer,
 /obj/item/disk/nuclear,
 /turf/simulated/floor/carpet/blue,
@@ -19458,7 +19462,7 @@
 /area/shuttle/excursion/cargo)
 "NG" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "NH" = (
 /obj/structure/railing{
@@ -21970,7 +21974,7 @@
 "SY" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/hallway/primary/surfacethree)
+/area/hydroponics)
 "Ta" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/appliance/mixer/cereal,
@@ -22740,12 +22744,6 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "emt_shuttle_dock";
-	pixel_y = 24;
-	req_one_access = list(5,67)
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
@@ -23726,6 +23724,13 @@
 /obj/item/binoculars,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
+"WW" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "WX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -23769,9 +23774,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "Xc" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 1
-	},
 /obj/machinery/suit_cycler/director,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -23865,6 +23867,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
+"Xm" = (
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "emt_shuttle_dock";
+	req_one_access = list(5,67)
+	},
+/turf/simulated/wall,
+/area/rift/surfacebase/outside/outside3)
 "Xo" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -24328,6 +24338,12 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
+"Yn" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Yo" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -24433,9 +24449,8 @@
 /area/bridge)
 "YD" = (
 /obj/effect/shuttle_landmark{
-	base_area = /area/rift/surfacebase/outside/outside3;
+	base_area = /area/rift/surfacebase/shuttle;
 	base_turf = /turf/simulated/floor/reinforced/lythios43c;
-	docking_controller = null;
 	landmark_tag = "escape_rift";
 	name = "Escape Shuttle Atlas"
 	},
@@ -24853,7 +24868,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Zz" = (
 /obj/structure/catwalk,
@@ -37774,7 +37789,7 @@ EQ
 EQ
 xD
 zu
-pX
+Xm
 GF
 IA
 Hd
@@ -39357,7 +39372,7 @@ zy
 aQ
 aQ
 aQ
-Rv
+xk
 MT
 rn
 MT
@@ -40492,8 +40507,8 @@ Uu
 Uu
 Uu
 Uu
-Uu
 YD
+Uu
 jp
 TP
 oQ
@@ -42237,8 +42252,8 @@ cH
 cH
 cH
 Nk
-uz
-yA
+Yn
+WW
 eo
 eo
 eo
@@ -43206,7 +43221,7 @@ Gh
 Fp
 us
 mn
-AF
+Xm
 GF
 IA
 Hn

@@ -4,27 +4,12 @@
 /datum/map_template/rift_lateload/rift_misc
 	name = "Rift - Misc"
 	desc = "Misc areas, like some transit areas, holodecks, merc area."
-	mappath = "_maps/map_files/rift/rift_misc.dmm"
+	mappath = "_maps/map_files/rift/rift-08-orbital.dmm"
 
 	associated_map_datum = /datum/map_z_level/rift_lateload/misc
 
-	ztraits = list()
-
 /datum/map_z_level/rift_lateload/misc
 	name = "Misc"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-
-/datum/map_template/rift_lateload/rift_ships
-	name = "Rift - Ships"
-	desc = "Ship transit map and whatnot."
-	mappath = "_maps/map_files/rift/rift_ships.dmm"
-
-	associated_map_datum = /datum/map_z_level/rift_lateload/ships
-
-	ztraits = list()
-
-/datum/map_z_level/rift_lateload/ships
-	name = "Ships"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
 //Use this template to update the Western Z when POIs are created for it.

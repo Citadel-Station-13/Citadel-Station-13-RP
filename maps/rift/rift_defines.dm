@@ -8,21 +8,19 @@
 #define Z_LEVEL_WEST_CAVERN				7
 #define Z_LEVEL_WEST_PLAIN				8
 
-#define Z_LEVEL_CENTCOM					9
-#define Z_LEVEL_MISC					10
-#define Z_LEVEL_SHIPS					11
+#define Z_LEVEL_MISC					9
 
-#define Z_LEVEL_DEBRISFIELD				12
-#define Z_LEVEL_PIRATEBASE				13
-#define Z_LEVEL_MININGPLANET			14 // CLASS G
-#define Z_LEVEL_UNKNOWN_PLANET			15 // CLASS D
-#define Z_LEVEL_DESERT_PLANET			16 // CLASS H
-#define Z_LEVEL_GAIA_PLANET				17 // CLASS M
-#define Z_LEVEL_FROZEN_PLANET			18 // CLASS P
-#define Z_LEVEL_TRADEPORT				19
+#define Z_LEVEL_DEBRISFIELD				10
+#define Z_LEVEL_PIRATEBASE				11
+#define Z_LEVEL_MININGPLANET			12 // CLASS G
+#define Z_LEVEL_UNKNOWN_PLANET			13 // CLASS D
+#define Z_LEVEL_DESERT_PLANET			14 // CLASS H
+#define Z_LEVEL_GAIA_PLANET				15 // CLASS M
+#define Z_LEVEL_FROZEN_PLANET			16 // CLASS P
+#define Z_LEVEL_TRADEPORT				17
 
-#define Z_LEVEL_LAVALAND				20
-#define Z_LEVEL_LAVALAND_EAST			21
+#define Z_LEVEL_LAVALAND				18
+#define Z_LEVEL_LAVALAND_EAST			19
 
 /datum/map/rift
 	name = "Rift"
@@ -161,7 +159,7 @@
 								 Z_LEVEL_LAVALAND_EAST)
 
 	lateload_z_levels = list(
-		list("Rift - Misc","Rift - Ships"), // Stock Rift lateload maps
+		list("Rift - Misc"), // Stock Rift lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
 		list("ExoPlanet - Z1 Planet"),//Mining planet
@@ -181,8 +179,7 @@
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_MISC,
-		Z_LEVEL_SHIPS)
+		Z_LEVEL_MISC)
 
 	mining_station_z =		list(Z_LEVEL_UNDERGROUND_DEEP)
 	mining_outpost_z =		list(Z_LEVEL_WEST_PLAIN)
@@ -269,18 +266,9 @@
 	name = "Western Plains"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
-
+/*
 /datum/map_z_level/rift/colony
 	z = Z_LEVEL_CENTCOM
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-
-/datum/map_z_level/rift/misc
-	z = Z_LEVEL_MISC
-	name = "Misc"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
-
-/datum/map_z_level/rift/ships
-	z = Z_LEVEL_SHIPS
-	name = "Ships"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
+*/
