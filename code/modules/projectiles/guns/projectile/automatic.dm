@@ -210,7 +210,7 @@
 	magazine_type = /obj/item/ammo_magazine/m545saw
 	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
-
+	can_special_reload = FALSE
 	one_handed_penalty = 90
 
 	var/cover_open = 0
