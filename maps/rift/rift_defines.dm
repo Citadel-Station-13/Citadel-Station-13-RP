@@ -159,7 +159,7 @@
 								 Z_LEVEL_LAVALAND_EAST)
 
 	lateload_z_levels = list(
-		list("Rift - Misc"), // Stock Rift lateload maps
+//		list("Rift - Misc"), // Stock Rift lateload maps || Currently not in use, takes too long to load, breaks shuttles.
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
 		list("ExoPlanet - Z1 Planet"),//Mining planet
@@ -266,9 +266,9 @@
 	name = "Western Plains"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
-/*
+
 /datum/map_z_level/rift/colony
-	z = Z_LEVEL_CENTCOM
+	z = Z_LEVEL_MISC
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-*/
+

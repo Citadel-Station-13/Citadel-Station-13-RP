@@ -3945,9 +3945,9 @@
 	RCon_tag = "Substation - Underground One";
 	charge = 2e+006;
 	input_attempt = 1;
-	input_level = 100000;
+	input_level = 140000;
 	inputting = 2;
-	output_level = 100000
+	output_level = 120000
 	},
 /obj/structure/cable/green{
 	d2 = 8;
@@ -4884,12 +4884,11 @@
 /area/engineering/atmos/hallway)
 "ja" = (
 /obj/machinery/light,
-/obj/structure/table/reinforced,
 /obj/structure/sign/atmosplaque{
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/item/toy/figure/atmos,
+/obj/machinery/mineral/equipment_vendor/engineering,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
 "jb" = (
@@ -7582,6 +7581,7 @@
 /obj/effect/floor_decal/transit/orange{
 	dir = 8
 	},
+/obj/item/toy/figure/atmos,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
 "nM" = (
@@ -8796,7 +8796,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/mineral/equipment_vendor/engineering,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
 "pC" = (
@@ -11326,6 +11325,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
+"zO" = (
+/obj/structure/closet/crate,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "Aq" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -11567,6 +11576,7 @@
 /area/engineering/atmos/hallway)
 "FT" = (
 /obj/structure/railing,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "FY" = (
@@ -11686,6 +11696,16 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
+"Hz" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/closet,
+/obj/random/maintenance/engineering,
+/obj/random/tool,
+/obj/random/tool,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "HG" = (
@@ -31150,7 +31170,7 @@ sM
 sM
 sM
 RA
-sQ
+Hz
 bG
 bG
 bG
@@ -31166,7 +31186,7 @@ my
 my
 my
 my
-sR
+zO
 jo
 jo
 jo

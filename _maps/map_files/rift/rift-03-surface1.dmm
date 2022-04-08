@@ -559,9 +559,9 @@
 	RCon_tag = "Substation - Surface One";
 	charge = 2e+006;
 	input_attempt = 1;
-	input_level = 100000;
+	input_level = 180000;
 	inputting = 2;
-	output_level = 100000
+	output_level = 160000
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)

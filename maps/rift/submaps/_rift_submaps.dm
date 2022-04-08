@@ -1,6 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////////////
 /// Static Load
+/* Currently not in use, breaks shuttles and loading
 /datum/map_template/rift_lateload/rift_misc
 	name = "Rift - Misc"
 	desc = "Misc areas, like some transit areas, holodecks, merc area."
@@ -18,7 +19,7 @@
 	seed_submaps(list(Z_LEVEL_LAVALAND), 40, /area/lavaland/central/unexplored, /datum/map_template/submap/level_specific/lavaland)
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, Z_LEVEL_LAVALAND, 64, 64)         // Create the mining ore distribution map.
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_LAVALAND, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
-
+*/
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missions
 

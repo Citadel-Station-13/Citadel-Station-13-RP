@@ -7387,9 +7387,9 @@
 	RCon_tag = "Substation - Underground Two";
 	charge = 2e+006;
 	input_attempt = 1;
-	input_level = 100000;
+	input_level = 140000;
 	inputting = 2;
-	output_level = 100000
+	output_level = 120000
 	},
 /obj/structure/cable/green{
 	d2 = 8;
@@ -9192,6 +9192,17 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo/mining)
+"vS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
 "vT" = (
 /obj/effect/floor_decal/chapel{
 	dir = 4
@@ -9413,6 +9424,18 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"xx" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "xy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -10862,6 +10885,26 @@
 /obj/machinery/mineral/unloading_machine,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/belterdock/refinery)
+"Ke" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/black{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
 "Kn" = (
 /obj/structure/catwalk,
 /obj/structure/cable/yellow{
@@ -11473,6 +11516,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_gas)
 "Pl" = (
@@ -11531,6 +11579,10 @@
 	dir = 4;
 	name = "east bump";
 	pixel_x = 24
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_gas)
@@ -11726,6 +11778,18 @@
 /obj/effect/floor_decal/corner/lightgrey/border,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"Sc" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "Se" = (
 /turf/simulated/wall,
 /area/chapel/office)
@@ -12163,6 +12227,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/observation)
+"Wc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
 "Wk" = (
 /obj/structure/bed/chair/pew/left{
 	dir = 1
@@ -30563,7 +30638,7 @@ lY
 mc
 co
 vV
-SI
+Ke
 mg
 dV
 mg
@@ -30757,7 +30832,7 @@ PP
 KB
 HN
 tu
-AV
+Wc
 zG
 zG
 zG
@@ -30951,7 +31026,7 @@ ZL
 My
 sZ
 cF
-BQ
+vS
 cF
 cF
 cF
@@ -31339,7 +31414,7 @@ Kn
 Rp
 zy
 vs
-Va
+xx
 vs
 Gn
 LM
@@ -31533,7 +31608,7 @@ Jb
 PF
 zy
 YX
-tX
+Sc
 Cb
 Gn
 PM
