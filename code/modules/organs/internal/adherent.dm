@@ -5,7 +5,6 @@
 	desc = "The self-contained, self-supporting internal 'brain' of an Adherent unit."
 	icon = 'icons/mob/human_races/adherent/organs.dmi'
 	icon_state = "brain"
-	robotic = ORGAN_ROBOT
 	organ_tag = O_BRAIN
 	robotic = ORGAN_CRYSTAL
 

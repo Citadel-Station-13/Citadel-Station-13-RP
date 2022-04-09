@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(circuit)
 		/obj/item/electronic_assembly/drone/default,
 		/obj/item/electronic_assembly/drone/arms,
 		/obj/item/electronic_assembly/drone/secbot,
-		/obj/item/electronic_assembly/drone/medbot,
+		/obj/item/electronic_assembly/drone/medibot,
 		/obj/item/electronic_assembly/drone/genbot,
 		/obj/item/electronic_assembly/drone/android,
 		/obj/item/electronic_assembly/wallmount/tiny,

@@ -1060,7 +1060,7 @@
 /area/submap/Rockybase)
 "dB" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/bot/medbot{
+/mob/living/bot/medibot{
 	faction = "malf_drone"
 	},
 /turf/simulated/floor/tiled,

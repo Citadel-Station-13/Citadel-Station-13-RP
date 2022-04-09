@@ -10707,7 +10707,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalsur)
 "tJ" = (
@@ -10728,7 +10728,7 @@
 	icon_state = "bordercolor";
 	dir = 4
 	},
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalsur)
 "tM" = (
