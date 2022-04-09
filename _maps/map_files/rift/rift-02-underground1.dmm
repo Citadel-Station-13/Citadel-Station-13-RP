@@ -2201,11 +2201,11 @@
 /area/engineering/engineering_monitoring)
 "em" = (
 /obj/machinery/button/remote/blast_door{
-	id = 2;
+	id = "sm_monitor_blast";
 	name = "Engine monitoring room blast door control";
 	pixel_x = -6;
 	pixel_y = 8;
-	req_one_access = list(10)
+	req_one_access = null
 	},
 /obj/structure/table/steel_reinforced,
 /obj/item/radio/intercom{
@@ -2217,7 +2217,7 @@
 	name = "Stairwell blast door control";
 	pixel_x = -6;
 	pixel_y = -4;
-	req_one_access = list(10)
+	req_one_access = null
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -2231,11 +2231,11 @@
 	pixel_y = 8
 	},
 /obj/machinery/button/remote/blast_door{
-	id = 1;
+	id = "sm_core_blast";
 	name = "Supermatter core blast door control";
 	pixel_x = 6;
 	pixel_y = -4;
-	req_one_access = list(10)
+	req_one_access = null
 	},
 /obj/item/paper{
 	info = "To set up the Supermatter Agitation engine, first start by placing the radiation collectors into the SME chamber, then add phoron tanks to each radiation collector and turn them on. After that, ensure the SME chamber is clear, and adjust the air alarm to SCRUB nitrogen and oxygen. Once the scrubbers are set, add phoron into the SME chamber via the provided canisters and the supply line. Once phoron has been added to the loop, go upstairs again, lock down the SME chamber, open the emitter blast door, and fire it at the Supermatter Crystal, how many shots is not important and can even be left firing continuously with limited supervision. Finally, set the SMES and output power to the station. Congratulations, you've managed to set up the Supermatter Agitation engine at a basic level.";
@@ -2709,15 +2709,15 @@
 "fn" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = 2;
-	name = "Engineering Engine Monitoring Blast Door"
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/phoronreinforced,
 /obj/structure/window/phoronreinforced{
 	dir = 1
+	},
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "sm_monitor_blast";
+	name = "Engineering Engine Monitoring Blast Door"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)
@@ -3710,16 +3710,17 @@
 /area/hallway/secondary/engineering_hallway)
 "gQ" = (
 /obj/structure/grille,
-/obj/machinery/door/blast/regular{
-	dir = 2;
-	name = "Supermatter Core Blast Door"
-	},
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4
+	},
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "sm_core_blast";
+	name = "Supermatter Core Blast Door"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_core)
@@ -3928,16 +3929,17 @@
 /area/engineering/storage)
 "hj" = (
 /obj/structure/grille,
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	name = "Supermatter Core Blast Door"
-	},
 /obj/structure/catwalk,
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /obj/structure/window/phoronreinforced,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "sm_core_blast";
+	name = "Supermatter Core Blast Door"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_core)
 "hk" = (
@@ -5439,7 +5441,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/button/remote/blast_door{
-	id = "emitter_window";
+	id = "emitter_blast";
 	name = "Emitter Window blast door control";
 	pixel_x = 6;
 	pixel_y = -24
@@ -6549,6 +6551,7 @@
 /obj/structure/grille,
 /obj/machinery/door/blast/regular{
 	dir = 4;
+	id = "sm_core_blast";
 	name = "Supermatter Core Blast Door"
 	},
 /obj/structure/window/phoronreinforced/full,
@@ -6792,6 +6795,7 @@
 	},
 /obj/machinery/door/blast/regular{
 	dir = 2;
+	id = "sm_core_blast";
 	name = "Supermatter Core Blast Door"
 	},
 /turf/simulated/floor/plating,
@@ -7136,7 +7140,7 @@
 	},
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = "emitter_window";
+	id = "emitter_blast";
 	name = "Emitter Blast Door"
 	},
 /turf/simulated/floor/plating,
@@ -7537,7 +7541,7 @@
 "nJ" = (
 /obj/machinery/button/remote/blast_door{
 	icon_rotation = 180;
-	id = 3;
+	id = "atmos_monitor_blast";
 	name = "Atmospherics blast door control";
 	pixel_x = -5
 	},
@@ -7640,10 +7644,9 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	id = 3;
+	id = "atmos_monitor_blast";
 	name = "Atmospherics Engine Blast Door"
 	},
-/obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/phoronreinforced,
 /obj/structure/window/phoronreinforced{
@@ -11231,7 +11234,7 @@
 "uL" = (
 /obj/structure/bed/chair/office/dark,
 /obj/machinery/button/remote/blast_door{
-	id = "emitter_window";
+	id = "emitter_blast";
 	name = "Emitter Window blast door control";
 	pixel_x = 36;
 	pixel_y = -30
@@ -11521,6 +11524,7 @@
 	},
 /obj/machinery/door/blast/regular{
 	dir = 4;
+	id = "sm_core_blast";
 	name = "Supermatter Core Blast Door"
 	},
 /turf/simulated/floor/plating,
@@ -11767,6 +11771,21 @@
 	},
 /turf/simulated/open,
 /area/hallway/secondary/engineering_hallway)
+"Jd" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "sm_monitor_blast";
+	name = "Engineering Engine Monitoring Blast Door"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engineering_monitoring)
 "Jw" = (
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock,
@@ -11779,11 +11798,12 @@
 	name = "SME Access";
 	req_one_access = list()
 	},
+/obj/structure/catwalk,
 /obj/machinery/door/blast/regular{
 	dir = 4;
+	id = "sm_core_blast";
 	name = "Supermatter Core Blast Door"
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/engineering/engine_core)
 "JQ" = (
@@ -12397,6 +12417,7 @@
 	},
 /obj/machinery/door/blast/regular{
 	dir = 2;
+	id = "sm_core_blast";
 	name = "Supermatter Core Blast Door"
 	},
 /turf/simulated/floor/plating,
@@ -28072,7 +28093,7 @@ em
 ew
 fg
 fF
-fn
+Jd
 gD
 kd
 jh
