@@ -10001,6 +10001,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/mob/living/simple_mob/animal/passive/dog/pug{
+	desc = "It's Cogs! The Engineering department's pet pug..";
+	name = "Cogs"
+	},
+/obj/structure/dogbed,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/break_room)
 "ry" = (

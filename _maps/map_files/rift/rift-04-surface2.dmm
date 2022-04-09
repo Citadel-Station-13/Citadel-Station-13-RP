@@ -8908,6 +8908,12 @@
 /obj/item/storage/box/donut,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
+"qr" = (
+/obj/fiftyspawner/steel,
+/obj/structure/table/rack,
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/asmaint2)
 "qs" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/wall,
@@ -10200,6 +10206,10 @@
 "sJ" = (
 /turf/simulated/open,
 /area/security/hallway)
+"sK" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/maintenance/asmaint2)
 "sL" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/lower/medsec_maintenance)
@@ -12450,7 +12460,23 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
-/obj/structure/filingcabinet/chestdrawer,
+/obj/structure/table/reinforced,
+/obj/item/clothing/gloves/sterile/latex{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/clothing/gloves/sterile/latex{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/clothing/glasses/science{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/clothing/glasses/science{
+	pixel_x = -2;
+	pixel_y = -2
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "wX" = (
@@ -14798,7 +14824,8 @@
 	id = "mech_bay_ext";
 	name = "Mech Bay Exterior blast door-control";
 	pixel_x = 1;
-	pixel_y = 6
+	pixel_y = 6;
+	req_one_access = list(29,47)
 	},
 /turf/simulated/wall/r_wall,
 /area/assembly/chargebay)
@@ -15035,10 +15062,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "BQ" = (
-/obj/structure/closet/emcloset,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/random/maintenance/research,
 /obj/structure/railing,
+/obj/structure/closet,
+/obj/random/powercell,
+/obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "BR" = (
@@ -15380,6 +15409,11 @@
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"Cv" = (
+/obj/structure/closet/emcloset,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/asmaint2)
 "Cw" = (
 /obj/machinery/door/airlock{
 	id_tag = "researchtoilet1";
@@ -17596,21 +17630,6 @@
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
 /obj/item/storage/firstaid{
 	empty = 1;
 	name = "first aid kit (empty)"
@@ -17653,6 +17672,12 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/machinery/power/apc{
 	pixel_y = -24
+	},
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/item/stack/material/plasteel{
+	amount = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
@@ -17754,14 +17779,16 @@
 /obj/machinery/button/remote/blast_door{
 	id = "mech_bay_int";
 	name = "Mech Bay Interior blast door-control";
-	pixel_y = -6
+	pixel_y = -6;
+	req_one_access = list(29,47)
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
 	id = "mech_bay_ext";
 	name = "Mech Bay Exterior blast door-control";
 	pixel_x = 1;
-	pixel_y = 6
+	pixel_y = 6;
+	req_one_access = list(29,47)
 	},
 /turf/simulated/wall/r_wall,
 /area/assembly/chargebay)
@@ -20808,29 +20835,13 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "LP" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/gloves/sterile/latex{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/clothing/gloves/sterile/latex{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/clothing/glasses/science{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/clothing/glasses/science{
-	pixel_x = 2;
-	pixel_y = 2
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 5
 	},
+/obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "LQ" = (
@@ -47340,9 +47351,9 @@ Or
 KE
 lQ
 aC
-yd
-yd
-yd
+qr
+Cv
+sK
 Ml
 nh
 yR
