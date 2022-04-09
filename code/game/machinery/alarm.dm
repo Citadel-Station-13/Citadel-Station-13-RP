@@ -605,7 +605,7 @@
 
 /obj/machinery/alarm/CanUseTopic(var/mob/user, var/datum/topic_state/state, var/href_list = list())
 	if(aidisabled && isAI(user))
-		to_chat(user, "<span class='warning'>AI control for \the [src] interface has been disabled.</span>")
+		to_chat(user, SPAN_WARNING("AI control for \the [src] interface has been disabled."))
 		return UI_CLOSE
 
 	. = shorted ? UI_DISABLED : UI_INTERACTIVE
@@ -760,7 +760,6 @@
 			return 1
 
 /obj/machinery/alarm/attackby(obj/item/W as obj, mob/user as mob)
-	add_fingerprint(user)
 	if(alarm_deconstruction_screwdriver(user, W))
 		return
 	if(alarm_deconstruction_wirecutters(user, W))
@@ -773,9 +772,9 @@
 		else
 			if(allowed(usr) && !wires.is_cut(WIRE_IDSCAN))
 				locked = !locked
-				to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
+				to_chat(user, SPAN_NOTICE("You [ locked ? "lock" : "unlock"] the Air Alarm interface."))
 			else
-				to_chat(user, "<span class='warning'>Access denied.</span>")
+				to_chat(user, SPAN_WARNING("Access denied."))
 			return
 	return ..()
 
@@ -784,9 +783,9 @@
 	if(user.Adjacent(src))
 		if(allowed(usr) && !wires.is_cut(WIRE_IDSCAN))
 			locked = !locked
-			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
+			to_chat(user, SPAN_NOTICE("You [ locked ? "lock" : "unlock"] the Air Alarm interface."))
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			to_chat(user, SPAN_WARNING("Access denied."))
 
 /obj/machinery/alarm/power_change()
 	..()
@@ -881,7 +880,6 @@ FIRE ALARM
 	..()
 
 /obj/machinery/firealarm/attackby(obj/item/W as obj, mob/user as mob)
-	add_fingerprint(user)
 
 	if(alarm_deconstruction_screwdriver(user, W))
 		return
@@ -892,9 +890,9 @@ FIRE ALARM
 		if(istype(W, /obj/item/multitool))
 			detecting = !(detecting)
 			if(detecting)
-				user.visible_message("<span class='notice'>\The [user] has reconnected [src]'s detecting unit!</span>", "<span class='notice'>You have reconnected [src]'s detecting unit.</span>")
+				user.visible_message(SPAN_NOTICE("\The [user] has reconnected [src]'s detecting unit!"), SPAN_NOTICE("You have reconnected [src]'s detecting unit."))
 			else
-				user.visible_message("<span class='notice'>\The [user] has disconnected [src]'s detecting unit!</span>", "<span class='notice'>You have disconnected [src]'s detecting unit.</span>")
+				user.visible_message(SPAN_NOTICE("\The [user] has disconnected [src]'s detecting unit!"), SPAN_NOTICE("You have disconnected [src]'s detecting unit."))
 		return
 
 	alarm()

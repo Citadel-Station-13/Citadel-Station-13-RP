@@ -1263,11 +1263,11 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "cC" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "cD" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "cE" = (

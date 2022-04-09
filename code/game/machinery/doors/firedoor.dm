@@ -240,7 +240,7 @@
 	..()
 
 /obj/machinery/door/firedoor/attackby(obj/item/C as obj, mob/user as mob)
-	add_fingerprint(user)
+	add_fingerprint(user, 0, C)
 	if(istype(C, /obj/item/barrier_tape_roll))
 		return //Don't open the door if we're putting tape on it to tell people 'don't open the door'.
 	if(operating)

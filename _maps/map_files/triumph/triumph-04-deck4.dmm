@@ -4287,7 +4287,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "dma" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "dmC" = (
@@ -14687,7 +14687,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "keg" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "kfJ" = (

@@ -106,7 +106,10 @@
 		return
 
 /obj/machinery/recharger/attack_hand(mob/user as mob)
-	add_fingerprint(user)
+	if(istype(user,/mob/living/silicon))
+		return
+
+	..()
 
 	if(charging)
 		user.visible_message("[user] removes [charging] from [src].", "You remove [charging] from [src].")

@@ -30,6 +30,7 @@
 	var/recent_struggle = 0
 
 	var/clothing_flags = 0
+
 //Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
 	return
@@ -38,6 +39,15 @@
 /obj/item/clothing/clean_blood()
 	..()
 	gunshot_residue = null
+
+/obj/item/clothing/proc/get_fibers()
+	. = "material from \a [name]"
+	var/list/acc = list()
+	for(var/obj/item/clothing/accessory/A in accessories)
+		if(prob(40) && A.get_fibers())
+			acc += A.get_fibers()
+	if(acc.len)
+		. += " with traces of [english_list(acc)]"
 
 /obj/item/clothing/Initialize(mapload)
 	. = ..()
@@ -266,6 +276,9 @@
 	if(ring)
 		ring.emp_act(severity)
 	..()
+
+/obj/item/clothing/gloves/get_fibers()
+	return "material from a pair of [name]."
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
 /obj/item/clothing/gloves/proc/Touch(var/atom/A, var/proximity)

@@ -179,7 +179,6 @@
 			return 0 // don't update UIs attached to this object
 		go_out()
 
-	add_fingerprint(usr)
 	return 1 // update UIs attached to this object
 
 /obj/machinery/atmospherics/unary/cryo_cell/attackby(var/obj/item/G as obj, var/mob/user as mob)

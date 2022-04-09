@@ -4,6 +4,7 @@
 	icon_state = "beacon"
 	item_state = "signaler"
 	var/code = "electronic"
+	var/functioning = TRUE
 	origin_tech = list(TECH_BLUESPACE = 1)
 
 GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
@@ -15,6 +16,13 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 /obj/item/radio/beacon/send_hear()
 	return null
 
+/obj/item/radio/beacon/emp_act(severity)
+	if(functioning && severity >= 1)
+		fry()
+	..()
+/obj/item/radio/beacon/emag_act(remaining_charges, user, emag_source)
+	if(functioning)
+		fry()
 
 /obj/item/radio/beacon/verb/alter_signal(t as text)
 	set name = "Alter Beacon's Signal"
@@ -27,6 +35,61 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 		src.code = "beacon"
 	src.add_fingerprint(usr)
 	return
+
+/obj/item/radio/beacon/proc/fry()
+	functioning = FALSE
+	visible_message(SPAN_WARNING("\The [src] pops and cracks, and a thin wisp of dark smoke rises from the vents."), range = 2)
+	update_icon()
+	for(var/obj/machinery/computer/teleporter/T in SSmachines.machinery)
+		if(T.target == src)
+			T.lost_target()
+
+/obj/item/radio/beacon/update_icon()
+	if(!functioning)
+		icon_state = "[initial(icon_state)]_dead"
+	else
+		icon_state = "[initial(icon_state)]"
+
+/obj/item/radio/beacon/verb/alter_signal(newcode as text)
+	set name = "Alter Beacon's Signal"
+	set category = "Object"
+	set src in usr
+	var/mob/user = usr
+	if (!user.incapacitated())
+		code = newcode
+		add_fingerprint(user)
+/obj/item/radio/beacon/anchored
+	icon_state = "floor_beacon"
+	anchored = TRUE
+	w_class = ITEM_SIZE_HUGE
+	randpixel = 0
+
+	var/repair_fail_chance = 35
+
+/obj/item/radio/beacon/anchored/Initialize(mapload, ...)
+	. = ..()
+	var/turf/T = get_turf(src)
+	hide(hides_under_flooring() && !T.is_plating())
+
+/obj/item/radio/beacon/anchored/attackby(obj/item/I, mob/living/user)
+	..()
+	if(istype(I, /obj/item/stack/nanopaste))
+		var/obj/item/stack/nanopaste/S = I
+		if(b_stat)
+			if(S.use(1))
+				to_chat(user, SPAN_NOTICE("You pour some of \the [S] over \the [src]'s circuitry."))
+				if(prob(repair_fail_chance))
+					flick("[initial(icon_state)]", src)
+					visible_message(SPAN_WARNING("The [src]'s lights come back on briefly, then die out again."), range = 2)
+				else
+					visible_message(SPAN_NOTICE("\The [src]'s lights come back on."), range = 2)
+					functioning = TRUE
+					repair_fail_chance += pick(5, 10, 10, 15)
+					update_icon()
+			else
+				to_chat(user, SPAN_WARNING("There's not enough of \the [S] left to fix \the [src]."))
+		else
+			to_chat(user, SPAN_WARNING("You can't work on \the [src] until its been opened up."))
 
 
 /obj/item/radio/beacon/bacon //Probably a better way of doing this, I'm lazy.
@@ -44,8 +107,8 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 
 /obj/item/radio/beacon/syndicate/attack_self(mob/user as mob)
 	if(user)
-		to_chat(user, "<span class='notice'>Locked In</span>")
-		new /obj/machinery/power/singularity_beacon/syndicate( user.loc )
+		to_chat(user, SPAN_NOTICE("Locked In"))
+		new /obj/machinery/power/singularity_beacon/syndicate(user.loc)
 		playsound(src, 'sound/effects/pop.ogg', 100, 1, 1)
 		qdel(src)
 	return

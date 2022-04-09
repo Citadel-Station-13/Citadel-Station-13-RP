@@ -48,7 +48,6 @@
 		usr.unset_machine(src)
 		return
 	usr.set_machine(src)
-	src.add_fingerprint(usr)
 	if(href_list["setlayer"])
 		var/new_pipe_layer = text2num(href_list["setlayer"])
 		if(isnum(new_pipe_layer))
@@ -63,7 +62,6 @@
 			var/pi_type = initial(p_type.construction_type)
 			var/obj/item/pipe/P = new pi_type(src.loc, p_type, p_dir)
 			P.setPipingLayer(p_layer)
-			P.add_fingerprint(usr)
 			wait = 1
 			spawn(10)
 				wait = 0
@@ -76,13 +74,14 @@
 	return
 
 /obj/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	src.add_fingerprint(usr)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
 		to_chat(usr, "<span class='notice'>You put [W] back to [src].</span>")
 		user.drop_item()
+		add_fingerprint(usr)
 		qdel(W)
 		return
 	else if(W.is_wrench())
+		add_fingerprint(usr)
 		if (unwrenched==0)
 			playsound(src, W.usesound, 50, 1)
 			to_chat(user, "<span class='notice'>You begin to unfasten \the [src] from the floor...</span>")
@@ -166,7 +165,6 @@ Nah
 			var/psub = (href_list["sort"] ? text2num(href_list["sort"]) : 0)
 			var/obj/structure/disposalconstruct/C = new (src.loc, ptype, pdir, 0, psub)
 
-			C.add_fingerprint(usr)
 			C.update()
 			wait = 1
 			spawn(15)
