@@ -3136,9 +3136,6 @@
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside2)
 "fZ" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
@@ -4728,6 +4725,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "iV" = (
+/obj/effect/floor_decal/rust,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -5176,7 +5174,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/dormitory)
+/area/maintenance/security/upper)
 "jL" = (
 /obj/structure/table/reinforced,
 /obj/machinery/reagentgrinder,
@@ -6895,10 +6893,10 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "mN" = (
+/obj/structure/railing,
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "mO" = (
@@ -7007,9 +7005,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "mV" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -8308,6 +8303,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "pg" = (
@@ -8829,7 +8825,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "qf" = (
-/obj/structure/railing,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -8922,9 +8917,10 @@
 /turf/simulated/wall,
 /area/rnd/research)
 "qu" = (
+/obj/effect/floor_decal/rust,
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/maintenance/dormitory)
+/area/maintenance/security/upper)
 "qv" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -8999,6 +8995,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "qC" = (
@@ -10338,9 +10335,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/recovery_room)
 "tb" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -10448,6 +10442,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "tq" = (
@@ -11312,6 +11307,10 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/table/rack,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/security,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "uU" = (
@@ -12195,8 +12194,13 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "wx" = (
-/obj/structure/railing,
-/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/random/maintenance/security,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/structure/closet,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "wy" = (
@@ -12236,11 +12240,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/heads/hor)
 "wB" = (
-/obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "wC" = (
@@ -12418,9 +12422,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "wS" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -13774,8 +13775,11 @@
 /turf/simulated/floor/plating,
 /area/security/security_processing)
 "zy" = (
-/obj/structure/railing{
-	dir = 1
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -24834,11 +24838,9 @@
 /area/maintenance/dormitory)
 "SZ" = (
 /obj/structure/railing{
-	dir = 4
+	dir = 8
 	},
-/obj/structure/railing{
-	dir = 1
-	},
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Ta" = (
@@ -25289,7 +25291,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/structure/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "TR" = (
@@ -48134,7 +48136,7 @@ wg
 pd
 Ml
 NV
-TQ
+sP
 sP
 Ml
 Gu
@@ -48329,7 +48331,7 @@ pU
 Ta
 rj
 yb
-zy
+sP
 Ml
 Gu
 Yo
@@ -48717,7 +48719,7 @@ Rb
 Pb
 iu
 yA
-jK
+Lq
 Ml
 RD
 yd
@@ -48911,7 +48913,7 @@ KS
 Pb
 Rg
 za
-jK
+Lq
 Ml
 Ml
 ID
@@ -49103,15 +49105,15 @@ Pb
 Tz
 Pb
 Pb
-qu
+Lq
 za
-SZ
-ZS
-ZS
-ri
+Lq
+Lq
+Lq
+Lq
 wD
 wD
-ZS
+TQ
 ZS
 wD
 wD
@@ -49297,7 +49299,7 @@ sH
 NZ
 od
 Pb
-qu
+Lq
 za
 za
 za
@@ -49492,13 +49494,13 @@ bk
 Cp
 Pb
 Lq
-HW
-HW
-HW
-HW
-HW
-HW
-HW
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
 HW
 qB
 za
@@ -50412,8 +50414,8 @@ ac
 JZ
 kT
 hB
-hB
-hB
+iV
+iV
 mN
 yW
 qn
@@ -50804,7 +50806,7 @@ ac
 JZ
 sA
 My
-Am
+uH
 uH
 uH
 Cx
@@ -51238,10 +51240,10 @@ tw
 Hh
 LZ
 sP
-TQ
-ZS
-ZS
-ZS
+sP
+Lq
+Lq
+Lq
 fZ
 Ud
 zJ
@@ -51388,7 +51390,7 @@ ac
 ac
 ac
 JZ
-sA
+uH
 My
 MY
 MY
@@ -51431,7 +51433,7 @@ sv
 Lx
 ly
 LZ
-qu
+sP
 za
 za
 za
@@ -51582,25 +51584,25 @@ ac
 ac
 ac
 JZ
-wx
+kT
 My
 Am
-Cx
-Cx
+uH
+uH
 pf
 Dy
+jK
 uH
-uH
-kT
+qu
 Wc
 mV
 tb
-Cx
-Cx
-rU
-rU
-Cx
-pf
+uH
+uH
+kT
+kT
+uH
+sA
 fe
 tp
 SS
@@ -51625,13 +51627,13 @@ LZ
 KY
 LZ
 LZ
-qu
+Lq
 za
 wS
-HW
-HW
-HW
-HW
+Lq
+Lq
+Lq
+SZ
 zJ
 GB
 GB
@@ -51776,7 +51778,7 @@ ac
 ac
 ac
 JZ
-wx
+kT
 zU
 EP
 EP
@@ -51796,7 +51798,7 @@ EP
 EP
 EP
 jP
-tp
+wx
 SS
 LR
 cc
@@ -51819,7 +51821,7 @@ Tt
 Zc
 et
 LZ
-ZM
+sP
 za
 zJ
 zJ
@@ -51971,24 +51973,24 @@ ac
 ac
 JZ
 kT
-hB
-hB
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-iV
-hB
-iV
-iV
-iV
-iV
-iV
-iV
-mN
+kT
+kT
+uH
+uH
+uH
+uH
+uH
+uH
+uH
+uH
+kT
+uH
+uH
+uH
+uH
+uH
+uH
+sA
 My
 uT
 SS
@@ -52013,18 +52015,18 @@ vf
 Bk
 KX
 LZ
-qu
+Lq
 Xz
 zJ
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+aM
+aM
+aM
+aM
+aM
+aM
+aM
+aM
+aM
 zJ
 IL
 QN
@@ -52210,15 +52212,15 @@ LZ
 wB
 Xz
 zJ
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+aM
+aM
+aM
+aM
+aM
+aM
+aM
+aM
+aM
 zJ
 MM
 sE
@@ -52380,12 +52382,12 @@ ZM
 WX
 rj
 rj
+zy
+zy
+zy
+zy
 rj
-rj
-rj
-rj
-rj
-rj
+zy
 yA
 za
 za
@@ -52404,15 +52406,15 @@ za
 za
 za
 zJ
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+aM
+aM
+aM
+aM
+aM
+aM
+aM
+aM
+aM
 zJ
 Qf
 QY
@@ -52572,31 +52574,31 @@ ac
 zJ
 sP
 GB
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-HW
-GB
-HW
-HW
-GB
-GB
-HW
-HW
+Lq
+Lq
+Lq
+sP
+sP
+Lq
+sP
+sP
+sP
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
+Lq
+sP
+Lq
+Lq
+sP
+sP
+Lq
+Lq
 zJ
 aA
 aA

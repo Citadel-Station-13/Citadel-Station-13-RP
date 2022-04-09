@@ -8754,55 +8754,32 @@
 /area/rift/surfacebase/underground/under2)
 "sh" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"si" = (
-/obj/structure/cable/green,
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"sj" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"sk" = (
-/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
-"sl" = (
+"si" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
+"sj" = (
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
-"sm" = (
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
-	},
+"sk" = (
+/obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
-"sn" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"so" = (
+"sl" = (
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
@@ -8810,18 +8787,41 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
-"sp" = (
+"sm" = (
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
-"sq" = (
+"sn" = (
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
+"so" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
+"sp" = (
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled,
+/area/rift/surfacebase/underground/under2)
+"sq" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under2)
@@ -13042,9 +13042,9 @@ aa
 aa
 aa
 aa
-sg
-sk
-sg
+aa
+aa
+aa
 Xh
 "}
 (3,1,1) = {"
@@ -13235,10 +13235,10 @@ aa
 aa
 aa
 aa
-aa
+sg
 sh
 sg
-so
+aa
 Xh
 "}
 (4,1,1) = {"
@@ -13429,10 +13429,10 @@ aa
 aa
 aa
 aa
-aa
 si
+sg
 sl
-sp
+aa
 Xh
 "}
 (5,1,1) = {"
@@ -13623,10 +13623,10 @@ aa
 aa
 aa
 aa
-aa
+sk
 sj
 sm
-sq
+aa
 Xh
 "}
 (6,1,1) = {"
@@ -13817,10 +13817,10 @@ aa
 aa
 aa
 aa
-aa
-sg
+so
+sp
 sn
-sg
+aa
 Xh
 "}
 (7,1,1) = {"
@@ -14011,9 +14011,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+sg
+sq
+sg
 aa
 Xh
 "}

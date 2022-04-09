@@ -403,6 +403,9 @@
 /obj/structure/railing,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/space_heater,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "aM" = (
@@ -3195,7 +3198,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/meeting_room)
 "fF" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(19,43,67)
+	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
@@ -4514,7 +4519,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
 "hZ" = (
-/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/airlock/hatch{
+	name = "Engine Compartment";
+	req_one_access = list(19,43,67)
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "ia" = (
@@ -10973,15 +10981,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "vp" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Cargo Compartment";
-	req_one_access = list(67)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Medical Compartment";
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
@@ -18604,7 +18612,6 @@
 /turf/simulated/wall,
 /area/crew_quarters/freezer)
 "Lo" = (
-/obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -18615,6 +18622,10 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Cargo Compartment";
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
@@ -19134,16 +19145,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "Mv" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Medical Compartment";
-	req_one_access = list(67)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Cargo Compartment";
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
@@ -19159,12 +19170,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
 "My" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Cargo Compartment";
-	req_one_access = list(67)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/hatch{
+	name = "Medical Compartment";
+	req_one_access = list(19,43,67)
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "Mz" = (
@@ -20291,13 +20302,16 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "OO" = (
-/obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Cockpit";
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
@@ -21221,13 +21235,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "QN" = (
-/obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/general)
@@ -21823,10 +21839,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "RR" = (
-/obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
+	},
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/general)
@@ -22417,7 +22435,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "Tm" = (
-/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/airlock/hatch{
+	name = "Cockpit";
+	req_one_access = list(19,43,67)
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "Tn" = (
@@ -22666,14 +22687,22 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
 "TS" = (
-/obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
-	name = "exploration turret";
-	uid = "exploration"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Engine Compartment";
+	req_one_access = list(19,43,67)
+	},
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
 "TT" = (
 /obj/structure/catwalk,
@@ -38308,7 +38337,7 @@ us
 us
 us
 us
-TS
+VJ
 NF
 LA
 us
@@ -40443,7 +40472,7 @@ wY
 wY
 xn
 LA
-Lo
+TS
 pI
 RO
 zE
@@ -41610,7 +41639,7 @@ LA
 vT
 VN
 LA
-TS
+VJ
 mn
 jp
 cH
