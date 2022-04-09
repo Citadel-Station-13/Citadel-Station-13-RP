@@ -188,13 +188,13 @@
 
 /obj/machinery/teleport/hub/LateInitialize()
 	. = ..()
-	queue_icon_update()
+	update_icon()
 
 /obj/machinery/teleport/hub/on_update_icon()
 	cut_overlays()
 	if(com?.station?.engaged)
 		var/image/I = image(icon, src, "[initial(icon_state)]_active_overlay")
-		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		I.plane = PLANE_LIGHTING_ABOVE
 		I.layer = ABOVE_LIGHTING_LAYER
 		add_overlay(I)
 		set_light(0.4, 1.2, 4, 10)
@@ -202,7 +202,7 @@
 		set_light(0)
 		if (operable())
 			var/image/I = image(icon, src, "[initial(icon_state)]_idle_overlay")
-			I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+			I.plane = PLANE_LIGHTING_ABOVE
 			I.layer = ABOVE_LIGHTING_LAYER
 			add_overlay(I)
 
@@ -224,7 +224,7 @@
 		com.locked = null
 		if(com.station)
 			com.station.engaged = FALSE
-		queue_icon_update()
+		update_icon()
 	return
 
 /obj/machinery/teleport/hub/Destroy()
@@ -249,19 +249,19 @@
 		if(found_pad)
 			setDir(get_dir(src, found_pad))
 			break
-	queue_icon_update()
+	update_icon()
 
 /obj/machinery/teleport/station/on_update_icon()
 	. = ..()
 	cut_overlays()
 	if(engaged)
 		var/image/I = image(icon, src, "[initial(icon_state)]_active_overlay")
-		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		I.plane = PLANE_LIGHTING_ABOVE
 		I.layer = ABOVE_LIGHTING_LAYER
 		overlays += I
 	else if(operable())
 		var/image/I = image(icon, src, "[initial(icon_state)]_idle_overlay")
-		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		I.plane = PLANE_LIGHTING_ABOVE
 		I.layer = ABOVE_LIGHTING_LAYER
 		overlays += I
 	default_apply_parts()
@@ -284,9 +284,9 @@
 		return
 
 	engaged = TRUE
-	queue_icon_update()
+	update_icon()
 	if(com)
-		hub.queue_icon_update()
+		hub.update_icon()
 		use_power(5000)
 		update_use_power(USE_POWER_ACTIVE)
 		com.update_use_power(USE_POWER_ACTIVE)
@@ -300,9 +300,9 @@
 		return
 
 	engaged = FALSE
-	queue_icon_update()
+	update_icon()
 	if(com)
-		hub.queue_icon_update()
+		hub.update_icon()
 		com.update_use_power(USE_POWER_IDLE)
 		update_use_power(USE_POWER_IDLE)
 		for(var/mob/O in hearers(src, null))

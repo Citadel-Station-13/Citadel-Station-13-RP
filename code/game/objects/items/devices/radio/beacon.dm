@@ -24,23 +24,20 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	if(functioning)
 		fry()
 
-/obj/item/radio/beacon/verb/alter_signal(t as text)
+/obj/item/radio/beacon/verb/alter_signal(newcode as text)
 	set name = "Alter Beacon's Signal"
 	set category = "Object"
 	set src in usr
-
-	if ((usr.canmove && !( usr.restrained() )))
-		src.code = t
-	if (!( src.code ))
-		src.code = "beacon"
-	src.add_fingerprint(usr)
-	return
+	var/mob/user = usr
+	if(!user.incapacitated())
+		code = newcode
+		add_fingerprint(user)
 
 /obj/item/radio/beacon/proc/fry()
 	functioning = FALSE
-	visible_message(SPAN_WARNING("\The [src] pops and cracks, and a thin wisp of dark smoke rises from the vents."), range = 2)
+	visible_message(SPAN_WARNING("\The [src] pops and cracks, and a thin wisp of dark smoke rises from the vents."))
 	update_icon()
-	for(var/obj/machinery/computer/teleporter/T in SSmachines.machinery)
+	for(var/obj/machinery/computer/teleporter/T in machines)
 		if(T.target == src)
 			T.lost_target()
 
@@ -50,19 +47,11 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	else
 		icon_state = "[initial(icon_state)]"
 
-/obj/item/radio/beacon/verb/alter_signal(newcode as text)
-	set name = "Alter Beacon's Signal"
-	set category = "Object"
-	set src in usr
-	var/mob/user = usr
-	if (!user.incapacitated())
-		code = newcode
-		add_fingerprint(user)
 /obj/item/radio/beacon/anchored
 	icon_state = "floor_beacon"
 	anchored = TRUE
-	w_class = ITEM_SIZE_HUGE
-	randpixel = 0
+	w_class = ITEMSIZE_HUGE
+	//randpixel = 0
 
 	var/repair_fail_chance = 35
 
@@ -80,9 +69,9 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 				to_chat(user, SPAN_NOTICE("You pour some of \the [S] over \the [src]'s circuitry."))
 				if(prob(repair_fail_chance))
 					flick("[initial(icon_state)]", src)
-					visible_message(SPAN_WARNING("The [src]'s lights come back on briefly, then die out again."), range = 2)
+					visible_message(SPAN_WARNING("The [src]'s lights come back on briefly, then die out again."))
 				else
-					visible_message(SPAN_NOTICE("\The [src]'s lights come back on."), range = 2)
+					visible_message(SPAN_NOTICE("\The [src]'s lights come back on."))
 					functioning = TRUE
 					repair_fail_chance += pick(5, 10, 10, 15)
 					update_icon()

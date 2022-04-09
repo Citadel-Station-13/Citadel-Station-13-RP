@@ -136,13 +136,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 // Area flags, possibly more to come
 #define RAD_SHIELDED	1	// Shielded from radiation, clearly
 
-// OnTopic return values
-#define TOPIC_NOACTION 0
-#define TOPIC_HANDLED 1
-#define TOPIC_REFRESH 2
-#define TOPIC_UPDATE_PREVIEW 4
-#define TOPIC_REFRESH_UPDATE_PREVIEW (TOPIC_REFRESH|TOPIC_UPDATE_PREVIEW)
-
 // Convoluted setup so defines can be supplied by Bay12 main server compile script.
 // Should still work fine for people jamming the icons into their repo.
 #ifndef CUSTOM_ITEM_OBJ
