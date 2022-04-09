@@ -1,0 +1,10 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "All standard medkits now make a unique Medibot, each with their own default name!"
+  - rscadd: "New Floorbot sprites, variants included."
+  - bugfix: "Medibot crafting."
+  - soundadd: "Added a ton of Medibot sounds, mostly unused atm."
+  - imageadd: "My own new Medibots!"
+  - imagedel: "The old Medibot Sprites."
+  - refactor: "The code handling basic information for Medibots have been overhauled to support future variants."
