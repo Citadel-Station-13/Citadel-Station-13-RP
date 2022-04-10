@@ -1,3 +1,5 @@
+//Keeping this temporarily incase I forgot to add something.
+
 /obj/machinery/computer/teleporter
 	name = "teleporter control console"
 	desc = "Used to control a linked teleportation Hub and Station."
@@ -164,7 +166,7 @@
 
 /obj/machinery/teleport
 	name = "teleport"
-	icon = 'icons/obj/teleporter.dmi'
+	icon = 'icons/obj/machines/teleporter.dmi'
 	density = TRUE
 	anchored = TRUE
 	var/lockeddown = FALSE

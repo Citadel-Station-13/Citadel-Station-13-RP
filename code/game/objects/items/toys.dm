@@ -116,9 +116,13 @@
 /obj/item/toy/blink
 	name = "electronic blink toy game"
 	desc = "Blink.  Blink.  Blink. Ages 8 and up."
-	icon = 'icons/obj/radio.dmi'
+	icon = 'icons/obj/machines/teleporter.dmi'
 	icon_state = "beacon"
 	item_state = "signaler"
+
+/obj/item/toy/blink/Initialize(mapload)
+	. = ..()
+	add_overlay("[initial(icon_state)]_on")
 
 /*
  * Fake singularity

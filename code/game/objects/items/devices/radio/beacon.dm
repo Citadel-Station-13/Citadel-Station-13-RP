@@ -1,13 +1,29 @@
 /obj/item/radio/beacon
 	name = "tracking beacon"
 	desc = "A beacon used by a teleporter."
+	icon = 'icons/obj/machines/teleporter.dmi'
 	icon_state = "beacon"
-	item_state = "signaler"
+	item_state = "beacon"
+	base_icon_state = "beacon"
 	var/code = "electronic"
 	var/functioning = TRUE
 	origin_tech = list(TECH_BLUESPACE = 1)
 
 GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
+
+
+/obj/item/radio/beacon/Initialize(mapload)
+	. = ..()
+	update_icon()
+
+
+/obj/item/radio/beacon/update_icon()
+	cut_overlays()
+	if(!functioning)
+		add_overlay("[base_icon_state]_malfunction")
+	else
+		add_overlay("[base_icon_state]_on")
+
 
 /obj/item/radio/beacon/hear_talk()
 	return
@@ -16,13 +32,17 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 /obj/item/radio/beacon/send_hear()
 	return null
 
+
 /obj/item/radio/beacon/emp_act(severity)
 	if(functioning && severity >= 1)
 		fry()
 	..()
+
+
 /obj/item/radio/beacon/emag_act(remaining_charges, user, emag_source)
 	if(functioning)
 		fry()
+
 
 /obj/item/radio/beacon/verb/alter_signal(newcode as text)
 	set name = "Alter Beacon's Signal"
@@ -33,32 +53,30 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 		code = newcode
 		add_fingerprint(user)
 
+
 /obj/item/radio/beacon/proc/fry()
 	functioning = FALSE
-	visible_message(SPAN_WARNING("\The [src] pops and cracks, and a thin wisp of dark smoke rises from the vents."))
+	visible_message(SPAN_WARNING("\The [src] pops and cracks, and a thin wisp of dark smoke rises from the casing."))
 	update_icon()
 	for(var/obj/machinery/computer/teleporter/T in machines)
 		if(T.target == src)
 			T.lost_target()
 
-/obj/item/radio/beacon/update_icon()
-	if(!functioning)
-		icon_state = "[initial(icon_state)]_dead"
-	else
-		icon_state = "[initial(icon_state)]"
 
 /obj/item/radio/beacon/anchored
-	icon_state = "floor_beacon"
+	desc = "A beacon used by a teleporter. This one appears to be bolted to the ground."
 	anchored = TRUE
 	w_class = ITEMSIZE_HUGE
 	//randpixel = 0
 
 	var/repair_fail_chance = 35
 
-/obj/item/radio/beacon/anchored/Initialize(mapload, ...)
+
+/obj/item/radio/beacon/anchored/Initialize(mapload)
 	. = ..()
 	var/turf/T = get_turf(src)
 	hide(hides_under_flooring() && !T.is_plating())
+
 
 /obj/item/radio/beacon/anchored/attackby(obj/item/I, mob/living/user)
 	..()
@@ -68,7 +86,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 			if(S.use(1))
 				to_chat(user, SPAN_NOTICE("You pour some of \the [S] over \the [src]'s circuitry."))
 				if(prob(repair_fail_chance))
-					flick("[initial(icon_state)]", src)
+					flick("[initial(icon_state)]_flickon", src)
 					visible_message(SPAN_WARNING("The [src]'s lights come back on briefly, then die out again."))
 				else
 					visible_message(SPAN_NOTICE("\The [src]'s lights come back on."))
