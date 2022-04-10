@@ -4751,6 +4751,21 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"jG" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "jH" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
@@ -8403,17 +8418,22 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
-"qL" = (
+"qK" = (
 /obj/effect/floor_decal/borderfloorwhite{
-	dir = 4
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
-	dir = 4
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 4
+	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "qM" = (
@@ -21377,14 +21397,17 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/corner/black/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "PO" = (
@@ -22985,11 +23008,14 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
+/obj/effect/floor_decal/corner/black/border{
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
@@ -24747,17 +24773,17 @@
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "Wn" = (
@@ -25128,10 +25154,13 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/corner/black/border{
+	dir = 4
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "Xa" = (
@@ -40964,7 +40993,7 @@ Kv
 Of
 SX
 EM
-SX
+jG
 kw
 hL
 rY
@@ -41156,7 +41185,7 @@ EC
 Dn
 ET
 VV
-qL
+WZ
 SM
 WZ
 qZ
@@ -41738,9 +41767,9 @@ GC
 Dn
 Oo
 Of
-SX
+qK
 zQ
-SX
+qK
 xf
 hL
 vL

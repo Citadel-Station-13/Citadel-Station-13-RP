@@ -2835,6 +2835,10 @@
 	name = "Master - Powernet Sensor";
 	name_tag = "Master"
 	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_smes)
 "fx" = (
@@ -4114,6 +4118,10 @@
 	name = "Engine - Powernet Sensor";
 	name_tag = "Engine output"
 	},
+/obj/structure/cable/cyan{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_smes)
 "hz" = (
@@ -4581,14 +4589,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
 "iv" = (
-/obj/structure/closet/crate,
-/obj/item/circuitboard/smes,
-/obj/item/circuitboard/smes,
-/obj/item/smes_coil,
-/obj/item/smes_coil/super_capacity,
-/obj/item/smes_coil/super_capacity,
-/obj/item/smes_coil,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/power/crypto_miner,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "iw" = (
@@ -4600,6 +4602,8 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/item/smes_coil/super_capacity,
 /obj/item/smes_coil,
+/obj/item/smes_coil/super_io,
+/obj/item/smes_coil/super_io,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "ix" = (
@@ -10487,6 +10491,8 @@
 	name = "east bump";
 	pixel_x = 24
 	},
+/obj/item/smes_coil/super_io,
+/obj/item/smes_coil/super_io,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_smes)
 "sn" = (
