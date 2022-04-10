@@ -14410,6 +14410,7 @@
 /obj/structure/sign/atmos_n2{
 	pixel_x = 32
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "nitrogen=500;TEMP=80";
 	name = "Server Base"
@@ -15291,9 +15292,6 @@
 "Cz" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
@@ -20070,6 +20068,7 @@
 /obj/structure/sign/atmos_n2{
 	pixel_x = -32
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "nitrogen=500;TEMP=80";
 	name = "Server Base"
@@ -25534,10 +25533,6 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 8;
-	use_power = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "Xb" = (
@@ -26169,9 +26164,6 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
 "Yq" = (
-/obj/machinery/atmospherics/unary/freezer{
-	dir = 4
-	},
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -26179,6 +26171,12 @@
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
+	},
+/obj/machinery/atmospherics/unary/freezer{
+	dir = 4;
+	icon_state = "freezer_1";
+	set_temperature = 73;
+	use_power = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/server)
@@ -26395,9 +26393,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/atmospherics/trinary/atmos_filter/m_filter{
-	dir = 4;
-	filter_type = 1
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "nitrogen=500;TEMP=80";
