@@ -555,7 +555,7 @@
 		/obj/item/gun/energy/lasertag,
 		/obj/item/gun/energy/netgun,
 		/obj/item/gun/energy/phasegun/pistol,
-		/obj/item/gun/energy/pulse_rifle/M1911,
+		/obj/item/gun/energy/pulse_pistol,
 		/obj/item/gun/energy/retro,
 		/obj/item/gun/energy/service,
 		/obj/item/gun/energy/stunrevolver,

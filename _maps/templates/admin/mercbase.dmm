@@ -124,7 +124,7 @@
 	dir = 5
 	},
 /obj/structure/table/rack,
-/obj/item/gun/launcher/rocket,
+/obj/item/gun/projectile/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,

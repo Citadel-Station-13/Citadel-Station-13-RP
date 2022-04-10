@@ -410,3 +410,41 @@ obj/item/gun/energy/staff/focus
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	battery_lock = 1
 	one_handed_penalty = 0
+
+/obj/item/gun/energy/ermitter
+	name = "Ermitter rifle"
+	desc = "A industrial energy projector turned into a crude, portable weapon. The Tyrmalin answer to armored hardsuits used by pirates, what it lacks in precision, it makes up for in firepower."
+	icon_state = "ermitter_gun"
+	item_state = "pulse"
+	projectile_type = /obj/item/projectile/beam/emitter
+	fire_delay = 10
+	charge_cost = 900
+	cell_type = /obj/item/cell
+	slot_flags = SLOT_BELT|SLOT_BACK
+	w_class = ITEMSIZE_LARGE
+	force = 10
+	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
+	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
+	one_handed_penalty = 50
+
+/obj/item/gun/energy/ionrifle/pistol/tyrmalin
+	name = "botbuster pistol"
+	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing sythetic pirates or faulty machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
+	icon_state = "botbuster"
+	charge_cost = 1300
+	projectile_type = /obj/item/projectile/ion/pistol
+
+/obj/item/gun/energy/jezzail
+	name = "Microfission Jezzail"
+	desc = "Deceptively primitive in appearance, this finely tuned rifle uses an onboard reactor to stimulate the growth of an anomalous crystal. Fragments of this crystal are utilized as ammunition by the weapon."
+	icon_state = "warplockgun"
+	item_state = "huntrifle"
+	projectile_type = /obj/item/projectile/bullet/cyanideround/jezzail
+	fire_delay = 20
+	charge_cost = 600
+	cell_type = /obj/item/cell/device/weapon
+	battery_lock = 1
+	slot_flags = SLOT_BACK
+	w_class = ITEMSIZE_LARGE
+	force = 10
+	one_handed_penalty = 60

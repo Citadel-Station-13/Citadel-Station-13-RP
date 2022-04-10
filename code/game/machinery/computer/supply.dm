@@ -15,6 +15,13 @@
 	var/menu_tab = 0
 	var/list/expanded_packs = list()
 
+/obj/machinery/computer/supplycomp/attackby(I, user)
+	if(istype(I, /obj/item/engineering_voucher))
+		var/obj/item/engineering_voucher/voucher = I
+		voucher.redeem(user)
+	. = ..()
+	
+
 // Supply control console
 /obj/machinery/computer/supplycomp/control
 	name = "supply control console"

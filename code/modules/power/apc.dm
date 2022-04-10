@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(apcs)
+
 #define CRITICAL_APC_EMP_PROTECTION 10 // EMP effect duration is divided by this number if the APC has "critical" flag
 //update_state
 #define UPDATE_CELL_IN 1
@@ -34,10 +36,14 @@
 // controls power to devices in that area
 // may be opened to change power cell
 // three different channels (lighting/equipment/environ) - may each be set to on, off, or auto
-#define POWERCHAN_OFF      0
-#define POWERCHAN_OFF_AUTO 1
-#define POWERCHAN_ON       2
-#define POWERCHAN_ON_AUTO  3
+#define POWERCHAN_OFF      0 // Power channel is off and will stay that way dammit
+#define POWERCHAN_OFF_AUTO 1 // Power channel is off until power rises above a threshold
+#define POWERCHAN_ON       2 // Power channel is on until there is no power
+#define POWERCHAN_ON_AUTO  3 // Power channel is on until power drops below a threshold
+
+#define NIGHTSHIFT_AUTO 1
+#define NIGHTSHIFT_NEVER 2
+#define NIGHTSHIFT_ALWAYS 3
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
 
@@ -104,6 +110,7 @@
 	var/beenhit = 0 // used for counting how many times it has been hit, used for Aliens at the moment
 	var/longtermpower = 10
 	var/datum/wires/apc/wires = null
+	var/emergency_lights = FALSE
 	var/update_state = -1
 	var/update_overlay = -1
 	var/is_critical = 0
@@ -117,6 +124,10 @@
 	var/global/list/status_overlays_lighting
 	var/global/list/status_overlays_environ
 	var/alarms_hidden = FALSE //If power alarms from this APC are visible on consoles
+
+	var/nightshift_lights = FALSE
+	var/nightshift_setting = NIGHTSHIFT_AUTO
+	var/last_nightshift_switch = 0
 
 /obj/machinery/power/apc/updateDialog()
 	if (stat & (BROKEN|MAINT))
@@ -159,6 +170,7 @@
 /obj/machinery/power/apc/Initialize(mapload, ndir, building = FALSE)
 	. = ..()
 	wires = new(src)
+	GLOB.apcs += src
 
 	// offset 24 pixels in direction of dir
 	// this allows the APC to be embedded in a wall, yet still inside an area
@@ -179,6 +191,7 @@
 		src.update_icon()
 
 /obj/machinery/power/apc/Destroy()
+	GLOB.apcs -= src
 	src.update()
 	area.apc = null
 	area.power_light = 0
@@ -805,6 +818,9 @@
 		"gridCheck" = grid_check,
 		"coverLocked" = coverlocked,
 		"siliconUser" = issilicon(user) || (isobserver(user) && is_admin(user)), //I add observer here so admins can have more control, even if it makes 'siliconUser' seem inaccurate.
+		"emergencyLights" = !emergency_lights,
+		"nightshiftLights" = nightshift_lights,
+		"nightshiftSetting" = nightshift_setting,
 
 		"powerChannels" = list(
 			list(
@@ -873,6 +889,13 @@
 			coverlocked = !coverlocked
 		if("breaker")
 			toggle_breaker()
+		if("nightshift")
+			if(last_nightshift_switch > world.time - 10 SECONDS) // don't spam...
+				to_chat(usr, "<span class='warning'>[src]'s night lighting circuit breaker is still cycling!</span>")
+				return 0
+			last_nightshift_switch = world.time
+			nightshift_setting = params["nightshift"]
+			update_nightshift()
 		if("charge")
 			chargemode = !chargemode
 			if(!chargemode)
@@ -895,6 +918,13 @@
 			failure_timer = 0
 			update_icon()
 			update()
+		if("emergency_lighting")
+			emergency_lights = !emergency_lights
+			for(var/obj/machinery/light/L in area)
+				if(!initial(L.no_emergency)) //If there was an override set on creation, keep that override
+					L.no_emergency = emergency_lights
+					INVOKE_ASYNC(L, /obj/machinery/light/.proc/update, FALSE)
+				CHECK_TICK
 		if("overload")
 			if(locked_exception) // Reusing for simplicity!
 				overload_lighting()
@@ -923,7 +953,7 @@
 		return 0
 	if(IsAdminGhost(user)) //This is to allow nanoUI interaction by ghost admins.
 		return TRUE
-	if (user.stat)
+	if(user.stat)
 		return 0
 	if(inoperable())
 		return 0
@@ -936,7 +966,7 @@
 		to_chat(user,"<span class='warning'>You must stand to use [src]!</span>")
 		return 0
 	autoflag = 5
-	if (istype(user, /mob/living/silicon))
+	if(istype(user, /mob/living/silicon))
 		var/permit = 0 // Malfunction variable. If AI hacks APC it can control it even without AI control wire.
 		var/mob/living/silicon/ai/AI = user
 		var/mob/living/silicon/robot/robot = user
@@ -948,82 +978,16 @@
 
 		if(aidisabled && !permit)
 			if(!loud)
-				to_chat(user,"<span class='danger'>\The AI control for [src] has been disabled!</span>")
+				to_chat(user, "<span class='danger'>\The AI control for [src] has been disabled!</span>")
 			return 0
 	else
-		if (!in_range(src, user) || !istype(src.loc, /turf))
+		if(!in_range(src, user) || !istype(loc, /turf))
 			return 0
 	var/mob/living/carbon/human/H = user
-	if (istype(H) && prob(H.getBrainLoss()))
-		to_chat(user,"<span class='danger'>You momentarily forget how to use [src].</span>")
+	if(istype(H) && prob(H.getBrainLoss()))
+		to_chat(user, "<span class='danger'>You momentarily forget how to use [src].</span>")
 		return 0
 	return 1
-
-/obj/machinery/power/apc/Topic(href, href_list)
-	if(..())
-		return 1
-
-	if(!can_use(usr, 1))
-		return 1
-
-	if(locked && !issilicon(usr) )
-		if(isobserver(usr) )
-			var/mob/observer/dead/O = usr	//Added to allow admin nanoUI interactions.
-			if(!O.can_admin_interact() )	//NanoUI /should/ make this not needed, but better safe than sorry.
-				to_chat(usr,"Try as you might, your ghostly fingers can't press the buttons.")
-				return 1
-		else
-			to_chat(usr,"You must unlock the panel to use this!")
-			return 1
-
-	if (href_list["lock"])
-		coverlocked = !coverlocked
-
-	else if (href_list["reboot"])
-		failure_timer = 0
-		update_icon()
-		update()
-
-	else if (href_list["breaker"])
-		toggle_breaker()
-
-	else if (href_list["cmode"])
-		chargemode = !chargemode
-		if(!chargemode)
-			charging = 0
-			update_icon()
-
-	else if (href_list["eqp"])
-		var/val = text2num(href_list["eqp"])
-		equipment = setsubsystem(val)
-		update_icon()
-		update()
-
-	else if (href_list["lgt"])
-		var/val = text2num(href_list["lgt"])
-		lighting = setsubsystem(val)
-		update_icon()
-		update()
-
-	else if (href_list["env"])
-		var/val = text2num(href_list["env"])
-		environ = setsubsystem(val)
-		update_icon()
-		update()
-
-	else if (href_list["overload"])
-		if(istype(usr, /mob/living/silicon))
-			src.overload_lighting()
-
-	else if (href_list["toggleaccess"])
-		if(istype(usr, /mob/living/silicon))
-			if(emagged || (stat & (BROKEN|MAINT)))
-				to_chat(usr,"The APC does not respond to the command.")
-				return
-			locked = !locked
-			update_icon()
-
-	return 0
 
 /obj/machinery/power/apc/proc/toggle_breaker()
 	operating = !operating
@@ -1420,5 +1384,25 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 		area = NA
 		name = "[area.name] APC"
 	update()
+
+/obj/machinery/power/apc/proc/set_nightshift(on, var/automated)
+	set waitfor = FALSE
+	if(automated && istype(area, /area/shuttle))
+		return
+	nightshift_lights = on
+	update_nightshift()
+
+/obj/machinery/power/apc/proc/update_nightshift()
+	var/new_state = nightshift_lights
+
+	switch(nightshift_setting)
+		if(NIGHTSHIFT_NEVER)
+			new_state = FALSE
+		if(NIGHTSHIFT_ALWAYS)
+			new_state = TRUE
+
+	for(var/obj/machinery/light/L in area)
+		L.nightshift_mode(new_state)
+		CHECK_TICK
 
 #undef APC_UPDATE_ICON_COOLDOWN

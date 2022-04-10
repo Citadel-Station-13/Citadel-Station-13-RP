@@ -22,7 +22,7 @@
 	endWhen = 45
 
 /datum/event/pirate/announce()
-	command_announcement.Announce("Attention Landlubbers of the [station_name()], hand over your booty and your ship and no one gets hurt!", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
+	command_announcement.Announce("Attention, Crew of the [station_name()], hand over your valuables and your vessel and no one gets hurt!", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
 
 /datum/event/pirate/start()
 	sleep(1)

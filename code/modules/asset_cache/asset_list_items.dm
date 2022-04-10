@@ -71,7 +71,7 @@
 		"blank" = 'icons/pda_icons/pda_blank.png',
 		"boom" = 'icons/pda_icons/pda_boom.png',
 		"bucket" = 'icons/pda_icons/pda_bucket.png',
-		//"medbot" = 'icons/pda_icons/pda_medbot.png',
+		//"medibot" = 'icons/pda_icons/pda_medbot.png',
 		//"floorbot" = 'icons/pda_icons/pda_floorbot.png',
 		//"cleanbot" = 'icons/pda_icons/pda_cleanbot.png',
 		"crate" = 'icons/pda_icons/pda_crate.png',

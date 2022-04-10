@@ -176,7 +176,7 @@
 /area/survivalpod)
 "s" = (
 /obj/structure/table/survival_pod,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/structure/sink/kitchen{
 	icon_state = "sink_alt";
 	dir = 4;

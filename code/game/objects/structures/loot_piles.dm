@@ -708,7 +708,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/part/ripley_right_arm,
 		/obj/item/mecha_parts/part/ripley_left_leg,
 		/obj/item/mecha_parts/part/ripley_right_leg,
-		/obj/item/kit/paint/ripley/death
+		/obj/random/paintkit,
+		/obj/random/paintkit
 		)
 
 	uncommon_loot = list(
@@ -794,9 +795,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
-		/obj/item/kit/paint/gygax,
-		/obj/item/kit/paint/gygax/darkgygax,
-		/obj/item/kit/paint/gygax/recitence
+		/obj/random/paintkit/gygax,
+		/obj/random/paintkit/gygax
 		)
 
 	rare_loot = list(
@@ -847,9 +847,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
 		/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-		/obj/item/kit/paint/durand,
-		/obj/item/kit/paint/durand/seraph,
-		/obj/item/kit/paint/durand/phazon
+		/obj/random/paintkit/durand,
+		/obj/random/paintkit/durand
 		)
 
 	rare_loot = list(

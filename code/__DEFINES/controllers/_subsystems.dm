@@ -118,7 +118,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_PLANETS			-2
 #define INIT_ORDER_ASSETS			-4
 #define INIT_ORDER_HOLOMAPS			-5
-#define INIT_ORDER_OVERLAY			-6
+#define INIT_ORDER_NIGHTSHIFT		-6
+#define INIT_ORDER_OVERLAY			-7
 #define INIT_ORDER_EVENTS			-8
 #define INIT_ORDER_OVERMAPS			-9
 #define INIT_ORDER_TICKER			-10
@@ -133,6 +134,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
 #define FIRE_PRIORITY_SHUTTLES		5
+#define FIRE_PRIORITY_NIGHTSHIFT	6
 #define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
 #define FIRE_PRIORITY_AI			10
@@ -140,7 +142,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_VIS			10
 #define FIRE_PRIORITY_SERVER_MAINT	10
 #define FIRE_PRIORITY_GARBAGE		15
-#define FIRE_PRIORITY_CHARSETUP     25
+#define FIRE_PRIORITY_CHARSETUP		25
 #define FIRE_PRIORITY_SPACEDRIFT	25
 #define FIRE_PRIORITY_AIRFLOW		30
 #define FIRE_PRIORITY_AIR			35

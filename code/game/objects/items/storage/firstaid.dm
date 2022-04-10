@@ -117,10 +117,10 @@
 		/obj/item/healthanalyzer/advanced
 	)
 
-/obj/item/storage/firstaid/surgery
+/obj/item/storage/toolbox/surgery
 	name = "surgery kit"
 	desc = "Contains tools for surgery. Has precise foam fitting for safe transport and automatically sterilizes the content between uses."
-	icon = 'icons/obj/storage.dmi' // VOREStation edit
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "surgerykit"
 	item_state = "firstaid-surgery"
 	max_w_class = ITEMSIZE_NORMAL
@@ -145,14 +145,14 @@
 		/obj/item/surgical/bonegel,
 		/obj/item/surgical/FixOVein,
 		/obj/item/stack/medical/advanced/bruise_pack,
-		///obj/item/healthanalyzer/advanced, //VOREStation Removal,
+		///obj/item/healthanalyzer/advanced,
 		/obj/item/autopsy_scanner
 		)
 
 /obj/item/storage/firstaid/clotting
 	name = "clotting kit"
 	desc = "Contains chemicals to stop bleeding."
-	icon_state = "clottingkit" // VOREStation edit
+	icon_state = "clottingkit"
 	max_storage_space = ITEMSIZE_COST_SMALL * 7
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting = 8)
 

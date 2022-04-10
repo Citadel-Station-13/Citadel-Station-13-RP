@@ -113,6 +113,7 @@
 					dat += "<A href='?src=\ref[src];action=create;item=ez;cost=60'>E-Z-Nutrient</A> <FONT COLOR=blue>([round(60/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=ez5;cost=300'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=l4z;cost=120'>Left 4 Zed</A> <FONT COLOR=blue>([round(120/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=l4z5;cost=600'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=rh;cost=150'>Robust Harvest</A> <FONT COLOR=blue>([round(150/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=rh5;cost=750'>x5</A><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=enzyme;cost=100'>Universal Enzyme</A> <FONT COLOR=blue>([round(100/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=enzyme5;cost=500'>x5</A><BR>"
 					dat += "Leather:<BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=leather_sheet;cost=20'>Leather Sheet</A> <FONT COLOR=blue>([round(20/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=leather_sheet5;cost=100'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=wallet;cost=100'>Wallet</A> <FONT COLOR=blue>([round(100/build_eff)])</FONT><BR>"
@@ -232,6 +233,14 @@
 			new/obj/item/reagent_containers/glass/bottle/robustharvest(loc)
 			new/obj/item/reagent_containers/glass/bottle/robustharvest(loc)
 			new/obj/item/reagent_containers/glass/bottle/robustharvest(loc)
+		if("enzyme")
+			new/obj/item/reagent_containers/food/condiment/enzyme(loc)
+		if("enzyme5")
+			new/obj/item/reagent_containers/food/condiment/enzyme(loc)
+			new/obj/item/reagent_containers/food/condiment/enzyme(loc)
+			new/obj/item/reagent_containers/food/condiment/enzyme(loc)
+			new/obj/item/reagent_containers/food/condiment/enzyme(loc)
+			new/obj/item/reagent_containers/food/condiment/enzyme(loc)
 		if("leather_sheet")
 			new/obj/item/stack/material/leather(loc)
 		if("leather_sheet5")

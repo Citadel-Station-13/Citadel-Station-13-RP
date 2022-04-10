@@ -394,6 +394,7 @@
 	icon_state = "civilian_rig"
 	item_state_slots = list(slot_r_hand_str = "backpack", slot_l_hand_str = "backpack")
 
+/*
 /obj/item/storage/backpack/rig/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
@@ -423,6 +424,7 @@
 		icon_state = "[initial(icon_state)]"
 		item_state = "[initial(icon_state)]"
 		M.update_inv_back()
+*/
 
 //Purses
 /obj/item/storage/backpack/purse
@@ -642,3 +644,8 @@
 	name = "plain black dufflebag"
 	desc = "A large dufflebag for holding extra tactical supplies."
 	icon_state = "duffle_syndie"
+
+/obj/item/storage/backpack/rebel
+	name = "rebel backpack"
+	desc = "A sturdy canvas bag designed to withstand harsh environmental conditions."
+	icon_state = "backpack_rebel"
