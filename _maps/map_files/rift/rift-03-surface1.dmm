@@ -5011,6 +5011,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/random/maintenance/cargo,
+/obj/item/duct_tape_roll,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "js" = (
@@ -5412,13 +5413,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
-"ke" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing,
-/turf/simulated/floor/plating,
-/area/maintenance/cargo)
 "kf" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -5909,7 +5903,8 @@
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
 	},
-/obj/item/packageWrap,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/steel,
 /obj/item/hand_labeler,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
@@ -5925,6 +5920,7 @@
 /obj/machinery/requests_console/preset/cargo{
 	pixel_y = 32
 	},
+/obj/item/packageWrap,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "ld" = (
@@ -6760,7 +6756,7 @@
 /obj/item/stamp/denied{
 	pixel_x = -4
 	},
-/obj/item/stamp{
+/obj/item/stamp/cargo{
 	pixel_x = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -24340,12 +24336,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
-"UT" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/cargo)
 "UU" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -38872,7 +38862,7 @@ nh
 nh
 nh
 dW
-aV
+dW
 TN
 Aw
 Aw
@@ -39064,9 +39054,9 @@ Lt
 ez
 nh
 hy
-hy
-UT
-ke
+nh
+dW
+dW
 TN
 Aw
 kr

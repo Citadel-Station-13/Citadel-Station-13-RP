@@ -3372,7 +3372,7 @@
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 6
 	},
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
@@ -4660,7 +4660,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/range)
 "jw" = (
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/autopsy_scanner,
 /obj/structure/table/standard,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -4776,6 +4776,8 @@
 "jL" = (
 /obj/structure/table/reinforced,
 /obj/machinery/reagentgrinder,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
@@ -10087,7 +10089,7 @@
 /area/medical/chemistry)
 "uw" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -24726,7 +24728,7 @@
 /area/crew_quarters/sleep)
 "Wk" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -24937,7 +24939,7 @@
 /area/crew_quarters/sleep/Dorm_2)
 "WG" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -25986,7 +25988,7 @@
 /area/medical/resleeving)
 "Yz" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -26052,7 +26054,7 @@
 /area/rnd/research)
 "YD" = (
 /obj/structure/table/steel,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)

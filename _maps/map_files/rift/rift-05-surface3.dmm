@@ -8559,7 +8559,7 @@
 /obj/effect/floor_decal/industrial/outline,
 /obj/structure/table/standard,
 /obj/item/defib_kit/loaded,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "qh" = (
