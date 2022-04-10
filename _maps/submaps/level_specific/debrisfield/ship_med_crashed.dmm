@@ -129,7 +129,7 @@
 /turf/simulated/shuttle/floor/airless,
 /area/space/debrisfield/medshuttlecrash)
 "B" = (
-/mob/living/bot/medbot{
+/mob/living/bot/medibot{
 	name = "Dr. Crusty"
 	},
 /turf/simulated/shuttle/floor/airless,

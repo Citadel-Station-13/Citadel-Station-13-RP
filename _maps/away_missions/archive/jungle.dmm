@@ -533,7 +533,7 @@
 /turf/simulated/floor/outdoors/grass,
 /area/jungle)
 "cT" = (
-/obj/item/firstaid_arm_assembly,
+/obj/item/bot_assembly/medibot,
 /turf/simulated/floor/outdoors/grass,
 /area/jungle)
 "cU" = (

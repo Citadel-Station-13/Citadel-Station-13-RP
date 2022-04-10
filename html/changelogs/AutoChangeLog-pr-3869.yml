@@ -1,4 +1,0 @@
-author: "Shadowtail117"
-delete-after: True
-changes: 
-  - server: "Alert descriptions have been moved to game_options.txt."

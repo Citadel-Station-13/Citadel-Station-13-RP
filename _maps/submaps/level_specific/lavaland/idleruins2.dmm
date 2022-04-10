@@ -86,7 +86,7 @@
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "yQ" = (
-/mob/living/bot/medbot{
+/mob/living/bot/medibot{
 	name = "Dr. Crusty"
 	},
 /turf/simulated/shuttle/floor/lavaland,
