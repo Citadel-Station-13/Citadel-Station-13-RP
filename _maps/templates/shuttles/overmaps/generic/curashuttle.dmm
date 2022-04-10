@@ -139,7 +139,7 @@
 /turf/simulated/wall/rdshull,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "ar" = (
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/surgical/scalpel/manager,
 /obj/item/surgical/scalpel/ripper,
 /obj/item/surgical/circular_saw/manager,

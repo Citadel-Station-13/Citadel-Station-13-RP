@@ -785,7 +785,7 @@
 /area/submap/virgo2/Rockybase)
 "cL" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/bot/medbot,
+/mob/living/bot/medibot,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cM" = (

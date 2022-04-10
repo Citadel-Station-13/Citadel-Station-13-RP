@@ -1067,7 +1067,7 @@
 	},
 /area/wizard_station)
 "cw" = (
-/obj/item/firstaid_arm_assembly,
+/obj/item/bot_assembly/medibot,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5

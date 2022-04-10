@@ -6115,7 +6115,7 @@
 /area/centcom/simulated/medical)
 "XQ" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "XR" = (

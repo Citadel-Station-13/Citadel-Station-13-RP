@@ -130,7 +130,7 @@
 /area/submap/CrashedMedShuttle)
 "az" = (
 /obj/effect/decal/cleanable/blood/gibs/robot,
-/obj/item/firstaid_arm_assembly,
+/obj/item/bot_assembly/medibot,
 /mob/living/simple_mob/animal/giant_spider/frost,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
@@ -145,7 +145,7 @@
 /area/submap/CrashedMedShuttle)
 "aC" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/firstaid_arm_assembly,
+/obj/item/bot_assembly/medibot,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aD" = (
