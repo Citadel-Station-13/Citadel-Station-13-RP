@@ -117,7 +117,7 @@
 
 	var/mob/living/carbon/xenos = user
 
-	if(istype(xenos) && xenos.species == SPECIES_XENOHYBRID)//if a non xenomorph tries to buckle someone in, fail, because they cant secrete resin
+	if(istype(xenos) && xenos.species.name == SPECIES_XENOHYBRID)//if a non xenomorph tries to buckle someone in, fail, because they cant secrete resin
 		return
 
 	if(M == usr)
