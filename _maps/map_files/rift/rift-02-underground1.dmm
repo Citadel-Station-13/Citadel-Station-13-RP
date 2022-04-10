@@ -2387,6 +2387,9 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 8
 	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "eE" = (
@@ -5096,6 +5099,9 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/sofa/black/left{
+	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -10882,6 +10888,11 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "tn" = (
@@ -11274,6 +11285,15 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"wE" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/drone_fabrication)
 "wS" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -11324,6 +11344,15 @@
 	},
 /turf/simulated/open,
 /area/engineering/atmos/hallway)
+"zj" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "zr" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/transit/orange,
@@ -11342,6 +11371,14 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
+/area/maintenance/engineering)
+"Ag" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/engineering)
 "Aq" = (
 /obj/effect/zone_divider,
@@ -11455,6 +11492,9 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
+"CY" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/drone_fabrication)
 "Dr" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -11479,12 +11519,27 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"DU" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/engineering)
+"DV" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/drone_fabrication)
 "Eg" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"EG" = (
+/obj/machinery/door/airlock/multi_tile/metal/mait{
+	dir = 1;
+	name = "Drone Fabrication";
+	req_one_access = list(10)
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/drone_fabrication)
 "EI" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -11644,8 +11699,21 @@
 "GD" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"GF" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/drone_fabrication)
 "GT" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -11659,6 +11727,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"GV" = (
+/obj/machinery/computer/drone_control{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/drone_fabrication)
 "GZ" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
@@ -11697,6 +11771,12 @@
 "Hn" = (
 /turf/simulated/wall,
 /area/engineering/engine_balcony)
+"Ho" = (
+/obj/structure/table/rack,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/steel,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/drone_fabrication)
 "Hs" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/yellow{
@@ -11731,6 +11811,15 @@
 	},
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"HY" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "HZ" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -11765,12 +11854,21 @@
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock,
 /area/rift/surfacebase/underground/under1)
+"IZ" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/drone_fabrication)
 "Ja" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/open,
 /area/hallway/secondary/engineering_hallway)
+"Jb" = (
+/turf/simulated/wall,
+/area/engineering/drone_fabrication)
 "Jd" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -11871,6 +11969,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/security/prison)
+"KL" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/sign/department/drones{
+	pixel_x = 32
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "KY" = (
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor/plating,
@@ -11941,6 +12050,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"MQ" = (
+/obj/machinery/drone_fabricator{
+	fabricator_tag = "Engineering"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/drone_fabrication)
 "MY" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -11970,9 +12088,24 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/vacant/vacant_site)
+"NG" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/drone_fabrication)
 "NO" = (
 /turf/simulated/floor/tiled/steel,
 /area/vacant/vacant_site)
+"NP" = (
+/obj/machinery/light/small,
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/drone_fabrication)
 "NT" = (
 /obj/structure/railing{
 	dir = 8
@@ -11980,6 +12113,13 @@
 /obj/structure/railing,
 /turf/simulated/open,
 /area/engineering/engine_core)
+"NV" = (
+/obj/machinery/drone_fabricator{
+	fabricator_tag = "Engineering"
+	},
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/drone_fabrication)
 "NZ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -12094,6 +12234,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site)
+"Rl" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/drone_fabrication)
 "Ru" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 8
@@ -12125,6 +12272,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"RC" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/drone_fabrication)
 "Sa" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -12140,6 +12296,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"Sc" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/machinery/camera/network/civilian{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "Su" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12223,6 +12386,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"TH" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "TI" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -12314,6 +12486,18 @@
 	can_open = 1
 	},
 /area/maintenance/engineering/upper)
+"UZ" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/drone_fabrication)
 "Vf" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/camera/network/security{
@@ -12505,6 +12689,15 @@
 	can_open = 1
 	},
 /area/maintenance/engineering)
+"XB" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "XK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12603,6 +12796,10 @@
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Zs" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/drone_fabrication)
 "Zu" = (
 /turf/simulated/mineral/icerock,
 /area/security/prison)
@@ -24975,7 +25172,7 @@ dm
 aG
 cQ
 dP
-rT
+Sc
 ju
 hk
 cN
@@ -31183,7 +31380,7 @@ gi
 aG
 dM
 eg
-rT
+Sc
 am
 hn
 hs
@@ -31208,10 +31405,10 @@ my
 my
 my
 my
-my
-my
-my
-my
+XB
+to
+to
+zj
 zO
 jo
 jo
@@ -31219,7 +31416,7 @@ jo
 jo
 jo
 FT
-my
+XB
 tm
 to
 to
@@ -31401,19 +31598,19 @@ Ql
 sR
 Iz
 Iz
-Iz
-sR
-sR
-sR
-my
+KL
+Ag
+DU
+sN
+HY
 GD
 GD
 GD
 GD
-my
-my
-my
-my
+to
+to
+to
+TH
 tn
 tp
 tq
@@ -31593,14 +31790,14 @@ sa
 sa
 We
 sa
-sa
-sa
-sa
-sa
-sa
-sa
-sa
-sa
+Jb
+Jb
+Jb
+NG
+EG
+Jb
+Jb
+Jb
 sa
 sa
 sa
@@ -31787,14 +31984,14 @@ sa
 Yi
 uX
 Eg
-sa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Jb
+GV
+NV
+NG
+CY
+MQ
+GV
+Jb
 aa
 aa
 aa
@@ -31981,14 +32178,14 @@ sa
 Wn
 ud
 FA
-sa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Jb
+wE
+DV
+NG
+CY
+IZ
+NP
+Jb
 aa
 aa
 aa
@@ -32175,14 +32372,14 @@ sa
 sa
 sa
 sa
-sa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Jb
+UZ
+RC
+GF
+CY
+IZ
+Rl
+Jb
 aa
 aa
 aa
@@ -32369,14 +32566,14 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Jb
+Jb
+Jb
+Ho
+Zs
+Jb
+Jb
+Jb
 aa
 aa
 aa
@@ -32565,10 +32762,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+Jb
+Jb
+Jb
+Jb
 aa
 aa
 aa
