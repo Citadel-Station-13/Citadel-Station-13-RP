@@ -1848,7 +1848,7 @@
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals)
 "dr" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -2957,7 +2957,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "fk" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -3524,6 +3524,18 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
+"gl" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Public External Airlock"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "gm" = (
 /turf/simulated/wall/r_wall,
 /area/hallway/secondary/docking_hallway)
@@ -3783,14 +3795,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "gI" = (
-/obj/structure/catwalk,
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "civ_airlock";
-	pixel_x = -6;
-	pixel_y = -24
-	},
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside3)
+/turf/simulated/wall/r_wall,
+/area/rift/surfaceeva/airlock/arrivals)
 "gK" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4223,14 +4229,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "hz" = (
-/obj/structure/catwalk,
 /obj/machinery/access_button/airlock_interior{
-	master_tag = "civ_airlock_two";
-	pixel_x = 6;
-	pixel_y = -24
+	master_tag = "civ_airlock";
+	pixel_x = -6;
+	pixel_y = 8
 	},
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside3)
+/turf/simulated/wall/r_wall,
+/area/rift/surfaceeva/airlock/arrivals)
 "hA" = (
 /turf/simulated/floor/carpet/blue,
 /area/bridge/meeting_room)
@@ -6385,7 +6390,7 @@
 	},
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals)
 "lA" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -8717,6 +8722,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"qB" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Public External Airlock"
+	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "qC" = (
 /obj/structure/curtain/open/privacy,
 /turf/simulated/floor/tiled/white,
@@ -8957,6 +8969,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
+"rg" = (
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "civ_airlock_two";
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/turf/simulated/wall/r_wall,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "rh" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -9556,14 +9576,14 @@
 	},
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "sq" = (
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
 	},
 /obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals)
 "sr" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -9695,7 +9715,7 @@
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals)
 "sH" = (
 /obj/effect/spider/cocoon,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
@@ -11390,7 +11410,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "wf" = (
 /obj/structure/sink{
 	dir = 4;
@@ -14309,7 +14329,7 @@
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "BY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -15071,6 +15091,13 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
+"DI" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Public External Airlock"
+	},
+/obj/effect/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "DJ" = (
 /obj/structure/filingcabinet/security{
 	name = "Security Records"
@@ -16532,7 +16559,7 @@
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "GO" = (
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
@@ -18009,11 +18036,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "civ_airlock";
-	pixel_x = -6;
-	pixel_y = 24
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "JM" = (
@@ -18572,6 +18594,19 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
+"KO" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Public External Airlock"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/effect/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "KP" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -18910,7 +18945,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals)
 "LI" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/material/ashtray/glass,
@@ -19814,6 +19849,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"NB" = (
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "civ_airlock";
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/turf/simulated/wall/r_wall,
+/area/rift/surfaceeva/airlock/arrivals)
 "NC" = (
 /obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -20900,6 +20943,14 @@
 "PL" = (
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
+"PN" = (
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "civ_airlock_two";
+	pixel_x = 6;
+	pixel_y = -8
+	},
+/turf/simulated/wall/r_wall,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "PO" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -21664,7 +21715,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals)
 "Rn" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -22107,7 +22158,7 @@
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals)
 "Sd" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1;
@@ -23308,11 +23359,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "civ_airlock_two";
-	pixel_x = 6;
-	pixel_y = 24
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "UL" = (
@@ -23342,6 +23388,9 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
+"UQ" = (
+/turf/simulated/wall/r_wall,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "UR" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/locker/laundry_arrival)
@@ -24017,7 +24066,7 @@
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals)
 "Wp" = (
 /turf/simulated/floor/tiled/steel,
 /area/bridge)
@@ -25503,7 +25552,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
+/area/rift/surfaceeva/airlock/arrivals)
 "Zt" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -38672,10 +38721,10 @@ mn
 jp
 GF
 IA
-gm
-gm
-gm
-gm
+gI
+gI
+gI
+gI
 wX
 GE
 OG
@@ -39253,11 +39302,11 @@ AS
 jp
 Nk
 IA
-gI
-gm
+IA
+hz
 Sc
 Sc
-gm
+NB
 JL
 FQ
 wm
@@ -39448,10 +39497,10 @@ cH
 Nk
 Lj
 ff
-gm
-gm
-gm
-gm
+gI
+gI
+gI
+gI
 Pt
 KU
 Bk
@@ -42940,10 +42989,10 @@ cH
 Nk
 Yn
 WW
-gm
-gm
-gm
-gm
+UQ
+UQ
+UQ
+UQ
 Pt
 Ja
 Bk
@@ -43133,11 +43182,11 @@ lk
 jp
 cH
 IA
-hz
-gm
+IA
+rg
 BX
 BX
-gm
+PN
 UK
 FQ
 wm
@@ -43328,10 +43377,10 @@ mj
 jp
 Zz
 hN
-dq
+gl
 we
 fj
-Zs
+KO
 CP
 Vq
 db
@@ -43522,10 +43571,10 @@ mn
 jp
 GF
 IA
-sG
+qB
 GN
 sp
-sq
+DI
 ve
 xJ
 RS
@@ -43716,10 +43765,10 @@ mn
 jp
 GF
 IA
-gm
-gm
-gm
-gm
+UQ
+UQ
+UQ
+UQ
 cf
 GH
 QL

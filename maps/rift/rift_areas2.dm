@@ -55,6 +55,18 @@
 /area/rift/surfaceeva
 	name = "\improper Primary Surface EVA"
 
+/area/rift/surfaceeva/airlock/main
+	name = "\improper Primary Surface Airlock"
+
+/area/rift/surfaceeva/airlock/main/secondary
+	name = "\improper Primary Surface Airlock"
+
+/area/rift/surfaceeva/airlock/arrivals
+	name = "\improper Arrivals Airlock One"
+
+/area/rift/surfaceeva/airlock/arrivals/secondary
+	name = "\improper Arrivals Airlock Two"
+
 /area/rift/surfaceeva/aa/surface_north
 	name = "\improper Surface One - North Anti-Air Battery"
 
