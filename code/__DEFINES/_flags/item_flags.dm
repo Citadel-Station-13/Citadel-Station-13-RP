@@ -1,5 +1,5 @@
 // Flags for the item_flags var on /obj/item
-/*
+
 #define BEING_REMOVED						(1<<0)
 ///is this item equipped into an inventory slot or hand of a mob? used for tooltips
 #define IN_INVENTORY						(1<<1)
@@ -28,7 +28,7 @@
 #define ITEM_CAN_BLOCK						(1<<13)
 
 // Flags for the clothing_flags var on /obj/item/clothing
-
+/*
 #define LAVAPROTECT				(1<<0)
 #define STOPSPRESSUREDAMAGE		(1<<1)	// SUIT and HEAD items which stop pressure damage. To stop you taking all pressure damage you must have both a suit and head item with this flag.
 */
