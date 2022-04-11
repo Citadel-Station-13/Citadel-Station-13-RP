@@ -41,6 +41,7 @@
 		/obj/item/radio/headset/heads/hop,
 		/obj/item/radio/headset/heads/hop/alt,
 		/obj/item/storage/box/ids = 2,
+		/obj/item/gun/energy/gun,
 		/obj/item/gps/command,
 		/obj/item/gun/energy/gun/martin, //VOREStation Add,
 		/obj/item/storage/box/commandkeys, //VOREStation Add,

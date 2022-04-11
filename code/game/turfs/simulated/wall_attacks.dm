@@ -104,33 +104,8 @@
 		else
 			fail_smash(user)
 			return 1
-	if(iscarbon(user))
-		var/mob/living/carbon/M = user
-		switch(M.a_intent)
-			if(INTENT_HELP)
-				return
-			if(INTENT_DISARM, INTENT_GRAB)
-				try_touch(M, rotting)
-			if(INTENT_HARM)
-				//since only humans have organs_by_name but carbons still have intents this check only applies to humans
-				//it's hacky but it works
-				if(ishuman(user))
-					var/mob/living/carbon/human/H = user
-					var/obj/item/organ/external/E = H.organs_by_name[M.hand ? BP_L_HAND : BP_R_HAND]
-					if (!(E.is_usable()))
-						to_chat(user, SPAN_WARNING("You can't use that hand."))
-						return
-				if(rotting && !reinf_material)
-					M.visible_message(SPAN_DANGER("[M.name] punches \the [src] and it crumbles!"), SPAN_DANGER("You punch \the [src] and it crumbles!"))
-					dismantle_wall()
-					playsound(src, get_sfx("punch"), 20)
-				else
-					M.visible_message(SPAN_DANGER("[M.name] punches \the [src]!"), SPAN_DANGER("You punch \the [src]!"))
-					M.apply_damage(3, BRUTE, M.hand ? BP_L_HAND : BP_R_HAND)
-					playsound(src, get_sfx("punch"), 20)
 
-	else
-		try_touch(user, rotting)
+	try_touch(user, rotting)
 
 /turf/simulated/wall/attack_generic(var/mob/user, var/damage, var/attack_message)
 

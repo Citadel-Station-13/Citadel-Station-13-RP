@@ -8,35 +8,6 @@
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 	else
 		to_chat(src, "<span class='notice'>The Message of the Day has not been set.</span>")
-	to_chat(src, getAlertDesc())
-
-/client/proc/getAlertDesc()
-	var/color
-	var/desc
-	//borrow the same colors from the fire alarms
-	switch(get_security_level())
-		if("green")	 
-			color = "#00ff00"
-			desc = "" //no special description if nothing special is going on
-		if("yellow") 
-			color = "#ffff00"
-			desc = CONFIG_GET(string/alert_desc_yellow_upto)
-		if("violet") 
-			color = "#9933ff"
-			desc = CONFIG_GET(string/alert_desc_violet_upto)
-		if("orange") 
-			color = "#ff9900"
-			desc = CONFIG_GET(string/alert_desc_orange_upto)
-		if("blue")	 
-			color = "#1024A9"
-			desc = CONFIG_GET(string/alert_desc_blue_upto)
-		if("red")	 
-			color = "#ff0000"
-			desc = CONFIG_GET(string/alert_desc_red_upto)
-		if("delta")	 
-			color = "#FF6633"
-			desc = CONFIG_GET(string/alert_desc_delta)
-	. = SPAN_NOTICE("<br>The alert level on \the [station_name()] is currently: <font color=[color]>Code [capitalize(get_security_level())]</font>. [desc]")
 
 /client/proc/ooc_wrapper()
 	var/message = input("","ooc (text)") as text|null
