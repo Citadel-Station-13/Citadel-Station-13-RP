@@ -108,6 +108,15 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
+"au" = (
+/obj/machinery/access_button/airlock_exterior{
+	dir = 4;
+	master_tag = "central_airlock";
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/turf/simulated/wall/r_wall,
+/area/rift/surfaceeva/airlock/main)
 "av" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -14530,6 +14539,15 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
+"AL" = (
+/obj/machinery/access_button/airlock_exterior{
+	dir = 4;
+	master_tag = "central_airlock_two";
+	pixel_x = 8;
+	pixel_y = -8
+	},
+/turf/simulated/wall,
+/area/rift/surfaceeva/airlock/main/secondary)
 "AM" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/gloves,
@@ -20530,6 +20548,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfacebase/outside/outside1)
+"MQ" = (
+/obj/machinery/access_button/airlock_exterior{
+	dir = 4;
+	master_tag = "central_airlock";
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/turf/simulated/wall,
+/area/rift/surfaceeva/airlock/main)
 "MR" = (
 /obj/machinery/photocopier/faxmachine{
 	department = "CMO's Office"
@@ -21034,6 +21061,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/hallway/secondary/civilian_hallway_mid)
+"NM" = (
+/obj/machinery/access_button/airlock_exterior{
+	dir = 4;
+	master_tag = "central_airlock_two";
+	pixel_x = -8;
+	pixel_y = -8
+	},
+/turf/simulated/wall/r_wall,
+/area/rift/surfaceeva/airlock/main/secondary)
 "NO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -37574,9 +37610,9 @@ Cw
 Hs
 Js
 Js
+au
 Hs
-Hs
-DH
+NM
 fF
 fF
 DH
@@ -38350,9 +38386,9 @@ yP
 yP
 su
 Ey
-yP
+MQ
 Hs
-ap
+AL
 LD
 Cl
 ap
