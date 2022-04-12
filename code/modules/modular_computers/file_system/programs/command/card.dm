@@ -176,6 +176,8 @@
 					var/temp_name = sanitizeName(input("Enter name.", "Name", id_card.registered_name))
 					if(temp_name)
 						id_card.registered_name = temp_name
+						id_card.formal_name_suffix = initial(id_card.formal_name_suffix)
+						id_card.formal_name_prefix = initial(id_card.formal_name_prefix)
 					else
 						computer.visible_message("<span class='notice'>[computer] buzzes rudely.</span>")
 				else if(href_list["account"])

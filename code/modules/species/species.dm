@@ -238,7 +238,10 @@
 
 	var/pass_flags = 0
 
-	var/list/descriptors = list()
+	var/list/descriptors = list(
+		/datum/mob_descriptor/height = 0,
+		/datum/mob_descriptor/build = 0
+		)
 
 	//This is used in character setup preview generation (prefences_setup.dm) and human mob
 	//rendering (update_icons.dm)

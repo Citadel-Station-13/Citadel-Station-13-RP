@@ -134,11 +134,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	descriptors = list(
-		/datum/mob_descriptor/height = -3,
-		/datum/mob_descriptor/build = -3
-		)
-
 	var/static/list/flight_bodyparts = list(
 		BP_L_ARM,
 		BP_R_ARM,
@@ -157,6 +152,10 @@
 	//name_language = LANGUAGE_SCHECHI
 	//species_language = LANGUAGE_SCHECHI
 
+	descriptors = list(
+		/datum/mob_descriptor/height = -3,
+		/datum/mob_descriptor/build = -3
+		)
 
 	available_lore_info = list(
 		TAG_CULTURE = list(

@@ -12,6 +12,7 @@
 	the secrets of their empire to their allies."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)
 	health_hud_intensity = 2
+	genders = list(PLURAL)
 
 	water_movement = -3
 
@@ -76,6 +77,11 @@
 	//species_language = LANGUAGE_SKRELLIAN
 	//assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
+	descriptors = list(
+		/datum/mob_descriptor/height = 1.2,
+		/datum/mob_descriptor/build = 0,
+		/datum/mob_descriptor/headtail_length = 0
+	)
 
 	available_lore_info = list(
 		TAG_CULTURE = list(

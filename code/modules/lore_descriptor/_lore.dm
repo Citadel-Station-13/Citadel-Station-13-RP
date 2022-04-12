@@ -104,11 +104,12 @@
 	if(LAZYLEN(optional_languages)) . |= optional_languages
 
 
-/decl/cultural_info/proc/format_formal_name(var/character_name)
-	return character_name
-
-/decl/cultural_info/proc/get_qualifications()
+/datum/lore_info/proc/get_formal_name_suffix()
 	return
+
+/datum/lore_info/proc/get_formal_name_prefix()
+	return
+
 
 
 #undef COLLAPSED_LORE_BLURB_LEN

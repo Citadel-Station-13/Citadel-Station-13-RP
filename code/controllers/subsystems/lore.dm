@@ -27,5 +27,5 @@ SUBSYSTEM_DEF(lore)
 			var/list/tag_list = tagged_info[lore.category]
 			tag_list[lore.name] = lore
 
-/datum/controller/subsystem/lore/proc/get_culture(var/culture_ident)
-	return lore_info_by_name[culture_ident] ? lore_info_by_name[culture_ident] : lore_info_by_path[culture_ident]
+/datum/controller/subsystem/lore/proc/get_lore(var/lore_ident)
+	return lore_info_by_name[lore_ident] ? lore_info_by_name[lore_ident] : lore_info_by_path[lore_ident]

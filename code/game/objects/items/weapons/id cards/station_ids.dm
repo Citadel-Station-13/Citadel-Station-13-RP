@@ -33,6 +33,10 @@
 	var/mining_points = 0	// For redeeming at mining equipment vendors
 	var/survey_points = 0	// For redeeming at explorer equipment vendors.
 
+	var/formal_name_prefix
+	var/formal_name_suffix
+
+
 /obj/item/card/id/examine(mob/user)
 	. = ..()
 	show(user)
@@ -51,7 +55,14 @@
 
 /obj/item/card/id/update_name()
 	. = ..()
-	name = "[src.registered_name]'s ID Card ([src.assignment])"
+	name = "[get_display_name()]'s ID Card"
+
+/obj/item/card/id/proc/get_display_name()
+	. = registered_name
+	if(formal_name_prefix || formal_name_suffix)
+		. = "[formal_name_prefix][.][formal_name_suffix]"
+	if(assignment)
+		. += " ([assignment])"
 
 /obj/item/card/id/proc/set_id_photo(var/mob/M)
 	var/icon/charicon = cached_character_icon(M)
@@ -60,8 +71,18 @@
 
 /mob/proc/set_id_info(var/obj/item/card/id/id_card)
 	id_card.age = 0
-	id_card.registered_name		= real_name
-	id_card.sex 				= capitalize(gender)
+
+	id_card.formal_name_prefix = initial(id_card.formal_name_prefix)
+	id_card.formal_name_suffix = initial(id_card.formal_name_suffix)
+	if(client && client.prefs)
+		for(var/loretag in client.prefs.lore_info)
+			var/datum/lore_info/lore = SSlore.get_lore(client.prefs.lore_info[loretag])
+			if(lore)
+				id_card.formal_name_prefix = "[lore.get_formal_name_prefix()][id_card.formal_name_prefix]"
+				id_card.formal_name_suffix = "[id_card.formal_name_suffix][lore.get_formal_name_suffix()]"
+
+	id_card.registered_name = real_name
+	id_card.sex             = capitalize(gender)
 	id_card.set_id_photo(src)
 
 	if(dna)
@@ -76,7 +97,7 @@
 
 /obj/item/card/id/proc/dat()
 	var/dat = ("<table><tr><td>")
-	dat += text("Name: []</A><BR>", registered_name)
+	dat += text("Name: []</A><BR>", "[formal_name_prefix][registered_name][formal_name_suffix]")
 	dat += text("Sex: []</A><BR>\n", sex)
 	dat += text("Age: []</A><BR>\n", age)
 	dat += text("Rank: []</A><BR>\n", assignment)

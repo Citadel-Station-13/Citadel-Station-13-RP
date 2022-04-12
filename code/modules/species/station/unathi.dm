@@ -99,7 +99,6 @@
 		"Your scales bristle against the cold."
 		)
 
-	descriptors = list()
 
 	color_mult = 1
 	gluttonous = 0
@@ -115,6 +114,10 @@
 	//name_language = LANGUAGE_UNATHI
 	//species_language = LANGUAGE_UNATHI
 
+	descriptors = list(
+		/datum/mob_descriptor/height = 2,
+		/datum/mob_descriptor/build = 2
+		)
 
 	available_lore_info = list(
 		TAG_CULTURE = list(

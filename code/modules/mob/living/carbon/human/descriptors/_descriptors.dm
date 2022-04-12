@@ -55,9 +55,9 @@
 	var/species_text
 	if(ishuman(me) && !skip_species_mention)
 		var/mob/living/carbon/human/H = me
-		var/use_name = "\improper [H.species.name]"// CITADEL CHANGES
+		var/use_name = "\improper [H.species.name]"
 		if(H.custom_species)
-			use_name = "\improper [H.custom_species]"//END CITADEL CHANGES
+			use_name = "\improper [H.custom_species]"
 		species_text = " for \a [use_name]"
 	. = "[get_third_person_message_start(my_gender)] [get_standalone_value_descriptor(my_value)][species_text]"
 

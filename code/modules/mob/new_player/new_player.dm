@@ -574,21 +574,25 @@
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
 
-	var/dat = "<html><body><center>"
-	dat += "<b>Welcome, [name].<br></b>"
-	dat += "Round Duration: [roundduration2text()]<br>"
+	var/list/header = list("<html><body><center>")
+	header += "<b>Welcome, [name].<br></b>"
+	header += "Round Duration: [roundduration2text()]<br>"
 
 	if(SSemergencyshuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
 		if(SSemergencyshuttle.going_to_centcom()) //Shuttle is going to CentCom, not recalled
-			dat += "<font color='red'><b>The station has been evacuated.</b></font><br>"
+			header += "<font color='red'><b>The [station_name()] has been evacuated.</b></font><br>"
 		if(SSemergencyshuttle.online())
-			if (SSemergencyshuttle.evac)	// Emergency shuttle is past the point of no recall
-				dat += "<font color='red'>The station is currently undergoing evacuation procedures.</font><br>"
-			else						// Crew transfer initiated
-				dat += "<font color='red'>The station is currently undergoing crew transfer procedures.</font><br>"
+			if (SSemergencyshuttle.evac) //Emergency shuttle is past the point of no recall
+				header += "<font color='red'>The [station_name()] is currently undergoing evacuation procedures.</font><br>"
+			else //Crew transfer initiated
+				header += "<font color='red'>The [station_name()] is currently undergoing crew transfer procedures.</font><br>"
 
+	var/list/dat = list()
 	dat += "Choose from the following open/valid positions:<br>"
 	dat += "<a href='byond://?src=\ref[src];hidden_jobs=1'>[show_hidden_jobs ? "Hide":"Show"] Hidden Jobs.</a><br>"
+	dat += "<table>"
+	dat += "<tr><td colspan = 3><b>[GLOB.using_map.station_name]:</b></td></tr>"
+
 	for(var/datum/job/job in job_master.occupations)
 		if(job && IsJobAvailable(job.title))
 			// Checks for jobs with minimum age requirements
@@ -598,7 +602,7 @@
 			if(!(client.prefs.GetJobDepartment(job, 1) & job.flag))
 				if(!(client.prefs.GetJobDepartment(job, 2) & job.flag))
 					if(!(client.prefs.GetJobDepartment(job, 3) & job.flag))
-						if(!show_hidden_jobs && job.title != "Assistant")	// Assistant is always an option
+						if(!show_hidden_jobs && job.title != "Visitor")	// Visitor is always an option
 							continue
 			var/active = 0
 			// Only players with the job assigned and AFK for less than 10 minutes count as active
