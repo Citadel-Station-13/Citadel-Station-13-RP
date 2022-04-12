@@ -77,7 +77,7 @@
 	dat += "</td>"
 	if(append)
 		dat += "<td width = '100px'>[append]</td>"
-	dat += "</tr></table><hr>"
+	dat += "</tr></table>"
 	return jointext(dat, null)
 
 

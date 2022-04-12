@@ -1213,7 +1213,7 @@
 	update_hud()
 
 	var/update_lang
-	for(var/token in ALL_CULTURAL_TAGS)
+	for(var/token in ALL_LORE_TAGS)
 		if(species.forced_lore_info && species.forced_lore_info[token])
 			update_lang = TRUE
 			set_cultural_value(token, species.forced_lore_info[token], defer_language_update = TRUE)

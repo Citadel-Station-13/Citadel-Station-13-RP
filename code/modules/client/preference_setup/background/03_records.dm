@@ -1,6 +1,3 @@
-/datum/preferences
-	var/memory = ""
-
 /datum/category_item/player_setup_item/background/records
 	name = "Records"
 	sort_order = 3
@@ -20,17 +17,17 @@
 /datum/category_item/player_setup_item/background/records/content(var/mob/user)
 	. = list()
 
-	. += "<br><b>Records</b>:"
+	. += "<b>Records</b><br>"
 	if(jobban_isbanned(user, "Records"))
 		. += "[SPAN_WARNING("You are banned from using character records.")]"
 	else
-		. += "Medical Records:<br>"
-		. += "<a href='?src=\ref[src];set_medical_records=1'>[TextPreview(pref.med_record,40)]</a><br><br>"
-		. += "Employment Records:<br>"
-		. += "<a href='?src=\ref[src];set_general_records=1'>[TextPreview(pref.gen_record,40)]</a><br><br>"
-		. += "Security Records:<br>"
+		. += "Medical Records: "
+		. += "<a href='?src=\ref[src];set_medical_records=1'>[TextPreview(pref.med_record,40)]</a><br>"
+		. += "Employment Records: "
+		. += "<a href='?src=\ref[src];set_general_records=1'>[TextPreview(pref.gen_record,40)]</a><br>"
+		. += "Security Records: "
 		. += "<a href='?src=\ref[src];set_security_records=1'>[TextPreview(pref.sec_record,40)]</a><br>"
-		. += "Memory:<br>"
+		. += "Memory: "
 		. += "<a href='?src=\ref[src];set_memory=1'>[TextPreview(pref.memory,40)]</a><br>"
 	. = jointext(.,null)
 

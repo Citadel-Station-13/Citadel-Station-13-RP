@@ -136,6 +136,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/med_record = ""
 	var/sec_record = ""
 	var/gen_record = ""
+	var/memory     = ""
 	var/exploit_record = ""
 	var/disabilities = 0
 	var/mirror = TRUE

@@ -265,7 +265,7 @@
 	var/silk_color = "#FFFFFF"
 
 /datum/species/New()
-	for(var/token in ALL_CULTURAL_TAGS)
+	for(var/token in ALL_LORE_TAGS)
 
 		var/force_val = forced_lore_info[token]
 		if(force_val)
