@@ -34,7 +34,7 @@
 
 /obj/item/reagent_containers/blood/prelabeled/AMinus
 	name = "IV Pack (A-)"
-	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled A_"
+	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled A-"
 	blood_type = "A-"
 
 /obj/item/reagent_containers/blood/prelabeled/BPlus
@@ -51,7 +51,7 @@
 	name = "IV Pack (AB+)"
 	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled AB+"
 	blood_type = "AB+"
-	
+
 /obj/item/reagent_containers/blood/prelabeled/ABMinus
 	name = "IV Pack (AB-)"
 	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled AB-"

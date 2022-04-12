@@ -825,7 +825,9 @@
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 8,
 					///obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,	//VOREStation Removal,
-					/obj/item/towel/random = 8)
+					/obj/item/towel/random = 8,
+					/obj/item/reagent_containers/food/drinks/bludbox = 8,
+					/obj/item/reagent_containers/food/drinks/bludboxlight = 8)
 
 	prices = list(/obj/item/reagent_containers/food/drinks/smallmilk = 3,
 					/obj/item/reagent_containers/food/drinks/smallchocmilk = 3,
@@ -836,7 +838,9 @@
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 25,
 					///obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,	//VOREStation Removal,
-					/obj/item/towel/random = 40)
+					/obj/item/towel/random = 40,
+					/obj/item/reagent_containers/food/drinks/bludbox = 50,
+					/obj/item/reagent_containers/food/drinks/bludboxlight = 70)
 
 	contraband = list(/obj/item/reagent_containers/syringe/steroid = 4)
 

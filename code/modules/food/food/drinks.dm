@@ -226,6 +226,34 @@
 	. = ..()
 	reagents.add_reagent("dry_ramen", 30)
 
+/obj/item/reagent_containers/food/drinks/bludbox
+	name = "Bludbox carton"
+	desc = "A vampire's best friend! This Bludbox contains only the most delicious of organic, free-range O-Negatives. For all your dietry needs!"
+	volume = 30
+	icon_state = "bludbox"
+	item_state = "carton"
+	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/reagent_containers/food/drinks/bludbox/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("blood", 30)
+
+/obj/item/reagent_containers/food/drinks/bludboxlight
+	name = "Bludbox light carton"
+	desc = "A bloodsucking vegan's hipster alternative to drinking the red stuff. Bludbox light is just the same as drinking straight from the source! Comes in O- flavour."
+	volume = 30
+	icon_state = "bludboxlight"
+	item_state = "carton"
+	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/reagent_containers/food/drinks/bludboxlight/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("synthblood", 30)
+
 /obj/item/reagent_containers/food/drinks/sillycup
 	name = "paper cup"
 	desc = "A paper water cup."
