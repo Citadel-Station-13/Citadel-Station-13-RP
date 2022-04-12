@@ -1,4 +1,4 @@
-/decl/lore_info/location/qerrbalak
+/datum/lore_info/location/qerrbalak
 	name = HOME_SYSTEM_QERRBALAK
 	optional_languages = list(LANGUAGE_GALCOM)
 	secondary_langs = list(

@@ -1,4 +1,4 @@
-/decl/lore_info/culture/xenomorph_hybrid
+/datum/lore_info/culture/xenomorph_hybrid
 	name = CULTURE_XENOHYBRID_HUMAN
 	language = LANGUAGE_XENOMORPH
 	default_language = LANGUAGE_XENOMORPH
@@ -8,7 +8,7 @@
 		Some people might have acted suspicious around you, but the general behaviour towards you and your kind was not worse\
 		than how the same people treated other humans."
 
-/decl/lore_info/culture/xenomorph_hybrid/neomorph
+/datum/lore_info/culture/xenomorph_hybrid/neomorph
 	name = CULTURE_XENOHYBRID_NEOMORPH
 	economic_power = 1.2
 	description = "Millenia ago the hive on Bergakunge began to evolve in isolation, hidden away from the surface deep inside the caverns.\
@@ -18,7 +18,7 @@
 		Your parents are part of the 'Hive' from Bergakunge, makeing you a Neomorph. While you didnt nessarily grew up on Bergakunge, alot of your family did, \
 		and most of your friends are also Neomorphs."
 
-/decl/lore_info/culture/xenomorph_hybrid/lab
+/datum/lore_info/culture/xenomorph_hybrid/lab
 	name = CULTURE_XENOHYBRID_LAB
 	secondary_langs = list(LANGUAGE_GALCOM, LANGUAGE_SOL_COMMON)
 	economic_power = 0.1

@@ -1,4 +1,6 @@
-/decl/lore_info
+#define COLLAPSED_LORE_BLURB_LEN 48
+
+/datum/lore_info
 	var/name
 	var/desc_type
 	var/description
@@ -15,7 +17,8 @@
 	var/subversive_potential = 0
 	var/hidden
 
-/decl/lore_info/New()
+
+/datum/lore_info/New()
 
 	if(!default_language)
 		default_language = language
@@ -38,7 +41,9 @@
 			secondary_langs -= optional_languages
 		UNSETEMPTY(secondary_langs)
 
-/decl/lore_info/proc/get_random_name(var/gender)
+	..()
+
+/datum/lore_info/proc/get_random_name(var/gender)
 	var/datum/language/_language
 	if(name_language)
 		_language = GLOB.all_languages[name_language]
@@ -50,33 +55,37 @@
 		return _language.get_random_name(gender)
 	return capitalize(pick(gender==FEMALE ? first_names_female : first_names_male)) + " " + capitalize(pick(last_names))
 
-/decl/lore_info/proc/sanitize_name(var/new_name)
+
+/datum/lore_info/proc/sanitize_name(var/new_name)
 	return sanitizeName(new_name)
 
-/decl/lore_info/proc/get_description(var/header, var/append, var/verbose = TRUE)
+
+/datum/lore_info/proc/get_description(var/header, var/append, var/verbose = TRUE)
 	var/list/dat = list()
 	dat += "<table padding='8px'><tr>"
-	dat += "<td width = 55%>"
-	dat += "[header ? header : "<b>[desc_type]:</b> [name]"]<br>"
-	dat += "<small>"
-	dat += "[jointext(get_text_details(), "<br>")]"
-	dat += "</small></td>"
-	dat += "<td width = 45%>"
-	if(verbose || length(get_text_body()) <= MAX_DESC_LEN)
+	dat += "<td width='260px'>"
+	dat += "[header ? header : "<b>[desc_type]:</b>[name]"]<br>"
+	if(verbose)
+		dat += "<small>"
+		dat += "[jointext(get_text_details(), "<br>")]"
+		dat += "</small>"
+	dat += "</td><td width>"
+	if(verbose || length(get_text_body()) <= COLLAPSED_LORE_BLURB_LEN)
 		dat += "[get_text_body()]"
 	else
-		dat += "[copytext(get_text_body(), 1, MAX_DESC_LEN)] \[...\]"
-	if(append)
-		dat += "<br>[append]"
+		dat += "[copytext(get_text_body(), 1, COLLAPSED_LORE_BLURB_LEN)] \[...\]"
 	dat += "</td>"
-	dat += "</tr>"
-	dat += "</table><hr>"
+	if(append)
+		dat += "<td width = '100px'>[append]</td>"
+	dat += "</tr></table><hr>"
 	return jointext(dat, null)
 
-/decl/lore_info/proc/get_text_body()
+
+/datum/lore_info/proc/get_text_body()
 	return description
 
-/decl/lore_info/proc/get_text_details()
+
+/datum/lore_info/proc/get_text_details()
 	. = list()
 	var/list/spoken_langs = get_spoken_languages()
 	if(LAZYLEN(spoken_langs))
@@ -86,9 +95,20 @@
 	if(!isnull(economic_power))
 		. += "<b>Economic power:</b> [round(100 * economic_power)]%"
 
-/decl/lore_info/proc/get_spoken_languages()
+
+/datum/lore_info/proc/get_spoken_languages()
 	. = list()
 	if(language) . |= language
 	if(default_language) . |= default_language
 	if(name_language) . |= name_language
 	if(LAZYLEN(optional_languages)) . |= optional_languages
+
+
+/decl/cultural_info/proc/format_formal_name(var/character_name)
+	return character_name
+
+/decl/cultural_info/proc/get_qualifications()
+	return
+
+
+#undef COLLAPSED_LORE_BLURB_LEN

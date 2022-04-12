@@ -102,5 +102,9 @@
 	)
 
 
+/datum/species/skrell/get_sex(var/mob/living/carbon/H)
+	return descriptors["headtail length"] == 1 ? MALE : FEMALE
+
+
 /datum/species/skrell/can_breathe_water()
 	return TRUE

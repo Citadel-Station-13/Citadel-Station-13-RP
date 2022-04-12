@@ -1,4 +1,4 @@
-/decl/lore_info/faction/xenomorph
+/datum/lore_info/faction/xenomorph
 	name = FACTION_XENOMORPH
 	language = LANGUAGE_XENOMORPH
 	default_language = LANGUAGE_XENOMORPH

@@ -2,7 +2,7 @@
 
 #define CULTURE_EXAMPLE "Example Culture"	// Make a define for each culture/faction/location/religion you make.
 
-/decl/lore_info/culture/example
+/datum/lore_info/culture/example
 
 
 ////REQUIRED VARS////
@@ -32,7 +32,9 @@
 
 	// The description is one of the most important things as this will be the primary method of players to get a feeling for what they're getting into.
 	// This is also the thing I suck at doing so pretty please do it. - Zandario
-	description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+	description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim \
+		veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \
+		esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
 
 ///OPTIONAL_LANGUAGES
@@ -63,12 +65,12 @@
 
 ////FULL EXAMPLE\\\\
 
-/decl/lore_info/culture/example
+/datum/lore_info/culture/example
 	name = CULTURE_EXAMPLE
 	language = LANGUAGE_LOREM_IPSUM
-	optional_languages = LANGUAGE_DOLOR_SIT
+	name_language = LANGUAGE_DOLOR_SIT
+	optional_languages = list(LANGUAGE_DOLOR_SIT, LANGUAGE_AMET)
 	economic_power = 1
-	name_language = LANGUAGE_LOREM_IPSUM
-	description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat\
-	nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+	description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim \
+		veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit \
+		esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."

@@ -1,7 +1,7 @@
-/decl/lore_info/culture/skrell
+/datum/lore_info/culture/skrell
 	name = CULTURE_SKRELL_QERR
 	language = LANGUAGE_SKRELLIAN
-	description = " Considered as the leaders of Skrellkind, the Qerr-Katish are the face and soul of skrellian society. \
+	description = "Considered as the leaders of Skrellkind, the Qerr-Katish are the face and soul of skrellian society. \
 		Managers, diplomats, lawyers, they are notably the only caste allowed to fulfil the role of Qerr-Skria,\
 		and the only one forbidden from being appointed to the Xaq Moglar. As the representatives of the Skrell, \
 		the Qerr-Katish are highly social beings, sophisticated, cultured and very organised. As defenders of their society’s \
@@ -11,7 +11,7 @@
 		small, being generally limited to one, sometimes two bondings. They often dress in clothing made from softer, shinier materials \
 		that are long and flowing and have often been compared to the clothing of ancient Chinese nobles by human scholars. Their skin is generally bright green."
 
-/decl/lore_info/culture/skrell/caste_malish
+/datum/lore_info/culture/skrell/caste_malish
 	name = CULTURE_SKRELL_MALISH
 	description = "If the Qerr-Katish are the face of Skrellkind, the Malish-Katish are its brain. Scientists of all sorts, \
 		researchers, scholars, they are the ones who allow skrellian society to grow, be it technologically or ideologically. \
@@ -22,7 +22,7 @@
 		from the same materials as the Qerr-katish yet simplified, white shirts and black pants with possible jewellery for decoration. \
 		Their skin is generally pale green, sky blue or pale yellow."
 
-/decl/lore_info/culture/skrell/caste_kanin
+/datum/lore_info/culture/skrell/caste_kanin
 	name = CULTURE_SKRELL_KANIN
 	description = "The main workforce of the Skrell. While their population growth has decreased over the millennia of technological \
 		progress they are still one of the most populous castes. With activities ranging from goods production and services \
@@ -34,9 +34,9 @@
 		their work is the life and blood of skrellian civilisation. Their clothing is made to last, the personality of the Skrell often being shown \
 		through arm bands or headtail decorations of any kind. Their skin is generally red, orange, pale yellow, dark orange or black."
 
-/decl/lore_info/culture/skrell/caste_talum
+/datum/lore_info/culture/skrell/caste_talum
 	name = CULTURE_SKRELL_TALUM
-	description = " Considering the Skrells' emphasis on functionality and practicality, one would be mistaken to think they do not consider arts much. \
+	description = "Considering the Skrells' emphasis on functionality and practicality, one would be mistaken to think they do not consider arts much. \
 		This very important sector of skrellian society is handled by the Talum-Katish, artists, aesthetes, entertainers, chefs, actors, writers, singers. \
 		They somewhat compete with the Qerr-Katish’s role as representatives of skrellkind, although in a different way. As such, they are often mistaken for \
 		Qerr-Katish themselves, which might explain why this caste is generally seen as rarer and less celebrated than the others, while they are in fact \
@@ -46,7 +46,7 @@
 		with various partners, which might put a strain on their savings. Their clothing is often an odd mix of Qerr-Katish and Kanin-Katish, as they often wear \
 		clothing that is colourful , adorned with embroidery and their headtails sparkling with various brilliant metals. Their skin is generally purple, blue, pink, orange, red or white."
 
-/decl/lore_info/culture/skrell/caste_raskinta
+/datum/lore_info/culture/skrell/caste_raskinta
 	name = CULTURE_SKRELL_RASKINTA
 	description = "Rarely seen outside the skrellian society, the Raskinta-Katish are however recognised and respected by their entire species, for \
 		they are the ones who ensure the safety and stability of skrellian civilisation, both against internal and external threats. \

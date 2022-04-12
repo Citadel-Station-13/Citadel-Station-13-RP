@@ -1,4 +1,4 @@
-/decl/lore_info/culture/ipc
+/datum/lore_info/culture/ipc
 	name = CULTURE_POSITRONICS
 	description = "Union members are a significant chunk of the positronic population, belonging to a \
 	group of rebels started by Proteus and five hundred of his allies. Their primary goals, aside from \
@@ -7,5 +7,5 @@
 	language = LANGUAGE_EAL
 	optional_languages = list(LANGUAGE_GALCOM)
 
-/decl/lore_info/culture/ipc/sanitize_name(var/new_name)
+/datum/lore_info/culture/ipc/sanitize_name(var/new_name)
 	return sanitizeName(new_name, allow_numbers = TRUE)

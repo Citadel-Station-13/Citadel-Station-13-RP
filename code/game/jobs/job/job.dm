@@ -83,7 +83,7 @@
 	var/culture_mod = 0
 	var/culture_count = 0
 	for(var/token in H.lore_info)
-		var/decl/lore_info/culture = H.get_cultural_value(token)
+		var/datum/lore_info/culture = H.get_cultural_value(token)
 		if(culture && !isnull(culture.economic_power))
 			culture_count++
 			culture_mod += culture.economic_power

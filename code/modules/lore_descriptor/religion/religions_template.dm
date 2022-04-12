@@ -2,7 +2,7 @@
 
 #define RELIGION_EXAMPLE "Example Culture"	// Make a define for each culture/faction/location/religion you make.
 
-/decl/lore_info/religion/example
+/datum/lore_info/religion/example
 
 
 ////REQUIRED VARS////
@@ -63,7 +63,7 @@
 
 ////FULL EXAMPLE\\\\
 
-/decl/lore_info/religion/example
+/datum/lore_info/religion/example
 	name = RELIGION_EXAMPLE
 	language = LANGUAGE_LOREM_IPSUM
 	optional_languages = LANGUAGE_DOLOR_SIT

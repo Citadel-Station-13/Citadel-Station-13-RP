@@ -1,4 +1,4 @@
-/decl/lore_info/location/human
+/datum/lore_info/location/human
 	name = HOME_SYSTEM_MARS
 	description = "Mars, the current capital of the SCG, known by its nickname the Red Planet, is one of the most populous centres of Humanity. \
 	Since the founding of the first colony by Jimmy Gideon many years ago Mars has been an important player on the Human stage. Terraforming on \
@@ -15,7 +15,7 @@
 	language = LANGUAGE_SOL_COMMON
 	secondary_langs = list(LANGUAGE_SIGN, LANGUAGE_GALCOM)
 
-/decl/lore_info/location/human/earth
+/datum/lore_info/location/human/earth
 	name = HOME_SYSTEM_EARTH
 	description = "Earth, home of humankind, has long been in a state of recovery following centuries of pollution and exploitation. Today, much of \
 	the Earth exists as a nature reserve, dedicated to preserving the history of humanity. The humans that remain live mostly in large urban zones \
@@ -29,7 +29,7 @@
 	capital = "Geneva"
 	economic_power = 1.2
 
-/decl/lore_info/location/human/luna
+/datum/lore_info/location/human/luna
 	name = HOME_SYSTEM_LUNA
 	distance = "1AU"
 	description = "Luna, the moon of the planet Earth, had long been a goal for humanity and symbol of space exploration. \
@@ -49,7 +49,7 @@
 	language = LANGUAGE_LUNAR
 	secondary_langs = list(LANGUAGE_SIGN,LANGUAGE_SOL_COMMON)
 
-/decl/lore_info/location/human/venus
+/datum/lore_info/location/human/venus
 	name = HOME_SYSTEM_VENUS
 	distance = "0.7AU"
 	description = "Venus, in the Sol System, is a planet which has a largely unsustainable surface atmosphere.\
@@ -66,7 +66,7 @@
 	capital = "Central Administration Zone"
 	economic_power = 1.4
 
-/decl/lore_info/location/human/ceres
+/datum/lore_info/location/human/ceres
 	name = HOME_SYSTEM_CERES
 	distance = "2.7AU"
 	description = "Ceres station, officially the Ceres Mining and Habitation Outpost is historically a significant mining facility for humanity. However \
@@ -80,7 +80,7 @@
 	language = LANGUAGE_SPACER
 	secondary_langs = list(LANGUAGE_SIGN, LANGUAGE_SOL_COMMON, LANGUAGE_GUTTER)
 
-/decl/lore_info/location/human/pluto
+/datum/lore_info/location/human/pluto
 	name = HOME_SYSTEM_PLUTO
 	distance = "45AU"
 	description = "Pluto, nominally a Democratic Republic, is a small planet in the Sol system. Pluto has a fairly small population compared \
@@ -96,7 +96,7 @@
 	language = LANGUAGE_GUTTER
 	secondary_langs = list(LANGUAGE_SIGN, LANGUAGE_SOL_COMMON, LANGUAGE_SPACER)
 
-/decl/lore_info/location/human/cetiepsilon
+/datum/lore_info/location/human/cetiepsilon
 	name = HOME_SYSTEM_TAU_CETI
 	distance = "11.9 light years"
 	description = "Ceti Episolon, the only habitable planet in the Tau Ceti system, is home to its largest population centre. \

@@ -1,4 +1,4 @@
-/decl/lore_info/culture/vox
+/datum/lore_info/culture/vox
 	name = CULTURE_VOX_ARKSHIP
 	language = LANGUAGE_VOX
 	default_language = LANGUAGE_VOX
@@ -8,14 +8,14 @@
 	and although the glamour and allure of the raider life appeals to many, staying home is seen as a more responsible and mature \
 	pursuit than haring off across the stars to attack the meat and steal their goods."
 
-/decl/lore_info/culture/vox/salvager
+/datum/lore_info/culture/vox/salvager
 	name = CULTURE_VOX_SALVAGER
 	description = "The arkships, vast as they are, could not survive without the ceaseless efforts of the salvage crews \
 	that strip-mine asteroids, stations and ships for the raw materials needed to keep things together. Although it is a \
 	much less lethal pursuit than being a raider, salvagers have a dangerous job and often do not make it back to the ark \
 	in one piece."
 
-/decl/lore_info/culture/vox/raider
+/datum/lore_info/culture/vox/raider
 	name = CULTURE_VOX_RAIDER
 	description = "Amongst the vox, the prestige of being a raider is second only to working directly for an apex. They are \
 	the cutting talon of the vox and the dashing, charismatic figures of adventure that serve as examples for fresh hatchlings \

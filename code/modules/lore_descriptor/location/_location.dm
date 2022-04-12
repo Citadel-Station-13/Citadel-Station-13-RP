@@ -1,4 +1,4 @@
-/decl/lore_info/location
+/datum/lore_info/location
 	desc_type = "Home System"
 	secondary_langs = list(
 		LANGUAGE_SIGN
@@ -8,7 +8,7 @@
 	var/ruling_body = FACTION_SOL_CENTRAL
 	var/capital
 
-/decl/lore_info/location/get_text_details()
+/datum/lore_info/location/get_text_details()
 	. = list()
 	if(!isnull(capital))
 		. += "<b>Capital:</b> [capital]."

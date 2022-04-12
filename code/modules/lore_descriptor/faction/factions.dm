@@ -1,4 +1,4 @@
-/decl/lore_info/faction/scg
+/datum/lore_info/faction/scg
 	name = FACTION_SOL_CENTRAL
 	description = "The Sol Central Government, commonly referred to as SolGov or the SCG, is a federal republic \
 	composed of numerous human member states spanning many systems.\
@@ -13,7 +13,7 @@
 	most advanced and powerful civilisations in the known galaxy."
 	language = LANGUAGE_SOL_COMMON
 
-/decl/lore_info/faction/scg/fleet
+/datum/lore_info/faction/scg/fleet
 	name = FACTION_FLEET
 	description = "The SCG DF Fleet, commonly referred to as the Fleet, is the SCG's primary component of the Defence Forces. \
 	It consists of a huge assortment of vessels of varying sizes broken up into a number of smaller \"Fleets\" each with their \
@@ -26,7 +26,7 @@
 	smugglers and taking potshots at the ocassional Vox. Currently undergoing major \
 	overhauls to improve efficiency and capabilities, publicly to counter encroachment by the Terran Colonial Confederation."
 
-/decl/lore_info/faction/tcc
+/datum/lore_info/faction/tcc
 	name = FACTION_TERRAN_CONFED
 	description = "The Terran Colonial Confederation, commonly referred to as the TCC, is a regional power in human space,\
 	bordered by the Sol Central Government towards the galactic centre. The capital of the Confederation is the city of Ameranth on the planet of Terra \
@@ -40,7 +40,7 @@
 	subversive_potential = 50
 	language = LANGUAGE_INDEPENDENT
 
-/decl/lore_info/faction/remote
+/datum/lore_info/faction/remote
 	name = FACTION_EXPEDITIONARY
 	description = "The Expeditionary Corps, commonly referred to as the EC and made up of 'expeds', is a non-military, uniformed \
 	organisation of the Sol Central Government, reporting to the Committee for Diplomatic Relations. It is governed by similar regulations \
@@ -53,7 +53,7 @@
 	language = LANGUAGE_GALCOM
 	secondary_langs = list(LANGUAGE_SOL_COMMON)
 
-/decl/lore_info/faction/remote/nanotrasen
+/datum/lore_info/faction/remote/nanotrasen
 	name = FACTION_NANOTRASEN
 	description = "The NanoTrasen Corporation, commonly referred to as NT, is one of the great megacorporations of the modern day.\
 	Currently headquartered in New Amsterdam on Luna and headed by CEO Jackson Trasen It deals in research of the most advanced sciences, \
@@ -65,7 +65,7 @@
 	economic_power = 1.2
 	subversive_potential = 15
 
-/decl/lore_info/faction/remote/xynergy
+/datum/lore_info/faction/remote/xynergy
 	name = FACTION_XYNERGY
 	description = "Xynergy is a privately held company known for their work with xenobiological organisms. They develop and \
 	produce products such as the netgun and dociler used for capturing or taming xenofauna. In addition, they are the largest \
@@ -74,7 +74,7 @@
 	economic_power = 1.1
 	subversive_potential = 15
 
-/decl/lore_info/faction/free
+/datum/lore_info/faction/free
 	name = FACTION_FREETRADE
 	description = "The Free Trade Union, commonly referred to as the FTU, is is an employee-owned conglomerate of tens of thousands of \
 	various traders and merchants from all over SCG space and beyond. Colloquially known as the 'fifth megacorp', they control a sizeable fleet \
@@ -86,7 +86,7 @@
 	subversive_potential = 15
 	language = LANGUAGE_SPACER
 
-/decl/lore_info/faction/pcrc
+/datum/lore_info/faction/pcrc
 	name = FACTION_PCRC
 	description = "Proxima Centauri Risk Control, often known as PCRC, is one of the largest suppliers of private security in Sol Space. \
 	PCRC handles numerous government, private and corporate contracts and provides a variety of services ranging from private law enforcement, \
@@ -97,7 +97,7 @@
 	language = LANGUAGE_SPACER
 	secondary_langs = list(LANGUAGE_GALCOM, LANGUAGE_SOL_COMMON)
 
-/decl/lore_info/faction/other
+/datum/lore_info/faction/other
 	name = FACTION_OTHER
 	description = "You belong to one of the many other factions that operate in the galaxy. Numerous, too numerous to list, these factions represent a variety of interests, purposes, intents and goals."
 	subversive_potential = 25

@@ -1,3 +1,3 @@
-/decl/lore_info/religion/vox
+/datum/lore_info/religion/vox
 	name = RELIGION_VOX
 	description = "Obey and revere the auralis, those who came before, for they will open the way."

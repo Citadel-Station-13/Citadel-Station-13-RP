@@ -1,4 +1,4 @@
-/decl/lore_info/culture
+/datum/lore_info/culture
 	desc_type = "Culture"
 	category = TAG_CULTURE
 	language = LANGUAGE_GALCOM

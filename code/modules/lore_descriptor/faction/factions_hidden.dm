@@ -1,4 +1,4 @@
-/decl/lore_info/faction/test_subjects
+/datum/lore_info/faction/test_subjects
 	name = FACTION_TEST_SUBJECTS
 	language = "Chimpanzee"
 	description = "Ook?"

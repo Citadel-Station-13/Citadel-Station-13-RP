@@ -3,7 +3,7 @@
 #define HOME_SYSTEM_EXAMPLE "Example System"	// Make a define for each home system/station/whatever you make.
 
 
-/decl/lore_info/location/example
+/datum/lore_info/location/example
 
 ///NAME
 
@@ -82,7 +82,7 @@
 
 ////FULL EXAMPLE\\\\
 
-/decl/lore_info/location/example
+/datum/lore_info/location/example
 	name = FACTION_EXAMPLE
 	language = LANGUAGE_LOREM_IPSUM
 	optional_languages = LANGUAGE_DOLOR_SIT

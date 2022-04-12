@@ -1,4 +1,4 @@
-/decl/lore_info/location/adherent
+/datum/lore_info/location/adherent
 	name = HOME_SYSTEM_ADHERENT_THEIM
 	language = LANGUAGE_ADHERENT
 	name_language = LANGUAGE_ADHERENT
@@ -6,6 +6,6 @@
 	ruling_body = "Six High Clades"
 	capital = "Unknown"
 
-/decl/lore_info/location/adherent/monument
+/datum/lore_info/location/adherent/monument
 	name = HOME_SYSTEM_ADHERENT_COLONY
 	description = "Ver-Theim left behind multiple abandoned colony worlds. Those planets are inhospitable to most organic races, with their atmospheres being mainly composed out of Chlorine and Nitrogen. All Colony Worlds appear to have been left behind days before their discovery, with Architecture being untouched by Flora and Fauna on the planet."

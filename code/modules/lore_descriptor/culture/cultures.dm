@@ -1,23 +1,23 @@
-/decl/lore_info/culture/generic
+/datum/lore_info/culture/generic
 	name = CULTURE_OTHER
 	description = "You are from one of the many small, relatively unknown cultures scattered across the galaxy."
 
-/decl/lore_info/culture/human
+/datum/lore_info/culture/human
 	name = CULTURE_HUMAN
 	description = "You are from one of various planetary cultures of humankind."
 	language = LANGUAGE_SOL_COMMON
 	secondary_langs = list(LANGUAGE_GALCOM)
 
-/decl/lore_info/culture/human/vatgrown
+/datum/lore_info/culture/human/vatgrown
 	name = CULTURE_HUMAN_VATGROWN
 	description = "You were grown in a vat, either as clone or as a gene-adapt, and your outlook diverges from baseline humanity accordingly."
 	language = LANGUAGE_GALCOM
 	secondary_langs = list(LANGUAGE_SOL_COMMON)
 
-/decl/lore_info/culture/human/vatgrown/sanitize_name(name)
+/datum/lore_info/culture/human/vatgrown/sanitize_name(name)
 	return sanitizeName(name, allow_numbers=TRUE)
 
-/decl/lore_info/culture/human/vatgrown/get_random_name(gender)
+/datum/lore_info/culture/human/vatgrown/get_random_name(gender)
 	// #defines so it's easier to read what's actually being generated
 	#define LTR ascii2text(rand(65,90)) // A-Z
 	#define NUM ascii2text(rand(48,57)) // 0-9

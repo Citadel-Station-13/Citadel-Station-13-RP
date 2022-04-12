@@ -3,7 +3,7 @@
 #define FACTION_EXAMPLE "Example Faction"	// Make a define for each faction you make.
 
 
-/decl/lore_info/faction/example
+/datum/lore_info/faction/example
 
 ///NAME
 
@@ -68,7 +68,7 @@
 
 ////FULL EXAMPLE\\\\
 
-/decl/lore_info/faction/example
+/datum/lore_info/faction/example
 	name = FACTION_EXAMPLE
 	language = LANGUAGE_LOREM_IPSUM
 	optional_languages = LANGUAGE_DOLOR_SIT

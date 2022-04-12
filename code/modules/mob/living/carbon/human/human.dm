@@ -34,7 +34,7 @@
 		else
 			set_species()
 
-	var/decl/lore_info/culture = SSlore.get_culture(lore_info[TAG_CULTURE])
+	var/datum/lore_info/culture = SSlore.get_culture(lore_info[TAG_CULTURE])
 	if(culture)
 		real_name = culture.get_random_name(gender, species.name)
 		name = real_name
@@ -1243,7 +1243,7 @@
 	var/list/default_languages = list()
 
 	for(var/thing in lore_info)
-		var/decl/lore_info/check = lore_info[thing]
+		var/datum/lore_info/check = lore_info[thing]
 		if(istype(check))
 			if(check.default_language)
 				free_languages    |= GLOB.all_languages[check.default_language]
@@ -1685,7 +1685,7 @@
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
 
-/mob/living/carbon/human/proc/set_cultural_value(var/token, var/decl/lore_info/_culture, var/defer_language_update)
+/mob/living/carbon/human/proc/set_cultural_value(var/token, var/datum/lore_info/_culture, var/defer_language_update)
 	if(!istype(_culture))
 		_culture = SSlore.get_culture(_culture)
 	if(istype(_culture))

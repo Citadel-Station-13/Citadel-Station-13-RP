@@ -352,3 +352,6 @@
 	if(does_not_breathe)
 		return FALSE
 	return ..()
+
+/mob/living/carbon/get_sex()
+	return species.get_sex(src)

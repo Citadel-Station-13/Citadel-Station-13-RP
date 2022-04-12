@@ -1,17 +1,13 @@
-
-/////////////////////
-/////INSECTOIDS/////
-/////////////////////
 /datum/species/apidaen
 	name = SPECIES_APIDAEN
 	name_plural = "Apidaen"
 	icobase = 'icons/mob/human_races/r_def_apidaen.dmi'
 	deform = 'icons/mob/human_races/r_def_apidaen.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	darksight = 6	 // Not quite as good as spiders. Meant to represent compound eyes and/or better hearing.
-	slowdown = -0.10 // Speed boost similar to spiders, slightly nerfed due to two less legs.
-	brute_mod = 0.8	 // 20% brute damage reduction seems fitting to match spiders, due to exoskeletons.
-	burn_mod = 1.15	 // 15% burn damage increase, the same as spiders. For the same reason.
+	darksight = 6     //Not quite as good as spiders. Meant to represent compound eyes and/or better hearing.
+	slowdown  = -0.10 //Speed boost similar to spiders, slightly nerfed due to two less legs.
+	brute_mod = 0.8   //20% brute damage reduction seems fitting to match spiders, due to exoskeletons.
+	burn_mod  = 1.15  //15% burn damage increase, the same as spiders. For the same reason.
 
 	color_mult = 1
 	tail = "tail" //Bee tail. I've desaturated it for the sprite sheet.
@@ -44,28 +40,28 @@
 
 	hazard_low_pressure = 20
 
-	//primitive_form = "Monkey" //I dunno. Replace this in the future.
+	primitive_form = null //Doesn't have one atm.
 
 	flags = NO_MINOR_CUT
 	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#D8BB00" //Chitinous yellow.
-	base_color 	= "#333333" //Blackish-gray
+	base_color  = "#333333" //Blackish-gray
 	blood_color = "#D3C77C" //Internet says Bee haemolymph is a 'pale straw' color.
 
 	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart,
-		O_LUNGS =    /obj/item/organ/internal/lungs,
-		O_VOICE =    /obj/item/organ/internal/voicebox,
-		O_LIVER =    /obj/item/organ/internal/liver,
-		O_KIDNEYS =  /obj/item/organ/internal/kidneys,
-		O_SPLEEN =   /obj/item/organ/internal/spleen/minor,
-		O_BRAIN =    /obj/item/organ/internal/brain,
-		O_EYES =     /obj/item/organ/internal/eyes,
-		O_STOMACH =	 /obj/item/organ/internal/stomach,
-		O_INTESTINE =/obj/item/organ/internal/intestine,
-		O_HSTOMACH =  /obj/item/organ/internal/honey_stomach
+		O_HEART     = /obj/item/organ/internal/heart,
+		O_LUNGS     = /obj/item/organ/internal/lungs,
+		O_VOICE     = /obj/item/organ/internal/voicebox,
+		O_LIVER     = /obj/item/organ/internal/liver,
+		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
+		O_SPLEEN    = /obj/item/organ/internal/spleen/minor,
+		O_BRAIN     = /obj/item/organ/internal/brain,
+		O_EYES      = /obj/item/organ/internal/eyes,
+		O_STOMACH   = /obj/item/organ/internal/stomach,
+		O_INTESTINE = /obj/item/organ/internal/intestine,
+		O_HSTOMACH  = /obj/item/organ/internal/honey_stomach
 		)
 
 
@@ -75,17 +71,20 @@
 
 	available_lore_info = list(
 		TAG_CULTURE = list(
-			CULTURE_APIDAEN
+			CULTURE_APIDAEN_WORKER,
+			CULTURE_APIDAEN_WAR,
+			CULTURE_APIDAEN_SAGE,
+			CULTURE_APIDAEN_ROYAL,
+			CULTURE_APIDAEN_DEVIANT
 		),
 		TAG_HOMEWORLD = list(
-			HOME_SYSTEM_DENEB
+			HOME_SYSTEM_DENEB,
+			HOME_SYSTEM_HIVE_COLONY
 		),
 		TAG_FACTION = list(
-			FACTION_APIDAEN_DEVIANT,
-			FACTION_APIDAEN_DRONE,
-			FACTION_APIDAEN_WAR,
-			FACTION_APIDAEN_SCH,
-			FACTION_APIDAEN_ROYAL
+			FACTION_APIDAEN_HIVER,
+			FACTION_APIDAEN_COLONIST,
+			FACTION_APIDAEN_ROGUE
 		)
 	)
 
@@ -156,7 +155,7 @@
 		honey_stomach.emote_descriptor = list("nectar fresh from [honey_stomach.organ_owner]!", "nectar from [honey_stomach.organ_owner]!")
 
 	else
-		to_chat(src, "<span class='notice'>You lack the organ required to produce nectar.</span>")
+		to_chat(src, SPAN_NOTICE("You lack the organ required to produce nectar."))
 		return
 
 /mob/living/carbon/human/proc/nectar_pick()
@@ -180,7 +179,7 @@
 			break
 	if (honey_stomach) //Do they have the stomach?
 		if(honey_stomach.reagents.total_volume < honey_stomach.transfer_amount)
-			to_chat(src, "<span class='notice'>[pick(honey_stomach.empty_message)]</span>")
+			to_chat(src, SPAN_NOTICE("[pick(honey_stomach.empty_message)]"))
 			return
 
 		var/nectar_item_type = /obj/item/reagent_containers/organic/waxcomb
@@ -191,8 +190,6 @@
 		if (usr != src)
 			return
 		else
-			visible_message("<span class='notice'>[src] [pick(honey_stomach.short_emote_descriptor)] nectar.</span>",
-								"<span class='notice'>You [pick(honey_stomach.self_emote_descriptor)] up a bundle of waxcomb.</span>")
+			visible_message(SPAN_NOTICE("[src] [pick(honey_stomach.short_emote_descriptor)] nectar."),
+								SPAN_NOTICE("You [pick(honey_stomach.self_emote_descriptor)] up a bundle of waxcomb."))
 			honey_stomach.reagents.remove_any(honey_stomach.transfer_amount)
-
-//End of repurposed honey stomach code.

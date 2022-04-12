@@ -56,7 +56,7 @@
 	allowed_languages = list()
 	free_languages = list()
 	for(var/thing in pref.lore_info)
-		var/decl/lore_info/culture = SSlore.get_culture(pref.lore_info[thing])
+		var/datum/lore_info/culture = SSlore.get_culture(pref.lore_info[thing])
 		if(istype(culture))
 			var/list/langs = culture.get_spoken_languages()
 			if(LAZYLEN(langs))

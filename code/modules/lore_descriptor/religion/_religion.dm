@@ -1,4 +1,4 @@
-/decl/lore_info/religion
+/datum/lore_info/religion
 	desc_type = "Religion"
 	category = TAG_RELIGION
 	language = null

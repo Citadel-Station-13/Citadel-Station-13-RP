@@ -1,4 +1,4 @@
-/decl/lore_info/location/xenomorph_hybrid
+/datum/lore_info/location/xenomorph_hybrid
 	name = HOME_SYSTEM_BERGAKUNGEN
 	capital = "None"
 	ruling_body = FACTION_XENOHYBRID_NEOMORPH

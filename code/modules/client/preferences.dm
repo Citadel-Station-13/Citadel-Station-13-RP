@@ -395,7 +395,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.set_species(species)
 	// Special Case: This references variables owned by two different datums, so do it here.
 	if(be_random_name)
-		var/decl/lore_info/culture = lore_info[TAG_CULTURE]
+		var/datum/lore_info/culture = lore_info[TAG_CULTURE]
 		if(culture) real_name = culture.get_random_name(identifying_gender)
 
 	// Ask the preferences datums to apply their own settings to the new mob

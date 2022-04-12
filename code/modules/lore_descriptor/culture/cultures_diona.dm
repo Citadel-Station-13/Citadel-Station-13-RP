@@ -1,4 +1,4 @@
-/decl/lore_info/culture/diona
+/datum/lore_info/culture/diona
 	name = CULTURE_DIONA
 	language = LANGUAGE_ROOTLOCAL
 	secondary_langs = list(LANGUAGE_ROOTGLOBAL)

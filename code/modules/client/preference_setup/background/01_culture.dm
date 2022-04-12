@@ -52,7 +52,7 @@
 /datum/category_item/player_setup_item/background/culture/content()
 	. = list()
 	for(var/token in tokens)
-		var/decl/lore_info/culture = SSlore.get_culture(pref.lore_info[token])
+		var/datum/lore_info/culture = SSlore.get_culture(pref.lore_info[token])
 		var/title = "<b>[tokens[token]]<a href='?src=\ref[src];set_[token]=1'><small>?</small></a>:</b><a href='?src=\ref[src];set_[token]=2'>[pref.lore_info[token]]</a>"
 		var/append_text = "<a href='?src=\ref[src];toggle_verbose_[token]=1'>[hidden[token] ? "Expand" : "Collapse"]</a>"
 		. += culture.get_description(title, append_text, verbose = !hidden[token])
@@ -86,7 +86,7 @@
 				GET_ALLOWED_VALUES(valid_values, token)
 
 			if(valid_values[choice])
-				var/decl/lore_info/culture = SSlore.get_culture(choice)
+				var/datum/lore_info/culture = SSlore.get_culture(choice)
 				if(check_href == 1)
 					user << browse(culture.get_description(), "window=[token];size=700x400")
 				else

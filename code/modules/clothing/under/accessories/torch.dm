@@ -221,7 +221,7 @@ badges
 /obj/item/clothing/accessory/badge/oricon/tags/set_desc(var/mob/living/carbon/human/H)
 	if(!istype(H))
 		return
-	var/decl/lore_info/culture = H.get_cultural_value(TAG_RELIGION)
+	var/datum/lore_info/culture = H.get_cultural_value(TAG_RELIGION)
 	var/religion = culture ? culture.name : "Unset"
 	desc = "[initial(desc)]\nName: [H.real_name] ([H.get_species()])\nReligion: [religion]\nBlood type: [H.b_type]"
 
