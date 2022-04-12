@@ -93,7 +93,7 @@
 	cost = 10
 	containertype = /obj/structure/closet/crate/secure/engineering
 	containername = "Emitter crate"
-	access = access_ce
+	access = access_engine
 
 /datum/supply_pack/eng/engine/field_gen
 	name = "Field Generator crate"

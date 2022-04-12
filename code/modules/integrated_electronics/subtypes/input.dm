@@ -156,7 +156,7 @@
 	if(!istype(H)) //Invalid input
 		return
 
-	if(H in view(get_turf(H))) // Like medbot's analyzer it can be used in range..
+	if(H in view(get_turf(H))) // Like medibot's analyzer it can be used in range..
 
 		var/total_health = round(H.health/H.getMaxHealth(), 0.01)*100
 		var/missing_health = H.getMaxHealth() - H.health

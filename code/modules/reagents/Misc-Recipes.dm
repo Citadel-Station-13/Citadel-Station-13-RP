@@ -37,7 +37,6 @@
 	required_reagents = list("oxygen" = 1, "hydrogen" = 2)
 	result_amount = 1
 
-
 /datum/chemical_reaction/thermite
 	name = "Thermite"
 	id = "thermite"
@@ -311,6 +310,16 @@
 
 /datum/chemical_reaction/plastication/on_reaction(var/datum/reagents/holder, var/created_volume)
 	new /obj/item/stack/material/plastic(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/wax
+	name = "Wax"
+	id = "wax"
+	required_reagents = list("hydrogen" = 1, "carbon" = 1, "tallow" = 2)
+	result_amount = 1
+
+/datum/chemical_reaction/wax/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/stack/material/wax(get_turf(holder.my_atom), created_volume)
 	return
 
 /* Grenade reactions */

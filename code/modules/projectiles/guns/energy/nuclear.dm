@@ -59,7 +59,7 @@
 	modifystate = null
 
 //	requires_two_hands = 1
-	one_handed_penalty = 5 // It's rather bulky, so holding it in one hand is a little harder than with two, however it's not 'required'.
+	one_handed_penalty = 30 // It's rather bulky at the fore, so holding it in one hand is harder than with two.
 
 	firemodes = list(
 		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240),

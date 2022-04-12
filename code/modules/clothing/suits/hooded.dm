@@ -511,3 +511,24 @@
 	hoodtype = /obj/item/clothing/head/hood/vainglorious
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
+
+/obj/item/clothing/suit/storage/hooded/raincoat
+	name = "raincoat"
+	desc = "A thin, opaque coat meant to protect you from all sorts of rain. Preferred by outdoorsmen and janitors alike across the rift. Of course, the only type of fluids you'd like to protect yourself from around this place don't rain down from the sky. Usually. Comes with a hood!"
+	icon_state = "raincoat"
+	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	flags_inv = HIDEHOLSTER
+	hoodtype = /obj/item/clothing/head/hood/raincoat
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)
+
+/obj/item/clothing/suit/storage/hooded/rainponcho
+	name = "plastic raincoat"
+	desc = "A thin plastic poncho meant to protect you from rain. It's cheap, and it won't keep you dry for long."
+	icon_state = "rainponcho"
+	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	hoodtype = /obj/item/clothing/head/hood/rainponcho
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)

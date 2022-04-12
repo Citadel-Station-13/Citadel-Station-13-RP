@@ -2153,9 +2153,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/shield_gen{
-	field_radius = 49
-	},
+/obj/machinery/power/shield_generator/charged,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "eB" = (
@@ -2892,7 +2890,7 @@
 /area/mothership/security)
 "gb" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner";

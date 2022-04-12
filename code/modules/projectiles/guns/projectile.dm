@@ -28,6 +28,7 @@
 	var/allowed_magazines		//determines list of which magazines will fit in the gun
 	var/auto_eject = 0			//if the magazine should automatically eject itself when empty.
 	var/auto_eject_sound = null
+	var/can_special_reload = TRUE //Whether or not we can perform tactical/speed reloads on this gun
 	//TODO generalize ammo icon states for guns
 	//var/magazine_states = 0
 	//var/list/icon_keys = list()		//keys
@@ -99,20 +100,50 @@
 	if(handle_casings != HOLD_CASINGS)
 		chambered = null
 
+#define TACTICAL_RELOAD_SPEED 1 SECOND //time it takes to tac reload a gun
+#define SPEED_RELOAD_SPEED    0.5 SECONDS //time it takes to speed reload a gun
 
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
-/obj/item/gun/projectile/proc/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/proc/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
 		if(!(load_method & AM.mag_type) || caliber != AM.caliber || allowed_magazines && !is_type_in_list(A, allowed_magazines))
-			to_chat(user, "<span class='warning'>[AM] won't load into [src]!</span>")
+			to_chat(user, SPAN_WARNING("[AM] won't load into [src]!"))
 			return
 		switch(AM.mag_type)
 			if(MAGAZINE)
 				if(ammo_magazine)
-					to_chat(user, "<span class='warning'>[src] already has a magazine loaded.</span>") //already a magazine here
-					return
+					if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
+						to_chat(user, SPAN_WARNING("[src] already has a magazine loaded."))//already a magazine here
+						return
+					else
+						if(user.a_intent == INTENT_GRAB) //Tactical reloading
+							if(!can_special_reload)
+								to_chat(user, SPAN_WARNING("You can't tactically reload this gun!"))
+								return
+							if(!user.unEquip(AM, src))
+								return
+							if(do_after(user, TACTICAL_RELOAD_SPEED, src))
+								ammo_magazine.update_icon()
+								user.put_in_hands(ammo_magazine)
+								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
+													 SPAN_WARNING("You tactically reload \the [src] with \the [AM]!"))
+						else //Speed reloading
+							if(!can_special_reload)
+								to_chat(user, SPAN_WARNING("You can't speed reload this gun!"))
+								return
+							if(!user.unEquip(AM, src))
+								return
+							if(do_after(user, SPEED_RELOAD_SPEED, src))
+								ammo_magazine.update_icon()	
+								ammo_magazine.dropInto(user.loc)
+								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
+													 SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))
+					ammo_magazine = AM
+					playsound(loc, "sound/weapons/flipblade.ogg", 75, 1)
+					update_icon()
+					AM.update_icon()
 				user.remove_from_mob(AM)
 				AM.loc = src
 				ammo_magazine = AM
@@ -168,6 +199,9 @@
 			sleep(1 SECOND)
 
 	update_icon()
+
+#undef TACTICAL_RELOAD_SPEED
+#undef SPEED_RELOAD_SPEED
 
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
 /obj/item/gun/projectile/proc/unload_ammo(mob/user, var/allow_dump=1)

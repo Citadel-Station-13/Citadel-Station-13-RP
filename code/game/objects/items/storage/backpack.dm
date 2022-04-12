@@ -644,3 +644,8 @@
 	name = "plain black dufflebag"
 	desc = "A large dufflebag for holding extra tactical supplies."
 	icon_state = "duffle_syndie"
+
+/obj/item/storage/backpack/rebel
+	name = "rebel backpack"
+	desc = "A sturdy canvas bag designed to withstand harsh environmental conditions."
+	icon_state = "backpack_rebel"

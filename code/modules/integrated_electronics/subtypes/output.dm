@@ -233,25 +233,25 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_ILLEGAL = 1)
 
-/obj/item/integrated_circuit/output/sound/medbot
-	name = "medbot sound circuit"
-	desc = "A miniature speaker is attached to this component, used to annoy patients while they get pricked by a medbot."
+/obj/item/integrated_circuit/output/sound/medibot
+	name = "medibot sound circuit"
+	desc = "A miniature speaker is attached to this component, used to annoy patients while they get pricked by a medibot."
 	sounds = list(
-		"surgeon"		= 'sound/voice/medbot/msurgeon.ogg',
-		"radar"			= 'sound/voice/medbot/mradar.ogg',
-		"feel better"	= 'sound/voice/medbot/mfeelbetter.ogg',
-		"patched up"	= 'sound/voice/medbot/mpatchedup.ogg',
-		"injured"		= 'sound/voice/medbot/minjured.ogg',
-		"insult"		= 'sound/voice/medbot/minsult.ogg',
-		"coming"		= 'sound/voice/medbot/mcoming.ogg',
-		"help"			= 'sound/voice/medbot/mhelp.ogg',
-		"live"			= 'sound/voice/medbot/mlive.ogg',
-		"lost"			= 'sound/voice/medbot/mlost.ogg',
-		"flies"			= 'sound/voice/medbot/mflies.ogg',
-		"catch"			= 'sound/voice/medbot/mcatch.ogg',
-		"delicious"		= 'sound/voice/medbot/mdelicious.ogg',
-		"apple"			= 'sound/voice/medbot/mapple.ogg',
-		"no"			= 'sound/voice/medbot/mno.ogg',
+		"surgeon"		= 'sound/voice/medibot/msurgeon.ogg',
+		"radar"			= 'sound/voice/medibot/mradar.ogg',
+		"feel better"	= 'sound/voice/medibot/mfeelbetter.ogg',
+		"patched up"	= 'sound/voice/medibot/mpatchedup.ogg',
+		"injured"		= 'sound/voice/medibot/minjured.ogg',
+		"insult"		= 'sound/voice/medibot/minsult.ogg',
+		"coming"		= 'sound/voice/medibot/mcoming.ogg',
+		"help"			= 'sound/voice/medibot/mhelp.ogg',
+		"live"			= 'sound/voice/medibot/mlive.ogg',
+		"lost"			= 'sound/voice/medibot/mlost.ogg',
+		"flies"			= 'sound/voice/medibot/mflies.ogg',
+		"catch"			= 'sound/voice/medibot/mcatch.ogg',
+		"delicious"		= 'sound/voice/medibot/mdelicious.ogg',
+		"apple"			= 'sound/voice/medibot/mapple.ogg',
+		"no"			= 'sound/voice/medibot/mno.ogg',
 		)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 1)

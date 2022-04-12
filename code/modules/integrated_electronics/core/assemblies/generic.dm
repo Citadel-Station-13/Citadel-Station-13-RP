@@ -179,7 +179,7 @@
 	icon_state = "setup_drone_secbot"
 	desc = "It's a case, for building mobile electronics with. This one resembles a Securitron."
 
-/obj/item/electronic_assembly/drone/medbot
+/obj/item/electronic_assembly/drone/medibot
 	name = "type-d electronic drone"
 	icon_state = "setup_drone_medbot"
 	desc = "It's a case, for building mobile electronics with. This one resembles a Medibot."

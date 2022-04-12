@@ -148,6 +148,7 @@
 	recipes += new/datum/stack_recipe("lampshade", /obj/item/lampshade, 1, time = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("plastic net", /obj/item/material/fishing_net, 25, time = 1 MINUTE, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("rubberized wheels", /obj/item/skate_wheels, 12, time = 24)
+	recipes += new/datum/stack_recipe("plastic raincoat", /obj/item/clothing/suit/storage/hooded/rainponcho, 5, time = 10)
 
 /datum/material/wood/generate_recipes()
 	..()
@@ -418,3 +419,12 @@
 /datum/material/sinew/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("sinew restraints", /obj/item/handcuffs/sinew, 1)
+
+/datum/material/wax/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe("candle", /obj/item/flame/candle, 1)
+	recipes += new/datum/stack_recipe("wax floor tile", /obj/item/stack/tile/wax, 1, 4, 20)
+	recipes += new/datum/stack_recipe("honeycomb floor tile", /obj/item/stack/tile/honeycomb, 1, 4, 20)
+	recipes += new/datum/stack_recipe("wax globule", /obj/item/ammo_casing/organic/wax, 1)
+	recipes += new/datum/stack_recipe("royal throne", /obj/structure/bed/chair/apidean, 20, time = 10, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("apidean stool", /obj/structure/bed/chair/apidean_stool, 5, time = 5, one_per_turf = 1, on_floor = 1)

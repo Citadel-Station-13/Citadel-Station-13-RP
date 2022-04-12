@@ -697,6 +697,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/peachschnapps = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/lemonadeschnapps = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/rum = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/whiterum = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/sake = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/tequilla = 5,
@@ -797,9 +798,10 @@
 					/obj/item/reagent_containers/food/drinks/cans/cola = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
- /obj/item/reagent_containers/food/drinks/cans/iced_tea = 10)
+ 					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10,
+					 /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 10)
 	contraband = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6,
-				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 1)
+				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 4, /obj/item/reagent_containers/food/drinks/cans/geometer = 2)
 	prices = list(/obj/item/reagent_containers/food/drinks/cans/cola = 1,/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1,
 					/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 1,/obj/item/reagent_containers/food/drinks/cans/starkist = 1,
 					/obj/item/reagent_containers/food/drinks/cans/waterbottle = 2,/obj/item/reagent_containers/food/drinks/cans/space_up = 1,
@@ -807,7 +809,7 @@
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1,
 					/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 1, /obj/item/reagent_containers/food/drinks/cans/ochamidori = 3,
 					/obj/item/reagent_containers/food/drinks/cans/ramune = 2, /obj/item/reagent_containers/food/drinks/cans/battery = 5,
-					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2)
+					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2, /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 5)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.
@@ -865,6 +867,7 @@
 					/obj/item/storage/fancy/cigarettes/jerichos = 5,
 					/obj/item/storage/fancy/cigarettes/menthols = 5,
 					/obj/item/storage/rollingpapers = 5,
+					/obj/item/storage/rollingblunts = 5,
 					/obj/item/storage/box/matches = 10,
 					/obj/item/flame/lighter/random = 4)
 	contraband = list(/obj/item/flame/lighter/zippo = 4)
@@ -879,6 +882,7 @@
 					/obj/item/storage/fancy/cigarettes/jerichos = 22,
 					/obj/item/storage/fancy/cigarettes/menthols = 18,
 					/obj/item/storage/rollingpapers = 10,
+					/obj/item/storage/rollingblunts = 17,
 					/obj/item/storage/box/matches = 1,
 					/obj/item/flame/lighter/random = 2)
 
@@ -1179,6 +1183,7 @@
 					/obj/item/toy/plushie/bear_soda = 2,
 					/obj/item/toy/plushie/bear_bloody = 2,
 					/obj/item/toy/plushie/bear_space = 1,
+					/obj/item/toy/plushie/doll = 3,
 					/obj/item/storage/daki = 10)
 	premium = list(/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
 					/obj/item/storage/trinketbox = 2)
@@ -1216,6 +1221,7 @@
 					/obj/item/toy/plushie/bear_soda = 35,
 					/obj/item/toy/plushie/bear_bloody = 35,
 					/obj/item/toy/plushie/bear_space = 50,
+					/obj/item/toy/plushie/doll = 50,
 					/obj/item/storage/daki = 100)
 
 /obj/machinery/vending/fishing
@@ -1931,6 +1937,7 @@
 					/obj/item/storage/box/fluff/swimsuit/captain = 5,
 					/obj/item/storage/box/fluff/swimsuit/highclass = 3,
 					/obj/item/storage/box/fluff/swimsuit/latex = 3,
+					/obj/item/storage/box/rainponcho = 5,
 					/obj/item/clothing/under/utility = 5,
 					/obj/item/clothing/under/utility/grey = 5,
 					/obj/item/clothing/under/utility/blue = 5,
@@ -2133,6 +2140,7 @@
 					/obj/item/storage/box/fluff/swimsuit/captain = 25,
 					/obj/item/storage/box/fluff/swimsuit/highclass = 40,
 					/obj/item/storage/box/fluff/swimsuit/latex = 40,
+					/obj/item/storage/box/rainponcho = 10,
 					/obj/item/clothing/under/utility = 25,
 					/obj/item/clothing/under/utility/grey = 25,
 					/obj/item/clothing/under/utility/blue = 25,

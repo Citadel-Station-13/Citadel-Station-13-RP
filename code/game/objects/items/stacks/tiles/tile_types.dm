@@ -381,3 +381,25 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	throw_range = 20
 	flags = 0
 	no_variants = FALSE
+
+/obj/item/stack/tile/wax
+	name = "wax tile"
+	singular_name = "wax tile"
+	icon_state = "tile-wax"
+	force = 1
+	throwforce = 1
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/honeycomb
+	name = "honeycomb tile"
+	singular_name = "honeycomb tile"
+	icon_state = "tile-honeycomb"
+	force = 1
+	throwforce = 1
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE

@@ -86,3 +86,16 @@
 		if(istype(L, /mob/living/simple_mob/mechanical/ward/monitor/crew))	// Also ignore friendly monitor wards
 			return TRUE
 		return L.assess_perp(src, FALSE, FALSE, TRUE, FALSE) <= 3
+
+/mob/living/simple_mob/mechanical/viscerator/apidean
+	name = "\improper Apidean hunter drone"
+	desc = "This organic creature bears striking similarities to mechanical Viscerator drones. In spite of that resemblance, it appears to be a biological organism."
+	icon_state = "viscerator_api_attack"
+	icon_living = "viscerator_api_attack"
+
+/mob/living/simple_mob/mechanical/viscerator/apidean/IIsAlly(mob/living/L)
+	. = ..()
+	if(!.)
+		if(istype(L, /mob/living/carbon/human/apidaen))
+			return TRUE
+		return L.assess_perp(src, FALSE, FALSE, TRUE, FALSE) <= 3

@@ -62,7 +62,7 @@
 /datum/uplink_item/item/medical/surgery
 	name = "Surgery kit"
 	item_cost = 45
-	path = /obj/item/storage/firstaid/surgery
+	path = /obj/item/storage/toolbox/surgery
 
 /datum/uplink_item/item/medical/combat
 	name = "Combat medical kit"
@@ -158,4 +158,3 @@
 	name = "Combat organ kit"
 	item_cost = 120
 	path = /obj/item/storage/firstaid/insiderepair
-

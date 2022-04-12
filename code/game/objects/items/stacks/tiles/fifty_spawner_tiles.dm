@@ -103,3 +103,11 @@
 /obj/fiftyspawner/floor_brass
 	name = "stack of brass tiles"
 	type_to_spawn = /obj/item/stack/tile/brass
+
+/obj/fiftyspawner/floor_wax
+	name = "stack of wax tiles"
+	type_to_spawn = /obj/item/stack/tile/wax
+
+/obj/fiftyspawner/floor_honeycomb
+	name = "stack of honeycomb tiles"
+	type_to_spawn = /obj/item/stack/tile/honeycomb
