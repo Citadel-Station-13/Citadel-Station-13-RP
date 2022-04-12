@@ -50,6 +50,7 @@
 			"diamond" = 1,
 			"gold" = 8,
 			"silver" = 8,
+			"copper" = 10,
 			"phoron" = 18,
 			"lead" = 2,
 			"verdantium" = 1))
@@ -62,6 +63,7 @@
 			"carbon" = 35,
 			"gold" = 3,
 			"silver" = 3,
+			"copper" = 5,
 			"phoron" = 25,
 			"lead" = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
@@ -83,6 +85,7 @@
 			"diamond" = 4,
 			"gold" = 15,
 			"silver" = 15,
+			"copper" = 10,
 			"lead" = 5,
 			"verdantium" = 2))
 	else
@@ -95,6 +98,7 @@
 			"diamond" = 2,
 			"gold" = 7,
 			"silver" = 7,
+			"copper" = 7,
 			"lead" = 4,
 			"verdantium" = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))

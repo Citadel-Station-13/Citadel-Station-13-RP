@@ -175,8 +175,8 @@
 	..()
 
 /datum/species/shapeshifter/xenochimera/add_inherent_spells(var/mob/living/carbon/human/H)
-	var/master_type = /obj/screen/movable/spell_master/chimera
-	var/obj/screen/movable/spell_master/chimera/new_spell_master = new master_type
+	var/master_type = /atom/movable/screen/movable/spell_master/chimera
+	var/atom/movable/screen/movable/spell_master/chimera/new_spell_master = new master_type
 
 	if(!H.spell_masters)
 		H.spell_masters = list()
@@ -193,7 +193,7 @@
 /datum/species/shapeshifter/xenochimera/proc/add_feral_spells(var/mob/living/carbon/human/H)
 	if(!has_feral_spells)
 		var/check = FALSE
-		var/master_type = /obj/screen/movable/spell_master/chimera
+		var/master_type = /atom/movable/screen/movable/spell_master/chimera
 		for(var/spell/S as anything in feral_spells)
 			var/spell/spell_to_add = new S(H)
 			check = H.add_spell(spell_to_add, "cult", master_type)
@@ -472,11 +472,11 @@
 
 	return
 
-/obj/screen/xenochimera
+/atom/movable/screen/xenochimera
 	icon = 'icons/mob/chimerahud.dmi'
 	invisibility = 101
 
-/obj/screen/xenochimera/danger_level
+/atom/movable/screen/xenochimera/danger_level
 	name = "danger level"
 	icon_state = "danger00"		//first number is bool of whether or not we're in danger, second is whether or not we're feral
 	alpha = 200

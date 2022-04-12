@@ -68,6 +68,10 @@
 	fire_sound = 'sound/weapons/weaponsounds_smallpistolshot.ogg'
 	damage = 20
 
+/obj/item/projectile/bullet/pistol/lap //Light Armor Piercing
+	damage = 20
+	armor_penetration = 10
+
 /obj/item/projectile/bullet/pistol/ap
 	damage = 15
 	armor_penetration = 30
@@ -337,6 +341,14 @@
 /obj/item/projectile/bullet/cyanideround
 	name = "poison bullet"
 	damage = 40
+	damage_type = TOX
+
+/obj/item/projectile/bullet/cyanideround/jezzail
+	name = "toxic penetrator shard"
+	damage = 25
+	armor_penetration = 20
+	agony = 5
+	embed_chance = 1
 	damage_type = TOX
 
 /obj/item/projectile/bullet/burstbullet

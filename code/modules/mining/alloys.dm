@@ -51,3 +51,4 @@
 		"copper" = 1,
 		"sand" = 1
 		)
+	product = /obj/item/stack/material/brass

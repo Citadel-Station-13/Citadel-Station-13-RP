@@ -106,3 +106,16 @@
 	icon_state = "syndicate-orange"
 	desc = "A thin, ungainly softsuit colored in blaze orange for rescuers to easily locate, looks pretty fragile."
 	slowdown = 4
+
+//Russian Emergency Suit
+/obj/item/clothing/head/helmet/space/emergency/russian
+	name = "Sovjet Emergency Space Helmet"
+	icon_state = "russian"
+	desc = "A simple helmet with a built in light, smells like mothballs."
+	flash_protection = FLASH_PROTECTION_NONE
+
+/obj/item/clothing/suit/space/emergency/russian
+	name = "Sovjet Emergency Softsuit"
+	icon_state = "russian"
+	desc = "A chunky antique softsuit distributed to members of the Indo-Russian Diaspora. After all this time, it looks pretty fragile."
+	slowdown = 4

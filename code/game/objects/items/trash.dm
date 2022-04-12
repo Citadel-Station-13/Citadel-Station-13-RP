@@ -156,3 +156,44 @@
 	name = "\improper broken arrow"
 	desc = "This arrow shaft shattered under the stress of impact. It's useless."
 	icon_state = "brokenarrow"
+
+/obj/item/trash/brownies
+	name = "brownie tray"
+	icon_state = "waffles"
+
+/obj/item/trash/snacktray
+	name = "snacktray"
+	icon_state = "waffles"
+
+/obj/item/trash/dipbowl
+	name = "dip bowl"
+	icon_state = "waffles"
+
+/obj/item/trash/chipbasket
+	name = "empty basket"
+	icon_state = "waffles"
+
+//Tyrmalin Imported Foods
+/obj/item/trash/cavemoss
+	name = "Momma Toecutter's Cavemoss"
+	icon_state = "cavemoss_can"
+
+/obj/item/trash/diggerstew
+	name = "Momma Toecutter's Canned Digger's Stew"
+	icon_state = "diggerstew_can"
+
+/obj/item/trash/canned_beetles
+	name = "Grom's Green Ham In a Can"
+	icon_state = "canned_beetles"
+
+/obj/item/trash/rust_can
+	name = "Iron Soup"
+	icon_state = "rust_can"
+
+/obj/item/trash/alraune_bar
+	name = "Alraune snack bar"
+	icon_state = "alraunesnack"
+
+/obj/item/trash/bugsnacks
+	name = "Bugsnacks"
+	icon_state = "bugsnacks"

@@ -501,7 +501,7 @@
 
 	var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[O_BRAIN]
 	if(!brain) return //no brain
-	
+
 	// silicons edit - 2 points of damage lenience until we have proper organ rotting
 	var/brain_damage = clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage - 2)
 	H.setBrainLoss(brain_damage)
@@ -673,6 +673,20 @@
 	icon_state = "jumperpaddles0"
 	item_state = "jumperpaddles0"
 	use_on_synthetic = 1
+
+// Rig Defibs
+/obj/item/shockpaddles/standalone/rig
+	desc = "You shouldn't be seeing these."
+	chargetime = (2 SECONDS)
+
+/obj/item/shockpaddles/standalone/rig/checked_use(var/charge_amt)
+	return 1
+
+/obj/item/shockpaddles/standalone/rig/emp_act(severity)
+	return
+
+/obj/item/shockpaddles/standalone/rig/can_use(mob/user, mob/M)
+	return 1
 
 #undef DEFIB_TIME_LIMIT
 #undef DEFIB_TIME_LOSS

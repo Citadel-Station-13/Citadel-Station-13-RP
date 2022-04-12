@@ -400,6 +400,13 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/ears/elfshort
+	name = "elven ears (short)"
+	desc = ""
+	icon_state = "elfshort"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/ears/floppyelf
 	name = "floppy elven ears"
 	desc = ""

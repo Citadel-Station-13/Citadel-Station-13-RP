@@ -1,3 +1,4 @@
+/* Re-Removing this one. It's very bugged currently, and we have a dedicated system elsewhere, so it won't impact things too much.
 /datum/crafting_recipe/pin_removal
 	name = "Pin Removal"
 	result = /obj/item/gun
@@ -13,11 +14,12 @@
 	if (G.no_pin_required || !G.pin)
 		return FALSE
 	return TRUE
+*/
 
 /datum/crafting_recipe/strobeshield
 	name = "Strobe Shield"
 	result = /obj/item/shield/riot/flash
-	reqs = list(/obj/item/assembly/electronic_assembly = 1,
+	reqs = list(/obj/item/frame = 1,
 				/obj/item/flash = 1,
 				/obj/item/shield/riot = 1)
 	time = 40
@@ -191,9 +193,21 @@
 	result = /obj/item/chainsaw
 	reqs = list(/obj/item/surgical/circular_saw = 1,
 				/obj/item/stack/cable_coil = 3,
+				/obj/item/stock_parts/motor = 1,
 				/obj/item/stack/material/plasteel = 5)
 	tools = list(TOOL_WELDER)
 	time = 50
+	category = CAT_WEAPONRY
+	subcategory = CAT_MELEE
+
+/datum/crafting_recipe/chainsword
+	name = "Chainsaw Sword"
+	result = /obj/item/chainsaw/chainsword
+	reqs = list(/obj/item/chainsaw = 1,
+				/obj/item/stock_parts/motor = 1,
+				/obj/item/stack/material/durasteel = 5)
+	tools = list(TOOL_WELDER)
+	time = 100
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
 

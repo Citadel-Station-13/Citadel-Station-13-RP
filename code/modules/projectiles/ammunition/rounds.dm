@@ -121,7 +121,6 @@
 	projectile_type = /obj/item/projectile/bullet/pistol/hunter
 	matter = list(DEFAULT_WALL_MATERIAL = 80)
 
-
 /obj/item/ammo_casing/a9mm/flash
 	desc = "A 9mm flash shell casing."
 	icon_state = "r-casing"
@@ -142,6 +141,30 @@
 	icon_state = "ag-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 130, "silver" = 100)
+
+/*
+ * 5.7
+ */
+/obj/item/ammo_casing/a57x28mm
+	desc = "A 5.7x28mm bullet casing."
+	caliber = "5.7x28mm"
+	projectile_type = /obj/item/projectile/bullet/pistol/lap
+	matter = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/ap
+	desc = "A 5.7x28mm armor-piercing bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/ap
+	matter = list(DEFAULT_WALL_MATERIAL = 80, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/hp
+	desc = "A 5.7x28mm hollow-point bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/hp
+	matter = list(DEFAULT_WALL_MATERIAL = 60, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/hunter
+	desc = "A 5.7x28mm hunting bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/hunter
+	matter = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 50)
 
 /*
  * .45
@@ -504,6 +527,11 @@
 	caliber = "rocket"
 	matter = list(DEFAULT_WALL_MATERIAL = 10000)
 
+/obj/item/ammo_casing/rocket/weak
+	name = "low-yield rocket shell"
+	projectile_type = /obj/item/projectile/bullet/srmrocket/weak
+	matter = list(DEFAULT_WALL_MATERIAL = 5000)
+
 /obj/item/ammo_casing/cap
 	name = "cap"
 	desc = "A cap for children toys."
@@ -523,8 +551,18 @@
 	desc = "Globular biomatter rendered and ready for compression."
 	caliber = "organic"
 	icon_state = "globule"
+	color = "#FFE0E2"
 	projectile_type = /obj/item/projectile/bullet/organic
 	matter = list("flesh" = 100)
+
+/obj/item/ammo_casing/organic/wax
+	name = "wax globule"
+	desc = "Tacky wax rendered semi-solid and ready for compression."
+	caliber = "apidean"
+	icon_state = "globule"
+	color = "#E6E685"
+	projectile_type = /obj/item/projectile/bullet/organic/wax
+	matter = list("wax" = 100)
 
 //Arrows
 /obj/item/ammo_casing/arrow
@@ -565,3 +603,22 @@
 	desc = "It's a plunger, for plunging."
 	icon_state = "plunger"
 	projectile_type = /obj/item/projectile/bullet/reusable/plunger
+
+//Foam Darts
+/obj/item/ammo_casing/foam
+	name = "foam dart"
+	desc = "A soft projectile made out of orange foam with a blue plastic tip."
+	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	caliber = "foamdart"
+	icon_state = "foamdart"
+	throwforce = 0 //good luck hitting someone with the pointy end of the arrow
+	throw_speed = 3
+	caseless = 1
+	drop_sound = 'sound/items/drop/accessory.ogg'
+	pickup_sound = 'sound/items/pickup/accessory.ogg'
+
+/obj/item/ammo_casing/foam/riot
+	name = "riot dart"
+	desc = "A flexible projectile made out of hardened orange foam with a red plastic tip."
+	projectile_type = /obj/item/projectile/bullet/reusable/foam/riot
+	icon_state = "foamdart_riot"

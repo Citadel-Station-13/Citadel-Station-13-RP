@@ -137,7 +137,7 @@
 /area/ship/ert/hangar)
 "aQ" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -4015,8 +4015,8 @@
 /area/ship/ert/atmos)
 "DM" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/surgery,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/manager,
@@ -5287,9 +5287,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_st)
 "LH" = (
-/obj/machinery/shield_gen/external,
 /obj/effect/floor_decal/corner/white,
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/shield_gen,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
 "LJ" = (
@@ -5870,7 +5870,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/shield_gen,
 /obj/structure/cable/yellow{
 	d2 = 8;
 	icon_state = "0-8"
@@ -5878,6 +5877,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
+/obj/machinery/power/shield_generator/charged,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "OX" = (
@@ -6338,20 +6338,20 @@
 /obj/structure/table/rack/steel,
 /obj/item/gun/projectile/automatic/p90,
 /obj/item/gun/projectile/automatic/p90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
 /obj/item/gun/projectile/automatic/p90,
 /obj/item/gun/projectile/automatic/p90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_dl)

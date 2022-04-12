@@ -95,6 +95,7 @@
 	name = "paper sack"
 	desc = "A sack neatly crafted out of paper."
 	icon_state = "paperbag_None"
+	slot_flags = SLOT_HEAD
 	/// A list of all available papersack reskins
 	var/list/papersack_designs = list()
 
@@ -109,6 +110,7 @@
 		))
 
 /obj/item/storage/box/papersack/update_icon_state()
+	. = ..()
 	if(contents.len == 0)
 		icon_state = "[item_state]"
 	else

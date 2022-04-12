@@ -130,6 +130,7 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	options["Webley MKVI "] = "webley"
 	options["Lombardi Buzzard"] = "detective_buzzard"
 	options["Constable Deluxe 2502"] = "detective_constable"
+	options["Synth Tracker"] = "deckard-loaded"
 	var/choice = input(M,"Choose your sprite!","Resprite Gun") in options
 	if(src && choice && !M.stat && in_range(M,src))
 		icon_state = options[choice]
@@ -281,8 +282,6 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	ammo_type = /obj/item/ammo_casing/a38/silver
 	secondary_ammo_type = /obj/item/ammo_casing/a12g/silver
 
-
-
 //Ported from Bay
 /obj/item/gun/projectile/revolver/webley
 	name = "service revolver"
@@ -322,3 +321,19 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 /obj/item/gun/projectile/revolver/dirty_harry/holy
 	name = "Blessed Model 29"
 	ammo_type = /obj/item/ammo_casing/a44/silver
+
+/obj/item/gun/projectile/revolver/combat
+	name = "NT-R-7 combat revolver"
+	desc = "A semiautomatic revolver tooled for NanoTrasen special operations. Chambered in .44 Magnum, it serves as the perfect sidearm for any off the books endeavor."
+	icon_state = "combatrevolver"
+	caliber = ".44"
+	fire_delay = 5.7
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
+	ammo_type = /obj/item/ammo_casing/a44
+
+/obj/item/gun/projectile/revolver/combat/update_icon()
+	..()
+	if(loaded.len)
+		icon_state = "combatrevolver"
+	else
+		icon_state = "combatrevolver-e"

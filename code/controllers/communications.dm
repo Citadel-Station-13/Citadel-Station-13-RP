@@ -180,7 +180,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 	if(frequency == MED_FREQ)
 		return "medradio"
 	if(frequency == SUP_FREQ) // cargo
-		return "supradio"
+		return "suppradio"
 	if(frequency == SRV_FREQ) // service
 		return "srvradio"
 	if(frequency == EXP_FREQ) // explorer

@@ -32,6 +32,7 @@
 
 	var/mining_points = 0	// For redeeming at mining equipment vendors
 	var/survey_points = 0	// For redeeming at explorer equipment vendors.
+	var/engineer_points = 0	// For redeeming at engineering equipment vendors
 
 /obj/item/card/id/examine(mob/user)
 	. = ..()
@@ -49,7 +50,8 @@
 	popup.open()
 	return
 
-/obj/item/card/id/proc/update_name()
+/obj/item/card/id/update_name()
+	. = ..()
 	name = "[src.registered_name]'s ID Card ([src.assignment])"
 
 /obj/item/card/id/proc/set_id_photo(var/mob/M)

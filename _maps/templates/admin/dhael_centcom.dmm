@@ -226,7 +226,7 @@
 /obj/item/clothing/mask/surgical,
 /obj/item/stack/nanopaste/advanced,
 /obj/item/stack/nanopaste/advanced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -3818,16 +3818,16 @@
 "ii" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
 	dir = 5;
@@ -14861,8 +14861,8 @@
 /area/centcom/specops)
 "EI" = (
 /obj/structure/table/rack,
-/obj/item/gun/launcher/rocket,
-/obj/item/gun/launcher/rocket,
+/obj/item/gun/projectile/rocket,
+/obj/item/gun/projectile/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
@@ -15207,7 +15207,7 @@
 	},
 /area/centcom/specops)
 "Mw" = (
-/obj/machinery/shield_gen/external,
+/obj/machinery/power/shield_generator/charged,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -15490,7 +15490,7 @@
 	},
 /area/centcom/bathroom)
 "TW" = (
-/obj/machinery/shield_gen,
+/obj/machinery/power/shield_generator/charged,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

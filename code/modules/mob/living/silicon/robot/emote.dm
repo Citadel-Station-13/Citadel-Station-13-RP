@@ -253,6 +253,74 @@
 			playsound(src.loc, 'sound/machines/dwoop.ogg', 50, 0)
 			m_type = 1
 
+		if("startup")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if (param)
+				message = "chimes to life."
+			else
+				message = "chimes to life."
+			playsound(src.loc, 'sound/machines/synth_startup.ogg')
+			m_type = 1
+
+		if("shutdown")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if(param)
+				message = "emits a nostalgic tone as they fall silent."
+			else
+				message = "emits a nostalgic tone as they fall silent."
+			playsound(src.loc, 'sound/machines/synth_shutdown.ogg')
+			m_type = 1
+
+		if("error")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if(param)
+				message = "experiences a system error."
+			else
+				message = "experiences a system error."
+			playsound(src.loc, 'sound/machines/synth_error.ogg')
+			m_type = 1
+
+		if("die")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if(param)
+				message = "crumples, their chassis colder and more lifeless than usual."
+			else
+				message = "crumples, their chassis colder and more lifeless than usual."
+			playsound(src.loc, 'sound/machines/synth_gameover.ogg')
+			m_type = 1
+
 		if("flip")
 			if(src.sleeping || src.resting || src.buckled || src.weakened || src.restrained())
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
@@ -282,7 +350,7 @@
 			if (istype(module,/obj/item/robot_module/robot/knine) || istype(module,/obj/item/robot_module/robot/medihound) || istype(module,/obj/item/robot_module/robot/scrubpup) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/science) || istype(module,/obj/item/robot_module/robot/engiedog) || istype(module,/obj/item/robot_module/robot/clerical/brodog))
 				message = "lets out a bark."
 
-				playsound(loc, 'modular_citadel/sound/voice/bark2.ogg', 50, 1, -1)
+				playsound(loc, 'sound/voice/bark2.ogg', 50, 1, -1)
 				m_type = 2
 			else
 				to_chat(src, "You're not a dog!")
@@ -290,7 +358,7 @@
 			if (istype(module,/obj/item/robot_module/robot/knine) || istype(module,/obj/item/robot_module/robot/medihound) || istype(module,/obj/item/robot_module/robot/scrubpup) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/science) || istype(module,/obj/item/robot_module/robot/engiedog) || istype(module,/obj/item/robot_module/robot/clerical/brodog))
 				message = "lets out an A R F E."
 
-				playsound(loc, 'modular_citadel/sound/voice/arfe.ogg', 50, 1, -1)
+				playsound(loc, 'sound/voice/arfe.ogg', 50, 1, -1)
 				m_type = 2
 			else
 				to_chat(src, "You're not a dog!")

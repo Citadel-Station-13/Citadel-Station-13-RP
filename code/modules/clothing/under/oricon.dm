@@ -412,3 +412,10 @@
 /obj/item/clothing/under/oricon/mildress/marine/command
 	name = "marine command dress uniform"
 	desc = "The dress uniform of the JSDF Marine Corps, even classier in gold."
+
+//Pirate Mate Fatigues
+/obj/item/clothing/under/worn_fatigues
+	name = "special ops fatigues"
+	desc = "These worn fatigues match the pattern known to be used by JSDF Marine Corps special forces."
+	icon = 'icons/obj/clothing/uniforms_vr.dmi'
+	icon_state = "russobluecamo"

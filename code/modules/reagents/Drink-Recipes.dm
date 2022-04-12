@@ -501,7 +501,7 @@
 	name = "Mead"
 	id = "mead"
 	result = "mead"
-	required_reagents = list("sugar" = 1, "water" = 1)
+	required_reagents = list("honey" = 1, "water" = 1)
 	catalysts = list("enzyme" = 5)
 	result_amount = 2
 
@@ -1578,7 +1578,7 @@
 	result = "desire to die"
 	required_reagents = list("deathbell" = 1, "nuclearwaste" = 1)
 	result_amount = 2
-	
+
 /datum/chemical_reaction/drink/raspberrybeesknees
 	name = "Raspberry Bee's Knees"
 	id = "raspberrybeesknees"
@@ -1662,3 +1662,24 @@
 	result = "grapesmoothie"
 	required_reagents = list("grapejuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
 	result_amount = 5 // fuck linters
+
+/datum/chemical_reaction/drinks/goliath
+	name = "Goliath Spit"
+	id = "goliathspit"
+	result = "goliathspit"
+	required_reagents = list("whiskey" = 1, "cider" = 1, "tonic" = 1, "ice" = 1, "honey" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/maryonacross
+	name = "Mary On a Cross"
+	id = "maryonacross"
+	result = "maryonacross"
+	required_reagents = list("bloodymary" = 2, "blood" = 1, "holywater" = 1, "vodka" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/royaljelly
+	name = "Royal Jelly"
+	id = "royaljelly"
+	result = "royaljelly"
+	required_reagents = list("winebrandy" = 2, "honey" = 3)
+	result_amount = 5

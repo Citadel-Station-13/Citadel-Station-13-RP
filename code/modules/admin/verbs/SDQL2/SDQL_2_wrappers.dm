@@ -111,6 +111,9 @@
 /proc/_pick(...)
 	return pick(arglist(args))
 
+/proc/_picklist(list/L)
+	return SAFEPICK(L)
+
 /proc/_prob(P)
 	return prob(P)
 

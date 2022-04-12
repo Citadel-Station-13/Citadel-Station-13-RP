@@ -21,6 +21,10 @@
 
 /obj/machinery/vending/nifsoft_shop/Initialize(mapload)
 	. = ..()
+
+	if(wires)
+		qdel(wires)
+	wires = new /datum/wires/vending/no_contraband(src) //These wires can't be hacked for contraband.
 	entopic = new(aholder = src, aicon = icon, aicon_state = "beacon")
 
 /obj/machinery/vending/nifsoft_shop/Destroy()
@@ -72,9 +76,9 @@
 		list(premium, CAT_COIN))
 
 	for(var/current_list in all_products)
-		var/category = current_list[2]
+		var/category = current_list[CAT_HIDDEN]
 
-		for(var/entry in current_list[1])
+		for(var/entry in current_list[CAT_NORMAL])
 			var/datum/nifsoft/NS = entry
 			var/applies_to = initial(NS.applies_to)
 			var/context = ""
@@ -141,7 +145,7 @@
 			if(initial(path.access))
 				var/list/soft_access = list(initial(path.access))
 				var/list/usr_access = usr.GetAccess()
-				if(!has_access(soft_access, list(), usr_access) && !emagged)
+				if(scan_id && !has_access(soft_access, list(), usr_access) && !emagged)
 					to_chat(usr, "<span class='warning'>You aren't authorized to buy [initial(path.name)].</span>")
 					flick(icon_deny,entopic.my_image)
 					return
@@ -217,3 +221,21 @@
 		currently_vending = null
 		SSnanoui.update_uis(src)
 	return 1
+
+//Can't throw intangible software at people.
+/obj/machinery/vending/nifsoft_shop/throw_item()
+	//TODO: Make it throw disks at people with random software? That might be fun. EVEN THE ILLEGAL ONES? ;o
+	return 0
+
+/datum/wires/vending/no_contraband
+
+/datum/wires/vending/no_contraband/on_pulse(index) //Can't hack for contraband, need emag.
+	if(index != WIRE_CONTRABAND)
+		..(index)
+
+/obj/machinery/vending/nifsoft_shop/emag_act(remaining_charges, mob/user) //Yeees, YEEES! Give me that black market tech.
+	if(!emagged || !(categories & CAT_HIDDEN))
+		emagged = 1
+		categories |= CAT_HIDDEN
+		to_chat(user, "You short out [src]'s access lock & stock restrictions.")
+		return 1
