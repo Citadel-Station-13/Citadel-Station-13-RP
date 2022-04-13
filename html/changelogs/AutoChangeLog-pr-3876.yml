@@ -1,0 +1,8 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - bugfix: "fixed a few things, including prevention of out-of-bounds teleportation (iirc)"
+  - imageadd: "New Teleporter related sprites, including beacons."
+  - imagedel: "Merged radio_vr.dmi"
+  - spellcheck: "Beacon.dm -> beacon.dm"
+  - refactor: "Teleporters pretty much entirely reworked."
