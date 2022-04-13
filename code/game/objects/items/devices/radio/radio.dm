@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 ))
 
 /obj/item/radio
-	icon = 'icons/obj/radio_vr.dmi' //VOREStation Edit
+	icon = 'icons/obj/radio.dmi' //VOREStation Edit
 	name = "shortwave radio" //VOREStation Edit
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
@@ -598,10 +598,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		else
 			user.show_message("<span class='notice'>\The [src] can no longer be modified or attached!</span>")
 		updateDialog()
-			//Foreach goto(83)
-		add_fingerprint(user)
 		return
-	else return
 
 /obj/item/radio/emp_act(severity)
 	broadcasting = 0

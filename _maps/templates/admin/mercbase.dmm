@@ -3739,13 +3739,13 @@
 	},
 /area/shuttle/mercenary)
 "gy" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},
 /area/shuttle/mercenary)
 "gz" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},
