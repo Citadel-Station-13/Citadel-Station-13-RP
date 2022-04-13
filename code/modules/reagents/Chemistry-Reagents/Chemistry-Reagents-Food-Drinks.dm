@@ -673,7 +673,7 @@ End Citadel Change */
 	M.adjustToxLoss(removed * strength_mod) // Probably not a good idea; not very deadly though
 	return
 
-/datum/reagent/drink/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed, var/blood_content)
+/datum/reagent/drink/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	M.nutrition += nutrition * removed
 	M.dizziness = max(0, M.dizziness + adj_dizzy)
 	M.drowsyness = max(0, M.drowsyness + adj_drowsy)
@@ -687,7 +687,6 @@ End Citadel Change */
 	is_vampire = M.species.is_vampire
 	if(blood_content > 0)
 		if(is_vampire == TRUE)
-			M.Paralyse(20)
 			M.nutrition += removed * blood_content
 	/* VOREStation Removal
 	if(alien == IS_SLIME && water_based)
@@ -1957,7 +1956,7 @@ End Citadel Change */
 	description = "A sweet mix of blood-like additives. Vampiric."
 	taste_description = "an odd blend of metals and sugar"
 	color = "#993c49"
-	blood_content = 5
+	blood_content = 0.5
 
 	glass_name = "Blud"
 	glass_desc = "A sweet mix of blood-like additives. Vampiric."
@@ -1969,7 +1968,7 @@ End Citadel Change */
 	description = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
 	taste_description = "an awful blend of metals and artificial sweeteners"
 	color = "#793c44"
-	blood_content = 5
+	blood_content = 0.5
 
 	glass_name = "Blud Light"
 	glass_desc = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"

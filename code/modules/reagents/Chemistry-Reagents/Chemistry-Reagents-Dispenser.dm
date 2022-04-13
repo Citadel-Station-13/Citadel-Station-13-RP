@@ -141,7 +141,7 @@
 	if(halluci)
 		M.hallucination = max(M.hallucination, halluci*3)
 
-/datum/reagent/ethanol/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed, var/blood_content)
+/datum/reagent/ethanol/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(issmall(M)) removed *= 2
 	M.nutrition += nutriment_factor * removed
 	var/strength_mod = 1
@@ -158,7 +158,6 @@
 	var/is_vampire = M.species.is_vampire
 	if(blood_content > 0)
 		if(is_vampire == 1)
-			M.Paralyse(20)
 			M.nutrition += removed * blood_content
 
 	M.add_chemical_effect(CE_ALCOHOL, 1)
