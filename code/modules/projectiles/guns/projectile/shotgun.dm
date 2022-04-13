@@ -5,6 +5,7 @@
 	item_state = "shotgun"
 	max_shells = 4
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	slot_flags = SLOT_BACK
 	caliber = "12g"
@@ -125,6 +126,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	handle_casings = CYCLE_CASINGS
 	max_shells = 2
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	slot_flags = SLOT_BACK
 	caliber = "12g"

@@ -52,6 +52,7 @@ obj/item/gun/energy/phasegun/rifle
 	wielded_item_state = "phasecannon-wielded"	//TODO: New Sprites
 	w_class = ITEMSIZE_HUGE		// This thing is big.
 	slot_flags = SLOT_BACK
+	heavy = TRUE
 	charge_cost = 100
 	projectile_type = /obj/item/projectile/energy/phase/heavy/cannon
 	accuracy = 70

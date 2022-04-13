@@ -1643,3 +1643,10 @@
 
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
+
+/mob/living/carbon/human/can_wield_item(obj/item/W)
+	//Since teshari are small by default, they have different logic to allow them to use certain guns despite that.
+	//If any other species need to adapt for this, you can modify this proc with a list instead
+	if(istype(species, /datum/species/teshari))
+		return !W.heavy //return true if it is not heavy, false if it is heavy
+	else return ..()
