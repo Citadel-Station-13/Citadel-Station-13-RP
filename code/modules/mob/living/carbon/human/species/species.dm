@@ -258,6 +258,15 @@
 	var/silk_max_reserve = 500
 	var/silk_color = "#FFFFFF"
 
+	//Moved these from custom_species.dm
+	//var/vore_numbing = 0
+	var/is_vampire = FALSE // If this is set to 0, the person can't get nutrition from food.
+	var/metabolism = 0.0015
+	var/lightweight = FALSE //Oof! Nonhelpful bump stumbles.
+	var/trashcan = FALSE //It's always sunny in the wrestling ring.
+	var/base_species = null // Unused outside of a few species
+	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
+
 /datum/species/New()
 	if(hud_type)
 		hud = new hud_type()

@@ -42,12 +42,12 @@
 	var/effective_dose = dose
 	if(issmall(M)) effective_dose *= 2
 
-	var/is_vampire = 0 //VOREStation Edit START
-	if(ishuman(M))
+	var/is_vampire = FALSE
+	if(ishuman(M)) //VOREStation Edit START
 		var/mob/living/carbon/human/H = M
-		if(H.species.gets_food_nutrition == 0)
-			H.nutrition += removed
-			is_vampire = 1 //VOREStation Edit END
+		is_vampire = H.species.is_vampire
+		if(is_vampire == 1)
+			H.nutrition += removed //VOREStation Edit END
 	if(alien == IS_SLIME)	// Treat it like nutriment for the jello, but not equivalent.
 		M.heal_organ_damage(0.2 * removed * volume_mod, 0)	// More 'effective' blood means more usable material.
 		M.nutrition += 20 * removed * volume_mod
@@ -104,6 +104,18 @@
 	..()
 	if(data && !data["blood_type"])
 		data["blood_type"] = "O-"
+	return
+
+/datum/reagent/blood/bludbloodlight
+	name = "Synthetic blood"
+	id = "bludbloodlight"
+	color = "#999966"
+	volume_mod = 2
+
+/datum/reagent/blood/bludbloodlight/initialize_data(var/newdata)
+	..()
+	if(data && !data["blood_type"])
+		data["blood_type"] = "AB+"
 	return
 
 // pure concentrated antibodies
