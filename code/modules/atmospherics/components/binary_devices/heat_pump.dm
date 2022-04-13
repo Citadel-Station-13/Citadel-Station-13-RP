@@ -129,7 +129,10 @@
     if((stat & (NOPOWER|BROKEN)) || !use_power)
         return
 
-    if( !air1 ||  !air2)
+    if(!air1 || !air2)
+        return
+
+    if( (air1.temperature < 1) ||  (air2.temperature < 1))//If there is no air1 or 2 the temperature is assumed 0 Kelvin which allows for 
         return
 
     if((air2.temperature <= target_temp+0.1) && (air2.temperature >= target_temp-0.1))
