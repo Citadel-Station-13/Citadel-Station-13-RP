@@ -88,6 +88,8 @@
 		BIOGEN_ITEM("5 Robust Harvest", /obj/item/reagent_containers/glass/bottle/robustharvest, 5, 750),
 	)
 	item_list["Leather Products"] = list(
+		BIOGEN_ITEM("Leather Sheet", /obj/item/stack/material/leather, 1, 20),
+		BIOGEN_ITEM("5 Leather Sheets", /obj/item/stack/material/leather, 5, 100),
 		BIOGEN_ITEM("Wallet", /obj/item/storage/wallet, 1, 100),
 		BIOGEN_ITEM("Botanical gloves", /obj/item/clothing/gloves/botanic_leather, 1, 250),
 		BIOGEN_ITEM("Plant bag", /obj/item/storage/bag/plants, 1, 320),

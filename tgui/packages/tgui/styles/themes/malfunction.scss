@@ -31,6 +31,7 @@
   @include meta.load-css('../components/Input.scss', $with: (
     'border-color': #910101,
   ));
+  @include meta.load-css('../components/NanoMap.scss');
   @include meta.load-css('../components/NoticeBox.scss', $with: (
     'background-color': #1a3f57,
   ));

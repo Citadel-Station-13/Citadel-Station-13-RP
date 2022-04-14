@@ -12,106 +12,21 @@ const sortTypes = {
   'By price': (a, b) => a.price - b.price,
 };
 
-export const Biogenerator = (props, context) => {
+export const CasinoPrizeDispenser = (props, context) => {
   const { act, data } = useBackend(context);
   return (
     <Window width={400} height={450} resizable>
       <Window.Content className="Layout__content--flexColumn" scrollable>
-        {data.processing && (
-          <Section title="Processing">
-            The biogenerator is processing reagents!
-          </Section>
-        ) || (
-          <Fragment>
-            <Section>
-              {data.points} points available.
-              <Button
-                ml={1}
-                icon="blender"
-                onClick={() => act("activate")}>
-                Activate
-              </Button>
-              <Button
-                ml={1}
-                icon="eject"
-                disabled={!data.beaker}
-                onClick={() => act("detach")}>
-                Eject Beaker
-              </Button>
-            </Section>
-            <BiogeneratorSearch />
-            <BiogeneratorItems />
-          </Fragment>
-        )}
+        <Fragment>
+          <CasinoPrizeDispenserSearch />
+          <CasinoPrizeDispenserItems />	
+        </Fragment>
       </Window.Content>
     </Window>
   );
 };
 
-
-const BiogeneratorItems = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    points,
-    items,
-  } = data;
-  // Search thingies
-  const [
-    searchText,
-    _setSearchText,
-  ] = useLocalState(context, 'search', '');
-  const [
-    sortOrder,
-    _setSortOrder,
-  ] = useLocalState(context, 'sort', 'Alphabetical');
-  const [
-    descending,
-    _setDescending,
-  ] = useLocalState(context, 'descending', false);
-  const searcher = createSearch(searchText, item => {
-    return item[0];
-  });
-
-  let has_contents = false;
-  let contents = Object.entries(items).map((kv, _i) => {
-    let items_in_cat = Object.entries(kv[1])
-      .filter(searcher)
-      .map(kv2 => {
-        kv2[1].affordable = points >= (kv2[1].price / data.build_eff);
-        return kv2[1];
-      })
-      .sort(sortTypes[sortOrder]);
-    if (items_in_cat.length === 0) {
-      return;
-    }
-    if (descending) {
-      items_in_cat = items_in_cat.reverse();
-    }
-
-    has_contents = true;
-    return (
-      <BiogeneratorItemsCategory
-        key={kv[0]}
-        title={kv[0]}
-        items={items_in_cat}
-      />
-    );
-  });
-  return (
-    <Flex.Item grow="1" overflow="auto">
-      <Section onClick={e => refocusLayout()}>
-        {has_contents
-          ? contents : (
-            <Box color="label">
-              No items matching your criteria was found!
-            </Box>
-          )}
-      </Section>
-    </Flex.Item>
-  );
-};
-
-const BiogeneratorSearch = (props, context) => {
+const CasinoPrizeDispenserSearch = (props, context) => {
   const [
     _searchText,
     setSearchText,
@@ -157,17 +72,69 @@ const BiogeneratorSearch = (props, context) => {
   );
 };
 
-const canBuyItem = (item, data) => {
-  if (!item.affordable) {
-    return false;
-  }
-  if (item.reagent && !data.beaker) {
-    return false;
-  }
-  return true;
+const CasinoPrizeDispenserItems = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    points,
+    items,
+  } = data;
+  // Search thingies
+  const [
+    searchText,
+    _setSearchText,
+  ] = useLocalState(context, 'search', '');
+  const [
+    sortOrder,
+    _setSortOrder,
+  ] = useLocalState(context, 'sort', 'Alphabetical');
+  const [
+    descending,
+    _setDescending,
+  ] = useLocalState(context, 'descending', false);
+  const searcher = createSearch(searchText, item => {
+    return item[0];
+  });
+
+  let has_contents = false;
+  let contents = Object.entries(items).map((kv, _i) => {
+    let items_in_cat = Object.entries(kv[1])
+      .filter(searcher)
+      .map(kv2 => {
+        kv2[1].affordable = points >= (kv2[1].price);
+        return kv2[1];
+      })
+      .sort(sortTypes[sortOrder]);
+    if (items_in_cat.length === 0) {
+      return;
+    }
+    if (descending) {
+      items_in_cat = items_in_cat.reverse();
+    }
+
+    has_contents = true;
+    return (
+      <CasinoPrizeDispenserItemsCategory
+        key={kv[0]}
+        title={kv[0]}
+        items={items_in_cat}
+      />
+    );
+  });
+  return (
+    <Flex.Item grow="1" overflow="auto">
+      <Section onClick={e => refocusLayout()}>
+        {has_contents
+          ? contents : (
+            <Box color="label">
+              No items matching your criteria was found!
+            </Box>
+          )}
+      </Section>
+    </Flex.Item>
+  );
 };
 
-const BiogeneratorItemsCategory = (properties, context) => {
+const CasinoPrizeDispenserItemsCategory = (properties, context) => {
   const { act, data } = useBackend(context);
   const {
     title,
@@ -188,8 +155,7 @@ const BiogeneratorItemsCategory = (properties, context) => {
             {item.name}
           </Box>
           <Button
-            disabled={!canBuyItem(item, data)}
-            content={(item.price / data.build_eff).toLocaleString('en-US')}
+            content={(item.price).toLocaleString('en-US')}
             width="15%"
             textAlign="center"
             style={{
@@ -198,6 +164,8 @@ const BiogeneratorItemsCategory = (properties, context) => {
             onClick={() => act('purchase', {
               cat: title,
               name: item.name,
+              price: item.price,
+              restriction: item.restriction,
             })}
           />
           <Box
