@@ -23,7 +23,7 @@
 // Definition of the stuff for Ears
 /datum/category_item/player_setup_item/vore/traits
 	name = "Traits"
-	sort_order = 7
+	sort_order = 8
 
 /datum/category_item/player_setup_item/vore/traits/load_character(var/savefile/S)
 	S["custom_species"]	>> pref.custom_species

@@ -6,7 +6,7 @@
 // Definition of the stuff for Sizing
 /datum/category_item/player_setup_item/vore/resleeve
 	name = "Resleeving"
-	sort_order = 4
+	sort_order = 5
 
 /datum/category_item/player_setup_item/vore/resleeve/load_character(var/savefile/S)
 	S["resleeve_lock"]		>> pref.resleeve_lock
