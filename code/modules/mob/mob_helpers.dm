@@ -85,6 +85,15 @@ proc/getsensorlevel(A)
 /proc/is_admin(var/mob/user)
 	return check_rights(R_ADMIN, 0, user) != 0
 
+/proc/broadcast_security_hud_message(var/message, var/broadcast_source)
+	broadcast_hud_message(message, broadcast_source, GLOB.sec_hud_users, /obj/item/clothing/glasses/hud/security)
+
+/proc/broadcast_hud_message(var/message, var/broadcast_source, var/list/targets, var/icon)
+	var/turf/sourceturf = get_turf(broadcast_source)
+	for(var/mob/M in targets)
+		if(!sourceturf || (get_z(M) in GetConnectedZlevels(sourceturf.z)))
+			M.show_message("<span class='info'>[icon2html(icon, M)] [message]</span>", 1)
+
 /**
  * Returns true if the user should have admin AI level access
  */

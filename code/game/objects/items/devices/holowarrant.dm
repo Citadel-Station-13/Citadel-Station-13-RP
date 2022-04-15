@@ -25,14 +25,14 @@
 	active = null
 	var/list/warrants = list()
 	if(!isnull(data_core.general))
-		for(var/datum/computer_file/data/warrant/W in data_core.warrants)
+		for(var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
 			warrants += W.fields["namewarrant"]
 	if(warrants.len == 0)
 		to_chat(user,"<span class='notice'>There are no warrants available</span>")
 		return
 	var/temp
 	temp = input(user, "Which warrant would you like to load?") as null|anything in warrants
-	for(var/datum/data/record/warrant/W in data_core.warrants)
+	for(var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
 		if(W.fields["namewarrant"] == temp)
 			active = W
 	update_icon()
