@@ -122,7 +122,7 @@
 	if(!active_program)
 		return
 	active_program.program_state = PROGRAM_STATE_BACKGROUND // Should close any existing UIs
-	SSnano.close_uis(active_program.NM ? active_program.NM : active_program)
+	SStgui.close_uis(active_program.NM ? active_program.NM : active_program)
 	active_program = null
 	update_host_icon()
 	if(istype(user))

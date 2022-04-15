@@ -76,7 +76,7 @@
 		data["relays"] = relays
 		data["focus"] = PRG.target ? PRG.target.uid : null
 
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "ntnet_dos.tmpl", "DoS Traffic Generator", 400, 250, state = state)
 		ui.auto_update_layout = 1

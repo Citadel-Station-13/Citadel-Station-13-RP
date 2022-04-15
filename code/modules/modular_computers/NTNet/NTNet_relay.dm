@@ -68,7 +68,7 @@
 	data["dos_crashed"] = dos_failure
 	data["portable_drive"] = !!get_component_of_type(/obj/item/stock_parts/computer/hard_drive/portable)
 
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "ntnet_relay.tmpl", "NTNet Quantum Relay", 500, 300, state = state)
 		ui.set_initial_data(data)

@@ -40,7 +40,7 @@
 	data["update_progress"] = update_progress
 	data["updates"] = updates
 
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "laptop_mainscreen.tmpl", "NTOS Main Menu ", 400, 500)
 		ui.auto_update_layout = 1
@@ -150,9 +150,9 @@
 
 /datum/extension/interactive/ntos/proc/update_uis()
 	if(active_program) //Should we update program ui or computer ui?
-		SSnano.update_uis(active_program)
+		SStgui.update_uis(active_program)
 		if(active_program.NM)
-			SSnano.update_uis(active_program.NM)
+			SStgui.update_uis(active_program.NM)
 
 // Function used by NanoUI's to obtain data for header. All relevant entries begin with "PC_"
 /datum/extension/interactive/ntos/proc/get_header_data()

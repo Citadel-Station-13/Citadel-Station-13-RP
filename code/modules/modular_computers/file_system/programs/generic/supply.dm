@@ -111,7 +111,7 @@
 				data["is_NTOS"] = istype(nano_host(), /obj/item/modular_computer) // Can we even use notifications?
 				data["notifications_enabled"] = notifications_enabled
 
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "supply.tmpl", name, 1050, 800, state = state)
 		ui.set_auto_update(1)
