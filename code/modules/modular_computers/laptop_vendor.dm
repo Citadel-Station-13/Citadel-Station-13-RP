@@ -5,7 +5,7 @@
 	desc = "A vending machine with a built-in microfabricator, capable of dispensing various computers."
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "laptop"
-	layer = BELOW_OBJ_LAYER
+	layer = OBJ_LAYER
 	anchored = TRUE
 	density = TRUE
 
