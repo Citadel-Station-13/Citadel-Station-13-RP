@@ -41,7 +41,8 @@
 			mind.name = real_name
 
 	nutrition = rand(200,400)
-
+	hydration = rand(200,400)
+	
 	AddComponent(/datum/component/personal_crafting)
 
 	human_mob_list |= src
