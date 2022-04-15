@@ -115,6 +115,9 @@
 	var/drop_sound = 'sound/items/drop/device.ogg'
 
 	var/deploytype = null	//Deploytype for switchtools. Only really used on switchtool subtype items, but this is on a general item level in case admins want to do some wierd fucky shit with custom switchtools.
+
+	var/heavy = FALSE //Whether or not we are heavy. Used for some species to determine if they can two-hand it.
+
 /obj/item/Initialize(mapload)
 	. = ..()
 	if(islist(origin_tech))

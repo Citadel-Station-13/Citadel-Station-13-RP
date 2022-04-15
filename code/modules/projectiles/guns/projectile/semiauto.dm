@@ -4,6 +4,7 @@
 	icon_state = "garand"
 	item_state = "boltaction"
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BACK
@@ -44,6 +45,7 @@
 	icon_state = "apigun"
 	item_state = "speargun"
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	caliber = "apidean"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_BIO = 7)
 	slot_flags = SLOT_BACK

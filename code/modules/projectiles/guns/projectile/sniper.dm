@@ -7,6 +7,7 @@
 	item_state_slots = list(slot_r_hand_str = "l6closed-empty", slot_l_hand_str = "l6closed-empty") // placeholder
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	force = 10
+	heavy = TRUE
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	caliber = "14.5mm"
@@ -82,6 +83,7 @@
 	load_method = MAGAZINE
 	accuracy = -45 //shooting at the hip
 	scoped_accuracy = 95
+	heavy = TRUE
 //	requires_two_hands = 1
 	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 	fire_sound = 'sound/weapons/Gunshot_SVD.ogg' // Has a very unique sound.
