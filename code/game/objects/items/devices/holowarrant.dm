@@ -8,7 +8,7 @@
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
 	throw_range = 10
-	var/datum/data/record/warrant/active
+	var/datum/computer_file/data/warrant/active
 
 //look at it
 /obj/item/holowarrant/examine(mob/user)
@@ -25,7 +25,7 @@
 	active = null
 	var/list/warrants = list()
 	if(!isnull(data_core.general))
-		for(var/datum/data/record/warrant/W in data_core.warrants)
+		for(var/datum/computer_file/data/warrant/W in data_core.warrants)
 			warrants += W.fields["namewarrant"]
 	if(warrants.len == 0)
 		to_chat(user,"<span class='notice'>There are no warrants available</span>")

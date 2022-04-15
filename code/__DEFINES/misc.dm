@@ -46,6 +46,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_GEAR_COST					20	// Used in chargen for accessory loadout limit.
 #define MAX_GEAR_COST_HOLIDAY_SPAM		30
 
+#define LEGACY_RECORD_STRUCTURE(X, Y) GLOBAL_LIST_EMPTY(##X);/datum/computer_file/data/##Y/var/list/fields[0];/datum/computer_file/data/##Y/New(){..();GLOB.##X.Add(src);}/datum/computer_file/data/##Y/Destroy(){. = ..();GLOB.##X.Remove(src);}
 
 // For secHUDs and medHUDs and variants. The number is the location of the image on the list hud_list of humans.
 #define HEALTH_HUD		1	// A simple line rounding the mob's number health.

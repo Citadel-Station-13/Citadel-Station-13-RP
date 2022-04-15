@@ -24,16 +24,17 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 
 /datum/computer_file/report/crew_record/proc/load_from_mob(var/mob/living/carbon/human/H)
 	if(istype(H))
-		photo_front = getFlatIcon(H, SOUTH, always_use_defdir = 1)
-		photo_side = getFlatIcon(H, WEST, always_use_defdir = 1)
+		photo_front = getFlatIcon(H, SOUTH)
+		photo_side = getFlatIcon(H, WEST)
 	else
 		var/mob/living/carbon/human/dummy = new()
-		photo_front = getFlatIcon(dummy, SOUTH, always_use_defdir = 1)
-		photo_side = getFlatIcon(dummy, WEST, always_use_defdir = 1)
+		photo_front = getFlatIcon(dummy, SOUTH)
+		photo_side = getFlatIcon(dummy, WEST)
 		qdel(dummy)
 
-	// Add honorifics, etc.
-	var/formal_name = "Unset"
+	// Since we don't have honorifics system this is just their real name for now.
+	var/formal_name = H.real_name
+	/*
 	if(H)
 		formal_name = H.real_name
 		if(H.client && H.client.prefs)
@@ -43,23 +44,23 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 					formal_name = "[formal_name][culture.get_formal_name_suffix()]"
 				else
 					formal_name = "[culture.get_formal_name_prefix()][formal_name][culture.get_formal_name_suffix()]"
-
+	*/
 	// Generic record
 	set_name(H ? H.real_name : "Unset")
 	set_formal_name(formal_name)
 	set_job(H ? GetAssignment(H) : "Unset")
 	var/gender_term = "Unset"
 	if(H)
-		var/datum/gender/G = gender_datums[H.get_sex()]
+		var/datum/gender/G = gender_datums[H.get_gender()]
 		if(G)
 			gender_term = gender2text(G.formal_term)
 	set_sex(gender_term)
 	set_age(H ? H.age : 30)
 	set_status(GLOB.default_physical_status)
 	set_species(H ? H.get_species() : SPECIES_HUMAN)
-	set_branch(H ? (H.char_branch && H.char_branch.name) : "None")
-	set_rank(H ? (H.char_rank && H.char_rank.name) : "None")
-	set_public_record(H && H.public_record && !jobban_isbanned(H, "Records") ? html_decode(H.public_record) : "No record supplied")
+	//set_branch(H ? (H.char_branch && H.char_branch.name) : "None")
+	//set_rank(H ? (H.char_rank && H.char_rank.name) : "None")
+	//set_public_record(H && H.public_record && !jobban_isbanned(H, "Records") ? html_decode(H.public_record) : "No record supplied")
 
 	// Medical record
 	set_bloodtype(H ? H.b_type : "Unset")
@@ -100,20 +101,24 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 			employment_record = html_decode(H.gen_record)
 		if(H.client && H.client.prefs)
 			var/list/qualifications
+			/*
 			for(var/culturetag in H.client.prefs.cultural_info)
 				var/decl/cultural_info/culture = SSculture.get_culture(H.client.prefs.cultural_info[culturetag])
 				var/extra_note = culture.get_qualifications()
 				if(extra_note)
 					LAZYADD(qualifications, extra_note)
+			*/
 			if(LAZYLEN(qualifications))
-				employment_record = "[employment_record ? "[employment_record]\[br\]" : ""][jointext(qualifications, "\[br\]>")]"
+				employment_record = "[employment_record ? "[employment_record]\[br\]" : ""]"
 	set_emplRecord(employment_record)
 
 	// Misc cultural info.
-	set_homeSystem(H ? html_decode(H.get_cultural_value(TAG_HOMEWORLD)) : "Unset")
-	set_faction(H ? html_decode(H.get_cultural_value(TAG_FACTION)) : "Unset")
-	set_religion(H ? html_decode(H.get_cultural_value(TAG_RELIGION)) : "Unset")
+	set_homeSystem(H ? html_decode(H.client.prefs.home_system) : "Unset")
+	set_citizenship(H ? html_decode(H.client.prefs.citizenship) : "Unset")
+	set_faction(H ? html_decode(H.client.prefs.faction) : "Unset")
+	set_religion(H ? html_decode(H.client.prefs.religion) : "Unset")
 
+	/*
 	if(H)
 		var/skills = list()
 		for(var/decl/hierarchy/skill/S in GLOB.skills)
@@ -122,7 +127,7 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 				skills += "[S.name], [S.levels[level]]"
 
 		set_skillset(jointext(skills,"\n"))
-
+	*/
 	// Antag record
 	set_antagRecord(H && H.exploit_record && !jobban_isbanned(H, "Records") ? html_decode(H.exploit_record) : "")
 
@@ -168,20 +173,11 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 			return CR
 	return null
 
-/proc/GetAssignment(var/mob/living/carbon/human/H)
-	if(!H)
-		return "Unassigned"
-	if(!H.mind)
-		return H.job
-	if(H.mind.role_alt_title)
-		return H.mind.role_alt_title
-	return H.mind.assigned_role
-
 #define GETTER_SETTER(PATH, KEY) /datum/computer_file/report/crew_record/proc/get_##KEY(){var/datum/report_field/F = locate(/datum/report_field/##PATH/##KEY) in fields; if(F) return F.get_value()} \
 /datum/computer_file/report/crew_record/proc/set_##KEY(given_value){var/datum/report_field/F = locate(/datum/report_field/##PATH/##KEY) in fields; if(F) F.set_value(given_value)}
 #define SETUP_FIELD(NAME, KEY, PATH, ACCESS, ACCESS_EDIT) GETTER_SETTER(PATH, KEY); /datum/report_field/##PATH/##KEY;\
 /datum/computer_file/report/crew_record/generate_fields(){..(); var/datum/report_field/##KEY = add_field(/datum/report_field/##PATH/##KEY, ##NAME);\
-KEY.set_access(ACCESS, ACCESS_EDIT || ACCESS || access_bridge)}
+KEY.set_access(ACCESS, ACCESS_EDIT || ACCESS || access_heads)}
 
 // Fear not the preprocessor, for it is a friend. To add a field, use one of these, depending on value type and if you need special access to see it.
 // It will also create getter/setter procs for record datum, named like /get_[key here]() /set_[key_here](value) e.g. get_name() set_name(value)
@@ -197,16 +193,16 @@ KEY.set_access(ACCESS, ACCESS_EDIT || ACCESS || access_bridge)}
 FIELD_SHORT("Name", name, null, access_change_ids)
 FIELD_SHORT("Formal Name", formal_name, null, access_change_ids)
 FIELD_SHORT("Job", job, null, access_change_ids)
-FIELD_LIST("Sex", sex, record_genders(), null, access_change_ids)
+FIELD_LIST("Gender", sex, record_genders(), null, access_change_ids)
 FIELD_NUM("Age", age, null, access_change_ids)
 FIELD_LIST_EDIT("Status", status, GLOB.physical_statuses, null, access_medical)
 
 FIELD_SHORT("Species",species, null, access_change_ids)
-FIELD_LIST("Branch", branch, record_branches(), null, access_change_ids)
-FIELD_LIST("Rank", rank, record_ranks(), null, access_change_ids)
+//FIELD_LIST("Branch", branch, record_branches(), null, access_change_ids)
+//FIELD_LIST("Rank", rank, record_ranks(), null, access_change_ids)
 FIELD_SHORT("Religion", religion, access_chapel_office, access_change_ids)
 
-FIELD_LONG("General Notes (Public)", public_record, null, access_bridge)
+FIELD_LONG("General Notes (Public)", public_record, null, access_heads)
 
 // MEDICAL RECORDS
 FIELD_LIST("Blood Type", bloodtype, GLOB.blood_types, access_medical, access_medical)
@@ -220,15 +216,16 @@ FIELD_SHORT("DNA", dna, access_security, access_security)
 FIELD_SHORT("Fingerprint", fingerprint, access_security, access_security)
 
 // EMPLOYMENT RECORDS
-FIELD_LONG("Employment Record", emplRecord, access_bridge, access_bridge)
-FIELD_SHORT("Home System", homeSystem, access_bridge, access_change_ids)
-FIELD_SHORT("Faction", faction, access_bridge, access_bridge)
-FIELD_LONG("Qualifications", skillset, access_bridge, access_bridge)
+FIELD_LONG("Employment Record", emplRecord, access_heads, access_heads)
+FIELD_SHORT("Home System", homeSystem, access_heads, access_change_ids)
+FIELD_SHORT("Citizenship", citizenship, access_heads, access_change_ids)
+FIELD_SHORT("Faction", faction, access_heads, access_heads)
+//FIELD_LONG("Qualifications", skillset, access_heads, access_heads)
 
 // ANTAG RECORDS
 FIELD_LONG("Exploitable Information", antagRecord, access_syndicate, access_syndicate)
 
-//Options builderes
+/*Options builderes
 /datum/report_field/options/crew_record/rank/proc/record_ranks()
 	var/datum/computer_file/report/crew_record/record = owner
 	var/datum/mil_branch/branch = mil_branches.get_branch(record.get_branch())
@@ -239,6 +236,7 @@ FIELD_LONG("Exploitable Information", antagRecord, access_syndicate, access_synd
 	for(var/rank in branch.ranks)
 		var/datum/mil_rank/RA = branch.ranks[rank]
 		. |= RA.name
+*/
 
 /datum/report_field/options/crew_record/sex/proc/record_genders()
 	. = list()
@@ -247,13 +245,14 @@ FIELD_LONG("Exploitable Information", antagRecord, access_syndicate, access_synd
 		var/datum/gender/G = gender_datums[thing]
 		. |= gender2text(G.formal_term)
 
+/*
 /datum/report_field/options/crew_record/branch/proc/record_branches()
 	. = list()
 	. |= "Unset"
 	for(var/B in mil_branches.branches)
 		var/datum/mil_branch/BR = mil_branches.branches[B]
 		. |= BR.name
-
+*/
 #undef GETTER_SETTER
 #undef SETUP_FIELD
 #undef FIELD_SHORT
