@@ -317,7 +317,7 @@ obj/machinery/lapvend/attackby(obj/item/W as obj, mob/user as mob)
 			ping("Unable to access account: incorrect credentials.")
 			return 0
 
-	if(customer_account.withdraw(total_price, "Purchase of [(devtype == 1) ? "laptop computer" : "tablet microcomputer"].", "Computer Manufacturer (via [src.name])"))
+	if(charge_to_account(customer_account.account_number, "Computer Manufacturer (via [src.name])", "Purchase of [(devtype == 1) ? "laptop computer" : "tablet microcomputer"]."))
 		return 1
 	else
 		ping("Transaction failed! Please try again.")
