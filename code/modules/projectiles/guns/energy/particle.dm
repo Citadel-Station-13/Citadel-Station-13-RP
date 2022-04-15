@@ -32,6 +32,7 @@
 	slot_flags = SLOT_BELT
 	force = 8 //looks heavier than a pistol
 	w_class = ITEMSIZE_LARGE	//bigger than a pistol, too.
+	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	self_recharge = 1
@@ -58,6 +59,7 @@
 	accuracy = 70
 	charge_cost = 400 // 6 shots
 	self_recharge = 1
+	heavy = TRUE
 	charge_delay = 15 //won't start charging until it's ready to fire again
 	recharge_time = 8 //40 ticks after that to refill the whole thing.
 

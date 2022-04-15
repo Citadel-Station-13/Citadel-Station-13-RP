@@ -4,6 +4,7 @@
 	icon_state = "riotgun"
 	item_state = "riotgun"
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	one_handed_penalty = 5
 
