@@ -4,11 +4,9 @@
 	icon = 'icons/obj/modular_telescreen.dmi'
 	icon_state = "telescreen"
 	icon_state_unpowered = "telescreen"
-	icon_state_menu = "menu"
-	icon_state_screensaver = "standby"
 	hardware_flag = PROGRAM_TELESCREEN
 	anchored = TRUE
-	density = 0
+	density = FALSE
 	base_idle_power_usage = 75
 	base_active_power_usage = 300
 	max_hardware_size = 2
@@ -16,15 +14,15 @@
 	light_strength = 4
 	max_damage = 300
 	broken_damage = 150
-	w_class = ITEMSIZE_HUGE
+	w_class = ITEM_SIZE_HUGE
 
-/obj/item/modular_computer/telescreen/Initialize(mapload)
-	. = ..()
+/obj/item/modular_computer/telescreen/New()
+	..()
 	// Allows us to create "north bump" "south bump" etc. named objects, for more comfortable mapping.
 	name = "telescreen"
 
 /obj/item/modular_computer/telescreen/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	if(W.is_crowbar())
+	if(isCrowbar(W))
 		if(anchored)
 			shutdown_computer()
 			anchored = FALSE
@@ -52,7 +50,7 @@
 					valid = TRUE
 
 			if(valid)
-				anchored = 1
+				anchored = TRUE
 				screen_on = TRUE
 				to_chat(user, "You secure \the [src].")
 			return

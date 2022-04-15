@@ -8,9 +8,10 @@
 	extended_desc = "This program connects to sensors to provide information about electrical systems"
 	ui_header = "power_norm.gif"
 	required_access = access_engine
-	requires_ntnet = 1
+	requires_ntnet = TRUE
 	network_destination = "power monitoring system"
 	size = 9
+	category = PROG_ENG
 	var/has_alert = 0
 
 /datum/computer_file/program/power_monitor/process_tick()
@@ -38,6 +39,12 @@
 	..()
 	refresh_sensors()
 
+/datum/nano_module/power_monitor/Destroy()
+	for(var/grid_sensor in grid_sensors)
+		remove_sensor(grid_sensor, FALSE)
+	grid_sensors = null
+	. = ..()
+
 // Checks whether there is an active alarm, if yes, returns 1, otherwise returns 0.
 /datum/nano_module/power_monitor/proc/has_alarm()
 	for(var/obj/machinery/power/sensor/S in grid_sensors)
@@ -47,13 +54,12 @@
 
 // If PC is not null header template is loaded. Use PC.get_header_data() to get relevant nanoui data from it. All data entries begin with "PC_...."
 // In future it may be expanded to other modular computer devices.
-/datum/nano_module/power_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/power_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	var/list/sensors = list()
 	// Focus: If it remains null if no sensor is selected and UI will display sensor list, otherwise it will display sensor reading.
 	var/obj/machinery/power/sensor/focus = null
-	var/turf/T = get_turf(nano_host())
 
 	// Build list of data from sensor readings.
 	for(var/obj/machinery/power/sensor/S in grid_sensors)
@@ -67,17 +73,12 @@
 	data["all_sensors"] = sensors
 	if(focus)
 		data["focus"] = focus.return_reading_data()
-	data["map_levels"] = GLOB.using_map.get_map_levels(T.z)
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "power_monitor.tmpl", "Power Monitoring Console", 800, 500, state = state)
-		if(host.update_layout()) // This is necessary to ensure the status bar remains updated along with rest of the UI.
+		if(host && host.update_layout()) // This is necessary to ensure the status bar remains updated along with rest of the UI.
 			ui.auto_update_layout = 1
-		// adding a template with the key "mapContent" enables the map ui functionality
-		ui.add_template("mapContent", "power_monitor_map_content.tmpl")
-		// adding a template with the key "mapHeader" replaces the map header content
-		ui.add_template("mapHeader", "power_monitor_map_header.tmpl")
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
@@ -85,18 +86,22 @@
 // Refreshes list of active sensors kept on this computer.
 /datum/nano_module/power_monitor/proc/refresh_sensors()
 	grid_sensors = list()
-	var/turf/T = get_turf(nano_host())
-	var/list/levels = list()
-	if(!T) // Safety check
-		return
-	if(T)
-		levels += GLOB.using_map.get_map_levels(T.z, FALSE)
-	for(var/obj/machinery/power/sensor/S in machines)
-		if(T && (S.loc.z == T.z) || (S.loc.z in levels) || (S.long_range)) // Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
+	var/connected_z_levels = GetConnectedZlevels(get_host_z())
+	for(var/obj/machinery/power/sensor/S in SSmachines.machinery)
+		if((S.long_range) || (S.loc.z in connected_z_levels)) // Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
 			if(S.name_tag == "#UNKN#") // Default name. Shouldn't happen!
 				warning("Powernet sensor with unset ID Tag! [S.x]X [S.y]Y [S.z]Z")
 			else
 				grid_sensors += S
+				GLOB.destroyed_event.register(S, src, /datum/nano_module/power_monitor/proc/remove_sensor)
+
+/datum/nano_module/power_monitor/proc/remove_sensor(var/removed_sensor, var/update_ui = TRUE)
+	if(active_sensor == removed_sensor)
+		active_sensor = null
+		if(update_ui)
+			SSnano.update_uis(src)
+	grid_sensors -= removed_sensor
+	GLOB.destroyed_event.unregister(removed_sensor, src, /datum/nano_module/power_monitor/proc/remove_sensor)
 
 // Allows us to process UI clicks, which are relayed in form of hrefs.
 /datum/nano_module/power_monitor/Topic(href, href_list)
