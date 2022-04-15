@@ -1,0 +1,6 @@
+author: "Shadowtail117"
+delete-after: True
+changes: 
+  - rscadd: "Added thirst as a mechanic. It goes down over time like hunger and is replenished by drinking most normal fluids. It does not have an effect on your character.
+tweak: You can click on your health doll to examine yourself for injuries.
+tweak: Updated the HUD status icons for temperature, pressure, oxygen, toxins, food, and thirst to modern Baystation equivalents; they are always visible and you can click on them for a description of your current status of that need."
