@@ -405,9 +405,9 @@
 		var/aduration = duration SECONDS / 10
 		to_chat(src,"You will now performatively act as if you were experiencing [impairment] for [aduration] seconds. (Do NOT abuse this)")
 	feedback_add_details("admin_verb","actimpaired") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /mob/living/carbon/human/proc/acting_expiry()
 	to_chat(src,"You are no longer acting impaired.") // tick down from 1 to allow the effects to end 'naturally'
 	slurring = 1
 	stuttering = 1
 	jitteriness = 1
-

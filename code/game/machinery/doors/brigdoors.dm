@@ -22,18 +22,24 @@
 	icon_state = "frame"
 	desc = "A remote control for a door."
 	req_access = list(access_brig)
-	anchored = TRUE		//Can't pick it up
-	density = FALSE		//Can walk through it.
-	var/id = null		//Id of door it controls.
+	anchored = TRUE //Can't pick it up
+	density = FALSE //Can walk through it.
+	var/id = null   //Id of door it controls.
 
 	var/activation_time = 0
 	var/timer_duration = 0
 
-	var/timing = FALSE		// boolean, true/1 timer is on, false/0 means it's not timing
-	var/list/obj/machinery/targets = list()
+	var/timing = FALSE //Is the timer ticking or not.
+	///List of weakrefs to nearby doors
+	var/list/doors = list()
+	///List of weakrefs to nearby flashers
+	var/list/flashers = list()
+	///List of weakrefs to nearby closets
+	var/list/closets = list()
 
 	maptext_height = 26
 	maptext_width = 32
+	maptext_y = -1
 
 /obj/machinery/door_timer/Initialize(mapload)
 	. = ..()
@@ -41,26 +47,22 @@
 
 /obj/machinery/door_timer/LateInitialize()
 	. = ..()
+	if(id != null)
+		for(var/obj/machinery/door/window/brigdoor/M in urange(20, src))
+			if (M.id == id)
+				doors += WEAKREF(M)
 
-	for(var/obj/machinery/door/window/brigdoor/M in machines)
-		if (M.id == id)
-			LAZYADD(targets,M)
+		for(var/obj/machinery/flasher/F in urange(20, src))
+			if(F.id == id)
+				flashers += WEAKREF(F)
 
-	for(var/obj/machinery/flasher/F in machines)
-		if(F.id == id)
-			LAZYADD(targets,F)
+		for(var/obj/structure/closet/secure_closet/brig/C in urange(20, src))
+			if(C.id == id)
+				closets += WEAKREF(C)
 
-	for(var/obj/structure/closet/secure_closet/brig/C in GLOB.all_brig_closets)
-		if(C.id == id)
-			LAZYADD(targets,C)
-
-	if(!LAZYLEN(targets))
+	if(!length(doors) && !length(flashers) && length(closets))
 		stat |= BROKEN
-	update_icon()
-
-/obj/machinery/door_timer/Destroy()
-	LAZYCLEARLIST(targets)
-	return ..()
+	update_appearance()
 
 //Main door timer loop, if it's timing and time is >0 reduce time by 1.
 // if it's less than 0, open door, reset timer
@@ -74,34 +76,35 @@
 			timer_end() //Open doors, reset timer, clear status screen
 		update_icon()
 
-// has the door power situation changed, if so update icon.
-/obj/machinery/door_timer/power_change()
-	..()
-	update_icon()
-
 // open/closedoor checks if door_timer has power, if so it checks if the
 // linked door is open/closed (by density) then opens it/closes it.
-
-///Closes and locks doors, power check
 /obj/machinery/door_timer/proc/timer_start()
 	if(stat & (NOPOWER|BROKEN))
-		return 0
+		return FALSE
 
 	activation_time = world.time
 	timing = TRUE
 
-	for(var/obj/machinery/door/window/brigdoor/door in targets)
+	for(var/datum/weakref/door_ref as anything in doors)
+		var/obj/machinery/door/window/brigdoor/door = door_ref.resolve()
+		if(!door)
+			doors -= door_ref
+			continue
 		if(door.density)
 			continue
 		INVOKE_ASYNC(door, /obj/machinery/door/window/brigdoor.proc/close)
 
-	for(var/obj/structure/closet/secure_closet/brig/C in targets)
-		if(C.broken)
+	for(var/datum/weakref/closet_ref as anything in closets)
+		var/obj/structure/closet/secure_closet/brig/closet = closet_ref.resolve()
+		if(!closet)
+			closets -= closet_ref
 			continue
-		if(C.opened && !C.close())
+		if(closet.broken)
 			continue
-		C.locked = TRUE
-		C.icon_state = C.icon_locked
+		if(closet.opened && !closet.close())
+			continue
+		closet.locked = TRUE
+		closet.update_appearance()
 	return TRUE
 
 ///Opens and unlocks doors, power check
@@ -109,23 +112,34 @@
 	if(stat & (NOPOWER|BROKEN))
 		return FALSE
 
+	if(!forced)
+		GLOB.global_announcer.autosay("Timer has expired. Releasing prisoner.", "[src.name]", "Security")
+
 	timing = FALSE
 	activation_time = null
 	set_timer(0)
 	update_icon()
 
-	for(var/obj/machinery/door/window/brigdoor/door in targets)
+	for(var/datum/weakref/door_ref as anything in doors)
+		var/obj/machinery/door/window/brigdoor/door = door_ref.resolve()
+		if(!door)
+			doors -=  door_ref
+			continue
 		if(!door.density)
 			continue
 		INVOKE_ASYNC(door, /obj/machinery/door/window/brigdoor.proc/open)
 
-	for(var/obj/structure/closet/secure_closet/brig/C in targets)
-		if(C.broken)
+	for(var/datum/weakref/closet_ref as anything in closets)
+		var/obj/structure/closet/secure_closet/brig/closet = closet_ref.resolve()
+		if(!closet)
+			closets -= closet_ref
 			continue
-		if(C.opened)
+		if(closet.broken)
 			continue
-		C.locked = FALSE
-		C.icon_state = C.icon_closed
+		if(closet.opened)
+			continue
+		closet.locked = FALSE
+		closet.update_appearance()
 
 	return TRUE
 
@@ -149,80 +163,13 @@
 		return TRUE
 	ui_interact(user)
 
-/obj/machinery/door_timer/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "BrigTimer", name)
-		ui.open()
-
-/obj/machinery/door_timer/ui_data()
-	var/list/data = list()
-	data["time_left"] = time_left()
-	data["max_time_left"] = MAX_TIMER
-	data["timing"] = timing
-	data["flash_found"] = FALSE
-	data["flash_charging"] = FALSE
-	data["preset_short"] = PRESET_SHORT
-	data["preset_medium"] = PRESET_MEDIUM
-	data["preset_long"] = PRESET_LONG
-	for(var/obj/machinery/flasher/F in targets)
-		data["flash_found"] = TRUE
-		if(F.last_flash && (F.last_flash + 150) > world.time)
-			data["flash_charging"] = TRUE
-			break
-	return data
-
-/obj/machinery/door_timer/ui_act(action, params)
-	if(..())
-		return
-	. = TRUE
-
-	if(!allowed(usr))
-		to_chat(usr, SPAN_WARNING("Access denied."))
-		return FALSE
-
-	switch(action)
-		if("time")
-			var/real_new_time = 0
-			var/new_time = params["time"]
-			var/list/L = splittext(new_time, ":")
-			if(LAZYLEN(L))
-				for(var/i in 1 to LAZYLEN(L))
-					real_new_time += text2num(L[i]) * (60 ** (LAZYLEN(L) - i))
-			else
-				real_new_time = text2num(new_time)
-			if(real_new_time)
-				set_timer(real_new_time * 10)
-		if("start")
-			timer_start()
-		if("stop")
-			timer_end(forced = TRUE)
-		if("flash")
-			for(var/obj/machinery/flasher/F in targets)
-				F.flash()
-		if("preset")
-			var/preset = params["preset"]
-			var/preset_time = time_left()
-			switch(preset)
-				if("short")
-					preset_time = PRESET_SHORT
-				if("medium")
-					preset_time = PRESET_MEDIUM
-				if("long")
-					preset_time = PRESET_LONG
-			set_timer(timer_duration + preset_time)
-			if(timing)
-				activation_time = world.time
-		else
-			. = FALSE
-
 //icon update function
 // if NOPOWER, display blank
 // if BROKEN, display blue screen of death icon AI uses
 // if timing=true, run update display function
 /obj/machinery/door_timer/update_icon()
+	. = ..()
 	if(stat & (NOPOWER))
-		icon_state = "frame"
 		return
 
 	if(stat & (BROKEN))
@@ -231,8 +178,8 @@
 
 	if(timing)
 		var/disp1 = id
-		var/timeleft = time_left(seconds = TRUE)
-		var/disp2 = "[add_leading(num2text((timeleft / 60) % 60), 2, "0")]:[add_leading(num2text(timeleft % 60), 2, "0")]"
+		var/time_left = time_left(seconds = TRUE)
+		var/disp2 = "[add_leading(num2text((time_left / 60) % 60), 2, "0")]:[add_leading(num2text(time_left % 60), 2, "0")]"
 		if(length(disp2) > CHARS_PER_LINE)
 			disp2 = "Error"
 		update_display(disp1, disp2)
@@ -241,7 +188,7 @@
 			maptext = ""
 	return
 
-// Adds an icon in case the screen is broken/off, stolen from status_display.dm
+///Adds an icon in case the screen is broken/off, stolen from status_display.dm
 /obj/machinery/door_timer/proc/set_picture(state)
 	if(maptext)
 		maptext = ""
@@ -256,6 +203,81 @@
 	var/new_text = {"<div style="font-size:[FONT_SIZE];color:[FONT_COLOR];font:'[FONT_STYLE]';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
 	if(maptext != new_text)
 		maptext = new_text
+
+/obj/machinery/door_timer/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "BrigTimer", name)
+		ui.open()
+
+/obj/machinery/door_timer/ui_data()
+	var/list/data = list()
+	var/time_left = time_left(seconds = TRUE)
+	data["seconds"] = round(time_left % 60)
+	data["minutes"] = round((time_left - data["seconds"]) / 60)
+	data["timing"] = timing
+	data["flash_charging"] = FALSE
+	for(var/datum/weakref/flash_ref as anything in flashers)
+		var/obj/machinery/flasher/flasher = flash_ref.resolve()
+		if(!flasher)
+			flashers -= flash_ref
+			continue
+		if(flasher.last_flash && (flasher.last_flash + 15 SECONDS) > world.time)
+			data["flash_charging"] = TRUE
+			break
+	return data
+
+/obj/machinery/door_timer/ui_act(action, params)
+	if(..())
+		return
+
+	. = TRUE
+
+	if(!allowed(usr))
+		to_chat(usr, SPAN_WARNING("Access denied."))
+		return FALSE
+
+	switch(action)
+		if("time")
+			var/value = text2num(params["adjust"])
+			if(value)
+				. = set_timer(time_left()+value)
+				investigate_log("[key_name(usr)] modified the timer by [value/10] seconds for cell [id], currently [time_left(seconds = TRUE)]", INVESTIGATE_RECORDS)
+				log_attack("[src] modified the timer by [value/10] seconds for cell [id], currently [time_left(seconds = TRUE)]")
+		if("start")
+			timer_start()
+			investigate_log("[key_name(usr)] has started [id]'s timer of [time_left(seconds = TRUE)] seconds", INVESTIGATE_RECORDS)
+			log_attack("has started [id]'s timer of [time_left(seconds = TRUE)] seconds")
+		if("stop")
+			timer_end(forced = TRUE)
+			investigate_log("[key_name(usr)] has stopped [id]'s timer of [time_left(seconds = TRUE)] seconds", INVESTIGATE_RECORDS)
+			log_attack("[key_name(usr)] has stopped [id]'s timer of [time_left(seconds = TRUE)] seconds")
+		if("flash")
+			investigate_log("[key_name(usr)] has flashed cell [id]", INVESTIGATE_RECORDS)
+			log_attack("[key_name(usr)] has flashed cell [id]")
+			for(var/datum/weakref/flash_ref as anything in flashers)
+				var/obj/machinery/flasher/flasher = flash_ref.resolve()
+				if(!flasher)
+					flashers -= flash_ref
+					continue
+				flasher.flash()
+		if("preset")
+			var/preset = params["preset"]
+			var/preset_time = time_left()
+			switch(preset)
+				if("short")
+					preset_time = PRESET_SHORT
+				if("medium")
+					preset_time = PRESET_MEDIUM
+				if("long")
+					preset_time = PRESET_LONG
+			. = set_timer(preset_time)
+			investigate_log("[key_name(usr)] set cell [id]'s timer to [preset_time/10] seconds", INVESTIGATE_RECORDS)
+			log_attack("set cell [id]'s timer to [preset_time/10] seconds")
+			if(timing)
+				activation_time = world.time
+		else
+			. = FALSE
 
 
 /obj/machinery/door_timer/cell_1
@@ -287,6 +309,11 @@
 	id = "tactical_pet_storage"
 	desc = "Opens and Closes on a timer. This one seals away a tactical boost in morale."
 
+#undef PRESET_SHORT
+#undef PRESET_MEDIUM
+#undef PRESET_LONG
+
+#undef MAX_TIMER
 #undef FONT_SIZE
 #undef FONT_COLOR
 #undef FONT_STYLE
