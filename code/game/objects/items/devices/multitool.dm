@@ -29,19 +29,21 @@
 	var/obj/machinery/clonepod/connecting //same for cryopod linkage
 	var/obj/machinery/connectable	//Used to connect machinery.
 	var/datum/weakref_wiring //Used to store weak references for integrated circuitry. This is now the Omnitool.
-	var/random_color = 1
+	var/colorable = 1
+	var/color_overlay = null
 	toolspeed = 1
 
 /obj/item/multitool/Initialize(mapload)
 	. = ..()
-	if(random_color)
-		switch(pick("red","yellow","green"))
+	if(colorable)
+		switch(pick("red","green","yellow"))
 			if ("red")
-				icon_state = "multitool_r"
-			if ("yellow")
-				icon_state = "multitool"
+				overlays += "multi_r"
 			if ("green")
-				icon_state = "multitool_g"
+				overlays += "multi_g"
+			if ("yellow")
+				return
+		update_icon()
 
 /obj/item/multitool/attack_self(mob/living/user)
 	var/choice = alert("What do you want to do with \the [src]?","Multitool Menu", "Switch Mode", "Clear Buffers", "Cancel")
@@ -85,7 +87,7 @@
 	name = "multitool"
 	desc = "Optimised and stripped-down version of a regular multitool."
 	toolspeed = 0.5
-	random_color = 0
+	colorable = 0
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_multitool
 	name = "Precursor Alpha Object - Pulse Tool"
@@ -107,11 +109,11 @@
 	icon_state = "multitool"
 	toolspeed = 0.1
 	origin_tech = list(TECH_MAGNET = 5, TECH_ENGINEERING = 5)
-	random_color = 0
+	colorable = 0
 
 //Colored Variants
 /obj/item/multitool/red
-	icon_state = "multitool_r"
+	color_overlay = "multi_r"
 
 /obj/item/multitool/green
-	icon_state = "multitool_g"
+	color_overlay = "multi_g"
