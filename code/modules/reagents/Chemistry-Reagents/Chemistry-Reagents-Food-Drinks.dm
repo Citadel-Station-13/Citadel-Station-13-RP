@@ -9,6 +9,7 @@
 	metabolism = REM * 4
 	ingest_met = REM * 4
 	var/nutriment_factor = 30 // Per unit
+	var/hydration_factor = 0 //Per unit
 	var/injectable = 0
 	color = "#664330"
 
@@ -40,6 +41,7 @@
 	affect_ingest(M, alien, removed)
 
 /datum/reagent/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	var/hyd_removed
 	switch(alien)
 		if(IS_DIONA) return
 		if(IS_UNATHI) removed *= 0.5
@@ -48,6 +50,7 @@
 	M.heal_organ_damage(0.5 * removed, 0)
 	if(M.species.gets_food_nutrition) //VOREStation edit. If this is set to 0, they don't get nutrition from food.
 		M.nutrition += nutriment_factor * removed // For hunger and fatness
+	M.adjust_hydration(hydration_factor * hyd_removed)
 	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
 
 /datum/reagent/nutriment/glucose
@@ -659,6 +662,7 @@ End Citadel Change */
 	reagent_state = REAGENT_LIQUID
 	color = "#E78108"
 	var/nutrition = 0 // Per unit
+	var/hydration = 6 //Per unit
 	var/adj_dizzy = 0 // Per tick
 	var/adj_drowsy = 0
 	var/adj_sleepy = 0
@@ -673,7 +677,8 @@ End Citadel Change */
 	return
 
 /datum/reagent/drink/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
-	M.nutrition += nutrition * removed
+	M.adjust_nutrition(nutrition * removed)
+	M.adjust_hydration(hydration * removed)
 	M.dizziness = max(0, M.dizziness + adj_dizzy)
 	M.drowsyness = max(0, M.drowsyness + adj_drowsy)
 	M.AdjustSleeping(adj_sleepy)

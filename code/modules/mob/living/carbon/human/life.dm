@@ -848,7 +848,7 @@
 //				log_debug("Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 	else if(bodytemperature > species.heat_level_1) //360.15 is 310.15 + 50, the temperature where you start to feel effects.
-		//We totally need a sweat system cause it totally makes sense...~
+		adjust_hydration(-(10 * DEFAULT_THIRST_FACTOR)) //Sweating
 		var/recovery_amt = min((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)	//We're dealing with negative numbers
 		//to_chat(world, "Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
@@ -965,7 +965,7 @@
 			if(!isnull(mod.metabolism_percent))
 				nutrition_reduction *= mod.metabolism_percent
 
-		nutrition = max (0, nutrition - nutrition_reduction)
+		adjust_nutrition(-nutrition_reduction)
 
 	if (nutrition > 450)
 		if(overeatduration < 600) //capped so people don't take forever to unfat
@@ -973,6 +973,15 @@
 	else
 		if(overeatduration > 1)
 			overeatduration -= 2 //doubled the unfat rate
+
+	// hydration decrease
+	if (hydration > 0 && stat != DEAD)
+		var/hydration_reduction = species.thirst_factor
+
+		for(var/datum/modifier/mod in modifiers)
+			if(!isnull(mod.metabolism_percent)) //Metabolism affects thirst too in this weird world.
+				hydration_reduction *= mod.metabolism_percent
+		adjust_hydration(-hydration_reduction)
 
 	if(noisy == TRUE && nutrition < 250 && prob(10)) //VOREStation edit for hunger noises.
 		var/sound/growlsound = sound(get_sfx("hunger_sounds"))
@@ -1267,6 +1276,14 @@
 				if(250 to 350)					nutrition_icon.icon_state = "nutrition2"
 				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"
+
+		if(hydration_icon)
+			switch(hydration)
+				if(450 to INFINITY)				hydration_icon.icon_state = "hydration0"
+				if(350 to 450)					hydration_icon.icon_state = "hydration1"
+				if(250 to 350)					hydration_icon.icon_state = "hydration2"
+				if(150 to 250)					hydration_icon.icon_state = "hydration3"
+				else							hydration_icon.icon_state = "hydration4"
 
 		if(synthbattery_icon)
 			switch(nutrition)
