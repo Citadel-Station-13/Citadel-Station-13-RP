@@ -387,7 +387,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	filedesc = "Helmet Camera Monitoring (Talon)"
 	extended_desc = "This program allows remote access to Talon helmet camera systems."
 	size = 4 //Smaller because limited scope
-	tguimodule_path = /datum/tgui_module/camera/ntos/talon_helmet
+	nanomodule_path = /datum/tgui_module/camera/ntos/talon_helmet
 	required_access = access_talon
 
 // Talon ship cameras
@@ -396,7 +396,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	filedesc = "Ship Camera Monitoring (Talon)"
 	extended_desc = "This program allows remote access to the Talon's camera system."
 	size = 10 //Smaller because limited scope
-	tguimodule_path = /datum/tgui_module/camera/ntos/talon_ship
+	nanomodule_path = /datum/tgui_module/camera/ntos/talon_ship
 	required_access = access_talon
 
 /datum/tgui_module/camera/ntos/talon_ship

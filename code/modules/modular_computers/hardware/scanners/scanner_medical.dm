@@ -1,8 +1,8 @@
-/obj/item/stock_parts/computer/scanner/medical
+/obj/item/computer_hardware/scanner/medical
 	name = "medical scanner module"
 	desc = "A medical scanner module. It can be used to scan patients and display medical information."
 
-/obj/item/stock_parts/computer/scanner/medical/do_on_afterattack(mob/user, atom/target, proximity)
+/obj/item/computer_hardware/scanner/medical/do_on_afterattack(mob/user, atom/target, proximity)
 	if(!can_use_scanner(user, target, proximity))
 		return
 

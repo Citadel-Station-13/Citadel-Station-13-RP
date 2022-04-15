@@ -60,7 +60,7 @@
 		else
 			isactive[name] = CR.get_status()
 
-		var/datum/job/job = SSjobs.get_by_title(rank)
+		var/datum/job/job = SSjob.get_by_title(rank)
 		var/found_place = 0
 		if(job)
 			for(var/list/department in dept_data)
@@ -127,20 +127,20 @@
 
 /proc/nano_crew_manifest()
 	return list(
-		"heads" = filtered_nano_crew_manifest(SSjobs.titles_by_department(COM)),
-		"spt" =   filtered_nano_crew_manifest(SSjobs.titles_by_department(SPT)),
-		"sci" =   filtered_nano_crew_manifest(SSjobs.titles_by_department(SCI)),
-		"sec" =   filtered_nano_crew_manifest(SSjobs.titles_by_department(SEC)),
-		"eng" =   filtered_nano_crew_manifest(SSjobs.titles_by_department(ENG)),
-		"med" =   filtered_nano_crew_manifest(SSjobs.titles_by_department(MED)),
-		"sup" =   filtered_nano_crew_manifest(SSjobs.titles_by_department(SUP)),
-		"exp" =   filtered_nano_crew_manifest(SSjobs.titles_by_department(EXP)),
-		"srv" =   filtered_nano_crew_manifest(SSjobs.titles_by_department(SRV)),
-		"bot" =   silicon_nano_crew_manifest(SSjobs.titles_by_department(MSC)),
-		"civ" =   filtered_nano_crew_manifest(SSjobs.titles_by_department(CIV))
+		"heads" = filtered_nano_crew_manifest(SSjob.titles_by_department(COM)),
+		"spt" =   filtered_nano_crew_manifest(SSjob.titles_by_department(SPT)),
+		"sci" =   filtered_nano_crew_manifest(SSjob.titles_by_department(SCI)),
+		"sec" =   filtered_nano_crew_manifest(SSjob.titles_by_department(SEC)),
+		"eng" =   filtered_nano_crew_manifest(SSjob.titles_by_department(ENG)),
+		"med" =   filtered_nano_crew_manifest(SSjob.titles_by_department(MED)),
+		"sup" =   filtered_nano_crew_manifest(SSjob.titles_by_department(SUP)),
+		"exp" =   filtered_nano_crew_manifest(SSjob.titles_by_department(EXP)),
+		"srv" =   filtered_nano_crew_manifest(SSjob.titles_by_department(SRV)),
+		"bot" =   silicon_nano_crew_manifest(SSjob.titles_by_department(MSC)),
+		"civ" =   filtered_nano_crew_manifest(SSjob.titles_by_department(CIV))
 		)
 
 /proc/flat_nano_crew_manifest()
 	. = list()
 	. += filtered_nano_crew_manifest(null, TRUE)
-	. += silicon_nano_crew_manifest(SSjobs.titles_by_department(MSC))
+	. += silicon_nano_crew_manifest(SSjob.titles_by_department(MSC))

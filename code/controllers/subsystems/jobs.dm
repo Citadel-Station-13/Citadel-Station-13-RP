@@ -1,3 +1,16 @@
+var/const/ENG               =(1<<0)
+var/const/SEC               =(1<<1)
+var/const/MED               =(1<<2)
+var/const/SCI               =(1<<3)
+var/const/CIV               =(1<<4)
+var/const/COM               =(1<<5)
+var/const/MSC               =(1<<6)
+var/const/SRV               =(1<<7)
+var/const/SUP               =(1<<8)
+var/const/SPT               =(1<<9)
+var/const/EXP               =(1<<10)
+var/const/ROB               =(1<<11)
+
 SUBSYSTEM_DEF(job)
 	name = "Job"
 	init_order = INIT_ORDER_JOBS
@@ -6,6 +19,11 @@ SUBSYSTEM_DEF(job)
 	var/list/occupations = list()		//List of all jobs
 	var/list/datum/job/name_occupations = list()	//Dict of all jobs, keys are titles
 	var/list/type_occupations = list()	//Dict of all jobs, keys are types
+
+	var/list/job_lists_by_map_name =   list()
+	var/list/titles_to_datums =        list()
+	var/list/types_to_datums =         list()
+	var/list/positions_by_department = list()
 
 	var/list/department_datums = list()
 	var/debug_messages = FALSE
@@ -36,6 +54,24 @@ SUBSYSTEM_DEF(job)
 		type_occupations[J] = job
 		if(LAZYLEN(job.departments))
 			add_to_departments(job)
+
+	// Update valid job titles.
+	titles_to_datums = list()
+	types_to_datums = list()
+	positions_by_department = list()
+	for(var/map_name in job_lists_by_map_name)
+		var/list/map_data = job_lists_by_map_name[map_name]
+		for(var/datum/job/job in map_data["jobs"])
+			types_to_datums[job.type] = job
+			titles_to_datums[job.title] = job
+			for(var/alt_title in job.alt_titles)
+				titles_to_datums[alt_title] = job
+			if(job.department_flag)
+				for (var/I in 1 to GLOB.bitflags.len)
+					if(job.department_flag & GLOB.bitflags[I])
+						LAZYDISTINCTADD(positions_by_department["[GLOB.bitflags[I]]"], job.title)
+						if (length(job.alt_titles))
+							LAZYDISTINCTADD(positions_by_department["[GLOB.bitflags[I]]"], job.alt_titles)
 
 	sortTim(occupations, /proc/cmp_job_datums)
 	for(var/D in department_datums)
@@ -133,9 +169,15 @@ SUBSYSTEM_DEF(job)
 
 // Someday it might be good to port code/game/jobs/job_controller.dm to here and clean it up.
 
+/datum/controller/subsystem/job/proc/get_by_title(var/rank)
+	return titles_to_datums[rank]
 
+/datum/controller/subsystem/job/proc/titles_by_department(var/dept)
+	return positions_by_department["[dept]"] || list()
 
-
+/datum/controller/subsystem/job/proc/get_by_path(var/path)
+	RETURN_TYPE(/datum/job)
+	return types_to_datums[path]
 
 /datum/controller/subsystem/job/proc/job_debug_message(message)
 	if(debug_messages)

@@ -20,6 +20,8 @@
 	var/icon/front
 	var/icon/side
 
+	var/list/associated_email_login = list("login" = "", "password" = "")
+	
 	var/primary_color = rgb(0,0,0) // Obtained by eyedroppering the stripe in the middle of the card
 	var/secondary_color = rgb(0,0,0) // Likewise for the oval in the top-left corner
 

@@ -16,7 +16,6 @@
 	var/target_progress = 300
 	var/datum/access/target_access = null
 	var/list/restricted_access_codes = list(access_change_ids) // access codes that are not hackable due to balance reasons
-	var/list/skill_restricted_access_codes_master = list(access_network)
 
 /datum/computer_file/program/access_decrypter/on_shutdown(var/forced)
 	reset()
@@ -31,8 +30,8 @@
 	. = ..()
 	if(!running)
 		return
-	var/obj/item/stock_parts/computer/processor_unit/CPU = computer.get_component(PART_CPU)
-	var/obj/item/stock_parts/computer/card_slot/RFID = computer.get_component(PART_CARD)
+	var/obj/item/computer_hardware/processor_unit/CPU = computer.get_component(PART_CPU)
+	var/obj/item/computer_hardware/card_slot/RFID = computer.get_component(PART_CARD)
 	if(!istype(CPU) || !CPU.check_functionality() || !istype(RFID) || !RFID.check_functionality())
 		message = "A fatal hardware error has been detected."
 		return
@@ -43,12 +42,10 @@
 	progress += get_speed()
 
 	if(progress >= target_progress)
-		if(prob(20 * max(SKILL_TRAINED - operator_skill, 0))) // Oops
+		if(prob(20)) // Oops
 			var/list/valid_access_values = get_all_station_access()
 			valid_access_values -= restricted_access_codes
 			valid_access_values -= RFID.stored_card.access
-			if(operator_skill < SKILL_MASTER) // Don't want to randomly assign an access that we wouldn't be able to decrypt normally
-				valid_access_values -= skill_restricted_access_codes_master
 			target_access = get_access_by_id(pick(valid_access_values))
 		RFID.stored_card.access |= target_access.id
 		if(ntnet_global.intrusion_detection_enabled && !prob(get_sneak_chance()))
@@ -61,15 +58,14 @@
 /datum/computer_file/program/access_decrypter/Topic(href, href_list)
 	if(..())
 		return 1
-	operator_skill = usr.get_skill_value(SKILL_COMPUTER)
 	if(href_list["PRG_reset"])
 		reset()
 		return 1
 	if(href_list["PRG_execute"])
 		if(running)
 			return 1
-		var/obj/item/stock_parts/computer/processor_unit/CPU = computer.get_component(PART_CPU)
-		var/obj/item/stock_parts/computer/card_slot/RFID = computer.get_component(PART_CARD)
+		var/obj/item/computer_hardware/processor_unit/CPU = computer.get_component(PART_CPU)
+		var/obj/item/computer_hardware/card_slot/RFID = computer.get_component(PART_CARD)
 		if(!istype(CPU) || !CPU.check_functionality() || !istype(RFID) || !RFID.check_functionality())
 			message = "A fatal hardware error has been detected."
 			return
@@ -83,8 +79,6 @@
 			return 1
 		if(access in restricted_access_codes)
 			return 1
-		if((access in skill_restricted_access_codes_master) && operator_skill < SKILL_MASTER)
-			return 1
 		target_access = get_access_by_id(access)
 		if(!target_access)
 			return 1
@@ -97,12 +91,11 @@
 		return 1
 
 /datum/computer_file/program/access_decrypter/proc/get_sneak_chance()
-	return max(operator_skill - SKILL_TRAINED, 0) * 30
+	return 30
 
 /datum/computer_file/program/access_decrypter/proc/get_speed()
-	var/skill_speed_modifier = 1 + (operator_skill - SKILL_TRAINED)/(SKILL_MAX - SKILL_MIN)
-	var/obj/item/stock_parts/computer/processor_unit/CPU = computer.get_component(PART_CPU)
-	return CPU?.processing_power * skill_speed_modifier
+	var/obj/item/computer_hardware/processor_unit/CPU = computer.get_component(PART_CPU)
+	return CPU?.processing_power
 
 /datum/nano_module/program/access_decrypter
 	name = "NTNet Access Decrypter"
@@ -116,7 +109,7 @@
 		return
 	data = PRG.get_header_data()
 
-	var/obj/item/stock_parts/computer/card_slot/RFID = PRG.computer.get_component(PART_CARD)
+	var/obj/item/computer_hardware/card_slot/RFID = PRG.computer.get_component(PART_CARD)
 	if(PRG.message)
 		data["message"] = PRG.message
 	else if(PRG.running)

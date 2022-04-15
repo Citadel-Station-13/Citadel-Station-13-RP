@@ -1,3 +1,6 @@
+//Because we don't use smartguns, this program has been UNTICKED.
+//It has not been changed to fit CitRP's codebase so if you use this, expect errors.
+
 /datum/computer_file/program/forceauthorization
 	filename = "forceauthorization"
 	filedesc = "Use of Force Authorization Manager"

@@ -18,7 +18,7 @@
 
 /datum/nano_module/program/card_mod/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
-	var/obj/item/stock_parts/computer/card_slot/card_slot = program.computer.get_component(PART_CARD)
+	var/obj/item/computer_hardware/card_slot/card_slot = program.computer.get_component(PART_CARD)
 
 	data["src"] = "\ref[src]"
 	data["station_name"] = station_name()
@@ -41,16 +41,16 @@
 	data["mmode"] = mod_mode
 	data["centcom_access"] = is_centcom
 
-	data["command_jobs"] = format_jobs(SSjobs.titles_by_department(COM))
-	data["support_jobs"] = format_jobs(SSjobs.titles_by_department(SPT))
-	data["engineering_jobs"] = format_jobs(SSjobs.titles_by_department(ENG))
-	data["medical_jobs"] = format_jobs(SSjobs.titles_by_department(MED))
-	data["science_jobs"] = format_jobs(SSjobs.titles_by_department(SCI))
-	data["security_jobs"] = format_jobs(SSjobs.titles_by_department(SEC))
-	data["exploration_jobs"] = format_jobs(SSjobs.titles_by_department(EXP))
-	data["service_jobs"] = format_jobs(SSjobs.titles_by_department(SRV))
-	data["supply_jobs"] = format_jobs(SSjobs.titles_by_department(SUP))
-	data["civilian_jobs"] = format_jobs(SSjobs.titles_by_department(CIV))
+	data["command_jobs"] = format_jobs(SSjob.titles_by_department(COM))
+	data["support_jobs"] = format_jobs(SSjob.titles_by_department(SPT))
+	data["engineering_jobs"] = format_jobs(SSjob.titles_by_department(ENG))
+	data["medical_jobs"] = format_jobs(SSjob.titles_by_department(MED))
+	data["science_jobs"] = format_jobs(SSjob.titles_by_department(SCI))
+	data["security_jobs"] = format_jobs(SSjob.titles_by_department(SEC))
+	data["exploration_jobs"] = format_jobs(SSjob.titles_by_department(EXP))
+	data["service_jobs"] = format_jobs(SSjob.titles_by_department(SRV))
+	data["supply_jobs"] = format_jobs(SSjob.titles_by_department(SUP))
+	data["civilian_jobs"] = format_jobs(SSjob.titles_by_department(CIV))
 	data["centcom_jobs"] = format_jobs(get_all_centcom_jobs())
 
 	data["all_centcom_access"] = is_centcom ? get_accesses(1) : null
@@ -163,7 +163,7 @@
 						to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
 						return
 		if("eject")
-			var/obj/item/stock_parts/computer/card_slot/card_slot = computer.get_component(PART_CARD)
+			var/obj/item/computer_hardware/card_slot/card_slot = computer.get_component(PART_CARD)
 			if(computer.get_inserted_id())
 				card_slot.eject_id(user)
 			else
@@ -182,11 +182,11 @@
 				return
 			if(computer && can_run(user, 1))
 				if(href_list["name"])
-					var/temp_name = sanitizeName(input("Enter name.", "Name", id_card.registered_name),allow_numbers=TRUE)
+					var/temp_name = sanitizeName(input("Enter name.", "Name", id_card.registered_name))
 					if(temp_name)
 						id_card.registered_name = temp_name
-						id_card.formal_name_suffix = initial(id_card.formal_name_suffix)
-						id_card.formal_name_prefix = initial(id_card.formal_name_prefix)
+						//id_card.formal_name_suffix = initial(id_card.formal_name_suffix)
+						//id_card.formal_name_prefix = initial(id_card.formal_name_prefix)
 					else
 						computer.show_error(usr, "Invalid name entered!")
 				else if(href_list["account"])
@@ -214,7 +214,7 @@
 					if(module.is_centcom)
 						access = get_centcom_access(t1)
 					else
-						var/datum/job/jobdatum = SSjobs.get_by_title(t1)
+						var/datum/job/jobdatum = SSjob.get_by_title(t1)
 						if(!jobdatum)
 							to_chat(usr, "<span class='warning'>No log exists for this job: [t1]</span>")
 							return

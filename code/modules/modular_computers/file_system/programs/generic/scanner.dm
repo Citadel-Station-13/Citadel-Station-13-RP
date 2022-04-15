@@ -20,7 +20,7 @@
 /datum/computer_file/program/scanner/proc/connect_scanner()	//If already connected, will reconnect.
 	if(!computer)
 		return 0
-	var/obj/item/stock_parts/computer/scanner/scanner = computer.get_component(PART_SCANNER)
+	var/obj/item/computer_hardware/scanner/scanner = computer.get_component(PART_SCANNER)
 	if(scanner && istype(src, scanner.driver_type))
 		using_scanner = 1
 		scanner.driver = src
@@ -30,7 +30,7 @@
 /datum/computer_file/program/scanner/proc/disconnect_scanner()
 	using_scanner = 0
 	if(computer)
-		var/obj/item/stock_parts/computer/scanner/scanner = computer.get_component(PART_SCANNER)
+		var/obj/item/computer_hardware/scanner/scanner = computer.get_component(PART_SCANNER)
 		if(scanner && (src == scanner.driver))
 			scanner.driver = null
 	data_buffer = null
@@ -47,7 +47,7 @@
 /datum/computer_file/program/scanner/proc/check_scanning()
 	if(!computer)
 		return 0
-	var/obj/item/stock_parts/computer/scanner/scanner = computer.get_component(PART_SCANNER)
+	var/obj/item/computer_hardware/scanner/scanner = computer.get_component(PART_SCANNER)
 	if(!scanner)
 		return 0
 	if(!scanner.can_run_scan)
@@ -75,7 +75,7 @@
 	if(href_list["scan"])
 		if(check_scanning())
 			metadata_buffer.Cut()
-			var/obj/item/stock_parts/computer/scanner/scanner = computer.get_component(PART_SCANNER)
+			var/obj/item/computer_hardware/scanner/scanner = computer.get_component(PART_SCANNER)
 			scanner.run_scan(usr, src)
 		return 1
 
@@ -95,7 +95,7 @@
 	var/datum/computer_file/program/scanner/prog = program
 	if(!prog.computer)
 		return
-	var/obj/item/stock_parts/computer/scanner/scanner = prog.computer.get_component(PART_SCANNER)
+	var/obj/item/computer_hardware/scanner/scanner = prog.computer.get_component(PART_SCANNER)
 	if(scanner)
 		data["scanner_name"] = scanner.name
 		data["scanner_enabled"] = scanner.enabled

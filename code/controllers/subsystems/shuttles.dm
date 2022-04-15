@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	var/list/registered_shuttle_landmarks = list()	// Maps shuttle landmark tags to instances
 	var/last_landmark_registration_time				// world.time of most recent addition to registered_shuttle_landmarks
-	var/list/shuttle_logs = list()					// (Not Implemented) Keeps records of shuttle movement, format is list(datum/shuttle = datum/shuttle_log)
+	var/list/shuttle_logs = list()					// Keeps records of shuttle movement, format is list(datum/shuttle = datum/shuttle_log)
 	var/list/shuttle_areas = list()					// All the areas of all shuttles.
 	var/list/docking_registry = list()				// Docking controller tag -> docking controller program, mostly for init purposes.
 
@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/list/shuttles_to_initialize					// A queue for shuttles to initialize at the appropriate time.
 	var/list/sectors_to_initialize					// Used to find all sector objects at the appropriate time.
 	var/block_init_queue = TRUE						// Block initialization of new shuttles/sectors
-
+	
 	var/tmp/list/current_run						// Shuttles remaining to process this fire() tick
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)

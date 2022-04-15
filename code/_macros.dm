@@ -19,11 +19,15 @@
 
 #define CanInteract(user, state) (CanUseTopic(user, state) == UI_INTERACTIVE)
 
+#define CanPhysicallyInteract(user) (CanUseTopicPhysical(user) == UI_INTERACTIVE)
+
+#define CanPhysicallyInteractWith(user, target) (target.CanUseTopicPhysical(user) == UI_INTERACTIVE)
 
 #define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
 
 #define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
 
 #define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
+
 
 //thank you Kevin for not running checks again, now I have to update one file with a comment - Papalus

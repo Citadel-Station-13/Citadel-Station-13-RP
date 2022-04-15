@@ -10,6 +10,9 @@
 		return UI_INTERACTIVE
 	return state.can_use_topic(src_object, user)
 
+/datum/proc/CanUseTopicPhysical(mob/user)
+	return CanUseTopic(user, GLOB.physical_state)
+
 /datum/topic_state/proc/href_list(var/mob/user)
 	return list()
 

@@ -29,19 +29,19 @@
 	data["disk_size"] = program.computer.max_disk_capacity()
 	data["disk_used"] = program.computer.used_disk_capacity()
 	data["power_usage"] = program.computer.get_power_usage()
-	var/obj/item/stock_parts/computer/battery_module/battery_module = program.computer.get_component(PART_BATTERY)
+	var/obj/item/computer_hardware/battery_module/battery_module = program.computer.get_component(PART_BATTERY)
 	data["battery_exists"] = !!battery_module
 	if(battery_module)
 		data["battery_rating"] = battery_module.battery.maxcharge
 		data["battery_percent"] = round(battery_module.battery.percent())
 
 	// Configurable stuff
-	var/obj/item/stock_parts/computer/nano_printer/nano_printer = program.computer.get_component(/obj/item/stock_parts/computer/nano_printer)
+	var/obj/item/computer_hardware/nano_printer/nano_printer = program.computer.get_component(/obj/item/computer_hardware/nano_printer)
 	data["print_language"] = nano_printer ? nano_printer.print_language : null
 
 	var/list/all_entries[0]
 	var/list/hardware = program.computer.get_all_components()
-	for(var/obj/item/stock_parts/computer/H in hardware)
+	for(var/obj/item/computer_hardware/H in hardware)
 		all_entries.Add(list(list(
 		"name" = H.name,
 		"desc" = H.desc,
@@ -68,7 +68,7 @@
 		return
 
 	if (href_list["edit_language"])
-		var/obj/item/stock_parts/computer/nano_printer/nano_printer = program.computer.get_component(/obj/item/stock_parts/computer/nano_printer)
+		var/obj/item/computer_hardware/nano_printer/nano_printer = program.computer.get_component(/obj/item/computer_hardware/nano_printer)
 		if (!nano_printer)
 			to_chat(usr, SPAN_WARNING("No printer found, unable to update language."))
 			return TOPIC_REFRESH

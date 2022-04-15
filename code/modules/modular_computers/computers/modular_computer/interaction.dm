@@ -10,9 +10,9 @@
 		verbs -= /obj/item/modular_computer/proc/remove_pen_verb
 
 	if(card_slot)
-		verbs |= /obj/item/stock_parts/computer/card_slot/proc/verb_eject_id
+		verbs |= /obj/item/computer_hardware/card_slot/proc/verb_eject_id
 	else
-		verbs -= /obj/item/stock_parts/computer/card_slot/proc/verb_eject_id
+		verbs -= /obj/item/computer_hardware/card_slot/proc/verb_eject_id
 
 // Forcibly shut down the device. To be used when something bugs out and the UI is nonfunctional.
 /obj/item/modular_computer/verb/emergency_shutdown()
@@ -105,9 +105,6 @@
 
 // On-click handling. Turns on the computer if it's off and opens the GUI.
 /obj/item/modular_computer/attack_self(var/mob/user)
-	if(MUTATION_CLUMSY in user.mutations)
-		to_chat(user, SPAN_WARNING("You can't quite work out how to use [src]."))
-		return
 	if(enabled && screen_on)
 		ui_interact(user)
 	else if(!enabled && screen_on)
@@ -150,8 +147,8 @@
 	if(!modifiable)
 		return ..()
 
-	if(istype(W, /obj/item/stock_parts/computer))
-		var/obj/item/stock_parts/computer/C = W
+	if(istype(W, /obj/item/computer_hardware))
+		var/obj/item/computer_hardware/C = W
 		if(C.hardware_size <= max_hardware_size)
 			try_install_component(user, C)
 		else
@@ -187,7 +184,7 @@
 			to_chat(user, "This device doesn't have any components installed.")
 			return
 		var/list/component_names = list()
-		for(var/obj/item/stock_parts/computer/H in all_components)
+		for(var/obj/item/computer_hardware/H in all_components)
 			component_names.Add(H.name)
 
 		var/choice = input(usr, "Which component do you want to uninstall?", "Computer maintenance", null) as null|anything in component_names
@@ -198,7 +195,7 @@
 		if(!Adjacent(usr))
 			return
 
-		var/obj/item/stock_parts/computer/H = find_hardware_by_name(choice)
+		var/obj/item/computer_hardware/H = find_hardware_by_name(choice)
 
 		if(!H)
 			return

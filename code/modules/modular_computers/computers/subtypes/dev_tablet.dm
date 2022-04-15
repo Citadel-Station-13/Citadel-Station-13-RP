@@ -7,7 +7,7 @@
 
 	hardware_flag = PROGRAM_TABLET
 	max_hardware_size = 1
-	w_class = ITEM_SIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	light_strength = 5 // same as PDAs
 
 	interact_sounds = list('sound/machines/pda_click.ogg')

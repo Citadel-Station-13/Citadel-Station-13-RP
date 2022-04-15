@@ -4,7 +4,7 @@
 	machine_name = "general-purpose computer motherboard"
 	machine_desc = "Used to build \"modular computers\" - stationary or portable devices that connect to NTNet and support a wide array of programs."
 	var/list/interact_sounds = list("keyboard", "keystroke")
-	var/obj/item/stock_parts/computer/hard_drive/portable/portable_drive
+	var/obj/item/computer_hardware/hard_drive/portable/portable_drive
 
 /obj/machinery/computer/modular/Initialize()
 	set_extension(src, /datum/extension/interactive/ntos/console)
@@ -70,13 +70,13 @@
 	. = ..()
 	if(.)
 		return
-	if(!ispath(path, /obj/item/stock_parts/computer))
+	if(!ispath(path, /obj/item/computer_hardware))
 		return FALSE
-	var/obj/item/stock_parts/computer/P = path
+	var/obj/item/computer_hardware/P = path
 	return initial(P.external_slot)
 
 /obj/machinery/computer/modular/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/stock_parts/computer/hard_drive/portable))
+	if(istype(I, /obj/item/computer_hardware/hard_drive/portable))
 		if(portable_drive)
 			to_chat(user, SPAN_WARNING("There's already \a [portable_drive] plugged in."))
 			return TRUE
@@ -113,7 +113,7 @@
 /obj/machinery/computer/modular/RefreshParts()
 	..()
 	var/extra_power = 0
-	for(var/obj/item/stock_parts/computer/part in component_parts)
+	for(var/obj/item/computer_hardware/part in component_parts)
 		if(part.enabled)
 			extra_power += part.power_usage
 	change_power_consumption(initial(active_power_usage) + extra_power, POWER_USE_ACTIVE)

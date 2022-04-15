@@ -25,6 +25,9 @@
 									 // If set to true, you are responsible for initialzing the shuttle manually.
 									 // Useful for shuttles that are initialized by map_template loading, or shuttles that are created in-game or not used.
 
+	var/logging_home_tag   //Whether in-game logs will be generated whenever the shuttle leaves/returns to the landmark with this landmark_tag.
+	var/logging_access     //Controls who has write access to log-related stuff; should correlate with pilot access.
+
 	var/mothershuttle // Tag of mothershuttle
 	var/motherdock	  // Tag of mothershuttle landmark, defaults to starting location
 
