@@ -28,6 +28,8 @@
 	unacidable = 1						//And no deleting hoomans inside
 	layer = MOB_LAYER					//Icon draw layer
 	infra_luminosity = 15				//Byond implementation is bugged.
+	max_integrity = 300
+	resistance_flags = FIRE_PROOF
 	var/initial_icon = null				//Mech type for resetting icon. Only used for reskinning kits (see custom items)
 	var/can_move = 1
 	var/mob/living/carbon/occupant = null
@@ -37,8 +39,6 @@
 
 	var/dir_in = 2						//What direction will the mech face when entered/powered on? Defaults to South.
 	var/step_energy_drain = 10
-	var/health = 300 					//Health is health
-	var/maxhealth = 300 				//Maxhealth is maxhealth.
 	var/deflect_chance = 10 			//Chance to deflect the incoming projectiles, hits, or lesser the effect of ex_act.
 	//the values in this list show how much damage will pass through, not how much will be absorbed.
 	var/list/damage_absorption = list(
