@@ -77,6 +77,7 @@
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
+	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
@@ -792,7 +793,7 @@
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
 	to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
-
+	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
 /obj/item/gun/attack_self(mob/user)

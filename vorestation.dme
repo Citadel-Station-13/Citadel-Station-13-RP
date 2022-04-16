@@ -37,6 +37,7 @@
 #include "code\__DEFINES\directional.dm"
 #include "code\__DEFINES\dna.dm"
 #include "code\__DEFINES\gamemode.dm"
+#include "code\__DEFINES\guns.dm"
 #include "code\__DEFINES\holidays.dm"
 #include "code\__DEFINES\holomap.dm"
 #include "code\__DEFINES\icon_smoothing.dm"
