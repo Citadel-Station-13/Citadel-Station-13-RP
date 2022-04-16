@@ -13,3 +13,7 @@
 #define INDUCER_SCAN_INTERFERE		2
 /// say something is full
 #define INDUCER_SCAN_FULL			3
+
+// /inducer/var/inducer_flags
+/// no using on guns
+#define INDUCER_NO_GUNS				(1<<0)

@@ -967,7 +967,7 @@
 
 		nutrition = max (0, nutrition - nutrition_reduction)
 
-	if (nutrition > H.species.max_nutrition)
+	if (nutrition > species.max_nutrition)
 		if(overeatduration < 600) //capped so people don't take forever to unfat
 			overeatduration++
 	else
@@ -1262,8 +1262,8 @@
 
 		if(nutrition_icon)
 			switch(nutrition)
-				if(H.species.max_nutrition to INFINITY)				nutrition_icon.icon_state = "nutrition0"
-				if(350 to H.species.max_nutrition)					nutrition_icon.icon_state = "nutrition1"
+				if(species.max_nutrition to INFINITY)				nutrition_icon.icon_state = "nutrition0"
+				if(350 to species.max_nutrition)					nutrition_icon.icon_state = "nutrition1"
 				if(250 to 350)					nutrition_icon.icon_state = "nutrition2"
 				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"

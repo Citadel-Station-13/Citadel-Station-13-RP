@@ -259,7 +259,7 @@
 	var/silk_color = "#FFFFFF"
 
 	/// max nutrition - i hate myself for haphazardly throwing this in but sue me
-	var/nutrition_max = 450
+	var/max_nutrition = 450
 
 /datum/species/New()
 	if(hud_type)

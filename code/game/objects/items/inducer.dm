@@ -38,13 +38,6 @@
 		cell = new cell_type
 	update_appearance()
 
-/obj/item/inducer/proc/induce(var/obj/item/cell/target, coefficient)
-	var/totransfer = min(cell.charge,(powertransfer * coefficient))
-	var/transferred = target.give(totransfer)
-	cell.use(transferred)
-	cell.update_icon()
-	target.update_icon()
-
 /obj/item/inducer/get_cell()
 	return cell
 
@@ -242,7 +235,7 @@
 /atom/proc/_inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	. = inducer_scan(I, things_to_induce, inducer_flags)
-	var/signal = SEND_SIGNAL(src, COMSIG_INDUCER_SCAN, I, things_to_inducer, inducer_flags)
+	var/signal = SEND_SIGNAL(src, COMSIG_INDUCER_SCAN, I, things_to_induce, inducer_flags)
 	if((signal & COMPONENT_BLOCK_INDUCER) || . == INDUCER_SCAN_BLOCK)
 		return INDUCER_SCAN_BLOCK
 	else if((signal & COMPONENT_INTERFERE_INDUCER) || . == INDUCER_SCAN_INTERFERE)
@@ -268,7 +261,12 @@
  * do NOT used this on components to take charge, put the component/signal registered in inducer scan!
  */
 /datum/proc/inducer_act(obj/item/inducer/I, amount, inducer_flags)
-	SEND_SIGNAL(COMSIG_INDUCER_ACT, I, amount, inducer_flags)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(I, COMSIG_INDUCER_ACT, amount, inducer_flags)
+	return 0
+
+/atom/inducer_act(obj/item/inducer/I, amount, inducer_flags)
+	. = ..()
 	var/obj/item/cell/C = get_cell()
 	if(C)
 		var/use = min(C.maxcharge - C.charge, amount, 0)
@@ -276,3 +274,9 @@
 		return use
 	else
 		return 0
+
+/**
+ * default inducer stuff
+ */
+/atom/proc/get_cell()
+	return null
