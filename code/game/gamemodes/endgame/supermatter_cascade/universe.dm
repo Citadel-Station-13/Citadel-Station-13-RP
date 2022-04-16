@@ -113,7 +113,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 			if(APC.cell)
 				APC.cell.charge = 0
 			APC.emagged = 1
-			APC.queue_icon_update()
+			APC.update_icon()
 
 /datum/universal_state/supermatter_cascade/proc/PlayerSet()
 	for(var/datum/mind/M in player_list)

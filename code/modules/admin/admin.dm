@@ -1255,6 +1255,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	if(!ai_number)
 		to_chat(usr, "<b>No AIs located</b>") //Just so you know the thing is actually working and not just ignoring you.
 
+/*
 /datum/admins/proc/show_skills()
 	set category = "Admin"
 	set name = "Show Skills"
@@ -1271,7 +1272,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	show_skill_window(usr, M)
 
 	return
-
+*/
 /client/proc/update_mob_sprite(mob/living/carbon/human/H as mob)
 	set category = "Admin"
 	set name = "Update Mob Sprite"

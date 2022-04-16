@@ -466,10 +466,15 @@
 			src.fingerprintslast = M.key
 	return
 
-/atom/proc/add_fingerprint(mob/living/M as mob, ignoregloves = 0)
-	if(isnull(M)) return
-	if(isAI(M)) return
-	if(isnull(M.key)) return
+/atom/proc/add_fingerprint(mob/M, ignoregloves, obj/item/tool)
+	if(isnull(M))
+		return
+	if(isAI(M))
+		return
+	if(!M || !M.key)
+		return
+	if(istype(tool) && (tool.flags & NOPRINT))
+		return
 	if (ishuman(M))
 		//Add the list if it does not exist.
 		if(!fingerprintshidden)
@@ -1033,3 +1038,6 @@
 	relative_layer = new_layer
 	// base layer being null isn't
 	layer = base_layer + 0.000001 * relative_layer
+
+/atom/proc/get_cell()
+	return

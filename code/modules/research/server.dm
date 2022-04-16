@@ -1,6 +1,6 @@
 /obj/machinery/r_n_d/server
 	name = "R&D Server"
-	icon = 'icons/obj/machines/research_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/machines/research_vr.dmi'
 	icon_state = "server"
 	var/datum/research/files
 	var/health = 100
@@ -17,10 +17,7 @@
 
 /obj/machinery/r_n_d/server/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stack/cable_coil(src)
-	component_parts += new /obj/item/stack/cable_coil(src)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/r_n_d/server/Destroy()
@@ -164,7 +161,6 @@
 	if(..())
 		return 1
 
-	add_fingerprint(usr)
 	usr.set_machine(src)
 	if(!allowed(usr) && !emagged)
 		to_chat(usr, "<span class='warning'>You do not have the required access level</span>")

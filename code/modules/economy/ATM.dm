@@ -19,7 +19,7 @@ log transactions
 	desc = "For all your monetary needs!"
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "atm"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	circuit =  /obj/item/circuitboard/atm
@@ -67,17 +67,17 @@ log transactions
 	if(!emagged)
 		return
 
-	//short out the machine, shoot sparks, spew money!
-	emagged = 1
+	//Short out the machine, shoot sparks, spew money!
+	emagged = TRUE
 	spark_system.start()
 	spawn_money(rand(100,500),src.loc)
-	//we don't want to grief people by locking their id in an emagged ATM
+	//We don't want to grief people by locking their id in an emagged ATM
 	release_held_id(user)
 
-	//display a message to the user
+	//Display a message to the user
 	var/response = pick("Initiating withdraw. Have a nice day!", "CRITICAL ERROR: Activating cash chamber panic siphon.","PIN Code accepted! Emptying account balance.", "Jackpot!")
-	to_chat(user, "<span class='warning'>[icon2html(thing = src, target = user)] The [src] beeps: \"[response]\"</span>")
-	return 1
+	to_chat(user, SPAN_WARNING("[icon2html(thing = src, target = user)] The [src] beeps: \"[response]\""))
+	return TRUE
 
 /obj/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
 	if(computer_deconstruction_screwdriver(user, I))
@@ -85,7 +85,7 @@ log transactions
 	if(istype(I, /obj/item/card))
 		if(emagged > 0)
 			//prevent inserting id into an emagged ATM
-			to_chat(user, "<font color='red'>[icon2html(thing = src, target = user)] CARD READER ERROR. This system has been compromised!</font>")
+			to_chat(user, SPAN_CAUTION("[icon2html(thing = src, target = user)] CARD READER ERROR. This system has been compromised!"))
 			return
 		else if(istype(I,/obj/item/card/emag))
 			I.resolve_attackby(src, user)
@@ -117,7 +117,7 @@ log transactions
 			T.time = stationtime2text()
 			authenticated_account.transaction_log.Add(T)
 
-			to_chat(user, "<span class='info'>You insert [I] into [src].</span>")
+			to_chat(user, SPAN_INFO("You insert [I] into [src]."))
 			src.attack_hand(user)
 			qdel(I)
 	else
@@ -125,7 +125,7 @@ log transactions
 
 /obj/machinery/atm/attack_hand(mob/user as mob)
 	if(istype(user, /mob/living/silicon))
-		to_chat (user, "<span class='warning'>A firewall prevents you from interfacing with this device!</span>")
+		to_chat (user, SPAN_WARNING("A firewall prevents you from interfacing with this device!"))
 		return
 	if(get_dist(src,user) <= 1)
 

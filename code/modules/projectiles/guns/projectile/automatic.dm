@@ -24,7 +24,7 @@
 	slot_flags = SLOT_BELT
 	magazine_type = null // R&D builds this. Starts unloaded.
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mmAdvanced, /obj/item/ammo_magazine/m9mm)
-
+	
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,20), dispersion=list(0.0, 0.3, 0.6))
@@ -81,7 +81,7 @@
 	magazine_type = /obj/item/ammo_magazine/m545
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
-
+	heavy = TRUE
 	one_handed_penalty = 30
 
 	firemodes = list(
@@ -141,7 +141,7 @@
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-
+	heavy = TRUE
 	one_handed_penalty = 60
 
 	burst_delay = 4
@@ -211,6 +211,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
 	can_special_reload = FALSE
+	heavy = TRUE
 	one_handed_penalty = 90
 
 	var/cover_open = 0
@@ -289,7 +290,7 @@
 	magazine_type = /obj/item/ammo_magazine/m12gdrum
 	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
 	projectile_type = /obj/item/projectile/bullet/shotgun
-
+	heavy = TRUE
 	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
 
 	firemodes = list(
@@ -426,7 +427,7 @@
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
-
+	heavy = TRUE
 	one_handed_penalty = 45
 
 	firemodes = list(
@@ -458,6 +459,7 @@ obj/item/gun/projectile/automatic/fal
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m762m
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 
 	firemodes = list(
@@ -481,6 +483,7 @@ obj/item/gun/projectile/automatic/automat
 	w_class = ITEMSIZE_LARGE
 	force = 10
 	caliber = "7.62mm"
+	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3) //A real work around to a automatic rifle.
 	slot_flags = SLOT_BACK
 	load_method = SPEEDLOADER
@@ -511,6 +514,7 @@ obj/item/gun/projectile/automatic/automat/taj
 	icon_state = "holyshotgun"
 	item_state = null
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	caliber = "12g"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
@@ -543,6 +547,7 @@ obj/item/gun/projectile/automatic/automat/taj
 	item_state = "clownrifle"
 	wielded_item_state = "clownrifle_wielded"
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	caliber = "organic"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)

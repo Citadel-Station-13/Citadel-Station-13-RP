@@ -38,7 +38,6 @@
 	if(..())
 		return
 
-	add_fingerprint(user)
 	if(stat & (NOPOWER|BROKEN))
 		return
 

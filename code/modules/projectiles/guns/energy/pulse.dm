@@ -10,7 +10,8 @@
 	sel_mode = 2
 	accuracy = 90
 	one_handed_penalty = 10
-
+	heavy = TRUE
+	
 	firemodes = list(
 		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, fire_delay=null, charge_cost = 120),
 		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_delay=null, charge_cost = 120),

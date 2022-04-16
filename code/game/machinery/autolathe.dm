@@ -54,7 +54,7 @@
 	update_recipe_list()
 
 	if(..() || (disabled && !panel_open))
-		to_chat(user, "<span class='danger'>\The [src] is disabled!</span>")
+		to_chat(user, SPAN_DANGER("\The [src] is disabled!"))
 		return
 
 	if(shocked)
@@ -122,7 +122,7 @@
 
 /obj/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
-		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return
 
 	if(default_deconstruction_screwdriver(user, O))
@@ -200,7 +200,7 @@
 		mass_per_sheet += eating.matter[material]
 
 	if(!filltype)
-		to_chat(user, "<span class='notice'>\The [src] is full. Please remove material from the autolathe in order to insert more.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is full. Please remove material from the autolathe in order to insert more."))
 		return
 	else if(filltype == 1)
 		to_chat(user, "You fill \the [src] to capacity with \the [eating].")
@@ -228,10 +228,9 @@
 		return
 
 	usr.set_machine(src)
-	add_fingerprint(usr)
 
 	if(busy)
-		to_chat(usr, "<span class='notice'>The autolathe is busy. Please wait for completion of previous operation.</span>")
+		to_chat(usr, SPAN_NOTICE("The autolathe is busy. Please wait for completion of previous operation."))
 		return
 
 	else if(href_list["setfilter"])

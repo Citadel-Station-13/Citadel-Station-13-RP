@@ -1222,3 +1222,6 @@
 	if(module_active && istype(module_active,/obj/item/gripper))
 		var/obj/item/gripper/G = module_active
 		G.drop_item_nm()
+
+/mob/living/silicon/robot/get_cell()
+	return cell

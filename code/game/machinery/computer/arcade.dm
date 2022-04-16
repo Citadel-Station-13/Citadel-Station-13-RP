@@ -201,7 +201,6 @@
 			src.New()
 			emagged = 0
 
-	src.add_fingerprint(usr)
 	SSnanoui.update_uis(src)
 	return
 

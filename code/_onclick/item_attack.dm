@@ -30,7 +30,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
 /obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
 	pre_attack(A, user)
-	add_fingerprint(user)
+	if(!(flags & NOPRINT))
+		add_fingerprint(user)
 	return A.attackby(src, user, params, attack_modifier)
 
 // No comment

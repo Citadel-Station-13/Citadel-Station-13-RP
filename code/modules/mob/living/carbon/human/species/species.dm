@@ -44,6 +44,7 @@
 	var/blood_volume = 560									// Initial blood volume.
 	var/bloodloss_rate = 1									// Multiplier for how fast a species bleeds out. Higher = Faster
 	var/hunger_factor = 0.05								// Multiplier for hunger.
+	var/thirst_factor = DEFAULT_THIRST_FACTOR				// Multiplier for thirst.
 	var/active_regen_mult = 1								// Multiplier for 'Regenerate' power speed, in human_powers.dm
 
 	var/taste_sensitivity = TASTE_NORMAL					// How sensitive the species is to minute tastes.
@@ -258,6 +259,9 @@
 	var/silk_max_reserve = 500
 	var/silk_color = "#FFFFFF"
 
+	/// max nutrition - i hate myself for haphazardly throwing this in but sue me
+	var/max_nutrition = 450
+
 	//Moved these from custom_species.dm
 	//var/vore_numbing = 0
 	var/is_vampire = FALSE // If this is set to 0, the person can't get nutrition from food.
@@ -266,6 +270,7 @@
 	var/trashcan = FALSE //It's always sunny in the wrestling ring.
 	var/base_species = null // Unused outside of a few species
 	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
+
 
 /datum/species/New()
 	if(hud_type)

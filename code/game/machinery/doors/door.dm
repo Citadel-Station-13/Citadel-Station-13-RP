@@ -211,7 +211,7 @@
 	..()
 
 /obj/machinery/door/attackby(obj/item/I as obj, mob/user as mob)
-	src.add_fingerprint(user)
+	src.add_fingerprint(user, 0, I)
 
 	if(istype(I))
 		if(attackby_vr(I, user))	//VOREStation begin: Fireproofing
