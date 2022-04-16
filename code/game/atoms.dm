@@ -1038,3 +1038,6 @@
 	relative_layer = new_layer
 	// base layer being null isn't
 	layer = base_layer + 0.000001 * relative_layer
+
+/atom/proc/get_cell()
+	return

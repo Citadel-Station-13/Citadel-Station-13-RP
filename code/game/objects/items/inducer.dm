@@ -1,7 +1,8 @@
 /obj/item/inducer
 	name = "industrial inducer"
 	desc = "A tool for inductively charging internal power cells."
-	icon = 'icons/obj/item/inducers.dmi'
+
+	icon = 'icons/obj/item/inducer.dmi'
 	icon_state = "inducer-engi"
 	item_state = "inducer-engi"
 	item_icons = list(
@@ -270,9 +271,3 @@
 		return use
 	else
 		return 0
-
-/**
- * default inducer stuff
- */
-/atom/proc/get_cell()
-	return null
