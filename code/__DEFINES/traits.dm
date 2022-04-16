@@ -188,9 +188,26 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EMPATH			"empath"
 #define TRAIT_FRIENDLY			"friendly"
 #define TRAIT_GRABWEAKNESS		"grab_weakness"
+*/
+
+// mobility flag traits
+// IN THE FUTURE, IT WOULD BE NICE TO DO SOMETHING SIMILAR TO https://github.com/tgstation/tgstation/pull/48923/files (ofcourse not nearly the same because I have my.. thoughts on it)
+// BUT FOR NOW, THESE ARE HOOKED TO DO update_mobility() VIA COMSIG IN living_mobility.dm
+// SO IF YOU ADD MORE, BESURE TO UPDATE IT THERE.
+
+/// Disallow movement
+#define TRAIT_MOBILITY_NOMOVE		"mobility_nomove"
+/// Disallow pickup
+#define TRAIT_MOBILITY_NOPICKUP		"mobility_nopickup"
+/// Disallow item use
+#define TRAIT_MOBILITY_NOUSE		"mobility_nouse"
+///Disallow resting/unresting
+#define TRAIT_MOBILITY_NOREST		"mobility_norest"
+#warn hook these
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
+/*
 #define EYE_DAMAGE "eye_damage"
 #define GENETIC_MUTATION "genetic"
 #define OBESITY "obesity"

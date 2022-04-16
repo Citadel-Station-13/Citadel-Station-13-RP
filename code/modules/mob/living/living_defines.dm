@@ -20,6 +20,9 @@
 	var/brainloss = 0	//Damage caused by someone hitting you in the head with a bible or being infected with brainrot.
 	var/halloss = 0		//Hallucination damage. 'Fake' damage obtained through hallucinating or the holodeck. Sleeping should cause it to wear off.
 
+	/// replaces canmove, determines what we can/can't do
+	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+
 	var/hallucination = 0 //Directly affects how long a mob will hallucinate for
 	var/list/atom/hallucinations = list() //A list of hallucinated people that try to attack the mob. See /obj/effect/fake_attacker in hallucinations.dm
 

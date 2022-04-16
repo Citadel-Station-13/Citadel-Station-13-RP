@@ -426,6 +426,31 @@
 /atom/movable/proc/get_cell()
 	return
 
+/atom/movable/proc/set_glide_size(target = 8, recursive = TRUE)
+#ifdef SMOOTH_MOVEMENT
+	// SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, target)
+	glide_size = target
+
+	for(var/m in buckled_mobs)
+		var/mob/buckled_mob = m
+		buckled_mob.set_glide_size(target)
+
+	if(recursive)
+		recursive_pulled_glidesize_update()
+#else
+	return
+#endif
+
+///Sets the anchored var and returns if it was sucessfully changed or not.
+/atom/movable/proc/set_anchored(anchorvalue)
+	SHOULD_CALL_PARENT(TRUE)
+	if(anchored == anchorvalue)
+		return
+	. = anchored
+	anchored = anchorvalue
+	SEND_SIGNAL(src, COMSIG_OBJ_SETANCHORED, anchorvalue)
+	// SEND_SIGNAL(src, COMSIG_MOVABLE_SET_ANCHORED, anchorvalue)
+
 /atom/movable/proc/ghost_tag(text)
 	var/atom/movable/ghost_tag_container/G = locate() in vis_contents
 	if(!length(text) || !istext(text))

@@ -97,15 +97,22 @@
 	var/confused = 0		//Carbon
 	var/antitoxs = null
 	var/phoron = null
-	var/sleeping = 0		//Carbon
 	var/resting = 0			//Carbon
 	var/lying = 0
 	var/lying_prev = 0
 
 	/// Player pixel shifting, if TRUE, we need to reset on move.
 	var/is_shifted = FALSE
+	/// List of movement speed modifiers applying to this mob
+	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
+	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	var/list/movespeed_mod_immunities			//Lazy list, see mob_movespeed.dm
+	/// The calculated mob speed slowdown based on the modifiers list
+	var/cached_multiplicative_slowdown
+	#warn hook movespeed in necessary places
+	/// The calculated mob action speed slowdown based on the modifiers list
+	var/cached_multiplicative_actions_slowdown
 
-	var/canmove = 1
 	//Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
 	var/unacidable = 0
@@ -131,11 +138,7 @@
 	var/hydration = 400.0//Carbon
 
 	var/overeatduration = 0		// How long this guy is overeating //Carbon
-	var/paralysis = 0.0
-	var/stunned = 0.0
-	var/weakened = 0.0
 	var/losebreath = 0.0//Carbon
-	var/_intent = null//Living
 	var/shakecamera = 0
 	var/a_intent = INTENT_HELP//Living
 	var/m_int = null//Living

@@ -9,6 +9,7 @@
 #define AB_CHECK_ALIVE 8
 #define AB_CHECK_INSIDE 16
 
+#warn convert actions to main actions
 
 /datum/action
 	var/name = "Generic Action"
