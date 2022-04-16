@@ -448,8 +448,7 @@
 		return
 	. = anchored
 	anchored = anchorvalue
-	SEND_SIGNAL(src, COMSIG_OBJ_SETANCHORED, anchorvalue)
-	// SEND_SIGNAL(src, COMSIG_MOVABLE_SET_ANCHORED, anchorvalue)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_SET_ANCHORED, anchorvalue)
 
 /atom/movable/proc/ghost_tag(text)
 	var/atom/movable/ghost_tag_container/G = locate() in vis_contents

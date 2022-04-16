@@ -47,10 +47,6 @@
 	id = "unconscious"
 	needs_update_stat = TRUE
 
-/datum/status_effect/incapacitating/unconscious/tick()
-	if(owner.getStaminaLoss())
-		owner.adjustStaminaLoss(-0.3) //reduce stamina loss by 0.3 per tick, 6 per 2 seconds
-
 //SLEEPING
 /datum/status_effect/incapacitating/sleeping
 	id = "sleeping"
