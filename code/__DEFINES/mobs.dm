@@ -228,6 +228,7 @@
 #define O_ALL list(O_STANDARD, O_MOUTH, O_CELL, O_PLASMA, O_HIVE, O_NUTRIENT, O_STRATA, O_RESPONSE, O_GBLADDER, O_POLYP, O_ANCHOR, O_REGBRUTE, O_REGBURN, O_REGOXY, O_REGTOX, O_ACID, O_EGG, O_RESIN, O_AREJECT, O_VENTC, O_VRLINK)
 
 // External organs, aka limbs
+// also used for def_zone!
 #define BP_L_FOOT "l_foot"
 #define BP_R_FOOT "r_foot"
 #define BP_L_LEG  "l_leg"
