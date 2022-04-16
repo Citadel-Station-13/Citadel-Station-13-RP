@@ -124,7 +124,7 @@
 		to_chat(user, "<span class='warning'>[src] can't reach that far!</span>")
 		return FALSE
 	var/list/targets = list()
-	var/result = A.inducer_scan(src, targets, inducer_flags)
+	var/result = A._inducer_scan(src, targets, inducer_flags)
 	if(result == INDUCER_SCAN_BLOCK || (result == INDUCER_SCAN_NORMAL && !length(targets)))
 		to_chat(user, SPAN_WARNING("Unable to interface with device."))
 		return FALSE
@@ -266,7 +266,7 @@
 	. = ..()
 	var/obj/item/cell/C = get_cell()
 	if(C)
-		var/use = min(C.maxcharge - C.charge, amount, 0)
+		var/use = clamp(C.maxcharge - C.charge, 0, amount)
 		C.give(use)
 		return use
 	else
