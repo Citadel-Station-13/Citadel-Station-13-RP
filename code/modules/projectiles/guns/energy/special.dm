@@ -8,6 +8,7 @@
 	w_class = ITEMSIZE_LARGE
 	force = 10
 	slot_flags = SLOT_BACK
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/ion
 	one_handed_penalty = 15
 
@@ -22,6 +23,7 @@
 	w_class = ITEMSIZE_NORMAL
 	force = 5
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	heavy = FALSE
 	charge_cost = 480
 	projectile_type = /obj/item/projectile/ion/pistol
 
@@ -89,6 +91,7 @@
 	item_state = "c20r"
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/meteor
 	cell_type = /obj/item/cell/potato
 	charge_cost = 100
@@ -104,6 +107,7 @@
 	icon_state = "pen"
 	item_state = "pen"
 	w_class = ITEMSIZE_TINY
+	heavy = FALSE
 	slot_flags = SLOT_BELT
 	one_handed_penalty = 0
 
@@ -186,6 +190,7 @@ obj/item/gun/energy/staff/focus
 	item_state = "dakkalaser"
 	wielded_item_state = "dakkalaser-wielded"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
 	projectile_type = /obj/item/projectile/energy/blue_pellet
 	cell_type = /obj/item/cell/device/weapon/recharge
@@ -210,6 +215,7 @@ obj/item/gun/energy/staff/focus
 	item_state = "mhdhowitzer"
 	wielded_item_state = "mhdhowitzer-wielded"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 
 	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
 	projectile_type = /obj/item/projectile/beam/tungsten
@@ -422,6 +428,7 @@ obj/item/gun/energy/staff/focus
 	cell_type = /obj/item/cell
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
@@ -446,5 +453,6 @@ obj/item/gun/energy/staff/focus
 	battery_lock = 1
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	one_handed_penalty = 60

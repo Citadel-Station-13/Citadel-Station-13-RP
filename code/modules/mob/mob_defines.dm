@@ -34,6 +34,7 @@
 	var/atom/movable/screen/healths = null
 	var/atom/movable/screen/throw_icon = null
 	var/atom/movable/screen/nutrition_icon = null
+	var/atom/movable/screen/hydration_icon = null
 	var/atom/movable/screen/synthbattery_icon = null
 	var/atom/movable/screen/pressure = null
 	var/atom/movable/screen/pain = null
@@ -125,7 +126,9 @@
 	var/bodytemperature = 310.055	//98.7 F
 	var/drowsyness = 0.0//Carbon
 	var/charges = 0.0
+
 	var/nutrition = 400.0//Carbon
+	var/hydration = 400.0//Carbon
 
 	var/overeatduration = 0		// How long this guy is overeating //Carbon
 	var/paralysis = 0.0

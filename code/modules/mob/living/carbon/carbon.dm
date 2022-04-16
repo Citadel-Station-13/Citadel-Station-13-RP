@@ -357,3 +357,15 @@
 	if(does_not_breathe)
 		return FALSE
 	return ..()
+
+/mob/living/carbon/proc/set_nutrition(amount)
+	nutrition = clamp(amount, 0, initial(nutrition))
+
+/mob/living/carbon/proc/adjust_nutrition(amount)
+	set_nutrition(nutrition + amount)
+
+/mob/living/carbon/proc/set_hydration(amount)
+	hydration = clamp(amount, 0, initial(hydration)  * 1.5) //We can overeat but not to ludicrous amounts, otherwise we'd never be normal again
+
+/mob/living/carbon/proc/adjust_hydration(amount)
+	set_hydration(hydration + amount)
