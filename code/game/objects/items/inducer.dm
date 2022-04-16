@@ -115,14 +115,13 @@
 	return ..()
 
 /obj/item/inducer/proc/recharge(atom/movable/A, mob/user)
+	if(inducing)
+		return FALSE
 	if(!isturf(A) && user.loc == A)
 		return FALSE
-
 	if(get_dist(user, A) > recharge_dist)
 		to_chat(user, "<span class='warning'>[src] can't reach that far!</span>")
-		recharging = FALSE
 		return FALSE
-
 	var/list/targets = list()
 	var/result = A.inducer_scan(src, targets, inducer_flags)
 	if(result == INDUCER_SCAN_BLOCK || (result == INDUCER_SCAN_NORMAL && !length(targets)))
@@ -136,11 +135,8 @@
 		return FALSE
 	if(!targets.len)
 		CRASH("Empty targets list")
-		return
 
 	// enter recharge loop
-	if(inducing)
-		return TRUE
 	inducing = TRUE
 
 	var/used = 0
