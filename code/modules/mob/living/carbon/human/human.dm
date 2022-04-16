@@ -1643,3 +1643,19 @@
 
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
+
+/mob/living/carbon/human/inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
+	. = ..()
+	if(isSynthetic())
+		things_to_induce += src
+
+/mob/living/carbon/human/inducer_act(obj/item/inducer/I, amount, inducer_flags)
+	. = ..()
+	if(!isSynthetic())
+		return
+	var/needed = (species.max_nutrition - nutrition)
+	if(needed <= 0)
+		return
+	var/got = min((amount / SYNTHETIC_NUTRITION_CHARGE_RATE), needed)
+	adjust_nutrition(got)
+	return got * SYNTHETIC_NUTRITION_CHARGE_RATE

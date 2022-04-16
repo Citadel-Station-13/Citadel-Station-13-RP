@@ -1,23 +1,32 @@
 /obj/item/inducer
 	name = "industrial inducer"
 	desc = "A tool for inductively charging internal power cells."
-	icon = 'icons/obj/tools.dmi'
+	icon = 'icons/obj/item/inducers.dmi'
 	icon_state = "inducer-engi"
 	item_state = "inducer-engi"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
+		slot_l_hand_str = 'icons/obj/item/inducer.dmi',
+		slot_r_hand_str = 'icons/obj/item/inducer.dmi',
+	)
+	item_state_slots = list(
+		slot_l_hand_str = "inducer_lefthand",
+		slot_r_hand_str = "inducer_righthand"
 	)
 	force = 7
-
-	var/powertransfer = 1000 //Transfer per time when charging something
-	var/cell_type = /obj/item/cell/high //Type of cell to spawn in it
-	var/charge_guns = FALSE //Can it charge guns?
-
-	var/datum/effect_system/spark_spread/spark_system
+	/// transfer amount per second
+	var/transfer_rate = 500
+	/// type of cell to spawn
+	var/cell_type = /obj/item/cell/high
+	/// our cell
 	var/obj/item/cell/cell
-	var/recharging = FALSE
+	/// panel open?
 	var/opened = FALSE
+	/// currently inducing?
+	var/inducing = FALSE
+	/// inducer flags
+	var/inducer_flags = INDUCER_NO_GUNS
+	/// recharge distance
+	var/recharge_dist = 7
 
 /obj/item/inducer/unloaded
 	cell_type = null
@@ -27,6 +36,7 @@
 	. = ..()
 	if(!cell && cell_type)
 		cell = new cell_type
+	update_appearance()
 
 /obj/item/inducer/proc/induce(var/obj/item/cell/target, coefficient)
 	var/totransfer = min(cell.charge,(powertransfer * coefficient))
@@ -114,84 +124,64 @@
 /obj/item/inducer/proc/recharge(atom/movable/A, mob/user)
 	if(!isturf(A) && user.loc == A)
 		return FALSE
-	if(recharging)
-		return TRUE
-	else
-		recharging = TRUE
 
-	if(istype(A, /obj/item/gun/energy) && !charge_guns)
-		to_chat(user, "<span class='alert'>Error unable to interface with device.</span>")
-		recharging = FALSE
-		return FALSE
-
-	if(get_dist(user, A) > 7)
+	if(get_dist(user, A) > recharge_dist)
 		to_chat(user, "<span class='warning'>[src] can't reach that far!</span>")
 		recharging = FALSE
 		return FALSE
 
-	//The cell we hopefully eventually find
-	var/obj/item/cell/C
+	var/list/targets = list()
+	var/result = A.inducer_scan(src, targets, inducer_flags)
+	if(result == INDUCER_SCAN_BLOCK || (result == INDUCER_SCAN_NORMAL && !length(targets)))
+		to_chat(user, SPAN_WARNING("Unable to interface with device."))
+		return FALSE
+	else if(result == INDUCER_SCAN_INTERFERE)
+		to_chat(user, SPAN_WARNING("Device interference detected; Aborting."))
+		return FALSE
+	else if(result == INDUCER_SCAN_FULL)
+		to_chat(user, SPAN_NOTICE("[A] is already fully charged!"))
+		return FALSE
+	if(!targets.len)
+		CRASH("Empty targets list")
+		return
 
-	//Synthetic humanoids
-	if(ishuman(A))
-		var/mob/living/carbon/human/H = A
-		if(H.isSynthetic())
-			C = new /obj/item/cell/standin(null, H) // o o f
-
-	//Borg frienbs
-	else if(isrobot(A))
-		var/mob/living/silicon/robot/R = A
-		C = R.cell
-
-	//Can set different coefficients per item if you want
-	var/coefficient = 1
-
-	//Last ditch effort
-	var/obj/O //For updating icons, just in case they have a battery meter icon
-	if(!C && isobj(A))
-		O = A
-		C = O.get_cell()
-
-	if(C)
-		var/done_any = FALSE
-
-		if(C.charge >= C.maxcharge)
-			to_chat(user, "<span class='notice'>[A] is fully charged ([round(C.charge)] / [C.maxcharge])!</span>")
-			recharging = FALSE
-			return TRUE
-		user.visible_message("<span class='notice'>[user] starts recharging [A] with [src].</span>", "<span class='notice'>You start recharging [A] with [src].</span>")
-
-		var/datum/beam/charge_beam = user.Beam(A, icon_state = "rped_upgrade", time = 20 SECONDS)
-		var/filter = filter(type = "outline", size = 1, color = "#22AAFF")
-		A.filters += filter
-
-		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-		spark_system.set_up(5, 0, get_turf(A))
-		spark_system.attach(A)
-
-		while(C.charge < C.maxcharge)
-			if(do_after(user, 2 SECONDS, target = user) && cell?.charge)
-				done_any = TRUE
-				induce(C, coefficient)
-				spark_system.start()
-				if(O)
-					O.update_icon()
-			else
-				break
-
-		QDEL_NULL(charge_beam)
-		QDEL_NULL(spark_system)
-		if(A)
-			A.filters -= filter
-
-		if(done_any) // Only show a message if we succeeded at least once
-			user.visible_message("<span class='notice'>[user] recharged [A]!</span>", "<span class='notice'>You recharged [A]!</span>")
-
-		recharging = FALSE
+	// enter recharge loop
+	if(inducing)
 		return TRUE
-	else //Couldn't find a cell
-		to_chat(user, "<span class='alert'>Error unable to interface with device.</span>")
-		recharging = FALSE
+	inducing = TRUE
+
+	var/used = 0
+
+	user.visible_message(SPAN_NOTICE("[user] starts recharging [A] with [src]."), SPAN_NOTICE("You start recharging [A] with [src]."))
+	A.add_filter("inducer_outline", 1, outline_filter(1, "#22aaFF"))
+
+	var/datum/beam/charge_beam = user.Beam(A, icon_state = "rped_upgrade", time = 20 SECONDS)
+	var/datum/effect_system/spark_spread/spark_system = new
+	spark_system.set_up(5, 0, get_turf(A))
+	spark_system.attach(A)
+
+	while(targets.len && !QDELETED(A))
+		var/datum/current = targets[1]
+		targets.Cut(1, 2)
+
+		while(!QDELETED(A) && do_after(user, 2 SECONDS, A, ignore_movement = TRUE, max_distance = recharge_dist))
+			var/amount = min(cell.charge, transfer_rate * 2)	// transfer rate is per second, we do this every 2 seconds
+			var/charged = A.inducer_act(src, amount, inducer_flags)
+			spark_system.start()
+			if(charged == INDUCER_ACT_CONTINUE)
+				continue
+			if(charged == INDUCER_ACT_STOP)
+				break
+			if(charged <= 0)
+				break
+			cell.use(charged)
+			used += charged
+
+	qdel(spark_system)
+	qdel(charge_beam)
+	A.remove_filter("inducer_outline")
+	inducing = FALSE
+	user.visible_message(SPAN_NOTICE("[user] recharged [A]."), SPAN_NOTICE("Rechraged [A] with [used] units of power."))
 
 /obj/item/inducer/attack_self(mob/user)
 	if(opened && cell)
@@ -226,61 +216,63 @@
 	icon_state = "inducer-sci"
 	item_state = "inducer-sci"
 	cell_type = null
-	powertransfer = 500
+	transfer_rate = 1000
 	opened = TRUE
-
-/obj/item/inducer/sci/Initialize(mapload)
-	. = ..()
-	update_icon() //To get the 'open' state applied
 
 /obj/item/inducer/syndicate
 	name = "suspicious inducer"
 	desc = "A tool for inductively charging internal power cells. This one has a suspicious colour scheme, and seems to be rigged to transfer charge at a much faster rate."
 	icon_state = "inducer-syndi"
 	item_state = "inducer-syndi"
-	powertransfer = 2000
+	transfer_rate = 1000
 	cell_type = /obj/item/cell/super
-	charge_guns = TRUE
+	inducer_flags = NONE
 
-/* Requires void cores which we do not have here
+/*
 /obj/item/inducer/hybrid
 	name = "hybrid-tech inducer"
 	desc = "A tool for inductively charging internal power cells. This one has some flashy bits and recharges devices slower, but seems to recharge itself between uses."
 	icon_state = "inducer-hybrid"
 	item_state = "inducer-hybrid"
-	powertransfer = 250
+	transfer_rate = 125
 	cell_type = /obj/item/cell/void
-	charge_guns = TRUE
+	inducer_flags = NONE
 */
 
-// A 'human stand-in' cell for recharging 'nutrition' on synthetic humans (wow this is terrible! \o/)
-#define NUTRITION_COEFF 0.05 // 1000 charge = 50 nutrition at 0.05
-/obj/item/cell/standin
-	name = "don't spawn this"
-	desc = "this is for weird code use, don't spawn it!!!"
+/atom/proc/_inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	. = inducer_scan(I, things_to_induce, inducer_flags)
+	var/signal = SEND_SIGNAL(src, COMSIG_INDUCER_SCAN, I, things_to_inducer, inducer_flags)
+	if((signal & COMPONENT_BLOCK_INDUCER) || . == INDUCER_SCAN_BLOCK)
+		return INDUCER_SCAN_BLOCK
+	else if((signal & COMPONENT_INTERFERE_INDUCER) || . == INDUCER_SCAN_INTERFERE)
+		return INDUCER_SCAN_INTERFERE
+	else if((signal & COMPONENT_FULL_INDUCER) && . == INDUCER_SCAN_FULL)
+		return INDUCER_SCAN_FULL
+	else
+		return INDUCER_SCAN_NORMAL
 
-	charge = 100
-	maxcharge = 100
+/**
+ * even if full, always add things, or the inducer might think we don't support induction when we do!
+ */
+/atom/proc/inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
+	var/obj/item/cell/C = get_cell()
+	if(C)
+		things_to_induce += C
+		if(C.charge >= C.maxcharge)
+			return INDUCER_SCAN_FULL
 
-	var/mob/living/carbon/human/hume
-
-/obj/item/cell/standin/Initialize(mapload, mob/living/carbon/human/H)
-	. = ..()
-	hume = H
-	charge = H.nutrition
-	maxcharge = initial(H.nutrition)
-
-	QDEL_IN(src, 20 SECONDS)
-
-/obj/item/cell/standin/give(var/amount)
-	. = ..(amount * NUTRITION_COEFF) //Shrink amount to store
-	hume.nutrition += . //Add the amount we really stored
-	. /= NUTRITION_COEFF //Inflate amount to take from the giver
-#undef NUTRITION_COEFF
-
-// Various sideways-defined get_cells
-/obj/mecha/get_cell()
-	return cell
-
-/obj/vehicle/get_cell()
-	return cell
+/**
+ * returns amount used - this is a datum proc so components can use it with only one signal necessary
+ *
+ * do NOT used this on components to take charge, put the component/signal registered in inducer scan!
+ */
+/datum/proc/inducer_act(obj/item/inducer/I, amount, inducer_flags)
+	SEND_SIGNAL(COMSIG_INDUCER_ACT, I, amount, inducer_flags)
+	var/obj/item/cell/C = get_cell()
+	if(C)
+		var/use = min(C.maxcharge - C.charge, amount, 0)
+		C.give(use)
+		return use
+	else
+		return 0
