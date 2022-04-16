@@ -31,9 +31,9 @@
 	life()
 		if((. = ..()))
 			var/mob/living/carbon/human/H = nif.human
-			if(apc && (get_dist(H,apc) <= 1) && H.nutrition < 440) // 440 vs 450, life() happens before we get here so it'll never be EXACTLY 450
-				H.nutrition = min(H.nutrition+10, 450)
-				apc.drain_power(7000/450*10) //This is from the large rechargers. No idea what the math is.
+			if(apc && (get_dist(H,apc) <= 1) && H.nutrition < (H.species.max_nutrition - 10)) // 440 vs 450, life() happens before we get here so it'll never be EXACTLY 450
+				H.nutrition = min(H.nutrition+10, H.species.max_nutrition)
+				apc.cell.use(SYNTHETIC_NUTRITION_CHARGE_RATE * 10) //This is from the large rechargers. No idea what the math is.
 				return TRUE
 			else
 				nif.notify("APC charging has ended.")

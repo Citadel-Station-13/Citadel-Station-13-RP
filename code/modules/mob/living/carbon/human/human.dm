@@ -42,7 +42,7 @@
 
 	nutrition = rand(200,400)
 	hydration = rand(200,400)
-	
+
 	AddComponent(/datum/component/personal_crafting)
 
 	human_mob_list |= src
@@ -1645,9 +1645,28 @@
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
 
+/mob/living/carbon/human/inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
+	. = ..()
+	if(isSynthetic())
+		things_to_induce += src
+
+/mob/living/carbon/human/inducer_act(obj/item/inducer/I, amount, inducer_flags)
+	. = ..()
+	if(!isSynthetic())
+		return
+	var/needed = (species.max_nutrition - nutrition)
+	if(needed <= 0)
+		return
+	var/got = min((amount / SYNTHETIC_NUTRITION_CHARGE_RATE), needed)
+	adjust_nutrition(got)
+	return got * SYNTHETIC_NUTRITION_CHARGE_RATE
+
 /mob/living/carbon/human/can_wield_item(obj/item/W)
 	//Since teshari are small by default, they have different logic to allow them to use certain guns despite that.
 	//If any other species need to adapt for this, you can modify this proc with a list instead
 	if(istype(species, /datum/species/teshari))
 		return !W.heavy //return true if it is not heavy, false if it is heavy
 	else return ..()
+
+/mob/living/carbon/human/set_nutrition(amount)
+	nutrition = clamp(amount, 0, species.max_nutrition * 1.5)
