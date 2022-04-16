@@ -7,7 +7,7 @@
 // Definition of the stuff for NIFs
 /datum/category_item/player_setup_item/vore/nif
 	name = "NIF Data"
-	sort_order = 8
+	sort_order = 9
 
 /datum/category_item/player_setup_item/vore/nif/load_character(var/savefile/S)
 	var/path

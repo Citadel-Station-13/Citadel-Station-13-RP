@@ -13,7 +13,7 @@
 // Definition of the stuff for Sizing
 /datum/category_item/player_setup_item/vore/persistence
 	name = "Persistence"
-	sort_order = 5
+	sort_order = 6
 
 /datum/category_item/player_setup_item/vore/persistence/load_character(var/savefile/S)
 	S["persistence_settings"]		>> pref.persistence_settings

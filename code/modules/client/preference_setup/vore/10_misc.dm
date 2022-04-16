@@ -2,7 +2,7 @@
 
 /datum/category_item/player_setup_item/vore/misc
 	name = "Misc Settings"
-	sort_order = 9
+	sort_order = 10
 
 /datum/category_item/player_setup_item/vore/misc/load_character(var/savefile/S)
 	S["show_in_directory"]		>> pref.show_in_directory
