@@ -1667,3 +1667,6 @@
 	if(istype(species, /datum/species/teshari))
 		return !W.heavy //return true if it is not heavy, false if it is heavy
 	else return ..()
+
+/mob/living/carbon/human/set_nutrition(amount)
+	nutrition = clamp(amount, 0, species.max_nutrition * 1.5)

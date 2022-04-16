@@ -156,7 +156,7 @@
 
 		while(!QDELETED(A) && do_after(user, 2 SECONDS, A, ignore_movement = TRUE, max_distance = recharge_dist))
 			var/amount = min(cell.charge, transfer_rate * 2)	// transfer rate is per second, we do this every 2 seconds
-			var/charged = A.inducer_act(src, amount, inducer_flags)
+			var/charged = current.inducer_act(src, amount, inducer_flags)
 			spark_system.start()
 			if(charged == INDUCER_ACT_CONTINUE)
 				continue
