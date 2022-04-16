@@ -423,9 +423,6 @@
 
 	return selfimage
 
-/atom/movable/proc/get_cell()
-	return
-
 /atom/movable/proc/ghost_tag(text)
 	var/atom/movable/ghost_tag_container/G = locate() in vis_contents
 	if(!length(text) || !istext(text))

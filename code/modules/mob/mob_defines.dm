@@ -239,7 +239,7 @@
 	var/typing
 	var/obj/effect/decal/typing_indicator
 
-	var/low_priority = FALSE //Skip processing life() if there's just no players on this Z-level
+	var/low_priority = TRUE //Skip processing life() if there's just no players on this Z-level
 
 	var/default_pixel_x = 0 //For offsetting mobs
 	var/default_pixel_y = 0

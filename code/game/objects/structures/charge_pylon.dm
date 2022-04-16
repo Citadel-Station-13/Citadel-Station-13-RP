@@ -25,7 +25,7 @@
 
 	playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 
-	if(istype(H) && H.species.name == SPECIES_ADHERENT && H.nutrition < 450)
+	if(istype(H) && H.species.name == SPECIES_ADHERENT && H.nutrition < H.species.max_nutrition)
 		H.nutrition = 400
 		return
 	if(isrobot(user))
