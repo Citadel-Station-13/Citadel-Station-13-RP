@@ -687,7 +687,12 @@ End Citadel Change */
 	is_vampire = M.species.is_vampire
 	if(blood_content > 0)
 		if(is_vampire == TRUE)
-			M.nutrition += removed * blood_content
+			if(M.nutrition >= 150 && M.nutrition < 350)
+				M.nutrition += removed * blood_content
+			else if(M.nutrition >= 350)
+				to_chat("<span class='warning'>You're not getting anything more from this.")
+			else
+				to_chat("<span class='warning'>This isn't enough. You need something stronger.")
 	/* VOREStation Removal
 	if(alien == IS_SLIME && water_based)
 		M.adjustToxLoss(removed * 2)
