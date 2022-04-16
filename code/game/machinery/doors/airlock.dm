@@ -1030,7 +1030,6 @@ About the new airlock wires panel:
 	if(istype(C, /obj/item/barrier_tape_roll))
 		return
 
-	src.add_fingerprint(user)
 	if (attempt_vr(src,"attackby_vr",list(C, user))) return
 	if(istype(C, /mob/living))
 		..()

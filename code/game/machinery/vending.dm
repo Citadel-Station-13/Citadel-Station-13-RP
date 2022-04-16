@@ -458,7 +458,6 @@
 		else if((href_list["togglevoice"]) && (panel_open))
 			shut_up = !shut_up
 
-		add_fingerprint(usr)
 		SSnanoui.update_uis(src)
 
 /obj/machinery/vending/proc/vend(datum/stored_item/vending_product/R, mob/user)

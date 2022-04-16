@@ -168,6 +168,7 @@
 	icon_state = "mod_cannon"
 	max_components = 14
 	desc = "Say hello, to my little friend!"
+	heavy = TRUE
 	one_handed_penalty = 4 //dual wielding = no.
 	cell_type = /obj/item/cell //We're bigger. We can use much larger power cells.
 	origin_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 6, TECH_MATERIAL = 5, TECH_BLUESPACE = 4) //its a damn cannon capable of holding a huge amount of parts.

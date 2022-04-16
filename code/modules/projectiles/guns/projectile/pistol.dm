@@ -260,6 +260,7 @@
 	recoil = 3 //Improvised weapons = poor ergonomics
 	handle_casings = CYCLE_CASINGS //player has to take the old casing out manually before reloading
 	load_method = SINGLE_CASING
+	has_safety = FALSE
 	max_shells = 1 //literally just a barrel
 
 	var/global/list/ammo_types = list(

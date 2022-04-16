@@ -44,6 +44,7 @@
 	var/blood_volume = 560									// Initial blood volume.
 	var/bloodloss_rate = 1									// Multiplier for how fast a species bleeds out. Higher = Faster
 	var/hunger_factor = 0.05								// Multiplier for hunger.
+	var/thirst_factor = DEFAULT_THIRST_FACTOR				// Multiplier for thirst.
 	var/active_regen_mult = 1								// Multiplier for 'Regenerate' power speed, in human_powers.dm
 
 	var/taste_sensitivity = TASTE_NORMAL					// How sensitive the species is to minute tastes.
@@ -257,6 +258,9 @@
 	var/silk_reserve = 100
 	var/silk_max_reserve = 500
 	var/silk_color = "#FFFFFF"
+
+	/// max nutrition - i hate myself for haphazardly throwing this in but sue me
+	var/max_nutrition = 450
 
 /datum/species/New()
 	if(hud_type)

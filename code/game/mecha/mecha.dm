@@ -2878,3 +2878,7 @@
 				occupant.throw_alert("mech damage", /atom/movable/screen/alert/low_mech_integrity, 3)
 			else
 				occupant.clear_alert("mech damage")
+
+// Various sideways-defined get_cells
+/obj/mecha/get_cell()
+	return cell

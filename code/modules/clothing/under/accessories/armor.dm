@@ -92,6 +92,9 @@
 	armor = list(melee = 30, bullet = 15, laser = 40, energy = 10, bomb = 25, bio = 0, rad = 0)
 	slot = ACCESSORY_SLOT_ARMOR_C
 
+/obj/item/clothing/accessory/armorplate/get_fibers()
+	return null	//Plates do not shed
+
 /obj/item/clothing/accessory/armor/armorplate/stab
 	name = "mesh armor plate"
 	desc = "A mesh armor plate made of steel-reinforced synthetic fibers, great for dealing with small blades. Attaches to a plate carrier."
