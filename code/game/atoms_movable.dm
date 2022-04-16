@@ -3,8 +3,6 @@
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 	/// Whatever we're pulling.
 	var/atom/movable/pulling
-	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
-	var/generic_canpass = TRUE
 	/// 0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
 	var/moving_diagonally = 0
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
@@ -21,6 +19,10 @@
 	var/inertia_next_move = 0
 	/// Delay between each drifting move.
 	var/inertia_move_delay = 5
+	/// Things we can pass through while moving. If any of this matches the thing we're trying to pass's [pass_flags_self], then we can pass through.
+	var/pass_flags = NONE
+	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
+	var/generic_canpass = TRUE
 	/// Movement types, see __DEFINES/flags/movement.dm
 	var/movement_type = GROUND
 	/// The orbiter component of the thing we're orbiting.

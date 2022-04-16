@@ -49,4 +49,8 @@
 	// these two are temporary for now.
 	// SHOULD_CALL_PARENT(TRUE)
 	// SHOULD_BE_PURE(TRUE)
+	if(mover.pass_flags & pass_flags_self)
+		return TRUE
+	if(mover.throwing && (pass_flags_self & LETPASSTHROW))
+		return TRUE
 	return !density

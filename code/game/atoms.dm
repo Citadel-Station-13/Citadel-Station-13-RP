@@ -6,6 +6,8 @@
 	var/flags = NONE
 	///Intearaction flags
 	var/interaction_flags_atom = NONE
+	/// pass_flags that we are. If any of this matches a pass_flag on a moving thing, by default, we let them through.
+	var/pass_flags_self = NONE
 
 	var/list/fingerprints
 	var/list/fingerprintshidden
@@ -14,8 +16,6 @@
 	var/was_bloodied
 	var/blood_color
 	var/last_bumped = 0
-	var/pass_flags = NONE
-	var/throwpass = 0
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/atom_say_verb = "says"
@@ -676,14 +676,9 @@
 	else
 		return 0
 
-/atom/proc/checkpass(passflag)
-	return (pass_flags&passflag)
-
 /atom/proc/isinspace()
-	if(istype(get_turf(src), /turf/space))
-		return 1
-	else
-		return 0
+	var/turf/T = get_turf(src)
+	return T.is_space()
 
 // Show a message to all mobs and objects in sight of this atom
 // Use for objects performing visible actions
