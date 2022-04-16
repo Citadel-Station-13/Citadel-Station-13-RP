@@ -688,16 +688,18 @@ End Citadel Change */
 		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
 	if(adj_temp < 0 && M.bodytemperature > 310)
 		M.bodytemperature = min(310, M.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-	var/is_vampire = FALSE
-	is_vampire = M.species.is_vampire
 	if(blood_content > 0)
+		var/is_vampire = FALSE
+		is_vampire = M.species.is_vampire
 		if(is_vampire == TRUE)
-			if(M.nutrition >= 150 && M.nutrition < 350)
+			#define blud_warn_timer 300 SECONDS
+			if((M.nutrition < 150 || M.nutrition > 250) && M.last_blud_warn + blud_warn_timer < world.time)
+				to_chat(M, "<span class='warning'>This isn't enough. You need something stronger.")
+				M.last_blud_warn = world.time
+				return
+			else if (M.nutrition >= 150 && M.nutrition <= 250)
 				M.nutrition += removed * blood_content
-			else if(M.nutrition >= 350)
-				to_chat("<span class='warning'>You're not getting anything more from this.")
-			else
-				to_chat("<span class='warning'>This isn't enough. You need something stronger.")
+
 	/* VOREStation Removal
 	if(alien == IS_SLIME && water_based)
 		M.adjustToxLoss(removed * 2)
