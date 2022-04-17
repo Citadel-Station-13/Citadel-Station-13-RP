@@ -261,3 +261,8 @@
 	name = "connor's coat"
 	path = /obj/item/clothing/suit/storage/umbral
 	ckeywhitelist = list("iamcrystalclear")
+
+/datum/gear/suit/pariah
+	name = "springtime pariah moto macket"
+	path = /obj/item/clothing/suit/storage/toggle/pariah
+	ckeywhitelist = list("rezbit")
