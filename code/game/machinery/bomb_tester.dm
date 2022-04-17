@@ -7,8 +7,8 @@
 	desc = "A device that can calculate the potential explosive yield of provided gases."
 	icon = 'icons/obj/machines/bomb_tester_vr.dmi'
 	icon_state = "generic"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	idle_power_usage = 50
 	active_power_usage = 1.5 KILOWATTS
 
@@ -23,8 +23,11 @@
 	var/sim_mode = MODE_SINGLE
 	var/sim_canister_output = 10*ONE_ATMOSPHERE
 
-	var/simulating = 0
-	var/simulation_started = 0
+	///Are we simulating?
+	var/simulating = FALSE
+	///Have we started simulating?
+	var/simulation_started = FALSE
+	///The delay before we start simulating.
 	var/simulation_delay = 20 SECONDS
 
 	var/simulation_results
@@ -101,112 +104,104 @@
 			else
 				tank2 = I
 			update_icon()
-			updateUsrDialog()
-			to_chat(user, "<span class='notice'>You connect \the [I] to \the [src]'s [I==tank1 ? "primary" : "secondary"] slot.</span>")
+			SStgui.update_uis(src)
+			to_chat(user, SPAN_NOTICE("You connect \the [I] to \the [src]'s [I==tank1 ? "primary" : "secondary"] slot."))
 			return
 	..()
 
 /obj/machinery/bomb_tester/attack_hand(var/mob/user)
 	add_fingerprint(user)
-	interact(user)
+	ui_interact(user)
 
-/obj/machinery/bomb_tester/interact(var/mob/user)
-	if(stat & NOPOWER)
-		return
+/obj/machinery/bomb_tester/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "BombTester", name)
+		ui.open()
 
-	var/dat = "<HEAD><TITLE>Bomb Tester</TITLE></HEAD>"
+/obj/machinery/bomb_tester/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
 
+	data["simulating"] = simulating
+	if(!simulating)
+		data["mode"] = sim_mode
+		data["tank1"] = tank1
+		data["tank1ref"] = REF(tank1)
+		data["tank2"] = tank2
+		data["tank2ref"] = REF(tank2)
+		data["canister"] = test_canister
+		data["sim_canister_output"] = sim_canister_output
 
-	dat += "<font face='terminal' size ='3'>Virtual Explosive Simulator v1.03</font>"
-	dat += "<br>"
+	return data
 
-	if(simulating)
-		dat += "<br><center>Simulation in progress! Please wait for results.</center>"
-
-	else
-		dat += "<br><center>Mode: [sim_mode==MODE_SINGLE?"Single Tank":"<A href='?src=\ref[src];set_mode=1'>Single Tank</a>"] -- [sim_mode==MODE_DOUBLE?"Transfer Valve":"<A href='?src=\ref[src];set_mode=2'>Transfer Valve</a>"] -- [sim_mode==MODE_CANISTER?"Canister":"<A href='?src=\ref[src];set_mode=3'>Canister</a>"]</center>"
-		dat += "<br>"
-		dat += "<br><center><u>Gas Sources</u></center>"
-		dat += "<br><center><A href='?src=\ref[src];tank=1'>[tank1?"\[[tank1.name]\]":"\[Primary Slot\]"]</a> -- <A href='?src=\ref[src];tank=2'>[tank2?"\[[tank2.name]\]":"\[Secondary Slot\]"]</a></center>"
-		dat += "<br><center>Connected Canister: [test_canister?"[test_canister.name] -- ":"None -- "]<A href='?src=\ref[src];canister_scan=1'>[test_canister?"\[Rescan\]":"\[Scan for canister\]"]</a></center>"
-		if(test_canister)
-			dat += "<br><center>Canister Release Pressure: [sim_canister_output] Kilopascals</center>"
-
-			dat += "<br><center>"
-			dat += "<A href='?src=\ref[src];set_can_pressure=-1000'>-1000</a>|"
-			dat += "<A href='?src=\ref[src];set_can_pressure=-100'>-100</a>|"
-			dat += "<A href='?src=\ref[src];set_can_pressure=-10'>-10</a>|"
-			dat += "<A href='?src=\ref[src];set_can_pressure=-1'>-1</a> ||| "
-
-			dat += "<A href='?src=\ref[src];set_can_pressure=1'>+1</a>|"
-			dat += "<A href='?src=\ref[src];set_can_pressure=10'>+10</a>|"
-			dat += "<A href='?src=\ref[src];set_can_pressure=100'>+100</a>|"
-			dat += "<A href='?src=\ref[src];set_can_pressure=1000'>+1000</a>"
-			dat += "</center>"
-
-		dat += "<br><br>"
-		dat += "<br><center><font size='6'><b><A href='?src=\ref[src];start_sim=1'>BEGIN SIMULATION</a></b></font></center>"
-
-	user.set_machine(src)
-	user << browse(dat, "window=bomb_tester")
-	onclose(user, "bomb_tester")
-
-/obj/machinery/bomb_tester/Topic(href, href_list)
+/obj/machinery/bomb_tester/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return
-	if(stat & NOPOWER)
-		return
-	if(!usr.Adjacent(src))
-		usr << browse(null, "window=bomb_tester")
-		usr.unset_machine()
-		return
+		return TRUE
+
 	if(simulating)
 		return
 
-	if(href_list["set_mode"])
-		sim_mode = text2num(href_list["set_mode"])
-		var/text_mode
-		switch(sim_mode)
-			if(MODE_SINGLE)
-				text_mode = "single gas tank detonation"
-			if(MODE_DOUBLE)
-				text_mode = "tank transfer valve detonation"
-			if(MODE_CANISTER)
-				text_mode = "canister-assisted single gas tank detonation"
-		to_chat(usr, "<span class='notice'>[src] set to simulate a [text_mode].</span>")
+	switch(action)
+		if("set_mode")
+			sim_mode = clamp(text2num(params["mode"]), MODE_SINGLE, MODE_CANISTER)
+			var/text_mode
+			switch(sim_mode)
+				if(MODE_SINGLE)
+					text_mode = "single gas tank detonation"
+				if(MODE_DOUBLE)
+					text_mode = "tank transfer valve detonation"
+				if(MODE_CANISTER)
+					text_mode = "canister-assisted single gas tank detonation"
+			to_chat(usr, SPAN_NOTICE("[src] set to simulate a [text_mode]."))
+			return TRUE
 
-	if(href_list["tank"])
-		var/tankvar = "tank[href_list["tank"]]"
-		var/obj/item/tank/T
-		if(vars[tankvar])
-			T = vars[tankvar]
-			T.forceMove(get_turf(src))
-			vars[tankvar] = null
-		else if(istype(usr.get_active_hand(),/obj/item/tank))
-			T = usr.get_active_hand()
-			usr.drop_item(T)
-			T.forceMove(src)
-			vars[tankvar] = T
-		update_icon()
+		if("add_tank")
+			if(istype(usr.get_active_hand(), /obj/item/tank))
+				var/obj/item/tank/T = usr.get_active_hand()
+				var/slot = params["slot"]
+				if(slot == 1 && !tank1)
+					tank1 = T
+				else if(slot == 2 && !tank2)
+					tank2 = T
+				else
+					to_chat(usr, SPAN_WARNING("Slot [slot] is full."))
+					return
 
-	if(href_list["canister_scan"])
-		for(var/obj/machinery/portable_atmospherics/canister/C in orange(1,src))
-			if(C && C == test_canister)
-				continue
-			else if(C)
-				test_canister = C
-				break
+				usr.drop_item(T)
+				T.forceMove(src)
+				return TRUE
 			else
-				test_canister = null
+				to_chat(usr, SPAN_WARNING("You must be wielding a tank to insert it!"))
 
-	if(href_list["set_can_pressure"])
-		var/change = text2num(href_list["set_can_pressure"])
-		sim_canister_output = clamp(sim_canister_output+change, ONE_ATMOSPHERE/10, ONE_ATMOSPHERE*10)
+		if("remove_tank")
+			var/obj/item/tank/T = locate(params["ref"]) in list(tank1, tank2)
+			if(istype(T))
+				if(T == tank1)
+					tank1 = null
+				if(T == tank2)
+					tank2 = null
+				T.forceMove(get_turf(src))
+				update_icon()
+			return TRUE
 
-	if(href_list["start_sim"])
-		start_simulating()
+		if("canister_scan")
+			for(var/obj/machinery/portable_atmospherics/canister/C in orange(1,src))
+				if(C && C == test_canister)
+					continue
+				else if(C)
+					test_canister = C
+					break
+				else
+					test_canister = null
+			return TRUE
 
-	updateUsrDialog()
+		if("set_can_pressure")
+			sim_canister_output = clamp(text2num(params["pressure"]), ONE_ATMOSPHERE/10, ONE_ATMOSPHERE*10)
+			return TRUE
+
+		if("start_sim")
+			start_simulating()
+			return TRUE
 
 /obj/machinery/bomb_tester/proc/start_simulating()
 	simulating = 1
@@ -235,7 +230,8 @@
 			spawn()
 				canister_sim()
 
-/obj/machinery/bomb_tester/proc/simulate_tank() //This is a heavily cut down version of check_status() from tanks.dm
+///This is a heavily cut down version of check_status() from tanks.dm
+/obj/machinery/bomb_tester/proc/simulate_tank()
 	faketank.react()
 	var/pressure = faketank.return_pressure()
 	if(pressure > TANK_FRAGMENT_PRESSURE)

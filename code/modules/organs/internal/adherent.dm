@@ -178,7 +178,7 @@
 	cooling = !cooling
 	to_chat(C, "You toggle your cooling fans [cooling ? "on" : "off"] ")
 
-/obj/item/organ/internal/powered/cooling_fins/process()
+/obj/item/organ/internal/powered/cooling_fins/process(delta_time)
 	var/mob/living/carbon/human/C = src.owner
 	if(cooling)
 		var/temp_diff = min(C.bodytemperature - target_temp, max_cooling)

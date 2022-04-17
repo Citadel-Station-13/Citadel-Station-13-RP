@@ -1,54 +1,54 @@
 /obj/machinery/mecha_part_fabricator
-	icon = 'icons/obj/robotics_vr.dmi' //VOREStation Edit - New icon
+	icon = 'icons/obj/robotics.dmi'
 	icon_state = "mechfab-idle"
 	name = "Exosuit Fabricator"
 	desc = "A machine used for construction of mechas."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
 	req_access = list(access_robotics)
 	circuit = /obj/item/circuitboard/mechfab
 
-	/// Current items in the build queue.
+	///Current items in the build queue.
 	var/list/queue = list()
-	/// Whether or not the machine is building the entire queue automagically.
+	///Whether or not the machine is building the entire queue automagically.
 	var/process_queue = FALSE
 
-	/// The current design datum that the machine is building.
+	///The current design datum that the machine is building.
 	var/datum/design/being_built
-	/// World time when the build will finish.
+	///World time when the build will finish.
 	var/build_finish = 0
-	/// World time when the build started.
+	///World time when the build started.
 	var/build_start = 0
-	/// Reference to all materials used in the creation of the item being_built.
+	///Reference to all materials used in the creation of the item being_built.
 	var/list/build_materials
-	/// Part currently stored in the Exofab.
+	///Part currently stored in the Exofab.
 	var/obj/item/stored_part
 
-	/// Coefficient for the speed of item building. Based on the installed parts.
+	///Coefficient for the speed of item building. Based on the installed parts.
 	var/time_coeff = 1
-	/// Coefficient for the efficiency of material usage in item building. Based on the installed parts.
+	///Coefficient for the efficiency of material usage in item building. Based on the installed parts.
 	var/component_coeff = 1
 
 	var/loading_icon_state = "mechfab-idle"
 
 	var/list/materials = list(
 		DEFAULT_WALL_MATERIAL = 0,
-		"glass" = 0,
-		"plastic" = 0,
+		MAT_GLASS = 0,
+		MAT_PLASTIC = 0,
 		MAT_GRAPHITE = 0,
 		MAT_PLASTEEL = 0,
-		"gold" = 0,
-		"silver" = 0,
+		MAT_GOLD = 0,
+		MAT_SILVER = 0,
 		MAT_COPPER = 0,
 		MAT_LEAD = 0,
-		"osmium" = 0,
-		"diamond" = 0,
+		MAT_OSMIUM = 0,
+		MAT_DIAMOND = 0,
 		MAT_DURASTEEL = 0,
-		"phoron" = 0,
-		"uranium" = 0,
+		MAT_PHORON = 0,
+		MAT_URANIUM= 0,
 		MAT_VERDANTIUM = 0,
 		MAT_MORPHIUM = 0,
 		MAT_METALHYDROGEN = 0,
@@ -59,7 +59,7 @@
 
 	var/datum/research/files
 	var/valid_buildtype = MECHFAB
-	/// A list of categories that valid MECHFAB design datums will broadly categorise themselves under.
+	///A list of categories that valid MECHFAB design datums will broadly categorise themselves under.
 	var/list/part_sets = list(
 								"Cyborg",
 								"Ripley",
@@ -72,9 +72,9 @@
 								"Vehicle",
 								"Rigsuit",
 								"Phazon",
-								"Gopher", // VOREStation Add
-								"Polecat", // VOREStation Add
-								"Weasel", // VOREStation Add
+								"Gopher",
+								"Polecat",
+								"Weasel",
 								"Exosuit Equipment",
 								"Exosuit Internals",
 								"Exosuit Ammunition",
@@ -88,10 +88,10 @@
 								"Augments"
 								)
 
-/obj/machinery/mecha_part_fabricator/Initialize()
+/obj/machinery/mecha_part_fabricator/Initialize(mapload)
 	. = ..()
 
-// Go through all materials, and add them to the possible storage, but hide them unless we contain them.
+	//Go through all materials, and add them to the possible storage, but hide them unless we contain them.
 	for(var/Name in name_to_material)
 		if(Name in materials)
 			continue
@@ -109,12 +109,12 @@
 /obj/machinery/mecha_part_fabricator/RefreshParts()
 	res_max_amount = 0
 	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
-		res_max_amount += M.rating * 100000 // 200k -> 600k
+		res_max_amount += M.rating * 100000 //200k -> 600k
 	var/T = 0
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		T += M.rating
 	component_coeff = max(1 - (T - 1) / 4, 0.2) // 1 -> 0.2
-	for(var/obj/item/stock_parts/micro_laser/M in component_parts) // Not resetting T is intended; time_coeff is affected by both
+	for(var/obj/item/stock_parts/micro_laser/M in component_parts) //Not resetting T is intended; time_coeff is affected by both
 		T += M.rating
 	time_coeff = T / 2 // 1 -> 3
 	update_static_data(usr)
@@ -138,8 +138,8 @@
 	var/list/sub_category = null
 
 	if(categories)
-		// Handle some special cases to build up sub-categories for the fab interface.
-		// Start with checking if this design builds a cyborg module.
+		//Handle some special cases to build up sub-categories for the fab interface.
+		//Start with checking if this design builds a cyborg module.
 		if(built_item in typesof(/obj/item/borg/upgrade))
 			var/obj/item/borg/upgrade/U = built_item
 			var/module_types = initial(U.module_flags)
@@ -157,7 +157,7 @@
 					sub_category += "Engineering"
 			else
 				sub_category += "All Cyborgs"
-		// Else check if this design builds a piece of exosuit equipment.
+		//Else check if this design builds a piece of exosuit equipment.
 		else if(built_item in typesof(/obj/item/mecha_parts/mecha_equipment))
 			var/obj/item/mecha_parts/mecha_equipment/E = built_item
 			var/mech_types = initial(E.mech_flags)

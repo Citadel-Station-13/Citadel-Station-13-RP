@@ -169,7 +169,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 		return "comradio"
 	// AI private channel
 	if(frequency == AI_FREQ)
-		return "airadio"
+		return "aiprivradio"
 	// department radio formatting (poorly optimized, ugh)
 	if(frequency == SEC_FREQ)
 		return "secradio"
@@ -182,7 +182,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 	if(frequency == SUP_FREQ) // cargo
 		return "suppradio"
 	if(frequency == SRV_FREQ) // service
-		return "srvradio"
+		return "servradio"
 	if(frequency == EXP_FREQ) // explorer
 		return "expradio"
 	if(frequency == ENT_FREQ) // entertainment

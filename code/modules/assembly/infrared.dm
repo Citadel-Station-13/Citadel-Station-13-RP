@@ -24,11 +24,6 @@
 	/// current atom listening to
 	var/atom/movable/listening
 
-/obj/item/assembly/infra/Destroy()
-	if(on)
-		turn_off()
-	return ..()
-
 /obj/item/assembly/infra/activate()
 	. = ..()
 	if(!.)
@@ -163,41 +158,38 @@
 	cooldown = 2
 	addtimer(CALLBACK(src, /obj/item/assembly/proc/process_cooldown), 10)
 
-/obj/item/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
+/obj/item/assembly/infra/ui_interact(mob/user, datum/tgui/ui)
 	if(!secured)
-		return
-	user.set_machine(src)
-	var/dat = text("<TT><B>Infrared Laser</B>\n<B>Status</B>: []<BR>\n<B>Visibility</B>: []<BR>\n</TT>", (on ? text("<A href='?src=\ref[];state=0'>On</A>", src) : text("<A href='?src=\ref[];state=1'>Off</A>", src)), (src.visible ? text("<A href='?src=\ref[];visible=0'>Visible</A>", src) : text("<A href='?src=\ref[];visible=1'>Invisible</A>", src)))
-	dat += "<BR><BR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
-	dat += "<BR><BR><A href='?src=\ref[src];close=1'>Close</A>"
-	user << browse(dat, "window=infra")
-	onclose(user, "infra")
+		to_chat(user, SPAN_WARNING("[src] is unsecured!"))
+		return FALSE
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AssemblyInfrared", name)
+		ui.open()
 
-/obj/item/assembly/infra/Topic(href, href_list, state = deep_inventory_state)
-	. = ..()
-	if(.)
-		return
-	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=infra")
-		onclose(usr, "infra")
-		return
+/obj/item/assembly/infra/ui_data(mob/user)
+	var/list/data = ..()
 
-	if(href_list["state"])
-		if(on)
-			turn_off()
-		else
-			turn_on()
-		interact(usr)
-		return
+	data["on"] = on
+	data["visible"] = visible
 
-	if(href_list["visible"])
-		toggle_visible()
-		interact(usr)
-		return
+	return data
 
-	if(href_list["close"])
-		usr << browse(null, "window=infra")
-		return
+/obj/item/assembly/infra/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return TRUE
+
+	switch(action)
+		if("state")
+			activate()
+			return TRUE
+		if("visible")
+			visible = !visible
+			for(var/ibeam in head)
+				var/obj/effect/beam/i_beam/I = ibeam
+				I.visible = visible
+				CHECK_TICK
+			return TRUE
 
 /obj/item/assembly/infra/verb/rotate_clockwise()
 	set name = "Rotate Infrared Laser Clockwise"

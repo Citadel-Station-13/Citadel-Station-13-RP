@@ -397,15 +397,15 @@
 		set waitfor = FALSE
 		var/datum/language/L = new path ()
 		L.get_icon()
-
+*/
 /datum/asset/spritesheet/pipes
 	name = "pipes"
 
 /datum/asset/spritesheet/pipes/register()
-	for (var/each in list('icons/obj/atmospherics/pipes/pipe_item.dmi', 'icons/obj/atmospherics/pipes/disposal.dmi', 'icons/obj/atmospherics/pipes/transit_tube.dmi', 'icons/obj/plumbing/fluid_ducts.dmi'))
+	for(var/each in list('icons/obj/pipe-item.dmi', 'icons/obj/pipes/disposal.dmi'))
 		InsertAll("", each, GLOB.alldirs)
 	..()
-
+/*
 // Representative icons for each research design
 /datum/asset/spritesheet/research_designs
 	name = "design"

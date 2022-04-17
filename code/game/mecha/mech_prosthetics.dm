@@ -11,7 +11,7 @@
 	req_access = list(access_robotics)
 	circuit = /obj/item/circuitboard/prosthetics
 
-	// Prosfab specific stuff
+	//Prosfab specific stuff
 	var/manufacturer = null
 	var/species_types = list("Human")
 	var/species = "Human"
@@ -38,7 +38,7 @@
 	res_max_amount = 200000
 
 	valid_buildtype = PROSFAB
-	/// A list of categories that valid PROSFAB design datums will broadly categorise themselves under.
+	///A list of categories that valid PROSFAB design datums will broadly categorise themselves under.
 	part_sets = list(
 					"Cyborg",
 					"Ripley",
@@ -68,7 +68,7 @@
 					"Misc",
 					)
 
-/obj/machinery/mecha_part_fabricator/pros/Initialize()
+/obj/machinery/mecha_part_fabricator/pros/Initialize(mapload)
 	. = ..()
 	manufacturer = basic_robolimb.company
 
