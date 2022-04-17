@@ -203,7 +203,7 @@
 	return FALSE
 
 /obj/item/uav/proc/toggle_packed()
-	if(UAV_ON)
+	if(state == UAV_ON)
 		power_down()
 	switch(state)
 		if(UAV_OFF) //Packing
@@ -226,7 +226,7 @@
 	if(state != UAV_OFF || !isturf(loc))
 		return
 	if(cell?.use(power_per_process) != power_per_process)
-		visible_message("<span class='warning'>[src] sputters and chugs as it tries, and fails, to power up.</span>")
+		visible_message(SPAN_WARNING("[src] sputters and chugs as it tries, and fails, to power up."))
 		return
 
 	state = UAV_ON
@@ -235,7 +235,7 @@
 	set_light("#ffffff")
 	START_PROCESSING(SSobj, src)
 	no_masters_time = 0
-	visible_message("<span class='notice'>[nickname] buzzes and lifts into the air.</span>")
+	visible_message(SPAN_NOTICE("[nickname] buzzes and lifts into the air."))
 
 /obj/item/uav/proc/power_down()
 	if(state != UAV_ON)
@@ -247,7 +247,7 @@
 	set_light(0)
 	LAZYCLEARLIST(masters)
 	STOP_PROCESSING(SSobj, src)
-	visible_message("<span class='notice'>[nickname] gracefully settles onto the ground.</span>")
+	visible_message(SPAN_NOTICE("[nickname] gracefully settles onto the ground."))
 
 //////////////// Helpers
 /obj/item/uav/get_cell()
@@ -296,14 +296,18 @@
 		ion_trail.stop()
 		animate(src, pixel_y = old_y, time = 5, easing = SINE_EASING | EASE_IN) //halt animation
 
-/obj/item/uav/hear_talk(var/mob/living/M, list/message_pieces, verb)
+/obj/item/uav/hear_talk(var/mob/living/M, message, verb)
 	var/name_used = M.GetVoice()
 	for(var/wr_master in masters)
 		var/datum/weakref/wr = wr_master
 		var/mob/master = wr.resolve()
-		var/message = master.combine_message(message_pieces, verb, M)
 		var/rendered = "<i><span class='game say'>UAV received: <span class='name'>[name_used]</span> [message]</span></i>"
 		master.show_message(rendered, 2)
+
+/obj/item/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
+	if (broadcasting)
+		if(get_dist(src, M) <= canhear_range)
+			talk_into(M, msg,null,verb,speaking)
 
 /obj/item/uav/see_emote(var/mob/living/M, text)
 	for(var/wr_master in masters)

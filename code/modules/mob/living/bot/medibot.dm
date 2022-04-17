@@ -350,7 +350,7 @@
 	else
 		..()
 
-/mob/living/bot/medibot/tgui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/medibot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 
@@ -606,7 +606,7 @@
 	var/healthanalyzer = /obj/item/healthanalyzer
 	var/firstaid = /obj/item/storage/firstaid
 
-/obj/item/bot_assembly/medibot/Initialize()
+/obj/item/bot_assembly/medibot/Initialize(mapload)
 	. = ..()
 	spawn(1)
 		if(skin)

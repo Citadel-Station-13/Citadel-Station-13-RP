@@ -419,7 +419,7 @@
 	created_name = "Floorbot"
 	var/toolbox = /obj/item/storage/toolbox
 
-/obj/item/bot_assembly/floorbot/Initialize()
+/obj/item/bot_assembly/floorbot/Initialize(mapload)
 	. = ..()
 	spawn(1)
 		icon_state = "[base_icon_state]-[skin]"
