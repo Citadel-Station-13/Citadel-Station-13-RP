@@ -286,7 +286,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 						message, from, "Automated Announcement", from, "synthesized voice",
 						4, 0, zlevels, connection.frequency, "states")
 
-// Interprets the message mode when talking into a radio, possibly returning a connection datum
+///Interprets the message mode when talking into a radio, possibly returning a connection datum
 /obj/item/radio/proc/handle_message_mode(mob/living/M as mob, message, message_mode)
 	// If a channel isn't specified, send to common.
 	if(!message_mode || message_mode == "headset")

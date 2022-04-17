@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Box, Button, LabeledList, ProgressBar, Section, NumberInput } from "../components";
 import { Window } from "../layouts";
 
-export const Medbot = (props, context) => {
+export const Medibot = (props, context) => {
   const { act, data } = useBackend(context);
 
   const {
