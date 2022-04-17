@@ -1,0 +1,6 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "Security TGUI"
+  - bugfix: "Fixed missing leather sheet options in biogenerator"
+  - imageadd: "Better Detective machine sprites"

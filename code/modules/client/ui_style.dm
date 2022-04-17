@@ -42,7 +42,7 @@ var/global/list/all_tooltip_styles = list(
 
 	if(!ishuman(usr))
 		if(!isrobot(usr))
-			to_chat(usr, "<span class='warning'>You must be a human or a robot to use this verb.</span>")
+			to_chat(usr, SPAN_WARNING("You must be a human or a robot to use this verb."))
 			return
 
 	var/UI_style_new = input(usr, "Select a style. White is recommended for customization") as null|anything in all_ui_styles
