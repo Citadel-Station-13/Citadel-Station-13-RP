@@ -152,9 +152,6 @@
 /datum/alt_title/explorer/junior
 	title = "Jr. Explorer"
 
-/datum/alt_title/explorer/containment
-	title = "Containment Specialist"
-
 /datum/job/sar
 	title = "Field Medic"
 	flag = SAR
