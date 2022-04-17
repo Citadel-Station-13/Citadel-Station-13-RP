@@ -1,10 +1,10 @@
 /datum/design/item/mechfab
 	build_type = MECHFAB
-	category = "Other"
+	category = list("Other")
 	req_tech = list(TECH_MATERIAL = 1)
 
 /datum/design/item/mechfab/ripley
-	category = "Ripley"
+	category = list("Ripley")
 
 /datum/design/item/mechfab/ripley/chassis
 	name = "Ripley Chassis"
@@ -66,7 +66,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 22500)
 
 /datum/design/item/mechfab/odysseus
-	category = "Odysseus"
+	category = list("Odysseus")
 
 /datum/design/item/mechfab/odysseus/chassis
 	name = "Odysseus Chassis"
@@ -118,7 +118,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 11250)
 
 /datum/design/item/mechfab/gygax
-	category = "Gygax"
+	category = list("Gygax")
 
 /datum/design/item/mechfab/gygax/chassis/serenity
 	name = "Serenity Chassis"
@@ -183,7 +183,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 37500, "diamond" = 7500)
 
 /datum/design/item/mechfab/durand
-	category = "Durand"
+	category = list("Durand")
 
 /datum/design/item/mechfab/durand/chassis
 	name = "Durand Chassis"
@@ -242,7 +242,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 37500, "uranium" = 7500)
 
 /datum/design/item/mechfab/janus
-	category = "Janus"
+	category = list("Janus")
 	req_tech = list(TECH_MATERIAL = 7, TECH_BLUESPACE = 5, TECH_MAGNET = 6, TECH_PHORON = 3, TECH_ARCANE = 1, TECH_PRECURSOR = 2)
 
 /datum/design/item/mechfab/janus/chassis
@@ -303,7 +303,7 @@
 	materials = list(MAT_SUPERMATTER = 2000, MAT_PLASTEEL = 60000, MAT_URANIUM = 3250, MAT_DURASTEEL = 2000, MAT_MORPHIUM = 3000, MAT_GOLD = 5000, MAT_VERDANTIUM = 5000, MAT_DIAMOND = 10000, MAT_LEAD = 15000)
 
 /datum/design/item/mechfab/honker
-	category = "H.O.N.K."
+	category = list("H.O.N.K.")
 
 /datum/design/item/mechfab/honker/chassis
 	name = "H.O.N.K. Chassis"
@@ -362,7 +362,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 37500, "diamond" = 7500, "plastic" = 5000, "bananium" = 20000)
 
 /datum/design/item/mechfab/reticent
-	category = "Reticent"
+	category = list("Reticent")
 
 /datum/design/item/mechfab/reticent/chassis
 	name = "Reticent Chassis"
@@ -422,7 +422,7 @@
 
 /datum/design/item/mecha
 	build_type = MECHFAB
-	category = "Exosuit Equipment"
+	category = list("Exosuit Equipment")
 	time = 10
 	materials = list(DEFAULT_WALL_MATERIAL = 7500)
 
@@ -876,7 +876,7 @@
 	build_type = MECHFAB
 	materials = list(DEFAULT_WALL_MATERIAL = 562, "glass" = 562)
 	build_path = /obj/item/flash/synthetic
-	category = "Misc"
+	category = list("Misc")
 
 /*
 * Printable Internal Components
@@ -889,7 +889,7 @@
 	build_type = MECHFAB
 	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500)
 	build_path = /obj/item/mecha_parts/component/actuator
-	category = "Components"
+	category = list("Components")
 
 /datum/design/item/mecha_component/actuator_high
 	name = "Mecha Actuator - High Speed"
@@ -981,7 +981,7 @@
 
 /datum/design/item/mechfab/vehicle
 	build_type = MECHFAB
-	category = "Vehicle"
+	category = list("Vehicle")
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 6)
 
 /datum/design/item/mechfab/vehicle/spacebike_chassis
@@ -999,3 +999,12 @@
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 6, TECH_MAGNET = 3, TECH_POWER = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 15000, "silver" = 3000, "plastic" = 3000, "osmium" = 1000)
 	build_path = /obj/item/vehicle_assembly/quadbike
+
+
+/datum/design/item/mechfab/uav/basic
+	name = "UAV - Recon Skimmer"
+	id = "recon_skimmer"
+	build_path = /obj/item/uav
+	time = 20
+	req_tech = list(TECH_MATERIAL = 6, TECH_ENGINEERING = 5, TECH_PHORON = 3, TECH_MAGNET = 4, TECH_POWER = 6)
+	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 6000, "silver" = 4000)
