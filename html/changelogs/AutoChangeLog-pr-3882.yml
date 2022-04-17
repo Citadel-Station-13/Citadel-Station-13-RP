@@ -1,7 +1,0 @@
-author: "Shadowtail117"
-delete-after: True
-changes: 
-  - rscadd: "Guns now have safeties. You cannot fire a gun while its safety is on."
-  - imageadd: "Guns now have an overlay when holding them showing whether or not the safety is on."
-  - rscadd: "You can control-click a gun in your hand to toggle its safety or use the new Toggle Gun Safety keybind. Unholstering it while on harm intent or attempting to fire it while on harm intent have a 50% chance to take off the safety reflexively in case you forget."
-  - rscdel: "Removed the Gun Firing Intent Requirement."
