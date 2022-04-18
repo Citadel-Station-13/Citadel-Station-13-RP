@@ -263,6 +263,6 @@
 	ckeywhitelist = list("iamcrystalclear")
 
 /datum/gear/suit/pariah
-	name = "springtime pariah moto macket"
+	name = "springtime pariah moto jacket"
 	path = /obj/item/clothing/suit/storage/toggle/pariah
 	ckeywhitelist = list("rezbit")
