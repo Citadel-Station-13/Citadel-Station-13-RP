@@ -23,11 +23,13 @@ export const Button = props => {
     iconSpin,
     iconColor,
     iconPosition,
+    iconSize,
     color,
     disabled,
     selected,
     tooltip,
     tooltipPosition,
+    tooltipScale,
     tooltipOverrideLong,
     ellipsis,
     compact,
@@ -93,9 +95,10 @@ export const Button = props => {
       {(icon && iconPosition !== 'right') && (
         <Icon
           name={icon}
-          color={iconColor}
           rotation={iconRotation}
-          spin={iconSpin} />
+          spin={iconSpin}
+          color={iconColor}
+          fontSize={iconSize} />
       )}
       {content}
       {children}
@@ -110,7 +113,8 @@ export const Button = props => {
         <Tooltip
           content={tooltip}
           overrideLong={tooltipOverrideLong}
-          position={tooltipPosition} />
+          position={tooltipPosition}
+          scale={tooltipScale} />
       )}
     </Box>
   );

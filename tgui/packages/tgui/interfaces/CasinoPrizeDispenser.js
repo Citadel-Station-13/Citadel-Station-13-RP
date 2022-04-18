@@ -19,7 +19,7 @@ export const CasinoPrizeDispenser = (props, context) => {
       <Window.Content className="Layout__content--flexColumn" scrollable>
         <Fragment>
           <CasinoPrizeDispenserSearch />
-          <CasinoPrizeDispenserItems />	
+          <CasinoPrizeDispenserItems />
         </Fragment>
       </Window.Content>
     </Window>

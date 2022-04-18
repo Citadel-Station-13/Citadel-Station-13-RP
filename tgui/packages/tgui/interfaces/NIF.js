@@ -12,13 +12,17 @@ const NIF_PREINSTALL = 4;
 
 const validThemes = [
   "abductor",
+  "abstract",
   "cardtable",
+  "clockcult",
   "hackerman",
   "malfunction",
+  "neutral",
   "ntos",
   "paper",
   "retro",
   "syndicate",
+  "wizard",
 ];
 
 export const NIF = (props, context) => {

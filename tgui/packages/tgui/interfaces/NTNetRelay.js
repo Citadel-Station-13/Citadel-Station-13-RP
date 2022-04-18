@@ -14,7 +14,7 @@ export const NTNetRelay = (props, context) => {
   } = data;
 
   let body = <NTNetRelayContent />;
-  
+
   if (dos_crashed) {
     body = <NTNetRelayCrash />;
   }
@@ -68,7 +68,7 @@ const NTNetRelayContent = (props, context) => {
 
 const NTNetRelayCrash = (props, context) => {
   const { act, data } = useBackend(context);
-  
+
   return (
     <FullscreenNotice title="ERROR">
       <Box fontSize="1.5rem" bold color="bad">
