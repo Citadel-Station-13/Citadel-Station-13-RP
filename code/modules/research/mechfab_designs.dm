@@ -1000,7 +1000,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 15000, "silver" = 3000, "plastic" = 3000, "osmium" = 1000)
 	build_path = /obj/item/vehicle_assembly/quadbike
 
-
+/*
 /datum/design/item/mechfab/uav/basic
 	name = "UAV - Recon Skimmer"
 	id = "recon_skimmer"
@@ -1008,3 +1008,4 @@
 	time = 20
 	req_tech = list(TECH_MATERIAL = 6, TECH_ENGINEERING = 5, TECH_PHORON = 3, TECH_MAGNET = 4, TECH_POWER = 6)
 	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 6000, "silver" = 4000)
+*/
