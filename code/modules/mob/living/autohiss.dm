@@ -2,45 +2,21 @@
 	return message // no autohiss at this level
 
 /mob/living/carbon/human/handle_autohiss(message, datum/language/L)
-	if(!client || autohiss_mode == AUTOHISS_OFF) // no need to process if there's no client or they have autohiss off
-		return message
-	return species.handle_autohiss(message, L, autohiss_mode)
-
-/mob/living
-	var/autohiss_mode = AUTOHISS_OFF
-
-/datum/species
-	var/list/autohiss_basic_map = null
-	var/list/autohiss_extra_map = null
-	var/list/autohiss_exempt = null
-
-/datum/species/unathi
-	autohiss_basic_map = list(
-			"s" = list("ss", "sss", "ssss")
-		)
-	autohiss_extra_map = list(
-			"x" = list("ks", "kss", "ksss")
-		)
-	autohiss_exempt = list(LANGUAGE_UNATHI)
-
-/datum/species/tajaran
-	autohiss_basic_map = list(
-			"r" = list("rr", "rrr", "rrrr")
-		)
-	autohiss_exempt = list(LANGUAGE_SIIK,LANGUAGE_AKHANI)
-
-
-/datum/species/proc/handle_autohiss(message, datum/language/lang, mode)
-	if(!autohiss_basic_map)
-		return message
-	if(lang.flags & NO_STUTTER)		// Currently prevents EAL, Sign language, and emotes from autohissing
-		return message
-	if(autohiss_exempt && (lang.name in autohiss_exempt))
+	if(!client || autohiss_mode == AUTOHISS_OFF || autohiss_type == AUTOHISS_TYPE_NONE) // no need to process if there's no client or they have autohiss off
 		return message
 
-	var/map = autohiss_basic_map.Copy()
-	if(mode == AUTOHISS_FULL && autohiss_extra_map)
-		map |= autohiss_extra_map
+	var/datum/autohiss_maps/maps = autohiss_type_to_datum(autohiss_type)
+	
+	if(!maps.basic)
+		return message
+	if(L.flags & NO_STUTTER)		// Currently prevents EAL, Sign language, and emotes from autohissing
+		return message
+	if(maps.exempt && (L.name in maps.exempt))
+		return message
+
+	var/map = maps.basic.Copy()
+	if(autohiss_mode == AUTOHISS_FULL && maps.extra)
+		map |= maps.extra
 
 	. = list()
 
@@ -69,3 +45,75 @@
 		message = copytext(message, min_index + 1)
 
 	return jointext(., null)
+
+/mob/living
+	var/autohiss_mode = AUTOHISS_OFF
+	var/autohiss_type = AUTOHISS_TYPE_NONE
+
+//If you are planning on adding autohiss for a new species, please change autohiss_type_to_datum, toggle_autohiss_type,
+//as well as code/modules/client/preference_setup/vore/04_autohiss.dm to add in the new species as well.
+
+/datum/autohiss_maps
+	var/list/basic //The things we will replace on basic settings.
+	var/list/extra //The things we will replace on full settings, on top of basic.
+	var/list/exempt //If we are speaking this language, we will not apply autohiss. (Usually for native languages to a species.)
+
+/datum/autohiss_maps/unathi
+	basic = list(
+			"s" = list("ss", "sss", "ssss")
+		)
+	extra = list(
+			"x" = list("ks", "kss", "ksss")
+		)
+	exempt = list(LANGUAGE_UNATHI)
+
+/datum/autohiss_maps/tajaran
+	basic = list(
+			"r" = list("rr", "rrr", "rrrr")
+		)
+	exempt = list(LANGUAGE_SIIK,LANGUAGE_AKHANI)
+
+/proc/autohiss_type_to_datum(type)
+	RETURN_TYPE(/datum/autohiss_maps)
+	switch(type)
+		if(AUTOHISS_TYPE_UNATHI)
+			return new /datum/autohiss_maps/unathi()
+		if(AUTOHISS_TYPE_TAJARAN)
+			return new /datum/autohiss_maps/tajaran()
+		else 
+			CRASH("Autohiss could not convert '[type]' to maps!")
+
+/mob/living/carbon/human/verb/toggle_autohiss()
+	set name = "Toggle Autohiss"
+	set category = "OOC"
+	set desc = "Toggle your autohiss configuration between disabled, basic, and full."
+
+	switch(autohiss_mode)
+		if(AUTOHISS_OFF)
+			autohiss_mode = AUTOHISS_BASIC
+			to_chat(src, SPAN_NOTICE("Autohiss changed to basic."))
+		if(AUTOHISS_BASIC)
+			autohiss_mode = AUTOHISS_FULL
+			to_chat(src, SPAN_NOTICE("Autohiss changed to full."))
+		if(AUTOHISS_FULL)
+			autohiss_mode = AUTOHISS_OFF
+			to_chat(src, SPAN_NOTICE("Autohiss disabled."))
+
+
+/mob/living/carbon/human/verb/toggle_autohiss_type()
+	set name = "Toggle Autohiss Type"
+	set category = "OOC"
+	set desc = "Set the type of autohissing you will do."
+
+	var/new_autohiss_type = input(usr, "Select your new autohiss type.", "Autohiss Type") in list("None", "Unathi", "Tajaran")
+
+	switch(new_autohiss_type)
+		if("None")
+			autohiss_type = AUTOHISS_TYPE_NONE
+			to_chat(src, SPAN_NOTICE("Autohiss disabled."))
+		if("Unathi")
+			autohiss_type = AUTOHISS_TYPE_UNATHI
+			to_chat(src, SPAN_NOTICE("Autohiss type changed to unathi."))
+		if("Tajaran")
+			autohiss_type = AUTOHISS_TYPE_TAJARAN
+			to_chat(src, SPAN_NOTICE("Autohiss type changed to tajaran."))
