@@ -62,15 +62,6 @@
 	for(var/obj/machinery/power/supermatter/S in supermatters)
 		. = max(., S.get_status())
 
-/datum/nano_module/supermatter_monitor/proc/process_data_output(skill, value)
-	switch(skill)
-		if(SKILL_UNTRAINED)
-			return (0.6 + 0.8 * rand()) * value
-		if(SKILL_BASIC)
-			return (0.8 + 0.4 * rand()) * value
-		else
-			return value
-
 /datum/nano_module/supermatter_monitor/proc/get_threshhold_color(threshhold, value)
 	for (var/entry in active.threshholds)
 		if (entry["name"] != threshhold)
@@ -93,7 +84,7 @@
 
 /datum/nano_module/supermatter_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
-	var/engine_skill = user.get_skill_value(SKILL_ENGINES)
+	//var/engine_skill = user.get_skill_value(SKILL_ENGINES)
 
 	if(istype(active))
 		var/turf/T = get_turf(active)
@@ -113,14 +104,14 @@
 		data["active"] = 1
 		data["screen"] = screen
 		data["threshholds"] = active.threshholds
-		data["SM_integrity"] = min(process_data_output(engine_skill, active.get_integrity()), 100)
-		data["SM_power"] = process_data_output(engine_skill, active.power)
+		data["SM_integrity"] = min(active.get_integrity(), 100)
+		data["SM_power"] = active.power
 		data["SM_power_label"] = get_threshhold_color(SUPERMATTER_DATA_EER, active.power)
-		data["SM_ambienttemp"] = process_data_output(engine_skill, air.temperature)
+		data["SM_ambienttemp"] = air.temperature
 		data["SM_ambienttemp_label"] = get_threshhold_color(SUPERMATTER_DATA_TEMPERATURE, air.temperature)
-		data["SM_ambientpressure"] = process_data_output(engine_skill, ambient_pressure)
+		data["SM_ambientpressure"] = ambient_pressure
 		data["SM_ambientpressure_label"] = get_threshhold_color(SUPERMATTER_DATA_PRESSURE, ambient_pressure)
-		data["SM_EPR"] = process_data_output(engine_skill, epr)
+		data["SM_EPR"] = epr
 		data["SM_EPR_label"] = get_threshhold_color(SUPERMATTER_DATA_EPR, epr)
 		if(air.total_moles)
 			data["SM_gas_O2"] = round(100*air.gas[GAS_OXYGEN]/air.total_moles,0.01)
@@ -145,7 +136,7 @@
 
 			SMS.Add(list(list(
 			"area_name" = A.name,
-			"integrity" = process_data_output(engine_skill, S.get_integrity()),
+			"integrity" = S.get_integrity(),
 			"uid" = S.uid
 			)))
 

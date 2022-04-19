@@ -333,8 +333,7 @@
 			return 1
 		var/place = selected_shuttle.name
 		if(alert(user, "Would you like to choose a custom gathering point, or just use [place]?", "Announcement Creation", "Default", "Custom") == "Custom")
-			var/list/areas = area_repository.get_areas_by_name()
-			var/area/A = input(user, "Pick a custom location from the list.", "Announcement Creation") as null|anything in areas
+			var/area/A = input(user, "Please type a custom location.", "Announcement Creation") as text
 			if(A)
 				place = A
 		if(alert(user, "This will make a radio announcement summoning all mission crew to the [place]. Are you sure you want to do this?",, "Yes.", "No.") == "No.")

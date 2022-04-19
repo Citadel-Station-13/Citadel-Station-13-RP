@@ -104,7 +104,7 @@
 	data["using_scanner"] = prog.using_scanner
 	data["check_scanning"] = prog.check_scanning()
 	if(prog.metadata_buffer.len > 0 && prog.paper_type == /obj/item/paper/bodyscan)
-		data["data_buffer"] = display_medical_data(prog.metadata_buffer.Copy(), user.get_skill_value(SKILL_MEDICAL, TRUE))
+		data["data_buffer"] = display_medical_data(prog.metadata_buffer.Copy())
 	else
 		data["data_buffer"] = digitalPencode2html(prog.data_buffer)
 

@@ -385,6 +385,8 @@
 		. |= UPDATE_OVERLAYS
 
 	. |= SEND_SIGNAL(src, COMSIG_ATOM_UPDATED_ICON, updates, .)
+	
+	on_update_icon()
 
 /// Updates the icon state of the atom
 /atom/proc/update_icon_state()
@@ -397,6 +399,8 @@
 	. = list()
 	SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_OVERLAYS, .)
 
+/atom/proc/on_update_icon()
+	return
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
 /atom/proc/relaymove()
@@ -1033,3 +1037,6 @@
 	relative_layer = new_layer
 	// base layer being null isn't
 	layer = base_layer + 0.000001 * relative_layer
+
+/atom/proc/DefaultTopicState()
+	return GLOB.default_state

@@ -7,8 +7,6 @@ GLOBAL_LIST_INIT(terminal_commands, init_subtypes(/datum/terminal_command))
 	var/pattern                           // Matched using regex
 	var/regex_flags                       // Used in the regex
 	var/regex/regex                       // The actual regex, produced from above.
-	var/core_skill = SKILL_COMPUTER       // The skill which is checked
-	var/skill_needed = SKILL_EXPERIENCED       // How much skill the user needs to use this. This is not for critical failure effects at unskilled; those are handled globally.
 	var/req_access = list()               // Stores access needed, if any
 
 /datum/terminal_command/New()
@@ -22,8 +20,6 @@ GLOBAL_LIST_INIT(terminal_commands, init_subtypes(/datum/terminal_command))
 /datum/terminal_command/proc/parse(text, mob/user, datum/terminal/terminal)
 	if(!findtext(text, regex))
 		return
-	if(!user.skill_check(core_skill, skill_needed))
-		return skill_fail_message()
 	if(!check_access(user))
 		return "[name]: ACCESS DENIED"
 	return proper_input_entered(text, user, terminal)
@@ -63,8 +59,8 @@ Subtypes
 		. = list("The following commands are available.", "Some may require additional access.")
 		for(var/command in GLOB.terminal_commands)
 			var/datum/terminal_command/command_datum = command
-			if(user.skill_check(command_datum.core_skill, command_datum.skill_needed))
-				. += command_datum.name
+			//if(user.skill_check(command_datum.core_skill, command_datum.skill_needed)) TODO: decide what to do with illicit commands
+			//	. += command_datum.name
 		return
 	if(length(text) < 5)
 		return "man: improper syntax. Use man \[command\]"
@@ -146,7 +142,6 @@ Subtypes
 	man_entry = list("Format: locate nid", "Attempts to locate the device with the given nid by triangulating via relays.")
 	pattern = "locate"
 	req_access = list(access_network)
-	skill_needed = SKILL_MASTER
 
 /datum/terminal_command/locate/proper_input_entered(text, mob/user, datum/terminal/terminal)
 	. = "Failed to find device with given nid. Try ping for diagnostics."

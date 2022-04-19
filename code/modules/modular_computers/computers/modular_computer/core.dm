@@ -70,7 +70,7 @@
 /obj/item/modular_computer/emag_act(var/remaining_charges, var/mob/user)
 	if(computer_emagged)
 		to_chat(user, "\The [src] was already emagged.")
-		return NO_EMAG_ACT
+		return -1
 	else
 		computer_emagged = TRUE
 		to_chat(user, "You emag \the [src]. It's screen briefly shows a \"OVERRIDE ACCEPTED: New software downloads available.\" message.")
@@ -119,7 +119,7 @@
 	QDEL_NULL_LIST(terminals)
 
 	if(loud)
-		visible_message("\The [src] shuts down.", range = 1)
+		visible_message("\The [src] shuts down.") //TODO: readd range
 		
 	enabled = 0
 	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)

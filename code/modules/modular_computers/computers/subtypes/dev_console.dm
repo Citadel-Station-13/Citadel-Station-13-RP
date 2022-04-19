@@ -1,8 +1,5 @@
 /obj/machinery/computer/modular
 	name = "console"
-	maximum_component_parts = list(/obj/item/stock_parts = 14)	//There's a lot of stuff that goes in these
-	machine_name = "general-purpose computer motherboard"
-	machine_desc = "Used to build \"modular computers\" - stationary or portable devices that connect to NTNet and support a wide array of programs."
 	var/list/interact_sounds = list("keyboard", "keystroke")
 	var/obj/item/computer_hardware/hard_drive/portable/portable_drive
 
@@ -48,7 +45,7 @@
 	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		if(os.on)
-			set_light(light_max_bright_on, light_inner_range_on, light_outer_range_on, 2, light_color)
+			set_light(2, 0.2, light_color)
 		else
 			set_light(0)
 

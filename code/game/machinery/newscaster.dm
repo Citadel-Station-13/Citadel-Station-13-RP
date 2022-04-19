@@ -57,6 +57,9 @@
 /datum/feed_network
 	var/list/datum/feed_channel/network_channels = list()
 	var/datum/feed_message/wanted_issue
+	var/list/newscasters = list()
+	var/list/news_programs = list()
+	var/list/z_levels = list()
 
 /datum/feed_network/New()
 	CreateFeedChannel("Station Announcements", "SS13", 1, 1, "New Station Announcement Available")

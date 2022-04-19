@@ -3,7 +3,7 @@
 	name = "Remote Terminal"
 	var/datum/component/ntos/origin_computer
 
-/datum/terminal/remote/New(mob/user, datum/extension/interactive/ntos/computer, datum/extension/interactive/ntos/origin)
+/datum/terminal/remote/New(mob/user, datum/component/ntos/computer, datum/component/ntos/origin)
 	origin_computer = origin
 	..(user, computer)
 

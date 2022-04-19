@@ -120,9 +120,9 @@
 		return 1
 	if(href_list["PRG_downloadfile"])
 		if(!downloaded_file)
-			begin_file_download(href_list["PRG_downloadfile"], usr.get_skill_value(SKILL_COMPUTER))
+			begin_file_download(href_list["PRG_downloadfile"])
 		else if(check_file_download(href_list["PRG_downloadfile"]) && !list_find(downloads_queue, href_list["PRG_downloadfile"]) && downloaded_file.filename != href_list["PRG_downloadfile"])
-			downloads_queue[href_list["PRG_downloadfile"]] = usr.get_skill_value(SKILL_COMPUTER)
+			downloads_queue[href_list["PRG_downloadfile"]] = 3 //Normally this would be a skill but we just use an "average" of 3
 		return 1
 	if(href_list["PRG_removequeued"])
 		downloads_queue.Remove(href_list["PRG_removequeued"])

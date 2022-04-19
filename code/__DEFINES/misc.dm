@@ -253,6 +253,11 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_NTNET_LOGS	500
 #define MIN_NTNET_LOGS	10
 
+//Shuttle mission stages
+#define SHUTTLE_MISSION_PLANNED  1
+#define SHUTTLE_MISSION_STARTED  2
+#define SHUTTLE_MISSION_FINISHED 3
+#define SHUTTLE_MISSION_QUEUED   4
 
 // Special return values from bullet_act(). Positive return values are already used to indicate the blocked level of the projectile.
 #define PROJECTILE_CONTINUE		-1	// If the projectile should continue flying after calling bullet_act()

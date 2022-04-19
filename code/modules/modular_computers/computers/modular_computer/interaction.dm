@@ -87,7 +87,7 @@
 
 	uninstall_component(user, portable_drive)
 
-/obj/item/modular_computer/attack_ghost(var/mob/observer/ghost/user)
+/obj/item/modular_computer/attack_ghost(var/mob/observer/dead/user)
 	if(enabled)
 		ui_interact(user)
 	else if(check_rights(R_ADMIN, 0, user))
@@ -217,7 +217,7 @@
 
 /obj/item/modular_computer/MouseDrop(var/atom/over_object)
 	var/mob/M = usr
-	if(!istype(over_object, /obj/screen) && CanMouseDrop(M))
+	if(!istype(over_object, /atom/movable/screen) && CanMouseDrop(M))
 		return attack_self(M)
 
 /obj/item/modular_computer/afterattack(atom/target, mob/user, proximity)

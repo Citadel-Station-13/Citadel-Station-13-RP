@@ -6,7 +6,7 @@
 	var/list/history_max_length = 20
 	var/datum/component/ntos/computer
 
-/datum/terminal/New(mob/user, datum/extension/interactive/ntos/computer)
+/datum/terminal/New(mob/user, datum/component/ntos/computer)
 	..()
 	src.computer = computer
 	if(user && can_use(user))

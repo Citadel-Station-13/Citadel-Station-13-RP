@@ -48,6 +48,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
+/*
 /datum/component/ntos/extension_status(var/mob/user)
 	. = ..()
 	if(!on || !host_status())
@@ -55,9 +56,10 @@
 	//There is no bypassing the update, mwhahaha
 	if(updating)
 		. = min(STATUS_UPDATE, .)
+*/
 
 /datum/component/ntos/CanUseTopic(mob/user, state)
-	. = holder.CanUseTopic(user, state)
+	. = get_physical_host().CanUseTopic(user, state)
 	. = min(., extension_status(user))
 
 // Handles user's GUI input
