@@ -1,5 +1,5 @@
 //
-// Recipies for Pipe Dispenser and (someday) the RPD
+// Recipies for Pipe Dispenser and the RPD
 //
 
 GLOBAL_LIST_INIT(atmos_pipe_recipes, list(
@@ -27,6 +27,7 @@ GLOBAL_LIST_INIT(atmos_pipe_recipes, list(
 		new /datum/pipe_recipe/pipe("Aux Pump",				/obj/machinery/atmospherics/binary/pump/aux),
 		new /datum/pipe_recipe/pipe("Pressure Regulator",	/obj/machinery/atmospherics/binary/passive_gate),
 		new /datum/pipe_recipe/pipe("High Power Gas Pump",	/obj/machinery/atmospherics/binary/pump/high_power),
+		new /datum/pipe_recipe/pipe("Heat Pump",			/obj/machinery/atmospherics/binary/heat_pump),
 		//new /datum/pipe_recipe/pipe("Automatic Shutoff Valve",/obj/machinery/atmospherics/valve/shutoff),
 		new /datum/pipe_recipe/pipe("Scrubber",				/obj/machinery/atmospherics/unary/vent_scrubber),
 		new /datum/pipe_recipe/meter("Meter"),
@@ -88,27 +89,47 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 // Get preview for UIs
 /datum/pipe_recipe/proc/get_preview(selected_dir)
 	var/list/dirs
+
 	switch(dirtype)
+
 		if(PIPE_STRAIGHT, PIPE_BENDABLE)
 			dirs = list("[NORTH]" = "Vertical", "[EAST]" = "Horizontal")
 			if(dirtype == PIPE_BENDABLE)
-				dirs += list("[NORTHWEST]" = "West to North", "[NORTHEAST]" = "North to East",
-							"[SOUTHWEST]" = "South to West", "[SOUTHEAST]" = "East to South")
+				dirs += list(
+					"[NORTHWEST]" = "West to North", "[NORTHEAST]" = "North to East",
+					"[SOUTHWEST]" = "South to West", "[SOUTHEAST]" = "East to South"
+					)
+
 		if(PIPE_TRINARY)
-			dirs = list("[NORTH]" = "West South East", "[SOUTH]" = "East North West",
-						"[EAST]" = "North West South", "[WEST]" = "South East North")
+			dirs = list(
+				"[NORTH]" = "West South East", "[SOUTH]" = "East North West",
+				"[EAST]" = "North West South", "[WEST]" = "South East North"
+				)
+
 		if(PIPE_TRIN_M)
-			dirs = list("[NORTH]" = "North East South", "[SOUTHWEST]" = "North West South",
-						"[NORTHEAST]" = "South East North", "[SOUTH]" = "South West North",
-						"[WEST]" = "West North East", "[SOUTHEAST]" = "West South East",
-						"[NORTHWEST]" = "East North West", "[EAST]" = "East South West",)
+			dirs = list(
+				"[NORTH]" = "North East South", "[SOUTHWEST]" = "North West South",
+				"[NORTHEAST]" = "South East North", "[SOUTH]" = "South West North",
+				"[WEST]" = "West North East", "[SOUTHEAST]" = "West South East",
+				"[NORTHWEST]" = "East North West", "[EAST]" = "East South West",
+				)
+
 		if(PIPE_DIRECTIONAL)
-			dirs = list("[NORTH]" = "North", "[SOUTH]" = "South", "[WEST]" = "West", "[EAST]" = "East")
+			dirs = list(
+				"[NORTH]" = "North", "[SOUTH]" = "South",
+				"[WEST]" = "West", "[EAST]" = "East"
+				)
+
 		if(PIPE_ONEDIR)
 			dirs = list("[SOUTH]" = name)
+
 		if(PIPE_UNARY_FLIPPABLE)
-			dirs = list("[NORTH]" = "North", "[EAST]" = "East", "[SOUTH]" = "South", "[WEST]" = "West",
-						"[NORTHEAST]" = "North Flipped", "[SOUTHEAST]" = "East Flipped", "[SOUTHWEST]" = "South Flipped", "[NORTHWEST]" = "West Flipped")
+			dirs = list(
+				"[NORTH]" = "North", "[EAST]" = "East",
+				"[SOUTH]" = "South", "[WEST]" = "West",
+				"[NORTHEAST]" = "North Flipped", "[SOUTHEAST]" = "East Flipped",
+				"[SOUTHWEST]" = "South Flipped", "[NORTHWEST]" = "West Flipped"
+				)
 
 
 	var/list/rows = list()
@@ -133,7 +154,7 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 // Subtype for actual pipes
 //
 /datum/pipe_recipe/pipe
-	var/obj/item/pipe/construction_type		// The type PATH to the type of pipe fitting object the recipe makes.
+	var/obj/item/pipe/construction_type //The type PATH to the type of pipe fitting object the recipe makes.
 
 /datum/pipe_recipe/pipe/New(var/label, var/obj/machinery/atmospherics/path, var/colorable=FALSE)
 	name = label
@@ -145,7 +166,7 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 		icon_state_m = "[icon_state]m"
 	paintable = colorable
 
-// Render an HTML link to select this pipe type
+//Render an HTML link to select this pipe type
 /datum/pipe_recipe/pipe/Render(dispenser)
 	var/dat = ..(dispenser)
 	// Stationary pipe dispensers don't allow you to pre-select pipe directions.

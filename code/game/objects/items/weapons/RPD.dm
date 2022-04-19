@@ -53,22 +53,23 @@
 /obj/item/pipe_dispenser/proc/SetupPipes()
 	if(!first_atmos)
 		first_atmos = GLOB.atmos_pipe_recipes[GLOB.atmos_pipe_recipes[1]][1]
-		recipe = first_atmos
 	if(!first_disposal)
 		first_disposal = GLOB.disposal_pipe_recipes[GLOB.disposal_pipe_recipes[1]][1]
+	if(!recipe)
+		recipe = first_atmos
 
 /obj/item/pipe_dispenser/Destroy()
 	QDEL_NULL(spark_system)
 	QDEL_NULL(tool)
 	return ..()
-
+/*
 /obj/item/pipe_dispenser/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class='suicide'>[user] points the end of the RPD down [TU.his] throat and presses a button! It looks like [TU.hes] trying to commit suicide...</span>")
-	playsound(src, 'sound/machines/click.ogg', 50, 1)
-	playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
+	user.visible_message(SPAN_SUICIDE("[user] points the end of the RPD down [TU.his] throat and presses a button! It looks like [TU.hes] trying to commit suicide..."))
+	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
+	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	return(BRUTELOSS)
-
+*/
 /obj/item/pipe_dispenser/attack_self(mob/user)
 	ui_interact(user)
 
@@ -118,7 +119,6 @@
 	return data
 
 /obj/item/pipe_dispenser/ui_act(action, params)
-	SetupPipes()
 	if(..())
 		return TRUE
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
@@ -174,8 +174,8 @@
 	var/queued_p_dir = p_dir
 	var/queued_p_flipped = p_flipped
 
-	//make sure what we're clicking is valid for the current mode
-	var/static/list/make_pipe_whitelist // This should probably be changed to be in line with polaris standards. Oh well.
+	//Make sure what we're clicking is valid for the current mode
+	var/static/list/make_pipe_whitelist
 	if(!make_pipe_whitelist)
 		make_pipe_whitelist = typecacheof(list(/obj/structure/lattice, /obj/structure/girder, /obj/item/pipe))
 	var/can_make_pipe = (isturf(A) || is_type_in_typecache(A, make_pipe_whitelist))
@@ -184,29 +184,31 @@
 
 	. = TRUE
 	if((mode & DESTROY_MODE) && can_destroy_pipe)
-		to_chat(user, "<span class='notice'>You start destroying a pipe...</span>")
+		to_chat(user, SPAN_NOTICE("You start destroying a pipe..."))
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
 		if(do_after(user, 2, target = A))
 			activate()
 			animate_deletion(A)
 		return
 
-	if((mode & PAINT_MODE)) //Paint pipes
+	//Painting pipes
+	if((mode & PAINT_MODE))
 		if(istype(A, /obj/machinery/atmospherics/pipe))
 			var/obj/machinery/atmospherics/pipe/P = A
 			playsound(src, 'sound/machines/click.ogg', 50, 1)
 			P.change_color(pipe_colors[paint_color])
-			user.visible_message("<span class='notice'>[user] paints \the [P] [paint_color].</span>", "<span class='notice'>You paint \the [P] [paint_color].</span>")
+			user.visible_message(SPAN_NOTICE("[user] paints \the [P] [paint_color]."), SPAN_NOTICE("You paint \the [P] [paint_color]."))
 			return
 
-	if(mode & BUILD_MODE) //Making pipes
+	//Making pipes
+	if(mode & BUILD_MODE)
 		switch(category)
 			if(ATMOS_CATEGORY)
 				if(!can_make_pipe)
 					return ..()
 				playsound(src, 'sound/machines/click.ogg', 50, 1)
 				if(istype(recipe, /datum/pipe_recipe/meter))
-					to_chat(user, "<span class='notice'>You start building a meter...</span>")
+					to_chat(user, SPAN_NOTICE("You start building a meter..."))
 					if(do_after(user, 2, target = A))
 						activate()
 						var/obj/item/pipe_meter/PM = new /obj/item/pipe_meter(get_turf(A))
@@ -215,7 +217,7 @@
 							do_wrench(PM, user)
 				else if(istype(recipe, /datum/pipe_recipe/pipe))
 					var/datum/pipe_recipe/pipe/R = recipe
-					to_chat(user, "<span class='notice'>You start building a pipe...</span>")
+					to_chat(user, SPAN_NOTICE("You start building a pipe..."))
 					if(do_after(user, 2, target = A))
 						activate()
 						var/obj/machinery/atmospherics/path = R.pipe_type
@@ -234,21 +236,22 @@
 						else
 							build_effect(P)
 
-			if(DISPOSALS_CATEGORY) //Making disposals pipes
+			//Making disposals pipes
+			if(DISPOSALS_CATEGORY)
 				var/datum/pipe_recipe/disposal/R = recipe
 				if(!istype(R) || !can_make_pipe)
 					return ..()
 				A = get_turf(A)
 				if(istype(A, /turf/unsimulated))
-					to_chat(user, "<span class='warning'>[src]'s error light flickers; there's something in the way!</span>")
+					to_chat(user, SPAN_WARNING("[src]'s error light flickers; there's something in the way!"))
 					return
-				to_chat(user, "<span class='notice'>You start building a disposals pipe...</span>")
+				to_chat(user, SPAN_NOTICE("You start building a disposals pipe..."))
 				playsound(src, 'sound/machines/click.ogg', 50, 1)
 				if(do_after(user, 4, target = A))
 					var/obj/structure/disposalconstruct/C = new(A, R.pipe_type, queued_p_dir, queued_p_flipped, R.subtype)
 
 					if(!C.can_place())
-						to_chat(user, "<span class='warning'>There's not enough room to build that here!</span>")
+						to_chat(user, SPAN_WARNING("There's not enough room to build that here!"))
 						qdel(C)
 						return
 
