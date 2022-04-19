@@ -43,7 +43,7 @@
 /obj/item/organ/internal/powered/process()
 	. = ..()
 	if(owner)
-		if(active))
+		if(active)
 			if(owner.nutrition > 0)
 				owner.adjust_nutrition(-maintenance_cost)
 				active = FALSE
