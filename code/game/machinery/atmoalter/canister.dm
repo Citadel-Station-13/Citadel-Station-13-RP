@@ -1,3 +1,5 @@
+#define CAN_DEFAULT_RELEASE_PRESSURE (ONE_ATMOSPHERE)
+
 /obj/machinery/portable_atmospherics/canister
 	name = "canister"
 	icon = 'icons/obj/atmos.dmi'
@@ -8,19 +10,34 @@
 
 	layer = TABLE_LAYER	// Above catwalks, hopefully below other things
 
-	var/valve_open = 0
+	///Is the valve open?
+	var/valve_open = FALSE
+	///Used to log opening and closing of the valve, available on VV
+	var/release_log = ""
+	///How much the canister should be filled (recommended from 0 to 1)
+	//var/filled = 0.5
+	///Stores the path of the gas for mapped canisters
+	//var/gas_type
+	///Player controlled var that set the release pressure of the canister
 	var/release_pressure = ONE_ATMOSPHERE
-	var/release_flow_rate = ATMOS_DEFAULT_VOLUME_PUMP //in L/s
+	///Maximum pressure allowed for release_pressure var
+	var/can_max_release_pressure = (ONE_ATMOSPHERE * 10)
+	///Minimum pressure allower for release_pressure var
+	var/can_min_release_pressure = (ONE_ATMOSPHERE * 0.1)
+	///Max amount of heat allowed inside of the canister before it starts to melt (different tiers have different limits)
+	var/heat_limit = 5000
+	///Max amount of pressure allowed inside of the canister before it starts to break (different tiers have different limits)
+	var/pressure_limit = 46000
 
+	var/release_flow_rate = ATMOS_DEFAULT_VOLUME_PUMP //in L/s
 	var/canister_color = "yellow"
-	var/can_label = 1
+	var/can_label = TRUE
 	start_pressure = 45 * ONE_ATMOSPHERE
 	pressure_resistance = 7 * ONE_ATMOSPHERE
 	var/temperature_resistance = 1000 + T0C
 	volume = 1000
 	use_power = USE_POWER_OFF
 	interact_offline = 1 // Allows this to be used when not in powered area.
-	var/release_log = ""
 	var/update_flag = 0
 
 /obj/machinery/portable_atmospherics/canister/drain_power()
@@ -318,37 +335,54 @@ update_flag
 	return GLOB.physical_state
 
 /obj/machinery/portable_atmospherics/canister/ui_interact(mob/user, datum/tgui/ui)
-	if(destroyed)
-		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Canister", name)
 		ui.open()
 
-/obj/machinery/portable_atmospherics/canister/ui_data(mob/user)
-	var/list/data = list()
-	data["canLabel"] = can_label ? TRUE : FALSE
-	data["connected"] = connected_port ? TRUE : FALSE
-	data["pressure"] = round(air_contents.return_pressure() ? air_contents.return_pressure() : 0)
-	data["tankMoles"] = round(air_contents.total_moles, 0.01)
-	data["releasePressure"] = round(release_pressure ? release_pressure : 0)
-	data["defaultReleasePressure"] = round(initial(release_pressure))
-	data["minReleasePressure"] = round(ONE_ATMOSPHERE/10)
-	data["maxReleasePressure"] = round(10*ONE_ATMOSPHERE)
-	data["valveOpen"] = valve_open ? TRUE : FALSE
+/obj/machinery/portable_atmospherics/canister/ui_static_data(mob/user)
+	return list(
+		"defaultReleasePressure" = round(CAN_DEFAULT_RELEASE_PRESSURE),
+		"minReleasePressure" = round(can_min_release_pressure),
+		"maxReleasePressure" = round(can_max_release_pressure),
+		"pressureLimit" = round(pressure_limit),
+		"holdingTankLeakPressure" = round(TANK_LEAK_PRESSURE),
+		"holdingTankFragPressure" = round(TANK_FRAGMENT_PRESSURE)
+	)
 
+/obj/machinery/portable_atmospherics/canister/ui_data()
+	. = list(
+		"portConnected" = !!connected_port,
+		"tankPressure" = round(air_contents.return_pressure()),
+		"releasePressure" = round(release_pressure),
+		"valveOpen" = !!valve_open,
+		//"isPrototype" = !!prototype,
+		"hasHoldingTank" = !!holding
+	)
+/*
+	if(prototype)
+		. += list(
+			"restricted" = restricted,
+			"timing" = timing,
+			"time_left" = get_time_left(),
+			"timer_set" = timer_set,
+			"timer_is_not_default" = timer_set != default_timer_set,
+			"timer_is_not_min" = timer_set != minimum_timer_set,
+			"timer_is_not_max" = timer_set != maximum_timer_set
+		)
+*/
 	if(holding)
-		data["holding"] = list()
-		data["holding"]["name"] = holding.name
-		data["holding"]["pressure"] = round(holding.air_contents.return_pressure())
-	else
-		data["holding"] = null
-
-	return data
+		. += list(
+			"holdingTank" = list(
+				"name" = holding.name,
+				"tankPressure" = round(holding.air_contents.return_pressure())
+			)
+		)
 
 /obj/machinery/portable_atmospherics/canister/ui_act(action, params)
-	if(..())
-		return TRUE
+	. = ..()
+	if(.)
+		return
 
 	switch(action)
 		if("relabel")
@@ -373,20 +407,21 @@ update_flag
 				pressure = initial(release_pressure)
 				. = TRUE
 			else if(pressure == "min")
-				pressure = ONE_ATMOSPHERE/10
+				pressure = can_min_release_pressure
 				. = TRUE
 			else if(pressure == "max")
-				pressure = 10*ONE_ATMOSPHERE
+				pressure = can_max_release_pressure
 				. = TRUE
 			else if(pressure == "input")
-				pressure = input("New release pressure ([ONE_ATMOSPHERE/10]-[10*ONE_ATMOSPHERE] kPa):", name, release_pressure) as num|null
+				pressure = input("New release pressure ([can_min_release_pressure]-[can_max_release_pressure] kPa):", name, release_pressure) as num|null
 				if(!isnull(pressure) && !..())
 					. = TRUE
 			else if(text2num(pressure) != null)
 				pressure = text2num(pressure)
 				. = TRUE
 			if(.)
-				release_pressure = clamp(round(pressure), ONE_ATMOSPHERE/10, 10*ONE_ATMOSPHERE)
+				release_pressure = clamp(round(pressure), can_min_release_pressure, can_max_release_pressure)
+				investigate_log("was set to [release_pressure] kPa by [key_name(usr)].", INVESTIGATE_ATMOS)
 		if("valve")
 			if(valve_open)
 				if(holding)
@@ -411,8 +446,7 @@ update_flag
 				holding.loc = loc
 				holding = null
 			. = TRUE
-
-	update_icon()
+	update_appearance()
 
 /obj/machinery/portable_atmospherics/canister/phoron/Initialize(mapload)
 	. = ..()
