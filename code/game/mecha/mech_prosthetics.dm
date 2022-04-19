@@ -1,8 +1,8 @@
 /obj/machinery/mecha_part_fabricator/pros
-	icon = 'icons/obj/robotics.dmi'
-	icon_state = "prosfab"
 	name = "Prosthetics Fabricator"
 	desc = "A machine used for construction of prosthetics."
+	icon_state = "profab"
+	base_icon_state = "profab"
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -15,8 +15,6 @@
 	var/manufacturer = null
 	var/species_types = list("Human")
 	var/species = "Human"
-
-	loading_icon_state = "prosfab_loading"
 
 	materials = list(
 		DEFAULT_WALL_MATERIAL = 0,
@@ -71,6 +69,8 @@
 /obj/machinery/mecha_part_fabricator/pros/Initialize(mapload)
 	. = ..()
 	manufacturer = basic_robolimb.company
+	default_apply_parts()
+	RefreshParts()
 
 /obj/machinery/mecha_part_fabricator/pros/dispense_built_part(datum/design/D)
 	var/obj/item/I = ..()
@@ -105,7 +105,6 @@
 
 	. = TRUE
 
-	add_fingerprint(usr)
 	usr.set_machine(src)
 
 	switch(action)
@@ -133,6 +132,8 @@
 /obj/machinery/mecha_part_fabricator/pros/attackby(var/obj/item/I, var/mob/user)
 	if(..())
 		return TRUE
+
+	add_fingerprint(usr)
 
 	if(istype(I,/obj/item/disk/limb))
 		var/obj/item/disk/limb/D = I

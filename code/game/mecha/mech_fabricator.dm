@@ -1,6 +1,7 @@
 /obj/machinery/mecha_part_fabricator
-	icon = 'icons/obj/robotics.dmi'
-	icon_state = "mechfab-idle"
+	icon = 'icons/obj/machines/fabricators/robotics.dmi'
+	icon_state = "mechfab"
+	base_icon_state = "mechfab"
 	name = "Exosuit Fabricator"
 	desc = "A machine used for construction of mechas."
 	density = TRUE
@@ -13,11 +14,13 @@
 
 	///Current items in the build queue.
 	var/list/queue = list()
-	///Whether or not the machine is building the entire queue automagically.
+	///Whether or not the machine is building the entire queue automatically.
 	var/process_queue = FALSE
 
 	///The current design datum that the machine is building.
 	var/datum/design/being_built
+	///Is the fabricator currently printing something?
+	var/printing = FALSE
 	///World time when the build will finish.
 	var/build_finish = 0
 	///World time when the build started.
@@ -31,8 +34,6 @@
 	var/time_coeff = 1
 	///Coefficient for the efficiency of material usage in item building. Based on the installed parts.
 	var/component_coeff = 1
-
-	var/loading_icon_state = "mechfab-idle"
 
 	var/list/materials = list(
 		DEFAULT_WALL_MATERIAL = 0,
@@ -61,32 +62,32 @@
 	var/valid_buildtype = MECHFAB
 	///A list of categories that valid MECHFAB design datums will broadly categorise themselves under.
 	var/list/part_sets = list(
-								"Cyborg",
-								"Ripley",
-								"Odysseus",
-								"Gygax",
-								"Durand",
-								"H.O.N.K.",
-								"Reticent",
-								"Janus",
-								"Vehicle",
-								"Rigsuit",
-								"Phazon",
-								"Gopher",
-								"Polecat",
-								"Weasel",
-								"Exosuit Equipment",
-								"Exosuit Internals",
-								"Exosuit Ammunition",
-								"Cyborg Upgrade Modules",
-								"Cybernetics",
-								"Implants",
-								"Control Interfaces",
-								"Components",
-								"Other",
-								"Misc",
-								"Augments"
-								)
+		"Cyborg",
+		"Ripley",
+		"Odysseus",
+		"Gygax",
+		"Durand",
+		"H.O.N.K.",
+		"Reticent",
+		"Janus",
+		"Vehicle",
+		"Rigsuit",
+		"Phazon",
+		"Gopher",
+		"Polecat",
+		"Weasel",
+		"Exosuit Equipment",
+		"Exosuit Internals",
+		"Exosuit Ammunition",
+		"Cyborg Upgrade Modules",
+		"Cybernetics",
+		"Implants",
+		"Control Interfaces",
+		"Components",
+		"Other",
+		"Misc",
+		"Augments"
+		)
 
 /obj/machinery/mecha_part_fabricator/Initialize(mapload)
 	. = ..()
@@ -99,7 +100,24 @@
 		materials[Name] = 0
 
 	default_apply_parts()
+	RefreshParts()
 	files = new /datum/research(src) //Setup the research data holder.
+
+
+/obj/machinery/mecha_part_fabricator/update_icon_state()
+	. = ..()
+	if(stat & NOPOWER)
+		icon_state = "[base_icon_state]-off"
+	else
+		icon_state = base_icon_state
+
+/obj/machinery/mecha_part_fabricator/update_overlays()
+	. = ..()
+	cut_overlays()
+	if(panel_open)
+		add_overlay("[base_icon_state]-panel")
+	if(printing)
+		add_overlay("[base_icon_state]-active")
 
 /obj/machinery/mecha_part_fabricator/dismantle()
 	for(var/f in materials)
@@ -217,8 +235,9 @@
   * Adds the overlay to show the fab working and sets active power usage settings.
   */
 /obj/machinery/mecha_part_fabricator/proc/on_start_printing()
-	add_overlay("fab-active")
 	use_power = USE_POWER_ACTIVE
+	printing = TRUE
+	update_appearance()
 
 /**
   * Intended to be called when the exofab has stopped working and is no longer printing items.
@@ -226,10 +245,11 @@
   * Removes the overlay to show the fab working and sets idle power usage settings. Additionally resets the description and turns off queue processing.
   */
 /obj/machinery/mecha_part_fabricator/proc/on_finish_printing()
-	cut_overlay("fab-active")
 	use_power = USE_POWER_IDLE
 	desc = initial(desc)
+	printing = FALSE
 	process_queue = FALSE
+	update_appearance()
 
 /**
   * Calculates resource/material costs for printing an item based on the machine's resource coefficient.
@@ -305,9 +325,9 @@
 
 	return TRUE
 
-/obj/machinery/mecha_part_fabricator/process()
+/obj/machinery/mecha_part_fabricator/process(delta_time)
 	..()
-	// If there's a stored part to dispense due to an obstruction, try to dispense it.
+	//If there's a stored part to dispense due to an obstruction, try to dispense it.
 	if(stored_part)
 		var/turf/exit = get_step(src,(dir))
 		if(exit.density)
@@ -317,17 +337,17 @@
 		stored_part.forceMove(exit)
 		stored_part = null
 
-	// If there's nothing being built, try to build something
+	//If there's nothing being built, try to build something
 	if(!being_built)
-		// If we're not processing the queue anymore or there's nothing to build, end processing.
+		//If we're not processing the queue anymore or there's nothing to build, end processing.
 		if(!process_queue || !build_next_in_queue())
 			on_finish_printing()
 			return PROCESS_KILL
 		on_start_printing()
 
-	// If there's an item being built, check if it is complete.
+	//If there's an item being built, check if it is complete.
 	if(being_built && (build_finish < world.time))
-		// Then attempt to dispense it and if appropriate build the next item.
+		//Then attempt to dispense it and if appropriate build the next item.
 		dispense_built_part(being_built)
 		if(process_queue)
 			build_next_in_queue(FALSE)
@@ -618,8 +638,8 @@
 
 /obj/machinery/mecha_part_fabricator/attackby(var/obj/item/I, var/mob/user)
 	if(being_built)
-		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
-		return 1
+		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
+		return TRUE
 	if(default_deconstruction_screwdriver(user, I))
 		return
 	if(default_deconstruction_crowbar(user, I))
@@ -630,20 +650,19 @@
 	if(istype(I,/obj/item/stack/material))
 		var/obj/item/stack/material/S = I
 		if(!(S.material.name in materials))
-			to_chat(user, "<span class='warning'>The [src] doesn't accept [S.material]!</span>")
+			to_chat(user, SPAN_WARNING("The [src] doesn't accept [S.material]!"))
 			return
 
 		var/sname = "[S.name]"
+		var/matname = "[S.material.name]"
 		var/amnt = S.perunit
 		if(materials[S.material.name] + amnt <= res_max_amount)
 			if(S && S.get_amount() >= 1)
 				var/count = 0
-				flick("[loading_icon_state]", src)
-				// yess hacky but whatever
-				if(loading_icon_state == "mechfab-idle")
-					overlays += "mechfab-load-metal"
-					spawn(10)
-						overlays -= "mechfab-load-metal"
+				//This is dumb that it happens here but whatever. I guess it's a TODO then.
+				add_overlay("[initial(icon_state)]-load-[matname]")
+				spawn(10)
+					cut_overlay("[initial(icon_state)]-load-[matname]")
 				while(materials[S.material.name] + amnt <= res_max_amount && S.get_amount() >= 1)
 					materials[S.material.name] += amnt
 					S.use(1)
