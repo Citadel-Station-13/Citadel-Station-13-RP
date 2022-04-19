@@ -264,7 +264,7 @@
 
 	//Moved these from custom_species.dm
 	//var/vore_numbing = 0
-	var/is_vampire = FALSE // If this is set to 0, the person can't get nutrition from food.
+	var/is_vampire = FALSE // If this is set to true, the person can't get nutrition from food.
 	var/metabolism = 0.0015
 	var/lightweight = FALSE //Oof! Nonhelpful bump stumbles.
 	var/trashcan = FALSE //It's always sunny in the wrestling ring.

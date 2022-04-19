@@ -85,7 +85,6 @@
 	var/adj_temp = 0
 	var/targ_temp = 310
 	var/halluci = 0
-	var/blood_content = 0 //This allows vampires to gain nutriments from drinks that contain blood. Should be assigned as a ratio of the drink's blood content.
 
 	glass_name = "ethanol"
 	glass_desc = "A well-known alcohol with a variety of applications."
@@ -158,9 +157,8 @@
 	if(alien == IS_SLIME)
 		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed * 2)
 	var/is_vampire = M.species.is_vampire
-	if(blood_content > 0)
-		if(is_vampire == 1)
-			M.nutrition += removed * blood_content
+	if(is_vampire)
+		handle_vampire(M, alien, removed, is_vampire)
 
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 

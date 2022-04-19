@@ -42,12 +42,6 @@
 	var/effective_dose = dose
 	if(issmall(M)) effective_dose *= 2
 
-	var/is_vampire = FALSE
-	if(ishuman(M)) //VOREStation Edit START
-		var/mob/living/carbon/human/H = M
-		is_vampire = H.species.is_vampire
-		if(is_vampire == 1)
-			H.nutrition += removed * 4 //VOREStation Edit END
 	if(alien == IS_SLIME)	// Treat it like nutriment for the jello, but not equivalent.
 		M.heal_organ_damage(0.2 * removed * volume_mod, 0)	// More 'effective' blood means more usable material.
 		M.nutrition += 20 * removed * volume_mod
@@ -55,6 +49,9 @@
 		M.adjustToxLoss(removed / 2)	// Still has some water in the form of plasma.
 		return
 
+	var/is_vampire = M.species.is_vampire
+	if(is_vampire)
+		handle_vampire(M, alien, removed, is_vampire)
 	if(effective_dose > 5)
 		if(is_vampire == 0) //VOREStation Edit.
 			M.adjustToxLoss(removed) //VOREStation Edit.

@@ -12,6 +12,7 @@
 	var/list/data = null
 	var/volume = 0
 	var/metabolism = REM // This would be 0.2 normally
+	var/blood_content = 0 //vampires can digest values higher than 0
 	var/list/filtered_organs = list()	// Organs that will slow the processing of this chemical.
 	var/mrate_static = FALSE	//If the reagent should always process at the same speed, regardless of species, make this TRUE
 	var/ingest_met = 0
@@ -135,6 +136,22 @@
 
 /datum/reagent/proc/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	M.bloodstr.add_reagent(id, removed)
+	return
+
+/datum/reagent/proc/handle_vampire(var/mob/living/carbon/M, var/alien, var/removed, var/is_vampire)
+
+
+	if(blood_content > 0 && is_vampire)
+		#define blud_warn_timer 3000
+		if(blood_content < 4) //Are we drinking real blood or something else?
+			if(M.nutrition < 150 || M.nutrition > 250)
+				if(M.last_blud_warn + blud_warn_timer < world.time) //Vampires who are starving or peckish get nothing from fake blood.
+					to_chat(M, "<span class='warning'>This isn't enough. You need something stronger.</span>")
+					M.last_blud_warn = world.time //If we're drinking fake blood, make sure we're warned appropriately.
+			else
+				M.nutrition += removed * blood_content
+		else
+			M.nutrition += removed * blood_content //We should always be able to process real blood.
 	return
 
 /datum/reagent/proc/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)

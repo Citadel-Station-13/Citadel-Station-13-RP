@@ -668,7 +668,6 @@ End Citadel Change */
 	var/adj_sleepy = 0
 	var/adj_temp = 0
 	var/water_based = TRUE
-	var/blood_content = 0 //This allows vampires to gain nutriments from drinks that contain blood. Should be assigned as a ratio of the drink's blood content.
 
 /datum/reagent/drink/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	var/strength_mod = 1
@@ -688,17 +687,9 @@ End Citadel Change */
 		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
 	if(adj_temp < 0 && M.bodytemperature > 310)
 		M.bodytemperature = min(310, M.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-	if(blood_content > 0)
-		var/is_vampire = FALSE
-		is_vampire = M.species.is_vampire
-		if(is_vampire == TRUE)
-			#define blud_warn_timer 300 SECONDS
-			if((M.nutrition < 150 || M.nutrition > 250) && M.last_blud_warn + blud_warn_timer < world.time)
-				to_chat(M, "<span class='warning'>This isn't enough. You need something stronger.")
-				M.last_blud_warn = world.time
-				return
-			else if (M.nutrition >= 150 && M.nutrition <= 250)
-				M.nutrition += removed * blood_content
+	var/is_vampire = M.species.is_vampire
+	if(is_vampire)
+		handle_vampire(M, alien, removed, is_vampire)
 
 	/* VOREStation Removal
 	if(alien == IS_SLIME && water_based)
