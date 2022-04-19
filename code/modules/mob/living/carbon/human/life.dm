@@ -1270,11 +1270,12 @@
 				healths.appearance = healths_ma
 
 		if(nutrition_icon)
-			switch(nutrition)
-				if(species.max_nutrition to INFINITY)				nutrition_icon.icon_state = "nutrition0"
-				if(350 to species.max_nutrition)					nutrition_icon.icon_state = "nutrition1"
-				if(250 to 350)					nutrition_icon.icon_state = "nutrition2"
-				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
+			to_chat(src, "handle regular hud updates with src [src.species.max_nutrition] vs. [species.max_nutrition]")
+			switch(nutrition/species.max_nutrition)
+				if(1 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
+				if(0.778 to 1)					nutrition_icon.icon_state = "nutrition1"
+				if(0.556 to 0.778)				nutrition_icon.icon_state = "nutrition2"
+				if(0.333 to 0.556)				nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"
 
 		if(hydration_icon)
