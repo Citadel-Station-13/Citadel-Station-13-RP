@@ -1,6 +1,12 @@
 
 var/list/global/tank_gauge_cache = list()
 
+/**
+ * # Gas Tank
+ *
+ * Handheld gas canisters
+ * Can rupture explosively if overpressurized
+ */
 /obj/item/tank
 	name = "tank"
 	icon = 'icons/obj/tank.dmi'
@@ -25,7 +31,7 @@ var/list/global/tank_gauge_cache = list()
 	var/datum/gas_mixture/air_contents = null
 	var/distribute_pressure = ONE_ATMOSPHERE
 	var/integrity = 20
-	var/maxintegrity = 20
+	var/max_integrity = 20
 	var/valve_welded = 0
 	var/obj/item/tankassemblyproxy/proxyassembly
 
@@ -196,8 +202,8 @@ var/list/global/tank_gauge_cache = list()
 					message_admins("[key_name_admin(user)] attempted to weld a [src]. [src.air_contents.temperature-T0C]")
 					if(WT.welding)
 						to_chat(user, "<span class='danger'>You accidentally rake \the [W] across \the [src]!</span>")
-						maxintegrity -= rand(2,6)
-						integrity = min(integrity,maxintegrity)
+						max_integrity -= rand(2,6)
+						integrity = min(integrity,max_integrity)
 						src.air_contents.add_thermal_energy(rand(2000,50000))
 				WT.eyecheck(user)
 			else
@@ -216,9 +222,8 @@ var/list/global/tank_gauge_cache = list()
 	if (src.proxyassembly.assembly)
 		src.proxyassembly.assembly.attack_self(user)
 
-
-/obj/item/tank/ui_state(mob/user)
-	return GLOB.hands_state
+/obj/item/weapon/tank/ui_state(mob/user)
+	return GLOB.deep_inventory_state
 
 /obj/item/tank/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -244,18 +249,29 @@ var/list/global/tank_gauge_cache = list()
 	var/mob/living/carbon/C = user
 	if(!istype(C))
 		C = loc.loc
-	if(istype(C) && C.internal == src)
+	if(C.internal == src)
 		.["connected"] = TRUE
+	else
+		.["connected"] = FALSE
+
+	.["maskConnected"] = FALSE
+	if(C.wear_mask && (C.wear_mask.item_flags & ALLOWINTERNALS))
+		.["maskConnected"] = TRUE
+	else if(ishuman(C))
+		var/mob/living/carbon/human/H = C
+		if(H.head && (H.head.item_flags & ALLOWINTERNALS))
+			.["maskConnected"] = TRUE
+
+	return .
 
 /obj/item/tank/ui_act(action, params)
-	. = ..()
-	if(.)
-		return
+	if(..())
+		return TRUE
 	switch(action)
 		if("pressure")
 			var/pressure = params["pressure"]
 			if(pressure == "reset")
-				pressure = initial(distribute_pressure)
+				pressure = TANK_DEFAULT_RELEASE_PRESSURE
 				. = TRUE
 			else if(pressure == "min")
 				pressure = TANK_MIN_RELEASE_PRESSURE
@@ -268,6 +284,9 @@ var/list/global/tank_gauge_cache = list()
 				. = TRUE
 			if(.)
 				distribute_pressure = clamp(round(pressure), TANK_MIN_RELEASE_PRESSURE, TANK_MAX_RELEASE_PRESSURE)
+		if("toggle")
+			toggle_valve(usr)
+			. = TRUE
 
 /obj/item/tank/proc/toggle_valve(var/mob/user)
 	if(istype(loc,/mob/living/carbon))
@@ -295,22 +314,24 @@ var/list/global/tank_gauge_cache = list()
 			else
 				to_chat(user, "<span class='warning'>You need something to connect to \the [src].</span>")
 
-
-
 /obj/item/tank/remove_air(amount)
+	START_PROCESSING(SSobj, src)
 	return air_contents.remove(amount)
+
+/obj/item/tank/return_air()
+	START_PROCESSING(SSobj, src)
+	return air_contents
+
+
+/obj/item/tank/assume_air(datum/gas_mixture/giver)
+	START_PROCESSING(SSobj, src)
+	air_contents.merge(giver)
+	//handle_tolerances(ASSUME_AIR_DT_FACTOR)
+	check_status()
+	return TRUE
 
 /obj/item/tank/proc/remove_air_by_flag(flag, amount)
 	return air_contents.remove_by_flag(flag, amount)
-
-/obj/item/tank/return_air()
-	return air_contents
-
-/obj/item/tank/assume_air(datum/gas_mixture/giver)
-	air_contents.merge(giver)
-
-	check_status()
-	return 1
 
 /obj/item/tank/proc/remove_air_volume(volume_to_return)
 	if(!air_contents)
@@ -490,18 +511,14 @@ var/list/global/tank_gauge_cache = list()
 				#ifdef FIREDBG
 				log_debug("<span class='warning'>[x],[y] tank is leaking: [pressure] kPa, integrity [integrity]</span>")
 				#endif
-
-
 		else
 			integrity-= 1
-
-
 	else
-		if(integrity < maxintegrity)
+		if(integrity < max_integrity)
 			integrity++
 			if(leaking)
 				integrity++
-			if(integrity == maxintegrity)
+			if(integrity == max_integrity)
 				leaking = 0
 
 /////////////////////////////////
@@ -615,9 +632,8 @@ var/list/global/tank_gauge_cache = list()
 
 	return
 
-
-/obj/item/tank/proc/ignite()	//This happens when a bomb is told to explode
-
+///This happens when a bomb is told to explode
+/obj/item/tank/proc/ignite()
 	var/obj/item/assembly_holder/assy = src.proxyassembly.assembly
 	var/ign = assy.a_right
 	var/obj/item/other = assy.a_left
