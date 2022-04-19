@@ -129,14 +129,12 @@
 	icon_state = "beebot0"
 	base_icon_state = "beebot"
 
-/mob/living/bot/medibot/apidean/update_icons()
-	cut_overlays()
-	if(skin)
-		add_overlay("[base_icon_state]-[skin]")
+/mob/living/bot/medibot/apidean/update_icon_state()
+	. = ..()
 	if(busy)
-		icon_state = "beebots"
+		icon_state = "[base_icon_state]a"
 	else
-		icon_state = "beebot[on]"
+		icon_state = "[base_icon_state][on]"
 
 /mob/living/bot/medibot/apidean/handleIdle()
 	if(is_tipped) //Don't handle idle things if we're incapacitated!
@@ -242,7 +240,7 @@
 		var/area/location = get_area(src)
 		GLOB.global_announcer.autosay("[src] is treating <b>[H]</b> in <b>[location]</b>", "[src]", "Medical")
 	busy = TRUE
-	update_icons()
+	update_appearance()
 	if(do_mob(src, H, 30))
 		if(t == 1)
 			reagent_glass.reagents.trans_to_mob(H, injection_amount, CHEM_BLOOD)
@@ -278,7 +276,7 @@
 				playsound(loc, possible_messages[message], 50, FALSE)
 
 	busy = FALSE
-	update_icons()
+	update_appearance()
 
 /mob/living/bot/medibot/attack_hand(mob/living/carbon/human/H)
 	if(H.a_intent == INTENT_DISARM && !is_tipped)
@@ -300,6 +298,12 @@
 			set_right(H)
 	else
 		ui_interact(H)
+
+/mob/living/bot/medibot/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Medibot", name)
+		ui.open()
 
 /mob/living/bot/medibot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
@@ -326,12 +330,6 @@
 		data["declare_treatment"] = declare_treatment
 		data["vocal"] = vocal
 	return data
-
-/mob/living/bot/medibot/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "Medbot", name)
-		ui.open()
 
 /mob/living/bot/medibot/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/reagent_containers/glass))
@@ -407,7 +405,7 @@
 		busy = FALSE
 		emagged = TRUE
 		on = TRUE
-		update_icons()
+		update_appearance()
 		. = TRUE
 	ignore_list |= user
 
