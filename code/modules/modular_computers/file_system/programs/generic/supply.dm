@@ -366,7 +366,7 @@
 		))
 
 /datum/nano_module/supply/proc/can_print()
-	var/datum/extension/interactive/ntos/os = get_extension(nano_host(), /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(nano_host(), /datum/component/ntos)
 	if(os)
 		return os.has_component(PART_PRINTER)
 	return 0

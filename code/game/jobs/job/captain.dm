@@ -39,6 +39,10 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 		"Captain" = /datum/alt_title/captain/captain
 	)
 
+	software_on_spawn = list(/datum/computer_file/program/comm,
+							 /datum/computer_file/program/card_mod,
+							 /datum/computer_file/program/camera_monitor,
+							 /datum/computer_file/program/reports)
 /*
 /datum/job/captain/equip(var/mob/living/carbon/human/H)
 	. = ..()
@@ -109,6 +113,12 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 						access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
 						access_hop, access_RC_announce, access_keycard_auth, access_gateway)
 
+
+	software_on_spawn = list(/datum/computer_file/program/comm,
+							 /datum/computer_file/program/card_mod,
+							 /datum/computer_file/program/camera_monitor,
+							 /datum/computer_file/program/reports)
+
 // HOP Alt Titles
 /datum/alt_title/cro
 	title = "Crew Resources Officer"
@@ -152,6 +162,11 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 		"Bridge Officer" = /datum/alt_title/commsec/officer
 	)
 
+	software_on_spawn = list(/datum/computer_file/program/comm,
+							 /datum/computer_file/program/aidiag,
+							 /datum/computer_file/program/camera_monitor,
+							 /datum/computer_file/program/reports)
+							 
 /datum/alt_title/command_liaison
 	title = "Command Liaison"
 

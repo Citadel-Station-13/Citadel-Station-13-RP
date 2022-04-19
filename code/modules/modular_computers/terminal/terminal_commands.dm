@@ -152,11 +152,11 @@ Subtypes
 	. = "Failed to find device with given nid. Try ping for diagnostics."
 	if(length(text) < 8)
 		return
-	var/datum/extension/interactive/ntos/origin = terminal.computer
+	var/datum/component/ntos/origin = terminal.computer
 	if(!origin || !origin.get_ntnet_status())
 		return
 	var/nid = text2num(copytext(text, 8))
-	var/datum/extension/interactive/ntos/comp = ntnet_global.get_os_by_nid(nid)
+	var/datum/component/ntos/comp = ntnet_global.get_os_by_nid(nid)
 	if(!comp || !comp.host_status() || !comp.get_ntnet_status())
 		return
 	return "... Estimating location: [get_area(comp.get_physical_host())]"
@@ -171,12 +171,12 @@ Subtypes
 	if(length(text) < 6)
 		. += "ping: Improper syntax. Use ping nid."
 		return
-	var/datum/extension/interactive/ntos/origin = terminal.computer
+	var/datum/component/ntos/origin = terminal.computer
 	if(!origin || !origin.get_ntnet_status())
 		. += "failed. Check network status."
 		return
 	var/nid = text2num(copytext(text, 6))
-	var/datum/extension/interactive/ntos/comp = ntnet_global.get_os_by_nid(nid)
+	var/datum/component/ntos/comp = ntnet_global.get_os_by_nid(nid)
 	if(!comp || !comp.host_status() || !comp.get_ntnet_status())
 		. += "failed. Target device not responding."
 		return
@@ -193,11 +193,11 @@ Subtypes
 		return "ssh is not supported on remote terminals."
 	if(length(text) < 5)
 		return "ssh: Improper syntax. Use ssh nid."
-	var/datum/extension/interactive/ntos/origin = terminal.computer
+	var/datum/component/ntos/origin = terminal.computer
 	if(!origin || !origin.get_ntnet_status())
 		return "ssh: Check network connectivity."
 	var/nid = text2num(copytext(text, 5))
-	var/datum/extension/interactive/ntos/comp = ntnet_global.get_os_by_nid(nid)
+	var/datum/component/ntos/comp = ntnet_global.get_os_by_nid(nid)
 	if(comp == origin)
 		return "ssh: Error; can not open remote terminal to self."
 	if(!comp || !comp.host_status() || !comp.get_ntnet_status())
@@ -222,7 +222,7 @@ Subtypes
 	pattern = "^proxy"
 
 /datum/terminal_command/proxy/proper_input_entered(text, mob/user, datum/terminal/terminal)
-	var/datum/extension/interactive/ntos/comp = terminal.computer
+	var/datum/component/ntos/comp = terminal.computer
 	var/obj/item/computer_hardware/network_card/network_card = comp && comp.get_component(PART_NETWORK)
 	if(!comp || !network_card || !network_card.check_functionality())
 		return "proxy: Error; check networking hardware."
@@ -245,7 +245,7 @@ Subtypes
 	var/id = text2num(copytext(text, 10))
 	if(!id)
 		return syntax_error
-	var/datum/extension/interactive/ntos/target = ntnet_global.get_os_by_nid(id)
+	var/datum/component/ntos/target = ntnet_global.get_os_by_nid(id)
 	if(target == comp) return "proxy: Cannot setup a device to be its own proxy"
 	if(!target || !target.host_status() || !target.get_ntnet_status())
 		return "proxy: Error; cannot locate target device."

@@ -111,7 +111,7 @@
 		if(extra_to_show)
 			for(var/i = 1, i <= extra_to_show, i++)
 				var/nid = pick(ntnet_global.registered_nids)
-				var/datum/extension/interactive/ntos/os = ntnet_global.registered_nids[nid]
+				var/datum/component/ntos/os = ntnet_global.registered_nids[nid]
 				sources_to_show |= os.get_network_tag()
 
 		if(ntnet_global.intrusion_detection_enabled)

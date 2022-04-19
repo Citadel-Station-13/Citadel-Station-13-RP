@@ -6,6 +6,9 @@
 	secondary_color = rgb(127,223,223)
 	job_access_type = /datum/job/sar
 
+	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
+							 /datum/computer_file/program/camera_monitor)
+							 
 /obj/item/card/id/explorer
 	name = "identification card"
 	desc = "A card issued to station exploration staff."
@@ -69,6 +72,9 @@
 		"Exploration Manager" = /datum/alt_title/exploration_manager,
 		"Lead Pioneer" = /datum/alt_title/pathfinder/pioneer
 		)
+
+	software_on_spawn = list(/datum/computer_file/program/deck_management,
+							 /datum/computer_file/program/reports)
 
 /datum/alt_title/expedition_lead
 	title = "Expedition Lead"
@@ -136,6 +142,8 @@
 		"Jr. Explorer" = /datum/alt_title/explorer/junior,
 		"Containment Specialist" = /datum/alt_title/explorer/containment
 		)
+
+	software_on_spawn = list(/datum/computer_file/program/deck_management)
 
 /datum/alt_title/surveyor
 	title = "Surveyor"

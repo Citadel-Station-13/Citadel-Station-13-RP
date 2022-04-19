@@ -9,7 +9,7 @@
 	..()
 	hard_drive.store_file(new/datum/computer_file/program/alarm_monitor())
 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor())
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.set_autorun("cammon")
 
@@ -18,7 +18,7 @@
 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor())
 	hard_drive.store_file(new/datum/computer_file/program/records())
 	hard_drive.store_file(new/datum/computer_file/program/suit_sensors())
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.set_autorun("sensormonitor")
 
@@ -28,6 +28,6 @@
 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor())
 	hard_drive.store_file(new/datum/computer_file/program/shields_monitor())
 	hard_drive.store_file(new/datum/computer_file/program/supermatter_monitor())
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.set_autorun("alarmmonitor")

@@ -1,7 +1,7 @@
 /obj/item/modular_computer/proc/power_failure(malfunction = 0)
 	if(enabled) // Shut down the computer
 		visible_message("<span class='danger'>\The [src]'s screen flickers briefly and then goes dark.</span>", range = 1)
-		var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+		var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 		if(os)
 			os.event_powerfailure()
 		shutdown_computer(0)

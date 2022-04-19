@@ -56,7 +56,7 @@ var/global/ntnet_card_uid = 1
 // Returns a string identifier of this network card
 /obj/item/computer_hardware/network_card/proc/get_network_tag(list/routed_through) // Argument is a safety parameter for internal calls. Don't use manually.
 	if(proxy_id && !(src in routed_through))
-		var/datum/extension/interactive/ntos/comp = ntnet_global.get_os_by_nid(proxy_id)
+		var/datum/component/ntos/comp = ntnet_global.get_os_by_nid(proxy_id)
 		if(comp) // If not we default to exposing ourselves, but it means there was likely a logic error elsewhere.
 			LAZYADD(routed_through, src)
 			var/obj/item/computer_hardware/network_card/network_card = comp.get_component(PART_NETWORK)
@@ -96,7 +96,7 @@ var/global/ntnet_card_uid = 1
 		. = strength - 1
 
 	if(proxy_id)
-		var/datum/extension/interactive/ntos/comp = ntnet_global.get_os_by_nid(proxy_id)
+		var/datum/component/ntos/comp = ntnet_global.get_os_by_nid(proxy_id)
 		if(!comp || !comp.on)
 			return 0
 		if(src in routed_through) // circular proxy chain
@@ -109,12 +109,12 @@ var/global/ntnet_card_uid = 1
 /obj/item/computer_hardware/network_card/on_disable()
 	ntnet_global.unregister(identification_id)
 
-/obj/item/computer_hardware/network_card/on_enable(var/datum/extension/interactive/ntos/os)
+/obj/item/computer_hardware/network_card/on_enable(var/datum/component/ntos/os)
 	ntnet_global.register(identification_id, os)
 
 /obj/item/computer_hardware/network_card/on_install(var/obj/machinery/machine)
 	..()
-	var/datum/extension/interactive/ntos/os = get_extension(machine, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(machine, /datum/component/ntos)
 	if(os)
 		on_enable(os)
 

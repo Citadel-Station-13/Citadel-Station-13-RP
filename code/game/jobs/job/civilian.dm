@@ -251,6 +251,8 @@
 						handle complaints against crew members, and can have issues brought to the attention of Central Command, \
 						assuming their paperwork is in order."
 
+	software_on_spawn = list(/datum/computer_file/program/reports)
+	
 /datum/alt_title/iaa/regulator
 	title = "Regulatory Affairs Agent"
 

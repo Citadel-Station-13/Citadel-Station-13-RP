@@ -40,6 +40,11 @@
 		"Chief Surgeon" = /datum/alt_title/cmo/surgeon
 	)
 
+	software_on_spawn = list(/datum/computer_file/program/comm,
+							 /datum/computer_file/program/suit_sensors,
+							 /datum/computer_file/program/camera_monitor,
+							 /datum/computer_file/program/reports)
+
 /datum/alt_title/cmo/physician
 	title = "Chief Physician"
 
@@ -80,6 +85,9 @@
 		"Medical Intern" = /datum/alt_title/doctor/intern,
 		"Orderly" = /datum/alt_title/orderly
 		)
+
+	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
+							 /datum/computer_file/program/camera_monitor)
 
 // Medical Doctor Alt Titles
 /datum/alt_title/surgeon
@@ -149,6 +157,9 @@
 		"Pharmacologist" = /datum/alt_title/pharmacologist
 		)
 
+	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
+							 /datum/computer_file/program/camera_monitor)
+
 // Chemist Alt Titles
 /datum/alt_title/pharmacist
 	title = "Pharmacist"
@@ -211,6 +222,9 @@
 		"Therapist" = /datum/alt_title/therapist
 		)
 
+	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
+							 /datum/computer_file/program/camera_monitor)
+
 //Psychiatrist Alt Titles
 /datum/alt_title/psychologist
 	title = "Psychologist"
@@ -255,6 +269,9 @@
 		"Medical Responder" = /datum/alt_title/medical_responder
 		)
 
+	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
+							 /datum/computer_file/program/camera_monitor)
+							 
 // Paramedic Alt Titles
 /datum/alt_title/emt
 	title = "Emergency Medical Technician"

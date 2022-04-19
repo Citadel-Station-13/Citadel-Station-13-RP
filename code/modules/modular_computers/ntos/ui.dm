@@ -1,6 +1,6 @@
 
 // Operates NanoUI
-/datum/extension/interactive/ntos/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/component/ntos/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!on || !host_status())
 		if(ui)
 			ui.close()
@@ -48,7 +48,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/datum/extension/interactive/ntos/extension_status(var/mob/user)
+/datum/component/ntos/extension_status(var/mob/user)
 	. = ..()
 	if(!on || !host_status())
 		return STATUS_CLOSE
@@ -56,12 +56,12 @@
 	if(updating)
 		. = min(STATUS_UPDATE, .)
 
-/datum/extension/interactive/ntos/CanUseTopic(mob/user, state)
+/datum/component/ntos/CanUseTopic(mob/user, state)
 	. = holder.CanUseTopic(user, state)
 	. = min(., extension_status(user))
 
 // Handles user's GUI input
-/datum/extension/interactive/ntos/extension_act(href, href_list, user)
+/datum/component/ntos/extension_act(href, href_list, user)
 	if( href_list["PC_exit"] )
 		kill_program(active_program)
 		return TOPIC_HANDLED
@@ -113,7 +113,7 @@
 		open_terminal(usr)
 		return TOPIC_HANDLED
 
-/datum/extension/interactive/ntos/proc/regular_ui_update()
+/datum/component/ntos/proc/regular_ui_update()
 	var/ui_update_needed = 0
 	var/obj/item/computer_hardware/battery_module/battery_module = get_component(PART_BATTERY)
 	if(battery_module)
@@ -148,14 +148,14 @@
 	if(ui_update_needed)
 		update_uis()
 
-/datum/extension/interactive/ntos/proc/update_uis()
+/datum/component/ntos/proc/update_uis()
 	if(active_program) //Should we update program ui or computer ui?
 		SStgui.update_uis(active_program)
 		if(active_program.NM)
 			SStgui.update_uis(active_program.NM)
 
 // Function used by NanoUI's to obtain data for header. All relevant entries begin with "PC_"
-/datum/extension/interactive/ntos/proc/get_header_data()
+/datum/component/ntos/proc/get_header_data()
 	var/list/data = list()
 
 	var/obj/item/computer_hardware/battery_module/battery_module = get_component(PART_BATTERY)
@@ -212,11 +212,11 @@
 	data["PC_showexitprogram"] = active_program ? 1 : 0 // Hides "Exit Program" button on mainscreen
 	return data
 
-/datum/extension/interactive/ntos/initial_data()
+/datum/component/ntos/initial_data()
 	return get_header_data()
 
-/datum/extension/interactive/ntos/update_layout()
+/datum/component/ntos/update_layout()
 	return TRUE
 
-/datum/extension/interactive/ntos/nano_host()
+/datum/component/ntos/nano_host()
 	return holder.nano_host()

@@ -58,7 +58,7 @@
 	for (var/obj/O in T)
 		if (!istype(O, /obj/machinery/computer/modular) && !istype(O, /obj/item/modular_computer))
 			continue
-		var/datum/extension/interactive/ntos/os = get_extension(O, /datum/extension/interactive/ntos)
+		var/datum/component/ntos/os = GetComponent(O, /datum/component/ntos)
 		if (os)
 			os.save_file(file_name, file_info, /datum/computer_file/data/text)
 	qdel(src)

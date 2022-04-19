@@ -40,6 +40,11 @@
 		"Defense Director" = /datum/alt_title/hos/director
 		)
 
+	software_on_spawn = list(/datum/computer_file/program/comm,
+							 /datum/computer_file/program/digitalwarrant,
+							 /datum/computer_file/program/camera_monitor,
+							 /datum/computer_file/program/reports)
+
 // Head of Security Alt Titles
 /datum/alt_title/hos/commander
 	title = "Security Commander"
@@ -77,6 +82,9 @@
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
 						Security Department as a whole."
 
+	software_on_spawn = list(/datum/computer_file/program/digitalwarrant,
+							 /datum/computer_file/program/camera_monitor)
+
 //////////////////////////////////
 //			Detective
 //////////////////////////////////
@@ -103,6 +111,9 @@
 		"Forensic Technician" = /datum/alt_title/detective/forensics_tech,
 		"Crime Scene Investigator" = /datum/alt_title/detective/csi
 		)
+
+	software_on_spawn = list(/datum/computer_file/program/digitalwarrant,
+							 /datum/computer_file/program/camera_monitor)
 
 /datum/alt_title/detective/csi
 	title = "Crime Scene Investigator"
@@ -143,6 +154,9 @@
 		"Security Guard" = /datum/alt_title/security_officer/guard
 		)
 
+	software_on_spawn = list(/datum/computer_file/program/digitalwarrant,
+							 /datum/computer_file/program/camera_monitor)
+							 
 // Security Officer Alt Titles
 /datum/alt_title/security_officer/junior
 	title = "Junior Officer"

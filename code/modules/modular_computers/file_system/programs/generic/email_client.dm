@@ -83,7 +83,7 @@
 	var/datum/computer_file/data/email_message/current_message = null
 
 /datum/nano_module/email_client/proc/get_functional_drive()
-	var/datum/extension/interactive/ntos/os = get_extension(nano_host(), /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(nano_host(), /datum/component/ntos)
 	var/obj/item/computer_hardware/hard_drive/drive = os && os.get_component(/obj/item/computer_hardware/hard_drive)
 	if(!drive || !drive.check_functionality())
 		error = "Error uploading file. Are you using a functional and NTOSv2-compliant device?"

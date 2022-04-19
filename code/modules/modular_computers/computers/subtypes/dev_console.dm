@@ -7,12 +7,12 @@
 	var/obj/item/computer_hardware/hard_drive/portable/portable_drive
 
 /obj/machinery/computer/modular/Initialize()
-	set_extension(src, /datum/extension/interactive/ntos/console)
+	AddComponent(src, /datum/component/ntos/console)
 	. = ..()
 
 /obj/machinery/computer/modular/Destroy()
 	QDEL_NULL(portable_drive)
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.system_shutdown()
 	. = ..()
@@ -20,20 +20,20 @@
 /obj/machinery/computer/modular/Process()
 	if(stat & NOPOWER)
 		return
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.Process()
 
 /obj/machinery/computer/modular/power_change()
 	. = ..()
 	if(. && (stat & NOPOWER))
-		var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+		var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 		if(os)
 			os.event_powerfailure()
 			os.system_shutdown()
 
 /obj/machinery/computer/modular/interface_interact(mob/user)
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		if(!os.on)
 			if(!CanInteract(user, DefaultTopicState()))
@@ -45,7 +45,7 @@
 
 /obj/machinery/computer/modular/on_update_icon()
 	. = ..()
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		if(os.on)
 			set_light(light_max_bright_on, light_inner_range_on, light_outer_range_on, 2, light_color)
@@ -53,12 +53,12 @@
 			set_light(0)
 
 /obj/machinery/computer/modular/get_screen_overlay()
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		return os.get_screen_overlay()
 
 /obj/machinery/computer/modular/get_keyboard_overlay()
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		return os.get_keyboard_overlay()
 
@@ -121,7 +121,7 @@
 /obj/machinery/computer/modular/CtrlAltClick(mob/user)
 	if(!CanPhysicallyInteract(user))
 		return 0
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.open_terminal(user)
 		return 1
@@ -134,7 +134,7 @@
 	if(!CanPhysicallyInteract(usr))
 		return
 
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os && os.on)
 		to_chat(usr, "You press a hard-reset button on \the [src].")
 		os.system_shutdown()

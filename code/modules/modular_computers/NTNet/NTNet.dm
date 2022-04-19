@@ -77,7 +77,7 @@ var/global/datum/ntnet/ntnet_global = new()
 /datum/ntnet/proc/get_os_by_nid(var/NID)
 	return registered_nids["[NID]"]
 
-/datum/ntnet/proc/register(var/NID, var/datum/extension/interactive/ntos/os)
+/datum/ntnet/proc/register(var/NID, var/datum/component/ntos/os)
 	registered_nids["[NID]"] = os
 
 /datum/ntnet/proc/unregister(var/NID)

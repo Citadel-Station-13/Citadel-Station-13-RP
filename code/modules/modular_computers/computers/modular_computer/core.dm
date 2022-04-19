@@ -9,17 +9,17 @@
 		shutdown_computer()
 		return 0
 
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.Process()
 
 	var/static/list/beepsounds = list('sound/effects/compbeep1.ogg','sound/effects/compbeep2.ogg','sound/effects/compbeep3.ogg','sound/effects/compbeep4.ogg','sound/effects/compbeep5.ogg')
 	if(enabled && world.time > ambience_last_played + 60 SECONDS && prob(1))
 		ambience_last_played = world.time
-		playsound(src.loc, pick(beepsounds),15,1,10, is_ambiance = 1)
+		playsound(src.loc, pick(beepsounds),15,1,10)
 
 /obj/item/modular_computer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.ui_interact(user)
 
@@ -42,7 +42,7 @@
 
 /obj/item/modular_computer/Initialize()
 	START_PROCESSING(SSobj, src)
-	set_extension(src, /datum/extension/interactive/ntos/device)
+	AddComponent(src, /datum/component/ntos/device)
 
 	if(stores_pen && ispath(stored_pen))
 		stored_pen = new stored_pen(src)
@@ -80,7 +80,7 @@
 	icon_state = icon_state_unpowered
 
 	overlays.Cut()
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		overlays += os.get_screen_overlay()
 		overlays += os.get_keyboard_overlay()
@@ -122,13 +122,13 @@
 		visible_message("\The [src] shuts down.", range = 1)
 		
 	enabled = 0
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.system_shutdown()
 
 /obj/item/modular_computer/proc/enable_computer(var/mob/user = null)
 	enabled = 1
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.system_boot()
 

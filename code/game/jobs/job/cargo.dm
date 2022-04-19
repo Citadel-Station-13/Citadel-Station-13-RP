@@ -26,6 +26,10 @@
 	job_description = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
 	alt_titles = list("Supply Chief" = /datum/alt_title/supply_chief)
 
+	software_on_spawn = list(/datum/computer_file/program/supply,
+							 /datum/computer_file/program/deck_management,
+							 /datum/computer_file/program/reports)
+
 // Quartermaster Alt Titles
 /datum/alt_title/supply_chief
 	title = "Supply Chief"
@@ -51,6 +55,10 @@
 	job_description = "A Cargo Technician fills and delivers cargo orders. They are encouraged to return delivered crates to the Cargo Shuttle, \
 						because Central Command gives a partial refund."
 	alt_titles = list("Logistics Specialist" = /datum/alt_title/logi_spec)
+
+	software_on_spawn = list(/datum/computer_file/program/supply,
+							 /datum/computer_file/program/deck_management,
+							 /datum/computer_file/program/reports)
 
 // Cargo Technician Alt Titles
 /datum/alt_title/logi_spec
@@ -83,6 +91,10 @@
 		"Belt Miner" = /datum/alt_title/miner/belt
 		)
 
+	software_on_spawn = list(/datum/computer_file/program/supply,
+							 /datum/computer_file/program/deck_management,
+							 /datum/computer_file/program/reports)
+							 
 /datum/alt_title/drill_tech
 	title = "Drill Technician"
 	title_blurb = "A Drill Technician specializes in operating and maintaining the machinery needed to extract ore from veins deep below the surface."

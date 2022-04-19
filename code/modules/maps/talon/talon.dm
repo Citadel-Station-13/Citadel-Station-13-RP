@@ -464,7 +464,8 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	..()
 	hard_drive.store_file(new/datum/computer_file/program/suit_sensors/talon())
 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_helmet())
-	set_autorun("tsensormonitor")
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
+	os.set_autorun("tsensormonitor")
 
 //Generic modular consoles scattered around
 /obj/item/modular_computer/console/preset/talon

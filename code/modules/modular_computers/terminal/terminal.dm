@@ -4,7 +4,7 @@
 	var/datum/browser/panel
 	var/list/history = list()
 	var/list/history_max_length = 20
-	var/datum/extension/interactive/ntos/computer
+	var/datum/component/ntos/computer
 
 /datum/terminal/New(mob/user, datum/extension/interactive/ntos/computer)
 	..()

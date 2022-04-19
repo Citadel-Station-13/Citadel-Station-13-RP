@@ -42,6 +42,11 @@
 		"Head Scientist" = /datum/alt_title/head_scientist
 		)
 
+	software_on_spawn = list(/datum/computer_file/program/comm,
+							 /datum/computer_file/program/aidiag,
+							 /datum/computer_file/program/camera_monitor,
+							 /datum/computer_file/program/reports)
+							 
 // Research Director Alt Titles
 /datum/alt_title/research_supervisor
 	title = "Research Supervisor"

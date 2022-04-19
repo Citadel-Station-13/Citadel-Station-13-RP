@@ -20,7 +20,7 @@
 	hard_drive.store_file(new /datum/computer_file/program/newscast())
 	if(prob(50)) //harmless tax software
 		hard_drive.store_file(new /datum/computer_file/program/uplink())
-	var/datum/extension/interactive/ntos/os = get_extension(src, /datum/extension/interactive/ntos)
+	var/datum/component/ntos/os = GetComponent(src, /datum/component/ntos)
 	if(os)
 		os.set_autorun("emailc")
 
