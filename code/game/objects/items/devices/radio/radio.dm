@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	return ui_interact(user)
 
-/obj/item/radio/ui_interact(mob/user, datum/tgui/ui)
+/obj/item/radio/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Radio", name)
@@ -183,61 +183,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	data["minFrequency"] = PUBLIC_LOW_FREQ
 	data["maxFrequency"] = PUBLIC_HIGH_FREQ
 
-/obj/item/radio/proc/list_channels(var/mob/user)
-	return list_internal_channels(user)
-
-/obj/item/radio/proc/list_secure_channels(var/mob/user)
-	var/dat[0]
-
-	for(var/ch_name in channels)
-		var/chan_stat = channels[ch_name]
-		var/listening = !!(chan_stat & FREQ_LISTENING) != 0
-
-		dat.Add(list(list("chan" = ch_name, "display_name" = ch_name, "secure_channel" = 1, "sec_channel_listen" = !listening, "freq" = radiochannels[ch_name])))
-
-	return dat
-
-/obj/item/radio/proc/list_internal_channels(var/mob/user)
-	var/dat[0]
-	for(var/internal_chan in internal_channels)
-		if(has_channel_access(user, internal_chan))
-			dat.Add(list(list("chan" = internal_chan, "display_name" = get_frequency_name(text2num(internal_chan)), "freq" = text2num(internal_chan))))
-
-	return dat
-
-/obj/item/radio/proc/has_channel_access(var/mob/user, var/freq)
-	if(!user)
-		return FALSE
-
-	if(!(freq in internal_channels))
-		return FALSE
-
-	return user.has_internal_radio_channel_access(internal_channels[freq])
-
-/mob/proc/has_internal_radio_channel_access(var/list/req_one_accesses)
-	var/obj/item/card/id/I = GetIdCard()
-	return has_access(list(), req_one_accesses, I ? I.GetAccess() : list())
-
-/mob/observer/dead/has_internal_radio_channel_access(var/list/req_one_accesses)
-	return can_admin_interact()
-
-/obj/item/radio/proc/text_sec_channel(var/chan_name, var/chan_stat)
-	var/list = !!(chan_stat&FREQ_LISTENING)!=0
-	return {"
-			<B>[chan_name]</B><br>
-			Speaker: <A href='byond://?src=\ref[src];ch_name=[chan_name];listen=[!list]'>[list ? "Engaged" : "Disengaged"]</A><BR>
-			"}
-
-/obj/item/radio/proc/ToggleBroadcast()
-	broadcasting = !broadcasting && !(wires.is_cut(WIRE_RADIO_TRANSMIT) || wires.is_cut(WIRE_RADIO_SIGNAL))
-
-/obj/item/radio/proc/ToggleReception()
-	listening = !listening && !(wires.is_cut(WIRE_RADIO_RECEIVER) || wires.is_cut(WIRE_RADIO_SIGNAL))
-
-/obj/item/radio/CanUseTopic()
-	if(!on)
-		return UI_CLOSE
-	return ..()
+	return data
 
 /obj/item/radio/ui_act(action, params)
 	if(..())
@@ -294,6 +240,62 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	if(. && iscarbon(usr))
 		playsound(src, "button", 10)
+
+/obj/item/radio/proc/list_channels(var/mob/user)
+	return list_internal_channels(user)
+
+/obj/item/radio/proc/list_secure_channels(var/mob/user)
+	var/dat[0]
+
+	for(var/ch_name in channels)
+		var/chan_stat = channels[ch_name]
+		var/listening = !!(chan_stat & FREQ_LISTENING) != 0
+
+		dat.Add(list(list("chan" = ch_name, "display_name" = ch_name, "secure_channel" = 1, "sec_channel_listen" = !listening, "freq" = radiochannels[ch_name])))
+
+	return dat
+
+/obj/item/radio/proc/list_internal_channels(var/mob/user)
+	var/dat[0]
+	for(var/internal_chan in internal_channels)
+		if(has_channel_access(user, internal_chan))
+			dat.Add(list(list("chan" = internal_chan, "display_name" = get_frequency_name(text2num(internal_chan)), "freq" = text2num(internal_chan))))
+
+	return dat
+
+/obj/item/radio/proc/has_channel_access(var/mob/user, var/freq)
+	if(!user)
+		return FALSE
+
+	if(!(freq in internal_channels))
+		return FALSE
+
+	return user.has_internal_radio_channel_access(internal_channels[freq])
+
+/mob/proc/has_internal_radio_channel_access(var/list/req_one_accesses)
+	var/obj/item/card/id/I = GetIdCard()
+	return has_access(list(), req_one_accesses, I ? I.GetAccess() : list())
+
+/mob/observer/dead/has_internal_radio_channel_access(var/list/req_one_accesses)
+	return can_admin_interact()
+
+/obj/item/radio/proc/text_sec_channel(var/chan_name, var/chan_stat)
+	var/list = !!(chan_stat&FREQ_LISTENING)!=0
+	return {"
+			<B>[chan_name]</B><br>
+			Speaker: <A href='byond://?src=\ref[src];ch_name=[chan_name];listen=[!list]'>[list ? "Engaged" : "Disengaged"]</A><BR>
+			"}
+
+/obj/item/radio/proc/ToggleBroadcast()
+	broadcasting = !broadcasting && !(wires.is_cut(WIRE_RADIO_TRANSMIT) || wires.is_cut(WIRE_RADIO_SIGNAL))
+
+/obj/item/radio/proc/ToggleReception()
+	listening = !listening && !(wires.is_cut(WIRE_RADIO_RECEIVER) || wires.is_cut(WIRE_RADIO_SIGNAL))
+
+/obj/item/radio/CanUseTopic()
+	if(!on)
+		return UI_CLOSE
+	return ..()
 
 /obj/item/radio/proc/autosay(var/message, var/from, var/channel, list/zlevels = list(0)) //BS12 EDIT
 	var/datum/radio_frequency/connection = null
