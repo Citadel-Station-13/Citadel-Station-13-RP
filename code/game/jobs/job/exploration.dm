@@ -6,9 +6,6 @@
 	secondary_color = rgb(127,223,223)
 	job_access_type = /datum/job/sar
 
-	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
-							 /datum/computer_file/program/camera_monitor)
-							 
 /obj/item/card/id/explorer
 	name = "identification card"
 	desc = "A card issued to station exploration staff."
@@ -186,6 +183,9 @@
 		"Search and Rescue" = /datum/alt_title/field_medic/sar
 		)
 
+	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
+							 /datum/computer_file/program/camera_monitor)
+							 
 /datum/alt_title/expedition_medic
 	title = "Expedition Medic"
 
