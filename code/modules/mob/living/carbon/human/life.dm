@@ -1270,7 +1270,6 @@
 				healths.appearance = healths_ma
 
 		if(nutrition_icon)
-			to_chat(src, "handle regular hud updates with src [src.species.max_nutrition] vs. [species.max_nutrition]")
 			switch(nutrition/species.max_nutrition)
 				if(1 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
 				if(0.778 to 1)					nutrition_icon.icon_state = "nutrition1"
