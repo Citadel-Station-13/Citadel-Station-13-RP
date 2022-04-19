@@ -4258,9 +4258,6 @@ End Citadel Change */
 	glass_desc = "An even classier looking drink, with floating bubbles."
 
 //Following was merged infrom _vr variant of this file
-/datum/reagent/nutriment
-	nutriment_factor = 10
-
 /datum/reagent/lipozine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.nutrition = max(M.nutrition - 20 * removed, 0)
 	M.overeatduration = 0
