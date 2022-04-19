@@ -7,61 +7,64 @@
 
 	wires = WIRE_PULSE
 
-	secured = 0
+	secured = FALSE
 
-	var/timing = 0
+	drop_sound = 'sound/items/handling/component_drop.ogg'
+	pickup_sound =  'sound/items/handling/component_pickup.ogg'
+	var/timing = FALSE
 	var/time = 10
+	var/saved_time = 10
+	var/loop = FALSE
+	var/hearing_range = 3
 
 
 /obj/item/assembly/timer/activate()
 	if(!..())
-		return FALSE
-
+		return FALSE //Cooldown check
 	timing = !timing
-
-	update_icon()
-	return FALSE
+	update_appearance()
+	return TRUE
 
 /obj/item/assembly/timer/toggle_secure()
 	secured = !secured
 	if(secured)
-		START_PROCESSING(SSprocessing, src)
-	else
-		timing = 0
-		STOP_PROCESSING(SSprocessing, src)
-	update_icon()
-	return secured
-
-
-/obj/item/assembly/timer/proc/set_state(var/state)
-	if(state && !timing) //Not running, starting though
 		START_PROCESSING(SSobj, src)
-	else if(timing && !state) //Running, stopping though
+	else
+		timing = FALSE
 		STOP_PROCESSING(SSobj, src)
-	timing = state
+	update_appearance()
+	return secured
 
 /obj/item/assembly/timer/proc/timer_end()
 	if(!secured)
 		return FALSE
-	pulse(0)
-	if(!holder)
-		visible_message("[icon2html(thing = src, target = world)] *beep* *beep*", "*beep* *beep*")
+	pulse(FALSE)
+	audible_message(SPAN_INFOPLAIN("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
+	for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
+		hearing_mob.playsound_local(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
+	if(loop)
+		timing = TRUE
+	update_appearance()
 
 /obj/item/assembly/timer/process(delta_time)
-	if(timing && time-- <= 0)
-		set_state(0)
+	if(!timing)
+		return
+	time -= delta_time
+	if(time <= 0)
+		timing = FALSE
 		timer_end()
-		time = 10
+		time = saved_time
 
-/obj/item/assembly/timer/update_icon()
-	overlays.Cut()
+/obj/item/assembly/timer/update_appearance()
+	. = ..()
+	holder?.update_appearance()
+
+/obj/item/assembly/timer/update_overlays()
+	. = ..()
 	attached_overlays = list()
 	if(timing)
-		overlays += "timer_timing"
+		. += "timer_timing"
 		attached_overlays += "timer_timing"
-	if(holder)
-		holder.update_icon()
-	return
 
 /obj/item/assembly/timer/ui_interact(mob/user, datum/tgui/ui)
 	if(!secured)
@@ -74,8 +77,11 @@
 
 /obj/item/assembly/timer/ui_data(mob/user)
 	var/list/data = ..()
-	data["time"] = time * 10
+	var/time_left = time
+	data["seconds"] = round(time_left % 60)
+	data["minutes"] = round((time_left - data["seconds"]) / 60)
 	data["timing"] = timing
+	data["loop"] = loop
 	return data
 
 /obj/item/assembly/timer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -83,18 +89,19 @@
 		return TRUE
 
 	switch(action)
-		if("timing")
+		if("time")
 			timing = !timing
-			update_icon()
-			return TRUE
-		if("set_time")
-			var/real_new_time = 0
-			var/new_time = params["time"]
-			var/list/L = splittext(new_time, ":")
-			if(LAZYLEN(L))
-				for(var/i in 1 to LAZYLEN(L))
-					real_new_time += text2num(L[i]) * (60 ** (LAZYLEN(L) - i))
-			else
-				real_new_time = text2num(new_time)
-			time = clamp(real_new_time, 0, 600)
-			return TRUE
+			//if(timing && istype(holder, /obj/item/transfer_valve))
+				//log_bomber(usr, "activated a", src, "attachment on [holder]")
+			update_appearance()
+			. = TRUE
+		if("repeat")
+			loop = !loop
+			. = TRUE
+		if("input")
+			var/value = text2num(params["adjust"])
+			if(value)
+				value = round(time + value)
+				time = clamp(value, 1, 600)
+				saved_time = time
+				. = TRUE

@@ -34,10 +34,13 @@ export interface BoxProps {
   opacity?: number;
   textAlign?: string | BooleanLike;
   verticalAlign?: string | BooleanLike;
+  textTransform?: string | BooleanLike; // VOREStation Addition
+  unselectable?: string | BooleanLike; // VOREStation Addition
   inline?: BooleanLike;
   bold?: BooleanLike;
   italic?: BooleanLike;
   nowrap?: BooleanLike;
+  preserveWhitespace?: BooleanLike;
   m?: string | BooleanLike;
   mx?: string | BooleanLike;
   my?: string | BooleanLike;
@@ -55,6 +58,20 @@ export interface BoxProps {
   color?: string | BooleanLike;
   textColor?: string | BooleanLike;
   backgroundColor?: string | BooleanLike;
+  // VOREStation Addition Start
+  // Flex props
+  order?: string | BooleanLike,
+  flexDirection?: string | BooleanLike,
+  flexGrow?: string | BooleanLike,
+  flexShrink?: string | BooleanLike,
+  flexWrap?: string | BooleanLike,
+  flexFlow?: string | BooleanLike,
+  flexBasis?: string | BooleanLike,
+  flex?: string | BooleanLike,
+  alignItems?: string | BooleanLike,
+  justifyContent?: string | BooleanLike,
+  alignSelf?: string | BooleanLike,
+  // VOREStation Addition End
   fillPositionedParent?: boolean;
 }
 
@@ -158,11 +175,14 @@ const styleMapperByPropName = {
   opacity: mapRawPropTo('opacity'),
   textAlign: mapRawPropTo('text-align'),
   verticalAlign: mapRawPropTo('vertical-align'),
+  textTransform: mapRawPropTo('text-transform'), // VOREStation Addition
+  unselectable: mapRawPropTo('unselectable'), // VOREStation Addition
   // Boolean props
   inline: mapBooleanPropTo('display', 'inline-block'),
   bold: mapBooleanPropTo('font-weight', 'bold'),
   italic: mapBooleanPropTo('font-style', 'italic'),
   nowrap: mapBooleanPropTo('white-space', 'nowrap'),
+  preserveWhitespace: mapBooleanPropTo('white-space', 'pre-wrap'),
   // Margins
   m: mapDirectionalUnitPropTo('margin', halfUnit, [
     'top', 'bottom', 'left', 'right',
@@ -195,6 +215,20 @@ const styleMapperByPropName = {
   color: mapColorPropTo('color'),
   textColor: mapColorPropTo('color'),
   backgroundColor: mapColorPropTo('background-color'),
+  // VOREStation Addition Start
+  // Flex props
+  order: mapRawPropTo('order'),
+  flexDirection: mapRawPropTo('flex-direction'),
+  flexGrow: mapRawPropTo('flex-grow'),
+  flexShrink: mapRawPropTo('flex-shrink'),
+  flexWrap: mapRawPropTo('flex-wrap'),
+  flexFlow: mapRawPropTo('flex-flow'),
+  flexBasis: mapRawPropTo('flex-basis'),
+  flex: mapRawPropTo('flex'),
+  alignItems: mapRawPropTo('align-items'),
+  justifyContent: mapRawPropTo('justify-content'),
+  alignSelf: mapRawPropTo('align-self'),
+  // VOREStation Addition End
   // Utility props
   fillPositionedParent: (style, value) => {
     if (value) {

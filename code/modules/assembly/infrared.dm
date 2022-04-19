@@ -1,5 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
-
 /obj/item/assembly/infra
 	name = "infrared emitter"
 	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
@@ -23,6 +21,7 @@
 	var/dirty = FALSE
 	/// current atom listening to
 	var/atom/movable/listening
+	var/hearing_range = 3
 
 /obj/item/assembly/infra/activate()
 	. = ..()
@@ -154,7 +153,9 @@
 		return FALSE
 	pulse(0)
 	if(!holder)
-		visible_message("[icon2html(thing = src, target = world)] *beep* *beep*")
+		audible_message(SPAN_INFOPLAIN("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
+		for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
+			hearing_mob.playsound_local(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	cooldown = 2
 	addtimer(CALLBACK(src, /obj/item/assembly/proc/process_cooldown), 10)
 

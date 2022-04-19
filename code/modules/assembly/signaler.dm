@@ -12,6 +12,7 @@
 	var/code = 30
 	var/frequency = 1457
 	var/delay = 0
+	var/hearing_range = 1
 	var/airlock_wire = null
 	var/datum/wires/connected = null
 	var/datum/radio_frequency/radio_connection
@@ -117,11 +118,14 @@
 		return FALSE
 	if(is_jammed(src))
 		return FALSE
-	pulse(1)
+	pulse(TRUE)
 
-	if(!holder)
-		for(var/mob/O in hearers(1, src.loc))
-			to_chat(O,"[icon2html(thing = src, target = O)] *beep beep*")
+	audible_message(SPAN_INFOPLAIN("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
+	for(var/CHM in get_hearers_in_view(hearing_range, src))
+		if(ismob(CHM))
+			var/mob/LM = CHM
+			LM.playsound_local(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
+	return TRUE
 
 /obj/item/assembly/signaler/proc/set_frequency(new_frequency)
 	if(!frequency)

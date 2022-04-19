@@ -1,3 +1,10 @@
+#define WIRE_RECEIVE (1<<0)
+#define WIRE_PULSE (1<<1)
+#define WIRE_PULSE_SPECIAL (1<<2)
+#define WIRE_RADIO_RECEIVE (1<<3)
+#define WIRE_RADIO_PULSE (1<<4)
+#define ASSEMBLY_BEEP_VOLUME 5
+
 /obj/item/assembly
 	name = "assembly"
 	desc = "A small electronic device that should never exist."
@@ -18,11 +25,9 @@
 	var/cooldown = FALSE //To prevent spam
 	var/wires = WIRE_RECEIVE | WIRE_PULSE
 
-	var/const/WIRE_RECEIVE = 1			//Allows Pulsed(0) to call Activate()
-	var/const/WIRE_PULSE = 2				//Allows Pulse(0) to act on the holder
-	var/const/WIRE_PULSE_SPECIAL = 4		//Allows Pulse(0) to act on the holders special assembly
-	var/const/WIRE_RADIO_RECEIVE = 8		//Allows Pulsed(1) to call Activate()
-	var/const/WIRE_RADIO_PULSE = 16		//Allows Pulse(1) to send a radio message
+/obj/item/assembly/Destroy()
+	holder = null
+	return ..()
 
 /obj/item/assembly/proc/holder_movement()
 	return
