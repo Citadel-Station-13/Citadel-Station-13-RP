@@ -272,28 +272,29 @@
 					if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5))
 						to_chat(user, SPAN_NOTICE("You can't build this object on the layer..."))
 						return ..()
-					var/datum/pipe_info/pipe/R = recipe
-					to_chat(user, SPAN_NOTICE("You start building a pipe..."))
-					if(do_after(user, 2, target = A))
-						if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5))//double check to stop cheaters (and to not waste time waiting for something that can't be placed)
-							to_chat(user, SPAN_NOTICE("You can't build this object on the layer..."))
-							return ..()
-						activate()
-						var/obj/machinery/atmospherics/path = R.pipe_type
-						var/pipe_item_type = initial(path.construction_type) || /obj/item/pipe
-						var/obj/item/pipe/P = new pipe_item_type(get_turf(A), path, queued_p_dir)
+					else
+						var/datum/pipe_info/pipe/R = recipe
+						to_chat(user, SPAN_NOTICE("You start building a pipe..."))
+						if(do_after(user, 2, target = A))
+							if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5))//double check to stop cheaters (and to not waste time waiting for something that can't be placed)
+								to_chat(user, SPAN_NOTICE("You can't build this object on the layer..."))
+								return ..()
+							activate()
+							var/obj/machinery/atmospherics/path = R.pipe_type
+							var/pipe_item_type = initial(path.construction_type) || /obj/item/pipe
+							var/obj/item/pipe/P = new pipe_item_type(get_turf(A), path, queued_p_dir)
 
-						P.update()
-						P.add_fingerprint(usr)
-						if(R.paintable)
-							P.color = pipe_colors[paint_color]
-						P.setPipingLayer(queued_piping_layer)
-						if(queued_p_flipped)
-							P.do_a_flip()
-						if(mode & WRENCH_MODE)
-							do_wrench(P, user)
-						else
-							build_effect(P)
+							P.update()
+							P.add_fingerprint(usr)
+							if(R.paintable)
+								P.color = pipe_colors[paint_color]
+							P.setPipingLayer(queued_piping_layer)
+							if(queued_p_flipped)
+								P.do_a_flip()
+							if(mode & WRENCH_MODE)
+								do_wrench(P, user)
+							else
+								build_effect(P)
 
 			//Making disposals pipes
 			if(DISPOSALS_CATEGORY)
