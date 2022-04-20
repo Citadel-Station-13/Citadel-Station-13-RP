@@ -41,7 +41,7 @@
 			to_chat(user, "You toggle the power to the [src] [on ? "Off" : "On"].")
 			update_use_power(!use_power)
 			on = !on
-			update_appearance()
+			update_icon()
 		else
 			to_chat(user, SPAN_WARNING("There doesn't seem to be any power."))
 
@@ -72,7 +72,7 @@
 	unregister_radio(src, frequency)
 	. = ..()
 
-/obj/machinery/atmospherics/binary/heat_pump/update_icon_state()
+/obj/machinery/atmospherics/binary/heat_pump/update_icon()
 	. = ..()
 	if(!powered() || !on)
 		icon_state = "off"
@@ -128,7 +128,7 @@
 	return
 
 /obj/machinery/atmospherics/binary/heat_pump/process(delta_time)
-	update_appearance()
+	update_icon()
 	if((stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 

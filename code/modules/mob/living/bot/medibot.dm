@@ -1,17 +1,17 @@
-// Medbot Info
+// Medibot Info
 
-#define MEDBOT_PANIC_NONE	0
-#define MEDBOT_PANIC_LOW	15
-#define MEDBOT_PANIC_MED	35
-#define MEDBOT_PANIC_HIGH	55
-#define MEDBOT_PANIC_FUCK	70
-#define MEDBOT_PANIC_ENDING	90
-#define MEDBOT_PANIC_END	100
+#define MEDIBOT_PANIC_NONE	0
+#define MEDIBOT_PANIC_LOW	15
+#define MEDIBOT_PANIC_MED	35
+#define MEDIBOT_PANIC_HIGH	55
+#define MEDIBOT_PANIC_FUCK	70
+#define MEDIBOT_PANIC_ENDING	90
+#define MEDIBOT_PANIC_END	100
 
-#define MEDBOT_MIN_INJECTION 5
-#define MEDBOT_MAX_INJECTION 15
-#define MEDBOT_MIN_HEAL 0.1
-#define MEDBOT_MAX_HEAL 75
+#define MEDIBOT_MIN_INJECTION 5
+#define MEDIBOT_MAX_INJECTION 15
+#define MEDIBOT_MIN_HEAL 0.1
+#define MEDIBOT_MAX_HEAL 75
 
 /datum/category_item/catalogue/technology/bot/medibot
 	name = "Bot - Medibot"
@@ -55,7 +55,7 @@
 	// Are we tipped over?
 	var/is_tipped = FALSE
 	//How panicked we are about being tipped over (why would you do this?)
-	var/tipped_status = MEDBOT_PANIC_NONE
+	var/tipped_status = MEDIBOT_PANIC_NONE
 	//The name we got when we were tipped
 	var/tipper_name
 	//The last time we were tipped/righted and said a voice line, to avoid spam
@@ -316,10 +316,10 @@
 		data["beaker_max"] = reagent_glass.reagents.maximum_volume
 	data["locked"] = locked
 	data["heal_threshold"] = null
-	data["heal_threshold_max"] = MEDBOT_MAX_HEAL
-	data["injection_amount_min"] = MEDBOT_MIN_INJECTION
+	data["heal_threshold_max"] = MEDIBOT_MAX_HEAL
+	data["injection_amount_min"] = MEDIBOT_MIN_INJECTION
 	data["injection_amount"] = null
-	data["injection_amount_max"] = MEDBOT_MAX_INJECTION
+	data["injection_amount_max"] = MEDIBOT_MAX_INJECTION
 	data["use_beaker"] = null
 	data["declare_treatment"] = null
 	data["vocal"] = null
@@ -369,11 +369,11 @@
 
 	switch(action)
 		if("adj_threshold")
-			heal_threshold = clamp(text2num(params["val"]), MEDBOT_MIN_HEAL, MEDBOT_MAX_HEAL)
+			heal_threshold = clamp(text2num(params["val"]), MEDIBOT_MIN_HEAL, MEDIBOT_MAX_HEAL)
 			. = TRUE
 
 		if("adj_inject")
-			injection_amount = clamp(text2num(params["val"]), MEDBOT_MIN_INJECTION, MEDBOT_MAX_INJECTION)
+			injection_amount = clamp(text2num(params["val"]), MEDIBOT_MIN_INJECTION, MEDIBOT_MAX_INJECTION)
 			. = TRUE
 
 		if("use_beaker")
@@ -465,7 +465,7 @@
 		var/message = pick(messagevoice)
 		say(message)
 		playsound(src, messagevoice[message], 70)
-	tipped_status = MEDBOT_PANIC_NONE
+	tipped_status = MEDIBOT_PANIC_NONE
 	is_tipped = FALSE
 	transform = matrix()
 
@@ -474,19 +474,19 @@
 	tipped_status++
 	var/list/messagevoice
 	switch(tipped_status)
-		if(MEDBOT_PANIC_LOW)
+		if(MEDIBOT_PANIC_LOW)
 			messagevoice = list("I require assistance." = 'sound/voice/medibot/i_require_asst.ogg')
-		if(MEDBOT_PANIC_MED)
+		if(MEDIBOT_PANIC_MED)
 			messagevoice = list("Please put me back." = 'sound/voice/medibot/please_put_me_back.ogg')
-		if(MEDBOT_PANIC_HIGH)
+		if(MEDIBOT_PANIC_HIGH)
 			messagevoice = list("Please, I am scared!" = 'sound/voice/medibot/please_im_scared.ogg')
-		if(MEDBOT_PANIC_FUCK)
+		if(MEDIBOT_PANIC_FUCK)
 			messagevoice = list("I don't like this, I need help!" = 'sound/voice/medibot/dont_like.ogg', "This hurts, my pain is real!" = 'sound/voice/medibot/pain_is_real.ogg')
-		if(MEDBOT_PANIC_ENDING)
+		if(MEDIBOT_PANIC_ENDING)
 			messagevoice = list("Is this the end?" = 'sound/voice/medibot/is_this_the_end.ogg', "Nooo!" = 'sound/voice/medibot/nooo.ogg')
-		if(MEDBOT_PANIC_END)
+		if(MEDIBOT_PANIC_END)
 			GLOB.global_announcer.autosay("PSYCH ALERT: Crewmember [tipper_name] recorded displaying antisocial tendencies torturing bots in [get_area(src)]. Please schedule psych evaluation.", "[src]", "Medical")
-			set_right() // strong independent medbot
+			set_right() // strong independent medibot
 
 	// if(prob(tipped_status)) // Commented out pending introduction of jitter stuff from /tg/
 		// do_jitter_animation(tipped_status * 0.1)
@@ -500,19 +500,20 @@
 
 /mob/living/bot/medibot/examine(mob/user)
 	. = ..()
-	if(tipped_status == MEDBOT_PANIC_NONE)
+	if(tipped_status == MEDIBOT_PANIC_NONE)
 		return
 
 	switch(tipped_status)
-		if(MEDBOT_PANIC_NONE to MEDBOT_PANIC_LOW)
+		if(MEDIBOT_PANIC_NONE to MEDIBOT_PANIC_LOW)
 			. += "It appears to be tipped over, and is quietly waiting for someone to set it right."
-		if(MEDBOT_PANIC_LOW to MEDBOT_PANIC_MED)
+		if(MEDIBOT_PANIC_LOW to MEDIBOT_PANIC_MED)
 			. += "It is tipped over and requesting help."
-		if(MEDBOT_PANIC_MED to MEDBOT_PANIC_HIGH)
-			. += "They are tipped over and appear visibly distressed." //Now we humanize the medbot as a they, not an it. FEEL THE GUILT!
-		if(MEDBOT_PANIC_HIGH to MEDBOT_PANIC_FUCK)
+		//Now we humanize the Medibot as a they, not an it. FEEL THE GUILT!
+		if(MEDIBOT_PANIC_MED to MEDIBOT_PANIC_HIGH)
+			. += "They are tipped over and appear visibly distressed."
+		if(MEDIBOT_PANIC_HIGH to MEDIBOT_PANIC_FUCK)
 			. += SPAN_WARNING("They are tipped over and visibly panicking!")
-		if(MEDBOT_PANIC_FUCK to INFINITY)
+		if(MEDIBOT_PANIC_FUCK to INFINITY)
 			. += SPAN_BOLDWARNING("They are freaking out from being tipped over!")
 
 /mob/living/bot/medibot/confirmTarget(var/mob/living/carbon/human/H)
@@ -640,10 +641,10 @@
 				qdel(src)
 
 // Undefine these.
-#undef MEDBOT_PANIC_NONE
-#undef MEDBOT_PANIC_LOW
-#undef MEDBOT_PANIC_MED
-#undef MEDBOT_PANIC_HIGH
-#undef MEDBOT_PANIC_FUCK
-#undef MEDBOT_PANIC_ENDING
-#undef MEDBOT_PANIC_END
+#undef MEDIBOT_PANIC_NONE
+#undef MEDIBOT_PANIC_LOW
+#undef MEDIBOT_PANIC_MED
+#undef MEDIBOT_PANIC_HIGH
+#undef MEDIBOT_PANIC_FUCK
+#undef MEDIBOT_PANIC_ENDING
+#undef MEDIBOT_PANIC_END

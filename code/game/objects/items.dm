@@ -544,8 +544,8 @@ var/list/global/slot_flags_enumeration = list(
  *This proc is executed when someone clicks the on-screen UI button.
  *The default action is attack_self().
  */
-/obj/item/proc/ui_action_click(mob/user)
-	attack_self(user)
+/obj/item/proc/ui_action_click()
+	attack_self(usr)
 
 //RETURN VALUES
 //handle_shield should return a positive value to indicate that the attack is blocked and should be prevented.

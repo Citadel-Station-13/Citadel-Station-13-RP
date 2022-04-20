@@ -65,9 +65,9 @@
 		"blank" = 'icons/pda_icons/pda_blank.png',
 		"boom" = 'icons/pda_icons/pda_boom.png',
 		"bucket" = 'icons/pda_icons/pda_bucket.png',
-		//"medibot" = 'icons/pda_icons/pda_medbot.png',
-		//"floorbot" = 'icons/pda_icons/pda_floorbot.png',
-		//"cleanbot" = 'icons/pda_icons/pda_cleanbot.png',
+		"medibot" = 'icons/pda_icons/pda_medibot.png',
+		"floorbot" = 'icons/pda_icons/pda_floorbot.png',
+		"cleanbot" = 'icons/pda_icons/pda_cleanbot.png',
 		"crate" = 'icons/pda_icons/pda_crate.png',
 		"cuffs" = 'icons/pda_icons/pda_cuffs.png',
 		"eject" = 'icons/pda_icons/pda_eject.png',
@@ -84,10 +84,10 @@
 		"refresh" = 'icons/pda_icons/pda_refresh.png',
 		"scanner" = 'icons/pda_icons/pda_scanner.png',
 		"signaler" = 'icons/pda_icons/pda_signaler.png',
-		// "skills" = 'icons/pda_icons/pda_skills.png',
-		"status" = 'icons/pda_icons/pda_status.png'
-		//"dronephone" = 'icons/pda_icons/pda_dronephone.png',
-		//"emoji" = 'icons/pda_icons/pda_emoji.png'
+		"skills" = 'icons/pda_icons/pda_skills.png',
+		"status" = 'icons/pda_icons/pda_status.png',
+		"dronephone" = 'icons/pda_icons/pda_dronephone.png',
+		"emoji" = 'icons/pda_icons/pda_emoji.png'
 	)
 /*
 /datum/asset/spritesheet/simple/paper
