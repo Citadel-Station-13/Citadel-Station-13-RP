@@ -46,18 +46,21 @@
 	//blocks_emissive = NONE
 	light_power = 0.25
 	var/alarm_id = null
-	var/breach_detection = 1 // Whether to use automatic breach detection or not
+	///Whether to use automatic breach detection or not
+	var/breach_detection = TRUE
 	var/frequency = 1439
 	//var/skipprocess = 0 //Experimenting
 	var/alarm_frequency = 1437
-	var/remote_control = 0
-	var/rcon_setting = 2
+	var/remote_control = TRUE
+	var/rcon_setting = RCON_AUTO
 	var/rcon_time = 0
-	var/locked = 1
-	panel_open = FALSE // If it's been screwdrivered open.
-	var/aidisabled = 0
-	var/shorted = 0
+	var/locked = TRUE
+	///If it's been screwdrivered open.
+	panel_open = FALSE
+	var/aidisabled = FALSE
+	var/shorted = FALSE
 	circuit = /obj/item/circuitboard/airalarm
+	//armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 100, FIRE = 90, ACID = 30)
 
 	var/datum/wires/alarm/wires
 
@@ -80,8 +83,8 @@
 	var/pressure_dangerlevel = 0
 
 	var/report_danger_level = 1
-
-	var/alarms_hidden = FALSE //If the alarms from this machine are visible on consoles
+	///If the alarms from this machine are visible on consoles
+	var/alarms_hidden = FALSE
 
 /obj/machinery/alarm/nobreach
 	breach_detection = 0
