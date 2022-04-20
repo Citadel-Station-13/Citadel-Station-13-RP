@@ -47,7 +47,6 @@
 #define PIPING_LAYER_REGULAR	3
 #define PIPING_LAYER_SCRUBBER	4
 #define PIPING_LAYER_AUX		5
-#define PIPING_LAYER_DEFAULT	PIPING_LAYER_REGULAR
 
 // We offset the layer values of the different pipe types to ensure they look nice
 #define PIPES_FUEL_LAYER		(PIPES_LAYER - 0.04)
@@ -55,6 +54,16 @@
 #define PIPES_SCRUBBER_LAYER	(PIPES_LAYER - 0.02)
 #define PIPES_AUX_LAYER			(PIPES_LAYER - 0.01)
 #define PIPES_HE_LAYER			(PIPES_LAYER + 0.01)
+
+//MULTIPIPES //Ignore warning below until we update pipes
+//IF YOU EVER CHANGE THESE CHANGE SPRITES TO MATCH.
+//layer = initial(layer) + piping_layer / 1000 in atmospherics/update_icon() to determine order of pipe overlap
+#define PIPING_LAYER_MIN 1
+#define PIPING_LAYER_MAX 5
+#define PIPING_LAYER_DEFAULT PIPING_LAYER_REGULAR
+#define PIPING_LAYER_P_X 5
+#define PIPING_LAYER_P_Y 5
+#define PIPING_LAYER_LCHANGE 0.05
 
 /// Macro for easy use of boilerplate code for searching for a valid node connection.
 #define STANDARD_ATMOS_CHOOSE_NODE(node_num, direction) \

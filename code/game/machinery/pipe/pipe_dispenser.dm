@@ -50,7 +50,7 @@
 		var/list/cat = recipes[c]
 		var/list/r = list()
 		for(var/i in 1 to cat.len)
-			var/datum/pipe_recipe/info = cat[i]
+			var/datum/pipe_info/info = cat[i]
 			r += list(list("pipe_name" = info.name, "pipe_index" = i))
 		data["categories"] += list(list("cat_name" = c, "recipes" = r))
 
@@ -74,20 +74,20 @@
 				else
 					recipes = GLOB.atmos_pipe_recipes
 
-				var/datum/pipe_recipe/recipe = recipes[params["category"]][text2num(params["pipe_type"])]
+				var/datum/pipe_info/recipe = recipes[params["category"]][text2num(params["pipe_type"])]
 
 				var/obj/created_object = null
-				if(istype(recipe, /datum/pipe_recipe/pipe))
-					var/datum/pipe_recipe/pipe/R = recipe
+				if(istype(recipe, /datum/pipe_info/pipe))
+					var/datum/pipe_info/pipe/R = recipe
 					created_object = new R.construction_type(loc, recipe.pipe_type, NORTH)
 					var/obj/item/pipe/P = created_object
 					P.setPipingLayer(p_layer)
-				else if(istype(recipe, /datum/pipe_recipe/disposal))
-					var/datum/pipe_recipe/disposal/D = recipe
+				else if(istype(recipe, /datum/pipe_info/disposal))
+					var/datum/pipe_info/disposal/D = recipe
 					var/obj/structure/disposalconstruct/C = new(loc, D.pipe_type, NORTH, 0, D.subtype ? D.subtype : 0)
 					C.update()
 					created_object = C
-				else if(istype(recipe, /datum/pipe_recipe/meter))
+				else if(istype(recipe, /datum/pipe_info/meter))
 					created_object = new recipe.pipe_type(loc)
 				else
 					log_runtime(EXCEPTION("Warning: [usr] attempted to spawn pipe recipe type by params [json_encode(params)] ([recipe] [recipe?.type]), but it was not allowed by this machine ([src] [type])"))

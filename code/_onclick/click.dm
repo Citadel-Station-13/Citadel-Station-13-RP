@@ -31,6 +31,10 @@
 	if(src)
 		usr.DblClickOn(src, params)
 
+/atom/MouseWheel(delta_x,delta_y,location,control,params)
+	usr.MouseWheelOn(src, delta_x, delta_y, params)
+
+
 /*
 	Standard mob ClickOn()
 	Handles exceptions: Buildmode, middle click, modified clicks, mech actions
@@ -391,3 +395,7 @@
 		if(T)
 			T.Click(location, control, params)
 	. = 1
+
+/// MouseWheelOn
+/mob/proc/MouseWheelOn(atom/A, delta_x, delta_y, params)
+	SEND_SIGNAL(src, COMSIG_MOUSE_SCROLL_ON, A, delta_x, delta_y, params)

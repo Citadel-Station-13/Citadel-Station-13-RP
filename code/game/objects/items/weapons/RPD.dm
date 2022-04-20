@@ -23,18 +23,34 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
+	slot_flags = SLOT_BELT
 	matter = list(MAT_STEEL = 50000, MAT_GLASS = 25000)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 50)
+	///Sparks system used when changing device in the UI
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
-	var/p_dir = NORTH 			// Next pipe will be built with this dir
-	var/p_flipped = FALSE		// If the next pipe should be built flipped
-	var/paint_color = "grey"	// Pipe color index for next pipe painted/built.
+	///Direction of the device we are going to spawn, set up in the UI
+	var/p_dir = NORTH
+	///Initial direction of the smart pipe we are going to spawn, set up in the UI
+	var/p_init_dir = ALL_CARDINALS
+	///Is the device of the flipped type?
+	var/p_flipped = FALSE
+	///Color of the device we are going to spawn
+	var/paint_color = "grey"
+	///Category currently active (Atmos, disposal, transit)
 	var/category = ATMOS_CATEGORY
+	///Piping layer we are going to spawn the atmos device in
 	var/piping_layer = PIPING_LAYER_DEFAULT
 	var/obj/item/tool/wrench/tool
-	var/datum/pipe_recipe/recipe	// pipe recipie selected for display/construction
-	var/static/datum/pipe_recipe/first_atmos
-	var/static/datum/pipe_recipe/first_disposal
-	var/mode = BUILD_MODE | DESTROY_MODE | WRENCH_MODE
+	///Stores the current device to spawn
+	var/datum/pipe_info/recipe
+	///Stores the first atmos device
+	var/static/datum/pipe_info/first_atmos
+	///Stores the first disposal device
+	var/static/datum/pipe_info/first_disposal
+	///Stores the first transit device
+	//var/static/datum/pipe_info/first_transit
+	///The modes that are allowed for the RPD
+	var/mode = BUILD_MODE | DESTROY_MODE | WRENCH_MODE //| REPROGRAM_MODE
 	var/static/list/pipe_layers = list(
 		"Regular" = PIPING_LAYER_REGULAR,
 		"Supply" = PIPING_LAYER_SUPPLY,
@@ -47,7 +63,6 @@
 	. = ..()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
-	// RPDs have wrenches inside of them, so that they can wrench down spawned pipes without being used as superior wrenches themselves.
 	tool = new /obj/item/tool/wrench/cyborg(src)
 
 /obj/item/pipe_dispenser/proc/SetupPipes()
@@ -55,6 +70,8 @@
 		first_atmos = GLOB.atmos_pipe_recipes[GLOB.atmos_pipe_recipes[1]][1]
 	if(!first_disposal)
 		first_disposal = GLOB.disposal_pipe_recipes[GLOB.disposal_pipe_recipes[1]][1]
+	//if(!first_transit)
+	//	first_transit = GLOB.transit_tube_recipes[GLOB.transit_tube_recipes[1]][1]
 	if(!recipe)
 		recipe = first_atmos
 
@@ -70,6 +87,26 @@
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	return(BRUTELOSS)
 */
+
+/obj/item/pipe_dispenser/examine(mob/user)
+	. = ..()
+	. += "You can scroll your mouse wheel to change the piping layer."
+
+/obj/item/pipe_dispenser/equipped(mob/user, slot, initial)
+	. = ..()
+	if(slot == slot_r_hand || slot_l_hand)
+		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, .proc/mouse_wheeled)
+	else
+		UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
+
+/obj/item/pipe_dispenser/dropped(mob/user)
+	UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
+	return ..()
+
+///obj/item/pipe_dispenser/cyborg_unequip(mob/user)
+//	UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
+//	return ..()
+
 /obj/item/pipe_dispenser/attack_self(mob/user)
 	ui_interact(user)
 
@@ -88,15 +125,18 @@
 		ui = new(user, src, "RapidPipeDispenser", name)
 		ui.open()
 
+/obj/item/pipe_dispenser/ui_static_data(mob/user)
+	var/list/data = list("paint_colors" = GLOB.pipe_paint_colors)
+	return data
+
 /obj/item/pipe_dispenser/ui_data(mob/user)
 	var/list/data = list(
 		"category" = category,
 		"piping_layer" = piping_layer,
-		"pipe_layers" = pipe_layers,
+		//"ducting_layer" = ducting_layer,
 		"preview_rows" = recipe.get_preview(p_dir),
 		"categories" = list(),
 		"selected_color" = paint_color,
-		"paint_colors" = pipe_colors,
 		"mode" = mode
 	)
 
@@ -106,21 +146,27 @@
 			recipes = GLOB.atmos_pipe_recipes
 		if(DISPOSALS_CATEGORY)
 			recipes = GLOB.disposal_pipe_recipes
-		// if(TRANSIT_CATEGORY)
-		// 	recipes = transit_tube_recipes
+		//if(TRANSIT_CATEGORY)
+		//	recipes = GLOB.transit_tube_recipes
 	for(var/c in recipes)
 		var/list/cat = recipes[c]
 		var/list/r = list()
 		for(var/i in 1 to cat.len)
-			var/datum/pipe_recipe/info = cat[i]
-			r += list(list("pipe_name" = info.name, "pipe_index" = i, "selected" = (info == recipe)))
+			var/datum/pipe_info/info = cat[i]
+			r += list(list("pipe_name" = info.name, "pipe_index" = i, "selected" = (info == recipe), "all_layers" = info.all_layers))
 		data["categories"] += list(list("cat_name" = c, "recipes" = r))
 
+	var/list/init_directions = list("north" = FALSE, "south" = FALSE, "east" = FALSE, "west" = FALSE)
+	for(var/direction in ALL_CARDINALS)
+		if(p_init_dir & direction)
+			init_directions[dir2text(direction)] = TRUE
+	data["init_directions"] = init_directions
 	return data
 
 /obj/item/pipe_dispenser/ui_act(action, params)
-	if(..())
-		return TRUE
+	. = ..()
+	if(.)
+		return
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 		return TRUE
 	var/playeffect = TRUE
@@ -134,20 +180,20 @@
 					recipe = first_disposal
 				if(ATMOS_CATEGORY)
 					recipe = first_atmos
-				// if(TRANSIT_CATEGORY)
-				// 	recipe = first_transit
+				//if(TRANSIT_CATEGORY)
+				//	recipe = first_transit
 			p_dir = NORTH
 			playeffect = FALSE
 		if("piping_layer")
 			piping_layer = text2num(params["piping_layer"])
 			playeffect = FALSE
-		// if("ducting_layer")
-		// 	ducting_layer = text2num(params["ducting_layer"])
-		// 	playeffect = FALSE
+		//if("ducting_layer")
+		//	ducting_layer = text2num(params["ducting_layer"])
+		//	playeffect = FALSE
 		if("pipe_type")
 			var/static/list/recipes
 			if(!recipes)
-				recipes = GLOB.disposal_pipe_recipes + GLOB.atmos_pipe_recipes
+				recipes = GLOB.disposal_pipe_recipes + GLOB.atmos_pipe_recipes //+ GLOB.transit_tube_recipes
 			recipe = recipes[params["category"]][text2num(params["pipe_type"])]
 			p_dir = NORTH
 		if("setdir")
@@ -156,10 +202,17 @@
 			playeffect = FALSE
 		if("mode")
 			var/n = text2num(params["mode"])
-			if(mode & n)
-				mode &= ~n
+			mode ^= n
+		if("init_dir_setting")
+			var/target_dir = p_init_dir ^ text2dir(params["dir_flag"])
+			// Refuse to create a smart pipe that can only connect in one direction (it would act weirdly and lack an icon)
+			if (ISNOTSTUB(target_dir))
+				p_init_dir = target_dir
 			else
-				mode |= n
+				to_chat(usr, SPAN_WARNING("\The [src]'s screen flashes a warning: Can't configure a pipe to only connect in one direction."))
+				playeffect = FALSE
+		if("init_reset")
+			p_init_dir = ALL_CARDINALS
 	if(playeffect)
 		spark_system.start()
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 50, FALSE)
@@ -207,7 +260,7 @@
 				if(!can_make_pipe)
 					return ..()
 				playsound(src, 'sound/machines/click.ogg', 50, 1)
-				if(istype(recipe, /datum/pipe_recipe/meter))
+				if(istype(recipe, /datum/pipe_info/meter))
 					to_chat(user, SPAN_NOTICE("You start building a meter..."))
 					if(do_after(user, 2, target = A))
 						activate()
@@ -215,10 +268,16 @@
 						PM.setAttachLayer(queued_piping_layer)
 						if(mode & WRENCH_MODE)
 							do_wrench(PM, user)
-				else if(istype(recipe, /datum/pipe_recipe/pipe))
-					var/datum/pipe_recipe/pipe/R = recipe
+				else if(istype(recipe, /datum/pipe_info/pipe))
+					if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5))
+						to_chat(user, SPAN_NOTICE("You can't build this object on the layer..."))
+						return ..()
+					var/datum/pipe_info/pipe/R = recipe
 					to_chat(user, SPAN_NOTICE("You start building a pipe..."))
 					if(do_after(user, 2, target = A))
+						if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5))//double check to stop cheaters (and to not waste time waiting for something that can't be placed)
+							to_chat(user, SPAN_NOTICE("You can't build this object on the layer..."))
+							return ..()
 						activate()
 						var/obj/machinery/atmospherics/path = R.pipe_type
 						var/pipe_item_type = initial(path.construction_type) || /obj/item/pipe
@@ -238,7 +297,7 @@
 
 			//Making disposals pipes
 			if(DISPOSALS_CATEGORY)
-				var/datum/pipe_recipe/disposal/R = recipe
+				var/datum/pipe_info/disposal/R = recipe
 				if(!istype(R) || !can_make_pipe)
 					return ..()
 				A = get_turf(A)
@@ -287,12 +346,26 @@
 		qdel(P)
 
 /obj/item/pipe_dispenser/proc/activate()
-	playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
+	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 /obj/item/pipe_dispenser/proc/do_wrench(var/atom/target, mob/user)
 	var/resolved = target.attackby(tool,user)
 	if(!resolved && tool && target)
 		tool.afterattack(target,user,1)
+
+/obj/item/pipe_dispenser/proc/mouse_wheeled(mob/user, atom/A, delta_x, delta_y, params)
+	SIGNAL_HANDLER
+	if(user.incapacitated(INCAPACITATION_RESTRAINED))
+		return
+
+	if(delta_y < 0)
+		piping_layer = min(PIPING_LAYER_MAX, piping_layer + 1)
+	else if(delta_y > 0)
+		piping_layer = max(PIPING_LAYER_MIN, piping_layer - 1)
+	else
+		return
+	SStgui.update_uis(src)
+	to_chat(user, SPAN_NOTICE("You set the layer to [piping_layer]."))
 
 #undef ATMOS_CATEGORY
 #undef DISPOSALS_CATEGORY

@@ -1,13 +1,3 @@
-// Pipe colors
-#define	PIPE_COLOR_GREY		"#ffffff"	//yes white is grey
-#define	PIPE_COLOR_RED		"#ff0000"
-#define	PIPE_COLOR_BLUE		"#0000ff"
-#define	PIPE_COLOR_CYAN		"#00ffff"
-#define	PIPE_COLOR_GREEN	"#00ff00"
-#define	PIPE_COLOR_YELLOW	"#ffcc00"
-#define	PIPE_COLOR_BLACK	"#444444"
-#define	PIPE_COLOR_PURPLE	"#5c1ec0"
-
 //PIPES
 //Defines for pipe bitmasking
 #define NORTH_FULLPIPE (1<<0) //also just NORTH
@@ -70,18 +60,7 @@
 #define TANK_RESULTS_REACTION 1
 /// Additional information of the tank.
 #define TANK_RESULTS_MISC 2
-/*
 
-//MULTIPIPES
-//IF YOU EVER CHANGE THESE CHANGE SPRITES TO MATCH.
-//layer = initial(layer) + piping_layer / 1000 in atmospherics/update_icon() to determine order of pipe overlap
-#define PIPING_LAYER_MIN 1
-#define PIPING_LAYER_MAX 5
-#define PIPING_LAYER_DEFAULT 3
-#define PIPING_LAYER_P_X 5
-#define PIPING_LAYER_P_Y 5
-#define PIPING_LAYER_LCHANGE 0.05
-*/
 //PIPE FLAGS
 /// intended to connect with all layers, check for all instead of just one.
 #define PIPING_ALL_LAYER (1<<0)

@@ -4,66 +4,66 @@
 
 GLOBAL_LIST_INIT(atmos_pipe_recipes, list(
 	"Pipes" = list(
-		new /datum/pipe_recipe/pipe("Pipe",					/obj/machinery/atmospherics/pipe/simple),
-		new /datum/pipe_recipe/pipe("Manifold",				/obj/machinery/atmospherics/pipe/manifold),
-		new /datum/pipe_recipe/pipe("Manual Valve",			/obj/machinery/atmospherics/valve),
-		new /datum/pipe_recipe/pipe("Digital Valve",		/obj/machinery/atmospherics/valve/digital),
-		new /datum/pipe_recipe/pipe("Pipe cap",				/obj/machinery/atmospherics/pipe/cap),
-		new /datum/pipe_recipe/pipe("4-Way Manifold",		/obj/machinery/atmospherics/pipe/manifold4w),
-		new /datum/pipe_recipe/pipe("Manual T-Valve",		/obj/machinery/atmospherics/tvalve),
-		new /datum/pipe_recipe/pipe("Digital T-Valve",		/obj/machinery/atmospherics/tvalve/digital),
-		new /datum/pipe_recipe/pipe("Upward Pipe",			/obj/machinery/atmospherics/pipe/zpipe/up),
-		new /datum/pipe_recipe/pipe("Downward Pipe",		/obj/machinery/atmospherics/pipe/zpipe/down),
-		new /datum/pipe_recipe/pipe("Universal Pipe Adaptor",/obj/machinery/atmospherics/pipe/simple/visible/universal),
+		new /datum/pipe_info/pipe("Pipe", /obj/machinery/atmospherics/pipe/simple, TRUE),
+		new /datum/pipe_info/pipe("Manifold", /obj/machinery/atmospherics/pipe/manifold, TRUE),
+		new /datum/pipe_info/pipe("Manual Valve", /obj/machinery/atmospherics/valve, TRUE),
+		new /datum/pipe_info/pipe("Digital Valve", /obj/machinery/atmospherics/valve/digital, TRUE),
+		new /datum/pipe_info/pipe("Pipe cap", /obj/machinery/atmospherics/pipe/cap, TRUE),
+		new /datum/pipe_info/pipe("4-Way Manifold", /obj/machinery/atmospherics/pipe/manifold4w, TRUE),
+		new /datum/pipe_info/pipe("Manual T-Valve", /obj/machinery/atmospherics/tvalve, TRUE),
+		new /datum/pipe_info/pipe("Digital T-Valve", /obj/machinery/atmospherics/tvalve/digital, TRUE),
+		new /datum/pipe_info/pipe("Upward Pipe", /obj/machinery/atmospherics/pipe/zpipe/up, TRUE),
+		new /datum/pipe_info/pipe("Downward Pipe", /obj/machinery/atmospherics/pipe/zpipe/down, TRUE),
+		new /datum/pipe_info/pipe("Universal Pipe Adaptor",/obj/machinery/atmospherics/pipe/simple/visible/universal, FALSE),
 	),
 	"Devices" = list(
-		new /datum/pipe_recipe/pipe("Connector",			/obj/machinery/atmospherics/portables_connector),
-		new /datum/pipe_recipe/pipe("Unary Vent",			/obj/machinery/atmospherics/unary/vent_pump),
-		new /datum/pipe_recipe/pipe("Aux Vent",				/obj/machinery/atmospherics/unary/vent_pump/aux),
-		new /datum/pipe_recipe/pipe("Passive Vent",			/obj/machinery/atmospherics/pipe/vent),
-		new /datum/pipe_recipe/pipe("Injector",				/obj/machinery/atmospherics/unary/outlet_injector),
-		new /datum/pipe_recipe/pipe("Gas Pump",				/obj/machinery/atmospherics/binary/pump),
-		new /datum/pipe_recipe/pipe("Fuel Pump",			/obj/machinery/atmospherics/binary/pump/fuel),
-		new /datum/pipe_recipe/pipe("Aux Pump",				/obj/machinery/atmospherics/binary/pump/aux),
-		new /datum/pipe_recipe/pipe("Pressure Regulator",	/obj/machinery/atmospherics/binary/passive_gate),
-		new /datum/pipe_recipe/pipe("High Power Gas Pump",	/obj/machinery/atmospherics/binary/pump/high_power),
-		new /datum/pipe_recipe/pipe("Heat Pump",			/obj/machinery/atmospherics/binary/heat_pump),
-		//new /datum/pipe_recipe/pipe("Automatic Shutoff Valve",/obj/machinery/atmospherics/valve/shutoff),
-		new /datum/pipe_recipe/pipe("Scrubber",				/obj/machinery/atmospherics/unary/vent_scrubber),
-		new /datum/pipe_recipe/meter("Meter"),
-		new /datum/pipe_recipe/pipe("Gas Filter",			/obj/machinery/atmospherics/trinary/atmos_filter),
-		new /datum/pipe_recipe/pipe("Gas Mixer",			/obj/machinery/atmospherics/trinary/mixer),
-		new /datum/pipe_recipe/pipe("Gas Mixer 'T'",		/obj/machinery/atmospherics/trinary/mixer/t_mixer),
-		new /datum/pipe_recipe/pipe("Omni Gas Mixer",		/obj/machinery/atmospherics/omni/mixer),
-		new /datum/pipe_recipe/pipe("Omni Gas Filter",		/obj/machinery/atmospherics/omni/atmos_filter),
+		new /datum/pipe_info/pipe("Connector", /obj/machinery/atmospherics/portables_connector, TRUE),
+		new /datum/pipe_info/pipe("Unary Vent", /obj/machinery/atmospherics/unary/vent_pump, TRUE),
+		new /datum/pipe_info/pipe("Aux Vent", /obj/machinery/atmospherics/unary/vent_pump/aux, TRUE),
+		new /datum/pipe_info/pipe("Passive Vent", /obj/machinery/atmospherics/pipe/vent, TRUE),
+		new /datum/pipe_info/pipe("Injector", /obj/machinery/atmospherics/unary/outlet_injector, TRUE),
+		new /datum/pipe_info/pipe("Gas Pump", /obj/machinery/atmospherics/binary/pump, TRUE),
+		new /datum/pipe_info/pipe("Fuel Pump", /obj/machinery/atmospherics/binary/pump/fuel, TRUE),
+		new /datum/pipe_info/pipe("Aux Pump", /obj/machinery/atmospherics/binary/pump/aux, TRUE),
+		new /datum/pipe_info/pipe("Pressure Regulator", /obj/machinery/atmospherics/binary/passive_gate, TRUE),
+		new /datum/pipe_info/pipe("High Power Gas Pump", /obj/machinery/atmospherics/binary/pump/high_power, TRUE),
+		new /datum/pipe_info/pipe("Heat Pump", /obj/machinery/atmospherics/binary/heat_pump, TRUE),
+		//new /datum/pipe_info/pipe("Automatic Shutoff Valve",/obj/machinery/atmospherics/valve/shutoff, TRUE),
+		new /datum/pipe_info/pipe("Scrubber", /obj/machinery/atmospherics/unary/vent_scrubber, TRUE),
+		new /datum/pipe_info/pipe("Gas Filter", /obj/machinery/atmospherics/trinary/atmos_filter, TRUE),
+		new /datum/pipe_info/pipe("Gas Mixer", /obj/machinery/atmospherics/trinary/mixer, TRUE),
+		new /datum/pipe_info/pipe("Gas Mixer 'T'", /obj/machinery/atmospherics/trinary/mixer/t_mixer, TRUE),
+		new /datum/pipe_info/pipe("Omni Gas Mixer", /obj/machinery/atmospherics/omni/mixer, TRUE),
+		new /datum/pipe_info/pipe("Omni Gas Filter", /obj/machinery/atmospherics/omni/atmos_filter, TRUE),
+		new /datum/pipe_info/meter("Meter"),
 	),
 	"Heat Exchange" = list(
-		new /datum/pipe_recipe/pipe("Pipe",					/obj/machinery/atmospherics/pipe/simple/heat_exchanging),
-		new /datum/pipe_recipe/pipe("Junction",				/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction),
-		new /datum/pipe_recipe/pipe("Heat Exchanger",		/obj/machinery/atmospherics/unary/heat_exchanger),
+		new /datum/pipe_info/pipe("Pipe", /obj/machinery/atmospherics/pipe/simple/heat_exchanging, FALSE),
+		new /datum/pipe_info/pipe("Junction", /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction, FALSE),
+		new /datum/pipe_info/pipe("Heat Exchanger", /obj/machinery/atmospherics/unary/heat_exchanger, FALSE),
 	),
 	"Insulated pipes" = list(
-		new /datum/pipe_recipe/pipe("Pipe",					/obj/machinery/atmospherics/pipe/simple/insulated),
+		new /datum/pipe_info/pipe("Pipe", /obj/machinery/atmospherics/pipe/simple/insulated, TRUE),
 	)
 ))
 
 GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 	"Disposal Pipes" = list(
-		new /datum/pipe_recipe/disposal("Pipe",						DISPOSAL_PIPE_STRAIGHT, "conpipe-s", PIPE_STRAIGHT),
-		new /datum/pipe_recipe/disposal("Bent Pipe",				DISPOSAL_PIPE_CORNER, "conpipe-c"),
-		new /datum/pipe_recipe/disposal("Junction",					DISPOSAL_PIPE_JUNCTION, "conpipe-j1", PIPE_TRIN_M),
-		new /datum/pipe_recipe/disposal("Y-Junction",				DISPOSAL_PIPE_JUNCTION_Y, "conpipe-y"),
-		new /datum/pipe_recipe/disposal("Sort Junction",			DISPOSAL_PIPE_SORTER, "conpipe-j1s", PIPE_TRIN_M, DISPOSAL_SORT_NORMAL),
-		new /datum/pipe_recipe/disposal("Sort Junction (Wildcard)",	DISPOSAL_PIPE_SORTER, "conpipe-j1s", PIPE_TRIN_M, DISPOSAL_SORT_WILDCARD),
-		new /datum/pipe_recipe/disposal("Sort Junction (Untagged)",	DISPOSAL_PIPE_SORTER, "conpipe-j1s", PIPE_TRIN_M, DISPOSAL_SORT_UNTAGGED),
-		new /datum/pipe_recipe/disposal("Tagger",					DISPOSAL_PIPE_TAGGER, "pipe-tagger", PIPE_STRAIGHT),
-		new /datum/pipe_recipe/disposal("Tagger (Partial)",			DISPOSAL_PIPE_TAGGER_PARTIAL, "pipe-tagger-partial", PIPE_STRAIGHT),
-		new /datum/pipe_recipe/disposal("Trunk",					DISPOSAL_PIPE_TRUNK, "conpipe-t"),
-		new /datum/pipe_recipe/disposal("Upwards",					DISPOSAL_PIPE_UPWARD, "pipe-u"),
-		new /datum/pipe_recipe/disposal("Downwards",				DISPOSAL_PIPE_DOWNWARD, "pipe-d"),
-		new /datum/pipe_recipe/disposal("Bin",						DISPOSAL_PIPE_BIN, "disposal", PIPE_ONEDIR),
-		new /datum/pipe_recipe/disposal("Outlet",					DISPOSAL_PIPE_OUTLET, "outlet"),
-		new /datum/pipe_recipe/disposal("Chute",					DISPOSAL_PIPE_CHUTE, "intake"),
+		new /datum/pipe_info/disposal("Pipe", DISPOSAL_PIPE_STRAIGHT, "conpipe-s", PIPE_STRAIGHT),
+		new /datum/pipe_info/disposal("Bent Pipe", DISPOSAL_PIPE_CORNER, "conpipe-c"),
+		new /datum/pipe_info/disposal("Junction", DISPOSAL_PIPE_JUNCTION, "conpipe-j1", PIPE_TRIN_M),
+		new /datum/pipe_info/disposal("Y-Junction", DISPOSAL_PIPE_JUNCTION_Y, "conpipe-y"),
+		new /datum/pipe_info/disposal("Sort Junction", DISPOSAL_PIPE_SORTER, "conpipe-j1s", PIPE_TRIN_M, DISPOSAL_SORT_NORMAL),
+		new /datum/pipe_info/disposal("Sort Junction (Wildcard)",	DISPOSAL_PIPE_SORTER, "conpipe-j1s", PIPE_TRIN_M, DISPOSAL_SORT_WILDCARD),
+		new /datum/pipe_info/disposal("Sort Junction (Untagged)",	DISPOSAL_PIPE_SORTER, "conpipe-j1s", PIPE_TRIN_M, DISPOSAL_SORT_UNTAGGED),
+		new /datum/pipe_info/disposal("Tagger", DISPOSAL_PIPE_TAGGER, "pipe-tagger", PIPE_STRAIGHT),
+		new /datum/pipe_info/disposal("Tagger (Partial)", DISPOSAL_PIPE_TAGGER_PARTIAL, "pipe-tagger-partial", PIPE_STRAIGHT),
+		new /datum/pipe_info/disposal("Trunk", DISPOSAL_PIPE_TRUNK, "conpipe-t"),
+		new /datum/pipe_info/disposal("Upwards", DISPOSAL_PIPE_UPWARD, "pipe-u"),
+		new /datum/pipe_info/disposal("Downwards", DISPOSAL_PIPE_DOWNWARD, "pipe-d"),
+		new /datum/pipe_info/disposal("Bin", DISPOSAL_PIPE_BIN, "disposal", PIPE_ONEDIR),
+		new /datum/pipe_info/disposal("Outlet", DISPOSAL_PIPE_OUTLET, "outlet"),
+		new /datum/pipe_info/disposal("Chute", DISPOSAL_PIPE_CHUTE, "intake"),
 	)
 ))
 
@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 // 	every pipe type has a datum instance which describes its name, placement rules and construction method, dispensing etc.
 // The advantages are obvious, mostly in simplifying the code of the dispenser, and the ability to add new pipes without hassle.
 //
-/datum/pipe_recipe
+/datum/pipe_info
 	var/name = "Abstract Pipe (fixme)"		// Recipe name
 	var/pipe_type							// The type PATH of what actual pipe the fitting becomes, used by RCD to print the pipe.
 	var/icon = 'icons/obj/pipe-item.dmi'	// This tells the RPD which icon file to look for preview images in.
@@ -81,13 +81,14 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 	var/dirtype								// If using an RPD, this tells more about what previews to show.
 	var/subtype = 0							// Used for certain disposals pipes types.
 	var/paintable = FALSE					// If TRUE, allow the RPD to paint this pipe.
+	var/all_layers
 
 // Render an HTML link to select this pipe type. Returns text.
-/datum/pipe_recipe/proc/Render(dispenser)
+/datum/pipe_info/proc/Render(dispenser)
 	return "<A href='?src=\ref[dispenser]&[Params()]'>[name]</A><BR>"
 
 // Get preview for UIs
-/datum/pipe_recipe/proc/get_preview(selected_dir)
+/datum/pipe_info/proc/get_preview(selected_dir)
 	var/list/dirs
 
 	switch(dirtype)
@@ -147,27 +148,28 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 	return rows
 
 // Parameters for the Topic link returned by Render().  Returns text.
-/datum/pipe_recipe/proc/Params()
+/datum/pipe_info/proc/Params()
 	return ""
 
 //
 // Subtype for actual pipes
 //
-/datum/pipe_recipe/pipe
+/datum/pipe_info/pipe
 	var/obj/item/pipe/construction_type //The type PATH to the type of pipe fitting object the recipe makes.
 
-/datum/pipe_recipe/pipe/New(var/label, var/obj/machinery/atmospherics/path, var/colorable=FALSE)
+/datum/pipe_info/pipe/New(label, obj/machinery/atmospherics/path, var/use_five_layers, var/colorable=FALSE)
 	name = label
 	pipe_type = path
+	all_layers = use_five_layers
 	construction_type = initial(path.construction_type)
 	icon_state = initial(path.pipe_state)
 	dirtype = initial(construction_type.dispenser_class)
-	if (dirtype == PIPE_TRIN_M)
+	if(dirtype == PIPE_TRIN_M)
 		icon_state_m = "[icon_state]m"
 	paintable = colorable
 
 //Render an HTML link to select this pipe type
-/datum/pipe_recipe/pipe/Render(dispenser)
+/datum/pipe_info/pipe/Render(dispenser)
 	var/dat = ..(dispenser)
 	// Stationary pipe dispensers don't allow you to pre-select pipe directions.
 	// This makes it impossble to spawn bent versions of bendable pipes.
@@ -176,30 +178,30 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 		dat += "<A href='?src=\ref[dispenser]&[Params()]&dir=[NORTHEAST]'>Bent [name]</A><BR>"
 	return dat
 
-/datum/pipe_recipe/pipe/Params()
+/datum/pipe_info/pipe/Params()
 	return "makepipe=[pipe_type]"
 
 //
 // Subtype for meters
 //
-/datum/pipe_recipe/meter
+/datum/pipe_info/meter
 	dirtype = PIPE_ONEDIR
 	icon_state = "meter"
 	pipe_type = /obj/item/pipe_meter
 
-/datum/pipe_recipe/meter/New(label)
+/datum/pipe_info/meter/New(label)
 	name = label
 
-/datum/pipe_recipe/meter/Params()
+/datum/pipe_info/meter/Params()
 	return "makemeter=1"
 
 //
 // Subtype for disposal pipes
 //
-/datum/pipe_recipe/disposal
+/datum/pipe_info/disposal
 	icon = 'icons/obj/pipes/disposal.dmi'
 
-/datum/pipe_recipe/disposal/New(var/label, var/path, var/state, dt=PIPE_DIRECTIONAL, var/state_mirror=0, var/sort=0)
+/datum/pipe_info/disposal/New(var/label, var/path, var/state, dt=PIPE_DIRECTIONAL, var/state_mirror=0, var/sort=0)
 	name = label
 	icon_state = state
 	pipe_type = path
@@ -209,7 +211,7 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 		icon_state_m = state_mirror
 
 // Render an HTML link to select this pipe type
-/datum/pipe_recipe/disposal/Render(dispenser)
+/datum/pipe_info/disposal/Render(dispenser)
 	var/dat = ..(dispenser)
 
 	// Blah blah, add corner pipes because dispensers have no directional information. Look up for more info.
@@ -217,7 +219,7 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 		dat += "<A href='?src=\ref[dispenser]&[Params()]&dir=[NORTHEAST]'>Bent [name]</A><BR>"
 	return dat
 
-/datum/pipe_recipe/disposal/Params()
+/datum/pipe_info/disposal/Params()
 	var/param = "dmake=[pipe_type]"
 	if (subtype)
 		param += "&sort=[subtype]"
