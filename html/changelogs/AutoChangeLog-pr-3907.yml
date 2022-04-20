@@ -1,4 +1,0 @@
-author: "Shadowtail117"
-delete-after: True
-changes: 
-  - bugfix: "Potentially fixed an error where you would spawn with the \"overfed\" nutrition icon despite having normal nutrition amounts."
