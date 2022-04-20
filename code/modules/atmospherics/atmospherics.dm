@@ -19,11 +19,11 @@ Pipelines + Other Objects -> Pipe network
 	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
 
 	///The color of the pipe
-	var/pipe_color = COLOR_VERY_LIGHT_GRAY
+	var/pipe_color
 	///The maximum amount of power the machine can use to do work, affects how powerful the machine is, in Watts
 	var/power_rating
 	///The flags of the pipe/component (PIPING_ALL_LAYER | PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY | PIPING_CARDINAL_AUTONORMALIZE)
-	var/pipe_flags = NONE
+	var/pipe_flags = PIPING_DEFAULT_LAYER_ONLY
 	///What pipe layer can this connect to.
 	var/connect_types = CONNECT_TYPE_REGULAR
 	///What layer the pipe is in (from 1 to 5, default 3)

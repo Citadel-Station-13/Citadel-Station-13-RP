@@ -78,7 +78,7 @@
 		get_asset_datum(/datum/asset/spritesheet/pipes),
 	)
 
-/obj/item/weapon/pipe_dispenser/ui_state(mob/user)
+/obj/item/pipe_dispenser/ui_state(mob/user)
 	return GLOB.inventory_state
 
 /obj/item/pipe_dispenser/ui_interact(mob/user, datum/tgui/ui)
