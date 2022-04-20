@@ -78,7 +78,7 @@
 
 //Merges all the gas from another mixture into this one.  Respects group_multipliers and adjusts temperature correctly.
 //Does not modify giver in any way.
-/datum/gas_mixture/proc/merge(const/datum/gas_mixture/giver)
+/datum/gas_mixture/proc/merge(datum/gas_mixture/giver)
 	if(!giver)
 		return
 
@@ -509,3 +509,14 @@
 /datum/gas_mixture/proc/get_mass()
 	for(var/g in gas)
 		. += gas[g] * GLOB.meta_gas_molar_mass[g] * group_multiplier
+
+/**
+ * get the equivalent of a single tile of this gas mixture
+ *
+ * TODO: remove group_multiplier, change to tiles_represented
+ */
+/datum/gas_mixture/proc/get_single_tile()
+	RETURN_TYPE(/datum/gas_mixture)
+	var/datum/gas_mixture/GM = new(CELL_VOLUME)
+	GM.copy_from(src)
+	GM.group_multiplier = 1

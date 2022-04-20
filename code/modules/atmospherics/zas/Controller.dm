@@ -156,7 +156,7 @@ Class Procs:
 		if(A.zone == B.zone) return
 
 
-	var/connection/c = new /connection(A,B)
+	var/datum/connection/c = new /connection(A,B)
 
 	A.connections.place(c, a_to_b)
 	B.connections.place(c, b_to_a)

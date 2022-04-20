@@ -30,10 +30,10 @@ Class Vars:
 
 Class Procs:
 
-	add_connection(connection/c)
+	add_connection(datum/connection/c)
 		Adds a connection to this edge. Usually increments the coefficient and adds a turf to connecting_turfs.
 
-	remove_connection(connection/c)
+	remove_connection(datum/connection/c)
 		Removes a connection from this edge. This works even if c is not in the edge, so be careful.
 		If the coefficient reaches zero as a result, the edge is erased.
 
@@ -58,23 +58,22 @@ Class Procs:
 */
 
 
-/connection_edge/var/zone/A
-
-/connection_edge/var/list/connecting_turfs = list()
-/connection_edge/var/direct = 0
-/connection_edge/var/sleeping = 1
-
-/connection_edge/var/coefficient = 0
+/connection_edge
+	var/zone/A
+	var/list/connecting_turfs = list()
+	var/direct = 0
+	var/sleeping = 1
+	var/coefficient = 0
 
 /connection_edge/New()
 	CRASH("Cannot make connection edge without specifications.")
 
-/connection_edge/proc/add_connection(connection/c)
+/connection_edge/proc/add_connection(datum/connection/c)
 	coefficient++
 	if(c.direct()) direct++
 	//to_chat(world, "Connection added: [type] Coefficient: [coefficient]")
 
-/connection_edge/proc/remove_connection(connection/c)
+/connection_edge/proc/remove_connection(datum/connection/c)
 	//to_chat(world, "Connection removed: [type] Coefficient: [coefficient-1]")
 	coefficient--
 	if(coefficient <= 0)
@@ -126,7 +125,8 @@ Class Procs:
 				spawn
 					if(M) M.GotoAirflowDest(differential/10)
 
-/connection_edge/zone/var/zone/B
+/connection_edge/zone
+	var/zone/B
 
 /connection_edge/zone/New(zone/A, zone/B)
 
@@ -137,11 +137,11 @@ Class Procs:
 	//id = edge_id(A,B)
 	//to_chat(world, "New edge between [A] and [B]")
 
-/connection_edge/zone/add_connection(connection/c)
+/connection_edge/zone/add_connection(datum/connection/c)
 	. = ..()
 	connecting_turfs.Add(c.A)
 
-/connection_edge/zone/remove_connection(connection/c)
+/connection_edge/zone/remove_connection(datum/connection/c)
 	connecting_turfs.Remove(c.A)
 	. = ..()
 
@@ -197,8 +197,9 @@ Class Procs:
 	if(A == from) return B
 	else return A
 
-/connection_edge/unsimulated/var/turf/B
-/connection_edge/unsimulated/var/datum/gas_mixture/air
+/connection_edge/unsimulated
+	var/turf/B
+	var/datum/gas_mixture/air
 
 /connection_edge/unsimulated/New(zone/A, turf/B)
 	src.A = A
@@ -208,12 +209,12 @@ Class Procs:
 	//id = 52*A.id
 	//to_chat(world, "New edge from [A] to [B].")
 
-/connection_edge/unsimulated/add_connection(connection/c)
+/connection_edge/unsimulated/add_connection(datum/connection/c)
 	. = ..()
 	connecting_turfs.Add(c.B)
 	air.group_multiplier = coefficient
 
-/connection_edge/unsimulated/remove_connection(connection/c)
+/connection_edge/unsimulated/remove_connection(datum/connection/c)
 	connecting_turfs.Remove(c.B)
 	air.group_multiplier = coefficient
 	. = ..()
