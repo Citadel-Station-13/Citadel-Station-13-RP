@@ -1,7 +1,5 @@
 /turf
 	var/needs_air_update = FALSE
-	var/datum/gas_mixture/air
-
 /turf/simulated
 	var/zone/zone
 	var/open_directions
@@ -50,9 +48,8 @@
 */
 
 /turf/simulated/proc/can_safely_remove_from_zone()
-
-
-	if(!zone) return 1
+	if(!zone)
+		return TRUE
 
 	var/check_dirs = get_zone_neighbours(src)
 	var/unconnected_dirs = check_dirs
@@ -89,7 +86,6 @@
 				. |= dir
 
 /turf/simulated/update_air_properties()
-
 	if(zone && zone.invalid)
 		c_copy_air()
 		zone = null //Easier than iterating through the list at the zone.
@@ -224,19 +220,7 @@
 		air_master.connect(src, T)
 
 /turf/proc/post_update_air_properties()
-	if(connections) connections.update_all()
-
-
-
-/turf/remove_air(amount as num)
-	var/datum/gas_mixture/GM = new
-	GM.copy_from_turf(src)
-	return GM.remove(amount)
-
-
-/turf/simulated/remove_air(amount as num)
-	var/datum/gas_mixture/my_air = return_air()
-	return my_air.remove(amount)
+	connections?.update_all()
 
 /turf/proc/make_air()
 	air = new /datum/gas_mixture
@@ -245,6 +229,7 @@
 	air.volume = CELL_VOLUME
 
 /turf/simulated/proc/c_copy_air()
-	if(!air) air = new/datum/gas_mixture
+	if(!air)
+		air = new /datum/gas_mixture
 	air.copy_from(zone.air)
 	air.group_multiplier = 1

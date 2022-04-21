@@ -1,4 +1,7 @@
 // everything relating to turfs for atmospherics - environmental
+/turf
+	/// our air mixture, if any - this refers **just** to ours, not our zone.
+	var/datum/gas_mixture/air
 
 /**
  * returns a mutable gas mixture, or null
@@ -8,6 +11,7 @@
 /atom/proc/return_air()
 	RETURN_TYPE(/datum/gas_mixture)
 	return loc?.return_air()
+	#warn refactor uses
 
 /area/return_air()
 	return null
