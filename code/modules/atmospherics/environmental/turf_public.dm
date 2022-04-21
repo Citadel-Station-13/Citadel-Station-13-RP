@@ -134,7 +134,7 @@
 	CRASH("How was /area reached?")
 
 /turf/get_cell_moles(gasid)
-	return copy_cell_volume().gases[gasid]
+	return copy_cell_volume().gas[gasid]
 
 /**
  * gets full gas list of all gases in a single turf's worth of air
@@ -146,4 +146,4 @@
 	CRASH("How was /area reached?")
 
 /turf/get_cell_gases()
-	return copy_cell_volume().gases.Copy()
+	return copy_cell_volume().gas.Copy()
