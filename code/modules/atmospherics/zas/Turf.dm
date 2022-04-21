@@ -1,7 +1,7 @@
 /turf
 	var/needs_air_update = FALSE
 /turf/simulated
-	var/zone/zone
+	var/datum/zas_zone/zone
 	var/open_directions
 	/// Do we show gas overlays?
 	var/allow_gas_overlays = TRUE
@@ -97,7 +97,7 @@
 		//dbg(blocked)
 		#endif
 		if(zone)
-			var/zone/z = zone
+			var/datum/zas_zone/z = zone
 
 			if(can_safely_remove_from_zone()) //Helps normal airlocks avoid rebuilding zones all the time
 				z.remove(src)
@@ -205,7 +205,7 @@
 			postponed.Add(unsim)
 
 	if(!air_master.has_valid_zone(src)) //Still no zone, make a new one.
-		var/zone/newzone = new/zone()
+		var/datum/zas_zone/newzone = new/zone()
 		newzone.add(src)
 
 	#ifdef ZASDBG

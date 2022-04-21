@@ -8,14 +8,15 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 //#define FIREDBG
 
-/turf/var/obj/fire/fire = null
+/turf
+	var/obj/fire/fire
 
 //Some legacy definitions so fires can be started.
-atom/proc/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/atom/proc/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	return null
 
 
-turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
+/turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 
 /turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh)
@@ -36,7 +37,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		create_fire(exposed_temperature)
 	return igniting
 
-/zone/proc/process_fire()
+/datum/zas_zone/proc/process_fire()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, consumption_rate)
 	var/datum/gas_mixture/burn_gas = air.remove_ratio(consumption_rate, fire_tiles.len)
 
@@ -63,7 +64,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	if(!fire_tiles.len)
 		air_master.active_fire_zones.Remove(src)
 
-/zone/proc/remove_liquidfuel(var/used_liquid_fuel, var/remove_fire=0)
+/datum/zas_zone/proc/remove_liquidfuel(var/used_liquid_fuel, var/remove_fire=0)
 	if(!fuel_objs.len)
 		return
 
@@ -148,6 +149,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		L.FireBurn(firelevel, air_contents.temperature, air_contents.return_pressure())  //Burn the mobs!
 
 	loc.fire_act(air_contents, air_contents.temperature, air_contents.volume)
+
 	for(var/atom/A in loc)
 		A.fire_act(air_contents, air_contents.temperature, air_contents.volume)
 
@@ -184,6 +186,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 /obj/fire/Initialize(mapload, fl)
 	. = ..()
+
 	if(!istype(loc, /turf))
 		return INITIALIZE_HINT_QDEL
 
@@ -203,8 +206,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 /obj/fire/Destroy()
 	RemoveFire()
-
-	..()
+	return ..()
 
 /obj/fire/proc/RemoveFire()
 	var/turf/T = loc
@@ -212,16 +214,15 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		set_light(0)
 
 		T.fire = null
-		loc = null
 	air_master.active_hotspots.Remove(src)
 
+/turf/simulated
+	var/fire_protection = 0 //Protects newly extinguished tiles from being overrun again.
 
-/turf/simulated/var/fire_protection = 0 //Protects newly extinguished tiles from being overrun again.
 /turf/proc/apply_fire_protection()
+
 /turf/simulated/apply_fire_protection()
 	fire_protection = world.time
-
-
 
 /mob/living/proc/FireBurn(var/firelevel, var/last_temperature, var/pressure)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)

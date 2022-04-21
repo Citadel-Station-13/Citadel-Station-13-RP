@@ -11,6 +11,7 @@
 	//Volume of this mix.
 	var/volume = CELL_VOLUME
 	//Size of the group this gas_mixture is representing.  1 for singletons.
+	// ATMOS_TODO : this needs to be removed for auxmos
 	var/group_multiplier = 1
 
 	//List of active tile overlays for this gas_mixture.  Updated by check_tile_graphic()
@@ -392,11 +393,9 @@
 
 	return compare(other)
 
-
 //A wrapper around share_ratio for spacing gas at the same rate as if it were going into a large airless room.
 /datum/gas_mixture/proc/share_space(datum/gas_mixture/unsim_air)
 	return share_ratio(unsim_air, unsim_air.group_multiplier, max(1, max(group_multiplier + 3, 1) + unsim_air.group_multiplier), one_way = 1)
-
 
 //Equalizes a list of gas mixtures.  Used for pipe networks.
 /proc/equalize_gases(list/datum/gas_mixture/gases)

@@ -15,7 +15,7 @@ Class Procs:
 		Returns the connection (if any) in this direction.
 		Preferable to accessing the connection directly because it checks validity.
 
-	place(datum/connection/c, d)
+	place(datum/zas_connection/c, d)
 		Called by air_master.connect(). Sets the connection in the specified direction to c.
 
 	update_all()
@@ -25,7 +25,7 @@ Class Procs:
 		Called when the turf is changed with ChangeTurf(). Erases all existing connections.
 
 Macros:
-	check(datum/connection/c)
+	check(datum/zas_connection/c)
 		Checks for connection validity. It's possible to have a reference to a connection that has been erased.
 
 
@@ -38,13 +38,13 @@ Macros:
 	var/tmp/datum/connection_manager/connections
 
 /datum/connection_manager
-	var/datum/connection/N
-	var/datum/connection/S
-	var/datum/connection/E
-	var/datum/connection/W
+	var/datum/zas_connection/N
+	var/datum/zas_connection/S
+	var/datum/zas_connection/E
+	var/datum/zas_connection/W
 #ifdef MULTIZAS
-	var/datum/connection/U
-	var/datum/connection/D
+	var/datum/zas_connection/U
+	var/datum/zas_connection/D
 #endif
 
 /datum/connection_manager/proc/get(d)
@@ -71,7 +71,7 @@ Macros:
 			else return null
 		#endif
 
-/datum/connection_manager/proc/place(datum/connection/c, d)
+/datum/connection_manager/proc/place(datum/zas_connection/c, d)
 	switch(d)
 		if(NORTH) N = c
 		if(SOUTH) S = c

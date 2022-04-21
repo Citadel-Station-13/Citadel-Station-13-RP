@@ -15,7 +15,7 @@
 
 	var/active_on_main_station = 0
 	var/inactive_on_main_station = 0
-	for(var/zone/zone in air_master.zones)
+	for(var/datum/zas_zone/zone in air_master.zones)
 		var/turf/simulated/turf = locate() in zone.contents
 		if(turf && (turf.z in GLOB.using_map.station_levels))
 			if(zone.needs_update)

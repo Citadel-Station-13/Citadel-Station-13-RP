@@ -24,7 +24,7 @@ Class Procs:
 		Adds the turf to the update list. When updated, update_air_properties() will be called.
 		When stuff changes that might affect airflow, call this. It's basically the only thing you need.
 
-	add_zone(zone/Z) and remove_zone(zone/Z)
+	add_zone(datum/zas_zone/Z) and remove_zone(datum/zas_zone/Z)
 		Adds zones to the zones list. Does not mark them for update.
 
 	air_blocked(turf/A, turf/B)
@@ -36,7 +36,7 @@ Class Procs:
 		Checks the presence and validity of T's zone.
 		May be called on unsimulated turfs, returning 0.
 
-	merge(zone/A, zone/B)
+	merge(datum/zas_zone/A, datum/zas_zone/B)
 		Called when zones have a direct connection and equivalent pressure and temperature.
 		Merges the zones to create a single zone.
 
@@ -44,23 +44,23 @@ Class Procs:
 		Called by turf/update_air_properties(). The first argument must be simulated.
 		Creates a connection between A and B.
 
-	mark_zone_update(zone/Z)
+	mark_zone_update(datum/zas_zone/Z)
 		Adds zone to the update list. Unlike mark_for_update(), this one is called automatically whenever
 		air is returned from a simulated turf.
 
-	equivalent_pressure(zone/A, zone/B)
+	equivalent_pressure(datum/zas_zone/A, datum/zas_zone/B)
 		Currently identical to A.air.compare(B.air). Returns 1 when directly connected zones are ready to be merged.
 
-	get_edge(zone/A, zone/B)
-	get_edge(zone/A, turf/B)
+	get_edge(datum/zas_zone/A, datum/zas_zone/B)
+	get_edge(datum/zas_zone/A, turf/B)
 		Gets a valid connection_edge between A and B, creating a new one if necessary.
 
 	has_same_air(turf/A, turf/B)
 		Used to determine if an unsimulated edge represents a specific turf.
-		Simulated edges use connection_edge/contains_zone() for the same purpose.
+		Simulated edges use datum/zas_edge/contains_zone() for the same purpose.
 		Returns 1 if A has identical gases and temperature to B.
 
-	remove_edge(connection_edge/edge)
+	remove_edge(datum/zas_edge/edge)
 		Called when an edge is erased. Removes it from processing.
 
 */
@@ -84,12 +84,12 @@ Class Procs:
 	var/current_cycle = 0
 	var/next_id = 1 //Used to keep track of zone UIDs.
 
-/datum/controller/subsystem/air/proc/add_zone(zone/z)
+/datum/controller/subsystem/air/proc/add_zone(datum/zas_zone/z)
 	zones.Add(z)
 	z.name = "Zone [next_id++]"
 	mark_zone_update(z)
 
-/datum/controller/subsystem/air/proc/remove_zone(zone/z)
+/datum/controller/subsystem/air/proc/remove_zone(datum/zas_zone/z)
 	zones.Remove(z)
 	zones_to_update.Remove(z)
 
@@ -108,7 +108,7 @@ Class Procs:
 	#endif
 	return istype(T) && T.zone && !T.zone.invalid
 
-/datum/controller/subsystem/air/proc/merge(zone/A, zone/B)
+/datum/controller/subsystem/air/proc/merge(datum/zas_zone/A, datum/zas_zone/B)
 	#ifdef ZASDBG
 	ASSERT(istype(A))
 	ASSERT(istype(B))
@@ -156,7 +156,7 @@ Class Procs:
 		if(A.zone == B.zone) return
 
 
-	var/datum/connection/c = new(A,B)
+	var/datum/zas_connection/c = new(A,B)
 
 	A.connections.place(c, a_to_b)
 	B.connections.place(c, b_to_a)
@@ -174,7 +174,7 @@ Class Procs:
 	#endif
 	T.needs_air_update = 1
 
-/datum/controller/subsystem/air/proc/mark_zone_update(zone/Z)
+/datum/controller/subsystem/air/proc/mark_zone_update(datum/zas_zone/Z)
 	#ifdef ZASDBG
 	ASSERT(istype(Z))
 	#endif
@@ -182,7 +182,7 @@ Class Procs:
 	zones_to_update.Add(Z)
 	Z.needs_update = 1
 
-/datum/controller/subsystem/air/proc/mark_edge_sleeping(connection_edge/E)
+/datum/controller/subsystem/air/proc/mark_edge_sleeping(datum/zas_edge/E)
 	#ifdef ZASDBG
 	ASSERT(istype(E))
 	#endif
@@ -190,7 +190,7 @@ Class Procs:
 	active_edges.Remove(E)
 	E.sleeping = 1
 
-/datum/controller/subsystem/air/proc/mark_edge_active(connection_edge/E)
+/datum/controller/subsystem/air/proc/mark_edge_active(datum/zas_edge/E)
 	#ifdef ZASDBG
 	ASSERT(istype(E))
 	#endif
@@ -198,24 +198,24 @@ Class Procs:
 	active_edges.Add(E)
 	E.sleeping = 0
 
-/datum/controller/subsystem/air/proc/equivalent_pressure(zone/A, zone/B)
+/datum/controller/subsystem/air/proc/equivalent_pressure(datum/zas_zone/A, datum/zas_zone/B)
 	return A.air.compare(B.air)
 
-/datum/controller/subsystem/air/proc/get_edge(zone/A, zone/B)
+/datum/controller/subsystem/air/proc/get_edge(datum/zas_zone/A, datum/zas_zone/B)
 
 	if(istype(B))
-		for(var/connection_edge/zone/edge in A.edges)
+		for(var/datum/zas_edge/zone/edge in A.edges)
 			if(edge.contains_zone(B))
 				return edge
-		var/connection_edge/edge = new/connection_edge/zone(A,B)
+		var/datum/zas_edge/edge = new/datum/zas_edge/zone(A,B)
 		edges.Add(edge)
 		edge.recheck()
 		return edge
 	else
-		for(var/connection_edge/unsimulated/edge in A.edges)
+		for(var/datum/zas_edge/unsimulated/edge in A.edges)
 			if(has_same_air(edge.B,B))
 				return edge
-		var/connection_edge/edge = new/connection_edge/unsimulated(A,B)
+		var/datum/zas_edge/edge = new/datum/zas_edge/unsimulated(A,B)
 		edges.Add(edge)
 		edge.recheck()
 		return edge
@@ -231,6 +231,6 @@ Class Procs:
 	return 1
 */
 
-/datum/controller/subsystem/air/proc/remove_edge(connection_edge/E)
+/datum/controller/subsystem/air/proc/remove_edge(datum/zas_edge/E)
 	edges.Remove(E)
 	if(!E.sleeping) active_edges.Remove(E)

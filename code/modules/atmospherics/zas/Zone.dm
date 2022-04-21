@@ -19,7 +19,7 @@ Class Procs:
 		Removes a turf, sets its zone to null and erases any gas graphics.
 		Invalidates the zone if it has no more tiles.
 
-	c_merge(zone/into)
+	c_merge(datum/zas_zone/into)
 		Invalidates this zone and adds all its former contents to into.
 
 	c_invalidate()
@@ -51,13 +51,13 @@ Class Procs:
 
 	var/list/turf_graphics = list()
 
-/zone/New()
+/datum/zas_zone/New()
 	air_master.add_zone(src)
 	air.temperature = TCMB
 	air.group_multiplier = 1
 	air.volume = CELL_VOLUME
 
-/zone/proc/add(turf/simulated/T)
+/datum/zas_zone/proc/add(turf/simulated/T)
 #ifdef ZASDBG
 	ASSERT(!invalid)
 	ASSERT(istype(T))
@@ -78,7 +78,7 @@ Class Procs:
 	if(T.allow_gas_overlays && !T.outdoors)
 		T.vis_contents += turf_graphics
 
-/zone/proc/remove(turf/simulated/T)
+/datum/zas_zone/proc/remove(turf/simulated/T)
 #ifdef ZASDBG
 	ASSERT(!invalid)
 	ASSERT(istype(T))
@@ -97,7 +97,7 @@ Class Procs:
 	else
 		c_invalidate()
 
-/zone/proc/c_merge(zone/into)
+/datum/zas_zone/proc/c_merge(datum/zas_zone/into)
 #ifdef ZASDBG
 	ASSERT(!invalid)
 	ASSERT(istype(into))
@@ -113,13 +113,13 @@ Class Procs:
 		#endif
 
 	//rebuild the old zone's edges so that they will be possessed by the new zone
-	for(var/connection_edge/E in edges)
+	for(var/datum/zas_edge/E in edges)
 		if(E.contains_zone(into))
 			continue //don't need to rebuild this edge
 		for(var/turf/T in E.connecting_turfs)
 			air_master.mark_for_update(T)
 
-/zone/proc/c_invalidate()
+/datum/zas_zone/proc/c_invalidate()
 	invalid = 1
 	air_master.remove_zone(src)
 	#ifdef ZASDBG
@@ -127,7 +127,7 @@ Class Procs:
 		T.dbg(invalid_zone)
 	#endif
 
-/zone/proc/rebuild()
+/datum/zas_zone/proc/rebuild()
 	if(invalid) return //Short circuit for explosions where rebuild is called many times over.
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
@@ -136,7 +136,7 @@ Class Procs:
 		T.needs_air_update = 0 //Reset the marker so that it will be added to the list.
 		air_master.mark_for_update(T)
 
-/zone/proc/add_tile_air(datum/gas_mixture/tile_air)
+/datum/zas_zone/proc/add_tile_air(datum/gas_mixture/tile_air)
 	//air.volume += CELL_VOLUME
 	air.group_multiplier = 1
 	air.multiply(contents.len)
@@ -144,7 +144,7 @@ Class Procs:
 	air.divide(contents.len+1)
 	air.group_multiplier = contents.len+1
 
-/zone/proc/tick()
+/datum/zas_zone/proc/tick()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	if(air.temperature >= PHORON_FLASHPOINT && !(src in air_master.active_fire_zones) && air.check_combustability() && contents.len)
 		var/turf/T = pick(contents)
@@ -161,11 +161,11 @@ Class Procs:
 				T.vis_contents += added
 		turf_graphics = returned
 
-	for(var/connection_edge/E in edges)
+	for(var/datum/zas_edge/E in edges)
 		if(E.sleeping)
 			E.recheck()
 
-/zone/proc/dbg_data(mob/M)
+/datum/zas_zone/proc/dbg_data(mob/M)
 	to_chat(M, name)
 	for(var/g in air.gas)
 		to_chat(M, "[GLOB.meta_gas_names[g]]: [air.gas[g]]")
@@ -178,8 +178,8 @@ Class Procs:
 	var/zone_edges = 0
 	var/space_edges = 0
 	var/space_coefficient = 0
-	for(var/connection_edge/E in edges)
-		if(E.type == /connection_edge/zone) zone_edges++
+	for(var/datum/zas_edge/E in edges)
+		if(E.type == /datum/zas_edge/zone) zone_edges++
 		else
 			space_edges++
 			space_coefficient += E.coefficient
