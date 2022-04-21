@@ -42,27 +42,30 @@
 #define CONNECT_TYPE_AUX		32	// Aux pipes for 'other' things (airlocks, etc)
 
 // We are based on the three named layers of supply, regular, and scrubber.
-#define PIPING_LAYER_SUPPLY		1
-#define PIPING_LAYER_REGULAR	2
-#define PIPING_LAYER_SCRUBBER	3
-#define PIPING_LAYER_FUEL		4
+#define PIPING_LAYER_FUEL		1
+#define PIPING_LAYER_SUPPLY		2
+#define PIPING_LAYER_REGULAR	3
+#define PIPING_LAYER_SCRUBBER	4
 #define PIPING_LAYER_AUX		5
-#define PIPING_LAYER_DEFAULT	PIPING_LAYER_REGULAR
 
 // We offset the layer values of the different pipe types to ensure they look nice
-#define PIPES_SCRUBBER_LAYER	(PIPES_LAYER - 0.05)
-#define PIPES_AUX_LAYER			(PIPES_LAYER - 0.04)
-#define PIPES_FUEL_LAYER		(PIPES_LAYER - 0.03)
-#define PIPES_SUPPLY_LAYER		(PIPES_LAYER - 0.01)
+#define PIPES_FUEL_LAYER		(PIPES_LAYER - 0.04)
+#define PIPES_SUPPLY_LAYER		(PIPES_LAYER - 0.03)
+#define PIPES_SCRUBBER_LAYER	(PIPES_LAYER - 0.02)
+#define PIPES_AUX_LAYER			(PIPES_LAYER - 0.01)
 #define PIPES_HE_LAYER			(PIPES_LAYER + 0.01)
 
-// Pipe flags
-#define PIPING_ALL_LAYER 1					// Intended to connect with all layers, check for all instead of just one.
-#define PIPING_ONE_PER_TURF 2 				// Can only be built if nothing else with this flag is on the tile already.
-#define PIPING_DEFAULT_LAYER_ONLY 4			// Can only exist at PIPING_LAYER_DEFAULT
-#define PIPING_CARDINAL_AUTONORMALIZE 8		// North/South East/West doesn't matter, auto normalize on build.
+//MULTIPIPES //Ignore warning below until we update pipes
+//IF YOU EVER CHANGE THESE CHANGE SPRITES TO MATCH.
+//layer = initial(layer) + piping_layer / 1000 in atmospherics/update_icon() to determine order of pipe overlap
+#define PIPING_LAYER_MIN 1
+#define PIPING_LAYER_MAX 5
+#define PIPING_LAYER_DEFAULT PIPING_LAYER_REGULAR
+#define PIPING_LAYER_P_X 5
+#define PIPING_LAYER_P_Y 5
+#define PIPING_LAYER_LCHANGE 0.05
 
-// Macro for easy use of boilerplate code for searching for a valid node connection.
+/// Macro for easy use of boilerplate code for searching for a valid node connection.
 #define STANDARD_ATMOS_CHOOSE_NODE(node_num, direction) \
 	for(var/obj/machinery/atmospherics/target in get_step(src, direction)) { \
 		if(can_be_node(target, node_num)) { \

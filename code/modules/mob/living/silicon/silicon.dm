@@ -427,3 +427,6 @@
 
 /mob/living/silicon/has_vision()
 	return 0 //NOT REAL EYES
+
+/mob/living/silicon/get_bullet_impact_effect_type(var/def_zone)
+	return BULLET_IMPACT_METAL

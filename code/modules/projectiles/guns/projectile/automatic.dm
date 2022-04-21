@@ -5,7 +5,8 @@
 	load_method = SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a9mm
 	projectile_type = /obj/item/projectile/bullet/pistol
-
+	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 //Burst is the number of bullets fired; Fire delay is the time you have to wait to shoot the gun again, Move delay is the same but for moving after shooting. .
 //Burst accuracy is the accuracy of each bullet fired in the burst. Dispersion is how much the bullets will 'spread' away from where you aimed.
 
@@ -81,6 +82,8 @@
 	magazine_type = /obj/item/ammo_magazine/m545
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
+	mag_insert_sound = 'sound/weapons/guns/interaction/ltrifle_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/ltrifle_magout.ogg'
 	heavy = TRUE
 	one_handed_penalty = 30
 
@@ -141,6 +144,8 @@
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	mag_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
 	heavy = TRUE
 	one_handed_penalty = 60
 
@@ -210,6 +215,8 @@
 	magazine_type = /obj/item/ammo_magazine/m545saw
 	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
+	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
 	can_special_reload = FALSE
 	heavy = TRUE
 	one_handed_penalty = 90
@@ -292,7 +299,9 @@
 	projectile_type = /obj/item/projectile/bullet/shotgun
 	heavy = TRUE
 	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
-
+	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
+	
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
 		list(mode_name="3-round bursts", burst=3, move_delay=6, burst_accuracy = list(60,40,30,25,15), dispersion = list(0.0, 0.6, 0.6))

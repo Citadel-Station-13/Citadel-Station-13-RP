@@ -192,13 +192,13 @@
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
 			if(src.density)
-				visible_message("<span class='alium'>\The [user] begins forcing \the [src] open!</span>")
+				visible_message("<span class='green'>\The [user] begins forcing \the [src] open!</span>")
 				if(do_after(user, 15 SECONDS,src))
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					visible_message("<span class='danger'>\The [user] forces \the [src] open!</span>")
 					force_open(1)
 			else
-				visible_message("<span class='alium'>\The [user] begins forcing \the [src] closed!</span>")
+				visible_message("<span class='green'>\The [user] begins forcing \the [src] closed!</span>")
 				if(do_after(user, 5 SECONDS,src))
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					visible_message("<span class='danger'>\The [user] forces \the [src] closed!</span>")

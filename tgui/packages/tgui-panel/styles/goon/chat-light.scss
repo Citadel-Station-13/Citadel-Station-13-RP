@@ -395,7 +395,7 @@ em {
   font-weight: bold;
 }
 
-.say, .emote, .infoplain {
+.say, .emote, .infoplain, .oocplain, .warningplain {
 }
 
 .deadsay {
@@ -426,15 +426,15 @@ em {
 }
 
 .comradio {
-  color: #193A7A;
+  color: #948f02;
 }
 
 .secradio {
-  color: #A30000;
+  color: #a30000;
 }
 
 .medradio {
-  color: #008160;
+  color: #337296;
 }
 
 .engradio {
@@ -442,10 +442,10 @@ em {
 }
 
 .suppradio {
-  color: #5F4519;
+  color: #a8732b;
 }
 
-.srvradio {
+.servradio {
   color: #6eaa2c;
 }
 
@@ -455,6 +455,10 @@ em {
 
 .syndradio {
   color: #6d3f40;
+}
+
+.gangradio {
+  color: #ac2ea1;
 }
 
 .centcomradio {
@@ -471,6 +475,14 @@ em {
 
 .blueteamradio {
   color: #0000ff;
+}
+
+.greenteamradio {
+  color: #00ff00;
+}
+
+.yellowteamradio {
+  color: #d1ba22;
 }
 
 .yell {
@@ -1033,19 +1045,19 @@ h1.alert, h2.alert {
 }
 
 @keyframes velvet {
-	0% {
+  0% {
     color: #400020;
   }
-	40% {
+  40% {
     color: #FF0000;
   }
-	50% {
+  50% {
     color: #FF8888;
   }
-	60% {
+  60% {
     color: #FF0000;
   }
-	100% {
+  100% {
     color: #400020;
   }
 }
@@ -1073,6 +1085,10 @@ h1.alert, h2.alert {
 .icon {
   height: 1em;
   width: auto;
+}
+
+.bigicon {
+  font-size: 2.5em;
 }
 
 .memo {
@@ -1202,13 +1218,13 @@ h1.alert, h2.alert {
 
 .daemon {
   color: #5E339E;
-	letter-spacing:-1pt;
-	word-spacing:0pt;
-	font-family: "Courier New", Courier, monospace;
+  letter-spacing:-1pt;
+  word-spacing:0pt;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .bug {
-	color: #9e9e39;
+  color: #9e9e39;
 }
 
 .vox {
@@ -1222,7 +1238,7 @@ h1.alert, h2.alert {
 .squeakish {
   color: #f54298;
   font-family: Arial
- }
+}
 
 .rough {
   font-family: "Trebuchet MS", cursive, sans-serif;

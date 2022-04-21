@@ -43,7 +43,6 @@
 		/mob/living/carbon/human/proc/resp_biomorph,
 		/mob/living/carbon/human/proc/biothermic_adapt,
 		/mob/living/carbon/human/proc/atmos_biomorph,
-		/mob/living/carbon/human/proc/vocal_biomorph,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -678,28 +677,6 @@
 				infect_virus2(target, virus2)
 				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
 		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
-
-
-/mob/living/carbon/human/proc/vocal_biomorph()
-	set name = "Vocalization Biomorph"
-	set desc = "Changes our speech pattern."
-	set category = "Chimera"
-
-	var/vocal_biomorph = input(src, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
-	if(!vocal_biomorph)
-		return
-	to_chat(src, "You begin modifying your internal structure!")
-	if(do_after(src,15 SECONDS))
-		switch(vocal_biomorph)
-			if("common")
-				return
-			if("unathi")
-				species.autohiss_basic_map = list("s" = list("ss", "sss", "ssss"))
-				species.autohiss_extra_map = list("x" = list("ks", "kss", "ksss"))
-				species.autohiss_exempt = "Sinta'unathi"
-			if("tajaran")
-				species.autohiss_basic_map = list("r" = list("rr", "rrr", "rrrr"))
-				species.autohiss_exempt = "Siik"
 
 /////////////////////
 /////SPIDER RACE/////

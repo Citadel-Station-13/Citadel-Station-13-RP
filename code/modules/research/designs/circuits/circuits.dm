@@ -657,7 +657,7 @@ CIRCUITS BELOW
 	sort_string = "OAABA"
 
 /datum/design/circuit/pointdefense_control
-	name = "point defense control"
+	name = "point defense control" //Once upon a time, this was called a deluxe microwave.
 	id = "pointdefense_control"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/pointdefense_control
