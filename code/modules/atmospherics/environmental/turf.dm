@@ -11,7 +11,6 @@
 /atom/proc/return_air()
 	RETURN_TYPE(/datum/gas_mixture)
 	return loc?.return_air()
-	#warn refactor uses
 
 /area/return_air()
 	CRASH("How was /area reached?")

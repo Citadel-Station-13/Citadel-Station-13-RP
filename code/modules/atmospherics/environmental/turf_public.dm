@@ -108,6 +108,7 @@
 	CRASH("How was /area reached?")
 
 /turf/copy_cell_volume()
+	RETURN_TYPE(/datum/gas_mixture)
 	return return_air().get_single_tile()
 
 /**
@@ -117,7 +118,32 @@
 	return loc?.return_temperature()
 
 /area/return_tempreature()
-	CRASH("How was /area reacheD?")
+	CRASH("How was /area reached?")
 
 /turf/return_temperature()
 	return return_air().temperature
+
+/**
+ * gets moles of gas in a single turf's worth of air
+ * inefficient; use copy_cell_volume() if you're getting more than 2-3 gases!
+ */
+/atom/proc/get_cell_moles(gasid)
+	return loc?.get_cell_moles(gasid)
+
+/area/get_cell_moles(gasid)
+	CRASH("How was /area reached?")
+
+/turf/get_cell_moles(gasid)
+	return copy_cell_volume().gases[gasid]
+
+/**
+ * gets full gas list of all gases in a single turf's worth of air
+ */
+/atom/proc/get_cell_gases()
+	return loc?.get_cell_gases()
+
+/area/get_cell_gases()
+	CRASH("How was /area reached?")
+
+/turf/get_cell_gases()
+	return copy_cell_volume().gases.Copy()
