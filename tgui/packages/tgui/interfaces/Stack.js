@@ -26,13 +26,13 @@ export const Stack = (props, context) => {
 
 const RecipeList = (props, context) => {
   const { act, data } = useBackend(context);
-  
+
   const {
     recipes,
   } = props;
 
   let sortedKeys = Object.keys(recipes).sort();
-  
+
   // Shunt all categories to the top.
   // We're not using this for now, keeping it here in case someone really hates color coding later.
   // let nonCategories = sortedKeys.filter(item => recipes[item].ref !== undefined);
@@ -41,7 +41,7 @@ const RecipeList = (props, context) => {
   // categories.unshift("--DIVIDER--");
 
   // let newSortedKeys = nonCategories.concat(categories);
-  
+
   return sortedKeys.map(title => {
     // if (title === "--DIVIDER--") {
     //   return (
@@ -77,7 +77,7 @@ const buildMultiplier = (recipe, amount) => {
 
 const Multipliers = (props, context) => {
   const { act, data } = useBackend(context);
-  
+
   const {
     recipe,
     maxMultiplier,
@@ -88,7 +88,7 @@ const Multipliers = (props, context) => {
   let multipliers = [5, 10, 25];
 
   let finalResult = [];
-  
+
   for (let multiplier of multipliers) {
     if (maxM >= multiplier) {
       finalResult.push((

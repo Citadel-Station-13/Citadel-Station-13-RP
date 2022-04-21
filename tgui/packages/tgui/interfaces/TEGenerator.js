@@ -55,7 +55,7 @@ const TEGCirculator = (props, context) => {
     name,
     values,
   } = props;
-  
+
   const {
     dir,
     output,

@@ -43,12 +43,28 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 
 /mob/living/silicon/ai/default_can_use_topic(src_object)
 	. = shared_ui_interaction(src_object)
-	if(. < UI_INTERACTIVE)
+	if(. != UI_INTERACTIVE)
 		return
 
-	// The AI can interact with anything it can see nearby, or with cameras while wireless control is enabled.
-	if(!control_disabled)
+	// Prevents the AI from using Topic on admin levels (by for example viewing through the court/thunderdome cameras)
+	// unless it's on the same level as the object it's interacting with.
+	var/turf/T = get_turf(src_object)
+	if(!T || !(z == T.z || (T.z in GLOB.using_map.player_levels)))
+		return UI_CLOSE
+
+	// If an object is in view then we can interact with it
+	if(src_object in view(client.view, src))
 		return UI_INTERACTIVE
+
+	// If we're installed in a chassi, rather than transfered to an inteliCard or other container, then check if we have camera view
+	if(is_in_chassis())
+		//stop AIs from leaving windows open and using then after they lose vision
+		if(cameranet && !cameranet.checkTurfVis(get_turf(src_object)))
+			return UI_CLOSE
+		return UI_INTERACTIVE
+	else if(get_dist(src_object, src) <= client.view)	// View does not return what one would expect while installed in an inteliCard
+		return UI_INTERACTIVE
+
 	return UI_CLOSE
 
 /mob/living/simple_animal/default_can_use_topic(src_object)
