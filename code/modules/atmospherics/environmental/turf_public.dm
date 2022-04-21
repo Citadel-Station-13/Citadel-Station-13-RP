@@ -1,6 +1,13 @@
 // when writing atmos machinery, prefer using these procs
 // this lets us somewhat separate API from implemenetation of the environmental module.
 // a lot of things are on atom instead, since stuff like breathing should work with inside, say, bluespace bodybags.
+// these procs should *all* be agnostic to whether we're using tile or zone atmos
+// 		* this means, that, things like return_air() will never be in this, because return_air() must return a mutable mixture
+//      	and doing that is dangerous other than for machines that check volume, etc.
+//			instead, we will have things like copy_cell_volume(), remove_cell_volume(), which are immutable but are agnostic
+//      * procs in here are by that mentality, babyproofed.
+//		* by no means are things like return_air() banned - they're just unpreferred because then changes to environmental
+//			will affect how machines work.
 
 /**
  * merges all gases from giver into us
