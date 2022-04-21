@@ -182,8 +182,8 @@
 		return ..()
 
 	// Is there enough air to flap against?
-	var/datum/gas_mixture/environment = landing.return_air()
-	if(!environment || environment.return_pressure() < (ONE_ATMOSPHERE * 0.75))
+	var/pressure = landing.return_pressure()
+	if(pressure (ONE_ATMOSPHERE * 0.75))
 		if(!silent)
 			to_chat(H, SPAN_WARNING("You spread your wings to slow your fall, but the air is too thin!"))
 		return ..()

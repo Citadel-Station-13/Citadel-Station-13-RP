@@ -86,7 +86,7 @@
 	return remove_volume(CELL_VOLUME * multiplier)
 
 /**
- * return pressure
+ * return pressure of air
  */
 /atom/proc/return_pressure()
 	return loc?.return_pressure()
@@ -96,3 +96,28 @@
 
 /turf/return_pressure()
 	return return_air().return_pressure()
+
+/**
+ * gets a **copy** (read: changing this won't affect turf) of a cell volume's worth of air
+ */
+/atom/proc/copy_cell_volume()
+	RETURN_TYPE(/datum/gas_mixture)
+	return loc?.copy_cell_volume()
+
+/area/copy_cell_volume()
+	CRASH("How was /area reached?")
+
+/turf/copy_cell_volume()
+	return return_air().get_single_tile()
+
+/**
+ * return temperature of air
+ */
+/atom/proc/return_temperature()
+	return loc?.return_temperature()
+
+/area/return_tempreature()
+	CRASH("How was /area reacheD?")
+
+/turf/return_temperature()
+	return return_air().temperature
