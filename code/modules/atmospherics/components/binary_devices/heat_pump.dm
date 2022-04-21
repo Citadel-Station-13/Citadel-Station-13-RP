@@ -25,14 +25,13 @@
 	var/frequency = 0
 	var/id = null
 	var/datum/radio_frequency/radio_connection
-	*/
-	var/target_temp = T20C
-	var/lowest_temp = TCMB
-	///Need to bottle it somewhere, the sun's core has 15 million kelvin
-	var/max_temp = 99999999
+    */  
+    var/target_temp = T20C
+    var/lowest_temp = TCMB
+    var/max_temp = 99999999//Need to bottle it somewhere, the sun's core has 15 million kelvin
 
-	var/on = FALSE
-	var/efficiency = 0
+    var/on = 0
+    var/efficiency = 0
 
 /obj/machinery/atmospherics/binary/heat_pump/CtrlClick(mob/user)
 	if(Adjacent(user))
@@ -96,25 +95,25 @@
 	update_underlays()
 
 /obj/machinery/atmospherics/binary/heat_pump/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/pen))
-		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
-		new_name = trim(new_name)
-		name = (new_name? new_name : name)
-		return
-	if (!W.is_wrench())
-		return ..()
-	if (!(stat & NOPOWER) && use_power)
-		to_chat(user, SPAN_WARNING("You cannot unwrench this [src], turn it off first."))
-		return TRUE
-	add_fingerprint(user)
-	playsound(src, W.usesound, 50, 1)
-	to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src]..."))
-	if (do_after(user, 40 * W.toolspeed))
-		user.visible_message( \
-			SPAN_NOTICE("\The [user] unfastens \the [src]."), \
-			SPAN_NOTICE("You have unfastened \the [src]."), \
-			"You hear ratchet.")
-		deconstruct()
+    if(istype(W, /obj/item/pen))
+        var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
+        new_name = trim(new_name)
+        name = (new_name? new_name : name)
+        return
+    if (!W.is_wrench())
+        return ..()
+    if (!(stat & NOPOWER) && use_power)
+        to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
+        return 1
+    add_fingerprint(user)
+    playsound(src, W.usesound, 50, 1)
+    to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+    if (do_after(user, 40 * W.toolspeed))
+        user.visible_message( \
+            "<span class='notice'>\The [user] unfastens \the [src].</span>", \
+            "<span class='notice'>You have unfastened \the [src].</span>", \
+            "You hear ratchet.")
+        deconstruct()
 
 /obj/machinery/atmospherics/binary/heat_pump/attack_hand(user as mob)
 	if(..())
@@ -139,30 +138,22 @@
 	if( (air1.temperature < 1) ||  (air2.temperature < 1))
 		return
 
-	if((air2.temperature <= target_temp+0.1) && (air2.temperature >= target_temp-0.1))
-		return //We are close enough to our target temp that its not worth the hassle
+    //Now we are at the point where we need to actively pump
+    efficiency = get_thermal_efficency()
+    var/energy_transfered = 0
+    CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
 
-	if(check_passive_opportunity())
-		handle_passive_flow()
-		return //No need to pump while there is passive flow occuring
-
-	//Now we are at the point where we need to actively pump
-	efficiency = get_thermal_efficency()
-	var/energy_transfered = 0
-	CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
-
-	energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
-
-	var/power_draw = abs(energy_transfered/performance_factor)
-	//Only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
-	air2.add_thermal_energy(-air1.add_thermal_energy(-energy_transfered*efficiency))
-	if(power_draw >= 0)
-		last_power_draw = power_draw
-		use_power(power_draw)
-		if(network1)
-			network1.update = TRUE
-		if(network2)
-			network2.update = TRUE
+    energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
+    
+    var/power_draw = abs(energy_transfered/performance_factor)
+    air2.add_thermal_energy(-air1.add_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
+    if (power_draw >= 0)
+        last_power_draw = power_draw
+        use_power(power_draw)
+        if(network1)
+            network1.update = 1
+        if(network2)
+            network2.update = 1
 
 /obj/machinery/atmospherics/binary/heat_pump/proc/get_thermal_efficency()
 	if((target_temp < air2.temperature))
@@ -183,13 +174,12 @@
 		air2.temperature = new_temperature
 
 /obj/machinery/atmospherics/binary/heat_pump/proc/check_passive_opportunity()
-	//Little offsets to prevent just constant passive flow for minor temperature differences
-	if((target_temp < air2.temperature) && (air1.temperature < air2.temperature - 5))
-		return TRUE
-	if((target_temp > air2.temperature) && (air1.temperature > air2.temperature + 5))
-		return TRUE
-	return FALSE
-
+    if((target_temp < air2.temperature) && (air1.temperature < air2.temperature - 5))//Little offsets to prevent just constant passive flow for minor temperature differences
+        return TRUE
+    if((target_temp > air2.temperature) && (air1.temperature > air2.temperature + 5))
+        return TRUE
+    return FALSE
+    
 /obj/machinery/atmospherics/binary/heat_pump/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -197,14 +187,15 @@
 		ui.open()
 
 /obj/machinery/atmospherics/binary/heat_pump/ui_data(mob/user)
-	var/list/data = list()
-	data["target_temp"] = target_temp
-	data["current_temp"] = air2.temperature
-	data["sink_temp"] = air1.temperature
-	data["on"] = on
-	data["lowest_temp"] = lowest_temp
-	data["highest_temp"] = max_temp
-	data["efficency"] = efficiency
+    var/list/data = list()
+    data["target_temp"] = target_temp
+    data["current_temp"] = air2.temperature
+    data["sink_temp"] = air1.temperature
+    data["on"] = on
+    data["lowest_temp"] = lowest_temp
+    data["highest_temp"] = max_temp
+    data["efficency"] = efficiency
+
 
 	return data
 
