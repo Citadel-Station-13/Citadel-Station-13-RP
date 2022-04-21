@@ -118,7 +118,7 @@ Contains helper procs for airflow, handled in /connection_group.
 	for(var/mob/M in hearers(src))
 		M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='danger'>You hear a loud slam!</span>",2)
 	playsound(src, "smash.ogg", 25, 1, -1)
-	return ...()
+	return ..()
 
 /obj/item/airflow_hit(atom/A)
 	airflow_speed = 0

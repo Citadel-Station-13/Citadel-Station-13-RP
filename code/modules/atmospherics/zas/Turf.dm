@@ -205,7 +205,7 @@
 			postponed.Add(unsim)
 
 	if(!air_master.has_valid_zone(src)) //Still no zone, make a new one.
-		var/datum/zas_zone/newzone = new/zone()
+		var/datum/zas_zone/newzone = new
 		newzone.add(src)
 
 	#ifdef ZASDBG
