@@ -1,6 +1,8 @@
 /obj/machinery/r_n_d/protolathe
 	name = "Protolathe"
+	icon = 'icons/obj/machines/fabricators/protolathe.dmi'
 	icon_state = "protolathe"
+	base_icon_state = "protolathe"
 	flags = OPENCONTAINER
 	circuit = /obj/item/circuitboard/protolathe
 	use_power = USE_POWER_IDLE
@@ -21,23 +23,17 @@
 
 /obj/machinery/r_n_d/protolathe/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
-	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/r_n_d/protolathe/process(delta_time)
 	..()
 	if(stat)
-		update_icon()
+		update_appearance()
 		return
 	if(queue.len == 0)
 		busy = 0
-		update_icon()
+		update_appearance()
 		return
 	var/datum/design/D = queue[1]
 	if(canBuild(D))
@@ -49,12 +45,12 @@
 			removeFromQueue(1)
 			if(linked_console)
 				linked_console.updateUsrDialog()
-		update_icon()
+		update_appearance()
 	else
 		if(busy)
-			visible_message("<span class='notice'>\icon [src] flashes: insufficient materials: [getLackingMaterials(D)].</span>")
+			visible_message(SPAN_NOTICE("\icon [src] flashes: insufficient materials: [getLackingMaterials(D)]."))
 			busy = 0
-			update_icon()
+			update_appearance()
 
 /obj/machinery/r_n_d/protolathe/proc/TotalMaterials() //returns the total of all the stored materials. Makes code neater.
 	var/t = 0
@@ -81,19 +77,24 @@
 		eject_materials(f, -1)
 	..()
 
-/obj/machinery/r_n_d/protolathe/update_icon()
+/obj/machinery/r_n_d/protolathe/update_overlays()
+	. = ..()
+	cut_overlays()
 	if(panel_open)
-		icon_state = "protolathe_t"
+		add_overlay("[base_icon_state]-panel")
+
+/obj/machinery/r_n_d/protolathe/update_icon_state()
+	. = ..()
+	if(stat & NOPOWER)
+		icon_state = "[base_icon_state]-off"
 	else if(busy)
-		icon_state = "protolathe_n"
+		icon_state = "[base_icon_state]-active"
 	else
-		if(icon_state == "protolathe_n")
-			flick("protolathe_u", src) // If lid WAS closed, show opening animation
-		icon_state = "protolathe"
+		icon_state = base_icon_state
 
 /obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
-		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return 1
 	if(default_deconstruction_screwdriver(user, O))
 		if(linked_console)

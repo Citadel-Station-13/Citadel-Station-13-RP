@@ -1,9 +1,9 @@
-/obj/machinery/robotic_fabricator
+/obj/machinery/robotic_fabricator //Does this stille even need to exist?
 	name = "robotic fabricator"
-	icon = 'icons/obj/robotics.dmi'
-	icon_state = "fab-idle"
-	density = 1
-	anchored = 1
+	icon = 'icons/obj/machines/fabricators/robotics.dmi'
+	icon_state = "mechfab"
+	density = TRUE
+	anchored = TRUE
 	var/metal_amount = 0
 	var/operating = 0
 	var/obj/item/robot_parts/being_built = null
@@ -16,7 +16,7 @@
 		var/obj/item/stack/M = O
 		if(metal_amount < 150000.0)
 			var/count = 0
-			overlays += "fab-load-metal"
+			add_overlay("[base_icon_state]-load-metal")
 			spawn(15)
 				if(M)
 					if(!M.get_amount())
@@ -27,7 +27,7 @@
 						count++
 
 					to_chat(user, "You insert [count] metal sheet\s into the fabricator.")
-					overlays -= "fab-load-metal"
+					cut_overlay("[base_icon_state]-load-metal")
 					updateDialog()
 		else
 			to_chat(user, "The robot part maker is full. Please remove metal from the robot part maker in order to insert more.")
@@ -120,7 +120,7 @@ Please wait until completion...</TT><BR>
 
 					being_built = new building(src)
 
-					overlays += "fab-active"
+					add_overlay("[base_icon_state]-active")
 					updateUsrDialog()
 
 					spawn (build_time)
@@ -129,7 +129,7 @@ Please wait until completion...</TT><BR>
 							being_built = null
 						update_use_power(USE_POWER_IDLE)
 						operating = 0
-						overlays -= "fab-active"
+						cut_overlay("[base_icon_state]-active")
 		return
 
 	for (var/mob/M in viewers(1, src))

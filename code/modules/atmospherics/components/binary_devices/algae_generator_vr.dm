@@ -122,7 +122,7 @@
 		icon_state = "algae-full"
 	else
 		icon_state = "algae-on"
-	return 1
+	return TRUE
 
 /obj/machinery/atmospherics/binary/algae_farm/attackby(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
@@ -135,13 +135,13 @@
 	if(try_load_materials(user, W))
 		return
 	else
-		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
+		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]!"))
 		return
 
 /obj/machinery/atmospherics/binary/algae_farm/attack_hand(mob/user)
 	if(..())
-		return 1
-	nano_ui_interact(user)
+		return TRUE
+	ui_interact(user)
 
 /obj/machinery/atmospherics/binary/algae_farm/RefreshParts()
 	..()
@@ -166,8 +166,15 @@
 
 	moles_per_tick = initial(moles_per_tick) + (manip_rating**2 - 1)
 
-/obj/machinery/atmospherics/binary/algae_farm/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/nanoui/master_ui = null, var/datum/topic_state/state = default_state)
-	var/data[0]
+/obj/machinery/atmospherics/binary/algae_farm/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AlgaeFarm", name)
+		ui.open()
+
+/obj/machinery/atmospherics/binary/algae_farm/ui_data(mob/user)
+	var/list/data = list()
+
 	data["panelOpen"] = panel_open
 
 	var/materials_ui[0]
@@ -199,44 +206,30 @@
 			"percent" = air2.total_moles ? round((air2.gas[output_gas] / air2.total_moles) * 100) : 0,
 			"moles" = round(air2.gas[output_gas], 0.01))
 
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "algae_farm_vr.tmpl", "Algae Farm Control Panel", 500, 600)
-		ui.set_initial_data(data)
-		ui.set_auto_update(TRUE)
-		ui.open()
+	return data
 
-/obj/machinery/atmospherics/binary/algae_farm/Topic(href, href_list)
+/obj/machinery/atmospherics/binary/algae_farm/ui_act(action, params)
 	if(..())
-		return 1
-	usr.set_machine(src)
-	add_fingerprint(usr)
+		return TRUE
 
-	// Queue management can be done even while busy
-	if(href_list["activate"])
-		update_use_power(USE_POWER_ACTIVE)
-		update_icon()
-		updateUsrDialog()
-		return
+	switch(action)
+		if("toggle")
+			if(use_power == USE_POWER_IDLE)
+				update_use_power(USE_POWER_ACTIVE)
+			else
+				update_use_power(USE_POWER_IDLE)
+			update_icon()
+			. = TRUE
 
-	if(href_list["deactivate"])
-		update_use_power(USE_POWER_IDLE)
-		update_icon()
-		updateUsrDialog()
-		return
-
-	if(href_list["ejectMaterial"])
-		var/matName = href_list["ejectMaterial"]
-		if(!(matName in stored_material))
-			return
-		eject_materials(matName, 0)
-		updateUsrDialog()
-		return
+		if("ejectMaterial")
+			var/matName = params["mat"]
+			if(!(matName in stored_material))
+				return
+			eject_materials(matName, 0)
+			. = TRUE
 
 
 // TODO - These should be replaced with materials datum.
-
 // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 /obj/machinery/atmospherics/binary/algae_farm/proc/eject_materials(var/material_name, var/amount)
 	var/recursive = amount == -1 ? 1 : 0

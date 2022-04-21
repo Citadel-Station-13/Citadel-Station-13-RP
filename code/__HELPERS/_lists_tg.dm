@@ -426,3 +426,11 @@ proc/dd_sortedObjectList(list/incoming)
 		result += pick(shifts)
 
 	return result
+
+///sort any value in a list
+/proc/sort_list(list/list_to_sort, cmp=/proc/cmp_text_asc)
+	return sortTim(list_to_sort.Copy(), cmp)
+
+///uses sort_list() but uses the var's name specifically. This should probably be using mergeAtom() instead
+/proc/sort_names(list/list_to_sort, order=1)
+	return sortTim(list_to_sort.Copy(), order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)

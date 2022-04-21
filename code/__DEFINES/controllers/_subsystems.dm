@@ -108,6 +108,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_SKYBOX			30
 #define INIT_ORDER_MAPPING			25
 #define INIT_ORDER_DECALS			20
+#define INIT_ORDER_PLANTS			19
 #define INIT_ORDER_ALARMS			18
 #define INIT_ORDER_ATOMS			15
 #define INIT_ORDER_MACHINES			10
@@ -128,13 +129,14 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_AI				-22
 #define INIT_ORDER_OPENSPACE		-50
 #define INIT_ORDER_PERSISTENCE		-95
-#define INIT_ORDER_ICON_SMOOTHING		-99
+#define INIT_ORDER_ICON_SMOOTHING	-99
 #define INIT_ORDER_CHAT				-100 //Should be last to ensure chat remains smooth during init.
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
 #define FIRE_PRIORITY_SHUTTLES		5
 #define FIRE_PRIORITY_NIGHTSHIFT	6
+#define FIRE_PRIORITY_PLANTS		5
 #define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
 #define FIRE_PRIORITY_AI			10
@@ -142,6 +144,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_VIS			10
 #define FIRE_PRIORITY_SERVER_MAINT	10
 #define FIRE_PRIORITY_GARBAGE		15
+#define FIRE_PRIORITY_ALARMS		20
 #define FIRE_PRIORITY_CHARSETUP		25
 #define FIRE_PRIORITY_SPACEDRIFT	25
 #define FIRE_PRIORITY_AIRFLOW		30

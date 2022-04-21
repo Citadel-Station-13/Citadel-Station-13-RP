@@ -100,32 +100,38 @@
 
 	var/obj/item/pda/ai/rbPDA = null
 
-	var/opened = 0
+	var/opened = FALSE
 	var/emagged = 0
-	var/emag_items = 0
-	var/wiresexposed = 0
-	var/locked = 1
-	var/has_power = 1
+	var/emag_items = FALSE
+	var/wiresexposed = FALSE
+	var/locked = TRUE
+	var/has_power = TRUE
 	var/list/req_access = list(access_robotics)
 	var/ident = 0
 	//var/list/laws = list()
-	var/viewalerts = 0
+	var/viewalerts = FALSE
 	var/modtype = "Default"
 	var/lower_mod = 0
 	var/jetpack = 0
 	var/datum/effect_system/ion_trail_follow/ion_trail = null
 	var/datum/effect_system/spark_spread/spark_system//So they can initialize sparks whenever/N
-	var/jeton = 0
-	var/killswitch = 0
+	var/jeton = FALSE
+	var/killswitch = FALSE
 	var/killswitch_time = 60
-	var/weapon_lock = 0
+	var/weapon_lock = FALSE
 	var/weaponlock_time = 120
-	var/lawupdate = 1 //Cyborgs will sync their laws with their AI by default
-	var/lockcharge //Used when looking to see if a borg is locked down.
-	var/lockdown = 0 //Controls whether or not the borg is actually locked down.
-	var/speed = 0 //Cause sec borgs gotta go fast //No they dont!
-	var/scrambledcodes = 0 // Used to determine if a borg shows up on the robotics console.  Setting to one hides them.
-	var/tracking_entities = 0 //The number of known entities currently accessing the internal camera
+	///Cyborgs will sync their laws with their AI by default
+	var/lawupdate = TRUE
+	///Used when looking to see if a borg is locked down.
+	var/lockcharge
+	///Controls whether or not the borg is actually locked down.
+	var/lockdown = FALSE
+	///Cause sec borgs gotta go fast //No they dont!
+	var/speed = 0
+	///Used to determine if a borg shows up on the robotics console.  Setting to one hides them.
+	var/scrambledcodes = FALSE
+	///The number of known entities currently accessing the internal camera
+	var/tracking_entities = 0
 	var/braintype = "Cyborg"
 
 	var/list/robot_verbs_default = list(

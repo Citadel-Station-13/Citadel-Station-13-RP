@@ -95,8 +95,9 @@
   */
 
 /client/Move(n, direct)
-	if(!mob?.loc)
-		return FALSE
+	//if(!mob) // Clients cannot have a null mob, as enforced by byond
+	//	return // Moved here to avoid nullrefs below
+
 	if(!mob.check_move_cooldown()) //do not move anything ahead of this check please
 		return FALSE
 	else
@@ -163,6 +164,12 @@
 	if(!(L.mobility_flags & MOBILITY_MOVE))
 		return FALSE
 */
+
+	//Relaymove could handle it
+	if(mob.machine)
+		var/result = mob.machine.relaymove(mob, direct)
+		if(result)
+			return result
 
 	if(isobj(mob.loc) || ismob(mob.loc))	//Inside an object, tell it we moved
 		var/atom/O = mob.loc

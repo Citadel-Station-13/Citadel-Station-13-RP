@@ -6,14 +6,14 @@ import { Window } from "../layouts";
 
 export const TelecommsMachineBrowser = (props, context) => {
   const { act, data } = useBackend(context);
-  
+
   const {
     network,
     temp,
     machinelist,
     selectedMachine,
   } = data;
-  
+
   return (
     <Window
       width={575}
