@@ -3,7 +3,7 @@ import { CrewMonitorContent } from './CrewMonitor';
 
 export const NtosCrewMonitor = () => {
   return (
-    <NtosWindow 
+    <NtosWindow
       width={800}
       height={600}
       resizable>

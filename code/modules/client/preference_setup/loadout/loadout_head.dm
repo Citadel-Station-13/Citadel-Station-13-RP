@@ -109,6 +109,10 @@
 	name = "Fedora - Grey"
 	path = /obj/item/clothing/head/fedora/grey
 
+/datum/gear/head/fedora/floppy
+	name = "Wide Brimmed Hat"
+	path = /obj/item/clothing/head/fedora/floppy
+
 /datum/gear/head/hairflower
 	name = "Hair Flower Pin (Colorable)"
 	path = /obj/item/clothing/head/pin/flower/white

@@ -1,4 +1,3 @@
-import { toArray } from 'common/collections';
 import { Fragment } from 'inferno';
 import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, Flex, LabeledList, Section, Table, Tabs } from '../components';
@@ -133,7 +132,7 @@ export const CargoCatalog = (props, context) => {
     self_paid,
     app_cost,
   } = data;
-  const supplies = toArray(data.supplies);
+  const supplies = Object.values(data.supplies);
   const [
     activeSupplyName,
     setActiveSupplyName,

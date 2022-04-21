@@ -96,3 +96,33 @@
 		det_time = rand(30,80)
 	else
 		range = pick(2,2,2,3,3,3,4)
+
+/obj/item/grenade/explosive/ied/tyrmalin
+	name = "\improper Tyrmalin mining charge"
+	desc = "A stick of dynamite with a crude blasting cap and timer assembly attached. These volatile explosives are frequently used by Tyrmalin for blast mining. It does not look safe."
+	icon_state = "goblincharge"
+	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/strong)
+	num_fragments = 10
+	spread_range = 3
+	explosion_size = 16
+	det_time = 20
+	range = 3
+
+/obj/item/grenade/explosive/ied/tyrmalin/on_explosion(var/turf/O)
+	if(explosion_size)
+		explosion(O, 3, 6, explosion_size, round(explosion_size/2), 0)
+
+/obj/item/grenade/explosive/ied/tyrmalin/large
+	name = "\improper Tyrmalin heavy-duty mining charge"
+	desc = "A hefty bundle of hastily rigged dynamite. These bulky explosives are preferred for Tyrmalin blast mining operations. It does not look safe."
+	icon_state = "goblincharge_big"
+	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/strong, /obj/item/projectile/bullet/pellet/fragment/strong)
+	num_fragments = 30
+	spread_range = 5
+	explosion_size = 20
+	det_time = 20
+	range = 3
+
+/obj/item/grenade/explosive/ied/tyrmalin/large/on_explosion(var/turf/O)
+	if(explosion_size)
+		explosion(O, 5, 8, explosion_size, round(explosion_size/2), 0)

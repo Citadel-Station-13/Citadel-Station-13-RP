@@ -4,7 +4,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "ano00"
 	var/icon_num = 0
-	density = 1
+	density = TRUE
 	var/datum/artifact_effect/my_effect
 	var/datum/artifact_effect/secondary_effect
 	var/being_used = 0
@@ -21,7 +21,7 @@
 		if(prob(75))
 			secondary_effect.ToggleActivate(0)
 
-	icon_num = rand(0, 14)
+	icon_num = rand(0, 13)
 
 	icon_state = "ano[icon_num]0"
 	if(icon_num == 7 || icon_num == 8)
@@ -47,7 +47,7 @@
 		desc = "A strange alien device."
 		if(prob(25))
 			my_effect.trigger = pick(TRIGGER_WATER, TRIGGER_ACID, TRIGGER_VOLATILE, TRIGGER_TOXIN)
-	else if(icon_num == 12 || icon_num == 14)
+	else if(icon_num == 12 || icon_num == 13)
 		name = "intricately carved statue"
 		desc = "A strange statue."
 		if(prob(60))

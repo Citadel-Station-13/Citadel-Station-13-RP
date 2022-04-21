@@ -187,13 +187,14 @@
 		M.adjustToxLoss(6 * removed)
 	else
 		..()
-
+*/
 /datum/reagent/water/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_SLIME)
-		M.adjustToxLoss(6 * removed)
-	else
-		..()
-
+	//if(alien == IS_SLIME)
+	//	M.adjustToxLoss(6 * removed)
+	//else
+	M.adjust_hydration(removed * 10)
+	..()
+/*
 /datum/reagent/water/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_SLIME)
 		M.visible_message("<span class='warning'>[M]'s flesh sizzles where the water touches it!</span>", "<span class='danger'>Your flesh burns in the water!</span>")

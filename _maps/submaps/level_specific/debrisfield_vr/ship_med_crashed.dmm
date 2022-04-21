@@ -55,7 +55,7 @@
 /area/submap/debrisfield_vr/misc_debris)
 "n" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/bot/medbot{
+/mob/living/bot/medibot{
 	name = "Dr. Crusty"
 	},
 /turf/simulated/shuttle/plating/airless,

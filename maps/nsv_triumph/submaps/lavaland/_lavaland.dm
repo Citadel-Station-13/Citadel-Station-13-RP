@@ -89,17 +89,28 @@
 		AM.forceMove(T)
 
 // Lava Land turfs
+
 /turf/simulated/floor/outdoors/lavaland
 	name = "ash sand"
 	desc = "Soft and ominous."
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 	outdoors = 1
-	flags = TURF_HAS_EDGES
-	edge_blending_priority = 2
 	base_icon_state = "asteroid"
-	turf_layers = list(/turf/simulated/floor/outdoors/rocks)
+	turf_layers = list(/turf/simulated/mineral/floor/lavaland)
 	initial_flooring = /decl/flooring/outdoors/lavaland
+
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior
+	outdoors = 1
+
+/turf/simulated/floor/water/lavaland/interior
+	outdoors = 0
+
+/turf/simulated/floor/outdoors/grass/lavaland/interior
+	outdoors = 0
+
+/turf/simulated/floor/outdoors/dirt/lavaland/interior
+	outdoors = 0
 
 // This is a special subtype of the thing that generates ores on a map
 // It will generate more rich ores because of the lower numbers than the normal one

@@ -181,15 +181,6 @@
 	cost = 1
 	var_changes = list("bloodloss_rate" = 0.75)
 
-/datum/trait/size_change
-	name = "Sizeshift"
-	desc = "Lets you shift sizes by yourself. Remember that abusing size mechanics is against the rules!"
-	cost = 4
-
-/datum/trait/size_change/apply(var/datum/species/S,var/mob/living/carbon/human/H)
-	..(S,H)
-	H.verbs |= /mob/living/proc/set_size
-
 /datum/trait/positive/weaver
 	name = "Weaver"
 	desc = "You can produce silk and create various articles of clothing and objects."

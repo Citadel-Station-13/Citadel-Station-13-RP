@@ -1,4 +1,5 @@
 #define DEFAULT_HUNGER_FACTOR 0.03 // Factor of how fast mob nutrition decreases
+#define DEFAULT_THIRST_FACTOR 0.03 // Factor of how fast mob hydration decreases
 
 #define REM 0.2 // Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
 
@@ -31,6 +32,7 @@
 #define IS_SHADEKIN 13
 #define IS_ALRAUNE 14
 #define IS_APIDAEN 15
+#define IS_XENOHYBRID 16
 
 #define CE_STABLE "stable" // Inaprovaline
 #define CE_ANTIBIOTIC "antibiotic" // Antibiotics

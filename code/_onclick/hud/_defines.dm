@@ -30,7 +30,7 @@
 #define ui_swaphand2 "CENTER:16,SOUTH+1:5"
 #define ui_storage1 "CENTER+1:16,SOUTH:5"
 #define ui_storage2 "CENTER+2:16,SOUTH:5"
-#define ui_crafting "EAST-4:18,SOUTH:4"
+#define ui_smallquad "EAST-4:18,SOUTH:4"
 
 #define ui_alien_head "CENTER-3:12,SOUTH:5"		//aliens
 #define ui_alien_oclothing "CENTER-2:14,SOUTH:5"//aliens
@@ -106,6 +106,7 @@
 
 //Middle right (status indicators)
 #define ui_nutrition "EAST-1:28,CENTER-2:11"
+#define ui_nutrition_small "EAST-1:28,CENTER-2:24"
 #define ui_temp "EAST-1:28,CENTER-1:13"
 #define ui_health "EAST-1:28,CENTER:15"
 #define ui_internal "EAST-1:28,CENTER+1:17"

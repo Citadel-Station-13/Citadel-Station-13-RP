@@ -83,7 +83,7 @@
 	dizziness = 0
 	jitteriness = 0
 
-	layer = MOB_LAYER
+	set_base_layer(MOB_LAYER)
 
 	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
 	see_in_dark = 8

@@ -253,6 +253,74 @@
 			playsound(src.loc, 'sound/machines/dwoop.ogg', 50, 0)
 			m_type = 1
 
+		if("startup")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if (param)
+				message = "chimes to life."
+			else
+				message = "chimes to life."
+			playsound(src.loc, 'sound/machines/synth_startup.ogg')
+			m_type = 1
+
+		if("shutdown")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if(param)
+				message = "emits a nostalgic tone as they fall silent."
+			else
+				message = "emits a nostalgic tone as they fall silent."
+			playsound(src.loc, 'sound/machines/synth_shutdown.ogg')
+			m_type = 1
+
+		if("error")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if(param)
+				message = "experiences a system error."
+			else
+				message = "experiences a system error."
+			playsound(src.loc, 'sound/machines/synth_error.ogg')
+			m_type = 1
+
+		if("die")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if(param)
+				message = "crumples, their chassis colder and more lifeless than usual."
+			else
+				message = "crumples, their chassis colder and more lifeless than usual."
+			playsound(src.loc, 'sound/machines/synth_gameover.ogg')
+			m_type = 1
+
 		if("flip")
 			if(src.sleeping || src.resting || src.buckled || src.weakened || src.restrained())
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")

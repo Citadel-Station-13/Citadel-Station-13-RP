@@ -49,7 +49,7 @@
 
 	var/gasefficency = 0.25
 
-	var/base_icon_state = "darkmatter"
+	base_icon_state = "darkmatter"
 
 	var/damage = 0
 	var/damage_archived = 0

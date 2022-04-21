@@ -130,6 +130,11 @@
 	if(!client)
 		return
 
+	//if it has been more than 0.5 seconds since the last time we heard this, we hear it again
+	if(last_radio_sound + 0.5 SECONDS < world.time && src != speaker)
+		playsound(loc, 'sound/effects/radiochatter.ogg', 10, 0, -1, falloff = -3)
+		last_radio_sound = world.time
+
 	if(sleeping || stat==1) //If unconscious or sleeping
 		hear_sleep(message)
 		return

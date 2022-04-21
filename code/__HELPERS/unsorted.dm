@@ -4,17 +4,17 @@
  * A large number of misc global procs.
  */
 
-//Checks if all high bits in req_mask are set in bitfield
+///Checks if all high bits in req_mask are set in bitfield
 #define BIT_TEST_ALL(bitfield, req_mask) ((~(bitfield) & (req_mask)) == 0)
 
-//supposedly the fastest way to do this according to https://gist.github.com/Giacom/be635398926bb463b42a
+///supposedly the fastest way to do this according to https://gist.github.com/Giacom/be635398926bb463b42a
 #define RANGE_TURFS(RADIUS, CENTER) \
   block( \
     locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
     locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
   )
 
-//Inverts the colour of an HTML string
+///Inverts the colour of an HTML string
 /proc/invertHTML(HTMLstring)
 	if (!( istext(HTMLstring) ))
 		CRASH("Given non-text argument!")
@@ -37,21 +37,23 @@
 		textr = text("0[]", textb)
 	return text("#[][][]", textr, textg, textb)
 
-/proc/Get_Angle(atom/movable/start,atom/movable/end)//For beams.
-	if(!start || !end) return 0
+///Calculate the angle between two points and the west|east coordinate
+/proc/Get_Angle(atom/movable/start,atom/movable/end) //For beams.
+	if(!start || !end)
+		return 0
 	var/dy
 	var/dx
-	dy=(32*end.y+end.pixel_y)-(32*start.y+start.pixel_y)
-	dx=(32*end.x+end.pixel_x)-(32*start.x+start.pixel_x)
+	dy=(32 * end.y + end.pixel_y) - (32 * start.y + start.pixel_y)
+	dx=(32 * end.x + end.pixel_x) - (32 * start.x + start.pixel_x)
 	if(!dy)
-		return (dx>=0)?90:270
-	.=arctan(dx/dy)
-	if(dy<0)
-		.+=180
-	else if(dx<0)
-		.+=360
+		return (dx >= 0) ? 90 : 270
+	. = arctan(dx/dy)
+	if(dy < 0)
+		. += 180
+	else if(dx < 0)
+		. += 360
 
-//Returns location. Returns null if no location was found.
+///Returns location. Returns null if no location was found.
 /proc/get_teleport_loc(turf/location,mob/target,distance = 1, density = 0, errorx = 0, errory = 0, eoffsetx = 0, eoffsety = 0)
 /*
 Location where the teleport begins, target that will teleport, distance to go, density checking 0/1(yes/no).
@@ -186,7 +188,8 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /proc/sign(x)
 	return x!=0?x/abs(x):0
 
-/proc/getline(atom/M,atom/N)//Ultra-Fast Bresenham Line-Drawing Algorithm
+///Ultra-Fast Bresenham Line-Drawing Algorithm
+/proc/getline(atom/M,atom/N)
 	var/px=M.x		//starting x
 	var/py=M.y
 	var/line[] = list(locate(px,py,M.z))
@@ -218,7 +221,8 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	return line
 
 #define LOCATE_COORDS(X, Y, Z) locate(between(1, X, world.maxx), between(1, Y, world.maxy), Z)
-/proc/getcircle(turf/center, var/radius) //Uses a fast Bresenham rasterization algorithm to return the turfs in a thin circle.
+///Uses a fast Bresenham rasterization algorithm to return the turfs in a thin circle.
+/proc/getcircle(turf/center, var/radius)
 	if(!radius) return list(center)
 
 	var/x = 0
@@ -244,10 +248,10 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 #undef LOCATE_COORDS
 
-//Returns whether or not a player is a guest using their ckey as an input
+///Returns whether or not a player is a guest using their ckey as an input
 /proc/IsGuestKey(key)
 	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
-		return 0
+		return FALSE
 
 	var/i = 7, ch, len = length(key)
 
@@ -260,7 +264,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			return 0
 	return 1
 
-//Ensure the frequency is within bounds of what it should be sending/recieving at
+///Ensure the frequency is within bounds of what it should be sending/recieving at
 /proc/sanitize_frequency(var/f, var/low = PUBLIC_LOW_FREQ, var/high = PUBLIC_HIGH_FREQ)
 	f = round(f)
 	f = max(low, f)
@@ -269,15 +273,18 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		f += 1
 	return f
 
-//Turns 1479 into 147.9
+///Turns 1479 into 147.9
 /proc/format_frequency(var/f)
 	return "[round(f / 10)].[f % 10]"
 
+//Opposite of format, returns as a number
+/proc/unformat_frequency(frequency)
+	frequency = text2num(frequency)
+	return frequency * 10
 
 
-
-//This will update a mob's name, real_name, mind.name, data_core records, pda and id
-//Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
+///This will update a mob's name, real_name, mind.name, data_core records, pda and id
+///Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
 /mob/proc/fully_replace_character_name(var/oldname,var/newname)
 	if(!newname)	return 0
 	real_name = newname
@@ -320,8 +327,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 
 
-//Generalised helper proc for letting mobs rename themselves. Used to be clname() and ainame()
-//Last modified by Carn
+///Generalised helper proc for letting mobs rename themselves. Used to be clname() and ainame()
 /mob/proc/rename_self(var/role, var/allow_numbers=0)
 	spawn(0)
 		var/oldname = real_name
@@ -361,12 +367,11 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		fully_replace_character_name(oldname,newname)
 
 
-
-//Picks a string of symbols to display as the law number for hacked or ion laws
+///Picks a string of symbols to display as the law number for hacked or ion laws
 /proc/ionnum()
 	return "[pick("1","2","3","4","5","6","7","8","9","0")][pick("!","@","#","$","%","^","&","*")][pick("!","@","#","$","%","^","&","*")][pick("!","@","#","$","%","^","&","*")]"
 
-//When an AI is activated, it can choose from a list of non-slaved borgs to have as a slave.
+///When an AI is activated, it can choose from a list of non-slaved borgs to have as a slave.
 /proc/freeborg()
 	var/select = null
 	var/list/borgs = list()
@@ -380,7 +385,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		select = input("Unshackled borg signals detected:", "Borg selection", null, null) as null|anything in borgs
 		return borgs[select]
 
-//When a borg is activated, it can choose which AI it wants to be slaved to
+///When a borg is activated, it can choose which AI it wants to be slaved to
 /proc/active_ais()
 	. = list()
 	for(var/mob/living/silicon/ai/A in living_mob_list)
@@ -391,7 +396,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		. += A
 	return .
 
-//Find an active ai with the least borgs. VERBOSE PROCNAME HUH!
+///Find an active ai with the least borgs. VERBOSE PROCNAME HUH!
 /proc/select_active_ai_with_fewest_borgs()
 	var/mob/living/silicon/ai/selected
 	var/list/active = active_ais()
@@ -436,7 +441,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	new_list += Dead_list
 	return new_list
 
-//Returns a list of all mobs with their name
+///Returns a list of all mobs with their name
 /proc/getmobs(ghostfollow = FALSE)
 
 	var/list/mobs = sortmobs()
@@ -467,7 +472,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /proc/getmobs_ghost_follow()
 	return getmobs(TRUE)
 
-//Orders mobs by type then by name
+///Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()
 	var/list/sortmob = sortList(GLOB.mob_list, cmp=/proc/cmp_name_asc)
@@ -505,7 +510,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //		GLOB.mob_list.Add(M)
 	return moblist
 
-// Format a power value in W, kW, MW, or GW.
+///Format a power value in W, kW, MW, or GW.
 /proc/DisplayPower(powerused)
 	if(powerused < 1000) //Less than a kW
 		return "[powerused] W"
@@ -515,16 +520,15 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		return "[round((powerused * 0.000001),0.001)] MW"
 	return "[round((powerused * 0.000000001),0.0001)] GW"
 
-//Forces a variable to be posative
+///Forces a variable to be positive
 /proc/modulus(var/M)
 	if(M >= 0)
 		return M
 	if(M < 0)
 		return -M
 
-// returns the turf located at the map edge in the specified direction relative to A
-// used for mass driver
-/proc/get_edge_target_turf(var/atom/A, var/direction)
+///Returns the turf located at the map edge in the specified direction relative to A
+/proc/get_edge_target_turf(var/atom/A, var/direction) //Used for mass driver
 
 	var/turf/target = locate(A.x, A.y, A.z)
 	if(!A || !target)
@@ -544,11 +548,12 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	return target
 
-// returns turf relative to A in given direction at set range
-// result is bounded to map size
-// note range is non-pythagorean
-// used for disposal system
-/proc/get_ranged_target_turf(var/atom/A, var/direction, var/range)
+/**
+ * returns turf relative to A in given direction at set range
+ * result is bounded to map size
+ * note range is non-pythagorean
+ */
+/proc/get_ranged_target_turf(var/atom/A, var/direction, var/range) //Used for disposal system
 
 	var/x = A.x
 	var/y = A.y
@@ -571,28 +576,26 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/y = min(world.maxy, max(1, A.y + dy))
 	return locate(x,y,A.z)
 
-//Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
+///Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
 /proc/between(var/low, var/middle, var/high)
 	return max(min(middle, high), low)
 
-//returns random gauss number
+///Returns random gauss number
 proc/GaussRand(var/sigma)
-  var/x,y,rsq
-  do
-    x=2*rand()-1
-    y=2*rand()-1
-    rsq=x*x+y*y
-  while(rsq>1 || !rsq)
-  return sigma*y*sqrt(-2*log(rsq)/rsq)
+	var/x,y,rsq
+	do
+		x=2*rand()-1
+		y=2*rand()-1
+		rsq=x*x+y*y
+	while(rsq>1 || !rsq)
+	return sigma*y*sqrt(-2*log(rsq)/rsq)
 
-//returns random gauss number, rounded to 'roundto'
+///Returns random gauss number, rounded to 'roundto'
 proc/GaussRandRound(var/sigma,var/roundto)
 	return round(GaussRand(sigma),roundto)
 
-/*
-	Gets all contents of contents and returns them all in a list.
-*/
 
+///Gets all contents of contents and returns them all in a list.
 /atom/proc/GetAllContents(var/T)
 	var/list/processing_list = list(src)
 	var/i = 0
@@ -628,8 +631,8 @@ proc/GaussRandRound(var/sigma,var/roundto)
 			lim = processing.len
 			. += A
 
-//Step-towards method of determining whether one atom can see another. Similar to viewers()
-/proc/can_see(var/atom/source, var/atom/target, var/length=5) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
+///Step-towards method of determining whether one atom can see another. Similar to viewers()
+/proc/can_see(var/atom/source, var/atom/target, var/length=5) //I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
 	var/steps = 0
@@ -683,25 +686,31 @@ proc/GaussRandRound(var/sigma,var/roundto)
 
 	else return get_step(ref, base_dir)
 
-//Takes: Anything that could possibly have variables and a varname to check.
-//Returns: 1 if found, 0 if not.
+/**
+ * Takes: Anything that could possibly have variables and a varname to check.
+ * Returns: 1 if found, 0 if not.
+ */
 /proc/hasvar(var/datum/A, var/varname)
 	if(A.vars.Find(lowertext(varname))) return 1
 	else return 0
 
-/datum/coords //Simple datum for storing coordinates.
+///Simple datum for storing coordinates.
+/datum/coords
 	var/x_pos = null
 	var/y_pos = null
 	var/z_pos = null
 
-/area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction = null)
-	//Takes: Area. Optional: turf type to leave behind.
-	//Returns: Nothing.
-	//Notes: Attempts to move the contents of one area to another area.
-	//       Movement based on lower left corner. Tiles that do not fit
-	//		 into the new area will not be moved.
 
-	if(!A || !src) return 0
+/**
+ * Takes: Area. Optional: turf type to leave behind.
+ * Returns: Nothing.
+ * Notes: Attempts to move the contents of one area to another area.
+ *        Movement based on lower left corner. Tiles that do not fit
+ *        into the new area will not be moved.
+ */
+/area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction = null)
+	if(!A || !src)
+		return FALSE
 
 	var/list/turfs_src = list()
 	var/list/turfs_trg = list()
@@ -841,17 +850,19 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 					O.vars[V] = original.vars[V]
 	return O
 
-
+/**
+ * Takes: Area. Optional: If it should copy to areas that don't have plating
+ * Returns: Nothing.
+ * Notes: Attempts to move the contents of one area to another area.
+ *        Movement based on lower left corner. Tiles that do not fit
+ *        into the new area will not be moved.
+ *
+ * Does *not* affect gases etc; copied turfs will be changed via ChangeTurf,
+ * and the dir, icon, and icon_state copied. All other vars will remain default.
+ */
 /area/proc/copy_contents_to(var/area/A , var/platingRequired = 0 )
-	//Takes: Area. Optional: If it should copy to areas that don't have plating
-	//Returns: Nothing.
-	//Notes: Attempts to move the contents of one area to another area.
-	//       Movement based on lower left corner. Tiles that do not fit
-	//		 into the new area will not be moved.
-
-	// Does *not* affect gases etc; copied turfs will be changed via ChangeTurf, and the dir, icon, and icon_state copied. All other vars will remain default.
-
-	if(!A || !src) return 0
+	if(!A || !src)
+		return FALSE
 
 	var/list/turfs_src = get_area_turfs(src.type)
 	var/list/turfs_trg = get_area_turfs(A.type)
@@ -976,7 +987,7 @@ proc/get_cardinal_dir(atom/A, atom/B)
 	var/dy = abs(B.y - A.y)
 	return get_dir(A, B) & (rand() * (dx+dy) < dy ? 3 : 12)
 
-//chances are 1:value. anyprob(1) will always return true
+///Chances are 1:value. anyprob(1) will always return true
 proc/anyprob(value)
 	return (rand(1,value)==value)
 
@@ -1030,7 +1041,7 @@ proc/get_mob_with_client_list()
 	return get_turf(location)
 
 
-//Quick type checks for some tools
+///Quick type checks for some tools
 var/global/list/common_tools = list(
 /obj/item/stack/cable_coil,
 /obj/item/tool/wrench,
@@ -1042,8 +1053,8 @@ var/global/list/common_tools = list(
 
 /proc/istool(O)
 	if(O && is_type_in_list(O, common_tools))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 
 /proc/is_wire_tool(obj/item/I)
@@ -1060,28 +1071,28 @@ proc/is_hot(obj/item/W as obj)
 			if(WT.isOn())
 				return 3800
 			else
-				return 0
+				return FALSE
 		if(/obj/item/flame/lighter)
 			if(W:lit)
 				return 1500
 			else
-				return 0
+				return FALSE
 		if(/obj/item/flame/match)
 			if(W:lit)
 				return 1000
 			else
-				return 0
+				return FALSE
 		if(/obj/item/clothing/mask/smokable/cigarette)
 			if(W:lit)
 				return 1000
 			else
-				return 0
+				return FALSE
 		if(/obj/item/pickaxe/plasmacutter)
 			return 3800
 		if(/obj/item/melee/energy)
 			return 3500
 		else
-			return 0
+			return FALSE
 
 //Whether or not the given item counts as sharp in terms of dealing damage
 /proc/is_sharp(obj/O as obj)
@@ -1101,43 +1112,44 @@ proc/is_hot(obj/item/W as obj)
 		return TRUE
 	return FALSE
 
-//Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
-/proc/can_puncture(obj/item/W as obj)		// For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
+///Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
+/proc/can_puncture(obj/item/W as obj) //For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
 	if(!W)
 		return FALSE
 	if(W.sharp)
 		return TRUE
 	return ( \
-		W.is_screwdriver()		     				              || \
-		istype(W, /obj/item/pen)                           || \
-		istype(W, /obj/item/weldingtool)					  || \
-		istype(W, /obj/item/flame/lighter/zippo)			  || \
-		istype(W, /obj/item/flame/match)            		  || \
-		istype(W, /obj/item/clothing/mask/smokable/cigarette) 		      || \
+		W.is_screwdriver()                                    || \
+		istype(W, /obj/item/pen)                              || \
+		istype(W, /obj/item/weldingtool)                      || \
+		istype(W, /obj/item/flame/lighter/zippo)              || \
+		istype(W, /obj/item/flame/match)                      || \
+		istype(W, /obj/item/clothing/mask/smokable/cigarette) || \
 		istype(W, /obj/item/shovel) \
 	)
 
 /proc/is_surgery_tool(obj/item/W as obj)
 	return (	\
-	istype(W, /obj/item/surgical/scalpel)			||	\
-	istype(W, /obj/item/surgical/hemostat)		||	\
-	istype(W, /obj/item/surgical/retractor)		||	\
-	istype(W, /obj/item/surgical/cautery)			||	\
-	istype(W, /obj/item/surgical/bonegel)			||	\
+	istype(W, /obj/item/surgical/scalpel)   || \
+	istype(W, /obj/item/surgical/hemostat)  || \
+	istype(W, /obj/item/surgical/retractor) || \
+	istype(W, /obj/item/surgical/cautery)   || \
+	istype(W, /obj/item/surgical/bonegel)   || \
 	istype(W, /obj/item/surgical/bonesetter)
 	)
-
-// check if mob is lying down on something we can operate him on.
-// The RNG with table/rollerbeds comes into play in do_surgery() so that fail_step() can be used instead.
+/**
+ * check if mob is lying down on something we can operate him on.
+ * The RNG with table/rollerbeds comes into play in do_surgery() so that fail_step() can be used instead.
+ */
 /proc/can_operate(mob/living/carbon/M)
 	return M.lying
 
-// Returns an instance of a valid surgery surface.
+///Returns an instance of a valid surgery surface.
 /mob/living/proc/get_surgery_surface()
 	if(!lying)
-		return null // Not lying down means no surface.
+		return null //Not lying down means no surface.
 	var/obj/surface = null
-	for(var/obj/O in loc) // Looks for the best surface.
+	for(var/obj/O in loc) //Looks for the best surface.
 		if(O.surgery_odds)
 			if(!surface || surface.surgery_odds < O)
 				surface = O
@@ -1230,7 +1242,7 @@ var/list/WALLITEMS = list(
 
 GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
-//Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
+///Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
 /proc/dview(range = world.view, center, invis_flags = 0)
 	if(!center)
 		return
@@ -1282,7 +1294,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		color = origin.color
 		set_light(origin.light_range, origin.light_power, origin.light_color)
 
-// call to generate a stack trace and print to runtime logs
+///Call to generate a stack trace and print to runtime logs
 /proc/crash_with(msg)
 	CRASH(msg)
 
@@ -1297,7 +1309,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	tY = max(1, min(world.maxy, origin.y + (text2num(tY) - (world.view + 1))))
 	return locate(tX, tY, tZ)
 
-// Displays something as commonly used (non-submultiples) SI units.
+///Displays something as commonly used (non-submultiples) SI units.
 /proc/format_SI(var/number, var/symbol)
 	switch(round(abs(number)))
 		if(0 to 1000-1)
@@ -1311,15 +1323,15 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		if(1e12 to 1e15-1)
 			return "[round(number / 1e12, 0.1)] T[symbol]" // tera
 
-
-//Center's an image.
-//Requires:
-//The Image
-//The x dimension of the icon file used in the image
-//The y dimension of the icon file used in the image
-// eg: center_image(I, 32,32)
-// eg2: center_image(I, 96,96)
-
+/**
+ * Center's an image.
+ * Requires:
+ * The Image
+ * The x dimension of the icon file used in the image
+ * The y dimension of the icon file used in the image
+ *  eg: center_image(I, 32,32)
+ *  eg2: center_image(I, 96,96)
+ */
 /proc/center_image(var/image/I, x_dimension = 0, y_dimension = 0)
 	if(!I)
 		return
@@ -1347,7 +1359,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	return I
 
-//ultra range (no limitations on distance, faster than range for distances > 8); including areas drastically decreases performance
+///Ultra range (no limitations on distance, faster than range for distances > 8); including areas drastically decreases performance
 /proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
 	if(!dist)
 		if(!orange)
@@ -1366,7 +1378,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		if(areas)
 			. |= T.loc
 
-//similar function to range(), but with no limitations on the distance; will search spiralling outwards from the center
+///Similar function to range(), but with no limitations on the distance; will search spiralling outwards from the center
 /proc/spiral_range(dist=0, center=usr, orange=0)
 	if(!dist)
 		if(!orange)
@@ -1424,7 +1436,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	return L
 
-//similar function to RANGE_TURFS(), but will search spiralling outwards from the center (like the above, but only turfs)
+///Similar function to RANGE_TURFS(), but will search spiralling outwards from the center (like the above, but only turfs)
 /proc/spiral_range_turfs(dist=0, center=usr, orange=0, list/outlist = list(), tick_checked)
 	outlist.Cut()
 	if(!dist)
@@ -1481,13 +1493,15 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 #define NOT_FLAG(flag) (!(flag & use_flags))
 #define HAS_FLAG(flag) (flag & use_flags)
 
-// Checks if user can use this object. Set use_flags to customize what checks are done.
-// Returns 0 if they can use it, a value representing why they can't if not.
-// Flags are in `code/__defines/misc.dm`
+/**
+ * Checks if user can use this object. Set use_flags to customize what checks are done.
+ * Returns 0 if they can use it, a value representing why they can't if not.
+ * Flags are in `code/__defines/misc.dm`
+ */
 /atom/proc/use_check(mob/user, use_flags = 0, show_messages = FALSE)
 	. = 0
 	if (NOT_FLAG(USE_ALLOW_NONLIVING) && !isliving(user))
-		// No message for ghosts.
+		//No message for ghosts.
 		return USE_FAIL_NONLIVING
 
 	if (NOT_FLAG(USE_ALLOW_NON_ADJACENT) && !Adjacent(user))
@@ -1523,8 +1537,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 #undef NOT_FLAG
 #undef HAS_FLAG
 
-// Returns direction-string, rounded to multiples of 22.5, from the first parameter to the second
-// N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW
+/**
+ * Returns direction-string, rounded to multiples of 22.5, from the first parameter to the second
+ * N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW
+ */
 /proc/get_adir(var/turf/A, var/turf/B)
 	var/degree = Get_Angle(A, B)
 	switch(round(degree%360, 22.5))
@@ -1570,16 +1586,15 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	pixel_x = initialpixelx
 	pixel_y = initialpixely
 
-//VR FILE MERGE
-/*
-	get_holder_at_turf_level(): Similar to get_turf(), will return the "highest up" holder of this atom, excluding the turf.
-	Example: A fork inside a box inside a locker will return the locker. Essentially, get_just_before_turf().
+/**
+ * get_holder_at_turf_level(): Similar to get_turf(), will return the "highest up" holder of this atom, excluding the turf.
+ * Example: A fork inside a box inside a locker will return the locker. Essentially, get_just_before_turf().
 */ //Credit to /vg/
 /proc/get_holder_at_turf_level(const/atom/movable/O)
 	if(!istype(O)) //atom/movable does not include areas
 		return
 	var/atom/A
-	for(A=O, A && !isturf(A.loc), A=A.loc);  // semicolon is for the empty statement
+	for(A=O, A && !isturf(A.loc), A=A.loc); //Semicolon is for the empty statement
 	return A
 
 /proc/get_safe_ventcrawl_target(var/obj/machinery/atmospherics/unary/vent_pump/start_vent)
@@ -1615,8 +1630,8 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 //Sender is optional
 /proc/admin_chat_message(var/message = "Debug Message", var/color = "#FFFFFF", var/sender)
-	if(message)	//CITADEL CHANGE - adds TGS3 integration to those fancy verbose round event messages
-		world.TgsTargetedChatBroadcast(message, TRUE)	//CITADEL CHANGE - ditto
+	if(message)	//Adds TGS3 integration to those fancy verbose round event messages
+		world.TgsTargetedChatBroadcast(message, TRUE)
 	if (!config_legacy.chat_webhook_url || !message)
 		return
 	spawn(0)
@@ -1628,43 +1643,42 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			query_string += "&from=[url_encode(sender)]"
 		world.Export("[config_legacy.chat_webhook_url]?[query_string]")
 
-// This is a helper for anything that wants to render the map in TGUI
+///This is a helper for anything that wants to render the map in TGUI
 /proc/get_tgui_plane_masters()
 	. = list()
 	// 'Utility' planes
-	. += new /obj/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
-	. += new /obj/screen/plane_master/lighting							//Lighting system (but different!)
-	. += new /obj/screen/plane_master/ghosts							//Ghosts!
-	. += new /obj/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
+	. += new /atom/movable/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
+	. += new /atom/movable/screen/plane_master/lighting							//Lighting system (but different!)
+	. += new /atom/movable/screen/plane_master/ghosts							//Ghosts!
+	. += new /atom/movable/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
 
-	. += new /obj/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
-	. += new /obj/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
-	. += new /obj/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
-	. += new /obj/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
-	. += new /obj/screen/plane_master{plane = PLANE_CH_WANTED}			//Wanted status
-	. += new /obj/screen/plane_master{plane = PLANE_CH_IMPLOYAL}		//Loyalty implants
-	. += new /obj/screen/plane_master{plane = PLANE_CH_IMPTRACK}		//Tracking implants
-	. += new /obj/screen/plane_master{plane = PLANE_CH_IMPCHEM}		//Chemical implants
-	. += new /obj/screen/plane_master{plane = PLANE_CH_SPECIAL}		//"Special" role stuff
-	. += new /obj/screen/plane_master{plane = PLANE_CH_STATUS_OOC}		//OOC status HUD
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_WANTED}			//Wanted status
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPLOYAL}		//Loyalty implants
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPTRACK}		//Tracking implants
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPCHEM}		//Chemical implants
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_SPECIAL}		//"Special" role stuff
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS_OOC}		//OOC status HUD
 
-	. += new /obj/screen/plane_master{plane = PLANE_ADMIN1}			//For admin use
-	. += new /obj/screen/plane_master{plane = PLANE_ADMIN2}			//For admin use
-	. += new /obj/screen/plane_master{plane = PLANE_ADMIN3}			//For admin use
+	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN1}			//For admin use
+	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN2}			//For admin use
+	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN3}			//For admin use
 
-	. += new /obj/screen/plane_master{plane = PLANE_MESONS} 			//Meson-specific things like open ceilings.
-	// . += new /obj/screen/plane_master{plane = PLANE_BUILDMODE}			//Things that only show up while in build mode
+	. += new /atom/movable/screen/plane_master{plane = PLANE_MESONS} 			//Meson-specific things like open ceilings.
+	// . += new /atom/movable/screen/plane_master{plane = PLANE_BUILDMODE}		//Things that only show up while in build mode
 
 	// Real tangible stuff planes
-	. += new /obj/screen/plane_master/main{plane = TURF_PLANE}
-	. += new /obj/screen/plane_master/main{plane = OBJ_PLANE}
-	. += new /obj/screen/plane_master/main{plane = MOB_PLANE}
-	// . += new /obj/screen/plane_master/cloaked								//Cloaked atoms!
+	. += new /atom/movable/screen/plane_master/main{plane = TURF_PLANE}
+	. += new /atom/movable/screen/plane_master/main{plane = OBJ_PLANE}
+	. += new /atom/movable/screen/plane_master/main{plane = MOB_PLANE}
+	// . += new /atom/movable/screen/plane_master/cloaked						//Cloaked atoms!
 
-	//VOREStation Add - Random other plane masters
-	. += new /obj/screen/plane_master{plane = PLANE_CH_STATUS_R}			//Right-side status icon
-	. += new /obj/screen/plane_master{plane = PLANE_CH_HEALTH_VR}			//Health bar but transparent at 100
-	. += new /obj/screen/plane_master{plane = PLANE_CH_BACKUP}				//Backup implant status
-	. += new /obj/screen/plane_master{plane = PLANE_CH_VANTAG}				//Vore Antags
-	. += new /obj/screen/plane_master{plane = PLANE_AUGMENTED}				//Augmented reality
-	//VOREStation Add End
+	// Random other plane masters
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS_R}		//Right-side status icon
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_HEALTH_VR}		//Health bar but transparent at 100
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_BACKUP}			//Backup implant status
+	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_VANTAG}			//Vore Antags
+	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}			//Augmented reality

@@ -148,6 +148,7 @@
 	recipes += new/datum/stack_recipe("lampshade", /obj/item/lampshade, 1, time = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("plastic net", /obj/item/material/fishing_net, 25, time = 1 MINUTE, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("rubberized wheels", /obj/item/skate_wheels, 12, time = 24)
+	recipes += new/datum/stack_recipe("plastic raincoat", /obj/item/clothing/suit/storage/hooded/rainponcho, 5, time = 10)
 
 /datum/material/wood/generate_recipes()
 	..()
@@ -174,6 +175,7 @@
 	recipes += new/datum/stack_recipe("bokken hilt", /obj/item/bokken_hilt, 5, time = 10)
 	recipes += new/datum/stack_recipe("wakibokken blade", /obj/item/wakibokken_blade, 10, time = 5)
 	recipes += new/datum/stack_recipe("rifle stock", /obj/item/weaponcrafting/stock, 5, time = 5)
+	recipes += new/datum/stack_recipe("wooden panel", /obj/structure/window/wooden, 1, time = 10, one_per_turf = 0, on_floor = 1)
 
 /datum/material/wood/hardwood/generate_recipes()
 	//we're not going to ..() since we want to override the list entirely, to cut out all the stuff it'd inherit from wood - important, or else we'd have to fuss around with more subtypes to stop people turning hardwood into regular wood
@@ -405,9 +407,9 @@
 	recipes += new/datum/stack_recipe("leather jacket", /obj/item/clothing/suit/storage/toggle/leather_jacket, 7)
 	recipes += new/datum/stack_recipe("leather shoes", /obj/item/clothing/shoes/laceup, 2)
 	recipes += new/datum/stack_recipe("leather overcoat", /obj/item/clothing/suit/overcoat, 10)
-	recipes += new/datum/stack_recipe("voyager backpack", /obj/item/storage/backpack/satchel/voyager, 10)
+	recipes += new/datum/stack_recipe("voyager satchel", /obj/item/storage/backpack/satchel/voyager, 10)
+	recipes += new/datum/stack_recipe("voyager backpack", /obj/item/storage/backpack/voyager, 10)
 	recipes += new/datum/stack_recipe("voyager harness", /obj/item/clothing/accessory/storage/voyager, 8)
-	recipes += new/datum/stack_recipe("voyager satchel", /obj/item/storage/backpack/voyager, 10)
 	recipes += new/datum/stack_recipe_list("statues", list( \
 		new/datum/stack_recipe("bone statue", /obj/structure/statue/bone, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("skull statue", /obj/structure/statue/bone/skull, 20, time = 5, one_per_turf = 1, on_floor = 1), \
@@ -417,3 +419,12 @@
 /datum/material/sinew/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("sinew restraints", /obj/item/handcuffs/sinew, 1)
+
+/datum/material/wax/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe("candle", /obj/item/flame/candle, 1)
+	recipes += new/datum/stack_recipe("wax floor tile", /obj/item/stack/tile/wax, 1, 4, 20)
+	recipes += new/datum/stack_recipe("honeycomb floor tile", /obj/item/stack/tile/honeycomb, 1, 4, 20)
+	recipes += new/datum/stack_recipe("wax globule", /obj/item/ammo_casing/organic/wax, 1)
+	recipes += new/datum/stack_recipe("royal throne", /obj/structure/bed/chair/apidean, 20, time = 10, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("apidean stool", /obj/structure/bed/chair/apidean_stool, 5, time = 5, one_per_turf = 1, on_floor = 1)

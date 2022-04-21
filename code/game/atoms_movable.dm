@@ -25,6 +25,8 @@
 	var/movement_type = GROUND
 	/// The orbiter component of the thing we're orbiting.
 	var/datum/component/orbiter/orbiting
+	///Used for the calculate_adjacencies proc for icon smoothing.
+	var/can_be_unanchored = FALSE
 	/// Our default glide_size.
 	var/default_glide_size = 0
 
@@ -421,9 +423,6 @@
 
 	return selfimage
 
-/atom/movable/proc/get_cell()
-	return
-
 /atom/movable/proc/ghost_tag(text)
 	var/atom/movable/ghost_tag_container/G = locate() in vis_contents
 	if(!length(text) || !istext(text))
@@ -453,3 +452,6 @@
 		master.vis_contents -= src
 		master = null
 	return ..()
+
+/atom/movable/proc/get_bullet_impact_effect_type()
+	return BULLET_IMPACT_NONE

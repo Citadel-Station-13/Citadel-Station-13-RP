@@ -83,6 +83,9 @@
 
 	return "[..()][append]"
 
+/obj/item/radio/headset/ui_state(mob/user)
+	return GLOB.inventory_state
+
 /obj/item/radio/headset/syndicate
 	origin_tech = list(TECH_ILLEGAL = 3)
 	syndie = 1
@@ -414,7 +417,7 @@
 	return
 
 
-/obj/item/radio/headset/proc/recalculateChannels(var/setDescription = 0)
+/obj/item/radio/headset/recalculateChannels(var/setDescription = 0)
 	src.channels = list()
 	src.translate_binary = 0
 	src.translate_hive = 0

@@ -10,7 +10,6 @@ REAGENT SCANNER
 HALOGEN COUNTER	- Radcount on mobs
 */
 
-
 /obj/item/healthanalyzer
 	name = "health analyzer"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject."
@@ -304,6 +303,11 @@ HALOGEN COUNTER	- Radcount on mobs
 		if(0)
 			to_chat(usr, "The scanner will now perform a basic analysis.")
 
+/obj/item/healthanalyzer/apidean
+	name = "\improper Apidean health analyzer"
+	desc = "This medical scanner feels oddly warm and has two insectiod antennae."
+	icon_state = "apidae-health"
+
 /obj/item/healthanalyzer/improved //reports bone fractures, IB, quantity of beneficial reagents in stomach; also regular health analyzer stuff
 	name = "improved health analyzer"
 	desc = "A miracle of medical technology, this handheld scanner can produce an accurate and specific report of a patient's biosigns."
@@ -340,6 +344,12 @@ HALOGEN COUNTER	- Radcount on mobs
 	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
 
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
+
+/obj/item/analyzer/apidean
+	name = "\improper Apidean analyzer"
+	desc = "This analyzer has a strange, soft exterior and seems to faintly breathe."
+	icon_state = "apidae-analyzer"
+
 /obj/item/analyzer/longrange
 	name = "long-range analyzer"
 	desc = "A hand-held environmental scanner which reports current gas levels. This one uses bluespace technology."
@@ -487,6 +497,11 @@ HALOGEN COUNTER	- Radcount on mobs
 		to_chat(user, span("notice", "No significant chemical agents found in [O]."))
 
 	return
+
+/obj/item/reagent_scanner/apidean
+	name = "\improper Apidean taster"
+	desc = "This reagent scanner appears to be an artificially created lifeform. Often used by Apidaen guards to test food and drinks during diplomatic meetings."
+	icon_state = "apidae-reagent"
 
 /obj/item/reagent_scanner/adv
 	name = "advanced reagent scanner"

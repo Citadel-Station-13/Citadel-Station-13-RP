@@ -21,6 +21,8 @@
 	var/active_regen_delay = 300
 	var/spam_flag = FALSE	//throws byond:tm: errors if placed in human/emote, but not here
 
+	var/healing = FALSE
+
 /mob/living/carbon/human/Initialize(mapload, var/new_species = null)
 	if(!dna)
 		dna = new /datum/dna(null)
@@ -38,8 +40,8 @@
 		if(mind)
 			mind.name = real_name
 
-
 	nutrition = rand(200,400)
+	hydration = rand(200,400)
 
 	AddComponent(/datum/component/personal_crafting)
 
@@ -415,7 +417,7 @@
 											BITSET(hud_updateflag, WANTED_HUD)
 											if(istype(usr,/mob/living/carbon/human))
 												var/mob/living/carbon/human/U = usr
-												U.handle_regular_hud_updates()
+												U.handle_hud_list()
 											if(istype(usr,/mob/living/silicon/robot))
 												var/mob/living/silicon/robot/U = usr
 												U.handle_regular_hud_updates()
@@ -677,7 +679,7 @@
 		I.additional_flash_effects(number)
 	return number
 
-/mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/flash)
 	if(internal_organs_by_name[O_EYES]) // Eyes are fucked, not a 'weak point'.
 		var/obj/item/organ/internal/eyes/I = internal_organs_by_name[O_EYES]
 		I.additional_flash_effects(intensity)
@@ -1576,7 +1578,7 @@
 		if(stat == DEAD || paralysis || weakened || stunned || restrained() || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs()) //stunned/knocked down by something that isn't the rest verb? Note: This was tried with INCAPACITATION_STUNNED, but that refused to work. //VORE EDIT: Check for has_buckled_mobs() (taur riding)
 			reveal(null)
 		else
-			layer = HIDING_LAYER
+			set_base_layer(HIDING_LAYER)
 
 /mob/living/carbon/human/proc/get_display_species()
 	//Shows species in tooltip
@@ -1642,3 +1644,37 @@
 
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
+
+/mob/living/carbon/human/inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
+	. = ..()
+	if(isSynthetic())
+		things_to_induce += src
+
+/mob/living/carbon/human/inducer_act(obj/item/inducer/I, amount, inducer_flags)
+	. = ..()
+	if(!isSynthetic())
+		return
+	var/needed = (species.max_nutrition - nutrition)
+	if(needed <= 0)
+		return
+	var/got = min((amount / SYNTHETIC_NUTRITION_CHARGE_RATE), needed)
+	adjust_nutrition(got)
+	return got * SYNTHETIC_NUTRITION_CHARGE_RATE
+
+/mob/living/carbon/human/can_wield_item(obj/item/W)
+	//Since teshari are small by default, they have different logic to allow them to use certain guns despite that.
+	//If any other species need to adapt for this, you can modify this proc with a list instead
+	if(istype(species, /datum/species/teshari))
+		return !W.heavy //return true if it is not heavy, false if it is heavy
+	else return ..()
+
+/mob/living/carbon/human/set_nutrition(amount)
+	nutrition = clamp(amount, 0, species.max_nutrition * 1.5)
+
+/mob/living/carbon/human/get_bullet_impact_effect_type(var/def_zone)
+	var/obj/item/organ/external/E = get_organ(def_zone)
+	if(!E || E.is_stump())
+		return BULLET_IMPACT_NONE
+	if(BP_IS_ROBOTIC(E))
+		return BULLET_IMPACT_METAL
+	return BULLET_IMPACT_MEAT

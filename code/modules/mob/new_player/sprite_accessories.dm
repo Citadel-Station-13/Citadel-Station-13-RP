@@ -521,6 +521,7 @@
 	shortovereye
 		name = "Overeye Short"
 		icon_state = "hair_shortovereye"
+		flags = HAIR_TIEABLE
 
 	veryshortovereyealternate
 		name = "Overeye Very Short, Alternate"

@@ -11,6 +11,10 @@
 	var/mob_passthrough_check = 0
 
 	muzzle_type = /obj/effect/projectile/muzzle/bullet
+	miss_sounds = list('sound/weapons/guns/miss1.ogg','sound/weapons/guns/miss2.ogg','sound/weapons/guns/miss3.ogg','sound/weapons/guns/miss4.ogg')
+	ricochet_sounds = list('sound/weapons/guns/ricochet1.ogg', 'sound/weapons/guns/ricochet2.ogg',
+							'sound/weapons/guns/ricochet3.ogg', 'sound/weapons/guns/ricochet4.ogg')
+	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_BULLET_MEAT, BULLET_IMPACT_METAL = SOUNDS_BULLET_METAL)
 
 /obj/item/projectile/bullet/on_hit(var/atom/target, var/blocked = 0)
 	if (..(target, blocked))
@@ -341,6 +345,14 @@
 /obj/item/projectile/bullet/cyanideround
 	name = "poison bullet"
 	damage = 40
+	damage_type = TOX
+
+/obj/item/projectile/bullet/cyanideround/jezzail
+	name = "toxic penetrator shard"
+	damage = 25
+	armor_penetration = 20
+	agony = 5
+	embed_chance = 1
 	damage_type = TOX
 
 /obj/item/projectile/bullet/burstbullet

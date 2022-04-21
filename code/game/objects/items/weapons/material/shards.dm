@@ -153,3 +153,6 @@
 
 /obj/item/material/shard/phoron/Initialize(mapload, material_key)
 	. = ..(mapload, "phglass")
+
+/obj/item/material/shard/wood/Initialize(mapload, material_key)
+	. = ..(mapload, "wood")

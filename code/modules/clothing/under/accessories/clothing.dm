@@ -128,6 +128,34 @@
 	icon_state = "cargoponcho"
 	item_state = "cargoponcho"
 
+//Rough Cloaks
+/obj/item/clothing/accessory/poncho/rough_cloak
+	name = "rough half cloak"
+	desc = "The latest fashion innovations by the Nanotrasen Uniform & Fashion Department have provided the brilliant invention of slicing a regular cloak in half! All the ponce, half the cost!"
+	icon_state = "roughcloak"
+	item_state = "roughcloak"
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	action_button_name = "Adjust Cloak"
+
+/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]_open"
+		src.item_state = "[item_state]_open"
+		flags_inv = HIDETIE|HIDEHOLSTER
+		to_chat(user, "You flip the cloak over your shoulder.")
+	else
+		src.icon_state = initial(icon_state)
+		src.item_state = initial(item_state)
+		flags_inv = HIDEHOLSTER
+		to_chat(user, "You pull the cloak over your shoulder.")
+	update_clothing_icon()	//so our mob-overlays update
+
+/obj/item/clothing/accessory/poncho/rough_cloak/tan
+	icon_state = "roughcloak_tan"
+	item_state = "roughcloak_tan"
+
 /*
  * Cloak
  */
@@ -484,3 +512,23 @@
 	name = "green asymmetrical jacket"
 	desc = "Insultingly avant-garde in aqua."
 	icon_state = "asym_green"
+
+//Antediluvian
+
+/obj/item/clothing/accessory/poncho/antediluvian
+	name = "Antediluvian cloak"
+	desc = "An off white cloak with a golden lining, held on by a golden clasp. The back of the cloak bears an unfamiliar device, which seems to have served as a significator of social status."
+	icon_state = "antediluvian_cloak"
+	item_state = "antediluvian_cloak"
+
+/obj/item/clothing/accessory/antediluvian
+	name = "Antediluvian loincloth"
+	desc = "A narrow black loincloth. Based on its cut and the multitude of connection points, it seems this cloth served a decorative purpose, rather than providing utility."
+	icon_state = "antediluvian_loin"
+	slot = ACCESSORY_SLOT_DECOR
+
+/obj/item/clothing/accessory/antediluvian_gloves
+	name = "Antediluvian bracers"
+	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection."
+	icon_state = "antediluvian"
+	//body_parts_covered = HANDS|ARMS
