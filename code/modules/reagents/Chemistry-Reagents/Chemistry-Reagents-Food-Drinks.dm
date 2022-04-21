@@ -279,7 +279,7 @@
 	if(!istype(T))
 		return
 
-	var/hotspot = (locate(/obj/fire) in T)
+	var/hotspot = (locate(/atom/movable/fire) in T)
 	if(hotspot && !istype(T, /turf/space))
 		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
@@ -305,7 +305,7 @@ End Citadel Change */
 	if(!istype(T))
 		return
 
-	var/hotspot = (locate(/obj/fire) in T)
+	var/hotspot = (locate(/atom/movable/fire) in T)
 	if(hotspot && !istype(T, /turf/space))
 		var/datum/gas_mixture/lowertemp = T.remove_cell_volume()
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)

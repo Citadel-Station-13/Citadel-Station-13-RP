@@ -40,7 +40,7 @@
 	var/old_lc_bottomright = lc_bottomright
 	var/old_lc_bottomleft = lc_bottomleft
 
-	var/obj/fire/old_fire = fire
+	var/atom/movable/fire/old_fire = fire
 	var/old_outdoors = outdoors
 	var/old_dangerous_objects = dangerous_objects
 

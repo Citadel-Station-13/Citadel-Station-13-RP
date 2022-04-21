@@ -9,7 +9,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 //#define FIREDBG
 
 /turf
-	var/obj/fire/fire
+	var/atom/movable/fire/fire
 
 //Some legacy definitions so fires can be started.
 /atom/proc/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -22,7 +22,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 /turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh)
 	if(fire_protection > world.time-300)
 		return 0
-	if(locate(/obj/fire) in src)
+	if(locate(/atom/movable/fire) in src)
 		return 1
 	var/datum/gas_mixture/air_contents = return_air()
 	if(!air_contents || exposed_temperature < PHORON_MINIMUM_BURN_TEMPERATURE)
@@ -107,7 +107,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 	return 0
 
-/obj/fire
+/atom/movable/fire
 	//Icon for fire on turfs.
 
 	anchored = 1
@@ -122,7 +122,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 	var/firelevel = 1 //Calculated by gas_mixture.calculate_firelevel()
 
-/obj/fire/process(delta_time)
+/atom/movable/fire/process(delta_time)
 	. = 1
 
 	var/turf/simulated/my_tile = loc
@@ -184,7 +184,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	animate(src, color = fire_color(air_contents.temperature), 5)
 	set_light(l_color = color)
 
-/obj/fire/Initialize(mapload, fl)
+/atom/movable/fire/Initialize(mapload, fl)
 	. = ..()
 
 	if(!istype(loc, /turf))
@@ -199,16 +199,16 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	firelevel = fl
 	air_master.active_hotspots.Add(src)
 
-/obj/fire/proc/fire_color(var/env_temperature)
+/atom/movable/fire/proc/fire_color(var/env_temperature)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	var/temperature = max(4000*sqrt(firelevel/firelevel_multiplier), env_temperature)
 	return heat2color(temperature)
 
-/obj/fire/Destroy()
+/atom/movable/fire/Destroy()
 	RemoveFire()
 	return ..()
 
-/obj/fire/proc/RemoveFire()
+/atom/movable/fire/proc/RemoveFire()
 	var/turf/T = loc
 	if (istype(T))
 		set_light(0)

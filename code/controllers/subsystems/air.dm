@@ -187,7 +187,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	var/list/currentrun = src.currentrun
 	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
-		var/obj/fire/fire = currentrun[currentrun.len]
+		var/atom/movable/fire/fire = currentrun[currentrun.len]
 		currentrun.len--
 		if(fire) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
 			fire.process(dt)
