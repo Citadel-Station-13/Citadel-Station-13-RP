@@ -31,7 +31,7 @@
  */
 /atom/proc/remove_moles(moles)
 	RETURN_TYPE(/datum/gas_mixture)
-	return return_air()?.remove_moles(moles)
+	return return_air()?.remove(moles)
 
 /**
  * removes a gas mixture of x volume
@@ -83,7 +83,7 @@
  * return temperature of air
  */
 /atom/proc/return_temperature()
-	return return_air()?.return_temperature()
+	return return_air()?.temperature
 
 /**
  * gets moles of gas in a single turf's worth of air
