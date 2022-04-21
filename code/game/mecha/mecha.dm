@@ -1593,26 +1593,11 @@
 ////////  Atmospheric stuff  ////////
 /////////////////////////////////////
 
-/obj/mecha/proc/get_turf_air()
-	var/turf/T = get_turf(src)
-	if(T)
-		. = T.return_air()
-	return
-
-/obj/mecha/remove_air(amount)
-	var/obj/item/mecha_parts/component/gas/GC = internal_components[MECH_GAS]
-	if(use_internal_tank && (GC && prob(GC.get_efficiency() * 100)))
-		return cabin_air.remove(amount)
-	else
-		var/turf/T = get_turf(src)
-		if(T)
-			return T.remove_air(amount)
-	return
-
 /obj/mecha/return_air()
-	if(use_internal_tank)
+	var/obj/item/mecha_parts/component/gas/GC = internal_components[MECH_GAS]
+	if(use_internal_tank && GC && prob(GC.get_efficiency() * 100))
 		return cabin_air
-	return get_turf_air()
+	return loc?.return_air()
 
 /obj/mecha/proc/return_pressure()
 	. = 0

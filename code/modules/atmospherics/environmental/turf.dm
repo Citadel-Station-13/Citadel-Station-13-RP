@@ -14,9 +14,10 @@
 	#warn refactor uses
 
 /area/return_air()
-	return null
+	CRASH("How was /area reached?")
 
 /turf/return_air()
+	RETURN_TYPE(/datum/gas_mixture)
 	//Create gas mixture to hold data for passing
 	var/datum/gas_mixture/GM = new
 	GM.copy_from_turf(src)
@@ -24,6 +25,7 @@
 
 // ATMOS_TODO: remove /unsimulated
 /turf/simulated/return_air()
+	RETURN_TYPE(/datum/gas_mixture)
 	if(zone)
 		if(!zone.invalid)
 			air_master.mark_zone_update(zone)

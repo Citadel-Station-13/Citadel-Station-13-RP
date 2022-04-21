@@ -27,9 +27,10 @@
 	return loc?.remove_moles(moles)
 
 /area/remove_moles(moles)
-	return
+	CRASH("How was /area reached?")
 
 /turf/remove_moles(moles)
+	RETURN_TYPE(/datum/gas_mixture)
 	return return_air()?.remove(moles)
 
 /**
@@ -40,23 +41,11 @@
 	return loc?.remove_volume(liters)
 
 /area/remove_volume(liters)
-	return
+	CRASH("How was /area reached?")
 
 /turf/remove_volume(liters)
-	return return_air()?.remove_volume(liters)
-
-/**
- * removes a gas mixture of a ratio from 0 to 1
- */
-/atom/proc/remove_ratio(ratio)
 	RETURN_TYPE(/datum/gas_mixture)
-	return loc?.remove_air_ratio(ratio)
-
-/area/remove_ratio(ratio)
-	return
-
-/turf/remove_ratio(ratio)
-	return return_air()?.remove_ratio(ratio)
+	return return_air()?.remove_volume(liters)
 
 /**
  * add/remove thermal energy from air
@@ -65,7 +54,7 @@
 	return loc?.add_thermal_energy(joules)
 
 /area/add_thermal_energy(joules)
-	return
+	CRASH("How was /area reached?")
 
 /turf/add_thermal_energy(joules)
 	return_air().add_thermal_energy(joules)
@@ -77,7 +66,33 @@
 	return loc?.get_thermal_energy_change(target_temperature)
 
 /area/get_thermal_energy_change(target_temperature)
-	return
+	CRASH("How was /area reached?")
 
 /turf/get_thermal_energy_change(target_temperature)
 	return return_air()?.get_thermal_energy_change(target_temperature) || 0
+
+/**
+ * remove CELL_VOLUME's worth of air
+ */
+/atom/proc/remove_cell_volume()
+	RETURN_TYPE(/datum/gas_mixture)
+	return remove_volume(CELL_VOLUME)
+
+/**
+ * remove a multiple of CELL_VOLUME's worth of air
+ */
+/atom/proc/remove_cell_volumes(multiplier = 1)
+	RETURN_TYPE(/datum/gas_mixture)
+	return remove_volume(CELL_VOLUME * multiplier)
+
+/**
+ * return pressure
+ */
+/atom/proc/return_pressure()
+	return loc?.return_pressure()
+
+/area/return_pressure()
+	CRASH("How was /area reached?")
+
+/turf/return_pressure()
+	return return_air().return_pressure()
