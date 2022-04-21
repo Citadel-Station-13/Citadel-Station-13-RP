@@ -461,7 +461,7 @@
 		var/o2_level = environment.gas[/datum/gas/oxygen]/total_moles
 		var/n2_level = environment.gas[/datum/gas/nitrogen]/total_moles
 		var/co2_level = environment.gas[/datum/gas/carbon_dioxide]/total_moles
-		var/phoron_level = environment.gas[/datum/gas/phoron]]/total_moles
+		var/phoron_level = environment.gas[/datum/gas/phoron]/total_moles
 		var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 		aircontents = list(\
 			"pressure" = "[round(pressure,0.1)]",\

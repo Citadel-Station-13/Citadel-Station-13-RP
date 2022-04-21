@@ -1594,6 +1594,7 @@
 /////////////////////////////////////
 
 /obj/mecha/return_air()
+	RETURN_TYPE(/datum/gas_mixture)
 	var/obj/item/mecha_parts/component/gas/GC = internal_components[MECH_GAS]
 	if(use_internal_tank && GC && prob(GC.get_efficiency() * 100))
 		return cabin_air

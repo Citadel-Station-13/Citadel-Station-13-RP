@@ -183,7 +183,7 @@
 
 	// Is there enough air to flap against?
 	var/pressure = landing.return_pressure()
-	if(pressure (ONE_ATMOSPHERE * 0.75))
+	if(pressure < (ONE_ATMOSPHERE * 0.75))
 		if(!silent)
 			to_chat(H, SPAN_WARNING("You spread your wings to slow your fall, but the air is too thin!"))
 		return ..()
