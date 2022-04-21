@@ -39,7 +39,7 @@ Class Procs:
 
 */
 
-/zone
+/datum/zas_zone
 	var/name
 	var/invalid = 0
 	var/list/contents = list()

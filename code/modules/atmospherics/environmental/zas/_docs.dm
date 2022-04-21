@@ -26,3 +26,5 @@ Notes for people who used ZAS before:
 		var/datum/zas_zone/connected_zone = edge.get_connected_zone(zone)
 
 */
+
+// everything in this folder is pending moving
