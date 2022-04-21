@@ -1,6 +1,0 @@
-author: "plumeofsmoke"
-delete-after: True
-changes: 
-  - rscadd: "Added new updated names and terms"
-  - rscdel: "Removed old and outdated terms"
-  - bugfix: "Fixed old terms and corrected information"

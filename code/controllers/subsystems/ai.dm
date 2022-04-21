@@ -8,6 +8,8 @@ SUBSYSTEM_DEF(ai)
 
 	var/list/processing = list()
 	var/list/currentrun = list()
+	var/list/busy_z_levels = list()
+	var/slept_mobs = 0
 
 /datum/controller/subsystem/ai/stat_entry(msg_prefix)
 	var/list/msg = list(msg_prefix)
@@ -17,6 +19,13 @@ SUBSYSTEM_DEF(ai)
 /datum/controller/subsystem/ai/fire(resumed = 0)
 	if (!resumed)
 		src.currentrun = processing.Copy()
+		slept_mobs = 0
+		busy_z_levels.Cut()
+		for(var/played_mob in player_list)
+			if(!played_mob || isobserver(played_mob))
+				continue
+			var/mob/pm = played_mob
+			busy_z_levels |= pm.z
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
@@ -26,6 +35,12 @@ SUBSYSTEM_DEF(ai)
 		var/datum/ai_holder/A = currentrun[currentrun.len]
 		--currentrun.len
 		if(!A || QDELETED(A)) // Doesn't exist or won't exist soon.
+			continue
+		var/mob/M = null
+		if(A.holder)
+			M = A.holder
+		if(M && M.low_priority && !(M.z in busy_z_levels))
+			slept_mobs++
 			continue
 		if(times_fired % 4 == 0 && A.holder.stat != DEAD)
 			A.handle_strategicals()

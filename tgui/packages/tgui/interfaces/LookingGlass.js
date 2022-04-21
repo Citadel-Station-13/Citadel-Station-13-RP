@@ -33,7 +33,7 @@ export const LookingGlass = (props, context) => {
         </Section>
         <Section title="Controls">
           <LabeledList>
-            <LabeledList.Item label="Gravity"> 
+            <LabeledList.Item label="Gravity">
               <Button
                 fluid
                 icon="user-astronaut"

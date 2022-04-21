@@ -108,7 +108,7 @@
 			avatar.real_name = newname
 
 		avatar.forceMove(T)
-		visible_message("<span class='alium'>\The [src] [pick("gurgles", "churns", "sloshes")] before spitting out \the [avatar]!</span>")
+		visible_message("<span class='green'>\The [src] [pick("gurgles", "churns", "sloshes")] before spitting out \the [avatar]!</span>")
 
 	else
 

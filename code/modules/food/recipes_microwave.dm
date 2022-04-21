@@ -217,7 +217,6 @@ I said no!
 	)
 	result = /obj/item/reagent_containers/food/snacks/wingfangchu
 
-
 /datum/recipe/humankabob
 	items = list(
 		/obj/item/stack/rods,
@@ -1560,3 +1559,27 @@ I said no!
 		/obj/item/reagent_containers/food/snacks/meat
 	)
 	result = /obj/item/reagent_containers/food/snacks/wormburger
+
+/datum/recipe/spider_wingfangchu
+	reagents = list("soysauce" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat
+	)
+	result = /obj/item/reagent_containers/food/snacks/spider_wingfangchu
+
+/datum/recipe/steamedspider
+	reagents = list("water" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/spreads/butter,
+		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat
+	)
+	result = /obj/item/reagent_containers/food/snacks/steamedspider
+
+/datum/recipe/saplingsdelight
+	items = list(
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/badrecipe
+	)
+	result = /obj/item/reagent_containers/food/snacks/saplingsdelight

@@ -571,9 +571,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "cq" = (
-/obj/structure/closet/crate{
-	dir = 2
-	},
+/obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/ship/manta/hallways_star)
 "cr" = (
@@ -1224,7 +1222,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "fR" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -2243,7 +2241,7 @@
 /area/ship/manta/recreation)
 "kF" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/stack/nanopaste/advanced,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/manager,
@@ -6702,7 +6700,7 @@
 /area/ship/manta/barracks)
 "Fx" = (
 /obj/structure/table/rack,
-/obj/item/gun/launcher/rocket,
+/obj/item/gun/projectile/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
@@ -6782,9 +6780,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/machinery/shield_gen{
-	
-	},
+/obj/machinery/power/shield_generator/charged,
 /obj/structure/cable/orange{
 	d2 = 2;
 	icon_state = "0-2"
@@ -9018,7 +9014,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_as)
 "RO" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -9080,9 +9076,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "RZ" = (
-/obj/structure/closet/crate{
-	dir = 2
-	},
+/obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/ship/manta/dock_port)
 "Sa" = (

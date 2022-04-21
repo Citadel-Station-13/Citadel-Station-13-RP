@@ -251,6 +251,7 @@
 	caliber = "12g"
 	projectile_type = /obj/item/projectile/bullet/shotgun
 	matter = list(DEFAULT_WALL_MATERIAL = 360)
+	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
 
 /obj/item/ammo_casing/a12g/pellet
 	name = "shotgun shell"
@@ -527,6 +528,11 @@
 	caliber = "rocket"
 	matter = list(DEFAULT_WALL_MATERIAL = 10000)
 
+/obj/item/ammo_casing/rocket/weak
+	name = "low-yield rocket shell"
+	projectile_type = /obj/item/projectile/bullet/srmrocket/weak
+	matter = list(DEFAULT_WALL_MATERIAL = 5000)
+
 /obj/item/ammo_casing/cap
 	name = "cap"
 	desc = "A cap for children toys."
@@ -598,3 +604,22 @@
 	desc = "It's a plunger, for plunging."
 	icon_state = "plunger"
 	projectile_type = /obj/item/projectile/bullet/reusable/plunger
+
+//Foam Darts
+/obj/item/ammo_casing/foam
+	name = "foam dart"
+	desc = "A soft projectile made out of orange foam with a blue plastic tip."
+	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	caliber = "foamdart"
+	icon_state = "foamdart"
+	throwforce = 0 //good luck hitting someone with the pointy end of the arrow
+	throw_speed = 3
+	caseless = 1
+	drop_sound = 'sound/items/drop/accessory.ogg'
+	pickup_sound = 'sound/items/pickup/accessory.ogg'
+
+/obj/item/ammo_casing/foam/riot
+	name = "riot dart"
+	desc = "A flexible projectile made out of hardened orange foam with a red plastic tip."
+	projectile_type = /obj/item/projectile/bullet/reusable/foam/riot
+	icon_state = "foamdart_riot"

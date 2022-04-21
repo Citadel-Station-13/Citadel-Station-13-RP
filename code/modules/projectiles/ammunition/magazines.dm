@@ -121,6 +121,16 @@
 /obj/item/ammo_magazine/m45uzi/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/m45uzi/wt274
+	name = "double-stack magazine (.45)"
+	icon_state = "wt274"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/a45
+	matter = list(DEFAULT_WALL_MATERIAL = 2400)
+	caliber = ".45"
+	max_ammo = 32
+	multiple_sprites = 1
+
 /obj/item/ammo_magazine/m45tommy
 	name = "Tommy Gun magazine (.45)"
 	icon_state = "tommy-mag"
@@ -460,14 +470,14 @@
 /////// 5.7x28mm ////////
 /obj/item/ammo_magazine/m57x28mm
 	name = "magazine (5.7x28mm)"
-	desc = "A sturdy double stack magazine with a reinforced spring, designed for withstanding rough treatment."
+	desc = "A durable top-loading magazine, designed for withstanding rough treatment."
 	icon_state = "fiveseven"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
 	matter = list(DEFAULT_WALL_MATERIAL = 300, "copper" = 300)
 	caliber = "5.7x28mm"
 	ammo_type = /obj/item/ammo_casing/a57x28mm
-	max_ammo = 15
+	max_ammo = 20
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m57x28mm/ap
@@ -511,6 +521,62 @@
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
 
 /obj/item/ammo_magazine/m57x28mm/large/empty
+	initial_ammo = 0
+
+//Vintage Mags
+/obj/item/ammo_magazine/m57x28mm/vintage
+	name = "vinage magazine (5.7x28mm)"
+	desc = "A sturdy double stack magazine with a reinforced spring, designed for withstanding rough treatment."
+	icon_state = "fiveseven_old"
+	origin_tech = list(TECH_COMBAT = 2)
+	mag_type = MAGAZINE
+	matter = list(DEFAULT_WALL_MATERIAL = 300, "copper" = 300)
+	caliber = "5.7x28mm"
+	ammo_type = /obj/item/ammo_casing/a57x28mm
+	max_ammo = 15
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m57x28mm/vintage/ap
+	name = "magazine (5.7x28mm armor piercing)"
+	desc = "A standard capacity magazine loaded with armor piercing bullets."
+	ammo_mark = "ap"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
+
+/obj/item/ammo_magazine/m57x28mm/vintage/hp
+	name = "magazine (5.7x28mm hollow-point)"
+	ammo_mark = "hp"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
+
+/obj/item/ammo_magazine/m57x28mm/vintage/hunter
+	name = "magazine (5.7x28mm hunter)"
+	ammo_mark = "hunter"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
+
+/obj/item/ammo_magazine/m57x28mm/vintage/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/m57x28mm/vintage/large
+	name = "large capacity vintage magazine (5.7x28mm)"
+	icon_state = "fiveseven_highcap"
+	max_ammo = 30
+	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
+
+/obj/item/ammo_magazine/m57x28mm/vintage/large/ap
+	name = "large capacity magazine (5.7x28mm armor piercing)"
+	desc = "A high capacity magazine loaded with armor piercing bullets."
+	ammo_mark = "ap"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
+/obj/item/ammo_magazine/m57x28mm/vintage/large/hp
+	name = "large capacity magazine (5.7x28mm hollow-point)"
+	ammo_mark = "hp"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
+
+/obj/item/ammo_magazine/m57x28mm/vintage/large/hunter
+	name = "large capacity magazine (5.7x28mm hunter)"
+	ammo_mark = "hunter"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
+
+/obj/item/ammo_magazine/m57x28mm/vintage/large/empty
 	initial_ammo = 0
 
 //p90
@@ -968,3 +1034,73 @@
 	matter = list("wax" = 1000)
 	max_ammo = 10
 	multiple_sprites = 1
+
+//Foam
+/obj/item/ammo_magazine/mfoam
+	name = "abstract toy magazine"
+	desc = "You shouldn't be seeing this, contact a Maintainer!"
+	icon_state = "toy_pistol"
+	mag_type = MAGAZINE
+	matter = list("plastic" = 480)
+	caliber = "foamdart"
+	ammo_type = /obj/item/ammo_casing/foam
+	max_ammo = 8
+	multiple_sprites = 1
+
+//Foam Pistol
+/obj/item/ammo_magazine/mfoam/pistol
+	name = "toy pistol magazine"
+	desc = "A plastic pistol magazine for foam darts!"
+
+/obj/item/ammo_magazine/mfoam/pistol/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/mfoam/pistol/riot
+	name = "toy pistol magazine (riot)"
+	ammo_type = /obj/item/ammo_casing/foam/riot
+
+//Foam c20r
+/obj/item/ammo_magazine/mfoam/c20
+	name = "toy c20r magazine"
+	desc = "A plastic recreation of the classic c20r submachine gun."
+	icon_state = "toy_c20"
+	matter = list("plastic" = 1500)
+	max_ammo = 20
+
+/obj/item/ammo_magazine/mfoam/c20/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/mfoam/c20/riot
+	name = "toy c20r magazine (riot)"
+	ammo_type = /obj/item/ammo_casing/foam/riot
+
+//Foam LMG
+/obj/item/ammo_magazine/mfoam/lmg
+	name = "toy magazine box"
+	desc = "A heavy plastic box designed to hold belts of foam darts! Wow!"
+	icon_state = "toy_lmg"
+	matter = list("plastic" = 10000)
+	w_class = ITEMSIZE_NORMAL
+	max_ammo = 50
+
+/obj/item/ammo_magazine/mfoam/lmg/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/mfoam/lmg/riot
+	name = "toy magazine box (riot)"
+	ammo_type = /obj/item/ammo_casing/foam/riot
+
+//Foam SMGs
+/obj/item/ammo_magazine/mfoam/smg
+	name = "toy submachine gun magazine"
+	desc = "A plastic recreation of a double-stack submachine gun magazine."
+	icon_state = "toy_smg"
+	matter = list("plastic" = 1200)
+	max_ammo = 20
+
+/obj/item/ammo_magazine/mfoam/smg/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/mfoam/smg/riot
+	name = "toy submachine gun magazine (riot)"
+	ammo_type = /obj/item/ammo_casing/foam/riot

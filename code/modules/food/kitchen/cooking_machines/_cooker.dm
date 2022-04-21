@@ -49,7 +49,7 @@
 		cooking_objs.Add(new /datum/cooking_item/(new container_type(src)))
 	cooking = 0
 
-	update_icon() // this probably won't cause issues, but Aurora used SSIcons and queue_icon_update() instead
+	update_icon() // this probably won't cause issues, but Aurora used SSIcons and update_icon() instead
 
 /obj/machinery/appliance/cooker/update_icon()
 	cut_overlays()
@@ -73,7 +73,7 @@
 
 /obj/machinery/appliance/cooker/power_change()
 	. = ..()
-	update_icon() // this probably won't cause issues, but Aurora used SSIcons and queue_icon_update() instead
+	update_icon() // this probably won't cause issues, but Aurora used SSIcons and update_icon() instead
 
 /obj/machinery/appliance/cooker/proc/update_cooking_power()
 	var/temp_scale = 0

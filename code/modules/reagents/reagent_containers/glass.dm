@@ -34,7 +34,7 @@
 		/obj/machinery/atmospherics/unary/cryo_cell,
 		/obj/machinery/dna_scannernew,
 		/obj/item/grenade/chem_grenade,
-		/mob/living/bot/medbot,
+		/mob/living/bot/medibot,
 		/obj/item/storage/secure/safe,
 		/obj/machinery/iv_drip,
 		/obj/machinery/disease2/incubator,
@@ -345,3 +345,40 @@ obj/item/reagent_containers/glass/bucket/wood
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
+
+//I don't really know where else to put this. Nothing else looks right.
+/obj/item/reagent_containers/portable_fuelcan
+	name = "small fuel canister"
+	desc = "A small fuel canister used to refuel tools and gear in the field."
+	icon = 'icons/obj/tank.dmi'
+	icon_state = "portable_fuelcan"
+	matter = list("metal" = 2000)
+	w_class = ITEMSIZE_SMALL
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(10,20,50,100)
+	volume = 60
+
+/obj/item/reagent_containers/portable_fuelcan/afterattack(obj/O as obj, mob/user as mob, proximity)
+	if(!proximity)
+		return
+	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+		O.reagents.trans_to_obj(src, volume)
+		to_chat(user, "<span class='notice'>You refill [src].</span>")
+		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
+		return
+
+/obj/item/reagent_containers/portable_fuelcan/examine(mob/user)
+	. = ..()
+	if(volume)
+		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.volume] units of fuel!"
+
+/obj/item/reagent_containers/portable_fuelcan/proc/get_fuel()
+	return reagents.get_reagent_amount("fuel")
+
+/obj/item/reagent_containers/portable_fuelcan/miniature
+	name = "miniature fuel canister"
+	desc = "A tiny fuel canister used to refuel tools and gear in the field. Useful for single recharges."
+	icon_state = "portable_fuelcan_tiny"
+	matter = list("metal" = 500)
+	w_class = ITEMSIZE_TINY
+	volume = 20

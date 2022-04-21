@@ -4,26 +4,31 @@
 /obj/machinery/organ_printer
 	name = "organ printer"
 	desc = "It's a machine that prints organs."
-	icon = 'icons/obj/surgery.dmi'
+	icon = 'icons/obj/machines/fabricators/bioprinter.dmi'
 	icon_state = "bioprinter"
+	base_icon_state = "bioprinter"
 
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
 	active_power_usage = 300
-
-	var/obj/item/reagent_containers/container = null		// This is the beaker that holds all of the biomass
+	///This is the beaker that holds all of the biomass
+	var/obj/item/reagent_containers/container = null
 
 	var/print_delay = 100
-	var/base_print_delay = 100	// For Adminbus reasons
-	var/printing = FALSE // is the bioprinter printing
-	var/loaded_dna //Blood sample for DNA hashing.
-	var/malfunctioning = FALSE	// May cause rejection, or the printing of some alien limb instead!
-
-	var/complex_organs = FALSE	// Can it print more 'complex' organs?
-
-	var/anomalous_organs = FALSE	// Can it print anomalous organs?
+	///For Adminbus reasons
+	var/base_print_delay = 100
+	///Is the bioprinter printing
+	var/printing = FALSE
+	///Blood sample for DNA hashing.
+	var/loaded_dna
+	///May cause rejection, or the printing of some alien limb instead!
+	var/malfunctioning = FALSE
+	///Can it print more 'complex' organs?
+	var/complex_organs = FALSE
+	/// Can it print anomalous organs?
+	var/anomalous_organs = FALSE
 
 	// These should be subtypes of /obj/item/organ
 	// Costs roughly 20u Phoron (1 sheet) per internal organ, limbs are 60u for limb and extremity
@@ -56,6 +61,26 @@
 		"Adrenal Valve Cluster" = list(/obj/item/organ/internal/heart/replicant/rage, 80)
 		)
 
+/obj/machinery/organ_printer/Initialize(mapload, newdir)
+	. = ..()
+	default_apply_parts()
+	RefreshParts()
+
+/obj/machinery/organ_printer/update_icon_state()
+	. = ..()
+	if(stat & NOPOWER)
+		icon_state = "[base_icon_state]-off"
+	else
+		icon_state = base_icon_state
+
+/obj/machinery/organ_printer/update_overlays()
+	. = ..()
+	cut_overlays()
+	if(panel_open)
+		add_overlay("[base_icon_state]-panel")
+	if(printing)
+		add_overlay("[base_icon_state]-active")
+
 /obj/machinery/organ_printer/attackby(var/obj/item/O, var/mob/user)
 	if(default_deconstruction_screwdriver(user, O))
 		updateUsrDialog()
@@ -68,24 +93,13 @@
 		return
 	return ..()
 
-/obj/machinery/organ_printer/update_icon()
-	cut_overlays()
-	if(panel_open)
-		add_overlay("bioprinter_panel_open")
-	if(printing)
-		add_overlay("bioprinter_working")
-
-/obj/machinery/organ_printer/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/organ_printer/examine(var/mob/user)
 	. = ..()
 	var/biomass = get_biomass_volume()
 	if(biomass)
-		. +="<span class='notice'>It is loaded with [biomass] units of biomass.</span>"
+		. += SPAN_INFO("It is loaded with [biomass] units of biomass.")
 	else
-		. += "<span class='notice'>It is not loaded with any biomass.</span>"
+		. += SPAN_INFO("It is not loaded with any biomass.")
 
 /obj/machinery/organ_printer/RefreshParts()
 	// Print Delay updating
@@ -134,7 +148,7 @@
 		if(response == "Print Limbs")
 			printing_menu(user)
 	else
-		to_chat(user, "<span class='warning'>\The [src] can't operate without a reagent reservoir!</span>")
+		to_chat(user, SPAN_WARNING("\The [src] can't operate without a reagent reservoir!"))
 
 /obj/machinery/organ_printer/proc/printing_menu(mob/user)
 	var/list/possible_list = list()
@@ -159,15 +173,15 @@
 
 	update_use_power(USE_POWER_ACTIVE)
 	printing = TRUE
-	update_icon()
+	update_appearance()
 
-	visible_message("<span class='notice'>\The [src] begins churning.</span>")
+	visible_message(SPAN_NOTICE("\The [src] begins churning."))
 
 	sleep(print_delay)
 
 	update_use_power(USE_POWER_IDLE)
 	printing = FALSE
-	update_icon()
+	update_appearance()
 
 	if(!choice || !src || (stat & (BROKEN|NOPOWER)))
 		return
@@ -209,11 +223,11 @@
 /obj/machinery/organ_printer/proc/can_print(var/choice, var/biomass_needed = 0)
 	var/biomass = get_biomass_volume()
 	if(biomass < biomass_needed)
-		visible_message("<span class='notice'>\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [biomass_needed] needed.'</span>")
+		visible_message(SPAN_INFO("\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [biomass_needed] needed.'"))
 		return 0
 
 	if(!loaded_dna || !loaded_dna["donor"])
-		visible_message("<span class='info'>\The [src] displays a warning: 'No DNA saved. Insert a blood sample.'</span>")
+		visible_message(SPAN_INFO("\The [src] displays a warning: 'No DNA saved. Insert a blood sample.'"))
 		return 0
 
 	return 1
@@ -265,7 +279,6 @@
 /obj/machinery/organ_printer/flesh
 	name = "bioprinter"
 	desc = "It's a machine that prints replacement organs."
-	icon_state = "bioprinter"
 	circuit = /obj/item/circuitboard/bioprinter
 
 /obj/machinery/organ_printer/flesh/full/Initialize(mapload, newdir)
@@ -283,8 +296,8 @@
 /obj/machinery/organ_printer/flesh/print_organ(var/choice)
 	var/obj/item/organ/O = ..()
 
-	playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
-	visible_message("<span class='info'>\The [src] dings, then spits out \a [O].</span>")
+	playsound(src.loc, 'sound/machines/ding.ogg', 50, TRUE)
+	visible_message(SPAN_INFO("\The [src] dings, then spits out \a [O]."))
 	return O
 
 /obj/machinery/organ_printer/flesh/attackby(obj/item/W, mob/user)
@@ -295,12 +308,12 @@
 		if(injected && injected.data)
 			loaded_dna = injected.data
 			S.reagents.remove_reagent("blood", injected.volume)
-			to_chat(user, "<span class='info'>You scan the blood sample into the bioprinter.</span>")
+			to_chat(user, SPAN_INFO("You scan the blood sample into the bioprinter."))
 		return
 	else if(istype(W,/obj/item/reagent_containers/glass))
 		var/obj/item/reagent_containers/glass/G = W
 		if(container)
-			to_chat(user, "<span class='warning'>\The [src] already has a container loaded!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] already has a container loaded!"))
 			return
 		else if(do_after(user, 1 SECOND))
 			user.visible_message("[user] has loaded \the [G] into \the [src].", "You load \the [G] into \the [src].")

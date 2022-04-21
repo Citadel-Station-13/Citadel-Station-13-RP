@@ -1214,13 +1214,13 @@
 /area/tradeport/cafeteria)
 "ek" = (
 /obj/structure/table/rack,
-/obj/item/kit/paint/ripley/death,
-/obj/item/kit/paint/ripley/flames_blue,
-/obj/item/kit/paint/ripley/flames_red,
-/obj/item/kit/paint/ripley,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/random/paintkit,
+/obj/random/paintkit,
+/obj/random/paintkit,
+/obj/random/paintkit,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "el" = (
@@ -6014,7 +6014,7 @@
 /area/tradeport/atmospherics)
 "vC" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/stack/nanopaste{
 	pixel_x = -7;
 	pixel_y = -4
@@ -6213,6 +6213,7 @@
 "wb" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
+/obj/item/material/knife/tacknife/dataknife,
 /obj/item/gun/energy/frontier/taj,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -12611,12 +12612,11 @@
 /area/tradeport/commons)
 "Uo" = (
 /obj/structure/table/rack,
-/obj/item/kit/paint/gygax/darkgygax,
-/obj/item/kit/paint/gygax/recitence,
-/obj/item/kit/paint/durand,
-/obj/item/kit/paint/durand/phazon,
-/obj/item/kit/paint/durand/seraph,
 /obj/effect/floor_decal/industrial/warning,
+/obj/item/kit/paint/honker,
+/obj/random/paintkit/durand,
+/obj/random/paintkit/gygax,
+/obj/random/paintkit/gygax,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Uq" = (

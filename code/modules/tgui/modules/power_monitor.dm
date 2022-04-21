@@ -82,4 +82,4 @@
 // Subtype for self_state
 /datum/tgui_module/power_monitor/robot
 /datum/tgui_module/power_monitor/robot/ui_state(mob/user)
-	return GLOB.tgui_self_state
+	return GLOB.self_state

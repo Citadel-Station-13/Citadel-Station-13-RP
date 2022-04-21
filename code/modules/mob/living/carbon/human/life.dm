@@ -89,7 +89,7 @@
 		if(!client)
 			species.handle_npc(src)
 
-	if(!handle_some_updates())
+	if(skip_some_updates())
 		return											//We go ahead and process them 5 times for HUD images and other stuff though.
 
 	//Update our name based on whether our face is obscured/disfigured
@@ -97,10 +97,10 @@
 
 	pulse = handle_pulse()
 
-/mob/living/carbon/human/proc/handle_some_updates()
+/mob/living/carbon/human/proc/skip_some_updates()
 	if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle
-		return 0
-	return 1
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/breathe()
 	if(!inStasisNow())
@@ -848,7 +848,7 @@
 //				log_debug("Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 	else if(bodytemperature > species.heat_level_1) //360.15 is 310.15 + 50, the temperature where you start to feel effects.
-		//We totally need a sweat system cause it totally makes sense...~
+		adjust_hydration(-(10 * DEFAULT_THIRST_FACTOR)) //Sweating
 		var/recovery_amt = min((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)	//We're dealing with negative numbers
 		//to_chat(world, "Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
@@ -965,14 +965,23 @@
 			if(!isnull(mod.metabolism_percent))
 				nutrition_reduction *= mod.metabolism_percent
 
-		nutrition = max (0, nutrition - nutrition_reduction)
+		adjust_nutrition(-nutrition_reduction)
 
-	if (nutrition > 450)
+	if (nutrition > species.max_nutrition)
 		if(overeatduration < 600) //capped so people don't take forever to unfat
 			overeatduration++
 	else
 		if(overeatduration > 1)
 			overeatduration -= 2 //doubled the unfat rate
+
+	// hydration decrease
+	if (hydration > 0 && stat != DEAD)
+		var/hydration_reduction = species.thirst_factor
+
+		for(var/datum/modifier/mod in modifiers)
+			if(!isnull(mod.metabolism_percent)) //Metabolism affects thirst too in this weird world.
+				hydration_reduction *= mod.metabolism_percent
+		adjust_hydration(-hydration_reduction)
 
 	if(noisy == TRUE && nutrition < 250 && prob(10)) //VOREStation edit for hunger noises.
 		var/sound/growlsound = sound(get_sfx("hunger_sounds"))
@@ -990,8 +999,8 @@
 
 //DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
 /mob/living/carbon/human/handle_regular_UI_updates()
-	if(!handle_some_updates())
-		return 0
+	if(skip_some_updates())
+		return FALSE
 
 	if(status_flags & GODMODE)	return 0
 
@@ -1268,6 +1277,14 @@
 				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"
 
+		if(hydration_icon)
+			switch(hydration)
+				if(450 to INFINITY)				hydration_icon.icon_state = "hydration0"
+				if(350 to 450)					hydration_icon.icon_state = "hydration1"
+				if(250 to 350)					hydration_icon.icon_state = "hydration2"
+				if(150 to 250)					hydration_icon.icon_state = "hydration3"
+				else							hydration_icon.icon_state = "hydration4"
+
 		if(synthbattery_icon)
 			switch(nutrition)
 				if(350 to INFINITY)				synthbattery_icon.icon_state = "charge4"
@@ -1447,11 +1464,12 @@
 
 		if(machine)
 			var/viewflags = machine.check_eye(src)
-			machine.apply_visual(src)
 			if(viewflags < 0)
 				reset_view(null, 0)
-			else if(viewflags)
+			else if(viewflags && !looking_elsewhere)
 				sight |= viewflags
+			else
+				machine.apply_visual(src)
 		else if(eyeobj)
 			if(eyeobj.owner != src)
 

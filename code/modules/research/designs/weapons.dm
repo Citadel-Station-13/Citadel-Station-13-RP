@@ -136,7 +136,7 @@
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm
 	name = "5.7 magazine"
-	desc = "A standard capacity pistol magazine (5.7x28mm)."
+	desc = "A standard capacity sidearm magazine (5.7x28mm)."
 	id = "m57x28mm"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 1750, MAT_COPPER = 750)
@@ -145,27 +145,24 @@
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ap
 	name = "5.7 magazine (AP)"
-	desc = "A standard capacity pistol magazine (5.7x28mm armor-piercing)."
+	desc = "A standard capacity sidearm magazine (5.7x28mm armor-piercing)."
 	id = "m57x28mmap"
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 2500, MAT_COPPER = 750)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ap
 	sort_string = "MABCB"
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/hp
 	name = "5.7 magazine (HP)"
-	desc = "A standard capacity pistol magazine (5.7x28mm hollow point)."
+	desc = "A standard capacity sidearm magazine (5.7x28mm hollow point)."
 	id = "m57x28mmhp"
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 2100, MAT_COPPER = 750)
 	build_path = /obj/item/ammo_magazine/m57x28mm/hp
 	sort_string = "MABCC"
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/hunter
 	name = "5.7 magazine (Hunter)"
-	desc = "A standard capacity pistol magazine (5.7x28mm hunter)."
+	desc = "A standard capacity sidearm magazine (5.7x28mm hunter)."
 	id = "m57x28mmhunter"
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 1750, MAT_COPPER = 1250)
 	build_path = /obj/item/ammo_magazine/m57x28mm/hunter
 	sort_string = "MABCD"

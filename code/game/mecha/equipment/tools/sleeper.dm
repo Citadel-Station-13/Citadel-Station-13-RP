@@ -12,7 +12,7 @@
 	var/datum/global_iterator/pr_mech_sleeper
 	var/inject_amount = 5
 	required_type = list(/obj/mecha/medical)
-	salvageable = 0
+	salvageable = FALSE
 	allow_duplicate = TRUE
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/Initialize(mapload)
@@ -28,7 +28,7 @@
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/Exit(atom/movable/O)
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/action(var/mob/living/carbon/human/target)
 	if(!action_checks(target))
@@ -42,7 +42,7 @@
 		occupant_message("The sleeper is already occupied")
 		return
 	if(target.has_buckled_mobs())
-		occupant_message(span("warning", "\The [target] has other entities attached to it. Remove them first."))
+		occupant_message(SPAN_WARNING("\The [target] has other entities attached to it. Remove them first."))
 		return
 	occupant_message("You start putting [target] into [src].")
 	chassis.visible_message("[chassis] starts putting [target] into the [src].")
@@ -52,7 +52,7 @@
 		if(chassis.loc!=C || target.loc!=T)
 			return
 		if(occupant)
-			occupant_message("<font color=\"red\"><B>The sleeper is already occupied!</B></font>")
+			occupant_message(SPAN_DANGER("<B>The sleeper is already occupied!</B>"))
 			return
 		target.forceMove(src)
 		occupant = target

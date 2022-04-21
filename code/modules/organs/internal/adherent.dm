@@ -5,7 +5,6 @@
 	desc = "The self-contained, self-supporting internal 'brain' of an Adherent unit."
 	icon = 'icons/mob/human_races/adherent/organs.dmi'
 	icon_state = "brain"
-	robotic = ORGAN_ROBOT
 	organ_tag = O_BRAIN
 	robotic = ORGAN_CRYSTAL
 
@@ -179,7 +178,7 @@
 	cooling = !cooling
 	to_chat(C, "You toggle your cooling fans [cooling ? "on" : "off"] ")
 
-/obj/item/organ/internal/powered/cooling_fins/process()
+/obj/item/organ/internal/powered/cooling_fins/process(delta_time)
 	var/mob/living/carbon/human/C = src.owner
 	if(cooling)
 		var/temp_diff = min(C.bodytemperature - target_temp, max_cooling)

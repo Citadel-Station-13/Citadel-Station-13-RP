@@ -176,7 +176,7 @@
  *
  * optional can_be_suspended bool
  */
-/datum/tgui_window/proc/close(can_be_suspended = TRUE)
+/datum/tgui_window/proc/close(can_be_suspended = TRUE, logout = FALSE)
 	if(!client)
 		return
 	if(can_be_suspended && can_be_suspended())
@@ -185,6 +185,12 @@
 			window = src)
 		status = TGUI_WINDOW_READY
 		send_message("suspend")
+		// You would think that BYOND would null out client or make it stop passing istypes or, y'know, ANYTHING during
+		// logout, but nope! It appears to be perfectly valid to call winset by every means we can measure in Logout,
+		// and yet it causes a bad client runtime. To avoid that happening, we just have to know if we're in Logout or
+		// not.
+		if(!logout && client)
+			winset(client, null, "mapwindow.map.focus=true")
 		return
 	log_tgui(client,
 		context = "[id]/close",
@@ -196,7 +202,8 @@
 	// to read the error message.
 	if(!fatally_errored)
 		client << browse(null, "window=[id]")
-
+		if(!logout && client)
+			winset(client, null, "mapwindow.map.focus=true")
 /**
  * public
  *
@@ -253,8 +260,8 @@
 /datum/tgui_window/proc/send_asset(datum/asset/asset)
 	if(!client || !asset)
 		return
-	sent_assets |= list(asset)
-	. = asset.send(client)
+	sent_assets += list(asset)
+	asset.send(client)
 	if(istype(asset, /datum/asset/spritesheet))
 		var/datum/asset/spritesheet/spritesheet = asset
 		send_message("asset/stylesheet", spritesheet.css_filename())

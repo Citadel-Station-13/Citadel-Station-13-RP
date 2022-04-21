@@ -9,16 +9,16 @@ export const heat_pump = (props, context) => {
     target_temp,
     current_temp,
     sink_temp,
-    power_level,
-    max_power_level,
     on,
     lowest_temp,
+    efficency,
+    highest_temp,
   } = data;
 
   return (
     <Window
-      width={395}
-      height={145}>
+      width={435}
+      height={175}>
       <Window.Content>
         <Section>
           <LabeledList>
@@ -28,6 +28,9 @@ export const heat_pump = (props, context) => {
                 content={on ? 'On' : 'Off'}
                 selected={on}
                 onClick={() => act('power')} />
+            </LabeledList.Item>
+            <LabeledList.Item label="Current Efficency">
+              <AnimatedNumber value={efficency*100} /> %
             </LabeledList.Item>
             <LabeledList.Item label="Current Temperature">
               <AnimatedNumber value={current_temp} /> Kelvin
@@ -50,6 +53,7 @@ export const heat_pump = (props, context) => {
                 unit="K"
                 width="75px"
                 minValue={lowest_temp}
+                maxValue={highest_temp}
                 step={10}
                 onChange={(e, value) => act('target_temp', {
                   temperature: value,
@@ -58,9 +62,9 @@ export const heat_pump = (props, context) => {
                 ml={1}
                 icon="plus"
                 content="Max"
-                disabled={target_temp === 100000}
+                disabled={target_temp === highest_temp}
                 onClick={() => act('target_temp', {
-                  temperature: 100000,
+                  temperature: highest_temp,
                 })} />
             </LabeledList.Item>
           </LabeledList>

@@ -10,9 +10,11 @@
 	var/nutriment_amt = 0
 	var/nutriment_desc = list()
 	var/bitesize = 5
+	var/succsize = 1
 	var/bitecount = 0
+	var/succcount = 0
 	var/trash = null
-	var/succ_int = 100
+	var/succ_int = 500
 	var/next_succ = 0
 	var/survivalfood = FALSE
 	var/mob/living/carbon/owner
@@ -148,23 +150,29 @@
 		return PROCESS_KILL
 	if(owner.stat == DEAD)
 		return PROCESS_KILL
-	if(!reagents.total_volume)
-		qdel(src)
-		return
 	if(next_succ <= world.time)
-		On_Consume()
+		succ()
 		next_succ = world.time + succ_int
 
-/obj/item/reagent_containers/hard_candy/equipped(mob/user, slot)
+/obj/item/reagent_containers/hard_candy/equipped(mob/user, var/slot)
 	. = ..()
 	if(!iscarbon(user))
 		return
-	if(slot != SLOT_MASK)
+	if(slot != slot_wear_mask)
 		owner = null
 		STOP_PROCESSING(SSobj, src) //equipped is triggered when moving from hands to mouth and vice versa
 		return
 	owner = user
 	START_PROCESSING(SSobj, src)
+
+/obj/item/reagent_containers/hard_candy/proc/succ()
+	if(reagents.total_volume)
+		if(reagents.total_volume > succsize)
+			reagents.trans_to_mob(owner, succsize, CHEM_INGEST)
+		else
+			reagents.trans_to_mob(owner, reagents.total_volume, CHEM_INGEST)
+		succcount++
+		On_Consume(owner)
 
 /obj/item/reagent_containers/hard_candy/Destroy()
 	STOP_PROCESSING(SSobj, src)

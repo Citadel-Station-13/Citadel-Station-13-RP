@@ -180,22 +180,6 @@
 	corpseidjob = "Commando"
 	corpseidaccess = "Syndicate"
 
-/obj/effect/landmark/mobcorpse/pirate
-	name = "Pirate"
-	corpseuniform = /obj/item/clothing/under/pirate
-	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
-	corpseglasses = /obj/item/clothing/glasses/eyepatch
-	corpsehelmet = /obj/item/clothing/head/bandana
-
-
-
-/obj/effect/landmark/mobcorpse/pirate/ranged
-	name = "Pirate Gunner"
-	corpsesuit = /obj/item/clothing/suit/pirate
-	corpsehelmet = /obj/item/clothing/head/pirate
-
-
-
 /obj/effect/landmark/mobcorpse/russian
 	name = "Russian"
 	corpseuniform = /obj/item/clothing/under/soviet
@@ -338,3 +322,284 @@
 
 /obj/effect/landmark/mobcorpse/syndicatecommando
 	name = "Mercenary Commando"
+
+//////////////////////////
+//	   Pirate Bodies
+//////////////////////////
+//I'm sorry for how huge this list is. I didn't really consider the ramifications of creating a diverse crew of pirates.
+
+/obj/effect/landmark/mobcorpse/pirate
+	name = "Pirate"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
+
+/obj/effect/landmark/mobcorpse/pirate/melee
+	corpsesuit = /obj/item/clothing/suit/unathi/mantle
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpseglasses = /obj/item/clothing/glasses/eyepatch
+	corpsebelt = /obj/item/storage/belt/security/tactical
+	corpseback = /obj/item/storage/backpack/rebel
+
+/obj/effect/landmark/mobcorpse/pirate/melee_machete
+	name = "Pirate Brush Cutter"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpsemask = /obj/item/clothing/mask/balaclava
+	corpseback = /obj/item/storage/backpack/dufflebag/syndie
+
+/obj/effect/landmark/mobcorpse/pirate/melee_machete_armor
+	name = "Armored Brush Cutter"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
+	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
+	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
+	corpsehelmet = /obj/item/clothing/head/welding
+	corpseback = /obj/item/storage/backpack/rebel
+
+/obj/effect/landmark/mobcorpse/pirate/melee_energy_armor
+	name = "Armored Duelist"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
+	corpsesuit = /obj/item/clothing/suit/armor/pcarrier/navy
+	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
+	corpsemask = /obj/item/clothing/mask/gas/jackal
+
+/obj/effect/landmark/mobcorpse/pirate/melee_shield
+	name = "Pirate Buckler"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpsehelmet = /obj/item/clothing/head/tajaran/scarf
+	corpseback = /obj/item/storage/backpack/dufflebag/syndie
+
+/obj/effect/landmark/mobcorpse/pirate/melee_shield_machete_armor
+	name = "Armored Sword and Boarder"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
+	corpsesuit = /obj/item/clothing/suit/armor/pcarrier/navy
+	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
+	corpsehelmet = /obj/item/clothing/head/helmet
+	corpsebelt = /obj/item/storage/belt/security/tactical
+	corpseback = /obj/item/storage/backpack/rebel
+
+/obj/effect/landmark/mobcorpse/pirate/ranged
+	name = "Pirate Pistolier"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpsehelmet = /obj/item/clothing/head/welding
+	corpsebelt = /obj/item/storage/belt/security/tactical
+	corpseback = /obj/item/storage/backpack/dufflebag/syndie
+
+/obj/effect/landmark/mobcorpse/pirate/ranged_armor
+	name = "Armored Pistolier"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
+	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
+	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
+	corpsebelt = /obj/item/storage/belt/security/tactical
+
+/obj/effect/landmark/mobcorpse/pirate/ranged_laser
+	name = "Pirate Handcannon"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpsehelmet = /obj/item/clothing/head/helmet/cyberpunk
+	corpsebelt = /obj/item/storage/belt/security/tactical
+	corpseback = /obj/item/storage/backpack/dufflebag/syndie
+
+/obj/effect/landmark/mobcorpse/pirate/ranged_laser_armor
+	name = "Armored Handcannon"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
+	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
+	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
+	corpsebelt = /obj/item/storage/belt/security/tactical
+
+/obj/effect/landmark/mobcorpse/pirate/ranged_blunderbuss
+	name = "Pirate Blunderbuster"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpseglasses = /obj/item/clothing/glasses/eyepatch
+	corpsebelt = /obj/item/storage/belt/security/tactical/bandolier
+	corpseback = /obj/item/storage/backpack/rebel
+
+/obj/effect/landmark/mobcorpse/pirate/ranged_blunderbuss_armor
+	name = "Armored Blunderbuster"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
+	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
+	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
+	corpsehelmet = /obj/item/clothing/head/tajaran/scarf
+	corpsebelt = /obj/item/storage/belt/security/tactical/bandolier
+	corpseback = /obj/item/storage/backpack/rebel
+
+/obj/effect/landmark/mobcorpse/pirate/mate
+	name = "First Mate"
+	corpseuniform = /obj/item/clothing/under/worn_fatigues
+	corpsesuit = /obj/item/clothing/suit/armor/riot/alt
+	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
+	corpsemask = /obj/item/clothing/mask/gas/commando
+
+/obj/effect/landmark/mobcorpse/pirate/mate/rifle
+	name = "Mate Marksman"
+	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
+	corpsemask = null
+
+/obj/effect/landmark/mobcorpse/pirate/bosun
+	name = "Bosun"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
+	corpsesuit = /obj/item/clothing/suit/armor/tactical/pirate
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpseglasses = /obj/item/clothing/glasses/eyepatch
+	corpseback = /obj/item/storage/backpack/rebel
+
+/obj/effect/landmark/mobcorpse/pirate/captain
+	name = "Pirate Captain"
+	corpseuniform = /obj/item/clothing/under/worn_fatigues
+	corpsesuit = /obj/item/clothing/suit/armor/tactical/pirate
+	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
+	corpsemask = /obj/item/clothing/mask/balaclava
+	corpsehelmet = /obj/item/clothing/head/helmet/pirate
+
+//Akula
+/obj/effect/landmark/mobcorpse/akula/proc/createakulaCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
+	var/mob/living/carbon/human/akula/M = new /mob/living/carbon/human/akula (src.loc)
+	M.real_name = src.name
+	M.stat = 2 //Kills the new mob
+	if(src.corpseuniform)
+		M.equip_to_slot_or_del(new src.corpseuniform(M), slot_w_uniform)
+	if(src.corpsesuit)
+		M.equip_to_slot_or_del(new src.corpsesuit(M), slot_wear_suit)
+	if(src.corpseshoes)
+		M.equip_to_slot_or_del(new src.corpseshoes(M), slot_shoes)
+	if(src.corpsegloves)
+		M.equip_to_slot_or_del(new src.corpsegloves(M), slot_gloves)
+	if(src.corpseradio)
+		M.equip_to_slot_or_del(new src.corpseradio(M), slot_l_ear)
+	if(src.corpseglasses)
+		M.equip_to_slot_or_del(new src.corpseglasses(M), slot_glasses)
+	if(src.corpsemask)
+		M.equip_to_slot_or_del(new src.corpsemask(M), slot_wear_mask)
+	if(src.corpsehelmet)
+		M.equip_to_slot_or_del(new src.corpsehelmet(M), slot_head)
+	if(src.corpsebelt)
+		M.equip_to_slot_or_del(new src.corpsebelt(M), slot_belt)
+	if(src.corpsepocket1)
+		M.equip_to_slot_or_del(new src.corpsepocket1(M), slot_r_store)
+	if(src.corpsepocket2)
+		M.equip_to_slot_or_del(new src.corpsepocket2(M), slot_l_store)
+	if(src.corpseback)
+		M.equip_to_slot_or_del(new src.corpseback(M), slot_back)
+	if(src.corpseid == 1)
+		var/obj/item/card/id/W = new(M)
+		W.name = "[M.real_name]'s ID Card"
+		var/datum/job/jobdatum
+		for(var/jobtype in typesof(/datum/job))
+			var/datum/job/J = new jobtype
+			if(J.title == corpseidaccess)
+				jobdatum = J
+				break
+		if(src.corpseidicon)
+			W.icon_state = corpseidicon
+		if(src.corpseidaccess)
+			if(jobdatum)
+				W.access = jobdatum.get_access()
+			else
+				W.access = list()
+		if(corpseidjob)
+			W.assignment = corpseidjob
+		W.registered_name = M.real_name
+		M.equip_to_slot_or_del(W, slot_wear_id)
+
+/obj/effect/landmark/mobcorpse/pirate/melee_armor
+	name = "Armored Pirate"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
+	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
+	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
+	corpsehelmet = /obj/item/clothing/head/helmet/cyberpunk
+
+/obj/effect/landmark/mobcorpse/pirate/melee_energy
+	name = "Pirate Duelist"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
+	corpsesuit = /obj/item/clothing/suit/unathi/mantle
+	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
+	corpsehelmet = /obj/item/clothing/head/welding
+
+/obj/effect/landmark/mobcorpse/pirate/mate/shotgun
+	name = "Mate Blunderbuster"
+	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
+	corpsemask = /obj/item/clothing/mask/gas/jackal
+
+//Vulpkanin
+/obj/effect/landmark/mobcorpse/vulpkanin/proc/createvuplkaninCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
+	var/mob/living/carbon/human/vulpkanin/M = new /mob/living/carbon/human/vulpkanin (src.loc)
+	M.real_name = src.name
+	M.stat = 2 //Kills the new mob
+	if(src.corpseuniform)
+		M.equip_to_slot_or_del(new src.corpseuniform(M), slot_w_uniform)
+	if(src.corpsesuit)
+		M.equip_to_slot_or_del(new src.corpsesuit(M), slot_wear_suit)
+	if(src.corpseshoes)
+		M.equip_to_slot_or_del(new src.corpseshoes(M), slot_shoes)
+	if(src.corpsegloves)
+		M.equip_to_slot_or_del(new src.corpsegloves(M), slot_gloves)
+	if(src.corpseradio)
+		M.equip_to_slot_or_del(new src.corpseradio(M), slot_l_ear)
+	if(src.corpseglasses)
+		M.equip_to_slot_or_del(new src.corpseglasses(M), slot_glasses)
+	if(src.corpsemask)
+		M.equip_to_slot_or_del(new src.corpsemask(M), slot_wear_mask)
+	if(src.corpsehelmet)
+		M.equip_to_slot_or_del(new src.corpsehelmet(M), slot_head)
+	if(src.corpsebelt)
+		M.equip_to_slot_or_del(new src.corpsebelt(M), slot_belt)
+	if(src.corpsepocket1)
+		M.equip_to_slot_or_del(new src.corpsepocket1(M), slot_r_store)
+	if(src.corpsepocket2)
+		M.equip_to_slot_or_del(new src.corpsepocket2(M), slot_l_store)
+	if(src.corpseback)
+		M.equip_to_slot_or_del(new src.corpseback(M), slot_back)
+	if(src.corpseid == 1)
+		var/obj/item/card/id/W = new(M)
+		W.name = "[M.real_name]'s ID Card"
+		var/datum/job/jobdatum
+		for(var/jobtype in typesof(/datum/job))
+			var/datum/job/J = new jobtype
+			if(J.title == corpseidaccess)
+				jobdatum = J
+				break
+		if(src.corpseidicon)
+			W.icon_state = corpseidicon
+		if(src.corpseidaccess)
+			if(jobdatum)
+				W.access = jobdatum.get_access()
+			else
+				W.access = list()
+		if(corpseidjob)
+			W.assignment = corpseidjob
+		W.registered_name = M.real_name
+		M.equip_to_slot_or_del(W, slot_wear_id)
+
+/obj/effect/landmark/mobcorpse/pirate/melee_shield_machete
+	name = "Sword and Boarder"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+
+/obj/effect/landmark/mobcorpse/pirate/melee_shield_armor
+	name = "Armored Buckler"
+	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
+	corpsesuit = /obj/item/clothing/suit/armor/pcarrier/navy
+	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
+	corpsehelmet = /obj/item/clothing/head/helmet
+	corpsebelt = /obj/item/storage/belt/security/tactical
+	corpseback = /obj/item/storage/backpack/rebel
+
+/obj/effect/landmark/mobcorpse/pirate/mate/pistol
+	name = "Mate Pistolier"
+	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
+	corpsehelmet = /obj/item/clothing/head/helmet/cyberpunk
+
+/*
+/obj/effect/landmark/mobcorpse/pirate
+	name = "Pirate"
+	corpseuniform = /obj/item/clothing/under/pirate
+	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
+	corpseglasses = /obj/item/clothing/glasses/eyepatch
+	corpsehelmet = /obj/item/clothing/head/bandana
+
+/obj/effect/landmark/mobcorpse/pirate/ranged
+	name = "Pirate Gunner"
+	corpsesuit = /obj/item/clothing/suit/pirate
+	corpsehelmet = /obj/item/clothing/head/pirate
+*/

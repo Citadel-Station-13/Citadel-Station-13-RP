@@ -115,6 +115,9 @@
 	var/drop_sound = 'sound/items/drop/device.ogg'
 
 	var/deploytype = null	//Deploytype for switchtools. Only really used on switchtool subtype items, but this is on a general item level in case admins want to do some wierd fucky shit with custom switchtools.
+
+	var/heavy = FALSE //Whether or not we are heavy. Used for some species to determine if they can two-hand it.
+
 /obj/item/Initialize(mapload)
 	. = ..()
 	if(islist(origin_tech))
@@ -537,9 +540,10 @@ var/list/global/slot_flags_enumeration = list(
 	return
 
 
-//This proc is executed when someone clicks the on-screen UI button. To make the UI button show, set the 'icon_action_button' to the icon_state of the image of the button in screen1_action.dmi
-//The default action is attack_self().
-//Checks before we get to here are: mob is alive, mob is not restrained, paralyzed, asleep, resting, laying, item is on the mob.
+/**
+ *This proc is executed when someone clicks the on-screen UI button.
+ *The default action is attack_self().
+ */
 /obj/item/proc/ui_action_click()
 	attack_self(usr)
 
@@ -945,3 +949,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // Like the above, but used for RPED sorting of parts.
 /obj/item/proc/rped_rating()
 	return get_rating()
+
+/obj/item/interact(mob/user)
+	add_fingerprint(user)
+	ui_interact(user)

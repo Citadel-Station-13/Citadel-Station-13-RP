@@ -462,6 +462,6 @@ datum/gear/suit/duster
 	name = "Plastic Raincoat"
 	path = /obj/item/clothing/suit/storage/hooded/rainponcho
 
-/datum/gear/suit/umbral
-	name = "Umbral Duster"
-	path = /obj/item/clothing/suit/storage/umbral
+/datum/gear/suit/pariah
+	name = "Springtime Pariah Moto Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/pariah
