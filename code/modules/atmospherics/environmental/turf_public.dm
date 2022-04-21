@@ -31,26 +31,12 @@
  */
 /atom/proc/remove_moles(moles)
 	RETURN_TYPE(/datum/gas_mixture)
-	return loc?.remove_moles(moles)
-
-/area/remove_moles(moles)
-	CRASH("How was /area reached?")
-
-/turf/remove_moles(moles)
-	RETURN_TYPE(/datum/gas_mixture)
-	return return_air()?.remove(moles)
+	return return_air()?.remove_moles(moles)
 
 /**
  * removes a gas mixture of x volume
  */
 /atom/proc/remove_volume(liters)
-	RETURN_TYPE(/datum/gas_mixture)
-	return loc?.remove_volume(liters)
-
-/area/remove_volume(liters)
-	CRASH("How was /area reached?")
-
-/turf/remove_volume(liters)
 	RETURN_TYPE(/datum/gas_mixture)
 	return return_air()?.remove_volume(liters)
 
@@ -58,24 +44,12 @@
  * add/remove thermal energy from air
  */
 /atom/proc/add_thermal_energy(joules)
-	return loc?.add_thermal_energy(joules)
-
-/area/add_thermal_energy(joules)
-	CRASH("How was /area reached?")
-
-/turf/add_thermal_energy(joules)
-	return_air().add_thermal_energy(joules)
+	return return_air()?.add_thermal_energy(joules)
 
 /**
  * get thermal energy needed for our air to be x temperature
  */
 /atom/proc/get_thermal_energy_change(target_temperature)
-	return loc?.get_thermal_energy_change(target_temperature)
-
-/area/get_thermal_energy_change(target_temperature)
-	CRASH("How was /area reached?")
-
-/turf/get_thermal_energy_change(target_temperature)
 	return return_air()?.get_thermal_energy_change(target_temperature) || 0
 
 /**
@@ -96,61 +70,30 @@
  * return pressure of air
  */
 /atom/proc/return_pressure()
-	return loc?.return_pressure()
-
-/area/return_pressure()
-	CRASH("How was /area reached?")
-
-/turf/return_pressure()
-	return return_air().return_pressure()
+	return return_air()?.return_pressure()
 
 /**
  * gets a **copy** (read: changing this won't affect turf) of a cell volume's worth of air
  */
 /atom/proc/copy_cell_volume()
 	RETURN_TYPE(/datum/gas_mixture)
-	return loc?.copy_cell_volume()
-
-/area/copy_cell_volume()
-	CRASH("How was /area reached?")
-
-/turf/copy_cell_volume()
-	RETURN_TYPE(/datum/gas_mixture)
-	return return_air().get_single_tile()
+	return return_air().copy_single_tile()
 
 /**
  * return temperature of air
  */
 /atom/proc/return_temperature()
-	return loc?.return_temperature()
-
-/area/return_tempreature()
-	CRASH("How was /area reached?")
-
-/turf/return_temperature()
-	return return_air().temperature
+	return return_air()?.return_temperature()
 
 /**
  * gets moles of gas in a single turf's worth of air
  * inefficient; use copy_cell_volume() if you're getting more than 2-3 gases!
  */
 /atom/proc/get_cell_moles(gasid)
-	return loc?.get_cell_moles(gasid)
-
-/area/get_cell_moles(gasid)
-	CRASH("How was /area reached?")
-
-/turf/get_cell_moles(gasid)
-	return copy_cell_volume().gas[gasid]
+	return copy_cell_volume()?.gas[gasid]
 
 /**
  * gets full gas list of all gases in a single turf's worth of air
  */
 /atom/proc/get_cell_gases()
-	return loc?.get_cell_gases()
-
-/area/get_cell_gases()
-	CRASH("How was /area reached?")
-
-/turf/get_cell_gases()
-	return copy_cell_volume().gas.Copy()
+	return copy_cell_volume()?.gas.Copy()

@@ -514,7 +514,7 @@
  *
  * TODO: remove group_multiplier, change to tiles_represented
  */
-/datum/gas_mixture/proc/get_single_tile()
+/datum/gas_mixture/proc/copy_single_tile()
 	RETURN_TYPE(/datum/gas_mixture)
 	var/datum/gas_mixture/GM = new(CELL_VOLUME)
 	GM.copy_from(src)

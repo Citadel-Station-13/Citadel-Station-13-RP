@@ -1600,13 +1600,6 @@
 		return cabin_air
 	return loc?.return_air()
 
-/obj/mecha/proc/return_pressure()
-	return return_air().return_pressure()
-
-//skytodo: //No idea what you want me to do here, mate.
-/obj/mecha/proc/return_temperature()
-	return return_air().temperature
-
 /obj/mecha/proc/connect(obj/machinery/atmospherics/portables_connector/new_port)
 	//Make sure not already connected to something else
 	if(connected_port || !new_port || new_port.connected_device)
