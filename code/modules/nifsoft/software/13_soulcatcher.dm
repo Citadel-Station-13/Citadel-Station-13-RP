@@ -68,6 +68,10 @@
 	return TRUE
 
 /datum/nifsoft/soulcatcher/proc/notify_into(var/message)
+	message = trim(message)
+	if(!length(message))
+		return
+	message = sender.say_emphasis(message)
 	var/sound = nif.good_sound
 
 	to_chat(nif.human,"<b>\[[icon2html(thing = nif.big_icon, target = nif.human)]NIF\]</b> <b>Soulcatcher</b> displays, \"<span class='notice nif'>[message]</span>\"")
@@ -79,6 +83,10 @@
 		SEND_SOUND(brainmob, sound)
 
 /datum/nifsoft/soulcatcher/proc/say_into(var/message, var/mob/living/sender, var/mob/eyeobj)
+	message = trim(message)
+	if(!length(message))
+		return
+	message = sender.say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -94,6 +102,10 @@
 	log_nsay(message,nif.human.real_name,sender)
 
 /datum/nifsoft/soulcatcher/proc/emote_into(var/message, var/mob/living/sender, var/mob/eyeobj)
+	message = trim(message)
+	if(!length(message))
+		return
+	message = sender.say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
