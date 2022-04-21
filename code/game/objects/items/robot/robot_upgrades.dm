@@ -220,10 +220,7 @@
 	R.add_language(LANGUAGE_ROOTLOCAL, 1)
 	R.add_language(LANGUAGE_TERMINUS, 1)
 	R.add_language(LANGUAGE_ZADDAT, 1)
-<<<<<<< HEAD
 	R.add_language(LANGUAGE_AKULA, 1)
 	return 1
-=======
 
 	return TRUE
->>>>>>> master
