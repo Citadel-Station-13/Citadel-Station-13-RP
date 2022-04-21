@@ -68,10 +68,6 @@
 	return TRUE
 
 /datum/nifsoft/soulcatcher/proc/notify_into(var/message)
-	message = trim(message)
-	if(!length(message))
-		return
-	message = sender.say_emphasis(message)
 	var/sound = nif.good_sound
 
 	to_chat(nif.human,"<b>\[[icon2html(thing = nif.big_icon, target = nif.human)]NIF\]</b> <b>Soulcatcher</b> displays, \"<span class='notice nif'>[message]</span>\"")
