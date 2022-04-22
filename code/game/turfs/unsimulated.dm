@@ -1,9 +1,8 @@
 /turf/unsimulated
 	name = "command"
 
-	//air_status = AIR_STATUS_IMMUTABLE
-
 	initial_gas_mix = GAS_STRING_STP
+	air_status = AIR_STATUS_IMMUTABLE
 
 /turf/unsimulated/Initialize(mapload)
 	flags |= INITIALIZED

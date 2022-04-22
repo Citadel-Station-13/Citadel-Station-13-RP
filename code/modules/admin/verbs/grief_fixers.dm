@@ -29,11 +29,13 @@
 
 	// Delete all zones.
 	for(var/datum/zas_zone/Z in world)
-		Z.c_invalidate()
+		qdel(Z)
 
 	to_chat(usr, "\[3/5\] - All ZAS Zones removed.")
 
 	for(var/turf/simulated/T in world)
+		#warn ughh
+
 		T.air = null
 		if(T.zone)
 			T.vis_contents -= T.zone.turf_graphics

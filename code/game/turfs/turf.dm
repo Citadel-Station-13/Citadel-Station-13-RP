@@ -9,6 +9,8 @@
 	// Atmospherics / ZAS Environmental
 	/// Initial air contents, as a specially formatted gas string.
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
+	/// air status
+	var/air_status = AIR_STATUS_BLOCKED
 	// End
 
 	// Properties for airtight tiles (/wall)
@@ -17,7 +19,6 @@
 
 	// Properties for both
 	var/temperature = T20C		// Initial turf temperature.
-	var/blocks_air = 0			// Does this turf contain air/let air through?
 
 	var/changing_turf = FALSE
 

@@ -4,6 +4,8 @@
 	icon = 'icons/turf/flooring/plating_vr.dmi'
 	icon_state = "plating"
 
+	air_status = AIR_STATUS_SIMULATED
+
 	// Damage to flooring.
 	var/broken
 	var/burnt

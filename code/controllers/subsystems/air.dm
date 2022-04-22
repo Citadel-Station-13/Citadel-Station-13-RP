@@ -259,6 +259,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		while (state != SS_IDLE)
 			stoplag()
 
+	#warn this proc is awful
+
 	// Invalidate all zones
 	for(var/datum/zas_zone/zone in zones)
 		zone.c_invalidate()

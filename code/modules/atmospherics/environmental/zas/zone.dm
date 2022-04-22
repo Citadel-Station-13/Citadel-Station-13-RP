@@ -124,6 +124,8 @@ Class Procs:
 
 	// fire
 	fire_tiles -= T
+	if(!fire_tiles.len && on_fire)
+		unmark_on_fire()
 	if(T.fire)
 		var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in T
 		fuel_objs -= fuel
@@ -156,6 +158,14 @@ Class Procs:
 			continue //don't need to rebuild this edge
 		for(var/turf/T in E.connecting_turfs)
 			air_master.mark_for_update(T)
+
+/datum/zas_zone/proc/mark_on_fire()
+	on_fire = TRUE
+	SSair.active_fire_zones += src
+
+/datum/zas_fire/proc/unmark_on_fire()
+	on_fire = FALSE
+	SSair.active_fire_zones -= src
 
 /datum/zas_zone/proc/c_invalidate()
 	invalid = 1
@@ -221,3 +231,9 @@ Class Procs:
 
 	//for(var/turf/T in unsimulated_contents)
 	//	to_chat(M, "[T] at ([T.x],[T.y])")
+
+/**
+ * unsimulated, immutable zones
+ */
+/datum/zas_zone/unsimulated
+#warn ugh
