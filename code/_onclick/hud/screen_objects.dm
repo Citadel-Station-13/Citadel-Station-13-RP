@@ -178,14 +178,16 @@
 	name = "crafting menu"
 	icon = 'icons/mob/screen/midnight.dmi'
 	icon_state = "craft"
-	screen_loc = ui_crafting
+	screen_loc = ui_smallquad
 
 /atom/movable/screen/craft/Click(location, control, params)
 	var/datum/component/personal_crafting/C = usr.GetComponent(/datum/component/personal_crafting)
 	C?.ui_interact(usr)
 
 /atom/movable/screen/Click(location, control, params)
-	if(!usr)	return 1
+	..() //Why the FUCK was this not called before
+	if(!usr)
+		return TRUE
 	switch(name)
 		if("toggle")
 			if(usr.hud_used.inventory_shown)

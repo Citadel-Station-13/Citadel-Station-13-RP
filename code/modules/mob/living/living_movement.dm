@@ -32,9 +32,9 @@
 	if(MOVING_QUICKLY(src))
 		if(drowsyness > 0)
 			. += 6
-		. += config_legacy.run_speed
+		. += CONFIG_GET(number/run_speed)
 	else
-		. += config_legacy.walk_speed
+		. += CONFIG_GET(number/walk_speed)
 
 /mob/living/Move(NewLoc, Dir)
 	// what the hell does this do i don't know fine we'll keep it for now..

@@ -48,3 +48,15 @@ $scrollbar-color-multiplier: 1 !default;
   overflow-y: scroll;
   margin-bottom: 0;
 }
+
+// VOREStation Addition Start
+.Layout__content--flexRow {
+  display: flex;
+  flex-flow: row;
+}
+
+.Layout__content--flexColumn {
+  display: flex;
+  flex-flow: column;
+}
+// VOREStation Addition End

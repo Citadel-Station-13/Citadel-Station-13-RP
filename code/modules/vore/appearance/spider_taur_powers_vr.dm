@@ -29,7 +29,7 @@ obj/item/clothing/suit/web_bindings
 //yw edit end
 
 /* //Commenting all this out, as people keep abusing it. Sorry!
-mob/proc/weaveWeb()
+/mob/proc/weaveWeb()
 	set name = "Weave Web"
 	set category = "Species Powers"
 	if(nutrition >= 500) //People decided to abuse it. Sorry. It was asked to be made so it couldn't be spammed, and what do ya know, people are spamming it everywhere.
@@ -41,7 +41,7 @@ mob/proc/weaveWeb()
 		to_chat(src, "You do not have enough nutrition to create webbing!")
 */
 
-mob/proc/weaveWebBindings()
+/mob/proc/weaveWebBindings()
 	set name = "Weave Web Bindings"
 	set category = "Species Powers"
 	if(nutrition >= 30) //This isn't a huge problem. This is so you can bind people up.

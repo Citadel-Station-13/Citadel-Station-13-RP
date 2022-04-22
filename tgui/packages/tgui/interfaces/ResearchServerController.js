@@ -111,7 +111,7 @@ const ResearchServerAccess = (props, context) => {
     }
     return false;
   };
-  
+
   const hasDownloadAccess = (server, console) => {
     if (server.id_with_download.indexOf(console.id) !== -1) {
       return true;

@@ -279,7 +279,7 @@
 	if(!istype(T))
 		return
 
-	var/hotspot = (locate(/obj/fire) in T)
+	var/hotspot = (locate(/atom/movable/fire) in T)
 	if(hotspot && !istype(T, /turf/space))
 		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
@@ -305,9 +305,9 @@ End Citadel Change */
 	if(!istype(T))
 		return
 
-	var/hotspot = (locate(/obj/fire) in T)
+	var/hotspot = (locate(/atom/movable/fire) in T)
 	if(hotspot && !istype(T, /turf/space))
-		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
+		var/datum/gas_mixture/lowertemp = T.remove_cell_volume()
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
 		lowertemp.react()
 		T.assume_air(lowertemp)
@@ -4258,14 +4258,6 @@ End Citadel Change */
 	glass_desc = "An even classier looking drink, with floating bubbles."
 
 //Following was merged infrom _vr variant of this file
-/datum/reagent/nutriment
-	nutriment_factor = 10
-
-/datum/reagent/lipozine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.nutrition = max(M.nutrition - 20 * removed, 0)
-	M.overeatduration = 0
-	if(M.nutrition < 0)
-		M.nutrition = 0
 
 /datum/reagent/ethanol/deathbell
 	name = "Deathbell"

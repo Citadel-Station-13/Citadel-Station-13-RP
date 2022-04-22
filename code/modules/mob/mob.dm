@@ -893,7 +893,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/embedded_needs_process()
 	return (embedded.len > 0)
 
-mob/proc/yank_out_object()
+/mob/proc/yank_out_object()
 	set category = "Object"
 	set name = "Yank out object"
 	set desc = "Remove an embedded item at the cost of bleeding and pain."
@@ -1272,4 +1272,4 @@ mob/proc/yank_out_object()
 	return client && (client.eye == src)
 
 /mob/proc/get_stamina_used_per_step()
-	return config_legacy.sprint_cost
+	return CONFIG_GET(number/sprint_cost)

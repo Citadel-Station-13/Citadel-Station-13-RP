@@ -5,80 +5,83 @@
 #define EFFICENCY_LIMIT_MULT 1
 
 /obj/machinery/atmospherics/binary/heat_pump
-    name = "heat pump"
-    desc = "A heat pump, used to transfer heat between two pipe systems."
+	name = "heat pump"
+	desc = "A heat pump, used to transfer heat between two pipe systems."
 
-    level = 1
+	level = 1
 
-    icon = 'icons/atmos/heat_pump.dmi'
-    icon_state = "map_off"
-    construction_type = /obj/item/pipe/directional
-    pipe_state = "pump"
-    var/base_icon = "heat_pump"
+	icon = 'icons/atmos/heat_pump.dmi'
+	icon_state = "map_off"
+	construction_type = /obj/item/pipe/directional
+	pipe_state = "pump"
 
-    use_power = USE_POWER_OFF
-    idle_power_usage = 150//internal circuitry, friction losses and stuff
-    power_rating = 15000//15000 W ~ 20 HP
-    var/max_power_rating = 15000
-    /*can be used for radio stuff later
-    var/frequency = 0
+	use_power = USE_POWER_OFF
+	//Internal circuitry, friction losses and stuff
+	idle_power_usage = 150
+	//15000 W ~ 20 HP
+	power_rating = 15000
+	var/max_power_rating = 15000
+	/*can be used for radio stuff later
+	var/frequency = 0
 	var/id = null
 	var/datum/radio_frequency/radio_connection
-    */  
-    var/target_temp = T20C
-    var/lowest_temp = TCMB
-    var/max_temp = 99999999//Need to bottle it somewhere, the sun's core has 15 million kelvin
+	*/
+	var/target_temp = T20C
+	var/lowest_temp = TCMB
+	///Need to bottle it somewhere, the sun's core has 15 million kelvin
+	var/max_temp = 99999999
 
-    var/on = 0
-    var/efficiency = 0
+	var/on = FALSE
+	var/efficiency = 0
 
 /obj/machinery/atmospherics/binary/heat_pump/CtrlClick(mob/user)
-    if (Adjacent(user))
-        add_hiddenprint(user)
-        if(powered())
-            to_chat(user, "You toggle the power to the [src] [on ? "Off" : "On"].")
-            update_use_power(!use_power)
-            on = !on
-            update_icon()
-        else
-            to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+	if(Adjacent(user))
+		add_hiddenprint(user)
+		if(powered())
+			to_chat(user, "You toggle the power to the [src] [on ? "Off" : "On"].")
+			update_use_power(!use_power)
+			on = !on
+			update_icon()
+		else
+			to_chat(user, SPAN_WARNING("There doesn't seem to be any power."))
 
 /obj/machinery/atmospherics/binary/heat_pump/CtrlShiftClick(mob/user)
-    if(Adjacent(user))
-        add_hiddenprint(user)
-        if (powered())
-            to_chat(user, "You set the target temperature of the [src] to default.")
-            target_temp = T20C
-        else
-            to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+	if(Adjacent(user))
+		add_hiddenprint(user)
+		if (powered())
+			to_chat(user, "You set the target temperature of the [src] to default.")
+			target_temp = T20C
+		else
+			to_chat(user, SPAN_WARNING("There doesn't seem to be any power."))
 
 /obj/machinery/atmospherics/binary/heat_pump/AltClick(mob/user)
-    if(Adjacent(user))
-        add_hiddenprint(user)
-        if (powered())
-            to_chat(user, "You set the target temperature of the [src] to [TCMB] Kelvin.")
-            target_temp = TCMB
-        else
-            to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+	if(Adjacent(user))
+		add_hiddenprint(user)
+		if (powered())
+			to_chat(user, "You set the target temperature of the [src] to [TCMB] Kelvin.")
+			target_temp = TCMB
+		else
+			to_chat(user, SPAN_WARNING("There doesn't seem to be any power."))
 
 /obj/machinery/atmospherics/binary/heat_pump/Initialize(mapload)
-    . = ..()
-    air1.volume = ATMOS_DEFAULT_VOLUME_PUMP
-    air2.volume = ATMOS_DEFAULT_VOLUME_PUMP
+	. = ..()
+	air1.volume = ATMOS_DEFAULT_VOLUME_PUMP
+	air2.volume = ATMOS_DEFAULT_VOLUME_PUMP
 
 /obj/machinery/atmospherics/binary/passive_gate/Destroy()
 	unregister_radio(src, frequency)
 	. = ..()
 
 /obj/machinery/atmospherics/binary/heat_pump/update_icon()
-    if(!powered() || !on)
-        icon_state = "off"
-    else if(air1.temperature < target_temp)
-        icon_state = "cool_1"
-    else if(air1.temperature > target_temp)
-        icon_state = "cool_2"
-    else
-        icon_state = "off"
+	. = ..()
+	if(!powered() || !on)
+		icon_state = "off"
+	else if(air1.temperature < target_temp)
+		icon_state = "cool_1"
+	else if(air1.temperature > target_temp)
+		icon_state = "cool_2"
+	else
+		icon_state = "off"
 
 /obj/machinery/atmospherics/binary/heat_pump/update_underlays()
 	if(..())
@@ -93,136 +96,138 @@
 	update_underlays()
 
 /obj/machinery/atmospherics/binary/heat_pump/attackby(obj/item/W, mob/user)
-    if(istype(W, /obj/item/pen))
-        var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
-        new_name = trim(new_name)
-        name = (new_name? new_name : name)
-        return
-    if (!W.is_wrench())
-        return ..()
-    if (!(stat & NOPOWER) && use_power)
-        to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
-        return 1
-    add_fingerprint(user)
-    playsound(src, W.usesound, 50, 1)
-    to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-    if (do_after(user, 40 * W.toolspeed))
-        user.visible_message( \
-            "<span class='notice'>\The [user] unfastens \the [src].</span>", \
-            "<span class='notice'>You have unfastened \the [src].</span>", \
-            "You hear ratchet.")
-        deconstruct()
+	if(istype(W, /obj/item/pen))
+		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
+		new_name = trim(new_name)
+		name = (new_name? new_name : name)
+		return
+	if (!W.is_wrench())
+		return ..()
+	if (!(stat & NOPOWER) && use_power)
+		to_chat(user, SPAN_WARNING("You cannot unwrench this [src], turn it off first."))
+		return TRUE
+	add_fingerprint(user)
+	playsound(src, W.usesound, 50, 1)
+	to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src]..."))
+	if (do_after(user, 40 * W.toolspeed))
+		user.visible_message( \
+			SPAN_NOTICE("\The [user] unfastens \the [src]."), \
+			SPAN_NOTICE("You have unfastened \the [src]."), \
+			"You hear ratchet.")
+		deconstruct()
 
 /obj/machinery/atmospherics/binary/heat_pump/attack_hand(user as mob)
 	if(..())
 		return
 	src.add_fingerprint(usr)
 	if(!src.allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_BOLDWARNING("Access denied."))
 		return
 	usr.set_machine(src)
 	ui_interact(user)
 	return
 
 /obj/machinery/atmospherics/binary/heat_pump/process(delta_time)
-    update_icon()
-    if((stat & (NOPOWER|BROKEN)) || !use_power)
-        return
+	update_icon()
+	if((stat & (NOPOWER|BROKEN)) || !use_power)
+		return
 
-    if(!air1 || !air2)
-        return
+	if(!air1 || !air2)
+		return
 
-    if( (air1.temperature < 1) ||  (air2.temperature < 1))//If there is no air1 or 2 the temperature is assumed 0 Kelvin which allows for 
-        return
+	//If there is no air1 or 2 the temperature is assumed 0 Kelvin which allows for
+	if( (air1.temperature < 1) ||  (air2.temperature < 1))
+		return
 
-    if((air2.temperature <= target_temp+0.1) && (air2.temperature >= target_temp-0.1))
-        return//We are close enough to our target temp that its not worth the hassle
-    
-    if(check_passive_opportunity())
-        handle_passive_flow()
-        return//No need to pump while there is passive flow occuring
+	if((air2.temperature <= target_temp+0.1) && (air2.temperature >= target_temp-0.1))
+		return //We are close enough to our target temp that its not worth the hassle
 
-    //Now we are at the point where we need to actively pump
-    efficiency = get_thermal_efficency()
-    var/energy_transfered = 0
-    CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
+	if(check_passive_opportunity())
+		handle_passive_flow()
+		return //No need to pump while there is passive flow occuring
 
-    energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
-    
-    var/power_draw = abs(energy_transfered/performance_factor)
-    air2.add_thermal_energy(-air1.add_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
-    if (power_draw >= 0)
-        last_power_draw = power_draw
-        use_power(power_draw)
-        if(network1)
-            network1.update = 1
-        if(network2)
-            network2.update = 1
+	//Now we are at the point where we need to actively pump
+	efficiency = get_thermal_efficency()
+	var/energy_transfered = 0
+	CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
+
+	energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
+
+	var/power_draw = abs(energy_transfered/performance_factor)
+	//Only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
+	air2.add_thermal_energy(-air1.add_thermal_energy(-energy_transfered*efficiency))
+	if(power_draw >= 0)
+		last_power_draw = power_draw
+		use_power(power_draw)
+		if(network1)
+			network1.update = TRUE
+		if(network2)
+			network2.update = TRUE
 
 /obj/machinery/atmospherics/binary/heat_pump/proc/get_thermal_efficency()
-    if((target_temp < air2.temperature))
-        return clamp((air2.temperature/air1.temperature)*EFFICENCY_MULT,0,1*EFFICENCY_LIMIT_MULT)
-    else if((target_temp > air2.temperature))
-        return clamp((air1.temperature/air2.temperature)*EFFICENCY_MULT,0,1*EFFICENCY_LIMIT_MULT)
+	if((target_temp < air2.temperature))
+		return clamp((air2.temperature / air1.temperature) * EFFICENCY_MULT, 0, 1 * EFFICENCY_LIMIT_MULT)
+	else if((target_temp > air2.temperature))
+		return clamp((air1.temperature / air2.temperature) * EFFICENCY_MULT, 0, 1 * EFFICENCY_LIMIT_MULT)
 
 /obj/machinery/atmospherics/binary/heat_pump/proc/handle_passive_flow()
-    var/air_heat_capacity = air1.heat_capacity()
-    var/other_air_heat_capacity = air2.heat_capacity()
-    var/combined_heat_capacity = other_air_heat_capacity + air_heat_capacity
+	var/air_heat_capacity = air1.heat_capacity()
+	var/other_air_heat_capacity = air2.heat_capacity()
+	var/combined_heat_capacity = other_air_heat_capacity + air_heat_capacity
 
-    if(combined_heat_capacity > 0)
-        var/combined_energy = air1.temperature*other_air_heat_capacity + air_heat_capacity*air2.temperature
+	if(combined_heat_capacity > 0)
+		var/combined_energy = air1.temperature*other_air_heat_capacity + air_heat_capacity*air2.temperature
 
-        var/new_temperature = combined_energy/combined_heat_capacity
-        air1.temperature = new_temperature
-        air2.temperature = new_temperature
+		var/new_temperature = combined_energy/combined_heat_capacity
+		air1.temperature = new_temperature
+		air2.temperature = new_temperature
 
 /obj/machinery/atmospherics/binary/heat_pump/proc/check_passive_opportunity()
-    if((target_temp < air2.temperature) && (air1.temperature < air2.temperature - 5))//Little offsets to prevent just constant passive flow for minor temperature differences
-        return TRUE
-    if((target_temp > air2.temperature) && (air1.temperature > air2.temperature + 5))
-        return TRUE
-    return FALSE
-    
+	//Little offsets to prevent just constant passive flow for minor temperature differences
+	if((target_temp < air2.temperature) && (air1.temperature < air2.temperature - 5))
+		return TRUE
+	if((target_temp > air2.temperature) && (air1.temperature > air2.temperature + 5))
+		return TRUE
+	return FALSE
+
 /obj/machinery/atmospherics/binary/heat_pump/ui_interact(mob/user, datum/tgui/ui)
-    ui = SStgui.try_update_ui(user, src, ui)
-    if(!ui)
-        ui = new(user, src, "heat_pump", name)
-        ui.open()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "heat_pump", name)
+		ui.open()
 
 /obj/machinery/atmospherics/binary/heat_pump/ui_data(mob/user)
-    var/list/data = list()
-    data["target_temp"] = target_temp
-    data["current_temp"] = air2.temperature
-    data["sink_temp"] = air1.temperature
-    data["on"] = on
-    data["lowest_temp"] = lowest_temp
-    data["highest_temp"] = max_temp
-    data["efficency"] = efficiency
+	var/list/data = list()
+	data["target_temp"] = target_temp
+	data["current_temp"] = air2.temperature
+	data["sink_temp"] = air1.temperature
+	data["on"] = on
+	data["lowest_temp"] = lowest_temp
+	data["highest_temp"] = max_temp
+	data["efficency"] = efficiency
 
-
-    return data
+	return data
 
 /obj/machinery/atmospherics/binary/heat_pump/ui_state(mob/user)
-    return GLOB.physical_state
+	return GLOB.physical_state
 
 /obj/machinery/atmospherics/binary/heat_pump/ui_act(action, params)
-    if(..())
-        return TRUE
-    switch(action)
-        if("power")
-            on = !on
-            if(on)
-                use_power = USE_POWER_ACTIVE
-            else
-                use_power = USE_POWER_OFF
-        if("target_temp")
-            var/newValue = params["temperature"]
-            if(text2num(newValue) != null)
-                target_temp = text2num(newValue)
-                . = TRUE
-            if(.)
-                target_temp = max(newValue,lowest_temp)
+	if(..())
+		return TRUE
+	switch(action)
+		if("power")
+			on = !on
+			if(on)
+				use_power = USE_POWER_ACTIVE
+			else
+				use_power = USE_POWER_OFF
+		if("target_temp")
+			var/newValue = params["temperature"]
+			if(text2num(newValue) != null)
+				target_temp = text2num(newValue)
+				. = TRUE
+			if(.)
+				target_temp = max(newValue,lowest_temp)
 
 
 #undef EFFICENCY_MULT

@@ -57,24 +57,6 @@
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
 
-/obj/assume_air(datum/gas_mixture/giver)
-	if(loc)
-		return loc.assume_air(giver)
-	else
-		return null
-
-/obj/remove_air(amount)
-	if(loc)
-		return loc.remove_air(amount)
-	else
-		return null
-
-/obj/return_air()
-	if(loc)
-		return loc.return_air()
-	else
-		return null
-
 /obj/proc/updateUsrDialog()
 	if(in_use)
 		var/is_in_use = 0
@@ -119,6 +101,7 @@
 	..()
 
 /mob/proc/unset_machine()
+	machine?.remove_visual(src)
 	src.machine = null
 
 /mob/proc/set_machine(var/obj/O)

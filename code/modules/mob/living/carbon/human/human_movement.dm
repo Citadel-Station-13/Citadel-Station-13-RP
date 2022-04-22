@@ -242,11 +242,7 @@
 	var/S = pick(footstep_sounds)
 	if(!S) return
 
-	// Play every 20 steps while walking, for the sneak
-	if(MOVING_DELIBERATELY(src) && step_count++ % 20 != 0)
-		return
-
-	// Play every other step while running
+	// Play every other step while running (we play every step when walking)
 	if(MOVING_QUICKLY(src) && step_count++ % 2 != 0)
 		return
 

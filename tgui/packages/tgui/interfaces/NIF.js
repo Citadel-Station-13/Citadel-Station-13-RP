@@ -13,12 +13,14 @@ const NIF_PREINSTALL = 4;
 const validThemes = [
   "abductor",
   "cardtable",
+  // "clockcult", //We can rebuild you... STRONGER! //aka this on my TODO -Zan
   "hackerman",
   "malfunction",
   "ntos",
   "paper",
   "retro",
   "syndicate",
+  // "wizard",
 ];
 
 export const NIF = (props, context) => {
@@ -94,7 +96,7 @@ export const NIF = (props, context) => {
           <Button
             icon="cogs"
             tooltip="Settings"
-            tooltipPosition="bottom-left"
+            tooltipPosition="bottom-end"
             selected={settingsOpen}
             onClick={() => setSettingsOpen(!settingsOpen)} />
         }>

@@ -182,7 +182,10 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/list/static_inventory = list() //the screen objects which are static
 
 	var/list/adding
+	///Misc hud elements that are hidden when the hud is minimized
 	var/list/other
+	///Misc hud elements that are always shown even when the hud is minimized
+	var/list/other_important
 	var/list/miniobjs
 	var/list/atom/movable/screen/hotkeybuttons
 
@@ -220,6 +223,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	move_intent = null
 	adding = null
 	other = null
+	other_important = null
 	hotkeybuttons = null
 //	item_action_list = null // ?
 	mymob = null
@@ -455,6 +459,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			src.client.screen -= src.hud_used.other
 		if(src.hud_used.hotkeybuttons)
 			src.client.screen -= src.hud_used.hotkeybuttons
+		if(src.hud_used.other_important)
+			src.client.screen -= src.hud_used.other_important
 		src.client.screen -= src.internals
 		src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
 	else
@@ -463,6 +469,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			src.client.screen += src.hud_used.adding
 		if(src.hud_used.other && src.hud_used.inventory_shown)
 			src.client.screen += src.hud_used.other
+		if(src.hud_used.other_important)
+			src.client.screen += src.hud_used.other_important
 		if(src.hud_used.hotkeybuttons && !src.hud_used.hotkey_ui_hidden)
 			src.client.screen += src.hud_used.hotkeybuttons
 		if(src.internals)

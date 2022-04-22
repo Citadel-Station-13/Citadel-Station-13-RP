@@ -11,16 +11,16 @@
 /datum/tgui_module/alarm_monitor/all
 /datum/tgui_module/alarm_monitor/all/New()
 	..()
-	alarm_handlers = SSalarm.all_handlers
+	alarm_handlers = SSalarms.all_handlers
 
 // Subtype for glasses_state
 /datum/tgui_module/alarm_monitor/all/glasses
 /datum/tgui_module/alarm_monitor/all/glasses/ui_state(mob/user)
-	return GLOB.tgui_glasses_state
+	return GLOB.glasses_state
 
 /datum/tgui_module/alarm_monitor/all/robot
 /datum/tgui_module/alarm_monitor/all/robot/ui_state(mob/user)
-	return GLOB.tgui_self_state
+	return GLOB.self_state
 
 /datum/tgui_module/alarm_monitor/engineering
 /datum/tgui_module/alarm_monitor/engineering/New()
@@ -30,12 +30,12 @@
 // Subtype for glasses_state
 /datum/tgui_module/alarm_monitor/engineering/glasses
 /datum/tgui_module/alarm_monitor/engineering/glasses/ui_state(mob/user)
-	return GLOB.tgui_glasses_state
+	return GLOB.glasses_state
 
 // Subtype for nif_state
 /datum/tgui_module/alarm_monitor/engineering/nif
 /datum/tgui_module/alarm_monitor/engineering/nif/ui_state(mob/user)
-	return GLOB.tgui_nif_state
+	return GLOB.nif_state
 
 // Subtype for NTOS
 /datum/tgui_module/alarm_monitor/engineering/ntos
@@ -49,7 +49,7 @@
 // Subtype for glasses_state
 /datum/tgui_module/alarm_monitor/security/glasses
 /datum/tgui_module/alarm_monitor/security/glasses/ui_state(mob/user)
-	return GLOB.tgui_glasses_state
+	return GLOB.glasses_state
 
 // Subtype for NTOS
 /datum/tgui_module/alarm_monitor/security/ntos
@@ -84,9 +84,8 @@
 	var/z = get_z(ui_host())
 	for(var/datum/alarm_handler/AH in alarm_handlers)
 		if(AH.has_major_alarms(z))
-			return 1
-
-	return 0
+			return TRUE
+	return FALSE
 
 /datum/tgui_module/alarm_monitor/proc/minor_alarms()
 	var/z = get_z(ui_host())
@@ -127,7 +126,7 @@
 
 			if(isAI(user))
 				for(var/obj/machinery/camera/C in A.cameras())
-					cameras[++cameras.len] = C.tgui_structure()
+					cameras[++cameras.len] = C.ui_structure()
 			for(var/datum/alarm_source/AS in A.sources)
 				if(!AS.source)
 					lost_sources[++lost_sources.len] = AS.source_name

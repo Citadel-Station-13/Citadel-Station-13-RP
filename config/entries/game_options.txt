@@ -37,3 +37,15 @@ ALERT_DESC_RED_UPTO There is an immediate serious threat to the station. Securit
 ALERT_DESC_RED_DOWNTO Code Red procedures are now in effect: The station is no longer under threat of imminent destruction, but there is still an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised.
 
 ALERT_DESC_DELTA The station is under immediate threat of imminent destruction! All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.
+
+
+## These modify the run/walk speed of all mobs before the mob-specific modifiers are applied. Negative numbers are faster, positive numbers are slower.
+RUN_SPEED 3
+WALK_SPEED 5
+
+## The cost per tile of sprinting.
+SPRINT_COST 0.8
+
+## The minimums and maximums for stamina recovery, modified by factors like laying down.
+MINIMUM_STAMINA_RECOVERY 5
+MAXIMUM_STAMINA_RECOVERY 5

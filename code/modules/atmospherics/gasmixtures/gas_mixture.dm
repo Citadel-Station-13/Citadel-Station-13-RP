@@ -11,6 +11,7 @@
 	//Volume of this mix.
 	var/volume = CELL_VOLUME
 	//Size of the group this gas_mixture is representing.  1 for singletons.
+	// ATMOS_TODO : this needs to be removed for auxmos
 	var/group_multiplier = 1
 
 	//List of active tile overlays for this gas_mixture.  Updated by check_tile_graphic()
@@ -78,7 +79,7 @@
 
 //Merges all the gas from another mixture into this one.  Respects group_multipliers and adjusts temperature correctly.
 //Does not modify giver in any way.
-/datum/gas_mixture/proc/merge(const/datum/gas_mixture/giver)
+/datum/gas_mixture/proc/merge(datum/gas_mixture/giver)
 	if(!giver)
 		return
 
@@ -392,11 +393,9 @@
 
 	return compare(other)
 
-
 //A wrapper around share_ratio for spacing gas at the same rate as if it were going into a large airless room.
 /datum/gas_mixture/proc/share_space(datum/gas_mixture/unsim_air)
 	return share_ratio(unsim_air, unsim_air.group_multiplier, max(1, max(group_multiplier + 3, 1) + unsim_air.group_multiplier), one_way = 1)
-
 
 //Equalizes a list of gas mixtures.  Used for pipe networks.
 /proc/equalize_gases(list/datum/gas_mixture/gases)
@@ -509,3 +508,14 @@
 /datum/gas_mixture/proc/get_mass()
 	for(var/g in gas)
 		. += gas[g] * GLOB.meta_gas_molar_mass[g] * group_multiplier
+
+/**
+ * get the equivalent of a single tile of this gas mixture
+ *
+ * TODO: remove group_multiplier, change to tiles_represented
+ */
+/datum/gas_mixture/proc/copy_single_tile()
+	RETURN_TYPE(/datum/gas_mixture)
+	var/datum/gas_mixture/GM = new(CELL_VOLUME)
+	GM.copy_from(src)
+	GM.group_multiplier = 1

@@ -127,7 +127,7 @@
 		//end intent small hud objects
 
 	if(hud_data.has_move_intent)
-		using = new /atom/movable/screen()
+		using = new /atom/movable/screen/mov_intent()
 		using.name = "mov_intent"
 		using.icon = ui_style
 		using.icon_state = mymob.move_intent.flags & 0x004 ? "running" : "walking" //We cannot use the macro because of the load order in the .dme
@@ -517,6 +517,6 @@
 		else
 			to_chat(usr, SPAN_DANGER("You cannot breathe!"))
 
-/obj/screen/movement/Click(var/location, var/control, var/params)
+/atom/movable/screen/mov_intent/Click(var/location, var/control, var/params)
 	if(istype(usr))
 		usr.set_next_usable_move_intent()

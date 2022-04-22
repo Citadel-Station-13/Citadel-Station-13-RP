@@ -12,6 +12,8 @@
 /datum/config_entry/flag/nightshifts_enabled
 	config_entry_value = TRUE
 
+// Alert level descriptions.
+
 /datum/config_entry/string/alert_desc_green
 	config_entry_value = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
 
@@ -47,3 +49,23 @@
 
 /datum/config_entry/string/alert_desc_delta
 	config_entry_value = "The station is under immediate threat of imminent destruction! All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
+
+//Global movement modifiers.
+
+/datum/config_entry/number/run_speed
+	config_entry_value = 3
+
+/datum/config_entry/number/walk_speed
+	config_entry_value = 5
+
+/datum/config_entry/number/sprint_cost
+	config_entry_value = 0.8
+	integer = FALSE
+
+/datum/config_entry/number/minimum_stamina_recovery
+	config_entry_value = 5
+	integer = FALSE
+	
+/datum/config_entry/number/maximum_stamina_recovery
+	config_entry_value = 5
+	integer = FALSE

@@ -8,12 +8,13 @@ import { BooleanLike, classes, pureComponentHooks } from 'common/react';
 import { Box, BoxProps, unit } from './Box';
 
 export interface FlexProps extends BoxProps {
-  direction?: string | BooleanLike;
-  wrap?: string | BooleanLike;
-  align?: string | BooleanLike;
-  justify?: string | BooleanLike;
-  inline?: BooleanLike;
-}
+   direction?: string | BooleanLike;
+   wrap?: string | BooleanLike;
+   align?: string | BooleanLike;
+   alignContent?: string | BooleanLike; // VOREStation Addition
+   justify?: string | BooleanLike;
+   inline?: BooleanLike;
+ }
 
 export const computeFlexProps = (props: FlexProps) => {
   const {
@@ -21,6 +22,7 @@ export const computeFlexProps = (props: FlexProps) => {
     direction,
     wrap,
     align,
+    alignContent, // VOREStation Addition
     justify,
     inline,
     ...rest
@@ -41,6 +43,7 @@ export const computeFlexProps = (props: FlexProps) => {
       'flex-direction': direction,
       'flex-wrap': wrap === true ? 'wrap' : wrap,
       'align-items': align,
+      'align-content': alignContent, // VOREStation Addition
       'justify-content': justify,
     },
     ...rest,
@@ -54,12 +57,12 @@ export const Flex = props => (
 Flex.defaultHooks = pureComponentHooks;
 
 export interface FlexItemProps extends BoxProps {
-  grow?: number;
-  order?: number;
-  shrink?: number;
-  basis?: string | BooleanLike;
-  align?: string | BooleanLike;
-}
+   grow?: number;
+   order?: number;
+   shrink?: number;
+   basis?: string | BooleanLike;
+   align?: string | BooleanLike;
+ }
 
 export const computeFlexItemProps = (props: FlexItemProps) => {
   const {
@@ -78,7 +81,7 @@ export const computeFlexItemProps = (props: FlexItemProps) => {
     className: classes([
       'Flex__item',
       Byond.IS_LTE_IE10 && 'Flex__item--iefix',
-      Byond.IS_LTE_IE10 && grow > 0 && 'Flex__item--iefix--grow',
+      Byond.IS_LTE_IE10 && (grow && grow > 0) && 'Flex__item--iefix--grow',
       className,
     ]),
     style: {

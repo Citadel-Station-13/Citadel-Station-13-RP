@@ -6,7 +6,7 @@ import { Window } from "../layouts";
 
 export const PlantAnalyzer = (props, context) => {
   const { data } = useBackend(context);
-  
+
   let calculatedHeight = 250;
   if (data.seed) {
     calculatedHeight += (18 * data.seed.trait_info.length);

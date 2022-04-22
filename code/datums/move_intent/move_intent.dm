@@ -21,7 +21,7 @@
 
 /decl/move_intent/walk/New()
 	. = ..()
-	move_delay = config_legacy.walk_speed
+	move_delay = CONFIG_GET(number/walk_speed)
 
 /decl/move_intent/run
 	name = "Run"
@@ -30,4 +30,4 @@
 
 /decl/move_intent/run/New()
 	. = ..()
-	move_delay = config_legacy.run_speed
+	move_delay = CONFIG_GET(number/run_speed)

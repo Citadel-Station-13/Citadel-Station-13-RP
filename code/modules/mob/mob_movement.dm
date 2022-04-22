@@ -95,8 +95,9 @@
   */
 
 /client/Move(n, direct)
-	if(!mob?.loc)
-		return FALSE
+	//if(!mob) // Clients cannot have a null mob, as enforced by byond
+	//	return // Moved here to avoid nullrefs below
+
 	if(!mob.check_move_cooldown()) //do not move anything ahead of this check please
 		return FALSE
 	else
@@ -163,6 +164,12 @@
 	if(!(L.mobility_flags & MOBILITY_MOVE))
 		return FALSE
 */
+
+	//Relaymove could handle it
+	if(mob.machine)
+		var/result = mob.machine.relaymove(mob, direct)
+		if(result)
+			return result
 
 	if(isobj(mob.loc) || ismob(mob.loc))	//Inside an object, tell it we moved
 		var/atom/O = mob.loc
@@ -535,7 +542,8 @@
 //Movement intent stuff
 
 /mob/proc/set_next_usable_move_intent()
-	var/checking_intent = (istype(move_intent) ? move_intent.type : move_intents[1])
+	//If our move intent is null (usually if just spawning in), we'll set it to the first one (next_in_list will wrap around)
+	var/checking_intent = (istype(move_intent) ? move_intent.type : move_intents[move_intents.len]) 
 	for(var/i = 1 to length(move_intents)) // One full iteration of the move set.
 		checking_intent = next_in_list(checking_intent, move_intents)
 		if(set_move_intent(decls_repository.get_decl(checking_intent)))

@@ -479,7 +479,7 @@
 	if(!istype(T))
 		return
 
-	var/zone/Z = T.zone
+	var/datum/zas_zone/Z = T.zone
 	if(!Z) // Paranoid.
 		return
 
