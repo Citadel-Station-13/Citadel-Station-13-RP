@@ -161,6 +161,8 @@
 
 	var/metabolic_rate = 1
 
+	var/list/move_intents = list(/decl/move_intent/walk, /decl/move_intent/run)
+	
 	// HUD data vars.
 	var/datum/hud_data/hud
 	var/hud_type

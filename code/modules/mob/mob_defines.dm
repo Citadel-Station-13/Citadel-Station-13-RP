@@ -5,9 +5,17 @@
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
 
+	var/mob_flags
+	var/last_quick_move_time = 0
+	var/list/client_images = list() // List of images applied to/removed from the client on login/logout
+
 	// Intents
 	/// How are we intending to move? Walk/run/etc.
-	var/m_intent = MOVE_INTENT_RUN
+	var/decl/move_intent/move_intent = /decl/move_intent/walk
+	var/list/move_intents = list(/decl/move_intent/walk)
+
+	var/decl/move_intent/default_walk_intent
+	var/decl/move_intent/default_run_intent
 
 	var/datum/mind/mind
 
@@ -143,6 +151,8 @@
 	var/obj/buckled = null//Living
 
 	var/seer = 0 //for cult//Carbon, probably Human
+
+
 
 	var/datum/hud/hud_used = null
 

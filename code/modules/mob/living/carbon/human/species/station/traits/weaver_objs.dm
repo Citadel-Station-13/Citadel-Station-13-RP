@@ -103,7 +103,7 @@ var/global/list/weavable_items = list()
 			return
 	if(isliving(AM) && trap_active)
 		var/mob/living/L = AM
-		if(L.m_intent == "run")
+		if(MOVING_QUICKLY(L))
 			L.visible_message(
 				"<span class='danger'>[L] steps on \the [src].</span>",
 				"<span class='danger'>You step on \the [src]!</span>",

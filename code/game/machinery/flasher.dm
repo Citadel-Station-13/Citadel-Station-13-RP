@@ -100,7 +100,7 @@
 
 	if(istype(AM, /mob/living/carbon))
 		var/mob/living/carbon/M = AM
-		if((M.m_intent != "walk") && (anchored))
+		if((!MOVING_DELIBERATELY(M) && (anchored)))
 			flash()
 
 /obj/machinery/flasher/portable/attackby(obj/item/W as obj, mob/user as mob)

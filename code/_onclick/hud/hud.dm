@@ -178,7 +178,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/atom/movable/screen/l_hand_hud_object
 	var/atom/movable/screen/action_intent
 	var/atom/movable/screen/move_intent
-
+	var/atom/movable/screen/stamina/stamina_bar
 	var/list/static_inventory = list() //the screen objects which are static
 
 	var/list/adding
@@ -208,6 +208,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	hurt_intent = null
 	disarm_intent = null
 	help_intent = null
+	stamina_bar = null
 	lingchemdisplay = null
 	wiz_instability_display = null
 	wiz_energy_display = null
@@ -225,6 +226,22 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	minihuds = null
 
 	QDEL_LIST(static_inventory)
+
+/atom/movable/screen/stamina
+	name = "stamina"
+	icon = 'icons/effects/progressbar.dmi'
+	icon_state = "prog_bar_100"
+	invisibility = INVISIBILITY_MAXIMUM
+	screen_loc = ui_stamina
+
+/datum/hud/proc/update_stamina()
+	if(mymob && stamina_bar)
+		var/stamina = mymob.get_stamina()
+		if(stamina < 100)
+			stamina_bar.invisibility = 0
+			stamina_bar.icon_state = "prog_bar_[round(stamina/5)*5]"
+		else
+			stamina_bar.invisibility = INVISIBILITY_MAXIMUM
 
 /datum/hud/proc/hidden_inventory_update()
 	if(!mymob) return
@@ -461,3 +478,10 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 /mob/new_player/add_click_catcher()
 	return
+
+/obj/screen/stamina
+	name = "stamina"
+	icon = 'icons/effects/progessbar.dmi'
+	icon_state = "prog_bar_100"
+	invisibility = INVISIBILITY_MAXIMUM
+	screen_loc = ui_stamina

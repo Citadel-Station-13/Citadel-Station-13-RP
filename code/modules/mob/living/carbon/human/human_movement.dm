@@ -1,5 +1,8 @@
 #define HUMAN_LOWEST_SLOWDOWN -3
 
+/mob/living/carbon/human
+	move_intents = list(/decl/move_intent/walk)
+
 /mob/living/carbon/human/movement_delay(oldloc, direct)
 	. = ..()
 
@@ -8,14 +11,15 @@
 	if(species.slowdown)
 		tally = species.slowdown
 
-	if (istype(loc, /turf/space))
+	if(istype(loc, /turf/space))
 		return 1		//until tg movement slowdown + modifiers is a thing I guess ...
 
 	if(embedded_flag)
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 
-	if(force_max_speed)
-		return HUMAN_LOWEST_SLOWDOWN
+	if(MOVING_QUICKLY(src))
+		last_quick_move_time = world.time
+		adjust_stamina(-(get_stamina_used_per_step()))
 
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.haste) && M.haste == TRUE)
@@ -73,7 +77,8 @@
 			else if(E.status & ORGAN_BROKEN)
 				tally += 1.5
 
-	if(shock_stage >= 10) tally += 3
+	if(shock_stage >= 10 || get_stamina() <= 0)
+		tally += 3
 
 	if(aiming && aiming.aiming_at) tally += 5 // Iron sights make you slower, it's a well-known fact.
 
@@ -238,17 +243,17 @@
 	if(!S) return
 
 	// Play every 20 steps while walking, for the sneak
-	if(m_intent == "walk" && step_count++ % 20 != 0)
+	if(MOVING_DELIBERATELY(src) && step_count++ % 20 != 0)
 		return
 
 	// Play every other step while running
-	if(m_intent == "run" && step_count++ % 2 != 0)
+	if(MOVING_QUICKLY(src) && step_count++ % 2 != 0)
 		return
 
 	var/volume = config_legacy.footstep_volume
 
 	// Reduce volume while walking or barefoot
-	if(!shoes || m_intent == "walk")
+	if(!shoes || MOVING_DELIBERATELY(src))
 		volume *= 0.5
 	else if(shoes)
 		var/obj/item/clothing/shoes/feet = shoes
@@ -266,3 +271,11 @@
 
 	playsound(T, S, volume, FALSE)
 	return
+
+/mob/living/carbon/human/can_sprint()
+	return (stamina > 0)
+
+
+/mob/living/carbon/human/get_stamina_used_per_step()
+	return ..()
+	//This is where we would put in stuff like athletics modifiers if we want to in the future

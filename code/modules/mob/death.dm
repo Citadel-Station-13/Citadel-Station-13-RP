@@ -77,7 +77,7 @@
 		src.visible_message("<b>\The [src.name]</b> [deathmessage]")
 
 	stat = DEAD
-
+	adjust_stamina(-100)
 	update_canmove()
 
 	dizziness = 0

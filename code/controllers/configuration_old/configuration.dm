@@ -167,8 +167,11 @@
 
 	//Used for modifying movement speed for mobs.
 	//Unversal modifiers
-	var/run_speed = 0
-	var/walk_speed = 0
+	var/run_speed = 3
+	var/walk_speed = 8
+	var/sprint_cost = 0.8
+	var/minimum_stamina_recovery = 5
+	var/maximum_stamina_recovery = 5
 
 	//Mob specific modifiers. NOTE: These will affect different mob types in different ways
 	var/human_delay = 0
@@ -877,6 +880,12 @@
 					config_legacy.run_speed = value
 				if("walk_speed")
 					config_legacy.walk_speed = value
+				if("sprint_cost")
+					config_legacy.sprint_cost = value
+				if("minimum_stamina_recovery")
+					config_legacy.minimum_stamina_recovery = value
+				if("maximum_stamina_recovery")
+					config_legacy.maximum_stamina_recovery = value
 
 				if("human_delay")
 					config_legacy.human_delay = value

@@ -387,6 +387,7 @@
 #include "code\datums\looping_sounds\machinery_sounds.dm"
 #include "code\datums\looping_sounds\sequence.dm"
 #include "code\datums\looping_sounds\weather_sounds.dm"
+#include "code\datums\move_intent\move_intent.dm"
 #include "code\datums\observation\_debug.dm"
 #include "code\datums\observation\_defines.dm"
 #include "code\datums\observation\observation.dm"

@@ -9,7 +9,7 @@
 	using.name = "mov_intent"
 	using.setDir(SOUTHWEST)
 	using.icon = 'icons/mob/screen1_alien.dmi'
-	using.icon_state = (mymob.m_intent == "run" ? "running" : "walking")
+	using.icon_state = mymob.move_intent.flags & 0x004 ? "running" : "walking" //We cannot use the macro because of the load order in the .dme
 	using.screen_loc = ui_acti
 	using.layer = HUD_LAYER
 	src.adding += using

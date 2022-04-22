@@ -7,13 +7,13 @@
 				var/mob/living/carbon/human/M = src
 				if(M.stat != 2 && M.nutrition > 0)
 					M.nutrition -= M.species.hunger_factor/10
-					if(M.m_intent == "run")
+					if(MOVING_QUICKLY(M))
 						M.nutrition -= M.species.hunger_factor/10
 					if(M.nutrition < 0)
 						M.nutrition = 0
 			else
 				src.nutrition -= DEFAULT_HUNGER_FACTOR/10
-				if(src.m_intent == "run")
+				if(MOVING_QUICKLY(src))
 					src.nutrition -= DEFAULT_HUNGER_FACTOR/10
 		// Moving around increases germ_level faster
 		if(germ_level < GERM_LEVEL_MOVE_CAP && prob(8))

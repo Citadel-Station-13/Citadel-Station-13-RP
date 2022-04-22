@@ -49,6 +49,10 @@
 		living_mob_list += src
 	hook_vr("mob_new",list(src)) //VOREStation Code
 	update_transform() // Some mobs may start bigger or smaller than normal.
+	if(!move_intent)
+		move_intent = move_intents[1]
+	if(ispath(move_intent))
+		move_intent = decls_repository.get_decl(move_intent)
 	return ..()
 
 /mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
@@ -1266,3 +1270,6 @@ mob/proc/yank_out_object()
  */
 /mob/proc/allow_examine(atom/A)
 	return client && (client.eye == src)
+
+/mob/proc/get_stamina_used_per_step()
+	return config_legacy.sprint_cost
