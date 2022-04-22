@@ -1,6 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - bugfix: "Fixes the Nutrition HUD being wrong most of the time"
-  - bugfix: "Fixes some Adherent organ drawing nutrition twice"
-  - refactor: "Diona now use max_nutrition for their procs"

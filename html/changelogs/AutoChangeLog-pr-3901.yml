@@ -1,6 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "Science TGUI"
-  - rscadd: "Some engineering stuff as well, and med..."
-  - refactor: "Yes. Lots of things, mainly SSplants and alarms"
