@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(job)
 	name = "Job"
 	init_order = INIT_ORDER_JOBS
-	flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE
 
 	var/list/occupations = list()		//List of all jobs
 	var/list/datum/job/name_occupations = list()	//Dict of all jobs, keys are titles

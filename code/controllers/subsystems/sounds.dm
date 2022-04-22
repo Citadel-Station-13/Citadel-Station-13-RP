@@ -2,7 +2,7 @@
 
 SUBSYSTEM_DEF(sounds)
 	name = "Sounds"
-	flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE
 	init_order = INIT_ORDER_SOUNDS
 	var/static/using_channels_max = CHANNEL_HIGHEST_AVAILABLE		//BYOND max channels
 

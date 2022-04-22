@@ -2,7 +2,7 @@
 SUBSYSTEM_DEF(skybox)
 	name = "Space skybox"
 	init_order = INIT_ORDER_SKYBOX
-	flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE
 	var/static/list/skybox_cache = list()
 
 	var/static/mutable_appearance/normal_space
