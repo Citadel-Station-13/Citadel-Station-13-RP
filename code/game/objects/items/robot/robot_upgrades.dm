@@ -221,6 +221,5 @@
 	R.add_language(LANGUAGE_TERMINUS, 1)
 	R.add_language(LANGUAGE_ZADDAT, 1)
 	R.add_language(LANGUAGE_AKULA, 1)
-	return 1
 
 	return TRUE
