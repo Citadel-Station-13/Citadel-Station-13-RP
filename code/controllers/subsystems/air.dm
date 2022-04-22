@@ -59,7 +59,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	// Maps should not have active edges on boot.  If we've got some, log it so it can get fixed.
 	if(active_edges.len)
 		var/list/edge_log = list()
-		for(var/connection_edge/E in active_edges)
+		for(var/datum/zas_edge/E in active_edges)
 			edge_log += "Active Edge [E] ([E.type])"
 			for(var/turf/T in E.connecting_turfs)
 				edge_log += "+--- Connecting Turf [T] ([T.type]) @ [T.x], [T.y], [T.z] ([T.loc])"
@@ -149,7 +149,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		#endif
 		if(MC_TICK_CHECK)
 			return
-	
+
 	if(LAZYLEN(selfblock_deferred) != 0)
 		stack_trace("WARNING: selfblock_deffered was not empty (length [LAZYLEN(selfblock_deferred)])")
 	src.selfblock_deferred = null
@@ -160,7 +160,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 	while(currentrun.len)
-		var/connection_edge/edge = currentrun[currentrun.len]
+		var/datum/zas_edge/edge = currentrun[currentrun.len]
 		currentrun.len--
 		if(edge) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
 			edge.tick()
@@ -173,7 +173,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 	while(currentrun.len)
-		var/zone/Z = currentrun[currentrun.len]
+		var/datum/zas_zone/Z = currentrun[currentrun.len]
 		currentrun.len--
 		if(Z) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
 			Z.process_fire()
@@ -187,7 +187,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	var/list/currentrun = src.currentrun
 	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
-		var/obj/fire/fire = currentrun[currentrun.len]
+		var/atom/movable/fire/fire = currentrun[currentrun.len]
 		currentrun.len--
 		if(fire) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
 			fire.process(dt)
@@ -209,7 +209,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 	while(currentrun.len)
-		var/zone/zone = currentrun[currentrun.len]
+		var/datum/zas_zone/zone = currentrun[currentrun.len]
 		currentrun.len--
 		if(zone) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
 			zone.tick()
@@ -260,7 +260,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 			stoplag()
 
 	// Invalidate all zones
-	for(var/zone/zone in zones)
+	for(var/datum/zas_zone/zone in zones)
 		zone.c_invalidate()
 
 	// Reset all the lists

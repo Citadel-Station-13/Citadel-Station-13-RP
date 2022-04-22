@@ -28,7 +28,7 @@
 	to_chat(usr, "\[2/5\] - All pipenets purged of gas.")
 
 	// Delete all zones.
-	for(var/zone/Z in world)
+	for(var/datum/zas_zone/Z in world)
 		Z.c_invalidate()
 
 	to_chat(usr, "\[3/5\] - All ZAS Zones removed.")

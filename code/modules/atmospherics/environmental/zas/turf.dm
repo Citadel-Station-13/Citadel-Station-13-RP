@@ -1,9 +1,7 @@
 /turf
 	var/needs_air_update = FALSE
-	var/datum/gas_mixture/air
-
 /turf/simulated
-	var/zone/zone
+	var/datum/zas_zone/zone
 	var/open_directions
 	/// Do we show gas overlays?
 	var/allow_gas_overlays = TRUE
@@ -50,9 +48,8 @@
 */
 
 /turf/simulated/proc/can_safely_remove_from_zone()
-
-
-	if(!zone) return 1
+	if(!zone)
+		return TRUE
 
 	var/check_dirs = get_zone_neighbours(src)
 	var/unconnected_dirs = check_dirs
@@ -89,7 +86,6 @@
 				. |= dir
 
 /turf/simulated/update_air_properties()
-
 	if(zone && zone.invalid)
 		c_copy_air()
 		zone = null //Easier than iterating through the list at the zone.
@@ -101,7 +97,7 @@
 		//dbg(blocked)
 		#endif
 		if(zone)
-			var/zone/z = zone
+			var/datum/zas_zone/z = zone
 
 			if(can_safely_remove_from_zone()) //Helps normal airlocks avoid rebuilding zones all the time
 				z.remove(src)
@@ -209,7 +205,7 @@
 			postponed.Add(unsim)
 
 	if(!air_master.has_valid_zone(src)) //Still no zone, make a new one.
-		var/zone/newzone = new/zone()
+		var/datum/zas_zone/newzone = new
 		newzone.add(src)
 
 	#ifdef ZASDBG
@@ -224,59 +220,7 @@
 		air_master.connect(src, T)
 
 /turf/proc/post_update_air_properties()
-	if(connections) connections.update_all()
-
-/turf/assume_air(datum/gas_mixture/giver) //use this for machines to adjust air
-	return 0
-
-/turf/proc/assume_gas(gasid, moles, temp = 0)
-	return 0
-
-/turf/return_air()
-	//Create gas mixture to hold data for passing
-	var/datum/gas_mixture/GM = new
-
-	GM.copy_from_turf(src)
-
-	return GM
-
-/turf/remove_air(amount as num)
-	var/datum/gas_mixture/GM = new
-	GM.copy_from_turf(src)
-	return GM.remove(amount)
-
-/turf/simulated/assume_air(datum/gas_mixture/giver)
-	var/datum/gas_mixture/my_air = return_air()
-	my_air.merge(giver)
-
-/turf/simulated/assume_gas(gasid, moles, temp = null)
-	var/datum/gas_mixture/my_air = return_air()
-
-	if(isnull(temp))
-		my_air.adjust_gas(gasid, moles)
-	else
-		my_air.adjust_gas_temp(gasid, moles, temp)
-
-	return 1
-
-/turf/simulated/remove_air(amount as num)
-	var/datum/gas_mixture/my_air = return_air()
-	return my_air.remove(amount)
-
-/turf/simulated/return_air()
-	if(zone)
-		if(!zone.invalid)
-			air_master.mark_zone_update(zone)
-			return zone.air
-		else
-			if(!air)
-				make_air()
-			c_copy_air()
-			return air
-	else
-		if(!air)
-			make_air()
-		return air
+	connections?.update_all()
 
 /turf/proc/make_air()
 	air = new /datum/gas_mixture
@@ -285,6 +229,7 @@
 	air.volume = CELL_VOLUME
 
 /turf/simulated/proc/c_copy_air()
-	if(!air) air = new/datum/gas_mixture
+	if(!air)
+		air = new /datum/gas_mixture
 	air.copy_from(zone.air)
 	air.group_multiplier = 1

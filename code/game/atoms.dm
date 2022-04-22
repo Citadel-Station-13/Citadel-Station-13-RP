@@ -194,18 +194,6 @@
 /atom/proc/reveal_blood()
 	return
 
-/atom/proc/assume_air(datum/gas_mixture/giver)
-	return null
-
-/atom/proc/remove_air(amount)
-	return null
-
-/atom/proc/return_air()
-	if(loc)
-		return loc.return_air()
-	else
-		return null
-
 //return flags that should be added to the viewer's sight var.
 //Otherwise return a negative number to indicate that the view should be cancelled.
 /atom/proc/check_eye(user as mob)

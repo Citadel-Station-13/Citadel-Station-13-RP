@@ -1,8 +1,7 @@
 var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 
-
-obj/var/contaminated = 0
-
+/obj
+	var/contaminated = 0
 
 /obj/item/proc/can_contaminate()
 	//Clothing and backpacks can be contaminated.

@@ -49,16 +49,15 @@ Class Procs:
 
 */
 
-/connection/var/turf/simulated/A
-/connection/var/turf/simulated/B
-/connection/var/zone/zoneA
-/connection/var/zone/zoneB
+/datum/zas_connection
+	var/turf/simulated/A
+	var/turf/simulated/B
+	var/datum/zas_zone/zoneA
+	var/datum/zas_zone/zoneB
+	var/datum/zas_edge/edge
+	var/state = 0
 
-/connection/var/connection_edge/edge
-
-/connection/var/state = 0
-
-/connection/New(turf/simulated/A, turf/simulated/B)
+/datum/zas_connection/New(turf/simulated/A, turf/simulated/B)
 	#ifdef ZASDBG
 	ASSERT(air_master.has_valid_zone(A))
 	//ASSERT(air_master.has_valid_zone(B))
@@ -75,33 +74,33 @@ Class Procs:
 		edge = air_master.get_edge(A.zone,B.zone)
 		edge.add_connection(src)
 
-/connection/proc/mark_direct()
+/datum/zas_connection/proc/mark_direct()
 	if(!direct())
 		state |= CONNECTION_DIRECT
 		edge.direct++
 	//to_chat(world, "Marked direct.")
 
-/connection/proc/mark_indirect()
+/datum/zas_connection/proc/mark_indirect()
 	if(direct())
 		state &= ~CONNECTION_DIRECT
 		edge.direct--
 	//to_chat(world, "Marked indirect.")
 
-/connection/proc/mark_space()
+/datum/zas_connection/proc/mark_space()
 	state |= CONNECTION_SPACE
 
-/connection/proc/direct()
+/datum/zas_connection/proc/direct()
 	return (state & CONNECTION_DIRECT)
 
-/connection/proc/valid()
+/datum/zas_connection/proc/valid()
 	return !(state & CONNECTION_INVALID)
 
-/connection/proc/erase()
+/datum/zas_connection/proc/erase()
 	edge.remove_connection(src)
 	state |= CONNECTION_INVALID
 	//to_chat(world, "Connection Erased: [state]")
 
-/connection/proc/update()
+/datum/zas_connection/proc/update()
 	//to_chat(world, "Updated, \...")
 	if(!istype(A,/turf/simulated))
 		//to_chat(world, "Invalid A.")

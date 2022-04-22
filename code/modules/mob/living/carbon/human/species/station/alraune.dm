@@ -120,8 +120,7 @@
 	if(H.wear_suit && (H.wear_suit.min_pressure_protection = 0) && H.head && (H.head.min_pressure_protection = 0))
 		fullysealed = TRUE
 	else // find out if local gas mixture is enough to override use of internals
-		var/datum/gas_mixture/environment = H.loc.return_air()
-		var/envpressure = environment.return_pressure()
+		var/envpressure = H.loc.return_pressure()
 		if(envpressure >= hazard_low_pressure)
 			environmentalair = TRUE
 
