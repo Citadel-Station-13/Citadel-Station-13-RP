@@ -11,7 +11,7 @@
 // END_PREFERENCES
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
-#include "_maps\rift.dm"
+#include "_maps\triumph.dm"
 #include "_maps\map_files\generic\reservation_base_level.dmm"
 #include "_maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
 #include "code\_compile_options.dm"
@@ -3702,11 +3702,11 @@
 #include "maps\Generic\step_triggers.dm"
 #include "maps\Generic\telecomms.dm"
 #include "maps\Generic\turbolifts.dm"
+#include "maps\nsv_triumph\triumph.dm"
 #include "maps\overmap\shuttles\ninja.dm"
 #include "maps\overmap\shuttles\pirateskiff.dm"
 #include "maps\overmap\shuttles\skipjack.dm"
 #include "maps\overmap\shuttles\specialops.dm"
-#include "maps\rift\rift.dm"
 #include "maps\submaps\_healpers.dm"
 #include "maps\submaps\_readme.dm"
 #include "maps\submaps\engine_submaps\engine.dm"
