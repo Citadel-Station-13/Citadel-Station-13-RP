@@ -684,7 +684,7 @@ SUBSYSTEM_DEF(timer)
 			if (hash_timer.spent) // it's pending deletion, pretend it doesn't exist.
 				hash_timer.hash = null // but keep it from accidentally deleting us
 			else
-				if (timer_flags & TIMER_OVERRIDE)
+				if (flags & TIMER_OVERRIDE)
 					hash_timer.hash = null // no need having it delete it's hash if we are going to replace it
 					qdel(hash_timer)
 				else
