@@ -55,9 +55,8 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 				fuel_objs -= fuel
 	else
 		for(var/turf/simulated/T in fire_tiles)
-			if(istype(T.fire))
-				T.fire.RemoveFire()
-			T.fire = null
+			if(T.fire)
+				qdel(T.fire)
 		fire_tiles.Cut()
 		fuel_objs.Cut()
 
@@ -127,9 +126,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 	var/turf/simulated/my_tile = loc
 	if(!istype(my_tile) || !my_tile.zone)
-		if(my_tile.fire == src)
-			my_tile.fire = null
-		RemoveFire()
+		qdel(src)
 		return 1
 
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
@@ -197,7 +194,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	set_light(3, 1, color)
 
 	firelevel = fl
-	air_master.active_hotspots.Add(src)
+	air_master.active_hotspots += src
 
 /atom/movable/fire/proc/fire_color(var/env_temperature)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
@@ -205,17 +202,13 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	return heat2color(temperature)
 
 /atom/movable/fire/Destroy()
-	RemoveFire()
+	set_light(0)
+	SSair.active_hotspots -= src
+	if(isturf(loc))
+		var/turf/T = loc
+		if(T.fire == src)
+			T.fire = null
 	return ..()
-
-/atom/movable/fire/proc/RemoveFire()
-	var/turf/T = loc
-	if (istype(T))
-		set_light(0)
-
-		T.fire = null
-	air_master.active_hotspots.Remove(src)
-
 /turf/simulated
 	var/fire_protection = 0 //Protects newly extinguished tiles from being overrun again.
 
