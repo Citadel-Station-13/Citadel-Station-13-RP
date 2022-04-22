@@ -10,6 +10,7 @@
 	affects_dead = 1 //so you can pump blood into someone before defibbing them
 	color = "#C80000"
 	var/volume_mod = 1	// So if you add different subtypes of blood, you can affect how much vessel blood each unit of reagent adds
+	blood_content = 4 //How effective this is for vampires.
 
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
@@ -53,10 +54,10 @@
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)
 	if(effective_dose > 5)
-		if(is_vampire == 0) //VOREStation Edit.
+		if(!is_vampire) //VOREStation Edit.
 			M.adjustToxLoss(removed) //VOREStation Edit.
 	if(effective_dose > 15)
-		if(is_vampire == 0) //VOREStation Edit.
+		if(!is_vampire) //VOREStation Edit.
 			M.adjustToxLoss(removed) //VOREStation Edit.
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]

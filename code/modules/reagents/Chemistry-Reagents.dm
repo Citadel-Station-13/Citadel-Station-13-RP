@@ -144,15 +144,12 @@
 	if(blood_content > 0 && is_vampire)
 		#define blud_warn_timer 3000
 		if(blood_content < 4) //Are we drinking real blood or something else?
-			if(M.nutrition < 150 || M.nutrition > 250)
-				if(M.last_blud_warn + blud_warn_timer < world.time) //Vampires who are starving or peckish get nothing from fake blood.
+			if(M.nutrition < 0.556 * M.species.max_nutrition || M.nutrition > 0.778 * M.species.max_nutrition) //Vampires who are starving or peckish get nothing from fake blood.
+				if(M.last_blud_warn + blud_warn_timer < world.time)
 					to_chat(M, "<span class='warning'>This isn't enough. You need something stronger.</span>")
 					M.last_blud_warn = world.time //If we're drinking fake blood, make sure we're warned appropriately.
-			else
-				M.nutrition += removed * blood_content
-		else
-			M.nutrition += removed * blood_content //We should always be able to process real blood.
-	return
+				return
+		M.nutrition += removed * blood_content //We should always be able to process real blood.
 
 /datum/reagent/proc/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	return
