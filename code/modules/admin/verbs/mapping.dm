@@ -204,7 +204,7 @@ var/list/debug_verbs = list (
 /client/var/usedZAScolors = 0
 /client/var/list/image/ZAScolors = list()
 
-/client/proc/recurse_zone(var/zone/Z, var/recurse_level =1)
+/client/proc/recurse_zone(var/datum/zas_zone/Z, var/recurse_level =1)
 	testZAScolors_zones += Z
 	if(recurse_level > 10)
 		return
@@ -213,8 +213,8 @@ var/list/debug_verbs = list (
 	for(var/turf/T in Z.contents)
 		images += image(yellow, T, "zasdebug", TURF_LAYER)
 		testZAScolors_turfs += T
-	for(var/connection_edge/zone/edge in Z.edges)
-		var/zone/connected = edge.get_connected_zone(Z)
+	for(var/datum/zas_edge/zone/edge in Z.edges)
+		var/datum/zas_zone/connected = edge.get_connected_zone(Z)
 		if(connected in testZAScolors_zones)
 			continue
 		recurse_zone(connected,recurse_level+1)
@@ -249,14 +249,14 @@ var/list/debug_verbs = list (
 	for(var/turf/T in location.zone.contents)
 		images += image(green, T,"zasdebug", TURF_LAYER)
 		testZAScolors_turfs += T
-	for(var/connection_edge/zone/edge in location.zone.edges)
-		var/zone/Z = edge.get_connected_zone(location.zone)
+	for(var/datum/zas_edge/zone/edge in location.zone.edges)
+		var/datum/zas_zone/Z = edge.get_connected_zone(location.zone)
 		testZAScolors_zones += Z
 		for(var/turf/T in Z.contents)
 			images += image(blue, T,"zasdebug",TURF_LAYER)
 			testZAScolors_turfs += T
-		for(var/connection_edge/zone/z_edge in Z.edges)
-			var/zone/connected = z_edge.get_connected_zone(Z)
+		for(var/datum/zas_edge/zone/z_edge in Z.edges)
+			var/datum/zas_zone/connected = z_edge.get_connected_zone(Z)
 			if(connected in testZAScolors_zones)
 				continue
 			recurse_zone(connected,1)

@@ -17,6 +17,7 @@
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a145
 	projectile_type = /obj/item/projectile/bullet/rifle/a145
+	load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	accuracy = -45
 	scoped_accuracy = 95
 	one_handed_penalty = 90
@@ -39,8 +40,10 @@
 			chambered = null
 		else
 			to_chat(user, "<span class='notice'>You work the bolt open.</span>")
+		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltback.ogg', 50, 1)
 	else
 		to_chat(user, "<span class='notice'>You work the bolt closed.</span>")
+		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltforward.ogg', 50, 1)
 		bolt_open = 0
 	add_fingerprint(user)
 	update_icon()

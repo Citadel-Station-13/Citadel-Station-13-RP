@@ -287,6 +287,8 @@
 // 'Regular' species.
 #define SPECIES_HUMAN			"Human"
 #define SPECIES_HUMAN_VATBORN	"Vatborn"
+#define SPECIES_HUMAN_GRAV		"grav-adapted Human"
+#define SPECIES_HUMAN_SPACER	"space-adapted Human"
 #define SPECIES_UNATHI			"Unathi"
 #define SPECIES_SKRELL			"Skrell"
 #define SPECIES_TESHARI			"Teshari"

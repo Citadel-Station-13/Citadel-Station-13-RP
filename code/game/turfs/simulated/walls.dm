@@ -91,6 +91,9 @@
 			// redirect the projectile
 			Proj.redirect(new_x, new_y, curloc, null)
 
+	if(Proj.ricochet_sounds && prob(15))
+		playsound(src, pick(Proj.ricochet_sounds), 100, 1)
+
 	take_damage(damage)
 	return
 

@@ -475,3 +475,24 @@
 	New(title, recipes)
 		src.title = title
 		src.recipes = recipes
+
+/obj/item/stack/proc/set_amount(var/new_amount, var/no_limits = FALSE)
+	if(new_amount < 0 || new_amount % 1)
+		stack_trace("Tried to set a bad stack amount: [new_amount]")
+		return 0
+
+	// Clean up the new amount
+	new_amount = max(round(new_amount), 0)
+
+	// Can exceed max if you really want
+	if(new_amount > max_amount && !no_limits)
+		new_amount = max_amount
+
+	amount = new_amount
+
+	// Can set it to 0 without qdel if you really want
+	if(amount == 0 && !no_limits)
+		qdel(src)
+		return FALSE
+
+	return TRUE

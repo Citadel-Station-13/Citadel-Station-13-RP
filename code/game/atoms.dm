@@ -219,18 +219,6 @@
 /atom/proc/reveal_blood()
 	return
 
-/atom/proc/assume_air(datum/gas_mixture/giver)
-	return null
-
-/atom/proc/remove_air(amount)
-	return null
-
-/atom/proc/return_air()
-	if(loc)
-		return loc.return_air()
-	else
-		return null
-
 //return flags that should be added to the viewer's sight var.
 //Otherwise return a negative number to indicate that the view should be cancelled.
 /atom/proc/check_eye(user as mob)
@@ -684,7 +672,7 @@
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
-/atom/proc/visible_message(var/message, var/self_message, var/blind_message)
+/atom/proc/visible_message(message, self_message, blind_message, range = world.view)
 
 	//VOREStation Edit
 	var/list/see
@@ -692,7 +680,7 @@
 		var/obj/belly/B = loc
 		see = B.get_mobs_and_objs_in_belly()
 	else
-		see = get_mobs_and_objs_in_view_fast(get_turf(src),world.view,remote_ghosts = FALSE)
+		see = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
 	//VOREStation Edit End
 
 	var/list/seeing_mobs = see["mobs"]
@@ -1058,3 +1046,6 @@
 	relative_layer = new_layer
 	// base layer being null isn't
 	layer = base_layer + 0.000001 * relative_layer
+
+/atom/proc/get_cell()
+	return

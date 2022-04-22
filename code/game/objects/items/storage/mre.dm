@@ -220,6 +220,7 @@ MRE Stuff
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
+//Subtypes
 /obj/item/storage/mrebag
 	name = "main course"
 	desc = "A vacuum-sealed bag containing the MRE's main course. Self-heats when opened."

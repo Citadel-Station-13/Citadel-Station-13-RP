@@ -521,16 +521,32 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
  */
 /obj/machinery/bookbinder
 	name = "Book Binder"
-	icon = 'icons/obj/library.dmi'
+	icon = 'icons/obj/machines/fabricators/book.dmi'
 	icon_state = "binder"
-	anchored = 1
-	density = 1
+	base_icon_state = "binder"
+	anchored = TRUE
+	density = TRUE
+
+/obj/machinery/bookbinder/update_icon_state()
+	. = ..()
+	if(stat & NOPOWER)
+		icon_state = "[base_icon_state]-off"
+	else
+		icon_state = base_icon_state
+
+/obj/machinery/bookbinder/update_overlays()
+	. = ..()
+	cut_overlays()
+	if(panel_open)
+		add_overlay("[base_icon_state]-panel")
 
 /obj/machinery/bookbinder/attackby(var/obj/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/paper))
 		user.drop_item()
 		O.loc = src
 		user.visible_message("[user] loads some paper into [src].", "You load some paper into [src].")
+		flick_overlay_view("[base_icon_state]-load-paper", src, 10)
+		flick_overlay_view("[base_icon_state]-active", src, 12)
 		src.visible_message("[src] begins to hum as it warms up its printing drums.")
 		sleep(rand(200,400))
 		src.visible_message("[src] whirs as it prints and binds a new book.")

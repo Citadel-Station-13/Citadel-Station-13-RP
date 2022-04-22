@@ -77,6 +77,7 @@
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
+	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
@@ -86,6 +87,10 @@
 	var/tmp/mob/living/last_moved_mob //Used to fire faster at more than one person.
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
+
+	var/safety_state = 1
+	var/has_safety = TRUE
+	var/safety_icon 	   //overlay to apply to gun based on safety state, if any
 
 	var/dna_lock = 0				//whether or not the gun is locked to dna
 	var/obj/item/dnalockingchip/attached_lock
@@ -225,6 +230,14 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
+/obj/item/gun/dropped(mob/living/user)
+	update_icon()
+	. = ..()
+
+/obj/item/gun/equipped()
+	update_icon()
+	. = ..()
+
 /obj/item/gun/afterattack(atom/A, mob/living/user, adjacent, params)
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
 
@@ -234,11 +247,6 @@
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
 		return
-
-	if(user && user.a_intent == INTENT_HELP && user.is_preference_enabled(/datum/client_preference/safefiring)) //regardless of what happens, refuse to shoot if help intent is on
-		to_chat(user, "<span class='warning'>You refrain from firing your [src] as your intent is set to help.</span>")
-		return
-
 	else
 		Fire(A, user, params) //Otherwise, fire normally.
 		return
@@ -387,6 +395,15 @@
 		if (world.time % 3) //to prevent spam
 			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
 		return
+
+	if(safety())
+		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
+		//will reflexively do it anyway
+		if(user.a_intent == INTENT_HARM && prob(50))
+			toggle_safety(user)
+		else
+			handle_click_safety(user)
+			return
 
 	var/shoot_time = (burst - 1)* burst_delay
 
@@ -549,6 +566,9 @@
 	else
 		src.visible_message("*click click*")
 	playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
+
+/obj/item/gun/proc/handle_click_safety(mob/user)
+	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"))
 
 //called after successfully firing
 /obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
@@ -760,6 +780,8 @@
 	if(firemodes.len > 1)
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		. += "The fire selector is set to [current_mode.name]."
+	if(has_safety)
+		to_chat(user, SPAN_NOTICE("The safety is [safety() ? "on" : "off"]."))
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)
@@ -771,7 +793,7 @@
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
 	to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
-
+	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
 /obj/item/gun/attack_self(mob/user)
@@ -789,3 +811,42 @@
 	else
 		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
 	return 0
+
+/obj/item/gun/update_icon()
+	. = ..()
+	//Code for handling safety icon updates
+	overlays.Cut()
+
+	var/mob/living/M = loc
+	if(istype(M)) //If we are currently being held by a mob
+		overlays += image('icons/obj/gun/gui.dmi', "safety[safety()]")
+	if(safety_icon)
+		overlays += image(icon, "[safety_icon][safety()]")
+
+
+/obj/item/gun/proc/toggle_safety(var/mob/user)
+	if (user.stat || user.restrained() || user.lying)
+		to_chat(user, SPAN_WARNING("You can't do that right now."))
+		return
+
+	safety_state = !safety_state
+	update_icon()
+	if(user)
+		user.visible_message(SPAN_WARNING("[user] switches the safety of \the [src] [safety_state ? "on" : "off"]."), SPAN_NOTICE("You switch the safety of \the [src] [safety_state ? "on" : "off"]."))
+		playsound(src, 'sound/weapons/flipblade.ogg', 15, 1)
+
+/obj/item/gun/verb/toggle_safety_verb()
+	set src in usr
+	set category = "Object"
+	set name = "Toggle Gun Safety"
+	if(usr == loc)
+		toggle_safety(usr)
+
+/obj/item/gun/CtrlClick(var/mob/user)
+	if(loc == user)
+		toggle_safety(user)
+		return TRUE
+	. = ..()
+
+/obj/item/gun/proc/safety()
+	return has_safety && safety_state

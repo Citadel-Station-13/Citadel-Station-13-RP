@@ -357,3 +357,6 @@
 		master.vis_contents -= src
 		master = null
 	return ..()
+
+/atom/movable/proc/get_bullet_impact_effect_type()
+	return BULLET_IMPACT_NONE

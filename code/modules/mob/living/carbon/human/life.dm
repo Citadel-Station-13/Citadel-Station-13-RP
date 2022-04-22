@@ -89,7 +89,7 @@
 		if(!client)
 			species.handle_npc(src)
 
-	if(!handle_some_updates())
+	if(skip_some_updates())
 		return											//We go ahead and process them 5 times for HUD images and other stuff though.
 
 	//Update our name based on whether our face is obscured/disfigured
@@ -97,10 +97,10 @@
 
 	pulse = handle_pulse()
 
-/mob/living/carbon/human/proc/handle_some_updates()
+/mob/living/carbon/human/proc/skip_some_updates()
 	if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle
-		return 0
-	return 1
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/breathe()
 	if(!inStasisNow())
@@ -967,7 +967,7 @@
 
 		adjust_nutrition(-nutrition_reduction)
 
-	if (nutrition > 450)
+	if (nutrition > species.max_nutrition)
 		if(overeatduration < 600) //capped so people don't take forever to unfat
 			overeatduration++
 	else
@@ -999,8 +999,8 @@
 
 //DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
 /mob/living/carbon/human/handle_regular_UI_updates()
-	if(!handle_some_updates())
-		return 0
+	if(skip_some_updates())
+		return FALSE
 
 	if(status_flags & GODMODE)	return 0
 
@@ -1270,11 +1270,11 @@
 				healths.appearance = healths_ma
 
 		if(nutrition_icon)
-			switch(nutrition)
-				if(450 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
-				if(350 to 450)					nutrition_icon.icon_state = "nutrition1"
-				if(250 to 350)					nutrition_icon.icon_state = "nutrition2"
-				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
+			switch(nutrition/species.max_nutrition)
+				if(1 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
+				if(0.778 to 1)					nutrition_icon.icon_state = "nutrition1"
+				if(0.556 to 0.778)				nutrition_icon.icon_state = "nutrition2"
+				if(0.333 to 0.556)				nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"
 
 		if(hydration_icon)
@@ -1464,11 +1464,12 @@
 
 		if(machine)
 			var/viewflags = machine.check_eye(src)
-			machine.apply_visual(src)
 			if(viewflags < 0)
 				reset_view(null, 0)
-			else if(viewflags)
+			else if(viewflags && !looking_elsewhere)
 				sight |= viewflags
+			else
+				machine.apply_visual(src)
 		else if(eyeobj)
 			if(eyeobj.owner != src)
 

@@ -120,8 +120,7 @@
 	if(H.wear_suit && (H.wear_suit.min_pressure_protection = 0) && H.head && (H.head.min_pressure_protection = 0))
 		fullysealed = TRUE
 	else // find out if local gas mixture is enough to override use of internals
-		var/datum/gas_mixture/environment = H.loc.return_air()
-		var/envpressure = environment.return_pressure()
+		var/envpressure = H.loc.return_pressure()
 		if(envpressure >= hazard_low_pressure)
 			environmentalair = TRUE
 
@@ -437,7 +436,7 @@
 			to_chat(src, "<span class='notice'>[pick(fruit_gland.empty_message)]</span>")
 			return
 
-		var/datum/seed/S = plant_controller.seeds["[fruit_gland.fruit_type]"]
+		var/datum/seed/S = SSplants.seeds["[fruit_gland.fruit_type]"]
 		S.harvest(usr,0,0,1)
 
 		var/index = rand(0,2)

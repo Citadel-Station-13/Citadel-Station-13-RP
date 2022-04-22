@@ -13,7 +13,7 @@
 
 	if(monitored_alarm_ids)
 		for(var/obj/machinery/alarm/alarm in machines)
-			if(alarm.alarm_id && alarm.alarm_id in monitored_alarm_ids)
+			if(alarm.alarm_id && (alarm.alarm_id in monitored_alarm_ids))
 				monitored_alarms += alarm
 		// machines may not yet be ordered at this point
 		monitored_alarms = dd_sortedObjectList(monitored_alarms)
@@ -106,10 +106,11 @@
 /datum/ui_state/air_alarm_remote/Destroy()
 	atmos_control = null
 	air_alarm = null
+	return ..()
 
 /datum/tgui_module/atmos_control/ntos
 	ntos = TRUE
 
 /datum/tgui_module/atmos_control/robot
 /datum/tgui_module/atmos_control/robot/ui_state(mob/user)
-	return GLOB.tgui_self_state
+	return GLOB.self_state

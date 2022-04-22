@@ -86,20 +86,20 @@
 	var/trigger_nitro = 0
 	if( (my_effect.trigger >= TRIGGER_HEAT && my_effect.trigger <= TRIGGER_NITRO) || (my_effect.trigger >= TRIGGER_HEAT && my_effect.trigger <= TRIGGER_NITRO) )
 		var/turf/T = get_turf(src)
-		var/datum/gas_mixture/env = T.return_air()
+		var/datum/gas_mixture/env = T.copy_cell_volume()
 		if(env)
 			if(env.temperature < 225)
 				trigger_cold = 1
 			else if(env.temperature > 375)
 				trigger_hot = 1
 
-			if(env.gas[/datum/gas/phoron] >= 10)
+			if(env.gas[/datum/gas/phoron] >= 2)
 				trigger_phoron = 1
-			if(env.gas[/datum/gas/oxygen] >= 10)
+			if(env.gas[/datum/gas/oxygen] >= 2)
 				trigger_oxy = 1
-			if(env.gas[/datum/gas/carbon_dioxide] >= 10)
+			if(env.gas[/datum/gas/carbon_dioxide] >= 2)
 				trigger_co2 = 1
-			if(env.gas[/datum/gas/nitrogen] >= 10)
+			if(env.gas[/datum/gas/nitrogen] >= 2)
 				trigger_nitro = 1
 
 	//COLD ACTIVATION

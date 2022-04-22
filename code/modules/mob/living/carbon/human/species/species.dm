@@ -259,6 +259,9 @@
 	var/silk_max_reserve = 500
 	var/silk_color = "#FFFFFF"
 
+	/// max nutrition - i hate myself for haphazardly throwing this in but sue me
+	var/max_nutrition = 450
+
 /datum/species/New()
 	if(hud_type)
 		hud = new hud_type()

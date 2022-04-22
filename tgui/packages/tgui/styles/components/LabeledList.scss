@@ -32,7 +32,6 @@
   padding: 0.25em 0.5em;
   border: 0;
   text-align: left;
-  vertical-align: baseline;
 }
 
 .LabeledList__label {
@@ -48,3 +47,10 @@
   padding-top: base.em(1px);
   padding-bottom: 0;
 }
+
+// VOREStation Addition Start
+.LabeledList__breakContents {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+// VOREStation Addition End

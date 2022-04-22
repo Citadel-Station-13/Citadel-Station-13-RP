@@ -764,7 +764,7 @@ const MessagingThreadTab = (props, context) => {
             icon="eye"
             selected={clipboardMode}
             tooltip="Exit Clipboard Mode"
-            tooltipPosition="bottom-left"
+            tooltipPosition="bottom-end"
             onClick={() => setClipboardMode(!clipboardMode)} />
         }
         height="100%"
@@ -807,7 +807,7 @@ const MessagingThreadTab = (props, context) => {
           icon="eye"
           selected={clipboardMode}
           tooltip="Enter Clipboard Mode"
-          tooltipPosition="bottom-left"
+          tooltipPosition="bottom-end"
           onClick={() => setClipboardMode(!clipboardMode)} />
       }
       height="100%"

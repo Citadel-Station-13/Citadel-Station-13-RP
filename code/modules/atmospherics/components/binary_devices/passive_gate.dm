@@ -170,20 +170,23 @@
 /obj/machinery/atmospherics/binary/passive_gate/attack_hand(user as mob)
 	if(..())
 		return
-	src.add_fingerprint(usr)
-	if(!src.allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+	add_fingerprint(usr)
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return
-	usr.set_machine(src)
-	nano_ui_interact(user)
-	return
+	ui_interact(user)
 
-/obj/machinery/atmospherics/binary/passive_gate/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/atmospherics/binary/passive_gate/ui_interact(mob/user, datum/tgui/ui)
 	if(stat & (BROKEN|NOPOWER))
-		return
+		return FALSE
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PressureRegulator", name)
+		ui.open()
 
-	// this is the data which will be sent to the ui
-	var/data[0]
+//This is the data which will be sent to the ui
+/obj/machinery/atmospherics/binary/passive_gate/ui_data(mob/user)
+	var/list/data = list()
 
 	data = list(
 		"on" = unlocked,
@@ -196,51 +199,46 @@
 		"last_flow_rate" = round(last_flow_rate*10),
 	)
 
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		// the ui does not exist, so we'll create a new() one
-		// for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "pressure_regulator.tmpl", name, 470, 370)
-		ui.set_initial_data(data)	// when the ui is first opened this is the data it will use
-		ui.open()					// open the new ui window
-		ui.set_auto_update(1)		// auto update every Master Controller tick
+	return data
 
+/obj/machinery/atmospherics/binary/passive_gate/ui_act(action, params)
+	if(..())
+		return TRUE
 
-/obj/machinery/atmospherics/binary/passive_gate/Topic(href,href_list)
-	if(..()) return 1
+	switch(action)
+		if("toggle_valve")
+			. = TRUE
+			unlocked = !unlocked
+		if("regulate_mode")
+			. = TRUE
+			switch(params["mode"])
+				if("off") regulate_mode = REGULATE_NONE
+				if("input") regulate_mode = REGULATE_INPUT
+				if("output") regulate_mode = REGULATE_OUTPUT
 
-	if(href_list["toggle_valve"])
-		unlocked = !unlocked
+		if("set_press")
+			. = TRUE
+			switch(params["press"])
+				if("min")
+					target_pressure = 0
+				if("max")
+					target_pressure = max_pressure_setting
+				if("set")
+					var/new_pressure = input(usr,"Enter new output pressure (0-[max_pressure_setting]kPa)","Pressure Control",src.target_pressure) as num
+					src.target_pressure = between(0, new_pressure, max_pressure_setting)
 
-	if(href_list["regulate_mode"])
-		switch(href_list["regulate_mode"])
-			if ("off") regulate_mode = REGULATE_NONE
-			if ("input") regulate_mode = REGULATE_INPUT
-			if ("output") regulate_mode = REGULATE_OUTPUT
+		if("set_flow_rate")
+			. = TRUE
+			switch(params["press"])
+				if("min")
+					set_flow_rate = 0
+				if("max")
+					set_flow_rate = air1.volume
+				if("set")
+					var/new_flow_rate = input(usr,"Enter new flow rate limit (0-[air1.volume]L/s)","Flow Rate Control",src.set_flow_rate) as num
+					src.set_flow_rate = between(0, new_flow_rate, air1.volume)
 
-	switch(href_list["set_press"])
-		if ("min")
-			target_pressure = 0
-		if ("max")
-			target_pressure = max_pressure_setting
-		if ("set")
-			var/new_pressure = input(usr,"Enter new output pressure (0-[max_pressure_setting]kPa)","Pressure Control",src.target_pressure) as num
-			src.target_pressure = between(0, new_pressure, max_pressure_setting)
-
-	switch(href_list["set_flow_rate"])
-		if ("min")
-			set_flow_rate = 0
-		if ("max")
-			set_flow_rate = air1.volume
-		if ("set")
-			var/new_flow_rate = input(usr,"Enter new flow rate limit (0-[air1.volume]kPa)","Flow Rate Control",src.set_flow_rate) as num
-			src.set_flow_rate = between(0, new_flow_rate, air1.volume)
-
-	usr.set_machine(src)	//Is this even needed with NanoUI?
-	src.update_icon()
-	src.add_fingerprint(usr)
-	return
+	update_icon()
 
 /obj/machinery/atmospherics/binary/passive_gate/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/pen))
@@ -268,3 +266,8 @@
 #undef REGULATE_NONE
 #undef REGULATE_INPUT
 #undef REGULATE_OUTPUT
+
+
+/obj/machinery/atmospherics/binary/passive_gate/on
+	unlocked = TRUE
+	icon_state = "on"

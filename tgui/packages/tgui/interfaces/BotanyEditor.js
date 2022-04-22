@@ -75,7 +75,7 @@ export const BotanyEditor = (props, context) => {
                 Eject Target
               </Button>
             </Box>
-          ) || ( 
+          ) || (
             <NoticeBox warning>No target seed packet loaded.</NoticeBox>
           )}
         </Section>
