@@ -97,12 +97,13 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	if(!zone)
 		return 1
 
-	fire = new(src, fl)
+	new /atom/movable/fire(src, fl)
 	air_master.active_fire_zones |= zone
 
 	var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in src
 	zone.fire_tiles |= src
-	if(fuel) zone.fuel_objs += fuel
+	if(fuel)
+		zone.fuel_objs += fuel
 
 	return 0
 
@@ -183,9 +184,13 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 /atom/movable/fire/Initialize(mapload, fl)
 	. = ..()
-
 	if(!istype(loc, /turf))
 		return INITIALIZE_HINT_QDEL
+	var/turf/T = loc
+	if(T.fire)
+		return INITIALIZE_HINT_QDEL
+
+	T.fire = src
 
 	setDir(pick(GLOB.cardinal))
 
