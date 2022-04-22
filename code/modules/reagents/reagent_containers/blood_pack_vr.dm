@@ -10,6 +10,9 @@
 					user.nutrition += remove_volume*4
 					reagents.remove_reagent(reagent_to_remove, remove_volume)
 					update_icon()
+					if(!bitten_state)
+						desc += "<font color='red'> It has two circular puncture marks in it.</font>"
+						bitten_state = TRUE
 					return
 				else
 					user.show_message("<span class='warning'>You take a look at \the [src] and notice that it is not filled with blood!</span>")
@@ -29,40 +32,40 @@
 
 /obj/item/reagent_containers/blood/prelabeled/APlus
 	name = "IV Pack (A+)"
-	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled A+"
+	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled A+."
 	blood_type = "A+"
 
 /obj/item/reagent_containers/blood/prelabeled/AMinus
 	name = "IV Pack (A-)"
-	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled A-"
+	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled A-."
 	blood_type = "A-"
 
 /obj/item/reagent_containers/blood/prelabeled/BPlus
 	name = "IV Pack (B+)"
-	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled B+"
+	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled B+."
 	blood_type = "B+"
 
 /obj/item/reagent_containers/blood/prelabeled/BMinus
 	name = "IV Pack (B-)"
-	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled B-"
+	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled B-."
 	blood_type = "B-"
 
 /obj/item/reagent_containers/blood/prelabeled/ABPlus
 	name = "IV Pack (AB+)"
-	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled AB+"
+	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled AB+."
 	blood_type = "AB+"
 
 /obj/item/reagent_containers/blood/prelabeled/ABMinus
 	name = "IV Pack (AB-)"
-	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled AB-"
+	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled AB-."
 	blood_type = "AB-"
 
 /obj/item/reagent_containers/blood/prelabeled/OPlus
 	name = "IV Pack (O+)"
-	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled O+"
+	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled O+."
 	blood_type = "O+"
 
 /obj/item/reagent_containers/blood/prelabeled/OMinus
 	name = "IV Pack (O-)"
-	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled O-"
+	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled O-."
 	blood_type = "O-"
