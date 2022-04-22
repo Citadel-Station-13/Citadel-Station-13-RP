@@ -466,10 +466,15 @@
 			src.fingerprintslast = M.key
 	return
 
-/atom/proc/add_fingerprint(mob/living/M as mob, ignoregloves = 0)
-	if(isnull(M)) return
-	if(isAI(M)) return
-	if(isnull(M.key)) return
+/atom/proc/add_fingerprint(mob/M, ignoregloves, obj/item/tool)
+	if(isnull(M))
+		return
+	if(isAI(M))
+		return
+	if(!M || !M.key)
+		return
+	if(istype(tool) && (tool.flags & NOPRINT))
+		return
 	if (ishuman(M))
 		//Add the list if it does not exist.
 		if(!fingerprintshidden)
@@ -659,7 +664,7 @@
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
-/atom/proc/visible_message(var/message, var/self_message, var/blind_message)
+/atom/proc/visible_message(message, self_message, blind_message, range = world.view)
 
 	//VOREStation Edit
 	var/list/see
@@ -667,7 +672,7 @@
 		var/obj/belly/B = loc
 		see = B.get_mobs_and_objs_in_belly()
 	else
-		see = get_mobs_and_objs_in_view_fast(get_turf(src),world.view,remote_ghosts = FALSE)
+		see = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
 	//VOREStation Edit End
 
 	var/list/seeing_mobs = see["mobs"]
@@ -1033,3 +1038,6 @@
 	relative_layer = new_layer
 	// base layer being null isn't
 	layer = base_layer + 0.000001 * relative_layer
+
+/atom/proc/get_cell()
+	return

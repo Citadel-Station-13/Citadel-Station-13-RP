@@ -251,6 +251,7 @@
 	caliber = "12g"
 	projectile_type = /obj/item/projectile/bullet/shotgun
 	matter = list(DEFAULT_WALL_MATERIAL = 360)
+	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
 
 /obj/item/ammo_casing/a12g/pellet
 	name = "shotgun shell"

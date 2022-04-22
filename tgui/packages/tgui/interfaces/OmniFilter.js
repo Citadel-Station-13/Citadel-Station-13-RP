@@ -5,7 +5,7 @@ import { Window } from "../layouts";
 
 const getStatusText = port => {
   if (port.input) { return "Input"; }
-  if (port.output) { return "Output"; } 
+  if (port.output) { return "Output"; }
   if (port.f_type) { return port.f_type; }
   return "Disabled";
 };

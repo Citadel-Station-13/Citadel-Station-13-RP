@@ -133,8 +133,7 @@
 		"Offsite Scout" = /datum/alt_title/offsite_scout,
 		"Field Scout" = /datum/alt_title/explorer/field_scout,
 		"Pioneer" = /datum/alt_title/explorer/pioneer,
-		"Jr. Explorer" = /datum/alt_title/explorer/junior,
-		"Containment Specialist" = /datum/alt_title/explorer/containment
+		"Jr. Explorer" = /datum/alt_title/explorer/junior
 		)
 
 /datum/alt_title/surveyor
@@ -151,9 +150,6 @@
 
 /datum/alt_title/explorer/junior
 	title = "Jr. Explorer"
-
-/datum/alt_title/explorer/containment
-	title = "Containment Specialist"
 
 /datum/job/sar
 	title = "Field Medic"

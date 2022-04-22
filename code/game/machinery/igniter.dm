@@ -16,12 +16,10 @@
 /obj/machinery/igniter/attack_hand(mob/user as mob)
 	if(..())
 		return
-	add_fingerprint(user)
 
 	use_power(50)
 	on = !(on)
 	icon_state = text("igniter[]", on)
-	return
 
 /obj/machinery/igniter/process(delta_time)	//ugh why is this even in process()?
 	if(on && !(stat & NOPOWER))
@@ -81,6 +79,8 @@
 				icon_state = "[base_state]"
 			else
 				icon_state = "[base_state]-p"
+	else
+		..()
 
 /obj/machinery/sparker/attack_ai()
 	if(anchored)

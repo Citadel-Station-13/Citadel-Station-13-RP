@@ -147,6 +147,9 @@ specialty pins
 	icon_state = "marinerank_command"
 	slot = ACCESSORY_SLOT_INSIGNIA
 
+/obj/item/clothing/accessory/oricon/specialty/get_fibers()
+	return null
+
 /obj/item/clothing/accessory/oricon/specialty/janitor
 	name = "custodial blazes"
 	desc = "Purple blazes denoting a custodial technician."
@@ -443,6 +446,9 @@ ranks - ec
 	slot = ACCESSORY_SLOT_DECOR
 	gender = PLURAL
 	//high_visibility = 1
+
+/obj/item/clothing/accessory/oricon/rank/get_fibers()
+	return null
 
 /obj/item/clothing/accessory/oricon/rank/ec
 	name = "explorer ranks"

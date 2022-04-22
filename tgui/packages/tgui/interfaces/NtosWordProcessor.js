@@ -103,7 +103,7 @@ export const NtosWordProcessor = (props, context) => {
             {/* This dangerouslySetInnerHTML is only ever passed data that has passed through pencode2html
               * It should be safe enough to support pencode in this way.
               */}
-            <Section mt={1}> 
+            <Section mt={1}>
               <div dangerouslySetInnerHTML={{ __html: filedata }} />
             </Section>
           </Section>

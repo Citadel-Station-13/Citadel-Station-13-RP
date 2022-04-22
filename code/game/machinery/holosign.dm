@@ -62,7 +62,6 @@
 /obj/machinery/button/holosign/attack_hand(mob/user as mob)
 	if(..())
 		return
-	add_fingerprint(user)
 
 	use_power(5)
 

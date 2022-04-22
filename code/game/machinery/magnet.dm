@@ -266,10 +266,11 @@
 	onclose(user, "magnet")
 
 /obj/machinery/magnetic_controller/Topic(href, href_list)
+	if(..())
+		return TRUE
 	if(stat & (BROKEN|NOPOWER))
 		return
 	usr.set_machine(src)
-	add_fingerprint(usr)
 
 	if(href_list["radio-op"])
 

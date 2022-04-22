@@ -123,7 +123,7 @@
 // Description: If we are clicked with crowbar, wielded fire axe, or armblade, try to manually open the door.
 // This only works on broken doors or doors without power. Also allows repair with Plasteel.
 /obj/machinery/door/blast/attackby(obj/item/C as obj, mob/user as mob)
-	src.add_fingerprint(user)
+	src.add_fingerprint(user, 0, C)
 	if(istype(C, /obj/item)) // For reasons unknown, sometimes C is actually not what it is advertised as, like a mob.
 		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
 			if(istype(C,/obj/item/material/twohanded/fireaxe)) // Fireaxes need to be in both hands to pry.
@@ -192,13 +192,13 @@
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
 			if(src.density)
-				visible_message("<span class='alium'>\The [user] begins forcing \the [src] open!</span>")
+				visible_message("<span class='green'>\The [user] begins forcing \the [src] open!</span>")
 				if(do_after(user, 15 SECONDS,src))
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					visible_message("<span class='danger'>\The [user] forces \the [src] open!</span>")
 					force_open(1)
 			else
-				visible_message("<span class='alium'>\The [user] begins forcing \the [src] closed!</span>")
+				visible_message("<span class='green'>\The [user] begins forcing \the [src] closed!</span>")
 				if(do_after(user, 5 SECONDS,src))
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					visible_message("<span class='danger'>\The [user] forces \the [src] closed!</span>")

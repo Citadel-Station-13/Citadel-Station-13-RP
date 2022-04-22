@@ -36,12 +36,14 @@
 //Don't want to render prison breaks impossible
 /obj/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wirecutter())
-		add_fingerprint(user)
+		add_fingerprint(user, 0, W)
 		disable = !disable
 		if(disable)
 			user.visible_message("<span class='warning'>[user] has disconnected the [src]'s flashbulb!</span>", "<span class='warning'>You disconnect the [src]'s flashbulb!</span>")
 		if(!disable)
 			user.visible_message("<span class='warning'>[user] has connected the [src]'s flashbulb!</span>", "<span class='warning'>You connect the [src]'s flashbulb!</span>")
+	else
+		..()
 
 //Let the AI trigger them directly.
 /obj/machinery/flasher/attack_ai()

@@ -1,5 +1,3 @@
-#define SYNTHETIC_NUTRITION_CHARGE_RATE 15			// amount of cell charge to use per 1 nutrition, given that synthetics are full at 450 nutrition
-
 /obj/machinery/recharge_station
 	name = "cyborg recharging station"
 	desc = "A heavy duty rapid charging system, designed to quickly recharge cyborg power reserves."
@@ -107,8 +105,8 @@
 				H.adjustBrainLoss(-(rand(1,3)))
 
 			// Also recharge their internal battery.
-			if(H.isSynthetic() && H.nutrition < 450)
-				var/needed = clamp(450 - H.nutrition, 0, 20)
+			if(H.isSynthetic() && H.nutrition < H.species.max_nutrition)
+				var/needed = clamp(H.species.max_nutrition - H.nutrition, 0, 20)
 				var/drained = cell.use(needed * SYNTHETIC_NUTRITION_CHARGE_RATE)
 				H.nutrition += drained / SYNTHETIC_NUTRITION_CHARGE_RATE
 

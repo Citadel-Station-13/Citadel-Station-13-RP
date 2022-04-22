@@ -56,10 +56,10 @@
 // Allows us to process UI clicks, which are relayed in form of hrefs.
 /datum/nano_module/power_monitor/Topic(href, href_list)
 	if(..())
-		return 1
-	if( href_list["clear"] )
+		return TRUE
+	if(href_list["clear"] )
 		active_sensor = null
-	if( href_list["refresh"] )
+	if(href_list["refresh"] )
 		refresh_sensors()
-	else if( href_list["setsensor"] )
+	else if(href_list["setsensor"] )
 		active_sensor = href_list["setsensor"]

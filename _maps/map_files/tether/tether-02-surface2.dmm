@@ -15846,7 +15846,7 @@
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "aAr" = (
-/obj/machinery/teleport/station{
+/obj/machinery/tele_projector{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/dark,
@@ -16022,7 +16022,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aAP" = (
-/obj/machinery/teleport/hub{
+/obj/machinery/tele_pad{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/dark,

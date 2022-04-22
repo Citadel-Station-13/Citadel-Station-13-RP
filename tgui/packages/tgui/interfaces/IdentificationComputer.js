@@ -31,7 +31,7 @@ export const IdentificationComputerContent = (props, context) => {
     has_modify,
     printing,
   } = data;
-  
+
   let body = <IdentificationComputerAccessModification ntos={ntos} />;
   if (ntos && !data.have_id_slot) {
     body = <CrewManifestContent />;
@@ -122,19 +122,19 @@ export const IdentificationComputerAccessModification = (props, context) => {
         <Fragment>
           <Section title="Details" level={2}>
             <LabeledList>
-              <LabeledList.Item label="Registered Name"> 
+              <LabeledList.Item label="Registered Name">
                 <Input
                   value={target_owner}
                   fluid
                   onInput={(e, val) => act("reg", { reg: val })} />
               </LabeledList.Item>
-              <LabeledList.Item label="Account Number"> 
+              <LabeledList.Item label="Account Number">
                 <Input
                   value={account_number}
                   fluid
                   onInput={(e, val) => act("account", { account: val })} />
               </LabeledList.Item>
-              <LabeledList.Item label="Dismissals"> 
+              <LabeledList.Item label="Dismissals">
                 <Button.Confirm
                   color="bad"
                   icon="exclamation-triangle"
@@ -218,7 +218,7 @@ export const IdentificationComputerRegions = (props, context) => {
     <Flex wrap="wrap" spacing={1}>
       {sortBy(r => r.name)(regions).map(region => (
         <Flex.Item mb={1} basis="content" grow={1} key={region.name}>
-          <Section title={region.name} height="100%"> 
+          <Section title={region.name} height="100%">
             {sortBy(a => a.desc)(region.accesses).map(access => (
               <Box key={access.ref}>
                 <Button

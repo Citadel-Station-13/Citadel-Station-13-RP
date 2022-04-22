@@ -35,7 +35,7 @@
 			playsound(user, 'sound/machines/lockreset.ogg', 50, 1)
 			if(do_after(user, 20 * O.toolspeed))
 				locked = 0
-				to_chat(user, "<span class = 'caution'> You disable the locking modules.</span>")
+				to_chat(user, SPAN_CAUTION("You disable the locking modules."))
 				update_icon()
 			return
 		else if(istype(O, /obj/item))
@@ -86,7 +86,7 @@
 				playsound(user, 'sound/machines/lockenable.ogg', 50, 1)
 				if(do_after(user,20 * O.toolspeed))
 					locked = 1
-					to_chat(user, "<span class = 'caution'> You re-enable the locking modules.</span>")
+					to_chat(user, SPAN_CAUTION("You re-enable the locking modules."))
 				return
 		else
 			toggle_close_open()
