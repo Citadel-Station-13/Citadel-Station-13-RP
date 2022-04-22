@@ -10,9 +10,6 @@
 	var/total_moles = 0
 	//Volume of this mix.
 	var/volume = CELL_VOLUME
-	//Size of the group this gas_mixture is representing.  1 for singletons.
-	// ATMOS_TODO : this needs to be removed for auxmos
-	var/group_multiplier = 1
 
 	//List of active tile overlays for this gas_mixture.  Updated by check_tile_graphic()
 	var/list/graphic
@@ -294,7 +291,7 @@
 
 
 //Checks if we are within acceptable range of another gas_mixture to suspend processing or merge.
-/datum/gas_mixture/proc/compare(const/datum/gas_mixture/sample, var/vacuum_exception = 0)
+/datum/gas_mixture/proc/compare(datum/gas_mixture/sample, vacuum_exception = 0)
 	if(!sample) return 0
 
 	if(vacuum_exception)
@@ -510,12 +507,74 @@
 		. += gas[g] * GLOB.meta_gas_molar_mass[g] * group_multiplier
 
 /**
- * get the equivalent of a single tile of this gas mixture
- *
- * TODO: remove group_multiplier, change to tiles_represented
+ * gas mixture used for zones
  */
-/datum/gas_mixture/proc/copy_single_tile()
+/datum/gas_mixture/zone
+
+/**
+ * get the equivalent of a single tile of this gas mixture
+ */
+/datum/gas_mixture/zone/proc/copy_single_tile()
 	RETURN_TYPE(/datum/gas_mixture)
 	var/datum/gas_mixture/GM = new(CELL_VOLUME)
+	if(!volume)
+		return
 	GM.copy_from(src)
-	GM.group_multiplier = 1
+	GM.multiply(CELL_VOLUME / volume)
+
+/**
+ * merge a tile's air in, and expand
+ */
+/datum/gas_mixture/zone/proc/merge_and_expand(datum/gas_mixture/turf_air, update = TRUE)
+	merge(turf_air)
+	volume += turf_air.volume
+	if(update)
+		update_values()
+
+/**
+ * remove a single tile's worth of air, and shrink
+ */
+/datum/gas_mixture/zone/proc/remove_and_shrink()
+	RETURN_TYPE(/datum/gas_mixture)
+	var/datum/gas_mixture/GM = new
+	GM.copy_from(src)
+	GM.divide(volume / CELL_VOLUME)
+	volume -= CELL_VOLUME
+	return GM
+
+/**
+ * destructively merge these turf's air into us
+ */
+/datum/gas_mixture/zone/proc/consume_turfs(list/turf/turfs, destructive)
+	for(var/turf/T as anything in turfs)
+		if(T.air)
+			merge_and_expand(T.air, FALSE)
+			if(destructive)
+				qdel(T.air)
+				T.air = null
+	update_values()
+
+/**
+ * empty us into these turf's air.
+ */
+/datum/gas_mixture/zone/proc/breakdown_into_turfs(list/turf/turfs)
+	var/ratio = volume / CELL_VOLUME
+	if(ratio)
+		divide(ratio)
+		for(var/turf/T as anything in turfs)
+#ifdef ZAS_DEBUG
+			if(T.air)
+				stack_trace("existing turf air on [T] [COORD(T)]")
+				continue
+#endif
+			T.air = new(CELL_VOLUME)
+			T.air.copy_from(src)
+		mmultiply(ratio)
+	else
+		for(var/turf/T as anything in turfs)
+#ifdef ZAS_DEBUG
+			if(T.air)
+				stack_trace("existing turf air on [T] [COORD(T)]")
+				continue
+#endif
+			T.air = new(CELL_VOLUME)

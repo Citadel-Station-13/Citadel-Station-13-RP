@@ -45,13 +45,13 @@
 // ZONE_BLOCKED - Not blocked, but zone boundaries will not cross.
 // BLOCKED - Blocked, zone boundaries will not cross even if opened.
 atom/proc/c_airblock(turf/other)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(isturf(other))
 	#endif
 	return (AIR_BLOCKED*!CanZASPass(other, FALSE))|(ZONE_BLOCKED*!CanZASPass(other, TRUE))
 
 turf/c_airblock(turf/other)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(isturf(other))
 	#endif
 	if(((blocks_air & AIR_BLOCKED) || (other.blocks_air & AIR_BLOCKED)))

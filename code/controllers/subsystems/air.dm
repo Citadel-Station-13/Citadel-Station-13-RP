@@ -127,7 +127,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		T.update_air_properties()
 		T.post_update_air_properties()
 		T.needs_air_update = 0
-		#ifdef ZASDBG
+		#ifdef ZAS_DEBUG
 		T.overlays -= mark
 		#endif
 		if(MC_TICK_CHECK)
@@ -144,7 +144,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		T.update_air_properties()
 		T.post_update_air_properties()
 		T.needs_air_update = 0
-		#ifdef ZASDBG
+		#ifdef ZAS_DEBUG
 		T.overlays -= mark
 		#endif
 		if(MC_TICK_CHECK)

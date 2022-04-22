@@ -58,7 +58,7 @@ Class Procs:
 	var/state = 0
 
 /datum/zas_connection/New(turf/simulated/A, turf/simulated/B)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(air_master.has_valid_zone(A))
 	//ASSERT(air_master.has_valid_zone(B))
 	#endif

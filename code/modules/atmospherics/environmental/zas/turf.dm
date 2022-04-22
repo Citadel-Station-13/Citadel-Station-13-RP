@@ -92,7 +92,7 @@
 
 	var/s_block = c_airblock(src)
 	if(s_block & AIR_BLOCKED)
-		#ifdef ZASDBG
+		#ifdef ZAS_DEBUG
 		if(verbose) to_chat(world, "Self-blocked.")
 		//dbg(blocked)
 		#endif
@@ -124,7 +124,7 @@
 		var/block = unsim.c_airblock(src)
 		if(block & AIR_BLOCKED)
 
-			#ifdef ZASDBG
+			#ifdef ZAS_DEBUG
 			if(verbose) to_chat(world, "[d] is blocked.")
 			//unsim.dbg(air_blocked, turn(180,d))
 			#endif
@@ -134,7 +134,7 @@
 		var/r_block = c_airblock(unsim)
 		if(r_block & AIR_BLOCKED)
 
-			#ifdef ZASDBG
+			#ifdef ZAS_DEBUG
 			if(verbose) to_chat(world, "[d] is blocked.")
 			//dbg(air_blocked, d)
 			#endif
@@ -165,7 +165,7 @@
 					//    they are blocking us and we are not blocking them, or if
 					//    we are blocking them and not blocking ourselves - this prevents tiny zones from forming on doorways.
 					if(((block & ZONE_BLOCKED) && !(r_block & ZONE_BLOCKED)) || ((r_block & ZONE_BLOCKED) && !(s_block & ZONE_BLOCKED)))
-						#ifdef ZASDBG
+						#ifdef ZAS_DEBUG
 						if(verbose) to_chat(world, "[d] is zone blocked.")
 						//dbg(zone_blocked, d)
 						#endif
@@ -178,21 +178,21 @@
 
 						sim.zone.add(src)
 
-						#ifdef ZASDBG
+						#ifdef ZAS_DEBUG
 						dbg(assigned)
 						if(verbose) to_chat(world, "Added to [zone]")
 						#endif
 
 				else if(sim.zone != zone)
 
-					#ifdef ZASDBG
+					#ifdef ZAS_DEBUG
 					if(verbose) to_chat(world, "Connecting to [sim.zone]")
 					#endif
 
 					air_master.connect(src, sim)
 
 
-			#ifdef ZASDBG
+			#ifdef ZAS_DEBUG
 				else if(verbose) to_chat(world, "[d] has same zone.")
 
 			else if(verbose) to_chat(world, "[d] has invalid zone.")
@@ -208,7 +208,7 @@
 		var/datum/zas_zone/newzone = new
 		newzone.add(src)
 
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 		dbg(created)
 
 	ASSERT(zone)
@@ -232,4 +232,3 @@
 	if(!air)
 		air = new /datum/gas_mixture
 	air.copy_from(zone.air)
-	air.group_multiplier = 1

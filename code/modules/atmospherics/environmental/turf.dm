@@ -24,6 +24,7 @@
 
 // ATMOS_TODO: remove /unsimulated
 /turf/simulated/return_air()
+	#warn get rid of most uses
 	RETURN_TYPE(/datum/gas_mixture)
 	if(zone)
 		if(!zone.invalid)
@@ -38,3 +39,12 @@
 		if(!air)
 			make_air()
 		return air
+
+/**
+ * do we allow gas overlays?
+ */
+/turf/proc/allow_gas_overlays()
+	return !outdoors
+
+/turf/simulated/allow_gas_overlays()
+	return ..() && allow_gas_overlays

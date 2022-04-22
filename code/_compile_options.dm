@@ -1,23 +1,35 @@
-//#define TESTING				//By using the testing("message") proc you can create debug-feedback for people with this
-								//uncommented, but not visible in the release version)
+/**
+ * DEBUGGING
+ */
 
-#define ZAS_DEBUG				// uncomment to enable laggy as sin ZAS debugging systems coded in for when doing bugfixes or major systems overhaulling.
-	// if you touch anything #if'd behind a block for this you better make sure this works or I will bean you with a shoe.
+/// By using the testing("message") proc you can create debug-feedback for people with this
+/// uncommented, but not visible in the release version). DO NOT RELEASE WITH THIS FLAG;
+/// this also disables some security checks!
+//#define TESTING
 
-//#define DATUMVAR_DEBUGGING_MODE	//Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
+/// uncomment to enable laggy as sin ZAS debugging systems coded in for when doing bugfixes or major systems overhaulling.
+#define ZAS_DEBUG
+
+// Enables the ability to cache datum vars and retrieve later for debugging which vars changed.Z
+//#define DATUMVAR_DEBUGGING_MODE
+
+/// uncomment to log all shuttle stuff
+#define DEBUG_SHUTTLES
+
+/// uncomment to debug TIMER_LOOP timers
+// #define TIMER_LOOP_DEBUGGING
+
+/**
+ * END
+ */
+
 
 // Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error
 #ifdef DEBUG
 #define USE_CUSTOM_ERROR_HANDLER
 #endif
 
-#define DEBUG_SHUTTLES
-
-#define TIMER_LOOP_DEBUGGING
-
 #ifdef TESTING
-#define DATUMVAR_DEBUGGING_MODE
-
 //#define GC_FAILURE_HARD_LOOKUP	//makes paths that fail to GC call find_references before del'ing.
 									//implies FIND_REF_NO_CHECK_TICK
 
@@ -68,10 +80,5 @@
 // If you think you need more, rethink it
 #define MAX_ATOM_OVERLAYS 100
 
-/*
-VORESTATION CRAP
-*/
-
 // ZAS Compile Options
-//#define ZASDBG	 	// Uncomment to turn on super detailed ZAS debugging that probably won't even compile.
 #define MULTIZAS		// Uncomment to turn on Multi-Z ZAS Support!

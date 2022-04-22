@@ -94,7 +94,7 @@ Class Procs:
 	zones_to_update.Remove(z)
 
 /datum/controller/subsystem/air/proc/air_blocked(turf/A, turf/B)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(isturf(A))
 	ASSERT(isturf(B))
 	#endif
@@ -103,13 +103,13 @@ Class Procs:
 	return ablock | B.c_airblock(A)
 
 /datum/controller/subsystem/air/proc/has_valid_zone(turf/simulated/T)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(T))
 	#endif
 	return istype(T) && T.zone && !T.zone.invalid
 
 /datum/controller/subsystem/air/proc/merge(datum/zas_zone/A, datum/zas_zone/B)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(A))
 	ASSERT(istype(B))
 	ASSERT(!A.invalid)
@@ -124,7 +124,7 @@ Class Procs:
 		mark_zone_update(A)
 
 /datum/controller/subsystem/air/proc/connect(turf/simulated/A, turf/simulated/B)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(A))
 	ASSERT(isturf(B))
 	ASSERT(A.zone)
@@ -164,18 +164,18 @@ Class Procs:
 	if(direct) c.mark_direct()
 
 /datum/controller/subsystem/air/proc/mark_for_update(turf/T)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(isturf(T))
 	#endif
 	if(T.needs_air_update) return
 	tiles_to_update |= T
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	T.overlays += mark
 	#endif
 	T.needs_air_update = 1
 
 /datum/controller/subsystem/air/proc/mark_zone_update(datum/zas_zone/Z)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(Z))
 	#endif
 	if(Z.needs_update) return
@@ -183,7 +183,7 @@ Class Procs:
 	Z.needs_update = 1
 
 /datum/controller/subsystem/air/proc/mark_edge_sleeping(datum/zas_edge/E)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(E))
 	#endif
 	if(E.sleeping) return
@@ -191,7 +191,7 @@ Class Procs:
 	E.sleeping = 1
 
 /datum/controller/subsystem/air/proc/mark_edge_active(datum/zas_edge/E)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(E))
 	#endif
 	if(!E.sleeping) return

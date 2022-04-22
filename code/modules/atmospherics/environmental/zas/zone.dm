@@ -6,10 +6,8 @@ Overview:
 
 Class Vars:
 	name - A name of the format "Zone [#]", used for debugging.
-	invalid - True if the zone has been erased and is no longer eligible for processing.
 	needs_update - True if the zone has been added to the update list.
 	edges - A list of edges that connect to this zone.
-	air - The gas mixture that any turfs in this zone will return. Values are per-tile with a group multiplier.
 
 Class Procs:
 	add(turf/simulated/T)
@@ -41,64 +39,104 @@ Class Procs:
 
 /datum/zas_zone
 	var/name
-	var/invalid = 0
-	var/list/contents = list()
-	var/list/fire_tiles = list()
 	var/list/fuel_objs = list()
 	var/needs_update = 0
 	var/list/edges = list()
-	var/datum/gas_mixture/air = new
 
+	/// turfs in us
+	var/list/turf/contents = list()
+	/// invaild - if a turf ever has an invalid zone, something's awry.
+	var/invalid = FALSE
+	/// the air in us
+	var/datum/gas_mixture/zone/air
+	/// are we burning
+	var/on_fire = FALSE
+	/// turfs that are on fire
+	var/list/turf/fire_tiles = list()
+	/// turf graphics to put in turf vis contents
 	var/list/turf_graphics = list()
 
 /datum/zas_zone/New()
 	air_master.add_zone(src)
-	air.temperature = TCMB
-	air.group_multiplier = 1
-	air.volume = CELL_VOLUME
+	air = new(CELL_VOLUME)
 
-/datum/zas_zone/proc/add(turf/simulated/T)
-#ifdef ZASDBG
+/datum/zas_zone/Destroy()
+	air_master.remove_zone(src)
+	breakdown()
+	return ..()
+
+/**
+ * adds a turf into us. this is cheap.
+ */
+/datum/zas_zone/proc/add(turf/T)
+#ifdef ZAS_DEBUG
 	ASSERT(!invalid)
 	ASSERT(istype(T))
-	ASSERT(!air_master.has_valid_zone(T))
+	ASSERT(!T.zone)
 #endif
-
-	if(!istype(T))
-		return
-	var/datum/gas_mixture/turf_air = T.return_air()
-	add_tile_air(turf_air)
+	// add
+	if(T.air)
+		air.merge_and_expand(T.air)
+		qdel(T.air)
+		T.air = null
+	else
+		air.volume += CELL_VOLUME
 	T.zone = src
-	contents.Add(T)
-	if(T.fire)
-		var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in T
-		fire_tiles.Add(T)
-		air_master.active_fire_zones |= src
-		if(fuel) fuel_objs += fuel
-	if(T.allow_gas_overlays && !T.outdoors)
+	contents += T
+
+	// graphics
+	if(T.allow_gas_overlays())
 		T.vis_contents += turf_graphics
 
-/datum/zas_zone/proc/remove(turf/simulated/T)
-#ifdef ZASDBG
+	// fire
+	if(T.fire)
+		fire_tiles += T
+		if(!on_fire)
+			mark_on_fire()
+		// TODO: reactions, generic fuel fire
+		var/obj/effect/deal/cleanable/liquid_fuel/fuel = locate() in T
+		if(fuel)
+			fuel_objs += fuel
+
+/**
+ * eats all the turfs from this list.
+ */
+/datum/zas_zone/proc/add_all(list/turf/turfs)
+	for(var/turf/T as anything in turfs)
+		add(T)
+
+/**
+ * removes a turf from us. avoid calling this alone! this is expensive.
+ */
+/datum/zas_zone/proc/remove(turf/T)
+#ifdef ZAS_DEBUG
 	ASSERT(!invalid)
 	ASSERT(istype(T))
 	ASSERT(T.zone == src)
-	soft_assert(T in contents, "Lists are weird broseph")
+	ASSERT(!T.air)
 #endif
-	contents.Remove(T)
-	fire_tiles.Remove(T)
+
+	// remove
+	contents -= T
+	T.zone = null
+	T.vis_contents -= turf_graphics
+	T.air = air.remove_and_shrink()
+
+	// fire
+	fire_tiles -= T
 	if(T.fire)
 		var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in T
 		fuel_objs -= fuel
-	T.zone = null
-	T.vis_contents -= turf_graphics
-	if(contents.len)
-		air.group_multiplier = contents.len
-	else
-		c_invalidate()
+
+/**
+ * removes all turfs from us. this is cheap in comparison to calling remove() on every turf!
+ */
+/datum/zas_zone/proc/breakdown()
+	#warn fin
+
 
 /datum/zas_zone/proc/c_merge(datum/zas_zone/into)
-#ifdef ZASDBG
+#ifdef ZAS_DEBUG
 	ASSERT(!invalid)
 	ASSERT(istype(into))
 	ASSERT(into != src)
@@ -108,7 +146,7 @@ Class Procs:
 	for(var/turf/simulated/T in contents)
 		T.vis_contents -= turf_graphics
 		into.add(T)
-		#ifdef ZASDBG
+		#ifdef ZAS_DEBUG
 		T.dbg(merged)
 		#endif
 
@@ -122,27 +160,20 @@ Class Procs:
 /datum/zas_zone/proc/c_invalidate()
 	invalid = 1
 	air_master.remove_zone(src)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	for(var/turf/simulated/T in contents)
 		T.dbg(invalid_zone)
 	#endif
 
 /datum/zas_zone/proc/rebuild()
-	if(invalid) return //Short circuit for explosions where rebuild is called many times over.
+	if(invalid)
+		return //Short circuit for explosions where rebuild is called many times over.
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
 		T.vis_contents -= turf_graphics
 		//T.dbg(invalid_zone)
 		T.needs_air_update = 0 //Reset the marker so that it will be added to the list.
 		air_master.mark_for_update(T)
-
-/datum/zas_zone/proc/add_tile_air(datum/gas_mixture/tile_air)
-	//air.volume += CELL_VOLUME
-	air.group_multiplier = 1
-	air.multiply(contents.len)
-	air.merge(tile_air)
-	air.divide(contents.len+1)
-	air.group_multiplier = contents.len+1
 
 /datum/zas_zone/proc/tick()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
