@@ -847,7 +847,7 @@
 /area/tether/surfacebase/medical/triage)
 "abp" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
@@ -26017,7 +26017,7 @@
 /area/tether/surfacebase/medical/surgery2)
 "aUH" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
@@ -34569,7 +34569,7 @@
 /area/tether/surfacebase/medical/triage)
 "blM" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
@@ -40462,7 +40462,7 @@
 /area/crew_quarters/recreation_area)
 "oTu" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/paper{
 	desc = "";
 	info = "Stop installing NIFs in here you clods! Unless it's on a synth. Otherwise, STOP DOING IT! You're killing people! -Management";

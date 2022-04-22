@@ -2241,7 +2241,7 @@
 /area/ship/manta/recreation)
 "kF" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/stack/nanopaste/advanced,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/manager,

@@ -2531,7 +2531,7 @@
 /area/lavaland/east/colony)
 "XF" = (
 /obj/structure/table/glass,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},

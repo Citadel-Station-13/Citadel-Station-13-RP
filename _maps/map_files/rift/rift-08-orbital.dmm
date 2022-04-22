@@ -4508,7 +4508,7 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "nb" = (
@@ -4847,7 +4847,7 @@
 /area/centcom/simulated/medical)
 "nY" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "nZ" = (
@@ -6737,7 +6737,7 @@
 /obj/item/clothing/mask/surgical,
 /obj/item/stack/nanopaste,
 /obj/item/stack/nanopaste,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"

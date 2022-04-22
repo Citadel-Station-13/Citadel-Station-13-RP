@@ -1330,7 +1330,7 @@
 	dir = 4
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/stack/nanopaste,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
