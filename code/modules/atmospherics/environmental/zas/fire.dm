@@ -122,6 +122,34 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 	var/firelevel = 1 //Calculated by gas_mixture.calculate_firelevel()
 
+/atom/movable/fire/Initialize(mapload, fl)
+	. = ..()
+	if(!istype(loc, /turf))
+		return INITIALIZE_HINT_QDEL
+	var/turf/T = loc
+	if(T.fire)
+		return INITIALIZE_HINT_QDEL
+
+	T.fire = src
+
+	setDir(pick(GLOB.cardinal))
+
+	var/datum/gas_mixture/air_contents = loc.return_air()
+	color = fire_color(air_contents.temperature)
+	set_light(3, 1, color)
+
+	firelevel = fl
+	air_master.active_hotspots += src
+
+/atom/movable/fire/Destroy()
+	set_light(0)
+	SSair.active_hotspots -= src
+	if(isturf(loc))
+		var/turf/T = loc
+		if(T.fire == src)
+			T.fire = null
+	return ..()
+
 /atom/movable/fire/process(delta_time)
 	. = 1
 
@@ -182,38 +210,11 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	animate(src, color = fire_color(air_contents.temperature), 5)
 	set_light(l_color = color)
 
-/atom/movable/fire/Initialize(mapload, fl)
-	. = ..()
-	if(!istype(loc, /turf))
-		return INITIALIZE_HINT_QDEL
-	var/turf/T = loc
-	if(T.fire)
-		return INITIALIZE_HINT_QDEL
-
-	T.fire = src
-
-	setDir(pick(GLOB.cardinal))
-
-	var/datum/gas_mixture/air_contents = loc.return_air()
-	color = fire_color(air_contents.temperature)
-	set_light(3, 1, color)
-
-	firelevel = fl
-	air_master.active_hotspots += src
-
 /atom/movable/fire/proc/fire_color(var/env_temperature)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	var/temperature = max(4000*sqrt(firelevel/firelevel_multiplier), env_temperature)
 	return heat2color(temperature)
 
-/atom/movable/fire/Destroy()
-	set_light(0)
-	SSair.active_hotspots -= src
-	if(isturf(loc))
-		var/turf/T = loc
-		if(T.fire == src)
-			T.fire = null
-	return ..()
 /turf/simulated
 	var/fire_protection = 0 //Protects newly extinguished tiles from being overrun again.
 
