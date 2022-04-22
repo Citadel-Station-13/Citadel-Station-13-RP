@@ -107,18 +107,23 @@ Class Procs:
 		//2 = run auto, use active
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
-	var/power_channel = EQUIP //EQUIP, ENVIRON or LIGHT
+	///EQUIP, ENVIRON or LIGHT
+	var/power_channel = EQUIP
 	var/power_init_complete = FALSE
-	var/list/component_parts = null //list of all the parts used to build it, if made from certain kinds of frames.
+	///List of all the parts used to build it, if made from certain kinds of frames.
+	var/list/component_parts = null
 	var/uid
-	var/panel_open = 0
+	var/panel_open = FALSE
 	var/global/gl_uid = 1
-	var/clicksound			// sound played on succesful interface. Just put it in the list of vars at the start.
-	var/clickvol = 40		// volume
-	var/interact_offline = 0 // Can the machine be interacted with while de-powered.
+	///Sound played on succesful interface. Just put it in the list of vars at the start.
+	var/clicksound
+	///Volume of interface sounds.
+	var/clickvol = 40
+	///Can the machine be interacted with while de-powered.
+	var/interact_offline = FALSE
 	var/obj/item/circuitboard/circuit = null
-
-	var/speed_process = FALSE			//If false, SSmachines. If true, SSfastprocess.
+	///If false, SSmachines. If true, SSfastprocess.
+	var/speed_process = FALSE
 
 /obj/machinery/Initialize(mapload, newdir)
 	if(newdir)
@@ -257,8 +262,6 @@ Class Procs:
 	if(clicksound && istype(user, /mob/living/carbon))
 		playsound(src, clicksound, clickvol)
 
-	add_fingerprint(user)
-
 	return ..()
 
 /obj/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
@@ -331,7 +334,7 @@ Class Procs:
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 						break
-			update_icon()
+			update_appearance()
 			RefreshParts()
 	return 1
 
@@ -353,7 +356,7 @@ Class Procs:
 			"<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
 		anchored = !anchored
 		power_change() //Turn on or off the machine depending on the status of power in the new area.
-		update_icon()
+		update_appearance()
 	return TRUE
 
 /obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
@@ -369,7 +372,7 @@ Class Procs:
 	playsound(src, S.usesound, 50, 1)
 	panel_open = !panel_open
 	to_chat(user, "<span class='notice'>You [panel_open ? "open" : "close"] the maintenance hatch of [src].</span>")
-	update_icon()
+	update_appearance()
 	return 1
 
 /obj/machinery/proc/computer_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
@@ -393,7 +396,7 @@ Class Procs:
 	playsound(src, S.usesound, 50, 1)
 	panel_open = !panel_open
 	to_chat(user, "The wires have been [panel_open ? "exposed" : "unexposed"]")
-	update_icon()
+	update_appearance()
 	return 1
 
 /obj/machinery/proc/alarm_deconstruction_wirecutters(var/mob/user, var/obj/item/W)
@@ -448,7 +451,7 @@ Class Procs:
 	A.pixel_x = pixel_x
 	A.pixel_y = pixel_y
 	A.update_desc()
-	A.update_icon()
+	A.update_appearance()
 	M.loc = null
 	M.deconstruct(src)
 	qdel(src)

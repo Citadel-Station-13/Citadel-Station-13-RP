@@ -57,6 +57,7 @@
 	icon_state = "darkcannon"
 	item_state = "darkcannon"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	charge_cost = 300
 	projectile_type = /obj/item/projectile/beam/stun/darkmatter
 	cell_type = /obj/item/cell/device/weapon/recharge
@@ -120,6 +121,7 @@
 	icon_state = "noise"
 	item_state = "noise"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 	charge_cost = 400

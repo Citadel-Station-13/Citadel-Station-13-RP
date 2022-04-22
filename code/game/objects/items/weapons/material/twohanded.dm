@@ -108,10 +108,11 @@
 	can_cleave = TRUE
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
+	heavy = TRUE
 
 /obj/item/material/twohanded/fireaxe/update_held_icon()
 	var/mob/living/M = loc
-	if(istype(M) && !issmall(M) && M.item_is_in_hands(src) && !M.hands_are_full())
+	if(istype(M) && M.can_wield_item(src) && M.item_is_in_hands(src) && !M.hands_are_full())
 		wielded = 1
 		pry = 1
 		force = force_wielded
@@ -294,10 +295,11 @@
 	force_wielded = 23 //A fair bit less than the fireaxe.
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
 	armor_penetration = 50
+	heavy = TRUE
 
 /obj/item/material/twohanded/sledgehammer/update_held_icon()
 	var/mob/living/M = loc
-	if(istype(M) && !issmall(M) && M.item_is_in_hands(src) && !M.hands_are_full())
+	if(istype(M) && M.can_wield_item(src) && M.item_is_in_hands(src) && !M.hands_are_full())
 		wielded = 1
 		pry = 1
 		force = force_wielded

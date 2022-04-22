@@ -45,7 +45,7 @@
 	if(!check_alien_ability(75,1,O_RESIN))
 		return
 
-	visible_message("<span class='warning'><B>[src] spits out a thick purple substance and begins to shape it!</B></span>", "<span class='alium'>You shape a [choice].</span>")
+	visible_message("<span class='warning'><B>[src] spits out a thick purple substance and begins to shape it!</B></span>", "<span class='green'>You shape a [choice].</span>")
 
 	var/obj/O
 
@@ -81,7 +81,7 @@
 
 /obj/structure/bed/hybrid_nest/update_icon()
 	return
-	
+
 /obj/structure/bed/hybrid_nest/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	if(buckled_mob)
 		if(buckled_mob.buckled == src)
@@ -117,7 +117,7 @@
 
 	var/mob/living/carbon/xenos = user
 
-	if(istype(xenos) && xenos.species == SPECIES_XENOHYBRID)//if a non xenomorph tries to buckle someone in, fail, because they cant secrete resin
+	if(istype(xenos) && !istype(xenos.species, /datum/species/xenohybrid))//if a non xenomorph tries to buckle someone in, fail, because they cant secrete resin
 		return
 
 	if(M == usr)
@@ -300,4 +300,3 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	color = "#422649"
-

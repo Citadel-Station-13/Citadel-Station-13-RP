@@ -5,6 +5,7 @@
 	item_state = "shotgun"
 	max_shells = 4
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	slot_flags = SLOT_BACK
 	caliber = "12g"
@@ -16,6 +17,7 @@
 	one_handed_penalty = 15
 	var/recentpump = 0 // to prevent spammage
 	var/action_sound = 'sound/weapons/shotgunpump.ogg'
+	load_sound = 'sound/weapons/guns/interaction/shotgun_insert.ogg'
 	var/animated_pump = 0 //This is for cyling animations.
 	var/empty_sprite = 0 //This is just a dirty var so it doesn't fudge up.
 
@@ -72,7 +74,7 @@
 	name = "warden's shotgun"
 	desc = "A heavily modified Hephaestus Industries KS-40. This version bears multiple after-market mods, including a laser sight to help compensate for its shortened stock. 'Property of the Warden' has been etched into the side of the reciever. Uses 12g rounds."
 	icon_state = "shotgun_w"
-	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	slot_flags = SLOT_BELT|SLOT_HOLSTER|SLOT_BACK
 	w_class = ITEMSIZE_NORMAL
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
@@ -125,6 +127,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	handle_casings = CYCLE_CASINGS
 	max_shells = 2
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	slot_flags = SLOT_BACK
 	caliber = "12g"

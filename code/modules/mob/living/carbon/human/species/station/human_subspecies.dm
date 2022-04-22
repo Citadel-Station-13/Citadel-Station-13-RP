@@ -1,5 +1,5 @@
 /datum/species/human/gravworlder
-	name = "grav-adapted Human"
+	name = SPECIES_HUMAN_GRAV
 	name_plural = "grav-adapted Humans"
 	blurb = "Heavier and stronger than a baseline human, gravity-adapted people have \
 	thick radiation-resistant skin with a high lead content, denser bones, and recessed \
@@ -47,7 +47,7 @@
 	base_color = "#EECEB3"
 
 /datum/species/human/spacer
-	name = "space-adapted Human"
+	name = SPECIES_HUMAN_SPACER
 	name_plural = "space-adapted Humans"
 	blurb = "Lithe and frail, these sickly folk were engineered for work in environments that \
 	lack both light and atmosphere. As such, they're quite resistant to asphyxiation as well as \

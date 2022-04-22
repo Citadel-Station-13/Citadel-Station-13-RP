@@ -43,10 +43,12 @@
 /obj/item/organ/internal/powered/process()
 	. = ..()
 	if(owner)
-		if(active && !(owner.nutrition = owner.nutrition - maintenance_cost))
-			active = FALSE
-			to_chat(owner, "<span class='danger'>Your [name] [gender == PLURAL ? "are" : "is"] out of power!</span>")
-			refresh_action_button()
+		if(active)
+			if(owner.nutrition > 0)
+				owner.adjust_nutrition(-maintenance_cost)
+				active = FALSE
+				to_chat(owner, "<span class='danger'>Your [name] [gender == PLURAL ? "are" : "is"] out of power!</span>")
+				refresh_action_button()
 
 /obj/item/organ/internal/powered/refresh_action_button()
 	. = ..()
@@ -178,13 +180,12 @@
 	cooling = !cooling
 	to_chat(C, "You toggle your cooling fans [cooling ? "on" : "off"] ")
 
-/obj/item/organ/internal/powered/cooling_fins/process()
+/obj/item/organ/internal/powered/cooling_fins/process(delta_time)
 	var/mob/living/carbon/human/C = src.owner
 	if(cooling)
 		var/temp_diff = min(C.bodytemperature - target_temp, max_cooling)
 		if(temp_diff >= 1)
 			maintenance_cost = max(temp_diff, 1)
-			C.nutrition = C.nutrition - maintenance_cost
 			C.bodytemperature -= temp_diff
 		else
 			maintenance_cost = 0

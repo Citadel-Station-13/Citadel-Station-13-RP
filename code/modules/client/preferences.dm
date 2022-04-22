@@ -163,15 +163,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/lastnews // Hash of last seen lobby news content.
 
-	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
-	var/directory_tag = "Unset" //Sorting tag to use in character directory
-	var/directory_erptag = "Unset"	//ditto, but for non-vore scenes
-	var/directory_ad = ""		//Advertisement stuff to show in character directory.
-	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
+	//Character Directory Stuff
+	///Should we show in Character Directory
+	var/show_in_directory = 1
+	///Sorting tag to use for vore-prefs
+	var/directory_tag = "Unset"
+	///Sorting tag to use for erp-prefs
+	var/directory_erptag = "Unset"
+	///Advertisement stuff to show in character directory.
+	var/directory_ad = ""
 
-	// Should we automatically fit the viewport?
+	///Set character's suit sensor level
+	var/sensorpref = 5
+
+	///Should we automatically fit the viewport?
 	var/auto_fit_viewport = TRUE
-	// Should we be in the widescreen mode set by the config?
+	///Should we be in the widescreen mode set by the config?
 	var/widescreenpref = FALSE	// Doesn't exist... Yet.
 
 /datum/preferences/New(client/C)

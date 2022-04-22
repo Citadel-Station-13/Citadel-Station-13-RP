@@ -9,9 +9,9 @@ import { InfernoNode } from 'inferno';
 import { Box, unit } from './Box';
 import { Divider } from './Divider';
 
-type LabeledListProps = {
-  children?: any;
-};
+ type LabeledListProps = {
+   children?: any;
+ };
 
 export const LabeledList = (props: LabeledListProps) => {
   const { children } = props;
@@ -24,17 +24,18 @@ export const LabeledList = (props: LabeledListProps) => {
 
 LabeledList.defaultHooks = pureComponentHooks;
 
-type LabeledListItemProps = {
-  className?: string | BooleanLike;
-  label?: string | BooleanLike;
-  labelColor?: string | BooleanLike;
-  color?: string | BooleanLike;
-  textAlign?: string | BooleanLike;
-  buttons?: InfernoNode,
-  /** @deprecated */
-  content?: any,
-  children?: InfernoNode;
-};
+ type LabeledListItemProps = {
+   className?: string | BooleanLike;
+   label?: string | BooleanLike;
+   labelColor?: string | BooleanLike;
+   color?: string | BooleanLike;
+   textAlign?: string | BooleanLike;
+   verticalAlign?: string | BooleanLike; // VOREStation Addition
+   buttons?: InfernoNode,
+   /** @deprecated */
+   content?: any,
+   children?: InfernoNode;
+ };
 
 const LabeledListItem = (props: LabeledListItemProps) => {
   const {
@@ -43,9 +44,11 @@ const LabeledListItem = (props: LabeledListItemProps) => {
     labelColor = 'label',
     color,
     textAlign,
+    verticalAlign, // VOREStation Addition
     buttons,
     content,
     children,
+    ...rest // VOREStation Addition
   } = props;
   return (
     <tr
@@ -55,6 +58,7 @@ const LabeledListItem = (props: LabeledListItemProps) => {
       ])}>
       <Box
         as="td"
+        verticalAlign={verticalAlign} // VOREStation Addition
         color={labelColor}
         className={classes([
           'LabeledList__cell',
@@ -66,11 +70,13 @@ const LabeledListItem = (props: LabeledListItemProps) => {
         as="td"
         color={color}
         textAlign={textAlign}
+        verticalAlign={verticalAlign} // VOREStation Addition
         className={classes([
           'LabeledList__cell',
           'LabeledList__content',
         ])}
-        colSpan={buttons ? undefined : 2}>
+        colSpan={buttons ? undefined : 2}
+        {...rest} /* VOREStation Addition*/>
         {content}
         {children}
       </Box>
@@ -85,9 +91,9 @@ const LabeledListItem = (props: LabeledListItemProps) => {
 
 LabeledListItem.defaultHooks = pureComponentHooks;
 
-type LabeledListDividerProps = {
-  size?: number;
-};
+ type LabeledListDividerProps = {
+   size?: number;
+ };
 
 const LabeledListDivider = (props: LabeledListDividerProps) => {
   const padding = props.size

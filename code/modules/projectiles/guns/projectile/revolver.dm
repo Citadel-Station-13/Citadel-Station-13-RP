@@ -9,6 +9,8 @@
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a357
 	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	mag_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
 	var/chamber_offset = 0 //how many empty chambers in the cylinder until you hit a round
 
 /obj/item/gun/projectile/revolver/holy

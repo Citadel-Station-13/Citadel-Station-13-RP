@@ -6,7 +6,7 @@ import { Window } from "../layouts";
 
 export const Turbolift = (props, context) => {
   const { act, data } = useBackend(context);
-  
+
   const {
     floors,
     doors_open,

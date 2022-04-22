@@ -41,7 +41,6 @@
 		A.part2 = src
 
 		user.put_in_hands(A)
-		A.add_fingerprint(user)
 
 /obj/item/radio/electropack/Topic(href, href_list)
 	//..()

@@ -81,4 +81,4 @@ In short:
 	for (var/obj/machinery/power/apc/APC in GLOB.apcs)
 		if (!(APC.stat & BROKEN) && !APC.is_critical)
 			APC.emagged = 1
-			APC.queue_icon_update()
+			APC.update_icon()
