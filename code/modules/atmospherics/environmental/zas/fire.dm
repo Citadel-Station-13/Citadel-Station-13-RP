@@ -124,12 +124,10 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 /atom/movable/fire/Initialize(mapload, fl)
 	. = ..()
-	if(!istype(loc, /turf))
-		return INITIALIZE_HINT_QDEL
-	var/turf/T = loc
-	if(T.fire)
-		return INITIALIZE_HINT_QDEL
 
+	var/turf/T = loc
+	if(!istype(T) || T.fire)
+		return INITIALIZE_HINT_QDEL
 	T.fire = src
 
 	setDir(pick(GLOB.cardinal))
