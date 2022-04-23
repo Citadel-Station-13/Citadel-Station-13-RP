@@ -8,7 +8,7 @@
 		if(istype(huds, /atom/movable/screen/craft))
 			return
 	//We don't want to be stacking multiple crafting huds on relogs
-	var/atom/movable/screen/craft/C = new()
+	var/atom/movable/screen/craft/C = new
 	C.icon = H.ui_style
 	H.static_inventory += C
 	CL.screen += C

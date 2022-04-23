@@ -306,6 +306,6 @@
 
 	client.screen += hud_elements
 	client.screen += adding + hotkeybuttons
-	client.screen += client.void
+	client.mob.reload_rendering()
 
 	return

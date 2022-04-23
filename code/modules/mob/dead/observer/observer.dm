@@ -138,6 +138,12 @@
 		T = pick(latejoin)			//Safety in case we cannot find the body's position
 	forceMove(T)
 
+	for(var/v in GLOB.active_alternate_appearances)
+		if(!v)
+			continue
+		var/datum/atom_hud/alternate_appearance/AA = v
+		AA.onNewMob(src)
+
 	if(!name)							//To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 	real_name = name
@@ -286,8 +292,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Toggles Medical HUD allowing you to see how everyone is doing"
 
 	medHUD = !medHUD
-	plane_holder.set_vis(VIS_CH_HEALTH, medHUD)
-	plane_holder.set_vis(VIS_CH_STATUS_OOC, medHUD)
+	if(medHUD)
+		get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(src)
+	else
+		get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(src)
 	to_chat(src,"<font color=#4F49AF><B>Medical HUD [medHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/verb/toggle_antagHUD()
@@ -310,7 +318,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		has_enabled_antagHUD = TRUE
 
 	antagHUD = !antagHUD
-	plane_holder.set_vis(VIS_CH_SPECIAL, antagHUD)
+	var/datum/atom_hud/H = GLOB.huds[ANTAG_HUD]
+	if(antagHUD)
+		H.add_hud_to(src)
+	else
+		H.remove_hud_from(src)
 	to_chat(src,"<font color=#4F49AF><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/proc/dead_tele(var/area/A in GLOB.sortedAreas)

@@ -257,7 +257,7 @@
 	stored = /datum/nifsoft/package/security
 
 /datum/nifsoft/package/security
-	software = list(/datum/nifsoft/ar_sec,/datum/nifsoft/flashprot)
+	software = list(/datum/nifsoft/hud/ar_sec,/datum/nifsoft/flashprot)
 
 /obj/item/storage/box/nifsofts_security
 	name = "security nifsoft uploaders"
@@ -280,7 +280,7 @@
 	stored = /datum/nifsoft/package/engineering
 
 /datum/nifsoft/package/engineering
-	software = list(/datum/nifsoft/ar_eng,/datum/nifsoft/alarmmonitor,/datum/nifsoft/uvblocker)
+	software = list(/datum/nifsoft/hud/ar_eng,/datum/nifsoft/alarmmonitor,/datum/nifsoft/uvblocker)
 
 /obj/item/storage/box/nifsofts_engineering
 	name = "engineering nifsoft uploaders"
@@ -302,7 +302,7 @@
 	stored = /datum/nifsoft/package/medical
 
 /datum/nifsoft/package/medical
-	software = list(/datum/nifsoft/ar_med,/datum/nifsoft/crewmonitor)
+	software = list(/datum/nifsoft/hud/ar_med,/datum/nifsoft/crewmonitor)
 
 /obj/item/storage/box/nifsofts_medical
 	name = "medical nifsoft uploaders"

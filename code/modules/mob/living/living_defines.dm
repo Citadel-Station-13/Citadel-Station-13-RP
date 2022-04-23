@@ -7,8 +7,6 @@
 
 	var/mob_class = null	// A mob's "class", e.g. human, mechanical, animal, etc. Used for certain projectile effects. See __defines/mob.dm for available classes.
 
-	var/hud_updateflag = 0
-
 	var/list/status_effects //a list of all status effects the mob has
 
 	//Damage related vars, NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS
@@ -62,9 +60,6 @@
 	var/see_invisible_default = SEE_INVISIBLE_LIVING
 
 	var/nest				//Not specific, because a Nest may be the prop nest, or blob factory in this case.
-
-	var/list/hud_list		//Holder for health hud, status hud, wanted hud, etc (not like inventory slots)
-	var/has_huds = FALSE	//Whether or not we should bother initializing the above list
 
 	var/makes_dirt = TRUE	//FALSE if the mob shouldn't be making dirt on the ground when it walks
 
