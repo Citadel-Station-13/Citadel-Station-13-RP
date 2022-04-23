@@ -1,0 +1,5 @@
+author: "Ghostcoffeee"
+delete-after: True
+changes: 
+  - rscadd: "Added the swimsuit capsule selection to general loadout tab"
+  - bugfix: "fixed loadout swimsuits giving capsules instead of the suits"
