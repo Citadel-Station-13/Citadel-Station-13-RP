@@ -41,7 +41,7 @@ other types of metals and chemistry for reagents).
 	///An item name before it is modified by various name-modifying procs
 	var/item_name = null
 	///ID of the created object for easy refernece. Alphanumeric, lower-case, no symbols.
-	var/id = "id"
+	var/id
 	///IDs of that techs the object originated from and the minimum level requirements.
 	var/list/req_tech = list()
 	///Flag as to what kind machine the design is built in. See defines.
