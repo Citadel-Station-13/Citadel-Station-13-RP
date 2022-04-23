@@ -26,15 +26,6 @@ In short:
 		for(var/obj/machinery/light/L in T.contents)
 			new /obj/structure/cult/pylon(L.loc)
 			qdel(L)
-	return
-
-
-/datum/universal_state/hell/OnTurfChange(var/turf/T)
-	var/turf/space/S = T
-	if(istype(S))
-		S.color = "#FF0000"
-	else
-		S.color = initial(S.color)
 
 // Apply changes when entering state
 /datum/universal_state/hell/OnEnter()

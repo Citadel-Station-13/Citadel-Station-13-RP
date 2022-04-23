@@ -1,4 +1,4 @@
-// Returns the lowest turf available on a given Z-level, defaults to asteroid for Polaris.
+// everything here will be hurled out on new maploader.
 
 proc/get_base_turf(var/z)
 	if(!GLOB.using_map.base_turf_by_z["[z]"])

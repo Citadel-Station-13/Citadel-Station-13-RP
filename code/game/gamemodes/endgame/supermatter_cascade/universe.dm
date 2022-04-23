@@ -12,13 +12,6 @@ var/global/universe_has_ended = 0
 		to_chat(user, "<span class='sinister'>All you hear on the frequency is static and panicked screaming. There will be no shuttle call today.</span>")
 	return 0
 
-/datum/universal_state/supermatter_cascade/OnTurfChange(var/turf/T)
-	var/turf/space/S = T
-	if(istype(S))
-		S.color = "#0066FF"
-	else
-		S.color = initial(S.color)
-
 /datum/universal_state/supermatter_cascade/DecayTurf(var/turf/T)
 	if(istype(T,/turf/simulated/wall))
 		var/turf/simulated/wall/W=T
