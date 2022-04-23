@@ -18,8 +18,22 @@ other types of metals and chemistry for reagents).
 */
 //Note: More then one of these can be added to a design.
 
+/**
+ * makes new datums for all hardcoded designs
+ */
+/proc/instantiate_all_hardcoded_designs()
+	. = list()
+	for(var/path in subtypesof(/datum/design))
+		var/datum/design/D = path
+		if(initial(D.abstract_type) == path)
+			continue
+		D = new path
+		. += D
+
 ///Datum for object designs, used in construction
 /datum/design
+	/// abstract type
+	var/abstract_type = /datum/design
 	///Name of the created object. If null it will be 'guessed' from build_path if possible.
 	var/name = null
 	///Description of the created object. If null it will use group_desc and name where applicable.

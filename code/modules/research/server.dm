@@ -267,6 +267,7 @@
 			if(choice == "Continue")
 				for(var/datum/design/D in target.files.known_designs)
 					if(D.id == params["design"])
+						target.files.known_design_ids -= D.id
 						target.files.known_designs -= D
 						break
 			target.files.RefreshResearch()
