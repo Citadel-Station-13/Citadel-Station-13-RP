@@ -629,7 +629,6 @@
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate
 	name = "vox pirate"
 	desc = "A desperate looking Vox. Get your gun."
-
 	projectiletype = /obj/item/projectile/bullet/rifle/a762
 	projectilesound = 'sound/weapons/riflebolt.ogg'
 	needs_reload = TRUE
@@ -692,7 +691,7 @@
 //			Vox Ranged
 ////////////////////////////////
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/boarder
+/mob/living/simple_mob/humanoid/merc/voxpirate/shotgun
 	name = "vox ranged boarder"
 	desc = "A howling Vox with a shotgun. Get to cover!"
 	icon_state = "voxboarder_r"
