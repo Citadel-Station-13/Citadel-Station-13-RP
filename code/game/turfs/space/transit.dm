@@ -1,6 +1,5 @@
 /turf/space/transit
 	dir = SOUTH
-	keep_sprite = TRUE
 	can_build_into_floor = FALSE
 	var/pushdirection	// Push things that get caught in the transit tile this direction
 
