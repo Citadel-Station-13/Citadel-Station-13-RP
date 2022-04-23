@@ -1,6 +1,7 @@
 import { useBackend } from "../backend";
 import { Button, LabeledList, ProgressBar, Section, LabeledControls, AnimatedNumber } from "../components";
 import { formatPower } from '../format';
+import { Fragment } from 'inferno';
 import { Window } from "../layouts";
 
 export const MassiveGasPump = (props, context) => {
@@ -47,7 +48,7 @@ export const MassiveGasPump = (props, context) => {
               onClick={() => act("power")} />
           }>
           <LabeledList>
-            <LabeledList.Item label = "Output Pressure"
+            <LabeledList.Item label="Output Pressure"
               buttons={(
                 <Fragment>
                   <Button
@@ -66,7 +67,7 @@ export const MassiveGasPump = (props, context) => {
               )}>
               {pressure_set / 100} kPa
             </LabeledList.Item>
-            <LabeledList.Item label = "Power Level"
+            <LabeledList.Item label="Power Level"
               buttons={(
                 <Fragment>
                   <Button
