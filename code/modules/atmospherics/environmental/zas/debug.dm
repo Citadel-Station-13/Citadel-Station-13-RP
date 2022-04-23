@@ -1,4 +1,25 @@
-client/proc/ZoneTick()
+var/image/assigned = image('icons/Testing/Zone.dmi', icon_state = "assigned")
+var/image/created = image('icons/Testing/Zone.dmi', icon_state = "created")
+var/image/merged = image('icons/Testing/Zone.dmi', icon_state = "merged")
+var/image/invalid_zone = image('icons/Testing/Zone.dmi', icon_state = "invalid")
+var/image/air_blocked = image('icons/Testing/Zone.dmi', icon_state = "block")
+var/image/zone_blocked = image('icons/Testing/Zone.dmi', icon_state = "zoneblock")
+var/image/blocked = image('icons/Testing/Zone.dmi', icon_state = "fullblock")
+var/image/mark = image('icons/Testing/Zone.dmi', icon_state = "mark")
+
+/datum/zas_edge/var/dbg_out = 0
+
+/turf/var/tmp/dbg_img
+/turf/proc/dbg(image/img, d = 0)
+	if(d > 0) img.dir = d
+	overlays -= dbg_img
+	overlays += img
+	dbg_img = img
+
+proc/soft_assert(thing,fail)
+	if(!thing) message_admins(fail)
+
+/client/proc/ZoneTick()
 	set category = "Debug"
 	set name = "Process Atmos"
 	set desc = "Manually run a single tick of the air subsystem"
@@ -16,7 +37,7 @@ client/proc/ZoneTick()
 		to_chat(src, "Failed to process! ([air_master.tick_progress])")
 	*/
 
-client/proc/Zone_Info(turf/T as null|turf)
+/client/proc/Zone_Info(turf/T as null|turf)
 	set category = "Debug"
 	if(T)
 		if(istype(T,/turf/simulated) && T:zone)
@@ -33,9 +54,9 @@ client/proc/Zone_Info(turf/T as null|turf)
 				images -= zone_debug_images[zone]
 			zone_debug_images = null
 
-client/var/list/zone_debug_images
+/client/var/list/zone_debug_images
 
-client/proc/Test_ZAS_Connection(var/turf/simulated/T as turf)
+/client/proc/Test_ZAS_Connection(var/turf/simulated/T as turf)
 	set category = "Debug"
 	if(!istype(T))
 		return

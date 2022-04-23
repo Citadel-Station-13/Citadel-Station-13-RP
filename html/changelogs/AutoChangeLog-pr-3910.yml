@@ -1,0 +1,6 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - rscadd: "Vox and RATS can now spawn during the Pirate Boarders Event."
+  - bugfix: "Vox Sword pirates and Vox Shotgun pirates now don't overwrite eachother."
+  - bugfix: "The overmap variant of the pirate event now reflects the new serious take on pirates."

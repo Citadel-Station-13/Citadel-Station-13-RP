@@ -390,12 +390,12 @@
 			sleep(50)
 			H.drip(1)
 
-			if(!B.bitten) // first time biting them
-				src.nutrition += 300
-				B.nutrition -= 150
-			else
-				src.nutrition += 150 // halves our reward if we've already fed on this person before
-				B.nutrition -= 75
+			//if(!B.bitten) // first time biting them
+			src.nutrition += 400 //Commented out code to do with "B.bitten" in an attempt to rebalance vampires on a whole. Vampires now are more efficient
+			B.nutrition -= 200
+			//else
+				//src.nutrition += 150 // halves our reward if we've already fed on this person before
+				//B.nutrition -= 75
 			if(src.nutrition > 901) //prevent going into the fat ranges of nutrition needlessly and prevents minmaxing certain racial traits/abilities that rely on nutrition via farming one victim
 				src.nutrition = 900
 			if(B.nutrition < 100)

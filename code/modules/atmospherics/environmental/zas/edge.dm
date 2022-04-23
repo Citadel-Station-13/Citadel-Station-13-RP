@@ -4,7 +4,7 @@ Overview:
 	These are what handle gas transfers between zones and into space.
 	They are found in a zone's edges list and in air_master.edges.
 	Each edge updates every air tick due to their role in gas transfer.
-	They come in two flavors, /connection_edge/zone and /connection_edge/unsimulated.
+	They come in two flavors, /datum/zas_edge/zone and /datum/zas_edge/unsimulated.
 	As the type names might suggest, they handle inter-zone and spacelike connections respectively.
 
 Class Vars:
@@ -15,14 +15,14 @@ Class Vars:
 
 	coefficent - This is a marker for how many connections are on this edge. Used to determine the ratio of flow.
 
-	connection_edge/zone
+	datum/zas_edge/zone
 
 		B - This holds the second zone with which the first zone equalizes.
 
 		direct - This counts the number of direct (i.e. with no doors) connections on this edge.
 		         Any value of this is sufficient to make the zones mergeable.
 
-	connection_edge/unsimulated
+	datum/zas_edge/unsimulated
 
 		B - This holds an unsimulated turf which has the gas values this edge is mimicing.
 
@@ -30,14 +30,14 @@ Class Vars:
 
 Class Procs:
 
-	add_connection(connection/c)
+	add_connection(datum/zas_connection/c)
 		Adds a connection to this edge. Usually increments the coefficient and adds a turf to connecting_turfs.
 
-	remove_connection(connection/c)
+	remove_connection(datum/zas_connection/c)
 		Removes a connection from this edge. This works even if c is not in the edge, so be careful.
 		If the coefficient reaches zero as a result, the edge is erased.
 
-	contains_zone(zone/Z)
+	contains_zone(datum/zas_zone/Z)
 		Returns true if either A or B is equal to Z. Unsimulated connections return true only on A.
 
 	erase()
@@ -51,47 +51,46 @@ Class Procs:
 		If repelled is true, the objects move away from any turf in connecting_turfs, otherwise they approach.
 		A check against vsc.lightest_airflow_pressure should generally be performed before calling this.
 
-	get_connected_zone(zone/from)
+	get_connected_zone(datum/zas_zone/from)
 		Helper proc that allows getting the other zone of an edge given one of them.
-		Only on /connection_edge/zone, otherwise use A.
+		Only on /datum/zas_edge/zone, otherwise use A.
 
 */
 
 
-/connection_edge/var/zone/A
+/datum/zas_edge
+	var/datum/zas_zone/A
+	var/list/connecting_turfs = list()
+	var/direct = 0
+	var/sleeping = 1
+	var/coefficient = 0
 
-/connection_edge/var/list/connecting_turfs = list()
-/connection_edge/var/direct = 0
-/connection_edge/var/sleeping = 1
-
-/connection_edge/var/coefficient = 0
-
-/connection_edge/New()
+/datum/zas_edge/New()
 	CRASH("Cannot make connection edge without specifications.")
 
-/connection_edge/proc/add_connection(connection/c)
+/datum/zas_edge/proc/add_connection(datum/zas_connection/c)
 	coefficient++
 	if(c.direct()) direct++
 	//to_chat(world, "Connection added: [type] Coefficient: [coefficient]")
 
-/connection_edge/proc/remove_connection(connection/c)
+/datum/zas_edge/proc/remove_connection(datum/zas_connection/c)
 	//to_chat(world, "Connection removed: [type] Coefficient: [coefficient-1]")
 	coefficient--
 	if(coefficient <= 0)
 		erase()
 	if(c.direct()) direct--
 
-/connection_edge/proc/contains_zone(zone/Z)
+/datum/zas_edge/proc/contains_zone(datum/zas_zone/Z)
 
-/connection_edge/proc/erase()
+/datum/zas_edge/proc/erase()
 	air_master.remove_edge(src)
 	//to_chat(world, "[type] Erased.")
 
-/connection_edge/proc/tick()
+/datum/zas_edge/proc/tick()
 
-/connection_edge/proc/recheck()
+/datum/zas_edge/proc/recheck()
 
-/connection_edge/proc/flow(list/movable, differential, repelled)
+/datum/zas_edge/proc/flow(list/movable, differential, repelled)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/retrigger_delay, retrigger_delay)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/stun_pressure, stun_pressure)
 	for(var/i = 1; i <= movable.len; i++)
@@ -126,9 +125,10 @@ Class Procs:
 				spawn
 					if(M) M.GotoAirflowDest(differential/10)
 
-/connection_edge/zone/var/zone/B
+/datum/zas_edge/zone
+	var/datum/zas_zone/B
 
-/connection_edge/zone/New(zone/A, zone/B)
+/datum/zas_edge/zone/New(datum/zas_zone/A, datum/zas_zone/B)
 
 	src.A = A
 	src.B = B
@@ -137,23 +137,23 @@ Class Procs:
 	//id = edge_id(A,B)
 	//to_chat(world, "New edge between [A] and [B]")
 
-/connection_edge/zone/add_connection(connection/c)
+/datum/zas_edge/zone/add_connection(datum/zas_connection/c)
 	. = ..()
 	connecting_turfs.Add(c.A)
 
-/connection_edge/zone/remove_connection(connection/c)
+/datum/zas_edge/zone/remove_connection(datum/zas_connection/c)
 	connecting_turfs.Remove(c.A)
 	. = ..()
 
-/connection_edge/zone/contains_zone(zone/Z)
+/datum/zas_edge/zone/contains_zone(datum/zas_zone/Z)
 	return A == Z || B == Z
 
-/connection_edge/zone/erase()
+/datum/zas_edge/zone/erase()
 	A.edges.Remove(src)
 	B.edges.Remove(src)
 	. = ..()
 
-/connection_edge/zone/tick()
+/datum/zas_edge/zone/tick()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/lightest_pressure, lightest_pressure)
 	if(A.invalid || B.invalid)
 		erase()
@@ -187,20 +187,21 @@ Class Procs:
 	air_master.mark_zone_update(A)
 	air_master.mark_zone_update(B)
 
-/connection_edge/zone/recheck()
+/datum/zas_edge/zone/recheck()
 	// Edges with only one side being vacuum need processing no matter how close.
 	if(!A.air.compare(B.air, vacuum_exception = 1))
 		air_master.mark_edge_active(src)
 
 //Helper proc to get connections for a zone.
-/connection_edge/zone/proc/get_connected_zone(zone/from)
+/datum/zas_edge/zone/proc/get_connected_zone(datum/zas_zone/from)
 	if(A == from) return B
 	else return A
 
-/connection_edge/unsimulated/var/turf/B
-/connection_edge/unsimulated/var/datum/gas_mixture/air
+/datum/zas_edge/unsimulated
+	var/turf/B
+	var/datum/gas_mixture/air
 
-/connection_edge/unsimulated/New(zone/A, turf/B)
+/datum/zas_edge/unsimulated/New(datum/zas_zone/A, turf/B)
 	src.A = A
 	src.B = B
 	A.edges.Add(src)
@@ -208,24 +209,24 @@ Class Procs:
 	//id = 52*A.id
 	//to_chat(world, "New edge from [A] to [B].")
 
-/connection_edge/unsimulated/add_connection(connection/c)
+/datum/zas_edge/unsimulated/add_connection(datum/zas_connection/c)
 	. = ..()
 	connecting_turfs.Add(c.B)
 	air.group_multiplier = coefficient
 
-/connection_edge/unsimulated/remove_connection(connection/c)
+/datum/zas_edge/unsimulated/remove_connection(datum/zas_connection/c)
 	connecting_turfs.Remove(c.B)
 	air.group_multiplier = coefficient
 	. = ..()
 
-/connection_edge/unsimulated/erase()
+/datum/zas_edge/unsimulated/erase()
 	A.edges.Remove(src)
 	. = ..()
 
-/connection_edge/unsimulated/contains_zone(zone/Z)
+/datum/zas_edge/unsimulated/contains_zone(datum/zas_zone/Z)
 	return A == Z
 
-/connection_edge/unsimulated/tick()
+/datum/zas_edge/unsimulated/tick()
 	if(A.invalid)
 		erase()
 		return
@@ -245,7 +246,7 @@ Class Procs:
 
 	air_master.mark_zone_update(A)
 
-/connection_edge/unsimulated/recheck()
+/datum/zas_edge/unsimulated/recheck()
 	// Edges with only one side being vacuum need processing no matter how close.
 	// Note: This handles the glaring flaw of a room holding pressure while exposed to space, but
 	// does not specially handle the less common case of a simulated room exposed to an unsimulated pressurized turf.

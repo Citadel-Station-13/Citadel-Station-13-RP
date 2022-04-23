@@ -40,7 +40,7 @@
 	var/old_lc_bottomright = lc_bottomright
 	var/old_lc_bottomleft = lc_bottomleft
 
-	var/obj/fire/old_fire = fire
+	var/atom/movable/fire/old_fire = fire
 	var/old_outdoors = outdoors
 	var/old_dangerous_objects = dangerous_objects
 
@@ -87,7 +87,7 @@
 		var/turf/W = new N( locate(src.x, src.y, src.z) )
 
 		if(old_fire)
-			old_fire.RemoveFire()
+			qdel(old_fire)
 
 		if(tell_universe)
 			universe.OnTurfChange(W)

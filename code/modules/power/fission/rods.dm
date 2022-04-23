@@ -78,7 +78,7 @@
 	if(integrity == 0 && integrity_lost > 0) // Meltdown time.
 		meltdown()
 
-/obj/item/fuelrod/proc/add_thermal_energy(var/thermal_energy)
+/obj/item/fuelrod/add_thermal_energy(var/thermal_energy)
 	if(mass < 1)
 		return 0
 

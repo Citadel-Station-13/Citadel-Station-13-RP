@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(fail2topic)
 	name = "Fail2Topic"
 	init_order = INIT_ORDER_FAIL2TOPIC
-	flags = SS_BACKGROUND
+	subsystem_flags = SS_BACKGROUND
 	runlevels = ALL
 
 	var/list/rate_limiting = list()
@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(fail2topic)
 		enabled = FALSE
 		subsystem_log("DISABLED - UNIX systems are not supported.")
 	if(!enabled)
-		flags |= SS_NO_FIRE
+		subsystem_flags |= SS_NO_FIRE
 		can_fire = FALSE
 
 	return ..()

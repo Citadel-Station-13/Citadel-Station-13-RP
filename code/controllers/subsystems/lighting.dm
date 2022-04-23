@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(lighting)
 	name = "Lighting"
 	wait = 2
 	init_order = INIT_ORDER_LIGHTING
-	flags = SS_TICKER
+	subsystem_flags = SS_TICKER
 
 /datum/controller/subsystem/lighting/stat_entry(msg)
 	msg = "L:[length(GLOB.lighting_update_lights)]|C:[length(GLOB.lighting_update_corners)]|O:[length(GLOB.lighting_update_objects)]"
@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(lighting)
 /datum/controller/subsystem/lighting/fire(resumed, init_tick_checks)
 	MC_SPLIT_TICK_INIT(3)
 	var/i = 0
-	
+
 	// why do we split logic?
 	// because here on citrp, code standards like "don't delete shit during init" is often not enforced
 	// meaning the subsystem will crash out of this loop if something is deleted mid-process, which can happen if CHECK_TICK is running in init
