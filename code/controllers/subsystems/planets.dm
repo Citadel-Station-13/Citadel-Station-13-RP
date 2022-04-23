@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(planets)
 	init_order = INIT_ORDER_PLANETS
 	priority = FIRE_PRIORITY_PLANETS
 	wait = 2 SECONDS
-	flags = SS_BACKGROUND
+	subsystem_flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/static/list/new_outdoor_turfs = list()
@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(planets)
 			return
 
 	var/list/currentrun = src.currentrun
-	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
 		var/datum/planet/P = currentrun[currentrun.len]
 		currentrun.len--

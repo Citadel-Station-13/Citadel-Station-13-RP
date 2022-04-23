@@ -5,7 +5,7 @@
 SUBSYSTEM_DEF(circuit)
 	name = "Circuit"
 	init_order = INIT_ORDER_CIRCUIT
-	flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE
 	var/list/all_components = list()								// Associative list of [component_name]:[component_path] pairs
 	var/list/cached_components = list()								// Associative list of [component_path]:[component] pairs
 	var/list/all_assemblies = list()								// Associative list of [assembly_name]:[assembly_path] pairs
@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(circuit)
 //	var/cost_multiplier = MINERAL_MATERIAL_AMOUNT / 10 // Each circuit cost unit is 200cm3
 
 /datum/controller/subsystem/circuit/Recover()
-	flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
+	subsystem_flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
 
 /datum/controller/subsystem/circuit/Initialize(timeofday)
 	circuits_init()

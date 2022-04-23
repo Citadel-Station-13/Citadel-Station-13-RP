@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(vote)
 	wait = 10
 	priority = FIRE_PRIORITY_VOTE
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
-	flags = SS_KEEP_TIMING | SS_NO_INIT
+	subsystem_flags = SS_KEEP_TIMING | SS_NO_INIT
 	var/list/round_voters = list()
 
 	//Current vote

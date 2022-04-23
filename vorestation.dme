@@ -111,6 +111,7 @@
 #include "code\__DEFINES\color\colour_priority.dm"
 #include "code\__DEFINES\controllers\_subsystems.dm"
 #include "code\__DEFINES\controllers\ticker.dm"
+#include "code\__DEFINES\controllers\timer.dm"
 #include "code\__DEFINES\dcs\flags.dm"
 #include "code\__DEFINES\dcs\helpers.dm"
 #include "code\__DEFINES\dcs\signals.dm"
