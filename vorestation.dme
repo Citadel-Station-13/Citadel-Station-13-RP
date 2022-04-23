@@ -2601,6 +2601,7 @@
 #include "code\modules\mob\living\carbon\human\species\station\human_subspecies.dm"
 #include "code\modules\mob\living\carbon\human\species\station\monkey.dm"
 #include "code\modules\mob\living\carbon\human\species\station\plasmen.dm"
+#include "code\modules\mob\living\carbon\human\species\station\promethean_blob.dm"
 #include "code\modules\mob\living\carbon\human\species\station\prometheans.dm"
 #include "code\modules\mob\living\carbon\human\species\station\station.dm"
 #include "code\modules\mob\living\carbon\human\species\station\station_special.dm"
