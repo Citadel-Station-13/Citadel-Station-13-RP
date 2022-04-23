@@ -5,6 +5,8 @@
 	organ_tag = O_CELL
 	parent_organ = BP_TORSO
 	vital = 1
+	/// This sits in the brain organ slot, but is not a brain.
+	var/defib_timer = 1
 
 /obj/item/organ/internal/cell/Initialize(mapload)
 	. = ..()
@@ -44,6 +46,10 @@
 		return
 	stored_mmi = new brain_type(src)
 	addtimer(CALLBACK(src, .proc/update_from_mmi), 0)
+
+///This sits in the brain organ slot, but is not a brain. Posibrains and dronecores aren't brains either.
+/obj/item/organ/internal/mmi_holder/proc/tick_defib_timer()
+	return
 
 /obj/item/organ/internal/mmi_holder/proc/update_from_mmi()
 
