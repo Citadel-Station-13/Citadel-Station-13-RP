@@ -27,6 +27,8 @@ other types of metals and chemistry for reagents).
 		var/datum/design/D = path
 		if(initial(D.abstract_type) == path)
 			continue
+		if(initial(D.id) == "id")
+			continue
 		D = new path
 		. += D
 
@@ -41,7 +43,7 @@ other types of metals and chemistry for reagents).
 	///An item name before it is modified by various name-modifying procs
 	var/item_name = null
 	///ID of the created object for easy refernece. Alphanumeric, lower-case, no symbols.
-	var/id
+	var/id = "id"
 	///IDs of that techs the object originated from and the minimum level requirements.
 	var/list/req_tech = list()
 	///Flag as to what kind machine the design is built in. See defines.
@@ -62,8 +64,6 @@ other types of metals and chemistry for reagents).
 	var/search_metadata
 
 /datum/design/New()
-	if(isnull(id))
-		id = "[type]"		// eh fine we can have type lookups.
 	if(!islist(category))
 		log_runtime(EXCEPTION("Warning: Design [type] defined a non-list category. Please fix this."))
 		category = list(category)
