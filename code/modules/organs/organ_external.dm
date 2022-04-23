@@ -1396,4 +1396,4 @@ Note that amputating the affected organ does in fact remove the infection from t
 	syringe_infection_queued = null
 
 /obj/item/organ/external/proc/has_genitals()
-	return !isrobotic() && species && species.sexybits_location == organ_tag
+	return !BP_IS_ROBOTIC(src) && species && species.sexybits_location == organ_tag

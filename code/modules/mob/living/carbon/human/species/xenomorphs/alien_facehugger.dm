@@ -26,7 +26,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	body_parts_covered = FACE|EYES
 	throw_range = 5
 
-	var/set_stat(CONSCIOUS) //UNCONSCIOUS is the idle state in this case
+	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
 	var/sterile = 0
 	var/strength = 5
 	var/attached = 0
@@ -179,7 +179,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(stat == DEAD || stat == CONSCIOUS)
 		return
 
-	set_stat(CONSCIOUS)
+	stat = CONSCIOUS
 	icon_state = "[initial(icon_state)]"
 
 	return
@@ -188,14 +188,14 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return
 
-	set_stat(UNCONSCIOUS)
+	stat = UNCONSCIOUS
 	icon_state = "[initial(icon_state)]_inactive"
 
 	spawn(rand(min_time,max_time))
 		GoActive()
 		return
 
-	set_stat(DEAD)
+	stat = DEAD
 	src.visible_message("<span class='danger'><b>[src] curls up into a ball!</b></span>")
 	Die()
 	return
@@ -242,7 +242,7 @@ var/const/MAX_ACTIVE_TIME = 400
 /obj/item/clothing/mask/facehugger/proc/Die()
 	if(stat != DEAD)
 		visible_message("<span class='alert'>[src] dies!</span>")
-		set_stat(DEAD)
+		stat = DEAD
 	STOP_PROCESSING(SSobj, src)
 	walk(src, 0)
 	DeathIcon()

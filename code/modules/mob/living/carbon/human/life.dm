@@ -89,6 +89,9 @@
 		if(!client)
 			species.handle_npc(src)
 
+	else if(stat == DEAD && !stasis)
+		handle_defib_timer()
+
 	if(skip_some_updates())
 		return											//We go ahead and process them 5 times for HUD images and other stuff though.
 
@@ -1968,6 +1971,16 @@
 
 	//Process regular life stuff
 	nif.life()
+
+/mob/living/carbon/human/proc/handle_defib_timer()
+	if(!should_have_organ(O_BRAIN))
+		return // No brain.
+
+	var/obj/item/organ/internal/brain/brain = internal_organs_by_name[O_BRAIN]
+	if(!brain)
+		return // Still no brain.
+
+	brain.tick_defib_timer()
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS

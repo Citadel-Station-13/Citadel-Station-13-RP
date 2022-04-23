@@ -11,7 +11,7 @@
 	layer = BELOW_MOB_LAYER
 	plane = PLANE_GHOSTS
 	alpha = 127
-	set_stat(DEAD)
+	stat = DEAD
 	canmove = 0
 	blinded = 0
 	anchored = 1	//  don't get pushed around

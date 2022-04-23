@@ -14,7 +14,7 @@
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "mmi_empty"
 	w_class = ITEMSIZE_NORMAL
-	can_speak = 1
+	can_speak = TRUE
 	origin_tech = list(TECH_BIO = 3)
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/assisted)
 
@@ -22,7 +22,7 @@
 
 	//Revised. Brainmob is now contained directly within object of transfer. MMI in this case.
 
-	var/locked = 0
+	var/locked = FALSE
 	var/mob/living/carbon/brain/brainmob = null//The current occupant.
 	var/obj/item/organ/internal/brain/brainobj = null	//The current brain organ.
 	var/obj/mecha = null//This does not appear to be used outside of reference in mecha.dm.
@@ -57,18 +57,19 @@
 
 		var/obj/item/organ/internal/brain/B = O
 		if(B.health <= 0)
-			to_chat(user, "<span class='warning'>That brain is well and truly dead.</span>")
+			to_chat(user, SPAN_WARNING("That brain is well and truly dead."))
 			return
 		else if(!B.brainmob)
-			to_chat(user, "<span class='warning'>You aren't sure where this brain came from, but you're pretty sure it's useless.</span>")
+			to_chat(user, SPAN_WARNING("You aren't sure where this brain came from, but you're pretty sure it's useless."))
 			return
 
 		for(var/modifier_type in B.brainmob.modifiers)	//Can't be shoved in an MMI.
 			if(istype(modifier_type, /datum/modifier/no_borg))
-				to_chat(user, "<span class='warning'>\The [src] appears to reject this brain.  It is incompatable.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] appears to reject this brain.  It is incompatable."))
 				return
 
-		user.visible_message("<span class='notice'>\The [user] sticks \a [O] into \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] sticks \a [O] into \the [src]."))
+		B.preserved = TRUE
 
 		brainmob = B.brainmob
 		B.brainmob = null
@@ -85,7 +86,7 @@
 		name = "man-machine interface ([brainmob.real_name])"
 		icon_state = "mmi_full"
 
-		locked = 1
+		locked = TRUE
 
 		feedback_inc("cyborg_mmis_filled",1)
 
@@ -118,6 +119,7 @@
 			brainobj = null
 		else	//Or make a new one if empty.
 			brain = new(user.loc)
+		brain.preserved = FALSE
 		brainmob.container = null//Reset brainmob mmi var.
 		brainmob.loc = brain//Throw mob into brain.
 		living_mob_list -= brainmob//Get outta here

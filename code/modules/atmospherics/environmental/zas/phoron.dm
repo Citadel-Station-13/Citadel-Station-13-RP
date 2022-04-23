@@ -69,7 +69,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 		if(!pl_head_protected() || !pl_suit_protected())
 			burn_skin(0.75)
 			if(prob(20))
-				to_chat(src, SPAN_USERDANGER("Your skin burns!))
+				to_chat(src, SPAN_USERDANGER("Your skin burns!"))
 			updatehealth()
 
 	//Burn eyes if exposed.
