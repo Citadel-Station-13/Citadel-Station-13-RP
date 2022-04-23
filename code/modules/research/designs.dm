@@ -62,7 +62,8 @@ other types of metals and chemistry for reagents).
 	var/search_metadata
 
 /datum/design/New()
-	..()
+	if(isnull(id))
+		id = "[type]"		// eh fine we can have type lookups.
 	if(!islist(category))
 		log_runtime(EXCEPTION("Warning: Design [type] defined a non-list category. Please fix this."))
 		category = list(category)
