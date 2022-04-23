@@ -304,6 +304,8 @@
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
 
+	parallax_holder?.Update()
+
 //////////////////////end
 	add_delay = max(add_delay, move_delay_add_grab)
 

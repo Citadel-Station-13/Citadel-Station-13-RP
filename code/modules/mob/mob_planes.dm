@@ -186,11 +186,14 @@
 /atom/movable/screen/plane_master/parallax
 	plane = PARALLAX_PLANE
 	blend_mode = BLEND_MULTIPLY
+	alpha = 255
 
 ////////////////
 // space
 /atom/movable/screen/plane_master/parallax_white
 	plane = SPACE_PLANE
+	alpha = 255
+	mouse_opacity = 1
 
 /////////////////
 //The main game planes start normal and visible

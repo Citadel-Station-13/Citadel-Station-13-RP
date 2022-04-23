@@ -11,14 +11,15 @@
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	temperature = 2.7
 	can_build_into_floor = TRUE
-	var/keep_sprite = FALSE
 	var/edge = 0		// If we're an edge
 	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
 
+/turf/open/space/basic/New()	//Do not convert to Initialize
+	//This is used to optimize the map loader
+	return
+
 /turf/space/Initialize(mapload)
-	// Sprite stuff only beyond here
-	if(keep_sprite)
-		return ..()
+	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 	// We might be an edge
 	if(y == world.maxy || forced_dirs & NORTH)
