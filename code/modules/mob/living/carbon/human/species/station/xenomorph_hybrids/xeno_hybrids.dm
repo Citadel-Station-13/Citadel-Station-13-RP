@@ -8,7 +8,6 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	num_alternate_languages = 2
 
-	min_age = 18
 	max_age = 150//Xenomorphs probably get pretty old if not shot dead
 
 	blurb = "Xenohybrids are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
@@ -112,7 +111,7 @@
         if(fire_damage < heal_amount)
             H.adjustFireLoss(-heal_amount)
             heal_amount -= fire_damage
-        
+
         var/trauma_damage = H.getBruteLoss()
         if(trauma_damage >= heal_amount)
             H.adjustBruteLoss(-heal_amount)
@@ -132,4 +131,3 @@
             heal_amount -= posion_damage
 
         H.nutrition += heal_amount
-

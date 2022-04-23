@@ -11,7 +11,6 @@
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans. \
 	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and phoron in."
 	name_language = null // name randomisers are fucking weird
-	min_age = 18
 	max_age = 180
 	health_hud_intensity = 1.5
 	rarity_value = 5

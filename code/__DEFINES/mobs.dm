@@ -308,7 +308,7 @@
 #define SPECIES_VR				"Virtual Reality Avatar"
 #define SPECIES_VR_HUMAN		"Virtual Reality Human"
 #define SPECIES_VR_UNATHI		"Virtual Reality Unathi"
-#define SPECIES_VR_TAJ			"Virtual Reality Tajara" // NO CHANGING.
+#define SPECIES_VR_TAJ			"Virtual Reality Tajara"
 #define SPECIES_VR_SKRELL		"Virtual Reality Skrell"
 #define SPECIES_VR_TESHARI		"Virtual Reality Teshari"
 #define SPECIES_VR_DIONA		"Virtual Reality Diona"

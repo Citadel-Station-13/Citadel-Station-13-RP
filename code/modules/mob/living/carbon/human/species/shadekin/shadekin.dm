@@ -14,11 +14,20 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
 
 	language = LANGUAGE_SHADEKIN
-	assisted_langs = list()
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/shadekin, /datum/unarmed_attack/bite/sharp/shadekin)
+	name_language = LANGUAGE_SHADEKIN
+	species_language = LANGUAGE_SHADEKIN
+	secondary_langs = list(LANGUAGE_SHADEKIN)
+	num_alternate_languages = 3
+	unarmed_types = list(
+		/datum/unarmed_attack/stomp,
+		/datum/unarmed_attack/kick,
+		/datum/unarmed_attack/claws/shadekin,
+		/datum/unarmed_attack/bite/sharp/shadekin
+		)
+
 	rarity_value = 15	//INTERDIMENSIONAL FLUFFERS
 
-	siemens_coefficient = 0
+	siemens_coefficient = 1
 	darksight = 10
 
 	slowdown = -0.5

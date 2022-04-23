@@ -15,7 +15,6 @@
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
-	min_age = 18
 	max_age = 130
 
 	economic_modifier = 10
@@ -77,7 +76,6 @@
 	species_language = LANGUAGE_UNATHI
 	health_hud_intensity = 2.5
 
-	min_age = 18
 	max_age = 260
 
 	economic_modifier = 10
@@ -196,7 +194,6 @@
 	species_language = LANGUAGE_SIIK
 	health_hud_intensity = 2.5
 
-	min_age = 18
 	max_age = 80
 
 	economic_modifier = 10
@@ -292,7 +289,6 @@
 
 	water_movement = -3
 
-	min_age = 18
 	max_age = 130
 
 	economic_modifier = 10
@@ -375,7 +371,6 @@
 
 	economic_modifier = 3
 
-	min_age = 18
 	max_age = 90
 
 	blurb = "The Zaddat are an Unathi client race only recently introduced to OriCon space. Having evolved on \
@@ -486,7 +481,6 @@
 	name_language = LANGUAGE_SAGARU
 	color_mult = 1
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "There are two subspecies of Sergal; Southern and Northern. Northern sergals are a highly aggressive race \
@@ -558,7 +552,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark. \
@@ -609,7 +602,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "Nevreans are a race of avian and dinosaur-like creatures living on Tal. They belong to a group of races that hails from Eltus, \
@@ -649,7 +641,6 @@
 	name_language = LANGUAGE_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
@@ -696,7 +687,6 @@
 	name_language = LANGUAGE_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
@@ -770,7 +760,6 @@
 	flesh_color = "#966464"
 	base_color = "#B43214"
 
-	min_age = 18
 	max_age = 80
 
 /datum/species/harpy
@@ -791,7 +780,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	base_color = "#EECEB3"
@@ -920,4 +908,3 @@
 
 /datum/species/shadekin/can_breathe_water()
 	return TRUE	//they dont quite breathe
-

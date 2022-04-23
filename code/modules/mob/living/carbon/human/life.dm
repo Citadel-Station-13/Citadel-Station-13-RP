@@ -1158,7 +1158,7 @@
 
 /mob/living/carbon/human/set_stat(var/new_stat)
 	. = ..()
-	if(stat)
+	if(. && stat)
 		update_skin(1)
 
 /mob/living/carbon/human/handle_regular_hud_updates()

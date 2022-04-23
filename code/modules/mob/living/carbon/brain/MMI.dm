@@ -74,7 +74,7 @@
 		B.brainmob = null
 		brainmob.loc = src
 		brainmob.container = src
-		brainmob.stat = 0
+		brainmob.set_stat(CONSCIOUS)
 		dead_mob_list -= brainmob//Update dem lists
 		living_mob_list += brainmob
 
@@ -196,7 +196,7 @@
 	src.brainmob.add_language(LANGUAGE_EAL)
 	src.brainmob.loc = src
 	src.brainmob.container = src
-	src.brainmob.stat = 0
+	src.brainmob.set_stat(CONSCIOUS)
 	src.brainmob.silent = 0
 	radio = new(src)
 	dead_mob_list -= src.brainmob
@@ -240,7 +240,7 @@
 /obj/item/mmi/digital/transfer_identity(var/mob/living/carbon/H)
 	brainmob.dna = H.dna
 	brainmob.timeofhostdeath = H.timeofdeath
-	brainmob.stat = 0
+	brainmob.set_stat(CONSCIOUS)
 	if(H.mind)
 		H.mind.transfer_to(brainmob)
 	return

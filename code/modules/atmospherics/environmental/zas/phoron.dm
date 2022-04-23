@@ -69,11 +69,11 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 		if(!pl_head_protected() || !pl_suit_protected())
 			burn_skin(0.75)
 			if(prob(20))
-				to_chat(src, "<span class='danger'>Your skin burns!</span>")
+				to_chat(src, SPAN_USERDANGER("Your skin burns!))
 			updatehealth()
 
 	//Burn eyes if exposed.
-	if(eye_burns && species.breath_type && (species.breath_type != /datum/gas/phoron))		//VOREStation Edit: those who don't breathe
+	if(eye_burns && species.breath_type && (species.breath_type != /datum/gas/phoron))
 		var/burn_eyes = 1
 
 		//Check for protective glasses
