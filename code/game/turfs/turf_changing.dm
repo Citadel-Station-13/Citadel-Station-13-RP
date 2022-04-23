@@ -87,7 +87,7 @@
 		var/turf/W = new N( locate(src.x, src.y, src.z) )
 
 		if(old_fire)
-			old_fire.RemoveFire()
+			qdel(old_fire)
 
 		if(tell_universe)
 			universe.OnTurfChange(W)
