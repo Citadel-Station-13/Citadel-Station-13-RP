@@ -304,8 +304,6 @@
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
 
-	parallax_holder?.Update()
-
 //////////////////////end
 	add_delay = max(add_delay, move_delay_add_grab)
 
@@ -473,6 +471,7 @@
 // Would've been an /atom/movable proc but it caused issues.
 /mob/Moved(atom/oldloc)
 	. = ..()
+	client?.parallax_holder?.Update()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
