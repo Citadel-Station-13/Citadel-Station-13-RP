@@ -198,10 +198,8 @@ var/atom/movable/screen/robot_inventory
 
 	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, using, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
 	mymob.client.screen += src.adding + src.other
-	mymob.client.screen += mymob.client.void
 
-	return
-
+	mymob.reload_rendering()
 
 /datum/hud/proc/toggle_show_robot_modules()
 	if(!isrobot(mymob))
