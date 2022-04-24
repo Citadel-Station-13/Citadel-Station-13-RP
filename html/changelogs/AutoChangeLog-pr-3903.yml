@@ -1,0 +1,6 @@
+author: "Bishop3K"
+delete-after: True
+changes: 
+  - rscadd: "Added Akula Language, useable with 'a'."
+  - rscdel: "The 'x' language key from the Cortical Borer race.
+tweak: Changed hive mind to x from a."
