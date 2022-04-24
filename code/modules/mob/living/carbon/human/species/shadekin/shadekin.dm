@@ -71,7 +71,7 @@
 
 	genders = list(MALE, FEMALE, PLURAL, NEUTER, HERM)	//fuck it. shadekins with titties
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	breath_type = null
 	poison_type = null

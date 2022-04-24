@@ -70,7 +70,7 @@
 	var/list/removable_spells = list()
 
 	var/has_feral_spells = FALSE
-	virus_immune = 1 // They practically ARE one.
+	virus_immune = TRUE // They practically ARE one.
 	max_age = 200
 
 	blurb = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \

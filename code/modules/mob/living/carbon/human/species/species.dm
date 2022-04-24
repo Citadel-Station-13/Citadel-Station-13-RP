@@ -61,6 +61,8 @@
 	var/virus_immune
 	/// Permanent weldervision.
 	var/short_sighted
+	/// Name for the species' blood.
+	var/blood_name = "blood"
 	/// Initial blood volume.
 	var/blood_volume = 560
 	/// Multiplier for how fast a species bleeds out. Higher = Faster

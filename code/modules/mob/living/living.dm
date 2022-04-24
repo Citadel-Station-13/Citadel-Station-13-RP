@@ -102,6 +102,7 @@ default behaviour is:
 	if(istype(AM, /obj/vehicle))
 		var/obj/vehicle/V = AM
 		V.RunOver(src)
+	return ..()
 
 /mob/living/verb/succumb()
 	set hidden = 1

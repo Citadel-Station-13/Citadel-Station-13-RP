@@ -43,7 +43,14 @@
 	var/effective_dose = dose
 	if(issmall(M)) effective_dose *= 2
 
-	if(alien == IS_SLIME)	// Treat it like nutriment for the jello, but not equivalent.
+	// Treat it like nutriment for the jello, but not equivalent.
+	if(alien == IS_SLIME)
+		/// Unless it's Promethean goo, then refill this one's goo.
+		if(data["species"] == M.species.name)
+			M.inject_blood(src, volume * volume_mod)
+			remove_self(volume)
+			return
+
 		M.heal_organ_damage(0.2 * removed * volume_mod, 0)	// More 'effective' blood means more usable material.
 		M.nutrition += 20 * removed * volume_mod
 		M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
@@ -86,9 +93,26 @@
 		M.antibodies |= data["antibodies"]
 
 /datum/reagent/blood/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_SLIME)	//They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
+	if(alien == IS_SLIME) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
 		affect_ingest(M, alien, removed)
 		return
+
+	if(M.isSynthetic())
+		return
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+
+		var/datum/reagent/blood/recipient = H.get_blood(H.vessel)
+
+		if(recipient && blood_incompatible(data["blood_type"], recipient.data["blood_type"], data["species"], recipient.data["species"]))
+			H.inject_blood(src, removed * volume_mod)
+
+			if(!H.isSynthetic() && data["species"] == "synthetic") // Remember not to inject oil into your veins, it's bad for you.
+				H.reagents.add_reagent("toxin", removed * 1.5)
+
+			return
+
 	M.inject_blood(src, volume * volume_mod)
 	remove_self(volume)
 
