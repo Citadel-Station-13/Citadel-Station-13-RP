@@ -389,8 +389,9 @@
 
 	mymob.client.screen += hud_elements
 	mymob.client.screen += src.adding + src.hotkeybuttons
-	mymob.client.screen += mymob.client.void
 	inventory_shown = 0
+
+	mymob.reload_rendering()
 
 	return
 

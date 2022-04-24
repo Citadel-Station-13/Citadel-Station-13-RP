@@ -1,13 +1,14 @@
 /mob
+	datum_flags = DF_USE_TAG
 	density = 1
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
-
-	var/mob_flags
-	var/last_quick_move_time = 0
-	var/list/client_images = list() // List of images applied to/removed from the client on login/logout
+  
+	// Rendering
+	/// Fullscreen objects
+	var/list/fullscreens = list()
 
 	// Intents
 	/// How are we intending to move? Walk/run/etc.
@@ -16,6 +17,8 @@
 
 	var/decl/move_intent/default_walk_intent
 	var/decl/move_intent/default_run_intent
+
+	var/next_mob_id = 0
 
 	var/datum/mind/mind
 

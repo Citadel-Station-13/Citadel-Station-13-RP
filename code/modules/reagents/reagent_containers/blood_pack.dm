@@ -27,6 +27,7 @@
 	var/label_text = ""
 
 	var/blood_type = null
+	var/bitten_state = FALSE
 
 /obj/item/reagent_containers/blood/Initialize(mapload)
 	. = ..()

@@ -395,7 +395,7 @@
 
 					if(field == "criminal")
 						for(var/mob/living/carbon/human/H in player_list)
-							BITSET(H.hud_updateflag, WANTED_HUD)
+							H.update_hud_sec_status()
 
 					if(istype(active2) && (field in active2.fields))
 						active2.fields[field] = answer

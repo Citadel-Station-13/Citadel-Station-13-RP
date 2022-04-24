@@ -798,7 +798,9 @@
 					/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
  					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10,
-					 /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 10)
+					 /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 10,
+					 /obj/item/reagent_containers/food/drinks/bludbox = 5,
+					 /obj/item/reagent_containers/food/drinks/bludboxlight = 5)
 	contraband = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6,
 				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 4, /obj/item/reagent_containers/food/drinks/cans/geometer = 2)
 	prices = list(/obj/item/reagent_containers/food/drinks/cans/cola = 1,/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1,
@@ -808,7 +810,8 @@
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1,
 					/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 1, /obj/item/reagent_containers/food/drinks/cans/ochamidori = 3,
 					/obj/item/reagent_containers/food/drinks/cans/ramune = 2, /obj/item/reagent_containers/food/drinks/cans/battery = 5,
-					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2, /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 5)
+					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2, /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 5,
+					/obj/item/reagent_containers/food/drinks/bludbox = 50, /obj/item/reagent_containers/food/drinks/bludboxlight = 70)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.
@@ -835,7 +838,8 @@
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 25,
 					///obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,	//VOREStation Removal,
-					/obj/item/towel/random = 40)
+					/obj/item/towel/random = 40,
+					)
 
 	contraband = list(/obj/item/reagent_containers/syringe/steroid = 4)
 
@@ -1352,7 +1356,9 @@
 					/obj/item/reagent_containers/blood/prelabeled/BPlus = 3,/obj/item/reagent_containers/blood/prelabeled/BMinus = 3,
 					/obj/item/reagent_containers/blood/prelabeled/ABPlus = 2,/obj/item/reagent_containers/blood/prelabeled/ABMinus = 1,
 					/obj/item/reagent_containers/blood/prelabeled/OPlus = 2,/obj/item/reagent_containers/blood/prelabeled/OMinus = 5,
-					/obj/item/reagent_containers/blood/empty = 5)
+					/obj/item/reagent_containers/blood/empty = 5,
+					/obj/item/reagent_containers/food/drinks/bludboxmax = 5,
+					/obj/item/reagent_containers/food/drinks/bludboxmaxlight = 5)
 	contraband = list(/obj/item/reagent_containers/glass/bottle/stoxin = 2)
 	req_log_access = access_cmo
 	has_logs = 1

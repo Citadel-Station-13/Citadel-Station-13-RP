@@ -243,10 +243,10 @@
 		return
 	if(weakref(M) in viewers)
 		M.overlay_fullscreen("fishbed",/atom/movable/screen/fullscreen/fishbed)
-		M.overlay_fullscreen("scanlines",/atom/movable/screen/fullscreen/scanline)
+		M.overlay_fullscreen("scanlines",/atom/movable/screen/fullscreen/tiled/scanline)
 
 		if(signal_strength <= 1)
-			M.overlay_fullscreen("whitenoise",/atom/movable/screen/fullscreen/noise)
+			M.overlay_fullscreen("whitenoise",/atom/movable/screen/fullscreen/tiled/noise)
 		else
 			M.clear_fullscreen("whitenoise", 0)
 	else
