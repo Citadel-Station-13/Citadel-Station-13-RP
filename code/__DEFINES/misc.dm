@@ -46,28 +46,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_GEAR_COST					20	// Used in chargen for accessory loadout limit.
 #define MAX_GEAR_COST_HOLIDAY_SPAM		30
 
-
-// For secHUDs and medHUDs and variants. The number is the location of the image on the list hud_list of humans.
-#define HEALTH_HUD		1	// A simple line rounding the mob's number health.
-#define STATUS_HUD		2	// Alive, dead, diseased, etc.
-#define ID_HUD			3	// The job asigned to your ID.
-#define WANTED_HUD		4	// Wanted, released, paroled, security status.
-#define IMPLOYAL_HUD	5	// Loyality implant.
-#define IMPCHEM_HUD		6	// Chemical implant.
-#define IMPTRACK_HUD	7	// Tracking implant.
-#define SPECIALROLE_HUD	8	// AntagHUD image.
-#define STATUS_HUD_OOC	9	// STATUS_HUD without virus DB check for someone being ill.
-#define LIFE_HUD		10	// STATUS_HUD that only reports dead or alive
-
-// Because of omnihud having overlapping issues, we have extra ones.
-#define BACKUP_HUD		11	// HUD for showing whether or not they have a backup implant.
-#define STATUS_R_HUD	12	// HUD for showing the same STATUS_HUD info on the right side, but not for 'boring' statuses (transparent icons)
-#define HEALTH_VR_HUD	13	// HUD with blank 100% bar so it's hidden most of the time.
-#define VANTAG_HUD		14	// HUD for showing being-an-antag-target prefs
-
-// Total number of HUDs. Like body layers, and other things, it comes up sometimes.
-#define TOTAL_HUDS 14
-
 //	Shuttles.
 
 // These define the time taken for the shuttle to get to the space station, and the time before it leaves again.

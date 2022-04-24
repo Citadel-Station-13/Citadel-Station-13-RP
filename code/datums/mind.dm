@@ -339,8 +339,6 @@
 	else if(href_list["implant"])
 		var/mob/living/carbon/human/H = current
 
-		BITSET(H.hud_updateflag, IMPLOYAL_HUD)   // updates that players HUD images so secHUD's pick up they are implanted or not.
-
 		switch(href_list["implant"])
 			if("remove")
 				for(var/obj/item/implant/loyalty/I in H.contents)
@@ -354,9 +352,9 @@
 				to_chat(H, "<span class='danger'><font size =3>You somehow have become the recepient of a loyalty transplant, and it just activated!</font></span>")
 				H.implant_loyalty(override = TRUE)
 				log_admin("[key_name_admin(usr)] has loyalty implanted [current].")
-			else
+		H.update_hud_sec_implants()
 	else if (href_list["silicon"])
-		BITSET(current.hud_updateflag, SPECIALROLE_HUD)
+		current.update_hud_antag()
 		switch(href_list["silicon"])
 
 			if("unemag")

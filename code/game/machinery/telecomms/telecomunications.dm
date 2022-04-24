@@ -199,9 +199,8 @@
 
 /obj/machinery/telecomms/proc/checkheat()
 	// Checks heat from the environment and applies any integrity damage
-	var/datum/gas_mixture/environment = loc.return_temperature()
 	var/damage_chance = 0                           // Percent based chance of applying 1 integrity damage this tick
-	switch(environment.temperature)
+	switch(loc.return_temperature())
 		if((T0C + 40) to (T0C + 70))                // 40C-70C, minor overheat, 10% chance of taking damage
 			damage_chance = 10
 		if((T0C + 70) to (T0C + 130))				// 70C-130C, major overheat, 25% chance of taking damage
@@ -213,14 +212,11 @@
 	if (damage_chance && prob(damage_chance))
 		integrity = between(0, integrity - 1, 100)
 
-
 	if(delay > 0)
 		delay--
 	else if(on)
 		produce_heat()
 		delay = initial(delay)
-
-
 
 /obj/machinery/telecomms/proc/produce_heat()
 	if (!produces_heat)

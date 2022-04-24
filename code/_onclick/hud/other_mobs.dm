@@ -19,7 +19,9 @@
 	mymob.client.screen = list()
 
 	mymob.client.screen += list(blobpwrdisplay, blobhealthdisplay)
-	mymob.client.screen += mymob.client.void
+
+	mymob.reload_rendering()
+
 /*
 /datum/hud/proc/slime_hud(ui_style = 'icons/mob/screen1_Midnight.dmi')
 

@@ -30,4 +30,5 @@
 	mymob.client.screen = list()
 	mymob.client.screen += list( mymob.healths, mymob.fire) //, mymob.rest, mymob.sleep, mymob.mach )
 	mymob.client.screen += src.adding + src.other
-	mymob.client.screen += mymob.client.void
+
+	mymob.reload_rendering()

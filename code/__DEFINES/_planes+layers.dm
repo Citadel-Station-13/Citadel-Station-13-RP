@@ -40,10 +40,12 @@ What is the naming convention for planes or layers?
 
 */
 
-#define SPACE_PLANE				-82	//Reserved for use in space/parallax
-#define PARALLAX_PLANE			-80	//Reserved for use in space/parallax
-#define SKYBOX_PLANE			-79	//Skybox parallax
-#define DUST_PLANE				-78	//For dust overlay on space turfs. Should be above skybox for parallax effect.
+#define CLICKCATCHER_PLANE		-99
+#define SPACE_PLANE				-95	// Reserved for use in space/parallax
+#define PARALLAX_PLANE			-90	// Reserved for use in space/parallax
+	#define PARALLAX_VIS_LAYER_BELOW			-10000		// everything layering below
+	#define PARALLAX_LAYER_CENTER				0
+	#define PARALLAX_VIS_LAYER_ABOVE			10000		// ditto
 
 #define PLANE_LOOKINGGLASS		-77	//For the Looking Glass holodecks
 #define PLANE_LOOKINGGLASS_IMG	-76	//For the Looking Glass holodecks
@@ -122,11 +124,11 @@ What is the naming convention for planes or layers?
 
 #define PLANE_ADMIN1			3	//Purely for shenanigans (below lighting)
 #define PLANE_PLANETLIGHTING	4	//Lighting on planets
-#define PLANE_LIGHTING			5	//Where the lighting (and darkness) lives (ignoring all other higher planes)
+#define LIGHTING_PLANE			5	//Where the lighting (and darkness) lives (ignoring all other higher planes)
 	#define LIGHTBULB_LAYER			0
 	#define LIGHTING_LAYER			1
 	#define ABOVE_LIGHTING_LAYER	2
-#define PLANE_LIGHTING_ABOVE	6	//For glowy eyes etc. that shouldn't be affected by darkness
+#define ABOVE_LIGHTING_PLANE	6	//For glowy eyes etc. that shouldn't be affected by darkness
 	#define EYE_GLOW_LAYER			1
 	#define BEAM_PROJECTILE_LAYER	2
 	#define SUPERMATTER_WALL_LAYER	3
@@ -134,29 +136,21 @@ What is the naming convention for planes or layers?
 #define PLANE_GHOSTS			10	//Spooooooooky ghooooooosts
 #define PLANE_AI_EYE			11	//The AI eye lives here
 
-//"Character HUDs", aka HUDs, but not the game's UI. Things like medhuds. I know Planes say they must be intergers, but it's lies.
-#define PLANE_CH_STATUS			15	//Status icon
-#define PLANE_CH_HEALTH			16	//Health icon
-#define PLANE_CH_LIFE			17	//Health bar
-#define PLANE_CH_ID				18	//Job icon
-#define PLANE_CH_WANTED			19	//Arrest icon
-#define PLANE_CH_IMPLOYAL		20	//Loyalty implant icon
-#define PLANE_CH_IMPTRACK		21	//Tracking implant icon
-#define PLANE_CH_IMPCHEM		22	//Chemical implant icon
-#define PLANE_CH_SPECIAL		23	//Special role icon (revhead or w/e)
-#define PLANE_CH_STATUS_OOC		24	//OOC status hud for spooks
-
-#define PLANE_MESONS			30	//Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
+#define PLANE_MESONS			30 //Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
 
 #define PLANE_ADMIN2			33	//Purely for shenanigans (above lighting)
 
-//Fullscreen overlays under inventory
-#define PLANE_FULLSCREEN		90	//Blindness, mesons, druggy, etc
-	#define OBFUSCATION_LAYER		5	//Where images covering the view for eyes are put
-	#define FULLSCREEN_LAYER		18
-	#define DAMAGE_SCREEN_LAYER		18.1
-	#define BLIND_LAYER				18.2
-	#define CRIT_LAYER				18.3
+#define PLANE_AUGMENTED				40 //Augmented-reality plane
+
+#define FULLSCREEN_PLANE 90
+#define OBFUSCATION_LAYER 19.9
+#define FLASH_LAYER 20
+#define FULLSCREEN_LAYER 20.1
+#define UI_DAMAGE_LAYER 20.2
+#define BLIND_LAYER 20.3
+#define CRIT_LAYER 20.4
+#define CURSE_LAYER 20.5
+#define FULLSCREEN_RENDER_TARGET "FULLSCREEN_PLANE"
 
 //Client UI HUD stuff
 #define PLANE_PLAYER_HUD		95	//The character's UI is on this plane
@@ -181,13 +175,3 @@ What is the naming convention for planes or layers?
 
 //Check if a mob can "logically" see an atom plane
 #define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible))
-
-//VR FILE MERGE
-
-//"Character HUDs", aka HUDs, but not the game's UI. Things like medhuds.
-#define PLANE_CH_HEALTH_VR			26	//Hidden healthbar when at full health
-#define PLANE_CH_STATUS_R			27	//Right-side status icon
-#define PLANE_CH_BACKUP				28	//Backup implant
-#define PLANE_CH_VANTAG				29	//Vore Antag hud
-
-#define PLANE_AUGMENTED				40	//Augmented-reality plane

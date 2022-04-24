@@ -17,7 +17,6 @@
 	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
 	var/atom/movable/screen/background/cam_foreground
-	var/atom/movable/screen/skybox/local_skybox
 	// Stuff for moving cameras
 	var/turf/last_camera_turf
 
@@ -43,12 +42,6 @@
 		instance.del_on_map_removal = FALSE
 		instance.screen_loc = "[map_name]:CENTER"
 
-	local_skybox = new()
-	local_skybox.assigned_map = map_name
-	local_skybox.del_on_map_removal = FALSE
-	local_skybox.screen_loc = "[map_name]:CENTER,CENTER"
-	cam_plane_masters += local_skybox
-
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
@@ -63,7 +56,7 @@
 	cam_foreground = new
 	cam_foreground.assigned_map = map_name
 	cam_foreground.del_on_map_removal = FALSE
-	cam_foreground.plane = PLANE_FULLSCREEN
+	cam_foreground.plane = FULLSCREEN_PLANE
 	cam_foreground.add_overlay(scanlines)
 	cam_foreground.add_overlay(noise)
 
@@ -207,11 +200,6 @@
 
 	cam_foreground.fill_rect(1, 1, size_x, size_y)
 
-	local_skybox.cut_overlays()
-	local_skybox.add_overlay(SSskybox.get_skybox(get_z(newturf)))
-	local_skybox.scale_to_view(size_x)
-	local_skybox.set_position("CENTER", "CENTER", (world.maxx>>1) - newturf.x, (world.maxy>>1) - newturf.y)
-
 // Returns the list of cameras accessible from this computer
 // This proc operates in two distinct ways depending on the context in which the module is created.
 // It can either return a list of cameras sharing the same the internal `network` variable, or
@@ -260,7 +248,6 @@
 	cam_screen.vis_contents.Cut()
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, default_map_size, default_map_size)
-	local_skybox.cut_overlays()
 
 /datum/tgui_module/camera/ui_close(mob/user)
 	. = ..()

@@ -24,12 +24,13 @@
 						log_adminwarn("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
 /mob/Login()
+	SHOULD_CALL_PARENT(TRUE)
 
 	player_list |= src
 	update_Login_details()
 	world.update_status()
 
-	client.images = null				//remove the images such as AIs being unable to see runes
+	client.images = list()				//remove the images such as AIs being unable to see runes
 	client.screen = list()				//remove hud items just in case
 	if(hud_used)
 		qdel(hud_used)		//remove the hud objects
@@ -52,8 +53,14 @@
 		client.eye = src
 		client.perspective = MOB_PERSPECTIVE
 	reload_fullscreen() // Reload any fullscreen overlays this mob has.
-	add_click_catcher()
 	update_client_color()
+
+	//Reload alternate appearances
+	for(var/v in GLOB.active_alternate_appearances)
+		if(!v)
+			continue
+		var/datum/atom_hud/alternate_appearance/AA = v
+		AA.onNewMob(src)
 
 	if(!plane_holder) //Lazy
 		plane_holder = new(src) //Not a location, it takes it and saves it.
@@ -80,3 +87,9 @@
 		update_client_z(T.z)
 
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
+
+	reload_huds()
+
+	// rendering
+	reload_rendering()
+

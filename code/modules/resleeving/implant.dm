@@ -31,9 +31,7 @@
 
 /obj/item/implant/backup/post_implant(var/mob/living/carbon/human/H)
 	if(istype(H))
-		BITSET(H.hud_updateflag, BACKUP_HUD)
 		SStranscore.implants |= src
-
 		return 1
 
 //New, modern implanter instead of old style implanter.

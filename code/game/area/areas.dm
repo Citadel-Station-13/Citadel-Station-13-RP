@@ -10,7 +10,7 @@
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
-	plane = PLANE_LIGHTING_ABOVE //In case we color them
+	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	mouse_opacity = 0
 	var/lightswitch = 1
 
@@ -34,6 +34,13 @@
 	var/static_equip = 0
 	var/static_light = 0
 	var/static_environ = 0
+
+	/// Parallax moving?
+	var/parallax_moving = FALSE
+	/// Parallax move speed - 0 to disable
+	var/parallax_move_speed = 0
+	/// Parallax move dir - degrees clockwise from north
+	var/parallax_move_angle = 0
 
 	var/music = null
 

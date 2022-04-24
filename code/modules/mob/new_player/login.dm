@@ -50,4 +50,4 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 			handle_privacy_poll()
 			client.playtitlemusic()
 
-	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
+	return ..()
