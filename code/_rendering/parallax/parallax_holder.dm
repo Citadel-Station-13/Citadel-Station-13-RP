@@ -223,7 +223,7 @@
  *
  * @params
  * speed - ds per loop
- * turn - angle clockwise from north to turn the motion to
+ * turn - angle clockwise from north to turn the motion to, where you're scrolling **towards** it
  * windup - ds to spend on windups. 0 for immediate.
  * turn_speed - ds to spend on turning. 0 for immediate.
  */
