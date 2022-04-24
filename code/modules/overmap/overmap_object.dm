@@ -1,5 +1,6 @@
-/obj/effect/overmap
+/atom/movable/overmap
 	name = "map object"
+	#warn move stuff
 	icon = 'icons/obj/overmap.dmi'
 	icon_state = "object"
 	color = "#fffffe"
@@ -24,10 +25,10 @@
 	layer = PARALLAX_VIS_LAYER_BELOW
 	blend_mode = BLEND_OVERLAY
 
-/obj/effect/overmap/proc/generate_parallax_holder()
+/atom/movable/overmap/proc/generate_parallax_holder()
 	parallax_image_holder = new
 
-/obj/effect/overmap/proc/get_parallax_image()
+/atom/movable/overmap/proc/get_parallax_image()
 	var/image/I = get_skybox_representation()
 	if(!I)
 		return
@@ -41,12 +42,12 @@
 	return parallax_image_holder
 
 //Overlay of how this object should look on other skyboxes
-/obj/effect/overmap/proc/get_skybox_representation()
+/atom/movable/overmap/proc/get_skybox_representation()
 	if(!cached_skybox_image)
 		build_skybox_representation()
 	return cached_skybox_image
 
-/obj/effect/overmap/proc/build_skybox_representation()
+/atom/movable/overmap/proc/build_skybox_representation()
 	if(!skybox_icon)
 		return
 	var/image/I = image(icon = skybox_icon, icon_state = skybox_icon_state)
@@ -61,17 +62,17 @@
 	I.layer = PARALLAX_VIS_LAYER_BELOW
 	cached_skybox_image = I
 
-/obj/effect/overmap/proc/expire_skybox_representation()
+/atom/movable/overmap/proc/expire_skybox_representation()
 	cached_skybox_image = null
 
-/obj/effect/overmap/proc/update_skybox_representation()
+/atom/movable/overmap/proc/update_skybox_representation()
 	expire_skybox_representation()
 	build_skybox_representation()
-	for(var/obj/effect/overmap/visitable/O in loc)
+	for(var/atom/movable/overmap/entity/visitable/O in loc)
 		for(var/z in O.map_z)
 			SSparallax.queue_z_vis_update(z)
 
-/obj/effect/overmap/proc/get_scan_data(mob/user)
+/atom/movable/overmap/proc/get_scan_data(mob/user)
 	if(scanner_name && (name != scanner_name)) //A silly check, but 'name' is part of appearance, so more expensive than you might think
 		name = scanner_name
 
@@ -79,7 +80,7 @@
 
 	return dat
 
-/obj/effect/overmap/Initialize(mapload)
+/atom/movable/overmap/Initialize(mapload)
 	. = ..()
 	if(!GLOB.using_map.use_overmap)
 		return INITIALIZE_HINT_QDEL
@@ -88,17 +89,17 @@
 		SSovermaps.queue_helm_computer_rebuild()
 	update_icon()
 
-/obj/effect/overmap/Crossed(var/obj/effect/overmap/visitable/other)
+/atom/movable/overmap/Crossed(var/atom/movable/overmap/entity/visitable/other)
 	. = ..()
 	if(istype(other))
 		for(var/z in other.map_z)
 			SSparallax.queue_z_vis_update(z)
 
-/obj/effect/overmap/Uncrossed(var/obj/effect/overmap/visitable/other)
+/atom/movable/overmap/Uncrossed(var/atom/movable/overmap/entity/visitable/other)
 	. = ..()
 	if(istype(other))
 		for(var/z in other.map_z)
 			SSparallax.queue_z_vis_update(z)
 
-/obj/effect/overmap/update_icon()
+/atom/movable/overmap/update_icon()
 	filters = filter(type="drop_shadow", color = color + "F0", size = 2, offset = 1,x = 0, y = 0)

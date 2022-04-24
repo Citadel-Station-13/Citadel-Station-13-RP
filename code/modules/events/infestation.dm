@@ -133,7 +133,7 @@
 
 // override: cancel if not main ship as this is too dumb to target the actual ship crossing it.
 /datum/event/infestation/overmap/start()
-	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
+	if(istype(victim, /atom/movable/overmap/entity/visitable/ship/landable))
 		kill()
 		return
 	return ..()

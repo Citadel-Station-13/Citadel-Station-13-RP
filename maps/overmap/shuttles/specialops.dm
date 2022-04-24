@@ -35,7 +35,7 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it (Need to check if this works with other forms of loading like map seeding - Bloop)
 
 // The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/specialops2
+/atom/movable/overmap/entity/visitable/ship/landable/specialops2
 	name = "NDV Phantom"
 	desc = "A specialized emergency response vessel"
 	vessel_mass = 4000

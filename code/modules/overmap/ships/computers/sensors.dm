@@ -7,7 +7,7 @@
 	extra_view = 4
 	var/obj/machinery/shipsensors/sensors
 
-/obj/machinery/computer/ship/sensors/attempt_hook_up(obj/effect/overmap/visitable/ship/sector)
+/obj/machinery/computer/ship/sensors/attempt_hook_up(atom/movable/overmap/entity/visitable/ship/sector)
 	if(!(. = ..()))
 		return
 	find_sensors()
@@ -59,7 +59,7 @@
 		else
 			data["status"] = "OK"
 		var/list/contacts = list()
-		for(var/obj/effect/overmap/O in view(7,linked))
+		for(var/atom/movable/overmap/O in view(7,linked))
 			if(linked == O)
 				continue
 			if(!O.scannable)
@@ -90,7 +90,7 @@
 			. = TRUE
 
 		if("scan")
-			var/obj/effect/overmap/O = locate(params["scan"])
+			var/atom/movable/overmap/O = locate(params["scan"])
 			if(istype(O) && !QDELETED(O) && (O in view(7,linked)))
 				var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 				P.name = "paper (Sensor Scan - [O])"

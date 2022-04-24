@@ -222,7 +222,7 @@
 	use_stars = FALSE
 
 // Overmap represetation of tether
-/obj/effect/overmap/visitable/sector/virgo3b
+/atom/movable/overmap/entity/visitable/sector/virgo3b
 	name = "Virgo 3B"
 	desc = "Full of phoron, and home to the NSB Adephagia, where you can dock and refuel your craft."
 	scanner_desc = @{"[i]Registration[/i]: NSB Adephagia
@@ -263,7 +263,7 @@
 		)
 
 //Port of Triumph Overmap Visitable Effects
-/obj/effect/overmap/visitable/sector/debrisfield
+/atom/movable/overmap/entity/visitable/sector/debrisfield
 	name = "Debris Field"
 	desc = "Space junk galore."
 	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
@@ -274,7 +274,7 @@
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
 /* Updated and now handled in classd.dm
-/obj/effect/overmap/visitable/sector/class_d
+/atom/movable/overmap/entity/visitable/sector/class_d
 	name = "Unidentified Planet"
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
 	scanner_desc = @{"[i]Information[/i]: Scans report a planet with nearly no atmosphere, but life-signs are registered."}
@@ -284,7 +284,7 @@
 	color = "#882933"
 */
 
-/obj/effect/overmap/visitable/sector/class_h
+/atom/movable/overmap/entity/visitable/sector/class_h
 	name = "Desert Planet"
 	desc = "Planet readings indicate light atmosphere and high heat."
 	scanner_desc = @{"[i]Information[/i]
@@ -297,7 +297,7 @@ Lifesign: Multiple Fauna and humanoid life-signs detected."}
 	color = "#BA9066"
 
 
-/obj/effect/overmap/visitable/sector/pirate_base
+/atom/movable/overmap/entity/visitable/sector/pirate_base
 	name = "Vox Pirate Base"
 	desc = "A nest of hostiles to the company. Caution is advised."
 	scanner_desc = @{"[i]Information[/i]
@@ -308,7 +308,7 @@ Warning, unable to scan through sensor shielding systems at location. Possible h
 	color = "#FF3333"
 	initial_generic_waypoints = list("piratebase_hanger")
 
-/obj/effect/overmap/visitable/sector/mining_planet
+/atom/movable/overmap/entity/visitable/sector/mining_planet
 	name = "Mineral Rich Planet"
 	desc = "A planet filled with valuable minerals. No life signs currently detected on the surface."
 	scanner_desc = @{"[i]Information[/i]
@@ -319,7 +319,7 @@ Lifesigns: No immediate life-signs detected."}
 	color = "#8F6E4C"
 	initial_generic_waypoints = list("mining_outpost")
 
-/obj/effect/overmap/visitable/sector/gaia_planet
+/atom/movable/overmap/entity/visitable/sector/gaia_planet
 	name = "Gaia Planet"
 	desc = "A planet with peaceful life, and ample flora."
 	scanner_desc = @{"[i]Incoming Message[/i]: Hello travler! Looking to enjoy the shine of the star on land?
@@ -339,7 +339,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	color = "#33BB33"
 
-/obj/effect/overmap/visitable/sector/class_p
+/atom/movable/overmap/entity/visitable/sector/class_p
 	name = "Frozen Planet"
 	desc = "A world shrouded in cold and snow that seems to never let up."
 	scanner_desc = @{"[i]Information[/i]: A planet with a very cold atmosphere. Possible life signs detected."}
@@ -349,7 +349,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	in_space = 0
 
 /*
-/obj/effect/overmap/visitable/sector/trade_post
+/atom/movable/overmap/entity/visitable/sector/trade_post
 	name = "Nebula Gas Food Mart"
 	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
 	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
@@ -371,28 +371,28 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 
 */
 
-/obj/effect/overmap/visitable/sector/virgo3b/Crossed(var/atom/movable/AM)
+/atom/movable/overmap/entity/visitable/sector/virgo3b/Crossed(var/atom/movable/AM)
 	. = ..()
 	announce_atc(AM,going = FALSE)
 
-/obj/effect/overmap/visitable/sector/virgo3b/Uncrossed(var/atom/movable/AM)
+/atom/movable/overmap/entity/visitable/sector/virgo3b/Uncrossed(var/atom/movable/AM)
 	. = ..()
 	announce_atc(AM,going = TRUE)
 
-/obj/effect/overmap/visitable/sector/virgo3b/get_space_zlevels()
+/atom/movable/overmap/entity/visitable/sector/virgo3b/get_space_zlevels()
 	return list(Z_LEVEL_SPACE_LOW, Z_LEVEL_SPACE_HIGH)
 
-/obj/effect/overmap/visitable/sector/virgo3b/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
+/atom/movable/overmap/entity/visitable/sector/virgo3b/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
 	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] ATC control area."
 	//For landables, we need to see if their shuttle is cloaked
-	if(istype(AM, /obj/effect/overmap/visitable/ship/landable))
-		var/obj/effect/overmap/visitable/ship/landable/SL = AM //Phew
+	if(istype(AM, /atom/movable/overmap/entity/visitable/ship/landable))
+		var/atom/movable/overmap/entity/visitable/ship/landable/SL = AM //Phew
 		var/datum/shuttle/autodock/multi/shuttle = SSshuttle.shuttles[SL.shuttle]
 		if(!istype(shuttle) || !shuttle.cloaked) //Not a multishuttle (the only kind that can cloak) or not cloaked
 			GLOB.lore_atc.msg(message)
 
 	//For ships, it's safe to assume they're big enough to not be sneaky
-	else if(istype(AM, /obj/effect/overmap/visitable/ship))
+	else if(istype(AM, /atom/movable/overmap/entity/visitable/ship))
 		GLOB.lore_atc.msg(message)
 
 // For making the 6-in-1 holomap, we calculate some offsets

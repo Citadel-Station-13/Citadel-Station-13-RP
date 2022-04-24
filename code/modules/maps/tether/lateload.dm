@@ -225,7 +225,7 @@
 //////////////////////////////////////////////////////////////////////////////////////
 // Gateway submaps go here
 
-/obj/effect/overmap/visitable/sector/tether_gateway
+/atom/movable/overmap/entity/visitable/sector/tether_gateway
 	name = "Unknown"
 	desc = "Approach and perform a scan to obtain further information."
 	icon_state = "object" //or "globe" for planetary stuff

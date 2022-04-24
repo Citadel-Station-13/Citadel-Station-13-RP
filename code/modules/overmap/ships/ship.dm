@@ -9,7 +9,7 @@
 		{speed_var = SANITIZE_SPEED((speed_var + v_diff)/(1 + speed_var*v_diff/(max_speed ** 2)))}
 // Uses Lorentzian dynamics to avoid going too fast.
 
-/obj/effect/overmap/visitable/ship
+/atom/movable/overmap/entity/visitable/ship
 	name = "spacecraft"
 	desc = "This marker represents a spaceship. Scan it for more information."
 	scanner_desc = "Unknown spacefaring vessel."
@@ -37,7 +37,7 @@
 	var/skill_needed = SKILL_ADEPT		// Piloting skill needed to steer it without going in random dir
 	var/operator_skill
 
-/obj/effect/overmap/visitable/ship/Initialize(mapload)
+/atom/movable/overmap/entity/visitable/ship/Initialize(mapload)
 	. = ..()
 	min_speed = round(min_speed, SHIP_MOVE_RESOLUTION)
 	max_speed = round(max_speed, SHIP_MOVE_RESOLUTION)
@@ -45,19 +45,19 @@
 	position_x = ((loc.x - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_x + 1
 	position_y = ((loc.y - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_y + 1
 
-/obj/effect/overmap/visitable/ship/Destroy()
+/atom/movable/overmap/entity/visitable/ship/Destroy()
 	STOP_PROCESSING(SSprocessing, src)
 	SSshuttle.ships -= src
 	. = ..()
 
-/obj/effect/overmap/visitable/ship/relaymove(mob/user, direction, accel_limit)
+/atom/movable/overmap/entity/visitable/ship/relaymove(mob/user, direction, accel_limit)
 	accelerate(direction, accel_limit)
 	operator_skill = user.get_skill_value(/datum/skill/pilot)
 
-/obj/effect/overmap/visitable/ship/proc/is_still()
+/atom/movable/overmap/entity/visitable/ship/proc/is_still()
 	return !MOVING(speed[1]) && !MOVING(speed[2])
 
-/obj/effect/overmap/visitable/ship/get_scan_data(mob/user)
+/atom/movable/overmap/entity/visitable/ship/get_scan_data(mob/user)
 	. = ..()
 
 	if(!is_still())
@@ -74,23 +74,23 @@
 	. += {"\[i\]Life Signs\[/i\]: [life ? life : "None"]"}
 
 // Projected acceleration based on information from engines
-/obj/effect/overmap/visitable/ship/proc/get_acceleration()
+/atom/movable/overmap/entity/visitable/ship/proc/get_acceleration()
 	return round(get_total_thrust()/get_vessel_mass(), SHIP_MOVE_RESOLUTION)
 
 // Does actual burn and returns the resulting acceleration
-/obj/effect/overmap/visitable/ship/proc/get_burn_acceleration()
+/atom/movable/overmap/entity/visitable/ship/proc/get_burn_acceleration()
 	return round(burn() / get_vessel_mass(), SHIP_MOVE_RESOLUTION)
 
-/obj/effect/overmap/visitable/ship/proc/get_vessel_mass()
+/atom/movable/overmap/entity/visitable/ship/proc/get_vessel_mass()
 	. = vessel_mass
-	for(var/obj/effect/overmap/visitable/ship/ship in src)
+	for(var/atom/movable/overmap/entity/visitable/ship/ship in src)
 		. += ship.get_vessel_mass()
 
-/obj/effect/overmap/visitable/ship/proc/get_speed()
+/atom/movable/overmap/entity/visitable/ship/proc/get_speed()
 	return round(sqrt(speed[1] ** 2 + speed[2] ** 2), SHIP_MOVE_RESOLUTION)
 
 // Get heading in BYOND dir bits
-/obj/effect/overmap/visitable/ship/proc/get_heading()
+/atom/movable/overmap/entity/visitable/ship/proc/get_heading()
 	var/res = 0
 	if(MOVING(speed[1]))
 		if(speed[1] > 0)
@@ -105,10 +105,10 @@
 	return res
 
 // Get heading in degrees (like a compass heading)
-/obj/effect/overmap/visitable/ship/proc/get_heading_degrees()
+/atom/movable/overmap/entity/visitable/ship/proc/get_heading_degrees()
 	return (arctan(speed[2], speed[1]) + 360) % 360	// Yes ATAN2(y, x) is correct to get clockwise degrees
 
-/obj/effect/overmap/visitable/ship/proc/adjust_speed(n_x, n_y)
+/atom/movable/overmap/entity/visitable/ship/proc/adjust_speed(n_x, n_y)
 	var/old_still = is_still()
 	CHANGE_SPEED_BY(speed[1], n_x)
 	CHANGE_SPEED_BY(speed[2], n_y)
@@ -129,7 +129,7 @@
 			SSparallax.update_z_motion(zz)
 			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, REVERSE_DIR(fore_dir))
 
-/obj/effect/overmap/visitable/ship/proc/get_brake_path()
+/atom/movable/overmap/entity/visitable/ship/proc/get_brake_path()
 	if(!get_acceleration())
 		return INFINITY
 	if(is_still())
@@ -142,7 +142,7 @@
 	var/burns_per_grid = 1/ (burn_delay * get_speed())
 	return round(num_burns/burns_per_grid)
 
-/obj/effect/overmap/visitable/ship/proc/decelerate()
+/atom/movable/overmap/entity/visitable/ship/proc/decelerate()
 	if(((speed[1]) || (speed[2])) && can_burn())
 		if (speed[1])
 			adjust_speed(-SIGN(speed[1]) * min(get_burn_acceleration(),abs(speed[1])), 0)
@@ -150,7 +150,7 @@
 			adjust_speed(0, -SIGN(speed[2]) * min(get_burn_acceleration(),abs(speed[2])))
 		last_burn = world.time
 
-/obj/effect/overmap/visitable/ship/proc/accelerate(direction, accel_limit)
+/atom/movable/overmap/entity/visitable/ship/proc/accelerate(direction, accel_limit)
 	if(can_burn())
 		last_burn = world.time
 		var/acceleration = min(get_burn_acceleration(), accel_limit)
@@ -163,7 +163,7 @@
 		if(direction & SOUTH)
 			adjust_speed(0, -acceleration)
 
-/obj/effect/overmap/visitable/ship/process(delta_time)
+/atom/movable/overmap/entity/visitable/ship/process(delta_time)
 	var/new_position_x = position_x + (speed[1] * WORLD_ICON_SIZE * delta_time * 10)
 	var/new_position_y = position_y + (speed[2] * WORLD_ICON_SIZE * delta_time * 10)
 
@@ -189,7 +189,7 @@
 	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = delta_time * 10, flags = ANIMATION_END_NOW)
 
 // If we get moved, update our internal tracking to account for it
-/obj/effect/overmap/visitable/ship/Moved(atom/old_loc, direction, forced = FALSE)
+/atom/movable/overmap/entity/visitable/ship/Moved(atom/old_loc, direction, forced = FALSE)
 	. = ..()
 	// If moving out of another sector start off centered in the turf.
 	if(!isturf(old_loc))
@@ -201,7 +201,7 @@
 	position_y = ((loc.y - 1) * WORLD_ICON_SIZE) + MODULUS(position_y, WORLD_ICON_SIZE)
 
 
-/obj/effect/overmap/visitable/ship/update_icon()
+/atom/movable/overmap/entity/visitable/ship/update_icon()
 	if(!is_still())
 		icon_state = moving_state
 		transform = matrix().Turn(get_heading_degrees())
@@ -210,18 +210,18 @@
 		transform = null
 	..()
 
-/obj/effect/overmap/visitable/ship/setDir(new_dir)
+/atom/movable/overmap/entity/visitable/ship/setDir(new_dir)
 	return ..(NORTH)	// NO! We always face north.
 
-/obj/effect/overmap/visitable/ship/proc/burn()
+/atom/movable/overmap/entity/visitable/ship/proc/burn()
 	for(var/datum/ship_engine/E in engines)
 		. += E.burn()
 
-/obj/effect/overmap/visitable/ship/proc/get_total_thrust()
+/atom/movable/overmap/entity/visitable/ship/proc/get_total_thrust()
 	for(var/datum/ship_engine/E in engines)
 		. += E.get_thrust()
 
-/obj/effect/overmap/visitable/ship/proc/can_burn()
+/atom/movable/overmap/entity/visitable/ship/proc/can_burn()
 	if(halted)
 		return 0
 	if (world.time < last_burn + burn_delay)
@@ -230,7 +230,7 @@
 		. |= E.can_burn()
 
 // Deciseconds to next step
-/obj/effect/overmap/visitable/ship/proc/ETA()
+/atom/movable/overmap/entity/visitable/ship/proc/ETA()
 	. = INFINITY
 	if(MOVING(speed[1]))
 		var/offset = MODULUS(position_x, WORLD_ICON_SIZE)
@@ -242,18 +242,18 @@
 		. = min(., (dist_to_go / abs(speed[2])) * (1/WORLD_ICON_SIZE))
 	. = max(., 0)
 
-/obj/effect/overmap/visitable/ship/proc/halt()
+/atom/movable/overmap/entity/visitable/ship/proc/halt()
 	adjust_speed(-speed[1], -speed[2])
 	halted = 1
 
-/obj/effect/overmap/visitable/ship/proc/unhalt()
+/atom/movable/overmap/entity/visitable/ship/proc/unhalt()
 	if(!SSshuttle.overmap_halted)
 		halted = 0
 
-/obj/effect/overmap/visitable/ship/proc/get_helm_skill()	// Delete this mover operator skill to overmap obj
+/atom/movable/overmap/entity/visitable/ship/proc/get_helm_skill()	// Delete this mover operator skill to overmap obj
 	return operator_skill
 
-/obj/effect/overmap/visitable/ship/populate_sector_objects()
+/atom/movable/overmap/entity/visitable/ship/populate_sector_objects()
 	..()
 	for(var/obj/machinery/computer/ship/S in global.machines)
 		S.attempt_hook_up(src)
@@ -261,10 +261,10 @@
 		if(check_ownership(E.holder))
 			engines |= E
 
-/obj/effect/overmap/visitable/ship/proc/get_landed_info()
+/atom/movable/overmap/entity/visitable/ship/proc/get_landed_info()
 	return "This ship cannot land."
 
-/obj/effect/overmap/visitable/ship/get_distress_info()
+/atom/movable/overmap/entity/visitable/ship/get_distress_info()
 	var/turf/T = get_turf(src) // Usually we're on the turf, but sometimes we might be landed or something.
 	var/x_to_use = T?.x || "UNK"
 	var/y_to_use = T?.y || "UNK"

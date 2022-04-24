@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/sector/tether_gateway/listeningpost
+/atom/movable/overmap/entity/visitable/sector/tether_gateway/listeningpost
 	initial_generic_waypoints = list("tether_excursion_listeningpost")
 	scanner_name = "Strange Asteroid"
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN

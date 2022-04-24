@@ -58,7 +58,7 @@
 
 /obj/machinery/ion_engine/proc/link_to_ship()
 	for(var/ship in SSshuttle.ships)
-		var/obj/effect/overmap/visitable/ship/S = ship
+		var/atom/movable/overmap/entity/visitable/ship/S = ship
 		if(S.check_ownership(src))
 			S.engines |= controller
 			linked = TRUE

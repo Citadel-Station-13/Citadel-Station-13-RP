@@ -57,7 +57,7 @@
 //	fuel_consumption = 3
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/mercship
+/atom/movable/overmap/entity/visitable/ship/mercship
 	name = "Unknown Vessel"
 	desc = "Spacefaring vessel. No IFF detected."
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN

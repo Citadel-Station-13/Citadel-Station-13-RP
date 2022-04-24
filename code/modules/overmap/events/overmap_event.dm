@@ -1,10 +1,10 @@
 /*
-** /obj/effect/overmap/event - Actual instances of event hazards on the overmap map
+** /atom/movable/overmap/event - Actual instances of event hazards on the overmap map
 */
 // TO-DO: We need to find a way to get BSAs ported or something to make weaknesses work so crew have a chance to *fight* tiles later - Enzo 9/9/2020
-// We don't subtype /obj/effect/overmap/visitable because that'll create sections one can travel to
+// We don't subtype /atom/movable/overmap/entity/visitable because that'll create sections one can travel to
 //	 and with them "existing" on the overmap Z-level things quickly get odd.
-/obj/effect/overmap/event
+/atom/movable/overmap/event
 	name = "event"
 	icon = 'icons/obj/overmap.dmi'
 	icon_state = "event"
@@ -16,17 +16,17 @@
 	var/list/victims	// Basically cached events on which Z level
 	color = "#FFFFFF"
 
-/obj/effect/overmap/event/Initialize(mapload)
+/atom/movable/overmap/event/Initialize(mapload)
 	. = ..()
 	icon_state = pick(event_icon_states)
 	GLOB.overmap_event_handler.update_hazards(loc)
 
-/obj/effect/overmap/event/Moved(atom/old_loc, direction, forced = FALSE)
+/atom/movable/overmap/event/Moved(atom/old_loc, direction, forced = FALSE)
 	. = ..()
 	GLOB.overmap_event_handler.update_hazards(old_loc)
 	GLOB.overmap_event_handler.update_hazards(loc)
 
-/obj/effect/overmap/event/Destroy()	// Takes a look at this one as well, make sure everything is A-OK
+/atom/movable/overmap/event/Destroy()	// Takes a look at this one as well, make sure everything is A-OK
 	var/turf/T = loc
 	. = ..()
 	GLOB.overmap_event_handler.update_hazards(T)
@@ -35,7 +35,7 @@
 // Definitions for specific types!
 //
 
-/obj/effect/overmap/event/meteor
+/atom/movable/overmap/event/meteor
 	name = "asteroid field"
 	events = list(/datum/event/meteor_wave/overmap)
 	event_icon_states = list("meteor1", "meteor2", "meteor3", "meteor4")
@@ -43,7 +43,7 @@
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_MINING | OVERMAP_WEAKNESS_EXPLOSIVE
 
-/obj/effect/overmap/event/electric
+/atom/movable/overmap/event/electric
 	name = "electrical storm"
 	events = list(/datum/event/electrical_storm/overmap)
 	color = "#EEEEEE"
@@ -52,14 +52,14 @@
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_EMP
 
-/obj/effect/overmap/event/dust
+/atom/movable/overmap/event/dust
 	name = "dust cloud"
 	events = list(/datum/event/dust/overmap)
 	event_icon_states = list("dust1", "dust2", "dust3", "dust4")
 	color = "#EEEEEE"
 	weaknesses = OVERMAP_WEAKNESS_MINING | OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
-/obj/effect/overmap/event/ion
+/atom/movable/overmap/event/ion
 	name = "ion cloud"
 	events = list(/datum/event/ionstorm/overmap)
 	opacity = 0
@@ -68,7 +68,7 @@
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_EMP
 
-/obj/effect/overmap/event/carp
+/atom/movable/overmap/event/carp
 	name = "carp shoal"
 	events = list(/datum/event/carp_migration/overmap)
 	opacity = 0
@@ -77,7 +77,7 @@
 	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
-/obj/effect/overmap/event/carp_heavy
+/atom/movable/overmap/event/carp_heavy
 	name = "carp school"
 	events = list(/datum/event/carp_migration/overmap)
 	opacity = 0
@@ -86,7 +86,7 @@
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
-/obj/effect/overmap/event/hostile_migration
+/atom/movable/overmap/event/hostile_migration
 	name = "unknown lifesigns"
 	events = list(/datum/event/hostile_migration/overmap)
 	opacity = 0
@@ -95,7 +95,7 @@
 	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
-/obj/effect/overmap/event/communications_blackout
+/atom/movable/overmap/event/communications_blackout
 	name = "Ionspheric Bubble"
 	events = list(/datum/event/communications_blackout/overmap)
 	opacity = 1
@@ -104,7 +104,7 @@
 	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EMP
 
-/obj/effect/overmap/event/cult
+/atom/movable/overmap/event/cult
 	name = "eerie signals"
 	events = list(/datum/event/cult/overmap)
 	opacity = 0
@@ -113,7 +113,7 @@
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_FIRE
 
-/obj/effect/overmap/event/pirate
+/atom/movable/overmap/event/pirate
 	name = "unflagged cruiser"
 	events = list(/datum/event/pirate/overmap)
 	opacity = 0
