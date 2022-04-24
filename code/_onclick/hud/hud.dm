@@ -457,4 +457,3 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	icon_state = "prog_bar_100"
 	invisibility = INVISIBILITY_MAXIMUM
 	screen_loc = ui_stamina
-  

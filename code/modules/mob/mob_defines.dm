@@ -6,6 +6,8 @@
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
   
+	var/last_quick_move_time = 0
+	
 	// Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
