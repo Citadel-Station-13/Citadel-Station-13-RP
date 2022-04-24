@@ -662,3 +662,10 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/pointdefense_control
 	sort_string = "OAABB"
+
+/datum/design/circuit/massive_gas_pump
+	name = "High performance gas pump"
+	id = "massive_gas_pump"
+	req_tech = list(TECH_ENGINEERING = 3)
+	build_path = /obj/item/circuitboard/massive_gas_pump
+	sort_string = "OAABC"
