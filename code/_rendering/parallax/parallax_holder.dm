@@ -152,7 +152,6 @@
 	var/turf/T = get_turf(cached_eye)
 	vis_holder.vis_contents = vis = T? SSparallax.get_parallax_vis_contents(T.z) : list()
 
-
 /**
  * Updates motion if needed
  */
@@ -255,7 +254,7 @@
 		if(P.absolute)
 			continue
 		var/matrix/translate_matrix = matrix()
-		translate_matrix.Translate(cos(turn) * 480, sin(turn) * 480)
+		translate_matrix.Translate(sin(turn) * 480, cos(turn) * 480)
 		var/matrix/target_matrix = matrix()
 		var/move_speed = speed * P.speed
 		// do the first segment by shifting down one screen
