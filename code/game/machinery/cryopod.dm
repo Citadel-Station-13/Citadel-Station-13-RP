@@ -743,7 +743,7 @@
 	overlays.Cut()
 	if(occupant)
 		var/image/I = image(icon, src, "[base_icon_state]_active_overlay")
-		I.plane = PLANE_LIGHTING_ABOVE
+		I.plane = ABOVE_LIGHTING_PLANE
 		I.layer = ABOVE_LIGHTING_LAYER
 		overlays += I
 		set_light(0.4, 1.2, 4, 10)
@@ -751,7 +751,7 @@
 		set_light(0)
 		if(operable())
 			var/image/I = image(icon, src, "[base_icon_state]_idle_overlay")
-			I.plane = PLANE_LIGHTING_ABOVE
+			I.plane = ABOVE_LIGHTING_PLANE
 			I.layer = ABOVE_LIGHTING_LAYER
 			overlays += I
 
