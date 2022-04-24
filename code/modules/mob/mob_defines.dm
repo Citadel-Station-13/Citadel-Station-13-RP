@@ -1,13 +1,20 @@
 /mob
+	datum_flags = DF_USE_TAG
 	density = 1
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
 
+	// Rendering
+	/// Fullscreen objects
+	var/list/fullscreens = list()
+
 	// Intents
 	/// How are we intending to move? Walk/run/etc.
 	var/m_intent = MOVE_INTENT_RUN
+
+	var/next_mob_id = 0
 
 	var/datum/mind/mind
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak

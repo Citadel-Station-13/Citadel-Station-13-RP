@@ -55,16 +55,6 @@
 /// This flag overrides SS_KEEP_TIMING
 #define SS_POST_FIRE_TIMING 64
 
-DEFINE_BITFIELD(subsystem_flags, list(
-	"SS_NO_INIT" = SS_NO_INIT,
-	"SS_NO_FIRE" = SS_NO_FIRE,
-	"SS_BACKGROUND" = SS_BACKGROUND,
-	"SS_NO_TICK_CHECK" = SS_NO_TICK_CHECK,
-	"SS_TICKER" = SS_TICKER,
-	"SS_KEEP_TIMING" = SS_KEEP_TIMING,
-	"SS_POST_FIRE_TIMING" = SS_POST_FIRE_TIMING,
-))
-
 //! SUBSYSTEM STATES
 #define SS_IDLE 0		/// aint doing shit.
 #define SS_QUEUED 1		/// queued to run

@@ -34,6 +34,16 @@
 	 * is the way it is, please do update this comment
 	 */
 	parent_type = /datum
+
+		///////////////
+		// Rendering //
+		///////////////
+
+	/// Click catcher
+	var/atom/movable/screen/click_catcher/click_catcher
+	/// Parallax holder
+	var/datum/parallax_holder/parallax_holder
+
 		////////////////
 		//ADMIN THINGS//
 		////////////////
@@ -103,8 +113,6 @@
 	var/list/department_hours = list()
 
 	preload_rsc = PRELOAD_RSC
-
-	var/global/atom/movable/screen/click_catcher/void
 
 	///Last ping of the client
 	var/lastping = 0

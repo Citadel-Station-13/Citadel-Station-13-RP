@@ -284,12 +284,21 @@
 
 	if(stat != 2)
 		if(blinded)
-			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 		else
 			clear_fullscreen("blind")
-			set_fullscreen(disabilities & NEARSIGHTED, "impaired", /atom/movable/screen/fullscreen/impaired, 1)
-			set_fullscreen(eye_blurry, "blurry", /atom/movable/screen/fullscreen/blurry)
-			set_fullscreen(druggy, "high", /atom/movable/screen/fullscreen/high)
+		if(disabilities & NEARSIGHTED)
+			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
+		else
+			clear_fullscreen("impaired")
+		if(eye_blurry)
+			overlay_fullscreen("blurry", /atom/movable/screen/fullscreen/tiled/blurry)
+		else
+			clear_fullscreen("blurry")
+		if(druggy)
+			overlay_fullscreen("high", /atom/movable/screen/fullscreen/tiled/high)
+		else
+			clear_fullscreen("high")
 
 	if (src.machine)
 		if (src.machine.check_eye(src) < 0)

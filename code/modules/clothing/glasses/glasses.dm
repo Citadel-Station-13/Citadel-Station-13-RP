@@ -543,7 +543,10 @@ BLIND     // can't see anything
 	name = "\improper HUD sunglasses"
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunSecHud"
-	enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM)
+
+/obj/item/clothing/glasses/sunglasses/sechud/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "tactical HUD"
@@ -596,7 +599,10 @@ BLIND     // can't see anything
 	name = "\improper HUD sunglasses"
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunMedHud"
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)
+
+/obj/item/clothing/glasses/sunglasses/medhud/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(slot_glasses))
 
 /obj/item/clothing/glasses/thermal
 	name = "optical thermal scanner"

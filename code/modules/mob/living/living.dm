@@ -1,21 +1,25 @@
 /mob/living/Initialize(mapload)
 	. = ..()
 	//Prime this list if we need it.
-	if(has_huds)
-		add_overlay(backplane,TRUE) //Strap this on here, to block HUDs from appearing in rightclick menus: http://www.byond.com/forum/?post=2336679
-		hud_list = list()
-		hud_list.len = TOTAL_HUDS
-		make_hud_overlays()
+	prepare_huds()
 
 	//I'll just hang my coat up over here
 	dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
 	var/mutable_appearance/dsma = new(dsoverlay) //Changing like ten things, might as well.
 	dsma.alpha = 0
-	dsma.plane = PLANE_LIGHTING
+	dsma.plane = LIGHTING_PLANE
 	dsma.blend_mode = BLEND_ADD
 	dsoverlay.appearance = dsma
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
+
+/mob/living/prepare_huds()
+	..()
+	prepare_data_huds()
+
+/mob/living/proc/prepare_data_huds()
+	update_hud_med_health()
+	update_hud_med_status()
 
 /mob/living/Destroy()
 	if(LAZYLEN(status_effects))
@@ -630,8 +634,10 @@ default behaviour is:
 
 /mob/living/proc/revive()
 	rejuvenate()
+
 	if(buckled)
 		buckled.unbuckle_mob()
+
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src
 
@@ -642,9 +648,7 @@ default behaviour is:
 		if (C.legcuffed && !initial(C.legcuffed))
 			C.drop_from_inventory(C.legcuffed)
 		C.legcuffed = initial(C.legcuffed)
-	BITSET(hud_updateflag, HEALTH_HUD)
-	BITSET(hud_updateflag, STATUS_HUD)
-	BITSET(hud_updateflag, LIFE_HUD)
+
 	ExtinguishMob()
 	fire_stacks = 0
 	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
@@ -694,14 +698,11 @@ default behaviour is:
 	// make the icons look correct
 	regenerate_icons()
 
-	BITSET(hud_updateflag, HEALTH_HUD)
-	BITSET(hud_updateflag, STATUS_HUD)
-	BITSET(hud_updateflag, LIFE_HUD)
+	update_hud_med_health()
+	update_hud_med_status()
 
 	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	reload_fullscreen()
-
-	return
 
 /mob/living/proc/UpdateDamageIcon()
 	return
@@ -811,7 +812,7 @@ default behaviour is:
 	update_canmove()
 
 //called when the mob receives a bright flash
-/mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/flash)
+/mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(override_blindness_check || !(disabilities & BLIND))
 		overlay_fullscreen("flash", type)
 		spawn(25)
@@ -1162,29 +1163,8 @@ default behaviour is:
 	else
 		return ..()
 
-//Add an entry to overlays, assuming it exists
-/mob/living/proc/apply_hud(cache_index, var/image/I)
-	hud_list[cache_index] = I
-	if((. = hud_list[cache_index]))
-		//underlays += .
-		add_overlay(.)
-
-//Remove an entry from overlays, and from the list
-/mob/living/proc/grab_hud(cache_index)
-	var/I = hud_list[cache_index]
-	if(I)
-		//underlays -= I
-		cut_overlay(I)
-		hud_list[cache_index] = null
-		return I
-
-/mob/living/proc/make_hud_overlays()
-	return
-
-
 /mob/living/proc/has_vision()
 	return !(eye_blind || (disabilities & BLIND) || stat || blinded)
-
 
 /mob/living/proc/dirties_floor()	// If we ever decide to add fancy conditionals for making dirty floors (floating, etc), here's the proc.
 	return makes_dirt

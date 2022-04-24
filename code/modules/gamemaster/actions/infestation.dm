@@ -26,7 +26,7 @@
 
 /datum/gm_action/infestation/get_skybox_image()
 	if(!cloud_hueshift)
-		cloud_hueshift = color_rotation(rand(-3, 3) * 15)
+		cloud_hueshift = color_matrix_rotate_hue(rand(-3, 3) * 15)
 	var/image/res = image('icons/skybox/caelus.dmi', "rats")
 	res.color = cloud_hueshift
 	res.appearance_flags = RESET_COLOR

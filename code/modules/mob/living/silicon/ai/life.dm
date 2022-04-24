@@ -80,7 +80,7 @@
 
 					//Blind the AI
 					updateicon()
-					overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+					overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 					src.sight = src.sight&~SEE_TURFS
 					src.sight = src.sight&~SEE_MOBS
 					src.sight = src.sight&~SEE_OBJS

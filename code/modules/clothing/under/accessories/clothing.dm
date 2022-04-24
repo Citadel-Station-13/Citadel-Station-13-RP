@@ -296,7 +296,7 @@
 	. = ..()
 	if(prob(50))
 		icon_state = "hawaii2"
-	color = color_rotation(rand(-11,12)*15)
+	color = color_matrix_rotate_hue(rand(-11,12)*15)
 
 /obj/item/clothing/accessory/wcoat
 	name = "waistcoat"
