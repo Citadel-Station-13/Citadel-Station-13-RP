@@ -1,4 +1,15 @@
 /mob/living/carbon/human
+	hud_possible = list(
+		LIFE_HUD,
+		STATUS_HUD,
+		ID_HUD,
+		WANTED_HUD,
+		IMPLOYAL_HUD,
+		IMPTRACK_HUD,
+		IMPCHEM_HUD,
+		ANTAG_HUD
+	)
+
 	//Hair colour and style
 	var/r_hair = 0
 	var/g_hair = 0

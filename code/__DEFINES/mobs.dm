@@ -377,38 +377,22 @@
 #define VIS_GHOSTS			3
 #define VIS_AI_EYE			4
 
-#define VIS_CH_STATUS		5
-#define VIS_CH_HEALTH		6
-#define VIS_CH_LIFE			7
-#define VIS_CH_ID			8
-#define VIS_CH_WANTED		9
-#define VIS_CH_IMPLOYAL		10
-#define VIS_CH_IMPTRACK		11
-#define VIS_CH_IMPCHEM		12
-#define VIS_CH_SPECIAL		13
-#define VIS_CH_STATUS_OOC	14
+#define VIS_ADMIN1			5
+#define VIS_ADMIN2			6
+#define VIS_ADMIN3			7
 
-#define VIS_ADMIN1			15
-#define VIS_ADMIN2			16
-#define VIS_ADMIN3			17
+#define VIS_MESONS			8
 
-#define VIS_MESONS			18
+#define VIS_TURFS			9
+#define VIS_OBJS			10
+#define VIS_MOBS			11
 
-#define VIS_TURFS			19
-#define VIS_OBJS			20
-#define VIS_MOBS			21
-
-#define VIS_CH_STATUS_R		22
-#define VIS_CH_HEALTH_VR	23
-#define VIS_CH_BACKUP		24
-#define VIS_CH_VANTAG		25
-
-#define VIS_AUGMENTED		26
-
-#define VIS_STATUS			27
-
-#define VIS_CLOAKED			28
-#define VIS_COUNT			28 //Must be highest number from above.
+#define VIS_AUGMENTED		12
+#define VIS_CLOAKED			13
+#define VIS_PARALLAX		14
+#define VIS_STATUS			15
+#define VIS_SPACE			16
+#define VIS_COUNT			16 //Must be highest number from above.
 
 //Some mob icon layering defines
 #define BODY_LAYER		-100
