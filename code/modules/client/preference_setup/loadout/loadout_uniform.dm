@@ -607,13 +607,13 @@ Swimsuits
 
 /datum/gear/uniform/swimsuits
 	name = "Swimsuits Selection"
-	path = /obj/item/storage/box/fluff/swimsuit
+	path = /obj/item/clothing/under/swimsuit
 
 /datum/gear/uniform/swimsuits/New()
 	..()
 	var/list/swimsuits = list()
-	for(var/swimsuit in typesof(/obj/item/storage/box/fluff/swimsuit))
-		var/obj/item/storage/box/fluff/swimsuit/swimsuit_type = swimsuit
+	for(var/swimsuit in typesof(/obj/item/clothing/under/swimsuit))
+		var/obj/item/clothing/under/swimsuit/swimsuit_type = swimsuit
 		swimsuits[initial(swimsuit_type.name)] = swimsuit_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(swimsuits, /proc/cmp_text_asc))
 
