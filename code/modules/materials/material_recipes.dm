@@ -55,6 +55,50 @@
 	recipes += new/datum/stack_recipe("cannon frame", /obj/item/cannonframe, 10, time = 15, one_per_turf = 0, on_floor = 0)
 	recipes += new/datum/stack_recipe("regular floor tile", /obj/item/stack/tile/floor, 1, 4, 20)
 	recipes += new/datum/stack_recipe("roofing tile", /obj/item/stack/tile/roofing, 3, 4, 20)
+	recipes += new/datum/stack_recipe_list("ERIS flooring", list( \
+		new/datum/stack_recipe("maint floor tile", /obj/item/stack/tile/floor/eris/techmaint, 1, 4, 1), \
+		new/datum/stack_recipe("perforated maint floor tile", /obj/item/stack/tile/floor/eris/techmaint/perforated, 1, 4, 1), \
+		new/datum/stack_recipe("panel maint floor tile", /obj/item/stack/tile/floor/eris/techmaint/panels, 1, 4, 1), \
+		new/datum/stack_recipe("cargo maint floor tile", /obj/item/stack/tile/floor/eris/techmaint/cargo, 1, 4, 1), \
+		new/datum/stack_recipe("steel floor tile", /obj/item/stack/tile/floor/eris/steel, 1, 4, 1), \
+		new/datum/stack_recipe("steel panel floor tile", /obj/item/stack/tile/floor/eris/steel/panels, 1, 4, 1), \
+		new/datum/stack_recipe("steel techfloor tile", /obj/item/stack/tile/floor/eris/steel/techfloor, 1, 4, 1), \
+		new/datum/stack_recipe("steel techfloor perforated tile", /obj/item/stack/tile/floor/eris/steel/techfloor_grid, 1, 4, 1), \
+		new/datum/stack_recipe("steel brown perforated tile", /obj/item/stack/tile/floor/eris/steel/brown_perforated, 1, 4, 1), \
+		new/datum/stack_recipe("steel gray perforated tile", /obj/item/stack/tile/floor/eris/steel/gray_perforated, 1, 4, 1), \
+		new/datum/stack_recipe("steel cargo tile", /obj/item/stack/tile/floor/eris/steel/cargo, 1, 4, 1), \
+		new/datum/stack_recipe("steel brown platform tile", /obj/item/stack/tile/floor/eris/steel/brown_platform, 1, 4, 1), \
+		new/datum/stack_recipe("steel gray platform tile", /obj/item/stack/tile/floor/eris/steel/gray_platform, 1, 4, 1), \
+		new/datum/stack_recipe("steel danger tile", /obj/item/stack/tile/floor/eris/steel/danger, 1, 4, 1), \
+		new/datum/stack_recipe("steel golden trim tile", /obj/item/stack/tile/floor/eris/steel/golden, 1, 4, 1), \
+		new/datum/stack_recipe("steel blue trim tile", /obj/item/stack/tile/floor/eris/steel/bluecorner, 1, 4, 1), \
+		new/datum/stack_recipe("steel orange trim tile", /obj/item/stack/tile/floor/eris/steel/orangecorner, 1, 4, 1), \
+		new/datum/stack_recipe("steel violet trim tile", /obj/item/stack/tile/floor/eris/steel/violetcorener, 1, 4, 1), \
+		new/datum/stack_recipe("steel cyan trim tile", /obj/item/stack/tile/floor/eris/steel/cyancorner, 1, 4, 1), \
+		new/datum/stack_recipe("steel monofloor tile", /obj/item/stack/tile/floor/eris/steel/monofloor, 1, 4, 1), \
+		new/datum/stack_recipe("steel bar flat tile", /obj/item/stack/tile/floor/eris/steel/bar_flat, 1, 4, 1), \
+		new/datum/stack_recipe("steel bar dance tile", /obj/item/stack/tile/floor/eris/steel/bar_dance, 1, 4, 1), \
+		new/datum/stack_recipe("steel bar light tile", /obj/item/stack/tile/floor/eris/steel/bar_light, 1, 4, 1), \
+		))  // I removed the multi-crafting, because it gave me the steel recipes with the flooring names, leading to confusion and unneeded racks
+	recipes += new/datum/stack_recipe_list("Dark ERIS flooring", list( \
+		new/datum/stack_recipe("dark floor tile", /obj/item/stack/tile/floor/eris/dark, 1, 4, 1), \
+		new/datum/stack_recipe("dark panel floor tile", /obj/item/stack/tile/floor/eris/dark/panels, 1, 4, 1), \
+		new/datum/stack_recipe("dark techfloor tile", /obj/item/stack/tile/floor/eris/dark/techfloor, 1, 4, 1), \
+		new/datum/stack_recipe("dark techfloor tile with vents", /obj/item/stack/tile/floor/eris/dark/techfloor_grid, 1, 4, 1), \
+		new/datum/stack_recipe("dark brown perforated tile", /obj/item/stack/tile/floor/eris/dark/brown_perforated, 1, 4, 1), \
+		new/datum/stack_recipe("dark gray perforated tile", /obj/item/stack/tile/floor/eris/dark/gray_perforated, 1, 4, 1), \
+		new/datum/stack_recipe("dark cargo tile", /obj/item/stack/tile/floor/eris/dark/cargo, 1, 4, 1), \
+		new/datum/stack_recipe("dark brown platform tile", /obj/item/stack/tile/floor/eris/dark/brown_platform, 1, 4, 1), \
+		new/datum/stack_recipe("dark gray platform tile", /obj/item/stack/tile/floor/eris/dark/gray_platform, 1, 4, 1), \
+		new/datum/stack_recipe("dark danger tile", /obj/item/stack/tile/floor/eris/dark/danger, 1, 4, 1), \
+		new/datum/stack_recipe("dark golden trim tile", /obj/item/stack/tile/floor/eris/dark/golden, 1, 4, 1), \
+		new/datum/stack_recipe("dark blue trim tile", /obj/item/stack/tile/floor/eris/dark/bluecorner, 1, 4, 1), \
+		new/datum/stack_recipe("dark orange trim tile", /obj/item/stack/tile/floor/eris/dark/orangecorner, 1, 4, 1), \
+		new/datum/stack_recipe("dark violet trim tile", /obj/item/stack/tile/floor/eris/dark/violetcorener, 1, 4, 1), \
+		new/datum/stack_recipe("dark cyan trim tile", /obj/item/stack/tile/floor/eris/dark/cyancorner, 1, 4, 1), \
+		new/datum/stack_recipe("dark monofloor tile", /obj/item/stack/tile/floor/eris/dark/monofloor, 1, 4, 1), \
+
+		))
 	recipes += new/datum/stack_recipe("dance pole", /obj/structure/dancepole, 1, time = 10, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("metal rod", /obj/item/stack/rods, 1, 2, 60)
 	recipes += new/datum/stack_recipe("frame", /obj/item/frame, 5, time = 25, one_per_turf = 1, on_floor = 1)
@@ -141,6 +185,26 @@
 	recipes += new/datum/stack_recipe("reagent dispenser cartridge (small)", /obj/item/reagent_containers/chem_disp_cartridge/small,  1, on_floor=0, pass_stack_color = TRUE) // 100u
 	recipes += new/datum/stack_recipe("white floor tile", /obj/item/stack/tile/floor/white, 1, 4, 20, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("freezer floor tile", /obj/item/stack/tile/floor/freezer, 1, 4, 20, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe_list("Platic ERIS flooring", list( \
+		new/datum/stack_recipe("cafe floor tile", /obj/item/stack/tile/floor/eris/cafe, 1, 4, 1), \
+		new/datum/stack_recipe("white floor tile", /obj/item/stack/tile/floor/eris/white, 1, 4, 1), \
+		new/datum/stack_recipe("white panel floor tile", /obj/item/stack/tile/floor/eris/white/panels, 1, 4, 1), \
+		new/datum/stack_recipe("white techfloor tile", /obj/item/stack/tile/floor/eris/white/techfloor, 1, 4, 1), \
+		new/datum/stack_recipe("white techfloor tile with vents", /obj/item/stack/tile/floor/eris/white/techfloor_grid, 1, 4, 1), \
+		new/datum/stack_recipe("white brown perforated tile", /obj/item/stack/tile/floor/eris/white/brown_perforated, 1, 4, 1), \
+		new/datum/stack_recipe("white gray perforated tile", /obj/item/stack/tile/floor/eris/white/gray_perforated, 1, 4, 1), \
+		new/datum/stack_recipe("white cargo tile", /obj/item/stack/tile/floor/eris/white/cargo, 1, 4, 1), \
+		new/datum/stack_recipe("white brown platform tile", /obj/item/stack/tile/floor/eris/white/brown_platform, 1, 4, 1), \
+		new/datum/stack_recipe("white gray platform tile", /obj/item/stack/tile/floor/eris/white/gray_platform, 1, 4, 1), \
+		new/datum/stack_recipe("white danger tile", /obj/item/stack/tile/floor/eris/white/danger, 1, 4, 1), \
+		new/datum/stack_recipe("white golden trim tile", /obj/item/stack/tile/floor/eris/white/golden, 1, 4, 1), \
+		new/datum/stack_recipe("white blue trim tile", /obj/item/stack/tile/floor/eris/white/bluecorner, 1, 4, 1), \
+		new/datum/stack_recipe("white orange trim tile", /obj/item/stack/tile/floor/eris/white/orangecorner, 1, 4, 1), \
+		new/datum/stack_recipe("white violet trim tile", /obj/item/stack/tile/floor/eris/white/violetcorener, 1, 4, 1), \
+		new/datum/stack_recipe("white cyan trim tile", /obj/item/stack/tile/floor/eris/white/cyancorner, 1, 4, 1), \
+		new/datum/stack_recipe("white monofloor tile", /obj/item/stack/tile/floor/eris/white/monofloor, 1, 4, 1), \
+
+		))
 	recipes += new/datum/stack_recipe("shower curtain", /obj/structure/curtain, 4, time = 15, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("plastic flaps", /obj/structure/plasticflaps, 4, time = 25, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("airtight plastic flaps", /obj/structure/plasticflaps/mining, 5, time = 25, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)

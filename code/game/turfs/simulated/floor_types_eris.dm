@@ -297,6 +297,7 @@
 ///////////////////////
 /obj/item/stack/tile/floor/eris
 	icon = 'icons/turf/flooring/eris/tilestack.dmi'
+	no_variants = TRUE
 
 // Cafe
 /obj/item/stack/tile/floor/eris/cafe
