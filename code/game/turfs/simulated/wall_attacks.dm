@@ -455,9 +455,4 @@
 	if(istype(W,/obj/item/frame))
 		var/obj/item/frame/F = W
 		F.try_build(src, user)
-		return
-
-	else if(!istype(W,/obj/item/rcd) && !istype(W, /obj/item/reagent_containers))
-		return attack_hand(user)
-
 
