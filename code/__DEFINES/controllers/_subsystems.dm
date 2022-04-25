@@ -107,6 +107,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_CHEMISTRY		35
 #define INIT_ORDER_SKYBOX			30
 #define INIT_ORDER_MAPPING			25
+#warn make sure overmap stuff won't break from initing before atom - move behavior to new if needed/special overmaps init cache list
+#define INIT_ORDER_OVERMAPS			23
 #define INIT_ORDER_DECALS			20
 #define INIT_ORDER_PLANTS			19
 #define INIT_ORDER_ALARMS			18
@@ -122,7 +124,6 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_NIGHTSHIFT		-6
 #define INIT_ORDER_OVERLAY			-7
 #define INIT_ORDER_EVENTS			-8
-#define INIT_ORDER_OVERMAPS			-9
 #define INIT_ORDER_TICKER			-10
 #define INIT_ORDER_XENOARCH			-20
 #define INIT_ORDER_CIRCUIT			-21

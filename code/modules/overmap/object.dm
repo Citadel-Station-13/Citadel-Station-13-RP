@@ -5,6 +5,9 @@
 	icon_state = "object"
 	color = "#fffffe"
 
+	/// curernt bounds overlay, if any
+	var/bounds_overlay
+
 	var/known = 1		//shows up on nav computers automatically
 	var/scannable       //if set to TRUE will show up on ship sensors for detailed scans
 	var/scanner_name	// Name for scans, replaces name once scanned
@@ -19,6 +22,24 @@
 
 	/// parallax vis contents object if any
 	var/atom/movable/overmap_object_skybox_holder/parallax_image_holder
+
+/atom/movable/overmap_object/Initialize(mapload)
+	add_bounds_overlay()
+	return ..()
+
+/atom/movable/overmap_object/Destroy()
+	cut_bounds_overlay()
+	return ..()
+
+
+/atom/movable/overmap_object/Initialize(mapload)
+	. = ..()
+	if(!GLOB.using_map.use_overmap)
+		return INITIALIZE_HINT_QDEL
+
+	if(known && !mapload)
+		SSovermaps.queue_helm_computer_rebuild()
+	update_icon()
 
 /atom/movable/overmap_object_skybox_holder
 	plane = PARALLAX_PLANE
@@ -80,15 +101,6 @@
 
 	return dat
 
-/atom/movable/overmap_object/Initialize(mapload)
-	. = ..()
-	if(!GLOB.using_map.use_overmap)
-		return INITIALIZE_HINT_QDEL
-
-	if(known && !mapload)
-		SSovermaps.queue_helm_computer_rebuild()
-	update_icon()
-
 /atom/movable/overmap_object/Crossed(var/atom/movable/overmap_object/entity/visitable/other)
 	. = ..()
 	if(istype(other))
@@ -103,6 +115,3 @@
 
 /atom/movable/overmap_object/update_icon()
 	filters = filter(type="drop_shadow", color = color + "F0", size = 2, offset = 1,x = 0, y = 0)
-
-/atom/movable/overmap_object/proc/update_bounds_visual()
-	return
