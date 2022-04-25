@@ -6,7 +6,7 @@
 	var/list/baseturf_to_replace
 	var/baseturf
 
-	layer = POINT_LAYER
+	layer = ABOVE_WINDOW_LAYER
 
 /obj/effect/baseturf_helper/Initialize(mapload)
 	. = ..()

@@ -29,7 +29,7 @@
 		if(do_after(user, 4 SECONDS * W.toolspeed))
 			to_chat(user, "<span class='notice'>\The [src] has been dug up, and now lies in a pile nearby.</span>")
 			new /obj/item/stack/material/snow(src)
-			ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 		else
 			to_chat(user, "<span class='notice'>You decide to not finish removing \the [src].</span>")
 	else

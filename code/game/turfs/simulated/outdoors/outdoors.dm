@@ -72,7 +72,7 @@ var/list/turf_edge_cache = list()
 	return
 
 /turf/simulated/floor/outdoors/chill()
-	promote(/turf/simulated/floor/outdoors/snow)
+	PlaceOnTop(/turf/simulated/floor/outdoors/snow, flags = CHANGETURF_PRESERVE_OUTDOORS|CHANGETURF_INHERIT_AIR)
 
 /turf/simulated/floor/outdoors/snow/chill()
 	return // Todo: Add heavy snow.
@@ -81,11 +81,11 @@ var/list/turf_edge_cache = list()
 	switch(severity)
 		//VOREStation Edit - Outdoor turfs less explosion resistant
 		if(1)
-			ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 		if(2)
 			if(prob(66))
-				ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+				ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 		//VOREStation Edit End
 		if(3)
 			if(prob(15))
-				ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+				ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
