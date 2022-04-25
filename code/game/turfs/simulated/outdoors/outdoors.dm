@@ -62,7 +62,7 @@ var/list/turf_edge_cache = list()
 	desc = "Hard as a rock."
 	icon_state = "rock"
 	edge_blending_priority = 1
-	baseturfs = /turf/simulated/floor/outdoors/rocks
+	baseturfs = /turf/baseturf_bottom
 
 /turf/simulated/floor/outdoors/rocks/caves
 	outdoors = FALSE
@@ -81,17 +81,11 @@ var/list/turf_edge_cache = list()
 	switch(severity)
 		//VOREStation Edit - Outdoor turfs less explosion resistant
 		if(1)
-			if(prob(66))
-				ChangeTurf(get_base_turf_by_area(src))
-				return
-			demote()
+			ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 		if(2)
-			if(prob(33))
-				return
-			else if(prob(33))
-				demote()
+			if(prob(66))
+				ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 		//VOREStation Edit End
 		if(3)
-			if(prob(66))
-				return
-	demote()
+			if(prob(15))
+				ScrapeAway(flags = CHANGETURF_INHERIT_AIR)

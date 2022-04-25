@@ -12,10 +12,7 @@
 	allow_gas_overlays = FALSE
 
 /turf/simulated/floor/outdoors/grass/sif
-	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks,
-		/turf/simulated/floor/outdoors/dirt
-		)
+	baseturfs = /turf/simulated/floor/outdoors/dirt
 
 // Overriding these for the sake of submaps that use them on other planets.
 // This means that mining on tether base and space is oxygen-generating, but solars and mining should use the triumph subtype

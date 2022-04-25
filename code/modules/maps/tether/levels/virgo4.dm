@@ -181,7 +181,6 @@
 /area/tether_away/cave
 	flags = RAD_SHIELDED
 	ambience = list('sound/ambience/ambimine.ogg', 'sound/ambience/song_game.ogg')
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen/cave
 
 /area/tether_away/cave/explored/normal
 	name = "\improper Away Mission - Virgo 4 Cave (E)"

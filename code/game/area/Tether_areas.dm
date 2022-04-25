@@ -1566,7 +1566,6 @@ area/shuttle/mining_outpost/shuttle
 /area/shuttle/specialops/centcom
 	name = "Special Operations Shuttle - Centcom"
 	icon_state = "shuttlered"
-	base_turf = /turf/unsimulated/floor/shuttle_ceiling
 
 /area/shuttle/specialops/tether
 	name = "Special Operations Shuttle - Tether"

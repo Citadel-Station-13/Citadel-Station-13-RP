@@ -123,7 +123,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Mining Elevator"
 	music = "music/escape.ogg"
 	dynamic_lighting = 0
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen
 
 /area/shuttle/transport1/centcom
 	icon_state = "shuttle"
@@ -200,7 +199,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Research Elevator"
 	music = "music/escape.ogg"
 	dynamic_lighting = 0
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen
 
 /area/shuttle/awaymission/home
 	name = "NSB Adephagia (AM)"
@@ -408,7 +406,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/specialops/centcom
 	name = "Special Operations Shuttle - Centcom"
 	icon_state = "shuttlered"
-	base_turf = /turf/unsimulated/floor/shuttle_ceiling
 /area/shuttle/specialops/tether
 	name = "Special Operations Shuttle - Tether"
 	icon_state = "shuttlered"
@@ -3014,7 +3011,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Construction Site Shuttle"
 	icon_state = "yellow"
 	dynamic_lighting = 0
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen
 
 /area/shuttle/constructionsite/station
 	name = "\improper Construction Site Shuttle"

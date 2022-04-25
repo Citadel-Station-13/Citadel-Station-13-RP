@@ -99,7 +99,6 @@
 
 /area/shuttle/cryo/station
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen
 
 /area/shuttle/cryo/centcom
 	icon_state = "shuttle"
