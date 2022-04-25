@@ -36,18 +36,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 // LEGACY BELOW
 
-// Called after turf replaces old one
-/turf/proc/post_change()
-	levelupdate()
-
-	var/turf/simulated/open/above = GetAbove(src)
-	if(istype(above))
-		above.update_icon()
-
-	var/turf/simulated/below = GetBelow(src)
-	if(istype(below))
-		below.update_icon() // To add or remove the 'ceiling-less' overlay.
-
 #warn tell universe is pants on head and can be nuked now
 //Creates a new turf
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
@@ -155,6 +143,18 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	if(preserve_outdoors)
 		outdoors = old_outdoors
+
+// Called after turf replaces old one
+/turf/proc/post_change()
+	levelupdate()
+
+	var/turf/simulated/open/above = GetAbove(src)
+	if(istype(above))
+		above.update_icon()
+
+	var/turf/simulated/below = GetBelow(src)
+	if(istype(below))
+		below.update_icon() // To add or remove the 'ceiling-less' overlay.
 
 // LEGACY ABOVE
 
