@@ -15,13 +15,17 @@
 	/// screen objects
 	var/atom/movable/screens = list()
 	/// sight var
-	var/sight = NONE
+	var/sight = SEE_SELF
 	/// active clients
 	var/list/client/clients = list()
 	/// view size
 	var/view_size
 	/// when a client logs out of a mob, and it's using us, the mob should reset to its self_perspective
 	var/reset_on_logout = TRUE
+	/// see in dark
+	var/see_in_dark = 2
+	/// see_invisible
+	var/see_invisible = SEE_INVISIBLE_LIVING
 
 /datum/perspective/Destroy()
 	KickAll()
@@ -52,7 +56,7 @@
 	return eye
 
 /**
- * updates eye, perspective var, virtual eye, lazy eye, sight
+ * updates eye, perspective var, virtual eye, lazy eye, sight, see in dark, see invis
  */
 /datum/perspective/proc/Update(client/C)
 
@@ -69,6 +73,10 @@
 /datum/perspective/proc/AddSight(flags)
 
 /datum/perspective/proc/RemoveSight(flags)
+
+/datum/perspective/proc/SetDarksight(see_in_dark)
+
+/datum/perspective/proc/SetSeeInvis(see_invisible)
 
 /**
  * do we override a user's self perspective sight flags?

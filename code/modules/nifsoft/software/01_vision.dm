@@ -133,7 +133,7 @@
 /datum/nifsoft/mesons/life()
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
-		H.sight |= SEE_TURFS
+		H.AddSightSelf(SEE_TURFS)
 		if(H.client)
 			H.client.screen |= GLOB.global_hud.meson
 
@@ -152,7 +152,7 @@
 /datum/nifsoft/material/life()
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
-		H.sight |= SEE_OBJS
+		H.AddSightSelf(SEE_OBJS)
 		if(H.client)
 			H.client.screen |= GLOB.global_hud.material
 
@@ -172,7 +172,7 @@
 /datum/nifsoft/thermals/life()
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
-		H.sight |= SEE_MOBS
+		H.AddSightSelf(SEE_MOBS)
 		if(H.client)
 			H.client.screen |= GLOB.global_hud.thermal
 

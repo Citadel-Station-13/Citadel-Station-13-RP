@@ -48,11 +48,6 @@
 					blind = 1
 
 		if (!blind)
-			src.sight |= SEE_TURFS
-			src.sight |= SEE_MOBS
-			src.sight |= SEE_OBJS
-			src.see_in_dark = 8
-			src.see_invisible = SEE_INVISIBLE_LIVING
 
 			if (aiRestorePowerRoutine==2)
 				to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
@@ -81,11 +76,6 @@
 					//Blind the AI
 					updateicon()
 					overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
-					src.sight = src.sight&~SEE_TURFS
-					src.sight = src.sight&~SEE_MOBS
-					src.sight = src.sight&~SEE_OBJS
-					src.see_in_dark = 0
-					src.see_invisible = SEE_INVISIBLE_LIVING
 
 					//Now to tell the AI why they're blind and dying slowly.
 
@@ -177,4 +167,3 @@
 /mob/living/silicon/ai/rejuvenate()
 	..()
 	add_ai_verbs(src)
-

@@ -41,6 +41,7 @@
 
 #warn this file
 
+#warn nuke this from orbit
 /mob/proc/reset_view(atom/A)
 	if (client)
 		if (istype(A, /atom/movable))
@@ -74,3 +75,38 @@
  */
 /mob/proc/perspective_is_remote()
 	return using_perspective?.considered_remote(src)
+
+/**
+ * wrapper for self_perspective.AddSight for regexing later
+ */
+/mob/proc/AddSightSelf(flags)
+	ensure_self_perspective()
+	self_perspective.AddSight(flags)
+
+/**
+ * ditto
+ */
+/mob/proc/RemoveSightSelf(flags)
+	ensure_self_perspective()
+	self_perspective.RemoveSight(flags)
+
+/**
+ * ditto
+ */
+/mob/proc/SetSightSelf(flags)
+	ensure_self_perspective()
+	self_perspective.SetSight(flags)
+
+/**
+ * ditto
+ */
+/mob/proc/SetSeeInvisibleSelf(see_invisible)
+	ensure_self_perspective()
+	self_perspective.SetSeeInvis(flags)
+
+/**
+ * ditto
+ */
+/mob/proc/SetSeeInDarkSelf(see_invisible)
+	ensure_self_perspective()
+	self_perspective.SetDarksight(flags)

@@ -454,7 +454,6 @@
 
 	owner = brainmob				//Set eyeobj's owner
 	parent_human = human			//E-z reference to human
-	sight |= SEE_SELF				//Always see yourself
 
 	name = "[brainmob.name] (AR)"	//Set the name
 	real_name = brainmob.real_name	//And the OTHER name

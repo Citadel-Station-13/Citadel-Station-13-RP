@@ -31,7 +31,8 @@
 	var/obj/machinery/hologram/holopad/holo = null
 
 /mob/living/silicon/ai/proc/destroy_eyeobj(var/atom/new_eye)
-	if(!eyeobj) return
+	if(!eyeobj)
+		return
 	if(!new_eye)
 		new_eye = src
 	eyeobj.owner = null
@@ -46,6 +47,7 @@
 	if(!newloc)
 		newloc = src.loc
 	#warn ohnononono
+	#warn remember to make eye have all the SEE_ sight flags!
 	eyeobj = new /mob/observer/eye/aiEye(newloc)
 	eyeobj.owner = src
 	eyeobj.name = "[src.name] (AI Eye)" // Give it a name

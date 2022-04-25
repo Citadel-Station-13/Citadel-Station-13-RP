@@ -43,7 +43,6 @@
 
 	next_move = 1
 	disconnect_time = null				//VOREStation Addition: clear the disconnect time
-	sight |= SEE_SELF
 
 	..()
 
@@ -86,6 +85,7 @@
 	reload_huds()
 
 	// perspective
+	ensure_self_perspective()
 	reset_perspective(current_perspective)
 
 	// rendering

@@ -175,18 +175,14 @@
 		else
 			healths.icon_state = "health7"
 
-		if (stat == 2 || (XRAY in src.mutations))
-			sight |= SEE_TURFS
-			sight |= SEE_MOBS
-			sight |= SEE_OBJS
-			see_in_dark = 8
-			see_invisible = SEE_INVISIBLE_LEVEL_TWO
-		else if (stat != 2)
-			sight &= ~SEE_TURFS
-			sight &= ~SEE_MOBS
-			sight &= ~SEE_OBJS
-			see_in_dark = 2
-			see_invisible = SEE_INVISIBLE_LIVING
+	if (stat == 2 || (XRAY in src.mutations))
+		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		SetSeeInDarkSelf(8)
+		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+	else if (stat != 2)
+		RemoveSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		SetSeeInDarkSelf(2)
+		SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 
 	if (stat != 2)
 		if ((blinded))
