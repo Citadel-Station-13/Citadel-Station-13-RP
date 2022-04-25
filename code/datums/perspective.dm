@@ -15,7 +15,7 @@
 	/// images
 	var/list/image/images = list()
 	/// screen objects
-	var/atom/movable/screens = list()
+	var/list/atom/movable/screens = list()
 	/// sight var
 	var/sight = SEE_SELF
 	/// active clients
@@ -146,7 +146,7 @@
 	screens -= AM
 	if(change != screens.len)
 		for(var/client/C as anything in clients)
-			C.screen -= I
+			C.screen -= AM
 
 /datum/perspective/proc/SetSight(flags)
 	var/change = sight ^ flags
