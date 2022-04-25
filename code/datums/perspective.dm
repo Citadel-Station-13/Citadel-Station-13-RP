@@ -2,6 +2,8 @@
  * a perspective, governing what sight flags/eyes/etc a client should have
  *
  * used to manage remote viewing, so on, so forth
+ *
+ * see mob_perspective.dm for more info
  */
 /datum/perspective
 	/// eye - where visual calcs go from
@@ -19,6 +21,7 @@
 	/// active clients
 	var/list/client/clients = list()
 	/// view size
+	#warn standardize view size
 	var/view_size
 	/// when a client logs out of a mob, and it's using us, the mob should reset to its self_perspective
 	var/reset_on_logout = TRUE
@@ -78,11 +81,7 @@
 
 /datum/perspective/proc/SetSeeInvis(see_invisible)
 
-/**
- * do we override a user's self perspective sight flags?
- */
-/datum/perspective/proc/overrides_sight(client/C)
-	return considered_remote(C.mob)
+/datum/perspective/proc/SetViewSize(new_size)
 
 #warn do all of these
 

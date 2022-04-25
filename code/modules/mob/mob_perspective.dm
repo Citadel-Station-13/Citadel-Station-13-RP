@@ -1,4 +1,26 @@
 /**
+ * MOB PERRSPECTIVE SYSTEM
+ *
+ * allows managed control of client viewport/eye changes
+ *
+ * as of right now, perspectives will **trample** the following on every set:
+ * client.eye
+ * client.lazy_eye (unimplemented)
+ * client.virtual_eye (unimplemented)
+ * client.perspective
+ * client.view
+ * mob.see_in_dark
+ * mob.see_invisible
+ * mob.sight
+ *
+ * these will be added/removed using synchronized access,
+ * and therefore existing values will be left alone,
+ * as long as existing values are not also in the perspective:
+ * client.screen
+ * client.images
+ */
+
+/**
   * Sets us to a /datum/perspective
   * If none is specified, defaults to self_perspective.
   */
@@ -108,3 +130,12 @@
 /mob/proc/SetSeeInDarkSelf(see_invisible)
 	ensure_self_perspective()
 	self_perspective.SetDarksight(flags)
+
+
+// Set client view distance (size of client's screen). Returns TRUE if anything changed.
+/mob/proc/set_viewsize(var/new_view = world.view)
+	#warn NUKE THIS FROM ORBIT
+	if (client && new_view != client.view)
+		client.view = new_view
+		return TRUE
+	return FALSE

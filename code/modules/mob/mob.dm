@@ -1041,13 +1041,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/setEarDamage()
 	return
 
-// Set client view distance (size of client's screen). Returns TRUE if anything changed.
-/mob/proc/set_viewsize(var/new_view = world.view)
-	if (client && new_view != client.view)
-		client.view = new_view
-		return TRUE
-	return FALSE
-
 //Throwing stuff
 
 /mob/proc/toggle_throw_mode()
