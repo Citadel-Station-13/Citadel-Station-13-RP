@@ -3,6 +3,21 @@
 /datum/nifsoft/hud
 	var/list/data_huds = list()
 
+/datum/nifsoft/hud/activate(force)
+	. = ..()
+	if(.)
+		// i'd refactor nifsofts but i have a personal goddamn vendetta against nifs
+		for(var/i in data_huds)
+			var/datum/atom_hud/H = GLOB.huds[i]
+			H.add_hud_to(nif.human)
+
+/datum/nifsoft/hud/deactivate(force)
+	. = ..()
+	if(.)
+		for(var/i in data_huds)
+			var/datum/atom_hud/H = GLOB.huds[i]
+			H.remove_hud_from(nif.human)
+
 /datum/nifsoft/hud/ar_civ
 	name = "AR Overlay (Civ)"
 	desc = "Provides a general identification and health status overlay on your vision with no frills."
