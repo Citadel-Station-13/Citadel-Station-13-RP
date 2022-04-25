@@ -78,3 +78,18 @@
 	ticking = list()
 	#warn get all entities
 	#warn check if they need to tick
+
+/**
+ * render a x/y as text "x, y units" (where units is probably l-s for light-seconds)
+ */
+/datum/overmap/proc/render_location(x, y)
+
+/**
+ * wrap x
+ */
+/datum/overmap/proc/wrap_x(x)
+
+/**
+ * wrap y
+ */
+/datum/overmap/proc/wrap_y()

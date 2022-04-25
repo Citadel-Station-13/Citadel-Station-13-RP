@@ -220,6 +220,8 @@
 /atom/movable/overmap_object/entity/visitable/ship/proc/get_total_thrust()
 	for(var/datum/ship_engine/E in engines)
 		. += E.get_thrust()
+	#warn testing ship
+	. = 100
 
 /atom/movable/overmap_object/entity/visitable/ship/proc/can_burn()
 	if(halted)
@@ -228,6 +230,8 @@
 		return 0
 	for(var/datum/ship_engine/E in engines)
 		. |= E.can_burn()
+	#warn testing shim
+	. = 1
 
 // Deciseconds to next step
 /atom/movable/overmap_object/entity/visitable/ship/proc/ETA()

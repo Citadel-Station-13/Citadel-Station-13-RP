@@ -28,4 +28,6 @@
 	/// physics pause sources
 	var/physics_paused
 
-
+/atom/movable/overmap_object/entity/get_bounds_overlay()
+	return
+	// return SSovermaps.entity_bounds_overlay(bound_x, bound_y, bound_width, bound_height)

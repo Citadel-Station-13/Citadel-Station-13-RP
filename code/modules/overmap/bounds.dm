@@ -7,7 +7,7 @@
 
 #warn impl
 
-/datum/controller/subsystem/overmaps/proc/tiled_bounds_overlay
+/datum/controller/subsystem/overmaps/proc/tiled_bounds_overlay(directions)
 
 #warn impl
 
