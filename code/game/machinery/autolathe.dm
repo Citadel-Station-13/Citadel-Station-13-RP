@@ -1,10 +1,10 @@
 /obj/machinery/autolathe
 	name = "autolathe"
 	desc = "It produces items using metal and glass."
-	icon = 'icons/obj/stationobjs_vr.dmi'
+	icon = 'icons/obj/machines/fabricators/autolathe.dmi'
 	icon_state = "autolathe"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
@@ -41,8 +41,7 @@
 	RefreshParts()
 
 /obj/machinery/autolathe/Destroy()
-	qdel(wires)
-	wires = null
+	QDEL_NULL(wires)
 	return ..()
 
 /obj/machinery/autolathe/ui_interact(mob/user, datum/tgui/ui)
