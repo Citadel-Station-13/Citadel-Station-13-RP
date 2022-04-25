@@ -177,8 +177,9 @@ h1.alert, h2.alert		{color: #000000;}
 .big					{font-size: 3;}
 .reallybig				{font-size: 4;}
 .extremelybig			{font-size: 5;}
-.greentext				{color: #00FF00;	font-size: 3;}
 .redtext				{color: #FF0000;	font-size: 3;}
+.yellowtext				{color: #FFFF00;	font-size: 3;}
+.greentext				{color: #00FF00;	font-size: 3;}
 .clown					{color: #FF69Bf;	font-size: 3;	font-family: "Comic Sans MS", cursive, sans-serif;	font-weight: bold;}
 .singing				{font-family: "Trebuchet MS", cursive, sans-serif; font-style: italic;}
 .his_grace				{color: #15D512;	font-family: "Courier New", cursive, sans-serif;	font-style: italic;}
@@ -199,6 +200,7 @@ h1.alert, h2.alert		{color: #000000;}
 }
 
 .icon					{height: 1em;	width: auto;}
+.iconbig				{height: 32px;	width: 32px; }
 
 .memo					{color: #638500;	text-align: center;}
 .memoedit				{text-align: center;	font-size: 2;}
@@ -237,8 +239,6 @@ h1.alert, h2.alert		{color: #000000;}
 .terminus				{font-family: "Times New Roman", Times, serif, sans-serif}
 .interface				{color: #330033;}
 .squeakish				{color: #f54298;}
-
-BIG IMG.icon 			{width: 32px; height: 32px;}
 
 /* Debug Logs */
 .debug_error					{color:#FF0000; font-weight:bold}

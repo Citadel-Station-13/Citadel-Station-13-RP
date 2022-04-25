@@ -24,7 +24,7 @@
 /datum/component/nif_menu
 	var/atom/movable/screen/nif/screen_icon
 
-/datum/component/nif_menu/Initialize(mapload)
+/datum/component/nif_menu/Initialize()
 	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
 	. = ..()
@@ -62,19 +62,24 @@
 
 	user.verbs |= /mob/living/carbon/human/proc/nif_menu
 
-/datum/component/nif_menu/proc/nif_menu_click(/atom/movable/screen/nif/image, location, control, params, user)
+/datum/component/nif_menu/proc/nif_menu_click(source, location, control, params, user)
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && H.nif)
 		INVOKE_ASYNC(H.nif, .proc/ui_interact, user)
 
 /**
- * Screen object for NIF menu access
+ * Screen atom for NIF menu access
  */
 /atom/movable/screen/nif
 	name = "nif menu"
 	icon = 'icons/mob/screen/midnight.dmi'
 	icon_state = "nif"
 	screen_loc = ui_smallquad
+
+/atom/movable/screen/nif_menu/Click(location, control, params)
+	..()
+	var/datum/component/nif_menu/N = usr.GetComponent(/datum/component/nif_menu)
+	N?.nif_menu_click(usr)
 
 /**
  * Verb to open the interface
