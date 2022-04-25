@@ -59,6 +59,7 @@
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
+	#warn comsig
 	GLOB.turf_changed_event.register(below, src, /atom/proc/update_icon)
 	levelupdate()
 	below.update_icon()	// So the 'ceiling-less' overlay gets added.

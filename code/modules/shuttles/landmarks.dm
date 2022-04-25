@@ -148,7 +148,6 @@
 		if(T.density)
 			T.ChangeTurf(get_base_turf_by_area(T))
 
-
 // Subtype that also queues a shuttle datum (for shuttles starting on maps loaded at runtime)
 /obj/effect/shuttle_landmark/shuttle_initializer
 	var/datum/shuttle/shuttle_type

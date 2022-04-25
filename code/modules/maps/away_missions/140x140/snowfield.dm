@@ -12,7 +12,6 @@
 /area/awaymission/snowfield
 	icon_state = "blank"
 //	requires_power = 0
-	base_turf = /turf/snow/snow2
 	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
 
 /area/awaymission/snowfield/outside
