@@ -125,27 +125,22 @@
 /area/tether_away/beach/powershed
 	name = "\improper Away Mission - Virgo 4 Coast PS"
 	icon_state = "blue2"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand
 
 /area/tether_away/beach/coast
 	name = "\improper Away Mission - Virgo 4 Coast"
 	icon_state = "blue2"
-	base_turf = /turf/simulated/floor/outdoors/beach/coastline
 
 /area/tether_away/beach/water
 	name = "\improper Away Mission - Virgo 4 Water"
 	icon_state = "bluenew"
-	base_turf = /turf/simulated/floor/outdoors/beach/water
 
 /area/tether_away/beach/jungle
 	name = "\improper Away Mission - Virgo 4 Desert"
 	icon_state = "green"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert
 
 /area/tether_away/beach/resort
 	icon = 'icons/turf/areas_vr.dmi'
 	icon_state = "yellow"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand
 
 /area/tether_away/beach/resort/kitchen
 	name = "\improper Away Mission - Virgo 4 Kitchen"
@@ -209,7 +204,6 @@
 /area/tether_away/beach/desert/poi
 	name = "\improper Away Mission - Virgo 4 Desert"
 	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 	requires_power = 1
 
 /area/tether_away/beach/desert/explored
@@ -222,52 +216,39 @@
 
 /area/tether_away/beach/desert/poi/WW_Town
 	name = "V4 - Ghost Town"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/landing_pad
 	name = "V4 - Prefab Homestead"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/solar_farm
 	name = "V4 - Prefab Solar Farm"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/dirt_farm
 	name = "V4 - Abandoned Farmstead"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/graveyard
 	name = "V4 - Desert Graveyard"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/goldmine
 	name = "V4 - Desert Goldmine"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/ranch
 	name = "V4 - Abandoned Ranch"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/saloon
 	name = "V4 - Saloon"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/temple
 	name = "V4 - Old Temple"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/tomb
 	name = "V4 - Old Tomb"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/AuxiliaryResearchFacility
 	name = "V4 - Research Facility"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/vault
 	name = "V4 - Desert Bunker"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/covert_post
 	name = "V4 - Clown Listening Post"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh

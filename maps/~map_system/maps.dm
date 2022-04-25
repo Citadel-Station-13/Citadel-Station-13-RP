@@ -273,7 +273,7 @@ var/list/all_maps = list()
 	var/z = 0				// Actual z-index of the zlevel. This had better be right!
 	var/name				// Friendly name of the zlevel
 	var/flags = 0			// Bitflag of which *_levels lists this z should be put into.
-	var/turf/base_turf		// Type path of the base turf for this z
+	var/turf/base_turf = /turf/space // Type path of the base turf for this z
 	var/transit_chance = 0	// Percentile chance this z will be chosen for map-edge space transit.
 
 // Holomaps

@@ -30,7 +30,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	has_gravity = 0
 	power_equip = 0
 	power_environ = 0
-	base_turf = /turf/space
 	ambience = AMBIENCE_SPACE
 
 /area/space/atmosalert()
@@ -71,7 +70,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 0
 	flags = RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
-	base_turf = /turf/space
 
 /area/shuttle/arrival
 	name = "\improper Arrival Shuttle"
@@ -227,12 +225,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/cruiser/cruiser
 	name = "Small Cruiser Shuttle - Cruiser"
 	icon_state = "blue2"
-	base_turf = /turf/simulated/floor/tiled/techfloor
 
 /area/shuttle/tether/surface
 	name = "Tether Shuttle Landed"
 	icon_state = "shuttle"
-	base_turf = /turf/simulated/floor/reinforced
 
 /area/shuttle/tether/station
 	name = "Tether Shuttle Dock"
@@ -404,7 +400,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/cruiser/cruiser
 	name = "Small Cruiser Shuttle - Cruiser"
 	icon_state = "blue2"
-	base_turf = /turf/simulated/floor/tiled/techfloor
 /area/shuttle/cruiser/station
 	name = "Small Cruiser Shuttle - Station"
 	icon_state = "blue2"
@@ -420,7 +415,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/specialops/transit
 	name = "transit"
 	icon_state = "shuttlered"
-	base_turf = /turf/space/transit/east
 
 // Tether Map has this shuttle
 /area/shuttle/tether
@@ -597,7 +591,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "yellow"
 	requires_power = 0
 	flags = RAD_SHIELDED
-	base_turf = /turf/space
 	ambience = AMBIENCE_HIGHSEC
 
 /area/syndicate_station/start
@@ -659,7 +652,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Skipjack"
 	icon_state = "yellow"
 	requires_power = 0
-	base_turf = /turf/space
 	ambience = AMBIENCE_HIGHSEC
 
 /area/skipjack_station/start
@@ -1176,23 +1168,19 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/entry/D1
 	name = "\improper Shuttle Dock Hallway - Dock One"
 	icon_state = "entry_D1"
-	base_turf = /turf/space
 
 /area/hallway/secondary/entry/D2
 	name = "\improper Shuttle Dock Hallway - Dock Two"
 	icon_state = "entry_D2"
-	base_turf = /turf/space
 
 /area/hallway/secondary/entry/D2/arrivals
 	name = "\improper Shuttle Dock Hallway - Dock Two"
 	icon_state = "entry_D2"
-	base_turf = /turf/space
 	requires_power = 0
 
 /area/hallway/secondary/entry/D3
 	name = "\improper Shuttle Dock Hallway - Dock Three"
 	icon_state = "entry_D3"
-	base_turf = /turf/space
 
 /area/hallway/secondary/entry/D4
 	name = "\improper Shuttle Dock Hallway - Dock Four"
@@ -3282,7 +3270,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 0
 	flags = RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
-	base_turf = /turf/space
 	icon_state = "red2"
 
 /area/bigship/teleporter
@@ -3292,7 +3279,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Small Cruiser"
 	requires_power = 0
 	flags = RAD_SHIELDED
-	base_turf = /turf/space
 	icon_state = "red2"
 	lightswitch = TRUE
 
@@ -3410,7 +3396,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 // Used for creating the exchange areas.
 /area/turbolift
 	name = "Turbolift"
-	base_turf = /turf/simulated/open
 	requires_power = 0
 	sound_env = SMALL_ENCLOSED
 
@@ -3429,7 +3414,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	lift_floor_label = "Deck 1"
 	lift_floor_name = "Engineering, Reactor, Telecomms, Trash Pit, Atmospherics"
 	lift_announce_str = "Arriving at Deck 1."
-	base_turf = /turf/simulated/floor/plating
 
 
 /area/turbolift/t_ship/level2

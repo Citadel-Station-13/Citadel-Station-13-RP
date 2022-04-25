@@ -41,7 +41,6 @@
 	lift_floor_label = "Surface 1"
 	lift_floor_name = "Tram, Dorms, Mining, Surf. EVA"
 	lift_announce_str = "Arriving at Base Level 1."
-	base_turf = /turf/simulated/floor/plating
 
 /area/turbolift/t_surface/level2
 	name = "surface (level 2)"
@@ -311,10 +310,8 @@
 // Mining Underdark
 /area/mine/unexplored/underdark
 	name = "\improper Mining Underdark"
-	base_turf = /turf/simulated/mineral/floor/virgo3b
 /area/mine/explored/underdark
 	name = "\improper Mining Underdark"
-	base_turf = /turf/simulated/mineral/floor/virgo3b
 
 // Mining outpost areas
 /area/outpost/mining_main/passage
@@ -1324,11 +1321,9 @@
 /area/shuttle/tether/crash1
 	name = "\improper Crash Site 1"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/virgo3b
 /area/shuttle/tether/crash2
 	name = "\improper Crash Site 2"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/virgo3b
 
 // Exploration Shuttle stuff //
 /area/tether/exploration
@@ -1538,7 +1533,6 @@ area/shuttle/mining_outpost/shuttle
 	requires_power = 0
 	flags = RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
-	base_turf = /turf/space
 	icon_state = "red2"
 
 /area/bigship/teleporter
@@ -1581,7 +1575,6 @@ area/shuttle/mining_outpost/shuttle
 /area/shuttle/specialops/transit
 	name = "transit"
 	icon_state = "shuttlered"
-	base_turf = /turf/space/transit/east
 
 // Tether Map has this shuttle
 /area/shuttle/tether
@@ -1601,7 +1594,6 @@ area/shuttle/mining_outpost/shuttle
 /area/skipjack_station/transit
 	name = "transit"
 	icon_state = "shuttlered"
-	base_turf = /turf/space/transit/north
 
 /area/skipjack_station/orbit
 	name = "near the Tether"
@@ -1626,7 +1618,6 @@ area/shuttle/mining_outpost/shuttle
 /area/ninja_dojo/start
 	name = "\improper Clan Dojo"
 	icon_state = "shuttlered"
-	base_turf = /turf/simulated/floor/plating
 
 /area/ninja_dojo/orbit
 	name = "near the Tether"
@@ -1635,7 +1626,6 @@ area/shuttle/mining_outpost/shuttle
 /area/ninja_dojo/transit
 	name = "transit"
 	icon_state = "shuttlered"
-	base_turf = /turf/space/transit/north
 
 /area/ninja_dojo/arrivals_dock
 	name = "\improper docked with Tether"

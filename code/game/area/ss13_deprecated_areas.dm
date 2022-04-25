@@ -156,11 +156,9 @@
 /area/supply/station
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	requires_power = 0
-	base_turf = /turf/space
+	requires_power = FALSE
 
 /area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	requires_power = 0
-	base_turf = /turf/space
+	requires_power = FALSE
