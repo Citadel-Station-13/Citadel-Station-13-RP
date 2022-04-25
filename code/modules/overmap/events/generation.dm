@@ -18,58 +18,58 @@
 	count = 15
 	radius = 3
 	continuous = FALSE
-	hazards = /atom/movable/overmap/event/meteor
+	hazards = /atom/movable/overmap_object/event/meteor
 
 /datum/overmap_event/electric
 	name = "electrical storm"
 	count = 18
 	radius = 4
-	hazards = /atom/movable/overmap/event/electric
+	hazards = /atom/movable/overmap_object/event/electric
 
 /datum/overmap_event/dust
 	name = "dust cloud"
 	count = 22
 	radius = 4
-	hazards = /atom/movable/overmap/event/dust
+	hazards = /atom/movable/overmap_object/event/dust
 
 /datum/overmap_event/ion
 	name = "ion cloud"
 	count = 19
 	radius = 4
-	hazards = /atom/movable/overmap/event/ion
+	hazards = /atom/movable/overmap_object/event/ion
 
 /datum/overmap_event/carp
 	name = "carp shoal"
 	count = 12
 	radius = 3
 	continuous = FALSE
-	hazards = /atom/movable/overmap/event/carp
+	hazards = /atom/movable/overmap_object/event/carp
 
 /datum/overmap_event/carp_heavy
 	name = "carp school"
 	count = 9
 	radius = 3
 	continuous = FALSE
-	hazards = /atom/movable/overmap/event/carp_heavy
+	hazards = /atom/movable/overmap_object/event/carp_heavy
 
 /datum/overmap_event/hostile_migration
 	name = "hostile lifesigns"
 	count = 11
 	radius = 3
 	continuous = FALSE
-	hazards = /atom/movable/overmap/event/hostile_migration
+	hazards = /atom/movable/overmap_object/event/hostile_migration
 
 /datum/overmap_event/communications_blackout
 	name = "Ionspheric Bubble"
 	count = 12
 	radius = 3
-	hazards = /atom/movable/overmap/event/communications_blackout
+	hazards = /atom/movable/overmap_object/event/communications_blackout
 
 /datum/overmap_event/cult
 	name = "Screaming Signal"
 	count = 12
 	radius = 3
-	hazards = /atom/movable/overmap/event/cult
+	hazards = /atom/movable/overmap_object/event/cult
 
 
 /datum/overmap_event/pirate
@@ -77,4 +77,4 @@
 	count = 7
 	radius = 3
 	continuous = FALSE
-	hazards = /atom/movable/overmap/event/pirate
+	hazards = /atom/movable/overmap_object/event/pirate

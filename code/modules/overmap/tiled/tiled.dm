@@ -2,4 +2,4 @@
  * tiled overmap effects
  * usually hazards, spatial-filling things, etc
  */
-/atom/movable/overmap/tiled
+/atom/movable/overmap_object/tiled

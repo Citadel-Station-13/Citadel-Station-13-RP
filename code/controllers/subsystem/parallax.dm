@@ -57,9 +57,9 @@ SUBSYSTEM_DEF(parallax)
 /datum/controller/subsystem/parallax/proc/get_parallax_vis_contents(z)
 	. = list()
 	// overmaps
-	var/atom/movable/overmap/entity/visitable/v = get_overmap_sector(z)
+	var/atom/movable/overmap_object/entity/visitable/v = get_overmap_sector(z)
 	if(istype(v))
-		for(var/atom/movable/overmap/other in v.loc)
+		for(var/atom/movable/overmap_object/other in v.loc)
 			if(other == v)
 				continue
 			var/atom/movable/AM = other.get_parallax_image()
@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(parallax)
 	if(event_images.len)
 		// this is snowflakey as fuck but we are reworking overmaps soon
 		// .... right?
-		var/atom/movable/overmap_skybox_holder/holder = new
+		var/atom/movable/overmap_object_skybox_holder/holder = new
 		holder.overlays = event_images
 		. += holder
 
@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(parallax)
  */
 /datum/controller/subsystem/parallax/proc/get_parallax_motion(z)
 	// right now we only care about overmaps
-	var/atom/movable/overmap/entity/visitable/ship/V = get_overmap_sector(z)
+	var/atom/movable/overmap_object/entity/visitable/ship/V = get_overmap_sector(z)
 	if(!istype(V))
 		return
 	if(V.is_still())

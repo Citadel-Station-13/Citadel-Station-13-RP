@@ -41,7 +41,7 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
-/atom/movable/overmap/entity/visitable/ship/landable/generic_shuttle
+/atom/movable/overmap_object/entity/visitable/ship/landable/generic_shuttle
 	scanner_name = "Private Vessel"
 	scanner_desc = @{"[i]Registration[/i]: PRIVATE
 [i]Class[/i]: Small Shuttle

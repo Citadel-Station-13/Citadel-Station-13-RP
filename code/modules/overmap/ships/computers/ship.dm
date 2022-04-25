@@ -1,15 +1,15 @@
 /*
 While these computers can be placed anywhere, they will only function if placed on either a non-space, non-shuttle turf
-with an /atom/movable/overmap/entity/visitable/ship present elsewhere on that z level, or else placed in a shuttle area with an /atom/movable/overmap/entity/visitable/ship
+with an /atom/movable/overmap_object/entity/visitable/ship present elsewhere on that z level, or else placed in a shuttle area with an /atom/movable/overmap_object/entity/visitable/ship
 somewhere on that shuttle. Subtypes of these can be then used to perform ship overmap movement functions.
 */
 /obj/machinery/computer/ship
-	var/atom/movable/overmap/entity/visitable/ship/linked
+	var/atom/movable/overmap_object/entity/visitable/ship/linked
 	var/list/viewers // Weakrefs to mobs in direct-view mode.
 	var/extra_view = 0 // how much the view is increased by when the mob is in overmap mode.
 
 // A late init operation called in SSshuttle, used to attach the thing to the right ship.
-/obj/machinery/computer/ship/proc/attempt_hook_up(atom/movable/overmap/entity/visitable/ship/sector)
+/obj/machinery/computer/ship/proc/attempt_hook_up(atom/movable/overmap_object/entity/visitable/ship/sector)
 	if(!istype(sector))
 		return
 	if(sector.check_ownership(src))
@@ -17,7 +17,7 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 		return 1
 
 /obj/machinery/computer/ship/proc/sync_linked(var/user = null)
-	var/atom/movable/overmap/entity/visitable/ship/sector = get_overmap_sector(z)
+	var/atom/movable/overmap_object/entity/visitable/ship/sector = get_overmap_sector(z)
 	if(!sector)
 		return
 	. = attempt_hook_up_recursive(sector)
@@ -25,10 +25,10 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 		to_chat(user, "<span class='notice'>[src] reconnected to [linked]</span>")
 		user << browse(null, "window=[src]")	// Close reconnect dialog
 
-/obj/machinery/computer/ship/proc/attempt_hook_up_recursive(atom/movable/overmap/entity/visitable/ship/sector)
+/obj/machinery/computer/ship/proc/attempt_hook_up_recursive(atom/movable/overmap_object/entity/visitable/ship/sector)
 	if(attempt_hook_up(sector))
 		return sector
-	for(var/atom/movable/overmap/entity/visitable/ship/candidate in sector)
+	for(var/atom/movable/overmap_object/entity/visitable/ship/candidate in sector)
 		if((. = .(candidate)))
 			return
 

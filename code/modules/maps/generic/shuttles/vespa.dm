@@ -115,7 +115,7 @@
 	name = "\improper Exp Ship - Shield Generator"
 
 // The 'ship'
-/atom/movable/overmap/entity/visitable/ship/vespa
+/atom/movable/overmap_object/entity/visitable/ship/vespa
 	desc = "A spacefaring vessel, of Hephaestus design."
 	scanner_name = "HPV Vespa"
 	scanner_desc = @{"[i]Registration[/i]: HPV Vespa

@@ -38,7 +38,7 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
-/atom/movable/overmap/entity/visitable/ship/landable/tabiranth
+/atom/movable/overmap_object/entity/visitable/ship/landable/tabiranth
 	scanner_name = "Experimental Dropship"
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN
 [i]Class[/i]: Assault Dropship

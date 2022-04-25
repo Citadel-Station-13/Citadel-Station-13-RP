@@ -39,7 +39,7 @@ var/global/list/latejoin_talon = list()
 
 ///////////////////////////
 //// The Talon
-/atom/movable/overmap/entity/visitable/ship/talon
+/atom/movable/overmap_object/entity/visitable/ship/talon
 	scanner_name = "ITV Talon"
 	scanner_desc = @{"[i]Registration[/i]: ITV Talon
 [i]Class[/i]: Frigate
@@ -86,7 +86,7 @@ var/global/list/latejoin_talon = list()
 
 ///////////////////////////
 //// The Lifeboat
-/atom/movable/overmap/entity/visitable/ship/landable/talon_lifeboat
+/atom/movable/overmap_object/entity/visitable/ship/landable/talon_lifeboat
 	name = "Talon lifeboat"
 	desc = "A tiny engineless lifeboat from the ITV Talon."
 	vessel_mass = 1000
@@ -94,7 +94,7 @@ var/global/list/latejoin_talon = list()
 	shuttle = "Talon lifeboat"
 
 /*
-/atom/movable/overmap/entity/visitable/ship/talon_lifeboat/landable/get_skybox_representation()
+/atom/movable/overmap_object/entity/visitable/ship/talon_lifeboat/landable/get_skybox_representation()
 	var/image/I = image('aro.dmi', "skybox")
 	I.pixel_x = 200
 	I.pixel_y = 200

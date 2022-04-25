@@ -20,7 +20,7 @@
 	has_gravity = 0
 
 // The 'Abductor Ship'
-/atom/movable/overmap/entity/visitable/ship/abductor
+/atom/movable/overmap_object/entity/visitable/ship/abductor
 	name = "spacecraft"
 	desc = "Spacefaring vessel."
 	icon_state = "shuttle"

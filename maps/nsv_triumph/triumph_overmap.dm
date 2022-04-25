@@ -1,4 +1,4 @@
-/atom/movable/overmap/entity/visitable/ship/triumph
+/atom/movable/overmap_object/entity/visitable/ship/triumph
 	name = "NSV Triumph"	// Name of the location on the overmap.
 	desc = "The Triumph is one of the many ships that is a part of the NDV Marksmans Fleet in this sector"
 
@@ -28,7 +28,7 @@
 // There is literally a dm file for triumph shuttles, why are these here//
 //////////////////////////////////////////////////////////////////////////
 // EXCURSION SHUTTLE DATA
-/atom/movable/overmap/entity/visitable/ship/landable/excursion
+/atom/movable/overmap_object/entity/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
 	desc = "A modified Excursion shuttle thats seen in use of the Marksman fleet of NanoTrasen."
 	fore_dir = WEST
@@ -53,7 +53,7 @@
 	req_one_access = list(access_pilot)
 
 //Courser Shuttle Data
-/atom/movable/overmap/entity/visitable/ship/landable/courser
+/atom/movable/overmap_object/entity/visitable/ship/landable/courser
 	name = "Courser Scouting Vessel"
 	desc = "Where there's a cannon, there's a way."
 	fore_dir = EAST
@@ -63,7 +63,7 @@
 
 // Public Civilian Shuttle
 
-/atom/movable/overmap/entity/visitable/ship/landable/civvie
+/atom/movable/overmap_object/entity/visitable/ship/landable/civvie
 	name = "Civilian Transport"
 	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
 	fore_dir = EAST
@@ -74,7 +74,7 @@
 
 // Vox Pirate ship (Yaya, yous be giving us all your gear now.)
 
-/atom/movable/overmap/entity/visitable/ship/landable/pirate
+/atom/movable/overmap_object/entity/visitable/ship/landable/pirate
 	name = "Pirate Skiff"
 	desc = "Yous need not care about this."
 	fore_dir = WEST
@@ -97,7 +97,7 @@
 
 // Mining Shuttle
 
-/atom/movable/overmap/entity/visitable/ship/landable/mining
+/atom/movable/overmap_object/entity/visitable/ship/landable/mining
 	name = "Mining Shuttle"
 	desc = "It ain't much, but it's honest work."
 	fore_dir = WEST
@@ -107,7 +107,7 @@
 
 // Trade Shuttle
 
-/atom/movable/overmap/entity/visitable/ship/landable/trade
+/atom/movable/overmap_object/entity/visitable/ship/landable/trade
 	name = "Beruang Trade Ship"
 	desc = "You know our motto: 'We deliver!'"
 	fore_dir = WEST
@@ -117,7 +117,7 @@
 
 //EMT Shuttle
 
-/atom/movable/overmap/entity/visitable/ship/landable/emt
+/atom/movable/overmap_object/entity/visitable/ship/landable/emt
 	name = "Dart EMT Shuttle"
 	desc = "The budget didn't allow for flashing lights."
 	fore_dir = EAST
@@ -128,7 +128,7 @@
 // STATIC PLANET/BASE LOCATIONS
 
 // -- Datums -- //
-/atom/movable/overmap/entity/visitable/sector/debrisfield
+/atom/movable/overmap_object/entity/visitable/sector/debrisfield
 	name = "Debris Field"
 	desc = "Space junk galore."
 	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
@@ -139,7 +139,7 @@
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
 /* Old Class D waypoint, new one is being handled in classd.dm . Please use that one -Bloop
-/atom/movable/overmap/entity/visitable/sector/class_d
+/atom/movable/overmap_object/entity/visitable/sector/class_d
 	name = "Unidentified Planet"
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
 	scanner_desc = @{"[i]Information[/i]: Scans report a planet with nearly no atmosphere, but life-signs are registered."}
@@ -149,7 +149,7 @@
 	color = "#882933"
 */
 
-/atom/movable/overmap/entity/visitable/sector/class_h
+/atom/movable/overmap_object/entity/visitable/sector/class_h
 	name = "Desert Planet"
 	desc = "Planet readings indicate light atmosphere and high heat."
 	scanner_desc = @{"[i]Information[/i]
@@ -162,7 +162,7 @@ Lifesign: Multiple Fauna and humanoid life-signs detected."}
 	color = "#BA9066"
 
 
-/atom/movable/overmap/entity/visitable/sector/pirate_base
+/atom/movable/overmap_object/entity/visitable/sector/pirate_base
 	name = "Vox Pirate Base"
 	desc = "A nest of hostiles to the company. Caution is advised."
 	scanner_desc = @{"[i]Information[/i]
@@ -173,7 +173,7 @@ Warning, unable to scan through sensor shielding systems at location. Possible h
 	color = "#FF3333"
 	initial_generic_waypoints = list("piratebase_hanger")
 
-/atom/movable/overmap/entity/visitable/sector/mining_planet
+/atom/movable/overmap_object/entity/visitable/sector/mining_planet
 	name = "Mineral Rich Planet"
 	desc = "A planet filled with valuable minerals. No life signs currently detected on the surface."
 	scanner_desc = @{"[i]Information[/i]
@@ -184,7 +184,7 @@ Lifesigns: No immediate life-signs detected."}
 	color = "#8F6E4C"
 	initial_generic_waypoints = list("mining_outpost")
 
-/atom/movable/overmap/entity/visitable/sector/gaia_planet
+/atom/movable/overmap_object/entity/visitable/sector/gaia_planet
 	name = "Gaia Planet"
 	desc = "A planet with peaceful life, and ample flora."
 	scanner_desc = @{"[i]Incoming Message[/i]: Hello travler! Looking to enjoy the shine of the star on land?
@@ -204,7 +204,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	color = "#33BB33"
 
-/atom/movable/overmap/entity/visitable/sector/class_p
+/atom/movable/overmap_object/entity/visitable/sector/class_p
 	name = "Frozen Planet"
 	desc = "A world shrouded in cold and snow that seems to never let up."
 	scanner_desc = @{"[i]Information[/i]: A planet with a very cold atmosphere. Possible life signs detected."}
@@ -214,7 +214,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	in_space = 0
 
 /*
-/atom/movable/overmap/entity/visitable/sector/trade_post
+/atom/movable/overmap_object/entity/visitable/sector/trade_post
 	name = "Nebula Gas Food Mart"
 	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
 	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}

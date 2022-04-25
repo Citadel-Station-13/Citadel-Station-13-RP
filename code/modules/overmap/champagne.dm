@@ -86,7 +86,7 @@
 	shuttle.populate_shuttle_objects()
 
 	// Okay now create the SHIP part
-	var/atom/movable/overmap/entity/visitable/ship/landable/champagne/newship = new(start_loc, shuttle_name, shuttle_name)
+	var/atom/movable/overmap_object/entity/visitable/ship/landable/champagne/newship = new(start_loc, shuttle_name, shuttle_name)
 	// It automatically registers itself with SSshuttle
 
 	log_debug("Created new ship [newship] for shuttle [shuttle] at landmark [starting_landmark]")
@@ -106,10 +106,10 @@
 //
 // Landable ship dynamically created at runtime by champagne bottle.
 //
-/atom/movable/overmap/entity/visitable/ship/landable/champagne
+/atom/movable/overmap_object/entity/visitable/ship/landable/champagne
 	desc = "Newly minted space faring vessel."
 
-/atom/movable/overmap/entity/visitable/ship/landable/champagne/Initialize(mapload, _name, _shuttle)
+/atom/movable/overmap_object/entity/visitable/ship/landable/champagne/Initialize(mapload, _name, _shuttle)
 	src.name = _name
 	src.shuttle = _shuttle
 	. = ..()

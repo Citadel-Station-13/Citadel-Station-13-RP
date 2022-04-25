@@ -29,7 +29,7 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
 // Now to make this a planet //
 
-/atom/movable/overmap/entity/visitable/sector/classd
+/atom/movable/overmap_object/entity/visitable/sector/classd
 	name = "Class D Moon"
 	desc = "A rocky planet with radioactive hazards abundant."
 	scanner_desc = @{"[i]Stellar Body[/i]:

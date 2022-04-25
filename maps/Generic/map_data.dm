@@ -4,7 +4,7 @@
 /obj/effect/landmark/map_data/virgo3b
     height = 6
 
-/atom/movable/overmap/entity/visitable/sector/virgo3b // Just a placeholder for when the map isnt loaded
+/atom/movable/overmap_object/entity/visitable/sector/virgo3b // Just a placeholder for when the map isnt loaded
 
 // Triumph
 /obj/effect/landmark/map_data/triumph

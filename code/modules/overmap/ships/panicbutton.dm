@@ -54,7 +54,7 @@
 	if(launched)
 		return
 	launched = TRUE
-	var/atom/movable/overmap/entity/visitable/S = get_overmap_sector(z)
+	var/atom/movable/overmap_object/entity/visitable/S = get_overmap_sector(z)
 	if(!S)
 		visible_message("<span class='danger'>Distress button hit on z[z] but that's not an overmap sector...</span>")
 		return

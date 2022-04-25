@@ -232,7 +232,7 @@
 
 
 // The 'ship' of the excursion shuttle
-/atom/movable/overmap/entity/visitable/ship/landable/excursion
+/atom/movable/overmap_object/entity/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
 	desc = "The traditional Excursion Shuttle."
 	vessel_mass = 8000
@@ -272,7 +272,7 @@
 
 
 // The 'ship' of the courser
-/atom/movable/overmap/entity/visitable/ship/landable/courser
+/atom/movable/overmap_object/entity/visitable/ship/landable/courser
 	name = "Courser Scouting Vessel"
 	desc = "A lightweight reconnaissance ship repurposed for expeditionary field work."
 	vessel_mass = 8000
@@ -392,7 +392,7 @@
 	fuel_consumption = 1
 
 // The 'ship' of the tourbus
-/atom/movable/overmap/entity/visitable/ship/landable/tourbus
+/atom/movable/overmap_object/entity/visitable/ship/landable/tourbus
 	name = "Tour Bus"
 	desc = "A small 'space bus', if you will."
 	vessel_mass = 2000

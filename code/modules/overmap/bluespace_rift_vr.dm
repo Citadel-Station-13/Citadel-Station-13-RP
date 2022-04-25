@@ -1,4 +1,4 @@
-/atom/movable/overmap/bluespace_rift
+/atom/movable/overmap_object/bluespace_rift
 	name = "bluespace rift"
 	desc = "Some sort of bluespace rift. Who knows where it leads?"
 	icon = 'icons/obj/overmap_vr.dmi'
@@ -8,31 +8,31 @@
 	known = 0			//shows up on nav computers automatically
 	scannable = TRUE       //if set to TRUE will show up on ship sensors for detailed scans
 
-	var/atom/movable/overmap/bluespace_rift/partner
+	var/atom/movable/overmap_object/bluespace_rift/partner
 	var/paused
 
-/atom/movable/overmap/bluespace_rift/Initialize(var/mapload, var/new_partner)
+/atom/movable/overmap_object/bluespace_rift/Initialize(var/mapload, var/new_partner)
 	. = ..()
 	if(new_partner)
 		pair(new_partner)
 
-/atom/movable/overmap/bluespace_rift/proc/pair(var/atom/movable/overmap/bluespace_rift/new_partner)
+/atom/movable/overmap_object/bluespace_rift/proc/pair(var/atom/movable/overmap_object/bluespace_rift/new_partner)
 	if(istype(new_partner))
 		partner = new_partner
 		new_partner.partner = src
 
-/atom/movable/overmap/bluespace_rift/proc/take_this(var/atom/movable/AM)
+/atom/movable/overmap_object/bluespace_rift/proc/take_this(var/atom/movable/AM)
 	paused = TRUE
 	AM.forceMove(get_turf(src))
 	paused = FALSE
 
-/atom/movable/overmap/bluespace_rift/Crossed(var/atom/movable/AM)
-	if(istype(AM, /atom/movable/overmap/entity/visitable/ship) && !paused && partner)
+/atom/movable/overmap_object/bluespace_rift/Crossed(var/atom/movable/AM)
+	if(istype(AM, /atom/movable/overmap_object/entity/visitable/ship) && !paused && partner)
 		partner.take_this(AM)
 	else
 		return ..()
 
-/atom/movable/overmap/bluespace_rift/attack_ghost(var/mob/observer/dead/user)
+/atom/movable/overmap_object/bluespace_rift/attack_ghost(var/mob/observer/dead/user)
 	if(!partner && user?.client?.holder)
 		var/response = alert(user, "You appear to be staff. This rift has no exit point. If you want to make one, move to where you want it to go, and click 'Make Here', otherwise click 'Cancel'","Rift Exit","Cancel","Make Here")
 		if(response == "Make Here")

@@ -120,7 +120,7 @@
 //	fuel_consumption = 3
 
 // The 'ship'
-/atom/movable/overmap/entity/visitable/ship/manta_ship
+/atom/movable/overmap_object/entity/visitable/ship/manta_ship
 	name = "SAARE Typhon Four-Niner"
 	desc = "Spacefaring vessel. Broadcasting Private Military Contractor IFF."
 	scanner_desc = @{"[i]Registration[/i]: SAARE Mercenary Cruiser Typhon Four-Niner
@@ -188,7 +188,7 @@
 	fuel_consumption = 0 //this thing is too big already, let's just handwave everything
 	defer_initialisation = TRUE
 
-/atom/movable/overmap/entity/visitable/ship/landable/manta_ship_boat
+/atom/movable/overmap_object/entity/visitable/ship/landable/manta_ship_boat
 	scanner_name = "SAARE Landing Craft"
 	desc = "Spacefaring vessel. Broadcasting Private Military Contractor IFF."
 	scanner_desc = @{"[i]Registration[/i]: SAARE Mercenary Cruiser Typhon Four-Niner's Lander

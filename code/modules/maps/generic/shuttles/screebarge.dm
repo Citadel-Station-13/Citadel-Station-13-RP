@@ -42,7 +42,7 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
-/atom/movable/overmap/entity/visitable/ship/landable/screebarge
+/atom/movable/overmap_object/entity/visitable/ship/landable/screebarge
 	name = "Battle Barge"
 	desc = "Some sort of makeshift battle barge. Appears to be armed."
 	color = "#95c633" //Greenish

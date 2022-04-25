@@ -1,4 +1,4 @@
-/atom/movable/overmap/entity/visitable/sector/tether_gateway/carpfarm
+/atom/movable/overmap_object/entity/visitable/sector/tether_gateway/carpfarm
 	initial_generic_waypoints = list("carpfarm1", "carpfarm2")
 	scanner_name = "Carp-Infested Outpost"
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN

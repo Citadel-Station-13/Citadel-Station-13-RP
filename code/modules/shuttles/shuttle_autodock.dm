@@ -34,7 +34,7 @@
 	if(active_docking_controller)
 		set_docking_codes(active_docking_controller.docking_codes)
 	else if(GLOB.using_map.use_overmap)
-		var/atom/movable/overmap/entity/visitable/location = get_overmap_sector(get_z(current_location))
+		var/atom/movable/overmap_object/entity/visitable/location = get_overmap_sector(get_z(current_location))
 		if(location && location.docking_codes)
 			set_docking_codes(location.docking_codes)
 	dock()

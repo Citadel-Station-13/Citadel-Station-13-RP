@@ -51,7 +51,7 @@
 	shuttle_type = /datum/shuttle/autodock/overmap/curashuttle
 
 // The 'ship'
-/atom/movable/overmap/entity/visitable/ship/landable/curashuttle
+/atom/movable/overmap_object/entity/visitable/ship/landable/curashuttle
 	scanner_name = "CRV Doom Delay"
 	scanner_desc = @{"[i]Registration[/i]: Curabitur Scimed
 [i]Class[/i]: Small Shuttle

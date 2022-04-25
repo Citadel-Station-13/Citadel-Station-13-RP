@@ -1,6 +1,6 @@
 // -- Datums -- //
 
-/atom/movable/overmap/entity/visitable/sector/debrisfield_vr
+/atom/movable/overmap_object/entity/visitable/sector/debrisfield_vr
 	name = "Debris Field"
 	desc = "Space junk galore."
 	scanner_desc = @{"[i]Transponder[/i]: Various faint signals
@@ -157,12 +157,12 @@
 	shuttle_type = /datum/shuttle/autodock/overmap/tinycarrier
 
 /obj/effect/shuttle_landmark/shuttle_initializer/tinycarrier/Initialize()
-	var/atom/movable/overmap/entity/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
+	var/atom/movable/overmap_object/entity/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
 	LAZYINITLIST(O.initial_restricted_waypoints)
 	O.initial_restricted_waypoints["Debris Carrier"] = list(landmark_tag)
 	. = ..()
 
-/atom/movable/overmap/entity/visitable/ship/landable/tinycarrier
+/atom/movable/overmap_object/entity/visitable/ship/landable/tinycarrier
 	scanner_name = "TBD"
 	scanner_desc = "TBD"
 	vessel_mass = 12000
@@ -170,7 +170,7 @@
 	shuttle = "Debris Carrier"
 	fore_dir = WEST
 
-/atom/movable/overmap/entity/visitable/ship/landable/tinycarrier/Initialize()
+/atom/movable/overmap_object/entity/visitable/ship/landable/tinycarrier/Initialize()
 	. = ..()
 	var/datum/lore/organization/O = GLOB.loremaster.organizations[/datum/lore/organization/other/sysdef]
 	var/newname = "SDV [pick(O.ship_names)]"
@@ -181,7 +181,7 @@
 \[b\]Notice\[/b\]: Registration Expired"}
 	rename_areas(newname)
 
-/atom/movable/overmap/entity/visitable/ship/landable/tinycarrier/proc/rename_areas(newname)
+/atom/movable/overmap_object/entity/visitable/ship/landable/tinycarrier/proc/rename_areas(newname)
 	var/datum/shuttle/S = SSshuttle.shuttles[shuttle]
 	for(var/area/A in S.shuttle_area)
 		A.name = "[newname] [initial(A.name)]"

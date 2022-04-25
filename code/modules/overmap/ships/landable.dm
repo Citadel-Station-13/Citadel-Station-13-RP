@@ -2,7 +2,7 @@
 // Mapping location doesn't matter, so long as on a map loaded at the same time as the shuttle areas.
 // Multiz shuttles currently not supported. Non-autodock shuttles currently not supported.
 
-/atom/movable/overmap/entity/visitable/ship/landable
+/atom/movable/overmap_object/entity/visitable/ship/landable
 	var/shuttle                                         // Name of associated shuttle. Must be autodock.
 	var/obj/effect/shuttle_landmark/ship/landmark       // Record our open space landmark for easy reference.
 	var/multiz = 0										// Index of multi-z levels, starts at 0
@@ -10,22 +10,22 @@
 	icon_state = "shuttle"
 	moving_state = "shuttle_moving"
 
-/atom/movable/overmap/entity/visitable/ship/landable/Destroy()
+/atom/movable/overmap_object/entity/visitable/ship/landable/Destroy()
 	GLOB.shuttle_pre_move_event.unregister(SSshuttle.shuttles[shuttle], src)
 	GLOB.shuttle_moved_event.unregister(SSshuttle.shuttles[shuttle], src)
 	return ..()
 
-/atom/movable/overmap/entity/visitable/ship/landable/can_burn()
+/atom/movable/overmap_object/entity/visitable/ship/landable/can_burn()
 	if(status != SHIP_STATUS_OVERMAP)
 		return 0
 	return ..()
 
-/atom/movable/overmap/entity/visitable/ship/landable/burn()
+/atom/movable/overmap_object/entity/visitable/ship/landable/burn()
 	if(status != SHIP_STATUS_OVERMAP)
 		return 0
 	return ..()
 
-/atom/movable/overmap/entity/visitable/ship/landable/check_ownership(obj/object)
+/atom/movable/overmap_object/entity/visitable/ship/landable/check_ownership(obj/object)
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(!shuttle_datum)
 		return
@@ -34,11 +34,11 @@
 		return 1
 
 // We autobuild our z levels.
-/atom/movable/overmap/entity/visitable/ship/landable/find_z_levels()
+/atom/movable/overmap_object/entity/visitable/ship/landable/find_z_levels()
 	src.landmark = new(null, shuttle) // Create in nullspace since we lazy-create overmap z
 	add_landmark(landmark, shuttle)
 
-/atom/movable/overmap/entity/visitable/ship/landable/proc/setup_overmap_location()
+/atom/movable/overmap_object/entity/visitable/ship/landable/proc/setup_overmap_location()
 	if(LAZYLEN(map_z))
 		return // We're already set up!
 	for(var/i = 0 to multiz)
@@ -60,13 +60,13 @@
 	register_z_levels()
 	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
 
-/atom/movable/overmap/entity/visitable/ship/landable/get_areas()
+/atom/movable/overmap_object/entity/visitable/ship/landable/get_areas()
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(!shuttle_datum)
 		return list()
 	return shuttle_datum.find_childfree_areas()
 
-/atom/movable/overmap/entity/visitable/ship/landable/populate_sector_objects()
+/atom/movable/overmap_object/entity/visitable/ship/landable/populate_sector_objects()
 	..()
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(istype(shuttle_datum,/datum/shuttle/autodock/overmap))
@@ -95,7 +95,7 @@
 	base_turf = world.turf
 
 /obj/effect/shuttle_landmark/ship/Destroy()
-	var/atom/movable/overmap/entity/visitable/ship/landable/ship = get_overmap_sector(z)
+	var/atom/movable/overmap_object/entity/visitable/ship/landable/ship = get_overmap_sector(z)
 	if(istype(ship) && ship.landmark == src)
 		ship.landmark = null
 	. = ..()
@@ -159,14 +159,14 @@
 // More ship procs
 //
 
-/atom/movable/overmap/entity/visitable/ship/landable/proc/pre_shuttle_jump(datum/shuttle/given_shuttle, obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
+/atom/movable/overmap_object/entity/visitable/ship/landable/proc/pre_shuttle_jump(datum/shuttle/given_shuttle, obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
 	if(given_shuttle != SSshuttle.shuttles[shuttle])
 		return
 	if(into == landmark)
 		setup_overmap_location() // They're coming boys, better actually exist!
 		GLOB.shuttle_pre_move_event.unregister(SSshuttle.shuttles[shuttle], src)
 
-/atom/movable/overmap/entity/visitable/ship/landable/proc/on_shuttle_jump(datum/shuttle/given_shuttle, obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
+/atom/movable/overmap_object/entity/visitable/ship/landable/proc/on_shuttle_jump(datum/shuttle/given_shuttle, obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
 	if(given_shuttle != SSshuttle.shuttles[shuttle])
 		return
 	var/datum/shuttle/autodock/auto = given_shuttle
@@ -181,11 +181,11 @@
 	status = SHIP_STATUS_LANDED
 	on_landing(from, into)
 
-/atom/movable/overmap/entity/visitable/ship/landable/proc/on_landing(obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
-	var/atom/movable/overmap/entity/visitable/target = get_overmap_sector(get_z(into))
+/atom/movable/overmap_object/entity/visitable/ship/landable/proc/on_landing(obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
+	var/atom/movable/overmap_object/entity/visitable/target = get_overmap_sector(get_z(into))
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(into.landmark_tag == shuttle_datum.motherdock) // If our motherdock is a landable ship, it won't be found properly here so we need to find it manually.
-		for(var/atom/movable/overmap/entity/visitable/ship/landable/landable in SSshuttle.ships)
+		for(var/atom/movable/overmap_object/entity/visitable/ship/landable/landable in SSshuttle.ships)
 			if(landable.shuttle == shuttle_datum.mothershuttle)
 				target = landable
 				break
@@ -194,18 +194,18 @@
 	forceMove(target)
 	halt()
 
-/atom/movable/overmap/entity/visitable/ship/landable/proc/on_takeoff(obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
+/atom/movable/overmap_object/entity/visitable/ship/landable/proc/on_takeoff(obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
 	if(!isturf(loc))
 		forceMove(get_turf(loc))
 		unhalt()
 
-/atom/movable/overmap/entity/visitable/ship/landable/get_landed_info()
+/atom/movable/overmap_object/entity/visitable/ship/landable/get_landed_info()
 	switch(status)
 		if(SHIP_STATUS_LANDED)
-			var/atom/movable/overmap/entity/visitable/location = loc
-			if(istype(loc, /atom/movable/overmap/entity/visitable/sector))
+			var/atom/movable/overmap_object/entity/visitable/location = loc
+			if(istype(loc, /atom/movable/overmap_object/entity/visitable/sector))
 				return "Landed on \the [location.name]. Use secondary thrust to get clear before activating primary engines."
-			if(istype(loc, /atom/movable/overmap/entity/visitable/ship))
+			if(istype(loc, /atom/movable/overmap_object/entity/visitable/ship))
 				return "Docked with \the [location.name]. Use secondary thrust to get clear before activating primary engines."
 			return "Docked with an unknown object."
 		if(SHIP_STATUS_TRANSIT)

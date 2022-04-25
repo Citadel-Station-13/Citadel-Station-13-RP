@@ -17,3 +17,26 @@ SUBSYSTEM_DEF(overmaps)
 	if(!subsystem_initialized)
 		return
 	addtimer(CALLBACK(src, .proc/rebuild_helm_computers), 0, TIMER_UNIQUE)
+
+/proc/build_overmap()
+	if(!GLOB.using_map.use_overmap)
+		return 1
+
+	testing("Building overmap...")
+	world.increment_max_z()
+	GLOB.using_map.overmap_z = world.maxz
+
+	testing("Putting overmap on [GLOB.using_map.overmap_z]")
+	var/area/overmap/A = new
+	for (var/square in block(locate(1,1,GLOB.using_map.overmap_z), locate(GLOB.using_map.overmap_size,GLOB.using_map.overmap_size,GLOB.using_map.overmap_z)))
+		var/turf/T = square
+		if(T.x == 1 || T.y == 1 || T.x == GLOB.using_map.overmap_size || T.y == GLOB.using_map.overmap_size)
+			T = T.ChangeTurf(/turf/overmap/edge)
+		else
+			T = T.ChangeTurf(/turf/overmap)
+		ChangeArea(T, A)
+
+	GLOB.using_map.sealed_levels |= GLOB.using_map.overmap_z
+
+	testing("Overmap build complete.")
+	return 1

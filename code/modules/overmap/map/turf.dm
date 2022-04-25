@@ -31,16 +31,15 @@
 		if(x == GLOB.using_map.overmap_size)
 			I.pixel_x = 5*i + 2
 		add_overlay(I)
-	AddElement(/datum/element/turf_z_transparency)
 
 /turf/overmap/Entered(var/atom/movable/O, var/atom/oldloc)
 	..()
-	if(istype(O, /atom/movable/overmap/entity/visitable/ship))
+	if(istype(O, /atom/movable/overmap_object/entity/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_entered(src, O, oldloc)
 
 /turf/overmap/Exited(var/atom/movable/O, var/atom/newloc)
 	..()
-	if(istype(O, /atom/movable/overmap/entity/visitable/ship))
+	if(istype(O, /atom/movable/overmap_object/entity/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_exited(src, O, newloc)
 
 /turf/overmap/edge

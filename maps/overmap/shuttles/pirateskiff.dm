@@ -11,7 +11,7 @@
 	move_time = 10
 
 // The 'ship' of the shuttle
-/atom/movable/overmap/entity/visitable/ship/landable/pirate
+/atom/movable/overmap_object/entity/visitable/ship/landable/pirate
 	name = "Unknown Vessel"
 	desc = "Scans inconclusive."
 	vessel_mass = 4000
