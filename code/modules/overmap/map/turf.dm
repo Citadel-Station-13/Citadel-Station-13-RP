@@ -2,7 +2,11 @@
 	#warn move to icons/overmap
 	icon = 'icons/turf/space.dmi'
 	icon_state = "map"
-//	initialized = FALSE	// TODO - Fix unsimulated turf initialization so this override is not necessary!
+	plane = OVERMAP_PLANE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+
+	#warn lighting overlay
+	var/static/image/lighting_blackness
 
 /turf/overmap/Initialize()
 	. = ..()
@@ -31,6 +35,13 @@
 		if(x == GLOB.using_map.overmap_size)
 			I.pixel_x = 5*i + 2
 		add_overlay(I)
+
+	// add lighting overlay
+	add_overlay(lighting_blackness)
+
+/turf/overmap/Destroy()
+	cut_overlay(lighting_blackness)
+	return ..()
 
 /turf/overmap/Entered(var/atom/movable/O, var/atom/oldloc)
 	..()
@@ -78,3 +89,13 @@
 		AM.forceMove(get_step(wrap_buddy, wrap_buddy.map_is_to_my))
 	else
 		. = ..()
+
+/**
+ * separates us from rest of space reservations
+ */
+/turf/overmap/border
+	name = ""
+	desc = ""
+	icon_state = ""
+	opacity = TRUE
+	density = TRUE

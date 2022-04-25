@@ -53,8 +53,17 @@ What is the naming convention for planes or layers?
 //OPENSPACE_PLANE reserves all planes between OPENSPACE_PLANE_START and OPENSPACE_PLANE_END inclusive
 #define OPENSPACE_PLANE			-75	///turf/simulated/open will use OPENSPACE_PLANE + z (Valid z's being 2 thru 17)
 #define OPENSPACE_PLANE_START	-73
-#define OPENSPACE_PLANE_END		-58
-#define OVER_OPENSPACE_PLANE	-57
+#define OPENSPACE_PLANE_END		-71
+#define OVER_OPENSPACE_PLANE	-69
+
+// overmaps
+#define OVERMAP_PLANE			-60
+#define OVERMAP_TILED_PANE		-59
+#define OVERMAP_ENTITY_PLANE	-58
+#define OVERMAP_VFX_PLANE		-57
+#define OVERMAP_LIGHTING_PLANE	-56
+#define OVERMAP_HUD_PLANE		-55
+#define OVERMAP_UI_PLANE		-54
 
 //Turf Planes
 #define PLATING_PLANE			-44	//Plating

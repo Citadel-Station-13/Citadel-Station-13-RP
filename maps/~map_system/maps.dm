@@ -113,7 +113,6 @@ var/list/all_maps = list()
 
 	var/use_overmap = 0			// If overmap should be used (including overmap space travel override)
 	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.
-	var/overmap_z = 0			// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
 	var/overmap_event_areas = 0	// How many event "clouds" will be generated
 
 	var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)
