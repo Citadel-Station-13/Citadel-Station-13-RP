@@ -81,7 +81,7 @@
 	..()
 	if(statpanel("Status"))
 		stat("Intent:", "[a_intent]")
-		stat("Move Mode:", "[m_intent]")
+		stat("Move Mode:", "[move_intent]")
 		if(SSemergencyshuttle)
 			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
@@ -1230,6 +1230,12 @@
 	//A slew of bits that may be affected by our species change
 	regenerate_icons()
 
+	default_walk_intent = null
+	default_run_intent = null
+	move_intent = null
+	move_intents = species.move_intents.Copy()
+	set_next_usable_move_intent()
+	
 	if(species)
 		//if(mind) //VOREStation Removal
 			//apply_traits() //VOREStation Removal

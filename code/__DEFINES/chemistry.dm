@@ -43,6 +43,7 @@
 #define CE_SPEEDBOOST "gofast" // Hyperzine
 #define CE_SLOWDOWN "goslow" // Slowdown
 #define CE_ANTACID "nopuke" // Don't puke.
+#define CE_ENERGETIC "energetic" // Speeds up stamina recovery.
 
 #define REAGENTS_PER_SHEET 20
 

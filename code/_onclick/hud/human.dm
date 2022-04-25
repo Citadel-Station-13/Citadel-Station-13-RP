@@ -20,6 +20,9 @@
 	var/atom/movable/screen/using
 	var/atom/movable/screen/inventory/inv_box
 
+	stamina_bar = new
+	adding += stamina_bar
+
 	// Draw the various inventory equipment slots.
 	var/has_hidden_gear
 	for(var/gear_slot in hud_data.gear)
@@ -123,11 +126,11 @@
 		hurt_intent = using
 		//end intent small hud objects
 
-	if(hud_data.has_m_intent)
-		using = new /atom/movable/screen()
+	if(hud_data.has_move_intent)
+		using = new /atom/movable/screen/mov_intent()
 		using.name = "mov_intent"
 		using.icon = ui_style
-		using.icon_state = (mymob.m_intent == "run" ? "running" : "walking")
+		using.icon_state = mymob.move_intent.flags & 0x004 ? "running" : "walking" //We cannot use the macro because of the load order in the .dme
 		using.screen_loc = ui_movi
 		using.color = ui_color
 		using.alpha = ui_alpha
@@ -514,3 +517,7 @@
 			to_chat(usr, SPAN_NOTICE("You are breathing easy."))
 		else
 			to_chat(usr, SPAN_DANGER("You cannot breathe!"))
+
+/atom/movable/screen/mov_intent/Click(var/location, var/control, var/params)
+	if(istype(usr))
+		usr.set_next_usable_move_intent()

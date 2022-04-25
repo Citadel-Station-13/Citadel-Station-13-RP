@@ -310,19 +310,13 @@ var/last_chew = 0
 	lcuffs.loc = target
 	target.legcuffed = lcuffs
 	target.update_inv_legcuffed()
-	if(target.m_intent != "walk")
-		target.m_intent = "walk"
-		if(target.hud_used && user.hud_used.move_intent)
-			target.hud_used.move_intent.icon_state = "walking"
+	target.set_moving_slowly()
 	return 1
 
 /obj/item/handcuffs/legcuffs/equipped(var/mob/living/user,var/slot)
 	. = ..()
 	if(slot == slot_legcuffed)
-		if(user.m_intent != "walk")
-			user.m_intent = "walk"
-			if(user.hud_used && user.hud_used.move_intent)
-				user.hud_used.move_intent.icon_state = "walking"
+		user.set_moving_slowly()
 
 /obj/item/handcuffs/legcuffs/fuzzy
 	name = "fuzzy legcuffs"
@@ -369,10 +363,7 @@ var/last_chew = 0
 	lcuffs.loc = target
 	target.legcuffed = lcuffs
 	target.update_inv_legcuffed()
-	if(target.m_intent != "walk")
-		target.m_intent = "walk"
-		if(target.hud_used && user.hud_used.move_intent)
-			target.hud_used.move_intent.icon_state = "walking"
+	target.set_moving_slowly()
 	return 1
 
 /obj/item/handcuffs/legcuffs/bola/tactical

@@ -35,6 +35,7 @@
 	var/heartbeat = 0
 	var/last_synthcooling_message = 0 		// to whoever is looking at git blame in the future, i'm not the author, and this is shitcode, but what came before i changed it
 	// made me vomit
+	var/stamina = 100
 
 /mob/living/carbon/human/Life()
 
@@ -79,6 +80,8 @@
 
 		handle_pain()
 
+		handle_stamina()
+
 		handle_medical_side_effects()
 
 		handle_heartbeat()
@@ -93,6 +96,30 @@
 	name = get_visible_name()
 
 	pulse = handle_pulse()
+
+/mob/living/carbon/human/get_stamina()
+	return stamina
+
+/mob/living/carbon/human/adjust_stamina(var/amt)
+	var/last_stamina = stamina
+	if(stat == DEAD)
+		stamina = 0
+	else
+		stamina = clamp(stamina + amt, 0, 100)
+		if(stamina <= 0)
+			to_chat(src, SPAN_WARNING("You are exhausted!"))
+			if(MOVING_QUICKLY(src))
+				set_moving_slowly()
+	if(last_stamina != stamina && hud_used)
+		hud_used.update_stamina()
+
+/mob/living/carbon/human/proc/handle_stamina()
+	var/min = CONFIG_GET(number/minimum_stamina_recovery)
+	var/max = CONFIG_GET(number/maximum_stamina_recovery)
+	
+	if((world.time - last_quick_move_time) > 5 SECONDS)
+		var/mod = (lying + (nutrition / initial(nutrition))) / 2
+		adjust_stamina(max(min, max * mod) * (1+chem_effects[CE_ENERGETIC]))
 
 /mob/living/carbon/human/proc/skip_some_updates()
 	if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle

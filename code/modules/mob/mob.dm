@@ -14,6 +14,12 @@
 	init_rendering()
 	hook_vr("mob_new",list(src)) //VOREStation Code
 	update_transform() // Some mobs may start bigger or smaller than normal.
+
+	if(move_intent)
+		move_intent = move_intents[1]
+	if(ispath(move_intent))
+		move_intent = decls_repository.get_decl(move_intent)
+		
 	return ..()
 
 /mob/Destroy()//This makes sure that mobs withGLOB.clients/keys are not just deleted from the game.
@@ -1289,3 +1295,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  */
 /mob/proc/allow_examine(atom/A)
 	return client && (client.eye == src)
+
+/mob/proc/get_stamina_used_per_step()
+	return CONFIG_GET(number/sprint_cost)

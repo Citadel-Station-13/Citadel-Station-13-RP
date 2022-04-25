@@ -16,3 +16,9 @@
 	return r
 
 #define IS_VALID_INDEX(list, index) (list.len && index > 0 && index <= list.len)
+
+/proc/next_in_list(element, list/L)
+	for(var/i=1, i<L.len, i++)
+		if(L[i] == element)
+			return L[i+1]
+	return L[1]

@@ -250,7 +250,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				forceMove(tmob.loc)
 
 				//Running on INTENT_DISARM
-				if(m_intent == "run")
+				if(MOVING_QUICKLY(src))
 					tmob.resting = 1 //Force them down to the ground.
 
 					//Log it for admins (as opposed to walk which logs damage)
@@ -309,7 +309,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				var/calculated_damage = damage/2 //This will sting, but not kill. Does .5 to 2.625 damage, randomly, to each limb.
 
 				//Running on INTENT_HARM
-				if(m_intent == "run")
+				if(MOVING_QUICKLY(src))
 
 					//Not a human, or not a taur, generic message only
 					if(!H || !isTaurTail(H.tail_style))

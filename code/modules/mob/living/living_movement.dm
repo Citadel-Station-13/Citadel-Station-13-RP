@@ -19,33 +19,22 @@
 /mob/CanZASPass(turf/T, is_zone)
 	return ATMOS_PASS_YES
 
-/**
-  * Toggle the move intent of the mob
-  *
-  * triggers an update the move intent hud as well
-  */
-/mob/proc/toggle_move_intent(mob/user)
-	if(m_intent == MOVE_INTENT_RUN)
-		m_intent = MOVE_INTENT_WALK
-	else
-		m_intent = MOVE_INTENT_RUN
 /*
 	if(hud_used && hud_used.static_inventory)
 		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_icon()
 */
 	// nah, vorecode bad.
-	hud_used?.move_intent?.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"
+	//hud_used?.move_intent?.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"
 
 /mob/living/movement_delay()
 	. = ..()
-	switch(m_intent)
-		if(MOVE_INTENT_RUN)
-			if(drowsyness > 0)
-				. += 6
-			. += config_legacy.run_speed
-		if(MOVE_INTENT_WALK)
-			. += config_legacy.walk_speed
+	if(MOVING_QUICKLY(src))
+		if(drowsyness > 0)
+			. += 6
+		. += CONFIG_GET(number/run_speed)
+	else
+		. += CONFIG_GET(number/walk_speed)
 
 /mob/living/Move(NewLoc, Dir)
 	// what the hell does this do i don't know fine we'll keep it for now..
@@ -194,7 +183,7 @@
 	. = ..()
 	if (!istype(AM, /atom/movable) || AM.anchored)
 		//VOREStation Edit - object-specific proc for running into things
-		if(((confused || is_blind()) && stat == CONSCIOUS && prob(50) && m_intent=="run") || flying && !SPECIES_ADHERENT)
+		if(((confused || is_blind()) && stat == CONSCIOUS && prob(50) && MOVING_QUICKLY(src)) || flying && !SPECIES_ADHERENT)
 			AM.stumble_into(src)
 		//VOREStation Edit End
 		/* VOREStation Removal - See above

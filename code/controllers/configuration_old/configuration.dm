@@ -165,11 +165,6 @@
 	var/generate_map = 1
 	var/no_click_cooldown = 0
 
-	//Used for modifying movement speed for mobs.
-	//Unversal modifiers
-	var/run_speed = 0
-	var/walk_speed = 0
-
 	//Mob specific modifiers. NOTE: These will affect different mob types in different ways
 	var/human_delay = 0
 	var/robot_delay = 0
@@ -872,11 +867,6 @@
 					config_legacy.limbs_can_break = value
 				if("allow_headgibs")
 					config_legacy.allow_headgibs = TRUE
-
-				if("run_speed")
-					config_legacy.run_speed = value
-				if("walk_speed")
-					config_legacy.walk_speed = value
 
 				if("human_delay")
 					config_legacy.human_delay = value

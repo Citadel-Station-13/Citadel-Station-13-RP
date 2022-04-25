@@ -11,3 +11,6 @@
 #define FLOATING				(1<<4)
 /// Ventcrawling
 #define VENTCRAWLING			(1<<5)
+
+#define MOVING_DELIBERATELY(X) (X.move_intent.flags & MOVE_INTENT_DELIBERATE)
+#define MOVING_QUICKLY(X) (X.move_intent.flags & MOVE_INTENT_QUICK)

@@ -268,7 +268,7 @@
 			tally = 1
 		tally *= purge
 
-	if(m_intent == "walk")
+	if(MOVING_DELIBERATELY(src))
 		tally *= 1.5
 
 	return . + tally + config_legacy.animal_delay

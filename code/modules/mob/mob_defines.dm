@@ -5,14 +5,20 @@
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
-
+  
+	var/last_quick_move_time = 0
+	
 	// Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
 	// Intents
 	/// How are we intending to move? Walk/run/etc.
-	var/m_intent = MOVE_INTENT_RUN
+	var/decl/move_intent/move_intent = /decl/move_intent/walk
+	var/list/move_intents = list(/decl/move_intent/walk)
+
+	var/decl/move_intent/default_walk_intent
+	var/decl/move_intent/default_run_intent
 
 	var/next_mob_id = 0
 
@@ -150,6 +156,8 @@
 	var/obj/buckled = null//Living
 
 	var/seer = 0 //for cult//Carbon, probably Human
+
+
 
 	var/datum/hud/hud_used = null
 
