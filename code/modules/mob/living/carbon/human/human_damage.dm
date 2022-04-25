@@ -425,13 +425,6 @@ This function restores all organs.
 	return
 
 
-/mob/living/carbon/human/proc/get_organ(var/zone)
-	if(!zone)
-		zone = BP_TORSO
-	else if (zone in list( O_EYES, O_MOUTH ))
-		zone = BP_HEAD
-	return organs_by_name[zone]
-
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null)
 	if(GLOB.Debug2)
 		log_world("## DEBUG: human/apply_damage() was called on [src], with [damage] damage, an armor value of [blocked], and a soak value of [soaked].")
