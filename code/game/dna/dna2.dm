@@ -128,13 +128,14 @@ var/global/list/datum/gene/dna_genes[0]
 	new_dna.real_name=real_name
 	new_dna.species=species
 	new_dna.body_markings=body_markings.Copy()
-	new_dna.base_species=base_species //VOREStation Edit
-	new_dna.species_traits=species_traits.Copy() //VOREStation Edit
-	new_dna.blood_color=blood_color //VOREStation Edit
-	new_dna.custom_say=custom_say //VOREStaton Edit
-	new_dna.custom_ask=custom_ask //VOREStaton Edit
-	new_dna.custom_whisper=custom_whisper //VOREStaton Edit
-	new_dna.custom_exclaim=custom_exclaim //VOREStaton Edit
+	new_dna.base_species=base_species
+	new_dna.custom_species=custom_species
+	new_dna.species_traits=species_traits.Copy()
+	new_dna.blood_color=blood_color
+	new_dna.custom_say=custom_say
+	new_dna.custom_ask=custom_ask
+	new_dna.custom_whisper=custom_whisper
+	new_dna.custom_exclaim=custom_exclaim
 	new_dna.s_base=s_base
 	for(var/b=1;b<=DNA_SE_LENGTH;b++)
 		new_dna.SE[b]=SE[b]

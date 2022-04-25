@@ -12,9 +12,9 @@
 	desc = "A card indicating that the owner is allowed to carry a sidearm. It is issued by CentCom, so it is valid until it expires on April 17th, 2563."
 
 
-/* arokha:Aronai Kadigan
+/* arokha:Aronai Sieyes
 /obj/item/clothing/accessory/permit/gun/fluff/aronai_kadigan
-	name = "Aronai Kadigan's Sidearm Permit"
+	name = "Aronai Sieyes's Sidearm Permit"
 	desc = "A card indicating that the owner is allowed to carry a sidearm. It is issued by CentCom, so it is valid until it expires on February 16th, 2562."
 */
 

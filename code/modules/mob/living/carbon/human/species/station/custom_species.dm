@@ -13,7 +13,6 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/custom_species)
 
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
-	min_age = 18
 	max_age = 200
 	health_hud_intensity = 2
 	num_alternate_languages = 3

@@ -25,7 +25,6 @@
 	blood_color = "#856A16"
 	base_color = "#DED2AD"
 
-	min_age = 18
 
 	//Angels glow in the dark.
 	has_glowing_eyes = 1
@@ -69,7 +68,6 @@
 	blood_color = "#27173D"
 	base_color = "#580412"
 
-	min_age = 18
 
 	//Demons glow in the dark.
 	has_glowing_eyes = 1

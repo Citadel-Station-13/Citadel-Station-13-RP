@@ -70,8 +70,7 @@
 	var/list/removable_spells = list()
 
 	var/has_feral_spells = FALSE
-	virus_immune = 1 // They practically ARE one.
-	min_age = 18
+	virus_immune = TRUE // They practically ARE one.
 	max_age = 200
 
 	blurb = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \
@@ -710,7 +709,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "Vasilissans are a tall, lanky, spider like people. \
@@ -778,7 +776,6 @@
 	primitive_form = "Wolpin"
 	color_mult = 1
 
-	min_age = 18
 	max_age = 200
 
 	blurb = "Big buff werewolves. These are a limited functionality event species that are not balanced for regular gameplay. Adminspawn only."
@@ -846,7 +843,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "Apidaens are an insectoid race from the far galactic rim. \

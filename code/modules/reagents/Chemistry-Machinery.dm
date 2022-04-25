@@ -6,8 +6,8 @@
 	desc = "Grinds stuff into itty bitty bits."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "juicer1"
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -38,10 +38,7 @@
 
 /obj/machinery/reagentgrinder/Initialize(mapload, newdir)
 	. = ..()
-	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/motor(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/reagentgrinder/examine(mob/user)
