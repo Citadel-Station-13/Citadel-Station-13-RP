@@ -4,6 +4,8 @@
 	icon_state = "map"
 	plane = OVERMAP_PLANE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	/// we are always lit, we use our own lighting system
+	luminosity = 1
 
 	#warn lighting overlay
 	var/static/image/lighting_blackness
