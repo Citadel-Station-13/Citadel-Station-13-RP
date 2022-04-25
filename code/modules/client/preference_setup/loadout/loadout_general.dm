@@ -123,3 +123,15 @@
 		var/obj/item/toy/tennis/ball_type = tball
 		tennis_balls[initial(ball_type.name)] = ball_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(tennis_balls, /proc/cmp_text_asc))
+
+/datum/gear/swimsuitcaps
+	name = "Swimsuit Capsule Selection"
+	path = /obj/item/storage/box/fluff/swimsuit
+
+/datum/gear/swimsuitcaps/New()
+	..()
+	var/list/swimsuits = list()
+	for(var/swimsuit in typesof(/obj/item/storage/box/fluff/swimsuit))
+		var/obj/item/storage/box/fluff/swimsuit/swimsuit_type = swimsuit
+		swimsuits[initial(swimsuit_type.name)] = swimsuit_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(swimsuits, /proc/cmp_text_asc))

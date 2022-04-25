@@ -26,6 +26,7 @@
 #define LANGUAGE_GIBBERISH "Babel"
 #define LANGUAGE_VERNAL "Vernal"
 #define LANGUAGE_ADHERENT "Vibrant"
+#define LANGUAGE_AKULA "Olelo Mano"
 
 //Languages from _vr file
 #define LANGUAGE_SLAVIC "Pan-Slavic"

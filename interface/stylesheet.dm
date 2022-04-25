@@ -232,6 +232,7 @@ h1.alert, h2.alert		{color: #000000;}
 .bug					{color: #9e9e39;}
 .vox					{color: #AA00AA;}
 .zaddat					{color: #941C1C;}
+.akula					{color: #FF1919;}
 .rough					{font-family: "Trebuchet MS", cursive, sans-serif;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
 .terminus				{font-family: "Times New Roman", Times, serif, sans-serif}

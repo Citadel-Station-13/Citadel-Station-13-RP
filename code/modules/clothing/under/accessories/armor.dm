@@ -420,3 +420,59 @@ obj/item/clothing/accessory/armor/helmcover
 	name = "\improper SAARE helmet cover"
 	desc = "A fabric cover for armored helmets. This one has SAARE's colors."
 	icon_state = "helmcover_saare"
+
+//Lightweight Limb Plating - These are incompatible with plate carriers.
+
+//Debug variant
+/obj/item/clothing/accessory/armor/limb_plate
+	name = "armurr plating"
+	desc = "You shouldn't be seeing this. Contact a Maintainer."
+	icon = 'icons/obj/clothing/ties.dmi'
+	icon_override = 'icons/mob/ties.dmi'
+	icon_state = "bronze"
+	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 5, bio = 5, rad = 0)
+
+/obj/item/clothing/accessory/armor/limb_plate/arm_l
+	name = "left shoulder plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "arm_plate_l"
+	slot = ACCESSORY_SLOT_ARMOR_C
+
+/obj/item/clothing/accessory/armor/limb_plate/arm_r
+	name = "right shoulder plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "arm_plate_r"
+	slot = ACCESSORY_SLOT_ARMOR_A
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_l
+	name = "left thigh plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "leg_plate_l"
+	slot = ACCESSORY_SLOT_ARMOR_L
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_r
+	name = "right thigh plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "leg_plate_r"
+	slot = ACCESSORY_SLOT_ARMOR_M
+
+//EMT Subtypes
+/obj/item/clothing/accessory/armor/limb_plate/arm_l/emt
+	name = "left shoulder plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "arm_paramed_l"
+
+/obj/item/clothing/accessory/armor/limb_plate/arm_r/emt
+	name = "right shoulder plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "arm_paramed_r"
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_l/emt
+	name = "left thigh plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "leg_paramed_l"
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_r/emt
+	name = "right thigh plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "leg_paramed_r"
