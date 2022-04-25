@@ -52,6 +52,8 @@ research holder datum.
 	var/list/possible_designs = list()
 	///List of available designs.
 	var/list/known_designs = list()
+	/// TODO: REWORK. FABRICATORS. DESIGNS. AND. SCIENCE - tracks unique design IDs
+	var/list/known_design_ids = list()
 
 /datum/research/New() //Insert techs into possible_tech here. Known_tech automatically updated.
 	for(var/T in typesof(/datum/tech) - /datum/tech)
@@ -60,6 +62,13 @@ research holder datum.
 		possible_designs += new D(src)
 //	generate_integrated_circuit_designs()
 	RefreshResearch()
+
+/datum/research/Destroy()
+	possible_designs = null
+	known_designs = null
+	known_design_ids = null
+	known_tech = null
+	return ..()
 
 /datum/research/techonly
 
@@ -94,7 +103,10 @@ research holder datum.
 	return
 
 /datum/research/proc/AddDesign2Known(var/datum/design/D)
-	LAZYDISTINCTADD(known_designs, D)
+	if(known_design_ids[D.id])
+		return
+	known_design_ids[D.id] = D
+	known_designs += D
 
 ///Refreshes known_tech and known_designs list
 ///Input/Output: n/a

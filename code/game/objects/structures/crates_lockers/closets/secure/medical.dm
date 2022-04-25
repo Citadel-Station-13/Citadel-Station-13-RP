@@ -140,7 +140,8 @@
 		/obj/item/extinguisher/mini,
 		/obj/item/storage/box/freezer,
 		/obj/item/clothing/accessory/storage/white_vest,
-		/obj/item/barrier_tape_roll/medical)
+		/obj/item/barrier_tape_roll/medical,
+		/obj/item/storage/lockbox/limb_plate/emt)
 
 /obj/structure/closet/secure_closet/paramedic/Initialize(mapload)
 	starts_with += /obj/item/gps/medical

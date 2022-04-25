@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			addtimer(CALLBACK(src, .proc/install_free_return_software), 0)
 
 	//Free civilian AR included
-	new /datum/nifsoft/ar_civ(src)
+	new /datum/nifsoft/hud/ar_civ(src)
 
 	//If given wear (like when spawned) then done
 	if(wear)

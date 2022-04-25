@@ -41,7 +41,6 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\triumph\triumph_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
 	admin_levels = list()
 	sealed_levels = list()
@@ -124,8 +123,6 @@
 
 	meteor_strike_areas = null
 
-	default_skybox = /datum/skybox_settings/triumph
-
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
 		/area/vacant/vacant_site/east,
@@ -189,16 +186,11 @@
 /datum/map/triumph/perform_map_generation()
 	return 1
 
-/datum/skybox_settings/triumph/New()
-	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
-	return icon_state
-
 // For making the 4-in-1 holomap, we calculate some offsets
 #define TRIUMPH_MAP_SIZE 140 // Width and height of compiled in triumph z levels.
 #define TRIUMPH_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
 #define TRIUMPH_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TRIUMPH_MAP_SIZE) - TRIUMPH_HOLOMAP_CENTER_GUTTER) / 2) // 100
 #define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2) // 60
-
 
 // We have a bunch of stuff common to the station z levels
 /datum/map_z_level/triumph/ship

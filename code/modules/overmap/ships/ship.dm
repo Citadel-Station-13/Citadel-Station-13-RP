@@ -119,12 +119,15 @@
 	else if(still)
 		STOP_PROCESSING(SSprocessing, src)
 		for(var/zz in map_z)
-			toggle_move_stars(zz)
+			SSparallax.update_z_motion(zz)
+			// fuck you we're extra brutal today, decelration kills you too!
+			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, fore_dir)
 	else
 		START_PROCESSING(SSprocessing, src)
 		glide_size = WORLD_ICON_SIZE/max(DS2TICKS(SSprocessing.wait), 1)	// Down to whatever decimal
 		for(var/zz in map_z)
-			toggle_move_stars(zz, fore_dir)
+			SSparallax.update_z_motion(zz)
+			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, REVERSE_DIR(fore_dir))
 
 /obj/effect/overmap/visitable/ship/proc/get_brake_path()
 	if(!get_acceleration())

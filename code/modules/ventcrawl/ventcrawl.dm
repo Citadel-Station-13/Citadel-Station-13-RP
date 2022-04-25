@@ -183,7 +183,7 @@ var/list/ventcrawl_machinery = list(
 		for(var/obj/machinery/atmospherics/A in (pipeline.members || pipeline.edges))
 			if(!A.pipe_image)
 				A.pipe_image = image(A, A.loc, dir = A.dir)
-				A.pipe_image.plane = PLANE_LIGHTING_ABOVE
+				A.pipe_image.plane = ABOVE_LIGHTING_PLANE
 			pipes_shown += A.pipe_image
 			client.images += A.pipe_image
 	if(client)

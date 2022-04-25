@@ -361,10 +361,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	send_resources()
 
-	if(!void) //ew. will rework this soon once this gets merged.
-		void = new()
-		void.MakeGreed()
-	screen += void
+	mob.reload_rendering()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
@@ -693,9 +690,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	*/
 
 	view = new_size
+	mob.reload_rendering()
 
 	/*
-	apply_clickcatcher()
 	mob.reload_fullscreen()
 	if (isliving(mob))
 		var/mob/living/M = mob

@@ -139,7 +139,8 @@
 	if(mymob.client && apply_to_client)
 		mymob.client.screen = list()
 		mymob.client.screen += adding
-		mymob.client.screen += mymob.client.void
+
+		mymob.reload_rendering()
 
 /* I wish we had this. Not yet, though.
 /datum/hud/ghost/show_hud(version = 0, mob/viewmob)
