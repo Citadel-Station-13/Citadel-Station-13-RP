@@ -41,8 +41,7 @@
 				current_limb.relocate()
 				current_limb.open = 0
 
-		H.update_hud_med_health()
-		H.update_hud_med_status()
+		H.update_hud_med_all()
 
 		if(H.handcuffed)
 			var/obj/item/W = H.handcuffed
