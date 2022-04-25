@@ -202,7 +202,7 @@
 		inflict_shock_damage(200) // Mobs that are very beefy or resistant to shock may survive getting struck.
 		updatehealth()
 		if(health <= 0)
-			visible_message(span("critical", "\The [src] disintegrates into ash!"))
+			visible_message(SPAN_CRITICAL("\The [src] disintegrates into ash!"))
 			ash()
 			return // No point deafening something that wont exist.
 
@@ -214,7 +214,7 @@
 	if(!client)
 		updatehealth()
 		if(health <= 0)
-			visible_message(span("critical", "\The [src] flashes into ash as the lava consumes them!"))
+			visible_message(SPAN_CRITICAL("\The [src] flashes into ash as the lava consumes them!"))
 			ash()
 
 //Acid
@@ -227,7 +227,7 @@
 		inflict_poison_damage(10)
 		updatehealth()
 		if(health <= 0)
-			visible_message(span("critical", "\The [src] melts into slurry!"))
+			visible_message(SPAN_CRITICAL("\The [src] melts into slurry!"))
 			gib()
 			return // No point deafening something that wont exist.
 

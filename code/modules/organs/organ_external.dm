@@ -40,6 +40,8 @@
 	//* Appearance vars. *//
 	/// Snowflake warning, reee. Used for slime limbs.
 	var/nonsolid
+	/// Also for slimes. Used for transparent limbs.
+	var/transparent = 0
 	/// Icon state base.
 	var/icon_name = null
 	/// Part flag
@@ -69,8 +71,6 @@
 	var/mob/living/applied_pressure
 	/// Markings (body_markings) to apply to the icon
 	var/list/markings = list()
-	///For better slime limbs
-	var/transparent = 0
 
 	//* Wound and structural data. *//
 	/// How often wounds should be updated, a higher number means less often
@@ -1446,3 +1446,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/proc/has_genitals()
 	return !BP_IS_ROBOTIC(src) && species && species.sexybits_location == organ_tag
+
+/obj/item/organ/external/proc/is_hidden_by_tail()
+	if(owner && owner.tail_style && owner.tail_style.hide_body_parts && (organ_tag in owner.tail_style.hide_body_parts))
+		return TRUE

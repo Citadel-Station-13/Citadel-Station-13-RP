@@ -461,7 +461,7 @@
 	stuttering += 20
 	make_jittery(150)
 	emp_act(1)
-	to_chat(src, span("critical", "You've been struck by lightning!"))
+	to_chat(src, SPAN_CRITICAL("You've been struck by lightning!"))
 
 // Called when touching a lava tile.
 // Does roughly 100 damage to unprotected mobs, and 20 to fully protected mobs.

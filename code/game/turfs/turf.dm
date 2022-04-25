@@ -334,7 +334,7 @@
 
 /turf/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_FLOORWALL)
-		to_chat(user, span("notice", "You build a floor."))
+		to_chat(user, SPAN_NOTICE("You build a floor."))
 		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
 		return TRUE
 	return FALSE

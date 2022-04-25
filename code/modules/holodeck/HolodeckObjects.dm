@@ -379,9 +379,9 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 			return TRUE
 		if(prob(50))
 			I.forceMove(loc)
-			visible_message(span("notice", "Swish! \the [I] lands in \the [src]."), 3)
+			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), 3)
 		else
-			visible_message(span("warning", "\The [I] bounces off of \the [src]'s rim!"), 3)
+			visible_message(SPAN_WARNING( "\The [I] bounces off of \the [src]'s rim!"), 3)
 		return FALSE
 	return ..()
 

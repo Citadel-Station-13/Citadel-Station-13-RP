@@ -3960,7 +3960,7 @@ END CITADEL CHANGE */
 		return 0
 
 	if (C.volume < req)
-		to_chat(user, span("warning", "There's not enough [C.name] to coat the [src]!"))
+		to_chat(user, SPAN_WARNING( "There's not enough [C.name] to coat the [src]!"))
 		return 0
 
 	var/id = C.id
@@ -3995,7 +3995,7 @@ END CITADEL CHANGE */
 	overlays += J
 
 	if (user)
-		user.visible_message(span("notice", "[user] dips \the [src] into \the [coating.name]"), span("notice", "You dip \the [src] into \the [coating.name]"))
+		user.visible_message(SPAN_NOTICE("[user] dips \the [src] into \the [coating.name]"), SPAN_NOTICE("You dip \the [src] into \the [coating.name]"))
 
 	return 1
 

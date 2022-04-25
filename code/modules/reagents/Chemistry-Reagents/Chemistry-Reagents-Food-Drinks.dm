@@ -489,7 +489,7 @@ End Citadel Change */
 		return
 	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		if(prob(5))
-			to_chat(M, span("rose","You feel a pleasant sensation in your mouth."))
+			to_chat(M, SPAN_ROSE("You feel a pleasant sensation in your mouth."))
 		M.bodytemperature += rand(10, 25)
 		return
 	if(ishuman(M))
@@ -4212,7 +4212,7 @@ End Citadel Change */
 		M.take_organ_damage(0, removed * 1.5 * dfactor)
 		data["temperature"] -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
 		if (lastburnmessage+100 < world.time	)
-			to_chat(M, span("danger", "Searing hot oil burns you, wash it off quick!"))
+			to_chat(M, SPAN_DANGER("Searing hot oil burns you, wash it off quick!"))
 			lastburnmessage = world.time
 
 /datum/reagent/nutriment/triglyceride/oil/corn
