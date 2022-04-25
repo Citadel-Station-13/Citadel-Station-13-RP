@@ -88,7 +88,6 @@
 		/datum/mob_descriptor/vox_markings = 0
 		)
 
-	min_age = 18
 	wikilink="https://wiki.vore-station.net/Vox"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,

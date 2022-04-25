@@ -86,6 +86,9 @@
 		if(!client)
 			species.handle_npc(src)
 
+	else if(stat == DEAD && !stasis)
+		handle_defib_timer()
+
 	if(skip_some_updates())
 		return											//We go ahead and process them 5 times for HUD images and other stuff though.
 
@@ -819,10 +822,13 @@
 	if (species.body_temperature == null)
 		return //this species doesn't have metabolic thermoregulation
 
-	// FBPs will overheat, prosthetic limbs are fine.
-	if(robobody_count)
-		if(!nif || !nif.flag_check(NIF_O_HEATSINKS,NIF_FLAGS_OTHER)) //VOREStation Edit - NIF heatsinks
-			bodytemperature += round(robobody_count*1.75)
+	// FBPs will overheat when alive, prosthetic limbs are fine.
+	if(stat != DEAD && robobody_count)
+		if(!nif || !nif.flag_check(NIF_O_HEATSINKS,NIF_FLAGS_OTHER)) // NIF heatsinks prevent the base heat increase per tick if installed.
+			bodytemperature += round(robobody_count*1.15)
+		var/obj/item/organ/internal/robotic/heatsink/HS = internal_organs_by_name[O_HEATSINK]
+		if(!HS || HS.is_broken()) // However, NIF Heatsinks will not compensate for a core FBP component (your heatsink) being lost.
+			bodytemperature += round(robobody_count*0.5)
 
 	var/body_temperature_difference = species.body_temperature - bodytemperature
 
@@ -916,14 +922,14 @@
 	if(reagents)
 		chem_effects.Cut()
 
-		if(!isSynthetic())
+		if(touching)
+			touching.metabolize()
+		if(ingested)
+			ingested.metabolize()
+		if(bloodstr)
+			bloodstr.metabolize()
 
-			if(touching)
-				touching.metabolize()
-			if(ingested)
-				ingested.metabolize()
-			if(bloodstr)
-				bloodstr.metabolize()
+		if(!isSynthetic())
 
 			var/total_phoronloss = 0
 			GET_VSC_PROP(atmos_vsc, /atmos/phoron/contamination_loss, loss_per_part)
@@ -942,7 +948,7 @@
 					adjustToxLoss(total_phoronloss)
 
 	if(status_flags & GODMODE)
-		return 0	//godmode
+		return FALSE	//godmode
 
 	if(species.light_dam)
 		var/light_amount = 0
@@ -1155,7 +1161,7 @@
 
 /mob/living/carbon/human/set_stat(var/new_stat)
 	. = ..()
-	if(stat)
+	if(. && stat)
 		update_skin(1)
 
 /mob/living/carbon/human/handle_regular_hud_updates()
@@ -1509,9 +1515,9 @@
 		if (getToxLoss() >= 30 && isSynthetic())
 			if(!confused)
 				if(prob(5))
-					to_chat(src, "<span class='danger'>You lose directional control!</span>")
+					to_chat(src, SPAN_USERDANGER("You lose directional control!"))
 					Confuse(10)
-		if (getToxLoss() >= 45)
+		if (getToxLoss() >= 45 && !isSynthetic())
 			spawn vomit()
 
 
@@ -1687,7 +1693,7 @@
 	if(Pump)
 		temp += Pump.standard_pulse_level - PULSE_NORM
 
-	if(round(vessel.get_reagent_amount("blood")) <= BLOOD_VOLUME_BAD)	//how much blood do we have
+	if(round(vessel.get_reagent_amount("blood")) <= species.blood_volume*species.blood_level_danger)	//how much blood do we have
 		temp = temp + 3	//not enough :(
 
 	if(status_flags & FAKEDEATH)
@@ -1788,6 +1794,16 @@
 
 	//Process regular life stuff
 	nif.life()
+
+/mob/living/carbon/human/proc/handle_defib_timer()
+	if(!should_have_organ(O_BRAIN))
+		return // No brain.
+
+	var/obj/item/organ/internal/brain/brain = internal_organs_by_name[O_BRAIN]
+	if(!brain)
+		return // Still no brain.
+
+	brain.tick_defib_timer()
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS

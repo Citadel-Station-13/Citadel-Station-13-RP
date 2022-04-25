@@ -214,7 +214,7 @@
 	brainmob.nif = nif
 	brainmob.soulcatcher = src
 	brainmob.container = src
-	brainmob.stat = 0
+	brainmob.set_stat(CONSCIOUS)
 	brainmob.silent = FALSE
 	dead_mob_list -= brainmob
 	brainmob.add_language(LANGUAGE_GALCOM)

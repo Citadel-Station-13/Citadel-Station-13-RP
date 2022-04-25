@@ -78,6 +78,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	var/skin_color
 	///If set, applies blood color rather than species' blood color.
 	var/blood_color = "#030303"
+	var/blood_name = "oil"
 	var/list/species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_XENOCHIMERA)
 	///"Species Name" = "Robolimb Company" , List, when initialized, will become "Species Name" = RobolimbDatum, used for alternate species sprites.
 	var/list/species_alternates = list(SPECIES_TAJ = "Unbranded - Tajaran", SPECIES_UNATHI = "Unbranded - Unathi")
@@ -211,6 +212,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	desc = "This limb looks to be more like a strange.. puppet, than a prosthetic."
 	icon = 'icons/mob/human_races/cyberlimbs/veymed/dionaea/skrellian.dmi'
 	blood_color = "#63b521"
+	blood_name = "synthetic ichor"
 	speech_bubble_appearance = "machine"
 	unavailable_to_build = TRUE
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_TAJ, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_SKRELL, SPECIES_ZADDAT)
@@ -225,18 +227,23 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/cybersolutions/cybersolutions_main.dmi'
 	unavailable_to_build = TRUE
 
-/datum/robolimb/cybersolutions_alt2
-	company = "Cyber Solutions - Array"
-	desc = "This limb is simple and functional; array of sensors on a featureless case."
-	icon = 'icons/mob/human_races/cyberlimbs/cybersolutions/cybersolutions_alt2.dmi'
-	unavailable_to_build = TRUE
-	parts = list(BP_HEAD)
-
 /datum/robolimb/cybersolutions_alt1
 	company = "Cyber Solutions - Wight"
 	desc = "This limb has cheap plastic panels mounted on grey metal."
 	icon = 'icons/mob/human_races/cyberlimbs/cybersolutions/cybersolutions_alt1.dmi'
 	unavailable_to_build = TRUE
+/datum/robolimb/cybersolutions_alt2
+	company = "Cyber Solutions - Outdated"
+	desc = "This limb is of severely outdated design; there's no way it's comfortable or very functional to use."
+	icon = 'icons/mob/human_races/cyberlimbs/cybersolutions/cybersolutions_alt2.dmi'
+	unavailable_to_build = TRUE
+
+/datum/robolimb/cybersolutions_alt3
+	company = "Cyber Solutions - Array"
+	desc = "This limb is simple and functional; array of sensors on a featureless case."
+	icon = 'icons/mob/human_races/cyberlimbs/cybersolutions/cybersolutions_alt3.dmi'
+	unavailable_to_build = 1
+	parts = list(BP_HEAD)
 
 /datum/robolimb/einstein
 	company = "Einstein Engines"
@@ -341,14 +348,21 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	skin_tone = 1
 	species_alternates = list(SPECIES_SKRELL = "Vey-Med - Skrell")
 	blood_color = "#CCCCCC"
+	blood_name = "coolant"
 	speech_bubble_appearance = "normal"
 	robo_brute_mod = 1.1
 	robo_burn_mod = 1.1
 
-/datum/robolimb/veymed/skrell
+/datum/robolimb/veymed_skrell
 	company = "Vey-Med - Skrell"
+	desc = "This high quality limb is nearly indistinguishable from an organic one."
+	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_skrell.dmi'
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_TAJ, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_DIONA, SPECIES_ZADDAT)
 	blood_color = "#4451cf"
+	blood_name = "coolant"
+	speech_bubble_appearance = "normal"
+	robo_brute_mod = 1.05
+	robo_burn_mod = 1.05
 
 // thanks kraso
 /datum/robolimb/moth
