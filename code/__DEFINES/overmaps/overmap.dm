@@ -29,18 +29,18 @@
  */
 /// how far we visually glitz the overmap's sides
 #define OVERMAP_SIDE_VISUAL_GLITZ			7
-/// for entity lookup, at what range or below do we use byond range()
-#define OVERMAP_ENTITY_LOOKUP_MAX_BYOND		7
 /// for entity spatial hashing, the max bound size of any entity assuming this is the side of a square
 #warn set bound size helpers on atom movable, even though we arne't using it yet
 #define OVERMAP_ENTITY_MAX_BOUND_SIZE		96
 /// for entity spatial hashing, the amount of space in each hash - this is the side of a square too
-#define OVERMAP_SPATIAL_HASH_SIZE			16
+#define OVERMAP_SPATIAL_HASH_SIZE			8
+/// distance added to all spatial lookups to accomdate for large, off-center objects
+#define OVERMAP_SPATIAL_ADD_LOOKUP_RADIUS	3
+/// to prevent the weirdness of cross/uncross, this distance from the edge will never have anything generated in it
+#define OVERMAP_GENERATION_EDGE_MARGIN		2
+
 
 ///////// LEGACY BELOW
-
- //How far from the edge of overmap zlevel could randomly placed objects spawn
-#define OVERMAP_EDGE 2
 
 #define SHIP_SIZE_TINY	1
 #define SHIP_SIZE_SMALL	2

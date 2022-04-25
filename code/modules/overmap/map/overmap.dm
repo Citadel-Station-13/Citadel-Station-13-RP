@@ -11,7 +11,7 @@
 	/// are we initialized
 	var/initialized = FALSE
 	/// our space reservation
-	var/datum/space_reservation/space_reservation
+	var/datum/turf_reservation/space_reservation
 	/// width
 	var/width
 	/// height
@@ -56,10 +56,28 @@
 	stellar_location?.desc = desc
 
 /datum/overmap/proc/Initialize(width, height, list/datum/overmap_generator/generators = list())
+	src.width = width
+	src.height = height
+	Allocate()
+	SetupBounds()
+	SetupVisuals()
+	Generate(generators)
 
 /datum/overmap/proc/Allocate()
+	if(space_reservation)
+		CRASH("Already allocated")
+	#warn check bounds of width/height vs world maxx/maxy
+	turf_reservation = SSmapping.RequestBlockReservation(width = width, height = height, type = /datum/turf_reservation/overmap, turf_type_override = /turf/overmap)
+	if(!turf_reservation)
+		CRASH("Failed to allocate.")
+	cached_z = turf_reservation.bottom_left_coords[3]
+	cached_x_start = turf_reservation.bottom_left_coords[1]
+	cached_y_start = turf_reservation.bottom_left_coords[2]
+	cached_x_end = turf_reservation.top_right_coords[1]
+	cached_y_end = turf_reservation.top_right_coords[2]
 
 /datum/overmap/proc/SetupBounds()
+	// reservation code already did this
 
 /datum/overmap/proc/Generate(list/datum/overmap_generator/generators = list())
 

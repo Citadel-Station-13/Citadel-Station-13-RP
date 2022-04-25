@@ -9,6 +9,7 @@
 	var/top_right_coords[3]
 	var/wipe_reservation_on_release = TRUE
 	var/turf_type = /turf/space
+	var/area_type
 	var/borderturf
 
 /*
@@ -70,12 +71,13 @@
 		var/turf/T = i
 		reserved_turfs |= T
 		T.flags &= ~UNUSED_RESERVATION_TURF
+		#warn this is where area should probably change
 		SSmapping.unused_turfs["[T.z]"] -= T
 		SSmapping.used_turfs[T] = src
 		if(borderturf && (T.x == BL.x || T.x == TR.x || T.y == BL.y || T.y == TR.y))
-			T.ChangeTurf(borderturf, borderturf)
+			T.ChangeTurf(borderturf)
 		else
-			T.ChangeTurf(turf_type, turf_type)
+			T.ChangeTurf(turf_type)
 	src.width = width
 	src.height = height
 	return TRUE

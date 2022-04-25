@@ -3129,6 +3129,8 @@
 #include "code\modules\overmap\lighting\spotlight.dm"
 #include "code\modules\overmap\map\area.dm"
 #include "code\modules\overmap\map\overmap.dm"
+#include "code\modules\overmap\map\reservation.dm"
+#include "code\modules\overmap\map\spatial_ops.dm"
 #include "code\modules\overmap\map\turf.dm"
 #include "code\modules\overmap\ships\landable.dm"
 #include "code\modules\overmap\ships\panicbutton.dm"
