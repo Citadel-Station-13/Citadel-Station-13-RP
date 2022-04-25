@@ -3099,7 +3099,7 @@
 #include "code\modules\overmap\bounds.dm"
 #include "code\modules\overmap\champagne.dm"
 #include "code\modules\overmap\core.dm"
-#include "code\modules\overmap\FIX_THIS.dm"
+#include "code\modules\overmap\legacy_map_sectors.dm"
 #include "code\modules\overmap\object.dm"
 #include "code\modules\overmap\overmap_planet.dm"
 #include "code\modules\overmap\overmap_shuttle.dm"
