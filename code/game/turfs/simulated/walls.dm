@@ -46,6 +46,7 @@
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
+	clear_plants()
 	dismantle_wall(null, null, TRUE, !changing_turf)
 	return ..()
 
@@ -120,10 +121,6 @@
 			plant.pixel_y = 0
 		plant.update_neighbors()
 
-/turf/simulated/wall/ChangeTurf(var/turf/N, var/tell_universe, var/force_lighting_update, var/preserve_outdoors)
-	clear_plants()
-	return ..(N, tell_universe, force_lighting_update, preserve_outdoors)
-
 //Appearance
 /turf/simulated/wall/examine(mob/user)
 	. = ..()
@@ -191,8 +188,8 @@
 	return ..()
 
 /turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product, changeturf = TRUE)
-
-	playsound(src, 'sound/items/Welder.ogg', 100, 1)
+	if(!changeturf)
+		playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
 		if(reinf_material)
 			reinf_material.place_dismantled_girder(src, reinf_material, girder_material)

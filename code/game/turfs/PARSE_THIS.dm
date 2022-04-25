@@ -1,51 +1,3 @@
-// This is a list of turf types we dont want to assign to baseturfs unless through initialization or explicitly
-GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
-	/turf/open/space,
-	/turf/baseturf_bottom,
-	)))
-
-/turf/proc/empty(turf_type=/turf/open/space, baseturf_type, list/ignore_typecache, flags)
-	// Remove all atoms except observers, landmarks, docking ports
-	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port))
-	var/list/allowed_contents = typecache_filter_list_reverse(get_all_contents_ignoring(ignore_typecache), ignored_atoms)
-	allowed_contents -= src
-	for(var/i in 1 to allowed_contents.len)
-		var/thing = allowed_contents[i]
-		qdel(thing, force=TRUE)
-
-	if(turf_type)
-		var/turf/newT = ChangeTurf(turf_type, baseturf_type, flags)
-		SSair.remove_from_active(newT)
-		CALCULATE_ADJACENT_TURFS(newT, KILL_EXCITED)
-
-/turf/proc/copyTurf(turf/T)
-	if(T.type != type)
-		T.ChangeTurf(type)
-	if(T.icon_state != icon_state)
-		T.icon_state = icon_state
-	if(T.icon != icon)
-		T.icon = icon
-	if(color)
-		T.atom_colours = atom_colours.Copy()
-		T.update_atom_colour()
-	if(T.dir != dir)
-		T.setDir(dir)
-	return T
-
-/turf/open/copyTurf(turf/T, copy_air = FALSE)
-	. = ..()
-	if (isopenturf(T))
-		var/datum/component/wet_floor/slip = GetComponent(/datum/component/wet_floor)
-		if(slip)
-			var/datum/component/wet_floor/WF = T.AddComponent(/datum/component/wet_floor)
-			WF.InheritComponent(slip)
-		if (copy_air)
-			var/turf/open/openTurf = T
-			openTurf.air.copy_from(air)
-
-//wrapper for ChangeTurf()s that you want to prevent/affect without overriding ChangeTurf() itself
-/turf/proc/TerraformTurf(path, new_baseturf, flags)
-	return ChangeTurf(path, new_baseturf, flags)
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
@@ -288,10 +240,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			target_baseturfs -= new_baseturfs & GLOB.blacklisted_automated_baseturfs
 			new_baseturfs += target_baseturfs
 
-	var/turf/newT = copytarget.copyTurf(src, copy_air)
+	var/turf/newT = copytarget.CopyTurf(src, copy_air)
 	newT.baseturfs = baseturfs_string_list(new_baseturfs, newT)
 	return newT
-
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
@@ -308,8 +259,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		var/turf/T = I
 		for(var/obj/machinery/door/firedoor/FD in T)
 			FD.CalculateAffectingAreas()
-
-	HandleTurfChange(src)
 
 /turf/open/AfterChange(flags, oldType)
 	..()
@@ -356,6 +305,3 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		T.update_visuals()
 		SSair.add_to_active(T)
 
-/turf/proc/ReplaceWithLattice()
-	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-	new /obj/structure/lattice(locate(x, y, z))

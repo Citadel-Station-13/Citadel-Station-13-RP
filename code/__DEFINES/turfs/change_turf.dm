@@ -6,3 +6,6 @@
 #define CHANGETURF_INHERIT_AIR 16 // Inherit air from previous turf. Implies CHANGETURF_IGNORE_AIR
 /// preserves the outdoors variable
 #define CHANGETURF_PRESERVE_OUTDOORS		32
+
+// CopyTurf() flags
+// -- currently none --

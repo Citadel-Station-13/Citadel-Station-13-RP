@@ -1,9 +1,13 @@
-//pending tg change turf stuff
+// This is a list of turf types we dont want to assign to baseturfs unless through initialization or explicitly
+GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
+	/turf/space,
+	/turf/baseturf_bottom,
+	)))
 
 /turf/proc/empty(turf_type=/turf/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
-	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /obj/effect/landmark, /atom/movable/lighting_object)) // typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port, /atom/movable/lighting_object))
-	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
+	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /atom/movable/lighting_object, /obj/effect/shuttle_landmark))
+	var/list/allowed_contents = typecache_filter_list_reverse(get_all_contents_ignoring(ignore_typecache), ignored_atoms)
 	allowed_contents -= src
 	for(var/i in 1 to allowed_contents.len)
 		var/thing = allowed_contents[i]
@@ -11,26 +15,26 @@
 
 	if(turf_type)
 		ChangeTurf(turf_type)
-//		var/turf/newT = ChangeTurf(turf_type)
-/*
-		SSair.remove_from_active(newT)
-		CALCULATE_ADJACENT_TURFS(newT)
-		SSair.add_to_active(newT,1)
-*/
 
-/turf/proc/ScrapeAway()
-	return ChangeTurf(get_base_turf_by_area(loc))
+/turf/proc/CopyTurf(turf/T, copy_flags = NONE)
+	if(T.type != type)
+		T.ChangeTurf(type)
+	if(T.icon_state != icon_state)
+		T.icon_state = icon_state
+	if(T.icon != icon)
+		T.icon = icon
+	if(color)
+		T.atom_colours = atom_colours.Copy()
+		T.update_atom_colour()
+	if(T.dir != dir)
+		T.setDir(dir)
+	return T
 
-/turf/proc/ReplaceWithLattice()
-	src.ChangeTurf(get_base_turf_by_area(src))
-	spawn()
-		new /obj/structure/lattice( locate(src.x, src.y, src.z) )
+//wrapper for ChangeTurf()s that you want to prevent/affect without overriding ChangeTurf() itself
+/turf/proc/TerraformTurf(path, new_baseturf, flags)
+	return ChangeTurf(path, new_baseturf, flags)
 
-// Removes all signs of lattice on the pos of the turf -Donkieyo
-/turf/proc/RemoveLattice()
-	var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-	if(L)
-		qdel(L)
+// LEGACY BELOW
 
 // Called after turf replaces old one
 /turf/proc/post_change()
@@ -46,7 +50,7 @@
 
 #warn tell universe is pants on head and can be nuked now
 //Creates a new turf
-/turf/proc/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0, var/preserve_outdoors = FALSE)
+/turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
 	if (!N)
 		return
 
@@ -151,3 +155,13 @@
 
 	if(preserve_outdoors)
 		outdoors = old_outdoors
+
+// LEGACY ABOVE
+
+/turf/proc/RemoveLattice()
+	for(var/obj/structure/lattice/L in src)
+		qdel(L)
+
+/turf/proc/ReplaceWithLattice()
+	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+	new /obj/structure/lattice(locate(x, y, z))
