@@ -606,7 +606,7 @@ Swimsuits
 */
 
 /datum/gear/uniform/swimsuits
-	name = "Swimsuits Selection"
+	name = "Swimsuit Selection"
 	path = /obj/item/clothing/under/swimsuit
 
 /datum/gear/uniform/swimsuits/New()

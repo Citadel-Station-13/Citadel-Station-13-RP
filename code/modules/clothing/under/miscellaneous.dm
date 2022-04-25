@@ -812,7 +812,10 @@
 /*
  * swimsuit
  */
-/obj/item/clothing/under/swimsuit/
+/obj/item/clothing/under/swimsuit
+	name = "primitive swimsuit"
+	desc = "In all reality, this is just a simple loincloth."
+	icon_state = "loincloth"
 	siemens_coefficient = 1
 	body_parts_covered = 0
 
