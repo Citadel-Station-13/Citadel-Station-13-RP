@@ -1288,7 +1288,7 @@ I said no!
 	result = /obj/item/reagent_containers/food/snacks/kitsuneudon
 
 /datum/recipe/pillbugball
-	reagents = list("carbon" = 5)
+	reagents = list(MAT_CARBON = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/meat/grubmeat
 	)

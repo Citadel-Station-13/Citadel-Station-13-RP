@@ -20,10 +20,10 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
 
 	//primitive_form = "" //None for these guys
-	language = "Xenomorph"
-	name_language = "Xenomorph"
-	species_language = "Xenomorph"
-	secondary_langs = list("Xenomorph")
+	language = LANGUAGE_XENO
+	name_language = LANGUAGE_XENO
+	species_language = LANGUAGE_XENO
+	secondary_langs = list(LANGUAGE_XENO)
 	num_alternate_languages = 3
 
 	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags

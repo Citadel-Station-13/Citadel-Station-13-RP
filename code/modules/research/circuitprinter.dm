@@ -19,7 +19,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	var/speed = 1
 
 	materials = list(
-		DEFAULT_WALL_MATERIAL = 0,
+		MAT_STEEL = 0,
 		MAT_GLASS = 0,
 		MAT_PLASTEEL = 0,
 		MAT_PLASTIC = 0,

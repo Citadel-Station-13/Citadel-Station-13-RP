@@ -5,7 +5,7 @@
 	icon_state = "fitness-cup_black"
 	base_icon = "fitness-cup"
 	volume = 50
-	matter = list("plastic" = 2000)
+	matter = list(MAT_PLASTIC = 2000)
 	filling_states = list(5,10,15,20,25,30,35,40,45,50)
 	possible_transfer_amounts = list(5, 10, 15, 25)
 	rim_pos = null // no fruit slices

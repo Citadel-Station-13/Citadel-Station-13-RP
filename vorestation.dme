@@ -108,6 +108,7 @@
 #include "code\__DEFINES\atmospherics\helpers.dm"
 #include "code\__DEFINES\atmospherics\pipes.dm"
 #include "code\__DEFINES\carbon\languages.dm"
+#include "code\__DEFINES\carbon\organs.dm"
 #include "code\__DEFINES\carbon\species.dm"
 #include "code\__DEFINES\color\color.dm"
 #include "code\__DEFINES\color\colour_priority.dm"

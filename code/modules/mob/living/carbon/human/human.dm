@@ -1141,7 +1141,7 @@
 
 	if(species)
 
-		if(species.name && species.name == new_species && species.name != "Custom Species")
+		if(species.name && species.name == new_species && species.name != SPECIES_CUSTOM)
 			return
 		if(species.language)
 			remove_language(species.language)

@@ -214,7 +214,7 @@
 
 				if(istype(L, /mob/living/carbon/human) && dna) //Ignore slime(wo)men
 					var/mob/living/carbon/human/H = L
-					if(H.species.name == "Promethean")
+					if(H.species.name == SPECIES_PROMETHEAN)
 						continue
 
 				if(!L.canmove) // Only one slime can latch on at a time.

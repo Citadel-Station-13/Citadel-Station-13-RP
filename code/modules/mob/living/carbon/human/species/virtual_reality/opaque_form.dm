@@ -2,7 +2,7 @@
 // Due to sprite construction, they have to have separate limb lists
 
 /datum/species/shapeshifter/promethean/avatar/human
-	name = "Virtual Reality Human"
+	name = SPECIES_VR_HUMAN
 	icobase = 'icons/mob/human_races/r_human.dmi'
 	deform = 'icons/mob/human_races/r_def_human.dmi'
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
@@ -21,7 +21,7 @@
 		)
 
 /datum/species/shapeshifter/promethean/avatar/unathi
-	name = "Virtual Reality Unathi"
+	name = SPECIES_VR_UNATHI
 	icobase = 'icons/mob/human_races/r_lizard.dmi'
 	deform = 'icons/mob/human_races/r_def_lizard.dmi'
 	tail = "sogtail"
@@ -63,7 +63,7 @@
 		)
 
 /datum/species/shapeshifter/promethean/avatar/skrell
-	name = "Virtual Reality Skrell"
+	name = SPECIES_VR_SKRELL
 	icobase = 'icons/mob/human_races/r_skrell.dmi'
 	deform = 'icons/mob/human_races/r_def_skrell.dmi'
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
@@ -82,7 +82,7 @@
 		)
 
 /datum/species/shapeshifter/promethean/avatar/teshari
-	name = "Virtual Reality Teshari"
+	name = SPECIES_VR_TESHARI
 	icobase = 'icons/mob/human_races/r_teshari.dmi'
 	deform = 'icons/mob/human_races/r_teshari.dmi'
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
@@ -101,7 +101,7 @@
 		)
 
 /datum/species/shapeshifter/promethean/avatar/diona
-	name = "Virtual Reality Diona"
+	name = SPECIES_VR_DIONA
 	icobase = 'icons/mob/human_races/r_diona.dmi'
 	deform = 'icons/mob/human_races/r_def_plant.dmi'
 	appearance_flags = 0
@@ -120,7 +120,7 @@
 		)
 
 /datum/species/shapeshifter/promethean/avatar/monkey
-	name = "Virtual Reality Monkey"
+	name = SPECIES_VR_MONKEY
 	icobase = 'icons/mob/human_races/monkeys/r_monkey.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_monkey.dmi'
 	damage_overlays = 'icons/mob/human_races/masks/dam_monkey.dmi'
@@ -143,7 +143,7 @@
 		)
 
 /datum/species/shapeshifter/promethean/avatar/vox
-	name = "Virtual Reality Vox"
+	name = SPECIES_VR_VOX
 	icobase = 'icons/mob/human_races/r_vox.dmi'
 	deform = 'icons/mob/human_races/r_def_vox.dmi'
 	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR
@@ -162,7 +162,7 @@
 		)
 
 /datum/species/shapeshifter/promethean/avatar/skeleton
-	name = "Virtual Reality Skeleton"
+	name = SPECIES_VR_SKELETON
 	icobase = 'icons/mob/human_races/r_skeleton.dmi'
 	deform = 'icons/mob/human_races/r_skeleton.dmi'
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR

@@ -170,95 +170,15 @@
 #define INCAPACITATION_DISABLED (INCAPACITATION_KNOCKDOWN|INCAPACITATION_STUNNED)
 #define INCAPACITATION_ALL (~INCAPACITATION_NONE)
 
-#define MODIFIER_STACK_FORBID	1	// Disallows stacking entirely.
-#define MODIFIER_STACK_EXTEND	2	// Disallows a second instance, but will extend the first instance if possible.
-#define MODIFIER_STACK_ALLOWED	3	// Multiple instances are allowed.
+/// Disallows stacking entirely.
+#define MODIFIER_STACK_FORBID	1
+/// Disallows a second instance, but will extend the first instance if possible.
+#define MODIFIER_STACK_EXTEND	2
+/// Multiple instances are allowed.
+#define MODIFIER_STACK_ALLOWED	3
 
-#define MODIFIER_GENETIC	1	// Modifiers with this flag will be copied to mobs who get cloned.
-
-// Bodyparts and organs.
-#define O_EYES     "eyes"
-#define O_HEART    "heart"
-#define O_LUNGS    "lungs"
-#define O_BRAIN    "brain"
-#define O_LIVER    "liver"
-#define O_KIDNEYS  "kidneys"
-#define O_APPENDIX "appendix"
-#define O_VOICE    "voicebox"
-#define O_SPLEEN   "spleen"
-#define O_STOMACH  "stomach"
-#define O_INTESTINE "intestine"
-#define O_STANDARD list(O_EYES, O_HEART, O_LUNGS, O_BRAIN, O_LIVER, O_KIDNEYS, O_SPLEEN, O_APPENDIX, O_VOICE, O_STOMACH, O_INTESTINE)
-
-// Augments
-#define O_AUG_EYES "occular augment"
-
-#define O_AUG_L_FOREARM "left forearm augment"
-#define O_AUG_R_FOREARM "right forearm augment"
-#define O_AUG_L_UPPERARM "left upperarm augment"
-#define O_AUG_R_UPPERARM "right upperarm augment"
-#define O_AUG_L_HAND "left hand augment"
-#define O_AUG_R_HAND "right hand augment"
-
-#define O_AUG_RIBS "rib augment"
-#define O_AUG_SPINE "spinal augment"
-#define O_AUG_PELVIC "pelvic augment"
-
-// Non-Standard organs
-#define O_MOUTH    "mouth"
-#define O_CELL     "cell"
-#define O_PLASMA   "plasma vessel"
-#define O_HIVE     "hive node"
-#define O_NUTRIENT "nutrient vessel"
-#define O_STRATA   "neural strata"
-#define O_RESPONSE "response node"
-#define O_GBLADDER "gas bladder"
-#define O_POLYP    "polyp segment"
-#define O_ANCHOR   "anchoring ligament"
-#define O_REGBRUTE "pneumoregenitor"
-#define O_REGBURN  "thermoregenitor"
-#define O_REGOXY   "respiroregenitor"
-#define O_REGTOX   "toxoregenitor"
-#define O_ACID     "acid gland"
-#define O_EGG      "egg sac"
-#define O_RESIN    "resin spinner"
-#define O_AREJECT  "immune hub"
-#define O_VENTC    "morphoplastic node"
-#define O_VRLINK   "virtual node"
-#define O_ALL list(O_STANDARD, O_MOUTH, O_CELL, O_PLASMA, O_HIVE, O_NUTRIENT, O_STRATA, O_RESPONSE, O_GBLADDER, O_POLYP, O_ANCHOR, O_REGBRUTE, O_REGBURN, O_REGOXY, O_REGTOX, O_ACID, O_EGG, O_RESIN, O_AREJECT, O_VENTC, O_VRLINK)
-
-// FBP components.
-#define O_PUMP     "hydraulic hub"
-#define O_CYCLER   "reagent cycler"
-#define O_HEATSINK "thermal regulator"
-#define O_DIAGNOSTIC "diagnostic controller"
-
-
-// External organs, aka limbs
-#define BP_L_FOOT "l_foot"
-#define BP_R_FOOT "r_foot"
-#define BP_L_LEG  "l_leg"
-#define BP_R_LEG  "r_leg"
-#define BP_L_HAND "l_hand"
-#define BP_R_HAND "r_hand"
-#define BP_L_ARM  "l_arm"
-#define BP_R_ARM  "r_arm"
-#define BP_HEAD   "head"
-#define BP_TORSO  "torso"
-#define BP_GROIN  "groin"
-#define BP_ALL list(BP_GROIN, BP_TORSO, BP_HEAD, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG)
-
-#define BP_FLOAT  "floatation disc"
-#define BP_JETS  "maneuvering jets"
-#define BP_COOLING_FINS  "cooling fins"
-
-#define SYNTH_BLOOD_COLOUR "#030303"
-#define SYNTH_FLESH_COLOUR "#575757"
-
-#define BP_IS_BRITTLE(org)  ((org) && ((org).status == ORGAN_BRITTLE))
-#define BP_IS_CRYSTAL(org)  ((org) && ((org).robotic == ORGAN_CRYSTAL))
-#define BP_IS_ROBOTIC(org)  ((org) && ((org).robotic == ORGAN_ROBOT))
-#define BP_IS_ASSISTED(org) ((org) && ((org).robotic == ORGAN_ASSISTED))
+/// Modifiers with this flag will be copied to mobs who get cloned.
+#define MODIFIER_GENETIC	1
 
 #define MOB_PULL_NONE 0
 #define MOB_PULL_SMALLER 1
@@ -269,79 +189,6 @@
 #define NOMUT		0
 #define COLORMUT 	1
 #define SPECIESMUT	2
-
-//carbon taste sensitivity defines, used in mob/living/carbon/proc/ingest
-#define TASTE_HYPERSENSITIVE 3 //anything below 5%
-#define TASTE_SENSITIVE 2 //anything below 7%
-#define TASTE_NORMAL 1 //anything below 15%
-#define TASTE_DULL 0.5 //anything below 30%
-#define TASTE_NUMB 0.1 //anything below 150%
-
-// If they're in an FBP, what braintype.
-#define FBP_NONE	""
-#define FBP_CYBORG	"Cyborg"
-#define FBP_POSI	"Positronic"
-#define FBP_DRONE	"Drone"
-
-// Similar to above but for borgs.
-// Seperate defines are unfortunately required since borgs display the brain differently for some reason.
-#define BORG_BRAINTYPE_CYBORG	"Cyborg"
-#define BORG_BRAINTYPE_POSI		"Robot"
-#define BORG_BRAINTYPE_DRONE	"Drone"
-#define BORG_BRAINTYPE_AI_SHELL	"AI Shell"
-
-// 'Regular' species.
-#define SPECIES_HUMAN			"Human"
-#define SPECIES_HUMAN_VATBORN	"Vatborn"
-#define SPECIES_HUMAN_GRAV		"grav-adapted Human"
-#define SPECIES_HUMAN_SPACER	"space-adapted Human"
-#define SPECIES_UNATHI			"Unathi"
-#define SPECIES_SKRELL			"Skrell"
-#define SPECIES_TESHARI			"Teshari"
-#define SPECIES_TAJ				"Tajara"
-#define SPECIES_PROMETHEAN		"Promethean"
-#define SPECIES_DIONA			"Diona"
-#define SPECIES_VOX				"Vox"
-#define SPECIES_ZADDAT			"Zaddat"
-#define SPECIES_ADHERENT		"Adherent"
-
-// Monkey and alien monkeys.
-#define SPECIES_MONKEY			"Monkey"
-#define SPECIES_MONKEY_TAJ		"Farwa"
-#define SPECIES_MONKEY_SKRELL	"Neaera"
-#define SPECIES_MONKEY_UNATHI	"Stok"
-
-// Virtual Reality IDs.
-#define SPECIES_VR				"Virtual Reality Avatar"
-#define SPECIES_VR_HUMAN		"Virtual Reality Human"
-#define SPECIES_VR_UNATHI		"Virtual Reality Unathi"
-#define SPECIES_VR_TAJ			"Virtual Reality Tajara"
-#define SPECIES_VR_SKRELL		"Virtual Reality Skrell"
-#define SPECIES_VR_TESHARI		"Virtual Reality Teshari"
-#define SPECIES_VR_DIONA		"Virtual Reality Diona"
-#define SPECIES_VR_MONKEY		"Virtual Reality Monkey"
-#define SPECIES_VR_SKELETON		"Virtual Reality Skeleton"
-#define SPECIES_VR_VOX			"Virtual Reality Vox"
-
-// Ayyy IDs.
-#define SPECIES_XENO			"Xenomorph"
-#define SPECIES_XENO_DRONE		"Xenomorph Drone"
-#define SPECIES_XENO_HUNTER		"Xenomorph Hunter"
-#define SPECIES_XENO_SENTINEL	"Xenomorph Sentinel"
-#define SPECIES_XENO_QUEEN		"Xenomorph Queen"
-
-// Misc species. Mostly unused but might as well be complete.
-#define SPECIES_SHADOW			"Shadow"
-#define SPECIES_SKELETON		"Skeleton"
-#define SPECIES_GOLEM			"Golem"
-#define SPECIES_EVENT1			"X Occursus"
-#define SPECIES_EVENT2			"X Anomalous"
-#define SPECIES_EVENT3			"X Unowas"
-
-// Replicant types. Currently only used for alien pods and events.
-#define SPECIES_REPLICANT		"Replicant"
-#define SPECIES_REPLICANT_ALPHA	"Alpha Replicant"
-#define SPECIES_REPLICANT_BETA	"Beta Replicant"
 
 // Used to seperate simple animals by ""intelligence"".
 #define SA_PLANT	1
@@ -427,44 +274,3 @@
 #define EXAMINE_SKIPHANDS			0x0040
 #define EXAMINE_SKIPLEGS			0x0080
 #define EXAMINE_SKIPFEET			0x0100
-
-//Protean organs
-#define O_ORCH		"orchestrator"
-#define O_FACT		"refactory"
-
-//Alraune organs
-#define A_FRUIT	"fruit gland"
-
-//Apidean organs
-#define H_STOMACH "honey stomach"
-
-//species defines
-#define SPECIES_AKULA			"Akula"
-#define SPECIES_ALRAUNE			"Alraune"
-#define SPECIES_NEVREAN			"Nevrean"
-#define SPECIES_PROTEAN			"Protean"
-#define SPECIES_RAPALA			"Rapala"
-#define SPECIES_SERGAL			"Sergal"
-#define SPECIES_SHADEKIN_CREW   "Black-Eyed Shadekin"
-#define SPECIES_VASILISSAN		"Vasilissan"
-#define SPECIES_VULPKANIN		"Vulpkanin"
-#define SPECIES_XENOCHIMERA		"Xenochimera"
-#define SPECIES_XENOHYBRID		"Xenomorph Hybrid"
-#define SPECIES_ZORREN_FLAT		"Flatland Zorren"
-#define SPECIES_ZORREN_HIGH		"Highlander Zorren"
-#define SPECIES_CUSTOM			"Custom Species"
-#define SPECIES_PLASMAMAN		"Phoronoid"
-#define SPECIES_APIDAEN			"Apidaen"
-#define SPECIES_VETALA_RUDDY	"Ruddy Vetalan"
-#define SPECIES_VETALA_PALE		"Pale Vetalan"
-#define SPECIES_AURIL			"Auril"
-#define SPECIES_DREMACHIR		"Dremachir"
-//#define SPECIES_ADHERENT		"Adherent" //leaving this in in case I need it, delete if not needed - Papalus
-//monkey species
-#define SPECIES_MONKEY_AKULA		"Sobaka"
-#define SPECIES_MONKEY_NEVREAN		"Sparra"
-#define SPECIES_MONKEY_SERGAL		"Saru"
-#define SPECIES_MONKEY_VULPKANIN	"Wolpin"
-//event species
-#define SPECIES_WEREBEAST			"Werebeast"
-#define SPECIES_SHADEKIN			"Shadekin"

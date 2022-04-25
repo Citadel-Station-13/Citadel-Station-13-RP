@@ -348,30 +348,30 @@ var/global/list/fancy_release_sounds = list(
 		)
 
 var/global/list/global_vore_egg_types = list(
-		"Unathi" 		= UNATHI_EGG,
+		SPECIES_UNATHI 		= UNATHI_EGG,
 		"Tajaran" 		= TAJARAN_EGG,
-		"Akula" 		= AKULA_EGG,
-		"Skrell" 		= SKRELL_EGG,
-		"Nevrean"		= NEVREAN_EGG,
-		"Sergal" 		= SERGAL_EGG,
-		"Human"			= HUMAN_EGG,
+		SPECIES_AKULA 		= AKULA_EGG,
+		SPECIES_SKRELL 		= SKRELL_EGG,
+		SPECIES_NEVREAN		= NEVREAN_EGG,
+		SPECIES_SERGAL 		= SERGAL_EGG,
+		SPECIES_HUMAN			= HUMAN_EGG,
 		"Slime"			= SLIME_EGG,
 		"Egg"			= EGG_EGG,
-		"Xenochimera" 		= XENOCHIMERA_EGG,
-		"Xenomorph"		= XENOMORPH_EGG)
+		SPECIES_XENOCHIMERA 		= XENOCHIMERA_EGG,
+		SPECIES_XENO		= XENOMORPH_EGG)
 
 var/global/list/tf_vore_egg_types = list(
-	"Unathi" 		= /obj/structure/closet/secure_closet/egg/unathi,
-	"Tajara" 		= /obj/structure/closet/secure_closet/egg/tajaran,
-	"Akula" 		= /obj/structure/closet/secure_closet/egg/shark,
-	"Skrell" 		= /obj/structure/closet/secure_closet/egg/skrell,
-	"Sergal"		= /obj/structure/closet/secure_closet/egg/sergal,
-	"Nevrean"		= /obj/structure/closet/secure_closet/egg/nevrean,
-	"Human"			= /obj/structure/closet/secure_closet/egg/human,
+	SPECIES_UNATHI 		= /obj/structure/closet/secure_closet/egg/unathi,
+	SPECIES_TAJ 		= /obj/structure/closet/secure_closet/egg/tajaran,
+	SPECIES_AKULA 		= /obj/structure/closet/secure_closet/egg/shark,
+	SPECIES_SKRELL 		= /obj/structure/closet/secure_closet/egg/skrell,
+	SPECIES_SERGAL		= /obj/structure/closet/secure_closet/egg/sergal,
+	SPECIES_NEVREAN		= /obj/structure/closet/secure_closet/egg/nevrean,
+	SPECIES_HUMAN			= /obj/structure/closet/secure_closet/egg/human,
 	"Slime"			= /obj/structure/closet/secure_closet/egg/slime,
 	"Egg"			= /obj/structure/closet/secure_closet/egg,
-	"Xenochimera"		= /obj/structure/closet/secure_closet/egg/scree,
-	"Xenomorph"		= /obj/structure/closet/secure_closet/egg/xenomorph)
+	SPECIES_XENOCHIMERA		= /obj/structure/closet/secure_closet/egg/scree,
+	SPECIES_XENO		= /obj/structure/closet/secure_closet/egg/xenomorph)
 
 var/global/list/edible_trash = list(/obj/item/broken_device,
 				/obj/item/clothing/accessory/collar,	//TFF 10/7/19 - add option to nom collars,

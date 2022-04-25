@@ -291,7 +291,7 @@
 			to_chat(usr, "<span class='warning'>You can't respawn yet! You need to wait another [round(time_till_respawn/10/60, 0.1)] minutes.</span>")
 			return
 /*
-		if(client.prefs.species != "Human" && !check_rights(R_ADMIN, 0))
+		if(client.prefs.species != SPECIES_HUMAN && !check_rights(R_ADMIN, 0))
 			if (config_legacy.usealienwhitelist)
 				if(!is_alien_whitelisted(src, client.prefs.species))
 					src << alert("You are currently not whitelisted to Play [client.prefs.species].")
@@ -776,7 +776,7 @@
 		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
 
 	//Custom species checks
-	if (client && client.prefs && client.prefs.species == "Custom Species")
+	if (client && client.prefs && client.prefs.species == SPECIES_CUSTOM)
 
 		//Didn't name it
 		if(!client.prefs.custom_species)

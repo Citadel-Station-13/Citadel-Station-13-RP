@@ -630,7 +630,7 @@
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		var/mob/living/carbon/human/H = src
-		if(H.species.name == "Protean")
+		if(H.species.name == SPECIES_PROTEAN)
 			return // dont modify protean heat levels
 
 		else

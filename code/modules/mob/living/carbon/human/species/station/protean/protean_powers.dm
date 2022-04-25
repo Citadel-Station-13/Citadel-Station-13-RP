@@ -25,7 +25,7 @@
 
 	//Organ is missing, needs restoring
 	if(!organs_by_name[choice] || istype(organs_by_name[choice], /obj/item/organ/external/stump)) //allows limb stumps to regenerate like removed limbs.
-		if(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < PER_LIMB_STEEL_COST)
+		if(refactory.get_stored_material(MAT_STEEL) < PER_LIMB_STEEL_COST)
 			to_chat(src,"<span class='warning'>You're missing that limb, and need to store at least [PER_LIMB_STEEL_COST] steel to regenerate it.</span>")
 			return
 		var/regen = alert(src,"That limb is missing, do you want to regenerate it in exchange for [PER_LIMB_STEEL_COST] steel?","Regenerate limb?","Yes","No")
@@ -40,7 +40,7 @@
 		active_regen = TRUE
 		src.visible_message("<B>[src]</B>'s flesh begins to bubble, growing oily tendrils from their limb stump...")  // Gives a visualization for regenerating limbs.
 		if(do_after(src,5 SECONDS))  // Makes you not need to blob to regen a single limb. I'm keeping the full-body regen as blob-only, though
-			if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,PER_LIMB_STEEL_COST))
+			if(!refactory.use_stored_material(MAT_STEEL,PER_LIMB_STEEL_COST))
 				return
 			var/list/limblist = species.has_limbs[choice]
 			var/limbpath = limblist["path"]
@@ -142,7 +142,7 @@
 		return
 
 	//Not enough resources (AND spends the resources, should be the last check)
-	if(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < min(10000, refactory.max_storage))
+	if(refactory.get_stored_material(MAT_STEEL) < min(10000, refactory.max_storage))
 		to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 		return
 
@@ -155,7 +155,7 @@
 	if(do_after(blob, delay_length, null, 0))
 		if(stat != DEAD && refactory)
 			//Not enough resources (AND spends the resources, should be the last check)
-			if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,refactory.max_storage))
+			if(!refactory.use_stored_material(MAT_STEEL,refactory.max_storage))
 				to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 				return
 			var/list/holder = refactory.materials

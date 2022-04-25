@@ -53,7 +53,7 @@
 
 /datum/species/unathi
 	name = SPECIES_UNATHI
-	name_plural = "Unathi"
+	name_plural = SPECIES_UNATHI
 	icobase = 'icons/mob/human_races/r_lizard_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_lizard_vr.dmi'
 	tail = "sogtail"
@@ -269,7 +269,7 @@
 
 /datum/species/skrell
 	name = SPECIES_SKRELL
-	name_plural = "Skrell"
+	name_plural = SPECIES_SKRELL
 	icobase = 'icons/mob/human_races/r_skrell_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_skrell_vr.dmi'
 	primitive_form = SPECIES_MONKEY_SKRELL
@@ -348,7 +348,7 @@
 
 /datum/species/zaddat
 	name = SPECIES_ZADDAT
-	name_plural = "Zaddat"
+	name_plural = SPECIES_ZADDAT
 	icobase = 'icons/mob/human_races/r_zaddat.dmi'
 	deform = 'icons/mob/human_races/r_zaddat.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
@@ -496,7 +496,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/sergal)
 
-	primitive_form = "Saru"
+	primitive_form = SPECIES_MONKEY_SERGAL
 
 	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
@@ -530,7 +530,7 @@
 
 /datum/species/akula
 	name = SPECIES_AKULA
-	name_plural = "Akula"
+	name_plural = SPECIES_AKULA //It's singular and plural. English is weird.
 	icobase = 'icons/mob/human_races/r_akula.dmi'
 	deform = 'icons/mob/human_races/r_def_akula.dmi'
 	tail = "tail"
@@ -566,7 +566,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/akula)
 
-	primitive_form = "Sobaka"
+	primitive_form = SPECIES_MONKEY_AKULA
 
 	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
@@ -614,7 +614,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nevrean)
 
-	primitive_form = "Sparra"
+	primitive_form = SPECIES_MONKEY_NEVREAN
 
 	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
@@ -722,14 +722,14 @@
 
 /datum/species/vulpkanin
 	name = SPECIES_VULPKANIN
-	name_plural = "Vulpkanin"
+	name_plural = SPECIES_VULPKANIN
 	icobase = 'icons/mob/human_races/r_vulpkanin.dmi'
 	deform = 'icons/mob/human_races/r_vulpkanin.dmi'
 //	path = /mob/living/carbon/human/vulpkanin
 //	default_language = "Sol Common"
 	secondary_langs = list(LANGUAGE_CANILUNZT)
 	name_language = LANGUAGE_CANILUNZT
-	primitive_form = "Wolpin"
+	primitive_form = SPECIES_MONKEY_VULPKANIN
 	tail = "vulptail"
 	tail_animation = 'icons/mob/species/vulpkanin/tail.dmi' // probably need more than just one of each, but w/e
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -752,7 +752,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vulpkanin)
 
-	primitive_form = "Wolpin"
+	primitive_form = SPECIES_MONKEY_VULPKANIN
 
 	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
@@ -805,7 +805,7 @@
 
 /datum/species/crew_shadekin
 	name = SPECIES_SHADEKIN_CREW
-	name_plural = "Black-Eyed Shadekin"
+	name_plural = SPECIES_SHADEKIN_CREW
 	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	tail = "tail"

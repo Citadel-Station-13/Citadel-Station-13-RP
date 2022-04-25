@@ -1,14 +1,14 @@
-var/UNATHI_EGG 		= "Unathi"
+var/UNATHI_EGG 		= SPECIES_UNATHI
 var/TAJARAN_EGG 		= "Tajaran"
-var/AKULA_EGG 		= "Akula"
-var/SKRELL_EGG		= "Skrell"
-var/SERGAL_EGG 		= "Sergal"
-var/HUMAN_EGG 		= "Human"
+var/AKULA_EGG 		= SPECIES_AKULA
+var/SKRELL_EGG		= SPECIES_SKRELL
+var/SERGAL_EGG 		= SPECIES_SERGAL
+var/HUMAN_EGG 		= SPECIES_HUMAN
 var/NEVREAN_EGG		= "nevrean"
 var/SLIME_EGG 		= "Slime"
 var/EGG_EGG 			= "Egg"
-var/XENOCHIMERA_EGG 	= "Xenochimera"
-var/XENOMORPH_EGG 	= "Xenomorph"
+var/XENOCHIMERA_EGG 	= SPECIES_XENOCHIMERA
+var/XENOMORPH_EGG 	= SPECIES_XENO
 
 // Define a place to save appearance in character setup
 /datum/preferences
