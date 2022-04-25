@@ -61,6 +61,12 @@
 	///Internal counter for clients sending irc relay messages via ahelp to prevent spamming. Set to a number every time an admin reply is sent, decremented for every client send.
 	var/ircreplyamount = 0
 
+		////////////////
+		//PERSPECTIVES//
+		////////////////
+	/// the perspective we're currently using
+	var/datum/perspective/perspective
+
 		/////////
 		//OTHER//
 		/////////

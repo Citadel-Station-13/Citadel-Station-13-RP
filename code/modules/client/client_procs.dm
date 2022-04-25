@@ -400,6 +400,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		holder.owner = null
 		admins -= src
 		GLOB.admins -= src //delete them on the managed one too
+	// if logout didn't clear
+	if(perspective)
+		perspective.RemoveClient(src)
+		stack_trace("perspective had to be cleared by client/Destroy, it should instead be cleared by mob/Logout")
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
 

@@ -126,7 +126,7 @@
 	if (occupant.client)
 		occupant.client.eye = occupant.client.mob
 		occupant.client.perspective = MOB_PERSPECTIVE
-	occupant.loc = src.loc
+	occupant.forceMove(loc)
 	occupant = null
 	update_icon() //Health display for consoles with light and such.
 	return

@@ -30,6 +30,9 @@
 	/// Our default glide_size.
 	var/default_glide_size = 0
 
+	/// our default perspective - if none, a temporary one will be generated when a mob requires it
+	var/datum/perspective/self_perspective
+
 	var/anchored = 0
 	var/move_speed = 10
 	var/l_move_time = 1
@@ -455,3 +458,17 @@
 
 /atom/movable/proc/get_bullet_impact_effect_type()
 	return BULLET_IMPACT_NONE
+
+/**
+ * get perspective to use when shifting eye to us,
+ */
+/atom/movable/proc/get_perspective()
+	return self_perspective || temporary_perspective()
+
+/**
+ * gets a tempoerary perspective for ourselves
+ */
+/atom/movable/prroc/temporary_perspective()
+	var/datum/perspective/self/temporary/P = new
+	P.eye = src
+	return P
