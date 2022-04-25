@@ -6,5 +6,6 @@
 		if (client)
 			client.eye = loc
 			client.perspective = EYE_PERSPECTIVE
+		#warn deal with this
 	src.view_core()
 	return

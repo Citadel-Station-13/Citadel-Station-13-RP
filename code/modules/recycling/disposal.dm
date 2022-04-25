@@ -188,11 +188,8 @@
 		add_attack_logs(user,target,"Disposals dunked")
 	else
 		return
-	if (target.client)
-		target.client.perspective = EYE_PERSPECTIVE
-		target.client.eye = src
-
 	target.forceMove(src)
+	target.update_perspective()
 
 	for (var/mob/C in viewers(src))
 		if(C == user)
@@ -212,11 +209,8 @@
 
 // leave the disposal
 /obj/machinery/disposal/proc/go_out(mob/user)
-
-	if (user.client)
-		user.client.eye = user.client.mob
-		user.client.perspective = MOB_PERSPECTIVE
-	user.forceMove(src.loc)
+	user.forceMove(loc)
+	user.update_perspective()
 	update()
 	return
 
@@ -605,8 +599,7 @@
 			AM.forceMove(src)		// move everything in other holder to this one
 			if(ismob(AM))
 				var/mob/M = AM
-				if(M.client)	// if a client mob, update eye to follow this holder
-					M.client.eye = src
+				M.update_perspective()
 
 		qdel(other)
 
@@ -1516,11 +1509,7 @@
 
 // check if mob has client, if so restore client view on eject
 /mob/pipe_eject(var/direction)
-	if (src.client)
-		src.client.perspective = MOB_PERSPECTIVE
-		src.client.eye = src
-
-	return
+	update_perspective()
 
 /obj/effect/decal/cleanable/blood/gibs/pipe_eject(var/direction)
 	var/list/dirs

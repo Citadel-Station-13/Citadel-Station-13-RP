@@ -612,12 +612,9 @@
 	if(!ishuman(M))
 		to_chat(usr, "<span class='warning'>\The [src] cannot hold this!</span>")
 		return
-	if(src.occupant)
+	if(occupant)
 		to_chat(usr, "<span class='warning'>\The [src] is already occupied!</span>")
 		return
-	if(M.client)
-		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
 	M.stop_pulling()
 	M.forceMove(src)
 	M.update_perspective()

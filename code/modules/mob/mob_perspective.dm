@@ -7,7 +7,6 @@
 /mob/proc/reset_perspective(atom/A)
 	#warn standardize this
 	#warn standardize perspective var
-	#warn standardize eye var
 	#warn standardize sight var
 	if(client)
 		if(A)
@@ -68,10 +67,10 @@
 /mob/proc/update_perspective()
 	if(!clent)
 		return
-	current_perspective?.Update(client)
+	using_perspective?.Update(client)
 
 /**
  * are we currently looking at something else?
  */
 /mob/proc/perspective_is_remote()
-	return current_perspective?.considered_remote(src)
+	return using_perspective?.considered_remote(src)

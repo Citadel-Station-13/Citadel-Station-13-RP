@@ -117,9 +117,8 @@
 		to_chat(usr, "<span class='warning'>The subject cannot have abiotic items on.</span>")
 		return
 	usr.stop_pulling()
-	usr.client.perspective = EYE_PERSPECTIVE
-	usr.client.eye = src
-	usr.loc = src
+	usr.forceMove(src)
+	usr.update_perspective()
 	src.occupant = usr
 	src.icon_state = "scanner_1"
 	src.add_fingerprint(usr)
@@ -190,22 +189,19 @@
 	return
 
 /obj/machinery/dna_scannernew/proc/go_out()
-	if ((!( src.occupant ) || src.locked))
+	if(!occupant|| locked)
 		return
-	if (src.occupant.client)
-		src.occupant.client.eye = src.occupant.client.mob
-		src.occupant.client.perspective = MOB_PERSPECTIVE
 	if(istype(occupant,/mob/living/carbon/brain))
 		for(var/obj/O in src)
 			if(istype(O,/obj/item/organ/internal/brain))
-				O.loc = get_turf(src)
-				src.occupant.loc = O
+				O.forceMove(loc)
+				occupant.forceMove(O)
 				break
 	else
-		src.occupant.loc = src.loc
-	src.occupant = null
-	src.icon_state = "scanner_0"
-	return
+		occupant.forceMove(loc)
+	occupant.update_perspective()
+	occupant = null
+	icon_state = "scanner_0"
 
 /obj/machinery/dna_scannernew/ex_act(severity)
 	switch(severity)
