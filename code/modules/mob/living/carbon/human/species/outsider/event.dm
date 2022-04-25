@@ -73,7 +73,6 @@ Variables you may want to make use of are:
 	assisted_langs = list()
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 
-	min_age = 18
 	max_age = 999
 
 	health_hud_intensity = 1.5

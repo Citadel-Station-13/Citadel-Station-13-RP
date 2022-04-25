@@ -173,7 +173,7 @@
 	overlays.Cut()
 	overlays += image('icons/mob/zone_sel.dmi', "[selecting]")
 
-//Crafting Screen Port
+/// The UI Button to open the TGUI Crafting Menu
 /atom/movable/screen/craft
 	name = "crafting menu"
 	icon = 'icons/mob/screen/midnight.dmi'

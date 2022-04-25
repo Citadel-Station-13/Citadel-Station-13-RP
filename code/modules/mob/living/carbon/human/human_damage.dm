@@ -2,9 +2,8 @@
 /mob/living/carbon/human/updatehealth()
 	if(status_flags & GODMODE)
 		health = getMaxHealth()
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		update_hud_med_all()
-		return
 
 	var/total_burn  = 0
 	var/total_brute = 0

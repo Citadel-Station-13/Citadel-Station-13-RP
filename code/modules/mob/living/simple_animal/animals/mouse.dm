@@ -84,7 +84,7 @@
 
 /mob/living/simple_mob/mouse/proc/splat()
 	src.health = 0
-	src.stat = DEAD
+	src.set_stat(DEAD)
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
 	layer = MOB_LAYER

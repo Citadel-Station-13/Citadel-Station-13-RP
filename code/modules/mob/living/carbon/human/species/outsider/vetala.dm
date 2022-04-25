@@ -35,7 +35,6 @@
 	blood_color = "#ce4a4a"
 	base_color = "#EECEB3"
 
-	min_age = 18
 	max_age = 200
 
 	//Nocturnal and photosensitive.
@@ -109,7 +108,6 @@
 	blood_color = "#720d0d"
 	base_color = "#EECEB3"
 
-	min_age = 18
 	max_age = 200
 
 	//Nocturnal and photosensitive.

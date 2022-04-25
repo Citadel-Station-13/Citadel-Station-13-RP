@@ -39,7 +39,7 @@
 	speech_sounds = list('sound/voice/hiss1.ogg','sound/voice/hiss2.ogg','sound/voice/hiss3.ogg','sound/voice/hiss4.ogg')
 	speech_chance = 100
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	breath_type = null
 	poison_type = null

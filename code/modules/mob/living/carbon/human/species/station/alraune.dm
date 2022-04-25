@@ -13,7 +13,6 @@
 	metabolic_rate = 0.75 // slow metabolism
 	item_slowdown_mod = 0.25 //while they start slow, they don't get much slower
 	bloodloss_rate = 0.1 //While they do bleed, they bleed out VERY slowly
-	min_age = 18
 	max_age = 500 //cit lore change
 	health_hud_intensity = 1.5
 	base_species = SPECIES_ALRAUNE
