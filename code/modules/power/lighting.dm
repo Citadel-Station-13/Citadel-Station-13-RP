@@ -751,7 +751,7 @@ var/global/list/light_type_cache = list()
 			prot = 1
 
 		if(prot > 0 || (COLD_RESISTANCE in user.mutations))
-			to_chat(user, "You remove the light [get_fitting_name()]")
+			to_chat(user, "You remove the [get_fitting_name()]")
 		else if(TK in user.mutations)
 			to_chat(user, "You telekinetically remove the light [get_fitting_name()].")
 		else
