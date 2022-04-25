@@ -210,18 +210,6 @@
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
 
-
-	else if (istype(W, /obj/item/camera_bug))
-		if (!src.can_use())
-			to_chat(user, "<span class='warning'>Camera non-functional.</span>")
-			return
-		if (src.bugged)
-			to_chat(user, "<span class='notice'>Camera bug removed.</span>")
-			src.bugged = 0
-		else
-			to_chat(user, "<span class='notice'>Camera bugged.</span>")
-			src.bugged = 1
-
 	else if(W.damtype == BRUTE || W.damtype == BURN) //bashing cameras
 		user.setClickCooldown(user.get_attack_speed(W))
 		if (W.force >= src.toughness)
@@ -291,6 +279,12 @@
 	if(!can_use()) return -1
 	if(isXRay()) return SEE_TURFS|SEE_MOBS|SEE_OBJS
 	return 0
+
+/obj/machinery/camera/temporary_perspective()
+	var/datum/perspective/P = ..()
+	. = P
+	if(isXRay())
+		P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 
 /obj/machinery/camera/update_icon()
 	if (!status || (stat & BROKEN))

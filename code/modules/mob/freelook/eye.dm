@@ -62,6 +62,7 @@
 			loc = T
 
 			if(owner.client)
+				#warn ugh
 				owner.client.eye = src
 
 			if(owner_follows_eye)

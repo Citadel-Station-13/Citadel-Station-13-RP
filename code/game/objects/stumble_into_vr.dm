@@ -23,12 +23,10 @@
 /obj/machinery/disposal/stumble_into(mob/living/M)
 	playsound(get_turf(src), 'sound/effects/clang.ogg', 25, 1, -1)
 	visible_message("<span class='warning'>[M] [pick("tripped", "stumbled")] into \the [src]!</span>")
-	if(M.client)
-		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
 	M.apply_damage(5, BRUTE)
 	M.Weaken(2)
 	M.forceMove(src)
+	M.update_perspective()
 	M.stop_flying()
 	update()
 
@@ -123,13 +121,11 @@
 /obj/machinery/suit_storage_unit/stumble_into(mob/living/M)
 	if(!ishuman(M) || !isopen || !ispowered || isbroken || OCCUPANT || helmet_stored || suit_stored)
 		return ..()
-	playsound(get_turf(src), 'sound/effects/clang.ogg', 25, 1, -1)
+	playsound(src, 'sound/effects/clang.ogg', 25, 1, -1)
 	visible_message("<span class='warning'>[M] [pick("tripped", "stumbled")] into \the [src]!</span>")
-	if(M.client)
-		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
 	M.forceMove(src)
-	OCCUPANT = M
+	M.update_perspective()
+	occupant = M
 	isopen = 0
 	update_icon()
 	add_fingerprint(M)

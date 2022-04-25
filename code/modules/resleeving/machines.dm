@@ -601,13 +601,10 @@
 	return 1
 
 /obj/machinery/transhuman/resleever/proc/go_out(var/mob/M)
-	if(!( src.occupant ))
+	if(occupant)
 		return
-	if (src.occupant.client)
-		src.occupant.client.eye = src.occupant.client.mob
-		src.occupant.client.perspective = MOB_PERSPECTIVE
-	src.occupant.loc = src.loc
-	src.occupant = null
+	occupant.forceMove(loc)
+	occupant.update_perspective()
 	icon_state = "implantchair"
 	return
 
@@ -622,9 +619,10 @@
 		M.client.perspective = EYE_PERSPECTIVE
 		M.client.eye = src
 	M.stop_pulling()
-	M.loc = src
-	src.occupant = M
-	src.add_fingerprint(usr)
+	M.forceMove(src)
+	M.update_perspective()
+	occupant = M
+	add_fingerprint(usr)
 	icon_state = "implantchair_on"
 	return 1
 

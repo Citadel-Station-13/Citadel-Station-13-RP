@@ -600,9 +600,8 @@
 			return
 
 		usr.stop_pulling()
-		usr.client.perspective = EYE_PERSPECTIVE
-		usr.client.eye = src
 		usr.forceMove(src)
+		usr.update_perspective()
 		set_occupant(usr)
 		if(ishuman(usr) && applies_stasis)
 			var/mob/living/carbon/human/H = occupant
@@ -691,11 +690,9 @@
 				to_chat(user,"<span class='warning'>\The [src] is already occupied.</span>")
 				return
 			M.forceMove(src)
-
-			if(M.client)
-				M.client.perspective = EYE_PERSPECTIVE
-				M.client.eye = src
-		else return
+			M.update_perspective()
+		else
+			return
 
 		icon_state = occupied_icon_state
 

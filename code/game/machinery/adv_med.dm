@@ -121,12 +121,10 @@
 	add_fingerprint(usr)
 
 /obj/machinery/bodyscanner/proc/go_out()
-	if ((!(occupant) || src.locked))
+	if(!occupant || src.locked))
 		return
-	if (occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
 	occupant.forceMove(loc)
+	occupant.update_perspective()
 	occupant = null
 	update_icon() //Health display for consoles with light and such.
 	return

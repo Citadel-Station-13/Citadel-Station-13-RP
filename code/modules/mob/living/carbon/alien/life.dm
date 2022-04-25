@@ -142,7 +142,7 @@
 			if(machine.check_eye(src) < 0)
 				reset_view(null)
 		else
-			if(client && !client.adminobs)
+			if(client)
 				reset_view(null)
 
 	return 1

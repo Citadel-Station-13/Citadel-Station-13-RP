@@ -273,18 +273,13 @@
 /obj/machinery/atmospherics/unary/cryo_cell/proc/go_out()
 	if(!(occupant))
 		return
-	//for(var/obj/O in src)
-	//	O.loc = src.loc
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
 	vis_contents -= occupant
 	occupant.pixel_x = occupant.default_pixel_x
 	occupant.pixel_y = occupant.default_pixel_y
-	occupant.loc = get_step(src.loc, SOUTH)	//this doesn't account for walls or anything, but i don't forsee that being a problem.
+	occupant.forceMove(get_step(loc, SOUTH))	//this doesn't account for walls or anything, but i don't forsee that being a problem.
 	if(occupant.bodytemperature < 261 && occupant.bodytemperature >= 70) //Patch by Aranclanos to stop people from taking burn damage after being ejected
 		occupant.bodytemperature = 261									  // Changed to 70 from 140 by Zuhayr due to reoccurance of bug.
-	unbuckle_mob(occupant, force = TRUE)
+	occupant.forceMove(loc)
 	occupant = null
 	current_heat_capacity = initial(current_heat_capacity)
 	update_use_power(USE_POWER_IDLE)
@@ -308,15 +303,12 @@
 	if(!node)
 		to_chat(usr, "<span class='warning'>The cell is not correctly connected to its pipe network!</span>")
 		return
-	if(M.client)
-		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
 	M.forceMove(src)
 	M.ExtinguishMob()
 	if(M.health > -100 && (M.health < 0 || M.sleeping))
 		to_chat(M, "<span class='notice'><b>You feel a cold liquid surround you. Your skin starts to freeze up.</b></span>")
 	occupant = M
-	buckle_mob(occupant, forced = TRUE, check_loc = FALSE)
+	occupant.update_perspective()
 	vis_contents |= occupant
 	occupant.pixel_y += 19
 	current_heat_capacity = HEAT_CAPACITY_HUMAN

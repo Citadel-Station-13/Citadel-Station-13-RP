@@ -170,12 +170,11 @@
 		visible_message("<span class='notice'>[user] starts putting [G.affecting.name] into the suit cycler.</span>", 3)
 
 		if(do_after(user, 20))
-			if(!G || !G.affecting) return
+			if(!G || !G.affecting)
+				return
 			var/mob/M = G.affecting
-			if(M.client)
-				M.client.perspective = EYE_PERSPECTIVE
-				M.client.eye = src
-			M.loc = src
+			M.forceMove(src)
+			M.update_perspective()
 			occupant = M
 
 			add_fingerprint(user)
@@ -446,11 +445,8 @@
 	if(!occupant)
 		return
 
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-
-	occupant.loc = get_turf(occupant)
+	occupant.forceMove(loc)
+	occupant.update_perspective()
 	occupant = null
 
 	add_fingerprint(usr)

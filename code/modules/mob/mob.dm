@@ -196,21 +196,6 @@
 /mob/proc/restrained()
 	return
 
-/mob/proc/reset_view(atom/A)
-	if (client)
-		if (istype(A, /atom/movable))
-			client.perspective = EYE_PERSPECTIVE
-			client.eye = A
-		else
-			if (isturf(loc))
-				client.eye = client.mob
-				client.perspective = MOB_PERSPECTIVE
-			else
-				client.perspective = EYE_PERSPECTIVE
-				client.eye = loc
-	return
-
-
 /mob/proc/show_inv(mob/user as mob)
 	return
 
@@ -493,15 +478,11 @@
 	set category = "OOC"
 	var/is_admin = 0
 
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
-	if(client.holder && (client.holder.rights & R_ADMIN))
-		is_admin = 1
+	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
+		return
 	else if(stat != DEAD || istype(src, /mob/new_player))
 		to_chat(usr, "<font color=#4F49AF>You must be observing to use this!</font>")
 		return
-
-	if(is_admin && stat == DEAD)
-		is_admin = 0
 
 	var/list/names = list()
 	var/list/namecounts = list()
@@ -547,25 +528,13 @@
 	var/eye_name = null
 
 	var/ok = "[is_admin ? "Admin Observe" : "Observe"]"
-	eye_name = input("Please, select a player!", ok, null, null) as null|anything in creatures
+	eye_name = input("Please, select a player!",/ ok, null, null) as null|anything in creatures
 
 	if (!eye_name)
 		return
 
 	var/mob/mob_eye = creatures[eye_name]
-
-	if(client && mob_eye)
-		client.eye = mob_eye
-		if (is_admin)
-			client.adminobs = 1
-			if(mob_eye == client.mob || client.eye == client.mob)
-				client.adminobs = 0
-
-/mob/verb/cancel_camera()
-	set name = "Cancel Camera View"
-	set category = "OOC"
-	unset_machine()
-	reset_view(null)
+	reset_perspective(mob_eye.get_perspective())
 
 GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 

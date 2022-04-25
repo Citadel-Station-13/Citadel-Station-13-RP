@@ -257,6 +257,7 @@ var/global/photo_count = 0
 	var/viewer = user
 	if(user.client)		//To make shooting through security cameras possible
 		viewer = user.client.eye
+		#warn uhh
 	var/can_see = (T in view(viewer))
 
 	return can_see

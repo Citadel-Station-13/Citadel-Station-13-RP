@@ -85,13 +85,8 @@
 
 	reload_huds()
 
-	#warn get rid of this and do perspectives instead
-	if(loc && !isturf(loc))
-		client.eye = loc
-		client.perspective = EYE_PERSPECTIVE
-	else
-		client.eye = src
-		client.perspective = MOB_PERSPECTIVE
+	// perspective
+	reset_perspective(current_perspective)
 
 	// rendering
 	reload_rendering()

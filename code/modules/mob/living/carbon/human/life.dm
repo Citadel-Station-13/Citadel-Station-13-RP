@@ -1168,6 +1168,7 @@
 
 	client.screen.Remove(GLOB.global_hud.darkMask, GLOB.global_hud.nvg, GLOB.global_hud.thermal, GLOB.global_hud.meson, GLOB.global_hud.science, GLOB.global_hud.material, GLOB.global_hud.yellow, GLOB.global_hud.blue, GLOB.global_hud.pink, GLOB.global_hud.beige, GLOB.global_hud.orange, GLOB.global_hud.whitense)
 
+	#warn pain
 	if(istype(client.eye,/obj/machinery/camera))
 		var/obj/machinery/camera/cam = client.eye
 		client.screen |= cam.client_huds
@@ -1480,7 +1481,7 @@
 			if((mRemote in mutations) && remoteview_target)
 				if(remoteview_target.stat==CONSCIOUS)
 					isRemoteObserve = 1
-			if(!isRemoteObserve && client && !client.adminobs)
+			if(!isRemoteObserve && client)
 				remoteview_target = null
 				reset_view(null, 0)
 	return 1

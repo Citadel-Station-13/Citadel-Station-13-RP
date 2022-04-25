@@ -45,6 +45,7 @@
 		destroy_eyeobj()
 	if(!newloc)
 		newloc = src.loc
+	#warn ohnononono
 	eyeobj = new /mob/observer/eye/aiEye(newloc)
 	eyeobj.owner = src
 	eyeobj.name = "[src.name] (AI Eye)" // Give it a name

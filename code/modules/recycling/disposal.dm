@@ -126,10 +126,8 @@
 			for (var/mob/V in viewers(usr))
 				V.show_message("[usr] starts putting [GM.name] into the disposal.", 3)
 			if(do_after(usr, 20))
-				if (GM.client)
-					GM.client.perspective = EYE_PERSPECTIVE
-					GM.client.eye = src
 				GM.forceMove(src)
+				GM.update_perspective()
 				for (var/mob/C in viewers(src))
 					C.show_message("<font color='red'>[GM.name] has been placed in the [src] by [user].</font>", 3)
 				qdel(G)

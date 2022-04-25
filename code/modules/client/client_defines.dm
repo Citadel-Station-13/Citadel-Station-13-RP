@@ -65,7 +65,7 @@
 		//PERSPECTIVES//
 		////////////////
 	/// the perspective we're currently using
-	var/datum/perspective/perspective
+	var/datum/perspective/using_perspective
 
 		/////////
 		//OTHER//
@@ -73,7 +73,6 @@
 	///Player preferences datum for the client
 	var/datum/preferences/prefs = null
 	var/moving = null
-	var/adminobs = null
 	///Current area of the controlled mob
 	var/area = null
 	///when the client last died as a mouse

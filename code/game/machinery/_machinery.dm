@@ -153,11 +153,9 @@ Class Procs:
 		component_parts = null
 	if(contents) // The same for contents.
 		for(var/atom/A in contents)
-			if(ishuman(A))
-				var/mob/living/carbon/human/H = A
-				H.client.eye = H.client.mob
-				H.client.perspective = MOB_PERSPECTIVE
-				H.forceMove(loc)
+			if(ismob(A))
+				A.forceMove(loc)
+				A.update_perspective()
 			else
 				qdel(A)
 	return ..()

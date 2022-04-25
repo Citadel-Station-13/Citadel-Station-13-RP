@@ -10,8 +10,6 @@
 	var/atom/movable/virtual_eye
 	/// client perspective var
 	var/perspective = EYE_PERSPECTIVE
-	/// lazy eye var
-	var/lazy_eye = 0
 	/// images
 	var/list/image/images = list()
 	/// screen objects
@@ -26,8 +24,7 @@
 	var/reset_on_logout = TRUE
 
 /datum/perspective/Destroy()
-	for(var/client/C as anything in clients)
-		RemoveClient(C)
+	KickAll()
 	images = null
 	screens = null
 	clients = null
@@ -38,6 +35,14 @@
 /datum/perspective/proc/AddClient(client/C)
 
 /datum/perspective/proc/RemoveClient(client/C)
+	#warn also have to make sure client goes back to mob's self perspective
+
+/**
+ * kicks all clients off us
+ */
+/datum/perspective/proc/KickAll()
+	for(var/client/C as anything in clients)
+		RemoveClient(C)
 
 /datum/perspective/proc/Apply(client/C)
 
@@ -46,6 +51,9 @@
 /datum/perspective/proc/GetEye()
 	return eye
 
+/**
+ * updates eye, perspective var, virtual eye, lazy eye, sight
+ */
 /datum/perspective/proc/Update(client/C)
 
 /datum/perspective/proc/AddImage(image/I)
@@ -55,6 +63,18 @@
 /datum/perspective/proc/AddScreen(atom/movable/AM)
 
 /datum/perspective/proc/RemoveScreen(atom/movable/AM)
+
+/datum/perspective/proc/SetSight(flags)
+
+/datum/perspective/proc/AddSight(flags)
+
+/datum/perspective/proc/RemoveSight(flags)
+
+/**
+ * do we override a user's self perspective sight flags?
+ */
+/datum/perspective/proc/overrides_sight(client/C)
+	return considered_remote(C.mob)
 
 #warn do all of these
 
@@ -66,8 +86,12 @@
  */
 /datum/perspective/self
 
-/datum/perspective/self/GetEye()
+/datum/perspective/self/GetEye(client/C)
 	return isturf(eye.loc)? eye : eye.loc
+
+/datum/perspective/self/Update(client/C)
+	. = ..()
+	C.perspective = C.eye == C.mob? MOB_PERSPECTIVE : EYE_PERSPECTIVE
 
 /**
  * temporary perspectives generated - automatically deletes when last client is gone
@@ -77,3 +101,14 @@
 /datum/perspective/self/temporary/RemoveClient(client/C)
 	if(!clients.len)
 		qdel(src)
+
+/**
+ * always remote - you usually want to override this
+ */
+/datum/perspective/remote
+
+/datum/perspective/remote/considered_remote(mob/M)
+	return TRUE
+
+/datum/perspective/remote/overrides_sight(client/C)
+	return TRUE

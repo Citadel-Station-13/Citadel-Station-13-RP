@@ -196,7 +196,8 @@
 		src.unset_machine()
 		src.reset_view(null)
 		return 0
-	if (stat == 2 || !C.status || !(src.network in C.network)) return 0
+	if (stat == 2 || !C.status || !(src.network in C.network))
+		return 0
 
 	// ok, we're alive, camera is good and in our network...
 
@@ -304,15 +305,16 @@
 		var/obj/item/pda/holder = card.loc
 		holder.pai = null
 
-	src.client.perspective = EYE_PERSPECTIVE
-	src.client.eye = src
-	src.forceMove(get_turf(card))
-
+	forceMove(card.loc)
 	card.forceMove(src)
+	update_perspective()
+
 	card.screen_loc = null
 
 	var/turf/T = get_turf(src)
-	if(istype(T)) T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
+	if(istype(T))
+		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
+
 	verbs += /mob/living/silicon/pai/proc/pai_nom //VOREStation edit
 	verbs += /mob/living/proc/set_size //VOREStation edit
 	verbs += /mob/living/proc/shred_limb //VORREStation edit
@@ -409,12 +411,10 @@
 	release_vore_contents() //VOREStation Add
 
 	var/turf/T = get_turf(src)
-	if(istype(T)) T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
+	if(istype(T))
+		T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
 
-	if(client)
-		src.stop_pulling()
-		src.client.perspective = EYE_PERSPECTIVE
-		src.client.eye = card
+	stop_pulling()
 
 	//stop resting
 	resting = 0
@@ -429,10 +429,9 @@
 		src.loc = get_turf(H)
 
 	// Move us into the card and move the card to the ground.
-	src.loc = card
-	card.loc = get_turf(card)
-	src.forceMove(card)
-	card.forceMove(card.loc)
+	card.forceMove(loc)
+	forceMove(card)
+	update_perspective()
 	canmove = 1
 	resting = 0
 	icon_state = "[chassis]"

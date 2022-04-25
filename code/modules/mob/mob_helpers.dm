@@ -180,6 +180,7 @@ proc/getsensorlevel(A)
 	if(!M || !M.client || M.shakecamera || M.stat || isEye(M) || isAI(M))
 		return
 	M.shakecamera = 1
+	#warn unfuck this
 	spawn(1)
 		if(!M.client)
 			return

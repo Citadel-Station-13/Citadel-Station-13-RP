@@ -468,7 +468,22 @@
 /**
  * gets a tempoerary perspective for ourselves
  */
-/atom/movable/prroc/temporary_perspective()
+/atom/movable/proc/temporary_perspective()
 	var/datum/perspective/self/temporary/P = new
 	P.eye = src
 	return P
+
+/**
+ * make a permanent self perspective
+ */
+/atom/movable/proc/make_perspective()
+	ASSERT(!self_perspective)
+	self_perspective = new /datum/perspective/self
+	self_perspective.eye = src
+
+/**
+ * ensure we have a self perspective
+ */
+/atom/movable/proc/ensure_self_perspective()
+	if(!self_perspective)
+		make_perspective()
