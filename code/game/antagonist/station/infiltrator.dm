@@ -7,7 +7,7 @@ var/datum/antagonist/traitor/infiltrator/infiltrators
 	id = MODE_INFILTRATOR
 	role_type = BE_TRAITOR
 	antag_indicator = "synd"
-	antaghud_indicator = "hudinfiltrator"
+	antaghud_indicator = "infiltrator"
 	role_text = "Infiltrator"
 	role_text_plural = "Infiltrators"
 	welcome_text = "To speak on your team's private channel, use :t."

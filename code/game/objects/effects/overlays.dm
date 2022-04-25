@@ -37,7 +37,7 @@
 
 /obj/effect/overlay/bluespacify
 	name = "Bluespace"
-	icon = 'icons/turf/space_vr.dmi' //VOREStation Edit
+	icon = 'icons/turf/space.dmi' //VOREStation Edit
 	icon_state = "bluespacify"
 	plane = ABOVE_PLANE
 
@@ -106,7 +106,7 @@
 	desc = "An energy ball."
 	icon = 'icons/obj/tesla_engine/energy_ball.dmi'
 	icon_state = "energy_ball"
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE
 	pixel_x = -32
 	pixel_y = -32
 

@@ -154,7 +154,6 @@
 		return FALSE
 	return TRUE
 
-
 /obj/structure/bonfire/proc/extinguish()
 	if(burning)
 		burning = FALSE

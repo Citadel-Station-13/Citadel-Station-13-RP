@@ -10,7 +10,7 @@ var/datum/antagonist/raider/raiders
 	landmark_id = "voxstart"
 	welcome_text = "Use :H to talk on your encrypted channel."
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_CLEAR_EQUIPMENT | ANTAG_CHOOSE_NAME | ANTAG_VOTABLE | ANTAG_SET_APPEARANCE | ANTAG_HAS_LEADER
-	antaghud_indicator = "hudmutineer"
+	antaghud_indicator = "mutineer"
 
 	hard_cap = 4
 	hard_cap_round = 8

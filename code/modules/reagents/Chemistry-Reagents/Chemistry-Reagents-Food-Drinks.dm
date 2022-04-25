@@ -48,7 +48,7 @@
 		if(IS_CHIMERA) removed *= 0.25 //VOREStation Edit
 	if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
 	M.heal_organ_damage(0.5 * removed, 0)
-	if(M.species.gets_food_nutrition) //VOREStation edit. If this is set to 0, they don't get nutrition from food.
+	if(!M.species.is_vampire) //VOREStation edit. If this is set to 0, they don't get nutrition from food.
 		M.nutrition += nutriment_factor * removed // For hunger and fatness
 	M.adjust_hydration(hydration_factor * hyd_removed)
 	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
@@ -279,7 +279,7 @@
 	if(!istype(T))
 		return
 
-	var/hotspot = (locate(/obj/fire) in T)
+	var/hotspot = (locate(/atom/movable/fire) in T)
 	if(hotspot && !istype(T, /turf/space))
 		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
@@ -305,9 +305,9 @@ End Citadel Change */
 	if(!istype(T))
 		return
 
-	var/hotspot = (locate(/obj/fire) in T)
+	var/hotspot = (locate(/atom/movable/fire) in T)
 	if(hotspot && !istype(T, /turf/space))
-		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
+		var/datum/gas_mixture/lowertemp = T.remove_cell_volume()
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
 		lowertemp.react()
 		T.assume_air(lowertemp)
@@ -687,6 +687,10 @@ End Citadel Change */
 		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
 	if(adj_temp < 0 && M.bodytemperature > 310)
 		M.bodytemperature = min(310, M.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
+	var/is_vampire = M.species.is_vampire
+	if(is_vampire)
+		handle_vampire(M, alien, removed, is_vampire)
+
 	/* VOREStation Removal
 	if(alien == IS_SLIME && water_based)
 		M.adjustToxLoss(removed * 2)
@@ -1949,6 +1953,30 @@ End Citadel Change */
 	glass_desc = "How <font face='comic sans ms'>berry cordial</font> of you."
 	glass_icon = DRINK_ICON_NOISY
 
+/datum/reagent/drink/blud/bludoriginal
+	name = "Blud"
+	id = "blud"
+	description = "A sweet mix of blood-like additives. Vampiric."
+	taste_description = "an odd blend of metals and sugar"
+	color = "#993c49"
+	blood_content = 1
+
+	glass_name = "Blud"
+	glass_desc = "A sweet mix of blood-like additives. Vampiric."
+	glass_icon = DRINK_ICON_NOISY
+
+/datum/reagent/drink/blud/bludlight
+	name = "Blud Light"
+	id = "bludlight"
+	description = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
+	taste_description = "an awful blend of metals and artificial sweeteners"
+	color = "#793c44"
+	blood_content = 1
+
+	glass_name = "Blud Light"
+	glass_desc = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
+	glass_icon = DRINK_ICON_NOISY
+
 /datum/reagent/drink/tropicalfizz
 	name = "Tropical Fizz"
 	id = "tropicalfizz"
@@ -2634,6 +2662,7 @@ End Citadel Change */
 	taste_mult = 1.5
 	color = "#820000"
 	strength = 15
+	blood_content = 0.2
 
 	glass_name = "Demons' Blood"
 	glass_desc = "Just looking at this thing makes the hair on the back of your neck stand up."
@@ -2645,6 +2674,7 @@ End Citadel Change */
 	taste_description = "bitter iron"
 	color = "#A68310"
 	strength = 15
+	blood_content = 0.3
 
 	glass_name = "Devil's Kiss"
 	glass_desc = "Creepy time!"
@@ -2971,6 +3001,7 @@ End Citadel Change */
 	taste_description = "sweet and salty alcohol"
 	color = "#C73C00"
 	strength = 30
+	blood_content = 0.5
 
 	glass_name = "Red Mead"
 	glass_desc = "A true Viking's beverage, though its color is strange."
@@ -3887,6 +3918,7 @@ End Citadel Change */
 	description = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
 	taste_description = "lingering regret, gunpowder, and blood"
 	strength = 50
+	blood_content = 0.4
 
 	glass_name = "Blood Meridian"
 	glass_desc = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
@@ -3994,6 +4026,7 @@ End Citadel Change */
 	taste_description = "copper, tomatoes, and heretical sweetness"
 	color = "#B40000"
 	strength = 30
+	blood_content = 0.2
 
 	glass_name = "Mary On a Cross"
 	glass_desc = "Not just another Bloody Mary. Mary on a cross."
@@ -4298,7 +4331,7 @@ End Citadel Change */
 /datum/reagent/ethanol/monstertamer/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 
-	if(M.species.gets_food_nutrition) //it's still food!
+	if(!M.species.is_vampire) //it's still food!
 		switch(alien)
 			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
 			if(IS_SKRELL)
@@ -4324,7 +4357,7 @@ End Citadel Change */
 	..()
 	if(alien == IS_SKRELL)
 		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
-	if(M.species.gets_food_nutrition)
+	if(!M.species.is_vampire)
 		if(alien == IS_SLIME || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
 			M.nutrition += (alt_nutriment_factor * removed)
 

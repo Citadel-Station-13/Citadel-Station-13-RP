@@ -11,14 +11,15 @@
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	temperature = 2.7
 	can_build_into_floor = TRUE
-	var/keep_sprite = FALSE
 	var/edge = 0		// If we're an edge
 	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
 
+/turf/open/space/basic/New()	//Do not convert to Initialize
+	//This is used to optimize the map loader
+	return
+
 /turf/space/Initialize(mapload)
-	// Sprite stuff only beyond here
-	if(keep_sprite)
-		return ..()
+	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 	// We might be an edge
 	if(y == world.maxy || forced_dirs & NORTH)
@@ -31,35 +32,7 @@
 	else if(x == world.maxx || forced_dirs & EAST)
 		edge |= EAST
 
-	if(edge)	// Magic edges
-		appearance = SSskybox.mapedge_cache["[edge]"]
-	else		// Dust
-		appearance = SSskybox.dust_cache["[((x + y) ^ ~(x * y) + z) % 25]"]
-
 	return ..()
-
-/turf/space/proc/toggle_transit(var/direction)
-	if(edge)	// Not a great way to do this yet. Maybe we'll come up with one. We could pre-make sprites... or tile the overlay over it?
-		return
-
-	if(!direction)	// Stopping our transit
-		appearance = SSskybox.dust_cache["[((x + y) ^ ~(x * y) + z) % 25]"]
-	else if(direction & (NORTH|SOUTH))	// Starting transit vertically
-		var/x_shift = SSskybox.phase_shift_by_x[src.x % (SSskybox.phase_shift_by_x.len - 1) + 1]
-		var/transit_state = ((direction & SOUTH ? world.maxy - src.y : src.y) + x_shift)%15
-		appearance = SSskybox.speedspace_cache["NS_[transit_state]"]
-	else if(direction & (EAST|WEST))	// Starting transit horizontally
-		var/y_shift = SSskybox.phase_shift_by_y[src.y % (SSskybox.phase_shift_by_y.len - 1) + 1]
-		var/transit_state = ((direction & WEST ? world.maxx - src.x : src.x) + y_shift)%15
-		appearance = SSskybox.speedspace_cache["EW_[transit_state]"]
-
-	for(var/atom/movable/AM in src)
-		if (!AM.simulated)
-			continue
-		if(!AM.anchored)
-			AM.throw_at(get_step(src,reverse_direction(direction)), 5, 1)
-		else if (istype(AM, /obj/effect/decal))
-			qdel(AM)	// No more space blood coming with the shuttle
 
 /turf/space/is_space()	// Hmmm this Space is made of Space.
 	return 1
@@ -148,115 +121,6 @@
 /turf/space/proc/on_atom_edge_touch(atom/movable/AM)
 	if(!QDELETED(AM) && (AM.loc == src))
 		AM.touch_map_edge()
-
-/turf/space/proc/Sandbox_Spacemove(atom/movable/A as mob|obj)
-	var/cur_x
-	var/cur_y
-	var/next_x
-	var/next_y
-	var/target_z
-	var/list/y_arr
-
-	if(src.x <= 1)
-		if(istype(A, /obj/effect/meteor)||istype(A, /obj/effect/space_dust))
-			qdel(A)
-			return
-
-		var/list/cur_pos = src.get_global_map_pos()
-		if(!cur_pos) return
-		cur_x = cur_pos["x"]
-		cur_y = cur_pos["y"]
-		next_x = (--cur_x||global_map.len)
-		y_arr = global_map[next_x]
-		target_z = y_arr[cur_y]
-/*
-		//debug
-		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
-		to_chat(world, "Target Z = [target_z]")
-		to_chat(world, "Next X = [next_x]")
-		//debug
-*/
-		if(target_z)
-			A.z = target_z
-			A.x = world.maxx - 2
-			spawn (0)
-				if ((A && A.loc))
-					A.loc.Entered(A)
-	else if (src.x >= world.maxx)
-		if(istype(A, /obj/effect/meteor))
-			qdel(A)
-			return
-
-		var/list/cur_pos = src.get_global_map_pos()
-		if(!cur_pos) return
-		cur_x = cur_pos["x"]
-		cur_y = cur_pos["y"]
-		next_x = (++cur_x > global_map.len ? 1 : cur_x)
-		y_arr = global_map[next_x]
-		target_z = y_arr[cur_y]
-/*
-		//debug
-		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
-		to_chat(world, "Target Z = [target_z]")
-		to_chat(world, "Next X = [next_x]")
-		//debug
-*/
-		if(target_z)
-			A.z = target_z
-			A.x = 3
-			spawn (0)
-				if ((A && A.loc))
-					A.loc.Entered(A)
-	else if (src.y <= 1)
-		if(istype(A, /obj/effect/meteor))
-			qdel(A)
-			return
-		var/list/cur_pos = src.get_global_map_pos()
-		if(!cur_pos) return
-		cur_x = cur_pos["x"]
-		cur_y = cur_pos["y"]
-		y_arr = global_map[cur_x]
-		next_y = (--cur_y||y_arr.len)
-		target_z = y_arr[next_y]
-/*
-		//debug
-		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
-		to_chat(world, "Next Y = [next_y]")
-		to_chat(world, "Target Z = [target_z]")
-		//debug
-*/
-		if(target_z)
-			A.z = target_z
-			A.y = world.maxy - 2
-			spawn (0)
-				if ((A && A.loc))
-					A.loc.Entered(A)
-
-	else if (src.y >= world.maxy)
-		if(istype(A, /obj/effect/meteor)||istype(A, /obj/effect/space_dust))
-			qdel(A)
-			return
-		var/list/cur_pos = src.get_global_map_pos()
-		if(!cur_pos) return
-		cur_x = cur_pos["x"]
-		cur_y = cur_pos["y"]
-		y_arr = global_map[cur_x]
-		next_y = (++cur_y > y_arr.len ? 1 : cur_y)
-		target_z = y_arr[next_y]
-/*
-		//debug
-		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
-		to_chat(world, "Next Y = [next_y]")
-		to_chat(world, "Target Z = [target_z]")
-		//debug
-*/
-		if(target_z)
-			A.z = target_z
-			A.y = 3
-			spawn (0)
-				if ((A && A.loc))
-					A.loc.Entered(A)
-	return
 
 /turf/space/ChangeTurf(var/turf/N, var/tell_universe, var/force_lighting_update, var/preserve_outdoors)
 	return ..(N, tell_universe, 1, preserve_outdoors)

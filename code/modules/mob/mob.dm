@@ -1,10 +1,28 @@
+/mob/Initialize(mapload)
+	GLOB.mob_list += src
+	set_focus(src)
+	if(stat == DEAD)
+		dead_mob_list += src
+	else
+		living_mob_list += src
+	prepare_huds()
+	for(var/v in GLOB.active_alternate_appearances)
+		if(!v)
+			continue
+		var/datum/atom_hud/alternate_appearance/AA = v
+		AA.onNewMob(src)
+	init_rendering()
+	hook_vr("mob_new",list(src)) //VOREStation Code
+	update_transform() // Some mobs may start bigger or smaller than normal.
+	return ..()
+
 /mob/Destroy()//This makes sure that mobs withGLOB.clients/keys are not just deleted from the game.
 	GLOB.mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
 	unset_machine()
 	qdel(hud_used)
-	clear_fullscreen()
+	dispose_rendering()
 	if(client)
 		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
 			qdel(spell_master)
@@ -16,6 +34,23 @@
 	QDEL_NULL(plane_holder)
 	..()
 	return QDEL_HINT_HARDDEL
+
+/mob/GenerateTag()
+	tag = "mob_[++next_mob_id]"
+
+/atom/proc/prepare_huds()
+	hud_list = list()
+	for(var/hud in hud_possible)
+		var/hint = hud_possible[hud]
+		switch(hint)
+			if(HUD_LIST_LIST)
+				hud_list[hud] = list()
+			else
+				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/hud/atom_hud/misc.dmi', src, "")
+				I.plane = FLOAT_PLANE
+				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
+				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
+				hud_list[hud] = I
 
 /mob/proc/remove_screen_obj_references()
 	hands = null
@@ -38,18 +73,6 @@
 	gun_setting_icon = null
 	spell_masters = null
 	zone_sel = null
-	crafting = null
-
-/mob/Initialize(mapload)
-	GLOB.mob_list += src
-	set_focus(src)
-	if(stat == DEAD)
-		dead_mob_list += src
-	else
-		living_mob_list += src
-	hook_vr("mob_new",list(src)) //VOREStation Code
-	update_transform() // Some mobs may start bigger or smaller than normal.
-	return ..()
 
 /mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
@@ -454,7 +477,7 @@
 		log_game("[usr.key] AM failed due to disconnect.")
 		return
 	client.screen.Cut()
-	client.screen += client.void
+	client.mob.reload_rendering()
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
 		return
@@ -889,7 +912,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/embedded_needs_process()
 	return (embedded.len > 0)
 
-mob/proc/yank_out_object()
+/mob/proc/yank_out_object()
 	set category = "Object"
 	set name = "Yank out object"
 	set desc = "Remove an embedded item at the cost of bleeding and pain."

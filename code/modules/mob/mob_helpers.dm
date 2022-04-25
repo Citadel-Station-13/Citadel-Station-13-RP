@@ -526,7 +526,7 @@ var/list/global/organ_rel_size = list(
 	"r_foot" = 10,
 )
 
-/mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/flash)
+/mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	return
 
 //Recalculates what planes this mob can see using their plane_holder, for humans this is checking slots, for others, could be whatever.
@@ -540,18 +540,6 @@ var/list/global/organ_rel_size = list(
 //Handle eye things like the Byond SEE_TURFS, SEE_OBJS, etc.
 /mob/proc/handle_vision()
 	return
-
-//Icon is used to occlude things like huds from the faulty byond context menu.
-//   http://www.byond.com/forum/?post=2336679
-var/global/image/backplane
-/hook/startup/proc/generate_backplane()
-	backplane = image('icons/misc/win32.dmi')
-	backplane.alpha = 0
-	backplane.plane = -100
-	backplane.layer = MOB_LAYER-0.1
-	backplane.mouse_opacity = 0
-
-	return TRUE
 
 /mob/proc/get_sound_env(var/pressure_factor)
 	if (pressure_factor < 0.5)

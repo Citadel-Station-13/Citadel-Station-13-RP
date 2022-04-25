@@ -113,7 +113,7 @@ FIRE ALARM
 		updateDialog()
 	last_process = world.timeofday
 
-	if(locate(/obj/fire) in src.loc)
+	if(locate(/atom/movable/fire) in src.loc)
 		alarm()
 
 	return

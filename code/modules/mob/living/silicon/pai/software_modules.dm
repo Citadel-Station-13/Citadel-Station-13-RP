@@ -445,11 +445,10 @@
 
 	toggle(mob/living/silicon/pai/user)
 		user.secHUD = !user.secHUD
-		user.plane_holder.set_vis(VIS_CH_ID, user.secHUD)
-		user.plane_holder.set_vis(VIS_CH_WANTED, user.secHUD)
-		user.plane_holder.set_vis(VIS_CH_IMPTRACK, user.secHUD)
-		user.plane_holder.set_vis(VIS_CH_IMPLOYAL, user.secHUD)
-		user.plane_holder.set_vis(VIS_CH_IMPCHEM, user.secHUD)
+		if(user.secHUD)
+			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).add_hud_to(user)
+		else
+			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).remove_hud_from(user)
 
 	is_active(mob/living/silicon/pai/user)
 		return user.secHUD
@@ -460,9 +459,10 @@
 	id = "med_hud"
 
 	toggle(mob/living/silicon/pai/user)
-		user.medHUD = !user.medHUD
-		user.plane_holder.set_vis(VIS_CH_STATUS, user.medHUD)
-		user.plane_holder.set_vis(VIS_CH_HEALTH, user.medHUD)
+		if((user.medHUD = !user.medHUD))
+			get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(user)
+		else
+			get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(user)
 
 	is_active(mob/living/silicon/pai/user)
 		return user.medHUD

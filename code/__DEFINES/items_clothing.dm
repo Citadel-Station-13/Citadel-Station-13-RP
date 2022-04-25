@@ -65,9 +65,9 @@
 #define slot_r_hand      2 //Some things may reference this, try to keep it here
 //Shown unless F12 pressed
 #define slot_back        3
-#define slot_belt        4
 #define slot_wear_id     5
 #define slot_s_store     6
+#define slot_belt        4
 #define slot_l_store     7
 #define slot_r_store     8 //Some things may reference this, try to keep it here
 //Shown when inventory unhidden
@@ -81,12 +81,28 @@
 #define slot_l_ear       16
 #define slot_r_ear       17
 //Secret slots
-#define slot_legs        18
-#define slot_tie         19
-#define slot_handcuffed  20
-#define slot_legcuffed   21
-#define slot_in_backpack 22
-#define SLOT_TOTAL       22
+#define slot_tie         18
+#define slot_handcuffed  19
+#define slot_legcuffed   20
+#define slot_in_backpack 21
+#define SLOT_TOTAL       21
+
+//Defines which slots correspond to which slot flags
+var/list/global/slot_flags_enumeration = list(
+	"[slot_wear_mask]" = SLOT_MASK,
+	"[slot_back]" = SLOT_BACK,
+	"[slot_wear_suit]" = SLOT_OCLOTHING,
+	"[slot_gloves]" = SLOT_GLOVES,
+	"[slot_shoes]" = SLOT_FEET,
+	"[slot_belt]" = SLOT_BELT,
+	"[slot_glasses]" = SLOT_EYES,
+	"[slot_head]" = SLOT_HEAD,
+	"[slot_l_ear]" = SLOT_EARS|SLOT_TWOEARS,
+	"[slot_r_ear]" = SLOT_EARS|SLOT_TWOEARS,
+	"[slot_w_uniform]" = SLOT_ICLOTHING,
+	"[slot_wear_id]" = SLOT_ID,
+	"[slot_tie]" = SLOT_TIE,
+	)
 
 // Inventory slot strings.
 // since numbers cannot be used as associative list keys.

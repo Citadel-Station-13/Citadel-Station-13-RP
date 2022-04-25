@@ -327,10 +327,10 @@
 	if(ext_blind)
 		eye_blind = 5
 		client.screen.Remove(GLOB.global_hud.whitense)
-		overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+		overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 	else
 		eye_blind = 0
-		clear_fullscreens()
+		clear_fullscreen("blind")
 		client.screen.Add(GLOB.global_hud.whitense)
 
 	//If they're deaf

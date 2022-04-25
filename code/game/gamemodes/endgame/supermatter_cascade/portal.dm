@@ -10,7 +10,7 @@
 	announce=0
 	cause_hell=0
 
-	plane = PLANE_LIGHTING_ABOVE // ITS SO BRIGHT
+	plane = ABOVE_LIGHTING_PLANE // ITS SO BRIGHT
 
 	consume_range = 6
 
@@ -80,7 +80,7 @@
 	if((R.z == T_mob.z) && (get_dist(R,T_mob) <= (R.consume_range+10)) && !(R in view(T_mob)))
 		if(!riftimage)
 			riftimage = image('icons/obj/rift.dmi',T_mob,"rift",1,1)
-			riftimage.plane = PLANE_LIGHTING_ABOVE
+			riftimage.plane = ABOVE_LIGHTING_PLANE
 			riftimage.mouse_opacity = 0
 
 		var/new_x = 32 * (R.x - T_mob.x) + R.pixel_x

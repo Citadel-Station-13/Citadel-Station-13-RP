@@ -41,9 +41,8 @@
 				current_limb.relocate()
 				current_limb.open = 0
 
-		BITSET(H.hud_updateflag, HEALTH_HUD)
-		BITSET(H.hud_updateflag, STATUS_HUD)
-		BITSET(H.hud_updateflag, LIFE_HUD)
+		H.update_hud_med_health()
+		H.update_hud_med_status()
 
 		if(H.handcuffed)
 			var/obj/item/W = H.handcuffed
