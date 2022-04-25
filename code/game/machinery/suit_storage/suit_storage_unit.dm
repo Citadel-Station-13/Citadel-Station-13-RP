@@ -483,7 +483,7 @@
 		if(do_after(user, 20))
 			if(!G || !G.affecting) return //derpcheck
 			var/mob/M = G.affecting
-			M.forceMove(srrc)
+			M.forceMove(src)
 			M.update_perspective()
 			occupant = M
 			isopen = 0 //close ittt

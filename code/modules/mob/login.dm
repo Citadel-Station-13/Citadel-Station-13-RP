@@ -86,7 +86,7 @@
 
 	// perspective
 	ensure_self_perspective()
-	reset_perspective(current_perspective)
+	reset_perspective(using_perspective)
 
 	// rendering
 	reload_rendering()

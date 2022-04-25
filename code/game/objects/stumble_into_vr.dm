@@ -119,7 +119,7 @@
 		M.emote("scream")
 
 /obj/machinery/suit_storage_unit/stumble_into(mob/living/M)
-	if(!ishuman(M) || !isopen || !ispowered || isbroken || OCCUPANT || helmet_stored || suit_stored)
+	if(!ishuman(M) || !isopen || !ispowered || isbroken || occupant || helmet_stored || suit_stored)
 		return ..()
 	playsound(src, 'sound/effects/clang.ogg', 25, 1, -1)
 	visible_message("<span class='warning'>[M] [pick("tripped", "stumbled")] into \the [src]!</span>")

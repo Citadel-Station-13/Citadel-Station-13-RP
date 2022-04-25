@@ -154,8 +154,9 @@ Class Procs:
 	if(contents) // The same for contents.
 		for(var/atom/A in contents)
 			if(ismob(A))
-				A.forceMove(loc)
-				A.update_perspective()
+				var/mob/M = A
+				M.forceMove(loc)
+				M.update_perspective()
 			else
 				qdel(A)
 	return ..()

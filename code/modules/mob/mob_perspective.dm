@@ -1,10 +1,8 @@
 /**
-  * Reset the attached clients perspective (viewpoint)
-  *
-  * reset_perspective() set eye to common default : mob on turf, loc otherwise
-  * reset_perspective(thing) set the eye to the thing (if it's equal to current default reset to mob perspective)
+  * Sets us to a /datum/perspective
+  * If none is specified, defaults to self_perspective.
   */
-/mob/proc/reset_perspective(atom/A)
+/mob/proc/reset_perspective(datum/perspective/P)
 	#warn standardize this
 	#warn standardize perspective var
 	#warn standardize sight var
@@ -66,7 +64,7 @@
  * updates our curent perspective
  */
 /mob/proc/update_perspective()
-	if(!clent)
+	if(!client)
 		return
 	using_perspective?.Update(client)
 

@@ -121,7 +121,7 @@
 	add_fingerprint(usr)
 
 /obj/machinery/bodyscanner/proc/go_out()
-	if(!occupant || src.locked))
+	if(!occupant || src.locked)
 		return
 	occupant.forceMove(loc)
 	occupant.update_perspective()
