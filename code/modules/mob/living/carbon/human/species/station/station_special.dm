@@ -43,7 +43,6 @@
 		/mob/living/carbon/human/proc/resp_biomorph,
 		/mob/living/carbon/human/proc/biothermic_adapt,
 		/mob/living/carbon/human/proc/atmos_biomorph,
-		/mob/living/carbon/human/proc/vocal_biomorph,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -71,8 +70,7 @@
 	var/list/removable_spells = list()
 
 	var/has_feral_spells = FALSE
-	virus_immune = 1 // They practically ARE one.
-	min_age = 18
+	virus_immune = TRUE // They practically ARE one.
 	max_age = 200
 
 	blurb = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \
@@ -158,8 +156,7 @@
 
 	//Cold/pressure effects when not regenerating
 	else
-		var/datum/gas_mixture/environment = H.loc.return_air()
-		var/pressure2 = environment.return_pressure()
+		var/pressure2 = H.loc.return_pressure()
 		var/adjusted_pressure2 = H.calculate_affecting_pressure(pressure2)
 
 		//Very low pressure damage
@@ -175,8 +172,8 @@
 	..()
 
 /datum/species/shapeshifter/xenochimera/add_inherent_spells(var/mob/living/carbon/human/H)
-	var/master_type = /obj/screen/movable/spell_master/chimera
-	var/obj/screen/movable/spell_master/chimera/new_spell_master = new master_type
+	var/master_type = /atom/movable/screen/movable/spell_master/chimera
+	var/atom/movable/screen/movable/spell_master/chimera/new_spell_master = new master_type
 
 	if(!H.spell_masters)
 		H.spell_masters = list()
@@ -193,7 +190,7 @@
 /datum/species/shapeshifter/xenochimera/proc/add_feral_spells(var/mob/living/carbon/human/H)
 	if(!has_feral_spells)
 		var/check = FALSE
-		var/master_type = /obj/screen/movable/spell_master/chimera
+		var/master_type = /atom/movable/screen/movable/spell_master/chimera
 		for(var/spell/S as anything in feral_spells)
 			var/spell/spell_to_add = new S(H)
 			check = H.add_spell(spell_to_add, "cult", master_type)
@@ -472,11 +469,11 @@
 
 	return
 
-/obj/screen/xenochimera
+/atom/movable/screen/xenochimera
 	icon = 'icons/mob/chimerahud.dmi'
 	invisibility = 101
 
-/obj/screen/xenochimera/danger_level
+/atom/movable/screen/xenochimera/danger_level
 	name = "danger level"
 	icon_state = "danger00"		//first number is bool of whether or not we're in danger, second is whether or not we're feral
 	alpha = 200
@@ -679,28 +676,6 @@
 				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
 		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
 
-
-/mob/living/carbon/human/proc/vocal_biomorph()
-	set name = "Vocalization Biomorph"
-	set desc = "Changes our speech pattern."
-	set category = "Chimera"
-
-	var/vocal_biomorph = input(src, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
-	if(!vocal_biomorph)
-		return
-	to_chat(src, "You begin modifying your internal structure!")
-	if(do_after(src,15 SECONDS))
-		switch(vocal_biomorph)
-			if("common")
-				return
-			if("unathi")
-				species.autohiss_basic_map = list("s" = list("ss", "sss", "ssss"))
-				species.autohiss_extra_map = list("x" = list("ks", "kss", "ksss"))
-				species.autohiss_exempt = "Sinta'unathi"
-			if("tajaran")
-				species.autohiss_basic_map = list("r" = list("rr", "rrr", "rrrr"))
-				species.autohiss_exempt = "Siik"
-
 /////////////////////
 /////SPIDER RACE/////
 /////////////////////
@@ -734,7 +709,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "Vasilissans are a tall, lanky, spider like people. \
@@ -802,7 +776,6 @@
 	primitive_form = "Wolpin"
 	color_mult = 1
 
-	min_age = 18
 	max_age = 200
 
 	blurb = "Big buff werewolves. These are a limited functionality event species that are not balanced for regular gameplay. Adminspawn only."
@@ -870,7 +843,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "Apidaens are an insectoid race from the far galactic rim. \

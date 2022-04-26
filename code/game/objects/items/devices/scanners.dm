@@ -10,7 +10,6 @@ REAGENT SCANNER
 HALOGEN COUNTER	- Radcount on mobs
 */
 
-
 /obj/item/healthanalyzer
 	name = "health analyzer"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject."
@@ -273,10 +272,12 @@ HALOGEN COUNTER	- Radcount on mobs
 			var/blood_volume = H.vessel.get_reagent_amount("blood")
 			var/blood_percent =  round((blood_volume / H.species.blood_volume)*100)
 			var/blood_type = H.dna.b_type
-			if(blood_percent <= BLOOD_VOLUME_BAD)
-				dat += "<span class='danger'><i>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i></span><br>"
-			else if(blood_percent <= BLOOD_VOLUME_SAFE)
-				dat += "<span class='danger'>Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]</span><br>"
+			if(blood_volume <= H.species.blood_volume*H.species.blood_level_danger)
+				dat += SPAN_DANGER("<i>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i><br>")
+			else if(blood_volume <= H.species.blood_volume*H.species.blood_level_warning)
+				dat += SPAN_DANGER("<i>Warning: Blood Level VERY LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i><br>")
+			else if(blood_volume <= H.species.blood_volume*H.species.blood_level_safe)
+				dat += SPAN_DANGER("Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]<br>")
 			else
 				dat += "<span class='notice'>Blood Level Normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]</span><br>"
 		dat += "<span class='notice'>Subject's pulse: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</font></span>"
@@ -303,6 +304,11 @@ HALOGEN COUNTER	- Radcount on mobs
 			to_chat(usr, "The scanner will now perform an advanced analysis.")
 		if(0)
 			to_chat(usr, "The scanner will now perform a basic analysis.")
+
+/obj/item/healthanalyzer/apidean
+	name = "\improper Apidean health analyzer"
+	desc = "This medical scanner feels oddly warm and has two insectiod antennae."
+	icon_state = "apidae-health"
 
 /obj/item/healthanalyzer/improved //reports bone fractures, IB, quantity of beneficial reagents in stomach; also regular health analyzer stuff
 	name = "improved health analyzer"
@@ -340,6 +346,12 @@ HALOGEN COUNTER	- Radcount on mobs
 	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
 
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
+
+/obj/item/analyzer/apidean
+	name = "\improper Apidean analyzer"
+	desc = "This analyzer has a strange, soft exterior and seems to faintly breathe."
+	icon_state = "apidae-analyzer"
+
 /obj/item/analyzer/longrange
 	name = "long-range analyzer"
 	desc = "A hand-held environmental scanner which reports current gas levels. This one uses bluespace technology."
@@ -487,6 +499,11 @@ HALOGEN COUNTER	- Radcount on mobs
 		to_chat(user, span("notice", "No significant chemical agents found in [O]."))
 
 	return
+
+/obj/item/reagent_scanner/apidean
+	name = "\improper Apidean taster"
+	desc = "This reagent scanner appears to be an artificially created lifeform. Often used by Apidaen guards to test food and drinks during diplomatic meetings."
+	icon_state = "apidae-reagent"
 
 /obj/item/reagent_scanner/adv
 	name = "advanced reagent scanner"

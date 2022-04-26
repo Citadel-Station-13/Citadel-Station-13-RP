@@ -29,7 +29,6 @@
 	var/list/stating_laws = list()// Channels laws are currently being stated on
 	var/obj/item/radio/common_radio
 
-	has_huds = TRUE
 	var/list/speech_synthesizer_langs = list()	//which languages can be vocalized by the speech synthesizer
 
 	//Used in say.dm.
@@ -241,48 +240,22 @@
 	return
 
 /mob/living/silicon/proc/toggle_sensor_mode()
-	var/sensor_type = input("Please select sensor type.", "Sensor Integration", null) in list("Security","Medical","Disable")
+	var/sensor_type = input("Please select sensor type.", "Sensor Integration", null) as null|anything in list("Security","Medical","Disable")
+	if(isnull(sensor_type))
+		return
+	switch(hudmode)
+		if("Security")
+			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).remove_hud_from(src)
+		if("Medical")
+			get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(src)
 	switch(sensor_type)
 		if ("Security")
-			if(plane_holder)
-				//Enable Security planes
-				plane_holder.set_vis(VIS_CH_ID,TRUE)
-				plane_holder.set_vis(VIS_CH_WANTED,TRUE)
-				plane_holder.set_vis(VIS_CH_IMPLOYAL,TRUE)
-				plane_holder.set_vis(VIS_CH_IMPTRACK,TRUE)
-				plane_holder.set_vis(VIS_CH_IMPCHEM,TRUE)
-
-				//Disable Medical planes
-				plane_holder.set_vis(VIS_CH_STATUS,FALSE)
-				plane_holder.set_vis(VIS_CH_HEALTH,FALSE)
-
+			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).add_hud_to(src)
 			to_chat(src,"<span class='notice'>Security records overlay enabled.</span>")
 		if ("Medical")
-			if(plane_holder)
-				//Disable Security planes
-				plane_holder.set_vis(VIS_CH_ID,FALSE)
-				plane_holder.set_vis(VIS_CH_WANTED,FALSE)
-				plane_holder.set_vis(VIS_CH_IMPLOYAL,FALSE)
-				plane_holder.set_vis(VIS_CH_IMPTRACK,FALSE)
-				plane_holder.set_vis(VIS_CH_IMPCHEM,FALSE)
-
-				//Enable Medical planes
-				plane_holder.set_vis(VIS_CH_STATUS,TRUE)
-				plane_holder.set_vis(VIS_CH_HEALTH,TRUE)
-
+			get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(src)
 			to_chat(src,"<span class='notice'>Life signs monitor overlay enabled.</span>")
 		if ("Disable")
-			if(plane_holder)
-				//Disable Security planes
-				plane_holder.set_vis(VIS_CH_ID,FALSE)
-				plane_holder.set_vis(VIS_CH_WANTED,FALSE)
-				plane_holder.set_vis(VIS_CH_IMPLOYAL,FALSE)
-				plane_holder.set_vis(VIS_CH_IMPTRACK,FALSE)
-				plane_holder.set_vis(VIS_CH_IMPCHEM,FALSE)
-
-				//Disable Medical planes
-				plane_holder.set_vis(VIS_CH_STATUS,FALSE)
-				plane_holder.set_vis(VIS_CH_HEALTH,FALSE)
 			to_chat(src,"Sensor augmentations disabled.")
 
 	hudmode = sensor_type //This is checked in examine.dm on humans, so they can see medical/security records depending on mode
@@ -406,7 +379,7 @@
 	if(cameraFollow)
 		cameraFollow = null
 
-/mob/living/silicon/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/living/silicon/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(affect_silicon)
 		return ..()
 
@@ -427,3 +400,6 @@
 
 /mob/living/silicon/has_vision()
 	return 0 //NOT REAL EYES
+
+/mob/living/silicon/get_bullet_impact_effect_type(var/def_zone)
+	return BULLET_IMPACT_METAL

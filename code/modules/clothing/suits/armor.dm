@@ -123,6 +123,13 @@
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 
+/obj/item/clothing/suit/armor/tactical/pirate
+	name = "defaced tactical armor"
+	desc = "This tactical armor has been painted over and repaired multiple times. Accumulated battle damage has degraded its protective capabilities significantly."
+	icon_state = "swatarmor_pirate"
+	armor = list(melee = 20, bullet = 20, laser = 20, energy = 10, bomb = 10, bio = 0, rad = 0)
+	siemens_coefficient = 0.7
+
 /obj/item/clothing/suit/armor/swat
 	name = "swat suit"
 	desc = "A heavily armored suit that protects against moderate damage. Used in special operations."
@@ -793,3 +800,35 @@
 	icon_state = "bonearmor"
 	armor = list("melee" = 35, "bullet" = 25, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "wound" = 10)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+
+//Strange Plate Armor
+/obj/item/clothing/suit/armor/bulletproof/kettle
+	name = "bulky imperial plate"
+	desc = "Often sold in tandem with KTL helmets, this sturdy plate armor offers impressive protection against bullets. These suits are believed to originate from an isolationist human society on the Eastern Rim."
+	icon_state = "ironplate"
+	armor = list(melee = 10, bullet = 80, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/armor/bulletproof/kettle/adamant
+	name = "adamant imperial plate"
+	desc = "Much more rare than standard Imperial plate, adamant armor protects against lasers and radiation as well as bullets. These suits are believed to originate from an isolationist human society on the Eastern Rim."
+	icon_state = "aplate"
+	armor = list(melee = 10, bullet = 60, laser = 40, energy = 40, bomb = 0, bio = 0, rad = 60)
+
+//Plate Harness Armor. Has no intrinsic protective value, but serves as a lightweight anchor for limb plating.
+/obj/item/clothing/suit/armor/plate_harness
+	name = "lightweight harness"
+	desc = "A lightweight harness designed to attach to the torso. It serves as an anchor point for lightweight armor plating, but provides no protection of its own."
+	icon = 'icons/obj/clothing/ties.dmi'
+	item_icons = list(slot_wear_suit_str = 'icons/mob/ties.dmi')
+	icon_state = "pilot_webbing1"
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_ARMOR_C\
+		|ACCESSORY_SLOT_ARMOR_A\
+		|ACCESSORY_SLOT_ARMOR_L\
+		|ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = (\
+		ACCESSORY_SLOT_ARMOR_C\
+		|ACCESSORY_SLOT_ARMOR_A\
+		|ACCESSORY_SLOT_ARMOR_L\
+		|ACCESSORY_SLOT_ARMOR_M)
+	blood_overlay_type = "armor"

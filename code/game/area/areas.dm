@@ -10,7 +10,7 @@
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
-	plane = PLANE_LIGHTING_ABOVE //In case we color them
+	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	mouse_opacity = 0
 	var/lightswitch = 1
 
@@ -35,6 +35,13 @@
 	var/static_light = 0
 	var/static_environ = 0
 
+	/// Parallax moving?
+	var/parallax_moving = FALSE
+	/// Parallax move speed - 0 to disable
+	var/parallax_move_speed = 0
+	/// Parallax move dir - degrees clockwise from north
+	var/parallax_move_angle = 0
+
 	var/music = null
 
 	var/has_gravity = 1
@@ -57,6 +64,9 @@
 
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color
+
+	///Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
+	var/area/area_limited_icon_smoothing
 
 /**
  * Called when an area loads
@@ -200,13 +210,13 @@
 
 /area/proc/atmosalert(danger_level, var/alarm_source)
 	if (danger_level == 0)
-		SSalarms.atmosphere_alarm.clearAlarm(src, alarm_source)
+		atmosphere_alarm.clearAlarm(src, alarm_source)
 	else
 		var/obj/machinery/alarm/atmosalarm = alarm_source //maybe other things can trigger these, who knows
 		if(istype(atmosalarm))
-			SSalarms.atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden)
+			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden)
 		else
-			SSalarms.atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
+			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
 	for (var/obj/machinery/alarm/AA in src)

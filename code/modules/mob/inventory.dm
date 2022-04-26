@@ -133,6 +133,10 @@ var/list/slot_equipment_priority = list( \
 /mob/proc/is_holding_item_of_type(typepath)
 	return FALSE
 
+// Override for your specific mob's hands or lack thereof.
+/mob/proc/get_all_held_items()
+	return list()
+
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
 	if(lying || !istype(W))
@@ -270,9 +274,9 @@ var/list/slot_equipment_priority = list( \
 //This differs from remove_from_mob() in that it checks if the item can be unequipped first.
 /mob/proc/unEquip(obj/item/I, force = 0, target) //Force overrides NODROP for things like wizarditis and admin undress.
 	if(!(force || canUnEquip(I)))
-		return
+		return FALSE
 	drop_from_inventory(I, target)
-	return 1
+	return TRUE
 
 
 //Attemps to remove an object on a mob.

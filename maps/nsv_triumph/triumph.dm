@@ -7,9 +7,11 @@
 	#include "triumph_shuttles.dm"
 	#include "triumph_telecomms.dm"
 	#include "triumph_overmap.dm"
+	#include "classg.dm"
+	#include "classd.dm"
 	#include "classh.dm"
-	#include "frozen_planet.dm"
-	#include "gaia_planet.dm"
+	#include "classp.dm"
+	#include "classm.dm"
 	#include "lavaland.dm"
 
 	#include "submaps/_triumph_submaps.dm"

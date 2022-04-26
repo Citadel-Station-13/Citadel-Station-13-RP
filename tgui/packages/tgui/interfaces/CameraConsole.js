@@ -80,18 +80,6 @@ export const CameraConsoleContent = (props, context) => {
         </div>
         <div className="CameraConsole__toolbarRight">
           <Button
-            icon="arrow-left"
-            disabled={!prevCameraName}
-            onClick={() => act('switch_camera', {
-              name: prevCameraName,
-            })} />
-          <Button
-            icon="arrow-right"
-            disabled={!nextCameraName}
-            onClick={() => act('switch_camera', {
-              name: nextCameraName,
-            })} />
-          <Button
             icon="chevron-left"
             onClick={() => act('pan', { dir: 8 })} />
           <Button

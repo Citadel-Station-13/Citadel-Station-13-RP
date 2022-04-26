@@ -140,3 +140,7 @@
 /datum/gear/gloves/bountyskin
 	name = "Bounty Hunter's Gloves"
 	path = /obj/item/clothing/gloves/bountyskin
+
+/datum/gear/gloves/hasie
+	name = "Hasie Fingerless Gloves"
+	path = /obj/item/clothing/gloves/hasie

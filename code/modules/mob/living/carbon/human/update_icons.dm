@@ -142,11 +142,11 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			M.Turn(90)
 		M.Scale(desired_scale_y, desired_scale_x)
 		M.Translate(1,-6)
-		layer = MOB_LAYER -0.01 // Fix for a byond bug where turf entry order no longer matters
+		set_base_layer(MOB_LAYER - 0.01)
 	else
 		M.Scale(desired_scale_x, desired_scale_y)
 		M.Translate(0, 16*(desired_scale_y-1))
-		layer = MOB_LAYER // Fix for a byond bug where turf entry order no longer matters
+		set_base_layer(MOB_LAYER)
 
 	animate(src, transform = M, time = anim_time)
 	update_icon_special() //May contain transform-altering things
@@ -511,7 +511,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		eyes_icon.Blend(rgb(128,0,0), ICON_ADD)
 
 	var/image/eyes_image = image(eyes_icon)
-	eyes_image.plane = PLANE_LIGHTING_ABOVE
+	eyes_image.plane = ABOVE_LIGHTING_PLANE
 
 	overlays_standing[EYES_LAYER] = eyes_image
 	apply_layer(EYES_LAYER)

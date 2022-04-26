@@ -271,6 +271,7 @@
 	icon_state = "sheet-super"
 	item_state = "diamond"
 	default_type = MAT_SUPERMATTER
+	no_variants = FALSE
 	apply_colour = TRUE
 
 /obj/item/stack/material/supermatter/proc/update_mass()	// Due to how dangerous they can be, the item will get heavier and larger the more are in the stack.
@@ -514,3 +515,14 @@
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'
+
+//Moved out of beehive.dm in conjunction with the primary material.
+/obj/item/stack/material/wax
+	name = "wax"
+	singular_name = "wax piece"
+	desc = "Soft substance produced by bees. Used to make candles."
+	icon_state = "sheet-rtransparent"
+	apply_colour = 1
+	default_type = "wax"
+	no_variants = FALSE
+	pass_color = TRUE

@@ -243,3 +243,8 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "bounty hunter skinsuit (heels)"
 	desc = "The original skinsuit featured agility-boosting heels. These replicas grant no assistance, but look just as stylish."
 	icon_state = "bountyskin"
+
+/obj/item/clothing/shoes/antediluvian
+	name = "Antediluvian legwraps"
+	desc = "These thigh-high legwraps are designed to cling tightly to the body. Secured to the feet by stirrups, it is unknown whether shoes were meant to be worn over these."
+	icon_state = "antediluvian"

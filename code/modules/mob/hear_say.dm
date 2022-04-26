@@ -12,8 +12,7 @@
 	//make sure the air can transmit speech - hearer's side
 	var/turf/T = get_turf(src)
 	if ((T) && (!(istype(src, /mob/observer/dead)))) //Ghosts can hear even in vacuum.
-		var/datum/gas_mixture/environment = T.return_air()
-		var/pressure = (environment)? environment.return_pressure() : 0
+		var/pressure = T.return_pressure()
 		if(pressure < SOUND_MINIMUM_PRESSURE && get_dist(speaker, src) > 1)
 			return
 
@@ -129,6 +128,11 @@
 
 	if(!client)
 		return
+
+	//if it has been more than 0.5 seconds since the last time we heard this, we hear it again
+	if(last_radio_sound + 0.5 SECONDS < world.time && src != speaker)
+		playsound(loc, 'sound/effects/radiochatter.ogg', 10, 0, -1, falloff = -3)
+		last_radio_sound = world.time
 
 	if(sleeping || stat==1) //If unconscious or sleeping
 		hear_sleep(message)

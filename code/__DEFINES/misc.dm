@@ -1,14 +1,3 @@
-// Byond direction defines, because I want to put them somewhere.
-// #define NORTH 1
-// #define SOUTH 2
-// #define EAST 4
-// #define WEST 8
-
-#define TEXT_NORTH			"[NORTH]"
-#define TEXT_SOUTH			"[SOUTH]"
-#define TEXT_EAST			"[EAST]"
-#define TEXT_WEST			"[WEST]"
-
 /// world.icon_size
 #define PIXELS 32
 
@@ -54,30 +43,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 #define PROCESS_KILL	26	// Used to trigger removal from a processing list.
-#define MAX_GEAR_COST					15	// Used in chargen for accessory loadout limit.
+#define MAX_GEAR_COST					20	// Used in chargen for accessory loadout limit.
 #define MAX_GEAR_COST_HOLIDAY_SPAM		30
-
-
-// For secHUDs and medHUDs and variants. The number is the location of the image on the list hud_list of humans.
-#define HEALTH_HUD		1	// A simple line rounding the mob's number health.
-#define STATUS_HUD		2	// Alive, dead, diseased, etc.
-#define ID_HUD			3	// The job asigned to your ID.
-#define WANTED_HUD		4	// Wanted, released, paroled, security status.
-#define IMPLOYAL_HUD	5	// Loyality implant.
-#define IMPCHEM_HUD		6	// Chemical implant.
-#define IMPTRACK_HUD	7	// Tracking implant.
-#define SPECIALROLE_HUD	8	// AntagHUD image.
-#define STATUS_HUD_OOC	9	// STATUS_HUD without virus DB check for someone being ill.
-#define LIFE_HUD		10	// STATUS_HUD that only reports dead or alive
-
-// Because of omnihud having overlapping issues, we have extra ones.
-#define BACKUP_HUD		11	// HUD for showing whether or not they have a backup implant.
-#define STATUS_R_HUD	12	// HUD for showing the same STATUS_HUD info on the right side, but not for 'boring' statuses (transparent icons)
-#define HEALTH_VR_HUD	13	// HUD with blank 100% bar so it's hidden most of the time.
-#define VANTAG_HUD		14	// HUD for showing being-an-antag-target prefs
-
-// Total number of HUDs. Like body layers, and other things, it comes up sometimes.
-#define TOTAL_HUDS 14
 
 //	Shuttles.
 
@@ -463,7 +430,87 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define JOB_SILICON_AI		0x4
 #define JOB_SILICON			0x6 // 2|4, probably don't set jobs to this, but good for checking
 
-#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
-#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
-#define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
-#define SPAN_OCCULT(X) "<span class='cult'>[X]</span>"
+/*
+	Used for wire name appearances. Replaces the color name on the left with the one on the right.
+	The color on the left is the one used as the actual color of the wire, but it doesn't look good when written.
+	So, we need to replace the name to something that looks better.
+*/
+#define LIST_COLOR_RENAME 				\
+	list(								\
+		"rebeccapurple" = "dark purple",\
+		"darkslategrey" = "dark grey",	\
+		"darkolivegreen"= "dark green",	\
+		"darkslateblue" = "dark blue",	\
+		"darkkhaki" 	= "khaki",		\
+		"darkseagreen" 	= "light green",\
+		"midnightblue" 	= "blue",		\
+		"lightgrey" 	= "light grey",	\
+		"darkgrey" 		= "dark grey",	\
+		"darkmagenta"	= "dark magenta",\
+		"steelblue" 	= "blue",		\
+		"goldenrod"	 	= "gold"		\
+	)
+
+/// Pure Black and white colorblindness. Every species except Vulpkanins and Tajarans will have this.
+#define GREYSCALE_COLOR_REPLACE		\
+	list(							\
+		"red"		= "grey",		\
+		"blue"		= "grey",		\
+		"green"		= "grey",		\
+		"orange"	= "light grey",	\
+		"brown"		= "grey",		\
+		"gold"		= "light grey",	\
+		"cyan"		= "silver",		\
+		"magenta"	= "grey",		\
+		"purple"	= "grey",		\
+		"pink"		= "light grey"	\
+	)
+
+/// Red colorblindness. Vulpkanins/Wolpins have this.
+#define PROTANOPIA_COLOR_REPLACE		\
+	list(								\
+		"red"		= "darkolivegreen",	\
+		"darkred"	= "darkolivegreen",	\
+		"green"		= "yellow",			\
+		"orange"	= "goldenrod",		\
+		"gold"		= "goldenrod", 		\
+		"brown"		= "darkolivegreen",	\
+		"cyan"		= "steelblue",		\
+		"magenta"	= "blue",			\
+		"purple"	= "darkslategrey",	\
+		"pink"		= "beige"			\
+	)
+
+/// Green colorblindness.
+#define DEUTERANOPIA_COLOR_REPLACE		\
+	list(								\
+		"red"			= "goldenrod",	\
+		"green"			= "tan",		\
+		"yellow"		= "tan",		\
+		"orange"		= "goldenrod",	\
+		"gold"			= "burlywood",	\
+		"brown"			= "saddlebrown",\
+		"cyan"			= "lavender",	\
+		"magenta"		= "blue",		\
+		"darkmagenta"	= "darkslateblue",	\
+		"purple"		= "slateblue",	\
+		"pink"			= "thistle"		\
+	)
+
+/// Yellow-Blue colorblindness. Tajarans/Farwas have this.
+#define TRITANOPIA_COLOR_REPLACE		\
+	list(								\
+		"red"		= "rebeccapurple",	\
+		"blue"		= "darkslateblue",	\
+		"green"		= "darkolivegreen",	\
+		"orange"	= "darkkhaki",		\
+		"gold"		= "darkkhaki",		\
+		"brown"		= "rebeccapurple",	\
+		"cyan"		= "darkseagreen",	\
+		"magenta"	= "darkslateblue",	\
+		"navy"		= "darkslateblue",	\
+		"purple"	= "darkslateblue",	\
+		"pink"		= "lightgrey"		\
+	)
+
+#define SYNTHETIC_NUTRITION_CHARGE_RATE 20			// amount of cell charge to use per 1 nutrition, given that synthetics are full at 450 nutrition

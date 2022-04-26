@@ -25,7 +25,7 @@
 	local_transmit = FALSE
 	languages = controlling_ai.languages.Copy()
 	speech_synthesizer_langs = controlling_ai.speech_synthesizer_langs.Copy()
-	stat = CONSCIOUS
+	set_stat(CONSCIOUS)
 	if(user.mind)
 		user.mind.transfer_to(src)
 	else

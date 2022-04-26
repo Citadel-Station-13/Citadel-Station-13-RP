@@ -11,10 +11,10 @@
 /obj/machinery/computer/cryopod
 	name = "cryogenic oversight console"
 	desc = "An interface between crew and the cryogenic storage oversight systems."
-	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/cryopodcontrol
-	density = 0
+	density = FALSE
 	interact_offline = 1
 	var/mode = null
 
@@ -80,9 +80,9 @@
 /obj/machinery/computer/cryopod/attack_hand(mob/user = usr)
 	if(stat & (NOPOWER|BROKEN))
 		return
+	..()
 
 	user.set_machine(src)
-	add_fingerprint(usr)
 
 	var/dat
 
@@ -106,8 +106,6 @@
 		return
 
 	var/mob/user = usr
-
-	add_fingerprint(user)
 
 	if(href_list["log"])
 
@@ -196,7 +194,7 @@
 
 	name = "cryogenic feed"
 	desc = "A bewildering tangle of machinery and pipes."
-	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/Cryogenic2.dmi' //VOREStation Edit - New Icon
 	icon_state = "cryo_rear"
 	anchored = 1
 	dir = WEST
@@ -205,13 +203,13 @@
 /obj/machinery/cryopod
 	name = "cryogenic freezer"
 	desc = "A man-sized pod for entering suspended animation."
-	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/Cryogenic2.dmi' //VOREStation Edit - New Icon
 	icon_state = "cryopod_0" //VOREStation Edit - New Icon
 	density = 1
 	anchored = 1
 	dir = WEST
 
-	var/base_icon_state = "cryopod_0" //VOREStation Edit - New Icon
+	base_icon_state = "cryopod_0" //VOREStation Edit - New Icon
 	var/occupied_icon_state = "cryopod_1" //VOREStation Edit - New Icon
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
@@ -623,17 +621,6 @@
 
 	return
 
-/obj/machinery/cryopod/robot/door/gateway/move_inside()
-	..()
-	//locate(/obj/machinery/computer/cryopod) in range(6,src)
-	for(var/obj/machinery/gateway/G in range(1,src))
-		G.icon_state = "on"
-
-/obj/machinery/cryopod/robot/door/gateway/go_out()
-	..()
-	for(var/obj/machinery/gateway/G in range(1,src))
-		G.icon_state = "off"
-
 /obj/machinery/cryopod/proc/go_out()
 
 	if(!occupant)
@@ -670,7 +657,7 @@
 	if(!M)
 		return
 	if(occupant)
-		to_chat(user,"<span class='warning'>\The [src] is already occupied.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
 		return
 
 	var/willing = null //We don't want to allow people to be forced into despawning.
@@ -690,7 +677,7 @@
 
 		if(do_after(user, 20))
 			if(occupant)
-				to_chat(user,"<span class='warning'>\The [src] is already occupied.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
 				return
 			M.forceMove(src)
 
@@ -734,13 +721,39 @@
 /obj/machinery/cryopod/robot/door/gateway
 	name = "public teleporter"
 	desc = "The short-range teleporter you might've came in from. You could leave easily using this."
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "tele0"
-	base_icon_state = "tele0"
-	occupied_icon_state = "tele1"
+	icon = 'icons/obj/machines/teleporter.dmi'
+	icon_state = "pad_idle"
+	base_icon_state = "pad"
+	occupied_icon_state = "pad_active"
 	on_store_message = "has departed via short-range teleport."
 	on_enter_occupant_message = "The teleporter activates, and you step into the swirling portal."
 	spawnpoint_type = /datum/spawnpoint/gateway
+
+/obj/machinery/cryopod/robot/door/gateway/move_inside()
+	..()
+	for(var/obj/machinery/gateway/G in range(1,src))
+		G.update_icon()
+
+/obj/machinery/cryopod/robot/door/gateway/go_out()
+	..()
+	for(var/obj/machinery/gateway/G in range(1,src))
+		G.update_icon()
+
+/obj/machinery/cryopod/robot/door/gateway/update_icon()
+	overlays.Cut()
+	if(occupant)
+		var/image/I = image(icon, src, "[base_icon_state]_active_overlay")
+		I.plane = ABOVE_LIGHTING_PLANE
+		I.layer = ABOVE_LIGHTING_LAYER
+		overlays += I
+		set_light(0.4, 1.2, 4, 10)
+	else
+		set_light(0)
+		if(operable())
+			var/image/I = image(icon, src, "[base_icon_state]_idle_overlay")
+			I.plane = ABOVE_LIGHTING_PLANE
+			I.layer = ABOVE_LIGHTING_LAYER
+			overlays += I
 
 /obj/machinery/computer/cryopod/gateway
 	name = "teleport oversight console"

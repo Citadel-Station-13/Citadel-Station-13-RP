@@ -1,7 +1,7 @@
 var/datum/planet/classh/planet_classh = null
 
 /datum/time/classh
-	seconds_in_day = 3 HOURS
+	seconds_in_day = 24 HOURS
 
 /datum/planet/classh
 	name = "Class-H Desert Planet"

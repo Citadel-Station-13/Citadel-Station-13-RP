@@ -190,3 +190,40 @@
 	cost = 25
 	containertype = /obj/structure/closet/crate
 	containername = "collar crate"
+
+//DONKsoft
+/datum/supply_pack/recreation/donksoft
+	name = "DONKsoft Skirmish Bundle"
+	contains = list(
+			/obj/item/gunbox/donksoft = 2,
+			/obj/item/gunbox/donksoft/shotgun = 2,
+			/obj/item/gunbox/donksoft/smg = 2,
+			/obj/item/material/sword/foam = 2,
+			/obj/item/shield/riot/foam = 2
+			)
+	cost = 40
+	containertype = /obj/structure/closet/crate
+	containername = "DONKsoft Skirmish crate"
+
+/datum/supply_pack/recreation/donksoft_exotic
+	name = "DONKsoft Exotic Weaponry Bundle"
+	contains = list(
+			/obj/item/gun/projectile/automatic/c20r/foam = 2,
+			/obj/item/gun/projectile/automatic/l6_saw/foam = 1,
+			/obj/item/ammo_magazine/mfoam/c20 = 4,
+			/obj/item/ammo_magazine/mfoam/lmg = 2,
+			/obj/item/material/twohanded/spear/foam = 2,
+			/obj/item/material/twohanded/fireaxe/foam = 1
+			)
+	cost = 80
+	containertype = /obj/structure/closet/crate
+	containername = "DONKsoft Exotic Weaponry crate"
+
+/datum/supply_pack/recreation/donksoft_ammo
+	name = "DONKsoft Resupply Bundle"
+	contains = list(
+			/obj/item/storage/box/foamdart= 4
+			)
+	cost = 20
+	containertype = /obj/structure/closet/crate
+	containername = "DONKsoft Resupply crate"

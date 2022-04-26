@@ -29,7 +29,7 @@
 	force = 8
 	w_class = ITEMSIZE_LARGE	//Probably gonna make it a rifle sooner or later
 	fire_delay = 6
-
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/beam/stun/weak
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 3)
 	modifystate = "fm-2tstun"
@@ -53,13 +53,14 @@
 	slot_flags = SLOT_BELT
 	force = 8 //looks heavier than a pistol
 	w_class = ITEMSIZE_LARGE	//Looks bigger than a pistol, too.
+	heavy = TRUE
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 	modifystate = null
 
 //	requires_two_hands = 1
-	one_handed_penalty = 5 // It's rather bulky, so holding it in one hand is a little harder than with two, however it's not 'required'.
+	one_handed_penalty = 30 // It's rather bulky at the fore, so holding it in one hand is harder than with two.
 
 	firemodes = list(
 		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240),

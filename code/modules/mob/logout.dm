@@ -15,4 +15,6 @@
 				send2irc("LOGOUT", "[key_name(src)] logged out - no more admins online.")
 	..()
 
+	dispose_rendering()
+
 	return 1

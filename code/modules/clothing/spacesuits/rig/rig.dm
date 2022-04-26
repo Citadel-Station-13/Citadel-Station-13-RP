@@ -304,8 +304,8 @@
 	var/seal_target = !canremove
 	var/failed_to_seal
 
-	var/obj/screen/rig_booting/booting_L = new
-	var/obj/screen/rig_booting/booting_R = new
+	var/atom/movable/screen/rig_booting/booting_L = new
+	var/atom/movable/screen/rig_booting/booting_R = new
 
 	if(!seal_target)
 		booting_L.icon_state = "boot_left"
@@ -1159,18 +1159,18 @@
 		return null
 
 //Boot animation screen objects
-/obj/screen/rig_booting
+/atom/movable/screen/rig_booting
 	screen_loc = "1,1"
 	icon = 'icons/obj/rig_boot.dmi'
 	icon_state = ""
 	layer = SCREEN_LAYER
-	plane = PLANE_FULLSCREEN
+	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
 	alpha = 20 //Animated up when loading
 
 //Shows cell charge on screen, ideally.
 
-var/obj/screen/cells = null
+var/atom/movable/screen/cells = null
 
 // update the status screen display
 /obj/item/rig/Stat()

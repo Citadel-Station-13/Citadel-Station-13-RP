@@ -14,3 +14,5 @@
 				r += bit
 
 	return r
+
+#define IS_VALID_INDEX(list, index) (list.len && index > 0 && index <= list.len)

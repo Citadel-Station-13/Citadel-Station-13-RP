@@ -18,7 +18,7 @@
 	w_class = ITEMSIZE_NORMAL
 
 	var/obj/machinery/computer/shuttle_control/shuttle_comp
-	var/obj/screen/pilot_hud
+	var/atom/movable/screen/pilot_hud
 	var/list/images
 	var/list/raw_images
 	var/last_status
@@ -34,7 +34,7 @@
 	pilot_hud.icon = 'icons/obj/piloting_overlay.dmi'
 	pilot_hud.icon_state = "dimmer"
 	pilot_hud.layer = SCREEN_LAYER
-	pilot_hud.plane = PLANE_FULLSCREEN
+	pilot_hud.plane = FULLSCREEN_PLANE
 	pilot_hud.mouse_opacity = 0
 	pilot_hud.alpha = 0
 

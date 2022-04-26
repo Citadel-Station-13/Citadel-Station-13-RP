@@ -63,7 +63,7 @@
 	name = "Bloodsucker"
 	desc = "Makes you unable to gain nutrition from anything but blood. To compenstate, you get fangs that can be used to drain blood from prey."
 	cost = 0
-	var_changes = list("gets_food_nutrition" = 0) //The verb is given in human.dm
+	var_changes = list("is_vampire" = TRUE) //The verb is given in human.dm
 
 /datum/trait/bloodsucker/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
@@ -219,3 +219,12 @@
 /datum/trait/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
+
+/datum/trait/size_change
+	name = "Sizeshift"
+	desc = "Lets you shift sizes by yourself. Remember that abusing size mechanics is against the rules!"
+	cost = 0
+
+/datum/trait/size_change/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.verbs |= /mob/living/proc/set_size

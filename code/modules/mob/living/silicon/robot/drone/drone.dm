@@ -47,7 +47,7 @@ var/list/mob_hat_cache = list()
 	mob_push_flags = SIMPLE_ANIMAL
 	mob_always_swap = 1
 
-	mob_size = MOB_LARGE // Small mobs can't open doors, it's a huge pain for drones.
+	mob_size = MOB_SMALL // pulled here from a _vr file
 
 	//Used for self-mailing.
 	var/mail_destination = ""
@@ -70,6 +70,11 @@ var/list/mob_hat_cache = list()
 	if(hat)
 		hat.loc = get_turf(src)
 	..()
+
+/mob/living/silicon/robot/drone/ghost()
+	. = ..()
+	if (!ckey)
+		death()
 
 /mob/living/silicon/robot/drone/is_sentient()
 	return FALSE
@@ -255,7 +260,7 @@ var/list/mob_hat_cache = list()
 /mob/living/silicon/robot/drone/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		return
 	health = maxHealth - (getBruteLoss() + getFireLoss())
 	return

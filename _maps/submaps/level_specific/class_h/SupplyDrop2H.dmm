@@ -4,51 +4,51 @@
 /area/template_noop)
 "b" = (
 /turf/template_noop,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "c" = (
 /turf/simulated/floor,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "d" = (
 /obj/structure/girder/displaced,
 /turf/template_noop,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "e" = (
 /turf/simulated/wall/titanium,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "f" = (
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "g" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "h" = (
 /obj/item/flashlight,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "i" = (
 /obj/structure/loot_pile/maint/technical,
 /obj/item/gps/internal/poi,
 /obj/item/cell/device/weapon/empty,
 /obj/item/cell/device/weapon/empty,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "j" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "k" = (
 /obj/structure/girder,
 /turf/template_noop,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "l" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "m" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 
 (1,1,1) = {"
 a

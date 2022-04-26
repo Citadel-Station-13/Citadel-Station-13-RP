@@ -1,9 +1,3 @@
-#define TOPIC_NOACTION 0
-#define TOPIC_HANDLED 1
-#define TOPIC_REFRESH 2
-#define TOPIC_UPDATE_PREVIEW 4
-#define TOPIC_REFRESH_UPDATE_PREVIEW (TOPIC_REFRESH|TOPIC_UPDATE_PREVIEW)
-
 #define PREF_FBP_CYBORG "cyborg"
 #define PREF_FBP_POSI "posi"
 #define PREF_FBP_SOFTWARE "software"
@@ -13,11 +7,12 @@
 	sort_order = 1
 	category_item_type = /datum/category_item/player_setup_item/general
 
+/*
 /datum/category_group/player_setup_category/skill_preferences
-	name = "Skills"
-	sort_order = 2
-	category_item_type = /datum/category_item/player_setup_item/skills
-
+name = "Skills"
+sort_order = 2
+category_item_type = /datum/category_item/player_setup_item/skills
+*/
 /datum/category_group/player_setup_category/appearance_preferences
 	name = "Antagonism"
 	sort_order = 4
@@ -271,11 +266,12 @@
 	return 0 //Something went wrong!
 
 /datum/category_item/player_setup_item/proc/get_min_age() //Minimum limit is 18
-	var/min_age = 18
 	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
-	if(!is_FBP() && S.min_age > 18)
-		min_age = S.min_age
-	return min_age
+	if(S.min_age > 18)
+		return S.min_age
+	else if(!is_FBP())
+		S.min_age = 18
+	return S.min_age
 
 /datum/category_item/player_setup_item/proc/get_max_age()
 	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]

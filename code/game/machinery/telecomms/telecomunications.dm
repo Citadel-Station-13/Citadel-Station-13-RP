@@ -14,25 +14,38 @@
 */
 
 /obj/machinery/telecomms
-	icon = 'icons/obj/stationobjs_vr.dmi' //VOREStation Add
-	var/list/links = list() // list of machines this machine is linked to
-	var/traffic = 0 // value increases as traffic increases
-	var/netspeed = 5 // how much traffic to lose per tick (50 gigabytes/second * netspeed)
-	var/list/autolinkers = list() // list of text/number values to link with
-	var/id = "NULL" // identification string
-	var/network = "NULL" // the network of the machinery
-
-	var/list/freq_listening = list() // list of frequencies to tune into: if none, will listen to all
-
-	var/machinetype = 0 // just a hacky way of preventing alike machines from pairing
-	var/toggled = 1 	// Is it toggled on
-	var/on = 1
-	var/integrity = 100 // basically HP, loses integrity by heat
-	var/produces_heat = 1	//whether the machine will produce heat when on.
-	var/delay = 10 // how many process() ticks to delay per heat
-	var/long_range_link = 0	// Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
-	var/hide = 0				// Is it a hidden machine?
-	var/listening_level = 0	// 0 = auto set in New() - this is the z level that the machine is listening to.
+	icon = 'icons/obj/stationobjs.dmi'
+	///List of machines this machine is linked to.
+	var/list/links = list()
+	///Value increases as traffic increases.
+	var/traffic = 0
+	///How much traffic to lose per tick (50 gigabytes/second * netspeed).
+	var/netspeed = 5
+	///List of text/number values to link with.
+	var/list/autolinkers = list()
+	///Identification string.
+	var/id = "NULL"
+	///The network of the machinery.
+	var/network = "NULL"
+	//List of frequencies to tune into: if none, will listen to all.
+	var/list/freq_listening = list()
+	///Just a hacky way of preventing alike machines from pairing.
+	var/machinetype = 0
+	///Is it toggled on. //Not sure why we have this when we have var/on.
+	var/toggled = TRUE
+	var/on = TRUE
+	///Basically HP, loses integrity by heat.
+	var/integrity = 100
+	///Whether the machine will produce heat when on.
+	var/produces_heat = TRUE
+	///How many process() ticks to delay per heat.
+	var/delay = 10
+	///Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
+	var/long_range_link = FALSE
+	///Is it a hidden machine?
+	var/hide = 0
+	///0 = auto set in New() - this is the z level that the machine is listening to.
+	var/listening_level = 0
 
 
 /obj/machinery/telecomms/proc/relay_information(datum/signal/signal, filter, copysig, amount = 20)
@@ -186,9 +199,8 @@
 
 /obj/machinery/telecomms/proc/checkheat()
 	// Checks heat from the environment and applies any integrity damage
-	var/datum/gas_mixture/environment = loc.return_air()
 	var/damage_chance = 0                           // Percent based chance of applying 1 integrity damage this tick
-	switch(environment.temperature)
+	switch(loc.return_temperature())
 		if((T0C + 40) to (T0C + 70))                // 40C-70C, minor overheat, 10% chance of taking damage
 			damage_chance = 10
 		if((T0C + 70) to (T0C + 130))				// 70C-130C, major overheat, 25% chance of taking damage
@@ -200,14 +212,11 @@
 	if (damage_chance && prob(damage_chance))
 		integrity = between(0, integrity - 1, 100)
 
-
 	if(delay > 0)
 		delay--
 	else if(on)
 		produce_heat()
 		delay = initial(delay)
-
-
 
 /obj/machinery/telecomms/proc/produce_heat()
 	if (!produces_heat)

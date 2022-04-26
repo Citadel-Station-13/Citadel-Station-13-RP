@@ -4297,7 +4297,7 @@
 /area/medical/psych_ward)
 "dEx" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/simulated/floor/tiled,
 /area/medical/surgery)
 "dEG" = (
@@ -4536,7 +4536,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/autopsy_scanner,
 /turf/simulated/floor/tiled,
 /area/medical/morgue)
@@ -6917,7 +6917,7 @@
 	pixel_y = 22
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/simulated/floor/tiled,
 /area/medical/surgery2)
 "fIP" = (
@@ -11925,7 +11925,7 @@
 /area/rnd/test_area)
 "jRc" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/surgical/bioregen,
 /turf/simulated/floor/tiled,
 /area/medical/surgery2)
@@ -18631,7 +18631,7 @@
 /area/teleporter/departing)
 "pdK" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/paper{
 	desc = "";
 	info = "Stop installing NIFs in here you clods! Unless it's on a synth. Otherwise, STOP DOING IT! You're killing people! -Management";
@@ -19837,7 +19837,7 @@
 /area/medical/sleeper)
 "pPl" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/surgical/bioregen,
 /turf/simulated/floor/tiled,
 /area/medical/surgery)
@@ -23847,7 +23847,6 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
@@ -25607,11 +25606,11 @@
 /area/medical/resleeving)
 "tUb" = (
 /obj/machinery/light/small{
-	dir = 8
+	dir = 4
 	},
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
-/area/maintenance/research)
+/area/maintenance/medbay/aft)
 "tUL" = (
 /turf/simulated/wall,
 /area/rnd/xenobiology)
@@ -26506,7 +26505,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/test_area)
 "uJg" = (
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/structure/table/standard,
 /obj/item/autopsy_scanner,
 /obj/item/storage/box/bodybags,
@@ -26747,6 +26746,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"uRJ" = (
+/mob/living/bot/medibot/medass,
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "uRN" = (
 /obj/machinery/light{
 	dir = 4
@@ -27339,7 +27342,7 @@
 /area/medical/ward)
 "vol" = (
 /obj/structure/table/steel,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "voq" = (
@@ -27447,10 +27450,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
-"vrz" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "vsf" = (
 /obj/structure/table/reinforced,
 /obj/item/paicard,
@@ -33416,7 +33415,7 @@ pCH
 gpN
 sQl
 iCM
-tUb
+pCH
 pXl
 slN
 pYD
@@ -34279,7 +34278,7 @@ uiL
 pRL
 qKL
 uHP
-rhL
+tUb
 iQL
 hgV
 eAd
@@ -36951,7 +36950,7 @@ shT
 wpE
 boQ
 njF
-vrz
+sQl
 hnF
 czP
 ezT
@@ -40958,7 +40957,7 @@ ujM
 rMx
 saO
 iHe
-vMK
+uRJ
 mzf
 fWw
 dTK

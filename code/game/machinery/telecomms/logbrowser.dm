@@ -76,8 +76,6 @@
 	if(..())
 		return TRUE
 
-	add_fingerprint(usr)
-
 	switch(action)
 		if("view")
 			for(var/obj/machinery/telecomms/T in servers)

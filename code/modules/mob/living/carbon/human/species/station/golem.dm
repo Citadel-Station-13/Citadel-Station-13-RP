@@ -19,7 +19,7 @@
 	blood_color = "#515573"
 	flesh_color = "#137E8F"
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	has_organ = list(
 		"brain" = /obj/item/organ/internal/brain/golem

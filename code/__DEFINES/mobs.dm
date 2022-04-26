@@ -227,6 +227,13 @@
 #define O_VRLINK   "virtual node"
 #define O_ALL list(O_STANDARD, O_MOUTH, O_CELL, O_PLASMA, O_HIVE, O_NUTRIENT, O_STRATA, O_RESPONSE, O_GBLADDER, O_POLYP, O_ANCHOR, O_REGBRUTE, O_REGBURN, O_REGOXY, O_REGTOX, O_ACID, O_EGG, O_RESIN, O_AREJECT, O_VENTC, O_VRLINK)
 
+// FBP components.
+#define O_PUMP     "hydraulic hub"
+#define O_CYCLER   "reagent cycler"
+#define O_HEATSINK "thermal regulator"
+#define O_DIAGNOSTIC "diagnostic controller"
+
+
 // External organs, aka limbs
 #define BP_L_FOOT "l_foot"
 #define BP_R_FOOT "r_foot"
@@ -286,6 +293,8 @@
 // 'Regular' species.
 #define SPECIES_HUMAN			"Human"
 #define SPECIES_HUMAN_VATBORN	"Vatborn"
+#define SPECIES_HUMAN_GRAV		"grav-adapted Human"
+#define SPECIES_HUMAN_SPACER	"space-adapted Human"
 #define SPECIES_UNATHI			"Unathi"
 #define SPECIES_SKRELL			"Skrell"
 #define SPECIES_TESHARI			"Teshari"
@@ -306,7 +315,7 @@
 #define SPECIES_VR				"Virtual Reality Avatar"
 #define SPECIES_VR_HUMAN		"Virtual Reality Human"
 #define SPECIES_VR_UNATHI		"Virtual Reality Unathi"
-#define SPECIES_VR_TAJ			"Virtual Reality Tajara" // NO CHANGING.
+#define SPECIES_VR_TAJ			"Virtual Reality Tajara"
 #define SPECIES_VR_SKRELL		"Virtual Reality Skrell"
 #define SPECIES_VR_TESHARI		"Virtual Reality Teshari"
 #define SPECIES_VR_DIONA		"Virtual Reality Diona"
@@ -374,38 +383,22 @@
 #define VIS_GHOSTS			3
 #define VIS_AI_EYE			4
 
-#define VIS_CH_STATUS		5
-#define VIS_CH_HEALTH		6
-#define VIS_CH_LIFE			7
-#define VIS_CH_ID			8
-#define VIS_CH_WANTED		9
-#define VIS_CH_IMPLOYAL		10
-#define VIS_CH_IMPTRACK		11
-#define VIS_CH_IMPCHEM		12
-#define VIS_CH_SPECIAL		13
-#define VIS_CH_STATUS_OOC	14
+#define VIS_ADMIN1			5
+#define VIS_ADMIN2			6
+#define VIS_ADMIN3			7
 
-#define VIS_ADMIN1			15
-#define VIS_ADMIN2			16
-#define VIS_ADMIN3			17
+#define VIS_MESONS			8
 
-#define VIS_MESONS			18
+#define VIS_TURFS			9
+#define VIS_OBJS			10
+#define VIS_MOBS			11
 
-#define VIS_TURFS			19
-#define VIS_OBJS			20
-#define VIS_MOBS			21
-
-#define VIS_CH_STATUS_R		22
-#define VIS_CH_HEALTH_VR	23
-#define VIS_CH_BACKUP		24
-#define VIS_CH_VANTAG		25
-
-#define VIS_AUGMENTED		26
-
-#define VIS_STATUS			27
-
-#define VIS_CLOAKED			28
-#define VIS_COUNT			28 //Must be highest number from above.
+#define VIS_AUGMENTED		12
+#define VIS_CLOAKED			13
+#define VIS_PARALLAX		14
+#define VIS_STATUS			15
+#define VIS_SPACE			16
+#define VIS_COUNT			16 //Must be highest number from above.
 
 //Some mob icon layering defines
 #define BODY_LAYER		-100

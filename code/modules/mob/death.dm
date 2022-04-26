@@ -76,14 +76,14 @@
 	if(!gibbed && deathmessage != "no message") // This is gross, but reliable. Only brains use it.
 		src.visible_message("<b>\The [src.name]</b> [deathmessage]")
 
-	stat = DEAD
+	set_stat(DEAD)
 
 	update_canmove()
 
 	dizziness = 0
 	jitteriness = 0
 
-	layer = MOB_LAYER
+	set_base_layer(MOB_LAYER)
 
 	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
 	see_in_dark = 8

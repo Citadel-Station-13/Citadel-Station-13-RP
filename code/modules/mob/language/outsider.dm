@@ -21,7 +21,7 @@
 	ask_verb = "sings"
 	exclaim_verb = "sings"
 	colour = "alien"
-	key = "x"
+	key = "" //!! THIS DOES NOT HAVE A LANGUAGE KEY IF YOU SOMEHOW MIRACULOUSLY GET ANTAGS WORKING ON RP BEFORE WE TRANSITION TO SS14 IN LIKE 2025 PUT ONE IN.
 	machine_understands = 0
 	flags = RESTRICTED | HIVEMIND
 
@@ -117,7 +117,7 @@
 	exclaim_verb = "hisses"
 	colour = "alien"
 	machine_understands = 0
-	key = "a"
+	key = "x"
 	flags = RESTRICTED | HIVEMIND
 
 /datum/language/xenos/check_special_condition(var/mob/other)

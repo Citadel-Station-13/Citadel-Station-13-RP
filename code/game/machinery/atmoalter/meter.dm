@@ -93,8 +93,6 @@
 	else
 		. += "The connect error light is blinking."
 
-
-
 /obj/machinery/meter/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_wrench())
 		playsound(src, W.usesound, 50, 1)

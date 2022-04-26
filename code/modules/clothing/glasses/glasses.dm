@@ -25,7 +25,7 @@ BLIND     // can't see anything
 	var/off_state = "degoggles"
 	var/active = 1
 	var/activation_sound = 'sound/items/goggles_charge.ogg'
-	var/obj/screen/overlay = null
+	var/atom/movable/screen/overlay = null
 	var/list/away_planes //Holder for disabled planes
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
@@ -491,6 +491,11 @@ BLIND     // can't see anything
 		update_clothing_icon()
 		usr.update_action_buttons()
 
+/obj/item/clothing/glasses/welding/prescription
+	name = "prescription welding goggles"
+	desc = "Protects the eyes from welders, approved by the mad scientist association. These ones have prescription lenses."
+	prescription = 1
+
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"
 	desc = "Welding goggles made from more expensive materials, strangely smells like potatoes."
@@ -538,7 +543,10 @@ BLIND     // can't see anything
 	name = "\improper HUD sunglasses"
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunSecHud"
-	enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM)
+
+/obj/item/clothing/glasses/sunglasses/sechud/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "tactical HUD"
@@ -591,7 +599,10 @@ BLIND     // can't see anything
 	name = "\improper HUD sunglasses"
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunMedHud"
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)
+
+/obj/item/clothing/glasses/sunglasses/medhud/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(slot_glasses))
 
 /obj/item/clothing/glasses/thermal
 	name = "optical thermal scanner"

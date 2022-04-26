@@ -90,8 +90,7 @@ export const Canvas = (props, context) => {
   return (
     <Window
       width={Math.min(700, width * dotsize + 72)}
-      height={Math.min(700, height * dotsize + 72)}
-      resizable>
+      height={Math.min(700, height * dotsize + 72)}>
       <Window.Content>
         <Box textAlign="center">
           <PaintCanvas
@@ -104,7 +103,7 @@ export const Canvas = (props, context) => {
                 onClick={() => act("finalize")}
                 content="Finalize" />
             )}
-            {data.name}
+            &nbsp;{data.name}
           </Box>
         </Box>
       </Window.Content>

@@ -605,6 +605,6 @@ var/global/list/default_infomorph_software = list()
 /mob/living/silicon/infomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = 100 - getBruteLoss() - getFireLoss()

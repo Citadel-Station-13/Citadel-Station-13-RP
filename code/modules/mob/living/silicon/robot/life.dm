@@ -69,7 +69,7 @@
 /mob/living/silicon/robot/handle_regular_UI_updates()
 
 	if(src.camera && !scrambledcodes)
-		if(src.stat == 2 || wires.IsIndexCut(BORG_WIRE_CAMERA))
+		if(src.stat == 2 || wires.is_cut(WIRE_BORG_CAMERA))
 			src.camera.set_status(0)
 		else
 			src.camera.set_status(1)
@@ -88,7 +88,7 @@
 
 	if (src.stat != 2) //Alive.
 		if (src.paralysis || src.stunned || src.weakened || !src.has_power) //Stunned etc.
-			src.stat = 1
+			src.set_stat(UNCONSCIOUS)
 			if (src.stunned > 0)
 				AdjustStunned(-1)
 			if (src.weakened > 0)
@@ -100,7 +100,7 @@
 				src.blinded = 0
 
 		else	//Not stunned.
-			src.stat = 0
+			src.set_stat(CONSCIOUS)
 
 		AdjustConfused(-1)
 
@@ -284,12 +284,21 @@
 
 	if(stat != 2)
 		if(blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 		else
 			clear_fullscreen("blind")
-			set_fullscreen(disabilities & NEARSIGHTED, "impaired", /obj/screen/fullscreen/impaired, 1)
-			set_fullscreen(eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
-			set_fullscreen(druggy, "high", /obj/screen/fullscreen/high)
+		if(disabilities & NEARSIGHTED)
+			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
+		else
+			clear_fullscreen("impaired")
+		if(eye_blurry)
+			overlay_fullscreen("blurry", /atom/movable/screen/fullscreen/tiled/blurry)
+		else
+			clear_fullscreen("blurry")
+		if(druggy)
+			overlay_fullscreen("high", /atom/movable/screen/fullscreen/tiled/high)
+		else
+			clear_fullscreen("high")
 
 	if (src.machine)
 		if (src.machine.check_eye(src) < 0)

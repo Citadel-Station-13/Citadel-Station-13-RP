@@ -74,3 +74,14 @@
 /obj/item/clothing/suit/space/void/refurb/mercenary/talon
 	name = "talon mercenary's voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer mercs swear by these old things, even if new powered hardsuits have more features and better armor. The red markings indicate this as the mercenary variant. \"ITV TALON\" has been stamped onto each pauldron and the right side of the breastplate."
+
+//Martian Voidsuit
+/obj/item/clothing/head/helmet/space/void/mars
+	name = "Martian voidsuit helmet"
+	desc = "An imported voidsuit helmet commonly worn on Mars. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. The visor has a bad habit of fogging up and collecting condensation, but it beats sucking hard vacuum."
+	icon_state = "mars"
+
+/obj/item/clothing/suit/space/void/mars
+	name = "Martian voidsuit"
+	desc = "An imported voidsuit commonly worn on Mars. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor."
+	icon_state = "mars"

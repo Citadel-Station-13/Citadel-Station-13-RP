@@ -19,13 +19,13 @@
 	hud.hotkeybuttons = hotkeybuttons
 
 	var/list/hud_elements = list()
-	var/obj/screen/using
-	var/obj/screen/inventory/inv_box
+	var/atom/movable/screen/using
+	var/atom/movable/screen/inventory/inv_box
 
 	var/has_hidden_gear
 	if(LAZYLEN(hud_gears))
 		for(var/gear_slot in hud_gears)
-			inv_box = new /obj/screen/inventory()
+			inv_box = new /atom/movable/screen/inventory()
 			inv_box.icon = ui_style
 			inv_box.color = ui_color
 			inv_box.alpha = ui_alpha
@@ -47,7 +47,7 @@
 				adding += inv_box
 
 	if(has_hidden_gear)
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = "toggle"
 		using.icon = ui_style
 		using.icon_state = "other"
@@ -58,7 +58,7 @@
 		adding += using
 
 	//Intent Backdrop
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "act_intent"
 	using.icon = ui_style
 	using.icon_state = "intent_"+a_intent
@@ -76,7 +76,7 @@
 	ico = new(ui_style, "black")
 	ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 	ico.DrawBox(rgb(255,255,255,1),1,ico.Height()/2,ico.Width()/2,ico.Height())
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = INTENT_HELP
 	using.icon = ico
 	using.screen_loc = ui_acti
@@ -88,7 +88,7 @@
 	ico = new(ui_style, "black")
 	ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 	ico.DrawBox(rgb(255,255,255,1),ico.Width()/2,ico.Height()/2,ico.Width(),ico.Height())
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = INTENT_DISARM
 	using.icon = ico
 	using.screen_loc = ui_acti
@@ -100,7 +100,7 @@
 	ico = new(ui_style, "black")
 	ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 	ico.DrawBox(rgb(255,255,255,1),ico.Width()/2,1,ico.Width(),ico.Height()/2)
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = INTENT_GRAB
 	using.icon = ico
 	using.screen_loc = ui_acti
@@ -112,7 +112,7 @@
 	ico = new(ui_style, "black")
 	ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 	ico.DrawBox(rgb(255,255,255,1),1,1,ico.Width()/2,ico.Height()/2)
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = INTENT_HARM
 	using.icon = ico
 	using.screen_loc = ui_acti
@@ -122,7 +122,7 @@
 	hud.hurt_intent = using
 
 	//Move intent (walk/run)
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "mov_intent"
 	using.icon = ui_style
 	using.icon_state = (m_intent == "run" ? "running" : "walking")
@@ -133,7 +133,7 @@
 	hud.move_intent = using
 
 	//Resist button
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "resist"
 	using.icon = ui_style
 	using.icon_state = "act_resist"
@@ -143,7 +143,7 @@
 	hud.hotkeybuttons += using
 
 	//Pull button
-	pullin = new /obj/screen()
+	pullin = new /atom/movable/screen()
 	pullin.icon = ui_style
 	pullin.icon_state = "pull0"
 	pullin.name = "pull"
@@ -152,7 +152,7 @@
 	hud_elements |= pullin
 
 	//Health status
-	healths = new /obj/screen()
+	healths = new /atom/movable/screen()
 	healths.icon = ui_style
 	healths.icon_state = "health0"
 	healths.name = "health"
@@ -160,7 +160,7 @@
 	hud_elements |= healths
 
 	//Oxygen dep icon
-	oxygen = new /obj/screen()
+	oxygen = new /atom/movable/screen()
 	oxygen.icon = ui_style
 	oxygen.icon_state = "oxy0"
 	oxygen.name = "oxygen"
@@ -168,7 +168,7 @@
 	hud_elements |= oxygen
 
 	//Toxins present icon
-	toxin = new /obj/screen()
+	toxin = new /atom/movable/screen()
 	toxin.icon = ui_style
 	toxin.icon_state = "tox0"
 	toxin.name = "toxin"
@@ -176,7 +176,7 @@
 	hud_elements |= toxin
 
 	//Fire warning
-	fire = new /obj/screen()
+	fire = new /atom/movable/screen()
 	fire.icon = ui_style
 	fire.icon_state = "fire0"
 	fire.name = "fire"
@@ -184,7 +184,7 @@
 	hud_elements |= fire
 
 	//Pressure warning
-	pressure = new /obj/screen()
+	pressure = new /atom/movable/screen()
 	pressure.icon = ui_style
 	pressure.icon_state = "pressure0"
 	pressure.name = "pressure"
@@ -192,7 +192,7 @@
 	hud_elements |= pressure
 
 	//Body temp warning
-	bodytemp = new /obj/screen()
+	bodytemp = new /atom/movable/screen()
 	bodytemp.icon = ui_style
 	bodytemp.icon_state = "temp0"
 	bodytemp.name = "body temperature"
@@ -200,16 +200,16 @@
 	hud_elements |= bodytemp
 
 	//Nutrition status
-	nutrition_icon = new /obj/screen()
+	nutrition_icon = new /atom/movable/screen()
 	nutrition_icon.icon = ui_style
 	nutrition_icon.icon_state = "nutrition0"
 	nutrition_icon.name = "nutrition"
 	nutrition_icon.screen_loc = ui_nutrition
 	hud_elements |= nutrition_icon
 
-	pain = new /obj/screen( null )
+	pain = new /atom/movable/screen( null )
 
-	zone_sel = new /obj/screen/zone_sel( null )
+	zone_sel = new /atom/movable/screen/zone_sel( null )
 	zone_sel.icon = ui_style
 	zone_sel.color = ui_color
 	zone_sel.alpha = ui_alpha
@@ -220,7 +220,7 @@
 	//Hand things
 	if(has_hands)
 		//Drop button
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = "drop"
 		using.icon = ui_style
 		using.icon_state = "act_drop"
@@ -230,7 +230,7 @@
 		hud.hotkeybuttons += using
 
 		//Equip detail
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.name = "equip"
 		using.icon = ui_style
 		using.icon_state = "act_equip"
@@ -240,7 +240,7 @@
 		hud.adding += using
 
 		//Hand slots themselves
-		inv_box = new /obj/screen/inventory/hand()
+		inv_box = new /atom/movable/screen/inventory/hand()
 		inv_box.hud = src
 		inv_box.name = "r_hand"
 		inv_box.icon = ui_style
@@ -255,7 +255,7 @@
 		hud.adding += inv_box
 		slot_info["[slot_r_hand]"] = inv_box.screen_loc
 
-		inv_box = new /obj/screen/inventory/hand()
+		inv_box = new /atom/movable/screen/inventory/hand()
 		inv_box.hud = src
 		inv_box.name = "l_hand"
 		inv_box.icon = ui_style
@@ -271,7 +271,7 @@
 		slot_info["[slot_l_hand]"] = inv_box.screen_loc
 
 		//Swaphand titlebar
-		using = new /obj/screen/inventory()
+		using = new /atom/movable/screen/inventory()
 		using.name = "hand"
 		using.icon = ui_style
 		using.icon_state = "hand1"
@@ -280,7 +280,7 @@
 		using.alpha = ui_alpha
 		hud.adding += using
 
-		using = new /obj/screen/inventory()
+		using = new /atom/movable/screen/inventory()
 		using.name = "hand"
 		using.icon = ui_style
 		using.icon_state = "hand2"
@@ -290,7 +290,7 @@
 		hud.adding += using
 
 		//Throw button
-		throw_icon = new /obj/screen()
+		throw_icon = new /atom/movable/screen()
 		throw_icon.icon = ui_style
 		throw_icon.icon_state = "act_throw_off"
 		throw_icon.name = "throw"
@@ -306,6 +306,6 @@
 
 	client.screen += hud_elements
 	client.screen += adding + hotkeybuttons
-	client.screen += client.void
+	client.mob.reload_rendering()
 
 	return

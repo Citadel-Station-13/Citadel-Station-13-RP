@@ -285,6 +285,7 @@
 	halfshaved
 		name = "Emo Half-Shaved"
 		icon_state = "hair_halfshaved"
+		flags = HAIR_TIEABLE
 
 	longemo
 		name = "Emo Long"
@@ -521,6 +522,7 @@
 	shortovereye
 		name = "Overeye Short"
 		icon_state = "hair_shortovereye"
+		flags = HAIR_TIEABLE
 
 	veryshortovereyealternate
 		name = "Overeye Very Short, Alternate"

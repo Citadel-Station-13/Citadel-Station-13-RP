@@ -169,9 +169,6 @@
 				. = TRUE
 
 	update_icon()
-	add_fingerprint(usr)
-
-
 
 /obj/machinery/suit_storage_unit/proc/toggleUV(mob/user as mob)
 //	var/protected = 0

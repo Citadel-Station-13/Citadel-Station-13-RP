@@ -26,9 +26,20 @@
 
 /obj/item/tool/wirecutters/Initialize(mapload)
 	. = ..()
-	if(random_color && prob(50))
-		icon_state = "cutters-y"
-		item_state = "cutters_yellow"
+	if(random_color)
+		switch(pick("red","yellow","green","blue"))
+			if ("red")
+				icon_state = "cutters"
+				item_state = "cutters"
+			if ("yellow")
+				icon_state = "cutters_yellow"
+				item_state = "cutters_yellow"
+			if ("green")
+				icon_state = "cutters_green"
+				item_state = "cutters_green"
+			if ("blue")
+				icon_state = "cutters_blue"
+				item_state = "cutters_blue"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C as mob, mob/user as mob)
 	if(istype(C) && user.a_intent == INTENT_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))

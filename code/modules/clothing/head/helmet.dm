@@ -339,3 +339,26 @@
 	icon_state = "ge_helmcent"
 	icon = 'icons/obj/clothing/hats_vr.dmi'
 	icon_override = 'icons/mob/head_vr.dmi'
+
+//Pirate
+/obj/item/clothing/head/helmet/pirate
+	name = "defaced helmet"
+	desc = "A helmet whose prior lettering has been defaced and painted over."
+	icon_state = "helmet_pirate"
+
+//Cyberpunk
+/obj/item/clothing/head/helmet/cyberpunk
+	name = "cyberpunk goggles"
+	desc = "These armored goggles help to augment the sight of the wearer. Initially designed to allow the user to enter a fully immersive digital environment, they have since been phased out in favor of NIFs and personal VR suites."
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'
+	icon_state = "cyberpunkgoggle"
+
+//Strange Plate Armor
+/obj/item/clothing/head/helmet/kettle
+	name = "KTL plate helmet"
+	desc = "These rare helmets are believed to originate from an isolationist human society on the Eastern Rim. The meaning of the designation is unknown, leading to the popular moniker 'Kettle'."
+	icon_state = "kettle"
+
+/obj/item/clothing/head/helmet/kettle/eyes
+	icon_state = "kettle_eyes"

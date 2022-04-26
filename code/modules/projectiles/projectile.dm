@@ -46,6 +46,10 @@
 	var/impact_type
 	var/datum/beam_components_cache/beam_components
 
+	var/miss_sounds
+	var/ricochet_sounds
+	var/list/impact_sounds	//for different categories, IMPACT_MEAT etc
+
 	//Fancy hitscan lighting effects!
 	var/hitscan_light_intensity = 1.5
 	var/hitscan_light_range = 0.75
@@ -650,6 +654,7 @@
 	if(result == PROJECTILE_FORCE_MISS)
 		if(!silenced)
 			visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
+			playsound(target_mob.loc, pick(miss_sounds), 60, 1)
 		return FALSE
 
 	//hit messages
