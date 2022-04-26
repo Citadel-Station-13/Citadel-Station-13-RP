@@ -65,6 +65,10 @@
 	else
 		holder.icon_state = "healthy"
 
+/mob/proc/update_hud_med_all()
+	update_hud_med_health()
+	update_hud_med_status()
+
 /mob/proc/update_hud_sec_implants()
 	var/image/Itrack = hud_list[IMPTRACK_HUD]
 	var/image/Ichem = hud_list[IMPCHEM_HUD]
