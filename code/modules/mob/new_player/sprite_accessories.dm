@@ -285,6 +285,7 @@
 	halfshaved
 		name = "Emo Half-Shaved"
 		icon_state = "hair_halfshaved"
+		flags = HAIR_TIEABLE
 
 	longemo
 		name = "Emo Long"
