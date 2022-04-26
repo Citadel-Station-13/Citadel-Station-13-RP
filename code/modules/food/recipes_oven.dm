@@ -34,7 +34,7 @@
 	appliance = OVEN
 	fruit = list("lemon" = 1)
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/meat/chicken/teshari)
+	items = list(/obj/item/reagent_containers/food/snacks/meat/teshari)
 	result = /obj/item/reagent_containers/food/snacks/teshariroast
 	reagent_mix = RECIPE_REAGENT_REPLACE
 

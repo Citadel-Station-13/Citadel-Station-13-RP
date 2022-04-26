@@ -57,7 +57,7 @@
 /obj/item/clothing/gloves/sterile
 	name = "sterile gloves"
 	desc = "Sterile gloves."
-	icon_state = "latex"
+	icon_state = "gloves_white"
 	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")
 	siemens_coefficient = 1.0 //thin latex gloves, much more conductive than fabric gloves (basically a capacitor for AC)
 	permeability_coefficient = 0.01

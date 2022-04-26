@@ -1,3 +1,4 @@
+#define TESHARI_TEMP_OFFSET -30 // K, added to comfort/damage limit etc
 /datum/species/teshari
 	name = SPECIES_TESHARI
 	name_plural = "Tesharii"
@@ -7,15 +8,14 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/teshari)
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Teshari"
 
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SCHECHI
 	species_language = LANGUAGE_SCHECHI
+	secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
+	num_alternate_languages = 3
 
 	max_age = 75
 
 	economic_modifier = 6
-
 	health_hud_intensity = 3
 
 	male_cough_sounds	= list('sound/effects/mob_effects/tesharicougha.ogg','sound/effects/mob_effects/tesharicoughb.ogg')
@@ -26,39 +26,39 @@
 	female_scream_sound	= 'sound/effects/mob_effects/teshariscream.ogg'
 
 	blood_color = "#D514F7"
-	flesh_color = "#5F7BB0"
+	flesh_color = "#6060FF"
 	base_color = "#001144"
 	tail = "teshtail"
-//	tail_hair = "feathers"
+	tail_hair = "feathers"
 	reagent_tag = IS_TESHARI
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/teshari
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
-	icobase	= 'icons/mob/human_races/r_teshari_vr.dmi'
-	deform	= 'icons/mob/human_races/r_teshari_vr.dmi'
-	damage_mask	= 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
-	blood_mask	= 'icons/mob/human_races/masks/blood_teshari.dmi'
-	damage_overlays	  = 'icons/mob/human_races/masks/dam_teshari.dmi'
+	icobase = 'icons/mob/human_races/r_teshari.dmi'
+	deform = 'icons/mob/human_races/r_def_teshari.dmi'
+	damage_mask = 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
+	blood_mask = 'icons/mob/human_races/masks/blood_teshari.dmi'
+	damage_overlays = 'icons/mob/human_races/masks/dam_teshari.dmi'
 	suit_storage_icon = 'icons/mob/species/teshari/belt_mirror.dmi'
 	icobase_tail = 1
-	color_mult	 = 1
+	color_mult = 1
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
 
-	slowdown	= -0.5
-	snow_movement = -1		// Ignores light snow
-	item_slowdown_mod = 1.25	// Tiny birds don't like heavy things
+	slowdown = -0.5
+	snow_movement = -1 // Ignores light snow
+	item_slowdown_mod = 1.25 // Tiny birds don't like heavy things
 	total_health = 75
-	brute_mod	 = 1.1
-	burn_mod	 = 1.1
-	mob_size	 = MOB_SMALL
-	pass_flags	 = PASSTABLE
-	holder_type	 = /obj/item/holder/human
-//	short_sighted = 1
-	gluttonous	 = 1
+	brute_mod = 1.2
+	burn_mod = 1.25
+	mob_size = MOB_SMALL
+	pass_flags = PASSTABLE
+	holder_type = /obj/item/holder/human
+	//short_sighted = 1
+	gluttonous = 1
 	blood_volume = 400
-	hunger_factor = 0.2
+	hunger_factor = 0.2	// x4 as fast.
 
 	ambiguous_genders = TRUE
 
@@ -68,19 +68,21 @@
 	swap_flags	= MONKEY|SLIME|SIMPLE_ANIMAL
 	push_flags	= MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
 
-	cold_level_1 = 180			// Default 260
-	cold_level_2 = 130			// Default 200
-	cold_level_3 = 70			// Default 120
+	body_temperature = (BODYTEMP_NORMAL + TESHARI_TEMP_OFFSET)
 
-	breath_cold_level_1 = 180	// Default 240 - Lower is better
+	cold_level_1 = (BODYTEMP_COLD_WARNING_1 + (TESHARI_TEMP_OFFSET * 2))
+	cold_level_2 = (BODYTEMP_COLD_WARNING_2 + (TESHARI_TEMP_OFFSET * 2))
+	cold_level_3 = (BODYTEMP_COLD_WARNING_3 + (TESHARI_TEMP_OFFSET * 2))
+
+	breath_cold_level_1 = 160	// Default 240
 	breath_cold_level_2 = 100	// Default 180
-	breath_cold_level_3 = 60	// Default 100
+	breath_cold_level_3 = 20	// Default 100
 
-	heat_level_1 = 320			// Default 360
-	heat_level_2 = 370			// Default 400
-	heat_level_3 = 600			// Default 1000
+	heat_level_1 = (BODYTEMP_HEAT_WARNING_1 + TESHARI_TEMP_OFFSET)
+	heat_level_2 = (BODYTEMP_HEAT_WARNING_2 + TESHARI_TEMP_OFFSET)
+	heat_level_3 = (BODYTEMP_HEAT_WARNING_3 + TESHARI_TEMP_OFFSET)
 
-	breath_heat_level_1 = 350	// Default 380 - Higher is better
+	breath_heat_level_1 = 350	// Default 380
 	breath_heat_level_2 = 400	// Default 450
 	breath_heat_level_3 = 800	// Default 1250
 

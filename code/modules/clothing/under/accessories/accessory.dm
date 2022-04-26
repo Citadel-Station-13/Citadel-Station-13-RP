@@ -16,7 +16,7 @@
 	var/mob/living/carbon/human/wearer = null 	// To check if the wearer changes, so species spritesheets change properly.
 	var/list/on_rolled = list()					// Used when jumpsuit sleevels are rolled ("rolled" entry) or it's rolled down ("down"). Set to "none" to hide in those states.
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/ties.dmi', //Teshari can into webbing, too!
+		SPECIES_TESHARI = 'icons/mob/species/teshari/accessories.dmi', //Teshari can into webbing, too!
 		SPECIES_VOX = 'icons/mob/species/vox/ties.dmi')
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
@@ -563,7 +563,7 @@
 			H = has_suit.loc
 	if(istype(H))
 		if(H.species.name == SPECIES_TESHARI)
-			icon_override = 'icons/mob/species/teshari/ties.dmi'
+			icon_override = 'icons/mob/species/teshari/accessories.dmi'
 		update_clothing_icon()
 
 /obj/item/clothing/accessory/collar/on_attached(var/obj/item/clothing/S, var/mob/user)

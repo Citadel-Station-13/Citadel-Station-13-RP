@@ -175,21 +175,21 @@
 	var/exhale_type = /datum/gas/carbon_dioxide
 
 	/// Species will try to stabilize at this temperature. (also affects temperature processing)
-	var/body_temperature = 310.15
+	var/body_temperature = BODYTEMP_NORMAL
 
-	// Cold
+	//! Cold
 	/// Cold damage level 1 below this point.
-	var/cold_level_1 = 260
+	var/cold_level_1 = BODYTEMP_COLD_WARNING_1
 	/// Cold damage level 2 below this point.
-	var/cold_level_2 = 200
+	var/cold_level_2 = BODYTEMP_COLD_WARNING_2
 	/// Cold damage level 3 below this point.
-	var/cold_level_3 = 120
+	var/cold_level_3 = BODYTEMP_COLD_WARNING_3
 
-	/// Cold gas damage level 1 below this point.
+	/// Cold gas damage level 1 below this point. - Lower is better.
 	var/breath_cold_level_1 = 240
-	/// Cold gas damage level 2 below this point.
+	/// Cold gas damage level 2 below this point. - Lower is better.
 	var/breath_cold_level_2 = 180
-	/// Cold gas damage level 3 below this point.
+	/// Cold gas damage level 3 below this point. - Lower is better.
 	var/breath_cold_level_3 = 100
 
 	/// Aesthetic messages about feeling chilly.
@@ -200,19 +200,19 @@
 		"Your chilly flesh stands out in goosebumps."
 		)
 
-	// Hot
+	//! Hot
 	/// Heat damage level 1 above this point.
-	var/heat_level_1 = 360
+	var/heat_level_1 = BODYTEMP_HEAT_WARNING_1
 	/// Heat damage level 2 above this point.
-	var/heat_level_2 = 400
+	var/heat_level_2 = BODYTEMP_HEAT_WARNING_2
 	/// Heat damage level 3 above this point.
-	var/heat_level_3 = 1000
+	var/heat_level_3 = BODYTEMP_HEAT_WARNING_3
 
-	/// Heat gas damage level 1 below this point.
+	/// Heat gas damage level 1 below this point. - Higher is better.
 	var/breath_heat_level_1 = 380
-	/// Heat gas damage level 2 below this point.
+	/// Heat gas damage level 2 below this point. - Higher is better.
 	var/breath_heat_level_2 = 450
-	/// Heat gas damage level 3 below this point.
+	/// Heat gas damage level 3 below this point. - Higher is better.
 	var/breath_heat_level_3 = 1250
 
 	/// Aesthetic messages about feeling warm.

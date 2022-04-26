@@ -82,7 +82,7 @@
 /obj/item/storage/box/gloves
 	name = "box of latex gloves"
 	desc = "Contains white gloves."
-	icon_state = "latex"
+	icon_state = "gloves_white"
 	starts_with = list(/obj/item/clothing/gloves/sterile/latex = 7)
 
 /obj/item/storage/box/masks

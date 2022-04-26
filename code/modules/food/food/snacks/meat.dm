@@ -1,5 +1,5 @@
 /obj/item/reagent_containers/food/snacks/meat
-	name = "meat"
+	name = "\improper meat"
 	desc = "A slab of meat."
 	icon_state = "meat"
 	health = 180
@@ -20,7 +20,7 @@
 	..()
 
 	if (name == initial(name))
-		name = "cooked [name]"
+		name = "\improper Cooked [name]"
 
 /obj/item/reagent_containers/food/snacks/meat/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/material/knife))
@@ -33,21 +33,21 @@
 		..()
 
 /obj/item/reagent_containers/food/snacks/meat/syntiflesh
-	name = "synthetic meat"
+	name = "\improper Synthetic meat"
 	desc = "A synthetic slab of flesh."
 
 // Seperate definitions because some food likes to know if it's human.
 // TODO: rewrite kitchen code to check a var on the meat item so we can remove
 // all these sybtypes.
 /obj/item/reagent_containers/food/snacks/meat/human
-	name = "suspicious meat"
+	name = "\improper Suspicious meat"
 	desc = "Tastes vaguely like pork."
 
 /obj/item/reagent_containers/food/snacks/meat/monkey
 	//same as plain meat
 
 /obj/item/reagent_containers/food/snacks/meat/corgi
-	name = "Corgi meat"
+	name = "\improper Corgi meat"
 	desc = "Tastes like... well, you know."
 
 /obj/item/reagent_containers/food/snacks/meat/chicken
@@ -57,9 +57,9 @@
 	filling_color = "#BBBBAA"
 
 /obj/item/reagent_containers/food/snacks/meat/chicken/Initialize(mapload)
-		..()
-		reagents.remove_reagent("triglyceride", INFINITY)
-		//Chicken is low fat. Less total calories than other meats
+	. = ..()
+	reagents.remove_reagent("triglyceride", INFINITY)
+	//Chicken is low fat. Less total calories than other meats
 
 /obj/item/reagent_containers/food/snacks/meat/chicken/penguin
 	name = "meat"
@@ -69,12 +69,22 @@
 	cooked_icon = "chickenbreast_cooked"
 	filling_color = "#BBBBAA"
 
-/obj/item/reagent_containers/food/snacks/meat/chicken/teshari
-	name = "meat"
+/obj/item/reagent_containers/food/snacks/meat/teshari
+	name = "\improper  Teshari meat"
 	desc = "Tastes like a really fast chicken. Who'd have guessed?"
+	icon = 'icons/obj/food.dmi'
+	icon_state = "chickenbreast"
+	cooked_icon = "chickenbreast_cooked"
+	filling_color = "#cb7aee"
+
+/obj/item/reagent_containers/food/snacks/meat/teshari/Initialize(mapload)
+	. = ..()
+	//Teshari don't have much fat. Less total calories than other meats.
+	reagents.remove_reagent("triglyceride", INFINITY)
+	reagents.add_reagent("protein", 3)
 
 /obj/item/reagent_containers/food/snacks/meat/vox
-	name = "Vox meat"
+	name = "\improper Vox meat"
 	desc = "Tough and sinewy. Don't eat it raw."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "voxmeat"

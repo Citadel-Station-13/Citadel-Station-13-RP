@@ -27,5 +27,5 @@
 /obj/item/clothing/gloves/white
 	name = "white gloves"
 	desc = "These look pretty fancy."
-	icon_state = "latex"
+	icon_state = "gloves_white"
 	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")

@@ -258,7 +258,7 @@
 	slot_flags = SLOT_GLOVES
 	attack_verb = list("challenged")
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/gloves.dmi',
+		SPECIES_TESHARI = 'icons/mob/species/teshari/hands.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/gloves.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/hands.dmi'
 		)
@@ -565,7 +565,7 @@
 	var/overshoes = 0
 	species_restricted = list("exclude",SPECIES_TESHARI, SPECIES_VOX)
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/shoes.dmi',
+		SPECIES_TESHARI = 'icons/mob/species/teshari/feet.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/feet.dmi'
 		)

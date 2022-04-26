@@ -54,7 +54,7 @@
 	gender = PLURAL
 	icon_base = null
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/shoes.dmi',
+		SPECIES_TESHARI = 'icons/mob/species/teshari/feet.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/feet.dmi',
 		SPECIES_ZADDAT = 'icons/mob/species/zaddat/shoes.dmi'

@@ -165,6 +165,9 @@
 	icon_state = "qmcloak"
 	item_state = "qmcloak"
 	body_parts_covered = null
+	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/teshari/accessories.dmi'
+		)
 
 /obj/item/clothing/accessory/poncho/roles/cloak/ce
 	name = "chief engineer's cloak"
@@ -384,7 +387,7 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/teshari/ties.dmi'
+		"Teshari" = 'icons/mob/species/teshari/accessories.dmi'
 		)
 
 /obj/item/clothing/accessory/sweater/equipped() // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
@@ -392,7 +395,7 @@
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
 		if(H.species.name == "Teshari")
-			icon_override = 'icons/mob/species/teshari/ties.dmi'
+			icon_override = 'icons/mob/species/teshari/accessories.dmi'
 		else if(H.species.name == "Vox")
 			icon_override = 'icons/mob/species/vox/ties.dmi'
 		else

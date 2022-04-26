@@ -109,7 +109,6 @@
 	name = "Research Director's labcoat"
 	desc = "A flashy labcoat with purple markings. It belongs to the Research Director."
 	icon = 'icons/obj/clothing/suits_vr.dmi'
-	icon_override = 'icons/mob/suit_vr.dmi'
 	icon_state = "labcoat_rd"
 	item_state_slots = list(slot_r_hand_str = "science_labcoat", slot_l_hand_str = "science_labcoat")
 	sprite_sheets = list(
