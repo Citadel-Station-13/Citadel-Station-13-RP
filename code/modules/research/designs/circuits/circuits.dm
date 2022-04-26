@@ -669,3 +669,10 @@ CIRCUITS BELOW
 	req_tech = list(TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/massive_gas_pump
 	sort_string = "OAABC"
+
+/datum/design/circuit/massive_heat_pump
+	name = "High performance heat pump"
+	id = "massive_heat_pump"
+	req_tech = list(TECH_ENGINEERING = 4)
+	build_path = /obj/item/circuitboard/massive_heat_pump
+	sort_string = "OAABD"

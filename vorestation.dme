@@ -1672,6 +1672,7 @@
 #include "code\modules\atmospherics\components\binary_devices\dp_vent_pump.dm"
 #include "code\modules\atmospherics\components\binary_devices\heat_pump.dm"
 #include "code\modules\atmospherics\components\binary_devices\massive_gas_pump.dm"
+#include "code\modules\atmospherics\components\binary_devices\massive_heat_pump.dm"
 #include "code\modules\atmospherics\components\binary_devices\passive_gate.dm"
 #include "code\modules\atmospherics\components\binary_devices\pipeturbine.dm"
 #include "code\modules\atmospherics\components\binary_devices\pump.dm"

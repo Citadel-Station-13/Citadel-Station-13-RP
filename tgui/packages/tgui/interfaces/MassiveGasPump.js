@@ -23,7 +23,7 @@ export const MassiveGasPump = (props, context) => {
       <Window.Content>
         <Section title="Status">
           <LabeledList>
-            <LabeledList.Item label="Flow Rate">
+            <LabeledList.Item label="Effic">
               <AnimatedNumber value={last_flow_rate / 10} /> L/s
             </LabeledList.Item>
             <LabeledList.Item label="Load">

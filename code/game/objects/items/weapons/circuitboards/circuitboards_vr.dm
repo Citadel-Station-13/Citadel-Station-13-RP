@@ -38,6 +38,15 @@
 							/obj/item/stock_parts/manipulator = 2,
 							/obj/item/stock_parts/capacitor = 1)
 
+/obj/item/circuitboard/massive_heat_pump
+	name = T_BOARD("High performance heat pump")
+	build_path = /obj/machinery/atmospherics/binary/massive_heat_pump
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_ENGINEERING = 3, TECH_POWER = 2)
+	req_components = list(
+							/obj/item/stock_parts/matter_bin = 1,
+							/obj/item/stock_parts/micro_laser = 2,
+							/obj/item/stock_parts/capacitor = 2)
 
 // Board for the thermal regulator in airconditioner_vr.dm
 /obj/item/circuitboard/thermoregulator
