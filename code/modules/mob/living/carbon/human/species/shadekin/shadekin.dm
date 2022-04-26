@@ -14,11 +14,20 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
 
 	language = LANGUAGE_SHADEKIN
-	assisted_langs = list()
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/shadekin, /datum/unarmed_attack/bite/sharp/shadekin)
+	name_language = LANGUAGE_SHADEKIN
+	species_language = LANGUAGE_SHADEKIN
+	secondary_langs = list(LANGUAGE_SHADEKIN)
+	num_alternate_languages = 3
+	unarmed_types = list(
+		/datum/unarmed_attack/stomp,
+		/datum/unarmed_attack/kick,
+		/datum/unarmed_attack/claws/shadekin,
+		/datum/unarmed_attack/bite/sharp/shadekin
+		)
+
 	rarity_value = 15	//INTERDIMENSIONAL FLUFFERS
 
-	siemens_coefficient = 0
+	siemens_coefficient = 1
 	darksight = 10
 
 	slowdown = -0.5
@@ -62,7 +71,7 @@
 
 	genders = list(MALE, FEMALE, PLURAL, NEUTER, HERM)	//fuck it. shadekins with titties
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	breath_type = null
 	poison_type = null
@@ -131,9 +140,9 @@
 	add_shadekin_abilities(H)
 
 /datum/species/shadekin/proc/add_shadekin_abilities(var/mob/living/carbon/human/H)
-	if(!H.ability_master || !istype(H.ability_master, /obj/screen/movable/ability_master/shadekin))
+	if(!H.ability_master || !istype(H.ability_master, /atom/movable/screen/movable/ability_master/shadekin))
 		H.ability_master = null
-		H.ability_master = new /obj/screen/movable/ability_master/shadekin(H)
+		H.ability_master = new /atom/movable/screen/movable/ability_master/shadekin(H)
 	for(var/datum/power/shadekin/P in shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
 			H.verbs += P.verbpath

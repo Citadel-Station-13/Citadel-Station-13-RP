@@ -72,8 +72,8 @@
 	var/energy_adminbuse = FALSE //For adminbuse infinite energy
 	var/dark_gains = 0 //Last tick's change in energy
 	var/ability_flags = 0 //Flags for active abilities
-	var/obj/screen/darkhud //Holder to update this icon
-	var/obj/screen/energyhud //Holder to update this icon
+	var/atom/movable/screen/darkhud //Holder to update this icon
+	var/atom/movable/screen/energyhud //Holder to update this icon
 
 	var/list/shadekin_abilities
 
@@ -418,7 +418,7 @@
 //Special hud elements for darkness and energy gains
 /mob/living/simple_mob/shadekin/extra_huds(var/datum/hud/hud,var/icon/ui_style,var/list/hud_elements)
 	//Darkness hud
-	darkhud = new /obj/screen()
+	darkhud = new /atom/movable/screen()
 	darkhud.icon = ui_style
 	darkhud.icon_state = "dark"
 	darkhud.name = "darkness"
@@ -427,7 +427,7 @@
 	hud_elements |= darkhud
 
 	//Energy hud
-	energyhud = new /obj/screen()
+	energyhud = new /atom/movable/screen()
 	energyhud.icon = ui_style
 	energyhud.icon_state = "energy0"
 	energyhud.name = "energy"

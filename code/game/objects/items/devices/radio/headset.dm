@@ -3,10 +3,10 @@
 	desc = "An updated, modular intercom that fits over the head. Takes encryption keys"
 	var/radio_desc = ""
 	icon_state = "headset"
-	item_state = null //To remove the radio's state
+	item_state = null	// To remove the radio's state
 	matter = list(DEFAULT_WALL_MATERIAL = 75)
 	subspace_transmission = 1
-	canhear_range = 0 // can't hear headsets from very far away
+	canhear_range = 0	// Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
@@ -15,6 +15,7 @@
 
 	var/translate_binary = 0
 	var/translate_hive = 0
+	var/ear_protection = 0	// Flashbang Protection... I know.
 	var/obj/item/encryptionkey/keyslot1 = null
 	var/obj/item/encryptionkey/keyslot2 = null
 	var/ks1type = null
@@ -82,6 +83,9 @@
 
 	return "[..()][append]"
 
+/obj/item/radio/headset/ui_state(mob/user)
+	return GLOB.inventory_state
+
 /obj/item/radio/headset/syndicate
 	origin_tech = list(TECH_ILLEGAL = 3)
 	syndie = 1
@@ -128,7 +132,7 @@
 	name = "security bowman headset"
 	desc = "This is used by your elite security force."
 	icon_state = "sec_headset_alt"
-	ear_protection = 1
+	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/headset_sec
 
 /obj/item/radio/headset/headset_eng
@@ -189,7 +193,7 @@
 	name = "command bowman headset"
 	desc = "A headset with a commanding channel."
 	icon_state = "com_headset_alt"
-	ear_protection = 1
+	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/headset_com
 
 
@@ -203,7 +207,7 @@
 	name = "Facility Director's bowman headset"
 	desc = "The headset of the boss."
 	icon_state = "com_headset_alt"
-	ear_protection = 1
+	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/heads/captain
 
 /obj/item/radio/headset/heads/captain/sfr
@@ -250,7 +254,7 @@
 	name = "head of security's bowman headset"
 	desc = "The headset of the man who protects your worthless lifes."
 	icon_state = "com_headset_alt"
-	ear_protection = 1
+	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/heads/hos
 
 /obj/item/radio/headset/heads/ce
@@ -263,7 +267,7 @@
 	name = "chief engineer's bowman headset"
 	desc = "The headset of the guy who is in charge of morons"
 	icon_state = "com_headset_alt"
-	ear_protection = 1
+	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/heads/ce
 
 /obj/item/radio/headset/heads/cmo
@@ -276,7 +280,7 @@
 	name = "chief medical officer's bowman headset"
 	desc = "The headset of the highly trained medical chief."
 	icon_state = "com_headset_alt"
-	ear_protection = 1
+	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/heads/cmo
 
 /obj/item/radio/headset/heads/hop
@@ -289,7 +293,7 @@
 	name = "head of personnel's bowman headset"
 	desc = "The headset of the guy who will one day be Facility Director."
 	icon_state = "com_headset_alt"
-	ear_protection = 1
+	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/heads/hop
 
 /obj/item/radio/headset/headset_mine
@@ -329,7 +333,7 @@
 	name = "emergency response team bowman headset"
 	desc = "The headset of the boss's boss."
 	icon_state = "com_headset_alt"
-	ear_protection = 1
+	ear_protection = 2
 //	freerange = 1
 	ks2type = /obj/item/encryptionkey/ert
 
@@ -413,7 +417,7 @@
 	return
 
 
-/obj/item/radio/headset/proc/recalculateChannels(var/setDescription = 0)
+/obj/item/radio/headset/recalculateChannels(var/setDescription = 0)
 	src.channels = list()
 	src.translate_binary = 0
 	src.translate_hive = 0

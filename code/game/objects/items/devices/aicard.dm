@@ -165,3 +165,38 @@
 	var/obj/item/rig/rig = src.get_rig()
 	if(istype(rig))
 		rig.forced_move(direction, user)
+
+//Subtypes
+/obj/item/aicard/aitater
+	name = "intelliTater"
+	desc = "A stylish upgrade (?) to the intelliCard."
+	icon_state = "aitater"
+
+/obj/item/aicard/aitater/update_icon()
+	overlays.Cut()
+	if(carded_ai)
+		if (!carded_ai.control_disabled)
+			overlays += image('icons/obj/pda.dmi', "aitater-on")
+		if(carded_ai.stat)
+			icon_state = "aitater-404"
+		else
+			icon_state = "aitater-full"
+	else
+		icon_state = "aitater"
+
+/obj/item/aicard/aispook
+	name = "intelliLantern"
+	desc = "A spoOoOoky upgrade to the intelliCard."
+	icon_state = "aispook"
+
+/obj/item/aicard/aispook/update_icon()
+	overlays.Cut()
+	if(carded_ai)
+		if (!carded_ai.control_disabled)
+			overlays += image('icons/obj/pda.dmi', "aispook-on")
+		if(carded_ai.stat)
+			icon_state = "aispook-404"
+		else
+			icon_state = "aispook-full"
+	else
+		icon_state = "aispook"

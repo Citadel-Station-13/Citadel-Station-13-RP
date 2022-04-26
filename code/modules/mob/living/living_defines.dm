@@ -7,8 +7,6 @@
 
 	var/mob_class = null	// A mob's "class", e.g. human, mechanical, animal, etc. Used for certain projectile effects. See __defines/mob.dm for available classes.
 
-	var/hud_updateflag = 0
-
 	var/list/status_effects //a list of all status effects the mob has
 
 	//Damage related vars, NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS
@@ -63,11 +61,15 @@
 
 	var/nest				//Not specific, because a Nest may be the prop nest, or blob factory in this case.
 
-	var/list/hud_list		//Holder for health hud, status hud, wanted hud, etc (not like inventory slots)
-	var/has_huds = FALSE	//Whether or not we should bother initializing the above list
-
 	var/makes_dirt = TRUE	//FALSE if the mob shouldn't be making dirt on the ground when it walks
 
 	var/looking_elsewhere = FALSE //If the mob's view has been relocated to somewhere else, like via a camera or with binocs
 
 	var/image/selected_image = null // Used for buildmode AI control stuff.
+
+	//Pending Refactor, as per Kev.
+	//var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+
+	var/list/butcher_results = null //these will be yielded from butchering with a probability chance equal to the butcher item's effectiveness
+	var/list/guaranteed_butcher_results = null //these will always be yielded from butchering
+	var/butcher_difficulty = 0 //effectiveness prob. is modified negatively by this amount; positive numbers make it more difficult, negative ones make it easier

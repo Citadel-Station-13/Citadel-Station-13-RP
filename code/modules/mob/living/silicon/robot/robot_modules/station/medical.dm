@@ -16,7 +16,7 @@
 					"Telemachus" = "toiletbotsurgeon",
 					"WTOperator" = "sleekcmo",
 					"XI-ALP" = "heavyMed",
-					"Basic" = "Medbot",
+					"Basic" = "Medibot",
 					"Advanced Droid" = "droid-medical",
 					"Needles" = "medicalrobot",
 					"Drone" = "drone-surgery",
@@ -190,4 +190,3 @@
 	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-med"
-

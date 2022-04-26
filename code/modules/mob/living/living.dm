@@ -1,21 +1,25 @@
 /mob/living/Initialize(mapload)
 	. = ..()
 	//Prime this list if we need it.
-	if(has_huds)
-		add_overlay(backplane,TRUE) //Strap this on here, to block HUDs from appearing in rightclick menus: http://www.byond.com/forum/?post=2336679
-		hud_list = list()
-		hud_list.len = TOTAL_HUDS
-		make_hud_overlays()
+	prepare_huds()
 
 	//I'll just hang my coat up over here
 	dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
 	var/mutable_appearance/dsma = new(dsoverlay) //Changing like ten things, might as well.
 	dsma.alpha = 0
-	dsma.plane = PLANE_LIGHTING
+	dsma.plane = LIGHTING_PLANE
 	dsma.blend_mode = BLEND_ADD
 	dsoverlay.appearance = dsma
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
+
+/mob/living/prepare_huds()
+	..()
+	prepare_data_huds()
+
+/mob/living/proc/prepare_data_huds()
+	update_hud_med_health()
+	update_hud_med_status()
 
 /mob/living/Destroy()
 	if(LAZYLEN(status_effects))
@@ -90,6 +94,20 @@ default behaviour is:
 		return TRUE
 	return ..()
 
+//Called when something steps onto us. This allows for mulebots and vehicles to run things over. <3
+/mob/living/Crossed(var/atom/movable/AM) // Transplanting this from /mob/living/carbon/human/Crossed()
+	if(AM == src || AM.is_incorporeal()) // We're not going to run over ourselves or ghosts
+		return
+
+	if(istype(AM, /mob/living/bot/mulebot))
+		var/mob/living/bot/mulebot/MB = AM
+		MB.runOver(src)
+
+	if(istype(AM, /obj/vehicle))
+		var/obj/vehicle/V = AM
+		V.RunOver(src)
+	return ..()
+
 /mob/living/verb/succumb()
 	set hidden = 1
 	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
@@ -101,10 +119,9 @@ default behaviour is:
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = getMaxHealth() - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
-
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
@@ -617,8 +634,10 @@ default behaviour is:
 
 /mob/living/proc/revive()
 	rejuvenate()
+
 	if(buckled)
 		buckled.unbuckle_mob()
+
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src
 
@@ -629,9 +648,7 @@ default behaviour is:
 		if (C.legcuffed && !initial(C.legcuffed))
 			C.drop_from_inventory(C.legcuffed)
 		C.legcuffed = initial(C.legcuffed)
-	BITSET(hud_updateflag, HEALTH_HUD)
-	BITSET(hud_updateflag, STATUS_HUD)
-	BITSET(hud_updateflag, LIFE_HUD)
+
 	ExtinguishMob()
 	fire_stacks = 0
 	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
@@ -676,19 +693,16 @@ default behaviour is:
 		timeofdeath = 0
 
 	// restore us to conciousness
-	stat = CONSCIOUS
+	set_stat(CONSCIOUS)
 
 	// make the icons look correct
 	regenerate_icons()
 
-	BITSET(hud_updateflag, HEALTH_HUD)
-	BITSET(hud_updateflag, STATUS_HUD)
-	BITSET(hud_updateflag, LIFE_HUD)
+	update_hud_med_health()
+	update_hud_med_status()
 
 	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	reload_fullscreen()
-
-	return
 
 /mob/living/proc/UpdateDamageIcon()
 	return
@@ -798,7 +812,7 @@ default behaviour is:
 	update_canmove()
 
 //called when the mob receives a bright flash
-/mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(override_blindness_check || !(disabilities & BLIND))
 		overlay_fullscreen("flash", type)
 		spawn(25)
@@ -1100,7 +1114,7 @@ default behaviour is:
 	src.throw_mode_off()
 	if(usr.stat || !target)
 		return
-	if(target.type == /obj/screen) return
+	if(target.type == /atom/movable/screen) return
 
 	var/atom/movable/item = src.get_active_hand()
 
@@ -1149,29 +1163,8 @@ default behaviour is:
 	else
 		return ..()
 
-//Add an entry to overlays, assuming it exists
-/mob/living/proc/apply_hud(cache_index, var/image/I)
-	hud_list[cache_index] = I
-	if((. = hud_list[cache_index]))
-		//underlays += .
-		add_overlay(.)
-
-//Remove an entry from overlays, and from the list
-/mob/living/proc/grab_hud(cache_index)
-	var/I = hud_list[cache_index]
-	if(I)
-		//underlays -= I
-		cut_overlay(I)
-		hud_list[cache_index] = null
-		return I
-
-/mob/living/proc/make_hud_overlays()
-	return
-
-
 /mob/living/proc/has_vision()
 	return !(eye_blind || (disabilities & BLIND) || stat || blinded)
-
 
 /mob/living/proc/dirties_floor()	// If we ever decide to add fancy conditionals for making dirty floors (floating, etc), here's the proc.
 	return makes_dirt
@@ -1211,3 +1204,11 @@ default behaviour is:
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
+
+/mob/living/proc/OpenCraftingMenu()
+	return
+
+/* Enable this one if you're enabling the butchering component. Otherwise it's useless.
+/mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
+	return
+*/

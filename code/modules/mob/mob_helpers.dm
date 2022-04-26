@@ -215,16 +215,24 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/intent_numeric(argument)
 	if(istext(argument))
 		switch(argument)
-			if(INTENT_HELP)		return 0
-			if(INTENT_DISARM)	return 1
-			if(INTENT_GRAB)		return 2
-			else			return 3
+			if(INTENT_HELP)
+				return 0
+			if(INTENT_DISARM)
+				return 1
+			if(INTENT_GRAB)
+				return 2
+			else
+				return 3
 	else
 		switch(argument)
-			if(0)			return INTENT_HELP
-			if(1)			return INTENT_DISARM
-			if(2)			return INTENT_GRAB
-			else			return INTENT_HARM
+			if(0)
+				return INTENT_HELP
+			if(1)
+				return INTENT_DISARM
+			if(2)
+				return INTENT_GRAB
+			else
+				return INTENT_HARM
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
 /mob/verb/a_intent_change(input as text)
@@ -495,38 +503,38 @@ proc/is_blind(A)
 
 //TODO: Integrate defence zones and targeting body parts with the actual organ system, move these into organ definitions.
 
-//The base miss chance for the different defence zones
+///The base miss chance for the different defence zones
 var/list/global/base_miss_chance = list(
-	"head" = 40,
-	"chest" = 10,
-	"groin" = 20,
-	"l_leg" = 20,
-	"r_leg" = 20,
-	"l_arm" = 20,
-	"r_arm" = 20,
-	"l_hand" = 50,
-	"r_hand" = 50,
-	"l_foot" = 50,
-	"r_foot" = 50,
+	BP_HEAD = 40,
+	BP_CHEST = 10,
+	BP_GROIN = 20,
+	BP_L_LEG = 30,
+	BP_R_LEG = 30,
+	BP_L_ARM = 30,
+	BP_R_ARM = 30,
+	BP_L_HAND = 50,
+	BP_R_HAND = 50,
+	BP_L_FOOT = 50,
+	BP_R_FOOT = 50,
 )
 
-//Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
-//Also used to weight the protection value that armour provides for covering that body part when calculating protection from full-body effects.
+///Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
+///Also used to weight the protection value that armour provides for covering that body part when calculating protection from full-body effects.
 var/list/global/organ_rel_size = list(
-	"head" = 25,
-	"chest" = 70,
-	"groin" = 30,
-	"l_leg" = 25,
-	"r_leg" = 25,
-	"l_arm" = 25,
-	"r_arm" = 25,
-	"l_hand" = 10,
-	"r_hand" = 10,
-	"l_foot" = 10,
-	"r_foot" = 10,
+	BP_HEAD = 25,
+	BP_CHEST = 70,
+	BP_GROIN = 30,
+	BP_L_LEG = 25,
+	BP_R_LEG = 25,
+	BP_L_ARM = 25,
+	BP_R_ARM = 25,
+	BP_L_HAND = 10,
+	BP_R_HAND = 10,
+	BP_L_FOOT = 10,
+	BP_R_FOOT = 10,
 )
 
-/mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	return
 
 //Recalculates what planes this mob can see using their plane_holder, for humans this is checking slots, for others, could be whatever.
@@ -540,18 +548,6 @@ var/list/global/organ_rel_size = list(
 //Handle eye things like the Byond SEE_TURFS, SEE_OBJS, etc.
 /mob/proc/handle_vision()
 	return
-
-//Icon is used to occlude things like huds from the faulty byond context menu.
-//   http://www.byond.com/forum/?post=2336679
-var/global/image/backplane
-/hook/startup/proc/generate_backplane()
-	backplane = image('icons/misc/win32.dmi')
-	backplane.alpha = 0
-	backplane.plane = -100
-	backplane.layer = MOB_LAYER-0.1
-	backplane.mouse_opacity = 0
-
-	return TRUE
 
 /mob/proc/get_sound_env(var/pressure_factor)
 	if (pressure_factor < 0.5)

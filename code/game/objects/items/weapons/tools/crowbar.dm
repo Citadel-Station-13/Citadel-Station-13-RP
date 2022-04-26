@@ -8,6 +8,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar"
 	slot_flags = SLOT_BELT
+	tool_behaviour = TOOL_CROWBAR
 	force = 6
 	throwforce = 7
 	pry = 1
@@ -27,9 +28,22 @@
 
 /obj/item/tool/crowbar/red
 	icon = 'icons/obj/tools.dmi'
-	icon_state = "red_crowbar"
+	icon_state = "crowbar_red"
 	item_state = "crowbar_red"
 
+/obj/item/tool/crowbar/bone
+	name = "primitive crowbar"
+	desc = "A sturdy, carved bone used to remove floors and to pry open doors."
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "crowbar_bone"
+	toolspeed = 1.25
+
+/obj/item/tool/crowbar/brass
+	name = "brass crowbar"
+	desc = "An etched piece of brass plated metal, used to remove floors and to pry open doors."
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "crowbar_brass"
+	toolspeed = 0.75
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar
 	name = "Precursor Alpha Object - Hard Light Pry Tool"

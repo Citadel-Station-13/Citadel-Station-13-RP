@@ -209,12 +209,12 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 // Bluespace jump turf!
 /turf/space/bluespace
 	name = "bluespace"
-	icon = 'icons/turf/space_vr.dmi'
+	icon = 'icons/turf/space.dmi'
 	icon_state = "bluespace"
 
 /turf/space/bluespace/Initialize(mapload)
 	. = ..()
-	icon = 'icons/turf/space_vr.dmi'
+	icon = 'icons/turf/space.dmi'
 	icon_state = "bluespace"
 
 // Desert jump turf!

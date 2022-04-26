@@ -614,36 +614,6 @@ CIRCUITS BELOW
 	build_path = /obj/item/circuitboard/telecomms/exonet_node
 	sort_string = "PAAAH"
 
-/datum/design/circuit/shield
-	req_tech = list(TECH_BLUESPACE = 4, TECH_PHORON = 3)
-	materials = list("glass" = 2000, "gold" = 1000)
-
-/datum/design/circuit/shield/AssembleDesignName()
-	name = "Shield generator circuit design ([name])"
-/datum/design/circuit/shield/AssembleDesignDesc()
-	if(!desc)
-		desc = "Allows for the construction of \a [name] shield generator."
-
-/datum/design/circuit/shield/bubble
-	name = "bubble"
-	id = "shield_gen"
-	build_path = /obj/item/circuitboard/shield_gen
-	sort_string = "VAAAZ"	// Duplicate string, really need to redo this whole thing
-
-/datum/design/circuit/shield/hull
-	name = "hull"
-	id = "shield_gen_ex"
-	build_path = /obj/item/circuitboard/shield_gen_ex
-	sort_string = "VAAAB"
-
-/datum/design/circuit/shield/capacitor
-	name = "capacitor"
-	desc = "Allows for the construction of a shield capacitor circuit board."
-	id = "shield_cap"
-	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 4)
-	build_path = /obj/item/circuitboard/shield_cap
-	sort_string = "VAAAC"
-
 /datum/design/circuit/ntnet_relay
 	name = "NTNet Quantum Relay"
 	id = "ntnet_relay"
@@ -664,6 +634,21 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_BIO = 3)
 	build_path = /obj/item/circuitboard/dnarevive
 	sort_string = "ZAAAA"
+
+/datum/design/circuit/shield_generator
+	name = "shield generator"
+	id = "shield_generator"
+	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 4, TECH_BLUESPACE = 2, TECH_ENGINEERING = 3)
+	build_path = /obj/item/circuitboard/shield_generator
+	sort_string = "OAAAA"
+
+/datum/design/circuit/shield_diffuser
+	name = "shield diffuser"
+	id = "shield_diffuser"
+	req_tech = list(TECH_MAGNET = 4, TECH_POWER = 2, TECH_ENGINEERING = 5)
+	build_path = /obj/item/circuitboard/shield_diffuser
+	sort_string = "OAAAB"
+
 /datum/design/circuit/pointdefense
 	name = "point defense battery"
 	id = "pointdefense"
@@ -672,7 +657,7 @@ CIRCUITS BELOW
 	sort_string = "OAABA"
 
 /datum/design/circuit/pointdefense_control
-	name = "point defense control"
+	name = "point defense control" //Once upon a time, this was called a deluxe microwave.
 	id = "pointdefense_control"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/pointdefense_control

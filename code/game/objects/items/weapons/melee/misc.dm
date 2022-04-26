@@ -185,18 +185,215 @@
 	icon_state = "clownrender"
 	item_state = "clown_dagger"
 
-//Chainswords Babyyy
-/obj/item/melee/chainsaw_sword
-	name = "chainsaw sword"
-	desc = "This weapon requires extensive training to wield effectively. Its spinning teeth are able to cut through metal as easily as flesh. Handle with care."
-	icon_state = "chainswordon"
-	item_state = "chainswordon"
+//Lalilulelo?
+/obj/item/melee/nanite_knife
+	name = "writhing blade"
+	desc = "A jagged blade made out of a strangely shimmering metal. Its wicked shape splits and curls in on itself with cold mutability."
+	icon_state = "writhing"
+	item_state = "knife"
 	slot_flags = SLOT_BELT
 	force = 30
 	throwforce = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 1
-	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
-	hitsound = 'sound/weapons/chainsaw_attack.ogg'
-	armor_penetration = 30
+	attack_verb = list("grasped", "torn", "cut", "pierced", "lashed")
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	armor_penetration = 10
+	var/poison_chance = 100
+	var/poison_amount = 5
+	var/poison_type = "shredding_nanites"
+
+/obj/item/melee/nanite_knife/attack(mob/living/M, mob/living/user, target_zone, attack_modifier)
+	. = ..()
+	if(isliving(M))
+		if(M.reagents)
+			target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
+			if(M.can_inject(src, null, target_zone))
+				inject_poison(M, target_zone)
+
+ // Does actual poison injection, after all checks passed.
+/obj/item/melee/nanite_knife/proc/inject_poison(mob/living/M, target_zone)
+	if(prob(poison_chance))
+		to_chat(M, "<span class='warning'>You feel nanites digging into your skin!</span>")
+		M.reagents.add_reagent(poison_type, poison_amount)
+
+/obj/item/melee/nanite_knife/suicide_act(mob/user)
+	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	user.visible_message(pick("<span class='danger'>\The [user] is shoving \the [src] into [TU.is] chest! It looks like [TU.he] [TU.is] trying to commit suicide.</span>",\
+		"<span class='danger'>\The [user] is stabbing themselves with \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
+	var/turf/T = get_turf(src)
+	user.gib()
+	new /mob/living/simple_mob/mechanical/cyber_horror(T)
+	return
+
+//The Tyrmalin equivalent of the plasma cutter. I'm not making it a plasma cutter subtype because it has to be snowflaked. It should match most cutter stats, otherwise.
+#define FUEL_BURN_INTERVAL 15
+/obj/item/melee/thermalcutter
+	name = "thermal cutter"
+	desc = "Used by Tyrmalin scrappers to slice trough old space-hulks and robots alike."
+	icon_state = "thermalcutter"
+	item_state = "thermalcutter"
+	origin_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 4)
+	var/active = 0
+	var/max_fuel = 20
+	var/flame_intensity = 2
+	var/flame_color = "#FF9933"
+	var/burned_fuel_for = 0
+	var/acti_sound = 'sound/items/welderactivate.ogg'
+	var/deac_sound = 'sound/items/welderdeactivate.ogg'
+	var/digspeed = 20
+	var/excavation_amount = 200
+	var/destroy_artefacts = FALSE // some mining tools will destroy artefacts completely while avoiding side-effects.
+
+/obj/item/melee/thermalcutter/Initialize(mapload)
+	. = ..()
+	var/datum/reagents/R = new/datum/reagents(max_fuel)
+	reagents = R
+	R.my_atom = src
+	R.add_reagent("fuel", max_fuel)
+	update_icon()
+
+/obj/item/melee/thermalcutter/Destroy()
+	if(active)
+		STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/item/melee/thermalcutter/examine(mob/user)
+	. = ..()
+	if(max_fuel)
+		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
+
+/obj/item/melee/thermalcutter/process(delta_time)
+	if(active)
+		++burned_fuel_for
+		if(burned_fuel_for >= FUEL_BURN_INTERVAL)
+			remove_fuel(1)
+		if(get_fuel() < 1)
+			activate(0)
+		else			//Only start fires when its on and has enough fuel to actually keep working
+			var/turf/location = src.loc
+			if(istype(location, /mob/living))
+				var/mob/living/M = location
+				if(M.item_is_in_hands(src))
+					location = get_turf(M)
+			if (istype(location, /turf))
+				location.hotspot_expose(700, 5)
+
+/obj/item/melee/thermalcutter/afterattack(obj/O as obj, mob/user as mob, proximity)
+	if(!proximity)
+		return
+	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+		if(!active && max_fuel)
+			O.reagents.trans_to_obj(src, max_fuel)
+			to_chat(user, "<span class='notice'>You refill [src].</span>")
+			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
+			return
+		else if(!active)
+			to_chat(user, "<span class='notice'>[src] doesn't use fuel.</span>")
+			return
+		else
+			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a thermal cutter.")
+			log_game("[key_name(user)] triggered a fueltank explosion with a thermal cutter.")
+			to_chat(user, "<span class='danger'>You begin slicing into the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done.</span>")
+			var/obj/structure/reagent_dispensers/fueltank/tank = O
+			tank.explode()
+			return
+	if (src.active)
+		remove_fuel(1)
+		var/turf/location = get_turf(user)
+		if(isliving(O))
+			var/mob/living/L = O
+			L.IgniteMob()
+		if (istype(location, /turf))
+			location.hotspot_expose(700, 50, 1)
+
+/obj/item/melee/thermalcutter/attack_self(mob/user)
+	activate()
+
+//Returns the amount of fuel in the welder
+/obj/item/melee/thermalcutter/proc/get_fuel()
+	return reagents.get_reagent_amount("fuel")
+
+/obj/item/melee/thermalcutter/proc/get_max_fuel()
+	return max_fuel
+
+/obj/item/melee/thermalcutter/proc/remove_fuel(var/amount = 1, var/mob/M = null)
+	if(!active)
+		return 0
+	if(amount)
+		burned_fuel_for = 0 // Reset the counter since we're removing fuel.
+	if(get_fuel() >= amount)
+		reagents.remove_reagent("fuel", amount)
+		update_icon()
+		return 1
+	else
+		if(M)
+			to_chat(M, "<span class='notice'>You need more fuel to complete this task.</span>")
+		update_icon()
+		return 0
+
+/obj/item/melee/thermalcutter/proc/isOn()
+	return active
+
+/obj/item/melee/thermalcutter/update_icon()
+	..()
+	if(active)
+		icon_state = "[initial(icon_state)]_1"
+		item_state = "[initial(item_state)]_1"
+	else
+		icon_state = initial(icon_state)
+		item_state = initial(item_state)
+
+	// Lights
+	if(active && flame_intensity)
+		set_light(flame_intensity, flame_intensity, flame_color)
+	else
+		set_light(0)
+
+	var/mob/M = loc
+	if(istype(M))
+		M.update_inv_l_hand()
+		M.update_inv_r_hand()
+
+/obj/item/melee/thermalcutter/proc/activate(var/mob/M)
+	var/turf/T = get_turf(src)
+	if(!active)
+		if (get_fuel() > 0)
+			if(M)
+				to_chat(M, "<span class='notice'>You switch the [src] on.</span>")
+			else if(T)
+				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
+			playsound(loc, acti_sound, 50, 1)
+			src.force = 15
+			src.damtype = "fire"
+			src.w_class = ITEMSIZE_LARGE
+			src.hitsound = 'sound/items/welder.ogg'
+			src.sharp = 1
+			src.edge = 1
+			active = 1
+			update_icon()
+		else
+			if(M)
+				to_chat(M, "<span class='notice'>You need more fuel to complete this task.</span>")
+			return
+	//Otherwise
+	else if(active)
+		if(M)
+			to_chat(M, "<span class='notice'>You switch \the [src] off.</span>")
+		else if(T)
+			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
+		playsound(loc, deac_sound, 50, 1)
+		src.force = 3
+		src.damtype = "brute"
+		src.w_class = initial(src.w_class)
+		src.active = 0
+		src.sharp = 0
+		src.edge = 0
+		src.hitsound = initial(src.hitsound)
+		update_icon()
+
+/obj/item/melee/thermalcutter/is_hot()
+	return isOn()
+
+#undef FUEL_BURN_INTERVAL

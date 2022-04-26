@@ -22,7 +22,6 @@
 	species_language = LANGUAGE_ROOTLOCAL
 	secondary_langs = list(LANGUAGE_ROOTGLOBAL)
 	assisted_langs = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
-	min_age = 18
 	max_age = 300
 
 	economic_modifier = 4
@@ -91,7 +90,7 @@
 
 	genders = list(PLURAL)
 
-	wikilink="https://wiki.vore-station.net/Diona"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
 
 /datum/species/diona/can_understand(var/mob/other)
 	var/mob/living/carbon/alien/diona/D = other
@@ -152,8 +151,8 @@
 		H.nutrition += light_amount
 		H.shock_stage -= light_amount
 
-		if(H.nutrition > 300)
-			H.nutrition = 300
+		if(H.nutrition > max_nutrition)
+			H.nutrition = max_nutrition
 		if(light_amount >= 3 && H.nutrition >= 100) //if there's enough light, heal
 			H.adjustBruteLoss(-(round(light_amount/2)))
 			H.adjustFireLoss(-(round(light_amount/2)))

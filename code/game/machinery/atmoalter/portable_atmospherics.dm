@@ -11,6 +11,7 @@
 	var/destroyed = 0
 
 	var/start_pressure = ONE_ATMOSPHERE
+	///Maximum pressure allowed on initialize inside the canister, multiplied by the filled var
 	var/maximum_pressure = 90 * ONE_ATMOSPHERE
 
 /obj/machinery/portable_atmospherics/Initialize(mapload)

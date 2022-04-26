@@ -23,9 +23,7 @@
 
 #define Z_LEVEL_TRADEPORT				20
 #define Z_LEVEL_LAVALAND				21
-
-#define Z_LEVEL_TALON1					22
-#define Z_LEVEL_TALON2					23
+#define Z_LEVEL_LAVALAND_EAST			22
 
 // Camera Networks
 /datum/map/triumph
@@ -43,7 +41,6 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\triumph\triumph_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
 	admin_levels = list()
 	sealed_levels = list()
@@ -77,9 +74,9 @@
 	company_short	= "NT"
 	starsys_name	= "Sigmar Concord"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the Triumph. A shift transfer is commencing for crew that need to depart. The transfer shuttle will arrive in %ETD%. %dock_name% out."
+	shuttle_docked_message = "This is the %dock_name% calling to the NSV Triumph. The scheduled crew transfer shuttle has docked with the NSV Triumph. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The shuttle be arriving shortly. Those departing should proceed to the shuttle bay within %ETA%."
+	shuttle_called_message = "This is the %dock_name% calling to the NSV Triumph. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "Crew Hands Transfer"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
@@ -114,20 +111,17 @@
 							NETWORK_ALARM_ATMOS,
 							NETWORK_ALARM_POWER,
 							NETWORK_ALARM_FIRE,
-							NETWORK_TALON_HELMETS,
-							NETWORK_TALON_SHIP
+							NETWORK_TRADE_STATION
 							)
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage")
+	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
 
 	meteor_strike_areas = null
-
-	default_skybox = /datum/skybox_settings/triumph
 
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
@@ -146,19 +140,21 @@
 						 	 	 Z_LEVEL_ROGUEMINE_3,
 								 Z_LEVEL_ROGUEMINE_4)
 
+	lavaland_levels =		list(Z_LEVEL_LAVALAND,
+								 Z_LEVEL_LAVALAND_EAST)
+
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), // Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
-		list("Away Mission - Mining Planet"),//Mining planet
-		list("ExoPlanet - Z1 Planet"), // Rogue Exoplanet
-		list("ExoPlanet - Z2 Planet"), // Desert Exoplanet
-		list("Gaia Planet - Z3 Planet"), // Gaia Planet
-		list("Forzen Planet - Z4 Planet"), // Frozen Planet
+		list("ExoPlanet - Z1 Planet"),//Mining planet
+		list("ExoPlanet - Z2 Planet"), // Rogue Exoplanet
+		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet
+		list("ExoPlanet - Z4 Planet"), // Gaia Planet
+		list("ExoPlanet - Z5 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
-		list("Away Mission - Lava Land"),
-		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2")//I swear to god this better work -Bloop
+		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)")
 	)
 
 	ai_shell_restricted = TRUE
@@ -175,23 +171,26 @@
 		Z_LEVEL_GAIA_PLANET,
 		Z_LEVEL_FROZEN_PLANET,
 		Z_LEVEL_TRADEPORT,
-		Z_LEVEL_LAVALAND)
+		Z_LEVEL_LAVALAND,
+		Z_LEVEL_LAVALAND_EAST)
 
 	lateload_single_pick = null //Nothing right now.
 
+	planet_datums_to_make = list(/datum/planet/lavaland,
+								/datum/planet/classg,
+								/datum/planet/classd,
+								/datum/planet/classh,
+								/datum/planet/classp,
+								/datum/planet/classm)
+
 /datum/map/triumph/perform_map_generation()
 	return 1
-
-/datum/skybox_settings/triumph/New()
-	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
-	return icon_state
 
 // For making the 4-in-1 holomap, we calculate some offsets
 #define TRIUMPH_MAP_SIZE 140 // Width and height of compiled in triumph z levels.
 #define TRIUMPH_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
 #define TRIUMPH_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TRIUMPH_MAP_SIZE) - TRIUMPH_HOLOMAP_CENTER_GUTTER) / 2) // 100
 #define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2) // 60
-
 
 // We have a bunch of stuff common to the station z levels
 /datum/map_z_level/triumph/ship

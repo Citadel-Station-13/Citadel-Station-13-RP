@@ -138,3 +138,17 @@
 	cost = 15
 	containertype = /obj/structure/largecrate
 	containername = "Cargo Train Trolley Crate"
+
+//Culture Update
+/datum/supply_pack/misc/mining_tyrmalin
+	name = "Tyrmalin Mining Crate"
+	contains = list(
+			/obj/item/melee/thermalcutter = 1,
+			/obj/item/pickaxe/tyrmalin = 2,
+			/obj/item/grenade/explosive/ied/tyrmalin/large = 1,
+			/obj/item/grenade/explosive/ied/tyrmalin = 2
+			)
+	cost = 120
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "Tyrmalin Mining crate"
+	access = access_mining

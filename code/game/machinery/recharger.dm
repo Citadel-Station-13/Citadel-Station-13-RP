@@ -1,10 +1,9 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 /obj/machinery/recharger
 	name = "recharger"
 	desc = "A standard recharger for all devices that use power."
-	icon = 'icons/obj/stationobjs_vr.dmi' //VOREStation Edit
+	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "recharger0"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 4
 	active_power_usage = 40000	//40 kW
@@ -14,7 +13,7 @@
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
-	var/portable = 1
+	var/portable = TRUE
 	circuit = /obj/item/circuitboard/recharger
 
 /obj/machinery/recharger/Initialize(mapload)
@@ -106,7 +105,10 @@
 		return
 
 /obj/machinery/recharger/attack_hand(mob/user as mob)
-	add_fingerprint(user)
+	if(istype(user,/mob/living/silicon))
+		return
+
+	..()
 
 	if(charging)
 		user.visible_message("[user] removes [charging] from [src].", "You remove [charging] from [src].")

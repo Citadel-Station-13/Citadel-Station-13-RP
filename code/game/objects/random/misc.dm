@@ -385,6 +385,7 @@
 				prob(3);/obj/item/coin/phoron,
 				prob(1);/obj/item/coin/uranium,
 				prob(2);/obj/item/coin/platinum,
+				prob(1);/obj/item/coin/durasteel,
 				prob(1);/obj/item/coin/diamond)
 
 /obj/random/action_figure
@@ -790,8 +791,9 @@
 					prob(4);/obj/item/gun/projectile/deagle/taj,\
 					prob(4);/obj/item/material/knife/tacknife/combatknife,\
 					prob(4);/obj/item/melee/energy/sword,\
-					prob(4);/obj/item/gun/projectile/automatic/mini_uzi,\
+					prob(2);/obj/item/gun/projectile/automatic/mini_uzi,\
 					prob(2);/obj/item/gun/projectile/automatic/mini_uzi/taj,\
+					prob(4);/obj/item/gun/projectile/automatic/wt274,\
 					prob(4);/obj/item/gun/projectile/contender,\
 					prob(4);/obj/item/gun/projectile/contender/tacticool,\
 					prob(4);/obj/item/gun/projectile/contender/taj,\
@@ -811,7 +813,7 @@
 					prob(1);/obj/item/gun/projectile/deagle/gold,\
 					prob(1);/obj/item/gun/energy/imperial,\
 					prob(1);/obj/item/gun/projectile/automatic/as24,\
-					prob(1);/obj/item/gun/launcher/rocket,\
+					prob(1);/obj/item/gun/projectile/rocket,\
 					prob(1);/obj/item/gun/launcher/grenade,\
 					prob(1);/obj/item/gun/projectile/gyropistol,\
 					prob(1);/obj/item/gun/projectile/heavysniper,\
@@ -840,9 +842,10 @@
 					prob(4);/obj/item/ammo_magazine/clip/c45,\
 					prob(4);/obj/item/ammo_magazine/clip/c9mm,\
 					prob(4);/obj/item/ammo_magazine/m45uzi,\
+					prob(4);/obj/item/ammo_magazine/m45uzi/wt274,\
 					prob(4);/obj/item/ammo_magazine/m9mml,\
 					prob(4);/obj/item/ammo_magazine/m9mmt,\
-					prob(4);/obj/item/ammo_magazine/m9mmp90,\
+					prob(4);/obj/item/ammo_magazine/m57x28mmp90,\
 					prob(4);/obj/item/ammo_magazine/m10mm,\
 					prob(4);/obj/item/ammo_magazine/m545/small,\
 					prob(3);/obj/item/ammo_magazine/clip/c10mm,\
@@ -1156,3 +1159,100 @@
 				prob(2);list(/obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer/rigged),
 				prob(1);list(/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill),
 				)
+
+//Random Bedsheet Spawner
+/obj/random/bedsheet
+	name = "random bedsheet"
+	desc = "Used to spawn a random bedsheet."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "sheet"
+
+/obj/random/bedsheet/item_to_spawn()
+	return pick(/obj/item/bedsheet/red,
+				/obj/item/bedsheet/orange,
+				/obj/item/bedsheet/yellow,
+				/obj/item/bedsheet/green,
+				/obj/item/bedsheet/blue,
+				/obj/item/bedsheet/purple,
+				/obj/item/bedsheet/brown,
+				/obj/item/bedsheet/rainbow,
+				/obj/item/bedsheet/captain,
+				/obj/item/bedsheet/hop,
+				/obj/item/bedsheet/rd,
+				/obj/item/bedsheet/ce,
+				/obj/item/bedsheet/hos,
+				/obj/item/bedsheet/medical,
+				/obj/item/bedsheet/ian,
+				/obj/item/bedsheet/clown,
+				/obj/item/bedsheet/mime,
+				/obj/item/bedsheet/cosmos)
+
+/obj/random/bedsheet/double
+	name = "random double bedsheet"
+	desc = "Used to spawn a random double-bedsheet."
+	icon_state = "doublesheet"
+
+/obj/random/bedsheet/double/item_to_spawn()
+	return pick(/obj/item/bedsheet/reddouble,
+				/obj/item/bedsheet/orangedouble,
+				/obj/item/bedsheet/yellowdouble,
+				/obj/item/bedsheet/greendouble,
+				/obj/item/bedsheet/bluedouble,
+				/obj/item/bedsheet/purpledouble,
+				/obj/item/bedsheet/browndouble,
+				/obj/item/bedsheet/rainbowdouble,
+				/obj/item/bedsheet/captaindouble,
+				/obj/item/bedsheet/hopdouble,
+				/obj/item/bedsheet/rddouble,
+				/obj/item/bedsheet/cedouble,
+				/obj/item/bedsheet/hosdouble,
+				/obj/item/bedsheet/iandouble,
+				/obj/item/bedsheet/clowndouble,
+				/obj/item/bedsheet/mimedouble,
+				/obj/item/bedsheet/cosmosdouble)
+
+/obj/random/paintkit
+	name = "random paint kit (APLU)"
+	desc = "Used to spawn a random APLU paint kit."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "modkit"
+
+/obj/random/paintkit/item_to_spawn()
+	return pick(/obj/item/kit/paint/ripley,
+				/obj/item/kit/paint/ripley/death,
+				/obj/item/kit/paint/ripley/flames_red,
+				/obj/item/kit/paint/ripley/flames_blue,
+				/obj/item/kit/paint/ripley/pirate,
+				/obj/item/kit/paint/ripley/junker,
+				/obj/item/kit/paint/ripley/battered,
+				/obj/item/kit/paint/ripley/medical,
+				/obj/item/kit/paint/ripley/sovjet,
+				/obj/item/kit/paint/ripley/arnold,
+				/obj/item/kit/paint/ripley/clown,
+				/obj/item/kit/paint/ripley/dreadnought)
+
+/obj/random/paintkit/gygax
+	name = "random paint kit (Gygax)"
+	desc = "Used to spawn a random Gygax paint kit."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "modkit"
+
+/obj/random/paintkit/gygax/item_to_spawn()
+	return pick(/obj/item/kit/paint/gygax,
+				/obj/item/kit/paint/gygax/blue,
+				/obj/item/kit/paint/gygax/green,
+				/obj/item/kit/paint/gygax/turtle,
+				/obj/item/kit/paint/gygax/mad_jack,
+				/obj/item/kit/paint/gygax/osbourne,
+				/obj/item/kit/paint/gygax/carp)
+
+/obj/random/paintkit/durand
+	name = "random paint kit (Durand)"
+	desc = "Used to spawn a random Durand paint kit."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "modkit"
+
+/obj/random/paintkit/durand/item_to_spawn()
+	return pick(/obj/item/kit/paint/durand,
+				/obj/item/kit/paint/durand/paladin,
+				/obj/item/kit/paint/durand/turtle)

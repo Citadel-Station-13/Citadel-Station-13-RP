@@ -7,6 +7,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "wrench"
 	slot_flags = SLOT_BELT
+	tool_behaviour = TOOL_WRENCH
 	force = 6
 	throwforce = 7
 	w_class = ITEMSIZE_SMALL
@@ -17,15 +18,55 @@
 	toolspeed = 1
 	drop_sound = 'sound/items/drop/wrench.ogg'
 	pickup_sound = 'sound/items/pickup/wrench.ogg'
+	var/random_color = TRUE
+
+/obj/item/tool/wrench/Initialize(mapload)
+	. = ..()
+	if(random_color)
+		switch(pick("nocolor","red","yellow","green","blue"))
+			if ("nocolor")
+				icon_state = "wrench"
+			if ("red")
+				icon_state = "wrench_red"
+			if ("yellow")
+				icon_state = "wrench_yellow"
+			if ("green")
+				icon_state = "wrench_green"
+			if ("blue")
+				icon_state = "wrench_blue"
 
 /obj/item/tool/wrench/is_wrench()
 	return TRUE
+
+/obj/item/tool/wrench/red
+	icon_state = "wrench_red"
+
+/obj/item/tool/wrench/goblin
+	name = "short wrench"
+	desc = "A short, rusty old wrench. It looks like it was made for a smaller species. "
+	icon_state = "wrench_goblin"
+	random_color = FALSE
+
+/obj/item/tool/wrench/bone
+	name = "primitive wrench"
+	desc = "A primitive wrench carved from bone. It does not grip consistently."
+	icon_state = "wrench_bone"
+	toolspeed = 1.25
+	random_color = FALSE
+
+/obj/item/tool/wrench/brass
+	name = "brass wrench"
+	desc = "A brass plated wrench. Its finely tuned mechanism allows for a strong grip."
+	icon_state = "wrench_brass"
+	toolspeed = 0.75
+	random_color = FALSE
 
 /obj/item/tool/wrench/cyborg
 	name = "automatic wrench"
 	desc = "An advanced robotic wrench. Can be found in industrial synthetic shells."
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
+	random_color = FALSE
 
 /obj/item/tool/wrench/hybrid	// Slower and bulkier than normal power tools, but it has the power of reach.
 	name = "strange wrench"
@@ -42,6 +83,7 @@
 	usesound = 'sound/effects/stealthoff.ogg'
 	toolspeed = 0.5
 	reach = 2
+	random_color = FALSE
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
 	name = "Precursor Alpha Object - Fastener Torque Tool"
@@ -67,6 +109,7 @@
 	usesound = 'sound/effects/empulse.ogg'
 	toolspeed = 0.1
 	origin_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 5)
+	random_color = FALSE
 
 /obj/item/tool/wrench/power
 	name = "hand drill"
@@ -82,6 +125,7 @@
 	attack_verb = list("drilled", "screwed", "jabbed")
 	toolspeed = 0.25
 	var/obj/item/tool/screwdriver/power/counterpart = null
+	random_color = FALSE
 
 /obj/item/tool/wrench/power/Initialize(mapload, no_counterpart = TRUE)
 	. = ..()

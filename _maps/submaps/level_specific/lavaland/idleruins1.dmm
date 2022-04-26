@@ -2,37 +2,41 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"b" = (
+/obj/effect/floor_decal/asteroid,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/idleruins)
 "c" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "d" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "j" = (
 /mob/living/simple_mob/mechanical/cyber_horror/corgi/surt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "k" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "l" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "q" = (
 /obj/structure/trash_pile,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "t" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "v" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/idleruins)
 "w" = (
 /turf/simulated/wall/wood,
@@ -42,7 +46,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/material/shard/shrapnel,
 /obj/structure/table,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "y" = (
 /obj/item/bone,
@@ -51,27 +55,22 @@
 /area/lavaland/idleruins)
 "D" = (
 /mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/idleruins)
 "E" = (
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/idleruins)
-"H" = (
-/obj/structure/table/woodentable,
-/obj/item/paper/crumpled/bloody{
-	info = "Jacob stayed behind at the shelter, so I know he'll be okay. We've been bunkered down for days now. The seismic activity is getting worse, but the barricades are holding. They're adapting, we think. Someone says they saw a cat, probably from the colony. Sick bastards. We're talking about trying to move out for the shuttles at first light. Jacob, if you're reading this, meet me there. I love you. -A";
-	name = "weathered note"
-	},
-/turf/simulated/floor/wood,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/idleruins)
 "I" = (
 /obj/structure/barricade,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/idleruins)
+"M" = (
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "N" = (
 /obj/structure/loot_pile/surface/bones,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "P" = (
 /obj/structure/loot_pile/surface/bones,
@@ -80,7 +79,7 @@
 /area/lavaland/idleruins)
 "T" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 
 (1,1,1) = {"
@@ -106,13 +105,13 @@ E
 E
 E
 E
-E
-E
-E
-E
-E
-E
-E
+M
+M
+M
+M
+M
+M
+M
 a
 a
 a
@@ -129,7 +128,7 @@ I
 I
 w
 w
-E
+M
 a
 a
 a
@@ -146,7 +145,7 @@ q
 q
 t
 w
-E
+M
 a
 a
 a
@@ -163,9 +162,9 @@ d
 d
 d
 w
-E
-E
-E
+M
+M
+M
 a
 "}
 (6,1,1) = {"
@@ -180,9 +179,9 @@ d
 c
 c
 w
-E
-E
-E
+M
+M
+M
 a
 "}
 (7,1,1) = {"
@@ -197,9 +196,9 @@ d
 d
 d
 w
-E
-E
-E
+M
+M
+M
 a
 "}
 (8,1,1) = {"
@@ -214,7 +213,7 @@ j
 c
 c
 w
-E
+M
 a
 a
 a
@@ -242,7 +241,7 @@ E
 E
 E
 v
-v
+b
 y
 d
 c
@@ -278,7 +277,7 @@ E
 w
 E
 t
-H
+t
 x
 t
 w

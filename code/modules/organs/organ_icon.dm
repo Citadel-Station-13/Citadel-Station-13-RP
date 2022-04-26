@@ -19,6 +19,10 @@ var/global/list/limb_icon_cache = list()
 			if(human.synth_color)
 				s_col = list(human.r_synth, human.g_synth, human.b_synth)
 			return
+	if(robotic && !(human.species.appearance_flags & BASE_SKIN_COLOR))
+		var/datum/robolimb/franchise = all_robolimbs[model]
+		if(!(franchise && franchise.skin_tone))
+			return
 	if(species && human.species && species.name != human.species.name)
 		return
 	if(!isnull(human.s_tone) && (human.species.appearance_flags & HAS_SKIN_TONE))
@@ -66,7 +70,8 @@ var/global/list/limb_icon_cache = list()
 		if(should_have_eyes)
 			//And we have them
 			if(eyes)
-				eyes_icon.Blend(rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3]), ICON_ADD)
+				if(has_eye_color)
+					eyes_icon.Blend(rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3]), ICON_ADD)
 			//They're gone!
 			else
 				eyes_icon.Blend(rgb(128,0,0), ICON_ADD)
@@ -148,12 +153,12 @@ var/global/list/limb_icon_cache = list()
 
 			if(skeletal)
 				mob_icon = new /icon('icons/mob/human_races/r_skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
-			else if (robotic >= ORGAN_ROBOT)
-				mob_icon = new /icon('icons/mob/human_races/robotic.dmi', "[icon_name][gender ? "_[gender]" : ""]")
-				apply_colouration(mob_icon)
+			else if (robotic >= ORGAN_ROBOT && species == !SPECIES_ADHERENT)
+				mob_icon = new /icon('icons/mob/human_races/robotic.dmi', "[icon_name][s_base ? "[s_base]" : ""][gender ? "_[gender]" : ""]")
 			else
-				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][gender ? "_[gender]" : ""]")
-				apply_colouration(mob_icon)
+				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
+				log_qdel("generated a [species] specific [src] with [icon_name] and _[s_base]")
+			apply_colouration(mob_icon)
 
 			//Body markings, actually does not include head this time. Done separately above.
 			if(!istype(src,/obj/item/organ/external/head))

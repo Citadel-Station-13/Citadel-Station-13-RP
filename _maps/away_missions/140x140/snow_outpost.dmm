@@ -1320,7 +1320,7 @@
 /area/awaymission/snow_outpost/powered)
 "eB" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/effect/floor_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 10
@@ -2421,7 +2421,7 @@
 	pixel_y = 0
 	},
 /obj/item/clothing/shoes/brown,
-/obj/item/clothing/under/mbill,
+/obj/item/clothing/under/brandjumpsuit/mbill,
 /obj/item/clothing/head/soft/mbill,
 /turf/simulated/floor/water,
 /area/awaymission/snow_outpost/outside)

@@ -283,8 +283,8 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 				</body>
 				</html>
 				"}
-/obj/item/book/tome/Initialize()
-	..()
+/obj/item/book/tome/Initialize(mapload)
+	. = ..()
 	if(!cultwords["travel"])
 		runerandom()
 	for(var/V in cultwords)

@@ -53,6 +53,10 @@
 				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>", //VOREStation Edit
 				"<span class='warning'>You draw \the [holstered], ready to go!</span>" //VOREStation Edit
 				)
+			if(istype(holstered, /obj/item/gun))
+				var/obj/item/gun/G = holstered
+				if(G.safety() && prob(50)) //Reflex un-safetying if we are drawing our gun with intent to harm
+					G.toggle_safety(user)
 		else
 			user.visible_message(
 				"<span class='notice'>[user] draws \the [holstered], pointing it at the ground.</span>",
@@ -135,12 +139,14 @@
 	icon_state = "holster"
 	overlay_state = "holster_low"
 	concealed_holster = 0
+	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/hip
 	name = "hip holster"
 	desc = "A handgun holster slung low on the hip, draw pardner!"
 	icon_state = "holster_hip"
 	concealed_holster = 0
+	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/leg
 	name = "leg holster"
@@ -148,6 +154,7 @@
 	icon_state = "holster_leg"
 	overlay_state = "holster_leg"
 	concealed_holster = 0
+	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/machete
 	name = "machete scabbard"
@@ -159,6 +166,7 @@
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
 	holster_verb = "sheathe"
+	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/machete/occupied
 	var/holstered_spawn = /obj/item/material/knife/machete

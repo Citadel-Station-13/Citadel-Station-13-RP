@@ -17,7 +17,10 @@
 	var/minrate = 0
 	var/maxrate = 10 * ONE_ATMOSPHERE
 
-	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide, /datum/gas/volatile_fuel, /datum/gas/phoron, /datum/gas/nitrous_oxide)
+	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide, /datum/gas/volatile_fuel, /datum/gas/phoron, /datum/gas/nitrous_oxide,
+		/datum/gas/helium, /datum/gas/carbon_monoxide, /datum/gas/methyl_bromide, /datum/gas/nitrodioxide, /datum/gas/nitricoxide,
+		/datum/gas/methane, /datum/gas/argon, /datum/gas/krypton, /datum/gas/neon, /datum/gas/ammonia, /datum/gas/xenon, /datum/gas/chlorine,
+		/datum/gas/sulfur_dioxide, /datum/gas/hydrogen)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/Initialize(mapload)
 	. = ..()
@@ -43,6 +46,7 @@
 	..(severity)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/update_icon_state()
+	. = ..()
 	if(on && cell && cell.charge)
 		icon_state = "pscrubber:1"
 	else
@@ -101,58 +105,61 @@
 	return src.attack_hand(user)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/attack_hand(var/mob/user)
-	nano_ui_interact(user)
-	return
+	ui_interact(user)
 
-/obj/machinery/portable_atmospherics/powered/scrubber/nano_ui_interact(mob/user, ui_key = "rcon", datum/nanoui/ui=null, force_open=1)
-	var/list/data[0]
-	data["portConnected"] = connected_port ? 1 : 0
-	data["tankPressure"] = round(air_contents.return_pressure() > 0 ? air_contents.return_pressure() : 0)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PortableScrubber", name)
+		ui.open()
+
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_data(mob/user)
+	var/list/data = list()
+
+	data["on"] = on ? 1 : 0
+	data["connected"] = connected_port ? 1 : 0
+	data["pressure"] = round(air_contents.return_pressure() > 0 ? air_contents.return_pressure() : 0)
 	data["rate"] = round(volume_rate)
 	data["minrate"] = round(minrate)
 	data["maxrate"] = round(maxrate)
 	data["powerDraw"] = round(last_power_draw)
 	data["cellCharge"] = cell ? cell.charge : 0
 	data["cellMaxCharge"] = cell ? cell.maxcharge : 1
-	data["on"] = on ? 1 : 0
 
-	data["hasHoldingTank"] = holding ? 1 : 0
-	if (holding)
-		data["holdingTank"] = list("name" = holding.name, "tankPressure" = round(holding.air_contents.return_pressure() > 0 ? holding.air_contents.return_pressure() : 0))
+	if(holding)
+		data["holding"] = list()
+		data["holding"]["name"] = holding.name
+		data["holding"]["pressure"] = round(holding.air_contents.return_pressure() > 0 ? holding.air_contents.return_pressure() : 0)
+	else
+		data["holding"] = null
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "portscrubber.tmpl", "Portable Scrubber", 480, 400, state = physical_state)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
+	return data
 
-
-/obj/machinery/portable_atmospherics/powered/scrubber/Topic(href, href_list)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, params)
 	if(..())
-		return 1
+		return TRUE
 
-	if(href_list["power"])
-		on = !on
-		. = 1
-	if (href_list["remove_tank"])
-		if(holding)
-			holding.loc = loc
-			holding = null
-		. = 1
-	if (href_list["volume_adj"])
-		var/diff = text2num(href_list["volume_adj"])
-		volume_rate = clamp(volume_rate+diff, minrate, maxrate)
-		. = 1
+	switch(action)
+		if("power")
+			on = !on
+			. = TRUE
+		if("eject")
+			if(holding)
+				holding.loc = loc
+				holding = null
+			. = TRUE
+		if("volume_adj")
+			volume_rate = clamp(text2num(params["vol"]), minrate, maxrate)
+			. = TRUE
+
 	update_icon()
-
 
 //Huge scrubber
 /obj/machinery/portable_atmospherics/powered/scrubber/huge
 	name = "Huge Air Scrubber"
-	icon = 'icons/obj/atmos_vr.dmi' //VOREStation Edit - New Sprite
+	icon = 'icons/obj/atmos_vr.dmi'
 	icon_state = "scrubber:0"
-	anchored = 1
+	anchored = TRUE
 	volume = 500000
 	volume_rate = 7000
 

@@ -96,11 +96,11 @@
 	updatehealth()
 	if(stat != DEAD)
 		if(paralysis)
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else if (status_flags & FAKEDEATH)
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 		return 1
 
 /mob/living/proc/handle_statuses()
@@ -170,17 +170,15 @@
 		if(ear_damage < 100)
 			adjustEarDamage(-0.05,-1)
 
-//this handles hud updates. Calls update_vision() and handle_hud_icons()
 /mob/living/handle_regular_hud_updates()
 	if(!client)
-		return 0
+		return FALSE
 	..()
 
-	handle_vision()
 	handle_darksight()
 	handle_hud_icons()
 
-	return 1
+	return TRUE
 
 /mob/living/proc/update_sight()
 	if(!seedarkness)

@@ -1,5 +1,22 @@
+GLOBAL_LIST_INIT(bitfields, generate_bitfields())
+
+/datum/bitfield
+	/// The variable name that contains the bitfield
+	var/variable
+
+	/// An associative list of the readable flag and its true value
+	var/list/flags
+
+/// Turns /datum/bitfield subtypes into a list for use in debugging
+/proc/generate_bitfields()
+	var/list/bitfields = list()
+	for (var/_bitfield in subtypesof(/datum/bitfield))
+		var/datum/bitfield/bitfield = new _bitfield
+		bitfields[bitfield.variable] = bitfield.flags
+	// sue me i haven't slept in 18 hours
+	// tl;dr convert these into DEFINE_BITFIELD's later
 #define FLAG(flag) "[#flag]" = flag
-GLOBAL_LIST_INIT(bitfields, list(
+	return bitfields + list(
 	"appearance_flags" = list(
 		"LONG_GLIDE" = LONG_GLIDE,
 		"RESET_COLOR" = RESET_COLOR,
@@ -50,6 +67,15 @@ GLOBAL_LIST_INIT(bitfields, list(
 		FLAG(VENTCRAWLING),
 		FLAG(FLOATING)
 		),
+	"reagents_holder_flags" = list(
+		"INJECTABLE" = INJECTABLE,
+		"DRAWABLE" = DRAWABLE,
+		"REFILLABLE" = REFILLABLE,
+		"DRAINABLE" = DRAINABLE,
+		"TRANSPARENT" = TRANSPARENT,
+		"AMOUNT_VISIBLE" = AMOUNT_VISIBLE,
+		"NO_REACT" = NO_REACT,
+		),
 /*
 	"sight" = list(
 		"SEE_INFRA" = SEE_INFRA,
@@ -66,7 +92,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 	"obj_flags" = list(
 		"EMAGGED" = EMAGGED,
 		"CAN_BE_HIT" = CAN_BE_HIT
-	)
+		),
 /*
 	"obj_flags" = list(
 		"EMAGGED" = EMAGGED,
@@ -183,6 +209,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 	"car_traits" = list(
 		"CAN_KIDNAP" = CAN_KIDNAP,
 		),
+*/
 	"mobility_flags" = list(
 		"MOVE" = MOBILITY_MOVE,
 		"STAND" = MOBILITY_STAND,
@@ -190,8 +217,9 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"USE" = MOBILITY_USE,
 		"UI" = MOBILITY_UI,
 		"STORAGE" = MOBILITY_STORAGE,
-		"PULL" = MOBILITY_PULL,
-		),
+		"PULL" = MOBILITY_PULL
+	)
+/*
 	"rad_flags" = list(
 		"RAD_PROTECT_CONTENTS" = RAD_PROTECT_CONTENTS,
 		"RAD_NO_CONTAMINATE" = RAD_NO_CONTAMINATE,
@@ -215,6 +243,6 @@ GLOBAL_LIST_INIT(bitfields, list(
 	)
 */
 
-	))
+	)
 
 #undef FLAG

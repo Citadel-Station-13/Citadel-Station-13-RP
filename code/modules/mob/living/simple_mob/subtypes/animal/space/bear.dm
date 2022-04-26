@@ -35,7 +35,10 @@
 	melee_attack_delay = 1 SECOND
 	attacktext = list("mauled")
 
+	meat_amount = 5
 	meat_type = /obj/item/reagent_containers/food/snacks/bearmeat
+	bone_amount = 3
+	hide_amount = 5
 
 	say_list_type = /datum/say_list/bear
 

@@ -2805,7 +2805,7 @@
 /area/mercbase/barracks)
 "ma" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medicalOR)
 "mb" = (

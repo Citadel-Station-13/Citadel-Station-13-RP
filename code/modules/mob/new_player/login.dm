@@ -30,7 +30,9 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 	var/motd = config.motd
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
-
+	if(client)
+		to_chat(src, client.getAlertDesc())
+		
 	if(!mind)
 		mind = new /datum/mind(key)
 		mind.active = 1
@@ -48,4 +50,4 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 			handle_privacy_poll()
 			client.playtitlemusic()
 
-	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
+	return ..()

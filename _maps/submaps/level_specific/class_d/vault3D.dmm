@@ -4,20 +4,20 @@
 /area/template_noop)
 "c" = (
 /turf/simulated/wall/r_wall,
-/area/poi_d/explored)
+/area/class_d/explored)
 "d" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/class_d_indoors,
-/area/poi_d/explored)
+/turf/simulated/floor/tiled/classd/indoors,
+/area/class_d/explored)
 "e" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/effect/decal/cleanable/dirt,
 /obj/fiftyspawner/mhydrogen,
-/turf/simulated/floor/tiled/class_d_indoors,
-/area/poi_d/explored)
+/turf/simulated/floor/tiled/classd/indoors,
+/area/class_d/explored)
 "w" = (
 /turf/simulated/mineral/vacuum,
-/area/poi_d/explored)
+/area/class_d/explored)
 
 (1,1,1) = {"
 a

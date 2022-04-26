@@ -21,7 +21,7 @@
 		)
 
 /datum/turbolift
-	music = list('sound/music/elevator.ogg')  // Woo elevator music!
+	music = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')  // Woo elevator music!
 */
 /*
 // shuttle departure cryo doors that turn into ordinary airlock doors at round end
@@ -159,4 +159,3 @@ var/global/list/latejoin_shuttle   = list()
 		/mob/living/simple_animal/hostile/dragon = 1
 	)
 */
-

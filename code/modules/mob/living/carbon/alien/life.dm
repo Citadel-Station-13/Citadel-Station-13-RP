@@ -51,7 +51,7 @@
 
 		if(paralysis && paralysis > 0)
 			blinded = 1
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 			if(halloss > 0)
 				adjustHalLoss(-3)
 
@@ -61,13 +61,13 @@
 				if(mind.active && client != null)
 					AdjustSleeping(-1)
 			blinded = 1
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else if(resting)
 			if(halloss > 0)
 				adjustHalLoss(-3)
 
 		else
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			if(halloss > 0)
 				adjustHalLoss(-1)
 
@@ -121,17 +121,23 @@
 		else
 			healths.icon_state = "health7"
 
-	if (client)
-		client.screen.Remove(GLOB.global_hud.blurry,GLOB.global_hud.druggy,GLOB.global_hud.vimpaired)
-
 	if ( stat != 2)
-		if ((blinded))
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+		if(blinded)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 		else
 			clear_fullscreen("blind")
-			set_fullscreen(disabilities & NEARSIGHTED, "impaired", /obj/screen/fullscreen/impaired, 1)
-			set_fullscreen(eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
-			set_fullscreen(druggy, "high", /obj/screen/fullscreen/high)
+		if(disabilities & NEARSIGHTED)
+			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
+		else
+			clear_fullscreen("impaired")
+		if(eye_blurry)
+			overlay_fullscreen("blurry", /atom/movable/screen/fullscreen/tiled/blurry)
+		else
+			clear_fullscreen("blurry")
+		if(druggy)
+			overlay_fullscreen("high", /atom/movable/screen/fullscreen/tiled/high)
+		else
+			clear_fullscreen("high")
 		if(machine)
 			if(machine.check_eye(src) < 0)
 				reset_view(null)

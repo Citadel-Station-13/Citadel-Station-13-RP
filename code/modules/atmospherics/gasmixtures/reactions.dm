@@ -1,5 +1,5 @@
 //Returns the firelevel
-/datum/gas_mixture/proc/zburn(zone/zone, force_burn, no_check = 0)
+/datum/gas_mixture/proc/zburn(datum/zas_zone/zone, force_burn, no_check = 0)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/fuel_energy_release, fuel_energy_release)
 

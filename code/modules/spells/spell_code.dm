@@ -52,7 +52,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	var/hud_state = "" //name of the icon used in generating the spell hud object
 	var/override_base = ""
 
-	var/obj/screen/connected_button
+	var/atom/movable/screen/connected_button
 
 ///////////////////////
 ///SETUP AND PROCESS///
@@ -340,3 +340,6 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 		if(!user || (!(spell_flags & (STATALLOWED|GHOSTCAST)) && user.stat != originalstat)  || !(user.loc == Location))
 			return 0
 	return 1
+
+/spell/proc/remove_self(mob/user = usr)
+	user.remove_spell(src)

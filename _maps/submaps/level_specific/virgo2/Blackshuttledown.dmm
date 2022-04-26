@@ -186,7 +186,7 @@
 /area/submap/virgo2/Blackshuttledown)
 "aG" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aH" = (

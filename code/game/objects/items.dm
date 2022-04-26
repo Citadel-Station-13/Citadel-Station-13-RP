@@ -42,6 +42,8 @@
 	var/flags_inv = 0
 	var/body_parts_covered = 0 //see setup.dm for appropriate bit flags
 
+	var/tool_behaviour = NONE
+
 	var/item_flags = 0 //Miscellaneous flags pertaining to equippable objects.
 
 	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible
@@ -113,6 +115,9 @@
 	var/drop_sound = 'sound/items/drop/device.ogg'
 
 	var/deploytype = null	//Deploytype for switchtools. Only really used on switchtool subtype items, but this is on a general item level in case admins want to do some wierd fucky shit with custom switchtools.
+
+	var/heavy = FALSE //Whether or not we are heavy. Used for some species to determine if they can two-hand it.
+
 /obj/item/Initialize(mapload)
 	. = ..()
 	if(islist(origin_tech))
@@ -128,13 +133,6 @@
 			hitsound = 'sound/items/welder.ogg'
 		if(damtype == "brute")
 			hitsound = "swing_hit"
-
-/obj/item/equipped()
-	..()
-	var/mob/living/M = loc
-	if(!istype(M))
-		return
-	M.update_held_icons()
 
 /obj/item/Destroy()
 	if(ismob(loc))
@@ -328,33 +326,6 @@
 	else
 		playsound(src, drop_sound, 30, preference = /datum/client_preference/drop_sounds)
 
-/// Called when a mob drops an item.
-/obj/item/proc/dropped(mob/user, silent = FALSE)
-	SHOULD_CALL_PARENT(TRUE)
-/*
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.Remove(user)
-	if(item_flags & DROPDEL)
-		qdel(src)
-	item_flags &= ~IN_INVENTORY
-*/
-	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	// if(!silent)
-	// 	playsound(src, drop_sound, DROP_SOUND_VOLUME, ignore_walls = FALSE)
-	// user?.update_equipment_speed_mods()
-	if(zoom)
-		zoom() //binoculars, scope, etc
-	appearance_flags &= ~NO_CLIENT_COLOR
-
-// called just as an item is picked up (loc is not yet changed)
-/obj/item/proc/pickup(mob/user)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
-	pixel_x = initial(pixel_x)
-	pixel_y = initial(pixel_y)
-	// item_flags |= IN_INVENTORY
-
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
 	return
@@ -366,42 +337,6 @@
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/finder as mob)
 	return
-
-// called after an item is placed in an equipment slot
-// user is mob that equipped it
-// slot uses the slot_X defines found in setup.dm
-// for items that can be placed in multiple slots
-// note this isn't called during the initial dressing of a player
-/obj/item/proc/equipped(var/mob/user, var/slot)
-	hud_layerise()
-	user.position_hud_item(src,slot)
-	if(user.client)	user.client.screen |= src
-	if(user.pulling == src) user.stop_pulling()
-	if((slot_flags & slot))
-		if(equip_sound)
-			playsound(src, equip_sound, 30)
-		else
-			playsound(src, drop_sound, 30)
-	else if(slot == slot_l_hand || slot == slot_r_hand)
-		playsound(src, pickup_sound, 20, preference = /datum/client_preference/pickup_sounds)
-	return
-
-//Defines which slots correspond to which slot flags
-var/list/global/slot_flags_enumeration = list(
-	"[slot_wear_mask]" = SLOT_MASK,
-	"[slot_back]" = SLOT_BACK,
-	"[slot_wear_suit]" = SLOT_OCLOTHING,
-	"[slot_gloves]" = SLOT_GLOVES,
-	"[slot_shoes]" = SLOT_FEET,
-	"[slot_belt]" = SLOT_BELT,
-	"[slot_glasses]" = SLOT_EYES,
-	"[slot_head]" = SLOT_HEAD,
-	"[slot_l_ear]" = SLOT_EARS|SLOT_TWOEARS,
-	"[slot_r_ear]" = SLOT_EARS|SLOT_TWOEARS,
-	"[slot_w_uniform]" = SLOT_ICLOTHING,
-	"[slot_wear_id]" = SLOT_ID,
-	"[slot_tie]" = SLOT_TIE,
-	)
 
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
 //If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.
@@ -535,9 +470,10 @@ var/list/global/slot_flags_enumeration = list(
 	return
 
 
-//This proc is executed when someone clicks the on-screen UI button. To make the UI button show, set the 'icon_action_button' to the icon_state of the image of the button in screen1_action.dmi
-//The default action is attack_self().
-//Checks before we get to here are: mob is alive, mob is not restrained, paralyzed, asleep, resting, laying, item is on the mob.
+/**
+ *This proc is executed when someone clicks the on-screen UI button.
+ *The default action is attack_self().
+ */
 /obj/item/proc/ui_action_click()
 	attack_self(usr)
 
@@ -943,3 +879,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // Like the above, but used for RPED sorting of parts.
 /obj/item/proc/rped_rating()
 	return get_rating()
+
+/obj/item/interact(mob/user)
+	add_fingerprint(user)
+	ui_interact(user)

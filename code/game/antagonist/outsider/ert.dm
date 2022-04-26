@@ -19,7 +19,7 @@ var/datum/antagonist/ert/ert
 	id_type = /obj/item/card/id/centcom/ERT
 
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_SET_APPEARANCE | ANTAG_HAS_LEADER | ANTAG_CHOOSE_NAME
-	antaghud_indicator = "hudloyalist"
+	antaghud_indicator = "loyalist"
 
 	hard_cap = 5
 	hard_cap_round = 7

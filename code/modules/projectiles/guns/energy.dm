@@ -216,7 +216,8 @@
 
 	if(!ignore_inhands)
 		update_held_icon()
-
+	..()
+	
 /obj/item/gun/energy/proc/start_recharge()
 	if(power_supply == null)
 		power_supply = new /obj/item/cell/device/weapon(src)
@@ -236,3 +237,8 @@
 	results += ..()
 
 	return results
+
+/obj/item/gun/energy/inducer_scan(obj/item/inducer/I, list/things_to_induce, inducer_flags)
+	if(inducer_flags & INDUCER_NO_GUNS)
+		return
+	return ..()

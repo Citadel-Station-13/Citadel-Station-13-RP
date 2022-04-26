@@ -36,6 +36,8 @@
 
 	meat_amount = 1
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/fox
+	bone_amount = 1
+	hide_amount = 3
 
 	say_list_type = /datum/say_list/fox
 	ai_holder_type = /datum/ai_holder/simple_mob/fox

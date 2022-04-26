@@ -23,6 +23,13 @@
 	reagent_mix = RECIPE_REAGENT_REPLACE
 	result = /obj/item/reagent_containers/food/snacks/ribplate
 
+/datum/recipe/ribplate_bear //Putting this here for not seeing a roast section.
+	appliance = OVEN
+	reagents = list("honey" = 5, "spacespice" = 2, "blackpepper" = 1)
+	items = list(/obj/item/reagent_containers/food/snacks/bearmeat)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	result = /obj/item/reagent_containers/food/snacks/ribplate_bear
+
 /datum/recipe/teshariroast
 	appliance = OVEN
 	fruit = list("lemon" = 1)
@@ -143,6 +150,21 @@
 		/obj/item/reagent_containers/food/snacks/dough
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/bananabread
+
+/datum/recipe/spidermeatbread
+	appliance = OVEN
+	items = list(
+		/obj/item/reagent_containers/food/snacks/dough,
+		/obj/item/reagent_containers/food/snacks/dough,
+		/obj/item/reagent_containers/food/snacks/dough,
+		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/cheesewedge
+	)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/spidermeatbread
 
 
 /datum/recipe/bun
@@ -299,13 +321,19 @@
 				return 0
 		return . */
 
+/datum/recipe/pretzel
+	appliance = OVEN
+	items = list(/obj/item/reagent_containers/food/snacks/dough)
+	reagents = list("water" = 5, "sodiumchloride" = 2)
+	result = /obj/item/reagent_containers/food/snacks/pretzel
+	result_quantity = 2
+
 /datum/recipe/poppypretzel
 	appliance = OVEN
 	fruit = list("poppy" = 1)
 	items = list(/obj/item/reagent_containers/food/snacks/dough)
 	result = /obj/item/reagent_containers/food/snacks/poppypretzel
 	result_quantity = 2
-
 
 /datum/recipe/cracker
 	appliance = OVEN
@@ -483,6 +511,11 @@
 	items = list(/obj/item/organ/internal/brain)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/braincake
 
+/datum/recipe/honeycake
+	appliance = OVEN
+	reagents = list("milk" = 5, "flour" = 10, "egg" = 6, "honey" = 5)
+	result = /obj/item/reagent_containers/food/snacks/honeycake
+
 /datum/recipe/pancakes
 	appliance = OVEN
 	fruit = list("berries" = 2)
@@ -585,3 +618,24 @@
 		/obj/item/reagent_containers/food/snacks/cheesewedge
 	)
 	result = /obj/item/reagent_containers/food/snacks/macncheese
+
+/datum/recipe/ham
+	appliance = OVEN
+	reagents = list("brine" = 15)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/reagent_containers/food/snacks/meat
+	)
+	result = /obj/item/reagent_containers/food/snacks/ham
+
+/datum/recipe/rumham
+	appliance = OVEN
+	reagents = list("rum" = 10)
+	fruit = list("cherries" = 1, "spineapple" = 1)
+	reagent_mix = RECIPE_REAGENT_REPLACE
+	items = list(
+		/obj/item/reagent_containers/food/snacks/ham
+	)
+	result = /obj/item/reagent_containers/food/snacks/rumham

@@ -37,7 +37,6 @@
 	required_reagents = list("oxygen" = 1, "hydrogen" = 2)
 	result_amount = 1
 
-
 /datum/chemical_reaction/thermite
 	name = "Thermite"
 	id = "thermite"
@@ -311,6 +310,16 @@
 
 /datum/chemical_reaction/plastication/on_reaction(var/datum/reagents/holder, var/created_volume)
 	new /obj/item/stack/material/plastic(get_turf(holder.my_atom), created_volume)
+	return
+
+/datum/chemical_reaction/wax
+	name = "Wax"
+	id = "wax"
+	required_reagents = list("hydrogen" = 1, "carbon" = 1, "tallow" = 2)
+	result_amount = 1
+
+/datum/chemical_reaction/wax/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/stack/material/wax(get_turf(holder.my_atom), created_volume)
 	return
 
 /* Grenade reactions */
@@ -811,7 +820,7 @@
 				O.show_message(text("<span class='warning'>The slime core fizzles disappointingly.</span>"), 1)
 			return
 
-		var/blocked = list(/obj/item/stack/material, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/plastic, /obj/item/stack/material/cyborg/plasteel, /obj/item/stack/material/cyborg/glass/reinforced, /obj/item/stack/material/cyborg/wood, /obj/item/stack/material/animalhide/human, /obj/item/stack/material/animalhide/corgi, /obj/item/stack/material/animalhide/cat, /obj/item/stack/material/animalhide/monkey, /obj/item/stack/material/animalhide/lizard , /obj/item/stack/material/animalhide/xeno, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/glass/reinforced)
+		var/blocked = list(/obj/item/stack/material, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/plastic, /obj/item/stack/material/cyborg/plasteel, /obj/item/stack/material/cyborg/glass/reinforced, /obj/item/stack/material/cyborg/wood, /obj/item/stack/animalhide/human, /obj/item/stack/animalhide/corgi, /obj/item/stack/animalhide/cat, /obj/item/stack/animalhide/monkey, /obj/item/stack/animalhide/lizard , /obj/item/stack/animalhide/xeno, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/glass/reinforced)
 		var/list/material = typesof(/obj/item/stack/material) - blocked
 
 		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)

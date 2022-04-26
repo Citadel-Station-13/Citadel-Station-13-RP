@@ -87,10 +87,6 @@
 		to_chat(user, "<span class='warning'>The panel must be closed before operating this machine!</span>")
 		return
 
-	if(istype(get_area(src), /area/shuttle))
-		to_chat(user, "<span class='warning'>This is too unstable a platform for \the [src] to operate on!</span>")
-		return
-
 	if(!powernet)
 		to_chat(user, "<span class='warning'>[src] is not attached to a powernet!</span>")
 		return

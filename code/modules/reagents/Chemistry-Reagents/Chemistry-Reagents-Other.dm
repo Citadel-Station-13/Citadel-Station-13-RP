@@ -514,6 +514,23 @@
 	taste_mult = 1.1
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
+	affects_robots = TRUE
+
+/datum/reagent/coolant/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(M.isSynthetic() && ishuman(M))
+		var/mob/living/carbon/human/H = M
+
+		var/datum/reagent/blood/coolant = H.get_blood(H.vessel)
+
+		if(coolant)
+			H.vessel.add_reagent("blood", removed, coolant.data)
+
+		else
+			H.vessel.add_reagent("blood", removed)
+			H.fixblood()
+
+	else
+		..()
 
 /datum/reagent/ultraglue
 	name = "Ultra Glue"
@@ -638,3 +655,17 @@
 	if(!M.confused) M.confused = 1
 	M.confused = max(M.confused, 20)
 	return
+
+/datum/reagent/oil
+	name = "Oil"
+	description = "Burns in a small smoky fire, mostly used to get Ash."
+	reagent_state = REAGENT_LIQUID
+	color = "#292929"
+	taste_description = "oil"
+
+/datum/reagent/ash
+	name = "Ash"
+	description = "Supposedly phoenixes rise from these, but you've never seen it."
+	reagent_state = REAGENT_LIQUID
+	color = "#665c56"
+	taste_description = "ash"

@@ -226,6 +226,7 @@
 		set_light(0)
 
 /obj/item/kinetic_crusher/update_icon_state()
+	. = ..()
 	if(update_item_state)
 		item_state = "crusher[wielded]" // this is not icon_state and not supported by 2hcomponent
 

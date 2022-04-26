@@ -24,6 +24,9 @@
 	// If set to a type, on initialize it will be instantiated into that type.
 	var/obj/item/radio/headset/my_headset = null
 
+	meat_amount = 1
+	bone_amount = 1
+
 // Say list
 /datum/say_list/bird/polly
 	speak = list(

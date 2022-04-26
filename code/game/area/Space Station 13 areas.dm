@@ -260,6 +260,21 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/excursion/cargo
 	name = "\improper Excursion Shuttle Cockpit"
 
+//Courser
+/area/shuttle/courser
+	requires_power = 1
+	icon_state = "shuttle"
+
+/area/shuttle/courser/general
+	name = "\improper Courser Vessel"
+
+/area/shuttle/courser/cockpit
+	name = "\improper Courser Vessel Cockpit"
+
+/area/shuttle/courser/battery
+	name = "\improper Courser Vessel Battery"
+
+
 // Pirate Skiff
 /area/shuttle/pirate
 	requires_power = 1
@@ -2331,7 +2346,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 		temp_closet.locked = 0
 		temp_closet.icon_state = temp_closet.icon_closed
 	for(var/obj/machinery/door_timer/temp_timer in src)
-		temp_timer.releasetime = 1
+		temp_timer.timer_duration = 1
 	..()
 
 /area/security/prison
@@ -2343,7 +2358,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 		temp_closet.locked = 0
 		temp_closet.icon_state = temp_closet.icon_closed
 	for(var/obj/machinery/door_timer/temp_timer in src)
-		temp_timer.releasetime = 1
+		temp_timer.timer_duration = 1
 	..()
 
 /area/security/warden
@@ -3363,8 +3378,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Excursion Shuttle Dock"
 	icon_state = "hangar"
 
+/area/exploration/courser_dock
+	name = "\improper Courser Shuttle Dock"
+	icon_state = "hangar"
+
 /area/exploration/explorer_prep
 	name = "\improper Explorer Prep Room"
+	icon_state = "locker"
+
+/area/exploration/pilot_prep
+	name = "\improper Pilot Prep Room"
 	icon_state = "locker"
 
 /area/exploration/meeting
@@ -3396,7 +3419,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/lift_announce_str = "Ding!"
 	var/arrival_sound = 'sound/machines/ding.ogg'
 	var/delay_time = 2 SECONDS
-	forced_ambience = list('sound/music/elevator.ogg')
+	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
 	dynamic_lighting = FALSE //Temporary fix for elevator lighting
 
 	requires_power = FALSE

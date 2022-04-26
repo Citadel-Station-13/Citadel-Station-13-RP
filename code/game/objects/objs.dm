@@ -55,58 +55,7 @@
 			old_turf.unregister_dangerous_object(src)
 			new_turf.register_dangerous_object(src)
 
-/obj/Topic(href, href_list, var/datum/topic_state/state = default_state)
-	if(usr && ..())
-		return 1
-
-	// In the far future no checks are made in an overriding Topic() beyond if(..()) return
-	// Instead any such checks are made in CanUseTopic()
-	if(CanUseTopic(usr, state, href_list) == UI_INTERACTIVE)
-		CouldUseTopic(usr)
-		return 0
-
-	CouldNotUseTopic(usr)
-	return 1
-
-/obj/CanUseTopic(var/mob/user, var/datum/topic_state/state = default_state)
-	if(user.CanUseObjTopic(src))
-		return ..()
-	to_chat(user, "<span class='danger'>[icon2html(thing = src, target = user)] Access Denied!</span>")
-	return UI_CLOSE
-
-/mob/living/silicon/CanUseObjTopic(var/obj/O)
-	var/id = src.GetIdCard()
-	return O.check_access(id)
-
-/mob/proc/CanUseObjTopic()
-	return 1
-
-/obj/proc/CouldUseTopic(var/mob/user)
-	var/atom/host = nano_host()
-	host.add_hiddenprint(user)
-
-/obj/proc/CouldNotUseTopic(var/mob/user)
-	// Nada
-
 /obj/item/proc/is_used_on(obj/O, mob/user)
-
-/obj/assume_air(datum/gas_mixture/giver)
-	if(loc)
-		return loc.assume_air(giver)
-	else
-		return null
-
-/obj/remove_air(amount)
-	if(loc)
-		return loc.remove_air(amount)
-	else
-		return null
-
-/obj/return_air()
-	if(loc)
-		return loc.return_air()
-	else
-		return null
 
 /obj/proc/updateUsrDialog()
 	if(in_use)
@@ -152,6 +101,7 @@
 	..()
 
 /mob/proc/unset_machine()
+	machine?.remove_visual(src)
 	src.machine = null
 
 /mob/proc/set_machine(var/obj/O)
@@ -221,3 +171,11 @@
 		materials_list += matter[i]
 		. += "<u>It is made out of [materials_list]</u>."
 	return
+
+/obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
+	return
+
+/obj/attack_hand(mob/living/user)
+	if(Adjacent(user))
+		add_fingerprint(user)
+	..()

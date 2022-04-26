@@ -58,7 +58,7 @@
 		faction_members -= player
 		player.special_role = null
 		update_icons_removed(player)
-		BITSET(player.current.hud_updateflag, SPECIALROLE_HUD)
+		player.current.update_hud_antag()
 		if(!is_special_character(player))
 			player.current.verbs -= /mob/living/proc/write_ambition
 			player.current.client.verbs -= /client/proc/aooc

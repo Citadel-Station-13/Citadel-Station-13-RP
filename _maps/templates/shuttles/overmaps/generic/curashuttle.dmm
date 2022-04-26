@@ -139,7 +139,7 @@
 /turf/simulated/wall/rdshull,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "ar" = (
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/surgery,
 /obj/item/surgical/scalpel/manager,
 /obj/item/surgical/scalpel/ripper,
 /obj/item/surgical/circular_saw/manager,
@@ -470,9 +470,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/shield_gen{
-	
-	},
+/obj/machinery/power/shield_generator/charged,
 /obj/structure/curtain/black,
 /turf/simulated/floor/tiled,
 /area/shuttle/curabitur/curashuttle/cockpit)

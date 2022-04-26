@@ -1,8 +1,8 @@
 /datum/species/auril
 	name = SPECIES_AURIL
 	name_plural = "Auril"
-	default_language = LANGUAGE_ENOCHIAN
-	language = LANGUAGE_GALCOM
+	default_language = LANGUAGE_GALCOM
+	language = LANGUAGE_ENOCHIAN
 	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 
@@ -25,7 +25,6 @@
 	blood_color = "#856A16"
 	base_color = "#DED2AD"
 
-	min_age = 18
 
 	//Angels glow in the dark.
 	has_glowing_eyes = 1
@@ -48,8 +47,8 @@
 /datum/species/dremachir
 	name = SPECIES_DREMACHIR
 	name_plural = "Dremachir"
-	default_language = LANGUAGE_DAEMON
-	language = LANGUAGE_GALCOM
+	default_language = LANGUAGE_GALCOM
+	language = LANGUAGE_DAEMON
 	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
@@ -69,7 +68,6 @@
 	blood_color = "#27173D"
 	base_color = "#580412"
 
-	min_age = 18
 
 	//Demons glow in the dark.
 	has_glowing_eyes = 1

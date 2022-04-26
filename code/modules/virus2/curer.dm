@@ -89,7 +89,6 @@
 		container.loc = src.loc
 		container = null
 
-	src.add_fingerprint(usr)
 	src.updateUsrDialog()
 
 

@@ -10,7 +10,8 @@
 			/obj/item/seeds/bloodtomatoseed,
 			/obj/item/storage/pill_bottle/zoom,
 			/obj/item/storage/pill_bottle/happy,
-			/obj/item/reagent_containers/food/drinks/bottle/pwine
+			/obj/item/reagent_containers/food/drinks/bottle/pwine,
+			/obj/item/reagent_containers/food/drinks/cans/geometer = 2
 			)
 
 	name = "Contraband crate"

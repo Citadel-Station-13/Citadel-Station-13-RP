@@ -52,7 +52,7 @@
 				var/amount = rand(2,6)
 				var/quantity = rand(10,50)
 				var/list/possible_spawns = list()
-				for(var/bar_type in typesof(/obj/item/stack/material) - /obj/item/stack/material - /obj/item/stack/material/animalhide - typesof(/obj/item/stack/material/cyborg))
+				for(var/bar_type in typesof(/obj/item/stack/material) - /obj/item/stack/material - /obj/item/stack/animalhide - typesof(/obj/item/stack/material/cyborg))
 					possible_spawns += bar_type
 
 				var/bar_type = pick(possible_spawns)
@@ -168,7 +168,7 @@
 					prob(3);/obj/item/gun/projectile/deagle/camo,\
 					prob(3);/obj/item/gun/energy/gun/nuclear,\
 					prob(2);/obj/item/gun/projectile/deagle/gold,\
-					prob(1);/obj/item/gun/launcher/rocket,\
+					prob(1);/obj/item/gun/projectile/rocket,\
 					prob(1);/obj/item/gun/launcher/grenade,\
 					prob(1);/obj/item/gun/projectile/gyropistol,\
 					prob(1);/obj/item/gun/projectile/heavysniper,\
@@ -199,7 +199,7 @@
 					prob(4);/obj/item/ammo_magazine/m9mmt,\
 					prob(4);/obj/item/ammo_magazine/m9mmt/rubber,\
 					prob(4);/obj/item/ammo_magazine/m10mm,\
-					prob(4);/obj/item/ammo_magazine/m9mmp90,\
+					prob(4);/obj/item/ammo_magazine/m57x28mmp90,\
 				/*	prob(4);/obj/item/ammo_magazine/m14,\
 					prob(4);/obj/item/ammo_magazine/m14/large,\*/
 					prob(4);/obj/item/ammo_magazine/m545/ext,

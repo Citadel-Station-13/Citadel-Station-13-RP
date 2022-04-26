@@ -26,7 +26,6 @@
 	tail = "tail" //Scree's tail. Can be disabled in the vore tab by choosing "hide species specific tail sprite"
 	icobase_tail = 1
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/reconstitute_form,
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
@@ -40,11 +39,10 @@
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
-		/mob/living/carbon/human/proc/lick_wounds ,
+		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/resp_biomorph,
 		/mob/living/carbon/human/proc/biothermic_adapt,
 		/mob/living/carbon/human/proc/atmos_biomorph,
-		/mob/living/carbon/human/proc/vocal_biomorph,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -53,11 +51,26 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_wings,
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
-		/mob/living/carbon/human/proc/regenerate,
-		/mob/living/carbon/human/proc/commune) //Xenochimera get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/shapeshifter_select_shape,
+		/mob/living/carbon/human/proc/commune
+		) //Xenochimera get all the special verbs since they can't select traits.
 
-	virus_immune = 1 // They practically ARE one.
-	min_age = 18
+	inherent_spells = list(
+		/spell/targeted/chimera/thermal_sight,
+		/spell/targeted/chimera/voice_mimic,
+		/spell/targeted/chimera/regenerate,
+		/spell/targeted/chimera/hatch,
+		/spell/targeted/chimera/no_breathe
+	)
+
+	var/list/feral_spells = list(
+		/spell/aoe_turf/dissonant_shriek
+	)
+
+	var/list/removable_spells = list()
+
+	var/has_feral_spells = FALSE
+	virus_immune = TRUE // They practically ARE one.
 	max_age = 200
 
 	blurb = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \
@@ -102,7 +115,7 @@
 		"Akula","Nevrean","Highlander Zorren",
 		"Flatland Zorren", "Vulpkanin", "Vasilissan",
 		"Rapala", "Neaera", "Stok", "Farwa", "Sobaka",
-		"Wolpin", "Saru", "Sparra")
+		"Wolpin", "Saru", "Sparra", "Vox")
 
 	//primitive_form = "Farwa"
 
@@ -123,6 +136,7 @@
 		)
 
 	heal_rate = 0.5
+	infect_wounds = 1
 	flesh_color = "#AFA59E"
 	base_color 	= "#333333"
 	blood_color = "#14AD8B"
@@ -142,8 +156,7 @@
 
 	//Cold/pressure effects when not regenerating
 	else
-		var/datum/gas_mixture/environment = H.loc.return_air()
-		var/pressure2 = environment.return_pressure()
+		var/pressure2 = H.loc.return_pressure()
 		var/adjusted_pressure2 = H.calculate_affecting_pressure(pressure2)
 
 		//Very low pressure damage
@@ -158,6 +171,47 @@
 			H.eye_blurry = max(5,H.eye_blurry)
 	..()
 
+/datum/species/shapeshifter/xenochimera/add_inherent_spells(var/mob/living/carbon/human/H)
+	var/master_type = /atom/movable/screen/movable/spell_master/chimera
+	var/atom/movable/screen/movable/spell_master/chimera/new_spell_master = new master_type
+
+	if(!H.spell_masters)
+		H.spell_masters = list()
+
+	if(H.client)
+		H.client.screen += new_spell_master
+	new_spell_master.spell_holder = H
+	H.spell_masters.Add(new_spell_master)
+
+	for(var/spell_to_add in inherent_spells)
+		var/spell/S = new spell_to_add(H)
+		H.add_spell(S, "cult", master_type)
+
+/datum/species/shapeshifter/xenochimera/proc/add_feral_spells(var/mob/living/carbon/human/H)
+	if(!has_feral_spells)
+		var/check = FALSE
+		var/master_type = /atom/movable/screen/movable/spell_master/chimera
+		for(var/spell/S as anything in feral_spells)
+			var/spell/spell_to_add = new S(H)
+			check = H.add_spell(spell_to_add, "cult", master_type)
+			removable_spells += spell_to_add
+		if(check)
+			has_feral_spells = TRUE
+		else
+			return
+	else
+		return
+
+/datum/species/shapeshifter/xenochimera/proc/remove_feral_spells(var/mob/living/carbon/human/H)
+	for(var/spell/S as anything in removable_spells)
+		S.remove_self(H)
+	removable_spells.Cut()
+	has_feral_spells = FALSE
+
+/datum/species/shapeshifter/xenochimera/handle_post_spawn(mob/living/carbon/human/H)
+	..()
+	for(var/spell/S as anything in feral_spells)
+		S = new S(H)
 
 /datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
@@ -238,6 +292,10 @@
 		//we're feral
 		feral_state = TRUE
 
+		//We check if the current spell list already has feral spells.
+		if(!has_feral_spells)
+			add_feral_spells(H)
+
 		//Shock due to mostly halloss. More feral.
 		if(shock && 2.5*H.halloss >= H.traumatic_shock)
 			danger = TRUE
@@ -266,6 +324,8 @@
 		//Did we just finish being feral?
 		if(!feral)
 			feral_state = FALSE
+			if(has_feral_spells)
+				remove_feral_spells(H)
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
 			update_xenochimera_hud(H, danger, feral_state)
@@ -409,11 +469,11 @@
 
 	return
 
-/obj/screen/xenochimera
+/atom/movable/screen/xenochimera
 	icon = 'icons/mob/chimerahud.dmi'
 	invisibility = 101
 
-/obj/screen/xenochimera/danger_level
+/atom/movable/screen/xenochimera/danger_level
 	name = "danger level"
 	icon_state = "danger00"		//first number is bool of whether or not we're in danger, second is whether or not we're feral
 	alpha = 200
@@ -423,7 +483,7 @@
 /mob/living/carbon/human/proc/resp_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Respiratory Biomorph"
 	set desc = "Changes the gases we need to breathe."
-	set category = "Abilities"
+	set category = "Chimera"
 
 	var/list/gas_choices = list(
 		"oxygen" = /datum/gas/oxygen,
@@ -465,7 +525,7 @@
 		if(target == src)
 			to_chat("<span class = 'Notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
@@ -476,7 +536,7 @@
 /mob/living/carbon/human/proc/biothermic_adapt(mob/living/carbon/human/target in view(1))
 	set name = "Biothermic Adaptation"
 	set desc = "Changes our core body temperature."
-	set category = "Abilities"
+	set category = "Chimera"
 
 	var/list/temperature_options = list(
 	"warm-blooded",
@@ -560,7 +620,7 @@
 		if(target == src)
 			to_chat(src, "<span class = 'Notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
@@ -570,7 +630,7 @@
 /mob/living/carbon/human/proc/atmos_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Atmospheric Biomorph"
 	set desc = "Changes our sensitivity to atmospheric pressure."
-	set category = "Abilities"
+	set category = "Chimera"
 
 
 	var/list/pressure_options = list(
@@ -609,34 +669,12 @@
 		if(target == src)
 			to_chat(src, "<span class = 'notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
 				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
 		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
-
-
-/mob/living/carbon/human/proc/vocal_biomorph()
-	set name = "Vocalization Biomorph"
-	set desc = "Changes our speech pattern."
-	set category = "Abilities"
-
-	var/vocal_biomorph = input(src, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
-	if(!vocal_biomorph)
-		return
-	to_chat(src, "You begin modifying your internal structure!")
-	if(do_after(src,15 SECONDS))
-		switch(vocal_biomorph)
-			if("common")
-				return
-			if("unathi")
-				species.autohiss_basic_map = list("s" = list("ss", "sss", "ssss"))
-				species.autohiss_extra_map = list("x" = list("ks", "kss", "ksss"))
-				species.autohiss_exempt = "Sinta'unathi"
-			if("tajaran")
-				species.autohiss_basic_map = list("r" = list("rr", "rrr", "rrrr"))
-				species.autohiss_exempt = "Siik"
 
 /////////////////////
 /////SPIDER RACE/////
@@ -658,12 +696,19 @@
 	tail = "tail" //Spider tail.
 	icobase_tail = 1
 
+	is_weaver = TRUE
+	silk_reserve = 500
+	silk_max_reserve = 1000
+
 	inherent_verbs = list(
-		/mob/proc/weaveWebBindings,
+		/mob/living/carbon/human/proc/check_silk_amount,
+		/mob/living/carbon/human/proc/toggle_silk_production,
+		/mob/living/carbon/human/proc/weave_structure,
+		/mob/living/carbon/human/proc/weave_item,
+		/mob/living/carbon/human/proc/set_silk_color,
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "Vasilissans are a tall, lanky, spider like people. \
@@ -731,7 +776,6 @@
 	primitive_form = "Wolpin"
 	color_mult = 1
 
-	min_age = 18
 	max_age = 200
 
 	blurb = "Big buff werewolves. These are a limited functionality event species that are not balanced for regular gameplay. Adminspawn only."
@@ -799,7 +843,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "Apidaens are an insectoid race from the far galactic rim. \

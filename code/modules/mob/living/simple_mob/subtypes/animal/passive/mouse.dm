@@ -39,7 +39,10 @@
 	has_langs = list("Mouse")
 
 	holder_type = /obj/item/holder/mouse
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+
+	meat_amount = 1
+	bone_amount = 1
+	hide_amount = 1
 
 	say_list_type = /datum/say_list/mouse
 
@@ -91,7 +94,7 @@
 
 /mob/living/simple_mob/animal/passive/mouse/proc/splat()
 	src.health = 0
-	src.stat = DEAD
+	src.set_stat(DEAD)
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
 	layer = MOB_LAYER

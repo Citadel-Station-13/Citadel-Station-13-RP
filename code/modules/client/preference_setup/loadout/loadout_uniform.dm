@@ -5,7 +5,7 @@
 	slot = slot_w_uniform
 	sort_category = "Uniforms and Casual Dress"
 
-/datum/gear/uniform/blazerskirt
+/datum/gear/uniform/blazer_skirt
 	name = "Blazer - Skirt "
 	path = /obj/item/clothing/under/blazer/skirt
 
@@ -181,6 +181,18 @@
 		scrubs[initial(scrub_type.name)] = scrub_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(scrubs, /proc/cmp_text_asc))
 
+/datum/gear/uniform/scrub_fem
+	name = "Scrubs Selection - Female"
+	path = /obj/item/clothing/under/rank/medical/scrubs_fem
+
+/datum/gear/uniform/scrub_fem/New()
+	..()
+	var/list/scrubs_fem = list()
+	for(var/scrub_fem in typesof(/obj/item/clothing/under/rank/medical/scrubs_fem))
+		var/obj/item/clothing/under/rank/medical/scrubs_fem/scrub_type = scrub_fem
+		scrubs_fem[initial(scrub_type.name)] = scrub_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(scrubs_fem, /proc/cmp_text_asc))
+
 /datum/gear/uniform/oldwoman
 	name = "Old Woman Attire"
 	path = /obj/item/clothing/under/oldwoman
@@ -193,29 +205,17 @@
 	name = "Sundress - White"
 	path = /obj/item/clothing/under/sundress_white
 
-/datum/gear/uniform/turtlebaggy
-	name = "Baggy Turtleneck - Cream"
+/datum/gear/uniform/turtlebaggy_selection
+	name = "Baggy Turtleneck Selection"
 	path = /obj/item/clothing/under/turtlebaggy
 
-/datum/gear/uniform/turtlebaggy/purple
-	name = "Baggy Turtleneck - Purple"
-	path = /obj/item/clothing/under/turtlebaggy/purple
-
-/datum/gear/uniform/turtlebaggy/red
-	name = "Baggy Turtleneck - Red"
-	path = /obj/item/clothing/under/turtlebaggy/red
-
-/datum/gear/uniform/turtlebaggy/blue
-	name = "Baggy Turtleneck - Blue"
-	path = /obj/item/clothing/under/turtlebaggy/blue
-
-/datum/gear/uniform/turtlebaggy/green
-	name = "Baggy Turtleneck - Green"
-	path = /obj/item/clothing/under/turtlebaggy/green
-
-/datum/gear/uniform/turtlebaggy/black
-	name = "Baggy Turtleneck - Black"
-	path = /obj/item/clothing/under/turtlebaggy/black
+/datum/gear/uniform/turtlebaggy_selection/New()
+	..()
+	var/list/turtlebaggy_selection = list()
+	for(var/turtlebaggy in typesof(/obj/item/clothing/under/turtlebaggy))
+		var/obj/item/clothing/under/turtlebaggy_type = turtlebaggy
+		turtlebaggy_selection[initial(turtlebaggy_type.name)] = turtlebaggy_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(turtlebaggy_selection, /proc/cmp_text_asc))
 
 /datum/gear/uniform/pentagramdress
 	name = "Pentagram Dress"
@@ -314,33 +314,17 @@
 	name = "Sweater - Grey"
 	path = /obj/item/clothing/under/rank/psych/turtleneck/sweater
 
-/datum/gear/uniform/brandsuit/aether
-	name = "Jumpsuit - Aether"
-	path = /obj/item/clothing/under/aether
+/datum/gear/uniform/brandjumpsuit_selection
+	name = "Branded Jumpsuit Selection"
+	path = /obj/item/clothing/under/brandjumpsuit/aether
 
-/datum/gear/uniform/brandsuit/focal
-	name = "Jumpsuit - Focal"
-	path = /obj/item/clothing/under/focal
-
-/datum/gear/uniform/mbill
-	name = "Outfit - Major Bill's"
-	path = /obj/item/clothing/under/mbill
-
-/datum/gear/uniform/brandsuit/grayson
-	name = "Outfit - Grayson"
-	path = /obj/item/clothing/under/grayson
-
-/datum/gear/uniform/brandsuit/wardt
-	name = "Jumpsuit - Ward-Takahashi"
-	path = /obj/item/clothing/under/wardt
-
-/datum/gear/uniform/frontier
-	name = "Outfit - Frontier"
-	path = 	/obj/item/clothing/under/frontier
-
-/datum/gear/uniform/brandsuit/hephaestus
-	name = "Jumpsuit - Hephaestus"
-	path = 	/obj/item/clothing/under/hephaestus
+/datum/gear/uniform/brandjumpsuit_selection/New()
+	..()
+	var/list/brandjumpsuit_selection = list()
+	for(var/brandjumpsuit in typesof(/obj/item/clothing/under/brandjumpsuit))
+		var/obj/item/clothing/under/brandjumpsuit_type = brandjumpsuit
+		brandjumpsuit_selection[initial(brandjumpsuit_type.name)] = brandjumpsuit_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(brandjumpsuit_selection, /proc/cmp_text_asc))
 
 /datum/gear/uniform/yogapants
 	name = "Yoga Pants"
@@ -389,9 +373,22 @@
 /datum/gear/uniform/marine/tan
 	name = "Uniform - Tan Fatigues"
 	path = /obj/item/clothing/under/oricon/utility/marine/tan
+
+/datum/gear/uniform/overalls
+	name = "Overalls"
+	path = /obj/item/clothing/under/overalls
+
+/datum/gear/uniform/overalls_fem
+	name = "Overalls - Female"
+	path = /obj/item/clothing/under/overalls_fem
+
 /datum/gear/uniform/sleekoverall
 	name = "Overalls - Sleek"
 	path = /obj/item/clothing/under/overalls/sleek
+
+/datum/gear/uniform/sleekoverall_fem
+	name = "Overalls - Sleek - Female"
+	path = /obj/item/clothing/under/overalls/sleek_fem
 
 /datum/gear/uniform/sarired
 	name = "Sari - Red"
@@ -433,6 +430,22 @@
 		kimonos[initial(kimono_type.name)] = kimono_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(kimonos, /proc/cmp_text_asc))
 
+/datum/gear/uniform/pyjamas_red
+	name = "Pyjamas - Red"
+	path = /obj/item/clothing/under/redpyjamas
+
+/datum/gear/uniform/pyjamas_blue
+	name = "Pyjamas - Blue"
+	path = /obj/item/clothing/under/bluepyjamas
+
+/datum/gear/uniform/pyjamas_red_fem
+	name = "Pyjamas - Red - Female"
+	path = /obj/item/clothing/under/redpyjamas_fem
+
+/datum/gear/uniform/pyjamas_blue_fem
+	name = "Pyjamas - Blue - Female"
+	path = /obj/item/clothing/under/bluepyjamas_fem
+
 /datum/gear/uniform/wrappedcoat
 	name = "Modern Wrapped Coat"
 	path = /obj/item/clothing/under/moderncoat
@@ -440,6 +453,10 @@
 /datum/gear/uniform/ascetic
 	name = "Plain Ascetic Garb"
 	path = /obj/item/clothing/under/ascetic
+
+/datum/gear/uniform/ascetic_fem
+	name = "Plain Ascetic Garb - Female"
+	path = /obj/item/clothing/under/ascetic_fem
 
 /datum/gear/uniform/pleated
 	name = "Pleated Skirt"
@@ -469,47 +486,63 @@
 	name = "Little Black Dress"
 	path = /obj/item/clothing/under/littleblackdress
 
-datum/gear/uniform/dutchsuit
+/datum/gear/uniform/dutchsuit
 	name = "Western Suit"
 	path = /obj/item/clothing/under/dutchuniform
 
-datum/gear/uniform/victorianredshirt
-	name = "Red Shirt Victorian Suit"
+/datum/gear/uniform/victorianredshirt
+	name = "Red Shirted Victorian Suit"
 	path = /obj/item/clothing/under/victorianblred
 
-datum/gear/uniform/victorianredvest
+/datum/gear/uniform/victorianredshirt/female
+	name = "Red Shirted Victorian Suit - Female"
+	path = /obj/item/clothing/under/fem_victorianblred
+
+/datum/gear/uniform/victorianredvest
 	name = "Red Vested Victorian Suit"
 	path = /obj/item/clothing/under/victorianredvest
 
-datum/gear/uniform/victoriansuit
+/datum/gear/uniform/victorianredvest/female
+	name = "Red Vested Victorian Suit - Female"
+	path = /obj/item/clothing/under/fem_victorianredvest
+
+/datum/gear/uniform/victoriansuit
 	name = "Victorian Suit"
 	path = /obj/item/clothing/under/victorianvest
 
-datum/gear/uniform/victorianbluesuit
+/datum/gear/uniform/victoriansuit/female
+	name = "Victorian Suit - Female"
+	path = /obj/item/clothing/under/fem_victorianvest
+
+/datum/gear/uniform/victorianbluesuit
 	name = "Blue Shirted Victorian Suit"
 	path = /obj/item/clothing/under/victorianlightfire
 
-datum/gear/uniform/victorianreddress
+/datum/gear/uniform/victorianbluesuit/female
+	name = "Blue Shirted Victorian Suit - Female"
+	path = /obj/item/clothing/under/fem_victorianlightfire
+
+/datum/gear/uniform/victorianreddress
 	name = "Victorian Red Dress"
 	path = /obj/item/clothing/under/victorianreddress
 
-datum/gear/uniform/victorianblackdress
+/datum/gear/uniform/victorianblackdress
 	name = "Victorian Black Dress"
 	path = /obj/item/clothing/under/victorianblackdress
 
-datum/gear/uniform/fiendsuit
+/datum/gear/uniform/fiendsuit
 	name = "Fiendish Suit"
 	path = /obj/item/clothing/under/fiendsuit
 
-datum/gear/uniform/fienddress
+/datum/gear/uniform/fienddress
 	name = "Fiendish Dress"
 	path = /obj/item/clothing/under/fienddress
 
-datum/gear/uniform/leotard
+/datum/gear/uniform/leotard
 	name = "Black Leotard"
 	path = /obj/item/clothing/under/leotard
 
-datum/gear/uniform/leotardcolor
+/datum/gear/uniform/leotardcolor
 	name = "Colored Leotard"
 	path = /obj/item/clothing/under/leotardcolor
 
@@ -517,11 +550,11 @@ datum/gear/uniform/leotardcolor
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
-datum/gear/uniform/verglasdress
+/datum/gear/uniform/verglasdress
 	name = "Verglas Dress"
 	path = /obj/item/clothing/under/verglasdress
 
-datum/gear/uniform/fashionminiskirt
+/datum/gear/uniform/fashionminiskirt
 	name = "Fashionable Miniskirt"
 	path = /obj/item/clothing/under/fashionminiskirt
 
@@ -529,38 +562,33 @@ datum/gear/uniform/fashionminiskirt
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
-datum/gear/uniform/bodysuit
+/datum/gear/uniform/bodysuit
 	name = "Standard Bodysuit"
 	path = /obj/item/clothing/under/bodysuit
 
-datum/gear/uniform/bodysuiteva
+/datum/gear/uniform/bodysuit_fem
+	name = "Standard Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit_fem
+
+/datum/gear/uniform/bodysuiteva
 	name = "EVA Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuiteva
 
-// And after nearly successfully hanging myself, this is where the real game begins
-/datum/gear/uniform/future_fashion_light_blue_striped
-	name = "Futuristic Light Blue-Striped Jumpsuit"
-	path = /obj/item/clothing/under/future_fashion_light_blue_striped
+/datum/gear/uniform/bodysuiteva_fem
+	name = "EVA Bodysuit - Female"
+	path = /obj/item/clothing/under/bodysuit/bodysuiteva_fem
 
-/datum/gear/uniform/future_fashion_dark_blue_striped
-	name = "Futuristic Dark Blue-Striped Jumpsuit"
-	path = /obj/item/clothing/under/future_fashion_dark_blue_striped
+/datum/gear/uniform/future_fashion_selection
+	name = "Futuristic Striped Jumpsuit Selection"
+	path = /obj/item/clothing/under/future_fashion
 
-/datum/gear/uniform/future_fashion_red_striped
-	name = "Futuristic Red-Striped Jumpsuit"
-	path = /obj/item/clothing/under/future_fashion_red_striped
-
-/datum/gear/uniform/future_fashion_green_striped
-	name = "Futuristic Green-Striped Jumpsuit"
-	path = /obj/item/clothing/under/future_fashion_green_striped
-
-/datum/gear/uniform/future_fashion_orange_striped
-	name = "Futuristic Orange-Striped Jumpsuit"
-	path = /obj/item/clothing/under/future_fashion_orange_striped
-
-/datum/gear/uniform/future_fashion_purple_striped
-	name = "Futuristic Purple-Striped Jumpsuit"
-	path = /obj/item/clothing/under/future_fashion_purple_striped
+/datum/gear/uniform/future_fashion_selection/New()
+	..()
+	var/list/future_fashion_selection = list()
+	for(var/future_fashion in typesof(/obj/item/clothing/under/future_fashion))
+		var/obj/item/clothing/under/future_fashion/future_fashion_type = future_fashion
+		future_fashion_selection[initial(future_fashion_type.name)] = future_fashion_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(future_fashion_selection, /proc/cmp_text_asc))
 
 /datum/gear/uniform/suit/permit
 	name = "Nudity Permit"
@@ -579,13 +607,13 @@ Swimsuits
 
 /datum/gear/uniform/swimsuits
 	name = "Swimsuits Selection"
-	path = /obj/item/storage/box/fluff/swimsuit
+	path = /obj/item/clothing/under/swimsuit
 
 /datum/gear/uniform/swimsuits/New()
 	..()
 	var/list/swimsuits = list()
-	for(var/swimsuit in typesof(/obj/item/storage/box/fluff/swimsuit))
-		var/obj/item/storage/box/fluff/swimsuit/swimsuit_type = swimsuit
+	for(var/swimsuit in typesof(/obj/item/clothing/under/swimsuit))
+		var/obj/item/clothing/under/swimsuit/swimsuit_type = swimsuit
 		swimsuits[initial(swimsuit_type.name)] = swimsuit_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(swimsuits, /proc/cmp_text_asc))
 
@@ -615,6 +643,10 @@ Swimsuits
 	name = "Highwayman Outfit"
 	path = /obj/item/clothing/under/highwayman_clothes
 
+/datum/gear/uniform/highwayman_clothes_fem
+	name = "Highwayman Outfit - Female"
+	path = /obj/item/clothing/under/highwayman_clothes_fem
+
 /datum/gear/uniform/businessskirt
 	name = "Business Skirt"
 	path = /obj/item/clothing/under/businessskirt_female
@@ -634,6 +666,10 @@ Swimsuits
 /datum/gear/uniform/saare
 	name = "SAARE Uniform"
 	path = /obj/item/clothing/under/saare
+
+/datum/gear/uniform/saare_fem
+	name = "SAARE Uniform - Female"
+	path = /obj/item/clothing/under/saare_fem
 
 /datum/gear/uniform/hawaiianpink
 	name = "Suit - Pink Hawaiian"
@@ -659,9 +695,17 @@ Swimsuits
 	name = "Tunic - Simple"
 	path = /obj/item/clothing/under/tribal_tunic
 
+/datum/gear/uniform/tribal_tunic_fem
+	name = "Tunic - Simple - Female"
+	path = /obj/item/clothing/under/tribal_tunic_fem
+
 /datum/gear/uniform/druidic_gown
 	name = "Tunic - Flowered"
 	path = /obj/item/clothing/under/druidic_gown
+
+/datum/gear/uniform/druidic_gown_fem
+	name = "Tunic - Flowered - Female"
+	path = /obj/item/clothing/under/druidic_gown_fem
 
 /datum/gear/uniform/laconic
 	name = "Laconic Field Suit"
@@ -678,3 +722,39 @@ Swimsuits
 /datum/gear/uniform/gray_smooth
 	name = "Gray Smooth Jumpsuit"
 	path = /obj/item/clothing/under/smooth_gray
+
+/datum/gear/uniform/chiming_dress
+	name = "Chiming Dress"
+	path = /obj/item/clothing/under/chiming_dress
+
+/datum/gear/uniform/waiter
+	name = "Waiter's Outfit"
+	path = /obj/item/clothing/under/waiter
+
+/datum/gear/uniform/waiter_fem
+	name = "Waiter's Outfit - Female"
+	path = /obj/item/clothing/under/waiter_fem
+
+/datum/gear/uniform/assistantformal
+	name = "Assistant's Formal Uniform"
+	path = /obj/item/clothing/under/assistantformal
+
+/datum/gear/uniform/assistantformal_fem
+	name = "Assistant's Formal Uniform - Female"
+	path = /obj/item/clothing/under/assistantformal_fem
+
+/datum/gear/uniform/cropdress
+	name = "Cropped Dress"
+	path = /obj/item/clothing/under/dress/cropdress
+
+/datum/gear/uniform/twistdress
+	name = "Twisted Dress"
+	path = /obj/item/clothing/under/dress/twistdress
+
+/datum/gear/uniform/antediluvian
+	name = "Antediluvian Corset"
+	path = /obj/item/clothing/under/antediluvian
+
+/datum/gear/uniform/hasie
+	name = "Hasie Designer Skirt/Vest"
+	path = /obj/item/clothing/under/hasie

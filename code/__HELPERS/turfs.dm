@@ -48,8 +48,7 @@
 			return locate(clearance, rand(clearance, world.maxy - clearance), Z)
 
 /proc/is_below_sound_pressure(var/turf/T)
-	var/datum/gas_mixture/environment = T ? T.return_air() : null
-	var/pressure =  environment ? environment.return_pressure() : 0
+	var/pressure =  T.return_pressure() || 0
 	if(pressure < SOUND_MINIMUM_PRESSURE)
 		return TRUE
 	return FALSE

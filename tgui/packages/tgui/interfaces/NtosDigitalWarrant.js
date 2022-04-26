@@ -16,7 +16,7 @@ export const NtosDigitalWarrant = (props, context) => {
   } = data;
 
   let body = <AllWarrants />;
-  
+
   if (warrantauth) {
     body = <ActiveWarrant />;
   }
@@ -46,10 +46,10 @@ const AllWarrants = (props, context) => {
         onClick={() => act("addwarrant")}>
         Create New Warrant
       </Button>
-      <Section level={2} title="Arrest Warrants"> 
+      <Section level={2} title="Arrest Warrants">
         <WarrantList type="arrest" />
       </Section>
-      <Section level={2} title="Search Warrants"> 
+      <Section level={2} title="Search Warrants">
         <WarrantList type="search" />
       </Section>
     </Section>

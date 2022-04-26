@@ -210,12 +210,12 @@
 	desc = "It has a picture of a gun and several warning symbols on the front."
 	icon_state = "empshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
-	starts_with = list(/obj/item/ammo_casing/a12g/emp = 8)
+	starts_with = list(/obj/item/ammo_casing/a12g/techshell/emp = 8)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
 /obj/item/storage/box/empshells/large
-	starts_with = list(/obj/item/ammo_casing/a12g/emp = 16)
+	starts_with = list(/obj/item/ammo_casing/a12g/techshell/emp = 16)
 
 /obj/item/storage/box/sniperammo
 	name = "box of 14.5mm shells"
@@ -416,6 +416,7 @@
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
 	starts_with = list(/obj/item/storage/pill_bottle = 7)
+	icon_state = "pillbox"
 
 /obj/item/storage/box/snappops
 	name = "snap pop box"
@@ -477,7 +478,91 @@
 	starts_with = list(
 		/obj/item/light/tube = 16,
 		/obj/item/light/bulb = 8
-	)
+		)
+
+//Colored Lights
+/obj/item/storage/box/lights/bulbs_colored
+	name = "box of colored bulbs"
+	icon_state = "light_color"
+	starts_with = list(
+		/obj/item/light/bulb/red = 4,
+		/obj/item/light/bulb/orange = 4,
+		/obj/item/light/bulb/yellow = 4,
+		/obj/item/light/bulb/green = 4,
+		/obj/item/light/bulb/blue = 4,
+		/obj/item/light/bulb/purple = 4
+		)
+
+/obj/item/storage/box/lights/bulbs_neon
+	name = "box of neon bulbs"
+	icon_state = "light_color"
+	storage_slots = 30
+	starts_with = list(
+		/obj/item/light/bulb/neon_pink = 6,
+		/obj/item/light/bulb/neon_blue = 6,
+		/obj/item/light/bulb/neon_green = 6,
+		/obj/item/light/bulb/neon_yellow = 6,
+		/obj/item/light/bulb/neon_white = 6
+		)
+
+/obj/item/storage/box/lights/tubes_colored
+	name = "box of colored tubes"
+	icon_state = "lighttube_color"
+	starts_with = list(
+		/obj/item/light/tube/red = 4,
+		/obj/item/light/tube/orange = 4,
+		/obj/item/light/tube/yellow = 4,
+		/obj/item/light/tube/green = 4,
+		/obj/item/light/tube/blue = 4,
+		/obj/item/light/tube/purple = 4
+		)
+
+/obj/item/storage/box/lights/tubes_neon
+	name = "box of neon tubes"
+	icon_state = "lighttube_color"
+	storage_slots = 30
+	starts_with = list(
+		/obj/item/light/tube/neon_pink = 6,
+		/obj/item/light/tube/neon_blue = 6,
+		/obj/item/light/tube/neon_green = 6,
+		/obj/item/light/tube/neon_yellow = 6,
+		/obj/item/light/tube/neon_white = 6
+		)
+
+/obj/item/storage/box/lights/mixed_colored
+	name = "box of colored lights"
+	icon_state = "lightmixed_color"
+	starts_with = list(
+		/obj/item/light/tube/red = 2,
+		/obj/item/light/tube/orange = 2,
+		/obj/item/light/tube/yellow = 2,
+		/obj/item/light/tube/green = 2,
+		/obj/item/light/tube/blue = 2,
+		/obj/item/light/tube/purple = 2,
+		/obj/item/light/bulb/red = 2,
+		/obj/item/light/bulb/orange = 2,
+		/obj/item/light/bulb/yellow = 2,
+		/obj/item/light/bulb/green = 2,
+		/obj/item/light/bulb/blue = 2,
+		/obj/item/light/bulb/purple = 2
+		)
+
+/obj/item/storage/box/lights/mixed_neon
+	name = "box of neon lights"
+	icon_state = "lightmixed_color"
+	storage_slots = 30
+	starts_with = list(
+		/obj/item/light/tube/neon_pink = 3,
+		/obj/item/light/tube/neon_blue = 3,
+		/obj/item/light/tube/neon_green = 3,
+		/obj/item/light/tube/neon_yellow = 3,
+		/obj/item/light/tube/neon_white = 3,
+		/obj/item/light/bulb/neon_pink = 3,
+		/obj/item/light/bulb/neon_blue = 3,
+		/obj/item/light/bulb/neon_green = 3,
+		/obj/item/light/bulb/neon_yellow = 3,
+		/obj/item/light/bulb/neon_white = 3
+		)
 
 /obj/item/storage/box/freezer
 	name = "portable freezer"
@@ -583,3 +668,28 @@
 
 /obj/item/storage/secure/briefcase/trashmoney
 	starts_with = list(/obj/item/spacecash/c200 = 10)
+
+/obj/item/storage/box/rainponcho
+	name = "foil raincoat pouch"
+	icon_state = "rainponcho"
+	foldable = null
+	storage_slots = 1
+	can_hold = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
+	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
+
+//Foam Darts
+/obj/item/storage/box/foamdart
+	name = "box of foam darts"
+	desc = "It has a picture of some foam darts on it."
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "foambox"
+	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	starts_with = list(/obj/item/ammo_casing/foam = 20)
+	drop_sound = 'sound/items/drop/ammobox.ogg'
+	pickup_sound = 'sound/items/pickup/ammobox.ogg'
+
+/obj/item/storage/box/foamdart/riot
+	name = "box of riot darts"
+	desc = "It has a picture of some angry looking foam darts on it."
+	icon_state = "foambox_riot"
+	starts_with = list(/obj/item/ammo_casing/foam/riot = 20)

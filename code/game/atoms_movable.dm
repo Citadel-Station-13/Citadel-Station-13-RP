@@ -25,6 +25,8 @@
 	var/movement_type = GROUND
 	/// The orbiter component of the thing we're orbiting.
 	var/datum/component/orbiter/orbiting
+	///Used for the calculate_adjacencies proc for icon smoothing.
+	var/can_be_unanchored = FALSE
 	/// Our default glide_size.
 	var/default_glide_size = 0
 
@@ -421,5 +423,35 @@
 
 	return selfimage
 
-/atom/movable/proc/get_cell()
-	return
+/atom/movable/proc/ghost_tag(text)
+	var/atom/movable/ghost_tag_container/G = locate() in vis_contents
+	if(!length(text) || !istext(text))
+		if(G)
+			qdel(G)
+		return
+	if(!G)
+		G = new(src)
+	G.master = src
+	// for the love of god macro this when we get runechat
+	G.maptext = "<center><span style=\"font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1;\">[text]</span></center>"
+	G.maptext_height = 256
+	G.maptext_width = 256
+	G.maptext_x = -128 + (world.icon_size * 0.5)
+	G.maptext_y = 32
+	G.plane = PLANE_GHOSTS
+	vis_contents += G
+	if(G.loc != src)
+		G.forceMove(src)
+	return G
+
+/atom/movable/ghost_tag_container
+	var/atom/movable/master
+
+/atom/movable/ghost_tag_container/Destroy()
+	if(istype(master))
+		master.vis_contents -= src
+		master = null
+	return ..()
+
+/atom/movable/proc/get_bullet_impact_effect_type()
+	return BULLET_IMPACT_NONE

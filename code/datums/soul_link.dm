@@ -4,6 +4,7 @@
 /mob/living
 	var/list/owned_soul_links	// Soul links we are the owner of.
 	var/list/shared_soul_links	// Soul links we are a/the sharer of.
+	var/last_blud_warn = -INFINITY
 
 /mob/living/Destroy()
 	for(var/s in owned_soul_links)

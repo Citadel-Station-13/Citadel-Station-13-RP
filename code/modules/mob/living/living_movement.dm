@@ -31,7 +31,7 @@
 		m_intent = MOVE_INTENT_RUN
 /*
 	if(hud_used && hud_used.static_inventory)
-		for(var/obj/screen/mov_intent/selector in hud_used.static_inventory)
+		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_icon()
 */
 	// nah, vorecode bad.
@@ -194,7 +194,7 @@
 	. = ..()
 	if (!istype(AM, /atom/movable) || AM.anchored)
 		//VOREStation Edit - object-specific proc for running into things
-		if(((confused || is_blind()) && stat == CONSCIOUS && prob(50) && m_intent=="run") || flying)
+		if(((confused || is_blind()) && stat == CONSCIOUS && prob(50) && m_intent=="run") || flying && !SPECIES_ADHERENT)
 			AM.stumble_into(src)
 		//VOREStation Edit End
 		/* VOREStation Removal - See above

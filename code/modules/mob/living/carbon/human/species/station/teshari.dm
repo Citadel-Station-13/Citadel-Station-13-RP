@@ -5,14 +5,14 @@
 	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \
 	hunting skills that emphasized taking out their prey without themselves getting hit."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/teshari)
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Teshari"
 
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SCHECHI
 	species_language = LANGUAGE_SCHECHI
 
-	min_age = 12
-	max_age = 45
+	max_age = 75
 
 	economic_modifier = 6
 
@@ -181,8 +181,8 @@
 		return ..()
 
 	// Is there enough air to flap against?
-	var/datum/gas_mixture/environment = landing.return_air()
-	if(!environment || environment.return_pressure() < (ONE_ATMOSPHERE * 0.75))
+	var/pressure = landing.return_pressure()
+	if(pressure < (ONE_ATMOSPHERE * 0.75))
 		if(!silent)
 			to_chat(H, SPAN_WARNING("You spread your wings to slow your fall, but the air is too thin!"))
 		return ..()

@@ -4,7 +4,7 @@
 	var/mob/living/carbon/occupant
 	var/locked
 	name = "Body Scanner"
-	icon = 'icons/obj/Cryogenic2_vr.dmi'
+	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "scanner_open"
 	density = 1
 	anchored = 1
@@ -17,11 +17,7 @@
 
 /obj/machinery/bodyscanner/Initialize(mapload, newdir)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stack/material/glass/reinforced(src, 2)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/bodyscanner/Destroy()
@@ -37,25 +33,27 @@
 		set_light(0)
 
 /obj/machinery/bodyscanner/attackby(var/obj/item/G, user as mob)
+	if(!istype(G))
+		return ..()
 	if(istype(G, /obj/item/grab))
 		var/obj/item/grab/H = G
 		if(panel_open)
-			to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
+			to_chat(user, SPAN_NOTICE("Close the maintenance panel first."))
 			return
 		if(!ismob(H.affecting))
 			return
 		if(!ishuman(H.affecting))
-			to_chat(user, "<span class='warning'>\The [src] is not designed for that organism!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] is not designed for that organism!"))
 			return
 		if(occupant)
-			to_chat(user, "<span class='notice'>\The [src] is already occupied!</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is already occupied!"))
 			return
 		if(H.affecting.has_buckled_mobs())
-			to_chat(user, span("warning", "\The [H.affecting] has other entities attached to it. Remove them first."))
+			to_chat(user, SPAN_WARNING("\The [H.affecting] has other entities attached to it. Remove them first."))
 			return
 		var/mob/M = H.affecting
 		if(M.abiotic())
-			to_chat(user, "<span class='notice'>Subject cannot have abiotic items on.</span>")
+			to_chat(user, SPAN_NOTICE("Subject cannot have abiotic items on."))
 			return
 		M.forceMove(src)
 		occupant = M
@@ -71,29 +69,29 @@
 
 /obj/machinery/bodyscanner/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
-		return 0 //not a mob
+		return FALSE //not a mob
 	if(user.incapacitated())
-		return 0 //user shouldn't be doing things
+		return FALSE //user shouldn't be doing things
 	if(O.anchored)
-		return 0 //mob is anchored???
+		return FALSE //mob is anchored???
 	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
-		return 0 //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
+		return FALSE //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
 	if(!ishuman(user) && !isrobot(user))
-		return 0 //not a borg or human
+		return FALSE //not a borg or human
 	if(panel_open)
-		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
-		return 0 //panel open
+		to_chat(user, SPAN_NOTICE("Close the maintenance panel first."))
+		return FALSE //panel open
 	if(occupant)
-		to_chat(user, "<span class='notice'>\The [src] is already occupied.</span>")
-		return 0 //occupied
+		to_chat(user, SPAN_NOTICE("\The [src] is already occupied."))
+		return FALSE //occupied
 
 	if(O.buckled)
-		return 0
+		return FALSE
 	if(O.abiotic())
-		to_chat(user, "<span class='notice'>Subject cannot have abiotic items on.</span>")
-		return 0
+		to_chat(user, SPAN_NOTICE("Subject cannot have abiotic items on."))
+		return FALSE
 	if(O.has_buckled_mobs())
-		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
+		to_chat(user, SPAN_WARNING("\The [O] has other entities attached to it. Remove them first."))
 		return
 
 	if(O == user)
@@ -103,13 +101,13 @@
 
 	O.forceMove(src)
 	occupant = O
-	update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+	update_icon() //Health display for consoles with light and such.
 	playsound(src, 'sound/machines/medbayscanner1.ogg', 50) // Beepboop you're being scanned. <3
 	add_fingerprint(user)
 
 /obj/machinery/bodyscanner/relaymove(mob/user as mob)
 	if(user.incapacitated())
-		return 0 //maybe they should be able to get out with cuffs, but whatever
+		return FALSE //maybe they should be able to get out with cuffs, but whatever
 	go_out()
 
 /obj/machinery/bodyscanner/verb/eject()
@@ -130,7 +128,7 @@
 		occupant.client.perspective = MOB_PERSPECTIVE
 	occupant.loc = src.loc
 	occupant = null
-	update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+	update_icon() //Health display for consoles with light and such.
 	return
 
 /obj/machinery/bodyscanner/ex_act(severity)
@@ -171,7 +169,7 @@
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
-	icon = 'icons/obj/Cryogenic2_vr.dmi'
+	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "scanner_terminal_off"
 	dir = 8
 	density = 1
@@ -204,9 +202,9 @@
 				var/obj/machinery/bodyscanner/C = P.connectable
 				scanner = C
 				C.console = src
-				to_chat(user, "<span class='warning'> You link the [src] to the [P.connectable]!</span>")
+				to_chat(user, SPAN_WARNING("You link the [src] to the [P.connectable]!"))
 		else
-			to_chat(user, "<span class='warning'> You store the [src] in the [P]'s buffer!</span>")
+			to_chat(user, SPAN_WARNING("You store the [src] in the [P]'s buffer!"))
 			P.connectable = src
 		return
 	else
@@ -224,7 +222,7 @@
 			icon_state = "body_scannerconsole-p"
 			stat |= NOPOWER
 	*/
-	update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+	update_icon() //Health display for consoles with light and such.
 
 /obj/machinery/body_scanconsole/ex_act(severity)
 	switch(severity)
@@ -266,11 +264,11 @@
 	if(!scanner)
 		findscanner()
 		if(!scanner)
-			to_chat(user, "<span class='notice'>Scanner not found!</span>")
+			to_chat(user, SPAN_NOTICE("Scanner not found!"))
 			return
 
 	if (scanner.panel_open)
-		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
+		to_chat(user, SPAN_NOTICE("Close the maintenance panel first."))
 		return
 
 	if(scanner)
@@ -392,7 +390,7 @@
 			for(var/obj/item/organ/I in H.internal_organs)
 				var/organData[0]
 				organData["name"] = I.name
-				if(I.status & ORGAN_ASSISTED)
+				if(I.robotic == ORGAN_ASSISTED)
 					organData["desc"] = "Assisted"
 				else if(I.robotic >= ORGAN_ROBOT)
 					organData["desc"] = "Mechanical"
@@ -427,7 +425,7 @@
 
 		if (!(printing) && printing_text)
 			printing = 1
-			visible_message("<span class='notice'>\The [src] rattles and prints out a sheet of paper.</span>")
+			visible_message(SPAN_NOTICE("\The [src] rattles and prints out a sheet of paper."))
 			playsound(src, 'sound/machines/printer.ogg', 50, 1)
 			var/obj/item/paper/P = new /obj/item/paper(loc)
 			P.info = "<CENTER><B>Body Scan - [href_list["name"]]</B></CENTER><BR>"
@@ -442,9 +440,9 @@
 		if(mirror != null)
 			var/obj/item/implant/mirror/E = mirror
 			E.post_implant(scanner.occupant)
-			visible_message("<span class='notice'>Manual backup complete.</span>")
+			visible_message(SPAN_NOTICE("Manual backup complete."))
 		else
-			visible_message("<span class='notice'>No mirror detected!</span>")
+			visible_message(SPAN_NOTICE("No mirror detected!"))
 		return
 
 
@@ -588,7 +586,7 @@
 			for(var/obj/item/organ/i in occupant.internal_organs)
 				var/mech = ""
 				var/i_dead = ""
-				if(i.status & ORGAN_ASSISTED)
+				if(i.robotic == ORGAN_ASSISTED)
 					mech = "Assisted:"
 				if(i.robotic >= ORGAN_ROBOT)
 					mech = "Mechanical:"

@@ -4,11 +4,11 @@
 /area/template_noop)
 "b" = (
 /obj/structure/girder,
-/turf/simulated/floor,
+/turf/simulated/floor/lavaland,
 /area/lavaland/idleruins)
 "c" = (
 /obj/machinery/seed_storage/xenobotany,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "f" = (
 /obj/effect/decal/remains,
@@ -16,92 +16,84 @@
 /obj/item/clothing/suit/storage/toggle/labcoat/green,
 /obj/item/clothing/head/greenbandana,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/tiled,
-/area/lavaland/idleruins)
-"g" = (
-/obj/structure/table/woodentable,
-/obj/item/paper/crumpled{
-	desc = "oil streaked note";
-	info = "Them bastards went and finally cracked 'er up, jus like I've been sayin' they would. Well t' hell with all of 'em. That girl Ariel stopped by earlier, tellin' me the survivors are tryin' to band together at th' Town Hall. Well those fools are gonna need food if they want to last more'n a day. So what does that leave me to do but stay here? Damn fools, the lot of 'em. I've got sturdy walls and plenty of soil. They can starve, like they deserve."
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "k" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "m" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt/lavaland/interior,
 /area/lavaland/idleruins)
 "n" = (
 /obj/machinery/vending/hydronutrients,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "q" = (
 /obj/structure/bed/roller,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "r" = (
 /obj/machinery/seed_extractor,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "u" = (
 /mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/surt,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "v" = (
 /obj/structure/barricade,
-/turf/simulated/floor/tiled,
-/area/lavaland/idleruins)
-"A" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "B" = (
 /obj/machinery/botany/editor,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "F" = (
 /obj/structure/reagent_dispensers/watertank/high,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "H" = (
 /obj/item/reagent_containers/spray/chemsprayer,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "I" = (
 /turf/template_noop,
 /area/lavaland/idleruins)
 "M" = (
-/turf/simulated/mineral/floor/cave,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/idleruins)
 "N" = (
 /turf/simulated/wall/wood,
 /area/lavaland/idleruins)
 "P" = (
 /obj/item/reagent_containers/spray/plantbgone,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "Q" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "R" = (
 /obj/item/reagent_containers/spray/plantbgone,
 /obj/structure/table/woodentable,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "S" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/material/knife/machete/hatchet,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"T" = (
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "U" = (
 /obj/item/seeds/killertomatoseed,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "W" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "X" = (
 /obj/structure/table/rack,
@@ -115,14 +107,14 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/analyzer/plant_analyzer,
 /obj/item/analyzer/plant_analyzer,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "Y" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/template_noop)
 "Z" = (
 /obj/machinery/botany/extractor,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 
 (1,1,1) = {"
@@ -145,16 +137,16 @@ a
 (2,1,1) = {"
 a
 a
-A
-A
+M
+M
 I
 I
 I
 I
-A
-A
-A
-A
+T
+T
+T
+T
 I
 I
 a
@@ -162,7 +154,7 @@ a
 (3,1,1) = {"
 a
 a
-A
+M
 N
 N
 N
@@ -171,15 +163,15 @@ N
 N
 N
 N
-A
-A
-A
+T
+T
+T
 a
 "}
 (4,1,1) = {"
 a
 a
-A
+M
 N
 m
 m
@@ -188,9 +180,9 @@ m
 m
 m
 N
-A
-A
-A
+T
+T
+T
 a
 "}
 (5,1,1) = {"
@@ -205,9 +197,9 @@ W
 W
 W
 N
-A
-A
-A
+T
+T
+T
 a
 "}
 (6,1,1) = {"
@@ -223,8 +215,8 @@ W
 X
 N
 N
-A
-A
+T
+T
 a
 "}
 (7,1,1) = {"
@@ -240,8 +232,8 @@ k
 W
 N
 W
-A
-A
+T
+T
 a
 "}
 (8,1,1) = {"
@@ -257,8 +249,8 @@ k
 W
 v
 W
-A
-A
+T
+T
 a
 "}
 (9,1,1) = {"
@@ -270,12 +262,12 @@ c
 W
 W
 Q
-g
+k
 v
 N
 W
-A
-A
+T
+T
 a
 "}
 (10,1,1) = {"
@@ -291,14 +283,14 @@ W
 W
 N
 N
-A
-A
+T
+T
 a
 "}
 (11,1,1) = {"
 a
 a
-A
+M
 b
 R
 H
@@ -307,15 +299,15 @@ u
 W
 U
 N
-A
-A
-A
+M
+M
+M
 a
 "}
 (12,1,1) = {"
 a
 a
-A
+M
 N
 m
 m
@@ -324,15 +316,15 @@ m
 m
 m
 N
-A
-A
-A
+M
+M
+M
 a
 "}
 (13,1,1) = {"
 a
 a
-A
+M
 N
 N
 N
@@ -341,24 +333,24 @@ N
 N
 N
 N
-A
-A
+M
+M
 M
 a
 "}
 (14,1,1) = {"
 a
 a
-A
-A
-A
+M
+M
+M
 I
 I
 I
-A
-A
-A
-A
+M
+M
+M
+M
 I
 I
 a

@@ -36,6 +36,18 @@
 	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
 	icon_state = "switchblade"
 
+/obj/item/material/butterfly/butterfly_golden
+	name = "gold-plated balisong"
+	desc = "An exquisite, gold-plated butterfly knife. The centerpiece of any aspiring knife collector's showcase."
+	icon_state = "butterflyknife_gold"
+	applies_material_colour = 0
+
+/obj/item/material/butterfly/butterfly_wooden
+	name = "wood-handled butterfly knife"
+	desc = "A concealable butterlfly knife with an ornate, wooden handle. Requires far too much care to use more than once."
+	icon_state = "butterflyknife_wooden"
+	applies_material_colour = 0
+
 /obj/item/material/butterfly/boxcutter
 	name = "box cutter"
 	desc = "A thin, inexpensive razor-blade knife designed to open cardboard boxes."
@@ -96,6 +108,21 @@
 	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
 	applies_material_colour = 1
+
+/obj/item/material/knife/stiletto
+	name = "stiletto knife"
+	desc = "A fancy-looking, thin bladed dagger designed to be stashed somewhere close to the body. Very lethal. Very illegal."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "stiletto"
+	item_state = "knife"
+	edge = 0 //Shouldn't be able to remove limbs
+	force_divisor = 0.1 //6 when hardness 60 (steel)
+	attack_verb = list("stabbed", "shanked", "punctured", "impaled", "skewered")
+	applies_material_colour = 1
+
+/obj/item/material/knife/tacknife/combatknife/bone
+	icon_state = "boneknife"
+	default_material = "bone"
 
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
@@ -168,7 +195,7 @@
 			"<span class='notice'>You retract [src], folding it away with a click and a hiss.</span>",
 			"<span class='notice'>You hear a threatening click and a hiss.</span>"
 			)
-		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+		playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 	else
 		to_chat(user, "Something fucked up and the armblade got out of a module. Please report this bug.")
 		qdel(src)
@@ -182,6 +209,12 @@
 	applies_material_colour = FALSE
 	default_material = "plasteel" //VOREStation Edit
 	toolspeed = 2 // Use a real axe if you want to chop logs.
+
+/obj/item/material/knife/tacknife/survival/bone
+	name = "primitive survival knife"
+	desc = "A hunting grade survival knife with a sleek leather grip."
+	applies_material_colour =TRUE
+	default_material = "bone" //VOREStation Edit
 
 /obj/item/material/knife/machete/deluxe
 	name = "deluxe machete"
@@ -343,3 +376,61 @@
 			return
 		hide_signal = !hide_signal
 		to_chat(usr, "You set the device to [hide_signal ? "not " : ""]broadcast a signal while scanning for other signals.")
+
+// Knife Material Variants
+/obj/item/material/butterfly/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/butterfly/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/butterfly/switchblade/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/butterfly/switchblade/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/butterfly/boxcutter/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/butterfly/boxcutter/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/tacknife/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/knife/tacknife/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/tacknife/combatknife/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/knife/tacknife/combatknife/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/hook/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/knife/hook/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/ritual/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/knife/ritual/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/butch/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/knife/butch/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/machete/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/machete/deluxe/durasteel
+	default_material = "durasteel"
+
+/obj/item/material/knife/tacknife/survival/durasteel
+	default_material = "durasteel"

@@ -39,6 +39,11 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
+	hide_amount = 4
+	hide_type = /obj/item/stack/hairlesshide
+	exotic_amount = 3
+	exotic_type = /obj/item/stack/sinew
+
 // Strong Variant
 /mob/living/simple_mob/creature/strong
 	maxHealth = 160

@@ -12,6 +12,7 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
 	projectile_type = /obj/item/projectile/beam/midlaser
+	heavy = TRUE
 	one_handed_penalty = 30
 
 	firemodes = list(
@@ -60,6 +61,10 @@
 	icon_state = "retro"
 	cell_type = null
 
+/obj/item/gun/energy/retro/apidean
+	name = "apidean retro laser"
+	icon_state = "apilaser"
+	desc = "An older model of the basic lasergun. This version's casing has been painted yellow. Originating from, and carried by, Apidean combatants, it's unclear where they obtained them."
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_pistol
 	name = "Precursor Alpha Weapon - Appendageheld Laser"
@@ -131,6 +136,7 @@
 	battery_lock = 1
 	fire_delay = 20
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	one_handed_penalty = 90 // The thing's heavy and huge.
 	accuracy = 75
 	charge_cost = 600
@@ -151,6 +157,7 @@
 	desc = "A high-power laser gun capable of expelling concentrated xray blasts, which are able to penetrate matter easier than \
 	standard photonic beams, resulting in an effective 'anti-armor' energy weapon."
 	icon_state = "xray"
+	heavy = TRUE
 	item_state = "xray"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
 	projectile_type = /obj/item/projectile/beam/xray
@@ -170,6 +177,7 @@
 	charge_cost = 600
 	fire_delay = 35
 	force = 10
+	heavy = TRUE
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	accuracy = 25 //shooting at the hip
 	scoped_accuracy = 80
@@ -204,6 +212,7 @@
 	charge_cost = 1300
 	fire_delay = 20
 	force = 8
+	heavy = TRUE
 	w_class = ITEMSIZE_LARGE
 	accuracy = 70
 	scoped_accuracy = 95
@@ -262,7 +271,7 @@
 	icon_state = "scatter"
 	desc = "A strange Almachi weapon, utilizing a refracting prism to turn a single laser blast into a diverging cluster."
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 1, TECH_MATERIAL = 4)
-
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/scatter/laser
 
 // Other laser guns.
@@ -273,6 +282,7 @@
 	icon_state = "tommylas"
 	item_state = "tommylas"
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	slot_flags = SLOT_BACK
 	charge_cost = 60 // 40 shots, lay down the firepower
 	projectile_type = /obj/item/projectile/beam/weaklaser

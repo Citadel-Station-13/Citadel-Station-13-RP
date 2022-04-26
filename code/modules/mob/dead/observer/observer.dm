@@ -99,8 +99,6 @@
 	plane = PLANE_GHOSTS //Why doesn't the var above work...???
 	verbs += /mob/observer/dead/proc/dead_tele
 
-	stat = DEAD
-
 	var/turf/T
 	if(ismob(body))
 		T = get_turf(body)				//Where is the body located?
@@ -110,7 +108,11 @@
 			var/mob/living/carbon/human/H = body
 			icon = H.icon
 			icon_state = H.icon_state
-			add_overlay(H.overlays_standing) //All our equipment sprites
+			if(H.overlays_standing)
+				for(var/i in 1 to length(H.overlays_standing))
+					if(!H.overlays_standing[i])
+						continue
+					add_overlay(H.overlays_standing[i])
 		else
 			icon = body.icon
 			icon_state = body.icon_state
@@ -134,6 +136,12 @@
 		T = pick(latejoin)			//Safety in case we cannot find the body's position
 	forceMove(T)
 
+	for(var/v in GLOB.active_alternate_appearances)
+		if(!v)
+			continue
+		var/datum/atom_hud/alternate_appearance/AA = v
+		AA.onNewMob(src)
+
 	if(!name)							//To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 	real_name = name
@@ -156,6 +164,11 @@
 /mob/observer/dead/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	return TRUE
+
+/mob/observer/dead/set_stat(var/new_stat)
+	if(new_stat != DEAD)
+		CRASH("It is best if observers stay dead, thank you.")
+
 /*
 Transfer_mind is there to check if mob is being deleted/not going to have a body.
 Works together with spawning an observer, noted above.
@@ -282,8 +295,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Toggles Medical HUD allowing you to see how everyone is doing"
 
 	medHUD = !medHUD
-	plane_holder.set_vis(VIS_CH_HEALTH, medHUD)
-	plane_holder.set_vis(VIS_CH_STATUS_OOC, medHUD)
+	if(medHUD)
+		get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(src)
+	else
+		get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(src)
 	to_chat(src,"<font color=#4F49AF><B>Medical HUD [medHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/verb/toggle_antagHUD()
@@ -306,7 +321,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		has_enabled_antagHUD = TRUE
 
 	antagHUD = !antagHUD
-	plane_holder.set_vis(VIS_CH_SPECIAL, antagHUD)
+	var/datum/atom_hud/H = GLOB.huds[ANTAG_HUD]
+	if(antagHUD)
+		H.add_hud_to(src)
+	else
+		H.remove_hud_from(src)
 	to_chat(src,"<font color=#4F49AF><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/proc/dead_tele(var/area/A in GLOB.sortedAreas)
@@ -689,7 +708,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	plane_holder.set_vis(VIS_FULLBRIGHT, !seedarkness) //Inversion, because "not seeing" the darkness is "seeing" the lighting plane master.
 	plane_holder.set_vis(VIS_GHOSTS, ghostvision)
 
-mob/observer/dead/MayRespawn(var/feedback = 0)
+/mob/observer/dead/MayRespawn(var/feedback = 0)
 	if(!client)
 		return 0
 	if(mind && mind.current && mind.current.stat != DEAD && can_reenter_corpse)

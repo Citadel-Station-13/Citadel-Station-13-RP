@@ -42,7 +42,7 @@
 	if(LAZYLEN(map_z))
 		return // We're already set up!
 	for(var/i = 0 to multiz)
-		world.increment_max_z()
+		SSmapping.add_new_zlevel("[src] transit [i+1]", list())
 		map_z += world.maxz
 
 	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), world.maxz)

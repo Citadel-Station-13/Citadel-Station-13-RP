@@ -1,4 +1,15 @@
 /mob/living/carbon/human
+	hud_possible = list(
+		LIFE_HUD,
+		STATUS_HUD,
+		ID_HUD,
+		WANTED_HUD,
+		IMPLOYAL_HUD,
+		IMPTRACK_HUD,
+		IMPCHEM_HUD,
+		ANTAG_HUD
+	)
+
 	//Hair colour and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -76,6 +87,8 @@
 	var/g_synth							//Same as above
 	var/b_synth							//Same as above
 	var/synth_markings = 0				//Enables/disables markings on synth parts.
+	var/s_base							//For adherent coloring....
+
 
 	//var/size_multiplier = 1 //multiplier for the mob's icon size //VOREStation Edit (Moved to /mob/living)
 	var/damage_multiplier = 1 //multiplies melee combat damage
@@ -122,7 +135,7 @@
 
 	var/voice = ""	//Instead of new say code calling GetVoice() over and over and over, we're just going to ask this variable, which gets updated in Life()
 
-	var/miming = null //Toggle for the mime's abilities.
+	//var/miming = null //Toggle for the mime's abilities.
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 
 	var/last_dam = -1	//Used for determining if we need to process all organs or just some or even none.
