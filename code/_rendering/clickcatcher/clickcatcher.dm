@@ -50,7 +50,7 @@
 	if(!scr_loc || !origin)
 		return null
 	var/tX = splittext(scr_loc, ",")
-	var/tY = splittext(tX[2], ":")w
+	var/tY = splittext(tX[2], ":")
 	var/tZ = origin.z
 	tY = tY[1]
 	tX = splittext(tX[1], ":")
