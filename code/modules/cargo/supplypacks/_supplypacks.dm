@@ -133,23 +133,17 @@ var/list/all_supply_groups = list("Atmospherics",
 /datum/supply_pack/proc/get_html_manifest(atom/movable/container)
 	RETURN_TYPE(/list)
 	var/list/lines = list()
-	to_chat(world, "[__FILE__] [__LINE__]")
 	lines += "Contents:<br>"
 	lines += "<ul>"
-	to_chat(world, "[__FILE__] [__LINE__]")
 	for(var/path in contains)
-		to_chat(world, "[__FILE__] [__LINE__]")
 		var/amount = contains[path] || 1
-		to_chat(world, "[__FILE__] [__LINE__]")
 		var/atom/movable/AM = path
-		to_chat(world, "[__FILE__] [__LINE__]")
 		var/name = initial(AM.name)
-		to_chat(world, "[__FILE__] [__LINE__]")
 		lines += "<li>[amount > 1? "[amount] [name](s)" : "[name]"]</li>"
-		to_chat(world, "[__FILE__] [__LINE__]")
 	lines += "</ul>"
-	to_chat(world, "[__FILE__] [__LINE__]")
 	return lines
+
+	// ^\s+to_chat\(world\s*,\s*"[a-zA-Z0-9 .\[\]_]*"\)\n
 
 /**
  * returns if we're random. if we are, return number of items.
