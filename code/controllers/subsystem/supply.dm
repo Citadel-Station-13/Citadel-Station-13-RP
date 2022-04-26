@@ -191,20 +191,17 @@ SUBSYSTEM_DEF(supply)
 	var/list/clear_turfs = get_clear_turfs()
 
 	for(var/datum/supply_order/SO in shoppinglist)
-		if(!clear_turfs.len)
+		// if there's no space left don't cram in the rest
+		var/turf/T = pick_n_take(clear_turfs)
+		if(!T)
 			break
-
-		var/i = rand(1,clear_turfs.len)
-		var/turf/pickedloc = clear_turfs[i]
-		clear_turfs.Cut(i,i+1)
 
 		SO.status = SUP_ORDER_SHIPPED
 		var/datum/supply_pack/SP = SO.object
 
-		var/atom/movable/container = SP.Instantiate(pickedloc)
+		var/atom/movable/container = SP.Instantiate(T)
 		if(SO.comment)
 			container.name += " [SO.comment]"
-
 
 		// Supply manifest generation begin
 		var/obj/item/paper/manifest/slip

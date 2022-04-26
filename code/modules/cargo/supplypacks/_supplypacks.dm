@@ -105,7 +105,7 @@ var/list/all_supply_groups = list("Atmospherics",
  */
 /datum/supply_pack/proc/SpawnContents(atom/loc)
 	var/list/to_spawn = preprocess_contents_list()
-	if(LAZYLEN(to_spawn))
+	if(!LAZYLEN(to_spawn))
 		return
 	var/safety = 500
 	for(var/path in to_spawn)
