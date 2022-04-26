@@ -83,11 +83,11 @@ var/list/all_supply_groups = list("Atmospherics",
 		if(access)
 			if(isnum(access))
 				O.req_access = list(access)
-			else if(islist(access) && SP.one_access)
+			else if(islist(access) && one_access)
 				var/list/L = access	// Access var is a plain var, we need a list
 				O.req_one_access = L.Copy()
-				Oo.req_access = null
-			else if(islist(access) && !SP.one_access)
+				O.req_access = null
+			else if(islist(access) && !one_access)
 				var/list/L = access
 				O.req_access = L.Copy()
 			else
@@ -97,18 +97,19 @@ var/list/all_supply_groups = list("Atmospherics",
  * spawn an object of a certain type
  */
 /datum/supply_pack/proc/InstanceObject(path, atom/loc, ...)
-	RETURN_TYPE(/atom/movbale)
+	RETURN_TYPE(/atom/movable)
 	return new path(arglist(args.Copy(2)))
 
 /**
  * spawwns our contents into a container. if you need special behavior like randomization, besure to modify default manifest too!
  */
 /datum/supply_pack/SpawnContents(atom/loc)
-	if(!contained)
+	var/list/to_spawn = preprocess_contents_list()
+	if(LAZYLEN(to_spawn))
 		return
 	var/safety = 500
-	for(var/path in preprocess_contents_list())
-		var/amount = contained[path] || 1
+	for(var/path in to_spawn)
+		var/amount = to_spawn[path] || 1
 		for(var/i in 1 to amount)
 			if(!--safety)
 				// adminproofing
@@ -142,9 +143,34 @@ var/list/all_supply_groups = list("Atmospherics",
 	return lines
 
 /**
+ * returns if we're random. if we are, return number of items.
+ * required for old nanoui
+ * this proc's existence, as well as hardcoded ui data for packs, really makes me hate life
+ * but i'm not doing nanoui/tgui conversion today.
+ */
+/datum/supply_pack/proc/is_random()
+	return FALSE
+
+/**
+ * gets a list of things to show on nanoui
+ * god, i hate nanoui
+ * burn this proc and is_random() with fire at some point, please.
+ */
+/datum/supply_pack/proc/flattened_nanoui_manifest()
+	. = list()
+	for(var/path in contains)
+		var/amount = contains[path] || 1
+		var/atom/movable/AM = path
+		var/name = initial(AM.name)
+		. += "[amount > 1? "[amount] [name](s)" : "[name]"]"
+
+/**
  * randomized supplypacks
  * only x items can be ever spawned
  * weighting is equal - the list of typepaths normally spawned is treated as pick-and-take-one-of.
+ *
+ * maybe we should roll this into default functionality
+ * question for another day, not like we aren't modular enough with this system now to do it easily.
  */
 /datum/supply_pack/randomised
 	/// how many of our items at random to spawn
@@ -180,3 +206,6 @@ var/list/all_supply_groups = list("Atmospherics",
 			.[path]++
 		else
 			.[path] = 1
+
+/datum/supply_pack/randomised/is_random()
+	return num_contained

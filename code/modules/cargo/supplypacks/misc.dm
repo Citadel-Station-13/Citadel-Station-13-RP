@@ -144,7 +144,8 @@
 	container_name = "Glucose Hypo Crate"
 
 /datum/supply_pack/misc/mre_rations
-	num_contained = 6
+	// num_contained = 6		i'm just commenting this out because whoever made this should have looked and seen that this doesn't work for non randomized crates
+	// screw you for causing me a compile error
 	name = "Emergency - MREs"
 	contains = list(/obj/item/storage/mre,
 					/obj/item/storage/mre/menu2,
