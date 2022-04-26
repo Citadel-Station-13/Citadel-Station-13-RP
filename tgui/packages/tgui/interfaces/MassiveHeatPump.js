@@ -43,7 +43,7 @@ export const MassiveHeatPump = (props, context) => {
                 minValue={0}
                 maxValue={power_level}
                 color={last_power_draw < power_level - 5
-                ? 'good' : 'average'}>
+                  ? 'good' : 'average'}>
                 {formatPower(last_power_draw)}
               </ProgressBar>
             </LabeledList.Item>
