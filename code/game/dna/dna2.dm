@@ -103,7 +103,7 @@ var/global/list/datum/gene/dna_genes[0]
 
 	// VOREStation
 	var/custom_species
-	var/base_species = "Human"
+	var/base_species = SPECIES_HUMAN
 	var/list/species_traits = list()
 	var/blood_color = "#A10808"
 	var/custom_say

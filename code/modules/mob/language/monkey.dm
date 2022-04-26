@@ -10,7 +10,7 @@
 	machine_understands = 0
 
 /datum/language/skrell/monkey
-	name = "Neaera"
+	name = SPECIES_MONKEY_SKRELL
 	desc = "Squik squik squik."
 	key = "8"
 	syllables = list("hiss","gronk")
@@ -18,7 +18,7 @@
 	machine_understands = 0
 
 /datum/language/unathi/monkey
-	name = "Stok"
+	name = SPECIES_MONKEY_UNATHI
 	desc = "Hiss hiss hiss."
 	key = "7"
 	syllables = list("squick","croak")
@@ -26,7 +26,7 @@
 	machine_understands = 0
 
 /datum/language/tajaran/monkey
-	name = "Farwa"
+	name = SPECIES_MONKEY_TAJ
 	desc = "Meow meow meow."
 	key = "9"
 	syllables = list("meow","mew")

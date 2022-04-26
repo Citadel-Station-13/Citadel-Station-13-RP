@@ -56,7 +56,7 @@
 	if(victim && !stat)
 		if(istype(victim) && consume(victim, 20))
 			if(prob(25))
-				to_chat(src, span("notice", "You continue absorbing \the [victim]."))
+				to_chat(src, SPAN_NOTICE("You continue absorbing \the [victim]."))
 
 		else
 			var/list/feedback = list(
@@ -68,7 +68,7 @@
 				"I do not feel nourished",
 				"This subject is not food"
 				)
-			to_chat(src, span("warning", "[pick(feedback)]..."))
+			to_chat(src, SPAN_WARNING( "[pick(feedback)]..."))
 			stop_consumption()
 
 		if(victim)
@@ -92,8 +92,8 @@
 		update_icon()
 		set_AI_busy(TRUE) // Don't want the AI to interfere with eatting.
 		victim.visible_message(
-			span("danger", "\The [src] latches onto \the [victim]!"),
-			span("critical", "\The [src] latches onto you!")
+			SPAN_DANGER("\The [src] latches onto \the [victim]!"),
+			SPAN_CRITICAL("\The [src] latches onto you!")
 			)
 
 /mob/living/simple_mob/slime/xenobio/proc/stop_consumption(mob/living/L)
@@ -101,8 +101,8 @@
 		return
 	victim.unbuckle_mob()
 	victim.visible_message(
-		span("notice", "\The [src] slides off of [victim]!"),
-		span("notice", "\The [src] slides off of you!")
+		SPAN_NOTICE("\The [src] slides off of [victim]!"),
+		SPAN_NOTICE("\The [src] slides off of you!")
 		)
 	victim = null
 	update_icon()
@@ -161,7 +161,7 @@
 			victim.adjustToxLoss(damage_done * 0.4)
 			adjust_nutrition(damage_done * 5)
 			Beam(victim, icon_state = "slime_consume", time = 8)
-			to_chat(src, span("notice", "You absorb some biomaterial from \the [victim]."))
-			to_chat(victim, span("danger", "\The [src] consumes some of your flesh!"))
+			to_chat(src, SPAN_NOTICE("You absorb some biomaterial from \the [victim]."))
+			to_chat(victim, SPAN_DANGER("\The [src] consumes some of your flesh!"))
 			return TRUE
 	return FALSE

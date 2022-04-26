@@ -64,7 +64,7 @@
 
 // Normal things.
 /datum/ghost_query/promethean
-	role_name = "Promethean"
+	role_name = SPECIES_PROMETHEAN
 	question = "Someone is requesting a soul for a promethean.  Would you like to play as one?"
 	query_sound = 'sound/effects/slime_squish.ogg'
 	be_special_flag = BE_ALIEN

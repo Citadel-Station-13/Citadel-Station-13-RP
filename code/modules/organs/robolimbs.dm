@@ -89,7 +89,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	///Intensity modifier for the health GUI indicator.
 	var/health_hud_intensity = 1
 	///If it should make the torso a species
-	var/suggested_species = "Human"
+	var/suggested_species = SPECIES_HUMAN
 	///What icon_state to use for speech bubbles when talking.  Check talk.dmi for all the icons.
 	var/speech_bubble_appearance = "synthetic"
 	///Multiplier for incoming brute damage.

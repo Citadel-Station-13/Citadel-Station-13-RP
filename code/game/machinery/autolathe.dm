@@ -14,8 +14,8 @@
 	circuit = /obj/item/circuitboard/autolathe
 
 	var/static/datum/category_collection/autolathe/autolathe_recipes
-	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 0, MAT_GLASS = 0)
-	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 0, MAT_GLASS = 0)
+	var/list/stored_material =  list(MAT_STEEL = 0, MAT_GLASS = 0)
+	var/list/storage_capacity = list(MAT_STEEL = 0, MAT_GLASS = 0)
 
 	var/hacked = FALSE
 	var/disabled = FALSE
@@ -308,7 +308,7 @@
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		man_rating += M.rating
 
-	storage_capacity[DEFAULT_WALL_MATERIAL] = mb_rating  * 25000
+	storage_capacity[MAT_STEEL] = mb_rating  * 25000
 	storage_capacity[MAT_GLASS] = mb_rating  * 12500
 	build_time = 50 / man_rating
 	mat_efficiency = 1.1 - man_rating * 0.1 //Normally, price is 1.25 the amount of material, so this shouldn't go higher than 0.6. Maximum rating of parts is 5

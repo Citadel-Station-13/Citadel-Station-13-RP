@@ -21,17 +21,17 @@
 	set category = "Object"
 
 	if(busy)
-		to_chat(usr, span("warning", "\The [src] is currently scanning something."))
+		to_chat(usr, SPAN_WARNING( "\The [src] is currently scanning something."))
 		return
 	deployed = !(deployed)
 	if(deployed)
 		w_class = ITEMSIZE_NORMAL
 		icon_state = "[initial(icon_state)]"
-		to_chat(usr, span("notice", "You flip open \the [src]."))
+		to_chat(usr, SPAN_NOTICE("You flip open \the [src]."))
 	else
 		w_class = ITEMSIZE_SMALL
 		icon_state = "[initial(icon_state)]_closed"
-		to_chat(usr, span("notice", "You close \the [src]."))
+		to_chat(usr, SPAN_NOTICE("You close \the [src]."))
 
 	if (ismob(usr))
 		var/mob/M = usr
@@ -39,13 +39,13 @@
 
 /obj/item/cataloguer/compact/afterattack(atom/target, mob/user, proximity_flag)
 	if(!deployed)
-		to_chat(user, span("warning", "\The [src] is closed."))
+		to_chat(user, SPAN_WARNING( "\The [src] is closed."))
 		return
 	return ..()
 
 /obj/item/cataloguer/compact/pulse_scan(mob/user)
 	if(!deployed)
-		to_chat(user, span("warning", "\The [src] is closed."))
+		to_chat(user, SPAN_WARNING( "\The [src] is closed."))
 		return
 	return ..()
 

@@ -133,7 +133,7 @@
 		return
 	rabid = TRUE
 	my_slime.update_mood()
-	my_slime.visible_message(span("danger", "\The [src] enrages!"))
+	my_slime.visible_message(SPAN_DANGER("\The [src] enrages!"))
 
 // Called when using a pacification agent (or it's Kendrick being initalized).
 /datum/ai_holder/simple_mob/xenobio_slime/proc/pacify()

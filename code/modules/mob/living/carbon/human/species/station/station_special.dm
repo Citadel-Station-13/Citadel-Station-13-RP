@@ -16,7 +16,7 @@
 	brute_mod = 0.8		//About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod =  1.15	//As vulnerable to burn as a Tajara.
 	radiation_mod = 1.15	//To help simulate the volatility of a living 'viral' cluster.
-	base_species = "Xenochimera"
+	base_species = SPECIES_XENOCHIMERA
 	selects_bodytype = TRUE
 
 	num_alternate_languages = 5
@@ -110,14 +110,14 @@
 		)
 
 	valid_transform_species = list(
-		"Human", "Unathi", "Tajara", "Skrell",
-		"Diona", "Teshari", "Monkey","Sergal",
-		"Akula","Nevrean","Highlander Zorren",
-		"Flatland Zorren", "Vulpkanin", "Vasilissan",
-		"Rapala", "Neaera", "Stok", "Farwa", "Sobaka",
-		"Wolpin", "Saru", "Sparra", "Vox")
+		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL,
+		SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY,SPECIES_SERGAL,
+		SPECIES_AKULA,SPECIES_NEVREAN,SPECIES_ZORREN_HIGH,
+		SPECIES_ZORREN_FLAT, SPECIES_VULPKANIN, SPECIES_VASILISSAN,
+		SPECIES_RAPALA, SPECIES_MONKEY_SKRELL, SPECIES_MONKEY_UNATHI, SPECIES_MONKEY_TAJ, SPECIES_MONKEY_AKULA,
+		SPECIES_MONKEY_VULPKANIN, SPECIES_MONKEY_SERGAL, SPECIES_MONKEY_NEVREAN, SPECIES_VOX)
 
-	//primitive_form = "Farwa"
+	//primitive_form = SPECIES_MONKEY_TAJ
 
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE//Whitelisted as restricted is broken.
 	flags = NO_SCAN | NO_INFECT | NO_DEFIB //Dying as a chimera is, quite literally, a death sentence. Well, if it wasn't for their revive, that is.
@@ -726,7 +726,7 @@
 	cold_level_2 = -1
 	cold_level_3 = -1
 
-	//primitive_form = "Monkey" //I dunno. Replace this in the future.
+	//primitive_form = SPECIES_MONKEY //I dunno. Replace this in the future.
 
 	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_CAN_JOIN
@@ -773,7 +773,7 @@
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_CANILUNZT)
 	name_language = LANGUAGE_CANILUNZT
-	primitive_form = "Wolpin"
+	primitive_form = SPECIES_MONKEY_VULPKANIN
 	color_mult = 1
 
 	max_age = 200
@@ -818,7 +818,7 @@
 /////////////////////
 /datum/species/apidaen
 	name = SPECIES_APIDAEN
-	name_plural = "Apidaen"
+	name_plural = SPECIES_APIDAEN
 	icobase = 'icons/mob/human_races/r_def_apidaen.dmi'
 	deform = 'icons/mob/human_races/r_def_apidaen.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -860,7 +860,7 @@
 
 	hazard_low_pressure = 20
 
-	//primitive_form = "Monkey" //I dunno. Replace this in the future.
+	//primitive_form = SPECIES_MONKEY //I dunno. Replace this in the future.
 
 	flags = NO_MINOR_CUT
 	spawn_flags = SPECIES_CAN_JOIN
@@ -881,7 +881,7 @@
 		O_EYES =     /obj/item/organ/internal/eyes,
 		O_STOMACH =	 /obj/item/organ/internal/stomach,
 		O_INTESTINE =/obj/item/organ/internal/intestine,
-		H_STOMACH =  /obj/item/organ/internal/honey_stomach
+		O_HONEYSTOMACH =  /obj/item/organ/internal/honey_stomach
 		)
 
 //Did you know it's actually called a honey stomach? I didn't!
@@ -890,7 +890,7 @@
 	icon_state = "innards"
 	name = "honey stomach"
 	desc = "A squishy enzymatic processor that turns airborne pollen into nectar."
-	organ_tag = H_STOMACH
+	organ_tag = O_HONEYSTOMACH
 	var/generated_reagents = list("honey" = 5)
 	var/usable_volume = 50
 	var/transfer_amount = 50

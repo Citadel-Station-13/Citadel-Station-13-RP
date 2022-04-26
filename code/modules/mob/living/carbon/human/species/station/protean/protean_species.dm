@@ -227,7 +227,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	if(refactory && !(refactory.status & ORGAN_DEAD) && refactory.processingbuffs)
 
 		//Steel adds regen
-		if(protean_requires_healing(H) && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
+		if(protean_requires_healing(H) && refactory.get_stored_material(MAT_STEEL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
 			H.add_modifier(/datum/modifier/protean/steel, origin = refactory)
 
 		//MHydrogen adds speeeeeed
@@ -253,7 +253,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 /datum/species/protean/Stat(var/mob/living/carbon/human/H)
 	..()
-	if(statpanel("Protean"))
+	if(statpanel(SPECIES_PROTEAN))
 		var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
 		if(refactory && !(refactory.status & ORGAN_DEAD))
 			stat(null, "- -- --- Refactory Metal Storage --- -- -")
@@ -273,7 +273,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/modifier/protean
 	stacks = MODIFIER_STACK_FORBID
 	var/material_use = METAL_PER_TICK
-	var/material_name = DEFAULT_WALL_MATERIAL
+	var/material_name = MAT_STEEL
 
 /datum/modifier/protean/on_applied()
 	. = ..()
