@@ -47,10 +47,10 @@
 
 /atom/movable/screen/click_catcher/proc/Parse(scr_loc, turf/origin, client/C)
 	// screen-loc: Pixel coordinates in screen_loc format ("[tile_x]:[pixel_x],[tile_y]:[pixel_y]")
-	if(!scr_loc)
+	if(!scr_loc || !origin)
 		return null
 	var/tX = splittext(scr_loc, ",")
-	var/tY = splittext(tX[2], ":")
+	var/tY = splittext(tX[2], ":")w
 	var/tZ = origin.z
 	tY = tY[1]
 	tX = splittext(tX[1], ":")
