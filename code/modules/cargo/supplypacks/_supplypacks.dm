@@ -131,6 +131,7 @@ var/list/all_supply_groups = list("Atmospherics",
  * argument is provided for container incase you want to modify based on what actually spawned
  */
 /datum/supply_pack/proc/get_html_manifest(atom/movable/container)
+	RETURN_TYPE(/list)
 	var/list/lines = list()
 	lines += "Contents:<br>"
 	lines += "<ul>"
