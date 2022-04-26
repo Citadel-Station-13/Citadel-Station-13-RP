@@ -201,60 +201,9 @@ SUBSYSTEM_DEF(supply)
 		SO.status = SUP_ORDER_SHIPPED
 		var/datum/supply_pack/SP = SO.object
 
-		var/obj/A = new SP.containertype(pickedloc)
-		A.name = "[SP.containername] [SO.comment ? "([SO.comment])":"" ]"
-
-		// Supply manifest generation begin
-		var/obj/item/paper/manifest/slip
-		if(!SP.contraband)
-			slip = new /obj/item/paper/manifest(A)
-			slip.is_copy = 0
-			slip.info = "<h3>[command_name()] Shipping Manifest</h3><hr><br>"
-			slip.info +="Order #[SO.ordernum]<br>"
-			slip.info +="Destination: [station_name()]<br>"
-			slip.info +="[orderedamount] PACKAGES IN THIS SHIPMENT<br>"
-			slip.info +="CONTENTS:<br><ul>"
-
-		// Spawn the stuff, finish generating the manifest while you're at it
-		if(SP.access)
-			if(isnum(SP.access))
-				A.req_access = list(SP.access)
-			else if(islist(SP.access) && SP.one_access)
-				var/list/L = SP.access	// Access var is a plain var, we need a list
-				A.req_one_access = L.Copy()
-				A.req_access = null
-			else if(islist(SP.access) && !SP.one_access)
-				var/list/L = SP.access
-				A.req_access = L.Copy()
-			else
-				log_debug("<span class='danger'>Supply pack with invalid access restriction [SP.access] encountered!</span>")
-
-		var/list/contains
-		if(istype(SP,/datum/supply_pack/randomised))
-			var/datum/supply_pack/randomised/SPR = SP
-			contains = list()
-			if(SPR.contains.len)
-				for(var/j=1,j<=SPR.num_contained,j++)
-					contains += pick(SPR.contains)
-		else
-			contains = SP.contains
-
-		for(var/typepath in contains)
-			if(!typepath)
-				continue
-
-			var/number_of_items = max(1, contains[typepath])
-			for(var/j = 1 to number_of_items)
-				var/atom/B2 = new typepath(A)
-				if(slip)
-					slip.info += "<li>[B2.name]</li>"	// Add the item to the manifest
-
-		// Manifest finalisation
-		if(slip)
-			slip.info += "</ul><br>"
-			slip.info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"
-
-	return
+		var/atom/movable/container = SP.Instantiate(pickedloc)
+		if(SO.comment)
+			container.name += " [SO.comment]"
 
 // Will attempt to purchase the specified order, returning TRUE on success, FALSE on failure
 /datum/controller/subsystem/supply/proc/approve_order(var/datum/supply_order/O, var/mob/user)

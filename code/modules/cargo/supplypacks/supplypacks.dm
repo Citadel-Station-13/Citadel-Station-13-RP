@@ -14,7 +14,6 @@
 //NEW NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 //NOTE NOTE: Hidden var is now deprecated, whoever removed support for it should've removed the var altogether
 
-//var/list/all_supply_groups = list("Operations","Security","Hospitality","Engineering","Atmospherics","Medical","Reagents","Reagent Cartridges","Science","Hydroponics", "Supply", "Miscellaneous")
 var/list/all_supply_groups = list("Atmospherics",
 								  "Costumes",
 								  "Engineering",
@@ -38,8 +37,17 @@ var/list/all_supply_groups = list("Atmospherics",
 	var/list/contains = list() // Typepaths, used to actually spawn the contents
 	var/list/manifest = list() // Object names, used to compile manifests
 	var/cost = null
-	var/containertype = null
-	var/containername = null
+
+	// the container
+	/// the type of the containier we spawn at - our contained objects will spawn in this.
+	var/container_type = /obj/structure/closet/crate/plastic
+	/// the name to set on our container, if any
+	var/container_name
+	/// the desc to set on our container, if any
+	var/container_desc
+
+	// the contained
+
 	var/access = null
 	var/one_access = FALSE
 	var/contraband = 0
@@ -66,3 +74,93 @@ var/list/all_supply_groups = list("Atmospherics",
 // Keeping this subtype here for posterity, so it's more apparent that this is the subtype to use if making new randomised packs
 /datum/supply_pack/randomised
 	num_contained = 1
+
+/**
+ * instance the supply pack at a location. returns the container used.
+ */
+/datum/supply_pack/proc/Instantiate(atom/loc)
+	RETURN_TYPE(/atom/movable)
+	. = InstanceContainer(loc)
+	SetupContainer(.)
+	SpawnContents(.)
+
+
+
+/**
+ * creates our container
+ */
+/datum/supply_pack/proc/InstanceContainer(atom/loc)
+	RETURN_TYPE(/atom/movable)
+	return new container_type(loc)
+
+/**
+ * sets up our container, happens before objects are spawned
+ */
+/datum/supply_pack/proc/SetupContainer(atom/movable/container)
+	if(container_name)
+		container.name = container_name
+	if(container_desc)
+		container.desc = container_desc
+	if(isobj(container))
+		var/obj/O = container
+		// only objs have the concept of access
+		if(access)
+			if(isnum(access))
+				O.req_access = list(access)
+			else if(islist(access) && SP.one_access)
+				var/list/L = access	// Access var is a plain var, we need a list
+				O.req_one_access = L.Copy()
+				Oo.req_access = null
+			else if(islist(access) && !SP.one_access)
+				var/list/L = access
+				O.req_access = L.Copy()
+			else
+				log_debug("<span class='danger'>Supply pack with invalid access restriction [access] encountered!</span>")
+
+/**
+ * spawn an object of a certain type
+ */
+/datum/supply_pack/proc/InstanceObject(path, atom/loc, ...)
+	RETURN_TYPE(/atom/movbale)
+	return new path(arglist(args.Copy(2)))
+
+
+
+
+		// Supply manifest generation begin
+		var/obj/item/paper/manifest/slip
+		if(!SP.contraband)
+			slip = new /obj/item/paper/manifest(A)
+			slip.is_copy = 0
+			slip.info = "<h3>[command_name()] Shipping Manifest</h3><hr><br>"
+			slip.info +="Order #[SO.ordernum]<br>"
+			slip.info +="Destination: [station_name()]<br>"
+			slip.info +="[orderedamount] PACKAGES IN THIS SHIPMENT<br>"
+			slip.info +="CONTENTS:<br><ul>"
+
+		// Spawn the stuff, finish generating the manifest while you're at it
+
+		var/list/contains
+		if(istype(SP,/datum/supply_pack/randomised))
+			var/datum/supply_pack/randomised/SPR = SP
+			contains = list()
+			if(SPR.contains.len)
+				for(var/j=1,j<=SPR.num_contained,j++)
+					contains += pick(SPR.contains)
+		else
+			contains = SP.contains
+
+		for(var/typepath in contains)
+			if(!typepath)
+				continue
+
+			var/number_of_items = max(1, contains[typepath])
+			for(var/j = 1 to number_of_items)
+				var/atom/B2 = new typepath(A)
+				if(slip)
+					slip.info += "<li>[B2.name]</li>"	// Add the item to the manifest
+
+		// Manifest finalisation
+		if(slip)
+			slip.info += "</ul><br>"
+			slip.info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"

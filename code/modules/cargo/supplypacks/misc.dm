@@ -18,8 +18,8 @@
 			)
 	name = "Trading Card Crate"
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "cards crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "cards crate"
 
 /datum/supply_pack/randomised/misc/dnd
 	num_contained = 4
@@ -34,8 +34,8 @@
 			)
 	name = "Miniatures Crate"
 	cost = 200
-	containertype = /obj/structure/closet/crate
-	containername = "Miniature Crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Miniature Crate"
 
 /datum/supply_pack/randomised/misc/plushies
 	num_contained = 5
@@ -76,15 +76,15 @@
 			)
 	name = "Plushies Crate"
 	cost = 15
-	containertype = /obj/structure/closet/crate
-	containername = "Plushies Crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Plushies Crate"
 
 /datum/supply_pack/misc/eftpos
 	contains = list(/obj/item/eftpos)
 	name = "EFTPOS scanner"
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "EFTPOS crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "EFTPOS crate"
 
 /datum/supply_pack/misc/chaplaingear
 	name = "Chaplain equipment"
@@ -101,15 +101,15 @@
 			/obj/item/storage/fancy/candle_box = 3
 			)
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "Chaplain equipment crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Chaplain equipment crate"
 
 /datum/supply_pack/misc/hoverpod
 	name = "Hoverpod Shipment"
 	contains = list()
 	cost = 80
-	containertype = /obj/structure/largecrate/hoverpod
-	containername = "Hoverpod Crate"
+	container_type = /obj/structure/largecrate/hoverpod
+	container_name = "Hoverpod Crate"
 
 /datum/supply_pack/randomised/misc/webbing
 	name = "Webbing crate"
@@ -124,15 +124,15 @@
 			/obj/item/clothing/accessory/storage/webbing
 			)
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "Webbing crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Webbing crate"
 
 /datum/supply_pack/misc/holoplant
 	name = "Holoplant Pot"
 	contains = list(/obj/machinery/holoplant/shipped)
 	cost = 15
-	containertype = /obj/structure/closet/crate
-	containername = "Holoplant crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Holoplant crate"
 
 /datum/supply_pack/misc/glucose_hypos
 	name = "Glucose Hypoinjectors"
@@ -140,8 +140,8 @@
 			/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5
 			)
 	cost = 25
-	containertype = /obj/structure/closet/crate
-	containername = "Glucose Hypo Crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Glucose Hypo Crate"
 
 /datum/supply_pack/misc/mre_rations
 	num_contained = 6
@@ -157,8 +157,8 @@
 					/obj/item/storage/mre/menu9,
 					/obj/item/storage/mre/menu10)
 	cost = 50
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "ready to eat rations"
+	container_type = /obj/structure/closet/crate/freezer
+	container_name = "ready to eat rations"
 
 /datum/supply_pack/misc/paste_rations
 	name = "Emergency - Paste"
@@ -166,8 +166,8 @@
 			/obj/item/storage/mre/menu11 = 2
 			)
 	cost = 25
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "emergency rations"
+	container_type = /obj/structure/closet/crate/freezer
+	container_name = "emergency rations"
 
 /datum/supply_pack/misc/medical_rations
 	name = "Emergency - VitaPaste"
@@ -175,8 +175,8 @@
 			/obj/item/storage/mre/menu13 = 2
 			)
 	cost = 40
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "emergency rations"
+	container_type = /obj/structure/closet/crate/freezer
+	container_name = "emergency rations"
 
 /datum/supply_pack/misc/beltminer
 	name = "Belt-miner gear crate"
@@ -188,8 +188,8 @@
 			/obj/item/storage/box/traumainjectors = 1
 			)
 	cost = 50
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "Belt-miner gear crate"
+	container_type = /obj/structure/closet/crate/secure/gear
+	container_name = "Belt-miner gear crate"
 	access = access_mining
 
 /datum/supply_pack/misc/eva_rig
@@ -198,8 +198,8 @@
 			/obj/item/rig/eva = 1
 			)
 	cost = 150
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "eva hardsuit crate"
+	container_type = /obj/structure/closet/crate/secure/gear
+	container_name = "eva hardsuit crate"
 	access = list(access_mining,
 				  access_eva,
 				  access_explorer,
@@ -212,8 +212,8 @@
 			/obj/item/rig/industrial = 1
 			)
 	cost = 150
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "industrial hardsuit crate"
+	container_type = /obj/structure/closet/crate/secure/gear
+	container_name = "industrial hardsuit crate"
 	access = list(access_mining,
 				  access_eva)
 	one_access = TRUE
@@ -224,8 +224,8 @@
 			/obj/item/rig/medical = 1
 			)
 	cost = 150
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "medical hardsuit crate"
+	container_type = /obj/structure/closet/crate/secure/gear
+	container_name = "medical hardsuit crate"
 	access = access_medical
 
 /datum/supply_pack/misc/phoronoid
@@ -237,7 +237,7 @@
 	/obj/item/tank/vox = 3,
 	)
 	cost = 40
-	containername = "spare phoronoid suits"
+	container_name = "spare phoronoid suits"
 
 /datum/supply_pack/misc/security_rig
 	name = "hazard hardsuit (empty)"
@@ -245,8 +245,8 @@
 			/obj/item/rig/hazard = 1
 			)
 	cost = 150
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "hazard hardsuit crate"
+	container_type = /obj/structure/closet/crate/secure/gear
+	container_name = "hazard hardsuit crate"
 	access = access_armory
 
 /datum/supply_pack/misc/science_rig
@@ -255,8 +255,8 @@
 			/obj/item/rig/hazmat = 1
 			)
 	cost = 150
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "ami hardsuit crate"
+	container_type = /obj/structure/closet/crate/secure/gear
+	container_name = "ami hardsuit crate"
 	access = access_rd
 
 /datum/supply_pack/misc/ce_rig
@@ -265,8 +265,8 @@
 			/obj/item/rig/ce = 1
 			)
 	cost = 150
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "advanced voidsuit crate"
+	container_type = /obj/structure/closet/crate/secure/gear
+	container_name = "advanced voidsuit crate"
 	access = access_ce
 
 /datum/supply_pack/misc/skatepack1
@@ -276,8 +276,8 @@
 			/obj/item/clothing/head/helmet/bike_helmet/random = 3
 			)
 	cost = 100
-	containertype = /obj/structure/closet/crate
-	containername = "Skateboard Crate - Beginner"
+	container_type = /obj/structure/closet/crate
+	container_name = "Skateboard Crate - Beginner"
 
 /datum/supply_pack/misc/skatepack2
 	name = "Professional Skateboard Pack"
@@ -286,8 +286,8 @@
 			/obj/item/clothing/head/helmet/bike_helmet/random = 2
 			)
 	cost = 200
-	containertype = /obj/structure/closet/crate
-	containername = "Skateboard Crate - Professional"
+	container_type = /obj/structure/closet/crate
+	container_name = "Skateboard Crate - Professional"
 
 /datum/supply_pack/misc/skatepack3
 	name = "Hoverboard Pack"
@@ -296,8 +296,8 @@
 			/obj/item/clothing/head/helmet/bike_helmet/random = 2
 			)
 	cost = 300
-	containertype = /obj/structure/closet/crate
-	containername = "Hoverboard Crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Hoverboard Crate"
 
 /datum/supply_pack/misc/colored_lights
 	name = "Colored Lights Bundle"
@@ -307,8 +307,8 @@
 			/obj/item/storage/box/lights/mixed_colored = 1
 			)
 	cost = 50
-	containertype = /obj/structure/closet/crate
-	containername = "Colored Lights crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Colored Lights crate"
 
 /datum/supply_pack/misc/neon_lights
 	name = "Neon Lights Bundle"
@@ -318,8 +318,8 @@
 			/obj/item/storage/box/lights/mixed_neon = 1
 			)
 	cost = 50
-	containertype = /obj/structure/closet/crate
-	containername = "Neon Lights crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Neon Lights crate"
 
 //Culture Crates
 /datum/supply_pack/misc/culture_apidean
@@ -334,8 +334,8 @@
 			/obj/item/reagent_containers/food/drinks/bottle/royaljelly = 1
 			)
 	cost = 50
-	containertype = /obj/structure/closet/crate
-	containername = "Apidean Culture crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Apidean Culture crate"
 
 /datum/supply_pack/misc/culture_tyrmalin
 	name = "Tyrmalin Culture Crate"
@@ -351,8 +351,8 @@
 			/obj/item/reagent_containers/food/drinks/bottle/greenstuff = 1
 			)
 	cost = 50
-	containertype = /obj/structure/closet/crate
-	containername = "Tyrmalin Culture crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Tyrmalin Culture crate"
 
 /datum/supply_pack/misc/culture_alraune
 	name = "Alraune Culture Crate"
@@ -362,5 +362,5 @@
 			/obj/item/reagent_containers/food/drinks/cans/alraune = 3
 			)
 	cost = 50
-	containertype = /obj/structure/closet/crate
-	containername = "Alraune Culture crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Alraune Culture crate"

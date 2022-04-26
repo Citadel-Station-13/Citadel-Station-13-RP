@@ -19,16 +19,16 @@
 			/obj/item/clothing/head/wizard/fake
 			)
 	cost = 20
-	containertype = /obj/structure/closet/crate
-	containername = "Wizard costume crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Wizard costume crate"
 
 /datum/supply_pack/costumes/techpriest
 	name = "Tech Priest robes"
 	contains = list(
 		/obj/item/clothing/suit/storage/hooded/techpriest = 2)
 	cost = 150
-	containertype = /obj/structure/closet/crate
-	containername = "Tech Priest crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Tech Priest crate"
 
 /datum/supply_pack/randomised/costumes/hats
 	num_contained = 4
@@ -56,8 +56,8 @@
 			)
 	name = "Collectable hat crate!"
 	cost = 200
-	containertype = /obj/structure/closet/crate
-	containername = "Collectable hats crate! Brought to you by Bass.inc!"
+	container_type = /obj/structure/closet/crate
+	container_name = "Collectable hats crate! Brought to you by Bass.inc!"
 
 /datum/supply_pack/randomised/costumes/costume
 	num_contained = 3
@@ -93,8 +93,8 @@
 			)
 	name = "Costumes crate"
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "Actor Costumes"
+	container_type = /obj/structure/closet/crate
+	container_name = "Actor Costumes"
 
 /datum/supply_pack/costumes/formal_wear
 	contains = list(
@@ -115,13 +115,13 @@
 			)
 	name = "Formalwear closet"
 	cost = 30
-	containertype = /obj/structure/closet
-	containername = "Formalwear for the best occasions."
+	container_type = /obj/structure/closet
+	container_name = "Formalwear for the best occasions."
 
 datum/supply_pack/costumes/witch
 	name = "Witch costume"
-	containername = "Witch costume"
-	containertype = /obj/structure/closet
+	container_name = "Witch costume"
+	container_type = /obj/structure/closet
 	cost = 20
 	contains = list(
 			/obj/item/clothing/suit/wizrobe/marisa/fake,
@@ -132,8 +132,8 @@ datum/supply_pack/costumes/witch
 
 /datum/supply_pack/randomised/costumes/costume_hats
 	name = "Costume hats"
-	containername = "Actor hats crate"
-	containertype = /obj/structure/closet/crate
+	container_name = "Actor hats crate"
+	container_type = /obj/structure/closet/crate
 	cost = 10
 	num_contained = 3
 	contains = list(
@@ -157,8 +157,8 @@ datum/supply_pack/costumes/witch
 
 /datum/supply_pack/randomised/costumes/dresses
 	name = "Womens formal dress locker"
-	containername = "Pretty dress locker"
-	containertype = /obj/structure/closet
+	container_name = "Pretty dress locker"
+	container_type = /obj/structure/closet
 	cost = 15
 	num_contained = 3
 	contains = list(
@@ -193,8 +193,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/gloves/vox
 			)
 	cost = 100
-	containertype = /obj/structure/closet/crate
-	containername = "Xenowear crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Xenowear crate"
 
 /datum/supply_pack/costumes/tesh_smocks
 	name = "Teshari smocks"
@@ -206,8 +206,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/teshari/smock/yellow
 			)
 	cost = 25
-	containertype = /obj/structure/closet/crate
-	containername = "Teshari smocks crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Teshari smocks crate"
 
 /datum/supply_pack/randomised/costumes/tesh_coats
 	name = "Teshari undercoats"
@@ -227,8 +227,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/teshari/undercoat/standard/yellow_grey
 			)
 	cost = 20
-	containertype = /obj/structure/closet/crate
-	containername = "Teshari undercoats crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Teshari undercoats crate"
 
 /datum/supply_pack/randomised/costumes/tesh_coats_b
 	name = "Teshari undercoats (black)"
@@ -247,8 +247,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/teshari/undercoat/standard/black_yellow
 			)
 	cost = 20
-	containertype = /obj/structure/closet/crate
-	containername = "Teshari undercoats crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Teshari undercoats crate"
 
 /datum/supply_pack/randomised/costumes/tesh_cloaks
 	name = "Teshari cloaks"
@@ -267,8 +267,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/yellow_grey
 			)
 	cost = 40
-	containertype = /obj/structure/closet/crate
-	containername = "Teshari cloaks crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Teshari cloaks crate"
 
 /datum/supply_pack/randomised/costumes/tesh_cloaks_b
 	name = "Teshari cloaks (black)"
@@ -287,8 +287,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/black_yellow
 			)
 	cost = 40
-	containertype = /obj/structure/closet/crate
-	containername = "Teshari cloaks crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Teshari cloaks crate"
 
 /datum/supply_pack/costumes/utility
 	name = "Utility uniforms"
@@ -298,8 +298,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/utility/grey
 			)
 	cost = 30
-	containertype = /obj/structure/closet/crate
-	containername = "Utility uniforms crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Utility uniforms crate"
 
 /datum/supply_pack/costumes/skirts
 	name = "Skirts crate"
@@ -317,8 +317,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/skirt/outfit/plaid_green
 			)
 	cost = 40
-	containertype = /obj/structure/closet/crate
-	containername = "Skirts crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Skirts crate"
 
 /datum/supply_pack/costumes/varsity
 	name = "Varsity jackets"
@@ -331,8 +331,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/suit/varsity/red
 			)
 	cost = 60
-	containertype = /obj/structure/closet/crate
-	containername = "Varsity jackets crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Varsity jackets crate"
 
 /datum/supply_pack/randomised/costumes/leathergear
 	name = "Leather gear"
@@ -362,8 +362,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/head/cowboy_hat/black
 			)
 	cost = 50
-	containertype = /obj/structure/closet/crate
-	containername = "Leather gear crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Leather gear crate"
 
 /datum/supply_pack/costumes/eyewear
 	name = "Eyewear crate"
@@ -381,8 +381,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/glasses/threedglasses
 			)
 	cost = 50
-	containertype = /obj/structure/closet/crate
-	containername = "Eyewear crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Eyewear crate"
 
 /datum/supply_pack/randomised/costumes/gloves
 	name = "Gloves crate"
@@ -405,8 +405,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/gloves/white
 			)
 	cost = 40
-	containertype = /obj/structure/closet/crate
-	containername = "Gloves crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Gloves crate"
 
 /datum/supply_pack/randomised/costumes/boots
 	name = "Boots crate"
@@ -422,8 +422,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/shoes/boots/winter
 			)
 	cost = 60
-	containertype = /obj/structure/closet/crate
-	containername = "Boots crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Boots crate"
 
 /datum/supply_pack/costumes/taurbags
 	name = "Saddlebags crate"
@@ -433,8 +433,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/storage/backpack/saddlebag_common/vest
 			)
 	cost = 60
-	containertype = /obj/structure/closet/crate
-	containername = "Saddlebags crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Saddlebags crate"
 
 /datum/supply_pack/costumes/larp
 	name = "Knight cosplay crate"
@@ -449,8 +449,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/suit/medievalfake/orange = 1
 			)
 	cost = 60
-	containertype = /obj/structure/closet/crate
-	containername = "knight cosplay crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "knight cosplay crate"
 
 /datum/supply_pack/costumes/situlavult_templar
 	name = "Templar cosplay crate"
@@ -460,8 +460,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/templar
 			)
 	cost = 15
-	containertype = /obj/structure/closet/crate
-	containername = "templar cosplay crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "templar cosplay crate"
 
 /datum/supply_pack/costumes/situlavult_hospitaller
 	name = "Hospitaller cosplay crate"
@@ -471,8 +471,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/hospitaller
 			)
 	cost = 15
-	containertype = /obj/structure/closet/crate
-	containername = "hospitaller cosplay crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "hospitaller cosplay crate"
 
 /datum/supply_pack/costumes/situlavult_teutonic
 	name = "Teutonic cosplay crate"
@@ -485,5 +485,5 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/teutonic
 			)
 	cost = 30
-	containertype = /obj/structure/closet/crate
-	containername = "teutonic cosplay crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "teutonic cosplay crate"
