@@ -190,36 +190,52 @@ SUBSYSTEM_DEF(supply)
 	var/orderedamount = shoppinglist.len
 	var/list/clear_turfs = get_clear_turfs()
 
+	to_chat(world, "[__FILE__] [__LINE__]")
 	for(var/datum/supply_order/SO in shoppinglist)
 		// if there's no space left don't cram in the rest
 		var/turf/T = pick_n_take(clear_turfs)
+		to_chat(world, "[__FILE__] [__LINE__]")
 		if(!T)
 			break
+		to_chat(world, "[__FILE__] [__LINE__]")
 
 		SO.status = SUP_ORDER_SHIPPED
 		var/datum/supply_pack/SP = SO.object
 
+		to_chat(world, "[__FILE__] [__LINE__]")
 		var/atom/movable/container = SP.Instantiate(T)
 		if(SO.comment)
 			container.name += " [SO.comment]"
+		to_chat(world, "[__FILE__] [__LINE__]")
 
 		// Supply manifest generation begin
 		var/obj/item/paper/manifest/slip
 		if(!SP.contraband)
+			to_chat(world, "[__FILE__] [__LINE__]")
 			slip = new /obj/item/paper/manifest(container)
+			to_chat(world, "[__FILE__] [__LINE__]")
 			slip.is_copy = 0
 			// save the trip to the string tree
 			var/list/info = list()
-			info = "<h3>[command_name()] Shipping Manifest</h3><hr><br>"
+			to_chat(world, "[__FILE__] [__LINE__]")
+			info += "<h3>[command_name()] Shipping Manifest</h3><hr><br>"
 			info +="Order #[SO.ordernum]<br>"
+			to_chat(world, "[__FILE__] [__LINE__]")
 			info +="Destination: [station_name()]<br>"
+			to_chat(world, "[__FILE__] [__LINE__]")
 			info +="[orderedamount] PACKAGES IN THIS SHIPMENT<br>"
+			to_chat(world, "[__FILE__] [__LINE__]")
 			info += "<hr>"
 			info += SP.get_html_manifest(container)
+			to_chat(world, "[__FILE__] [__LINE__]")
 			info += "<hr>"
 			info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS"
+			to_chat(world, "[__FILE__] [__LINE__]")
 			info += "<hr>"
+			to_chat(world, "[__FILE__] [__LINE__]")
 			slip.info += info.Join("")
+			to_chat(world, "[__FILE__] [__LINE__]")
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 // Will attempt to purchase the specified order, returning TRUE on success, FALSE on failure
 /datum/controller/subsystem/supply/proc/approve_order(var/datum/supply_order/O, var/mob/user)
