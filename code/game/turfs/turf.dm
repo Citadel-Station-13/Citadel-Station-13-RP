@@ -1,3 +1,4 @@
+/// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	icon = 'icons/turf/floors.dmi'
 	layer = TURF_LAYER
@@ -16,31 +17,52 @@
 	var/heat_capacity = 1
 
 	// Properties for both
-	var/temperature = T20C		// Initial turf temperature.
-	var/blocks_air = 0			// Does this turf contain air/let air through?
+	/// Initial turf temperature.
+	var/temperature = T20C
+	/// Does this turf contain air/let air through?
+	var/blocks_air = FALSE
 
 	var/changing_turf = FALSE
 
-	///Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
+	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null
 
 	// General properties.
 	var/icon_old = null
-	var/pathweight = 1			// How much does it cost to pathfind over this turf?
-	var/blessed = 0				// Has the turf been blessed?
+	/// How much does it cost to pathfind over this turf?
+	var/pathweight = 1
+	/// Has the turf been blessed?
+	var/blessed = FALSE
 
 	var/list/decals
 
-	var/movement_cost = 0		// How much the turf slows down movement, if any.
+	/// How much the turf slows down movement, if any.
+	var/movement_cost = 0
 
 	var/list/footstep_sounds = null
 
-	var/block_tele = FALSE			 // If true, most forms of teleporting to or from this turf tile will fail.
-	var/can_build_into_floor = FALSE // Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
-	var/list/dangerous_objects		 // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
-	var/noshield = 0				// For if you explicitly want a turf to not be affected by shield generators
+	/// If true, most forms of teleporting to or from this turf tile will fail.
+	var/block_tele = FALSE
+	/// Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
+	var/can_build_into_floor = FALSE
+	/// List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
+	var/list/dangerous_objects
+	/// For if you explicitly want a turf to not be affected by shield generators
+	var/noshield = FALSE
 
+/turf/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF(src, x), NAMEOF(src, y), NAMEOF(src, z))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
+/**
+ * Turf Initialize
+ *
+ * Doesn't call parent, see [/atom/proc/Initialize]
+ */
 /turf/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 	if(flags & INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
