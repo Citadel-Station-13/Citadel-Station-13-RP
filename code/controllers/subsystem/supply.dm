@@ -209,7 +209,7 @@ SUBSYSTEM_DEF(supply)
 		// Supply manifest generation begin
 		var/obj/item/paper/manifest/slip
 		if(!SP.contraband)
-			slip = new /obj/item/paper/manifest(A)
+			slip = new /obj/item/paper/manifest(container)
 			slip.is_copy = 0
 			// save the trip to the string tree
 			var/list/info = list()
