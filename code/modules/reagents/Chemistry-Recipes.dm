@@ -135,7 +135,7 @@
 	name = "Inaprovaline"
 	id = "inaprovaline"
 	result = "inaprovaline"
-	required_reagents = list("oxygen" = 1, "carbon" = 1, "sugar" = 1)
+	required_reagents = list("oxygen" = 1, MAT_CARBON = 1, "sugar" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/tricordrazine
@@ -159,8 +159,8 @@
 	name = "Carthatoline"
 	id = "carthatoline"
 	result = "carthatoline"
-	required_reagents = list("anti_toxin" = 1, "carbon" = 2, "phoron" = 0.1)
-	catalysts = list("phoron" = 1)
+	required_reagents = list("anti_toxin" = 1, MAT_CARBON = 2, MAT_PHORON = 0.1)
+	catalysts = list(MAT_PHORON = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/bicaridine
@@ -168,7 +168,7 @@
 	name = "Bicaridine"
 	id = "bicaridine"
 	result = "bicaridine"
-	required_reagents = list("inaprovaline" = 1, "carbon" = 1)
+	required_reagents = list("inaprovaline" = 1, MAT_CARBON = 1)
 	inhibitors = list("sugar" = 1) // Messes up with inaprovaline
 	result_amount = 2
 
@@ -177,8 +177,8 @@
 	name = "Vermicetol"
 	id = "vermicetol"
 	result = "vermicetol"
-	required_reagents = list("bicaridine" = 2, "shockchem" = 1, "phoron" = 0.1)
-	catalysts = list("phoron" = 5)
+	required_reagents = list("bicaridine" = 2, "shockchem" = 1, MAT_PHORON = 0.1)
+	catalysts = list(MAT_PHORON = 5)
 	result_amount = 3
 
 /datum/chemical_reaction/kelotane
@@ -186,7 +186,7 @@
 	name = "Kelotane"
 	id = "kelotane"
 	result = "kelotane"
-	required_reagents = list("silicon" = 1, "carbon" = 1)
+	required_reagents = list("silicon" = 1, MAT_CARBON = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/dermaline
@@ -202,8 +202,8 @@
 	name = "Dexalin"
 	id = "dexalin"
 	result = "dexalin"
-	required_reagents = list("oxygen" = 2, "phoron" = 0.1)
-	catalysts = list("phoron" = 1)
+	required_reagents = list("oxygen" = 2, MAT_PHORON = 0.1)
+	catalysts = list(MAT_PHORON = 1)
 	inhibitors = list("water" = 1) // Messes with cryox
 	result_amount = 1
 
@@ -213,7 +213,7 @@
 	name = "Dexalin Plus"
 	id = "dexalinp"
 	result = "dexalinp"
-	required_reagents = list("dexalin" = 1, "carbon" = 1, "iron" = 1)
+	required_reagents = list("dexalin" = 1, MAT_CARBON = 1, MAT_IRON = 1)
 	result_amount = 3
 
 
@@ -239,7 +239,7 @@
 	id = "oxycodone"
 	result = "oxycodone"
 	required_reagents = list("ethanol" = 1, "tramadol" = 1)
-	catalysts = list("phoron" = 5)
+	catalysts = list(MAT_PHORON = 5)
 	result_amount = 1
 
 //Radiation Treatment
@@ -268,7 +268,7 @@
 	id = "peridaxon"
 	result = "peridaxon"
 	required_reagents = list("bicaridine" = 2, "clonexadone" = 2)
-	catalysts = list("phoron" = 5)
+	catalysts = list(MAT_PHORON = 5)
 	result_amount = 2
 
 /datum/chemical_reaction/nanoperidaxon
@@ -284,8 +284,8 @@
 	name = "Osteodaxon"
 	id = "osteodaxon"
 	result = "osteodaxon"
-	required_reagents = list("bicaridine" = 2, "phoron" = 0.1, "carpotoxin" = 1)
-	catalysts = list("phoron" = 5)
+	required_reagents = list("bicaridine" = 2, MAT_PHORON = 0.1, "carpotoxin" = 1)
+	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("clonexadone" = 1) // Messes with cryox
 	result_amount = 2
 
@@ -294,8 +294,8 @@
 	name = "Respirodaxon"
 	id = "respirodaxon"
 	result = "respirodaxon"
-	required_reagents = list("dexalinp" = 2, "biomass" = 2, "phoron" = 1)
-	catalysts = list("phoron" = 5)
+	required_reagents = list("dexalinp" = 2, "biomass" = 2, MAT_PHORON = 1)
+	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("dexalin" = 1)
 	result_amount = 2
 
@@ -305,7 +305,7 @@
 	id = "gastirodaxon"
 	result = "gastirodaxon"
 	required_reagents = list("carthatoline" = 1, "biomass" = 2, "tungsten" = 2)
-	catalysts = list("phoron" = 5)
+	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("lithium" = 1)
 	result_amount = 3
 
@@ -315,7 +315,7 @@
 	id = "hepanephrodaxon"
 	result = "hepanephrodaxon"
 	required_reagents = list("carthatoline" = 2, "biomass" = 2, "lithium" = 1)
-	catalysts = list("phoron" = 5)
+	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("tungsten" = 1)
 	result_amount = 2
 
@@ -325,7 +325,7 @@
 	id = "cordradaxon"
 	result = "cordradaxon"
 	required_reagents = list("potassium_chlorophoride" = 1, "biomass" = 2, "bicaridine" = 2)
-	catalysts = list("phoron" = 5)
+	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("clonexadone" = 1)
 	result_amount = 2
 
@@ -349,7 +349,7 @@
 	name = "Citalopram"
 	id = "citalopram"
 	result = "citalopram"
-	required_reagents = list("mindbreaker" = 1, "carbon" = 1)
+	required_reagents = list("mindbreaker" = 1, MAT_CARBON = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/paroxetine
@@ -376,7 +376,7 @@
 	name = "Myelamine"
 	id = "myelamine"
 	result = "myelamine"
-	required_reagents = list("bicaridine" = 1, "iron" = 2, "spidertoxin" = 1)
+	required_reagents = list("bicaridine" = 1, MAT_IRON = 2, "spidertoxin" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/imidazoline
@@ -384,7 +384,7 @@
 	name = "imidazoline"
 	id = "imidazoline"
 	result = "imidazoline"
-	required_reagents = list("carbon" = 1, "hydrogen" = 1, "anti_toxin" = 1)
+	required_reagents = list(MAT_CARBON = 1, "hydrogen" = 1, "anti_toxin" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/rezadone
@@ -392,7 +392,7 @@
 	name = "Rezadone"
 	id = "rezadone"
 	result = "rezadone"
-	required_reagents = list("carpotoxin" = 1, "cryptobiolin" = 1, "copper" = 1)
+	required_reagents = list("carpotoxin" = 1, "cryptobiolin" = 1, MAT_COPPER = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/ryetalyn
@@ -400,7 +400,7 @@
 	name = "Ryetalyn"
 	id = "ryetalyn"
 	result = "ryetalyn"
-	required_reagents = list("arithrazine" = 1, "carbon" = 1)
+	required_reagents = list("arithrazine" = 1, MAT_CARBON = 1)
 	result_amount = 2
 
 //Immunsystem (Anti-)Boosters
@@ -417,8 +417,8 @@
 	name = "Corophizine"
 	id = "corophizine"
 	result = "corophizine"
-	required_reagents = list("spaceacillin" = 1, "carbon" = 1, "phoron" = 0.1)
-	catalysts = list("phoron" = 5)
+	required_reagents = list("spaceacillin" = 1, MAT_CARBON = 1, MAT_PHORON = 0.1)
+	catalysts = list(MAT_PHORON = 5)
 	result_amount = 2
 
 /datum/chemical_reaction/immunosuprizine
@@ -427,7 +427,7 @@
 	id = "immunosuprizine"
 	result = "immunosuprizine"
 	required_reagents = list("corophizine" = 1, "tungsten" = 1, "sacid" = 1)
-	catalysts = list("phoron" = 5)
+	catalysts = list(MAT_PHORON = 5)
 	result_amount = 2
 
 
@@ -446,8 +446,8 @@
 	name = "Clonexadone"
 	id = "clonexadone"
 	result = "clonexadone"
-	required_reagents = list("cryoxadone" = 1, "sodium" = 1, "phoron" = 0.1)
-	catalysts = list("phoron" = 5)
+	required_reagents = list("cryoxadone" = 1, "sodium" = 1, MAT_PHORON = 0.1)
+	catalysts = list(MAT_PHORON = 5)
 	result_amount = 2
 
 /datum/chemical_reaction/leporazine
@@ -455,8 +455,8 @@
 	name = "Leporazine"
 	id = "leporazine"
 	result = "leporazine"
-	required_reagents = list("silicon" = 1, "copper" = 1)
-	catalysts = list("phoron" = 5)
+	required_reagents = list("silicon" = 1, MAT_COPPER = 1)
+	catalysts = list(MAT_PHORON = 5)
 	result_amount = 2
 
 //Utility chems that are precursors, or have no direct healing properties of their own, but should be found in a medical environment
@@ -487,7 +487,7 @@
 	name = "Ethylredoxrazine"
 	id = "ethylredoxrazine"
 	result = "ethylredoxrazine"
-	required_reagents = list("oxygen" = 1, "anti_toxin" = 1, "carbon" = 1)
+	required_reagents = list("oxygen" = 1, "anti_toxin" = 1, MAT_CARBON = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/calciumcarbonate
@@ -495,7 +495,7 @@
 	name = "Calcium Carbonate"
 	id = "calciumcarbonate"
 	result = "calciumcarbonate"
-	required_reagents = list("oxygen" = 3, "calcium" = 1, "carbon" = 1)
+	required_reagents = list("oxygen" = 3, "calcium" = 1, MAT_CARBON = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/soporific
@@ -536,7 +536,7 @@
 	name = "Biomass"
 	id = "biomass"
 	result = "biomass"
-	required_reagents = list("protein" = 1, "sugar" = 1, "phoron" = 1)
+	required_reagents = list("protein" = 1, "sugar" = 1, MAT_PHORON = 1)
 	result_amount = 6	// Roughly 120u per phoron sheet
 
 
@@ -573,7 +573,7 @@
 	name = "Qerr-quem"
 	id = "qerr_quem"
 	result = "qerr_quem"
-	required_reagents = list("nicotine" = 1, "carbon" = 1, "sugar" = 2)
+	required_reagents = list("nicotine" = 1, MAT_CARBON = 1, "sugar" = 2)
 	result_amount = 4
 
 /datum/chemical_reaction/malish_qualem
@@ -581,7 +581,7 @@
 	id = "malish-qualem"
 	result = "malish-qualem"
 	required_reagents = list("immunosuprizine" = 1, "qerr_quem" = 1, "inaprovaline" = 1)
-	catalysts = list("phoron" = 5)
+	catalysts = list(MAT_PHORON = 5)
 	result_amount = 2
 
 //Vore - Medication

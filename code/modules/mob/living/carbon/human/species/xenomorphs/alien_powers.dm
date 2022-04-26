@@ -110,7 +110,7 @@
 
 	if(check_alien_ability(500))
 		visible_message("<span class='green'><B>[src] begins to twist and contort!</B></span>", "<span class='green'>You begin to evolve!</span>")
-		src.set_species("Xenomorph Queen")
+		src.set_species(SPECIES_XENO_QUEEN)
 
 	return
 

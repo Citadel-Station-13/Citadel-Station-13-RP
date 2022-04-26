@@ -55,14 +55,14 @@
 	name = "Goldschlager"
 	id = "goldschlager"
 	result = "goldschlager"
-	required_reagents = list("vodka" = 10, "gold" = 1)
+	required_reagents = list("vodka" = 10, MAT_GOLD = 1)
 	result_amount = 10
 
 /datum/chemical_reaction/drinks/patron
 	name = "Patron"
 	id = "patron"
 	result = "patron"
-	required_reagents = list("tequilla" = 10, "silver" = 1)
+	required_reagents = list("tequilla" = 10, MAT_SILVER = 1)
 	result_amount = 10
 
 /datum/chemical_reaction/drinks/bilk
@@ -90,7 +90,7 @@
 	name = "Nuclear Cola"
 	id = "nuka_cola"
 	result = "nuka_cola"
-	required_reagents = list("uranium" = 1, "cola" = 5)
+	required_reagents = list(MAT_URANIUM = 1, "cola" = 5)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/moonshine
@@ -270,14 +270,14 @@
 	name = "Toxins Special"
 	id = "phoronspecial"
 	result = "phoronspecial"
-	required_reagents = list("rum" = 2, "vermouth" = 2, "phoron" = 2)
+	required_reagents = list("rum" = 2, "vermouth" = 2, MAT_PHORON = 2)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/beepsky_smash
 	name = "Beepksy Smash"
 	id = "beepksysmash"
 	result = "beepskysmash"
-	required_reagents = list("limejuice" = 1, "whiskey" = 1, "iron" = 1)
+	required_reagents = list("limejuice" = 1, "whiskey" = 1, MAT_IRON = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/doctor_delight
@@ -326,7 +326,7 @@
 	name = "Atomic Bomb"
 	id = "atomicbomb"
 	result = "atomicbomb"
-	required_reagents = list("b52" = 10, "uranium" = 1)
+	required_reagents = list("b52" = 10, MAT_URANIUM = 1)
 	result_amount = 10
 
 /datum/chemical_reaction/drinks/margarita
@@ -354,7 +354,7 @@
 	name = "Three Mile Island Iced Tea"
 	id = "threemileisland"
 	result = "threemileisland"
-	required_reagents = list("longislandicedtea" = 10, "uranium" = 1)
+	required_reagents = list("longislandicedtea" = 10, MAT_URANIUM = 1)
 	result_amount = 10
 
 /datum/chemical_reaction/drinks/whiskeysoda
@@ -382,7 +382,7 @@
 	name = "Manhattan Project"
 	id = "manhattan_proj"
 	result = "manhattan_proj"
-	required_reagents = list("manhattan" = 10, "uranium" = 1)
+	required_reagents = list("manhattan" = 10, MAT_URANIUM = 1)
 	result_amount = 10
 
 /datum/chemical_reaction/drinks/vodka_tonic
@@ -551,7 +551,7 @@
 	name = "Amasec"
 	id = "amasec"
 	result = "amasec"
-	required_reagents = list("iron" = 1, "wine" = 5, "vodka" = 5)
+	required_reagents = list(MAT_IRON = 1, "wine" = 5, "vodka" = 5)
 	result_amount = 10
 
 /datum/chemical_reaction/drinks/changelingsting
@@ -998,7 +998,7 @@
 	name = "Vox's Delight"
 	id = "voxdelight"
 	result = "voxdelight"
-	required_reagents = list("phoron" = 3, "fuel" = 1, "water" = 1)
+	required_reagents = list(MAT_PHORON = 3, "fuel" = 1, "water" = 1)
 	result_amount = 4
 
 /datum/chemical_reaction/drinks/screamingviking
@@ -1026,7 +1026,7 @@
 	name = "Robustin"
 	id = "robustin"
 	result = "robustin"
-	required_reagents = list("antifreeze" = 1, "phoron" = 1, "fuel" = 1, "vodka" = 1)
+	required_reagents = list("antifreeze" = 1, MAT_PHORON = 1, "fuel" = 1, "vodka" = 1)
 	result_amount = 4
 
 /datum/chemical_reaction/drinks/virginsip
@@ -1153,7 +1153,7 @@
 	name = "Angel Ichor"
 	id = "holywine"
 	result = "holywine"
-	required_reagents = list("grapejuice" = 5, "gold" = 5)
+	required_reagents = list("grapejuice" = 5, MAT_GOLD = 5)
 	catalysts = list("holywater" = 5)
 	result_amount = 10
 
@@ -1231,14 +1231,14 @@
 	name = "Nuclear Waste"
 	id = "nuclearwasteuran"
 	result = "nuclearwaste"
-	required_reagents = list("oilslick" = 2, "uranium" = 1)
+	required_reagents = list("oilslick" = 2, MAT_URANIUM = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/sodaoil
 	name = "Soda Oil"
 	id = "sodaoil"
 	result = "sodaoil"
-	required_reagents = list("cornoil" = 4, "sodawater" = 1, "carbon" = 1, "tricordrazine" = 1)
+	required_reagents = list("cornoil" = 4, "sodawater" = 1, MAT_CARBON = 1, "tricordrazine" = 1)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/fusionnaire
@@ -1337,14 +1337,14 @@
 	name = "Snake Oil"
 	id = "snakeoil"
 	result = "snakeoil"
-	required_reagents = list("sarsaparilla" = 1, "grenadine" = 1, "absinthe" = 1, "phoron" = 1, "fuel" = 1)
+	required_reagents = list("sarsaparilla" = 1, "grenadine" = 1, "absinthe" = 1, MAT_PHORON = 1, "fuel" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/highnoon
 	name = "High Noon"
 	id = "highnoon"
 	result = "highnoon"
-	required_reagents = list("sassafras" = 2, "gold" = 2, "whiskey" = 1)
+	required_reagents = list("sassafras" = 2, MAT_GOLD = 2, "whiskey" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/bloodmeridian
@@ -1358,7 +1358,7 @@
 	name = "The Outlaw"
 	id = "theoutlaw"
 	result = "theoutlaw"
-	required_reagents = list("vodka" = 1, "gold" = 1, "bitters" = 1)
+	required_reagents = list("vodka" = 1, MAT_GOLD = 1, "bitters" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/thelawman
@@ -1379,7 +1379,7 @@
 	name = "Big Iron"
 	id = "bigiron"
 	result = "bigiron"
-	required_reagents = list("rum" = 2, "iron" = 1)
+	required_reagents = list("rum" = 2, MAT_IRON = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/lastcactus
@@ -1498,7 +1498,7 @@
 	name = "Unsweetened Tea"
 	id = "unsweettea"
 	result = "unsweettea"
-	required_reagents = list("sweettea" = 3, "phoron" = 1)
+	required_reagents = list("sweettea" = 3, MAT_PHORON = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/sweettea

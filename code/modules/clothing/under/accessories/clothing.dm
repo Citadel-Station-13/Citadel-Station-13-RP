@@ -59,16 +59,16 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/teshari/suit.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi'
 		)
 
 /obj/item/clothing/accessory/poncho/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == "Teshari")
+		if(H.species.name == SPECIES_TESHARI)
 			icon_override = 'icons/mob/species/teshari/suit.dmi'
-		else if(H.species.name == "Vox")
+		else if(H.species.name == SPECIES_VOX)
 			icon_override = 'icons/mob/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/ties.dmi'
@@ -384,16 +384,16 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/teshari/ties.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/ties.dmi'
 		)
 
 /obj/item/clothing/accessory/sweater/equipped() // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == "Teshari")
+		if(H.species.name == SPECIES_TESHARI)
 			icon_override = 'icons/mob/species/teshari/ties.dmi'
-		else if(H.species.name == "Vox")
+		else if(H.species.name == SPECIES_VOX)
 			icon_override = 'icons/mob/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/ties.dmi'

@@ -19,7 +19,7 @@
 	icon_state = "pickaxe"
 	item_state = "jackhammer"
 	w_class = ITEMSIZE_LARGE
-	matter = list(DEFAULT_WALL_MATERIAL = 3750)
+	matter = list(MAT_STEEL = 3750)
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
 	var/sand_dig = FALSE
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -119,7 +119,7 @@
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 2750, "titanium" = 2000)
+	matter = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
 	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
@@ -261,7 +261,7 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	item_state = "shovel"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 50)
+	matter = list(MAT_STEEL = 50)
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	sharp = 0
 	edge = 1

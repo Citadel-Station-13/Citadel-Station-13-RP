@@ -520,7 +520,7 @@
 			return
 
 		if(shell) // AI shells always have the laws of the AI
-			to_chat(user, span("warning", "\The [src] is controlled remotely! You cannot upload new laws this way!"))
+			to_chat(user, SPAN_WARNING( "\The [src] is controlled remotely! You cannot upload new laws this way!"))
 			return
 
 		var/obj/item/aiModule/M = W
@@ -1150,7 +1150,7 @@
 				to_chat(src, "Hack attempt detected.")
 
 			if(shell) // A warning to Traitors who may not know that emagging AI shells does not slave them.
-				to_chat(user, span("warning", "[src] seems to be controlled remotely! Emagging the interface may not work as expected."))
+				to_chat(user, SPAN_WARNING( "[src] seems to be controlled remotely! Emagging the interface may not work as expected."))
 			return 1
 		else
 			to_chat(user, "The cover is already unlocked.")
@@ -1165,7 +1165,7 @@
 
 		// The block of code below is from TG. Feel free to replace with a better result if desired.
 		if(shell) // AI shells cannot be emagged, so we try to make it look like a standard reset. Smart players may see through this, however.
-			to_chat(user, span("danger", "[src] is remotely controlled! Your emag attempt has triggered a system reset instead!"))
+			to_chat(user, SPAN_DANGER("[src] is remotely controlled! Your emag attempt has triggered a system reset instead!"))
 			log_game("[key_name(user)] attempted to emag an AI shell belonging to [key_name(src) ? key_name(src) : connected_ai]. The shell has been reset as a result.")
 			module_reset()
 			return

@@ -73,7 +73,7 @@ fundamental differences
 	if (stat)
 		return 1
 	else
-		to_chat(user, span("warning", "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish."))
+		to_chat(user, SPAN_WARNING( "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish."))
 
 //Container is not removable
 /obj/machinery/appliance/mixer/removal_menu(var/mob/user)
@@ -125,7 +125,7 @@ fundamental differences
 
 /obj/machinery/appliance/mixer/can_insert(var/obj/item/I, var/mob/user)
 	if (!stat)
-		user << span("warning","You can't add items while \the [src] is running. Wait for it to finish or turn the power off to abort.")
+		user << SPAN_WARNING("You can't add items while \the [src] is running. Wait for it to finish or turn the power off to abort.")
 		return 0
 	else
 		return ..()

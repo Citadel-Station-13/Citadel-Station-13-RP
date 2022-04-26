@@ -40,7 +40,7 @@
 /obj/item/integrated_circuit_printer/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/stack = O
-		if(stack.material.name == DEFAULT_WALL_MATERIAL)
+		if(stack.material.name == MAT_STEEL)
 			if(debug)
 				to_chat(user, SPAN_WARNING("\The [src] does not need any material."))
 				return

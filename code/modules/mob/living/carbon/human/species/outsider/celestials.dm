@@ -1,6 +1,6 @@
 /datum/species/auril
 	name = SPECIES_AURIL
-	name_plural = "Auril"
+	name_plural = SPECIES_AURIL
 	default_language = LANGUAGE_GALCOM
 	language = LANGUAGE_ENOCHIAN
 	num_alternate_languages = 3
@@ -46,7 +46,7 @@
 
 /datum/species/dremachir
 	name = SPECIES_DREMACHIR
-	name_plural = "Dremachir"
+	name_plural = SPECIES_DREMACHIR
 	default_language = LANGUAGE_GALCOM
 	language = LANGUAGE_DAEMON
 	num_alternate_languages = 3

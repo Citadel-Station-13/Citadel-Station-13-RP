@@ -16,7 +16,7 @@
 
 	var/list/grenades = new/list()
 	var/max_grenades = 5 //holds this + one in the chamber
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 
 //revolves the magazine, allowing players to choose between multiple grenade types
 /obj/item/gun/launcher/grenade/proc/pump(mob/M as mob)

@@ -453,9 +453,9 @@
 						if(!isnull(L.get_AI_stance())) // Null means there's no AI datum or it has one but is player controlled w/o autopilot on.
 							var/datum/ai_holder/AI = L.ai_holder
 							AI.forget_everything()
-							to_chat(user, span("notice", "\The [L]'s AI has forgotten its target/movement destination/leader."))
+							to_chat(user, SPAN_NOTICE("\The [L]'s AI has forgotten its target/movement destination/leader."))
 						else
-							to_chat(user, span("warning", "\The [L] is not AI controlled."))
+							to_chat(user, SPAN_WARNING( "\The [L] is not AI controlled."))
 						return
 
 					// Toggle hostility
@@ -463,21 +463,21 @@
 						if(!isnull(L.get_AI_stance()))
 							var/datum/ai_holder/AI = L.ai_holder
 							AI.hostile = !AI.hostile
-							to_chat(user, span("notice", "\The [L] is now [AI.hostile ? "hostile" : "passive"]."))
+							to_chat(user, SPAN_NOTICE("\The [L] is now [AI.hostile ? "hostile" : "passive"]."))
 						else
-							to_chat(user, span("warning", "\The [L] is not AI controlled."))
+							to_chat(user, SPAN_WARNING( "\The [L] is not AI controlled."))
 						return
 
 					// Select/Deselect
 					if(!isnull(L.get_AI_stance()))
 						if(L in holder.selected_mobs)
 							holder.deselect_AI_mob(user.client, L)
-							to_chat(user, span("notice", "Deselected \the [L]."))
+							to_chat(user, SPAN_NOTICE("Deselected \the [L]."))
 						else
 							holder.select_AI_mob(user.client, L)
-							to_chat(user, span("notice", "Selected \the [L]."))
+							to_chat(user, SPAN_NOTICE("Selected \the [L]."))
 					else
-						to_chat(user, span("warning", "\The [L] is not AI controlled."))
+						to_chat(user, SPAN_WARNING( "\The [L] is not AI controlled."))
 
 			if(pa.Find("right"))
 				if(istype(object, /atom)) // Force attack.
@@ -489,7 +489,7 @@
 							var/datum/ai_holder/AI = unit.ai_holder
 							AI.give_target(A)
 							i++
-						to_chat(user, span("notice", "Commanded [i] mob\s to attack \the [A]."))
+						to_chat(user, SPAN_NOTICE("Commanded [i] mob\s to attack \the [A]."))
 						return
 
 				if(isliving(object)) // Follow or attack.
@@ -513,7 +513,7 @@
 							message += "."
 					if(j)
 						message += "[j] mob\s to follow \the [L]."
-					to_chat(user, span("notice", message))
+					to_chat(user, SPAN_NOTICE(message))
 
 				if(isturf(object)) // Move or reposition.
 					var/turf/T = object
@@ -522,7 +522,7 @@
 						var/datum/ai_holder/AI = unit.ai_holder
 						AI.give_destination(T, 1, pa.Find("shift")) // If shift is held, the mobs will not stop moving to attack a visible enemy.
 						i++
-					to_chat(user, span("notice", "Commanded [i] mob\s to move to \the [T]."))
+					to_chat(user, SPAN_NOTICE("Commanded [i] mob\s to move to \the [T]."))
 
 
 /obj/effect/bmode/buildmode/proc/get_path_from_partial_text(default_path)

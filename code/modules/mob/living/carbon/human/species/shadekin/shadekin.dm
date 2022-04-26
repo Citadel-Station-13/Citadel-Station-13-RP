@@ -1,6 +1,6 @@
 /datum/species/shadekin
 	name = SPECIES_SHADEKIN
-	name_plural = "Shadekin"
+	name_plural = SPECIES_SHADEKIN
 	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	tail = "tail"

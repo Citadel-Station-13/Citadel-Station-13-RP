@@ -23,7 +23,7 @@
 /obj/structure/simple_door/Initialize(mapload, material_name)
 	. = ..(mapload)
 	if(!material_name)
-		material_name = DEFAULT_WALL_MATERIAL
+		material_name = MAT_STEEL
 	material = get_material_by_name(material_name)
 	if(!material)
 		qdel(src)
