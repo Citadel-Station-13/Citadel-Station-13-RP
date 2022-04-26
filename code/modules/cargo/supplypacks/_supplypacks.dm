@@ -107,7 +107,7 @@ var/list/all_supply_groups = list("Atmospherics",
 	if(!contained)
 		return
 	var/safety = 500
-	for(var/path in contained)
+	for(var/path in preprocess_contents_list())
 		var/amount = contained[path] || 1
 		for(var/i in 1 to amount)
 			if(!--safety)
@@ -119,9 +119,17 @@ var/list/all_supply_groups = list("Atmospherics",
 			InstanceObject(path, loc)
 
 /**
- * generates our HTML manifest as a **list**
+ * used to preprocess the contained list for spawning
  */
-/datum/supply_pack/proc/get_html_manifest()
+/datum/supply_pack/proc/preprocess_contents_list()
+	return contains.Copy()
+
+/**
+ * generates our HTML manifest as a **list**
+ *
+ * argument is provided for container incase you want to modify based on what actually spawned
+ */
+/datum/supply_pack/proc/get_html_manifest(atom/movable/container)
 	var/list/lines = list()
 	lines += "Contents:<br>"
 	lines += "<ul>"
@@ -142,58 +150,33 @@ var/list/all_supply_groups = list("Atmospherics",
 	/// how many of our items at random to spawn
 	var/num_contained = 1
 
-
-/datum/supply_pack/New()
+/datum/supply_pack/randomised/get_html_manifest(atom/movable/container)
+	var/list/lines = list()
+	lines += "Contains any [num_contained] of the following:<br>"
+	lines += "<ul>"
 	for(var/path in contains)
-		if(!path || !ispath(path, /atom))
-			continue
-		var/atom/O = path
-		manifest += "\proper[initial(O.name)]"
+		var/amount = contains[path] || 1
+		var/atom/movable/AM = path
+		var/name = initial(AM.name)
+		lines += "<li>[amount > 1? "[amount] [name](s)" : "[name]"]</li>"
+	lines += "</ul>"
+	return lines
 
-/datum/supply_pack/proc/get_html_manifest()
-	var/dat = ""
-	if(num_contained)
-		dat +="Contains any [num_contained] of:"
-	dat += "<ul>"
-	for(var/O in manifest)
-		dat += "<li>[O]</li>"
-	dat += "</ul>"
-	return dat
-
-		// Supply manifest generation begin
-		var/obj/item/paper/manifest/slip
-		if(!SP.contraband)
-			slip = new /obj/item/paper/manifest(A)
-			slip.is_copy = 0
-			slip.info = "<h3>[command_name()] Shipping Manifest</h3><hr><br>"
-			slip.info +="Order #[SO.ordernum]<br>"
-			slip.info +="Destination: [station_name()]<br>"
-			slip.info +="[orderedamount] PACKAGES IN THIS SHIPMENT<br>"
-			slip.info +="CONTENTS:<br><ul>"
-
-		// Spawn the stuff, finish generating the manifest while you're at it
-
-		var/list/contains
-		if(istype(SP,/datum/supply_pack/randomised))
-			var/datum/supply_pack/randomised/SPR = SP
-			contains = list()
-			if(SPR.contains.len)
-				for(var/j=1,j<=SPR.num_contained,j++)
-					contains += pick(SPR.contains)
+/datum/supply_pack/randomised/preprocess_contents_list()
+	var/list/L = list()
+	// first, flatten list
+	for(var/path in contains)
+		L[path] = contains[path] || 1
+	// pick and take
+	. = list()
+	for(var/i in 1 to num_contained)
+		var/path = SAFEPICK(L)
+		if(!path)
+			break
+		L[path]--
+		if(!L[path])
+			L -= path
+		if(.[path])
+			.[path]++
 		else
-			contains = SP.contains
-
-		for(var/typepath in contains)
-			if(!typepath)
-				continue
-
-			var/number_of_items = max(1, contains[typepath])
-			for(var/j = 1 to number_of_items)
-				var/atom/B2 = new typepath(A)
-				if(slip)
-					slip.info += "<li>[B2.name]</li>"	// Add the item to the manifest
-
-		// Manifest finalisation
-		if(slip)
-			slip.info += "</ul><br>"
-			slip.info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"
+			.[path] = 1
