@@ -103,7 +103,7 @@ var/list/all_supply_groups = list("Atmospherics",
 /**
  * spawwns our contents into a container. if you need special behavior like randomization, besure to modify default manifest too!
  */
-/datum/supply_pack/SpawnContents(atom/loc)
+/datum/supply_pack/proc/SpawnContents(atom/loc)
 	var/list/to_spawn = preprocess_contents_list()
 	if(LAZYLEN(to_spawn))
 		return
