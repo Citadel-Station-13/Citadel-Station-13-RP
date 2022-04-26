@@ -20,7 +20,7 @@
 		var/obj/item/engineering_voucher/voucher = I
 		voucher.redeem(user)
 	. = ..()
-	
+
 
 // Supply control console
 /obj/machinery/computer/supplycomp/control
@@ -266,8 +266,7 @@
 			reqform.info += "REASON: [reason]<br>"
 			reqform.info += "SUPPLY CRATE TYPE: [S.name]<br>"
 			reqform.info += "ACCESS RESTRICTION: [get_access_desc(S.access)]<br>"
-			reqform.info += "CONTENTS:<br>"
-			reqform.info +=  S.get_html_manifest()
+			reqform.info +=  S.get_html_manifest().Join("")
 			reqform.info += "<hr>"
 			reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
 

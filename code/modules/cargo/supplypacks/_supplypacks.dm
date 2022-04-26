@@ -33,10 +33,8 @@ var/list/all_supply_groups = list("Atmospherics",
 								  "Voidsuits")
 
 /datum/supply_pack
-	var/name = null
-	var/list/contains = list() // Typepaths, used to actually spawn the contents
-	var/list/manifest = list() // Object names, used to compile manifests
-	var/cost = null
+	var/name
+	var/cost
 
 	// the container
 	/// the type of the containier we spawn at - our contained objects will spawn in this.
@@ -47,33 +45,13 @@ var/list/all_supply_groups = list("Atmospherics",
 	var/container_desc
 
 	// the contained
+	/// what we contain - list of typepaths associated to count. if no count is associated, it's assumed to be one.
+	var/list/contains
 
-	var/access = null
+	var/access
 	var/one_access = FALSE
 	var/contraband = 0
-	var/num_contained = 0		//number of items picked to be contained in a /randomised crate
 	var/group = "Miscellaneous"
-
-/datum/supply_pack/New()
-	for(var/path in contains)
-		if(!path || !ispath(path, /atom))
-			continue
-		var/atom/O = path
-		manifest += "\proper[initial(O.name)]"
-
-/datum/supply_pack/proc/get_html_manifest()
-	var/dat = ""
-	if(num_contained)
-		dat +="Contains any [num_contained] of:"
-	dat += "<ul>"
-	for(var/O in manifest)
-		dat += "<li>[O]</li>"
-	dat += "</ul>"
-	return dat
-
-// Keeping this subtype here for posterity, so it's more apparent that this is the subtype to use if making new randomised packs
-/datum/supply_pack/randomised
-	num_contained = 1
 
 /**
  * instance the supply pack at a location. returns the container used.
@@ -83,8 +61,6 @@ var/list/all_supply_groups = list("Atmospherics",
 	. = InstanceContainer(loc)
 	SetupContainer(.)
 	SpawnContents(.)
-
-
 
 /**
  * creates our container
@@ -124,8 +100,65 @@ var/list/all_supply_groups = list("Atmospherics",
 	RETURN_TYPE(/atom/movbale)
 	return new path(arglist(args.Copy(2)))
 
+/**
+ * spawwns our contents into a container. if you need special behavior like randomization, besure to modify default manifest too!
+ */
+/datum/supply_pack/SpawnContents(atom/loc)
+	if(!contained)
+		return
+	var/safety = 500
+	for(var/path in contained)
+		var/amount = contained[path] || 1
+		for(var/i in 1 to amount)
+			if(!--safety)
+				// adminproofing
+				// no, no admin would fuck this up but myself
+				// hence, self-proofing
+				// ~silicons
+				CRASH("Ran out of safety during SpawnContents")
+			InstanceObject(path, loc)
+
+/**
+ * generates our HTML manifest as a **list**
+ */
+/datum/supply_pack/proc/get_html_manifest()
+	var/list/lines = list()
+	lines += "Contents:<br>"
+	lines += "<ul>"
+	for(var/path in contains)
+		var/amount = contains[path] || 1
+		var/atom/movable/AM = path
+		var/name = initial(AM.name)
+		lines += "<li>[amount > 1? "[amount] [name](s)" : "[name]"]</li>"
+	lines += "</ul>"
+	return lines
+
+/**
+ * randomized supplypacks
+ * only x items can be ever spawned
+ * weighting is equal - the list of typepaths normally spawned is treated as pick-and-take-one-of.
+ */
+/datum/supply_pack/randomised
+	/// how many of our items at random to spawn
+	var/num_contained = 1
 
 
+/datum/supply_pack/New()
+	for(var/path in contains)
+		if(!path || !ispath(path, /atom))
+			continue
+		var/atom/O = path
+		manifest += "\proper[initial(O.name)]"
+
+/datum/supply_pack/proc/get_html_manifest()
+	var/dat = ""
+	if(num_contained)
+		dat +="Contains any [num_contained] of:"
+	dat += "<ul>"
+	for(var/O in manifest)
+		dat += "<li>[O]</li>"
+	dat += "</ul>"
+	return dat
 
 		// Supply manifest generation begin
 		var/obj/item/paper/manifest/slip

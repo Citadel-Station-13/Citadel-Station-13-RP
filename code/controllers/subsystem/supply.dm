@@ -205,6 +205,25 @@ SUBSYSTEM_DEF(supply)
 		if(SO.comment)
 			container.name += " [SO.comment]"
 
+
+		// Supply manifest generation begin
+		var/obj/item/paper/manifest/slip
+		if(!SP.contraband)
+			slip = new /obj/item/paper/manifest(A)
+			slip.is_copy = 0
+			// save the trip to the string tree
+			var/list/info = list()
+			info = "<h3>[command_name()] Shipping Manifest</h3><hr><br>"
+			info +="Order #[SO.ordernum]<br>"
+			info +="Destination: [station_name()]<br>"
+			info +="[orderedamount] PACKAGES IN THIS SHIPMENT<br>"
+			info += "<hr>"
+			info += SP.get_html_manifest(container)
+			info += "<hr>"
+			info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS"
+			info += "<hr>"
+			slip.info += info.Join("")
+
 // Will attempt to purchase the specified order, returning TRUE on success, FALSE on failure
 /datum/controller/subsystem/supply/proc/approve_order(var/datum/supply_order/O, var/mob/user)
 	// Not enough points to purchase the crate
