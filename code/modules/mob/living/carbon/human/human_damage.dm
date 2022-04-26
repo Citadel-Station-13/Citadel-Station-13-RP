@@ -1,10 +1,9 @@
 //Updates the mob's health from organs and mob damage variables
 /mob/living/carbon/human/updatehealth()
-
 	if(status_flags & GODMODE)
 		health = getMaxHealth()
 		set_stat(CONSCIOUS)
-		return
+		update_hud_med_all()
 
 	var/total_burn  = 0
 	var/total_brute = 0
@@ -14,12 +13,15 @@
 		total_brute += O.brute_dam
 		total_burn  += O.burn_dam
 
+	var/old = health
 	health = getMaxHealth() - getOxyLoss() - getToxLoss() - getCloneLoss() - total_burn - total_brute
 
 	//TODO: fix husking
 	if( ((getMaxHealth() - total_burn) < config_legacy.health_threshold_dead) && stat == DEAD)
 		ChangeToHusk()
-	return
+
+	if(old != health)
+		update_hud_med_all()
 
 /mob/living/carbon/human/adjustBrainLoss(var/amount)
 
@@ -124,7 +126,7 @@
 			if(!isnull(M.incoming_healing_percent))
 				amount *= M.incoming_healing_percent
 		heal_overall_damage(-amount, 0, include_robo)
-	update_hud_med_health()
+	update_hud_med_all()
 
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
 /mob/living/carbon/human/adjustFireLoss(var/amount,var/include_robo)
@@ -142,7 +144,7 @@
 			if(!isnull(M.incoming_healing_percent))
 				amount *= M.incoming_healing_percent
 		heal_overall_damage(0, -amount, include_robo)
-	update_hud_med_health()
+	update_hud_med_all()
 
 /mob/living/carbon/human/proc/adjustBruteLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
 	amount = amount*species.brute_mod
@@ -164,7 +166,7 @@
 			//if you don't want to heal robot organs, they you will have to check that yourself before using this proc.
 			O.heal_damage(-amount, 0, internal=0, robo_repair=(O.robotic >= ORGAN_ROBOT))
 
-	update_hud_med_health()
+	update_hud_med_all()
 
 /mob/living/carbon/human/proc/adjustFireLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
 	amount = amount*species.burn_mod
@@ -186,18 +188,21 @@
 			//if you don't want to heal robot organs, they you will have to check that yourself before using this proc.
 			O.heal_damage(0, -amount, internal=0, robo_repair=(O.robotic >= ORGAN_ROBOT))
 
-	update_hud_med_health()
+	update_hud_med_all()
 
 /mob/living/carbon/human/Stun(amount)
-	if(HULK in mutations)	return
+	if(HULK in mutations)
+		return
 	..()
 
 /mob/living/carbon/human/Weaken(amount)
-	if(HULK in mutations)	return
+	if(HULK in mutations)
+		return
 	..()
 
 /mob/living/carbon/human/Paralyse(amount)
-	if(HULK in mutations)	return
+	if(HULK in mutations)
+		return
 	// Notify our AI if they can now control the suit.
 	if(wearing_rig && !stat && paralysis < amount) //We are passing out right this second.
 		wearing_rig.notify_ai("<span class='danger'>Warning: user consciousness failure. Mobility control passed to integrated intelligence system.</span>")
@@ -267,7 +272,7 @@
 			if (O.status & ORGAN_MUTATED)
 				O.unmutate()
 				to_chat(src, "<span class = 'notice'>Your [O.name] is shaped normally again.</span>")
-	update_hud_med_health()
+	update_hud_med_all()
 
 // Defined here solely to take species flags into account without having to recast at mob/living level.
 /mob/living/carbon/human/getOxyLoss()
@@ -333,9 +338,7 @@
 	var/obj/item/organ/external/picked = pick(parts)
 	if(picked.heal_damage(brute,burn))
 		UpdateDamageIcon()
-		update_hud_med_health()
 	updatehealth()
-
 
 /*
 In most cases it makes more sense to use apply_damage() instead! And make sure to check armour if applicable.
@@ -345,13 +348,12 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 //It automatically updates health status
 /mob/living/carbon/human/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
 	var/list/obj/item/organ/external/parts = get_damageable_organs()
-	if(!parts.len)	return
+	if(!parts.len)
+		return
 	var/obj/item/organ/external/picked = pick(parts)
 	if(picked.take_damage(brute,burn,sharp,edge))
 		UpdateDamageIcon()
-		update_hud_med_health()
 	updatehealth()
-
 
 //Heal MANY external organs, in random order
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
@@ -372,8 +374,8 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 		parts -= picked
 	updatehealth()
-	update_hud_med_health()
-	if(update)	UpdateDamageIcon()
+	if(update)
+		UpdateDamageIcon()
 
 // damage MANY external organs, in random order
 /mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null)
@@ -392,9 +394,8 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 		parts -= picked
 	updatehealth()
-	update_hud_med_health()
-	if(update)	UpdateDamageIcon()
-
+	if(update)
+		UpdateDamageIcon()
 
 ////////////////////////////////////////////
 
@@ -423,7 +424,6 @@ This function restores all organs.
 	else
 		return 0
 	return
-
 
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null)
 	if(GLOB.Debug2)
@@ -494,5 +494,4 @@ This function restores all organs.
 
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
 	updatehealth()
-	update_hud_med_health()
 	return 1

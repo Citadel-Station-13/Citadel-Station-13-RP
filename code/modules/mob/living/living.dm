@@ -18,8 +18,7 @@
 	prepare_data_huds()
 
 /mob/living/proc/prepare_data_huds()
-	update_hud_med_health()
-	update_hud_med_status()
+	update_hud_med_all()
 
 /mob/living/Destroy()
 	if(LAZYLEN(status_effects))
@@ -711,8 +710,7 @@ default behaviour is:
 	// make the icons look correct
 	regenerate_icons()
 
-	update_hud_med_health()
-	update_hud_med_status()
+	update_hud_med_all()
 
 	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	reload_fullscreen()

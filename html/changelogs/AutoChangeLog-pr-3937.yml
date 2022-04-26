@@ -1,4 +1,4 @@
 author: "Captain277"
 delete-after: True
 changes: 
-  - rscadd: "Adds Modular Limb Plates"
+  - bugfix: "Lack of swimsuit debug item."
