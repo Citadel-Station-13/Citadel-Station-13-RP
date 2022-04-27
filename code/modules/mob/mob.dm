@@ -30,8 +30,13 @@
 		client.screen = list()
 	if(mind && mind.current == src)
 		spellremove(src)
+	// this kicks out client
 	ghostize()
 	QDEL_NULL(plane_holder)
+	// with no client, we can safely remove perspective this way snow-flakily
+	if(using_perspective)
+		using_perspective.RemoveMob(src)
+		using_perspective = null
 	..()
 	return QDEL_HINT_HARDDEL
 

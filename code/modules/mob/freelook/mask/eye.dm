@@ -6,7 +6,6 @@
 /mob/observer/eye/maskEye
 	name = "Eye of Nar-Sie"
 	acceleration = 0
-	owner_follows_eye = 1
 
 /mob/observer/eye/maskEye/Initialize(mapload)
 	. = ..()

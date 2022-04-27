@@ -18,8 +18,10 @@
 	var/list/atom/movable/screens = list()
 	/// sight var
 	var/sight = SEE_SELF
-	/// active clients
+	/// active clients - this is not the same as mobs because a client can be looking somewhere that isn't their mob
 	var/list/client/clients = list()
+	/// mobs that are using this - required for clean gcs
+	var/list/mob/mobs = list()
 	/// view size
 	var/view_size
 	/// when a client logs out of a mob, and it's using us, the mob should reset to its self_perspective
@@ -31,6 +33,7 @@
 
 /datum/perspective/Destroy()
 	KickAll()
+	ClearMobs()
 	images = null
 	screens = null
 	clients = null
@@ -41,13 +44,10 @@
 /datum/perspective/proc/AddClient(client/C)
 	if(C in clients)
 		return
-	// for adding, unlike removing, if it's already on a perspective, we allow the swap smoothly since this is how it's usually done
-	// in the future consider client/proc/SwitchPerspective() instead of mob only procs (???? maybe ????)
 	if(C.using_perspective)
-		C.using_perspective.RemoveClient(C, TRUE)
+		CRASH("client already had perspective")
+		return
 	clients += C
-	if(C.using_perspective)
-		stack_trace("[C] in AddClient, but perspective remained after auto swapout??")
 	C.using_perspective = src
 	Apply(C)
 
@@ -59,11 +59,10 @@
 	// if we're not doing this as part of a switch have them immediately switch to the mob
 	// oh and make sure they unregister
 	if(C.using_perspective != src)
-		stack_trace("[C] in RemoveClient, but perspective wasn't the one being removed from? Uh oh.")
-	else
-		C.using_perspective = null
+		stack_trace("client had wrong perspective")
+	C.using_perspective = null
 	if(!switching)
-		C.mob.reset_perspective()
+		C.reset_perspective()
 
 /**
  * gets all clients viewing us
@@ -77,6 +76,36 @@
 /datum/perspective/proc/KickAll()
 	for(var/client/C as anything in clients)
 		RemoveClient(C)
+
+/**
+ * kicks all obs off of us
+ */
+/datum/perspective/proc/ClearMobs()
+	for(var/mob/M as anything in mobs)
+		RemoveMob(M)
+
+/**
+ * registers as a mob's current perspective
+ */
+/datum/perspective/proc/AddMob(mob/M)
+	if(M.using_perspective)
+		CRASH("mob already had perspective")
+	if(reset_on_logout && !M.client)	// nah
+		return
+	mobs += M
+	M.using_perspective = src
+
+/**
+ * unregisters as a mob's current perspective
+ */
+/datum/perspective/proc/RemoveMob(mob/M, switching = FALSE)
+	mobs -= M
+	if(M.using_perspective == src)
+		M.using_perspective = null
+		if(!switching)
+			M.reset_perspective()
+	else
+		CRASH("mob had wrong perspective")
 
 /**
  * applys screen objs, etc, stuff that shouldn't be updated regularly

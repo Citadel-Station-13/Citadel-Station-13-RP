@@ -45,14 +45,11 @@
 	if(eyeobj)
 		destroy_eyeobj()
 	if(!newloc)
-		newloc = src.loc
-	#warn ohnononono
-	#warn remember to make eye have all the SEE_ sight flags!
+		newloc = loc
 	eyeobj = new /mob/observer/eye/aiEye(newloc)
 	eyeobj.owner = src
 	eyeobj.name = "[src.name] (AI Eye)" // Give it a name
-	if(client)
-		client.eye = eyeobj
+	reset_perspective(eyeobj)
 	SetName(src.name)
 
 // Intiliaze the eye by assigning it's "ai" variable to us. Then set it's loc to us.
@@ -85,11 +82,10 @@
 	if(!src.eyeobj)
 		return
 
-	if(client && client.eye)
-		client.eye = src
 	for(var/datum/chunk/c in eyeobj.visibleChunks)
 		c.remove(eyeobj)
-	src.eyeobj.setLoc(src)
+
+	eyeobj.setLoc(src)
 
 /mob/living/silicon/ai/proc/toggle_acceleration()
 	set category = "AI Settings"

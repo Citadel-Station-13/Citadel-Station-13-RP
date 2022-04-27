@@ -84,10 +84,8 @@
 
 	reload_huds()
 
-	// perspective
-	ensure_self_perspective()
-	reset_perspective(using_perspective)
-
-	// rendering
+	// set client perspective to what we're using
+	client.set_perspective(get_using_perspective())
+	// load rendering onto client's screen
 	reload_rendering()
 

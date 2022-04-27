@@ -133,12 +133,10 @@
 			overlay_fullscreen("high", /atom/movable/screen/fullscreen/tiled/high)
 		else
 			clear_fullscreen("high")
-		if(machine)
-			if(machine.check_eye(src) < 0)
-				reset_view(null)
-		else
-			if(client)
-				reset_view(null)
+
+		if(IsRemoteViewing())
+			if(machine && machine.check_eye(src) < 0)
+				reset_perspective()
 
 	return 1
 

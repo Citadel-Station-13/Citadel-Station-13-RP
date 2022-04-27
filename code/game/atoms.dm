@@ -205,7 +205,6 @@
 	if (istype(user, /mob/living/silicon/ai)) // WHYYYY
 		return 0
 	return -1
-#warn ugh
 
 /atom/proc/Bumped(AM as mob|obj)
 	set waitfor = FALSE

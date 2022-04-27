@@ -71,7 +71,9 @@
 	var/turf/un_opaque
 	if(opacity && isturf(loc))
 		un_opaque = loc
-
+	// kick perspectives before moving
+	if(self_perspective)
+		QDEL_NULL(self_perspective)
 	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
@@ -478,7 +480,7 @@
  */
 /atom/movable/proc/make_perspective()
 	ASSERT(!self_perspective)
-	self_perspective = new /datum/perspective/self
+	. = self_perspective = new /datum/perspective/self
 	self_perspective.eye = src
 
 /**
