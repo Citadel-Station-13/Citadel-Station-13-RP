@@ -11,12 +11,12 @@
   * - forceful - if the client is desynced from our using perspective, do we force it back?
   */
 /mob/proc/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE)
+	if(P? ((ismovable(P) && istype(using_perspective, /datum/perspective/self/temporary))? (using_perspective?.eye == P) : (P == using_perspective)) : (using_perspective == self_perspective))
+		return
 	if(ismovable(P))
 		var/atom/movable/AM = P
 		P = AM.get_perspective()
 	/// first of all if we are already on the right perspective we really don't care!
-	if(P? (P == using_perspective) : (using_perspective == self_perspective))
-		return
 	if(!client)		// this is way easier if no client, and microoptimization
 		if(using_perspective)
 			using_perspective.RemoveMob(src)
@@ -44,7 +44,7 @@
 	// tell it to add us
 	P.AddMob(src)
 	// signal
-	SEND_SIGNAL(COMSIG_MOB_RESET_PERSPECTIVE, P)
+	SEND_SIGNAL(src, COMSIG_MOB_RESET_PERSPECTIVE, P)
 	// if client exists and we want to apply
 	if(apply && client)
 		if(!forceful)
@@ -84,7 +84,7 @@
 	if(using_perspective != client.using_perspective)	// shunt them back in, useful if something's temporarily shunted our client away
 		reset_perspective(using_perspective)
 		return
-	SEND_SIGNAL(COMSIG_MOB_UPDATE_PERSPECTIVE)
+	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_PERSPECTIVE)
 	using_perspective?.Update(client)
 
 /**

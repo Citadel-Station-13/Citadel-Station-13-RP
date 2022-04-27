@@ -153,7 +153,10 @@
  */
 /datum/perspective/proc/GetEyeMode(client/C)
 	// necessary for smooth transitions when calling update_perspective
-	return C.eye == C.mob? MOB_PERSPECTIVE : EYE_PERSPECTIVE
+	// we default to eye perspectivie
+	// also this is honestly pointless but theoretically mob perspective should always be used while on mob
+	// this is stupid and i'm stupid
+	return ((eye == C.mob) && MOB_PERSPECTIVE) || perspective
 
 /**
  * updates eye, perspective var, virtual eye, lazy eye, sight, see in dark, see invis
@@ -216,6 +219,23 @@
 		for(var/client/C as anything in clients)
 			C.screen -= AM
 
+/datum/perspective/proc/SetEyeMode(perspective)
+	var/change = src.perspective != perspective
+	if(!change)
+		return
+	src.perspective = perspective
+	for(var/client/C as anything in clients)
+		C.perspective = GetEyeMode()
+
+/datum/perspective/proc/SetEye(atom/movable/AM)
+	var/change = src.eye != AM
+	if(!change)
+		return
+	src.eye = AM
+	for(var/client/C as anything in clients)
+		C.eye = GetEye()
+		C.perspective = GetEyeMode()
+
 /datum/perspective/proc/SetSight(flags)
 	var/change = sight ^ flags
 	sight = flags
@@ -270,7 +290,9 @@
 	return get_top_atom(eye)
 
 /datum/perspective/self/proc/get_top_atom(atom/movable/where)
-	while(where && !isturf(where) && !isturf(where.loc))
+	if(isturf(where))
+		return where
+	while(where && !isturf(where.loc))
 		where = where.loc
 	return where
 
