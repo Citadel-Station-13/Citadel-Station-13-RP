@@ -13,9 +13,12 @@
 	var/max_components = IC_COMPONENTS_BASE
 	var/max_complexity = IC_COMPLEXITY_BASE
 	var/opened = FALSE
-	var/can_anchor = FALSE // If true, wrenching it will anchor it.
-	var/obj/item/cell/device/battery = null // Internal cell which most circuits need to work.
-	var/net_power = 0 // Set every tick, to display how much power is being drawn in total.
+	/// If true, wrenching it will anchor it.
+	var/can_anchor = FALSE
+	/// Internal cell which most circuits need to work.
+	var/obj/item/cell/device/battery = null
+	/// Set every tick, to display how much power is being drawn in total.
+	var/net_power = 0
 	var/detail_color = COLOR_ASSEMBLY_BLACK
 
 
@@ -174,7 +177,7 @@
 	if(!check_interactivity(M))
 		return
 
-	var/input = sanitizeSafe(input("What do you want to name this?", "Rename", src.name) as null|text, MAX_NAME_LEN)
+	var/input = sanitizeSafe(input(usr, "What do you want to name this?", "Rename", src.name) as null|text, MAX_NAME_LEN)
 	if(src && input)
 		to_chat(M, SPAN_NOTICE("The machine now has a label reading '[input]'."))
 		name = input
@@ -346,7 +349,7 @@
 
 	var/obj/item/integrated_circuit/input/choice
 	if(available_inputs)
-		var/selection = input(user, "What do you want to interact with?", "Interaction") as null|anything in input_selection
+		var/selection = tgui_input_list(user, "What do you want to interact with?", "Interaction", input_selection)
 		if(selection)
 			var/index = input_selection.Find(selection)
 			choice = available_inputs[index]

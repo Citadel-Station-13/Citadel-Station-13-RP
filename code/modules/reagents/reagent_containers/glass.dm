@@ -147,7 +147,7 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "beaker"
 	item_state = "beaker"
-	matter = list("glass" = 500)
+	matter = list(MAT_GLASS = 500)
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
@@ -197,7 +197,7 @@
 	name = "large beaker"
 	desc = "A large beaker."
 	icon_state = "beakerlarge"
-	matter = list("glass" = 1000)
+	matter = list(MAT_GLASS = 1000)
 	volume = 120
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120)
@@ -207,7 +207,7 @@
 	name = "cryostasis beaker"
 	desc = "A cryostasis beaker that allows for chemical storage without reactions."
 	icon_state = "beakernoreact"
-	matter = list("glass" = 500)
+	matter = list(MAT_GLASS = 500)
 	volume = 60
 	amount_per_transfer_from_this = 10
 	flags = OPENCONTAINER | NOREACT
@@ -216,7 +216,7 @@
 	name = "bluespace beaker"
 	desc = "A bluespace beaker, powered by experimental bluespace technology."
 	icon_state = "beakerbluespace"
-	matter = list("glass" = 5000)
+	matter = list(MAT_GLASS = 5000)
 	volume = 300
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120,300)
@@ -226,7 +226,7 @@
 	name = "vial"
 	desc = "A small glass vial."
 	icon_state = "vial"
-	matter = list("glass" = 250)
+	matter = list(MAT_GLASS = 250)
 	volume = 30
 	w_class = ITEMSIZE_TINY
 	amount_per_transfer_from_this = 10
@@ -245,7 +245,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "bucket"
 	item_state = "bucket"
-	matter = list(DEFAULT_WALL_MATERIAL = 200)
+	matter = list(MAT_STEEL = 200)
 	w_class = ITEMSIZE_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
@@ -270,7 +270,7 @@
 		user.drop_from_inventory(src)
 		qdel(src)
 		return
-	else if(istype(D, /obj/item/stack/material) && D.get_material_name() == DEFAULT_WALL_MATERIAL)
+	else if(istype(D, /obj/item/stack/material) && D.get_material_name() == MAT_STEEL)
 		var/obj/item/stack/material/M = D
 		if (M.use(1))
 			var/obj/item/secbot_assembly/edCLN_assembly/B = new /obj/item/secbot_assembly/edCLN_assembly
@@ -304,7 +304,7 @@ obj/item/reagent_containers/glass/bucket/wood
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "woodbucket"
 	item_state = "woodbucket"
-	matter = list("wood" = 50)
+	matter = list(MAT_WOOD = 50)
 	w_class = ITEMSIZE_LARGE
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
@@ -340,7 +340,7 @@ obj/item/reagent_containers/glass/bucket/wood
 	name = "water-cooler bottle"
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler_bottle"
-	matter = list("glass" = 2000)
+	matter = list(MAT_GLASS = 2000)
 	w_class = ITEMSIZE_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)

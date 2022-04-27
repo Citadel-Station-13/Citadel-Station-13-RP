@@ -178,9 +178,9 @@
 		return
 
 	if(ckeys_that_took[user.ckey])
-		to_chat(user, span("warning", "There are no presents with your name on."))
+		to_chat(user, SPAN_WARNING( "There are no presents with your name on."))
 		return
-	to_chat(user, span("notice", "After a bit of rummaging, you locate a gift with your name on it!"))
+	to_chat(user, SPAN_NOTICE("After a bit of rummaging, you locate a gift with your name on it!"))
 	ckeys_that_took[user.ckey] = TRUE
 	var/obj/item/G = new gift_type(src)
 	user.put_in_hands(G)

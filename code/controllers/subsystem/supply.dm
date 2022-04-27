@@ -19,11 +19,11 @@ SUBSYSTEM_DEF(supply)
 	var/movetime = 1200
 	var/datum/shuttle/autodock/ferry/supply/shuttle
 	var/list/material_points_conversion = list(	// Any materials not named in this list are worth 0 points
-			"phoron" = 5,
-			"platinum" = 5,
-			"gold" = 2,		// CIT CHANGE: Gold is now worth 2 cargo points per sheet
-			"silver" = 2,	// CIT CHANGE: Silver is now worth 2 cargo points per sheet
-			"uranium" = 1	// CIT CHANGE: Uranium is now worth 1 cargo point per sheet
+			MAT_PHORON = 5,
+			MAT_PLATINUM = 5,
+			MAT_GOLD = 2,		// CIT CHANGE: Gold is now worth 2 cargo points per sheet
+			MAT_SILVER = 2,	// CIT CHANGE: Silver is now worth 2 cargo points per sheet
+			MAT_URANIUM = 1	// CIT CHANGE: Uranium is now worth 1 cargo point per sheet
 		)
 
 // TODO - Refactor to use the Supply Subsystem (SSsupply)

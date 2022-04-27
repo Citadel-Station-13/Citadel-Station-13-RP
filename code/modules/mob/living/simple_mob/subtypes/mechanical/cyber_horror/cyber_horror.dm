@@ -161,7 +161,7 @@
  // Do the actual leap.
  // Lets us pass over everything.
 	status_flags |= LEAPING
-	visible_message(span("danger","\The [src] leaps at \the [A]!"))
+	visible_message(SPAN_DANGER("\The [src] leaps at \the [A]!"))
 	throw_at(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 	playsound(src, leap_sound, 75, 1)
  // For the throw to complete. It won't hold up the AI SSticker due to waitfor being false.
@@ -193,8 +193,8 @@
 
 	if(victim)
 		victim.Weaken(2)
-		victim.visible_message(span("danger","\The [src] knocks down \the [victim]!"))
-		to_chat(victim, span("critical", "\The [src] jumps on you!"))
+		victim.visible_message(SPAN_DANGER("\The [src] knocks down \the [victim]!"))
+		to_chat(victim, SPAN_CRITICAL("\The [src] jumps on you!"))
 		. = TRUE
 
 	set_AI_busy(FALSE)
@@ -293,7 +293,7 @@
 		if(isliving(A))
 			var/mob/living/L = A
 			L.Weaken(stealthed_weaken_amount)
-			to_chat(L, span("danger", "\The [src] tears into you!"))
+			to_chat(L, SPAN_DANGER("\The [src] tears into you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	unstealth()
 	..() // For the poison.
@@ -476,7 +476,7 @@
 
 	// Warm-up
 	Beam(target, icon_state = "sat_beam", time = 2 SECONDS, maxdistance = INFINITY)
-	visible_message(span("warning", "A glowing port opens up in the [src]'s carapace!"))
+	visible_message(SPAN_WARNING( "A glowing port opens up in the [src]'s carapace!"))
 	playsound(src, 'sound/effects/turret/move1.wav', 50, 1)
 	sleep(2 SECONDS)
 
@@ -484,7 +484,7 @@
 		if(target) // Might get deleted in the meantime.
 			var/turf/T = get_turf(target)
 			if(T)
-				visible_message(span("warning", "[src] discharges a beam of concentrated energy!"))
+				visible_message(SPAN_WARNING( "[src] discharges a beam of concentrated energy!"))
 				playsound(src, 'sound/weapons/lasercannonfire.ogg', 70, 1)
 				face_atom(T)
 				var/obj/item/projectile/arc/radioactive/priest/ball = new(loc)
@@ -492,7 +492,7 @@
 				ball.fire()
 				sleep(2 SECONDS)
 
-	visible_message(span("warning", "[src] closes its reactor port."))
+	visible_message(SPAN_WARNING( "[src] closes its reactor port."))
 	playsound(src, 'sound/effects/turret/move2.wav', 50, 1)
 
 /obj/item/projectile/arc/radioactive/priest

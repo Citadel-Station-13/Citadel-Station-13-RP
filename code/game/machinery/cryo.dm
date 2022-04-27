@@ -199,7 +199,7 @@
 		if(occupant)
 			to_chat(user,"<span class='warning'>\The [src] is already occupied by [occupant].</span>")
 		if(grab.affecting.has_buckled_mobs())
-			to_chat(user, span("warning", "\The [grab.affecting] has other entities attached to it. Remove them first."))
+			to_chat(user, SPAN_WARNING( "\The [grab.affecting] has other entities attached to it. Remove them first."))
 			return
 		var/mob/M = grab.affecting
 		qdel(grab)
@@ -228,7 +228,7 @@
 			return
 		occupant.bodytemperature += 2*(air_contents.temperature - occupant.bodytemperature)*current_heat_capacity/(current_heat_capacity + air_contents.heat_capacity())
 		occupant.bodytemperature = max(occupant.bodytemperature, air_contents.temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
-		occupant.stat = UNCONSCIOUS
+		occupant.set_stat(UNCONSCIOUS)
 		occupant.dir = SOUTH
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(max(5, (1/occupant.bodytemperature)*2000))
@@ -344,7 +344,7 @@
 	if(isliving(usr))
 		var/mob/living/L = usr
 		if(L.has_buckled_mobs())
-			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
+			to_chat(L, SPAN_WARNING( "You have other entities attached to yourself. Remove them first."))
 			return
 		if(L.stat != CONSCIOUS)
 			return

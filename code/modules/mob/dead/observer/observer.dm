@@ -98,8 +98,6 @@
 	plane = PLANE_GHOSTS //Why doesn't the var above work...???
 	verbs += /mob/observer/dead/proc/dead_tele
 
-	stat = DEAD
-
 	var/turf/T
 	if(ismob(body))
 		T = get_turf(body)				//Where is the body located?
@@ -165,6 +163,11 @@
 /mob/observer/dead/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	return TRUE
+
+/mob/observer/dead/set_stat(var/new_stat)
+	if(new_stat != DEAD)
+		CRASH("It is best if observers stay dead, thank you.")
+
 /*
 Transfer_mind is there to check if mob is being deleted/not going to have a body.
 Works together with spawning an observer, noted above.

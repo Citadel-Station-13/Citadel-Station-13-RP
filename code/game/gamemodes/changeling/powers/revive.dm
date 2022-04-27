@@ -41,8 +41,7 @@
 				current_limb.relocate()
 				current_limb.open = 0
 
-		H.update_hud_med_health()
-		H.update_hud_med_status()
+		H.update_hud_med_all()
 
 		if(H.handcuffed)
 			var/obj/item/W = H.handcuffed
@@ -78,7 +77,7 @@
 	C.update_canmove()
 	C.mind.changeling.purchased_powers -= C
 	feedback_add_details("changeling_powers","CR")
-	C.stat = CONSCIOUS
+	C.set_stat(CONSCIOUS)
 	C.forbid_seeing_deadchat = FALSE
 	C.timeofdeath = null
 	src.verbs -= /mob/proc/changeling_revive

@@ -10,6 +10,8 @@
 
 /atom/movable/augmented_holder/Initialize(mapload, atom/movable/master, mutable_appearance/A)
 	appearance = A
+	// incase some idiot (see: myself) forgets to make the mutable appearance move to the right plane..
+	plane = PLANE_AUGMENTED
 	holder = master
 	holder.vis_contents += src
 	vis_flags = VIS_INHERIT_ID

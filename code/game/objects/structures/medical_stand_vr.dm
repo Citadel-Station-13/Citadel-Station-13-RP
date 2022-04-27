@@ -424,7 +424,7 @@
 				return
 
 			// If the human is losing too much blood, beep.
-			if(H.vessel.get_reagent_amount("blood") < BLOOD_VOLUME_SAFE)
+			if(H.vessel.get_reagent_amount("blood") < H.species.blood_volume*H.species.blood_level_safe)
 				visible_message("\The [src] beeps loudly.")
 
 			var/datum/reagent/B = H.take_blood(beaker,amount)
@@ -442,4 +442,3 @@
 	spawn_type = /obj/item/tank/anesthetic
 	mask_type = /obj/item/clothing/mask/breath/medical
 	is_loosen = FALSE
-
