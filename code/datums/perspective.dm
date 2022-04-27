@@ -163,8 +163,8 @@
  */
 /datum/perspective/proc/Update(client/C)
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_UPDATE, C)
-	C.eye = GetEye()
-	C.perspective = GetEyeMode()
+	C.eye = GetEye(C)
+	C.perspective = GetEyeMode(C)
 	C.mob.sight = sight
 	C.mob.see_in_dark = see_in_dark
 	C.mob.see_invisible = see_invisible
