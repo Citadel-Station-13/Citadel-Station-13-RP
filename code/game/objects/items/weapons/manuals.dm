@@ -276,7 +276,7 @@
 				<br><br>
 				<ol>
 				<li>Enable and max output and input on the SMES in the engine room. This is to power the gyrotrons and pumps.</li>
-				<li>Go into the control room, interact with the fusion core control console. Raise the field size to 700 and turn it on. Any smaller will cause the gyrotrons to blast out the walls. Bigger than this will cause the field to immediately fail.</li>
+				<li>Go into the control room, interact with the fusion core control console. Raise the field size to 400 and turn it on. Any smaller will cause the gyrotrons to blast out the walls. Bigger than this will cause the field to immediately fail.</li>
 				<li>Interact with the gyrotron control computer and set all the gyrotrons power and timing to 1.</li>
 				<li>Start the gyrotrons and wait for the field to heat up. Once the field is fully visible, you may switch off the gyrotrons to save power.</li>
 				<li>Insert a can of phoron in the cold loop (green and blue) and a can of CO2 in the hot loop (red and orange).</li>
