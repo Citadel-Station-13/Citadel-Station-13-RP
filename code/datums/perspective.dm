@@ -278,6 +278,3 @@
 
 /datum/perspective/remote/considered_remote(mob/M)
 	return TRUE
-
-/datum/perspective/remote/overrides_sight(client/C)
-	return TRUE
