@@ -481,7 +481,6 @@
 /mob/verb/observe()
 	set name = "Observe"
 	set category = "OOC"
-	var/is_admin = 0
 
 	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
 		return
