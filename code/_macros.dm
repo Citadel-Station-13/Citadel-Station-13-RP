@@ -1,6 +1,3 @@
-
-#define span(class, text) ("<span class='[class]'>[text]</span>")
-
 #define get_turf(A) get_step(A,0)
 
 #define get_x(A) (get_step(A, 0)?.x || 0)
@@ -27,5 +24,3 @@
 #define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
 
 #define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
-
-//thank you Kevin for not running checks again, now I have to update one file with a comment - Papalus

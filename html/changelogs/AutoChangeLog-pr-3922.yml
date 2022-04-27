@@ -1,5 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - bugfix: "Fixed Pipe Dispenser"
-  - bugfix: "Fixed NIF UI generating shadows."

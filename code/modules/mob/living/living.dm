@@ -18,8 +18,7 @@
 	prepare_data_huds()
 
 /mob/living/proc/prepare_data_huds()
-	update_hud_med_health()
-	update_hud_med_status()
+	update_hud_med_all()
 
 /mob/living/Destroy()
 	if(LAZYLEN(status_effects))
@@ -42,6 +41,19 @@
 	if(buckled)
 		buckled.unbuckle_mob(src, TRUE)
 	qdel(selected_image)
+	if(LAZYLEN(organs))
+		organs_by_name.Cut()
+		while(organs.len)
+			var/obj/item/OR = organs[1]
+			organs -= OR
+			qdel(OR)
+
+	if(LAZYLEN(internal_organs))
+		internal_organs_by_name.Cut()
+		while(internal_organs.len)
+			var/obj/item/OR = internal_organs[1]
+			internal_organs -= OR
+			qdel(OR)
 	return ..()
 
 //mob verbs are faster than object verbs. See mob/verb/examine.
@@ -698,8 +710,7 @@ default behaviour is:
 	// make the icons look correct
 	regenerate_icons()
 
-	update_hud_med_health()
-	update_hud_med_status()
+	update_hud_med_all()
 
 	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	reload_fullscreen()

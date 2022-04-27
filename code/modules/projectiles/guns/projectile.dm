@@ -5,7 +5,7 @@
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = ITEMSIZE_NORMAL
-	matter = list(DEFAULT_WALL_MATERIAL = 1000)
+	matter = list(MAT_STEEL = 1000)
 	recoil = 0
 	projectile_type = /obj/item/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
@@ -135,7 +135,7 @@
 							if(!user.unEquip(AM, src))
 								return
 							if(do_after(user, SPEED_RELOAD_SPEED, src))
-								ammo_magazine.update_icon()	
+								ammo_magazine.update_icon()
 								ammo_magazine.dropInto(user.loc)
 								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
 													 SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))

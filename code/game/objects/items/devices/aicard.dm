@@ -112,7 +112,7 @@
 			return 0
 
 	user.visible_message("\The [user] starts transferring \the [ai] into \the [src]...", "You start transferring \the [ai] into \the [src]...")
-	show_message(span("critical", "\The [user] is transferring you into \the [src]!"))
+	show_message(SPAN_CRITICAL("\The [user] is transferring you into \the [src]!"))
 
 	if(do_after(user, 100))
 		if(istype(ai.loc, /turf/))

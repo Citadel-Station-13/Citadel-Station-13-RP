@@ -55,9 +55,8 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 				fuel_objs -= fuel
 	else
 		for(var/turf/simulated/T in fire_tiles)
-			if(istype(T.fire))
-				T.fire.RemoveFire()
-			T.fire = null
+			if(T.fire)
+				qdel(T.fire)
 		fire_tiles.Cut()
 		fuel_objs.Cut()
 
@@ -84,7 +83,8 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 			fuel_objs -= fuel
 			if(remove_fire)
 				var/turf/T = fuel.loc
-				if(istype(T) && T.fire) qdel(T.fire)
+				if(istype(T) && T.fire)
+					qdel(T.fire)
 			qdel(fuel)
 
 /turf/proc/create_fire(fl)
@@ -103,7 +103,8 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 	var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in src
 	zone.fire_tiles |= src
-	if(fuel) zone.fuel_objs += fuel
+	if(fuel)
+		zone.fuel_objs += fuel
 
 	return 0
 
@@ -122,14 +123,41 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 	var/firelevel = 1 //Calculated by gas_mixture.calculate_firelevel()
 
+/atom/movable/fire/Initialize(mapload, fl)
+	. = ..()
+
+	if(!istype(loc, /turf))
+		return INITIALIZE_HINT_QDEL
+
+	setDir(pick(GLOB.cardinal))
+
+	var/datum/gas_mixture/air_contents = loc.return_air()
+	color = fire_color(air_contents.temperature)
+	set_light(3, 1, color)
+
+	firelevel = fl
+	air_master.active_hotspots.Add(src)
+
+/atom/movable/fire/Destroy()
+	RemoveFire()
+	return ..()
+
+/atom/movable/fire/proc/RemoveFire()
+	var/turf/T = loc
+	if (istype(T))
+		set_light(0)
+		if(T.fire == src)
+			T.fire = null
+		else
+			stack_trace("Mismatching fire on [T] [COORD(T)]")
+	air_master.active_hotspots.Remove(src)
+
 /atom/movable/fire/process(delta_time)
 	. = 1
 
 	var/turf/simulated/my_tile = loc
 	if(!istype(my_tile) || !my_tile.zone)
-		if(my_tile.fire == src)
-			my_tile.fire = null
-		RemoveFire()
+		qdel(src)
 		return 1
 
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
@@ -184,37 +212,10 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	animate(src, color = fire_color(air_contents.temperature), 5)
 	set_light(l_color = color)
 
-/atom/movable/fire/Initialize(mapload, fl)
-	. = ..()
-
-	if(!istype(loc, /turf))
-		return INITIALIZE_HINT_QDEL
-
-	setDir(pick(GLOB.cardinal))
-
-	var/datum/gas_mixture/air_contents = loc.return_air()
-	color = fire_color(air_contents.temperature)
-	set_light(3, 1, color)
-
-	firelevel = fl
-	air_master.active_hotspots.Add(src)
-
 /atom/movable/fire/proc/fire_color(var/env_temperature)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	var/temperature = max(4000*sqrt(firelevel/firelevel_multiplier), env_temperature)
 	return heat2color(temperature)
-
-/atom/movable/fire/Destroy()
-	RemoveFire()
-	return ..()
-
-/atom/movable/fire/proc/RemoveFire()
-	var/turf/T = loc
-	if (istype(T))
-		set_light(0)
-
-		T.fire = null
-	air_master.active_hotspots.Remove(src)
 
 /turf/simulated
 	var/fire_protection = 0 //Protects newly extinguished tiles from being overrun again.

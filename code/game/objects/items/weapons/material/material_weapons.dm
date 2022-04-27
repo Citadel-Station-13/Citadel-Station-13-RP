@@ -24,7 +24,7 @@
 	var/force_divisor = 0.3
 	var/thrown_force_divisor = 0.3
 	var/dulled_divisor = 0.1	//Just drops the damage to a tenth
-	var/default_material = DEFAULT_WALL_MATERIAL
+	var/default_material = MAT_STEEL
 	var/datum/material/material
 	var/drops_debris = 1
 

@@ -36,7 +36,7 @@
 	var/component_coeff = 1
 
 	var/list/materials = list(
-		DEFAULT_WALL_MATERIAL = 0,
+		MAT_STEEL = 0,
 		MAT_GLASS = 0,
 		MAT_PLASTIC = 0,
 		MAT_GRAPHITE = 0,

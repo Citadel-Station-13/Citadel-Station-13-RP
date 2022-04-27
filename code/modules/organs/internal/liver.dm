@@ -7,7 +7,7 @@
 
 /obj/item/organ/internal/liver/process(delta_time)
 	..()
-	if(!owner)
+	if(!iscarbon(owner))
 		return
 
 	if((owner.life_tick % 10) == 0)
