@@ -3,8 +3,7 @@
 	desc = "Used to hold things when you don't have enough hands."
 	icon_state = "webbing"
 	slot = ACCESSORY_SLOT_UTILITY
-	show_messages = 1
-
+	show_messages = TRUE
 	var/slots = 5
 	var/obj/item/storage/internal/hold
 	w_class = ITEMSIZE_NORMAL
@@ -109,9 +108,6 @@
 	name = "pilot harness"
 	desc = "Sturdy mess of black synthcotton belts and buckles."
 	icon_state = "pilot_webbing2"
-	sprite_sheets = list(
-			SPECIES_TESHARI = 'icons/mob/species/teshari/accessories.dmi'
-			)
 
 /obj/item/clothing/accessory/storage/knifeharness/Initialize(mapload)
 	. = ..()

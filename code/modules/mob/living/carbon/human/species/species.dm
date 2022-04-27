@@ -1,10 +1,10 @@
-/*
-	Datum-based species. Should make for much cleaner and easier to maintain race code.
-*/
+/**
+ * * Datum-based species. Should make for much cleaner and easier to maintain race code.
+ */
 
 /datum/species
 
-	// Descriptors and strings.
+	//! ## Descriptors and strings.
 	/// Species name.
 	var/name
 	/// Pluralized name (since "[name]s" is not always valid)
@@ -14,7 +14,7 @@
 	/// A list of /datum/category_item/catalogue datums, for the cataloguer, or null.
 	var/list/catalogue_data = null
 
-	// Icon/appearance vars.
+	//! ## Icon/appearance vars.
 	/// Normal icon set.
 	var/icobase = 'icons/mob/human_races/r_human.dmi'
 	/// Mutated icon set.
@@ -27,7 +27,7 @@
 	/// Icons used for worn items in suit storage slot.
 	var/suit_storage_icon = 'icons/mob/belt_mirror.dmi'
 
-	// Damage overlay and masks.
+	//! ## Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/masks/dam_human.dmi'
 	var/damage_mask = 'icons/mob/human_races/masks/dam_mask_human.dmi'
 	var/blood_mask = 'icons/mob/human_races/masks/blood_human.dmi'
@@ -89,7 +89,7 @@
 	/// The maximum age a species is allowed to be played as. This is generally determined by lifespan.
 	var/max_age = 70
 
-	// Language/culture vars.
+	//! ## Language/culture vars.
 	/// Default language is used when 'say' is used without modifiers.
 	var/default_language = LANGUAGE_GALCOM
 	/// Default racial language, if any.
@@ -111,16 +111,16 @@
 	/// This list is a guess at things that no one other than the parent species should be able to speak
 	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
-	//Soundy emotey things.
-	var/scream_verb = "screams"
-	var/male_scream_sound		= list('sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'sound/voice/screams/sound_voice_scream_scream_m2.ogg')
-	var/female_scream_sound		= list('sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'sound/voice/screams/sound_voice_scream_scream_f3.ogg')
-	var/male_cough_sounds = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
+	//! ## Soundy emotey things.
+	var/scream_verb         = "screams"
+	var/male_scream_sound   = list('sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'sound/voice/screams/sound_voice_scream_scream_m2.ogg')
+	var/female_scream_sound = list('sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'sound/voice/screams/sound_voice_scream_scream_f3.ogg')
+	var/male_cough_sounds   = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
 	var/female_cough_sounds = list('sound/effects/mob_effects/f_cougha.ogg','sound/effects/mob_effects/f_coughb.ogg')
-	var/male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
+	var/male_sneeze_sound   = 'sound/effects/mob_effects/sneeze.ogg'
 	var/female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
 
-	// Combat vars.
+	//! ## Combat vars.
 	/// Point at which the mob will enter crit.
 	var/total_health = 100
 	/// Possible unarmed attacks that the mob will use in combat,
@@ -151,7 +151,7 @@
 	/// Same flags as glasses.
 	var/vision_flags = SEE_SELF
 
-	// Death vars.
+	//! ## Death vars.
 	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
 	var/bone_type = /obj/item/stack/material/bone
 	var/hide_type = /obj/item/stack/animalhide/human
@@ -164,7 +164,7 @@
 	var/knockout_message = "has been knocked unconscious!"
 	var/cloning_modifier = /datum/modifier/cloning_sickness
 
-	// Environment tolerance/life processes vars.
+	//! ## Environment tolerance/life processes vars.
 	///Used for metabolizing reagents.
 	var/reagent_tag
 	/// Non-oxygen gas breathed, if any.
@@ -173,9 +173,13 @@
 	var/poison_type = /datum/gas/phoron
 	/// Exhaled gas type.
 	var/exhale_type = /datum/gas/carbon_dioxide
+	/// If set, mob will be damaged in light over this value and heal in light below its negative.
+	var/light_dam
 
 	/// Species will try to stabilize at this temperature. (also affects temperature processing)
 	var/body_temperature = BODYTEMP_NORMAL
+	/// Species will gain this much temperature every second
+	var/passive_temp_gain = 0
 
 	//! Cold
 	/// Cold damage level 1 below this point.
@@ -223,9 +227,7 @@
 		"Your skin prickles in the heat."
 		)
 
-
-	/// Species will gain this much temperature every second
-	var/passive_temp_gain = 0
+	//! Pressure
 	/// Dangerously high pressure.
 	var/hazard_high_pressure = HAZARD_HIGH_PRESSURE
 	/// High pressure warning.
@@ -234,9 +236,8 @@
 	var/warning_low_pressure = WARNING_LOW_PRESSURE
 	/// Dangerously low pressure.
 	var/hazard_low_pressure = HAZARD_LOW_PRESSURE
+	/// What pressure do we like to be at?
 	var/safe_pressure = ONE_ATMOSPHERE
-	/// If set, mob will be damaged in light over this value and heal in light below its negative.
-	var/light_dam
 	/// Minimum required pressure for breath, in kPa
 	var/minimum_breath_pressure = 16
 
@@ -246,13 +247,13 @@
 
 	var/metabolic_rate = 1
 
-	// HUD data vars.
+	//! ## HUD data vars.
 	var/datum/hud_data/hud
 	var/hud_type
 	/// This modifies how intensely the health hud is colored.
 	var/health_hud_intensity = 1
 
-	// Body/form vars.
+	//! ## Body/form vars.
 	/// Species-specific verbs.
 	var/list/inherent_verbs = list()
 	/// Species-specific spells.
@@ -264,7 +265,7 @@
 	/// Native darksight distance.
 	var/darksight = 2
 
-	// Flags
+	//! ## Flags
 	/// Various specific features.
 	var/flags = 0
 	/// Appearance/display related features.
@@ -272,21 +273,21 @@
 	/// Flags that specify who can spawn as this species
 	var/spawn_flags = 0
 
-	/// Passive movement speed malus (or boost, if negative)
-	var/slowdown = 0
 	/// What marks are left when walking
 	var/obj/effect/decal/cleanable/blood/tracks/move_trail = /obj/effect/decal/cleanable/blood/tracks/footprints
 	var/list/skin_overlays = list()
 	/// Whether the eyes can be shown above other icons
-	var/has_floating_eyes = 0
+	var/has_floating_eyes = FALSE
 	/// Whether the eyes are shown above all lighting
-	var/has_glowing_eyes = 0
+	var/has_glowing_eyes = FALSE
+	/// Passive movement speed malus (or boost, if negative)
+	var/slowdown = 0
 	/// How much faster or slower the species is in water
 	var/water_movement = 0
 	/// How much faster or slower the species is on snow
 	var/snow_movement = 0
 	/// Whether the species can infect wounds, only works with claws / bites
-	var/infect_wounds = 0
+	var/infect_wounds = FALSE
 
 	/// How affected by item slowdown the species is.
 	var/item_slowdown_mod = 1
@@ -348,7 +349,7 @@
 	/// Organ tag where they are located if they can be kicked for increased pain.
 	var/sexybits_location = BP_GROIN // Come on... You know it's there for most of them.
 
-	// Bump vars
+	//! ## Bump vars
 	/// What are we considered to be when bumped?
 	var/bump_flag = HUMAN
 	/// What can we push?
@@ -360,21 +361,20 @@
 
 	var/list/descriptors = list()
 
-	//This is used in character setup preview generation (prefences_setup.dm) and human mob
-	//rendering (update_icons.dm)
+	/// This is used in character setup preview generation (prefences_setup.dm) and human mob rendering (update_icons.dm)
 	var/color_mult = 0
 
-	//This is for overriding tail rendering with a specific icon in icobase, for static
-	//tails only, since tails would wag when dead if you used this
-	var/icobase_tail = 0
+	/// This is for overriding tail rendering with a specific icon in icobase, for static tails only, since tails would wag when dead if you used this.
+	var/icobase_tail = FALSE
 
 	var/wing_hair
 	var/wing
 	var/wing_animation
 	var/icobase_wing
-	var/wikilink = null //link to wiki page for species
+	/// Link to wiki page for species
+	var/wikilink = null
 
-	//Vorestation Pull for weaver abilities
+	/// Snowflaked Weaver abilities
 	var/is_weaver = FALSE
 	var/silk_production = FALSE
 	var/silk_reserve = 100
@@ -386,12 +386,17 @@
 
 	//Moved these from custom_species.dm
 	//var/vore_numbing = 0
-	var/is_vampire = FALSE // If this is set to true, the person can't get nutrition from food.
+	/// If this is set to true, the person can't get nutrition from food.
+	var/is_vampire = FALSE
 	var/metabolism = 0.0015
-	var/lightweight = FALSE //Oof! Nonhelpful bump stumbles.
-	var/trashcan = FALSE //It's always sunny in the wrestling ring.
-	var/base_species = null // Unused outside of a few species
-	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
+	/// Oof! Nonhelpful bump stumbles.
+	var/lightweight = FALSE
+	/// It's always sunny in the wrestling ring.
+	var/trashcan = FALSE
+	/// Unused outside of a few species
+	var/base_species = null
+	/// Allows the species to choose from body types intead of being forced to be just one.
+	var/selects_bodytype = FALSE
 
 
 /datum/species/New()
@@ -536,21 +541,21 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 				t_him = "him"
 			if(FEMALE)
 				t_him = "her"
-	if(H.zone_sel.selecting == "head") //VOREStation Edit - Headpats and Handshakes.
+	if(H.zone_sel.selecting == "head")
 		H.visible_message( \
-			"<span class='notice'>[H] pats [target] on the head.</span>", \
-			"<span class='notice'>You pat [target] on the head.</span>", )
+			SPAN_NOTICE("[H] pats [target] on the head"), \
+			SPAN_NOTICE("You pat [target] on the head."), )
 	else if(H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand")
 		H.visible_message( \
-			"<span class='notice'>[H] shakes [target]'s hand.</span>", \
-			"<span class='notice'>You shake [target]'s hand.</span>", )
-	//Ports nose booping
+			SPAN_NOTICE("[H] shakes [target]'s hand."), \
+			SPAN_NOTICE("You shake [target]'s hand."), )
 	else if(H.zone_sel.selecting == "mouth")
 		H.visible_message( \
-			"<span class='notice'>[H] boops [target]'s nose.</span>", \
-			"<span class='notice'>You boop [target] on the nose.</span>", )
-	else H.visible_message("<span class='notice'>[H] hugs [target] to make [t_him] feel better!</span>", \
-					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>") //End VOREStation Edit
+			SPAN_NOTICE("[H] boops [target]'s nose."), \
+			SPAN_NOTICE("You boop [target] on the nose."), )
+	else H.visible_message( \
+			SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"), \
+			SPAN_NOTICE("You hug [target] to make [t_him] feel better!"))
 
 /datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
 	if(inherent_verbs)

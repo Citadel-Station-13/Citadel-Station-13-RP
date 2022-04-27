@@ -1175,17 +1175,17 @@ obj/item/clothing/suit/kamishimo
 /obj/item/clothing/suit/storage/parade_coat
 	name = "captain's formal jerkin"
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
-	icon_state = "capformal"
+	icon_state = "capformal_t"
 
 /obj/item/clothing/suit/storage/parade_coat/hos
 	name = "head of security's formal jerkin"
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
-	icon_state = "hosformal"
+	icon_state = "hosformal_t"
 
 /obj/item/clothing/suit/storage/parade_coat/centcom
 	name = "head of security's formal jerkin"
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
-	icon_state = "centcomformal"
+	icon_state = "centcomformal_t"
 
 /* For when I gender these later.
 /obj/item/clothing/suit/storage/parade_coat/female

@@ -13,56 +13,91 @@ GLOBAL_LIST_EMPTY(PDAs)
 	slot_flags = SLOT_ID | SLOT_BELT
 	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/accessories.dmi')
 
-	//Main variables
+	//* Main variables *//
 	var/pdachoice = 1
 	var/owner = null
-	var/default_cartridge = 0 // Access level defined by cartridge
-	var/obj/item/cartridge/cartridge = null //current cartridge
-	var/mode = 0 //Controls what menu the PDA will display. 0 is hub; the rest are either built in or based on cartridge.
+	/// Access level defined by cartridge
+	var/default_cartridge = 0
+	/// Current cartridge
+	var/obj/item/cartridge/cartridge = null
+	/// Controls what menu the PDA will display. 0 is hub; the rest are either built in or based on cartridge.
+	var/mode = 0
 
 	var/lastmode = 0
 	var/ui_tick = 0
 	var/nanoUI[0]
 
-	//Secondary variables
-	var/scanmode = 0 //1 is medical scanner, 2 is forensics, 3 is reagent scanner.
-	var/fon = 0 //Is the flashlight function on?
-	var/f_lum = 2 //Luminosity for the flashlight function
-	var/message_silent = 0 //To beep or not to beep, that is the question
-	var/news_silent = 1 //To beep or not to beep, that is the question.  The answer is No.
-	var/toff = 0 //If 1, messenger disabled
-	var/tnote[0]  //Current Texts
-	var/last_text //No text spamming
-	var/last_honk //Also no honk spamming that's bad too
-	var/ringtone = "beep" //The PDA ringtone!
-	var/newstone = "beep, beep" //The news ringtone!
-	var/lock_code = "" // Lockcode to unlock uplink
-	var/honkamt = 0 //How many honks left when infected with honk.exe
-	var/mimeamt = 0 //How many silence left when infected with mime.exe
-	var/note = "Congratulations, your station has chosen the Thinktronic 5230 Personal Data Assistant!" //Current note in the notepad function
+	//* Secondary variables *//
+	/// 1 is medical scanner, 2 is forensics, 3 is reagent scanner.
+	var/scanmode = 0
+	/// Is the flashlight function on?
+	var/fon = FALSE
+	/// Luminosity for the flashlight function.
+	var/f_lum = 2
+	/// To beep or not to beep, that is the question.
+	var/message_silent = FALSE
+	/// To beep or not to beep, that is the question.  The answer is No.
+	var/news_silent = TRUE
+	/// If true, messenger disabled. Time to go incognito.
+	var/toff = FALSE
+	/// Current Texts.
+	var/tnote[0]
+	/// Prevents text spamming.
+	var/last_text
+	/// Prevents honk spamming that's bad too.
+	var/last_honk
+	/// The PDA ringtone!
+	var/ringtone = "beep"
+	/// The news ringtone!
+	var/newstone = "beep, beep"
+	/// Lockcode to unlock uplink.
+	var/lock_code = ""
+	/// How many honks left when infected with honk.exe.
+	var/honkamt = 0
+	/// How many silence left when infected with mime.exe.
+	var/mimeamt = 0
+	/// Current note in the notepad function
+	var/note = "Congratulations, your station has chosen the Thinktronic 5230 Personal Data Assistant!"
 	var/notehtml = ""
-	var/cart = "" //A place to stick cartridge menu information
-	var/detonate = 1 // Can the PDA be blown up?
-	var/hidden = 0 // Is the PDA hidden from the PDA list?
-	var/active_conversation = null // New variable that allows us to only view a single conversation.
-	var/list/conversations = list()    // For keeping up with who we have PDA messsages from.
-	var/new_message = 0			//To remove hackish overlay check
+	/// A place to stick cartridge menu information.
+	var/cart = ""
+	/// Can the PDA be blown up?
+	var/detonate = TRUE
+	/// Is the PDA hidden from the PDA list?
+	var/hidden = FALSE
+	/// New variable that allows us to only view a single conversation.
+	var/active_conversation = null
+	/// For keeping up with who we have PDA messsages from.
+	var/list/conversations = list()
+	/// To remove hackish overlay check.
+	var/new_message = 0
 	var/new_news = 0
 
-	var/active_feed				// The selected feed
-	var/list/warrant			// The warrant as we last knew it
-	var/list/feeds = list()		// The list of feeds as we last knew them
-	var/list/feed_info = list()	// The data and contents of each feed as we last knew them
+	/// The selected feed.
+	var/active_feed
+	/// The warrant as we last knew it.
+	var/list/warrant
+	/// The list of feeds as we last knew them.
+	var/list/feeds = list()
+	/// The data and contents of each feed as we last knew them.
+	var/list/feed_info = list()
 
-	var/list/cartmodes = list(40, 42, 43, 433, 44, 441, 45, 451, 46, 48, 47, 49) // If you add more cartridge modes add them to this list as well.
-	var/list/no_auto_update = list(1, 40, 43, 44, 441, 45, 451)		     // These modes we turn off autoupdate
-	var/list/update_every_five = list(3, 41, 433, 46, 47, 48, 49)			     // These we update every 5 ticks
+	/// If you add more cartridge modes add them to this list as well.
+	var/list/cartmodes = list(40, 42, 43, 433, 44, 441, 45, 451, 46, 48, 47, 49)
+	/// These modes we turn off autoupdate.
+	var/list/no_auto_update = list(1, 40, 43, 44, 441, 45, 451)
+	/// These we update every 5 ticks.
+	var/list/update_every_five = list(3, 41, 433, 46, 47, 48, 49)
 
-	var/obj/item/card/id/id = null //Making it possible to slot an ID card into the PDA so it can function as both.
-	var/ownjob = null //related to above - this is assignment (potentially alt title)
-	var/ownrank = null // this one is rank, never alt title
+	/// Making it possible to slot an ID card into the PDA so it can function as both.
+	var/obj/item/card/id/id = null
+	/// This is the assignment we've saved into our PDA. (potentially alt title)
+	var/ownjob = null
+	/// This is the assignment we've saved into our PDA. (never alt title)
+	var/ownrank = null
 
-	var/obj/item/paicard/pai = null	// A slot for a personal AI device
+	/// A slot for a personal AI device
+	var/obj/item/paicard/pai = null
 
 /obj/item/pda/examine(mob/user)
 	. = ..()

@@ -34,6 +34,9 @@
 /mob/proc/update_inv_back()
 	return
 
+/mob/proc/update_inv_neck()
+	return
+
 /mob/proc/update_inv_active_hand()
 	return
 

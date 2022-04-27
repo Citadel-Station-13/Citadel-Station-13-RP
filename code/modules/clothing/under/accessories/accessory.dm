@@ -4,19 +4,23 @@
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "bluetie"
 	item_state_slots = list(slot_r_hand_str = "", slot_l_hand_str = "")
-	appearance_flags = RESET_COLOR	// Stops has_suit's color from being multiplied onto the accessory
+	appearance_flags = RESET_COLOR // Stops has_suit's color from being multiplied onto the accessory
 	slot_flags = SLOT_TIE
 	w_class = ITEMSIZE_SMALL
 	var/slot = ACCESSORY_SLOT_DECOR
-	var/obj/item/clothing/has_suit = null		// The suit the tie may be attached to
-	var/image/inv_overlay = null				// Overlay used when attached to clothing.
+	/// The suit the tie may be attached to
+	var/obj/item/clothing/has_suit = null
+	/// Overlay used when attached to clothing.
+	var/image/inv_overlay = null
 	var/image/mob_overlay = null
 	var/overlay_state = null
 	var/concealed_holster = 0
-	var/mob/living/carbon/human/wearer = null 	// To check if the wearer changes, so species spritesheets change properly.
-	var/list/on_rolled = list()					// Used when jumpsuit sleevels are rolled ("rolled" entry) or it's rolled down ("down"). Set to "none" to hide in those states.
+	/// To check if the wearer changes, so species spritesheets change properly.
+	var/mob/living/carbon/human/wearer = null
+	/// Used when jumpsuit sleevels are rolled ("rolled" entry) or it's rolled down ("down"). Set to "none" to hide in those states.
+	var/list/on_rolled = list()
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/accessories.dmi', //Teshari can into webbing, too!
+		SPECIES_TESHARI = 'icons/mob/species/teshari/accessories.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/ties.dmi')
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'

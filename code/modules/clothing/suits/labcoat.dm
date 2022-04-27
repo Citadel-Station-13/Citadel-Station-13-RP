@@ -91,7 +91,7 @@
 /obj/item/clothing/suit/storage/toggle/labcoat/science
 	name = "Scientist labcoat"
 	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
-	icon_state = "labcoat_tox"
+	icon_state = "labcoat_sci"
 	item_state_slots = list(slot_r_hand_str = "science_labcoat", slot_l_hand_str = "science_labcoat")
 
 /obj/item/clothing/suit/storage/toggle/labcoat/emt

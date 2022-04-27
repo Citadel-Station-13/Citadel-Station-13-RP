@@ -46,12 +46,18 @@
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
 
-	slowdown = -0.5
-	snow_movement = -1 // Ignores light snow
-	item_slowdown_mod = 1.25 // Tiny birds don't like heavy things
-	total_health = 75
+	slowdown = -1
+	snow_movement = -2 // Ignores full snow.
+	item_slowdown_mod = 1.25 // Tiny spess raptors don't like heavy things.
+
+
+	total_health = 60 // They're 60% shorter than the normal average.
+
+	sound_mod = 2 // They have super sensitive ears.
 	brute_mod = 1.2
 	burn_mod = 1.25
+	infect_wounds = TRUE //? They got claws and sharp teeth, so yeah.
+
 	mob_size = MOB_SMALL
 	pass_flags = PASSTABLE
 	holder_type = /obj/item/holder/human

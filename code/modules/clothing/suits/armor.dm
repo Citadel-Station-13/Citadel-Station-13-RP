@@ -52,8 +52,8 @@
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/suit/armor/riot/alt
-	icon_state = "riot_new"
-	item_state_slots = list(slot_r_hand_str = "riot_new", slot_l_hand_str = "riot_new")
+	icon_state = "riot"
+	item_state_slots = list(slot_r_hand_str = "riot", slot_l_hand_str = "riot")
 
 /obj/item/clothing/suit/armor/bulletproof
 	name = "bullet resistant vest"
@@ -66,8 +66,8 @@
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/bulletproof/alt
-	icon_state = "bulletproof_new"
-	item_state_slots = list(slot_r_hand_str = "bulletproof_new", slot_l_hand_str = "bulletproof_new")
+	icon_state = "bulletproof"
+	item_state_slots = list(slot_r_hand_str = "bulletproof", slot_l_hand_str = "bulletproof")
 	blood_overlay_type = "armor"
 
 /obj/item/clothing/suit/armor/laserproof
