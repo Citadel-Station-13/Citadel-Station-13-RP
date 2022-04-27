@@ -276,13 +276,9 @@
 		else
 			clear_fullscreen("high")
 
-	if (src.machine)
-		if (src.machine.check_eye(src) < 0)
-			src.reset_view(null)
-	else
-		if(client)
-			reset_view(null)
-
+	if(IsRemoteViewing())
+		if(!machine || machine.check_eye(src) < 0)
+			reset_perspective()
 	return 1
 
 /mob/living/silicon/robot/proc/update_items()

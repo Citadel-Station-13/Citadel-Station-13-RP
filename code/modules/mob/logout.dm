@@ -15,7 +15,8 @@
 				send2irc("LOGOUT", "[key_name(src)] logged out - no more admins online.")
 
 	if(using_perspective?.reset_on_logout)
-		reset_perspective(self_perspective)
+		using_perspective = null
+		reset_perspective(self_perspective, FALSE)
 
 	..()
 

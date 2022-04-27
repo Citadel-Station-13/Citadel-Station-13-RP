@@ -176,37 +176,11 @@ proc/getsensorlevel(A)
 		return pick(base_miss_chance)
 	return zone
 
-/proc/shake_camera(mob/M, duration, strength=1)
-	if(!M || !M.client || M.shakecamera || M.stat || isEye(M) || isAI(M))
-		return
-	M.shakecamera = 1
-	#warn unfuck this
-	spawn(1)
-		if(!M.client)
-			return
-
-		var/atom/oldeye=M.client.eye
-		var/aiEyeFlag = 0
-		if(istype(oldeye, /mob/observer/eye/aiEye))
-			aiEyeFlag = 1
-
-		var/x
-		for(x=0; x<duration, x++)
-			if(aiEyeFlag)
-				M.client.eye = locate(clamp(oldeye.loc.x+rand(-strength,strength), 1, world.maxx), clamp(oldeye.loc.y+rand(-strength,strength), 1, world.maxy), oldeye.loc.z)
-			else
-				M.client.eye = locate(clamp(M.loc.x+rand(-strength,strength), 1, world.maxx), clamp(M.loc.y+rand(-strength,strength), 1, world.maxy), M.loc.z)
-			sleep(1)
-		M.client.eye=oldeye
-		M.shakecamera = 0
-
-
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
 		if (M.real_name == text("[msg]"))
 			return 1
 	return 0
-
 
 /mob/proc/abiotic(var/full_body = 0)
 	return 0

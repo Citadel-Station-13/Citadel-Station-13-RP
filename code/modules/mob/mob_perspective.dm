@@ -23,43 +23,30 @@
 /**
   * Sets us to a /datum/perspective
   * If none is specified, defaults to self_perspective.
+  *
+  * @params
+  * - P - perspective
+  * - apply - whether to apply to client. this shold be false when resetting
+  * 	due to a logout because the whole point is logout kills perspective!
   */
-/mob/proc/reset_perspective(datum/perspective/P)
-	#warn standardize this
-	#warn standardize perspective var
-	#warn standardize sight var
-	if(client)
-		if(A)
-			if(ismovable(A))
-				//Set the the thing unless it's us
-				if(A != src)
-					client.perspective = EYE_PERSPECTIVE
-					client.eye = A
-				else
-					client.eye = client.mob
-					client.perspective = MOB_PERSPECTIVE
-			else if(isturf(A))
-				//Set to the turf unless it's our current turf
-				if(A != loc)
-					client.perspective = EYE_PERSPECTIVE
-					client.eye = A
-				else
-					client.eye = client.mob
-					client.perspective = MOB_PERSPECTIVE
-			else
-				//Do nothing
-		else
-			//Reset to common defaults: mob if on turf, otherwise current loc
-			if(isturf(loc))
-				client.eye = client.mob
-				client.perspective = MOB_PERSPECTIVE
-			else
-				client.perspective = EYE_PERSPECTIVE
-				client.eye = loc
-		return 1
+/mob/proc/reset_perspective(datum/perspective/P, apply)
+	if(ismovable(P))
+		var/atom/movable/AM = P
+		P = AM.get_perspective()
+	if(!P)
+		ensure_self_perspective()
+		P = self_perspective
+	// atm, perspective will handle transfers
+	if(client && apply)
+		P.AddClient(client)
+	if(client || !P.reset_on_logout)
+		using_perspective = P
 
-
-#warn this file
+/**
+ * we're considered to be viewing from some/something else's perspective
+ */
+/mob/proc/IsRemoteViewing()
+	return (using_perspective != self_perspective) && using_perspective
 
 #warn nuke this from orbit
 /mob/proc/reset_view(atom/A)
@@ -79,14 +66,17 @@
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"
 	set category = "OOC"
-	unset_machine()
-	reset_view(null)
+
+	reset_perspective()
 
 /**
  * updates our curent perspective
  */
 /mob/proc/update_perspective()
 	if(!client)
+		return
+	if(using_perspective != client.using_perspective)	// shunt them back in, useful if something's temporarily shunted our client away
+		reset_perspective(using_perspective)
 		return
 	using_perspective?.Update(client)
 
@@ -130,7 +120,6 @@
 /mob/proc/SetSeeInDarkSelf(see_invisible)
 	ensure_self_perspective()
 	self_perspective.SetDarksight(flags)
-
 
 // Set client view distance (size of client's screen). Returns TRUE if anything changed.
 /mob/proc/set_viewsize(var/new_view = world.view)

@@ -511,6 +511,7 @@
 				namecounts[name] = 1
 			creatures[name] = O
 	*/
+
 	for(var/mob/M in sortList(GLOB.mob_list))
 		var/name = M.name
 		if (names.Find(name))
@@ -523,8 +524,6 @@
 		creatures[name] = M
 
 
-	client.perspective = EYE_PERSPECTIVE
-
 	var/eye_name = null
 
 	var/ok = "[is_admin ? "Admin Observe" : "Observe"]"
@@ -534,6 +533,7 @@
 		return
 
 	var/mob/mob_eye = creatures[eye_name]
+
 	reset_perspective(mob_eye.get_perspective())
 
 GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)

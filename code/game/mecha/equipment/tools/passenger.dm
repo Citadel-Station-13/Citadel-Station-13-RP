@@ -29,6 +29,7 @@
 	if(do_after(user, 40, needhand=0))
 		if(!src.occupant)
 			user.forceMove(src)
+			user.update_perspective()
 			occupant = user
 			log_message("[user] boarded.")
 			occupant_message("[user] boarded.")
@@ -55,12 +56,7 @@
 	if(!occupant)
 		return
 	occupant.forceMove(get_turf(src))
-	occupant.reset_view()
-	/*
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-	*/
+	occupant.update_perspective()
 	occupant = null
 	return
 

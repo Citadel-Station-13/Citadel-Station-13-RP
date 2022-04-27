@@ -67,6 +67,12 @@
 		C.mob.reset_perspective()
 
 /**
+ * gets all clients viewing us
+ */
+/datum/perspective/proc/GetClients()
+	return clients.Copy()
+
+/**
  * kicks all clients off us
  */
 /datum/perspective/proc/KickAll()
@@ -199,7 +205,12 @@
 /datum/perspective/self
 
 /datum/perspective/self/GetEye(client/C)
-	return isturf(eye.loc)? eye : eye.loc
+	return get_top_atom(eye)
+
+/datum/perspective/self/proc/get_top_atom(atom/movable/where)
+	while(where && !isturf(where) && !isturf(where.loc))
+		where = where.loc
+	return where
 
 /**
  * temporary perspectives generated - automatically deletes when last client is gone

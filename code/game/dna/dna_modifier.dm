@@ -168,12 +168,10 @@
 	return
 
 /obj/machinery/dna_scannernew/proc/put_in(var/mob/M)
-	if(M.client)
-		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
-	M.loc = src
-	src.occupant = M
-	src.icon_state = "scanner_1"
+	occupant = M
+	M.update_perspective()
+
+	icon_state = "scanner_1"
 
 	// search for ghosts, if the corpse is empty and the scanner is connected to a cloner
 	if(locate(/obj/machinery/computer/cloning, get_step(src, NORTH)) \

@@ -58,10 +58,10 @@
 		return
 
 	add_fingerprint(O)
-	O.reset_view(src)
 	O.forceMove(src)
+	O.update_perspective()
 	occupant = O
-	update_icon()
+	update_appearance()
 	if(alert(O, "Are you sure you're ready to launch?", , "Yes", "No") == "Yes")
 		in_transit = 1
 		playsound(src, HYPERSPACE_WARMUP)
@@ -74,7 +74,7 @@
 		return
 
 	occupant.forceMove(src.loc)
-	occupant.reset_view()
+	occupant.update_perspective()
 	occupant = null
 	update_icon()
 

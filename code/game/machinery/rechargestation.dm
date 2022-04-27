@@ -248,8 +248,8 @@
 			return
 
 		add_fingerprint(R)
-		R.reset_view(src)
 		R.forceMove(src)
+		R.update_perspective()
 		occupant = R
 		update_icon()
 		return 1
@@ -258,10 +258,10 @@
 		var/mob/living/carbon/human/H = L
 		if(H.isSynthetic() || H.wearing_rig)
 			add_fingerprint(H)
-			H.reset_view(src)
 			H.forceMove(src)
+			H.update_perspective()
 			occupant = H
-			update_icon()
+			update_appearance()
 			return 1
 	else
 		return
@@ -271,9 +271,9 @@
 		return
 
 	occupant.forceMove(src.loc)
-	occupant.reset_view()
+	occupant.update_perspective()
 	occupant = null
-	update_icon()
+	update_appearance()
 
 /obj/machinery/recharge_station/verb/move_eject()
 	set category = "Object"

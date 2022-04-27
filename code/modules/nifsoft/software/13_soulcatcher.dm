@@ -281,9 +281,7 @@
 	..()
 	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
 	identifying_gender = client.prefs.identifying_gender
-	if(eyeobj)
-		#warn augh use nif owner
-		client.eye = eyeobj
+	reset_perspective((nif?.owner) || nif)
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)
