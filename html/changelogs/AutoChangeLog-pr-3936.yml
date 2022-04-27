@@ -1,6 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "FBP Organs"
-  - code_imp: "Did a lot of reorganizing of species, organs, and language related defines."
-  - refactor: "Some organ stuff"
