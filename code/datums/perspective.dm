@@ -159,7 +159,7 @@
  * updates eye, perspective var, virtual eye, lazy eye, sight, see in dark, see invis
  */
 /datum/perspective/proc/Update(client/C)
-	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_UPDATE_CLIENT, C)
+	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_UPDATE, C)
 	C.eye = GetEye()
 	C.perspective = GetEyeMode()
 	C.mob.sight = sight

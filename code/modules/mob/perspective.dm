@@ -43,6 +43,8 @@
 	// great, P exists
 	// tell it to add us
 	P.AddMob(src)
+	// signal
+	SEND_SIGNAL(COMSIG_MOB_RESET_PERSPECTIVE, P)
 	// if client exists and we want to apply
 	if(apply && client)
 		if(!forceful)
@@ -82,6 +84,7 @@
 	if(using_perspective != client.using_perspective)	// shunt them back in, useful if something's temporarily shunted our client away
 		reset_perspective(using_perspective)
 		return
+	SEND_SIGNAL(COMSIG_MOB_UPDATE_PERSPECTIVE)
 	using_perspective?.Update(client)
 
 /**

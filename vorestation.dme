@@ -118,6 +118,7 @@
 #include "code\__DEFINES\dcs\flags.dm"
 #include "code\__DEFINES\dcs\helpers.dm"
 #include "code\__DEFINES\dcs\signals.dm"
+#include "code\__DEFINES\dcs\mobs\signals_mob_perspectiive.dm"
 #include "code\__DEFINES\dcs\signals\signals_area.dm"
 #include "code\__DEFINES\dcs\signals\signals_object.dm"
 #include "code\__DEFINES\dcs\signals\datums\signals_perspective.dm"
