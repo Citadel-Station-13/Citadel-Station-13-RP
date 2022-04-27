@@ -1,34 +1,108 @@
+/**
+ * The base type for nearly all physical objects in SS13
+
+ * Lots and lots of functionality lives here, although in general we are striving to move
+ * as much as possible to the components/elements system
+ */
 /atom
-	layer = TURF_LAYER //This was here when I got here. Why though?
+	layer = TURF_LAYER
 	var/level = 2
 
-	/// Atom flags
+	/// Default pixel x shifting for the atom's icon.
+	var/base_pixel_x = 0
+	/// Default pixel y shifting for the atom's icon.
+	var/base_pixel_y = 0
+	/// Used for changing icon states for different base sprites.
+	var/base_icon_state
+	/// Atom flags.
 	var/flags = NONE
-	///Intearaction flags
+	/// Intearaction flags.
 	var/interaction_flags_atom = NONE
-
-	var/list/fingerprints
-	var/list/fingerprintshidden
-	var/fingerprintslast = null
-	var/list/blood_DNA
-	var/was_bloodied
-	var/blood_color
+	/// Holder for the last time we have been bumped.
 	var/last_bumped = 0
+	/// Pass flags.
 	var/pass_flags = NONE
-	var/throwpass = 0
-	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
-	var/simulated = 1 //filter for actions - used by lighting overlays
+	/// If true, you can throw things past this atom.
+	var/throwpass = FALSE
+	/// The higher the germ level, the more germ on the atom.
+	var/germ_level = GERM_LEVEL_AMBIENT
+	/// Filter for actions - used by lighting overlays.
+	var/simulated = TRUE
+	/// The 'action' the atom takes to speak.
 	var/atom_say_verb = "says"
-	var/bubble_icon = "normal" ///what icon the atom uses for speechbubbles
-	var/fluorescent // Shows up under a UV light.
+	/// What icon the atom uses for speechbubbles.
+	var/bubble_icon = "normal"
+	/// For handling persistent filters
+	var/list/filter_data
+	/// The orbiter comopnent if we're being orbited.
+	var/datum/component/orbiter/orbiters
 
-	///This atom's HUD (med/sec, etc) images. Associative list.
+	/**
+	 * used to store the different colors on an atom
+	 *
+	 * its inherent color, the colored paint applied on it, special color effect etc...
+	 */
+	var/list/atom_colours
+
+//! ## HUDs
+	/// This atom's HUD (med/sec, etc) images. Associative list.
 	var/list/image/hud_list = null
-	///HUD images that this atom can provide.
+	/// HUD images that this atom can provide.
 	var/list/hud_possible
 
-	var/list/atom_colours	 //used to store the different colors on an atom
-							//its inherent color, the colored paint applied on it, special color effect etc...
+//! ## TG Smoothing
+	/// Icon-smoothing behavior.
+	var/smoothing_flags = NONE
+	/// What directions this is currently smoothing with. IMPORTANT: This uses the smoothing direction flags as defined in icon_smoothing.dm, instead of the BYOND flags.
+	var/smoothing_junction = null //This starts as null for us to know when it's first set, but after that it will hold a 8-bit mask ranging from 0 to 255.
+	/// Smoothing variable
+	var/top_left_corner
+	/// Smoothing variable
+	var/top_right_corner
+	/// Smoothing variable
+	var/bottom_left_corner
+	/// Smoothing variable
+	var/bottom_right_corner
+	/// What smoothing groups does this atom belongs to, to match canSmoothWith. If null, nobody can smooth with it.
+	var/list/smoothing_groups = null
+	/// List of smoothing groups this atom can smooth with. If this is null and atom is smooth, it smooths only with itself.
+	var/list/canSmoothWith = null
+
+//! ## Chemistry
+	var/datum/reagents/reagents = null
+
+	//? replaced by OPENCONTAINER flags and atom/proc/is_open_container()
+	//var/chem_is_open_container = 0
+
+//! ## Detective Work
+	/// Used for the duplicate data points kept in the scanners.
+	var/list/original_atom
+	/// List of all fingerprints on the atom.
+	var/list/fingerprints
+	/// Same as fingerprints, but only can be seen via VV.
+	var/list/fingerprintshidden
+	/// Last fingerprints to touch this atom.
+	var/fingerprintslast = null
+	/// Status flag for if this atom has blood on it.
+	var/was_bloodied
+	/// Holder for the dna the blood on this atom.
+	var/list/blood_DNA
+	/// The color of the blood on this atom.
+	var/blood_color
+	/// Shows up under a UV light.
+	var/fluorescent
+
+//! ## Overlays
+	/// vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
+	var/list/managed_vis_overlays
+	/// Overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc.
+	/// Single items are stored on their own, not in a list.
+	var/list/managed_overlays
+
+	/// Our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate.
+	var/list/our_overlays
+	/// Overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
+	var/list/priority_overlays
 
 /*		new overlay system
 	/// a very temporary list of overlays to remove
@@ -36,63 +110,24 @@
 	/// a very temporary list of overlays to add
 	var/list/add_overlays
 */
-
-	///vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays
-	var/list/managed_vis_overlays
-	///overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc
-	var/list/managed_overlays
-
-	var/list/filter_data //For handling persistent filters
-
-	/// The orbiter comopnent if we're being orbited.
-	var/datum/component/orbiter/orbiters
-
-	///Default pixel x shifting for the atom's icon.
-	var/base_pixel_x = 0
-	///Default pixel y shifting for the atom's icon.
-	var/base_pixel_y = 0
-	///Used for changing icon states for different base sprites.
-	var/base_icon_state
-
-	///Icon-smoothing behavior.
-	var/smoothing_flags = NONE
-	///What directions this is currently smoothing with. IMPORTANT: This uses the smoothing direction flags as defined in icon_smoothing.dm, instead of the BYOND flags.
-	var/smoothing_junction = null //This starts as null for us to know when it's first set, but after that it will hold a 8-bit mask ranging from 0 to 255.
-	///Smoothing variable
-	var/top_left_corner
-	///Smoothing variable
-	var/top_right_corner
-	///Smoothing variable
-	var/bottom_left_corner
-	///Smoothing variable
-	var/bottom_right_corner
-	///What smoothing groups does this atom belongs to, to match canSmoothWith. If null, nobody can smooth with it.
-	var/list/smoothing_groups = null
-	///List of smoothing groups this atom can smooth with. If this is null and atom is smooth, it smooths only with itself.
-	var/list/canSmoothWith = null
-
-	/// Chemistry.
-	var/datum/reagents/reagents = null
-
-	//var/chem_is_open_container = 0
-	// replaced by OPENCONTAINER flags and atom/proc/is_open_container()
-	///Chemistry.
-
-	//Detective Work, used for the duplicate data points kept in the scanners
-	var/list/original_atom
-
-	// Overlays
-	var/list/our_overlays	//our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate
-	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
-
-	/// base layer - defaults to layer
+//! ## Layers
+	/// Base layer - defaults to layer.
 	var/base_layer
-	/// relative layer - position this atom should be in within things of the same base layer. defaults to 0
+	/// Relative layer - position this atom should be in within things of the same base layer. defaults to 0.
 	var/relative_layer = 0
 
+/**
+ * Called when an atom is created in byond (built in engine proc)
+ *
+ * Not a lot happens here in SS13 code, as we offload most of the work to the
+ * [Intialization][/atom/proc/Initialize] proc, mostly we run the preloader
+ * if the preloader is being used and then call [InitAtom][/datum/controller/subsystem/atoms/proc/InitAtom] of which the ultimate
+ * result is that the Intialize proc is called.
+ *
+ * We also generate a tag here if the DF_USE_TAG flag is set on the atom
+ */
 /atom/New(loc, ...)
-	// During dynamic mapload (reader.dm) this assigns the var overrides from the .dmm file
-	// Native BYOND maploading sets those vars before invoking New(), by doing this FIRST we come as close to that behavior as we can.
+	//atom creation method that preloads variables at creation
 	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		world.preloader_load(src)
 
@@ -105,20 +140,48 @@
 		if(SSatoms.InitAtom(src, args))
 			//we were deleted
 			return
-	// Don't call ..() unless /datum/New() ever exists
 
-// Note: I removed "auto_init" feature (letting types disable auto-init) since it shouldn't be needed anymore.
-// 	You can replicate the same by checking the value of the first parameter to initialize() ~Leshana
-
-// Called after New if the map is being loaded, with mapload = TRUE
-// Called from base of New if the map is not being loaded, with mapload = FALSE
-// This base must be called or derivatives must set initialized to TRUE
-// Must not sleep!
-// Other parameters are passed from New (excluding loc), this does not happen if mapload is TRUE
-// Must return an Initialize hint. Defined in code/__defines/subsystems.dm
+/**
+ * The primary method that objects are setup in SS13 with
+ *
+ * we don't use New as we have better control over when this is called and we can choose
+ * to delay calls or hook other logic in and so forth
+ *
+ * During roundstart map parsing, atoms are queued for intialization in the base atom/New(),
+ * After the map has loaded, then Initalize is called on all atoms one by one. NB: this
+ * is also true for loading map templates as well, so they don't Initalize until all objects
+ * in the map file are parsed and present in the world
+ *
+ * If you're creating an object at any point after SSInit has run then this proc will be
+ * immediately be called from New.
+ *
+ * mapload: This parameter is true if the atom being loaded is either being intialized during
+ * the Atom subsystem intialization, or if the atom is being loaded from the map template.
+ * If the item is being created at runtime any time after the Atom subsystem is intialized then
+ * it's false.
+ *
+ * The mapload argument occupies the same position as loc when Initialize() is called by New().
+ * loc will no longer be needed after it passed New(), and thus it is being overwritten
+ * with mapload at the end of atom/New() before this proc (atom/Initialize()) is called.
+ *
+ * You must always call the parent of this proc, otherwise failures will occur as the item
+ * will not be seen as initalized (this can lead to all sorts of strange behaviour, like
+ * the item being completely unclickable)
+ *
+ * !Note: Ignore the note below until the first two lines of the proc are uncommented. -Zandario
+ * You must not sleep in this proc, or any subprocs
+ *
+ * Any parameters from new are passed through (excluding loc), naturally if you're loading from a map
+ * there are no other arguments
+ *
+ * Must return an [initialization hint][INITIALIZE_HINT_NORMAL] or a runtime will occur.
+ *
+ * !Note: the following functions don't call the base for optimization and must copypasta handling:
+ * * [/turf/proc/Initialize]
+ */
 /atom/proc/Initialize(mapload, ...)
-	// SHOULD_NOT_SLEEP(TRUE)
-	// SHOULD_CALL_PARENT(TRUE)
+	//SHOULD_NOT_SLEEP(TRUE)
+	//SHOULD_CALL_PARENT(TRUE)
 	if(flags & INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
@@ -143,20 +206,25 @@
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guranteed to be on afterwards anyways.
 
-/*
-	if (canSmoothWith)
-		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
-*/
-
 	ComponentInitialize()
 
 	return INITIALIZE_HINT_NORMAL
 
-//called if Initialize returns INITIALIZE_HINT_LATELOAD
+/**
+ * Late Intialization, for code that should run after all atoms have run Intialization
+ *
+ * To have your LateIntialize proc be called, your atoms [Initalization][/atom/proc/Initialize]
+ *  proc must return the hint
+ * [INITIALIZE_HINT_LATELOAD] otherwise you will never be called.
+ *
+ * useful for doing things like finding other machines on GLOB.machines because you can guarantee
+ * that all atoms will actually exist in the "WORLD" at this time and that all their Intialization
+ * code has been run
+ */
 /atom/proc/LateInitialize()
-	return
+	set waitfor = FALSE
 
-// Put your AddComponent() calls here
+/// Put your [AddComponent] calls here
 /atom/proc/ComponentInitialize()
 	return
 
@@ -170,63 +238,47 @@
  * * clears overlays and priority overlays
  * * clears the light object
  */
-/atom/Destroy()
-/*
+/atom/Destroy(force)
 	if(alternate_appearances)
-		for(var/K in alternate_appearances)
-			var/datum/atom_hud/alternate_appearance/AA = alternate_appearances[K]
-			AA.remove_from_hud(src)
-*/
+		for(var/current_alternate_appearance in alternate_appearances)
+			var/datum/atom_hud/alternate_appearance/selected_alternate_appearance = alternate_appearances[current_alternate_appearance]
+			selected_alternate_appearance.remove_from_hud(src)
 
 	if(reagents)
-		qdel(reagents)
+		QDEL_NULL(reagents)
 
 	orbiters = null // The component is attached to us normaly and will be deleted elsewhere
 
 	LAZYCLEARLIST(overlays)
-
-/*
-	for(var/i in targeted_by)
-		var/mob/M = i
-		LAZYREMOVE(M.do_afters, src)
-	targeted_by = null
-*/
+	LAZYNULL(managed_overlays)
 
 	QDEL_NULL(light)
+
+	if(smoothing_flags & SMOOTH_QUEUED)
+		SSicon_smooth.remove_from_queues(src)
 
 	return ..()
 
 /atom/proc/reveal_blood()
 	return
 
-//return flags that should be added to the viewer's sight var.
-//Otherwise return a negative number to indicate that the view should be cancelled.
+/// Return flags that should be added to the viewer's sight var.
+// Otherwise return a negative number to indicate that the view should be cancelled.
 /atom/proc/check_eye(user as mob)
 	if (istype(user, /mob/living/silicon/ai)) // WHYYYY
 		return 0
 	return -1
 
-/atom/proc/Bumped(AM as mob|obj)
+/atom/proc/Bumped(atom/movable/bumped_atom)
 	set waitfor = FALSE
+	SEND_SIGNAL(src, COMSIG_ATOM_BUMPED, bumped_atom)
 
-// Convenience proc to see if a container is open for chemistry handling
-// returns true if open
-// false if closed
+/// Convenience proc to see if a container is open for chemistry handling.
 /atom/proc/is_open_container()
 	return flags & OPENCONTAINER
 
-/*//Convenience proc to see whether a container can be accessed in a certain way.
-
-	proc/can_subract_container()
-		return flags & EXTRACT_CONTAINER
-
-	proc/can_add_container()
-		return flags & INSERT_CONTAINER
-*/
-
-// If you want to use this, the atom must have the PROXMOVE flag, and the moving
-// atom must also have the PROXMOVE flag currently to help with lag. ~ ComicIronic
-/atom/proc/HasProximity(atom/movable/AM as mob|obj)
+///Is this atom within 1 tile of another atom
+/atom/proc/HasProximity(atom/movable/proximity_check_mob as mob|obj)
 	return
 
 /atom/proc/emp_act(var/severity)
@@ -241,13 +293,14 @@
 /atom/proc/blob_act()
 	return
 
+///Return true if we're inside the passed in atom
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
 	if(ispath(container))
 		if(istype(src.loc, container))
-			return 1
+			return TRUE
 	else if(src in container)
-		return 1
-	return
+		return TRUE
+	return FALSE
 
 /*
  *	atom/proc/search_contents_for(path,list/filter_path=null)
@@ -258,7 +311,6 @@
  *
  * RETURNS: list of found atoms
  */
-
 /atom/proc/search_contents_for(path,list/filter_path=null)
 	var/list/found = list()
 	for(var/atom/A in src)
@@ -291,31 +343,64 @@
 	if(should_override)
 		. = override.Join("")
 
-///Generate the full examine string of this atom (including icon for goonchat)
+/// Generate the full examine string of this atom (including icon for goonchat)
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
-	return "[icon2html(thing = src, target = user)] [thats? "That's ":""][get_examine_name(user)]"
-// todo:
+	return "[icon2html(src, user)] [thats? "That's ":""][get_examine_name(user)]"
+
+/**
+ * Returns an extended list of examine strings for any contained ID cards.
+ *
+ * Arguments:
+ * * user - The user who is doing the examining.
+ */
+/atom/proc/get_id_examine_strings(mob/user)
+	. = list()
+	return
+
+/// Used to insert text after the name but before the description in examine()
+/atom/proc/get_name_chaser(mob/user, list/name_chaser = list())
+	return name_chaser
+
+/**
+ * Called when a mob examines (shift click or verb) this atom
+ *
+ * Default behaviour is to get the name and icon of the object and it's reagents where
+ * the [TRANSPARENT] flag is set on the reagents holder
+ *
+ * Produces a signal [COMSIG_PARENT_EXAMINE]
+ */
 /atom/proc/examine(mob/user)
 	. = list("[get_examine_string(user, TRUE)].")
 
+	. += get_name_chaser(user)
 	if(desc)
 		. += desc
-
+/*
+	if(custom_materials)
+		var/list/materials_list = list()
+		for(var/datum/material/current_material as anything in custom_materials)
+			materials_list += "[current_material.name]"
+		. += "<u>It is made out of [english_list(materials_list)]</u>."
+*/
 	if(reagents)
-		if(is_open_container())
+		if(reagents.reagents_holder_flags & TRANSPARENT)
 			. += "It contains:"
 			if(length(reagents.reagent_list))
 				if(user.can_see_reagents()) //Show each individual reagent
-					for(var/datum/reagent/R in reagents.reagent_list)
-						. += "[R.volume] units of [R.name]"
+					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+						. += "[round(current_reagent.volume, 0.01)] units of [current_reagent.name]"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
-					for(var/datum/reagent/R in reagents.reagent_list)
-						total_volume += R.volume
+					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+						total_volume += current_reagent.volume
 					. += "[total_volume] units of various reagents"
 			else
 				. += "Nothing."
-
+		else if(reagents.reagents_holder_flags & AMOUNT_VISIBLE)
+			if(reagents.total_volume)
+				. += SPAN_NOTICE("It has [reagents.total_volume] unit\s left.")
+			else
+				. += SPAN_DANGER("It's empty.")
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
@@ -409,15 +494,21 @@
 	invisibility = new_invisibility
 	return TRUE
 
-/atom/proc/ex_act()
-	return
+/**
+ * React to being hit by an explosion
+ *
+ * Should be called through the [EX_ACT] wrapper macro.
+ * The wrapper takes care of the [COMSIG_ATOM_EX_ACT] signal.
+ * as well as calling [/atom/proc/contents_explosion].
+ */
+/atom/proc/ex_act(severity, target)
+	set waitfor = FALSE
 
 /atom/proc/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
 	return -1
 
 /atom/proc/fire_act()
 	return
-
 
 // Returns an assoc list of RCD information.
 // Example would be: list(RCD_VALUE_MODE = RCD_DECONSTRUCT, RCD_VALUE_DELAY = 50, RCD_VALUE_COST = RCD_SHEETS_PER_MATTER_UNIT * 4)
@@ -431,9 +522,9 @@
 /atom/proc/melt()
 	return
 
-/atom/proc/hitby(atom/movable/AM as mob|obj)
-	if (density)
-		AM.throwing = 0
+/atom/proc/hitby(atom/movable/hitting_atom as mob|obj)
+	if(density)
+		hitting_atom.throwing = 0
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M as mob)
@@ -589,7 +680,7 @@
 		A.fingerprintshidden |= fingerprintshidden.Copy()    //admin	A.fingerprintslast = fingerprintslast
 
 
-//returns 1 if made bloody, returns 0 otherwise
+/// Returns 1 if made bloody, returns 0 otherwise
 /atom/proc/add_blood(mob/living/carbon/human/M as mob)
 
 	if(flags & NOBLOODY)
@@ -653,20 +744,18 @@
 	else
 		return 0
 
-// Show a message to all mobs and objects in sight of this atom
-// Use for objects performing visible actions
-// message is output to anyone who can see, e.g. "The [src] does something!"
-// blind_message (optional) is what blind people will hear e.g. "You hear something!"
+/// Show a message to all mobs and objects in sight of this atom
+/// Use for objects performing visible actions
+/// message is output to anyone who can see, e.g. "The [src] does something!"
+/// blind_message (optional) is what blind people will hear e.g. "You hear something!"
 /atom/proc/visible_message(message, self_message, blind_message, range = world.view)
 
-	//VOREStation Edit
 	var/list/see
 	if(isbelly(loc))
 		var/obj/belly/B = loc
 		see = B.get_mobs_and_objs_in_belly()
 	else
 		see = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
-	//VOREStation Edit End
 
 	var/list/seeing_mobs = see["mobs"]
 	var/list/seeing_objs = see["objs"]
@@ -683,11 +772,11 @@
 		else if(blind_message)
 			M.show_message(blind_message, 2)
 
-// Show a message to all mobs and objects in earshot of this atom
-// Use for objects performing audible actions
-// message is the message output to anyone who can hear.
-// deaf_message (optional) is what deaf people will see.
-// hearing_distance (optional) is the range, how many tiles away the message can be heard.
+/// Show a message to all mobs and objects in earshot of this atom
+/// Use for objects performing audible actions
+/// message is the message output to anyone who can hear.
+/// deaf_message (optional) is what deaf people will see.
+/// hearing_distance (optional) is the range, how many tiles away the message can be heard.
 /atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance)
 
 	var/range = hearing_distance || world.view
@@ -757,16 +846,15 @@
 /atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
 
-/*
-	Atom Colour Priority System
-	A System that gives finer control over which atom colour to colour the atom with.
-	The "highest priority" one is always displayed as opposed to the default of
-	"whichever was set last is displayed"
-*/
 
-/*
-	Adds an instance of colour_type to the atom's atom_colours list
-*/
+//! ## Atom Colour Priority System
+/**
+ * A System that gives finer control over which atom colour to colour the atom with.
+ * The "highest priority" one is always displayed as opposed to the default of
+ * "whichever was set last is displayed"
+ */
+
+/// Adds an instance of colour_type to the atom's atom_colours list
 /atom/proc/add_atom_colour(coloration, colour_priority)
 	if(!atom_colours || !atom_colours.len)
 		atom_colours = list()
@@ -778,9 +866,7 @@
 	atom_colours[colour_priority] = coloration
 	update_atom_colour()
 
-/*
-	Removes an instance of colour_type from the atom's atom_colours list
-*/
+/// Removes an instance of colour_type from the atom's atom_colours list
 /atom/proc/remove_atom_colour(colour_priority, coloration)
 	if(!atom_colours)
 		atom_colours = list()
@@ -792,10 +878,7 @@
 	atom_colours[colour_priority] = null
 	update_atom_colour()
 
-/*
-	Resets the atom's color to null, and then sets it to the highest priority
-	colour available
-*/
+/// Resets the atom's color to null, and then sets it to the highest priority colour available
 /atom/proc/update_atom_colour()
 	if(!atom_colours)
 		atom_colours = list()
@@ -811,7 +894,7 @@
 			color = C
 			return
 
-///Setter for the `base_pixel_x` variable to append behavior related to its changing.
+/// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)
 	if(base_pixel_x == new_value)
 		return
@@ -820,8 +903,7 @@
 
 	pixel_x = pixel_x + base_pixel_x - .
 
-
-///Setter for the `base_pixel_y` variable to append behavior related to its changing.
+/// Setter for the `base_pixel_y` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_y(new_value)
 	if(base_pixel_y == new_value)
 		return
@@ -831,19 +913,19 @@
 	pixel_y = pixel_y + base_pixel_y - .
 
 /**
-  * Returns true if this atom has gravity for the passed in turf
-  *
-  * Sends signals COMSIG_ATOM_HAS_GRAVITY and COMSIG_TURF_HAS_GRAVITY, both can force gravity with
-  * the forced gravity var
-  *
-  * Gravity situations:
-  * * No gravity if you're not in a turf
-  * * No gravity if this atom is in is a space turf
-  * * Gravity if the area it's in always has gravity
-  * * Gravity if there's a gravity generator on the z level
-  * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
-  * * otherwise no gravity
-  */
+ * Returns true if this atom has gravity for the passed in turf
+ *
+ * Sends signals COMSIG_ATOM_HAS_GRAVITY and COMSIG_TURF_HAS_GRAVITY, both can force gravity with
+ * the forced gravity var
+ *
+ * Gravity situations:
+ * * No gravity if you're not in a turf
+ * * No gravity if this atom is in is a space turf
+ * * Gravity if the area it's in always has gravity
+ * * Gravity if there's a gravity generator on the z level
+ * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
+ * * otherwise no gravity
+ */
 /atom/proc/has_gravity(turf/T)
 	if(!T || !isturf(T))
 		T = get_turf(src)
@@ -883,9 +965,9 @@
 /atom/proc/is_incorporeal()
 	return FALSE
 
-// Tool behavior procedure. Redirects to tool-specific procs by default.
-// You can override it to catch all tool interactions, for use in complex deconstruction procs.
-// Just don't forget to return ..() in the end.
+/// Tool behavior procedure. Redirects to tool-specific procs by default.
+/// You can override it to catch all tool interactions, for use in complex deconstruction procs.
+/// Just don't forget to return ..() in the end.
 /atom/proc/tool_act(mob/living/user, obj/item/I, tool_type)
 	switch(tool_type)
 		if(TOOL_CROWBAR)
@@ -913,7 +995,7 @@
 /atom/proc/multitool_check_buffer(user, obj/item/I, silent = FALSE)
 	if(!I.tool_behaviour == TOOL_MULTITOOL)
 		if(user && !silent)
-			to_chat(user, "<span class='warning'>[I] has no data buffer!</span>")
+			to_chat(user, SPAN_WARNING("[I] has no data buffer!"))
 		return FALSE
 	return TRUE
 
@@ -1012,18 +1094,14 @@
 	filter_data = null
 	filters = null
 
-/**
- * set the new base layer we should be on
- */
+/// Sets the new base layer we should be on.
 /atom/proc/set_base_layer(new_layer)
 	ASSERT(isnum(new_layer))
 	base_layer = new_layer
 	// rel layer being null is fine
 	layer = base_layer + 0.000001 * relative_layer
 
-/**
- * set the relative layer within our layer we should be on
- */
+/// Set the relative layer within our layer we should be on.
 /atom/proc/set_relative_layer(new_layer)
 	ASSERT(isnum(new_layer))
 	if(isnull(base_layer))

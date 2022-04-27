@@ -1,3 +1,18 @@
+
+/**
+ * Intialize a mob
+ *
+ * Adds to global lists
+ * * GLOB.mob_list
+ * * dead_mob_list - if mob is dead
+ * * living_mob_list - if the mob is alive
+ *
+ * Other stuff:
+ * * Sets the mob focus to itself
+ * * Generates huds
+ * * If there are any global alternate apperances apply them to this mob
+ * * Intialize the transform of the mob
+ */
 /mob/Initialize(mapload)
 	GLOB.mob_list += src
 	set_focus(src)
@@ -16,7 +31,29 @@
 	update_transform() // Some mobs may start bigger or smaller than normal.
 	return ..()
 
-/mob/Destroy()//This makes sure that mobs withGLOB.clients/keys are not just deleted from the game.
+/**
+ * Delete a mob
+ *
+ * Removes mob from the following global lists
+ * * GLOB.mob_list
+ * * dead_mob_list
+ * * living_mob_list
+ *
+ * Unsets the focus var
+ *
+ * Clears alerts for this mob
+ *
+ * Resets all the observers perspectives to the tile this mob is on
+ *
+ * qdels any client colours in place on this mob
+ *
+ * Ghostizes the client attached to this mob
+ *
+ * Parent call
+ *
+ * Returns QDEL_HINT_HARDDEL (don't change this)
+ */
+/mob/Destroy()//This makes sure that mobs with GLOB.clients/keys are not just deleted from the game.
 	GLOB.mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
@@ -40,9 +77,20 @@
 	..()
 	return QDEL_HINT_HARDDEL
 
+/**
+ * Generate the tag for this mob
+ *
+ * This is simply "mob_"+ a global incrementing counter that goes up for every mob
+ */
 /mob/GenerateTag()
 	tag = "mob_[++next_mob_id]"
 
+/**
+ * Prepare the huds for this atom
+ *
+ * Goes through hud_possible list and adds the images to the hud_list variable (if not already
+ * cached)
+ */
 /atom/proc/prepare_huds()
 	hud_list = list()
 	for(var/hud in hud_possible)
@@ -79,7 +127,8 @@
 	spell_masters = null
 	zone_sel = null
 
-/mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+/// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+/mob/proc/show_message(msg, type, alt, alt_type)
 
 	if(!client && !teleop)	return
 
@@ -107,19 +156,28 @@
 			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]")
 	return
 
-// Returns an amount of power drawn from the object (-1 if it's not viable).
-// If drain_check is set it will not actually drain power, just return a value.
-// If surge is set, it will destroy/damage the recipient and not return any power.
-// Not sure where to define this, so it can sit here for the rest of time.
+/**
+ * Returns an amount of power drawn from the object (-1 if it's not viable).
+ * Not sure where to define this, so it can sit here for the rest of time.
+ *
+ * * @params
+ * * [drain_check] If is set it will not actually drain power, just return a value.
+ * * [surge] If is set, it will destroy/damage the recipient and not return any power.
+ */
 /atom/proc/drain_power(var/drain_check,var/surge, var/amount = 0)
 	return -1
 
-// Show a message to all mobs and objects in earshot of this one
-// This would be for audible actions by the src mob
-// message is the message output to anyone who can hear.
-// self_message (optional) is what the src mob hears.
-// deaf_message (optional) is what deaf people will see.
-// hearing_distance (optional) is the range, how many tiles away the message can be heard.
+/**
+ * Show a message to all mobs in earshot of this one
+ *
+ * This would be for audible actions by the src mob
+ *
+ * vars:
+ * * message is the message output to anyone who can hear.
+ * * self_message (optional) is what the src mob hears.
+ * * deaf_message (optional) is what deaf people will see.
+ * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
+ */
 /mob/audible_message(var/message, var/deaf_message, var/hearing_distance, var/self_message)
 
 	var/range = hearing_distance || world.view
@@ -153,6 +211,7 @@
 #define UNBUCKLED 0
 #define PARTIALLY_BUCKLED 1
 #define FULLY_BUCKLED 2
+
 /mob/proc/buckled()
 	// Preliminary work for a future buckle rewrite,
 	// where one might be fully restrained (like an elecrical chair), or merely secured (shuttle chair, keeping you safe but not otherwise restrained from acting)
@@ -198,13 +257,19 @@
 #undef PARTIALLY_BUCKLED
 #undef FULLY_BUCKLED
 
+///Is the mob restrained
 /mob/proc/restrained()
 	return
 
 /mob/proc/show_inv(mob/user as mob)
 	return
-
-//mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
+/**
+ * Examine a mob
+ *
+ * mob verbs are faster than object verbs. See
+ * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
+ * for why this isn't atom/verb/examine()
+ */
 /mob/verb/examinate(atom/A as mob|obj|turf in view(get_turf(src))) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
@@ -231,6 +296,19 @@
 
 	to_chat(src, result.Join("\n"))
 
+/**
+ * Point at an atom
+ *
+ * mob verbs are faster than object verbs. See
+ * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
+ * for why this isn't atom/verb/pointed()
+ *
+ * note: ghosts can point, this is intended
+ *
+ * visible_message will handle invisibility properly
+ *
+ * overridden here and in /mob/dead/observer for different point span classes and sanity checks
+ */
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
 	set category = "Object"
@@ -295,6 +373,11 @@
 /mob/proc/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
 	return
 
+/**
+ * Verb to activate the object in your held hand
+ *
+ * Calls attack self on the item and updates the inventory hud for hands
+ */
 /mob/verb/mode()
 	set name = "Activate Held Object"
 	set category = "Object"
@@ -302,6 +385,11 @@
 
 	return
 
+/**
+ * Get the notes of this mob
+ *
+ * This actually gets the mind datums notes
+ */
 /mob/verb/memory()
 	set name = "Notes"
 	set category = "IC"
@@ -310,6 +398,9 @@
 	else
 		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
+/**
+ * Add a note to the mind datum
+ */
 /mob/verb/add_memory(msg as message)
 	set name = "Add Note"
 	set category = "IC"
@@ -401,20 +492,20 @@
 	else
 		return 	// Don't set it, no need
 
-/// Alias for respawn
-/mob/verb/return_to_menu()
-	set name = "Return to Menu"
-	set category = "OOC"
-	set desc = "Return to the lobby."
-	return abandon_mob()
-
+/**
+ * Allows you to respawn, abandoning your current mob
+ *
+ * This sends you back to the lobby creating a new dead mob
+ *
+ * Only works if flag/norespawn is allowed in config
+ */
 /mob/verb/abandon_mob()
 	set name = "Respawn"
 	set category = "OOC"
 	set desc = "Return to the lobby."
 
 	if(stat != DEAD)
-		to_chat(usr, "<span class='notice'><B>You must be dead to use this!</B></span>")
+		to_chat(usr, SPAN_BOLDNOTICE("You must be dead to use this!"))
 		return
 
 	// Final chance to abort "respawning"
@@ -447,6 +538,19 @@
 	if(M.mind)
 		M.mind.reset()
 	return
+
+/**
+ * Allows you to respawn, abandoning your current mob
+ *
+ * This sends you back to the lobby creating a new dead mob
+ *
+ * Doesn't require the config to be set.
+ */
+/mob/verb/return_to_menu()
+	set name = "Return to Menu"
+	set category = "OOC"
+	set desc = "Return to the lobby."
+	return abandon_mob()
 
 /client/verb/changes()
 	set name = "Changelog"
@@ -562,7 +666,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		message_admins(msg)
 		GLOB.exploit_warn_spam_prevention = world.time + 10
 
-
+/**
+ * Topic call back for any mob
+ *
+ * * Unset machines if "mach_close" sent
+ * * refresh the inventory of machines in range if "refresh" sent
+ * * handles the strip panel equip and unequip as well if "item" sent
+ */
 /mob/Topic(href, href_list)
 	if(href_list["mach_close"])
 		var/t1 = text("window=[href_list["mach_close"]]")
@@ -589,6 +699,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 						return 1
 	return 0
 
+/**
+ * Controls if a mouse drop succeeds (return null if it doesnt)
+ */
 /mob/MouseDrop(mob/M as mob)
 	..()
 	if(M != usr) return
@@ -631,6 +744,12 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	for(var/mob/M in viewers())
 		M.see(message)
 
+/**
+ * Output an update to the stat panel for the client
+ *
+ * calculates client ping, round id, server time, time dilation and other data about the round
+ * and puts it in the mob status panel on a regular loop
+ */
 /mob/Stat()
 	..()
 
@@ -706,15 +825,15 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 					Q.generate_stat()
 
 
-// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
+/// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
 	return 0
 
-//Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
+/// Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
 	return canmove
 
-//This might need a rename but it should replace the can this mob use things check
+/// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
 	return 0
 
@@ -939,7 +1058,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			anchored = 0
 	return 1
 
-//Check for brain worms in head.
+/// Check for brain worms in head.
 /mob/proc/has_brain_worms()
 
 	for(var/I in contents)
@@ -951,7 +1070,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/updateicon()
 	return
 
-// Please always use this proc, never just set the var directly.
+/// Please always use this proc, never just set the var directly.
 /mob/proc/set_stat(var/new_stat)
 	. = (stat != new_stat)
 	stat = new_stat
@@ -1044,7 +1163,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/setEarDamage()
 	return
 
-//Throwing stuff
+//! ## Throwing stuff
 
 /mob/proc/toggle_throw_mode()
 	if (src.in_throw_mode)

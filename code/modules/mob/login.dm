@@ -1,28 +1,26 @@
-//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
-/mob/proc/update_Login_details()
-	//Multikey checks and logging
-	lastKnownIP	= client.address
-	computer_id	= client.computer_id
-	log_access_in(client)
-	if(config_legacy.log_access)
-		for(var/mob/M in player_list)
-			if(M == src)	continue
-			if( M.key && (M.key != key) )
-				var/matches
-				if( (M.lastKnownIP == client.address) )
-					matches += "IP ([client.address])"
-				if( (client.connection != "web") && (M.computer_id == client.computer_id) )
-					if(matches)	matches += " and "
-					matches += "ID ([client.computer_id])"
-					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
-				if(matches)
-					if(M.client)
-						message_admins("<font color='red'><B>Notice: </B></font><font color=#4F49AF><A href='?src=\ref[usr];priv_msg=\ref[src]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=\ref[M]'>[key_name_admin(M)]</A>.</font>", 1)
-						log_adminwarn("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
-					else
-						message_admins("<font color='red'><B>Notice: </B></font><font color=#4F49AF><A href='?src=\ref[usr];priv_msg=\ref[src]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in). </font>", 1)
-						log_adminwarn("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
-
+/**
+ * Run when a client is put in this mob or reconnets to byond and their client was on this mob
+ *
+ * Things it does:
+ * * Adds player to player_list
+ * * sets lastKnownIP
+ * * sets computer_id
+ * * logs the login
+ * * tells the world to update it's status (for player count)
+ * * create mob huds for the mob if needed
+ * * reset next_move to 1
+ * * parent call
+ * * if the client exists set the perspective to the mob loc
+ * * call on_log on the loc (sigh)
+ * * reload the huds for the mob
+ * * reload all full screen huds attached to this mob
+ * * load any global alternate apperances
+ * * sync the mind datum via sync_mind()
+ * * call any client login callbacks that exist
+ * * grant any actions the mob has to the client
+ * * calls [auto_deadmin_on_login](mob.html#proc/auto_deadmin_on_login)
+ * * send signal COMSIG_MOB_CLIENT_LOGIN
+ */
 /mob/Login()
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -89,3 +87,27 @@
 	// load rendering onto client's screen
 	reload_rendering()
 
+/// Handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
+/mob/proc/update_Login_details()
+	//Multikey checks and logging
+	lastKnownIP	= client.address
+	computer_id	= client.computer_id
+	log_access_in(client)
+	if(config_legacy.log_access)
+		for(var/mob/M in player_list)
+			if(M == src)	continue
+			if( M.key && (M.key != key) )
+				var/matches
+				if( (M.lastKnownIP == client.address) )
+					matches += "IP ([client.address])"
+				if( (client.connection != "web") && (M.computer_id == client.computer_id) )
+					if(matches)	matches += " and "
+					matches += "ID ([client.computer_id])"
+					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
+				if(matches)
+					if(M.client)
+						message_admins((SPAN_BOLDANNOUNCE("Notice: ") + SPAN_PURPLE("<A href='?src=\ref[usr];priv_msg=\ref[src]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=\ref[M]'>[key_name_admin(M)]</A>.")), 1)
+						log_adminwarn("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
+					else
+						message_admins((SPAN_BOLDANNOUNCE("Notice: ") + SPAN_PURPLE("<A href='?src=\ref[usr];priv_msg=\ref[src]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")), 1)
+						log_adminwarn("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
