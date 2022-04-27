@@ -46,7 +46,6 @@
 		return
 	if(C.using_perspective)
 		CRASH("client already had perspective")
-		return
 	clients += C
 	C.using_perspective = src
 	Apply(C)

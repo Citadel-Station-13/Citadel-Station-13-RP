@@ -2,8 +2,12 @@
  * shakes the camera of any client watching from an atom's perspective
  */
 /proc/shake_camera(atom/movable/AM, duration, strength = 1)
-	if(!M || !IS_CONSCIOUS(M) || isEye(M) || isAI(M))
+	if(!AM || isEye(AM) || isAI(AM))
 		return
+	if(ismob(AM))
+		var/mob/M = AM
+		if(!IS_CONSCIOUS(M))
+			return
 	if(!M.self_perspective)
 		return
 	for(var/client/C in AM.self_perspective.GetClients())
