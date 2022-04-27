@@ -7216,6 +7216,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/item/book/manual/fission_engine,
+/obj/item/book/manual/rust_engine,
+/obj/item/book/manual/supermatter_engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)
 "yH" = (
