@@ -107,7 +107,13 @@
 	if(inoperable() || !anchored || !power_machine.powernet)
 		icon_state = "pump"
 	else if(use_power)
-		icon_state = "pump_1"
+		switch(last_power_draw)
+			if(1 to (1 MEGAWATTS))
+				icon_state = "pump_1"
+			if((1 MEGAWATTS) to (10 MEGAWATTS))
+				icon_state = "pump_2"
+			if((10 MEGAWATTS) to MAX_POWER_FOR_MASSIVE)
+				icon_state = "pump_3"
 	else
 		icon_state = "pump"
 	return TRUE
