@@ -193,17 +193,17 @@
 
 /mob/living/silicon/pai/proc/switchCamera(var/obj/machinery/camera/C)
 	if (!C)
-		src.unset_machine()
-		src.reset_view(null)
+		unset_machine()
+		reset_perspective()
 		return 0
 	if (stat == 2 || !C.status || !(src.network in C.network))
 		return 0
 
 	// ok, we're alive, camera is good and in our network...
 
-	src.set_machine(src)
-	src.current = C
-	src.reset_view(C)
+	set_machine(src)
+	current = C
+	reset_perspective(C)
 	return 1
 
 /mob/living/silicon/pai/verb/reset_record_view()
@@ -219,12 +219,9 @@
 	SSnanoui.update_uis(src)
 	to_chat(usr, "<span class='notice'>You reset your record-viewing software.</span>")
 
-/mob/living/silicon/pai/cancel_camera()
-	set category = "pAI Commands"
-	set name = "Cancel Camera View"
-	src.reset_view(null)
-	src.unset_machine()
-	src.cameraFollow = null
+/mob/living/silicon/pai/reset_perspective(datum/perspective/P, apply = TRUE)
+	. = ..()
+	cameraFollow = null
 
 //Addition by Mord_Sith to define AI's network change ability
 /*

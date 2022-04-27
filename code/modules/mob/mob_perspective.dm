@@ -25,11 +25,11 @@
   * If none is specified, defaults to self_perspective.
   *
   * @params
-  * - P - perspective
+  * - P - perspective or atom - if atom, get_perspective() will be called on
   * - apply - whether to apply to client. this shold be false when resetting
   * 	due to a logout because the whole point is logout kills perspective!
   */
-/mob/proc/reset_perspective(datum/perspective/P, apply)
+/mob/proc/reset_perspective(datum/perspective/P, apply = TRUE)
 	if(ismovable(P))
 		var/atom/movable/AM = P
 		P = AM.get_perspective()

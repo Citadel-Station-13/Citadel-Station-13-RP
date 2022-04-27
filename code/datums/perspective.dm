@@ -21,7 +21,6 @@
 	/// active clients
 	var/list/client/clients = list()
 	/// view size
-	#warn standardize view size
 	var/view_size
 	/// when a client logs out of a mob, and it's using us, the mob should reset to its self_perspective
 	var/reset_on_logout = TRUE

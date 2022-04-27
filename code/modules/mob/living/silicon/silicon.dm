@@ -374,7 +374,7 @@
 /mob/living/silicon/setEarDamage()
 	return
 
-/mob/living/silicon/reset_perspective(datum/perspective/P)
+/mob/living/silicon/reset_perspective(datum/perspective/P, apply = TRUE)
 	. = ..()
 	cameraFollow = null
 

@@ -202,11 +202,8 @@
 			else
 				clear_fullscreen("high")
 
-		if (machine)
-			if (!( machine.check_eye(src) ))
-				reset_view(null)
-		else
-			if(client)
-				reset_view(null)
+		if(IsRemoteViewing())
+			if(machine && machine.check_eye(src) < 0)
+				reset_perspective()
 
 	return 1
