@@ -1,37 +1,8 @@
 /**
- * MOB PERRSPECTIVE SYSTEM
- *
- * allows managed control of client viewport/eye changes
- *
- * as of right now, perspectives will **trample** the following on every set:
- * client.eye
- * client.lazy_eye (unimplemented)
- * client.virtual_eye (unimplemented)
- * client.perspective
- * client.view
- * mob.see_in_dark
- * mob.see_invisible
- * mob.sight
- *
- * these will be added/removed using synchronized access,
- * and therefore existing values will be left alone,
- * as long as existing values are not also in the perspective:
- * client.screen
- * client.images
- *
- * this is intentional - most of mobcode uses their own screen/image synchronization code.
- * perspectives will never be able to replace that without ruining a lot of lazy-load
- * behavior. instead, perspective is focused on allowing using it to manage generic
- * synchronization of screen/images, rather than forcing the rest of the codebase to use it.
- *
- * however, perspectives are designed to force synchronization of the vars it does trample,
- * because there's no better way to do it (because those vars are, semantically, only relevant to our perspective),
- * while screen/images can be used for embedded maps/hud/etc.
- */
-
-/**
   * Sets us to a /datum/perspective
   * If none is specified, defaults to self_perspective.
+  *
+  * See [code/datums/perspective.dm] for more info.
   *
   * @params
   * - P - perspective or atom - if atom, get_perspective() will be called on
@@ -78,21 +49,6 @@
 					client.set_perspective(P)
 			else
 				client.set_perspective(P)
-
-#warn nuke this from orbit
-/mob/proc/reset_view(atom/A)
-	if (client)
-		if (istype(A, /atom/movable))
-			client.perspective = EYE_PERSPECTIVE
-			client.eye = A
-		else
-			if (isturf(loc))
-				client.eye = client.mob
-				client.perspective = MOB_PERSPECTIVE
-			else
-				client.perspective = EYE_PERSPECTIVE
-				client.eye = loc
-	return
 
 /**
  * verb that allows someone to instantly shunt their perspective back to the default
