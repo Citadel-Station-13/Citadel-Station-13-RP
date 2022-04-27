@@ -431,7 +431,7 @@ obj/item/gun/energy/staff/focus
 	heavy = TRUE
 	force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
+	matter = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	one_handed_penalty = 50
 
 /obj/item/gun/energy/ionrifle/pistol/tyrmalin

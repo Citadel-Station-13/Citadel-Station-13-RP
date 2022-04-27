@@ -93,7 +93,7 @@
 		O_KIDNEYS =  /obj/item/organ/internal/kidneys/alraune,
 		O_BRAIN =    /obj/item/organ/internal/brain/alraune,
 		O_EYES =     /obj/item/organ/internal/eyes/alraune,
-		A_FRUIT =    /obj/item/organ/internal/fruitgland,
+		O_FRUIT =    /obj/item/organ/internal/fruitgland,
 		)
 
 /datum/species/alraune/can_breathe_water()
@@ -348,7 +348,7 @@
 	icon_state = "phytoextractor"
 	name = "fruit gland"
 	desc = "A bulbous gourd-like structure."
-	organ_tag = A_FRUIT
+	organ_tag = O_FRUIT
 	var/generated_reagents = list("sugar" = 2) //This actually allows them. This could be anything, but sugar seems most fitting.
 	var/usable_volume = 250 //Five fruit.
 	var/transfer_amount = 50

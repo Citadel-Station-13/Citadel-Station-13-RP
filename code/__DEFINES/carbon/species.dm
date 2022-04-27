@@ -1,7 +1,82 @@
-///*ALL SPECIES-RELATED FLAGS GO HERE*/
+//! *ALL DEFINES RELATED TO SPECIES GO HERE* !//
+
+//* ALL NAME DEFINES FOR SPECIES *//
+/**
+ * !It is important to note that these are not only used for the name of the species.
+ * !They are also used as ID Tags for various otther things, such as character saves!
+ * -Zandario
+ */
+//* ALL THE AFOREMENTIONED NAME DEFINES *//
+#define SPECIES_ADHERENT "Adherent"
+#define SPECIES_AKULA "Akula"
+#define SPECIES_ALRAUNE "Alraune"
+#define SPECIES_APIDAEN "Apidaen"
+#define SPECIES_AURIL "Auril"
+#define SPECIES_CUSTOM "Custom Species"
+#define SPECIES_DIONA "Diona"
+#define SPECIES_DREMACHIR "Dremachir"
+#define SPECIES_EVENT1 "X Occursus"
+#define SPECIES_EVENT2 "X Anomalous"
+#define SPECIES_EVENT3 "X Unowas"
+#define SPECIES_GOLEM "Golem"
+#define SPECIES_HUMAN "Human"
+#define SPECIES_HUMAN_GRAV "grav-adapted Human"
+#define SPECIES_HUMAN_SPACER "space-adapted Human"
+#define SPECIES_HUMAN_VATBORN "Vatborn"
+#define SPECIES_MONKEY "Monkey"
+#define SPECIES_MONKEY_AKULA "Sobaka"
+#define SPECIES_MONKEY_NEVREAN "Sparra"
+#define SPECIES_MONKEY_SERGAL "Saru"
+#define SPECIES_MONKEY_SKRELL "Neaera"
+#define SPECIES_MONKEY_TAJ "Farwa"
+#define SPECIES_MONKEY_UNATHI "Stok"
+#define SPECIES_MONKEY_VULPKANIN "Wolpin"
+#define SPECIES_NEVREAN "Nevrean"
+#define SPECIES_PLASMAMAN "Phoronoid"
+#define SPECIES_PROMETHEAN "Promethean"
+#define SPECIES_PROTEAN "Protean"
+#define SPECIES_RAPALA "Rapala"
+#define SPECIES_REPLICANT "Replicant"
+#define SPECIES_REPLICANT_ALPHA "Alpha Replicant"
+#define SPECIES_REPLICANT_BETA "Beta Replicant"
+#define SPECIES_SERGAL "Sergal"
+#define SPECIES_SHADEKIN "Shadekin"
+#define SPECIES_SHADEKIN_CREW "Black-Eyed Shadekin"
+#define SPECIES_SHADOW "Shadow"
+#define SPECIES_SKELETON "Skeleton"
+#define SPECIES_SKRELL "Skrell"
+#define SPECIES_TAJ "Tajara"
+#define SPECIES_TESHARI "Teshari"
+#define SPECIES_UNATHI "Unathi"
+#define SPECIES_VASILISSAN "Vasilissan"
+#define SPECIES_VETALA_PALE "Pale Vetalan"
+#define SPECIES_VETALA_RUDDY "Ruddy Vetalan"
+#define SPECIES_VOX "Vox"
+#define SPECIES_VR "Virtual Reality Avatar"
+#define SPECIES_VR_DIONA "Virtual Reality Diona"
+#define SPECIES_VR_HUMAN "Virtual Reality Human"
+#define SPECIES_VR_MONKEY "Virtual Reality Monkey"
+#define SPECIES_VR_SKELETON "Virtual Reality Skeleton"
+#define SPECIES_VR_SKRELL "Virtual Reality Skrell"
+#define SPECIES_VR_TAJ "Virtual Reality Tajara"
+#define SPECIES_VR_TESHARI "Virtual Reality Teshari"
+#define SPECIES_VR_UNATHI "Virtual Reality Unathi"
+#define SPECIES_VR_VOX "Virtual Reality Vox"
+#define SPECIES_VULPKANIN "Vulpkanin"
+#define SPECIES_WEREBEAST "Werebeast"
+#define SPECIES_XENO "Xenomorph"
+#define SPECIES_XENO_DRONE "Xenomorph Drone"
+#define SPECIES_XENO_HUNTER "Xenomorph Hunter"
+#define SPECIES_XENO_QUEEN "Xenomorph Queen"
+#define SPECIES_XENO_SENTINEL "Xenomorph Sentinel"
+#define SPECIES_XENOCHIMERA "Xenochimera"
+#define SPECIES_XENOHYBRID "Xenomorph Hybrid"
+#define SPECIES_ZADDAT "Zaddat"
+#define SPECIES_ZORREN_FLAT "Flatland Zorren"
+#define SPECIES_ZORREN_HIGH "Highlander Zorren"
 
 
-//! ## Species flags.
+//* SPECIES-RELATED FLAGS *//
 /// Can step on broken glass with no ill-effects. Either thick skin (diona), cut resistant (slimes) or incorporeal (shadows)
 #define NO_MINOR_CUT (1 << 0)
 /// Is a treeperson.
@@ -31,7 +106,7 @@
 // unused: 0x8000 - higher than this will overflow
 
 
-//! ## Species spawn flags
+//* SPECIES-RELATED SPAWN FLAGS *//
 /// Must be whitelisted to play.
 #define SPECIES_IS_WHITELISTED (1 << 0)
 /// Is not a core/normally playable species. (castes, mutantraces)
@@ -48,7 +123,7 @@
 #define SPECIES_WHITELIST_SELECTABLE (1 << 6)
 
 
-//! ## Species appearance flags
+//* SPECIES-RELATED APPEARANCE FLAGS *//
 /// Skin tone selectable in chargen. (0-255)
 #define HAS_SKIN_TONE (1 << 0)
 /// Skin colour selectable in chargen. (RGB)
@@ -67,7 +142,7 @@
 #define BASE_SKIN_COLOR (1 << 7)
 
 
-//! ## Species skin flags
+//* SPECIES-RELATED SKIN FLAGS *//
 #define SKIN_NORMAL (1 << 0)
 #define SKIN_THREAT (1 << 1)
 #define SKIN_CLOAK  (1 << 2)

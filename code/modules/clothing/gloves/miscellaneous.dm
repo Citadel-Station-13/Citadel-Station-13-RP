@@ -119,7 +119,7 @@
 	flags = PHORONGUARD
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	species_restricted = list("Vox")
+	species_restricted = list(SPECIES_VOX)
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 

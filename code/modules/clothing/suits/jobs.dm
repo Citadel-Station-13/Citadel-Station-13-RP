@@ -267,7 +267,7 @@
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 	icon = 'icons/map_assets/southern_cross/obj/sc_suit.dmi'
 	sprite_sheets = list(
-			"Vox" = 'icons/map_assets/southern_cross/mob/species/vox/sc_suit.dmi'
+			SPECIES_VOX = 'icons/map_assets/southern_cross/mob/species/vox/sc_suit.dmi'
 			)
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 

@@ -415,12 +415,15 @@ This function restores all organs.
 	for(var/obj/item/organ/external/current_organ in organs)
 		current_organ.rejuvenate(ignore_prosthetic_prefs)
 
-/mob/living/carbon/human/proc/get_organ(var/zone)
-	if(!zone)
-		zone = BP_TORSO
-	else if (zone in list( O_EYES, O_MOUTH ))
-		zone = BP_HEAD
-	return organs_by_name[zone]
+/mob/living/carbon/human/proc/HealDamage(zone, brute, burn)
+	var/obj/item/organ/external/E = get_organ(zone)
+	if(istype(E, /obj/item/organ/external))
+		if (E.heal_damage(brute, burn))
+			UpdateDamageIcon()
+			update_hud_med_health()
+	else
+		return 0
+	return
 
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null)
 	if(GLOB.Debug2)

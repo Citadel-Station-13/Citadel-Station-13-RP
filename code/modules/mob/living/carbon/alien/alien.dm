@@ -1,5 +1,5 @@
 /datum/category_item/catalogue/fauna/alien
-	name = "Xenomorph"
+	name = SPECIES_XENO
 	desc = "Xenomorphs are a widely recognized and rightfully feared scourge \
 	across the Frontier. Although the origin of these creatures remains unknown, \
 	their violence and their teriffying method of procreation makes them a universally \

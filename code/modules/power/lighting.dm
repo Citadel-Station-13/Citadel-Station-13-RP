@@ -885,7 +885,7 @@ var/global/list/light_type_cache = list()
 	var/status = 0		// LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN
 	var/base_state
 	var/switchcount = 0	// number of times switched
-	matter = list(DEFAULT_WALL_MATERIAL = 60)
+	matter = list(MAT_STEEL = 60)
 	var/rigged = 0		// true if rigged to explode
 	var/broken_chance = 0
 
@@ -905,7 +905,7 @@ var/global/list/light_type_cache = list()
 	icon_state = "ltube"
 	base_state = "ltube"
 	item_state = "c_tube"
-	matter = list("glass" = 100)
+	matter = list(MAT_GLASS = 100)
 	brightness_range = 12	// luminosity when on, also used in power calculation //VOREStation Edit
 	brightness_power = 1
 
@@ -972,7 +972,7 @@ var/global/list/light_type_cache = list()
 	icon_state = "lbulb"
 	base_state = "lbulb"
 	item_state = "contvapour"
-	matter = list("glass" = 100)
+	matter = list(MAT_GLASS = 100)
 	brightness_range = 5
 	brightness_power = 1
 	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
@@ -1049,7 +1049,7 @@ var/global/list/light_type_cache = list()
 	icon_state = "fbulb"
 	base_state = "fbulb"
 	item_state = "egg4"
-	matter = list("glass" = 100)
+	matter = list(MAT_GLASS = 100)
 
 // update the icon state and description of the light
 /obj/item/light/update_icon()

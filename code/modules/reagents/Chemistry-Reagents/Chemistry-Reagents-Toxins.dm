@@ -677,7 +677,7 @@
 /datum/reagent/advmutationtoxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.species.name != "Promethean")
+		if(H.species.name != SPECIES_PROMETHEAN)
 			to_chat(M, "<span class='danger'>Your flesh rapidly mutates!</span>")
 
 			var/list/backup_implants = list()
@@ -688,7 +688,7 @@
 				for(var/obj/item/implant/backup/BI in backup_implants)
 					BI.forceMove(src)
 
-			H.set_species("Promethean")
+			H.set_species(SPECIES_PROMETHEAN)
 			H.shapeshifter_set_colour("#05FF9B") //They can still change their color.
 
 			if(backup_implants.len)

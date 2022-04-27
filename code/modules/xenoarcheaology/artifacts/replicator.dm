@@ -73,7 +73,7 @@
 		var/list/icons = list(
 			"round" = "circle",
 			"square" = "square",
-			"diamond" = "gem",
+			MAT_DIAMOND = "gem",
 			"heart" = "heart",
 			"dog" = "dog",
 			"human" = "user",

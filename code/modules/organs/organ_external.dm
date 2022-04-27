@@ -14,71 +14,119 @@
 	dir = SOUTH
 	organ_tag = "limb"
 
-	// Strings
-	var/broken_description             // fracture string if any.
-	var/damage_state = "00"            // Modifier used for generating the on-mob damage overlay for this limb.
+	//* Strings *//
+	/// Fracture description if any.
+	var/broken_description
+	/// Modifier used for generating the on-mob damage overlay for this limb.
+	var/damage_state = "00"
 
-	// Damage vars.
-	var/brute_mod = 1                  // Multiplier for incoming brute damage.
-	var/burn_mod = 1                   // As above for burn.
-	var/brute_dam = 0                  // Actual current brute damage.
-	var/burn_dam = 0                   // Actual current burn damage.
-	var/last_dam = -1                  // used in healing/processing calculations.
+	//* Damage vars. *//
+	/// Multiplier for incoming brute damage.
+	var/brute_mod = 1
+	/// As above for burn.
+	var/burn_mod = 1
+	/// Actual current brute damage.
+	var/brute_dam = 0
+	/// Actual current burn damage.
+	var/burn_dam = 0
+	/// used in healing/processing calculations.
+	var/last_dam = -1
 	var/spread_dam = 0
-	var/thick_skin = 0                 // If a needle has a chance to fail to penetrate.
+	/// If a needle has a chance to fail to penetrate.
+	var/thick_skin = 0
 	/// EMP damage multiplier
 	var/emp_mod = 1
 
-	// Appearance vars.
-	var/nonsolid                       // Snowflake warning, reee. Used for slime limbs.
-	var/icon_name = null               // Icon state base.
-	var/body_part = null               // Part flag
-	var/icon_position = 0              // Used in mob overlay layering calculations.
-	var/model                          // Used when caching robolimb icons.
-	var/force_icon                     // Used to force override of species-specific limb icons (for prosthetics).
-	var/icon/mob_icon                  // Cached icon for use in mob overlays.
-	var/gendered_icon = 0              // Whether or not the icon state appends a gender.
-	var/s_tone                         // Skin tone.
-	var/list/s_col                     // skin colour
-	var/s_col_blend = ICON_ADD         // How the skin colour is applied.
-	var/list/h_col                     // hair colour
-	var/body_hair                      // Icon blend for body hair if any.
+	//* Appearance vars. *//
+	/// Snowflake warning, reee. Used for slime limbs.
+	var/nonsolid
+	/// Also for slimes. Used for transparent limbs.
+	var/transparent = 0
+	/// Icon state base.
+	var/icon_name = null
+	/// Part flag
+	var/body_part = null
+	/// Used in mob overlay layering calculations.
+	var/icon_position = 0
+	/// Used when caching robolimb icons.
+	var/model
+	/// Used to force override of species-specific limb icons (for prosthetics). Also used for any limbs chopped from a simple mob, and then attached to humans.
+	var/force_icon
+	/// Used to force the override of the icon-key generated using the species. Must be used in tandem with the above.
+	var/force_icon_key
+	/// Cached icon for use in mob overlays.
+	var/icon/mob_icon
+	/// Whether or not the icon state appends a gender.
+	var/gendered_icon = 0
+	/// Skin tone.
+	var/s_tone
+	/// Skin colour
+	var/list/s_col
+	/// How the skin colour is applied.
+	var/s_col_blend = ICON_ADD
+	/// Hair colour
+	var/list/h_col
+	/// Icon blend for body hair if any.
+	var/body_hair
 	var/mob/living/applied_pressure
-	var/list/markings = list()         // Markings (body_markings) to apply to the icon
+	/// Markings (body_markings) to apply to the icon
+	var/list/markings = list()
 
-	// Wound and structural data.
-	var/wound_update_accuracy = 1      // how often wounds should be updated, a higher number means less often
-	var/list/wounds = list()           // wound datum list.
-	var/number_wounds = 0              // number of wounds, which is NOT wounds.len!
-	var/obj/item/organ/external/parent // Master-limb.
-	var/list/children = list()         // Sub-limbs.
-	var/list/internal_organs = list()  // Internal organs of this body part
-	var/sabotaged = 0                  // If a prosthetic limb is emagged, it will detonate when it fails.
-	var/list/implants = list()         // Currently implanted objects.
-	var/organ_rel_size = 25            // Relative size of the organ.
-	var/base_miss_chance = 20          // Chance of missing.
+	//* Wound and structural data. *//
+	/// How often wounds should be updated, a higher number means less often
+	var/wound_update_accuracy = 1
+	/// Wound datum list.
+	var/list/wounds = list()
+	/// Number of wounds, which is NOT wounds.len!
+	var/number_wounds = 0
+	/// Master-limb.
+	var/obj/item/organ/external/parent
+	/// Sub-limbs.
+	var/list/children = list()
+	/// Internal organs of this body part
+	var/list/internal_organs = list()
+	/// If a prosthetic limb is emagged, it will detonate when it fails.
+	var/sabotaged = 0
+	/// Currently implanted objects.
+	var/list/implants = list()
+	/// Relative size of the organ.
+	var/organ_rel_size = 25
+	/// Chance of missing.
+	var/base_miss_chance = 20
 	var/atom/movable/splinted
 
-	// Joint/state stuff.
-	var/can_grasp                      // It would be more appropriate if these two were named "affects_grasp" and "affects_stand" at this point
-	var/can_stand                      // Modifies stance tally/ability to stand.
-	var/disfigured = 0                 // Scarred/burned beyond recognition.
-	var/cannot_amputate                // Impossible to amputate.
-	var/cannot_break                   // Impossible to fracture.
-	var/cannot_gib                     // Impossible to gib, distinct from amputation.
-	var/joint = "joint"                // Descriptive string used in dislocation.
-	var/amputation_point               // Descriptive string used in amputation.
-	var/dislocated = 0    // If you target a joint, you can dislocate the limb, impairing it's usefulness and causing pain
-	var/encased                        // Needs to be opened with a saw to access the organs.
+	//* Joint/state stuff. *//
+	/// It would be more appropriate if these two were named "affects_grasp" and "affects_stand" at this point
+	var/can_grasp
+	/// Modifies stance tally/ability to stand.
+	var/can_stand
+	/// Scarred/burned beyond recognition.
+	var/disfigured = 0
+	/// Impossible to amputate.
+	var/cannot_amputate
+	/// Impossible to fracture.
+	var/cannot_break
+	/// Impossible to gib, distinct from amputation.
+	var/cannot_gib
+	/// Descriptive string used in dislocation.
+	var/joint = "joint"
+	/// Descriptive string used in amputation.
+	var/amputation_point
+	/// If you target a joint, you can dislocate the limb, impairing it's usefulness and causing pain.
+	var/dislocated = 0
+	/// Needs to be opened with a saw to access the organs.
+	var/encased
 
-	// Surgery vars.
+	//* Surgery vars. *//
 	var/open = 0
 	var/stage = 0
 	var/cavity = 0
-	var/burn_stage = 0		//Surgical repair stage for burn.
-	var/brute_stage = 0		//Surgical repair stage for brute.
+	/// Surgical repair stage for burn.
+	var/burn_stage = 0
+	/// Surgical repair stage for brute.
+	var/brute_stage = 0
 
-	// HUD element variable, see organ_icon.dm get_damage_hud_image()
+	/// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
 
 	/// makes this dumb as fuck mechanic slightly less awful - records queued syringe infections instead of a spawn()
@@ -101,14 +149,14 @@
 		qdel(splinted)
 	splinted = null
 
-	if(owner)
+	if(istype(owner))
 		owner.organs -= src
 		owner.organs_by_name[organ_tag] = null
 		owner.organs_by_name -= organ_tag
 		while(null in owner.organs)
 			owner.organs -= null
 
-	implants.Cut() //VOREStation Add - Remove these too!
+	implants.Cut() // Remove these too!
 
 	return ..()
 
@@ -203,7 +251,7 @@
 		return
 
 	dislocated = 1
-	if(owner)
+	if(istype(owner))
 		owner.verbs |= /mob/living/carbon/human/proc/relocate
 
 /obj/item/organ/external/proc/relocate()
@@ -211,7 +259,7 @@
 		return
 
 	dislocated = 0
-	if(owner)
+	if(istype(owner))
 		owner.shock_stage += 20
 
 		//check to see if we still need the verb
@@ -225,7 +273,7 @@
 
 /obj/item/organ/external/Initialize(mapload)
 	. = ..(mapload, FALSE)
-	if(owner)
+	if(istype(owner))
 		replaced(owner)
 		sync_colour_to_human(owner)
 	addtimer(CALLBACK(src, .proc/get_icon), 1)
@@ -882,11 +930,11 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/mob/living/carbon/human/victim = owner //Keep a reference for post-removed().
 	var/obj/item/organ/external/parent_organ = parent
 
-	var/use_flesh_colour = species.get_flesh_colour(owner)
-	var/use_blood_colour = species.get_blood_colour(owner)
+	var/use_flesh_colour = species?.get_flesh_colour(owner) ? species.get_flesh_colour(owner) : "#C80000"
+	var/use_blood_colour = species?.get_blood_colour(owner) ? species.get_blood_colour(owner) : "#C80000"
 
 	removed(null, ignore_children)
-	victim.traumatic_shock += 60
+	victim?.traumatic_shock += 60
 
 	if(parent_organ)
 		var/datum/wound/lost_limb/W = new (src, disintegrate, clean)
@@ -902,9 +950,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 			stump.update_damages()
 
 	spawn(1)
-		victim.updatehealth()
-		victim.UpdateDamageIcon()
-		victim.update_icons_body()
+		if(istype(victim))
+			victim.updatehealth()
+			victim.UpdateDamageIcon()
+			victim.update_icons_body()
+		else
+			victim.update_icons()
 		dir = 2
 
 	var/atom/droploc = victim.drop_location()
@@ -1231,7 +1282,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		organ.forceMove(src)
 
 	// Remove parent references
-	parent.children -= src
+	parent?.children -= src
 	parent = null
 
 	release_restraints(victim)
@@ -1395,3 +1446,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/proc/has_genitals()
 	return !BP_IS_ROBOTIC(src) && species && species.sexybits_location == organ_tag
+
+/obj/item/organ/external/proc/is_hidden_by_tail()
+	if(owner && owner.tail_style && owner.tail_style.hide_body_parts && (organ_tag in owner.tail_style.hide_body_parts))
+		return TRUE

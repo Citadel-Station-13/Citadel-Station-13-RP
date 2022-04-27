@@ -6,7 +6,7 @@
 		return message
 
 	var/datum/autohiss_maps/maps = autohiss_type_to_datum(autohiss_type)
-	
+
 	if(!maps.basic)
 		return message
 	if(L.flags & NO_STUTTER)		// Currently prevents EAL, Sign language, and emotes from autohissing
@@ -80,7 +80,7 @@
 			return new /datum/autohiss_maps/unathi()
 		if(AUTOHISS_TYPE_TAJARAN)
 			return new /datum/autohiss_maps/tajaran()
-		else 
+		else
 			CRASH("Autohiss could not convert '[type]' to maps!")
 
 /mob/living/carbon/human/verb/toggle_autohiss()
@@ -105,13 +105,13 @@
 	set category = "OOC"
 	set desc = "Set the type of autohissing you will do."
 
-	var/new_autohiss_type = input(usr, "Select your new autohiss type.", "Autohiss Type") in list("None", "Unathi", "Tajaran")
+	var/new_autohiss_type = input(usr, "Select your new autohiss type.", "Autohiss Type") in list("None", SPECIES_UNATHI, "Tajaran")
 
 	switch(new_autohiss_type)
 		if("None")
 			autohiss_type = AUTOHISS_TYPE_NONE
 			to_chat(src, SPAN_NOTICE("Autohiss disabled."))
-		if("Unathi")
+		if(SPECIES_UNATHI)
 			autohiss_type = AUTOHISS_TYPE_UNATHI
 			to_chat(src, SPAN_NOTICE("Autohiss type changed to unathi."))
 		if("Tajaran")

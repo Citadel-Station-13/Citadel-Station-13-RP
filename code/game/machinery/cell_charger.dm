@@ -146,7 +146,7 @@
 		)
 	item_state = "syringe_kit"
 	w_class = ITEMSIZE_NORMAL
-	matter = list(DEFAULT_WALL_MATERIAL = 4000,"glass" = 1000)
+	matter = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
 /obj/item/cell_charger_kit/attack_self(mob/user)
 		to_chat(user, "<span class='notice'>You assemble and deploy the cell charger in place.</span>")

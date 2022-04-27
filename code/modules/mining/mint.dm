@@ -23,7 +23,7 @@
 	var/amt_iron = 0
 	var/newCoins = 0   //how many coins the machine made in it's last load
 	var/processing = 0
-	var/chosen = DEFAULT_WALL_MATERIAL //which material will be used to make coins
+	var/chosen = MAT_STEEL //which material will be used to make coins
 	var/coinsToProduce = 10
 
 /obj/machinery/mineral/mint/Initialize(mapload)

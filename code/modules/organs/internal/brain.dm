@@ -98,9 +98,10 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		brainmob = new(src)
 		brainmob.name = H.real_name
 		brainmob.real_name = H.real_name
-		brainmob.dna = H.dna.Clone()
-		brainmob.timeofhostdeath = H.timeofdeath
-		brainmob.ooc_notes = H.ooc_notes
+		if(istype(H))
+			brainmob.dna = H.dna.Clone()
+			brainmob.timeofhostdeath = H.timeofdeath
+			brainmob.ooc_notes = H.ooc_notes
 
 		// Copy modifiers.
 		for(var/datum/modifier/M in H.modifiers)
@@ -112,7 +113,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 	brainmob.languages = H.languages
 
-	to_chat(brainmob, "<span class='notice'>You feel slightly disoriented. That's normal when you're just \a [initial(src.name)].</span>")
+	to_chat(brainmob, SPAN_NOTICE("You feel slightly disoriented. That's normal when you're just \a [initial(src.name)]."))
 	callHook("debrain", list(brainmob))
 
 /obj/item/organ/internal/brain/examine(mob/user) // -- TLE
@@ -127,13 +128,13 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	if(name == initial(name))
 		name = "\the [owner.real_name]'s [initial(name)]"
 
-	var/mob/living/simple_mob/animal/borer/borer = owner.has_brain_worms()
+	var/mob/living/simple_mob/animal/borer/borer = owner?.has_brain_worms()
 
 	if(borer)
-		borer.detatch() //Should remove borer if the brain is removed - RR
+		borer.detatch() //Should remove borer if the brain is removed
 
 	var/obj/item/organ/internal/brain/B = src
-	if(istype(B) && istype(owner))
+	if(istype(B) && owner)
 		B.transfer_identity(owner)
 
 	..()
@@ -277,7 +278,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	name = "Promethean Revival"
 	id = "prom_revival"
 	result = null
-	required_reagents = list("phoron" = 40)
+	required_reagents = list(MAT_PHORON = 40)
 	result_amount = 1
 
 /datum/chemical_reaction/promethean_brain_revival/can_happen(var/datum/reagents/holder)
