@@ -1469,11 +1469,6 @@
 		return
 	..()
 
-/mob/living/carbon/human/reset_view(atom/A, update_hud = 1)
-	..()
-	if(update_hud)
-		handle_regular_hud_updates()
-
 /mob/living/carbon/human/Check_Shoegrip()
 	if(shoes && (shoes.item_flags & NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
 		return 1

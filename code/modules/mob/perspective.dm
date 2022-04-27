@@ -22,33 +22,32 @@
 				using_perspective = null
 		P = P || get_perspective()
 		P.AddMob(src)
+		return
+	var/old = using_perspective
+	// get old perspective first
+	if(using_perspective)
+		using_perspective.RemoveMob(src)
+		if(using_perspective)
+			stack_trace("using perspective didn't clear us")
+			using_perspective = null
+	// if no P, return us
+	if(!P)
+		P = get_perspective()
 	else
-		// ugh
-		// get old perspective
-		var/old = using_perspective
- 		if(using_perspective)
-			using_perspective.RemoveMob(src)
-			if(using_perspective)
-				stack_trace("using perspective didn't clear us")
-				using_perspective = null
-		// if no P, return us
-		if(!P)
-			P = get_perspective()
-		else
+		if(P.reset_on_logout && !client)
 			// if there's a P but client is gone, and it resets, use us again
-			if(P.reset_on_logout && !client)
-				P = get_perspective()
-		// great, P exists
-		// tell it to add us
-		P.AddMob(src)
-		// if client exists and we want to apply
-		if(apply && client)
-			if(!forceful)
-				// if not forceful, only shunt if we're not desynced
-				if(client.using_perspective == old)
-					client.set_perspective(P)
-			else
+			P = get_perspective()
+	// great, P exists
+	// tell it to add us
+	P.AddMob(src)
+	// if client exists and we want to apply
+	if(apply && client)
+		if(!forceful)
+			// if not forceful, only shunt if we're not desynced
+			if(client.using_perspective == old)
 				client.set_perspective(P)
+		else
+			client.set_perspective(P)
 
 /**
  * verb that allows someone to instantly shunt their perspective back to the default
