@@ -163,7 +163,10 @@
  */
 /datum/perspective/proc/Update(client/C)
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_UPDATE, C)
+	var/changed = C.eye
 	C.eye = GetEye(C)
+	if(changed != C.eye)
+		C.parallax_holder?.Reset(force = TRUE)
 	C.perspective = GetEyeMode(C)
 	C.mob.sight = sight
 	C.mob.see_in_dark = see_in_dark
@@ -233,7 +236,10 @@
 		return
 	src.eye = AM
 	for(var/client/C as anything in clients)
+		var/changed = C.eye
 		C.eye = GetEye()
+		if(changed != C.eye)
+			C.parallax_holder?.Reset(force = TRUE)
 		C.perspective = GetEyeMode()
 
 /datum/perspective/proc/SetSight(flags)
