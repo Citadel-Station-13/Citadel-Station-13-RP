@@ -16,8 +16,8 @@
 	var/min_heat_setting = TCMB
 	var/max_heat_setting = 99999999	
 
-	icon = 'icons/obj/machines/algae_vr.dmi'
-	icon_state = "algae-off"
+	icon = 'icons/obj/machines/massive_pumps.dmi'
+	icon_state = "pump"
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
 	anchored = 1
 	density = 1
@@ -143,13 +143,11 @@
 
 /obj/machinery/atmospherics/binary/massive_heat_pump/update_icon()
 	if(inoperable() || !anchored || !power_machine.powernet)
-		icon_state = "algae-off"
-	else if(power_machine.avail())
-		icon_state = "algae-full"
+		icon_state = "pump"
 	else if(use_power)
-		icon_state = "algae-on"
+		icon_state = "heat_1"
 	else
-		icon_state = "algae-off"
+		icon_state = "pump"
 	return TRUE
 
 /obj/machinery/atmospherics/binary/massive_heat_pump/ui_interact(mob/user, datum/tgui/ui)
