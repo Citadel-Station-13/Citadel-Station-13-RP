@@ -531,8 +531,7 @@
 
 	var/eye_name = null
 
-	var/ok = "[is_admin ? "Admin Observe" : "Observe"]"
-	eye_name = input("Please, select a player!",/ ok, null, null) as null|anything in creatures
+	eye_name = input("Please, select a player!", "Observe", null, null) as null | anything in creatures
 
 	if (!eye_name)
 		return

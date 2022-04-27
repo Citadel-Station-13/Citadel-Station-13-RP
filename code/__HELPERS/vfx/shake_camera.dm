@@ -8,7 +8,7 @@
 		var/mob/M = AM
 		if(!IS_CONSCIOUS(M))
 			return
-	if(!M.self_perspective)
+	if(!AM.self_perspective)
 		return
 	for(var/client/C in AM.self_perspective.GetClients())
 		var/min = -world.icon_size * strength

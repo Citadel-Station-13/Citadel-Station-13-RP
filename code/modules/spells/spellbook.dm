@@ -228,7 +228,7 @@
 								H.mutations.Add(XRAY)
 								H.AddSightSelf(SEE_MOBS|SEE_OBJS|SEE_TURFS)
 								H.SetSeeInDarkSelf(8)
-								H.SetSeeInvisSelf(SEE_INVISIBLE_LEVEL_TWO)
+								H.SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 								to_chat(H, "<span class='notice'>The walls suddenly disappear.</span>")
 							temp = "You have purchased a scrying orb, and gained x-ray vision."
 							max_uses--

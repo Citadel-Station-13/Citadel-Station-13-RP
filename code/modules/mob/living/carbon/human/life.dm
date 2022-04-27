@@ -1180,8 +1180,10 @@
 		client.screen |= cam.client_huds
 
 	if(stat == DEAD) //Dead
-		if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-		if(healths)		healths.icon_state = "health7"	//DEAD healthmeter
+		if(!druggy)
+			SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+		if(healths)
+			healths.icon_state = "health7"	//DEAD healthmeter
 
 	else if(stat == UNCONSCIOUS && health <= 0) //Crit
 		//Critical damage passage overlay
@@ -1419,7 +1421,7 @@
 						break
 
 	else //We aren't dead
-		see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+		SetSeeInvisibleSelf(self_perspective.see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		if(XRAY in mutations)
 			AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
@@ -1442,7 +1444,7 @@
 		else
 			SetSightSelf(species.get_vision_flags(src))
 			SetSeeInDarkSelf(species.darksight)
-			SetSeeInvisibleSelf(see_in_dark > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
+			SetSeeInvisibleSelf(self_perspective.see_in_dark > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		var/glasses_processed = 0
 		var/obj/item/rig/rig = back
