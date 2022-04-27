@@ -11,6 +11,9 @@
   * - forceful - if the client is desynced from our using perspective, do we force it back?
   */
 /mob/proc/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE)
+	if(ismovable(P))
+		var/atom/movable/AM = P
+		P = AM.get_perspective()
 	/// first of all if we are already on the right perspective we really don't care!
 	if(P? (P == using_perspective) : (using_perspective == self_perspective))
 		return
@@ -113,14 +116,14 @@
  */
 /mob/proc/SetSeeInvisibleSelf(see_invisible)
 	ensure_self_perspective()
-	self_perspective.SetSeeInvis(flags)
+	self_perspective.SetSeeInvis(see_invisible)
 
 /**
  * ditto
  */
 /mob/proc/SetSeeInDarkSelf(see_invisible)
 	ensure_self_perspective()
-	self_perspective.SetDarksight(flags)
+	self_perspective.SetDarksight(see_invisible)
 
 // Set client view distance (size of client's screen). Returns TRUE if anything changed.
 // TODO: remove this and make everything change self perspective's viewsize

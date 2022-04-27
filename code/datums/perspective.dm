@@ -71,6 +71,7 @@
 		CRASH("client already had perspective")
 	clients += C
 	C.using_perspective = src
+	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_REGISTER, C)
 	Apply(C)
 
 /datum/perspective/proc/RemoveClient(client/C, switching = FALSE)
@@ -83,6 +84,7 @@
 	if(C.using_perspective != src)
 		stack_trace("client had wrong perspective")
 	C.using_perspective = null
+	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_UNREGISTER, C, switching)
 	if(!switching)
 		C.reset_perspective()
 
@@ -116,12 +118,14 @@
 		return
 	mobs += M
 	M.using_perspective = src
+	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_MOB_ADD, M)
 
 /**
  * unregisters as a mob's current perspective
  */
 /datum/perspective/proc/RemoveMob(mob/M, switching = FALSE)
 	mobs -= M
+	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_MOB_REMOVE, M, switching)
 	if(M.using_perspective == src)
 		M.using_perspective = null
 		if(!switching)
@@ -155,12 +159,20 @@
  * updates eye, perspective var, virtual eye, lazy eye, sight, see in dark, see invis
  */
 /datum/perspective/proc/Update(client/C)
+	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_UPDATE_CLIENT, C)
 	C.eye = GetEye()
 	C.perspective = GetEyeMode()
 	C.mob.sight = sight
 	C.mob.see_in_dark = see_in_dark
 	C.mob.see_invisible = see_invisible
 	C.change_view(view_size)
+
+/**
+ * update all viewers
+ */
+/datum/perspective/proc/UpdateAll()
+	for(var/client/C as anything in clients)
+		Update(C)
 
 /**
  * works with lists too
