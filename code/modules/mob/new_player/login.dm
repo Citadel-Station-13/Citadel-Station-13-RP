@@ -32,7 +32,7 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 	if(client)
 		to_chat(src, client.getAlertDesc())
-		
+
 	if(!mind)
 		mind = new /datum/mind(key)
 		mind.active = 1
@@ -41,7 +41,6 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 	loc = null
 	client.screen += lobby_image
 	my_client = client
-	sight |= SEE_TURFS
 	player_list |= src
 
 	new_player_panel()

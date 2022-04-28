@@ -65,10 +65,9 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 
 // Management of mob view displacement. look to shift view to the ship on the overmap; unlook to shift back.
 
-/obj/machinery/computer/ship/proc/look(var/mob/user)
+/obj/machinery/computer/ship/proc/look(mob/user)
 	if(linked)
-		apply_visual(user)
-		user.reset_view(linked)
+		user.reset_perspective(linked)
 	user.set_machine(src)
 	if(isliving(user))
 		var/mob/living/L = user
@@ -82,8 +81,8 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 	// TODO GLOB.stat_set_event.register(user, src, /obj/machinery/computer/ship/proc/unlook)
 	LAZYDISTINCTADD(viewers, WR)
 
-/obj/machinery/computer/ship/proc/unlook(var/mob/user)
-	user.reset_view()
+/obj/machinery/computer/ship/proc/unlook(mob/user)
+	user.reset_perspective()
 	user.set_viewsize()	// Reset to default
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
 	if(isliving(user))

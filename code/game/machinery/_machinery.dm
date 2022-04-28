@@ -136,7 +136,8 @@ Class Procs:
 		START_MACHINE_PROCESSING(src)
 	else
 		START_PROCESSING(SSfastprocess, src)
-	power_change()
+	if(!mapload)	// area handles this
+		power_change()
 
 /obj/machinery/Destroy()
 	if(!speed_process)
@@ -153,11 +154,10 @@ Class Procs:
 		component_parts = null
 	if(contents) // The same for contents.
 		for(var/atom/A in contents)
-			if(ishuman(A))
-				var/mob/living/carbon/human/H = A
-				H.client.eye = H.client.mob
-				H.client.perspective = MOB_PERSPECTIVE
-				H.forceMove(loc)
+			if(ismob(A))
+				var/mob/M = A
+				M.forceMove(loc)
+				M.update_perspective()
 			else
 				qdel(A)
 	return ..()
@@ -456,9 +456,3 @@ Class Procs:
 	M.deconstruct(src)
 	qdel(src)
 	return 1
-
-/datum/proc/apply_visual(mob/M)
-	return
-
-/datum/proc/remove_visual(mob/M)
-	return

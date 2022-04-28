@@ -61,13 +61,18 @@
 	///Internal counter for clients sending irc relay messages via ahelp to prevent spamming. Set to a number every time an admin reply is sent, decremented for every client send.
 	var/ircreplyamount = 0
 
+		////////////////
+		//PERSPECTIVES//
+		////////////////
+	/// the perspective we're currently using
+	var/datum/perspective/using_perspective
+
 		/////////
 		//OTHER//
 		/////////
 	///Player preferences datum for the client
 	var/datum/preferences/prefs = null
 	var/moving = null
-	var/adminobs = null
 	///Current area of the controlled mob
 	var/area = null
 	///when the client last died as a mouse

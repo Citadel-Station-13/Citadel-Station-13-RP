@@ -193,16 +193,17 @@
 
 /mob/living/silicon/pai/proc/switchCamera(var/obj/machinery/camera/C)
 	if (!C)
-		src.unset_machine()
-		src.reset_view(null)
+		unset_machine()
+		reset_perspective()
 		return 0
-	if (stat == 2 || !C.status || !(src.network in C.network)) return 0
+	if (stat == 2 || !C.status || !(src.network in C.network))
+		return 0
 
 	// ok, we're alive, camera is good and in our network...
 
-	src.set_machine(src)
-	src.current = C
-	src.reset_view(C)
+	set_machine(src)
+	current = C
+	reset_perspective(C)
 	return 1
 
 /mob/living/silicon/pai/verb/reset_record_view()
@@ -218,12 +219,9 @@
 	SSnanoui.update_uis(src)
 	to_chat(usr, "<span class='notice'>You reset your record-viewing software.</span>")
 
-/mob/living/silicon/pai/cancel_camera()
-	set category = "pAI Commands"
-	set name = "Cancel Camera View"
-	src.reset_view(null)
-	src.unset_machine()
-	src.cameraFollow = null
+/mob/living/silicon/pai/reset_perspective(datum/perspective/P, apply = TRUE)
+	. = ..()
+	cameraFollow = null
 
 //Addition by Mord_Sith to define AI's network change ability
 /*
@@ -304,15 +302,16 @@
 		var/obj/item/pda/holder = card.loc
 		holder.pai = null
 
-	src.client.perspective = EYE_PERSPECTIVE
-	src.client.eye = src
-	src.forceMove(get_turf(card))
-
+	forceMove(card.loc)
 	card.forceMove(src)
+	update_perspective()
+
 	card.screen_loc = null
 
 	var/turf/T = get_turf(src)
-	if(istype(T)) T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
+	if(istype(T))
+		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
+
 	verbs += /mob/living/silicon/pai/proc/pai_nom //VOREStation edit
 	verbs += /mob/living/proc/set_size //VOREStation edit
 	verbs += /mob/living/proc/shred_limb //VORREStation edit
@@ -409,12 +408,10 @@
 	release_vore_contents() //VOREStation Add
 
 	var/turf/T = get_turf(src)
-	if(istype(T)) T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
+	if(istype(T))
+		T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
 
-	if(client)
-		src.stop_pulling()
-		src.client.perspective = EYE_PERSPECTIVE
-		src.client.eye = card
+	stop_pulling()
 
 	//stop resting
 	resting = 0
@@ -429,10 +426,9 @@
 		src.loc = get_turf(H)
 
 	// Move us into the card and move the card to the ground.
-	src.loc = card
-	card.loc = get_turf(card)
-	src.forceMove(card)
-	card.forceMove(card.loc)
+	card.forceMove(loc)
+	forceMove(card)
+	update_perspective()
 	canmove = 1
 	resting = 0
 	icon_state = "[chassis]"
