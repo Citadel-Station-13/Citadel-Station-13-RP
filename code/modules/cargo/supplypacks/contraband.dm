@@ -16,8 +16,8 @@
 
 	name = "Contraband crate"
 	cost = 25
-	containertype = /obj/structure/closet/crate
-	containername = "Unlabeled crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Unlabeled crate"
 	contraband = 1
 	group = "Supplies"
 
@@ -29,8 +29,8 @@
 			/obj/item/grenade/chem_grenade/incendiary
 			)
 	cost = 25
-	containertype = /obj/structure/closet/crate
-	containername = "Special Ops crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Special Ops crate"
 	contraband = 1
 
 /datum/supply_pack/supply/moghes
@@ -40,8 +40,8 @@
 			/obj/item/reagent_containers/food/snacks/unajerky = 4
 			)
 	cost = 25
-	containertype = /obj/structure/closet/crate
-	containername = "Moghes imports crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Moghes imports crate"
 	contraband = 1
 
 /datum/supply_pack/munitions/bolt_rifles_militia
@@ -52,8 +52,8 @@
  			)
  	cost = 50
  	contraband = 1
- 	containertype = /obj/structure/closet/crate/secure/weapon
- 	containername = "Ballistic weapons crate"
+ 	container_type = /obj/structure/closet/crate/secure/weapon
+ 	container_name = "Ballistic weapons crate"
 
 /datum/supply_pack/randomised/misc/telecrate //you get something awesome, a couple of decent things, and a few weak/filler things
 	name = "ERR_NULL_ENTRY" //null crate! also dream maker is hell,
@@ -104,15 +104,15 @@
 			)
 	cost = 250 //more than a hat crate!,
 	contraband = 1
-	containertype = /obj/structure/largecrate
-	containername = "Suspicious crate"
+	container_type = /obj/structure/largecrate
+	container_name = "Suspicious crate"
 
 /datum/supply_pack/supply/stolen
 	name = "Stolen Supply Crate"
 	contains = list(/obj/item/stolenpackage = 1)
 	cost = 75
-	containertype = /obj/structure/closet/crate
-	containername = "shady crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "shady crate"
 	contraband = 1
 
 /datum/supply_pack/randomised/stolenplus
@@ -123,16 +123,16 @@
 		/obj/item/stolenpackageplus,
 		) // uh oh
 	cost = 375 //slight discount? still contraband tho glhf
-	containertype = /obj/structure/closet/crate
-	containername = "shadier crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "shadier crate"
 	contraband = 1
 	group = "Supplies"
 
 /datum/supply_pack/supply/wolfgirl
 	name = "Wolfgirl Crate"
 	cost = 200 //I mean, it's a whole wolfgirl
-	containertype = /obj/structure/largecrate/animal/wolfgirl
-	containername = "Wolfgirl crate"
+	container_type = /obj/structure/largecrate/animal/wolfgirl
+	container_name = "Wolfgirl crate"
 	contraband = 1
 
 /datum/supply_pack/supply/medieval
@@ -148,8 +148,8 @@
 			/obj/item/clothing/suit/armor/medieval/orange = 1
 			)
 	cost = 120
-	containertype = /obj/structure/closet/crate
-	containername = "knight set crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "knight set crate"
 	contraband = 1
 
 /datum/supply_pack/supply/deusvult_templar
@@ -160,8 +160,8 @@
 			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/templar
 			)
 	cost = 30
-	containertype = /obj/structure/closet/crate
-	containername = "templar armor crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "templar armor crate"
 	contraband = 1
 
 /datum/supply_pack/supply/deusvult_hospitaller
@@ -172,8 +172,8 @@
 			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/hospitaller
 			)
 	cost = 30
-	containertype = /obj/structure/closet/crate
-	containername = "hospitaller armor crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "hospitaller armor crate"
 	contraband = 1
 
 /datum/supply_pack/supply/deusvult_teutonic
@@ -187,6 +187,6 @@
 			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/teutonic
 			)
 	cost = 40
-	containertype = /obj/structure/closet/crate
-	containername = "teutonic armor crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "teutonic armor crate"
 	contraband = 1

@@ -9,16 +9,16 @@
 	name = "Virus sample crate"
 	contains = list(/obj/item/virusdish/random = 4)
 	cost = 25
-	containertype = "/obj/structure/closet/crate/secure"
-	containername = "Virus sample crate"
+	container_type = "/obj/structure/closet/crate/secure"
+	container_name = "Virus sample crate"
 	access = access_cmo
 
 /datum/supply_pack/sci/coolanttank
 	name = "Coolant tank crate"
 	contains = list(/obj/structure/reagent_dispensers/coolanttank)
 	cost = 15
-	containertype = /obj/structure/largecrate
-	containername = "coolant tank crate"
+	container_type = /obj/structure/largecrate
+	container_name = "coolant tank crate"
 
 /datum/supply_pack/sci/phoron
 	name = "Phoron research crate"
@@ -32,8 +32,8 @@
 			/obj/item/transfer_valve = 3
 			)
 	cost = 10
-	containertype = /obj/structure/closet/crate/secure/phoron
-	containername = "Phoron assembly crate"
+	container_type = /obj/structure/closet/crate/secure/phoron
+	container_name = "Phoron assembly crate"
 	access = access_tox_storage
 
 /datum/supply_pack/sci/exoticseeds
@@ -47,23 +47,23 @@
 			/obj/item/seeds/kudzuseed
 			)
 	cost = 15
-	containertype = /obj/structure/closet/crate/hydroponics
-	containername = "Exotic Seeds crate"
+	container_type = /obj/structure/closet/crate/hydroponics
+	container_name = "Exotic Seeds crate"
 	access = access_hydroponics
 
 /datum/supply_pack/sci/integrated_circuit_printer
 	name = "Integrated circuit printer"
 	contains = list(/obj/item/integrated_circuit_printer = 2)
 	cost = 15
-	containertype = /obj/structure/closet/crate
-	containername = "Integrated circuit crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Integrated circuit crate"
 
 /datum/supply_pack/sci/integrated_circuit_printer_upgrade
 	name = "Integrated circuit printer upgrade - advanced designs"
 	contains = list(/obj/item/disk/integrated_circuit/upgrade/advanced)
 	cost = 30
-	containertype = /obj/structure/closet/crate
-	containername = "Integrated circuit crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Integrated circuit crate"
 
 /datum/supply_pack/sci/xenoarch
 	name = "Xenoarchaeology Tech crate"
@@ -83,16 +83,16 @@
 				/obj/item/storage/bag/fossils,
 				/obj/item/hand_labeler)
 	cost = 100
-	containertype = /obj/structure/closet/crate/secure/science
-	containername = "Xenoarchaeology Tech crate"
+	container_type = /obj/structure/closet/crate/secure/science
+	container_name = "Xenoarchaeology Tech crate"
 	access = access_research
 
 /datum/supply_pack/sci/jukebox_circuitboard
 	name = "Jukebox Circuit Board crate"
 	contains = list(/obj/item/circuitboard/jukebox = 2)
 	cost = 25
-	containertype = /obj/structure/closet/crate
-	containername = "Jukebox Circuit Board crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Jukebox Circuit Board crate"
 
 /datum/supply_pack/sci/dune_buggy
 	name = "Exploration Dune Buggy"
@@ -100,20 +100,20 @@
 			/obj/vehicle/train/rover/engine/dunebuggy
 			)
 	cost = 100
-	containertype = /obj/structure/largecrate
-	containername = "Exploration Dune Buggy Crate"
+	container_type = /obj/structure/largecrate
+	container_name = "Exploration Dune Buggy Crate"
 
 /datum/supply_pack/sci/pred
 	name = "Dangerous Predator crate"
 	cost = 40
-	containertype = /obj/structure/largecrate/animal/pred
-	containername = "Dangerous Predator crate"
+	container_type = /obj/structure/largecrate/animal/pred
+	container_name = "Dangerous Predator crate"
 	access = access_xenobiology
 
 /datum/supply_pack/sci/pred_doom
 	name = "EXTREMELY Dangerous Predator crate"
 	cost = 200
-	containertype = /obj/structure/largecrate/animal/dangerous
-	containername = "EXTREMELY Dangerous Predator crate"
+	container_type = /obj/structure/largecrate/animal/dangerous
+	container_name = "EXTREMELY Dangerous Predator crate"
 	access = access_xenobiology
 	contraband = 1

@@ -107,7 +107,6 @@ SUBSYSTEM_DEF(atoms)
 	old_subsystem_initialized = SSatoms.old_subsystem_initialized
 	BadInitializeCalls = SSatoms.BadInitializeCalls
 
-
 /*
 /datum/controller/subsystem/atoms/proc/setupGenetics()
 	var/list/mutations = subtypesof(/datum/mutation/human)

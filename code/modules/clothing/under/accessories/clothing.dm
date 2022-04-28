@@ -530,3 +530,8 @@
 	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection."
 	icon_state = "antediluvian"
 	//body_parts_covered = HANDS|ARMS
+
+/obj/item/clothing/accessory/mekkyaku
+	name = "Mekkyaku turtleneck"
+	desc = "A sleek black turtleneck sweater with a bright red stripe knit into the fabric."
+	icon_state = "mekkyaku"

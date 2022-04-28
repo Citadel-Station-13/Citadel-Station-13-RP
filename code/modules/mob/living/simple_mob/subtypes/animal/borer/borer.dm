@@ -176,9 +176,9 @@
 	if(host.mind)
 		borers.remove_antagonist(host.mind)
 
-	forceMove(get_turf(host))
+	forceMove(host.loc)
+	update_perspective()
 
-	reset_view(null)
 	machine = null
 
 	if(istype(host, /mob/living/carbon/human))
@@ -187,7 +187,6 @@
 		if(head)
 			head.implants -= src
 
-	host.reset_view(null)
 	host.machine = null
 	host = null
 

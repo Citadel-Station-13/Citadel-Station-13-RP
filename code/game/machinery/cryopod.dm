@@ -600,9 +600,8 @@
 			return
 
 		usr.stop_pulling()
-		usr.client.perspective = EYE_PERSPECTIVE
-		usr.client.eye = src
 		usr.forceMove(src)
+		usr.update_perspective()
 		set_occupant(usr)
 		if(ishuman(usr) && applies_stasis)
 			var/mob/living/carbon/human/H = occupant
@@ -622,23 +621,18 @@
 	return
 
 /obj/machinery/cryopod/proc/go_out()
-
 	if(!occupant)
 		return
 
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-
 	occupant.forceMove(get_turf(src))
+	occupant.update_perspective()
+
 	if(ishuman(occupant) && applies_stasis)
 		var/mob/living/carbon/human/H = occupant
 		H.Stasis(0)
 	set_occupant(null)
 
 	icon_state = base_icon_state
-
-	return
 
 /obj/machinery/cryopod/proc/set_occupant(var/new_occupant)
 	occupant = new_occupant
@@ -680,11 +674,9 @@
 				to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
 				return
 			M.forceMove(src)
-
-			if(M.client)
-				M.client.perspective = EYE_PERSPECTIVE
-				M.client.eye = src
-		else return
+			M.update_perspective()
+		else
+			return
 
 		icon_state = occupied_icon_state
 
