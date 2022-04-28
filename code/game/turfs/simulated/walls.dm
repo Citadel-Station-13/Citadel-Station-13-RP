@@ -310,12 +310,7 @@
 
 /turf/simulated/wall/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_DECONSTRUCT)
-<<<<<<< HEAD
-		to_chat(user, span("notice", "You deconstruct \the [src]."))
-		ChangeTurf(/turf/simulated/floor/airless, flags = CHANGETURF_PRESERVE_OUTDOORS)
-=======
 		to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
-		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
->>>>>>> citrp/master
+		ChangeTurf(/turf/simulated/floor/airless, flags = CHANGETURF_PRESERVE_OUTDOORS)
 		return TRUE
 	return FALSE

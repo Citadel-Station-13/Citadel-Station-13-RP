@@ -163,11 +163,6 @@
 			G.anchored = TRUE
 			return TRUE
 		if(RCD_DECONSTRUCT)
-<<<<<<< HEAD
-			to_chat(user, span("notice", "You deconstruct \the [src]."))
-			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
-=======
 			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
-			ChangeTurf(get_base_turf_by_area(src), preserve_outdoors = TRUE)
->>>>>>> citrp/master
+			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 			return TRUE
