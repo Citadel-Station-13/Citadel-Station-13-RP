@@ -56,7 +56,7 @@
 /// From base of atom/Exited(): (atom/movable/gone, direction)
 #define COMSIG_ATOM_EXITED "atom_exited"
 /// From base of atom/Bumped(): (/atom/movable)
-////#define COMSIG_ATOM_BUMPED "atom_bumped"
+#define COMSIG_ATOM_BUMPED "atom_bumped"
 /// From base of atom/handle_atom_del(): (atom/deleted)
 ////#define COMSIG_ATOM_CONTENTS_DEL "atom_contents_del"
 /// From base of atom/has_gravity(): (turf/location, list/forced_gravities)
