@@ -1139,7 +1139,7 @@
 	},
 /obj/structure/table/steel,
 /obj/item/paper{
-	info = "For anyone who bothers to read this before whining about the new engine, here's how you set it up in the most basic hands-off way:[list]1. Two cans of phoron in the hot loop[br]2. Four cans of phoron in the cold loop[br]3. Turn on the cold loop pump[br]4. Set mixer N/S Input, W Output[br]5. Turn on injectors, set to max[br]6. Hit ignition switch[/list][br]Engine won't burn forever, so don't panic when it goes out. As long as the CO2 in there stays nice and hot, your power output should be solid.";
+	info = "For anyone who bothers to read this before whining about the new engine, here's how you set it up in the most basic hands-off way:\[list]1. Two cans of phoron in the hot loop\[br]2. Four cans of phoron in the cold loop\[br]3. Turn on the cold loop pump\[br]4. Set mixer N/S Input, W Output\[br]5. Turn on injectors, set to max\[br]6. Hit ignition switch\[/list]\[br]Engine won't burn forever, so don't panic when it goes out. As long as the CO2 in there stays nice and hot, your power output should be solid.";
 	name = "Engine Instructions"
 	},
 /turf/simulated/floor/tiled/techfloor,
