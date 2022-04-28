@@ -19,9 +19,9 @@
 	var/velocity_y
 	/// vel angle
 	var/angular_velocity
-	/// current x
+	/// current x - this is not in pixels, this is in overmaps distance
 	var/x
-	/// current y
+	/// current y - this is not in pixels, this is in overmaps distance
 	var/y
 	/// angle
 	var/angle = 0

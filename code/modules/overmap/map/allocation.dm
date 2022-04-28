@@ -58,6 +58,12 @@
 #endif
 
 /datum/overmap/proc/SetupVisuals()
+	// if we don't have a side, don't bother
+#if OVERMAP_SIDE_VISUAL_GLITZ < 1
+	log_overmaps_map(src, "Skipping visual setup - OVERMAPS_SIDE_VISUAL_GLITZ is not positive.")
+	return
+#endif
+
 	var/list/turf/turfs = list()
 	// byond will blow the fuck up if vis contents loops, therefore
 	// we generate visuals on the tile *outside* the real edge
@@ -106,16 +112,21 @@
 		holder.pixel_x = (dir & WEST)? (-32 * (OVERMAP_SIDE_VISUAL_GLITZ - 1)) : 0
 		holder.pixel_y = (dir & SOUTH)? (-32 * (OVERMAP_SIDE_VISUAL_GLITZ - 1)) : 0
 		// vis contents moment
+		// since we have edge padding (again, see how important this is?)
+		// we don't need to add weirdness like "side turf is considered transit turf, do not use", instead all of the overmap is usable*
+		// tiled entities would always have issues becuase of how byond cross/uncross works so we still have to glitz that,
+		// but entities will always collide properly since we use spatial lookup instead of byond bounds()
 		holder.vis_contents = block(
 			// ugh
 			locate(
-				,
-				,
+				(dir & (EAST|WEST))? ((dir & EAST)? (cached_x_start) : (cached_x_end - OVERMAP_SIDE_VISUAL_GLITZ + 1)) : (T.x),
+				(dir & (NORTH|SOUTH))? ((dir & NORTH)? (cached_y_start) : (cached_y_end - OVERMAP_SIDE_VISUAL_GLITZ + 1)) : (T.y),
 				cached_z
 			),
 			locate(
-				,
-				,
+				(dir & (EAST|WEST))? ((dir & EAST)? (cached_x_start + OVERMAP_SIDE_VISUAL_GLITZ - 1) : (cached_x_end)) : (T.x),
+				(dir & (NORTH|SOUTH))? ((dir & NORTH)? (cached_y_start + OVERMAP_SIDE_VISUAL_GLITZ - 1) : (cached_y_end)) : (T.y),
 				cached_z
 			)
 		)
+	log_overmaps_map(src, "Generated [length(turfs)] edge visuals for turfs.")

@@ -43,7 +43,6 @@
 	/// entity spatial hash <DANGER DANGER DO NOT TOUCH THIS UNLESS YOU KNOW WHAT YOU ARE DOING>
 	var/list/spatial_hash
 
-
 /datum/overmap/New()
 	id = "[++id_next]"
 	stellar_location = new
@@ -72,7 +71,6 @@
 	SetupVisuals()
 	SetupSpatialHash()
 	Generate(generators)
-
 
 /datum/overmap/proc/Generate(list/datum/overmap_generator/generators = list())
 
