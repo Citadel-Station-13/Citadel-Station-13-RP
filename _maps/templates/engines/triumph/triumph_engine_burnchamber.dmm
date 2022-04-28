@@ -86,6 +86,7 @@
 	desc = "A remote control-switch for the engine radiator viewport shutters.";
 	id = "EngineRadiatorViewport";
 	name = "Engine Radiator Viewport Shutters";
+	pixel_x = 0;
 	pixel_y = 25;
 	req_access = list(10)
 	},
@@ -99,6 +100,7 @@
 	dir = 4
 	},
 /obj/item/radio/intercom{
+	dir = 2;
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -208,6 +210,19 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
+"hD" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "EngineRadiatorViewport";
+	name = "Engine Radiator Viewport Shutter";
+	opacity = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "ip" = (
 /obj/structure/window/phoronreinforced/full,
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -264,6 +279,19 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/engine_room)
+"jr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
@@ -462,11 +490,6 @@
 	},
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/engine_room)
-"rq" = (
-/obj/structure/closet/firecloset,
-/obj/item/extinguisher,
-/turf/template_noop,
-/area/template_noop)
 "rT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -482,19 +505,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_room)
-"sf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/engine_room)
 "sl" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 5
@@ -504,6 +514,17 @@
 "sE" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/engine_room)
+"tA" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 9
+	},
+/obj/machinery/computer/general_air_control/large_tank_control{
+	frequency = 1435;
+	input_tag = "exhaust_out";
+	name = "Engine Exhaust Control"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
@@ -529,6 +550,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced/airless,
+/area/engineering/engine_room)
+"uj" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "uF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -566,7 +593,7 @@
 	frequency = 1438;
 	input_tag = "hotloop_in";
 	name = "Pressure Chamber Control";
-	sensors = list("hotloop_sensor" = "Pressure Chamber")
+	sensors = list("hotloop_sensor" = "Pressure Chamber"))
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_room)
@@ -596,19 +623,6 @@
 	volume_rate = 700
 	},
 /turf/simulated/floor/reinforced/oxygen,
-/area/engineering/engine_room)
-"yr" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "EngineRadiatorViewport";
-	name = "Engine Radiator Viewport Shutter";
-	opacity = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/black{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "yQ" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -1428,23 +1442,17 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"Xh" = (
-/obj/machinery/atmospherics/pipe/simple/visible/black{
-	dir = 9
-	},
-/obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1435;
-	input_tag = "exhaust_out";
-	name = "Engine Exhaust Control"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/engine_room)
 "Xs" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"XH" = (
+/obj/structure/closet/firecloset,
+/obj/item/extinguisher,
+/turf/template_noop,
+/area/template_noop)
 "XI" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -1488,12 +1496,6 @@
 	dir = 6
 	},
 /turf/simulated/floor/reinforced/airless,
-/area/engineering/engine_room)
-"ZI" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "ZM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -1581,7 +1583,7 @@ PA
 Ku
 KZ
 Yi
-yr
+hD
 Yi
 KZ
 KZ
@@ -1602,7 +1604,7 @@ gT
 VA
 yQ
 oN
-Xh
+tA
 cj
 pF
 gU
@@ -1764,7 +1766,7 @@ Qu
 ET
 SP
 SP
-ZI
+uj
 Py
 Qx
 uF
@@ -1830,7 +1832,7 @@ ba
 KZ
 ox
 rX
-sf
+jr
 KZ
 gV
 gV
@@ -1853,8 +1855,8 @@ Qm
 aW
 fv
 gU
-rq
-rq
+XH
+XH
 gV
 gV
 gV
