@@ -14,7 +14,7 @@
 	/// How are we intending to move? Walk/run/etc.
 	var/m_intent = MOVE_INTENT_RUN
 
-	var/next_mob_id = 0
+	var/static/next_mob_id = 0
 
 	var/datum/mind/mind
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
