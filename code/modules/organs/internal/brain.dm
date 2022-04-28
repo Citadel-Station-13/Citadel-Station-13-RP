@@ -33,7 +33,8 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	if(!owner || owner.stat == DEAD)
 		defib_timer = max(--defib_timer, 0)
 	else
-		defib_timer = min(++defib_timer, (CONFIG_GET(number/defib_timer) MINUTES) / 2)
+		//! Time vars measure things in ticks. Life tick happens every ~2 seconds, therefore dividing by 20
+		defib_timer = min(++defib_timer, (CONFIG_GET(number/defib_timer) MINUTES) / 20)
 
 /obj/item/organ/internal/brain/proc/can_assist()
 	return can_assist
@@ -81,7 +82,8 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 /obj/item/organ/internal/brain/Initialize(mapload, ...)
 	. = ..()
 	health = config_legacy.default_brain_health
-	defib_timer = (CONFIG_GET(number/defib_timer) MINUTES) / 2
+	//! Time vars measure things in ticks. Life tick happens every ~2 seconds, therefore dividing by 20
+	defib_timer = ((CONFIG_GET(number/defib_timer) MINUTES) / 20)
 	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
 
 /obj/item/organ/internal/brain/proc/clear_brainmob_hud()
@@ -289,9 +291,9 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 /datum/chemical_reaction/promethean_brain_revival/on_reaction(var/datum/reagents/holder)
 	var/obj/item/organ/internal/brain/slime/brain = holder.my_atom
 	if(brain.reviveBody())
-		brain.visible_message("<span class='notice'>[brain] bubbles, surrounding itself with a rapidly expanding mass of slime!</span>")
+		brain.visible_message(SPAN_NOTICE("[brain] bubbles, surrounding itself with a rapidly expanding mass of slime!"))
 	else
-		brain.visible_message("<span class='warning'>[brain] shifts strangely, but falls still.</span>")
+		brain.visible_message(SPAN_NOTICE("[brain] shifts strangely, but falls still."))
 
 /obj/item/organ/internal/brain/golem
 	name = "chem"
