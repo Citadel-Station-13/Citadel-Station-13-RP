@@ -141,7 +141,6 @@
 	set name = "Attach Limb"
 	set category = "Object"
 	set desc = "Attach a replacement limb."
-	set user = src
 
 	var/obj/item/organ/external/E = get_active_hand()
 	if(!check_can_attach_modular_limb(E))
@@ -154,7 +153,12 @@
 	last_special = world.time
 	drop_from_inventory(E)
 	E.replaced(src)
+
+	// Reconnect the organ and children as normally this is done with surgery.
 	E.status &= ~ORGAN_CUT_AWAY
+	for(var/obj/item/organ/external/child in E.children)
+		child.status &= ~ORGAN_CUT_AWAY
+
 	var/datum/gender/G = gender_datums[gender]
 	visible_message(
 		SPAN_NOTICE("\The [src] attaches \the [E] to [G.his] body!"),
@@ -166,7 +170,6 @@
 	set name = "Remove Limb"
 	set category = "Object"
 	set desc = "Detach one of your limbs."
-	set user = src
 
 	var/list/detachable_limbs = get_modular_limbs(return_first_found = FALSE, validate_proc = /obj/item/organ/external/proc/can_remove_modular_limb)
 	if(!length(detachable_limbs))
