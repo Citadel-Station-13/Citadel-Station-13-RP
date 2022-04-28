@@ -3,6 +3,10 @@
  * usually hazards, spatial-filling things, etc
  */
 /atom/movable/overmap_object/tiled
+	bound_height = 32
+	bound_width = 32
+	bound_x = 0
+	bound_y = 0
 
 /atom/movable/overmap_object/tiled/Initialize(mapload)
 	. = ..()
