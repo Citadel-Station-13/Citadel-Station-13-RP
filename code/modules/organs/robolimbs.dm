@@ -27,6 +27,7 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 
 var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	default=cyber_default;\
+	eyes=eyes;\
 	static=cyber_static;\
 	alert=cyber_alert;\
 	happy=cyber_happ;\

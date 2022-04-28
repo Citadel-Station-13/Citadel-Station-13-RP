@@ -409,3 +409,25 @@
 
 /mob/living/carbon/human/proc/spend_charge(var/spent, var/mob/living/carbon/human/H)
 	H.nutrition = H.nutrition - spent
+
+/mob/living/carbon/human/verb/toggle_eyes_layer()
+	set name = "Switch Eyes/Monitor Layer"
+	set desc = "Toggle rendering of eyes/monitor above markings."
+	set category = "IC"
+
+	if(stat)
+		to_chat(src, SPAN_WARNING("You must be awake and standing to perform this action!"))
+		return
+	var/obj/item/organ/external/head/vr/H = organs_by_name[BP_HEAD]
+	if(!H)
+		to_chat(src, SPAN_WARNING("You don't seem to have a head!"))
+		return
+
+	H.eyes_over_markings = !H.eyes_over_markings
+	update_icons_body()
+
+	var/datum/robolimb/robohead = all_robolimbs[H.model]
+	if(robohead.monitor_styles && robohead.monitor_icon)
+		to_chat(src, SPAN_NOTICE("You reconfigure the rendering order of your facial display."))
+
+	return TRUE

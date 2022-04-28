@@ -60,6 +60,9 @@ var/global/list/limb_icon_cache = list()
 	if(!iscarbon(owner) || !owner.species)
 		return
 
+	///? Holds eye icon to render over markings later.
+	var/icon/eyecon
+
 	//Eye color/icon
 	var/should_have_eyes = owner.should_have_organ(O_EYES)
 	var/has_eye_color = owner.species.appearance_flags & HAS_EYE_COLOR
@@ -78,8 +81,14 @@ var/global/list/limb_icon_cache = list()
 		//We have weird other-sorts of eyes (as we're not supposed to have eye organ, but we have HAS_EYE_COLOR species)
 		else
 			eyes_icon.Blend(rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes), ICON_ADD)
-		add_overlay(eyes_icon)
-		mob_icon.Blend(eyes_icon, ICON_OVERLAY)
+
+		//Allow rendering of eyes over markings.
+		if(eyes_over_markings)
+			eyecon = eyes_icon
+		else
+			add_overlay(eyes_icon)
+			mob_icon.Blend(eyes_icon, ICON_OVERLAY)
+			icon_cache_key += "[eye_icon]"
 
 	//Lip color/icon
 	if(owner.lip_style && (species && (species.appearance_flags & HAS_LIPS)))
@@ -95,6 +104,12 @@ var/global/list/limb_icon_cache = list()
 		add_overlay(mark_s) //So when it's not on your body, it has icons
 		mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
 		icon_cache_key += "[M][markings[M]["color"]]"
+
+	//Toggle to render eyes above markings.
+	if(eyes_over_markings && eyecon)
+		add_overlay(eyecon)
+		mob_icon.Blend(eyecon, ICON_OVERLAY)
+		icon_cache_key += "[eye_icon]"
 
 	add_overlay(get_hair_icon())
 
