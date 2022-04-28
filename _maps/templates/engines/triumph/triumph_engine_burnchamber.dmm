@@ -362,7 +362,7 @@
 /area/engineering/engine_room)
 "ox" = (
 /obj/machinery/button/ignition{
-	id = engine_igniter;
+	id = "engine_igniter";
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1318,7 +1318,7 @@
 /area/engineering/engine_room)
 "UW" = (
 /obj/machinery/igniter{
-	id = engine_igniter;
+	id = "engine_igniter";
 	on = 0
 	},
 /turf/simulated/floor/reinforced/airless,
