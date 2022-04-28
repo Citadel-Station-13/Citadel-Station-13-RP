@@ -59,49 +59,53 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 					R.species_alternates[species] = all_robolimbs[species_company]
 
 /datum/robolimb
-	///Shown when selecting the limb.
+	/// Shown when selecting the limb.
 	var/company = "Unbranded"
-	///Seen when examining a limb.
+	/// Seen when examining a limb.
 	var/desc = "A generic unbranded robotic prosthesis."
-	///Icon base to draw from.
+	/// Icon base to draw from.
 	var/icon = 'icons/mob/human_races/robotic.dmi'
-	///Where it draws the monitor icon from.
+	/// Where it draws the monitor icon from.
 	var/monitor_icon = "icons/mob/monitor_icons.dmi"
-	///If set, not available at character creator.
+	/// If set, not available at character creator.
 	var/unavailable_at_chargen
-	///If set, can't be constructed.
+	/// If set, can't be constructed.
 	var/unavailable_to_build
-	///If set, appears organic.
+	/// If set, appears organic.
 	var/lifelike
-	///If set, applies skin tone rather than part color Overrides color.
+	/// If set, applies skin tone rather than part color Overrides color.
 	var/skin_tone
-	///If set, applies skin color rather than part color.
+	/// If set, applies skin color rather than part color.
 	var/skin_color
-	///If set, applies blood color rather than species' blood color.
-	var/blood_color = "#030303"
+	/// If set, applies the limb's blood color rather than species' blood color.
+	var/blood_color = SYNTH_BLOOD_COLOUR
+	/// If set, applies the limb's blood name rather than species' blood name.
 	var/blood_name = "oil"
-	var/list/species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_XENOCHIMERA)
-	///"Species Name" = "Robolimb Company" , List, when initialized, will become "Species Name" = RobolimbDatum, used for alternate species sprites.
-	var/list/species_alternates = list(SPECIES_TAJ = "Unbranded - Tajaran", SPECIES_UNATHI = "Unbranded - Unathi")
-	///If empty, the model of limbs offers a head compatible with monitors.
+	/// If empty, the model of limbs offers a head compatible with monitors.
 	var/list/monitor_styles
-	///Defines what parts said brand can replace on a body.
+	/// Defines what parts said brand can replace on a body.
 	var/parts = BP_ALL
-	///Intensity modifier for the health GUI indicator.
+	/// Intensity modifier for the health GUI indicator.
 	var/health_hud_intensity = 1
-	///If it should make the torso a species
-	var/suggested_species = SPECIES_HUMAN
-	///What icon_state to use for speech bubbles when talking.  Check talk.dmi for all the icons.
+	/// What icon_state to use for speech bubbles when talking.  Check talk.dmi for all the icons.
 	var/speech_bubble_appearance = "synthetic"
-	///Multiplier for incoming brute damage.
+	/// Whether or not this limb allows attaching/detaching, and whether or not it checks its parent as well.
+	var/modular_bodyparts = MODULAR_BODYPART_CYBERNETIC
+	/// Multiplier for incoming brute damage.
 	var/robo_brute_mod = 1
-	///Multiplier for incoming burn damage.
+	/// Multiplier for incoming burn damage.
 	var/robo_burn_mod = 1
-	///Cyberlimbs dmi includes a tail sprite to wear.
+	/// Cyberlimbs dmi includes a tail sprite to wear.
 	var/includes_tail
-	///Cyberlimbs dmi includes a wing sprite to wear.
+	/// Cyberlimbs dmi includes a wing sprite to wear.
 	var/includes_wing
-	///List of ckeys that are allowed to pick this in charsetup.
+	/// If it should make the torso a species
+	var/suggested_species = SPECIES_HUMAN
+	/// Species in this list cannot take these prosthetics.
+	var/list/species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_XENOCHIMERA)
+	/// "Species Name" = "Robolimb Company" , List, when initialized, will become "Species Name" = RobolimbDatum, used for alternate species sprites.
+	var/list/species_alternates = list(SPECIES_TAJ = "Unbranded - Tajaran", SPECIES_UNATHI = "Unbranded - Unathi")
+	/// List of ckeys that are allowed to pick this in charsetup.
 	var/list/whitelisted_to
 
 /datum/robolimb/unbranded_monitor
@@ -353,6 +357,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	speech_bubble_appearance = "normal"
 	robo_brute_mod = 1.1
 	robo_burn_mod = 1.1
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /datum/robolimb/veymed_skrell
 	company = "Vey-Med - Skrell"
@@ -364,6 +369,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	speech_bubble_appearance = "normal"
 	robo_brute_mod = 1.05
 	robo_burn_mod = 1.05
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 // thanks kraso
 /datum/robolimb/moth
@@ -374,6 +380,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	lifelike = 1
 	skin_tone = TRUE
 	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /datum/robolimb/insect
 	company = "Psyche - Insect"
@@ -383,6 +390,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	lifelike = 1
 	skin_tone = TRUE
 	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 
 /datum/robolimb/wardtakahashi
@@ -477,6 +485,13 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = cyberbeast_monitor_styles
+
+/datum/robolimb/wooden
+	company = "Morgan Trading Co"
+	desc = "A simplistic, metal-banded, wood-panelled prosthetic."
+	icon = 'icons/mob/human_races/cyberlimbs/prosthesis/wooden.dmi'
+	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
+	parts = list(BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
 /obj/item/disk/limb
 	name = "Limb Blueprints"
@@ -637,6 +652,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	skin_tone = 1
 	suggested_species = SPECIES_TAJ
 	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_tajaran
 	company = "DSI - Tajaran"
@@ -652,6 +668,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	skin_tone = 1
 	suggested_species = SPECIES_UNATHI
 	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_lizard
 	company = "DSI - Lizard"
@@ -667,6 +684,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	skin_tone = 1
 	suggested_species = SPECIES_SERGAL
 	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_sergal
 	company = "DSI - Sergal"
@@ -682,6 +700,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	skin_tone = 1
 	suggested_species = SPECIES_NEVREAN
 	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_nevrean
 	company = "DSI - Nevrean"
@@ -697,6 +716,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	skin_tone = 1
 	suggested_species = SPECIES_VULPKANIN
 	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_vulpkanin
 	company = "DSI - Vulpkanin"
@@ -712,6 +732,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	skin_tone = 1
 	suggested_species = SPECIES_AKULA
 	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_akula
 	company = "DSI - Akula"
@@ -727,6 +748,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	skin_tone = 1
 	suggested_species = SPECIES_VASILISSAN
 	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /obj/item/disk/limb/dsi_spider
 	company = "DSI - Vasilissan"
@@ -740,6 +762,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	skin_tone = 1
 	suggested_species = SPECIES_TESHARI
 	speech_bubble_appearance = "normal"
+	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /datum/robolimb/dsi_teshari/New()
 	species_cannot_use = GLOB.all_species.Copy()

@@ -279,7 +279,7 @@
 
 	var/datum/robolimb/robohead = all_robolimbs[E.model]
 	if(!robohead.monitor_styles || !robohead.monitor_icon)
-		to_chat(src, SPAN_WARNING("Your head doesn't have a monitor or it doens't support to be changed!"))
+		to_chat(src, SPAN_WARNING("Your head doesn't have a monitor, or it doesn't support being changed!"))
 		return
 
 	var/list/states
