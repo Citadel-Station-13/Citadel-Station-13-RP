@@ -1,3 +1,9 @@
+/**
+ *! ## Screentip Signals. Format:
+ * * When the signal is called: (signal arguments)
+ * * All signals send the source datum of the signal as the first argument
+ */
+
 /// A "Type-A" contextual screentip interaction.
 /// These are used for items that are defined by their behavior. They define their contextual text within *themselves*,
 /// not in their targets.
@@ -7,7 +13,7 @@
 /// A screentip context list is a list that has context keys (SCREENTIP_CONTEXT_*, from __DEFINES/screentips.dm)
 /// that map to the action as text.
 /// If you mutate the list in this signal, you must return CONTEXTUAL_SCREENTIP_SET.
-#define COMSIG_ITEM_REQUESTING_CONTEXT_FOR_TARGET "item_requesting_context_for_target"
+////#define COMSIG_ITEM_REQUESTING_CONTEXT_FOR_TARGET "item_requesting_context_for_target"
 
 /// A "Type-B" contextual screentip interaction.
 /// These are atoms that are defined by what happens *to* them. These should define contextual text within themselves, and
@@ -17,7 +23,7 @@
 /// A screentip context list is a list that has context keys (SCREENTIP_CONTEXT_*, from __DEFINES/screentips.dm)
 /// that map to the action as text.
 /// If you mutate the list in this signal, you must return CONTEXTUAL_SCREENTIP_SET.
-#define COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM "atom_requesting_context_from_item"
+////#define COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM "atom_requesting_context_from_item"
 
 /// Tells the contextual screentips system that the list context was mutated.
-#define CONTEXTUAL_SCREENTIP_SET (1 << 0)
+////#define CONTEXTUAL_SCREENTIP_SET (1 << 0)

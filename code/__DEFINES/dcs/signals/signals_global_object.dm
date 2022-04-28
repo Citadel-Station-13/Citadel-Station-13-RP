@@ -1,13 +1,17 @@
-/// signals from globally accessible objects
+/**
+ *! ## Globally Accessible Object Signals. Format:
+ * * When the signal is called: (signal arguments)
+ * * All signals send the source datum of the signal as the first argument
+ */
 
-///from SSJob when DivideOccupations is called
-#define COMSIG_OCCUPATIONS_DIVIDED "occupations_divided"
+/// From SSJob when DivideOccupations is called
+////#define COMSIG_OCCUPATIONS_DIVIDED "occupations_divided"
 
-///from SSsun when the sun changes position : (azimuth)
-#define COMSIG_SUN_MOVED "sun_moved"
+/// From SSsun when the sun changes position : (azimuth)
+////#define COMSIG_SUN_MOVED "sun_moved"
 
-///from SSsecurity_level when the security level changes : (new_level)
-#define COMSIG_SECURITY_LEVEL_CHANGED "security_level_changed"
+/// From SSsecurity_level when the security level changes : (new_level)
+////#define COMSIG_SECURITY_LEVEL_CHANGED "security_level_changed"
 
-///from SSshuttle when the supply shuttle starts spawning orders : ()
-#define COMSIG_SUPPLY_SHUTTLE_BUY "supply_shuttle_buy"
+/// From SSshuttle when the supply shuttle starts spawning orders : ()
+////#define COMSIG_SUPPLY_SHUTTLE_BUY "supply_shuttle_buy"

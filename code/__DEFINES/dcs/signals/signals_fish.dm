@@ -1,7 +1,13 @@
-// Aquarium related signals
-#define COMSIG_AQUARIUM_SURFACE_CHANGED "aquarium_surface_changed"
-#define COMSIG_AQUARIUM_FLUID_CHANGED "aquarium_fluid_changed"
+/**
+ *! ## Fish Signals. Format:
+ * * When the signal is called: (signal arguments)
+ * * All signals send the source datum of the signal as the first argument
+ */
 
-// Fish signals
-#define COMSIG_FISH_STATUS_CHANGED "fish_status_changed"
-#define COMSIG_FISH_STIRRED "fish_stirred"
+//! Aquarium related signals
+////#define COMSIG_AQUARIUM_SURFACE_CHANGED "aquarium_surface_changed"
+////#define COMSIG_AQUARIUM_FLUID_CHANGED "aquarium_fluid_changed"
+
+//! Fish signals
+////#define COMSIG_FISH_STATUS_CHANGED "fish_status_changed"
+////#define COMSIG_FISH_STIRRED "fish_stirred"
