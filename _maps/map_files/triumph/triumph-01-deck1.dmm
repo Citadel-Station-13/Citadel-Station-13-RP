@@ -7915,6 +7915,11 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
+/obj/item/circuitboard/massive_gas_pump,
+/obj/item/circuitboard/massive_heat_pump{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "Bs" = (
