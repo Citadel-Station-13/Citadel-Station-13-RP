@@ -593,7 +593,7 @@
 	frequency = 1438;
 	input_tag = "hotloop_in";
 	name = "Pressure Chamber Control";
-	sensors = list("hotloop_sensor" = "Pressure Chamber"))
+	sensors = list("hotloop_sensor" = "Pressure Chamber")
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_room)
