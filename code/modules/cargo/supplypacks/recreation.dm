@@ -20,8 +20,8 @@
 			/obj/item/material/twohanded/fireaxe/foam = 2
 			)
 	cost = 50
-	containertype = /obj/structure/closet/crate
-	containername = "foam weapon crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "foam weapon crate"
 
 /datum/supply_pack/recreation/lasertag
 	name = "Lasertag equipment"
@@ -31,8 +31,8 @@
 			/obj/item/gun/energy/lasertag/blue,
 			/obj/item/clothing/suit/bluetag
 			)
-	containertype = /obj/structure/closet
-	containername = "Lasertag Closet"
+	container_type = /obj/structure/closet
+	container_name = "Lasertag Closet"
 	cost = 10
 
 /datum/supply_pack/recreation/artscrafts
@@ -55,14 +55,14 @@
 			/obj/item/wrapping_paper = 3
 			)
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "Arts and Crafts crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Arts and Crafts crate"
 
 /datum/supply_pack/recreation/painters
 	name = "Station Painting Supplies"
 	cost = 10
-	containername = "station painting supplies crate"
-	containertype = /obj/structure/closet/crate
+	container_name = "station painting supplies crate"
+	container_type = /obj/structure/closet/crate
 	contains = list(
 			/obj/item/pipe_painter = 2,
 			/obj/item/floor_painter = 2,
@@ -72,8 +72,8 @@
 /datum/supply_pack/recreation/cheapbait
 	name = "Cheap Fishing Bait"
 	cost = 10
-	containername = "cheap bait crate"
-	containertype = /obj/structure/closet/crate/freezer
+	container_name = "cheap bait crate"
+	container_type = /obj/structure/closet/crate/freezer
 	contains = list(
 			/obj/item/storage/box/wormcan/sickly = 5
 			)
@@ -81,8 +81,8 @@
 /datum/supply_pack/randomised/recreation/cheapbait
 	name = "Deluxe Fishing Bait"
 	cost = 40
-	containername = "deluxe bait crate"
-	containertype = /obj/structure/closet/crate/freezer
+	container_name = "deluxe bait crate"
+	container_type = /obj/structure/closet/crate/freezer
 	num_contained = 8
 	contains = list(
 			/obj/item/storage/box/wormcan,
@@ -92,8 +92,8 @@
 /datum/supply_pack/recreation/ltagturrets
 	name = "Laser Tag Turrets"
 	cost = 40
-	containername = "laser tag turret crate"
-	containertype = /obj/structure/closet/crate
+	container_name = "laser tag turret crate"
+	container_type = /obj/structure/closet/crate
 	contains = list(
 			/obj/machinery/porta_turret/lasertag/blue,
 			/obj/machinery/porta_turret/lasertag/red
@@ -102,8 +102,8 @@
 /datum/supply_pack/recreation/jukebox
 	name = "Jukebox crate"
 	cost = 50
-	containername = "Jukebox crate"
-	containertype = /obj/structure/closet/crate
+	container_name = "Jukebox crate"
+	container_type = /obj/structure/closet/crate
 	contains = list (/obj/machinery/media/jukebox = 1)
 
 /datum/supply_pack/recreation/rover
@@ -111,8 +111,8 @@
 	contains = list(
 			/obj/vehicle/train/rover/engine
 			)
-	containertype = /obj/structure/largecrate
-	containername = "NT Humvee Crate"
+	container_type = /obj/structure/largecrate
+	container_name = "NT Humvee Crate"
 	cost = 500
 
 /datum/supply_pack/recreation/restraints
@@ -130,8 +130,8 @@
 			/obj/item/material/twohanded/fluff/riding_crop,
 			/obj/item/clothing/under/fluff/latexmaid
 			)
-	containertype = /obj/structure/closet/crate
-	containername = "Restraints crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Restraints crate"
 	cost = 30
 
 /datum/supply_pack/recreation/wolfgirl_cosplay_crate
@@ -144,8 +144,8 @@
 			/obj/item/shield/fluff/wolfgirlshield = 1
 			)
 	cost = 50
-	containertype = /obj/structure/closet/crate
-	containername = "wolfgirl cosplay crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "wolfgirl cosplay crate"
 
 /datum/supply_pack/randomised/recreation/figures
 	name = "Action figures crate"
@@ -154,16 +154,16 @@
 			/obj/random/action_figure/supplypack
 			)
 	cost = 200
-	containertype = /obj/structure/closet/crate
-	containername = "Action figures crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Action figures crate"
 
 /datum/supply_pack/recreation/characters
 	name = "Tabletop miniatures"
 	contains = list(
 			/obj/item/storage/box/characters
 			)
-	containertype = /obj/structure/closet/crate
-	containername = "Tabletop miniatures crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Tabletop miniatures crate"
 	cost = 50
 
 /datum/supply_pack/randomised/recreation/plushies
@@ -173,8 +173,8 @@
 			/obj/random/plushie
 			)
 	cost = 60
-	containertype = /obj/structure/closet/crate
-	containername = "Plushies crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Plushies crate"
 
 /datum/supply_pack/recreation/collars
 	name = "Collar bundle"
@@ -188,8 +188,8 @@
 			/obj/item/clothing/accessory/collar/holo = 1
 			)
 	cost = 25
-	containertype = /obj/structure/closet/crate
-	containername = "collar crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "collar crate"
 
 //DONKsoft
 /datum/supply_pack/recreation/donksoft
@@ -202,8 +202,8 @@
 			/obj/item/shield/riot/foam = 2
 			)
 	cost = 40
-	containertype = /obj/structure/closet/crate
-	containername = "DONKsoft Skirmish crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "DONKsoft Skirmish crate"
 
 /datum/supply_pack/recreation/donksoft_exotic
 	name = "DONKsoft Exotic Weaponry Bundle"
@@ -216,8 +216,8 @@
 			/obj/item/material/twohanded/fireaxe/foam = 1
 			)
 	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "DONKsoft Exotic Weaponry crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "DONKsoft Exotic Weaponry crate"
 
 /datum/supply_pack/recreation/donksoft_ammo
 	name = "DONKsoft Resupply Bundle"
@@ -225,5 +225,5 @@
 			/obj/item/storage/box/foamdart= 4
 			)
 	cost = 20
-	containertype = /obj/structure/closet/crate
-	containername = "DONKsoft Resupply crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "DONKsoft Resupply crate"
