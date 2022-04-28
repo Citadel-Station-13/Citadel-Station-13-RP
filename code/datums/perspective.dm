@@ -171,7 +171,8 @@
 	C.mob.sight = sight
 	C.mob.see_in_dark = see_in_dark
 	C.mob.see_invisible = see_invisible
-	C.change_view(view_size)
+	if(view_size)
+		C.change_view(view_size)
 
 /**
  * update all viewers
