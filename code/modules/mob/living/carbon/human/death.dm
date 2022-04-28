@@ -44,11 +44,12 @@
 	//mirror should drop on dust
 	if(mirror)
 		mirror.forceMove(drop_location())
+		mirror = null
 
 	if(species)
-		..(species.dusted_anim, species.remains_type)
+		return ..(species.dusted_anim, species.remains_type)
 	else
-		..()
+		return ..()
 
 /mob/living/carbon/human/ash()
 

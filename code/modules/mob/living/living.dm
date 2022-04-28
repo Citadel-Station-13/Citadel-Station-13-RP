@@ -42,19 +42,17 @@
 		buckled.unbuckle_mob(src, TRUE)
 	if(selected_image)
 		QDEL_NULL(selected_image)
-	if(LAZYLEN(organs))
-		organs_by_name.Cut()
-		while(organs.len)
-			var/obj/item/OR = organs[1]
-			organs -= OR
-			qdel(OR)
 
-	if(LAZYLEN(internal_organs))
-		internal_organs_by_name.Cut()
-		while(internal_organs.len)
-			var/obj/item/OR = internal_organs[1]
-			internal_organs -= OR
-			qdel(OR)
+	organs_by_name = null
+	internal_organs_by_name = null
+	for(var/obj/item/organ/O in organs)
+		if(!QDELETED(O))
+			qdel(O)
+	organs = null
+	for(var/obj/item/organ/O in internal_organs)
+		if(!QDELETED(O))
+			qdel(O)
+	internal_organs = null
 	return ..()
 
 //mob verbs are faster than object verbs. See mob/verb/examine.

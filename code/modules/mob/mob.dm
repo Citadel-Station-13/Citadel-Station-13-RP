@@ -59,7 +59,7 @@
 	living_mob_list -= src
 	unset_machine()
 	if(hud_used)
-		qdel(hud_used)
+		QDEL_NULL(hud_used)
 	dispose_rendering()
 	if(client)
 		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
