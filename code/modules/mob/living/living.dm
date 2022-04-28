@@ -43,16 +43,20 @@
 	if(selected_image)
 		QDEL_NULL(selected_image)
 
-	organs_by_name = null
-	internal_organs_by_name = null
+	// this all needs to be Cut and not null
+	// TODO: fix whatever is accessing these lists after qdel
+	// it should never happen.
+	organs_by_name.Cut()
+	internal_organs_by_name.Cut()
 	for(var/obj/item/organ/O in organs)
 		if(!QDELETED(O))
 			qdel(O)
-	organs = null
+	organs.Cut()
 	for(var/obj/item/organ/O in internal_organs)
 		if(!QDELETED(O))
 			qdel(O)
-	internal_organs = null
+	internal_organs.Cut()
+
 	return ..()
 
 //mob verbs are faster than object verbs. See mob/verb/examine.
