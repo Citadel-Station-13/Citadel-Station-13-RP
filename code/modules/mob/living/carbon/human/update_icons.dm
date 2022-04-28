@@ -578,7 +578,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	update_inv_wear_suit()
 	update_inv_r_hand()
 	update_inv_l_hand()
-	update_inv_handcuffed()
+	update_handcuffed()
 	update_inv_legcuffed()
 	//update_inv_pockets() //Doesn't do anything
 	update_fire()
@@ -851,7 +851,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		hud_used.l_hand_hud_object.update_icon()
 		hud_used.r_hand_hud_object.update_icon()
 
-/mob/living/carbon/human/update_inv_handcuffed()
+/mob/living/carbon/human/update_handcuffed()
 	if(QDESTROYING(src))
 		return
 

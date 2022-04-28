@@ -380,7 +380,7 @@
 						H.handcuffed = new /obj/item/handcuffs/cable(H) // Better to be cable cuffed than stun-locked
 					else
 						H.handcuffed = new /obj/item/handcuffs(H)
-					H.update_inv_handcuffed()
+					H.update_handcuffed()
 			busy = FALSE
 	else if(istype(M, /mob/living))
 		var/mob/living/L = M

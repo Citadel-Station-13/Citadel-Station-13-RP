@@ -204,8 +204,8 @@
 			/obj/item/implantcase/restrainingbolt = 2
 			)
 	cost = 40
-	containertype = /obj/structure/closet/crate/secure/cybersolutions
-	containername = "Restraining bolt crate"
+	container_type = /obj/structure/closet/crate/secure/cybersolutions
+	container_name = "Restraining bolt crate"
 	access = access_robotics
 
 /datum/supply_pack/robotics/bike

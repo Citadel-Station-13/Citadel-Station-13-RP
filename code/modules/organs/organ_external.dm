@@ -1453,3 +1453,10 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/is_hidden_by_tail()
 	if(owner && owner.tail_style && owner.tail_style.hide_body_parts && (organ_tag in owner.tail_style.hide_body_parts))
 		return TRUE
+
+/mob/living/carbon/human/proc/has_embedded_objects()
+	. = 0
+	for(var/obj/item/organ/external/L in organs)
+		for(var/obj/item/I in L.implants)
+			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
+				return TRUE

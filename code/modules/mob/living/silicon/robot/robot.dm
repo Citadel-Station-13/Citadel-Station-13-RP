@@ -522,7 +522,7 @@
 
 				return
 
-		if(istype(W, /obj/item/weapon/implant/restrainingbolt) && !cell)
+		if(istype(W, /obj/item/implant/restrainingbolt) && !cell)
 			if(bolt)
 				to_chat(user, SPAN_NOTICE("There is already a restraining bolt installed in this cyborg."))
 				return
@@ -738,7 +738,7 @@
 	return idcard
 
 /mob/living/silicon/robot/get_restraining_bolt()
-	var/obj/item/weapon/implant/restrainingbolt/RB = bolt
+	var/obj/item/implant/restrainingbolt/RB = bolt
 
 	if(istype(RB))
 		if(!RB.malfunction)
