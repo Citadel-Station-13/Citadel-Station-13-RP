@@ -58,7 +58,8 @@
 	dead_mob_list -= src
 	living_mob_list -= src
 	unset_machine()
-	qdel(hud_used)
+	if(hud_used)
+		qdel(hud_used)
 	dispose_rendering()
 	if(client)
 		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
@@ -69,7 +70,8 @@
 		spellremove(src)
 	// this kicks out client
 	ghostize()
-	QDEL_NULL(plane_holder)
+	if(plane_holder)
+		QDEL_NULL(plane_holder)
 	// with no client, we can safely remove perspective this way snow-flakily
 	if(using_perspective)
 		using_perspective.RemoveMob(src)
