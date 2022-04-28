@@ -338,10 +338,8 @@
 	host_bodypart.implants -= src
 	host_bodypart = null
 
-	forceMove(get_turf(host))
-
-	reset_view(null)
-
+	forceMove(host.loc)
+	update_perspective()
 	host = null
 
 /mob/living/simple_mob/animal/sif/leech/verb/inject_victim()

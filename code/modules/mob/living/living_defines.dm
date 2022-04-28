@@ -95,3 +95,6 @@
 
 	//Pending Refactor, as per Kev.
 	//var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+
+	// TODO: execute iamcrystalclear for making this var
+	var/last_blood_warn = -INFINITY

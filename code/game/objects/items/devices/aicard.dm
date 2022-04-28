@@ -122,7 +122,7 @@
 		add_attack_logs(user,ai,"Extracted into AI Card")
 		src.name = "[initial(name)] - [ai.name]"
 
-		ai.loc = src
+		ai.forceMove(src)
 		ai.destroy_eyeobj(src)
 		ai.cancel_camera()
 		ai.control_disabled = 1
