@@ -110,76 +110,38 @@
 /obj/item/book/manual/supermatter_engine/Initialize(mapload)
 	. = ..()
 	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<h1>OPERATING MANUAL FOR MK 1 PROTOTYPE THERMOELECTRIC SUPERMATTER ENGINE 'TOMBOLA'</h1>
-				<br>
-				<h2>OPERATING PRINCIPLES</h2>
-				<br>
-				<li>The supermatter crystal serves as the fundamental power source of the engine. Upon being charged, it begins to emit large amounts of heat and radiation, as well and oxygen and phoron gas. As oxygen accelerates the reaction and reacts with phoron to start a fire, it must be filtered out. It's recommended to filter out all gases besides nitrogen for standard operation. </li>
-				<br>
-				<li>Gas in the reactor chamber housing the supermatter is circulated through the reactor loop, which passes through the filters and thermoelectric generators. The thermoelectric generators transfer heat from the reactor loop to the colder radiator loop, thereby generating power. Additional power is generated from internal turbines in the circulators.</li>
-				<br>
-				<li>Gas in the radiator loop is circulated through the radiator bank, located in space. This rapidly cools the air, preserving the temperature differential needed for power generation.</li>
-				<br>
-				<li>The MK 1 Prototype Thermoelectric Supermatter Engine is designed to operate at reactor temperatures of 3000K to 4000K and generate up to 1MW of power. Beyond 1MW, the thermoelectric generators will begin to lose power through electrical discharge, reducing efficiency, but additional power generation remains feasible.</li>
-				<br>
-				<li>The crystal structure of the supermatter will begin to liquefy if its temperature exceeds 5000K. This eventually results in a massive release of light, heat and radiation, disintegration of both the supermatter crystal and most of the surrounding area, and as as-of-yet poorly documented psychological effects on all animals within a 2km radius. Appropriate action should be taken to stabilize or eject the supermatter before such occurs.</li>
-				<br>
-				<h2>SUPERMATTER HANDLING</h2>
-				<li>Do not expose supermatter to oxygen.</li>
-				<li>Do not allow supermatter to contact any solid object apart from specially-designed supporting pallet.</li>
-				<li>Do not directly view supermatter without meson goggles.</li>
-				<li>While handles on pallet allow moving the supermatter via pulling, pushing should not be attempted.</li>
-				<li>Note that prosthetics do not protect against radiation or viewing the supermatter.</li>
-				<br>
-				<h2>STANDARD STARTUP PROCEDURE</h2>
+				<h1><strong>Guide: Supermatter Engine</strong></h1>
+				<h2>The Engine Room</h2>
+				<p>The Engine room consists of:</p>
 				<ol>
-				<li>Fill reactor loop and radiator loop with three (3) standard canisters of phoron gas each.</li>
-				<li>Fill the waste handling radiator loop with one (1) standard canister of carbon dioxide gas.</li>
-				<li>Enable both the high power gas pumps near the thermo-electric generators and maximize the desired output.</li>
-				<li>Enable both the omni-filters and ensure they are set to filter phoron back into the system.</li>
-				<li>Enable the gas pump from the filters to waste handling and maximize the desired output.</li>
-				<li>Close the monitoring room blast doors and open the reactor blast doors,</li>
-				<li>Fire 8-12 pulses from emitter at supermatter crystal. The expected power output is around a megawatt. NOTE: It will take a few minutes to heat up.</li>
-				<li>Close the reactor blast doors and keep the monitoring room blast doors closed to prevent radiation leaking.</li>
+				<li>Engine chamber. The interior is 5x5, framed with heat resistant glass and reinforced walls. These walls are protected by blast shutters, due to the memetic hazard of the Supermatter.</li>
+				<li>An emitter, lined up with the Supermatter crystal.</li>
+				<li>A gas filter pipeline connected to the hot loop.</li>
+				<li>A dual TEG setup, already hooked up to the loops.</li>
+				<li>Injection and Extraction ports, allowing to pump gases into and out of the loops.</li>
+				<li>Vacuum Radiator connections, where gases in the cold loop are cooled.</li>
 				</ol>
-				<br>
-				<h2>OPERATION AND MAINTENANCE</h2>
+				<h2>Engine Intent</h2>
+				<p>As a TEG-based engine, the Supermatter relies on the heating and cooling of gas to spin turbines. Cold Loop gas is piped along a circuitous route - typically through space - to allow it to bleed off heat and grow colder. In contrast, Hot Loop gas is fed into the Supermatter chamber. The Supermatter is, as the name implies, a fractal metamaterial that generates and radiates an immense amount of heat. When agitated energetically, the degree of heat put off by the crystal increases. The heated air in the Supermatter chamber is siphoned out and drawn through the loop into the TEG, spinning its own turbine. The Supermatter crystal is extremely volatile, however. If its temperature raises too high, or if it is agitated too much, it will delaminate, resulting in a catastrophic explosion.</p>
+				<h2>Basic Set-Up</h2>
+				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. Any Engineer that knows their way around Engineering mechanics will tell you that this setup is suboptimal.&nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>
+				<h3>No Hazard:</h3>
 				<ol>
-				<li>Ensure that radiation protection and meson goggles are worn at all times while working in the engine room.</li>
-				<li>Ensure that reactor and radiator loops are undamaged and unobstructed.</li>
-				<li>Ensure that, in a standard setup, only nitrogen is being filtered back into the system. Do not allow exhaust pressure to exceed 4500 kPa.</li>
-				<li>Ensure that engine room Area Power Controller (APC) and engine Superconducting Magnetic Energy Storage unit (SMES) are properly charged.</li>
-				<li>Ensure that reactor temperature does not exceed 5000K. In event of reactor temperature exceeding 5000K, see EMERGENCY COOLING PROCEDURE.</li>
-				<li>In event of imminent and/or unavoidable delamination, see EJECTION PROCEDURE.</li>
+				<li>Put four cans of Phoron into the Cold Loop.</li>
+				<li>Put two cans of Phoron into the Hot loop.</li>
+				<li>Set the Filter connected to the Hot Loop to 'Phoron'.</li>
 				</ol>
-				<br>
-				<h2>EMERGENCY COOLING PROCEDURE</h2>
+				<h3>Memetic Hazard:</h3>
 				<ol>
-				<li>Open Emergency Cooling Valve 1 and Emergency Cooling Valve 2.</li>
-				<li>When reactor temperature returns to safe operating levels, close Emergency Cooling Valve 1 and Emergency Cooling Valve 2.</li>
-				<li>Adding additional gas to the loops can have a positive effect in reducing reactor temperature.</li>
-				<li>If reactor temperature does not return to safe operating levels, see EJECTION PROCEDURE.</li>
+				<li>Open the blast shutters.</li>
+				<li>Blast the Supermatter crystal with the emitter approximately twelve times.</li>
+				<li>Close the blast shutters.</li>
 				</ol>
-				<br>
-				<h2>EJECTION PROCEDURE</h2>
+				<p><strong>Engine set!</strong></p>
+				<h3>Finalizing Touches</h3>
 				<ol>
-				<li>Ensure the engine room has power. The blast doors and ejection platform are unresponsive without power.</li>
-				<li>Press Engine Ventilatory Control button to open engine core blast door to space.</li>
-				<li>Press Emergency Core Eject button to eject supermatter crystal. NOTE: Attempting crystal ejection while engine core vent is closed will result in ejection failure.</li>
-				<li>In event of ejection failure, <i>pending</i></li>
+				<li>Max Input and Output on the Main SMES in the SMES room.</li>
 				</ol>
-				</body>
 			</html>"}
 
 // TESLA Engine
@@ -262,35 +224,117 @@
 /obj/item/book/manual/rust_engine/Initialize(mapload)
 	. = ..()
 	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<br><br>
+				<h1><strong>Guide: R-UST Fusion Reactor</strong></h1>
+				<h2>The Engine Room</h2>
+				<div>
+				</div>
+				<p>The Engine room consists of:</p>
 				<ol>
-				<li>Enable and max output and input on the SMES in the engine room. This is to power the gyrotrons and pumps.</li>
-				<li>Go into the control room, interact with the fusion core control console. Raise the field size to 700 and turn it on. Any smaller will cause the gyrotrons to blast out the walls. Bigger than this will cause the field to immediately fail.</li>
-				<li>Interact with the gyrotron control computer and set all the gyrotrons power and timing to 1.</li>
-				<li>Start the gyrotrons and wait for the field to heat up. Once the field is fully visible, you may switch off the gyrotrons to save power.</li>
-				<li>Insert a can of phoron in the cold loop (green and blue) and a can of CO2 in the hot loop (red and orange).</li>
-				<li>In the event you must switch the RUS-T off, stop all fuel injection allow the field to cool below 1000 kelvin.</li>
+				<li>Engine chamber. The interior is 5x5, framed with heat resistant glass and reinforced walls.</li>
+				<li>A control bay, housing the three consoles needed to control the reactor and the fuel compressor.</li>
+				<li>A dual TEG setup, already hooked up to the loops.</li>
+				<li>Injection and Extraction ports, allowing to pump gases into and out of the loops.</li>
+				<li>Vacuum Radiator connections, where gases in the cold loop are cooled.</li>
 				</ol>
-				<br>
-				<b>NOTES FOR NEWBIES</b>
-				<br>
-				Anything touching the field will mess with its stability and eventually cause it to rupture. Rupturing is bad. Use the gyrotron to keep instability down if you're running the engine on unstable fuel.
-				<br><br>
-				Likewise, no matter how sad the core seems, don't fucking hug it, you'll blow the field out and set the engine room on fire.
-				</body>
+				<h2>Engine Intent</h2>
+				<p>As a TEG-based engine, the R-UST relies on the heating and cooling of gas to spin turbines. Cold Loop gas is piped along a circuitous route - typically through space - to allow it to bleed off heat and grow colder. In contrast, Hot Loop gas is fed into the R-UST chamber. The R-UST Tokamak Core is an industrial strength solenoid. When activated, the R-UST generates an immense amount of electromagnetic energy, which operates in tandem with a kinetic energy harvester. While operational, the R-UST puts off a substantial amount of heat. The heated air in the chamber is siphoned out and drawn through the loop into the TEG, spinning its own turbine. The R-UST's electromagnetic energies are contained by a delicately balanced containment field. If the field is breached, the R-UST will unleash a catastrophic electromagnetic pulse.</p>
+				<h2>Basic Set-Up</h2>
+				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. Any Engineer that knows their way around Engineering mechanics will tell you that this setup is suboptimal.&nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>
+				<h3>No Hazard:</h3>
+				<ol>
+				<li>Maximize the Cold loop pump (Typically near the NW corner of the submap. It's color-coded cyan.).</li>
+				<li>Grab the stack of Tritium and Deuterium ingots and use the Fuel compressor to create one fuel rod of each.</li>
+				<li>Insert the rods in to the fuel injectors next to the gyrotrons. Check that you have inserted one of each, and not two of the same kind, as&nbsp;<em>this will cause a unstable engine core if you don't know what you're doing.</em></li>
+				</ol>
+				<h3>Minimal Atmospheric Hazard:</h3>
+				<ol>
+				<li>Pump two canisters of Phoron into the cold loop via the green pipeline connectors.</li>
+				<li>Pump two canisters of N2O into the hot loop via the red pipeline connectors.&nbsp;<strong>Do not use Phoron here!</strong></li>
+				</ol>
+				<h3>Radiation Hazard:</h3>
+				<ol>
+				<li>Maximize the engine SMES(the one on the aft/left/west) in the smes room.</li>
+				<li>Set the field strength on the rust control console to 301.&nbsp;<em>Each tile is equal to 100 on the field strength gauge. 100~ is the same tile as the RUST itself.</em></li>
+				<li>Activate the field.</li>
+				<li>Set the Gyrotrons to Delay 1.</li>
+				<li>Set the Gyrotrons to Power 1.</li>
+				<li>Start the Gyrotrons.</li>
+				<li>Start Fuel Injection.</li>
+				</ol>
+				<p><strong>Engine set!</strong></p>
+				<h3>Finalizing Touches</h3>
+				<ol>
+				<li>Max Input and Output on the Main SMES in the SMES room.</li>
+				</ol>
 			</html>"}
 
+/*/obj/item/book/manual/burn_chamber
+	name = "Burn Chamber Operating Manual"
+	icon_state = "bookSupermatter"
+	author = "Nanotrasen Engineering Safety Board"
+	title = "Burn Chamber Operating Manual"
+
+/obj/item/book/manual/burn_chamber/Initialize(mapload)
+	. = ..()
+	dat = {"<html>
+
+			</html>"}
+*/
+/obj/item/book/manual/fission_engine
+	name = "Fission Reactor Operating Manual"
+	icon_state = "bookSupermatter"
+	author = "Nanotrasen Engineering Safety Board"
+	title = "Fission Reactor Operating Manual"
+
+/obj/item/book/manual/fission_engine/Initialize(mapload)
+	. = ..()
+	dat = {"<html>
+				<h1><strong>Guide: Fission Reactor</strong></h1>
+				<h2>The Engine Room</h2>
+				<p>The Engine room consists of:</p>
+				<ol>
+				<li>Engine chamber. The interior is 5x5, framed with heat resistant glass and lead walls.</li>
+				<li>A fuel rod bay housing an assortment of reflectors and radioactive fuel rods.</li>
+				<li>A dual TEG setup, already hooked up to the loops.</li>
+				<li>Four radiation collectors arranged around the reactor.</li>
+				<li>A side area where phoron tanks and a dedicated phoron canister are stored.</li>
+				<li>An emergency freezer linked to the Engine chamber.</li>
+				<li>Vacuum Radiator connections, where gases in the cold loop are cooled.</li>
+				</ol>
+				<h2>Engine Intent</h2>
+				<p>As a TEG-based engine, the Fission Reactor relies on the heating and cooling of gas to spin turbines. Cold Loop gas is piped along a circuitous route - typically through space - to allow it to bleed off heat and grow colder. In contrast, Hot Loop gas is fed into the reactor chamber. Radioactive fuel rods are inserted into the hardened reactor, where reflectors bounce neutrons through the fuel to trigger fission. Instead of relying on more traditional water-cooling, the core's heat levels are instead monitored and managed directly by Engineering. The reactor utilizes the process of nuclear fission to generate an enormous amount of heat and radioactivity, allowing for the harvesting of radioactive energy via collectors in tandem with the siphoning of heated gas. The heated air in the reactor chamber is siphoned out and drawn through the loop into the TEG, spinning its own turbine. The Fission Reactor is sensitive to overheating, and its fuel rods decay slowly over time. If its temperature raises too high, the reactor will overload, resulting in a catastrophic radioactive explosion.</p>
+				<h2>Basic Set-Up</h2>
+				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. Any Engineer that knows their way around Engineering mechanics will tell you that this setup is suboptimal.&nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>
+				<h3>No Hazard:</h3>
+				<ol>
+				<li>Put four cans of Phoron into the Cold Loop.</li>
+				<li>Put two cans of Phoron into the Hot loop.</li>
+				<li>Fill four phoron tanks up at the phoron canister.</li>
+				</ol>
+				<h3>Atmospheric Hazard:</h3>
+				<ol>
+				<li>Lift the Blast Shutters on the Core.</li>
+				<li>Wrench the Fusion Core Down.</li>
+				<li>Link the Fusion Core to a multitool.</li>
+				<li>Secure the Radiation Collectors.</li>
+				<li>Place the filled phoron tanks into the collectors.</li>
+				</ol>
+				<h3>Radiation Hazard:</h3>
+				<ol>
+				<li>Retrieve a fuel rod case and a reflector case from storage.</li>
+				<li>Load three fuel rods into the reactor core.</li>
+				<li>Load four reflector rods into the reactor core.</li>
+				<li>Manually set the insertion of all reflector rods to 100%.</li>
+				<li>Manually set the insertion of all fuel rods to 50%.&nbsp;<strong>Warning: Monitor temperature of rods and adjust insertion accordingly. This varies per fuel type. Ensure proper heat management.</strong></li>
+				<li>Close the blast doors.</li>
+				</ol>
+				<p><strong>Engine set!</strong></p>
+				<h3>Finalizing Touches</h3>
+				<ol>
+				<li>Max Input and Output on the Main SMES in the SMES room.</li>
+				<li>Use the multitool from step 6 to link the core to the computer in the control room.</li>
+				</ol>
+			</html>"}
 /obj/item/book/manual/engineering_hacking
 	name = "Hacking"
 	icon_state ="bookHacking"
