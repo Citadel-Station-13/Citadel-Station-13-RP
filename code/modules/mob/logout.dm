@@ -17,7 +17,6 @@
 	// unrender rendering systems
 	dispose_rendering()
 	// gc perspectives
-	client.set_perspective(null)
 	if(using_perspective?.reset_on_logout)
 		reset_perspective()
 

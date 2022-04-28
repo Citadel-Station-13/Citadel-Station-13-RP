@@ -62,8 +62,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
 
 /datum/controller/master/New()
-	// CITADEL SNOWFLAKING: see world.dm for why
-	world.ensure_logging_active()
 	if(!config_legacy)
 		load_configuration()
 	if(!config)
