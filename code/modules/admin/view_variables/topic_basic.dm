@@ -47,16 +47,6 @@
 				usr.client.debug_variables(src)
 				return
 
-		#ifdef REFERENCE_TRACKING
-		if(href_list[VV_HK_VIEW_REFERENCES])
-			var/datum/D = locate(href_list[VV_HK_TARGET])
-			if(!D)
-				to_chat(usr, SPAN_WARNING("Unable to locate item."))
-				return
-			usr.client.holder.view_refs(target)
-			return
-		#endif
-
 	if(href_list[VV_HK_MARK])
 		usr.client.mark_datum(target)
 	if(href_list[VV_HK_ADDCOMPONENT])

@@ -238,11 +238,7 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/change_weather,
 	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
-	/client/proc/simple_DPS,
-#ifdef REFERENCE_TRACKING
-	/datum/admins/proc/view_refs,
-	/datum/admins/proc/view_del_failures,
-#endif
+	/client/proc/simple_DPS
 	)
 
 var/list/admin_verbs_paranoid_debug = list(
