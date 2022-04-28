@@ -374,10 +374,9 @@
 /mob/living/silicon/setEarDamage()
 	return
 
-/mob/living/silicon/reset_view()
-	..()
-	if(cameraFollow)
-		cameraFollow = null
+/mob/living/silicon/reset_perspective(datum/perspective/P, apply = TRUE)
+	. = ..()
+	cameraFollow = null
 
 /mob/living/silicon/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(affect_silicon)

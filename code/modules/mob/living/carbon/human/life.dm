@@ -1179,8 +1179,10 @@
 		client.screen |= cam.client_huds
 
 	if(stat == DEAD) //Dead
-		if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-		if(healths)		healths.icon_state = "health7"	//DEAD healthmeter
+		if(!druggy)
+			SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+		if(healths)
+			healths.icon_state = "health7"	//DEAD healthmeter
 
 	else if(stat == UNCONSCIOUS && health <= 0) //Crit
 		//Critical damage passage overlay
@@ -1408,11 +1410,6 @@
 			if(found_welder)
 				client.screen |= GLOB.global_hud.darkMask
 
-/mob/living/carbon/human/reset_view(atom/A)
-	..()
-	if(machine_visual && machine_visual != A)
-		machine_visual.remove_visual(src)
-
 /mob/living/carbon/human/handle_vision()
 	if(stat == DEAD)
 		if(client)
@@ -1423,12 +1420,13 @@
 						break
 
 	else //We aren't dead
-		see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+		SetSeeInvisibleSelf(self_perspective.see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		if(XRAY in mutations)
-			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+			SetSeeInDarkSelf(8)
+			if(!druggy)
+				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 
 		if(seer==1)
 			var/obj/effect/rune/R = locate() in loc
@@ -1439,14 +1437,13 @@
 				seer = 0
 
 		if(!seedarkness)
-			sight = species.get_vision_flags(src)
-			see_in_dark = 8
-			see_invisible = SEE_INVISIBLE_NOLIGHTING
-
+			SetSightSelf(species.get_vision_flags(src))
+			SetSeeInDarkSelf(8)
+			SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
 		else
-			sight = species.get_vision_flags(src)
-			see_in_dark = species.darksight
-			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+			SetSightSelf(species.get_vision_flags(src))
+			SetSeeInDarkSelf(species.darksight)
+			SetSeeInvisibleSelf(self_perspective.see_in_dark > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		var/glasses_processed = 0
 		var/obj/item/rig/rig = back
@@ -1457,11 +1454,12 @@
 
 		if(glasses && !glasses_processed)
 			glasses_processed = process_glasses(glasses)
+
 		if(XRAY in mutations)
-			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-			see_in_dark = 8
+			AddSightSelf(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+			SetSeeInDarkSelf(8)
 			if(!druggy)
-				see_invisible = SEE_INVISIBLE_LEVEL_TWO
+				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 
 		if(!glasses_processed && nif)
 			var/datum/nifsoft/vision_soft
@@ -1473,60 +1471,57 @@
 				glasses_processed = process_nifsoft_vision(vision_soft) //Not really glasses but equitable
 
 		if(!glasses_processed && (species.get_vision_flags(src) > 0))
-			sight |= species.get_vision_flags(src)
+			AddSightSelf(species.get_vision_flags(src))
 		if(!seer && !glasses_processed && seedarkness)
-			see_invisible = see_invisible_default
+			SetSeeInvisibleSelf(see_invisible_default)
 
 		if(machine)
 			var/viewflags = machine.check_eye(src)
 			if(viewflags < 0)
-				reset_view(null, 0)
+				reset_perspective()
 			else if(viewflags && !looking_elsewhere)
+				AddSightSelf(viewflags)
 				sight |= viewflags
-			else
-				machine.apply_visual(src)
 		else if(eyeobj)
 			if(eyeobj.owner != src)
-
-				reset_view(null)
+				reset_perspective()
 		else
 			var/isRemoteObserve = 0
 			if((mRemote in mutations) && remoteview_target)
 				if(remoteview_target.stat==CONSCIOUS)
 					isRemoteObserve = 1
-			if(!isRemoteObserve && client && !client.adminobs)
+			if(!isRemoteObserve && remoteview_target)
 				remoteview_target = null
-				reset_view(null, 0)
+				reset_perspective()
 	return 1
 
 /mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
 	. = FALSE
 	if(G && G.active)
 		if(G.darkness_view)
-			see_in_dark += G.darkness_view
+			SetSeeInDarkSelf((using_perspective?.see_in_dark || 2) + G.darkness_view)
 			. = TRUE
 		if(G.overlay && client)
 			client.screen |= G.overlay
 		if(G.vision_flags)
-			sight |= G.vision_flags
+			AddSightSelf(G.vision_flags)
 			. = TRUE
 		if(istype(G,/obj/item/clothing/glasses/night) && !seer)
-			see_invisible = SEE_INVISIBLE_MINIMUM
-
+			SetSeeInvisibleSelf(SEE_INVISIBLE_MINIMUM)
 		if(G.see_invisible >= 0)
-			see_invisible = G.see_invisible
+			SetSeeInvisibleSelf(G.see_invisible)
 			. = TRUE
 		else if(!druggy && !seer)
-			see_invisible = see_invisible_default
+			SetSeeInvisibleSelf(see_invisible_default)
 
 /mob/living/carbon/human/proc/process_nifsoft_vision(var/datum/nifsoft/NS)
 	. = FALSE
 	if(NS && NS.active)
 		if(NS.darkness_view)
-			see_in_dark += NS.darkness_view
+			SetSeeInDarkSelf((using_perspective?.see_in_dark || 2) + NS.darkness_view)
 			. = TRUE
 		if(NS.vision_flags_mob)
-			sight |= NS.vision_flags_mob
+			AddSightSelf(NS.vision_flags_mob)
 			. = TRUE
 
 /mob/living/carbon/human/handle_random_events()

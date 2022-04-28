@@ -283,4 +283,4 @@
 				H.update_inv_gloves()
 
 /mob/living/carbon/human/adherent/New(var/new_loc)
-	..(new_loc, SPECIES_ADHERENT)
+	return ..(new_loc, SPECIES_ADHERENT)

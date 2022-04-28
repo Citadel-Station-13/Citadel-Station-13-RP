@@ -497,20 +497,10 @@ var/list/ai_verbs_default = list(
 			ai_actual_track(target)
 		else
 			to_chat(src, "<font color='red'>System error. Cannot locate [html_decode(href_list["trackname"])].</font>")
-		return
 
-	return
-
-/mob/living/silicon/ai/reset_view(atom/A)
-	if(camera)
-		camera.set_light(0)
-	if(istype(A,/obj/machinery/camera))
-		camera = A
-	..()
-	if(istype(A,/obj/machinery/camera))
-		if(camera_light_on)	A.set_light(AI_CAMERA_LUMINOSITY)
-		else				A.set_light(0)
-
+/mob/living/silicon/ai/reset_perspective(datum/perspective/P)
+	. = ..()
+	lightNearbyCamera()
 
 /mob/living/silicon/ai/proc/switchCamera(var/obj/machinery/camera/C)
 	if (!C || stat == DEAD) //C.can_use())
@@ -522,7 +512,6 @@ var/list/ai_verbs_default = list(
 	// ok, we're alive, camera is good and in our network...
 	eyeobj.setLoc(get_turf(C))
 	//machine = src
-
 	return 1
 
 /mob/living/silicon/ai/cancel_camera()
@@ -746,7 +735,9 @@ var/list/ai_verbs_default = list(
 // It will get the nearest camera from the eyeobj, lighting it.
 
 /mob/living/silicon/ai/proc/lightNearbyCamera()
-	if(camera_light_on && camera_light_on < world.timeofday)
+	if(camera_light_on)
+		if(camera_light_on > world.timeofday)
+			return
 		if(src.camera)
 			var/obj/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && src.camera != camera)
@@ -765,7 +756,9 @@ var/list/ai_verbs_default = list(
 				src.camera = camera
 				src.camera.set_light(AI_CAMERA_LUMINOSITY)
 		camera_light_on = world.timeofday + 1 * 20 // Update the light every 2 seconds.
-
+	else if(camera)
+		camera.set_light(0)
+		camera = null
 
 /mob/living/silicon/ai/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/aicard))

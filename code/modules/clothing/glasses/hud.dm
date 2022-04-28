@@ -245,10 +245,6 @@
 	action_button_name = "Toggle Zoom"
 	enables_planes = list(VIS_AUGMENTED)
 
-/obj/item/clothing/glasses/omnihud/exp/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB), list(slot_glasses))
-
 /obj/item/clothing/glasses/omnihud/exp/ui_action_click()
 	zoom(wornslot = slot_glasses)
 
