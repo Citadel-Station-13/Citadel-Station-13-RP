@@ -1,7 +1,7 @@
-	/*
-	Global associative list for caching humanoid icons.
-	Index format m or f, followed by a string of 0 and 1 to represent bodyparts followed by husk fat hulk skeleton 1 or 0.
-*/
+/**
+ * * Global associative list for caching humanoid icons.
+ * * Index format m or f, followed by a string of 0 and 1 to represent bodyparts followed by husk fat hulk skeleton 1 or 0.
+ */
 var/global/list/human_icon_cache = list() //key is incredibly complex, see update_icons_body()
 var/global/list/tail_icon_cache = list() //key is [species.race_key][r_skin][g_skin][b_skin]
 var/global/list/light_overlay_cache = list() //see make_worn_icon() on helmets
@@ -431,7 +431,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		if(facial_hair_style && facial_hair_style.species_allowed && (src.species.get_bodytype(src) in facial_hair_style.species_allowed))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
-				facial_s.Blend(rgb(r_facial, g_facial, b_facial), ICON_MULTIPLY) //VOREStation edit
+				facial_s.Blend(rgb(r_facial, g_facial, b_facial), facial_hair_style.color_blend_mode)
 
 			face_standing.Blend(facial_s, ICON_OVERLAY)
 
