@@ -127,6 +127,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 		if(!length(line))
 			continue
 		log_world(line)
+	fdel("data/logs/world_init/temporary.log")
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
