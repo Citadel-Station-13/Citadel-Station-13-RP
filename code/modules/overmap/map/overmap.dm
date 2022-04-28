@@ -11,7 +11,7 @@
 	/// are we initialized
 	var/initialized = FALSE
 	/// our space reservation
-	var/datum/turf_reservation/space_reservation
+	var/datum/turf_reservation/turf_reservation
 	/// width
 	var/width
 	/// height
@@ -64,7 +64,7 @@
 	Generate(generators)
 
 /datum/overmap/proc/Allocate()
-	if(space_reservation)
+	if(turf_reservation)
 		CRASH("Already allocated")
 	#warn check bounds of width/height vs world maxx/maxy
 	turf_reservation = SSmapping.RequestBlockReservation(width = width, height = height, type = /datum/turf_reservation/overmap, turf_type_override = /turf/overmap)
@@ -77,7 +77,8 @@
 	cached_y_end = turf_reservation.top_right_coords[2]
 
 /datum/overmap/proc/SetupBounds()
-	// reservation code already did this
+	ASSERT(turf_reservation)
+
 
 /datum/overmap/proc/Generate(list/datum/overmap_generator/generators = list())
 
