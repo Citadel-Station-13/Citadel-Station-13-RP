@@ -11,7 +11,7 @@
   * - forceful - if the client is desynced from our using perspective, do we force it back?
   */
 /mob/proc/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE)
-	if(P? ((ismovable(P) && istype(using_perspective, /datum/perspective/self/temporary))? (using_perspective?.eye == P) : (P == using_perspective)) : (using_perspective == self_perspective))
+	if(P? ((ismovable(P) && istype(using_perspective, /datum/perspective/self/temporary))? (using_perspective?.eye == P) : (P == using_perspective)) : (using_perspective && (using_perspective == self_perspective)))
 		return
 	if(ismovable(P))
 		var/atom/movable/AM = P
