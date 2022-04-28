@@ -464,8 +464,9 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	company = "Zeng-Hu"
 	desc = "This limb has a rubbery fleshtone covering with visible seams."
 	icon = 'icons/mob/human_races/cyberlimbs/zenghu/zenghu_main.dmi'
+	species_alternates = list(SPECIES_TAJ = "Zeng-Hu - Tajaran")
 	unavailable_to_build = TRUE
-	skin_tone = 1
+	skin_tone = TRUE
 
 
 
