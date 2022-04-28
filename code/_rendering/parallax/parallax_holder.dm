@@ -42,8 +42,6 @@
 
 /datum/parallax_holder/New(client/C, secondary_map, forced_eye, planemaster_override)
 	owner = C
-	if(!owner)
-		CRASH("No client")
 	src.secondary_map = secondary_map
 	src.forced_eye = forced_eye
 	src.planemaster_override = planemaster_override
@@ -89,10 +87,6 @@
 // better updates via client_mobs_in_contents can be created again when important recursive contents is ported!
 /datum/parallax_holder/proc/Update(full)
 	if(!full && !cached_eye || (get_turf(cached_eye) == last))
-		return
-	if(!owner)	// why are we here
-		if(!QDELETED(src))
-			qdel(src)
 		return
 	if(cached_eye != Eye())
 		// eye mismatch, reset

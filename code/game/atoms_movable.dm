@@ -64,7 +64,7 @@
 /atom/movable/Destroy()
 	. = ..()
 	if(reagents)
-		qdel(reagents)
+		QDEL_NULL(reagents)
 		reagents = null
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
@@ -81,7 +81,8 @@
 		if (pulledby.pulling == src)
 			pulledby.pulling = null
 		pulledby = null
-	QDEL_NULL(riding_datum) //VOREStation Add
+	if(riding_datum)
+		QDEL_NULL(riding_datum) //VOREStation Add
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
