@@ -3119,6 +3119,7 @@
 #include "code\modules\overmap\lighting\blackness.dm"
 #include "code\modules\overmap\lighting\lighting.dm"
 #include "code\modules\overmap\lighting\spotlight.dm"
+#include "code\modules\overmap\map\allocation.dm"
 #include "code\modules\overmap\map\area.dm"
 #include "code\modules\overmap\map\overmap.dm"
 #include "code\modules\overmap\map\reservation.dm"

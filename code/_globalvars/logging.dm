@@ -32,6 +32,9 @@ GLOBAL_VAR(subsystem_log)
 GLOBAL_PROTECT(subsystem_log)
 GLOBAL_VAR(tgui_log)
 GLOBAL_PROTECT(tgui_log)
+/// overmaps log
+GLOBAL_VAR(overmaps_log)
+GLOBAL_PROTECT(overmaps_log)
 /////Picture logging
 GLOBAL_VAR(picture_log_directory)
 GLOBAL_PROTECT(picture_log_directory)

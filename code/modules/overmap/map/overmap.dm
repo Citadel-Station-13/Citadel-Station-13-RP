@@ -6,6 +6,10 @@
 	var/name = "Overmap"
 	/// desc
 	var/desc = "???"
+	/// id
+	var/id
+	/// next id
+	var/static/id_next = 0
 
 	// map physicality
 	/// are we initialized
@@ -36,13 +40,18 @@
 	var/list/atom/movable/overmap_object/entity/entities
 	/// all ticking entities in us
 	var/list/atom/movable/overmap_object/entity/ticking
+	/// entity spatial hash <DANGER DANGER DO NOT TOUCH THIS UNLESS YOU KNOW WHAT YOU ARE DOING>
+	var/list/spatial_hash
+
 
 /datum/overmap/New()
+	id = "[++id_next]"
 	stellar_location = new
 
 /datum/overmap/Destroy()
 	#warn unregister entities and move to nullspace
-	#warn get rid of space
+	if(turf_reservation)
+		QDEL_NULL(turf_reservation)
 	if(stellar_location)
 		QDEL_NULL(stellar_location)
 	return ..()
@@ -61,28 +70,11 @@
 	Allocate()
 	SetupBounds()
 	SetupVisuals()
+	SetupSpatialHash()
 	Generate(generators)
-
-/datum/overmap/proc/Allocate()
-	if(turf_reservation)
-		CRASH("Already allocated")
-	#warn check bounds of width/height vs world maxx/maxy
-	turf_reservation = SSmapping.RequestBlockReservation(width = width, height = height, type = /datum/turf_reservation/overmap, turf_type_override = /turf/overmap)
-	if(!turf_reservation)
-		CRASH("Failed to allocate.")
-	cached_z = turf_reservation.bottom_left_coords[3]
-	cached_x_start = turf_reservation.bottom_left_coords[1]
-	cached_y_start = turf_reservation.bottom_left_coords[2]
-	cached_x_end = turf_reservation.top_right_coords[1]
-	cached_y_end = turf_reservation.top_right_coords[2]
-
-/datum/overmap/proc/SetupBounds()
-	ASSERT(turf_reservation)
 
 
 /datum/overmap/proc/Generate(list/datum/overmap_generator/generators = list())
-
-/datum/overmap/proc/SetupVisuals()
 
 /datum/overmap/proc/RegisterEntity(atom/movable/overmap_object/entity/E)
 
@@ -95,6 +87,7 @@
 /datum/overmap/proc/Recover()
 	entities = list()
 	ticking = list()
+	SetupSpatialHash()
 	#warn get all entities
 	#warn check if they need to tick
 
