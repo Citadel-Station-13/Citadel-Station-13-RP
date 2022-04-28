@@ -17,15 +17,15 @@
 			/obj/item/reagent_containers/food/snacks/meat = 4
 			)
 	cost = 10
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Food crate"
+	container_type = /obj/structure/closet/crate/freezer
+	container_name = "Food crate"
 
 /datum/supply_pack/supply/toner
 	name = "Toner cartridges"
 	contains = list(/obj/item/toner = 6)
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "Toner cartridges"
+	container_type = /obj/structure/closet/crate
+	container_name = "Toner cartridges"
 
 /datum/supply_pack/supply/janitor
 	name = "Janitorial supplies"
@@ -48,8 +48,8 @@
 			/obj/structure/mopbucket
 			)
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "Janitorial supplies"
+	container_type = /obj/structure/closet/crate
+	container_name = "Janitorial supplies"
 
 /datum/supply_pack/supply/shipping
 	name = "Shipping supplies"
@@ -62,8 +62,8 @@
 				/obj/item/tool/wirecutters,
 				/obj/item/duct_tape_roll = 2)
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "Shipping supplies crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Shipping supplies crate"
 
 /datum/supply_pack/supply/bureaucracy
 	contains = list(
@@ -82,14 +82,14 @@
 			)
 	name = "Office supplies"
 	cost = 15
-	containertype = /obj/structure/closet/crate
-	containername = "Office supplies crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Office supplies crate"
 
 /datum/supply_pack/supply/spare_pda
 	name = "Spare PDAs"
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "Spare PDA crate"
+	container_type = /obj/structure/closet/crate
+	container_name = "Spare PDA crate"
 	contains = list(/obj/item/pda = 3)
 
 /datum/supply_pack/supply/minergear
@@ -112,8 +112,8 @@
 			/obj/item/clothing/glasses/meson
 			)
 	cost = 10
-	containertype = /obj/structure/closet/crate/secure
-	containername = "Shaft miner equipment"
+	container_type = /obj/structure/closet/crate/secure
+	container_name = "Shaft miner equipment"
 	access = access_mining
 
 /* //MULE Bots can't traverse the Tether.
@@ -121,23 +121,23 @@
 	name = "Mulebot Crate"
 	contains = list()
 	cost = 20
-	containertype = /obj/structure/largecrate/animal/mulebot
-	containername = "Mulebot Crate"
+	container_type = /obj/structure/largecrate/animal/mulebot
+	container_name = "Mulebot Crate"
 */
 
 /datum/supply_pack/supply/cargotrain
 	name = "Cargo Train Tug"
 	contains = list(/obj/vehicle/train/engine)
 	cost = 35
-	containertype = /obj/structure/largecrate
-	containername = "Cargo Train Tug Crate"
+	container_type = /obj/structure/largecrate
+	container_name = "Cargo Train Tug Crate"
 
 /datum/supply_pack/supply/cargotrailer
 	name = "Cargo Train Trolley"
 	contains = list(/obj/vehicle/train/trolley)
 	cost = 15
-	containertype = /obj/structure/largecrate
-	containername = "Cargo Train Trolley Crate"
+	container_type = /obj/structure/largecrate
+	container_name = "Cargo Train Trolley Crate"
 
 //Culture Update
 /datum/supply_pack/misc/mining_tyrmalin
@@ -149,6 +149,6 @@
 			/obj/item/grenade/explosive/ied/tyrmalin = 2
 			)
 	cost = 120
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "Tyrmalin Mining crate"
+	container_type = /obj/structure/closet/crate/secure/gear
+	container_name = "Tyrmalin Mining crate"
 	access = access_mining

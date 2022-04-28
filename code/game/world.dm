@@ -25,6 +25,8 @@ GLOBAL_LIST(topic_status_cache)
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
+	world.log = tempfile
+
 	world.Profile(PROFILE_START)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 	setupgenetics()
@@ -38,12 +40,14 @@ GLOBAL_LIST(topic_status_cache)
 
 	SetupLogs()
 
-#ifndef USE_CUSTOM_ERROR_HANDLER
-	world.log = file("[GLOB.log_directory]/dd.log")
-#else
-	if (TgsAvailable())
-		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
-#endif
+// #ifndef USE_CUSTOM_ERROR_HANDLER
+// 	world.log = file("[GLOB.log_directory]/dd.log")
+// #else
+// 	if (TgsAvailable())
+// 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
+// #endif
+
+	world.log = file("[GLOB.log_directory]/dd.log")	// screw you, disk space be damned our codebase has 50000 errors, START FIXING THEM.
 
 	config_legacy.post_load()
 

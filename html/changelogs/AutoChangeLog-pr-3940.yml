@@ -1,4 +1,4 @@
 author: "Captain277"
 delete-after: True
 changes: 
-  - bugfix: "Lack of swimsuit debug item."
+  - rscadd: "Adds the Mekkyaku clothing set."

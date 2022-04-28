@@ -10,11 +10,11 @@
  */
 /datum
 	/**
-	  * Tick count time when this object was destroyed.
-	  *
-	  * If this is non zero then the object has been garbage collected and is awaiting either
-	  * a hard del by the GC subsystme, or to be autocollected (if it has no references)
-	  */
+	 * Tick count time when this object was destroyed.
+	 *
+	 * If this is non zero then the object has been garbage collected and is awaiting either
+	 * a hard del by the GC subsystme, or to be autocollected (if it has no references)
+	 */
 	var/gc_destroyed
 
 	/// Active timers with this datum as the target
@@ -23,23 +23,25 @@
 	var/list/status_traits
 
 	/**
-	  * Components attached to this datum
-	  *
-	  * Lazy associated list in the structure of `type:component/list of components`
-	  */
+	 * Components attached to this datum
+	 *
+	 * Lazy associated list in the structure of `type:component/list of components`
+	 */
 	var/list/datum_components
 	/**
-	  * Any datum registered to receive signals from this datum is in this list
-	  *
-	  * Lazy associated list in the structure of `signal:registree/list of registrees`
-	  */
+	 * Any datum registered to receive signals from this datum is in this list
+	 *
+	 * Lazy associated list in the structure of `signal:registree/list of registrees`
+	 */
+>>>>>>> master
 	var/list/comp_lookup
 	/// Lazy associated list in the structure of `signals:proctype` that are run when the datum receives that signal
 	var/list/list/datum/callback/signal_procs
 
+	/// Is this datum capable of sending signals?
+	var/signal_enabled = FALSE
 	/// Datum level flags
 	var/datum_flags = NONE
-
 	/// A weak reference to another datum
 	var/datum/weakref/weak_reference
 
@@ -143,6 +145,12 @@
 
 	for(var/target in signal_procs)
 		UnregisterSignal(target, signal_procs[target])
+
+	//END: ECS SHIT
+
+	SSnanoui.close_uis(src)
+
+	return QDEL_HINT_QUEUE
 
 #ifdef DATUMVAR_DEBUGGING_MODE
 /datum/proc/save_vars()

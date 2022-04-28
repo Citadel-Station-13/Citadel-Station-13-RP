@@ -23,8 +23,8 @@
 			/obj/item/reagent_containers/food/drinks/bottle/small/beer = 4,
 			)
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "Party equipment"
+	container_type = /obj/structure/closet/crate
+	container_name = "Party equipment"
 
 /datum/supply_pack/hospitality/barsupplies
 	name = "Bar supplies"
@@ -43,8 +43,8 @@
 			/obj/item/storage/box/glass_extras/sticks
 			)
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "crate of bar supplies"
+	container_type = /obj/structure/closet/crate
+	container_name = "crate of bar supplies"
 
 /datum/supply_pack/randomised/hospitality/
 	group = "Hospitality"
@@ -59,8 +59,8 @@
 			)
 	name = "Surprise pack of five pizzas"
 	cost = 15
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Pizza crate"
+	container_type = /obj/structure/closet/crate/freezer
+	container_name = "Pizza crate"
 
 /datum/supply_pack/hospitality/gifts
 	name = "Gift crate"
@@ -73,8 +73,8 @@
 		/obj/item/paper/card/flower
 		)
 	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "crate of gifts"
+	container_type = /obj/structure/closet/crate
+	container_name = "crate of gifts"
 
 /datum/supply_pack/randomised/hospitality/burgers
 	num_contained = 5
@@ -87,8 +87,8 @@
 			)
 	name = "Burger crate"
 	cost = 25
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Burger crate"
+	container_type = /obj/structure/closet/crate/freezer
+	container_name = "Burger crate"
 
 /datum/supply_pack/randomised/hospitality/bakery
 	num_contained = 5
@@ -113,8 +113,8 @@
 			)
 	name = "Bakery products crate"
 	cost = 25
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Bakery products crate"
+	container_type = /obj/structure/closet/crate/freezer
+	container_name = "Bakery products crate"
 
 /datum/supply_pack/randomised/hospitality/cakes
 	num_contained = 2
@@ -131,8 +131,8 @@
 			)
 	name = "Cake crate"
 	cost = 100
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Cake crate"
+	container_type = /obj/structure/closet/crate/freezer
+	container_name = "Cake crate"
 
 /datum/supply_pack/randomised/hospitality/mexican
 	num_contained = 5
@@ -144,8 +144,8 @@
 			)
 	name = "Mexican takeout crate"
 	cost = 50
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Mexican takeout crate"
+	container_type = /obj/structure/closet/crate/freezer
+	container_name = "Mexican takeout crate"
 
 /datum/supply_pack/randomised/hospitality/asian
 	num_contained = 5
@@ -155,8 +155,8 @@
 			)
 	name = "Chinese takeout crate"
 	cost = 50
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Chinese takeout crate"
+	container_type = /obj/structure/closet/crate/freezer
+	container_name = "Chinese takeout crate"
 
 /datum/supply_pack/randomised/hospitality/pizza
 	cost = 50
@@ -165,13 +165,13 @@
 	name = "Tallow tank crate"
 	contains = list(/obj/structure/reagent_dispensers/tallow)
 	cost = 10
-	containertype = /obj/structure/largecrate
-	containername = "Tallow tank crate"
+	container_type = /obj/structure/largecrate
+	container_name = "Tallow tank crate"
 
 /datum/supply_pack/hospitality/vampcarepackage
 	name = "Vampire Care package"
 	contains = list(/obj/item/reagent_containers/blood/prelabeled/ABPlus = 3,
 					/obj/item/clothing/under/suit_jacket)
 	cost = 50
-	containertype = /obj/structure/closet/coffin/comfy
-	containername = "Extra comfortable coffin"
+	container_type = /obj/structure/closet/coffin/comfy
+	container_name = "Extra comfortable coffin"
