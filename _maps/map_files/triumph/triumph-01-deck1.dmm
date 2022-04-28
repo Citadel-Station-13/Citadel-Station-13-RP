@@ -1511,16 +1511,6 @@
 /obj/machinery/portable_atmospherics/canister/empty,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_airlock)
-"ft" = (
-/obj/structure/sign/nosmoking_1{
-	pixel_y = 30
-	},
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/item/cigbutt,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
 "fu" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
@@ -2340,12 +2330,6 @@
 "ib" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/dormitory)
-"id" = (
-/obj/item/cigbutt,
-/obj/structure/table/reinforced,
-/obj/random/cigarettes,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
 "ie" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/red,
 /turf/simulated/wall,
@@ -6379,11 +6363,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
-"vB" = (
-/obj/machinery/light/small,
-/obj/item/cigbutt/cigarbutt,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
 "vC" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -6908,14 +6887,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
-"xi" = (
-/obj/item/cigbutt,
-/obj/item/cigbutt,
-/obj/structure/sign/nosmoking_1{
-	pixel_y = -30
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
 "xk" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -7344,6 +7315,9 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/item/book/manual/fission_engine,
+/obj/item/book/manual/rust_engine,
+/obj/item/book/manual/supermatter_engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)
 "yH" = (
@@ -29644,12 +29618,12 @@ fN
 fN
 fN
 fN
-dv
-dv
-dv
-ft
-vB
-UR
+fN
+fN
+fN
+fN
+fN
+fN
 fN
 fN
 fN
@@ -29786,12 +29760,12 @@ fN
 fN
 fN
 fN
-ID
-ID
-kB
-id
-xi
-UR
+fN
+fN
+fN
+fN
+fN
+fN
 fN
 fN
 fN
@@ -29928,12 +29902,12 @@ fN
 fN
 fN
 fN
-Lg
-ID
-dv
-dv
-gY
-UR
+fN
+fN
+fN
+fN
+fN
+fN
 fN
 fN
 fN
@@ -30070,12 +30044,12 @@ fN
 fN
 fN
 fN
-fU
-ID
-We
-dv
-Yb
-UR
+fN
+fN
+fN
+fN
+fN
+fN
 fN
 fN
 fN

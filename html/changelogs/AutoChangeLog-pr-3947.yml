@@ -1,0 +1,6 @@
+author: "CrystalClearCC"
+delete-after: True
+changes: 
+  - balance: "Nerfs the R-UST Operating Manual. It no longer causes an EMP blast strong enough to murder any robot on-site."
+  - bugfix: "Brought the other two manuals up-to-date with the wiki. They should be clearer and easier to follow now."
+  - bugfix: "Adds CorpReg, SOP, and Chain of Command books to the proper bookshelf. They are presently empty 😩"
