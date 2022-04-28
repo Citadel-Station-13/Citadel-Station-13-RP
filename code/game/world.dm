@@ -232,8 +232,8 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 	set waitfor = FALSE
 	var/list/fail_reasons
 	if(GLOB)
-		if(GLOB.total_runtimes != 0)
-			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
+		if(global.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [global.total_runtimes] - if you don't see any runtimes above, launch locally with `dreamseeker -trusted -verbose vorestation.dmb` after compile and check Options and Messages. Inform a maintainer too, if this happens..")
 #ifdef UNIT_TESTS
 		if(GLOB.failed_any_test)
 			LAZYADD(fail_reasons, "Unit Tests failed!")
