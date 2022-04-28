@@ -842,6 +842,14 @@ default behaviour is:
 /mob/living/proc/has_eyes()
 	return 1
 
+/mob/living/proc/get_restraining_bolt()
+	var/obj/item/implant/restrainingbolt/RB = locate() in src
+	if(RB)
+		if(!RB.malfunction)
+			return TRUE
+
+	return FALSE
+
 /mob/living/proc/slip(var/slipped_on,stun_duration=8)
 	return 0
 

@@ -191,9 +191,19 @@
 		plane_holder.set_vis(vis,FALSE)
 		vis_enabled -= vis
 
-#undef HUMAN_EATING_NO_ISSUE
-#undef HUMAN_EATING_NO_MOUTH
-#undef HUMAN_EATING_BLOCKED_MOUTH
+/mob/living/carbon/human/get_restraining_bolt()
+	var/obj/item/implant/restrainingbolt/RB
+
+	for(var/obj/item/organ/external/EX in organs)
+		RB = locate() in EX
+		if(istype(RB) && !(RB.malfunction))
+			break
+
+	if(RB)
+		if(!RB.malfunction)
+			return TRUE
+
+	return FALSE
 
 /mob/living/carbon/human/can_see_reagents()
 	. = ..()
@@ -203,3 +213,8 @@
 		var/obj/item/clothing/C = glasses
 		if(C.clothing_flags & SCAN_REAGENTS)
 			return TRUE
+
+
+#undef HUMAN_EATING_NO_ISSUE
+#undef HUMAN_EATING_NO_MOUTH
+#undef HUMAN_EATING_BLOCKED_MOUTH
