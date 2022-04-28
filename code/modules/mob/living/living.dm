@@ -41,7 +41,7 @@
 	if(buckled)
 		buckled.unbuckle_mob(src, TRUE)
 	if(selected_image)
-		qdel(selected_image)
+		QDEL_NULL(selected_image)
 	if(LAZYLEN(organs))
 		organs_by_name.Cut()
 		while(organs.len)

@@ -37,8 +37,7 @@
 
 /mob/living/Destroy()
 	if(aiming)
-		qdel(aiming)
-		aiming = null
+		QDEL_NULL(aiming)
 	aimed.Cut()
 	return ..()
 
