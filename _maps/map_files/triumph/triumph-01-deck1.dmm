@@ -7361,6 +7361,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
+"yM" = (
+/obj/structure/catwalk,
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "yN" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -10534,13 +10542,6 @@
 "JY" = (
 /obj/machinery/shield_diffuser,
 /obj/structure/catwalk,
-/obj/item/sign{
-	dir = 1;
-	icon = 'icons/turf/flooring/decals_vr.dmi';
-	icon_override = 'icons/turf/flooring/decals_vr.dmi';
-	icon_state = "warning";
-	name = "hazard stripes"
-	},
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "Ka" = (
@@ -27787,7 +27788,7 @@ ID
 ID
 ID
 Cj
-JY
+ID
 Rp
 Vt
 gH
@@ -27928,8 +27929,8 @@ ek
 Ak
 zH
 zH
-Zj
 JY
+ID
 Sm
 Wt
 mR
@@ -28071,7 +28072,7 @@ Zj
 fN
 fN
 LO
-cm
+yM
 US
 US
 US
