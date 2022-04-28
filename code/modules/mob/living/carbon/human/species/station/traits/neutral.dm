@@ -76,7 +76,7 @@
 	var_changes = list(
 		"is_vampire" = TRUE,
 		"darksight" = 7,
-		"flash_mod" = 3.0,
+		"flash_mod" = 2,
 		"flash_burn" = 5,
 		"burn_mod" = 1.25,
 		"unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp, /datum/unarmed_attack/bite/sharp/numbing))
