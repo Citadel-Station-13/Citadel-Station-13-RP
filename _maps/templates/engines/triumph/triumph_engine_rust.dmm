@@ -16,13 +16,15 @@
 	},
 /obj/structure/cable/yellow{
 	d2 = 8;
+	dir = 2;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ad" = (
 /obj/effect/floor_decal/industrial/warning{
-	dir = 4
+	dir = 4;
+	icon_state = "warning"
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
@@ -41,7 +43,8 @@
 /area/engineering/engine_room)
 "af" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 10
+	dir = 10;
+	icon_state = "intact"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -123,7 +126,8 @@
 /area/engineering/engine_room)
 "aq" = (
 /obj/effect/floor_decal/industrial/warning{
-	dir = 4
+	dir = 4;
+	icon_state = "warning"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -143,7 +147,8 @@
 /area/engineering/engine_room)
 "at" = (
 /obj/effect/floor_decal/industrial/warning{
-	dir = 4
+	dir = 4;
+	icon_state = "warning"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 5
@@ -159,7 +164,8 @@
 /area/engineering/engine_room)
 "av" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 9
+	dir = 9;
+	icon_state = "intact"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -207,6 +213,7 @@
 	desc = "A remote control-switch for the engine radiator viewport shutters.";
 	id = "EngineRadiatorViewport";
 	name = "Engine Radiator Viewport Shutters";
+	pixel_x = 0;
 	pixel_y = 25;
 	req_access = list(10)
 	},
@@ -270,7 +277,8 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 4
+	dir = 4;
+	icon_state = "warning"
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 4
@@ -380,6 +388,7 @@
 /obj/machinery/button/remote/blast_door{
 	id = "EngineVent";
 	name = "Reactor Ventillatory Control";
+	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list(10)
 	},
@@ -438,6 +447,10 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
+"iw" = (
+/obj/structure/closet/radiation,
+/turf/template_noop,
+/area/template_noop)
 "iE" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -490,8 +503,10 @@
 "kF" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
+	icon_state = "pdoor1";
 	id = "EngineVent";
-	name = "Reactor Vent"
+	name = "Reactor Vent";
+	p_open = 0
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
@@ -680,7 +695,8 @@
 /area/engineering/engine_room)
 "rH" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 10
+	dir = 10;
+	icon_state = "intact"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -819,6 +835,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"xg" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "xH" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -893,10 +918,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"EN" = (
-/obj/machinery/fusion_fuel_compressor,
-/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Fy" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -1001,6 +1022,7 @@
 	dir = 4
 	},
 /obj/item/radio/intercom{
+	dir = 2;
 	pixel_y = -24
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -1077,15 +1099,10 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 4
+	dir = 4;
+	icon_state = "warning"
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"LC" = (
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "LQ" = (
 /obj/machinery/light{
@@ -1127,6 +1144,10 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"NE" = (
+/obj/machinery/fusion_fuel_compressor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "NM" = (
@@ -1245,9 +1266,11 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 4
+	dir = 4;
+	icon_state = "warning"
 	},
 /obj/machinery/atmospherics/valve/digital{
+	dir = 2;
 	name = "Emergency Cooling Valve 1"
 	},
 /turf/simulated/floor/plating,
@@ -1289,9 +1312,11 @@
 "SQ" = (
 /obj/machinery/computer/general_air_control/supermatter_core{
 	dir = 1;
+	frequency = 1438;
 	input_tag = "cooling_in";
 	name = "Engine Cooling Control";
 	output_tag = "cooling_out";
+	pressure_setting = 100;
 	sensors = list("engine_sensor" = "Engine Core");
 	throwpass = 1
 	},
@@ -1383,10 +1408,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"XK" = (
-/obj/structure/closet/radiation,
-/turf/template_noop,
-/area/template_noop)
 "Yd" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 1
@@ -1533,7 +1554,7 @@ Ab
 op
 RC
 JD
-EN
+NE
 Gf
 yw
 oV
@@ -1785,8 +1806,8 @@ kP
 jU
 kv
 aP
-XK
-XK
+iw
+iw
 VD
 VD
 VD
@@ -1799,7 +1820,7 @@ rl
 rl
 ai
 aF
-LC
+xg
 kB
 vm
 Ye
