@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 #ifdef USE_CUSTOM_ERROR_HANDLER
 #define ERROR_USEFUL_LEN 2
 /world/Error(exception/E, datum/e_src)
-	++global.total_runtimes
+	global.total_runtimes++
 
 	if(!istype(E)) //Something threw an unusual exception
 		log_world("uncaught runtime error: [E]")
