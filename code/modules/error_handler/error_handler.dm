@@ -1,10 +1,11 @@
-GLOBAL_VAR_INIT(total_runtimes, GLOB.total_runtimes || 0)
+// Why? Because when you screw up too early in init, total runtimes won't be initialized. You can see why this can be a problem, right?
+GLOBAL_REAL_VAR(total_runtimes) = 0
 GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 
 #ifdef USE_CUSTOM_ERROR_HANDLER
 #define ERROR_USEFUL_LEN 2
 /world/Error(exception/E, datum/e_src)
-	GLOB.total_runtimes++
+	++global.total_runtimes
 
 	if(!istype(E)) //Something threw an unusual exception
 		log_world("uncaught runtime error: [E]")

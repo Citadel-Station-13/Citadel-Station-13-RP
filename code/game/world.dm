@@ -25,12 +25,9 @@ GLOBAL_LIST(topic_status_cache)
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
-	world.log = tempfile
-
 	world.Profile(PROFILE_START)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 	setupgenetics()
-
 
 	GLOB.revdata = new
 
@@ -47,7 +44,8 @@ GLOBAL_LIST(topic_status_cache)
 // 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
 // #endif
 
-	world.log = file("[GLOB.log_directory]/dd.log")	// screw you, disk space be damned our codebase has 50000 errors, START FIXING THEM.
+	// shunt redirected world log from Master's init back into world log proper, now that logging has been set up.
+	shunt_redirected_log()
 
 	config_legacy.post_load()
 
@@ -102,6 +100,33 @@ GLOBAL_LIST(topic_status_cache)
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
 	GLOB.tgs_initialized = TRUE
+
+GLOBAL_REAL_VAR(world_log_redirected) = FALSE
+
+/**
+ * so it turns out that if GLOB init or something before world.log redirect runtimes we have no way of catching it in CI
+ * which is really bad?? because we kind of need it??
+ * therefore
+ */
+/world/proc/ensure_logging_active()
+	if(global.world_log_redirected)
+		return
+	global.world_log_redirected = TRUE
+	world.log = file("data/logs/world_init_temporary.log")
+
+/**
+ * world/New is running, shunt all of the output back.
+ */
+/world/proc/shunt_redirected_log()
+	if(!fexists("data/logs/world_init_temporary.log"))
+		return
+	world.log = file("[GLOB.log_directory]/dd.log")
+	log_world("Shunting preinit logs as follows:")
+	for(var/line in world.file2list("data/logs/world_init_temporary.log"))
+		line = trim(line)
+		if(!length(line))
+			continue
+		log_world(line)
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
