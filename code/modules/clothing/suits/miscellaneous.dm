@@ -1228,3 +1228,8 @@ obj/item/clothing/suit/kamishimo
 	name = "Springtime Pariah Moto Jacket"
 	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
 	icon_state = "pariah"
+
+/obj/item/clothing/suit/storage/mekkyaku
+	name = "Mekkyaku hoodie"
+	desc = "This crisp white hoodie bears a strange manufacturer's mark. The colorful red accents stand out against the snowy white cloth with evocative flair."
+	icon_state = "mekkyaku"
