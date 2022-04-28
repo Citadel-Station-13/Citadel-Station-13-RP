@@ -1,5 +1,8 @@
-// Areas.dm
-
+/**
+ * # area
+ *
+ * A grouping of tiles into a logical space, mostly used by map editors
+ */
 /area
 	var/fire = null
 	var/atmos = 1
@@ -17,10 +20,13 @@
 	var/eject = null
 
 	var/debug = 0
-	var/requires_power = 1
-	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
 
-	// Power channel status - Is it currently energized?
+	/// Will objects this area be needing power?
+	var/requires_power = TRUE
+	/// This gets overridden to 1 for space in area/.
+	var/always_unpowered = FALSE
+
+	/// Power channel status - Is it currently energized?
 	var/power_equip = TRUE
 	var/power_light = TRUE
 	var/power_environ = TRUE
@@ -52,8 +58,10 @@
 	var/list/all_arfgs = null		//Similar, but a list of all arfgs adjacent to this area
 	var/firedoors_closed = 0
 	var/arfgs_active = 0
+
 	var/list/ambience = list()
 	var/list/forced_ambience = null
+	/// Used to decide what kind of reverb the area makes sound have
 	var/sound_env = STANDARD_STATION
 	var/global/global_uid = 0
 	var/uid
@@ -87,9 +95,17 @@
 			I.Scale(1,1)
 			minimap_color = I.GetPixel(1,1)
 		else // no icon state? use random.
-			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70))	// This interacts with the map loader, so it needs to be set immediately
+			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70)) // This interacts with the map loader, so it needs to be set immediately
 	return ..()
 
+/*
+ * Initalize this area
+ *
+ * intializes the dynamic area lighting and also registers the area with the z level via
+ * reg_in_areas_in_z
+ *
+ * returns INITIALIZE_HINT_LATELOAD
+ */
 /area/Initialize(mapload)
 	icon_state = ""
 
@@ -119,8 +135,12 @@
 
 	return INITIALIZE_HINT_LATELOAD // Areas tradiationally are initialized AFTER other atoms.
 
+
+/**
+ * Sets machine power levels in the area
+ */
 /area/LateInitialize()
-	power_change()		// all machines set to current power level, also updates lighting icon
+	power_change() // all machines set to current power level, also updates lighting icon
 	return INITIALIZE_HINT_LATELOAD
 
 /**
@@ -234,28 +254,24 @@
 		return 1
 	return 0
 
-// Either close or open firedoors depending on current alert statuses
+/// Either close or open firedoors depending on current alert statuses
 /area/proc/firedoors_update()
 	if(fire || party || atmosalm)
 		firedoors_close()
 		arfgs_activate()
-		// VOREStation Edit - Make the lights colored!
-		if(fire)
+		if(fire) // Make the lights colored!
 			for(var/obj/machinery/light/L in src)
 				L.set_alert_fire()
 		else if(atmosalm)
 			for(var/obj/machinery/light/L in src)
 				L.set_alert_atmos()
-		// VOREStation Edit End
 	else
 		firedoors_open()
 		arfgs_deactivate()
-		// VOREStation Edit - Put the lights back!
-		for(var/obj/machinery/light/L in src)
+		for(var/obj/machinery/light/L in src) // Put the lights back!
 			L.reset_alert()
-		// VOREStation Edit End
 
-// Close all firedoors in the area
+/// Close all firedoors in the area
 /area/proc/firedoors_close()
 	if(!firedoors_closed)
 		firedoors_closed = TRUE
@@ -269,7 +285,7 @@
 					spawn(0)
 						E.close()
 
-// Open all firedoors in the area
+/// Open all firedoors in the area
 /area/proc/firedoors_open()
 	if(firedoors_closed)
 		firedoors_closed = FALSE
@@ -283,7 +299,7 @@
 					spawn(0)
 						E.open()
 
-// Activate all retention fields!
+/// Activate all retention fields!
 /area/proc/arfgs_activate()
 	if(!arfgs_active)
 		arfgs_active = TRUE
@@ -293,7 +309,7 @@
 			E.generate_field() //don't need to check powered state like doors, the arfgs handles it on its end
 			E.wasactive = TRUE
 
-// Deactivate retention fields!
+/// Deactivate retention fields!
 /area/proc/arfgs_deactivate()
 	if(arfgs_active)
 		arfgs_active = FALSE
@@ -366,7 +382,13 @@
 */
 
 
-/area/proc/powered(var/chan)		// return true if the area has power to given channel
+/**
+ * Returns int 1 or 0 if the area has power for the given channel
+ *
+ * evalutes a mixture of variables mappers can set, requires_power, always_unpowered and then
+ * per channel power_equip, power_light, power_environ
+ */
+/area/proc/powered(chan) // return true if the area has power to given channel
 
 	if(!requires_power)
 		return 1
@@ -380,14 +402,18 @@
 		if(ENVIRON)
 			return power_environ
 
-	return 0
+	return FALSE
 
-// called when power status changes
+/**
+ * Called when the area power status changes
+ *
+ * Updates the area icon, calls power change on all machinees in the area, and sends the `COMSIG_AREA_POWER_CHANGE` signal.
+ */
 /area/proc/power_change()
 	for(var/obj/machinery/M in src)	// for each machine in the area
-		M.power_change()			// reverify power status (to update icons etc.)
+		M.power_change() // reverify power status (to update icons etc.)
 	if (fire || eject || party)
-		updateicon()
+		update_appearance()
 
 /area/proc/usage(var/chan, var/include_static = TRUE)
 	var/used = 0
@@ -404,13 +430,19 @@
 			used += oneoff_environ + (include_static * static_environ)
 	return used
 
-// Helper for APCs; will generally be called every tick.
+/**
+ * Clear all non-static power usage in area
+ *
+ * Clears all power used for the dynamic equipment, light and environment channels
+ */
 /area/proc/clear_usage()
 	oneoff_equip = 0
 	oneoff_light = 0
 	oneoff_environ = 0
 
-// Use this for a one-time power draw from the area, typically for non-machines.
+/**
+ * Add a power value amount to the stored used_x variables
+ */
 /area/proc/use_power_oneoff(var/amount, var/chan)
 	switch(chan)
 		if(EQUIP)
@@ -421,11 +453,11 @@
 			oneoff_environ += amount
 	return amount
 
-// This is used by machines to properly update the area of power changes.
+/// This is used by machines to properly update the area of power changes.
 /area/proc/power_use_change(old_amount, new_amount, chan)
 	use_power_static(new_amount - old_amount, chan) // Simultaneously subtract old_amount and add new_amount.
 
-// Not a proc you want to use directly unless you know what you are doing; see use_power_oneoff above instead.
+/// Not a proc you want to use directly unless you know what you are doing; see use_power_oneoff above instead.
 /area/proc/use_power_static(var/amount, var/chan)
 	switch(chan)
 		if(EQUIP)
@@ -435,7 +467,7 @@
 		if(ENVIRON)
 			static_environ += amount
 
-// This recomputes the continued power usage; can be used for testing or error recovery, but is not called every tick.
+/// This recomputes the continued power usage; can be used for testing or error recovery, but is not called every tick.
 /area/proc/retally_power()
 	static_equip = 0
 	static_light = 0
@@ -464,7 +496,7 @@
 		src.check_static_power(usr)
 		href_list["datumrefresh"] = "\ref[src]"
 
-// Debugging proc to report if static power is correct or not.
+/// Debugging proc to report if static power is correct or not.
 /area/proc/check_static_power(var/user)
 	set name = "Check Static Power"
 	var/actual_static_equip = static_equip

@@ -1,10 +1,10 @@
 /turf/simulated/wall
 	name = "wall"
-	desc = "A huge chunk of metal used to seperate rooms."
+	desc = "A huge chunk of iron used to separate rooms."
 	icon = 'icons/turf/wall_masks.dmi'
 	icon_state = "generic"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 	blocks_air = TRUE
 //	air_status = AIR_STATUS_BLOCK
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
@@ -15,7 +15,7 @@
 	var/damage_overlay = 0
 	var/global/damage_overlays[16]
 	var/active
-	var/can_open = 0
+	var/can_open = FALSE
 	var/datum/material/girder_material
 	var/datum/material/material
 	var/datum/material/reinf_material
