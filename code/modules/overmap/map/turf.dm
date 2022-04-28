@@ -9,6 +9,8 @@
 
 	#warn lighting overlay
 	var/static/image/lighting_blackness
+	/// vis holder
+	var/atom/movable/overmap_visual_holder/vis_holder
 
 /turf/overmap/Initialize()
 	. = ..()
@@ -43,6 +45,9 @@
 
 /turf/overmap/Destroy()
 	cut_overlay(lighting_blackness)
+	if(vis_holder)
+		QDEL_NULL(vis_holder)
+	vis_locs.Cut()
 	return ..()
 
 /turf/overmap/Entered(var/atom/movable/O, var/atom/oldloc)
@@ -101,3 +106,21 @@
 	icon_state = ""
 	opacity = TRUE
 	density = TRUE
+
+/**
+ * visual holder
+ */
+/atom/movable/overmap_visual_holder
+
+/atom/movable/overmap_visual_holder/Initialize(mapload)
+	// highlander - kill existing
+	if(istype(loc, /turf/overmap))
+		var/turf/overmap/T = loc
+		if(T.vis_holder)
+			qdel(T.vis_holder)
+		T.vis_holder = src
+	return ..()
+
+/atom/movable/overmap_visual_holder/Destroy()
+	vis_contents.Cut()
+	return ..()

@@ -92,4 +92,30 @@
 	// gen
 	for(var/turf/T as anything in turfs)
 		var/dir = turfs[T]
-		switch(dir)
+		var/atom/movable/overmap_visual_holder/holder = new(T)
+		// this entire block can be optimized to a switch() if byond never gets compiler optimizations
+
+		// i'm too tired today to write 400 lines of code to futureproof against someone being an idiot
+		// such we assume edge margin is atleast 1
+		// since we allocate directly on the inner edge, we don't need to offset an extra 32 to account for the first turf
+		// this again is due to byond infinite looping and crashing if vis contents ever coincides
+		// holder.pixel_x = (dir & (EAST|WEST))? ((dir == EAST)? (0) : (-32 * (OVERMAP_SIDE_VISUAL_GLITZ - 1))) : 0
+		// holder.pixel_y = (dir & (NORTH|SOUTH))? ((dir == NORTH)? (0) : (-32 * (OVERMAP_SIDE_VISUAL_GLITZ - 1))) : 0
+
+		// optimized version since we know where the 0's are
+		holder.pixel_x = (dir & WEST)? (-32 * (OVERMAP_SIDE_VISUAL_GLITZ - 1)) : 0
+		holder.pixel_y = (dir & SOUTH)? (-32 * (OVERMAP_SIDE_VISUAL_GLITZ - 1)) : 0
+		// vis contents moment
+		holder.vis_contents = block(
+			// ugh
+			locate(
+				,
+				,
+				cached_z
+			),
+			locate(
+				,
+				,
+				cached_z
+			)
+		)
