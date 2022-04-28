@@ -3,6 +3,21 @@
 /datum/nifsoft/hud
 	var/list/data_huds = list()
 
+/datum/nifsoft/hud/activate(force)
+	. = ..()
+	if(.)
+		// i'd refactor nifsofts but i have a personal goddamn vendetta against nifs
+		for(var/i in data_huds)
+			var/datum/atom_hud/H = GLOB.huds[i]
+			H.add_hud_to(nif.human)
+
+/datum/nifsoft/hud/deactivate(force)
+	. = ..()
+	if(.)
+		for(var/i in data_huds)
+			var/datum/atom_hud/H = GLOB.huds[i]
+			H.remove_hud_from(nif.human)
+
 /datum/nifsoft/hud/ar_civ
 	name = "AR Overlay (Civ)"
 	desc = "Provides a general identification and health status overlay on your vision with no frills."
@@ -113,14 +128,9 @@
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT, VIS_MESONS)
 	vision_flags = (NIF_V_MESONS)
+	vision_flags_mob = SEE_TURFS
 	incompatible_with = list(NIF_MATERIAL,NIF_THERMALS,NIF_NIGHTVIS)
-
-/datum/nifsoft/mesons/life()
-	if((. = ..()))
-		var/mob/living/carbon/human/H = nif.human
-		H.sight |= SEE_TURFS
-		if(H.client)
-			H.client.screen |= GLOB.global_hud.meson
+	vision_exclusive = TRUE
 
 /datum/nifsoft/material
 	name = "Material Scanner"
@@ -132,14 +142,9 @@
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT)
 	vision_flags = (NIF_V_MATERIAL)
+	vision_flags_mob = SEE_OBJS
 	incompatible_with = list(NIF_MESONS,NIF_THERMALS,NIF_NIGHTVIS)
-
-/datum/nifsoft/material/life()
-	if((. = ..()))
-		var/mob/living/carbon/human/H = nif.human
-		H.sight |= SEE_OBJS
-		if(H.client)
-			H.client.screen |= GLOB.global_hud.material
+	vision_exclusive = TRUE
 
 /datum/nifsoft/thermals
 	name = "Thermal Scanner"
@@ -152,14 +157,9 @@
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT, VIS_CLOAKED)
 	vision_flags = (NIF_V_THERMALS)
+	vision_flags_mob = SEE_MOBS
 	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_NIGHTVIS)
-
-/datum/nifsoft/thermals/life()
-	if((. = ..()))
-		var/mob/living/carbon/human/H = nif.human
-		H.sight |= SEE_MOBS
-		if(H.client)
-			H.client.screen |= GLOB.global_hud.thermal
+	vision_exclusive = TRUE
 
 /datum/nifsoft/nightvis
 	name = "Low-Light Amp"
@@ -171,11 +171,6 @@
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT)
 	vision_flags = (NIF_V_NIGHTVIS)
+	darkness_view = 7
 	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_THERMALS)
-
-/datum/nifsoft/nightvis/life()
-	if((. = ..()))
-		var/mob/living/carbon/human/H = nif.human
-		H.see_in_dark += 7
-		if(H.client)
-			H.client.screen |= GLOB.global_hud.nvg
+	vision_exclusive = TRUE

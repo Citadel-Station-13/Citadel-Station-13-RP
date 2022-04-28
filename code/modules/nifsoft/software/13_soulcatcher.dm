@@ -214,7 +214,7 @@
 	brainmob.nif = nif
 	brainmob.soulcatcher = src
 	brainmob.container = src
-	brainmob.stat = 0
+	brainmob.set_stat(CONSCIOUS)
 	brainmob.silent = FALSE
 	dead_mob_list -= brainmob
 	brainmob.add_language(LANGUAGE_GALCOM)
@@ -281,8 +281,7 @@
 	..()
 	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
 	identifying_gender = client.prefs.identifying_gender
-	if(eyeobj)
-		client.eye = eyeobj
+	reset_perspective((nif?.owner) || nif)
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)
@@ -453,7 +452,6 @@
 
 	owner = brainmob				//Set eyeobj's owner
 	parent_human = human			//E-z reference to human
-	sight |= SEE_SELF				//Always see yourself
 
 	name = "[brainmob.name] (AR)"	//Set the name
 	real_name = brainmob.real_name	//And the OTHER name

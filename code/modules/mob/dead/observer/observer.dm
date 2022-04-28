@@ -93,13 +93,10 @@
 
 /mob/observer/dead/Initialize(mapload)
 	var/mob/body = loc
-	sight |= SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
 	plane = PLANE_GHOSTS //Why doesn't the var above work...???
 	verbs += /mob/observer/dead/proc/dead_tele
-
-	stat = DEAD
 
 	var/turf/T
 	if(ismob(body))
@@ -166,6 +163,11 @@
 /mob/observer/dead/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	return TRUE
+
+/mob/observer/dead/set_stat(var/new_stat)
+	if(new_stat != DEAD)
+		CRASH("It is best if observers stay dead, thank you.")
+
 /*
 Transfer_mind is there to check if mob is being deleted/not going to have a body.
 Works together with spawning an observer, noted above.
@@ -829,3 +831,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	to_chat(src, "<span class='ghostalert'><a href=?src=[REF(src)];reenter=1>(Click to re-enter)</a></span>")
 	if(sound)
 		SEND_SOUND(src, sound(sound))
+
+/mob/observer/dead/make_perspective()
+	var/datum/perspective/P = ..()
+	P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF)

@@ -16,6 +16,10 @@ GLOBAL_LIST_INIT(huds, list(
 	RETURN_TYPE(/datum/atom_hud)
 	return GLOB.huds[id]
 
+// TODO: atom_huds on mob with hud sources
+// TODO: /datum/hud_supplier for image metadata/hud list metadata
+// TODO: atom huds using hud supplier id lists, more id usage in general for dynamic gen
+
 /datum/atom_hud
 	var/list/atom/hudatoms = list() //list of all atoms which display this hud
 	var/list/hudusers = list() //list with all mobs who can see the hud

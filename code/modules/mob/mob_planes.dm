@@ -222,8 +222,8 @@
 	apply()
 
 /atom/movable/screen/plane_master/augmented/proc/apply()
-	if(!my_mob.client)
-		return
+	// if(!my_mob.client)
+	// 	return
 
 	/**
 	 * preserving this for when we get generic augmented hud

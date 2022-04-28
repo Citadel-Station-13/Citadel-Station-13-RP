@@ -192,3 +192,6 @@
 	if(stat & BROKEN)
 		return
 	ui_interact(user)
+
+/obj/machinery/chemical_dispenser/unanchored
+	anchored = FALSE

@@ -1079,7 +1079,7 @@ END OF CITADEL CHANGES */
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == "Vox")
+		if(H.species.name == SPECIES_VOX)
 			icon_override = 'icons/mob/species/vox/suit.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -1102,7 +1102,7 @@ END OF CITADEL CHANGES */
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == "Vox")
+		if(H.species.name == SPECIES_VOX)
 			icon_override = 'icons/mob/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -1117,7 +1117,7 @@ END OF CITADEL CHANGES */
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == "Vox")
+		if(H.species.name == SPECIES_VOX)
 			icon_override = 'icons/mob/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -1132,7 +1132,7 @@ END OF CITADEL CHANGES */
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
-		if(H.species.name == "Vox")
+		if(H.species.name == SPECIES_VOX)
 			icon_override = 'icons/mob/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
@@ -1547,7 +1547,7 @@ END OF CITADEL CHANGES */
 	item_state = "latexmaid_mob"
 
 	sprite_sheets = list(
-			"Teshari" = 'icons/vore/custom_clothes_tesh_vr.dmi'
+			SPECIES_TESHARI = 'icons/vore/custom_clothes_tesh_vr.dmi'
 			)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 

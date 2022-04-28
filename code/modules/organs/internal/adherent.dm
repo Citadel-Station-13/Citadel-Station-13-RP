@@ -1,4 +1,7 @@
-#define PROTOCOL_ARTICLE "Protocol article [rand(100,999)]-[uppertext(pick(GLOB.full_alphabet))] subsection #[rand(10,99)]"
+
+///Don't ask why it's here, I just know it won't work without it. This is my personnal coconut.jpg - Papalus
+//GLOBAL_LIST_INIT(full_alphabet, list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"))
+//#define PROTOCOL_ARTICLE "Protocol article [rand(100,999)]-[uppertext(pick(GLOB.full_alphabet))] subsection #[rand(10,99)]"
 
 /obj/item/organ/internal/brain/adherent
 	name = "mentality matrix"

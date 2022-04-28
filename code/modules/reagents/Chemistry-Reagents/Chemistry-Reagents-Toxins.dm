@@ -677,7 +677,7 @@
 /datum/reagent/advmutationtoxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.species.name != "Promethean")
+		if(H.species.name != SPECIES_PROMETHEAN)
 			to_chat(M, "<span class='danger'>Your flesh rapidly mutates!</span>")
 
 			var/list/backup_implants = list()
@@ -688,7 +688,7 @@
 				for(var/obj/item/implant/backup/BI in backup_implants)
 					BI.forceMove(src)
 
-			H.set_species("Promethean")
+			H.set_species(SPECIES_PROMETHEAN)
 			H.shapeshifter_set_colour("#05FF9B") //They can still change their color.
 
 			if(backup_implants.len)
@@ -1094,6 +1094,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	metabolism = REM * 4 // Nanomachines. Fast.
+	affects_robots = TRUE
 
 /datum/reagent/shredding_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustBruteLoss(4 * removed)
@@ -1107,6 +1108,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	metabolism = REM * 4
+	affects_robots = TRUE
 
 /datum/reagent/irradiated_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	SSradiation.radiate(get_turf(M), 20)	// Irradiate people around you.
@@ -1121,6 +1123,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	color = "#555555"
 	metabolism = REM * 4
 	filtered_organs = list(O_SPLEEN)
+	affects_robots = TRUE
 
 /datum/reagent/neurophage_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustBrainLoss(2 * removed)	// Their job is to give you a bad time.
@@ -1136,6 +1139,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	color = "#E4EC2F"
 	metabolism = 2.50
 	var/power = 9
+	affects_robots = TRUE
 
 /datum/reagent/grubshock/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.take_organ_damage(0, removed * power * 0.2)

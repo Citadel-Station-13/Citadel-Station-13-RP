@@ -225,4 +225,3 @@
 			HS.amount = 1
 			wetness = initial(wetness)
 			src.use(1)
-

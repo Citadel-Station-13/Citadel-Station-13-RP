@@ -176,36 +176,11 @@ proc/getsensorlevel(A)
 		return pick(base_miss_chance)
 	return zone
 
-/proc/shake_camera(mob/M, duration, strength=1)
-	if(!M || !M.client || M.shakecamera || M.stat || isEye(M) || isAI(M))
-		return
-	M.shakecamera = 1
-	spawn(1)
-		if(!M.client)
-			return
-
-		var/atom/oldeye=M.client.eye
-		var/aiEyeFlag = 0
-		if(istype(oldeye, /mob/observer/eye/aiEye))
-			aiEyeFlag = 1
-
-		var/x
-		for(x=0; x<duration, x++)
-			if(aiEyeFlag)
-				M.client.eye = locate(clamp(oldeye.loc.x+rand(-strength,strength), 1, world.maxx), clamp(oldeye.loc.y+rand(-strength,strength), 1, world.maxy), oldeye.loc.z)
-			else
-				M.client.eye = locate(clamp(M.loc.x+rand(-strength,strength), 1, world.maxx), clamp(M.loc.y+rand(-strength,strength), 1, world.maxy), M.loc.z)
-			sleep(1)
-		M.client.eye=oldeye
-		M.shakecamera = 0
-
-
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
 		if (M.real_name == text("[msg]"))
 			return 1
 	return 0
-
 
 /mob/proc/abiotic(var/full_body = 0)
 	return 0
@@ -215,16 +190,24 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/intent_numeric(argument)
 	if(istext(argument))
 		switch(argument)
-			if(INTENT_HELP)		return 0
-			if(INTENT_DISARM)	return 1
-			if(INTENT_GRAB)		return 2
-			else			return 3
+			if(INTENT_HELP)
+				return 0
+			if(INTENT_DISARM)
+				return 1
+			if(INTENT_GRAB)
+				return 2
+			else
+				return 3
 	else
 		switch(argument)
-			if(0)			return INTENT_HELP
-			if(1)			return INTENT_DISARM
-			if(2)			return INTENT_GRAB
-			else			return INTENT_HARM
+			if(0)
+				return INTENT_HELP
+			if(1)
+				return INTENT_DISARM
+			if(2)
+				return INTENT_GRAB
+			else
+				return INTENT_HARM
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
 /mob/verb/a_intent_change(input as text)
@@ -495,35 +478,35 @@ proc/is_blind(A)
 
 //TODO: Integrate defence zones and targeting body parts with the actual organ system, move these into organ definitions.
 
-//The base miss chance for the different defence zones
+///The base miss chance for the different defence zones
 var/list/global/base_miss_chance = list(
-	"head" = 40,
-	"chest" = 10,
-	"groin" = 20,
-	"l_leg" = 20,
-	"r_leg" = 20,
-	"l_arm" = 20,
-	"r_arm" = 20,
-	"l_hand" = 50,
-	"r_hand" = 50,
-	"l_foot" = 50,
-	"r_foot" = 50,
+	BP_HEAD = 40,
+	BP_CHEST = 10,
+	BP_GROIN = 20,
+	BP_L_LEG = 30,
+	BP_R_LEG = 30,
+	BP_L_ARM = 30,
+	BP_R_ARM = 30,
+	BP_L_HAND = 50,
+	BP_R_HAND = 50,
+	BP_L_FOOT = 50,
+	BP_R_FOOT = 50,
 )
 
-//Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
-//Also used to weight the protection value that armour provides for covering that body part when calculating protection from full-body effects.
+///Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
+///Also used to weight the protection value that armour provides for covering that body part when calculating protection from full-body effects.
 var/list/global/organ_rel_size = list(
-	"head" = 25,
-	"chest" = 70,
-	"groin" = 30,
-	"l_leg" = 25,
-	"r_leg" = 25,
-	"l_arm" = 25,
-	"r_arm" = 25,
-	"l_hand" = 10,
-	"r_hand" = 10,
-	"l_foot" = 10,
-	"r_foot" = 10,
+	BP_HEAD = 25,
+	BP_CHEST = 70,
+	BP_GROIN = 30,
+	BP_L_LEG = 25,
+	BP_R_LEG = 25,
+	BP_L_ARM = 25,
+	BP_R_ARM = 25,
+	BP_L_HAND = 10,
+	BP_R_HAND = 10,
+	BP_L_FOOT = 10,
+	BP_R_FOOT = 10,
 )
 
 /mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)

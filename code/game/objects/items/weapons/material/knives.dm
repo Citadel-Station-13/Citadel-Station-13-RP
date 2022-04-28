@@ -76,7 +76,7 @@
 	sharp = 1
 	edge = 1
 	force_divisor = 0.15 // 9 when wielded with hardness 60 (steel)
-	matter = list(DEFAULT_WALL_MATERIAL = 12000)
+	matter = list(MAT_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -182,7 +182,7 @@
 	return FALSE
 
 /obj/item/material/knife/machete/armblade/rig
-	default_material = DEFAULT_WALL_MATERIAL
+	default_material = MAT_STEEL
 	canremove = FALSE
 	var/obj/item/rig_module/armblade/storing_module
 

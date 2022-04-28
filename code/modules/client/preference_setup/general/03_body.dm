@@ -752,7 +752,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 					for(var/other_limb in BP_ALL - BP_TORSO)
 						pref.organ_data[other_limb] = null
 						pref.rlimb_data[other_limb] = null
-						for(var/internal in O_STANDARD)
+						for(var/internal in O_ALL_STANDARD)
 							pref.organ_data[internal] = null
 							pref.rlimb_data[internal] = null
 				if(third_limb)

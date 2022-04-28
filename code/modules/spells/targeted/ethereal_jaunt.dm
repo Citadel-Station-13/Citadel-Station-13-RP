@@ -33,7 +33,7 @@
 			if(target.buckled)
 				target.buckled = null
 			jaunt_disappear(animation, target)
-			target.loc = holder
+			target.forceMove(holder)
 			target.transforming=0 //mob is safely inside holder now, no need for protection.
 			jaunt_steam(mobloc)
 			sleep(duration)
@@ -51,8 +51,8 @@
 					if(T)
 						if(target.forceMove(T))
 							break
+			target.update_perspective()
 			target.canmove = 1
-			target.client.eye = target
 			qdel(animation)
 			qdel(holder)
 

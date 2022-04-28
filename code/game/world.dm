@@ -29,7 +29,6 @@ GLOBAL_LIST(topic_status_cache)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 	setupgenetics()
 
-
 	GLOB.revdata = new
 
 	InitTgs()
@@ -38,12 +37,15 @@ GLOBAL_LIST(topic_status_cache)
 
 	SetupLogs()
 
-#ifndef USE_CUSTOM_ERROR_HANDLER
-	world.log = file("[GLOB.log_directory]/dd.log")
-#else
-	if (TgsAvailable())
-		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
-#endif
+// #ifndef USE_CUSTOM_ERROR_HANDLER
+// 	world.log = file("[GLOB.log_directory]/dd.log")
+// #else
+// 	if (TgsAvailable())
+// 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
+// #endif
+
+	// shunt redirected world log from Master's init back into world log proper, now that logging has been set up.
+	shunt_redirected_log()
 
 	config_legacy.post_load()
 
@@ -98,6 +100,36 @@ GLOBAL_LIST(topic_status_cache)
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
 	GLOB.tgs_initialized = TRUE
+
+GLOBAL_REAL_VAR(world_log_redirected) = FALSE
+
+/**
+ * so it turns out that if GLOB init or something before world.log redirect runtimes we have no way of catching it in CI
+ * which is really bad?? because we kind of need it??
+ * therefore
+ */
+/world/proc/ensure_logging_active()
+	if(global.world_log_redirected)
+		return
+	global.world_log_redirected = TRUE
+	if(fexists("data/logs/world_init_temporary.log"))
+		fdel("data.logs/world_init_temporary.log")
+	world.log = file("data/logs/world_init_temporary.log")
+
+/**
+ * world/New is running, shunt all of the output back.
+ */
+/world/proc/shunt_redirected_log()
+	if(!fexists("data/logs/world_init_temporary.log"))
+		return
+	world.log = file("[GLOB.log_directory]/dd.log")
+	log_world("Shunting preinit logs as follows:")
+	for(var/line in world.file2list("data/logs/world_init_temporary.log"))
+		line = trim(line)
+		if(!length(line))
+			continue
+		log_world(line)
+	fdel("data/logs/world_init/temporary.log")
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
@@ -203,8 +235,8 @@ GLOBAL_LIST(topic_status_cache)
 	set waitfor = FALSE
 	var/list/fail_reasons
 	if(GLOB)
-		if(GLOB.total_runtimes != 0)
-			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
+		if(global.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [global.total_runtimes] - if you don't see any runtimes above, launch locally with `dreamseeker -trusted -verbose vorestation.dmb` after compile and check Options and Messages. Inform a maintainer too, if this happens..")
 #ifdef UNIT_TESTS
 		if(GLOB.failed_any_test)
 			LAZYADD(fail_reasons, "Unit Tests failed!")

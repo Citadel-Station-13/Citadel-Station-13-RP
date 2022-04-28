@@ -55,8 +55,8 @@
 			occupant_message(SPAN_DANGER("<B>The sleeper is already occupied!</B>"))
 			return
 		target.forceMove(src)
+		target.update_perspective()
 		occupant = target
-		target.reset_view(src)
 		occupant.Stasis(3)
 		/*
 		if(target.client)
@@ -74,9 +74,9 @@
 	if(!occupant)
 		return
 	occupant.forceMove(get_turf(src))
+	occupant.update_perspective()
 	occupant_message("[occupant] ejected. Life support functions disabled.")
 	log_message("[occupant] ejected. Life support functions disabled.")
-	occupant.reset_view()
 	/*
 	if(occupant.client)
 		occupant.client.eye = occupant.client.mob
@@ -86,7 +86,6 @@
 	occupant = null
 	pr_mech_sleeper.stop()
 	set_ready_state(1)
-	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/detach()
 	if(occupant)

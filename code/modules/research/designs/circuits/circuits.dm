@@ -5,7 +5,7 @@ CIRCUITS BELOW
 /datum/design/circuit
 	build_type = IMPRINTER
 	req_tech = list(TECH_DATA = 2)
-	materials = list("glass" = 2000)
+	materials = list(MAT_GLASS = 2000)
 	chemicals = list("sacid" = 20)
 	time = 5
 
@@ -662,3 +662,17 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/pointdefense_control
 	sort_string = "OAABB"
+
+/datum/design/circuit/massive_gas_pump
+	name = "High performance gas pump"
+	id = "massive_gas_pump"
+	req_tech = list(TECH_ENGINEERING = 3)
+	build_path = /obj/item/circuitboard/massive_gas_pump
+	sort_string = "OAABC"
+
+/datum/design/circuit/massive_heat_pump
+	name = "High performance heat pump"
+	id = "massive_heat_pump"
+	req_tech = list(TECH_ENGINEERING = 4)
+	build_path = /obj/item/circuitboard/massive_heat_pump
+	sort_string = "OAABD"

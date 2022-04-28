@@ -95,6 +95,7 @@
 				var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 				P.name = "paper (Sensor Scan - [O])"
 				P.info = O.get_scan_data(usr)
+				// TODO: strangle whoever made this, DO NOT MANUALLY CALL INIT
 				P.Initialize() // has to be called because the scanner desc uses a combination of html and markdown for some reason
 				playsound(src, "sound/machines/printer.ogg", 30, 1)
 			. = TRUE
