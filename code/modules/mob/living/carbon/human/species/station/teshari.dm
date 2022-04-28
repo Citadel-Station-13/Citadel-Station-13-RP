@@ -46,7 +46,7 @@
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
 
-	slowdown = -1
+	slowdown = -0.5
 	snow_movement = -2 // Ignores full snow.
 	item_slowdown_mod = 1.25 // Tiny spess raptors don't like heavy things.
 
