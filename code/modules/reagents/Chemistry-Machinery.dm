@@ -13,7 +13,7 @@
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/grinder
 	var/inuse = 0
-	var/obj/item/reagent_containers/beaker = null
+	var/obj/item/reagent_containers/beaker
 	var/limit = 10
 	var/list/holdingitems = list()
 	var/list/sheet_reagents = list( //have a number of reageents divisible by REAGENTS_PER_SHEET (default 20) unless you like decimals,
@@ -38,6 +38,7 @@
 
 /obj/machinery/reagentgrinder/Initialize(mapload, newdir)
 	. = ..()
+	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	default_apply_parts()
 	RefreshParts()
 
