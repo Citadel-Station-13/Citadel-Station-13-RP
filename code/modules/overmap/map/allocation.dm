@@ -1,6 +1,6 @@
 /datum/overmap/proc/Allocate()
 	if(turf_reservation)
-		log_overmaps_map(src, "DANGER: Attempted to allocate while already allocated."))
+		log_overmaps_map(src, "DANGER: Attempted to allocate while already allocated.")
 		CRASH("Already allocated")
 	var/real_width = width + OVERMAP_GENERATION_EDGE_MARGIN
 	var/real_height = height + OVERMAP_GENERATION_EDGE_MARGIN
@@ -47,7 +47,7 @@
 	// east
 	turfs += block(locate(cached_x_end - OVERMAP_GENERATION_EDGE_MARGIN + 1, cached_y_start + OVERMAP_GENERATION_EDGE_MARGIN, cached_z), locate(cached_x_end, cached_y_end - OVERMAP_GENERATION_EDGE_MARGIN, cached_z))
 	// west
-	turfs += block(locate(cached_x_start, cached_y_start + OVERMAP_GENERATION_EDGE_MARGIN, cached_z), locate(cached_x_start + OVERMAP_GENERATION_EDGE_MARGIN - 1, cached_y_end - OVERMAP_GENERATION_EDGE_MARGIN, cached_Z))
+	turfs += block(locate(cached_x_start, cached_y_start + OVERMAP_GENERATION_EDGE_MARGIN, cached_z), locate(cached_x_start + OVERMAP_GENERATION_EDGE_MARGIN - 1, cached_y_end - OVERMAP_GENERATION_EDGE_MARGIN, cached_z))
 
 	for(var/turf/T as anything in turfs)
 		// TODO: CHANGETURF_SKIP

@@ -31,7 +31,6 @@
 	cut_bounds_overlay()
 	return ..()
 
-
 /atom/movable/overmap_object/Initialize(mapload)
 	. = ..()
 	if(!GLOB.using_map.use_overmap)
@@ -115,3 +114,4 @@
 
 /atom/movable/overmap_object/update_icon()
 	filters = filter(type="drop_shadow", color = color + "F0", size = 2, offset = 1,x = 0, y = 0)
+	#warn what to do with this filter.

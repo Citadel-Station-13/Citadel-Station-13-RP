@@ -15,10 +15,10 @@
 #define OVERMAP_DISTANCE_RENDER(distance)				"[QUANTIZE_OVERMAP_DISTANCE(distance)] l-s"
 
 /**
- * speed - obviously derived from distance, in pixels/second
+ * speed - obviously derived from distance, in distance/second
  */
-/// overmap absolute max speed
-#define OVERMAP_MAX_SPEED						32
+/// overmap absolute max speed in distance/second - this is hard limit on entity sim, NOT balancing!
+#define OVERMAP_MAX_SPEED						SSovermaps.max_entity_speed
 /// overmap speed accuracy
 #define OVERMAP_SPEED_ACCURACY					0.001
 /// overmap speed quantization
