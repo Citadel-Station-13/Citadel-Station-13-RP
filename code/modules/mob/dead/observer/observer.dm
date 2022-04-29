@@ -835,3 +835,4 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/make_perspective()
 	var/datum/perspective/P = ..()
 	P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF)
+	P.SetSeeInvis(SEE_INVISIBLE_OBSERVER)
