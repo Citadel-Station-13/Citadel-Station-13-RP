@@ -47,38 +47,44 @@
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
-
-	var/lights_on = 0 // Is our integrated light on?
+	/// Is our integrated light on?
+	var/lights_on = 0
 	var/used_power_this_tick = 0
 	var/sight_mode = 0
 	var/custom_name = ""
-	var/custom_sprite = 0 //Due to all the sprites involved, a var for our custom borgs may be best
-	var/sprite_name = null // The name of the borg, for the purposes of custom icon sprite indexing.
-	var/crisis //Admin-settable for combat module use.
+	/// Due to all the sprites involved, a var for our custom borgs may be best.
+	var/custom_sprite = 0
+	/// The name of the borg, for the purposes of custom icon sprite indexing.
+	var/sprite_name = null
+	/// Admin-settable for combat module use.
+	var/crisis
 	var/crisis_override = 0
 	var/integrated_light_power = 6
 	var/datum/wires/robot/wires
 
 	can_be_antagged = TRUE
 
-//Icon stuff
+//! ## Icon stuff
+	/// Persistent icontype tracking allows for cleaner icon updates
+	var/icontype
+	/// Used to store the associations between sprite names and sprite index.
+	var/module_sprites[0]
+	/// If icon selection has been completed yet.
+	var/icon_selected = 1
+	/// Remaining attempts to select icon before a selection is forced.
+	var/icon_selection_tries = 0
 
-	var/icontype 				//Persistent icontype tracking allows for cleaner icon updates
-	var/module_sprites[0] 		//Used to store the associations between sprite names and sprite index.
-	var/icon_selected = 1		//If icon selection has been completed yet
-	var/icon_selection_tries = 0//Remaining attempts to select icon before a selection is forced
-
-//Hud stuff
+//! ## Hud stuff
 
 	var/atom/movable/screen/cells = null
 	var/atom/movable/screen/inv1 = null
 	var/atom/movable/screen/inv2 = null
 	var/atom/movable/screen/inv3 = null
-
-	var/shown_robot_modules = 0 //Used to determine whether they have the module menu shown or not
+	/// Used to determine whether they have the module menu shown or not
+	var/shown_robot_modules = 0
 	var/atom/movable/screen/robot_modules_background
 
-//3 Modules can be activated at any one time.
+	//?3 Modules can be activated at any one time.
 	var/obj/item/robot_module/module = null
 	var/module_active = null
 	var/module_state_1 = null
@@ -93,7 +99,7 @@
 
 	var/cell_emp_mult = 2
 
-	// Components are basically robot organs.
+	/// Components are basically robot organs.
 	var/list/components = list()
 
 	var/obj/item/mmi/mmi = null
@@ -120,19 +126,21 @@
 	var/killswitch_time = 60
 	var/weapon_lock = FALSE
 	var/weaponlock_time = 120
-	///Cyborgs will sync their laws with their AI by default
+	/// Cyborgs will sync their laws with their AI by default
 	var/lawupdate = TRUE
-	///Used when looking to see if a borg is locked down.
+	/// Used when looking to see if a borg is locked down.
 	var/lockcharge
-	///Controls whether or not the borg is actually locked down.
+	/// Controls whether or not the borg is actually locked down.
 	var/lockdown = FALSE
-	///Cause sec borgs gotta go fast //No they dont!
+	/// Cause sec borgs gotta go fast //No they dont!
 	var/speed = 0
-	///Used to determine if a borg shows up on the robotics console.  Setting to one hides them.
+	/// Used to determine if a borg shows up on the robotics console.  Setting to one hides them.
 	var/scrambledcodes = FALSE
-	///The number of known entities currently accessing the internal camera
+	/// The number of known entities currently accessing the internal camera
 	var/tracking_entities = 0
 	var/braintype = "Cyborg"
+	/// The restraining bolt installed into the cyborg.
+	var/obj/item/implant/restrainingbolt/bolt
 
 	var/list/robot_verbs_default = list(
 		/mob/living/silicon/robot/proc/sensor_mode,
@@ -510,8 +518,21 @@
 					C.brute_damage = WC.brute
 					C.electronics_damage = WC.burn
 
-				to_chat(usr, "<font color=#4F49AF>You install the [W.name].</font>")
+				to_chat(usr, SPAN_BLUE("You install the [W.name]."))
 
+				return
+
+		if(istype(W, /obj/item/implant/restrainingbolt) && !cell)
+			if(bolt)
+				to_chat(user, SPAN_NOTICE("There is already a restraining bolt installed in this cyborg."))
+				return
+
+			else
+				user.drop_from_inventory(W)
+				W.forceMove(src)
+				bolt = W
+
+				to_chat(user, SPAN_NOTICE("You install \the [W]."))
 				return
 
 	if(istype(W, /obj/item/aiModule)) // Trying to modify laws locally.
@@ -655,6 +676,20 @@
 			to_chat(user, "Unable to locate a radio.")
 		updateicon()
 
+	else if(W.is_wrench() && opened && !cell)
+		if(bolt)
+			to_chat(user, "You begin removing \the [bolt].")
+
+			if(do_after(user, 2 SECONDS, src))
+				bolt.forceMove(get_turf(src))
+				bolt = null
+
+				to_chat(user, "You remove \the [bolt].")
+
+		else
+			to_chat(user, "There is no restraining bolt installed.")
+		return
+
 	else if(istype(W, /obj/item/encryptionkey/) && opened)
 		if(radio)//sanityyyyyy
 			radio.attackby(W,user)//GTFO, you have your own procs
@@ -696,6 +731,34 @@
 			if(W.force > 0)
 				spark_system.start()
 		return ..()
+
+/mob/living/silicon/robot/GetIdCard()
+	if(bolt && !bolt.malfunction)
+		return null
+	return idcard
+
+/mob/living/silicon/robot/get_restraining_bolt()
+	var/obj/item/implant/restrainingbolt/RB = bolt
+
+	if(istype(RB))
+		if(!RB.malfunction)
+			return TRUE
+
+	return FALSE
+
+/mob/living/silicon/robot/resist_restraints()
+	if(bolt)
+		if(!bolt.malfunction)
+			visible_message( \
+				SPAN_DANGER("[src] is trying to break their [bolt]!"), \
+				SPAN_WARNING("You attempt to break your [bolt]. (This will take around 90 seconds and you need to stand still)"))
+			if(do_after(src, 1.5 MINUTES, src, incapacitation_flags = INCAPACITATION_DISABLED))
+				visible_message( \
+					SPAN_DANGER("[src] manages to break \the [bolt]!"), \
+					SPAN_WARNING("You successfully break your [bolt]."))
+				bolt.malfunction = MALFUNCTION_PERMANENT
+
+	return
 
 /mob/living/silicon/robot/proc/module_reset()
 	transform_with_anim() //VOREStation edit: sprite animation
@@ -1101,6 +1164,9 @@
 	return 0
 
 /mob/living/silicon/robot/binarycheck()
+	if(get_restraining_bolt())
+		return FALSE
+
 	if(is_component_functioning("comms"))
 		var/datum/robot_component/RC = get_component("comms")
 		use_power(RC.active_usage)
@@ -1192,6 +1258,11 @@
 				to_chat(src, "<span class='danger'>Initiating diagnostics...</span>")
 				sleep(20)
 				to_chat(src, "<span class='danger'>SynBorg v1.7.1 loaded.</span>")
+				sleep(5)
+				if(bolt)
+					if(!bolt.malfunction)
+						bolt.malfunction = MALFUNCTION_PERMANENT
+						to_chat(src, SPAN_DANGER("RESTRAINING BOLT DISABLED"))
 				sleep(5)
 				to_chat(src, "<span class='danger'>LAW SYNCHRONISATION ERROR</span>")
 				sleep(5)

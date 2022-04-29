@@ -1664,3 +1664,8 @@
 	if(BP_IS_ROBOTIC(E))
 		return BULLET_IMPACT_METAL
 	return BULLET_IMPACT_MEAT
+
+/mob/living/carbon/human/reduce_cuff_time()
+	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/rig))
+		return 2
+	return ..()

@@ -34,6 +34,8 @@
 	// Whether or not the accessory can be affected by colouration
 	var/do_colouration = 1
 
+	var/color_blend_mode = ICON_MULTIPLY	// If checked.
+
 /*
 ////////////////////////////
 /  =--------------------=  /
@@ -46,7 +48,7 @@
 	icon = 'icons/mob/human_face_m.dmi'	  // default icon for all hairs
 	var/icon_add = 'icons/mob/human_face.dmi'
 	//Enhanced colours and hair for all
-	var/color_blend_mode = ICON_MULTIPLY
+	color_blend_mode = ICON_MULTIPLY
 	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //This lets all races use the default hairstyles.
 	var/flags
 
@@ -1049,7 +1051,7 @@
 
 /datum/sprite_accessory/facial_hair
 	icon = 'icons/mob/human_face_or_vr.dmi'
-	var/color_blend_mode = ICON_MULTIPLY
+	color_blend_mode = ICON_MULTIPLY
 	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //This lets all races use the facial hair styles.
 
 	shaved
@@ -1979,7 +1981,7 @@
 /datum/sprite_accessory/marking
 	icon = "icons/mob/human_races/markings.dmi"
 	do_colouration = 1 //Almost all of them have it, COLOR_ADD
-	var/color_blend_mode = ICON_ADD
+	color_blend_mode = ICON_ADD
 
 	//Empty list is unrestricted. Should only restrict the ones that make NO SENSE on other species,
 	//like Tajaran inner-ear coloring overlay stuff.
@@ -2961,6 +2963,72 @@
 		icon_state = "jackal_bareback"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_ARM,BP_R_ARM,BP_GROIN,BP_TORSO)
+
+	voxscales
+		name = "Vox Scales"
+		icon_state = "Voxscales"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_HEAD)
+
+	voxclaws
+		name = "Vox Claws"
+		icon_state = "Voxclaws"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_HAND,BP_R_HAND)
+
+	voxbeak
+		name = "Vox Beak"
+		icon_state = "Voxscales"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathihood
+		name = "Cobra Hood"
+		icon_state = "unathihood"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathidoublehorns
+		name = "Double Unathi Horns"
+		icon_state = "unathidoublehorns"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathihorns
+		name = "Unathi Horns"
+		icon_state = "unathihorns"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathiramhorns
+		name = "Unathi Ram Horns"
+		icon_state = "unathiramhorns"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathishortspines
+		name = "Unathi Short Spines"
+		icon_state = "unathishortspines"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathilongspines
+		name = "Unathi Long Spines"
+		icon_state = "unathilongspines"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathishortfrills
+		name = "Unathi Short Frills"
+		icon_state = "unathishortfrills"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathilongfrills
+		name = "Unathi Long Frills"
+		icon_state = "unathilongfrills"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery
