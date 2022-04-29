@@ -469,7 +469,7 @@
 
 	var/mob/living/carbon/human/H = target
 
-	var/datum/outfit/outfit = input("Select outfit.", "Select equipment.") as null|anything in outfits()
+	var/datum/outfit/outfit = input("Select outfit.", "Select equipment.") as null|anything in get_all_outfits()
 	if(!outfit)
 		return
 

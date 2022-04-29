@@ -1,3 +1,12 @@
+/proc/get_all_outfits()
+	. = list()
+	for(var/path in subtypesof(/datum/outfit))
+		var/datum/outfit/O = path
+		if(initial(O.abstract_type) == path)
+			continue
+		. += new path
+	sortTim(., /proc/cmp_name_asc)
+
 /datum/outfit
 	/// the outfit's name
 	var/name = "Naked"
@@ -43,14 +52,6 @@
 	var/flags // Specific flags
 
 	var/undress = 1	//Does the outfit undress the mob upon equp?
-
-/datum/outfit/New()
-	..()
-
-	if(is_hidden_category())
-		return
-	outfits_decls_by_type_[type] = src
-	dd_insertObjectList(outfits_decls_, src)
 
 /datum/outfit/proc/pre_equip(mob/living/carbon/human/H)
 	if(flags & OUTFIT_HAS_BACKPACK)
