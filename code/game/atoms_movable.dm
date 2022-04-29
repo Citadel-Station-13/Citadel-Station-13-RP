@@ -61,11 +61,11 @@
 	///Reference to atom being orbited
 	var/atom/orbit_target
 
-/atom/movable/Destroy()
+/atom/movable/Destroy(force)
 	. = ..()
 	if(reagents)
 		QDEL_NULL(reagents)
-		reagents = null
+	unbuckle_all_mobs(force = TRUE)
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
 	var/turf/un_opaque
@@ -77,12 +77,12 @@
 	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
-	if (pulledby)
-		if (pulledby.pulling == src)
-			pulledby.pulling = null
-		pulledby = null
+	if(pulledby)
+		pulledby.stop_pulling()
+	if(pulling)
+		stop_pulling()
 	if(riding_datum)
-		QDEL_NULL(riding_datum) //VOREStation Add
+		QDEL_NULL(riding_datum)
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
