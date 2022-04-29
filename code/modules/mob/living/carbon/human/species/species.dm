@@ -4,7 +4,7 @@
 
 /datum/species
 
-	//! ## Descriptors and strings.
+//! ## Descriptors and strings.
 	/// Species name.
 	var/name
 	/// Pluralized name (since "[name]s" is not always valid)
@@ -14,7 +14,7 @@
 	/// A list of /datum/category_item/catalogue datums, for the cataloguer, or null.
 	var/list/catalogue_data = null
 
-	//! ## Icon/appearance vars.
+//! ## Icon/appearance vars.
 	/// Normal icon set.
 	var/icobase = 'icons/mob/human_races/r_human.dmi'
 	/// Mutated icon set.
@@ -27,7 +27,7 @@
 	/// Icons used for worn items in suit storage slot.
 	var/suit_storage_icon = 'icons/mob/belt_mirror.dmi'
 
-	//! ## Damage overlay and masks.
+//! ## Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/masks/dam_human.dmi'
 	var/damage_mask = 'icons/mob/human_races/masks/dam_mask_human.dmi'
 	var/blood_mask = 'icons/mob/human_races/masks/blood_human.dmi'
@@ -89,7 +89,7 @@
 	/// The maximum age a species is allowed to be played as. This is generally determined by lifespan.
 	var/max_age = 70
 
-	//! ## Language/culture vars.
+//! ## Language/culture vars.
 	/// Default language is used when 'say' is used without modifiers.
 	var/default_language = LANGUAGE_GALCOM
 	/// Default racial language, if any.
@@ -111,7 +111,7 @@
 	/// This list is a guess at things that no one other than the parent species should be able to speak
 	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
-	//! ## Soundy emotey things.
+//! ## Soundy emotey things.
 	var/scream_verb         = "screams"
 	var/male_scream_sound   = list('sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'sound/voice/screams/sound_voice_scream_scream_m2.ogg')
 	var/female_scream_sound = list('sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'sound/voice/screams/sound_voice_scream_scream_f3.ogg')
@@ -120,7 +120,7 @@
 	var/male_sneeze_sound   = 'sound/effects/mob_effects/sneeze.ogg'
 	var/female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
 
-	//! ## Combat vars.
+//! ## Combat vars.
 	/// Point at which the mob will enter crit.
 	var/total_health = 100
 	/// Possible unarmed attacks that the mob will use in combat,
@@ -151,7 +151,7 @@
 	/// Same flags as glasses.
 	var/vision_flags = SEE_SELF
 
-	//! ## Death vars.
+//! ## Death vars.
 	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
 	var/bone_type = /obj/item/stack/material/bone
 	var/hide_type = /obj/item/stack/animalhide/human
@@ -164,7 +164,7 @@
 	var/knockout_message = "has been knocked unconscious!"
 	var/cloning_modifier = /datum/modifier/cloning_sickness
 
-	//! ## Environment tolerance/life processes vars.
+//! ## Environment tolerance/life processes vars.
 	///Used for metabolizing reagents.
 	var/reagent_tag
 	/// Non-oxygen gas breathed, if any.
@@ -181,7 +181,7 @@
 	/// Species will gain this much temperature every second
 	var/passive_temp_gain = 0
 
-	//! Cold
+//! ## Cold
 	/// Cold damage level 1 below this point.
 	var/cold_level_1 = BODYTEMP_COLD_WARNING_1
 	/// Cold damage level 2 below this point.
@@ -204,7 +204,7 @@
 		"Your chilly flesh stands out in goosebumps."
 		)
 
-	//! Hot
+//! ## Hot
 	/// Heat damage level 1 above this point.
 	var/heat_level_1 = BODYTEMP_HEAT_WARNING_1
 	/// Heat damage level 2 above this point.
@@ -227,7 +227,7 @@
 		"Your skin prickles in the heat."
 		)
 
-	//! Pressure
+//! ## Pressure
 	/// Dangerously high pressure.
 	var/hazard_high_pressure = HAZARD_HIGH_PRESSURE
 	/// High pressure warning.
@@ -247,13 +247,13 @@
 
 	var/metabolic_rate = 1
 
-	//! ## HUD data vars.
+//! ## HUD data vars.
 	var/datum/hud_data/hud
 	var/hud_type
 	/// This modifies how intensely the health hud is colored.
 	var/health_hud_intensity = 1
 
-	//! ## Body/form vars.
+//! ## Body/form vars.
 	/// Species-specific verbs.
 	var/list/inherent_verbs = list()
 	/// Species-specific spells.
@@ -265,7 +265,7 @@
 	/// Native darksight distance.
 	var/darksight = 2
 
-	//! ## Flags
+//! ## Flags
 	/// Various specific features.
 	var/flags = 0
 	/// Appearance/display related features.
@@ -349,7 +349,7 @@
 	/// Organ tag where they are located if they can be kicked for increased pain.
 	var/sexybits_location = BP_GROIN // Come on... You know it's there for most of them.
 
-	//! ## Bump vars
+//! ## Bump vars
 	/// What are we considered to be when bumped?
 	var/bump_flag = HUMAN
 	/// What can we push?
@@ -359,6 +359,7 @@
 
 	var/pass_flags = 0
 
+//! ## Misc vars
 	var/list/descriptors = list()
 
 	/// This is used in character setup preview generation (prefences_setup.dm) and human mob rendering (update_icons.dm)
@@ -366,7 +367,6 @@
 
 	/// This is for overriding tail rendering with a specific icon in icobase, for static tails only, since tails would wag when dead if you used this.
 	var/icobase_tail = FALSE
-
 	var/wing_hair
 	var/wing
 	var/wing_animation
@@ -374,7 +374,7 @@
 	/// Link to wiki page for species
 	var/wikilink = null
 
-	/// Snowflaked Weaver abilities
+//!## Snowflaked Weaver abilities
 	var/is_weaver = FALSE
 	var/silk_production = FALSE
 	var/silk_reserve = 100
@@ -504,6 +504,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		var/limb_path = organ_data["path"]
 		var/obj/item/organ/O = new limb_path(H)
 		organ_data["descriptor"] = O.name
+		if(O.parent_organ)
+			organ_data = has_limbs[O.parent_organ]
+			organ_data["has_children"] = organ_data["has_children"]+1
 
 	for(var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]
