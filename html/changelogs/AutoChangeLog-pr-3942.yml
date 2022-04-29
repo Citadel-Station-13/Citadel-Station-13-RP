@@ -1,0 +1,6 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - code_imp: "Added a item scaling element"
+  - code_imp: "Updated Component code a bit"
+  - code_imp: "Ported the organized/split up signal defines for DCS"
