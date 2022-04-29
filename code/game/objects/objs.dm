@@ -178,3 +178,6 @@
 	if(Adjacent(user))
 		add_fingerprint(user)
 	..()
+
+/obj/proc/container_resist(var/mob/living)
+	return

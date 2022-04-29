@@ -17,12 +17,13 @@
 		/obj/item/radio/headset/heads/captain,
 		/obj/item/radio/headset/heads/captain/alt,
 		/obj/item/gun/energy/gun,
+		/obj/item/clothing/accessory/holster/waist,
+		/obj/item/clothing/accessory/holster/leg,
 		/obj/item/melee/telebaton,
 		/obj/item/flash,
 		/obj/item/gps/command,
 		/obj/item/storage/belt/sheath,
 		/obj/item/storage/box/ids)
-
 
 /obj/structure/closet/secure_closet/hop
 	name = "head of personnel's locker"

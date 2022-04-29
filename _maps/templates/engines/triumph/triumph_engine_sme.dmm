@@ -101,6 +101,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
+/obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "cI" = (
@@ -338,6 +339,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"ms" = (
+/obj/structure/closet/radiation,
+/obj/item/clothing/glasses/meson,
+/obj/item/clothing/glasses/meson,
+/turf/template_noop,
+/area/template_noop)
 "mQ" = (
 /obj/machinery/camera/network/engine{
 	dir = 1
@@ -425,16 +432,8 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "qb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/sign/warning/radioactive,
+/turf/simulated/wall/r_wall,
 /area/engineering/engine_room)
 "qc" = (
 /obj/machinery/shield_diffuser,
@@ -589,6 +588,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 9
 	},
+/obj/machinery/light,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "vz" = (
@@ -825,6 +825,11 @@
 	sensors = list("engine_sensor" = "Engine Core");
 	throwpass = 1
 	},
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Dv" = (
@@ -859,6 +864,12 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"Eb" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Eq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -903,7 +914,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Fb" = (
@@ -1307,8 +1317,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Vn" = (
-/obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/vault{
+	name = "REACTOR ROOM";
+	req_one_access = list(10)
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "VH" = (
@@ -1489,10 +1502,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 4;
@@ -1607,7 +1616,7 @@ XW
 uL
 JR
 YK
-WZ
+qb
 "}
 (6,1,1) = {"
 Vn
@@ -1631,7 +1640,7 @@ Ck
 VK
 "}
 (7,1,1) = {"
-WZ
+qb
 vS
 FN
 FN
@@ -1667,7 +1676,7 @@ jZ
 lS
 WZ
 WZ
-WZ
+qb
 Rm
 MT
 WZ
@@ -1832,7 +1841,7 @@ SI
 hC
 FN
 Vh
-Cu
+Eb
 WZ
 td
 td
@@ -1853,10 +1862,10 @@ Qf
 cI
 FN
 vd
+rL
 qb
-WZ
-td
-td
+ms
+ms
 td
 td
 td

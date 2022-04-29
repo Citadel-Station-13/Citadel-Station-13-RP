@@ -197,6 +197,17 @@
 	container_name = "Jumper kit crate"
 	access = access_robotics
 
+/datum/supply_pack/robotics/restrainingbolt
+	name = "Restraining bolt crate"
+	contains = list(
+			/obj/item/implanter = 1,
+			/obj/item/implantcase/restrainingbolt = 2
+			)
+	cost = 40
+	container_type = /obj/structure/closet/crate/secure/cybersolutions
+	container_name = "Restraining bolt crate"
+	access = access_robotics
+
 /datum/supply_pack/robotics/bike
 	name = "Spacebike Crate"
 	contains = list()
