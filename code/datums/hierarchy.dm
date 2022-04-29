@@ -18,6 +18,7 @@
 		var/decl/hierarchy/subtype_instance = all_subtypes[subtype]
 		var/decl/hierarchy/subtype_parent = all_subtypes[subtype_instance.parent_type]
 		subtype_instance.parent = subtype_parent
+
 		dd_insertObjectList(subtype_parent.children, subtype_instance)
 
 /decl/hierarchy/proc/is_category()

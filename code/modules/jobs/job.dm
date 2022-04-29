@@ -58,7 +58,7 @@
 	department_accounts = department_accounts || departments_managed
 
 /datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
-	var/decl/hierarchy/outfit/outfit = get_outfit(H, alt_title)
+	var/datum/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
 		return FALSE
 	. = outfit.equip(H, title, alt_title)
@@ -70,7 +70,10 @@
 		if(A && initial(A.title_outfit))
 			. = initial(A.title_outfit)
 	. = . || outfit_type
-	. = outfit_by_type(.)
+	if(ispath(., /datum/outfit))
+		return .
+
+	// TODO: job refactor
 
 /datum/job/proc/setup_account(var/mob/living/carbon/human/H)
 	if(!account_allowed || (H.mind && H.mind.initial_account))
@@ -105,7 +108,7 @@
 
 // Overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
 /datum/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title)
-	var/decl/hierarchy/outfit/outfit = get_outfit(H, alt_title)
+	var/datum/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
 		return FALSE
 	. = outfit.equip_base(H, title, alt_title)

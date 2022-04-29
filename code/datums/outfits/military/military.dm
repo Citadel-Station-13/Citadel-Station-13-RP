@@ -1,5 +1,5 @@
-/decl/hierarchy/outfit/military
+/datum/outfit/military
 	name = "Military Uniform"
-	hierarchy_type = /decl/hierarchy/outfit/military
+	abstract_type = /datum/outfit/military
 
 	l_ear = /obj/item/radio/headset

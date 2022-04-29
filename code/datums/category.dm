@@ -16,7 +16,7 @@
 			category = new category(src)
 			categories += category
 			categories_by_name[category.name] = category
-	categories = dd_sortedObjectList(categories)
+	categories = sortTim(categories, /proc/cmp_name_asc)
 
 /datum/category_collection/Destroy()
 	for(var/category in categories)
@@ -49,7 +49,7 @@
 
 	// For whatever reason dd_insertObjectList(items, item) doesn't insert in the correct order
 	// If you change this, confirm that character setup doesn't become completely unordered.
-	items = dd_sortedObjectList(items)
+	sortTim(items, /proc/cmp_name_asc)
 
 /datum/category_group/Destroy()
 	for(var/item in items)
