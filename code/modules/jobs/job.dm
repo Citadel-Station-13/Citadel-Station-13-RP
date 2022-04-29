@@ -71,7 +71,7 @@
 			. = initial(A.title_outfit)
 	. = . || outfit_type
 	if(ispath(., /datum/outfit))
-		return .
+		return new .
 
 	// TODO: job refactor
 
