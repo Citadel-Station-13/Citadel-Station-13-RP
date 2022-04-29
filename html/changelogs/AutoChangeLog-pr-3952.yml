@@ -1,0 +1,7 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "Optional third color for markings."
+  - rscadd: "Removeable prosthetics. aka Modular_limbs"
+  - rscadd: "Restraining Bolt"
+  - bugfix: "Defib timer is correct."
