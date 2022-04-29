@@ -150,3 +150,12 @@
 	. = ..()
 	imp = new /obj/item/implant/vrlanguage( src )
 	update()
+
+/obj/item/implanter/restrainingbolt
+	name = "implanter (bolt)"
+
+/obj/item/implanter/restrainingbolt/New()
+	src.imp = new /obj/item/implant/restrainingbolt( src )
+	..()
+	update()
+	return

@@ -17,15 +17,15 @@
 #define DNA_HARD_BOUNDS    list(1,3490,3500,4095)
 
 // UI Indices (can change to mutblock style, if desired)
-#define DNA_UI_HAIR_R      1
-#define DNA_UI_HAIR_G      2
-#define DNA_UI_HAIR_B      3
-#define DNA_UI_BEARD_R     4
-#define DNA_UI_BEARD_G     5
-#define DNA_UI_BEARD_B     6
-#define DNA_UI_SKIN_TONE   7
-#define DNA_UI_SKIN_R      8
-#define DNA_UI_SKIN_G      9
+#define DNA_UI_HAIR_R       1
+#define DNA_UI_HAIR_G       2
+#define DNA_UI_HAIR_B       3
+#define DNA_UI_BEARD_R      4
+#define DNA_UI_BEARD_G      5
+#define DNA_UI_BEARD_B      6
+#define DNA_UI_SKIN_TONE    7
+#define DNA_UI_SKIN_R       8
+#define DNA_UI_SKIN_G       9
 #define DNA_UI_SKIN_B      10
 #define DNA_UI_EYES_R      11
 #define DNA_UI_EYES_G      12
@@ -42,26 +42,31 @@
 #define DNA_UI_TAIL2_R     23
 #define DNA_UI_TAIL2_G     24
 #define DNA_UI_TAIL2_B     25
-#define DNA_UI_EARS_R      26
-#define DNA_UI_EARS_G      27
-#define DNA_UI_EARS_B      28
-#define DNA_UI_EARS2_R     29
-#define DNA_UI_EARS2_G     30
-#define DNA_UI_EARS2_B     31
-#define DNA_UI_WING_STYLE  32
-#define DNA_UI_WING_R      33
-#define DNA_UI_WING_G      34
-#define DNA_UI_WING_B      35
-#define DNA_UI_WING2_R     36
-#define DNA_UI_WING2_G     37
-#define DNA_UI_WING2_B     38
-#define DNA_UI_LENGTH      38
-#define DNA_BASE_COLOR	   39
+#define DNA_UI_TAIL3_R     26
+#define DNA_UI_TAIL3_G     27
+#define DNA_UI_TAIL3_B     28
+#define DNA_UI_EARS_R      29
+#define DNA_UI_EARS_G      30
+#define DNA_UI_EARS_B      31
+#define DNA_UI_EARS2_R     32
+#define DNA_UI_EARS2_G     33
+#define DNA_UI_EARS2_B     34
+#define DNA_UI_EARS3_R     35
+#define DNA_UI_EARS3_G     36
+#define DNA_UI_EARS3_B     37
+#define DNA_UI_WING_STYLE  38
+#define DNA_UI_WING_R      39
+#define DNA_UI_WING_G      40
+#define DNA_UI_WING_B      41
+#define DNA_UI_WING2_R     42
+#define DNA_UI_WING2_G     43
+#define DNA_UI_WING2_B     44
+#define DNA_UI_WING3_R     45
+#define DNA_UI_WING3_G     46
+#define DNA_UI_WING3_B     47
+#define DNA_UI_LENGTH      47 //! Needs to match the highest number above.
 
-#define DNA_SE_LENGTH 49 // original was UI+11
-// For later:
-//#define DNA_SE_LENGTH 50 // Was STRUCDNASIZE, size 27. 15 new blocks added = 42, plus room to grow.
-
+#define DNA_SE_LENGTH 50 // (original was UI+11)
 
 // Defines which values mean "on" or "off".
 //  This is to make some of the more OP superpowers a larger PITA to activate,
@@ -237,13 +242,21 @@ var/global/list/datum/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_TAIL2_G,   character.g_tail2,   255,    1)
 	SetUIValueRange(DNA_UI_TAIL2_B,   character.b_tail2,   255,    1)
 
+	SetUIValueRange(DNA_UI_TAIL3_R,   character.r_tail3,   255,    1)
+	SetUIValueRange(DNA_UI_TAIL3_G,   character.g_tail3,   255,    1)
+	SetUIValueRange(DNA_UI_TAIL3_B,   character.b_tail3,   255,    1)
+
 	SetUIValueRange(DNA_UI_WING_R,    character.r_wing,    255,    1)
 	SetUIValueRange(DNA_UI_WING_G,    character.g_wing,    255,    1)
 	SetUIValueRange(DNA_UI_WING_B,    character.b_wing,    255,    1)
 
-	SetUIValueRange(DNA_UI_WING2_R,    character.r_wing2,  255,    1)
-	SetUIValueRange(DNA_UI_WING2_G,    character.g_wing2,  255,    1)
-	SetUIValueRange(DNA_UI_WING2_B,    character.b_wing2,  255,    1)
+	SetUIValueRange(DNA_UI_WING2_R,   character.r_wing2,   255,    1)
+	SetUIValueRange(DNA_UI_WING2_G,   character.g_wing2,   255,    1)
+	SetUIValueRange(DNA_UI_WING2_B,   character.b_wing2,   255,    1)
+
+	SetUIValueRange(DNA_UI_WING3_R,   character.r_wing3,   255,    1)
+	SetUIValueRange(DNA_UI_WING3_G,   character.g_wing3,   255,    1)
+	SetUIValueRange(DNA_UI_WING3_B,   character.b_wing3,   255,    1)
 
 	SetUIValueRange(DNA_UI_EARS_R,    character.r_ears,    255,    1)
 	SetUIValueRange(DNA_UI_EARS_G,    character.g_ears,    255,    1)
@@ -253,7 +266,9 @@ var/global/list/datum/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_EARS2_G,   character.g_ears2,   255,    1)
 	SetUIValueRange(DNA_UI_EARS2_B,   character.b_ears2,   255,    1)
 
-	// VORE Station Edit End
+	SetUIValueRange(DNA_UI_EARS3_R,   character.r_ears3,   255,    1)
+	SetUIValueRange(DNA_UI_EARS3_G,   character.g_ears3,   255,    1)
+	SetUIValueRange(DNA_UI_EARS3_B,   character.b_ears3,   255,    1)
 
 	SetUIValueRange(DNA_UI_HAIR_R,    character.r_hair,    255,    1)
 	SetUIValueRange(DNA_UI_HAIR_G,    character.g_hair,    255,    1)

@@ -96,11 +96,8 @@
 		user.visible_message("[user] climbs on \the [src].","You climb on \the [src].")
 	else
 		visible_message("<span class='notice'>\The [C] has been laid on \the [src] by [user].</span>")
-	if(C.client)
-		C.client.perspective = EYE_PERSPECTIVE
-		C.client.eye = src
 	C.resting = 1
-	C.loc = src.loc
+	C.forceMove(loc)
 	// now that we hold parts, this must be commented out to prevent dumping our parts onto our loc. not sure what this was intended to do when it was written.
 	/*for(var/obj/O in src)
 		O.loc = src.loc

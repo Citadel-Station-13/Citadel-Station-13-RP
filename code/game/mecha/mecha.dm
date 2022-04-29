@@ -1565,15 +1565,15 @@
 			return 0
 		user.drop_from_inventory(mmi_as_oc)
 		var/mob/brainmob = mmi_as_oc.brainmob
-		brainmob.reset_view(src)
 	/*
 		brainmob.client.eye = src
 		brainmob.client.perspective = EYE_PERSPECTIVE
 	*/
 		occupant = brainmob
-		brainmob.loc = src //should allow relaymove
+		brainmob.forceMove(src)
+		brainmob.reset_perspective(src)
 		brainmob.canmove = 1
-		mmi_as_oc.loc = src
+		mmi_as_oc.forceMove(src)
 		mmi_as_oc.mecha = src
 		src.verbs += /obj/mecha/verb/eject
 		src.Entered(mmi_as_oc)
@@ -1837,18 +1837,13 @@
 
 /obj/mecha/proc/moved_inside(var/mob/living/carbon/human/H as mob)
 	if(H && H.client && (H in range(1)))
-		H.reset_view(src)
-		/*
-		H.client.perspective = EYE_PERSPECTIVE
-		H.client.eye = src
-		*/
 		H.stop_pulling()
 		H.forceMove(src)
-		src.occupant = H
-		src.add_fingerprint(H)
-		src.forceMove(src.loc)
-		src.verbs += /obj/mecha/verb/eject
-		src.log_append_to_last("[H] moved in as pilot.")
+		H.update_perspective()
+		occupant = H
+		add_fingerprint(H)
+		verbs += /obj/mecha/verb/eject
+		log_append_to_last("[H] moved in as pilot.")
 		update_icon()
 		//VOREStation Edit Add
 		if(occupant.hud_used)
@@ -1955,25 +1950,23 @@
 		return
 	if(mob_container.forceMove(src.loc))//ejecting mob container
 		log_message("[mob_container] moved out.")
-		occupant.reset_view()
 		occupant << browse(null, "window=exosuit")
 		if(occupant.client && cloaked_selfimage)
 			occupant.client.images -= cloaked_selfimage
 		if(istype(mob_container, /obj/item/mmi))
 			var/obj/item/mmi/mmi = mob_container
 			if(mmi.brainmob)
-				occupant.loc = mmi
+				occupant.forceMove(mmi)
 			mmi.mecha = null
 			occupant.canmove = 0
 		occupant.clear_alert("charge")
 		occupant.clear_alert("mech damage")
 		occupant.in_enclosed_vehicle = 0
+		occupant.reset_perspective()
 		occupant = null
-		update_icon()
+		update_appearance()
 		setDir(dir_in)
 		verbs -= /obj/mecha/verb/eject
-
-		//src.zoom = 0
 
 		// Doesn't seem needed.
 		if(src.occupant && src.occupant.client)
@@ -1981,7 +1974,6 @@
 			src.zoom = 0
 
 		strafing = 0
-	return
 
 /////////////////////////
 ////// Access stuff /////

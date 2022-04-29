@@ -46,35 +46,27 @@
 		if(animation)	qdel(animation)
 		if(src)			qdel(src)
 
-/mob/proc/ash(anim="dust-m")
-	death(1)
+/mob/proc/ash(anim = "dust-m")
+	death(TRUE)
 	var/atom/movable/overlay/animation = null
-	transforming = 1
-	canmove = 0
-	icon = null
-	invisibility = 101
-
 	animation = new(loc)
 	animation.icon_state = "blank"
 	animation.icon = 'icons/mob/mob.dmi'
 	animation.master = src
-
 	flick(anim, animation)
+	QDEL_IN(animation, 15)
+	qdel(src)
 
-	dead_mob_list -= src
-	spawn(15)
-		if(animation)	qdel(animation)
-		if(src)			qdel(src)
-
-/mob/proc/death(gibbed,deathmessage="seizes up and falls limp...")
+/mob/proc/death(gibbed, deathmessage = "seizes up and falls limp...")
 
 	if(stat == DEAD)
 		return 0
-	if(src.loc && istype(loc,/obj/belly) || istype(loc,/obj/item/dogborg/sleeper)) deathmessage = "no message" //VOREStation Add - Prevents death messages from inside mobs
+	if(istype(loc, /obj/belly) || istype(loc, /obj/item/dogborg/sleeper))
+		deathmessage = "no message" //VOREStation Add - Prevents death messages from inside mobs
 	facing_dir = null
 
 	if(!gibbed && deathmessage != "no message") // This is gross, but reliable. Only brains use it.
-		src.visible_message("<b>\The [src.name]</b> [deathmessage]")
+		visible_message("<b>[src]</b> [deathmessage]")
 
 	set_stat(DEAD)
 
@@ -85,7 +77,8 @@
 
 	set_base_layer(MOB_LAYER)
 
-	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
+	AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+
 	see_in_dark = 8
 	see_invisible = SEE_INVISIBLE_LEVEL_TWO
 
@@ -97,7 +90,8 @@
 		healths.icon_state = "health6"
 
 	timeofdeath = world.time
-	if(mind) mind.store_memory("Time of death: [stationtime2text()]", 0)
+	if(mind)
+		mind.store_memory("Time of death: [stationtime2text()]", 0)
 	living_mob_list -= src
 	dead_mob_list |= src
 
@@ -108,6 +102,5 @@
 
 	if(SSticker && SSticker.mode)
 		SSticker.mode.check_win()
-
 
 	return 1

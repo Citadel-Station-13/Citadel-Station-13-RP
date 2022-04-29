@@ -25,6 +25,9 @@
 			/obj/item/reagent_containers/chem_disp_cartridge/calcium
 		)
 
+/obj/machinery/chemical_dispenser/full/unanchored
+	anchored = FALSE
+
 /obj/machinery/chemical_dispenser/ert
 	name = "medicine dispenser"
 	spawn_cartridges = list(
@@ -89,6 +92,9 @@
 			/obj/item/reagent_containers/chem_disp_cartridge/sarsaparilla
 		)
 
+/obj/machinery/chemical_dispenser/bar_soft/unanchored
+	anchored = FALSE
+
 /obj/machinery/chemical_dispenser/bar_alc
 	name = "booze dispenser"
 	desc = "A beer machine. Like a soda machine, but more fun!"
@@ -121,6 +127,9 @@
 			/obj/item/reagent_containers/chem_disp_cartridge/alcsassafras
 		)
 
+/obj/machinery/chemical_dispenser/bar_alc/unanchored
+	anchored = FALSE
+
 /obj/machinery/chemical_dispenser/bar_coffee
 	name = "coffee dispenser"
 	desc = "Driving crack dealers out of employment since 2280."
@@ -146,3 +155,6 @@
 			// /obj/item/reagent_containers/chem_disp_cartridge/greentea,
 			// /obj/item/reagent_containers/chem_disp_cartridge/decaf
 		)
+
+/obj/machinery/chemical_dispenser/bar_coffee/unanchored
+	anchored = FALSE

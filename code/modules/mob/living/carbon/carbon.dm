@@ -264,7 +264,7 @@
 
 	else if (W == handcuffed)
 		handcuffed = null
-		update_inv_handcuffed()
+		update_handcuffed()
 		if(buckled && buckled.buckle_require_restraints)
 			buckled.unbuckle_mob()
 
@@ -369,3 +369,11 @@
 
 /mob/living/carbon/proc/adjust_hydration(amount)
 	set_hydration(hydration + amount)
+
+/mob/living/carbon/proc/update_handcuffed()
+	if(handcuffed)
+		drop_l_hand()
+		drop_r_hand()
+		stop_pulling()
+	update_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
+	update_inv_handcuffed()

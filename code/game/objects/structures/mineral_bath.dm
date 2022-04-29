@@ -69,16 +69,14 @@
 	eject_occupant()
 
 /obj/structure/adherent_bath/proc/eject_occupant()
-	if(occupant)
-		occupant.dropInto(loc)
-		playsound(loc, 'sound/effects/slosh.ogg', 50, 1)
-		if(occupant.loc != src)
-			if(occupant.client)
-				occupant.client.eye = occupant.client.mob
-				occupant.client.perspective = MOB_PERSPECTIVE
-			occupant.regenerate_icons()
-			occupant = null
-			STOP_PROCESSING(SSobj, src)
+	if(!occupant)
+		return
+	occupant.dropInto(loc)
+	occupant.update_perspective()
+	playsound(src, 'sound/effects/slosh.ogg', 50, 1)
+	occupant.regenerate_icons()
+	occupant = null
+	STOP_PROCESSING(SSobj, src)
 
 /obj/structure/adherent_bath/MouseDrop_T(var/atom/movable/O, var/mob/user)
 	enter_bath(O, user)

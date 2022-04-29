@@ -101,8 +101,7 @@
 	..()
 
 /mob/proc/unset_machine()
-	machine?.remove_visual(src)
-	src.machine = null
+	machine = null
 
 /mob/proc/set_machine(var/obj/O)
 	if(src.machine)
@@ -179,3 +178,6 @@
 	if(Adjacent(user))
 		add_fingerprint(user)
 	..()
+
+/obj/proc/container_resist(var/mob/living)
+	return

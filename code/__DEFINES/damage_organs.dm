@@ -1,14 +1,14 @@
-// Damage things. TODO: Merge these down to reduce on defines.
+// Damage things. //TODO: Merge these down to reduce on defines.
 // Way to waste perfectly good damage-type names (BRUTE) on this... If you were really worried about case sensitivity, you could have just used lowertext(damagetype) in the proc.
-#define BRUTE     "brute"
-#define BURN      "fire"
-#define TOX       "tox"
-#define OXY       "oxy"
-#define CLONE     "clone"
-#define HALLOSS   "halloss"
+#define BRUTE       "brute"
+#define BURN        "fire"
+#define TOX         "tox"
+#define OXY         "oxy"
+#define CLONE       "clone"
+#define HALLOSS     "halloss"
 #define ELECTROCUTE "electrocute"
-#define BIOACID   "bioacid"
-#define SEARING   "searing"
+#define BIOACID     "bioacid"
+#define SEARING     "searing"
 
 #define CUT       "cut"
 #define BRUISE    "bruise"
@@ -65,3 +65,10 @@
 #define INFECTION_LEVEL_TWO   500
 #define INFECTION_LEVEL_THREE 1000
 #define INFECTION_LEVEL_MAX   1500
+
+/// Cannot be detached or reattached.
+#define MODULAR_BODYPART_INVALID    0
+/// Can be detached or reattached freely.
+#define MODULAR_BODYPART_PROSTHETIC 1
+/// Can be detached or reattached to compatible parent organs.
+#define MODULAR_BODYPART_CYBERNETIC 2

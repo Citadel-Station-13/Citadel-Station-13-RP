@@ -10,39 +10,39 @@
 		ANTAG_HUD
 	)
 
-	//Hair colour and style
+//! ## Hair colour and style
 	var/r_hair = 0
 	var/g_hair = 0
 	var/b_hair = 0
 	var/h_style = "Bald"
 
-	//Hair gradients
+//! ## Hair gradients
 	var/r_grad = 0
 	var/g_grad = 0
 	var/b_grad = 0
 	var/grad_style = "None"
 
-	//Facial hair colour and style
+//! ## Facial hair colour and style
 	var/r_facial = 0
 	var/g_facial = 0
 	var/b_facial = 0
 	var/f_style = "Shaved"
 
-	//Eye colour
+//! ## Eye colour
 	var/r_eyes = 0
 	var/g_eyes = 0
 	var/b_eyes = 0
 	/// Skin tone
 	var/s_tone = 0
 
-	//Skin colour
+//! ## Skin colour
 	var/r_skin = 238 // TO DO: Set defaults for other races.
 	var/g_skin = 206
 	var/b_skin = 179
 	/// Skin flag
 	var/skin_state = SKIN_NORMAL
 
-	//ears, tails, wings and custom species.
+//! ## ears, tails, wings and custom species.
 	var/datum/sprite_accessory/ears/ear_style = null
 	var/r_ears = 30
 	var/g_ears = 30
@@ -50,6 +50,9 @@
 	var/r_ears2 = 30
 	var/g_ears2 = 30
 	var/b_ears2 = 30
+	var/r_ears3 = 30 //Trust me, we could always use more colour. No japes.
+	var/g_ears3 = 30
+	var/b_ears3 = 30
 
 	var/datum/sprite_accessory/tail/tail_style = null
 	var/r_tail = 30
@@ -58,6 +61,9 @@
 	var/r_tail2 = 30
 	var/g_tail2 = 30
 	var/b_tail2 = 30
+	var/r_tail3 = 30
+	var/g_tail3 = 30
+	var/b_tail3 = 30
 
 	var/datum/sprite_accessory/wing/wing_style = null
 	var/r_gradwing = 0
@@ -71,6 +77,9 @@
 	var/r_wing2 = 30
 	var/g_wing2 = 30
 	var/b_wing2 = 30
+	var/r_wing3 = 30
+	var/g_wing3 = 30
+	var/b_wing3 = 30
 
 	var/wagging = 0 //UGH.
 	var/flapping = 0
@@ -85,7 +94,7 @@
 
 	var/custom_species
 
-	//Synth colors
+//! ## Synth colors
 	///Lets normally uncolorable synth parts be colorable.
 	var/synth_color	= 0
 	//Used with synth_color to color synth parts that normaly can't be colored.
@@ -122,7 +131,7 @@
 	///Which PDA type the player has chosen.
 	var/pdachoice = 1
 
-	// General information
+//! ## General information
 	var/home_system = ""
 	var/citizenship = ""
 	var/personal_faction = ""
@@ -130,7 +139,7 @@
 	var/antag_faction = ""
 	var/antag_vis = ""
 
-	//Equipment slots
+//! ## Equipment slots
 	var/obj/item/wear_suit = null
 	var/obj/item/w_uniform = null
 	var/obj/item/shoes = null

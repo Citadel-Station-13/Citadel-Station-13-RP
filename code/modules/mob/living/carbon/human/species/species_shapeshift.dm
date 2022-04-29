@@ -359,7 +359,7 @@ var/list/wrapped_species_by_ref = list()
 			pretty_ear_styles[instance.name] = path
 
 	// Present choice to user
-	var/new_ear_style = input(src, "Pick some ears!", "Character Preference", ear_style ? ear_style.name : null) as null|anything in pretty_ear_styles
+	var/new_ear_style = tgui_input_list(src, "Pick some ears!", "Character Preference", pretty_ear_styles)
 	if(!new_ear_style)
 		return
 
@@ -386,6 +386,15 @@ var/list/wrapped_species_by_ref = list()
 			g_ears2 = new_color_rgb_list[2]
 			b_ears2 = new_color_rgb_list[3]
 
+		var/current_ter_color = rgb(r_ears3,g_ears3,b_ears3)
+
+		var/new_ter_color = input("Pick tertiary ear color (only applies to some ears):","Ear Color (sec)", current_ter_color) as null|color
+		if(new_ter_color)
+			new_color_rgb_list = hex2rgb(new_sec_color)
+			r_ears3 = new_color_rgb_list[1]
+			g_ears3 = new_color_rgb_list[2]
+			b_ears3 = new_color_rgb_list[3]
+
 	update_hair() //Includes Virgo ears
 
 /mob/living/carbon/human/proc/shapeshifter_select_tail()
@@ -404,7 +413,7 @@ var/list/wrapped_species_by_ref = list()
 			pretty_tail_styles[instance.name] = path
 
 	// Present choice to user
-	var/new_tail_style = input(src, "Pick a tail!", "Character Preference", tail_style ? tail_style.name : null) as null|anything in pretty_tail_styles
+	var/new_tail_style = tgui_input_list(src, "Pick a tail!", "Character Preference", pretty_tail_styles)
 	if(!new_tail_style)
 		return
 
@@ -431,6 +440,15 @@ var/list/wrapped_species_by_ref = list()
 			g_tail2 = new_color_rgb_list[2]
 			b_tail2 = new_color_rgb_list[3]
 
+		var/current_ter_color = rgb(r_tail3,g_tail3,b_tail3)
+
+		var/new_ter_color = input("Pick tertiary tail color (only applies to some tails):","Tail Color (sec)", current_ter_color) as null|color
+		if(new_ter_color)
+			new_color_rgb_list = hex2rgb(new_ter_color)
+			r_tail3 = new_color_rgb_list[1]
+			g_tail3 = new_color_rgb_list[2]
+			b_tail3 = new_color_rgb_list[3]
+
 	update_tail_showing()
 
 /mob/living/carbon/human/proc/shapeshifter_select_wings()
@@ -449,7 +467,7 @@ var/list/wrapped_species_by_ref = list()
 			pretty_wing_styles[instance.name] = path
 
 	// Present choice to user
-	var/new_wing_style = input(src, "Pick some wings!", "Character Preference", wing_style ? wing_style.name : null) as null|anything in pretty_wing_styles
+	var/new_wing_style = tgui_input_list(src, "Pick some wings!", "Character Preference", pretty_wing_styles)
 	if(!new_wing_style)
 		return
 
@@ -476,6 +494,15 @@ var/list/wrapped_species_by_ref = list()
 			g_wing2 = new_color_rgb_list[2]
 			b_wing2 = new_color_rgb_list[3]
 
+		var/current_ter_color = rgb(r_wing3,g_wing3,b_wing3)
+
+		var/new_ter_color = input("Pick tertiary wing color (only applies to some wings):","Wing Color (sec)", current_ter_color) as null|color
+		if(new_ter_color)
+			new_color_rgb_list = hex2rgb(new_ter_color)
+			r_wing3 = new_color_rgb_list[1]
+			g_wing3 = new_color_rgb_list[2]
+			b_wing3 = new_color_rgb_list[3]
+
 	update_wing_showing()
 
 /mob/living/carbon/human/proc/promethean_select_opaqueness()
@@ -491,7 +518,7 @@ var/list/wrapped_species_by_ref = list()
 	for(var/limb in src.organs)
 		var/obj/item/organ/external/L = limb
 		L.transparent = !L.transparent
-	visible_message("<span class='notice'>\The [src]'s interal composition seems to change.</span>")
+	visible_message(SPAN_NOTICE("\The [src]'s interal composition seems to change."))
 	update_icons_body()
 
 /datum/species/shapeshifter/handle_environment_special(var/mob/living/carbon/human/H)

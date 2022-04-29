@@ -281,8 +281,7 @@
 /mob/living/simple_mob/Destroy()
 	default_language = null
 	if(myid)
-		qdel(myid)
-		myid = null
+		QDEL_NULL(myid)
 
 	friends.Cut()
 	languages.Cut()
