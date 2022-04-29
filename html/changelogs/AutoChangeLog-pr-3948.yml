@@ -1,0 +1,7 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds the male parade jerkins."
+  - rscadd: "Adds male and female jerkins to Cap's wardrobe."
+  - rscadd: "Adds prescription sunglasses.
+tweak: Re-genders female jerkins."

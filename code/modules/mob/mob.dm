@@ -1320,7 +1320,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if(!magic && !holy)
 		return
 	var/list/protection_sources = list()
-	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, chargecost, self, protection_sources) & COMPONENT_BLOCK_MAGIC)
+	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, chargecost, self, protection_sources) & COMPONENT_MAGIC_BLOCKED)
 		if(protection_sources.len)
 			return pick(protection_sources)
 		else
