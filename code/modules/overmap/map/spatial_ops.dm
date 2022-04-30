@@ -3,14 +3,14 @@
  *
  * warning: this is expensive. use sparingly!
  */
-/datum/overmap/proc/range(atom/movable/overmap_object/O, dist)
+/datum/overmap/proc/range(atom/movable/overmap_object/O, dist, high_accuracy)
 
 	#warn impl
 
 /**
  * get all entites in range of x, y
  */
-/datum/overmap/proc/entity_query(x, y, dist)
+/datum/overmap/proc/entity_query(x, y, dist, high_accuracy)
 
 /**
  * get all entities
