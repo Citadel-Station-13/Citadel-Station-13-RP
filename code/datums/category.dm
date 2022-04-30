@@ -24,10 +24,10 @@
 	categories.Cut()
 	return ..()
 
-/datum/category_collection/auto_compare(datum/D)
+/datum/category_collection/compare_to(datum/D)
 	if(istype(D, /datum/category_collection))
 		var/datum/category_collection/I = D
-		return cmp_text_asc(name, D.name)
+		return cmp_text_asc(name, I.name)
 	return ..()
 
 /******************
@@ -83,8 +83,8 @@ datum/category_group/dd_SortValue()
 	category = null
 	return ..()
 
-/datum/category_item/auto_compare(datum/D)
+/datum/category_item/compare_to(datum/D)
 	if(istype(D, /datum/category_item))
 		var/datum/category_item/I = D
-		return cmp_text_asc(name, D.name)
+		return cmp_text_asc(name, I.name)
 	return ..()
