@@ -67,19 +67,22 @@
 	 if(com.locked)
 		user.loc = get_turf(com.locked)
 */
-/obj/effect/portal/attack_ghost(mob/user as mob)
+/obj/effect/portal/attack_ghost(mob/user)
+	. = ..()
 	if(target)
-		user.loc = get_turf(target)
+		user.forceMove(get_turf(target))
 
-/obj/machinery/gateway/centerstation/attack_ghost(mob/user as mob)
+/obj/machinery/gateway/centerstation/attack_ghost(mob/user)
+	. = ..()
 	if(awaygate)
-		user.loc = awaygate.loc
+		user.forceMove(awaygate.loc)
 	else
 		to_chat(user, "[src] has no destination.")
 
-/obj/machinery/gateway/centeraway/attack_ghost(mob/user as mob)
+/obj/machinery/gateway/centeraway/attack_ghost(mob/user)
+	. = ..()
 	if(stationgate)
-		user.loc = stationgate.loc
+		user.forceMove(statoingate.loc)
 	else
 		to_chat(user, "[src] has no destination.")
 
@@ -97,7 +100,8 @@
 */
 
 //VR FILE MERGE
-/obj/item/paicard/attack_ghost(mob/user as mob)
+/obj/item/paicard/attack_ghost(mob/user)
+	. = ..()
 	if(src.pai != null) //Have a person in them already?
 		user.examinate(src)
 		return

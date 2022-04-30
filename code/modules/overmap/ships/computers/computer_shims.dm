@@ -75,6 +75,7 @@
 
 // After a recent rework this should mostly be safe.
 /obj/machinery/computer/ship/attack_ghost(mob/user)
+	. = ..()
 	interface_interact(user)
 
 // If you don't call parent in this proc, you must make all appropriate checks yourself.

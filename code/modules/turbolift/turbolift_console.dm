@@ -137,6 +137,7 @@
 	. = ..()
 
 /obj/structure/lift/panel/attack_ghost(var/mob/user)
+	. = ..()
 	return interact(user)
 
 /obj/structure/lift/panel/interact(var/mob/user)
