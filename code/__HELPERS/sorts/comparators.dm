@@ -117,3 +117,25 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
 	return A.priority - B.priority
+
+/**
+ * the lazy man's low performance sort
+ *
+ * uses a datum's compare_to() proc.
+ *
+ * **Do not use this for any high performance context. It is slower than hardcoded comparators.
+ */
+/proc/cmp_auto_compare(datum/A, datum/B)
+	return A.compare_to(B)
+
+/**
+ * standard datum comparison
+ * no types are checked!
+ *
+ * **Do not use this for any high performance context. It is slower than hardcoded comparators.
+ *
+ * with the context of list index 1 = front,
+ * return -1 for "I am infront of B" (list index closer to 1), 1 for "I am behind B" (list index further from 1), 0 for "I am equivalent to B"
+ */
+/datum/proc/compare_to(datum/D)
+	return cmp_text_asc("[src]", "[D]")

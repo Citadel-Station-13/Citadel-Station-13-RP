@@ -16,12 +16,18 @@
 			category = new category(src)
 			categories += category
 			categories_by_name[category.name] = category
-	categories = sortTim(categories, /proc/cmp_name_asc)
+	categories = sortTim(categories, /proc/cmp_auto_compare)
 
 /datum/category_collection/Destroy()
 	for(var/category in categories)
 		qdel(category)
 	categories.Cut()
+	return ..()
+
+/datum/category_collection/auto_compare(datum/D)
+	if(istype(D, /datum/category_collection))
+		var/datum/category_collection/I = D
+		return cmp_text_asc(name, D.name)
 	return ..()
 
 /******************
@@ -49,7 +55,7 @@
 
 	// For whatever reason dd_insertObjectList(items, item) doesn't insert in the correct order
 	// If you change this, confirm that character setup doesn't become completely unordered.
-	sortTim(items, /proc/cmp_name_asc)
+	sortTim(items, /proc/cmp_auto_compare)
 
 /datum/category_group/Destroy()
 	for(var/item in items)
@@ -77,5 +83,8 @@ datum/category_group/dd_SortValue()
 	category = null
 	return ..()
 
-datum/category_item/dd_SortValue()
-	return name
+/datum/category_item/auto_compare(datum/D)
+	if(istype(D, /datum/category_item))
+		var/datum/category_item/I = D
+		return cmp_text_asc(name, D.name)
+	return ..()
