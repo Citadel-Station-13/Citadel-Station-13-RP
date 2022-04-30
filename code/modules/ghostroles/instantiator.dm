@@ -89,10 +89,15 @@
 	/// allowed species types
 	var/list/possible_species = list(
 		/datum/species/human,
-		/datum/species/lizard,
-		/datum/species/plasmaman,
-		/datum/species/jelly,
-		/datum/species/ipc
+		/datum/species/unathi,
+		/datum/species/tajaran,
+		/datum/species/skrell,
+		/datum/species/akula,
+		/datum/species/diona
+		// /datum/species/lizard,
+		// /datum/species/plasmaman,
+		// /datum/species/jelly,
+		// /datum/species/ipc
 	)
 
 /datum/ghostrole_instantiator/human/random/species/proc/GetSpeciesPath(mob/living/carbon/human/H, list/params)

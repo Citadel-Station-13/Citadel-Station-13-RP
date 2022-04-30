@@ -8,8 +8,8 @@
 	// resistance_flags = INDESTRUCTIBLE
 	unacidable = TRUE
 	density = TRUE
-	icon = 'icons/obj/machines/sleeper.dmi'
-	icon_state = "sleeper"
+	icon = 'icons/obj/spawners.dmi'
+	icon_state = "cryostasis_sleeper"
 
 	/// automatic handling - role type
 	var/role_type

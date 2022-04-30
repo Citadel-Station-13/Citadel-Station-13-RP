@@ -42,29 +42,29 @@
 	to_chat(created, flavour_text)
 
 /datum/ghostrole_instantiator/human/random/hermit
-	mob_traits = list(
-		TRAIT_EXEMPT_HEALTH_EVENTS
-	)
+	// mob_traits = list(
+	// 	TRAIT_EXEMPT_HEALTH_EVENTS
+	// )
 
 /datum/ghostrole_instantiator/human/random/hermit/GetOutfit(client/C, mob/M, list/params)
 	var/datum/outfit/outfit = ..()
 	switch(params["fluff"])
 		if("proper")
-			outfit.uniform = /obj/item/clothing/under/misc/assistantformal
-			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
+			outfit.uniform = /obj/item/clothing/under/assistantformal
+			outfit.shoes = /obj/item/clothing/shoes/black
 			outfit.back = /obj/item/storage/backpack
 		if("tiger")
 			outfit.uniform = /obj/item/clothing/under/color/prison
-			outfit.shoes = /obj/item/clothing/shoes/sneakers/orange
+			outfit.shoes = /obj/item/clothing/shoes/orange
 			outfit.back = /obj/item/storage/backpack
 		if("exile")
 			outfit.uniform = /obj/item/clothing/under/rank/medical
 			outfit.suit = /obj/item/clothing/suit/toggle/labcoat/paramedic
 			outfit.back = /obj/item/storage/backpack/medic
-			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
+			outfit.shoes = /obj/item/clothing/shoes/black
 		if("tourist")
 			outfit.uniform = /obj/item/clothing/under/color/grey
-			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
+			outfit.shoes = /obj/item/clothing/shoes/black
 			outfit.back = /obj/item/storage/backpack
 	return outfit
 
@@ -77,5 +77,5 @@
 	role_type = /datum/ghostrole/hermit
 
 /obj/structure/ghost_role_spawner/hermit/Destroy()
-	new/obj/structure/fluff/empty_cryostasis_sleeper(get_turf(src))
+	// new /obj/structure/fluff/empty_cryostasis_sleeper(get_turf(src))
 	return ..()
