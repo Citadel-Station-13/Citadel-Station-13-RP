@@ -3,7 +3,7 @@
 	assigned_role = "Hermit"
 	desc = "A stranded cryo-occupant in deep space."
 	spawntext = "You've been late to awaken from your cryo slumber. Blasted machine, you set it to 10 days not 10 weeks!</span><b> Where have the others gone while we were out? Did they manage to survive?"
-	instantiator = /datum/ghostrole_instantiator/human/random
+	instantiator = /datum/ghostrole_instantiator/human/random/hermit
 
 /datum/ghostrole/hermit/Instantiate(client/C, atom/loc, list/params)
 	var/rp = rand(1, 4)
