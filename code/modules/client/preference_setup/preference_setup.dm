@@ -110,8 +110,11 @@ category_item_type = /datum/category_item/player_setup_item/skills
 /datum/category_group/player_setup_category
 	var/sort_order = 0
 
-/datum/category_group/player_setup_category/dd_SortValue()
-	return sort_order
+/datum/category_group/player_setup_category/compare_to(datum/D)
+	if(istype(D, /datum/category_group/player_setup_category))
+		var/datum/category_group/player_setup_category/G = D
+		return cmp_numeric_asc(sort_order, G.sort_order)
+	return ..()
 
 /datum/category_group/player_setup_category/proc/sanitize_setup()
 	for(var/datum/category_item/player_setup_item/PI in items)
@@ -173,8 +176,11 @@ category_item_type = /datum/category_item/player_setup_item/skills
 	pref = null
 	return ..()
 
-/datum/category_item/player_setup_item/dd_SortValue()
-	return sort_order
+/datum/category_item/player_setup_item/compare_to(datum/D)
+	if(istype(D, /datum/category_item/player_setup_item))
+		var/datum/category_item/player_setup_item/I = D
+		return cmp_numeric_asc(sort_order, I.sort_order)
+	return ..()
 
 /*
 * Called when the item is asked to load per character settings
