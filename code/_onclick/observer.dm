@@ -45,7 +45,7 @@
 // Oh by the way this didn't work with old click code which is why clicking shit didn't spam you
 /atom/proc/attack_ghost(mob/observer/dead/user)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(COMSIG_ATOM_ATTACK_GHOST, user)
+	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_GHOST, user)
 	// TODO: main ai interact bay code fucking disgusts me wtf
 	if(IsAdminGhost(user))		// admin AI interact
 		AdminAIInteract(user)
@@ -82,7 +82,7 @@
 /obj/machinery/gateway/centeraway/attack_ghost(mob/user)
 	. = ..()
 	if(stationgate)
-		user.forceMove(statoingate.loc)
+		user.forceMove(stationgate.loc)
 	else
 		to_chat(user, "[src] has no destination.")
 
