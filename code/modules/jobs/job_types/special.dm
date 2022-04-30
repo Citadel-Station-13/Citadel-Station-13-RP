@@ -14,7 +14,7 @@
 	economic_modifier = 20
 	whitelist_only = 1
 	latejoin_only = 1
-	outfit_type = /decl/hierarchy/outfit/job/centcom_officer
+	outfit_type = /datum/outfit/job/centcom_officer
 	job_description = "A Central Command Officer is there on official business. Most of time. Whatever it is, they're a VIP."
 
 	minimum_character_age = 25
@@ -40,7 +40,7 @@
 	economic_modifier = 20
 	whitelist_only = 1
 	latejoin_only = 1
-	outfit_type = /decl/hierarchy/outfit/job/emergency_responder
+	outfit_type = /datum/outfit/job/emergency_responder
 	job_description = "Emergency Responders are usually called in to deal with on-station emergencies that the crew require assistance to deal with."
 
 	minimum_character_age = 18
@@ -67,7 +67,7 @@
 	job_description = "A Clown is there to entertain the crew and keep high morale using various harmless pranks and ridiculous jokes!"
 	whitelist_only = 1
 	latejoin_only = 0
-	outfit_type = /decl/hierarchy/outfit/job/clown
+	outfit_type = /datum/outfit/job/clown
 	pto_type = PTO_CIVILIAN
 	alt_titles = list("Jester" = /datum/alt_title/jester, "Fool" = /datum/alt_title/fool)
 
@@ -100,7 +100,7 @@
 	alt_titles = list("Poseur" = /datum/alt_title/poseur)
 	whitelist_only = 1
 	latejoin_only = 0
-	outfit_type = /decl/hierarchy/outfit/job/mime
+	outfit_type = /datum/outfit/job/mime
 	pto_type = PTO_CIVILIAN
 
 /datum/alt_title/poseur

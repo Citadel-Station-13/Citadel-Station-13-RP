@@ -30,7 +30,7 @@
 
 /*
 /world/proc/enable_debugger()
-    var/dll = world.GetConfig("env", "EXTOOLS_DLL")
-    if (dll)
-        call(dll, "debug_initialize")()
+	var/dll = world.GetConfig("env", "EXTOOLS_DLL")
+	if (dll)
+		call(dll, "debug_initialize")()
 */

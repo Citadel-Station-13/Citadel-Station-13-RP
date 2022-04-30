@@ -35,27 +35,45 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	/// For savefiles
 	var/id = NIF_ID_BASIC
 
-	var/durability = 100					// Durability remaining
-	var/bioadap = FALSE						// If it'll work in fancy species
+	/// Durability remaining
+	var/durability = 100
+	/// If it'll work in fancy species
+	var/bioadap = FALSE
 
-	var/tmp/power_usage = 0						// Nifsoft adds to this
-	var/tmp/mob/living/carbon/human/human		// Our owner!
-	var/tmp/list/nifsofts[TOTAL_NIF_SOFTWARE]	// All our nifsofts
-	var/tmp/list/nifsofts_life = list()			// Ones that want to be talked to on life()
-	var/owner									// Owner character name
-	var/examine_msg								//Message shown on examine.
-
-	var/tmp/vision_flags = 0		// Flags implants set for faster lookups
+	/// Nifsoft adds to this
+	var/tmp/power_usage = 0
+	/// Our owner!
+	var/tmp/mob/living/carbon/human/human
+	/// All our nifsofts
+	var/tmp/list/nifsofts[TOTAL_NIF_SOFTWARE]
+	/// Ones that want to be talked to on life()
+	var/tmp/list/nifsofts_life = list()
+	/// Owner character name
+	var/owner
+	/// Message shown on examine.
+	var/examine_msg
+	/// Flags implants set for faster lookups
+	var/tmp/vision_flags = 0
 	var/tmp/health_flags = 0
 	var/tmp/combat_flags = 0
 	var/tmp/other_flags = 0
+	/// Status of the NIF
+	var/tmp/stat = NIF_PREINSTALL
+	/// Time when install will finish
+	var/tmp/install_done
+	/// If it's open for maintenance (1-3)
+	var/tmp/open = FALSE
+	/// Organ we're supposed to be held in
+	var/tmp/should_be_in = BP_HEAD
 
-	var/tmp/stat = NIF_PREINSTALL		// Status of the NIF
-	var/tmp/install_done				// Time when install will finish
-	var/tmp/open = FALSE				// If it's open for maintenance (1-3)
-	var/tmp/should_be_in = BP_HEAD		// Organ we're supposed to be held in
+	/// The commlink requires this
+	var/obj/item/communicator/commlink/comm
 
-	var/obj/item/communicator/commlink/comm		// The commlink requires this
+	var/list/starting_software = list(
+		/datum/nifsoft/commlink,
+		/datum/nifsoft/soulcatcher,
+		/datum/nifsoft/hud/ar_civ
+	)
 
 	var/global/icon/big_icon
 	var/global/click_sound = 'sound/items/nif_click.ogg'
@@ -96,11 +114,6 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			spawn(0)
 				qdel(src)
 			return FALSE
-		else
-			addtimer(CALLBACK(src, .proc/install_free_return_software), 0)
-
-	//Free civilian AR included
-	new /datum/nifsoft/hud/ar_civ(src)
 
 	//If given wear (like when spawned) then done
 	if(wear)
@@ -109,15 +122,6 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 	//Draw me yo.
 	update_icon()
-
-// Creates software after the mob is hopefully loaded in
-/obj/item/nif/proc/install_free_return_software()
-	var/old = durability
-	//Free commlink and soulcatcher for return customers
-	new /datum/nifsoft/commlink(src)
-	new /datum/nifsoft/soulcatcher(src)
-	durability = old
-	wear(0)
 
 //Destructor cleans up references
 /obj/item/nif/Destroy()
@@ -142,10 +146,10 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		stat = NIF_INSTALLING
 		H.verbs |= /mob/living/carbon/human/proc/set_nif_examine
 		menu = H.AddComponent(/datum/component/nif_menu)
-//		if(starting_software)
-//			for(var/path in starting_software)
-//				new path(src)
-//			starting_software = null
+		if(starting_software)
+			for(var/path in starting_software)
+				new path(src)
+			starting_software = null
 		return TRUE
 
 	return FALSE
@@ -620,6 +624,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	name = "bootleg NIF"
 	desc = "A copy of a copy of a copy of a copy of... this can't be any good, right? Surely?"
 	durability = 10
+	starting_software = null
 	id = NIF_ID_BOOTLEG
 
 /obj/item/nif/authentic

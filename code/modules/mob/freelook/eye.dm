@@ -60,15 +60,6 @@
 		T = get_turf(T)
 		if(T != loc)
 			loc = T
-
-			if(owner.client)
-				owner.client.eye = src
-
-			if(owner_follows_eye)
-				visualnet.updateVisibility(owner, 0)
-				owner.loc = loc
-				visualnet.updateVisibility(owner, 0)
-
 			visualnet.visibility(src)
 			return 1
 	return 0
@@ -78,6 +69,12 @@
 		if(!isturf(owner.loc) || !owner.client)
 			return
 		return loc
+
+/mob/observer/eye/make_perspective()
+	var/datum/perspective/P = ..()
+	// we see everything by default
+	P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+
 /mob
 	var/mob/observer/eye/eyeobj
 

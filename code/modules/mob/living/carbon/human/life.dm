@@ -86,6 +86,9 @@
 		if(!client)
 			species.handle_npc(src)
 
+	else if(stat == DEAD && !stasis)
+		handle_defib_timer()
+
 	if(skip_some_updates())
 		return											//We go ahead and process them 5 times for HUD images and other stuff though.
 
@@ -627,7 +630,7 @@
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		var/mob/living/carbon/human/H = src
-		if(H.species.name == "Protean")
+		if(H.species.name == SPECIES_PROTEAN)
 			return // dont modify protean heat levels
 
 		else
@@ -819,10 +822,13 @@
 	if (species.body_temperature == null)
 		return //this species doesn't have metabolic thermoregulation
 
-	// FBPs will overheat, prosthetic limbs are fine.
-	if(robobody_count)
-		if(!nif || !nif.flag_check(NIF_O_HEATSINKS,NIF_FLAGS_OTHER)) //VOREStation Edit - NIF heatsinks
-			bodytemperature += round(robobody_count*1.75)
+	// FBPs will overheat when alive, prosthetic limbs are fine.
+	if(stat != DEAD && robobody_count)
+		if(!nif || !nif.flag_check(NIF_O_HEATSINKS,NIF_FLAGS_OTHER)) // NIF heatsinks prevent the base heat increase per tick if installed.
+			bodytemperature += round(robobody_count*1.15)
+		var/obj/item/organ/internal/robotic/heatsink/HS = internal_organs_by_name[O_HEATSINK]
+		if(!HS || HS.is_broken()) // However, NIF Heatsinks will not compensate for a core FBP component (your heatsink) being lost.
+			bodytemperature += round(robobody_count*0.5)
 
 	var/body_temperature_difference = species.body_temperature - bodytemperature
 
@@ -916,14 +922,14 @@
 	if(reagents)
 		chem_effects.Cut()
 
-		if(!isSynthetic())
+		if(touching)
+			touching.metabolize()
+		if(ingested)
+			ingested.metabolize()
+		if(bloodstr)
+			bloodstr.metabolize()
 
-			if(touching)
-				touching.metabolize()
-			if(ingested)
-				ingested.metabolize()
-			if(bloodstr)
-				bloodstr.metabolize()
+		if(!isSynthetic())
 
 			var/total_phoronloss = 0
 			GET_VSC_PROP(atmos_vsc, /atmos/phoron/contamination_loss, loss_per_part)
@@ -942,7 +948,7 @@
 					adjustToxLoss(total_phoronloss)
 
 	if(status_flags & GODMODE)
-		return 0	//godmode
+		return FALSE	//godmode
 
 	if(species.light_dam)
 		var/light_amount = 0
@@ -1155,7 +1161,7 @@
 
 /mob/living/carbon/human/set_stat(var/new_stat)
 	. = ..()
-	if(stat)
+	if(. && stat)
 		update_skin(1)
 
 /mob/living/carbon/human/handle_regular_hud_updates()
@@ -1173,8 +1179,10 @@
 		client.screen |= cam.client_huds
 
 	if(stat == DEAD) //Dead
-		if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-		if(healths)		healths.icon_state = "health7"	//DEAD healthmeter
+		if(!druggy)
+			SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+		if(healths)
+			healths.icon_state = "health7"	//DEAD healthmeter
 
 	else if(stat == UNCONSCIOUS && health <= 0) //Crit
 		//Critical damage passage overlay
@@ -1402,11 +1410,6 @@
 			if(found_welder)
 				client.screen |= GLOB.global_hud.darkMask
 
-/mob/living/carbon/human/reset_view(atom/A)
-	..()
-	if(machine_visual && machine_visual != A)
-		machine_visual.remove_visual(src)
-
 /mob/living/carbon/human/handle_vision()
 	if(stat == DEAD)
 		if(client)
@@ -1417,12 +1420,13 @@
 						break
 
 	else //We aren't dead
-		see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+		SetSeeInvisibleSelf(self_perspective.see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		if(XRAY in mutations)
-			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+			SetSeeInDarkSelf(8)
+			if(!druggy)
+				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 
 		if(seer==1)
 			var/obj/effect/rune/R = locate() in loc
@@ -1433,72 +1437,92 @@
 				seer = 0
 
 		if(!seedarkness)
-			sight = species.get_vision_flags(src)
-			see_in_dark = 8
-			see_invisible = SEE_INVISIBLE_NOLIGHTING
-
+			SetSightSelf(species.get_vision_flags(src))
+			SetSeeInDarkSelf(8)
+			SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
 		else
-			sight = species.get_vision_flags(src)
-			see_in_dark = species.darksight
-			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+			SetSightSelf(species.get_vision_flags(src))
+			SetSeeInDarkSelf(species.darksight)
+			SetSeeInvisibleSelf(self_perspective.see_in_dark > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		var/glasses_processed = 0
 		var/obj/item/rig/rig = back
 		if(istype(rig) && rig.visor)
 			if(!rig.helmet || (head && rig.helmet == head))
 				if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
-					glasses_processed = 1
-					process_glasses(rig.visor.vision.glasses)
+					glasses_processed = process_glasses(rig.visor.vision.glasses)
 
 		if(glasses && !glasses_processed)
-			glasses_processed = 1
-			process_glasses(glasses)
+			glasses_processed = process_glasses(glasses)
+
 		if(XRAY in mutations)
-			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			AddSightSelf(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+			SetSeeInDarkSelf(8)
+			if(!druggy)
+				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+
+		if(!glasses_processed && nif)
+			var/datum/nifsoft/vision_soft
+			for(var/datum/nifsoft/NS in nif.nifsofts)
+				if(NS.vision_exclusive && NS.active)
+					vision_soft = NS
+					break
+			if(vision_soft)
+				glasses_processed = process_nifsoft_vision(vision_soft) //Not really glasses but equitable
 
 		if(!glasses_processed && (species.get_vision_flags(src) > 0))
-			sight |= species.get_vision_flags(src)
+			AddSightSelf(species.get_vision_flags(src))
 		if(!seer && !glasses_processed && seedarkness)
-			see_invisible = see_invisible_default
+			SetSeeInvisibleSelf(see_invisible_default)
 
 		if(machine)
 			var/viewflags = machine.check_eye(src)
 			if(viewflags < 0)
-				reset_view(null, 0)
+				reset_perspective()
 			else if(viewflags && !looking_elsewhere)
+				AddSightSelf(viewflags)
 				sight |= viewflags
-			else
-				machine.apply_visual(src)
 		else if(eyeobj)
 			if(eyeobj.owner != src)
-
-				reset_view(null)
+				reset_perspective()
 		else
 			var/isRemoteObserve = 0
 			if((mRemote in mutations) && remoteview_target)
 				if(remoteview_target.stat==CONSCIOUS)
 					isRemoteObserve = 1
-			if(!isRemoteObserve && client && !client.adminobs)
+			if(!isRemoteObserve && remoteview_target)
 				remoteview_target = null
-				reset_view(null, 0)
+				reset_perspective()
 	return 1
 
 /mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
+	. = FALSE
 	if(G && G.active)
-		see_in_dark += G.darkness_view
+		if(G.darkness_view)
+			SetSeeInDarkSelf((using_perspective?.see_in_dark || 2) + G.darkness_view)
+			. = TRUE
 		if(G.overlay && client)
 			client.screen |= G.overlay
 		if(G.vision_flags)
-			sight |= G.vision_flags
+			AddSightSelf(G.vision_flags)
+			. = TRUE
 		if(istype(G,/obj/item/clothing/glasses/night) && !seer)
-			see_invisible = SEE_INVISIBLE_MINIMUM
-
+			SetSeeInvisibleSelf(SEE_INVISIBLE_MINIMUM)
 		if(G.see_invisible >= 0)
-			see_invisible = G.see_invisible
+			SetSeeInvisibleSelf(G.see_invisible)
+			. = TRUE
 		else if(!druggy && !seer)
-			see_invisible = see_invisible_default
+			SetSeeInvisibleSelf(see_invisible_default)
+
+/mob/living/carbon/human/proc/process_nifsoft_vision(var/datum/nifsoft/NS)
+	. = FALSE
+	if(NS && NS.active)
+		if(NS.darkness_view)
+			SetSeeInDarkSelf((using_perspective?.see_in_dark || 2) + NS.darkness_view)
+			. = TRUE
+		if(NS.vision_flags_mob)
+			AddSightSelf(NS.vision_flags_mob)
+			. = TRUE
 
 /mob/living/carbon/human/handle_random_events()
 	if(inStasisNow())
@@ -1509,9 +1533,9 @@
 		if (getToxLoss() >= 30 && isSynthetic())
 			if(!confused)
 				if(prob(5))
-					to_chat(src, "<span class='danger'>You lose directional control!</span>")
+					to_chat(src, SPAN_USERDANGER("You lose directional control!"))
 					Confuse(10)
-		if (getToxLoss() >= 45)
+		if (getToxLoss() >= 45 && !isSynthetic())
 			spawn vomit()
 
 
@@ -1687,7 +1711,7 @@
 	if(Pump)
 		temp += Pump.standard_pulse_level - PULSE_NORM
 
-	if(round(vessel.get_reagent_amount("blood")) <= BLOOD_VOLUME_BAD)	//how much blood do we have
+	if(round(vessel.get_reagent_amount("blood")) <= species.blood_volume*species.blood_level_danger)	//how much blood do we have
 		temp = temp + 3	//not enough :(
 
 	if(status_flags & FAKEDEATH)
@@ -1788,6 +1812,16 @@
 
 	//Process regular life stuff
 	nif.life()
+
+/mob/living/carbon/human/proc/handle_defib_timer()
+	if(!should_have_organ(O_BRAIN))
+		return // No brain.
+
+	var/obj/item/organ/internal/brain/brain = internal_organs_by_name[O_BRAIN]
+	if(!brain)
+		return // Still no brain.
+
+	brain.tick_defib_timer()
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS

@@ -264,6 +264,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	. = ..()	//calls mob.Login()
 
+	if(!using_perspective)
+		stack_trace("mob login didn't put in perspective")
+
 	if(log_client_to_db() == "BUNKER_DROPPED")
 		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
 		return FALSE
@@ -400,6 +403,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		holder.owner = null
 		admins -= src
 		GLOB.admins -= src //delete them on the managed one too
+	if(using_perspective)
+		set_perspective(null)
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -684,6 +689,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if (isnull(new_size))
 		CRASH("change_view called without argument.")
 
+	if(view == new_size)
+		// unnecessary
+		return
+
 	/*
 	if(prefs && !prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
 		new_size = CONFIG_GET(string/default_view_square)
@@ -700,6 +709,30 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if (prefs.auto_fit_viewport)
 		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
 	*/
+
+/**
+ * switch perspective - null will cause us to shunt our eye to nullspace!
+ */
+/client/proc/set_perspective(datum/perspective/P)
+	if(using_perspective)
+		using_perspective.RemoveClient(src, TRUE)
+		if(using_perspective)
+			stack_trace("using perspective didn't clear")
+			using_perspective = null
+	if(!P)
+		eye = null
+		virtual_eye = null
+		lazy_eye = 0
+		perspective = EYE_PERSPECTIVE
+		return
+	P.AddClient(src)
+	using_perspective = P
+
+/**
+ * reset perspective to default - usually to our mob's
+ */
+/client/proc/reset_perspective()
+	set_perspective(mob.get_perspective())
 
 /mob/proc/MayRespawn()
 	return 0

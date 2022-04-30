@@ -205,3 +205,28 @@
 		/obj/item/gun/energy/retro = 4,
 		/obj/item/cell/device/weapon = 8
 	)
+
+//Plate Harness Kits
+/obj/item/storage/lockbox/limb_plate
+	name = "Lightweight Plating Kit"
+	desc = "A lockbox filled with a plate harness and modular limb armor."
+	req_access = list(access_security)
+	storage_slots = 5
+	starts_with = list(
+		/obj/item/clothing/suit/armor/plate_harness,
+		/obj/item/clothing/accessory/armor/limb_plate/arm_r,
+		/obj/item/clothing/accessory/armor/limb_plate/arm_l,
+		/obj/item/clothing/accessory/armor/limb_plate/leg_r,
+		/obj/item/clothing/accessory/armor/limb_plate/leg_l
+	)
+
+/obj/item/storage/lockbox/limb_plate/emt
+	name = "Lightweight Plating Kit (Paramedic)"
+	req_access = list(access_medical_equip)
+	starts_with = list(
+		/obj/item/clothing/suit/armor/plate_harness,
+		/obj/item/clothing/accessory/armor/limb_plate/arm_r/emt,
+		/obj/item/clothing/accessory/armor/limb_plate/arm_l/emt,
+		/obj/item/clothing/accessory/armor/limb_plate/leg_r/emt,
+		/obj/item/clothing/accessory/armor/limb_plate/leg_l/emt
+	)

@@ -45,6 +45,8 @@
 /mob/living/update_hud_med_health()
 	. = ..()
 	var/image/I = hud_list[LIFE_HUD]
+	if(!I)
+		return
 	if(stat == DEAD)
 		I.icon_state = "-100"
 	else
@@ -52,6 +54,8 @@
 
 /mob/proc/update_hud_med_status()
 	var/image/holder = hud_list[STATUS_HUD]
+	if(!holder)
+		return
 	var/foundVirus = check_viruses()
 	if(isSynthetic())
 		holder.icon_state = "robo"
@@ -65,22 +69,28 @@
 	else
 		holder.icon_state = "healthy"
 
+/mob/proc/update_hud_med_all()
+	update_hud_med_health()
+	update_hud_med_status()
+
 /mob/proc/update_hud_sec_implants()
 	var/image/Itrack = hud_list[IMPTRACK_HUD]
 	var/image/Ichem = hud_list[IMPCHEM_HUD]
 	var/image/Iloyal = hud_list[IMPLOYAL_HUD]
-	Itrack.icon_state = Ichem.icon_state = Iloyal.icon_state = ""
+	Itrack?.icon_state = ""
+	Ichem?.icon_state = ""
+	Iloyal?.icon_state = ""
 	for(var/obj/item/implant/I in src)
 		if(!I.implanted)
 			continue
 		if(I.malfunction)
 			continue
 		if(istype(I, /obj/item/implant/tracking))
-			Itrack.icon_state = "tracking"
+			Itrack?.icon_state = "tracking"
 		if(istype(I, /obj/item/implant/loyalty))
-			Iloyal.icon_state = "loyal"
+			Iloyal?.icon_state = "loyal"
 		if(istype(I, /obj/item/implant/chem))
-			Ichem.icon_state = "chem"
+			Ichem?.icon_state = "chem"
 
 /mob/proc/update_hud_sec_job()
 	return
@@ -88,6 +98,8 @@
 /mob/living/carbon/human/update_hud_sec_job()
 	. = ..()
 	var/image/holder = hud_list[ID_HUD]
+	if(!holder)
+		return
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
@@ -99,10 +111,12 @@
 
 /mob/proc/update_hud_sec_status()
 	var/image/holder = hud_list[WANTED_HUD]
-	holder.icon_state = ""
+	holder?.icon_state = ""
 
 /mob/living/carbon/human/update_hud_sec_status()
 	var/image/holder = hud_list[WANTED_HUD]
+	if(!holder)
+		return
 	holder.icon_state = ""
 	var/perpname = name
 	if(wear_id)
@@ -128,6 +142,8 @@
 
 /mob/proc/update_hud_antag()
 	var/image/holder = hud_list[ANTAG_HUD]
+	if(!holder)
+		return
 	holder.icon_state = ""
 	if(mind?.special_role)
 		// ANTAG DATUM REFACTOR WHEN AUHGAOUSHGODHGHOAD

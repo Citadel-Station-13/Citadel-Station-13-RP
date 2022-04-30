@@ -110,8 +110,11 @@ category_item_type = /datum/category_item/player_setup_item/skills
 /datum/category_group/player_setup_category
 	var/sort_order = 0
 
-/datum/category_group/player_setup_category/dd_SortValue()
-	return sort_order
+/datum/category_group/player_setup_category/compare_to(datum/D)
+	if(istype(D, /datum/category_group/player_setup_category))
+		var/datum/category_group/player_setup_category/G = D
+		return cmp_numeric_asc(sort_order, G.sort_order)
+	return ..()
 
 /datum/category_group/player_setup_category/proc/sanitize_setup()
 	for(var/datum/category_item/player_setup_item/PI in items)
@@ -173,8 +176,11 @@ category_item_type = /datum/category_item/player_setup_item/skills
 	pref = null
 	return ..()
 
-/datum/category_item/player_setup_item/dd_SortValue()
-	return sort_order
+/datum/category_item/player_setup_item/compare_to(datum/D)
+	if(istype(D, /datum/category_item/player_setup_item))
+		var/datum/category_item/player_setup_item/I = D
+		return cmp_numeric_asc(sort_order, I.sort_order)
+	return ..()
 
 /*
 * Called when the item is asked to load per character settings
@@ -266,7 +272,7 @@ category_item_type = /datum/category_item/player_setup_item/skills
 	return 0 //Something went wrong!
 
 /datum/category_item/player_setup_item/proc/get_min_age() //Minimum limit is 18
-	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
+	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : SPECIES_HUMAN]
 	if(S.min_age > 18)
 		return S.min_age
 	else if(!is_FBP())
@@ -274,7 +280,7 @@ category_item_type = /datum/category_item/player_setup_item/skills
 	return S.min_age
 
 /datum/category_item/player_setup_item/proc/get_max_age()
-	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
+	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : SPECIES_HUMAN]
 	if(!is_FBP())
 		return S.max_age // If they're not a robot, we can just use the species var.
 	var/FBP_type = get_FBP_type()

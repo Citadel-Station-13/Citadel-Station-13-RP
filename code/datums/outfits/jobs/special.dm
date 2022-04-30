@@ -1,4 +1,4 @@
-/decl/hierarchy/outfit/job/centcom_officer
+/datum/outfit/job/centcom_officer
 	name = OUTFIT_JOB_NAME("CentCom Officer")
 	glasses = /obj/item/clothing/glasses/omnihud/all
 	uniform = /obj/item/clothing/under/rank/centcom
@@ -11,7 +11,7 @@
 	r_pocket = /obj/item/pda/centcom
 	id_pda_assignment = "CentCom Officer"
 
-/decl/hierarchy/outfit/job/emergency_responder
+/datum/outfit/job/emergency_responder
 	name = OUTFIT_JOB_NAME("Emergency Responder")
 	uniform = /obj/item/clothing/under/ert
 	shoes = /obj/item/clothing/shoes/boots/swat

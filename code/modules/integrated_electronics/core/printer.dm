@@ -7,13 +7,17 @@
 	w_class = ITEMSIZE_LARGE
 	var/metal = 0
 	var/max_metal = 100
-	var/metal_per_sheet = 10 // One sheet equals this much metal.
-	var/debug = FALSE // If true, metal is infinite.
-
-	var/upgraded = FALSE		// When hit with an upgrade disk, will turn true, allowing it to print the higher tier circuits.
-	var/can_clone = FALSE		// Same for above, but will allow the printer to duplicate a specific assembly. (Not implemented)
+	/// One sheet equals this much metal.
+	var/metal_per_sheet = 10
+	/// If true, metal is infinite.
+	var/debug = FALSE
+	/// When hit with an upgrade disk, will turn true, allowing it to print the higher tier circuits.
+	var/upgraded = FALSE
+	/// Same for above, but will allow the printer to duplicate a specific assembly. (Not implemented)
+	var/can_clone = FALSE
 //	var/static/list/recipe_list = list()
-	var/obj/item/electronic_assembly/assembly_to_clone = null // Not implemented x3
+	/// Not implemented :(
+	var/obj/item/electronic_assembly/assembly_to_clone = null
 	var/dirty_items = FALSE
 
 /obj/item/integrated_circuit_printer/upgraded
@@ -29,14 +33,14 @@
 
 /obj/item/integrated_circuit_printer/attack_robot(mob/user as mob)
 	if(Adjacent(user))
-		return interact(user)
+		return ui_interact(user)
 	else
 		return ..()
 
 /obj/item/integrated_circuit_printer/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/stack = O
-		if(stack.material.name == DEFAULT_WALL_MATERIAL)
+		if(stack.material.name == MAT_STEEL)
 			if(debug)
 				to_chat(user, SPAN_WARNING("\The [src] does not need any material."))
 				return
@@ -86,11 +90,10 @@
 	return ..()
 
 /obj/item/integrated_circuit_printer/attack_self(var/mob/user)
-	interact(user)
 	ui_interact(user)
 
 /obj/item/integrated_circuit_printer/ui_state(mob/user)
-	return GLOB.inventory_state
+	return GLOB.physical_state
 
 /obj/item/integrated_circuit_printer/ui_interact(mob/user, datum/tgui/ui)
 	if(dirty_items)

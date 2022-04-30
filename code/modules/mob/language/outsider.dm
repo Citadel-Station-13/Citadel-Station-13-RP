@@ -98,7 +98,7 @@
 	flags = RESTRICTED | HIVEMIND
 
 /datum/language/xenocommon
-	name = "Xenomorph"
+	name = SPECIES_XENO
 	colour = "alien"
 	desc = "The common tongue of the xenomorphs."
 	speech_verb = "hisses"

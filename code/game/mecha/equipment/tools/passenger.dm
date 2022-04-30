@@ -29,6 +29,7 @@
 	if(do_after(user, 40, needhand=0))
 		if(!src.occupant)
 			user.forceMove(src)
+			user.update_perspective()
 			occupant = user
 			log_message("[user] boarded.")
 			occupant_message("[user] boarded.")
@@ -55,12 +56,7 @@
 	if(!occupant)
 		return
 	occupant.forceMove(get_turf(src))
-	occupant.reset_view()
-	/*
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-	*/
+	occupant.update_perspective()
 	occupant = null
 	return
 
@@ -119,7 +115,7 @@
 	if(isliving(usr))
 		var/mob/living/L = usr
 		if(L.has_buckled_mobs())
-			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
+			to_chat(L, SPAN_WARNING( "You have other entities attached to yourself. Remove them first."))
 			return
 
 	//search for a valid passenger compartment

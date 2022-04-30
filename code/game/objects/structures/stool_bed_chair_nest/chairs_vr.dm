@@ -202,7 +202,7 @@
 	add_overlay(I)
 
 /obj/structure/bed/chair/bay/comfy/captain/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, DEFAULT_WALL_MATERIAL, "blue")
+	return ..(mapload, MAT_STEEL, "blue")
 
 /obj/structure/bed/chair/bay/shuttle
 	name = "shuttle seat"
@@ -214,7 +214,7 @@
 	var/padding = "blue"
 
 /obj/structure/bed/chair/bay/shuttle/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, DEFAULT_WALL_MATERIAL, padding)
+	return ..(mapload, MAT_STEEL, padding)
 
 /obj/structure/bed/chair/bay/shuttle/post_buckle_mob()
 	playsound(src,buckling_sound,75,1)

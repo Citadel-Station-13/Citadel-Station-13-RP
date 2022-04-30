@@ -245,8 +245,6 @@
 		return
 	if(occupant)
 		occupant.Stasis(stasis_level)
-		if(stasis_level >= 100 && occupant.timeofdeath)
-			occupant.timeofdeath += 1 SECOND
 
 		if(filtering > 0)
 			if(beaker)
@@ -387,9 +385,8 @@
 	if(!occupant || occupant.loc != src)
 		occupant = null // JUST IN CASE
 		return
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
+	occupant.forceMove(loc)
+	occupant.update_perspective()
 	occupant.Stasis(0)
 	occupant.loc = src.loc
 	occupant = null

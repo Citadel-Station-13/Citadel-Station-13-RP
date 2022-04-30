@@ -2,13 +2,13 @@
 #define METAL_PER_TICK 100
 
 /datum/species/protean
-	name =             SPECIES_PROTEAN
-	name_plural =      "Proteans"
-	blurb =            "Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
-						<i>VERY</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
-						of millions of tiny nanites working in concert to maintain cohesion."
-	show_ssd =         "totally quiescent"
-	death_message =    "rapidly loses cohesion, dissolving into a cloud of gray dust..."
+	name = SPECIES_PROTEAN
+	name_plural = "Proteans"
+	blurb = "Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
+			<i>VERY</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
+			of millions of tiny nanites working in concert to maintain cohesion."
+	show_ssd = "totally quiescent"
+	death_message = "rapidly loses cohesion, dissolving into a cloud of gray dust..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/decal/cleanable/ash
 
@@ -227,7 +227,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	if(refactory && !(refactory.status & ORGAN_DEAD) && refactory.processingbuffs)
 
 		//Steel adds regen
-		if(protean_requires_healing(H) && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
+		if(protean_requires_healing(H) && refactory.get_stored_material(MAT_STEEL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
 			H.add_modifier(/datum/modifier/protean/steel, origin = refactory)
 
 		//MHydrogen adds speeeeeed
@@ -253,7 +253,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 /datum/species/protean/Stat(var/mob/living/carbon/human/H)
 	..()
-	if(statpanel("Protean"))
+	if(statpanel(SPECIES_PROTEAN))
 		var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
 		if(refactory && !(refactory.status & ORGAN_DEAD))
 			stat(null, "- -- --- Refactory Metal Storage --- -- -")
@@ -273,7 +273,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/modifier/protean
 	stacks = MODIFIER_STACK_FORBID
 	var/material_use = METAL_PER_TICK
-	var/material_name = DEFAULT_WALL_MATERIAL
+	var/material_name = MAT_STEEL
 
 /datum/modifier/protean/on_applied()
 	. = ..()

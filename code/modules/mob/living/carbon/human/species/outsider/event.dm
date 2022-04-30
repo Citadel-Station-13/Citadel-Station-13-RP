@@ -73,7 +73,6 @@ Variables you may want to make use of are:
 	assisted_langs = list()
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 
-	min_age = 18
 	max_age = 999
 
 	health_hud_intensity = 1.5
@@ -122,7 +121,7 @@ Variables you may want to make use of are:
 			has_limbs = list(
 				BP_TORSO =	list("path" = /obj/item/organ/external/chest),
 				BP_GROIN =	list("path" = /obj/item/organ/external/groin),
-				BP_HEAD =	 list("path" = /obj/item/organ/external/head),
+				BP_HEAD =	list("path" = /obj/item/organ/external/head),
 				BP_L_ARM =	list("path" = /obj/item/organ/external/arm),
 				BP_R_ARM =	list("path" = /obj/item/organ/external/arm/right),
 				BP_L_LEG =	list("path" = /obj/item/organ/external/leg),

@@ -88,13 +88,6 @@
 	else
 		parent = newparent
 
-	if(!SSplants)
-		sleep(250) // ugly hack, should mean roundstart plants are fine. TODO initialize perhaps?
-	if(!SSplants)
-		to_chat(world, "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
-		qdel(src)
-		return
-
 	if(!istype(newseed))
 		newseed = SSplants.seeds[DEFAULT_SEED]
 	seed = newseed

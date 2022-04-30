@@ -79,3 +79,21 @@
 				custom_pain("Your whole body hurts badly.", getToxLoss())
 			if(61 to INFINITY)
 				custom_pain("Your body aches all over, it's driving you mad.", getToxLoss())
+
+
+/*
+/obj/item/organ/external/proc/stun_act(var/stun_amount, var/agony_amount)
+	return
+	if(agony_amount > 5 && owner && vital && get_pain() > 0.5 * max_damage)
+		owner.visible_message("<span class='warning'>[owner] reels in pain!</span>")
+		if(has_genitals() || get_pain() + agony_amount > max_damage)
+			owner.Weaken(6)
+		else
+			owner.Stun(6)
+			owner.drop_l_hand()
+			owner.drop_r_hand()
+		return 1
+
+/obj/item/organ/external/proc/get_agony_multiplier()
+	return has_genitals() ? 2 : 1
+*/

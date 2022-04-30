@@ -150,7 +150,7 @@
 		return 0 //not a borg or human
 
 	if(O.has_buckled_mobs())
-		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
+		to_chat(user, SPAN_WARNING( "\The [O] has other entities attached to it. Remove them first."))
 		return
 
 	if(O == user)
