@@ -43,13 +43,15 @@
 	A.attack_ghost(src)
 
 // Oh by the way this didn't work with old click code which is why clicking shit didn't spam you
-/atom/proc/attack_ghost(mob/observer/dead/user as mob)
+/atom/proc/attack_ghost(mob/observer/dead/user)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(COMSIG_ATOM_ATTACK_GHOST, user)
+	// TODO: main ai interact bay code fucking disgusts me wtf
 	if(IsAdminGhost(user))		// admin AI interact
 		AdminAIInteract(user)
 		return
 	if(user.client && user.client.inquisitive_ghost)
 		user.examinate(src)
-	return
 
 // defaults to just attack_ai
 /atom/proc/AdminAIInteract(mob/user)

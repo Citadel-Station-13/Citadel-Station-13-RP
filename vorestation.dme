@@ -142,6 +142,7 @@
 #include "code\__DEFINES\mobs\cooldowns.dm"
 #include "code\__DEFINES\mobs\intent.dm"
 #include "code\__DEFINES\mobs\stat.dm"
+#include "code\__DEFINES\rendering\alert.dm"
 #include "code\__DEFINES\rendering\atom_huds.dm"
 #include "code\__DEFINES\rendering\parallax.dm"
 #include "code\__DEFINES\research\exosuit_fab.dm"

@@ -108,7 +108,7 @@
 	var/species = pick(GetSpeciesPath(H, params))
 	// todo species refactor
 	var/datum/species/S = species
-	H.set_species(initial(species.name))
+	H.set_species(initial(S.name))
 	var/new_name = random_name(H.gender, H.species.name)
 	// H.set_species(new species)
 	// var/new_name
