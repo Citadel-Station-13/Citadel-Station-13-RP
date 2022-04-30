@@ -109,7 +109,7 @@
 
 	if (src.stuttering) src.stuttering--
 
-	if (src.eye_blind)
+	if (src.eye_blind || HAS_TRAIT(src, TRAIT_BLIND))
 		src.AdjustBlinded(-1)
 		src.blinded = 1
 

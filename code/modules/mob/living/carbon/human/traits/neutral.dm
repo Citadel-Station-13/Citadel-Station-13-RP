@@ -1,39 +1,39 @@
-/datum/trait/metabolism_up
+/datum/trait/neutral/metabolism_up
 	name = "Fast Metabolism"
 	desc = "You process ingested and injected reagents faster, but get hungry faster (Teshari speed)."
 	cost = 0
 	var_changes = list("metabolic_rate" = 1.2, "hunger_factor" = 0.2, "metabolism" = 0.06) // +20% rate and 4x hunger (Teshari level)
-	excludes = list(/datum/trait/metabolism_down, /datum/trait/metabolism_apex)
+	excludes = list(/datum/trait/neutral/metabolism_down, /datum/trait/neutral/metabolism_apex)
 
-/datum/trait/metabolism_down
+/datum/trait/neutral/metabolism_down
 	name = "Slow Metabolism"
 	desc = "You process ingested and injected reagents slower, but get hungry slower."
 	cost = 0
 	var_changes = list("metabolic_rate" = 0.8, "hunger_factor" = 0.04, "metabolism" = 0.0012) // -20% of default.
-	excludes = list(/datum/trait/metabolism_up, /datum/trait/metabolism_apex)
+	excludes = list(/datum/trait/neutral/metabolism_up, /datum/trait/neutral/metabolism_apex)
 
-/datum/trait/metabolism_apex
+/datum/trait/neutral/metabolism_apex
 	name = "Apex Metabolism"
 	desc = "Finally a proper excuse for your predatory actions. Essentially doubles the fast trait rates. Good for characters with big appetites."
 	cost = 0
 	var_changes = list("metabolic_rate" = 1.4, "hunger_factor" = 0.4, "metabolism" = 0.012) // +40% rate and 8x hunger (Double Teshari)
-	excludes = list(/datum/trait/metabolism_up, /datum/trait/metabolism_down)
+	excludes = list(/datum/trait/neutral/metabolism_up, /datum/trait/neutral/metabolism_down)
 
-/datum/trait/cold_discomfort
+/datum/trait/neutral/cold_discomfort
 	name = "Hot-Blooded"
 	desc = "You are too hot at the standard 20C. 18C is more suitable. Rolling down your jumpsuit or being unclothed helps."
 	cost = 0
 	var_changes = list("heat_discomfort_level" = T0C+19)
-	excludes = list(/datum/trait/hot_discomfort)
+	excludes = list(/datum/trait/neutral/hot_discomfort)
 
-/datum/trait/hot_discomfort
+/datum/trait/neutral/hot_discomfort
 	name = "Cold-Blooded"
 	desc = "You are too cold at the standard 20C. 22C is more suitable. Wearing clothing that covers your legs and torso helps."
 	cost = 0
 	var_changes = list("cold_discomfort_level" = T0C+21)
-	excludes = list(/datum/trait/cold_discomfort)
+	excludes = list(/datum/trait/neutral/cold_discomfort)
 
-/datum/trait/autohiss_unathi
+/datum/trait/neutral/autohiss_unathi
 	name = "Autohiss (Unathi)"
 	desc = "You roll your S's and x's"
 	cost = 0
@@ -46,9 +46,9 @@
 		),
 	autohiss_exempt = list("Sinta'unathi"))
 
-	excludes = list(/datum/trait/autohiss_tajaran)
+	excludes = list(/datum/trait/neutral/autohiss_tajaran)
 
-/datum/trait/autohiss_tajaran
+/datum/trait/neutral/autohiss_tajaran
 	name = "Autohiss (Tajaran)"
 	desc = "You roll your R's."
 	cost = 0
@@ -57,174 +57,174 @@
 			"r" = list("rr", "rrr", "rrrr")
 		),
 	autohiss_exempt = list("Siik"))
-	excludes = list(/datum/trait/autohiss_unathi)
+	excludes = list(/datum/trait/neutral/autohiss_unathi)
 
-/datum/trait/bloodsucker
+/datum/trait/neutral/bloodsucker
 	name = "Bloodsucker"
 	desc = "Makes you unable to gain nutrition from anything but blood. To compenstate, you get fangs that can be used to drain blood from prey."
 	cost = 0
 	var_changes = list("is_vampire" = TRUE) //The verb is given in human.dm
 
-/datum/trait/bloodsucker/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/bloodsucker/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/carbon/human/proc/bloodsuck
 
-/datum/trait/succubus_drain
+/datum/trait/neutral/succubus_drain
 	name = "Succubus Drain"
 	desc = "Makes you able to gain nutrition from draining prey in your grasp."
 	cost = 0
 
-/datum/trait/succubus_drain/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/succubus_drain/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/carbon/human/proc/succubus_drain
 	H.verbs |= /mob/living/carbon/human/proc/succubus_drain_finalize
 	H.verbs |= /mob/living/carbon/human/proc/succubus_drain_lethal
 
-/datum/trait/hard_vore
+/datum/trait/neutral/hard_vore
 	name = "Brutal Predation"
 	desc = "Allows you to tear off limbs & tear out internal organs."
 	cost = 0 //I would make this cost a point, since it has some in game value, but there are easier, less damaging ways to perform the same functions.
 
-/datum/trait/hard_vore/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/hard_vore/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/proc/shred_limb
 
-/datum/trait/trashcan
+/datum/trait/neutral/trashcan
 	name = "Trash Can"
 	desc = "Allows you to dispose of some garbage on the go instead of having to look for a bin or littering like an animal."
 	cost = 0
 	var_changes = list("trashcan" = 1)
 
-/datum/trait/trashcan/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/trashcan/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/proc/eat_trash
 
-/datum/trait/glowing_eyes
+/datum/trait/neutral/glowing_eyes
 	name = "Glowing Eyes"
 	desc = "Your eyes show up above darkness. SPOOKY! And kinda edgy too."
 	cost = 0
 	var_changes = list("has_glowing_eyes" = 1)
 
-/datum/trait/glowing_body
+/datum/trait/neutral/glowing_body
 	name = "Glowing Body"
 	desc = "Your body glows about as much as a PDA light! Settable color and toggle in Abilities tab ingame."
 	cost = 0
-/datum/trait/glowing_body/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/glowing_body/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/proc/glow_toggle
 	H.verbs |= /mob/living/proc/glow_color
 
 // Body shape traits
-/datum/trait/taller
+/datum/trait/neutral/taller
 	name = "Taller"
 	desc = "Your body is taller than average."
 	cost = 0
 //	custom_only = FALSE
 	var_changes = list("icon_scale_y" = 1.09)
-	excludes = list(/datum/trait/tall, /datum/trait/short, /datum/trait/shorter)
+	excludes = list(/datum/trait/neutral/tall, /datum/trait/neutral/short, /datum/trait/neutral/shorter)
 
-/datum/trait/taller/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/taller/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.update_transform()
 
-/datum/trait/tall
+/datum/trait/neutral/tall
 	name = "Tall"
 	desc = "Your body is a bit taller than average."
 	cost = 0
 //	custom_only = FALSE
 	var_changes = list("icon_scale_y" = 1.05)
-	excludes = list(/datum/trait/taller, /datum/trait/short, /datum/trait/shorter)
+	excludes = list(/datum/trait/neutral/taller, /datum/trait/neutral/short, /datum/trait/neutral/shorter)
 
-/datum/trait/tall/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/tall/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.update_transform()
 
-/datum/trait/short
+/datum/trait/neutral/short
 	name = "Short"
 	desc = "Your body is a bit shorter than average."
 	cost = 0
 //	custom_only = FALSE
 	var_changes = list("icon_scale_y" = 0.95)
-	excludes = list(/datum/trait/taller, /datum/trait/tall, /datum/trait/shorter)
+	excludes = list(/datum/trait/neutral/taller, /datum/trait/neutral/tall, /datum/trait/neutral/shorter)
 
-/datum/trait/short/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/short/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.update_transform()
 
-/datum/trait/shorter
+/datum/trait/neutral/shorter
 	name = "Shorter"
 	desc = "You are shorter than average."
 	cost = 0
 //	custom_only = FALSE
 	var_changes = list("icon_scale_y" = 0.915)
-	excludes = list(/datum/trait/taller, /datum/trait/tall, /datum/trait/short)
+	excludes = list(/datum/trait/neutral/taller, /datum/trait/neutral/tall, /datum/trait/neutral/short)
 
-/datum/trait/shorter/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/shorter/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.update_transform()
 
-/datum/trait/fat
+/datum/trait/neutral/fat
 	name = "Overweight"
 	desc = "You are heavier than average."
 	cost = 0
 //	custom_only = FALSE
 	var_changes = list("icon_scale_x" = 1.054)
-	excludes = list(/datum/trait/obese, /datum/trait/thin, /datum/trait/thinner)
+	excludes = list(/datum/trait/neutral/obese, /datum/trait/neutral/thin, /datum/trait/neutral/thinner)
 
-/datum/trait/fat/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/fat/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.update_transform()
 
-/datum/trait/obese
+/datum/trait/neutral/obese
 	name = "Obese"
 	desc = "You are much heavier than average."
 	cost = 0
 //	custom_only = FALSE
 	var_changes = list("icon_scale_x" = 1.095)
-	excludes = list(/datum/trait/fat, /datum/trait/thin, /datum/trait/thinner)
+	excludes = list(/datum/trait/neutral/fat, /datum/trait/neutral/thin, /datum/trait/neutral/thinner)
 
-/datum/trait/obese/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/obese/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.update_transform()
 
-/datum/trait/thin
+/datum/trait/neutral/thin
 	name = "Thin"
 	desc = "You are skinnier than average."
 	cost = 0
 //	custom_only = FALSE
 	var_changes = list("icon_scale_x" = 0.945)
-	excludes = list(/datum/trait/fat, /datum/trait/obese, /datum/trait/thinner)
+	excludes = list(/datum/trait/neutral/fat, /datum/trait/neutral/obese, /datum/trait/neutral/thinner)
 
-/datum/trait/thin/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/thin/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.update_transform()
 
-/datum/trait/thinner
+/datum/trait/neutral/thinner
 	name = "Very Thin"
 	desc = "You are much skinnier than average."
 	cost = 0
 //	custom_only = FALSE
 	var_changes = list("icon_scale_x" = 0.905)
-	excludes = list(/datum/trait/fat, /datum/trait/obese, /datum/trait/thin)
+	excludes = list(/datum/trait/neutral/fat, /datum/trait/neutral/obese, /datum/trait/neutral/thin)
 
-/datum/trait/thinner/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/thinner/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.update_transform()
 
-/datum/trait/antiseptic_saliva
+/datum/trait/neutral/antiseptic_saliva
 	name = "Antiseptic Saliva"
 	desc = "Your saliva has especially strong antiseptic properties that can be used to heal small wounds."
 	cost = 0
 
-/datum/trait/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
 
-/datum/trait/size_change
+/datum/trait/neutral/size_change
 	name = "Sizeshift"
 	desc = "Lets you shift sizes by yourself. Remember that abusing size mechanics is against the rules!"
 	cost = 0
 
-/datum/trait/size_change/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+/datum/trait/neutral/size_change/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/proc/set_size
