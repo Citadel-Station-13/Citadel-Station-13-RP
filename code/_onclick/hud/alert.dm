@@ -373,6 +373,32 @@ so as to remain in compliance with the most up-to-date laws."
 	var/mob/observer/dead/G = usr
 	G.reenter_corpse()
 
+/atom/movable/screen/alert/notify_action
+	name = "Body created"
+	desc = "A body was created. You can enter it."
+	icon_state = "template"
+	timeout = 300
+	var/atom/target = null
+	var/action = NOTIFY_JUMP
+
+/atom/movable/screen/alert/notify_action/Click()
+	if(!usr || !usr.client || usr != owner)
+		return
+	if(!target)
+		return
+	var/mob/dead/observer/G = usr
+	if(!istype(G))
+		return
+	switch(action)
+		if(NOTIFY_ATTACK)
+			target.attack_ghost(G)
+		if(NOTIFY_JUMP)
+			var/turf/T = get_turf(target)
+			if(T && isturf(T))
+				G.forceMove(T)
+		if(NOTIFY_ORBIT)
+			G.ManualFollow(target)
+
 // /atom/movable/screen/alert/notify_jump
 // 	name = "Body created"
 // 	desc = "A body was created. You can enter it."

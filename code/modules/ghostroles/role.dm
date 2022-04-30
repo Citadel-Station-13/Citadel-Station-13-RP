@@ -109,7 +109,7 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 		qdel(created)
 		return "Mob transfer failed."
 	PostInstantiate(created, spawnpoint, params)
-	GLOB.join_menu.queue_update()
+	// GLOB.join_menu.queue_update()
 	GLOB.ghostrole_menu.queue_update()
 	return TRUE
 
@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
  */
 /datum/ghostrole/proc/GetSpawnpoint(client/C)
 	if(!allow_pick_spawner)
-		return safepick(GLOB.ghostrole_spawnpoints[id])
+		return SAFEPICK(GLOB.ghostrole_spawnpoints[id])
 	var/list/datum/component/ghostrole_spawnpoint/spawnpoints = GLOB.ghostrole_spawnpoints[id]
 	var/list/inputlist = list()
 	for(var/datum/component/ghostrole_spawnpoint/spawnpoint as anything in spawnpoints)
@@ -202,9 +202,14 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 		mind_initialize()
 	if(!mind)
 		CRASH("No mind.")
-	var/datum/antagonist/custom/A = mind.has_antag_datum(/datum/antagonist/custom) || mind.add_antag_datum(/datum/antagonist/custom)
-	if(!A)
-		CRASH("Failed to locate/make custom antagonist datum.")
-	var/datum/objective/O = new(objective)
-	O.owner = mind
-	A.objectives += O
+
+	store_memory("OBJECTIVE: [objective]", TRUE)
+	to_chat(src, SPAN_DANGER("An objective has been added to you by your ghostrole spawner. Remember that roleplay comes first - these are often freeform. Said objective is in your MEMORIES, due to the codebase lacking datum antagonists."))
+
+	// TODO: DATUM ANTAGS
+	// var/datum/antagonist/custom/A = mind.has_antag_datum(/datum/antagonist/custom) || mind.add_antag_datum(/datum/antagonist/custom)
+	// if(!A)
+	// 	CRASH("Failed to locate/make custom antagonist datum.")
+	// var/datum/objective/O = new(objective)
+	// O.owner = mind
+	// A.objectives += O

@@ -100,26 +100,30 @@
 		override = text2path(override)
 	if(ispath(override, /datum/species))
 		return override
-	return safepick(possible_species) || /datum/species/human
+	return SAFEPICK(possible_species) || /datum/species/human
 
 /datum/ghostrole_instantiator/human/random/species/Randomize(mob/living/carbon/human/H, list/params)
 	. = ..()
 	var/species = pick(GetSpeciesPath(H, params))
-	H.set_species(new species)
-	var/new_name
-	switch(H.dna.species.type)
-		if(/datum/species/lizard)
-			new_name = random_unique_lizard_name()
-		if(/datum/species/ethereal)
-			new_name = random_unique_ethereal_name()
-		if(/datum/species/plasmaman)
-			new_name = random_unique_plasmaman_name()
-		if(/datum/species/insect)
-			new_name = random_unique_moth_name()
-		if(/datum/species/arachnid)
-			new_name = random_unique_arachnid_name()
-		else
-			new_name = random_unique_name()
+	// todo species refactor
+	var/datum/species/S = species
+	H.set_species(initial(species.name))
+	var/new_name = random_name(H.gender, H.species.name)
+	// H.set_species(new species)
+	// var/new_name
+	// switch(H.dna.species.type)
+	// 	if(/datum/species/lizard)
+	// 		new_name = random_unique_lizard_name()
+	// 	if(/datum/species/ethereal)
+	// 		new_name = random_unique_ethereal_name()
+	// 	if(/datum/species/plasmaman)
+	// 		new_name = random_unique_plasmaman_name()
+	// 	if(/datum/species/insect)
+	// 		new_name = random_unique_moth_name()
+	// 	if(/datum/species/arachnid)
+	// 		new_name = random_unique_arachnid_name()
+	// 	else
+	// 		new_name = random_unique_name()
 	H.fully_replace_character_name(H.real_name, new_name)
 
 /datum/ghostrole_instantiator/human/player_static
@@ -135,7 +139,8 @@
 
 /datum/ghostrole_instantiator/human/player_static/proc/LoadSavefile(client/C, mob/living/carbon/human/H)
 	C.prefs.copy_to(H)
-	if(equip_loadout)
-		SSjob.EquipLoadout(H, FALSE, null, C.prefs, C.ckey)
-	if(equip_traits && CONFIG_GET(flag/roundstart_traits))
-		SSquirks.AssignQuirks(H, C, TRUE, FALSE, null, FALSE, C)
+	job_master.EquipRank(H, USELESS_JOB)
+	// if(equip_loadout)
+	// 	SSjob.EquipLoadout(H, FALSE, null, C.prefs, C.ckey)
+	// if(equip_traits && CONFIG_GET(flag/roundstart_traits))
+	// 	SSquirks.AssignQuirks(H, C, TRUE, FALSE, null, FALSE, C)
