@@ -206,6 +206,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_overmaps_map(datum/overmap/O, text)
 	WRITE_LOG(GLOB.overmaps_log, "OM: [O.id] - [text]")
 
+/proc/log_overmaps_entity(atom/movable/overmap/entity/E, text)
+	#warn format
+
 /* Log to both DD and the logfile. */
 /proc/log_world(text)
 #ifdef USE_CUSTOM_ERROR_HANDLER

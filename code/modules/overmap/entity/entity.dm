@@ -4,7 +4,13 @@
  * capable of pixel movement and full simulation
  */
 /atom/movable/overmap_object/entity
-	// instance
+	// identity
+	/// id
+	var/id
+	/// next id
+	var/static/id_next = 0
+
+	// overmap
 	/// currently ticking?
 	var/ticking = FALSE
 	/// overmap we belong to
@@ -31,6 +37,11 @@
 	var/physics_paused
 	/// currently undergoing a physics dock/undock operation - used to prevent hooks from forcing the proc to be repeated
 	var/physics_docking = FALSE
+
+/atom/movable/overmap_object/entity/New()
+	// assign id immediately
+	id = "[++id_next]"
+	return ..()
 
 /atom/movable/overmap_object/entity/get_bounds_overlay()
 	return

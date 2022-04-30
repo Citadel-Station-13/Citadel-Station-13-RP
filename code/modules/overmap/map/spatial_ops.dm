@@ -40,6 +40,7 @@
  * sets up our spatial hash
  */
 /datum/overmap/proc/SetupSpatialHash()
+	#warn log if spatial hash was already made
 	// make list
 	spatial_hash = list()
 	// make list of length
