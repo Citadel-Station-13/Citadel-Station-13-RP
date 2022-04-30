@@ -75,6 +75,7 @@
 	icon = 'icons/obj/spawners.dmi'
 	icon_state = "cryostasis_sleeper"
 	role_type = /datum/ghostrole/hermit
+	qdel_on_deplete = TRUE
 
 /obj/structure/ghost_role_spawner/hermit/Destroy()
 	// new /obj/structure/fluff/empty_cryostasis_sleeper(get_turf(src))
