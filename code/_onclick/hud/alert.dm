@@ -35,6 +35,8 @@
 	else
 		alert = new type
 
+	alert.owner = src
+
 	if(new_master)
 		alert.icon_state = "itembased"
 		var/image/I = image(icon = new_master.icon, icon_state = new_master.icon_state, dir = SOUTH)
@@ -82,15 +84,18 @@
 	var/severity = 0
 	var/alerttooltipstyle = ""
 	var/no_underlay // Don't underlay the UI style's blank template icon under this
+	/// mob that owns us
+	var/mob/owner
 
+/atom/movable/screen/alert/Destroy()
+	owner = null
+	return ..()
 
 /atom/movable/screen/alert/MouseEntered(location,control,params)
 	openToolTip(usr, src, params, title = name, content = desc, theme = alerttooltipstyle)
 
-
 /atom/movable/screen/alert/MouseExited()
 	closeToolTip(usr)
-
 
 //Gas alerts
 /atom/movable/screen/alert/not_enough_oxy
@@ -386,7 +391,7 @@ so as to remain in compliance with the most up-to-date laws."
 		return
 	if(!target)
 		return
-	var/mob/dead/observer/G = usr
+	var/mob/observer/dead/G = usr
 	if(!istype(G))
 		return
 	switch(action)
