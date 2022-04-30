@@ -24,12 +24,6 @@
 	categories.Cut()
 	return ..()
 
-/datum/category_collection/compare_to(datum/D)
-	if(istype(D, /datum/category_collection))
-		var/datum/category_collection/I = D
-		return cmp_text_asc(name, I.name)
-	return ..()
-
 /******************
 * Category Groups *
 ******************/
@@ -64,9 +58,11 @@
 	collection = null
 	return ..()
 
-datum/category_group/dd_SortValue()
-	return name
-
+/datum/category_group/compare_to(datum/D)
+	if(istype(D, /datum/category_group))
+		var/datum/category_group/I = D
+		return cmp_text_asc(name, I.name)
+	return ..()
 
 /*****************
 * Category Items *
