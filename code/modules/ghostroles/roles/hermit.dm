@@ -54,16 +54,16 @@
 			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
 			outfit.back = /obj/item/storage/backpack
 		if("tiger")
-			outfit.uniform = /obj/item/clothing/under/rank/prisoner
+			outfit.uniform = /obj/item/clothing/under/color/prison
 			outfit.shoes = /obj/item/clothing/shoes/sneakers/orange
 			outfit.back = /obj/item/storage/backpack
 		if("exile")
-			outfit.uniform = /obj/item/clothing/under/rank/medical/doctor
-			outfit.suit = /obj/item/clothing/suit/toggle/labcoat
+			outfit.uniform = /obj/item/clothing/under/rank/medical
+			outfit.suit = /obj/item/clothing/suit/toggle/labcoat/paramedic
 			outfit.back = /obj/item/storage/backpack/medic
 			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
 		if("tourist")
-			outfit.uniform = /obj/item/clothing/under/color/grey/glorf
+			outfit.uniform = /obj/item/clothing/under/color/grey
 			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
 			outfit.back = /obj/item/storage/backpack
 	return outfit
@@ -72,7 +72,7 @@
 /obj/structure/ghost_role_spawner/hermit
 	name = "malfunctioning cryostasis sleeper"
 	desc = "A humming sleeper with a silhouetted occupant inside. Its stasis function is broken and it's likely being used as a bed."
-	icon = 'icons/obj/lavaland/spawners.dmi'
+	icon = 'icons/obj/spawners.dmi'
 	icon_state = "cryostasis_sleeper"
 	role_type = /datum/ghostrole/hermit
 
