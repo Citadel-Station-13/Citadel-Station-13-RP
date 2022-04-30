@@ -31,7 +31,7 @@
 	minimal_player_age = 14
 	ideal_character_age = 50
 
-	outfit_type = /decl/hierarchy/outfit/job/science/rd
+	outfit_type = /datum/outfit/job/science/rd
 	job_description = "The Research Director manages and maintains the Research department. They are required to ensure the safety of the entire crew, \
 						at least with regards to anything occuring in the Research department, and to inform the crew of any disruptions that \
 						might originate from Research. The Research Director often has at least passing knowledge of most of the Research department, but \
@@ -72,7 +72,7 @@
 
 	minimal_player_age = 14
 
-	outfit_type = /decl/hierarchy/outfit/job/science/scientist
+	outfit_type = /datum/outfit/job/science/scientist
 	pto_type = PTO_SCIENCE
 	job_description = "A Scientist is a generalist working in the Research department, with general knowledge of the scientific process, as well as \
 						the principles and requirements of Research and Development. They may also formulate experiments of their own devising, if \
@@ -132,14 +132,14 @@
 	title = "Xenobiologist"
 	title_blurb = "A Xenobiologist studies esoteric lifeforms, usually in the relative safety of their lab. They attempt to find ways to benefit \
 						from the byproducts of these lifeforms, and their main subject at present is the Giant Slime."
-	title_outfit = /decl/hierarchy/outfit/job/science/xenobiologist
-						
+	title_outfit = /datum/outfit/job/science/xenobiologist
+
 /datum/alt_title/scientist/xenobotanist
 	title = "Xenobotanist"
 	title_blurb = "A Xenobotanist grows and cares for a variety of abnormal, custom made, and frequently dangerous plant life. When the products of these plants \
 					are both safe and beneficial to the station, they may choose to introduce it to the rest of the crew."
-	title_outfit = /decl/hierarchy/outfit/job/science/xenobiologist
-					
+	title_outfit = /datum/outfit/job/science/xenobiologist
+
 /* Demoted to alt title for now
 //////////////////////////////////
 //			Xenobiologist
@@ -162,7 +162,7 @@
 
 	minimal_player_age = 14
 
-	outfit_type = /decl/hierarchy/outfit/job/science/xenobiologist
+	outfit_type = /datum/outfit/job/science/xenobiologist
 	job_description = "A Xenobiologist studies esoteric lifeforms, usually in the relative safety of their lab. They attempt to find ways to benefit \
 						from the byproducts of these lifeforms, and their main subject at present is the Giant Slime."
 
@@ -200,7 +200,7 @@
 
 	minimal_player_age = 14
 
-	outfit_type = /decl/hierarchy/outfit/job/science/xenobiologist
+	outfit_type = /datum/outfit/job/science/xenobiologist
 	job_description = "A Xenobotanist grows and cares for a variety of abnormal, custom made, and frequently dangerous plant life. When the products of these plants \
 					are both safe and beneficial to the station, they may choose to introduce it to the rest of the crew."
 	alt_titles = list(
@@ -234,7 +234,7 @@
 	minimal_access = list(access_robotics, access_tech_storage, access_morgue, access_research, access_tox) //As a job that handles so many corpses, it makes sense for them to have morgue access.
 	minimal_player_age = 7
 
-	outfit_type = /decl/hierarchy/outfit/job/science/roboticist
+	outfit_type = /datum/outfit/job/science/roboticist
 	job_description = "A Roboticist maintains and repairs the station's synthetics, including crew with prosthetic limbs. \
 						They can also assist the station by producing simple robots and even pilotable exosuits."
 	alt_titles = list(
