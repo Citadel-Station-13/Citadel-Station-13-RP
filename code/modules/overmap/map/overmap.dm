@@ -82,6 +82,8 @@
 	for(var/atom/movable/overmap_object/entity/E as anything in ticking)
 		E.Tick(seconds)
 
+#warn admin simulation pause
+
 /datum/overmap/proc/Recover()
 	entities = list()
 	ticking = list()

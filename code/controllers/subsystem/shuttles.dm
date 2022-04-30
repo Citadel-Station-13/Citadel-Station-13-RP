@@ -174,14 +174,5 @@ SUBSYSTEM_DEF(shuttle)
 	for(var/datum/shuttle/S in shuttles_list)
 		S.populate_shuttle_objects()
 
-// Admin command to halt/resume overmap
-/datum/controller/subsystem/shuttle/proc/toggle_overmap(new_setting)
-	if(overmap_halted == new_setting)
-		return
-	overmap_halted = !overmap_halted
-	for(var/ship in ships)
-		var/atom/movable/overmap_object/entity/visitable/ship/ship_effect = ship
-		overmap_halted ? ship_effect.halt() : ship_effect.unhalt()
-
 /datum/controller/subsystem/shuttle/stat_entry()
 	..("Shuttles:[process_shuttles.len]/[shuttles.len], Ships:[ships.len], L:[registered_shuttle_landmarks.len][overmap_halted ? ", HALT" : ""]")

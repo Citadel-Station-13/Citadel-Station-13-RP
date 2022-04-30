@@ -10,4 +10,6 @@
 /// paused from FTL
 #define ENTITY_PHYSICS_PAUSE_FOR_FTL			"ftl"
 /// paused from docking/being inside another object
-#define ENTITY_PHYSICS_PAUSE_FOR_DOCKED		"docked"
+#define ENTITY_PHYSICS_PAUSE_FOR_DOCKED			"docked"
+/// admin pausing
+#define ENTITY_PHYSICS_PAUSE_FOR_ADMIN			"admin"
