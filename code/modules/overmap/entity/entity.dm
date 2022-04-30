@@ -9,6 +9,8 @@
 	var/ticking = FALSE
 	/// overmap we belong to
 	var/datum/overmap/overmap
+	/// spatial hash index we're in
+	var/tmp/_overmap_spatial_hash_index
 
 	// physics
 	/// current physics mode
@@ -27,6 +29,8 @@
 	var/angle = 0
 	/// physics pause sources
 	var/physics_paused
+	/// currently undergoing a physics dock/undock operation - used to prevent hooks from forcing the proc to be repeated
+	var/physics_docking = FALSE
 
 /atom/movable/overmap_object/entity/get_bounds_overlay()
 	return

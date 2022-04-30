@@ -8,6 +8,6 @@
 
 // physics pause sources
 /// paused from FTL
-#define ENTITY_PHYSICS_PAUSED_FTL			"ftl"
+#define ENTITY_PHYSICS_PAUSE_FOR_FTL			"ftl"
 /// paused from docking/being inside another object
-#define ENTITY_PHYSICS_PAUSED_DOCKED		"docked"
+#define ENTITY_PHYSICS_PAUSE_FOR_DOCKED		"docked"
