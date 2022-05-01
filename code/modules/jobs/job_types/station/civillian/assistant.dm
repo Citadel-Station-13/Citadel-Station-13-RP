@@ -1,7 +1,4 @@
-//////////////////////////////////
-//			Assistant
-//////////////////////////////////
-/datum/job/assistant	// Visitor
+/datum/job/assistant
 	title = USELESS_JOB
 	flag = ASSISTANT
 	departments = list(DEPARTMENT_CIVILIAN)

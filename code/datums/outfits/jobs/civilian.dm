@@ -119,13 +119,6 @@
 	id_type = /obj/item/card/id/civilian/internal_affairs_agent
 	pda_type = /obj/item/pda/lawyer
 
-/datum/outfit/job/chaplain
-	name = OUTFIT_JOB_NAME("Chaplain")
-	uniform = /obj/item/clothing/under/rank/chaplain
-	l_hand = /obj/item/storage/bible
-	id_type = /obj/item/card/id/civilian/chaplain
-	pda_type = /obj/item/pda/chaplain
-
 /*
 /datum/outfit/job/explorer
 	name = OUTFIT_JOB_NAME("Explorer")

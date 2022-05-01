@@ -1,4 +1,3 @@
-// Due to how large this one is it gets its own file
 /datum/job/chaplain
 	title = "Chaplain"
 	flag = CHAPLAIN
@@ -165,3 +164,10 @@
 		feedback_set_details("religion_deity","[new_deity]")
 		feedback_set_details("religion_book","[new_book_style]")
 	return 1
+
+/datum/outfit/job/chaplain
+	name = OUTFIT_JOB_NAME("Chaplain")
+	uniform = /obj/item/clothing/under/rank/chaplain
+	l_hand = /obj/item/storage/bible
+	id_type = /obj/item/card/id/civilian/chaplain
+	pda_type = /obj/item/pda/chaplain
