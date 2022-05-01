@@ -1,4 +1,4 @@
-/datum/job/chief_engineer
+/datum/job/station/chief_engineer
 	title = "Chief Engineer"
 	flag = CHIEF
 	departments_managed = list(DEPARTMENT_ENGINEERING)

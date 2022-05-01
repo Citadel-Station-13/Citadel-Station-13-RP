@@ -1,4 +1,4 @@
-/datum/job/cargo_tech
+/datum/job/station/cargo_tech
 	title = "Cargo Technician"
 	flag = CARGOTECH
 	departments = list(DEPARTMENT_CARGO)

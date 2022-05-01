@@ -1,4 +1,4 @@
-/datum/job/head_of_personnel
+/datum/job/station/head_of_personnel
 	title = "Head of Personnel"
 	flag = HOP
 	departments = list(DEPARTMENT_COMMAND, DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)

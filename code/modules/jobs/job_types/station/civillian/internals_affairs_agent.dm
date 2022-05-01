@@ -1,4 +1,4 @@
-/datum/job/lawyer
+/datum/job/station/lawyer
 	title = "Internal Affairs Agent"
 	flag = LAWYER
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -24,7 +24,7 @@
 	title = "Regulatory Affairs Agent"
 
 /*
-/datum/job/lawyer/equip(var/mob/living/carbon/human/H)
+/datum/job/station/lawyer/equip(var/mob/living/carbon/human/H)
 	. = ..()
 	if(.)
 		H.implant_loyalty(H)

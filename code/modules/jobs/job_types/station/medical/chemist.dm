@@ -1,4 +1,4 @@
-/datum/job/chemist
+/datum/job/station/station/chemist
 	title = "Chemist"
 	flag = CHEMIST
 	departments = list(DEPARTMENT_MEDICAL)

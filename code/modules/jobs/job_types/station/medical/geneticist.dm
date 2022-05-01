@@ -3,7 +3,7 @@
 //////////////////////////////////
 //			Geneticist
 //////////////////////////////////
-/datum/job/geneticist
+/datum/job/station/geneticist
 	title = "Geneticist"
 	flag = GENETICIST
 	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH)

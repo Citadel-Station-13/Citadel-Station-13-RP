@@ -1,4 +1,4 @@
-/datum/job/assistant
+/datum/job/station/station/assistant
 	title = USELESS_JOB
 	flag = ASSISTANT
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -10,8 +10,8 @@
 	supervisors = "nobody! You don't work here"
 	selection_color = "#515151"
 	economic_modifier = 1
-	access = list()			//See /datum/job/assistant/get_access()
-	minimal_access = list()	//See /datum/job/assistant/get_access()
+	access = list()			//See /datum/job/station/assistant/get_access()
+	minimal_access = list()	//See /datum/job/station/assistant/get_access()
 	timeoff_factor = 0
 
 	outfit_type = /datum/outfit/job/assistant
@@ -22,19 +22,19 @@
 		"Assistant" = /datum/alt_title/assistant
 	)
 
-/datum/job/assistant/get_access()
+/datum/job/station/assistant/get_access()
 	if(config_legacy.assistant_maint)
 		return list(access_maint_tunnels)
 	else
 		return list()
 
-/datum/job/assistant/New()
+/datum/job/station/assistant/New()
 	..()
 	if(config)
 		total_positions = config_legacy.limit_visitors
 		spawn_positions = config_legacy.limit_visitors
 
-/datum/job/assistant/get_access()
+/datum/job/station/assistant/get_access()
 	return list()
 
 /datum/alt_title/visitor

@@ -1,4 +1,4 @@
-/datum/job/psychiatrist
+/datum/job/station/station/psychiatrist
 	title = "Psychiatrist"
 	flag = PSYCHIATRIST
 	departments = list(DEPARTMENT_MEDICAL)

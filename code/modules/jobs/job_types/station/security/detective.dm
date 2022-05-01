@@ -1,4 +1,4 @@
-/datum/job/detective
+/datum/job/station/station/detective
 	title = "Detective"
 	flag = DETECTIVE
 	departments = list(DEPARTMENT_SECURITY)

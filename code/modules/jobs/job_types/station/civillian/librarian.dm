@@ -1,4 +1,4 @@
-/datum/job/librarian
+/datum/job/station/librarian
 	title = "Librarian"
 	flag = LIBRARIAN
 	departments = list(DEPARTMENT_CIVILIAN)

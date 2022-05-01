@@ -1,4 +1,4 @@
-/datum/job/offduty/exploration
+/datum/job/station/station/offduty/exploration
 	title = "Off-duty Explorer"
 	selection_color = "#999440"
 	access = list(access_maint_tunnels, access_external_airlocks)

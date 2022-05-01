@@ -1,4 +1,4 @@
-/datum/job/atmos
+/datum/job/station/station/atmos
 	title = "Atmospheric Technician"
 	flag = ATMOSTECH
 	departments = list(DEPARTMENT_ENGINEERING)

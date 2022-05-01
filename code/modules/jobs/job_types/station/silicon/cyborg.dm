@@ -1,4 +1,4 @@
-/datum/job/cyborg
+/datum/job/station/cyborg
 	title = "Cyborg"
 	flag = CYBORG
 	departments = list(DEPARTMENT_SYNTHETIC)
@@ -35,11 +35,11 @@
 					and important piece of station property, and is expected to follow its Laws."
 
 // Cyborg procs
-/datum/job/cyborg/equip(var/mob/living/carbon/human/H)
+/datum/job/station/cyborg/equip(var/mob/living/carbon/human/H)
 	if(!H)	return 0
 	return 1
 
-/datum/job/cyborg/equip_preview(mob/living/carbon/human/H)
+/datum/job/station/cyborg/equip_preview(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/cardborg(H), slot_wear_suit)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cardborg(H), slot_head)
 	return 1

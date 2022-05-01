@@ -1,4 +1,4 @@
-/datum/job/paramedic
+/datum/job/station/paramedic
 	title = "Paramedic"
 	flag = PARAMEDIC
 	departments = list(DEPARTMENT_MEDICAL)

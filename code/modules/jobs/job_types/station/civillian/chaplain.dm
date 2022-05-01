@@ -1,4 +1,4 @@
-/datum/job/chaplain
+/datum/job/station/chaplain
 	title = "Chaplain"
 	flag = CHAPLAIN
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -31,11 +31,11 @@
 /datum/alt_title/chaplain/scholar
 	title = "Paracausal Scholar"
 
-/datum/job/chaplain/equip(mob/living/carbon/human/H, src)
+/datum/job/station/chaplain/equip(mob/living/carbon/human/H, src)
 	. = ..()
 	if(H.mind)
 		H.mind.isholy = TRUE
-/datum/job/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
+/datum/job/station/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
 	. = ..()
 	if(!.)
 		return

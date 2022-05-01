@@ -1,4 +1,4 @@
-/datum/job/offduty/medical
+/datum/job/station/station/offduty/medical
 	title = "Off-duty Medic"
 	selection_color = "#013D3B"
 	access = list(access_maint_tunnels, access_external_airlocks)

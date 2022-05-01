@@ -1,4 +1,4 @@
-/datum/job/mining
+/datum/job/station/mining
 	title = "Shaft Miner"
 	flag = MINER
 	departments = list(DEPARTMENT_CARGO)

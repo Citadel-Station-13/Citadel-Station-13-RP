@@ -1,4 +1,4 @@
-/datum/job/off_duty
+/datum/job/station/station/off_duty
 	latejoin_only = TRUE
 	timeoff_factor = -1
 	total_positions = -1

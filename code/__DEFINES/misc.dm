@@ -113,7 +113,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define ANNOUNCER_NAME "Facility PA"
 
-#define DEFAULT_JOB_TYPE /datum/job/assistant
+#define DEFAULT_JOB_TYPE /datum/job/station/assistant
 
 //Assistant/Visitor/Whatever
 #define USELESS_JOB	"Visitor"

@@ -1,4 +1,4 @@
-/datum/job/mime
+/datum/job/station/mime
 	title = "Mime"
 	flag = MIME
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -21,7 +21,7 @@
 /datum/alt_title/mime/poseur
 	title = "Poseur"
 
-/datum/job/mime/get_access()
+/datum/job/station/mime/get_access()
 	if(config_legacy.assistant_maint)
 		return list(access_maint_tunnels, access_entertainment, access_tomfoolery, access_mime)
 	else

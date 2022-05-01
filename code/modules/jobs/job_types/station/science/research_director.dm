@@ -1,4 +1,4 @@
-/datum/job/research_director
+/datum/job/station/station/research_director
 	title = "Research Director"
 	flag = RD
 	departments_managed = list(DEPARTMENT_RESEARCH)

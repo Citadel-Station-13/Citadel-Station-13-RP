@@ -1,4 +1,4 @@
-/datum/job/offduty/security
+/datum/job/station/station/offduty/security
 	title = "Off-duty Officer"
 	selection_color = "#601C1C"
 	access = list(access_maint_tunnels)

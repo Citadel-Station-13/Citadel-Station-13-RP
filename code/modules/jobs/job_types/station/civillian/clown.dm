@@ -1,4 +1,4 @@
-/datum/job/clown
+/datum/job/station/clown
 	title = "Clown"
 	flag = CLOWN
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -24,7 +24,7 @@
 /datum/alt_title/clown/fool
 	title = "Fool"
 
-/datum/job/clown/get_access()
+/datum/job/station/clown/get_access()
 	if(config_legacy.assistant_maint)
 		return list(access_maint_tunnels, access_entertainment, access_clown, access_tomfoolery)
 	else

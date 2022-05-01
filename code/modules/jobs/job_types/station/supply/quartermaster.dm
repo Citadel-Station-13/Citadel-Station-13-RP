@@ -1,4 +1,4 @@
-/datum/job/quartermaster
+/datum/job/station/quartermaster
 	title = "Quartermaster"
 	flag = QUARTERMASTER
 	departments = list(DEPARTMENT_CARGO)

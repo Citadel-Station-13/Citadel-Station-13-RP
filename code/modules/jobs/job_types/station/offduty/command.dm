@@ -1,4 +1,4 @@
-/datum/job/offduty/command
+/datum/job/station/offduty/command
 	title = "Off-duty Command"
 	latejoin_only = TRUE
 	timeoff_factor = -1
