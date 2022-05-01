@@ -113,6 +113,7 @@ var/list/possible_cable_coil_colours = list(
 
 // Ghost examining the cable -> tells him the power
 /obj/structure/cable/attack_ghost(mob/user)
+	. = ..()
 	if(user.client && user.client.inquisitive_ghost)
 		user.examinate(src)
 		// following code taken from attackby (multitool)
@@ -120,8 +121,6 @@ var/list/possible_cable_coil_colours = list(
 			to_chat(user, "<span class='warning'>[powernet.avail]W in power network.</span>")
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
-	return
-
 
 // Rotating cables requires d1 and d2 to be rotated
 /obj/structure/cable/setDir(new_dir)

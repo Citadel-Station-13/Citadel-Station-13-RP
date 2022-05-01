@@ -30,6 +30,9 @@
 	/// Our default glide_size.
 	var/default_glide_size = 0
 
+	/// our default perspective - if none, a temporary one will be generated when a mob requires it
+	var/datum/perspective/self_perspective
+
 	var/anchored = 0
 	var/move_speed = 10
 	var/l_move_time = 1
@@ -58,25 +61,28 @@
 	///Reference to atom being orbited
 	var/atom/orbit_target
 
-/atom/movable/Destroy()
+/atom/movable/Destroy(force)
 	. = ..()
 	if(reagents)
-		qdel(reagents)
-		reagents = null
+		QDEL_NULL(reagents)
+	unbuckle_all_mobs(force = TRUE)
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
 	var/turf/un_opaque
 	if(opacity && isturf(loc))
 		un_opaque = loc
-
+	// kick perspectives before moving
+	if(self_perspective)
+		QDEL_NULL(self_perspective)
 	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
-	if (pulledby)
-		if (pulledby.pulling == src)
-			pulledby.pulling = null
-		pulledby = null
-	QDEL_NULL(riding_datum) //VOREStation Add
+	if(pulledby)
+		pulledby.stop_pulling()
+	if(pulling)
+		stop_pulling()
+	if(riding_datum)
+		QDEL_NULL(riding_datum)
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -308,7 +314,6 @@
 
 //Called when touching an acid pool.
 /atom/movable/proc/acid_act()
-	acid_act(null, 500, 50)
 
 //Called when touching a blood pool.
 /atom/movable/proc/blood_act()
@@ -455,3 +460,32 @@
 
 /atom/movable/proc/get_bullet_impact_effect_type()
 	return BULLET_IMPACT_NONE
+
+/**
+ * get perspective to use when shifting eye to us,
+ */
+/atom/movable/proc/get_perspective()
+	return self_perspective || temporary_perspective()
+
+/**
+ * gets a tempoerary perspective for ourselves
+ */
+/atom/movable/proc/temporary_perspective()
+	var/datum/perspective/self/temporary/P = new
+	P.eye = src
+	return P
+
+/**
+ * make a permanent self perspective
+ */
+/atom/movable/proc/make_perspective()
+	ASSERT(!self_perspective)
+	. = self_perspective = new /datum/perspective/self
+	self_perspective.eye = src
+
+/**
+ * ensure we have a self perspective
+ */
+/atom/movable/proc/ensure_self_perspective()
+	if(!self_perspective)
+		make_perspective()

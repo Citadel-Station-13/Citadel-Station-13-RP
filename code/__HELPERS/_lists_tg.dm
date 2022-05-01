@@ -355,10 +355,6 @@ proc/dd_sortedObjectList(list/incoming)
 	return sorted_text
 
 
-/proc/dd_sortedTextList(list/incoming)
-	var/case_sensitive = 1
-	return dd_sortedtextlist(incoming, case_sensitive)
-
 
 /datum/proc/dd_SortValue()
 	return "[src]"

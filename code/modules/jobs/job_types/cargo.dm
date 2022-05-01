@@ -22,7 +22,7 @@
 
 	ideal_character_age = 40
 
-	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
+	outfit_type = /datum/outfit/job/cargo/qm
 	job_description = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
 	alt_titles = list("Supply Chief" = /datum/alt_title/supply_chief)
 
@@ -47,7 +47,7 @@
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
 
-	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
+	outfit_type = /datum/outfit/job/cargo/cargo_tech
 	job_description = "A Cargo Technician fills and delivers cargo orders. They are encouraged to return delivered crates to the Cargo Shuttle, \
 						because Central Command gives a partial refund."
 	alt_titles = list("Logistics Specialist" = /datum/alt_title/logi_spec)
@@ -76,7 +76,7 @@
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting, access_cargo, access_cargo_bot)
 
-	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
+	outfit_type = /datum/outfit/job/cargo/mining
 	job_description = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
 	alt_titles = list(
 		"Drill Technician" = /datum/alt_title/drill_tech,

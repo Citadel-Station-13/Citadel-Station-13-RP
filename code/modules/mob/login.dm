@@ -41,15 +41,9 @@
 
 	next_move = 1
 	disconnect_time = null				//VOREStation Addition: clear the disconnect time
-	sight |= SEE_SELF
+
 	..()
 
-	if(loc && !isturf(loc))
-		client.eye = loc
-		client.perspective = EYE_PERSPECTIVE
-	else
-		client.eye = src
-		client.perspective = MOB_PERSPECTIVE
 	reload_fullscreen() // Reload any fullscreen overlays this mob has.
 	update_client_color()
 
@@ -88,7 +82,9 @@
 
 	reload_huds()
 
-	// rendering
+	// reset perspective to using
+	reset_perspective(no_optimizations = TRUE)
+	// load rendering onto client's screen
 	reload_rendering()
 
 /// Handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying

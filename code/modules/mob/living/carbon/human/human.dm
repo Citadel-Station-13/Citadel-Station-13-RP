@@ -776,11 +776,6 @@
 	set name = "Morph"
 	set category = "Superpower"
 
-	if(stat!=CONSCIOUS)
-		reset_view(0)
-		remoteview_target = null
-		return
-
 	if(!(mMorph in mutations))
 		src.verbs -= /mob/living/carbon/human/proc/morph
 		return
@@ -851,14 +846,10 @@
 	set name = "Project mind"
 	set category = "Superpower"
 
-	if(stat!=CONSCIOUS)
-		reset_view(0)
-		remoteview_target = null
-		return
-
 	if(!(mRemotetalk in src.mutations))
 		src.verbs -= /mob/living/carbon/human/proc/remotesay
 		return
+
 	var/list/creatures = list()
 	for(var/mob/living/carbon/h in GLOB.mob_list)
 		creatures += h
@@ -882,18 +873,19 @@
 
 	if(stat!=CONSCIOUS)
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 		return
 
 	if(!(mRemote in src.mutations))
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 		src.verbs -= /mob/living/carbon/human/proc/remoteobserve
 		return
 
-	if(client.eye != client.mob)
+	if(IsRemoteViewing())
+		to_chat(src, SPAN_NOTICE("You stop looking through another perspective."))
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 		return
 
 	var/list/mob/creatures = list()
@@ -908,10 +900,10 @@
 
 	if (target)
 		remoteview_target = target
-		reset_view(target)
+		reset_perspective(target)
 	else
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 
 /mob/living/carbon/human/get_visible_gender()
 	if(wear_suit && wear_suit.flags_inv & HIDEJUMPSUIT && ((head && head.flags_inv & HIDEMASK) || wear_mask))
@@ -1477,11 +1469,6 @@
 		return
 	..()
 
-/mob/living/carbon/human/reset_view(atom/A, update_hud = 1)
-	..()
-	if(update_hud)
-		handle_regular_hud_updates()
-
 /mob/living/carbon/human/Check_Shoegrip()
 	if(shoes && (shoes.item_flags & NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
 		return 1
@@ -1677,3 +1664,8 @@
 	if(BP_IS_ROBOTIC(E))
 		return BULLET_IMPACT_METAL
 	return BULLET_IMPACT_MEAT
+
+/mob/living/carbon/human/reduce_cuff_time()
+	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/rig))
+		return 2
+	return ..()

@@ -77,7 +77,7 @@
 			/obj/item/folder/yellow,
 			/obj/item/hand_labeler,
 			/obj/item/duct_tape_roll,
-			/obj/structure/filingcabinet/chestdrawer{anchored = 0},
+			/obj/structure/filingcabinet/chestdrawer/unanchored,
 			/obj/item/paper_bin
 			)
 	name = "Office supplies"

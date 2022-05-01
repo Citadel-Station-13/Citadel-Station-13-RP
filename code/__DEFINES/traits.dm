@@ -203,6 +203,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define ORGAN_TRAIT "organ"
 */
 #define ROUNDSTART_TRAIT "roundstart" //cannot be removed without admin intervention
+#define GHOSTROLE_TRAIT "ghostrole"
 #define JOB_TRAIT "job"
 #define TRAIT_MIME "mime" //Mime trait.
 /*
