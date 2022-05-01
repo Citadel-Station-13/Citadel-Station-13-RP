@@ -57,18 +57,22 @@
 		build_network()//built networks if we are missing them
 		network1?.update = 1
 		network2?.update = 1
+		last_flow_rate = last_power_draw = 0
 		return
 	if((stat & (NOPOWER|BROKEN)) || !use_power)
+		last_flow_rate = last_power_draw = 0
 		return
 	
 	if(!power_machine || !power_machine.powernet)
 		if(!power_machine || !power_machine.connect_to_network())//returns 0 if it fails to find a 
+			last_flow_rate = last_power_draw = 0
 			return//make sure we are connected to a powernet
 
 	power_rating = power_machine.surplus()//update power rateing to what ever is avaiable
 	power_rating = clamp(power_rating, 0, power_level)
 
 	if(power_rating <= 0)
+		last_flow_rate = last_power_draw = 0
 		return//no point in continuing if we dont have any power
 
 	var/power_draw = -1
