@@ -17,7 +17,7 @@
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 	timeoff_factor = 0
 
-	outfit_type = /decl/hierarchy/outfit/job/assistant
+	outfit_type = /datum/outfit/job/assistant
 	alt_titles = list(
 		"Visitor" = /datum/alt_title/visitor,
 		"Server" = /datum/alt_title/server,
@@ -42,15 +42,15 @@
 
 /datum/alt_title/visitor
 	title = "Visitor"
-	title_outfit = /decl/hierarchy/outfit/job/assistant/visitor
+	title_outfit = /datum/outfit/job/assistant/visitor
 
 /datum/alt_title/server
 	title = "Server"
-	title_outfit = /decl/hierarchy/outfit/job/service/server
+	title_outfit = /datum/outfit/job/service/server
 
 /datum/alt_title/morale_officer
 	title = "Morale Officer"
 
 /datum/alt_title/assistant
 	title = "Assistant"
-	title_outfit = /decl/hierarchy/outfit/job/assistant
+	title_outfit = /datum/outfit/job/assistant

@@ -13,7 +13,7 @@
 	selection_color = "#9b633e"
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/assistant/worker
+	outfit_type = /datum/outfit/job/assistant/worker
 	job_description = "Off-duty crew has no responsibilities or authority and is just there to spend their \"well-deserved\" time off."
 	pto_type = PTO_CIVILIAN
 	economic_modifier = 2
@@ -29,7 +29,7 @@
 	selection_color = "#9b633e"
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/assistant/cargo
+	outfit_type = /datum/outfit/job/assistant/cargo
 	job_description = "Off-duty crew has no responsibilities or authority and is just there to spend their \"well-deserved\" time off."
 	pto_type = PTO_CARGO
 	economic_modifier = 2
@@ -45,7 +45,7 @@
 	selection_color = "#5B4D20"
 	access = list(access_maint_tunnels, access_external_airlocks, access_construction)
 	minimal_access = list(access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/assistant/engineer
+	outfit_type = /datum/outfit/job/assistant/engineer
 	job_description = "Off-duty crew has no responsibilities or authority and is just there to spend their \"well-deserved\" time off."
 	pto_type = PTO_ENGINEERING
 	economic_modifier = 5
@@ -61,7 +61,7 @@
 	selection_color = "#013D3B"
 	access = list(access_maint_tunnels, access_external_airlocks)
 	minimal_access = list(access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/assistant/medic
+	outfit_type = /datum/outfit/job/assistant/medic
 	job_description = "Off-duty crew has no responsibilities or authority and is just there to spend their \"well-deserved\" time off."
 	pto_type = PTO_MEDICAL
 	economic_modifier = 5
@@ -77,7 +77,7 @@
 	selection_color = "#633D63"
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/assistant/scientist
+	outfit_type = /datum/outfit/job/assistant/scientist
 	job_description = "Off-duty crew has no responsibilities or authority and is just there to spend their \"well-deserved\" time off."
 	pto_type = PTO_SCIENCE
 	economic_modifier = 5
@@ -93,7 +93,7 @@
 	selection_color = "#601C1C"
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/assistant/officer
+	outfit_type = /datum/outfit/job/assistant/officer
 	job_description = "Off-duty crew has no responsibilities or authority and is just there to spend their \"well-deserved\" time off."
 	pto_type = PTO_SECURITY
 	economic_modifier = 4
@@ -109,7 +109,7 @@
 	selection_color = "#999440"
 	access = list(access_maint_tunnels, access_external_airlocks)
 	minimal_access = list(access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/assistant/explorer
+	outfit_type = /datum/outfit/job/assistant/explorer
 	job_description = "Off-duty crew has no responsibilities or authority and is just there to spend their \"well-deserved\" time off."
 	pto_type = PTO_EXPLORATION
 	economic_modifier = 5
@@ -125,7 +125,7 @@
 	selection_color = "#9b633e"
 	access = list(access_maint_tunnels, access_external_airlocks)
 	minimal_access = list(access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/assistant
+	outfit_type = /datum/outfit/job/assistant
 	job_description = "Off-duty crew has no responsibilities or authority and is just there to spend their \"well-deserved\" time off."
 	pto_type = PTO_COMMAND
 	economic_modifier = 5

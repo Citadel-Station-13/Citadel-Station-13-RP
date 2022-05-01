@@ -18,12 +18,16 @@ GLOBAL_LIST(topic_status_cache)
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
 /world/New()
-	// enable_debugger()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_init")()
+		enable_debugging()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
-	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+	// citadel edit: world runtime log removed due to world.log shunt doing that for us
+	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
 	world.Profile(PROFILE_START)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
@@ -298,6 +302,12 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 
 	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+	..()
+
+/world/Del()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_shutdown")()
 	..()
 
 /hook/startup/proc/loadMode()

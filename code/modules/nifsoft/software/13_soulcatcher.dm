@@ -221,6 +221,7 @@
 	brainmobs |= brainmob
 
 	//Put the mind and player into the mob
+	// login should handle the perspective reset, now that nif is set.
 	M.mind.transfer_to(brainmob)
 	brainmob.name = brainmob.mind.name
 	brainmob.real_name = brainmob.mind.name
@@ -281,7 +282,7 @@
 	..()
 	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
 	identifying_gender = client.prefs.identifying_gender
-	reset_perspective((nif?.owner) || nif)
+	reset_perspective((nif?.human) || nif)
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)

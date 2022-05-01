@@ -18,6 +18,7 @@
 	attack_generic()
 
 /obj/effect/wingrille_spawn/attack_ghost()
+	. = ..()
 	attack_generic()
 
 /obj/effect/wingrille_spawn/attack_generic()

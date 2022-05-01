@@ -721,7 +721,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			using_perspective = null
 	if(!P)
 		eye = null
-		virtual_eye = null
 		lazy_eye = 0
 		perspective = EYE_PERSPECTIVE
 		return
