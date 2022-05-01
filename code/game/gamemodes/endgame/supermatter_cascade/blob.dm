@@ -72,6 +72,7 @@
 
 // /vg/: Don't let ghosts fuck with this.
 /turf/unsimulated/wall/supermatter/attack_ghost(mob/user as mob)
+	. = ..()
 	user.examinate(src)
 
 /turf/unsimulated/wall/supermatter/attack_ai(mob/user as mob)
