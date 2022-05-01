@@ -98,7 +98,8 @@
 			/obj/item/clothing/suit/holidaypriest,
 			/obj/item/clothing/under/wedding/bride_white,
 			/obj/item/storage/backpack/cultpack,
-			/obj/item/storage/fancy/candle_box = 3
+			/obj/item/storage/fancy/candle_box = 3,
+			/obj/item/reagent_containers/food/drinks/bottle/holywater
 			)
 	cost = 10
 	container_type = /obj/structure/closet/crate
