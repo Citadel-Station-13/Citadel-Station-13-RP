@@ -221,6 +221,7 @@
 	brainmobs |= brainmob
 
 	//Put the mind and player into the mob
+	// login should handle the perspective reset, now that nif is set.
 	M.mind.transfer_to(brainmob)
 	brainmob.name = brainmob.mind.name
 	brainmob.real_name = brainmob.mind.name
