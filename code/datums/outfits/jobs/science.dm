@@ -3,9 +3,9 @@
 	l_ear = /obj/item/radio/headset/headset_sci
 	shoes = /obj/item/clothing/shoes/white
 	pda_type = /obj/item/pda/science
-	backpack = /obj/item/storage/backpack/toxins
-	satchel_one = /obj/item/storage/backpack/satchel/tox
-	messenger_bag = /obj/item/storage/backpack/messenger/tox
+	backpack = /obj/item/storage/backpack/sci
+	satchel_one = /obj/item/storage/backpack/satchel/sci
+	messenger_bag = /obj/item/storage/backpack/messenger/sci
 
 /datum/outfit/job/science/rd
 	name = OUTFIT_JOB_NAME("Research Director")

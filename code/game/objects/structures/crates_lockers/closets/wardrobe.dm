@@ -244,18 +244,18 @@
 		/obj/item/clothing/shoes/slippers = 3,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/science,
 		/obj/item/clothing/shoes/boots/winter/science,
-		/obj/item/storage/backpack/toxins,
-		/obj/item/storage/backpack/satchel/tox)
+		/obj/item/storage/backpack/sci,
+		/obj/item/storage/backpack/satchel/sci)
 
 /obj/structure/closet/wardrobe/science_white/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/duffelbag/sci
 	else
-		starts_with += /obj/item/storage/backpack/satchel/tox
+		starts_with += /obj/item/storage/backpack/satchel/sci
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/duffelbag/sci
 	else
-		starts_with += /obj/item/storage/backpack/satchel/tox
+		starts_with += /obj/item/storage/backpack/satchel/sci
 
 	return ..()
 
@@ -272,14 +272,14 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/science/robotics = 2,
 		/obj/item/clothing/shoes/black = 2,
 		/obj/item/clothing/gloves/black = 2,
-		/obj/item/storage/backpack/toxins,
-		/obj/item/storage/backpack/satchel/tox)
+		/obj/item/storage/backpack/sci,
+		/obj/item/storage/backpack/satchel/sci)
 
 /obj/structure/closet/wardrobe/robotics_black/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/duffelbag/sci
 	else
-		starts_with += /obj/item/storage/backpack/satchel/tox
+		starts_with += /obj/item/storage/backpack/satchel/sci
 
 	return ..()
 

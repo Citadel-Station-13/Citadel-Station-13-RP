@@ -23,7 +23,7 @@
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/duffelbag/sci
 	else
-		starts_with += /obj/item/storage/backpack/toxins
+		starts_with += /obj/item/storage/backpack/sci
 	return ..()
 
 

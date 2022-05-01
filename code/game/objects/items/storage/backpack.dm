@@ -118,7 +118,7 @@
 	desc = "It's a tough backpack for the daily grind of station life."
 	icon_state = "engiepack"
 
-/obj/item/storage/backpack/toxins
+/obj/item/storage/backpack/sci
 	name = "laboratory backpack"
 	desc = "It's a light backpack modeled for use in laboratories and other scientific institutions."
 	icon_state = "toxpack"
@@ -257,7 +257,7 @@
 	icon_state = "satchel-gene"
 	item_state_slots = list(slot_r_hand_str = "genepack", slot_l_hand_str = "genepack")
 
-/obj/item/storage/backpack/satchel/tox
+/obj/item/storage/backpack/satchel/sci
 	name = "scientist satchel"
 	desc = "Useful for holding research materials."
 	icon_state = "satchel-sci"
@@ -352,7 +352,7 @@
 	icon_state = "courierbagviro"
 	item_state_slots = list(slot_r_hand_str = "viropack", slot_l_hand_str = "viropack")
 
-/obj/item/storage/backpack/messenger/tox
+/obj/item/storage/backpack/messenger/sci
 	name = "research messenger bag"
 	desc = "A backpack worn over one shoulder.  Useful for holding science materials."
 	icon_state = "courierbagsci"
