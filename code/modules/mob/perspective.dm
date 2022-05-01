@@ -9,9 +9,10 @@
   * - apply - whether to apply to client. this shold be false when resetting
   * 	due to a logout because the whole point is logout kills perspective!
   * - forceful - if the client is desynced from our using perspective, do we force it back?
+  * - no_optimizations - if true, it'll be a true reset. use for things like cancel camera view which should always force updates.
   */
-/mob/proc/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE)
-	if(P? ((ismovable(P) && istype(using_perspective, /datum/perspective/self/temporary))? (using_perspective?.eye == P) : (P == using_perspective)) : (using_perspective && (using_perspective == self_perspective)))
+/mob/proc/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
+	if(!no_optimizations && (P? ((ismovable(P) && istype(using_perspective, /datum/perspective/self/temporary))? (using_perspective?.eye == P) : (P == using_perspective)) : (using_perspective && (using_perspective == self_perspective))))
 		// if we don't need to reset, assume it's an update.
 		// this is bad practice but stuff like mechs need this to work, since
 		// they reset for brainmobs but only need to update for others.
@@ -65,7 +66,7 @@
 	set name = "Cancel Camera View"
 	set category = "OOC"
 
-	reset_perspective()
+	reset_perspective(no_optimizations = TRUE, apply = TRUE, forceful = TRUE)
 
 /**
  * gets the perspective we're using
