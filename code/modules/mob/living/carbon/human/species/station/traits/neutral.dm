@@ -69,6 +69,23 @@
 	..(S,H)
 	H.verbs |= /mob/living/carbon/human/proc/bloodsuck
 
+/datum/trait/vampire
+	name = "Vetalan / Vampiric"
+	desc = "Vampires, officially known as the Vetalan, are weaker to burns, bright lights, and must consume blood to survive. To this end, they can see near-perfectly in the darkness, possess sharp, numbing fangs, and anti-septic saliva."
+	cost = 0
+	var_changes = list(
+		"is_vampire" = TRUE,
+		"darksight" = 7,
+		"flash_mod" = 2,
+		"flash_burn" = 5,
+		"burn_mod" = 1.25,
+		"unarmed_types" = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp, /datum/unarmed_attack/bite/sharp/numbing))
+
+/datum/trait/vampire/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.verbs |= /mob/living/carbon/human/proc/bloodsuck
+	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
+
 /datum/trait/succubus_drain
 	name = "Succubus Drain"
 	desc = "Makes you able to gain nutrition from draining prey in your grasp."
