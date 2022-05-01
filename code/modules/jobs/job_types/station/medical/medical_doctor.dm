@@ -72,7 +72,7 @@
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat
 	l_hand = /obj/item/storage/firstaid/regular
 	r_pocket = /obj/item/flashlight/pen
-	id_type = /obj/item/card/id/medical_doctor
+	id_type = /obj/item/card/id/medical
 	l_ear = /obj/item/radio/headset/headset_med
 	shoes = /obj/item/clothing/shoes/white
 	pda_type = /obj/item/pda/medical
