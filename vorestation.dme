@@ -3118,7 +3118,6 @@
 #include "code\modules\organs\internal\robotic\diagnostic.dm"
 #include "code\modules\organs\internal\robotic\heatsink.dm"
 #include "code\modules\organs\internal\species\skrell.dm"
-#include "code\modules\organs\internal\species\teshari.dm"
 #include "code\modules\organs\subtypes\alraune.dm"
 #include "code\modules\organs\subtypes\diona.dm"
 #include "code\modules\organs\subtypes\indestructible.dm"
