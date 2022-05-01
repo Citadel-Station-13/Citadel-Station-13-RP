@@ -498,7 +498,7 @@ var/list/ai_verbs_default = list(
 		else
 			to_chat(src, "<font color='red'>System error. Cannot locate [html_decode(href_list["trackname"])].</font>")
 
-/mob/living/silicon/ai/reset_perspective(datum/perspective/P)
+/mob/living/silicon/ai/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
 	. = ..()
 	lightNearbyCamera()
 
