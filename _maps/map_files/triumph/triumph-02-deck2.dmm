@@ -2854,7 +2854,7 @@
 /area/maintenance/dormitory)
 "ia" = (
 /obj/structure/closet,
-/obj/item/storage/backpack/dufflebag,
+/obj/item/storage/backpack/duffelbag,
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "ib" = (

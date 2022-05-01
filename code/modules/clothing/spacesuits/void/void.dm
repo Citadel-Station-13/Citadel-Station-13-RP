@@ -15,16 +15,16 @@
 	//Species-specific stuff.
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_ALRAUNE)
 	sprite_sheets_refit = list(
-		SPECIES_UNATHI = 'icons/mob/species/unathi/helmet.dmi',
-		SPECIES_TAJ = 'icons/mob/species/tajaran/helmet.dmi',
-		SPECIES_SKRELL = 'icons/mob/species/skrell/helmet.dmi'
+		SPECIES_SKRELL = 'icons/mob/species/skrell/head.dmi',
+		SPECIES_TAJARA = 'icons/mob/species/tajaran/head.dmi',
+		SPECIES_UNATHI = 'icons/mob/species/unathi/head.dmi'
 		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
 		)
 	sprite_sheets_obj = list(
-		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/hats.dmi',
-		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/hats.dmi',
 		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/hats.dmi',
+		SPECIES_TAJARA = 'icons/obj/clothing/species/tajaran/hats.dmi',
 		SPECIES_TESHARI = 'icons/obj/clothing/species/teshari/hats.dmi',
+		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/hats.dmi',
 		SPECIES_VOX = 'icons/obj/clothing/species/vox/hats.dmi'
 		)
 
@@ -45,23 +45,23 @@
 
 	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN)
 	sprite_sheets_refit = list(
-		SPECIES_UNATHI = 'icons/mob/species/unathi/suit.dmi',
-		SPECIES_TAJ = 'icons/mob/species/tajaran/suit.dmi',
-		SPECIES_SKRELL = 'icons/mob/species/skrell/suit.dmi'
+		SPECIES_SKRELL = 'icons/mob/species/skrell/suits.dmi',
+		SPECIES_TAJARA = 'icons/mob/species/tajaran/suits.dmi',
+		SPECIES_UNATHI = 'icons/mob/species/unathi/suits.dmi'
 		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
 		)
 	sprite_sheets_obj = list(
-		SPECIES_TAJ				= 'icons/obj/clothing/species/tajaran/suits.dmi',
-		SPECIES_SKRELL			= 'icons/obj/clothing/species/skrell/suits.dmi',
-		SPECIES_UNATHI			= 'icons/obj/clothing/species/unathi/suits.dmi',
-		SPECIES_TESHARI			= 'icons/obj/clothing/species/teshari/suits.dmi',
-		SPECIES_NEVREAN			= 'icons/obj/clothing/species/nevrean/suits.dmi',
-		SPECIES_AKULA			= 'icons/obj/clothing/species/akula/suits.dmi',
-		SPECIES_SERGAL			= 'icons/obj/clothing/species/sergal/suits.dmi',
-		SPECIES_ZORREN_FLAT		= 'icons/obj/clothing/species/fennec/suits.dmi',
-		SPECIES_ZORREN_HIGH		= 'icons/obj/clothing/species/fox/suits.dmi',
-		SPECIES_VULPKANIN		= 'icons/obj/clothing/species/vulpkanin/suits.dmi',
-		SPECIES_PROMETHEAN		= 'icons/obj/clothing/species/skrell/suits.dmi'
+		SPECIES_AKULA       = 'icons/obj/clothing/species/akula/suits.dmi',
+		SPECIES_NEVREAN     = 'icons/obj/clothing/species/nevrean/suits.dmi',
+		SPECIES_PROMETHEAN  = 'icons/obj/clothing/species/skrell/suits.dmi',
+		SPECIES_SERGAL      = 'icons/obj/clothing/species/sergal/suits.dmi',
+		SPECIES_SKRELL      = 'icons/obj/clothing/species/skrell/suits.dmi',
+		SPECIES_TAJARA      = 'icons/obj/clothing/species/tajaran/suits.dmi',
+		SPECIES_TESHARI     = 'icons/obj/clothing/species/teshari/suits.dmi',
+		SPECIES_UNATHI      = 'icons/obj/clothing/species/unathi/suits.dmi',
+		SPECIES_VULPKANIN   = 'icons/obj/clothing/species/vulpkanin/suits.dmi',
+		SPECIES_ZORREN_FLAT = 'icons/obj/clothing/species/fennec/suits.dmi',
+		SPECIES_ZORREN_HIGH = 'icons/obj/clothing/species/fox/suits.dmi'
 		)
 
 	//Breach thresholds, should ideally be inherited by most (if not all) voidsuits.
@@ -325,7 +325,7 @@
 			to_chat(user, "\The [src] already has an airtank installed.")
 		else if(cooler)
 			to_chat(user, "\The [src]'s suit cooling unit is in the way.  Remove it first.")
-		else if(istype(W,/obj/item/tank/phoron))
+		else if(istype(W,/obj/item/tank/phorontank))
 			to_chat(user, "\The [W] cannot be inserted into \the [src]'s storage compartment.")
 		else
 			to_chat(user, "You insert \the [W] into \the [src]'s storage compartment.")

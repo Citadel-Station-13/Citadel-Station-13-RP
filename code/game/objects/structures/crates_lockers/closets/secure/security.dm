@@ -9,7 +9,7 @@
 	req_access = list(access_captain)
 
 	starts_with = list(
-		/obj/item/storage/backpack/dufflebag/captain,
+		/obj/item/storage/backpack/duffelbag/captain,
 		/obj/item/clothing/head/helmet,
 		/obj/item/clothing/suit/storage/vest/capcarapace,
 		/obj/item/cartridge/captain,
@@ -138,7 +138,7 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/sec
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/sec
+		starts_with += /obj/item/storage/backpack/duffelbag/sec
 	return ..()
 */
 
@@ -257,7 +257,7 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/sec
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/sec
+		starts_with += /obj/item/storage/backpack/duffelbag/sec
 	return ..()
 
 /obj/structure/closet/secure_closet/security
@@ -303,7 +303,7 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/sec
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/sec
+		starts_with += /obj/item/storage/backpack/duffelbag/sec
 	if(prob(30))
 		starts_with += /obj/item/contraband/poster/nanotrasen
 	return ..()
@@ -492,7 +492,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	else
 		starts_with += /obj/item/storage/backpack/satchel/sec
 	if(prob(75))
-		starts_with += /obj/item/storage/backpack/dufflebag/sec
+		starts_with += /obj/item/storage/backpack/duffelbag/sec
 	return ..()
 
 /obj/structure/closet/secure_closet/nanotrasen_commander
@@ -546,7 +546,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	else
 		starts_with += /obj/item/storage/backpack/satchel/sec
 	if(prob(75))
-		starts_with += /obj/item/storage/backpack/dufflebag/sec
+		starts_with += /obj/item/storage/backpack/duffelbag/sec
 	return ..()
 
 /obj/structure/closet/secure_closet/nanotrasen_warden
@@ -592,5 +592,5 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	else
 		new /obj/item/storage/backpack/satchel/sec(src)
 	if(prob(75))
-		new /obj/item/storage/backpack/dufflebag/sec(src)
+		new /obj/item/storage/backpack/duffelbag/sec(src)
 	return ..()

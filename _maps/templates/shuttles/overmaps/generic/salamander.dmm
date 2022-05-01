@@ -859,8 +859,8 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/item/tank/phoron/pressurized,
-/obj/item/tank/phoron/pressurized,
+/obj/item/tank/phorontank/pressurized,
+/obj/item/tank/phorontank/pressurized,
 /obj/structure/closet/walllocker{
 	dir = 1;
 	name = "Spare Fuel";

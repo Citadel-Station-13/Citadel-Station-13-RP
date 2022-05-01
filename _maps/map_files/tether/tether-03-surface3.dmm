@@ -23429,7 +23429,7 @@
 /area/tether/surfacebase/southhall)
 "aPt" = (
 /obj/machinery/light/small,
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/shuttle_pad)
 "aPu" = (

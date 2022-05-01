@@ -6549,14 +6549,14 @@
 /area/ship/manta/hallways_aft)
 "EE" = (
 /obj/structure/table/rack,
-/obj/item/storage/backpack/dufflebag/syndie/med,
-/obj/item/storage/backpack/dufflebag/syndie/med,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie,
-/obj/item/storage/backpack/dufflebag/syndie,
-/obj/item/storage/backpack/dufflebag/syndie,
-/obj/item/storage/backpack/dufflebag/syndie,
+/obj/item/storage/backpack/duffelbag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie,
+/obj/item/storage/backpack/duffelbag/syndie,
+/obj/item/storage/backpack/duffelbag/syndie,
+/obj/item/storage/backpack/duffelbag/syndie,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},

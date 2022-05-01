@@ -415,13 +415,13 @@ item_path: /obj/item/clothing/suit/armor/tactical/officer/fluff/ace
 {
 ckey: joanrisu
 character_name: Joan Risu
-item_path: /obj/item/storage/backpack/dufflebag/sec/fluff/joanrisu
+item_path: /obj/item/storage/backpack/duffelbag/sec/fluff/joanrisu
 }
 
 {
 ckey: joanrisu
 character_name: Katarina Eine
-item_path: /obj/item/storage/backpack/dufflebag/sec/fluff/katarina
+item_path: /obj/item/storage/backpack/duffelbag/sec/fluff/katarina
 }
 
 {

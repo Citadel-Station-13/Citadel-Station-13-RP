@@ -163,7 +163,7 @@ var/list/civilian_cartridges = list(
 /obj/item/cartridge/signal/science
 	name = "\improper Signal Ace 2 cartridge"
 	desc = "Complete with integrated radio signaler!"
-	icon_state = "cart-tox"
+	icon_state = "cart-sci"
 	access_reagent_scanner = 1
 	access_atmos = 1
 

@@ -249,11 +249,11 @@
 
 /obj/structure/closet/wardrobe/science_white/Initialize(mapload)
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/sci
+		starts_with += /obj/item/storage/backpack/duffelbag/sci
 	else
 		starts_with += /obj/item/storage/backpack/satchel/tox
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/sci
+		starts_with += /obj/item/storage/backpack/duffelbag/sci
 	else
 		starts_with += /obj/item/storage/backpack/satchel/tox
 
@@ -277,7 +277,7 @@
 
 /obj/structure/closet/wardrobe/robotics_black/Initialize(mapload)
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/sci
+		starts_with += /obj/item/storage/backpack/duffelbag/sci
 	else
 		starts_with += /obj/item/storage/backpack/satchel/tox
 

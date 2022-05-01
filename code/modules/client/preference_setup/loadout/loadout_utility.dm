@@ -214,15 +214,15 @@ modular computers
 	..()
 	gear_tweaks += new /datum/gear_tweak/laptop()
 
-/datum/gear/utility/dufflebag
-	name = "Dufflebag"
-	path = /obj/item/storage/backpack/dufflebag
+/datum/gear/utility/duffelbag
+	name = "Duffelbag"
+	path = /obj/item/storage/backpack/duffelbag
 	slot = slot_back
 	cost = 2
 
-/datum/gear/utility/dufflebag/black
-	name = "Dufflebag - Black"
-	path = /obj/item/storage/backpack/dufflebag/fluff
+/datum/gear/utility/duffelbag/black
+	name = "Duffelbag - Black"
+	path = /obj/item/storage/backpack/duffelbag/fluff
 
 /datum/gear/utility/welding_helmet
 	name = "Welding Helmet"

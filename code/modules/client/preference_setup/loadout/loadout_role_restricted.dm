@@ -464,9 +464,9 @@
 	path = /obj/item/clothing/under/rank/dispatch
 
 //Back
-/datum/gear/restricted/security/back/dufflebag
-	name = "Security - Dufflebag"
-	path = /obj/item/storage/backpack/dufflebag/sec
+/datum/gear/restricted/security/back/duffelbag
+	name = "Security - Duffelbag"
+	path = /obj/item/storage/backpack/duffelbag/sec
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
 	cost = 2
 
@@ -566,15 +566,15 @@
 	path = /obj/item/clothing/head/parahat
 
 //Back
-/datum/gear/restricted/medical/back/dufflebag
-	name = "Medical Dufflebag"
-	path = /obj/item/storage/backpack/dufflebag/med
+/datum/gear/restricted/medical/back/duffelbag
+	name = "Medical Duffelbag"
+	path = /obj/item/storage/backpack/duffelbag/med
 	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Talon Doctor")
 	cost = 2
 
-/datum/gear/restricted/medical/back/dufflebag/emt
-	name = "Medical Dufflebag - EMT Variant"
-	path = /obj/item/storage/backpack/dufflebag/emt
+/datum/gear/restricted/medical/back/duffelbag/emt
+	name = "Medical Duffelbag - EMT Variant"
+	path = /obj/item/storage/backpack/duffelbag/emt
 
 //Uniform
 /datum/gear/restricted/medical/uniform/skirt
@@ -792,9 +792,9 @@
 	path = /obj/item/clothing/head/operations/engineering
 
 //Back
-/datum/gear/restricted/engineering/back/dufflebag
-	name = "Engineering Dufflebag"
-	path = /obj/item/storage/backpack/dufflebag/eng
+/datum/gear/restricted/engineering/back/duffelbag
+	name = "Engineering Duffelbag"
+	path = /obj/item/storage/backpack/duffelbag/eng
 	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Talon Engineer")
 	cost = 2
 
@@ -1073,9 +1073,9 @@
 	path = /obj/item/clothing/head/beret/science
 
 //Back
-/datum/gear/restricted/science/back/dufflebag
-	name = "Science Dufflebag"
-	path = /obj/item/storage/backpack/dufflebag/sci
+/datum/gear/restricted/science/back/duffelbag
+	name = "Science Duffelbag"
+	path = /obj/item/storage/backpack/duffelbag/sci
 	cost = 2
 
 //Uniform

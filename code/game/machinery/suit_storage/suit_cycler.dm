@@ -26,7 +26,7 @@
 	//Departments that the cycler can paint suits to look like.
 	var/list/departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Director","Head of Security", "No Change")
 	//Species that the suits can be configured to fit.
-	var/list/species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
+	var/list/species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
 
 	var/target_department
 	var/target_species
@@ -99,14 +99,14 @@
 	model_text = "Director"
 	req_access = list(access_captain)
 	departments = list("Director", "No Change")
-	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_VULPKANIN)
+	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJARA, SPECIES_VULPKANIN)
 
 /obj/machinery/suit_cycler/headofsecurity
 	name = "Head of Security suit cycler"
 	model_text = "Head of Security"
 	req_access = list(access_hos)
 	departments = list("Head of Security", "No Change")
-	species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_VULPKANIN)
+	species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_TAJARA, SPECIES_VULPKANIN)
 
 /obj/machinery/suit_cycler/vintage
 	name = "Vintage Crew suit cycler"
@@ -247,7 +247,7 @@
 	//Clear the access reqs, disable the safeties, and open up all paintjobs.
 	to_chat(user, "<span class='danger'>You run the sequencer across the interface, corrupting the operating protocols.</span>")
 	departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Crowd Control","Emergency Medical Response","^%###^%$", "Charring", "No Change")
-	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
+	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
 
 	emagged = 1
 	safeties = 0

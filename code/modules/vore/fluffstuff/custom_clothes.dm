@@ -1080,7 +1080,7 @@ END OF CITADEL CHANGES */
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
 		if(H.species.name == SPECIES_VOX)
-			icon_override = 'icons/mob/species/vox/suit.dmi'
+			icon_override = 'icons/mob/species/vox/suits.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	update_clothing_icon()

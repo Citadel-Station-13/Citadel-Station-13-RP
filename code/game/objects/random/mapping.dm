@@ -733,8 +733,8 @@
 				/obj/structure/closet/crate/allico //GUMMIES
 			),
 			prob(2);list(
-				/obj/item/tank/phoron,
-				/obj/item/tank/phoron,
+				/obj/item/tank/phorontank,
+				/obj/item/tank/phorontank,
 				/obj/structure/closet/crate/secure/phoron //HQ FUEL TANKS
 			),
 			prob(1);list(

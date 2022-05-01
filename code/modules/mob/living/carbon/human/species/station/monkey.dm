@@ -74,7 +74,7 @@
 	icobase = 'icons/mob/human_races/monkeys/r_farwa.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_farwa.dmi'
 
-	greater_form = SPECIES_TAJ
+	greater_form = SPECIES_TAJARA
 	default_language = SPECIES_MONKEY_TAJ
 	flesh_color = "#AFA59E"
 	base_color = "#333333"

@@ -46,7 +46,7 @@
 	color = "#824B28"
 
 /obj/structure/table/wooden_reinforced/Initialize(mapload)
-	material = get_material_by_name("wood")
+	material = get_material_by_name(MAT_WOOD)
 	reinforced = get_material_by_name(MAT_STEEL)
 	return ..()
 
@@ -55,7 +55,7 @@
 	color = "#824B28"
 
 /obj/structure/table/woodentable/Initialize(mapload)
-	material = get_material_by_name("wood")
+	material = get_material_by_name(MAT_WOOD)
 	return ..()
 
 /obj/structure/table/sifwoodentable
@@ -63,7 +63,7 @@
 	color = "#824B28"
 
 /obj/structure/table/sifwoodentable/Initialize(mapload)
-	material = get_material_by_name("alien wood")
+	material = get_material_by_name(MAT_SIFWOOD)
 	return ..()
 
 /obj/structure/table/sifwooden_reinforced
@@ -71,7 +71,7 @@
 	color = "#824B28"
 
 /obj/structure/table/sifwooden_reinforced/Initialize(mapload)
-	material = get_material_by_name("alien wood")
+	material = get_material_by_name(MAT_SIFWOOD)
 	reinforced = get_material_by_name(MAT_STEEL)
 	return ..()
 
@@ -80,14 +80,14 @@
 	color = "#42291a"
 
 /obj/structure/table/hardwoodtable/Initialize(mapload)
-	material = get_material_by_name("hardwood")
+	material = get_material_by_name(MAT_HARDWOOD)
 	return ..()
 
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 
 /obj/structure/table/gamblingtable/Initialize(mapload)
-	material = get_material_by_name("wood")
+	material = get_material_by_name(MAT_WOOD)
 	carpeted = 1
 	return ..()
 
@@ -97,7 +97,7 @@
 	alpha = 77 // 0.3 * 255
 
 /obj/structure/table/glass/Initialize(mapload)
-	material = get_material_by_name("glass")
+	material = get_material_by_name(MAT_GLASS)
 	return ..()
 
 /obj/structure/table/borosilicate
@@ -106,7 +106,7 @@
 	alpha = 77
 
 /obj/structure/table/borosilicate/Initialize(mapload)
-	material = get_material_by_name("borosilicate glass")
+	material = get_material_by_name(MAT_BS_GLASS)
 	return ..()
 
 /obj/structure/table/holotable
@@ -121,7 +121,7 @@
 	icon_state = "holo_preview"
 
 /obj/structure/table/woodentable/holotable/Initialize(mapload)
-	material = get_material_by_name("holowood")
+	material = get_material_by_name("holo[MAT_WOOD]")
 	return ..()
 
 /obj/structure/table/alien
@@ -132,13 +132,13 @@
 	can_plate = FALSE
 
 /obj/structure/table/alien/Initialize(mapload)
-	material = get_material_by_name("alium")
+	material = get_material_by_name("alien")
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
 	return ..()
 
 /obj/structure/table/alien/dismantle(obj/item/tool/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
+	to_chat(user, SPAN_WARNING("You cannot dismantle \the [src]."))
 	return
 
 /obj/structure/table/bananium
@@ -146,7 +146,7 @@
 	color = "#d6c100"
 
 /obj/structure/table/bananium/Initialize(mapload)
-	material = get_material_by_name("bananium")
+	material = get_material_by_name(MAT_BANANIUM)
 	return ..()
 
 /obj/structure/table/bananium_reinforced
@@ -154,7 +154,7 @@
 	color = "#d6c100"
 
 /obj/structure/table/bananium_reinforced/Initialize(mapload)
-	material = get_material_by_name("bananium")
+	material = get_material_by_name(MAT_BANANIUM)
 	reinforced = get_material_by_name(MAT_STEEL)
 	return ..()
 
@@ -180,7 +180,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/bench/marble/Initialize(mapload)
-	material = get_material_by_name("marble")
+	material = get_material_by_name(MAT_MARBLE)
 	return ..()
 
 /*
@@ -224,7 +224,7 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/sifwooden/Initialize(mapload)
-	material = get_material_by_name("alien wood")
+	material = get_material_by_name(MAT_SIFWOOD)
 	return ..()
 
 /obj/structure/table/bench/sifwooden/padded
@@ -245,7 +245,7 @@
 	alpha = 77 // 0.3 * 255
 
 /obj/structure/table/bench/glass/Initialize(mapload)
-	material = get_material_by_name("glass")
+	material = get_material_by_name(MAT_GLASS)
 	return ..()
 
 /*
@@ -261,6 +261,55 @@
 	icon_state = "holo_preview"
 
 /obj/structure/table/bench/wooden/holotable/New()
-	material = get_material_by_name("holowood")
+	material = get_material_by_name("holo[MAT_WOOD]")
 	..()
 */
+/obj/structure/table/darkglass
+	name = "darkglass table"
+	desc = "Shiny!"
+	icon = 'icons/obj/tables.dmi'
+	icon_state = "darkglass_table_preview"
+	flipped = -1
+	can_reinforce = FALSE
+	can_plate = FALSE
+
+/obj/structure/table/darkglass/New()
+	material = get_material_by_name("darkglass")
+	verbs -= /obj/structure/table/verb/do_flip
+	verbs -= /obj/structure/table/proc/do_put
+
+	..()
+
+/obj/structure/table/darkglass/dismantle(obj/item/tool/wrench/W, mob/user)
+	to_chat(user, SPAN_WARNING("You cannot dismantle \the [src]."))
+	return
+/obj/structure/table/alien/blue
+	icon = 'icons/turf/shuttle_alien_blue.dmi'
+
+
+/obj/structure/table/fancyblack
+	name = "fancy table"
+	desc = "Cloth!"
+	icon = 'icons/obj/tablesfancy.dmi'
+	icon_state = "fancyblack"
+	flipped = -1
+	can_reinforce = FALSE
+	can_plate = FALSE
+
+/obj/structure/table/fancyblack/Initialize(mapload)
+	material = get_material_by_name("fancyblack")
+	verbs -= /obj/structure/table/verb/do_flip
+	verbs -= /obj/structure/table/proc/do_put
+	. = ..()
+
+/obj/structure/table/fancyblack/dismantle(obj/item/tool/wrench/W, mob/user)
+	to_chat(user, SPAN_WARNING("You cannot dismantle \the [src]."))
+	return
+
+/obj/structure/table/gold
+	icon_state = "plain_preview"
+	color = "#FFFF00"
+
+/obj/structure/table/gold/Initialize(mapload)
+	material = get_material_by_name(MAT_GOLD)
+	. = ..()

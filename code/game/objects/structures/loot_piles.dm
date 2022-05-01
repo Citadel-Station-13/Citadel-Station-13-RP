@@ -156,7 +156,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/storage/backpack,
 		/obj/item/storage/backpack/satchel/norm,
 		/obj/item/storage/backpack/satchel,
-		/obj/item/storage/backpack/dufflebag,
+		/obj/item/storage/backpack/duffelbag,
 		/obj/item/storage/box,
 		/obj/item/storage/wallet,
 		/obj/item/clothing/shoes/galoshes,

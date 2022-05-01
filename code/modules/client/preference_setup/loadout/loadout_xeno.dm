@@ -38,7 +38,7 @@
 //**Species-Specific Datum Declarations
 //*Tajaran
 /datum/gear/xeno/tajaran
-	whitelisted = SPECIES_TAJ
+	whitelisted = SPECIES_TAJARA
 
 /datum/gear/xeno/tajaran/accessories
 	slot = slot_tie
@@ -886,4 +886,3 @@
 /datum/gear/xeno/uniform
 	name = "Generic - Gear Harness"
 	path = /obj/item/clothing/under/harness
-

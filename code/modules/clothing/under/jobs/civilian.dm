@@ -275,8 +275,8 @@
 	desc = "A dark blue NanoTrasen flight suit. Warm and practical, several patches are scattered across it."
 	icon_state = "pilot2"
 	worn_state = "pilot2"
-	rolled_down = 0
-	rolled_sleeves = 0
+	rolled_down = FALSE
+	rolled_sleeves = FALSE
 	item_icons = list(slot_w_uniform_str = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
 	icon = 'icons/map_assets/southern_cross/obj/sc_uniforms.dmi'
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot2)
@@ -285,6 +285,6 @@
 /obj/item/clothing/under/rank/janitor/starcon
 	name = "janitor's uniform"
 	desc = "It's the official uniform of the station's janitor with minor modifications. It has minor protection from biohazards, but not from the harshness of space."
-	icon = 'icons/obj/clothing/uniforms_cit.dmi'
-	icon_override = 'icons/mob/uniform_cit.dmi'
+	icon = 'icons/obj/clothing/uniforms.dmi'
+	icon_override = 'icons/mob/uniform.dmi'
 	icon_state = "janitor_sc"

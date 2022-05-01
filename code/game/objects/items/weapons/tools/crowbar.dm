@@ -124,7 +124,7 @@
 /obj/item/tool/prybar
 	name = "pry bar"
 	desc = "A steel bar with a wedge, designed specifically for opening unpowered doors in an emergency. It comes in a variety of configurations - collect them all!"
-	icon = 'icons/obj/tools_vr.dmi'
+	icon = 'icons/obj/tools.dmi'
 	icon_state = "prybar"
 	slot_flags = SLOT_BELT
 	force = 4

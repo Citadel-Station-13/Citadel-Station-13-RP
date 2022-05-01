@@ -520,7 +520,7 @@
 	for(var/obj/machinery/power/rad_collector/Rad in machines)
 		if(Rad.anchored)
 			if(!Rad.P)
-				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
+				var/obj/item/tank/phorontank/Phoron = new/obj/item/tank/phorontank(Rad)
 				Phoron.air_contents.gas[/datum/gas/phoron] = 70
 				Rad.drainratio = 0
 				Rad.P = Phoron
@@ -558,7 +558,7 @@
 				Rad.anchored = 1
 				Rad.connect_to_network()
 
-				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
+				var/obj/item/tank/phorontank/Phoron = new/obj/item/tank/phorontank(Rad)
 
 				Phoron.air_contents.gas[/datum/gas/phoron] = 29.1154	//This is a full tank if you filled it from a canister
 				Rad.P = Phoron

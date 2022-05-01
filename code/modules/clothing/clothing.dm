@@ -299,7 +299,7 @@
 		desc = "[desc]<br>They have had the fingertips cut off of them."
 		if("exclude" in species_restricted)
 			species_restricted -= SPECIES_UNATHI
-			species_restricted -= SPECIES_TAJ
+			species_restricted -= SPECIES_TAJARA
 		return
 */
 
@@ -318,7 +318,7 @@
 				H.drop_from_inventory(ring)	//Remove the ring (or other under-glove item in the hand slot?) so you can put on the gloves.
 				ring.forceMove(src)
 				to_chat(user, "You slip \the [src] on over \the [src.ring].")
-				if(!(flags & THICKMATERIAL))
+				if(!(item_flags & THICKMATERIAL))
 					punch_force += ring.punch_force
 		else
 			ring = null
@@ -395,8 +395,8 @@
 	var/image/helmet_light
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/head.dmi',
+		SPECIES_TESHARI   = 'icons/mob/species/teshari/head.dmi',
+		SPECIES_VOX       = 'icons/mob/species/vox/head.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/head.dmi'
 		)
 
@@ -454,9 +454,9 @@
 	if(!success)
 		return 0
 	else if(success == 2)
-		to_chat(user, "<span class='warning'>You are already wearing a hat.</span>")
+		to_chat(user, SPAN_WARNING("You are already wearing a hat."))
 	else if(success == 1)
-		to_chat(user, "<span class='notice'>You crawl under \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You crawl under \the [src]."))
 	return 1
 
 /obj/item/clothing/head/update_icon(var/mob/user)
@@ -506,18 +506,18 @@
 		) //custom species support.
 	blood_sprite_state = "maskblood"
 	sprite_sheets = list(
-		SPECIES_TESHARI		= 'icons/mob/species/teshari/masks.dmi',
-		SPECIES_VOX 		= 'icons/mob/species/vox/masks.dmi',
-		SPECIES_TAJ 		= 'icons/mob/species/tajaran/mask_vr.dmi',
-		SPECIES_UNATHI 		= 'icons/mob/species/unathi/mask_vr.dmi',
-		SPECIES_SERGAL 		= 'icons/mob/species/sergal/mask_vr.dmi',
-		SPECIES_NEVREAN 	= 'icons/mob/species/nevrean/mask_vr.dmi',
-		SPECIES_ZORREN_HIGH	= 'icons/mob/species/fox/mask_vr.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi',
-		SPECIES_AKULA 		= 'icons/mob/species/akula/mask_vr.dmi',
-		SPECIES_VULPKANIN 	= 'icons/mob/species/vulpkanin/mask.dmi',
-		SPECIES_XENOCHIMERA	= 'icons/mob/species/tajaran/mask_vr.dmi',
-		SPECIES_WEREBEAST	= 'icons/mob/species/werebeast/masks.dmi'
+		SPECIES_AKULA       = 'icons/mob/species/akula/mask.dmi',
+		SPECIES_NEVREAN     = 'icons/mob/species/nevrean/mask.dmi',
+		SPECIES_SERGAL      = 'icons/mob/species/sergal/mask.dmi',
+		SPECIES_TAJARA      = 'icons/mob/species/tajaran/mask.dmi',
+		SPECIES_TESHARI     = 'icons/mob/species/teshari/masks.dmi',
+		SPECIES_UNATHI      = 'icons/mob/species/unathi/mask.dmi',
+		SPECIES_VOX         = 'icons/mob/species/vox/masks.dmi',
+		SPECIES_VULPKANIN   = 'icons/mob/species/vulpkanin/mask.dmi',
+		SPECIES_WEREBEAST   = 'icons/mob/species/werebeast/masks.dmi',
+		SPECIES_XENOCHIMERA = 'icons/mob/species/tajaran/mask.dmi',
+		SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask.dmi',
+		SPECIES_ZORREN_HIGH = 'icons/mob/species/fox/mask.dmi'
 		) //custom species support.
 
 	var/voicechange = 0
@@ -579,10 +579,10 @@
 /obj/item/clothing/shoes/Initialize(mapload)
 	. = ..()
 	inside_emotes = list(
-		"<font color='red'>You feel weightless for a moment as \the [name] moves upwards.</font>",
-		"<font color='red'>\The [name] are a ride you've got no choice but to participate in as the wearer moves.</font>",
-		"<font color='red'>The wearer of \the [name] moves, pressing down on you.</font>",
-		"<font color='red'>More motion while \the [name] move, feet pressing down against you.</font>"
+		SPAN_DANGER("You feel weightless for a moment as \the [name] moves upwards."),
+		SPAN_DANGER("\The [name] are a ride you've got no choice but to participate in as the wearer moves."),
+		SPAN_DANGER("The wearer of \the [name] moves, pressing down on you."),
+		SPAN_DANGER("More motion while \the [name] move, feet pressing down against you.")
 	)
 
 /obj/item/clothing/shoes/proc/draw_knife()
@@ -597,11 +597,11 @@
 	holding.forceMove(get_turf(usr))
 
 	if(usr.put_in_hands(holding))
-		usr.visible_message("<span class='danger'>\The [usr] pulls a knife out of their boot!</span>")
+		usr.visible_message(SPAN_DANGER("\The [usr] pulls a knife out of their boot!"))
 		holding = null
 		overlays -= image(icon, "[icon_state]_knife")
 	else
-		to_chat(usr, "<span class='warning'>Your need an empty, unbroken hand to do that.</span>")
+		to_chat(usr, SPAN_WARNING("Your need an empty, unbroken hand to do that."))
 		holding.forceMove(src)
 
 	if(!holding)
@@ -624,12 +624,12 @@
 	 istype(I, /obj/item/material/knife/stiletto) ||\
 	 istype(I, /obj/item/material/knife/tacknife)))
 		if(holding)
-			to_chat(user, "<span class='warning'>\The [src] is already holding \a [holding].</span>")
+			to_chat(user, SPAN_WARNING("\The [src] is already holding \a [holding]."))
 			return
 		user.unEquip(I)
 		I.forceMove(src)
 		holding = I
-		user.visible_message("<span class='notice'>\The [user] shoves \the [I] into \the [src].</span>")
+		user.visible_message(SPAN_DANGER("\The [user] shoves \the [I] into \the [src]."))
 		verbs |= /obj/item/clothing/shoes/proc/draw_knife
 		update_icon()
 	else if(istype(I,/obj/item/holder/micro)) //MICROS IN MY SHOES
@@ -637,7 +637,7 @@
 		for(var/mob/M in src)
 			full++
 		if(full >= 2)
-			to_chat(user,"<span class='warning'>You can't fit anyone else into \the [src]!</span>")
+			to_chat(user, SPAN_WARNING("You can't fit anyone else into \the [src]!"))
 		else
 			var/obj/item/holder/micro/holder = I
 			if(holder.held_mob && (holder.held_mob in holder))
@@ -721,9 +721,9 @@
 
 	var/taurized = FALSE //Easier than trying to 'compare icons' to see if it's a taur suit
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/suit.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/suit.dmi')
+		SPECIES_TESHARI = 'icons/mob/species/teshari/suits.dmi',
+		SPECIES_VOX = 'icons/mob/species/vox/suits.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/suits.dmi')
 
 	valid_accessory_slots = (ACCESSORY_SLOT_OVER | ACCESSORY_SLOT_ARMBAND)
 	restricted_accessory_slots = (ACCESSORY_SLOT_ARMBAND)

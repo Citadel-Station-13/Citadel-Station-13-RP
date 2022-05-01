@@ -5,27 +5,27 @@ var/list/table_icon_cache = list()
 	icon = 'icons/obj/tables.dmi'
 	icon_state = "frame"
 	desc = "It's a table, for putting things on. Or standing on, if you really want to."
-	density = 1
-	anchored = 1
-	climbable = 1
+	density = TRUE
+	anchored = TRUE
+	climbable = TRUE
 	layer = TABLE_LAYER
-	throwpass = 1
+	throwpass = TRUE
 	surgery_odds = 66
-	var/flipped = 0
+	var/flipped = FALSE
 	var/maxhealth = 10
 	var/health = 10
 
 	// For racks.
-	var/can_reinforce = 1
-	var/can_plate = 1
+	var/can_reinforce = TRUE
+	var/can_plate = TRUE
 
-	var/manipulating = 0
+	var/manipulating = FALSE
 	var/datum/material/material = null
 	var/datum/material/reinforced = null
 
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.
 	// Convert if/when you can easily get stacks of these.
-	var/carpeted = 0
+	var/carpeted = FALSE
 	var/carpeted_type = /obj/item/stack/tile/carpet
 
 	connections = list("nw0", "ne0", "sw0", "se0")
@@ -57,7 +57,7 @@ var/list/table_icon_cache = list()
 			amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
 	health -= amount
 	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
+		visible_message(SPAN_WARNING("\The [src] breaks apart!"))
 		return break_to_parts() // if we break and form shards, return them to the caller to do !FUN! things with
 
 /obj/structure/table/blob_act()
@@ -104,41 +104,42 @@ var/list/table_icon_cache = list()
 	if(health < maxhealth)
 		switch(health / maxhealth)
 			if(0.0 to 0.5)
-				. += "<span class='warning'>It looks severely damaged!</span>"
+				. += SPAN_WARNING("It looks severely damaged!")
 			if(0.25 to 0.5)
-				. += "<span class='warning'>It looks damaged!</span>"
+				. += SPAN_WARNING("It looks damaged!")
 			if(0.5 to 1.0)
-				. += "<span class='notice'>It has a few scrapes and dents.</span>"
+				. += SPAN_NOTICE("It has a few scrapes and dents.")
 
 /obj/structure/table/attackby(obj/item/W, mob/user)
-
 	if(reinforced && W.is_screwdriver())
 		remove_reinforced(W, user)
 		if(!reinforced)
 			update_desc()
 			update_icon()
 			update_material()
-		return 1
+		return TRUE
 
 	if(carpeted && W.is_crowbar())
-		user.visible_message("<span class='notice'>\The [user] removes the carpet from \the [src].</span>",
-		                              "<span class='notice'>You remove the carpet from \the [src].</span>")
+		user.visible_message(
+			SPAN_NOTICE("\The [user] removes the carpet from \the [src]."),
+			SPAN_NOTICE("You remove the carpet from \the [src]."))
 		new carpeted_type(loc)
-		carpeted = 0
+		carpeted = FALSE
 		update_icon()
-		return 1
+		return TRUE
 
 	if(!carpeted && material && istype(W, /obj/item/stack/tile/carpet))
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
-			user.visible_message("<span class='notice'>\The [user] adds \the [C] to \the [src].</span>",
-			                              "<span class='notice'>You add \the [C] to \the [src].</span>")
-			carpeted = 1
+			user.visible_message(
+				SPAN_NOTICE("\The [user] adds \the [C] to \the [src]."),
+				SPAN_NOTICE("You add \the [C] to \the [src]."))
+			carpeted = TRUE
 			carpeted_type = W.type
 			update_icon()
-			return 1
+			return TRUE
 		else
-			to_chat(user, "<span class='warning'>You don't have enough carpet!</span>")
+			to_chat(user, SPAN_WARNING("You don't have enough carpet!"))
 
 	if(!reinforced && !carpeted && material && W.is_wrench())
 		remove_material(W, user)
@@ -149,23 +150,24 @@ var/list/table_icon_cache = list()
 				T.update_icon()
 			update_desc()
 			update_material()
-		return 1
+		return TRUE
 
 	if(!carpeted && !reinforced && !material && W.is_wrench())
 		dismantle(W, user)
-		return 1
+		return TRUE
 
 	if(health < maxhealth && istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/F = W
 		if(F.welding)
-			to_chat(user, "<span class='notice'>You begin reparing damage to \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You begin reparing damage to \the [src]."))
 			playsound(src, F.usesound, 50, 1)
 			if(!do_after(user, 20 * F.toolspeed) || !F.remove_fuel(1, user))
 				return
-			user.visible_message("<span class='notice'>\The [user] repairs some damage to \the [src].</span>",
-			                              "<span class='notice'>You repair some damage to \the [src].</span>")
+			user.visible_message(
+				SPAN_NOTICE("\The [user] repairs some damage to \the [src]."),
+				SPAN_NOTICE("You repair some damage to \the [src]."))
 			health = max(health+(maxhealth/5), maxhealth) // 20% repair per application
-			return 1
+			return TRUE
 
 	if(!material && can_plate && istype(W, /obj/item/stack/material))
 		material = common_material_add(W, user, "plat")
@@ -174,7 +176,7 @@ var/list/table_icon_cache = list()
 			update_icon()
 			update_desc()
 			update_material()
-		return 1
+		return TRUE
 
 	return ..()
 
@@ -187,22 +189,22 @@ var/list/table_icon_cache = list()
 	..()
 
 /obj/structure/table/attack_alien(mob/user as mob)
-	visible_message("<span class='danger'>\The [user] tears apart \the [src]!</span>")
+	visible_message(SPAN_DANGER("\The [user] tears apart \the [src]!"))
 	src.break_to_parts()
 
 /obj/structure/table/attack_generic(mob/user as mob, var/damage)
 	if(damage >= 10)
 		if(reinforced && prob(70))
-			visible_message("<span class='danger'>\The [user] smashes against \the [src]!</span>")
+			visible_message(SPAN_DANGER("\The [user] smashes against \the [src]!"))
 			take_damage(damage/2)
 			user.do_attack_animation(src)
 			..()
 		else
-			visible_message("<span class='danger'>\The [user] tears apart \the [src]!</span>")
+			visible_message(SPAN_DANGER("\The [user] tears apart \the [src]!"))
 			src.break_to_parts()
 			user.do_attack_animation(src)
 			return 1
-	visible_message("<span class='notice'>\The [user] scratches at \the [src]!</span>")
+	visible_message(SPAN_NOTICE("\The [user] scratches at \the [src]!"))
 	return ..()
 
 /obj/structure/table/MouseDrop_T(obj/item/stack/material/what)
@@ -213,19 +215,19 @@ var/list/table_icon_cache = list()
 
 /obj/structure/table/proc/reinforce_table(obj/item/stack/material/S, mob/user)
 	if(reinforced)
-		to_chat(user, "<span class='warning'>\The [src] is already reinforced!</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is already reinforced!"))
 		return
 
 	if(!can_reinforce)
-		to_chat(user, "<span class='warning'>\The [src] cannot be reinforced!</span>")
+		to_chat(user, SPAN_WARNING("\The [src] cannot be reinforced!"))
 		return
 
 	if(!material)
-		to_chat(user, "<span class='warning'>Plate \the [src] before reinforcing it!</span>")
+		to_chat(user, SPAN_WARNING("Plate \the [src] before reinforcing it!"))
 		return
 
 	if(flipped)
-		to_chat(user, "<span class='warning'>Put \the [src] back in place before reinforcing it!</span>")
+		to_chat(user, SPAN_WARNING("Put \the [src] back in place before reinforcing it!"))
 		return
 
 	reinforced = common_material_add(S, user, "reinforc")
@@ -251,38 +253,42 @@ var/list/table_icon_cache = list()
 /obj/structure/table/proc/common_material_add(obj/item/stack/material/S, mob/user, verb) // Verb is actually verb without 'e' or 'ing', which is added. Works for 'plate'/'plating' and 'reinforce'/'reinforcing'.
 	var/datum/material/M = S.get_material()
 	if(!istype(M))
-		to_chat(user, "<span class='warning'>You cannot [verb]e \the [src] with \the [S].</span>")
+		to_chat(user, SPAN_WARNING("You cannot [verb]e \the [src] with \the [S]."))
 		return null
 
 	if(manipulating) return M
-	manipulating = 1
-	to_chat(user, "<span class='notice'>You begin [verb]ing \the [src] with [M.display_name].</span>")
-	if(!do_after(user, 20) || !S.use(1))
-		manipulating = 0
+	manipulating = TRUE
+	to_chat(user, SPAN_NOTICE("You begin [verb]ing \the [src] with [M.display_name]."))
+	if(!do_after(user, 20) || !S.use(TRUE))
+		manipulating = FALSE
 		return null
-	user.visible_message("<span class='notice'>\The [user] [verb]es \the [src] with [M.display_name].</span>", "<span class='notice'>You finish [verb]ing \the [src].</span>")
-	manipulating = 0
+	user.visible_message(
+		SPAN_NOTICE("\The [user] [verb]es \the [src] with [M.display_name]."),
+		SPAN_NOTICE("You finish [verb]ing \the [src]."))
+	manipulating = FALSE
 	return M
 
 // Returns the material to set the table to.
 /obj/structure/table/proc/common_material_remove(mob/user, datum/material/M, delay, what, type_holding, sound)
 	if(!M.stack_type)
-		to_chat(user, "<span class='warning'>You are unable to remove the [what] from this [src]!</span>")
+		to_chat(user, SPAN_WARNING("You are unable to remove the [what] from this [src]!"))
 		return M
 
 	if(manipulating) return M
-	manipulating = 1
-	user.visible_message("<span class='notice'>\The [user] begins removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>",
-	                              "<span class='notice'>You begin removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>")
+	manipulating = TRUE
+	user.visible_message(
+		SPAN_NOTICE("\The [user] begins removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place."),
+		SPAN_NOTICE("You begin removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place."))
 	if(sound)
-		playsound(src.loc, sound, 50, 1)
+		playsound(src.loc, sound, 50, TRUE)
 	if(!do_after(user, delay))
-		manipulating = 0
+		manipulating = FALSE
 		return M
-	user.visible_message("<span class='notice'>\The [user] removes the [M.display_name] [what] from \the [src].</span>",
-	                              "<span class='notice'>You remove the [M.display_name] [what] from \the [src].</span>")
+	user.visible_message(
+		SPAN_NOTICE("\The [user] removes the [M.display_name] [what] from \the [src]."),
+		SPAN_NOTICE("You remove the [M.display_name] [what] from \the [src]."))
 	new M.stack_type(src.loc)
-	manipulating = 0
+	manipulating = FALSE
 	return null
 
 /obj/structure/table/proc/remove_reinforced(obj/item/S, mob/user)
@@ -295,14 +301,16 @@ var/list/table_icon_cache = list()
 	if(manipulating)
 		return
 	manipulating = TRUE
-	user.visible_message("<span class='notice'>\The [user] begins dismantling \the [src].</span>",
-	                              "<span class='notice'>You begin dismantling \the [src].</span>")
+	user.visible_message(
+		SPAN_NOTICE("\The [user] begins dismantling \the [src]."),
+		SPAN_NOTICE("You begin dismantling \the [src]."))
 	playsound(src, W.usesound, 50, 1)
 	if(!do_after(user, 20 * W.toolspeed))
 		manipulating = FALSE
 		return
-	user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>",
-	                              "<span class='notice'>You dismantle \the [src].</span>")
+	user.visible_message(
+		SPAN_NOTICE("\The [user] dismantles \the [src]."),
+		SPAN_NOTICE("You dismantle \the [src]."))
 	new /obj/item/stack/material/steel(src.loc)
 	qdel(src)
 
@@ -340,7 +348,7 @@ var/list/table_icon_cache = list()
 	qdel(src)
 	return shards
 
-/proc/get_table_image(var/icon/ticon,var/ticonstate,var/tdir,var/tcolor,var/talpha)
+/proc/get_table_image(var/icon/ticon, var/ticonstate, var/tdir, var/tcolor, var/talpha)
 	var/icon_cache_key = "\ref[ticon]-[ticonstate]-[tdir]-[tcolor]-[talpha]"
 	var/image/I = table_icon_cache[icon_cache_key]
 	if(!I)

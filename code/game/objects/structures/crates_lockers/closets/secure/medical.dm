@@ -67,7 +67,7 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/med
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/med
+		starts_with += /obj/item/storage/backpack/duffelbag/med
 	switch(pick("blue", "green", "purple", "black", "navyblue"))
 		if ("blue")
 			starts_with += /obj/item/clothing/under/rank/medical/scrubs
@@ -115,7 +115,7 @@
 	req_access = list(access_medical_equip)
 
 	starts_with = list(
-		/obj/item/storage/backpack/dufflebag/emt,
+		/obj/item/storage/backpack/duffelbag/emt,
 		/obj/item/clothing/under/bodysuit/bodysuitemt,
 		/obj/item/storage/box/autoinjectors,
 		/obj/item/storage/box/syringes,
@@ -188,7 +188,7 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/med
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/med
+		starts_with += /obj/item/storage/backpack/duffelbag/med
 	switch(pick("blue", "green", "purple", "black", "navyblue"))
 		if ("blue")
 			starts_with += /obj/item/clothing/under/rank/medical/scrubs

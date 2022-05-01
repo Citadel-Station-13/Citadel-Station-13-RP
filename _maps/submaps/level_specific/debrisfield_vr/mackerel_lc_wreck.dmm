@@ -197,7 +197,7 @@
 /area/shuttle/mackerel_lc_wreck)
 "nD" = (
 /obj/structure/closet/crate/engineering/electrical,
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_lc_wreck)
 "oe" = (

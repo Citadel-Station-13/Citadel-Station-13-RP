@@ -30,7 +30,7 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/norm
 	if(prob(25))
-		starts_with += /obj/item/storage/backpack/dufflebag
+		starts_with += /obj/item/storage/backpack/duffelbag
 	return ..()
 
 /obj/structure/closet/secure_closet/quartermaster
@@ -70,7 +70,7 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/norm
 	if(prob(25))
-		starts_with += /obj/item/storage/backpack/dufflebag
+		starts_with += /obj/item/storage/backpack/duffelbag
 	return ..()
 
 /obj/structure/closet/secure_closet/miner

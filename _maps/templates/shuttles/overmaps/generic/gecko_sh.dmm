@@ -1132,9 +1132,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh_engineering)
 "xT" = (
-/obj/item/tank/phoron/pressurized,
-/obj/item/tank/phoron/pressurized,
-/obj/item/tank/phoron/pressurized,
+/obj/item/tank/phorontank/pressurized,
+/obj/item/tank/phorontank/pressurized,
+/obj/item/tank/phorontank/pressurized,
 /obj/structure/fuel_port/heavy{
 	pixel_y = 28
 	},

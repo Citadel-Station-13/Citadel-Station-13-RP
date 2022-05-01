@@ -23,7 +23,7 @@
 /datum/supply_pack/sci/phoron
 	name = "Phoron research crate"
 	contains = list(
-			/obj/item/tank/phoron = 3,
+			/obj/item/tank/phorontank = 3,
 			/obj/item/tank/oxygen = 3,
 			/obj/item/assembly/igniter = 3,
 			/obj/item/assembly/prox_sensor = 3,

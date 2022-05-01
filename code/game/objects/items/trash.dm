@@ -141,7 +141,7 @@
 
 /obj/item/trash/fancyplate
 	name = "dirty fancy plate"
-	icon = 'icons/obj/trash_vr.dmi'
+	icon = 'icons/obj/trash.dmi'
 	icon_state = "fancyplate"
 
 //IED Component

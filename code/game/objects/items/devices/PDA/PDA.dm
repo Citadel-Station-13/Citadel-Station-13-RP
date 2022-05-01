@@ -154,7 +154,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/science
 	default_cartridge = /obj/item/cartridge/signal/science
-	icon_state = "pda-tox"
+	icon_state = "pda-sci"
 	ringtone = "boom"
 
 /obj/item/pda/clown

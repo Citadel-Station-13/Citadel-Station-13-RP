@@ -4070,10 +4070,10 @@
 "iD" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -4422,7 +4422,7 @@
 	name = "tactical equipment"
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
 /obj/item/storage/backpack/satchel/sec,
 /turf/unsimulated/floor{
 	dir = 5;
@@ -4443,7 +4443,7 @@
 	name = "tactical equipment"
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/storage/backpack/dufflebag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/med,
 /obj/item/storage/backpack/satchel/sec,
 /turf/unsimulated/floor{
 	dir = 5;

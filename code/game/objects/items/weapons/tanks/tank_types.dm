@@ -13,7 +13,7 @@
 /obj/item/tank/oxygen
 	name = "oxygen tank"
 	desc = "A tank of oxygen."
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "oxygen"
 	gauge_cap = 3
 	gauge_icon = "indicator_bigtank"
@@ -44,7 +44,7 @@
 	name = "anesthetic tank"
 	desc = "A tank with an N2O/O2 gas mix."
 	icon_state = "anesthetic"
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	gauge_cap = 3
 	gauge_icon = "indicator_bigtank"
 
@@ -61,7 +61,7 @@
 /obj/item/tank/air
 	name = "air tank"
 	desc = "Mixed anyone?"
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "oxygen"
 
 /obj/item/tank/air/examine(mob/user)
@@ -78,19 +78,19 @@
 /*
  * Phoron
  */
-/obj/item/tank/phoron
+/obj/item/tank/phorontank
 	name = "phoron tank"
 	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
-	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "phoron"
+	icon = 'icons/obj/tank.dmi'
+	icon_state = "phorontank"
 	gauge_icon = null
 	slot_flags = null	//they have no straps!
 
-/obj/item/tank/phoron/Initialize(mapload)
+/obj/item/tank/phorontank/Initialize(mapload)
 	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/phoron, (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/phoron/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/tank/phorontank/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
 	if (istype(W, /obj/item/flamethrower))
@@ -102,10 +102,10 @@
 		src.loc = F
 	return
 
-/obj/item/tank/vox	//Can't be a child of phoron or the gas amount gets screwey.
+/obj/item/tank/phoron //!Can't be a child of phorontank or the gas amount gets screwey.
 	name = "phoron tank"
 	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "phoron_vox"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	slot_flags = SLOT_BACK	//these ones have straps!
@@ -121,7 +121,7 @@
 	icon_state = "phoron_vox"
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/tank/phoron/pressurized/Initialize()
+/obj/item/tank/phorontank/pressurized/Initialize()
 	. = ..()
 	adjust_scale(0.8)
 	air_contents.adjust_gas(/datum/gas/phoron, (7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
@@ -129,9 +129,9 @@
 /obj/item/tank/emergency/phoron/double
 	name = "double emergency phoron tank"
 	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
-	icon = 'icons/obj/tank_vr.dmi'
-	icon_override = 'icons/mob/belt_vr.dmi'
-	icon_state = "emergency_double_vox"
+	icon = 'icons/obj/tank.dmi'
+	icon_override = 'icons/mob/belt.dmi'
+	icon_state = "emergency_double_phoron"
 	gauge_icon = "indicator_double"
 	gauge_cap = 3
 	volume = 10
@@ -146,7 +146,7 @@
 
 /obj/item/tank/emergency
 	name = "emergency tank"
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "emergency"
 	gauge_icon = "indicator_emergency"
 	gauge_cap = 3
@@ -159,7 +159,7 @@
 /obj/item/tank/emergency/oxygen
 	name = "emergency oxygen tank"
 	desc = "Used for emergencies. Contains very little oxygen, so try to conserve it until you actually need it."
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "emergency"
 	gauge_icon = "indicator_emergency"
 	gauge_cap = 3
@@ -176,14 +176,14 @@
 
 /obj/item/tank/emergency/oxygen/engi
 	name = "extended-capacity emergency oxygen tank"
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "emergency_engi"
 	volume = 6
 	gauge_cap = 3
 
 /obj/item/tank/emergency/oxygen/double
 	name = "double emergency oxygen tank"
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "emergency_double"
 	gauge_icon = "indicator_emergency_double"
 	volume = 10
@@ -204,8 +204,8 @@
 /obj/item/tank/emergency/nitrogen
 	name = "emergency nitrogen tank"
 	desc = "An emergency air tank hastily painted red."
-	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "emergency_nitro"
+	icon = 'icons/obj/tank.dmi'
+	icon_state = "emergency_nitrogen"
 	gauge_icon = "indicator_emergency"
 	gauge_cap = 3
 
@@ -215,7 +215,7 @@
 
 /obj/item/tank/emergency/nitrogen/double
 	name = "double emergency nitrogen tank"
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "emergency_double_nitrogen"
 	gauge_icon = "indicator_emergency_double"
 	volume = 10
@@ -224,8 +224,8 @@
 /obj/item/tank/emergency/phoron
 	name = "emergency phoron tank"
 	desc = "An emergency air tank hastily painted red."
-	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "emergency_nitro"
+	icon = 'icons/obj/tank.dmi'
+	icon_state = "emergency_nitrogen"
 	gauge_icon = "indicator_emergency"
 	volume = 6
 	gauge_cap = 3
@@ -246,7 +246,7 @@
 /obj/item/tank/nitrogen
 	name = "nitrogen tank"
 	desc = "A tank of nitrogen."
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "oxygen_fr"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	gauge_cap = 3
@@ -276,7 +276,7 @@
 /obj/item/tank/carbon_dioxide
 	name = "carbon dioxide tank"
 	desc = "Contains co2. Do not inhale. Plants only."
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	icon_state = "co2"
 	gauge_icon = "indicator_bigtank"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
@@ -288,7 +288,7 @@
 
 /obj/item/tank/emergency/carbon_dioxide
 	name = "emergency CO2 tank"
-	icon = 'icons/obj/tank_vr.dmi'
+	icon = 'icons/obj/tank.dmi'
 	desc = "Used for plant emergencies. Contains very little CO2, so try to conserve it until you actually need it."
 	icon_state = "emergency_co2"
 	gauge_icon = "indicator_engi"

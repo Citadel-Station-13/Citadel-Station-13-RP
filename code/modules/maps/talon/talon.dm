@@ -263,7 +263,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	// closet_appearance = /decl/// closet_appearance/secure_closet/talon/captain
 
 	starts_with = list(
-		/obj/item/storage/backpack/dufflebag/captain/talon,
+		/obj/item/storage/backpack/duffelbag/captain/talon,
 		/obj/item/clothing/suit/storage/vest,
 		/obj/item/melee/telebaton,
 		/obj/item/flash,

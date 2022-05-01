@@ -45,7 +45,7 @@
 #define SPECIES_SHADOW "Shadow"
 #define SPECIES_SKELETON "Skeleton"
 #define SPECIES_SKRELL "Skrell"
-#define SPECIES_TAJ "Tajara"
+#define SPECIES_TAJARA "Tajara"
 #define SPECIES_TESHARI "Teshari"
 #define SPECIES_UNATHI "Unathi"
 #define SPECIES_VASILISSAN "Vasilissan"

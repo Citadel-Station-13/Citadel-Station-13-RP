@@ -40,18 +40,18 @@
 	item_cost = 10
 	path = /obj/item/plastique
 
-/datum/uplink_item/item/tools/duffle
-	name = "Black Duffle Bag"
+/datum/uplink_item/item/tools/duffel
+	name = "Black Duffel Bag"
 	item_cost = 10
-	path = /obj/item/storage/backpack/dufflebag/syndie
+	path = /obj/item/storage/backpack/duffelbag/syndie
 
-/datum/uplink_item/item/tools/duffle/med
-	name = "Black Medical Duffle Bag"
-	path = /obj/item/storage/backpack/dufflebag/syndie/med
+/datum/uplink_item/item/tools/duffel/med
+	name = "Black Medical Duffel Bag"
+	path = /obj/item/storage/backpack/duffelbag/syndie/med
 
-/datum/uplink_item/item/tools/duffle/ammo
-	name = "Black Ammunition Duffle Bag"
-	path = /obj/item/storage/backpack/dufflebag/syndie/ammo
+/datum/uplink_item/item/tools/duffel/ammo
+	name = "Black Ammunition Duffel Bag"
+	path = /obj/item/storage/backpack/duffelbag/syndie/ammo
 
 /datum/uplink_item/item/tools/shield_diffuser
 	name = "Handheld Shield Diffuser"

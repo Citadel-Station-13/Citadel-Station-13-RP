@@ -420,7 +420,7 @@
 	},
 /obj/item/flashlight/maglight,
 /obj/item/storage/belt/security/tactical,
-/obj/item/storage/backpack/dufflebag/syndie,
+/obj/item/storage/backpack/duffelbag/syndie,
 /obj/item/gun/projectile/silenced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
@@ -836,7 +836,7 @@
 	},
 /obj/item/flashlight/maglight,
 /obj/item/storage/belt/security/tactical,
-/obj/item/storage/backpack/dufflebag/syndie,
+/obj/item/storage/backpack/duffelbag/syndie,
 /obj/item/gun/projectile/silenced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
@@ -935,7 +935,7 @@
 	},
 /obj/item/flashlight/maglight,
 /obj/item/storage/belt/security/tactical,
-/obj/item/storage/backpack/dufflebag/syndie,
+/obj/item/storage/backpack/duffelbag/syndie,
 /obj/item/gun/projectile/silenced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)

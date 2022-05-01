@@ -224,7 +224,7 @@
 
 /obj/structure/fuel_port/empty_tank/Initialize()
 	. = ..()
-	var/obj/item/tank/phoron/T = locate() in src
+	var/obj/item/tank/phorontank/T = locate() in src
 	if(T)
 		T.air_contents.remove(T.air_contents.total_moles)
 

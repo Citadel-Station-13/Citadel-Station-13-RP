@@ -1513,7 +1513,7 @@
 /area/rnd/outpost/testing_lab)
 "ds" = (
 /obj/structure/table/standard,
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
 "dt" = (

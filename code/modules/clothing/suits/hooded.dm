@@ -1,4 +1,4 @@
-// Hooded suits
+//! ## Hooded suits
 
 //Hoods for winter coats and chaplain hoodie etc
 
@@ -428,10 +428,11 @@
 	desc = "An armoured suit for exploring harsh environments."
 	icon_state = "explorer"
 	item_state = "explorer"
-	flags = THICKMATERIAL | PHORONGUARD
+	item_flags = THICKMATERIAL
+	flags      = PHORONGUARD
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	cold_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hood/explorer
 	siemens_coefficient = 0.9
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 35, bio = 75, rad = 35) // Inferior to sec vests in bullet/laser but better for environmental protection.
@@ -467,7 +468,8 @@
 	name = "eldritch garment"
 	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
 	icon_state = "eldritch_armor"
-	flags = HIDEHOLSTER|THICKMATERIAL
+	item_flags = THICKMATERIAL
+	flags_inv = HIDEHOLSTER
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 	action_button_name = "Toggle Eldritch Hood"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS

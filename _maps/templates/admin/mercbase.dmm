@@ -800,8 +800,8 @@
 /area/antag/antag_base)
 "bm" = (
 /obj/structure/table/standard,
-/obj/item/storage/backpack/dufflebag/syndie,
-/obj/item/storage/backpack/dufflebag/syndie,
+/obj/item/storage/backpack/duffelbag/syndie,
+/obj/item/storage/backpack/duffelbag/syndie,
 /obj/item/storage/backpack/messenger/black,
 /obj/item/storage/backpack/messenger/black,
 /obj/item/storage/backpack/satchel/norm,
@@ -1647,12 +1647,12 @@
 /area/antag/antag_base)
 "cy" = (
 /obj/structure/table/rack,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/med,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/med,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/med,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},

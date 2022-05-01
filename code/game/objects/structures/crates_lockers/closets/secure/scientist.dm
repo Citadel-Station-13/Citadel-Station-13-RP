@@ -21,7 +21,7 @@
 
 /obj/structure/closet/secure_closet/scientist/Initialize(mapload)
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/sci
+		starts_with += /obj/item/storage/backpack/duffelbag/sci
 	else
 		starts_with += /obj/item/storage/backpack/toxins
 	return ..()

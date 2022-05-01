@@ -2,9 +2,9 @@
 
 /obj/item/clothing/accessory/plasman
 	name = "large labcoat"
-	icon = 'icons/mob/plasmeme/accessories.dmi'
+	icon = 'icons/mob/species/phoronoid/accessories.dmi'
 	icon_state = "accessory_labcoat"
-	icon_override = 'icons/mob/plasmeme/accessories.dmi'
+	icon_override = 'icons/mob/species/phoronoid/accessories.dmi'
 	desc = "A slightly baggier labcoat, looks like it could take a bit more heat. Would fit well on a bodybuilder or a space suit."
 	slot = ACCESSORY_SLOT_OVER
 

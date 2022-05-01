@@ -59,7 +59,7 @@
 	req_access = list(access_medical_equip)
 
 	starts_with = list(
-		/obj/item/storage/backpack/dufflebag/emt,
+		/obj/item/storage/backpack/duffelbag/emt,
 		/obj/item/storage/box/autoinjectors,
 		/obj/item/storage/box/syringes,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline,
@@ -91,7 +91,7 @@
 	name = "field medic locker"
 
 	starts_with = list(
-		/obj/item/storage/backpack/dufflebag/emt,
+		/obj/item/storage/backpack/duffelbag/emt,
 		/obj/item/storage/box/autoinjectors,
 		/obj/item/storage/box/syringes,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline,

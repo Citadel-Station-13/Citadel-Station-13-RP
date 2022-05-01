@@ -1385,7 +1385,7 @@
 /obj/item/clothing/under/soviet,
 /obj/item/clothing/shoes/boots/jackboots,
 /obj/item/clothing/head/ushanka,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/snowfield/base)
 "dZ" = (
@@ -1400,7 +1400,7 @@
 "ea" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/snowfield/base)
 "eb" = (

@@ -168,7 +168,7 @@
 					prob(3);/obj/item/cell/high,
 					prob(3);/obj/item/spacecash/c10,
 					prob(3);/obj/item/spacecash/c20,
-					prob(3);/obj/item/storage/backpack/dufflebag,
+					prob(3);/obj/item/storage/backpack/duffelbag,
 					prob(3);/obj/item/storage/box/donkpockets,
 					prob(3);/obj/item/storage/box/mousetraps,
 					prob(3);/obj/item/storage/wallet,
@@ -211,7 +211,7 @@
 					prob(1);/obj/item/clothing/mask/gas/voice,
 					prob(1);/obj/item/spacecash/c100,
 					prob(1);/obj/item/spacecash/c50,
-					prob(1);/obj/item/storage/backpack/dufflebag/syndie,
+					prob(1);/obj/item/storage/backpack/duffelbag/syndie,
 					prob(1);/obj/item/storage/box/cups,
 					prob(1);/obj/item/gun/energy/stripper,
 					prob(1);/obj/item/pizzavoucher)

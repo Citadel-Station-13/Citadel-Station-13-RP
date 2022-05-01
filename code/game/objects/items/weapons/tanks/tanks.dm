@@ -533,7 +533,7 @@ var/list/global/tank_gauge_cache = list()
 ///Prewelded tanks
 /////////////////////////////////
 
-/obj/item/tank/phoron/welded
+/obj/item/tank/phorontank/welded
 	valve_welded = 1
 /obj/item/tank/oxygen/welded
 	valve_welded = 1
@@ -572,7 +572,7 @@ var/list/global/tank_gauge_cache = list()
 	src.overlays += "bomb_assembly"
 
 
-/obj/item/tank/phoron/onetankbomb/Initialize(mapload)
+/obj/item/tank/phorontank/onetankbomb/Initialize(mapload)
 	. = ..()
 	src.onetankbomb()
 
@@ -581,7 +581,7 @@ var/list/global/tank_gauge_cache = list()
 	src.onetankbomb()
 
 
-/obj/item/tank/phoron/onetankbomb/full/Initialize(mapload)
+/obj/item/tank/phorontank/onetankbomb/full/Initialize(mapload)
 	. = ..()
 	src.onetankbomb(2)
 
@@ -589,7 +589,7 @@ var/list/global/tank_gauge_cache = list()
 	. = ..()
 	src.onetankbomb(2)
 
-/obj/item/tank/phoron/onetankbomb/small/Initialize(mapload)
+/obj/item/tank/phorontank/onetankbomb/small/Initialize(mapload)
 	. = ..()
 	src.onetankbomb(0)
 

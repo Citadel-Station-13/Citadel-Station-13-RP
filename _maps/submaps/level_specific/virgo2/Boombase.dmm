@@ -106,7 +106,7 @@
 "az" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/standard,
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
 /obj/item/fuel_assembly/phoron,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/BoomBase)

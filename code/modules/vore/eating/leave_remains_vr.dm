@@ -22,7 +22,7 @@
 				if(SPECIES_HUMAN)
 					new /obj/item/digestion_remains/skull(src,owner)
 					skull_amount--
-				if(SPECIES_TAJ)
+				if(SPECIES_TAJARA)
 					new /obj/item/digestion_remains/skull/tajaran(src,owner)
 					skull_amount--
 				if(SPECIES_UNATHI)

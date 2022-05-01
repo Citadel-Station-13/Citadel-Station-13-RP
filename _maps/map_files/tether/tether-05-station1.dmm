@@ -17212,7 +17212,7 @@
 	icon_state = "0-4"
 	},
 /obj/structure/table/standard,
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/engines)
 "bHt" = (
@@ -24060,7 +24060,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 6
 	},
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},

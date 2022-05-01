@@ -35,21 +35,21 @@
 			wood
 */
 
-// Assoc list containing all material datums indexed by name.
+/// Assoc list containing all material datums indexed by name.
 var/list/name_to_material
 
-//Returns the material the object is made of, if applicable.
-//Will we ever need to return more than one value here? Or should we just return the "dominant" material.
+/// Returns the material the object is made of, if applicable.
+/// Will we ever need to return more than one value here? Or should we just return the "dominant" material.
 /obj/proc/get_material()
 	return null
 
-//mostly for convenience
+/// Mostly for convenience
 /obj/proc/get_material_name()
 	var/datum/material/material = get_material()
 	if(material)
 		return material.name
 
-// Builds the datum list above.
+/// Builds the datum list above.
 /proc/populate_material_list(force_remake=0)
 	if(name_to_material && !force_remake) return // Already set up!
 	name_to_material = list()
@@ -60,7 +60,7 @@ var/list/name_to_material
 		name_to_material[lowertext(new_mineral.name)] = new_mineral
 	return 1
 
-// Safety proc to make sure the material list exists before trying to grab from it.
+/// Safety proc to make sure the material list exists before trying to grab from it.
 /proc/get_material_by_name(name)
 	if(!name_to_material)
 		populate_material_list()
@@ -72,70 +72,104 @@ var/list/name_to_material
 		return material.display_name
 	return null
 
-// Material definition and procs follow.
+//! ## Material definition and procs follow. ## !//
 /datum/material
-	var/name	                          // Unique name for use in indexing the list.
-	var/display_name                      // Prettier name for display.
+	/// Unique name for use in indexing the list.
+	var/name
+	/// Prettier name for display.
+	var/display_name
 	var/use_name
-	var/flags = 0                         // Various status modifiers.
+	/// Various status modifiers.
+	var/flags = 0
 	var/sheet_singular_name = "sheet"
 	var/sheet_plural_name = "sheets"
 	var/is_fusion_fuel
 
-	// Shards/tables/structures
-	var/shard_type = SHARD_SHRAPNEL       // Path of debris object.
-	var/shard_icon                        // Related to above.
-	var/shard_can_repair = 1              // Can shards be turned into sheets with a welder?
-	var/list/recipes                      // Holder for all recipes usable with a sheet of this material.
-	var/destruction_desc = "breaks apart" // Fancy string for barricades/tables/objects exploding.
+//! ## Shards/tables/structures
+	/// Path of debris object.
+	var/shard_type = SHARD_SHRAPNEL
+	/// Path of debris icon
+	var/shard_icon
+	/// Can shards be turned into sheets with a welder?
+	var/shard_can_repair = TRUE
+	/// Holder for all recipes usable with a sheet of this material.
+	var/list/recipes
+	/// Fancy string for barricades/tables/objects exploding.
+	var/destruction_desc = "breaks apart"
 
-	// Icons
-	var/icon_colour                                      // Colour applied to products of this material.
-	var/icon_base = "metal"                              // Wall and table base icon tag. See header.
-	var/door_icon_base = "metal"                         // Door base icon tag. See header.
-	var/icon_reinf = "reinf_metal"                       // Overlay used
-	var/list/stack_origin_tech = list(TECH_MATERIAL = 1) // Research level for stacks.
-	var/pass_stack_colors = FALSE                        // Will stacks made from this material pass their colors onto objects?
+//! ## Icons
+	/// Colour applied to products of this material.
+	var/icon_colour
+	/// Wall and table base icon tag. See header.
+	var/icon_base = "metal"
+	/// Door base icon tag. See header.
+	var/door_icon_base = "metal"
+	/// Overlay used.
+	var/icon_reinf = "reinf_metal"
+	/// Research level for stacks.
+	var/list/stack_origin_tech = list(TECH_MATERIAL = 1)
+	/// Will stacks made from this material pass their colors onto objects?
+	var/pass_stack_colors = FALSE
 
-	// Attributes
-	var/cut_delay = 0            // Delay in ticks when cutting through this wall.
-	var/radioactivity            // Radiation var. Used in wall and object processing to irradiate surroundings.
-	var/ignition_point           // K, point at which the material catches on fire.
-	var/melting_point = 1800     // K, walls will take damage if they're next to a fire hotter than this
-	var/integrity = 150          // General-use HP value for products.
-	var/protectiveness = 10      // How well this material works as armor.  Higher numbers are better, diminishing returns applies.
-	var/opacity = 1              // Is the material transparent? 0.5< makes transparent walls/doors.
-	var/reflectivity = 0         // How reflective to light is the material?  Currently used for laser reflection and defense.
-	var/explosion_resistance = 5 // Only used by walls currently.
-	var/negation = 0             // Objects that respect this will randomly absorb impacts with this var as the percent chance.
-	var/spatial_instability = 0  // Objects that have trouble staying in the same physical space by sheer laws of nature have this. Percent for respecting items to cause teleportation.
-	var/conductive = 1           // Objects without this var add NOCONDUCT to flags on spawn.
-	var/conductivity = null      // How conductive the material is. Iron acts as the baseline, at 10.
-	var/list/composite_material  // If set, object matter var will be a list containing these values.
+//! ## Attributes
+	/// Delay in ticks when cutting through this wall.
+	var/cut_delay = 0
+	/// Radiation var. Used in wall and object processing to irradiate surroundings.
+	var/radioactivity
+	/// Kelvin, point at which the material catches on fire.
+	var/ignition_point
+	/// Kelvin, walls will take damage if they're next to a fire hotter than this
+	var/melting_point = 1800
+	/// General-use HP value for products.
+	var/integrity = 150
+	/// How well this material works as armor.  Higher numbers are better, diminishing returns applies.
+	var/protectiveness = 10
+	/// Is the material transparent? 0.5< makes transparent walls/doors.
+	var/opacity = 1
+	/// How reflective to light is the material?  Currently used for laser reflection and defense.
+	var/reflectivity = 0
+	/// Only used by walls currently.
+	var/explosion_resistance = 5
+	/// Objects that respect this will randomly absorb impacts with this var as the percent chance.
+	var/negation = 0
+	/// Objects that have trouble staying in the same physical space by sheer laws of nature have this.
+	/// Percent for respecting items to cause teleportation.
+	var/spatial_instability = 0
+	/// Objects without this var add NOCONDUCT to flags on spawn.
+	var/conductive = 1
+	/// How conductive the material is. Iron acts as the baseline, at 10.
+	var/conductivity = null
+	/// If set, object matter var will be a list containing these values.
+	var/list/composite_material
 	var/luminescence
-	var/radiation_resistance = 0 // Radiation resistance, which is added on top of a material's weight for blocking radiation. Needed to make lead special without superrobust weapons.
+	/// Radiation resistance, which is added on top of a material's weight for blocking radiation.
+	/// Needed to make lead special without superrobust weapons.
+	var/radiation_resistance = 0
 
-	// Placeholder vars for the time being, todo properly integrate windows/light tiles/rods.
+//! ## Placeholder vars for the time being.
+//TODO: Properly integrate windows/light tiles/rods.
 	var/created_window
 	var/created_fulltile_window
 	var/rod_product
 	var/wire_product
 	var/list/window_options = list()
 
-	// Damage values.
-	var/hardness = 60            // Prob of wall destruction by hulk, used for edge damage in weapons.  Also used for bullet protection in armor.
-	var/weight = 20              // Determines blunt damage/throwforce for weapons.
+//! ## Damage values.
+	/// Prob of wall destruction by hulk, used for edge damage in weapons.  Also used for bullet protection in armor.
+	var/hardness = 60
+	/// Determines blunt damage/throwforce for weapons.
+	var/weight = 20
 
-	// Noise when someone is faceplanted onto a table made of this material.
+	/// Noise when someone is faceplanted onto a table made of this material.
 	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
-	// Noise made when a simple door made of this material opens or closes.
+	/// Noise made when a simple door made of this material opens or closes.
 	var/dooropen_noise = 'sound/effects/stonedoor_openclose.ogg'
-	// Path to resulting stacktype. Todo remove need for this.
+	/// Path to resulting stacktype. Todo remove need for this.
 	var/stack_type
-	// Wallrot crumble message.
+	/// Wallrot crumble message.
 	var/rotting_touch_message = "crumbles under your touch"
 
-// Placeholders for light tiles and rglass.
+/// Placeholders for light tiles and rglass.
 /datum/material/proc/build_rod_product(var/mob/user, var/obj/item/stack/used_stack, var/obj/item/stack/target_stack)
 	if(!rod_product)
 		to_chat(user, "<span class='warning'>You cannot make anything out of \the [target_stack]</span>")
@@ -173,15 +207,15 @@ var/list/name_to_material
 	if(!shard_icon)
 		shard_icon = shard_type
 
-// This is a placeholder for proper integration of windows/windoors into the system.
+/// This is a placeholder for proper integration of windows/windoors into the system.
 /datum/material/proc/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
-	return 0
+	return FALSE
 
-// Weapons handle applying a divisor for this value locally.
+/// Weapons handle applying a divisor for this value locally.
 /datum/material/proc/get_blunt_damage()
 	return weight //todo
 
-// Return the matter comprising this material.
+/// Return the matter comprising this material.
 /datum/material/proc/get_matter()
 	var/list/temp_matter = list()
 	if(islist(composite_material))
@@ -191,23 +225,23 @@ var/list/name_to_material
 		temp_matter[name] = SHEET_MATERIAL_AMOUNT
 	return temp_matter
 
-// As above.
+// As above. //? What??? -Zan
 /datum/material/proc/get_edge_damage()
 	return hardness //todo
 
-// Snowflakey, only checked for alien doors at the moment.
+/// Snowflakey, only checked for alien doors at the moment.
 /datum/material/proc/can_open_material_door(var/mob/living/user)
-	return 1
+	return TRUE
 
-// Currently used for weapons and objects made of uranium to irradiate things.
+/// Currently used for weapons and objects made of uranium to irradiate things.
 /datum/material/proc/products_need_process()
 	return (radioactivity>0) //todo
 
-// Used by walls when qdel()ing to avoid neighbor merging.
+/// Used by walls when qdel()ing to avoid neighbor merging.
 /datum/material/placeholder
 	name = "placeholder"
 
-// Places a girder object when a wall is dismantled, also applies reinforced material.
+/// Places a girder object when a wall is dismantled, also applies reinforced material.
 /datum/material/proc/place_dismantled_girder(var/turf/target, var/datum/material/reinf_material, var/datum/material/girder_material)
 	var/obj/structure/girder/G = new(target)
 	if(reinf_material)
@@ -219,22 +253,22 @@ var/list/name_to_material
 		G.set_material(girder_material)
 
 
-// General wall debris product placement.
-// Not particularly necessary aside from snowflakey cult girders.
+/// General wall debris product placement.
+/// Not particularly necessary aside from snowflakey cult girders.
 /datum/material/proc/place_dismantled_product(turf/target, amount)
 	place_sheet(target, amount)
 
-// Debris product. Used ALL THE TIME.
+/// Debris product. Used ALL THE TIME.
 /datum/material/proc/place_sheet(turf/target, amount)
 	if(stack_type)
 		return new stack_type(target, ispath(stack_type, /obj/item/stack)? amount : null)
 
-// As above.
+/// Debris product.
 /datum/material/proc/place_shard(var/turf/target)
 	if(shard_type)
 		return new /obj/item/material/shard(target, src.name)
 
-// Used by walls and weapons to determine if they break or not.
+/// Used by walls and weapons to determine if they break or not.
 /datum/material/proc/is_brittle()
 	return !!(flags & MATERIAL_BRITTLE)
 
@@ -244,7 +278,7 @@ var/list/name_to_material
 /datum/material/proc/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	return
 
-// Datum definitions follow.
+//! ## Datum definitions follow.
 /datum/material/uranium
 	name = "uranium"
 	stack_type = /obj/item/stack/material/uranium
@@ -365,8 +399,8 @@ var/list/name_to_material
 	name = "marble"
 	icon_colour = "#AAAAAA"
 	weight = 26
-	hardness = 30 //VOREStation Edit - Please.
-	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
+	hardness = 30
+	integrity = 201 //hack to stop kitchen benches being flippable //TODO: refactor into weight system
 	stack_type = /obj/item/stack/material/marble
 
 
@@ -486,6 +520,9 @@ var/list/name_to_material
 
 /datum/material/glass
 	name = "glass"
+	icon_base = "glass"
+	door_icon_base = "stone"
+	destruction_desc = "shatters"
 	stack_type = /obj/item/stack/material/glass
 	flags = MATERIAL_BRITTLE
 	icon_colour = "#00E1FF"
@@ -496,10 +533,8 @@ var/list/name_to_material
 	hardness = 30
 	weight = 15
 	protectiveness = 0 // 0%
-	conductive = 0
+	conductive = NOCONDUCT
 	conductivity = 1 // Glass shards don't conduct.
-	door_icon_base = "stone"
-	destruction_desc = "shatters"
 	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
 	created_window = /obj/structure/window/basic
 	created_fulltile_window = /obj/structure/window/basic/full
@@ -582,6 +617,7 @@ var/list/name_to_material
 /datum/material/glass/reinforced
 	name = "rglass"
 	display_name = "reinforced glass"
+	icon_reinf = "rglass"
 	stack_type = /obj/item/stack/material/glass/reinforced
 	flags = MATERIAL_BRITTLE
 	icon_colour = "#00E1FF"
@@ -602,6 +638,7 @@ var/list/name_to_material
 /datum/material/glass/phoron
 	name = "borosilicate glass"
 	display_name = "borosilicate glass"
+	icon_reinf = "rglass"
 	stack_type = /obj/item/stack/material/glass/phoronglass
 	flags = MATERIAL_BRITTLE
 	integrity = 100
@@ -616,6 +653,7 @@ var/list/name_to_material
 /datum/material/glass/phoron/reinforced
 	name = "reinforced borosilicate glass"
 	display_name = "reinforced borosilicate glass"
+	icon_reinf = "rglass"
 	stack_type = /obj/item/stack/material/glass/phoronrglass
 	stack_origin_tech = list(TECH_MATERIAL = 5)
 	composite_material = list() //todo

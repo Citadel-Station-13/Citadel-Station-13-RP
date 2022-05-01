@@ -36,7 +36,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/clothing/glasses/sunglasses/sechud/tactical,
 		/obj/item/storage/belt/security/tactical/bandolier,
 		/obj/item/clothing/accessory/storage/black_drop_pouches,
-		/obj/item/storage/backpack/dufflebag/sec,
+		/obj/item/storage/backpack/duffelbag/sec,
 		/obj/item/shield/energy,
 		/obj/item/gun/energy/ionrifle,
 		/obj/item/gun/energy/xray,
@@ -57,7 +57,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/clothing/glasses/sunglasses/sechud/tactical,
 		/obj/item/storage/belt/security/tactical/bandolier,
 		/obj/item/clothing/accessory/storage/black_drop_pouches,
-		/obj/item/storage/backpack/dufflebag/sec,
+		/obj/item/storage/backpack/duffelbag/sec,
 		/obj/item/shield/riot/tele,
 		/obj/item/storage/box/emps,
 		/obj/item/storage/box/flashbangs,
@@ -81,7 +81,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/clothing/glasses/sunglasses/sechud/tactical,
 		/obj/item/storage/belt/security/tactical/bandolier,
 		/obj/item/clothing/accessory/storage/black_drop_pouches,
-		/obj/item/storage/backpack/dufflebag/sec,
+		/obj/item/storage/backpack/duffelbag/sec,
 		/obj/item/gun/projectile/automatic/bullpup,
 		/obj/item/ammo_magazine/m762/ap,
 		/obj/item/ammo_magazine/m762,
@@ -118,7 +118,7 @@ datum/supply_drop_loot/riot
 		/obj/item/gun/energy/gun,
 		/obj/item/clothing/accessory/holster,
 		/obj/item/gun/launcher/grenade,
-		/obj/item/storage/backpack/dufflebag/sec)
+		/obj/item/storage/backpack/duffelbag/sec)
 
 /datum/supply_drop_loot/seeds
 	name = "Plant Growing"

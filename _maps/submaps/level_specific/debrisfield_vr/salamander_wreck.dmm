@@ -1285,7 +1285,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/tank/phoron/pressurized,
+/obj/item/tank/phorontank/pressurized,
 /obj/structure/closet/walllocker_double/south{
 	name = "Uniform Locker"
 	},

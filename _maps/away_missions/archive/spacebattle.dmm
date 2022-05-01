@@ -1300,7 +1300,7 @@
 /area/awaymission/spacebattle/cruiser)
 "ht" = (
 /obj/structure/closet/crate/secure/phoron,
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "hu" = (

@@ -128,7 +128,7 @@
 	var/icon_full = "fuel_port_full"
 	var/opened = 0
 	var/parent_shuttle
-	var/base_tank = /obj/item/tank/phoron
+	var/base_tank = /obj/item/tank/phorontank
 
 /obj/structure/fuel_port/Initialize(mapload)
 	. = ..()
@@ -136,7 +136,7 @@
 		new base_tank(src)
 
 /obj/structure/fuel_port/heavy
-	base_tank = /obj/item/tank/phoron/pressurized
+	base_tank = /obj/item/tank/phorontank/pressurized
 
 /obj/structure/fuel_port/empty
 	base_tank = null	//oops, no gas!

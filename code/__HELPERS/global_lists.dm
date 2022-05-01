@@ -435,7 +435,7 @@ var/global/list/global_vore_egg_types = list(
 
 var/global/list/tf_vore_egg_types = list(
 	SPECIES_UNATHI 		= /obj/structure/closet/secure_closet/egg/unathi,
-	SPECIES_TAJ 		= /obj/structure/closet/secure_closet/egg/tajaran,
+	SPECIES_TAJARA 		= /obj/structure/closet/secure_closet/egg/tajaran,
 	SPECIES_AKULA 		= /obj/structure/closet/secure_closet/egg/shark,
 	SPECIES_SKRELL 		= /obj/structure/closet/secure_closet/egg/skrell,
 	SPECIES_SERGAL		= /obj/structure/closet/secure_closet/egg/sergal,

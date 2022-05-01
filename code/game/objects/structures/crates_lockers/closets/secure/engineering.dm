@@ -45,7 +45,7 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/eng
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/eng
+		starts_with += /obj/item/storage/backpack/duffelbag/eng
 	return ..()
 
 /obj/structure/closet/secure_closet/engineering_electrical
@@ -118,7 +118,7 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/eng
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/eng
+		starts_with += /obj/item/storage/backpack/duffelbag/eng
 	return ..()
 
 
@@ -158,5 +158,5 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/eng
 	if(prob(50))
-		starts_with += /obj/item/storage/backpack/dufflebag/eng
+		starts_with += /obj/item/storage/backpack/duffelbag/eng
 	return ..()

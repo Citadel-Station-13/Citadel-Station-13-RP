@@ -390,15 +390,15 @@
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/masks.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/masks.dmi',
-		SPECIES_TAJ = 'icons/mob/species/tajaran/mask_vr.dmi',
-		SPECIES_UNATHI = 'icons/mob/species/unathi/mask_vr.dmi',
-		SPECIES_SERGAL = 'icons/mob/species/sergal/mask_vr.dmi',
-		SPECIES_NEVREAN = 'icons/mob/species/nevrean/mask_vr.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/species/fox/mask_vr.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi',
-		SPECIES_AKULA = 'icons/mob/species/akula/mask_vr.dmi',
+		SPECIES_TAJARA = 'icons/mob/species/tajaran/mask.dmi',
+		SPECIES_UNATHI = 'icons/mob/species/unathi/mask.dmi',
+		SPECIES_SERGAL = 'icons/mob/species/sergal/mask.dmi',
+		SPECIES_NEVREAN = 'icons/mob/species/nevrean/mask.dmi',
+		SPECIES_ZORREN_HIGH = 'icons/mob/species/fox/mask.dmi',
+		SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask.dmi',
+		SPECIES_AKULA = 'icons/mob/species/akula/mask.dmi',
 		SPECIES_VULPKANIN = 'icons/mob/species/vulpkanin/mask.dmi',
-		SPECIES_XENOCHIMERA = 'icons/mob/species/tajaran/mask_vr.dmi'
+		SPECIES_XENOCHIMERA = 'icons/mob/species/tajaran/mask.dmi'
 		)
 /obj/item/reagent_containers/food/snacks/dtreat/Initialize(mapload)
 	. = ..()

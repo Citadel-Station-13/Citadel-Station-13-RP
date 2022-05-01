@@ -241,12 +241,12 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/curabitur/curashuttle/med)
 "aD" = (
-/obj/item/storage/backpack/dufflebag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/med,
 /obj/item/storage/belt/medical,
 /obj/item/storage/belt/medical,
 /obj/item/storage/belt/medical,
 /obj/structure/table/rack,
-/obj/item/storage/backpack/dufflebag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/med,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/curabitur/curashuttle/med)
 "aE" = (
@@ -1153,7 +1153,7 @@
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/healthanalyzer/advanced,
-/obj/item/storage/backpack/dufflebag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/med,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/ripper,

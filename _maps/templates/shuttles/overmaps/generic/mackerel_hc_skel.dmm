@@ -567,8 +567,8 @@
 /obj/structure/fuel_port{
 	pixel_y = -26
 	},
-/obj/item/tank/phoron,
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
+/obj/item/tank/phorontank,
 /obj/structure/closet/crate/engineering,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_hc_skel_eng)

@@ -611,7 +611,7 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "tempestsaddlebag"
 	icon_state = "tempestbag"
-	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Since they play a macro character, no reason to put custom slowdown code on here.
+	max_storage_space = INVENTORY_DUFFELBAG_SPACE //Since they play a macro character, no reason to put custom slowdown code on here.
 	slowdown = 0
 	taurtype = /datum/sprite_accessory/tail/taur/feline/tempest
 	no_message = "These saddlebags seem to be fitted for someone else, and keep slipping off!"

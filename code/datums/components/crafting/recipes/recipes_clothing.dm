@@ -296,7 +296,7 @@
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/durathread_duffelbag
-	name = "Durathread Dufflebag"
+	name = "Durathread Duffelbag"
 	result = /obj/item/storage/backpack/duffelbag/durathread
 	reqs = list(/obj/item/stack/sheet/durathread = 7,
 				/obj/item/stack/sheet/leather = 3)

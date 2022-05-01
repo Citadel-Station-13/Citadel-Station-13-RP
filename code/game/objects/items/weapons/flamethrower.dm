@@ -22,7 +22,7 @@
 	var/turf/previousturf = null
 	var/obj/item/weldingtool/weldtool = null
 	var/obj/item/assembly/igniter/igniter = null
-	var/obj/item/tank/phoron/ptank = null
+	var/obj/item/tank/phorontank/ptank = null
 
 
 /obj/item/flamethrower/Destroy()
@@ -100,7 +100,7 @@
 		update_icon()
 		return
 
-	if(istype(W,/obj/item/tank/phoron))
+	if(istype(W,/obj/item/tank/phorontank))
 		if(ptank)
 			to_chat(user, "<span class='notice'>There appears to already be a phoron tank loaded in [src]!</span>")
 			return

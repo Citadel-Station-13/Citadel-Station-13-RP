@@ -344,7 +344,7 @@
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
 	corpsemask = /obj/item/clothing/mask/balaclava
-	corpseback = /obj/item/storage/backpack/dufflebag/syndie
+	corpseback = /obj/item/storage/backpack/duffelbag/syndie
 
 /obj/effect/landmark/mobcorpse/pirate/melee_machete_armor
 	name = "Armored Brush Cutter"
@@ -366,7 +366,7 @@
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
 	corpsehelmet = /obj/item/clothing/head/tajaran/scarf
-	corpseback = /obj/item/storage/backpack/dufflebag/syndie
+	corpseback = /obj/item/storage/backpack/duffelbag/syndie
 
 /obj/effect/landmark/mobcorpse/pirate/melee_shield_machete_armor
 	name = "Armored Sword and Boarder"
@@ -383,7 +383,7 @@
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
 	corpsehelmet = /obj/item/clothing/head/welding
 	corpsebelt = /obj/item/storage/belt/security/tactical
-	corpseback = /obj/item/storage/backpack/dufflebag/syndie
+	corpseback = /obj/item/storage/backpack/duffelbag/syndie
 
 /obj/effect/landmark/mobcorpse/pirate/ranged_armor
 	name = "Armored Pistolier"
@@ -398,7 +398,7 @@
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
 	corpsehelmet = /obj/item/clothing/head/helmet/cyberpunk
 	corpsebelt = /obj/item/storage/belt/security/tactical
-	corpseback = /obj/item/storage/backpack/dufflebag/syndie
+	corpseback = /obj/item/storage/backpack/duffelbag/syndie
 
 /obj/effect/landmark/mobcorpse/pirate/ranged_laser_armor
 	name = "Armored Handcannon"

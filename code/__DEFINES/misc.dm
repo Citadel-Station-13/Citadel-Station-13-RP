@@ -142,6 +142,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 // Material Defines
 #define MAT_BANANIUM		"bananium"
+#define MAT_BS_GLASS		"borosilicate"
 #define MAT_CARBON			"carbon"
 #define MAT_CHITIN			"chitin"
 #define MAT_COPPER			"copper"

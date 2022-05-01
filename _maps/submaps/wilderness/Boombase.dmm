@@ -175,7 +175,7 @@
 "aN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/standard,
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
 /obj/item/fuel_assembly/phoron,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)

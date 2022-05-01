@@ -18,23 +18,22 @@
 	economic_modifier = 6
 	health_hud_intensity = 3
 
-	male_cough_sounds	= list('sound/effects/mob_effects/tesharicougha.ogg','sound/effects/mob_effects/tesharicoughb.ogg')
-	female_cough_sounds	= list('sound/effects/mob_effects/tesharicougha.ogg','sound/effects/mob_effects/tesharicoughb.ogg')
-	male_sneeze_sound	= 'sound/effects/mob_effects/tesharisneeze.ogg'
-	female_sneeze_sound	= 'sound/effects/mob_effects/tesharisneeze.ogg'
-	male_scream_sound	= 'sound/effects/mob_effects/teshariscream.ogg'
-	female_scream_sound	= 'sound/effects/mob_effects/teshariscream.ogg'
+	male_cough_sounds   = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')
+	female_cough_sounds = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')
+	male_sneeze_sound   = 'sound/effects/mob_effects/tesharisneeze.ogg'
+	female_sneeze_sound = 'sound/effects/mob_effects/tesharisneeze.ogg'
+	male_scream_sound   = 'sound/effects/mob_effects/teshariscream.ogg'
+	female_scream_sound = 'sound/effects/mob_effects/teshariscream.ogg'
 
 	blood_color = "#D514F7"
 	flesh_color = "#6060FF"
 	base_color = "#001144"
-	tail = "teshtail"
-	tail_hair = "feathers"
 	reagent_tag = IS_TESHARI
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/teshari
-
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
+	tail = "tesharitail"
+	tail_hair = "feathers"
 	icobase = 'icons/mob/human_races/r_teshari.dmi'
 	deform = 'icons/mob/human_races/r_def_teshari.dmi'
 	damage_mask = 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
@@ -46,7 +45,7 @@
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
 
-	slowdown = -0.5
+	slowdown = -0.5 // 66.6% Faster
 	snow_movement = -2 // Ignores full snow.
 	item_slowdown_mod = 1.25 // Tiny spess raptors don't like heavy things.
 
@@ -70,27 +69,34 @@
 
 	spawn_flags	= SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
-	bump_flag	= MONKEY
-	swap_flags	= MONKEY|SLIME|SIMPLE_ANIMAL
-	push_flags	= MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
+	bump_flag  = MONKEY
+	swap_flags = MONKEY|SLIME|SIMPLE_ANIMAL
+	push_flags = MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
 
-	body_temperature = (BODYTEMP_NORMAL + TESHARI_TEMP_OFFSET)
+	//?Not working right atm
+	//body_temperature = (BODYTEMP_NORMAL + TESHARI_TEMP_OFFSET)
 
-	cold_level_1 = (BODYTEMP_COLD_WARNING_1 + (TESHARI_TEMP_OFFSET * 2))
-	cold_level_2 = (BODYTEMP_COLD_WARNING_2 + (TESHARI_TEMP_OFFSET * 2))
-	cold_level_3 = (BODYTEMP_COLD_WARNING_3 + (TESHARI_TEMP_OFFSET * 2))
+	cold_level_1 = 180
+	cold_level_2 = 130
+	cold_level_3 = 70
+	//cold_level_1 = (BODYTEMP_COLD_WARNING_1 + (TESHARI_TEMP_OFFSET * 2))
+	//cold_level_2 = (BODYTEMP_COLD_WARNING_2 + (TESHARI_TEMP_OFFSET * 2))
+	//cold_level_3 = (BODYTEMP_COLD_WARNING_3 + (TESHARI_TEMP_OFFSET * 2))
 
-	breath_cold_level_1 = 160	// Default 240
-	breath_cold_level_2 = 100	// Default 180
-	breath_cold_level_3 = 20	// Default 100
+	breath_cold_level_1 = 160 // Default 240
+	breath_cold_level_2 = 100 // Default 180
+	breath_cold_level_3 = 20  // Default 100
 
-	heat_level_1 = (BODYTEMP_HEAT_WARNING_1 + TESHARI_TEMP_OFFSET)
-	heat_level_2 = (BODYTEMP_HEAT_WARNING_2 + TESHARI_TEMP_OFFSET)
-	heat_level_3 = (BODYTEMP_HEAT_WARNING_3 + TESHARI_TEMP_OFFSET)
+	heat_level_1 = 320
+	heat_level_2 = 370
+	heat_level_3 = 600
+	//heat_level_1 = (BODYTEMP_HEAT_WARNING_1 + TESHARI_TEMP_OFFSET)
+	//heat_level_2 = (BODYTEMP_HEAT_WARNING_2 + TESHARI_TEMP_OFFSET)
+	//heat_level_3 = (BODYTEMP_HEAT_WARNING_3 + TESHARI_TEMP_OFFSET)
 
-	breath_heat_level_1 = 350	// Default 380
-	breath_heat_level_2 = 400	// Default 450
-	breath_heat_level_3 = 800	// Default 1250
+	breath_heat_level_1 = 350 // Default 380
+	breath_heat_level_2 = 400 // Default 450
+	breath_heat_level_3 = 800 // Default 1250
 
 	heat_discomfort_level = 295
 	heat_discomfort_strings = list(
@@ -107,32 +113,32 @@
 		"You start to feel the cold on your skin",
 		)
 
-	minimum_breath_pressure = 12	// Smaller, so needs less air
+	minimum_breath_pressure = 12 // Smaller, so needs less air
 
 	has_limbs = list(
-		BP_TORSO	= list("path" = /obj/item/organ/external/chest),
-		BP_GROIN	= list("path" = /obj/item/organ/external/groin),
-		BP_HEAD		= list("path" = /obj/item/organ/external/head/teshari),
-		BP_L_ARM	= list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM	= list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG	= list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG	= list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND	= list("path" = /obj/item/organ/external/hand/teshari),
-		BP_R_HAND	= list("path" = /obj/item/organ/external/hand/right/teshari),
-		BP_L_FOOT	= list("path" = /obj/item/organ/external/foot/teshari),
-		BP_R_FOOT	= list("path" = /obj/item/organ/external/foot/right/teshari)
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head/teshari),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/teshari),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/teshari),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/teshari),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/teshari)
 		)
 
 	has_organ = list(
-		O_HEART		= /obj/item/organ/internal/heart,
-		O_LUNGS		= /obj/item/organ/internal/lungs,
-		O_VOICE		= /obj/item/organ/internal/voicebox,
-		O_LIVER		= /obj/item/organ/internal/liver,
-		O_KIDNEYS	= /obj/item/organ/internal/kidneys,
-		O_BRAIN		= /obj/item/organ/internal/brain,
-		O_EYES		= /obj/item/organ/internal/eyes,
-		O_STOMACH	= /obj/item/organ/internal/stomach,
-		O_INTESTINE	= /obj/item/organ/internal/intestine
+		O_HEART     = /obj/item/organ/internal/heart,
+		O_LUNGS     = /obj/item/organ/internal/lungs,
+		O_VOICE     = /obj/item/organ/internal/voicebox,
+		O_LIVER     = /obj/item/organ/internal/liver,
+		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
+		O_BRAIN     = /obj/item/organ/internal/brain,
+		O_EYES      = /obj/item/organ/internal/eyes,
+		O_STOMACH   = /obj/item/organ/internal/stomach,
+		O_INTESTINE = /obj/item/organ/internal/intestine
 		)
 
 	unarmed_types = list(

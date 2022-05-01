@@ -249,29 +249,29 @@
 	amputation_point = "right wrist"
 
 /obj/item/organ/external/head
-	organ_tag = BP_HEAD
-	icon_name = "head"
 	name = "head"
+	icon_name = "head"
+	organ_tag = BP_HEAD
+	body_part = HEAD
+	parent_organ = BP_TORSO
 	slot_flags = SLOT_BELT
 	max_damage = 75
 	min_broken_damage = 35
 	w_class = ITEMSIZE_NORMAL
-	body_part = HEAD
-	vital = 1
-	parent_organ = BP_TORSO
+	vital = TRUE
 	joint = "jaw"
 	amputation_point = "neck"
-	gendered_icon = 1
+	gendered_icon = TRUE
 	cannot_gib = TRUE
 	encased = "skull"
 	base_miss_chance = 40
-	var/can_intake_reagents = 1
+	var/can_intake_reagents = TRUE
 	var/eye_icon = "eyes_s"
+	var/eye_icon_location = 'icons/mob/human_face.dmi'
+	var/eyes_over_markings = FALSE
 	force = 3
 	throwforce = 7
-	var/eyes_over_markings = FALSE
 
-	var/eye_icon_location = 'icons/mob/human_face.dmi'
 
 /obj/item/organ/external/head/Initialize(mapload)
 	if(config_legacy.allow_headgibs)
@@ -323,12 +323,5 @@
 		user.visible_message("<span class='notice'>[user] makes \the [I] kiss \the [src]!.</span>", \
 		"<span class='notice'>You make \the [I] kiss \the [src]!.</span>")
 	return ..()
-
-/obj/item/organ/external/head/skrell
-	eye_icon = "skrell_eyes_s"
-
-/obj/item/organ/external/head/teshari
-	eye_icon = "eyes_seromi"
-
 /obj/item/organ/external/head/no_eyes
 	eye_icon = "blank_eyes"

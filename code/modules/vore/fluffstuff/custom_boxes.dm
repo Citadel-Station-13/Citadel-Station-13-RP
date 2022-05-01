@@ -88,12 +88,12 @@
 		/obj/item/toy/crayon/mime) //Need to track down the code for crayons before adding this back in
 
 //joanrisu:Joan Risu
-/obj/item/storage/backpack/dufflebag/sec/fluff/joanrisu
+/obj/item/storage/backpack/duffelbag/sec/fluff/joanrisu
 	name = "Joan's Workbag"
 	desc = "A bag Joan uses to carry her work equipment. It has the 82nd Battle Group Insignia on it."
 	icon_state = "joanbag"
 	icon = 'icons/vore/custom_items_vr.dmi'
-	item_state = "duffle_med"
+	item_state = "duffel-med"
 	slowdown = 0
 
 	New()
@@ -112,9 +112,9 @@
 		new /obj/item/clothing/suit/space/fluff/joan(src)
 
 //joanrisu:Katarina Eine
-/obj/item/storage/backpack/dufflebag/sec/fluff/katarina
+/obj/item/storage/backpack/duffelbag/sec/fluff/katarina
 	name = "Katarina's Workbag"
-	desc = "A duffle bag Katarina uses to carry her tools."
+	desc = "A duffel bag Katarina uses to carry her tools."
 	slowdown = 0
 
 	New()

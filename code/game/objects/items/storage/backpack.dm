@@ -50,9 +50,9 @@
 	max_storage_space = ITEMSIZE_COST_NORMAL * 14 // 56
 	storage_cost = INVENTORY_STANDARD_SPACE + 1
 
-/obj/item/storage/backpack/holding/duffle
-	name = "dufflebag of holding"
-	icon_state = "holdingduffle"
+/obj/item/storage/backpack/holding/duffel
+	name = "duffelbag of holding"
+	icon_state = "holdingduffel"
 
 /obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage/backpack/holding))
@@ -131,7 +131,7 @@
 /obj/item/storage/backpack/genetics
 	name = "geneticist backpack"
 	desc = "It's a backpack fitted with slots for diskettes and other workplace tools."
-	icon_state = "genpack"
+	icon_state = "genepack"
 
 /obj/item/storage/backpack/virology
 	name = "sterile backpack"
@@ -149,65 +149,65 @@
 	icon_state = "explorerpack"
 
 /*
- * Duffle Types
+ * Duffel Types
  */
 
-/obj/item/storage/backpack/dufflebag
-	name = "dufflebag"
-	desc = "A large dufflebag for holding extra things."
-	icon_state = "duffle"
+/obj/item/storage/backpack/duffelbag
+	name = "duffelbag"
+	desc = "A large duffelbag for holding extra things."
+	icon_state = "duffel"
 	slowdown = 1
-	max_storage_space = INVENTORY_DUFFLEBAG_SPACE
+	max_storage_space = INVENTORY_DUFFELBAG_SPACE
 
-/obj/item/storage/backpack/dufflebag/syndie
-	name = "black dufflebag"
-	desc = "A large dufflebag for holding extra tactical supplies. This one appears to be made out of lighter material than usual."
-	icon_state = "duffle_syndie"
+/obj/item/storage/backpack/duffelbag/syndie
+	name = "black duffelbag"
+	desc = "A large duffelbag for holding extra tactical supplies. This one appears to be made out of lighter material than usual."
+	icon_state = "duffel-syndie"
 	slowdown = 0
 
-/obj/item/storage/backpack/dufflebag/syndie/med
-	name = "medical dufflebag"
-	desc = "A large dufflebag for holding extra tactical medical supplies. This one appears to be made out of lighter material than usual."
-	icon_state = "duffle_syndiemed"
+/obj/item/storage/backpack/duffelbag/syndie/med
+	name = "medical duffelbag"
+	desc = "A large duffelbag for holding extra tactical medical supplies. This one appears to be made out of lighter material than usual."
+	icon_state = "duffel-syndiemed"
 
-/obj/item/storage/backpack/dufflebag/syndie/ammo
-	name = "ammunition dufflebag"
-	desc = "A large dufflebag for holding extra weapons ammunition and supplies. This one appears to be made out of lighter material than usual."
-	icon_state = "duffle_syndieammo"
+/obj/item/storage/backpack/duffelbag/syndie/ammo
+	name = "ammunition duffelbag"
+	desc = "A large duffelbag for holding extra weapons ammunition and supplies. This one appears to be made out of lighter material than usual."
+	icon_state = "duffel-syndieammo"
 
-/obj/item/storage/backpack/dufflebag/captain
-	name = "Facility Director's dufflebag"
-	desc = "A large dufflebag for holding extra captainly goods."
-	icon_state = "duffle_captain"
+/obj/item/storage/backpack/duffelbag/captain
+	name = "Facility Director's duffelbag"
+	desc = "A large duffelbag for holding extra captainly goods."
+	icon_state = "duffel-captain"
 
-/obj/item/storage/backpack/dufflebag/captain/talon
-	name = "talon captain's dufflebag"
-	desc = "A large dufflebag for holding extra loot."
+/obj/item/storage/backpack/duffelbag/captain/talon
+	name = "talon captain's duffelbag"
+	desc = "A large duffelbag for holding extra loot."
 
-/obj/item/storage/backpack/dufflebag/med
-	name = "medical dufflebag"
-	desc = "A large dufflebag for holding extra medical supplies."
-	icon_state = "duffle_med"
+/obj/item/storage/backpack/duffelbag/med
+	name = "medical duffelbag"
+	desc = "A large duffelbag for holding extra medical supplies."
+	icon_state = "duffel-med"
 
-/obj/item/storage/backpack/dufflebag/emt
-	name = "EMT dufflebag"
-	desc = "A large dufflebag for holding extra medical supplies. This one has reflective stripes!"
-	icon_state = "duffle_emt"
+/obj/item/storage/backpack/duffelbag/emt
+	name = "EMT duffelbag"
+	desc = "A large duffelbag for holding extra medical supplies. This one has reflective stripes!"
+	icon_state = "duffel-emt"
 
-/obj/item/storage/backpack/dufflebag/sec
-	name = "security dufflebag"
-	desc = "A large dufflebag for holding extra security supplies and ammunition."
-	icon_state = "duffle_sec"
+/obj/item/storage/backpack/duffelbag/sec
+	name = "security duffelbag"
+	desc = "A large duffelbag for holding extra security supplies and ammunition."
+	icon_state = "duffel-sec"
 
-/obj/item/storage/backpack/dufflebag/eng
-	name = "industrial dufflebag"
-	desc = "A large dufflebag for holding extra tools and supplies."
-	icon_state = "duffle_eng"
+/obj/item/storage/backpack/duffelbag/eng
+	name = "industrial duffelbag"
+	desc = "A large duffelbag for holding extra tools and supplies."
+	icon_state = "duffel-eng"
 
-/obj/item/storage/backpack/dufflebag/sci
-	name = "science dufflebag"
-	desc = "A large dufflebag for holding circuits and beakers."
-	icon_state = "duffle_sci"
+/obj/item/storage/backpack/duffelbag/sci
+	name = "science duffelbag"
+	desc = "A large duffelbag for holding circuits and beakers."
+	icon_state = "duffel-sci"
 
 /*
  * Satchel Types
@@ -254,13 +254,13 @@
 /obj/item/storage/backpack/satchel/gen
 	name = "geneticist satchel"
 	desc = "A sterile satchel with geneticist colours."
-	icon_state = "satchel-gen"
-	item_state_slots = list(slot_r_hand_str = "genpack", slot_l_hand_str = "genpack")
+	icon_state = "satchel-gene"
+	item_state_slots = list(slot_r_hand_str = "genepack", slot_l_hand_str = "genepack")
 
 /obj/item/storage/backpack/satchel/tox
 	name = "scientist satchel"
 	desc = "Useful for holding research materials."
-	icon_state = "satchel-tox"
+	icon_state = "satchel-sci"
 	item_state_slots = list(slot_r_hand_str = "toxpack", slot_l_hand_str = "toxpack")
 
 /obj/item/storage/backpack/satchel/sec
@@ -272,7 +272,7 @@
 /obj/item/storage/backpack/satchel/hyd
 	name = "hydroponics satchel"
 	desc = "A green satchel for plant related work."
-	icon_state = "satchel_hyd"
+	icon_state = "satchel-hyd"
 
 /obj/item/storage/backpack/satchel/cap
 	name = "Facility Director's satchel"
@@ -355,7 +355,7 @@
 /obj/item/storage/backpack/messenger/tox
 	name = "research messenger bag"
 	desc = "A backpack worn over one shoulder.  Useful for holding science materials."
-	icon_state = "courierbagtox"
+	icon_state = "courierbagsci"
 	item_state_slots = list(slot_r_hand_str = "toxpack", slot_l_hand_str = "toxpack")
 
 /obj/item/storage/backpack/messenger/com
@@ -520,7 +520,7 @@
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
-	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
+	max_storage_space = INVENTORY_DUFFELBAG_SPACE //Saddlebags can hold more, like duffelbags
 	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
 	var/taurtype = /datum/sprite_accessory/tail/taur/horse //Acceptable taur type to be wearing this
 	var/no_message = "You aren't the appropriate taur type to wear this!"
@@ -553,7 +553,7 @@
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
 	var/icon_base = "saddlebag"
-	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
+	max_storage_space = INVENTORY_DUFFELBAG_SPACE //Saddlebags can hold more, like duffelbags
 	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
@@ -640,10 +640,10 @@
 	max_storage_space = INVENTORY_STANDARD_SPACE
 	slowdown = 0
 
-/obj/item/storage/backpack/dufflebag/fluff //Black dufflebag without syndie buffs.
-	name = "plain black dufflebag"
-	desc = "A large dufflebag for holding extra tactical supplies."
-	icon_state = "duffle_syndie"
+/obj/item/storage/backpack/duffelbag/fluff //Black duffelbag without syndie buffs.
+	name = "plain black duffelbag"
+	desc = "A large duffelbag for holding extra tactical supplies."
+	icon_state = "duffel-syndie"
 
 /obj/item/storage/backpack/rebel
 	name = "rebel backpack"

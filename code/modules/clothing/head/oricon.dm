@@ -274,8 +274,8 @@
 	name = "\improper officer's cap"
 	desc = "A green utility cover bearing the crest of the JSDF Marine Corps. This one has an officer's emblem."
 	icon_state = "UNSCsoft"
-	icon = 'icons/obj/clothing/hats_vr.dmi'
-	icon_override = 'icons/mob/head_vr.dmi'
+	icon = 'icons/obj/clothing/hats.dmi'
+	icon_override = 'icons/mob/head.dmi'
 
 //Service
 

@@ -3189,8 +3189,8 @@
 /obj/structure/closet/crate{
 	dir = 8
 	},
-/obj/item/tank/phoron,
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
+/obj/item/tank/phorontank,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/maintenance_enginecontrol)
 "gS" = (

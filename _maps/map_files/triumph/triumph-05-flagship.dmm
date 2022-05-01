@@ -614,12 +614,12 @@
 "bc" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1078,10 +1078,10 @@
 /area/centcom/specops)
 "bG" = (
 /obj/structure/table/rack,
-/obj/item/storage/backpack/dufflebag/syndie/med,
-/obj/item/storage/backpack/dufflebag/syndie/med,
-/obj/item/storage/backpack/dufflebag/syndie/med,
-/obj/item/storage/backpack/dufflebag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/med,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -4680,10 +4680,10 @@
 "iD" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -5155,7 +5155,7 @@
 	name = "tactical equipment"
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/storage/backpack/dufflebag/syndie/ammo,
+/obj/item/storage/backpack/duffelbag/syndie/ammo,
 /obj/item/storage/backpack/satchel/sec,
 /turf/unsimulated/floor{
 	dir = 5;
@@ -5179,7 +5179,7 @@
 	name = "tactical equipment"
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/storage/backpack/dufflebag/syndie/med,
+/obj/item/storage/backpack/duffelbag/syndie/med,
 /obj/item/storage/backpack/satchel/sec,
 /turf/unsimulated/floor{
 	dir = 5;

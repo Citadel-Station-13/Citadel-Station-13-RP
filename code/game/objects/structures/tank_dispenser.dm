@@ -59,7 +59,7 @@
 			to_chat(user, "<span class='notice'>[src] is full.</span>")
 		updateUsrDialog()
 		return
-	if(istype(I, /obj/item/tank/phoron))
+	if(istype(I, /obj/item/tank/phorontank))
 		if(phorontanks < 10)
 			user.drop_item()
 			I.loc = src
@@ -100,12 +100,12 @@
 				update_icon()
 		if(href_list["phoron"])
 			if(phorontanks > 0)
-				var/obj/item/tank/phoron/P
+				var/obj/item/tank/phorontank/P
 				if(platanks.len == phorontanks)
 					P = platanks[1]
 					platanks.Remove(P)
 				else
-					P = new /obj/item/tank/phoron(loc)
+					P = new /obj/item/tank/phorontank(loc)
 				P.loc = loc
 				to_chat(usr, "<span class='notice'>You take [P] out of [src].</span>")
 				phorontanks--

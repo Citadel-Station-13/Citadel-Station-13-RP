@@ -7,7 +7,7 @@
 	name = "Pacman II"
 	desc = "P.A.C.M.A.N. type II portable generator. Uses liquid phoron as a fuel source."
 	power_gen = 4500
-	var/obj/item/tank/phoron/P = null
+	var/obj/item/tank/phorontank/P = null
 	var/board_path = "/obj/item/circuitboard/pacman2"
 	var/emagged = 0
 	var/heat = 0
@@ -69,7 +69,7 @@
 			explosion(get_turf(src), 2, 5, 2, -1)
 
 	attackby(var/obj/item/O as obj, var/mob/user as mob)
-		if(istype(O, /obj/item/tank/phoron))
+		if(istype(O, /obj/item/tank/phorontank))
 			if(P)
 				to_chat(user, "<font color='red'>The generator already has a phoron tank loaded!</font>")
 				return

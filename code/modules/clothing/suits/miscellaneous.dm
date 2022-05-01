@@ -259,7 +259,7 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	//yw edit - Teshari sprite
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/suits.dmi'
 		)
 	//yw edit end
 
@@ -1152,8 +1152,8 @@ obj/item/clothing/suit/kamishimo
 	name = "replica imperial soldier armor"
 	desc = "Made out of an especially light metal, it lets you conquer in style. This appears less sturdy than the authentic article."
 	icon_state = "ge_armor"
-	icon = 'icons/obj/clothing/suits_vr.dmi'
-	icon_override = 'icons/mob/suit_vr.dmi'
+	icon = 'icons/obj/clothing/suits.dmi'
+	icon_override = 'icons/mob/suit.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/suit/imperial/officer_replica
@@ -1175,7 +1175,7 @@ obj/item/clothing/suit/kamishimo
 /obj/item/clothing/suit/storage/parade_coat
 	name = "captain's formal jerkin"
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
-	icon_state = "capformal_t"
+	icon_state = "capformal"
 
 /obj/item/clothing/suit/storage/parade_coat/fem
 	name = "captain's formal jerkin"
@@ -1185,7 +1185,7 @@ obj/item/clothing/suit/kamishimo
 /obj/item/clothing/suit/storage/parade_coat/hos
 	name = "head of security's formal jerkin"
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
-	icon_state = "hosformal_t"
+	icon_state = "hosformal"
 
 /obj/item/clothing/suit/storage/parade_coat/hos_fem
 	name = "head of security's formal jerkin"
@@ -1195,7 +1195,7 @@ obj/item/clothing/suit/kamishimo
 /obj/item/clothing/suit/storage/parade_coat/centcom
 	name = "head of security's formal jerkin"
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
-	icon_state = "centcomformal_t"
+	icon_state = "centcomformal"
 
 /obj/item/clothing/suit/storage/parade_coat/centcom_fem
 	name = "central command officer's formal jerkin"

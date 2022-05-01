@@ -16509,8 +16509,8 @@
 /area/quartermaster/qm)
 "fsV" = (
 /obj/structure/table/steel,
-/obj/item/storage/backpack/dufflebag,
-/obj/item/storage/backpack/dufflebag{
+/obj/item/storage/backpack/duffelbag,
+/obj/item/storage/backpack/duffelbag{
 	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -22184,15 +22184,15 @@
 	name = "fuel crate";
 	req_one_access = list(67)
 	},
-/obj/item/tank/phoron{
+/obj/item/tank/phorontank{
 	pixel_x = 6;
 	pixel_y = -6
 	},
-/obj/item/tank/phoron{
+/obj/item/tank/phorontank{
 	pixel_x = -5;
 	pixel_y = 5
 	},
-/obj/item/tank/phoron,
+/obj/item/tank/phorontank,
 /obj/item/stack/material/tritium{
 	amount = 15
 	},

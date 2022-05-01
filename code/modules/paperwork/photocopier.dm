@@ -275,7 +275,7 @@
 		switch(species_to_check)
 			if(SPECIES_HUMAN)
 				temp_img = icon('icons/obj/butts.dmi', "human")
-			if(SPECIES_TAJ)
+			if(SPECIES_TAJARA)
 				temp_img = icon('icons/obj/butts.dmi', "tajaran")
 			if(SPECIES_UNATHI)
 				temp_img = icon('icons/obj/butts.dmi', "unathi")
