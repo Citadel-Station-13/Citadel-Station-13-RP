@@ -196,6 +196,9 @@
 	traits = list(
 		TRAIT_BLIND
 	)
+	excludes = list(
+		/datum/trait/negative/deaf
+	)
 
 // todo: use it as a disability to vocal ears? organs? same as above? please?
 /datum/trait/negative/deaf
@@ -205,7 +208,14 @@
 	traits = list(
 		TRAIT_DEAF
 	)
-
+	// this should disallow taking both blind and deaf but it'll use blind
+	// since the backend for that isn't here yet
+	// reason: i don't want to deal with meme characters that are blind, mute, and deaf
+	// if you want to have hardmode go roleplay it out
+	excludes = list(
+		/datum/trait/negative/blind
+	)
+	
 // todo: organ disability? better way to have mutual exclusion from having all 3
 /datum/trait/negative/mute
 	name = "Mute"
@@ -214,10 +224,4 @@
 	traits = list(
 		TRAIT_MUTE
 	)
-	// this should disallow taking both blind and deaf but it'll use blind
-	// since the backend for that isn't here yet
-	// reason: i don't want to deal with meme characters that are blind, mute, and deaf
-	// if you want to have hardmode go roleplay it out
-	excludes = list(
-		/datum/trait/negative/blind
-	)
+
