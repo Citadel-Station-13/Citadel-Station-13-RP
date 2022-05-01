@@ -12,6 +12,10 @@
   */
 /mob/proc/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE)
 	if(P? ((ismovable(P) && istype(using_perspective, /datum/perspective/self/temporary))? (using_perspective?.eye == P) : (P == using_perspective)) : (using_perspective && (using_perspective == self_perspective)))
+		// if we don't need to reset, assume it's an update.
+		// this is bad practice but stuff like mechs need this to work, since
+		// they reset for brainmobs but only need to update for others.
+		update_perspective()
 		return
 	if(ismovable(P))
 		var/atom/movable/AM = P
