@@ -1,4 +1,4 @@
-/datum/job/station/station/pathfinder
+/datum/job/station/pathfinder
 	title = "Pathfinder"
 	flag = PATHFINDER
 	departments = list(DEPARTMENT_PLANET)
