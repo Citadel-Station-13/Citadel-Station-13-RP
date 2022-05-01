@@ -14,7 +14,7 @@
 	pto_type = PTO_EXPLORATION
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_eva, access_maint_tunnels, access_external_airlocks, access_pilot)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_pilot)
-	outfit_type = /datum/outfit/job/station/medical/sar
+	outfit_type = /datum/outfit/job/station/sar
 	job_description = "A Field medic works as the field doctor of expedition teams."
 	alt_titles = list(
 		"Expedition Medic" = /datum/alt_title/expedition_medic,

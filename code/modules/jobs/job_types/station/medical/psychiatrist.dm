@@ -27,7 +27,7 @@
 	title = "Psychologist"
 	title_blurb =  "A Psychologist provides mental health services to crew members in need, focusing more on therapy than medication. They may also be \
 					called upon to determine whatever ails the mentally unwell, frequently under Security supervision."
-	title_outfit = /datum/outfit/job/station/medical/psychiatrist/psychologist
+	title_outfit = /datum/outfit/job/station/psychiatrist/psychologist
 
 /datum/alt_title/psychologist/psychoanalyst
 	title = "Psychoanalyst"

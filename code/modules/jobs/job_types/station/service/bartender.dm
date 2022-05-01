@@ -31,7 +31,7 @@
 	title = "Barista"
 	title_blurb = "A barista mans the Cafe, serving primarily non-alcoholic drinks to the crew. They generally have permission to charge for drinks \
 					or deny service to unruly patrons."
-	title_outfit = /datum/outfit/job/station/service/bartender/barista
+	title_outfit = /datum/outfit/job/station/bartender/barista
 
 /datum/outfit/job/station/bartender
 	name = OUTFIT_JOB_NAME("Bartender")

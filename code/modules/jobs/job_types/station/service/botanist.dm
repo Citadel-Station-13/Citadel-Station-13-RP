@@ -14,7 +14,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_hydroponics)
 
-	outfit_type = /datum/outfit/job/station/service/gardener
+	outfit_type = /datum/outfit/job/station/gardener
 	job_description = "A Botanist grows plants for the Chef and Bartender."
 	alt_titles = list("Gardener" = /datum/alt_title/gardener)
 
