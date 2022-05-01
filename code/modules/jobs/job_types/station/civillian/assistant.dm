@@ -43,7 +43,7 @@
 
 /datum/alt_title/server
 	title = "Server"
-	title_outfit = /datum/outfit/job/service/server
+	title_outfit = /datum/outfit/job/assistant/server
 
 /datum/alt_title/morale_officer
 	title = "Morale Officer"
@@ -51,3 +51,45 @@
 /datum/alt_title/assistant
 	title = "Assistant"
 	title_outfit = /datum/outfit/job/assistant
+
+/datum/outfit/job/assistant
+	name = OUTFIT_JOB_NAME(USELESS_JOB)
+	id_type = /obj/item/card/id/assistant
+
+/datum/outfit/job/assistant/cargo
+	id_type = /obj/item/card/id/cargo
+
+/datum/outfit/job/assistant/engineer
+	id_type = /obj/item/card/id/engineering
+	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
+
+/datum/outfit/job/assistant/intern
+	name = OUTFIT_JOB_NAME("Intern")
+	id_type = /obj/item/card/id/civilian
+
+/datum/outfit/job/assistant/medic
+	id_type = /obj/item/card/id/medical
+
+/datum/outfit/job/assistant/officer
+	id_type = /obj/item/card/id/security
+
+/datum/outfit/job/assistant/resident
+	name = OUTFIT_JOB_NAME("Resident")
+	id_pda_assignment = "Resident"
+	uniform = /obj/item/clothing/under/color/white
+
+/datum/outfit/job/assistant/scientist
+	id_type = /obj/item/card/id/science
+
+/datum/outfit/job/assistant/visitor
+	name = OUTFIT_JOB_NAME("Visitor")
+	id_pda_assignment = "Visitor"
+	uniform = /obj/item/clothing/under/assistantformal
+
+/datum/outfit/job/assistant/worker
+	id_type = /obj/item/card/id/civilian
+
+/datum/outfit/job/assistant/server
+	name = OUTFIT_JOB_NAME("Server")
+	uniform = /obj/item/clothing/under/waiter
+	l_ear = /obj/item/radio/headset/headset_service
