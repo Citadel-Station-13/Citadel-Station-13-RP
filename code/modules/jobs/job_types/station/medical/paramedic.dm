@@ -13,7 +13,7 @@
 	economic_modifier = 4
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
-	outfit_type = /datum/outfit/job/station/station/paramedic
+	outfit_type = /datum/outfit/job/station/paramedic
 	job_description = "A Paramedic is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their own. \
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
 	alt_titles = list(
@@ -25,15 +25,15 @@
 	title = "Emergency Medical Technician"
 	title_blurb = "An Emergency Medical Technician is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
 					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
-	title_outfit = /datum/outfit/job/station/station/medical/paramedic/emt
+	title_outfit = /datum/outfit/job/station/medical/paramedic/emt
 
 /datum/alt_title/medical_responder
 	title = "Medical Responder"
 	title_blurb = "A Medical Responder is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
 					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
-	title_outfit = /datum/outfit/job/station/station/medical/paramedic/emt
+	title_outfit = /datum/outfit/job/station/medical/paramedic/emt
 
-/datum/outfit/job/station/station/paramedic
+/datum/outfit/job/station/paramedic
 	name = OUTFIT_JOB_NAME("Paramedic")
 	uniform = /obj/item/clothing/under/rank/medical/scrubs/black
 	suit = /obj/item/clothing/suit/storage/toggle/fr_jacket
@@ -49,7 +49,7 @@
 	messenger_bag = /obj/item/storage/backpack/messenger/med
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
 
-/datum/outfit/job/station/station/paramedic/emt
+/datum/outfit/job/station/paramedic/emt
 	name = OUTFIT_JOB_NAME("Emergency Medical Technician")
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/emt

@@ -1,4 +1,4 @@
-/datum/job/station/station/pilot
+/datum/job/station/pilot
 	title = "Pilot"
 	flag = PILOT
 	departments = list(DEPARTMENT_CIVILIAN)
@@ -14,7 +14,7 @@
 	pto_type = PTO_EXPLORATION
 	access = list(access_pilot, access_external_airlocks)
 	minimal_access = list(access_pilot, access_external_airlocks)
-	outfit_type = /datum/outfit/job/station/station/pilot
+	outfit_type = /datum/outfit/job/station/pilot
 	job_description = "A Pilot flies the various shuttles in the Virgo-Erigone System."
 	alt_titles = list(
 		"Co-Pilot" = /datum/alt_title/co_pilot,
@@ -28,7 +28,7 @@
 /datum/alt_title/navigator
 	title = "Navigator"
 
-/datum/outfit/job/station/station/pilot
+/datum/outfit/job/station/pilot
 	name = OUTFIT_JOB_NAME("Pilot")
 	shoes = /obj/item/clothing/shoes/black
 	uniform = /obj/item/clothing/under/rank/pilot1

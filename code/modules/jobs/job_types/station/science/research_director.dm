@@ -1,4 +1,4 @@
-/datum/job/station/station/research_director
+/datum/job/station/research_director
 	title = "Research Director"
 	flag = RD
 	departments_managed = list(DEPARTMENT_RESEARCH)
@@ -28,7 +28,7 @@
 	minimal_player_age = 14
 	ideal_character_age = 50
 
-	outfit_type = /datum/outfit/job/station/station/research_director
+	outfit_type = /datum/outfit/job/station/research_director
 	job_description = "The Research Director manages and maintains the Research department. They are required to ensure the safety of the entire crew, \
 						at least with regards to anything occuring in the Research department, and to inform the crew of any disruptions that \
 						might originate from Research. The Research Director often has at least passing knowledge of most of the Research department, but \
@@ -48,7 +48,7 @@
 /datum/alt_title/head_scientist
 	title = "Head Scientist"
 
-/datum/outfit/job/station/station/research_director
+/datum/outfit/job/station/research_director
 	name = OUTFIT_JOB_NAME("Research Director")
 	l_ear = /obj/item/radio/headset/heads/rd
 	uniform = /obj/item/clothing/under/rank/research_director

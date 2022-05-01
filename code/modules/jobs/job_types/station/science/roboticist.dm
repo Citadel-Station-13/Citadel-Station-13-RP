@@ -1,4 +1,4 @@
-/datum/job/station/station/roboticist
+/datum/job/station/roboticist
 	title = "Roboticist"
 	flag = ROBOTICIST
 	departments = list(DEPARTMENT_RESEARCH)
@@ -14,7 +14,7 @@
 	minimal_access = list(access_robotics, access_tech_storage, access_morgue, access_research, access_tox) //As a job that handles so many corpses, it makes sense for them to have morgue access.
 	minimal_player_age = 7
 
-	outfit_type = /datum/outfit/job/station/station/roboticist
+	outfit_type = /datum/outfit/job/station/roboticist
 	job_description = "A Roboticist maintains and repairs the station's synthetics, including crew with prosthetic limbs. \
 						They can also assist the station by producing simple robots and even pilotable exosuits."
 	alt_titles = list(
@@ -38,7 +38,7 @@
 	title_blurb = "Prosthetists design and fabricate medical supportive devices and measure and fit patients for them. These devices \
 					include artificial limbs (arms, hands, legs, and feet), braces, and other medical or surgical devices."
 
-/datum/outfit/job/station/station/roboticist
+/datum/outfit/job/station/roboticist
 	name = OUTFIT_JOB_NAME("Roboticist")
 	uniform = /obj/item/clothing/under/rank/roboticist
 	shoes = /obj/item/clothing/shoes/black

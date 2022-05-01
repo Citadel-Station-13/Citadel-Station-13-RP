@@ -1,4 +1,4 @@
-/datum/job/station/station/assistant
+/datum/job/station/assistant
 	title = USELESS_JOB
 	flag = ASSISTANT
 	departments = list(DEPARTMENT_CIVILIAN)

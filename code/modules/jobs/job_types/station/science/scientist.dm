@@ -15,7 +15,7 @@
 
 	minimal_player_age = 14
 
-	outfit_type = /datum/outfit/job/station/station/scientist
+	outfit_type = /datum/outfit/job/station/scientist
 	pto_type = PTO_SCIENCE
 	job_description = "A Scientist is a generalist working in the Research department, with general knowledge of the scientific process, as well as \
 						the principles and requirements of Research and Development. They may also formulate experiments of their own devising, if \
@@ -74,15 +74,15 @@
 	title = "Xenobiologist"
 	title_blurb = "A Xenobiologist studies esoteric lifeforms, usually in the relative safety of their lab. They attempt to find ways to benefit \
 						from the byproducts of these lifeforms, and their main subject at present is the Giant Slime."
-	title_outfit = /datum/outfit/job/station/station/xenobiologist
+	title_outfit = /datum/outfit/job/station/xenobiologist
 
 /datum/alt_title/scientist/xenobotanist
 	title = "Xenobotanist"
 	title_blurb = "A Xenobotanist grows and cares for a variety of abnormal, custom made, and frequently dangerous plant life. When the products of these plants \
 					are both safe and beneficial to the station, they may choose to introduce it to the rest of the crew."
-	title_outfit = /datum/outfit/job/station/station/xenobiologist
+	title_outfit = /datum/outfit/job/station/xenobiologist
 
-/datum/outfit/job/station/station/scientist
+/datum/outfit/job/station/scientist
 	name = OUTFIT_JOB_NAME("Scientist")
 	uniform = /obj/item/clothing/under/rank/scientist
 	id_type = /obj/item/card/id/science/scientist
@@ -94,7 +94,7 @@
 	satchel_one = /obj/item/storage/backpack/satchel/tox
 	messenger_bag = /obj/item/storage/backpack/messenger/tox
 
-/datum/outfit/job/station/station/xenobiologist
+/datum/outfit/job/station/xenobiologist
 	name = OUTFIT_JOB_NAME("Xenobiologist")
 	uniform = /obj/item/clothing/under/rank/scientist
 	id_type = /obj/item/card/id/science/xenobiologist

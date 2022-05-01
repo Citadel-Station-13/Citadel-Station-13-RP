@@ -32,33 +32,33 @@
 	title = "Surgeon"
 	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachement. They are expected \
 					to know the ins and outs of anesthesia and surgery."
-	title_outfit = /datum/outfit/job/station/station/medical_doctor/surgeon
+	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon
 
 /datum/alt_title/orderly
 	title = "Orderly"
 	title_blurb = "An Orderly acts as Medbay's general helping hand, assisting any doctor that might need some form of help, as well as handling manual \
 					and dirty labor around the department."
-	title_outfit = /datum/outfit/job/station/station/medical_doctor/nurse
+	title_outfit = /datum/outfit/job/station/medical_doctor/nurse
 
 /datum/alt_title/emergency_physician
 	title = "Emergency Physician"
 	title_blurb = "An Emergency Physician is a Medical professional trained for stabilizing and treating severely injured and/or dying patients. \
 					They are generally the first response for any such individual brought to the Medbay, and can sometimes be expected to help their patients \
 					make a full recovery."
-	title_outfit = /datum/outfit/job/station/station/medical_doctor/emergency_physician
+	title_outfit = /datum/outfit/job/station/medical_doctor/emergency_physician
 
 /datum/alt_title/nurse
 	title = "Nurse"
 	title_blurb = "A Nurse acts as a general purpose Doctor's Aide, providing basic care to non-critical patients, and stabilizing critical patients during \
 					busy periods. They frequently watch the suit sensors console, to help manage the time of other Doctors. In rare occasions, a Nurse can be \
 					called upon to revive deceased crew members."
-	title_outfit = /datum/outfit/job/station/station/medical_doctor/nurse
+	title_outfit = /datum/outfit/job/station/medical_doctor/nurse
 
 /datum/alt_title/virologist
 	title = "Virologist"
 	title_blurb = "A Virologist cures active diseases in the crew, and prepares antibodies for possible infections. They also have the skills \
 					to produce the various types of virus foods or mutagens."
-	title_outfit = /datum/outfit/job/station/station/medical_doctor/virologist
+	title_outfit = /datum/outfit/job/station/medical_doctor/virologist
 
 /datum/alt_title/doctor/resident
 	title = "Medical Resident"
@@ -66,7 +66,7 @@
 /datum/alt_title/doctor/intern
 	title = "Medical Intern"
 
-/datum/outfit/job/station/station/medical_doctor
+/datum/outfit/job/station/medical_doctor
 	name = OUTFIT_JOB_NAME("Medical Doctor")
 	uniform = /obj/item/clothing/under/rank/medical
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat
@@ -81,16 +81,16 @@
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med
 
-/datum/outfit/job/station/station/medical_doctor/emergency_physician
+/datum/outfit/job/station/medical_doctor/emergency_physician
 	name = OUTFIT_JOB_NAME("Emergency Physician")
 	suit = /obj/item/clothing/suit/storage/toggle/fr_jacket
 
-/datum/outfit/job/station/station/medical_doctor/surgeon
+/datum/outfit/job/station/medical_doctor/surgeon
 	name = OUTFIT_JOB_NAME("Surgeon")
 	uniform = /obj/item/clothing/under/rank/medical/scrubs
 	head = /obj/item/clothing/head/surgery/blue
 
-/datum/outfit/job/station/station/medical_doctor/virologist
+/datum/outfit/job/station/medical_doctor/virologist
 	name = OUTFIT_JOB_NAME("Virologist")
 	uniform = /obj/item/clothing/under/rank/virologist
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/virologist
@@ -98,11 +98,11 @@
 	backpack = /obj/item/storage/backpack/virology
 	satchel_one = /obj/item/storage/backpack/satchel/vir
 
-/datum/outfit/job/station/station/medical_doctor/nurse
+/datum/outfit/job/station/medical_doctor/nurse
 	name = OUTFIT_JOB_NAME("Nurse")
 	suit = null
 
-/datum/outfit/job/station/station/medical_doctor/nurse/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/station/medical_doctor/nurse/pre_equip(mob/living/carbon/human/H)
 	if(H.gender == FEMALE)
 		if(prob(50))
 			uniform = /obj/item/clothing/under/rank/nursesuit

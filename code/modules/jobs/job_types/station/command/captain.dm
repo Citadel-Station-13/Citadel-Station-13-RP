@@ -1,6 +1,6 @@
 var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
-/datum/job/station/station/captain
+/datum/job/station/captain
 	title = "Facility Director"
 	flag = CAPTAIN
 	disallow_jobhop = TRUE
@@ -24,7 +24,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	minimum_character_age = 25
 	ideal_character_age = 70 // Old geezer captains ftw
 
-	outfit_type = /datum/outfit/job/station/station/captain
+	outfit_type = /datum/outfit/job/station/captain
 	job_description = "The Facility Director manages the other Command Staff, and through them the rest of the station. Though they have access to everything, \
 						they do not understand everything, and are expected to delegate tasks to the appropriate crew member. The Facility Director is expected to \
 						have an understanding of Standard Operating Procedure, and is subject to it, and legal action, in the same way as every other crew member."
@@ -36,7 +36,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	)
 
 
-/datum/job/station/station/captain/get_access()
+/datum/job/station/captain/get_access()
 	return get_all_station_access().Copy()
 
 /datum/alt_title/overseer
@@ -51,7 +51,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/alt_title/captain/captain
 	title = "Captain"
 
-/datum/outfit/job/station/station/captain
+/datum/outfit/job/station/captain
 	name = OUTFIT_JOB_NAME("Captain")
 	glasses = /obj/item/clothing/glasses/sunglasses
 	uniform = /obj/item/clothing/under/rank/captain
@@ -63,7 +63,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	id_type = /obj/item/card/id/gold/captain
 	pda_type = /obj/item/pda/captain
 
-/datum/outfit/job/station/station/captain/post_equip(var/mob/living/carbon/human/H)
+/datum/outfit/job/station/captain/post_equip(var/mob/living/carbon/human/H)
 	..()
 	if(H.age>49)
 		// Since we can have something other than the default uniform at this

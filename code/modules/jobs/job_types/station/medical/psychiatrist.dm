@@ -1,4 +1,4 @@
-/datum/job/station/station/psychiatrist
+/datum/job/station/psychiatrist
 	title = "Psychiatrist"
 	flag = PSYCHIATRIST
 	departments = list(DEPARTMENT_MEDICAL)
@@ -13,7 +13,7 @@
 	idtype = /obj/item/card/id/medical/psychiatrist
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist, access_chemistry)
-	outfit_type = /datum/outfit/job/station/station/station/psychiatrist
+	outfit_type = /datum/outfit/job/station/station/psychiatrist
 	job_description = "A Psychiatrist provides mental health services to crew members in need. They may also be called upon to determine whatever \
 					ails the mentally unwell, frequently under Security supervision. They understand the effects of various psychoactive drugs."
 	alt_titles = list(
@@ -27,7 +27,7 @@
 	title = "Psychologist"
 	title_blurb =  "A Psychologist provides mental health services to crew members in need, focusing more on therapy than medication. They may also be \
 					called upon to determine whatever ails the mentally unwell, frequently under Security supervision."
-	title_outfit = /datum/outfit/job/station/station/station/medical/psychiatrist/psychologist
+	title_outfit = /datum/outfit/job/station/station/medical/psychiatrist/psychologist
 
 /datum/alt_title/psychologist/psychoanalyst
 	title = "Psychoanalyst"
@@ -40,7 +40,7 @@
 /datum/alt_title/therapist
 	title = "Therapist"
 
-/datum/outfit/job/station/station/station/psychiatrist
+/datum/outfit/job/station/station/psychiatrist
 	name = OUTFIT_JOB_NAME("Psychiatrist")
 	uniform = /obj/item/clothing/under/rank/psych
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat
@@ -53,6 +53,6 @@
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med
 
-/datum/outfit/job/station/station/station/psychiatrist/psychologist
+/datum/outfit/job/station/station/psychiatrist/psychologist
 	name = OUTFIT_JOB_NAME("Psychologist")
 	uniform = /obj/item/clothing/under/rank/psych/turtleneck

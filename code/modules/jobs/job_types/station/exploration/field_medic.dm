@@ -1,4 +1,4 @@
-/datum/job/station/station/sar
+/datum/job/station/sar
 	title = "Field Medic"
 	flag = SAR
 	departments = list(DEPARTMENT_PLANET, DEPARTMENT_MEDICAL)

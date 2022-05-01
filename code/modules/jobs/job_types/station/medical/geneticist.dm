@@ -19,12 +19,12 @@
 	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_research)
 	minimal_access = list(access_medical, access_morgue, access_genetics, access_research)
 
-	outfit_type = /datum/outfit/job/station/station/medical/geneticist
+	outfit_type = /datum/outfit/job/station/medical/geneticist
 	job_description = "A Geneticist operates genetic manipulation equipment to repair any genetic defects encountered in crew, from cloning or radiation as examples. \
 						When required, geneticists have the skills to clone, and are the superior choice when available for doing so."
 */
 
-/datum/outfit/job/station/station/medical/geneticist
+/datum/outfit/job/station/medical/geneticist
 	name = OUTFIT_JOB_NAME("Geneticist")
 	uniform = /obj/item/clothing/under/rank/geneticist
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/genetics

@@ -1,4 +1,4 @@
-/datum/job/station/station/station/station/station/chief_medical_officer
+/datum/job/station/station/station/station/chief_medical_officer
 	title = "Chief Medical Officer"
 	flag = CMO
 	departments_managed = list(DEPARTMENT_MEDICAL)
@@ -26,7 +26,7 @@
 	minimal_player_age = 10
 	ideal_character_age = 50
 
-	outfit_type = /datum/outfit/job/station/station/chief_medical_officer
+	outfit_type = /datum/outfit/job/station/chief_medical_officer
 	job_description = "The CMO manages the Medical department and is a position requiring experience and skill; their goal is to ensure that their \
 						staff keep the station's crew healthy and whole. They are primarily interested in making sure that patients are safely found and \
 						transported to Medical for treatment. They are expected to keep the crew informed about threats to their health and safety, and \
@@ -46,7 +46,7 @@
 /datum/alt_title/cmo/surgeon
 	title = "Chief Surgeon"
 
-/datum/outfit/job/station/station/chief_medical_officer
+/datum/outfit/job/station/chief_medical_officer
 	name = OUTFIT_JOB_NAME("Chief Medical Officer")
 	l_ear  =/obj/item/radio/headset/heads/cmo
 	uniform = /obj/item/clothing/under/rank/chief_medical_officer

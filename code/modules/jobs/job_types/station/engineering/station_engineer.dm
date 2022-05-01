@@ -1,4 +1,4 @@
-/datum/job/station/station/engineer
+/datum/job/station/engineer
 	title = "Station Engineer"
 	flag = ENGINEER
 	departments = list(DEPARTMENT_ENGINEERING)
@@ -25,7 +25,7 @@
 
 	minimal_player_age = 3
 
-	outfit_type = /datum/outfit/job/station/station/station_engineer
+	outfit_type = /datum/outfit/job/station/station_engineer
 	job_description = "An Engineer keeps the station running. They repair damages, keep the atmosphere stable, and ensure that power is being \
 						generated and distributed. On quiet shifts, they may be called upon to make cosmetic alterations to the station."
 /datum/alt_title/maint_tech
@@ -51,7 +51,7 @@
 	title_blurb = "A Construction Engineer fulfills similar duties to other engineers, but usually occupies spare time with construction of extra facilities in dedicated areas or \
 					as additions to station layout."
 
-/datum/outfit/job/station/station/station_engineer
+/datum/outfit/job/station/station_engineer
 	name = OUTFIT_JOB_NAME("Engineer")
 	head = /obj/item/clothing/head/hardhat
 	uniform = /obj/item/clothing/under/rank/engineer
