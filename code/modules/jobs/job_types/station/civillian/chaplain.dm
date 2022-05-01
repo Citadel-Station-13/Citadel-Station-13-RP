@@ -12,7 +12,7 @@
 	access = list(access_morgue, access_chapel_office, access_crematorium, access_maint_tunnels)
 	minimal_access = list(access_chapel_office, access_crematorium)
 
-	outfit_type = /datum/outfit/job/chaplain
+	outfit_type = /datum/outfit/job/station/chaplain
 	job_description = "The Chaplain ministers to the spiritual needs of the crew."
 	alt_titles = list(
 		"Counselor" = /datum/alt_title/counselor,
@@ -165,7 +165,7 @@
 		feedback_set_details("religion_book","[new_book_style]")
 	return 1
 
-/datum/outfit/job/chaplain
+/datum/outfit/job/station/chaplain
 	name = OUTFIT_JOB_NAME("Chaplain")
 	uniform = /obj/item/clothing/under/rank/chaplain
 	l_hand = /obj/item/storage/bible

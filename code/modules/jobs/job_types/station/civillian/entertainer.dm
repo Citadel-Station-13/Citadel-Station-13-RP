@@ -12,7 +12,7 @@
 	minimal_access = list(access_entertainment)
 	pto_type = PTO_CIVILIAN
 
-	outfit_type = /datum/outfit/job/assistant
+	outfit_type = /datum/outfit/job/station/assistant
 	job_description = "An entertainer does just that, entertains! Put on plays, play music, sing songs, tell stories, or read your favorite fanfic."
 	alt_titles = list(
 		"Performer" = /datum/alt_title/entertainer/performer,

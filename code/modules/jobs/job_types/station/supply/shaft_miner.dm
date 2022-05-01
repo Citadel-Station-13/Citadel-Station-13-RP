@@ -14,7 +14,7 @@
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting, access_cargo, access_cargo_bot)
 
-	outfit_type = /datum/outfit/job/shaft_miner
+	outfit_type = /datum/outfit/job/station/shaft_miner
 	job_description = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
 	alt_titles = list(
 		"Drill Technician" = /datum/alt_title/drill_tech,
@@ -28,7 +28,7 @@
 /datum/alt_title/miner/belt
 	title = "Belt Miner"
 
-/datum/outfit/job/shaft_miner
+/datum/outfit/job/station/shaft_miner
 	name = OUTFIT_JOB_NAME("Shaft Miner")
 	uniform = /obj/item/clothing/under/rank/miner
 	l_ear = /obj/item/radio/headset/headset_mine

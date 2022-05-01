@@ -87,7 +87,7 @@
 /obj/structure/ghost_role_spawner/custom/human
 	mob_path = /mob/living/carbon/human
 	/// outfit path
-	var/outfit_path = /datum/outfit/job/assistant
+	var/outfit_path = /datum/outfit/job/station/assistant
 	/// species path
 	var/species_path = /datum/species/human
 

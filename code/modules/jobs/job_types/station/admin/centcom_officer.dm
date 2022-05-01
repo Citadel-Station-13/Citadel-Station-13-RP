@@ -14,7 +14,7 @@
 	economic_modifier = 20
 	whitelist_only = 1
 	latejoin_only = 1
-	outfit_type = /datum/outfit/job/centcom_officer
+	outfit_type = /datum/outfit/job/station/centcom_officer
 	job_description = "A Central Command Officer is there on official business. Most of time. Whatever it is, they're a VIP."
 
 	minimum_character_age = 25
@@ -25,7 +25,7 @@
 	get_access()
 		return get_all_accesses().Copy()
 
-/datum/outfit/job/centcom_officer
+/datum/outfit/job/station/centcom_officer
 	name = OUTFIT_JOB_NAME("CentCom Officer")
 	glasses = /obj/item/clothing/glasses/omnihud/all
 	uniform = /obj/item/clothing/under/rank/centcom

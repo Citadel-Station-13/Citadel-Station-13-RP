@@ -14,7 +14,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_hydroponics)
 
-	outfit_type = /datum/outfit/job/service/gardener
+	outfit_type = /datum/outfit/job/station/service/gardener
 	job_description = "A Botanist grows plants for the Chef and Bartender."
 	alt_titles = list("Gardener" = /datum/alt_title/gardener)
 
@@ -22,7 +22,7 @@
 	title = "Gardener"
 	title_blurb = "A Gardener may be less professional than their counterparts, and are more likely to tend to the public gardens if they aren't needed elsewhere."
 
-/datum/outfit/job/gardener
+/datum/outfit/job/station/gardener
 	name = OUTFIT_JOB_NAME("Gardener")
 	uniform = /obj/item/clothing/under/rank/hydroponics
 	suit = /obj/item/clothing/suit/storage/apron

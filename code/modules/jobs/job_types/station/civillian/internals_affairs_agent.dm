@@ -14,7 +14,7 @@
 	minimal_access = list(access_lawyer, access_sec_doors, access_heads)
 	minimal_player_age = 7
 
-	outfit_type = /datum/outfit/job/internal_affairs_agent
+	outfit_type = /datum/outfit/job/station/station/internal_affairs_agent
 	alt_titles = list("Regulatory Affairs Agent" = /datum/alt_title/iaa/regulator)
 	job_description = "An Internal Affairs Agent makes sure that the crew is following Standard Operating Procedure. They also \
 						handle complaints against crew members, and can have issues brought to the attention of Central Command, \
@@ -30,7 +30,7 @@
 		H.implant_loyalty(H)
 */
 
-/datum/outfit/job/internal_affairs_agent
+/datum/outfit/job/station/station/internal_affairs_agent
 	name = OUTFIT_JOB_NAME("Internal affairs agent")
 	l_ear = /obj/item/radio/headset/ia
 	uniform = /obj/item/clothing/under/rank/internalaffairs

@@ -14,7 +14,7 @@
 	economic_modifier = 5
 	minimal_player_age = 3
 
-	outfit_type = /datum/outfit/job/detective
+	outfit_type = /datum/outfit/job/station/detective
 	job_description = "A Detective works to help Security find criminals who have not properly been identified, through interviews and forensic work. \
 						For crimes only witnessed after the fact, or those with no survivors, they attempt to piece together what they can from pure evidence."
 	alt_titles = list(
@@ -29,9 +29,9 @@
 /datum/alt_title/detective/forensics_tech
 	title = "Forensic Technician"
 	title_blurb = "A Forensic Technician works more with hard evidence and labwork than a Detective, but they share the purpose of solving crimes."
-	title_outfit = /datum/outfit/job/detective/forensic
+	title_outfit = /datum/outfit/job/station/detective/forensic
 
-/datum/outfit/job/detective
+/datum/outfit/job/station/detective
 	name = OUTFIT_JOB_NAME("Detective")
 	head = /obj/item/clothing/head/det
 	uniform = /obj/item/clothing/under/det
@@ -48,12 +48,12 @@
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud
 	l_ear = /obj/item/radio/headset/headset_sec
 
-/datum/outfit/job/detective/forensic
+/datum/outfit/job/station/detective/forensic
 	name = OUTFIT_JOB_NAME("Forensic technician")
 	head = null
 	suit = /obj/item/clothing/suit/storage/forensics/blue
 
-/datum/outfit/job/detective/vice
+/datum/outfit/job/station/detective/vice
 	name = OUTFIT_JOB_NAME("Vice Investigator")
 	head = null
 	uniform = /obj/item/clothing/under/hawaiian

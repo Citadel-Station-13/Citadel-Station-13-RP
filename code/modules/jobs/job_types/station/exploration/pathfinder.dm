@@ -17,7 +17,7 @@
 
 	access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	minimal_access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
-	outfit_type = /datum/outfit/job/pathfinder
+	outfit_type = /datum/outfit/job/station/pathfinder
 	job_description = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
 	alt_titles = list(
 		"Expedition Lead" = /datum/alt_title/expedition_lead,
@@ -34,7 +34,7 @@
 /datum/alt_title/pathfinder/pioneer
 	title = "Lead Pioneer"
 
-/datum/outfit/job/pathfinder
+/datum/outfit/job/station/pathfinder
 	name = OUTFIT_JOB_NAME("Pathfinder")
 	shoes = /obj/item/clothing/shoes/boots/winter/explorer
 	uniform = /obj/item/clothing/under/explorer //TODO: Uniforms.
@@ -47,11 +47,11 @@
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
 	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/planetside = 1)
 
-/datum/outfit/job/pathfinder/post_equip(mob/living/carbon/human/H)
+/datum/outfit/job/station/pathfinder/post_equip(mob/living/carbon/human/H)
 	..()
 	for(var/obj/item/clothing/accessory/permit/gun/planetside/permit in H.back.contents)
 		permit.set_name(H.real_name)
 
-/datum/outfit/job/assistant/explorer
+/datum/outfit/job/station/assistant/explorer
 	id_type = /obj/item/card/id/explorer
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL

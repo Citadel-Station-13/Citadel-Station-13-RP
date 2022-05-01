@@ -14,7 +14,7 @@
 	job_description = "A Clown is there to entertain the crew and keep high morale using various harmless pranks and ridiculous jokes!"
 	whitelist_only = 1
 	latejoin_only = 0
-	outfit_type = /datum/outfit/job/clown
+	outfit_type = /datum/outfit/job/station/clown
 	pto_type = PTO_CIVILIAN
 	alt_titles = list("Jester" = /datum/alt_title/clown/jester, "Fool" = /datum/alt_title/clown/fool)
 
@@ -30,7 +30,7 @@
 	else
 		return list(access_entertainment, access_clown, access_tomfoolery)
 
-/datum/outfit/job/clown
+/datum/outfit/job/station/clown
 	name = OUTFIT_JOB_NAME("Clown")
 	shoes = /obj/item/clothing/shoes/clown_shoes
 	uniform = /obj/item/clothing/under/rank/clown

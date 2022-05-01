@@ -23,7 +23,7 @@
 	var/primary_color = rgb(0,0,0) // Obtained by eyedroppering the stripe in the middle of the card
 	var/secondary_color = rgb(0,0,0) // Likewise for the oval in the top-left corner
 
-	var/datum/job/job_access_type = /datum/job/assistant    // Job type to acquire access rights from, if any
+	var/datum/job/job_access_type = /datum/job/station/assistant    // Job type to acquire access rights from, if any
 
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
 	var/assignment = null	//can be alt title or the actual job
@@ -355,7 +355,7 @@
 	secondary_color = rgb(255,223,127)
 	assignment = "Research Director"
 	rank = "Research Director"
-	job_access_type = /datum/job/station/station/rd
+	job_access_type = /datum/job/station/rd
 
 /obj/item/card/id/cargo
 	name = "cargo identification card"

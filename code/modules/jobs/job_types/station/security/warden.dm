@@ -16,13 +16,13 @@
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 5
 
-	outfit_type = /datum/outfit/job/warden
+	outfit_type = /datum/outfit/job/station/warden
 	job_description = "The Warden watches over the physical Security Department, making sure the Brig and Armoury are secure and in order at all times. They oversee \
 						prisoners that have been processed and brigged, and are responsible for their well being. The Warden is also in charge of distributing \
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
 						Security Department as a whole."
 
-/datum/outfit/job/warden
+/datum/outfit/job/station/warden
 	name = OUTFIT_JOB_NAME("Warden")
 	uniform = /obj/item/clothing/under/rank/warden
 	l_pocket = /obj/item/flash

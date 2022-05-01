@@ -20,7 +20,7 @@
 	minimum_character_age = 25
 	ideal_character_age = 50
 
-	outfit_type = /datum/outfit/job/head_of_personnel
+	outfit_type = /datum/outfit/job/station/head_of_personnel
 	job_description = "The Head of Personnel manages the Service department, the Exploration team, and most other civilians. They also \
 						manage the Supply department, through the Quartermaster. In addition, the Head of Personnel oversees the personal accounts \
 						of the crew, including their money and access. If necessary, the Head of Personnel is first in line to assume Acting Command."
@@ -48,7 +48,7 @@
 /datum/alt_title/hop/deputy
 	title = "Deputy Director"
 
-/datum/outfit/job/head_of_personnel
+/datum/outfit/job/station/head_of_personnel
 	name = OUTFIT_JOB_NAME("Head of Personnel")
 	uniform = /obj/item/clothing/under/rank/head_of_personnel
 	l_ear = /obj/item/radio/headset/heads/hop

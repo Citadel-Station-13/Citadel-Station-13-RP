@@ -13,7 +13,7 @@
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
-	outfit_type = /datum/outfit/job/janitor
+	outfit_type = /datum/outfit/job/station/janitor
 	job_description = "A Janitor keeps the station clean, as long as it doesn't interfere with active crime scenes."
 	alt_titles = list(
 		"Custodian" = /datum/alt_title/janitor/custodian,
@@ -34,7 +34,7 @@
 /datum/alt_title/janitor/maid
 	title = "Maid"
 
-/datum/outfit/job/janitor
+/datum/outfit/job/station/janitor
 	name = OUTFIT_JOB_NAME("Janitor")
 	uniform = /obj/item/clothing/under/rank/janitor
 	id_type = /obj/item/card/id/civilian/janitor

@@ -15,7 +15,7 @@
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
 	minimal_player_age = 3
 
-	outfit_type = /datum/outfit/job/chemist
+	outfit_type = /datum/outfit/job/station/chemist
 	job_description = "A Chemist produces and maintains a stock of basic to advanced chemicals for medical and occasionally research use. \
 						They are likely to know the use and dangers of many lab-produced chemicals."
 	alt_titles = list(
@@ -30,7 +30,7 @@
 	title = "Pharmacologist"
 	title_blurb = "A Pharmacologist focuses on the chemical needs of the Medical Department, primarily specializing in producing more advanced forms of medicine."
 
-/datum/outfit/job/chemist
+/datum/outfit/job/station/chemist
 	name = OUTFIT_JOB_NAME("Chemist")
 	uniform = /obj/item/clothing/under/rank/chemist
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/chemist

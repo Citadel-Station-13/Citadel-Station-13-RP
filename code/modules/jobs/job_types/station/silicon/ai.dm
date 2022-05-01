@@ -17,7 +17,7 @@
 	has_headset = FALSE
 	assignable = FALSE
 	mob_type = JOB_SILICON_AI
-	outfit_type = /datum/outfit/job/silicon/ai
+	outfit_type = /datum/outfit/job/station/silicon/ai
 	job_description = "The AI oversees the operation of the station and its crew, but has no real authority over them. \
 						The AI is required to follow its Laws, and Lawbound Synthetics that are linked to it are expected to follow \
 						the AI's commands, and their own Laws."
@@ -37,7 +37,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cardborg(H), slot_head)
 	return 1
 
-/datum/outfit/job/ai
+/datum/outfit/job/station/ai
 	name = OUTFIT_JOB_NAME("AI")
 	head = /obj/item/clothing/head/cardborg
 	suit = /obj/item/clothing/suit/straight_jacket

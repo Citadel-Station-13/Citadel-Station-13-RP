@@ -17,7 +17,7 @@
 
 	minimal_player_age = 3
 
-	outfit_type = /datum/outfit/job/atmospherics_technician
+	outfit_type = /datum/outfit/job/station/station/atmospherics_technician
 	job_description = "An Atmospheric Technician is primarily concerned with keeping the station's atmosphere breathable. They are expected to have a good \
 						understanding of the pipes, vents, and scrubbers that move gasses around the station, and to be familiar with proper firefighting procedure."
 
@@ -38,7 +38,7 @@
 	title = "Disposals Technician"
 	title_blurb = "A Disposals Technician is an Atmospheric Technician still and can fulfill all the same duties, although specializes more in disposals delivery system's operations and configurations."
 
-/datum/outfit/job/atmospherics_technician
+/datum/outfit/job/station/station/atmospherics_technician
 	name = OUTFIT_JOB_NAME("Atmospheric technician")
 	uniform = /obj/item/clothing/under/rank/atmospheric_technician
 	l_ear = /obj/item/radio/headset/headset_eng

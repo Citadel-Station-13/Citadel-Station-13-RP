@@ -13,7 +13,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_kitchen)
 
-	outfit_type = /datum/outfit/job/chef
+	outfit_type = /datum/outfit/job/station/chef
 	job_description = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."
 	alt_titles = list(
 		"Cook" = /datum/alt_title/chef/cook,
@@ -37,7 +37,7 @@
 	title = "Cook"
 	title_blurb = "A Cook has the same duties, though they may be less experienced."
 
-/datum/outfit/job/chef
+/datum/outfit/job/station/chef
 	name = OUTFIT_JOB_NAME("Chef")
 	uniform = /obj/item/clothing/under/rank/chef
 	suit = /obj/item/clothing/suit/chef
@@ -46,6 +46,6 @@
 	pda_type = /obj/item/pda/chef
 	l_ear = /obj/item/radio/headset/headset_service
 
-/datum/outfit/job/chef/cook
+/datum/outfit/job/station/chef/cook
 	name = OUTFIT_JOB_NAME("Cook")
 	id_pda_assignment = "Cook"

@@ -13,7 +13,7 @@
 	access = list(access_library, access_maint_tunnels)
 	minimal_access = list(access_library)
 
-	outfit_type = /datum/outfit/job/librarian
+	outfit_type = /datum/outfit/job/station/librarian
 	job_description = "The Librarian curates the book selection in the Library, so the crew might enjoy it."
 	alt_titles = list(
 		"Journalist" = /datum/alt_title/librarian/journalist,
@@ -29,7 +29,7 @@
 /datum/alt_title/librarian/librarian/reporter
 	title = "Reporter"
 	title_blurb = "Although NanoTrasen's official Press outlet is managed by Central Command, they often hire freelance journalists for local coverage."
-	title_outfit = /datum/outfit/job/librarian/reporter
+	title_outfit = /datum/outfit/job/station/librarian/reporter
 
 // Librarian Alt Titles
 /datum/alt_title/librarian/journalist
@@ -65,14 +65,14 @@
 	title_blurb = "The Philosopher uses the Library as a base of operation to ruminate on nature of life and other great questions, and share their opinions with the crew."
 
 
-/datum/outfit/job/librarian
+/datum/outfit/job/station/librarian
 	name = OUTFIT_JOB_NAME("Librarian")
 	uniform = /obj/item/clothing/under/suit_jacket/red
 	l_hand = /obj/item/barcodescanner
 	id_type = /obj/item/card/id/civilian/librarian
 	pda_type = /obj/item/pda/librarian
 
-/datum/outfit/job/librarian/reporter
+/datum/outfit/job/station/librarian/reporter
 	name = OUTFIT_JOB_NAME("Reporter")
 	uniform = /obj/item/clothing/under/suit_jacket/red
 	id_type = /obj/item/card/id/civilian/librarian

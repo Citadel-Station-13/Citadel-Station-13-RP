@@ -18,14 +18,14 @@
 
 	ideal_character_age = 40
 
-	outfit_type = /datum/outfit/job/quartermaster
+	outfit_type = /datum/outfit/job/station/quartermaster
 	job_description = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
 	alt_titles = list("Supply Chief" = /datum/alt_title/supply_chief)
 
 /datum/alt_title/supply_chief
 	title = "Supply Chief"
 
-/datum/outfit/job/quartermaster
+/datum/outfit/job/station/quartermaster
 	name = OUTFIT_JOB_NAME("Quartermaster")
 	uniform = /obj/item/clothing/under/rank/cargo
 	l_ear = /obj/item/radio/headset/headset_mine

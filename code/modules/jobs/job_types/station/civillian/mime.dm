@@ -15,7 +15,7 @@
 	alt_titles = list("Poseur" = /datum/alt_title/mime/poseur)
 	whitelist_only = 1
 	latejoin_only = 0
-	outfit_type = /datum/outfit/job/mime
+	outfit_type = /datum/outfit/job/station/station/mime
 	pto_type = PTO_CIVILIAN
 
 /datum/alt_title/mime/poseur
@@ -27,7 +27,7 @@
 	else
 		return list(access_entertainment, access_tomfoolery, access_mime)
 
-/datum/outfit/job/mime
+/datum/outfit/job/station/station/mime
 	name = OUTFIT_JOB_NAME("Mime")
 	shoes = /obj/item/clothing/shoes/mime
 	uniform = /obj/item/clothing/under/mime

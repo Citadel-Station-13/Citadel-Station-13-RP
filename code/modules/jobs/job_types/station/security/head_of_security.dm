@@ -27,7 +27,7 @@
 	minimum_character_age = 25
 	minimal_player_age = 14
 
-	outfit_type = /datum/outfit/job/head_of_security
+	outfit_type = /datum/outfit/job/station/head_of_security
 	job_description = "	The Head of Security manages the Security Department, keeping the station safe and making sure the rules are followed. They are expected to \
 						keep the other Department Heads, and the rest of the crew, aware of developing situations that may be a threat. If necessary, the HoS may \
 						perform the duties of absent Security roles, such as distributing gear from the Armory."
@@ -46,7 +46,7 @@
 /datum/alt_title/hos/director
 	title = "Defense Director"
 
-/datum/outfit/job/head_of_security
+/datum/outfit/job/station/head_of_security
 	name = OUTFIT_JOB_NAME("Head of security")
 	l_ear = /obj/item/radio/headset/heads/hos
 	uniform = /obj/item/clothing/under/rank/head_of_security

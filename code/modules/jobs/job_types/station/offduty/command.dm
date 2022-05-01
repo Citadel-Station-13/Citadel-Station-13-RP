@@ -8,7 +8,7 @@
 	selection_color = "#9b633e"
 	access = list(access_maint_tunnels, access_external_airlocks)
 	minimal_access = list(access_maint_tunnels, access_external_airlocks)
-	outfit_type = /datum/outfit/job/assistant
+	outfit_type = /datum/outfit/job/station/assistant
 	job_description = "Off-duty crew has no responsibilities or authority and is just there to spend their \"well-deserved\" time off."
 	pto_type = PTO_COMMAND
 	economic_modifier = 5

@@ -15,7 +15,7 @@
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3
 
-	outfit_type = /datum/outfit/job/security_officer
+	outfit_type = /datum/outfit/job/station/security_officer
 	job_description = "A Security Officer is concerned with maintaining the safety and security of the station as a whole, dealing with external threats and \
 						apprehending criminals. A Security Officer is responsible for the health, safety, and processing of any prisoner they arrest. \
 						No one is above the Law, not Security or Command."
@@ -37,7 +37,7 @@
 /datum/alt_title/security_officer/guard
 	title = "Security Guard"
 
-/datum/outfit/job/security_officer
+/datum/outfit/job/station/security_officer
 	name = OUTFIT_JOB_NAME("Security Officer")
 	uniform = /obj/item/clothing/under/rank/security
 	l_pocket = /obj/item/flash

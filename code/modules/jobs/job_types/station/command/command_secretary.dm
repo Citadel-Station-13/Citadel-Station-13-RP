@@ -17,7 +17,7 @@
 	access = list(access_heads, access_keycard_auth)
 	minimal_access = list(access_heads, access_keycard_auth)
 
-	outfit_type = /datum/outfit/job/command_secretary
+	outfit_type = /datum/outfit/job/station/command_secretary
 	job_description = "A Command Secretary handles paperwork duty for the Heads of Staff, so they can better focus on managing their departments. \
 						They are not Heads of Staff, and have no real authority."
 
@@ -48,7 +48,7 @@
 /datum/alt_title/commsec/officer
 	title = "Bridge Officer"
 
-/datum/outfit/job/command_secretary
+/datum/outfit/job/station/command_secretary
 	name = OUTFIT_JOB_NAME("Command Secretary")
 	l_ear = /obj/item/radio/headset/headset_adj //Citadel Edit: command secretaries get service on their headsets.
 	shoes = /obj/item/clothing/shoes/brown
@@ -56,7 +56,7 @@
 	pda_type = /obj/item/pda/heads/hop
 	l_hand = /obj/item/clipboard
 
-/datum/outfit/job/command_secretary/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/station/command_secretary/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/suit_jacket/female/skirt

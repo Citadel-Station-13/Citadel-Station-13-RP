@@ -15,7 +15,7 @@
 	has_headset = FALSE
 	assignable = FALSE
 	mob_type = JOB_SILICON_ROBOT
-	outfit_type = /datum/outfit/job/silicon/cyborg
+	outfit_type = /datum/outfit/job/station/silicon/cyborg
 	job_description = "A Cyborg is a mobile station synthetic, piloted by a cybernetically preserved brain. It is considered a person, but is still required \
 						to follow its Laws."
 	alt_titles = list(
@@ -44,7 +44,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cardborg(H), slot_head)
 	return 1
 
-/datum/outfit/job/cyborg
+/datum/outfit/job/station/cyborg
 	name = OUTFIT_JOB_NAME("Cyborg")
 	head = /obj/item/clothing/head/cardborg
 	suit = /obj/item/clothing/suit/cardborg
