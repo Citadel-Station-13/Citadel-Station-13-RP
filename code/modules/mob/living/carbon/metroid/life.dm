@@ -122,7 +122,8 @@
 		SetBlinded(0)
 		src.blinded = 1
 
-	if (src.ear_deaf > 0) src.ear_deaf = 0
+	if (src.ear_deaf > 0)
+		src.ear_deaf = 0
 	if (src.ear_damage < 25)
 		src.ear_damage = 0
 

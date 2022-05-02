@@ -571,7 +571,7 @@
 /mob/living/proc/get_accuracy_penalty()
 	// Certain statuses make it harder to score a hit.
 	var/accuracy_penalty = 0
-	if(eye_blind)
+	if(blinded)
 		accuracy_penalty += 75
 	if(eye_blurry)
 		accuracy_penalty += 30
