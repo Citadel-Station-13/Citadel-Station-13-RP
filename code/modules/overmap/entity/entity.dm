@@ -4,6 +4,8 @@
  * capable of pixel movement and full simulation
  */
 /atom/movable/overmap_object/entity
+	plane = OVERMAP_ENTITY_PLANE
+
 	// identity
 	/// id
 	var/id

@@ -1,16 +1,61 @@
 /**
- * gets all entities in range of this one
+ * gets all entities in range of this one's **center**
+ * this does not take hitbox size into account, it is not the
+ * physics backend's job to!
+ *
+ * however, if the object in question is a non entity, we do take into account its "hitbox"!
+ * this should only be the case for tiled objects.
  *
  * warning: this is expensive. use sparingly!
  */
-/datum/overmap/proc/range(atom/movable/overmap_object/O, dist, high_accuracy)
-
-	#warn impl
+/datum/overmap/proc/range(atom/movable/overmap_object/O, dist)
+	if(istype(O, /atom/movable/overmap_object/entity))
+		var/atom/movable/overmap_object/entity/E = O
+		return entity_query(E.position_x, E.position_y, dist)
+	return entity_query(get_x_of_object(O), get_y_of_object(O), dist + OVERMAP_WORLD_ICON_SIZE * 0.5)
 
 /**
- * get all entites in range of x, y
+ * get x coordinate of object
+ * this skips the object's internal cache, and is usually used
+ * for tiled entities or for rebuilding an entity's cache
  */
-/datum/overmap/proc/entity_query(x, y, dist, high_accuracy)
+/datum/overmap/proc/get_x_of_object(atom/movable/overmap_object/O)
+	. = cached_x_start - O.x
+	if(istype(O, /atom/movable/overmap_object/entity))
+
+/**
+ * get y coordinate of object
+ * this skips the object's internal cache, and is usually used
+ * for tiled entities or for rebuilding an entity's cache
+ */
+/datum/overmap/proc/get_y_of_object(atom/movable/overmap_object/O)
+
+	if(istype(O, /atom/movable/overmap_object/entity))
+
+/**
+ * gets if something is in bounds of our map, physically, on the byond map
+ */
+/datum/overmap/proc/physically_in_bounds(atom/movable/AM)
+	return AM.z == cached_z && AM.x >= cached_x_start && AM.x <= cached_x_end && AM.y >= cached_y_start && AM.y <= cached_y_end
+
+/**
+ * get all entites in range of x, y. this does NOT take into account
+ * hitboxes, that's not the physics backend's job!
+ *
+ * warning: expensive, use sparingly!
+ */
+/datum/overmap/proc/entity_query(x, y, dist)
+	#warn finish
+
+/**
+ * get distance from one object to another, taking into account wraps
+ *
+ * unlike what the name suggests, tiled objects are supported
+ *
+ * this proc **does** depend on entity cached positions!
+ */
+/datum/overmap/proc/get_entity_distance(atom/movable/overmap_object/A, atom/movable/overmap_object/B)
+
 
 /**
  * removes an entity from the spatial hash

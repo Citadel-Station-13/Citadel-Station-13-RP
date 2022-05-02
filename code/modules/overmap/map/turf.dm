@@ -1,4 +1,5 @@
 /turf/overmap
+	plane = OVEMRAP_PLANE
 	#warn move to icons/overmap
 	icon = 'icons/turf/space.dmi'
 	icon_state = "map"
@@ -14,6 +15,7 @@
 
 /turf/overmap/Initialize()
 	. = ..()
+	#warn how do we visualize coords
 	name = "[x]-[y]"
 	var/list/numbers = list()
 
