@@ -174,6 +174,34 @@
  * **uses byond manhattan distance**
  */
 /datum/overmap/proc/get_entity_distance(atom/movable/overmap_object/A, atom/movable/overmap_object/B)
+	// aggressively optimized
+	var/ax
+	var/ay
+	var/atom/movable/overmap_object/entity/cast
+	if(istype(A, /atom/movable/overmap_object/entity))
+		cast = A
+		ax = cast.position_x
+		ay = cast.position_y
+	else
+		ax = get_x_of_object(A)
+		ay = get_y_of_object(A)
+	if(istype(B, /atom/movable/overmap_object/entity))
+		cast = B
+		ax = abs(cast.position_x - ax)
+		ay = abs(cast.position_y - ay)
+	else
+		ax = abs(get_x_of_object(B) - ax)
+		ay = abs(get_y_of_object(B) - ay)
+	return min(
+		(ax > cached_coordinate_center_x? cached_coordinate_width - ax : ax),
+		(ay > cached_coordinate_center_y? cached_coordinate_height - ay : ay)
+	)
+
+/**
+ * gets wraparound-considered angle in degrees from A to B
+ */
+/datum/overmap/proc/get_entity_angle(atom/movable/overmap_object/A, atom/movable/overmap_object/B)
+	// aggressively optimized
 	var/ax
 	var/ay
 	var/bx
@@ -193,19 +221,12 @@
 	else
 		bx = get_x_of_object(B)
 		by = get_y_of_object(B)
-	// we save some var dec overhead, fuck you
-	ax = abs(bx - ax)
-	ay = abs(by - ay)
-	return min(
-		(ax > cached_coordinate_center_x? cached_coordinate_width - ax : ax),
-		(ay > cached_coordinate_center_y? cached_coordinate_height - ay : ay)
+	#warn finish this algorithm
+	return arctan(
+		abs(bx - ax) > cached_coordinate_center_x? () : bx - ax
+		,
+		abs(by - ay) > cached_coordinate_center_y? () : by - ay
 	)
-
-/**
- * gets wraparound-considered angle in degrees from A to B
- */
-/datum/overmap/proc/get_entity_angle(atom/movable/overmap_object/A, atom/movable/overmap_object/B)
-	#warn impl
 
 
 /**
