@@ -223,7 +223,6 @@
 	else
 		bx = get_x_of_object(B)
 		by = get_y_of_object(B)
-	#warn finish this algorithm
 	return arctan(
 		abs(bx - ax) > cached_coordinate_center_x?
 			(bx > ax?
