@@ -140,11 +140,9 @@
 	src.add_fingerprint(user)
 	if(do_after(user, 30) && victim.Adjacent(src) && user.Adjacent(src) && victim.Adjacent(user) && !occupant)
 		user.visible_message("<span class='danger'>[user] stuffs [victim] into the gibber!</span>")
-		if(victim.client)
-			victim.client.perspective = EYE_PERSPECTIVE
-			victim.client.eye = src
-		victim.loc = src
-		src.occupant = victim
+		victim.forceMove(src)
+		victim.update_perspective()
+		occupant = victim
 		update_icon()
 
 /obj/machinery/gibber/verb/eject()
@@ -162,15 +160,12 @@
 	if(operating || !src.occupant)
 		return
 	for(var/obj/O in src)
-		O.loc = src.loc
-	if (src.occupant.client)
-		src.occupant.client.eye = src.occupant.client.mob
-		src.occupant.client.perspective = MOB_PERSPECTIVE
-	src.occupant.loc = src.loc
-	src.occupant = null
+		O.forceMove(loc)
+	occupant.forceMove(loc)
+	occupant.update_perspective()
+	occupant = null
 	update_icon()
 	return
-
 
 /obj/machinery/gibber/proc/startgibbing(mob/user as mob)
 	if(src.operating)

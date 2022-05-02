@@ -112,7 +112,7 @@
 			return 0
 
 	user.visible_message("\The [user] starts transferring \the [ai] into \the [src]...", "You start transferring \the [ai] into \the [src]...")
-	show_message(span("critical", "\The [user] is transferring you into \the [src]!"))
+	show_message(SPAN_CRITICAL("\The [user] is transferring you into \the [src]!"))
 
 	if(do_after(user, 100))
 		if(istype(ai.loc, /turf/))
@@ -122,7 +122,7 @@
 		add_attack_logs(user,ai,"Extracted into AI Card")
 		src.name = "[initial(name)] - [ai.name]"
 
-		ai.loc = src
+		ai.forceMove(src)
 		ai.destroy_eyeobj(src)
 		ai.cancel_camera()
 		ai.control_disabled = 1

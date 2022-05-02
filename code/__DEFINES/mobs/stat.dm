@@ -1,4 +1,5 @@
-//mob/var/stat things
-#define CONSCIOUS	0
-#define UNCONSCIOUS	1
-#define DEAD		2
+#define IS_CONSCIOUS(M)			(M.stat == STAT_CONSCIOUS)
+
+#define STAT_CONSCIOUS			0
+#define STAT_CRIT				1
+#define STAT_DEAD				2

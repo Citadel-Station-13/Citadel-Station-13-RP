@@ -186,7 +186,7 @@
 /mob/living/simple_mob/protean_blob/Life()
 	. = ..()
 	if(. && istype(refactory) && humanform)
-		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= 100 && refactory.processingbuffs)
+		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(MAT_STEEL) >= 100 && refactory.processingbuffs)
 			healing = humanform.add_modifier(/datum/modifier/protean/steelBlob, origin = refactory)
 		else if(humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health >= maxHealth)
 			humanform.remove_a_modifier_of_type(/datum/modifier/protean/steelBlob)
@@ -305,7 +305,7 @@
 		pulledby.stop_pulling()
 	stop_pulling()
 
-	var/panel_selected = client?.statpanel == "Protean"
+	var/panel_selected = client?.statpanel == SPECIES_PROTEAN
 
 	//Record where they should go
 	var/atom/creation_spot = drop_location()
@@ -378,7 +378,7 @@
 	moveToNullspace()
 
 	if(blob.client && panel_selected)
-		blob.client.statpanel = "Protean"
+		blob.client.statpanel = SPECIES_PROTEAN
 
 	//Message
 	blob.visible_message("<b>[src.name]</b> collapses into a gooey blob!")
@@ -473,7 +473,7 @@
 		pulledby.stop_pulling()
 	stop_pulling()
 
-	var/panel_selected = blob.client?.statpanel == "Protean"
+	var/panel_selected = blob.client?.statpanel == SPECIES_PROTEAN
 
 	//Stop healing if we are
 	if(blob.healing)
@@ -502,7 +502,7 @@
 	temporary_form = null
 
 	if(client && panel_selected)
-		client.statpanel = "Protean"
+		client.statpanel = SPECIES_PROTEAN
 
 	//Transfer vore organs
 	vore_selected = blob.vore_selected

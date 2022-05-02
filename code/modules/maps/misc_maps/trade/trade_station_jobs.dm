@@ -21,7 +21,7 @@
 		Think through your actions and make the roleplay immersive! <b>Please remember all \
 		rules apply to you.</b>"
 	supervisors = "As a crewmember of the Beruang, you answer to your manager and international laws of space."
-	outfit_type = /decl/hierarchy/outfit/trade
+	outfit_type = /datum/outfit/trade
 
 	offmap_spawn = TRUE
 	faction = "Station" //Required for SSjob to allow people to join as it
@@ -46,7 +46,7 @@
 /datum/alt_title/merchant
 	title = "Merchant"
 
-/decl/hierarchy/outfit/trade
+/datum/outfit/trade
 	name = OUTFIT_JOB_NAME("Trader")
 	shoes = /obj/item/clothing/shoes/black
 	gloves = /obj/item/clothing/gloves/brown

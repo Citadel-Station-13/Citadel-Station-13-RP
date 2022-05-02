@@ -57,8 +57,11 @@ var/global/list/limb_icon_cache = list()
 	cut_overlays()
 
 	//Every 'addon' below requires information from species
-	if(!owner || !owner.species)
+	if(!iscarbon(owner) || !owner.species)
 		return
+
+	///? Holds eye icon to render over markings later.
+	var/icon/eyecon
 
 	//Eye color/icon
 	var/should_have_eyes = owner.should_have_organ(O_EYES)
@@ -70,15 +73,22 @@ var/global/list/limb_icon_cache = list()
 		if(should_have_eyes)
 			//And we have them
 			if(eyes)
-				eyes_icon.Blend(rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3]), ICON_ADD)
+				if(has_eye_color)
+					eyes_icon.Blend(rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3]), ICON_ADD)
 			//They're gone!
 			else
 				eyes_icon.Blend(rgb(128,0,0), ICON_ADD)
 		//We have weird other-sorts of eyes (as we're not supposed to have eye organ, but we have HAS_EYE_COLOR species)
 		else
 			eyes_icon.Blend(rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes), ICON_ADD)
-		add_overlay(eyes_icon)
-		mob_icon.Blend(eyes_icon, ICON_OVERLAY)
+
+		//Allow rendering of eyes over markings.
+		if(eyes_over_markings)
+			eyecon = eyes_icon
+		else
+			add_overlay(eyes_icon)
+			mob_icon.Blend(eyes_icon, ICON_OVERLAY)
+			icon_cache_key += "[eye_icon]"
 
 	//Lip color/icon
 	if(owner.lip_style && (species && (species.appearance_flags & HAS_LIPS)))
@@ -95,6 +105,12 @@ var/global/list/limb_icon_cache = list()
 		mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
 		icon_cache_key += "[M][markings[M]["color"]]"
 
+	//Toggle to render eyes above markings.
+	if(eyes_over_markings && eyecon)
+		add_overlay(eyecon)
+		mob_icon.Blend(eyecon, ICON_OVERLAY)
+		icon_cache_key += "[eye_icon]"
+
 	add_overlay(get_hair_icon())
 
 	return mob_icon
@@ -107,7 +123,7 @@ var/global/list/limb_icon_cache = list()
 		if(facial_hair_style && facial_hair_style.species_allowed && (species.get_bodytype(owner) in facial_hair_style.species_allowed))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
-				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), ICON_MULTIPLY) // VOREStation edit
+				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), facial_hair_style.color_blend_mode)
 			res.add_overlay(facial_s)
 
 	//Head hair
@@ -133,7 +149,10 @@ var/global/list/limb_icon_cache = list()
 	if(owner && owner.gender == MALE)
 		gender = "m"
 
-	icon_cache_key = "[icon_name]_[species ? species.get_bodytype() : SPECIES_HUMAN]" //VOREStation Edit
+	if(!force_icon_key)
+		icon_cache_key = "[icon_name]_[species ? species.get_bodytype() : SPECIES_HUMAN]"
+	else
+		icon_cache_key = "[icon_name]_[force_icon_key]"
 
 	if(force_icon)
 		mob_icon = new /icon(force_icon, "[icon_name][gendered_icon ? "_[gender]" : ""]")

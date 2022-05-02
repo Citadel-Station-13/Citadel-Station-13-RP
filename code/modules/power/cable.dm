@@ -23,7 +23,7 @@ By design, d1 is the smallest direction and d2 is the highest
 */
 var/list/possible_cable_coil_colours = list(
 		"White" = COLOR_WHITE,
-		"Silver" = COLOR_SILVER,
+		MAT_SILVER = COLOR_SILVER,
 		"Gray" = COLOR_GRAY,
 		"Black" = COLOR_BLACK,
 		"Red" = COLOR_RED,
@@ -113,6 +113,7 @@ var/list/possible_cable_coil_colours = list(
 
 // Ghost examining the cable -> tells him the power
 /obj/structure/cable/attack_ghost(mob/user)
+	. = ..()
 	if(user.client && user.client.inquisitive_ghost)
 		user.examinate(src)
 		// following code taken from attackby (multitool)
@@ -120,8 +121,6 @@ var/list/possible_cable_coil_colours = list(
 			to_chat(user, "<span class='warning'>[powernet.avail]W in power network.</span>")
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
-	return
-
 
 // Rotating cables requires d1 and d2 to be rotated
 /obj/structure/cable/setDir(new_dir)
@@ -513,7 +512,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
@@ -944,7 +943,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null

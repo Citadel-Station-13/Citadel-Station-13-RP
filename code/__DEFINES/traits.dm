@@ -60,14 +60,14 @@
 Remember to update _globalvars/traits.dm if you're adding/removing/renaming traits.
 */
 
-/*
 //mob traits
 #define TRAIT_BLIND 			"blind"
-*/
 #define TRAIT_MUTE				"mute"
 /*
 #define TRAIT_EMOTEMUTE			"emotemute"
+*/
 #define TRAIT_DEAF				"deaf"
+/*
 #define TRAIT_NEARSIGHT			"nearsighted"
 #define TRAIT_FAT				"fat"
 #define TRAIT_HUSK				"husk"
@@ -220,6 +220,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define ORGAN_TRAIT "organ"
 */
 #define ROUNDSTART_TRAIT "roundstart" //cannot be removed without admin intervention
+#define GHOSTROLE_TRAIT "ghostrole"
 #define JOB_TRAIT "job"
 #define TRAIT_MIME "mime" //Mime trait.
 /*

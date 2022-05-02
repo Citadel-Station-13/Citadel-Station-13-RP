@@ -30,7 +30,8 @@
 	return QDEL_HINT_QUEUE
 
 /mob/Destroy()
-	QDEL_NULL(shadow)
+	if(shadow)
+		QDEL_NULL(shadow)
 	. = ..()
 
 /mob/zshadow/examine(mob/user)

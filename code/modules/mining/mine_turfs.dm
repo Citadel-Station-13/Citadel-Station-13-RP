@@ -707,10 +707,10 @@ turf/simulated/mineral/floor/light_corner
 
 	var/mineral_name
 	if(rare_ore)
-		mineral_name = pickweight(list("marble" = 5, "uranium" = 10, "platinum" = 10, "hematite" = 20, "carbon" = 20, "diamond" = 2, "gold" = 10, "silver" = 10, "copper" = 15, "phoron" = 20, "lead" = 5, "verdantium" = 1))
+		mineral_name = pickweight(list(MAT_MARBLE = 5, MAT_URANIUM = 10, MAT_PLATINUM = 10, MAT_HEMATITE = 20, MAT_CARBON = 20, MAT_DIAMOND = 2, MAT_GOLD = 10, MAT_SILVER = 10, MAT_COPPER = 15, MAT_PHORON = 20, MAT_LEAD = 5, MAT_VERDANTIUM = 1))
 
 	else
-		mineral_name = pickweight(list("marble" = 3, "uranium" = 10, "platinum" = 10, "hematite" = 70, "carbon" = 70, "diamond" = 2, "gold" = 10, "silver" = 10, "copper" = 15, "phoron" = 20, "lead" = 2, "verdantium" = 1))
+		mineral_name = pickweight(list(MAT_MARBLE = 3, MAT_URANIUM = 10, MAT_PLATINUM = 10, MAT_HEMATITE = 70, MAT_CARBON = 70, MAT_DIAMOND = 2, MAT_GOLD = 10, MAT_SILVER = 10, MAT_COPPER = 15, MAT_PHORON = 20, MAT_LEAD = 2, MAT_VERDANTIUM = 1))
 
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]

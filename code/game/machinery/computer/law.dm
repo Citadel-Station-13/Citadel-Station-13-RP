@@ -53,8 +53,8 @@
 	return
 
 /obj/machinery/computer/aiupload/attack_ghost(user as mob)
+	. = ..()
 	return 1
-
 
 /obj/machinery/computer/borgupload
 	name = "cyborg upload console"
@@ -89,4 +89,5 @@
 	return
 
 /obj/machinery/computer/borgupload/attack_ghost(user as mob)
+	. = ..()
 	return 1

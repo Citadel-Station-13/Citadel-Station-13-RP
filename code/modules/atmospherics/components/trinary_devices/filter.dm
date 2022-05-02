@@ -131,6 +131,7 @@
 	data["on"] = use_power
 	data["rate"] = set_flow_rate
 	data["max_rate"] = air1.volume
+	data["last_flow_rate"] = round(last_flow_rate, 0.1)
 
 	data["filter_types"] = list()
 	data["filter_types"] += list(list("name" = "Nothing", "f_type" = -1, "selected" = filter_type == -1))
@@ -165,18 +166,17 @@
 			filtered_out.Cut()	//no need to create new lists unnecessarily
 			switch(filter_type)
 				if(0) //removing hydrocarbons
-					filtered_out += "phoron"
-					filtered_out += "oxygen_agent_b"
+					filtered_out += /datum/gas/phoron
+					filtered_out += /datum/gas/volatile_fuel
 				if(1) //removing O2
-					filtered_out += "oxygen"
+					filtered_out += /datum/gas/oxygen
 				if(2) //removing N2
-					filtered_out += "nitrogen"
+					filtered_out += /datum/gas/nitrogen
 				if(3) //removing CO2
-					filtered_out += "carbon_dioxide"
+					filtered_out += /datum/gas/carbon_dioxide
 				if(4)//removing N2O
-					filtered_out += "sleeping_agent"
+					filtered_out += /datum/gas/nitrous_oxide
 
-	add_fingerprint(usr)
 	update_icon()
 
 //

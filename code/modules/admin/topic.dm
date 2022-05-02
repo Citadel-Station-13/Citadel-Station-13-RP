@@ -823,7 +823,7 @@
 			if(!reason)
 				return
 
-			to_chat(M, span("critical", "You have been kicked from the server: [reason]"))
+			to_chat(M, SPAN_CRITICAL("You have been kicked from the server: [reason]"))
 			log_admin("[key_name(usr)] booted [key_name(M)] for reason: '[reason]'.")
 			message_admins("<font color=#4F49AF>[key_name_admin(usr)] booted [key_name_admin(M)] for reason '[reason]'.</font>", 1)
 			//M.client = null

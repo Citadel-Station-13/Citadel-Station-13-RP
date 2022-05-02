@@ -1476,7 +1476,8 @@
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	metabolism = REM * 4 // Nanomachines gotta go fast.
-	scannable = 1
+	scannable = TRUE
+	affects_robots = TRUE
 
 /datum/reagent/healing_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.heal_organ_damage(2 * removed, 2 * removed)

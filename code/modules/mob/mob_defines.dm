@@ -14,15 +14,21 @@
 	/// How are we intending to move? Walk/run/etc.
 	var/m_intent = MOVE_INTENT_RUN
 
-	var/next_mob_id = 0
+	// Perspectives
+	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
+	var/datum/perspective/using_perspective
+
+	var/static/next_mob_id = 0
 
 	var/datum/mind/mind
-
-	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
+	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
+	var/stat = CONSCIOUS
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0
+	/// replaces canmove, determines what we can/can't do
+	var/mobility_flags = NONE		// non /living mobs don't get rights!
 
 	//Not in use yet
 	var/obj/effect/organstructure/organStructure = null

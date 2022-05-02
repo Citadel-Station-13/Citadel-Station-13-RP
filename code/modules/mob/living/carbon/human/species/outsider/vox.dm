@@ -1,6 +1,6 @@
 /datum/species/vox
 	name = SPECIES_VOX
-	name_plural = "Vox"
+	name_plural = SPECIES_VOX
 	icobase = 'icons/mob/human_races/r_vox_old.dmi'
 	deform = 'icons/mob/human_races/r_def_vox_old.dmi'
 	default_language = LANGUAGE_VOX
@@ -88,7 +88,6 @@
 		/datum/mob_descriptor/vox_markings = 0
 		)
 
-	min_age = 18
 	wikilink="https://wiki.vore-station.net/Vox"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,

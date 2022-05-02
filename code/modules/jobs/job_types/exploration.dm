@@ -62,7 +62,7 @@
 
 	access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	minimal_access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
-	outfit_type = /decl/hierarchy/outfit/job/pathfinder
+	outfit_type = /datum/outfit/job/pathfinder
 	job_description = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
 	alt_titles = list(
 		"Expedition Lead" = /datum/alt_title/expedition_lead,
@@ -96,7 +96,7 @@
 	pto_type = PTO_EXPLORATION
 	access = list(access_pilot, access_external_airlocks)
 	minimal_access = list(access_pilot, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/pilot
+	outfit_type = /datum/outfit/job/pilot
 	job_description = "A Pilot flies the various shuttles in the Virgo-Erigone System."
 	alt_titles = list(
 		"Co-Pilot" = /datum/alt_title/co_pilot,
@@ -126,7 +126,7 @@
 	idtype = /obj/item/card/id/explorer/explorer
 	access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
 	minimal_access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
-	outfit_type = /decl/hierarchy/outfit/job/explorer2
+	outfit_type = /datum/outfit/job/explorer2
 	job_description = "An Explorer searches for interesting things, and returns them to the station."
 	alt_titles = list(
 		"Surveyor" = /datum/alt_title/surveyor,
@@ -167,7 +167,7 @@
 	pto_type = PTO_EXPLORATION
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_eva, access_maint_tunnels, access_external_airlocks, access_pilot)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_pilot)
-	outfit_type = /decl/hierarchy/outfit/job/medical/sar
+	outfit_type = /datum/outfit/job/medical/sar
 	job_description = "A Field medic works as the field doctor of expedition teams."
 	alt_titles = list(
 		"Expedition Medic" = /datum/alt_title/expedition_medic,

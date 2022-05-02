@@ -18,8 +18,7 @@
 	prepare_data_huds()
 
 /mob/living/proc/prepare_data_huds()
-	update_hud_med_health()
-	update_hud_med_status()
+	update_hud_med_all()
 
 /mob/living/Destroy()
 	if(LAZYLEN(status_effects))
@@ -41,7 +40,23 @@
 		nest = null
 	if(buckled)
 		buckled.unbuckle_mob(src, TRUE)
-	qdel(selected_image)
+	if(selected_image)
+		QDEL_NULL(selected_image)
+
+	// this all needs to be Cut and not null
+	// TODO: fix whatever is accessing these lists after qdel
+	// it should never happen.
+	organs_by_name.Cut()
+	internal_organs_by_name.Cut()
+	for(var/obj/item/organ/O in organs)
+		if(!QDELETED(O))
+			qdel(O)
+	organs.Cut()
+	for(var/obj/item/organ/O in internal_organs)
+		if(!QDELETED(O))
+			qdel(O)
+	internal_organs.Cut()
+
 	return ..()
 
 //mob verbs are faster than object verbs. See mob/verb/examine.
@@ -94,6 +109,20 @@ default behaviour is:
 		return TRUE
 	return ..()
 
+//Called when something steps onto us. This allows for mulebots and vehicles to run things over. <3
+/mob/living/Crossed(var/atom/movable/AM) // Transplanting this from /mob/living/carbon/human/Crossed()
+	if(AM == src || AM.is_incorporeal()) // We're not going to run over ourselves or ghosts
+		return
+
+	if(istype(AM, /mob/living/bot/mulebot))
+		var/mob/living/bot/mulebot/MB = AM
+		MB.runOver(src)
+
+	if(istype(AM, /obj/vehicle))
+		var/obj/vehicle/V = AM
+		V.RunOver(src)
+	return ..()
+
 /mob/living/verb/succumb()
 	set hidden = 1
 	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
@@ -105,10 +134,9 @@ default behaviour is:
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = getMaxHealth() - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
-
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
@@ -472,15 +500,6 @@ default behaviour is:
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
-	if(eye_blind > 0)
-		add_status_indicator("blinded")
-
-/mob/living/SetBlinded(amount)
-	..()
-	if(eye_blind <= 0)
-		remove_status_indicator("blinded")
-	else
-		add_status_indicator("blinded")
 
 /mob/living/AdjustBlinded(amount)
 	if(amount > 0)
@@ -488,10 +507,6 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
-	if(eye_blind <= 0)
-		remove_status_indicator("blinded")
-	else
-		add_status_indicator("blinded")
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
 
@@ -680,13 +695,12 @@ default behaviour is:
 		timeofdeath = 0
 
 	// restore us to conciousness
-	stat = CONSCIOUS
+	set_stat(CONSCIOUS)
 
 	// make the icons look correct
 	regenerate_icons()
 
-	update_hud_med_health()
-	update_hud_med_status()
+	update_hud_med_all()
 
 	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	reload_fullscreen()
@@ -727,54 +741,32 @@ default behaviour is:
 			process_resist()
 
 /mob/living/proc/process_resist()
-	//Getting out of someone's inventory.
-	if(istype(src.loc, /obj/item/holder))
-		escape_inventory(src.loc)
-		return
-
 	//unbuckling yourself
 	if(buckled)
-		spawn() escape_buckle()
+		resist_buckle()
 		return TRUE
 
 	//Breaking out of a locker?
-	if( src.loc && (istype(src.loc, /obj/structure/closet)) )
-		var/obj/structure/closet/C = loc
-		C.mob_breakout(src)
+	if(isobj(loc))
+		var/obj/C = loc
+		C.container_resist(src)
 		return TRUE
 
-	if(istype(loc,/obj/item/clothing))
-		escape_clothes(loc)
+	else if(canmove)
+		if(on_fire)
+			resist_fire() //stop, drop, and roll
+		else
+			resist_restraints()
+
+	else if(canmove)
+		if(on_fire)
+			resist_fire() //stop, drop, and roll
+		else
+			resist_restraints()
 
 	if(attempt_vr(src,"vore_process_resist",args)) return TRUE //VOREStation Code
 
-/mob/living/proc/escape_inventory(obj/item/holder/H)
-	if(H != src.loc)
-		return
-
-	var/mob/M = H.loc //Get our mob holder (if any).
-
-	if(istype(M))
-		M.drop_from_inventory(H)
-		to_chat(M, "<span class='warning'>\The [H] wriggles out of your grip!</span>")
-		to_chat(src, "<span class='warning'>You wriggle out of \the [M]'s grip!</span>")
-
-		// Update whether or not this mob needs to pass emotes to contents.
-		for(var/atom/A in M.contents)
-			if(istype(A,/mob/living/simple_mob/animal/borer) || istype(A,/obj/item/holder))
-				return
-
-	else if(istype(H.loc,/obj/item/clothing/accessory/holster))
-		var/obj/item/clothing/accessory/holster/holster = H.loc
-		if(holster.holstered == H)
-			holster.clear_holster()
-		to_chat(src, "<span class='warning'>You extricate yourself from \the [holster].</span>")
-		H.forceMove(get_turf(H))
-	else if(istype(H.loc,/obj/item))
-		to_chat(src, "<span class='warning'>You struggle free of \the [H.loc].</span>")
-		H.forceMove(get_turf(H))
-
-/mob/living/proc/escape_buckle()
+/mob/living/proc/resist_buckle()
 	if(buckled)
 		if(istype(buckled, /obj/vehicle))
 			var/obj/vehicle/vehicle = buckled
@@ -789,6 +781,12 @@ default behaviour is:
 		G.handle_resist()
 	if(resisting)
 		visible_message("<span class='danger'>[src] resists!</span>")
+
+/mob/living/proc/resist_fire()
+	return
+
+/mob/living/proc/resist_restraints()
+	return
 
 /mob/living/verb/lay_down()
 	set name = "Rest"
@@ -817,6 +815,14 @@ default behaviour is:
 
 /mob/living/proc/has_eyes()
 	return 1
+
+/mob/living/proc/get_restraining_bolt()
+	var/obj/item/implant/restrainingbolt/RB = locate() in src
+	if(RB)
+		if(!RB.malfunction)
+			return TRUE
+
+	return FALSE
 
 /mob/living/proc/slip(var/slipped_on,stun_duration=8)
 	return 0
@@ -1127,7 +1133,18 @@ default behaviour is:
 /mob/living/proc/OpenCraftingMenu()
 	return
 
-/* Enable this one if you're enabling the butchering component. Otherwise it's useless.
+/**
+ *! Enable this one if you're enabling the butchering component. Otherwise it's useless.
 /mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
 	return
+ */
+
+/*
+/mob/living/update_gravity(has_gravity)
+	if(!ticker)
+		return
+	if(has_gravity)
+		clear_alert("weightless")
+	else
+		throw_alert("weightless", /obj/screen/alert/weightless)
 */

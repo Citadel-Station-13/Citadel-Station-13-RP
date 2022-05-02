@@ -26,6 +26,7 @@
 	damage_type = BURN
 	check_armour = "laser"
 	eyeblur = 2
+	impact_sounds = null
 
 /obj/item/projectile/beam/weaklaser
 	name = "weak laser"
@@ -219,6 +220,7 @@
 	agony = 40
 	damage_type = HALLOSS
 	light_color = "#FFFFFF"
+	impact_sounds = null
 
 	combustion = FALSE
 
@@ -252,6 +254,7 @@
 	muzzle_type = /obj/effect/projectile/muzzle/lightning
 	tracer_type = /obj/effect/projectile/tracer/lightning
 	impact_type = /obj/effect/projectile/impact/lightning
+	impact_sounds = null
 
 /obj/item/projectile/beam/disabler/weak
 	name = "weak disabler beam"

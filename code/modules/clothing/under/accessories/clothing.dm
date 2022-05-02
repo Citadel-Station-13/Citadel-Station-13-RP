@@ -59,16 +59,16 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/teshari/suit.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi'
 		)
 
 /obj/item/clothing/accessory/poncho/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == "Teshari")
+		if(H.species.name == SPECIES_TESHARI)
 			icon_override = 'icons/mob/species/teshari/suit.dmi'
-		else if(H.species.name == "Vox")
+		else if(H.species.name == SPECIES_VOX)
 			icon_override = 'icons/mob/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/ties.dmi'
@@ -384,16 +384,16 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/teshari/ties.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/ties.dmi'
 		)
 
 /obj/item/clothing/accessory/sweater/equipped() // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == "Teshari")
+		if(H.species.name == SPECIES_TESHARI)
 			icon_override = 'icons/mob/species/teshari/ties.dmi'
-		else if(H.species.name == "Vox")
+		else if(H.species.name == SPECIES_VOX)
 			icon_override = 'icons/mob/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/ties.dmi'
@@ -532,3 +532,8 @@
 	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection."
 	icon_state = "antediluvian"
 	//body_parts_covered = HANDS|ARMS
+
+/obj/item/clothing/accessory/mekkyaku
+	name = "Mekkyaku turtleneck"
+	desc = "A sleek black turtleneck sweater with a bright red stripe knit into the fabric."
+	icon_state = "mekkyaku"

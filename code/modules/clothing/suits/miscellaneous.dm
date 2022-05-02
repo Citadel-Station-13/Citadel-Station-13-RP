@@ -1177,22 +1177,30 @@ obj/item/clothing/suit/kamishimo
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
 	icon_state = "capformal"
 
+/obj/item/clothing/suit/storage/parade_coat/fem
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal_f"
+
 /obj/item/clothing/suit/storage/parade_coat/hos
 	name = "head of security's formal jerkin"
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
 	icon_state = "hosformal"
+
+/obj/item/clothing/suit/storage/parade_coat/hos_fem
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "hosformal_f"
 
 /obj/item/clothing/suit/storage/parade_coat/centcom
 	name = "head of security's formal jerkin"
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
 	icon_state = "centcomformal"
 
-/* For when I gender these later.
-/obj/item/clothing/suit/storage/parade_coat/female
-	name = "captain's formal jerkin"
+/obj/item/clothing/suit/storage/parade_coat/centcom_fem
+	name = "central command officer's formal jerkin"
 	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
-	icon_state = "capformal"
-*/
+	icon_state = "centcomformal_f"
 
 //Someone's on the line.
 /obj/item/clothing/suit/storage/toggle/letterman
@@ -1220,3 +1228,8 @@ obj/item/clothing/suit/kamishimo
 	name = "Springtime Pariah Moto Jacket"
 	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
 	icon_state = "pariah"
+
+/obj/item/clothing/suit/storage/mekkyaku
+	name = "Mekkyaku hoodie"
+	desc = "This crisp white hoodie bears a strange manufacturer's mark. The colorful red accents stand out against the snowy white cloth with evocative flair."
+	icon_state = "mekkyaku"

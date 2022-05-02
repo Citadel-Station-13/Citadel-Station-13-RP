@@ -16,7 +16,8 @@
 /**
  * handles all mobility_flag updates
  */
-/mob/living/proc/update_mobility()
+/mob/living/update_mobility()
+	#warn lmfao kill me now
 
 /mob/living/update_canmove()
 	// TEMPORARY PATCH UNTIL MOBILITY FLAGS

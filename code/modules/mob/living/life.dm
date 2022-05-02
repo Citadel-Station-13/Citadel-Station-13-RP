@@ -96,11 +96,11 @@
 	updatehealth()
 	if(stat != DEAD)
 		if(paralysis)
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else if (status_flags & FAKEDEATH)
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 		return 1
 
 /mob/living/proc/handle_statuses()
@@ -155,7 +155,7 @@
 
 /mob/living/proc/handle_disabilities()
 	//Eyes
-	if(sdisabilities & BLIND || stat)	//blindness from disability or unconsciousness doesn't get better on its own
+	if(sdisabilities & BLIND || stat || HAS_TRAIT(src, TRAIT_BLIND))	//blindness from disability or unconsciousness doesn't get better on its own
 		SetBlinded(1)
 	else if(eye_blind)			//blindness, heals slowly over time
 		AdjustBlinded(-1)
@@ -169,6 +169,19 @@
 		// deafness heals slowly over time, unless ear_damage is over 100
 		if(ear_damage < 100)
 			adjustEarDamage(-0.05,-1)
+
+	// WARNING WARNING SHITCODE AHEAD
+	// THIS IS A SHIT WAY TO DO THIS BUT WE HAVE NO CHOICE SO HERE WE GO
+	// REFACTOR LATER
+	// deaf trait shim for now
+	if(HAS_TRAIT(src, TRAIT_DEAF))
+		ear_deaf = max(ear_deaf, 1)
+	// mute trait shim for now
+	if(HAS_TRAIT(src, TRAIT_MUTE))
+		silent = max(silent, 1)
+	// blind trait shim for now
+	if(HAS_TRAIT(src, TRAIT_BLIND))
+		eye_blind = max(eye_blind, 1)
 
 /mob/living/handle_regular_hud_updates()
 	if(!client)

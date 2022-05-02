@@ -36,7 +36,7 @@
 
 	//Calculate the amount of energy required and limit transfer_moles based on available power
 	var/specific_power = calculate_specific_power(source, sink)/ATMOS_PUMP_EFFICIENCY //this has to be calculated before we modify any gas mixtures
-	if (!isnull(available_power) && specific_power > 0)
+	if (!isnull(available_power) && specific_power > 0)//specific_power > 0 means we need to use power to move moles, otherwise we can get away with just letting it flow passive
 		transfer_moles = min(transfer_moles, available_power / specific_power)
 
 	if (transfer_moles < MINIMUM_MOLES_TO_PUMP) //if we cant transfer enough gas just stop to avoid further processing
@@ -48,6 +48,7 @@
 		A.last_flow_rate = (transfer_moles/source.total_moles)*source.volume //group_multiplier gets divided out here
 
 		if (A.debug)
+			A.visible_message("[A]: power avaiable to move gases: [available_power] W")
 			A.visible_message("[A]: source entropy: [round(source.specific_entropy(), 0.01)] J/Kmol --> sink entropy: [round(sink.specific_entropy(), 0.01)] J/Kmol")
 			A.visible_message("[A]: specific entropy change = [round(sink.specific_entropy() - source.specific_entropy(), 0.01)] J/Kmol")
 			A.visible_message("[A]: specific power = [round(specific_power, 0.1)] W/mol")
