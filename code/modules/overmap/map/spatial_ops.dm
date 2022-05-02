@@ -199,9 +199,11 @@
 
 /**
  * gets wraparound-considered angle in degrees from A to B
+ * assumes A and B are on the same overmap
  */
 /datum/overmap/proc/get_entity_angle(atom/movable/overmap_object/A, atom/movable/overmap_object/B)
 	// aggressively optimized
+	// if anyone needs to debug this, which you hopefully won't, please forgive me
 	var/ax
 	var/ay
 	var/bx
@@ -223,9 +225,23 @@
 		by = get_y_of_object(B)
 	#warn finish this algorithm
 	return arctan(
-		abs(bx - ax) > cached_coordinate_center_x? () : bx - ax
+		abs(bx - ax) > cached_coordinate_center_x?
+			(bx > ax?
+				(-ax - (cached_coordinate_width - bx))
+				:
+				(bx + (cached_coordinate_width - ax))
+			)
+			:
+			(bx - ax)
 		,
-		abs(by - ay) > cached_coordinate_center_y? () : by - ay
+		abs(by - ay) > cached_coordinate_center_y?
+			(by > ay?
+				(-ay - (cached_coordinate_height - by))
+				:
+				(by + (cached_coordinate_height - ay))
+			)
+			:
+			(by - ay)
 	)
 
 
