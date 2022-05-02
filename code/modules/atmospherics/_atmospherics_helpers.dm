@@ -430,8 +430,8 @@
 /proc/calculate_transfer_moles(datum/gas_mixture/source, datum/gas_mixture/sink, var/pressure_delta, var/sink_volume_mod=0)
 	if(source.temperature == 0 || source.total_moles == 0) return 0
 
-	var/output_volume = (sink.volume * sink.group_multiplier) + sink_volume_mod
-	var/source_total_moles = source.total_moles * source.group_multiplier
+	var/output_volume = (sink.volume) + sink_volume_mod
+	var/source_total_moles = source.total_moles
 
 	var/air_temperature = source.temperature
 	if(sink.total_moles > 0 && sink.temperature > 0)
@@ -449,8 +449,8 @@
 	if(source.temperature == 0) return 0
 
 	//Make the approximation that the sink temperature is unchanged after transferring gas
-	var/source_volume = source.volume * source.group_multiplier
-	var/sink_volume = sink.volume * sink.group_multiplier
+	var/source_volume = source.volume
+	var/sink_volume = sink.volume
 
 	var/source_pressure = source.return_pressure()
 	var/sink_pressure = sink.return_pressure()

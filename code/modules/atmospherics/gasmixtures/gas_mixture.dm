@@ -23,10 +23,7 @@
 	if(moles == 0)
 		return
 
-	if (group_multiplier != 1)
-		gas[gasid] += moles/group_multiplier
-	else
-		gas[gasid] += moles
+	gas[gasid] += moles
 
 	if(update)
 		update_values()
@@ -45,10 +42,7 @@
 		if(combined_heat_capacity != 0)
 			temperature = (temp * giver_heat_capacity + temperature * self_heat_capacity) / combined_heat_capacity
 
-	if (group_multiplier != 1)
-		gas[gasid] += moles/group_multiplier
-	else
-		gas[gasid] += moles
+	gas[gasid] += moles
 
 	if(update)
 		update_values()

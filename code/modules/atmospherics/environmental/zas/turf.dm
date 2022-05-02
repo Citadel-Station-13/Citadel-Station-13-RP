@@ -1,7 +1,11 @@
 /turf
-	var/needs_air_update = FALSE
-/turf/simulated
+	/// the zone we're in, if any
 	var/datum/zas_zone/zone
+
+	var/needs_air_update = FALSE
+
+/turf/simulated
+
 	var/open_directions
 	/// Do we show gas overlays?
 	var/allow_gas_overlays = TRUE

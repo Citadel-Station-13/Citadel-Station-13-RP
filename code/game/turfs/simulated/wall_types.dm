@@ -92,9 +92,9 @@
 /turf/simulated/shuttle/wall
 	name = "autojoin wall"
 	icon_state = "light"
-	opacity = 1
-	density = 1
-	blocks_air = 1
+	opacity = TRUE
+	density = TRUE
+	air_status = AIR_STATUS_BLOCKED
 
 	var/base_state = "light" //The base iconstate to base sprites on
 	var/hard_corner = 0 //Forces hard corners (as opposed to diagonals)
@@ -257,18 +257,15 @@
 	desc = "The fleshy surface of this wall squishes nicely under your touch but looks and feels extremly strong"
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "flesh"
-	opacity = 1
-	density = 1
-	blocks_air = 1
+	opacity = TRUE
+	density = TRUE
+	air_status = AIR_STATUS_BLOCKED
 
 /turf/simulated/flesh/colour
 	name = "flesh wall"
 	desc = "The fleshy surface of this wall squishes nicely under your touch but looks and feels extremly strong"
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "colorable-wall"
-	opacity = 1
-	density = 1
-	blocks_air = 1
 
 /turf/simulated/flesh/attackby()
 	return
@@ -304,9 +301,9 @@ var/list/flesh_overlay_cache = list()
 	desc = "This wall of aging bones is held together by sinew and dried gore. The empty eye sockets stare back at you."
 	icon = 'icons/turf/wall_masks.dmi'
 	icon_state = "bone"
-	opacity = 1
-	density = 1
-	blocks_air = 1
+	opacity = TRUE
+	density = TRUE
+	air_status = AIR_STATUS_BLOCKED
 
 /turf/simulated/bone/attackby()
 	return
