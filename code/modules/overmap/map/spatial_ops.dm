@@ -63,7 +63,58 @@
  * warning: expensive, use sparingly!
  */
 /datum/overmap/proc/entity_query(x, y, dist)
-	#warn finish
+	. = list()
+	var/bucket_x = CEILING(x / OVERMAP_SPATIAL_HASH_COORDSIZE, 1)
+	var/bucket_y = CEILING(y / OVERMAP_SPATIAL_HASH_COORDSIZE, 1)
+	// TODO: manual optimization because byond compiler probably doesn't optimize CEILING
+	var/closest = min(
+		abs(round(x, OVERMAP_SPATIAL_HASH_COORDSIZE) - x),
+		abs(round(y, OVERMAP_SPATIAL_HASH_COORDSIZE) - y)
+	)
+	var/bucket_radius = closest < dist? CEILING(dist / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) : 0
+	if(bucket_radius == 1)
+		// process the bucket we're in if we just need that
+		for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(bucket_x, bucket_y, spatial_hash_width, spatial_hash_height)])
+			if(direct_entity_distance_from(E, x, y) <= dist)
+				. += E
+		return
+	// scan all buckets in range
+	#warn redo this section entirely
+	var/list/collected = list()
+	if(((bucket_x + bucket_radius) > spatial_hash_width) || ((bucket_y + bucket_radius) > spatial_hash_height))
+		// worst case - we have to process wraparounds
+		// if bucket radius is larger than half the map, we just scan 1 to width
+		if(bucket_radius > spatial_)
+		for(var/x in (bucket_x - bucket_radius) to (bucket_x + bucket_radius))
+			for(var/y in (bucket_y - bucket_radius) to (bucket_y + bucket_radius))
+				var/rx = x > spatial_hash_width? x - spatial_hash_width : x
+				var/ry = y > spatial_hash_height? y - spatial_hash_height : y
+				for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(rx, ry, spatial_hash_width, spatial_hash_height)])
+					if(direct_entity_distance_from(E, x, y) <= dist)
+						. += E
+	else
+		// fastpath - we don't need to process wraparounds
+		for(var/x in (bucket_x - bucket_radius) to (bucket_x + bucket_radius))
+			for(var/y in (bucket_y - bucket_radius) to (bucket_y + bucket_radius))
+				for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
+					if(direct_entity_distance_from(E, x, y) <= dist)
+						. += E
+
+/**
+ * get entity distance from a coordinate
+ *
+ * has more aggressive optimizations than get_entity_distance
+ */
+/datum/overmap/proc/direct_entity_distance_from(atom/movable/overmap_object/entity/E, x, y)
+	var/ex = E.position_x
+	var/ey = E.position_y
+	var/dx = ex - x
+	var/dy = ey - y
+	return sqrt(
+		(abs(dx) > cached_coordinate_center_x? (dx > 0? cached_coordinate_width - dx : cached_coordinate_width + dx) : dx)**2
+		+
+		(abs(dy) > cached_coordinate_center_y? (dy > 0? cached_coordinate_height - dy : cached_coordinate_height + dy) : dy)**2
+	)
 
 /**
  * get distance from one object to another, taking into account wraps
@@ -145,6 +196,8 @@
 	spatial_hash = list()
 	// make list of length
 	spatial_hash.len = OVERMAP_SPATIAL_HASH_FOR_TILE_SIZE(width, height)
+	spatial_hash_width = CEILING(width / OVERMAP_SPATIAL_HASH_TILES, 1)
+	spatial_hash_height = CEILING(height / OVERMAP_SPATIAL_HASH_TILES, 1)
 	// make buckets
 	for(var/i in 1 to spatial_hash.len)
 		spatial_hash[i] = list()
