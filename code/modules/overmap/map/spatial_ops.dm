@@ -1,3 +1,7 @@
+// Everything in this file uses "real virtual" overmap coordinates
+// aka they use our pretend coordinates from bottom left, NOT from the center
+// player facing things should not use these real coordinates
+
 /**
  * gets all entities in range of this one's **center**
  * this does not take hitbox size into account, it is not the
