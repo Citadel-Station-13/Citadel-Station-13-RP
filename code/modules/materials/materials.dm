@@ -383,7 +383,7 @@ var/list/name_to_material
 
 
 /datum/material/steel
-	name = DEFAULT_WALL_MATERIAL
+	name = MAT_STEEL
 	stack_type = /obj/item/stack/material/steel
 	integrity = 150
 	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
@@ -419,8 +419,8 @@ var/list/name_to_material
 	spawn_diona_nymph(target)
 
 /datum/material/steel/holographic
-	name = "holo" + DEFAULT_WALL_MATERIAL
-	display_name = DEFAULT_WALL_MATERIAL
+	name = "holo" + MAT_STEEL
+	display_name = MAT_STEEL
 	stack_type = null
 	shard_type = SHARD_NONE
 
@@ -438,7 +438,7 @@ var/list/name_to_material
 	protectiveness = 20 // 50%
 	conductivity = 13 // For the purposes of balance.
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
+	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
 	radiation_resistance = 14
 
 /datum/material/plasteel/hull
@@ -610,7 +610,7 @@ var/list/name_to_material
 	hardness = 40
 	weight = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 2, "glass" = SHEET_MATERIAL_AMOUNT)
+	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2, "glass" = SHEET_MATERIAL_AMOUNT)
 	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
 	created_window = /obj/structure/window/reinforced
 	created_fulltile_window = /obj/structure/window/reinforced/full
