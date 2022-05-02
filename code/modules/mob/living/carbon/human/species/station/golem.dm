@@ -19,7 +19,7 @@
 	blood_color = "#515573"
 	flesh_color = "#137E8F"
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	has_organ = list(
 		"brain" = /obj/item/organ/internal/brain/golem
@@ -31,8 +31,8 @@
 
 /datum/species/golem/handle_post_spawn(var/mob/living/carbon/human/H)
 	if(H.mind)
-		H.mind.assigned_role = "Golem"
-		H.mind.special_role = "Golem"
+		H.mind.assigned_role = SPECIES_GOLEM
+		H.mind.special_role = SPECIES_GOLEM
 	H.real_name = "adamantine golem ([rand(1, 1000)])"
 	H.name = H.real_name
 	..()

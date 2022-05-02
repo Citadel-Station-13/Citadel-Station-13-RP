@@ -52,6 +52,8 @@ research holder datum.
 	var/list/possible_designs = list()
 	///List of available designs.
 	var/list/known_designs = list()
+	/// TODO: REWORK. FABRICATORS. DESIGNS. AND. SCIENCE - tracks unique design IDs
+	var/list/known_design_ids = list()
 
 /datum/research/New() //Insert techs into possible_tech here. Known_tech automatically updated.
 	for(var/T in typesof(/datum/tech) - /datum/tech)
@@ -60,6 +62,13 @@ research holder datum.
 		possible_designs += new D(src)
 //	generate_integrated_circuit_designs()
 	RefreshResearch()
+
+/datum/research/Destroy()
+	possible_designs = null
+	known_designs = null
+	known_design_ids = null
+	known_tech = null
+	return ..()
 
 /datum/research/techonly
 
@@ -94,7 +103,10 @@ research holder datum.
 	return
 
 /datum/research/proc/AddDesign2Known(var/datum/design/D)
-	LAZYDISTINCTADD(known_designs, D)
+	if(known_design_ids[D.id])
+		return
+	known_design_ids[D.id] = D
+	known_designs += D
 
 ///Refreshes known_tech and known_designs list
 ///Input/Output: n/a
@@ -222,7 +234,7 @@ research holder datum.
 	icon_state = "datadisk2"
 	item_state = "card-id"
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
+	matter = list(MAT_STEEL = 30, MAT_GLASS = 10)
 	var/datum/tech/stored
 
 /obj/item/disk/tech_disk/Initialize(mapload)
@@ -237,7 +249,7 @@ research holder datum.
 	icon_state = "datadisk2"
 	item_state = "card-id"
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
+	matter = list(MAT_STEEL = 30, MAT_GLASS = 10)
 	var/datum/design/blueprint
 
 /obj/item/disk/design_disk/Initialize(mapload)

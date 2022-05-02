@@ -1,4 +1,7 @@
-#define PROTOCOL_ARTICLE "Protocol article [rand(100,999)]-[uppertext(pick(GLOB.full_alphabet))] subsection #[rand(10,99)]"
+
+///Don't ask why it's here, I just know it won't work without it. This is my personnal coconut.jpg - Papalus
+//GLOBAL_LIST_INIT(full_alphabet, list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"))
+//#define PROTOCOL_ARTICLE "Protocol article [rand(100,999)]-[uppertext(pick(GLOB.full_alphabet))] subsection #[rand(10,99)]"
 
 /obj/item/organ/internal/brain/adherent
 	name = "mentality matrix"
@@ -43,10 +46,12 @@
 /obj/item/organ/internal/powered/process()
 	. = ..()
 	if(owner)
-		if(active && !(owner.nutrition = owner.nutrition - maintenance_cost))
-			active = FALSE
-			to_chat(owner, "<span class='danger'>Your [name] [gender == PLURAL ? "are" : "is"] out of power!</span>")
-			refresh_action_button()
+		if(active)
+			if(owner.nutrition > 0)
+				owner.adjust_nutrition(-maintenance_cost)
+				active = FALSE
+				to_chat(owner, "<span class='danger'>Your [name] [gender == PLURAL ? "are" : "is"] out of power!</span>")
+				refresh_action_button()
 
 /obj/item/organ/internal/powered/refresh_action_button()
 	. = ..()
@@ -184,7 +189,6 @@
 		var/temp_diff = min(C.bodytemperature - target_temp, max_cooling)
 		if(temp_diff >= 1)
 			maintenance_cost = max(temp_diff, 1)
-			C.nutrition = C.nutrition - maintenance_cost
 			C.bodytemperature -= temp_diff
 		else
 			maintenance_cost = 0

@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT(pipe_paint_colors, list(
 ))
 
 ///List that sorts the colors and is used for setting up the pipes layer so that they overlap correctly
-GLOBAL_LIST_INIT(pipe_colors_ordered, sort_list(list(
+GLOBAL_LIST_INIT(pipe_colors_ordered, sortTim(list(
 	PIPE_COLOR_BLUE = -5,
 	PIPE_COLOR_BROWN = -4,
 	PIPE_COLOR_CYAN = -3,
@@ -37,10 +37,10 @@ GLOBAL_LIST_INIT(pipe_colors_ordered, sort_list(list(
 	PIPE_COLOR_PURPLE = 2,
 	PIPE_COLOR_RED = 3,
 	PIPE_COLOR_YELLOW = 4
-)))
+), /proc/cmp_text_asc))
 
 ///Names shown in the examine for every colored atmos component
-GLOBAL_LIST_INIT(pipe_color_name, sort_list(list(
+GLOBAL_LIST_INIT(pipe_color_name, sortTim(list(
 	PIPE_COLOR_GREY = "omni",
 	PIPE_COLOR_BLUE = "blue",
 	PIPE_COLOR_RED = "red",
@@ -51,4 +51,4 @@ GLOBAL_LIST_INIT(pipe_color_name, sort_list(list(
 	PIPE_COLOR_YELLOW = "yellow",
 	PIPE_COLOR_BROWN = "brown",
 	PIPE_COLOR_PURPLE = "purple"
-)))
+), /proc/cmp_text_asc))

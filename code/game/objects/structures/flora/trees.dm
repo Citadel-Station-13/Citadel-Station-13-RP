@@ -178,9 +178,9 @@
 		return
 
 	if(ckeys_that_took[user.ckey])
-		to_chat(user, span("warning", "There are no presents with your name on."))
+		to_chat(user, SPAN_WARNING( "There are no presents with your name on."))
 		return
-	to_chat(user, span("notice", "After a bit of rummaging, you locate a gift with your name on it!"))
+	to_chat(user, SPAN_NOTICE("After a bit of rummaging, you locate a gift with your name on it!"))
 	ckeys_that_took[user.ckey] = TRUE
 	var/obj/item/G = new gift_type(src)
 	user.put_in_hands(G)
@@ -289,5 +289,5 @@
 /obj/structure/flora/tree/sif/update_icon()
 	set_light(5 - light_shift, 1, "#33ccff")	// 5 variants, missing bulbs. 5th has no bulbs, so no glow.
 	var/image/glow = image(icon = icon, icon_state = "[base_state][light_shift]_glow")
-	glow.plane = PLANE_LIGHTING_ABOVE
+	glow.plane = ABOVE_LIGHTING_PLANE
 	overlays = list(glow)

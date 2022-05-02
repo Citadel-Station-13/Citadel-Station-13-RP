@@ -314,24 +314,32 @@ var/list/global/tank_gauge_cache = list()
 			else
 				to_chat(user, "<span class='warning'>You need something to connect to \the [src].</span>")
 
-/obj/item/tank/remove_air(amount)
+/obj/item/tank/proc/remove_air_by_flag(flag, amount)
+	. = air_contents.remove_by_flag(flag, amount)
 	START_PROCESSING(SSobj, src)
-	return air_contents.remove(amount)
 
 /obj/item/tank/return_air()
-	START_PROCESSING(SSobj, src)
 	return air_contents
 
-
 /obj/item/tank/assume_air(datum/gas_mixture/giver)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	air_contents.merge(giver)
-	//handle_tolerances(ASSUME_AIR_DT_FACTOR)
-	check_status()
-	return TRUE
 
-/obj/item/tank/proc/remove_air_by_flag(flag, amount)
-	return air_contents.remove_by_flag(flag, amount)
+/obj/item/tank/assume_gas(gasid, moles, temp)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/tank/add_thermal_energy(joules)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/tank/remove_moles(moles)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/tank/remove_volume(liters)
+	. = ..()
+	START_PROCESSING(SSobj, src)
 
 /obj/item/tank/proc/remove_air_volume(volume_to_return)
 	if(!air_contents)
@@ -343,7 +351,7 @@ var/list/global/tank_gauge_cache = list()
 
 	var/moles_needed = distribute_pressure*volume_to_return/(R_IDEAL_GAS_EQUATION*air_contents.temperature)
 
-	return remove_air(moles_needed)
+	return remove_moles(moles_needed)
 
 /obj/item/tank/process(delta_time)
 	//Allow for reactions

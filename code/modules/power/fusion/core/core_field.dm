@@ -43,7 +43,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	ignore_types = typecacheof(list(
 		/obj/effect,
 		/obj/item/projectile,
-		/obj/fire,
+		/atom/movable/fire,
 		/obj/structure/cable,
 		/obj/machinery/atmospherics,
 		/obj/machinery/air_sensor,

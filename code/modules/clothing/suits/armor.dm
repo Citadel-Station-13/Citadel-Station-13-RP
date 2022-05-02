@@ -813,3 +813,22 @@
 	desc = "Much more rare than standard Imperial plate, adamant armor protects against lasers and radiation as well as bullets. These suits are believed to originate from an isolationist human society on the Eastern Rim."
 	icon_state = "aplate"
 	armor = list(melee = 10, bullet = 60, laser = 40, energy = 40, bomb = 0, bio = 0, rad = 60)
+
+//Plate Harness Armor. Has no intrinsic protective value, but serves as a lightweight anchor for limb plating.
+/obj/item/clothing/suit/armor/plate_harness
+	name = "lightweight harness"
+	desc = "A lightweight harness designed to attach to the torso. It serves as an anchor point for lightweight armor plating, but provides no protection of its own."
+	icon = 'icons/obj/clothing/ties.dmi'
+	item_icons = list(slot_wear_suit_str = 'icons/mob/ties.dmi')
+	icon_state = "pilot_webbing1"
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_ARMOR_C\
+		|ACCESSORY_SLOT_ARMOR_A\
+		|ACCESSORY_SLOT_ARMOR_L\
+		|ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = (\
+		ACCESSORY_SLOT_ARMOR_C\
+		|ACCESSORY_SLOT_ARMOR_A\
+		|ACCESSORY_SLOT_ARMOR_L\
+		|ACCESSORY_SLOT_ARMOR_M)
+	blood_overlay_type = "armor"

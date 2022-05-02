@@ -67,6 +67,14 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 	)
 ))
 
+GLOBAL_LIST_INIT(pipe_layers, list(
+		"Aux" = PIPING_LAYER_AUX,
+		"Supply" = PIPING_LAYER_SUPPLY,
+		"Regular" = PIPING_LAYER_REGULAR,
+		"Scrubber" = PIPING_LAYER_SCRUBBER,
+		"Fuel" = PIPING_LAYER_FUEL
+	))
+
 //
 // New method of handling pipe construction.  Instead of numeric constants and a giant switch statement of doom
 // 	every pipe type has a datum instance which describes its name, placement rules and construction method, dispensing etc.
@@ -82,10 +90,6 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 	var/subtype = 0							// Used for certain disposals pipes types.
 	var/paintable = FALSE					// If TRUE, allow the RPD to paint this pipe.
 	var/all_layers
-
-// Render an HTML link to select this pipe type. Returns text.
-/datum/pipe_info/proc/Render(dispenser)
-	return "<A href='?src=\ref[dispenser]&[Params()]'>[name]</A><BR>"
 
 // Get preview for UIs
 /datum/pipe_info/proc/get_preview(selected_dir)
@@ -147,10 +151,6 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 
 	return rows
 
-// Parameters for the Topic link returned by Render().  Returns text.
-/datum/pipe_info/proc/Params()
-	return ""
-
 //
 // Subtype for actual pipes
 //
@@ -168,19 +168,6 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 		icon_state_m = "[icon_state]m"
 	paintable = colorable
 
-//Render an HTML link to select this pipe type
-/datum/pipe_info/pipe/Render(dispenser)
-	var/dat = ..(dispenser)
-	// Stationary pipe dispensers don't allow you to pre-select pipe directions.
-	// This makes it impossble to spawn bent versions of bendable pipes.
-	// We add a "Bent" pipe type with a preset diagonal direction to work around it.
-	if(istype(dispenser, /obj/machinery/pipedispenser) && (dirtype == PIPE_BENDABLE))
-		dat += "<A href='?src=\ref[dispenser]&[Params()]&dir=[NORTHEAST]'>Bent [name]</A><BR>"
-	return dat
-
-/datum/pipe_info/pipe/Params()
-	return "makepipe=[pipe_type]"
-
 //
 // Subtype for meters
 //
@@ -191,9 +178,6 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 
 /datum/pipe_info/meter/New(label)
 	name = label
-
-/datum/pipe_info/meter/Params()
-	return "makemeter=1"
 
 //
 // Subtype for disposal pipes
@@ -209,18 +193,3 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 	subtype = sort
 	if (dirtype == PIPE_TRIN_M)
 		icon_state_m = state_mirror
-
-// Render an HTML link to select this pipe type
-/datum/pipe_info/disposal/Render(dispenser)
-	var/dat = ..(dispenser)
-
-	// Blah blah, add corner pipes because dispensers have no directional information. Look up for more info.
-	if(istype(dispenser, /obj/machinery/pipedispenser) && (dirtype == PIPE_BENDABLE))
-		dat += "<A href='?src=\ref[dispenser]&[Params()]&dir=[NORTHEAST]'>Bent [name]</A><BR>"
-	return dat
-
-/datum/pipe_info/disposal/Params()
-	var/param = "dmake=[pipe_type]"
-	if (subtype)
-		param += "&sort=[subtype]"
-	return param

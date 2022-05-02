@@ -169,20 +169,15 @@
 
 /datum/nifsoft/worldbend/activate()
 	if((. = ..()))
-		var/list/justme = list(nif.human)
-		for(var/human in human_mob_list)
-			if(human == nif.human)
-				continue
-			var/mob/living/carbon/human/H = human
-			H.display_alt_appearance("animals", justme)
-			alt_farmanimals += nif.human
+		if((. = ..()))
+			var/mob/living/carbon/human/H = nif.human
+			var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
+			if(A && H)
+				A.add_hud_to(H)
 
 /datum/nifsoft/worldbend/deactivate(var/force = FALSE)
 	if((. = ..()))
-		var/list/justme = list(nif.human)
-		for(var/human in human_mob_list)
-			if(human == nif.human)
-				continue
-			var/mob/living/carbon/human/H = human
-			H.hide_alt_appearance("animals", justme)
-			alt_farmanimals -= nif.human
+		var/mob/living/carbon/human/H = nif.human
+		var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
+		if(A && H)
+			A.remove_hud_from(H)

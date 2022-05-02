@@ -1,6 +1,26 @@
-//Update this whenever the db schema changes
-//make sure you add an update to the schema_version stable in the db changelog
+
+//! Defines for subsystems and overlays
+//!
+//! Lots of important stuff in here, make sure you have your brain switched on
+//! when editing this file
+
+//! ## DB defines
+/**
+ * DB major schema version
+ *
+ * Update this whenever the db schema changes
+ *
+ * make sure you add an update to the schema_version stable in the db changelog
+ */
 //#define DB_MAJOR_VERSION 5
+
+/**
+ * DB minor schema version
+ *
+ * Update this whenever the db schema changes
+ *
+ * make sure you add an update to the schema_version stable in the db changelog
+ */
 //#define DB_MINOR_VERSION 0
 
 //! ## Timing subsystem
@@ -79,11 +99,16 @@
 
 // SS runlevels
 
-#define RUNLEVEL_INIT 0			// "Initialize Only" - Used for subsystems that should never be fired (Should also have SS_NO_FIRE set)
-#define RUNLEVEL_LOBBY 1		// Initial runlevel before setup.  Returns to here if setup fails.
-#define RUNLEVEL_SETUP 2		// While the gamemode setup is running.  I.E gameticker.setup()
-#define RUNLEVEL_GAME 4			// After successful game ticker setup, while the round is running.
-#define RUNLEVEL_POSTGAME 8		// When round completes but before reboot
+/// "Initialize Only" - Used for subsystems that should never be fired (Should also have SS_NO_FIRE set)
+#define RUNLEVEL_INIT 0
+/// Initial runlevel before setup.  Returns to here if setup fails.
+#define RUNLEVEL_LOBBY 1
+/// While the gamemode setup is running.  I.E gameticker.setup()
+#define RUNLEVEL_SETUP 2
+/// After successful game ticker setup, while the round is running.
+#define RUNLEVEL_GAME 4
+/// When round completes but before reboot
+#define RUNLEVEL_POSTGAME 8
 
 #define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
 
@@ -148,6 +173,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_CHARSETUP		25
 #define FIRE_PRIORITY_SPACEDRIFT	25
 #define FIRE_PRIORITY_AIRFLOW		30
+#define FIRE_PRIORITY_PARALLAX		30
 #define FIRE_PRIORITY_AIR			35
 #define FIRE_PRIORITY_OBJ			40
 #define FIRE_PRIORITY_PROCESS		45
@@ -163,7 +189,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_TIMER			700
 #define FIRE_PRIORITY_INPUT			1000		//never drop input
 
-// Macro defining the actual code applying our overlays lists to the BYOND overlays list. (I guess a macro for speed)
+///Compile all the overlays for an atom from the cache lists
+// |= on overlays is not actually guaranteed to not add same appearances but we're optimistically using it anyway.
 #define COMPILE_OVERLAYS(A)\
 	do {\
 		var/list/oo = A.our_overlays;\

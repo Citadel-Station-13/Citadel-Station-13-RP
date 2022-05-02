@@ -355,10 +355,6 @@ proc/dd_sortedObjectList(list/incoming)
 	return sorted_text
 
 
-/proc/dd_sortedTextList(list/incoming)
-	var/case_sensitive = 1
-	return dd_sortedtextlist(incoming, case_sensitive)
-
 
 /datum/proc/dd_SortValue()
 	return "[src]"
@@ -412,25 +408,3 @@ proc/dd_sortedObjectList(list/incoming)
 	if(Li <= L.len)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
-
-//generates a list used to randomize transit animations so they aren't in lockstep
-/proc/get_cross_shift_list(var/size)
-	var/list/result = list()
-
-	result += rand(0, 14)
-	for(var/i in 2 to size)
-		var/shifts = list(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)
-		shifts -= result[i - 1] //consecutive shifts should not be equal
-		if(i == size)
-			shifts -= result[1] //because shift list is a ring buffer
-		result += pick(shifts)
-
-	return result
-
-///sort any value in a list
-/proc/sort_list(list/list_to_sort, cmp=/proc/cmp_text_asc)
-	return sortTim(list_to_sort.Copy(), cmp)
-
-///uses sort_list() but uses the var's name specifically. This should probably be using mergeAtom() instead
-/proc/sort_names(list/list_to_sort, order=1)
-	return sortTim(list_to_sort.Copy(), order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)

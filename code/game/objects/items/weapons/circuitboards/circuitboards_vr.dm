@@ -27,6 +27,27 @@
 							/obj/item/stock_parts/capacitor = 1,
 							/obj/item/stock_parts/console_screen = 1)
 
+//Board for the High performance gas pump
+/obj/item/circuitboard/massive_gas_pump
+	name = T_BOARD("High performance gas pump")
+	build_path = /obj/machinery/atmospherics/binary/massive_gas_pump
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_ENGINEERING = 3, TECH_POWER = 2)
+	req_components = list(
+							/obj/item/stock_parts/matter_bin = 2,
+							/obj/item/stock_parts/manipulator = 2,
+							/obj/item/stock_parts/capacitor = 1)
+
+/obj/item/circuitboard/massive_heat_pump
+	name = T_BOARD("High performance heat pump")
+	build_path = /obj/machinery/atmospherics/binary/massive_heat_pump
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_ENGINEERING = 3, TECH_POWER = 2)
+	req_components = list(
+							/obj/item/stock_parts/matter_bin = 1,
+							/obj/item/stock_parts/micro_laser = 2,
+							/obj/item/stock_parts/capacitor = 2)
+
 // Board for the thermal regulator in airconditioner_vr.dm
 /obj/item/circuitboard/thermoregulator
 	name = T_BOARD("thermal regulator")
@@ -52,11 +73,11 @@
 	name = T_BOARD("timeclock")
 	build_path = /obj/machinery/computer/timeclock
 	board_type = new /datum/frame/frame_types/timeclock_terminal
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 // Board for the ID restorer in id_restorer_vr.dm
 /obj/item/circuitboard/id_restorer
 	name = T_BOARD("ID restoration console")
 	build_path = /obj/machinery/computer/id_restorer
 	board_type = new /datum/frame/frame_types/id_restorer
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)

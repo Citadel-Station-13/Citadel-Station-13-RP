@@ -13,7 +13,6 @@
 	metabolic_rate = 0.75 // slow metabolism
 	item_slowdown_mod = 0.25 //while they start slow, they don't get much slower
 	bloodloss_rate = 0.1 //While they do bleed, they bleed out VERY slowly
-	min_age = 18
 	max_age = 500 //cit lore change
 	health_hud_intensity = 1.5
 	base_species = SPECIES_ALRAUNE
@@ -94,7 +93,7 @@
 		O_KIDNEYS =  /obj/item/organ/internal/kidneys/alraune,
 		O_BRAIN =    /obj/item/organ/internal/brain/alraune,
 		O_EYES =     /obj/item/organ/internal/eyes/alraune,
-		A_FRUIT =    /obj/item/organ/internal/fruitgland,
+		O_FRUIT =    /obj/item/organ/internal/fruitgland,
 		)
 
 /datum/species/alraune/can_breathe_water()
@@ -120,8 +119,7 @@
 	if(H.wear_suit && (H.wear_suit.min_pressure_protection = 0) && H.head && (H.head.min_pressure_protection = 0))
 		fullysealed = TRUE
 	else // find out if local gas mixture is enough to override use of internals
-		var/datum/gas_mixture/environment = H.loc.return_air()
-		var/envpressure = environment.return_pressure()
+		var/envpressure = H.loc.return_pressure()
 		if(envpressure >= hazard_low_pressure)
 			environmentalair = TRUE
 
@@ -350,7 +348,7 @@
 	icon_state = "phytoextractor"
 	name = "fruit gland"
 	desc = "A bulbous gourd-like structure."
-	organ_tag = A_FRUIT
+	organ_tag = O_FRUIT
 	var/generated_reagents = list("sugar" = 2) //This actually allows them. This could be anything, but sugar seems most fitting.
 	var/usable_volume = 250 //Five fruit.
 	var/transfer_amount = 50

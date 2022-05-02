@@ -5,8 +5,6 @@
 	icon = 'icons/effects/effects.dmi'	//We have an ultra-complex update icons that overlays everything, don't load some stupid random male human
 	icon_state = "nothing"
 
-	has_huds = TRUE 					//We do have HUDs (like health, wanted, status, not inventory slots)
-
 	var/embedded_flag					//To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/obj/item/rig/wearing_rig // This is very not good, but it's much much better than calling get_rig() every update_canmove() call.
 	var/last_push_time					//For human_attackhand.dm, keeps track of the last use of disarm
@@ -58,13 +56,26 @@
 		dna.real_name = real_name
 		sync_organ_dna()
 
+	init_world_bender_hud()
+
 /mob/living/carbon/human/Destroy()
 	human_mob_list -= src
 	for(var/organ in organs)
 		qdel(organ)
 	QDEL_NULL(nif)	//VOREStation Add
 	QDEL_LIST_NULL(vore_organs) //VOREStation Add
+	cleanup_world_bender_hud()
 	return ..()
+
+/mob/living/carbon/human/prepare_data_huds()
+	//Update med hud images...
+	. = ..()
+	//...sec hud images...
+	update_hud_sec_implants()
+	update_hud_sec_job()
+	update_hud_sec_status()
+	//...and display them.
+	add_to_all_human_data_huds()
 
 /mob/living/carbon/human/Stat()
 	..()
@@ -246,21 +257,15 @@
 	return
 
 // called when something steps onto a human
-// this handles mulebots and vehicles
-// and now mobs on fire
+// this handles mobs on fire - mulebot and vehicle code has been relocated to /mob/living/Crossed()
 /mob/living/carbon/human/Crossed(var/atom/movable/AM)
 	. = ..()
 	if(AM.is_incorporeal())
 		return
-	if(istype(AM, /mob/living/bot/mulebot))
-		var/mob/living/bot/mulebot/MB = AM
-		MB.runOver(src)
-
-	if(istype(AM, /obj/vehicle))
-		var/obj/vehicle/V = AM
-		V.RunOver(src)
 
 	spread_fire(AM)
+
+	..() // call parent because we moved behavior to parent
 
 // Get rank from ID, ID inside PDA, PDA, ID in wallet, etc.
 /mob/living/carbon/human/proc/get_authentification_rank(var/if_no_id = "No id", var/if_no_job = "No job")
@@ -412,15 +417,7 @@
 									if(setcriminal != "Cancel")
 										R.fields["criminal"] = setcriminal
 										modified = 1
-
-										spawn()
-											BITSET(hud_updateflag, WANTED_HUD)
-											if(istype(usr,/mob/living/carbon/human))
-												var/mob/living/carbon/human/U = usr
-												U.handle_hud_list()
-											if(istype(usr,/mob/living/silicon/robot))
-												var/mob/living/silicon/robot/U = usr
-												U.handle_regular_hud_updates()
+										update_hud_sec_status()
 
 			if(!modified)
 				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
@@ -679,7 +676,7 @@
 		I.additional_flash_effects(number)
 	return number
 
-/mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/flash)
+/mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(internal_organs_by_name[O_EYES]) // Eyes are fucked, not a 'weak point'.
 		var/obj/item/organ/internal/eyes/I = internal_organs_by_name[O_EYES]
 		I.additional_flash_effects(intensity)
@@ -779,11 +776,6 @@
 	set name = "Morph"
 	set category = "Superpower"
 
-	if(stat!=CONSCIOUS)
-		reset_view(0)
-		remoteview_target = null
-		return
-
 	if(!(mMorph in mutations))
 		src.verbs -= /mob/living/carbon/human/proc/morph
 		return
@@ -854,14 +846,10 @@
 	set name = "Project mind"
 	set category = "Superpower"
 
-	if(stat!=CONSCIOUS)
-		reset_view(0)
-		remoteview_target = null
-		return
-
 	if(!(mRemotetalk in src.mutations))
 		src.verbs -= /mob/living/carbon/human/proc/remotesay
 		return
+
 	var/list/creatures = list()
 	for(var/mob/living/carbon/h in GLOB.mob_list)
 		creatures += h
@@ -885,18 +873,19 @@
 
 	if(stat!=CONSCIOUS)
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 		return
 
 	if(!(mRemote in src.mutations))
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 		src.verbs -= /mob/living/carbon/human/proc/remoteobserve
 		return
 
-	if(client.eye != client.mob)
+	if(IsRemoteViewing())
+		to_chat(src, SPAN_NOTICE("You stop looking through another perspective."))
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 		return
 
 	var/list/mob/creatures = list()
@@ -911,10 +900,10 @@
 
 	if (target)
 		remoteview_target = target
-		reset_view(target)
+		reset_perspective(target)
 	else
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 
 /mob/living/carbon/human/get_visible_gender()
 	if(wear_suit && wear_suit.flags_inv & HIDEJUMPSUIT && ((head && head.flags_inv & HIDEMASK) || wear_mask))
@@ -1144,7 +1133,7 @@
 
 	if(species)
 
-		if(species.name && species.name == new_species && species.name != "Custom Species")
+		if(species.name && species.name == new_species && species.name != SPECIES_CUSTOM)
 			return
 		if(species.language)
 			remove_language(species.language)
@@ -1480,11 +1469,6 @@
 		return
 	..()
 
-/mob/living/carbon/human/reset_view(atom/A, update_hud = 1)
-	..()
-	if(update_hud)
-		handle_regular_hud_updates()
-
 /mob/living/carbon/human/Check_Shoegrip()
 	if(shoes && (shoes.item_flags & NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
 		return 1
@@ -1630,17 +1614,19 @@
 	return msg
 
 //Crazy alternate human stuff
-/mob/living/carbon/human/Initialize(mapload, new_species)
-	. = ..()
+/mob/living/carbon/human/proc/init_world_bender_hud()
 	var/animal = pick("cow","chicken_brown", "chicken_black", "chicken_white", "chick", "mouse_brown", "mouse_gray", "mouse_white", "lizard", "cat2", "goose", "penguin")
 	var/image/img = image('icons/mob/animal.dmi', src, animal)
+	// hud refactor when
 	img.override = TRUE
-	add_alt_appearance("animals", img, displayTo = alt_farmanimals)
+	LAZYINITLIST(hud_list)
+	hud_list[WORLD_BENDER_ANIMAL_HUD] = img
+	var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
+	A.add_to_hud(src)
 
-/mob/living/carbon/human/Destroy()
-	alt_farmanimals -= src
-
-	. = ..()
+/mob/living/carbon/human/proc/cleanup_world_bender_hud()
+	var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
+	A.remove_from_hud(src)
 
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
@@ -1678,3 +1664,8 @@
 	if(BP_IS_ROBOTIC(E))
 		return BULLET_IMPACT_METAL
 	return BULLET_IMPACT_MEAT
+
+/mob/living/carbon/human/reduce_cuff_time()
+	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/rig))
+		return 2
+	return ..()

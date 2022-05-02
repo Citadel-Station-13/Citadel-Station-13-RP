@@ -13,11 +13,11 @@
 
 	//Prosfab specific stuff
 	var/manufacturer = null
-	var/species_types = list("Human")
-	var/species = "Human"
+	var/species_types = list(SPECIES_HUMAN)
+	var/species = SPECIES_HUMAN
 
 	materials = list(
-		DEFAULT_WALL_MATERIAL = 0,
+		MAT_STEEL = 0,
 		MAT_GLASS = 0,
 		MAT_PLASTIC = 0,
 		MAT_GRAPHITE = 0,
@@ -109,7 +109,7 @@
 
 	switch(action)
 		if("species")
-			var/new_species = input(usr, "Select a new species", "Prosfab Species Selection", "Human") as null|anything in species_types
+			var/new_species = input(usr, "Select a new species", "Prosfab Species Selection", SPECIES_HUMAN) as null|anything in species_types
 			if(new_species && ui_status(usr, state) == UI_INTERACTIVE)
 				species = new_species
 			return

@@ -139,7 +139,7 @@
 	for(var/datum/disease2/effectholder/e in effects)
 		e.effect.deactivate(mob)
 	mob.virus2.Remove("[uniqueID]")
-	BITSET(mob.hud_updateflag, STATUS_HUD)
+	mob.update_hud_med_status()
 
 /datum/disease2/disease/proc/minormutate()
 	//uniqueID = rand(0,10000)

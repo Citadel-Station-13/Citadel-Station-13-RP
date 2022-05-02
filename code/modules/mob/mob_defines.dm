@@ -1,17 +1,28 @@
 /mob
+	datum_flags = DF_USE_TAG
 	density = 1
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
 
+	// Rendering
+	/// Fullscreen objects
+	var/list/fullscreens = list()
+
 	// Intents
 	/// How are we intending to move? Walk/run/etc.
 	var/m_intent = MOVE_INTENT_RUN
 
-	var/datum/mind/mind
+	// Perspectives
+	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
+	var/datum/perspective/using_perspective
 
-	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
+	var/static/next_mob_id = 0
+
+	var/datum/mind/mind
+	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
+	var/stat = CONSCIOUS
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)

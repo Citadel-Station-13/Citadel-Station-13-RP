@@ -7,7 +7,8 @@
 	var/atom/movable/screen/map_view/cam_screen
 	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
-	var/atom/movable/screen/skybox/local_skybox
+	/// parallax holder for camera
+	var/datum/parallax_holder/parallax
 
 // Proc: setup_tgui_camera()
 // Parameters: None
@@ -30,11 +31,7 @@
 		instance.del_on_map_removal = FALSE
 		instance.screen_loc = "[map_name]:CENTER"
 
-	local_skybox = new()
-	local_skybox.assigned_map = map_name
-	local_skybox.del_on_map_removal = FALSE
-	local_skybox.screen_loc = "[map_name]:CENTER,CENTER"
-	cam_plane_masters += local_skybox
+	parallax = new(null, map_name, src, locate(/atom/movable/screen/plane_master/parallax) in cam_plane_masters)
 
 	cam_background = new
 	cam_background.assigned_map = map_name
@@ -63,7 +60,6 @@
 				cam_screen.vis_contents = list(communicator)
 			cam_background.fill_rect(1, 1, 1, 1)
 			cam_background.icon_state = "clear"
-			local_skybox.cut_overlays()
 			return
 
 	// If we're not forcing an update for some reason and the cameras are in the same location,
@@ -87,16 +83,12 @@
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, (video_range * 2), (video_range * 2))
 
-	local_skybox.cut_overlays()
-	local_skybox.add_overlay(SSskybox.get_skybox(get_z(last_camera_turf)))
-	local_skybox.scale_to_view(video_range * 2)
-	local_skybox.set_position("CENTER", "CENTER", (world.maxx>>1) - last_camera_turf.x, (world.maxy>>1) - last_camera_turf.y)
+	parallax.Update(TRUE)
 
 /obj/item/communicator/proc/show_static()
 	cam_screen.vis_contents.Cut()
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, (video_range * 2), (video_range * 2))
-	local_skybox.cut_overlays()
 
 // Proc: ui_state()
 // Parameters: User
@@ -117,6 +109,7 @@
 		for(var/plane in cam_plane_masters)
 			user.client.register_map_obj(plane)
 		user.client.register_map_obj(cam_background)
+		parallax.Apply(user.client)
 		// Setup UI
 		ui = new(user, src, "Communicator", name)
 		if(custom_state)
@@ -124,6 +117,10 @@
 		ui.open()
 	if(custom_state) // Just in case
 		ui.set_state(custom_state)
+
+/obj/item/communicator/ui_close(mob/user)
+	. = ..()
+	parallax.Remove(user.client)
 
 // Proc: ui_data()
 // Parameters: User, UI, State

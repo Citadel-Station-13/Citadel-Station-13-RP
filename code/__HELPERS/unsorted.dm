@@ -1263,7 +1263,8 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	/// move_resist = INFINITY
 	var/ready_to_die = FALSE
 
-/mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
+// Properly prevents this mob from gaining huds or joining any global lists
+/mob/dview/Initialize()
 	SHOULD_CALL_PARENT(FALSE)
 	if(flags & INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
@@ -1506,32 +1507,32 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	if (NOT_FLAG(USE_ALLOW_NON_ADJACENT) && !Adjacent(user))
 		if (show_messages)
-			to_chat(user, span("notice","You're too far away from [src] to do that."))
+			to_chat(user, SPAN_NOTICE("You're too far away from [src] to do that."))
 		return USE_FAIL_NON_ADJACENT
 
 	if (NOT_FLAG(USE_ALLOW_DEAD) && user.stat == DEAD)
 		if (show_messages)
-			to_chat(user, span("notice","You can't do that when you're dead."))
+			to_chat(user, SPAN_NOTICE("You can't do that when you're dead."))
 		return USE_FAIL_DEAD
 
 	if (NOT_FLAG(USE_ALLOW_INCAPACITATED) && (user.incapacitated()))
 		if (show_messages)
-			to_chat(user, span("notice","You cannot do that in your current state."))
+			to_chat(user, SPAN_NOTICE("You cannot do that in your current state."))
 		return USE_FAIL_INCAPACITATED
 
 	if (NOT_FLAG(USE_ALLOW_NON_ADV_TOOL_USR) && !user.IsAdvancedToolUser())
 		if (show_messages)
-			to_chat(user, span("notice","You don't know how to operate [src]."))
+			to_chat(user, SPAN_NOTICE("You don't know how to operate [src]."))
 		return USE_FAIL_NON_ADV_TOOL_USR
 
 	if (HAS_FLAG(USE_DISALLOW_SILICONS) && issilicon(user))
 		if (show_messages)
-			to_chat(user, span("notice","You need hands for that."))
+			to_chat(user, SPAN_NOTICE("You need hands for that."))
 		return USE_FAIL_IS_SILICON
 
 	if (HAS_FLAG(USE_FORCE_SRC_IN_USER) && !(src in user))
 		if (show_messages)
-			to_chat(user, span("notice","You need to be holding [src] to do that."))
+			to_chat(user, SPAN_NOTICE("You need to be holding [src] to do that."))
 		return USE_FAIL_NOT_IN_USER
 
 #undef NOT_FLAG
@@ -1652,17 +1653,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	. += new /atom/movable/screen/plane_master/ghosts							//Ghosts!
 	. += new /atom/movable/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
 
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_WANTED}			//Wanted status
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPLOYAL}		//Loyalty implants
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPTRACK}		//Tracking implants
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPCHEM}		//Chemical implants
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_SPECIAL}		//"Special" role stuff
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS_OOC}		//OOC status HUD
-
 	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN1}			//For admin use
 	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN2}			//For admin use
 	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN3}			//For admin use
@@ -1674,11 +1664,9 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	. += new /atom/movable/screen/plane_master/main{plane = TURF_PLANE}
 	. += new /atom/movable/screen/plane_master/main{plane = OBJ_PLANE}
 	. += new /atom/movable/screen/plane_master/main{plane = MOB_PLANE}
-	// . += new /atom/movable/screen/plane_master/cloaked						//Cloaked atoms!
+	// . += new /atom/movable/screen/plane_master/cloaked								//Cloaked atoms!
 
-	// Random other plane masters
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS_R}		//Right-side status icon
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_HEALTH_VR}		//Health bar but transparent at 100
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_BACKUP}			//Backup implant status
-	. += new /atom/movable/screen/plane_master{plane = PLANE_CH_VANTAG}			//Vore Antags
-	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}			//Augmented reality
+	//VOREStation Add - Random other plane masters
+	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}				//Augmented reality
+	//VOREStation Add End
+	. += new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}
