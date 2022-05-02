@@ -252,46 +252,56 @@ var/list/name_to_material
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
 	icon_colour = "#007A00"
-	weight = 22
+	weight = 55
+	hardness = 90
+	melting_point = 1400
 	stack_origin_tech = list(TECH_MATERIAL = 5)
 	door_icon_base = "stone"
 
 /datum/material/diamond
 	name = "diamond"
 	stack_type = /obj/item/stack/material/diamond
-	flags = MATERIAL_UNMELTABLE
+	flags = list (MATERIAL_UNMELTABLE, MATERIAL_BRITTLE) //Diamond does not hold up good on its own.
 	cut_delay = 60
 	icon_colour = "#00FFE1"
+	weight = 10
+	hardness = 120
 	opacity = 0.4
 	reflectivity = 0.6
 	conductivity = 1
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
-	hardness = 100
 	stack_origin_tech = list(TECH_MATERIAL = 6)
+	protectiveness = 25
 
 /datum/material/gold
 	name = "gold"
 	stack_type = /obj/item/stack/material/gold
 	icon_colour = "#EDD12F"
-	weight = 24
+	integrity = 125
+	weight = 50
 	hardness = 40
 	conductivity = 41
+	melting_point = 1350
 	stack_origin_tech = list(TECH_MATERIAL = 4)
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 
-/datum/material/gold/bronze //placeholder for ashtrays
+/datum/material/gold/bronze //placeholder for ashtrays. Note to Devs: Add Tin
 	name = "bronze"
 	icon_colour = "#EDD12F"
+	weight = 25
+	hardness = 45
 
 /datum/material/silver
 	name = "silver"
 	stack_type = /obj/item/stack/material/silver
 	icon_colour = "#D1E6E3"
-	weight = 22
-	hardness = 50
+	integrity = 125
+	weight = 30
+	hardness = 40
 	conductivity = 63
+	melting_point = 1250
 	stack_origin_tech = list(TECH_MATERIAL = 3)
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
@@ -352,8 +362,9 @@ var/list/name_to_material
 	icon_reinf = "reinf_stone"
 	icon_colour = "#D9C179"
 	shard_type = SHARD_STONE_PIECE
-	weight = 22
-	hardness = 55
+	weight = 7
+	hardness = 100
+	melting_point = 1750
 	protectiveness = 5 // 20%
 	conductive = 0
 	conductivity = 5
@@ -364,14 +375,15 @@ var/list/name_to_material
 /datum/material/stone/marble
 	name = "marble"
 	icon_colour = "#AAAAAA"
-	weight = 26
-	hardness = 30 //VOREStation Edit - Please.
+	weight = 7
+	hardness = 40 //VOREStation Edit - Please.
+	melting_point = 1050
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/marble
 
 
 /datum/material/steel
-	name = MAT_STEEL
+	name = DEFAULT_WALL_MATERIAL
 	stack_type = /obj/item/stack/material/steel
 	integrity = 150
 	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
@@ -407,8 +419,8 @@ var/list/name_to_material
 	spawn_diona_nymph(target)
 
 /datum/material/steel/holographic
-	name = "holo" + MAT_STEEL
-	display_name = MAT_STEEL
+	name = "holo" + DEFAULT_WALL_MATERIAL
+	display_name = DEFAULT_WALL_MATERIAL
 	stack_type = null
 	shard_type = SHARD_NONE
 
@@ -426,7 +438,7 @@ var/list/name_to_material
 	protectiveness = 20 // 50%
 	conductivity = 13 // For the purposes of balance.
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT, MAT_PLATINUM = SHEET_MATERIAL_AMOUNT) //todo
+	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
 	radiation_resistance = 14
 
 /datum/material/plasteel/hull
@@ -456,7 +468,7 @@ var/list/name_to_material
 	protectiveness = 60 // 75%
 	reflectivity = 0.7 // Not a perfect mirror, but close.
 	stack_origin_tech = list(TECH_MATERIAL = 8)
-	composite_material = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT, MAT_DIAMOND = SHEET_MATERIAL_AMOUNT) //shrug
+	composite_material = list("plasteel" = SHEET_MATERIAL_AMOUNT, "diamond" = SHEET_MATERIAL_AMOUNT) //shrug
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	name = MAT_DURASTEELHULL
@@ -477,6 +489,10 @@ var/list/name_to_material
 	door_icon_base = "metal"
 	icon_colour = "#D1E6E3"
 	icon_reinf = "reinf_metal"
+	melting_point = 1900
+	weight = 13
+	hardness = 90
+
 
 /datum/material/plasteel/titanium/hull
 	name = MAT_TITANIUMHULL
@@ -491,6 +507,7 @@ var/list/name_to_material
 	icon_colour = "#00E1FF"
 	opacity = 0.3
 	integrity = 100
+	melting_point = 1700
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
 	hardness = 30
@@ -587,12 +604,13 @@ var/list/name_to_material
 	icon_colour = "#00E1FF"
 	opacity = 0.3
 	integrity = 100
+	melting_point = 1900
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
 	hardness = 40
 	weight = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2, MAT_GLASS = SHEET_MATERIAL_AMOUNT)
+	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 2, "glass" = SHEET_MATERIAL_AMOUNT)
 	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
 	created_window = /obj/structure/window/reinforced
 	created_fulltile_window = /obj/structure/window/reinforced/full
@@ -653,10 +671,14 @@ var/list/name_to_material
 	name = "osmium"
 	stack_type = /obj/item/stack/material/osmium
 	icon_colour = "#9999FF"
+	integrity = 175
 	stack_origin_tech = list(TECH_MATERIAL = 5)
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	conductivity = 100
+	weight = 65
+	hardness = 105
+	melting_point = 3300
 
 /datum/material/tritium
 	name = "tritium"
@@ -690,7 +712,10 @@ var/list/name_to_material
 	name = "platinum"
 	stack_type = /obj/item/stack/material/platinum
 	icon_colour = "#9999FF"
-	weight = 27
+	integrity = 125
+	melting_point = 2050
+	hardness = 50
+	weight = 60
 	conductivity = 9.43
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	sheet_singular_name = "ingot"
@@ -700,6 +725,8 @@ var/list/name_to_material
 	name = "iron"
 	stack_type = /obj/item/stack/material/iron
 	icon_colour = "#5C5454"
+	integrity = 125
+	hardness = 45
 	weight = 22
 	conductivity = 10
 	sheet_singular_name = "ingot"
@@ -709,7 +736,10 @@ var/list/name_to_material
 	name = MAT_LEAD
 	stack_type = /obj/item/stack/material/lead
 	icon_colour = "#273956"
-	weight = 23 // Lead is a bit more dense than silver IRL, and silver has 22 ingame.
+	integrity = 175
+	melting_point = 2000
+	hardness = 20
+	weight = 32
 	conductivity = 10
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
@@ -869,7 +899,7 @@ var/list/name_to_material
 	shard_can_repair = 0 // you can't weld splinters back into planks
 	hardness = 15
 	weight = 18
-	protectiveness = 8 // 28%
+	protectiveness = 5
 	conductive = 0
 	conductivity = 1
 	melting_point = T0C+300 //okay, not melting in this case, but hot enough to destroy wood
@@ -920,6 +950,7 @@ var/list/name_to_material
 	integrity = 65	//a bit stronger than regular wood
 	hardness = 20
 	weight = 20	//likewise, heavier
+	protectiveness = 6 //More Protective then regular wood
 
 /datum/material/cardboard
 	name = "cardboard"
@@ -1075,6 +1106,7 @@ var/list/name_to_material
 	icon_colour = "#5C4831"
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	flags = MATERIAL_PADDING
+	weight = 2
 	ignition_point = T0C+300
 	melting_point = T0C+300
 	protectiveness = 3 // 13%
@@ -1097,6 +1129,7 @@ var/list/name_to_material
 	display_name ="cotton"
 	icon_colour = "#FFFFFF"
 	flags = MATERIAL_PADDING
+	weight = 4
 	ignition_point = T0C+232
 	melting_point = T0C+300
 	protectiveness = 1 // 4%
@@ -1213,18 +1246,25 @@ var/list/name_to_material
 /datum/material/brass
 	name = "brass"
 	icon_colour = "#CAC955"
+	integrity = 125
+	weight = 24
+	hardness = 45
 	integrity = 150
+	melting_point = 1100
 	stack_type = /obj/item/stack/material/brass
+	composite_material = list("copper" = SHEET_MATERIAL_AMOUNT, "sandstone" = SHEET_MATERIAL_AMOUNT)
 
 /datum/material/copper
 	name = "copper"
 	icon_colour = "#b45c13"
-	weight = 15
-	hardness = 30
-	conductivity = 35
+	integrity = 125
+	weight = 25
+	hardness = 45
+	conductivity = 60
+	melting_point = 1350
 	stack_type = /obj/item/stack/material/copper
+	protectiveness = 8 //It ain't Iron Armor but it should still be protective
 
-//Moving this here. It was in beehive.dm for some reason.
 /datum/material/wax
 	name = "wax"
 	stack_type = /obj/item/stack/material/wax
