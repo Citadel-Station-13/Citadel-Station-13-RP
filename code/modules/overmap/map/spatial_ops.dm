@@ -67,13 +67,46 @@
 
 /**
  * get distance from one object to another, taking into account wraps
+ * this is from the **center of one to the other!**
  *
  * unlike what the name suggests, tiled objects are supported
  *
  * this proc **does** depend on entity cached positions!
+ * this proc assumes A and B are infact on the same overmap
+ * if they are not, coder skill issue, check them yourself!
  */
 /datum/overmap/proc/get_entity_distance(atom/movable/overmap_object/A, atom/movable/overmap_object/B)
-
+	var/ax
+	var/ay
+	var/bx
+	var/by
+	var/atom/movable/overmap_object/entity/cast
+	if(istype(A, /atom/movable/overmap_object/entity))
+		cast = A
+		ax = cast.position_x
+		ay = cast.position_y
+	else
+		ax = get_x_of_object(A)
+		ay = get_y_of_object(A)
+	if(istype(B, /atom/movable/overmap_object/entity))
+		cast = B
+		bx = cast.position_x
+		by = cast.position_y
+	else
+		bx = get_x_of_object(B)
+		by = get_y_of_object(B)
+	// we save some var dec overhead, fuck you
+	ax = ax - bx
+	ay = ay - by
+	// if greater than center x, wrap the value around
+	// at this point, ax pos = a right of b, ay pos = a right of b
+	// use cached coordinate sizes
+	// regardless use euclidean dist calc after
+	return sqrt(
+		(abs(ax) > cached_coordinate_center_x? (ax > 0? cached_coordinate_width - ax : cached_coordinate_width + ax) : ax)**2
+		+
+		(abs(ay) > cached_coordinate_center_y? (ay > 0? cached_coordinate_height - ay : cached_coordinate_height + ay) : ay)**2
+	)
 
 /**
  * removes an entity from the spatial hash
