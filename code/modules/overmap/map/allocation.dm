@@ -17,7 +17,7 @@
 		width = real_width - OVERMAP_GENERATION_EDGE_MARGIN
 		height = real_height - OVERMAP_GENERATION_EDGE_MARGIN
 		log_overmaps_map(src, "Out of bounds allocation of [width]x[height] clamped.")
-	log_overmaps_map(src, "Allocating block of [real_width]x[real_height]..."))
+	log_overmaps_map(src, "Allocating block of [real_width]x[real_height]...")
 	turf_reservation = SSmapping.RequestBlockReservation(width = real_width, height = real_height, type = /datum/turf_reservation/overmap, turf_type_override = /turf/overmap)
 	if(!turf_reservation)
 		log_overmaps_map(src, "Allocation failed! Crashing...")

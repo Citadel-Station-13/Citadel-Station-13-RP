@@ -11,4 +11,4 @@
  * moves the object to a location
  */
 /datum/ftl_destination/proc/Shunt(atom/movable/overmap_object/object)
-	return FTL_DESTINATION_SHUNT_FAILED
+	return FTL_DESTINATION_SHUNT_ERROR

@@ -2,6 +2,12 @@
  * physics update
  */
 /atom/movable/overmap_object/entity/proc/physics_tick(seconds)
+	#warn check pause
+	#warn check overmap
+	#warn move
+	#warn move to
+	#warn optimized spatial hash updates
+
 #warn do all of these
 
 /**

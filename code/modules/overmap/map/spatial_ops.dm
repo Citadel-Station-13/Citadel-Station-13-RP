@@ -22,8 +22,10 @@
  * adds an entity to the spatial hash
  */
 /datum/overmap/proc/_spatial_add_entity(atom/movable/overmap_object/entity/E)
-	bucket = OVERMAP_SPATIAL_HASH_COORD_INDEX(E.x, E.y)
-
+	var/list/bucket = spatial_hash[OVERMAP_SPATIAL_HASH_COORD_INDEX(E.position_x, E.position_y)]
+	if(E._overmap_spatial_hash_index)
+		spatial_hash[E._overmap_spatial_hash_index] -= E
+	bucket += E
 
 /**
  * updates an entity's location in the spatial hash
