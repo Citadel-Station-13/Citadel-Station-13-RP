@@ -13,8 +13,10 @@
 	// overmap
 	/// currently ticking?
 	var/ticking = FALSE
-	/// overmap we belong to
+	/// overmap we belong to - **nested objects are still on this, use is_on_map to determine!**
 	var/datum/overmap/overmap
+	/// are we currently on the overmap or contained by something?
+	var/is_on_map = FALSE
 	/// spatial hash index we're in
 	var/tmp/_overmap_spatial_hash_index
 

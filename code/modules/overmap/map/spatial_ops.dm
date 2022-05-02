@@ -22,6 +22,8 @@
  * adds an entity to the spatial hash
  */
 /datum/overmap/proc/_spatial_add_entity(atom/movable/overmap_object/entity/E)
+	bucket = OVERMAP_SPATIAL_HASH_COORD_INDEX(E.x, E.y)
+
 
 /**
  * updates an entity's location in the spatial hash
@@ -40,11 +42,11 @@
  * sets up our spatial hash
  */
 /datum/overmap/proc/SetupSpatialHash()
-	#warn log if spatial hash was already made
+	log_overmaps_map(src, "[spatial_hash? "resetting" : "setting up"] spatial hash.")
 	// make list
 	spatial_hash = list()
 	// make list of length
-	spatial_hash.len = CEILING(width / OVERMAP_SPATIAL_HASH_SIZE, 1) * CEILING(height / OVERMAP_SPATIAL_HASH_SIZE, 1)
+	spatial_hash.len = OVERMAP_SPATIAL_HASH_FOR_TILE_SIZE(width, height)
 	// make buckets
 	for(var/i in 1 to spatial_hash.len)
 		spatial_hash[i] = list()
@@ -55,3 +57,4 @@
 			stack_trace("entity with wrong overmap found")
 			continue
 		_spatial_add_entity(E)
+	log_overmaps_map(src, "spatial hash set up: [length(spatial_hash)] buckets with [length(entities)] initial entities.")
