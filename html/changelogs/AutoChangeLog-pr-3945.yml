@@ -1,5 +1,0 @@
-author: "CrystalClearCC"
-delete-after: True
-changes: 
-  - rscadd: "Introduces the all-new Vampire/Vetalan trait. This is a merger of bloodsucker, major darksight, numbing bites, antiseptic saliva, major burn weakness, and photosensitivity."
-  - bugfix: "Patches bloodpacks to not allow literally anyone with hands to apply it to their face to gain nutrients. Ex3-378 does not have a mouth and runs on electricity. Ex3-378 would've been able to bite the bloodpack and drain its blood to gain electricity."
