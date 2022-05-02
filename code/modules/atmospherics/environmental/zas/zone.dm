@@ -10,12 +10,6 @@ Class Vars:
 	edges - A list of edges that connect to this zone.
 
 Class Procs:
-	add(turf/simulated/T)
-		Adds a turf to the contents, sets its zone and merges its air.
-
-	remove(turf/simulated/T)
-		Removes a turf, sets its zone to null and erases any gas graphics.
-		Invalidates the zone if it has no more tiles.
 
 	c_merge(datum/zas_zone/into)
 		Invalidates this zone and adds all its former contents to into.
@@ -63,6 +57,7 @@ Class Procs:
 /datum/zas_zone/Destroy()
 	air_master.remove_zone(src)
 	breakdown()
+	invalid = TRUE
 	return ..()
 
 /**
@@ -134,7 +129,45 @@ Class Procs:
  * removes all turfs from us. this is cheap in comparison to calling remove() on every turf!
  */
 /datum/zas_zone/proc/breakdown()
-	#warn fin
+#ifdef ZAS_DEBUG
+	ASSERT(!invalid)
+#endif
+
+	air.breakdown_into_turfs(contents)
+
+	for(var/turf/T as anything in contents)
+#ifdef ZAS_DEBUG
+		ASSERT(istype(T))
+		ASSERT(T.zone == srrc)
+#endif
+		// remove
+		contents -= T
+		T.zone = null
+		T.vis_contents -= turf_graphics
+
+		// fire
+		fire_tiles -= T
+		if(T.fire)
+			var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in T
+			fuel_objs -= fuel
+
+	if(on_fire)
+		unmark_on_fire()
+
+#ifdef ZAS_DEBUG
+	ASSERT(!contents.len)
+	ASSERT(!fire_tiles.len)
+	ASSERT(!fuel_objs.len)
+#endif
+
+/datum/zas_zone/proc/mark_on_fire()
+	on_fire = TRUE
+	SSair.active_fire_zones += src
+
+/datum/zas_fire/proc/unmark_on_fire()
+	on_fire = FALSE
+	SSair.active_fire_zones -= src
+
 
 
 /datum/zas_zone/proc/c_merge(datum/zas_zone/into)
@@ -158,14 +191,6 @@ Class Procs:
 			continue //don't need to rebuild this edge
 		for(var/turf/T in E.connecting_turfs)
 			air_master.mark_for_update(T)
-
-/datum/zas_zone/proc/mark_on_fire()
-	on_fire = TRUE
-	SSair.active_fire_zones += src
-
-/datum/zas_fire/proc/unmark_on_fire()
-	on_fire = FALSE
-	SSair.active_fire_zones -= src
 
 /datum/zas_zone/proc/c_invalidate()
 	invalid = 1
@@ -206,34 +231,15 @@ Class Procs:
 		if(E.sleeping)
 			E.recheck()
 
-/datum/zas_zone/proc/dbg_data(mob/M)
-	to_chat(M, name)
-	for(var/g in air.gas)
-		to_chat(M, "[GLOB.meta_gas_names[g]]: [air.gas[g]]")
-	to_chat(M, "P: [air.return_pressure()] kPa V: [air.volume]L T: [air.temperature]�K ([air.temperature - T0C]�C)")
-	to_chat(M, "O2 per N2: [(air.gas[/datum/gas/nitrogen] ? air.gas[/datum/gas/oxygen]/air.gas[/datum/gas/nitrogen] : "N/A")] Moles: [air.total_moles]")
-	to_chat(M, "Simulated: [contents.len] ([air.group_multiplier])")
-	//to_chat(M, "Unsimulated: [unsimulated_contents.len]")
-	//to_chat(M, "Edges: [edges.len]")
-	if(invalid) to_chat(M, "Invalid!")
-	var/zone_edges = 0
-	var/space_edges = 0
-	var/space_coefficient = 0
-	for(var/datum/zas_edge/E in edges)
-		if(E.type == /datum/zas_edge/zone) zone_edges++
-		else
-			space_edges++
-			space_coefficient += E.coefficient
-			to_chat(M, "[E:air:return_pressure()]kPa")
 
-	to_chat(M, "Zone Edges: [zone_edges]")
-	to_chat(M, "Space Edges: [space_edges] ([space_coefficient] connections)")
 
-	//for(var/turf/T in unsimulated_contents)
-	//	to_chat(M, "[T] at ([T.x],[T.y])")
 
 /**
  * unsimulated, immutable zones
  */
 /datum/zas_zone/unsimulated
-#warn ugh
+	/// our iniial, immutable gas mix
+	var/initial_gas_mix
+
+
+
