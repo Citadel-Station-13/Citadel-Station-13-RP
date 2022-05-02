@@ -2,6 +2,7 @@
  * physics update
  */
 /atom/movable/overmap_object/entity/proc/physics_tick(seconds)
+#warn do all of these
 
 /**
  * move to where we should be
@@ -78,6 +79,7 @@
  * move inside another overmap object.
  */
 /atom/movable/overmap_object/entity/proc/attempt_physics_dock(atom/movable/overmap_object/entity/E)
+#warn do all of these
 
 /**
  * move out of our current overmap object
