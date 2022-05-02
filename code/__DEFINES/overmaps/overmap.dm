@@ -33,21 +33,12 @@
 #warn set bound size helpers on atom movable, even though we arne't using it yet
 #define OVERMAP_ENTITY_MAX_BOUND_SIZE		96
 /// for entity spatial hashing, the amount of space in each hash - this is the side of a square too
-#define OVERMAP_SPATIAL_HASH_TILES			8
+#define OVERMAP_SPATIAL_HASH_SIZE			8
 /// distance added to all spatial lookups to accomdate for large, off-center objects
 #define OVERMAP_SPATIAL_ADD_LOOKUP_RADIUS	3
 /// to prevent the weirdness of cross/uncross, this distance from the edge will never have anything generated in it
 #define OVERMAP_GENERATION_EDGE_MARGIN		2
-/// world.icon_size, constant folded. we will never have 64x64 ss13, don't lie to yourself.
-#define OVERMAP_WORLD_ICON_SIZE				32
-/// overmap coordinates per spatial hash grid
-#define OVERMAP_SPATIAL_HASH_COORDSIZE		(OVERMAP_SPATIAL_HASH_TILES * OVERMAP_DISTANCE_PIXEL * OVERMAP_WORLD_ICON_SIZE)
-/// spatial hash x y indexes to real index - hwidth and hheight are the width and height of the spatial grid
-#define OVERMAP_SPATIAL_HASH_INDEX(x, y, hwidth, hheight)		(x + (y - 1) * hwidth)
-/// spatial hash x y coordinates to real index - hwidth and hheight are the width and height of the spatial grid
-#define OVERMAP_SPATIAL_HASH_COORD_INDEX(x, y, hwidth, hheight)	(CEILING(x / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) + (CEILING(y / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) - 1) * hwidth)
-/// spatial hash list length for tile width/height
-#define OVERMAP_SPATIAL_HASH_FOR_TILE_SIZE(x, y)		(CEILING(x / OVERMAP_SPATIAL_HASH_TILES, 1) * CEILING(y / OVERMAP_SPATIAL_HASH_TILES, 1))
+
 
 ///////// LEGACY BELOW
 

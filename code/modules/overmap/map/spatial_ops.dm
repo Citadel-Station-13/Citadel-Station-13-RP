@@ -1,6 +1,7 @@
 // Everything in this file uses "real virtual" overmap coordinates
 // aka they use our pretend coordinates from bottom left, NOT from the center
 // player facing things should not use these real coordinates
+////// ALL DISTANCES ARE MANHATTAN DISTANCE!! //////
 
 /**
  * gets all entities in range of this one's **center**
@@ -61,15 +62,21 @@
  * hitboxes, that's not the physics backend's job!
  *
  * warning: expensive, use sparingly!
+ *
+ * TODO: optimizations for when you only require an off-centered 2x2 scan instead of a full 3x3 scan
+ * TODO: generalize said optimizations so we don't go 1x1 to 3x3 to 5x5 ++, and can use 2x2, 4x4, 6x6, etc, when needed?
  */
 /datum/overmap/proc/entity_query(x, y, dist)
 	. = list()
 	var/bucket_x = CEILING(x / OVERMAP_SPATIAL_HASH_COORDSIZE, 1)
 	var/bucket_y = CEILING(y / OVERMAP_SPATIAL_HASH_COORDSIZE, 1)
 	// TODO: manual optimization because byond compiler probably doesn't optimize CEILING
+	// the cached coordinate height/width is needed because spatial size can go past the high edges
 	var/closest = min(
 		abs(round(x, OVERMAP_SPATIAL_HASH_COORDSIZE) - x),
-		abs(round(y, OVERMAP_SPATIAL_HASH_COORDSIZE) - y)
+		abs(round(y, OVERMAP_SPATIAL_HASH_COORDSIZE) - y),
+		cached_coordinate_height - x,
+		cached_coordinate_width - y
 	)
 	var/bucket_radius = closest < dist? CEILING(dist / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) : 0
 	if(bucket_radius == 0)
@@ -78,9 +85,58 @@
 			if(direct_entity_distance_from(E, x, y) <= dist)
 				. += E
 		return
+
+	#warn REDO AGAIN
+	// we could not do the easy route
+	// so, we only need to do distance calcs for the edges of our spatial scan
+	// for everything inside a certain range, we know for sure they'll be in range.
+
+
+	#warn old code below
 	// scan all buckets in range
 	if(min(spatial_hash_width - bucket_x, spatial_hash_height - bucket_y, bucket_x - 1, bucket_y - 1) > bucket_radius)
 		// requires wraparound
+		// okay THIS IS GOING TO BE AWFUL
+		// first, scan x coordinate
+		// we KNOW we will need to wrap around so first check is is our dist big enough
+		// that we will wrap around the entirety of the map and to the other side of the check?
+		// we can optimize it out if so
+		if(dist > cached_coordinate_center_x)
+			// if we're bigger we know we are going to need to scan the entire x width of the map
+			if(dist > cached_coordinate_center_y)
+				// oh they literally wanted the entire goddamn map
+				return entities.Copy()
+			var/y_wrap_edge = (y - dist) < 0? SOUTH : ((y + dist) > cached_coordinate_height? SOUTH : NONE)
+			// unfortunately we didn't luck out and they're picky
+			for(var/x in 1 to spatial_hash_width)
+				// scan y
+				switch(y_wrap_edge)
+					if(NORTH)
+						for(var/y in bucket_y to spatial_hash_height)
+							for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
+								if(direct_entity_distance_from(E, x, y) <= dist)
+									. += E
+						for(var/y in 1 to ((bucket_y + bucket_radius) - spatial_hash_height))
+							for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
+								if(direct_entity_distance_from(E, x, y) <= dist)
+									. += E
+					if(SOUTH)
+						for(var/y in 1 to bucket_y)
+							for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
+								if(direct_entity_distance_from(E, x, y) <= dist)
+									. += E
+						for(var/y in spatial_hash_height to (spatial_hash_height - (bucket_y - bucket_radius)) step -1)
+							for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
+								if(direct_entity_distance_from(E, x, y) <= dist)
+									. += E
+					else
+						CRASH("unexpected edge value")
+		else if(dist > cached_coordinate_center_y)
+			// if we're bigger we know we are going to need to scan the entire y height of the map
+
+		else
+			// ughhhhh, most common case, no shortcuts
+
 		#warn finish
 	else
 		// no wraparound, fastpath to a slightly cheaper scan
@@ -90,34 +146,19 @@
 					if(direct_entity_distance_from(E, x, y) <= dist)
 						. += E
 
-	#warn redo this section entirely
-	var/list/collected = list()
-	if(((bucket_x + bucket_radius) > spatial_hash_width) || ((bucket_y + bucket_radius) > spatial_hash_height))
-		// worst case - we have to process wraparounds
-		// if bucket radius is larger than half the map, we just scan 1 to width
-		if(bucket_radius > spatial_)
-		for(var/x in (bucket_x - bucket_radius) to (bucket_x + bucket_radius))
-			for(var/y in (bucket_y - bucket_radius) to (bucket_y + bucket_radius))
-				var/rx = x > spatial_hash_width? x - spatial_hash_width : x
-				var/ry = y > spatial_hash_height? y - spatial_hash_height : y
-				for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(rx, ry, spatial_hash_width, spatial_hash_height)])
-					if(direct_entity_distance_from(E, x, y) <= dist)
-						. += E
-
 /**
  * get entity distance from a coordinate
  *
  * has more aggressive optimizations than get_entity_distance
+ *
+ * **uses byond manhattan distance**
  */
 /datum/overmap/proc/direct_entity_distance_from(atom/movable/overmap_object/entity/E, x, y)
-	var/ex = E.position_x
-	var/ey = E.position_y
-	var/dx = ex - x
-	var/dy = ey - y
-	return sqrt(
-		(abs(dx) > cached_coordinate_center_x? (dx > 0? cached_coordinate_width - dx : cached_coordinate_width + dx) : dx)**2
-		+
-		(abs(dy) > cached_coordinate_center_y? (dy > 0? cached_coordinate_height - dy : cached_coordinate_height + dy) : dy)**2
+	var/dx = abs(x - E.position_x)
+	var/dy = abs(y - E.position_y)
+	return min(
+		(dx > cached_coordinate_center_x? cached_coordinate_width - dx : dx),
+		(dy > cached_coordinate_center_y? cached_coordinate_height - dy : dy)
 	)
 
 /**
@@ -129,6 +170,8 @@
  * this proc **does** depend on entity cached positions!
  * this proc assumes A and B are infact on the same overmap
  * if they are not, coder skill issue, check them yourself!
+ *
+ * **uses byond manhattan distance**
  */
 /datum/overmap/proc/get_entity_distance(atom/movable/overmap_object/A, atom/movable/overmap_object/B)
 	var/ax
@@ -151,17 +194,19 @@
 		bx = get_x_of_object(B)
 		by = get_y_of_object(B)
 	// we save some var dec overhead, fuck you
-	ax = ax - bx
-	ay = ay - by
-	// if greater than center x, wrap the value around
-	// at this point, ax pos = a right of b, ay pos = a right of b
-	// use cached coordinate sizes
-	// regardless use euclidean dist calc after
-	return sqrt(
-		(abs(ax) > cached_coordinate_center_x? (ax > 0? cached_coordinate_width - ax : cached_coordinate_width + ax) : ax)**2
-		+
-		(abs(ay) > cached_coordinate_center_y? (ay > 0? cached_coordinate_height - ay : cached_coordinate_height + ay) : ay)**2
+	ax = abs(bx - ax)
+	ay = abs(by - ay)
+	return min(
+		(ax > cached_coordinate_center_x? cached_coordinate_width - ax : ax),
+		(ay > cached_coordinate_center_y? cached_coordinate_height - ay : ay)
 	)
+
+/**
+ * gets wraparound-considered angle in degrees from A to B
+ */
+/datum/overmap/proc/get_entity_angle(atom/movable/overmap_object/A, atom/movable/overmap_object/B)
+	#warn impl
+
 
 /**
  * removes an entity from the spatial hash

@@ -66,6 +66,10 @@
 	var/list/atom/movable/overmap_object/entity/moving
 	/// entity spatial hash <DANGER DANGER DO NOT TOUCH THIS UNLESS YOU KNOW WHAT YOU ARE DOING>
 	var/list/spatial_hash
+	/// spatial hash width
+	var/spatial_hash_width
+	/// spatial hash height
+	var/spatial_hash_height
 
 /datum/overmap/New()
 	id = "[++id_next]"
@@ -77,6 +81,7 @@
 /datum/overmap/Destroy()
 	#warn unregister entities and move to nullspace
 	initialized = FALSE
+	spatial_hash = null
 	if(turf_reservation)
 		QDEL_NULL(turf_reservation)
 	if(stellar_location)
