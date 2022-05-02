@@ -135,7 +135,7 @@
 	while(!isturf(top.loc))
 		top = top.loc
 	if(!istype(top, /atom/movable/overmap_object/entity))
-		stack_trace("overmap entity could not find top due to top object not being an entity during chained undock")
+		CRASH("overmap entity could not find top due to top object not being an entity during chained undock")
 	set_velocity(top.velocity_x, top.velocity_y)
 	set_angular_velocity(top.angular_velocity)
 
