@@ -1274,3 +1274,4 @@ var/list/name_to_material
 	hardness = 20
 	integrity = 100
 	pass_stack_colors = TRUE
+	
