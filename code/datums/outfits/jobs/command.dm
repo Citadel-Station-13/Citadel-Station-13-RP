@@ -1,4 +1,4 @@
-/decl/hierarchy/outfit/job/captain
+/datum/outfit/job/captain
 	name = OUTFIT_JOB_NAME("Captain")
 	glasses = /obj/item/clothing/glasses/sunglasses
 	uniform = /obj/item/clothing/under/rank/captain
@@ -10,7 +10,7 @@
 	id_type = /obj/item/card/id/gold/captain
 	pda_type = /obj/item/pda/captain
 
-/decl/hierarchy/outfit/job/captain/post_equip(var/mob/living/carbon/human/H)
+/datum/outfit/job/captain/post_equip(var/mob/living/carbon/human/H)
 	..()
 	if(H.age>49)
 		// Since we can have something other than the default uniform at this
@@ -23,7 +23,7 @@
 			else
 				qdel(medal)
 
-/decl/hierarchy/outfit/job/hop
+/datum/outfit/job/hop
 	name = OUTFIT_JOB_NAME("Head of Personnel")
 	uniform = /obj/item/clothing/under/rank/head_of_personnel
 	l_ear = /obj/item/radio/headset/heads/hop
@@ -31,7 +31,7 @@
 	id_type = /obj/item/card/id/silver/hop
 	pda_type = /obj/item/pda/heads/hop
 
-/decl/hierarchy/outfit/job/secretary
+/datum/outfit/job/secretary
 	name = OUTFIT_JOB_NAME("Command Secretary")
 	l_ear = /obj/item/radio/headset/headset_adj //Citadel Edit: command secretaries get service on their headsets.
 	shoes = /obj/item/clothing/shoes/brown
@@ -39,7 +39,7 @@
 	pda_type = /obj/item/pda/heads/hop
 	l_hand = /obj/item/clipboard
 
-/decl/hierarchy/outfit/job/secretary/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/secretary/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/suit_jacket/female/skirt

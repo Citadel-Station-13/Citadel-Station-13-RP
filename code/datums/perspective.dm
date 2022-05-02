@@ -298,9 +298,9 @@
 
 /datum/perspective/self/proc/get_top_atom(atom/movable/where)
 	if(isturf(where))
-		return where
-	while(where && !isturf(where.loc))
-		where = where.loc
+		return where		// already on turf
+	while(where && where.loc && !isturf(where.loc))
+		where = where.loc	// if we can go up, and we're not already the top atom on a turf, go up. where.loc check needed for anti-null.
 	return where
 
 /**
