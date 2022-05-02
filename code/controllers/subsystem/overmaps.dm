@@ -5,6 +5,10 @@ SUBSYSTEM_DEF(overmaps)
 	priority = FIRE_PRIORITY_OVERMAPS
 	init_order = INIT_ORDER_OVERMAPS
 
+	// overmaps
+	/// all overmaps in world
+	var/static/list/datum/overmap/overmaps = list()
+
 	// hard simulation config
 	/// max entity sim speed in overmaps dist units/second
 	var/static/max_entity_speed = 80 * OVERMAP_DISTANCE_PIXEL
@@ -51,6 +55,12 @@ SUBSYSTEM_DEF(overmaps)
 
 	testing("Overmap build complete.")
 	return 1
+
+/datum/controller/subsystem/overmaps/proc/fire(resumed)
+	// physics tick every single tick
+	var/time = (subsystem_flags & SS_TICKER)? wait * world.tick_lag : wait
+	for(var/datum/overmap/O as anything in overmaps)
+		O.PhysicsTick(time)
 
 /datum/controller/subsystem/overmaps/proc/RecalculatePhysicsLimits()
 	// we calculate max entity speed to avoid physics clipping issues because this is byond

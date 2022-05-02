@@ -67,7 +67,7 @@
 	if(!source)
 		CRASH("No source")
 	var/old = length(physics_paused)
-	LAZYOR(physics_paused, source)
+	LAZYDISTINCTADD(physics_paused, source)
 	if(physics_mode == ENTITY_PHYSICS_SIMULATED)
 		physics_mode = ENTITY_PHYSICS_PAUSED
 	if(!old)
@@ -111,6 +111,9 @@
 	pause_physics(ENTITY_PHYSICS_PAUSE_FOR_DOCKED)
 	is_on_map = FALSE
 	SEND_SIGNAL(src, COMSIG_OVERMAP_ENTITY_PHYSICS_DOCK, E)
+	// null velocity while docked
+	set_velocity(0, 0)
+	set_angular_velocity(0)
 
 /**
  * called when we physically move out of another overmap object into the overmap
@@ -122,6 +125,19 @@
 	unpause_physics(ENTITY_PHYSICS_PAUSE_FOR_DOCKED)
 	is_on_map = TRUE
 	SEND_SIGNAL(src, COMSIG_OVERMAP_ENTITY_PHYSICS_UNDOCK, E)
+	// inertia; inherit velocity
+	// check if we're the top
+	var/atom/movable/overmap_object/entity/top = E
+	// if not, keep searching for top atom.
+	if(!top.loc)
+		// don't bother
+		return
+	while(!isturf(top.loc))
+		top = top.loc
+	if(!istype(top, /atom/movable/overmap_object/entity))
+		stack_trace("overmap entity could not find top due to top object not being an entity during chained undock")
+	set_velocity(top.velocity_x, top.velocity_y)
+	set_angular_velocity(top.angular_velocity)
 
 /**
  * called when we enter entities for any reason
@@ -146,7 +162,7 @@
 		return
 	var/atom/movable/overmap_object/entity/E = AM
 	E.physics_enter_entity(src)
-		if(isturf(oldLoc))		// only pause if they're moving from overmaps
+	if(isturf(oldLoc))		// only pause if they're moving from overmaps
 		if(!E.physics_docking)
 			E.physics_docked(src)
 
@@ -159,6 +175,6 @@
 		return
 	var/atom/movable/overmap_object/entity/E = AM
 	E.physics_exit_entity(src)
-		if(isturf(newLoc))		// only unpause if they're moving into overmaps
+	if(isturf(newLoc))		// only unpause if they're moving into overmaps
 		if(!E.physics_docking)
 			E.physics_undocked(src)

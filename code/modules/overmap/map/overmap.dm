@@ -40,12 +40,17 @@
 	var/list/atom/movable/overmap_object/entity/entities
 	/// all ticking entities in us
 	var/list/atom/movable/overmap_object/entity/ticking
+	/// all moving entities in us
+	var/list/atom/movable/overmap_object/entity/moving
 	/// entity spatial hash <DANGER DANGER DO NOT TOUCH THIS UNLESS YOU KNOW WHAT YOU ARE DOING>
 	var/list/spatial_hash
 
 /datum/overmap/New()
 	id = "[++id_next]"
 	stellar_location = new
+	entities = list()
+	ticking = list()
+	moving = list()
 
 /datum/overmap/Destroy()
 	#warn unregister entities and move to nullspace
@@ -78,9 +83,17 @@
 
 /datum/overmap/proc/UnregisterEntity(atom/movable/overmap_object/entity/E)
 
+#warn redo this it should be for non physics ticks
 /datum/overmap/proc/Tick(seconds)
 	for(var/atom/movable/overmap_object/entity/E as anything in ticking)
 		E.Tick(seconds)
+
+/**
+ * ticks physics of all entities in us
+ */
+/datum/overmap/proc/PhysicsTick(seconds)
+	for(var/atom/movable/overmap_object/entity/E as anything in moving)
+		E.PhysicsTick(seconds)
 
 #warn admin simulation pause
 

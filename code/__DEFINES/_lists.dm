@@ -14,6 +14,7 @@
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
 /// Adds I to L, initalizing L if necessary, if I is not already in L
 #define LAZYDISTINCTADD(L, I) if(!L) { L = list(); } L |= I;
+/// find index of V, if L is null, return 0
 #define LAZYFIND(L, V) (L ? L.Find(V) : 0)
 /// Reads I from L safely - Works with both associative and traditional lists.
 #define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= length(L) ? L[I] : null) : L[I]) : null)
@@ -27,11 +28,15 @@
 #define LAZYCLEARLIST(L) if(L) L.Cut()
 /// Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
+/// ensures L is either a list, or becomes a list by doing list(L)
 #define SANITIZE_TO_LIST(L) ( islist(L) ? L : list(L) )
+/// returns a copy of L that is reversed
 #define reverseList(L) reverseRange(L.Copy())
-
+/// picks from L, if L is empty, return null
 #define SAFEPICK(L) (length(L)? pick(L) : null)
+/// safe associative or index access for L
 #define SAFEACCESS(L, I) (isnum(I)? (SAFEINDEXACCESS(L, I)) : ((I in L)? L[I] : null))
+/// safe index access for L
 #define SAFEINDEXACCESS(L, I) (ISINRANGE(I, 1, length(L))? L[I] : null)
 // Returns the key based on the index
 #define KEYBYINDEX(L, index) (((index <= length(L)) && (index > 0)) ? L[index] : null)

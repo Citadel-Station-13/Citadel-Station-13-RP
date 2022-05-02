@@ -30,9 +30,9 @@
 	/// vel angle
 	var/angular_velocity
 	/// current x - this is not in pixels, this is in overmaps distance
-	var/x
+	var/position_x
 	/// current y - this is not in pixels, this is in overmaps distance
-	var/y
+	var/position_y
 	/// angle
 	var/angle = 0
 	/// physics pause sources
