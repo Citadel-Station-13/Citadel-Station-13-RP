@@ -151,14 +151,14 @@
 
 
 //* ADHERENT EXTERNAL ORGANS *//
-#define BP_COOLING_FINS "cooling fins"
-#define BP_FLOAT "floatation disc"
-#define BP_JETS "maneuvering jets"
+#define O_COOLING_FINS "cooling fins"
+#define O_FLOAT "floatation disc"
+#define O_JETS "maneuvering jets"
 /// List of all Adherent body parts.
-#define BP_ALL_ADHERENT list( \
-		BP_COOLING_FINS, \
-		BP_FLOAT, \
-		BP_JETS)
+#define O_ALL_ADHERENT list( \
+		O_COOLING_FINS, \
+		O_FLOAT, \
+		O_JETS)
 
 
 //* SYNTH INTERNAL COLORS *//

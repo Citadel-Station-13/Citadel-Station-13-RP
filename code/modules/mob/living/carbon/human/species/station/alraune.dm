@@ -55,46 +55,47 @@
 		/mob/living/carbon/human/proc/regenerate,
 		/mob/living/carbon/human/proc/alraune_fruit_select,
 		/mob/living/carbon/human/proc/tie_hair
-		) //Give them the voremodes related to wrapping people in vines and sapping their fluids
+		) //?Give them the voremodes related to wrapping people in vines and sapping their fluids
 
-	color_mult = 1
 	icobase = 'icons/mob/human_races/r_human_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
+
+	color_mult  = 1
 	flesh_color = "#9ee02c"
 	blood_color = "#edf4d0" //sap!
-	base_color = "#1a5600"
+	base_color  = "#1a5600"
 
 	reagent_tag = IS_ALRAUNE
 
-	blurb = "Alraunes are an uncommon sight in space. Their bodies are reminiscent of that of plants, and yet they share many\
-	traits with other humanoid beings, occasionally mimicking their forms to lure in prey.\
-	\
-	Most Alraune are rather opportunistic in nature, being primarily self-serving; however, this does not mean they are selfish or unable to empathise with others.\
-	\
+	blurb = "Alraunes are an uncommon sight in space. Their bodies are reminiscent of that \
+	of plants, and yet they share many traits with other humanoid beings, occasionally mimicking \
+	their forms to lure in prey.  Most Alraune are rather opportunistic in nature, being primarily \
+	self-serving; however, this does not mean they are selfish or unable to empathise with others.\
 	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset."
 
-	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/plant),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin/unbreakable/plant),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/unbreakable/plant),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/unbreakable/plant),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/unbreakable/plant),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg/unbreakable/plant),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/unbreakable/plant),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable/plant),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable/plant),
+	has_limbs = list( //?They're unbreakable because they can survive decapitation, but damage spreads to nearby neighbors when at max dmg.
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin/unbreakable/plant),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head/unbreakable/plant),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm/unbreakable/plant),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable/plant),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/plant) //cit change - unbreakable, can survive decapitation, but damage spreads to nearby neighbors when at max dmg.
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable/plant),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/unbreakable/plant),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/unbreakable/plant),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/plant),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable/plant),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/unbreakable/plant),
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unbreakable/plant)
 		)
 
-	// limited organs, 'cause they're simple
-	has_organ = list(
-		O_LIVER =    /obj/item/organ/internal/liver/alraune,
-		O_KIDNEYS =  /obj/item/organ/internal/kidneys/alraune,
-		O_BRAIN =    /obj/item/organ/internal/brain/alraune,
-		O_EYES =     /obj/item/organ/internal/eyes/alraune,
-		O_FRUIT =    /obj/item/organ/internal/fruitgland,
+	has_organ = list( //? limited organs, 'cause they're simple.
+		O_BRAIN   = /obj/item/organ/internal/brain/alraune,
+		O_EYES    = /obj/item/organ/internal/eyes/alraune,
+		O_FRUIT   = /obj/item/organ/internal/fruitgland,
+		O_KIDNEYS = /obj/item/organ/internal/kidneys/alraune,
+		O_LIVER   = /obj/item/organ/internal/liver/alraune,
 		)
+
+	wikilink = "N/A"
 
 /datum/species/alraune/can_breathe_water()
 	return TRUE //eh, why not? Aquatic plants are a thing.

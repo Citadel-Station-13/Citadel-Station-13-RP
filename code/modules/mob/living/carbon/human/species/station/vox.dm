@@ -3,13 +3,6 @@
 	name_plural = SPECIES_VOX
 	icobase = 'icons/mob/human_races/r_vox_old.dmi'
 	deform = 'icons/mob/human_races/r_def_vox_old.dmi'
-	default_language = LANGUAGE_VOX
-	language = LANGUAGE_GALCOM
-	species_language = LANGUAGE_VOX
-	num_alternate_languages = 1
-	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
-	rarity_value = 4
 	blurb = "The Vox are the broken remnants of a once-proud race, now reduced to little more than \
 	scavenging vermin who prey on isolated stations, ships or planets to keep their own ancient arkships \
 	alive. They are four to five feet tall, reptillian, beaked, tailed and quilled; human crews often \
@@ -17,21 +10,28 @@
 	smell.<br/><br/>Most humans will never meet a Vox raider, instead learning of this insular species through \
 	dealing with their traders and merchants; those that do rarely enjoy the experience."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vox)
+	rarity_value = 4
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
+
+	language = LANGUAGE_GALCOM
+	default_language = LANGUAGE_VOX
+	species_language = LANGUAGE_VOX
+	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
+	num_alternate_languages = 1
 
 //	taste_sensitivity = TASTE_DULL
 
 	slowdown = -0.5
 
-	speech_sounds = list('sound/voice/shriek1.ogg')
 	speech_chance = 20
-
-	scream_verb = "shrieks"
-	male_scream_sound = 'sound/voice/shriek1.ogg'
+	speech_sounds       = list('sound/voice/shriek1.ogg')
+	male_scream_sound   = 'sound/voice/shriek1.ogg'
 	female_scream_sound = 'sound/voice/shriek1.ogg'
-	male_cough_sounds = list('sound/voice/shriekcough.ogg')
+	male_cough_sounds   = list('sound/voice/shriekcough.ogg')
 	female_cough_sounds = list('sound/voice/shriekcough.ogg')
-	male_sneeze_sound = 'sound/voice/shrieksneeze.ogg'
+	male_sneeze_sound   = 'sound/voice/shrieksneeze.ogg'
 	female_sneeze_sound = 'sound/voice/shrieksneeze.ogg'
+	scream_verb = "shrieks"
 
 	warning_low_pressure = 50
 	hazard_low_pressure = 0
@@ -46,40 +46,40 @@
 	poison_type = /datum/gas/oxygen
 	siemens_coefficient = 0.2
 
-	flags = NO_SCAN | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+	flags            = NO_SCAN | CONTAMINATION_IMMUNE
+	spawn_flags      = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
 	blood_color = "#9066BD"
 	flesh_color = "#a3a593"
-	base_color = "#2e3302"
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/vox
+	base_color  = "#2e3302"
+	meat_type   = /obj/item/reagent_containers/food/snacks/meat/vox
 
 	reagent_tag = IS_VOX
 
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/vox),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head/vox),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
 		)
 
 
 	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart/vox,
-		O_LUNGS =    /obj/item/organ/internal/lungs/vox,
-		O_VOICE =	 /obj/item/organ/internal/voicebox,
-		O_LIVER =    /obj/item/organ/internal/liver/vox,
-		O_KIDNEYS =  /obj/item/organ/internal/kidneys/vox,
-		O_BRAIN =    /obj/item/organ/internal/brain/vox,
-		O_EYES =     /obj/item/organ/internal/eyes,
+		O_BRAIN   = /obj/item/organ/internal/brain/vox,
+		O_EYES    = /obj/item/organ/internal/eyes,
+		O_HEART   = /obj/item/organ/internal/heart/vox,
+		O_KIDNEYS = /obj/item/organ/internal/kidneys/vox,
+		O_LIVER   = /obj/item/organ/internal/liver/vox,
+		O_LUNGS   = /obj/item/organ/internal/lungs/vox,
+		O_VOICE   = /obj/item/organ/internal/voicebox,
 		)
 
 	genders = list(NEUTER)
@@ -88,12 +88,14 @@
 		/datum/mob_descriptor/vox_markings = 0
 		)
 
-	wikilink="https://wiki.vore-station.net/Vox"
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Vox"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/tie_hair
 		)
+
+	wikilink = "N/A"
 
 /datum/species/vox/get_random_name(var/gender)
 	var/datum/language/species_language = GLOB.all_languages[default_language]

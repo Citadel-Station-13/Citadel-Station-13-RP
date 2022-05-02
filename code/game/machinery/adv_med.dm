@@ -140,7 +140,7 @@
 			qdel(src)
 			return
 		if(2.0)
-			if (prob(50))
+			if(prob(50))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
 					ex_act(severity)
@@ -149,7 +149,7 @@
 				qdel(src)
 				return
 		if(3.0)
-			if (prob(25))
+			if(prob(25))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
 					ex_act(severity)
@@ -229,7 +229,7 @@
 			qdel(src)
 			return
 		if(2.0)
-			if (prob(50))
+			if(prob(50))
 				//SN src = null
 				qdel(src)
 				return
@@ -266,7 +266,7 @@
 			to_chat(user, SPAN_NOTICE("Scanner not found!"))
 			return
 
-	if (scanner.panel_open)
+	if(scanner.panel_open)
 		to_chat(user, SPAN_NOTICE("Close the maintenance panel first."))
 		return
 
@@ -419,10 +419,10 @@
 	if(..())
 		return 1
 
-	if (href_list["print_p"])
+	if(href_list["print_p"])
 		generate_printing_text()
 
-		if (!(printing) && printing_text)
+		if(!(printing) && printing_text)
 			printing = 1
 			visible_message(SPAN_NOTICE("\The [src] rattles and prints out a sheet of paper."))
 			playsound(src, 'sound/machines/printer.ogg', 50, 1)
@@ -435,7 +435,7 @@
 			printing = null
 			printing_text = null
 
-	if (href_list["backup"])
+	if(href_list["backup"])
 		if(mirror != null)
 			var/obj/item/implant/mirror/E = mirror
 			E.post_implant(scanner.occupant)
@@ -548,22 +548,21 @@
 					robot = "Prosthetic:"
 				if(e.status & ORGAN_DEAD)
 					o_dead = "Necrotic:"
-				if(e.open)
-					open = "Open:"
-				switch (e.germ_level)
-					if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
+
+				switch(e.germ_level)
+					if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
 						infected = "Mild Infection:"
-					if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
+					if(INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
 						infected = "Mild Infection+:"
-					if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
+					if(INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
 						infected = "Mild Infection++:"
-					if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
+					if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
 						infected = "Acute Infection:"
-					if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
+					if(INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
 						infected = "Acute Infection+:"
-					if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
+					if(INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
 						infected = "Acute Infection++:"
-					if (INFECTION_LEVEL_THREE -49 to INFINITY)
+					if(INFECTION_LEVEL_THREE -49 to INFINITY)
 						infected = "Gangrene Detected:"
 
 				var/unknown_body = 0
@@ -592,20 +591,20 @@
 				if(i.status & ORGAN_DEAD)
 					i_dead = "Necrotic:"
 				var/infection = "None"
-				switch (i.germ_level)
-					if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
+				switch(i.germ_level)
+					if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
 						infection = "Mild Infection:"
-					if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
+					if(INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
 						infection = "Mild Infection+:"
-					if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
+					if(INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
 						infection = "Mild Infection++:"
-					if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
+					if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 200)
 						infection = "Acute Infection:"
-					if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
+					if(INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
 						infection = "Acute Infection+:"
-					if (INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
+					if(INFECTION_LEVEL_TWO + 300 to INFECTION_LEVEL_THREE - 50)
 						infection = "Acute Infection++:"
-					if (INFECTION_LEVEL_THREE -49 to INFINITY)
+					if(INFECTION_LEVEL_THREE -49 to INFINITY)
 						infection = "Necrosis Detected:"
 
 				dat += "<tr>"

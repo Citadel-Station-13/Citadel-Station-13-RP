@@ -27,13 +27,13 @@
 	vision_flags = SEE_SELF
 	darksight = 5
 
-	brute_mod = 0.9
-	burn_mod = 0.9
-	oxy_mod = 0.7
-	toxins_mod = 0.85
+	brute_mod     = 0.9
+	burn_mod      = 0.9
+	flash_mod     = 0.9
+	oxy_mod       = 0.7
 	radiation_mod = 0.9
-	flash_mod = 0.9
-	sound_mod = 0.9
+	sound_mod     = 0.9
+	toxins_mod    = 0.85
 	siemens_coefficient = 0.9
 	heal_rate = 0
 
@@ -52,17 +52,17 @@
 		)
 
 	has_organ = list(
-		O_HEART =		/obj/item/organ/internal/heart/replicant/rage,
-		O_LUNGS =		/obj/item/organ/internal/lungs/replicant/mending,
-		O_VOICE = 		/obj/item/organ/internal/voicebox/replicant,
-		O_LIVER =		/obj/item/organ/internal/liver/replicant,
-		O_KIDNEYS =		/obj/item/organ/internal/kidneys/replicant,
-		O_BRAIN =		/obj/item/organ/internal/brain/replicant,
-		O_EYES =		/obj/item/organ/internal/eyes/replicant,
-		O_AREJECT =		/obj/item/organ/internal/immunehub/replicant,
-		O_VRLINK = 		/obj/item/organ/internal/brainmirror,
-		O_STOMACH =		/obj/item/organ/internal/stomach,
-		O_INTESTINE =	/obj/item/organ/internal/intestine
+		O_AREJECT   = /obj/item/organ/internal/immunehub/replicant,
+		O_BRAIN     = /obj/item/organ/internal/brain/replicant,
+		O_EYES      = /obj/item/organ/internal/eyes/replicant,
+		O_HEART     = /obj/item/organ/internal/heart/replicant/rage,
+		O_INTESTINE = /obj/item/organ/internal/intestine,
+		O_KIDNEYS   = /obj/item/organ/internal/kidneys/replicant,
+		O_LIVER     = /obj/item/organ/internal/liver/replicant,
+		O_LUNGS     = /obj/item/organ/internal/lungs/replicant/mending,
+		O_STOMACH   = /obj/item/organ/internal/stomach,
+		O_VOICE     = /obj/item/organ/internal/voicebox/replicant,
+		O_VRLINK    = /obj/item/organ/internal/brainmirror
 		)
 
 /datum/species/shapeshifter/replicant/alpha
@@ -87,19 +87,19 @@
 		)
 
 	has_organ = list(
-		O_HEART =		/obj/item/organ/internal/heart/replicant,
-		O_LUNGS =		/obj/item/organ/internal/lungs/replicant,
-		O_VOICE = 		/obj/item/organ/internal/voicebox/replicant,
-		O_LIVER =		/obj/item/organ/internal/liver/replicant,
-		O_KIDNEYS =		/obj/item/organ/internal/kidneys/replicant,
-		O_BRAIN =		/obj/item/organ/internal/brain/replicant,
-		O_EYES =		/obj/item/organ/internal/eyes/replicant,
-		O_AREJECT =		/obj/item/organ/internal/immunehub/replicant,
-		O_PLASMA = 		/obj/item/organ/internal/xenos/plasmavessel/replicant,
-		O_ACID = 		/obj/item/organ/internal/xenos/acidgland/replicant,
-		O_VRLINK =		/obj/item/organ/internal/brainmirror,
-		O_STOMACH =		/obj/item/organ/internal/stomach,
-		O_INTESTINE =	/obj/item/organ/internal/intestine
+		O_ACID      = /obj/item/organ/internal/xenos/acidgland/replicant,
+		O_AREJECT   = /obj/item/organ/internal/immunehub/replicant,
+		O_BRAIN     = /obj/item/organ/internal/brain/replicant,
+		O_EYES      = /obj/item/organ/internal/eyes/replicant,
+		O_HEART     = /obj/item/organ/internal/heart/replicant,
+		O_INTESTINE = /obj/item/organ/internal/intestine,
+		O_KIDNEYS   = /obj/item/organ/internal/kidneys/replicant,
+		O_LIVER     = /obj/item/organ/internal/liver/replicant,
+		O_LUNGS     = /obj/item/organ/internal/lungs/replicant,
+		O_PLASMA    = /obj/item/organ/internal/xenos/plasmavessel/replicant,
+		O_STOMACH   = /obj/item/organ/internal/stomach,
+		O_VOICE     = /obj/item/organ/internal/voicebox/replicant,
+		O_VRLINK    = /obj/item/organ/internal/brainmirror
 		)
 
 /datum/species/shapeshifter/replicant/beta
@@ -109,21 +109,21 @@
 	blood_color = "#C0C0C0"
 
 	species_language = LANGUAGE_SIGN
-	secondary_langs = list(LANGUAGE_TERMINUS, LANGUAGE_ROOTGLOBAL)	// Radio-waves.
+	secondary_langs = list(LANGUAGE_TERMINUS, LANGUAGE_ROOTGLOBAL) // ?Radio-waves.
 
 	has_organ = list(
-		O_HEART =		/obj/item/organ/internal/heart/replicant/rage,
-		O_LUNGS =		/obj/item/organ/internal/lungs/replicant/mending,
-		O_VOICE = 		/obj/item/organ/internal/voicebox/replicant,
-		O_LIVER =		/obj/item/organ/internal/liver/replicant,
-		O_KIDNEYS =		/obj/item/organ/internal/kidneys/replicant,
-		O_BRAIN =		/obj/item/organ/internal/brain/replicant/torso,
-		O_EYES =		/obj/item/organ/internal/eyes/replicant,
-		O_AREJECT =		/obj/item/organ/internal/immunehub/replicant,
-		O_VENTC =		/obj/item/organ/internal/metamorphgland/replicant,
-		O_PLASMA =		/obj/item/organ/internal/xenos/plasmavessel/replicant,
-		O_RESIN =		/obj/item/organ/internal/xenos/resinspinner/replicant,
-		O_VRLINK =		/obj/item/organ/internal/brainmirror,
-		O_STOMACH =		/obj/item/organ/internal/stomach,
-		O_INTESTINE =	/obj/item/organ/internal/intestine
+		O_AREJECT   = /obj/item/organ/internal/immunehub/replicant,
+		O_BRAIN     = /obj/item/organ/internal/brain/replicant/torso,
+		O_EYES      = /obj/item/organ/internal/eyes/replicant,
+		O_HEART     = /obj/item/organ/internal/heart/replicant/rage,
+		O_INTESTINE = /obj/item/organ/internal/intestine,
+		O_KIDNEYS   = /obj/item/organ/internal/kidneys/replicant,
+		O_LIVER     = /obj/item/organ/internal/liver/replicant,
+		O_LUNGS     = /obj/item/organ/internal/lungs/replicant/mending,
+		O_PLASMA    = /obj/item/organ/internal/xenos/plasmavessel/replicant,
+		O_RESIN     = /obj/item/organ/internal/xenos/resinspinner/replicant,
+		O_STOMACH   = /obj/item/organ/internal/stomach,
+		O_VENTC     = /obj/item/organ/internal/metamorphgland/replicant,
+		O_VOICE     = /obj/item/organ/internal/voicebox/replicant,
+		O_VRLINK    = /obj/item/organ/internal/brainmirror
 		)

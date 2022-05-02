@@ -1,13 +1,12 @@
 /* Stack type objects!
  * Contains:
- * 		Stacks
- * 		Recipe datum
- * 		Recipe list datum
+ * * Stacks
+ * * Recipe datum
+ * * Recipe list datum
  */
 
-/*
- * Stacks
- */
+
+//! ## Stacks ## !//
 
 /obj/item/stack
 	gender = PLURAL
@@ -19,15 +18,20 @@
 	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	/// bandaid until new inventorycode
 	var/mid_delete = FALSE
-	var/stacktype //determines whether different stack types can merge
-	var/build_type = null //used when directly applied to a turf
+	/// Determines whether different stack types can merge.
+	var/stacktype
+	/// Used when directly applied to a turf.
+	var/build_type = null
 	var/uses_charge = 0
 	var/list/charge_costs = null
 	var/list/datum/matter_synth/synths = null
-	var/no_variants = TRUE // Determines whether the item should update it's sprites based on amount.
+	/// Determines whether the item should update it's sprites based on amount.
+	var/no_variants = TRUE
 
-	var/pass_color = FALSE // Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
-	var/strict_color_stacking = FALSE // Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc)
+	/// Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
+	var/pass_color = FALSE
+	/// Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc)
+	var/strict_color_stacking = FALSE
 
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
 	if(new_amount != null)
@@ -216,8 +220,8 @@
 	return 1
 
 /**
-  * Can we merge with this stack?
-  */
+ * Can we merge with this stack?
+ */
 /obj/item/stack/proc/can_merge(obj/item/stack/other)
 	if(!istype(other))
 		return FALSE
@@ -265,7 +269,7 @@
 	They also remove an equal amount from the source stack.
 */
 
-//attempts to transfer amount to S, and returns the amount actually transferred
+/// Attempts to transfer amount to S, and returns the amount actually transferred.
 /obj/item/stack/proc/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
 	if (!get_amount())
 		return 0
@@ -289,7 +293,7 @@
 		return transfer
 	return 0
 
-//creates a new stack with the specified amount
+/// Creates a new stack with the specified amount.
 /obj/item/stack/proc/split(var/tamount)
 	if (!amount)
 		return null
@@ -341,7 +345,7 @@
 			continue
 		var/transfer = src.transfer_to(item)
 		if (transfer)
-			to_chat(user, "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.</span>")
+			to_chat(user, SPAN_NOTICE("You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s."))
 		if(!amount)
 			break
 
@@ -356,7 +360,8 @@
 		merge(o)
 	. = ..()
 
-/obj/item/stack/proc/merge(obj/item/stack/S) //Merge src into S, as much as possible
+/// Merge src into S, as much as possible.
+/obj/item/stack/proc/merge(obj/item/stack/S)
 	if(QDELETED(S) || QDELETED(src) || (S == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
 		return
 	var/transfer = get_amount()
@@ -405,7 +410,7 @@
 			return TRUE
 		else
 			change_stack(user, stackmaterial)
-			to_chat(user, "<span class='notice'>You take [stackmaterial] sheets out of the stack</span>")
+			to_chat(user, SPAN_NOTICE("You take [stackmaterial] sheets out of the stack."))
 		return TRUE
 
 /obj/item/stack/proc/change_stack(mob/user, amount)
@@ -439,9 +444,9 @@
 	if(from.fingerprintslast)
 		fingerprintslast = from.fingerprintslast
 
-/*
- * Recipe datum
- */
+
+//! ## Recipe datum ## !//
+
 /datum/stack_recipe
 	var/title = "ERROR"
 	var/result_type
@@ -466,9 +471,9 @@
 		src.use_material = supplied_material
 		src.pass_color = pass_stack_color
 
-/*
- * Recipe list datum
- */
+
+//! ## Recipe list datum ## !//
+
 /datum/stack_recipe_list
 	var/title = "ERROR"
 	var/list/recipes = null

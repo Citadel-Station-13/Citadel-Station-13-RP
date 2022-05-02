@@ -8,11 +8,13 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 
 	blurb = "This is a custom species where you can assign various species traits to them as you wish, to \
-	create a (hopefully) balanced species. You will see the options to customize them on the VORE tab once \
-	you select and set this species as your species. Please look at the VORE tab if you select this species."
+	create a (hopefully) balanced species.  You will see the options to customize them on the Species \
+	Customization tab once you select and set this species as your species.  Please look at the Species \
+	Customization tab if you select this species."
+
 	catalogue_data = list(/datum/category_item/catalogue/fauna/custom_species)
 
-	name_language = null // Use the first-name last-name generator rather than a language scrambler
+	name_language = null //?Use the first-name last-name generator rather than a language scrambler
 	max_age = 200
 	health_hud_intensity = 2
 	num_alternate_languages = 3
@@ -27,18 +29,20 @@
 	var/list/traits = list()
 
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest, "descriptor" = "torso"),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin, "descriptor" = "groin"),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head, "descriptor" = "head"),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm, "descriptor" = "left arm"),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right, "descriptor" = "right arm"),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg, "descriptor" = "left leg"),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right, "descriptor" = "right leg"),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand, "descriptor" = "left hand"),
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin,      "descriptor" = "groin"),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head,       "descriptor" = "head"),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm,        "descriptor" = "left arm"),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot,       "descriptor" = "left foot"),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand,       "descriptor" = "left hand"),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg,        "descriptor" = "left leg"),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right,  "descriptor" = "right arm"),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right, "descriptor" = "right foot"),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right, "descriptor" = "right hand"),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot, "descriptor" = "left foot"),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right, "descriptor" = "right foot")
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right,  "descriptor" = "right leg"),
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest,      "descriptor" = "torso")
 		)
+
+	wikilink = "N/A"
 
 /datum/species/custom/get_bodytype()
 	return base_species

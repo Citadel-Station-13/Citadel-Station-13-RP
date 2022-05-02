@@ -19,6 +19,8 @@
 	var/icobase = 'icons/mob/human_races/r_human.dmi'
 	/// Mutated icon set.
 	var/deform = 'icons/mob/human_races/r_def_human.dmi'
+	/// Icon set for bandages
+	var/bandages_icon
 
 	/// Part of icon_state to use for speech bubbles when talking.	See talk.dmi for available icons.
 	var/speech_bubble_appearance = "normal"

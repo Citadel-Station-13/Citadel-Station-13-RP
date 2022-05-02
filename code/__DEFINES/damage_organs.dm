@@ -18,7 +18,7 @@
 #define WEAKEN    "weaken"
 #define PARALYZE  "paralize"
 #define IRRADIATE "irradiate"
-#define AGONY     "agony"     // Added in PAIN!
+#define AGONY     "agony"
 #define SLUR      "slur"
 #define STUTTER   "stutter"
 #define EYE_BLUR  "eye_blur"
@@ -40,11 +40,11 @@
 #define ORGAN_DESTROYED  (1<<3)
 #define ORGAN_DEAD       (1<<4)
 #define ORGAN_MUTATED    (1<<5)
-#define ORGAN_BRITTLE	 (1<<6)// The organ takes additional blunt damage. If robotic, cannot be repaired through normal means.
+#define ORGAN_BRITTLE    (1<<6) // The organ takes additional blunt damage. If robotic, cannot be repaired through normal means.
 
-#define DROPLIMB_EDGE 0
+#define DROPLIMB_EDGE  0
 #define DROPLIMB_BLUNT 1
-#define DROPLIMB_BURN 2
+#define DROPLIMB_BURN  2
 
 // Damage above this value must be repaired with surgery.
 #define ROBOLIMB_REPAIR_CAP 30
@@ -58,17 +58,15 @@
 #define ORGAN_CRYSTAL  5 // The organ does not suffer laser damage, but shatters on droplimb.
 
 //Germs and infections.
-#define GERM_LEVEL_AMBIENT  110 // Maximum germ level you can reach by standing still.		//CITADEL CHANGE - Restored back to 110. Using no gloves on surgery WILL give a high risk of infection now.
-#define GERM_LEVEL_MOVE_CAP 200 // Maximum germ level you can reach by running around.	//CITADEL CHANGE - Restroed to 200. Clean yourselves.
+#define GERM_LEVEL_AMBIENT  110 // Maximum germ level you can reach by standing still.
+#define GERM_LEVEL_MOVE_CAP 200 // Maximum germ level you can reach by running around.
 
 #define INFECTION_LEVEL_ONE   100
 #define INFECTION_LEVEL_TWO   500
 #define INFECTION_LEVEL_THREE 1000
 #define INFECTION_LEVEL_MAX   1500
 
-/// Cannot be detached or reattached.
-#define MODULAR_BODYPART_INVALID    0
-/// Can be detached or reattached freely.
-#define MODULAR_BODYPART_PROSTHETIC 1
-/// Can be detached or reattached to compatible parent organs.
-#define MODULAR_BODYPART_CYBERNETIC 2
+
+#define MODULAR_BODYPART_INVALID    0 // Cannot be detached or reattached.
+#define MODULAR_BODYPART_PROSTHETIC 1 // Can be detached or reattached freely.
+#define MODULAR_BODYPART_CYBERNETIC 2 // Can be detached or reattached to compatible parent organs.

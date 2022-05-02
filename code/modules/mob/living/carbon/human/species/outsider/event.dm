@@ -61,7 +61,7 @@ Variables you may want to make use of are:
 
  */
 
-/datum/species/event1 //Essentially, by default a 'better' human.
+/datum/species/event1 //?Essentially, by default a 'better' human.
 	name = SPECIES_EVENT1
 	name_plural = SPECIES_EVENT1
 	primitive_form = SPECIES_MONKEY
@@ -71,7 +71,7 @@ Variables you may want to make use of are:
 	species_language = LANGUAGE_GALCOM
 	secondary_langs = list()
 	assisted_langs = list()
-	name_language = null // Use the first-name last-name generator rather than a language scrambler
+	name_language = null //?Use the first-name last-name generator rather than a language scrambler
 
 	max_age = 999
 
@@ -82,32 +82,32 @@ Variables you may want to make use of are:
 	vision_flags = SEE_SELF
 	darksight = 7
 
-	brute_mod = 0.9
-	burn_mod = 0.9
-	oxy_mod = 0.9
-	toxins_mod = 0.9
+	brute_mod     = 0.9
+	burn_mod      = 0.9
+	chemOD_mod    = 0.9
+	flash_mod     = 0.9
+	oxy_mod       = 0.9
 	radiation_mod = 0.9
-	flash_mod = 0.9
-	sound_mod = 0.9
-	chemOD_mod = 0.9
+	sound_mod     = 0.9
+	toxins_mod    = 0.9
 	siemens_coefficient = 0.9
 
 	spawn_flags = SPECIES_IS_RESTRICTED
 	appearance_flags = HAS_SKIN_TONE | HAS_EYE_COLOR
 
-	//Far more organs, due to the issues with adding them and their respective verbs mid round, I'll include them here.
-	//Colormatch organs will change to match the blood color of the species.
+	//?Far more organs, due to the issues with adding them and their respective verbs mid round, I'll include them here.
+	//?Colormatch organs will change to match the blood color of the species.
 	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart/grey/colormatch,
-		O_LUNGS =    /obj/item/organ/internal/lungs/grey/colormatch,
-		O_LIVER =    /obj/item/organ/internal/liver/grey/colormatch,
-		O_KIDNEYS =  /obj/item/organ/internal/kidneys/grey/colormatch,
-		O_BRAIN =    /obj/item/organ/internal/brain/grey/colormatch,
-		O_EYES =     /obj/item/organ/internal/eyes/grey/colormatch,
-		O_PLASMA =   /obj/item/organ/internal/xenos/plasmavessel/grey/colormatch,
-		O_ACID =     /obj/item/organ/internal/xenos/acidgland/grey/colormatch,
-		O_HIVE =     /obj/item/organ/internal/xenos/hivenode/grey/colormatch,
-		O_RESIN =    /obj/item/organ/internal/xenos/resinspinner/grey/colormatch
+		O_ACID    = /obj/item/organ/internal/xenos/acidgland/grey/colormatch,
+		O_BRAIN   = /obj/item/organ/internal/brain/grey/colormatch,
+		O_EYES    = /obj/item/organ/internal/eyes/grey/colormatch,
+		O_HEART   = /obj/item/organ/internal/heart/grey/colormatch,
+		O_HIVE    = /obj/item/organ/internal/xenos/hivenode/grey/colormatch,
+		O_KIDNEYS = /obj/item/organ/internal/kidneys/grey/colormatch,
+		O_LIVER   = /obj/item/organ/internal/liver/grey/colormatch,
+		O_LUNGS   = /obj/item/organ/internal/lungs/grey/colormatch,
+		O_PLASMA  = /obj/item/organ/internal/xenos/plasmavessel/grey/colormatch,
+		O_RESIN   = /obj/item/organ/internal/xenos/resinspinner/grey/colormatch
 		)
 
 	var/use_bodyshape = SPECIES_HUMAN
@@ -115,63 +115,63 @@ Variables you may want to make use of are:
 	var/overcome_gravity = 0
 	var/hover = 0
 
-/datum/species/event1/proc/set_limbset(var/setnum = 1) //Will require existing ones to be respawned for changes to take effect.
+/datum/species/event1/proc/set_limbset(var/setnum = 1) //?Will require existing ones to be respawned for changes to take effect.
 	switch(setnum)
-		if(1) //Normal.
+		if(1) //?Normal.
 			has_limbs = list(
-				BP_TORSO =	list("path" = /obj/item/organ/external/chest),
-				BP_GROIN =	list("path" = /obj/item/organ/external/groin),
-				BP_HEAD =	list("path" = /obj/item/organ/external/head),
-				BP_L_ARM =	list("path" = /obj/item/organ/external/arm),
-				BP_R_ARM =	list("path" = /obj/item/organ/external/arm/right),
-				BP_L_LEG =	list("path" = /obj/item/organ/external/leg),
-				BP_R_LEG =	list("path" = /obj/item/organ/external/leg/right),
-				BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-				BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+				BP_GROIN  = list("path" = /obj/item/organ/external/groin),
+				BP_HEAD   = list("path" = /obj/item/organ/external/head),
+				BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
 				BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-				BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+				BP_L_HAND = list("path" = /obj/item/organ/external/hand),
+				BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
+				BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
+				BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+				BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+				BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
+				BP_TORSO  = list("path" = /obj/item/organ/external/chest)
 				)
-		if(2) //No broken bones.
+		if(2) //?No broken bones.
 			has_limbs = list(
-				BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable),
-				BP_GROIN =  list("path" = /obj/item/organ/external/groin/unbreakable),
-				BP_HEAD =   list("path" = /obj/item/organ/external/head/unbreakable),
-				BP_L_ARM =  list("path" = /obj/item/organ/external/arm/unbreakable),
-				BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/unbreakable),
-				BP_L_LEG =  list("path" = /obj/item/organ/external/leg/unbreakable),
-				BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/unbreakable),
-				BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable),
-				BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable),
+				BP_GROIN  = list("path" = /obj/item/organ/external/groin/unbreakable),
+				BP_HEAD   = list("path" = /obj/item/organ/external/head/unbreakable),
+				BP_L_ARM  = list("path" = /obj/item/organ/external/arm/unbreakable),
 				BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable),
-				BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable)
+				BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable),
+				BP_L_LEG  = list("path" = /obj/item/organ/external/leg/unbreakable),
+				BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/unbreakable),
+				BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable),
+				BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable),
+				BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/unbreakable),
+				BP_TORSO  = list("path" = /obj/item/organ/external/chest/unbreakable)
 				)
-		if(3) //No removing from the body.
+		if(3) //?No removing from the body.
 			has_limbs = list(
-				BP_TORSO =  list("path" = /obj/item/organ/external/chest/unseverable),
-				BP_GROIN =  list("path" = /obj/item/organ/external/groin/unseverable),
-				BP_HEAD =   list("path" = /obj/item/organ/external/head/unseverable),
-				BP_L_ARM =  list("path" = /obj/item/organ/external/arm/unseverable),
-				BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/unseverable),
-				BP_L_LEG =  list("path" = /obj/item/organ/external/leg/unseverable),
-				BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/unseverable),
-				BP_L_HAND = list("path" = /obj/item/organ/external/hand/unseverable),
-				BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unseverable),
+				BP_GROIN  = list("path" = /obj/item/organ/external/groin/unseverable),
+				BP_HEAD   = list("path" = /obj/item/organ/external/head/unseverable),
+				BP_L_ARM  = list("path" = /obj/item/organ/external/arm/unseverable),
 				BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unseverable),
-				BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unseverable)
+				BP_L_HAND = list("path" = /obj/item/organ/external/hand/unseverable),
+				BP_L_LEG  = list("path" = /obj/item/organ/external/leg/unseverable),
+				BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/unseverable),
+				BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unseverable),
+				BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unseverable),
+				BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/unseverable),
+				BP_TORSO  = list("path" = /obj/item/organ/external/chest/unseverable)
 				)
-		if(4) //No breaking, OR removing from the body. For things that are more monsterous.
+		if(4) //?No breaking, OR removing from the body.  For things that are more monsterous.
 			has_limbs = list(
-				BP_TORSO =  list("path" = /obj/item/organ/external/chest/indestructible),
-				BP_GROIN =  list("path" = /obj/item/organ/external/groin/indestructible),
-				BP_HEAD =   list("path" = /obj/item/organ/external/head/indestructible),
-				BP_L_ARM =  list("path" = /obj/item/organ/external/arm/indestructible),
-				BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/indestructible),
-				BP_L_LEG =  list("path" = /obj/item/organ/external/leg/indestructible),
-				BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/indestructible),
-				BP_L_HAND = list("path" = /obj/item/organ/external/hand/indestructible),
-				BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/indestructible),
+				BP_GROIN  = list("path" = /obj/item/organ/external/groin/indestructible),
+				BP_HEAD   = list("path" = /obj/item/organ/external/head/indestructible),
+				BP_L_ARM  = list("path" = /obj/item/organ/external/arm/indestructible),
 				BP_L_FOOT = list("path" = /obj/item/organ/external/foot/indestructible),
-				BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/indestructible)
+				BP_L_HAND = list("path" = /obj/item/organ/external/hand/indestructible),
+				BP_L_LEG  = list("path" = /obj/item/organ/external/leg/indestructible),
+				BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/indestructible),
+				BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/indestructible),
+				BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/indestructible),
+				BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/indestructible),
+				BP_TORSO  = list("path" = /obj/item/organ/external/chest/indestructible)
 				)
 	return
 
@@ -205,10 +205,12 @@ Variables you may want to make use of are:
 /datum/species/event1/proc/toggle_embedding()
 	flags ^= NO_EMBED
 
-/datum/species/event1/proc/toggle_plant() //Maybe it's a distant cousin of the Venus Fly Trap.
+//?Maybe it's a distant cousin of the Venus Fly Trap.
+/datum/species/event1/proc/toggle_plant()
 	flags ^= IS_PLANT
 
-/datum/species/event1/get_bodytype(var/mob/living/carbon/human/H) //Default to human sprites, if they're based on another species, var edit use_bodyshape to the correct thing in _defines/mobs.dm of the species you want to use.
+//?Default to human sprites, if they're based on another species, var edit use_bodyshape to the correct thing in _defines/mobs.dm of the species you want to use.
+/datum/species/event1/get_bodytype(var/mob/living/carbon/human/H)
 	return use_bodyshape
 
 /datum/species/event1/can_breathe_water()

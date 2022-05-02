@@ -1,21 +1,22 @@
-// Prommies are slimes, lets make them a subtype of slimes.
+//TODO: Make this less shit.
+//! ## Prommies are slimes, lets make them a subtype of slimes. ## !//
 /mob/living/simple_mob/slime/promethean
 	name = "Promethean Blob"
 	desc = "A promethean expressing their true form."
 	//ai_holder_type = null
-	color = null // Uses a special icon_state.
+	color = null //?Uses a special icon_state.
 	slime_color = "rainbow"
 	unity = TRUE
-	water_resist = 100 // Lets not kill the prommies
+	water_resist = 100 //?Lets not kill the prommies... Yet.
 	cores = 0
 	movement_cooldown = 3
 	//appearance_flags = RADIATION_GLOWS
-	shock_resist = 0 // Lets not be immune to zaps.
+	shock_resist = 0 //?Lets not be immune to zaps.
 	friendly = list("nuzzles", "glomps", "snuggles", "cuddles", "squishes") // lets be cute :3
 	melee_damage_upper = 0
 	melee_damage_lower = 0
 	player_msg = "You're a little squisher! Your cuteness level has increased tenfold."
-	heat_damage_per_tick = 20 // Hot and cold are bad, but cold is AS bad for prommies as it is for slimes.
+	heat_damage_per_tick = 20 //?Hot and cold are bad, but cold is AS bad for prommies as it is for slimes.
 	cold_damage_per_tick = 20
 	//glow_range = 0
 	//glow_intensity = 0
@@ -25,12 +26,11 @@
 
 	var/obj/prev_left_hand
 	var/obj/prev_right_hand
+
 	var/human_brute = 0
-	var/human_burn = 0
-	var/is_wide = FALSE
+	var/human_burn  = 0
+	var/is_wide  = FALSE
 	var/rad_glow = 0
-
-
 
 /mob/living/simple_mob/slime/promethean/Initialize(mapload, null)
 	verbs += /mob/living/simple_mob/slime/promethean/proc/prommie_blobform
@@ -72,7 +72,7 @@
 	if(humanform)
 		humanform.species.Stat(humanform)
 
-/mob/living/simple_mob/slime/promethean/handle_special() // Should disable default slime healing, we'll use nutrition based heals instead.
+/mob/living/simple_mob/slime/promethean/handle_special() //?Should disable default slime healing, we'll use nutrition based heals instead.
 	if(rad_glow)
 		rad_glow = clamp(rad_glow,0,250)
 		set_light(max(1,min(5,rad_glow/15)), max(1,min(10,rad_glow/25)), color)
@@ -80,7 +80,7 @@
 		set_light(0)
 	update_icon()
 
-	if(!humanform) // If we somehow have a blob with no human, lets just clean up.
+	if(!humanform) //?If we somehow have a blob with no human, lets just clean up.
 		log_debug("Cleaning up blob with no prommie!")
 		qdel(src)
 	return
@@ -99,27 +99,27 @@
 	if(!humanform)
 		return ..()
 
-	//Set the max
+	//?Set the max
 	maxHealth = humanform.getMaxHealth()*2 //HUMANS, and their 'double health', bleh.
-	//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
+	//?Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 	human_brute = humanform.getActualBruteLoss()
 	human_burn = humanform.getActualFireLoss()
 	health = maxHealth - humanform.getOxyLoss() - humanform.getToxLoss() - humanform.getCloneLoss() - human_brute - human_burn
 
-	//Alive, becoming dead
+	//?Alive, becoming dead
 	if((stat < DEAD) && (health <= 0))
 		death()
 
-	//Overhealth
+	//?Overhealth
 	if(health > getMaxHealth())
 		health = getMaxHealth()
 
-	//Grab any other interesting values
+	//?Grab any other interesting values
 	confused = humanform.confused
 	radiation = humanform.radiation
 	paralysis = humanform.paralysis
 
-	//Update our hud if we have one
+	//?Update our hud if we have one
 	if(healths)
 		if(stat != DEAD)
 			var/heal_per = (health / getMaxHealth()) * 100
@@ -141,7 +141,7 @@
 		else
 			healths.icon_state = "health7"
 
-// All the damage and such to the blob translates to the human
+//?All the damage and such to the blob translates to the human
 /mob/living/simple_mob/slime/promethean/apply_effect(var/effect = 0, var/effecttype = STUN, var/blocked = 0, var/check_protection = 1)
 	if(humanform)
 		return humanform.apply_effect(effect, effecttype, blocked, check_protection)
@@ -212,7 +212,7 @@
 		animate(src, alpha = 0, time = 2 SECONDS)
 		sleep(2 SECONDS)
 
-	if(!QDELETED(src)) // Human's handle death should have taken us, but maybe we were adminspawned or something without a human counterpart
+	if(!QDELETED(src)) //?Human's handle death should have taken us, but maybe we were adminspawned or something without a human counterpart
 		qdel(src)
 
 /mob/living/simple_mob/slime/promethean/Login()
@@ -227,13 +227,13 @@
 
 	var/atom/movable/to_locate = src
 	if(!isturf(to_locate.loc))
-		to_chat(src,"<span class='warning'>You need more space to perform this action!</span>")
+		to_chat(src, SPAN_WARNING("You need more space to perform this action!"))
 		return
 
-	//Blob form
+	//?Blob form
 	if(!ishuman(src))
 		if(humanform.temporary_form.stat || paralysis || stunned || weakened || restrained())
-			to_chat(src,"<span class='warning'>You can only do this while not stunned.</span>")
+			to_chat(src, SPAN_WARNING("You can only do this while not stunned."))
 		else
 			humanform.prommie_outofblob(src)
 
@@ -315,11 +315,12 @@
 	/obj/item/clothing/accessory/armor
 	)
 	if(!force && !isturf(loc))
-		to_chat(src,"<span class='warning'>You can't change forms while inside something.</span>")
+		to_chat(src, SPAN_WARNING("You can't change forms while inside something."))
 		return
 
-	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
-	remove_micros(src, src) //Living things don't fare well in roblobs.
+	//TODO: Fix the code so this can be done better.
+	handle_grasp() //?It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null.
+	remove_micros(src, src) //?Living things don't fare well in roblobs.  //Roblobs? More like Roblox! -Zandario (totally a funny guy)
 	if(buckled)
 		buckled.unbuckle_mob()
 	if(LAZYLEN(buckled_mobs))
@@ -342,14 +343,14 @@
 		blob = stored_blob
 		blob.forceMove(creation_spot)
 
-	//Drop all our things
+	//?Drop all our things
 	var/list/things_to_drop = contents.Copy()
-	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear) //And whatever else we decide for balancing.
+	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear) //?And whatever else we decide for balancing.
 	var/obj/item/clothing/head/new_hat
 	var/has_hat = FALSE
-	things_to_drop -= things_to_not_drop //Crunch the lists
-	things_to_drop -= organs //Mah armbs
-	things_to_drop -= internal_organs //Mah sqeedily spooch
+	things_to_drop -= things_to_not_drop //?Crunch the lists
+	things_to_drop -= organs //?Mah armbs
+	things_to_drop -= internal_organs //?Mah sqeedily spooch
 
 	for(var/obj/item/clothing/head/H in things_to_drop)
 		if(H)
@@ -358,24 +359,24 @@
 			drop_from_inventory(H)
 			things_to_drop -= H
 
-	for(var/obj/item/I in things_to_drop) //rip hoarders
+	for(var/obj/item/I in things_to_drop) //?Rip hoarders
 		drop_from_inventory(I)
 
-	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
+	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //?No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform
 		if(LAZYLEN(uniform.accessories))
 			for(var/obj/item/clothing/accessory/A in uniform.accessories)
 				if(is_type_in_list(A, disallowed_promethean_accessories))
-					uniform.remove_accessory(null,A) //First param is user, but adds fingerprints and messages
+					uniform.remove_accessory(null,A) //?First param is user, but adds fingerprints and messages
 
-	//Size update
+	//?Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
 
-	if(l_hand) blob.prev_left_hand = l_hand //Won't save them if dropped above, but necessary if handdrop is disabled.
+	if(l_hand) blob.prev_left_hand = l_hand //?Won't save them if dropped above, but necessary if handdrop is disabled.
 	if(r_hand) blob.prev_right_hand = r_hand
 
-	//Put our owner in it (don't transfer var/mind)
+	//?Put our owner in it (don't transfer var/mind)
 	blob.Weaken(2)
 	blob.transforming = TRUE
 	blob.ckey = ckey
@@ -395,26 +396,26 @@
 		new_hat.forceMove(src)
 
 	blob.update_icon()
-	blob.verbs -= /mob/living/proc/ventcrawl // Absolutely not.
-	//blob.verbs -= /mob/living/simple_mob/proc/set_name // We already have a name.
+	blob.verbs -= /mob/living/proc/ventcrawl //?Absolutely not.
+	//blob.verbs -= /mob/living/simple_mob/proc/set_name //?We already have a name.
 	temporary_form = blob
-	//Mail them to nullspace
+	//?Mail them to nullspace.  Where they belong.
 	moveToNullspace()
 
-	//Message
+	//?Message
 	blob.visible_message("<b>[src.name]</b> squishes into their true form!")
 
-	//Transfer vore organs
+	//?Transfer vore organs
 	blob.vore_organs = vore_organs
 	blob.vore_selected = vore_selected
 	for(var/obj/belly/B as anything in vore_organs)
 		B.forceMove(blob)
 		B.owner = blob
 
-	//We can still speak our languages!
+	//?We can still speak our languages!
 	blob.languages = languages.Copy()
 
-	//Return our blob in case someone wants it
+	//?Return our blob in case someone wants it
 	return blob
 
 /mob/living/carbon/human/proc/prommie_outofblob(var/mob/living/simple_mob/slime/promethean/blob, force)
@@ -422,7 +423,7 @@
 		return
 
 	if(!force && !isturf(blob.loc))
-		to_chat(blob,"<span class='warning'>You can't change forms while inside something.</span>")
+		to_chat(blob, SPAN_WARNING("You can't change forms while inside something."))
 		return
 
 	if(buckled)
@@ -434,31 +435,31 @@
 		pulledby.stop_pulling()
 	stop_pulling()
 
-	//Message
+	//?Message
 	blob.visible_message("<b>[src.name]</b> pulls together, forming a humanoid shape!")
 
-	//Record where they should go
+	//?Record where they should go
 	var/atom/reform_spot = blob.drop_location()
 
-	//Size update
+	//?Size update
 	resize(blob.size_multiplier, FALSE)
 
-	//Move them back where the blob was
+	//?Move them back where the blob was
 	forceMove(reform_spot)
 
-	//Put our owner in it (don't transfer var/mind)
+	//?Put our owner in it (don't transfer var/mind)
 	Weaken(2)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
 	transforming = TRUE
 	ckey = blob.ckey
-	ooc_notes = blob.ooc_notes // Updating notes incase they change them in blob form.
+	ooc_notes = blob.ooc_notes //?Updating notes incase they change them in blob form.
 	transforming = FALSE
 	blob.name = "Promethean Blob"
 	var/obj/item/hat = blob.hat
 	blob.drop_hat()
-	drop_from_inventory(hat) // Hat me baby
+	drop_from_inventory(hat) //?Hat me baby
 	equip_to_slot_if_possible(hat, slot_head)
-	nutrition = blob.nutrition // food good
+	nutrition = blob.nutrition //?Food good
 
 
 	temporary_form = null
@@ -471,25 +472,25 @@
 		set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
 	update_icon()
 
-	//Transfer vore organs
+	//?Transfer vore organs
 	vore_selected = blob.vore_selected
 	for(var/obj/belly/B as anything in blob.vore_organs)
 		B.forceMove(src)
 		B.owner = src
 
 	//vore_organs.Cut()
-	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
+	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //?The restore for when reforming.
 	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
 
-	Life(1) //Fix my blindness right meow //Has to be moved up here, there exists a circumstance where blob could be deleted without vore organs moving right.
+	Life(1) //?Fix my blindness right meow //Has to be moved up here, there exists a circumstance where blob could be deleted without vore organs moving right.
 
-	//Get rid of friend blob
+	//?Get rid of friend blob
 	stored_blob = blob
 	blob.set_light(0)
 	blob.moveToNullspace()
 	//qdel(blob)
 
-	//Return ourselves in case someone wants it
+	//?Return ourselves in case someone wants it
 	return src
 
 /mob/living/simple_mob/slime/promethean/examine(mob/user)
@@ -498,13 +499,12 @@
 		. += "They are wearing \a [hat]."
 
 /mob/living/simple_mob/slime/promethean/say_understands(var/mob/other, var/datum/language/speaking = null)
-	if(speaking?.name == LANGUAGE_SOL_COMMON)	//Promethean and sign are both nonverbal, so won't work with the same trick as below, so let's check for them /Citadel change, since LANGUAGE_PROMETHEAN does not exist here, changing it to the race's defaul, Sol
+	if(speaking?.name == LANGUAGE_SOL_COMMON) //?Promethean and sign are both nonverbal, so won't work with the same trick as below, so let's check for them /Citadel change, since LANGUAGE_PROMETHEAN does not exist here, changing it to the race's defaul, Sol
 		return TRUE
 	else if(speaking?.name == LANGUAGE_SIGN)
 		for(var/datum/language/L in humanform.languages)
 			if(L.name == LANGUAGE_SIGN)
 				return TRUE
-	else if(humanform.say_understands(other, speaking))		//So they're speaking something other than promethean or sign, let's just ask our original mob if it understands
+	else if(humanform.say_understands(other, speaking)) //?So they're speaking something other than promethean or sign, let's just ask our original mob if it understands
 		return TRUE
 	else return FALSE
-

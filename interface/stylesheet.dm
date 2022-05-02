@@ -144,7 +144,7 @@ h1.alert, h2.alert		{color: #000000;}
 
 .unconscious			{color: #0000ff;	font-weight: bold;}
 .suicide				{color: #ff5050;	font-style: italic;}
-.reflex_shoot			{color: #000099; font-style: italic;}
+.reflex_shoot			{color: #000099;	font-style: italic;}
 
 .revennotice			{color: #1d2953;}
 .revenboldnotice		{color: #1d2953;	font-weight: bold;}

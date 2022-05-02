@@ -1,4 +1,4 @@
-//contains the relavant data for the xenohybrid resin, a more versitile, and legaly distinct material.
+//! Contains the relavant data for the xenohybrid resin, a more versitile, and legaly distinct material.
 
 /datum/material/hybrid_resin
 	name = "resin compound"
@@ -7,11 +7,11 @@
 	dooropen_noise = 'sound/effects/attackblob.ogg'
 	door_icon_base = "resin"
 	icon_reinf = "reinf_mesh"
-	melting_point = T0C+200//we melt faster this isnt a building material you wanna built engines from
+	melting_point = T0C+200 //?We melt faster this isnt a building material you wanna built engines from
 	sheet_singular_name = "bar"
 	sheet_plural_name = "bars"
 	conductive = 0
-	explosion_resistance = 20//normal resin has 60, we are much softer
+	explosion_resistance = 20 //?Normal resin has 60, we are much softer
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/hybrid_resin
@@ -38,14 +38,15 @@
 	set desc = "Secrete tough malleable resin."
 	set category = "Abilities"
 
-	var/choice = input("Choose what you wish to shape.","Resin building") as null|anything in list("resin door","resin wall","resin membrane","resin nest","resin compound") //would do it through typesof but then the player choice would have the type path and we don't want the internal workings to be exposed ICly - Urist
+	//?Would do it through typesof but then the player choice would have the type path and we don't want the internal workings to be exposed ICly - Urist
+	var/choice = tgui_input_list(usr, "Choose what you wish to shape.", "Resin building", list("resin door", "resin wall", "resin membrane", "resin nest", "resin compound"))
 	if(!choice)
 		return
 
 	if(!check_alien_ability(75,1,O_RESIN))
 		return
 
-	visible_message("<span class='warning'><B>[src] spits out a thick purple substance and begins to shape it!</B></span>", "<span class='green'>You shape a [choice].</span>")
+	visible_message(SPAN_ALERTALIEN("[src] spits out a thick purple substance and begins to shape it!"), SPAN_NOTICEALIEN("You shape a [choice].") )
 
 	var/obj/O
 
@@ -87,9 +88,9 @@
 		if(buckled_mob.buckled == src)
 			if(buckled_mob != user)
 				buckled_mob.visible_message(\
-					"<span class='notice'>[user.name] pulls [buckled_mob.name] free from the sticky nest!</span>",\
-					"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
-					"<span class='notice'>You hear squelching...</span>")
+					SPAN_NOTICEALIEN("[user.name] pulls [buckled_mob.name] free from the sticky nest!"),\
+					SPAN_WARNING("[user.name] pulls you free from the gelatinous resin."),\
+					SPAN_NOTICE("You hear squelching...") )
 				buckled_mob.pixel_y = 0
 				buckled_mob.old_y = 0
 				unbuckle_mob(buckled_mob)
@@ -98,9 +99,9 @@
 					return
 				buckled_mob.last_special = world.time
 				buckled_mob.visible_message(\
-					"<span class='warning'>[buckled_mob.name] struggles to break free of the gelatinous resin...</span>",\
-					"<span class='warning'>You struggle to break free from the gelatinous resin...</span>",\
-					"<span class='notice'>You hear squelching...</span>")
+					SPAN_ALERTALIEN("[buckled_mob.name] struggles to break free of the gelatinous resin..."),\
+					SPAN_WARNING("You struggle to break free from the gelatinous resin..."),\
+					SPAN_NOTICE("You hear squelching...") )
 				if(user && buckled_mob && user.buckled == src)
 					buckled_mob.last_special = world.time
 					buckled_mob.pixel_y = 0
@@ -124,9 +125,9 @@
 		return
 	else
 		M.visible_message(\
-			"<span class='notice'>[user.name] secretes a thick vile goo, securing [M.name] into [src]!</span>",\
-			"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!</span>",\
-			"<span class='notice'>You hear squelching...</span>")
+			SPAN_NOTICEALIEN("[user.name] secretes a thick vile goo, securing [M.name] into [src]!"),\
+			SPAN_ALERTALIEN("[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!"),\
+			SPAN_NOTICE("You hear squelching...") )
 	M.buckled = src
 	M.loc = src.loc
 	M.setDir(src.dir)
@@ -142,7 +143,7 @@
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	for(var/mob/M in viewers(src, 7))
-		M.show_message("<span class='warning'>[user] hits [src] with [W]!</span>", 1)
+		M.show_message(SPAN_WARNING("[user] hits [src] with [W]!"), 1)
 	healthcheck()
 
 /obj/structure/bed/hybrid_nest/proc/healthcheck()
@@ -159,9 +160,9 @@
 	desc = "Looks like some kind of slimy growth."
 	icon_state = "resin"
 
-	density = 1
-	opacity = 1
-	anchored = 1
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
 	can_atmos_pass = ATMOS_PASS_NO
 	var/health = 200
 	//var/mob/living/affecting = null
@@ -169,13 +170,13 @@
 /obj/effect/alien/hybrid_resin/wall
 	name = "resin wall"
 	desc = "Purple slime solidified into a wall."
-	icon_state = "resinwall" //same as resin, but consistency ho!
+	icon_state = "resinwall" //?Same as resin, but consistency ho!
 
 /obj/effect/alien/hybrid_resin/membrane
 	name = "resin membrane"
 	desc = "Purple slime just thin enough to let light pass through."
 	icon_state = "resinmembrane"
-	opacity = 0
+	opacity = FALSE
 	health = 120
 
 /obj/effect/alien/hybrid_resin/Initialize(mapload)
@@ -190,7 +191,7 @@
 
 /obj/effect/alien/hybrid_resin/proc/healthcheck()
 	if(health <=0)
-		density = 0
+		density = FALSE
 		qdel(src)
 	return
 
@@ -201,7 +202,7 @@
 	return
 
 /obj/effect/alien/hybrid_resin/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+	visible_message(SPAN_DANGER("[user] [attack_verb] \the [src]!"))
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	user.do_attack_animation(src)
 	health -= damage
@@ -230,7 +231,7 @@
 /obj/effect/alien/hybrid_resin/hitby(AM as mob|obj)
 	..()
 	for(var/mob/O in viewers(src, null))
-		O.show_message("<span class='danger'>[src] was hit by [AM].</span>", 1)
+		O.show_message(SPAN_DANGER("[src] was hit by [AM]."), 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
@@ -245,25 +246,25 @@
 /obj/effect/alien/hybrid_resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if (HULK in usr.mutations)
-		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
+		to_chat(usr, SPAN_NOTICE("You easily destroy \the [name]."))
 		for(var/mob/O in oviewers(src))
-			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)
+			O.show_message(SPAN_WARNING("[usr] destroys \the [name]!"), 1)
 		health = 0
 	else
 
-		// Aliens can get straight through these.
+		//?Aliens can get straight through these.
 		if(istype(usr,/mob/living/carbon))
 			var/mob/living/carbon/M = usr
 			if(locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
 				for(var/mob/O in oviewers(src))
-					O.show_message("<span class='warning'>[usr] strokes the [name] and it melts away!</span>", 1)
+					O.show_message(SPAN_WARNING("[usr] strokes \the [name] and it melts away!"), 1)
 				health = 0
 				healthcheck()
 				return
 
-		to_chat(usr, "<span class='notice'>You claw at the [name].</span>")
+		to_chat(usr, SPAN_NOTICEALIEN("You claw at \the [name]."))
 		for(var/mob/O in oviewers(src))
-			O.show_message("<span class='warning'>[usr] claws at the [name]!</span>", 1)
+			O.show_message(SPAN_WARNING("[usr] claws at \the [name]!"), 1)
 		health -= rand(5,10)
 	healthcheck()
 	return
@@ -295,8 +296,8 @@
 	desc = "A rubbery organic covering, you might know it from a Xenomorph Hybrid friend already."
 	icon_state = "weeds"
 
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	color = "#422649"

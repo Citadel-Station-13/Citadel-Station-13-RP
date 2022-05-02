@@ -400,7 +400,7 @@
 				src.nutrition = 900
 			if(B.nutrition < 100)
 				B.apply_damage(15, BRUTE, BP_TORSO) // if they have nothing to give, this just harms them
-			B.bitten = 1 //debuff tracking for balance
+			B.bitten = TRUE //? Debuff tracking for balance
 	else if(!istype(B,/mob/living/carbon) && src.isSynthetic() || istype(B,/mob/living/carbon) && B.isSynthetic() && src.isSynthetic()) // for synths to feed on robots and other synths
 		if(do_after(src, 50, B))
 			if(!Adjacent(B)) return

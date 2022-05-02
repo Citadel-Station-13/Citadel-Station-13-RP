@@ -28,34 +28,35 @@
 	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
-	color_mult = 1
 	icobase = 'icons/mob/human_races/r_human_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+
+	color_mult  = 1
+	base_color  = "#EECEB3"
 	blood_color = "#ce4a4a"
-	base_color = "#EECEB3"
 
 	max_age = 200
 
-	//Nocturnal and photosensitive.
+	//!Nocturnal and photosensitive.
 	darksight = 7
 	flash_mod = 3.0
 	flash_burn = 5
 	has_glowing_eyes = 1
 
-	//Physical resistances and weaknesses.
+	//!Physical resistances and weaknesses.
 	total_health = 75
 	item_slowdown_mod = 1.5
 	brute_mod = 0.75
 	toxins_mod = 0.75
 	burn_mod = 1.5
 
-	//Appetite
+	//!Appetite
 	metabolic_rate = 1.2
 	hunger_factor = 0.2
 	metabolism = 0.06
 
-	//Thin blood and a higher core temperature.
+	//!Thin blood and a higher core temperature.
 	minimum_breath_pressure = 20
 	oxy_mod = 1.25
 	bloodloss_rate = 2
@@ -110,13 +111,13 @@
 
 	max_age = 200
 
-	//Nocturnal and photosensitive.
+	//!Nocturnal and photosensitive.
 	darksight = 7
 	flash_mod = 3.0
 	flash_burn = 5
 	has_glowing_eyes = 1
 
-	//Physical resistances and weaknesses.
+	//!Physical resistances and weaknesses.
 	total_health = 110
 	item_slowdown_mod = 0.5
 	brute_mod = 0.75
@@ -124,12 +125,12 @@
 	burn_mod = 1.5
 	radiation_mod = 1.5
 
-	//Appetite
+	//!Appetite
 	metabolic_rate = 0.8
 	hunger_factor = 0.04
 	metabolism = 0.0012
 
-	//Thick blood and a lower core temperature.
+	//!Thick blood and a lower core temperature.
 	minimum_breath_pressure = 20
 	oxy_mod = 1.25
 	bloodloss_rate = 0.75

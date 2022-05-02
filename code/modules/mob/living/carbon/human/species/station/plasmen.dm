@@ -22,19 +22,17 @@
 
 	show_ssd = "completely motionless"
 
-	blood_volume = 560
-	hunger_factor = 0
+	blood_volume   = 560
+	hunger_factor  = 0
 	metabolic_rate = 1
 
 	virus_immune = TRUE
 
-	brute_mod =     1
-	burn_mod =      1.2
-	oxy_mod =       1.2
-	toxins_mod =    0 // blackmajor "encouraged" it
-	radiation_mod = 1
-	flash_mod =     2
-	chemOD_mod =	1 // turns out this is just damage
+	brute_mod  = 1
+	burn_mod   = 1.2
+	flash_mod  = 2
+	oxy_mod    = 1.2
+	toxins_mod = 0 //?Blackmajor "encouraged" it
 
 	breath_type = /datum/gas/phoron
 	poison_type = /datum/gas/oxygen
@@ -46,20 +44,20 @@
 	knockout_message = "falls over!"
 
 	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart,
-		O_LUNGS =    /obj/item/organ/internal/lungs,
-		O_VOICE = 	/obj/item/organ/internal/voicebox,
-		O_LIVER =    /obj/item/organ/internal/liver,
-		O_KIDNEYS =  /obj/item/organ/internal/kidneys,
-		O_BRAIN =    /obj/item/organ/internal/brain,
-		O_EYES =     /obj/item/organ/internal/eyes
+		O_BRAIN   = /obj/item/organ/internal/brain,
+		O_EYES    = /obj/item/organ/internal/eyes,
+		O_HEART   = /obj/item/organ/internal/heart,
+		O_KIDNEYS = /obj/item/organ/internal/kidneys,
+		O_LIVER   = /obj/item/organ/internal/liver,
+		O_LUNGS   = /obj/item/organ/internal/lungs,
+		O_VOICE   = /obj/item/organ/internal/voicebox
 		)
 
 	cold_level_1 = 200 //Default 260 - Lower is better
 	cold_level_2 = 180 //Default 200
 	cold_level_3 = 120 //Default 120
 
-	breath_cold_level_1 = 120		// so they can probably breathe outside?					.
+	breath_cold_level_1 = 120 //?So they can probably breathe outside?
 	breath_cold_level_2 = 80
 	breath_cold_level_3 = 60
 
@@ -74,16 +72,17 @@
 	if(!T) return
 	var/datum/gas_mixture/environment = T.copy_cell_volume()
 	if(!environment) return
-	var/enviroment_bad = 0 //In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
+	var/enviroment_bad = 0 //?In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 
 	if(environment.gas[/datum/gas/oxygen] > 0.5)
-		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space)) // now any airtight spessuit works for them. which means exploration voidsuits work :O
+		//?Now any airtight spessuit works for them. which means exploration voidsuits work :O
+		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
 			return
 		H.adjust_fire_stacks(2)
 		enviroment_bad = 1
 		if(!H.on_fire && enviroment_bad)
-			H.visible_message("<span class='danger'>[H]'s body reacts with the atmosphere and bursts into flames!</span>")
-			to_chat(H, "<span class='danger'>Your body reacts with the atmosphere and bursts into flames!</span>")
+			H.visible_message(SPAN_DANGER("[H]'s body reacts with the atmosphere and bursts into flames!"))
+			to_chat(H, SPAN_USERDANGER("Your body reacts with the atmosphere and bursts into flames!"))
 			H.IgniteMob()
 	enviroment_bad = 0
 

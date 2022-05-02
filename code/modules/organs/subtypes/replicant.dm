@@ -112,7 +112,8 @@
 	can_reject = FALSE
 	icon_state = "vox_lung"
 
-/obj/item/organ/internal/brainmirror	// The device that lets Replicants and other Alien Pod minds return willingly to the pods.
+/// The device that lets Replicants and other Alien Pod minds return willingly to the pods.
+/obj/item/organ/internal/brainmirror
 	name = "quantum cortical entangler"
 	desc = "An ominous device."
 	can_reject = FALSE

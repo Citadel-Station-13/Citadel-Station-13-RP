@@ -1,36 +1,67 @@
 ///////////////////// Mob Living /////////////////////
 /mob/living
-	var/digestable = TRUE				// Can the mob be digested inside a belly?
-	var/devourable = TRUE				// Can the mob be devoured at all?
-	var/feeding = TRUE					// Can the mob be vorishly force fed or fed to others?
-	var/digest_leave_remains = FALSE	// Will this mob leave bones/skull/etc after the melty demise?
-	var/allowmobvore = TRUE				// Will simplemobs attempt to eat the mob?
-	var/showvoreprefs = TRUE			// Determines if the mechanical vore preferences button will be displayed on the mob or not.
-	var/obj/belly/vore_selected			// Default to no vore capability.
-	var/list/vore_organs = list()		// List of vore containers inside a mob
-	var/absorbed = FALSE				// If a mob is absorbed into another
-	var/weight = 137					// Weight for mobs for weightgain system
-	var/weight_gain = 1 				// How fast you gain weight
-	var/weight_loss = 0.5 				// How fast you lose weight
-	var/vore_egg_type = "egg" 				// Default egg type.
-	var/feral = 0 						// How feral the mob is, if at all. Does nothing for non xenochimera at the moment.
-	var/revive_ready = REVIVING_READY	// Only used for creatures that have the xenochimera regen ability, so far.
+	/// Can the mob be digested inside a belly?
+	var/digestable = TRUE
+	/// Can the mob be devoured at all?
+	var/devourable = TRUE
+	/// Can the mob be vorishly force fed or fed to others?
+	var/feeding = TRUE
+	/// Will this mob leave bones/skull/etc after the melty demise?
+	var/digest_leave_remains = FALSE
+	/// Will simplemobs attempt to eat the mob?
+	var/allowmobvore = TRUE
+	/// Determines if the mechanical vore preferences button will be displayed on the mob or not.
+	var/showvoreprefs = TRUE
+	/// Default to no vore capability.
+	var/obj/belly/vore_selected
+	/// List of vore containers inside a mob.
+	var/list/vore_organs = list()
+	/// If a mob is absorbed into another.
+	var/absorbed = FALSE
+	/// Weight for mobs for weightgain system.
+	var/weight = 137
+	/// How fast you gain weight.
+	var/weight_gain = 1
+	/// How fast you lose weight.
+	var/weight_loss = 0.5
+	/// Default egg type.
+	var/vore_egg_type = "egg"
+	/// How feral the mob is, if at all. Does nothing for non xenochimera at the moment.
+	var/feral = 0
+	/// Only used for creatures that have the xenochimera regen ability, so far.
+	var/revive_ready = REVIVING_READY
+	/// How fast do we metabolize our nutrition.
 	var/metabolism = 0.0015
-	var/vore_taste = null				// What the character tastes like
-	var/vore_smell = null				// What the character smells like
-	var/no_vore = FALSE					// If the character/mob can vore.
-	var/openpanel = FALSE				// Is the vore panel open?
-	var/noisy = FALSE					// Toggle audible hunger.
-	var/absorbing_prey = 0 				// Determines if the person is using the succubus drain or not. See station_special_abilities_vr.
-	var/drain_finalized = 0				// Determines if the succubus drain will be KO'd/absorbed. Can be toggled on at any time.
-	var/fuzzy = 1						// Preference toggle for sharp/fuzzy icon.
-	var/tail_alt = 0					// Tail layer toggle.
+	/// What the character tastes like.
+	var/vore_taste = null
+	/// What the character smells like.
+	var/vore_smell = null
+	/// If the character/mob can vore.
+	var/no_vore = FALSE
+	/// Is the vore panel open?
+	var/openpanel = FALSE
+	/// Toggle audible hunger.
+	var/noisy = FALSE
+	/// Determines if the person is using the succubus drain or not. See station_special_abilities_vr.
+	var/absorbing_prey = 0
+	/// Determines if the succubus drain will be KO'd/absorbed. Can be toggled on at any time.
+	var/drain_finalized = 0
+	/// Preference toggle for sharp/fuzzy icon.
+	var/fuzzy = 1
+	/// Tail layer toggle.
+	var/tail_alt = 0
+	/// If the character/mob can be in a healbelly.
 	var/permit_healbelly = TRUE
+	/// Mobs aren't prey by default.
 	var/can_be_drop_prey = FALSE
-	var/can_be_drop_pred = TRUE			// Mobs are pred by default.
-	var/next_preyloop					// For Fancy sound internal loop
-	var/adminbus_trash = FALSE			// For abusing trash eater for event shenanigans.
-	var/bitten = 0
+	/// Mobs are pred by default.
+	var/can_be_drop_pred = TRUE
+	/// For Fancy sound internal loop.
+	var/next_preyloop
+	/// For abusing trash eater for event shenanigans.
+	var/adminbus_trash = FALSE
+	/// Have they been bitten by a vamp?
+	var/bitten = FALSE
 	var/painmsg = 1
 	/// pending refactor - allow size gun on us?
 	var/permit_sizegun = TRUE
@@ -41,9 +72,9 @@
 	/// Following the above - allow stripper gun on us?
 	var/permit_stripped
 
-//
-// Hook for generic creation of stuff on new creatures
-//
+/**
+ * Hook for generic creation of stuff on new creatures
+ */
 /hook/living_new/proc/vore_setup(mob/living/M)
 	M.verbs += /mob/living/proc/escapeOOC
 	M.verbs += /mob/living/proc/lick
