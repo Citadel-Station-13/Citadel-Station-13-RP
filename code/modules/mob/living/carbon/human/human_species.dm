@@ -47,34 +47,34 @@
 
 /mob/living/carbon/human/sergal/Initialize(mapload, new_species)
 	h_style = "Sergal Plain"
-	return ..(mapload, "Sergal")
+	return ..(mapload, SPECIES_SERGAL)
 
 /mob/living/carbon/human/akula/Initialize(mapload)
-	return ..(mapload, "Akula")
+	return ..(mapload, SPECIES_AKULA)
 
 /mob/living/carbon/human/nevrean/Initialize(mapload)
-	return ..(mapload, "Nevrean")
+	return ..(mapload, SPECIES_NEVREAN)
 
 /mob/living/carbon/human/xenochimera/Initialize(mapload)
-	return ..(mapload, "Xenochimera")
+	return ..(mapload, SPECIES_XENOCHIMERA)
 
 /mob/living/carbon/human/xenohybrid/Initialize(mapload, new_species)
-	return ..(mapload, "Xenomorph Hybrid")
+	return ..(mapload, SPECIES_XENOHYBRID)
 
 /mob/living/carbon/human/spider/Initialize(mapload)
-	return ..(mapload, "Vasilissan")
+	return ..(mapload, SPECIES_VASILISSAN)
 
 /mob/living/carbon/human/vulpkanin/Initialize(mapload)
-	return ..(mapload, "Vulpkanin")
+	return ..(mapload, SPECIES_VULPKANIN)
 
 /mob/living/carbon/human/protean/Initialize(mapload)
-	return ..(mapload, "Protean")
+	return ..(mapload, SPECIES_PROTEAN)
 
 /mob/living/carbon/human/alraune/Initialize(mapload)
-	return ..(mapload, "Alraune")
+	return ..(mapload, SPECIES_ALRAUNE)
 
 /mob/living/carbon/human/apidaen/Initialize(mapload)
-	return ..(mapload, "Apidaen")
+	return ..(mapload, SPECIES_APIDAEN)
 
 /mob/living/carbon/human/vetala_ruddy/Initialize(mapload)
 	return ..(mapload, "Vetala (Ruddy)")
@@ -83,10 +83,10 @@
 	return ..(mapload, "Vetala (Pale)")
 
 /mob/living/carbon/human/auril/Initialize(mapload)
-	return ..(mapload, "Auril")
+	return ..(mapload, SPECIES_AURIL)
 
 /mob/living/carbon/human/dremachir/Initialize(mapload)
-	return ..(mapload, "Dremachir")
+	return ..(mapload, SPECIES_DREMACHIR)
 
 /mob/living/carbon/human/shadekin/Initialize(mapload)
 	return ..(mapload, SPECIES_SHADEKIN)
@@ -283,4 +283,4 @@
 				H.update_inv_gloves()
 
 /mob/living/carbon/human/adherent/New(var/new_loc)
-	..(new_loc, SPECIES_ADHERENT)
+	return ..(new_loc, SPECIES_ADHERENT)

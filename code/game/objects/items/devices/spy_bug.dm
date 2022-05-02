@@ -158,7 +158,7 @@
 		return
 
 	selected_camera = cameras[1]
-	user.reset_view(selected_camera)
+	user.reset_perspective(selected_camera)
 	view_camera(user)
 
 	operating = 1
@@ -173,16 +173,16 @@
 			var/turf/T = get_turf(selected_camera)
 			if(!T || !is_on_same_plane_or_station(T.z, user.z) || !selected_camera.can_use())
 				user.unset_machine()
-				user.reset_view(null)
+				user.reset_perspective()
 				to_chat(user, "<span class='notice'>Link to [selected_camera] has been lost.</span>")
 				src.unpair(selected_camera.loc)
 				sleep(90)
 			else
 				user.set_machine(selected_camera)
-				user.reset_view(selected_camera)
+				user.reset_perspective(selected_camera)
 			sleep(10)
 		user.unset_machine()
-		user.reset_view(null)
+		user.reset_perspective()
 
 /obj/item/bug_monitor/proc/can_use_cam(mob/user)
 	if(operating)

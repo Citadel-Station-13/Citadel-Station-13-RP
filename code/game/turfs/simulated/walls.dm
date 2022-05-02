@@ -1,6 +1,6 @@
 /turf/simulated/wall
 	name = "wall"
-	desc = "A huge chunk of metal used to seperate rooms."
+	desc = "A huge chunk of iron used to separate rooms."
 	icon = 'icons/turf/wall_masks.dmi'
 	icon_state = "generic"
 	opacity = TRUE
@@ -14,7 +14,7 @@
 	var/damage_overlay = 0
 	var/global/damage_overlays[16]
 	var/active
-	var/can_open = 0
+	var/can_open = FALSE
 	var/datum/material/girder_material
 	var/datum/material/material
 	var/datum/material/reinf_material
@@ -32,10 +32,10 @@
 	. = ..()
 	icon_state = "blank"
 	if(!materialtype)
-		materialtype = DEFAULT_WALL_MATERIAL
+		materialtype = MAT_STEEL
 	material = get_material_by_name(materialtype)
 	if(!girdertype)
-		girdertype = DEFAULT_WALL_MATERIAL
+		girdertype = MAT_STEEL
 	girder_material = get_material_by_name(girdertype)
 	if(!isnull(rmaterialtype))
 		reinf_material = get_material_by_name(rmaterialtype)
@@ -312,7 +312,7 @@
 
 /turf/simulated/wall/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_DECONSTRUCT)
-		to_chat(user, span("notice", "You deconstruct \the [src]."))
+		to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
 		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
 		return TRUE
 	return FALSE

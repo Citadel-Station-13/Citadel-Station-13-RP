@@ -6,14 +6,8 @@
 	anchored = TRUE
 	var/unwrenched = FALSE
 	var/wait = FALSE
+	///The default layer selected on the machine.
 	var/p_layer = PIPING_LAYER_REGULAR
-	var/static/list/pipe_layers = list(
-		"Regular" = PIPING_LAYER_REGULAR,
-		"Supply" = PIPING_LAYER_SUPPLY,
-		"Scrubber" = PIPING_LAYER_SCRUBBER,
-		"Fuel" = PIPING_LAYER_FUEL,
-		"Aux" = PIPING_LAYER_AUX
-	)
 	var/disposals = FALSE
 
 
@@ -37,7 +31,7 @@
 	var/list/data = list(
 		"disposals" = disposals,
 		"p_layer" = p_layer,
-		"pipe_layers" = pipe_layers,
+		"pipe_layers" = GLOB.pipe_layers,
 	)
 
 	var/list/recipes
@@ -51,7 +45,16 @@
 		var/list/r = list()
 		for(var/i in 1 to cat.len)
 			var/datum/pipe_info/info = cat[i]
-			r += list(list("pipe_name" = info.name, "pipe_index" = i))
+			r += list(list("pipe_name" = info.name, "ref" = "\ref[info]"))
+			// Stationary pipe dispensers don't allow you to pre-select pipe directions.
+			// This makes it impossble to spawn bent versions of bendable pipes.
+			// We add a "Bent" pipe type with a special param to work around it.
+			if(info.dirtype == PIPE_BENDABLE)
+				r += list(list(
+					"pipe_name" = ("Bent " + info.name),
+					"ref" = "\ref[info]",
+					"bent" = TRUE
+				))
 		data["categories"] += list(list("cat_name" = c, "recipes" = r))
 
 	return data
@@ -59,6 +62,7 @@
 /obj/machinery/pipedispenser/ui_act(action, params)
 	if(..())
 		return TRUE
+
 	if(unwrenched || !usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 		return TRUE
 
@@ -68,23 +72,23 @@
 			p_layer = text2num(params["p_layer"])
 		if("dispense_pipe")
 			if(!wait)
-				var/list/recipes
-				if(disposals)
-					recipes = GLOB.disposal_pipe_recipes
-				else
-					recipes = GLOB.atmos_pipe_recipes
+				var/datum/pipe_info/recipe = locate(params["ref"])
+				if(!istype(recipe))
+					return
 
-				var/datum/pipe_info/recipe = recipes[params["category"]][text2num(params["pipe_type"])]
+				var/target_dir = NORTH
+				if(params["bent"])
+					target_dir = NORTHEAST
 
 				var/obj/created_object = null
 				if(istype(recipe, /datum/pipe_info/pipe))
 					var/datum/pipe_info/pipe/R = recipe
-					created_object = new R.construction_type(loc, recipe.pipe_type, NORTH)
+					created_object = new R.construction_type(loc, recipe.pipe_type, target_dir)
 					var/obj/item/pipe/P = created_object
 					P.setPipingLayer(p_layer)
 				else if(istype(recipe, /datum/pipe_info/disposal))
 					var/datum/pipe_info/disposal/D = recipe
-					var/obj/structure/disposalconstruct/C = new(loc, D.pipe_type, NORTH, 0, D.subtype ? D.subtype : 0)
+					var/obj/structure/disposalconstruct/C = new(loc, D.pipe_type, target_dir, 0, D.subtype ? D.subtype : 0)
 					C.update()
 					created_object = C
 				else if(istype(recipe, /datum/pipe_info/meter))

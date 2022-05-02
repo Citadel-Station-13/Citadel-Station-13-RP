@@ -41,7 +41,7 @@
 	name = "Thermite"
 	id = "thermite"
 	result = "thermite"
-	required_reagents = list("aluminum" = 1, "iron" = 1, "oxygen" = 1)
+	required_reagents = list("aluminum" = 1, MAT_IRON = 1, "oxygen" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/silicate
@@ -57,7 +57,7 @@
 	id = "condensedcapsaicin"
 	result = "condensedcapsaicin"
 	required_reagents = list("capsaicin" = 2)
-	catalysts = list("phoron" = 5)
+	catalysts = list(MAT_PHORON = 5)
 	result_amount = 1
 
 /datum/chemical_reaction/coolant
@@ -72,14 +72,14 @@
 	name = "Luminol"
 	id = "luminol"
 	result = "luminol"
-	required_reagents = list("hydrogen" = 2, "carbon" = 2, "ammonia" = 2)
+	required_reagents = list("hydrogen" = 2, MAT_CARBON = 2, "ammonia" = 2)
 	result_amount = 6
 
 /datum/chemical_reaction/surfactant
 	name = "Foam surfactant"
 	id = "foam surfactant"
 	result = "fluorosurfactant"
-	required_reagents = list("fluorine" = 2, "carbon" = 2, "sacid" = 1)
+	required_reagents = list("fluorine" = 2, MAT_CARBON = 2, "sacid" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/ammonia
@@ -87,7 +87,7 @@
 	id = "ammonia"
 	result = "ammonia"
 	required_reagents = list("hydrogen" = 3, "nitrogen" = 1)
-	inhibitors = list("phoron" = 1) // Messes with lexorin
+	inhibitors = list(MAT_PHORON = 1) // Messes with lexorin
 	result_amount = 3
 
 /datum/chemical_reaction/diethylamine
@@ -150,14 +150,14 @@
 	name = "Potassium Chlorophoride"
 	id = "potassium_chlorophoride"
 	result = "potassium_chlorophoride"
-	required_reagents = list("potassium_chloride" = 1, "phoron" = 1, "chloralhydrate" = 1)
+	required_reagents = list("potassium_chloride" = 1, MAT_PHORON = 1, "chloralhydrate" = 1)
 	result_amount = 4
 
 /datum/chemical_reaction/zombiepowder
 	name = "Zombie Powder"
 	id = "zombiepowder"
 	result = "zombiepowder"
-	required_reagents = list("carpotoxin" = 5, "stoxin" = 5, "copper" = 5)
+	required_reagents = list("carpotoxin" = 5, "stoxin" = 5, MAT_COPPER = 5)
 	result_amount = 2
 
 
@@ -172,7 +172,7 @@
 	name = "Lexorin"
 	id = "lexorin"
 	result = "lexorin"
-	required_reagents = list("phoron" = 1, "hydrogen" = 1, "nitrogen" = 1)
+	required_reagents = list(MAT_PHORON = 1, "hydrogen" = 1, "nitrogen" = 1)
 	result_amount = 3
 
 /* Toxins and neutralisations */
@@ -226,7 +226,7 @@
 	name = "Hydrophoron"
 	id = "hydrophoron"
 	result = "hydrophoron"
-	required_reagents = list("hydrogen" = 1, "phoron" = 1)
+	required_reagents = list("hydrogen" = 1, MAT_PHORON = 1)
 	inhibitors = list("nitrogen" = 1) //So it doesn't mess with lexorin
 	result_amount = 2
 
@@ -235,7 +235,7 @@
 	name = "Solid Iron"
 	id = "solidiron"
 	result = null
-	required_reagents = list("frostoil" = 5, "iron" = REAGENTS_PER_SHEET)
+	required_reagents = list("frostoil" = 5, MAT_IRON = REAGENTS_PER_SHEET)
 	result_amount = 1
 	var/sheet_to_give = /obj/item/stack/material/iron
 
@@ -247,35 +247,35 @@
 /datum/chemical_reaction/solidification/phoron
 	name = "Solid Phoron"
 	id = "solidphoron"
-	required_reagents = list("frostoil" = 5, "phoron" = REAGENTS_PER_SHEET)
+	required_reagents = list("frostoil" = 5, MAT_PHORON = REAGENTS_PER_SHEET)
 	sheet_to_give = /obj/item/stack/material/phoron
 
 
 /datum/chemical_reaction/solidification/silver
 	name = "Solid Silver"
 	id = "solidsilver"
-	required_reagents = list("frostoil" = 5, "silver" = REAGENTS_PER_SHEET)
+	required_reagents = list("frostoil" = 5, MAT_SILVER = REAGENTS_PER_SHEET)
 	sheet_to_give = /obj/item/stack/material/silver
 
 
 /datum/chemical_reaction/solidification/gold
 	name = "Solid Gold"
 	id = "solidgold"
-	required_reagents = list("frostoil" = 5, "gold" = REAGENTS_PER_SHEET)
+	required_reagents = list("frostoil" = 5, MAT_GOLD = REAGENTS_PER_SHEET)
 	sheet_to_give = /obj/item/stack/material/gold
 
 
 /datum/chemical_reaction/solidification/platinum
 	name = "Solid Platinum"
 	id = "solidplatinum"
-	required_reagents = list("frostoil" = 5, "platinum" = REAGENTS_PER_SHEET)
+	required_reagents = list("frostoil" = 5, MAT_PLATINUM = REAGENTS_PER_SHEET)
 	sheet_to_give = /obj/item/stack/material/platinum
 
 
 /datum/chemical_reaction/solidification/uranium
 	name = "Solid Uranium"
 	id = "soliduranium"
-	required_reagents = list("frostoil" = 5, "uranium" = REAGENTS_PER_SHEET)
+	required_reagents = list("frostoil" = 5, MAT_URANIUM = REAGENTS_PER_SHEET)
 	sheet_to_give = /obj/item/stack/material/uranium
 
 
@@ -290,14 +290,14 @@
 /datum/chemical_reaction/solidification/steel
 	name = "Solid Steel"
 	id = "solidsteel"
-	required_reagents = list("frostoil" = 5, "steel" = REAGENTS_PER_SHEET)
+	required_reagents = list("frostoil" = 5, MAT_STEEL = REAGENTS_PER_SHEET)
 	sheet_to_give = /obj/item/stack/material/steel
 
 
 /datum/chemical_reaction/solidification/plasteel
 	name = "Solid Plasteel"
 	id = "solidplasteel"
-	required_reagents = list("frostoil" = 10, "plasteel" = REAGENTS_PER_SHEET)
+	required_reagents = list("frostoil" = 10, MAT_PLASTEEL = REAGENTS_PER_SHEET)
 	sheet_to_give = /obj/item/stack/material/plasteel
 
 
@@ -315,7 +315,7 @@
 /datum/chemical_reaction/wax
 	name = "Wax"
 	id = "wax"
-	required_reagents = list("hydrogen" = 1, "carbon" = 1, "tallow" = 2)
+	required_reagents = list("hydrogen" = 1, MAT_CARBON = 1, "tallow" = 2)
 	result_amount = 1
 
 /datum/chemical_reaction/wax/on_reaction(var/datum/reagents/holder, var/created_volume)
@@ -381,7 +381,7 @@
 	name = "EMP Pulse"
 	id = "emp_pulse"
 	result = null
-	required_reagents = list("uranium" = 1, "iron" = 1) // Yes, laugh, it's the best recipe I could think of that makes a little bit of sense
+	required_reagents = list(MAT_URANIUM = 1, MAT_IRON = 1) // Yes, laugh, it's the best recipe I could think of that makes a little bit of sense
 	result_amount = 2
 
 /datum/chemical_reaction/emp_pulse/on_reaction(var/datum/reagents/holder, var/created_volume)
@@ -424,7 +424,7 @@
 	name = "Napalm"
 	id = "napalm"
 	result = null
-	required_reagents = list("aluminum" = 1, "phoron" = 1, "sacid" = 1 )
+	required_reagents = list("aluminum" = 1, MAT_PHORON = 1, "sacid" = 1 )
 	result_amount = 1
 
 /datum/chemical_reaction/napalm/on_reaction(var/datum/reagents/holder, var/created_volume)
@@ -501,7 +501,7 @@
 	name = "Iron Foam"
 	id = "ironlfoam"
 	result = null
-	required_reagents = list("iron" = 3, "foaming_agent" = 1, "pacid" = 1)
+	required_reagents = list(MAT_IRON = 3, "foaming_agent" = 1, "pacid" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/ironfoam/on_reaction(var/datum/reagents/holder, var/created_volume)
@@ -733,7 +733,7 @@
 	name = "Carbon paint"
 	id = "carbon_paint"
 	result = "paint"
-	required_reagents = list("plasticide" = 1, "water" = 3, "carbon" = 1)
+	required_reagents = list("plasticide" = 1, "water" = 3, MAT_CARBON = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/carbon_paint/send_data()
@@ -770,7 +770,7 @@
 	name = "Slime Bork"
 	id = "m_tele2"
 	result = null
-	required_reagents = list("phoron" = 10, "slimejelly" = 5, "nutriment" = 20)
+	required_reagents = list(MAT_PHORON = 10, "slimejelly" = 5, "nutriment" = 20)
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
 
@@ -798,7 +798,7 @@
 	name = "Slime materials"
 	id = "slimematerial"
 	result = null
-	required_reagents = list("phoron" = 20, "slimejelly" = 40, "aluminum" = 20) //Woah there! You have the possibility of making diamonds! 8 ground up slimes required for one of these, and you still have a 10% chance for it to fail.
+	required_reagents = list(MAT_PHORON = 20, "slimejelly" = 40, "aluminum" = 20) //Woah there! You have the possibility of making diamonds! 8 ground up slimes required for one of these, and you still have a 10% chance for it to fail.
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
 		var/fail_chance = rand(1,1000)
@@ -840,7 +840,7 @@
 	name = "Slime Glow"
 	id = "m_glow"
 	result = null
-	required_reagents = list("phoron" = 5, "slimejelly" = 5, "water" = 10) //Takes 10 water so it doesn't mess with the frost oil.
+	required_reagents = list(MAT_PHORON = 5, "slimejelly" = 5, "water" = 10) //Takes 10 water so it doesn't mess with the frost oil.
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
@@ -853,7 +853,7 @@
 	name = "Slime Phoron"
 	id = "m_plasma"
 	result = null
-	required_reagents = list("phoron" = 20, "uranium" = 20, "slimejelly" = 20)
+	required_reagents = list(MAT_PHORON = 20, MAT_URANIUM = 20, "slimejelly" = 20)
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
 		var/obj/item/stack/material/phoron/P = new /obj/item/stack/material/phoron
@@ -864,7 +864,7 @@
 	name = "Slime Freeze"
 	id = "m_freeze"
 	result = null
-	required_reagents = list("phoron" = 10, "coolant" = 10, "slimejelly" = 10)
+	required_reagents = list(MAT_PHORON = 10, "coolant" = 10, "slimejelly" = 10)
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
@@ -880,7 +880,7 @@
 	name = "Slime Frost Oil"
 	id = "m_frostoil"
 	result = "frostoil"
-	required_reagents = list("phoron" = 5, "slimejelly" = 5, "water" = 5, "coolant" = 5)
+	required_reagents = list(MAT_PHORON = 5, "slimejelly" = 5, "water" = 5, "coolant" = 5)
 	result_amount = 10
 
 
@@ -888,7 +888,7 @@
 	name = "Slime fire"
 	id = "m_fire"
 	result = null
-	required_reagents = list("phoron" = 60, "slimejelly" = 30, "potassium" = 30)
+	required_reagents = list(MAT_PHORON = 60, "slimejelly" = 30, "potassium" = 30)
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
@@ -904,7 +904,7 @@
 	name = "Advanced Mutation Toxin"
 	id = "advmutationtoxin2"
 	result = "advmutationtoxin"
-	required_reagents = list("phoron" = 15, "slimejelly" = 15, "mutationtoxin" = 15) //In case a xenobiologist wants to become a fully fledged slime person.
+	required_reagents = list(MAT_PHORON = 15, "slimejelly" = 15, "mutationtoxin" = 15) //In case a xenobiologist wants to become a fully fledged slime person.
 	result_amount = 1
 
 
@@ -912,7 +912,7 @@
 	name = "Slime Health"
 	id = "slimeheal"
 	result = "null"
-	required_reagents = list("phoron" = 10, "bicaridine" = 10, "kelotane" = 10, "inaprovaline" = 10, "slimejelly" = 10)
+	required_reagents = list(MAT_PHORON = 10, "bicaridine" = 10, "kelotane" = 10, "inaprovaline" = 10, "slimejelly" = 10)
 	on_reaction(var/datum/reagents/holder, var/created_volume)
 		for (var/mob/living/carbon/C in viewers(get_turf(holder.my_atom), null))
 			to_chat(C, "<span class='notice'>A wave of energy suddenly invigorates you.</span>")
@@ -928,7 +928,7 @@
 	name = "Slime Jam"
 	id = "m_jam"
 	result = "slimejelly"
-	required_reagents = list("phoron" = 20, "sugar" = 50, "lithium" = 50) //In case a xenobiologist is impatient and is willing to drain their dispenser resources, along with plasma!
+	required_reagents = list(MAT_PHORON = 20, "sugar" = 50, "lithium" = 50) //In case a xenobiologist is impatient and is willing to drain their dispenser resources, along with plasma!
 	result_amount = 5
 
 /* //VORESTATION AI TEMPORARY REMOVAL
@@ -936,7 +936,7 @@
 	name = "Slime Vore" // Hostile vore mobs only
 	id = "m_tele"
 	result = null
-	required_reagents = list("phoron" = 20, "nutriment" = 20, "sugar" = 20, "mutationtoxin" = 20) //Can't do slime jelly as it'll conflict with another, but mutation toxin will do.
+	required_reagents = list(MAT_PHORON = 20, "nutriment" = 20, "sugar" = 20, "mutationtoxin" = 20) //Can't do slime jelly as it'll conflict with another, but mutation toxin will do.
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
 		var/mob_path = /mob/living/simple_mob
@@ -995,8 +995,8 @@
 	name = "sizeoxadone"
 	id = "sizeoxadone"
 	result = "sizeoxadone"
-	required_reagents = list("clonexadone" = 1, "tramadol" = 3, "phoron" = 1)
-	catalysts = list("phoron" = 5)
+	required_reagents = list("clonexadone" = 1, "tramadol" = 3, MAT_PHORON = 1)
+	catalysts = list(MAT_PHORON = 5)
 	result_amount = 5
 
 /datum/chemical_reaction/macrocillin

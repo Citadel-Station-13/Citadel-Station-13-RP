@@ -77,28 +77,28 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	outdoors = TRUE
 	if(rare_ore)
 		mineral_name = pickweight(list(
-			"marble" = 3,
-			"uranium" = 10,
-			"platinum" = 10,
-			"hematite" = 20,
-			"carbon" = 20,
-			"diamond" = 1,
-			"gold" = 8,
-			"silver" = 8,
-			"phoron" = 18,
-			"lead" = 2,
-			"verdantium" = 1))
+			MAT_MARBLE = 3,
+			MAT_URANIUM = 10,
+			MAT_PLATINUM = 10,
+			MAT_HEMATITE = 20,
+			MAT_CARBON = 20,
+			MAT_DIAMOND = 1,
+			MAT_GOLD = 8,
+			MAT_SILVER = 8,
+			MAT_PHORON = 18,
+			MAT_LEAD = 2,
+			MAT_VERDANTIUM = 1))
 	else
 		mineral_name = pickweight(list(
-			"marble" = 2,
-			"uranium" = 5,
-			"platinum" = 5,
-			"hematite" = 35,
-			"carbon" = 35,
-			"gold" = 3,
-			"silver" = 3,
-			"phoron" = 25,
-			"lead" = 1))
+			MAT_MARBLE = 2,
+			MAT_URANIUM = 5,
+			MAT_PLATINUM = 5,
+			MAT_HEMATITE = 35,
+			MAT_CARBON = 35,
+			MAT_GOLD = 3,
+			MAT_SILVER = 3,
+			MAT_PHORON = 25,
+			MAT_LEAD = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
 		if(flags & INITIALIZED)
@@ -110,28 +110,28 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	var/mineral_name
 	if(rare_ore)
 		mineral_name = pickweight(list(
-			"marble" = 7,
-			"uranium" = 10,
-			"platinum" = 10,
-			"hematite" = 10,
-			"carbon" = 10,
-			"diamond" = 4,
-			"gold" = 15,
-			"silver" = 15,
-			"lead" = 5,
-			"verdantium" = 2))
+			MAT_MARBLE = 7,
+			MAT_URANIUM = 10,
+			MAT_PLATINUM = 10,
+			MAT_HEMATITE = 10,
+			MAT_CARBON = 10,
+			MAT_DIAMOND = 4,
+			MAT_GOLD = 15,
+			MAT_SILVER = 15,
+			MAT_LEAD = 5,
+			MAT_VERDANTIUM = 2))
 	else
 		mineral_name = pickweight(list(
-			"marble" = 5,
-			"uranium" = 7,
-			"platinum" = 7,
-			"hematite" = 28,
-			"carbon" = 28,
-			"diamond" = 2,
-			"gold" = 7,
-			"silver" = 7,
-			"lead" = 4,
-			"verdantium" = 1))
+			MAT_MARBLE = 5,
+			MAT_URANIUM = 7,
+			MAT_PLATINUM = 7,
+			MAT_HEMATITE = 28,
+			MAT_CARBON = 28,
+			MAT_DIAMOND = 2,
+			MAT_GOLD = 7,
+			MAT_SILVER = 7,
+			MAT_LEAD = 4,
+			MAT_VERDANTIUM = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
 		if(flags & INITIALIZED)
@@ -151,28 +151,28 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	var/mineral_name
 	if(rare_ore)
 		mineral_name = pickweight(list(
-			"marble" = 7,
-			"uranium" = 10,
-			"platinum" = 10,
-			"hematite" = 10,
-			"carbon" = 10,
-			"diamond" = 4,
-			"gold" = 15,
-			"silver" = 15,
-			"lead" = 5,
-			"verdantium" = 2))
+			MAT_MARBLE = 7,
+			MAT_URANIUM = 10,
+			MAT_PLATINUM = 10,
+			MAT_HEMATITE = 10,
+			MAT_CARBON = 10,
+			MAT_DIAMOND = 4,
+			MAT_GOLD = 15,
+			MAT_SILVER = 15,
+			MAT_LEAD = 5,
+			MAT_VERDANTIUM = 2))
 	else
 		mineral_name = pickweight(list(
-			"marble" = 5,
-			"uranium" = 7,
-			"platinum" = 7,
-			"hematite" = 28,
-			"carbon" = 28,
-			"diamond" = 2,
-			"gold" = 7,
-			"silver" = 7,
-			"lead" = 4,
-			"verdantium" = 1))
+			MAT_MARBLE = 5,
+			MAT_URANIUM = 7,
+			MAT_PLATINUM = 7,
+			MAT_HEMATITE = 28,
+			MAT_CARBON = 28,
+			MAT_DIAMOND = 2,
+			MAT_GOLD = 7,
+			MAT_SILVER = 7,
+			MAT_LEAD = 4,
+			MAT_VERDANTIUM = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
 		if(flags & INITIALIZED)
@@ -208,12 +208,12 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 // Bluespace jump turf!
 /turf/space/bluespace
 	name = "bluespace"
-	icon = 'icons/turf/space_vr.dmi'
+	icon = 'icons/turf/space.dmi'
 	icon_state = "bluespace"
 
 /turf/space/bluespace/Initialize(mapload)
 	. = ..()
-	icon = 'icons/turf/space_vr.dmi'
+	icon = 'icons/turf/space.dmi'
 	icon_state = "bluespace"
 
 // Desert jump turf!

@@ -6,14 +6,14 @@
 	desc = "Grinds stuff into itty bitty bits."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "juicer1"
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/grinder
 	var/inuse = 0
-	var/obj/item/reagent_containers/beaker = null
+	var/obj/item/reagent_containers/beaker
 	var/limit = 10
 	var/list/holdingitems = list()
 	var/list/sheet_reagents = list( //have a number of reageents divisible by REAGENTS_PER_SHEET (default 20) unless you like decimals,
@@ -39,9 +39,7 @@
 /obj/machinery/reagentgrinder/Initialize(mapload, newdir)
 	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/motor(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/reagentgrinder/examine(mob/user)
@@ -307,10 +305,10 @@
 	if(istype(I,/obj/item/reagent_containers))
 		analyzing = TRUE
 		update_icon()
-		to_chat(user, span("notice", "Analyzing \the [I], please stand by..."))
+		to_chat(user, SPAN_NOTICE("Analyzing \the [I], please stand by..."))
 
 		if(!do_after(user, 2 SECONDS, src))
-			to_chat(user, span("warning", "Sample moved outside of scan range, please try again and remain still."))
+			to_chat(user, SPAN_WARNING( "Sample moved outside of scan range, please try again and remain still."))
 			analyzing = FALSE
 			update_icon()
 			return
@@ -327,14 +325,14 @@
 			for(var/datum/reagent/R in I.reagents.reagent_list)
 				if(!R.name)
 					continue
-				to_chat(user, span("notice", "Contains [R.volume]u of <b>[R.name]</b>.<br>[R.description]<br>"))
+				to_chat(user, SPAN_NOTICE("Contains [R.volume]u of <b>[R.name]</b>.<br>[R.description]<br>"))
 
 		// Last, unseal it if it's an autoinjector.
 		if(istype(I,/obj/item/reagent_containers/hypospray/autoinjector/biginjector) && !(I.flags & OPENCONTAINER))
 			I.flags |= OPENCONTAINER
-			to_chat(user, span("notice", "Sample container unsealed.<br>"))
+			to_chat(user, SPAN_NOTICE("Sample container unsealed.<br>"))
 
-		to_chat(user, span("notice", "Scanning of \the [I] complete."))
+		to_chat(user, SPAN_NOTICE("Scanning of \the [I] complete."))
 		analyzing = FALSE
 		update_icon()
 		return

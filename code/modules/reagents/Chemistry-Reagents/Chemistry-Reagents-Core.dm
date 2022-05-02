@@ -10,6 +10,7 @@
 	affects_dead = 1 //so you can pump blood into someone before defibbing them
 	color = "#C80000"
 	var/volume_mod = 1	// So if you add different subtypes of blood, you can affect how much vessel blood each unit of reagent adds
+	blood_content = 4 //How effective this is for vampires.
 
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
@@ -42,24 +43,28 @@
 	var/effective_dose = dose
 	if(issmall(M)) effective_dose *= 2
 
-	var/is_vampire = 0 //VOREStation Edit START
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.species.gets_food_nutrition == 0)
-			H.nutrition += removed
-			is_vampire = 1 //VOREStation Edit END
-	if(alien == IS_SLIME)	// Treat it like nutriment for the jello, but not equivalent.
+	// Treat it like nutriment for the jello, but not equivalent.
+	if(alien == IS_SLIME)
+		/// Unless it's Promethean goo, then refill this one's goo.
+		if(data["species"] == M.species.name)
+			M.inject_blood(src, volume * volume_mod)
+			remove_self(volume)
+			return
+
 		M.heal_organ_damage(0.2 * removed * volume_mod, 0)	// More 'effective' blood means more usable material.
 		M.nutrition += 20 * removed * volume_mod
 		M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
 		M.adjustToxLoss(removed / 2)	// Still has some water in the form of plasma.
 		return
 
+	var/is_vampire = M.species.is_vampire
+	if(is_vampire)
+		handle_vampire(M, alien, removed, is_vampire)
 	if(effective_dose > 5)
-		if(is_vampire == 0) //VOREStation Edit.
+		if(!is_vampire) //VOREStation Edit.
 			M.adjustToxLoss(removed) //VOREStation Edit.
 	if(effective_dose > 15)
-		if(is_vampire == 0) //VOREStation Edit.
+		if(!is_vampire) //VOREStation Edit.
 			M.adjustToxLoss(removed) //VOREStation Edit.
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
@@ -88,9 +93,26 @@
 		M.antibodies |= data["antibodies"]
 
 /datum/reagent/blood/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_SLIME)	//They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
+	if(alien == IS_SLIME) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.
 		affect_ingest(M, alien, removed)
 		return
+
+	if(M.isSynthetic())
+		return
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+
+		var/datum/reagent/blood/recipient = H.get_blood(H.vessel)
+
+		if(recipient && blood_incompatible(data["blood_type"], recipient.data["blood_type"], data["species"], recipient.data["species"]))
+			H.inject_blood(src, removed * volume_mod)
+
+			if(!H.isSynthetic() && data["species"] == "synthetic") // Remember not to inject oil into your veins, it's bad for you.
+				H.reagents.add_reagent("toxin", removed * 1.5)
+
+			return
+
 	M.inject_blood(src, volume * volume_mod)
 	remove_self(volume)
 
@@ -104,6 +126,18 @@
 	..()
 	if(data && !data["blood_type"])
 		data["blood_type"] = "O-"
+	return
+
+/datum/reagent/blood/bludbloodlight
+	name = "Synthetic blood"
+	id = "bludbloodlight"
+	color = "#999966"
+	volume_mod = 2
+
+/datum/reagent/blood/bludbloodlight/initialize_data(var/newdata)
+	..()
+	if(data && !data["blood_type"])
+		data["blood_type"] = "AB+"
 	return
 
 // pure concentrated antibodies

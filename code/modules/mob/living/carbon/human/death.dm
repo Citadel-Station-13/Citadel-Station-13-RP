@@ -44,11 +44,12 @@
 	//mirror should drop on dust
 	if(mirror)
 		mirror.forceMove(drop_location())
+		mirror = null
 
 	if(species)
-		..(species.dusted_anim, species.remains_type)
+		return ..(species.dusted_anim, species.remains_type)
 	else
-		..()
+		return ..()
 
 /mob/living/carbon/human/ash()
 
@@ -65,9 +66,8 @@
 	if(stat == DEAD)
 		return
 
-	BITSET(hud_updateflag, HEALTH_HUD)
-	BITSET(hud_updateflag, STATUS_HUD)
-	BITSET(hud_updateflag, LIFE_HUD)
+	update_hud_med_health()
+	update_hud_med_status()
 
 	//Handle species-specific deaths.
 	species.handle_death(src, gibbed)

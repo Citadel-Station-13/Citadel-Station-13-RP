@@ -216,14 +216,6 @@
 /datum/topic_manager/program/Topic(href, href_list)
 	return program && program.Topic(href, href_list)
 
-/datum/computer_file/program/apply_visual(mob/M)
-	if(NM)
-		return NM.apply_visual(M)
-
-/datum/computer_file/program/remove_visual(mob/M)
-	if(NM)
-		return NM.remove_visual(M)
-
 /datum/computer_file/program/proc/relaymove(var/mob/M, direction)
 	if(NM)
 		return NM.relaymove(M, direction)

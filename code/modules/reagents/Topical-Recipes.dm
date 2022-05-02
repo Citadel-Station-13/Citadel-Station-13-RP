@@ -56,7 +56,7 @@
     id = "neurolaze"
     result = "neurolaze"
     required_reagents = list("topical" = 1, "oxycodone" = 1, "hyperzine" = 1)
-    catalysts = list("phoron" = 5)
+    catalysts = list(MAT_PHORON = 5)
     result_amount = 2
 
 /datum/chemical_reaction/topical/sterilaze

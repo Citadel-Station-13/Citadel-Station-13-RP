@@ -2030,6 +2030,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "engineering"
 	sound_env = SMALL_ENCLOSED
 
+//FTL and Shunt
+/area/engineering/ftl
+	name = "\improper FTL Drive"
+	icon_state = "engineering"
+
+/area/engineering/shunt
+	name = "\improper Shunt Drive"
+	icon_state = "engineering"
 
 //Solars
 

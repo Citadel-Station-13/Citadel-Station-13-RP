@@ -8,7 +8,7 @@
 
 	//luminosity = 5
 	//l_color="#0066FF"
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE
 
 	var/spawned=0 // DIR mask
 	var/next_check=0
@@ -72,6 +72,7 @@
 
 // /vg/: Don't let ghosts fuck with this.
 /turf/unsimulated/wall/supermatter/attack_ghost(mob/user as mob)
+	. = ..()
 	user.examinate(src)
 
 /turf/unsimulated/wall/supermatter/attack_ai(mob/user as mob)
