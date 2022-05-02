@@ -1,3 +1,17 @@
+/**
+ * the supertype of all viablely interacting overmap objects
+ *
+ * there are two main types
+ * /entity - these have heavier simulation. anything requiring ticking or physics should be under this
+ * /tiled - these have Crossed/Uncrossed hooked, obviously, but they shouldn't require ticking/physics
+ *
+ * anything that the player can interact with beyond "crashing through a meteor field" should probably
+ * be an entity!
+ *
+ * anything else should be tiled, because tiled has very little simulation and are practically free
+ *
+ * entities, however, incur cost to keep on the map due to our makeshift physicis backend in /datum/overmap.
+ */
 /atom/movable/overmap_object
 	name = "map object"
 	#warn move stuff
