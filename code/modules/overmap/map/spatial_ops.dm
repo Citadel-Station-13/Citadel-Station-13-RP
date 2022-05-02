@@ -72,13 +72,24 @@
 		abs(round(y, OVERMAP_SPATIAL_HASH_COORDSIZE) - y)
 	)
 	var/bucket_radius = closest < dist? CEILING(dist / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) : 0
-	if(bucket_radius == 1)
+	if(bucket_radius == 0)
 		// process the bucket we're in if we just need that
 		for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(bucket_x, bucket_y, spatial_hash_width, spatial_hash_height)])
 			if(direct_entity_distance_from(E, x, y) <= dist)
 				. += E
 		return
 	// scan all buckets in range
+	if(min(spatial_hash_width - bucket_x, spatial_hash_height - bucket_y, bucket_x - 1, bucket_y - 1) > bucket_radius)
+		// requires wraparound
+		#warn finish
+	else
+		// no wraparound, fastpath to a slightly cheaper scan
+		for(var/x in (bucket_x - bucket_radius) to (bucket_x + bucket_radius))
+			for(var/y in (bucket_y - bucket_radius) to (bucket_y + bucket_radius))
+				for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
+					if(direct_entity_distance_from(E, x, y) <= dist)
+						. += E
+
 	#warn redo this section entirely
 	var/list/collected = list()
 	if(((bucket_x + bucket_radius) > spatial_hash_width) || ((bucket_y + bucket_radius) > spatial_hash_height))
@@ -90,13 +101,6 @@
 				var/rx = x > spatial_hash_width? x - spatial_hash_width : x
 				var/ry = y > spatial_hash_height? y - spatial_hash_height : y
 				for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(rx, ry, spatial_hash_width, spatial_hash_height)])
-					if(direct_entity_distance_from(E, x, y) <= dist)
-						. += E
-	else
-		// fastpath - we don't need to process wraparounds
-		for(var/x in (bucket_x - bucket_radius) to (bucket_x + bucket_radius))
-			for(var/y in (bucket_y - bucket_radius) to (bucket_y + bucket_radius))
-				for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
 					if(direct_entity_distance_from(E, x, y) <= dist)
 						. += E
 
