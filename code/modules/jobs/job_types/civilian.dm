@@ -19,7 +19,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_bar)
 
-	outfit_type = /decl/hierarchy/outfit/job/service/bartender
+	outfit_type = /datum/outfit/job/service/bartender
 	job_description = "A Bartender mixes drinks for the crew. They generally have permission to charge for drinks or deny service to unruly patrons."
 	alt_titles = list(
 		"Barista" = /datum/alt_title/barista,
@@ -38,7 +38,7 @@
 	title = "Barista"
 	title_blurb = "A barista mans the Cafe, serving primarily non-alcoholic drinks to the crew. They generally have permission to charge for drinks \
 					or deny service to unruly patrons."
-	title_outfit = /decl/hierarchy/outfit/job/service/bartender/barista
+	title_outfit = /datum/outfit/job/service/bartender/barista
 
 //////////////////////////////////
 //			   Chef
@@ -59,7 +59,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_kitchen)
 
-	outfit_type = /decl/hierarchy/outfit/job/service/chef
+	outfit_type = /datum/outfit/job/service/chef
 	job_description = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."
 	alt_titles = list(
 		"Cook" = /datum/alt_title/cook,
@@ -103,7 +103,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_hydroponics)
 
-	outfit_type = /decl/hierarchy/outfit/job/service/gardener
+	outfit_type = /datum/outfit/job/service/gardener
 	job_description = "A Botanist grows plants for the Chef and Bartender."
 	alt_titles = list("Gardener" = /datum/alt_title/gardener)
 
@@ -132,7 +132,7 @@
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
-	outfit_type = /decl/hierarchy/outfit/job/service/janitor
+	outfit_type = /datum/outfit/job/service/janitor
 	job_description = "A Janitor keeps the station clean, as long as it doesn't interfere with active crime scenes."
 	alt_titles = list(
 		"Custodian" = /datum/alt_title/custodian,
@@ -173,7 +173,7 @@
 	access = list(access_library, access_maint_tunnels)
 	minimal_access = list(access_library)
 
-	outfit_type = /decl/hierarchy/outfit/job/librarian
+	outfit_type = /datum/outfit/job/librarian
 	job_description = "The Librarian curates the book selection in the Library, so the crew might enjoy it."
 	alt_titles = list(
 		"Journalist" = /datum/alt_title/journalist,
@@ -189,7 +189,7 @@
 /datum/alt_title/librarian/reporter
 	title = "Reporter"
 	title_blurb = "Although NanoTrasen's official Press outlet is managed by Central Command, they often hire freelance journalists for local coverage."
-	title_outfit = /decl/hierarchy/outfit/job/librarian/reporter
+	title_outfit = /datum/outfit/job/librarian/reporter
 
 // Librarian Alt Titles
 /datum/alt_title/journalist
@@ -245,7 +245,7 @@
 	minimal_access = list(access_lawyer, access_sec_doors, access_heads)
 	minimal_player_age = 7
 
-	outfit_type = /decl/hierarchy/outfit/job/internal_affairs_agent
+	outfit_type = /datum/outfit/job/internal_affairs_agent
 	alt_titles = list("Regulatory Affairs Agent" = /datum/alt_title/iaa/regulator)
 	job_description = "An Internal Affairs Agent makes sure that the crew is following Standard Operating Procedure. They also \
 						handle complaints against crew members, and can have issues brought to the attention of Central Command, \
@@ -279,7 +279,7 @@
 	minimal_access = list(access_entertainment)
 	pto_type = PTO_CIVILIAN
 
-	outfit_type = /decl/hierarchy/outfit/job/assistant
+	outfit_type = /datum/outfit/job/assistant
 	job_description = "An entertainer does just that, entertains! Put on plays, play music, sing songs, tell stories, or read your favorite fanfic."
 	alt_titles = list(
 		"Performer" = /datum/alt_title/performer,

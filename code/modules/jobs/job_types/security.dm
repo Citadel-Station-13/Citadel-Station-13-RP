@@ -30,7 +30,7 @@
 	minimum_character_age = 25
 	minimal_player_age = 14
 
-	outfit_type = /decl/hierarchy/outfit/job/security/hos
+	outfit_type = /datum/outfit/job/security/hos
 	job_description = "	The Head of Security manages the Security Department, keeping the station safe and making sure the rules are followed. They are expected to \
 						keep the other Department Heads, and the rest of the crew, aware of developing situations that may be a threat. If necessary, the HoS may \
 						perform the duties of absent Security roles, such as distributing gear from the Armory."
@@ -71,7 +71,7 @@
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 5
 
-	outfit_type = /decl/hierarchy/outfit/job/security/warden
+	outfit_type = /datum/outfit/job/security/warden
 	job_description = "The Warden watches over the physical Security Department, making sure the Brig and Armoury are secure and in order at all times. They oversee \
 						prisoners that have been processed and brigged, and are responsible for their well being. The Warden is also in charge of distributing \
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
@@ -96,7 +96,7 @@
 	economic_modifier = 5
 	minimal_player_age = 3
 
-	outfit_type = /decl/hierarchy/outfit/job/security/detective
+	outfit_type = /datum/outfit/job/security/detective
 	job_description = "A Detective works to help Security find criminals who have not properly been identified, through interviews and forensic work. \
 						For crimes only witnessed after the fact, or those with no survivors, they attempt to piece together what they can from pure evidence."
 	alt_titles = list(
@@ -111,7 +111,7 @@
 /datum/alt_title/detective/forensics_tech
 	title = "Forensic Technician"
 	title_blurb = "A Forensic Technician works more with hard evidence and labwork than a Detective, but they share the purpose of solving crimes."
-	title_outfit = /decl/hierarchy/outfit/job/security/detective/forensic
+	title_outfit = /datum/outfit/job/security/detective/forensic
 
 //////////////////////////////////
 //		Security Officer
@@ -133,7 +133,7 @@
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3
 
-	outfit_type = /decl/hierarchy/outfit/job/security/officer
+	outfit_type = /datum/outfit/job/security/officer
 	job_description = "A Security Officer is concerned with maintaining the safety and security of the station as a whole, dealing with external threats and \
 						apprehending criminals. A Security Officer is responsible for the health, safety, and processing of any prisoner they arrest. \
 						No one is above the Law, not Security or Command."
