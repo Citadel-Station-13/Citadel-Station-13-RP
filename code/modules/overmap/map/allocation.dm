@@ -27,6 +27,10 @@
 	cached_y_start = turf_reservation.bottom_left_coords[2]
 	cached_x_end = turf_reservation.top_right_coords[1]
 	cached_y_end = turf_reservation.top_right_coords[2]
+	cached_coordinate_width = width * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL
+	cached_coordinate_height = height * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL
+	cached_coordinate_center_x = cached_coordinate_width * 0.5
+	cached_coordinate_center_y = cached_coordinate_height * 0.5
 
 /datum/overmap/proc/SetupBounds()
 	log_overmaps_map(src, "Setting up bounds...")

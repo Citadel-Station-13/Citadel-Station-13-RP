@@ -1,5 +1,19 @@
 /**
  * overmap datums
+ *
+ * an explanation of how overmaps coordinates works:
+ * since we use byond for half of our physics backend and to render,
+ * everything is on the byond world
+ *
+ * therefore, every entity, tiled or simulated, has 3 sets of coordinates
+ * - byond coordinates, including x, y, step_x, step_y (currently pixel_x pixel_y until we do pixel movement)
+ * - overmaps coordinates, which is OVERMAP_DISTANCE_PIXEL times pixels from bottomleft - so currently 32 * 3 per tile
+ * - player-facing coordinates. this is +- some value, and the exact coodinate center of the overmap is treated as the center
+ * 	so if your overmap is, say, 9600x9600 (100x100 overmap), 4800, 4800 would be the "center", and someone at 1, 1 would have their
+ * 	coordinates rendered as -4799, -4799
+ *
+ * furthermore, wraparound is a thing, so use spatial_ops.dm procs to get dist for accuracy! otherwise things
+ * won't take into account wraparound and so on/so forth.
  */
 /datum/overmap
 	/// name
@@ -30,6 +44,14 @@
 	var/cached_x_end
 	/// cached actual y of end
 	var/cached_y_end
+	/// cached size in overmaps coordinates
+	var/cached_coordinate_width
+	/// cached size in overmaps coordinates
+	var/cached_coordinate_height
+	/// cached coordinate of center
+	var/cached_coordinate_center_x
+	/// cached coordinate of center
+	var/cached_coordinate_center_y
 
 	// virtual locations
 	/// our stellar location
@@ -54,6 +76,7 @@
 
 /datum/overmap/Destroy()
 	#warn unregister entities and move to nullspace
+	initialized = FALSE
 	if(turf_reservation)
 		QDEL_NULL(turf_reservation)
 	if(stellar_location)
@@ -108,13 +131,3 @@
  * render a x/y as text "x, y units" (where units is probably l-s for light-seconds)
  */
 /datum/overmap/proc/render_location(x, y)
-
-/**
- * wrap x
- */
-/datum/overmap/proc/wrap_x(x)
-
-/**
- * wrap y
- */
-/datum/overmap/proc/wrap_y()

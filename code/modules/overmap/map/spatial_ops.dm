@@ -15,22 +15,36 @@
 	return entity_query(get_x_of_object(O), get_y_of_object(O), dist + OVERMAP_WORLD_ICON_SIZE * 0.5)
 
 /**
- * get x coordinate of object
+ * get real x coordinate of object's **center**
  * this skips the object's internal cache, and is usually used
  * for tiled entities or for rebuilding an entity's cache
+ *
+ * assumes object is in bounds
  */
 /datum/overmap/proc/get_x_of_object(atom/movable/overmap_object/O)
-	. = cached_x_start - O.x
+	. = ((cached_x_start - O.x) * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
 	if(istype(O, /atom/movable/overmap_object/entity))
+		var/atom/movable/overmap_object/entity/E = O
+		. += E.pixel_x
+		// TODO: pixel movement
+	else
+		. += (OVERMAP_WORLD_ICON_SIZE * 0.5)
 
 /**
- * get y coordinate of object
+ * get real y coordinate of object
  * this skips the object's internal cache, and is usually used
  * for tiled entities or for rebuilding an entity's cache
+ *
+ * assumes object is in bounds
  */
 /datum/overmap/proc/get_y_of_object(atom/movable/overmap_object/O)
-
+	. = ((cached_y_start - O.y) * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
 	if(istype(O, /atom/movable/overmap_object/entity))
+		var/atom/movable/overmap_object/entity/E = O
+		. += E.pixel_y
+		// TODO: pixel movement
+	else
+		. += (OVERMAP_WORLD_ICON_SIZE * 0.5)
 
 /**
  * gets if something is in bounds of our map, physically, on the byond map
