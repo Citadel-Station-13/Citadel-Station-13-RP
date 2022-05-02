@@ -12,7 +12,7 @@
 	icon_state = "frame";
 	pixel_y = 32
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /turf/unsimulated/floor{
@@ -456,7 +456,7 @@
 /area/antag/antag_base)
 "aN" = (
 /obj/structure/bed/padded,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/red,
@@ -613,7 +613,7 @@
 	icon_state = "frame";
 	pixel_x = 32
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/red,
@@ -972,7 +972,7 @@
 	},
 /area/antag/antag_base)
 "bB" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Uplink"
 	},
 /turf/unsimulated/floor{

@@ -2859,19 +2859,19 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
 "gx" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateElevator"
 	},
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gy" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateGateway"
 	},
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gz" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Observer-Start"
 	},
 /turf/simulated/floor/tiled,
@@ -2881,13 +2881,13 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gB" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLate"
 	},
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gC" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateCryo"
 	},
 /turf/simulated/floor/tiled,
@@ -3096,7 +3096,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/ferrydemo)
 "hp" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLate"
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller{

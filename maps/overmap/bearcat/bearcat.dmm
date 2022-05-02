@@ -116,7 +116,7 @@
 	dir = 2;
 	on = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Captain"
 	},
 /turf/simulated/floor{
@@ -782,7 +782,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLate"
 	},
 /turf/simulated/floor{
@@ -1291,7 +1291,7 @@
 	icon_state = "twindow"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Cargo Technician"
 	},
 /turf/simulated/floor{
@@ -1600,7 +1600,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Observer-Start"
 	},
 /obj/structure/cable{
@@ -1747,7 +1747,7 @@
 	icon_state = "twindow"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Assistant"
 	},
 /turf/simulated/floor{
@@ -2079,7 +2079,7 @@
 /area/ship/scrap/cargo)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Cargo Technician"
 	},
 /turf/simulated/floor{
@@ -2142,7 +2142,7 @@
 	},
 /area/ship/scrap/crew/kitchen)
 "dA" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chef"
 	},
 /obj/structure/stool,
@@ -2417,7 +2417,7 @@
 	dir = 2;
 	level = 2
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Quartermaster"
 	},
 /obj/structure/cable{
@@ -2513,7 +2513,7 @@
 	on = 1
 	},
 /obj/structure/stool,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Medical Doctor"
 	},
 /turf/simulated/floor{
@@ -3372,7 +3372,7 @@
 	},
 /area/ship/scrap/maintenance/storage)
 "fF" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Station Engineer"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -3419,7 +3419,7 @@
 	},
 /area/ship/scrap/maintenance/storage)
 "fH" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Station Engineer"
 	},
 /obj/machinery/door/window/westleft,
@@ -3974,7 +3974,7 @@
 /area/ship/scrap/maintenance)
 "gI" = (
 /obj/structure/stool/bed/chair/comfy/brown,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chief Engineer"
 	},
 /turf/simulated/floor{
@@ -4065,7 +4065,7 @@
 	icon_state = "manifold";
 	level = 2
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Atmospheric Technician"
 	},
 /turf/simulated/floor/plating,
@@ -4250,7 +4250,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Station Engineer"
 	},
 /turf/simulated/floor/plating,

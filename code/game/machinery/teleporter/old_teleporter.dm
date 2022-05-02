@@ -51,7 +51,7 @@
 
 		var/obj/L = null
 
-		for(var/obj/effect/landmark/sloc in GLOB.landmarks_list)
+		for(var/atom/movable/landmark/sloc in GLOB.landmarks_list)
 			if(sloc.name != C.data) continue
 			if(locate(/mob/living) in sloc.loc) continue
 			L = sloc
@@ -60,7 +60,7 @@
 		if(!L)
 			L = locate("landmark*[C.data]") // use old stype
 
-		if(istype(L, /obj/effect/landmark/) && istype(L.loc, /turf))
+		if(istype(L, /atom/movable/landmark/) && istype(L.loc, /turf))
 			to_chat(usr, "You insert the coordinates into the machine.")
 			to_chat(usr, "A message flashes across the screen, reminding the user that the nuclear authentication disk is not transportable via insecure means.")
 			user.drop_item()

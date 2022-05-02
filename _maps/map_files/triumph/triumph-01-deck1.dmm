@@ -1162,7 +1162,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "xeno_spawn";
 	pixel_x = -1
 	},
@@ -2859,7 +2859,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "xeno_spawn";
 	pixel_x = -1
 	},
@@ -4676,7 +4676,7 @@
 	dir = 1
 	},
 /obj/structure/table/bench/padded,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Station Engineer"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -5114,7 +5114,7 @@
 /turf/simulated/wall,
 /area/engineering/atmos/storage)
 "rv" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Atmospheric Technician"
 	},
 /obj/item/radio/intercom{
@@ -7977,7 +7977,7 @@
 	dir = 5
 	},
 /obj/structure/lattice,
-/obj/effect/landmark/engine_loader,
+/atom/movable/landmark/engine_loader,
 /turf/space,
 /area/space)
 "BC" = (
@@ -8210,7 +8210,7 @@
 	pixel_y = 32
 	},
 /obj/structure/table/bench/padded,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Station Engineer"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -8454,7 +8454,7 @@
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Dt" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "carpspawn"
 	},
 /turf/space,
@@ -9261,7 +9261,7 @@
 /area/engineering/hallway/lower)
 "FF" = (
 /obj/machinery/camera/network/engineering,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Atmospheric Technician"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -10330,7 +10330,7 @@
 	dir = 5
 	},
 /obj/structure/table/bench/padded,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Station Engineer"
 	},
 /obj/item/storage/toolbox/lunchbox/nt,
@@ -12197,7 +12197,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "Ps" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Atmospheric Technician"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -14086,7 +14086,7 @@
 /area/maintenance/engi_engine)
 "VA" = (
 /obj/structure/table/bench/padded,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Station Engineer"
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -14104,7 +14104,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chief Engineer"
 	},
 /turf/simulated/floor/carpet/blucarpet,

@@ -42,11 +42,11 @@
 ///////////////////////////
 //// Spawning and despawning
 var/global/list/latejoin_trade = list()
-/obj/effect/landmark/trade
+/atom/movable/landmark/trade
 	name = "JoinLateTrade"
 	delete_me = 1
 
-/obj/effect/landmark/trade/New()
+/atom/movable/landmark/trade/New()
 	latejoin_trade += loc // Register this turf as trade latejoin.
 	..()
 
@@ -73,7 +73,7 @@ var/global/list/latejoin_trade = list()
 	announce_channel = "Trade"
 	on_store_name = "Beruang Trading Corp Storage"
 
-/obj/effect/landmark/map_data/trade
+/atom/movable/landmark/map_data/trade
     height = 2
 
 // Their shuttle
