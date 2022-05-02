@@ -835,6 +835,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/IsAdvancedToolUser()
 	return 0
 
+#warn convert
 /mob/proc/Stun(amount)
 	if(status_flags & CANSTUN)
 		facing_dir = null
@@ -842,18 +843,21 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		update_canmove()	//updates lying, canmove and icons
 	return
 
+#warn convert
 /mob/proc/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
 	if(status_flags & CANSTUN)
 		stunned = max(amount,0)
 		update_canmove()	//updates lying, canmove and icons
 	return
 
+#warn convert
 /mob/proc/AdjustStunned(amount)
 	if(status_flags & CANSTUN)
 		stunned = max(stunned + amount,0)
 		update_canmove()	//updates lying, canmove and icons
 	return
 
+#warn convert
 /mob/proc/Weaken(amount)
 	if(status_flags & CANWEAKEN)
 		facing_dir = null
@@ -861,43 +865,51 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		update_canmove()	//updates lying, canmove and icons
 	return
 
+#warn convert
 /mob/proc/SetWeakened(amount)
 	if(status_flags & CANWEAKEN)
 		weakened = max(amount,0)
 		update_canmove()	//can you guess what this does yet?
 	return
 
+#warn convert
 /mob/proc/AdjustWeakened(amount)
 	if(status_flags & CANWEAKEN)
 		weakened = max(weakened + amount,0)
 		update_canmove()	//updates lying, canmove and icons
 	return
 
+#warn convert
 /mob/proc/Paralyse(amount)
 	if(status_flags & CANPARALYSE)
 		facing_dir = null
 		paralysis = max(max(paralysis,amount),0)
 	return
 
+#warn convert
 /mob/proc/SetParalysis(amount)
 	if(status_flags & CANPARALYSE)
 		paralysis = max(amount,0)
 	return
 
+#warn convert
 /mob/proc/AdjustParalysis(amount)
 	if(status_flags & CANPARALYSE)
 		paralysis = max(paralysis + amount,0)
 	return
 
+#warn convert
 /mob/proc/Sleeping(amount)
 	facing_dir = null
 	sleeping = max(max(sleeping,amount),0)
 	return
 
+#warn convert
 /mob/proc/SetSleeping(amount)
 	sleeping = max(amount,0)
 	return
 
+#warn convert
 /mob/proc/AdjustSleeping(amount)
 	sleeping = max(sleeping + amount,0)
 	return

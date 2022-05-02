@@ -1,9 +1,3 @@
-/mob/proc/applyMoveCooldown(amount)
-	move_delay = max(move_delay, world.time + amount)
-
-/mob/proc/check_move_cooldown()
-	return move_delay <= world.time
-
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
 

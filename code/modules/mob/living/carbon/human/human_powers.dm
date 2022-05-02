@@ -40,7 +40,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(!CHECK_ALL_MOBILITY(src, MOBILITY_USE|MOBILITY_STAND))
 		to_chat(src, "You cannot tackle someone in your current state.")
 		return
 
@@ -52,14 +52,15 @@
 
 	var/mob/living/T = input(src,"Who do you wish to tackle?") as null|anything in choices
 
-	if(!T || !src || src.stat) return
+	if(!T || !src)
+		return
 
 	if(!Adjacent(T)) return
 
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(!CHECK_ALL_MOBILITY(src, MOBILITY_USE|MOBILITY_STAND))
 		to_chat(src, "You cannot tackle in your current state.")
 		return
 

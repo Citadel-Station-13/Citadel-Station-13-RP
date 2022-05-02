@@ -67,6 +67,24 @@
 	/// the perspective we're currently using
 	var/datum/perspective/using_perspective
 
+		////////////////
+		// COOLDOWNS ///
+		////////////////
+
+	/**
+	 * "Why are cooldowns here?"
+	 * Because frankly if you somehow abuse reconnects to move faster, uh, props to you buddy!
+	 *
+	 * Mob **click**delay however, will stay on the mob.
+	 */
+	/// Next world.time we will be able to move.
+	var/move_delay = 0
+	#warn last_move setting needs to be hooked into movecode
+	/// Last world.time we moved
+	var/last_move = 0
+	/// Last world.time we turned in our spot without moving (see: facing directions). There is a hardcoded 0.05 second delay on turning.
+	var/last_turn = 0
+
 		/////////
 		//OTHER//
 		/////////

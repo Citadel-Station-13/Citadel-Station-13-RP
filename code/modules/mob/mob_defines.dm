@@ -23,10 +23,6 @@
 	var/datum/mind/mind
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 	var/stat = CONSCIOUS
-	/// Next world.time we will be able to move.
-	var/move_delay = 0
-	/// Last world.time we turned in our spot without moving (see: facing directions)
-	var/last_turn = 0
 	/// replaces canmove, determines what we can/can't do
 	var/mobility_flags = NONE		// non /living mobs don't get rights!
 

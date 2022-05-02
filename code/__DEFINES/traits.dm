@@ -85,10 +85,24 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 #define TRAIT_XENO_HOST			"xeno_host"	//Tracks whether we're gonna be a baby alien's mummy.
 #define TRAIT_MIMING			"miming" //Tracks whether you're a mime or not.
+/// blocks all immobility statuses
+#define TRAIT_FULL_STUN_IMMUNITY	"full_stun_immunity"
+/// blocks Stun()
+#define TRAIT_NO_STUN				"no_stun"
+/// blocks Knockdown()
+#define TRAIT_NO_KNOCKDOWN			"no_knockdown"
+/// blocks Sleeping()
+#define TRAIT_NO_SLEEPING			"no_sleep"
+/// blocks Unconscious()
+#define TRAIT_NO_UNCONSCIOUS		"no_unconscious"
+/// blocks Immobilize()
+#define TRAIT_NO_IMMOBILIZE			"no_immobilize"
+/// blocks Paralyze()
+#define TRAIT_NO_PARALYZE			"no_paralyze"
+/// blocks Daze()
+#define TRAIT_NO_DAZE				"no_daze"
 /*
-#define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
-#define TRAIT_SLEEPIMMUNE		"sleep_immunity"
 #define TRAIT_PUSHIMMUNE		"push_immunity"
 #define TRAIT_SHOCKIMMUNE		"shock_immunity"
 #define TRAIT_STABLEHEART		"stable_heart"

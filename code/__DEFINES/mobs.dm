@@ -4,16 +4,14 @@
 #define DEAD        2
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
-#define CANSTUN     0x1
-#define CANWEAKEN   0x2
-#define CANPARALYSE 0x4
-#define CANPUSH     0x8
-#define LEAPING     0x10
-#define HIDING      0x20
-#define PASSEMOTES  0x40    // Mob has a cortical borer or holders inside of it that need to see emotes.
-#define GODMODE     0x1000
-#define FAKEDEATH   0x2000  // Replaces stuff like changeling.changeling_fakedeath.
-#define DISFIGURED  0x4000  // Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
+#define LEAPING     (1<<0)
+#define HIDING      (1<<1)
+#define PASSEMOTES  (1<<2)    // Mob has a cortical borer or holders inside of it that need to see emotes.
+#define GODMODE     (1<<3)
+#define FAKEDEATH   (1<<4)  // Replaces stuff like changeling.changeling_fakedeath.
+#define DISFIGURED  (1<<5)  // Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
+#warn move force gets rid of this
+#define CANPUSH     (1<<6)
 
 // Grab levels.
 #define GRAB_PASSIVE    1
