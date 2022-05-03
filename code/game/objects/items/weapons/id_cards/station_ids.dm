@@ -135,14 +135,14 @@
 	name = "secretary ID"
 	assignment = "Command Secretary"
 	rank = "Command Secretary"
-	job_access_type = /datum/job/station/secretary
+	job_access_type = /datum/job/station/command_secretary
 
 /obj/item/card/id/silver/hop
 	name = "\improper HoP ID"
 	assignment = "Head of Personnel"
 	rank = "Head of Personnel"
 	desc = "A card which represents the balance between those that serve and those that are served."
-	job_access_type = /datum/job/station/hop
+	job_access_type = /datum/job/station/head_of_personnel
 
 /obj/item/card/id/gold
 	name = "gold identification card"
@@ -259,7 +259,7 @@
 	secondary_color = rgb(255,223,127)
 	assignment = "Chief Medical Officer"
 	rank = "Chief Medical Officer"
-	job_access_type = /datum/job/station/cmo
+	job_access_type = /datum/job/station/chief_medical_officer
 
 /obj/item/card/id/security
 	name = "security identification card"
@@ -293,7 +293,7 @@
 	secondary_color = rgb(255,223,127)
 	assignment = "Head of Security"
 	rank = "Head of Security"
-	job_access_type = /datum/job/station/hos
+	job_access_type = /datum/job/station/head_of_security
 
 /obj/item/card/id/engineering
 	name = "engineering identification card"
@@ -355,7 +355,7 @@
 	secondary_color = rgb(255,223,127)
 	assignment = "Research Director"
 	rank = "Research Director"
-	job_access_type = /datum/job/station/rd
+	job_access_type = /datum/job/station/research_director
 
 /obj/item/card/id/cargo
 	name = "cargo identification card"
@@ -383,7 +383,7 @@
 	secondary_color = rgb(255,223,127)
 	assignment = "Quartermaster"
 	rank = "Quartermaster"
-	job_access_type = /datum/job/station/qm
+	job_access_type = /datum/job/station/quartermaster
 
 /obj/item/card/id/assistant
 	assignment = USELESS_JOB //VOREStation Edit - Visitor not Assistant
