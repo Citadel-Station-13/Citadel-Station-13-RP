@@ -1,4 +1,6 @@
 #warn PORT MAIN LANDMARK SPRITES FOR SPAWNPOINTS
+#warn regex jobs on station maps
+#warn regex traders ugh
 /atom/movable/landmark
 	name = "landmark"
 	icon = 'icons/mob/screen1.dmi'
@@ -26,6 +28,7 @@
 			latejoin += src
 		//	delete_me = 1
 			return
+		#warn eugh station misc these go!
 		if("JoinLateGateway")
 			latejoin_gateway += loc
 			delete_me = 1
