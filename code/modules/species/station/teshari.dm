@@ -46,12 +46,12 @@
 	suit_storage_icon = 'icons/mob/species/teshari/belt_mirror.dmi'
 	icobase_tail = 1
 
-	fire_icon_state = "generic" //?Humanoid is too big for them and spriting a new one is really annoying.
+	fire_icon_state = "generic" //? Humanoid is too big for them and spriting a new one is really annoying.
 
-	agility           = 90   //?Smol birb do many flips!
-	slowdown          = -0.5 //?Speedy fuckers.
-	snow_movement     = -1   //?Ignores light snow.
-	item_slowdown_mod = 1.25 //?Tiny birds don't like heavy things.
+	agility           = 90   //? Smol birb do many flips!
+	slowdown          = -0.5 //? Speedy fuckers.
+	snow_movement     = -1   //? Ignores light snow.
+	item_slowdown_mod = 1.25 //? Tiny birds don't like heavy things.
 
 	total_health = 75
 	brute_mod    = 1.1
@@ -73,7 +73,7 @@
 
 	gluttonous    = 1
 	blood_volume  = 400
-	hunger_factor = 0.2
+	hunger_factor = 0.2 //? x4 as fast.
 
 
 	body_temperature = 270
@@ -113,17 +113,17 @@
 	minimum_breath_pressure = 12 //?Smaller, so needs less air
 
 	has_limbs = list(
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
 		BP_HEAD   = list("path" = /obj/item/organ/external/head/teshari),
 		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/teshari),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand/teshari),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
 		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/teshari),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/teshari),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
 		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest)
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/teshari),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/teshari),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/teshari),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/teshari)
 		)
 
 	has_organ = list(

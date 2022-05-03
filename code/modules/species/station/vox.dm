@@ -46,7 +46,7 @@
 	poison_type = /datum/gas/oxygen
 	siemens_coefficient = 0.2
 
-	flags            = NO_SCAN | CONTAMINATION_IMMUNE
+	flags    = NO_SCAN | CONTAMINATION_IMMUNE
 	spawn_flags      = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
@@ -58,17 +58,17 @@
 	reagent_tag = IS_VOX
 
 	has_limbs = list(
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
 		BP_HEAD   = list("path" = /obj/item/organ/external/head/vox),
 		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
 		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
 		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 		)
 
 

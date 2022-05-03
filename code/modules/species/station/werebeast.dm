@@ -42,15 +42,15 @@
 		)
 
 	has_limbs = list(
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/vr/werebeast),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 		)

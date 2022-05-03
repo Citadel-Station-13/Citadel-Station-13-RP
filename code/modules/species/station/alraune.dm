@@ -70,17 +70,17 @@
 	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset."
 
 	has_limbs = list( //?They're unbreakable because they can survive decapitation, but damage spreads to nearby neighbors when at max dmg.
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin/unbreakable/plant),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/unbreakable/plant),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm/unbreakable/plant),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable/plant),
+		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/plant),
+		BP_GROIN =  list("path" = /obj/item/organ/external/groin/unbreakable/plant),
+		BP_HEAD =   list("path" = /obj/item/organ/external/head/unbreakable/plant),
+		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/unbreakable/plant),
+		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/unbreakable/plant),
+		BP_L_LEG =  list("path" = /obj/item/organ/external/leg/unbreakable/plant),
+		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/unbreakable/plant),
 		BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable/plant),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/unbreakable/plant),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/unbreakable/plant),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/plant),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable/plant),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/unbreakable/plant),
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unbreakable/plant)
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable/plant),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/plant)
 		)
 
 	has_organ = list( //? limited organs, 'cause they're simple.

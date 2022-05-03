@@ -32,7 +32,7 @@
 
 	blood_color = "#12ff12"
 	flesh_color = "#201730"
-	base_color = "#201730"
+	base_color  = "#201730"
 
 	heat_discomfort_strings = list(
 		"Your chitin feels extremely warm.",
@@ -42,18 +42,18 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		//mob/living/carbon/human/proc/neurotoxin, //?Need the acid organ which I dont wanna just give them.
+		//mob/living/carbon/human/proc/neurotoxin, //? Need the acid organ which I dont wanna just give them.
 		/mob/living/carbon/human/proc/hybrid_resin,
-		/mob/living/carbon/human/proc/hybrid_plant, //?Replaced from the normal weed node to place a singular weed.
+		/mob/living/carbon/human/proc/hybrid_plant, //? Replaced from the normal weed node to place a singular weed.
 		/mob/living/carbon/human/proc/active_heal
 		)
 
-	total_health = 110  //?Exoskeleton makes you tougher than baseline.
-	brute_mod    = 0.95 //?Chitin is somewhat hard to crack.
-	burn_mod     = 1.5  //?Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
-	blood_volume = 560  //?Baseline.
-	darksight    = 5    //?Better hunters in the dark.
-	hunger_factor = 0.1 //?In exchange, they get hungry a tad faster.
+	total_health  = 110  //? Exoskeleton makes you tougher than baseline.
+	brute_mod     = 0.95 //? Chitin is somewhat hard to crack.
+	burn_mod      = 1.5  //? Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
+	blood_volume  = 560  //? Baseline.
+	darksight     = 5    //? Better hunters in the dark.
+	hunger_factor = 0.1  //? In exchange, they get hungry a tad faster.
 
 	slowdown = -0.2 //?Speedboost Tesh have -0.5.
 
@@ -77,15 +77,15 @@
 
 	//?Organ-List to remove need to breath(?)
 	has_organ = list(
-		O_HEART =		/obj/item/organ/internal/heart,
-		O_VOICE = 		/obj/item/organ/internal/voicebox,
-		O_LIVER =		/obj/item/organ/internal/liver,
-		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
-		O_BRAIN =		/obj/item/organ/internal/brain,
-		O_PLASMA =		/obj/item/organ/internal/xenos/plasmavessel/hunter,//!Important for the xenomorph abilities, hunter to have a pretty small plasma capacity
-		O_STOMACH =		/obj/item/organ/internal/stomach,
-		O_INTESTINE =	/obj/item/organ/internal/intestine,
-		O_RESIN =		/obj/item/organ/internal/xenos/resinspinner,
+		O_HEART     = /obj/item/organ/internal/heart,
+		O_VOICE     = /obj/item/organ/internal/voicebox,
+		O_LIVER     = /obj/item/organ/internal/liver,
+		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
+		O_BRAIN     = /obj/item/organ/internal/brain,
+		O_PLASMA    = /obj/item/organ/internal/xenos/plasmavessel/hunter,//!Important for the xenomorph abilities, hunter to have a pretty small plasma capacity
+		O_STOMACH   = /obj/item/organ/internal/stomach,
+		O_INTESTINE = /obj/item/organ/internal/intestine,
+		O_RESIN     = /obj/item/organ/internal/xenos/resinspinner,
 		)
 	vision_organ = O_BRAIN //?Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
@@ -94,16 +94,16 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
 
 /datum/species/xenohybrid/can_breathe_water()
-	return TRUE //?They dont quite breathe.
+	return TRUE //? They dont quite breathe.
 
 /datum/species/xenohybrid/handle_environment_special(var/mob/living/carbon/human/H)
 	if(H.healing)
 
-		var/heal_amount = min(H.nutrition, 200) / 50 //?Not to much else we might as well give them a diona like healing.
+		var/heal_amount = min(H.nutrition, 200) / 50 //? Not to much else we might as well give them a diona like healing.
 		H.nutrition = max(H.nutrition-heal_amount,0)
 
 		if(H.resting)
-			heal_amount *= 1.05 //?Resting allows you to heal a little faster.
+			heal_amount *= 1.05 //? Resting allows you to heal a little faster.
 		var/fire_damage = H.getFireLoss()
 		if(fire_damage >= heal_amount)
 			H.adjustFireLoss(-heal_amount)

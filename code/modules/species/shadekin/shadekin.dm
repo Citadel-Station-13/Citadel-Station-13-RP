@@ -93,13 +93,13 @@
 		)
 
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/vr/shadekin),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head/vr/shadekin),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
 		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
@@ -107,9 +107,11 @@
 		)
 
 	//SHADEKIN-UNIQUE STUFF GOES HERE
-	var/list/shadekin_abilities = list(/datum/power/shadekin/phase_shift,
-									   /datum/power/shadekin/regenerate_other,
-									   /datum/power/shadekin/create_shade)
+	var/list/shadekin_abilities = list(
+		/datum/power/shadekin/phase_shift,
+		/datum/power/shadekin/regenerate_other,
+		/datum/power/shadekin/create_shade)
+
 	var/list/shadekin_ability_datums = list()
 
 /datum/species/shadekin/New()

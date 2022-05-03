@@ -19,9 +19,9 @@
 	flesh_color = "#505050"
 	base_color  = "#FFFFFF" //?Color mult, start out with this
 
+	spawn_flags      = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	flags            = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | CONTAMINATION_IMMUNE
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
-	spawn_flags      = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	health_hud_intensity = 2
 	num_alternate_languages = 5 //?Let's not make them know every language, past me.
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)

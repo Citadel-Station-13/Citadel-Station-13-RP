@@ -78,13 +78,14 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	unarmed_types = list(/datum/unarmed_attack/slime_glomp)
 
-	has_organ = list(O_BRAIN    = /obj/item/organ/internal/brain/slime,
-					 O_HEART    = /obj/item/organ/internal/heart/grey/colormatch/slime,
-					 O_REGBRUTE = /obj/item/organ/internal/regennetwork,
-					 O_REGBURN  = /obj/item/organ/internal/regennetwork/burn,
-					 O_REGOXY   = /obj/item/organ/internal/regennetwork/oxy,
-					 O_REGTOX   = /obj/item/organ/internal/regennetwork/tox
-					 )
+	has_organ = list(
+		O_BRAIN    = /obj/item/organ/internal/brain/slime,
+		O_HEART    = /obj/item/organ/internal/heart/grey/colormatch/slime,
+		O_REGBRUTE = /obj/item/organ/internal/regennetwork,
+		O_REGBURN  = /obj/item/organ/internal/regennetwork/burn,
+		O_REGOXY   = /obj/item/organ/internal/regennetwork/oxy,
+		O_REGTOX   = /obj/item/organ/internal/regennetwork/tox
+	)
 
 	dispersed_eyes = TRUE
 

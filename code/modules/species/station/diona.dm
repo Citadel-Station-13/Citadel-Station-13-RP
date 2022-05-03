@@ -47,17 +47,17 @@
 		)
 
 	has_limbs = list(
+		BP_TORSO  = list("path" = /obj/item/organ/external/diona/chest),
 		BP_GROIN  = list("path" = /obj/item/organ/external/diona/groin),
 		BP_HEAD   = list("path" = /obj/item/organ/external/head/no_eyes/diona),
 		BP_L_ARM  = list("path" = /obj/item/organ/external/diona/arm),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/diona/foot),
-		BP_L_HAND = list("path" = /obj/item/organ/external/diona/hand),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/diona/leg),
 		BP_R_ARM  = list("path" = /obj/item/organ/external/diona/arm/right),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/diona/foot/right),
-		BP_R_HAND = list("path" = /obj/item/organ/external/diona/hand/right),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/diona/leg),
 		BP_R_LEG  = list("path" = /obj/item/organ/external/diona/leg/right),
-		BP_TORSO  = list("path" = /obj/item/organ/external/diona/chest)
+		BP_L_HAND = list("path" = /obj/item/organ/external/diona/hand),
+		BP_R_HAND = list("path" = /obj/item/organ/external/diona/hand/right),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/diona/foot),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/diona/foot/right)
 		)
 
 	dispersed_eyes = TRUE //?Its a bunch of nymphes that means it has eyes everywhere
