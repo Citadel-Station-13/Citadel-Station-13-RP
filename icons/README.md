@@ -16,7 +16,7 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
 		/actions - all action button sprites go in here
 		/atom_hud - the /image huds that atoms can have has their icons in here
 		/fullscreen - fullscreen effects go in here (see code/_rendering/fullscreen)
-		/hud "regular" hud objects go in here, like mob intent buttons, inventory buttons, etc
+		/hud - "regular" hud objects go in here, like mob intent buttons, inventory buttons, etc
 			/common - common, theme-agnostic icons
 			/<theme1>, /<theme2>, ..., etc - put theme icons in here, name by theme!
 		/parallax - parallax/skybox images. base parallax images are 480x480.
