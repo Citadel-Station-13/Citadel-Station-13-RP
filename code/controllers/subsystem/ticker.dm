@@ -242,6 +242,7 @@ SUBSYSTEM_DEF(ticker)
 		mode.post_setup()
 		//Cleanup some stuff
 		for(var/atom/movable/landmark/start/S in GLOB.landmarks_list)
+		#warn SCREAM
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
 				qdel(S)

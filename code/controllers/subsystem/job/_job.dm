@@ -18,6 +18,9 @@ SUBSYSTEM_DEF(job)
 		setup_occupations()
 	return ..()
 
+/datum/controller/subsystem/job/Recover()
+	ReconstructSpawnpoints()
+
 /datum/controller/subsystem/job/proc/setup_occupations(faction = "Station")
 	occupations = list()
 	var/list/all_jobs = subtypesof(/datum/job)
