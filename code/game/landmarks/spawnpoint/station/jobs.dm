@@ -204,6 +204,8 @@
 	if(latejoin_active && !spawned)
 		new /obj/structure/AIcore/latejoin_inactive(loc)
 
+#warn uhoh
+
 /atom/movable/landmark/spawnpoint/job/ai/secondary
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "ai_spawn"

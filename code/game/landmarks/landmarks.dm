@@ -1,6 +1,7 @@
 #warn PORT MAIN LANDMARK SPRITES FOR SPAWNPOINTS
 #warn regex jobs on station maps
 #warn regex traders ugh
+#warn OnRoundstart() hook in ticker
 /atom/movable/landmark
 	name = "landmark"
 	icon = 'icons/mob/screen1.dmi'

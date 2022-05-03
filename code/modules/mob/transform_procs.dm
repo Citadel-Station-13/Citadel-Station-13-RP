@@ -103,6 +103,7 @@
 
 	if(move)
 		var/obj/loc_landmark
+		#warn ugh
 		for(var/atom/movable/landmark/start/sloc in GLOB.landmarks_list)
 			if (sloc.name != "AI")
 				continue
