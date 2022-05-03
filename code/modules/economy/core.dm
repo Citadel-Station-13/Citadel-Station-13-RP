@@ -8,37 +8,31 @@
  * warning for readers:
  * this api is not very well coded and we're going to get a *little* yanderedev about it due to the high amount of currency types we have
  */
-// this is so, so ugly...
-GLOBAL_LIST_INIT(coin_typecache, typecacheof(/obj/item/coin))
-GLOBAL_LIST_INIT(cash_typecache, typecacheof(/obj/item/spacecash) - typecacheof(/obj/item/spacecash/ewallet))
-GLOBAL_LIST_INIT(chargecard_typecache, typecacheof(/obj/item/spacecash/ewallet))
-GLOBAL_LIST_INIT(id_card_typecache, typecacheof(/obj/item/card/id))
-
 
 #warn impl
 #warn comsigs!
 
 /**
- * returns TRUE/FALSE based on if an atom used to pay for something has enough value to cover it in its entirety
+ * returns TRUE/FALSE based on if an item used to pay for something has enough value to cover it in its entirety
  *
  * @params
- * - AM - atom used to pay with. usually an item.
+ * - I - item used to pay with
  * - payment_types - allowed payment types - any
  * - prevent_types - blocked payment types - any - will override allowed
  * - amount - amount needed
  */
-/proc/check_currency_payment(atom/movable/AM, payment_types = PAYMENT_TYPE_ANY, prevent_types = NONE, amount = 0)
+/proc/check_currency_payment(obj/item/I, payment_types = PAYMENT_TYPE_ANY, prevent_types = NONE, amount = 0)
 	return get_currency_value(AM, payment_types) >= amount
 
 /**
- * returns currency value of an atom, usually an item, with specific payment types
+ * returns currency value of an item with specific payment types
  *
  * @params
- * - AM - atom used to pay with, usually an item
+ * - I - item used to pay with
  * - payment_types - allowed payment types - any
  * - prevent_types - blocked payment types - any - will override allowed
  */
-/proc/get_currency_value(atom/movable/AM, payment_types = PAYMENT_TYPE_ANY, prevent_types = NONE)
+/proc/get_currency_value(obj/item/I, payment_types = PAYMENT_TYPE_ANY, prevent_types = NONE)
 
 
 /**
@@ -49,16 +43,16 @@ GLOBAL_LIST_INIT(id_card_typecache, typecacheof(/obj/item/card/id))
  * @return TRUE/FALSE based on success/failure
  *
  * @params
- * - AM - atom used to pay with, usually an item
+ * - I - item used to pay with
  * - payment_types - allowed payment types
  * - prevent_types - blocked payment types - any - will override allowed
  * - amount - amount needed
  * - reason - (optional) - automated logging reason, used when you charge using a method that usually generates logs like bank cards
  * - initiator - (optional) - casted to datum, this is the initiator, usually a mob
- * - recipient - (optional) - some sort of datum which will be automatically queried for details if the method generates logs, like bank cards.
+ * - acceptor - (optional) - some sort of datum which will be automatically queried for details if the method generates logs, like bank cards. this datum is usually the machine charging a payer.
  * - data - (optional) - data-list that will be passed to the recipient datum during logging.
  */
-/proc/auto_consume_currency(atom/movable/AM, payment_types = PAYMENT_TYPE_ANY, prevent_types = NONE, amount = 0, reason, datum/initiator, datum/recipient, list/data = list())
+/proc/auto_consume_currency(obj/item/I, payment_types = PAYMENT_TYPE_ANY, prevent_types = NONE, amount = 0, reason, datum/initiator, datum/acceptor, list/data = list())
 
 
 /**
