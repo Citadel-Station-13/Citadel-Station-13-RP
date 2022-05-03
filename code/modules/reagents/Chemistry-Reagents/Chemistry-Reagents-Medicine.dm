@@ -1548,6 +1548,7 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#333333"
 	scannable = 1
+	affects_robots = TRUE
 
 /datum/reagent/nif_repair_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(ishuman(M))

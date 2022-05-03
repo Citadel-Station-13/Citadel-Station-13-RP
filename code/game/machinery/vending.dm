@@ -841,7 +841,8 @@
 					/obj/item/towel/random = 40,
 					)
 
-	contraband = list(/obj/item/reagent_containers/syringe/steroid = 4)
+	contraband = list(/obj/item/reagent_containers/syringe/steroid = 4, /obj/item/reagent_containers/food/drinks/glass2/fitnessflask/proteanshake = 2) // Slurpable blobs.
+
 
 /obj/machinery/vending/cart
 	name = "PTech"
