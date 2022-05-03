@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(landmarks_keyed)
 	name = "landmark"
 	icon = 'icons/mapping/landmarks/landmarks.dmi'
 	icon_state = ""	// greyscale x
+	color = COLOR_RED
 	anchored = TRUE
 	layer = MID_LANDMARK_LAYER
 	invisibility = INVISIBILITY_MAXIMUM
@@ -44,12 +45,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/landmark)
 	if(delete_on_roundstart)
 		qdel(src)
 
-
-#warn PORT MAIN LANDMARK SPRITES FOR SPAWNPOINTS
-#warn regex jobs on station maps
-#warn regex traders ugh
-#warn OnRoundstart() hook in ticker
-
+// everything below here are subtypes
 /atom/movable/landmark/Initialize()
 	. = ..()
 	..()
@@ -142,19 +138,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/landmark)
 		return ..()
 	return QDEL_HINT_LETMELIVE
 
-/atom/movable/landmark/start
-	name = "start"
-	icon = 'icons/mob/screen1.dmi'
-	icon_state = "x"
-	anchored = 1.0
-
-/atom/movable/landmark/start/Initialize()
-	. = ..()
-	..()
-	tag = "start*[name]"
-	invisibility = 101
-
-	return 1
+/atom/movable/landmark/observer_spawn
+	name = "observer start"
+	color = COLOR_BLUE
 
 /atom/movable/landmark/virtual_reality
 	name = "virtual_reality"

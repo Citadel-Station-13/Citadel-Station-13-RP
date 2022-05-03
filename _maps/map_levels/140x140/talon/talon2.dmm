@@ -311,9 +311,7 @@
 "fb" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hopdouble,
-/atom/movable/landmark/start{
-	name = "Talon Captain"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_captain,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/talon/decktwo/cap_room)
 "fg" = (
@@ -1130,9 +1128,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/atom/movable/landmark/start{
-	name = "Talon Guard"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_guard,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
 "mE" = (
@@ -1345,9 +1341,7 @@
 /area/talon/decktwo/lifeboat)
 "oL" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Talon Captain"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_captain,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/bar)
 "oO" = (
@@ -1411,9 +1405,7 @@
 	dir = 4;
 	pixel_x = 26
 	},
-/atom/movable/landmark/start{
-	name = "Talon Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_engineer,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "pr" = (
@@ -2384,9 +2376,7 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Talon Captain"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_captain,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -3004,9 +2994,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/atom/movable/landmark/start{
-	name = "Talon Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_pilot,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "GA" = (
@@ -3187,9 +3175,7 @@
 	dir = 4;
 	pixel_x = 26
 	},
-/atom/movable/landmark/start{
-	name = "Talon Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_doctor,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
 "Jj" = (

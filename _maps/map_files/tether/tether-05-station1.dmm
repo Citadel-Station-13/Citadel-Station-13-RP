@@ -10311,7 +10311,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "ave" = (
-/atom/movable/landmark/start,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},

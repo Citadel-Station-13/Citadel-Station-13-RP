@@ -32126,9 +32126,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/hydroponics)
 "bgd" = (
-/atom/movable/landmark{
-	name = "Observer-Start"
-	},
+/atom/movable/landmark/observer_spawn,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 4

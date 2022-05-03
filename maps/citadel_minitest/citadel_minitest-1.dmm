@@ -2871,9 +2871,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gz" = (
-/atom/movable/landmark{
-	name = "Observer-Start"
-	},
+/atom/movable/landmark/observer_spawn,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gA" = (

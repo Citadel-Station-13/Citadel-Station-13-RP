@@ -116,9 +116,7 @@
 	dir = 2;
 	on = 1
 	},
-/atom/movable/landmark/start{
-	name = "Captain"
-	},
+/atom/movable/landmark/spawnpoint/job/captain,
 /turf/simulated/floor{
 	 icon_state = "gcircuitoff";
 	dir = 2
@@ -1291,9 +1289,7 @@
 	icon_state = "twindow"
 	},
 /obj/effect/decal/cleanable/dirt,
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor{
 	 icon_state = "hydrofloor";
 	dir = 6
@@ -1600,9 +1596,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/atom/movable/landmark{
-	name = "Observer-Start"
-	},
+/atom/movable/landmark/observer_spawn,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
@@ -1747,9 +1741,7 @@
 	icon_state = "twindow"
 	},
 /obj/effect/decal/cleanable/dirt,
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor{
 	 icon_state = "hydrofloor";
 	dir = 6
@@ -2079,9 +2071,7 @@
 /area/ship/scrap/cargo)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor{
 	 icon_state = "bot";
 	dir = 2
@@ -2142,9 +2132,7 @@
 	},
 /area/ship/scrap/crew/kitchen)
 "dA" = (
-/atom/movable/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /obj/structure/stool,
 /turf/simulated/floor{
 	 icon_state = "bar";
@@ -2417,9 +2405,7 @@
 	dir = 2;
 	level = 2
 	},
-/atom/movable/landmark/start{
-	name = "Quartermaster"
-	},
+/atom/movable/landmark/spawnpoint/job/quartermaster,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
@@ -2513,9 +2499,7 @@
 	on = 1
 	},
 /obj/structure/stool,
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -3372,9 +3356,7 @@
 	},
 /area/ship/scrap/maintenance/storage)
 "fF" = (
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/window/westleft{
 	base_state = "right";
@@ -3419,9 +3401,7 @@
 	},
 /area/ship/scrap/maintenance/storage)
 "fH" = (
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /obj/machinery/door/window/westleft,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -3974,9 +3954,7 @@
 /area/ship/scrap/maintenance)
 "gI" = (
 /obj/structure/stool/bed/chair/comfy/brown,
-/atom/movable/landmark/start{
-	name = "Chief Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/chief_engineer,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
 	dir = 6
@@ -4065,9 +4043,7 @@
 	icon_state = "manifold";
 	level = 2
 	},
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/atmos)
 "gQ" = (
@@ -4250,9 +4226,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/power)
 "hb" = (

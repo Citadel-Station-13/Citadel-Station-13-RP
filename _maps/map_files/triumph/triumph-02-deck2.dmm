@@ -5899,9 +5899,7 @@
 /area/crew_quarters/bar)
 "qq" = (
 /obj/structure/window/basic,
-/atom/movable/landmark{
-	name = "Observer-Start"
-	},
+/atom/movable/landmark/observer_spawn,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/bed/chair/sofa/black{
 	dir = 1

@@ -1,26 +1,3 @@
-/atom/movable/landmark
-	name = "landmark"
-	icon = 'icons/effects/landmarks_static.dmi'
-	icon_state = "x2"
-	anchored = TRUE
-	layer = MID_LANDMARK_LAYER
-	invisibility = INVISIBILITY_ABSTRACT
-
-INITIALIZE_IMMEDIATE(/atom/movable/landmark)
-
-/atom/movable/landmark/Initialize()
-	. = ..()
-	GLOB.landmarks_list += src
-
-/atom/movable/landmark/Destroy()
-	GLOB.landmarks_list -= src
-	return ..()
-
-/**
- * Called when the round is finished setting up directly from SSticker
- */
-/atom/movable/landmark/proc/OnRoundstart()
-	return
 
 // carp.
 /atom/movable/landmark/carpspawn

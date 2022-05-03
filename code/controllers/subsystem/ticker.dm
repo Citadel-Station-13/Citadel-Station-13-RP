@@ -235,6 +235,10 @@ SUBSYSTEM_DEF(ticker)
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_start_events)
 
+	for(var/atom/movable/landmark/L in GLOB.landmarks_list)
+		// type filtered, we cannot risk runtimes
+		L.OnRoundstart()
+
 	round_start_time = world.time
 
 	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!

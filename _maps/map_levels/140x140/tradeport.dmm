@@ -948,9 +948,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "dl" = (
@@ -1137,9 +1135,7 @@
 	pixel_y = -26;
 	specialfunctions = 4
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "dU" = (
@@ -2072,9 +2068,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "hC" = (
@@ -2328,9 +2322,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
 "iH" = (
@@ -4626,9 +4618,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
 "qv" = (
@@ -9732,9 +9722,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
@@ -10598,9 +10586,7 @@
 /area/tradeport/pads)
 "MS" = (
 /obj/structure/bed/chair,
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "MT" = (
@@ -11658,9 +11644,7 @@
 /area/tradeport)
 "QJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "QK" = (
@@ -11929,9 +11913,7 @@
 	pixel_x = -26
 	},
 /obj/item/toy/plushie/squid/blue,
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
@@ -11979,9 +11961,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -27
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "RP" = (
@@ -14035,9 +14015,7 @@
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "ZA" = (
