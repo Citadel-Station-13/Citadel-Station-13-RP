@@ -787,7 +787,9 @@
 		var/list/megalist = client.prefs.pos_traits + client.prefs.neu_traits + client.prefs.neg_traits
 		var/points_left = client.prefs.starting_trait_points
 		var/traits_left = client.prefs.max_traits
-		for(var/T in megalist)
+		var/pref_synth = client.prefs.dirty_synth
+		var/pref_meat = client.prefs.gross_meatbag
+		for(var/datum/trait/T as anything in megalist)
 			var/cost = traits_costs[T]
 
 			if(cost)
@@ -800,6 +802,11 @@
 				break
 			else
 				points_left -= traits_costs[T]
+
+			var/take_flags = initial(T.can_take)
+			if((pref_synth && !(take_flags & SYNTHETICS)) || (pref_meat && !(take_flags & ORGANICS)))
+				pass = FALSE
+				to_chat(src, SPAN_WARNING("Some of your traits are not usable by your character type (synthetic traits on organic, or vice versa)."))
 
 		//Went into negatives
 		if(points_left < 0 || traits_left < 0)

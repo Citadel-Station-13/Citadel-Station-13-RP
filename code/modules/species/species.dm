@@ -395,8 +395,9 @@
 	var/base_species = null
 	/// Allows the species to choose from body types like custom species can, affecting suit fitting and etcetera as you would expect.
 	var/selects_bodytype = FALSE
+	var/list/traits = list()
 
-	//!Weaver abilities
+//!Weaver abilities
 	var/is_weaver = FALSE
 	var/silk_production = FALSE
 	var/silk_reserve = 100
@@ -720,3 +721,30 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		I.appearance = equip_overlays[image_key]
 		return I
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+/datum/species/proc/produceCopy(var/datum/species/to_copy, var/list/traits, var/mob/living/carbon/human/H)
+	ASSERT(to_copy)
+	ASSERT(istype(H))
+
+	if(ispath(to_copy))
+		to_copy = "[initial(to_copy.name)]"
+	if(istext(to_copy))
+		to_copy = GLOB.all_species[to_copy]
+
+	var/datum/species/new_copy = new to_copy.type()
+
+	new_copy.traits = traits
+
+	//If you had traits, apply them
+	if(new_copy.traits)
+		for(var/trait in new_copy.traits)
+			var/datum/trait/T = all_traits[trait]
+			T.apply(new_copy,H)
+
+	//Set up a mob
+	H.species = new_copy
+
+	if(H.dna)
+		H.dna.ready_dna(H)
+
+	return new_copy

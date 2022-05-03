@@ -90,7 +90,6 @@
 
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Vox"
 	inherent_verbs = list(
-		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/tie_hair
 		)

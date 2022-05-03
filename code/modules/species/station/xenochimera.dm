@@ -22,16 +22,10 @@
 	icobase_tail = 1
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/sonar_ping,
-		/mob/living/carbon/human/proc/succubus_drain,
-		/mob/living/carbon/human/proc/succubus_drain_finalize,
-		/mob/living/carbon/human/proc/succubus_drain_lethal,
-		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/tie_hair,
-		/mob/living/proc/shred_limb,
 		/mob/living/proc/flying_toggle,
 		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
-		/mob/living/proc/eat_trash,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
 		/mob/living/carbon/human/proc/lick_wounds,
@@ -404,7 +398,7 @@
 	//?HUD update time
 	update_xenochimera_hud(H, danger, feral_state)
 
-/datum/species/shapeshifter/xenochimera/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
 	ASSERT(to_copy)
 	ASSERT(istype(H))
 
@@ -430,6 +424,13 @@
 	new_copy.blood_mask = to_copy.blood_mask
 	new_copy.damage_mask = to_copy.damage_mask
 	new_copy.damage_overlays = to_copy.damage_overlays
+	new_copy.traits = traits
+
+	//If you had traits, apply them
+	if(new_copy.traits)
+		for(var/trait in new_copy.traits)
+			var/datum/trait/T = all_traits[trait]
+			T.apply(new_copy,H)
 
 	//?Set up a mob
 	H.species = new_copy

@@ -358,10 +358,10 @@
 		return FALSE
 	return ..()
 
-/mob/living/carbon/proc/set_nutrition(amount)
+/mob/living/proc/set_nutrition(amount)
 	nutrition = clamp(amount, 0, initial(nutrition) * 1.5)
 
-/mob/living/carbon/proc/adjust_nutrition(amount)
+/mob/living/proc/adjust_nutrition(amount) //Moving this down, shut up.
 	set_nutrition(nutrition + amount)
 
 /mob/living/carbon/proc/set_hydration(amount)

@@ -240,21 +240,9 @@
 		H.custom_ask = dna.custom_ask
 		H.custom_whisper = dna.custom_whisper
 		H.custom_exclaim = dna.custom_exclaim
-		if(istype(H.species,/datum/species/custom))
-			var/datum/species/custom/CS = H.species
-			var/datum/species/custom/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)
-			new_CS.blood_color = dna.blood_color
-
-		if(istype(H.species,/datum/species/shapeshifter/xenochimera))
-			var/datum/species/shapeshifter/xenochimera/CS = H.species
-			var/datum/species/shapeshifter/xenochimera/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)
-			new_CS.blood_color = dna.blood_color
-			H.regenerate_icons()
-
-		if(istype(H.species,/datum/species/alraune))
-			var/datum/species/alraune/CS = H.species
-			var/datum/species/alraune/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)
-			new_CS.blood_color = dna.blood_color
+		H.species.blood_color = dna.blood_color
+		var/datum/species/S = H.species
+		S.produceCopy(dna.base_species,dna.species_traits,src)
 		// VOREStation Edit End
 		H.force_update_organs() //VOREStation Add - Gotta do this too
 		H.force_update_limbs()

@@ -114,11 +114,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/prommie_blobform,
 		/mob/living/proc/set_size,
-		/mob/living/carbon/human/proc/succubus_drain,
-		/mob/living/carbon/human/proc/succubus_drain_finalize,
-		/mob/living/carbon/human/proc/succubus_drain_lethal,
-		/mob/living/carbon/human/proc/slime_feed,
-		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/promethean_select_opaqueness
 		)
 

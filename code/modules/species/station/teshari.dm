@@ -57,8 +57,17 @@
 	brute_mod    = 1.1
 	burn_mod     = 1.1
 
-	mob_size    = MOB_SMALL
-	pass_flags  = PASSTABLE
+	mob_size = MOB_SMALL
+	ambiguous_genders = TRUE
+	genders = list(MALE, FEMALE, PLURAL, NEUTER)
+
+	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	bump_flag        = MONKEY
+	pass_flags       = PASSTABLE
+	push_flags       = ~HEAVY
+	spawn_flags      = SPECIES_CAN_JOIN
+	swap_flags       = ~HEAVY
+
 	holder_type = /obj/item/holder/human
 //	short_sighted = 1
 
@@ -66,13 +75,6 @@
 	blood_volume  = 400
 	hunger_factor = 0.2
 
-	ambiguous_genders = TRUE
-
-	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
-	bump_flag  = MONKEY
-	swap_flags = MONKEY|SLIME|SIMPLE_ANIMAL
-	push_flags = MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
 
 	body_temperature = 270
 
@@ -145,7 +147,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/proc/hide,
-		/mob/living/proc/shred_limb,
 		/mob/living/proc/toggle_pass_table,
 		/mob/living/carbon/human/proc/tie_hair
 		)

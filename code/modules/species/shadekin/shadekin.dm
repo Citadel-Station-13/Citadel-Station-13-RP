@@ -114,11 +114,6 @@
 
 /datum/species/shadekin/New()
 	..()
-	inherent_verbs += list(
-		/mob/living/proc/shred_limb,
-		/mob/living/proc/eat_trash,
-		/mob/living/carbon/human/proc/lick_wounds
-		)
 	for(var/power in shadekin_abilities)
 		var/datum/power/shadekin/SKP = new power(src)
 		shadekin_ability_datums.Add(SKP)

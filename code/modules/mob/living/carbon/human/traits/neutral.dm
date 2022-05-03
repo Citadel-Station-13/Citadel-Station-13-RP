@@ -63,6 +63,7 @@
 	name = "Bloodsucker"
 	desc = "Makes you unable to gain nutrition from anything but blood. To compenstate, you get fangs that can be used to drain blood from prey."
 	cost = 0
+	custom_only = FALSE
 	var_changes = list("is_vampire" = TRUE) //The verb is given in human.dm
 
 /datum/trait/neutral/bloodsucker/apply(var/datum/species/S,var/mob/living/carbon/human/H)
@@ -73,6 +74,7 @@
 	name = "Succubus Drain"
 	desc = "Makes you able to gain nutrition from draining prey in your grasp."
 	cost = 0
+	custom_only = FALSE
 
 /datum/trait/neutral/succubus_drain/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
@@ -84,6 +86,7 @@
 	name = "Vetalan / Vampiric"
 	desc = "Vampires, officially known as the Vetalan, are weaker to burns, bright lights, and must consume blood to survive. To this end, they can see near-perfectly in the darkness, possess sharp, numbing fangs, and anti-septic saliva."
 	cost = 0
+	custom_only = FALSE
 	var_changes = list(
 		"is_vampire" = TRUE,
 		"darksight" = 7,
@@ -100,7 +103,8 @@
 /datum/trait/neutral/hard_vore
 	name = "Brutal Predation"
 	desc = "Allows you to tear off limbs & tear out internal organs."
-	cost = 0 //I would make this cost a point, since it has some in game value, but there are easier, less damaging ways to perform the same functions.
+	cost = 0
+	custom_only = FALSE
 
 /datum/trait/neutral/hard_vore/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
@@ -110,6 +114,7 @@
 	name = "Trash Can"
 	desc = "Allows you to dispose of some garbage on the go instead of having to look for a bin or littering like an animal."
 	cost = 0
+	custom_only = FALSE
 	var_changes = list("trashcan" = 1)
 
 /datum/trait/neutral/trashcan/apply(var/datum/species/S,var/mob/living/carbon/human/H)
@@ -124,16 +129,30 @@
 	can_take = SYNTHETICS
 	var_changes = list("organic_food_coeff" = 0, "synthetic_food_coeff" = 0.25)
 
+/datum/trait/gem_eater
+	name = "Expensive Taste"
+	desc = "You only gain nutrition from raw ore and refined minerals. There's nothing that sates the appetite better than precious gems, exotic or rare minerals and you have damn fine taste. Anything else is beneath you."
+	cost = 0
+	custom_only = FALSE
+	var_changes = list("gets_food_nutrition" = 0, "eat_minerals" = 1)
+
+/datum/trait/gem_eater/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.verbs |= /mob/living/proc/eat_minerals
+
 /datum/trait/neutral/glowing_eyes
 	name = "Glowing Eyes"
 	desc = "Your eyes show up above darkness. SPOOKY! And kinda edgy too."
 	cost = 0
+	custom_only = FALSE
 	var_changes = list("has_glowing_eyes" = 1)
 
 /datum/trait/neutral/glowing_body
 	name = "Glowing Body"
 	desc = "Your body glows about as much as a PDA light! Settable color and toggle in Abilities tab ingame."
 	cost = 0
+	custom_only = FALSE
+
 /datum/trait/neutral/glowing_body/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/proc/glow_toggle
@@ -144,7 +163,7 @@
 	name = "Taller"
 	desc = "Your body is taller than average."
 	cost = 0
-//	custom_only = FALSE
+	custom_only = FALSE
 	var_changes = list("icon_scale_y" = 1.09)
 	excludes = list(/datum/trait/neutral/tall, /datum/trait/neutral/short, /datum/trait/neutral/shorter)
 
@@ -156,7 +175,7 @@
 	name = "Tall"
 	desc = "Your body is a bit taller than average."
 	cost = 0
-//	custom_only = FALSE
+	custom_only = FALSE
 	var_changes = list("icon_scale_y" = 1.05)
 	excludes = list(/datum/trait/neutral/taller, /datum/trait/neutral/short, /datum/trait/neutral/shorter)
 
@@ -168,7 +187,7 @@
 	name = "Short"
 	desc = "Your body is a bit shorter than average."
 	cost = 0
-//	custom_only = FALSE
+	custom_only = FALSE
 	var_changes = list("icon_scale_y" = 0.95)
 	excludes = list(/datum/trait/neutral/taller, /datum/trait/neutral/tall, /datum/trait/neutral/shorter)
 
@@ -180,7 +199,7 @@
 	name = "Shorter"
 	desc = "You are shorter than average."
 	cost = 0
-//	custom_only = FALSE
+	custom_only = FALSE
 	var_changes = list("icon_scale_y" = 0.915)
 	excludes = list(/datum/trait/neutral/taller, /datum/trait/neutral/tall, /datum/trait/neutral/short)
 
@@ -192,7 +211,7 @@
 	name = "Overweight"
 	desc = "You are heavier than average."
 	cost = 0
-//	custom_only = FALSE
+	custom_only = FALSE
 	var_changes = list("icon_scale_x" = 1.054)
 	excludes = list(/datum/trait/neutral/obese, /datum/trait/neutral/thin, /datum/trait/neutral/thinner)
 
@@ -204,7 +223,7 @@
 	name = "Obese"
 	desc = "You are much heavier than average."
 	cost = 0
-//	custom_only = FALSE
+	custom_only = FALSE
 	var_changes = list("icon_scale_x" = 1.095)
 	excludes = list(/datum/trait/neutral/fat, /datum/trait/neutral/thin, /datum/trait/neutral/thinner)
 
@@ -216,7 +235,7 @@
 	name = "Thin"
 	desc = "You are skinnier than average."
 	cost = 0
-//	custom_only = FALSE
+	custom_only = FALSE
 	var_changes = list("icon_scale_x" = 0.945)
 	excludes = list(/datum/trait/neutral/fat, /datum/trait/neutral/obese, /datum/trait/neutral/thinner)
 
@@ -228,7 +247,7 @@
 	name = "Very Thin"
 	desc = "You are much skinnier than average."
 	cost = 0
-//	custom_only = FALSE
+	custom_only = FALSE
 	var_changes = list("icon_scale_x" = 0.905)
 	excludes = list(/datum/trait/neutral/fat, /datum/trait/neutral/obese, /datum/trait/neutral/thin)
 

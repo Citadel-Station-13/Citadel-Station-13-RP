@@ -320,6 +320,8 @@ var/global/list/custom_species_bases = list()
 var/global/list/negative_traits = list()
 /// Neutral custom species traits, indexed by path.
 var/global/list/neutral_traits = list()
+/// Neutral traits available to all species, indexed by path.
+var/global/list/everyone_traits = list()
 /// Positive custom species traits, indexed by path.
 var/global/list/positive_traits = list()
 /// Just path = cost list, saves time in char setup.
@@ -762,6 +764,8 @@ var/global/list/remainless_species = list(SPECIES_PROMETHEAN,
 				negative_traits[path] = instance
 			if(0)
 				neutral_traits[path] = instance
+				if(!(instance.custom_only))
+					everyone_traits[path] = instance
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
 

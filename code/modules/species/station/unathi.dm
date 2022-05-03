@@ -113,7 +113,6 @@
 	gluttonous = 0
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Unathi"
 	inherent_verbs = list(
-		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
 

@@ -40,7 +40,6 @@
 		"Your chitin feels hot."
 		)
 	inherent_verbs = list(
-		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		//mob/living/carbon/human/proc/neurotoxin, //?Need the acid organ which I dont wanna just give them.

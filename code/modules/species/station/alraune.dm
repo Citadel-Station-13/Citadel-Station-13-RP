@@ -48,10 +48,6 @@
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/succubus_drain,
-		/mob/living/carbon/human/proc/succubus_drain_finalize,
-		/mob/living/carbon/human/proc/succubus_drain_lethal,
-		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/regenerate,
 		/mob/living/carbon/human/proc/alraune_fruit_select,
 		/mob/living/carbon/human/proc/tie_hair
@@ -318,78 +314,6 @@
 	breath.update_values()
 	return 1
 
-/obj/item/organ/internal/brain/alraune
-	icon = 'icons/mob/species/alraune/organs.dmi'
-	icon_state = "neurostroma"
-	name = "neuro-stroma"
-	desc = "A knot of fibrous plant matter."
-	parent_organ = BP_TORSO // brains in their core
-
-/obj/item/organ/internal/eyes/alraune
-	icon = 'icons/mob/species/alraune/organs.dmi'
-	icon_state = "photoreceptors"
-	name = "photoreceptors"
-	desc = "Bulbous and fleshy plant matter."
-
-/obj/item/organ/internal/kidneys/alraune
-	icon = 'icons/mob/species/alraune/organs.dmi'
-	icon_state = "rhyzofilter"
-	name = "rhyzofilter"
-	desc = "A tangle of root nodules."
-
-/obj/item/organ/internal/liver/alraune
-	icon = 'icons/mob/species/alraune/organs.dmi'
-	icon_state = "phytoextractor"
-	name = "enzoretector"
-	desc = "A bulbous gourd-like structure."
-
-//Begin fruit gland and its code.
-/obj/item/organ/internal/fruitgland //Amazing name, I know.
-	icon = 'icons/mob/species/alraune/organs.dmi'
-	icon_state = "phytoextractor"
-	name = "fruit gland"
-	desc = "A bulbous gourd-like structure."
-	organ_tag = O_FRUIT
-	var/generated_reagents = list("sugar" = 2) //This actually allows them. This could be anything, but sugar seems most fitting.
-	var/usable_volume = 250 //Five fruit.
-	var/transfer_amount = 50
-	var/empty_message = list("Your have no fruit on you.", "You have a distinct lack of fruit..")
-	var/full_message = list("You have a multitude of fruit that is ready for harvest!", "You have fruit that is ready to be picked!")
-	var/emote_descriptor = list("fruit right off of the Alraune!", "a fruit from the Alraune!")
-	var/verb_descriptor = list("grabs", "snatches", "picks")
-	var/self_verb_descriptor = list("grab", "snatch", "pick")
-	var/short_emote_descriptor = list("picks", "grabs")
-	var/self_emote_descriptor = list("grab", "pick", "snatch")
-	var/fruit_type = "apple"
-	var/mob/organ_owner = null
-	var/gen_cost = 0.5
-
-/obj/item/organ/internal/fruitgland/Initialize(mapload)
-	. = ..()
-	create_reagents(usable_volume)
-
-/obj/item/organ/internal/fruitgland/process(delta_time)
-	if(!owner) return
-	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
-	var/before_gen
-	if(parent && generated_reagents && organ_owner) //Is it in the chest/an organ, has reagents, and is 'activated'
-		before_gen = reagents.total_volume
-		if(reagents.total_volume < reagents.maximum_volume)
-			if(organ_owner.nutrition >= gen_cost)
-				do_generation()
-
-	if(reagents)
-		if(reagents.total_volume == reagents.maximum_volume * 0.05)
-			to_chat(organ_owner, "<span class='notice'>[pick(empty_message)]</span>")
-		else if(reagents.total_volume == reagents.maximum_volume && before_gen < reagents.maximum_volume)
-			to_chat(organ_owner, "<span class='warning'>[pick(full_message)]</span>")
-
-/obj/item/organ/internal/fruitgland/proc/do_generation()
-	organ_owner.nutrition -= gen_cost
-	for(var/reagent in generated_reagents)
-		reagents.add_reagent(reagent, generated_reagents[reagent])
-
-
 /mob/living/carbon/human/proc/alraune_fruit_select() //So if someone doesn't want fruit/vegetables, they don't have to select one.
 	set name = "Select Fruit"
 	set desc = "Select what fruit/vegetable you wish to grow."
@@ -455,7 +379,7 @@
 
 //End of fruit gland code.
 
-/datum/species/alraune/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
+/datum/species/alraune/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
 	ASSERT(to_copy)
 	ASSERT(istype(H))
 
@@ -481,6 +405,13 @@
 	new_copy.blood_mask = to_copy.blood_mask
 	new_copy.damage_mask = to_copy.damage_mask
 	new_copy.damage_overlays = to_copy.damage_overlays
+	new_copy.traits = traits
+
+	//If you had traits, apply them
+	if(new_copy.traits)
+		for(var/trait in new_copy.traits)
+			var/datum/trait/T = all_traits[trait]
+			T.apply(new_copy,H)
 
 	//Set up a mob
 	H.species = new_copy

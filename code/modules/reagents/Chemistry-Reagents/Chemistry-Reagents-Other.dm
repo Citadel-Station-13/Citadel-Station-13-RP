@@ -675,7 +675,7 @@
 	id = "liquid_protean"
 	description = "This seems to be a small portion of a Protean creature, still slightly wiggling."
 	taste_description = "wiggly peanutbutter"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#1d1d1d"
 	scannable = 0
 	metabolism = REM * 0.5

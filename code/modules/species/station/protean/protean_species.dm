@@ -131,14 +131,12 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_wings,
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
-		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/tie_hair,
-		/mob/living/proc/shred_limb,
 		/mob/living/proc/flying_toggle,
 		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
@@ -146,7 +144,9 @@
 		/mob/living/proc/glow_color,
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/rig_transform,
-		/mob/living/proc/usehardsuit) //?Prots get all the special verbs since they can't select traits.
+		/mob/living/proc/usehardsuit
+		) //?Prots get all the special verbs since they can't select traits.
+
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //!IGNORE ME

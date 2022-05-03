@@ -44,7 +44,6 @@
 		M.adjust_nutrition((nutriment_factor * removed) * M.species.synthetic_food_coeff)
 
 /datum/reagent/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
-	var/hyd_removed
 	switch(alien)
 		if(IS_DIONA) return
 		if(IS_UNATHI) removed *= 0.5

@@ -17,7 +17,6 @@
 	name_language = LANGUAGE_SKRELLIAN
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	inherent_verbs = list(
-		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
