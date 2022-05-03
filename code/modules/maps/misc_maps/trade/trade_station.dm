@@ -42,14 +42,6 @@
 ///////////////////////////
 //// Spawning and despawning
 #warn nuke this frrom orbit
-var/global/list/latejoin_trade = list()
-/atom/movable/landmark/trade
-	name = "JoinLateTrade"
-	delete_me = 1
-
-/atom/movable/landmark/trade/New()
-	latejoin_trade += loc // Register this turf as trade latejoin.
-	..()
 
 /datum/spawnpoint/trade
 	display_name = "Beruang Trading Corp Cryo"

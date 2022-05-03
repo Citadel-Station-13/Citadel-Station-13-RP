@@ -762,6 +762,7 @@
 #include "code\game\gamemodes\wizard\wizard.dm"
 #include "code\game\landmarks\landmarks.dm"
 #include "code\game\landmarks\spawnpoint\_spawnpoint.dm"
+#include "code\game\landmarks\spawnpoint\talon.dm"
 #include "code\game\landmarks\spawnpoint\tradeport.dm"
 #include "code\game\landmarks\spawnpoint\station\jobs.dm"
 #include "code\game\landmarks\spawnpoint\station\misc.dm"

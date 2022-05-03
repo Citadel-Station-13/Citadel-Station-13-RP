@@ -2923,7 +2923,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "FV" = (
-/atom/movable/landmark/talon,
+/atom/movable/landmark/spawnpoint/latejoin/talon,
 /obj/machinery/computer/cryopod{
 	pixel_x = 32
 	},
@@ -4149,7 +4149,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "TD" = (
-/atom/movable/landmark/talon,
+/atom/movable/landmark/spawnpoint/latejoin/talon,
 /turf/simulated/floor/tiled/eris/white/gray_platform,
 /area/talon/decktwo/central_hallway)
 "TI" = (

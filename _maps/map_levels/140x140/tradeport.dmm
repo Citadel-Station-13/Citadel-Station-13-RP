@@ -12509,7 +12509,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "TV" = (
-/atom/movable/landmark/trade,
+/atom/movable/landmark/spawnpoint/latejoin/tradeport,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/commons)
 "TW" = (
@@ -12965,7 +12965,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
 "VR" = (
-/atom/movable/landmark/trade,
+/atom/movable/landmark/spawnpoint/latejoin/tradeport,
 /obj/machinery/computer/cryopod/robot{
 	pixel_y = -30
 	},
@@ -13008,7 +13008,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndi)
 "VV" = (
-/atom/movable/landmark/trade,
+/atom/movable/landmark/spawnpoint/latejoin/tradeport,
 /obj/machinery/computer/cryopod{
 	pixel_y = -32
 	},
