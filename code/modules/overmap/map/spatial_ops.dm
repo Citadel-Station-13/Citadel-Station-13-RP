@@ -73,7 +73,7 @@
 	// TODO: manual optimization because byond compiler probably doesn't optimize CEILING
 	// the cached coordinate height/width is needed because spatial size can go past the high edges
 
-	#warn we will never beat byond builtins. use bounds() when under a certain limit.
+	#warn we will never beat byond builtins at low ranges. use bounds() when under a certain limit.
 
 	var/closest = min(
 		abs(round(x, OVERMAP_SPATIAL_HASH_COORDSIZE) - x),

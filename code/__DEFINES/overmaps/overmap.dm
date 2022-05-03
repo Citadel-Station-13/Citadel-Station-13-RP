@@ -38,7 +38,7 @@
 /// to prevent the weirdness of cross/uncross, this distance from the edge will never have anything generated in it
 #define OVERMAP_GENERATION_EDGE_MARGIN		2
 /// during entity queries, this is the minimum range where we use spatial grid scan, in byond pixels. below this, we use bounds() fastpath
-#define OVERMAP_ENTITY_QUERY_BUILTIN_RANGE_PIXELS		(OVERMAP_WORLD_ICON_SIZE * 15)	// 31x31, we assume byond isn't awful below this
+#define OVERMAP_ENTITY_QUERY_BUILTIN_RANGE_PIXELS		(OVERMAP_WORLD_ICON_SIZE * 7.6)	// 15x15, we assume byond isn't awful below this
 /// during entity queries, this is the minimum range where we use spatial grid scan, in overmap coords. below this, we use bounds() fastpath
 #define OVERMAP_ENTITY_QUERY_BUILTIN_RANGE				(OVERMAP_ENTITY_QUERY_BUILTIN_RANGE_PIXELS * OVERMAP_DISTANCE_PIXEL)
 
