@@ -116,6 +116,14 @@
 	..(S,H)
 	H.verbs |= /mob/living/proc/eat_trash
 
+/datum/trait/synth_chemfurnace
+	name = "Biofuel Processor"
+	desc = "You are able to gain energy through consuming and processing normal food. Energy-dense foods such as protein bars and survival food will yield the best results."
+	cost = 0
+	custom_only = FALSE
+	can_take = SYNTHETICS
+	var_changes = list("organic_food_coeff" = 0, "synthetic_food_coeff" = 0.25)
+
 /datum/trait/neutral/glowing_eyes
 	name = "Glowing Eyes"
 	desc = "Your eyes show up above darkness. SPOOKY! And kinda edgy too."

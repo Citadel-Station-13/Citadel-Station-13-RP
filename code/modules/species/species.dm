@@ -379,6 +379,23 @@
 	var/agility = 20
 	var/icon_height = 32
 
+	/// If this is set to true, the person can't get nutrition from food.
+	var/is_vampire = FALSE
+	var/organic_food_coeff = 1
+	var/synthetic_food_coeff = 0
+	//var/vore_numbing = 0
+	var/metabolism = 0.0015
+	/// Oof! Nonhelpful bump stumbles.
+	var/lightweight = FALSE
+	/// It's always sunny in the wrestling ring.
+	var/trashcan = FALSE
+	/// HEAVY METAL DIET
+	var/eat_minerals = FALSE
+	/// Unused outside of a few species.
+	var/base_species = null
+	/// Allows the species to choose from body types like custom species can, affecting suit fitting and etcetera as you would expect.
+	var/selects_bodytype = FALSE
+
 	//!Weaver abilities
 	var/is_weaver = FALSE
 	var/silk_production = FALSE
@@ -388,16 +405,6 @@
 
 	/// max nutrition - i hate myself for haphazardly throwing this in but sue me
 	var/max_nutrition = 450
-
-	//Moved these from custom_species.dm
-	//var/vore_numbing = 0
-	var/is_vampire = FALSE // If this is set to true, the person can't get nutrition from food.
-	var/metabolism = 0.0015
-	var/lightweight = FALSE //Oof! Nonhelpful bump stumbles.
-	var/trashcan = FALSE //It's always sunny in the wrestling ring.
-	var/base_species = null // Unused outside of a few species
-	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
-
 
 /datum/species/New()
 	if(hud_type)

@@ -12,6 +12,7 @@
 	var/hydration_factor = 0 //Per unit
 	var/injectable = 0
 	color = "#664330"
+	affects_robots = 1
 
 /datum/reagent/nutriment/mix_data(var/list/newdata, var/newamount)
 
@@ -35,22 +36,24 @@
 				data -= taste
 
 /datum/reagent/nutriment/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA) //VOREStation Edit
+	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA && !M.isSynthetic())
 		M.adjustToxLoss(0.1 * removed)
 		return
 	affect_ingest(M, alien, removed)
+	if(M.isSynthetic() && M.nutrition < 500)
+		M.adjust_nutrition((nutriment_factor * removed) * M.species.synthetic_food_coeff)
 
 /datum/reagent/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	var/hyd_removed
 	switch(alien)
 		if(IS_DIONA) return
 		if(IS_UNATHI) removed *= 0.5
-		if(IS_CHIMERA) removed *= 0.25 //VOREStation Edit
+		if(IS_CHIMERA) removed *= 0.25
 	if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
-	M.heal_organ_damage(0.5 * removed, 0)
-	if(!M.species.is_vampire) //VOREStation edit. If this is set to 0, they don't get nutrition from food.
-		M.nutrition += nutriment_factor * removed // For hunger and fatness
-	M.adjust_hydration(hydration_factor * hyd_removed)
+	if(!M.isSynthetic())
+		M.adjust_nutrition((nutriment_factor * removed) * M.species.organic_food_coeff)
+		M.heal_organ_damage(0.5 * removed, 0)
+		M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
 	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
 
 /datum/reagent/nutriment/glucose
@@ -4331,7 +4334,7 @@ End Citadel Change */
 /datum/reagent/ethanol/monstertamer/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 
-	if(!M.species.is_vampire) //it's still food!
+	if(M.species.organic_food_coeff && !M.species.is_vampire) //it's still food!
 		switch(alien)
 			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
 			if(IS_SKRELL)
@@ -4357,7 +4360,7 @@ End Citadel Change */
 	..()
 	if(alien == IS_SKRELL)
 		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
-	if(!M.species.is_vampire)
+	if(M.species.organic_food_coeff && !M.species.is_vampire)
 		if(alien == IS_SLIME || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
 			M.nutrition += (alt_nutriment_factor * removed)
 
@@ -4808,3 +4811,134 @@ End Citadel Change */
 
 	glass_name = "Crystal Dr. Gibb"
 	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+
+/datum/reagent/ethanol/russianroulette
+	name = "Russian Roulette"
+	id = "russianroulette"
+	description = "The perfect drink for wagering your liver on a game of cards."
+	taste_description = "coffee, vodka, cream, and a hot metal slug."
+	strength = 30
+	var/adj_dizzy = 30
+	color = "#d3785d"
+
+	glass_name = "Russian Roulette"
+	glass_desc = "A favorite drink amongst the Pan-Slavic speaking community."
+
+/datum/reagent/ethanol/russianroulette/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	M.Stun(2)
+
+/datum/reagent/ethanol/appletini
+	name = "Appletini"
+	id = "appletini"
+	description = "A classic cocktail using every grandma's favorite fruit."
+	taste_description = "green sour apple with a hint of alcohol."
+	strength = 45
+	color = "#d3785d"
+
+	glass_name = "Appletini"
+	glass_desc = "The perfect fruit cocktail for a fancy night at the bar."
+
+/datum/reagent/ethanol/glowingappletini
+	name = "Glowing Appletini"
+	id = "glowingappletini"
+	description = "A new nuclear take on a pre-modern classic!"
+	taste_description = "overwhelmingly sour apples powered by a nuclear fission reactor."
+	strength = 30
+	druggy = 20
+	var/adj_dizzy = 20
+	color = "#d3785d"
+
+	glass_name = "Glowing Appletini"
+	glass_desc = "The atomic option to fruity cocktails."
+
+/datum/reagent/drink/choccymilk
+	name = "Choccy Milk"
+	id = "choccymilk"
+	description = "Coco and milk, a timeless classic."
+	taste_description = "sophisticated bittersweet chocolate mixed with silky, creamy, whole milk."
+	color = "#d3785d"
+
+	glass_name = "Choccy Milk"
+	glass_desc = "The most iconic duo in the galaxy, chocolate, and milk."
+
+/datum/reagent/ethanol/redspaceflush
+	name = "Red Space Flush"
+	id = "redspaceflush"
+	description = "A drink made by imbueing the essence of redspace into the spirits."
+	taste_description = "whiskey and rum strung out through a hellish dimensional rift."
+	strength = 30
+	druggy = 10
+	var/adj_dizzy = 10
+	color = "#d3785d"
+
+	glass_name = "Redspace Flush"
+	glass_desc = "A drink imbued with the very essence of Redspace."
+
+/datum/reagent/drink/graveyard
+	name = "Graveyard"
+	id = "graveyard"
+	description = "The result of taking a cup and filling it with all the drinks at the fountain."
+	taste_description = "sugar and fizz."
+	color = "#d3785d"
+
+	glass_name = "Graveyard"
+	glass_desc = "Hahaha softdrink machine go pshshhhhh..."
+
+/datum/reagent/ethanol/bigbeer
+	name = "Giant Beer"
+	id = "bigbeer"
+	description = "Bars in Neo Detroit started to sell this drink when the city put mandatory drink limits in 2289."
+	taste_description = "beer, but bigger."
+	strength = 40
+	color = "#d3785d"
+
+	glass_name = "Giant Beer"
+	glass_desc = "The Neo Detroit beer and ale cocktail, perfect for your average drunk."
+
+/datum/reagent/ethanol/hairoftherat
+	name = "Hair of the Rat"
+	id = "hairoftherat"
+	description = "A meatier version of the monster tamer, complete with extra meat."
+	taste_description = "meat, whiskey, ground meat, and more meat."
+	strength = 45
+	color = "#d3785d"
+	metabolism = REM * 3.5 // about right for mixing nutriment and ethanol.
+	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
+	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
+
+	glass_name = "Hair of the Rat"
+	glass_desc = "The alcohol equivelant of saying your burger isn't cooked rare enough."
+
+/datum/reagent/ethanol/hairoftherat/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+
+	if(M.species.organic_food_coeff && !M.species.is_vampire) //it's still food!
+		switch(alien)
+			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
+			if(IS_SKRELL)
+				M.adjustToxLoss(0.25 * removed)  //Equivalent to half as much protein, since it's half protein.
+			if(IS_TESHARI)
+				M.nutrition += (alt_nutriment_factor * 1.2 * removed) //Give them the same nutrition they would get from protein.
+			if(IS_UNATHI)
+				M.nutrition += (alt_nutriment_factor * 1.125 * removed) //Give them the same nutrition they would get from protein.
+				//Takes into account the 0.5 factor for all nutriment which is applied on top of the 2.25 factor for protein.
+			//Chimera don't need their own case here since their factors for nutriment and protein cancel out.
+			else
+				M.nutrition += (alt_nutriment_factor * removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.feral > 0 && H.nutrition > 100 && H.traumatic_shock < min(60, H.nutrition/10) && H.jitteriness < 100) // same check as feral triggers to stop them immediately re-feralling
+			H.feral -= removed * 3 // should calm them down quick, provided they're actually in a state to STAY calm.
+			if (H.feral <=0) //check if they're unferalled
+				H.feral = 0
+				to_chat(H, "<span class='info'>Your mind starts to clear, soothed into a state of clarity as your senses return.</span>")
+				log_and_message_admins("is no longer feral.", H)
+
+/datum/reagent/ethanol/hairoftherat/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien == IS_SKRELL)
+		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
+	if(M.species.organic_food_coeff && !M.species.is_vampire)
+		if(alien == IS_SLIME || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
+			M.nutrition += (alt_nutriment_factor * removed)
