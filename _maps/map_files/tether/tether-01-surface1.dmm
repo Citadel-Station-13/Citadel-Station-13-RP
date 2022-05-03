@@ -582,7 +582,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/paramed)
 "aaY" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Paramedic"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -754,7 +754,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "abi" = (
 /obj/machinery/hologram/holopad,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Paramedic"
 	},
 /obj/structure/cable/green{
@@ -1072,7 +1072,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
 "abV" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Psychiatrist"
 	},
 /obj/structure/bed/chair/office/dark{
@@ -1231,7 +1231,7 @@
 /area/maintenance/lower/mining_eva)
 "ach" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Paramedic"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -1530,7 +1530,7 @@
 "acJ" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled,
@@ -5074,7 +5074,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Scientist"
 	},
 /turf/simulated/floor/tiled/white,
@@ -6216,7 +6216,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
@@ -7363,7 +7363,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -7393,7 +7393,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
 "amw" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7509,14 +7509,14 @@
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amG" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Assistant"
 	},
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amH" = (
 /obj/item/stool,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Assistant"
 	},
 /turf/simulated/floor/tiled,
@@ -9535,7 +9535,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
@@ -12336,7 +12336,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Medical Doctor"
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -13544,7 +13544,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/solars)
 "awV" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -13885,7 +13885,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Medical Doctor"
 	},
 /obj/structure/cable/green{
@@ -14858,7 +14858,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "ayK" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled/white,
@@ -15257,7 +15257,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "azo" = (
@@ -15267,7 +15267,7 @@
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "azp" = (
@@ -17011,7 +17011,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "aCi" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "maint_pred"
 	},
 /turf/simulated/floor/plating,
@@ -18277,7 +18277,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aEE" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "maint_pred"
 	},
 /turf/simulated/floor/plating,
@@ -18825,7 +18825,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Bartender"
 	},
 /turf/simulated/floor/tiled,
@@ -19424,7 +19424,7 @@
 /area/tether/surfacebase/cargostore/office)
 "aGs" = (
 /obj/structure/bed/chair/sofa/brown/corner,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Cargo Technician"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -20126,7 +20126,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore)
 "aHA" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled,
@@ -21951,7 +21951,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "aKI" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Cargo Technician"
 	},
 /obj/structure/bed/chair/office/dark{
@@ -22083,7 +22083,7 @@
 /area/engineering/atmos)
 "aKV" = (
 /obj/item/stool,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Atmospheric Technician"
 	},
 /turf/simulated/floor/tiled,
@@ -23581,7 +23581,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aNI" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Atmospheric Technician"
 	},
 /turf/simulated/floor/tiled,
@@ -30530,7 +30530,7 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
@@ -30672,7 +30672,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/external)
 "bcV" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "droppod_landing"
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -31380,7 +31380,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "bTt" = (
@@ -31416,7 +31416,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -31932,7 +31932,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "dJZ" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/structure/cable/green{
@@ -32840,7 +32840,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled,
@@ -33738,10 +33738,10 @@
 /turf/simulated/floor/tiled/techfloor/grid/virgo3b,
 /area/tether/surfacebase/tunnel)
 "jbU" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "maint_pred"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -35327,7 +35327,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -35357,7 +35357,7 @@
 	name = "asset retention console";
 	pixel_y = -30
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -36595,7 +36595,7 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/effect/landmark/tram,
+/atom/movable/landmark/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "qhk" = (
@@ -37059,7 +37059,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -37250,7 +37250,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "rIU" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Mime"
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -37889,7 +37889,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -39356,7 +39356,7 @@
 /area/tether/surfacebase/outside/outside1)
 "xRP" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Clown"
 	},
 /obj/structure/cable/green{
@@ -39532,7 +39532,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Security Officer"
 	},
 /turf/simulated/floor/tiled,

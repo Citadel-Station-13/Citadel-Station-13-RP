@@ -165,12 +165,12 @@
 /* Teleporter that sends objects stepping on it to a specific landmark. */
 
 /obj/effect/step_trigger/teleporter/landmark
-	var/obj/effect/landmark/the_landmark = null
+	var/atom/movable/landmark/the_landmark = null
 	var/landmark_id = null
 
 /obj/effect/step_trigger/teleporter/landmark/Initialize(mapload)
 	. = ..()
-	for(var/obj/effect/landmark/teleport_mark/mark in tele_landmarks)
+	for(var/atom/movable/landmark/teleport_mark/mark in tele_landmarks)
 		if(mark.landmark_id == landmark_id)
 			the_landmark = mark
 			return
@@ -182,14 +182,14 @@
 
 var/global/list/tele_landmarks = list() // Terrible, but the alternative is looping through world.
 
-/obj/effect/landmark/teleport_mark
+/atom/movable/landmark/teleport_mark
 	var/landmark_id = null
 
-/obj/effect/landmark/teleport_mark/Initialize(mapload)
+/atom/movable/landmark/teleport_mark/Initialize(mapload)
 	. = ..()
 	tele_landmarks += src
 
-/obj/effect/landmark/teleport_mark/Destroy()
+/atom/movable/landmark/teleport_mark/Destroy()
 	tele_landmarks -= src
 	return ..()
 

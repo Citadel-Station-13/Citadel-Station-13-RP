@@ -311,7 +311,7 @@
 "fb" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hopdouble,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Captain"
 	},
 /turf/simulated/floor/carpet/sblucarpet,
@@ -1130,7 +1130,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Guard"
 	},
 /turf/simulated/floor/carpet,
@@ -1345,7 +1345,7 @@
 /area/talon/decktwo/lifeboat)
 "oL" = (
 /obj/item/stool/padded,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Captain"
 	},
 /turf/simulated/floor/tiled/eris/cafe,
@@ -1411,7 +1411,7 @@
 	dir = 4;
 	pixel_x = 26
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Engineer"
 	},
 /turf/simulated/floor/carpet,
@@ -1513,7 +1513,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_starboard)
 "qd" = (
-/obj/effect/landmark/map_data/talon,
+/atom/movable/landmark/map_data/talon,
 /turf/space,
 /area/space)
 "qr" = (
@@ -2384,7 +2384,7 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Captain"
 	},
 /obj/structure/cable/green{
@@ -2933,7 +2933,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "FV" = (
-/obj/effect/landmark/talon,
+/atom/movable/landmark/talon,
 /obj/machinery/computer/cryopod{
 	pixel_x = 32
 	},
@@ -3004,7 +3004,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Pilot"
 	},
 /turf/simulated/floor/carpet,
@@ -3187,7 +3187,7 @@
 	dir = 4;
 	pixel_x = 26
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Doctor"
 	},
 /turf/simulated/floor/carpet,
@@ -4163,7 +4163,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "TD" = (
-/obj/effect/landmark/talon,
+/atom/movable/landmark/talon,
 /turf/simulated/floor/tiled/eris/white/gray_platform,
 /area/talon/decktwo/central_hallway)
 "TI" = (

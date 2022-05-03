@@ -1,6 +1,6 @@
 //Special map objects
 /* // Moved to map/generic/map_data.dm
-/obj/effect/landmark/map_data/virgo3b
+/atom/movable/landmark/map_data/virgo3b
     height = 6
 */
 /*
@@ -177,11 +177,11 @@
 // Tram arrival point landmarks and datum
 var/global/list/latejoin_tram   = list()
 
-/obj/effect/landmark/tram
+/atom/movable/landmark/tram
 	name = "JoinLateTram"
 	delete_me = 1
 
-/obj/effect/landmark/tram/New()
+/atom/movable/landmark/tram/New()
 	latejoin_tram += loc // Register this turf as tram latejoin.
 	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
 	..()
