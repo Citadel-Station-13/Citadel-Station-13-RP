@@ -36,7 +36,7 @@
 	blood_volume = 0
 	max_age = 200
 
-	total_health =	200
+	total_health = 200
 	/// damage to blob
 	var/damage_to_blob = 100
 
@@ -94,22 +94,22 @@
 
 	has_organ = list(
 		O_BRAIN = /obj/item/organ/internal/mmi_holder/posibrain/nano,
-		O_FACT  = /obj/item/organ/internal/nano/refactory,
-		O_ORCH  = /obj/item/organ/internal/nano/orchestrator
+		O_ORCH = /obj/item/organ/internal/nano/orchestrator,
+		O_FACT = /obj/item/organ/internal/nano/refactory
 		)
 
 	has_limbs = list(
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unbreakable/nano),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin/unbreakable/nano),
 		BP_HEAD   = list("path" = /obj/item/organ/external/head/unbreakable/nano),
 		BP_L_ARM  = list("path" = /obj/item/organ/external/arm/unbreakable/nano),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable/nano),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable/nano),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/unbreakable/nano),
 		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/unbreakable/nano),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/nano),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable/nano),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/unbreakable/nano),
 		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/unbreakable/nano),
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unbreakable/nano)
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable/nano),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable/nano),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable/nano),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/nano)
 		)
 
 	heat_discomfort_strings = list("You feel too warm.")
