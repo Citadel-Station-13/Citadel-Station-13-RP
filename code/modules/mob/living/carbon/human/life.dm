@@ -1051,7 +1051,7 @@
 				adjustBrainLoss(brainOxPercent * oxyloss)
 
 		if(halloss >= species.total_health)
-			to_chat(src, "<span class='notice'>You're in too much pain to keep going...</span>")
+			to_chat(src, SPAN_NOTICE("You're in too much pain to keep going..."))
 			src.visible_message("<B>[src]</B> slumps to the ground, too weak to continue fighting.")
 			Paralyse(10)
 			setHalLoss(species.total_health - 1)

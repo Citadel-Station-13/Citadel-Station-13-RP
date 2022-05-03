@@ -41,7 +41,6 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 			if(isSynthetic())
 				B.data["species"] = "synthetic"
 
-
 			B.color = B.data["blood_colour"]
 			B.name = B.data["blood_name"]
 

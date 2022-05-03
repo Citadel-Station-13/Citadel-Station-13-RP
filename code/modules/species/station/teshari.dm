@@ -48,6 +48,7 @@
 
 	fire_icon_state = "generic" //?Humanoid is too big for them and spriting a new one is really annoying.
 
+	agility           = 90   //?Smol birb do many flips!
 	slowdown          = -0.5 //?Speedy fuckers.
 	snow_movement     = -1   //?Ignores light snow.
 	item_slowdown_mod = 1.25 //?Tiny birds don't like heavy things.
@@ -72,6 +73,8 @@
 	bump_flag  = MONKEY
 	swap_flags = MONKEY|SLIME|SIMPLE_ANIMAL
 	push_flags = MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
+
+	body_temperature = 270
 
 	cold_level_1 = 180 // Default 260
 	cold_level_2 = 130 // Default 200

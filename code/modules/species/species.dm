@@ -373,7 +373,10 @@
 	var/wing
 	var/wing_animation
 	var/icobase_wing
-	var/wikilink = null //link to wiki page for species
+	/// Link to wiki page for species
+	var/wikilink = null
+	/// Prob() to do agile things
+	var/agility = 20
 
 	//!Weaver abilities
 	var/is_weaver = FALSE

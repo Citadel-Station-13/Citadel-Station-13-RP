@@ -26,7 +26,7 @@
 
 		owner.bodytemperature -= temp_adj*efficiency
 
-		// If you're already overheating to the point of melting, the heatsink starts causing problems.
+		//?If you're already overheating to the point of melting, the heatsink starts causing problems.
 		if(owner.bodytemperature > owner.species.heat_level_2)
 			owner.adjustToxLoss(2 * damage / max_damage)
 			take_damage(max(0.5,round(damage / max_damage, 0.1)))

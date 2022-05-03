@@ -9,6 +9,7 @@
 	darksight = 8
 	slowdown = -0.5
 	snow_movement = -1 //Ignores half of light snow
+	agility = 80
 
 	brute_mod = 1.15
 	burn_mod  =  1.15
@@ -33,7 +34,7 @@
 	home worlds and speak a variety of languages, especially Siik and Akhani."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/tajaran)
 
-	body_temperature = 320.15 //Even more cold resistant, even more flammable
+	body_temperature = 280.15 //Even more cold resistant, even more flammable
 
 	cold_level_1 = 200 //Default 260
 	cold_level_2 = 140 //Default 200
@@ -71,7 +72,7 @@
 		"Your overheated skin itches."
 		)
 
-	cold_discomfort_level = 275
+	cold_discomfort_level = 215
 
 	has_organ = list( //?No appendix.
 		O_HEART     = /obj/item/organ/internal/heart,
@@ -85,11 +86,12 @@
 		O_INTESTINE = /obj/item/organ/internal/intestine
 		)
 
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Tajarans"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
+
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Tajarans"
 
 /datum/species/tajaran/equip_survival_gear(var/mob/living/carbon/human/H)
 	..()

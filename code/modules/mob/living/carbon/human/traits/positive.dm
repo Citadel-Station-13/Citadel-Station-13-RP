@@ -186,6 +186,11 @@
 	desc = "You can produce silk and create various articles of clothing and objects."
 	cost = 2
 	var_changes = list("is_weaver" = 1)
+/datum/trait/traceur
+	name = "Traceur"
+	desc = "You're capable of parkour and can *flip over low objects (most of the time)."
+	cost = 2
+	var_changes = list("agility" = 90)
 
 /datum/trait/positive/positive/weaver/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()

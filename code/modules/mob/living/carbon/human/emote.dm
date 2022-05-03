@@ -1050,10 +1050,11 @@
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
 				return 1
 			else
-				src.SpinAnimation(7,1)
+				nextemote += 12 //Double delay
+				handle_flip()
 				// message = "does a flip!"
 				m_type = 1
-// New emotes below this line
+//! New emotes below this line
 		if ("purr")
 			message = "purrs softly."
 			m_type = 2
@@ -1115,3 +1116,28 @@
 	set desc = "Switch tail layer on top."
 	tail_alt = !tail_alt
 	update_tail_showing()
+
+/mob/living/carbon/human/proc/handle_flip()
+	var/original_density = density
+	var/original_passflags = pass_flags
+
+	//Briefly un-dense to dodge projectiles
+	density = FALSE
+
+	//Parkour!
+	var/parkour_chance = 20 //Default
+	if(species)
+		parkour_chance = species.agility
+	if(prob(parkour_chance))
+		pass_flags |= PASSTABLE
+	else
+		Confuse(1) //Thud
+
+	if(dir & WEST)
+		SpinAnimation(7,1,0)
+	else
+		SpinAnimation(7,1,1)
+
+	spawn(7)
+		density = original_density
+		pass_flags = original_passflags

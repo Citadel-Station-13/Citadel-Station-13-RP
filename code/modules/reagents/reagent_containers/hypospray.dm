@@ -9,17 +9,17 @@
 	item_state = "hypo"
 	icon_state = "hypo"
 	amount_per_transfer_from_this = 5
-	unacidable = 1
+	unacidable = TRUE
 	volume = 30
 	possible_transfer_amounts = null
 	flags = OPENCONTAINER
 	slot_flags = SLOT_BELT
 	drop_sound = 'sound/items/drop/gun.ogg'
 	pickup_sound = 'sound/items/pickup/gun.ogg'
-	preserve_item = 1
-	var/filled = 0
+	preserve_item = TRUE
+	var/filled = FALSE
 	var/list/filled_reagents = list()
-	var/hyposound	// What sound do we play on use?
+	var/hyposound // What sound do we play on use?
 
 /obj/item/reagent_containers/hypospray/Initialize(mapload)
 	. = ..()
@@ -41,9 +41,6 @@
 		var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 		if(!affected)
 			to_chat(user, "<span class='danger'>\The [H] is missing that limb!</span>")
-			return
-		else if(affected.robotic >= ORGAN_ROBOT)
-			to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
 			return
 
 		//VOREStation Add Start - Adds Prototype Hypo functionality
