@@ -16,13 +16,13 @@
 
 // constant list lookup of hud to icon
 GLOBAL_LIST_INIT(hud_icon_files, list(
-	STATUS_HUD = 'icons/hud/atom_hud/status.dmi',
-	LIFE_HUD = 'icons/hud/atom_hud/health.dmi',
-	WANTED_HUD = 'icons/hud/atom_hud/security.dmi',
-	IMPLOYAL_HUD = 'icons/hud/atom_hud/implant.dmi',
-	IMPCHEM_HUD = 'icons/hud/atom_hud/implant.dmi',
-	IMPTRACK_HUD = 'icons/hud/atom_hud/implant.dmi',
-	ANTAG_HUD = 'icons/hud/atom_hud/antag.dmi',
+	STATUS_HUD = 'icons/screen/atom_hud/status.dmi',
+	LIFE_HUD = 'icons/screen/atom_hud/health.dmi',
+	WANTED_HUD = 'icons/screen/atom_hud/security.dmi',
+	IMPLOYAL_HUD = 'icons/screen/atom_hud/implant.dmi',
+	IMPCHEM_HUD = 'icons/screen/atom_hud/implant.dmi',
+	IMPTRACK_HUD = 'icons/screen/atom_hud/implant.dmi',
+	ANTAG_HUD = 'icons/screen/atom_hud/antag.dmi',
 	ID_HUD = 'icons/hud/atom_hud/job.dmi'
 ))
 

@@ -1,5 +1,5 @@
 /atom/movable/screen/click_catcher
-	icon = 'icons/screen/clickcatcher.dmi'
+	icon = 'icons/screen/rendering/clickcatcher.dmi'
 	icon_state = "catcher"
 	appearance_flags = TILE_BOUND | NO_CLIENT_COLOR | RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA
 	plane = CLICKCATCHER_PLANE
