@@ -2,11 +2,16 @@
 #define NEUTRAL_MODE 2
 #define NEGATIVE_MODE 3
 
-#define ORGANICS	1
-#define SYNTHETICS	2
+#define ORGANICS   1
+#define SYNTHETICS 2
+
 /datum/preferences
-	var/custom_species	// Custom species name, can't be changed due to it having been used in savefiles already.
-	var/custom_base		// What to base the custom species on
+
+//! ## Custom Species Vars
+	/// Custom species name.
+	var/custom_species //! Can't be changed due to it having been used in savefiles already.
+	/// What to base the custom species on.
+	var/custom_base
 	var/blood_color = "#A10808"
 
 	var/custom_say = null
@@ -14,56 +19,59 @@
 	var/custom_ask = null
 	var/custom_exclaim = null
 
-	var/list/pos_traits	= list()	// What traits they've selected for their custom species
+//! ## Trait Vars
+	var/list/pos_traits	= list()
 	var/list/neu_traits = list()
 	var/list/neg_traits = list()
 
-	var/traits_cheating = 0 //Varedit by admins allows saving new maximums on people who apply/etc
+	/// Varedit by admins allows saving new maximums on people who apply/etc
+	var/traits_cheating = 0
 	var/starting_trait_points = STARTING_SPECIES_POINTS
 	var/max_traits = MAX_SPECIES_TRAITS
-	///Are you a synth
+
+//! ## Misc Vars
+	/// Are you a synth?
 	var/dirty_synth = 0
-	///Where'd I leave my Voight-Kampff test kit?
+	/// Where'd I leave my Voight-Kampff test kit?
 	var/gross_meatbag = 0
 
-// Definition of the stuff for Ears
 /datum/category_item/player_setup_item/vore/traits
 	name = "Traits"
 	sort_order = 8
 
 /datum/category_item/player_setup_item/vore/traits/load_character(var/savefile/S)
-	S["custom_species"]	>> pref.custom_species
-	S["custom_base"]	>> pref.custom_base
-	S["pos_traits"]		>> pref.pos_traits
-	S["neu_traits"]		>> pref.neu_traits
-	S["neg_traits"]		>> pref.neg_traits
-	S["blood_color"]	>> pref.blood_color
+	from_file(S["custom_species"],  pref.custom_species)
+	from_file(S["custom_base"],     pref.custom_base)
+	from_file(S["pos_traits"],      pref.pos_traits)
+	from_file(S["neu_traits"],      pref.neu_traits)
+	from_file(S["neg_traits"],      pref.neg_traits)
+	from_file(S["blood_color"],     pref.blood_color)
 
-	S["traits_cheating"]>> pref.traits_cheating
-	S["max_traits"]		>> pref.max_traits
-	S["trait_points"]	>> pref.starting_trait_points
+	from_file(S["traits_cheating"], pref.traits_cheating)
+	from_file(S["max_traits"],      pref.max_traits)
+	from_file(S["trait_points"],    pref.starting_trait_points)
 
-	S["custom_say"]		>> pref.custom_say
-	S["custom_whisper"]	>> pref.custom_whisper
-	S["custom_ask"]		>> pref.custom_ask
-	S["custom_exclaim"]	>> pref.custom_exclaim
+	from_file(S["custom_say"],      pref.custom_say)
+	from_file(S["custom_whisper"],  pref.custom_whisper)
+	from_file(S["custom_ask"],      pref.custom_ask)
+	from_file(S["custom_exclaim"],  pref.custom_exclaim)
 
 /datum/category_item/player_setup_item/vore/traits/save_character(var/savefile/S)
-	S["custom_species"]	<< pref.custom_species
-	S["custom_base"]	<< pref.custom_base
-	S["pos_traits"]		<< pref.pos_traits
-	S["neu_traits"]		<< pref.neu_traits
-	S["neg_traits"]		<< pref.neg_traits
-	S["blood_color"]	<< pref.blood_color
+	to_file(S["custom_species"],    pref.custom_species)
+	to_file(S["custom_base"],       pref.custom_base)
+	to_file(S["pos_traits"],        pref.pos_traits)
+	to_file(S["neu_traits"],        pref.neu_traits)
+	to_file(S["neg_traits"],        pref.neg_traits)
+	to_file(S["blood_color"],       pref.blood_color)
 
-	S["traits_cheating"]<< pref.traits_cheating
-	S["max_traits"]		<< pref.max_traits
-	S["trait_points"]	<< pref.starting_trait_points
+	to_file(S["traits_cheating"],   pref.traits_cheating)
+	to_file(S["max_traits"],        pref.max_traits)
+	to_file(S["trait_points"],      pref.starting_trait_points)
 
-	S["custom_say"]		<< pref.custom_say
-	S["custom_whisper"]	<< pref.custom_whisper
-	S["custom_ask"]		<< pref.custom_ask
-	S["custom_exclaim"]	<< pref.custom_exclaim
+	to_file(S["custom_say"],        pref.custom_say)
+	to_file(S["custom_whisper"],    pref.custom_whisper)
+	to_file(S["custom_ask"],        pref.custom_ask)
+	to_file(S["custom_exclaim"],    pref.custom_exclaim)
 
 /datum/category_item/player_setup_item/vore/traits/sanitize_character()
 	if(!pref.pos_traits) pref.pos_traits = list()
@@ -110,22 +118,22 @@
 	var/datum/species/selected_species = GLOB.all_species[pref.species]
 	if(selected_species.selects_bodytype)
 		// Allowed!
-	else if(!pref.custom_base || !(pref.custom_base in custom_species_bases))
+	else if(!pref.custom_base || !(pref.custom_base in GLOB.custom_species_bases))
 		pref.custom_base = SPECIES_HUMAN
 
-	pref.custom_say = lowertext(trim(pref.custom_say))
+	pref.custom_say     = lowertext(trim(pref.custom_say))
 	pref.custom_whisper = lowertext(trim(pref.custom_whisper))
-	pref.custom_ask = lowertext(trim(pref.custom_ask))
+	pref.custom_ask     = lowertext(trim(pref.custom_ask))
 	pref.custom_exclaim = lowertext(trim(pref.custom_exclaim))
 
 /datum/category_item/player_setup_item/vore/traits/copy_to_mob(var/mob/living/carbon/human/character)
-	character.custom_species	= pref.custom_species
-	character.custom_say		= lowertext(trim(pref.custom_say))
-	character.custom_ask		= lowertext(trim(pref.custom_ask))
-	character.custom_whisper	= lowertext(trim(pref.custom_whisper))
-	character.custom_exclaim	= lowertext(trim(pref.custom_exclaim))
+	character.custom_species = pref.custom_species
+	character.custom_say     = lowertext(trim(pref.custom_say))
+	character.custom_ask     = lowertext(trim(pref.custom_ask))
+	character.custom_whisper = lowertext(trim(pref.custom_whisper))
+	character.custom_exclaim = lowertext(trim(pref.custom_exclaim))
 
-	if(character.isSynthetic())	//Checking if we have a synth on our hands, boys.
+	if(character.isSynthetic()) //? Checking if we have a synth on our hands, boys.
 		pref.dirty_synth = TRUE
 		pref.gross_meatbag = FALSE
 	else
@@ -142,6 +150,8 @@
 		//Statistics for this would be nice
 		var/english_traits = english_list(new_S.traits, and_text = ";", comma_text = ";")
 		log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
+	else //! I have NO idea why this is here but I assume there is some reason... Right? RIGHT? -Zandario
+
 
 /datum/category_item/player_setup_item/vore/traits/content(var/mob/user)
 	. += "<b>Custom Species Name:</b> "
@@ -153,13 +163,14 @@
 		. += "<a href='?src=\ref[src];custom_base=1'>[pref.custom_base ? pref.custom_base : SPECIES_HUMAN]</a><br>"
 
 	var/traits_left = pref.max_traits
-	. += "<b>Traits Left:</b> [traits_left]<br>"
+
 	if(pref.species == SPECIES_CUSTOM)
 		var/points_left = pref.starting_trait_points
+
 		for(var/T in pref.pos_traits + pref.neg_traits)
 			points_left -= traits_costs[T]
 			traits_left--
-
+		. += "<b>Traits Left:</b> [traits_left]<br>"
 		. += "<b>Points Left:</b> [points_left]<br>"
 		if(points_left < 0 || traits_left < 0 || !pref.custom_species)
 			. += "<span style='color:red;'><b>^ Fix things! ^</b></span><br>"
@@ -220,13 +231,13 @@
 	else if(href_list["blood_color"])
 		var/color_choice = input(usr, "Pick a blood color (does not apply to synths)","Blood Color",pref.blood_color) as color
 		if(color_choice)
-			pref.blood_color = sanitize_hexcolor(color_choice, default = GLOB.all_species[pref.species])
+			pref.blood_color = sanitize_hexcolor(color_choice, default="#A10808")
 		return TOPIC_REFRESH
 
 	else if(href_list["blood_reset"])
 		var/choice = tgui_alert(usr, "Reset blood color to human default (#A10808)?","Reset Blood Color",list("Reset","Cancel"))
 		if(choice == "Reset")
-			pref.blood_color = GLOB.all_species[pref.species]
+			pref.blood_color = "#A10808"
 		return TOPIC_REFRESH
 
 	else if(href_list["clicked_pos_trait"])
@@ -357,7 +368,7 @@
 				tgui_alert_async(usr, "The trait you've selected cannot be taken by the species you've chosen!", "Error")
 				return TOPIC_REFRESH
 
-			if( LAZYLEN(instance.allowed_species) && !(pref.species in instance.allowed_species))
+			if(LAZYLEN(instance.allowed_species) && !(pref.species in instance.allowed_species))
 				tgui_alert_async(usr, "The trait you've selected cannot be taken by the species you've chosen!", "Error")
 				return TOPIC_REFRESH
 
@@ -377,8 +388,7 @@
 							break varconflict
 
 			if(conflict)
-				alert("You cannot take this trait and [conflict] at the same time. \
-				Please remove that trait, or pick another trait to add.","Error")
+				tgui_alert_async(usr, "You cannot take this trait and [conflict] at the same time. Please remove that trait, or pick another trait to add.", "Error")
 				return TOPIC_REFRESH
 
 			mylist += path

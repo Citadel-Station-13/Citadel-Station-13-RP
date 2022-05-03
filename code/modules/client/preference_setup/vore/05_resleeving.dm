@@ -1,7 +1,9 @@
 // Define a place to save in character setup
 /datum/preferences
-	var/resleeve_lock = 0	// Whether movs should have OOC reslieving protection. Default false.
-	var/resleeve_scan = 1	// Whether mob should start with a pre-spawn body scan.  Default true.
+	/// Whether movs should have OOC reslieving protection. Default false.
+	var/resleeve_lock = 0
+	/// Whether mob should start with a pre-spawn body scan.  Default true.
+	var/resleeve_scan = 1
 
 // Definition of the stuff for Sizing
 /datum/category_item/player_setup_item/vore/resleeve
@@ -9,17 +11,16 @@
 	sort_order = 5
 
 /datum/category_item/player_setup_item/vore/resleeve/load_character(var/savefile/S)
-	S["resleeve_lock"]		>> pref.resleeve_lock
-	S["resleeve_scan"]		>> pref.resleeve_scan
-
+	from_file(S["resleeve_lock"], pref.resleeve_lock)
+	from_file(S["resleeve_scan"], pref.resleeve_scan)
 
 /datum/category_item/player_setup_item/vore/resleeve/save_character(var/savefile/S)
-	S["resleeve_lock"]		<< pref.resleeve_lock
-	S["resleeve_scan"]		<< pref.resleeve_scan
+	to_file(S["resleeve_lock"], pref.resleeve_lock)
+	to_file(S["resleeve_scan"], pref.resleeve_scan)
 
 /datum/category_item/player_setup_item/vore/resleeve/sanitize_character()
-	pref.resleeve_lock		= sanitize_integer(pref.resleeve_lock, 0, 1, initial(pref.resleeve_lock))
-	pref.resleeve_scan		= sanitize_integer(pref.resleeve_scan, 0, 1, initial(pref.resleeve_scan))
+	pref.resleeve_lock = sanitize_integer(pref.resleeve_lock, 0, 1, initial(pref.resleeve_lock))
+	pref.resleeve_scan = sanitize_integer(pref.resleeve_scan, 0, 1, initial(pref.resleeve_scan))
 
 /datum/category_item/player_setup_item/vore/resleeve/copy_to_mob(var/mob/living/carbon/human/character)
 	if(character && !istype(character,/mob/living/carbon/human/dummy))
@@ -40,9 +41,9 @@
 
 /datum/category_item/player_setup_item/vore/resleeve/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(href_list["toggle_resleeve_lock"])
-		pref.resleeve_lock = pref.resleeve_lock ? 0 : 1;
+		pref.resleeve_lock = pref.resleeve_lock ? FALSE : TRUE;
 		return TOPIC_REFRESH
 	else if(href_list["toggle_resleeve_scan"])
-		pref.resleeve_scan = pref.resleeve_scan ? 0 : 1;
+		pref.resleeve_scan = pref.resleeve_scan ? FALSE : TRUE;
 		return TOPIC_REFRESH
 	return ..();

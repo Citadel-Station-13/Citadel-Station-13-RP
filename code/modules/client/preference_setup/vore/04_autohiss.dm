@@ -1,12 +1,12 @@
-#define AUTOHISS_OFF 0
+#define AUTOHISS_OFF   0
 #define AUTOHISS_BASIC 1
-#define AUTOHISS_FULL 2
-#define AUTOHISS_NUM 3 //The number of autohiss types that we have. Used for sanitization
+#define AUTOHISS_FULL  2
+#define AUTOHISS_NUM   3 // The number of autohiss types that we have. Used for sanitization.
 
-#define AUTOHISS_TYPE_NONE  0//Equivalent to being off
-#define AUTOHISS_TYPE_UNATHI 1
+#define AUTOHISS_TYPE_NONE    0//Equivalent to being off
+#define AUTOHISS_TYPE_UNATHI  1
 #define AUTOHISS_TYPE_TAJARAN 2
-#define AUTOHISS_TYPE_NUM 3 //The number of autohiss types that we have. Used for sanitization
+#define AUTOHISS_TYPE_NUM     3 //The number of autohiss types that we have.  Used for sanitization.
 
 // Define a place to save in character setup
 /datum/preferences
@@ -19,16 +19,16 @@
 	sort_order = 4
 
 /datum/category_item/player_setup_item/vore/autohiss/load_character(var/savefile/S)
-	S["autohiss"] >> pref.autohiss
-	S["autohiss_type"] >> pref.autohiss_type
+	from_file(S["autohiss"],      pref.autohiss)
+	from_file(S["autohiss_type"], pref.autohiss_type)
 
 
 /datum/category_item/player_setup_item/vore/autohiss/save_character(var/savefile/S)
-	S["autohiss"] << pref.autohiss
-	S["autohiss_type"] << pref.autohiss_type
+	to_file(S["autohiss"],      pref.autohiss)
+	to_file(S["autohiss_type"], pref.autohiss_type)
 
 /datum/category_item/player_setup_item/vore/autohiss/sanitize_character()
-	pref.autohiss = sanitize_integer(pref.autohiss, AUTOHISS_OFF, AUTOHISS_NUM, AUTOHISS_OFF)
+	pref.autohiss      = sanitize_integer(pref.autohiss, AUTOHISS_OFF, AUTOHISS_NUM, AUTOHISS_OFF)
 	pref.autohiss_type = sanitize_integer(pref.autohiss_type, AUTOHISS_TYPE_NONE, AUTOHISS_TYPE_NUM, AUTOHISS_TYPE_NONE)
 
 /datum/category_item/player_setup_item/vore/autohiss/copy_to_mob(var/mob/living/carbon/human/character)
@@ -50,7 +50,7 @@
 			. += "<a href='?src=\ref[src];toggle_type_none=1'>None</a> <span class='linkOn'><b>Unathi</b></span> <a href='?src=\ref[src];toggle_type_tajaran=1'>Tajaran</a>"
 		if(AUTOHISS_TYPE_TAJARAN)
 			. += "<a href='?src=\ref[src];toggle_type_none=1'>None</a> <a href='?src=\ref[src];toggle_type_unathi=1'>Unathi</a> <span class='linkOn'><b>Tajaran</b></span>"
-		else 
+		else
 			CRASH("Invalid autohiss type preference! '[pref.autohiss]'")
 
 	. += "<br>"
@@ -63,7 +63,7 @@
 			. += "<a href='?src=\ref[src];toggle_off=1'>Off</a> <span class='linkOn'><b>Basic</b></span> <a href='?src=\ref[src];toggle_full=1'>Full</a>"
 		if(AUTOHISS_FULL)
 			. += "<a href='?src=\ref[src];toggle_off=1'>Off</a> <a href='?src=\ref[src];toggle_basic=1'>Basic</a> <span class='linkOn'><b>Full</b></span>"
-		else 
+		else
 			CRASH("Invalid autohiss preference! '[pref.autohiss]'")
 
 /datum/category_item/player_setup_item/vore/autohiss/OnTopic(var/href, var/list/href_list, var/mob/user)

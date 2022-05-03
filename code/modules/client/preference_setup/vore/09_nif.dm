@@ -11,15 +11,15 @@
 
 /datum/category_item/player_setup_item/vore/nif/load_character(var/savefile/S)
 	var/path
-	S["nif_path"]		>> path
-	S["nif_id"]			>> pref.nif_id
-	S["nif_durability"]	>> pref.nif_durability
-	S["nif_savedata"]	>> pref.nif_savedata
+	from_file(S["nif_path"],       path)
+	from_file(S["nif_id"],         pref.nif_id)
+	from_file(S["nif_durability"], pref.nif_durability)
+	from_file(S["nif_savedata"],   pref.nif_savedata)
 
 /datum/category_item/player_setup_item/vore/nif/save_character(var/savefile/S)
-	S["nif_id"]			<< pref.nif_id
-	S["nif_durability"]	<< pref.nif_durability
-	S["nif_savedata"]	<< pref.nif_savedata
+	to_file(S["nif_id"],         pref.nif_id)
+	to_file(S["nif_durability"], pref.nif_durability)
+	to_file(S["nif_savedata"],   pref.nif_savedata)
 
 /datum/category_item/player_setup_item/vore/nif/sanitize_character()
 	if(pref.nif_id)
@@ -27,8 +27,8 @@
 		if(isnull(N))
 			pref.nif_id = null
 			WARNING("Loaded a NIF but it was an invalid id, [pref.real_name] = [pref.nif_id]")
-		else if(isnull(pref.nif_durability))		//How'd you lose this?
-			pref.nif_durability = initial(N.durability)		//Well, have a new one, my bad.
+		else if(isnull(pref.nif_durability)) //How'd you lose this?
+			pref.nif_durability = initial(N.durability) //Well, have a new one, my bad.
 			WARNING("Loaded a NIF but with no durability, [pref.real_name]")
 
 	if(!islist(pref.nif_savedata))

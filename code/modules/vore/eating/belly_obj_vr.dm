@@ -12,55 +12,92 @@
 // Parent type of all the various "belly" varieties.
 //
 /obj/belly
-	name = "belly"							// Name of this location
-	desc = "It's a belly! You're in it!"	// Flavor text description of inside sight/sound/smells/feels.
-	var/vore_sound = "Gulp"					// Sound when ingesting someone
-	var/vore_verb = "ingest"				// Verb for eating with this in messages
-	var/human_prey_swallow_time = 100		// Time in deciseconds to swallow /mob/living/carbon/human
-	var/nonhuman_prey_swallow_time = 30		// Time in deciseconds to swallow anything else
-	var/emote_time = 60 SECONDS				// How long between stomach emotes at prey
-	var/digest_brute = 2					// Brute damage per tick in digestion mode
-	var/digest_burn = 2						// Burn damage per tick in digestion mode
-	var/immutable = FALSE					// Prevents this belly from being deleted
-	var/escapable = FALSE					// Belly can be resisted out of at any time
-	var/escapetime = 60 SECONDS				// Deciseconds, how long to escape this belly
-	var/digestchance = 0					// % Chance of stomach beginning to digest if prey struggles
-	var/absorbchance = 0					// % Chance of stomach beginning to absorb if prey struggles
-	var/escapechance = 0 					// % Chance of prey beginning to escape if prey struggles.
-	var/transferchance = 0 					// % Chance of prey being
-	var/can_taste = FALSE					// If this belly prints the flavor of prey when it eats someone.
-	var/bulge_size = 0.25					// The minimum size the prey has to be in order to show up on examine.
-	var/shrink_grow_size = 1				// This horribly named variable determines the minimum/maximum size it will shrink/grow prey to.
-	var/transferlocation					// Location that the prey is released if they struggle and get dropped off.
-	var/release_sound = "Splatter"			// Sound for letting someone out. Replaced from True/false
-	var/mode_flags = 0						// Stripping, numbing, etc.
-	var/fancy_vore = FALSE					// Using the new sounds?
-	var/is_wet = TRUE						// Is this belly's insides made of slimy parts?
-	var/wet_loop = TRUE						// Does the belly have a fleshy loop playing?
+	/// Name of this location.
+	name = "belly"
+	/// Flavor text description of inside sight/sound/smells/feels.
+	desc = "It's a belly! You're in it!"
+	/// Sound when ingesting someone.
+	var/vore_sound = "Gulp"
+	/// Verb for eating with this in messages.
+	var/vore_verb = "ingest"
+	/// Time in deciseconds to swallow /mob/living/carbon/human.
+	var/human_prey_swallow_time = 100
+	/// Time in deciseconds to swallow anything else.
+	var/nonhuman_prey_swallow_time = 30
+	/// How long between stomach emotes at prey.
+	var/emote_time = 60 SECONDS
+	/// Brute damage per tick in digestion mode.
+	var/digest_brute = 2
+	/// Burn damage per tick in digestion mode.
+	var/digest_burn = 2
+	/// Prevents this belly from being deleted.
+	var/immutable = FALSE
+	/// Belly can be resisted out of at any time.
+	var/escapable = FALSE
+	/// Deciseconds, how long to escape this belly.
+	var/escapetime = 60 SECONDS
+	/// % Chance of stomach beginning to digest if prey struggles.
+	var/digestchance = 0
+	/// % Chance of stomach beginning to absorb if prey struggles.
+	var/absorbchance = 0
+	/// % Chance of prey beginning to escape if prey struggles.
+	var/escapechance = 0
+	/// % Chance of prey being.
+	var/transferchance = 0
+	/// If this belly prints the flavor of prey when it eats someone.
+	var/can_taste = FALSE
+	/// The minimum size the prey has to be in order to show up on examine.
+	var/bulge_size = 0.25
+	/// This horribly named variable determines the minimum/maximum size it will shrink/grow prey to.
+	var/shrink_grow_size = 1
+	/// Location that the prey is released if they struggle and get dropped off.
+	var/transferlocation
+	/// Sound for letting someone out. Replaced from True/false.
+	var/release_sound = "Splatter"
+	/// Stripping, numbing, etc.
+	var/mode_flags = 0
+	/// Using the new sounds?
+	var/fancy_vore = FALSE
+	/// Is this belly's insides made of slimy parts?
+	var/is_wet = TRUE
+	/// Does the belly have a fleshy loop playing?
+	var/wet_loop = TRUE
+	/// Is this belly creating an egg?
+	var/obj/item/storage/vore_egg/ownegg
+	/// Default egg type.
+	var/egg_type = "egg"
+	/// Default egg  path.
+	var/egg_path = /obj/item/storage/vore_egg
 
-	//I don't think we've ever altered these lists. making them static until someone actually overrides them somewhere.
-	//Actual full digest modes
+	//! I don't think we've ever altered these lists. making them static until someone actually overrides them somewhere.
+	/// Actual full digest modes
 	var/tmp/static/list/digest_modes = list(DM_HOLD,DM_DIGEST,DM_ABSORB,DM_DRAIN,DM_UNABSORB,DM_HEAL,DM_SHRINK,DM_GROW,DM_SIZE_STEAL)
-	//Digest mode addon flags
+	/// Digest mode addon flags
 	var/tmp/static/list/mode_flag_list = list("Numbing" = DM_FLAG_NUMBING, "Stripping" = DM_FLAG_STRIPPING, "Leave Remains" = DM_FLAG_LEAVEREMAINS, "Muffles" = DM_FLAG_THICKBELLY)
-	//Transformation modes
+	/// Transformation modes
 	var/tmp/static/list/transform_modes = list(DM_TRANSFORM_MALE,DM_TRANSFORM_FEMALE,DM_TRANSFORM_KEEP_GENDER,DM_TRANSFORM_CHANGE_SPECIES_AND_TAUR,DM_TRANSFORM_CHANGE_SPECIES_AND_TAUR_EGG,DM_TRANSFORM_REPLICA,DM_TRANSFORM_REPLICA_EGG,DM_TRANSFORM_KEEP_GENDER_EGG,DM_TRANSFORM_MALE_EGG,DM_TRANSFORM_FEMALE_EGG, DM_EGG)
-	//Item related modes
+	/// Item related modes
 	var/tmp/static/list/item_digest_modes = list(IM_HOLD,IM_DIGEST_FOOD,IM_DIGEST)
 
-	//List of slots that stripping handles strips
+	/// List of slots that stripping handles strips
 	var/tmp/static/list/slots = list(slot_back,slot_handcuffed,slot_l_store,slot_r_store,slot_wear_mask,slot_l_hand,slot_r_hand,slot_wear_id,slot_glasses,slot_gloves,slot_head,slot_shoes,slot_belt,slot_wear_suit,slot_w_uniform,slot_s_store,slot_l_ear,slot_r_ear)
 
-	var/tmp/mob/living/owner					// The mob whose belly this is.
-	var/tmp/digest_mode = DM_HOLD				// Current mode the belly is set to from digest_modes (+transform_modes if human)
-	var/tmp/tf_mode = DM_TRANSFORM_REPLICA		// Current transformation mode.
-	var/tmp/next_process = 0					// Waiting for this SSbellies times_fired to process again.
-	var/tmp/list/items_preserved = list()		// Stuff that wont digest so we shouldn't process it again.
-	var/tmp/next_emote = 0						// When we're supposed to print our next emote, as a belly controller tick #
-	var/tmp/recent_sound = FALSE				// Prevent audio spam
+	/// The mob whose belly this is.
+	var/tmp/mob/living/owner
+	/// Current mode the belly is set to from digest_modes. (+transform_modes if human)
+	var/tmp/digest_mode = DM_HOLD
+	/// Current transformation mode.
+	var/tmp/tf_mode = DM_TRANSFORM_REPLICA
+	/// Waiting for this SSbellies times_fired to process again.
+	var/tmp/next_process = 0
+	/// Stuff that wont digest so we shouldn't process it again.
+	var/tmp/list/items_preserved = list()
+	/// When we're supposed to print our next emote, as a belly controller tick #.
+	var/tmp/next_emote = 0
+	/// Prevent audio spam.
+	var/tmp/recent_sound = FALSE
 	var/tmp/list/hearing_mobs
 
-	// Don't forget to watch your commas at the end of each line if you change these.
 	var/list/struggle_messages_outside = list(
 		"%pred's %belly wobbles with a squirming meal.",
 		"%pred's %belly jostles with movement.",
@@ -109,14 +146,18 @@
 		"They have something solid in their %belly!",
 		"It looks like they have something in their %belly!")
 
-	var/item_digest_mode = IM_DIGEST_FOOD	// Current item-related mode from item_digest_modes
-	var/contaminates = TRUE					// Whether the belly will contaminate stuff
-	var/contamination_flavor = "Generic"	// Determines descriptions of contaminated items
-	var/contamination_color = "green"		// Color of contamination overlay
+	/// Current item-related mode from item_digest_modes.
+	var/item_digest_mode = IM_DIGEST_FOOD
+	/// Whether the belly will contaminate stuff.
+	var/contaminates = TRUE
+	/// Determines descriptions of contaminated items.
+	var/contamination_flavor = "Generic"
+	/// Color of contamination overlay.
+	var/contamination_color = "green"
 
-	//Mostly for being overridden on precreated bellies on mobs. Could be VV'd into
-	//a carbon's belly if someone really wanted. No UI for carbons to adjust this.
-	//List has indexes that are the digestion mode strings, and keys that are lists of strings.
+	///Mostly for being overridden on precreated bellies on mobs. Could be VV'd into
+	///a carbon's belly if someone really wanted. No UI for carbons to adjust this.
+	///List has indexes that are the digestion mode strings, and keys that are lists of strings.
 	var/tmp/list/emote_lists = list()
 
 //For serialization, keep this updated, required for bellies to save correctly.
@@ -242,12 +283,17 @@
 
 	return count
 
-// Release a specific atom from the contents of this belly into the owning mob's location.
-// If that location is another mob, the atom is transferred into whichever of its bellies the owning mob is in.
-// Returns the number of atoms so released.
+/// Release a specific atom from the contents of this belly into the owning mob's location.
+/// If that location is another mob, the atom is transferred into whichever of its bellies the owning mob is in.
+/// Returns the number of atoms so released.
 /obj/belly/proc/release_specific_contents(var/atom/movable/M, var/silent = FALSE)
 	if (!(M in contents))
-		return 0 // They weren't in this belly anyway
+		return FALSE // They weren't in this belly anyway
+
+	for(var/mob/living/L in M.contents)
+		L.muffled = FALSE
+	for(var/obj/item/holder/H in M.contents)
+		H.held_mob.muffled = FALSE
 
 	//Place them into our drop_location
 	M.forceMove(drop_location())
@@ -509,11 +555,14 @@
 /obj/belly/onDropInto(var/atom/movable/AM)
 	return null
 
-//Handle a mob struggling
-// Called from /mob/living/carbon/relaymove()
-/obj/belly/proc/relay_resist(var/mob/living/R)
+/**
+ * Handle a mob struggling
+ * * Called from /mob/living/carbon/relaymove()
+ */
+/obj/belly/proc/relay_resist(mob/living/R, obj/item/C)
 	if (!(R in contents))
-		return  // User is not in this belly
+		if(!C)
+			return // User is not in this belly
 
 	R.setClickCooldown(50)
 
@@ -522,9 +571,13 @@
 		to_chat(owner,"<span class='warning'>Someone is attempting to climb out of your [lowertext(name)]!</span>")
 
 		if(do_after(R, escapetime, owner, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
-			if((owner.stat || escapable) && (R.loc == src)) //Can still escape?
-				release_specific_contents(R)
-				return
+			if((owner.stat || escapable)) //Can still escape?
+				if(C)
+					release_specific_contents(C)
+					return
+				if(R.loc == src)
+					release_specific_contents(R)
+					return
 			else if(R.loc != src) //Aren't even in the belly. Quietly fail.
 				return
 			else //Belly became inescapable or mob revived
@@ -566,6 +619,13 @@
 			to_chat(R,"<span class='warning'>You start to climb out of \the [lowertext(name)].</span>")
 			to_chat(owner,"<span class='warning'>Someone is attempting to climb out of your [lowertext(name)]!</span>")
 			if(do_after(R, escapetime))
+				if(escapable && C)
+					release_specific_contents(C)
+					to_chat(R, SPAN_WARNING("Your struggles successfully cause [owner] to squeeze your container out of their \the [lowertext(name)]."))
+					to_chat(owner, SPAN_WARNING("[C] suddenly slips out of your [lowertext(name)]!"))
+					for(var/mob/M in hearers(4, owner))
+						M.show_message(SPAN_WARNING("[C] suddenly slips out of [owner]'s [lowertext(name)]!"), 2)
+					return
 				if((escapable) && (R.loc == src) && !R.absorbed) //Does the owner still have escapable enabled?
 					release_specific_contents(R)
 					to_chat(R,"<span class='warning'>You climb out of \the [lowertext(name)].</span>")
@@ -596,6 +656,9 @@
 
 			to_chat(R,"<span class='warning'>Your attempt to escape [lowertext(name)] has failed and your struggles only results in you sliding into [owner]'s [transferlocation]!</span>")
 			to_chat(owner,"<span class='warning'>Someone slid into your [transferlocation] due to their struggling inside your [lowertext(name)]!</span>")
+			if(C)
+				transfer_contents(C, dest_belly)
+				return
 			transfer_contents(R, dest_belly)
 			return
 
