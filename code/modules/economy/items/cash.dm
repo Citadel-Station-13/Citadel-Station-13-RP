@@ -95,6 +95,12 @@
 /obj/item/spacecash/is_static_currency(prevent_types)
 	return (prevent_types & PAYMENT_TYPE_CASH)? NOT_STATIC_CURRENCY : PLURAL_STATIC_CURRENCY
 
+/obj/item/spacecash/do_static_currency_feedback(amount, mob/user, atom/target, range)
+	visible_message(SPAN_NOTICE("[user] inserts some cash into [target]."), SPAN_NOTICE("You insert [amount] [CURRENCY_NAME_PLURAL] into [target]."), SPAN_NOTICE("You hear some papers shuffling."), range)
+
+/obj/item/spacecash/amount_static_currency()
+	return worth
+
 /obj/item/spacecash/c1
 	name = "1 Thaler"
 	icon_state = "spacecash1"
@@ -168,7 +174,11 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 		return
 	. += "<font color=#4F49AF>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>"
 
-/obj/item/spacecash/is_static_currency(prevent_types)
+/obj/item/spacecash/ewallet/is_static_currency(prevent_types)
 	return (prevent_types & PAYMENT_TYPE_CHARGE_CARD)? NOT_STATIC_CURRENCY : DISCRETE_STATIC_CURRENCY
 
-/obj/item/spacecash/static_currency_visual_
+/obj/item/spacecash/ewallet/do_static_currency_feedback(amount, mob/user, atom/target, range)
+	visible_message(SPAN_NOTICE("[user] swipes [src] through [target]."), SPAN_NOTICE("You swipe [src] through [target]."), SPAN_NOTICE("You hear a card swipe."), range)
+
+/obj/item/spacecash/ewallet/amount_static_currency()
+	return worth
