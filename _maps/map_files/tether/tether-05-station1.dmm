@@ -2041,9 +2041,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/atom/movable/landmark{
-	name = "JoinLateCyborg"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "aer" = (
@@ -3403,9 +3401,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/atom/movable/landmark{
-	name = "JoinLateCyborg"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "agA" = (
@@ -9078,9 +9074,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
@@ -9418,18 +9412,14 @@
 /turf/simulated/floor,
 /area/constructionsite)
 "atx" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "aty" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
@@ -15270,9 +15260,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "aSo" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
@@ -18943,9 +18931,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/atom/movable/landmark{
-	name = "JoinLateCyborg"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cyborg,
 /obj/machinery/computer/cryopod/robot{
 	dir = 8;
 	pixel_x = 28

@@ -42,16 +42,18 @@
 /**
  * Gets a valid spawnpoint to use for a roundstart spawn
  *
- * This is not a random pick, this is first priority-availability first server and fully deterministic.
- *
  * @params
  * - M - the mob being spawned
  * - C - (optional) the client of the player
  * - job_path - (optional) path to job
  * - faction - what faction the player is in terms of job factions
+ * - random - deterministic first pick or random?
  * - harder - used when the first iteration failed, tells spawnpoints to skip certain checks
+ *
  */
-/datum/controller/subsystem/job/proc/GetRoundstartSpawnpoint(mob/M, client/C, job_path, faction, harder = FALSE)
+/datum/controller/subsystem/job/proc/GetRoundstartSpawnpoint(mob/M, client/C, job_path, faction, random = TRUE, harder = FALSE)
+	if(random)
+		. = list()
 	// Priority 1: Job specific spawnpoints
 	if(job_path && length(job_spawnpoints[job_path]))
 		for(var/atom/movable/landmark/spawnpoint/job/J as anything in job_spawnpoints[job_path])
@@ -59,16 +61,26 @@
 				continue
 			if(!J.Available(M, C, harder))
 				continue
-			return J
+			if(random)
+				. += J
+			else
+				return J
+	if(random && length(.))
+		return pick(.)
 	// Priority 2: Overflow spawnpoints as a last resort
 	if(length(overflow_spawnpoints[faction]))
 		for(var/atom/movable/landmark/spawnpoint/overflow/S as anything in overflow_spawnpoints[faction])
 			if(!S.Available(M, C, harder))
 				continue
-			return S
+			if(random)
+				. += S
+			else
+				return S
+	if(random && length(.))
+		return pick(.)
 	if(!harder)
 		subsystem_log("GetRoundstartSpawnpoint() failed to get a spawnpoint, trying against with harder = TRUE")
-		return GetRoundstartSpawnpoint(M, C, job_path, faction, TRUE)
+		return GetRoundstartSpawnpoint(M, C, job_path, faction, random, TRUE)
 	else
 		CRASH("GetRoundstartSpawnpoint() failed to get a spawnpoint.")
 
@@ -83,10 +95,12 @@
  * - job_path - (optional) path to job
  * - faction - what faction the player is in terms of job factions
  * - method - (optional) required method for the spawnpoint - this will make the proc return null instead of an overflow, if it can't find something for the method.
+ * - random - deterministic first pick or random?
  * - harder - used when the first iteration failed, tells spawnpoints to skip certain checks
  */
-/datum/controller/subsystem/job/proc/GetLatejoinSpawnpoint(client/C, job_path, faction = JOB_FACTION_STATION, method, harder = FALSE)
-	// Priority 1: Job specific spawnpoints
+/datum/controller/subsystem/job/proc/GetLatejoinSpawnpoint(client/C, job_path, faction = JOB_FACTION_STATION, method, random = TRUE, harder = FALSE)
+	if(random)
+		. = list()	// Priority 1: Job specific spawnpoints
 	if(job_path && length(job_spawnpoints[job_path]))
 		for(var/atom/movable/landmark/spawnpoint/job/J as anything in job_spawnpoints[job_path])
 			if(!J.latejoin)
@@ -95,7 +109,12 @@
 				continue
 			if(!J.Available(null, C, harder))
 				continue
-			return J
+			if(random)
+				. += J
+			else
+				return J
+	if(random && length(.))
+		return pick(.)
 	// Priority 2: Latejoin spawnpoints, if latejoin
 	if(length(latejoin_spawnpoints[faction]))
 		for(var/atom/movable/landmark/spawnpoint/latejoin/S as anything in latejoin_spawnpoints[faction])
@@ -103,16 +122,26 @@
 				continue
 			if(method && (S.method != method))
 				continue
-			return S
+			if(random)
+				. += S
+			else
+				return S
+	if(random && length(.))
+		return pick(.)
 	// Priority 3: OVerflow spawnpoints as a last resort
 	if(length(overflow_spawnpoints[faction]))
 		for(var/atom/movable/landmark/spawnpoint/overflow/S as anything in overflow_spawnpoints[faction])
 			if(!S.Available(null, C, harder))
 				continue
-			return S
+			if(random)
+				. += S
+			else
+				return S
+	if(random && length(.))
+		return pick(.)
 	if(!harder)
 		subsystem_log("GetLatejoinSpawnpoint() failed to get a spawnpoint, trying against with harder = TRUE")
-		return GetRoundstartSpawnpoint(C, job_path, faction, method, TRUE)
+		return GetRoundstartSpawnpoint(C, job_path, faction, method, random, TRUE)
 	else
 		CRASH("GetLatejoinSpawnpoint() failed to get a spawnpoint.")
 

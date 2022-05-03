@@ -1,5 +1,6 @@
 /atom/movable/landmark/spawnpoint/latejoin/station
 	faction = JOB_FACTION_STATION
+	method = LATEJOIN_METHOD_DEFAULT
 
 /atom/movable/landmark/spawnpoint/latejoin/station/arrivals_shuttle
 	method = LATEJOIN_METHOD_ARRIVALS_SHUTTLE
@@ -14,10 +15,26 @@
 		Spl.Fade(TRUE)
 		M.playsound_local(get_turf(M), 'sound/voice/ApproachingTG.ogg', 25)
 
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway
+	method = LATEJOIN_METHOD_GATEWAY
+
+/atom/movable/landmark/spawnpoint/latejoin/station/elevator
+	method = LATEJOIN_METHOD_DEFAULT
+
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics
+	method = LATEJOIN_METHOD_CRYOGENIC_STORAGE
+
+/atom/movable/landmark/spawnpoint/latejoin/station/cyborg
+	method = LATEJOIN_METHOD_ROBOT_STORAGE
+
+/atom/movable/landmark/spawnpoint/latejoin/station/tram
+	method = LATEJOIN_METHOD_TRAM
+
 /atom/movable/landmark/spawnpoint/overflow/station
 	faction = JOB_FACTION_STATION
 
 
+#warn regex "latejoin_" and "latejoin" lists
 
 		if("JoinLate") // Bit difference, since we need the spawn point to move.
 			latejoin += src

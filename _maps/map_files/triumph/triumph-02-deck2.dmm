@@ -1390,9 +1390,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "ep" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -3493,9 +3491,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
 "jL" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
@@ -12856,9 +12852,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "KB" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
 	},
@@ -14858,9 +14852,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_6)
 "QK" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
@@ -17226,9 +17218,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "WZ" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "Xa" = (

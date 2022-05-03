@@ -9,3 +9,5 @@
 #define LATEJOIN_METHOD_GATEWAY				"gateway"
 /// Robotic storage
 #define LATEJOIN_METHOD_ROBOT_STORAGE		"robot_storage"
+/// Tram
+#define LATEJOIN_METHOD_TRAM				"tram"

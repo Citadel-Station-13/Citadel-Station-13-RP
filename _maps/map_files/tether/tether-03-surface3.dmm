@@ -40426,9 +40426,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/southhall)
 "oWD" = (
-/atom/movable/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)

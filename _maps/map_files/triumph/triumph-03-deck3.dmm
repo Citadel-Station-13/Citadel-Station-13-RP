@@ -2830,9 +2830,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "crI" = (
-/atom/movable/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -3987,9 +3985,7 @@
 /area/hallway/primary/port)
 "dnK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/atom/movable/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -9057,9 +9053,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/atom/movable/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -27007,9 +27001,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/atom/movable/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
