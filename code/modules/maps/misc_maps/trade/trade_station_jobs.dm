@@ -14,7 +14,7 @@
 	//department_flag = TRADE
 	department_flag = CIVILIAN
 	//departments_managed = list(DEPARTMENT_TRADE)
-	job_description = "You are an <b>non-antagonist</b> trader! Within the rules, \
+	desc = "You are an <b>non-antagonist</b> trader! Within the rules, \
 		try to provide interesting interaction for the crew. \
 		Try to make sure other players have <i>fun</i>! If you are confused or at a loss, always adminhelp, \
 		and before taking extreme actions, please try to also contact the administration! \

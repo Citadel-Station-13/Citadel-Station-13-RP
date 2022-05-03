@@ -3,7 +3,6 @@
 	flag = DETECTIVE
 	departments = list(DEPARTMENT_SECURITY)
 	department_flag = ENGSEC
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the Head of Security"
@@ -15,7 +14,7 @@
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/detective
-	job_description = "A Detective works to help Security find criminals who have not properly been identified, through interviews and forensic work. \
+	desc = "A Detective works to help Security find criminals who have not properly been identified, through interviews and forensic work. \
 						For crimes only witnessed after the fact, or those with no survivors, they attempt to piece together what they can from pure evidence."
 	alt_titles = list(
 		"Forensic Technician" = /datum/alt_title/detective/forensics_tech,

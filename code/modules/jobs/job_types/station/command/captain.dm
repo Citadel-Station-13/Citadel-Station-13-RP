@@ -9,7 +9,6 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	departments_managed = list(DEPARTMENT_COMMAND)
 	department_flag = ENGSEC
 	pto_type = PTO_COMMAND
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "company officials and Corporate Regulations"
@@ -25,7 +24,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 70 // Old geezer captains ftw
 
 	outfit_type = /datum/outfit/job/station/captain
-	job_description = "The Facility Director manages the other Command Staff, and through them the rest of the station. Though they have access to everything, \
+	desc = "The Facility Director manages the other Command Staff, and through them the rest of the station. Though they have access to everything, \
 						they do not understand everything, and are expected to delegate tasks to the appropriate crew member. The Facility Director is expected to \
 						have an understanding of Standard Operating Procedure, and is subject to it, and legal action, in the same way as every other crew member."
 	alt_titles = list(

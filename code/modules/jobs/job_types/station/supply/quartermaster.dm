@@ -5,7 +5,6 @@
 	sorting_order = 1 // QM is above the cargo techs, but below the HoP.
 	departments_managed = list(DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
-	faction = "Station"
 	pto_type = PTO_CARGO
 	total_positions = 1
 	spawn_positions = 1
@@ -19,7 +18,7 @@
 	ideal_character_age = 40
 
 	outfit_type = /datum/outfit/job/station/quartermaster
-	job_description = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
+	desc = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
 	alt_titles = list("Supply Chief" = /datum/alt_title/supply_chief)
 
 /datum/alt_title/supply_chief

@@ -7,7 +7,6 @@
 	disallow_jobhop = TRUE
 	pto_type = PTO_SCIENCE
 	department_flag = MEDSCI
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Facility Director"
@@ -29,7 +28,7 @@
 	ideal_character_age = 50
 
 	outfit_type = /datum/outfit/job/station/research_director
-	job_description = "The Research Director manages and maintains the Research department. They are required to ensure the safety of the entire crew, \
+	desc = "The Research Director manages and maintains the Research department. They are required to ensure the safety of the entire crew, \
 						at least with regards to anything occuring in the Research department, and to inform the crew of any disruptions that \
 						might originate from Research. The Research Director often has at least passing knowledge of most of the Research department, but \
 						are encouraged to allow their staff to perform their own duties."

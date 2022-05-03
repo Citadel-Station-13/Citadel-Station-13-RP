@@ -61,27 +61,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/landmark)
 			newplayer_start += loc
 			delete_on_roundstart = 1
 			return
-		if("JoinLate") // Bit difference, since we need the spawn point to move.
-			latejoin += src
-		//	delete_on_roundstart = 1
-			return
-		#warn eugh station misc these go!
-		if("JoinLateGateway")
-			latejoin_gateway += loc
-			delete_on_roundstart = 1
-			return
-		if("JoinLateElevator")
-			latejoin_elevator += loc
-			delete_on_roundstart = 1
-			return
-		if("JoinLateCryo")
-			latejoin_cryo += loc
-			delete_on_roundstart = 1
-			return
-		if("JoinLateCyborg")
-			latejoin_cyborg += loc
-			delete_on_roundstart = 1
-			return
 		if("prisonwarp")
 			prisonwarp += loc
 			delete_on_roundstart = 1

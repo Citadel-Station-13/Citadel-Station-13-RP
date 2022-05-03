@@ -3,7 +3,6 @@
 	flag = BARTENDER
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the Head of Personnel"
@@ -14,7 +13,7 @@
 	minimal_access = list(access_bar)
 
 	outfit_type = /datum/outfit/job/station/bartender
-	job_description = "A Bartender mixes drinks for the crew. They generally have permission to charge for drinks or deny service to unruly patrons."
+	desc = "A Bartender mixes drinks for the crew. They generally have permission to charge for drinks or deny service to unruly patrons."
 	alt_titles = list(
 		"Barista" = /datum/alt_title/bartender/barista,
 		"Barkeeper" = /datum/alt_title/bartender/barkeeper,

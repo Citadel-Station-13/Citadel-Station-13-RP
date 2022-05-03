@@ -7,7 +7,6 @@
 	department_flag = MEDSCI
 	pto_type = PTO_MEDICAL
 	disallow_jobhop = TRUE
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Facility Director"
@@ -27,7 +26,7 @@
 	ideal_character_age = 50
 
 	outfit_type = /datum/outfit/job/station/chief_medical_officer
-	job_description = "The CMO manages the Medical department and is a position requiring experience and skill; their goal is to ensure that their \
+	desc = "The CMO manages the Medical department and is a position requiring experience and skill; their goal is to ensure that their \
 						staff keep the station's crew healthy and whole. They are primarily interested in making sure that patients are safely found and \
 						transported to Medical for treatment. They are expected to keep the crew informed about threats to their health and safety, and \
 						about the importance of Suit Sensors."

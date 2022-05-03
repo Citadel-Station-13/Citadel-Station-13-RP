@@ -3,7 +3,6 @@
 	flag = CHAPLAIN
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Head of Personnel"
@@ -13,7 +12,7 @@
 	minimal_access = list(access_chapel_office, access_crematorium)
 
 	outfit_type = /datum/outfit/job/station/chaplain
-	job_description = "The Chaplain ministers to the spiritual needs of the crew."
+	desc = "The Chaplain ministers to the spiritual needs of the crew."
 	alt_titles = list(
 		"Counselor" = /datum/alt_title/counselor,
 		"Religious Affairs Advisor" = /datum/alt_title/chaplain/advisor,

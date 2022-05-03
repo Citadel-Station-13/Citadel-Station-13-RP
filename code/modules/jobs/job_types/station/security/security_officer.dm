@@ -3,7 +3,6 @@
 	flag = OFFICER
 	departments = list(DEPARTMENT_SECURITY)
 	department_flag = ENGSEC
-	faction = "Station"
 	total_positions = 4
 	spawn_positions = 4
 	pto_type = PTO_SECURITY
@@ -16,7 +15,7 @@
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/security_officer
-	job_description = "A Security Officer is concerned with maintaining the safety and security of the station as a whole, dealing with external threats and \
+	desc = "A Security Officer is concerned with maintaining the safety and security of the station as a whole, dealing with external threats and \
 						apprehending criminals. A Security Officer is responsible for the health, safety, and processing of any prisoner they arrest. \
 						No one is above the Law, not Security or Command."
 	alt_titles = list(

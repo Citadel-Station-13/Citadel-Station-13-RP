@@ -3,7 +3,6 @@
 	flag = CHEF
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the Head of Personnel"
@@ -14,7 +13,7 @@
 	minimal_access = list(access_kitchen)
 
 	outfit_type = /datum/outfit/job/station/chef
-	job_description = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."
+	desc = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."
 	alt_titles = list(
 		"Cook" = /datum/alt_title/chef/cook,
 		"Sous-chef" = /datum/alt_title/chef/souschef,

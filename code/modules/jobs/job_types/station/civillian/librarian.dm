@@ -3,7 +3,6 @@
 	flag = LIBRARIAN
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	pto_type = PTO_CIVILIAN
@@ -14,7 +13,7 @@
 	minimal_access = list(access_library)
 
 	outfit_type = /datum/outfit/job/station/librarian
-	job_description = "The Librarian curates the book selection in the Library, so the crew might enjoy it."
+	desc = "The Librarian curates the book selection in the Library, so the crew might enjoy it."
 	alt_titles = list(
 		"Journalist" = /datum/alt_title/librarian/journalist,
 		"Reporter" =  /datum/alt_title/librarian/reporter,

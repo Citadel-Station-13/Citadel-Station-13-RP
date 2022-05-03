@@ -3,7 +3,6 @@
 	flag = PSYCHIATRIST
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	economic_modifier = 5
@@ -14,7 +13,7 @@
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist, access_chemistry)
 	outfit_type = /datum/outfit/job/station/psychiatrist
-	job_description = "A Psychiatrist provides mental health services to crew members in need. They may also be called upon to determine whatever \
+	desc = "A Psychiatrist provides mental health services to crew members in need. They may also be called upon to determine whatever \
 					ails the mentally unwell, frequently under Security supervision. They understand the effects of various psychoactive drugs."
 	alt_titles = list(
 		"Psychologist" = /datum/alt_title/psychologist,

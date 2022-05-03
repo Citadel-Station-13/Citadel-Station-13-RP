@@ -3,7 +3,6 @@
 	flag = BOTANIST
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the Head of Personnel"
@@ -15,7 +14,7 @@
 	minimal_access = list(access_hydroponics)
 
 	outfit_type = /datum/outfit/job/station/gardener
-	job_description = "A Botanist grows plants for the Chef and Bartender."
+	desc = "A Botanist grows plants for the Chef and Bartender."
 	alt_titles = list("Gardener" = /datum/alt_title/gardener)
 
 /datum/alt_title/gardener

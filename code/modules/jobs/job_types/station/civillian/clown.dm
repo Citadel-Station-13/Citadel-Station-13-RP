@@ -3,7 +3,6 @@
 	flag = CLOWN
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = ENGSEC
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the spirit of laughter"
@@ -11,7 +10,7 @@
 	economic_modifier = 1
 	access = list(access_entertainment)
 	minimal_access = list(access_entertainment)
-	job_description = "A Clown is there to entertain the crew and keep high morale using various harmless pranks and ridiculous jokes!"
+	desc = "A Clown is there to entertain the crew and keep high morale using various harmless pranks and ridiculous jokes!"
 	whitelist_only = 1
 	latejoin_only = 0
 	outfit_type = /datum/outfit/job/station/clown

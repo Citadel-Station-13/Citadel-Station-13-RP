@@ -3,7 +3,6 @@
 	flag = ROBOTICIST
 	departments = list(DEPARTMENT_RESEARCH)
 	department_flag = MEDSCI
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the Research Director"
@@ -15,7 +14,7 @@
 	minimal_player_age = 7
 
 	outfit_type = /datum/outfit/job/station/roboticist
-	job_description = "A Roboticist maintains and repairs the station's synthetics, including crew with prosthetic limbs. \
+	desc = "A Roboticist maintains and repairs the station's synthetics, including crew with prosthetic limbs. \
 						They can also assist the station by producing simple robots and even pilotable exosuits."
 	alt_titles = list(
 		"Biomechanical Engineer" = /datum/alt_title/biomech,
