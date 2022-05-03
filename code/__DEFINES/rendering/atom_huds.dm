@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(hud_icon_files, list(
 	IMPCHEM_HUD = 'icons/screen/atom_hud/implant.dmi',
 	IMPTRACK_HUD = 'icons/screen/atom_hud/implant.dmi',
 	ANTAG_HUD = 'icons/screen/atom_hud/antag.dmi',
-	ID_HUD = 'icons/hud/atom_hud/job.dmi'
+	ID_HUD = 'icons/screen/atom_hud/job.dmi'
 ))
 
 // constant list lookup of hud to layer
