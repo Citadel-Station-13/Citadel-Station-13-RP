@@ -344,8 +344,11 @@ var/global/datum/controller/occupations/job_master
 			var/obj/S = null
 			var/list/possible_spawns = list()
 			for(var/atom/movable/landmark/start/sloc in GLOB.landmarks_list)
-				if(sloc.name != rank)	continue
-				if(locate(/mob/living) in sloc.loc)	continue
+				#warn oh god im gonna be sick
+				if(sloc.name != rank)
+					continue
+				if(locate(/mob/living) in sloc.loc)
+					continue
 				possible_spawns.Add(sloc)
 			if(possible_spawns.len)
 				S = pick(possible_spawns)
