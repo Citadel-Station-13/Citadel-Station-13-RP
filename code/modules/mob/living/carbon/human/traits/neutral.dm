@@ -158,6 +158,13 @@
 	H.verbs |= /mob/living/proc/glow_toggle
 	H.verbs |= /mob/living/proc/glow_color
 
+/datum/trait/haemophilia
+	name = "Haemophilia - Organics only"
+	desc = "When you bleed, you bleed a LOT. This trait is only for organics, buggy with synths!"
+	cost = -2
+	var_changes = list("bloodloss_rate" = 2)
+	can_take = ORGANICS
+
 // Body shape traits
 /datum/trait/neutral/taller
 	name = "Taller"
