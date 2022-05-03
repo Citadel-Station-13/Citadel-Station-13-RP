@@ -2,8 +2,8 @@
 	name = "medical pack"
 	singular_name = "medical pack"
 	icon = 'icons/obj/stacks.dmi'
-	amount = 5
-	max_amount = 5
+	amount = 10
+	max_amount = 10
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
 	throw_range = 20
@@ -262,22 +262,22 @@
 /obj/item/stack/medical/advanced/bruise_pack
 	name = "advanced trauma kit"
 	singular_name = "advanced trauma kit"
-	desc = "An advanced trauma kit for severe injuries."
+	desc = "A packet filled antibacterial bio-adhesive, used to quickly seal and disinfect cuts, bruises, and other physical trauma. Can be used to treat both limbs and internal organs."
 	icon_state = "traumakit"
-	heal_brute = 0 //?This is 0 for a REASON.  Refer to Baystation12/Baystation12/pull/11204, heal_brute will multiply into stupid high numbers.
+	//!This is 0 for a REASON.  Refer to Baystation12/Baystation12/pull/11204, heal_brute will multiply inside the loop to stupid high numbers.
+	heal_brute = 0
 	origin_tech = list(TECH_BIO = 1)
 	animal_heal = 12
 	apply_sounds = list('sound/effects/rip1.ogg','sound/effects/rip2.ogg','sound/effects/tape.ogg')
 	amount = 10
 
-/obj/item/stack/medical/advanced/bruise_pack/attack(mob/living/carbon/M as mob, mob/user as mob)
+/obj/item/stack/medical/advanced/bruise_pack/attack(var/mob/living/carbon/M, var/mob/user)
 	if(..())
 		return TRUE
 
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
-
+		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting) //nullchecked by ..()
 		if(affecting.is_bandaged() && affecting.is_disinfected())
 			to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.name] have already been treated."))
 			return TRUE
@@ -286,9 +286,7 @@
 				SPAN_NOTICE("\The [user] starts treating [M]'s [affecting.name]."), \
 				SPAN_NOTICE("You start treating [M]'s [affecting.name].") )
 			var/used = 0
-			for (var/datum/wound/W in affecting.wounds)
-				if(W.internal)
-					continue
+			for(var/datum/wound/W in affecting.wounds)
 				if(W.bandaged && W.disinfected)
 					continue
 				if(used == amount)
@@ -344,27 +342,31 @@
 
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting) //nullchecked by ..()
 
 		if(affecting.is_salved())
-			to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been salved.</span>")
-			return 1
+			to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.name] have already been salved."))
+			return TRUE
 		else
-			user.visible_message("<span class='notice'>\The [user] starts salving wounds on [M]'s [affecting.name].</span>", \
-					             "<span class='notice'>You start salving the wounds on [M]'s [affecting.name].</span>" )
-			if(!do_mob(user, M, 10))
-				to_chat(user, "<span class='notice'>You must stand still to salve wounds.</span>")
-				return 1
+			user.visible_message( \
+				SPAN_NOTICE("\The [user] starts salving wounds on [M]'s [affecting.name]."), \
+				SPAN_NOTICE("You start salving the wounds on [M]'s [affecting.name].") )
+			playsound(src, pick(apply_sounds), 25)
+			if(!do_after(user, 1 SECOND, M))
+				return TRUE
 			if(affecting.is_salved()) // We do a second check after the delay, in case it was bandaged after the first check.
-				to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been salved.</span>")
-				return 1
-			user.visible_message( 	"<span class='notice'>[user] covers wounds on [M]'s [affecting.name] with regenerative membrane.</span>", \
-									"<span class='notice'>You cover wounds on [M]'s [affecting.name] with regenerative membrane.</span>" )
+				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.name] have already been salved."))
+				return TRUE
+			user.visible_message( \
+				SPAN_NOTICE("[user] covers wounds on [M]'s [affecting.name] with regenerative membrane."), \
+				SPAN_NOTICE("You cover wounds on [M]'s [affecting.name] with regenerative membrane.") )
 			affecting.heal_damage(0,heal_burn)
 			use(1)
 			affecting.salve()
-			playsound(src, pick(apply_sounds), 25)
-			update_icon() // VOREStation Edit - Support for stack icons
+			affecting.disinfect()
+			if(M.stat == UNCONSCIOUS && prob(25))
+				to_chat(M, SPAN_BOLDNOTICE("... [pick("feels better", "hurts less")] ..."))
+			update_icon()
 
 /obj/item/stack/medical/splint
 	name = "medical splints"
@@ -373,6 +375,7 @@
 	icon_state = "splint"
 	amount = 5
 	max_amount = 5
+	animal_heal = 0
 	drop_sound = 'sound/items/drop/hat.ogg'
 	pickup_sound = 'sound/items/pickup/hat.ogg'
 
@@ -380,32 +383,41 @@
 
 /obj/item/stack/medical/splint/attack(mob/living/carbon/M as mob, mob/living/user as mob)
 	if(..())
-		return 1
+		return TRUE
 
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting) //nullchecked by ..()
 		var/limb = affecting.name
 		if(!(affecting.organ_tag in splintable_organs))
-			to_chat(user, "<span class='danger'>You can't use \the [src] to apply a splint there!</span>")
+			to_chat(user, SPAN_DANGER("You can't use \the [src] to apply a splint there!"))
 			return
 		if(affecting.splinted)
-			to_chat(user, "<span class='danger'>[M]'s [limb] is already splinted!</span>")
+			to_chat(user, SPAN_DANGER("[M]'s [limb] is already splinted!"))
 			return
 		if(M != user)
-			user.visible_message("<span class='danger'>[user] starts to apply \the [src] to [M]'s [limb].</span>", "<span class='danger'>You start to apply \the [src] to [M]'s [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
+			user.visible_message( \
+				SPAN_DANGER("[user] starts to apply \the [src] to [M]'s [limb]."), \
+				SPAN_DANGER("You start to apply \the [src] to [M]'s [limb]."), \
+				SPAN_DANGER("You hear something being wrapped.") )
 		else
 			if(( !user.hand && (affecting.organ_tag in list(BP_R_ARM, BP_R_HAND)) || \
 				user.hand && (affecting.organ_tag in list(BP_L_ARM, BP_L_HAND)) ))
-				to_chat(user, "<span class='danger'>You can't apply a splint to the arm you're using!</span>")
+				to_chat(user, SPAN_DANGER("You can't apply a splint to the arm you're using!"))
 				return
-			user.visible_message("<span class='danger'>[user] starts to apply \the [src] to their [limb].</span>", "<span class='danger'>You start to apply \the [src] to your [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
-		if(do_after(user, 50, M))
+			user.visible_message( \
+				SPAN_DANGER("[user] starts to apply \the [src] to their [limb]."), \
+				SPAN_DANGER("You start to apply \the [src] to your [limb]."), \
+				SPAN_DANGER("You hear something being wrapped.") )
+		if(do_after(user, 5 SECONDS, M))
 			if(affecting.splinted)
-				to_chat(user, "<span class='danger'>[M]'s [limb] is already splinted!</span>")
+				to_chat(user, SPAN_DANGER("[M]'s [limb] is already splinted!"))
 				return
 			if(M == user && prob(75))
-				user.visible_message("<span class='danger'>\The [user] fumbles [src].</span>", "<span class='danger'>You fumble [src].</span>", "<span class='danger'>You hear something being wrapped.</span>")
+				user.visible_message( \
+					SPAN_DANGER("\The [user] fumbles [src]."),\
+					SPAN_DANGER("You fumble [src]."), \
+					SPAN_DANGER("You hear something being wrapped.") )
 				return
 			if(ishuman(user))
 				var/obj/item/stack/medical/splint/S = split(1)
@@ -413,9 +425,15 @@
 					if(affecting.apply_splint(S))
 						S.forceMove(affecting)
 						if(M != user)
-							user.visible_message("<span class='danger'>\The [user] finishes applying [src] to [M]'s [limb].</span>", "<span class='danger'>You finish applying \the [src] to [M]'s [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
+							user.visible_message( \
+								SPAN_DANGER("\The [user] finishes applying [src] to [M]'s [limb]."), \
+								SPAN_DANGER("You finish applying \the [src] to [M]'s [limb]."), \
+								SPAN_DANGER("You hear something being wrapped.") )
 						else
-							user.visible_message("<span class='danger'>\The [user] successfully applies [src] to their [limb].</span>", "<span class='danger'>You successfully apply \the [src] to your [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
+							user.visible_message( \
+								SPAN_DANGER("\The [user] successfully applies [src] to \his [limb]."), \
+								SPAN_DANGER("You successfully apply \the [src] to your [limb]."), \
+								SPAN_DANGER("You hear something being wrapped.") )
 						return
 					S.dropInto(src.loc) //didn't get applied, so just drop it
 			if(isrobot(user))
@@ -423,12 +441,17 @@
 				if(B)
 					if(affecting.apply_splint(B))
 						B.forceMove(affecting)
-						user.visible_message("<span class='danger'>\The [user] finishes applying [src] to [M]'s [limb].</span>", "<span class='danger'>You finish applying \the [src] to [M]'s [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
+						user.visible_message( \
+							SPAN_DANGER("\The [user] finishes applying [src] to [M]'s [limb]."), \
+							SPAN_DANGER("You finish applying \the [src] to [M]'s [limb]."), \
+							SPAN_DANGER("You hear something being wrapped.") )
 						B.use(1)
 						return
-			user.visible_message("<span class='danger'>\The [user] fails to apply [src].</span>", "<span class='danger'>You fail to apply [src].</span>", "<span class='danger'>You hear something being wrapped.</span>")
+			user.visible_message( \
+				SPAN_DANGER("\The [user] fails to apply [src]."), \
+				SPAN_DANGER("You fail to apply [src]."), \
+				SPAN_DANGER("You hear something being wrapped."))
 		return
-
 
 /obj/item/stack/medical/splint/ghetto
 	name = "makeshift splints"
@@ -438,7 +461,6 @@
 	amount = 1
 	splintable_organs = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
 
-// Begin Citadel Changes - New advanced kit sprites
 /obj/item/stack/medical/advanced/Initialize(mapload)
 	. = ..()
 	update_icon()
@@ -457,4 +479,3 @@
 			icon_state = "[initial(icon_state)]_9"
 		else
 			icon_state = "[initial(icon_state)]_10"
-// End Citadel Changes
