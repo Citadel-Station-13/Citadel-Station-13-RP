@@ -1,17 +1,51 @@
+GLOBAL_LIST_EMPTY(landmarks_list)
+GLOBAL_LIST_EMPTY(landmarks_keyed)
+/atom/movable/landmark
+	name = "landmark"
+	icon = 'icons/mapping/landmarks/landmarks.dmi'
+	icon_state = ""	// greyscale x
+	anchored = TRUE
+	layer = MID_LANDMARK_LAYER
+	invisibility = INVISIBILITY_MAXIMUM
+
+	/// important landmarks get registered by id. not vv hooked, admins usually shouldn't mess with this.
+	var/landmark_key
+	/// delete on roundstart
+	var/delete_on_roundstart = FALSE
+
+INITIALIZE_IMMEDIATE(/atom/movable/landmark)
+
+/atom/movable/landmark/Initialize()
+	. = ..()
+	GLOB.landmarks_list += src
+	if(landmark_key)
+		if(!GLOB.landmarks_keyed[landmark_key])
+			GLOB.landmarks_keyed[landmark_key] = list()
+		GLOB.landmarks_keyed += landmark_key
+
+/atom/movable/landmark/Destroy()
+	GLOB.landmarks_list -= src
+	if(landmark_key && GLOB.landmarks_keyed[landmark_key])
+		GLOB.landmarks_keyed[landmark_key] -= src
+		if(!length(GLOB.landmarks_keyed[landmark_key]))
+			GLOB.landmarks_keyed -= landmark_key
+	return ..()
+
+/**
+ * Called when the round is finished setting up directly from SSticker
+ */
+/atom/movable/landmark/proc/OnRoundstart()
+	if(delete_on_roundstart)
+		qdel(src)
+
+
 #warn PORT MAIN LANDMARK SPRITES FOR SPAWNPOINTS
 #warn regex jobs on station maps
 #warn regex traders ugh
 #warn OnRoundstart() hook in ticker
-/atom/movable/landmark
-	name = "landmark"
-	icon = 'icons/mob/screen1.dmi'
-	icon_state = "x2"
-	anchored = 1.0
-	simulated = 0
-	invisibility = 100
-	var/delete_me = 0
 
-/atom/movable/landmark/New()
+/atom/movable/landmark/Initialize()
+	. = ..()
 	..()
 	tag = text("landmark*[]", name)
 	invisibility = 101
@@ -19,36 +53,36 @@
 	switch(name)			//some of these are probably obsolete
 		if("monkey")
 			monkeystart += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("start")
 			newplayer_start += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("JoinLate") // Bit difference, since we need the spawn point to move.
 			latejoin += src
-		//	delete_me = 1
+		//	delete_on_roundstart = 1
 			return
 		#warn eugh station misc these go!
 		if("JoinLateGateway")
 			latejoin_gateway += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("JoinLateElevator")
 			latejoin_elevator += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("JoinLateCryo")
 			latejoin_cryo += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("JoinLateCyborg")
 			latejoin_cyborg += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("prisonwarp")
 			prisonwarp += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("Holding Facility")
 			holdingfacility += loc
@@ -62,45 +96,42 @@
 			tdomeobserve += loc
 		if("prisonsecuritywarp")
 			prisonsecuritywarp += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("blobstart")
 			blobstart += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("xeno_spawn")
 			xeno_spawn += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("endgame_exit")
 			endgame_safespawns += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("bluespacerift")
 			endgame_exits += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("lavaland_entry")
 			lavaland_entry += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 		if("lavaland_exit")
 			lavaland_exit += loc
-			delete_me = 1
+			delete_on_roundstart = 1
 			return
 	GLOB.landmarks_list += src
 	return 1
 
-/atom/movable/landmark/proc/delete()
-	delete_me = 1
-
 /atom/movable/landmark/Initialize()
 	. = ..()
-	if(delete_me)
+	if(delete_on_roundstart)
 		return INITIALIZE_HINT_QDEL
 
 /atom/movable/landmark/Destroy(var/force = FALSE)
-	if(delete_me || force)
+	if(delete_on_roundstart || force)
 		GLOB.landmarks_list -= src
 		return ..()
 	return QDEL_HINT_LETMELIVE
@@ -111,7 +142,8 @@
 	icon_state = "x"
 	anchored = 1.0
 
-/atom/movable/landmark/start/New()
+/atom/movable/landmark/start/Initialize()
+	. = ..()
 	..()
 	tag = "start*[name]"
 	invisibility = 101
@@ -124,78 +156,93 @@
 	icon_state = "x"
 	anchored = 1.0
 
-/atom/movable/landmark/virtual_reality/New()
+/atom/movable/landmark/virtual_reality/Initialize()
+	. = ..()
 	..()
 	tag = "virtual_reality*[name]"
 	invisibility = 101
 	return 1
 
+// DONT ANYONE DARE ADD MORE COSTUME LANDMARKS HOLY SHIT I **WILL** DESTROY YOU AND THROW YOUR PR OUT THE WINDOW
+// **DO NOT USE LANDMARKS AS SPAWNERS** ~silicons
+
 //Costume spawner landmarks
-/atom/movable/landmark/costume/New() //costume spawner, selects a random subclass and disappears
+/atom/movable/landmark/costume/Initialize()
+	. = ..() //costume spawner, selects a random subclass and disappears
 
 	var/list/options = typesof(/atom/movable/landmark/costume)
 	var/PICK= options[rand(1,options.len)]
 	new PICK(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
 //SUBCLASSES.  Spawn a bunch of items and disappear likewise
-/atom/movable/landmark/costume/chicken/New()
+/atom/movable/landmark/costume/chicken/Initialize()
+	. = ..()
 	new /obj/item/clothing/suit/chickensuit(src.loc)
 	new /obj/item/clothing/head/chicken(src.loc)
 	new /obj/item/reagent_containers/food/snacks/egg(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/gladiator/New()
+/atom/movable/landmark/costume/gladiator/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/gladiator(src.loc)
 	new /obj/item/clothing/head/helmet/gladiator(src.loc)
 	qdel(src)
 
-/atom/movable/landmark/costume/madscientist/New()
+/atom/movable/landmark/costume/madscientist/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/gimmick/rank/captain/suit(src.loc)
 	new /obj/item/clothing/head/flatcap(src.loc)
 	new /obj/item/clothing/suit/storage/toggle/labcoat/mad(src.loc)
 	new /obj/item/clothing/glasses/gglasses(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/elpresidente/New()
+/atom/movable/landmark/costume/elpresidente/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/gimmick/rank/captain/suit(src.loc)
 	new /obj/item/clothing/head/flatcap(src.loc)
 	new /obj/item/clothing/mask/smokable/cigarette/cigar/havana(src.loc)
 	new /obj/item/clothing/shoes/boots/jackboots(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/nyangirl/New()
+/atom/movable/landmark/costume/nyangirl/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/schoolgirl(src.loc)
 	new /obj/item/clothing/head/kitty(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/maid/New()
+/atom/movable/landmark/costume/maid/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/skirt(src.loc)
 	var/CHOICE = pick( /obj/item/clothing/head/beret , /obj/item/clothing/head/rabbitears )
 	new CHOICE(src.loc)
 	new /obj/item/clothing/glasses/sunglasses/blindfold(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/butler/New()
+/atom/movable/landmark/costume/butler/Initialize()
+	. = ..()
 	new /obj/item/clothing/accessory/wcoat(src.loc)
 	new /obj/item/clothing/under/suit_jacket(src.loc)
 	new /obj/item/clothing/head/that(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/scratch/New()
+/atom/movable/landmark/costume/scratch/Initialize()
+	. = ..()
 	new /obj/item/clothing/gloves/white(src.loc)
 	new /obj/item/clothing/shoes/white(src.loc)
 	new /obj/item/clothing/under/scratch(src.loc)
 	if (prob(30))
 		new /obj/item/clothing/head/cueball(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/highlander/New()
+/atom/movable/landmark/costume/highlander/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/kilt(src.loc)
 	new /obj/item/clothing/head/beret(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/prig/New()
+/atom/movable/landmark/costume/prig/Initialize()
+	. = ..()
 	new /obj/item/clothing/accessory/wcoat(src.loc)
 	new /obj/item/clothing/glasses/monocle(src.loc)
 	var/CHOICE= pick( /obj/item/clothing/head/bowler, /obj/item/clothing/head/that)
@@ -204,71 +251,83 @@
 	new /obj/item/cane(src.loc)
 	new /obj/item/clothing/under/sl_suit(src.loc)
 	new /obj/item/clothing/mask/fakemoustache(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/plaguedoctor/New()
+/atom/movable/landmark/costume/plaguedoctor/Initialize()
+	. = ..()
 	new /obj/item/clothing/suit/bio_suit/plaguedoctorsuit(src.loc)
 	new /obj/item/clothing/head/plaguedoctorhat(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/nightowl/New()
+/atom/movable/landmark/costume/nightowl/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/owl(src.loc)
 	new /obj/item/clothing/mask/gas/owl_mask(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/waiter/New()
+/atom/movable/landmark/costume/waiter/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/waiter(src.loc)
 	var/CHOICE= pick( /obj/item/clothing/head/kitty, /obj/item/clothing/head/rabbitears)
 	new CHOICE(src.loc)
 	new /obj/item/clothing/suit/storage/apron(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/pirate/New()
+/atom/movable/landmark/costume/pirate/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/pirate(src.loc)
 	new /obj/item/clothing/suit/pirate(src.loc)
 	var/CHOICE = pick( /obj/item/clothing/head/pirate , /obj/item/clothing/head/bandana )
 	new CHOICE(src.loc)
 	new /obj/item/clothing/glasses/eyepatch(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/commie/New()
+/atom/movable/landmark/costume/commie/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/soviet(src.loc)
 	new /obj/item/clothing/head/ushanka(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/imperium_monk/New()
+/atom/movable/landmark/costume/imperium_monk/Initialize()
+	. = ..()
 	new /obj/item/clothing/suit/imperium_monk(src.loc)
 	if (prob(25))
 		new /obj/item/clothing/mask/gas/cyborg(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/holiday_priest/New()
+/atom/movable/landmark/costume/holiday_priest/Initialize()
+	. = ..()
 	new /obj/item/clothing/suit/holidaypriest(src.loc)
 	qdel(src)
 
-/atom/movable/landmark/costume/marisawizard/fake/New()
+/atom/movable/landmark/costume/marisawizard/fake/Initialize()
+	. = ..()
 	new /obj/item/clothing/head/wizard/marisa/fake(src.loc)
 	new/obj/item/clothing/suit/wizrobe/marisa/fake(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/cutewitch/New()
+/atom/movable/landmark/costume/cutewitch/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/sundress(src.loc)
 	new /obj/item/clothing/head/witchwig(src.loc)
 	new /obj/item/staff/broom(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/fakewizard/New()
+/atom/movable/landmark/costume/fakewizard/Initialize()
+	. = ..()
 	new /obj/item/clothing/suit/wizrobe/fake(src.loc)
 	new /obj/item/clothing/head/wizard/fake(src.loc)
 	new /obj/item/staff/(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/sexyclown/New()
+/atom/movable/landmark/costume/sexyclown/Initialize()
+	. = ..()
 	new /obj/item/clothing/mask/gas/sexyclown(src.loc)
 	new /obj/item/clothing/under/sexyclown(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1
 
-/atom/movable/landmark/costume/sexymime/New()
+/atom/movable/landmark/costume/sexymime/Initialize()
+	. = ..()
 	new /obj/item/clothing/mask/gas/sexymime(src.loc)
 	new /obj/item/clothing/under/sexymime(src.loc)
-	delete_me = 1
+	delete_on_roundstart = 1

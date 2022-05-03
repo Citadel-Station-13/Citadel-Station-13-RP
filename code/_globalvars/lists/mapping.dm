@@ -36,8 +36,6 @@ GLOBAL_LIST_EMPTY(sortedAreas)
 /// An association from typepath to area instance. Only includes areas with `unique` set.
 GLOBAL_LIST_EMPTY_TYPED(areas_by_type, /area)
 
-GLOBAL_LIST_EMPTY(landmarks_list)
-
 GLOBAL_LIST_INIT(ore_types, list(
 		MAT_HEMATITE = /obj/item/ore/iron,
 		MAT_URANIUM = /obj/item/ore/uranium,
