@@ -30,7 +30,6 @@
 /// how far we visually glitz the overmap's sides
 #define OVERMAP_SIDE_VISUAL_GLITZ			7
 /// for entity spatial hashing, the max bound size of any entity assuming this is the side of a square
-#warn set bound size helpers on atom movable, even though we arne't using it yet
 #define OVERMAP_ENTITY_MAX_BOUND_SIZE		96
 /// for entity spatial hashing, the amount of space in each hash - this is the side of a square too
 #define OVERMAP_SPATIAL_HASH_SIZE			8
@@ -38,7 +37,10 @@
 #define OVERMAP_SPATIAL_ADD_LOOKUP_RADIUS	3
 /// to prevent the weirdness of cross/uncross, this distance from the edge will never have anything generated in it
 #define OVERMAP_GENERATION_EDGE_MARGIN		2
-
+/// during entity queries, this is the minimum range where we use spatial grid scan, in byond pixels. below this, we use bounds() fastpath
+#define OVERMAP_ENTITY_QUERY_BUILTIN_RANGE_PIXELS		(OVERMAP_WORLD_ICON_SIZE * 15)	// 31x31, we assume byond isn't awful below this
+/// during entity queries, this is the minimum range where we use spatial grid scan, in overmap coords. below this, we use bounds() fastpath
+#define OVERMAP_ENTITY_QUERY_BUILTIN_RANGE				(OVERMAP_ENTITY_QUERY_BUILTIN_RANGE_PIXELS * OVERMAP_DISTANCE_PIXEL)
 
 ///////// LEGACY BELOW
 
