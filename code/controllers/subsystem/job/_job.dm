@@ -30,6 +30,7 @@ SUBSYSTEM_DEF(job)
 
 	for(var/J in all_jobs)
 		var/datum/job/job = new J()
+		#warn wipe out the fucking factions FUCK YOU FUCK YOU USE ABSTRACT TYPE
 		if(!job)
 			continue
 		if(job.faction != faction)

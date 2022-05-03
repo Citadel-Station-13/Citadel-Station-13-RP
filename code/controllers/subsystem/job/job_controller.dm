@@ -17,14 +17,15 @@ var/global/datum/controller/occupations/job_master
 		if(!all_jobs.len)
 			to_world("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return 0
+		#warn wipe out the fucking factions FUCK YOU FUCK YOU USE ABSTRACT TYPE
 		for(var/J in all_jobs)
 			var/datum/job/job = new J()
-			if(!job)	continue
-			if(job.faction != faction)	continue
+			if(!job)
+				continue
+			if(job.faction != faction)
+				continue
 			occupations += job
 		sortTim(occupations, /proc/cmp_job_datums)
-
-
 		return 1
 
 
