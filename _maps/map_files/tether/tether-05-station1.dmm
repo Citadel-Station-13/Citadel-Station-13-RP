@@ -3594,9 +3594,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "agO" = (
@@ -6306,9 +6304,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "ana" = (
@@ -8238,9 +8234,7 @@
 /area/engineering/hallway)
 "aqG" = (
 /obj/structure/bed/chair/comfy/beige,
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "aqH" = (
@@ -8878,9 +8872,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "aso" = (
@@ -8901,9 +8893,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "asq" = (
@@ -9563,18 +9553,14 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "atJ" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "atK" = (
@@ -10582,9 +10568,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "avG" = (
@@ -10608,9 +10592,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "avL" = (
@@ -15260,9 +15242,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Chief Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/chief_engineer,
 /obj/machinery/button/windowtint{
 	id = "ce_office";
 	layer = 3.3;
@@ -15332,9 +15312,7 @@
 /area/constructionsite)
 "aSB" = (
 /obj/structure/bed/chair/office/dark,
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "aSC" = (
@@ -15973,9 +15951,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "bbz" = (
@@ -22192,9 +22168,7 @@
 /area/maintenance/station/eng_lower)
 "mXw" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Field Medic"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "mXV" = (
@@ -23284,9 +23258,7 @@
 /area/ai_upload_foyer)
 "pAf" = (
 /obj/structure/table/bench/standard,
-/atom/movable/landmark/start{
-	name = "Field Medic"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "pBz" = (
@@ -23687,9 +23659,7 @@
 	pixel_y = -32
 	},
 /obj/machinery/light,
-/atom/movable/landmark/start{
-	name = "Field Medic"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "qAU" = (
@@ -27212,9 +27182,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Field Medic"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "yjb" = (

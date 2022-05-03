@@ -506,9 +506,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "atK" = (
@@ -2166,9 +2164,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "bNU" = (
@@ -8382,9 +8378,7 @@
 /area/rnd/anomaly_lab)
 "gRE" = (
 /obj/structure/bed/chair/office/light,
-/atom/movable/landmark/start{
-	name = "Chief Medical Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/chief_medical_officer,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "gRL" = (
@@ -15025,9 +15019,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
@@ -16932,9 +16924,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled,
 /area/medical/reception)
 "nWC" = (
@@ -23525,9 +23515,7 @@
 	pixel_y = -16
 	},
 /obj/structure/bed/chair/office/light,
-/atom/movable/landmark/start{
-	name = "Research Director"
-	},
+/atom/movable/landmark/spawnpoint/job/research_director,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -28520,9 +28508,7 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_1)
 "woX" = (

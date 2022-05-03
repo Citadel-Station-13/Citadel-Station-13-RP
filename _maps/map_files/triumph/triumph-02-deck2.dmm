@@ -5640,9 +5640,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "pE" = (
@@ -6756,9 +6754,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "sM" = (
@@ -14657,9 +14653,7 @@
 "Qa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "Qb" = (
@@ -15249,9 +15243,7 @@
 /area/maintenance/substation/civilian)
 "RQ" = (
 /obj/structure/table/bench/padded,
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "RR" = (
@@ -16138,9 +16130,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_1)
 "Ug" = (
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "Uh" = (

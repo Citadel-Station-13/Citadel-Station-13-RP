@@ -7640,9 +7640,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "fkU" = (
@@ -8330,9 +8328,7 @@
 	pixel_y = -37
 	},
 /obj/structure/table/bench/steel,
-/atom/movable/landmark/start{
-	name = "Search and Rescue"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "fLo" = (
@@ -13064,9 +13060,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/atom/movable/landmark/start{
-	name = "Facility Director"
-	},
+/atom/movable/landmark/spawnpoint/job/facility_director,
 /obj/item/storage/secure/safe{
 	pixel_x = -28
 	},
@@ -13483,9 +13477,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "jkn" = (
-/atom/movable/landmark/start{
-	name = "Head of Security"
-	},
+/atom/movable/landmark/spawnpoint/job/head_of_security,
 /obj/machinery/button/remote/airlock{
 	id = "HoSdoor";
 	name = "Office Door";
@@ -16334,9 +16326,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "lpL" = (
-/atom/movable/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/atom/movable/landmark/spawnpoint/job/internal_affairs_agent,
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
@@ -16910,9 +16900,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "lFx" = (
@@ -23907,9 +23895,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "qor" = (
-/atom/movable/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/atom/movable/landmark/spawnpoint/job/internal_affairs_agent,
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
@@ -29201,9 +29187,7 @@
 "tLZ" = (
 /obj/structure/table/bench/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "tMK" = (
@@ -33274,9 +33258,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /obj/effect/floor_decal/steeldecal/steel_decals_central5,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -34862,9 +34844,7 @@
 /area/exploration/explorer_prep)
 "xvG" = (
 /obj/structure/table/bench/steel,
-/atom/movable/landmark/start{
-	name = "Search and Rescue"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "xvJ" = (

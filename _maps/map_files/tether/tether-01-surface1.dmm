@@ -12322,9 +12322,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -13871,9 +13869,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -19408,9 +19404,7 @@
 /area/tether/surfacebase/cargostore/office)
 "aGs" = (
 /obj/structure/bed/chair/sofa/brown/corner,
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -21935,9 +21929,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "aKI" = (
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -22067,9 +22059,7 @@
 /area/engineering/atmos)
 "aKV" = (
 /obj/item/stool,
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aKW" = (
@@ -23565,9 +23555,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aNI" = (
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aNJ" = (
@@ -39512,9 +39500,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
 "ylH" = (

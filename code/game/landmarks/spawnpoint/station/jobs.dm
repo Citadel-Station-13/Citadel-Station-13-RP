@@ -179,7 +179,7 @@
 	name = "Explorer"
 	job_path = /datum/job/station/explorer
 
-/atom/movable/landmark/spawnpoint/job/fieldmedic
+/atom/movable/landmark/spawnpoint/job/field_medic
 	name = "Field Medic"
 	job_path = /datum/job/station/field_medic
 

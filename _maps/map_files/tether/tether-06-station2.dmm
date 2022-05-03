@@ -9712,9 +9712,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "aJI" = (
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /obj/item/stool/padded,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -13460,9 +13458,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "aXt" = (
@@ -18613,9 +18609,7 @@
 "iSs" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/storage)
 "iSP" = (
@@ -22780,9 +22774,7 @@
 /area/shuttle/excursion/cargo)
 "qlt" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/storage)
 "qms" = (
@@ -24268,9 +24260,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "taT" = (
@@ -26381,9 +26371,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
 "wQz" = (
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)

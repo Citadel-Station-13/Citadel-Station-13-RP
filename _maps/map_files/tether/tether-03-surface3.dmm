@@ -2138,9 +2138,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/atom/movable/landmark/spawnpoint/job/internal_affairs_agent,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officea)
 "adl" = (
@@ -3108,9 +3106,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "aeD" = (
@@ -3731,9 +3727,7 @@
 "afz" = (
 /obj/structure/bed/chair/office/light,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lobby)
 "afA" = (
@@ -5023,9 +5017,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
 "ahz" = (
@@ -5458,9 +5450,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/medsec_maintenance)
 "aie" = (
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "aif" = (
@@ -5876,9 +5866,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
@@ -23279,9 +23267,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Facility Director"
-	},
+/atom/movable/landmark/spawnpoint/job/facility_director,
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
 	id = "cap_office";
@@ -24734,9 +24720,7 @@
 /area/tether/surfacebase/medical/admin)
 "aSo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/storage)
 "aSp" = (
@@ -24911,9 +24895,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/storage)
 "aSH" = (
@@ -26739,9 +26721,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/tourbus/general)
 "aWd" = (
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/storage)
 "aWe" = (
@@ -28405,9 +28385,7 @@
 /area/maintenance/commandmaint)
 "aYW" = (
 /obj/structure/bed/chair/comfy/brown,
-/atom/movable/landmark/start{
-	name = "Head of Personnel"
-	},
+/atom/movable/landmark/spawnpoint/job/head_of_personnel,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "aYX" = (
@@ -34568,9 +34546,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "blS" = (
@@ -34599,9 +34575,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "blW" = (
@@ -34900,9 +34874,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -34933,9 +34905,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -36152,9 +36122,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /obj/machinery/button/windowtint/multitint{
 	id = "sec_processing";
 	pixel_x = 26;
@@ -37714,9 +37682,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/security/breakroom)
 "hEN" = (
@@ -40789,9 +40755,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/security/breakroom)
 "pKr" = (
@@ -41259,9 +41223,7 @@
 	pixel_y = -33;
 	req_access = list(2)
 	},
-/atom/movable/landmark/start{
-	name = "Head of Security"
-	},
+/atom/movable/landmark/spawnpoint/job/head_of_security,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
@@ -42309,9 +42271,7 @@
 	pixel_x = -25;
 	pixel_y = 7
 	},
-/atom/movable/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/atom/movable/landmark/spawnpoint/job/internal_affairs_agent,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officeb)
 "tOz" = (
@@ -43531,9 +43491,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
 "wKZ" = (
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/bed/chair/office/light,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,

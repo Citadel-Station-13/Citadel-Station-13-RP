@@ -268,9 +268,7 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/office/light,
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/examroom)
 "aaw" = (
@@ -1491,9 +1489,7 @@
 	pixel_x = -26;
 	pixel_y = -10
 	},
-/atom/movable/landmark/start{
-	name = "Chief Medical Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/chief_medical_officer,
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/medical/cmo)
 "ack" = (
@@ -4700,9 +4696,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner,
 /obj/structure/table/bench/steel,
 /obj/machinery/hologram/holopad,
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
 "ahr" = (
@@ -4713,9 +4707,7 @@
 	dir = 8
 	},
 /obj/structure/table/bench/steel,
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
 "ahs" = (
@@ -5242,9 +5234,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
 "aif" = (
@@ -5258,9 +5248,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
 "aig" = (
@@ -5892,9 +5880,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/medical/morgue)
 "aiX" = (
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
 	},
@@ -6057,9 +6043,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
 "ajm" = (
@@ -6079,9 +6063,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
 "ajn" = (
@@ -8313,9 +8295,7 @@
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "amK" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -8861,9 +8841,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "anI" = (
@@ -12124,9 +12102,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -18852,9 +18828,7 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aHa" = (
-/atom/movable/landmark/start{
-	name = "Command Secretary"
-	},
+/atom/movable/landmark/spawnpoint/job/command_secretary,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -19000,9 +18974,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHu" = (
-/atom/movable/landmark/start{
-	name = "Command Secretary"
-	},
+/atom/movable/landmark/spawnpoint/job/command_secretary,
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
@@ -20077,9 +20049,7 @@
 	pixel_x = -30;
 	pixel_y = -18
 	},
-/atom/movable/landmark/start{
-	name = "Research Director"
-	},
+/atom/movable/landmark/spawnpoint/job/research_director,
 /obj/machinery/button/remote/blast_door{
 	id = "xenobiolockdown";
 	name = "Xenobiology Lockdown Control";
@@ -22457,9 +22427,7 @@
 /area/engineering/lower/breakroom)
 "aOF" = (
 /obj/structure/bed/chair,
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/carpet,
 /area/engineering/lower/breakroom)
 "aOG" = (
@@ -23252,9 +23220,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/carpet,
 /area/engineering/lower/breakroom)
 "aQj" = (
@@ -24601,9 +24567,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/lower/atmos_lockers)
 "aSK" = (
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/atmos_lockers)
 "aSL" = (
@@ -27989,9 +27953,7 @@
 /area/engineering/atmos/monitoring)
 "aZN" = (
 /obj/structure/bed/chair/office/light,
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -34497,9 +34459,7 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "rJc" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/bed/chair{
 	dir = 8
 	},
@@ -34742,9 +34702,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "uOJ" = (
@@ -34864,9 +34822,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "xma" = (
