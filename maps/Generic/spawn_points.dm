@@ -41,6 +41,7 @@
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
+#warn purge this with fire
 // Tram arrival point landmarks and datum
 var/global/list/latejoin_tram   = list()
 
