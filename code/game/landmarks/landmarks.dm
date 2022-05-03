@@ -1,5 +1,11 @@
 GLOBAL_LIST_EMPTY(landmarks_list)
 GLOBAL_LIST_EMPTY(landmarks_keyed)
+
+/proc/landmarks_by_key(key)
+	var/list/L = GLOB.landmarks_keyed[key]
+	if(L)
+		return L.Copy()
+
 /atom/movable/landmark
 	name = "landmark"
 	icon = 'icons/mapping/landmarks/landmarks.dmi'
