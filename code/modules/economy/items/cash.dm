@@ -92,6 +92,9 @@
 	SC.set_worth(amount)
 	usr.put_in_hands(SC)
 
+/obj/item/spacecash/is_static_currency(prevent_types)
+	return (prevent_types & PAYMENT_TYPE_CASH)? NOT_STATIC_CURRENCY : PLURAL_STATIC_CURRENCY
+
 /obj/item/spacecash/c1
 	name = "1 Thaler"
 	icon_state = "spacecash1"
@@ -164,3 +167,8 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	if (!(user in view(2)) && user!=src.loc)
 		return
 	. += "<font color=#4F49AF>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>"
+
+/obj/item/spacecash/is_static_currency(prevent_types)
+	return (prevent_types & PAYMENT_TYPE_CHARGE_CARD)? NOT_STATIC_CURRENCY : DISCRETE_STATIC_CURRENCY
+
+/obj/item/spacecash/static_currency_visual_

@@ -16,6 +16,14 @@
 /// all payment types
 #define PAYMENT_TYPE_ALL				ALL
 
+// kinds of static currency
+/// not static currency
+#define NOT_STATIC_CURRERNCY				0
+/// discrete object, e.g. coins, chargecards
+#define DISCRETE_STATIC_CURRENCY			1
+/// stack, e.g. cash, holochips
+#define STACK_STATIC_CURRENCY
+
 // list return for /datum/proc/transaction_charge_details(list/data)
 /// recipient identity
 #define CHARGE_DETAIL_RECIPIENT				"recipient"
@@ -23,3 +31,5 @@
 #define CHARGE_DETAIL_LOCATION				"location"
 /// machine/charge device identity
 #define CHARGE_DETAIL_DEVICE				"device"
+
+

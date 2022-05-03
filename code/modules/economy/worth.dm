@@ -1,7 +1,5 @@
 /**
- * get the worth of this thing and everything in it
+ * atom worth "system"
+ *
+ * actually multiple mini-systems corrosponding to different parts of what we can query from an atom
  */
-/atom/proc/get_total_economic_worth()
-	. =
-#warn oh god
-

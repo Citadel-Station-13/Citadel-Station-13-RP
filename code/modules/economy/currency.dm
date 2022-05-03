@@ -1,13 +1,81 @@
 /**
- * core helpers and atom API goes in here
- *
- * it is **not** recommended to use any procs in here other than get_currency_value if you're doing anything remotely
- * high effort! check currency payment cannot acocunt for multiple items combined value, auto_consume_currency can only
- * handle exact amounts, etc etc. DO NOT USE THEM UNLESS YOU ARE CODING SOMETHING EXTREMELY SIMPLE!
+ * core helpers and item API goes in here
  *
  * warning for readers:
- * this api is not very well coded and we're going to get a *little* yanderedev about it due to the high amount of currency types we have
+ * this api is not very well coded and we're going to get a *little* yanderedev about it due to the high complexity of the currency system.
  */
+
+/**
+ * static currency
+ *
+ * these procs are used to determine if something is considered static currency and how much it's worth
+ * static currency should never need logic to determine payment ability and/or worth
+ *
+ * because i hate everyone and myself but not *that* much, static currency can either logically be
+ * a stack (cash, holochips, chargecards), or a discrete object like a coin
+ *
+ * i would code support for "stack of objects" to force people to roleplay counting dollar bills but that's too CPU-intensive to calculate
+ * (see: coin counting problem)
+ */
+
+/**
+ * returns if we are valid static currency for the given payment types
+ *
+ * @params
+ * - prevent_types - these types aren't allowed
+ */
+/obj/item/proc/is_static_currency(prevent_types)
+	return NOT_STATIC_CURRENCY
+
+/**
+ * returns our value as currency
+ */
+/obj/item/proc/amount_static_currency()
+	return 0
+
+/**
+ * consumes our value as currency
+ * this **can** cause us to delete!
+ *
+ * @params
+ * - amount - amount to consume
+ * - force - consume even if there isn't enough. use INFINITY and force = TRUE for things like ATM deposits
+ *
+ * @return amount consumed
+ */
+/obj/item/proc/consume_static_currency(amount, force)
+	return 0
+
+/**
+ * displays feedback upon being used as static currency by a person
+ */
+/obj/item/proc/do_static_currency_feedback(mob/user, atom/target, range)
+	return
+
+/**
+ * dynamic currency
+ *
+ * this is where the fun/anguish/coder tears begin
+ *
+ * dynamic currency is currency that can potentially require logic during payment and whose value can be different due to payment types
+ * and all sorts of situations that are absolutely dreadful to handle in code
+ */
+
+
+/**
+ * automated payment proc
+ *
+ * @params
+ * - user - user (can be null)
+ * - I - currency used, static or dynamic
+ * - predicate - thing we're paying into. has to be an atom/movable
+ * - amount - amount requested
+ * - force - go through even if insufficient
+ *
+ *
+ * @return amount paid
+ */
+/proc/attempt_generic_currency_payment(mob/user, obj/item/I, atom/movable/predicate, amount, force, )
 
 /**
  * returns TRUE/FALSE based on if an item used to pay for something has enough value to cover it in its entirety
