@@ -1,3 +1,4 @@
+#warn PORT MAIN LANDMARK SPRITES FOR SPAWNPOINTS
 /atom/movable/landmark
 	name = "landmark"
 	icon = 'icons/mob/screen1.dmi'

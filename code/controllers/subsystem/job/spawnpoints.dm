@@ -25,19 +25,19 @@
 	for(var/atom/movable/landmark/spawnpoint/job/S in GLOB.landmarks_list)
 		if(!S.job_path)
 			continue
-		LAZYOR(job_spawnpoints[S.job_path], S)
+		LAZYDISTINCTADD(job_spawnpoints[S.job_path], S)
 	for(var/atom/movable/landmark/spawnpoint/latejoin/S in GLOB.landmarks_list)
 		if(!S.faction)
 			continue
-		LAZYOR(latejoin_spawnpoints[S.faction], S)
+		LAZYDISTINCTADD(latejoin_spawnpoints[S.faction], S)
 	for(var/atom/movable/landmark/spawnpoint/overflow/S in GLOB.landmarks_list)
 		if(!S.faction)
 			continue
-		LAZYOR(latejoin_spawnpoints[S.faction], S)
+		LAZYDISTINCTADD(latejoin_spawnpoints[S.faction], S)
 	for(var/atom/movable/landmark/spawnpoint/custom/S in GLOB.landmarks_list)
 		if(!S.key)
 			continue
-		LAZYOR(custom_spawnpoints[S.key], S)
+		LAZYDISTINCTADD(custom_spawnpoints[S.key], S)
 
 /**
  * Gets a valid spawnpoint to use for a roundstart spawn
