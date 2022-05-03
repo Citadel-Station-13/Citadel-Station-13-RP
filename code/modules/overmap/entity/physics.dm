@@ -52,11 +52,36 @@
 /atom/movable/overmap_object/entity/proc/remove_from_overmap()
 
 /**
- * forcemove hook -  moves us to the correct position on an overmap!
+ * check if we're moving, used to determine if we need to start ticking
+ */
+/atom/movable/overmap_object/entity/proc/is_moving()
+	#warn impl
+
+/**
+ * start ticking physics
+ */
+/atom/movable/overmap_object/entity/proc/wake_physics()
+
+/**
+ * stop ticking physics
+ */
+/atom/movable/overmap_object/entity/proc/kill_physics()
+
+/**
+ * reset physics
+ */
+/atom/movable/overmap_object/entity/proc/reset_physics()
+	set_angular_velocity(0)
+	set_velocity(0, 0)
+	if(moving)
+		kill_physics()
+
+/**
+ * forcemove hook -  moves us to the correct position on an overmap and reset physics!
  */
 /atom/movable/overmap_object/entity/forceMove(atom/destination)
 	// TODO: pixel_movement?
-
+	#warn ugh
 	. = ..()
 
 /**
@@ -120,7 +145,7 @@
  */
 /atom/movable/overmap_object/entity/proc/physics_undocked(atom/movable/overmap_object/entity/E)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if(ison_mob)
+	if(is_on_map)
 		stack_trace("physics_undocked while is on map!")
 	unpause_physics(ENTITY_PHYSICS_PAUSE_FOR_DOCKED)
 	is_on_map = TRUE

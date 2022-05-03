@@ -15,6 +15,8 @@
 	// overmap
 	/// currently ticking?
 	var/ticking = FALSE
+	/// currently ticking physics?
+	var/moving = FALSE
 	/// overmap we belong to - **nested objects are still on this, use is_on_map to determine!**
 	var/datum/overmap/overmap
 	/// are we currently on the overmap or contained by something?
@@ -45,6 +47,7 @@
 /atom/movable/overmap_object/entity/New()
 	// assign id immediately
 	id = "[++id_next]"
+	reset_physics()
 	return ..()
 
 /atom/movable/overmap_object/entity/get_bounds_overlay()

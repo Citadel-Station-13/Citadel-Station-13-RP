@@ -72,6 +72,9 @@
 	var/bucket_y = CEILING(y / OVERMAP_SPATIAL_HASH_COORDSIZE, 1)
 	// TODO: manual optimization because byond compiler probably doesn't optimize CEILING
 	// the cached coordinate height/width is needed because spatial size can go past the high edges
+
+	#warn we will never beat byond builtins. use bounds() when under a certain limit.
+
 	var/closest = min(
 		abs(round(x, OVERMAP_SPATIAL_HASH_COORDSIZE) - x),
 		abs(round(y, OVERMAP_SPATIAL_HASH_COORDSIZE) - y),
@@ -85,6 +88,8 @@
 			if(direct_entity_distance_from(E, x, y) <= dist)
 				. += E
 		return
+
+
 
 	#warn REDO AGAIN
 	// we could not do the easy route

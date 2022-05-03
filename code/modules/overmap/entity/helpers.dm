@@ -1,3 +1,5 @@
+// always use this in this for get entities in range, etc etc
+
 /**
  * gets all entities in x overmaps distance from us
  *
@@ -12,7 +14,18 @@
  */
 /atom/movable/overmap_object/entity/proc/get_entities_in_range(dist, high_accuracy)
 	#warn impl
+	#warn code edge_dist() on /entity, code defines for fastpathing to range() if not near edge and within 8 tile radius or so
+	#warn we will never beat byond builtins. have bounds() run where needed instead
 
+/**
+ * get distance to another object
+ *
+ * this is from our center to theirs.
+ *
+ * returns null if we're not on the same map
+ */
+/atom/movable/overmap_object/entity/proc/distance_to(atom/movable/overmap_object/O)
+	return overmap? overmap.get_entity_distance(src, O) : null
 
 /**
  * get all entities that we are touching, **including ourselves**
