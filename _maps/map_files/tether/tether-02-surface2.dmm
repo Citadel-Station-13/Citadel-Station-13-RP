@@ -5930,9 +5930,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/atom/movable/landmark/start{
-	name = "Detective"
-	},
+/atom/movable/landmark/spawnpoint/job/detective,
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/detective/officea)
 "aja" = (
@@ -5970,9 +5968,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/atom/movable/landmark/start{
-	name = "Detective"
-	},
+/atom/movable/landmark/spawnpoint/job/detective,
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/detective/officeb)
 "ajf" = (
@@ -9289,9 +9285,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Warden"
-	},
+/atom/movable/landmark/spawnpoint/job/warden,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -11883,9 +11877,7 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/atom/movable/landmark/start{
-	name = "Warden"
-	},
+/atom/movable/landmark/spawnpoint/job/warden,
 /obj/structure/curtain/open/bed,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/warden)
@@ -23447,9 +23439,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/atom/movable/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "aQF" = (
@@ -23460,9 +23450,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "aQH" = (
@@ -23777,18 +23765,14 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "aRp" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "aRq" = (
@@ -24076,9 +24060,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "aRQ" = (
@@ -24555,9 +24537,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/atom/movable/landmark/start{
-	name = "Xenobiologist"
-	},
+/atom/movable/landmark/spawnpoint/job/xenobiologist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "aSG" = (
@@ -26527,9 +26507,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "aWq" = (
@@ -26990,9 +26968,7 @@
 /area/janitor)
 "aXj" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "aXk" = (
@@ -27228,9 +27204,7 @@
 	dir = 4
 	},
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "aXS" = (

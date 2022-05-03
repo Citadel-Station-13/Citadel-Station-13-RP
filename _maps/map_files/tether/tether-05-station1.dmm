@@ -4756,9 +4756,7 @@
 /area/tether/exploration/crew)
 "ajg" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "ajk" = (
@@ -5727,9 +5725,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/hallway)
 "alS" = (
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled,
 /area/storage/tools)
 "alT" = (
@@ -10672,9 +10668,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/secondary)
 "avV" = (
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
@@ -19517,9 +19511,7 @@
 	dir = 1
 	},
 /obj/structure/table/bench/standard,
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "fOS" = (
@@ -19745,9 +19737,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "gqv" = (
@@ -20074,9 +20064,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "hqc" = (
@@ -22391,16 +22379,12 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "nsZ" = (
 /obj/machinery/hologram/holopad,
-/atom/movable/landmark/start{
-	name = "Cyborg"
-	},
+/atom/movable/landmark/spawnpoint/job/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
 "ntw" = (
@@ -23720,9 +23704,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/atom/movable/landmark/start{
-	name = "Cyborg"
-	},
+/atom/movable/landmark/spawnpoint/job/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
 "qBc" = (
@@ -25402,9 +25384,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "uyn" = (

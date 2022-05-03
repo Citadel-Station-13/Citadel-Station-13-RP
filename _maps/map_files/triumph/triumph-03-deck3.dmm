@@ -5849,9 +5849,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "eNP" = (
@@ -7173,9 +7171,7 @@
 /area/rnd/xenobiology)
 "fSC" = (
 /obj/structure/bed/chair/office/dark,
-/atom/movable/landmark/start{
-	name = "Psychiatrist"
-	},
+/atom/movable/landmark/spawnpoint/job/psychiatrist,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_1)
 "fSY" = (
@@ -7954,9 +7950,7 @@
 /area/hallway/primary/port)
 "gzr" = (
 /obj/structure/bed/chair/office/dark,
-/atom/movable/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "gzz" = (
@@ -10947,9 +10941,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Psychiatrist"
-	},
+/atom/movable/landmark/spawnpoint/job/psychiatrist,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_2)
 "iYU" = (
@@ -11531,9 +11523,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/breakroom)
 "jAZ" = (
@@ -16664,9 +16654,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "nGr" = (
-/atom/movable/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -24398,9 +24386,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/atom/movable/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "tff" = (
@@ -24554,9 +24540,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "tkF" = (
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "tkS" = (
@@ -26173,9 +26157,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/breakroom)
 "uxH" = (
@@ -26905,9 +26887,7 @@
 /area/medical/psych_ward)
 "uYd" = (
 /obj/structure/table/bench/padded,
-/atom/movable/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "uYz" = (
@@ -27888,9 +27868,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/breakroom)
 "vPH" = (

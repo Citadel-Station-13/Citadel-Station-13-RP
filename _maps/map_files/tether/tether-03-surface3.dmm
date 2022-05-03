@@ -11120,9 +11120,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "asy" = (
@@ -11535,9 +11533,7 @@
 /area/hydroponics)
 "atp" = (
 /obj/structure/bed/chair/office/dark,
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "atq" = (
@@ -11664,9 +11660,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "atD" = (
@@ -12281,9 +12275,7 @@
 /area/hydroponics)
 "auP" = (
 /obj/structure/bed/chair/office/light,
-/atom/movable/landmark/start{
-	name = "Xenobotanist"
-	},
+/atom/movable/landmark/spawnpoint/job/xenobotanist,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "auQ" = (
@@ -12844,9 +12836,7 @@
 	dir = 4
 	},
 /obj/machinery/hologram/holopad,
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "avW" = (
@@ -14488,9 +14478,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Librarian"
-	},
+/atom/movable/landmark/spawnpoint/job/librarian,
 /turf/simulated/floor/carpet,
 /area/library)
 "ayK" = (
@@ -14798,9 +14786,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/atom/movable/landmark/start{
-	name = "Librarian"
-	},
+/atom/movable/landmark/spawnpoint/job/librarian,
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
@@ -18285,9 +18271,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Librarian"
-	},
+/atom/movable/landmark/spawnpoint/job/librarian,
 /turf/simulated/floor/carpet,
 /area/library)
 "aFv" = (
@@ -18630,9 +18614,7 @@
 	pixel_y = 10
 	},
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
 "aFZ" = (
@@ -20096,9 +20078,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "aIv" = (
@@ -21427,9 +21407,7 @@
 /area/hydroponics)
 "aLc" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/atom/movable/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aLd" = (
@@ -23463,9 +23441,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Xenobiologist"
-	},
+/atom/movable/landmark/spawnpoint/job/xenobiologist,
 /obj/machinery/button/remote/blast_door{
 	id = "xenobiolockdown";
 	name = "Xenobiology Lockdown Control";
@@ -23481,9 +23457,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/outpost/xenobiology/outpost_office)
 "aPz" = (
-/atom/movable/landmark/start{
-	name = "Xenobiologist"
-	},
+/atom/movable/landmark/spawnpoint/job/xenobiologist,
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
@@ -23994,9 +23968,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Xenobiologist"
-	},
+/atom/movable/landmark/spawnpoint/job/xenobiologist,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/xenobiology/outpost_office)
 "aQJ" = (
@@ -26213,9 +26185,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
 "aVc" = (
-/atom/movable/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/storage)
 "aVd" = (
@@ -26271,9 +26241,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Chemist"
-	},
+/atom/movable/landmark/spawnpoint/job/chemist,
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	dir = 1;
@@ -30806,9 +30774,7 @@
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/stage)
 "bcY" = (
-/atom/movable/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
@@ -31115,9 +31081,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Botanist"
-	},
+/atom/movable/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "bdD" = (
@@ -31467,9 +31431,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "bew" = (
@@ -31546,9 +31508,7 @@
 /area/hallway/lower/third_south)
 "beC" = (
 /obj/structure/table/bench/standard,
-/atom/movable/landmark/start{
-	name = "Botanist"
-	},
+/atom/movable/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "beD" = (
@@ -31713,9 +31673,7 @@
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/stage)
 "beS" = (
-/atom/movable/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /obj/structure/bed/chair/wood,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
@@ -32387,9 +32345,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "bgw" = (
@@ -34058,9 +34014,7 @@
 /area/rnd/robotics)
 "bku" = (
 /obj/structure/bed/chair/office/dark,
-/atom/movable/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "bkv" = (
@@ -34310,9 +34264,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/resleeving)
 "blb" = (
@@ -35303,9 +35255,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Chemist"
-	},
+/atom/movable/landmark/spawnpoint/job/chemist,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -38172,9 +38122,7 @@
 /area/shuttle/tourbus/general)
 "iQr" = (
 /obj/machinery/hologram/holopad,
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "iRe" = (
@@ -41747,9 +41695,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "soZ" = (
@@ -43886,9 +43832,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "xog" = (
-/atom/movable/landmark/start{
-	name = "Chemist"
-	},
+/atom/movable/landmark/spawnpoint/job/chemist,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
@@ -44144,9 +44088,7 @@
 	pixel_x = 24
 	},
 /obj/structure/bed/chair/comfy/beige,
-/atom/movable/landmark/start{
-	name = "Bartender"
-	},
+/atom/movable/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
 "xOa" = (

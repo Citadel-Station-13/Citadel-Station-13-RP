@@ -451,9 +451,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Gardener"
-	},
+/atom/movable/landmark/spawnpoint/job/gardener,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
@@ -1187,9 +1185,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
@@ -1820,9 +1816,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "fq" = (
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "fr" = (
@@ -5154,9 +5148,7 @@
 /area/maintenance/dormitory)
 "oe" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/atom/movable/landmark/start{
-	name = "Bartender"
-	},
+/atom/movable/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "of" = (
@@ -6550,9 +6542,7 @@
 /area/maintenance/dormitory)
 "sn" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Bartender"
-	},
+/atom/movable/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "so" = (
@@ -7780,9 +7770,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Bartender"
-	},
+/atom/movable/landmark/spawnpoint/job/bartender,
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
@@ -9208,9 +9196,7 @@
 /area/crew_quarters/lounge/kitchen_freezer)
 "zF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -10629,9 +10615,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "DZ" = (
-/atom/movable/landmark/start{
-	name = "Gardener"
-	},
+/atom/movable/landmark/spawnpoint/job/gardener,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -10945,9 +10929,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "EU" = (
@@ -13280,9 +13262,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "LL" = (
-/atom/movable/landmark/start{
-	name = "Quartermaster"
-	},
+/atom/movable/landmark/spawnpoint/job/quartermaster,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/qm)
 "LO" = (
@@ -15309,9 +15289,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "RV" = (
-/atom/movable/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "RW" = (
@@ -17266,9 +17244,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "Xa" = (
-/atom/movable/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},

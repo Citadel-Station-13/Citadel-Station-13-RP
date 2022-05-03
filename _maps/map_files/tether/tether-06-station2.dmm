@@ -6712,9 +6712,7 @@
 /area/tether/station/burial)
 "avU" = (
 /obj/structure/bed/chair/wood,
-/atom/movable/landmark/start{
-	name = "Chaplain"
-	},
+/atom/movable/landmark/spawnpoint/job/chaplain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/office)
 "awa" = (
@@ -7201,9 +7199,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "ayn" = (
-/atom/movable/landmark/start{
-	name = "Pathfinder"
-	},
+/atom/movable/landmark/spawnpoint/job/pathfinder,
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
@@ -7677,9 +7673,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/chapel/main)
 "aAI" = (
-/atom/movable/landmark/start{
-	name = "Chaplain"
-	},
+/atom/movable/landmark/spawnpoint/job/chaplain,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
 "aAL" = (
@@ -9686,9 +9680,7 @@
 /area/tether/station/burial)
 "aJF" = (
 /obj/machinery/light/small,
-/atom/movable/landmark/start{
-	name = "Chaplain"
-	},
+/atom/movable/landmark/spawnpoint/job/chaplain,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -12852,9 +12844,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/large_escape_pod1)
 "aVd" = (
-/atom/movable/landmark/start{
-	name = "AI"
-	},
+/atom/movable/landmark/spawnpoint/job/ai,
 /obj/machinery/requests_console{
 	department = "AI";
 	departmentType = 5;
@@ -21022,9 +21012,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Quartermaster"
-	},
+/atom/movable/landmark/spawnpoint/job/quartermaster,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -25260,9 +25248,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/pilot,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -26725,9 +26711,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/atom/movable/landmark/start{
-	name = "Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/pilot,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -27159,9 +27143,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/spacedorm1)
 "yfO" = (
-/atom/movable/landmark/start{
-	name = "Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
 "ygo" = (
