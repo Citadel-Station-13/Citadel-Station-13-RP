@@ -41,6 +41,7 @@
 
 ///////////////////////////
 //// Spawning and despawning
+#warn nuke this frrom orbit
 var/global/list/latejoin_trade = list()
 /atom/movable/landmark/trade
 	name = "JoinLateTrade"

@@ -107,6 +107,7 @@ var/global/list/latejoin_tram   = list()
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
+#warn nuke this from orbit
 // shuttle arrival point landmarks and datum
 var/global/list/latejoin_shuttle   = list()
 

@@ -342,21 +342,11 @@ var/global/datum/controller/occupations/job_master
 		var/list/spawn_in_storage = list()
 
 		if(!joined_late)
-			var/obj/S = null
-			var/list/possible_spawns = list()
-			for(var/atom/movable/landmark/start/sloc in GLOB.landmarks_list)
-				#warn oh god im gonna be sick
-				if(sloc.name != rank)
-					continue
-				if(locate(/mob/living) in sloc.loc)
-					continue
-				possible_spawns.Add(sloc)
-			if(possible_spawns.len)
-				S = pick(possible_spawns)
-			if(!S)
-				S = locate("start*[rank]") // use old stype
-			if(istype(S, /atom/movable/landmark/start) && istype(S.loc, /turf))
-				H.forceMove(S.loc)
+			var/atom/movable/landmark/spawnpoint/S = SSjob.GetRoundstartSpawnpoint(H, H.client, job.type, job.faction)
+
+			if(istype(S))
+				H.forceMove(S.GetSpawnLoc())
+				S.OnSpawn(H, H.client)
 			else
 				var/list/spawn_props = LateSpawn(H.client, rank)
 				var/turf/T = spawn_props["turf"]
