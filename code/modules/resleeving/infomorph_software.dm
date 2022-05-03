@@ -1,158 +1,163 @@
 /datum/infomorph_software
-	// Name for the software. This is used as the button text when buying or opening/toggling the software
+	/// Name for the software. This is used as the button text when buying or opening/toggling the software.
 	var/name = "infomorph software module"
-	// RAM cost; pAIs start with 100 RAM, spending it on programs
+	/// RAM cost; pAIs start with 100 RAM, spending it on programs.
 	var/ram_cost = 0
-	// ID for the software. This must be unique
+	/// ID for the software. This must be unique.
 	var/id = ""
-	// Whether this software is a toggle or not
-	// Toggled software should override toggle() and is_active()
-	// Non-toggled software should override on_nano_ui_interact() and Topic()
-	var/toggle = 1
-	// Whether pAIs should automatically receive this module at no cost
-	var/default = 0
+	/// Whether this software is a toggle or not.
+	var/toggle = TRUE
+	/// Whether pAIs should automatically receive this module at no cost.
+	var/default = FALSE
 
-	proc/on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
-		return
+/datum/infomorph_software/ui_state(mob/user)
+	return GLOB.always_state
 
-	proc/toggle(mob/living/silicon/infomorph/user)
-		return
+/datum/infomorph_software/ui_status(mob/user)
+	if(!istype(user, /mob/living/silicon/infomorph))
+		return UI_CLOSE
+	return ..()
 
-	proc/is_active(mob/living/silicon/infomorph/user)
-		return 0
+/datum/infomorph_software/proc/toggle(mob/living/silicon/infomorph/user)
+	return
+
+/datum/infomorph_software/proc/is_active(mob/living/silicon/infomorph/user)
+	return FALSE
 
 /datum/infomorph_software/crew_manifest
 	name = "Crew Manifest"
-	ram_cost = 15
+	ram_cost = 5
 	id = "manifest"
-	toggle = 0
+	toggle = FALSE
 
-	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+/datum/infomorph_software/crew_manifest/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "CrewManifest", name, parent_ui)
+		ui.open()
+
+/datum/infomorph_software/crew_manifest/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
+	if(data_core)
 		data_core.get_manifest_list()
-
-		var/data[0]
-		// This is dumb, but NanoUI breaks if it has no data to send
-		data["manifest"] = GLOB.PDA_Manifest
-
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_manifest.tmpl", "Crew Manifest", 450, 600)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+	data["manifest"] = GLOB.PDA_Manifest
+	return data
 
 /datum/infomorph_software/med_records
 	name = "Medical Records"
 	ram_cost = 15
 	id = "med_records"
-	toggle = 0
+	toggle = FALSE
 
-	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/infomorph_software/med_records/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "pAIMedrecords", name, parent_ui)
+		ui.open()
 
-		var/records[0]
-		for(var/datum/data/record/general in sortRecord(data_core.general))
-			var/record[0]
-			record["name"] = general.fields["name"]
-			record["ref"] = "\ref[general]"
-			records[++records.len] = record
+/datum/infomorph_software/med_records/ui_data(mob/living/silicon/infomorph/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
 
-		data["records"] = records
+	var/list/records = list()
+	for(var/datum/data/record/general in sortRecord(data_core.general))
+		var/list/record = list()
+		record["name"] = general.fields["name"]
+		record["ref"] = "\ref[general]"
+		records.Add(list(record))
 
-		var/datum/data/record/G = user.medicalActive1
-		var/datum/data/record/M = user.medicalActive2
-		data["general"] = G ? G.fields : null
-		data["medical"] = M ? M.fields : null
-		data["could_not_find"] = user.medical_cannotfind
+	data["records"] = records
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_medrecords.tmpl", "Medical Records", 450, 600)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+	var/datum/data/record/G = user.medicalActive1
+	var/datum/data/record/M = user.medicalActive2
+	data["general"] = G ? G.fields : null
+	data["medical"] = M ? M.fields : null
+	data["could_not_find"] = user.medical_cannotfind
 
-	Topic(href, href_list)
-		var/mob/living/silicon/infomorph/P = usr
-		if(!istype(P)) return
+	return data
 
-		if(href_list["select"])
-			var/datum/data/record/record = locate(href_list["select"])
-			if(record)
-				var/datum/data/record/R = record
-				var/datum/data/record/M = null
-				if (!( data_core.general.Find(R) ))
-					P.medical_cannotfind = 1
-				else
-					P.medical_cannotfind = 0
-					for(var/datum/data/record/E in data_core.medical)
-						if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
-							M = E
-					P.medicalActive1 = R
-					P.medicalActive2 = M
+/datum/infomorph_software/med_records/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	var/mob/living/silicon/infomorph/P = usr
+	if(!istype(P))
+		return
+
+	if(action == "select")
+		var/datum/data/record/record = locate(params["select"])
+		if(record)
+			var/datum/data/record/R = record
+			var/datum/data/record/M = null
+			if (!( data_core.general.Find(R) ))
+				P.medical_cannotfind = TRUE
 			else
-				P.medical_cannotfind = 1
-			return 1
+				P.medical_cannotfind = FALSE
+				for(var/datum/data/record/E in data_core.medical)
+					if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
+						M = E
+				P.medicalActive1 = R
+				P.medicalActive2 = M
+		else
+			P.medical_cannotfind = TRUE
+		return TRUE
 
 /datum/infomorph_software/sec_records
 	name = "Security Records"
 	ram_cost = 15
 	id = "sec_records"
-	toggle = 0
+	toggle = FALSE
 
-	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/infomorph_software/sec_records/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "pAISecrecords", name, parent_ui)
+		ui.open()
 
-		var/records[0]
-		for(var/datum/data/record/general in sortRecord(data_core.general))
-			var/record[0]
-			record["name"] = general.fields["name"]
-			record["ref"] = "\ref[general]"
-			records[++records.len] = record
+/datum/infomorph_software/sec_records/ui_data(mob/living/silicon/infomorph/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
 
-		data["records"] = records
+	var/list/records = list()
+	for(var/datum/data/record/general in sortRecord(data_core.general))
+		var/list/record = list()
+		record["name"] = general.fields["name"]
+		record["ref"] = "\ref[general]"
+		records.Add(list(record))
 
-		var/datum/data/record/G = user.securityActive1
-		var/datum/data/record/S = user.securityActive2
-		data["general"] = G ? G.fields : null
-		data["security"] = S ? S.fields : null
-		data["could_not_find"] = user.security_cannotfind
+	data["records"] = records
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_secrecords.tmpl", "Security Records", 450, 600)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+	var/datum/data/record/G = user.securityActive1
+	var/datum/data/record/S = user.securityActive2
+	data["general"] = G ? G.fields : null
+	data["security"] = S ? S.fields : null
+	data["could_not_find"] = user.security_cannotfind
 
-	Topic(href, href_list)
-		var/mob/living/silicon/infomorph/P = usr
-		if(!istype(P)) return
+	return data
 
-		if(href_list["select"])
-			var/datum/data/record/record = locate(href_list["select"])
-			if(record)
-				var/datum/data/record/R = record
-				var/datum/data/record/S = null
-				if (!( data_core.general.Find(R) ))
-					P.securityActive1 = null
-					P.securityActive2 = null
-					P.security_cannotfind = 1
-				else
-					P.security_cannotfind = 0
-					for(var/datum/data/record/E in data_core.security)
-						if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
-							S = E
-					P.securityActive1 = R
-					P.securityActive2 = S
-			else
+/datum/infomorph_software/sec_records/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	var/mob/living/silicon/infomorph/P = usr
+	if(!istype(P))
+		return
+
+	if(action == "select")
+		var/datum/data/record/record = locate(params["select"])
+		if(record)
+			var/datum/data/record/R = record
+			var/datum/data/record/S = null
+			if (!( data_core.general.Find(R) ))
 				P.securityActive1 = null
 				P.securityActive2 = null
-				P.security_cannotfind = 1
-			return 1
+				P.security_cannotfind = TRUE
+			else
+				P.security_cannotfind = FALSE
+				for(var/datum/data/record/E in data_core.security)
+					if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
+						S = E
+				P.securityActive1 = R
+				P.securityActive2 = S
+		else
+			P.securityActive1 = null
+			P.securityActive2 = null
+			P.security_cannotfind = TRUE
+		return TRUE
 
 /datum/infomorph_software/door_jack
 	name = "Door Jack"
@@ -160,45 +165,47 @@
 	id = "door_jack"
 	toggle = 0
 
-	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/infomorph_software/door_jack/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "pAIDoorjack", "Door Jack", parent_ui)
+		ui.open()
 
-		data["cable"] = user.cable != null
-		data["machine"] = user.cable && (user.cable.machine != null)
-		data["inprogress"] = user.hackdoor != null
-		data["progress_a"] = round(user.hackprogress)
-		data["progress_b"] = user.hackprogress % 10
-		data["aborted"] = user.hack_aborted
+/datum/infomorph_software/door_jack/ui_data(mob/living/silicon/infomorph/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_doorjack.tmpl", "Door Jack", 300, 150)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+	data["cable"] = user.cable != null
+	data["machine"] = user.cable && (user.cable.machine != null)
+	data["inprogress"] = user.hackdoor != null
+	data["progress_a"] = round(user.hackprogress / 10)
+	data["progress_b"] = user.hackprogress % 10
+	data["aborted"] = user.hack_aborted
 
-	Topic(href, href_list)
-		var/mob/living/silicon/infomorph/P = usr
-		if(!istype(P)) return
+	return data
 
-		if(href_list["jack"])
+/datum/infomorph_software/door_jack/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	var/mob/living/silicon/infomorph/P = usr
+	if(!istype(P) || ..())
+		return TRUE
+
+	switch(action)
+		if("jack")
 			if(P.cable && P.cable.machine)
 				P.hackdoor = P.cable.machine
 				P.hackloop()
-			return 1
-		else if(href_list["cancel"])
+			return TRUE
+		if("cancel")
 			P.hackdoor = null
-			return 1
-		else if(href_list["cable"])
+			return TRUE
+		if("cable")
 			var/turf/T = get_turf(P)
-			P.hack_aborted = 0
+			P.hack_aborted = FALSE
 			P.cable = new /obj/item/pai_cable(T)
-			if(ishuman(P.card.loc))
-				var/mob/living/carbon/human/H = P.card.loc
-				H.put_in_any_hand_if_possible(P.cable)
-			T.visible_message("<span class='warning'>A port on \the [P] opens to reveal \the [P.cable].</span>")
-			return 1
+			for(var/mob/M in viewers(T))
+				M.show_message(\
+					SPAN_WARNING("A port on [P] opens to reveal [P.cable], which promptly falls to the floor."), 3,
+					SPAN_WARNING("You hear the soft click of something light and hard falling to the ground."), 2)
+			return TRUE
 
 /mob/living/silicon/infomorph/proc/hackloop()
 	var/turf/T = get_turf(src)
@@ -211,7 +218,7 @@
 
 	var/obj/machinery/door/D = cable.machine
 	if(!istype(D))
-		hack_aborted = 1
+		hack_aborted = TRUE
 		hackprogress = 0
 		cable.machine = null
 		hackdoor = null
@@ -224,7 +231,7 @@
 
 		//Something went wrong!
 		else
-			hack_aborted = 1
+			hack_aborted = TRUE
 			hackprogress = 0
 
 		//Success!
@@ -233,7 +240,7 @@
 			D.open()
 		sleep(10)			// Update every second
 
-	T.visible_message("<span class='warning'>\The [cable] whips back into \the [src] from \the [hackdoor].</span>")
+	T.visible_message(SPAN_WARNING("\The [cable] whips back into \the [src] from \the [hackdoor]."))
 	qdel(cable)
 	hackdoor = null
 
@@ -241,41 +248,52 @@
 	name = "Atmosphere Sensor"
 	ram_cost = 15
 	id = "atmos_sense"
-	toggle = 0
+	toggle = FALSE
 
-	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/infomorph_software/atmosphere_sensor/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "pAIAtmos", name, parent_ui)
+		ui.open()
 
-		var/turf/T = get_turf_or_move(user.loc)
-		if(!T)
-			data["reading"] = 0
-			data["pressure"] = 0
-			data["temperature"] = 0
-			data["temperatureC"] = 0
-			data["gas"] = list()
-		else
-			var/datum/gas_mixture/env = T.return_air()
-			data["reading"] = 1
-			var/pres = env.return_pressure() * 10
-			data["pressure"] = "[round(pres/10)].[pres%10]"
-			data["temperature"] = round(env.temperature)
-			data["temperatureC"] = round(env.temperature-T0C)
+/datum/infomorph_software/atmosphere_sensor/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
 
-			var/t_moles = env.total_moles
-			var/gases[0]
-			for(var/g in env.gas)
-				var/gas[0]
-				gas["name"] = GLOB.meta_gas_names[g]
-				gas["percent"] = round((env.gas[g] / t_moles) * 100)
-				gases[++gases.len] = gas
-			data["gas"] = gases
+	var/list/results = list()
+	var/turf/T = get_turf(user)
+	if(!isnull(T))
+		var/datum/gas_mixture/environment = T.return_air()
+		var/pressure = environment.return_pressure()
+		var/total_moles = environment.total_moles
+		if (total_moles)
+			var/o2_level = environment.gas[/datum/gas/oxygen]/total_moles
+			var/n2_level = environment.gas[/datum/gas/nitrogen]/total_moles
+			var/co2_level = environment.gas[/datum/gas/carbon_dioxide]/total_moles
+			var/phoron_level = environment.gas[/datum/gas/phoron]/total_moles
+			var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_atmosphere.tmpl", "Atmosphere Sensor", 350, 300)
-			ui.set_initial_data(data)
-			ui.open()
+			// entry is what the element is describing
+			// Type identifies which unit or other special characters to use
+			// Val is the information reported
+			// Bad_high/_low are the values outside of which the entry reports as dangerous
+			// Poor_high/_low are the values outside of which the entry reports as unideal
+			// Values were extracted from the template itself
+			results = list(
+						list("entry" = "Pressure", "units" = "kPa", "val" = "[round(pressure,0.1)]", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80),
+						list("entry" = "Temperature", "units" = "&deg;C", "val" = "[round(environment.temperature-T0C,0.1)]", "bad_high" = 35, "poor_high" = 25, "poor_low" = 15, "bad_low" = 5),
+						list("entry" = "Oxygen", "units" = "kPa", "val" = "[round(o2_level*100,0.1)]", "bad_high" = 140, "poor_high" = 135, "poor_low" = 19, "bad_low" = 17),
+						list("entry" = "Nitrogen", "units" = "kPa", "val" = "[round(n2_level*100,0.1)]", "bad_high" = 105, "poor_high" = 85, "poor_low" = 50, "bad_low" = 40),
+						list("entry" = "Carbon Dioxide", "units" = "kPa", "val" = "[round(co2_level*100,0.1)]", "bad_high" = 10, "poor_high" = 5, "poor_low" = 0, "bad_low" = 0),
+						list("entry" = "Phoron", "units" = "kPa", "val" = "[round(phoron_level*100,0.01)]", "bad_high" = 0.5, "poor_high" = 0, "poor_low" = 0, "bad_low" = 0),
+						list("entry" = "Other", "units" = "kPa", "val" = "[round(unknown_level, 0.01)]", "bad_high" = 1, "poor_high" = 0.5, "poor_low" = 0, "bad_low" = 0)
+						)
+
+	if(isnull(results))
+		results = list(list("entry" = "pressure", "units" = "kPa", "val" = "0", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80))
+
+	data["aircontents"] = results
+
+	return data
 
 /datum/infomorph_software/ar_hud
 	name = "AR HUD"
@@ -305,41 +323,51 @@
 	name = "Remote Signaller"
 	ram_cost = 15
 	id = "signaller"
-	toggle = 0
+	toggle = FALSE
 
-	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/infomorph_software/signaller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Signaler", "Signaler", parent_ui)
+		ui.open()
 
-		data["frequency"] = format_frequency(user.sradio.frequency)
-		data["code"] = user.sradio.code
+/datum/infomorph_software/signaller/ui_data(mob/living/silicon/infomorph/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_signaller.tmpl", "Signaller", 320, 150)
-			ui.set_initial_data(data)
-			ui.open()
+	var/obj/item/integated_radio/signal/R = user.sradio
 
-	Topic(href, href_list)
-		var/mob/living/silicon/infomorph/P = usr
-		if(!istype(P)) return
+	data["frequency"] = R.frequency
+	data["minFrequency"] = RADIO_LOW_FREQ
+	data["maxFrequency"] = RADIO_HIGH_FREQ
+	data["code"] = R.code
 
-		if(href_list["send"])
-			P.sradio.send_signal("ACTIVATE")
-			for(var/mob/O in hearers(1, P.loc))
-				to_chat(O, "[icon2html(thing = src, target = O)] *beep beep*")
-			return 1
+	return data
 
-		else if(href_list["freq"])
-			var/new_frequency = (P.sradio.frequency + text2num(href_list["freq"]))
-			if(new_frequency < PUBLIC_LOW_FREQ || new_frequency > PUBLIC_HIGH_FREQ)
-				new_frequency = sanitize_frequency(new_frequency)
-			P.sradio.set_frequency(new_frequency)
-			return 1
+/datum/infomorph_software/signaller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return TRUE
 
-		else if(href_list["code"])
-			P.sradio.code += text2num(href_list["code"])
-			P.sradio.code = round(P.sradio.code)
-			P.sradio.code = min(100, P.sradio.code)
-			P.sradio.code = max(1, P.sradio.code)
-			return 1
+	var/mob/living/silicon/infomorph/user = usr
+	if(istype(user))
+		var/obj/item/integated_radio/signal/R = user.sradio
+
+		switch(action)
+			if("signal")
+				spawn(0)
+					R.send_signal("ACTIVATE")
+				for(var/mob/O in hearers(1, R.loc))
+					O.show_message("[icon2html(R)] *beep* *beep*", 3, "*beep* *beep*", 2)
+			if("freq")
+				var/frequency = unformat_frequency(params["freq"])
+				frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+				R.set_frequency(frequency)
+				. = TRUE
+			if("code")
+				R.code = clamp(round(text2num(params["code"])), 1, 100)
+				. = TRUE
+			if("reset")
+				if(params["reset"] == "freq")
+					R.set_frequency(initial(R.frequency))
+				else
+					R.code = initial(R.code)
+				. = TRUE

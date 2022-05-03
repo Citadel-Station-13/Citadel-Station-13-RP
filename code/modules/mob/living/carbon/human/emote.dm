@@ -1050,7 +1050,8 @@
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
 				return 1
 			else
-				nextemote += 12 //Double delay
+				addtimer(CALLBACK(src, .proc/spam_flag_false), 12)
+				//nextemote += 12 //Double delay
 				handle_flip()
 				// message = "does a flip!"
 				m_type = 1

@@ -71,6 +71,8 @@
 	var/permit_size_pickup = TRUE
 	/// Following the above - allow stripper gun on us?
 	var/permit_stripped
+	/// Sprite height used for resize features.
+	var/vis_height = 32
 
 /**
  * Hook for generic creation of stuff on new creatures

@@ -377,6 +377,7 @@
 	var/wikilink = null
 	/// Prob() to do agile things
 	var/agility = 20
+	var/icon_height = 32
 
 	//!Weaver abilities
 	var/is_weaver = FALSE

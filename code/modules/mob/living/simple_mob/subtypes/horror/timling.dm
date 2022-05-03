@@ -14,6 +14,7 @@
 	icon_rest = "timling"
 	faction = "horror"
 	icon = 'icons/mob/horror_show/tallhorror.dmi'
+	vis_height = 64
 	icon_gib = "generic_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/TinyTim)
 

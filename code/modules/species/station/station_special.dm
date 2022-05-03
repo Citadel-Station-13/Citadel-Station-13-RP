@@ -303,6 +303,7 @@
 	name_language = LANGUAGE_CANILUNZT
 	primitive_form = SPECIES_MONKEY_VULPKANIN
 	color_mult = 1
+	icon_height = 64
 
 	max_age = 200
 
