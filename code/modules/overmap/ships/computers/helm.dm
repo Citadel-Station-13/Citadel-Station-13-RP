@@ -39,6 +39,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	get_known_sectors()
 
 /obj/machinery/computer/ship/helm/proc/get_known_sectors()
+	#warn OH HO HELL NO WE CANT DO THIS ANYMORE
 	var/area/overmap/map = locate() in world
 	for(var/atom/movable/overmap_object/entity/visitable/sector/S in map)
 		if (S.known)

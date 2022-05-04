@@ -161,6 +161,7 @@
 	linked = new_linked
 	name = initial(name) + " ([linked.name])"
 	// HELM
+	#warn OHHOHOHO NOPE NOT DOING THIS NO MORE AREA LOCATES
 	var/area/overmap/map = locate() in world
 	for(var/atom/movable/overmap_object/entity/visitable/sector/S in map)
 		if(S.known)
