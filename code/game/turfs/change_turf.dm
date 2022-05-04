@@ -34,19 +34,36 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 /turf/proc/TerraformTurf(path, new_baseturf, flags)
 	return ChangeTurf(path, new_baseturf, flags)
 
-// LEGACY BELOW
-
-#warn tell universe is pants on head and can be nuked now
-//Creates a new turf
+// Creates a new turf
+// new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
-	if (!N)
-		return
+	switch(path)
+		if(null)
+			return
+		if(/turf/baseturf_bottom)
+			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/open/space
+			if (!ispath(path))
+				path = text2path(path)
+				if (!ispath(path))
+					warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
+					path = /turf/open/space
+		if(/turf/open/space/basic)
+			// basic doesn't initialize and this will cause issues
+			// no warning though because this can happen naturaly as a result of it being built on top of
+			if(istype(GetBelow(src), /turf/simulated))
+				path = /turf/simulated/open
+			else
+				path = /turf/open/space
+		if(/turf/open/space)
+			if(istype(GetBelow(src), /turf/simulated))
+				path = /turf/simulated/open
 
-	if(N == /turf/space)
-		var/turf/below = GetBelow(src)
-		if(istype(below) && (air_master.has_valid_zone(below) || air_master.has_valid_zone(src)) && (!istype(below, /turf/unsimulated/wall) && !istype(below, /turf/simulated/sky)))	// VOREStation Edit: Weird open space
-			N = /turf/simulated/open
+	if(!GLOB.use_preloader && path == type && !(flags & CHANGETURF_FORCEOP) && (baseturfs == new_baseturfs)) // Don't no-op if the map loader requires it to be reconstructed, or if this is a new set of baseturfs
+		return src
+	if(flags & CHANGETURF_SKIP)
+		return new path(src)
 
+	// store lighting
 	var/old_opacity = opacity
 	var/old_dynamic_lighting = dynamic_lighting
 	var/old_affecting_lights = affecting_lights
@@ -56,12 +73,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_lc_bottomright = lc_bottomright
 	var/old_lc_bottomleft = lc_bottomleft
 
+	// store/invalidae atmos
 	var/atom/movable/fire/old_fire = fire
-	var/old_outdoors = outdoors
-	var/old_dangerous_objects = dangerous_objects
-
-	//to_chat(world, "Replacing [src.type] with [N]")
-
 	if(connections)
 		connections.erase_all()
 
@@ -73,54 +86,55 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		if(S.zone)
 			S.zone.rebuild()
 
+	// store planet stuff
+	var/old_outdoors = outdoors
+	var/old_dangerous_objects = dangerous_objects
+
+	// prep for change
+	var/list/old_baseturfs = baseturfs
+	var/old_type = type
+
+	var/list/post_change_callbacks = list()
+	SEND_SIGNAL(src, COMSIG_TURF_CHANGE, path, new_baseturfs, flags, post_change_callbacks)
+
+	// change
 	changing_turf = TRUE
-	qdel(src)	//Just get the side effects and call Destroy
+	qdel(src) //Just get the side effects and call Destroy
+	//We do this here so anything that doesn't want to persist can clear itself
+	var/list/old_comp_lookup = comp_lookup?.Copy()
+	var/list/old_signal_procs = signal_procs?.Copy()
+	var/turf/W = new path(src)
 
-	if(ispath(N, /turf/simulated/floor))
-		var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
-		if(old_fire)
-			fire = old_fire
+	// WARNING WARNING
+	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
+	// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
+	if(old_comp_lookup)
+		LAZYOR(W.comp_lookup, old_comp_lookup)
+	if(old_signal_procs)
+		LAZYOR(W.signal_procs, old_signal_procs)
 
-		if (istype(W,/turf/simulated/floor))
-			W.RemoveLattice()
+	for(var/datum/callback/callback as anything in post_change_callbacks)
+		callback.InvokeAsync(W)
 
-		if(tell_universe)
-			universe.OnTurfChange(W)
-
-		if(air_master)
-			air_master.mark_for_update(src) //handle the addition of the new turf.
-
-		for(var/turf/space/S in range(W,1))
-			S.update_starlight()
-
-		W.levelupdate()
-		W.update_icon(1)
-		W.post_change()
-		. = W
-
+	if(new_baseturfs)
+		W.baseturfs = baseturfs_string_list(new_baseturfs, W)
 	else
+		W.baseturfs = baseturfs_string_list(old_baseturfs, W) //Just to be safe
 
-		var/turf/W = new N( locate(src.x, src.y, src.z) )
+	if(!(flags & CHANGETURF_DEFER_CHANGE))
+		W.AfterChange(flags, old_type)
 
-		if(old_fire)
-			old_fire.RemoveFire()
-
-		if(tell_universe)
-			universe.OnTurfChange(W)
-
-		if(air_master)
-			air_master.mark_for_update(src)
-
-		for(var/turf/space/S in range(W,1))
-			S.update_starlight()
-
-		W.levelupdate()
-		W.update_icon(1)
-		W.post_change()
-		. =  W
-
+	// restore planet stuff
 	dangerous_objects = old_dangerous_objects
+	if(flags & CHANGETURF_PRESERVE_OUTDOORS)
+		outdoors = old_outdoors
 
+	// restore/update atmos
+	if(old_fire)
+		fire = old_fire
+	air_master.mark_for_update(src)
+
+	// restore lighting
 	if(SSlighting.subsystem_initialized)
 		recalc_atom_opacity()
 		lighting_object = old_lighting_object
@@ -138,25 +152,35 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			else
 				lighting_clear_overlay()
 
+		// todo: non dynamic lighting space starlight
 		for(var/turf/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
 			S.update_starlight()
 
-	if(preserve_outdoors)
-		outdoors = old_outdoors
+	QUEUE_SMOOTH(src)
+	QUEUE_SMOOTH_NEIGHBORS(src)
 
-// Called after turf replaces old one
-/turf/proc/post_change()
-	levelupdate()
+	return W
 
-	var/turf/simulated/open/above = GetAbove(src)
-	if(istype(above))
-		above.update_icon()
+// LEGACY BELOW
 
-	var/turf/simulated/below = GetBelow(src)
-	if(istype(below))
-		below.update_icon() // To add or remove the 'ceiling-less' overlay.
+
+
+
+
+
+
+
 
 // LEGACY ABOVE
+
+//If you modify this function, ensure it works correctly with lateloaded map templates.
+/turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
+	levelupdate()
+	update_vertical_turf_graphics()
+
+/turf/simulated/AfterChange(flags, oldType)
+	..()
+	RemoveLattice()
 
 /turf/proc/RemoveLattice()
 	for(var/obj/structure/lattice/L in src)
