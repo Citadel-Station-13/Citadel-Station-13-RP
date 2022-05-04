@@ -24,7 +24,7 @@
 	icon_state = "diyaab"
 	icon_living = "diyaab"
 	icon_dead = "diyaab_dead"
-	icon = 'icons/jungle.dmi'
+	icon = 'icons/mob/simple_mob/animals_sif.dmi'
 
 	maxHealth = 25
 	health = 25
@@ -45,4 +45,3 @@
 	speak = list("Awrr?", "Aowrl!", "Worrl.")
 	emote_see = list("sniffs the air cautiously","looks around")
 	emote_hear = list("snuffles")
-

@@ -30,7 +30,7 @@
 	icon_state = "shantak"
 	icon_living = "shantak"
 	icon_dead = "shantak_dead"
-	icon = 'icons/jungle.dmi'
+	icon = 'icons/mob/simple_mob/animals_sif.dmi'
 
 	maxHealth = 75
 	randomized = TRUE

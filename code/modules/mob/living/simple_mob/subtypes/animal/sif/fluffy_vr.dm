@@ -48,4 +48,4 @@
 	icon_state = "diyaab"
 	icon_living = "diyaab"
 	icon_dead = "diyaab_dead"
-	icon = 'icons/jungle.dmi'
+	icon = 'icons/mob/simple_mob/animals_sif.dmi'
