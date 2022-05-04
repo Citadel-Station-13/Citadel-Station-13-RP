@@ -19,53 +19,80 @@
  * set velocity to x, y
  */
 /atom/movable/overmap_object/entity/proc/set_velocity(x, y)
+	velocity_x = x
+	velocity_y = y
+	wake_physics()
 
 /**
  * set rotational velocity to [angle per second clockwise]
  */
 /atom/movable/overmap_object/entity/proc/set_angular_velocity(a)
+	angular_velocity = a
+	wake_physics()
 
 /**
  * add velocity
  */
 /atom/movable/overmap_object/entity/proc/adjust_velocity(x, y)
+	velocity_x += x
+	velocity_y += y
+	wake_physics()
 
 /**
  * adjust angular velocity
  */
 /atom/movable/overmap_object/entity/proc/adjust_angular_veloctiy(a)
+	angular_velocity +=a
+	wake_physics()
 
 /**
  * immediate move to
  */
 /atom/movable/overmap_object/entity/proc/set_position(x, y, rotation)
+	position_x = x
+	position_y = y
+	angle = rotation
+	move_to_location()
+	wake_physics()
 
 /**
  * immediate move to overmap
  */
 /atom/movable/overmap_object/entity/proc/set_overmap(datum/overmap/O, x, y, rotation)
+	#warn impl
 
 /**
  * remove from overmap - this will NOT move us off the overmap to nullspace
  * only call this if you know what you're doing!
  */
 /atom/movable/overmap_object/entity/proc/remove_from_overmap()
+	#warn impl
 
 /**
  * check if we're moving, used to determine if we need to start ticking
  */
 /atom/movable/overmap_object/entity/proc/is_moving()
-	#warn impl
+	return QUANTIZE_OVERMAP_SPEED(velocity_x) && QUANTIZE_OVERMAP_SPEED(velocity_y)
 
 /**
  * start ticking physics
  */
 /atom/movable/overmap_object/entity/proc/wake_physics()
+	if(moving)
+		return
+	moving = TRUE
+	if(overmap)
+		overmap.moving += src
 
 /**
  * stop ticking physics
  */
 /atom/movable/overmap_object/entity/proc/kill_physics()
+	if(!moving)
+		return
+	moving = FALSE
+	if(overmap)
+		overmap.moving -= src
 
 /**
  * reset physics

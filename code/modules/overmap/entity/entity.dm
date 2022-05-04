@@ -50,6 +50,15 @@
 	reset_physics()
 	return ..()
 
+/atom/movable/overmap_object/entity/Initialize(mapload)
+	. = ..()
+	#warn regist ovmp
+
+/atom/movable/overmap_object/entity/Destroy()
+	kill_physics()
+	#warn unregist ovmp
+	return ..()
+
 /atom/movable/overmap_object/entity/get_bounds_overlay()
 	return
 	// return SSovermaps.entity_bounds_overlay(bound_x, bound_y, bound_width, bound_height)
