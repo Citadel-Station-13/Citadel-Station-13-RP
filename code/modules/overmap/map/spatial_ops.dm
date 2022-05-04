@@ -189,6 +189,8 @@
 	var/diameter = dist * 2 + 1
 	// early optimization - if diameter is too big, remove wraps and reset x/y's because we know it'll trample
 	var/trampled = NONE
+	// trampled gets set with first bit if we'd entirely wrap around east/west, and/or second if north/south
+	// upon detection, we also cancel wraparound because we can just safely set the start points to 1 for that x/y/both.
 	if(diameter > cached_width_pixels)
 		trampled |= (1<<0)
 		wraparound &= ~(EAST|WEST)
@@ -205,7 +207,7 @@
 		))
 			. += E
 		return
-	// we know at this point we are wrapping around
+	// we know at this point we are wrapping around atleast one side
 
 	#warn impl
 
