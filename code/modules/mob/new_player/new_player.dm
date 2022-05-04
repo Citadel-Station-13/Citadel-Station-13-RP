@@ -505,6 +505,7 @@
 	//Find our spawning point.
 	var/list/join_props = job_master.LateSpawn(client, rank)
 	var/turf/T = join_props["turf"]
+	#warn modify this to be actual message, not append.
 	var/join_message = join_props["msg"]
 	var/announce_channel = join_props["channel"] || "Common"
 
