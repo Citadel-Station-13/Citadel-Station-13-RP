@@ -7,9 +7,9 @@
 
 /atom/movable/landmark/spawnpoint/latejoin/station/arrivals_shuttle/OnSpawn(mob/M, client/C)
 	. = ..()
-	var/obj/structure/chair/_C = locate() in GetSpawnLoc()
-	if(C && !length(_C.buckled_mobs))
-		_C.buckle_mob(M, FALSE, FALSE)
+	// var/obj/structure/chair/_C = locate() in GetSpawnLoc()
+	// if(C && !length(_C.buckled_mobs))
+	// 	_C.buckle_mob(M, FALSE, FALSE)
 	// if(SSshuttle.arrivals.mode == SHUTTLE_CALL)
 	// 	var/atom/movable/screen/splash/Spl = new(C, TRUE)
 	// 	Spl.Fade(TRUE)
