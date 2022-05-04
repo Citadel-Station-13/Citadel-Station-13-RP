@@ -5221,7 +5221,7 @@
 /area/ship/expe/bridge)
 "jT" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
-/obj/effect/floor_decal/industrial/danger/corner,
+/obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangar)
 "jU" = (
@@ -5229,7 +5229,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangar)
 "jV" = (
@@ -5912,12 +5912,12 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangar)
 "lj" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangar)
 "lk" = (
@@ -5948,7 +5948,7 @@
 	icon_state = "borderfloorcorner_black";
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/floor_decal/industrial/warning/corner{
 	icon_state = "dangercorner";
 	dir = 1
 	},
@@ -6390,7 +6390,7 @@
 	icon_state = "borderfloor_black";
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 4
 	},
@@ -6521,7 +6521,7 @@
 	icon_state = "borderfloor_black";
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 8
 	},
@@ -7203,7 +7203,7 @@
 	icon_state = "borderfloor_black";
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 4
 	},
@@ -8080,7 +8080,7 @@
 	icon_state = "borderfloor_black";
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 8
 	},
@@ -8109,7 +8109,7 @@
 	icon_state = "borderfloor_black";
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 4
 	},
@@ -8501,7 +8501,7 @@
 	icon_state = "borderfloor_black";
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 8
 	},
@@ -8512,7 +8512,7 @@
 	icon_state = "borderfloorcorner_black";
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/floor_decal/industrial/warning/corner{
 	icon_state = "dangercorner";
 	dir = 4
 	},
@@ -8524,7 +8524,7 @@
 	icon_state = "borderfloor_black";
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 1
 	},
@@ -8536,7 +8536,7 @@
 	icon_state = "borderfloor_black";
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 1
 	},
@@ -8547,7 +8547,7 @@
 	icon_state = "borderfloor_black";
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 1
 	},
@@ -8558,7 +8558,7 @@
 	icon_state = "borderfloorcorner_black";
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/floor_decal/industrial/warning/corner{
 	icon_state = "dangercorner";
 	dir = 8
 	},

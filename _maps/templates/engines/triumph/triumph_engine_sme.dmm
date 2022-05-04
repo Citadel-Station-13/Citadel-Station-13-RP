@@ -366,7 +366,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ns" = (
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	dir = 8
 	},
 /obj/machinery/camera/network/engine{
@@ -514,7 +514,7 @@
 	pump_direction = 0;
 	use_power = 1
 	},
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced/nitrogen{
@@ -669,7 +669,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/cee,
+/obj/effect/floor_decal/industrial/warning/end,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "za" = (

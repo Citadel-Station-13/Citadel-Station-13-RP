@@ -8,12 +8,12 @@
 	var/paint_colour = "#FFFFFF"
 
 	var/list/decals = list(
-		"quarter-turf" =      list("path" = /obj/effect/floor_decal/corner, "precise" = 1, "coloured" = 1),
+		"quarter-turf" =      list("path" = /obj/effect/floor_decal/corner, "precise" = TRUE, "coloured" = TRUE),
 		"hazard stripes" =    list("path" = /obj/effect/floor_decal/industrial/warning),
 		"corner, hazard" =    list("path" = /obj/effect/floor_decal/industrial/warning/corner),
-		"hatched marking" =   list("path" = /obj/effect/floor_decal/industrial/hatch, "coloured" = 1),
-		"dotted outline" =    list("path" = /obj/effect/floor_decal/industrial/outline, "coloured" = 1),
-		"loading sign" =      list("path" = /obj/effect/floor_decal/industrial/loading),
+		"hatched marking" =   list("path" = /obj/effect/floor_decal/industrial/hatch, "coloured" = TRUE),
+		"dotted outline" =    list("path" = /obj/effect/floor_decal/industrial/outline, "coloured" = TRUE),
+		"loading sign" =      list("path" = /obj/effect/floor_decal/industrial/loading, "coloured" = TRUE),
 		"1" =                 list("path" = /obj/effect/floor_decal/sign),
 		"2" =                 list("path" = /obj/effect/floor_decal/sign/two),
 		"A" =                 list("path" = /obj/effect/floor_decal/sign/a),

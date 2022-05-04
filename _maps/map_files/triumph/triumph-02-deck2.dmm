@@ -2672,7 +2672,7 @@
 /area/crew_quarters/sleep/Dorm_11)
 "hx" = (
 /obj/machinery/disposal,
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/floor_decal/industrial/warning/box,
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/light{
 	dir = 1
@@ -3930,7 +3930,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
 "kZ" = (
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/floor_decal/industrial/warning/box,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -10659,7 +10659,7 @@
 /area/crew_quarters/bar)
 "Eg" = (
 /obj/machinery/mineral/input,
-/obj/effect/floor_decal/industrial/loading,
+/obj/effect/floor_decal/industrial/loading/yellow,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
@@ -11279,7 +11279,7 @@
 /area/crew_quarters/kitchen)
 "FK" = (
 /obj/machinery/computer/roguezones,
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -17896,7 +17896,7 @@
 /area/janitor)
 "YI" = (
 /obj/machinery/mineral/output,
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,

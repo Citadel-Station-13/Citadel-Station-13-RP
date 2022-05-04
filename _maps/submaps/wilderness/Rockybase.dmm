@@ -60,17 +60,17 @@
 /turf/template_noop,
 /area/template_noop)
 "aq" = (
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "ar" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "as" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "at" = (

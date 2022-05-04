@@ -26,7 +26,7 @@
 	icon_state = "savik"
 	icon_living = "savik"
 	icon_dead = "savik_dead"
-	icon = 'icons/mob/simple_mob/animals_sif.dmi'
+	icon = 'icons/mob/simple_mobs/animals_sif.dmi'
 
 	maxHealth = 125
 	health = 125

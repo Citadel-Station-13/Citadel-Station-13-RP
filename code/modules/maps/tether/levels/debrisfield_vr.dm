@@ -46,7 +46,7 @@
 
 /area/tether_away/debrisfield_vr
 	name = "Away Mission - Debris Field"
-	icon = 'icons/turf/areas_vr.dmi'
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
 
 /area/tether_away/debrisfield_vr/shuttle_buffer //For space around shuttle landmarks to keep submaps from generating to block them
@@ -62,7 +62,7 @@
 	ambience = AMBIENCE_SPACE
 
 /area/submap/debrisfield_vr
-	icon = 'icons/turf/areas_vr.dmi'
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "debrisunexplored"
 
 /area/submap/debrisfield_vr/derelict

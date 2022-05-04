@@ -70,4 +70,3 @@ var/list/grass_types = list(
 	edge_blending_priority = 5
 	tree_chance = 10
 	grass_chance = 0
-

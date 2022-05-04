@@ -394,7 +394,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hangar)
 "aS" = (
@@ -514,7 +514,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hangar)
 "be" = (
@@ -1366,7 +1366,7 @@
 	icon_state = "borderfloorcorner_black";
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 6
 	},
@@ -1442,7 +1442,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall1)
 "cH" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	icon_state = "danger";
 	dir = 10
 	},
@@ -3537,13 +3537,13 @@
 	icon_state = "borderfloorcorner_black";
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hangar)
 "gr" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3607,14 +3607,14 @@
 "gw" = (
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hangar)
 "gx" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,

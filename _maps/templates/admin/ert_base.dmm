@@ -13,11 +13,11 @@
 	},
 /area/centcom/specops)
 "ad" = (
-/obj/effect/floor_decal/industrial/danger/corner,
+/obj/effect/floor_decal/industrial/warning/corner,
 /turf/unsimulated/floor/steel,
 /area/centcom/specops)
 "ae" = (
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/unsimulated/floor/steel,
 /area/centcom/specops)
 "af" = (
@@ -38,13 +38,13 @@
 	},
 /area/centcom/specops)
 "ah" = (
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/specops)
 "ai" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -64,7 +64,7 @@
 	},
 /area/centcom/specops)
 "al" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
@@ -2042,19 +2042,19 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "ee" = (
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/specops)
 "ef" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/specops)
 "eg" = (
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,

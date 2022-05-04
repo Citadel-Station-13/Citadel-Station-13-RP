@@ -690,7 +690,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "bn" = (
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	dir = 8
 	},
 /obj/machinery/shipsensors{

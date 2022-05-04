@@ -614,7 +614,7 @@
 	tag_exterior_door = "carp_outer";
 	tag_interior_door = "carp_inner"
 	},
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	icon_state = "warningcee";
 	dir = 8
 	},
@@ -626,7 +626,7 @@
 	frequency = 1375;
 	id_tag = "carp_pump"
 	},
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	icon_state = "warningcee";
 	dir = 4
 	},

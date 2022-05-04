@@ -877,7 +877,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hardstorage)
 "abx" = (
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
@@ -3551,7 +3551,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 6
 	},
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/floor_decal/industrial/warning/box,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/white,
@@ -6082,7 +6082,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/hole/right,
@@ -6092,7 +6092,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/hole,
@@ -9926,7 +9926,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -11516,7 +11516,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -14436,7 +14436,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -14595,7 +14595,7 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
 	},
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
@@ -17626,7 +17626,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -21071,7 +21071,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -21783,7 +21783,7 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/borderfloor/cee,
-/obj/effect/floor_decal/industrial/danger/cee,
+/obj/effect/floor_decal/industrial/warning/end,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "aKv" = (
@@ -34884,7 +34884,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{

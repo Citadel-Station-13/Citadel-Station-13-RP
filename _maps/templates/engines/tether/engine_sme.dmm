@@ -217,7 +217,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "aL" = (
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/nitrogen{
@@ -228,7 +228,7 @@
 /turf/simulated/floor/greengrid/nitrogen,
 /area/engineering/engine_room)
 "aN" = (
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/engine{
@@ -1585,7 +1585,7 @@
 /turf/template_noop,
 /area/template_noop)
 "wm" = (
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	dir = 1
 	},
 /obj/machinery/shield_diffuser,

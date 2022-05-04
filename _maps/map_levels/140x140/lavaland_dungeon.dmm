@@ -62,7 +62,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "cA" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -252,7 +252,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "lL" = (
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -330,7 +330,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -404,7 +404,7 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -533,7 +533,7 @@
 /area/lavaland/dungeon/facility)
 "xN" = (
 /obj/structure/railing,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "xV" = (

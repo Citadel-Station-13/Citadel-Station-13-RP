@@ -24,7 +24,7 @@
 	icon_state = "diyaab"
 	icon_living = "diyaab"
 	icon_dead = "diyaab_dead"
-	icon = 'icons/mob/simple_mob/animals_sif.dmi'
+	icon = 'icons/mob/simple_mobs/animals_sif.dmi'
 
 	maxHealth = 25
 	health = 25

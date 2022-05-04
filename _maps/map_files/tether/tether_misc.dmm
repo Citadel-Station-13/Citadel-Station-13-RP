@@ -1551,7 +1551,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "eS" = (
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "eT" = (
@@ -2000,7 +2000,7 @@
 /area/holodeck/holodorm/source_off)
 "gU" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "gV" = (
@@ -4170,7 +4170,7 @@
 /turf/space/transit/north,
 /area/space)
 "JR" = (
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	dir = 8
 	},
 /obj/machinery/door/blast/regular/open{
@@ -4571,7 +4571,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "QE" = (
-/obj/effect/floor_decal/industrial/loading,
+/obj/effect/floor_decal/industrial/loading/yellow,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "QG" = (
@@ -4676,7 +4676,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "Rv" = (
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/floor_decal/industrial/warning/end{
 	dir = 4
 	},
 /obj/machinery/door/blast/regular/open{
@@ -4766,7 +4766,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/escape)
 "RP" = (
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -6203,7 +6203,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "Yh" = (
-/obj/effect/floor_decal/industrial/loading,
+/obj/effect/floor_decal/industrial/loading/yellow,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "Yj" = (
@@ -6584,7 +6584,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/terminal)
 "Zl" = (
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,

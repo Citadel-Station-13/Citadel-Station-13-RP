@@ -56,7 +56,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "ai" = (
 /turf/simulated/wall/r_wall,
@@ -503,7 +503,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "bW" = (
 /obj/structure/cable/green{
@@ -792,7 +792,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "cQ" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -1105,7 +1105,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "dL" = (
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/cockpit)
 "dP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1400,7 +1400,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "eV" = (
 /turf/simulated/floor/tiled/asteroid_steel/airless,
@@ -1647,7 +1647,7 @@
 /obj/machinery/media/jukebox{
 	state_base = "darkjuke"
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "fW" = (
 /obj/machinery/gibber,
@@ -1669,7 +1669,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "gd" = (
 /obj/structure/closet/emcloset,
@@ -1757,7 +1757,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "gu" = (
 /obj/machinery/light{
@@ -1839,7 +1839,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "gJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2242,7 +2242,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "io" = (
 /obj/machinery/alarm/alarms_hidden{
@@ -2285,7 +2285,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "iA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2364,7 +2364,7 @@
 	desc = "This statue commemorates Farnsworth, the legendary Nebula Gas janitor. Even posthumously, Farnsworth retains the longest consecutive run of employee of the month awards.";
 	name = "Employee of the Month"
 	},
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "iL" = (
 /obj/machinery/newscaster{
@@ -2760,7 +2760,7 @@
 /obj/structure/sink{
 	pixel_y = 19
 	},
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "jY" = (
 /obj/structure/bed/chair{
@@ -2914,7 +2914,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "kK" = (
 /obj/machinery/alarm/alarms_hidden{
@@ -3034,7 +3034,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
@@ -3425,7 +3425,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "mD" = (
 /obj/item/radio/intercom/trader{
@@ -3948,7 +3948,7 @@
 "oj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/table/steel,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "ol" = (
 /obj/machinery/light{
@@ -4518,7 +4518,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "qa" = (
 /turf/simulated/floor/grass,
@@ -4691,7 +4691,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "qC" = (
 /obj/machinery/light{
@@ -5242,7 +5242,7 @@
 /obj/structure/janitorialcart,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/mop,
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "sL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5400,7 +5400,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/item/storage/secure/briefcase,
 /obj/structure/table/steel,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "tp" = (
 /obj/structure/table/steel_reinforced,
@@ -5414,7 +5414,7 @@
 /obj/item/storage/box/lights/mixed,
 /obj/item/storage/box/lights/mixed,
 /obj/item/reagent_containers/spray/cleaner/drone,
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "tr" = (
 /obj/structure/fence/corner{
@@ -5702,7 +5702,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "ux" = (
 /obj/machinery/light,
@@ -6010,7 +6010,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "vC" = (
 /obj/structure/table/standard,
@@ -6334,7 +6334,7 @@
 /area/tradeport/spine)
 "wB" = (
 /obj/structure/closet/crate/trashcart,
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "wE" = (
 /obj/structure/table/alien,
@@ -7335,7 +7335,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "zP" = (
 /obj/structure/table/marble,
@@ -7414,7 +7414,7 @@
 /area/tradeport/facility)
 "Ai" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
@@ -7448,7 +7448,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "Ar" = (
 /obj/structure/closet/crate/secure/weapon{
@@ -7706,7 +7706,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "BC" = (
 /turf/simulated/wall/sandstonediamond,
@@ -7818,7 +7818,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "BT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8052,7 +8052,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "CR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8184,7 +8184,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "Dk" = (
 /obj/structure/grille,
@@ -8334,7 +8334,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "Ea" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -8414,7 +8414,7 @@
 "Eq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "Er" = (
 /obj/structure/table/rack/shelf/steel,
@@ -8554,7 +8554,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "EU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8735,7 +8735,7 @@
 /area/tradeport/safarizoo)
 "FF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "FH" = (
 /obj/structure/closet/syndicate/personal{
@@ -8806,7 +8806,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "FT" = (
 /obj/structure/inflatable/door,
@@ -8876,7 +8876,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "Gn" = (
 /obj/item/clothing/under/syndicate,
@@ -10365,7 +10365,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "Mb" = (
 /obj/effect/decal/remains/mummy1,
@@ -10498,7 +10498,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "MC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10536,7 +10536,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "MJ" = (
 /obj/machinery/door/blast/shutters{
@@ -10565,7 +10565,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "MM" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -10843,7 +10843,7 @@
 /obj/machinery/floodlight{
 	anchored = 1
 	},
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/floor_decal/industrial/warning/box,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
@@ -10859,7 +10859,7 @@
 /obj/structure/bed/chair/bay/comfy/captain{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/cockpit)
 "NG" = (
 /obj/machinery/power/tracker,
@@ -10990,7 +10990,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "Ol" = (
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -11395,7 +11395,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "PW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11595,7 +11595,7 @@
 	name = "Beruang";
 	pixel_x = 32
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/cockpit)
 "QF" = (
 /obj/machinery/power/apc/alarms_hidden{
@@ -11807,7 +11807,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small,
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "Rj" = (
 /obj/machinery/door/airlock/glass_external{
@@ -12011,7 +12011,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "RX" = (
 /obj/structure/cable/green{
@@ -12281,7 +12281,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "SU" = (
 /obj/machinery/door/firedoor{
@@ -12749,7 +12749,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "UR" = (
 /obj/structure/railing{
@@ -12935,14 +12935,14 @@
 	dir = 4;
 	name = "Trader Register"
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "VC" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "VD" = (
 /turf/simulated/floor/outdoors/beach/sand/desert,
@@ -13287,7 +13287,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "WO" = (
 /obj/machinery/suit_storage_unit/syndicate,
@@ -13519,7 +13519,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "XF" = (
-/turf/simulated/floor/tiled/old_cargo/beige,
+/turf/simulated/floor/tiled/textured/beige,
 /area/tradeport/atmospherics)
 "XG" = (
 /obj/machinery/door/firedoor{
@@ -13794,7 +13794,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "YD" = (
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "YE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13853,7 +13853,7 @@
 	pixel_x = -7;
 	pixel_y = -2
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/floor/tiled/textured/red,
 /area/shuttle/trade_ship/general)
 "YT" = (
 /obj/structure/cable/yellow{

@@ -294,6 +294,17 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	flags = 0
 	no_variants = FALSE
 
+/obj/item/stack/tile/titanium
+	name = "titanium tile"
+	singular_name = "titanium tile"
+	icon_state = "tile-titanium"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
 /obj/item/stack/tile/plasteel
 	name = "plasteel tile"
 	singular_name = "plasteel tile"

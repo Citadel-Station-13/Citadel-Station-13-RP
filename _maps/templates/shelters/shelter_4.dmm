@@ -30,7 +30,7 @@
 "g" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/voidcraft/survival_pod,
-/obj/effect/floor_decal/industrial/danger/full,
+/obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 1;
@@ -145,13 +145,13 @@
 /area/survivalpod)
 "o" = (
 /obj/machinery/mech_recharger,
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/floor_decal/industrial/warning/box,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)
 "p" = (
 /obj/machinery/door/airlock/voidcraft/survival_pod,
 /obj/structure/fans/tiny,
-/obj/effect/floor_decal/industrial/danger/full,
+/obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -222,7 +222,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/floor_decal/industrial/warning/box,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)
 "A" = (
@@ -384,7 +384,7 @@
 /area/survivalpod)
 "M" = (
 /obj/machinery/mech_recharger,
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/floor_decal/industrial/warning/box,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)
@@ -410,7 +410,7 @@
 /area/survivalpod)
 "R" = (
 /obj/machinery/iv_drip,
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,

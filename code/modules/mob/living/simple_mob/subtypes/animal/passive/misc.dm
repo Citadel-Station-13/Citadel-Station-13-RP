@@ -15,7 +15,7 @@
 	icon_state = "yithian"
 	icon_living = "yithian"
 	icon_dead = "yithian_dead"
-	icon = 'icons/mob/simple_mob/animals_sif.dmi'
+	icon = 'icons/mob/simple_mobs/animals_sif.dmi'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/yithian)
 
 	// Same stats as lizards.
@@ -42,7 +42,7 @@
 	icon_state = "tindalos"
 	icon_living = "tindalos"
 	icon_dead = "tindalos_dead"
-	icon = 'icons/mob/simple_mob/animals_sif.dmi'
+	icon = 'icons/mob/simple_mobs/animals_sif.dmi'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/tindalos)
 
 	// Same stats as lizards.

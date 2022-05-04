@@ -56,7 +56,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/floor_decal/industrial/warning/box,
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)
 "am" = (
@@ -1475,7 +1475,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/snowfield/base)
 "em" = (
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/floor_decal/industrial/loading/yellow{
 	icon_state = "loadingarea";
 	dir = 1
 	},

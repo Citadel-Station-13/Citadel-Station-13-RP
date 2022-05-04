@@ -5,7 +5,7 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal
 	name = "floor decal"
-	icon = 'icons/turf/flooring/decals_vr.dmi' // VOREStation Edit
+	icon = 'icons/turf/decals.dmi'
 	plane = DECAL_PLANE
 	layer = MAPPER_DECAL_LAYER
 	var/supplied_dir
@@ -76,19 +76,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/black/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/black/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/black/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/black/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/black/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/blue
 	name = "blue corner"
@@ -104,19 +104,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/blue/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/blue/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/blue/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/blue/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/blue/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/paleblue
 	name = "pale blue corner"
@@ -132,19 +132,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/paleblue/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/paleblue/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/paleblue/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/paleblue/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/paleblue/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/green
 	name = "green corner"
@@ -160,19 +160,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/green/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/green/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/green/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/green/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/green/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/lime
 	name = "lime corner"
@@ -188,19 +188,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/lime/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/lime/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/lime/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/lime/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/lime/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/yellow
 	name = "yellow corner"
@@ -219,19 +219,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_full"
 
 /obj/effect/floor_decal/corner/yellow/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/yellow/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/yellow/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/yellow/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/yellow/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/beige
 	name = "beige corner"
@@ -247,19 +247,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/beige/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/beige/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/beige/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/beige/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/beige/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/red
 	name = "red corner"
@@ -278,19 +278,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_full"
 
 /obj/effect/floor_decal/corner/red/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/red/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/red/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/red/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/red/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/pink
 	name = "pink corner"
@@ -306,19 +306,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/pink/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/pink/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/pink/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/pink/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/pink/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/purple
 	name = "purple corner"
@@ -334,19 +334,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/purple/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/purple/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/purple/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/purple/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/purple/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/mauve
 	name = "mauve corner"
@@ -362,19 +362,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/mauve/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/mauve/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/mauve/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/mauve/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/mauve/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/orange
 	name = "orange corner"
@@ -390,19 +390,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/orange/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/orange/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/orange/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/orange/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/orange/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/brown
 	name = "brown corner"
@@ -418,19 +418,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/brown/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/brown/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/brown/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/brown/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/brown/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 
 /obj/effect/floor_decal/corner/white
@@ -447,19 +447,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/white/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/white/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/white/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/white/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/white/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/grey
 	name = "grey corner"
@@ -475,19 +475,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/grey/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/grey/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/grey/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/grey/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/grey/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/lightgrey
 	name = "lightgrey corner"
@@ -500,19 +500,19 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/lightgrey/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/lightgrey/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/lightgrey/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/lightgrey/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/spline/plain
 	name = "spline - plain"
@@ -537,56 +537,61 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/industrial/warning
 	name = "hazard stripes"
-	icon_state = "warning"
+	icon_state = "warningline"
 
 /obj/effect/floor_decal/industrial/warning/corner
-	icon_state = "warningcorner"
+	icon_state = "warninglinecorner"
+
+/obj/effect/floor_decal/industrial/warning/box
+	icon_state = "warn_box"
 
 /obj/effect/floor_decal/industrial/warning/full
-	icon_state = "warningfull"
+	icon_state = "warn_full"
 
-/obj/effect/floor_decal/industrial/warning/cee
-	icon_state = "warningcee"
-
-/obj/effect/floor_decal/industrial/danger
-	name = "hazard stripes"
-	icon_state = "danger"
-
-/obj/effect/floor_decal/industrial/danger/corner
-	icon_state = "dangercorner"
-
-/obj/effect/floor_decal/industrial/danger/full
-	icon_state = "dangerfull"
-
-/obj/effect/floor_decal/industrial/danger/cee
-	icon_state = "dangercee"
+/obj/effect/floor_decal/industrial/warning/end
+	icon_state = "warn_end"
 
 /obj/effect/floor_decal/industrial/warning/dust
 	name = "hazard stripes"
-	icon_state = "warning_dust"
+	icon_state = "ast_warn"
 
 /obj/effect/floor_decal/industrial/warning/dust/corner
-	name = "hazard stripes"
-	icon_state = "warningcorner_dust"
+	icon_state = "ast_warn_corner"
+
+/obj/effect/floor_decal/industrial/warning/dust/end
+	icon_state = "ast_warn_end"
+
+/obj/effect/floor_decal/industrial/warning/dust/box
+	icon_state = "ast_warn_box"
+
+/obj/effect/floor_decal/industrial/warning/dust/full
+	icon_state = "ast_warn_full"
 
 /obj/effect/floor_decal/industrial/hatch
 	name = "hatched marking"
-	icon_state = "delivery"
+	icon_state = "delivery_white"
 
 /obj/effect/floor_decal/industrial/hatch/yellow
-	color = "#CFCF55"
+	icon_state = "delivery_yellow"
+
+/obj/effect/floor_decal/industrial/hatch/red
+	icon_state = "delivery_red"
 
 /obj/effect/floor_decal/industrial/outline
 	name = "white outline"
-	icon_state = "outline"
+	icon_state = "bot_white"
 
 /obj/effect/floor_decal/industrial/outline/blue
 	name = "blue outline"
-	color = "#00B8B2"
+	color = COLOR_CYAN
 
 /obj/effect/floor_decal/industrial/outline/yellow
 	name = "yellow outline"
-	color = "#CFCF55"
+	icon_state = "bot_yellow"
+
+/obj/effect/floor_decal/industrial/outline/red
+	name = "red outline"
+	icon_state = "bot_red"
 
 /obj/effect/floor_decal/industrial/outline/grey
 	name = "grey outline"
@@ -594,7 +599,13 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/industrial/loading
 	name = "loading area"
-	icon_state = "loadingarea"
+	icon_state = "loadingarea_white"
+
+/obj/effect/floor_decal/industrial/loading/yellow
+	icon_state = "loadingarea_yellow"
+
+/obj/effect/floor_decal/industrial/loading/red
+	icon_state = "loadingarea_red"
 
 /obj/effect/floor_decal/plaque
 	name = "plaque"
@@ -682,14 +693,6 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/ss13/l14
 	name = "L14"
 	icon_state = "L14"
-
-/obj/effect/floor_decal/ss13/l15
-	name = "L15"
-	icon_state = "L15"
-
-/obj/effect/floor_decal/ss13/l16
-	name = "L16"
-	icon_state = "L16"
 
 /obj/effect/floor_decal/sign
 	name = "floor sign"
@@ -1186,9 +1189,6 @@ var/list/floor_decals = list()
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "c_flesh_floor_edges"
 
-/obj/effect/floor_decal/industrial/outline/red
-	name = "red outline"
-	color = COLOR_RED
 /obj/effect/floor_decal/borderfloor/shifted
 	icon_state = "borderfloor_shifted"
 
@@ -1233,22 +1233,22 @@ var/list/floor_decals = list()
 	icon_state = "corner_white_three_quarters"
 
 /obj/effect/floor_decal/corner/lightorange/border
-	icon_state = "bordercolor"
+	icon_state = "trimline"
 
 /obj/effect/floor_decal/corner/lightorange/border/shifted
 	icon_state = "bordercolor_shifted"
 
 /obj/effect/floor_decal/corner/lightorange/bordercorner
-	icon_state = "bordercolorcorner"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/lightorange/bordercorner2
-	icon_state = "bordercolorcorner2"
+	icon_state = "trimline_corner"
 
 /obj/effect/floor_decal/corner/lightorange/borderfull
-	icon_state = "bordercolorfull"
+	icon_state = "trimline_box_fill"
 
 /obj/effect/floor_decal/corner/lightorange/bordercee
-	icon_state = "bordercolorcee"
+	icon_state = "trimline_end_fill"
 
 /obj/effect/floor_decal/corner/lime/border/shifted
 	icon_state = "bordercolor_shifted"

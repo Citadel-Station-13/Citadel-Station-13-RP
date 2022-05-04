@@ -25,7 +25,7 @@ var/list/flooring_types
 /decl/flooring
 	var/name = "floor"
 	var/desc
-	var/icon
+	var/icon = 'icons/turf/floors.dmi'
 	var/icon_base
 
 	var/has_base_range
@@ -132,7 +132,6 @@ var/list/flooring_types
 /decl/flooring/grass
 	name = "grass"
 	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
-	icon = 'icons/turf/flooring/grass.dmi'
 	icon_base = "grass"
 	has_base_range = 3
 	damage_temperature = T0C+80
@@ -142,7 +141,6 @@ var/list/flooring_types
 /decl/flooring/asteroid
 	name = "coarse sand"
 	desc = "Gritty and unpleasant."
-	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_base = "asteroid"
 	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
 	build_type = null
@@ -150,21 +148,16 @@ var/list/flooring_types
 /decl/flooring/snow
 	name = "snow"
 	desc = "A layer of many tiny bits of frozen water. It's hard to tell how deep it is."
-	icon = 'icons/turf/snow_new.dmi'
+	icon = 'icons/turf/snow.dmi'
 	icon_base = "snow"
+	has_base_range = 12
+	flags = TURF_HAS_EDGES
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/snow1.ogg',
 		'sound/effects/footstep/snow2.ogg',
 		'sound/effects/footstep/snow3.ogg',
 		'sound/effects/footstep/snow4.ogg',
 		'sound/effects/footstep/snow5.ogg'))
-
-/decl/flooring/snow/snow2
-	name = "snow"
-	desc = "A layer of many tiny bits of frozen water. It's hard to tell how deep it is."
-	icon = 'icons/turf/snow.dmi'
-	icon_base = "snow"
-	flags = TURF_HAS_EDGES
 
 /decl/flooring/snow/gravsnow
 	name = "snow"
@@ -247,8 +240,8 @@ var/list/flooring_types
 /decl/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
-	icon = 'icons/turf/flooring/tiles_vr.dmi' // VOREStation Edit - Eris floors. Polaris still hasn't added all of them properly. See: steel_ridged
-	icon_base = "tiled"
+	icon = 'icons/turf/floors.dmi'
+	icon_base = "floor"
 	has_damage_range = 2
 	damage_temperature = T0C+1400
 	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
@@ -278,8 +271,8 @@ var/list/flooring_types
 	flags = TURF_CAN_BREAK | TURF_CAN_BURN | TURF_IS_FRAGILE
 	build_type = null
 
-/decl/flooring/tiling/new_tile/cargo_one
-	icon_base = "cargo_one_full"
+/decl/flooring/tiling/new_tile/textured
+	icon_base = "textured_white_large"
 
 /decl/flooring/tiling/new_tile/kafel
 	icon_base = "kafel_full"
@@ -409,6 +402,13 @@ var/list/flooring_types
 	build_type = /obj/item/stack/tile/silencium
 	flags = TURF_REMOVE_CROWBAR
 
+/decl/flooring/titanium
+	name = "titanium floor"
+	desc = "Sturdy metal flooring. Almost certainly a waste."
+	icon_base = "titanium"
+	build_type = /obj/item/stack/tile/titanium
+	flags = TURF_REMOVE_CROWBAR
+
 /decl/flooring/plasteel
 	name = "plasteel floor"
 	desc = "Sturdy metal flooring. Almost certainly a waste."
@@ -500,8 +500,7 @@ var/list/flooring_types
 /decl/flooring/reinforced
 	name = "reinforced floor"
 	desc = "Heavily reinforced with steel rods."
-	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_base = "reinforced"
+	icon_base = "engine"
 	flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
 	build_type = /obj/item/stack/rods
 	build_cost = 2

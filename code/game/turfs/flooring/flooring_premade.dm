@@ -164,25 +164,32 @@
 
 
 
-/turf/simulated/floor/tiled/old_cargo
+/turf/simulated/floor/tiled/textured
 	name = "floor"
-	icon_state = "cargo_one_full"
-	initial_flooring = /decl/flooring/tiling/new_tile/cargo_one
-/turf/simulated/floor/tiled/old_cargo/white
+	icon_state = "textured_large"
+	initial_flooring = /decl/flooring/tiling/new_tile/textured
+/turf/simulated/floor/tiled/textured/dark
+	icon_state = "textured_dark_large"
+/turf/simulated/floor/tiled/textured/white
+	icon_state = "textured_white_large"
 	color = "#d9d9d9"
-/turf/simulated/floor/tiled/old_cargo/blue
+/turf/simulated/floor/tiled/textured/blue
+	icon_state = "textured_white_large"
 	color = "#8ba7ad"
-/turf/simulated/floor/tiled/old_cargo/yellow
-	color = "#8c6d46"
-/turf/simulated/floor/tiled/old_cargo/gray
+/turf/simulated/floor/tiled/textured/yellow
+	icon_state = "textured_white_large"
 	color = "#687172"
-/turf/simulated/floor/tiled/old_cargo/beige
-	color = "#385e60"
-/turf/simulated/floor/tiled/old_cargo/red
+/turf/simulated/floor/tiled/textured/beige
+	icon_state = "textured_white_large"
+	color = "#8c6d46"
+/turf/simulated/floor/tiled/textured/red
+	icon_state = "textured_white_large"
 	color = "#964e51"
-/turf/simulated/floor/tiled/old_cargo/purple
+/turf/simulated/floor/tiled/textured/purple
+	icon_state = "textured_white_large"
 	color = "#906987"
-/turf/simulated/floor/tiled/old_cargo/green
+/turf/simulated/floor/tiled/textured/green
+	icon_state = "textured_white_large"
 	color = "#46725c"
 
 
@@ -215,8 +222,8 @@
 
 /turf/simulated/floor/reinforced
 	name = "reinforced floor"
-	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_state = "reinforced"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "engine"
 	initial_flooring = /decl/flooring/reinforced
 
 /turf/simulated/floor/reinforced/airless
@@ -251,7 +258,12 @@
 
 /turf/simulated/floor/tiled/dark
 	name = "dark floor"
-	icon_state = "dark"
+	icon_state = "darkfull"
+	initial_flooring = /decl/flooring/tiling/dark
+
+/turf/simulated/floor/tiled/dark
+	name = "dark floor"
+	icon_state = "darkfull"
 	initial_flooring = /decl/flooring/tiling/dark
 
 /turf/simulated/floor/tiled/hydro
@@ -310,8 +322,7 @@
 
 /turf/simulated/floor/lino
 	name = "lino"
-	icon = 'icons/turf/flooring/linoleum.dmi'
-	icon_state = "lino"
+	icon_state = "grimy"
 	initial_flooring = /decl/flooring/linoleum
 
 /turf/simulated/floor/wmarble
@@ -329,7 +340,6 @@
 /turf/simulated/floor/bananium
 	name = "bananium"
 	desc = "This floor feels vaguely springy and rubbery, and has an almost pleasant bounce when stepped on."
-	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "bananium"
 	initial_flooring = /decl/flooring/bananium
 
@@ -343,55 +353,46 @@
 
 /turf/simulated/floor/silencium
 	name = "silencium"
-	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "silencium"
 	initial_flooring = /decl/flooring/silencium
 
 /turf/simulated/floor/plasteel
 	name = "plasteel"
-	icon = 'icons/turf/flooring/misc.dmi'
-	icon_state = "plasteel"
+	icon_state = "titanium"
 	initial_flooring = /decl/flooring/plasteel
 
 /turf/simulated/floor/durasteel
 	name = "durasteel"
-	icon = 'icons/turf/flooring/misc.dmi'
-	icon_state = "durasteel"
+	icon_state = "titanium_blue"
 	initial_flooring = /decl/flooring/durasteel
 
 /turf/simulated/floor/silver
 	name = "silver"
-	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "silver"
 	initial_flooring = /decl/flooring/silver
 
 /turf/simulated/floor/gold
 	name = "gold"
-	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "gold"
 	initial_flooring = /decl/flooring/gold
 
 /turf/simulated/floor/phoron
 	name = "phoron"
-	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "phoron"
 	initial_flooring = /decl/flooring/phoron
 
 /turf/simulated/floor/uranium
 	name = "uranium"
-	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "uranium"
 	initial_flooring = /decl/flooring/uranium
 
 /turf/simulated/floor/diamond
 	name = "diamond"
-	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "diamond"
 	initial_flooring = /decl/flooring/diamond
 
 /turf/simulated/floor/brass
 	name = "clockwork floor"
-	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "clockwork_floor"
 	initial_flooring = /decl/flooring/brass
 
@@ -447,7 +448,7 @@
 //**** Here lives snow ****
 /turf/simulated/floor/snow
 	name = "snow"
-	icon = 'icons/turf/snow_new.dmi'
+	icon = 'icons/turf/snow.dmi'
 	icon_state = "snow"
 	var/list/crossed_dirs = list()
 
@@ -475,23 +476,23 @@
 #define FOOTSTEP_SPRITE_AMT 2
 
 /turf/snow/Entered(atom/A)
-    if(isliving(A))
-        var/mdir = "[A.dir]"
-        if(crossed_dirs[mdir])
-            crossed_dirs[mdir] = min(crossed_dirs[mdir] + 1, FOOTSTEP_SPRITE_AMT)
-        else
-            crossed_dirs[mdir] = 1
+	if(isliving(A))
+		var/mdir = "[A.dir]"
+		if(crossed_dirs[mdir])
+			crossed_dirs[mdir] = min(crossed_dirs[mdir] + 1, FOOTSTEP_SPRITE_AMT)
+		else
+			crossed_dirs[mdir] = 1
 
-        update_icon()
+		update_icon()
 
-    ..()
+	..()
 
 /turf/snow/update_icon()
-    cut_overlays()
-    for(var/d in crossed_dirs)
-        var/amt = crossed_dirs[d]
+	cut_overlays()
+	for(var/d in crossed_dirs)
+		var/amt = crossed_dirs[d]
 
-        for(var/i in 1 to amt)
-            add_overlay(image(icon, "footprint[i]", text2num(d)))
+		for(var/i in 1 to amt)
+			add_overlay(image(icon, "footprint[i]", text2num(d)))
 
 //**** Here ends snow ****

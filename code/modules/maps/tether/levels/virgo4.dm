@@ -143,7 +143,7 @@
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert
 
 /area/tether_away/beach/resort
-	icon = 'icons/turf/areas_vr.dmi'
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "yellow"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand
 
@@ -178,7 +178,7 @@
 
 /area/tether_away/beach/cavebase
 	name = "\improper Away Mission - Virgo 4 Mysterious Cave"
-	icon = 'icons/turf/areas_vr.dmi'
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "orawhicir"
 	flags = RAD_SHIELDED
 

@@ -1,7 +1,6 @@
 /turf/simulated/floor
 	name = "plating"
 	desc = "Unfinished flooring."
-	icon = 'icons/turf/flooring/plating_vr.dmi'
 	icon_state = "plating"
 
 	// Damage to flooring.
