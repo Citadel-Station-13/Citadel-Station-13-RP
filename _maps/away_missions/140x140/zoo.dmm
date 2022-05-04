@@ -4953,17 +4953,11 @@
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "nm" = (
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "nn" = (
 /obj/structure/flora/ausbushes,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "no" = (
 /obj/structure/window/reinforced{
@@ -5060,25 +5054,15 @@
 	},
 /area/awaymission/zoo)
 "nD" = (
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/turf/flooring/misc_vr.dmi';
-	icon_state = "hive";
-	name = "giant honeycomb"
-	},
+/turf/simulated/floor/holofloor/grass/honeycomb,
 /area/awaymission/zoo)
 "nE" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "nF" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "nG" = (
 /turf/simulated/floor/holofloor/beach/water{
@@ -5274,19 +5258,13 @@
 /area/awaymission/zoo)
 "oe" = (
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "of" = (
 /mob/living/simple_mob/vore/aggressive/frog{
 	faction = "zoo"
 	},
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "og" = (
 /turf/simulated/floor/holofloor/beach/water{
@@ -5356,24 +5334,15 @@
 /area/awaymission/zoo)
 "oq" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "or" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "os" = (
 /obj/structure/flora/ausbushes/genericbush,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "ot" = (
 /turf/simulated/floor/holofloor/beach/water,
@@ -5427,25 +5396,15 @@
 /mob/living/simple_mob/vore/bee{
 	faction = "zoo"
 	},
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/turf/flooring/misc_vr.dmi';
-	icon_state = "hive";
-	name = "giant honeycomb"
-	},
+/turf/simulated/floor/holofloor/grass/honeycomb,
 /area/awaymission/zoo)
 "oC" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "oD" = (
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "oE" = (
 /obj/structure/bed/chair,
@@ -5712,10 +5671,7 @@
 /area/awaymission/zoo)
 "pp" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "pq" = (
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -5774,10 +5730,7 @@
 /area/awaymission/zoo)
 "pz" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "pA" = (
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -6328,10 +6281,7 @@
 /mob/living/carbon/human/neaera{
 	faction = "zoo"
 	},
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "rc" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -8017,24 +7967,15 @@
 /area/awaymission/zoo)
 "uS" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "uT" = (
 /obj/effect/overlay/palmtree_r,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "uU" = (
 /obj/effect/overlay/palmtree_l,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "uV" = (
 /obj/structure/window/reinforced{
@@ -8092,17 +8033,11 @@
 /area/awaymission/zoo)
 "vb" = (
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "vc" = (
 /obj/structure/flora/ausbushes/sunnybush,
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "vd" = (
 /mob/living/simple_mob/animal/passive/crab{
@@ -8122,10 +8057,7 @@
 /mob/living/simple_mob/vore/aggressive/panther{
 	faction = "zoo"
 	},
-/turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
-	icon_state = "grass2"
-	},
+/turf/simulated/floor/holofloor/grass/jungle,
 /area/awaymission/zoo)
 "vg" = (
 /obj/structure/window/reinforced{

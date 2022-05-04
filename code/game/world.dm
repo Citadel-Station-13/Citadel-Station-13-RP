@@ -89,7 +89,7 @@ GLOBAL_LIST(topic_status_cache)
 	populate_robolimb_list()
 
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
-	createRandomZlevel()
+	//createRandomZlevel()
 
 	Master.Initialize(10, FALSE)
 

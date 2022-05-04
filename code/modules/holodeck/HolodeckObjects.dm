@@ -48,6 +48,16 @@
 	icon_state = "grass0"
 	initial_flooring = /decl/flooring/grass
 
+/turf/simulated/floor/holofloor/grass/honeycomb
+	name = "giant honeycomb"
+	icon = 'icons/turf/flooring/misc_vr.dmi'
+	icon_state = "hive"
+
+/turf/simulated/floor/holofloor/grass/jungle
+	name = "jungle grass"
+	icon = 'icons/jungle.dmi'
+	icon_state = "grass2"
+
 /turf/simulated/floor/holofloor/snow
 	name = "snow"
 	base_name = "snow"
