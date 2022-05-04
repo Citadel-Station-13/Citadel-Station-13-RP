@@ -161,6 +161,15 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	return W
 
+// todo: zas refactor
+/turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)
+	if((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/simulated))
+
+	else
+
+
+#warn finish
+
 // LEGACY BELOW
 
 
