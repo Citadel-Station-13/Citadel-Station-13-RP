@@ -67,108 +67,48 @@
  */
 
 /**
- * dynamic payment proc
+ * dynamic payment proc - this **can** block since some methods **will** query the user for details!
  *
  * behold, a trainwreck.
  *
  * @params
+ * user - (optional) mobless is possible, otherwise user
+ * predicate - thing we're paying into. it will be queried for log information if needed with query_transaction_details()
+ * amount - amount to charge
+ * force - charge even if amount is under, use for stuff like atm deposits/money drains
+ * prevent_types - payment_types to block
+ * reason - payment reason for transaction logs
+ * data - arbitrary list provided by the predicate, fed back into it during query_transaction_details
+ * visual_range - feedback/message range
  *
  * @returns amount paid
  */
-/obj/item/proc/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, reason, )
-
-
-
-
-/**
- * automated payment proc
- *
- * @params
- * - user - user (can be null)
- * - I - currency used, static or dynamic
- * - predicate - thing we're paying into. has to be an atom/movable
- * - amount - amount requested
- * - force - go through even if insufficient
- *
- *
- * @return amount paid
- */
-/proc/attempt_generic_currency_payment(mob/user, obj/item/I, atom/movable/predicate, amount, force, )
+/obj/item/proc/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data, silent, visual_range = 7)
 
 
 /**
- * returns TRUE/FALSE based on if an item used to pay for something has enough value to cover it in its entirety
+ * handles attempting to use an item for an automatic payment using default handling
+ * use this proc for simpler things.
+ *
+ * behold, a trainwreck.
  *
  * @params
- * - I - item used to pay with
- * - payment_types - allowed payment types - any
- * - prevent_types - blocked payment types - any - will override allowed
- * - amount - amount needed
- */
-/proc/check_currency_payment(obj/item/I, payment_types = PAYMENT_TYPE_ANY, prevent_types = NONE, amount = 0)
-	return get_currency_value(AM, payment_types) >= amount
-
-/**
- * returns currency value of an item with specific payment types
+ * user - (optional) mobless is possible, otherwise user
+ * predicate - thing we're paying into. it will be queried for log information if needed with query_transaction_details()
+ * amount - amount to charge
+ * force - charge even if amount is under, use for stuff like atm deposits/money drains
+ * prevent_types - payment_types to block
+ * reason - payment reason for transaction logs
+ * data - arbitrary list provided by the predicate, fed back into it during query_transaction_details
+ * visual_range - feedback/message range
  *
- * @params
- * - I - item used to pay with
- * - payment_types - allowed payment types - any
- * - prevent_types - blocked payment types - any - will override allowed
+ * @returns amount paid
  */
-/proc/get_currency_value(obj/item/I, payment_types = PAYMENT_TYPE_ANY, prevent_types = NONE)
-	if(payment_types & PAYMENT_TYPE_COIN)
-		if(istype(I, /obj/item/coin))
-			return 0		// not implemented
-	if(payment_types & PAYMENT_TYPE_BANK_CARD)
-		if(istype(I, /obj/item/card/id))
-			var/obj/item/card/id/ID = I
-			var/datum/money_account/account = get_account(ID.associated_account_number)
-			if(!account)
-				return 0
+/obj/item/proc/attempt_use_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data, silent, visual_range = 7)
 
-	if(istype(I, /obj/item/spacecash))
-		if(istype(I, /obj/item/spacecash/ewallet))
-			if(payment_types & PAYMENT_TYPE_CHARGE_CARD)
-				var/obj/item/spacecash/ewallet/wallet = I
-				return wallet.worth
-			else
-				return 0
-		if(payment_types & PAYMENT_TYPE_CASH)
-			var/obj/item/spacecash/cash = I
-			return cash.worth
-		else
-			return 0
-	// comsig fired last
-	var/list/capable = list()
-	var/result = SEND_SIGNAL(I, COMSIG_ITEM_PAYMENT_CHECK, payment_types, prevent_types, 0, capable)
-	if(!(result & PAYMENT_CAPABLE))
-		return 0
-	. = 0
-	for(var/i in capable)	// scan across
-		. = max(., capable[i])
 
-/**
- * automatically handles payment with a singular transaction consuming money from a certain atom used to pay for something
- * this proc is expected to automatically consume whatever item
- * this proc will **only allow exact payments**, e.g. you can't split a coin into two magically so it'd fail!
- *
- * @return TRUE/FALSE based on success/failure
- *
- * @params
- * - I - item used to pay with
- * - payment_types - allowed payment types
- * - prevent_types - blocked payment types - any - will override allowed
- * - amount - amount needed
- * - reason - (optional) - automated logging reason, used when you charge using a method that usually generates logs like bank cards
- * - initiator - (optional) - casted to datum, this is the initiator, usually a mob
- * - acceptor - (optional) - some sort of datum which will be automatically queried for details if the method generates logs, like bank cards. this datum is usually the machine charging a payer.
- * - data - (optional) - data-list that will be passed to the recipient datum during logging.
- * - silent - (optional) - defaults to FALSE - if not set, error messages will be shown to the initiator on payment failure.
- */
-/proc/auto_consume_currency(obj/item/I, payment_types = PAYMENT_TYPE_ANY, prevent_types = NONE, amount = 0, reason, datum/initiator, datum/acceptor, list/data = list())
+	return attempt_dynamic_currency(user, predicate, amount, force, prevent_types, reason, dadta, silent, visual_range)
 
-#warn impl
 
 /**
  * Scan a card and attempt to transfer payment from associated account.
@@ -256,7 +196,7 @@
  * used to return data on its identity and info
  * must return a data list
  */
-/datum/proc/transaction_charge_details(list/data)
+/datum/proc/query_transaction_details(list/data)
 	return list(
 		CHARGE_DETAIL_LOCATION = "Unknown",
 		CHARGE_DETAIL_RECIPIENT = "Unknown",

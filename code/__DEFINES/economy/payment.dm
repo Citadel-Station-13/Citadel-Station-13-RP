@@ -15,6 +15,10 @@
 
 /// all payment types
 #define PAYMENT_TYPE_ALL				ALL
+/// only these types
+#define PREVENT_TYPES_ALLOW_ONLY(types)		(~(types))
+/// prevent these types
+#define PAYMENT_TYPES_EXCEPT_FOR(types)		(~(types))
 
 // kinds of static currency
 /// not static currency
