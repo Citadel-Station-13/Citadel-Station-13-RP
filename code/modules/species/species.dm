@@ -16,9 +16,9 @@
 
 //! ## Icon/appearance vars.
 	/// Normal icon set.
-	var/icobase = 'icons/mob/human_races/r_human_vr.dmi'
+	var/icobase = 'icons/mob/human_races/r_human.dmi'
 	/// Mutated icon set.
-	var/deform = 'icons/mob/human_races/r_def_human_vr.dmi'
+	var/deform = 'icons/mob/human_races/r_def_human.dmi'
 	/// Icon set for bandages
 	var/bandages_icon
 

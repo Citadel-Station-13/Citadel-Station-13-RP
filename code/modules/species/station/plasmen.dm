@@ -1,7 +1,7 @@
 /datum/species/plasmaman
 	name = SPECIES_PLASMAMAN
 	name_plural = "Phoronoids"
-	icobase = 'icons/mob/human_races/r_plasmaman_sb.dmi'
+	icobase = 'icons/mob/human_races/r_phoronoid.dmi'
 	primitive_form = null
 	language = LANGUAGE_GALCOM
 	species_language = LANGUAGE_BONES

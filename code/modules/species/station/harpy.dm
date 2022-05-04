@@ -1,8 +1,8 @@
 /datum/species/harpy
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
-	icobase = 'icons/mob/human_races/r_harpy_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_harpy_vr.dmi'
+	icobase = 'icons/mob/human_races/r_harpy.dmi'
+	deform = 'icons/mob/human_races/r_def_harpy.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)

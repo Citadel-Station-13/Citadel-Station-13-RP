@@ -1,8 +1,8 @@
 /datum/species/shadekin
 	name = SPECIES_SHADEKIN
 	name_plural = SPECIES_SHADEKIN
-	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
-	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
+	icobase = 'icons/mob/human_races/r_shadekin.dmi'
+	deform = 'icons/mob/human_races/r_shadekin.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	blurb = "Very little is known about these creatures. They appear to be largely mammalian in appearance. \

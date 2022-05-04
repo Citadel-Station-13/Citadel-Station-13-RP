@@ -1,8 +1,8 @@
 /datum/species/skrell
 	name = SPECIES_SKRELL
 	name_plural = SPECIES_SKRELL
-	icobase = 'icons/mob/human_races/r_skrell_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_skrell_vr.dmi'
+	icobase = 'icons/mob/human_races/r_skrell.dmi'
+	deform = 'icons/mob/human_races/r_def_skrell.dmi'
 	bandages_icon = 'icons/mob/bandage.dmi'
 	primitive_form = SPECIES_MONKEY_SKRELL
 	unarmed_types = list(/datum/unarmed_attack/punch)

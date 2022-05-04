@@ -1,8 +1,8 @@
 /datum/species/tajaran
 	name = SPECIES_TAJ
 	name_plural = "Tajaran"
-	icobase = 'icons/mob/human_races/r_tajaran_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_tajaran_vr.dmi'
+	icobase = 'icons/mob/human_races/r_tajaran.dmi'
+	deform = 'icons/mob/human_races/r_def_tajaran.dmi'
 	tail = "tajtail"
 	tail_animation = 'icons/mob/species/tajaran/tail_vr.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)

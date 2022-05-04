@@ -38,8 +38,8 @@
 	meat_type  = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
-	icobase = 'icons/mob/human_races/r_teshari_vr.dmi'
-	deform  = 'icons/mob/human_races/r_teshari_vr.dmi'
+	icobase = 'icons/mob/human_races/r_teshari.dmi'
+	deform  = 'icons/mob/human_races/r_teshari.dmi'
 	damage_mask = 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
 	blood_mask  = 'icons/mob/human_races/masks/blood_teshari.dmi'
 	damage_overlays   = 'icons/mob/human_races/masks/dam_teshari.dmi'

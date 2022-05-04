@@ -1,8 +1,8 @@
 /datum/species/unathi
 	name = SPECIES_UNATHI
 	name_plural = SPECIES_UNATHI
-	icobase = 'icons/mob/human_races/r_lizard_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_lizard_vr.dmi'
+	icobase = 'icons/mob/human_races/r_lizard.dmi'
+	deform = 'icons/mob/human_races/r_def_lizard.dmi'
 	bandages_icon = 'icons/mob/bandage.dmi'
 	tail = "sogtail"
 	tail_animation = 'icons/mob/species/unathi/tail_vr.dmi'

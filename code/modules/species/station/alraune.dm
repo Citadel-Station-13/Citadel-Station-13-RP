@@ -53,8 +53,8 @@
 		/mob/living/carbon/human/proc/tie_hair
 		) //?Give them the voremodes related to wrapping people in vines and sapping their fluids
 
-	icobase = 'icons/mob/human_races/r_human_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
+	icobase = 'icons/mob/human_races/r_human.dmi'
+	deform = 'icons/mob/human_races/r_def_human.dmi'
 
 	color_mult  = 1
 	flesh_color = "#9ee02c"

@@ -1,8 +1,8 @@
 /datum/species/crew_shadekin
 	name = SPECIES_SHADEKIN_CREW
 	name_plural = SPECIES_SHADEKIN_CREW
-	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
-	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
+	icobase = 'icons/mob/human_races/r_shadekin.dmi'
+	deform = 'icons/mob/human_races/r_shadekin.dmi'
 	tail = "tail"
 	blurb = "Very little is known about these creatures. They appear to be largely mammalian in appearance. \
 	Seemingly very rare to encounter, there have been widespread myths of these creatures the galaxy over, \

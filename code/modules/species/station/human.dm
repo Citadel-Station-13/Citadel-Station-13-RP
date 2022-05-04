@@ -43,8 +43,8 @@
 		/mob/living/carbon/human/proc/tie_hair)
 
 	color_mult = 1
-	icobase = 'icons/mob/human_races/r_human_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
+	icobase = 'icons/mob/human_races/r_human.dmi'
+	deform = 'icons/mob/human_races/r_def_human.dmi'
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Humanity"
@@ -165,7 +165,7 @@
 		O_VOICE     = /obj/item/organ/internal/voicebox
 		)
 
-	icobase = 'icons/mob/human_races/r_human_vr.dmi'
+	icobase = 'icons/mob/human_races/r_human.dmi'
 	//icobase = 'icons/mob/human_races/subspecies/r_vatgrown.dmi'
 	//Icon base needs Greyscaleing
 	spawn_flags = SPECIES_CAN_JOIN
