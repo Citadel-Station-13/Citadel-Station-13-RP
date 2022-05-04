@@ -66,13 +66,6 @@ var/list/ninjastart         = list()
 
 var/datum/configuration_legacy/config_legacy      = null
 
-#warn purge with fire
-var/list/latejoin
-var/list/latejoin_gateway
-var/list/latejoin_elevator
-var/list/latejoin_cryo
-var/list/latejoin_cyborg
-
 var/list/combatlog = list()
 var/list/IClog     = list()
 var/list/OOClog    = list()

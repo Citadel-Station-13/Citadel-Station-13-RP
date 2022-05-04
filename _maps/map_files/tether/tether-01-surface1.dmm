@@ -15239,7 +15239,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "azo" = (
@@ -15249,7 +15249,7 @@
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "azp" = (
@@ -31352,7 +31352,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "bTt" = (
@@ -35329,7 +35329,7 @@
 	name = "asset retention console";
 	pixel_y = -30
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -36567,7 +36567,7 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "qhk" = (
@@ -37031,7 +37031,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -37859,7 +37859,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;

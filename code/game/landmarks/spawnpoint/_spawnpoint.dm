@@ -123,6 +123,28 @@
 		return
 	AutoListUnregister(SSjob.job_spawnpoints[job_path])
 
+/**
+ * renders a html message for someone joining
+ * usually only called on latejoining
+ *
+ * @params
+ * M - mob
+ * C - client (optional)
+ * J - job datum instance (optional)
+ * name - spawnee's name
+ * job_name - job's name - useful for alt titles
+ */
+/atom/movable/landmark/spawnpoint/proc/RenderAnnounceMessage(mob/M, client/C, datum/job/J, name, job_name)
+	return "[name || "Unknown"] will arrive shortly."
+
+/**
+ * special announce proc - text usually broadcasted is sent here, raw, from RenderAnnounceMessage
+ *
+ * if this returns TRUE, regular announce is skipped.
+ */
+/atom/movable/landmark/spawnpoint/proc/OverrideAnnounceMessage(raw)
+	return !length(announce_template)		// by default, if announce template is empty, this will prevent announce!
+
 /atom/movable/landmark/spawnpoint/job/vv_edit_var(var_name, var_value, massedit)
 	if(var_name == NAMEOF(src, job_path))
 		Register()
@@ -139,6 +161,8 @@
 	var/faction
 	/// Method - if there's more than one registered method available, a player may choose which one to use
 	var/method = LATEJOIN_METHOD_DEFAULT
+	/// default spawn announce text - allowed are %NAME%, %JOB% - for more complex, override RenderAnnounceMessage()
+	var/announce_template = "%NAME%, %JOB% will arrive shortly."
 
 /atom/movable/landmark/spawnpoint/latejoin/Register()
 	. = ..()
@@ -160,6 +184,11 @@
 	. = ..()
 	if(var_name == NAMEOF(src, faction))
 		Unregister()
+
+/atom/movable/landmark/spawnpoint/latejoin/RenderAnnounceMessage(mob/M, client/C, name, job_name)
+	. = announce_template
+	. = replacetext(., "%NAME%", name)
+	. = replacetext(., "%JOB%", job_name)
 
 /**
  * Used when all other spawnpoints are unavailable

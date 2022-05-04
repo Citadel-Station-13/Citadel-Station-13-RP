@@ -1,13 +1,15 @@
 // Latejoin methods
 /// Default, whatever that means
-#define LATEJOIN_METHOD_DEFAULT				"default"
+#define LATEJOIN_METHOD_DEFAULT				"Default"
 /// Arrivals shuttle
-#define LATEJOIN_METHOD_ARRIVALS_SHUTTLE	"arrivals_shuttle"
+#define LATEJOIN_METHOD_ARRIVALS_SHUTTLE	"Arrivals Shuttle"
 /// Cryostorage
-#define LATEJOIN_METHOD_CRYOGENIC_STORAGE	"cryostasis_wakeup"
+#define LATEJOIN_METHOD_CRYOGENIC_STORAGE	"Cryogenics bay"
 /// Gateway teleport in
-#define LATEJOIN_METHOD_GATEWAY				"gateway"
+#define LATEJOIN_METHOD_GATEWAY				"Gateway"
 /// Robotic storage
-#define LATEJOIN_METHOD_ROBOT_STORAGE		"robot_storage"
+#define LATEJOIN_METHOD_ROBOT_STORAGE		"Robotic storage"
 /// Tram
-#define LATEJOIN_METHOD_TRAM				"tram"
+#define LATEJOIN_METHOD_TRAM				"Tram"
+/// Shuttle dock
+#define LATEJOIN_METHOD_SHUTTLE_DOCK		"Shuttle Dock"

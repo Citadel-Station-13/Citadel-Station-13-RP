@@ -10,20 +10,18 @@ var/global/datum/controller/occupations/job_master
 		//Cache of icons for job info window
 	var/list/job_icons = list()
 
-	proc/SetupOccupations(var/faction = "Station")
+	proc/SetupOccupations()
 		occupations = list()
 		//var/list/all_jobs = typesof(/datum/job)
 		var/list/all_jobs = list(/datum/job/station/assistant) | GLOB.using_map.allowed_jobs
 		if(!all_jobs.len)
 			to_world("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return 0
-		#warn wipe out the fucking factions FUCK YOU FUCK YOU USE ABSTRACT TYPE
 		for(var/J in all_jobs)
-			var/datum/job/job = new J()
-			if(!job)
+			var/datum/job/job = J
+			if(initial(job.abstract_type) == J)
 				continue
-			if(job.faction != faction)
-				continue
+			job = new J
 			occupations += job
 		sortTim(occupations, /proc/cmp_job_datums)
 		return 1
