@@ -154,8 +154,36 @@
 /**
  * helper for use bounds() to perform entity query from a dist
  * takes into account wraps
+ *
+ * @params
+ * - x - absolute overmap coordinate x
+ * - y - absolute overmap coordinate y
+ * - dist - overmap coords to scan
  */
 /datum/overmap/proc/bounds_entity_query(x, y, dist)
+	return raw_bounds_entity_query(
+		x / OVERMAP_DISTANCE_PIXEL,
+		y / OVERMAP_DISTANCE_PIXEL,
+		dist / OVERMAP_DISTANCE_PIXEL,
+		min(x, y, cached_coordinate_width - x, cached_coordinate_height - y) <= dist
+	)
+
+/**
+ * helper for use bounds() to perform entity query from a dist
+ * takes into account wraps
+ *
+ * warning this proc operates on byond pixels!
+ *
+ * @params
+ * - x - absolute byond pixel coordinate x
+ * - y - absolute byond pixel coordinate y
+ * - dist - pixels to scan
+ * - wraparound - do we need to wrap around?
+ */
+/datum/overmap/proc/raw_bounds_entity_query(x, y, dist, wraparound)
+	. = list()
+	if(!wraparound)
+
 	#warn impl
 
 /**
