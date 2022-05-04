@@ -1,0 +1,4 @@
+author: "yeayea130"
+delete-after: True
+changes: 
+  - bugfix: "added borg xeno-tazer to the borg overlay system"
