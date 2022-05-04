@@ -197,15 +197,15 @@
 	if(diameter > cached_height_pixels)
 		trampled |= (1<<1)
 		wraparound &= ~(NORTH|SOUTH)
-	// no wrap is easy
+	// first scan
+	for(var/atom/movable/overmap_object/entity/E in bounds(
+		(trampled & (1<<0)) ? (1) : (cached_bottomleft_pixel_x + x - dist - 1)
+		(trampled & (1<<1)) ? (1) : (cached_bottomleft_pixel_y + y - dist - 1),
+		diameter - 1,
+		diameter - 1))
+		. += E
 	if(!wraparound)
-		for(var/atom/movable/overmap_object/entity/E in bounds(
-			(trampled & (1<<0)) ? (1) : (cached_bottomleft_pixel_x + x - dist - 1)
-			(trampled & (1<<1)) ? (1) : (cached_bottomleft_pixel_y + y - dist - 1),
-			diameter - 1,
-			diameter - 1
-		))
-			. += E
+		// if we aren't wrapping around this first scan caught everything
 		return
 	// we know at this point we are wrapping around atleast one side
 
