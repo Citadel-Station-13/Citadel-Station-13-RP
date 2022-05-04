@@ -79,7 +79,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "aP" = (
-/obj/effect/landmark/costume,
+/atom/movable/landmark/costume,
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
@@ -169,7 +169,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bj" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Holocarp Spawn"
 	},
 /turf/simulated/floor/holofloor/reinforced,
@@ -1010,7 +1010,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
 "ec" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Holocarp Spawn Random"
 	},
 /turf/simulated/floor/holofloor/space,
@@ -1602,7 +1602,7 @@
 	},
 /area/holodeck/holodorm/source_beach)
 "gm" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Wolfgirl Spawn"
 	},
 /turf/simulated/floor/holofloor/snow,
@@ -1675,7 +1675,7 @@
 /area/holodeck/source_chess)
 "hx" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Catgirl Spawn"
 	},
 /turf/simulated/floor/holofloor/grass,

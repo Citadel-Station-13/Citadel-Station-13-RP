@@ -1722,7 +1722,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
 "ajt" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -5056,7 +5056,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6712,7 +6712,7 @@
 /area/tether/station/burial)
 "avU" = (
 /obj/structure/bed/chair/wood,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chaplain"
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -7075,7 +7075,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "axL" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "maint_pred"
 	},
 /turf/simulated/floor,
@@ -7201,7 +7201,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "ayn" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Pathfinder"
 	},
 /obj/structure/bed/chair/office/dark{
@@ -7677,7 +7677,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/chapel/main)
 "aAI" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chaplain"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8588,7 +8588,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "aFS" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tripai"
 	},
 /obj/machinery/camera/network/command{
@@ -9686,7 +9686,7 @@
 /area/tether/station/burial)
 "aJF" = (
 /obj/machinery/light/small,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chaplain"
 	},
 /obj/structure/bed/chair{
@@ -9720,7 +9720,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "aJI" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Shaft Miner"
 	},
 /obj/item/stool/padded,
@@ -12157,7 +12157,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "aSJ" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tripai"
 	},
 /obj/machinery/camera/network/command{
@@ -12852,7 +12852,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/large_escape_pod1)
 "aVd" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "AI"
 	},
 /obj/machinery/requests_console{
@@ -13470,7 +13470,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Shaft Miner"
 	},
 /turf/simulated/floor/tiled,
@@ -18623,7 +18623,7 @@
 "iSs" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/stool/padded,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Cargo Technician"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -20931,7 +20931,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "nlg" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/space,
@@ -21022,7 +21022,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Quartermaster"
 	},
 /obj/structure/disposalpipe/segment{
@@ -22792,7 +22792,7 @@
 /area/shuttle/excursion/cargo)
 "qlt" = (
 /obj/item/stool/padded,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Cargo Technician"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -24123,7 +24123,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "sEN" = (
-/obj/effect/landmark/map_data/virgo3b,
+/atom/movable/landmark/map_data/virgo3b,
 /turf/space,
 /area/space)
 "sEX" = (
@@ -24280,7 +24280,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Cargo Technician"
 	},
 /turf/simulated/floor/tiled,
@@ -25260,7 +25260,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Pilot"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -26395,7 +26395,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
 "wQz" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Shaft Miner"
 	},
 /obj/item/stool/padded,
@@ -26725,7 +26725,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Pilot"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -27159,7 +27159,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/spacedorm1)
 "yfO" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Pilot"
 	},
 /turf/simulated/floor/wood,

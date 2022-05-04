@@ -1,4 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - rscadd: "added mechanical blind, deaf, mute traits. you cannot be both deaf and blind for policy reasons. this may be subject to change."

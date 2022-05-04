@@ -13,7 +13,7 @@ var/global/datum/controller/occupations/job_master
 	proc/SetupOccupations(var/faction = "Station")
 		occupations = list()
 		//var/list/all_jobs = typesof(/datum/job)
-		var/list/all_jobs = list(/datum/job/assistant) | GLOB.using_map.allowed_jobs
+		var/list/all_jobs = list(/datum/job/station/assistant) | GLOB.using_map.allowed_jobs
 		if(!all_jobs.len)
 			to_world("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return 0
@@ -343,7 +343,7 @@ var/global/datum/controller/occupations/job_master
 		if(!joined_late)
 			var/obj/S = null
 			var/list/possible_spawns = list()
-			for(var/obj/effect/landmark/start/sloc in GLOB.landmarks_list)
+			for(var/atom/movable/landmark/start/sloc in GLOB.landmarks_list)
 				if(sloc.name != rank)	continue
 				if(locate(/mob/living) in sloc.loc)	continue
 				possible_spawns.Add(sloc)
@@ -351,7 +351,7 @@ var/global/datum/controller/occupations/job_master
 				S = pick(possible_spawns)
 			if(!S)
 				S = locate("start*[rank]") // use old stype
-			if(istype(S, /obj/effect/landmark/start) && istype(S.loc, /turf))
+			if(istype(S, /atom/movable/landmark/start) && istype(S.loc, /turf))
 				H.forceMove(S.loc)
 			else
 				var/list/spawn_props = LateSpawn(H.client, rank)

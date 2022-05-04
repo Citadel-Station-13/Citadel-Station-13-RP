@@ -125,13 +125,13 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 // Place this on your map to mark where a free AI shell will be.
 // This can be turned off in the config (and is off by default).
 // Note that mapping in more than one of these will result in multiple shells.
-/obj/effect/landmark/free_ai_shell
+/atom/movable/landmark/free_ai_shell
 	name = "free ai shell spawner"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x3"
 	delete_me = TRUE
 
-/obj/effect/landmark/free_ai_shell/Initialize(mapload)
+/atom/movable/landmark/free_ai_shell/Initialize(mapload)
 	if(config_legacy.allow_ai_shells && config_legacy.give_free_ai_shell)
 		new /mob/living/silicon/robot/ai_shell(get_turf(src))
 	return ..()

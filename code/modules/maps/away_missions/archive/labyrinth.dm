@@ -185,7 +185,7 @@
 		do_after_cooldown()
 		return
 
-/obj/effect/landmark/corpse/tunnelclown
+/atom/movable/landmark/corpse/tunnelclown
 	name = "dead tunnel clown"
 	corpseuniform = /obj/item/clothing/under/rank/clown
 	corpseshoes = /obj/item/clothing/shoes/clown_shoes
@@ -194,7 +194,7 @@
 	corpsemask = /obj/item/clothing/mask/gas/clown_hat
 	corpsepocket1 = /obj/item/bikehorn
 
-/obj/effect/landmark/corpse/tunnelclown/sentinel
+/atom/movable/landmark/corpse/tunnelclown/sentinel
 	name = "dead clown sentinel"
 	corpsesuit = /obj/item/clothing/suit/cultrobes
 	corpsehelmet = /obj/item/clothing/head/culthood
@@ -217,7 +217,7 @@
 //	emote_hear = list("honks")
 //	speak_chance = 1
 	a_intent = "harm"
-	var/corpse = /obj/effect/landmark/mobcorpse/tunnelclown
+	var/corpse = /atom/movable/landmark/mobcorpse/tunnelclown
 	var/weapon1 = /obj/item/twohanded/fireaxe
 	stop_when_pulled = 0
 	maxHealth = 100
@@ -250,7 +250,7 @@
 	icon_state = "sentinelclown"
 	icon_living = "sentinelclown"
 	icon_dead = "clown_dead"
-	corpse = /obj/effect/landmark/mobcorpse/tunnelclown/sentinel
+	corpse = /atom/movable/landmark/mobcorpse/tunnelclown/sentinel
 	weapon1 = /obj/item/material/twohanded/spear
 	maxHealth = 150
 	health = 150

@@ -44,11 +44,11 @@
 // Tram arrival point landmarks and datum
 var/global/list/latejoin_tram   = list()
 
-/obj/effect/landmark/tram
+/atom/movable/landmark/tram
 	name = "JoinLateTram"
 	delete_me = 1
 
-/obj/effect/landmark/tram/New()
+/atom/movable/landmark/tram/New()
 	latejoin_tram += loc // Register this turf as tram latejoin.
 	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
 	..()
@@ -109,11 +109,11 @@ var/global/list/latejoin_tram   = list()
 // shuttle arrival point landmarks and datum
 var/global/list/latejoin_shuttle   = list()
 
-/obj/effect/landmark/shuttle
+/atom/movable/landmark/shuttle
 	name = "JoinLateShuttle"
 	delete_me = 1
 
-/obj/effect/landmark/shuttle/New()
+/atom/movable/landmark/shuttle/New()
 	latejoin_shuttle += loc // Register this turf as shuttle latejoin.
 	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
 	return ..()

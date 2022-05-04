@@ -3,11 +3,11 @@
 
 /// Most of this can be left uncommented out except for ship datums (those get upset if they cant find their landmarks) -Bloop
 var/global/list/latejoin_talon = list()
-/obj/effect/landmark/talon
+/atom/movable/landmark/talon
 	name = "JoinLateTalon"
 	delete_me = 1
 
-/obj/effect/landmark/talon/New()
+/atom/movable/landmark/talon/New()
 	latejoin_talon += loc // Register this turf as tram latejoin.
 	..()
 
@@ -34,7 +34,7 @@ var/global/list/latejoin_talon = list()
 	announce_channel = "Talon"
 	on_store_name = "ITV Talon Robotic Storage"
 
-/obj/effect/landmark/map_data/talon
+/atom/movable/landmark/map_data/talon
     height = 2
 
 ///////////////////////////

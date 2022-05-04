@@ -466,7 +466,7 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "ed" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Doctor"
 	},
 /turf/simulated/floor/tiled/eris/white/bluecorner,
@@ -1078,7 +1078,7 @@
 /obj/structure/bed/chair/bay/comfy/brown{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Pilot"
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
@@ -1692,7 +1692,7 @@
 /turf/simulated/floor/tiled/eris/white/golden,
 /area/talon/deckone/bridge)
 "oH" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Engineer"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2156,7 +2156,7 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Guard"
 	},
 /turf/simulated/floor/tiled/eris/steel,
@@ -4988,7 +4988,7 @@
 /area/talon/maintenance/deckone_starboard)
 "MV" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Doctor"
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
@@ -5500,7 +5500,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Engineer"
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
@@ -5532,7 +5532,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_port_aft_wing)
 "Sb" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Captain"
 	},
 /turf/simulated/floor/tiled/eris/white/golden,
@@ -6238,7 +6238,7 @@
 /obj/structure/bed/chair/bay/comfy/red{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Pilot"
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
@@ -6512,7 +6512,7 @@
 /area/talon/deckone/bridge_hallway)
 "ZZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Talon Engineer"
 	},
 /obj/machinery/atmospherics/binary/pump{
