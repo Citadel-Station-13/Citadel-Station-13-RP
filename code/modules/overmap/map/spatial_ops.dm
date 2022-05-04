@@ -161,11 +161,15 @@
  * - dist - overmap coords to scan
  */
 /datum/overmap/proc/bounds_entity_query(x, y, dist)
+	/// direction bitfield of wrap dirs
+	var/computed_wrap = (x > dist? NONE : WEST) | (y > dist? NONE : SOUTH) |
+						((cached_coordinate_width - x) >= 1? NONE : EAST)  |
+						((cached_coordinate_height - y) >= 1? NONE : NORTH)
 	return raw_bounds_entity_query(
 		x / OVERMAP_DISTANCE_PIXEL,
 		y / OVERMAP_DISTANCE_PIXEL,
 		dist / OVERMAP_DISTANCE_PIXEL,
-		min(x, y, cached_coordinate_width - x, cached_coordinate_height - y) <= dist
+		computed_wrap
 	)
 
 /**
@@ -177,13 +181,31 @@
  * @params
  * - x - absolute byond pixel coordinate x
  * - y - absolute byond pixel coordinate y
- * - dist - pixels to scan
- * - wraparound - do we need to wrap around?
+ * - dist - pixels to scan. 0 just grabs anything overlapping the pixel at x, y.
+ * - wraparound - do we need to wrap around? bitfield.
  */
 /datum/overmap/proc/raw_bounds_entity_query(x, y, dist, wraparound)
 	. = list()
+	var/diameter = dist * 2 + 1
+	// no wrap is easy
 	if(!wraparound)
+		for(var/atom/movable/overmap_object/entity/E in bounds(
+			cached_bottomleft_pixel_x + x - dist - 1,
+			cached_bottomleft_pixel_y + y - dist - 1,
+			diameter - 1,
+			diameter - 1
+		))
+			. += E
+		return
+	// wrap is obnoxious
+	// first check if dist is somehow bigger that overmap in which case we can optimize harder
+	if(diameter > cached_width_pixels)
+		if(dist > cached_height_pixels)
+			return entities.Copy()
+		// only check height
 
+
+	else if(dist > cached_height_pixels)
 	#warn impl
 
 /**

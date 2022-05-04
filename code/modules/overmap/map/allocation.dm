@@ -31,6 +31,10 @@
 	cached_coordinate_height = height * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL
 	cached_coordinate_center_x = cached_coordinate_width * 0.5
 	cached_coordinate_center_y = cached_coordinate_height * 0.5
+	cached_bottomleft_pixel_x = (cached_x_start - 1) * OVERMAP_WORLD_ICON_SIZE + 1
+	cached_bottomleft_pixel_y = (cached_y_start - 1) * OVERMAP_WORLD_ICON_SIZE + 1
+	cached_pixel_width = width * OVERMAP_WORLD_ICON_SIZE
+	cached_pixel_height = height * OVERMAP_WORLD_ICON_SIZE
 
 /datum/overmap/proc/SetupBounds()
 	log_overmaps_map(src, "Setting up bounds...")

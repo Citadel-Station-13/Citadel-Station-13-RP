@@ -52,6 +52,14 @@
 	var/cached_coordinate_center_x
 	/// cached coordinate of center
 	var/cached_coordinate_center_y
+	/// cached bottomleft first absolute byond pixel
+	var/cached_bottomleft_pixel_x
+	/// cached bottomleft first absolute byond pixel
+	var/cached_bottomleft_pixel_y
+	/// cached byond pixel size
+	var/cached_pixel_width
+	/// cached byond pixel size
+	var/cached_pixel_height
 
 	// virtual locations
 	/// our stellar location
