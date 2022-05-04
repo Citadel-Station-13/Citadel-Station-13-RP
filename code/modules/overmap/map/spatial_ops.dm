@@ -187,25 +187,26 @@
 /datum/overmap/proc/raw_bounds_entity_query(x, y, dist, wraparound)
 	. = list()
 	var/diameter = dist * 2 + 1
+	// early optimization - if diameter is too big, remove wraps and reset x/y's because we know it'll trample
+	var/trampled = NONE
+	if(diameter > cached_width_pixels)
+		trampled |= (1<<0)
+		wraparound &= ~(EAST|WEST)
+	if(diameter > cached_height_pixels)
+		trampled |= (1<<1)
+		wraparound &= ~(NORTH|SOUTH)
 	// no wrap is easy
 	if(!wraparound)
 		for(var/atom/movable/overmap_object/entity/E in bounds(
-			cached_bottomleft_pixel_x + x - dist - 1,
-			cached_bottomleft_pixel_y + y - dist - 1,
+			(trampled & (1<<0)) ? (1) : (cached_bottomleft_pixel_x + x - dist - 1)
+			(trampled & (1<<1)) ? (1) : (cached_bottomleft_pixel_y + y - dist - 1),
 			diameter - 1,
 			diameter - 1
 		))
 			. += E
 		return
-	// wrap is obnoxious
-	// first check if dist is somehow bigger that overmap in which case we can optimize harder
-	if(diameter > cached_width_pixels)
-		if(dist > cached_height_pixels)
-			return entities.Copy()
-		// only check height
+	// we know at this point we are wrapping around
 
-
-	else if(dist > cached_height_pixels)
 	#warn impl
 
 /**
