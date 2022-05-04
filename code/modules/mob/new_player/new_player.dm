@@ -256,13 +256,12 @@
 
 			observer.started_as_observer = 1
 			close_spawn_windows()
-			#warn ugh
-			var/atom/movable/O = locate("landmark*Observer-Start")
-			if(istype(O))
-				to_chat(src,"<span class='notice'>Now teleporting.</span>")
-				observer.forceMove(O.loc)
+			var/atom/movable/landmark/L = pick_landmark_by_key(/atom/movable/landmark/observer_spawn)
+			if(L)
+				to_chat(src, SPAN_NOTICE("Now teleporting."))
+				observer.forceMove(L.loc)
 			else
-				to_chat(src,"<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>")
+				to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
 
 			announce_ghost_joinleave(src)
 

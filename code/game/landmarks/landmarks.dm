@@ -5,6 +5,11 @@ GLOBAL_LIST_EMPTY(landmarks_keyed)
 	var/list/L = GLOB.landmarks_keyed[key]
 	if(L)
 		return L.Copy()
+	return list()
+
+/proc/pick_landmark_by_key(key)
+	var/list/L = landmarks_by_key(key)
+	return SAFEPICK(L)
 
 /atom/movable/landmark
 	name = "landmark"
