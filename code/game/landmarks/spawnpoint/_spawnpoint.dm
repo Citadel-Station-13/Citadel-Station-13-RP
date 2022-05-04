@@ -14,6 +14,8 @@
 	var/delete_after_depleted = FALSE
 	/// Priority - landmark is binary inserted on register/unregister. Lower numbers are higher priority.
 	var/priority = 0
+	/// default spawn announce text - allowed are %NAME%, %JOB% - for more complex, override RenderAnnounceMessage()
+	var/announce_template = "%NAME%, %JOB% will arrive shortly."
 
 /atom/movable/landmark/spawnpoint/Initialize(mapload)
 	Register()
@@ -108,8 +110,6 @@
 	var/method = LATEJOIN_METHOD_DEFAULT
 	/// Overrides all latejoin spawnpoints even if methods mismatch
 	var/latejoin_override = FALSE
-	/// default spawn announce text - allowed are %NAME%, %JOB% - for more complex, override RenderAnnounceMessage()
-	var/announce_template = "%NAME%, %JOB% will arrive shortly."
 
 /atom/movable/landmark/spawnpoint/job/Register()
 	. = ..()
