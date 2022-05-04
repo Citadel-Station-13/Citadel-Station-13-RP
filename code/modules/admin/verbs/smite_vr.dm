@@ -8,7 +8,7 @@
 	if(!istype(target))
 		return
 
-	var/list/smite_types = list(SMITE_SHADEKIN_ATTACK,SMITE_SHADEKIN_NOMF,SMITE_REDSPACE_ABDUCT) //,SMITE_AUTOSAVE,SMITE_AUTOSAVE_WIDE (Removed temporarily.)
+	var/list/smite_types = list(SMITE_SHADEKIN_ATTACK,SMITE_SHADEKIN_NOMF,SMITE_REDSPACE_ABDUCT,SMITE_AUTOSAVE,SMITE_AUTOSAVE_WIDE)
 
 	var/smite_choice = input("Select the type of SMITE for [target]","SMITE Type Choice") as null|anything in smite_types
 	if(!smite_choice)
@@ -121,13 +121,13 @@
 
 		if(SMITE_REDSPACE_ABDUCT)
 			redspace_abduction(target, src)
-/*
+
 		if(SMITE_AUTOSAVE)
 			fake_autosave(target, src)
 
 		if(SMITE_AUTOSAVE_WIDE)
 			fake_autosave(target, src, TRUE)
-*/
+
 		else
 			return //Injection? Don't print any messages.
 
@@ -220,9 +220,6 @@ var/redspace_abduction_z
 
 	target.transforming = FALSE
 
-/* There is a reported issue with this smite: Users will have the autosave icon return and lag their game out periodically throughout the round apparently. Unable to isolate breakage.
-This smite is also slated for transfer to the non Vore section shortly. Will coincide with fix.
-
 /proc/fake_autosave(var/mob/living/target, var/client/user, var/wide)
 	if(!istype(target) || !target.client)
 		to_chat(user, "<span class='warning'>Skipping [target] because they are not a /mob/living or have no client.</span>")
@@ -247,7 +244,8 @@ This smite is also slated for transfer to the non Vore section shortly. Will coi
 		"A mask and air tank are all you need to be safe in space!",
 		"When exploring maintenance, wearing no shoes makes you move faster!",
 		"Did you know that the bartender's shotgun is loaded with harmless ammo?",
-		"Did you know that the tesla and singulo only need containment for 5 minutes?")
+		"Did you know that the tesla and singulo only need containment for 5 minutes?",
+		"Did you know that Admins can't ban you if you don't give them consent?")
 
 	var/tip = pick(bad_tips)
 	to_chat(target, "<span class='notice' style='font: small-caps bold large monospace!important'>Tip of the day:</span><br><span class='notice'>[tip]</span>")
@@ -265,4 +263,3 @@ This smite is also slated for transfer to the non Vore section shortly. Will coi
 			to_chat(target, "<span class='notice' style='font: small-caps bold large monospace!important'>Autosave complete!</span>")
 			if(target.client)
 				target.client.screen -= loader
-*/
