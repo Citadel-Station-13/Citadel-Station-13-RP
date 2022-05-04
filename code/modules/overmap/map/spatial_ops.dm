@@ -152,6 +152,13 @@
 						. += E
 
 /**
+ * helper for use bounds() to perform entity query from a dist
+ * takes into account wraps
+ */
+/datum/overmap/proc/bounds_entity_query(x, y, dist)
+	#warn impl
+
+/**
  * get entity distance from a coordinate
  *
  * has more aggressive optimizations than get_entity_distance
