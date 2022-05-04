@@ -108,6 +108,8 @@
 	var/method = LATEJOIN_METHOD_DEFAULT
 	/// Overrides all latejoin spawnpoints even if methods mismatch
 	var/latejoin_override = FALSE
+	/// default spawn announce text - allowed are %NAME%, %JOB% - for more complex, override RenderAnnounceMessage()
+	var/announce_template = "%NAME%, %JOB% will arrive shortly."
 
 /atom/movable/landmark/spawnpoint/job/Register()
 	. = ..()
@@ -161,8 +163,6 @@
 	var/faction
 	/// Method - if there's more than one registered method available, a player may choose which one to use
 	var/method = LATEJOIN_METHOD_DEFAULT
-	/// default spawn announce text - allowed are %NAME%, %JOB% - for more complex, override RenderAnnounceMessage()
-	var/announce_template = "%NAME%, %JOB% will arrive shortly."
 
 /atom/movable/landmark/spawnpoint/latejoin/Register()
 	. = ..()

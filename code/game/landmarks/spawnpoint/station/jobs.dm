@@ -206,6 +206,8 @@
 
 #warn uhoh
 
+#warn make sure picking secondary ai is deprioritized
+
 /atom/movable/landmark/spawnpoint/job/ai/secondary
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "ai_spawn"

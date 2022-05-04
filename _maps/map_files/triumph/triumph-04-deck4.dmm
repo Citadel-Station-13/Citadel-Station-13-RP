@@ -26596,9 +26596,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/breakroom)
 "saf" = (
-/atom/movable/landmark{
-	name = "tripai"
-	},
+/atom/movable/landmark/spawnpoint/job/ai/secondary,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -30526,9 +30524,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "uMX" = (
-/atom/movable/landmark{
-	name = "tripai"
-	},
+/atom/movable/landmark/spawnpoint/job/ai/secondary,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},

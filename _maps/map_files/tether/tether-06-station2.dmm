@@ -8582,9 +8582,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "aFS" = (
-/atom/movable/landmark{
-	name = "tripai"
-	},
+/atom/movable/landmark/spawnpoint/job/ai/secondary,
 /obj/machinery/camera/network/command{
 	dir = 4
 	},
@@ -12147,9 +12145,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "aSJ" = (
-/atom/movable/landmark{
-	name = "tripai"
-	},
+/atom/movable/landmark/spawnpoint/job/ai/secondary,
 /obj/machinery/camera/network/command{
 	dir = 9
 	},
