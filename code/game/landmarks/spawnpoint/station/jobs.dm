@@ -36,7 +36,7 @@
 /atom/movable/landmark/spawnpoint/job/quartermaster
 	name = "Quartermaster"
 	icon_state = "Quartermaster"
-	job_path = /datum/job/station/qm
+	job_path = /datum/job/station/quartermaster
 
 /atom/movable/landmark/spawnpoint/job/atmospheric_technician
 	name = "Atmospheric Technician"
@@ -138,10 +138,10 @@
 	icon_state = "Research Director"
 	job_path = /datum/job/station/research_director
 
-/atom/movable/landmark/spawnpoint/job/geneticist
-	name = "Geneticist"
-	icon_state = "Geneticist"
-	job_path = /datum/job/station/geneticist
+// /atom/movable/landmark/spawnpoint/job/geneticist
+// 	name = "Geneticist"
+// 	icon_state = "Geneticist"
+// 	job_path = /datum/job/station/geneticist
 
 /atom/movable/landmark/spawnpoint/job/chief_medical_officer
 	name = "Chief Medical Officer"
@@ -205,8 +205,7 @@
 		empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
 
 /atom/movable/landmark/spawnpoint/job/ai/secondary
-	icon = 'icons/effects/landmarks_static.dmi'
-	icon_state = "ai_spawn"
+	icon_state = "AI"
 	primary_ai = FALSE
 	latejoin_active = FALSE
 

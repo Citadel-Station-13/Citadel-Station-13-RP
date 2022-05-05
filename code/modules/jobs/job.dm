@@ -42,9 +42,6 @@
 	var/offmap_spawn = FALSE				// Do we require weird and special spawning and datacore handling?
 	var/mob_type = JOB_CARBON				// Bitflags representing mob type this job spawns
 
-	// Description of the job's role and minimum responsibilities.
-	var/desc = "This Job doesn't have a description! Please report it!"
-
 	// Requires a ckey to be whitelisted in jobwhitelist.txt
 	var/whitelist_only = 0
 
