@@ -202,17 +202,20 @@
 /atom/movable/landmark/spawnpoint/job/ai/OnRoundstart()
 	. = ..()
 	if(latejoin_active && !spawned)
-		new /obj/structure/AIcore/latejoin_inactive(loc)
-
-#warn uhoh
-
-#warn make sure picking secondary ai is deprioritized
+		empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
 
 /atom/movable/landmark/spawnpoint/job/ai/secondary
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "ai_spawn"
 	primary_ai = FALSE
 	latejoin_active = FALSE
+
+/atom/movable/landmark/spawnpoint/job/ai/secondary/Available(mob/M, client/C, harder)
+	. = ..()
+	// yes this is unoptimized by sue me
+	for(var/atom/movable/landmark/spawnpoint/job/ai/other in SSjob.GetAllSpawnpoints())
+		if(other.primary_ai && !other.spawned)
+			return FALSE		// priority to primary slots
 
 //Department Security spawns
 
