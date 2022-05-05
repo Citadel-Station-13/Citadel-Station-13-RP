@@ -42,9 +42,6 @@
 /mob/living/carbon/human/event1/Initialize(var/new_loc)
 	return ..(new_loc, SPECIES_EVENT1)
 
-/mob/living/carbon/human/dummy
-	no_vore = TRUE //Dummies don't need bellies.
-
 /mob/living/carbon/human/sergal/Initialize(mapload, new_species)
 	h_style = "Sergal Plain"
 	return ..(mapload, SPECIES_SERGAL)
@@ -94,7 +91,11 @@
 /mob/living/carbon/human/dummy
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
-	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
+	no_vore = TRUE //Dummies don't need bellies.
+
+// species_flags --> NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
+// though this is probably unnecessary because **why** are dummies ever in the game world? fuck off.
+
 
 // /mob/living/carbon/human/dummy/mannequin/Initialize()
 // 	. = ..()
