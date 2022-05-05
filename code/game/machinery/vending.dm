@@ -156,7 +156,7 @@
 
 		var/obj/item/paying_with = I || W
 		var/list/data = list()
-		var/amount = I.attempt_use_currency(user, src, currently_vending.price, FALSE, NONE, data, FALSE, 7)
+		var/amount = paying_with.attempt_use_currency(user, src, currently_vending.price, FALSE, NONE, data, FALSE, 7)
 		if(amount == PAYMENT_ERROR)
 			if(data[DYNAMIC_PAYMENT_DATA_FAIL_REASON])
 				status_message = data[DYNAMIC_PAYMENT_DATA_FAIL_REASON]

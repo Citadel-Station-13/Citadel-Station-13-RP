@@ -43,4 +43,4 @@
 	T.date = current_date_string
 	T.time = stationtime2text()
 	T.purpose = details[CHARGE_DETAIL_REASON]
-	customer_account.transaction_log.add(T)
+	customer_account.transaction_log.Add(T)
