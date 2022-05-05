@@ -1,6 +1,6 @@
 // currently just id cards
 
-/obj/item/card/id/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data, silent, visual_range)
+/obj/item/card/id/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data, silent, visual_range)
 	. = ..()
 	if(. >= PAYMENT_SUCCESS)
 		return	// component intercepted
