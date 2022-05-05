@@ -41,14 +41,9 @@
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
-#warn purge this with fire
 /datum/spawnpoint/tram
 	display_name = "Tram Station"
-	msg = "has arrived on the tram"
-
-/datum/spawnpoint/tram/New()
-	..()
-	turfs = latejoin_tram
+	method = LATEJOIN_METHOD_TRAM
 
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/tram
@@ -95,15 +90,9 @@
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
-#warn nuke this from orbit
-
 /datum/spawnpoint/shuttle
 	display_name = "Shuttle Bay"
-	msg = "has arrived on the shuttle"
-
-/datum/spawnpoint/shuttle/New()
-	. = ..()
-	turfs = latejoin_shuttle
+	method = LATEJOIN_METHOD_SHUTTLE_DOCK
 
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms

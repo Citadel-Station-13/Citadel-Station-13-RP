@@ -6,12 +6,7 @@
 /datum/spawnpoint/talon
 	display_name = "ITV Talon Cryo"
 	restrict_job = list("Talon Captain", "Talon Pilot", "Talon Engineer", "Talon Doctor", "Talon Guard")
-	msg = "has come out of cryostasis"
 	announce_channel = "Talon"
-
-/datum/spawnpoint/talon/New()
-	..()
-	turfs = latejoin_talon
 
 /obj/machinery/cryopod/talon
 	announce_channel = "Talon"

@@ -128,7 +128,7 @@
 				return S
 	if(random && length(.))
 		return pick(.)
-	// Priority 3: OVerflow spawnpoints as a last resort
+	// Priority 3: Overflow spawnpoints as a last resort
 	if(length(overflow_spawnpoints[faction]))
 		for(var/atom/movable/landmark/spawnpoint/overflow/S as anything in overflow_spawnpoints[faction])
 			if(!S.Available(null, C, harder))
