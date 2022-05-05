@@ -32,9 +32,11 @@
 /// successful - syntatically, even 0 is fine
 #define PAYMENT_SUCCESS				0
 /// errored
-#define PAYMENT_ERROR				-1
+#define PAYMENT_DYNAMIC_ERROR		-1
 /// didn't try at all
 #define PAYMENT_NOT_CURRENCY		-2
+/// not enough money - this is only for "dumb" currency, if it's a dynamic method use payment error for logical errors like "bank account insufficient" and return error
+#define PAYMENT_INSUFFICIENT		-3
 
 // list return for /datum/proc/transaction_charge_details(list/data)
 /// recipient identity

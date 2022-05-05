@@ -100,18 +100,13 @@
 
 /obj/item/spacecash/consume_static_currency(amount, force, mob/user, atom/target, range)
 	if(force)
-		. = min(worth, amount)
-		do_static_currency_feedback(amount, user, target, range)
-		worth -= .
-		if(!worth)
-			qdel(src)
-		return
+		amount = min(amount, worth)
 	if(amount > worth)
-		return 0
+		return PAYMENT_INSUFFICIENT
 	worth -= amount
+	do_static_currency_feedback(amount, user, target, range)
 	. = amount
 	if(!worth)
-		do_static_currency_feedback(amount, user, target, range)
 		qdel(src)
 
 /obj/item/spacecash/amount_static_currency()
@@ -200,13 +195,9 @@
 
 /obj/item/spacecash/ewallet/consume_static_currency(amount, force, mob/user, atom/target, range)
 	if(force)
-		. = min(worth, amount)
-		do_static_currency_feedback(amount, user, target, range)
-		worth -= .
-		return
+		amount = min(amount, worth)
 	if(amount > worth)
-		return 0
+		return PAYMENT_INSUFFICIENT
 	worth -= amount
-	. = amount
-	if(!worth)
-		do_static_currency_feedback(amount, user, target, range)
+	do_static_currency_feedback(amount, user, target, range)
+	return amount

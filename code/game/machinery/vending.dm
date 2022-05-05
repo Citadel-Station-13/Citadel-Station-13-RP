@@ -156,7 +156,7 @@
 		var/list/data = list()
 		var/amount = paying_with.attempt_use_currency(user, src, currently_vending.price, FALSE, NONE, data, FALSE, 7)
 		switch(amount)
-			if(PAYMENT_ERROR)
+			if(PAYMENT_DYNAMIC_ERROR)
 				if(data[DYNAMIC_PAYMENT_DATA_FAIL_REASON])
 					status_message = data[DYNAMIC_PAYMENT_DATA_FAIL_REASON]
 					status_error = TRUE
@@ -164,14 +164,15 @@
 				return
 			if(PAYMENT_NOT_CURRENCY)
 				handled = FALSE
+			if(PAYMENT_INSUFFICIENT)
+				handled  TRUE
+				to_chat(user, SPAN_WARNING("That is not enough money!"))
 			else
 				handled = TRUE
 				paid = amount == currently_vending.price
 
 		if(handled)
-			if(!paid)
-				to_chat(user, SPAN_WARNING("That is not enough money!"))
-			else
+			if(paid)
 				var/payer_name = "Unknown"
 				switch(data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE])
 					if(PAYMENT_TYPE_BANK_CARD)

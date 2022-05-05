@@ -100,9 +100,14 @@
 				if(!(force? data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT] < 0 : data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT] == amount))
 					CRASH("[D]([D.type]) was coded by a monkey and didn't match required amount! force: [force], amount: [amount], returned: [data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT]].")
 				. = data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT]
+				// upon handle, we immediately break
 				break
 			else if(ret & COMPONENT_ERRORED_PAYMENT)
-				return PAYMENT_ERROR
+				return PAYMENT_DYNAMIC_ERROR
+				// upon error, we immediately break
+			else if(ret & COMPONENT_INSUFFICIENT_PAYMENT)
+				. = PAYMENT_INSUFFICIENT
+				// don't return, next component might override yet!
 
 /**
  * handles attempting to use an item for an automatic payment using default handling
@@ -128,7 +133,7 @@
 	// check static currency
 	if(is_static_currency(prevent_types))
 		. = consume_static_currency(amount, force, user, predicate, silent? 0 : visual_range)
-		if(. != PAYMENT_NOT_CURRENCY && . != PAYMENT_ERROR)		// paid
+		if(. >= PAYMENT_SUCCESS)
 			return
 	. = attempt_dynamic_currency(user, predicate, amount, force, prevent_types, data, silent, visual_range)
 	if(data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT] && !(. > PAYMENT_SUCCESS))
