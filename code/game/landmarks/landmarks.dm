@@ -134,6 +134,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/landmark)
 /atom/movable/landmark/costume
 
 /atom/movable/landmark/costume/random/Initialize()
+	. = ..()
 	var/list/options = subtypesof(/atom/movable/landmark/costume) - /atom/movable/landmark/costume/random
 	var/PICK= options[rand(1,options.len)]
 	new PICK(src.loc)
