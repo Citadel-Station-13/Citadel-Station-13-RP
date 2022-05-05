@@ -191,6 +191,12 @@
 	name = "Psychiatrist"
 	job_path = /datum/job/station/psychiatrist
 
+/atom/movable/landmark/spawnpoint/job/xenobotanist
+	name = "Xenobotanist"
+
+/atom/movable/landmark/spawnpoint/job/xenobiologist
+	name = "Xenobiologist"
+
 /atom/movable/landmark/spawnpoint/job/ai
 	name = "AI"
 	icon_state = "AI"
