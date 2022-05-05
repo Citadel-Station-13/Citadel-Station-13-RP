@@ -46,7 +46,7 @@
 /atom/movable/landmark/spawnpoint/job/cook
 	name = "Cook"
 	icon_state = "Cook"
-	job_path = /datum/job/station/cook
+	job_path = /datum/job/station/chef
 
 /atom/movable/landmark/spawnpoint/job/shaft_miner
 	name = "Shaft Miner"
@@ -66,7 +66,7 @@
 /atom/movable/landmark/spawnpoint/job/head_of_security
 	name = "Head of Security"
 	icon_state = "Head of Security"
-	job_path = /datum/job/station/hos
+	job_path = /datum/job/station/head_of_security
 
 /atom/movable/landmark/spawnpoint/job/captain
 	name = "Captain"
@@ -91,12 +91,12 @@
 /atom/movable/landmark/spawnpoint/job/head_of_personnel
 	name = "Head of Personnel"
 	icon_state = "Head of Personnel"
-	job_path = /datum/job/station/hop
+	job_path = /datum/job/station/head_of_personnel
 
 /atom/movable/landmark/spawnpoint/job/librarian
 	name = "Curator"
 	icon_state = "Curator"
-	job_path = /datum/job/station/curator
+	job_path = /datum/job/station/librarian
 
 /atom/movable/landmark/spawnpoint/job/lawyer
 	name = "Lawyer"
@@ -136,7 +136,7 @@
 /atom/movable/landmark/spawnpoint/job/research_director
 	name = "Research Director"
 	icon_state = "Research Director"
-	job_path = /datum/job/station/rd
+	job_path = /datum/job/station/research_director
 
 /atom/movable/landmark/spawnpoint/job/geneticist
 	name = "Geneticist"
@@ -146,12 +146,12 @@
 /atom/movable/landmark/spawnpoint/job/chief_medical_officer
 	name = "Chief Medical Officer"
 	icon_state = "Chief Medical Officer"
-	job_path = /datum/job/station/cmo
+	job_path = /datum/job/station/chief_medical_officer
 
-/atom/movable/landmark/spawnpoint/job/virologist
-	name = "Virologist"
-	icon_state = "Virologist"
-	job_path = /datum/job/station/virologist
+// /atom/movable/landmark/spawnpoint/job/virologist
+// 	name = "Virologist"
+// 	icon_state = "Virologist"
+// 	job_path = /datum/job/station/virologist
 
 /atom/movable/landmark/spawnpoint/job/chaplain
 	name = "Chaplain"
