@@ -165,7 +165,7 @@
 			if(PAYMENT_NOT_CURRENCY)
 				handled = FALSE
 			if(PAYMENT_INSUFFICIENT)
-				handled  TRUE
+				handled = TRUE
 				to_chat(user, SPAN_WARNING("That is not enough money!"))
 			else
 				handled = TRUE

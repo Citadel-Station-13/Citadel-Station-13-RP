@@ -96,7 +96,7 @@
 	return (prevent_types & PAYMENT_TYPE_CASH)? NOT_STATIC_CURRENCY : PLURAL_STATIC_CURRENCY
 
 /obj/item/spacecash/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	user.visible_message(SPAN_NOTICE("[user] inserts some cash into [target]."), SPAN_NOTICE("You insert [amount] [CURRENCY_NAME_PLURAL] into [target]."), SPAN_NOTICE("You hear some papers shuffling."), range)
+	user.visible_message(SPAN_NOTICE("[user] inserts some cash into [target]."), SPAN_NOTICE("You insert [amount] [CURRENCY_NAME_PLURAL_PROPERR] into [target]."), SPAN_NOTICE("You hear some papers shuffling."), range)
 
 /obj/item/spacecash/consume_static_currency(amount, force, mob/user, atom/target, range)
 	if(force)
