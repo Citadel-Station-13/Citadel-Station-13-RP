@@ -30,7 +30,7 @@
 			data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Insufficient funds."
 			return PAYMENT_DYNAMIC_ERROR
 		else
-			amonut = customer_account.money
+			amount = customer_account.money
 
 	// deduct
 	customer_account.money -= amount
