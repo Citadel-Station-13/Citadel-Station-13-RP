@@ -1,4 +1,4 @@
-/datum/job/station/offduty/cargo
+/datum/job/station/off_duty/cargo
 	title = "Off-duty Cargo"
 	selection_color = "#9b633e"
 	access = list(access_maint_tunnels)
