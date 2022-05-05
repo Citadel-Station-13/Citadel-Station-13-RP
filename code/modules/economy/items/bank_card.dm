@@ -2,7 +2,7 @@
 
 /obj/item/card/id/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data, silent, visual_range)
 	. = ..()
-	if(.)
+	if(. >= PAYMENT_SUCCESS)
 		return	// component intercepted
 	if(!silent)
 		user.visible_message(SPAN_INFO("[user] swipes [src] through [predicate]."), range = visual_range)

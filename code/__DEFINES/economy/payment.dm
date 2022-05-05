@@ -29,6 +29,8 @@
 #define PLURAL_STATIC_CURRENCY			2
 
 // attempt_dynamic_payment and attempt_use_currency
+/// successful - syntatically, even 0 is fine
+#define PAYMENT_SUCCESS				0
 /// errored
 #define PAYMENT_ERROR				-1
 /// didn't try at all

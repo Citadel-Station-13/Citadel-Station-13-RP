@@ -149,38 +149,39 @@
 	var/obj/item/card/id/I = W.GetID()
 
 	if(currently_vending && vendor_account && !vendor_account.suspended)
-		var/paid = 0
-		var/handled = 0
+		var/paid = FALSE
+		var/handled = FALSE
 
 		var/obj/item/paying_with = I || W
 		var/list/data = list()
 		var/amount = paying_with.attempt_use_currency(user, src, currently_vending.price, FALSE, NONE, data, FALSE, 7)
-		if(amount == PAYMENT_ERROR)
-			if(data[DYNAMIC_PAYMENT_DATA_FAIL_REASON])
-				status_message = data[DYNAMIC_PAYMENT_DATA_FAIL_REASON]
-				status_error = TRUE
-			return
-		else if(amount != PAYMENT_NOT_CURRENCY)
-			handled = TRUE
-			paid = amount == currently_vending.price
+		switch(amount)
+			if(PAYMENT_ERROR)
+				if(data[DYNAMIC_PAYMENT_DATA_FAIL_REASON])
+					status_message = data[DYNAMIC_PAYMENT_DATA_FAIL_REASON]
+					status_error = TRUE
+				SSnanoui.update_uis(src)
+				return
+			if(PAYMENT_NOT_CURRENCY)
+				handled = FLASE
+			else
+				handled = TRUE
+				paid = amount == currently_vending.price
 
-		if(!paid)
-			to_chat(user, SPAN_WARNING("That is not enough money!"))
-		else
-			var/payer_name = "Unknown"
-			switch(data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE])
-				if(PAYMENT_TYPE_BANK_CARD)
-					var/datum/money_account/A = data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT]
-					if(A)
-						payer_name = A.owner_name
-				else
-					payer_name = "(cash)"
-			credit_purchase(payer_name)
-
-		if(paid)
-			vend(currently_vending, usr)
-			return
 		if(handled)
+			if(!paid)
+				to_chat(user, SPAN_WARNING("That is not enough money!"))
+			else
+				var/payer_name = "Unknown"
+				switch(data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE])
+					if(PAYMENT_TYPE_BANK_CARD)
+						var/datum/money_account/A = data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT]
+						if(A)
+							payer_name = A.owner_name
+					else
+						payer_name = "(cash)"
+				credit_purchase(payer_name)
+				vend(currently_vending, usr)
 			SSnanoui.update_uis(src)
 			return // don't smack that machine with your 2 thalers
 

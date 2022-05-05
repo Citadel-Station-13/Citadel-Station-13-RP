@@ -126,8 +126,10 @@
 /obj/item/proc/attempt_use_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data = list(), silent, visual_range = 7)
 	. = PAYMENT_NOT_CURRENCY
 	// check static currency
-	if(is_static_currency(prevent_types) && ((. = consume_static_currency(amount, force)) != PAYMENT_NOT_CURRENCY && (. != PAYMENT_ERROR)))	// sorry for this line, god
-		return
+	if(is_static_currency(prevent_types))
+		. = consume_static_currency(amount, force, user, predicate, silent? 0 : visual_range)
+		if(. != PAYMENT_NOT_CURRENCY && . != PAYMENT_ERROR)		// paid
+			return
 	return attempt_dynamic_currency(user, predicate, amount, force, prevent_types, data, silent, visual_range)
 
 /**
