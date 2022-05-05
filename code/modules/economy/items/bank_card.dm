@@ -4,7 +4,8 @@
 	. = ..()
 	if(.)
 		return	// component intercepted
-	user.visible_message(SPAN_INFO("[user] swipes [src] through [predicate]."))
+	if(!silent)
+		user.visible_message(SPAN_INFO("[user] swipes [src] through [predicate]."), range = visual_range)
 	var/datum/money_account/customer_account = get_account(associated_account_number)
 	if(!customer_account)
 		data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Unable to access account. Please contact technical support if problem persist."

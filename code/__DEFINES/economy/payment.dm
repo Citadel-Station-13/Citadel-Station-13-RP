@@ -16,7 +16,7 @@
 /// all payment types
 #define PAYMENT_TYPE_ALL				ALL
 /// only these types
-#define PREVENT_TYPES_ALLOW_ONLY(types)		(~(types))
+#define PAYMENT_TYPES_ALLOW_ONLY(types)		(~(types))
 /// prevent these types
 #define PAYMENT_TYPES_EXCEPT_FOR(types)		(~(types))
 
@@ -31,6 +31,8 @@
 // attempt_dynamic_payment and attempt_use_currency
 /// errored
 #define PAYMENT_ERROR				-1
+/// didn't try at all
+#define PAYMENT_NOT_CURRENCY		-2
 
 // list return for /datum/proc/transaction_charge_details(list/data)
 /// recipient identity

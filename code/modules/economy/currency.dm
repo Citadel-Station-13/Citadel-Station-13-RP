@@ -47,7 +47,7 @@
  * @return amount consumed
  */
 /obj/item/proc/consume_static_currency(amount, force, mob/user, atom/target, range)
-	return 0
+	return PAYMENT_NOT_CURRENCY
 
 /**
  * displays feedback upon being used as static currency by a person
@@ -82,18 +82,19 @@
  * amount - amount to charge
  * force - charge even if amount is under, use for stuff like atm deposits/money drains
  * prevent_types - payment_types to block
- * reason - payment reason for transaction logs
  * data - arbitrary list provided by the predicate, fed back into it during query_transaction_details. the proc **can** feed things back into it, like error messages!
+ * silent - suppress all feedback
  * visual_range - feedback/message range
  *
  * @returns amount paid
  */
-/obj/item/proc/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data = list(), silent, visual_range = 7)
+/obj/item/proc/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data = list(), silent, visual_range = 7)
+	. = PAYMENT_NOT_CURRENCY
 	var/list/iterating  = list()
 	SEND_SIGNAL(src, COMSIG_ITEM_DYNAMIC_CURRENCY_QUERY, iterating)
 	if(length(iterating))
 		for(var/datum/D in iterating)
-			var/ret = SEND_SIGNAL(D, COMSIG_ITEM_DYNAMIC_CURRENCY_CALL, user, predicate, amount, force, prevent_types, reason, data, silent, visual_range)
+			var/ret = SEND_SIGNAL(D, COMSIG_ITEM_DYNAMIC_CURRENCY_CALL, user, predicate, amount, force, prevent_types, data, silent, visual_range)
 			if(ret & COMPONENT_HANDLED_PAYMENT)
 				// make sure they're not an idiot, and aren't forgetting to use our api
 				if(!(force? data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT] < 0 : data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT] == amount))
@@ -117,15 +118,17 @@
  * prevent_types - payment_types to block
  * reason - payment reason for transaction logs
  * data - arbitrary list provided by the predicate, fed back into it during query_transaction_details. the proc **can** feed things back into it, like error messages and payment accounts!
+ * silent - suppress all feedback
  * visual_range - feedback/message range
  *
  * @returns amount paid
  */
-/obj/item/proc/attempt_use_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data = list(), silent, visual_range = 7)
+/obj/item/proc/attempt_use_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data = list(), silent, visual_range = 7)
+	. = PAYMENT_NOT_CURRENCY
 	// check static currency
 	if(is_static_currency(prevent_types) && (. = consume_static_currency(amount, force)))
 		return
-	return attempt_dynamic_currency(user, predicate, amount, force, prevent_types, reason, data, silent, visual_range)
+	return attempt_dynamic_currency(user, predicate, amount, force, prevent_types, data, silent, visual_range)
 
 /**
  * datum proc called when auto_consume_currency is used, as well as any manual use cases

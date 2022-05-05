@@ -165,13 +165,12 @@
 	desc = "It's worth 1000 Thalers."
 	worth = 1000
 
-proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
+/proc/spawn_money(sum, spawnloc, mob/living/carbon/human/human_user)
 	var/obj/item/spacecash/SC = new (spawnloc)
 
 	SC.set_worth(sum)
 	if (ishuman(human_user) && !human_user.get_active_hand())
 		human_user.put_in_hands(SC)
-	return
 
 /obj/item/spacecash/ewallet
 	name = "charge card"
