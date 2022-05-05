@@ -106,7 +106,7 @@
 		if(!worth)
 			qdel(src)
 		return
-	if(amount < worth)
+	if(amount > worth)
 		return 0
 	worth -= amount
 	. = amount
@@ -204,7 +204,7 @@
 		do_static_currency_feedback(amount, user, target, range)
 		worth -= .
 		return
-	if(amount < worth)
+	if(amount > worth)
 		return 0
 	worth -= amount
 	. = amount
