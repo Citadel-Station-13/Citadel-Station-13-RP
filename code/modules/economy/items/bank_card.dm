@@ -1,10 +1,17 @@
 // currently just id cards
 
-/obj/item/id/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data, silent, visual_range)
+/obj/item/card/id/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data, silent, visual_range)
 	. = ..()
 	if(.)
 		return	// component intercepted
-
+	user.visible_message(SPAN_INFO("[user] swipes [src] through [predicate]."))
+	var/datum/money_account/customer_account = get_account(associated_account_number)
+	if(!customer_account)
+		data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Unable to access account. Please contact technical support if problem persist."
+		return DYNAMIC_PAYMENT_ERROR
+	if(customer_account.suspended)
+		data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Account suspended."
+		return DYNAMIC_PAYMENT_ERROR
 
 
 /**
@@ -14,20 +21,6 @@
  * successful, 0 if failed
  */
 /obj/machinery/vending/proc/pay_with_card(var/obj/item/card/id/I, var/obj/item/ID_container)
-	if(I==ID_container || ID_container == null)
-		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
-	else
-		visible_message("<span class='info'>\The [usr] swipes \the [ID_container] through \the [src].</span>")
-	var/datum/money_account/customer_account = get_account(I.associated_account_number)
-	if(!customer_account)
-		status_message = "Error: Unable to access account. Please contact technical support if problem persists."
-		status_error = 1
-		return 0
-
-	if(customer_account.suspended)
-		status_message = "Unable to access account: account suspended."
-		status_error = 1
-		return 0
 
 	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
 	// empty at high security levels

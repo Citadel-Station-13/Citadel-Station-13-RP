@@ -28,6 +28,10 @@
 /// stack, e.g. cash, holochips
 #define PLURAL_STATIC_CURRENCY			2
 
+// attempt_dynamic_payment
+/// errored
+#define DYNAMIC_PAYMENT_ERROR				-1
+
 // list return for /datum/proc/transaction_charge_details(list/data)
 /// recipient identity
 #define CHARGE_DETAIL_RECIPIENT				"recipient"

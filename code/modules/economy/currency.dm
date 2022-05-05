@@ -100,6 +100,8 @@
 					CRASH("[D]([D.type]) was coded by a monkey and didn't match required amount! force: [force], amount: [amount], returned: [data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT]].")
 				. = data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT]
 				break
+			else if(ret & COMPONENT_ERRORED_PAYMENT)
+				return DYNAMIC_PAYMENT_ERROR
 
 /**
  * handles attempting to use an item for an automatic payment using default handling
