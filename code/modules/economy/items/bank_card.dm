@@ -8,73 +8,38 @@
 	var/datum/money_account/customer_account = get_account(associated_account_number)
 	if(!customer_account)
 		data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Unable to access account. Please contact technical support if problem persist."
-		return DYNAMIC_PAYMENT_ERROR
+		return PAYMENT_ERROR
 	if(customer_account.suspended)
 		data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Account suspended."
-		return DYNAMIC_PAYMENT_ERROR
-
-
-/**
- * Scan a card and attempt to transfer payment from associated account.
- *
- * Takes payment for whatever is the currently_vending item. Returns 1 if
- * successful, 0 if failed
- */
-/obj/machinery/vending/proc/pay_with_card(var/obj/item/card/id/I, var/obj/item/ID_container)
-
-	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
-	// empty at high security levels
-	if(customer_account.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
-		var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
-		customer_account = attempt_account_access(I.associated_account_number, attempt_pin, 2)
-
+		return PAYMENT_ERROR
+	if(customer_account.security_level != 0)
+		if(!user)
+			data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: No credentials supplied."
+			return PAYMENT_ERROR
+		var/input_pin = input(user, "Enter pin code", "Vendor Transaction") as num|null
+		if(!input_pin)
+			data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: No credentials supplied."
+			return PAYMENT_ERROR
+		customer_account = attempt_account_access(associated_account_number, input_pin, 2)
 		if(!customer_account)
-			status_message = "Unable to access account: incorrect credentials."
-			status_error = 1
-			return 0
+			data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Incorrect credentials."
+			return PAYMENT_ERROR
+	if(amount > customer_account.money)
+		data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Insufficient funds."
+		return PAYMENT_ERROR
 
-	if(currently_vending.price > customer_account.money)
-		status_message = "Insufficient funds in account."
-		status_error = 1
-		return 0
-	else
-		// Okay to move the money at this point
-
-		// debit money from the purchaser's account
-		customer_account.money -= currently_vending.price
-
-		// create entry in the purchaser's account log
-		var/datum/transaction/T = new()
-		T.target_name = "[vendor_account.owner_name] (via [name])"
-		T.purpose = "Purchase of [currently_vending.item_name]"
-		if(currently_vending.price > 0)
-			T.amount = "([currently_vending.price])"
-		else
-			T.amount = "[currently_vending.price]"
-		T.source_terminal = name
-		T.date = current_date_string
-		T.time = stationtime2text()
-		customer_account.transaction_log.Add(T)
-
-		// Give the vendor the money. We use the account owner name, which means
-		// that purchases made with stolen/borrowed card will look like the card
-		// owner made them
-		credit_purchase(customer_account.owner_name)
-		return 1
-
-/**
- *  Add money for current purchase to the vendor account.
- *
- *  Called after the money has already been taken from the customer.
- */
-/obj/machinery/vending/proc/credit_purchase(var/target as text)
-	vendor_account.money += currently_vending.price
-
-	var/datum/transaction/T = new()
-	T.target_name = target
-	T.purpose = "Purchase of [currently_vending.item_name]"
-	T.amount = "[currently_vending.price]"
-	T.source_terminal = name
+	// deduct
+	customer_account.money -= amount
+	data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT] = amount
+	data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT] = customer_account
+	data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE] = PAYMENT_TYPE_BANK_CARD
+	// transaction log
+	var/datum/transaction/T = new
+	T.amount = amount
+	var/list/details = predicate.query_transaction_details(data)
+	T.target_name = details[CHARGE_DETAIL_RECIPIENT]
+	T.source_terminal = details[CHARGE_DETAIL_DEVICE]
 	T.date = current_date_string
 	T.time = stationtime2text()
-	vendor_account.transaction_log.Add(T)
+	T.purpose = details[CHARGE_DETAIL_REASON]
+	customer_account.transaction_log.add(T)

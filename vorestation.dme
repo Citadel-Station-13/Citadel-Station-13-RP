@@ -1998,6 +1998,7 @@
 #include "code\modules\economy\price_list.dm"
 #include "code\modules\economy\TradeDestinations.dm"
 #include "code\modules\economy\worth.dm"
+#include "code\modules\economy\items\bank_card.dm"
 #include "code\modules\economy\items\cash.dm"
 #include "code\modules\economy\items\coins.dm"
 #include "code\modules\economy\items\EFTPOS.dm"

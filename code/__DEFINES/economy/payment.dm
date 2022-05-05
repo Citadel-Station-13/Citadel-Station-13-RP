@@ -28,9 +28,9 @@
 /// stack, e.g. cash, holochips
 #define PLURAL_STATIC_CURRENCY			2
 
-// attempt_dynamic_payment
+// attempt_dynamic_payment and attempt_use_currency
 /// errored
-#define DYNAMIC_PAYMENT_ERROR				-1
+#define PAYMENT_ERROR				-1
 
 // list return for /datum/proc/transaction_charge_details(list/data)
 /// recipient identity
@@ -39,11 +39,16 @@
 #define CHARGE_DETAIL_LOCATION				"location"
 /// machine/charge device identity
 #define CHARGE_DETAIL_DEVICE				"device"
+/// reason field
+#define CHARGE_DETAIL_REASON				"reason"
+
 
 // datalist for dynamic payment keys
 /// error message on failure
 #define DYNAMIC_PAYMENT_DATA_FAIL_REASON		"fail_reason"
 /// paid amount
 #define DYNAMIC_PAYMENT_DATA_PAID_AMOUNT		"amount"
-
-
+/// bank account used if any
+#define DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT       "account"
+/// payment type used
+#define DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE		"currency_type"

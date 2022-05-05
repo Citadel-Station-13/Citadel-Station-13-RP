@@ -101,7 +101,7 @@
 				. = data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT]
 				break
 			else if(ret & COMPONENT_ERRORED_PAYMENT)
-				return DYNAMIC_PAYMENT_ERROR
+				return PAYMENT_ERROR
 
 /**
  * handles attempting to use an item for an automatic payment using default handling
@@ -116,7 +116,7 @@
  * force - charge even if amount is under, use for stuff like atm deposits/money drains
  * prevent_types - payment_types to block
  * reason - payment reason for transaction logs
- * data - arbitrary list provided by the predicate, fed back into it during query_transaction_details. the proc **can** feed things back into it, like error messages!
+ * data - arbitrary list provided by the predicate, fed back into it during query_transaction_details. the proc **can** feed things back into it, like error messages and payment accounts!
  * visual_range - feedback/message range
  *
  * @returns amount paid
@@ -137,5 +137,6 @@
 	return list(
 		CHARGE_DETAIL_LOCATION = "Unknown",
 		CHARGE_DETAIL_RECIPIENT = "Unknown",
-		CHARGE_DETAIL_DEVICE = "Unknown"
+		CHARGE_DETAIL_DEVICE = "Unknown",
+		CHARGE_DETAIL_REASON = "Unknown"
 	)
