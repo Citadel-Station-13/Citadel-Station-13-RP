@@ -519,7 +519,7 @@
 	SP.OnSpawn(character)
 	//Announces Cyborgs early, because that is the only way it works
 	if(character.mind.assigned_role == "Cyborg")
-		AnnounceCyborg(character, rank, SP.RenderAnnounceMessage(character, name = character.name, rank), announce_channel, character.z)
+		AnnounceCyborg(character, rank, SP.RenderAnnounceMessage(character, name = character.name, job_name = rank), announce_channel, character.z)
 	character = job_master.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
 

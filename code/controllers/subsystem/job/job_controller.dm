@@ -643,7 +643,7 @@ var/global/datum/controller/occupations/job_master
 	var/atom/movable/landmark/spawnpoint/S
 
 	. = list("spawnpoint")
-	if(spawnpos && istype(spawnpos) && spawnpos.turfs.len)
+	if(spawnpos && istype(spawnpos))
 		if(spawnpos.check_job_spawning(rank))
 			S = SSjob.GetLatejoinSpawnpoint(method = preferred_method, job_path = J.type, faction = J.faction)
 			.["spawnpoint"] = S.GetSpawnLoc()
