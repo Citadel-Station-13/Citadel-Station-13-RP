@@ -163,7 +163,7 @@
 				SSnanoui.update_uis(src)
 				return
 			if(PAYMENT_NOT_CURRENCY)
-				handled = FLASE
+				handled = FALSE
 			else
 				handled = TRUE
 				paid = amount == currently_vending.price
