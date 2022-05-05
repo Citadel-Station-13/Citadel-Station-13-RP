@@ -113,10 +113,11 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
  * therefore
  */
 /world/proc/ensure_logging_active()
+// if we're unit testing do not ever redirect world.log or the test won't show output.
 #ifndef UNIT_TESTS
 	// we already know, we don't care
 	if(params[OVERRIDE_LOG_DIRECTORY_PARAMETER])
-		world.log = file("[params[OVERRIDE_LOG_DIRECTORY_PARAMETER]]/dd.log")
+		world.log = file("data/logs/[params[OVERRIDE_LOG_DIRECTORY_PARAMETER]]/dd.log")
 		return
 	if(global.world_log_redirected)
 		return
@@ -130,6 +131,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
  * world/New is running, shunt all of the output back.
  */
 /world/proc/shunt_redirected_log()
+// if we're unit testing do not ever redirect world.log or the test won't show output.
 #ifndef UNIT_TESTS
 	if(params[OVERRIDE_LOG_DIRECTORY_PARAMETER])
 		return		// already done above
