@@ -40,14 +40,19 @@
  * @params
  * - amount - amount to consume
  * - force - consume even if there isn't enough. use INFINITY and force = TRUE for things like ATM deposits
+ * - user - used for visual feedback
+ * - target - used for visual feedback
+ * - range - used for visual feedback
  *
  * @return amount consumed
  */
-/obj/item/proc/consume_static_currency(amount, force)
+/obj/item/proc/consume_static_currency(amount, force, mob/user, atom/target, range)
 	return 0
 
 /**
  * displays feedback upon being used as static currency by a person
+ *
+ * **due to consume_static_currency potentially deleting us, it is on the item to call this proc, not the main proc!**
  */
 /obj/item/proc/do_static_currency_feedback(amount, mob/user, atom/target, range)
 	return
@@ -78,13 +83,23 @@
  * force - charge even if amount is under, use for stuff like atm deposits/money drains
  * prevent_types - payment_types to block
  * reason - payment reason for transaction logs
- * data - arbitrary list provided by the predicate, fed back into it during query_transaction_details
+ * data - arbitrary list provided by the predicate, fed back into it during query_transaction_details. the proc **can** feed things back into it, like error messages!
  * visual_range - feedback/message range
  *
  * @returns amount paid
  */
-/obj/item/proc/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data, silent, visual_range = 7)
-
+/obj/item/proc/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data = list(), silent, visual_range = 7)
+	var/list/iterating  = list()
+	SEND_SIGNAL(src, COMSIG_ITEM_DYNAMIC_CURRENCY_QUERY, iterating)
+	if(length(iterating))
+		for(var/datum/D in iterating)
+			var/ret = SEND_SIGNAL(D, COMSIG_ITEM_DYNAMIC_CURRENCY_CALL, user, predicate, amount, force, prevent_types, reason, data, silent, visual_range)
+			if(ret & COMPONENT_HANDLED_PAYMENT)
+				// make sure they're not an idiot, and aren't forgetting to use our api
+				if(!(force? data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT] < 0 : data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT] == amount))
+					CRASH("[D]([D.type]) was coded by a monkey and didn't match required amount! force: [force], amount: [amount], returned: [data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT]].")
+				. = data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT]
+				break
 
 /**
  * handles attempting to use an item for an automatic payment using default handling
@@ -99,96 +114,16 @@
  * force - charge even if amount is under, use for stuff like atm deposits/money drains
  * prevent_types - payment_types to block
  * reason - payment reason for transaction logs
- * data - arbitrary list provided by the predicate, fed back into it during query_transaction_details
+ * data - arbitrary list provided by the predicate, fed back into it during query_transaction_details. the proc **can** feed things back into it, like error messages!
  * visual_range - feedback/message range
  *
  * @returns amount paid
  */
-/obj/item/proc/attempt_use_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data, silent, visual_range = 7)
-
-
-	return attempt_dynamic_currency(user, predicate, amount, force, prevent_types, reason, dadta, silent, visual_range)
-
-
-/**
- * Scan a card and attempt to transfer payment from associated account.
- *
- * Takes payment for whatever is the currently_vending item. Returns 1 if
- * successful, 0 if failed
- */
-/obj/machinery/vending/proc/pay_with_card(var/obj/item/card/id/I, var/obj/item/ID_container)
-	if(I==ID_container || ID_container == null)
-		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
-	else
-		visible_message("<span class='info'>\The [usr] swipes \the [ID_container] through \the [src].</span>")
-	var/datum/money_account/customer_account = get_account(I.associated_account_number)
-	if(!customer_account)
-		status_message = "Error: Unable to access account. Please contact technical support if problem persists."
-		status_error = 1
-		return 0
-
-	if(customer_account.suspended)
-		status_message = "Unable to access account: account suspended."
-		status_error = 1
-		return 0
-
-	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
-	// empty at high security levels
-	if(customer_account.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
-		var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
-		customer_account = attempt_account_access(I.associated_account_number, attempt_pin, 2)
-
-		if(!customer_account)
-			status_message = "Unable to access account: incorrect credentials."
-			status_error = 1
-			return 0
-
-	if(currently_vending.price > customer_account.money)
-		status_message = "Insufficient funds in account."
-		status_error = 1
-		return 0
-	else
-		// Okay to move the money at this point
-
-		// debit money from the purchaser's account
-		customer_account.money -= currently_vending.price
-
-		// create entry in the purchaser's account log
-		var/datum/transaction/T = new()
-		T.target_name = "[vendor_account.owner_name] (via [name])"
-		T.purpose = "Purchase of [currently_vending.item_name]"
-		if(currently_vending.price > 0)
-			T.amount = "([currently_vending.price])"
-		else
-			T.amount = "[currently_vending.price]"
-		T.source_terminal = name
-		T.date = current_date_string
-		T.time = stationtime2text()
-		customer_account.transaction_log.Add(T)
-
-		// Give the vendor the money. We use the account owner name, which means
-		// that purchases made with stolen/borrowed card will look like the card
-		// owner made them
-		credit_purchase(customer_account.owner_name)
-		return 1
-
-/**
- *  Add money for current purchase to the vendor account.
- *
- *  Called after the money has already been taken from the customer.
- */
-/obj/machinery/vending/proc/credit_purchase(var/target as text)
-	vendor_account.money += currently_vending.price
-
-	var/datum/transaction/T = new()
-	T.target_name = target
-	T.purpose = "Purchase of [currently_vending.item_name]"
-	T.amount = "[currently_vending.price]"
-	T.source_terminal = name
-	T.date = current_date_string
-	T.time = stationtime2text()
-	vendor_account.transaction_log.Add(T)
-
+/obj/item/proc/attempt_use_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, reason, list/data = list(), silent, visual_range = 7)
+	// check static currency
+	if(is_static_currency(prevent_types) && (. = consume_static_currency(amount, force)))
+		return
+	return attempt_dynamic_currency(user, predicate, amount, force, prevent_types, reason, data, silent, visual_range)
 
 /**
  * datum proc called when auto_consume_currency is used, as well as any manual use cases

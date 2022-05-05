@@ -22,11 +22,11 @@
 
 // kinds of static currency
 /// not static currency
-#define NOT_STATIC_CURRERNCY				0
+#define NOT_STATIC_CURRENCY				0
 /// discrete object, e.g. coins, chargecards
 #define DISCRETE_STATIC_CURRENCY			1
 /// stack, e.g. cash, holochips
-#define STACK_STATIC_CURRENCY
+#define PLURAL_STATIC_CURRENCY			2
 
 // list return for /datum/proc/transaction_charge_details(list/data)
 /// recipient identity
@@ -35,5 +35,11 @@
 #define CHARGE_DETAIL_LOCATION				"location"
 /// machine/charge device identity
 #define CHARGE_DETAIL_DEVICE				"device"
+
+// datalist for dynamic payment keys
+/// error message on failure
+#define DYNAMIC_PAYMENT_DATA_FAIL_REASON		"fail_reason"
+/// paid amount
+#define DYNAMIC_PAYMENT_DATA_PAID_AMOUNT		"amount"
 
 
