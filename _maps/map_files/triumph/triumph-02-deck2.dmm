@@ -451,7 +451,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/gardener,
+/atom/movable/landmark/spawnpoint/job/station/botanist,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
@@ -1390,7 +1390,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "ep" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -3491,7 +3491,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
 "jL" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
@@ -10605,7 +10605,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "DZ" = (
-/atom/movable/landmark/spawnpoint/job/gardener,
+/atom/movable/landmark/spawnpoint/job/station/botanist,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -12852,7 +12852,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "KB" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
 	},
@@ -14852,7 +14852,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_6)
 "QK" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
@@ -15271,7 +15271,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "RV" = (
-/atom/movable/landmark/spawnpoint/job/chef,
+/atom/movable/landmark/spawnpoint/job/station/chef,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "RW" = (
@@ -17218,11 +17218,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "WZ" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "Xa" = (
-/atom/movable/landmark/spawnpoint/job/chef,
+/atom/movable/landmark/spawnpoint/job/station/chef,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},

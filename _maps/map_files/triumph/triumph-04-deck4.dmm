@@ -13060,7 +13060,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/atom/movable/landmark/spawnpoint/job/facility_director,
+/atom/movable/landmark/spawnpoint/job/station/captain,
 /obj/item/storage/secure/safe{
 	pixel_x = -28
 	},
@@ -16326,7 +16326,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "lpL" = (
-/atom/movable/landmark/spawnpoint/job/internal_affairs_agent,
+/atom/movable/landmark/spawnpoint/job/station/lawyer,
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
@@ -23895,7 +23895,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "qor" = (
-/atom/movable/landmark/spawnpoint/job/internal_affairs_agent,
+/atom/movable/landmark/spawnpoint/job/station/lawyer,
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},

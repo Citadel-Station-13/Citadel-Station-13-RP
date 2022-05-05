@@ -2879,7 +2879,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gC" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gD" = (

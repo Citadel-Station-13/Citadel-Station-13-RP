@@ -43,7 +43,7 @@
 	icon_state = "Atmospheric Technician"
 	job_path = /datum/job/station/atmos
 
-/atom/movable/landmark/spawnpoint/job/cook
+/atom/movable/landmark/spawnpoint/job/chef
 	name = "Cook"
 	icon_state = "Cook"
 	job_path = /datum/job/station/chef

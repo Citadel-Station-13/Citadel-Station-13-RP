@@ -9074,7 +9074,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
@@ -9412,14 +9412,14 @@
 /turf/simulated/floor,
 /area/constructionsite)
 "atx" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "aty" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
@@ -15260,7 +15260,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "aSo" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/cryo,
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},

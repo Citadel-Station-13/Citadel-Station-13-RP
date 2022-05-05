@@ -2130,7 +2130,7 @@
 	},
 /area/ship/scrap/crew/kitchen)
 "dA" = (
-/atom/movable/landmark/spawnpoint/job/chef,
+/atom/movable/landmark/spawnpoint/job/station/chef,
 /obj/structure/stool,
 /turf/simulated/floor{
 	 icon_state = "bar";
