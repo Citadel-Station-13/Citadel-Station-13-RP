@@ -1,8 +1,6 @@
 ///////////////////////////
 //// Spawning and despawning
 
-#warn nuke this from orbit
-
 /datum/spawnpoint/talon
 	display_name = "ITV Talon Cryo"
 	restrict_job = list("Talon Captain", "Talon Pilot", "Talon Engineer", "Talon Doctor", "Talon Guard")

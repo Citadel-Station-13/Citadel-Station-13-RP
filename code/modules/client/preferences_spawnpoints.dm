@@ -9,7 +9,7 @@ var/list/spawntypes = list()
 // pending removal
 /datum/spawnpoint
 	// join method
-	var/join_method
+	var/method
 	var/display_name //Name used in preference setup.
 	var/list/restrict_job = null
 	var/list/disallow_job = null
@@ -25,29 +25,22 @@ var/list/spawntypes = list()
 		return 1
 
 /datum/spawnpoint/proc/get_spawn_position(faction)
-	return SSjob.GetLatejoinSpawnpoint(faction = faction, method = join_method)
+	return SSjob.GetLatejoinSpawnpoint(faction = faction, method = method)
 
 /datum/spawnpoint/arrivals
 	display_name = "Arrivals Shuttle"
-	msg = "will arrive to the station shortly by shuttle"
-
-/datum/spawnpoint/arrivals/New()
-	..()
-	turfs = latejoin
+	method = LATEJOIN_METHOD_ARRIVALS_SHUTTLE
 
 /datum/spawnpoint/gateway
 	display_name = "Gateway"
-	msg = "has completed translation from offsite gateway"
 	method = LATEJOIN_METHOD_GATEWAY
 
 /datum/spawnpoint/cryo
 	display_name = "Cryogenic Storage"
-	msg = "has completed cryogenic revival"
 	disallow_job = list("Cyborg")
 	method = LATEJOIN_METHOD_CRYOGENIC_STORAGE
 
 /datum/spawnpoint/cyborg
 	display_name = "Cyborg Storage"
-	msg = "has been activated from storage"
 	restrict_job = list("Cyborg")
 	method = LATEJOIN_METHOD_ROBOT_STORAGE
