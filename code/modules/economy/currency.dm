@@ -49,7 +49,7 @@
 /**
  * displays feedback upon being used as static currency by a person
  */
-/obj/item/proc/do_static_currency_feedback(mob/user, atom/target, range)
+/obj/item/proc/do_static_currency_feedback(amount, mob/user, atom/target, range)
 	return
 
 /**
