@@ -79,7 +79,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "aP" = (
-/atom/movable/landmark/costume,
+/atom/movable/landmark/costume/random,
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)

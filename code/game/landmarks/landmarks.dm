@@ -131,13 +131,13 @@ INITIALIZE_IMMEDIATE(/atom/movable/landmark)
 // **DO NOT USE LANDMARKS AS SPAWNERS** ~silicons
 
 //Costume spawner landmarks
-/atom/movable/landmark/costume/Initialize()
-	. = ..() //costume spawner, selects a random subclass and disappears
+/atom/movable/landmark/costume
 
-	var/list/options = typesof(/atom/movable/landmark/costume)
+/atom/movable/landmark/costume/random/Initialize()
+	var/list/options = subtypesof(/atom/movable/landmark/costume) - /atom/movable/landmark/costume/random
 	var/PICK= options[rand(1,options.len)]
 	new PICK(src.loc)
-	delete_on_roundstart = 1
+	return INITIALIZE_HINT_QDEL
 
 //SUBCLASSES.  Spawn a bunch of items and disappear likewise
 /atom/movable/landmark/costume/chicken/Initialize()

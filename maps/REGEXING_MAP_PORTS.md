@@ -12,3 +12,6 @@ Apply regexes in this order:
 
 // TODO: ADD JOB REGEXES
 // TODO: OBSERVER START
+
+// TODO: MAKE SURE NO / AFTER COSTUME
+`/atom/movable/landmark/costume` `/atom/movable/landmark/costume/random`
