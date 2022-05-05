@@ -24,7 +24,7 @@
 	/// first of all if we are already on the right perspective we really don't care!
 	if(!client)		// this is way easier if no client, and microoptimization
 		if(using_perspective)
-			using_perspective.RemoveMob(src)
+			using_perspective.RemoveMob(src, TRUE)
 			if(using_perspective)
 				stack_trace("using perspective didn't clear us")
 				using_perspective = null
@@ -34,7 +34,7 @@
 	var/old = using_perspective
 	// get old perspective first
 	if(using_perspective)
-		using_perspective.RemoveMob(src)
+		using_perspective.RemoveMob(src, TRUE)
 		if(using_perspective)
 			stack_trace("using perspective didn't clear us")
 			using_perspective = null

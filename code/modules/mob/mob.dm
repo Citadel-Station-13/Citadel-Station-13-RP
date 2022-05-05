@@ -101,7 +101,7 @@
 			if(HUD_LIST_LIST)
 				hud_list[hud] = list()
 			else
-				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/hud/atom_hud/misc.dmi', src, "")
+				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/screen/atom_hud/misc.dmi', src, "")
 				I.plane = FLOAT_PLANE
 				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
