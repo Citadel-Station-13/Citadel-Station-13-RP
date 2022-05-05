@@ -146,8 +146,6 @@
 		return 1
 
 /obj/machinery/vending/attackby(obj/item/W, mob/user)
-	. = ..()
-
 	var/obj/item/card/id/I = W.GetID()
 
 	if(currently_vending && vendor_account && !vendor_account.suspended)
@@ -182,7 +180,7 @@
 		if(paid)
 			vend(currently_vending, usr)
 			return
-		else if(handled)
+		if(handled)
 			SSnanoui.update_uis(src)
 			return // don't smack that machine with your 2 thalers
 
