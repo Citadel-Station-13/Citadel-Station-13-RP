@@ -104,6 +104,13 @@
 // 	delete_inventory()
 
 //Fashion Mannequins
+
+// NO STOP USING THESE FOR ANYTHING BUT PREFS SETUP
+// MAKE SOMETHING THAT ISN'T /HUMAN IF YOU JUST WANT A MANNEQUIN THIS IS NOT HARD TO FIGURE OUT
+// DONT USE THE SUPER COMPLICATED PLAYER MOB WITH ORGANS FOR A *MANNEQUIN*, WHY??
+INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
+/mob/living/carbon/human/dummy/mannequin
+
 /mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()
 	name = "Wooden Mannequin"
@@ -115,6 +122,8 @@
 	gender = pick(MALE,FEMALE,NEUTER)
 	delete_inventory()
 
+	// whoever wrote this, wow, you are bad at codde
+	// we'll deal with this later, jfc ~silicons
 	for(var/mob/living/carbon/human/dummy/mannequin/H in src.loc)
 		for(var/i = 1, i <= 2, i++)
 			if(!w_uniform)
