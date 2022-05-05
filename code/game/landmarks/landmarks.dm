@@ -51,9 +51,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/landmark)
 		qdel(src)
 
 // everything below here are subtypes
+// no no no, ftfy: everything below here needs to be nuked from orbit ~silicons
 /atom/movable/landmark/Initialize()
 	. = ..()
-	..()
 	tag = text("landmark*[]", name)
 	invisibility = 101
 
@@ -111,17 +111,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/landmark)
 	GLOB.landmarks_list += src
 	return 1
 
-/atom/movable/landmark/Initialize()
-	. = ..()
-	if(delete_on_roundstart)
-		return INITIALIZE_HINT_QDEL
-
-/atom/movable/landmark/Destroy(var/force = FALSE)
-	if(delete_on_roundstart || force)
-		GLOB.landmarks_list -= src
-		return ..()
-	return QDEL_HINT_LETMELIVE
-
 /atom/movable/landmark/observer_spawn
 	name = "observer start"
 	color = COLOR_BLUE
@@ -134,7 +123,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/landmark)
 
 /atom/movable/landmark/virtual_reality/Initialize()
 	. = ..()
-	..()
 	tag = "virtual_reality*[name]"
 	invisibility = 101
 	return 1
