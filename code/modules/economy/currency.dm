@@ -130,7 +130,10 @@
 		. = consume_static_currency(amount, force, user, predicate, silent? 0 : visual_range)
 		if(. != PAYMENT_NOT_CURRENCY && . != PAYMENT_ERROR)		// paid
 			return
-	return attempt_dynamic_currency(user, predicate, amount, force, prevent_types, data, silent, visual_range)
+	. = attempt_dynamic_currency(user, predicate, amount, force, prevent_types, data, silent, visual_range)
+	if(data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT] && !(. > PAYMENT_SUCCESS))
+		stack_trace("mismatch between datalist paid amount and payment success")
+		. = data[DYNAMIC_PAYMENT_DATA_PAID_AMOUNT]
 
 /**
  * datum proc called when auto_consume_currency is used, as well as any manual use cases
