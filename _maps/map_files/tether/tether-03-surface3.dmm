@@ -2138,7 +2138,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/station/lawyer,
+/atom/movable/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officea)
 "adl" = (
@@ -11108,7 +11108,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/station/chef,
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "asy" = (
@@ -21395,7 +21395,7 @@
 /area/hydroponics)
 "aLc" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/atom/movable/landmark/spawnpoint/job/station/chef,
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aLd" = (
@@ -23267,7 +23267,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/station/captain,
+/atom/movable/landmark/spawnpoint/job/captain,
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
 	id = "cap_office";
@@ -31409,7 +31409,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/station/chef,
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "bew" = (
@@ -41653,7 +41653,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/station/chef,
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "soZ" = (
@@ -42267,7 +42267,7 @@
 	pixel_x = -25;
 	pixel_y = 7
 	},
-/atom/movable/landmark/spawnpoint/job/station/lawyer,
+/atom/movable/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officeb)
 "tOz" = (

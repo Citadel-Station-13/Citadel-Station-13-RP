@@ -451,7 +451,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/station/botanist,
+/atom/movable/landmark/spawnpoint/job/botanist,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
@@ -10605,7 +10605,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "DZ" = (
-/atom/movable/landmark/spawnpoint/job/station/botanist,
+/atom/movable/landmark/spawnpoint/job/botanist,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -15271,7 +15271,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "RV" = (
-/atom/movable/landmark/spawnpoint/job/station/chef,
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "RW" = (
@@ -17222,7 +17222,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "Xa" = (
-/atom/movable/landmark/spawnpoint/job/station/chef,
+/atom/movable/landmark/spawnpoint/job/chef,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
