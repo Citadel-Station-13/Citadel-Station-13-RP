@@ -32,8 +32,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/landmark)
 	GLOB.landmarks_list += src
 	if(landmark_key)
 		if(!GLOB.landmarks_keyed[landmark_key])
-			GLOB.landmarks_keyed[landmark_key] = list()
-		GLOB.landmarks_keyed += landmark_key
+			GLOB.landmarks_keyed[landmark_key] = list(src)
+		else
+			GLOB.landmarks_keyed[landmark_key] += src
 
 /atom/movable/landmark/Destroy()
 	GLOB.landmarks_list -= src
