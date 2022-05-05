@@ -117,7 +117,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 		return
 	global.world_log_redirected = TRUE
 	if(fexists("data/logs/world_init_temporary.log"))
-		fdel("data.logs/world_init_temporary.log")
+		fdel("data/logs/world_init_temporary.log")
 	world.log = file("data/logs/world_init_temporary.log")
 
 /**
