@@ -39,10 +39,12 @@
 
 
 /atom/movable/landmark/spawnpoint/proc/Register()
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SSjob.spawnpoints += src
 
 /atom/movable/landmark/spawnpoint/proc/Unregister()
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SSjob.spawnpoints -= src
 
 /atom/movable/landmark/spawnpoint/proc/AutoListRegister(list/L)
 	if(src in L)
