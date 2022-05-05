@@ -2044,19 +2044,16 @@
 
 	tat_inmon1
 		name = "Tattoo (Inmon, Variant 1)"
-		icon = "icons/mob/human_races/markings.dmi"
 		icon_state = "tat_inmon1"
 		body_parts = list(BP_GROIN)
 
 	tat_inmon2
 		name = "Tattoo (Inmon, Variant 2)"
-		icon = "icons/mob/human_races/markings.dmi"
 		icon_state = "tat_inmon2"
 		body_parts = list(BP_GROIN)
 
 	tat_inmon3
 		name = "Tattoo (Inmon, Variant 3)"
-		icon = "icons/mob/human_races/markings.dmi"
 		icon_state = "tat_inmon3"
 		body_parts = list(BP_GROIN)
 
