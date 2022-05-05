@@ -124,9 +124,10 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
  * world/New is running, shunt all of the output back.
  */
 /world/proc/shunt_redirected_log()
-	if(!fexists("data/logs/world_init_temporary.log"))
-		return
 	world.log = file("[GLOB.log_directory]/dd.log")
+	if(!fexists("data/logs/world_init_temporary.log"))
+		log_world("No preinit logs detected, shunt skipped.")
+		return
 	log_world("Shunting preinit logs as follows:")
 	for(var/line in world.file2list("data/logs/world_init_temporary.log"))
 		line = trim(line)

@@ -559,7 +559,7 @@
 
 		//Grab some data from the character prefs for use in random news procs.
 
-		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.name, job_name = rank))
+		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = mind.name, job_name = rank))
 
 
 	qdel(src)
