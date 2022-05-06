@@ -7,10 +7,7 @@ var/list/grass_types = list(
 	icon_state = "grass"
 	edge_blending_priority = 4
 	initial_flooring = /decl/flooring/outdoors/grass
-	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks,
-		/turf/simulated/floor/outdoors/dirt
-		)
+	baseturfs = /turf/simulated/floor/outdoors/dirt
 	var/grass_chance = 20
 
 	var/list/grass_types = list(

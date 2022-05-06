@@ -30,8 +30,7 @@
 	new_holder.decals = T.decals ? T.decals.Copy() : null
 
 	// Set the destination to be like us
-	T.Destroy()
-	var/turf/simulated/shuttle/new_dest = T.ChangeTurf(my_turf.type,,1)
+	var/turf/simulated/shuttle/new_dest = T.ChangeTurf(my_turf.type)
 	new_dest.setDir(my_turf.dir)
 	new_dest.icon_state = my_turf.icon_state
 	new_dest.icon = my_turf.icon

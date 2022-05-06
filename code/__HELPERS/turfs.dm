@@ -79,8 +79,9 @@
 		var/turf/target = translation[source]
 
 		if(target)
-			if(base_area) ChangeArea(target, get_area(source))
-			var/leave_turf = base_turf ? base_turf : get_base_turf_by_area(base_area ? base_area : source)
+			if(base_area)
+				ChangeArea(target, get_area(source))
+			var/leave_turf = base_turf ? base_turf : /turf/simulated/floor/plating
 			translate_turf(source, target, leave_turf)
 			if(base_area)
 				ChangeArea(source, base_area)
@@ -108,7 +109,8 @@
 	if(istype(T,/turf/simulated/shuttle))
 		shuttlework = 1
 		var/turf/simulated/shuttle/SS = T
-		if(!SS.landed_holder) SS.landed_holder = new(turf = SS)
+		if(!SS.landed_holder)
+			SS.landed_holder = new(turf = S)
 		X = SS.landed_holder.land_on(B)
 
 	// Generic non-shuttle turf move.

@@ -40,8 +40,8 @@ var/list/turf_edge_cache = list()
 	outdoors = FALSE
 	SSplanets.removeTurf(src)
 
-/turf/simulated/post_change()
-	..()
+/turf/simulated/AfterChange(flags, oldType)
+	. = ..()
 	// If it was outdoors and still is, it will not get added twice when the planet controller gets around to putting it in.
 	if(outdoors)
 		make_outdoors()
