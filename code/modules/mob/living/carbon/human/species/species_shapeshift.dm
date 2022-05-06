@@ -21,7 +21,7 @@ var/list/wrapped_species_by_ref = list()
 
 /datum/species/shapeshifter/get_icobase(var/mob/living/carbon/human/H, var/get_deform)
 	if(!H) return ..(null, get_deform)
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_icobase(H, get_deform)
 
 /datum/species/shapeshifter/get_race_key(var/mob/living/carbon/human/H)
@@ -29,37 +29,37 @@ var/list/wrapped_species_by_ref = list()
 
 /datum/species/shapeshifter/get_bodytype(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_bodytype(H)
 
 /datum/species/shapeshifter/get_blood_mask(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_blood_mask(H)
 
 /datum/species/shapeshifter/get_damage_mask(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_damage_mask(H)
 
 /datum/species/shapeshifter/get_damage_overlays(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_damage_overlays(H)
 
 /datum/species/shapeshifter/get_tail(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_tail(H)
 
 /datum/species/shapeshifter/get_tail_animation(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_tail_animation(H)
 
 /datum/species/shapeshifter/get_tail_hair(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"])
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_tail_hair(H)
 
 /datum/species/shapeshifter/handle_post_spawn(var/mob/living/carbon/human/H)
