@@ -9,3 +9,8 @@
 /datum/config_entry/number/lobby_gamemode_vote_delay
 	config_entry_value = 120
 	min_val = -1		//-1 for disabled
+
+/datum/config_entry/number/max_hub_pop //At what pop to take hub off the server
+	config_entry_value = 0 //0 means disabled
+	integer = TRUE
+	min_val = 0

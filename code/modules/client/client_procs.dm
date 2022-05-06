@@ -171,6 +171,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	tgui_panel = new(src)
 
 	GLOB.ahelp_tickets.ClientLogin(src)
+	SSserver_maint.UpdateHubStatus()
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
 	holder = admin_datums[ckey]
@@ -399,6 +400,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.directory -= ckey
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
+	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null
 		admins -= src
