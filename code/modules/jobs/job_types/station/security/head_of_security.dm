@@ -6,7 +6,6 @@
 	sorting_order = 2
 	department_flag = ENGSEC
 	disallow_jobhop = TRUE
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Facility Director"
@@ -28,7 +27,7 @@
 	minimal_player_age = 14
 
 	outfit_type = /datum/outfit/job/station/head_of_security
-	job_description = "	The Head of Security manages the Security Department, keeping the station safe and making sure the rules are followed. They are expected to \
+	desc = "	The Head of Security manages the Security Department, keeping the station safe and making sure the rules are followed. They are expected to \
 						keep the other Department Heads, and the rest of the crew, aware of developing situations that may be a threat. If necessary, the HoS may \
 						perform the duties of absent Security roles, such as distributing gear from the Armory."
 	alt_titles = list(

@@ -466,9 +466,7 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "ed" = (
-/atom/movable/landmark/start{
-	name = "Talon Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_doctor,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "ei" = (
@@ -1078,9 +1076,7 @@
 /obj/structure/bed/chair/bay/comfy/brown{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Talon Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_pilot,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "jp" = (
@@ -1692,9 +1688,7 @@
 /turf/simulated/floor/tiled/eris/white/golden,
 /area/talon/deckone/bridge)
 "oH" = (
-/atom/movable/landmark/start{
-	name = "Talon Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_engineer,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -2156,9 +2150,7 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Talon Guard"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_guard,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
 "rW" = (
@@ -4988,9 +4980,7 @@
 /area/talon/maintenance/deckone_starboard)
 "MV" = (
 /obj/structure/bed/chair/office/light,
-/atom/movable/landmark/start{
-	name = "Talon Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_doctor,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "MW" = (
@@ -5500,9 +5490,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/atom/movable/landmark/start{
-	name = "Talon Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_engineer,
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_eng)
 "Ru" = (
@@ -5532,9 +5520,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_port_aft_wing)
 "Sb" = (
-/atom/movable/landmark/start{
-	name = "Talon Captain"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_captain,
 /turf/simulated/floor/tiled/eris/white/golden,
 /area/talon/deckone/bridge)
 "Sc" = (
@@ -6238,9 +6224,7 @@
 /obj/structure/bed/chair/bay/comfy/red{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Talon Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_pilot,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "Ya" = (
@@ -6512,9 +6496,7 @@
 /area/talon/deckone/bridge_hallway)
 "ZZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/atom/movable/landmark/start{
-	name = "Talon Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_engineer,
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4
 	},

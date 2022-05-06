@@ -58,12 +58,12 @@
 	name = "Engine Loader"
 	var/clean_turfs // A list of lists, where each list is (x, )
 
-/atom/movable/landmark/engine_loader/New()
+/atom/movable/landmark/engine_loader/Initialize()
+	. = ..()
 	if(SSmapping.engine_loader)
 		warning("Duplicate engine_loader landmarks: [log_info_line(src)] and [log_info_line(SSmapping.engine_loader)]")
-		delete_me = TRUE
+		return INITIALIZE_HINT_QDEL
 	SSmapping.engine_loader = src
-	return ..()
 
 /atom/movable/landmark/engine_loader/proc/get_turfs_to_clean()
 	. = list()

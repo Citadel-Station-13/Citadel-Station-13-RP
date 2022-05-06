@@ -3,7 +3,6 @@
 	flag = LAWYER
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "company officials and Corporate Regulations"
@@ -16,7 +15,7 @@
 
 	outfit_type = /datum/outfit/job/station/internal_affairs_agent
 	alt_titles = list("Regulatory Affairs Agent" = /datum/alt_title/iaa/regulator)
-	job_description = "An Internal Affairs Agent makes sure that the crew is following Standard Operating Procedure. They also \
+	desc = "An Internal Affairs Agent makes sure that the crew is following Standard Operating Procedure. They also \
 						handle complaints against crew members, and can have issues brought to the attention of Central Command, \
 						assuming their paperwork is in order."
 

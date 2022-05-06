@@ -6,7 +6,6 @@
 	department_flag = CIVILIAN
 	disallow_jobhop = TRUE
 	pto_type = PTO_CIVILIAN
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "command staff"
@@ -18,7 +17,7 @@
 	minimal_access = list(access_heads, access_keycard_auth)
 
 	outfit_type = /datum/outfit/job/station/command_secretary
-	job_description = "A Command Secretary handles paperwork duty for the Heads of Staff, so they can better focus on managing their departments. \
+	desc = "A Command Secretary handles paperwork duty for the Heads of Staff, so they can better focus on managing their departments. \
 						They are not Heads of Staff, and have no real authority."
 
 	alt_titles = list(

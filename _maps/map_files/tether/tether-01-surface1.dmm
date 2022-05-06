@@ -582,9 +582,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/paramed)
 "aaY" = (
-/atom/movable/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -754,9 +752,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "abi" = (
 /obj/machinery/hologram/holopad,
-/atom/movable/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -1072,9 +1068,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
 "abV" = (
-/atom/movable/landmark/start{
-	name = "Psychiatrist"
-	},
+/atom/movable/landmark/spawnpoint/job/psychiatrist,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -1231,9 +1225,7 @@
 /area/maintenance/lower/mining_eva)
 "ach" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/atom/movable/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
@@ -5074,9 +5066,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "aiI" = (
@@ -7509,16 +7499,12 @@
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amG" = (
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amH" = (
 /obj/item/stool,
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amI" = (
@@ -12336,9 +12322,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -13885,9 +13869,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -15257,7 +15239,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "azo" = (
@@ -15267,7 +15249,7 @@
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "azp" = (
@@ -18825,9 +18807,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/atom/movable/landmark/start{
-	name = "Bartender"
-	},
+/atom/movable/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_dining)
 "aFC" = (
@@ -19424,9 +19404,7 @@
 /area/tether/surfacebase/cargostore/office)
 "aGs" = (
 /obj/structure/bed/chair/sofa/brown/corner,
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -21951,9 +21929,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "aKI" = (
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -22083,9 +22059,7 @@
 /area/engineering/atmos)
 "aKV" = (
 /obj/item/stool,
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aKW" = (
@@ -23581,9 +23555,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aNI" = (
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aNJ" = (
@@ -31380,7 +31352,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "bTt" = (
@@ -35357,7 +35329,7 @@
 	name = "asset retention console";
 	pixel_y = -30
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -36595,7 +36567,7 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "qhk" = (
@@ -37059,7 +37031,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -37250,9 +37222,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "rIU" = (
-/atom/movable/landmark/start{
-	name = "Mime"
-	},
+/atom/movable/landmark/spawnpoint/job/mime,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/funny/mimeoffice)
 "rJi" = (
@@ -37889,7 +37859,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/atom/movable/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -39356,9 +39326,7 @@
 /area/tether/surfacebase/outside/outside1)
 "xRP" = (
 /obj/effect/floor_decal/rust,
-/atom/movable/landmark/start{
-	name = "Clown"
-	},
+/atom/movable/landmark/spawnpoint/job/clown,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -39532,9 +39500,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
 "ylH" = (

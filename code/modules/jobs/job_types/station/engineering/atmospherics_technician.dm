@@ -3,7 +3,6 @@
 	flag = ATMOSTECH
 	departments = list(DEPARTMENT_ENGINEERING)
 	department_flag = ENGSEC
-	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the Chief Engineer"
@@ -18,7 +17,7 @@
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/atmospherics_technician
-	job_description = "An Atmospheric Technician is primarily concerned with keeping the station's atmosphere breathable. They are expected to have a good \
+	desc = "An Atmospheric Technician is primarily concerned with keeping the station's atmosphere breathable. They are expected to have a good \
 						understanding of the pipes, vents, and scrubbers that move gasses around the station, and to be familiar with proper firefighting procedure."
 
 	alt_titles = list(

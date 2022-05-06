@@ -2,7 +2,6 @@
 	title = "CentCom Officer"
 	departments = list("Central Command")
 	department_accounts = list(DEPARTMENT_COMMAND, DEPARTMENT_ENGINEERING, DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH, DEPARTMENT_SECURITY, DEPARTMENT_CARGO, DEPARTMENT_PLANET, DEPARTMENT_CIVILIAN)
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
 	supervisors = "company officials and Corporate Regulations"
@@ -15,7 +14,7 @@
 	whitelist_only = 1
 	latejoin_only = 1
 	outfit_type = /datum/outfit/job/station/centcom_officer
-	job_description = "A Central Command Officer is there on official business. Most of time. Whatever it is, they're a VIP."
+	desc = "A Central Command Officer is there on official business. Most of time. Whatever it is, they're a VIP."
 
 	minimum_character_age = 25
 	ideal_character_age = 40

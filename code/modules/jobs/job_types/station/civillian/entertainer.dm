@@ -3,7 +3,6 @@
 	flag = ENTERTAINER
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
-	faction = "Station"
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the Head of Personnel"
@@ -13,7 +12,7 @@
 	pto_type = PTO_CIVILIAN
 
 	outfit_type = /datum/outfit/job/station/assistant
-	job_description = "An entertainer does just that, entertains! Put on plays, play music, sing songs, tell stories, or read your favorite fanfic."
+	desc = "An entertainer does just that, entertains! Put on plays, play music, sing songs, tell stories, or read your favorite fanfic."
 	alt_titles = list(
 		"Performer" = /datum/alt_title/entertainer/performer,
 		"Musician" = /datum/alt_title/entertainer/musician,

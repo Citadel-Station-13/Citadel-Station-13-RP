@@ -30,7 +30,6 @@
 /atom/movable/landmark/mobcorpse/Initialize(mapload)
 	. = ..()
 	createCorpse()
-	delete_me = TRUE
 	return INITIALIZE_HINT_QDEL
 
 /atom/movable/landmark/mobcorpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.

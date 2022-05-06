@@ -41,24 +41,11 @@
 
 ///////////////////////////
 //// Spawning and despawning
-var/global/list/latejoin_trade = list()
-/atom/movable/landmark/trade
-	name = "JoinLateTrade"
-	delete_me = 1
-
-/atom/movable/landmark/trade/New()
-	latejoin_trade += loc // Register this turf as trade latejoin.
-	..()
 
 /datum/spawnpoint/trade
 	display_name = "Beruang Trading Corp Cryo"
 	restrict_job = list("Trader")
-	msg = "has come out of cryostasis"
 	announce_channel = "Trade"
-
-/datum/spawnpoint/trade/New()
-	..()
-	turfs = latejoin_trade
 
 /obj/machinery/cryopod/trade
 	announce_channel = "Trade"

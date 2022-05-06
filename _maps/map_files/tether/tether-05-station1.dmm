@@ -2041,9 +2041,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/atom/movable/landmark{
-	name = "JoinLateCyborg"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "aer" = (
@@ -3403,9 +3401,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/atom/movable/landmark{
-	name = "JoinLateCyborg"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "agA" = (
@@ -3594,9 +3590,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "agO" = (
@@ -4756,9 +4750,7 @@
 /area/tether/exploration/crew)
 "ajg" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "ajk" = (
@@ -5727,9 +5719,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/hallway)
 "alS" = (
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled,
 /area/storage/tools)
 "alT" = (
@@ -6310,9 +6300,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "ana" = (
@@ -8242,9 +8230,7 @@
 /area/engineering/hallway)
 "aqG" = (
 /obj/structure/bed/chair/comfy/beige,
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "aqH" = (
@@ -8882,9 +8868,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "aso" = (
@@ -8905,9 +8889,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "asq" = (
@@ -9092,9 +9074,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
@@ -9432,18 +9412,14 @@
 /turf/simulated/floor,
 /area/constructionsite)
 "atx" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "aty" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
@@ -9567,18 +9543,14 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "atJ" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "atK" = (
@@ -10329,7 +10301,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "ave" = (
-/atom/movable/landmark/start,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -10586,9 +10557,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "avG" = (
@@ -10612,9 +10581,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "avL" = (
@@ -10672,9 +10639,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/secondary)
 "avV" = (
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
@@ -15266,9 +15231,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Chief Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/chief_engineer,
 /obj/machinery/button/windowtint{
 	id = "ce_office";
 	layer = 3.3;
@@ -15297,9 +15260,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "aSo" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
@@ -15338,9 +15299,7 @@
 /area/constructionsite)
 "aSB" = (
 /obj/structure/bed/chair/office/dark,
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "aSC" = (
@@ -15979,9 +15938,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "bbz" = (
@@ -18974,9 +18931,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/atom/movable/landmark{
-	name = "JoinLateCyborg"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cyborg,
 /obj/machinery/computer/cryopod/robot{
 	dir = 8;
 	pixel_x = 28
@@ -19517,9 +19472,7 @@
 	dir = 1
 	},
 /obj/structure/table/bench/standard,
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "fOS" = (
@@ -19745,9 +19698,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "gqv" = (
@@ -20074,9 +20025,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "hqc" = (
@@ -22204,9 +22153,7 @@
 /area/maintenance/station/eng_lower)
 "mXw" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Field Medic"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "mXV" = (
@@ -22391,16 +22338,12 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "nsZ" = (
 /obj/machinery/hologram/holopad,
-/atom/movable/landmark/start{
-	name = "Cyborg"
-	},
+/atom/movable/landmark/spawnpoint/job/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
 "ntw" = (
@@ -23300,9 +23243,7 @@
 /area/ai_upload_foyer)
 "pAf" = (
 /obj/structure/table/bench/standard,
-/atom/movable/landmark/start{
-	name = "Field Medic"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "pBz" = (
@@ -23703,9 +23644,7 @@
 	pixel_y = -32
 	},
 /obj/machinery/light,
-/atom/movable/landmark/start{
-	name = "Field Medic"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "qAU" = (
@@ -23720,9 +23659,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/atom/movable/landmark/start{
-	name = "Cyborg"
-	},
+/atom/movable/landmark/spawnpoint/job/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
 "qBc" = (
@@ -25402,9 +25339,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "uyn" = (
@@ -27232,9 +27167,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Field Medic"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "yjb" = (
