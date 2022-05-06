@@ -1,6 +1,6 @@
 //Builds networks like power cables/atmos lines/etc
 //Just a holder parent type for now..
-/obj/effect/map_helper/network_builder
+/atom/movable/map_helper/network_builder
 	/// set var to true to not del on lateload
 	var/custom_spawned = FALSE
 
@@ -10,7 +10,7 @@
 	/// what directions we know connections are in
 	var/list/network_directions = list()
 
-/obj/effect/map_helper/network_builder/Initialize(mapload)
+/atom/movable/map_helper/network_builder/Initialize(mapload)
 	. = ..()
 	var/conflict = check_duplicates()
 	if(conflict)
@@ -25,17 +25,17 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /// How this works: On LateInitialize, detect all directions that this should be applicable to, and do what it needs to do, and then inform all network builders in said directions that it's been around since it won't be around afterwards.
-/obj/effect/map_helper/network_builder/LateInitialize()
+/atom/movable/map_helper/network_builder/LateInitialize()
 	scan_directions()
 	build_network()
 	if(!custom_spawned)
 		qdel(src)
 
-/obj/effect/map_helper/network_builder/proc/check_duplicates()
+/atom/movable/map_helper/network_builder/proc/check_duplicates()
 	CRASH("Base abstract network builder tried to check duplicates.")
 
-/obj/effect/map_helper/network_builder/proc/scan_directions()
+/atom/movable/map_helper/network_builder/proc/scan_directions()
 	CRASH("Base abstract network builder tried to scan directions.")
 
-/obj/effect/map_helper/network_builder/proc/build_network()
+/atom/movable/map_helper/network_builder/proc/build_network()
 	CRASH("Base abstract network builder tried to build network.")

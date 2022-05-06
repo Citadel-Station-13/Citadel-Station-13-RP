@@ -3,7 +3,7 @@
 #define KNOT_FORCED 2
 
 /// Automatically links on init to power cables and other cable builder helpers. Only supports cardinals.
-/obj/effect/map_helper/network_builder/power_cable
+/atom/movable/map_helper/network_builder/power_cable
 	name = "power line autobuilder"
 	icon_state = "powerlinebuilder"
 
@@ -15,17 +15,17 @@
 	/// cable color as from GLOB.cable_colors
 	var/cable_color = "red"
 
-/obj/effect/map_helper/network_builder/power_cable/check_duplicates()
+/atom/movable/map_helper/network_builder/power_cable/check_duplicates()
 	var/obj/structure/cable/C = locate() in loc
 	if(C)
 		return C
-	for(var/obj/effect/map_helper/network_builder/power_cable/other in loc)
+	for(var/atom/movable/map_helper/network_builder/power_cable/other in loc)
 		if(other == src)
 			continue
 		return other
 
 /// Scans directions, sets network_directions to have every direction that we can link to. If there's another power cable builder detected, make sure they know we're here by adding us to their cable directions list before we're deleted.
-/obj/effect/map_helper/network_builder/power_cable/scan_directions()
+/atom/movable/map_helper/network_builder/power_cable/scan_directions()
 	var/turf/T
 	for(var/i in GLOB.cardinal)
 		if(i in network_directions)
@@ -33,7 +33,7 @@
 		T = get_step(loc, i)
 		if(!T)
 			continue
-		var/obj/effect/map_helper/network_builder/power_cable/other = locate() in T
+		var/atom/movable/map_helper/network_builder/power_cable/other = locate() in T
 		if(other)
 			network_directions += i
 			other.network_directions += turn(i, 180)
@@ -45,7 +45,7 @@
 	return network_directions
 
 /// Directions should only ever have cardinals.
-/obj/effect/map_helper/network_builder/power_cable/build_network()
+/atom/movable/map_helper/network_builder/power_cable/build_network()
 	if(!length(network_directions))
 		return
 	else if(length(network_directions) == 1)
@@ -69,118 +69,118 @@
 					new /obj/structure/cable(loc, cable_color, NONE, network_directions[i])
 					do_knot = FALSE
 
-/obj/effect/map_helper/network_builder/power_cable/proc/should_auto_knot()
+/atom/movable/map_helper/network_builder/power_cable/proc/should_auto_knot()
 	return (locate(/obj/machinery/power/terminal) in loc)
 
-/obj/effect/map_helper/network_builder/power_cable/knot
+/atom/movable/map_helper/network_builder/power_cable/knot
 	icon_state = "powerlinebuilderknot"
 	knot = KNOT_FORCED
 
-/obj/effect/map_helper/network_builder/power_cable/auto
+/atom/movable/map_helper/network_builder/power_cable/auto
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
 // Red
-/obj/effect/map_helper/network_builder/power_cable/red
+/atom/movable/map_helper/network_builder/power_cable/red
 	color = "#ff0000"
 	cable_color = "red"
 
-/obj/effect/map_helper/network_builder/power_cable/red/knot
+/atom/movable/map_helper/network_builder/power_cable/red/knot
 	icon_state = "powerlinebuilderknot"
 	knot = KNOT_FORCED
 
-/obj/effect/map_helper/network_builder/power_cable/red/auto
+/atom/movable/map_helper/network_builder/power_cable/red/auto
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
 // White
-/obj/effect/map_helper/network_builder/power_cable/white
+/atom/movable/map_helper/network_builder/power_cable/white
 	color = "#ffffff"
 	cable_color = "white"
 
-/obj/effect/map_helper/network_builder/power_cable/white/knot
+/atom/movable/map_helper/network_builder/power_cable/white/knot
 	icon_state = "powerlinebuilderknot"
 	knot = KNOT_FORCED
 
-/obj/effect/map_helper/network_builder/power_cable/white/auto
+/atom/movable/map_helper/network_builder/power_cable/white/auto
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
 // Cyan
-/obj/effect/map_helper/network_builder/power_cable/cyan
+/atom/movable/map_helper/network_builder/power_cable/cyan
 	color = "#00ffff"
 	cable_color = "cyan"
 
-/obj/effect/map_helper/network_builder/power_cable/cyan/knot
+/atom/movable/map_helper/network_builder/power_cable/cyan/knot
 	icon_state = "powerlinebuilderknot"
 	knot = KNOT_FORCED
 
-/obj/effect/map_helper/network_builder/power_cable/cyan/auto
+/atom/movable/map_helper/network_builder/power_cable/cyan/auto
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
 // Orange
-/obj/effect/map_helper/network_builder/power_cable/orange
+/atom/movable/map_helper/network_builder/power_cable/orange
 	color = "#ff8000"
 	cable_color = "orange"
 
-/obj/effect/map_helper/network_builder/power_cable/orange/knot
+/atom/movable/map_helper/network_builder/power_cable/orange/knot
 	icon_state = "powerlinebuilderknot"
 	knot = KNOT_FORCED
 
-/obj/effect/map_helper/network_builder/power_cable/orange/auto
+/atom/movable/map_helper/network_builder/power_cable/orange/auto
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
 // Pink
-/obj/effect/map_helper/network_builder/power_cable/pink
+/atom/movable/map_helper/network_builder/power_cable/pink
 	color = "#ff3cc8"
 	cable_color = "pink"
 
-/obj/effect/map_helper/network_builder/power_cable/pink/knot
+/atom/movable/map_helper/network_builder/power_cable/pink/knot
 	icon_state = "powerlinebuilderknot"
 	knot = KNOT_FORCED
 
-/obj/effect/map_helper/network_builder/power_cable/pink/auto
+/atom/movable/map_helper/network_builder/power_cable/pink/auto
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
 // Blue
-/obj/effect/map_helper/network_builder/power_cable/blue
+/atom/movable/map_helper/network_builder/power_cable/blue
 	color = "#1919c8"
 	cable_color = "blue"
 
-/obj/effect/map_helper/network_builder/power_cable/blue/knot
+/atom/movable/map_helper/network_builder/power_cable/blue/knot
 	icon_state = "powerlinebuilderknot"
 	knot = KNOT_FORCED
 
-/obj/effect/map_helper/network_builder/power_cable/blue/auto
+/atom/movable/map_helper/network_builder/power_cable/blue/auto
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
 // Green
-/obj/effect/map_helper/network_builder/power_cable/green
+/atom/movable/map_helper/network_builder/power_cable/green
 	color = "#00aa00"
 	cable_color = "green"
 
-/obj/effect/map_helper/network_builder/power_cable/green/knot
+/atom/movable/map_helper/network_builder/power_cable/green/knot
 	icon_state = "powerlinebuilderknot"
 	knot = KNOT_FORCED
 
-/obj/effect/map_helper/network_builder/power_cable/green/auto
+/atom/movable/map_helper/network_builder/power_cable/green/auto
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
 // Yellow
-/obj/effect/map_helper/network_builder/power_cable/yellow
+/atom/movable/map_helper/network_builder/power_cable/yellow
 	color = "#ffff00"
 	cable_color = "yellow"
 
-/obj/effect/map_helper/network_builder/power_cable/yellow/knot
+/atom/movable/map_helper/network_builder/power_cable/yellow/knot
 	icon_state = "powerlinebuilderknot"
 	knot = KNOT_FORCED
 
-/obj/effect/map_helper/network_builder/power_cable/yellow/auto
+/atom/movable/map_helper/network_builder/power_cable/yellow/auto
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
