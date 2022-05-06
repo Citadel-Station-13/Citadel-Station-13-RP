@@ -43,7 +43,7 @@
 	for(var/path in shuttle_area)
 		var/area/A = locate(path)
 		if(!istype(A))
-			CRASH("Shuttle \"[name]\" couldn't locate area [T].")
+			CRASH("Shuttle \"[name]\" couldn't locate area [path].")
 		areas += A
 		// todo: less shit shuttle system
 		for(var/turf/T in A.contents)
