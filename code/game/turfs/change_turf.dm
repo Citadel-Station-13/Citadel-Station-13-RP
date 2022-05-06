@@ -2,7 +2,15 @@
 GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	/turf/space,
 	/turf/baseturf_bottom,
+	/turf/simulated/open,
 	)))
+
+/// list of turf types that are logically "below" the last turf layer, and are therefore things we should inject above when doing things like injecting shuttle ceilings
+GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
+	/turf/space,
+	/turf/simulated/open,
+	/turf/baseturf_bottom,
+)))
 
 /turf/proc/empty(turf_type=/turf/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
@@ -207,6 +215,20 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		return src
 
 	return ChangeTurf(baseturfs, baseturfs, flags) // The bottom baseturf will never go away
+
+/**
+ * scrape away a turf from the bottom above logically multiz hole baseturfs
+ * used for shuttle ceilings
+ */
+/turf/proc/ScrapeFromLogicalBottom(amount = 1, flags, this_type_only)
+	#warn finish
+
+/**
+ * put a turf in from the bottom above logically multiz hole baseturfs. can changeturf.
+ * used for shuttle ceilings
+ */
+/turf/proc/PlaceBelowLogicalBottom(type, flags)
+	#warn finish
 
 // Take the input as baseturfs and put it underneath the current baseturfs
 // If fake_turf_type is provided and new_baseturfs is not the baseturfs list will be created identical to the turf type's

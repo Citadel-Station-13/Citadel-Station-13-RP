@@ -789,7 +789,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 					else if(turftoleave)
 						T.ChangeTurf(turftoleave)
 					else
-						T.ChangeTurf(get_base_turf_by_area(T))
+						T.ScrapeAway()
 
 					refined_src -= T
 					refined_trg -= B
@@ -877,7 +877,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)
-						if(istype(B, get_base_turf_by_area(B)))
+						if(istype(B, GLOB.using_map.base_turf_by_z[B.z]))
 							continue moving
 
 					var/turf/X = B

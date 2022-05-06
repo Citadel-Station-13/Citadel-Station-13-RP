@@ -66,9 +66,15 @@
 		new_source.underlays = underlays
 		new_source.decals = decals
 	else
-		new_source = my_turf.ChangeTurf(base_turf ? base_turf : get_base_turf_by_area(my_turf),,1)
+		new_source = my_turf.ScrapeAway(1)
 
 	return new_source
+
+/turf/simulated/shuttle_ceiling
+	name = "shuttle ceiling"
+	icon = 'icons/turf/shuttle_white.dmi'
+	desc = "An extremely thick segment of hull used by spacefaring vessels. Doesn't look like you'll be able to break it."
+	baseturfs = /turf/simulated/shuttle_ceiling
 
 /turf/simulated/shuttle
 	name = "shuttle"
@@ -153,7 +159,7 @@
 		else if(isfloor(T3) || istype(T3,/turf/space/transit))
 			under = T3
 		else
-			under = get_base_turf_by_area(src)
+			under = (baseturfs && (islist(baseturfs)? baseturfs[1] : baseturfs)) || /turf/space
 
 	if(istype(under,/turf/simulated/shuttle))
 		interior_corner = 1	// Prevents us from 'landing on grass' and having interior corners update.

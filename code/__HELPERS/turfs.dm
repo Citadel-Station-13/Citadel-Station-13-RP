@@ -110,7 +110,7 @@
 		shuttlework = 1
 		var/turf/simulated/shuttle/SS = T
 		if(!SS.landed_holder)
-			SS.landed_holder = new(turf = S)
+			SS.landed_holder = new(turf = SS)
 		X = SS.landed_holder.land_on(B)
 
 	// Generic non-shuttle turf move.
@@ -168,7 +168,7 @@
 	else if(turftoleave)
 		T.ChangeTurf(turftoleave)
 	else
-		T.ChangeTurf(get_base_turf_by_area(T))
+		T.ScrapeAway()
 
 	return TRUE
 

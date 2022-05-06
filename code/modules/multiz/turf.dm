@@ -49,10 +49,6 @@
 
 	var/turf/below
 
-/turf/simulated/open/post_change()
-	..()
-	update()
-
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
 	ASSERT(HasBelow(z))
@@ -72,7 +68,6 @@
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
-	levelupdate()
 	below.update_icon()	// So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
 		if(A.movement_type & GROUND)
