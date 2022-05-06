@@ -348,10 +348,9 @@
 		for(var/area/A in shuttle_area)
 			for(var/turf/TD in A.contents)
 				var/turf/TA = GetAbove(TD)
-				if(istype(TA, get_base_turf_by_area(TA)) || isopenturf(TA))
-					if(get_area(TA) in shuttle_area)
-						continue
-					TA.ChangeTurf(ceiling_type, TRUE, TRUE, TRUE)
+				if(TA.loc in shuttle_area)
+					continue
+				TA.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 
 	// Power-related checks. If shuttle contains power related machinery, update powernets.
 	// Note: Old way was to rebuild ALL powernets: if(powernets.len) SSmachines.makepowernets()
