@@ -21,7 +21,7 @@ var/list/wrapped_species_by_ref = list()
 
 /datum/species/shapeshifter/get_icobase(var/mob/living/carbon/human/H, var/get_deform)
 	if(!H) return ..(null, get_deform)
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = get_static_species_metaT)
 	return S.get_icobase(H, get_deform)
 
 /datum/species/shapeshifter/get_race_key(var/mob/living/carbon/human/H)

@@ -71,7 +71,7 @@
 		for (var/datum/species/S in all_static_species_meta())
 			if((S.spawn_flags & (SPECIES_IS_WHITELISTED|SPECIES_CAN_JOIN)) != SPECIES_CAN_JOIN)
 				continue
-			stock_bodyrecords_list_ui += N
+			stock_bodyrecords_list_ui += S
 		if(stock_bodyrecords_list_ui.len)
 			data["stock_bodyrecords"] = stock_bodyrecords_list_ui
 

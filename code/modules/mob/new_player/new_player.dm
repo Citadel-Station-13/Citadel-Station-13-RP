@@ -621,13 +621,13 @@
 	var/use_species_name
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
+		chosen_species = name_static_species_meta(client.prefs.species)
 		use_species_name = chosen_species.get_station_variant()	// Only used by pariahs atm.
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
 		if(is_alien_whitelisted(chosen_species))
-			new_character = new(T, use_species_name)
+			new_character = new(T, species_type_by_name(use_species_name))
 
 	if(!new_character)
 		new_character = new(T)
@@ -715,7 +715,7 @@
 /mob/new_player/get_species_name()
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
+		chosen_species = name_static_species_meta(client.prefs.species)
 
 	if(!chosen_species)
 		return SPECIES_HUMAN

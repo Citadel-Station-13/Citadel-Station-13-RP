@@ -21,12 +21,14 @@
 
 	var/healing = FALSE
 
-/mob/living/carbon/human/Initialize(mapload)
+/mob/living/carbon/human/Initialize(mapload, datum/species/new_species_or_path)
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()
 
-	if(!istype(species))
+	if(new_species_or_path)
+		set_species(new_species_or_path)
+	else if(!istype(species))
 		// no one set us yet
 		if(ispath(species))
 			set_species(species)
@@ -1127,9 +1129,10 @@
  * - species_or_path - species instance or typepath
  * - regen_icons - immediately update icons?
  * - force - change even if we are already that species **by type**
+ * - skip - skip most ops that aren't apply or remove which are required for instance cleanup. do not do this unless you absolutely know what you are doing.
  * - example - dumbshit argument used for vore transformations to copy necessary data, why tf is this not done in the vore module? TODO: REMOVE.
  */
-/mob/living/carbon/human/proc/set_species(datum/species/species_or_path, regen_icons = TRUE, force = FALSE, mob/living/carbon/human/example)	//VOREStation Edit - send an example
+/mob/living/carbon/human/proc/set_species(datum/species/species_or_path, regen_icons = TRUE, force = FALSE, skip, mob/living/carbon/human/example)	//VOREStation Edit - send an example
 	// check if we need to
 	if(!force && species_or_path)
 		if(istype(species, istype(species_or_path)? species_or_path.type : species_or_path))
@@ -1176,6 +1179,11 @@
 	// apply new species, create organs, do post spawn stuff even though we're presumably not spawning half the time
 	// i seriously hate vorecode
 	species.on_apply(src)
+
+	// skip the rest
+	if(skip)
+		return
+
 	species.create_organs(src)
 	species.handle_post_spawn(src)
 
