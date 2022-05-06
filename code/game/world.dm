@@ -387,8 +387,8 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 	var/stationname = station_name()
 	var/defaultstation = GLOB.using_map ? GLOB.using_map.station_name : stationname
 	if(servername || stationname != defaultstation)
-		. += (servername ? "<b>[servername] - " : "<b>")
-		. += (stationname != defaultstation ? "[stationname]</b>\] " : "</b>\] ")
+		. += (servername ? "<b>[servername]" : "<b>")
+		. += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
 
 	var/communityname = CONFIG_GET(string/community_shortname)
 	var/communitylink = CONFIG_GET(string/community_link)
