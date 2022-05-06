@@ -40,8 +40,8 @@
 	var/list/areas = list()
 	if(!islist(shuttle_area))
 		shuttle_area = list(shuttle_area)
-	for(var/T in shuttle_area)
-		var/area/A = locate(T)
+	for(var/path in shuttle_area)
+		var/area/A = locate(path)
 		if(!istype(A))
 			CRASH("Shuttle \"[name]\" couldn't locate area [T].")
 		areas += A
