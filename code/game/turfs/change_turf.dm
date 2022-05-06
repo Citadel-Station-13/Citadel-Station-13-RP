@@ -50,11 +50,14 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			return
 		if(/turf/baseturf_bottom)
 			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/space
-			if (!ispath(path))
+			if(!ispath(path))
 				path = text2path(path)
 				if (!ispath(path))
 					warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
 					path = /turf/space
+			if(path == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
+				if(istype(GetBelow(src), /turf/simulated))
+					path = /turf/simulated/open
 		if(/turf/space/basic)
 			// basic doesn't initialize and this will cause issues
 			// no warning though because this can happen naturaly as a result of it being built on top of
@@ -165,7 +168,12 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)
 	if((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/simulated))
 		// invalidate zone
-		zone?.rebuild()
+		if(zone)
+			if(can_safely_remove_from_zone())
+				zone.remove(src)
+				SSair.mark_for_update(src)
+			else
+				zone?.rebuild()
 		// store air
 		var/datum/gas_mixture/GM = remove_cell_volume()
 		. = ..()
@@ -180,8 +188,11 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		if(zone)
 			// remove and rebuild zone
 			var/datum/zas_zone/Z = zone
-			Z.remove(src)
-			Z.rebuild()
+			if(can_safely_remove_from_zone())
+				zone.remove(src)
+				SSair.mark_for_update(src)
+			else
+				zone.rebuild()
 		// at this point the zone does not have our gas mixture in it, and is invalidated
 		. = ..()
 		if(!.)
