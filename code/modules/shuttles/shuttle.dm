@@ -328,7 +328,7 @@
 		if(ceiling_type && HasAbove(current_location.z))
 			for(var/turf/TO in A.contents)
 				var/turf/TA = GetAbove(TO)
-				TA.ScrapeFromLogicalBottom(1, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS, ceiling_type)
+				TA.ScrapeFromLogicalBottom(CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS, ceiling_type)
 		if(knockdown)
 			for(var/mob/living/M in A)
 				spawn(0)

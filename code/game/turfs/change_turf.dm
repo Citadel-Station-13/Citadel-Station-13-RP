@@ -220,22 +220,85 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
  * scrape away a turf from the bottom above logically multiz hole baseturfs
  * used for shuttle ceilings
  */
-/turf/proc/ScrapeFromLogicalBottom(amount = 1, flags, this_type_only)
-	#warn finish
+/turf/proc/ScrapeFromLogicalBottom(flags, this_type_only)
+	// if we're already logically bottomless, don't bother
+	if(GLOB.multiz_hole_baseturfs[type])
+		return
+	// ensure baseturfs list
+	if(!islist(baseturfs))
+		baseturfs = list(baseturfs)
+	var/i
+	var/p
+	for(i in 1 to baseturfs.len)
+		p = baseturfs[i]
+		if(GLOB.multiz_hole_baseturfs[p])
+			continue
+	if(GLOB.multiz_hole_baseturfs[p])
+		if(this_type_only && this_type_only != type)
+			return
+		ScrapeAway(1, flags)	// we had no baseturfs that were logically bottom
+		return
+	// make sure baseturfs are copied
+	var/list/new_baseturfs = baseturfs.Copy()
+	new_baseturfs.Cut(i, i+1)	// cut out found
+	baseturfs = baseturfs_string_list(new_baseturfs, src)
 
 /**
  * put a turf in from the bottom above logically multiz hole baseturfs. can changeturf.
  * used for shuttle ceilings
  */
 /turf/proc/PlaceBelowLogicalBottom(type, flags)
-	#warn finish
+	ASSERT(!GLOB.multiz_hole_baseturfs[type])
+	// if we're already bottomless, just place on us
+	if(GLOB.multiz_hole_baseturfs[type])
+		PlaceOnTop(type, flags = flags)
+		return
+	// ensure baseturfs list
+	if(!islist(baseturfs))
+		baseturfs = list(baseturfs)
+	var/i
+	var/p
+	for(i in 1 to baseturfs.len)
+		p = baseturfs[i]
+		if(GLOB.multiz_hole_baseturfs[p])
+			continue
+	var/list/new_baseturfs = baseturfs.Copy()
+	if(GLOB.multiz_hole_baseturfs[p])
+		// entire list was bottomless, add on top
+		baseturfs = baseturfs_string_list(new_baseturfs + type, src)
+		return
+	new_baseturfs.Insert(i, type)
+	baseturfs = baseturfs_string_list(new_baseturfs, src)
 
 /**
  * put a turf one below the logical top. can changeturf if logical top is a hole.
  * used for shuttle floors
  */
 /turf/proc/PlaceBelowLogicalTop(type, flags)
-	#warn finish
+	ASSERT(!GLOB.multiz_hole_baseturfs[type])
+	// if we're already bottomless, just place on us
+	if(GLOB.multiz_hole_baseturfs[type])
+		PlaceOnTop(type, flags = flags)
+		return
+	// ensure baseturfs list
+	if(!islist(baseturfs))
+		baseturfs = list(baseturfs)
+	var/i
+	var/p
+	for(i in baseturfs.len to 1 step -1)
+		p = baseturfs[i]
+		if(!GLOB.multiz_hole_baseturfs[p])
+			continue
+	var/list/new_baseturfs = baseturfs.Copy()
+	if(GLOB.multiz_hole_baseturfs[p])
+		// entire list was not bottomless, add on bottom
+		baseturfs = baseturfs_string_list(type + new_baseturfs, src)
+		return
+	// i is the first bottomless turf
+	// insert moves elements up, so we need to insert at i + 1
+	new_baseturfs.Insert(i + 1, type)
+	baseturfs = baseturfs_string_list(new_baseturfs, src)
+
 
 // Take the input as baseturfs and put it underneath the current baseturfs
 // If fake_turf_type is provided and new_baseturfs is not the baseturfs list will be created identical to the turf type's
