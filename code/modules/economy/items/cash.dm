@@ -92,6 +92,26 @@
 	SC.set_worth(amount)
 	usr.put_in_hands(SC)
 
+/obj/item/spacecash/is_static_currency(prevent_types)
+	return (prevent_types & PAYMENT_TYPE_CASH)? NOT_STATIC_CURRENCY : PLURAL_STATIC_CURRENCY
+
+/obj/item/spacecash/do_static_currency_feedback(amount, mob/user, atom/target, range)
+	user.visible_message(SPAN_NOTICE("[user] inserts some cash into [target]."), SPAN_NOTICE("You insert [amount] [CURRENCY_NAME_PLURAL_PROPERR] into [target]."), SPAN_NOTICE("You hear some papers shuffling."), range)
+
+/obj/item/spacecash/consume_static_currency(amount, force, mob/user, atom/target, range)
+	if(force)
+		amount = min(amount, worth)
+	if(amount > worth)
+		return PAYMENT_INSUFFICIENT
+	worth -= amount
+	do_static_currency_feedback(amount, user, target, range)
+	. = amount
+	if(!worth)
+		qdel(src)
+
+/obj/item/spacecash/amount_static_currency()
+	return worth
+
 /obj/item/spacecash/c1
 	name = "1 Thaler"
 	icon_state = "spacecash1"
@@ -140,13 +160,12 @@
 	desc = "It's worth 1000 Thalers."
 	worth = 1000
 
-proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
+/proc/spawn_money(sum, spawnloc, mob/living/carbon/human/human_user)
 	var/obj/item/spacecash/SC = new (spawnloc)
 
 	SC.set_worth(sum)
 	if (ishuman(human_user) && !human_user.get_active_hand())
 		human_user.put_in_hands(SC)
-	return
 
 /obj/item/spacecash/ewallet
 	name = "charge card"
@@ -164,3 +183,21 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	if (!(user in view(2)) && user!=src.loc)
 		return
 	. += "<font color=#4F49AF>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>"
+
+/obj/item/spacecash/ewallet/is_static_currency(prevent_types)
+	return (prevent_types & PAYMENT_TYPE_CHARGE_CARD)? NOT_STATIC_CURRENCY : DISCRETE_STATIC_CURRENCY
+
+/obj/item/spacecash/ewallet/do_static_currency_feedback(amount, mob/user, atom/target, range)
+	visible_message(SPAN_NOTICE("[user] swipes [src] through [target]."), SPAN_NOTICE("You swipe [src] through [target]."), SPAN_NOTICE("You hear a card swipe."), range)
+
+/obj/item/spacecash/ewallet/amount_static_currency()
+	return worth
+
+/obj/item/spacecash/ewallet/consume_static_currency(amount, force, mob/user, atom/target, range)
+	if(force)
+		amount = min(amount, worth)
+	if(amount > worth)
+		return PAYMENT_INSUFFICIENT
+	worth -= amount
+	do_static_currency_feedback(amount, user, target, range)
+	return amount
