@@ -68,6 +68,9 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		if(/turf/space)
 			if(istype(GetBelow(src), /turf/simulated))
 				path = /turf/simulated/open
+		if(/turf/simulated/open)
+			if(istype(GetBelow(src), /turf/space))
+				path = /turf/space
 
 	if(!GLOB.use_preloader && path == type && !(flags & CHANGETURF_FORCEOP) && (baseturfs == new_baseturfs)) // Don't no-op if the map loader requires it to be reconstructed, or if this is a new set of baseturfs
 		return src
@@ -173,7 +176,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 				zone.remove(src)
 				SSair.mark_for_update(src)
 			else
-				zone?.rebuild()
+				zone.rebuild()
 		// store air
 		var/datum/gas_mixture/GM = remove_cell_volume()
 		. = ..()
