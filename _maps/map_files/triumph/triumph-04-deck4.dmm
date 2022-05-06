@@ -565,9 +565,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "awx" = (
-/atom/movable/landmark/start{
-	name = "Detective"
-	},
+/atom/movable/landmark/spawnpoint/job/detective,
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
@@ -900,9 +898,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "aIn" = (
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
@@ -1033,7 +1029,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "aNI" = (
@@ -1465,7 +1461,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "bhx" = (
@@ -2679,7 +2675,7 @@
 /area/security/riot_control)
 "bWp" = (
 /obj/effect/floor_decal/techfloor,
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
@@ -5369,9 +5365,7 @@
 /area/shuttle/courser/cockpit)
 "dTy" = (
 /obj/structure/table/bench/steel,
-/atom/movable/landmark/start{
-	name = "Explorer"
-	},
+/atom/movable/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "dUu" = (
@@ -6274,9 +6268,7 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
 "ezD" = (
-/atom/movable/landmark/start{
-	name = "Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/pilot,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -6966,7 +6958,7 @@
 /turf/simulated/floor,
 /area/security/brig)
 "ePg" = (
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "ePz" = (
@@ -7586,9 +7578,7 @@
 /area/crew_quarters/heads/hop)
 "fhd" = (
 /obj/structure/table/bench/steel,
-/atom/movable/landmark/start{
-	name = "Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "fhe" = (
@@ -7650,13 +7640,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "fkU" = (
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/machinery/computer/cryopod{
 	name = "asset retention console";
 	pixel_y = -30
@@ -8340,9 +8328,7 @@
 	pixel_y = -37
 	},
 /obj/structure/table/bench/steel,
-/atom/movable/landmark/start{
-	name = "Search and Rescue"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "fLo" = (
@@ -8618,9 +8604,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Chaplain"
-	},
+/atom/movable/landmark/spawnpoint/job/chaplain,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "fXg" = (
@@ -8662,7 +8646,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "fYj" = (
@@ -10002,9 +9986,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Warden"
-	},
+/atom/movable/landmark/spawnpoint/job/warden,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "gXk" = (
@@ -10742,9 +10724,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
 "hxc" = (
-/atom/movable/landmark/start{
-	name = "Librarian"
-	},
+/atom/movable/landmark/spawnpoint/job/librarian,
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
@@ -12789,7 +12769,7 @@
 /area/library)
 "iKO" = (
 /obj/machinery/computer/timeclock/premade/south,
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
@@ -13080,9 +13060,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/atom/movable/landmark/start{
-	name = "Facility Director"
-	},
+/atom/movable/landmark/spawnpoint/job/captain,
 /obj/item/storage/secure/safe{
 	pixel_x = -28
 	},
@@ -13499,9 +13477,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "jkn" = (
-/atom/movable/landmark/start{
-	name = "Head of Security"
-	},
+/atom/movable/landmark/spawnpoint/job/head_of_security,
 /obj/machinery/button/remote/airlock{
 	id = "HoSdoor";
 	name = "Office Door";
@@ -14334,9 +14310,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
 "jRE" = (
-/atom/movable/landmark/start{
-	name = "Clown"
-	},
+/atom/movable/landmark/spawnpoint/job/clown,
 /obj/structure/cable/green,
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -16352,9 +16326,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "lpL" = (
-/atom/movable/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/atom/movable/landmark/spawnpoint/job/lawyer,
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
@@ -16520,7 +16492,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "ltW" = (
@@ -16928,9 +16900,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "lFx" = (
@@ -18304,9 +18274,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/tram)
 "mDX" = (
-/atom/movable/landmark/start{
-	name = "Librarian"
-	},
+/atom/movable/landmark/spawnpoint/job/librarian,
 /obj/machinery/newscaster{
 	pixel_x = -27
 	},
@@ -19076,9 +19044,7 @@
 /area/security/security_lockerroom)
 "nhT" = (
 /obj/structure/bed/chair/office/dark,
-/atom/movable/landmark/start{
-	name = "Detective"
-	},
+/atom/movable/landmark/spawnpoint/job/detective,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "nif" = (
@@ -20060,9 +20026,7 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "nRQ" = (
-/atom/movable/landmark/start{
-	name = "Mime"
-	},
+/atom/movable/landmark/spawnpoint/job/mime,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/mimeoffice)
 "nSF" = (
@@ -21942,9 +21906,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "pcU" = (
-/atom/movable/landmark/start{
-	name = "Pathfinder"
-	},
+/atom/movable/landmark/spawnpoint/job/pathfinder,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -23286,7 +23248,7 @@
 /area/exploration/explorer_prep)
 "pXl" = (
 /obj/effect/floor_decal/techfloor,
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/effect/floor_decal/corner/red/border,
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
@@ -23933,9 +23895,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "qor" = (
-/atom/movable/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/atom/movable/landmark/spawnpoint/job/lawyer,
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
@@ -25673,9 +25633,7 @@
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "rqT" = (
-/atom/movable/landmark/start{
-	name = "AI"
-	},
+/atom/movable/landmark/spawnpoint/job/ai,
 /obj/machinery/requests_console{
 	department = "AI";
 	departmentType = 5;
@@ -26638,9 +26596,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/breakroom)
 "saf" = (
-/atom/movable/landmark{
-	name = "tripai"
-	},
+/atom/movable/landmark/spawnpoint/job/ai/secondary,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -28062,7 +28018,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 27
 	},
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
 	},
@@ -28205,7 +28161,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "sXA" = (
@@ -29229,9 +29185,7 @@
 "tLZ" = (
 /obj/structure/table/bench/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "tMK" = (
@@ -30363,9 +30317,7 @@
 /area/maintenance/central)
 "uBQ" = (
 /obj/structure/bed/chair,
-/atom/movable/landmark/start{
-	name = "Chaplain"
-	},
+/atom/movable/landmark/spawnpoint/job/chaplain,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -30572,9 +30524,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "uMX" = (
-/atom/movable/landmark{
-	name = "tripai"
-	},
+/atom/movable/landmark/spawnpoint/job/ai/secondary,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -30589,9 +30539,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hanger)
 "uNi" = (
-/atom/movable/landmark/start{
-	name = "Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/pilot,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -33306,9 +33254,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/atom/movable/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /obj/effect/floor_decal/steeldecal/steel_decals_central5,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -34819,9 +34765,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "xsE" = (
-/atom/movable/landmark/start{
-	name = "Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/pilot,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -34896,9 +34840,7 @@
 /area/exploration/explorer_prep)
 "xvG" = (
 /obj/structure/table/bench/steel,
-/atom/movable/landmark/start{
-	name = "Search and Rescue"
-	},
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "xvJ" = (

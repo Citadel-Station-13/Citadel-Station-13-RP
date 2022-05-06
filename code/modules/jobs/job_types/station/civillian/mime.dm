@@ -3,7 +3,6 @@
 	flag = MIME
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = ENGSEC
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the spirit of performance"
@@ -11,7 +10,7 @@
 	economic_modifier = 1
 	access = list(access_entertainment)
 	minimal_access = list(access_entertainment)
-	job_description = "A Mime is there to entertain the crew and keep high morale using unbelievable performances and acting skills!"
+	desc = "A Mime is there to entertain the crew and keep high morale using unbelievable performances and acting skills!"
 	alt_titles = list("Poseur" = /datum/alt_title/mime/poseur)
 	whitelist_only = 1
 	latejoin_only = 0

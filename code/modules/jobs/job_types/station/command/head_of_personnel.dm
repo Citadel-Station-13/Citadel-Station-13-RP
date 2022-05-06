@@ -6,7 +6,6 @@
 	departments_managed = list(DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
 	disallow_jobhop = TRUE
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Facility Director"
@@ -21,7 +20,7 @@
 	ideal_character_age = 50
 
 	outfit_type = /datum/outfit/job/station/head_of_personnel
-	job_description = "The Head of Personnel manages the Service department, the Exploration team, and most other civilians. They also \
+	desc = "The Head of Personnel manages the Service department, the Exploration team, and most other civilians. They also \
 						manage the Supply department, through the Quartermaster. In addition, the Head of Personnel oversees the personal accounts \
 						of the crew, including their money and access. If necessary, the Head of Personnel is first in line to assume Acting Command."
 	alt_titles = list(

@@ -70,7 +70,6 @@
 	icon_state = "viscerator_b_attack"
 	icon_living = "viscerator_b_attack"
 
-	faction = "station"
 	maxHealth = 20
 	health = 20
 

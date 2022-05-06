@@ -3,7 +3,6 @@
 	flag = JANITOR
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	pto_type = PTO_CIVILIAN
@@ -14,7 +13,7 @@
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
 	outfit_type = /datum/outfit/job/station/janitor
-	job_description = "A Janitor keeps the station clean, as long as it doesn't interfere with active crime scenes."
+	desc = "A Janitor keeps the station clean, as long as it doesn't interfere with active crime scenes."
 	alt_titles = list(
 		"Custodian" = /datum/alt_title/janitor/custodian,
 		"Sanitation Technician" = /datum/alt_title/janitor/tech,

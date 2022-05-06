@@ -23,6 +23,8 @@ log transactions
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	circuit =  /obj/item/circuitboard/atm
+	/// can accept deposits using these payment types
+	var/deposit_payment_types = PAYMENT_TYPE_CASH | PAYMENT_TYPE_HOLOCHIPS | PAYMENT_TYPE_CHARGE_CARD
 	var/datum/money_account/authenticated_account
 	var/number_incorrect_tries = 0
 	var/previous_account_number = 0
@@ -99,27 +101,29 @@ log transactions
 			if(authenticated_account && held_card.associated_account_number != authenticated_account.account_number)
 				authenticated_account = null
 	else if(authenticated_account)
-		if(istype(I,/obj/item/spacecash))
-			//consume the money
-			authenticated_account.money += I:worth
+		var/can_deposit = I.is_static_currency(PAYMENT_TYPES_ALLOW_ONLY(deposit_payment_types))
+		if(can_deposit)
+			var/amount = I.consume_static_currency(INFINITY, TRUE, user, src, 3)
+			if(!amount)
+				return
+			authenticated_account.money += amount
 			if(prob(50))
-				playsound(loc, 'sound/items/polaroid1.ogg', 50, 1)
+				playsound(src, 'sound/items/polaroid1.ogg', 50, 1)
 			else
-				playsound(loc, 'sound/items/polaroid2.ogg', 50, 1)
+				playsound(src, 'sound/items/polaroid2.ogg', 50, 1)
 
 			//create a transaction log entry
 			var/datum/transaction/T = new()
 			T.target_name = authenticated_account.owner_name
 			T.purpose = "Credit deposit"
-			T.amount = I:worth
+			T.amount = amount
 			T.source_terminal = machine_id
 			T.date = current_date_string
 			T.time = stationtime2text()
 			authenticated_account.transaction_log.Add(T)
-
-			to_chat(user, SPAN_INFO("You insert [I] into [src]."))
-			src.attack_hand(user)
-			qdel(I)
+			attack_hand(user)
+			if(!QDELETED(I))
+				qdel(I)		// chargecards don't delete
 	else
 		..()
 

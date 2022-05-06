@@ -235,16 +235,16 @@ SUBSYSTEM_DEF(ticker)
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_start_events)
 
+	for(var/atom/movable/landmark/L in GLOB.landmarks_list)
+		// type filtered, we cannot risk runtimes
+		L.OnRoundstart()
+
 	round_start_time = world.time
 
 	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		//Cleanup some stuff
-		for(var/atom/movable/landmark/start/S in GLOB.landmarks_list)
-			//Deleting Startpoints but we need the ai point to AI-ize people later
-			if (S.name != "AI")
-				qdel(S)
 		to_chat(world, "<font color=#4F49AF><B>Enjoy the game!</B></FONT>")
 		SEND_SOUND(world, sound('sound/AI/welcome.ogg')) // Skie
 		//Holiday Round-start stuff	~Carn

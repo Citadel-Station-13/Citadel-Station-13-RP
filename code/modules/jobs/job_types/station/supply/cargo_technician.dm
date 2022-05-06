@@ -4,7 +4,6 @@
 	departments = list(DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
 	pto_type = PTO_CARGO
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the Quartermaster and the Head of Personnel"
@@ -13,7 +12,7 @@
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
 
 	outfit_type = /datum/outfit/job/station/cargo_technician
-	job_description = "A Cargo Technician fills and delivers cargo orders. They are encouraged to return delivered crates to the Cargo Shuttle, \
+	desc = "A Cargo Technician fills and delivers cargo orders. They are encouraged to return delivered crates to the Cargo Shuttle, \
 						because Central Command gives a partial refund."
 	alt_titles = list("Logistics Specialist" = /datum/alt_title/logi_spec)
 

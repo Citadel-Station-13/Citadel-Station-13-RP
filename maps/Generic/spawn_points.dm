@@ -41,25 +41,9 @@
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
-// Tram arrival point landmarks and datum
-var/global/list/latejoin_tram   = list()
-
-/atom/movable/landmark/tram
-	name = "JoinLateTram"
-	delete_me = 1
-
-/atom/movable/landmark/tram/New()
-	latejoin_tram += loc // Register this turf as tram latejoin.
-	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
-	..()
-
 /datum/spawnpoint/tram
 	display_name = "Tram Station"
-	msg = "has arrived on the tram"
-
-/datum/spawnpoint/tram/New()
-	..()
-	turfs = latejoin_tram
+	method = LATEJOIN_METHOD_TRAM
 
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/tram
@@ -106,25 +90,9 @@ var/global/list/latejoin_tram   = list()
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
-// shuttle arrival point landmarks and datum
-var/global/list/latejoin_shuttle   = list()
-
-/atom/movable/landmark/shuttle
-	name = "JoinLateShuttle"
-	delete_me = 1
-
-/atom/movable/landmark/shuttle/New()
-	latejoin_shuttle += loc // Register this turf as shuttle latejoin.
-	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
-	return ..()
-
 /datum/spawnpoint/shuttle
 	display_name = "Shuttle Bay"
-	msg = "has arrived on the shuttle"
-
-/datum/spawnpoint/shuttle/New()
-	. = ..()
-	turfs = latejoin_shuttle
+	method = LATEJOIN_METHOD_SHUTTLE_DOCK
 
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms

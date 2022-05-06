@@ -4,7 +4,6 @@
 	departments = list(DEPARTMENT_SYNTHETIC)
 	sorting_order = 1 // Be above their borgs.
 	department_flag = ENGSEC
-	faction = "Station"
 	total_positions = 0 // Not used for AI, see is_position_available below and modules/mob/living/silicon/ai/latejoin.dm
 	spawn_positions = 1
 	selection_color = "#3F823F"
@@ -18,7 +17,7 @@
 	assignable = FALSE
 	mob_type = JOB_SILICON_AI
 	outfit_type = /datum/outfit/job/station/ai
-	job_description = "The AI oversees the operation of the station and its crew, but has no real authority over them. \
+	desc = "The AI oversees the operation of the station and its crew, but has no real authority over them. \
 						The AI is required to follow its Laws, and Lawbound Synthetics that are linked to it are expected to follow \
 						the AI's commands, and their own Laws."
 	disallow_jobhop = TRUE

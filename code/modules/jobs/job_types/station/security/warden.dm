@@ -4,7 +4,6 @@
 	departments = list(DEPARTMENT_SECURITY)
 	sorting_order = 1
 	department_flag = ENGSEC
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Head of Security"
@@ -17,7 +16,7 @@
 	minimal_player_age = 5
 
 	outfit_type = /datum/outfit/job/station/warden
-	job_description = "The Warden watches over the physical Security Department, making sure the Brig and Armoury are secure and in order at all times. They oversee \
+	desc = "The Warden watches over the physical Security Department, making sure the Brig and Armoury are secure and in order at all times. They oversee \
 						prisoners that have been processed and brigged, and are responsible for their well being. The Warden is also in charge of distributing \
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
 						Security Department as a whole."

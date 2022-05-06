@@ -3,7 +3,6 @@
 	flag = EXPLORER
 	departments = list(DEPARTMENT_PLANET)
 	department_flag = MEDSCI
-	faction = "Station"
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the Pathfinder and the Research Director"
@@ -14,7 +13,7 @@
 	access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
 	minimal_access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
 	outfit_type = /datum/outfit/job/station/explorer
-	job_description = "An Explorer searches for interesting things, and returns them to the station."
+	desc = "An Explorer searches for interesting things, and returns them to the station."
 	alt_titles = list(
 		"Surveyor" = /datum/alt_title/surveyor,
 		"Offsite Scout" = /datum/alt_title/offsite_scout,

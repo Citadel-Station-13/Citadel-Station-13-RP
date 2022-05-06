@@ -3,7 +3,6 @@
 	flag = ENGINEER
 	departments = list(DEPARTMENT_ENGINEERING)
 	department_flag = ENGSEC
-	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "the Chief Engineer"
@@ -26,7 +25,7 @@
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/station_engineer
-	job_description = "An Engineer keeps the station running. They repair damages, keep the atmosphere stable, and ensure that power is being \
+	desc = "An Engineer keeps the station running. They repair damages, keep the atmosphere stable, and ensure that power is being \
 						generated and distributed. On quiet shifts, they may be called upon to make cosmetic alterations to the station."
 /datum/alt_title/maint_tech
 	title = "Maintenance Technician"
