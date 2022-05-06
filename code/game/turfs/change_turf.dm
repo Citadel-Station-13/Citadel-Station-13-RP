@@ -267,8 +267,18 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	// ensure baseturfs list
 	if(!islist(baseturfs))
 		baseturfs = list(baseturfs)
+	var/i
+	var/p
+	for(i in 1 to baseturfs.len)
+		p = baseturfs[i]
+		if(GLOB.multiz_hole_baseturfs[p])
+			continue
 	var/list/new_baseturfs = baseturfs.Copy()
-	new_baseturfs.Insert(new_baseturfs.len + 1, type)
+	if(GLOB.multiz_hole_baseturfs[p])
+		// entire list was bottomless, add on top
+		baseturfs = baseturfs_string_list(new_baseturfs + type, src)
+		return
+	new_baseturfs.Insert(i, type)
 	baseturfs = baseturfs_string_list(new_baseturfs, src)
 
 /**
@@ -284,23 +294,10 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	// ensure baseturfs list
 	if(!islist(baseturfs))
 		baseturfs = list(baseturfs)
-	var/i
-	var/p
-	for(i in baseturfs.len to 1 step -1)
-		p = baseturfs[i]
-		if(!GLOB.multiz_hole_baseturfs[p])
-			continue
 	var/list/new_baseturfs = baseturfs.Copy()
-	if(GLOB.multiz_hole_baseturfs[p])
-		// entire list was not bottomless, add on bottom
-		new_baseturfs.Insert(1, type)
-		baseturfs = baseturfs_string_list(new_baseturfs, src)
-		return
-	// i is the first bottomless turf
-	// insert moves elements up, so we need to insert at i + 1
-	new_baseturfs.Insert(i + 1, type)
+	// see i just realized "the logical top is the current turf" so uh, that's easy.
+	new_baseturfs.Insert(new_baseturfs.len + 1, type)
 	baseturfs = baseturfs_string_list(new_baseturfs, src)
-
 
 // Take the input as baseturfs and put it underneath the current baseturfs
 // If fake_turf_type is provided and new_baseturfs is not the baseturfs list will be created identical to the turf type's
