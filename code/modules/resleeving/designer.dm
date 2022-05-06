@@ -68,9 +68,9 @@
 
 	if(menu == "3")
 		var/stock_bodyrecords_list_ui[0]
-		for (var/N in GLOB.all_species)
-			var/datum/species/S = GLOB.all_species[N]
-			if((S.spawn_flags & (SPECIES_IS_WHITELISTED|SPECIES_CAN_JOIN)) != SPECIES_CAN_JOIN) continue
+		for (var/datum/species/S in all_static_species_meta())
+			if((S.spawn_flags & (SPECIES_IS_WHITELISTED|SPECIES_CAN_JOIN)) != SPECIES_CAN_JOIN)
+				continue
 			stock_bodyrecords_list_ui += N
 		if(stock_bodyrecords_list_ui.len)
 			data["stock_bodyrecords"] = stock_bodyrecords_list_ui
@@ -172,7 +172,7 @@
 			temp = "ERROR: Record missing."
 
 	else if(href_list["view_stock_brec"])
-		var/datum/species/S = GLOB.all_species[href_list["view_stock_brec"]]
+		var/datum/species/S = name_static_species_meta(href_list["view_stock_brec"])
 		if(S && (S.spawn_flags & (SPECIES_IS_WHITELISTED|SPECIES_CAN_JOIN)) == SPECIES_CAN_JOIN)
 			// Generate body record from species!
 			mannequin = new(null, S.name)
@@ -251,7 +251,7 @@
 	//log_debug("designer.update_preview_mob([H]) active_br = \ref[active_br]")
 	//Get the DNA and generate a new mob
 	var/datum/dna2/record/R = active_br.mydna
-	H.set_species(R.dna.species) // This needs to happen before anything else becuase it sets some variables.
+	H.set_species(species_type_by_name(R.dna.species)) // This needs to happen before anything else becuase it sets some variables.
 
 	// Update the external organs
 	for(var/part in active_br.limb_data)

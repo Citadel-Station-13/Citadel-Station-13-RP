@@ -10,12 +10,43 @@ GLOBAL_LIST_INIT(species_meta, initialize_static_species_cache())
 		S = new path
 		.[path] = S
 
+// todo: optimize
+/**
+ * Fetches the static species of a given species name
+ *
+ * **DO NOT EDIT RETURNED DATUM**
+ */
+/proc/name_static_species_meta(name)
+	RETURN_TYPE(/datum/species)
+	for(var/id in GLOB.species_meta)
+		var/datum/species/S = GLOB.species_meta[id]
+		if(S.name == name)
+			return S
+
+// todo: optimize
+/**
+ * Gets the unique static id/type of a species of a given name
+ */
+/proc/species_type_by_name(name)
+	for(var/id in GLOB.species_meta)
+		var/datum/species/S = GLOB.species_meta[id]
+		if(S.name == name)
+			return S.type
+
+/**
+ * gets species name by type
+ */
+/proc/species_name_by_type(type)
+	var/datum/species/S = type
+	return initial(S.name)
+
 /**
  * Fetches the static species cached globally
  *
  * **DO NOT EDIT RETURNED DATUM**
  */
 /proc/get_static_species_meta(path)
+	RETURN_TYPE(/datum/species)
 	return GLOB.species_meta[path]
 
 /**
@@ -24,7 +55,10 @@ GLOBAL_LIST_INIT(species_meta, initialize_static_species_cache())
  * returns a list, **DO NOT EVER EDIT RETURNED DATUMS**
  */
 /proc/all_static_species_meta()
-	return GLOB.species_meta.Copy()
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/path in GLOB.species_meta)
+		. += GLOB.species_meta[path]
 
 /**
  * Species Datums
@@ -465,6 +499,46 @@ GLOBAL_LIST_INIT(species_meta, initialize_static_species_cache())
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
 
+/**
+ * called when we apply to a mob
+ *
+ * **this does not create organs**
+ *
+ * handle_post_spawn() and create_organs() should be called manually if you are applying a species to a human being instantiated!
+ */
+/datum/species/proc/on_apply(mob/living/carbon/human/H)
+	ASSERT(istype(H))
+
+	if(language)
+		H.add_language(language)
+	if(default_language)
+		H.add_language(default_language)
+
+	if(holder_type)
+		H.holder_type = holder_type
+
+	if(!(H.gender in genders))
+		H.gender = genders[1]
+
+	maxHealth = total_health
+
+	add_inherent_verbs(H)
+	add_inherent_spells(H)
+
+/**
+ * called when we are removed from a mob
+ */
+/datum/species/proc/on_remove(mob/living/carbon/human/H)
+	if(language)
+		H.remove_language(language)
+	if(default_language)
+		H.remove_language(default_language)
+	for(var/datum/language/L in assisted_langs)
+		H.remove_language(L)
+	remove_inherent_spells(H)
+	remove_inherent_verbs(H)
+	H.holder_type = null
+
 /datum/species/proc/sanitize_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)
 
@@ -520,6 +594,10 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	else
 		H.equip_to_slot_or_del(box, slot_in_backpack)
 
+/**
+ * called to ensure organs are consistent with our species's
+ * this is a destructive operation and will erase old organs!
+ */
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
 
 	H.mob_size = mob_size
@@ -562,6 +640,15 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 		var/obj/item/nif/nif = new type(H,durability,nif_savedata)
 		nif.nifsofts = nifsofts
+
+	if(base_color)
+		H.r_skin = hex2num(copytext(species.base_color,2,4))
+		H.g_skin = hex2num(copytext(species.base_color,4,6))
+		H.b_skin = hex2num(copytext(species.base_color,6,8))
+	else
+		H.r_skin = 0
+		H.g_skin = 0
+		H.b_skin = 0
 
 /datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 
@@ -620,9 +707,10 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	H.spellremove()
 	return
 
+/**
+ * called after a mob is **fully** spawned
+ */
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
-	add_inherent_verbs(H)
-	add_inherent_spells(H)
 	H.mob_bump_flag = bump_flag
 	H.mob_swap_flags = swap_flags
 	H.mob_push_flags = push_flags

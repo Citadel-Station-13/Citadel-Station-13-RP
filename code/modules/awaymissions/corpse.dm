@@ -34,7 +34,7 @@
 /atom/movable/landmark/corpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	set waitfor = FALSE
 	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
-	M.set_species(species)
+	M.set_species(species_type_by_name(species))
 	M.real_name = src.name
 	M.death(1) //Kills the new mob
 	if(src.corpseuniform)

@@ -104,10 +104,6 @@
 	else
 		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), slot_in_backpack)
 
-/datum/species/diona/handle_post_spawn(var/mob/living/carbon/human/H)
-	H.gender = NEUTER
-	return ..()
-
 /datum/species/diona/handle_death(var/mob/living/carbon/human/H)
 
 	var/mob/living/carbon/alien/diona/S = new(get_turf(H))

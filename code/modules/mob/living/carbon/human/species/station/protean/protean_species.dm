@@ -168,9 +168,9 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		return H.impersonate_bodytype || ..()
 	return ..()
 
-/datum/species/protean/handle_post_spawn(var/mob/living/carbon/human/H)
-	..()
+/datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE
+	. = ..()
 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
 	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)

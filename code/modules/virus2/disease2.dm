@@ -42,8 +42,7 @@
 	if(severity >= 2 && prob(33))
 		resistance += 10
 
-	if(GLOB.all_species.len)
-		affected_species = get_infectable_species()
+	affected_species = get_infectable_species()
 
 // todo: this is not great, viruses should check on infect attempt if possible with good performance
 /proc/get_infectable_species()
@@ -51,8 +50,7 @@
 	var/list/res = list()
 
 	var/list/species_cache = all_static_species_meta()
-	for(var/path in species_cache)
-		var/datum/species/S = species_cache[S]
+	for(var/datum/species/S in species_cache)
 		if(S.get_virus_immune())
 			continue
 		meat += S
@@ -162,7 +160,7 @@
 	if (prob(5) && prob(100-resistance)) // The more resistant the disease,the lower the chance of randomly developing the antibodies
 		antigen = list(pick(ALL_ANTIGENS))
 		antigen |= pick(ALL_ANTIGENS)
-	if (prob(5) && GLOB.all_species.len)
+	if (prob(5))
 		affected_species = get_infectable_species()
 	if (prob(10))
 		resistance += rand(1,9)

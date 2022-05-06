@@ -21,22 +21,25 @@
 
 	var/healing = FALSE
 
-/mob/living/carbon/human/Initialize(mapload, var/new_species = null)
+/mob/living/carbon/human/Initialize(mapload)
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()
 
-	if(!species)
-		if(new_species)
-			set_species(new_species,1)
+	if(!istype(species))
+		// no one set us yet
+		if(ispath(species))
+			set_species(species)
 		else
 			set_species()
 
-	if(species)
-		real_name = species.get_random_name(gender)
-		name = real_name
-		if(mind)
-			mind.name = real_name
+	if(!species)
+		CRASH("Why is there no species?")	// NO NO, YOU DONT GET TO CHICKEN OUT, SET_SPECIES WAS CALLED AND YOU BETTER HAVE ONE
+
+	real_name = species.get_random_name(gender)
+	name = real_name
+	if(mind)
+		mind.name = real_name
 
 	nutrition = rand(200,400)
 	hydration = rand(200,400)
@@ -746,9 +749,8 @@
 	dna.check_integrity(src)
 	return
 
-/mob/living/carbon/human/get_species()
-	if(!species)
-		set_species()
+/mob/living/carbon/human/get_species_name()
+	// no more species check, if we runtime, fuck you, fix your bugs.
 	return species.name
 
 /mob/living/carbon/human/proc/play_xylophone()
@@ -1116,78 +1118,79 @@
 	else
 		to_chat(usr, "<span class='warning'>You failed to check the pulse. Try again.</span>")
 
-/mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour, var/regen_icons = TRUE, var/mob/living/carbon/human/example = null)	//VOREStation Edit - send an example
-
-	if(!dna)
-		if(!new_species)
-			new_species = SPECIES_HUMAN
-	else
-		if(!new_species)
-			new_species = dna.species
-		else
-			dna.species = new_species
-
-	// No more invisible screaming wheelchairs because of set_species() typos.
-	if(!GLOB.all_species[new_species])
-		new_species = SPECIES_HUMAN
-
-	if(species)
-
-		if(species.name && species.name == new_species && species.name != SPECIES_CUSTOM)
+/**
+ * Sets a human mob's species.
+ *
+ * Accepts a typepath or species instance
+ *
+ * @param
+ * - species_or_path - species instance or typepath
+ * - regen_icons - immediately update icons?
+ * - force - change even if we are already that species **by type**
+ * - example - dumbshit argument used for vore transformations to copy necessary data, why tf is this not done in the vore module? TODO: REMOVE.
+ */
+/mob/living/carbon/human/proc/set_species(datum/species/species_or_path, regen_icons = TRUE, force = FALSE, mob/living/carbon/human/example)	//VOREStation Edit - send an example
+	// check if we need to
+	if(!force && species_or_path)
+		if(istype(species, istype(species_or_path)? species_or_path.type : species_or_path))
+			// already are that typepath, don't bother
 			return
-		if(species.language)
-			remove_language(species.language)
-		if(species.default_language)
-			remove_language(species.default_language)
-		for(var/datum/language/L in species.assisted_langs)
-			remove_language(L)
-		// Clear out their species abilities.
-		species.remove_inherent_verbs(src)
-		species.remove_inherent_spells(src)
-		holder_type = null
 
-	species = GLOB.all_species[new_species]
+	if(!species_or_path)
+		// try to get default
+		// priority one: dna
+		if(dna?.species)
+			var/path = species_type_by_name(dna.species)
+			if(!path)
+				CRASH("dna species invalid name: [dna.species]")
+			species_or_path = path
+		// priority two: species var
+		else if(ispath(species))
+			species_or_path = species
+		// priority 3: human
+		else
+			species_or_path = /datum/species/human
 
-	if(species.language)
-		add_language(species.language)
+	var/datum/species/S
 
-	if(species.default_language)
-		add_language(species.default_language)
-
-	if(species.icon_scale_x != 1 || species.icon_scale_y != 1)
-		update_transform()
-
-	if(example)						//VOREStation Edit begin
-		if(!(example == src))
-			r_skin = example.r_skin
-			g_skin = example.g_skin
-			b_skin = example.b_skin
-	else if(species.base_color)	//VOREStation Edit end
-		//Apply colour.
-		r_skin = hex2num(copytext(species.base_color,2,4))
-		g_skin = hex2num(copytext(species.base_color,4,6))
-		b_skin = hex2num(copytext(species.base_color,6,8))
+	// if we're a typepath instead of a species instance
+	if(ispath(species_or_path))
+		ASSERT(species_or_path in GLOB.species_meta)		// check that too
+		S = new species_or_path
+	else if(!istype(species_or_path))
+		// make sure no one did a bad call
+		CRASH("Invalid species change attempt: [species_or_path]")
 	else
-		r_skin = 0
-		g_skin = 0
-		b_skin = 0
+		// we're a species datum
+		S = species_or_path
+		// in the future we might have unique instancing so it'd need a check too, for now, mobs can share species
+		// (DO NOT DO THIS OR IT WILL BUG OUT AND I **WILL** FIND YOU)
 
-	if(species.holder_type)
-		holder_type = species.holder_type
+	// clean up old species
+	if(species)
+		species.on_remove(src)
 
-	if(!(gender in species.genders))
-		gender = species.genders[1]
+	// set
+	species = S
 
-	//icon_state = lowertext(species.name) //Necessary?
-
-	//VOREStation Edit start: swap places of those two procs
+	// apply new species, create organs, do post spawn stuff even though we're presumably not spawning half the time
+	// i seriously hate vorecode
+	species.on_apply(src)
+	species.create_organs(src)
 	species.handle_post_spawn(src)
 
-	species.create_organs(src)
-	//VOREStation Edit end: swap places of those two procs
+	make_blood()
+	if(vessel.total_volume < species.blood_volume)
+		vessel.maximum_volume = species.blood_volume
+		vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)
+	else if(vessel.total_volume > species.blood_volume)
+		vessel.remove_reagent("blood", vessel.total_volume - species.blood_volume)
+		vessel.maximum_volume = species.blood_volume
+	fixblood()
+	species.update_attack_types() //VOREStation Edit - Required for any trait that updates unarmed_types in setup.
 
-
-	maxHealth = species.total_health
+	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
+	update_hud()
 
 	if(LAZYLEN(descriptors))
 		descriptors = null
@@ -1198,30 +1201,17 @@
 			var/datum/mob_descriptor/descriptor = species.descriptors[desctype]
 			descriptors[desctype] = descriptor.default_value
 
-	spawn(0)
-		if(regen_icons) regenerate_icons()
-		make_blood()
-		if(vessel.total_volume < species.blood_volume)
-			vessel.maximum_volume = species.blood_volume
-			vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)
-		else if(vessel.total_volume > species.blood_volume)
-			vessel.remove_reagent("blood", vessel.total_volume - species.blood_volume)
-			vessel.maximum_volume = species.blood_volume
-		fixblood()
-		species.update_attack_types() //VOREStation Edit - Required for any trait that updates unarmed_types in setup.
+	// dumb shit transformation shit here
+	if(example)						//VOREStation Edit begin
+		if(!(example == src))
+			r_skin = example.r_skin
+			g_skin = example.g_skin
+			b_skin = example.b_skin
 
-	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
-	update_hud()
-
-	//A slew of bits that may be affected by our species change
-	regenerate_icons()
-
-	if(species)
-		//if(mind) //VOREStation Removal
-			//apply_traits() //VOREStation Removal
-		return 1
-	else
-		return 0
+	if(regen_icons)
+		//A slew of bits that may be affected by our species change
+		regenerate_icons()
+		update_transform()
 
 /mob/living/carbon/human/proc/bloody_doodle()
 	set category = "IC"

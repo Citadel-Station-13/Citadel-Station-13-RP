@@ -150,7 +150,7 @@
 
 	if(istype(I,/obj/item/disk/species))
 		var/obj/item/disk/species/D = I
-		if(!D.species || !(D.species in GLOB.all_species))
+		if(!D.species || !(species_type_by_name(D.species) in GLOB.species_meta))
 			to_chat(user, SPAN_WARNING("This disk seems to be corrupted!"))
 		else
 			to_chat(user, SPAN_NOTICE("Uploading modification files for [D.species]..."))

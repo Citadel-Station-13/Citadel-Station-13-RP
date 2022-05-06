@@ -713,7 +713,7 @@
 /mob/new_player/proc/has_admin_rights()
 	return check_rights(R_ADMIN, 0, src)
 
-/mob/new_player/get_species()
+/mob/new_player/get_species_name()
 	var/datum/species/chosen_species
 	if(client.prefs.species)
 		chosen_species = GLOB.all_species[client.prefs.species]

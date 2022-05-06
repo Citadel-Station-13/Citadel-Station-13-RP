@@ -52,20 +52,22 @@
 /mob/living/carbon/human/nevrean/Initialize(mapload)
 	return ..(mapload, SPECIES_NEVREAN)
 
-/mob/living/carbon/human/xenochimera/Initialize(mapload)
-	return ..(mapload, SPECIES_XENOCHIMERA)
+#warn convert this file jfc
 
-/mob/living/carbon/human/xenohybrid/Initialize(mapload, new_species)
-	return ..(mapload, SPECIES_XENOHYBRID)
+/mob/living/carbon/human/xenochimera
+	species = /datum/species/shapeshifter/xenochimera
 
-/mob/living/carbon/human/spider/Initialize(mapload)
-	return ..(mapload, SPECIES_VASILISSAN)
+/mob/living/carbon/human/xenohybrid
+	species = /datum/species/xenohybrid
 
-/mob/living/carbon/human/vulpkanin/Initialize(mapload)
-	return ..(mapload, SPECIES_VULPKANIN)
+/mob/living/carbon/human/spider
+	species = /datum/species/spider
 
-/mob/living/carbon/human/protean/Initialize(mapload)
-	return ..(mapload, SPECIES_PROTEAN)
+/mob/living/carbon/human/vulpkanin
+	species = /datum/species/vulpkanin
+
+/mob/living/carbon/human/protean
+	species = /datum/species/protean
 
 /mob/living/carbon/human/alraune/Initialize(mapload)
 	return ..(mapload, SPECIES_ALRAUNE)

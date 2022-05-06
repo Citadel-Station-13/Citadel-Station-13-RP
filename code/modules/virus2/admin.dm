@@ -89,14 +89,14 @@
 		"}
 		var/f = 1
 		var/list/species_cache = all_static_species_meta()
-		for(var/path in species_cache)
-			var/datum/species/S = species_cache[path]
+		for(var/datum/species/S in species_cache)
 			if(S.get_virus_immune())
 				continue
 			if(!f)
 				H += " | "
 			else
 				f = 0
+			var/k = S.name
 			H += "<a href='?src=\ref[src];what=species;toggle=[k]' style='color:[(k in species) ? "#006600" : "#ff0000"]'>[k]</a>"
 		H += {"
 		<a href="?src=\ref[src];what=species;reset=1" style="color:#0000aa">Reset</a>
