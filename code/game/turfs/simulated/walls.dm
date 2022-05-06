@@ -9,6 +9,7 @@
 //	air_status = AIR_STATUS_BLOCK
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
+	baseturfs = /turf/simulated/floor/plating
 
 	var/icon/wall_masks = 'icons/turf/wall_masks.dmi'
 	var/damage = 0
@@ -214,14 +215,14 @@
 	update_connections(1)
 
 	if(changeturf)
-		ChangeTurf(/turf/simulated/floor/plating)
+		ScrapeAway()
 
 /turf/simulated/wall/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))
 				new /obj/structure/girder/displaced(src, girder_material.name)
-			src.ChangeTurf(get_base_turf_by_area(src))
+			ScrapeAway()
 		if(2.0)
 			if(prob(75))
 				take_damage(rand(150, 250))
@@ -229,8 +230,6 @@
 				dismantle_wall(1,1)
 		if(3.0)
 			take_damage(rand(0, 250))
-		else
-			return
 
 // Wall-rot effect, a nasty fungus that destroys walls.
 /turf/simulated/wall/proc/rot()

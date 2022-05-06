@@ -90,9 +90,8 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 				L.update_lumcount(1,1,1)
 			else
 				L.update_lumcount(0.0, 0.4, 1)
-
 		for(var/turf/space/T in world)
-			OnTurfChange(T)
+			T.color = "#0066FF"
 
 /datum/universal_state/supermatter_cascade/proc/MiscSet()
 	for (var/obj/machinery/firealarm/alm in machines)

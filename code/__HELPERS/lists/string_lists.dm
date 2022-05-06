@@ -28,6 +28,4 @@ GLOBAL_LIST_EMPTY(string_lists)
 	name = "Report this"
 	desc = "It looks like base turfs went to the fucking moon, TELL YOUR LOCAL CODER TODAY"
 	icon = 'icons/turf/debug.dmi'
-	icon_state = "fucked_baseturfs"
-
-#warn steal this sprite from tg
+	icon_state = ""

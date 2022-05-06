@@ -202,6 +202,7 @@
 #include "code\__HELPERS\sorts\TimSort.dm"
 #include "code\__HELPERS\text\scramble.dm"
 #include "code\__HELPERS\type2type\color.dm"
+#include "code\__HELPERS\unsorted\contents.dm"
 #include "code\__HELPERS\vfx\shake_camera.dm"
 #include "code\_globals\regexes.dm"
 #include "code\_globalvars\bitfields.dm"
