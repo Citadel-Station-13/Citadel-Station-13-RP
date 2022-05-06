@@ -248,9 +248,9 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
  * used for shuttle ceilings
  */
 /turf/proc/PlaceBelowLogicalBottom(type, flags)
-	ASSERT(!GLOB.multiz_hole_baseturfs[src.type])
+	ASSERT(!GLOB.multiz_hole_baseturfs[type])
 	// if we're already bottomless, just place on us
-	if(GLOB.multiz_hole_baseturfs[type])
+	if(GLOB.multiz_hole_baseturfs[src.type])
 		PlaceOnTop(type, flags = flags)
 		return
 	// ensure baseturfs list
