@@ -451,9 +451,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Gardener"
-	},
+/atom/movable/landmark/spawnpoint/job/botanist,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
@@ -1187,9 +1185,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
@@ -1394,9 +1390,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "ep" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -1820,9 +1814,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "fq" = (
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "fr" = (
@@ -3499,9 +3491,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
 "jL" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
@@ -5154,9 +5144,7 @@
 /area/maintenance/dormitory)
 "oe" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/atom/movable/landmark/start{
-	name = "Bartender"
-	},
+/atom/movable/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "of" = (
@@ -5648,9 +5636,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "pE" = (
@@ -5909,9 +5895,7 @@
 /area/crew_quarters/bar)
 "qq" = (
 /obj/structure/window/basic,
-/atom/movable/landmark{
-	name = "Observer-Start"
-	},
+/atom/movable/landmark/observer_spawn,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/bed/chair/sofa/black{
 	dir = 1
@@ -6550,9 +6534,7 @@
 /area/maintenance/dormitory)
 "sn" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Bartender"
-	},
+/atom/movable/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "so" = (
@@ -6766,9 +6748,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "sM" = (
@@ -7780,9 +7760,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Bartender"
-	},
+/atom/movable/landmark/spawnpoint/job/bartender,
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
@@ -9208,9 +9186,7 @@
 /area/crew_quarters/lounge/kitchen_freezer)
 "zF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -10629,9 +10605,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "DZ" = (
-/atom/movable/landmark/start{
-	name = "Gardener"
-	},
+/atom/movable/landmark/spawnpoint/job/botanist,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -10945,9 +10919,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "EU" = (
@@ -12880,9 +12852,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "KB" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
 	},
@@ -13280,9 +13250,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "LL" = (
-/atom/movable/landmark/start{
-	name = "Quartermaster"
-	},
+/atom/movable/landmark/spawnpoint/job/quartermaster,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/qm)
 "LO" = (
@@ -14677,9 +14645,7 @@
 "Qa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "Qb" = (
@@ -14886,9 +14852,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_6)
 "QK" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
@@ -15269,9 +15233,7 @@
 /area/maintenance/substation/civilian)
 "RQ" = (
 /obj/structure/table/bench/padded,
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "RR" = (
@@ -15309,9 +15271,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "RV" = (
-/atom/movable/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "RW" = (
@@ -16160,9 +16120,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_1)
 "Ug" = (
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "Uh" = (
@@ -17260,15 +17218,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "WZ" = (
-/atom/movable/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "Xa" = (
-/atom/movable/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},

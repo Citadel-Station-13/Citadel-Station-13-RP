@@ -10,7 +10,7 @@ var/global/datum/controller/occupations/job_master
 		//Cache of icons for job info window
 	var/list/job_icons = list()
 
-	proc/SetupOccupations(var/faction = "Station")
+	proc/SetupOccupations()
 		occupations = list()
 		//var/list/all_jobs = typesof(/datum/job)
 		var/list/all_jobs = list(/datum/job/station/assistant) | GLOB.using_map.allowed_jobs
@@ -18,13 +18,12 @@ var/global/datum/controller/occupations/job_master
 			to_world("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return 0
 		for(var/J in all_jobs)
-			var/datum/job/job = new J()
-			if(!job)	continue
-			if(job.faction != faction)	continue
+			var/datum/job/job = J
+			if(initial(job.abstract_type) == J)
+				continue
+			job = new J
 			occupations += job
 		sortTim(occupations, /proc/cmp_job_datums)
-
-
 		return 1
 
 
@@ -341,26 +340,20 @@ var/global/datum/controller/occupations/job_master
 		var/list/spawn_in_storage = list()
 
 		if(!joined_late)
-			var/obj/S = null
-			var/list/possible_spawns = list()
-			for(var/atom/movable/landmark/start/sloc in GLOB.landmarks_list)
-				if(sloc.name != rank)	continue
-				if(locate(/mob/living) in sloc.loc)	continue
-				possible_spawns.Add(sloc)
-			if(possible_spawns.len)
-				S = pick(possible_spawns)
-			if(!S)
-				S = locate("start*[rank]") // use old stype
-			if(istype(S, /atom/movable/landmark/start) && istype(S.loc, /turf))
-				H.forceMove(S.loc)
+			var/atom/movable/landmark/spawnpoint/S = SSjob.GetRoundstartSpawnpoint(H, H.client, job.type, job.faction)
+
+			if(istype(S))
+				H.forceMove(S.GetSpawnLoc())
+				S.OnSpawn(H, H.client)
 			else
 				var/list/spawn_props = LateSpawn(H.client, rank)
-				var/turf/T = spawn_props["turf"]
-				if(!T)
+				S = spawn_props["spawnpoint"]
+				if(!S)
 					to_chat(H, "<span class='critical'>You were unable to be spawned at your chosen late-join spawnpoint. Please verify your job/spawn point combination makes sense, and try another one.</span>")
 					return
 				else
-					H.forceMove(T)
+					H.forceMove(S.GetSpawnLoc())
+					S.OnSpawn(H, H.client)
 
 			// Moving wheelchair if they have one
 			if(H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
@@ -628,11 +621,12 @@ var/global/datum/controller/occupations/job_master
 
 /datum/controller/occupations/proc/LateSpawn(var/client/C, var/rank)
 
-	var/datum/spawnpoint/spawnpos
 	var/fail_deadly = FALSE
 
 	var/datum/job/J = SSjob.get_job(rank)
 	fail_deadly = J?.offmap_spawn
+	var/preferred_method
+	var/datum/spawnpoint/spawnpos
 
 	//Spawn them at their preferred one
 	if(C && C.prefs.spawnpoint)
@@ -642,26 +636,23 @@ var/global/datum/controller/occupations/job_master
 				return
 			else
 				to_chat(C, "<span class='warning'>Your chosen spawnpoint ([C.prefs.spawnpoint]) is unavailable for the current map. Spawning you at one of the enabled spawn points instead.</span>")
-				spawnpos = null
 		else
 			spawnpos = spawntypes[C.prefs.spawnpoint]
 
-	//We will return a list key'd by "turf" and "msg"
-	. = list("turf","msg")
-	if(spawnpos && istype(spawnpos) && spawnpos.turfs.len)
+	preferred_method = spawnpos?.method
+	var/atom/movable/landmark/spawnpoint/S
+
+	. = list("spawnpoint")
+	if(spawnpos && istype(spawnpos))
 		if(spawnpos.check_job_spawning(rank))
-			.["turf"] = spawnpos.get_spawn_position()
-			.["msg"] = spawnpos.msg
+			S = SSjob.GetLatejoinSpawnpoint(method = preferred_method, job_path = J.type, faction = J.faction)
+			.["spawnpoint"] = S
 			.["channel"] = spawnpos.announce_channel
 		else
 			if(fail_deadly)
 				to_chat(C, "<span class='warning'>Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Please correct your spawn point choice.</span>")
 				return
 			to_chat(C, "Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead.")
-			var/spawning = pick(latejoin)
-			.["turf"] = get_turf(spawning)
-			.["msg"] = "will arrive at the station shortly"
+			.["spawnpoint"] = SSjob.GetLatejoinSpawnpoint(J.faction)
 	else if(!fail_deadly)
-		var/spawning = pick(latejoin)
-		.["turf"] = get_turf(spawning)
-		.["msg"] = "has arrived on the station"
+		.["spawnpoint"] = SSjob.GetLatejoinSpawnpoint(J.faction)

@@ -333,7 +333,7 @@
 "be" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/atom/movable/landmark/costume,
+/atom/movable/landmark/costume/random,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission)
 "bf" = (

@@ -481,7 +481,7 @@
 	icon_state = "cyan"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
-	job_access_type = /datum/job/station/sar
+	job_access_type = /datum/job/station/field_medic
 
 /obj/item/card/id/explorer
 	name = "identification card"

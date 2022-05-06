@@ -3,7 +3,6 @@
 	flag = MINER
 	departments = list(DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
-	faction = "Station"
 	pto_type = PTO_CARGO
 	idtype = /obj/item/card/id/cargo/mining
 	total_positions = 3
@@ -15,7 +14,7 @@
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting, access_cargo, access_cargo_bot)
 
 	outfit_type = /datum/outfit/job/station/shaft_miner
-	job_description = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
+	desc = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
 	alt_titles = list(
 		"Drill Technician" = /datum/alt_title/drill_tech,
 		"Belt Miner" = /datum/alt_title/miner/belt

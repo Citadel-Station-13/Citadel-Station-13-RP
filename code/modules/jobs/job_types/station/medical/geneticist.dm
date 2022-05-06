@@ -8,7 +8,6 @@
 	flag = GENETICIST
 	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH)
 	department_flag = MEDSCI
-	faction = "Station"
 	total_positions = 0
 	spawn_positions = 0
 	supervisors = "the Chief Medical Officer and Research Director"
@@ -20,7 +19,7 @@
 	minimal_access = list(access_medical, access_morgue, access_genetics, access_research)
 
 	outfit_type = /datum/outfit/job/station/geneticist
-	job_description = "A Geneticist operates genetic manipulation equipment to repair any genetic defects encountered in crew, from cloning or radiation as examples. \
+	desc = "A Geneticist operates genetic manipulation equipment to repair any genetic defects encountered in crew, from cloning or radiation as examples. \
 						When required, geneticists have the skills to clone, and are the superior choice when available for doing so."
 */
 

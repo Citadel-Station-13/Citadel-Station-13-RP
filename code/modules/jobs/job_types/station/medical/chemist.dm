@@ -3,7 +3,6 @@
 	flag = CHEMIST
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
-	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the Chief Medical Officer"
@@ -16,7 +15,7 @@
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/chemist
-	job_description = "A Chemist produces and maintains a stock of basic to advanced chemicals for medical and occasionally research use. \
+	desc = "A Chemist produces and maintains a stock of basic to advanced chemicals for medical and occasionally research use. \
 						They are likely to know the use and dangers of many lab-produced chemicals."
 	alt_titles = list(
 		"Pharmacist" = /datum/alt_title/pharmacist,

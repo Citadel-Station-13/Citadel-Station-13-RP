@@ -3,7 +3,6 @@
 	flag = CYBORG
 	departments = list(DEPARTMENT_SYNTHETIC)
 	department_flag = ENGSEC
-	faction = "Station"
 	total_positions = 4			// Along with one able to spawn later in the round.
 	spawn_positions = 3			// Let's have 3 able to spawn in roundstart
 	supervisors = "your laws and the AI"	//Nodrak
@@ -16,7 +15,7 @@
 	assignable = FALSE
 	mob_type = JOB_SILICON_ROBOT
 	outfit_type = /datum/outfit/job/station/cyborg
-	job_description = "A Cyborg is a mobile station synthetic, piloted by a cybernetically preserved brain. It is considered a person, but is still required \
+	desc = "A Cyborg is a mobile station synthetic, piloted by a cybernetically preserved brain. It is considered a person, but is still required \
 						to follow its Laws."
 	alt_titles = list(
 		"Robot" = /datum/alt_title/robot,

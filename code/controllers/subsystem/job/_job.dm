@@ -18,7 +18,10 @@ SUBSYSTEM_DEF(job)
 		setup_occupations()
 	return ..()
 
-/datum/controller/subsystem/job/proc/setup_occupations(faction = "Station")
+/datum/controller/subsystem/job/Recover()
+	ReconstructSpawnpoints()
+
+/datum/controller/subsystem/job/proc/setup_occupations()
 	occupations = list()
 	var/list/all_jobs = subtypesof(/datum/job)
 	if(!all_jobs.len)
@@ -26,11 +29,10 @@ SUBSYSTEM_DEF(job)
 		return FALSE
 
 	for(var/J in all_jobs)
-		var/datum/job/job = new J()
-		if(!job)
+		var/datum/job/job = J
+		if(initial(job.abstract_type) == J)
 			continue
-		if(job.faction != faction)
-			continue
+		job = new J
 		occupations += job
 		name_occupations[job.title] = job
 		type_occupations[J] = job

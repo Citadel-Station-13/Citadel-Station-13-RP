@@ -7,7 +7,6 @@
 	flag = XENOBIOLOGIST
 	departments = list(DEPARTMENT_RESEARCH)
 	department_flag = MEDSCI
-	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
 	supervisors = "the Research Director"
@@ -21,7 +20,7 @@
 	minimal_player_age = 14
 
 	outfit_type = /datum/outfit/job/station/science/xenobiologist
-	job_description = "A Xenobiologist studies esoteric lifeforms, usually in the relative safety of their lab. They attempt to find ways to benefit \
+	desc = "A Xenobiologist studies esoteric lifeforms, usually in the relative safety of their lab. They attempt to find ways to benefit \
 						from the byproducts of these lifeforms, and their main subject at present is the Giant Slime."
 
 	alt_titles = list(

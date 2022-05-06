@@ -3,7 +3,6 @@
 	flag = SCIENTIST
 	departments = list(DEPARTMENT_RESEARCH)
 	department_flag = MEDSCI
-	faction = "Station"
 	total_positions = 7
 	spawn_positions = 5
 	supervisors = "the Research Director"
@@ -17,7 +16,7 @@
 
 	outfit_type = /datum/outfit/job/station/scientist
 	pto_type = PTO_SCIENCE
-	job_description = "A Scientist is a generalist working in the Research department, with general knowledge of the scientific process, as well as \
+	desc = "A Scientist is a generalist working in the Research department, with general knowledge of the scientific process, as well as \
 						the principles and requirements of Research and Development. They may also formulate experiments of their own devising, if \
 						they find an appropriate topic."
 	alt_titles = list(

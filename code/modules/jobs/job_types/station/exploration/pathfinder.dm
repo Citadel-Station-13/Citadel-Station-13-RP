@@ -5,7 +5,6 @@
 	departments_managed = list(DEPARTMENT_PLANET)
 	sorting_order = 1 // above the other explorers
 	department_flag = MEDSCI
-	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Facility Director"
@@ -18,7 +17,7 @@
 	access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	minimal_access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	outfit_type = /datum/outfit/job/station/pathfinder
-	job_description = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
+	desc = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
 	alt_titles = list(
 		"Expedition Lead" = /datum/alt_title/expedition_lead,
 		"Exploration Manager" = /datum/alt_title/exploration_manager,

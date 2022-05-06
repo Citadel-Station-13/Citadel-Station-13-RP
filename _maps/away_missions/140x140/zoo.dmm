@@ -3861,7 +3861,7 @@
 /area/awaymission/zoo)
 "km" = (
 /obj/structure/table/rack,
-/atom/movable/landmark/costume,
+/atom/movable/landmark/costume/random,
 /turf/simulated/floor/holofloor/carpet,
 /area/awaymission/zoo)
 "kn" = (

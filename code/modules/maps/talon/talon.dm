@@ -1,25 +1,10 @@
 ///////////////////////////
 //// Spawning and despawning
 
-/// Most of this can be left uncommented out except for ship datums (those get upset if they cant find their landmarks) -Bloop
-var/global/list/latejoin_talon = list()
-/atom/movable/landmark/talon
-	name = "JoinLateTalon"
-	delete_me = 1
-
-/atom/movable/landmark/talon/New()
-	latejoin_talon += loc // Register this turf as tram latejoin.
-	..()
-
 /datum/spawnpoint/talon
 	display_name = "ITV Talon Cryo"
 	restrict_job = list("Talon Captain", "Talon Pilot", "Talon Engineer", "Talon Doctor", "Talon Guard")
-	msg = "has come out of cryostasis"
 	announce_channel = "Talon"
-
-/datum/spawnpoint/talon/New()
-	..()
-	turfs = latejoin_talon
 
 /obj/machinery/cryopod/talon
 	announce_channel = "Talon"
