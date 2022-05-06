@@ -78,14 +78,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(connections)
 		connections.erase_all()
 
-	if(istype(src, /turf/simulated))
-		//Yeah, we're just going to rebuild the whole thing.
-		//Despite this being called a bunch during explosions,
-		//the zone will only really do heavy lifting once.
-		var/turf/simulated/S = src
-		if(S.zone)
-			S.zone.rebuild()
-
 	// store planet stuff
 	var/old_outdoors = outdoors
 	var/old_dangerous_objects = dangerous_objects
@@ -164,23 +156,155 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 // todo: zas refactor
 /turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)
 	if((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/simulated))
-
+		// invalidate zone
+		zone?.rebuild()
+		// store air
+		var/datum/gas_mixture/GM = remove_cell_volume()
+		. = ..()
+		if(!.)
+			return
+		if(air_master.has_valid_zone(src))
+			stack_trace("zone rebuilt too fast")
+		// restore air
+		air = GM
 	else
+		// if we're not doing so,
+		if(zone)
+			// remove and rebuild zone
+			var/datum/zas_zone/Z = zone
+			Z.remove(src)
+			Z.rebuild()
+		// at this point the zone does not have our gas mixture in it, and is invalidated
+		. = ..()
+		if(!.)
+			return
+		// ensure zone didn't rebuild yet
+		if(air_master.has_valid_zone(src))
+			stack_trace("zone reubilt too fast")
+		// reset air
+		if(!air)
+			air = new /datum/gas_mixture(CELL_VOLUME)
+		air.parse_gas_string(initial_gas_mix)
 
+/// Take off the top layer turf and replace it with the next baseturf down
+/turf/proc/ScrapeAway(amount=1, flags)
+	if(!amount)
+		return
+	if(length(baseturfs))
+		var/list/new_baseturfs = baseturfs.Copy()
+		var/turf_type = new_baseturfs[max(1, new_baseturfs.len - amount + 1)]
+		while(ispath(turf_type, /turf/baseturf_skipover))
+			amount++
+			if(amount > new_baseturfs.len)
+				CRASH("The bottommost baseturf of a turf is a skipover [src]([type])")
+			turf_type = new_baseturfs[max(1, new_baseturfs.len - amount + 1)]
+		new_baseturfs.len -= min(amount, new_baseturfs.len - 1) // No removing the very bottom
+		if(new_baseturfs.len == 1)
+			new_baseturfs = new_baseturfs[1]
+		return ChangeTurf(turf_type, new_baseturfs, flags)
 
-#warn finish
+	if(baseturfs == type)
+		return src
 
-// LEGACY BELOW
+	return ChangeTurf(baseturfs, baseturfs, flags) // The bottom baseturf will never go away
 
+// Take the input as baseturfs and put it underneath the current baseturfs
+// If fake_turf_type is provided and new_baseturfs is not the baseturfs list will be created identical to the turf type's
+// If both or just new_baseturfs is provided they will be inserted below the existing baseturfs
+/turf/proc/PlaceOnBottom(list/new_baseturfs, turf/fake_turf_type)
+	if(fake_turf_type)
+		if(!new_baseturfs)
+			if(!length(baseturfs))
+				baseturfs = list(baseturfs)
+			var/list/old_baseturfs = baseturfs.Copy()
+			assemble_baseturfs(fake_turf_type)
+			if(!length(baseturfs))
+				baseturfs = list(baseturfs)
+			baseturfs = baseturfs_string_list((baseturfs - (baseturfs & GLOB.blacklisted_automated_baseturfs)) + old_baseturfs, src)
+			return
+		else if(!length(new_baseturfs))
+			new_baseturfs = list(new_baseturfs, fake_turf_type)
+		else
+			new_baseturfs += fake_turf_type
+	if(!length(baseturfs))
+		baseturfs = list(baseturfs)
+	baseturfs = baseturfs_string_list(new_baseturfs + baseturfs, src)
 
+// Make a new turf and put it on top
+// The args behave identical to PlaceOnBottom except they go on top
+// Things placed on top of closed turfs will ignore the topmost closed turf
+// Returns the new turf
+/**
+ * WARNING WARNING: CITRP EDIT: /turf/closed check replaced with TURF DENSITY CHECK.
+ * every if(!density) is a if(!istype(src, /turf/closed)) in this version.
+ */
+/turf/proc/PlaceOnTop(list/new_baseturfs, turf/fake_turf_type, flags)
+	var/area/turf_area = loc
+	if(new_baseturfs && !length(new_baseturfs))
+		new_baseturfs = list(new_baseturfs)
+	flags = turf_area.PlaceOnTopReact(new_baseturfs, fake_turf_type, flags) // A hook so areas can modify the incoming args
 
+	var/turf/newT
+	if(flags & CHANGETURF_SKIP) // We haven't been initialized
+		if(flags_1 & INITIALIZED_1)
+			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
+		assemble_baseturfs()
+	if(fake_turf_type)
+		if(!new_baseturfs) // If no baseturfs list then we want to create one from the turf type
+			if(!length(baseturfs))
+				baseturfs = list(baseturfs)
+			var/list/old_baseturfs = baseturfs.Copy()
+			if(!density)
+				old_baseturfs += type
+			newT = ChangeTurf(fake_turf_type, null, flags)
+			newT.assemble_baseturfs(initial(fake_turf_type.baseturfs)) // The baseturfs list is created like roundstart
+			if(!length(newT.baseturfs))
+				newT.baseturfs = list(baseturfs)
+			// The old baseturfs are put underneath, and we sort out the unwanted ones
+			newT.baseturfs = baseturfs_string_list(old_baseturfs + (newT.baseturfs - GLOB.blacklisted_automated_baseturfs), newT)
+			return newT
+		if(!length(baseturfs))
+			baseturfs = list(baseturfs)
+		if(!density)
+			new_baseturfs = list(type) + new_baseturfs
+		baseturfs = baseturfs_string_list(baseturfs + new_baseturfs, src)
+		return ChangeTurf(fake_turf_type, null, flags)
+	if(!length(baseturfs))
+		baseturfs = list(baseturfs)
+	if(!density)
+		baseturfs = baseturfs_string_list(baseturfs + type, src)
+	var/turf/change_type
+	if(length(new_baseturfs))
+		change_type = new_baseturfs[new_baseturfs.len]
+		new_baseturfs.len--
+		if(new_baseturfs.len)
+			baseturfs = baseturfs_string_list(baseturfs + new_baseturfs, src)
+	else
+		change_type = new_baseturfs
+	return ChangeTurf(change_type, null, flags)
 
+// Copy an existing turf and put it on top
+// Returns the new turf
+/turf/proc/CopyOnTop(turf/copytarget, ignore_bottom=1, depth=INFINITY, copy_air = FALSE)
+	var/list/new_baseturfs = list()
+	new_baseturfs += baseturfs
+	new_baseturfs += type
 
+	if(depth)
+		var/list/target_baseturfs
+		if(length(copytarget.baseturfs))
+			// with default inputs this would be Copy(clamp(2, -INFINITY, baseturfs.len))
+			// Don't forget a lower index is lower in the baseturfs stack, the bottom is baseturfs[1]
+			target_baseturfs = copytarget.baseturfs.Copy(clamp(1 + ignore_bottom, 1 + copytarget.baseturfs.len - depth, copytarget.baseturfs.len))
+		else if(!ignore_bottom)
+			target_baseturfs = list(copytarget.baseturfs)
+		if(target_baseturfs)
+			target_baseturfs -= new_baseturfs & GLOB.blacklisted_automated_baseturfs
+			new_baseturfs += target_baseturfs
 
-
-
-
-// LEGACY ABOVE
+	var/turf/newT = copytarget.CopyTurf(src, copy_air)
+	newT.baseturfs = baseturfs_string_list(new_baseturfs, newT)
+	return newT
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
