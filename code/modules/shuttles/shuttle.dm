@@ -14,9 +14,7 @@
 	var/category = /datum/shuttle
 	var/multiz = 0	// How many multiz levels, starts at 0  TODO Leshana - Are we porting this?
 
-	#warn inject ceiling on spawn
-	var/ceiling_type	// Type path of turf to roof over the shuttle when at multi-z landmarks.  Ignored if null.
-	#warn inject floor on spawn
+	var/ceiling_type = /turf/simulated/shuttle_ceiling	// Type path of turf to roof over the shuttle when at multi-z landmarks.  Ignored if null.
 
 	var/sound_takeoff = 'sound/effects/shuttles/shuttle_takeoff.ogg'
 	var/sound_landing = 'sound/effects/shuttles/shuttle_landing.ogg'
