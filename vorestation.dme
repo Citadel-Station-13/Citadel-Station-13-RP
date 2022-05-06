@@ -1,4 +1,4 @@
-// DM Environment file for vorestation.dme.
+// DM Environment file for vorestation.dme
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
  // New source code should be placed in .dm files: choose File/New --> Code File.
 // BEGIN_INTERNALS
@@ -223,6 +223,7 @@
 #include "code\_globalvars\religion.dm"
 #include "code\_globalvars\sensitive.dm"
 #include "code\_globalvars\text_macros.dm"
+#include "code\_globalvars\tgui.dm"
 #include "code\_globalvars\time_vars.dm"
 #include "code\_globalvars\traits.dm"
 #include "code\_globalvars\lists\client.dm"
@@ -405,6 +406,7 @@
 #include "code\datums\browser\color_matrix_picker.dm"
 #include "code\datums\browser\listpicker.dm"
 #include "code\datums\browser\preflikepicker.dm"
+#include "code\datums\changelog\changelog.dm"
 #include "code\datums\components\_component.dm"
 #include "code\datums\components\anti_magic.dm"
 #include "code\datums\components\orbiter.dm"
