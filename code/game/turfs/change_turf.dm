@@ -41,20 +41,20 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		if(null)
 			return
 		if(/turf/baseturf_bottom)
-			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/open/space
+			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/space
 			if (!ispath(path))
 				path = text2path(path)
 				if (!ispath(path))
 					warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
-					path = /turf/open/space
-		if(/turf/open/space/basic)
+					path = /turf/space
+		if(/turf/space/basic)
 			// basic doesn't initialize and this will cause issues
 			// no warning though because this can happen naturaly as a result of it being built on top of
 			if(istype(GetBelow(src), /turf/simulated))
 				path = /turf/simulated/open
 			else
-				path = /turf/open/space
-		if(/turf/open/space)
+				path = /turf/space
+		if(/turf/space)
 			if(istype(GetBelow(src), /turf/simulated))
 				path = /turf/simulated/open
 

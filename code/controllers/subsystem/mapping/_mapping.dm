@@ -267,7 +267,7 @@ SUBSYSTEM_DEF(mapping)
 	var/block = block(A, B)
 	for(var/t in block)
 		// No need to empty() these, because it's world init and they're
-		// already /turf/open/space/basic.
+		// already /turf/space/basic.
 		var/turf/T = t
 		T.flags |= UNUSED_RESERVATION_TURF
 	unused_turfs["[z]"] = block

@@ -48,7 +48,7 @@
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
 	clear_plants()
-	dismantle_wall(null, null, TRUE, !changing_turf)
+	dismantle_wall(null, null, TRUE, changing_turf)
 	return ..()
 
 /turf/simulated/wall/process(delta_time)
