@@ -36,7 +36,7 @@
 	///? Skips the specific attack step, continuing for the next one to happen.
 	////#define COMPONENT_SKIP_ATTACK (1<<1)
 /// From base of atom/attack_ghost(): (mob/dead/observer/ghost)
-////#define COMSIG_ATOM_ATTACK_GHOST "atom_attack_ghost"
+#define COMSIG_ATOM_ATTACK_GHOST "atom_attack_ghost"
 /// From base of atom/attack_hand(): (mob/user, list/modifiers)
 ////#define COMSIG_ATOM_ATTACK_HAND "atom_attack_hand"
 /// From base of atom/attack_paw(): (mob/user)

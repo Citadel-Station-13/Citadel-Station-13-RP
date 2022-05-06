@@ -500,15 +500,6 @@ default behaviour is:
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
-	if(eye_blind > 0)
-		add_status_indicator("blinded")
-
-/mob/living/SetBlinded(amount)
-	..()
-	if(eye_blind <= 0)
-		remove_status_indicator("blinded")
-	else
-		add_status_indicator("blinded")
 
 /mob/living/AdjustBlinded(amount)
 	if(amount > 0)
@@ -516,10 +507,6 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
-	if(eye_blind <= 0)
-		remove_status_indicator("blinded")
-	else
-		add_status_indicator("blinded")
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
 

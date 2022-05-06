@@ -18,12 +18,16 @@ GLOBAL_LIST(topic_status_cache)
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
 /world/New()
-	// enable_debugger()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_init")()
+		enable_debugging()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
-	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+	// citadel edit: world runtime log removed due to world.log shunt doing that for us
+	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
 	world.Profile(PROFILE_START)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
@@ -109,20 +113,32 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
  * therefore
  */
 /world/proc/ensure_logging_active()
+// if we're unit testing do not ever redirect world.log or the test won't show output.
+#ifndef UNIT_TESTS
+	// we already know, we don't care
+	if(params[OVERRIDE_LOG_DIRECTORY_PARAMETER])
+		world.log = file("data/logs/[params[OVERRIDE_LOG_DIRECTORY_PARAMETER]]/dd.log")
+		return
 	if(global.world_log_redirected)
 		return
 	global.world_log_redirected = TRUE
 	if(fexists("data/logs/world_init_temporary.log"))
-		fdel("data.logs/world_init_temporary.log")
+		fdel("data/logs/world_init_temporary.log")
 	world.log = file("data/logs/world_init_temporary.log")
+#endif
 
 /**
  * world/New is running, shunt all of the output back.
  */
 /world/proc/shunt_redirected_log()
-	if(!fexists("data/logs/world_init_temporary.log"))
-		return
+// if we're unit testing do not ever redirect world.log or the test won't show output.
+#ifndef UNIT_TESTS
+	if(params[OVERRIDE_LOG_DIRECTORY_PARAMETER])
+		return		// already done above
 	world.log = file("[GLOB.log_directory]/dd.log")
+	if(!fexists("data/logs/world_init_temporary.log"))
+		log_world("No preinit logs detected, shunt skipped.")
+		return
 	log_world("Shunting preinit logs as follows:")
 	for(var/line in world.file2list("data/logs/world_init_temporary.log"))
 		line = trim(line)
@@ -130,6 +146,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 			continue
 		log_world(line)
 	fdel("data/logs/world_init/temporary.log")
+#endif
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
@@ -298,6 +315,12 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 
 	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+	..()
+
+/world/Del()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_shutdown")()
 	..()
 
 /hook/startup/proc/loadMode()

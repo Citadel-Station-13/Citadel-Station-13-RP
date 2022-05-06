@@ -25,7 +25,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/mobcorpse/syndicatesoldier,
+/atom/movable/landmark/mobcorpse/syndicatesoldier,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -226,7 +226,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
-/obj/effect/landmark/mobcorpse/clown,
+/atom/movable/landmark/mobcorpse/clown,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/carpet/blucarpet,
 /area/class_h/POIs/saloon)

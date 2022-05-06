@@ -93,6 +93,8 @@
 			add_overlay("laser")
 		if(istype(module_active,/obj/item/gun/energy/taser/mounted/cyborg))
 			add_overlay("taser")
+		if(istype(module_active,/obj/item/gun/energy/taser/xeno/robot))
+			add_overlay("taser")
 		if(lights_on)
 			add_overlay("eyes-[module_sprites[icontype]]-lights")
 		if(resting)

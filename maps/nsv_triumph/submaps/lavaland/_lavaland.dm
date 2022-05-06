@@ -9,11 +9,11 @@
 	initial_generic_waypoints = list("poid_main")
 */
 
-/obj/effect/landmark/lavaland_entry
+/atom/movable/landmark/lavaland_entry
 	name = "lavaland_entry"
 
 
-/obj/effect/landmark/lavaland_exit
+/atom/movable/landmark/lavaland_exit
 	name = "lavaland_exit"
 
 

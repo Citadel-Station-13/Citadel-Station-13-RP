@@ -506,9 +506,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "atK" = (
@@ -2166,9 +2164,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "bNU" = (
@@ -2834,9 +2830,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "crI" = (
-/obj/effect/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -3991,9 +3985,7 @@
 /area/hallway/primary/port)
 "dnK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/effect/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -5190,7 +5182,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "emp" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "blobstart"
 	},
 /turf/simulated/floor/tiled,
@@ -5849,9 +5841,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "eNP" = (
@@ -7173,9 +7163,7 @@
 /area/rnd/xenobiology)
 "fSC" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/start{
-	name = "Psychiatrist"
-	},
+/atom/movable/landmark/spawnpoint/job/psychiatrist,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_1)
 "fSY" = (
@@ -7954,9 +7942,7 @@
 /area/hallway/primary/port)
 "gzr" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "gzz" = (
@@ -8388,9 +8374,7 @@
 /area/rnd/anomaly_lab)
 "gRE" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/start{
-	name = "Chief Medical Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/chief_medical_officer,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "gRL" = (
@@ -9069,9 +9053,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/effect/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -10947,9 +10929,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Psychiatrist"
-	},
+/atom/movable/landmark/spawnpoint/job/psychiatrist,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_2)
 "iYU" = (
@@ -11531,9 +11511,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/breakroom)
 "jAZ" = (
@@ -15035,9 +15013,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
@@ -16664,9 +16640,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "nGr" = (
-/obj/effect/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -16944,9 +16918,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled,
 /area/medical/reception)
 "nWC" = (
@@ -17181,7 +17153,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 9
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "blobstart"
 	},
 /turf/simulated/floor/tiled,
@@ -22989,7 +22961,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "xeno_spawn";
 	pixel_x = -1
 	},
@@ -23537,9 +23509,7 @@
 	pixel_y = -16
 	},
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/start{
-	name = "Research Director"
-	},
+/atom/movable/landmark/spawnpoint/job/research_director,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -24398,9 +24368,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/obj/effect/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "tff" = (
@@ -24554,9 +24522,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "tkF" = (
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "tkS" = (
@@ -25499,7 +25465,7 @@
 /area/medical/chemistry)
 "tRC" = (
 /obj/machinery/light/small,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "blobstart"
 	},
 /obj/random/trash,
@@ -26173,9 +26139,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/breakroom)
 "uxH" = (
@@ -26905,9 +26869,7 @@
 /area/medical/psych_ward)
 "uYd" = (
 /obj/structure/table/bench/padded,
-/obj/effect/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "uYz" = (
@@ -27039,9 +27001,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -27212,7 +27172,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "vhq" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "carpspawn"
 	},
 /turf/space,
@@ -27888,9 +27848,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/breakroom)
 "vPH" = (
@@ -28542,9 +28500,7 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_1)
 "woX" = (

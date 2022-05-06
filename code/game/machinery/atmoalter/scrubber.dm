@@ -102,6 +102,7 @@
 	return src.attack_hand(user)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/attack_ghost(var/mob/user)
+	. = ..()
 	return src.attack_hand(user)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/attack_hand(var/mob/user)

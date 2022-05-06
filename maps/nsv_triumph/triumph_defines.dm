@@ -116,7 +116,7 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
+	allowed_spawns = list("Shuttle Bay","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo

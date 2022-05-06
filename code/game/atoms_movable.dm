@@ -314,7 +314,6 @@
 
 //Called when touching an acid pool.
 /atom/movable/proc/acid_act()
-	acid_act(null, 500, 50)
 
 //Called when touching a blood pool.
 /atom/movable/proc/blood_act()

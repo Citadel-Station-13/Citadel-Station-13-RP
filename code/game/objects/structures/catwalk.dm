@@ -131,6 +131,7 @@
 	attack_generic()
 
 /obj/effect/catwalk_plated/attack_ghost()
+	. = ..()
 	attack_generic()
 
 /obj/effect/catwalk_plated/attack_generic()

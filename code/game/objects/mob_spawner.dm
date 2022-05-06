@@ -175,7 +175,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	destructible = 1
 	health = 50
 	anchored = 1
-	icon = 'icons/mob/actions.dmi'
+	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
 	/mob/living/simple_mob/animal/space/alien/drone = 20,
@@ -194,7 +194,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	destructible = 1
 	health = 50
 	anchored = 1
-	icon = 'icons/mob/actions.dmi'
+	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
 	/mob/living/simple_mob/animal/space/alien/queen = 5
@@ -425,7 +425,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	destructible = 1
 	health = 50
 	anchored = 1
-	icon = 'icons/mob/actions.dmi'
+	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
 	/mob/living/simple_mob/animal/space/alien/drone = 20,
@@ -444,7 +444,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	destructible = 1
 	health = 50
 	anchored = 1
-	icon = 'icons/mob/actions.dmi'
+	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
 	/mob/living/simple_mob/animal/space/alien/queen = 5,
