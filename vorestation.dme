@@ -2414,6 +2414,8 @@
 #include "code\modules\mapping\space_management\space_transition.dm"
 #include "code\modules\mapping\space_management\traits.dm"
 #include "code\modules\mapping\space_management\zlevel_manager.dm"
+#include "code\modules\mapping\spawner\_spawner.dm"
+#include "code\modules\mapping\spawner\window.dm"
 #include "code\modules\maps\admin\ert.dm"
 #include "code\modules\maps\admin\fun.dm"
 #include "code\modules\maps\admin\mercship.dm"

@@ -7,6 +7,8 @@ As such we have a *ton* of path replacements.
 
 Apply regexes in this order:
 
+`/obj/effect/map_helper`-`/atom/movable/map_helper`
+
 // TODO: tape roll
 // todo: devices/weapons
 
@@ -14,4 +16,4 @@ Apply regexes in this order:
 // TODO: OBSERVER START
 
 // TODO: MAKE SURE NO / AFTER COSTUME
-`/atom/movable/landmark/costume` `/atom/movable/landmark/costume/random`
+`/atom/movable/landmark/costume`-`/atom/movable/landmark/costume/random`
