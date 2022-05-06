@@ -48,7 +48,10 @@
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
 	clear_plants()
-	dismantle_wall(null, null, TRUE, changing_turf)
+	material = get_material_by_name("placeholder")
+	reinf_material = null
+	girder_material = null
+	update_connections(1)
 	return ..()
 
 /turf/simulated/wall/process(delta_time)
@@ -188,9 +191,8 @@
 
 	return ..()
 
-/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product, changeturf = TRUE)
-	if(!changeturf)
-		playsound(src, 'sound/items/Welder.ogg', 100, 1)
+/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product)
+	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
 		if(reinf_material)
 			reinf_material.place_dismantled_girder(src, reinf_material, girder_material)
@@ -207,15 +209,7 @@
 			P.roll_and_drop(src)
 		else
 			O.forceMove(src)
-
-	clear_plants()
-	material = get_material_by_name("placeholder")
-	reinf_material = null
-	girder_material = null
-	update_connections(1)
-
-	if(changeturf)
-		ScrapeAway()
+	ScrapeAway()
 
 /turf/simulated/wall/ex_act(severity)
 	switch(severity)
