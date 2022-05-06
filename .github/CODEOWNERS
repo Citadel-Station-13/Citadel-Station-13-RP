@@ -14,6 +14,7 @@
 /code/__DEFINES/chat.dm @Zandario
 /code/__DEFINES/tgui.dm @Zandario
 /code/controllers/subsystem/chat.dm @Zandario
+/code/controllers/subsystem/ping.dm @Zandario
 /code/controllers/subsystem/tgui.dm @Zandario
 /code/modules/tgchat @Zandario
 /code/modules/tgui @Zandario

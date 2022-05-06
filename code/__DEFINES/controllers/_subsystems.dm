@@ -159,6 +159,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
+
 #define FIRE_PRIORITY_SHUTTLES		5
 #define FIRE_PRIORITY_NIGHTSHIFT	6
 #define FIRE_PRIORITY_PLANTS		5

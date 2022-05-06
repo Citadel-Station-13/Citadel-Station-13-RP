@@ -33,16 +33,22 @@ If you were already familiar with an older, Ractive-based tgui, and want
 to translate concepts between old and new tgui, read this
 [interface conversion guide](docs/converting-old-tgui-interfaces.md).
 
+### Other Documentation
+
+- [Component Reference](docs/component-reference.md) - UI building blocks
+- [Using TGUI and Byond API for custom HTML popups](docs/tgui-for-custom-html-popups.md)
+- [Chat Embedded Components](docs/chat-embedded-components.md)
+- [Writing Tests](docs/writing-tests.md)
+
 ## Pre-requisites
 
 You will need these programs to start developing in tgui:
 
-- [Node v12.18.3+](https://nodejs.org/en/download/)
-- [Yarn v1.22.4+](https://yarnpkg.com/getting-started/install) (optional)
-- [Git Bash](https://git-scm.com/downloads)
-  or [MSys2](https://www.msys2.org/) (optional)
-
-**DO NOT install Chocolatey if Node installer asks you to!**
+- [Node v16.13+](https://nodejs.org/en/download/)
+  - **LTS** release is recommended instead of latest
+  - **DO NOT install Chocolatey if Node installer asks you to!**
+- [Yarn v1.22.4+](https://yarnpkg.com/getting-started/install)
+  - You can run `npm install -g yarn` to install it.
 
 ## Usage
 
@@ -56,17 +62,14 @@ to be done once.
 
 Run `bin/tgui` with any of the options listed below.
 
-**For Windows CMD or PowerShell users:**
+**Via provided cmd scripts (Windows)**:
+- `bin/tgui-build` - Build tgui in production mode and run a full suite of code checks.
+- `bin/tgui-dev` - Launch a development server.
+  - `bin/tgui-dev --reload` - Reload byond cache once.
+  - `bin/tgui-dev --debug` - Run server with debug logging enabled.
+  - `bin/tgui-dev --no-hot` - Disable hot module replacement (helps when doing development on IE8).
 
-If you haven't opened the console already, you can do that by holding
-Shift and right clicking on the `tgui` folder, then pressing
-either `Open command window here` or `Open PowerShell window here`.
-
-Run `.\bin\tgui.bat` with any of the options listed below.
-
-> If using PowerShell, you will receive errors if trying to run
-> `.\bin\tgui.ps1`, because default Windows policy does not allow direct
-> execution of PS1 scripts. Run `.\bin\tgui.bat` instead.
+> To open a CMD or PowerShell window in any open folder, right click **while holding Shift** on any free space in the folder, then click on either `Open command window here` or `Open PowerShell window here`.
 
 **Available commands:**
 
@@ -93,35 +96,40 @@ doing development on IE8).
 - `bin/tgui [webpack options]` - Build the project with custom webpack
 options.
 
-**For virgins:**
+**Via Yarn (cross-platform)**:
+Run `yarn install` once to install tgui dependencies.
+- `yarn tgui:build` - Build tgui in production mode.
+  - `yarn tgui:build [options]` - Build tgui with custom webpack options.
+- `yarn tgui:dev` - Launch a development server.
+  - `yarn tgui:dev --reload` - Reload byond cache once.
+  - `yarn tgui:dev --debug` - Run server with debug logging enabled.
+  - `yarn tgui:dev --no-hot` - Disable hot module replacement (helps when doing development on IE8).
+- `yarn tgui:lint` - Show (and auto-fix) problems with the code.
+- `yarn tgui:sonar` - Analyze code with SonarQube.
+- `yarn tgui:tsc` - Check code with TypeScript compiler.
+- `yarn tgui:test` - Run unit and integration tests.
+- `yarn tgui:analyze` - Run a bundle analyzer.
+- `yarn tgui:bench` - Run benchmarks.
+- `yarn tgfont:build` - Build icon fonts.
+- `yarn tgui-polyfill:build` - Build polyfills. You need to run it when updating any of the static (numbered) polyfills.
 
-You can double-click these batch files to achieve the same thing:
+## Important Memo
 
-- `bin\tgui.bat` - Build the project in production mode.
-- `bin\tgui-dev-server.bat` - Launch a development server.
+Remember to always run a full build of tgui before submitting a PR, because it comes with the full suite of CI checks, and runs much faster on your computer than on GitHub servers. It will save you some time and possibly a few broken commits! Address the issues that are reported by the tooling as much as possible, because maintainers will beat you with a ruler and force you to address them anyway (unless it's a false positive or something unfixable).
 
-> Remember to always run a full build before submitting a PR. It creates
-> a compressed javascript bundle which is then referenced from DM code.
-> We prefer to keep it version controlled, so that people could build the
-> game just by using Dream Maker.
 
 ## Troubleshooting
 
 **Development server is crashing**
 
-Make sure path to your working directory does not contain spaces or special
-unicode characters. If so, move codebase to a location which does not contain
-spaces or unicode characters.
+Make sure path to your working directory does not contain spaces, special unicode characters, exclamation marks or any other special symbols. If so, move codebase to a location which does not contain these characters.
 
-This is a known issue with Yarn Berry, and fix is going to happen someday.
+This is a known issue with Yarn (and some other tools, like Webpack), and fix is going to happen eventually.
 
 **Development server doesn't find my BYOND cache!**
 
-This happens if your Documents folder in Windows has a custom location, for
-example in `E:\Libraries\Documents`. Development server tries its best to find
-this non-standard location (searches for a Windows Registry key), but it can
-fail. You have to run the dev server with an additional environmental
-variable, with a full path to BYOND cache.
+This happens if your Documents folder in Windows has a custom location, for example in `E:\Libraries\Documents`. Development server tries its best to find this non-standard location (searches for a Windows Registry key), but it can fail. You have to run the dev server with an additional environmental variable, with a full path to BYOND cache.
+
 
 ```
 BYOND_CACHE="E:/Libraries/Documents/BYOND/cache"
@@ -188,10 +196,6 @@ Add stylesheets here if you really need a fine control over your UI styles.
 - `/packages/tgui/styles/layouts` - Layout-related styles.
 - `/packages/tgui/styles/themes` - Contains all the various themes you can
 use in tgui. Each theme must be registered in `webpack.config.js` file.
-
-## Component Reference
-
-See: [Component Reference](docs/component-reference.md).
 
 ## License
 
