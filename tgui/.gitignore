@@ -14,7 +14,7 @@ package-lock.json
 
 ## Build artifacts
 /public/.tmp/**/*
-#/public/**/* ##!Uncomment once we're using autobuild tools
+/public/**/*
 !/public/*.html
 !/public/tgui-polyfill.min.js
 /coverage

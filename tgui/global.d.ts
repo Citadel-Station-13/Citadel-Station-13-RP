@@ -4,41 +4,47 @@
  * @license MIT
  */
 
-declare global {
-  // Webpack asset modules.
-  // Should match extensions used in webpack config.
-  declare module '*.png' {
-    const content: string;
-    export default content;
+// Webpack asset modules.
+// Should match extensions used in webpack config.
+declare module '*.png' {
+  const content: string;
+  export default content;
+}
+
+declare module '*.jpg' {
+  const content: string;
+  export default content;
+}
+
+declare module '*.svg' {
+  const content: string;
+  export default content;
+}
+
+namespace JSX {
+  interface IntrinsicElements {
+    marquee: any;
+    blink: any;
   }
+}
 
-  declare module '*.jpg' {
-    const content: string;
-    export default content;
-  }
+type TguiMessage = {
+  type: string;
+  payload?: any;
+  [key: string]: any;
+};
 
-  declare module '*.svg' {
-    const content: string;
-    export default content;
-  }
+type ByondType = {
+  /**
+   * ID of the Byond window this script is running on.
+   * Can be used as a parameter to winget/winset.
+   */
+  windowId: string;
 
-  type TguiMessage = {
-    type: string;
-    payload?: any;
-    [key: string]: any;
-  };
-
-  type ByondType = {
-    /**
-    * ID of the Byond window this script is running on.
-    * Can be used as a parameter to winget/winset.
-    */
-    windowId: string;
-
-    /**
-    * True if javascript is running in BYOND.
-    */
-    IS_BYOND: boolean;
+  /**
+   * True if javascript is running in BYOND.
+   */
+  IS_BYOND: boolean;
 
   /**
    * Version of Trident engine of Internet Explorer. Null if N/A.
@@ -173,15 +179,11 @@ declare global {
 };
 
 /**
-  * Object that provides access to Byond Skin API and is available in
-  * any tgui application.
-  */
+ * Object that provides access to Byond Skin API and is available in
+ * any tgui application.
+ */
 const Byond: ByondType;
 
 interface Window {
   Byond: ByondType;
 }
-
-}
-
-export {};

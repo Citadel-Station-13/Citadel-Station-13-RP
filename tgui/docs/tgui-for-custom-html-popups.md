@@ -7,6 +7,7 @@ TGUI in its current form would not exist without a very robust underlying layer 
 TGUI in order to create a window (popup) uses the `/datum/tgui_window` class. Feel free to take a look at its [source code](../../code/modules/tgui/tgui_window.dm), as all of its procs are very well documented. This class takes care of spawning the BYOND's browser element, normalizes the browser environment (because users might have IE8 on their system, or in future, it might be Microsoft Edge) and specifies a very rigid communication protocol between DM and JS.
 
 > **Notice:** Because `/datum/tgui_window` includes a lot of boilerplate in the final html that it displays in the browser, it is somewhat more expensive to render than a traditional, dumb popup using a `browse()` proc call. Therefore, its best to use it with static popups or very custom pieces of client-side code, e.g. stat panel, chat or a background music player.
+
 Create a window that prints hello world.
 
 ```dm
@@ -156,6 +157,7 @@ window.send_message("alert", list(
 To receive it in JS, you have two different syntaxes. First one is the most verbose one, but allows receiving all types of messages, and deciding what to do via `if` conditions.
 
 > NOTE: We're using ECMAScript 5 syntax here, because this is the version that is supported by IE 11 natively without any additional compilation. If you're coding in a compiled environment (TGUI/Webpack), then feel free to use arrow functions and other fancy syntaxes.
+
 ```js
 Byond.subscribe(function (type, payload) {
   if (type === 'alert') {
@@ -194,6 +196,7 @@ To receive it in DM, you must register a delegate proc (callback) that will rece
 /datum/my_object/proc/initialize()
   // ...
   window.subscribe(src, .proc/on_message)
+
 /datum/my_object/proc/on_message(type, payload)
   if (type == "click")
     process_button_click(payload["button"])
@@ -232,6 +235,7 @@ Here's the summary of what it has.
 - `Byond.command()` - Runs a command on the client, as if you typed it into the command bar yourself. Can be any verb, or a special client-side command, such as `.output`.
 
 > As of now, `Byond.winget()` requires a Promise polyfill, which is only available in compiled TGUI, but not in plain popups, and if you try using it, you'll get a bluescreen error. If you'd like to have winget in non-compiled contexts, then ping maintainers on Discord to request this feature.
+
 When working with `winset` and `winget`, it can be very useful to consult [BYOND 5.0 controls and parameters guide](https://secure.byond.com/docs/ref/skinparams.html) to figure out what you can control in the BYOND client. Via these controls and parameters, you can do many interesting things, such as dynamically define BYOND macros, or show/hide and reposition various skin elements.
 
 Another source of information is the official [BYOND Reference](https://secure.byond.com/docs/ref/info.html#/{skin}), which is a much larger, but a more comprehensive doc.

@@ -134,7 +134,7 @@ export const backendMiddleware = store => {
     }
 
     if (type === 'ping') {
-      Byond.sendMessage('pingReply');
+      Byond.sendMessage('ping/reply');
       return;
     }
 
@@ -227,6 +227,7 @@ type BackendState<TData> = {
     title: string,
     status: number,
     interface: string,
+    refreshing: boolean,
     window: {
       key: string,
       size: [number, number],

@@ -22,25 +22,20 @@ Going to make a Pull Request? Make sure you read the [CONTRIBUTING.md](.github/C
 Citadel Station 13 - RP was originally a fork of VOREStation, which separated on 01/25/2019. VOREStation is a fork of the Polaris code branch, itself a fork of the Baystation12 code branch, for the game Space Station 13.
 
 ## DOWNLOADING
+[Downloading](.github/DOWNLOADING.md)
 
-There are a number of ways to download the source code. Some are described here.
 
-Option 1: The more complicated and easier to update method is using git.
-You'll need to download git or some client from [here](http://git-scm.com/).
-When that's installed, right click in any folder and click on "Git Bash".
-When that opens, type in:
+## :exclamation: How to compile :exclamation:
 
-```
-git clone https://github.com/Citadel-Station-13/Citadel-Station-13-RP.git
-```
+On **2021-01-04** we have changed the way to compile the codebase.
 
-(hint: hold down ctrl and press insert to paste into git bash)
-This will take a while to download, but it provides an easier method for updating.
+**The quick way**. Find `bin/server.cmd` in this folder and double click it to automatically build and host the server on port 1337.
 
-Option 2: Download the source code as a zip by clicking the ZIP button in the
-code tab of <https://github.com/Citadel-Station-13/Citadel-Station-13-RP>
-(note: this will use a lot of bandwidth if you wish to update and is a lot of
-hassle if you want to make any changes at all, so it's not recommended.)
+**The long way**. Find `bin/build.cmd` in this folder, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile. If it closes, it means it has finished its job. You can then [setup the server](.github/RUNNING_A_SERVER.md) normally by opening `tgstation.dmb` in DreamDaemon.
+
+**Building CitadelRP in DreamMaker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
+
+**[How to compile in VSCode and other build options](tools/build/README.md)
 
 ## INSTALLATION
 

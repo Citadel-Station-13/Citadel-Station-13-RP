@@ -6,12 +6,17 @@ shopt -s globstar
 
 st=0
 
-if git grep -P "\r\n"; then
-    echo "ERROR: CRLF line endings detected. Please stop using the webeditor, and fix it using a desktop Git client."
-	st = 1
-fi;
+echo "Checking for map issues"
 if grep -El '^\".+\" = \(.+\)' _maps/**/*.dmm;	then
     echo "ERROR: Non-TGM formatted map detected. Please convert it using Map Merger!"
+    st=1
+fi;
+if grep -P '//' _maps/**/*.dmm | grep -v '//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE' | grep -Ev 'name|desc'; then
+	echo "ERROR: Unexpected commented out line detected in this map file. Please remove it."
+	st=1
+fi;
+if grep -P 'Merge conflict marker' _maps/**/*.dmm; then
+    echo "ERROR: Merge conflict markers detected in map, please resolve all merge failures!"
     st=1
 fi;
 if grep -P '^\ttag = \"icon' _maps/**/*.dmm;	then
@@ -26,18 +31,44 @@ if grep -P 'pixel_[^xy]' _maps/**/*.dmm;	then
     echo "ERROR: incorrect pixel offset variables detected in maps, please remove them."
     st=1
 fi;
-# echo "Checking for cable varedits"
-# if grep -P '/obj/structure/cable(/\w+)+\{' _maps/**/*.dmm;	then
-#     echo "ERROR: vareditted cables detected, please remove them."
-#     st=1
-# fi;
-# if grep -P '\td[1-2] =' _maps/**/*.dmm;	then
-#     echo "ERROR: d1/d2 cable variables detected in maps, please remove them."
-#     st=1
-# fi;
-echo "Checking for stacked cables"
-if grep -P '"\w+" = \(\n([^)]+\n)*/obj/structure/cable,\n([^)]+\n)*/obj/structure/cable,\n([^)]+\n)*/area/.+\)' _maps/**/*.dmm;	then
-    echo "found multiple cables on the same tile, please remove them."
+if grep -P '/obj/structure/cable(/\w+)+\{' _maps/**/*.dmm;	then
+    echo "ERROR: vareditted cables detected, please remove them."
+    st=1
+fi;
+if grep -P '\td[1-2] =' _maps/**/*.dmm;	then
+    echo "ERROR: d1/d2 cable variables detected in maps, please remove them."
+    st=1
+fi;
+if grep -Pzo '"\w+" = \(\n[^)]*?/obj/structure/cable,\n[^)]*?/obj/structure/cable,\n[^)]*?/area/.+?\)' _maps/**/*.dmm;	then
+	echo
+    echo "ERROR: found multiple cables on the same tile, please remove them."
+    st=1
+fi;
+if grep -Pzo '"\w+" = \(\n[^)]*?/obj/structure/lattice[/\w]*?,\n[^)]*?/obj/structure/lattice[/\w]*?,\n[^)]*?/area/.+?\)' _maps/**/*.dmm;	then
+	echo
+    echo "ERROR: found multiple lattices on the same tile, please remove them."
+    st=1
+fi;
+if grep -Pzo '"\w+" = \(\n[^)]*?/obj/machinery/atmospherics/pipe/(?<type>[/\w]*),\n[^)]*?/obj/machinery/atmospherics/pipe/\g{type},\n[^)]*?/area/.+\)' _maps/**/*.dmm;	then
+	echo
+    echo "ERROR: found multiple identical pipes on the same tile, please remove them."
+    st=1
+fi;
+if grep -Pzo '/obj/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?[013-9]\d*?[^\d]*?\s*?\},?\n' _maps/**/*.dmm ||
+	grep -Pzo '/obj/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d+?[0-46-9][^\d]*?\s*?\},?\n' _maps/**/*.dmm ||
+	grep -Pzo '/obj/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d{3,1000}[^\d]*?\s*?\},?\n' _maps/**/*.dmm ;	then
+	echo
+    echo "ERROR: found an APC with a manually set pixel_x or pixel_y that is not +-25."
+    st=1
+fi;
+if grep -Pzo '"\w+" = \(\n[^)]*?/obj/structure/lattice[/\w]*?,\n[^)]*?/turf/closed/wall[/\w]*?,\n[^)]*?/area/.+?\)' _maps/**/*.dmm;	then
+	echo
+    echo "ERROR: found lattice stacked with a wall, please remove them."
+    st=1
+fi;
+if grep -Pzo '/obj/machinery/conveyor/inverted[/\w]*?\{\n[^}]*?dir = [1248];[^}]*?\},?\n' _maps/**/*.dmm;	then
+	echo
+    echo "ERROR: found an inverted conveyor belt with a cardinal dir. Please replace it with a normal conveyor belt."
     st=1
 fi;
 if grep -P '^/area/.+[\{]' _maps/**/*.dmm;	then
@@ -48,20 +79,19 @@ if grep -P '\W\/turf\s*[,\){]' _maps/**/*.dmm; then
     echo "ERROR: base /turf path use detected in maps, please replace with proper paths."
     st=1
 fi;
-# if grep -P '^/*var/' code/**/*.dm; then
-#     echo "ERROR: Unmanaged global var use detected in code, please use the helpers."
-#     st=1
-# fi;
-# echo "Checking for space indentation"
-# if grep -P '(^ {2})|(^ [^ * ])|(^    +)' code/**/*.dm; then
-#     echo "space indentation detected"
-#     st=1
-# fi;
-# echo "Checking for mixed indentation"
-# if grep -P '^\t+ [^ *]' code/**/*.dm; then
-#     echo "mixed <tab><space> indentation detected"
-#     st=1
-# fi;
+if grep -P '^/*var/' code/**/*.dm; then
+    echo "ERROR: Unmanaged global var use detected in code, please use the helpers."
+    st=1
+fi;
+echo "Checking for whitespace issues"
+if grep -P '(^ {2})|(^ [^ * ])|(^    +)' code/**/*.dm; then
+    echo "space indentation detected"
+    st=1
+fi;
+if grep -P '^\t+ [^ *]' code/**/*.dm; then
+    echo "mixed <tab><space> indentation detected"
+    st=1
+fi;
 nl='
 '
 nl=$'\n'
@@ -72,18 +102,23 @@ while read f; do
         st=1
     fi;
 done < <(find . -type f -name '*.dm')
-# if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
-#     echo "changed files contains proc argument starting with 'var'"
-#     st=1
-# fi;
-# if grep -i 'centcomm' code/**/*.dm; then
-#     echo "ERROR: Misspelling(s) of CENTCOM detected in code, please remove the extra M(s)."
-#     st=1
-# fi;
-# if grep -i 'centcomm' _maps/**/*.dmm; then
-#     echo "ERROR: Misspelling(s) of CENTCOM detected in maps, please remove the extra M(s)."
-#     st=1
-# fi;
+echo "Checking for common mistakes"
+if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
+    echo "changed files contains proc argument starting with 'var'"
+    st=1
+fi;
+if grep 'balloon_alert\(".+"\)' code/**/*.dm; then
+	echo "ERROR: Balloon alert with improper arguments."
+	st=1
+fi;
+if grep -i 'centcomm' code/**/*.dm; then
+    echo "ERROR: Misspelling(s) of CENTCOM detected in code, please remove the extra M(s)."
+    st=1
+fi;
+if grep -i 'centcomm' _maps/**/*.dmm; then
+    echo "ERROR: Misspelling(s) of CENTCOM detected in maps, please remove the extra M(s)."
+    st=1
+fi;
 if grep -ni 'nanotransen' code/**/*.dm; then
     echo "Misspelling(s) of nanotrasen detected in code, please remove the extra N(s)."
     st=1

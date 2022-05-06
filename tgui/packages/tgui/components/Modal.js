@@ -12,23 +12,10 @@ export const Modal = props => {
   const {
     className,
     children,
-    onEnter, // VOREStation Addition
     ...rest
   } = props;
-  // VOREStation Addition Start
-  let handleKeyDown;
-  if (onEnter) {
-    handleKeyDown = e => {
-      let key = e.which || e.keyCode;
-      if (key === 13) {
-        onEnter(e);
-      }
-    };
-  }
-  // VOREStation Addition End
   return (
-    <Dimmer
-      onKeyDown={handleKeyDown /* VOREStation Edit */}>
+    <Dimmer>
       <div
         className={classes([
           'Modal',

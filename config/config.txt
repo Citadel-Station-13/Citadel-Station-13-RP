@@ -13,7 +13,7 @@ $include entries/urls.txt
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
-# @SERVERNAME tgstation
+# @SERVERNAME CitadelRP
 # Which sets the SERVERNAME, and disallows admins from being able to change it using View Variables.
 # @LOG_TWITTER 0
 # Which explicitly disables LOG_TWITTER, as well as locking it.
@@ -45,4 +45,3 @@ CLIENT_ERROR_BUILD 1421
 
 ## TAGLINE - Hub tagline
 TAGLINE <br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>
-
