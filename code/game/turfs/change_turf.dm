@@ -256,18 +256,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	// ensure baseturfs list
 	if(!islist(baseturfs))
 		baseturfs = list(baseturfs)
-	var/i
-	var/p
-	for(i in 1 to baseturfs.len)
-		p = baseturfs[i]
-		if(GLOB.multiz_hole_baseturfs[p])
-			continue
 	var/list/new_baseturfs = baseturfs.Copy()
-	if(GLOB.multiz_hole_baseturfs[p])
-		// entire list was bottomless, add on top
-		baseturfs = baseturfs_string_list(new_baseturfs + type, src)
-		return
-	new_baseturfs.Insert(i, type)
+	new_baseturfs.Insert(new_baseturfs.len + 1, type)
 	baseturfs = baseturfs_string_list(new_baseturfs, src)
 
 /**
