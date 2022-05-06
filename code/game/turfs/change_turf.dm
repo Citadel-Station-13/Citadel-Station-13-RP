@@ -230,6 +230,13 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/proc/PlaceBelowLogicalBottom(type, flags)
 	#warn finish
 
+/**
+ * put a turf one below the logical top. can changeturf if logical top is a hole.
+ * used for shuttle floors
+ */
+/turf/proc/PlaceBelowLogicalTop(type, flags)
+	#warn finish
+
 // Take the input as baseturfs and put it underneath the current baseturfs
 // If fake_turf_type is provided and new_baseturfs is not the baseturfs list will be created identical to the turf type's
 // If both or just new_baseturfs is provided they will be inserted below the existing baseturfs

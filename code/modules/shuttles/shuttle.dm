@@ -47,6 +47,20 @@
 		if(!istype(A))
 			CRASH("Shuttle \"[name]\" couldn't locate area [T].")
 		areas += A
+		// todo: less shit shuttle system
+		for(var/turf/T in A.contents)
+			// inject ceiling
+			if(ceiling_type)
+				var/turf/above = GetAbove(T)
+				if(above && !(above.loc in shuttle_area))
+					above.PlaceBelowLogicalBottom(ceiling_type)
+			// inject floor
+			// but only if we are.. floor
+			if(GLOB.multiz_hole_baseturfs[T.type])
+				// don't bother
+				continue
+			T.PlaceBelowLogicalTop(/turf/simulated/floor/plating, CHANGETURF_INHERIT_AIR)
+
 	shuttle_area = areas
 
 	if(initial_location)
