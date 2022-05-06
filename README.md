@@ -15,7 +15,7 @@
 * **Wiki:** <https://citadel-station.net/wiki/index.php?title=Main_Page>
 * **Forums:** <http://citadel-station.net/forum>
 * **Ban Appeals:** <http://citadel-station.net/forum/forumdisplay.php?fid=8>
-* **Discord:**  <https://discord.gg/E6SQuhz>
+* **Discord:**  <https://discord.gg/citadelstation>
 
 Going to make a Pull Request? Make sure you read the [CONTRIBUTING.md](.github/CONTRIBUTING.md) first!
 
