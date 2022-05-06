@@ -227,7 +227,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 		S = new T
 		S.race_key = rkey //Used in mob icon caching.
 		GLOB.all_species[S.name] = S
-
+		#warn do we want to refactor this too
 		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
 			GLOB.playable_species += S.name
 		if(S.spawn_flags & SPECIES_IS_WHITELISTED)

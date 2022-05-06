@@ -45,13 +45,17 @@
 	if(GLOB.all_species.len)
 		affected_species = get_infectable_species()
 
+// todo: this is not great, viruses should check on infect attempt if possible with good performance
 /proc/get_infectable_species()
 	var/list/meat = list()
 	var/list/res = list()
-	for (var/specie in GLOB.all_species)
-		var/datum/species/S = GLOB.all_species[specie]
-		if(!S.get_virus_immune())
-			meat += S
+
+	var/list/species_cache = all_static_species_meta()
+	for(var/path in species_cache)
+		var/datum/species/S = species_cache[S]
+		if(S.get_virus_immune())
+			continue
+		meat += S
 	if(meat.len)
 		var/num = rand(1,meat.len)
 		for(var/i=0,i<num,i++)

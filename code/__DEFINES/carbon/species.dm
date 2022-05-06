@@ -6,6 +6,7 @@
  * !They are also used as ID Tags for various otther things, such as character saves!
  * -Zandario
  */
+
 //* ALL THE AFOREMENTIONED NAME DEFINES *//
 #define SPECIES_ADHERENT "Adherent"
 #define SPECIES_AKULA "Akula"

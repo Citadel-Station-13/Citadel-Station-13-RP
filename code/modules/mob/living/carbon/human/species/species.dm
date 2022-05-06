@@ -1,8 +1,52 @@
-/*
-	Datum-based species. Should make for much cleaner and easier to maintain race code.
-*/
+/// all species by typepath
+GLOBAL_LIST_INIT(species_meta, initialize_static_species_cache())
 
+/proc/initialize_static_species_cache()
+	. = GLOB.species_meta = list()
+	for(var/path in typesof(/datum/species))
+		var/datum/species/S = path
+		if(initial(S.abstract_type) == path)
+			continue
+		S = new path
+		.[path] = S
+
+/**
+ * Fetches the static species cached globally
+ *
+ * **DO NOT EDIT RETURNED DATUM**
+ */
+/proc/get_static_species_meta(path)
+	return GLOB.species_meta[path]
+
+/**
+ * Fetches all static species in the global cache
+ *
+ * returns a list, **DO NOT EVER EDIT RETURNED DATUMS**
+ */
+/proc/all_static_species_meta()
+	return GLOB.species_meta.Copy()
+
+/**
+ * Species Datums
+ *
+ * They are globally cached by typepath. This is out of necessity, because unlike things like movespeed modifiers,
+ * species are always assumed to be variable.
+ *
+ * Mob set_species supports either a datum or a typepath. Mobs, upon receiving a typepath, will make their own copy for modification.
+ *
+ * Mob species var should **never** be the global copy.
+ *
+ * Unfortunately, until we decide how we want to refactor species and humans proper,
+ * we're stuck doing the following:
+ * - Species procs will all be static with the template of (H, ...) where H is the human it's ticking on
+ * - **New species are allowed to have instance variables, like proteans using this for storage**, since species are no longer actually static cached copies
+ * - **New species are allowed to use these instance variables.** TODO: unified tgui for species ability control, ability datums/actions
+ * - A global cache of species by typepath will still be maintained for "static" usages of these datums, like for preferences rendering.
+ */
 /datum/species
+//! ## Intrinsics
+	/// abstract type
+	var/abstract_type = /datum/species
 
 //! ## Descriptors and strings.
 	/// Species name.
