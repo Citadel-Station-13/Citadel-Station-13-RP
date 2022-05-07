@@ -170,75 +170,75 @@ export const TgFontTarget = new Juke.Target({
   executes: () => yarn('tgfont:build'),
 });
 
-// export const TguiTarget = new Juke.Target({
-//   dependsOn: [YarnTarget],
-//   inputs: [
-//     'tgui/.yarn/install-target',
-//     'tgui/webpack.config.js',
-//     'tgui/**/package.json',
-//     'tgui/packages/**/*.+(js|cjs|ts|tsx|scss)',
-//   ],
-//   outputs: [
-//     'tgui/public/tgui.bundle.css',
-//     'tgui/public/tgui.bundle.js',
-//     'tgui/public/tgui-panel.bundle.css',
-//     'tgui/public/tgui-panel.bundle.js',
-//   ],
-//   executes: () => yarn('tgui:build'),
-// });
+export const TguiTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  inputs: [
+    'tgui/.yarn/install-target',
+    'tgui/webpack.config.js',
+    'tgui/**/package.json',
+    'tgui/packages/**/*.+(js|cjs|ts|tsx|scss)',
+  ],
+  outputs: [
+    'tgui/public/tgui.bundle.css',
+    'tgui/public/tgui.bundle.js',
+    'tgui/public/tgui-panel.bundle.css',
+    'tgui/public/tgui-panel.bundle.js',
+  ],
+  executes: () => yarn('tgui:build'),
+});
 
-// export const TguiEslintTarget = new Juke.Target({
-//   parameters: [CiParameter],
-//   dependsOn: [YarnTarget],
-//   executes: ({ get }) => yarn('tgui:lint', !get(CiParameter) && '--fix'),
-// });
-// */
-// export const TguiSonarTarget = new Juke.Target({
-//   dependsOn: [YarnTarget],
-//   executes: () => yarn('tgui:sonar'),
-// });
+export const TguiEslintTarget = new Juke.Target({
+  parameters: [CiParameter],
+  dependsOn: [YarnTarget],
+  executes: ({ get }) => yarn('tgui:lint', !get(CiParameter) && '--fix'),
+});
+*/
+export const TguiSonarTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:sonar'),
+});
 
-// export const TguiTscTarget = new Juke.Target({
-//   dependsOn: [YarnTarget],
-//   executes: () => yarn('tgui:tsc'),
-// });
+export const TguiTscTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:tsc'),
+});
 
-// export const TguiTestTarget = new Juke.Target({
-//   parameters: [CiParameter],
-//   dependsOn: [YarnTarget],
-//   executes: ({ get }) => yarn(`tgui:test-${get(CiParameter) ? 'ci' : 'simple'}`),
-// });
+export const TguiTestTarget = new Juke.Target({
+  parameters: [CiParameter],
+  dependsOn: [YarnTarget],
+  executes: ({ get }) => yarn(`tgui:test-${get(CiParameter) ? 'ci' : 'simple'}`),
+});
 
-// export const TguiLintTarget = new Juke.Target({
-//   dependsOn: [YarnTarget, TguiEslintTarget, TguiTscTarget],
-// });
+export const TguiLintTarget = new Juke.Target({
+  dependsOn: [YarnTarget, TguiEslintTarget, TguiTscTarget],
+});
 
-// export const TguiDevTarget = new Juke.Target({
-//   dependsOn: [YarnTarget],
-//   executes: ({ args }) => yarn('tgui:dev', ...args),
-// });
+export const TguiDevTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: ({ args }) => yarn('tgui:dev', ...args),
+});
 
-// export const TguiAnalyzeTarget = new Juke.Target({
-//   dependsOn: [YarnTarget],
-//   executes: () => yarn('tgui:analyze'),
-// });
+export const TguiAnalyzeTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:analyze'),
+});
 
-// export const TguiBenchTarget = new Juke.Target({
-//   dependsOn: [YarnTarget],
-//   executes: () => yarn('tgui:bench'),
-// });
+export const TguiBenchTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:bench'),
+});
 
-// export const TestTarget = new Juke.Target({
-//   dependsOn: [DmTestTarget, TguiTestTarget],
-// });
+export const TestTarget = new Juke.Target({
+  dependsOn: [DmTestTarget, TguiTestTarget],
+});
 
-// export const LintTarget = new Juke.Target({
-//   dependsOn: [TguiLintTarget],
-// });
+export const LintTarget = new Juke.Target({
+  dependsOn: [TguiLintTarget],
+});
 
-// export const BuildTarget = new Juke.Target({
-//   dependsOn: [TguiTarget, DmTarget],
-// });
+export const BuildTarget = new Juke.Target({
+  dependsOn: [TguiTarget, DmTarget],
+});
 
 export const ServerTarget = new Juke.Target({
   dependsOn: [BuildTarget],
