@@ -48,10 +48,6 @@ var/list/turf_edge_cache = list()
 	else
 		make_indoors()
 
-/turf/simulated/floor/outdoors/update_icon()
-	..()
-	update_icon_edge()
-
 /turf/simulated/floor/outdoors/mud
 	name = "mud"
 	icon_state = "mud_dark"

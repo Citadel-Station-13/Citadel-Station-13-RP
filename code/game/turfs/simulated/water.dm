@@ -230,8 +230,6 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	var/image/acid_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = acid_state, layer = WATER_LAYER)
 	add_overlay(acid_sprite)
 
-	update_icon_edge()
-
 /turf/simulated/floor/water/acid/get_edge_icon_state()
 	return "acid_shallow"
 
@@ -349,8 +347,6 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
 	var/image/blood_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = blood_state, layer = WATER_LAYER)
 	add_overlay(blood_sprite)
-
-	update_icon_edge()
 
 /turf/simulated/floor/water/blood/get_edge_icon_state()
 	return "acidb_shallow"
