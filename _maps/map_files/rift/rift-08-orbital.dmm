@@ -8151,13 +8151,13 @@
 	},
 /area/centcom/specops)
 "wd" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_pad,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "we" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_projector,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
