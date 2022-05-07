@@ -176,7 +176,7 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
-        <h1>Traditional Games Space Station 13</h1>
+        <h1>Citadel Station 13 RP</h1>
         <p>
           <b>Thanks to: </b>
           Virgo, Polaris, Baystation 12, , /tg/station, /vg/station,
@@ -219,7 +219,7 @@ export class Changelog extends Component {
           I Said No
         </p>
         <p>
-          Traditional Games Space Station 13 is thankful to the
+          Citadel Station 13 RP is thankful to the
           GoonStation 13 Development Team for its work on the game up to the
           {' r4407 release. The changelog for changes up to r4407 can be seen '}
           <a href="https://wiki.ss13.co/Changelog#April_2010">
@@ -236,7 +236,7 @@ export class Changelog extends Component {
           <a href="http://forums.somethingawful.com/">SomethingAwful Goons</a>
           {' only.'}
         </p>
-        <h3>Traditional Games Space Station 13 License</h3>
+        <h3>Citadel Station 13 RP License</h3>
         <p>
           {'All code after '}
           <a href={'https://github.com/tgstation/tgstation/commit/'
