@@ -11,7 +11,7 @@
 // END_PREFERENCES
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
-#include "_maps\triumph.dm"
+#include "_maps\rift.dm"
 #include "_maps\map_files\generic\reservation_base_level.dmm"
 #include "_maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
 #include "code\___compile_options.dm"
