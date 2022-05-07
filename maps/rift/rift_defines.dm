@@ -37,7 +37,6 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm
 
 	admin_levels = list()
 	sealed_levels = list()
@@ -128,8 +127,6 @@
 
 	meteor_strike_areas = null
 
-	default_skybox = /datum/skybox_settings/lythios
-
 	unit_test_exempt_areas = list(
 		/area/rift/surfacebase/outside/outside1,
 		/area/rift/turbolift,
@@ -200,10 +197,6 @@
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_WEST_CAVERN, 64, 64)         // Create the mining ore distribution map.
 
 	return 1
-
-/datum/skybox_settings/lythios/New()
-	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
-	return icon_state
 
 /*
 // For making the 6-in-1 holomap, we calculate some offsets

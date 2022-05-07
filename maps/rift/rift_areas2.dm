@@ -238,10 +238,8 @@
 // Mining Underdark // ???? Fix this.
 /area/mine/unexplored/underdark
 	name = "\improper Mining Underdark"
-	base_turf = /turf/simulated/mineral/icerock/floor/lythios43c
 /area/mine/explored/underdark
 	name = "\improper Mining Underdark"
-	base_turf = /turf/simulated/mineral/icerock/floor/lythios43c
 
 // Mining outpost areas
 /area/outpost/mining_main/passage
@@ -575,11 +573,9 @@
 /area/shuttle/tether/crash1
 	name = "\improper Crash Site 1"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/lythios43c
 /area/shuttle/tether/crash2
 	name = "\improper Crash Site 2"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/lythios43c
 
 // Exploration Shuttle stuff //
 /area/tether/station/excursion_dock
@@ -597,11 +593,9 @@
 /area/shuttle/excursion
 	name = "\improper Excursion Shuttle"
 	icon_state = "shuttle2"
-	base_turf = /turf/space
 
 /area/shuttle/excursion/rift
 	name = "\improper Excursion Shuttle - Atlas"
-	base_turf = /turf/simulated/floor/reinforced
 
 /area/shuttle/excursion/rift_nearby
 	name = "\improper Excursion Shuttle - Atlas Near"
@@ -614,19 +608,15 @@
 
 /area/shuttle/excursion/space_moving
 	name = "\improper Excursion Shuttle - Space Moving"
-	base_turf = /turf/space/transit/north
 
 /area/shuttle/excursion/bluespace
 	name = "\improper Excursion Shuttle - Bluespace"
-	base_turf = /turf/space/bluespace
 
 /area/shuttle/excursion/sand_moving
 	name = "\improper Excursion Shuttle - Sand Transit"
-	base_turf = /turf/space/sandyscroll
 
 /area/shuttle/excursion/virgo3b_sky
 	name = "\improper Excursion Shuttle - Lythios-43c Sky"
-	base_turf = /turf/simulated/sky
 //////////////////////////////////
 
 /*
@@ -657,11 +647,9 @@
 /area/shuttle/antag_ground/solars
 	name = "\improper Syndicate LC - Solars"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/virgo3b
 /area/shuttle/antag_ground/mining
 	name = "\improper Syndicate LC - Mining"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/virgo3b
 
 
 // Exclude some more areas from the atmos leak event so people don't get trapped when spawning.
