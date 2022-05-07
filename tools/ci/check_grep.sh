@@ -102,50 +102,51 @@ while read f; do
         st=1
     fi;
 done < <(find . -type f -name '*.dm')
-echo "Checking for common mistakes"
-if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
-    echo "changed files contains proc argument starting with 'var'"
-    st=1
-fi;
-if grep 'balloon_alert\(".+"\)' code/**/*.dm; then
-	echo "ERROR: Balloon alert with improper arguments."
-	st=1
-fi;
-if grep -i 'centcomm' code/**/*.dm; then
-    echo "ERROR: Misspelling(s) of CENTCOM detected in code, please remove the extra M(s)."
-    st=1
-fi;
-if grep -i 'centcomm' _maps/**/*.dmm; then
-    echo "ERROR: Misspelling(s) of CENTCOM detected in maps, please remove the extra M(s)."
-    st=1
-fi;
-if grep -ni 'nanotransen' code/**/*.dm; then
-    echo "Misspelling(s) of nanotrasen detected in code, please remove the extra N(s)."
-    st=1
-fi;
-if grep -ni 'nanotransen' _maps/**/*.dmm; then
-    echo "Misspelling(s) of nanotrasen detected in maps, please remove the extra N(s)."
-    st=1
-fi;
-if ls _maps/*.json | grep -P "[A-Z]"; then
-    echo "Uppercase in a map json detected, these must be all lowercase."
-    st=1
-fi;
-if grep -i '/obj/effect/mapping_helpers/custom_icon' _maps/**/*.dmm; then
-    echo "Custom icon helper found. Please include dmis as standard assets instead for built-in maps."
-    st=1
-fi;
-for json in _maps/*.json
-do
-    map_path=$(jq -r '.map_path' $json)
-    while read map_file; do
-        filename="_maps/$map_path/$map_file"
-        if [ ! -f $filename ]
-        then
-            echo "found invalid file reference to $filename in _maps/$json"
-            st=1
-        fi
-    done < <(jq -r '[.map_file] | flatten | .[]' $json)
-done
 
-exit $st
+# echo "Checking for common mistakes"
+# if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
+#     echo "changed files contains proc argument starting with 'var'"
+#     st=1
+# fi;
+# if grep 'balloon_alert\(".+"\)' code/**/*.dm; then
+# 	echo "ERROR: Balloon alert with improper arguments."
+# 	st=1
+# fi;
+# if grep -i 'centcomm' code/**/*.dm; then
+#     echo "ERROR: Misspelling(s) of CENTCOM detected in code, please remove the extra M(s)."
+#     st=1
+# fi;
+# if grep -i 'centcomm' _maps/**/*.dmm; then
+#     echo "ERROR: Misspelling(s) of CENTCOM detected in maps, please remove the extra M(s)."
+#     st=1
+# fi;
+# if grep -ni 'nanotransen' code/**/*.dm; then
+#     echo "Misspelling(s) of nanotrasen detected in code, please remove the extra N(s)."
+#     st=1
+# fi;
+# if grep -ni 'nanotransen' _maps/**/*.dmm; then
+#     echo "Misspelling(s) of nanotrasen detected in maps, please remove the extra N(s)."
+#     st=1
+# fi;
+# if ls _maps/*.json | grep -P "[A-Z]"; then
+#     echo "Uppercase in a map json detected, these must be all lowercase."
+#     st=1
+# fi;
+# if grep -i '/obj/effect/mapping_helpers/custom_icon' _maps/**/*.dmm; then
+#     echo "Custom icon helper found. Please include dmis as standard assets instead for built-in maps."
+#     st=1
+# fi;
+# for json in _maps/*.json
+# do
+#     map_path=$(jq -r '.map_path' $json)
+#     while read map_file; do
+#         filename="_maps/$map_path/$map_file"
+#         if [ ! -f $filename ]
+#         then
+#             echo "found invalid file reference to $filename in _maps/$json"
+#             st=1
+#         fi
+#     done < <(jq -r '[.map_file] | flatten | .[]' $json)
+# done
+
+# exit $st
