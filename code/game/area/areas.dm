@@ -597,15 +597,25 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /*Adding a wizard area teleport list because motherfucking lag -- Urist*/
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
+
+// TODO: nuke this entire system from orbit and rewrite from scratch ~silicons
+// "i am far too lazy" WELL GUESS WHAT IM DEALING WITH YOUR STUPID SHIT NOW
 var/list/teleportlocs = list()
 
 /proc/setupTeleportLocs()
 	for(var/area/AR in GLOB.sortedAreas)
-		if(istype(AR, /area/shuttle) || istype(AR, /area/syndicate_station) || istype(AR, /area/wizard_station)) continue
-		if(teleportlocs.Find(AR.name)) continue
-		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z in GLOB.using_map.station_levels)
-			teleportlocs += AR.name
+		if(istype(AR, /area/shuttle) || istype(AR, /area/syndicate_station) || istype(AR, /area/wizard_station))
+			continue
+		if(teleportlocs.Find(AR.name))
+			continue
+		var/station = FALSE
+		for(var/turf/T in AR.contents)
+			if(T.z in GLOB.using_map.station_levels)
+				station = TRUE
+				break
+			else
+				break
+		if(station)
 			teleportlocs[AR.name] = AR
 
 	teleportlocs = sortTim(teleportlocs, /proc/cmp_text_asc, TRUE)

@@ -62,7 +62,7 @@
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "ak" = (
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
@@ -75,14 +75,14 @@
 	},
 /area/awaymission/labyrinth/temple/north_west)
 "an" = (
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_west)
 "ao" = (
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
@@ -108,14 +108,14 @@
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "av" = (
-/obj/effect/landmark/corpse/scientist,
+/atom/movable/landmark/corpse/scientist,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_west)
 "ax" = (
-/obj/effect/landmark/corpse/scientist,
+/atom/movable/landmark/corpse/scientist,
 /obj/effect/decal/cleanable/blood,
 /turf/unsimulated/floor{
 	dir = 8;
@@ -123,7 +123,7 @@
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "ay" = (
-/obj/effect/landmark/corpse/scientist,
+/atom/movable/landmark/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gibmid3"
 	},
@@ -133,7 +133,7 @@
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "az" = (
-/obj/effect/landmark/corpse/scientist,
+/atom/movable/landmark/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor5"
 	},
@@ -161,7 +161,7 @@
 	},
 /area/awaymission/labyrinth/temple/center)
 "aD" = (
-/obj/effect/landmark/corpse/scientist,
+/atom/movable/landmark/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl4"
 	},
@@ -194,7 +194,7 @@
 	},
 /area/awaymission/labyrinth/temple/west)
 "aJ" = (
-/obj/effect/landmark/corpse/scientist,
+/atom/movable/landmark/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl3"
 	},
@@ -217,28 +217,28 @@
 	},
 /area/awaymission/labyrinth/temple/west)
 "aO" = (
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/west)
 "aQ" = (
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/east)
 "aT" = (
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/center)
 "aU" = (
-/obj/effect/landmark/corpse/scientist,
+/atom/movable/landmark/corpse/scientist,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
@@ -263,7 +263,7 @@
 	},
 /area/awaymission/labyrinth/temple/south_east)
 "aZ" = (
-/obj/effect/landmark/corpse/scientist,
+/atom/movable/landmark/corpse/scientist,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
@@ -288,14 +288,14 @@
 	},
 /area/awaymission/labyrinth/temple/south)
 "bd" = (
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/south_east)
 "be" = (
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
@@ -320,7 +320,7 @@
 	},
 /area/awaymission/labyrinth/temple/south_west)
 "bk" = (
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
@@ -1504,7 +1504,7 @@
 	},
 /area/awaymission/labyrinth/cave)
 "dU" = (
-/obj/effect/landmark/corpse/scientist,
+/atom/movable/landmark/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor5"
 	},
@@ -1559,7 +1559,7 @@
 	},
 /area/awaymission/labyrinth/boss)
 "ea" = (
-/obj/effect/landmark/corpse/scientist,
+/atom/movable/landmark/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl1"
 	},

@@ -256,12 +256,12 @@
 
 			observer.started_as_observer = 1
 			close_spawn_windows()
-			var/obj/O = locate("landmark*Observer-Start")
-			if(istype(O))
-				to_chat(src,"<span class='notice'>Now teleporting.</span>")
-				observer.forceMove(O.loc)
+			var/atom/movable/landmark/L = pick_landmark_by_key(/atom/movable/landmark/observer_spawn)
+			if(L)
+				to_chat(src, SPAN_NOTICE("Now teleporting."))
+				observer.forceMove(L.loc)
 			else
-				to_chat(src,"<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>")
+				to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
 
 			announce_ghost_joinleave(src)
 
@@ -504,11 +504,10 @@
 
 	//Find our spawning point.
 	var/list/join_props = job_master.LateSpawn(client, rank)
-	var/turf/T = join_props["turf"]
-	var/join_message = join_props["msg"]
+	var/atom/movable/landmark/spawnpoint/SP = join_props["spawnpoint"]
 	var/announce_channel = join_props["channel"] || "Common"
 
-	if(!T || !join_message)
+	if(!SP)
 		return 0
 
 	spawning = 1
@@ -516,10 +515,11 @@
 
 	job_master.AssignRole(src, rank, 1)
 
-	var/mob/living/character = create_character(T)		// Creates the human and transfers vars and mind
+	var/mob/living/character = create_character(SP.GetSpawnLoc())		// Creates the human and transfers vars and mind
+	SP.OnSpawn(character)
 	//Announces Cyborgs early, because that is the only way it works
 	if(character.mind.assigned_role == "Cyborg")
-		AnnounceCyborg(character, rank, join_message, announce_channel, character.z)
+		AnnounceCyborg(character, rank, SP.RenderAnnounceMessage(character, name = character.name, job_name = rank), announce_channel, character.z)
 	character = job_master.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
 
@@ -559,8 +559,7 @@
 
 		//Grab some data from the character prefs for use in random news procs.
 
-		AnnounceArrival(character, rank, join_message)
-
+		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = rank))
 
 	qdel(src)
 
@@ -569,7 +568,7 @@
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
-		GLOB.global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
+		GLOB.global_announcer.autosay("A new [rank] has arrived on the station.", "Arrivals Announcement Computer")
 
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
@@ -811,3 +810,7 @@
 		spawn()
 			alert(src,"There were problems with spawning your character. Check your message log for details.","Error","OK")
 	return pass
+
+/mob/new_player/make_perspective()
+	. = ..()
+	self_perspective.AddScreen(GLOB.lobby_image)

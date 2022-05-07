@@ -83,7 +83,7 @@
 	reload_huds()
 
 	// reset perspective to using
-	reset_perspective()
+	reset_perspective(no_optimizations = TRUE)
 	// load rendering onto client's screen
 	reload_rendering()
 

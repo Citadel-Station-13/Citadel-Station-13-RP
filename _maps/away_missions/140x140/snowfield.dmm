@@ -24,7 +24,7 @@
 	},
 /area/awaymission/snowfield)
 "af" = (
-/obj/effect/landmark/gateway_scatter,
+/atom/movable/landmark/gateway_scatter,
 /turf/simulated/floor/outdoors/snow{
 	temperature = 243.15
 	},

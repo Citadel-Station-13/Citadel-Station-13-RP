@@ -43,11 +43,11 @@
 /*
  * Landmarks - Instead of spawning a new object type, I'll spawn the bible using a landmark!
  */
-/obj/effect/landmark/sc_bible_spawner
+/atom/movable/landmark/sc_bible_spawner
 	name = "Safecode hint spawner"
 	delete_me = TRUE
 
-/obj/effect/landmark/sc_bible_spawner/Initialize()
+/atom/movable/landmark/sc_bible_spawner/Initialize()
 	. = ..()
 	var/obj/item/storage/bible/B = new /obj/item/storage/bible/booze(src.loc)
 	B.name = "The Holy book of the Geometer"

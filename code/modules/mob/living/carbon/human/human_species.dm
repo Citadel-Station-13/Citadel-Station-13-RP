@@ -42,9 +42,6 @@
 /mob/living/carbon/human/event1/Initialize(var/new_loc)
 	return ..(new_loc, SPECIES_EVENT1)
 
-/mob/living/carbon/human/dummy
-	no_vore = TRUE //Dummies don't need bellies.
-
 /mob/living/carbon/human/sergal/Initialize(mapload, new_species)
 	h_style = "Sergal Plain"
 	return ..(mapload, SPECIES_SERGAL)
@@ -94,7 +91,11 @@
 /mob/living/carbon/human/dummy
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
-	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
+	no_vore = TRUE //Dummies don't need bellies.
+
+// species_flags --> NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
+// though this is probably unnecessary because **why** are dummies ever in the game world? fuck off.
+
 
 // /mob/living/carbon/human/dummy/mannequin/Initialize()
 // 	. = ..()
@@ -104,6 +105,13 @@
 // 	delete_inventory()
 
 //Fashion Mannequins
+
+// NO STOP USING THESE FOR ANYTHING BUT PREFS SETUP
+// MAKE SOMETHING THAT ISN'T /HUMAN IF YOU JUST WANT A MANNEQUIN THIS IS NOT HARD TO FIGURE OUT
+// DONT USE THE SUPER COMPLICATED PLAYER MOB WITH ORGANS FOR A *MANNEQUIN*, WHY??
+INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
+/mob/living/carbon/human/dummy/mannequin
+
 /mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()
 	name = "Wooden Mannequin"
@@ -115,6 +123,8 @@
 	gender = pick(MALE,FEMALE,NEUTER)
 	delete_inventory()
 
+	// whoever wrote this, wow, you are bad at codde
+	// we'll deal with this later, jfc ~silicons
 	for(var/mob/living/carbon/human/dummy/mannequin/H in src.loc)
 		for(var/i = 1, i <= 2, i++)
 			if(!w_uniform)

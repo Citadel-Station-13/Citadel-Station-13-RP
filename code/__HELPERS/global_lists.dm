@@ -68,7 +68,7 @@ var/datum/category_collection/underwear/global_underwear = new()
 //!Backpacks
 var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
-var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
+var/global/list/exclude_jobs = list(/datum/job/station/ai,/datum/job/station/cyborg)
 
 //* Visual nets
 var/list/datum/visualnet/visual_nets = list()

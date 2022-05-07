@@ -1,6 +1,6 @@
 //Landmarks and other helpers which speed up the mapping process and reduce the number of unique instances/subtypes of items/turf/ect
 /obj/effect/map_helper
-	icon = 'icons/map/mapping_helpers.dmi'
+	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
 	icon_state = ""
 	var/late = FALSE
 

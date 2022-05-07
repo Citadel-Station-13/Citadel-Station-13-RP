@@ -2042,6 +2042,21 @@
 		icon_state = "tat_tiger"
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN)
 
+	tat_inmon1
+		name = "Tattoo (Inmon, Variant 1)"
+		icon_state = "tat_inmon1"
+		body_parts = list(BP_GROIN)
+
+	tat_inmon2
+		name = "Tattoo (Inmon, Variant 2)"
+		icon_state = "tat_inmon2"
+		body_parts = list(BP_GROIN)
+
+	tat_inmon3
+		name = "Tattoo (Inmon, Variant 3)"
+		icon_state = "tat_inmon3"
+		body_parts = list(BP_GROIN)
+
 	tanlines
 		name = "Tan Lines (One Piece, F)"
 		icon_state = "tan_op"

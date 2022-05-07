@@ -18,12 +18,16 @@ GLOBAL_LIST(topic_status_cache)
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
 /world/New()
-	// enable_debugger()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_init")()
+		enable_debugging()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
-	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+	// citadel edit: world runtime log removed due to world.log shunt doing that for us
+	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
 	world.Profile(PROFILE_START)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
@@ -109,20 +113,32 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
  * therefore
  */
 /world/proc/ensure_logging_active()
+// if we're unit testing do not ever redirect world.log or the test won't show output.
+#ifndef UNIT_TESTS
+	// we already know, we don't care
+	if(params[OVERRIDE_LOG_DIRECTORY_PARAMETER])
+		world.log = file("data/logs/[params[OVERRIDE_LOG_DIRECTORY_PARAMETER]]/dd.log")
+		return
 	if(global.world_log_redirected)
 		return
 	global.world_log_redirected = TRUE
 	if(fexists("data/logs/world_init_temporary.log"))
-		fdel("data.logs/world_init_temporary.log")
+		fdel("data/logs/world_init_temporary.log")
 	world.log = file("data/logs/world_init_temporary.log")
+#endif
 
 /**
  * world/New is running, shunt all of the output back.
  */
 /world/proc/shunt_redirected_log()
-	if(!fexists("data/logs/world_init_temporary.log"))
-		return
+// if we're unit testing do not ever redirect world.log or the test won't show output.
+#ifndef UNIT_TESTS
+	if(params[OVERRIDE_LOG_DIRECTORY_PARAMETER])
+		return		// already done above
 	world.log = file("[GLOB.log_directory]/dd.log")
+	if(!fexists("data/logs/world_init_temporary.log"))
+		log_world("No preinit logs detected, shunt skipped.")
+		return
 	log_world("Shunting preinit logs as follows:")
 	for(var/line in world.file2list("data/logs/world_init_temporary.log"))
 		line = trim(line)
@@ -130,6 +146,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 			continue
 		log_world(line)
 	fdel("data/logs/world_init/temporary.log")
+#endif
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
@@ -300,6 +317,12 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	..()
 
+/world/Del()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_shutdown")()
+	..()
+
 /hook/startup/proc/loadMode()
 	world.load_mode()
 	return 1
@@ -367,61 +390,41 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 				D.associate(GLOB.directory[ckey])
 
 /world/proc/update_status()
-	var/s = ""
+	. = ""
+	if(!config)
+		status = "<b>SERVER LOADING OR BROKEN.</b> (18+)"
+		return
 
-	if (config_legacy?.server_name)
-		s += "<b>[config_legacy.server_name]</b> &#8212; "
+	// ---Hub title---
+	var/servername = config_legacy?.server_name
+	var/stationname = station_name()
+	var/defaultstation = GLOB.using_map ? GLOB.using_map.station_name : stationname
+	if(servername || stationname != defaultstation)
+		. += (servername ? "<b>[servername]" : "<b>")
+		. += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
 
-	s += "<b>[station_name()]</b>";
-	s += " ("
-	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
-//	s += "[game_version]"
-	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
-	s += "</a>"
-	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
-	s += CONFIG_GET(string/tagline)
+	var/communityname = CONFIG_GET(string/community_shortname)
+	var/communitylink = CONFIG_GET(string/community_link)
+	if(communityname)
+		. += (communitylink ? "(<a href=\"[communitylink]\">[communityname]</a>) " : "([communityname]) ")
 
-	s += ")"
+	. += "(18+)<br>" //This is obligatory for obvious reasons.
 
-	var/list/features = list()
+	// ---Hub body---
+	var/tagline = (CONFIG_GET(flag/usetaglinestrings) ? pick(GLOB.server_taglines) : CONFIG_GET(string/tagline))
+	if(tagline)
+		. += "[tagline]<br>"
 
-	if(SSticker)
-		if(master_mode)
-			features += master_mode
-	else
-		features += "<b>STARTING</b>"
+	// ---Hub footer---
+	. += "\["
+	if(GLOB.using_map)
+		. += "[GLOB.using_map.station_short], "
 
-	/*if (!config_legacy.enter_allowed)	CITADEL CHANGE - removes useless info from hub entry
-		features += "closed"
+	. += "[get_security_level()] alert, "
+	
+	. += "[GLOB.clients.len] players"
 
-	features += config_legacy.abandon_allowed ? "respawn" : "no respawn"
-
-	if (config && config_legacy.allow_vote_mode)
-		features += "vote"
-
-	if (config && config_legacy.allow_ai)
-		features += "AI allowed"*/
-
-	var/n = 0
-	for (var/mob/M in player_list)
-		if (M.client)
-			n++
-
-	if (n > 1)
-		features += "~[n] players"
-	else if (n > 0)
-		features += "~[n] player"
-
-
-	if (config && config_legacy.hostedby)
-		features += "hosted by <b>[config_legacy.hostedby]</b>"
-
-	if (features)
-		s += "\[[jointext(features, ", ")]"	//CITADEL CHANGE - replaces colon with left bracket to make the hub entry a little fancier
-
-	/* does this help? I do not know */
-	if (src.status != s)
-		src.status = s
+	status = .
 
 #define FAILED_DB_CONNECTION_CUTOFF 5
 var/failed_db_connections = 0

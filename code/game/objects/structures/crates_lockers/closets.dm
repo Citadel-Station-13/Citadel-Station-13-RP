@@ -375,6 +375,7 @@
 		to_chat(usr, "<span class='notice'>It won't budge!</span>")
 
 /obj/structure/closet/attack_ghost(mob/ghost)
+	. = ..()
 	if(ghost.client && ghost.client.inquisitive_ghost)
 		ghost.examinate(src)
 		if (!src.opened)

@@ -113,7 +113,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define ANNOUNCER_NAME "Facility PA"
 
-#define DEFAULT_JOB_TYPE /datum/job/assistant
+#define DEFAULT_JOB_TYPE /datum/job/station/assistant
 
 //Assistant/Visitor/Whatever
 #define USELESS_JOB	"Visitor"
@@ -279,6 +279,19 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define DEPARTMENT_TALON			"talon" // Leaving this definition in place, can perhaps use it in the future but removing it will require digging into other stuff im not comfortable with -BLoop
 #define DEPARTMENT_TRADE			"trade"
 #define DEPARTMENT_UNKNOWN			"unknown"
+
+// TODO: nuke this from fucking orbit during job refactor
+var/list/economy_station_departments = list(
+	DEPARTMENT_CARGO,
+	DEPARTMENT_CIVILIAN,
+	DEPARTMENT_COMMAND,
+	DEPARTMENT_ENGINEERING,
+	DEPARTMENT_MEDICAL,
+	DEPARTMENT_PLANET,
+	DEPARTMENT_RESEARCH,
+	DEPARTMENT_SECURITY
+) //VOREStation Edit
+
 
 // vorstation off-duty time
 #define PTO_CARGO			"Cargo"

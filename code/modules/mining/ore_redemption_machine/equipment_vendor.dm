@@ -130,6 +130,7 @@
 	interact(user)
 
 /obj/machinery/mineral/equipment_vendor/attack_ghost(mob/user)
+	. = ..()
 	interact(user)
 
 /obj/machinery/mineral/equipment_vendor/interact(mob/user)

@@ -1,6 +1,6 @@
 //Special map objects
 /* // Moved to map/generic/map_data.dm
-/obj/effect/landmark/map_data/virgo3b
+/atom/movable/landmark/map_data/virgo3b
     height = 6
 */
 /*
@@ -123,114 +123,7 @@
 	planet = planet_virgo3b
 
 
-/* //Moved to the origional objects dm file to make it play nice when other station maps are loaded
-// Tram air scrubbers for keeping arrivals clean - they work even with no area power
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram
-	name = "\improper Tram Air Scrubber"
-	icon_state = "scrubber:1"
-	on = TRUE
-
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram/powered()
-	return TRUE // Always be powered
-*/
-
-/*
-// Tram departure cryo doors that turn into ordinary airlock doors at round end
-/obj/machinery/cryopod/robot/door/tram
-	name = "\improper Tram Station"
-	icon = 'icons/obj/doors/Doorextglass.dmi'
-	icon_state = "door_closed"
-	can_atmos_pass = ATMOS_PASS_NO
-	base_icon_state = "door_closed"
-	occupied_icon_state = "door_locked"
-	desc = "The tram station you might've came in from.  You could leave the base easily using this."
-	on_store_message = "has departed on the tram."
-	on_store_name = "Travel Oversight"
-	on_enter_occupant_message = "The tram arrives at the platform; you step inside and take a seat."
-	on_store_visible_message_1 = "'s speakers chime, anouncing a tram has arrived to take"
-	on_store_visible_message_2 = "to the colony"
-	time_till_despawn = 10 SECONDS
-	spawnpoint_type = /datum/spawnpoint/tram
-
-/obj/machinery/cryopod/robot/door/tram/process()
-	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
-		// Transform into a door!  But first despawn anyone inside
-		time_till_despawn = 0
-		..()
-		var/turf/T = get_turf(src)
-		var/obj/machinery/door/airlock/glass_external/door = new(T)
-		door.req_access = null
-		door.req_one_access = null
-		qdel(src)
-	// Otherwise just operate normally
-	return ..()
-
-/obj/machinery/cryopod/robot/door/tram/go_in(mob/living/M, mob/living/user)
-	if(M != user)
-		return ..()
-	var/choice = alert(user, "Do you want to depart via the shuttle? Your character will leave the round.","Departure","No","Yes")
-	if(user && Adjacent(user) && choice == "Yes")
-		var/mob/observer/dead/newghost = user.ghostize()
-		newghost.timeofdeath = world.time
-		despawn_occupant(user)
-
-// Tram arrival point landmarks and datum
-var/global/list/latejoin_tram   = list()
-
-/obj/effect/landmark/tram
-	name = "JoinLateTram"
-	delete_me = 1
-
-/obj/effect/landmark/tram/New()
-	latejoin_tram += loc // Register this turf as tram latejoin.
-	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
-	..()
-
-/datum/spawnpoint/tram
-	display_name = "Tram Station"
-	msg = "has arrived on the tram"
-
-/datum/spawnpoint/tram/New()
-	..()
-	turfs = latejoin_tram
-*/
-
 // Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
 /obj/machinery/power/supermatter/touch_map_edge()
 	qdel(src)
 
-
-/*	//Moved to vending.dm
-//Airlock antitox vendor
-/obj/machinery/vending/wallmed_airlock
-	name = "Airlock NanoMed"
-	desc = "Wall-mounted Medical Equipment dispenser. This limited-use version dispenses antitoxins with mild painkillers for surface EVAs."
-	icon_state = "wallmed"
-	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/reagent_containers/pill/airlock = 20)
-	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
-	req_log_access = access_cmo
-	has_logs = 1
-*/
-
-/*	//Moved to origional obj's dm file
-/obj/machinery/vending/wallmed1/public
-	products = list(/obj/item/stack/medical/bruise_pack = 8,/obj/item/stack/medical/ointment = 8,/obj/item/reagent_containers/hypospray/autoinjector = 16,/obj/item/healthanalyzer = 4)
-*/
-
-/* //Moved to pill_vr.dm with all the other pills
-/obj/item/reagent_containers/pill/airlock
-	name = "\'Airlock\' Pill"
-	desc = "Neutralizes toxins and provides a mild analgesic effect."
-	icon_state = "pill2"
-
-/obj/item/reagent_containers/pill/airlock/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("anti_toxin", 15)
-	reagents.add_reagent("paracetamol", 5)
-
-
-// Used at centcomm for the elevator
-/obj/machinery/cryopod/robot/door/dorms
-	spawnpoint_type = /datum/spawnpoint/tram
-*/

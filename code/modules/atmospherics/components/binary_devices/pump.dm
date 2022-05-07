@@ -228,6 +228,7 @@ Thus, the two variables affect pump operation are set in New():
 	return
 
 /obj/machinery/atmospherics/binary/pump/attack_ghost(mob/user)
+	. = ..()
 	ui_interact(user)
 
 /obj/machinery/atmospherics/binary/pump/attack_hand(mob/user)
