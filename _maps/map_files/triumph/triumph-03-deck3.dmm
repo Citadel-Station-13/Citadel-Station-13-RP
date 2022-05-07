@@ -5396,6 +5396,10 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics)
+"euX" = (
+/obj/effect/shuttle_landmark/triumph/deck3/starboard,
+/turf/space,
+/area/space)
 "evb" = (
 /obj/machinery/atmospherics/binary/pump/high_power/on{
 	dir = 1
@@ -12022,6 +12026,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/research_restroom)
+"jUy" = (
+/obj/effect/shuttle_landmark/triumph/deck3/port,
+/turf/space,
+/area/space)
 "jUz" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -17899,6 +17907,7 @@
 /area/medical/exam_room/exam_2)
 "oFm" = (
 /obj/structure/bed/chair/wheelchair,
+/obj/effect/shuttle_landmark/triumph/deck3/emt,
 /obj/effect/overmap/visitable/ship/landable/emt,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
@@ -37675,7 +37684,7 @@ gVh
 gVh
 gVh
 gVh
-gVh
+euX
 gVh
 gVh
 gVh
@@ -46515,7 +46524,7 @@ gVh
 gVh
 gVh
 gVh
-gVh
+jUy
 gVh
 gVh
 gVh
