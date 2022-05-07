@@ -102,6 +102,7 @@ turf/simulated/mineral/floor/light_corner
 	reconsider_lights()
 	blocks_air = 1
 	can_build_into_floor = FALSE
+	SSplanets.removeTurf(src)
 	update_general()
 
 /turf/simulated/mineral/proc/update_general()

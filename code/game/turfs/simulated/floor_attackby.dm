@@ -42,7 +42,7 @@
 				return
 
 		// Create a ceiling to shield from the weather
-		if(src.outdoors)
+		if(outdoors)
 			for(var/dir in GLOB.cardinal)
 				var/turf/A = get_step(src, dir)
 				if(A && !A.outdoors)
