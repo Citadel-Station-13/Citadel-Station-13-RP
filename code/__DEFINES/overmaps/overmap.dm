@@ -31,7 +31,7 @@
 #define OVERMAP_SIDE_VISUAL_GLITZ			7
 /// for entity spatial hashing, the max bound size of any entity assuming this is the side of a square
 #define OVERMAP_ENTITY_MAX_BOUND_SIZE		96
-/// for entity spatial hashing, the amount of space in each hash - this is the side of a square too
+/// for entity spatial hashing, the amount of byond tiles in each hash - this is the side of a square too
 #define OVERMAP_SPATIAL_HASH_SIZE			8
 /// distance added to all spatial lookups to accomdate for large, off-center objects
 #define OVERMAP_SPATIAL_ADD_LOOKUP_RADIUS	3
@@ -47,6 +47,16 @@
 #define OVERMAP_DISTANCE_FROM_PIXELS(pixels)			(pixels * OVERMAP_DISTANCE_PIXEL)
 /// tiles to overmap coordinate distance
 #define OVERMAP_DISTANCE_FROM_TILES(tiles)				(tiles * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
+/// overmap coordinates per spatial hash grid
+#define OVERMAP_SPATIAL_HASH_COORDSIZE		(OVERMAP_SPATIAL_HASH_SIZE * OVERMAP_DISTANCE_PIXEL * OVERMAP_WORLD_ICON_SIZE)
+/// spatial hash x y indexes to real index - hwidth and hheight are the width and height of the spatial grid
+#define OVERMAP_SPATIAL_HASH_INDEX(x, y, hwidth, hheight)		(x + (y - 1) * hwidth)
+/// spatial hash x y coordinates to real index - hwidth and hheight are the width and height of the spatial grid
+#define OVERMAP_SPATIAL_HASH_COORD_INDEX(x, y, hwidth, hheight)	(CEILING(x / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) + (CEILING(y / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) - 1) * hwidth)
+/// spatial hash list length for tile width/height
+#define OVERMAP_SPATIAL_HASH_FOR_TILE_SIZE(x, y)		(CEILING(x / OVERMAP_SPATIAL_HASH_SIZE, 1) * CEILING(y / OVERMAP_SPATIAL_HASH_SIZE, 1))
+
+
 
 ///////// LEGACY BELOW
 

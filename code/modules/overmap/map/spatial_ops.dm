@@ -111,6 +111,8 @@
 /**
  * gets wraparound-considered angle in degrees from A to B
  * assumes A and B are on the same overmap
+ *
+ * @return angle from A to B in angle clockwise from north
  */
 /datum/overmap/proc/get_entity_angle(atom/movable/overmap_object/A, atom/movable/overmap_object/B)
 	// aggressively optimized
@@ -134,7 +136,7 @@
 	else
 		bx = get_x_of_object(B)
 		by = get_y_of_object(B)
-	#warn finish this algorithm
+	#warn finish this algorithm - clockwise from north
 	return arctan(
 		abs(bx - ax) > cached_coordinate_center_x?
 			(bx > ax?
@@ -166,7 +168,7 @@
  * adds an entity to the spatial hash
  */
 /datum/overmap/proc/_spatial_add_entity(atom/movable/overmap_object/entity/E)
-	var/list/bucket = spatial_hash[OVERMAP_SPATIAL_HASH_COORD_INDEX(E.position_x, E.position_y)]
+	var/list/bucket = spatial_hash[OVERMAP_SPATIAL_HASH_COORD_INDEX(E.position_x, E.position_y, spatial_hash_width, spatial_hash_height)]
 	if(E._overmap_spatial_hash_index)
 		spatial_hash[E._overmap_spatial_hash_index] -= E
 	bucket += E
@@ -193,13 +195,14 @@
 	spatial_hash = list()
 	// make list of length
 	spatial_hash.len = OVERMAP_SPATIAL_HASH_FOR_TILE_SIZE(width, height)
-	spatial_hash_width = CEILING(width / OVERMAP_SPATIAL_HASH_TILES, 1)
-	spatial_hash_height = CEILING(height / OVERMAP_SPATIAL_HASH_TILES, 1)
+	spatial_hash_width = CEILING(width / OVERMAP_SPATIAL_HASH_SIZE, 1)
+	spatial_hash_height = CEILING(height / OVERMAP_SPATIAL_HASH_SIZE, 1)
+	ASSERT(spatial_hash.len == (spatial_hash_height * spatial_hash_width))
 	// make buckets
 	for(var/i in 1 to spatial_hash.len)
 		spatial_hash[i] = list()
 	// inject all entities
-	for(var/atom/movable/overmap/entity/E as anything in entities)
+	for(var/atom/movable/overmap_object/entity/E as anything in entities)
 		E._overmap_spatial_hash_index = null	// clear old
 		if(E.overmap != src)
 			stack_trace("entity with wrong overmap found")

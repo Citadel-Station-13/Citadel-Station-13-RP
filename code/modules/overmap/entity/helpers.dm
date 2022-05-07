@@ -17,9 +17,7 @@
 		return list()
 	if(dist < OVERMAP_ENTITY_QUERY_BUILTIN_RANGE)
 		return overmap.bounds_entity_query(x, y, dist)
-	#warn impl
-	#warn code edge_dist() on /entity, code defines for fastpathing to range() if not near edge and within 8 tile radius or so
-	#warn we will never beat byond builtins. have bounds() run where needed instead
+	return overmap.entity_query(x, y, dist)
 
 /**
  * get distance to another object

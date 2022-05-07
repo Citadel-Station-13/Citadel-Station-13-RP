@@ -82,5 +82,5 @@
 /**
  * pretty name for non-internal logging
  */
-/atom/movable/overmap_object/proc/pretty_log_name()
+/atom/movable/overmap_object/entity/proc/pretty_log_name()
 	return "[name] ([id])"

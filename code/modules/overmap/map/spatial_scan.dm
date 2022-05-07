@@ -107,8 +107,8 @@
  */
 /datum/overmap/proc/bounds_entity_query(x, y, dist)
 	/// direction bitfield of wrap dirs
-	var/computed_wrap = (x > dist? NONE : WEST) | (y > dist? NONE : SOUTH) |
-						((cached_coordinate_width - x) >= 1? NONE : EAST)  |
+	var/computed_wrap = (x > dist? NONE : WEST) | (y > dist? NONE : SOUTH) | \
+						((cached_coordinate_width - x) >= 1? NONE : EAST)  | \
 						((cached_coordinate_height - y) >= 1? NONE : NORTH)
 	return raw_bounds_entity_query(
 		x / OVERMAP_DISTANCE_PIXEL,
