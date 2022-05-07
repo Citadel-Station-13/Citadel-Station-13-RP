@@ -369,7 +369,7 @@
 /obj/item/clothing/mask/surgical,
 /obj/item/stack/nanopaste,
 /obj/item/stack/nanopaste,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"

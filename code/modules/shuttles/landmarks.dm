@@ -146,8 +146,7 @@
 	..()
 	for(var/turf/T in range(radius, src))
 		if(T.density)
-			T.ChangeTurf(get_base_turf_by_area(T))
-
+			T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 // Subtype that also queues a shuttle datum (for shuttles starting on maps loaded at runtime)
 /obj/effect/shuttle_landmark/shuttle_initializer

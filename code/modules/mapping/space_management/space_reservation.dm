@@ -14,8 +14,8 @@
 
 /*
 /datum/turf_reservation/transit
-	turf_type = /turf/open/space/transit
-	borderturf = /turf/open/space/transit/border
+	turf_type = /turf/space/transit
+	borderturf = /turf/space/transit/border
 */
 
 /datum/turf_reservation/proc/Release()
@@ -27,7 +27,7 @@
 
 /*
 /datum/turf_reservation/transit/Release()
-	for(var/turf/open/space/transit/T in reserved_turfs)
+	for(var/turf/space/transit/T in reserved_turfs)
 		for(var/atom/movable/AM in T)
 			T.throw_atom(AM)
 	. = ..()

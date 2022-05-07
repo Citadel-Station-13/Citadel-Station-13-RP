@@ -402,6 +402,9 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 #define TETHER_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TETHER_MAP_SIZE)) / 2) // 30
 
 // We have a bunch of stuff common to the station z levels
+/datum/map_z_level/tether
+	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+
 /datum/map_z_level/tether/station
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_legend_x = 220
