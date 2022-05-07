@@ -13,6 +13,8 @@ Apply regexes in this order:
 
 // Landmarks
 `/obj/effect/landmark`-`/atom/movable/landmark`
+// Specific landmarks
+`/atom/movable/landmark\{\n\tname = "Observer-Start"\n\t\}`-`/atom/movable/landmark/observer_spawn`
 // Preliminary job landmarks
 `/atom/movable/landmark/start\{\n\tname = "([A-z]+)"\n\t\}`-`/atom/movable/landmark/spawnpoint/job/\L$1`
 `/atom/movable/landmark/start\{\n\tname = "([A-z]+) ([A-z]+)"\n\t\}`-`/atom/movable/landmark/spawnpoint/job/\L$1_\L$2`

@@ -12172,7 +12172,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "xE" = (
-/atom/movable/landmark/spawnpoint/latejoin/shuttle_dock,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
@@ -12372,9 +12372,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/atom/movable/landmark{
-	name = "Observer-Start"
-	},
+/atom/movable/landmark/observer_spawn,
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -23717,7 +23715,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "VK" = (
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
@@ -24608,7 +24606,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "Xy" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_projector,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
@@ -25545,7 +25543,7 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "ZF" = (
-/atom/movable/landmark/start,
+/atom/movable/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway)
 "ZG" = (
