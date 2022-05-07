@@ -2608,7 +2608,11 @@
 	dir = 8
 	},
 /obj/structure/table/steel,
-/obj/machinery/recharger,
+/obj/item/storage/box/firingpins,
+/obj/item/storage/box/firingpins,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -22
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "bVh" = (
@@ -20039,9 +20043,7 @@
 /turf/simulated/floor/wood/broken,
 /area/maintenance/security/starboard)
 "nTB" = (
-/obj/machinery/computer/teleporter{
-	dir = 2
-	},
+/obj/machinery/computer/teleporter,
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "nTE" = (
@@ -33069,12 +33071,12 @@
 /area/exploration/excursion_dock)
 "wlC" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/storage/box/firingpins,
-/obj/item/storage/box/firingpins,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/item/gunbox/lethal,
+/obj/item/gunbox/lethal,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "wmt" = (
@@ -34395,8 +34397,6 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -34506,9 +34506,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/gun/energy/ionrifle{
-	pixel_y = 5
-	},
 /obj/item/gun/energy/ionrifle,
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
