@@ -117,7 +117,7 @@
 		/obj/item/healthanalyzer/advanced
 	)
 
-/obj/item/storage/toolbox/surgery
+/obj/item/storage/firstaid/surgery
 	name = "surgery kit"
 	desc = "Contains tools for surgery. Has precise foam fitting for safe transport and automatically sterilizes the content between uses."
 	icon = 'icons/obj/storage.dmi'

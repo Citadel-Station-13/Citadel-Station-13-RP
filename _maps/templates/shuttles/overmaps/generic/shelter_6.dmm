@@ -898,7 +898,7 @@
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/storage/mre/menu11,
 /obj/item/storage/mre/menu11,
 /obj/item/storage/mre/menu11,
@@ -1459,7 +1459,7 @@
 /obj/item/reagent_containers/blood/prelabeled/OMinus,
 /obj/item/reagent_containers/blood/prelabeled/OMinus,
 /obj/item/storage/box/gloves,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner";
@@ -1632,7 +1632,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "bD" = (
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner";
