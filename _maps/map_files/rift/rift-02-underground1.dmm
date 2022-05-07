@@ -4380,9 +4380,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
 "ia" = (
@@ -7699,9 +7697,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/lower/atmos_lockers)
 "nV" = (
-/atom/movable/landmark/start{
-	name = "Chief Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/chief_engineer,
 /obj/structure/bed/chair/bay/comfy/brown{
 	dir = 4
 	},
@@ -11392,9 +11388,7 @@
 /turf/simulated/mineral/icerock,
 /area/rift/surfacebase/underground/under1)
 "At" = (
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/lower/atmos_lockers)
 "Av" = (
@@ -11483,9 +11477,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "CH" = (
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
 "CI" = (
@@ -11615,9 +11607,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/break_room)
 "FJ" = (
@@ -12373,9 +12363,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/atom/movable/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/break_room)
 "TC" = (

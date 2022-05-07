@@ -1042,9 +1042,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "ci" = (
@@ -3727,9 +3725,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/research)
 "hi" = (
@@ -9598,9 +9594,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -11551,9 +11545,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/workshop)
 "vr" = (
@@ -13347,9 +13339,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Chemist"
-	},
+/atom/movable/landmark/spawnpoint/job/chemist,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/chemistry)
 "yK" = (
@@ -20416,9 +20406,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -22393,9 +22381,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "OB" = (
@@ -22452,9 +22438,7 @@
 /turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "OI" = (
-/atom/movable/landmark/start{
-	name = "Warden"
-	},
+/atom/movable/landmark/spawnpoint/job/warden,
 /obj/machinery/light_switch{
 	pixel_x = -18;
 	pixel_y = -35
@@ -24991,9 +24975,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "To" = (
@@ -26022,9 +26004,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/research)
 "Vl" = (
@@ -27311,9 +27291,7 @@
 /area/medical/resleeving)
 "Xx" = (
 /obj/structure/bed/chair/office/light,
-/atom/movable/landmark/start{
-	name = "Chemist"
-	},
+/atom/movable/landmark/spawnpoint/job/chemist,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,

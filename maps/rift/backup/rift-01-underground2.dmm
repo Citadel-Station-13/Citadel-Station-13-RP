@@ -9345,9 +9345,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "xb" = (
@@ -9899,9 +9897,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "BG" = (
@@ -9909,9 +9905,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "BP" = (
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -10221,9 +10215,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "EP" = (
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "EQ" = (
@@ -10334,9 +10326,7 @@
 /area/chapel/observation)
 "Fq" = (
 /obj/structure/bed/chair/backed_red,
-/atom/movable/landmark/start{
-	name = "Chaplain"
-	},
+/atom/movable/landmark/spawnpoint/job/chaplain,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/lino,
@@ -11236,9 +11226,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "MR" = (
-/atom/movable/landmark/start{
-	name = "Chaplain"
-	},
+/atom/movable/landmark/spawnpoint/job/chaplain,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -11814,9 +11802,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "Sm" = (
-/atom/movable/landmark/start{
-	name = "Shaft Miner"
-	},
+/atom/movable/landmark/spawnpoint/job/shaft_miner,
 /obj/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24
@@ -12594,9 +12580,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "ZB" = (

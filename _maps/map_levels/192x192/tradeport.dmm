@@ -3559,9 +3559,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
 "mV" = (
@@ -4267,9 +4265,7 @@
 /area/tradeport/safarizoo)
 "pX" = (
 /obj/structure/bed/chair,
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "pY" = (
@@ -6724,9 +6720,7 @@
 	pixel_x = -26
 	},
 /obj/item/toy/plushie/squid/blue,
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
@@ -7905,9 +7899,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "CU" = (
@@ -9009,9 +9001,7 @@
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "GQ" = (
@@ -9584,9 +9574,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -27
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "Jg" = (
@@ -10135,9 +10123,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "LA" = (
@@ -10733,9 +10719,7 @@
 	pixel_y = -26;
 	specialfunctions = 4
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "Ns" = (
@@ -12213,9 +12197,7 @@
 /area/tradeport/commons)
 "SL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "SO" = (
@@ -12441,9 +12423,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
 "TD" = (
@@ -13241,9 +13221,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)

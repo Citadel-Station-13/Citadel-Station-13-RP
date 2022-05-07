@@ -3085,9 +3085,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "ga" = (
@@ -3973,9 +3971,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
 "hI" = (
@@ -6055,9 +6051,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
 "lp" = (
@@ -6385,9 +6379,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Detective"
-	},
+/atom/movable/landmark/spawnpoint/job/detective,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "lS" = (
@@ -6788,9 +6780,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /obj/structure/bed/chair/office/light,
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "mA" = (
@@ -8656,9 +8646,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "pU" = (
-/atom/movable/landmark/start{
-	name = "Quartermaster"
-	},
+/atom/movable/landmark/spawnpoint/job/quartermaster,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
 "pV" = (
@@ -11800,9 +11788,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "vs" = (
@@ -11862,9 +11848,7 @@
 /area/rnd/chemistry_lab)
 "vw" = (
 /obj/structure/bed/chair/bar_stool,
-/atom/movable/landmark/start{
-	name = "Mime"
-	},
+/atom/movable/landmark/spawnpoint/job/mime,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
@@ -12868,9 +12852,7 @@
 /turf/simulated/floor/plating,
 /area/security/prison)
 "xs" = (
-/atom/movable/landmark/start{
-	name = "Quartermaster"
-	},
+/atom/movable/landmark/spawnpoint/job/quartermaster,
 /obj/structure/bed/chair/bay/comfy/beige{
 	dir = 1
 	},
@@ -14235,9 +14217,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/medical/medbay_emt_bay)
 "Ag" = (
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -16212,9 +16192,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/atom/movable/landmark/spawnpoint/job/internal_affairs_agent,
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
 "Ej" = (
@@ -16447,9 +16425,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "EJ" = (
@@ -17042,9 +17018,7 @@
 /area/hallway/primary/surfaceone)
 "FT" = (
 /obj/item/stool,
-/atom/movable/landmark/start{
-	name = "Clown"
-	},
+/atom/movable/landmark/spawnpoint/job/clown,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -17350,9 +17324,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/medbreak)
 "Gz" = (
@@ -17813,9 +17785,7 @@
 	pixel_x = 36;
 	pixel_y = 38
 	},
-/atom/movable/landmark/start{
-	name = "Chief Medical Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/chief_medical_officer,
 /obj/structure/bed/chair/bay/comfy/teal{
 	dir = 4
 	},
@@ -17867,9 +17837,7 @@
 /area/rift/surfaceeva/airlock/main)
 "Ht" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /obj/machinery/power/apc{
 	name = "south bump";
 	pixel_y = -24
@@ -18592,9 +18560,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_north)
 "IO" = (
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
@@ -19021,9 +18987,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/monotile,
 /area/janitor)
 "JR" = (
@@ -19917,9 +19881,7 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "LJ" = (
-/atom/movable/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -20851,9 +20813,7 @@
 /area/maintenance/evahallway)
 "Nq" = (
 /obj/structure/bed/chair/office/dark,
-/atom/movable/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -21450,9 +21410,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Librarian"
-	},
+/atom/movable/landmark/spawnpoint/job/librarian,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -22204,9 +22162,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "Qa" = (
-/atom/movable/landmark/start{
-	name = "Psychiatrist"
-	},
+/atom/movable/landmark/spawnpoint/job/psychiatrist,
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
@@ -23449,9 +23405,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -23706,9 +23660,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "Tq" = (
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/storage/surface_eva)
@@ -23974,9 +23926,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/monotile,
 /area/janitor)
 "TY" = (
@@ -24128,9 +24078,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Detective"
-	},
+/atom/movable/landmark/spawnpoint/job/detective,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "Uq" = (
@@ -24222,9 +24170,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/medbreak)
 "Ux" = (
@@ -24471,9 +24417,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/monotile,
 /area/janitor)
 "UY" = (
@@ -24666,9 +24610,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Janitor"
-	},
+/atom/movable/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "Vq" = (
@@ -24810,9 +24752,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/medbreak)
 "VF" = (
@@ -25229,9 +25169,7 @@
 /turf/simulated/wall,
 /area/crew_quarters/medical_restroom)
 "Wt" = (
-/atom/movable/landmark/start{
-	name = "Librarian"
-	},
+/atom/movable/landmark/spawnpoint/job/librarian,
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
@@ -25910,9 +25848,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/atom/movable/landmark/spawnpoint/job/internal_affairs_agent,
 /turf/simulated/floor/carpet/bcarpet,
 /area/lawoffice)
 "XH" = (
@@ -26315,9 +26251,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border,
-/atom/movable/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "Yw" = (
@@ -26570,9 +26504,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
@@ -26728,9 +26660,7 @@
 /area/medical/medbay_emt_bay)
 "Zs" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -26916,9 +26846,7 @@
 /turf/simulated/floor/carpet,
 /area/library)
 "ZL" = (
-/atom/movable/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
