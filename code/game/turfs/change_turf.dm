@@ -190,7 +190,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		// if we're not doing so,
 		if(zone)
 			// remove and rebuild zone
-			var/datum/zas_zone/Z = zone
 			if(can_safely_remove_from_zone())
 				zone.remove(src)
 				SSair.mark_for_update(src)
