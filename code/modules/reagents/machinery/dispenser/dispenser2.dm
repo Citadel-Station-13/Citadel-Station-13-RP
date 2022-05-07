@@ -181,6 +181,7 @@
 	add_fingerprint(usr)
 
 /obj/machinery/chemical_dispenser/attack_ghost(mob/user)
+	. = ..()
 	if(stat & BROKEN)
 		return
 	ui_interact(user)

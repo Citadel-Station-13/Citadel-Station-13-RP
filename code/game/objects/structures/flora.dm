@@ -471,12 +471,12 @@
 	desc = "A healthy, fat pumpkin. It looks as if it was freshly plucked from its vines and shows no signs of decay."
 	icon_state = "decor-pumpkin"
 
-/obj/effect/landmark/carved_pumpkin_spawn
+/atom/movable/landmark/carved_pumpkin_spawn
 	name = "jack o'lantern spawn"
 	icon = 'icons/obj/flora/pumpkins.dmi'
 	icon_state = "spawner-jackolantern"
 
-/obj/effect/landmark/carved_pumpkin_spawn/New()
+/atom/movable/landmark/carved_pumpkin_spawn/New()
     var/new_pumpkin = pick(
 		prob(70);/obj/structure/flora/pumpkin,
         prob(60);/obj/structure/flora/pumpkin/carved,

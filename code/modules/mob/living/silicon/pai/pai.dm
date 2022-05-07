@@ -219,7 +219,7 @@
 	SSnanoui.update_uis(src)
 	to_chat(usr, "<span class='notice'>You reset your record-viewing software.</span>")
 
-/mob/living/silicon/pai/reset_perspective(datum/perspective/P, apply = TRUE)
+/mob/living/silicon/pai/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
 	. = ..()
 	cameraFollow = null
 

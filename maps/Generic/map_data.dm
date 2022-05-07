@@ -1,13 +1,13 @@
 // These specify how many z levels are in a map. Consoladating them here for map compiling ease - Bloop
 
 // Tether
-/obj/effect/landmark/map_data/virgo3b
+/atom/movable/landmark/map_data/virgo3b
     height = 6
 
 /atom/movable/overmap_object/entity/visitable/sector/virgo3b // Just a placeholder for when the map isnt loaded
 
 // Triumph
-/obj/effect/landmark/map_data/triumph
+/atom/movable/landmark/map_data/triumph
 	height = 4
 
 

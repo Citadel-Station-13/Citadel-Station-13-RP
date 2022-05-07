@@ -56,7 +56,7 @@
 		visitor_dir = turn(visitor_dir, 90)
 
 	if(multiz)
-		new /obj/effect/landmark/map_data(center_loc, (multiz + 1))
+		new /atom/movable/landmark/map_data(center_loc, (multiz + 1))
 	register_z_levels()
 	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
 

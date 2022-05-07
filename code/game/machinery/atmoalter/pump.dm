@@ -114,6 +114,7 @@
 	return src.attack_hand(user)
 
 /obj/machinery/portable_atmospherics/powered/pump/attack_ghost(var/mob/user)
+	. = ..()
 	return src.attack_hand(user)
 
 /obj/machinery/portable_atmospherics/powered/pump/attack_hand(var/mob/user)

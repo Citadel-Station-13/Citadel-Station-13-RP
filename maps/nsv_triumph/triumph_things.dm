@@ -1,7 +1,7 @@
 
 // Special map objects
 /* // Moved to map/generic/map_data.dm
-/obj/effect/landmark/map_data/triumph
+/atom/movable/landmark/map_data/triumph
 	height = 4
 */
 /*
@@ -66,11 +66,11 @@
 // shuttle arrival point landmarks and datum
 var/global/list/latejoin_shuttle   = list()
 
-/obj/effect/landmark/shuttle
+/atom/movable/landmark/shuttle
 	name = "JoinLateShuttle"
 	delete_me = 1
 
-/obj/effect/landmark/shuttle/New()
+/atom/movable/landmark/shuttle/New()
 	latejoin_shuttle += loc // Register this turf as shuttle latejoin.
 	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
 	return ..()

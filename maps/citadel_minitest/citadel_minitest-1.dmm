@@ -2859,21 +2859,15 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
 "gx" = (
-/obj/effect/landmark{
-	name = "JoinLateElevator"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/elevator,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gy" = (
-/obj/effect/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gz" = (
-/obj/effect/landmark{
-	name = "Observer-Start"
-	},
+/atom/movable/landmark/observer_spawn,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gA" = (
@@ -2881,15 +2875,11 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gB" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gC" = (
-/obj/effect/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gD" = (
@@ -3096,9 +3086,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/ferrydemo)
 "hp" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station,
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	id_tag = "station_hangar";
 	layer = 3.1;

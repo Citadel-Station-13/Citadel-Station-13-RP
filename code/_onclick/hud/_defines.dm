@@ -167,6 +167,7 @@
 #define ui_ghost_teleport "SOUTH:6,CENTER+1:24"
 #define ui_ghost_pai "SOUTH: 6,CENTER+2:24"
 #define ui_ghost_updown "SOUTH: 6,CENTER+3:24"
+#define ui_ghost_spawners "SOUTH: 6,CENTER+4:24"
 
 // Rig panel
 #define ui_rig_deco1 "WEST:-7, SOUTH+5"

@@ -133,4 +133,4 @@ datum/announcement/proc/Log(message as text, message_title as text)
 		AnnounceArrivalSimple(character.real_name, rank, join_message)
 
 /proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "will arrive at the station shortly") //VOREStation Edit - Remove shuttle reference
-	GLOB.global_announcer.autosay("[name], [rank], [join_message].", "Arrivals Announcement Computer")
+	GLOB.global_announcer.autosay(join_message, "Arrivals Announcement Computer")

@@ -111,7 +111,7 @@
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. The controls are locked."
 	icon_state = "smes"
 
-/obj/effect/landmark/away
+/atom/movable/landmark/away
 	name = "awaystart"
 
 /obj/effect/floor_decal/derelict/d1

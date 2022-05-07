@@ -1,4 +1,4 @@
-// Making this separate from /obj/effect/landmark until that mess can be dealt with
+// Making this separate from /atom/movable/landmark until that mess can be dealt with
 /obj/effect/shuttle_landmark
 	name = "Nav Point"
 	icon = 'icons/effects/effects.dmi'

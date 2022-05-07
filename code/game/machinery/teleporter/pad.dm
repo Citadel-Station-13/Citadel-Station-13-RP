@@ -52,6 +52,7 @@
 
 
 /obj/machinery/tele_pad/attack_ghost(mob/user)
+	. = ..()
 	if (!computer?.active)
 		return
 	var/turf/T = get_turf(computer.target)
