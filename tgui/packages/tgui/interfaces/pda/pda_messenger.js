@@ -109,14 +109,21 @@ const ActiveConversation = (props, context) => {
           "overflow-y": "auto",
         }}>
           {
-            filter(im
-            => im.target === active_conversation)(messages).map((im, i) => (
-              <Box
-                key={i}
-                className={im.sent ? "ClassicMessage_Sent" : "ClassicMessage_Received"}>
-                {im.sent ? "You:" : "Them:"} {decodeHtmlEntities(im.message)}
-              </Box>
-            ))
+            filter(
+              im => im.target === active_conversation)(messages).map(
+              (im, i) => (
+                <Box
+                  key={i}
+                  className={
+                    im.sent ? "ClassicMessage_Sent" : "ClassicMessage_Received"
+                  }>
+                  {
+                    m.sent ? "You:" : "Them:"
+                  } {
+                    decodeHtmlEntities(im.message)
+                  }
+                </Box>
+              ))
           }
         </Section>
         <Button
