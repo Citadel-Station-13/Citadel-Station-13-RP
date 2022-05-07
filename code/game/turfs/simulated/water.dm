@@ -219,10 +219,6 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	depth = 4
 	layer = WATER_FLOOR_LAYER
 
-/turf/simulated/floor/water/acid/Initialize(mapload)
-	. = ..()
-	update_icon()
-
 /turf/simulated/floor/water/acid/update_icon()
 	..() // To get the edges.
 
@@ -337,10 +333,6 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	movement_cost = 4
 	layer = WATER_FLOOR_LAYER
 	depth = 6
-
-/turf/simulated/floor/water/blood/Initialize(mapload)
-	. = ..()
-	update_icon()
 
 /turf/simulated/floor/water/blood/update_icon()
 	..()
