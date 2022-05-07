@@ -2,6 +2,11 @@
  * overmap entities
  *
  * capable of pixel movement and full simulation
+ *
+ * - physics
+ * we use a detached free body sim
+ * velocity x, y, angle, and the actual angle have nothing to do with each other.
+ * velocity x and y are relative to the map, not the object's front.
  */
 /atom/movable/overmap_object/entity
 	plane = OVERMAP_ENTITY_PLANE
@@ -27,22 +32,26 @@
 	// physics
 	/// current physics mode
 	var/physics_mode = ENTITY_PHYSICS_SIMULATED
-	/// vel x
+	/// vel x in overmaps coordinates per second
 	var/velocity_x
-	/// vel y
+	/// vel y in overmaps coordinates per second
 	var/velocity_y
-	/// vel angle
+	/// vel angle in degrees clockwise per second
 	var/angular_velocity
 	/// current x - this is not in pixels, this is in overmaps distance
 	var/position_x
 	/// current y - this is not in pixels, this is in overmaps distance
 	var/position_y
-	/// angle
+	/// angle in degrees clockwise from north
 	var/angle = 0
 	/// physics pause sources
 	var/physics_paused
 	/// currently undergoing a physics dock/undock operation - used to prevent hooks from forcing the proc to be repeated
 	var/physics_docking = FALSE
+	/// used for optimized spatial hash re-positioning
+	var/last_spatial_x
+	/// used for optimized spatial hash re-positioning
+	var/last_spatial_y
 
 /atom/movable/overmap_object/entity/New()
 	// assign id immediately
@@ -69,3 +78,9 @@
 /atom/movable/overmap_object/entity/get_perspective()
 	ensure_self_perspective()
 	return ..()
+
+/**
+ * pretty name for non-internal logging
+ */
+/atom/movable/overmap_object/proc/pretty_log_name()
+	return "[name] ([id])"

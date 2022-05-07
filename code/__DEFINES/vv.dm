@@ -47,13 +47,16 @@
 #define VV_TOPIC_LINK(datum, href_key, text) "<a href='?_src_=vars;[HrefToken()];[href_key]=TRUE;target=[REF(datum)]'>text</a>"
 
 //Helpers for vv_get_dropdown()
-#define VV_DROPDOWN_OPTION(href_key, name) . += "<option value='?_src_=vars;[HrefToken()];[href_key]=TRUE;target=[REF(src)]'>[name]</option>"
+#define VV_DROPDOWN_OPTION(href_key, name)		. += "<option value='?_src_=vars;[HrefToken()];[href_key]=TRUE;target=[REF(src)]'>[name]</option>"
+#define VV_DROPDOWN_DIVIDER						. += "<option>----------</option>"
 
 // VV HREF KEYS
 #define VV_HK_TARGET "target"
 #define VV_HK_VARNAME "targetvar"		//name or index of var for 1 variable targetting hrefs.
 
 // vv_do_list() keys
+// divider
+
 #define VV_HK_LIST_ADD "listadd"
 #define VV_HK_LIST_EDIT "listedit"
 #define VV_HK_LIST_CHANGE "listchange"
@@ -126,3 +129,9 @@
 // misc
 #define VV_HK_SPACEVINE_PURGE "spacevine_purge"
 */
+
+// overmaps
+#define VV_HK_OVERMAP_ENTITY_SET_SPEED		"entity_speed"
+#define VV_HK_OVERMAP_ENTITY_SET_ANGLE		"entity_angle"
+#define VV_HK_OVERMAP_ENTITY_RESET_PHYSICS	"entity_halt"
+#define VV_HK_OVERMAP_ENTITY_PAUSE			"entity_pause"

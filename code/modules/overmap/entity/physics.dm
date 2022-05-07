@@ -2,25 +2,45 @@
  * physics update
  */
 /atom/movable/overmap_object/entity/proc/physics_tick(seconds)
-	#warn check pause
-	#warn check overmap
+	if(physics_paused || !overmap)	// paused or no overmap
+		return
+
+	var/dx = velocity_x * seconds
+	var/dy = velocity_y * seconds
+	var/da = angular_velocity * seconds
+
+
+
 	#warn move
 	#warn move to
 	#warn optimized spatial hash updates
 
 #warn do all of these
 
+
+
 /**
- * move to where we should be
+ * move to where we should be immediately without visuals
  */
 /atom/movable/overmap_object/entity/proc/move_to_location()
+
+/**
+ * forcefully point our nose towards our motion, resetting angular velocity
+ */
+/atom/movable/overmap_object/entity/proc/orient_to_velocity()
+	set_angular_velocity(0)
+	// arctan is degrees clockwise from east
+	// the reason we don't do this with our angle is because
+	// the rest of byond/ss13 doesn't
+	// i hate all coders
+	set_angle(90 - arctan(velocity_x, velocity_y))
 
 /**
  * set velocity to x, y
  */
 /atom/movable/overmap_object/entity/proc/set_velocity(x, y)
-	velocity_x = x
-	velocity_y = y
+	velocity_x = clamp(x, -SSovermaps.max_entity_speed, SSovermaps.max_entity_speed)
+	velocity_y = clamp(y, -SSovermaps.max_entity_speed, SSovermaps.max_entity_speed)
 	wake_physics()
 
 /**
@@ -31,11 +51,19 @@
 	wake_physics()
 
 /**
+ * set angle
+ */
+/atom/movable/overmap_object/entity/proc/set_angle(a)
+	angle = SIMPLIFY_DEGREES(a)
+	move_to_location()
+	wake_physics()
+
+/**
  * add velocity
  */
 /atom/movable/overmap_object/entity/proc/adjust_velocity(x, y)
-	velocity_x += x
-	velocity_y += y
+	velocity_x = clamp(velocity_x + x, -SSovermaps.max_entity_speed, SSovermaps.max_entity_speed)
+	velocity_y = clamp(velocity_y + y, -SSovermaps.max_entity_speed, SSovermaps.max_entity_speed)
 	wake_physics()
 
 /**
@@ -110,6 +138,12 @@
 	// TODO: pixel_movement?
 	#warn ugh
 	. = ..()
+
+/**
+ * check if physics paused
+ */
+/atom/movable/overmap_object/entity/proc/physics_paused(source)
+	return source? (source in physics_paused) : !!physics_paused
 
 /**
  * add a source for physics pausing

@@ -56,7 +56,7 @@
   */
 /atom/vv_get_dropdown()
 	. = ..()
-	VV_DROPDOWN_OPTION("", "---------")
+	VV_DROPDOWN_DIVIDER
 	if(!ismovable(src))
 		var/turf/curturf = get_turf(src)
 		if(curturf)

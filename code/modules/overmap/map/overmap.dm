@@ -116,8 +116,10 @@
 /datum/overmap/proc/Generate(list/datum/overmap_generator/generators = list())
 
 /datum/overmap/proc/RegisterEntity(atom/movable/overmap_object/entity/E)
+	#warn check moving and ticking
 
 /datum/overmap/proc/UnregisterEntity(atom/movable/overmap_object/entity/E)
+	#warn check moving and ticking
 
 #warn redo this it should be for non physics ticks
 /datum/overmap/proc/Tick(seconds)

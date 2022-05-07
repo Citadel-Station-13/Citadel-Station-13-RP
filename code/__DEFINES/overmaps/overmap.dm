@@ -22,7 +22,7 @@
 /// overmap speed accuracy
 #define OVERMAP_SPEED_ACCURACY					0.001
 /// overmap speed quantization
-#define QUANTIZE_OVERMAP_SPEED(s)				round(s, OVERMRAP_SPEED_ACCURACY)
+#define QUANTIZE_OVERMAP_SPEED(s)				round(s, OVERMAP_SPEED_ACCURACY)
 
 /**
  * overmap

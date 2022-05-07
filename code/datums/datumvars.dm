@@ -24,7 +24,7 @@
 //add separaters by doing . += "---"
 /datum/proc/vv_get_dropdown()
 	. = list()
-	VV_DROPDOWN_OPTION("", "---")
+	VV_DROPDOWN_DIVIDER
 	VV_DROPDOWN_OPTION(VV_HK_CALLPROC, "Call Proc")
 	VV_DROPDOWN_OPTION(VV_HK_MARK, "Mark Object")
 	VV_DROPDOWN_OPTION(VV_HK_DELETE, "Delete")
