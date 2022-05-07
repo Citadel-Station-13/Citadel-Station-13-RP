@@ -316,17 +316,9 @@
 					T.ChangeTurf(/turf/simulated/wall/r_wall)
 					return
 			else if(pa.Find("right"))
-				if(istype(object,/turf/simulated/wall))
+				if(istype(object, /turf))
 					var/turf/T = object
-					T.ChangeTurf(/turf/simulated/floor)
-					return
-				else if(istype(object,/turf/simulated/floor))
-					var/turf/T = object
-					T.ChangeTurf(/turf/space)
-					return
-				else if(istype(object,/turf/simulated/wall/r_wall))
-					var/turf/T = object
-					T.ChangeTurf(/turf/simulated/wall)
+					T.ScrapeAway()
 					return
 				else if(istype(object,/obj))
 					qdel(object)

@@ -4,10 +4,7 @@
 	edge_blending_priority = 6
 	movement_cost = 2
 	initial_flooring = /decl/flooring/snow
-	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks,
-		/turf/simulated/floor/outdoors/dirt
-		)
+	baseturfs = /turf/simulated/floor/outdoors/dirt
 	var/list/crossed_dirs = list()
 
 
@@ -32,7 +29,7 @@
 		if(do_after(user, 4 SECONDS * W.toolspeed))
 			to_chat(user, "<span class='notice'>\The [src] has been dug up, and now lies in a pile nearby.</span>")
 			new /obj/item/stack/material/snow(src)
-			demote()
+			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 		else
 			to_chat(user, "<span class='notice'>You decide to not finish removing \the [src].</span>")
 	else

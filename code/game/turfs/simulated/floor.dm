@@ -164,5 +164,5 @@
 			return TRUE
 		if(RCD_DECONSTRUCT)
 			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
-			ChangeTurf(get_base_turf_by_area(src), preserve_outdoors = TRUE)
+			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 			return TRUE

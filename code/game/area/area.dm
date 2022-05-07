@@ -63,8 +63,6 @@
 	var/list/forced_ambience = null
 	/// Used to decide what kind of reverb the area makes sound have
 	var/sound_env = STANDARD_STATION
-
-	var/turf/base_turf //The base turf type of the area, which can be used to override the z-level's base turf
 	var/global/global_uid = 0
 	var/uid
 
@@ -594,6 +592,10 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /area/drop_location()
 	CRASH("Bad op: area/drop_location() called")
+
+// A hook so areas can modify the incoming args
+/area/proc/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
+	return flags
 
 /*Adding a wizard area teleport list because motherfucking lag -- Urist*/
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/

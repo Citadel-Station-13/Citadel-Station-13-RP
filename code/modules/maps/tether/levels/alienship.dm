@@ -107,7 +107,6 @@
 
 /area/shuttle/excursion/away_alienship
 	name = "\improper Excursion Shuttle - Alien Ship"
-	base_turf = /turf/simulated/shuttle/floor/alienplating
 	var/did_entry = FALSE
 	var/list/teleport_to
 	var/area/dump_area
@@ -174,7 +173,6 @@
 /area/tether_away/alienship
 	name = "\improper Away Mission - Unknown Vessel"
 	icon_state = "away"
-	base_turf = /turf/space
 	requires_power = FALSE
 
 /area/tether_away/alienship/equip_dump

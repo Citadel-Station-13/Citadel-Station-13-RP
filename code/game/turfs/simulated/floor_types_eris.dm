@@ -876,10 +876,7 @@
 	icon_state = "grass-heavy0"
 	edge_blending_priority = 4
 	initial_flooring = /decl/flooring/grass/heavy
-	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks,
-		/turf/simulated/floor/outdoors/dirt
-		)
+	baseturfs = /turf/simulated/floor/outdoors/dirt
 	grass_chance = 40
 
 	grass_types = list(

@@ -19,6 +19,19 @@
 /turf/proc/multiz_turf_new(turf/T, dir)
 	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
 
+/**
+ * called during AfterChange() to request the turfs above and below us update their graphics.
+ */
+/turf/proc/update_vertical_turf_graphics()
+	var/turf/simulated/open/above = GetAbove(src)
+	if(istype(above))
+		above.update_icon()
+
+	var/turf/simulated/below = GetBelow(src)
+	if(istype(below))
+		below.update_icon() // To add or remove the 'ceiling-less' overlay.
+
+
 //
 // Open Space - "empty" turf that lets stuff fall thru it to the layer below
 //
@@ -35,10 +48,6 @@
 	allow_gas_overlays = FALSE
 
 	var/turf/below
-
-/turf/simulated/open/post_change()
-	..()
-	update()
 
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
@@ -59,8 +68,6 @@
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
-	GLOB.turf_changed_event.register(below, src, /atom/proc/update_icon)
-	levelupdate()
 	below.update_icon()	// So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
 		if(A.movement_type & GROUND)
