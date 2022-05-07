@@ -9,6 +9,7 @@ $include entries/fail2topic.txt
 $include entries/game_options.txt
 $include entries/lobby.txt
 $include entries/urls.txt
+$include entries/hub.txt
 
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game

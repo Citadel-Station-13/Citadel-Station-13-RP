@@ -137,7 +137,7 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 	color = "#eaa17c"
 	base_icon_state = "asteroid"
 	initial_gas_mix = ATMOSPHERE_ID_CLASSD
-	turf_layers = list(/turf/simulated/mineral/floor/classd)
+	baseturfs = /turf/simulated/mineral/floor/classd
 	initial_flooring = /decl/flooring/outdoors/classd
 
 ///Indoor usage turfs with Class D's Atmos. Unaffected by weather etc (Important because radioactive fallout will happen on a regular basis!)

@@ -300,7 +300,7 @@
 /area/submap/Blackshuttledown)
 "aV" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/effect/floor_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 10

@@ -3,7 +3,6 @@
 /area/mothership
 	requires_power = 1
 	flags = RAD_SHIELDED
-	base_turf = /turf/space
 	icon_state = "blue2"
 
 /area/mothership/breakroom
