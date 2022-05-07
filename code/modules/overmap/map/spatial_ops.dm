@@ -137,26 +137,19 @@
 		bx = get_x_of_object(B)
 		by = get_y_of_object(B)
 	#warn finish this algorithm - clockwise from north
-	return arctan(
-		abs(bx - ax) > cached_coordinate_center_x?
-			(bx > ax?
-				(-ax - (cached_coordinate_width - bx))
-				:
-				(bx + (cached_coordinate_width - ax))
-			)
-			:
-			(bx - ax)
-		,
-		abs(by - ay) > cached_coordinate_center_y?
-			(by > ay?
-				(-ay - (cached_coordinate_height - by))
-				:
-				(by + (cached_coordinate_height - ay))
-			)
-			:
-			(by - ay)
+	. = arctan(
+		abs(bx - ax) > cached_coordinate_center_x? (
+			(bx > ax)? (-ax - (cached_coordinate_width - bx)) : (bx + (cached_coordinate_width - ax))
+		) : (
+			bx - ax
+		),
+		abs(by - ay) > cached_coordinate_center_y? (
+			(by > ay)? (-ay - (cached_coordinate_height - by)) : (by + (cached_coordinate_width - ay))
+		) : (
+			by - ay
+		)
 	)
-
+	. = SIMPLIFY_DEGREES(.)
 
 /**
  * removes an entity from the spatial hash
