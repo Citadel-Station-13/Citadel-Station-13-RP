@@ -1,4 +1,3 @@
-/*
 /obj/turbolift_map_holder/rift
 	name = "Atlas Lift"
 	depth = 5
@@ -14,7 +13,7 @@
 		/area/turbolift/rsurface/level2,
 		/area/turbolift/rsurface/level3
 		)
-*/
+
 /obj/turbolift_map_holder/triumph
 	name = "Triumph Climber"
 	depth = 4

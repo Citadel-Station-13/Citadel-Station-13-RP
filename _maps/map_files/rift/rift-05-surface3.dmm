@@ -3014,7 +3014,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/search_and_rescue,
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "fs" = (
@@ -5527,7 +5527,7 @@
 	pixel_y = -26
 	},
 /obj/structure/bed/chair/bay/comfy/captain,
-/atom/movable/landmark/spawnpoint/job/facility_director,
+/atom/movable/landmark/spawnpoint/job/captain,
 /obj/machinery/button/remote/blast_door{
 	id = "bridge";
 	name = "Bridge Lockdown";
@@ -10942,7 +10942,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/atom/movable/landmark/spawnpoint/job/search_and_rescue,
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "vo" = (
@@ -12172,7 +12172,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "xE" = (
-/atom/movable/landmark/shuttle,
+/atom/movable/landmark/spawnpoint/latejoin/shuttle_dock,
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
@@ -13213,7 +13213,7 @@
 /area/bridge)
 "zN" = (
 /obj/structure/bed/chair/comfy/brown,
-/atom/movable/landmark/spawnpoint/job/search_and_rescue,
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "zO" = (
@@ -15732,7 +15732,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
 "Fb" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_pad,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
@@ -16627,7 +16627,7 @@
 /area/rift/surfaceeva/aa/cliff_north)
 "Ha" = (
 /obj/structure/flora/ausbushes/brflowers,
-/atom/movable/landmark/spawnpoint/job/gardener,
+/atom/movable/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "Hb" = (
@@ -19901,7 +19901,7 @@
 /area/shuttle/excursion/general)
 "NQ" = (
 /obj/structure/bed/chair/wood,
-/atom/movable/landmark/spawnpoint/job/gardener,
+/atom/movable/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "NR" = (
@@ -20079,7 +20079,7 @@
 /obj/structure/bed/chair/bay/comfy/captain{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/facility_director,
+/atom/movable/landmark/spawnpoint/job/captain,
 /obj/machinery/keycard_auth{
 	pixel_x = 10;
 	pixel_y = 37
@@ -22833,7 +22833,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/search_and_rescue,
+/atom/movable/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "TR" = (

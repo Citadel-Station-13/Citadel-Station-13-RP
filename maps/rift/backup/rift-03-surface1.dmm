@@ -16045,7 +16045,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/internal_affairs_agent,
+/atom/movable/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
 "Ej" = (
@@ -25546,7 +25546,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/internal_affairs_agent,
+/atom/movable/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/carpet/bcarpet,
 /area/lawoffice)
 "XH" = (
