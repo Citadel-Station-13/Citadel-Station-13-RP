@@ -137,7 +137,7 @@
 /area/ship/ert/hangar)
 "aQ" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -4015,8 +4015,8 @@
 /area/ship/ert/atmos)
 "DM" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/toolbox/surgery,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/manager,
