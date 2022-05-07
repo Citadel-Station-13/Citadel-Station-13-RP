@@ -14,7 +14,10 @@
 	var/edge = 0		// If we're an edge
 	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
 
-/turf/open/space/basic/New()	//Do not convert to Initialize
+/turf/space/basic
+	flags = INITIALIZED
+
+/turf/space/basic/New()	//Do not convert to Initialize
 	//This is used to optimize the map loader
 	return
 
@@ -121,6 +124,3 @@
 /turf/space/proc/on_atom_edge_touch(atom/movable/AM)
 	if(!QDELETED(AM) && (AM.loc == src))
 		AM.touch_map_edge()
-
-/turf/space/ChangeTurf(var/turf/N, var/tell_universe, var/force_lighting_update, var/preserve_outdoors)
-	return ..(N, tell_universe, 1, preserve_outdoors)
