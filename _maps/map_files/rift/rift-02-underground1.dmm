@@ -2201,6 +2201,7 @@
 /area/engineering/engineering_monitoring)
 "em" = (
 /obj/machinery/button/remote/blast_door{
+	dir = 8;
 	id = "sm_monitor_blast";
 	name = "Engine monitoring room blast door control";
 	pixel_x = -6;
@@ -2213,6 +2214,7 @@
 	pixel_y = -10
 	},
 /obj/machinery/button/remote/blast_door{
+	dir = 8;
 	id = "stair_engine_blast";
 	name = "Stairwell blast door control";
 	pixel_x = -6;
@@ -2225,12 +2227,14 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/button/remote/blast_door{
+	dir = 4;
 	id = "sme_core_access";
 	name = "Supermatter core access control";
 	pixel_x = 6;
 	pixel_y = 8
 	},
 /obj/machinery/button/remote/blast_door{
+	dir = 4;
 	id = "sm_core_blast";
 	name = "Supermatter core blast door control";
 	pixel_x = 6;
@@ -5458,7 +5462,7 @@
 	id = "sme_emitter";
 	name = "Supermatter Engine emitter control";
 	pixel_x = -6;
-	pixel_y = -25
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_balcony)
@@ -11247,16 +11251,18 @@
 "uL" = (
 /obj/structure/bed/chair/office/dark,
 /obj/machinery/button/remote/blast_door{
+	dir = 1;
 	id = "emitter_blast";
 	name = "Emitter Window blast door control";
 	pixel_x = 36;
 	pixel_y = -30
 	},
 /obj/machinery/button/remote/emitter{
+	dir = 1;
 	id = "sme_emitter";
 	name = "Supermatter Engine emitter control";
 	pixel_x = 26;
-	pixel_y = -32
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)

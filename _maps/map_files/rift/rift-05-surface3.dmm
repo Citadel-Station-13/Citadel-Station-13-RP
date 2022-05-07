@@ -1837,6 +1837,10 @@
 	icon_state = "1-2"
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "dr" = (
@@ -3520,6 +3524,12 @@
 	icon_state = "1-2"
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "gm" = (
@@ -4215,7 +4225,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "hz" = (
-/obj/machinery/access_button/airlock_interior{
+/obj/machinery/access_button{
+	dir = 1;
 	master_tag = "civ_airlock";
 	pixel_x = -6;
 	pixel_y = 8
@@ -6363,7 +6374,7 @@
 	dir = 8
 	},
 /obj/machinery/airlock_sensor/phoron{
-	dir = 8;
+	dir = 4;
 	id_tag = "civ_airlock_sensor";
 	name = "frostlock sensor";
 	pixel_x = -26
@@ -8701,6 +8712,10 @@
 	name = "Public External Airlock"
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "qC" = (
@@ -8942,7 +8957,8 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "rg" = (
-/obj/machinery/access_button/airlock_interior{
+/obj/machinery/access_button{
+	dir = 1;
 	master_tag = "civ_airlock_two";
 	pixel_x = 6;
 	pixel_y = 8
@@ -9535,7 +9551,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/machinery/airlock_sensor/phoron{
-	dir = 4;
+	dir = 8;
 	id_tag = "civ_airlock_two_sensor";
 	name = "frostlock sensor";
 	pixel_x = 26
@@ -9548,6 +9564,12 @@
 	name = "Public External Airlock"
 	},
 /obj/effect/map_helper/airlock/door/int_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "sr" = (
@@ -9680,6 +9702,12 @@
 	name = "Public External Airlock"
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "sH" = (
@@ -12976,6 +13004,23 @@
 /obj/structure/flora/pottedplant/mysterious,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"zn" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1379;
+	id_tag = "civ_airlock_pump"
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	frequency = 1379;
+	on = 1;
+	scrub_id = "civ_airlock_scrubber"
+	},
+/turf/simulated/floor/plating,
+/area/rift/surfaceeva/airlock/arrivals)
 "zo" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -14279,7 +14324,8 @@
 	},
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
 	frequency = 1379;
-	scrub_id = "civ_airlock_2_scrubber"
+	on = 1;
+	scrub_id = "civ_airlock_two_scrubber"
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
@@ -15050,6 +15096,10 @@
 	name = "Public External Airlock"
 	},
 /obj/effect/map_helper/airlock/door/int_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "DJ" = (
@@ -18545,6 +18595,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/effect/map_helper/airlock/door/int_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "KP" = (
@@ -21716,6 +21772,23 @@
 	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
+"Rr" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 4;
+	frequency = 1379;
+	id_tag = "civ_airlock_two_pump"
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	frequency = 1379;
+	on = 1;
+	scrub_id = "civ_airlock_two_scrubber"
+	},
+/turf/simulated/floor/plating,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "Rs" = (
 /obj/structure/sign/securearea{
 	desc = "Under the painting a plaque reads: 'While the meat grinder may not have spared you, fear not. Not one part of you has gone to waste... You were delicious.'";
@@ -22086,6 +22159,7 @@
 	},
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
 	frequency = 1379;
+	on = 1;
 	scrub_id = "civ_airlock_scrubber"
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
@@ -25475,6 +25549,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/effect/map_helper/airlock/door/int_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "Zt" = (
@@ -39229,7 +39307,7 @@ IA
 IA
 hz
 Sc
-Sc
+zn
 NB
 JL
 FQ
@@ -43109,7 +43187,7 @@ IA
 IA
 rg
 BX
-BX
+Rr
 PN
 UK
 FQ
