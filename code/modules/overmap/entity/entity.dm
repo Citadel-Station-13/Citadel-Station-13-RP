@@ -61,11 +61,11 @@
 
 /atom/movable/overmap_object/entity/Initialize(mapload)
 	. = ..()
-	#warn regist ovmp
+	add_to_overmap()
 
 /atom/movable/overmap_object/entity/Destroy()
 	kill_physics()
-	#warn unregist ovmp
+	remove_from_overmap()
 	return ..()
 
 /atom/movable/overmap_object/entity/get_bounds_overlay()

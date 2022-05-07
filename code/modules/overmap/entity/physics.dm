@@ -9,6 +9,9 @@
 	var/dy = velocity_y * seconds
 	var/da = angular_velocity * seconds
 
+	if(dx > 32 || dy > 32)	// not sure how this is possible but we're jumping so..
+		move_to_location()
+		return
 
 
 	#warn move
@@ -23,6 +26,17 @@
  * move to where we should be immediately without visuals
  */
 /atom/movable/overmap_object/entity/proc/move_to_location()
+
+
+	ensure_hash_correctness()
+
+/**
+ * ensure we're in the right spatial hash
+ */
+/atom/movable/overmap_object/entity/proc/ensure_hash_correctness()
+	// 1 arg round is floor
+	if(round(position_x / OVERMAP_SPATIAL_HASH_COORDSIZE) != last_spatial_x || round(position_y / OVERMAP_SPATIAL_HASH_COORDSIZE) != last_spatial_y)
+		overmap._spatial_update_entity(src)
 
 /**
  * forcefully point our nose towards our motion, resetting angular velocity
@@ -86,7 +100,7 @@
 /**
  * immediate move to overmap
  */
-/atom/movable/overmap_object/entity/proc/set_overmap(datum/overmap/O, x, y, rotation)
+/atom/movable/overmap_object/entity/proc/set_overmap(datum/overmap/O, x, y, rotation, vel_x, vel_y, vel_angle)
 	#warn impl
 
 /**
@@ -94,6 +108,16 @@
  * only call this if you know what you're doing!
  */
 /atom/movable/overmap_object/entity/proc/remove_from_overmap()
+
+
+	_overmap_spatial_hash_index = last_spatial_x = last_spatial_y = null
+	#warn impl
+
+/**
+ * add to the overmap we're currently in
+ * make sure we're, y'know, in an overmap, or we'll just be in limbo!
+ */
+/atom/movable/overmap_object/entity/proc/add_to_overmap()
 	#warn impl
 
 /**

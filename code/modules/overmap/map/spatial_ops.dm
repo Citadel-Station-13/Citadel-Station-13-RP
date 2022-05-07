@@ -172,6 +172,8 @@
 	if(E._overmap_spatial_hash_index)
 		spatial_hash[E._overmap_spatial_hash_index] -= E
 	bucket += E
+	E.last_spatial_x = round(E.position_x / OVERMAP_SPATIAL_HASH_COORDSIZE)
+	E.last_spatial_y = round(E.position_y / OVERMAP_SPATIAL_HASH_COORDSIZE)
 
 /**
  * updates an entity's location in the spatial hash
