@@ -2,7 +2,7 @@ import { filter } from 'common/collections';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
-import { Box, ByondUi, Button, Flex, Icon, LabeledList, Input, ProgressBar, Section, Table } from "../components";
+import { Box, ByondUi, Button, Flex, Icon, LabeledList, Input, Section, Table } from "../components";
 import { Window } from "../layouts";
 import { CrewManifestContent } from './CrewManifest';
 
@@ -37,7 +37,8 @@ export const Communicator = (props, context) => {
   return (
     <Window width={475} height={700} resizable>
       <Window.Content>
-        {video_comm && <VideoComm videoSetting={videoSetting} setVideoSetting={setVideoSetting} />}
+        {video_comm && <VideoComm
+          videoSetting={videoSetting} setVideoSetting={setVideoSetting} />}
         {(!video_comm || videoSetting !== 0) && (
           <Fragment>
             <CommunicatorHeader />
@@ -282,7 +283,11 @@ const hasNotifications = (app, context) => {
   } = data;
 
   if (app === "Phone") {
-    if (voice_mobs.length || communicating.length || requestsReceived.length || invitesSent.length || video_comm) {
+    if (voice_mobs.length
+        || communicating.length
+        || requestsReceived.length
+        || invitesSent.length
+        || video_comm) {
       return true;
     }
   }
@@ -384,7 +389,8 @@ const PhoneTab = (props, context) => {
           {!!voice_mobs.length && (
             <LabeledList>
               {voice_mobs.map(mob => (
-                <LabeledList.Item label={decodeHtmlEntities(mob.name)} key={mob.ref}>
+                <LabeledList.Item label={decodeHtmlEntities(mob.name)}
+                  key={mob.ref}>
                   <Button
                     icon="times"
                     color="bad"
@@ -439,7 +445,8 @@ const PhoneTab = (props, context) => {
           {!!requestsReceived.length && (
             <LabeledList>
               {requestsReceived.map(request => (
-                <LabeledList.Item label={decodeHtmlEntities(request.name)} key={request.address}>
+                <LabeledList.Item label={decodeHtmlEntities(request.name)}
+                  key={request.address}>
                   <Box>{decodeHtmlEntities(request.address)}</Box>
                   <Box>
                     <Button
@@ -464,7 +471,8 @@ const PhoneTab = (props, context) => {
           {!!invitesSent.length && (
             <LabeledList>
               {invitesSent.map(invite => (
-                <LabeledList.Item label={decodeHtmlEntities(invite.name)} key={invite.address}>
+                <LabeledList.Item label={decodeHtmlEntities(invite.name)}
+                  key={invite.address}>
                   <Box>{decodeHtmlEntities(invite.address)}</Box>
                   <Box>
                     <Button
@@ -891,7 +899,8 @@ const NewsTargetFeed = (props, context) => {
             </Box>
           )}
           <Box color="grey">
-            [{message.message_type} by {decodeHtmlEntities(message.author)} - {message.time_stamp}]
+            [{message.message_type} by {decodeHtmlEntities(message.author)}
+            - {message.time_stamp}]
           </Box>
         </Section>
       ))}
@@ -1011,7 +1020,13 @@ const WeatherTab = (props, context) => {
               <LabeledList.Item
                 key={item.entry}
                 label={item.entry}
-                color={getItemColor(item.val, item.bad_low, item.poor_low, item.poor_high, item.bad_high)}>
+                color={getItemColor(
+                  item.val,
+                  item.bad_low,
+                  item.poor_low,
+                  item.poor_high,
+                  item.bad_high
+                )}>
                 {item.val}{decodeHtmlEntities(item.units)}
               </LabeledList.Item>
             ))}

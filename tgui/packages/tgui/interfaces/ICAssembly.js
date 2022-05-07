@@ -1,10 +1,8 @@
 import { round } from 'common/math';
-import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Table, Divider, AnimatedNumber } from "../components";
+import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
 import { Window } from "../layouts";
-import { decodeHtmlEntities } from 'common/string';
-import { formatSiUnit, formatPower } from "../format";
+import { formatPower } from "../format";
 
 export const ICAssembly = (props, context) => {
   const { act, data } = useBackend(context);
@@ -35,7 +33,8 @@ export const ICAssembly = (props, context) => {
                 }}
                 value={total_parts / max_components}
                 maxValue={1}>
-                {total_parts} / {max_components} ({round((total_parts / max_components) * 100, 1)}%)
+                {total_parts} / {max_components}
+                ({round((total_parts / max_components) * 100, 1)}%)
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item label="Complexity">
@@ -47,7 +46,8 @@ export const ICAssembly = (props, context) => {
                 }}
                 value={total_complexity / max_complexity}
                 maxValue={1}>
-                {total_complexity} / {max_complexity} ({round((total_complexity / max_complexity) * 100, 1)}%)
+                {total_complexity} / {max_complexity}
+                ({round((total_complexity / max_complexity) * 100, 1)}%)
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item label="Cell Charge">
@@ -60,7 +60,8 @@ export const ICAssembly = (props, context) => {
                   }}
                   value={battery_charge / battery_max}
                   maxValue={1}>
-                  {battery_charge} / {battery_max} ({round((battery_charge / battery_max) * 100, 1)}%)
+                  {battery_charge} / {battery_max}
+                  ({round((battery_charge / battery_max) * 100, 1)}%)
                 </ProgressBar>
               ) || <Box color="bad">No cell detected.</Box>}
             </LabeledList.Item>

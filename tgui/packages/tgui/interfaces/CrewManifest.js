@@ -9,7 +9,8 @@ import { decodeHtmlEntities } from "common/string";
  * - Communicator.js
  * - IdentificationComputer.js
  * - pda/pda_manifest.js
- * In order to fuel this UI, you must use the following code in your ui_data (or static data, doesn't really matter)
+ * In order to fuel this UI, you must use the following code in your ui_data
+ * (or static data, doesn't really matter)
  * ```dm
 if(data_core)
     data_core.get_manifest_list()
@@ -39,7 +40,9 @@ export const CrewManifestContent = (props, context) => {
       {manifest.map(cat => !!cat.elems.length && (
         <Section
           title={(
-            <Box backgroundColor={COLORS.manifest[cat.cat.toLowerCase()]} m={-1} pt={1} pb={1}>
+            <Box backgroundColor={
+              COLORS.manifest[cat.cat.toLowerCase()]
+            } m={-1} pt={1} pb={1}>
               <Box ml={1} textAlign="center" fontSize={1.4}>
                 {cat.cat}
               </Box>
