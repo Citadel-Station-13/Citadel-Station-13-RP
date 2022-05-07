@@ -304,6 +304,6 @@
 /turf/simulated/wall/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_DECONSTRUCT)
 		to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
-		ChangeTurf(/turf/simulated/floor/airless, flags = CHANGETURF_PRESERVE_OUTDOORS)
+		ScrapeAway()
 		return TRUE
 	return FALSE
