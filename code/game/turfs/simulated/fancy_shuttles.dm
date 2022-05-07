@@ -107,7 +107,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /turf/simulated/wall/fancy_shuttle/proc/apply_underlay()
 	remove_underlay()
 
-	var/turf/path = get_base_turf_by_area(src) || /turf/space
+	var/turf/path = (baseturfs && (islist(baseturfs)? baseturfs[1] : baseturfs)) || /turf/space
 
 	var/do_plane = null
 	var/do_state = initial(path.icon_state)

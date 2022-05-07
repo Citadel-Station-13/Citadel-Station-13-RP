@@ -115,6 +115,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/landmark)
 /atom/movable/landmark/observer_spawn
 	name = "observer start"
 	color = COLOR_BLUE
+	landmark_key = /atom/movable/landmark/observer_spawn
 
 /atom/movable/landmark/virtual_reality
 	name = "virtual_reality"

@@ -44,10 +44,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/floor/outdoors/grass/sif
-	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks/virgo3b,
-		/turf/simulated/floor/outdoors/dirt/virgo3b
-		)
+	baseturfs = /turf/simulated/floor/outdoors/dirt/virgo3b
 
 // Overriding these for the sake of submaps that use them on other planets.
 // This means that mining on tether base and space is oxygen-generating, but solars and mining should use the virgo3b subtype

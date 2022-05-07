@@ -40,7 +40,7 @@
 #define SPECIES_REPLICANT "Replicant"
 #define SPECIES_REPLICANT_ALPHA "Alpha Replicant"
 #define SPECIES_REPLICANT_BETA "Beta Replicant"
-#define SPECIES_SERGAL "Sergal"
+#define SPECIES_SERGAL "Naramad"
 #define SPECIES_SHADEKIN "Shadekin"
 #define SPECIES_SHADEKIN_CREW "Black-Eyed Shadekin"
 #define SPECIES_SHADOW "Shadow"

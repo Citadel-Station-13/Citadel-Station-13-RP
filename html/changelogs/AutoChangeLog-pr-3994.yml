@@ -1,4 +1,4 @@
 author: "silicons"
 delete-after: True
 changes: 
-  - refactor: "spawnpoints, landmarks"
+  - bugfix: "observers spawning in space"
