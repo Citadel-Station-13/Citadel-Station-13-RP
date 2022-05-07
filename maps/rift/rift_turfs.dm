@@ -28,9 +28,7 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
 /turf/simulated/floor/outdoors/snow/lythios43c
-	turf_layers = list(
-		/turf/simulated/floor/outdoors/safeice/lythios43c
-		)
+	baseturfs = /turf/simulated/floor/outdoors/safeice/lythios43c
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
 /turf/simulated/floor/outdoors/safeice/indoors

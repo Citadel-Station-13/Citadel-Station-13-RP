@@ -20,7 +20,6 @@
 	lift_floor_label = "Underground 2"
 	lift_floor_name = "Atmospherics, Chapel, Mining, Bunker"
 	lift_announce_str = "Arriving at underground level two."
-	base_turf = /turf/simulated/floor/plating
 
 /area/turbolift/runder/level1
 	name = "under (level 1)"
