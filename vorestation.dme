@@ -2470,6 +2470,7 @@
 #include "code\modules\maps\tg\map_template.dm"
 #include "code\modules\maps\tg\map_template_vr.dm"
 #include "code\modules\maps\tg\reader.dm"
+#include "code\modules\maps\triumph\shuttle_landmarks.dm"
 #include "code\modules\maps\triumph\levels\classd.dm"
 #include "code\modules\maps\triumph\levels\classg.dm"
 #include "code\modules\maps\triumph\levels\classh.dm"
