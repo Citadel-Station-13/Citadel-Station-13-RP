@@ -14,6 +14,9 @@
 	var/edge = 0		// If we're an edge
 	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
 
+/turf/space/basic
+	flags = INITIALIZED
+
 /turf/space/basic/New()	//Do not convert to Initialize
 	//This is used to optimize the map loader
 	return
