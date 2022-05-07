@@ -122,7 +122,7 @@
 /area/bridge/bridge_hallway)
 "ak" = (
 /obj/machinery/hologram/holopad,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Cyborg"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -274,7 +274,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "av" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Cyborg"
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -501,7 +501,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "aS" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Bartender"
 	},
 /turf/simulated/floor/lino,
@@ -1137,7 +1137,7 @@
 /area/exploration)
 "bS" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Botanist"
 	},
 /turf/simulated/floor/grass,
@@ -1763,7 +1763,7 @@
 /area/hallway/primary/surfacethree)
 "dj" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chef"
 	},
 /obj/effect/decal/cleanable/flour,
@@ -2444,7 +2444,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "en" = (
-/obj/effect/landmark/map_data/lythios43c,
+/atom/movable/landmark/map_data/lythios43c,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "eo" = (
@@ -2698,7 +2698,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "eI" = (
-/obj/effect/landmark/away,
+/atom/movable/landmark/away,
 /obj/machinery/hologram/holopad,
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3024,7 +3024,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Search and Rescue"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3420,7 +3420,7 @@
 /area/rift/surfacebase/outside/outside3)
 "ga" = (
 /obj/item/stool/padded,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Assistant"
 	},
 /turf/simulated/floor/wood,
@@ -4597,7 +4597,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Head of Personnel"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5458,7 +5458,7 @@
 /area/exploration)
 "jT" = (
 /obj/machinery/light,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Pilot"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -5545,7 +5545,7 @@
 	pixel_y = -26
 	},
 /obj/structure/bed/chair/bay/comfy/captain,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Facility Director"
 	},
 /obj/machinery/button/remote/blast_door{
@@ -7499,7 +7499,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Explorer"
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -8059,7 +8059,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 9
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateGateway"
 	},
 /obj/item/radio/intercom{
@@ -8453,7 +8453,7 @@
 /obj/effect/floor_decal/borderfloorblack/cee{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chief Medical Officer"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8530,7 +8530,7 @@
 /area/tcommsat/chamber)
 "qd" = (
 /obj/item/stool/padded,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Assistant"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8942,7 +8942,7 @@
 "rc" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Explorer"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -9011,7 +9011,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "rk" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Pilot"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -9312,7 +9312,7 @@
 /area/crew_quarters/kitchen)
 "rM" = (
 /obj/structure/bed/chair/comfy/brown,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Explorer"
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -9555,7 +9555,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "so" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Command Secretary"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -10669,7 +10669,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Head of Personnel"
 	},
 /turf/simulated/floor/carpet/blue,
@@ -10978,7 +10978,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Search and Rescue"
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -11622,7 +11622,7 @@
 	name = "south bump";
 	pixel_y = -24
 	},
-/obj/effect/landmark/free_ai_shell,
+/atom/movable/landmark/free_ai_shell,
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
@@ -12210,7 +12210,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "xE" = (
-/obj/effect/landmark/shuttle,
+/atom/movable/landmark/shuttle,
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
@@ -12410,7 +12410,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Observer-Start"
 	},
 /obj/machinery/hologram/holopad,
@@ -12720,7 +12720,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "yD" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Pathfinder"
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -13133,7 +13133,7 @@
 /area/hallway/primary/surfacethree)
 "zz" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Pathfinder"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -13255,7 +13255,7 @@
 /area/bridge)
 "zN" = (
 /obj/structure/bed/chair/comfy/brown,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Search and Rescue"
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -14345,7 +14345,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Ca" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tripai"
 	},
 /obj/machinery/light{
@@ -15873,7 +15873,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/timeclock/premade/west,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateGateway"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -16130,7 +16130,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Botanist"
 	},
 /turf/simulated/floor/grass,
@@ -16158,7 +16158,7 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Research Director"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -16205,7 +16205,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 10
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Explorer"
 	},
 /obj/machinery/alarm{
@@ -16611,7 +16611,7 @@
 	dir = 8
 	},
 /obj/machinery/hologram/holopad,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -16677,7 +16677,7 @@
 /area/rift/surfaceeva/aa/cliff_north)
 "Ha" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Gardener"
 	},
 /turf/simulated/floor/grass,
@@ -16721,7 +16721,7 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Command Secretary"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17593,7 +17593,7 @@
 /area/security/nuke_storage)
 "IS" = (
 /obj/structure/bed/chair/comfy/brown,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Pilot"
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -17797,7 +17797,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Bartender"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -19540,7 +19540,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "MW" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateGateway"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -19959,7 +19959,7 @@
 /area/shuttle/excursion/general)
 "NQ" = (
 /obj/structure/bed/chair/wood,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Gardener"
 	},
 /turf/simulated/floor/grass,
@@ -20070,7 +20070,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Ob" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "AI"
 	},
 /obj/machinery/requests_console{
@@ -20141,7 +20141,7 @@
 /obj/structure/bed/chair/bay/comfy/captain{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Facility Director"
 	},
 /obj/machinery/keycard_auth{
@@ -21566,7 +21566,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 1
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateGateway"
 	},
 /obj/item/radio/intercom{
@@ -21741,7 +21741,7 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chief Engineer"
 	},
 /obj/structure/cable/green{
@@ -22899,7 +22899,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Search and Rescue"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -23369,7 +23369,7 @@
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "UM" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Botanist"
 	},
 /turf/simulated/floor/grass,
@@ -23574,7 +23574,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/general)
 "Vl" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tripai"
 	},
 /obj/machinery/light,
@@ -23787,7 +23787,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "VK" = (
-/obj/effect/landmark/shuttle,
+/atom/movable/landmark/shuttle,
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
@@ -23954,7 +23954,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chef"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -25086,7 +25086,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Yv" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateCyborg"
 	},
 /obj/machinery/computer/cryopod/robot{
@@ -25113,7 +25113,7 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/bay/comfy/black,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Head of Security"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -25619,7 +25619,7 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "ZF" = (
-/obj/effect/landmark/start,
+/atom/movable/landmark/start,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway)
 "ZG" = (

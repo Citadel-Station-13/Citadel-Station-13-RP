@@ -113,7 +113,7 @@
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, Z_LEVEL_LAVALAND_EAST, 64, 64)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_LAVALAND_EAST, world.maxx - 4, world.maxy - 4)
 
-/obj/effect/landmark/map_data/lavaland_east
+/atom/movable/landmark/map_data/lavaland_east
     height = 3
 
 // Class G Mining Planet Exploration Zone

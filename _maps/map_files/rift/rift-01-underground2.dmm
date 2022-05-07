@@ -7357,7 +7357,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 10
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateCryo"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9345,7 +9345,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Shaft Miner"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -9899,7 +9899,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Assistant"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9909,7 +9909,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "BP" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Shaft Miner"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10221,7 +10221,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "EP" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Shaft Miner"
 	},
 /turf/simulated/floor/tiled,
@@ -10334,7 +10334,7 @@
 /area/chapel/observation)
 "Fq" = (
 /obj/structure/bed/chair/backed_red,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chaplain"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10554,7 +10554,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateCryo"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -11236,7 +11236,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "MR" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chaplain"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -11814,7 +11814,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "Sm" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Shaft Miner"
 	},
 /obj/machinery/power/apc{
@@ -12594,7 +12594,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Assistant"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -12617,7 +12617,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "JoinLateCryo"
 	},
 /turf/simulated/floor/tiled/techfloor,

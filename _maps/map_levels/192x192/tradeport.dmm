@@ -3275,7 +3275,7 @@
 /turf/simulated/wall,
 /area/tradeport)
 "lQ" = (
-/obj/effect/landmark/trade,
+/atom/movable/landmark/trade,
 /obj/machinery/computer/cryopod{
 	pixel_y = -32
 	},
@@ -3559,7 +3559,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -4267,7 +4267,7 @@
 /area/tradeport/safarizoo)
 "pX" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /turf/simulated/floor/wood,
@@ -4969,7 +4969,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Trader"
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -6724,7 +6724,7 @@
 	pixel_x = -26
 	},
 /obj/item/toy/plushie/squid/blue,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -7905,7 +7905,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /turf/simulated/floor/wood,
@@ -9009,7 +9009,7 @@
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /turf/simulated/floor/wood,
@@ -9584,7 +9584,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -27
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /turf/simulated/floor/wood,
@@ -10135,7 +10135,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /turf/simulated/shuttle/floor/white,
@@ -10733,7 +10733,7 @@
 	pixel_y = -26;
 	specialfunctions = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /turf/simulated/floor/carpet/blue,
@@ -11295,7 +11295,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "Ps" = (
-/obj/effect/landmark/trade,
+/atom/movable/landmark/trade,
 /obj/machinery/computer/cryopod/robot{
 	pixel_y = -30
 	},
@@ -12213,7 +12213,7 @@
 /area/tradeport/commons)
 "SL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /turf/simulated/shuttle/floor/white,
@@ -12294,7 +12294,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Trader"
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -12441,7 +12441,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /turf/simulated/floor/carpet,
@@ -12912,7 +12912,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Trader"
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -13241,7 +13241,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Trader"
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -14002,7 +14002,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
 "Zx" = (
-/obj/effect/landmark/trade,
+/atom/movable/landmark/trade,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/commons)
 "Zy" = (

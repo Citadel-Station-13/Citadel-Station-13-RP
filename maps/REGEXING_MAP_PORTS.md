@@ -10,6 +10,8 @@ Apply regexes in this order:
 // TODO: tape roll
 // todo: devices/weapons
 
+`/obj/effect/landmark`-`/atom/movable/landmark`
+
 // TODO: ADD JOB REGEXES
 // TODO: OBSERVER START
 

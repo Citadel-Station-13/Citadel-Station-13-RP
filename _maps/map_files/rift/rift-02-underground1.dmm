@@ -4380,7 +4380,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Atmospheric Technician"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7699,7 +7699,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/lower/atmos_lockers)
 "nV" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chief Engineer"
 	},
 /obj/structure/bed/chair/bay/comfy/brown{
@@ -11392,7 +11392,7 @@
 /turf/simulated/mineral/icerock,
 /area/rift/surfacebase/underground/under1)
 "At" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Atmospheric Technician"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11483,7 +11483,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "CH" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Station Engineer"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11615,7 +11615,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Station Engineer"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -12373,7 +12373,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Atmospheric Technician"
 	},
 /turf/simulated/floor/tiled/dark,

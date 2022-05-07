@@ -47,7 +47,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "ap" = (
-/obj/effect/landmark/costume,
+/atom/movable/landmark/costume,
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
@@ -162,7 +162,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "aL" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Holocarp Spawn"
 	},
 /turf/simulated/floor/holofloor/reinforced,
@@ -1216,7 +1216,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "dP" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Holocarp Spawn Random"
 	},
 /turf/simulated/floor/holofloor/space,
@@ -2787,7 +2787,7 @@
 	},
 /area/holodeck/holodorm/source_beach)
 "iB" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Wolfgirl Spawn"
 	},
 /turf/simulated/floor/holofloor/snow,
@@ -3573,7 +3573,7 @@
 /area/space)
 "kK" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Catgirl Spawn"
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -7603,7 +7603,7 @@
 	},
 /area/centcom/specops)
 "uX" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Response Team"
 	},
 /turf/unsimulated/floor/steel{
@@ -9302,7 +9302,7 @@
 /area/tdome/tdomeobserve)
 "zb" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdomeobserve"
 	},
 /turf/unsimulated/floor{
@@ -9716,7 +9716,7 @@
 	},
 /area/tdome/tdome1)
 "Ad" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome2"
 	},
 /turf/unsimulated/floor{
@@ -9735,7 +9735,7 @@
 	},
 /area/tdome/tdome1)
 "Af" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome1"
 	},
 /turf/unsimulated/floor{
@@ -9780,7 +9780,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome2"
 	},
 /turf/unsimulated/floor{
@@ -9792,7 +9792,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome1"
 	},
 /turf/unsimulated/floor{
@@ -9885,7 +9885,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Aw" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome2"
 	},
 /obj/machinery/camera/network/thunder{
@@ -9906,7 +9906,7 @@
 	},
 /area/tdome)
 "Ay" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome1"
 	},
 /obj/machinery/camera/network/thunder{

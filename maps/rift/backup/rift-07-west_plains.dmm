@@ -794,7 +794,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/mixing)
 "fo" = (
-/obj/effect/landmark/map_data/west_plains,
+/atom/movable/landmark/map_data/west_plains,
 /turf/unsimulated/wall/planetary/lythios43c{
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"

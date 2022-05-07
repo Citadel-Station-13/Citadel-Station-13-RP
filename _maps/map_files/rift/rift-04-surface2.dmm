@@ -546,7 +546,7 @@
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Security Officer"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -903,7 +903,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Roboticist"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -1561,7 +1561,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Medical Doctor"
 	},
 /turf/simulated/floor/carpet/blue,
@@ -3429,7 +3429,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Scientist"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -4417,7 +4417,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "jb" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Research Director"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -6509,7 +6509,7 @@
 /area/triumph/surfacebase/sauna)
 "mZ" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Security Officer"
 	},
 /obj/machinery/camera/network/security{
@@ -8895,7 +8895,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Scientist"
 	},
 /obj/structure/cable/green{
@@ -10620,7 +10620,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Scientist"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -10938,7 +10938,7 @@
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
 "vT" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Medical Doctor"
 	},
 /turf/simulated/floor/tiled/monowhite,
@@ -11112,7 +11112,7 @@
 	dir = 10
 	},
 /obj/machinery/space_heater,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "blobstart"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -12087,7 +12087,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Security Officer"
 	},
 /turf/simulated/floor/tiled,
@@ -12259,7 +12259,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chemist"
 	},
 /turf/simulated/floor/tiled/monowhite,
@@ -12569,7 +12569,7 @@
 	dir = 6
 	},
 /obj/random/cutout,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -14910,7 +14910,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "DR" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Head of Security"
 	},
 /obj/machinery/button/remote/airlock{
@@ -15541,7 +15541,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Medical Doctor"
 	},
 /turf/simulated/floor/tiled/white,
@@ -16604,7 +16604,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Security Officer"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -18073,7 +18073,7 @@
 /area/security/hallway)
 "Ju" = (
 /obj/structure/table/bench/steel,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Security Officer"
 	},
 /obj/structure/cable/green{
@@ -18722,7 +18722,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Security Officer"
 	},
 /turf/simulated/floor/carpet/blue,
@@ -18938,7 +18938,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Scientist"
 	},
 /obj/structure/cable/green{
@@ -19640,7 +19640,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Medical Doctor"
 	},
 /obj/structure/cable/green{
@@ -20802,7 +20802,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Roboticist"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -20855,7 +20855,7 @@
 /turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "OI" = (
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Warden"
 	},
 /obj/machinery/light_switch{
@@ -21130,7 +21130,7 @@
 /area/security/evidence_storage)
 "Po" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Medical Doctor"
 	},
 /turf/simulated/floor/tiled/white,
@@ -21820,7 +21820,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Security Officer"
 	},
 /obj/structure/cable/green{
@@ -23183,7 +23183,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Scientist"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -24169,7 +24169,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Scientist"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -25449,7 +25449,7 @@
 /area/medical/resleeving)
 "Xx" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Chemist"
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -25631,7 +25631,7 @@
 /area/maintenance/lower/medsec_maintenance)
 "XO" = (
 /obj/structure/table/bench/steel,
-/obj/effect/landmark/start{
+/atom/movable/landmark/start{
 	name = "Security Officer"
 	},
 /obj/structure/cable/green{

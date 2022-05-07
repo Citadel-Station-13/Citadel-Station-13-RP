@@ -11,10 +11,10 @@
 	height = 4
 
 // Lythios
-/obj/effect/landmark/map_data/lythios43c
+/atom/movable/landmark/map_data/lythios43c
     height = 5
 
-/obj/effect/landmark/map_data/west_plains
+/atom/movable/landmark/map_data/west_plains
     height = 2
 
 // See beach.dm for more details on this. Placeholder for now to stop compiling issues -Bloop
