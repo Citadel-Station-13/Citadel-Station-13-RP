@@ -141,7 +141,7 @@
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
 			to_chat(user, SPAN_NOTICE("You build a wall."))
-			ChangeTurf(/turf/simulated/wall)
+			PlaceOnTop(/turf/simulated/wall)
 			var/turf/simulated/wall/T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
