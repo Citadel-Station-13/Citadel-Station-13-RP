@@ -40,9 +40,13 @@
 /// duplicate of world icon size. don't lie to yourself, we aren't getting 64x64 ss13.
 #define OVERMAP_WORLD_ICON_SIZE				32
 /// during entity queries, this is the minimum range where we use spatial grid scan, in byond pixels. below this, we use bounds() fastpath
-#define OVERMAP_ENTITY_QUERY_BUILTIN_RANGE_PIXELS		(OVERMAP_WORLD_ICON_SIZE * 10)	// 21x21, we assume byond isn't awful below this. above this, 8x8 spatial grids can easily be better (MAYBE)
+#define OVERMAP_ENTITY_QUERY_BUILTIN_RANGE_PIXELS		(OVERMAP_WORLD_ICON_SIZE * 10.5)	// 21x21, we assume byond isn't awful below this. above this, 8x8 spatial grids can easily be better (MAYBE)
 /// during entity queries, this is the minimum range where we use spatial grid scan, in overmap coords. below this, we use bounds() fastpath
 #define OVERMAP_ENTITY_QUERY_BUILTIN_RANGE				(OVERMAP_ENTITY_QUERY_BUILTIN_RANGE_PIXELS * OVERMAP_DISTANCE_PIXEL)
+/// pixels to overmap coordinate distance
+#define OVERMAP_DISTANCE_FROM_PIXELS(pixels)			(pixels * OVERMAP_DISTANCE_PIXEL)
+/// tiles to overmap coordinate distance
+#define OVERMAP_DISTANCE_FROM_TILES(tiles)				(tiles * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
 
 ///////// LEGACY BELOW
 
