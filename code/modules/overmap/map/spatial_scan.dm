@@ -206,5 +206,6 @@
 			(wraparound & NORTH)? () : (dist - y + 1)
 		)
 		SCAN_BOUNDS(scan)
+	#warn impl
 
 #undef SCAN_BOUNDS
