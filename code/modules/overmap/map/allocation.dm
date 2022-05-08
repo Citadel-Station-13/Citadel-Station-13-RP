@@ -48,6 +48,9 @@
 #endif
 #if OVERMAP_GENERATION_EDGE_MARGIN > 0
 	var/list/turf/turfs = list()
+	var/area/overmap/border/border_area = new(null)
+	var/area/overmap/instance/instance_area = new(null)
+	our_area = instance_area
 	// north
 	turfs += block(locate(cached_x_start, cached_y_end, cached_z), locate(cached_x_end, cached_y_end - OVERMAP_GENERATION_EDGE_MARGIN + 1, cached_z))
 	// south
@@ -56,14 +59,24 @@
 	turfs += block(locate(cached_x_end - OVERMAP_GENERATION_EDGE_MARGIN + 1, cached_y_start + OVERMAP_GENERATION_EDGE_MARGIN, cached_z), locate(cached_x_end, cached_y_end - OVERMAP_GENERATION_EDGE_MARGIN, cached_z))
 	// west
 	turfs += block(locate(cached_x_start, cached_y_start + OVERMAP_GENERATION_EDGE_MARGIN, cached_z), locate(cached_x_start + OVERMAP_GENERATION_EDGE_MARGIN - 1, cached_y_end - OVERMAP_GENERATION_EDGE_MARGIN, cached_z))
-
 	for(var/turf/T as anything in turfs)
 		// TODO: CHANGETURF_SKIP
 		T.ChangeTurf(/turf/overmap/edge)
+		T.set_area(border_area)
 	log_overmaps_map(src, "Generated [length(turfs)] border turfs.")
 #else
 	log_overmaps_map(src, "Skipping borderturf setup - OVERMAP_GENERATION_EDGE_MARGIN is not positive")
 #endif
+	// now get everything inside
+	turfs = block(
+		locate(cached_x_start + OVERMAP_GENERATION_EDGE_MARGIN, cached_y_start + OVERMAP_GENERATION_EDGE_MARGIN, cached_z),
+		locate(cached_x_end - OVERMAP_GENERATION_EDGE_MARGIN, cached_y_end - OVERMAP_GENERATION_EDGE_MARGIN, cached_z)
+		)
+	for(var/turf/T as anything in turfs)
+		T.ChangeTurf(/turf/overmap)
+		T.set_area(instance_area)
+	log_overmaps_map(src, "Generated [length(turfs)] interior turfs.")
+
 
 /datum/overmap/proc/SetupVisuals()
 	// if we don't have a side, don't bother

@@ -60,6 +60,8 @@
 	var/cached_pixel_width
 	/// cached byond pixel size
 	var/cached_pixel_height
+	/// area ref
+	var/area/overmap/our_area
 
 	// virtual locations
 	/// our stellar location
@@ -90,6 +92,8 @@
 	#warn unregister entities and move to nullspace
 	initialized = FALSE
 	spatial_hash = null
+	if(istype(our_area))
+		our_area.overmap = null
 	if(turf_reservation)
 		QDEL_NULL(turf_reservation)
 	if(stellar_location)

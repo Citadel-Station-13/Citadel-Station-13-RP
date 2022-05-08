@@ -384,3 +384,17 @@
 // We were the the B-side in a turf translation
 /turf/proc/post_translate_B(var/turf/A)
 	return
+
+/**
+ * sets our area to another
+ */
+/turf/proc/set_area(area/A)
+	var/area/old = loc
+	A.contents.Add(src)
+	on_area_change(old, A)
+
+/**
+ * called on area change
+ */
+/turf/proc/on_area_change(area/old_area, area/new_area)
+	return

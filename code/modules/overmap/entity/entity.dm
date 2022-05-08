@@ -52,6 +52,8 @@
 	var/last_spatial_x
 	/// used for optimized spatial hash re-positioning
 	var/last_spatial_y
+	/// are we about to forcemove? used to prevent forceMove hook from firing
+	var/jumping = FALSE
 
 /atom/movable/overmap_object/entity/New()
 	// assign id immediately

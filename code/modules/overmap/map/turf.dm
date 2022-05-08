@@ -62,43 +62,6 @@
 	if(istype(O, /atom/movable/overmap_object/entity/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_exited(src, O, newloc)
 
-/turf/overmap/edge
-	opacity = 1
-	density = 1
-	var/map_is_to_my
-	var/turf/overmap/edge/wrap_buddy
-
-/turf/overmap/edge/Initialize()
-	..()
-	return INITIALIZE_HINT_LATELOAD
-
-/turf/overmap/edge/LateInitialize()
-	//This could be done by using the GLOB.using_map.overmap_size much faster, HOWEVER, doing it programatically to 'find'
-	//  the edges this way allows for 'sub overmaps' elsewhere and whatnot.
-	for(var/side in GLOB.alldirs) //The order of this list is relevant: It should definitely break on finding a cardinal FIRST.
-		var/turf/T = get_step(src, side)
-		if(T?.type == /turf/overmap) //Not a wall, not something else, EXACTLY a flat map turf.
-			map_is_to_my = side
-			break
-
-	if(map_is_to_my)
-		var/turf/T = get_step(src, map_is_to_my)	// Should be a normal map turf
-		while(istype(T, /turf/overmap))
-			T = get_step(T, map_is_to_my)	// Could be a wall if the map is only 1 turf big
-			if(istype(T, /turf/overmap/edge))
-				wrap_buddy = T
-				break
-
-/turf/overmap/edge/Destroy()
-	wrap_buddy = null
-	return ..()
-
-/turf/overmap/edge/Bumped(var/atom/movable/AM)
-	if(wrap_buddy?.map_is_to_my)
-		AM.forceMove(get_step(wrap_buddy, wrap_buddy.map_is_to_my))
-	else
-		. = ..()
-
 /**
  * separates us from rest of space reservations
  */

@@ -65,13 +65,21 @@
 		break
 	if(!passing || !istype(BL) || !istype(TR))
 		return FALSE
+	// make our area
+	var/area/A = area_type || world.area
+	if(initial(A.unique))
+		A = GLOB.areas_by_type[A]
+		if(!A)
+			A = new(null)
+	else
+		A = new(null)
 	bottom_left_coords = list(BL.x, BL.y, BL.z)
 	top_right_coords = list(TR.x, TR.y, TR.z)
 	for(var/i in final)
 		var/turf/T = i
 		reserved_turfs |= T
 		T.flags &= ~UNUSED_RESERVATION_TURF
-		#warn this is where area should probably change
+		T.set_area(A)
 		SSmapping.unused_turfs["[T.z]"] -= T
 		SSmapping.used_turfs[T] = src
 		if(borderturf && (T.x == BL.x || T.x == TR.x || T.y == BL.y || T.y == TR.y))

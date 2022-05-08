@@ -10,6 +10,10 @@
 	var/da = angular_velocity * seconds
 
 	if(dx > 32 || dy > 32)	// not sure how this is possible but we're jumping so..
+		x += dx
+		y += dy
+		angle += da
+		angle = SIMPLIFY_DEGREES(angle)
 		move_to_location()
 		return
 
@@ -26,8 +30,16 @@
  * move to where we should be immediately without visuals
  */
 /atom/movable/overmap_object/entity/proc/move_to_location()
-
-
+	jumping = TRUE
+	forceMove(
+		locate((x / OVERMAP_DISTANCE_PIXEL) + overmap.cached_x_start),
+		locate((y / OVERMAP_DISTANCE_PIXEL) + overmap.cached_y_start),
+		overmap.cached_z
+	)
+	jumping = FALSE
+	var/matrix/M = matrix()
+	M.Turn(angle)
+	transform = M
 	ensure_hash_correctness()
 
 /**
@@ -159,9 +171,25 @@
  * forcemove hook -  moves us to the correct position on an overmap and reset physics!
  */
 /atom/movable/overmap_object/entity/forceMove(atom/destination)
-	// TODO: pixel_movement?
-	#warn ugh
+	if(jumping)
+		return ..()
 	. = ..()
+	if(!overmap.physically_in_bounds(get_turf(destination)))
+		remove_from_overmap()
+		add_to_overmap()		// adds us if we're in another overmap
+		return
+	x = (x - overmap.cached_x_start) + 16
+	y = (y - overmap.cached_y_start) + 16
+	// above jumps us to center of tile
+	// move
+	move_to_location()
+
+/**
+ * if we jump to nullspace, GTFO our overmap
+ */
+/atom/movable/overmap_object/entity/moveToNullspace()
+	remove_from_overmap()
+	return ..()
 
 /**
  * check if physics paused
@@ -202,7 +230,9 @@
  * this does not handle stuff like shuttle docking, this is the raw physics action
  */
 /atom/movable/overmap_object/entity/proc/move_inside_entity(atom/movable/overmap_object/entity/E)
-#warn do all of these
+	jumping = TRUE
+	forceMove(E)
+	jumping = FALSE
 
 /**
  * move out of our current overmap object
@@ -210,6 +240,10 @@
  * this will spit us out into their tile, whereever that is
  */
 /atom/movable/overmap_object/entity/proc/move_outside_entity()
+	ASSERT(loc)
+	jumping = TRUE
+	forceMove(loc.loc)
+	jumping = FALSE
 
 /**
  * called when we physically move into another overmap object from the overmap

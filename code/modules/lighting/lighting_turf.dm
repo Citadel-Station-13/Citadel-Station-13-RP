@@ -101,7 +101,8 @@
 		recalc_atom_opacity() // Make sure to do this before reconsider_lights(), incase we're on instant updates.
 		reconsider_lights()
 
-/turf/proc/change_area(var/area/old_area, var/area/new_area)
+/turf/on_area_change(area/old_area, area/new_area)
+	. = ..()
 	if(SSlighting.subsystem_initialized)
 		if (new_area.dynamic_lighting != old_area.dynamic_lighting)
 			if (new_area.dynamic_lighting)
