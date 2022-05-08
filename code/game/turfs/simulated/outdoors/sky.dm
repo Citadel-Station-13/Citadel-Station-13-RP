@@ -11,7 +11,6 @@
 
 /turf/simulated/sky/Initialize(mapload)
 	. = ..()
-	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFFFFF")
 
 /turf/simulated/sky/north
