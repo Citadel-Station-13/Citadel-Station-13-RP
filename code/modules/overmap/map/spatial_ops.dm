@@ -136,8 +136,7 @@
 	else
 		bx = get_x_of_object(B)
 		by = get_y_of_object(B)
-	#warn finish this algorithm - clockwise from north
-	. = arctan(
+	. = 90 - arctan(
 		abs(bx - ax) > cached_coordinate_center_x? (
 			(bx > ax)? (-ax - (cached_coordinate_width - bx)) : (bx + (cached_coordinate_width - ax))
 		) : (
