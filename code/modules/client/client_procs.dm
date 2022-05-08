@@ -290,7 +290,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				disconnect_with_message("Your version of BYOND ([byond_version].[byond_build]) is blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]]. Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")
 				return
 
-	if(SSinput.subsystem_initialized)
+	if(SSinput.initialized)
 		set_macros()
 		update_movement_keys()
 

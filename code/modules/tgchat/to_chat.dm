@@ -61,7 +61,7 @@
 		handle_whitespace = TRUE,
 		trailing_newline = TRUE,
 		confidential = FALSE)
-	if(Master.current_runlevel == RUNLEVEL_INIT || !SSchat?.subsystem_initialized)
+	if(Master.current_runlevel == RUNLEVEL_INIT || !SSchat?.initialized)
 		to_chat_immediate(target, html, type, text)
 		return
 	if(!target || (!html && !text))
