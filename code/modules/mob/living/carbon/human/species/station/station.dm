@@ -465,32 +465,30 @@
 
 /datum/species/sergal
 	name = SPECIES_SERGAL
-	name_plural = "Sergals"
+	name_plural = "Naramadi"
 	icobase = 'icons/mob/human_races/r_sergal.dmi'
 	deform = 'icons/mob/human_races/r_def_sergal.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	slowdown      = -0.25
+	snow_movement = -1 // Ignores light snow
 	//darksight = 8
 	//slowdown = -0.5
 	//brute_mod = 1.15
 	//burn_mod =  1.15
 	//gluttonous = 1
+	hunger_factor = 0.1 // By math should be half of the Teshari Nutrition drain
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SAGARU)
 	name_language = LANGUAGE_SAGARU
 	color_mult = 1
 
-	max_age = 80
+	max_age = 120
 
-	blurb = "There are two subspecies of Sergal; Southern and Northern. Northern sergals are a highly aggressive race \
-	that lives in the plains and tundra of their homeworld. They are characterized by long, fluffy fur bodies with cold colors; \
-	usually with white abdomens, somewhat short ears, and thick faces. Southern sergals are much more docile and live in the \
-	Gold Ring City and are scattered around the outskirts in rural areas and small towns. They usually have short, brown or yellow \
-	(or other 'earthy' colors) fur, long ears, and a long, thin face. They are smaller than their Northern relatives. Both have strong \
-	racial tensions which has resulted in more than a number of wars and outright attempts at genocide. Sergals have an incredibly long \
-	lifespan, but due to their lust for violence, only a handful have ever survived beyond the age of 80, such as the infamous and \
-	legendary General Rain Silves who is claimed to have lived to 5000."
+	blurb = "The Naramadi (Plural of Naramad) are a species of bipedal, furred mammalians originating from the Verkihar Major system. \
+	They share a border with the Unathi, granting both of the species a history of war. \
+	Naramadi Ascendancy's location also brings forth a constant danger of Hivebot Fleets attacks, leaving the Empire in a state of constant Defense."
 
 	wikilink=""
 
