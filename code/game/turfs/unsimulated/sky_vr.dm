@@ -36,7 +36,7 @@
 	var/mob/living/L
 	if(isliving(AM))
 		L = AM
-		if(L.is_floating)
+		if(L.is_floating || L.flying)
 			return //Flyers/nograv can ignore it
 
 	do_fall(AM)
