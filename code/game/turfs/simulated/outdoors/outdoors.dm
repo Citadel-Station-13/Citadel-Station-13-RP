@@ -43,14 +43,12 @@ var/list/turf_edge_cache = list()
 /turf/simulated/AfterChange(flags, oldType)
 	. = ..()
 	// If it was outdoors and still is, it will not get added twice when the planet controller gets around to putting it in.
-	if(outdoors)
-		make_outdoors()
-	else
-		make_indoors()
-
-/turf/simulated/floor/outdoors/update_icon()
-	..()
-	update_icon_edge()
+	if(flags & CHANGETURF_PRESERVE_OUTDOORS)
+		// if it didn't preserve then we don't need to recheck now do we
+		if(outdoors)
+			make_outdoors()
+		else
+			make_indoors()
 
 /turf/simulated/floor/outdoors/mud
 	name = "mud"
