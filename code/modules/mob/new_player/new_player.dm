@@ -17,6 +17,7 @@
 	anchored = 1	// Don't get pushed around
 
 /mob/new_player/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
 	GLOB.mob_list += src
 	flags |= INITIALIZED
 	return INITIALIZE_HINT_NORMAL

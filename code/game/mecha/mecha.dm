@@ -199,7 +199,12 @@
 
 /obj/mecha/Initialize()
 	. = ..()
+	INVOKE_ASYNC(src, .proc/create_components)
+	update_transform()
 
+// shitcode
+// VEHICLE MECHS WHEN?
+/obj/mecha/proc/create_components()
 	for(var/path in starting_components)
 		var/obj/item/mecha_parts/component/C = new path(src)
 		C.attach(src)
@@ -208,7 +213,6 @@
 		for(var/path in starting_equipment)
 			var/obj/item/mecha_parts/mecha_equipment/ME = new path(src)
 			ME.attach(src)
-	update_transform()
 
 /obj/mecha/drain_power(var/drain_check)
 
