@@ -24,6 +24,7 @@
 						(dist > cached_coordinate_height - y + 1? NORTH : NONE)	| \
 						(x - dist >= 0? WEST : NONE)							| \
 						(y - dist >= 0? SOUTH : NONE)
+
 	// detect the size being big enough we flat out trample an entire width/height and overlap
 	var/diameter = dist * 2 + 1
 	var/trampled = NONE
@@ -43,6 +44,10 @@
 	// self-inflicting cock and ball torture in the form of
 	// "LUMMOX, WHY CAN'T WE HAVE AN OPTIMIZING COMPILER OR HAVE AN OPEN SOURCE ENGINE SO I DON'T HAVE TO DO THIS"
 	// (today, anyways)
+
+	// fastpath if we are trampling every side just grab the whole goddamn map
+	if(trampled == ((1<<0) | (1<<1)))
+		return entities.Copy()
 
 	// lower coords with overflow allowed
 	var/raw_lower_x = x - dist
@@ -82,91 +87,11 @@
 		:																																	\
 		_entities_in_spatial_square(lower_ensured_index_x, lower_ensured_index_y, upper_ensured_index_x, upper_ensured_index_y)
 
+	// we now have all the things we know for sure will be in us
+	// everything else must be verified via dist calcs
 
+	#warn unsure edges
 
-
-
-
-	// TODO: manual optimization because byond compiler probably doesn't optimize CEILING
-	// the cached coordinate height/width is needed because spatial size can go past the high edges
-
-	#warn we will never beat byond builtins at low ranges. use bounds() when under a certain limit.
-
-	var/closest = min(
-		abs(round(x, OVERMAP_SPATIAL_HASH_COORDSIZE) - x),
-		abs(round(y, OVERMAP_SPATIAL_HASH_COORDSIZE) - y),
-		cached_coordinate_height - x,
-		cached_coordinate_width - y
-	)
-	var/bucket_radius = closest < dist? CEILING(dist / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) : 0
-	if(bucket_radius == 0)
-		// process the bucket we're in if we just need that
-		for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(bucket_x, bucket_y, spatial_hash_width, spatial_hash_height)])
-			if(direct_entity_distance_from(E, x, y) <= dist)
-				. += E
-		return
-
-
-
-	#warn REDO AGAIN
-	// we could not do the easy route
-	// so, we only need to do distance calcs for the edges of our spatial scan
-	// for everything inside a certain range, we know for sure they'll be in range.
-
-
-	#warn old code below
-	// scan all buckets in range
-	if(min(spatial_hash_width - bucket_x, spatial_hash_height - bucket_y, bucket_x - 1, bucket_y - 1) > bucket_radius)
-		// requires wraparound
-		// okay THIS IS GOING TO BE AWFUL
-		// first, scan x coordinate
-		// we KNOW we will need to wrap around so first check is is our dist big enough
-		// that we will wrap around the entirety of the map and to the other side of the check?
-		// we can optimize it out if so
-		if(dist > cached_coordinate_center_x)
-			// if we're bigger we know we are going to need to scan the entire x width of the map
-			if(dist > cached_coordinate_center_y)
-				// oh they literally wanted the entire goddamn map
-				return entities.Copy()
-			var/y_wrap_edge = (y - dist) < 0? SOUTH : ((y + dist) > cached_coordinate_height? SOUTH : NONE)
-			// unfortunately we didn't luck out and they're picky
-			for(var/x in 1 to spatial_hash_width)
-				// scan y
-				switch(y_wrap_edge)
-					if(NORTH)
-						for(var/y in bucket_y to spatial_hash_height)
-							for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
-								if(direct_entity_distance_from(E, x, y) <= dist)
-									. += E
-						for(var/y in 1 to ((bucket_y + bucket_radius) - spatial_hash_height))
-							for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
-								if(direct_entity_distance_from(E, x, y) <= dist)
-									. += E
-					if(SOUTH)
-						for(var/y in 1 to bucket_y)
-							for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
-								if(direct_entity_distance_from(E, x, y) <= dist)
-									. += E
-						for(var/y in spatial_hash_height to (spatial_hash_height - (bucket_y - bucket_radius)) step -1)
-							for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
-								if(direct_entity_distance_from(E, x, y) <= dist)
-									. += E
-					else
-						CRASH("unexpected edge value")
-		else if(dist > cached_coordinate_center_y)
-			// if we're bigger we know we are going to need to scan the entire y height of the map
-
-		else
-			// ughhhhh, most common case, no shortcuts
-
-		#warn finish
-	else
-		// no wraparound, fastpath to a slightly cheaper scan
-		for(var/x in (bucket_x - bucket_radius) to (bucket_x + bucket_radius))
-			for(var/y in (bucket_y - bucket_radius) to (bucket_y + bucket_radius))
-				for(var/atom/movable/overmap_object/entity/E as anything in spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)])
-					if(direct_entity_distance_from(E, x, y) <= dist)
-						. += E
 
 // DANGEROUS PROC START - these are all used for above. if you snowflake use it and bad things happen, eat shit.
 /**
@@ -192,14 +117,31 @@
 	else if(y2 > spatial_hash_height)
 		overrun_y = spatial_hash_height - y2
 		y2 -= overrun_y
-	// get non wrapping portion
-	. += _entities_in_spatial_square(x1, y1, x2, y2)
 	if(overrun_x)
 		if(overrun_y)
 			// ugh
-
+			// auhguhgusaheohtjrytwierkpokytew3joi45ey6rtre wesrdtfhdjszloifhr4esr
+			// FUCK YOU FUCK YOU FUCK YOU FUCK YOU FUCK Y-
+			// I AM NOT EVEN GOING TO BOTHER OPTIMIZING FUCK YOU
+			for(var/_x in x1 to x2)
+				for(var/_y in y1 to y2)
+					// at the very least we know we cannot have duplicates because var/trampled up above would have detected it
+					// ... probably
+					// ensured spatial hash scanning code is conservative so we should be fine(tm)
+					if(_x <= 0)
+						_x += spatial_hash_width
+					else if(_x > spatial_hash_width)
+						_x -= spatial_hash_width
+					if(_y <= 0)
+						_y += spatial_hash_height
+					else if(_y > spatial_hash_height)
+						_y -= spatial_hash_height
+					// AAAAAAAAAAAAAAAAAAAAAAAAAa
+					. += spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(_x, _y, spatial_hash_width, spatial_hash_height)]
 			return
 		// x only
+		// get non wrapping portion
+		. += _entities_in_spatial_square(x1, y1, x2, y2)
 		if(overrun_x > 0)
 			// west edge
 			. += _entities_in_spatial_square(1, y1, overrun_x, y2)
@@ -208,6 +150,8 @@
 			. += _entities_in_spatial_square(spatial_hash_width + overrun_x + 1, y1, spatial_hash_width, y2)
 	else if(overrun_y)
 		// y only
+		// get non wrapping portion
+		. += _entities_in_spatial_square(x1, y1, x2, y2)
 		if(overrun_y > 0)
 			// south edge
 			. += _entities_in_spatial_square(x1, 1, x2, overrun_y)
