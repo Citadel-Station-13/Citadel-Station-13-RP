@@ -774,3 +774,66 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		I.appearance = equip_overlays[image_key]
 		return I
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+/**
+ * clones us into a new datum
+ */
+/datum/species/proc/clone()
+	var/datum/species/created = new type
+	created.copy_from(src)
+
+/**
+ * completely clones us from another species, updating the provided human in the process
+ *
+ * @params
+ * to_copy - species copy
+ * traits - traits to add
+ * H - update this human
+ */
+/datum/species/proc/copy_from(datum/species/to_copy, list/traits, mob/living/carbon/human/H)
+	ASSERT(to_copy)
+	ASSERT(istype(H))
+
+	if(ispath(to_copy))
+		to_copy = get_static_species_meta(to_copy)
+	if(istext(to_copy))
+		to_copy = name_static_species_meta(to_copy)
+
+	var/datum/species/alraune/= new()
+
+	//Initials so it works with a simple path passed, or an instance
+	base_species = to_copy.name
+	icobase = to_copy.icobase
+	deform = to_copy.deform
+	tail = to_copy.tail
+	tail_animation = to_copy.tail_animation
+	icobase_tail = to_copy.icobase_tail
+	color_mult = to_copy.color_mult
+	primitive_form = to_copy.primitive_form
+	species_appearance_flags = to_copy.species_appearance_flags
+	flesh_color = to_copy.flesh_color
+	base_color = to_copy.base_color
+	blood_mask = to_copy.blood_mask
+	damage_mask = to_copy.damage_mask
+	damage_overlays = to_copy.damage_overlays
+	src.traits = traits
+	move_trail = move_trail
+	has_floating_eyes = has_floating_eyes
+
+	//If you had traits, apply them
+	if(src.traits)
+		for(var/trait in src.traits)
+			var/datum/trait/T = all_traits[src.trait]
+			T.apply(H)
+
+	//Set up a mob
+	H.species = new_copy
+	H.icon_state = lowertext(get_bodytype())
+
+	if(holder_type)
+		H.holder_type = holder_type
+
+	if(H.dna)
+		H.dna.ready_dna(H)
+
+	return new_copy

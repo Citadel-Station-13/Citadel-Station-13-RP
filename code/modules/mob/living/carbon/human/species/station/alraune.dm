@@ -454,45 +454,6 @@
 
 //End of fruit gland code.
 
-/datum/species/alraune/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
-	ASSERT(to_copy)
-	ASSERT(istype(H))
-
-	if(ispath(to_copy))
-		to_copy = get_static_species_meta(to_copy)
-	if(istext(to_copy))
-		to_copy = name_static_species_meta(to_copy)
-
-	var/datum/species/alraune/new_copy = new()
-
-	//Initials so it works with a simple path passed, or an instance
-	new_copy.base_species = to_copy.name
-	new_copy.icobase = to_copy.icobase
-	new_copy.deform = to_copy.deform
-	new_copy.tail = to_copy.tail
-	new_copy.tail_animation = to_copy.tail_animation
-	new_copy.icobase_tail = to_copy.icobase_tail
-	new_copy.color_mult = to_copy.color_mult
-	new_copy.primitive_form = to_copy.primitive_form
-	new_copy.species_appearance_flags = to_copy.species_appearance_flags
-	new_copy.flesh_color = to_copy.flesh_color
-	new_copy.base_color = to_copy.base_color
-	new_copy.blood_mask = to_copy.blood_mask
-	new_copy.damage_mask = to_copy.damage_mask
-	new_copy.damage_overlays = to_copy.damage_overlays
-
-	//Set up a mob
-	H.species = new_copy
-	H.icon_state = lowertext(new_copy.get_bodytype())
-
-	if(new_copy.holder_type)
-		H.holder_type = new_copy.holder_type
-
-	if(H.dna)
-		H.dna.ready_dna(H)
-
-	return new_copy
-
 /datum/species/alraune/get_bodytype()
 	return base_species
 

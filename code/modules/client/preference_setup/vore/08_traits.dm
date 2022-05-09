@@ -109,7 +109,7 @@
 	if(selected_species.selects_bodytype)
 		var/datum/species/custom/CS = character.species
 		var/S = pref.custom_base ? pref.custom_base : SPECIES_HUMAN
-		var/datum/species/custom/new_CS = CS.produceCopy(S, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
+		CS.copy_from(S, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
 
 		//Any additional non-trait settings can be applied here
 		new_CS.blood_color = pref.blood_color
