@@ -15,4 +15,4 @@ Apply regexes in this order:
 
 // TODO: MAKE SURE NO / AFTER COSTUME
 `/atom/movable/landmark/costume`-`/atom/movable/landmark/costume/random`
-`/atom/movable/landmark/corpse`-`/atom/movable/spawner/corpse`
+`/atom/movable/landmark/mobcorpse`-`/atom/movable/spawner/corpse`

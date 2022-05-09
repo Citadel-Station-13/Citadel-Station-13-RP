@@ -7,7 +7,7 @@
 //To do: Allow corpses to appear mangled, bloody, etc. Allow customizing the bodies appearance (they're all bald and white right now).
 
 
-/atom/movable/landmark/mobcorpse
+/atom/movable/spawner/corpse
 	name = "Unknown"
 	var/mobname = "Unknown"  //Unused now but it'd fuck up maps to remove it now
 	var/corpseuniform = null //Set this to an object path to have the slot filled with said object on the corpse.
@@ -27,12 +27,12 @@
 	var/corpseidaccess = null //This is for access. See access.dm for which jobs give what access. Again, put in quotes. Use "Captain" if you want it to be all access.
 	var/corpseidicon = null //For setting it to be a gold, silver, CentCom etc ID
 
-/atom/movable/landmark/mobcorpse/Initialize(mapload)
+/atom/movable/spawner/corpse/Initialize(mapload)
 	. = ..()
 	createCorpse()
 	return INITIALIZE_HINT_QDEL
 
-/atom/movable/landmark/mobcorpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
+/atom/movable/spawner/corpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
 	M.real_name = src.name
 	M.set_stat(DEAD) //Kills the new mob
@@ -83,7 +83,7 @@
 
 //List of different corpse types
 
-/atom/movable/landmark/mobcorpse/syndicatesoldier
+/atom/movable/spawner/corpse/syndicatesoldier
 	name = "Mercenary"
 	corpseuniform = /obj/item/clothing/under/syndicate
 	corpsesuit = /obj/item/clothing/suit/armor/vest
@@ -97,7 +97,7 @@
 	corpseidjob = "Operative"
 	corpseidaccess = "Syndicate"
 
-/atom/movable/landmark/mobcorpse/solarpeacekeeper
+/atom/movable/spawner/corpse/solarpeacekeeper
 	name = "Mercenary"
 	corpseuniform = /obj/item/clothing/under/syndicate
 	corpsesuit = /obj/item/clothing/suit/armor/pcarrier/blue/sol
@@ -111,7 +111,7 @@
 	corpseidjob = "Peacekeeper"
 	corpseidaccess = "Syndicate"
 
-/atom/movable/landmark/mobcorpse/syndicatecommando
+/atom/movable/spawner/corpse/syndicatecommando
 	name = "Syndicate Commando"
 	corpseuniform = /obj/item/clothing/under/syndicate
 	corpsesuit = /obj/item/clothing/suit/space/void/merc
@@ -128,7 +128,7 @@
 
 
 
-/atom/movable/landmark/mobcorpse/clown
+/atom/movable/spawner/corpse/clown
 	name = "Clown"
 	corpseuniform = /obj/item/clothing/under/rank/clown
 	corpseshoes = /obj/item/clothing/shoes/clown_shoes
@@ -140,7 +140,7 @@
 	corpseidjob = "Clown"
 	corpseidaccess = "Clown"
 
-/atom/movable/landmark/mobcorpse/clown/clownop
+/atom/movable/spawner/corpse/clown/clownop
 	name = "Clown Commando"
 	corpseuniform = /obj/item/clothing/under/rank/clown
 	corpsesuit = /obj/item/clothing/suit/armor/pcarrier/clownop
@@ -153,7 +153,7 @@
 	corpseidjob = "Commando"
 	corpseidaccess = "Syndicate"
 
-/atom/movable/landmark/mobcorpse/clown/clownop/space
+/atom/movable/spawner/corpse/clown/clownop/space
 	name = "Clown Commando"
 	corpseuniform = /obj/item/clothing/under/rank/clown
 	corpsesuit = /obj/item/clothing/suit/space/void/clownop
@@ -166,7 +166,7 @@
 	corpseidjob = "Commando"
 	corpseidaccess = "Syndicate"
 
-/atom/movable/landmark/mobcorpse/clown/clownop/space/alt
+/atom/movable/spawner/corpse/clown/clownop/space/alt
 	name = "Clown Commando"
 	corpseuniform = /obj/item/clothing/under/rank/clown
 	corpsesuit = /obj/item/clothing/suit/space/void/clownop
@@ -179,24 +179,24 @@
 	corpseidjob = "Commando"
 	corpseidaccess = "Syndicate"
 
-/atom/movable/landmark/mobcorpse/russian
+/atom/movable/spawner/corpse/russian
 	name = "Russian"
 	corpseuniform = /obj/item/clothing/under/soviet
 	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
 	corpsehelmet = /obj/item/clothing/head/bearpelt
 
-/atom/movable/landmark/mobcorpse/russian/ranged
+/atom/movable/spawner/corpse/russian/ranged
 	corpsehelmet = /obj/item/clothing/head/ushanka
 
 //Diorama Corpses
-/atom/movable/landmark/mobcorpse/shogun
+/atom/movable/spawner/corpse/shogun
 	name = "Shogun's Bodyguard"
 	corpseuniform = /obj/item/clothing/under/color/black
 	corpsesuit = /obj/item/clothing/suit/kamishimo
 	corpseshoes = /obj/item/clothing/shoes/sandal
 	corpsehelmet = /obj/item/clothing/head/rice
 
-/atom/movable/landmark/mobcorpse/safari
+/atom/movable/spawner/corpse/safari
 	name = "Colonial Adventurer"
 	corpseuniform = /obj/item/clothing/under/safari
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
@@ -206,16 +206,16 @@
 //		Vox Bodies
 //////////////////////////
 
-/atom/movable/landmark/mobcorpse/vox
+/atom/movable/spawner/corpse/vox
 	name = "vox"
 	corpseid = 0
 
-/atom/movable/landmark/mobcorpse/vox/Initialize()
+/atom/movable/spawner/corpse/vox/Initialize()
 	. = ..()
 	createvoxCorpse()
 	return INITIALIZE_HINT_QDEL
 
-/atom/movable/landmark/mobcorpse/vox/proc/createvoxCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
+/atom/movable/spawner/corpse/vox/proc/createvoxCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	var/mob/living/carbon/human/vox/M = new /mob/living/carbon/human/vox (src.loc)
 	M.real_name = src.name
 	M.set_stat(DEAD) //Kills the new mob
@@ -266,7 +266,7 @@
 
 //Types of Vox corpses:
 
-/atom/movable/landmark/mobcorpse/vox/pirate
+/atom/movable/spawner/corpse/vox/pirate
 	name = "vox pirate"
 	corpseuniform = /obj/item/clothing/under/color/black
 	corpsesuit = /obj/item/clothing/suit/armor/vox_scrap
@@ -275,7 +275,7 @@
 	corpsemask = /obj/item/clothing/mask/breath
 	corpseid = 0
 
-/atom/movable/landmark/mobcorpse/vox/boarder_m
+/atom/movable/spawner/corpse/vox/boarder_m
 	name = "vox melee boarder"
 	corpseuniform = /obj/item/clothing/under/vox/vox_casual
 	corpsesuit = /obj/item/clothing/suit/armor/vox_scrap
@@ -284,7 +284,7 @@
 	corpsemask = /obj/item/clothing/mask/breath
 	corpseid = 0
 
-/atom/movable/landmark/mobcorpse/vox/boarder_r
+/atom/movable/spawner/corpse/vox/boarder_r
 	name = "vox ranged boarder"
 	corpseuniform = /obj/item/clothing/under/rank/bartender
 	corpsesuit = /obj/item/clothing/suit/armor/bulletproof
@@ -292,7 +292,7 @@
 	corpsemask = /obj/item/clothing/mask/breath
 	corpseid = 0
 
-/atom/movable/landmark/mobcorpse/vox/boarder_t
+/atom/movable/spawner/corpse/vox/boarder_t
 	name = "vox salvage technician"
 	corpseuniform = /obj/item/clothing/under/rank/bartender
 	corpsesuit = /obj/item/clothing/suit/armor/bulletproof
@@ -300,7 +300,7 @@
 	corpsemask = /obj/item/clothing/mask/breath
 	corpseid = 0
 
-/atom/movable/landmark/mobcorpse/vox/suppressor
+/atom/movable/spawner/corpse/vox/suppressor
 	name = "vox suppressor"
 	corpseuniform = /obj/item/clothing/under/color/red
 	corpsesuit = /obj/item/clothing/suit/storage/toggle/fr_jacket
@@ -309,7 +309,7 @@
 	corpsemask = /obj/item/clothing/mask/gas/half
 	corpseid = 0
 
-/atom/movable/landmark/mobcorpse/vox/captain
+/atom/movable/spawner/corpse/vox/captain
 	name = "vox captain"
 	corpseuniform = /obj/item/clothing/under/color/black
 	corpsesuit = /obj/item/clothing/suit/space/vox/carapace
@@ -319,7 +319,7 @@
 	corpsehelmet = /obj/item/clothing/head/helmet/riot
 	corpseid = 0
 
-/atom/movable/landmark/mobcorpse/syndicatecommando
+/atom/movable/spawner/corpse/syndicatecommando
 	name = "Mercenary Commando"
 
 //////////////////////////
@@ -327,25 +327,25 @@
 //////////////////////////
 //I'm sorry for how huge this list is. I didn't really consider the ramifications of creating a diverse crew of pirates.
 
-/atom/movable/landmark/mobcorpse/pirate
+/atom/movable/spawner/corpse/pirate
 	name = "Pirate"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
 
-/atom/movable/landmark/mobcorpse/pirate/melee
+/atom/movable/spawner/corpse/pirate/melee
 	corpsesuit = /obj/item/clothing/suit/unathi/mantle
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
 	corpseglasses = /obj/item/clothing/glasses/eyepatch
 	corpsebelt = /obj/item/storage/belt/security/tactical
 	corpseback = /obj/item/storage/backpack/rebel
 
-/atom/movable/landmark/mobcorpse/pirate/melee_machete
+/atom/movable/spawner/corpse/pirate/melee_machete
 	name = "Pirate Brush Cutter"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
 	corpsemask = /obj/item/clothing/mask/balaclava
 	corpseback = /obj/item/storage/backpack/dufflebag/syndie
 
-/atom/movable/landmark/mobcorpse/pirate/melee_machete_armor
+/atom/movable/spawner/corpse/pirate/melee_machete_armor
 	name = "Armored Brush Cutter"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
 	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
@@ -353,21 +353,21 @@
 	corpsehelmet = /obj/item/clothing/head/welding
 	corpseback = /obj/item/storage/backpack/rebel
 
-/atom/movable/landmark/mobcorpse/pirate/melee_energy_armor
+/atom/movable/spawner/corpse/pirate/melee_energy_armor
 	name = "Armored Duelist"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
 	corpsesuit = /obj/item/clothing/suit/armor/pcarrier/navy
 	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
 	corpsemask = /obj/item/clothing/mask/gas/jackal
 
-/atom/movable/landmark/mobcorpse/pirate/melee_shield
+/atom/movable/spawner/corpse/pirate/melee_shield
 	name = "Pirate Buckler"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
 	corpsehelmet = /obj/item/clothing/head/tajaran/scarf
 	corpseback = /obj/item/storage/backpack/dufflebag/syndie
 
-/atom/movable/landmark/mobcorpse/pirate/melee_shield_machete_armor
+/atom/movable/spawner/corpse/pirate/melee_shield_machete_armor
 	name = "Armored Sword and Boarder"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
 	corpsesuit = /obj/item/clothing/suit/armor/pcarrier/navy
@@ -376,7 +376,7 @@
 	corpsebelt = /obj/item/storage/belt/security/tactical
 	corpseback = /obj/item/storage/backpack/rebel
 
-/atom/movable/landmark/mobcorpse/pirate/ranged
+/atom/movable/spawner/corpse/pirate/ranged
 	name = "Pirate Pistolier"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
@@ -384,14 +384,14 @@
 	corpsebelt = /obj/item/storage/belt/security/tactical
 	corpseback = /obj/item/storage/backpack/dufflebag/syndie
 
-/atom/movable/landmark/mobcorpse/pirate/ranged_armor
+/atom/movable/spawner/corpse/pirate/ranged_armor
 	name = "Armored Pistolier"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
 	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
 	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
 	corpsebelt = /obj/item/storage/belt/security/tactical
 
-/atom/movable/landmark/mobcorpse/pirate/ranged_laser
+/atom/movable/spawner/corpse/pirate/ranged_laser
 	name = "Pirate Handcannon"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
@@ -399,14 +399,14 @@
 	corpsebelt = /obj/item/storage/belt/security/tactical
 	corpseback = /obj/item/storage/backpack/dufflebag/syndie
 
-/atom/movable/landmark/mobcorpse/pirate/ranged_laser_armor
+/atom/movable/spawner/corpse/pirate/ranged_laser_armor
 	name = "Armored Handcannon"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
 	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
 	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
 	corpsebelt = /obj/item/storage/belt/security/tactical
 
-/atom/movable/landmark/mobcorpse/pirate/ranged_blunderbuss
+/atom/movable/spawner/corpse/pirate/ranged_blunderbuss
 	name = "Pirate Blunderbuster"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
@@ -414,7 +414,7 @@
 	corpsebelt = /obj/item/storage/belt/security/tactical/bandolier
 	corpseback = /obj/item/storage/backpack/rebel
 
-/atom/movable/landmark/mobcorpse/pirate/ranged_blunderbuss_armor
+/atom/movable/spawner/corpse/pirate/ranged_blunderbuss_armor
 	name = "Armored Blunderbuster"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
 	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
@@ -423,19 +423,19 @@
 	corpsebelt = /obj/item/storage/belt/security/tactical/bandolier
 	corpseback = /obj/item/storage/backpack/rebel
 
-/atom/movable/landmark/mobcorpse/pirate/mate
+/atom/movable/spawner/corpse/pirate/mate
 	name = "First Mate"
 	corpseuniform = /obj/item/clothing/under/worn_fatigues
 	corpsesuit = /obj/item/clothing/suit/armor/riot/alt
 	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
 	corpsemask = /obj/item/clothing/mask/gas/commando
 
-/atom/movable/landmark/mobcorpse/pirate/mate/rifle
+/atom/movable/spawner/corpse/pirate/mate/rifle
 	name = "Mate Marksman"
 	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
 	corpsemask = null
 
-/atom/movable/landmark/mobcorpse/pirate/bosun
+/atom/movable/spawner/corpse/pirate/bosun
 	name = "Bosun"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
 	corpsesuit = /obj/item/clothing/suit/armor/tactical/pirate
@@ -443,7 +443,7 @@
 	corpseglasses = /obj/item/clothing/glasses/eyepatch
 	corpseback = /obj/item/storage/backpack/rebel
 
-/atom/movable/landmark/mobcorpse/pirate/captain
+/atom/movable/spawner/corpse/pirate/captain
 	name = "Pirate Captain"
 	corpseuniform = /obj/item/clothing/under/worn_fatigues
 	corpsesuit = /obj/item/clothing/suit/armor/tactical/pirate
@@ -452,7 +452,7 @@
 	corpsehelmet = /obj/item/clothing/head/helmet/pirate
 
 //Akula
-/atom/movable/landmark/mobcorpse/akula/proc/createakulaCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
+/atom/movable/spawner/corpse/akula/proc/createakulaCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	var/mob/living/carbon/human/akula/M = new /mob/living/carbon/human/akula (src.loc)
 	M.real_name = src.name
 	M.set_stat(DEAD) //Kills the new mob
@@ -501,27 +501,27 @@
 		W.registered_name = M.real_name
 		M.equip_to_slot_or_del(W, slot_wear_id)
 
-/atom/movable/landmark/mobcorpse/pirate/melee_armor
+/atom/movable/spawner/corpse/pirate/melee_armor
 	name = "Armored Pirate"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine
 	corpsesuit = /obj/item/clothing/suit/storage/vest/tactical
 	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
 	corpsehelmet = /obj/item/clothing/head/helmet/cyberpunk
 
-/atom/movable/landmark/mobcorpse/pirate/melee_energy
+/atom/movable/spawner/corpse/pirate/melee_energy
 	name = "Pirate Duelist"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
 	corpsesuit = /obj/item/clothing/suit/unathi/mantle
 	corpseshoes = /obj/item/clothing/accessory/armor/legguards/riot
 	corpsehelmet = /obj/item/clothing/head/welding
 
-/atom/movable/landmark/mobcorpse/pirate/mate/shotgun
+/atom/movable/spawner/corpse/pirate/mate/shotgun
 	name = "Mate Blunderbuster"
 	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
 	corpsemask = /obj/item/clothing/mask/gas/jackal
 
 //Vulpkanin
-/atom/movable/landmark/mobcorpse/vulpkanin/proc/createvuplkaninCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
+/atom/movable/spawner/corpse/vulpkanin/proc/createvuplkaninCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	var/mob/living/carbon/human/vulpkanin/M = new /mob/living/carbon/human/vulpkanin (src.loc)
 	M.real_name = src.name
 	M.set_stat(DEAD) //Kills the new mob
@@ -570,12 +570,12 @@
 		W.registered_name = M.real_name
 		M.equip_to_slot_or_del(W, slot_wear_id)
 
-/atom/movable/landmark/mobcorpse/pirate/melee_shield_machete
+/atom/movable/spawner/corpse/pirate/melee_shield_machete
 	name = "Sword and Boarder"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/tan
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots
 
-/atom/movable/landmark/mobcorpse/pirate/melee_shield_armor
+/atom/movable/spawner/corpse/pirate/melee_shield_armor
 	name = "Armored Buckler"
 	corpseuniform = /obj/item/clothing/under/oricon/utility/marine/green
 	corpsesuit = /obj/item/clothing/suit/armor/pcarrier/navy
@@ -584,20 +584,20 @@
 	corpsebelt = /obj/item/storage/belt/security/tactical
 	corpseback = /obj/item/storage/backpack/rebel
 
-/atom/movable/landmark/mobcorpse/pirate/mate/pistol
+/atom/movable/spawner/corpse/pirate/mate/pistol
 	name = "Mate Pistolier"
 	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
 	corpsehelmet = /obj/item/clothing/head/helmet/cyberpunk
 
 /*
-/atom/movable/landmark/mobcorpse/pirate
+/atom/movable/spawner/corpse/pirate
 	name = "Pirate"
 	corpseuniform = /obj/item/clothing/under/pirate
 	corpseshoes = /obj/item/clothing/shoes/boots/jackboots
 	corpseglasses = /obj/item/clothing/glasses/eyepatch
 	corpsehelmet = /obj/item/clothing/head/bandana
 
-/atom/movable/landmark/mobcorpse/pirate/ranged
+/atom/movable/spawner/corpse/pirate/ranged
 	name = "Pirate Gunner"
 	corpsesuit = /obj/item/clothing/suit/pirate
 	corpsehelmet = /obj/item/clothing/head/pirate

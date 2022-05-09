@@ -217,7 +217,7 @@
 //	emote_hear = list("honks")
 //	speak_chance = 1
 	a_intent = "harm"
-	var/corpse = /atom/movable/landmark/mobcorpse/tunnelclown
+	var/corpse = /atom/movable/spawner/corpse/tunnelclown
 	var/weapon1 = /obj/item/twohanded/fireaxe
 	stop_when_pulled = 0
 	maxHealth = 100
@@ -250,7 +250,7 @@
 	icon_state = "sentinelclown"
 	icon_living = "sentinelclown"
 	icon_dead = "clown_dead"
-	corpse = /atom/movable/landmark/mobcorpse/tunnelclown/sentinel
+	corpse = /atom/movable/spawner/corpse/tunnelclown/sentinel
 	weapon1 = /obj/item/material/twohanded/spear
 	maxHealth = 150
 	health = 150
