@@ -181,7 +181,7 @@ LYTHIOS43C_TURF_CREATE(/turf/unsimulated/mineral/icerock)
 	color = "#DAFFFA"
 
 /turf/simulated/sky/lythios43c/Initialize()
-	SSplanets.addTurf(src)
+	. = ..()
 	set_light(2, 2, "#DAFFFA")
 
 /turf/simulated/sky/lythios43c/north
