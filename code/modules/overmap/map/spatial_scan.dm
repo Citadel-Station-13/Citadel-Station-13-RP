@@ -228,8 +228,8 @@
 	var/list/scan
 	// track parameters of first scan for reuse, mostly importantly, overrun
 	// overrun is negative when overflowing south or west, positive if overflowing north or east
-	var/x_start = (trampled & (1<<0)) ? (cached_bottomleft_pixel_x) : (cached_bottomleft_pixel_x + x - dist - 1),
-	var/y_start = (trampled & (1<<1)) ? (cached_bottomleft_pixel_y) : (cached_bottomleft_pixel_y + y - dist - 1),
+	var/x_start = (trampled & (1<<0)) ? (cached_bottomleft_pixel_x) : (cached_bottomleft_pixel_x + x - dist - 1)
+	var/y_start = (trampled & (1<<1)) ? (cached_bottomleft_pixel_y) : (cached_bottomleft_pixel_y + y - dist - 1)
 	var/overrun_x = 0
 	var/overrun_y = 0
 	if(x_start < cached_bottomleft_pixel_x)
