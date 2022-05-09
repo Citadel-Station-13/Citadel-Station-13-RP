@@ -27,13 +27,17 @@
 
 /atom/movable/landmark/corpse/Initialize(mapload)
 	. = ..()
+	// human won't Initialize() before lateload, which until we refactor species/whatnot will be bad because stuff like hud list won't be init'd
+	return INITIALIZE_HINT_LATELOAD
+
+/atom/movable/landmark/corpse/LateInitialize()
 	createCorpse()
-	return INITIALIZE_HINT_QDEL
+	qdel(src)
 
 /atom/movable/landmark/corpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	SHOULD_NOT_SLEEP(TRUE)	// HMMM MOB INIT ISSUES?
 	set waitfor = FALSE
-	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
+	var/mob/living/carbon/human/M = . = new /mob/living/carbon/human (src.loc)
 	M.set_species(species_type_by_name(species))
 	M.real_name = src.name
 	M.death(1) //Kills the new mob
