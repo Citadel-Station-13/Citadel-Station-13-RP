@@ -142,7 +142,7 @@ var/list/organ_cache = list()
 					blood_DNA = list()
 				blood_DNA[dna.unique_enzymes] = dna.b_type
 	else
-		species = GLOB.all_species[SPECIES_HUMAN]
+		species = get_static_species_meta(/datum/species/human)
 
 	if(owner)
 		if(!meat_type)
