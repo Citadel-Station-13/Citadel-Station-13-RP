@@ -482,7 +482,7 @@
 	remove_inherent_verbs(H)
 	H.holder_type = null
 
-	for(var/name in tarits)
+	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
 		T.remove(H)
 
