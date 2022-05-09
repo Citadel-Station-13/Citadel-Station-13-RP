@@ -396,7 +396,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	remove_layer(UNDERWEAR_LAYER)
 
-	if(species.appearance_flags & HAS_UNDERWEAR)
+	if(species.species_appearance_flags & HAS_UNDERWEAR)
 		overlays_standing[UNDERWEAR_LAYER] = list()
 		for(var/category in all_underwear)
 			if(hide_underwear[category])

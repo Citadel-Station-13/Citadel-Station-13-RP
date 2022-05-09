@@ -22,7 +22,7 @@
 		)
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	var/list/traits = list()
 
@@ -67,7 +67,7 @@
 	new_copy.icobase_tail = to_copy.icobase_tail
 	new_copy.color_mult = to_copy.color_mult
 	new_copy.primitive_form = to_copy.primitive_form
-	new_copy.appearance_flags = to_copy.appearance_flags
+	new_copy.species_appearance_flags = to_copy.species_appearance_flags
 	new_copy.flesh_color = to_copy.flesh_color
 	new_copy.base_color = to_copy.base_color
 	new_copy.blood_mask = to_copy.blood_mask

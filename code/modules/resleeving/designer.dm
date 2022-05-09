@@ -117,21 +117,21 @@
 		styles["Wing"] = temp
 
 		temp = list("styleHref" = "hair_style", "style" = mannequin.h_style)
-		if(mannequin.species && (mannequin.species.appearance_flags & HAS_HAIR_COLOR))
+		if(mannequin.species && (mannequin.species.species_appearance_flags & HAS_HAIR_COLOR))
 			temp["color"] = MOB_HEX_COLOR(mannequin, hair)
 			temp["colorHref"] = "hair_color"
 		styles["Hair"] = temp
 
 		temp = list("styleHref" = "facial_style", "style" = mannequin.f_style)
-		if(mannequin.species && (mannequin.species.appearance_flags & HAS_HAIR_COLOR))
+		if(mannequin.species && (mannequin.species.species_appearance_flags & HAS_HAIR_COLOR))
 			temp["color"] = MOB_HEX_COLOR(mannequin, facial)
 			temp["colorHref"] = "facial_color"
 		styles["Facial"] = temp
 
-		if(mannequin.species && (mannequin.species.appearance_flags & HAS_EYE_COLOR))
+		if(mannequin.species && (mannequin.species.species_appearance_flags & HAS_EYE_COLOR))
 			styles["Eyes"] = list("colorHref" = "eye_color", "color" = MOB_HEX_COLOR(mannequin, eyes))
 
-		if(mannequin.species && (mannequin.species.appearance_flags & HAS_SKIN_COLOR))
+		if(mannequin.species && (mannequin.species.species_appearance_flags & HAS_SKIN_COLOR))
 			styles["Body Color"] = list("colorHref" = "skin_color", "color" = MOB_HEX_COLOR(mannequin, skin))
 
 		var/datum/preferences/designer/P = new()

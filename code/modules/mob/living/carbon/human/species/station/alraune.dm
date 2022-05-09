@@ -45,7 +45,7 @@
 
 	spawn_flags = SPECIES_CAN_JOIN
 	flags = NO_SCAN | IS_PLANT | NO_MINOR_CUT
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/succubus_drain,
@@ -474,7 +474,7 @@
 	new_copy.icobase_tail = to_copy.icobase_tail
 	new_copy.color_mult = to_copy.color_mult
 	new_copy.primitive_form = to_copy.primitive_form
-	new_copy.appearance_flags = to_copy.appearance_flags
+	new_copy.species_appearance_flags = to_copy.species_appearance_flags
 	new_copy.flesh_color = to_copy.flesh_color
 	new_copy.base_color = to_copy.base_color
 	new_copy.blood_mask = to_copy.blood_mask
