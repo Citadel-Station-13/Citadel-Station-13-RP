@@ -117,16 +117,16 @@
 	if(name != "paper")
 		desc = "This is a paper titled '" + name + "'."
 
-	if(info != initial(info))
-		info = html_encode(info)
-		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
-
-	spawn(2)
+	// TODO: REFACTOR PAPER
+	// but also, YIELD TO CALLER
+	spawn(0)
+		if(info != initial(info))
+			info = html_encode(info)
+			info = replacetext(info, "\n", "<BR>")
+			info = parsepencode(info)
 		update_icon()
 		update_space(info)
 		updateinfolinks()
-		return
 
 /obj/item/paper/update_icon()
 	if(icon_state == "paper_talisman")

@@ -116,28 +116,30 @@
 				bloodDNA = null
 
 		if(src.wet)
+			process_slip(M)
 
-			if(M.buckled || (src.wet == 1 && M.m_intent == "walk"))
-				return
+/turf/simulated/proc/process_slip(mob/living/M)
+	if(M.buckled || (src.wet == 1 && M.m_intent == "walk"))
+		return
 
-			var/slip_dist = 1
-			var/slip_stun = 6
-			var/floor_type = "wet"
+	var/slip_dist = 1
+	var/slip_stun = 6
+	var/floor_type = "wet"
 
-			switch(src.wet)
-				if(2) // Lube
-					floor_type = "slippery"
-					slip_dist = 4
-					slip_stun = 10
-				if(3) // Ice
-					floor_type = "icy"
-					slip_stun = 4
-					slip_dist = 2
+	switch(src.wet)
+		if(2) // Lube
+			floor_type = "slippery"
+			slip_dist = 4
+			slip_stun = 10
+		if(3) // Ice
+			floor_type = "icy"
+			slip_stun = 4
+			slip_dist = 2
 
-			if(M.slip("the [floor_type] floor", slip_stun))
-				for(var/i = 1 to slip_dist)
-					step(M, M.dir)
-					sleep(1)
+	if(M.slip("the [floor_type] floor", slip_stun))
+		for(var/i = 1 to slip_dist)
+			step(M, M.dir)
+			sleep(1)
 
 //returns 1 if made bloody, returns 0 otherwise
 /turf/simulated/add_blood(mob/living/carbon/human/M as mob)

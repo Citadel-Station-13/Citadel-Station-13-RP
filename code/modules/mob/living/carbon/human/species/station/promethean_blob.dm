@@ -209,8 +209,10 @@
 	if(humanform)
 		humanform.death(gibbed, deathmessage)
 	else
-		animate(src, alpha = 0, time = 2 SECONDS)
-		sleep(2 SECONDS)
+		var/atom/movable/overlay/O = new(loc)
+		O.appearance = src
+		animate(O, alpha = 0, time = 2 SECONDS)
+		QDEL_IN(O, 2 SECONDS)
 
 	if(!QDELETED(src)) // Human's handle death should have taken us, but maybe we were adminspawned or something without a human counterpart
 		qdel(src)
