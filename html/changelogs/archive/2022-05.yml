@@ -33,6 +33,8 @@
   Bhijn & Myr:
   - rscadd: The server's hub tagline now has the option to pull random strings from
       config/strings/server_taglines.txt!
+  Zandario:
+  - bugfix: Defib works?
   silicons:
   - bugfix: admin buildmode walls not having baseturfs
   - bugfix: observers spawning in space
