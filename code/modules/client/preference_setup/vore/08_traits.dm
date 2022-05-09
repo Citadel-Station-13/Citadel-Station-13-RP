@@ -88,7 +88,7 @@
 			if(!(path in negative_traits))
 				pref.neg_traits -= path
 
-	var/datum/species/selected_species = GLOB.all_species[pref.species]
+	var/datum/species/selected_species = pref.character_static_species_meta()
 	if(selected_species.selects_bodytype)
 		// Allowed!
 	else if(!pref.custom_base || !(pref.custom_base in custom_species_bases))
@@ -105,7 +105,7 @@
 	character.custom_ask		= lowertext(trim(pref.custom_ask))
 	character.custom_whisper	= lowertext(trim(pref.custom_whisper))
 	character.custom_exclaim	= lowertext(trim(pref.custom_exclaim))
-	var/datum/species/selected_species = GLOB.all_species[pref.species]
+	var/datum/species/selected_species = pref.character_static_species_meta()
 	if(selected_species.selects_bodytype)
 		var/datum/species/custom/CS = character.species
 		var/S = pref.custom_base ? pref.custom_base : SPECIES_HUMAN
@@ -123,7 +123,7 @@
 	. += "<b>Custom Species Name:</b> "
 	. += "<a href='?src=\ref[src];custom_species=1'>[pref.custom_species ? pref.custom_species : "-Input Name-"]</a><br>"
 
-	var/datum/species/selected_species = GLOB.all_species[pref.species]
+	var/datum/species/selected_species = pref.character_static_species_meta()
 	if(selected_species.selects_bodytype)
 		. += "<b>Icon Base: </b> "
 		. += "<a href='?src=\ref[src];custom_base=1'>[pref.custom_base ? pref.custom_base : SPECIES_HUMAN]</a><br>"

@@ -459,9 +459,9 @@
 	ASSERT(istype(H))
 
 	if(ispath(to_copy))
-		to_copy = "[initial(to_copy.name)]"
+		to_copy = get_static_species_meta(to_copy)
 	if(istext(to_copy))
-		to_copy = GLOB.all_species[to_copy]
+		to_copy = name_static_species_meta(to_copy)
 
 	var/datum/species/alraune/new_copy = new()
 
@@ -497,5 +497,5 @@
 	return base_species
 
 /datum/species/alraune/get_race_key()
-	var/datum/species/real = GLOB.all_species[base_species]
+	var/datum/species/real = name_static_species_meta(base_species)
 	return real.race_key

@@ -204,7 +204,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		last_descriptors = pref.body_descriptors.Copy()
 	pref.body_descriptors = list()
 
-	var/datum/species/mob_species = GLOB.all_species[pref.species]
+	var/datum/species/mob_species = pref.character_static_species_meta()
 	if(LAZYLEN(mob_species.descriptors))
 		for(var/entry in mob_species.descriptors)
 			var/datum/mob_descriptor/descriptor = mob_species.descriptors[entry]
@@ -219,7 +219,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 /datum/category_item/player_setup_item/general/body/content(var/mob/user)
 	. = list()
 
-	var/datum/species/mob_species = GLOB.all_species[pref.species]
+	var/datum/species/mob_species = pref.character_static_species_meta()
 	. += "<table><tr style='vertical-align:top'><td><b>Body</b> "
 	. += "(<a href='?src=\ref[src];random=1'>&reg;</A>)"
 	. += "<br>"
@@ -388,7 +388,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	return mob_species && (mob_species.appearance_flags & flag)
 
 /datum/category_item/player_setup_item/general/body/OnTopic(var/href,var/list/href_list, var/mob/user)
-	var/datum/species/mob_species = GLOB.all_species[pref.species]
+	var/datum/species/mob_species = pref.character_static_species_meta()
 
 	if(href_list["random"])
 		pref.randomize_appearance_and_body_for()
@@ -689,7 +689,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/list/limb_selection_list = list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand","Full Body")
 
 		// Full prosthetic bodies without a brain are borderline unkillable so make sure they have a brain to remove/destroy.
-		var/datum/species/current_species = GLOB.all_species[pref.species]
+		var/datum/species/current_species = pref.character_static_species_meta()
 		if(!current_species.has_organ["brain"])
 			limb_selection_list -= "Full Body"
 		else if(pref.organ_data[BP_TORSO] == "cyborg")

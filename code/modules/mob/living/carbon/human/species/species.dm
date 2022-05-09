@@ -580,9 +580,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		nif.nifsofts = nifsofts
 
 	if(base_color)
-		H.r_skin = hex2num(copytext(species.base_color,2,4))
-		H.g_skin = hex2num(copytext(species.base_color,4,6))
-		H.b_skin = hex2num(copytext(species.base_color,6,8))
+		H.r_skin = hex2num(copytext(base_color,2,4))
+		H.g_skin = hex2num(copytext(base_color,4,6))
+		H.b_skin = hex2num(copytext(base_color,6,8))
 	else
 		H.r_skin = 0
 		H.g_skin = 0
