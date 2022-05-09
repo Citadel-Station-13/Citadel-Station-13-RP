@@ -14,10 +14,10 @@
 
 /turf/unsimulated/wall/planetary/Initialize(mapload)
 	. = ..()
-	SSplanets.addTurf(src)
+	SSplanets.addWall(src)
 
 /turf/unsimulated/wall/planetary/Destroy()
-	SSplanets.removeTurf(src)
+	SSplanets.removeWall(src)
 	return ..()
 
 /turf/unsimulated/wall/planetary/proc/set_temperature(var/new_temperature)

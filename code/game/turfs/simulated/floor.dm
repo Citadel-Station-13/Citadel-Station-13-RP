@@ -30,7 +30,6 @@
 
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
-	var/lava = 0
 
 /turf/simulated/floor/is_plating()
 	return !flooring
@@ -43,7 +42,7 @@
 		set_flooring(get_flooring_data(floortype))
 	else
 		footstep_sounds = base_footstep_sounds
-	if(can_dirty && can_start_dirty)
+	if(mapload && can_dirty && can_start_dirty)
 		if(prob(dirty_prob))
 			dirt += rand(50,100)
 			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
