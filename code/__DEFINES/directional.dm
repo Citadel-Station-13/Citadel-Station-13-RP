@@ -35,10 +35,10 @@
 }
 
 // each dir plus diagonals in its own bit
-#define NORTH_BIT		(1<<0)
-#define SOUTH_BIT		(1<<1)
-#define EAST_BIT		(1<<2)
-#define WEST_BIT		(1<<3)
+#define NORTH_BIT		NORTH
+#define SOUTH_BIT		SOUTH
+#define EAST_BIT		EAST
+#define WEST_BIT		WEST
 #define NORTHEAST_BIT	(1<<4)
 #define NORTHWEST_BIT	(1<<5)
 #define SOUTHEAST_BIT	(1<<6)

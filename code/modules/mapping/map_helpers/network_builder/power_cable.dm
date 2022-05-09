@@ -6,73 +6,57 @@
 /atom/movable/map_helper/network_builder/power_cable
 	name = "power line autobuilder"
 	icon_state = "powerlinebuilder"
-
+	base_type = /atom/movable/map_helper/network_builder/power_cable
 	color = "#ff0000"
 
 	/// Whether or not we forcefully make a knot
 	var/knot = NO_KNOT
-
 	/// cable color as from GLOB.cable_colors
 	var/cable_color = "red"
 
-#warn parse
 
-/atom/movable/map_helper/network_builder/power_cable/check_duplicates()
-	var/obj/structure/cable/C = locate() in loc
-	if(C)
-		return C
-	for(var/atom/movable/map_helper/network_builder/power_cable/other in loc)
-		if(other == src)
-			continue
-		return other
+/atom/movable/map_helper/network_builder/power_cable/duplicates()
+	. = list()
+	for(var/atom/movable/map_helper/network_builder/power_cable/B in loc)
+		. += B
+	for(var/obj/structure/cable/C in loc)
+		. += C
 
-/// Scans directions, sets network_directions to have every direction that we can link to. If there's another power cable builder detected, make sure they know we're here by adding us to their cable directions list before we're deleted.
-/atom/movable/map_helper/network_builder/power_cable/scan_directions()
-	var/turf/T
+/atom/movable/map_helper/network_builder/power_cable/scan()
+	. = NONE
 	for(var/i in GLOB.cardinal)
-		if(i in network_directions)
-			continue				//we're already set, that means another builder set us.
-		T = get_step(loc, i)
-		if(!T)
+		var/turf/T = get_step(src, i)
+		if(locate(base_type) in T)
+			. |= i
 			continue
-		var/atom/movable/map_helper/network_builder/power_cable/other = locate() in T
-		if(other)
-			network_directions += i
-			other.network_directions += turn(i, 180)
-			continue
-		for(var/obj/structure/cable/C in T)
-			if(C.d1 == turn(i, 180) || C.d2 == turn(i, 180))
-				network_directions += i
+		var/opp = turn(i, 180)
+		for(var/obj/strurcture/cable/C in T)
+			if(C.d1 == opp || C.d2 == opp)
+				. |= i
 				continue
-	return network_directions
 
-/// Directions should only ever have cardinals.
-/atom/movable/map_helper/network_builder/power_cable/build_network()
-	if(!length(network_directions))
+/atom/movable/map_helper/network_builder/power_cable/build()
+	if(!network_directions)
 		return
-	else if(length(network_directions) == 1)
-		new /obj/structure/cable(loc, cable_color, NONE, network_directions[1])
+	var/knot = KNOT_FORCED || (KNOT_AUTO && detect_knot())
+	if(knot)
+		for(var/i in GLOB.cardinal)
+			if(!(network_directions & i))
+				continue
+			new /obj/structure/cable(loc, capitalize(cable_color), 0, i, TRUE)
 	else
-		if(knot == KNOT_FORCED)
-			for(var/d in network_directions)
-				new /obj/structure/cable(loc, cable_color, NONE, d)
-		else
-			var/do_knot = (knot == KNOT_FORCED) || ((knot == KNOT_AUTO) && should_auto_knot())
-			var/dirs = length(network_directions)
-			for(var/i in 1 to dirs - 1)
-				var/li = (i == 1)? dirs : (i - 1)
-				var/d1 = network_directions[i]
-				var/d2 = network_directions[li]
-				if(d1 > d2)			//this is ugly please help me
-					d1 = network_directions[li]
-					d2 = network_directions[i]
-				new /obj/structure/cable(loc, cable_color, d1, d2)
-				if(do_knot)
-					new /obj/structure/cable(loc, cable_color, NONE, network_directions[i])
-					do_knot = FALSE
+		var/last
+		for(var/i in GLOB.cardinal)
+			if(!(network_directions U& i))
+				continue
+			if(isnull(last))
+				last = i
+				continue
+			new /obj/structure/cable(loc, capitalize(cable_color), last, i, TRUE)
+			last = i
 
-/atom/movable/map_helper/network_builder/power_cable/proc/should_auto_knot()
-	return (locate(/obj/machinery/power/terminal) in loc)
+/atom/movable/map_helper/network_builderr/power_cable/proc/detect_knot()
+	return (locate(/obj/machinery/power) in src
 
 /atom/movable/map_helper/network_builder/power_cable/knot
 	icon_state = "powerlinebuilderknot"
