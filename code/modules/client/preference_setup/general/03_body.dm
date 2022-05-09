@@ -426,7 +426,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 		var/datum/species/setting_species
 
-		if(GLOB.all_species[href_list["set_species"]])
+		if(name_static_species_meta(href_list["set_species"]))
 			setting_species = name_static_species_meta(href_list["set_species"])
 		else
 			return TOPIC_NOACTION

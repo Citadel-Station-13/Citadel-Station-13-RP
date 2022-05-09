@@ -280,6 +280,8 @@ GLOBAL_LIST_EMPTY(mannequins)
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
 
+	if(!length(GLOB.species_meta))	// yeah i hate it too but hey
+		initialize_static_species_cache()
 
 	// Custom species icon bases
 	var/list/blacklisted_icons = list(SPECIES_CUSTOM, SPECIES_PROMETHEAN)
