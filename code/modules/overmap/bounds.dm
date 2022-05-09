@@ -23,5 +23,5 @@
 	if(bounds_overlay)
 		cut_bounds_overlay()
 	bounds_overlay = get_bounds_overlay()
-	if(bounds_overrlay)
+	if(bounds_overlay)
 		add_overlay(bounds_overlay)
