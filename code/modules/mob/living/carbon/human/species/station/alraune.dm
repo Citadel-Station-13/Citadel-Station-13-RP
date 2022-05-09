@@ -457,6 +457,6 @@
 /datum/species/alraune/get_bodytype()
 	return base_species
 
-/datum/species/alraune/real_race_key(H)
+/datum/species/alraune/get_race_key(mob/living/carbon/human/H)
 	var/datum/species/real = name_static_species_meta(base_species)
 	return real.real_race_key(H)

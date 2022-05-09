@@ -466,7 +466,7 @@
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
-		T.apply(H)
+		T.apply(src, H)
 
 /**
  * called when we are removed from a mob
@@ -484,7 +484,7 @@
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
-		T.remove(H)
+		T.remove(src, H)
 
 /datum/species/proc/sanitize_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)
@@ -801,9 +801,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  * traits - traits to add
  * H - update this human
  */
-/datum/species/proc/copy_from(datum/species/to_copy, list/traits, mob/living/carbon/human/H)
+/datum/species/proc/copy_from(datum/species/to_copy, list/traits = list(), mob/living/carbon/human/H)
 	ASSERT(to_copy)
-	ASSERT(istype(H))
 
 	if(ispath(to_copy))
 		to_copy = get_static_species_meta(to_copy)
@@ -839,10 +838,10 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		var/list/removing = src.traits - traits
 		for(var/name in adding)
 			var/datum/trait/T = all_traits[name]
-			T.apply(H)
+			T.apply(src, H)
 		for(var/name in removing)
 			var/datum/trait/T = all_traits[name]
-			T.remove(H)
+			T.remove(src, H)
 		src.traits = traits
 
 		H.icon_state = lowertext(get_bodytype())

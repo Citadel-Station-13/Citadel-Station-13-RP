@@ -302,8 +302,6 @@ var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 
 //* Custom Species Lists *//
 GLOBAL_LIST(custom_species_bases)
-/// Species that can be used for a Custom Species icon base
-var/global/list/custom_species_bases = list()
 
 //Traits
 /// Negative custom species traits, indexed by path.

@@ -424,7 +424,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			character.descriptors[entry] = body_descriptors[entry]
 
 /datum/preferences/proc/character_static_species_meta()
-	return get_static_species_meta(species) || get_static_species_meta(/datum/species/human)
+	return name_static_species_meta(species) || get_static_species_meta(/datum/species/human)
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body>"
