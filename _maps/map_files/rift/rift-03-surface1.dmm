@@ -10198,9 +10198,7 @@
 /area/rift/surfaceeva/airlock/main/secondary)
 "sU" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
-	frequency = 1379;
-	on = 1;
-	scrub_id = "central_airlock_scrubber"
+	on = 1
 	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
@@ -27073,9 +27071,7 @@
 /area/rnd/hallway)
 "ZJ" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
-	frequency = 1379;
-	on = 1;
-	scrub_id = "central_airlock_two_scrubber"
+	on = 1
 	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
