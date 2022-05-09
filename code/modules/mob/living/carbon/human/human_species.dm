@@ -39,9 +39,6 @@
 /mob/living/carbon/human/stok
 	species = /datum/species/monkey/unathi
 
-/mob/living/carbon/human/event1
-	species = /datum/species/event1
-
 /mob/living/carbon/human/sergal
 	h_style = "Sergal Plain"
 	species = /datum/species/sergal
