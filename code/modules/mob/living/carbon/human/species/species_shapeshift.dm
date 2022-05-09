@@ -4,6 +4,7 @@
 var/list/wrapped_species_by_ref = list()
 
 /datum/species/shapeshifter
+	abstract_type = /datum/species/shapeshifter
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
