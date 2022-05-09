@@ -2,10 +2,6 @@
 VIRGO3B_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/virgo3b
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
-/turf/simulated/open/virgo3b/Initialize(mapload)
-	. = ..()
-	if(outdoors)
-		SSplanets.addTurf(src)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor)
 
@@ -230,7 +226,6 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 
 /turf/simulated/sky/virgo3b/Initialize()
 	. = ..()
-	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 
 /turf/simulated/sky/virgo3b/north

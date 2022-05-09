@@ -121,15 +121,6 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
-"au" = (
-/obj/machinery/access_button/airlock_exterior{
-	dir = 4;
-	master_tag = "central_airlock";
-	pixel_x = -8;
-	pixel_y = 8
-	},
-/turf/simulated/wall/r_wall,
-/area/rift/surfaceeva/airlock/main)
 "av" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -1934,9 +1925,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/sign/warning/internals_required{
-	pixel_x = -32
-	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1379;
@@ -2132,9 +2120,6 @@
 /area/maintenance/cargo)
 "eB" = (
 /obj/structure/railing,
-/obj/structure/sign/warning/internals_required{
-	pixel_x = -32
-	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "central_airlock_two_pump"
@@ -2343,6 +2328,9 @@
 	on = 1;
 	scrub_id = "central_airlock_scrubber"
 	},
+/obj/structure/sign/signnew/cryogenics{
+	pixel_y = 32
+	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "eT" = (
@@ -2384,6 +2372,9 @@
 	frequency = 1379;
 	on = 1;
 	scrub_id = "central_airlock_two_scrubber"
+	},
+/obj/structure/sign/signnew/cryogenics{
+	pixel_y = -32
 	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
@@ -2853,6 +2844,12 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
+	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 8;
+	master_tag = "central_airlock_two";
+	pixel_x = -8;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
@@ -7305,15 +7302,26 @@
 /area/maintenance/cargo)
 "nB" = (
 /obj/structure/railing,
-/obj/structure/sign/signnew/cryogenics{
-	pixel_x = -32
-	},
 /obj/structure/grille,
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "nC" = (
 /obj/structure/railing,
 /obj/structure/grille,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "nD" = (
@@ -8444,6 +8452,7 @@
 	pixel_y = 6
 	},
 /obj/structure/grille,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "pI" = (
@@ -9780,6 +9789,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
 "st" = (
@@ -9791,6 +9805,11 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
@@ -9810,6 +9829,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
 "sv" = (
@@ -9823,6 +9847,11 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
@@ -9981,6 +10010,10 @@
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
+/obj/structure/sign/warning{
+	desc = "Hazardous cryogenic temperatures beyond this point!";
+	pixel_x = -32
+	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "sI" = (
@@ -10129,10 +10162,16 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/sign/signnew/cryogenics{
-	pixel_x = -32
-	},
 /obj/structure/grille,
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
 "sT" = (
@@ -10154,6 +10193,7 @@
 	pixel_y = -6
 	},
 /obj/structure/grille,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
 "sU" = (
@@ -14493,15 +14533,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
-"AL" = (
-/obj/machinery/access_button/airlock_exterior{
-	dir = 4;
-	master_tag = "central_airlock_two";
-	pixel_x = 8;
-	pixel_y = -8
-	},
-/turf/simulated/wall,
-/area/rift/surfaceeva/airlock/main/secondary)
 "AM" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/gloves,
@@ -15180,6 +15211,11 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
@@ -16339,6 +16375,12 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
+	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "central_airlock";
+	pixel_x = 8;
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
@@ -19446,6 +19488,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
 "KN" = (
@@ -19879,6 +19926,12 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
+	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "central_airlock_two";
+	pixel_x = 8;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
@@ -20574,15 +20627,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfacebase/outside/outside1)
-"MQ" = (
-/obj/machinery/access_button/airlock_exterior{
-	dir = 4;
-	master_tag = "central_airlock";
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/turf/simulated/wall,
-/area/rift/surfaceeva/airlock/main)
 "MR" = (
 /obj/machinery/photocopier/faxmachine{
 	department = "CMO's Office"
@@ -21085,15 +21129,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/hallway/secondary/civilian_hallway_mid)
-"NM" = (
-/obj/machinery/access_button/airlock_exterior{
-	dir = 4;
-	master_tag = "central_airlock_two";
-	pixel_x = -8;
-	pixel_y = -8
-	},
-/turf/simulated/wall/r_wall,
-/area/rift/surfaceeva/airlock/main/secondary)
 "NO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -21985,6 +22020,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
 "PD" = (
@@ -23292,6 +23332,11 @@
 	dir = 1
 	},
 /obj/structure/grille,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
 "Sh" = (
@@ -24350,6 +24395,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 8;
+	master_tag = "central_airlock";
+	pixel_x = -8;
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
 "UD" = (
@@ -25169,6 +25220,11 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
@@ -37724,9 +37780,9 @@ Cw
 Hs
 Js
 UC
-au
 Hs
-NM
+Hs
+DH
 fF
 Po
 DH
@@ -38500,9 +38556,9 @@ yP
 yP
 su
 Ey
-MQ
+yP
 Hs
-AL
+ap
 LD
 Cl
 ap

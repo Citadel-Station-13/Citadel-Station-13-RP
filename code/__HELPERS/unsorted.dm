@@ -731,7 +731,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 					var/old_underlays = T.underlays.Copy()
 					var/old_decals = T.decals ? T.decals.Copy() : null
 
-					X = B.ChangeTurf(T.type)
+					X = B.PlaceOnTop(T.type)
 					X.setDir(old_dir1)
 					X.icon_state = old_icon_state1
 					X.icon = old_icon1
