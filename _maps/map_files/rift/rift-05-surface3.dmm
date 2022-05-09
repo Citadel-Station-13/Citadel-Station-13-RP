@@ -498,6 +498,10 @@
 /area/hallway/secondary/docking_hallway2)
 "aS" = (
 /atom/movable/landmark/spawnpoint/job/bartender,
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = -15
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "aT" = (
@@ -6249,7 +6253,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
 "lm" = (
-/obj/machinery/door/airlock/maintenance/command,
+/obj/machinery/door/airlock/maintenance/command{
+	req_one_access = list(57)
+	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -7246,13 +7252,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway2)
 "nr" = (
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
-	frequency = 1379;
-	on = 1;
-	scrub_id = "civ_airlock_two_scrubber"
-	},
 /obj/structure/railing{
 	dir = 8
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	on = 1
 	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
@@ -12162,7 +12166,7 @@
 "xy" = (
 /obj/machinery/door/airlock/command{
 	name = "NanoTrasen Official On-Site Office";
-	req_access = list(19)
+	req_access = list(20)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
@@ -13496,7 +13500,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/kitchen)
 "Ah" = (
 /obj/structure/cable/green{
@@ -18130,11 +18134,13 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
 	id_tag = "courser_dock_pump"
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	on = 1
 	},
 /turf/simulated/floor/plating,
 /area/exploration/courser_dock)
@@ -20597,9 +20603,9 @@
 /obj/machinery/button/remote/blast_door{
 	id = "kitchen_shutters";
 	name = "Kitchen Shutter control";
-	pixel_x = -24;
+	pixel_x = -26;
 	pixel_y = 24;
-	req_one_access = list(25)
+	req_one_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -20993,8 +20999,7 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
-	frequency = 1379;
-	scrub_id = "civ_airlock_scrubber"
+	on = 1
 	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/arrivals)
@@ -21996,6 +22001,9 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
@@ -43847,7 +43855,7 @@ lm
 aA
 Bh
 oj
-MK
+YF
 lM
 ep
 ES
