@@ -218,10 +218,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 		if(!(L.flags & NONGLOBAL))
 			GLOB.language_keys[L.key] = L
 
-	var/rkey = 0
 	for(var/datum/species/S as anything in all_static_species_meta())
-		rkey++
-		S.race_key = rkey //Used in mob icon caching.
 		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
 			GLOB.playable_species += S.name
 		if(S.spawn_flags & SPECIES_IS_WHITELISTED)

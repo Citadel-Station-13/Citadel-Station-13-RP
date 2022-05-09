@@ -68,8 +68,6 @@
 	/// Makes the icon taller/shorter.
 	var/icon_scale_y = 1
 
-	/// Used for mob icon cache string.
-	var/race_key = 0
 	/// Used for mob icon generation for non-32x32 species.
 	var/icon/icon_template
 	var/mob_size	= MOB_MEDIUM
