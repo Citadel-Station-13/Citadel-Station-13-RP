@@ -203,6 +203,10 @@ GLOBAL_LIST_EMPTY(mannequins)
 		var/datum/job/J = new T
 		joblist[J.title] = J
 
+	if(!length(GLOB.species_meta))	// yeah i hate it too but hey
+		initialize_static_species_cache()
+	// SScharacter_setup handling static caches and body markings and sprit eaccessories when?? this is all awful
+
 	//Languages and species.
 	paths = subtypesof(/datum/language)
 	for(var/T in paths)
@@ -215,19 +219,9 @@ GLOBAL_LIST_EMPTY(mannequins)
 			GLOB.language_keys[L.key] = L
 
 	var/rkey = 0
-	paths = typesof(/datum/species)
-	for(var/T in paths)
-
+	for(var/datum/species/S as anything in all_static_species_meta())
 		rkey++
-
-		var/datum/species/S = T
-		if(!initial(S.name))
-			continue
-
-		S = new T
 		S.race_key = rkey //Used in mob icon caching.
-		GLOB.all_species[S.name] = S
-		#warn do we want to refactor this too
 		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
 			GLOB.playable_species += S.name
 		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
@@ -280,16 +274,13 @@ GLOBAL_LIST_EMPTY(mannequins)
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
 
-	if(!length(GLOB.species_meta))	// yeah i hate it too but hey
-		initialize_static_species_cache()
-
 	// Custom species icon bases
 	var/list/blacklisted_icons = list(SPECIES_CUSTOM, SPECIES_PROMETHEAN)
 	var/list/whitelisted_icons = list(SPECIES_VULPKANIN, SPECIES_XENOHYBRID)
 	for(var/species_name in GLOB.playable_species)
 		if(species_name in blacklisted_icons)
 			continue
-		var/datum/species/S = GLOB.all_species[species_name]
+		var/datum/species/S = name_static_species_meta(species_name)
 		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
 			continue
 		GLOB.custom_species_bases += species_name

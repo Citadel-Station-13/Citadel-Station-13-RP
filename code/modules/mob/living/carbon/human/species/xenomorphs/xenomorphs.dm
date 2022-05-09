@@ -7,23 +7,23 @@ proc/create_new_xenomorph(var/alien_caste,var/target)
 	new_alien.set_species(species_type_by_name("Xenomorph [alien_caste]"))
 	return new_alien
 
-/mob/living/carbon/human/xdrone/Initialize(mapload, new_species)
-	. = ..(mapload, SPECIES_XENO_DRONE)
+/mob/living/carbon/human/xdrone
+	species = /datum/species/xenos/drone
 	h_style = "Bald"
 	faction = "xeno"
 
-/mob/living/carbon/human/xsentinel/Initialize(mapload, new_species)
-	. = ..(mapload, SPECIES_XENO_SENTINEL)
+/mob/living/carbon/human/xsentinel
+	species = /datum/species/xenos/sentinel
 	h_style = "Bald"
 	faction = "xeno"
 
-/mob/living/carbon/human/xhunter/Initialize(mapload, new_species)
-	. = ..(mapload, SPECIES_XENO_HUNTER)
+/mob/living/carbon/human/xhunter
+	species = /datum/species/xenos/hunter
 	h_style = "Bald"
 	faction = "xeno"
 
-/mob/living/carbon/human/xqueen/Initialize(mapload, new_species)
-	. = ..(mapload, SPECIES_XENO_QUEEN)
+/mob/living/carbon/human/xqueen
+	species = /datum/species/xenos/queen
 	h_style = "Bald"
 	faction = "xeno"
 

@@ -2696,7 +2696,6 @@
 #include "code\modules\mob\living\carbon\human\species\species_hud.dm"
 #include "code\modules\mob\living\carbon\human\species\species_shapeshift.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\celestials.dm"
-#include "code\modules\mob\living\carbon\human\species\outsider\event.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\replicant.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\shadow.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\skeleton.dm"
