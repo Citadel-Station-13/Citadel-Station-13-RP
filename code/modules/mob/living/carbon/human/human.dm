@@ -36,7 +36,9 @@
 			set_species()
 
 	if(!species)
-		stack_trace("Why is there no species?")	// NO NO, YOU DONT GET TO CHICKEN OUT, SET_SPECIES WAS CALLED AND YOU BETTER HAVE ONE
+		stack_trace("Why is there no species? Resetting to human.")	// NO NO, YOU DONT GET TO CHICKEN OUT, SET_SPECIES WAS CALLED AND YOU BETTER HAVE ONE
+		// no you don't get to get away
+		set_species(/datum/species/human)
 
 	real_name = species.get_random_name(gender)
 	name = real_name
