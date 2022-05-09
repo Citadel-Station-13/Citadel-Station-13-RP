@@ -44,68 +44,6 @@
 		'sound/items/stamp3.ogg'
 		)
 
-/obj/item/paper/card
-	name = "blank card"
-	desc = "A gift card with space to write on the cover."
-	icon_state = "greetingcard"
-	slot_flags = null //no fun allowed!!!!
-
-/obj/item/paper/card/AltClick() //No fun allowed
-	return
-
-/obj/item/paper/card/update_icon()
-	return
-
-/obj/item/paper/card/smile
-	name = "happy card"
-	desc = "A gift card with a smiley face on the cover."
-	icon_state = "greetingcard_smile"
-
-/obj/item/paper/card/cat
-	name = "cat card"
-	desc = "A gift card with a cat on the cover."
-	icon_state = "greetingcard_cat"
-
-/obj/item/paper/card/flower
-	name = "flower card"
-	desc = "A gift card with a flower on the cover."
-	icon_state = "greetingcard_flower"
-
-/obj/item/paper/card/heart
-	name = "heart card"
-	desc = "A gift card with a heart on the cover."
-	icon_state = "greetingcard_heart"
-
-/obj/item/paper/card/Initialize(mapload)
-	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
-	stamps = null
-
-	if(info != initial(info))
-		info = html_encode(info)
-		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
-		return
-
-/obj/item/paper/alien
-	name = "alien tablet"
-	desc = "It looks highly advanced"
-	icon = 'icons/obj/abductor.dmi'
-	icon_state = "alienpaper"
-
-/obj/item/paper/alien/update_icon()
-	if(info)
-		icon_state = "alienpaper_words"
-	else
-		icon_state = "alienpaper"
-
-/obj/item/paper/alien/burnpaper()
-	return
-
-/obj/item/paper/alien/AltClick() // No airplanes for me.
-	return
-
 //lipstick wiping is in code/game/objects/items/weapons/cosmetics.dm!
 
 /obj/item/paper/Initialize(mapload)
@@ -719,3 +657,65 @@
 	name = "weathered note"
 	info = "<I>Jason stayed behind at the shelter, so I know he'll be okay. We've been bunkered down for days now. The seismic activity is getting worse, but the barricades are holding. They're adapting, we think. Someone says they saw a cat, probably from the colony. Sick bastards. We're talking about trying to move out for the shuttles at first light. Jason, if you're reading this, meet me there. I love you. -A</I>"
 */
+
+/obj/item/paper/card
+	name = "blank card"
+	desc = "A gift card with space to write on the cover."
+	icon_state = "greetingcard"
+	slot_flags = null //no fun allowed!!!!
+
+/obj/item/paper/card/AltClick() //No fun allowed
+	return
+
+/obj/item/paper/card/update_icon()
+	return
+
+/obj/item/paper/card/smile
+	name = "happy card"
+	desc = "A gift card with a smiley face on the cover."
+	icon_state = "greetingcard_smile"
+
+/obj/item/paper/card/cat
+	name = "cat card"
+	desc = "A gift card with a cat on the cover."
+	icon_state = "greetingcard_cat"
+
+/obj/item/paper/card/flower
+	name = "flower card"
+	desc = "A gift card with a flower on the cover."
+	icon_state = "greetingcard_flower"
+
+/obj/item/paper/card/heart
+	name = "heart card"
+	desc = "A gift card with a heart on the cover."
+	icon_state = "greetingcard_heart"
+
+/obj/item/paper/card/Initialize(mapload)
+	. = ..()
+	pixel_y = rand(-8, 8)
+	pixel_x = rand(-9, 9)
+	stamps = null
+
+	if(info != initial(info))
+		info = html_encode(info)
+		info = replacetext(info, "\n", "<BR>")
+		info = parsepencode(info)
+		return
+
+/obj/item/paper/alien
+	name = "alien tablet"
+	desc = "It looks highly advanced"
+	icon = 'icons/obj/abductor.dmi'
+	icon_state = "alienpaper"
+
+/obj/item/paper/alien/update_icon()
+	if(info)
+		icon_state = "alienpaper_words"
+	else
+		icon_state = "alienpaper"
+
+/obj/item/paper/alien/burnpaper()
+	return
+
+/obj/item/paper/alien/AltClick() // No airplanes for me.
+	return
