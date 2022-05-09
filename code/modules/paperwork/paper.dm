@@ -37,6 +37,7 @@
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
+	var/auto_desc = TRUE
 
 	var/list/stamp_sounds = list(
 		'sound/items/stamp1.ogg',
@@ -52,16 +53,16 @@
 	pixel_x = rand(-9, 9)
 	stamps = ""
 
-	if(name != "paper")
+	if((name != "paper") && auto_desc)
 		desc = "This is a paper titled '" + name + "'."
 
+	if(info != initial(info))
+		info = html_encode(info)
+		info = replacetext(info, "\n", "<BR>")
+		info = init_parsepencode(info)
+
 	// TODO: REFACTOR PAPER
-	// but also, YIELD TO CALLER
 	spawn(0)
-		if(info != initial(info))
-			info = html_encode(info)
-			info = replacetext(info, "\n", "<BR>")
-			info = parsepencode(info)
 		update_icon()
 		update_space(info)
 		updateinfolinks()
@@ -228,6 +229,10 @@
 	if(P && istype(P, /obj/item/pen))
 		return P.get_signature(user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
+
+/obj/item/paper/proc/init_parsepencode(t, P, user, iscrayon)
+	set waitfor = FALSE
+	parsepencode(t, P, user, iscrayon)
 
 /obj/item/paper/proc/parsepencode(var/t, var/obj/item/pen/P, mob/user as mob, var/iscrayon = 0)
 //	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
@@ -689,18 +694,7 @@
 	name = "heart card"
 	desc = "A gift card with a heart on the cover."
 	icon_state = "greetingcard_heart"
-
-/obj/item/paper/card/Initialize(mapload)
-	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
-	stamps = null
-
-	if(info != initial(info))
-		info = html_encode(info)
-		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
-		return
+	auto_desc = FALSE
 
 /obj/item/paper/alien
 	name = "alien tablet"
