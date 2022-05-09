@@ -243,7 +243,7 @@
 		if(istype(H.species,/datum/species/custom))
 			var/datum/species/custom/CS = H.species
 			CS.copy_from(dna.base_species, dna.species_traits, src)
-			new_CS.blood_color = dna.blood_color
+			CS.blood_color = dna.blood_color
 
 		if(istype(H.species,/datum/species/shapeshifter/xenochimera))
 			var/datum/species/shapeshifter/xenochimera/CS = H.species

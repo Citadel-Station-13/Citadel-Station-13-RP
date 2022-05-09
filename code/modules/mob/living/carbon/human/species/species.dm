@@ -373,7 +373,10 @@
 	var/pass_flags = 0
 
 //! ## Misc vars
+	/// descriptors
 	var/list/descriptors = list()
+	/// traits
+	var/list/traits = list()
 
 	/// This is used in character setup preview generation (prefences_setup.dm) and human mob rendering (update_icons.dm)
 	var/color_mult = 0
@@ -461,6 +464,10 @@
 	add_inherent_verbs(H)
 	add_inherent_spells(H)
 
+	for(var/name in traits)
+		var/datum/trait/T = all_traits[name]
+		T.apply(H)
+
 /**
  * called when we are removed from a mob
  */
@@ -474,6 +481,10 @@
 	remove_inherent_spells(H)
 	remove_inherent_verbs(H)
 	H.holder_type = null
+
+	for(var/name in tarits)
+		var/datum/trait/T = all_traits[name]
+		T.remove(H)
 
 /datum/species/proc/sanitize_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)
@@ -799,8 +810,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	if(istext(to_copy))
 		to_copy = name_static_species_meta(to_copy)
 
-	var/datum/species/alraune/= new()
-
 	//Initials so it works with a simple path passed, or an instance
 	base_species = to_copy.name
 	icobase = to_copy.icobase
@@ -816,24 +825,32 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	blood_mask = to_copy.blood_mask
 	damage_mask = to_copy.damage_mask
 	damage_overlays = to_copy.damage_overlays
-	src.traits = traits
 	move_trail = move_trail
 	has_floating_eyes = has_floating_eyes
 
-	//If you had traits, apply them
-	if(src.traits)
-		for(var/trait in src.traits)
-			var/datum/trait/T = all_traits[src.trait]
+
+	//Set up the mob provided
+	if(H)
+		// If you had traits, apply them
+		// but also make sure the human's species is actually us
+		ASSERT(H.species == src)
+
+		var/list/adding = traits - src.traits
+		var/list/removing = src.traits - traits
+		for(var/name in adding)
+			var/datum/trait/T = all_traits[name]
 			T.apply(H)
+		for(var/name in removing)
+			var/datum/trait/T = all_traits[name]
+			T.remove(H)
+		src.traits = traits
 
-	//Set up a mob
-	H.species = new_copy
-	H.icon_state = lowertext(get_bodytype())
+		H.icon_state = lowertext(get_bodytype())
 
-	if(holder_type)
-		H.holder_type = holder_type
+		if(holder_type)
+			H.holder_type = holder_type
 
-	if(H.dna)
-		H.dna.ready_dna(H)
-
-	return new_copy
+		if(H.dna)
+			H.dna.ready_dna(H)
+	else
+		src.traits = traits
