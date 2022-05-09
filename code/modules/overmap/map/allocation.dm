@@ -2,8 +2,8 @@
 	if(turf_reservation)
 		log_overmaps_map(src, "DANGER: Attempted to allocate while already allocated.")
 		CRASH("Already allocated")
-	var/real_width = width + OVERMAP_GENERATION_EDGE_MARGIN
-	var/real_height = height + OVERMAP_GENERATION_EDGE_MARGIN
+	var/real_width = width + OVERMAP_GENERATION_EDGE_MARGIN * 2
+	var/real_height = height + OVERMAP_GENERATION_EDGE_MARGIN * 2
 	// i don't trust my own allocation system, and neither should you
 	// that said, fuck it
 	var/oob = FALSE
@@ -14,19 +14,20 @@
 		real_height = world.maxy
 		oob = TRUE
 	if(oob)
-		width = real_width - OVERMAP_GENERATION_EDGE_MARGIN
-		height = real_height - OVERMAP_GENERATION_EDGE_MARGIN
-		log_overmaps_map(src, "Out of bounds allocation of [width]x[height] clamped.")
+		log_overmaps_map(src, "Out of bounds allocation of [width]x[height] will be clamped (had an extra border of [OVERMAP_GENERATION_EDGE_MARGIN]).")
+		width = real_width - OVERMAP_GENERATION_EDGE_MARGIN * 2
+		height = real_height - OVERMAP_GENERATION_EDGE_MARGIN * 2
+		log_overmaps_map(src, "New allocation size will be [width]x[height].")
 	log_overmaps_map(src, "Allocating block of [real_width]x[real_height]...")
 	turf_reservation = SSmapping.RequestBlockReservation(width = real_width, height = real_height, type = /datum/turf_reservation/overmap, turf_type_override = /turf/overmap)
 	if(!turf_reservation)
 		log_overmaps_map(src, "Allocation failed! Crashing...")
 		CRASH("Failed to allocate.")
 	cached_z = turf_reservation.bottom_left_coords[3]
-	cached_x_start = turf_reservation.bottom_left_coords[1]
-	cached_y_start = turf_reservation.bottom_left_coords[2]
-	cached_x_end = turf_reservation.top_right_coords[1]
-	cached_y_end = turf_reservation.top_right_coords[2]
+	cached_x_start = turf_reservation.bottom_left_coords[1] + OVERMAP_GENERATION_EDGE_MARGIN
+	cached_y_start = turf_reservation.bottom_left_coords[2] + OVERMAP_GENERATION_EDGE_MARGIN
+	cached_x_end = turf_reservation.top_right_coords[1] - OVERMAP_GENERATION_EDGE_MARGIN
+	cached_y_end = turf_reservation.top_right_coords[2] - OVERMAP_GENERATION_EDGE_MARGIN
 	cached_coordinate_width = width * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL
 	cached_coordinate_height = height * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL
 	cached_coordinate_center_x = cached_coordinate_width * 0.5
@@ -41,6 +42,11 @@
 	if(!turf_reservation)
 		log_overmaps_map(src, "Failed - no reservation")
 		CRASH("No reservation")
+	// offset using var bullshit
+	var/cached_x_start = src.cached_x_start - OVERMAP_GENERATION_EDGE_MARGIN
+	var/cached_y_start = src.cached_y_start - OVERMAP_GENERATION_EDGE_MARGIN
+	var/cached_x_end = src.cached_x_end - OVERMAP_GENERATION_EDGE_MARGIN
+	var/cached_y_end = src.cached_y_end - OVERMAP_GENERATION_EDGE_MARGIN
 	// only compile this in if there's a border
 #if OVERMAP_GENERATION_EDGE_MARGIN > 7
 	// this is to catch fuckups
@@ -62,7 +68,7 @@
 	turfs += block(locate(cached_x_start, cached_y_start + OVERMAP_GENERATION_EDGE_MARGIN, cached_z), locate(cached_x_start + OVERMAP_GENERATION_EDGE_MARGIN - 1, cached_y_end - OVERMAP_GENERATION_EDGE_MARGIN, cached_z))
 	for(var/turf/T as anything in turfs)
 		// TODO: CHANGETURF_SKIP
-		T.ChangeTurf(/turf/overmap/edge)
+		T.ChangeTurf(/turf/overmap/border)
 		T.set_area(border_area)
 	log_overmaps_map(src, "Generated [length(turfs)] border turfs.")
 #else
@@ -85,6 +91,12 @@
 	log_overmaps_map(src, "Skipping visual setup - OVERMAPS_SIDE_VISUAL_GLITZ is not positive.")
 	return
 #endif
+
+	// offset using var bullshit
+	var/cached_x_start = src.cached_x_start - OVERMAP_GENERATION_EDGE_MARGIN
+	var/cached_y_start = src.cached_y_start - OVERMAP_GENERATION_EDGE_MARGIN
+	var/cached_x_end = src.cached_x_end - OVERMAP_GENERATION_EDGE_MARGIN
+	var/cached_y_end = src.cached_y_end - OVERMAP_GENERATION_EDGE_MARGIN
 
 	var/list/turf/turfs = list()
 	// byond will blow the fuck up if vis contents loops, therefore

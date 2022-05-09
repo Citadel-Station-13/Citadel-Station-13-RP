@@ -14,3 +14,21 @@
 		else
 			L[key] = temp[key]
 	return L
+
+// clears dupes from a list
+// returns number cleared
+// WARNING: EXPENSIVE, ONLY USE FOR DEBUGGING
+/proc/listremovedupes_inplace(list/L)
+	. = list()
+	for(var/i in L)
+		. |= i
+	var/old = L.len
+	L -= (L - .)
+	return L.len - old
+
+// counts dupes
+/proc/listcountdupes(list/L)
+	. = list()
+	for(var/i in L)
+		. |= i
+	return length(L - .)

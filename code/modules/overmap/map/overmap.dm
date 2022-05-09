@@ -36,13 +36,13 @@
 	var/height
 	/// cached actual z
 	var/cached_z
-	/// cached actual x of start
+	/// cached actual x of lower left tile of the actual map, NOT THE WHOLE ALLOCATION INCLUDING BORDERS
 	var/cached_x_start
-	/// cached actual y of start
+	/// cached actual y of lower left tile of the actual map, NOT THE WHOLE ALLOCATION INCLUDING BORDERS
 	var/cached_y_start
-	/// cached actual x of end
+	/// cached actual x of upper right tile of the actual map, NOT THE WHOLE ALLOCATION INCLUDING BORDERS
 	var/cached_x_end
-	/// cached actual y of end
+	/// cached actual y of upper right tile of the actual map, NOT THE WHOLE ALLOCATION INCLUDING BORDERS
 	var/cached_y_end
 	/// cached size in overmaps coordinates
 	var/cached_coordinate_width

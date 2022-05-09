@@ -13,6 +13,7 @@
  */
 /datum/overmap/proc/entity_query(x, y, dist)
 	. = list()
+	OVERMAP_AGGRESSIVE_ASSERT(dist >= 0)
 	// our bucket size
 	var/bucket_x = x / OVERMAP_SPATIAL_HASH_COORDSIZE
 	var/bucket_y = y / OVERMAP_SPATIAL_HASH_COORDSIZE
@@ -30,10 +31,10 @@
 	var/trampled = NONE
 	// trampled gets set with first bit if we'd entirely wrap around east/west, and/or second if north/south
 	// upon detection, we also cancel wraparound because we can just safely set the start points to 1 for that x/y/both.
-	if(diameter > cached_width_pixels)
+	if(diameter > cached_pixel_width)
 		trampled |= (1<<0)
 		wraparound &= ~(EAST|WEST)
-	if(diameter > cached_height_pixels)
+	if(diameter > cached_pixel_height)
 		trampled |= (1<<1)
 		wraparound &= ~(NORTH|SOUTH)
 	// well this is going to be really !!FUNNY!!
@@ -49,12 +50,13 @@
 	if(trampled == ((1<<0) | (1<<1)))
 		return entities.Copy()
 
-	// lower coords with overflow allowed
-	var/raw_lower_x = x - dist
-	var/raw_lower_y = y - dist
-	// upper coords with overflow allowed
-	var/raw_upper_x = x + dist
-	var/raw_upper_y = y + dist
+	// lower unrounded spatial hash indices with overflow allowed
+	var/raw_lower_x = (x - dist) / OVERMAP_SPATIAL_HASH_COORDSIZE
+	var/raw_lower_y = (y - dist) / OVERMAP_SPATIAL_HASH_COORDSIZE
+	// upper unrounded spatial hash indices with overflow allowed
+	var/raw_upper_x = (x + dist) / OVERMAP_SPATIAL_HASH_COORDSIZE
+	var/raw_upper_y = (y + dist) / OVERMAP_SPATIAL_HASH_COORDSIZE
+	// these are unrounded because ensured grid tiles are computed by rounding conservatively, and edge tiles the other way around
 
 	// "everything is solvable with another layer of abstraction"
 	// we use a helper proc that *can* compute wraparounds
@@ -66,20 +68,16 @@
 		lower_ensured_index_x = 1
 		upper_ensured_index_x = spatial_hash_width
 	else
-		lower_ensured_index_x = raw_lower_x / OVERMAP_SPATIAL_HASH_COORDSIZE
-		upper_ensured_index_x = raw_upper_x / OVERMAP_SPATIAL_HASH_COORDSIZE
-		lower_ensured_index_x = CEILING(lower_ensured_index_x, 1) + 1
-		upper_ensured_index_x = round(upper_ensured_index_x)
+		lower_ensured_index_x = CEILING(raw_lower_x, 1) + 1
+		upper_ensured_index_x = round(raw_upper_x)
 	var/lower_ensured_index_y
 	var/upper_ensured_index_y
 	if(trampled & (1<<1))
 		lower_ensured_index_y = 1
 		upper_ensured_index_y = spatial_hash_height
 	else
-		lower_ensured_index_y = raw_lower_y / OVERMAP_SPATIAL_HASH_COORDSIZE
-		upper_ensured_index_y = raw_upper_y / OVERMAP_SPATIAL_HASH_COORDSIZE
-		lower_ensured_index_y = CEILING(lower_ensured_index_y, 1)
-		upper_ensured_index_y = round(upper_ensured_index_y)
+		lower_ensured_index_y = CEILING(raw_lower_y, 1)
+		upper_ensured_index_y = round(raw_upper_y)
 
 	// if we have no wraparound we know we do not need to use wrapped spatial square at all
 	. += wraparound? 																														\
@@ -89,9 +87,44 @@
 
 	// we now have all the things we know for sure will be in us
 	// everything else must be verified via dist calcs
+	// this is just the outer border of our scan area
+	// we WILL have to compute wraparound but i honestly can't be assed to optimize harder today so...
+	var/llx = CEILING(raw_lower_x, 1)
+	var/lly = CEILING(raw_lower_y, 1)
+	var/urx = CEILING(raw_upper_x, 1)
+	var/ury = CEILING(raw_upper_y, 1)
+	var/list/_scan
 
-	#warn unsure edges
+	OVERMAP_AGGRESSIVE_ASSERT(urx >= llx && ury >= lly)
 
+#define WRAPPED_ACCESS(x, y) OVERMAP_SPATIAL_HASH_INDEX(										\
+	x > spatial_hash_width? (x - spatial_hash_width) : (x < 1? x + spatial_hash_width : x),		\
+	y > spatial_hash_height? (y - spatial_hash_height) : (y < 1? y + spatial_hash_height : y),	\
+	spatial_hash_width,																			\
+	spatial_hash_height)
+
+#define WRAPPED_SCAN(x, y, d, i)											\
+	_scan = spatial_hash[WRAPPED_ACCESS(x, y)];								\
+	for(var/atom/movable/overmap_object/entity/E as anything in _scan){		\
+		if(direct_entity_distance_from(E, x, y) <= d){						\
+			i += E; }}
+
+	// scan north and south
+	for(var/_x in llx to urx)
+		WRAPPED_SCAN(_x, lly, dist, .)
+		WRAPPED_SCAN(_x, ury, dist, .)
+
+	if(ury - lly > 1)
+		// not the same line or same 2 lines, scan y too
+		// scan east/west
+		for(var/_y in lly + 1 to ury - 1)
+			WRAPPED_SCAN(llx, _y, dist, .)
+			WRAPPED_SCAN(urx, _y, dist, .)
+
+#undef WRAPPED_SCAN
+#undef WRAPPED_ACCESS
+
+	OVERMAP_AGGRESSIVE_ASSERT(!listcountdupes(.))
 
 // DANGEROUS PROC START - these are all used for above. if you snowflake use it and bad things happen, eat shit.
 /**
@@ -167,6 +200,7 @@
 /datum/overmap/proc/_entities_in_spatial_square(x1, y1, x2, y2)
 	PRIVATE_PROC(TRUE)
 	. = list()
+	OVERMAP_AGGRESSIVE_ASSERT(x2 >= x1 && y2 >= y1)
 	for(var/x in x1 to x2)
 		for(var/y in y1 to y2)
 			. += spatial_hash[OVERMAP_SPATIAL_HASH_INDEX(x, y, spatial_hash_width, spatial_hash_height)]
@@ -182,17 +216,19 @@
  */
 /datum/overmap/proc/bounds_entity_query(x, y, dist)
 	/// direction bitfield of wrap dirs
+	OVERMAP_AGGRESSIVE_ASSERT(dist >= 0)
 	var/computed_wrap = (dist > cached_coordinate_width - x + 1? EAST : NONE)	| \
 						(dist > cached_coordinate_height - y + 1? NORTH : NONE)	| \
 						(x - dist >= 0? WEST : NONE)							| \
 						(y - dist >= 0? SOUTH : NONE)
 
-	return raw_bounds_entity_query(
+	. = raw_bounds_entity_query(
 		round(x / OVERMAP_DISTANCE_PIXEL, 1),
 		round(y / OVERMAP_DISTANCE_PIXEL, 1),
 		round(dist / OVERMAP_DISTANCE_PIXEL, 1),
 		computed_wrap
 	)
+	OVERMAP_AGGRESSIVE_ASSERT(!listcountdupes(.))
 
 #define SCAN_BOUNDS(B) \
 	for(var/atom/movable/overmap_object/entity/E in B) { . += E; }
@@ -217,10 +253,10 @@
 	var/trampled = NONE
 	// trampled gets set with first bit if we'd entirely wrap around east/west, and/or second if north/south
 	// upon detection, we also cancel wraparound because we can just safely set the start points to 1 for that x/y/both.
-	if(diameter > cached_width_pixels)
+	if(diameter > cached_pixel_width)
 		trampled |= (1<<0)
 		wraparound &= ~(EAST|WEST)
-	if(diameter > cached_height_pixels)
+	if(diameter > cached_pixel_height)
 		trampled |= (1<<1)
 		wraparound &= ~(NORTH|SOUTH)
 	if(trampled == ((1<<0) | (1<<1)))
@@ -276,6 +312,7 @@
 				x_size,
 				overrun_y
 			)
+			OVERMAP_AGGRESSIVE_ASSERT(diameter == x_size == (y_size + overrun_y))
 			SCAN_BOUNDS(scan)
 		if(SOUTH)
 			scan = bounds(
@@ -284,6 +321,7 @@
 				x_size,
 				-overrun_y
 			)
+			OVERMAP_AGGRESSIVE_ASSERT(diameter == x_size == (y_size - overrun_y))
 			SCAN_BOUNDS(scan)
 		if(EAST)
 			scan = bounds(
@@ -292,6 +330,7 @@
 				overrun_x,
 				y_size
 			)
+			OVERMAP_AGGRESSIVE_ASSERT(diameter == y_size == (x_size + overrun_x))
 			SCAN_BOUNDS(scan)
 		if(WEST)
 			scan = bounds(
@@ -300,6 +339,8 @@
 				-overrun_x,
 				y_size
 			)
+			OVERMAP_AGGRESSIVE_ASSERT(diameter == y_size == (x_size - overrun_x))
+			SCAN_BOUNDS(scan)
 		// these are more complicated
 		// we cannot use x/y start/size perfectly
 		// both overruns are not 0

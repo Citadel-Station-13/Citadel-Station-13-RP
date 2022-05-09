@@ -4,6 +4,9 @@
 #define ZAS_DEBUG				// uncomment to enable laggy as sin ZAS debugging systems coded in for when doing bugfixes or major systems overhaulling.
 	// if you touch anything #if'd behind a block for this you better make sure this works or I will bean you with a shoe.
 
+/// has a performance overhead - runs asserts to ensure all low level maths are correct
+#define ENABLE_OVERMAP_AGGRESSIVE_ASSERT
+
 //#define DATUMVAR_DEBUGGING_MODE	//Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
 
 // Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error

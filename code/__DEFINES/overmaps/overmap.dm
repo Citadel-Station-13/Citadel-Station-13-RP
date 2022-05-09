@@ -1,3 +1,10 @@
+// debug
+#ifdef ENABLE_OVERMAP_AGGRESSIVE_ASSERT
+	#define OVERMAP_AGGRESSIVE_ASSERT(statement)		ASSERT(statement)
+#else
+	#define OVERMAP_AGGRESSIVE_ASSERT(statement)
+#endif
+
 /**
  * distances
  * everything's real distance is pixels for obvious reasons (like us using byond pixel movement)
@@ -9,6 +16,10 @@
 #define OVERMAP_DISTANCE_PIXEL		3
 /// overmap distance quantization
 #define OVERMAP_DISTANCE_ACCURACY	0.001
+/// duplicate of world icon size. don't lie to yourself, we aren't getting 64x64 ss13.
+#define OVERMAP_WORLD_ICON_SIZE				32
+/// overmap coordinate distance in a tile
+#define OVERMAP_DISTANCE_TILE				(OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
 /// overmap distance quantize helper
 #define QUANTIZE_OVERMAP_DISTANCE(d)		round(d, OVERMRAP_DISTANCE_ACCURACY)
 /// render overmap distance
@@ -37,26 +48,22 @@
 #define OVERMAP_SPATIAL_ADD_LOOKUP_RADIUS	3
 /// to prevent the weirdness of cross/uncross, this distance from the edge will never have anything generated in it
 #define OVERMAP_GENERATION_EDGE_MARGIN		2
-/// duplicate of world icon size. don't lie to yourself, we aren't getting 64x64 ss13.
-#define OVERMAP_WORLD_ICON_SIZE				32
 /// during entity queries, this is the minimum range where we use spatial grid scan, in byond pixels. below this, we use bounds() fastpath
 #define OVERMAP_ENTITY_QUERY_BUILTIN_RANGE_PIXELS		(OVERMAP_WORLD_ICON_SIZE * 10.5)	// 21x21, we assume byond isn't awful below this. above this, 8x8 spatial grids can easily be better (MAYBE)
 /// during entity queries, this is the minimum range where we use spatial grid scan, in overmap coords. below this, we use bounds() fastpath
 #define OVERMAP_ENTITY_QUERY_BUILTIN_RANGE				(OVERMAP_ENTITY_QUERY_BUILTIN_RANGE_PIXELS * OVERMAP_DISTANCE_PIXEL)
 /// pixels to overmap coordinate distance
-#define OVERMAP_DISTANCE_FROM_PIXELS(pixels)			(pixels * OVERMAP_DISTANCE_PIXEL)
+#define OVERMAP_DISTANCE_FROM_PIXELS(pixels)			((pixels) * OVERMAP_DISTANCE_PIXEL)
 /// tiles to overmap coordinate distance
-#define OVERMAP_DISTANCE_FROM_TILES(tiles)				(tiles * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
+#define OVERMAP_DISTANCE_FROM_TILES(tiles)				((tiles) * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
 /// overmap coordinates per spatial hash grid
 #define OVERMAP_SPATIAL_HASH_COORDSIZE		(OVERMAP_SPATIAL_HASH_SIZE * OVERMAP_DISTANCE_PIXEL * OVERMAP_WORLD_ICON_SIZE)
 /// spatial hash x y indexes to real index - hwidth and hheight are the width and height of the spatial grid
-#define OVERMAP_SPATIAL_HASH_INDEX(x, y, hwidth, hheight)		(x + (y - 1) * hwidth)
+#define OVERMAP_SPATIAL_HASH_INDEX(x, y, hwidth, hheight)		((x) + ((y) - 1) * (hwidth))
 /// spatial hash x y coordinates to real index - hwidth and hheight are the width and height of the spatial grid
-#define OVERMAP_SPATIAL_HASH_COORD_INDEX(x, y, hwidth, hheight)	(CEILING(x / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) + (CEILING(y / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) - 1) * hwidth)
+#define OVERMAP_SPATIAL_HASH_COORD_INDEX(x, y, hwidth, hheight)	(CEILING((x) / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) + (CEILING((y) / OVERMAP_SPATIAL_HASH_COORDSIZE, 1) - 1) * (hwidth))
 /// spatial hash list length for tile width/height
-#define OVERMAP_SPATIAL_HASH_FOR_TILE_SIZE(x, y)		(CEILING(x / OVERMAP_SPATIAL_HASH_SIZE, 1) * CEILING(y / OVERMAP_SPATIAL_HASH_SIZE, 1))
-
-
+#define OVERMAP_SPATIAL_HASH_FOR_TILE_SIZE(x, y)		(CEILING((x) / OVERMAP_SPATIAL_HASH_SIZE, 1) * CEILING((y) / OVERMAP_SPATIAL_HASH_SIZE, 1))
 
 ///////// LEGACY BELOW
 

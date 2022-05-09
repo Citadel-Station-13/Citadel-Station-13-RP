@@ -5,38 +5,59 @@
 	if(physics_paused || !overmap)	// paused or no overmap
 		return
 
+	OVERMAP_AGGRESSIVE_ASSERT(isturf(loc) && overmap.physically_in_bounds(src))
+
 	var/dx = velocity_x * seconds
 	var/dy = velocity_y * seconds
 	var/da = angular_velocity * seconds
 
-	if(dx > 32 || dy > 32)	// not sure how this is possible but we're jumping so..
-		x += dx
-		y += dy
-		angle += da
-		angle = SIMPLIFY_DEGREES(angle)
+	position_x += dx
+	position_y += dy
+	angle += da
+	angle = SIMPLIFY_DEGREES(angle)
+
+	if(dx > OVERMAP_WORLD_ICON_SIZE || dy > OVERMAP_WORLD_ICON_SIZE)	// not sure how this is possible but we're jumping so..
 		move_to_location()
 		return
 
+	var/turf/T = locate((position_x / OVERMAP_DISTANCE_TILE) + overmap.cached_x_start, (position_y / OVERMAP_DISTANCE_TILE) + overmap.cached_y_start, overmap.cached_z)
+	OVERMAP_AGGRESSIVE_ASSERT(T.x == (FLOOR(position_x / OVERMAP_DISTANCE_TILE, 1) + overmap.cached_x_start))
+	OVERMAP_AGGRESSIVE_ASSERT(T.y == (FLOOR(position_y / OVERMAP_DISTANCE_TILE, 1) + overmap.cached_y_start))
+	if(get_dist(T, loc) > 1)
+		// jumping
+		move_to_location()
+		return
 
-	#warn move
-	#warn move to
-	#warn optimized spatial hash updates
-
-#warn do all of these
-
-
-
+	// animate movement
+	if(T != loc)
+		// shift into new turf
+		step_towards(src, T)
+		pixel_x = position_x % OVERMAP_DISTANCE_TILE
+		pixel_y = pixel_y % OVERMAP_DISTANCE_TILE
+	else
+		// shift in place
+		animate(src, pixel_x = position_x % OVERMAP_DISTANCE_TILE, pixel_y = pixel_y % OVERMAP_DISTANCE_TILE, time = seconds)
+	// animate rotation
+	var/matrix/M = matrix()
+	M.Turn(angle)
+	animate(src, transform = M, time = seconds)
+	ensure_hash_correctness()
 /**
  * move to where we should be immediately without visuals
  */
 /atom/movable/overmap_object/entity/proc/move_to_location()
+	OVERMAP_AGGRESSIVE_ASSERT(isturf(loc))
 	jumping = TRUE
 	forceMove(
-		locate((x / OVERMAP_DISTANCE_PIXEL) + overmap.cached_x_start),
-		locate((y / OVERMAP_DISTANCE_PIXEL) + overmap.cached_y_start),
+		locate((position_x / OVERMAP_DISTANCE_TILE) + overmap.cached_x_start),
+		locate((position_y / OVERMAP_DISTANCE_TILE) + overmap.cached_y_start),
 		overmap.cached_z
 	)
 	jumping = FALSE
+	OVERMAP_AGGRESSIVE_ASSERT(loc.x == (FLOOR(position_x / OVERMAP_DISTANCE_TILE, 1) + overmap.cached_x_start))
+	OVERMAP_AGGRESSIVE_ASSERT(loc.y == (FLOOR(position_y / OVERMAP_DISTANCE_TILE, 1) + overmap.cached_y_start))
+	pixel_x = position_x % OVERMAP_DISTANCE_TILE
+	pixel_y = position_y % OVERMAP_DISTANCE_TILE
 	var/matrix/M = matrix()
 	M.Turn(angle)
 	transform = M

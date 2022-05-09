@@ -27,6 +27,7 @@
  * assumes object is in bounds
  */
 /datum/overmap/proc/get_x_of_object(atom/movable/overmap_object/O)
+	OVERMAP_AGGRESSIVE_ASSERT(physically_in_bounds(O))
 	. = ((cached_x_start - O.x) * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
 	if(istype(O, /atom/movable/overmap_object/entity))
 		var/atom/movable/overmap_object/entity/E = O
@@ -43,6 +44,7 @@
  * assumes object is in bounds
  */
 /datum/overmap/proc/get_y_of_object(atom/movable/overmap_object/O)
+	OVERMAP_AGGRESSIVE_ASSERT(physically_in_bounds(O))
 	. = ((cached_y_start - O.y) * OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
 	if(istype(O, /atom/movable/overmap_object/entity))
 		var/atom/movable/overmap_object/entity/E = O
@@ -67,10 +69,11 @@
 /datum/overmap/proc/direct_entity_distance_from(atom/movable/overmap_object/entity/E, x, y)
 	var/dx = abs(x - E.position_x)
 	var/dy = abs(y - E.position_y)
-	return min(
+	. = min(
 		(dx > cached_coordinate_center_x? cached_coordinate_width - dx : dx),
 		(dy > cached_coordinate_center_y? cached_coordinate_height - dy : dy)
 	)
+	OVERMAP_AGGRESSIVE_ASSERT(. >= 0)
 
 /**
  * get distance from one object to another, taking into account wraps
