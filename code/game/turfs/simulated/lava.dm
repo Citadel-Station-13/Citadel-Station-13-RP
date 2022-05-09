@@ -32,11 +32,6 @@
 	..()
 	name = "magma"
 
-/turf/simulated/floor/outdoors/lava/update_icon()
-	cut_overlays()
-	..()
-	update_icon_edge()
-
 /turf/simulated/floor/outdoors/lava/Entered(atom/movable/AM)
 	..()
 	if(burn_stuff(AM))

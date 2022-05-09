@@ -140,7 +140,7 @@
 		if (R.use(1))
 			to_chat(user, "<span class='notice'>Constructing support lattice ...</span>")
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-			ReplaceWithLattice()
+			new /obj/structure/lattice(src)
 		return
 
 	if (istype(C, /obj/item/stack/tile/floor))
@@ -152,7 +152,7 @@
 			qdel(L)
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 			S.use(1)
-			ChangeTurf(/turf/simulated/floor/airless)
+			ChangeTurf(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR)
 			return
 		else
 			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
@@ -161,8 +161,6 @@
 	if(istype(C, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = C
 		coil.turf_place(src, user)
-		return
-	return
 
 // Most things use is_plating to test if there is a cover tile on top (like regular floors)
 /turf/simulated/open/is_plating()

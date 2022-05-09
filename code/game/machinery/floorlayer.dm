@@ -1,3 +1,4 @@
+// TODO: allow different tile types in storage??
 /obj/machinery/floorlayer
 	name = "automatic floor layer"
 	icon = 'icons/obj/stationobjs.dmi'
@@ -85,11 +86,6 @@
 		return 1
 	return 0
 
-/obj/machinery/floorlayer/proc/SortStacks()
-	for(var/obj/item/stack/tile/tile1 in contents)
-		for(var/obj/item/stack/tile/tile2 in contents)
-			tile2.transfer_to(tile1)
-
 /obj/machinery/floorlayer/proc/layFloor(var/turf/w_turf)
 	if(!T)
 		if(!TakeNewStack())
@@ -98,10 +94,11 @@
 	return 1
 
 /obj/machinery/floorlayer/proc/TakeTile(var/obj/item/stack/tile/tile)
-	if(!T)	T = tile
-	tile.loc = src
-
-	SortStacks()
+	if(!T)
+		T = tile
+		tile.forceMove(src)
+	else
+		tile.merge(T)
 
 /obj/machinery/floorlayer/proc/CollectTiles(var/turf/w_turf)
 	for(var/obj/item/stack/tile/tile in w_turf)

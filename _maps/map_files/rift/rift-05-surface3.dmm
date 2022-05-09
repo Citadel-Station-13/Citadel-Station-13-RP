@@ -498,6 +498,10 @@
 /area/hallway/secondary/docking_hallway2)
 "aS" = (
 /atom/movable/landmark/spawnpoint/job/bartender,
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = -15
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "aT" = (
@@ -1841,6 +1845,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 1;
+	master_tag = "civ_airlock";
+	pixel_x = 26;
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "dr" = (
@@ -2950,6 +2960,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "fk" = (
@@ -3529,6 +3544,12 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
+	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 1;
+	master_tag = "civ_airlock_two";
+	pixel_x = -26;
+	pixel_y = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
@@ -4225,13 +4246,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "hz" = (
-/obj/machinery/access_button{
-	dir = 1;
-	master_tag = "civ_airlock";
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/turf/simulated/wall/r_wall,
+/obj/structure/catwalk,
+/obj/machinery/light/small,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfaceeva/airlock/arrivals)
 "hA" = (
 /turf/simulated/floor/carpet/blue,
@@ -4354,7 +4371,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside3)
+/area/rift/surfaceeva/airlock/arrivals)
 "hO" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -6236,7 +6253,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
 "lm" = (
-/obj/machinery/door/airlock/maintenance/command,
+/obj/machinery/door/airlock/maintenance/command{
+	req_one_access = list(57)
+	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -6373,13 +6392,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
-/obj/machinery/airlock_sensor/phoron{
-	dir = 4;
-	id_tag = "civ_airlock_sensor";
-	name = "frostlock sensor";
-	pixel_x = -26
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "lA" = (
@@ -7234,6 +7251,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway2)
+"nr" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	on = 1
+	},
+/turf/simulated/floor/plating,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "ns" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/grass,
@@ -8957,14 +8983,9 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "rg" = (
-/obj/machinery/access_button{
-	dir = 1;
-	master_tag = "civ_airlock_two";
-	pixel_x = 6;
-	pixel_y = 8
-	},
-/turf/simulated/wall/r_wall,
-/area/rift/surfaceeva/airlock/arrivals/secondary)
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfaceeva/airlock/arrivals)
 "rh" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -9550,13 +9571,11 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/machinery/airlock_sensor/phoron{
-	dir = 8;
-	id_tag = "civ_airlock_two_sensor";
-	name = "frostlock sensor";
-	pixel_x = 26
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "sq" = (
@@ -11399,6 +11418,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10
 	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/airlock_sensor/phoron{
+	dir = 9;
+	id_tag = "civ_airlock_two_sensor";
+	name = "frostlock sensor";
+	pixel_x = -38;
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "wf" = (
@@ -12061,7 +12088,6 @@
 "xq" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/int_door,
-/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/general)
 "xr" = (
@@ -12140,7 +12166,7 @@
 "xy" = (
 /obj/machinery/door/airlock/command{
 	name = "NanoTrasen Official On-Site Office";
-	req_access = list(19)
+	req_access = list(20)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
@@ -12235,7 +12261,6 @@
 	pixel_x = 36;
 	pixel_y = 8
 	},
-/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/general)
 "xH" = (
@@ -13014,11 +13039,6 @@
 	id_tag = "civ_airlock_pump"
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
-	frequency = 1379;
-	on = 1;
-	scrub_id = "civ_airlock_scrubber"
-	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/arrivals)
 "zo" = (
@@ -13480,7 +13500,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/kitchen)
 "Ah" = (
 /obj/structure/cable/green{
@@ -14284,6 +14304,25 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/cafeteria)
+"BT" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	frequency = 1379;
+	scrub_id = "civ_airlock_scrubber"
+	},
+/turf/simulated/floor/plating,
+/area/rift/surfaceeva/airlock/arrivals)
 "BU" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rsurface/level3)
@@ -14322,12 +14361,13 @@
 	frequency = 1379;
 	id_tag = "civ_airlock_two_pump"
 	},
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
-	frequency = 1379;
-	on = 1;
-	scrub_id = "civ_airlock_two_scrubber"
-	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "civ_airlock_two";
+	name = "Frost Lock Controller";
+	pixel_x = 6;
+	pixel_y = 26
+	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "BY" = (
@@ -16550,12 +16590,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/machinery/embedded_controller/radio/airlock/phoron{
-	dir = 8;
-	id_tag = "civ_airlock_two";
-	name = "Frost Lock Controller";
-	pixel_x = 26
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "GO" = (
@@ -16699,14 +16733,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
 "Hd" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "He" = (
 /obj/structure/table/standard,
 /obj/item/hand_tele,
@@ -16820,14 +16849,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "Hn" = (
-/obj/structure/railing{
-	dir = 1
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "Ho" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -18008,6 +18037,26 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
+"JK" = (
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	frequency = 1379;
+	on = 1;
+	scrub_id = "civ_airlock_two_scrubber"
+	},
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "JL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -18085,11 +18134,13 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
 	id_tag = "courser_dock_pump"
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	on = 1
 	},
 /turf/simulated/floor/plating,
 /area/exploration/courser_dock)
@@ -18601,6 +18652,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "civ_airlock_two";
+	pixel_x = -26;
+	pixel_y = -8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "KP" = (
@@ -18940,6 +18996,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
+/obj/machinery/airlock_sensor/phoron{
+	dir = 5;
+	id_tag = "civ_airlock_sensor";
+	name = "frostlock sensor";
+	pixel_x = 38;
+	pixel_y = 24
+	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "LI" = (
@@ -19846,13 +19910,10 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "NB" = (
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "civ_airlock";
-	pixel_x = -6;
-	pixel_y = -8
-	},
-/turf/simulated/wall/r_wall,
-/area/rift/surfaceeva/airlock/arrivals)
+/obj/structure/catwalk,
+/obj/machinery/light/small,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfaceeva/airlock/arrivals/secondary)
 "NC" = (
 /obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -20542,9 +20603,9 @@
 /obj/machinery/button/remote/blast_door{
 	id = "kitchen_shutters";
 	name = "Kitchen Shutter control";
-	pixel_x = -24;
+	pixel_x = -26;
 	pixel_y = 24;
-	req_one_access = list(25)
+	req_one_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -20934,13 +20995,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "PN" = (
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "civ_airlock_two";
-	pixel_x = 6;
-	pixel_y = -8
+/obj/structure/railing{
+	dir = 4
 	},
-/turf/simulated/wall/r_wall,
-/area/rift/surfaceeva/airlock/arrivals/secondary)
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	on = 1
+	},
+/turf/simulated/floor/plating,
+/area/rift/surfaceeva/airlock/arrivals)
 "PO" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -21704,6 +21766,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "Rn" = (
@@ -21782,11 +21849,6 @@
 	id_tag = "civ_airlock_two_pump"
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
-	frequency = 1379;
-	on = 1;
-	scrub_id = "civ_airlock_two_scrubber"
-	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "Rs" = (
@@ -21939,6 +22001,9 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
@@ -22157,12 +22222,13 @@
 	frequency = 1379;
 	id_tag = "civ_airlock_pump"
 	},
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
-	frequency = 1379;
-	on = 1;
-	scrub_id = "civ_airlock_scrubber"
-	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "civ_airlock";
+	name = "Frost Lock Controller";
+	pixel_x = -6;
+	pixel_y = 26
+	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/arrivals)
 "Sd" = (
@@ -24059,12 +24125,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
-/obj/machinery/embedded_controller/radio/airlock/phoron{
-	dir = 4;
-	id_tag = "civ_airlock";
-	name = "Frost Lock Controller";
-	pixel_x = -26
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "Wp" = (
@@ -25552,6 +25612,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
+	},
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "civ_airlock";
+	pixel_x = 26;
+	pixel_y = -8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
@@ -38529,10 +38594,10 @@ mn
 eo
 GF
 IA
-Hd
-cH
-cH
-gm
+gI
+gI
+gI
+gI
 MW
 nN
 MW
@@ -38722,10 +38787,10 @@ us
 mn
 jp
 GF
-IA
+hz
 gI
-gI
-gI
+PN
+BT
 gI
 wX
 GE
@@ -38916,7 +38981,7 @@ us
 mn
 jp
 GF
-IA
+rg
 sG
 Wo
 lz
@@ -39304,11 +39369,11 @@ AS
 jp
 Nk
 IA
-IA
-hz
+rg
+gI
 Sc
 zn
-NB
+gI
 JL
 FQ
 wm
@@ -43184,11 +43249,11 @@ lk
 jp
 cH
 IA
-IA
-rg
+Hd
+UQ
 BX
 Rr
-PN
+UQ
 UK
 FQ
 wm
@@ -43378,7 +43443,7 @@ us
 mj
 jp
 Zz
-hN
+Hn
 gl
 we
 fj
@@ -43572,7 +43637,7 @@ us
 mn
 jp
 GF
-IA
+Hd
 qB
 GN
 sp
@@ -43766,10 +43831,10 @@ us
 mn
 jp
 GF
-IA
+NB
 UQ
-UQ
-UQ
+nr
+JK
 UQ
 cf
 GH
@@ -43790,7 +43855,7 @@ lm
 aA
 Bh
 oj
-MK
+YF
 lM
 ep
 ES
@@ -43961,10 +44026,10 @@ mn
 fZ
 GF
 IA
-Hn
-fq
-fq
-gm
+UQ
+UQ
+UQ
+UQ
 HO
 lN
 yl
