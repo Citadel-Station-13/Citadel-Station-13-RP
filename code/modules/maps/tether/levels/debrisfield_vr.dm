@@ -37,13 +37,6 @@
 	teleport_y = y
 	teleport_z = z
 
-//This does nothing right now, but is framework if we do POIs for this place
-/obj/away_mission_init/debrisfield_vr
-	name = "away mission initializer - debrisfield"
-
-/obj/away_mission_init/debrisfield_vr/Initialize(mapload)
-	return INITIALIZE_HINT_QDEL
-
 /area/tether_away/debrisfield_vr
 	name = "Away Mission - Debris Field"
 	icon = 'icons/turf/areas_vr.dmi'
