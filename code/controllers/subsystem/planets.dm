@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(planets)
 		new_outdoor_walls = list()
 		return
 	var/list/curr = new_outdoor_turfs
-	while(curr)
+	while(curr.len)
 		var/turf/simulated/S = curr[curr.len]
 		curr.len--
 		if(!istype(S))
@@ -101,7 +101,7 @@ SUBSYSTEM_DEF(planets)
 		if(MC_TICK_CHECK)
 			return
 	curr = new_outdoor_walls
-	while(curr)
+	while(curr.len)
 		var/turf/unsimulated/wall/planetary/S = curr[curr.len]
 		curr.len--
 		if(!istype(S))
