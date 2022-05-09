@@ -15,6 +15,8 @@
 	/// cable color as from GLOB.cable_colors
 	var/cable_color = "red"
 
+#warn parse
+
 /atom/movable/map_helper/network_builder/power_cable/check_duplicates()
 	var/obj/structure/cable/C = locate() in loc
 	if(C)

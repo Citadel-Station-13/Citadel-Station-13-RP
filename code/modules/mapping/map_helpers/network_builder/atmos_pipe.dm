@@ -16,6 +16,8 @@
 
 	color = null
 
+#warn parse
+
 /atom/movable/map_helper/network_builder/atmos_pipe/check_duplicates()
 	for(var/atom/movable/map_helper/network_builder/atmos_pipe/other in loc)
 		if(other == src)
