@@ -27,17 +27,13 @@
 
 /atom/movable/landmark/corpse/Initialize(mapload)
 	. = ..()
-	// human won't Initialize() before lateload, which until we refactor species/whatnot will be bad because stuff like hud list won't be init'd
-	return INITIALIZE_HINT_LATELOAD
-
-/atom/movable/landmark/corpse/LateInitialize()
 	createCorpse()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /atom/movable/landmark/corpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	SHOULD_NOT_SLEEP(TRUE)	// HMMM MOB INIT ISSUES?
-	set waitfor = FALSE
-	var/mob/living/carbon/human/M = . = new /mob/living/carbon/human (src.loc)
+	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
+	. = M
 	M.set_species(species_type_by_name(species))
 	M.real_name = src.name
 	M.death(1) //Kills the new mob
@@ -84,8 +80,6 @@
 			W.assignment = corpseidjob
 		M.set_id_info(W)
 		M.equip_to_slot_or_del(W, slot_wear_id)
-
-
 
 // I'll work on making a list of corpses people request for maps, or that I think will be commonly used. Syndicate operatives for example.
 
