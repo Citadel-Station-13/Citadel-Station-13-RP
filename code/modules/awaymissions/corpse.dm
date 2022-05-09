@@ -4,7 +4,7 @@
 
 //To do: Allow corpses to appear mangled, bloody, etc. Allow customizing the bodies appearance (they're all bald and white right now).
 
-/atom/movable/landmark/corpse
+/atom/movable/spawner/corpse
 	name = "Unknown"
 	var/mobname = "Unknown"  //Unused now but it'd fuck up maps to remove it now
 	var/corpseuniform = null //Set this to an object path to have the slot filled with said object on the corpse.
@@ -25,12 +25,12 @@
 	var/corpseidicon = null //For setting it to be a gold, silver, CentCom etc ID
 	var/species = SPECIES_HUMAN
 
-/atom/movable/landmark/corpse/Initialize(mapload)
+/atom/movable/spawner/corpse/Initialize(mapload)
 	. = ..()
 	createCorpse()
 	return INITIALIZE_HINT_QDEL
 
-/atom/movable/landmark/corpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
+/atom/movable/spawner/corpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	SHOULD_NOT_SLEEP(TRUE)	// HMMM MOB INIT ISSUES?
 	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
 	. = M
@@ -87,7 +87,7 @@
 
 
 
-/atom/movable/landmark/corpse/syndicatesoldier
+/atom/movable/spawner/corpse/syndicatesoldier
 	name = "Mercenary"
 	corpseuniform = /obj/item/clothing/under/syndicate
 	corpsesuit = /obj/item/clothing/suit/armor/vest
@@ -103,7 +103,7 @@
 
 
 
-/atom/movable/landmark/corpse/syndicatecommando
+/atom/movable/spawner/corpse/syndicatecommando
 	name = "Syndicate Commando"
 	corpseuniform = /obj/item/clothing/under/syndicate
 	corpsesuit = /obj/item/clothing/suit/space/void/merc
@@ -122,7 +122,7 @@
 
 ///////////Civilians//////////////////////
 
-/atom/movable/landmark/corpse/chef
+/atom/movable/spawner/corpse/chef
 	name = "Chef"
 	corpseuniform = /obj/item/clothing/under/rank/chef
 	corpsesuit = /obj/item/clothing/suit/chef/classic
@@ -135,7 +135,7 @@
 	corpseidaccess = "Chef"
 
 
-/atom/movable/landmark/corpse/doctor
+/atom/movable/spawner/corpse/doctor
 	name = "Doctor"
 	corpseradio = /obj/item/radio/headset/headset_med
 	corpseuniform = /obj/item/clothing/under/rank/medical
@@ -147,7 +147,7 @@
 	corpseidjob = "Medical Doctor"
 	corpseidaccess = "Medical Doctor"
 
-/atom/movable/landmark/corpse/engineer
+/atom/movable/spawner/corpse/engineer
 	name = "Engineer"
 	corpseradio = /obj/item/radio/headset/headset_eng
 	corpseuniform = /obj/item/clothing/under/rank/engineer
@@ -160,12 +160,12 @@
 	corpseidjob = "Station Engineer"
 	corpseidaccess = "Station Engineer"
 
-/atom/movable/landmark/corpse/engineer/rig
+/atom/movable/spawner/corpse/engineer/rig
 	corpsesuit = /obj/item/clothing/suit/space/void/engineering
 	corpsemask = /obj/item/clothing/mask/breath
 	corpsehelmet = /obj/item/clothing/head/helmet/space/void/engineering
 
-/atom/movable/landmark/corpse/clown
+/atom/movable/spawner/corpse/clown
 	name = "Clown"
 	corpseuniform = /obj/item/clothing/under/rank/clown
 	corpseshoes = /obj/item/clothing/shoes/clown_shoes
@@ -177,7 +177,7 @@
 	corpseidjob = "Clown"
 	corpseidaccess = "Clown"
 
-/atom/movable/landmark/corpse/scientist
+/atom/movable/spawner/corpse/scientist
 	name = "Scientist"
 	corpseradio = /obj/item/radio/headset/headset_sci
 	corpseuniform = /obj/item/clothing/under/rank/scientist
@@ -188,7 +188,7 @@
 	corpseidjob = "Scientist"
 	corpseidaccess = "Scientist"
 
-/atom/movable/landmark/corpse/miner
+/atom/movable/spawner/corpse/miner
 	corpseradio = /obj/item/radio/headset/headset_cargo
 	corpseuniform = /obj/item/clothing/under/rank/miner
 	corpsegloves = /obj/item/clothing/gloves/black
@@ -198,7 +198,7 @@
 	corpseidjob = "Shaft Miner"
 	corpseidaccess = "Shaft Miner"
 
-/atom/movable/landmark/corpse/miner/rig
+/atom/movable/spawner/corpse/miner/rig
 	corpsesuit = /obj/item/clothing/suit/space/void/mining
 	corpsemask = /obj/item/clothing/mask/breath
 	corpsehelmet = /obj/item/clothing/head/helmet/space/void/mining
@@ -206,7 +206,7 @@
 
 /////////////////Officers//////////////////////
 
-/atom/movable/landmark/corpse/bridgeofficer
+/atom/movable/spawner/corpse/bridgeofficer
 	name = "Bridge Officer"
 	corpseradio = /obj/item/radio/headset/heads/hop
 	corpseuniform = /obj/item/clothing/under/rank/centcom_officer
@@ -217,7 +217,7 @@
 	corpseidjob = "Bridge Officer"
 	corpseidaccess = "Captain"
 
-/atom/movable/landmark/corpse/commander
+/atom/movable/spawner/corpse/commander
 	name = "Commander"
 	corpseuniform = /obj/item/clothing/under/rank/centcom_captain
 	corpsesuit = /obj/item/clothing/suit/armor/bulletproof
@@ -232,7 +232,7 @@
 	corpseidjob = "Commander"
 	corpseidaccess = "Captain"
 
-/atom/movable/landmark/corpse/vintage/pilot
+/atom/movable/spawner/corpse/vintage/pilot
 	name = "Unknown Pilot"
 	corpsesuit = /obj/item/clothing/suit/space/void/refurb/pilot
 	corpsehelmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot

@@ -14,4 +14,5 @@ Apply regexes in this order:
 // TODO: OBSERVER START
 
 // TODO: MAKE SURE NO / AFTER COSTUME
-`/atom/movable/landmark/costume` `/atom/movable/landmark/costume/random`
+`/atom/movable/landmark/costume`-`/atom/movable/landmark/costume/random`
+`/atom/movable/landmark/corpse`-`/atom/movable/spawner/corpse`
