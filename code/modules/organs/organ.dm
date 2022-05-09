@@ -123,7 +123,7 @@ var/list/organ_cache = list()
 
 	if(iscarbon(holder))
 		var/mob/living/carbon/C = holder
-		species = GLOB.all_species[SPECIES_HUMAN]
+		species = get_static_species_meta(/datum/species/human)
 		if(holder.dna)
 			dna = C.dna.Clone()
 			species = C.species //For custom species

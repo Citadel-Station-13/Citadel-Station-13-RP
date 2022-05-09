@@ -421,13 +421,13 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["set_species"])
 		user << browse(null, "window=species")
-		if(!pref.species_preview || !(pref.species_preview in GLOB.all_species))
+		if(!pref.species_preview || !(pref.species_preview in all_species_names()))
 			return TOPIC_NOACTION
 
 		var/datum/species/setting_species
 
 		if(GLOB.all_species[href_list["set_species"]])
-			setting_species = GLOB.all_species[href_list["set_species"]]
+			setting_species = name_static_species_meta(href_list["set_species"])
 		else
 			return TOPIC_NOACTION
 
@@ -936,9 +936,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		pref.real_name      = random_name(pref.identifying_gender, pref.species)
 
 /datum/category_item/player_setup_item/general/body/proc/SetSpecies(mob/user)
-	if(!pref.species_preview || !(pref.species_preview in GLOB.all_species))
+	if(!pref.species_preview || !(pref.species_preview in all_species_names()))
 		pref.species_preview = SPECIES_HUMAN
-	var/datum/species/current_species = GLOB.all_species[pref.species_preview]
+	var/datum/species/current_species = name_static_species_meta(pref.species_preview)
 	var/dat = "<body>"
 	dat += "<center><h2>[current_species.name] \[<a href='?src=\ref[src];show_species=1'>change</a>\]</h2></center><hr/>"
 	dat += "<table padding='8px'>"

@@ -10,7 +10,7 @@
 	if(species == new_species)
 		return
 
-	if(!(new_species in GLOB.all_species))
+	if(!(new_species in all_species_names()))
 		return
 
 	set_species(new_species)
