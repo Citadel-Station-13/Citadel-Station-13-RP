@@ -103,17 +103,22 @@
  * @params
  * - x - absolute overmap coordinate x
  * - y - absolute overmap coordinate y
- * - dist - overmap coords to scan
+ * - dist - overmap coords to scan. 0 just grabs everything overlapping one singular pixel on us.
  */
 /datum/overmap/proc/bounds_entity_query(x, y, dist)
 	/// direction bitfield of wrap dirs
-	var/computed_wrap = (x > dist? NONE : WEST) | (y > dist? NONE : SOUTH) | \
+	var/computed_wrap = (dist > cached_coordinate_width - x + 1? EAST : NONE)	| \
+						(dist > cached_coordinate_height - y + 1? NORTH : NONE)	| \
+						(x - dist >= 0? WEST : NONE)							| \
+						(y - dist >= 0? SOUTH : NONE)
+
+	(x > dist? NONE : WEST) | (y > dist? NONE : SOUTH) | \
 						((cached_coordinate_width - x) >= 1? NONE : EAST)  | \
 						((cached_coordinate_height - y) >= 1? NONE : NORTH)
 	return raw_bounds_entity_query(
-		x / OVERMAP_DISTANCE_PIXEL,
-		y / OVERMAP_DISTANCE_PIXEL,
-		dist / OVERMAP_DISTANCE_PIXEL,
+		round(x / OVERMAP_DISTANCE_PIXEL, 1),
+		round(y / OVERMAP_DISTANCE_PIXEL, 1),
+		round(dist / OVERMAP_DISTANCE_PIXEL, 1),
 		computed_wrap
 	)
 
@@ -127,8 +132,8 @@
  * warning this proc operates on byond pixels!
  *
  * @params
- * - x - absolute byond pixel coordinate x
- * - y - absolute byond pixel coordinate y
+ * - x - absolute byond pixel coordinate x from bottom left of overmap
+ * - y - absolute byond pixel coordinate y from bottom left of overmap
  * - dist - pixels to scan. 0 just grabs anything overlapping the pixel at x, y.
  * - wraparound - do we need to wrap around? bitfield.
  */
@@ -148,12 +153,33 @@
 	if(trampled == ((1<<0) | (1<<1)))
 		return entities.Copy()		// we're getting the whole map.
 	var/list/scan
+	// track parameters of first scan for reuse, mostly importantly, overrun
+	// overrun is negative when overflowing south or west, positive if overflowing north or east
+	var/x_start = (trampled & (1<<0)) ? (cached_bottomleft_pixel_x) : (cached_bottomleft_pixel_x + x - dist - 1),
+	var/y_start = (trampled & (1<<1)) ? (cached_bottomleft_pixel_y) : (cached_bottomleft_pixel_y + y - dist - 1),
+	var/overrun_x = 0
+	var/overrun_y = 0
+	if(x_start < cached_bottomleft_pixel_x)
+		overrun_x = x_start - cached_bottomleft_pixel_x
+		x_start = cached_bottomleft_pixel_x
+	if(y_start < cached_bottomleft_pixel_y)
+		overrun_y = y_start - cached_bottomleft_pixel_y
+		y_start = cached_bottomleft_pixel_y
+	var/x_size = diameter
+	var/y_size = diameter
+	if(x_size > cached_pixel_width - x + 1)
+		overrun_x = x_size - (cached_pixel_width - x + 1)
+		x_size -= overrun_x
+	if(y_size > cached_pixel_height - y + 1)
+		overrun_y = y_size - (cached_pixel_height - y + 1)
+		y_size -= overrun_y
 	// first scan
 	scan = bounds(
-		(trampled & (1<<0)) ? (cached_bottomleft_pixel_x) : (cached_bottomleft_pixel_x + x - dist - 1)
-		(trampled & (1<<1)) ? (cached_bottomleft_pixel_y) : (cached_bottomleft_pixel_y + y - dist - 1),
-		diameter - 1,
-		diameter - 1)
+		x_start,
+		y_start,
+		x_size,
+		y_size
+	)
 	SCAN_BOUNDS(scan)
 	if(!wraparound)
 		// if we aren't wrapping around this first scan caught everything
@@ -165,47 +191,141 @@
 	// we can optimize further but for now, 4 if's and a switch will do just fine.
 	// furthermore, in these if's we can assume we don't have to check trampled if wraparound is in
 	// a trampled dir flag, because then wraparound wouldn't have those dirs!
-	if(wraparound & NORTH)
-		scan = bounds(
-			cached_coordinate_width - (dist - x),
-			cached_coordinate_height - (dist - y),
+	// addendum: overrun vars added
+	// static 6 vars + multiple math/comparison ops. however, greatly speeds up math for overrun scan parameters.
+	switch(wraparound)
+		// these are simple, we can use x/y start/size perfectly
+		// only one overrun is not 0
+		if(NORTH)
+			scan = bounds(
+				x_start,
+				1,
+				x_size,
+				overrun_y
+			)
+			SCAN_BOUNDS(scan)
+		if(SOUTH)
+			scan = bounds(
+				x_start,
+				cached_bottomleft_pixel_y + cached_pixel_height + overrun_y,
+				x_size,
+				-overrun_y
+			)
+			SCAN_BOUNDS(scan)
+		if(EAST)
+			scan = bounds(
+				1,
+				y_start,
+				overrun_x,
+				y_size
+			)
+			SCAN_BOUNDS(scan)
+		if(WEST)
+			scan = bounds(
+				cached_bottomleft_pixel_x + cached_pixel_width + overrun_x,
+				y_start,
+				-overrun_x,
+				y_size
+			)
+		// these are more complicated
+		// we cannot use x/y start/size perfectly
+		// both overruns are not 0
+		if(NORTHEAST)
+			// north --> south
+			scan = bounds(
+				x_start,
+				1,
+				x_size,
+				overrun_y
+			)
+			SCAN_BOUNDS(scan)
+			// east --> west
+			scan = bounds(
+				1,
+				y_start,
+				overrun_x,
+				y_size
+			)
+			SCAN_BOUNDS(scan)
+			// northeast --> southwest
+			scan = bounds(
+				1,
+				1,
+				overrun_x,
+				overrun_y
+			)
+			SCAN_BOUNDS(scan)
+		if(NORTHWEST)
+			// north --> south
+			scan = bounds(
+				x_start,
+				1,
+				x_size,
+				overrun_y
+			)
+			SCAN_BOUNDS(scan)
+			// west --> east
+			scan = bounds(
+				cached_bottomleft_pixel_x + cached_pixel_width + overrun_x,
+				y_start,
+				-overrun_x,
+				y_size
+			)
+			SCAN_BOUNDS(scan)
+			// northwest --> southeast
+			scan = bounds(
+				cached_bottomleft_pixel_x + cached_pixel_width + overrun_x,
+				1,
+				-overrun_x,
+				overrun_y
+			)
+			SCAN_BOUNDS(scan)
+		if(SOUTHEAST)
+			// south --> north
+			scan = bounds(
+				x_start,
+				cached_bottomleft_pixel_y + cached_pixel_height + overrun_y,
+				x_size,
+				-overrun_y
+			)
+			SCAN_BOUNDS(scan)
+			// east --> west
+			scan = bounds(
+				1,
+				y_start,
+				overrun_x,
+				y_size
+			)
+			SCAN_BOUNDS(scan)
+			// southeast --> northwest
+			scan = bounds(
+				1,
+				cached_bottomleft_pixel_y + cached_pixel_height + overrun_y,
+				overrun_x,
+				-overrun_y
+			)
+			SCAN_BOUNDS(scan)
+		if(SOUTHWEST)
+			// south --> north
+			scan = bounds(
 
-		)
-		SCAN_BOUNDS(scan)
-	else if(wraparound & SOUTH)
-		scan = bounds(
-			cached_coordinate_width - (dist - x),
-			cached_coordinate_height - (dist - y),
-
-		)
-		SCAN_BOUNDS(scan)
-	if(wraparound & EAST)
-		scan = bounds(
-			cached_coordinate_width - (dist - x),
-			cached_coordinate_height - (dist - y),
-
-		)
-		SCAN_BOUNDS(scan)
-	else if(wraparound & WEST)
-		scan = bounds(
-			cached_coordinate_width - (dist - x),
-			cached_coordinate_height - (dist - y),
-
-		)
-		SCAN_BOUNDS(scan)
-	// if there's a diagonal..
-	// (if anything is trampled there can't be!)
-	if(isDiagonal(wraparound))
-		// wraparound cannot be more than one diagonal, or something would have been trampled,
-		// so we use bitfields to check dir
-		// NOTE: math can still be manually optimized later!
-		scan = bounds(
-			(wraparound & EAST)?  (cached_bottomleft_pixel_x) : (cached_bottomleft_pixel_x - 1 + cached_pixel_width - (dist - x)),
-			(wraparound & NORTH)? (cached_bottomleft_pixel_y) : (cached_bottomleft_pixel_y - 1 + cached_pixel_height - (dist - y)),
-			(wraparound & EAST)?  () : (dist - x + 1),
-			(wraparound & NORTH)? () : (dist - y + 1)
-		)
-		SCAN_BOUNDS(scan)
-	#warn impl
+			)
+			SCAN_BOUNDS(scan)
+			// west --> east
+			scan = bounds(
+				cached_bottomleft_pixel_x + cached_pixel_width + overrun_x,
+				y_start,
+				-overrun_x,
+				y_size
+			)
+			SCAN_BOUNDS(scan)
+			// southwest --> northeast
+			scan = bounds(
+				cached_bottomleft_pixel_x + cached_pixel_width + overrun_x,
+				cached_bottomleft_pixel_y + cached_pixel_height + overrun_y,
+				-overrun_x,
+				-overrun_y
+			)
+			SCAN_BOUNDS(scan)
 
 #undef SCAN_BOUNDS
