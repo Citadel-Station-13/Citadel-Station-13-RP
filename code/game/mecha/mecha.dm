@@ -239,12 +239,12 @@
 		src.smoke_system.attach(src)
 
 	add_cell()
-	add_iterators()
+	// TODO: BURN ITERATORS WITH FUCKING FIRE
+	INVOKE_ASYNC(src, /obj/mecha/proc/add_iterators)
 	removeVerb(/obj/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
 	loc.Entered(src)
 	mechas_list += src //global mech list
-	return
 
 /obj/mecha/Exit(atom/movable/O)
 	if(O in cargo)

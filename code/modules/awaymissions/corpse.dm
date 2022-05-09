@@ -31,6 +31,7 @@
 	return INITIALIZE_HINT_QDEL
 
 /atom/movable/landmark/corpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
+	SHOULD_NOT_SLEEP(TRUE)	// HMMM MOB INIT ISSUES?
 	set waitfor = FALSE
 	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
 	M.set_species(species_type_by_name(species))

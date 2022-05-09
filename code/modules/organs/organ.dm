@@ -73,25 +73,6 @@ var/list/organ_cache = list()
 	/// What does butchering, if possible, make?
 	var/meat_type
 
-/obj/item/organ/Destroy()
-
-	handle_organ_mod_special(TRUE)
-	if(owner)
-		owner = null
-	if(transplant_data)
-		transplant_data.Cut()
-	if(autopsy_data)
-		autopsy_data.Cut()
-	if(trace_chemicals)
-		trace_chemicals.Cut()
-	dna = null
-	species = null
-
-	return ..()
-
-/obj/item/organ/proc/update_health()
-	return
-
 /obj/item/organ/Initialize(mapload, internal)
 	. = ..()
 	var/mob/living/holder = loc
@@ -159,6 +140,25 @@ var/list/organ_cache = list()
 					meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	handle_organ_mod_special()
+
+/obj/item/organ/Destroy()
+
+	handle_organ_mod_special(TRUE)
+	if(owner)
+		owner = null
+	if(transplant_data)
+		transplant_data.Cut()
+	if(autopsy_data)
+		autopsy_data.Cut()
+	if(trace_chemicals)
+		trace_chemicals.Cut()
+	dna = null
+	species = null
+
+	return ..()
+
+/obj/item/organ/proc/update_health()
+	return
 
 /obj/item/organ/proc/set_dna(var/datum/dna/new_dna)
 	if(new_dna)
