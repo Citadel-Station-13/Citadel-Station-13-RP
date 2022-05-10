@@ -1172,7 +1172,7 @@
 		// (DO NOT DO THIS OR IT WILL BUG OUT AND I **WILL** FIND YOU)
 
 	// clean up old species
-	if(species)
+	if(istype(species))
 		species.on_remove(src)
 
 	// set
