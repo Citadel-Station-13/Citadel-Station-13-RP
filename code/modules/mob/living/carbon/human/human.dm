@@ -1187,16 +1187,8 @@
 		return
 
 	species.create_organs(src)
+	species.create_blood(src)
 	species.handle_post_spawn(src)
-
-	make_blood()
-	if(vessel.total_volume < species.blood_volume)
-		vessel.maximum_volume = species.blood_volume
-		vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)
-	else if(vessel.total_volume > species.blood_volume)
-		vessel.remove_reagent("blood", vessel.total_volume - species.blood_volume)
-		vessel.maximum_volume = species.blood_volume
-	fixblood()
 	species.update_attack_types() //VOREStation Edit - Required for any trait that updates unarmed_types in setup.
 
 	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
