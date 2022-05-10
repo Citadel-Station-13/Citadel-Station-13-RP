@@ -98,7 +98,8 @@ const Program = (props, context) => {
               minValue={0}
               maxValue={downloadsize}
               value={downloadcompletion}>
-              {round((downloadcompletion / downloadsize) * 100, 1)}% ({downloadspeed}GQ/s)
+              {round((downloadcompletion / downloadsize) * 100, 1)}%
+              ({downloadspeed}GQ/s)
             </ProgressBar>
           ) || downloads_queue.indexOf(program.filename) !== -1 && (
             <Button

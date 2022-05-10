@@ -1,9 +1,6 @@
-import { round } from 'common/math';
-import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Collapsible, Table, Divider } from "../components";
+import { Box, Button, Section, Collapsible, Table } from "../components";
 import { Window } from "../layouts";
-import { logger } from '../logging';
 
 export const Stack = (props, context) => {
   const { act, data } = useBackend(context);
@@ -34,9 +31,14 @@ const RecipeList = (props, context) => {
   let sortedKeys = Object.keys(recipes).sort();
 
   // Shunt all categories to the top.
-  // We're not using this for now, keeping it here in case someone really hates color coding later.
-  // let nonCategories = sortedKeys.filter(item => recipes[item].ref !== undefined);
-  // let categories = sortedKeys.filter(item => recipes[item].ref === undefined);
+  // We're not using this for now, keeping it here in case someone really hates
+  // color coding later.
+  // let nonCategories = sortedKeys.filter(
+  //   item => recipes[item].ref !== undefined
+  // );
+  // let categories = sortedKeys.filter(
+  //   item => recipes[item].ref === undefined
+  // );
 
   // categories.unshift("--DIVIDER--");
 
@@ -83,7 +85,8 @@ const Multipliers = (props, context) => {
     maxMultiplier,
   } = props;
 
-  let maxM = Math.min(maxMultiplier, Math.floor(recipe.max_res_amount / recipe.res_amount));
+  let maxM = Math.min(maxMultiplier,
+    Math.floor(recipe.max_res_amount / recipe.res_amount));
 
   let multipliers = [5, 10, 25];
 

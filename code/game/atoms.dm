@@ -134,7 +134,7 @@
 	if(datum_flags & DF_USE_TAG)
 		GenerateTag()
 
-	var/do_initialize = SSatoms.subsystem_initialized
+	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
 		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
 		if(SSatoms.InitAtom(src, args))

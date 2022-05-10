@@ -1,7 +1,7 @@
 import { decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useSharedState } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, Input, ProgressBar, Section, NoticeBox } from "../components";
+import { Box, Button, Flex, LabeledList, Input, Section } from "../components";
 import { Window } from "../layouts";
 import { TemporaryNotice } from './common/TemporaryNotice';
 
@@ -305,8 +305,9 @@ const NewscasterPrint = (props, context) => {
       </Button>
     }>
       <Box color="label" mb={1}>
-        Newscaster currently serves a total of {total_num} Feed channels, {active_num} of which are active,
-        and a total of {message_num} Feed stories.
+        Newscaster currently serves a total of {total_num} Feed channels,
+        {active_num} of which are active, and a total of {message_num}
+        Feed stories.
       </Box>
       <LabeledList>
         <LabeledList.Item label="Liquid Paper remaining">
@@ -358,7 +359,8 @@ const NewscasterNewWanted = (props, context) => {
       <LabeledList>
         {!!wanted_issue && (
           <LabeledList.Item label="Already In Circulation">
-            A wanted issue is already in circulation. You can edit or cancel it below.
+            A wanted issue is already in circulation.
+            You can edit or cancel it below.
           </LabeledList.Item>
         )}
         <LabeledList.Item label="Criminal Name">
@@ -532,42 +534,45 @@ const NewscasterViewSelected = (props, context) => {
       </LabeledList>
       {!!viewing_channel.censored && (
         <Box color="bad">
-          ATTENTION: This channel has been deemed as threatening to the welfare of the station,
-          and marked with a {company} D-Notice. No further feed story additions are allowed
+          ATTENTION: This channel has been deemed as threatening to the welfare
+          of the station, and marked with a {company} D-Notice. No further feed
+          story additions are allowed
           while the D-Notice is in effect.
         </Box>
       )}
-      {!!viewing_channel.messages.length && viewing_channel.messages.map(message => (
-        <Section key={message.ref}>
-          - {decodeHtmlEntities(message.body)}
-          {!!message.img && (
-            <Box>
-              <img src={"data:image/png;base64," + message.img} />
-              {decodeHtmlEntities(message.caption) || null}
+      {!!viewing_channel.messages.length
+        && viewing_channel.messages.map(message => (
+          <Section key={message.ref}>
+            - {decodeHtmlEntities(message.body)}
+            {!!message.img && (
+              <Box>
+                <img src={"data:image/png;base64," + message.img} />
+                {decodeHtmlEntities(message.caption) || null}
+              </Box>
+            )}
+            <Box color="grey">
+              [Story by
+              {decodeHtmlEntities(message.author)} - {message.timestamp}]
             </Box>
-          )}
-          <Box color="grey">
-            [Story by {decodeHtmlEntities(message.author)} - {message.timestamp}]
-          </Box>
-          {!!securityCaster && (
-            <Fragment>
-              <Button.Confirm
-                mt={1}
-                color="bad"
-                icon="strikethrough"
-                confirmIcon="strikethrough"
-                content="Censor Story"
-                onClick={() => act("censor_channel_story_body", { ref: message.ref })} />
-              <Button.Confirm
-                color="bad"
-                icon="strikethrough"
-                confirmIcon="strikethrough"
-                content="Censor Author"
-                onClick={() => act("censor_channel_story_author", { ref: message.ref })} />
-            </Fragment>
-          )}
-        </Section>
-      )) || !viewing_channel.censored && (
+            {!!securityCaster && (
+              <Fragment>
+                <Button.Confirm
+                  mt={1}
+                  color="bad"
+                  icon="strikethrough"
+                  confirmIcon="strikethrough"
+                  content="Censor Story"
+                  onClick={() => act("censor_channel_story_body", { ref: message.ref })} />
+                <Button.Confirm
+                  color="bad"
+                  icon="strikethrough"
+                  confirmIcon="strikethrough"
+                  content="Censor Author"
+                  onClick={() => act("censor_channel_story_author", { ref: message.ref })} />
+              </Fragment>
+            )}
+          </Section>
+        )) || !viewing_channel.censored && (
         <Box color="average">
           No feed messages found in channel.
         </Box>
