@@ -2241,7 +2241,7 @@
 /area/ship/manta/recreation)
 "kF" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/stack/nanopaste/advanced,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/manager,
@@ -2332,7 +2332,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "lg" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
 	id_tag = "merc_port";
@@ -4248,9 +4248,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_star)
 "uN" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_y = 24
 	},
@@ -4528,7 +4528,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "vV" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
 	id_tag = "merc_star";
@@ -5369,8 +5369,8 @@
 /area/ship/manta/holding)
 "yT" = (
 /obj/machinery/door/airlock/external,
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior{
 	dir = 6;
 	pixel_x = 7;
@@ -6229,9 +6229,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_as)
 "Di" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_y = 24
 	},
@@ -6946,8 +6946,8 @@
 /area/ship/manta/dock_star)
 "Ha" = (
 /obj/machinery/door/airlock/external,
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior{
 	dir = 10;
 	pixel_x = -8;
@@ -7669,7 +7669,7 @@
 /area/ship/manta/recreation)
 "KI" = (
 /obj/machinery/door/airlock/external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -8391,7 +8391,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = -23
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
@@ -9508,7 +9508,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = -23
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
@@ -10567,7 +10567,7 @@
 /area/ship/manta/bridge)
 "YZ" = (
 /obj/machinery/door/airlock/external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor{
 	dir = 1

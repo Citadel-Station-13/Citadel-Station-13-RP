@@ -239,7 +239,7 @@
 	pixel_y = -28;
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 10
 	},
@@ -2537,7 +2537,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/simple,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/lifeboat)
 "Cu" = (
@@ -2710,7 +2710,7 @@
 /turf/simulated/floor/tiled/eris/white,
 /area/talon/decktwo/central_hallway)
 "DO" = (
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
@@ -2765,7 +2765,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/simple,
+/obj/effect/map_helper/airlock/door/simple,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -2901,8 +2901,8 @@
 	pixel_x = 28;
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
 	dir = 1
 	},
@@ -3068,7 +3068,7 @@
 	pixel_y = 28;
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_aft)
 "Ht" = (
@@ -3197,7 +3197,7 @@
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "Ju" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/visible/aux,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)

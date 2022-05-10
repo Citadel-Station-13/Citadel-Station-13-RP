@@ -135,7 +135,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
@@ -1307,7 +1307,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "lb" = (
@@ -1419,8 +1419,8 @@
 	pixel_x = -28;
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -1533,7 +1533,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "ne" = (
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	pixel_x = 28;
@@ -1605,7 +1605,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
@@ -1772,7 +1772,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
@@ -1869,7 +1869,7 @@
 	id_tag = "talon_boat";
 	pixel_x = 28
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
 	dir = 8
 	},
@@ -2285,7 +2285,7 @@
 /turf/simulated/wall,
 /area/talon/deckone/central_hallway)
 "ta" = (
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 10
 	},
@@ -2352,7 +2352,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "tE" = (
@@ -2462,7 +2462,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_starboard)
 "uF" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
@@ -2520,8 +2520,8 @@
 	pixel_y = -30;
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_y = 28;
 	req_one_access = list(301)
@@ -2641,7 +2641,7 @@
 	dir = 1;
 	icon_state = "4-8"
 	},
-/atom/movable/map_helper/airlock/door/simple,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/eris/dark/techfloor,
 /area/shuttle/talonboat)
 "vW" = (
@@ -2770,7 +2770,7 @@
 	pixel_y = 28;
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
 /area/talon/maintenance/deckone_starboard)
@@ -3242,7 +3242,7 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/stack/nanopaste{
 	pixel_x = -7;
 	pixel_y = -4
@@ -3654,7 +3654,7 @@
 /area/talon/deckone/brig)
 "CU" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -3876,8 +3876,8 @@
 	req_one_access = list(301);
 	tag_airpump = "talon_port_wing_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_y = 28;
 	req_one_access = list(301)
@@ -4190,7 +4190,7 @@
 	pixel_y = 28;
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
@@ -4600,8 +4600,8 @@
 /area/talon/deckone/central_hallway)
 "JF" = (
 /obj/machinery/light/small,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "talon_port";
@@ -5345,7 +5345,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "QD" = (
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
@@ -5353,7 +5353,7 @@
 	pixel_x = 28;
 	pixel_y = -4
 	},
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/eris/dark/gray_perforated,
 /area/shuttle/talonboat)
 "QM" = (
@@ -6442,7 +6442,7 @@
 	pixel_y = 28;
 	req_one_access = list(301)
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},

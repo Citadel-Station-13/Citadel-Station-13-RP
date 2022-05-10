@@ -19,12 +19,16 @@ em						{font-style: normal;font-weight: bold;}
 .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover
 						{color: #638500;}
 
-.prefix					{font-weight: bold;}
-.log_message			{color: #386AFF;	font-weight: bold;}
+.italics				{					font-style: italic;}
 
-/* OOC */
-.ooc					{font-weight: bold;}
-.ooc img.text_tag		{width: 32px; height: 10px;}
+.bold					{					font-weight: bold;}
+
+.prefix					{					font-weight: bold;}
+.oocplain				{}
+.warningplain			{}
+
+//* OOC *//
+.ooc					{					font-weight: bold;}
 
 .ooc .everyone			{color: #002eb8;}
 .ooc .looc				{color: #3A9696;}
@@ -39,8 +43,9 @@ em						{font-style: normal;font-weight: bold;}
 .admin					{color: #386aff;	font-weight: bold;}
 .ooc .event_manager		{color: #660033;}
 .ooc .aooc				{color: #960018;}
+.ooc img.text_tag		{width: 32px;		height: 10px;}
 
-/* Admin: Private Messages */
+//* Admin: Private Messages *//
 .pm  .howto				{color: #ff0000;	font-weight: bold;		font-size: 200%;}
 .pm  .in				{color: #ff0000;}
 .pm  .out				{color: #ff0000;}
@@ -52,7 +57,7 @@ em						{font-style: normal;font-weight: bold;}
 .admin_channel			{color: #9611D4;	font-weight: bold;}
 .event_channel			{color: #cc3399;	font-weight: bold;}
 
-/* Radio: Misc */
+//* Radio: Misc *//
 .deadsay				{color: #530FAD;}
 .binarysay				{color: #20c20e;	background-color: #000000;	display: block;}
 .binarysay a			{color: #00ff00;}
@@ -61,7 +66,7 @@ em						{font-style: normal;font-weight: bold;}
 .deptradio				{color: #ff00ff;}	/* when all other department colors fail */
 .newscaster				{color: #750000;}
 
-/* Radio Channels */
+//* Radio Channels *//
 .comradio				{color: #193A7A;}
 .syndradio				{color: #6D3F40;}
 .centradio				{color: #5C5C8A;}
@@ -82,7 +87,7 @@ em						{font-style: normal;font-weight: bold;}
 .yellowteamradio		{color: #d1ba22;}
 .gangradio				{color: #ac2ea1;}
 
-/* Miscellaneous */
+//* Miscellaneous *//
 .name					{font-weight: bold;}
 .say					{}
 .yell					{					font-weight: bold;}
@@ -91,8 +96,9 @@ h1.alert, h2.alert		{color: #000000;}
 .ghostalert				{color: #5c00e6;	font-style: italic; font-weight: bold;}
 
 .emote					{}
+.infoplain				{}
 
-/* Game Messages */
+//* Game Messages *//
 
 .attack					{color: #ff0000;}
 .moderate				{color: #CC0000;}
@@ -215,7 +221,7 @@ h1.alert, h2.alert		{color: #000000;}
 .monkeyhive				{color: #774704;}
 .monkeylead				{color: #774704;	font-size: 2;}
 
-/* Languages */
+//* Languages *//
 
 .alien					{color: #543354;}
 .tajaran				{color: #803B56;}
@@ -241,7 +247,7 @@ h1.alert, h2.alert		{color: #000000;}
 .interface				{color: #330033;}
 .squeakish				{color: #f54298;}
 
-/* Debug Logs */
+//* Debug Logs *//
 .debug_error					{color:#FF0000; font-weight:bold}
 .debug_warning					{color:#FF0000;}
 .debug_info						{}

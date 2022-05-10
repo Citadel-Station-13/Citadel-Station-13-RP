@@ -32,5 +32,14 @@
 	config_entry_value = null
 	min_val = 0
 
+/datum/config_entry/string/community_shortname
+
+/datum/config_entry/string/community_link
+
 /datum/config_entry/string/tagline
 	config_entry_value = "<br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>"
+
+/datum/config_entry/flag/usetaglinestrings
+
+/datum/config_entry/flag/cache_assets
+	default = TRUE

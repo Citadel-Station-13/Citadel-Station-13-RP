@@ -42,7 +42,8 @@ export const TEGenerator = (props, context) => {
           </Flex>
         ) : (
           <Box color="bad">
-            Warning! Both circulators must be connected in order to operate this machine.
+            Warning! Both circulators must be connected in order
+            to operate this machine.
           </Box>
         )}
       </Window.Content>

@@ -847,7 +847,7 @@
 /area/tether/surfacebase/medical/triage)
 "abp" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
@@ -25971,7 +25971,7 @@
 /area/tether/surfacebase/medical/surgery2)
 "aUH" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
@@ -32998,7 +32998,7 @@
 	frequency = 1379;
 	id_tag = "southciv_airlock_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/topairlock)
 "bhZ" = (
@@ -33009,7 +33009,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/grille,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "southciv_airlock_pump"
@@ -33061,7 +33061,7 @@
 	id_tag = "southciv_airlock_outer";
 	locked = 1
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/topairlock)
 "bif" = (
@@ -33109,7 +33109,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/topairlock)
 "bii" = (
@@ -33248,7 +33248,7 @@
 	pixel_x = -8;
 	pixel_y = -25
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -33277,12 +33277,12 @@
 	pixel_x = 25;
 	pixel_y = -40
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/topairlock)
 "bir" = (
 /obj/machinery/door/firedoor/glass,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -34497,7 +34497,7 @@
 /area/tether/surfacebase/medical/triage)
 "blM" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
@@ -38546,7 +38546,7 @@
 	frequency = 1380;
 	id_tag = "tourbus_right"
 	},
-/atom/movable/map_helper/airlock/door/simple,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tourbus/general)
 "jYD" = (
@@ -40374,7 +40374,7 @@
 /area/crew_quarters/recreation_area)
 "oTu" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/paper{
 	desc = "";
 	info = "Stop installing NIFs in here you clods! Unless it's on a synth. Otherwise, STOP DOING IT! You're killing people! -Management";

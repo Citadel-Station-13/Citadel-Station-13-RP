@@ -594,43 +594,6 @@ proc/GaussRand(var/sigma)
 proc/GaussRandRound(var/sigma,var/roundto)
 	return round(GaussRand(sigma),roundto)
 
-
-///Gets all contents of contents and returns them all in a list.
-/atom/proc/GetAllContents(var/T)
-	var/list/processing_list = list(src)
-	var/i = 0
-	var/lim = 1
-	if(T)
-		. = list()
-		while(i < lim)
-			var/atom/A = processing_list[++i]
-			//Byond does not allow things to be in multiple contents, or double parent-child hierarchies, so only += is needed
-			//This is also why we don't need to check against assembled as we go along
-			processing_list += A.contents
-			lim = processing_list.len
-			if(istype(A,T))
-				. += A
-	else
-		while(i < lim)
-			var/atom/A = processing_list[++i]
-			processing_list += A.contents
-			lim = processing_list.len
-		return processing_list
-
-/atom/proc/GetAllContentsIgnoring(list/ignore_typecache)
-	if(!length(ignore_typecache))
-		return GetAllContents()
-	var/list/processing = list(src)
-	. = list()
-	var/i = 0
-	var/lim = 1
-	while(i < lim)
-		var/atom/A = processing[++i]
-		if(!ignore_typecache[A.type])
-			processing += A.contents
-			lim = processing.len
-			. += A
-
 ///Step-towards method of determining whether one atom can see another. Similar to viewers()
 /proc/can_see(var/atom/source, var/atom/target, var/length=5) //I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
 	var/turf/current = get_turf(source)
@@ -762,31 +725,19 @@ proc/GaussRandRound(var/sigma,var/roundto)
 
 					var/turf/X //New Destination Turf
 
-					//Are we doing shuttlework? Just to save another type check later.
-					var/shuttlework = 0
+					var/old_dir1 = T.dir
+					var/old_icon_state1 = T.icon_state
+					var/old_icon1 = T.icon
+					var/old_underlays = T.underlays.Copy()
+					var/old_decals = T.decals ? T.decals.Copy() : null
 
-					//Shuttle turfs handle their own fancy moving.
-					if(istype(T,/turf/simulated/shuttle))
-						shuttlework = 1
-						var/turf/simulated/shuttle/SS = T
-						if(!SS.landed_holder) SS.landed_holder = new(turf = SS)
-						X = SS.landed_holder.land_on(B)
-
-					//Generic non-shuttle turf move.
-					else
-						var/old_dir1 = T.dir
-						var/old_icon_state1 = T.icon_state
-						var/old_icon1 = T.icon
-						var/old_underlays = T.underlays.Copy()
-						var/old_decals = T.decals ? T.decals.Copy() : null
-
-						X = B.ChangeTurf(T.type)
-						X.setDir(old_dir1)
-						X.icon_state = old_icon_state1
-						X.icon = old_icon1
-						X.copy_overlays(T, TRUE)
-						X.underlays = old_underlays
-						X.decals = old_decals
+					X = B.PlaceOnTop(T.type)
+					X.setDir(old_dir1)
+					X.icon_state = old_icon_state1
+					X.icon = old_icon1
+					X.copy_overlays(T, TRUE)
+					X.underlays = old_underlays
+					X.decals = old_decals
 
 					//Move the air from source to dest
 					var/turf/simulated/ST = T
@@ -820,13 +771,10 @@ proc/GaussRandRound(var/sigma,var/roundto)
 							var/mob/living/LM = M
 							LM.check_shadow() // Need to check their Z-shadow, which is normally done in forceMove().
 
-					if(shuttlework)
-						var/turf/simulated/shuttle/SS = T
-						SS.landed_holder.leave_turf()
-					else if(turftoleave)
+					if(turftoleave)
 						T.ChangeTurf(turftoleave)
 					else
-						T.ChangeTurf(get_base_turf_by_area(T))
+						T.ScrapeAway()
 
 					refined_src -= T
 					refined_trg -= B
@@ -914,7 +862,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)
-						if(istype(B, get_base_turf_by_area(B)))
+						if(istype(B, GLOB.using_map.base_turf_by_z[B.z]))
 							continue moving
 
 					var/turf/X = B

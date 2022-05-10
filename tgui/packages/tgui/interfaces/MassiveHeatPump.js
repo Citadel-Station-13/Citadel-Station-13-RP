@@ -1,12 +1,12 @@
 import { useBackend } from "../backend";
-import { Button, LabeledList, ProgressBar, Section, NumberInput, AnimatedNumber } from "../components";
+import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
 import { formatPower, formatSiUnit } from '../format';
 import { Fragment } from 'inferno';
 import { Window } from "../layouts";
 
 export const MassiveHeatPump = (props, context) => {
   const { act, data } = useBackend(context);
-  
+
   const {
     power_level,
     target_temp,
@@ -29,13 +29,13 @@ export const MassiveHeatPump = (props, context) => {
         <Section title="Status">
           <LabeledList>
             <LabeledList.Item label="Efficiency">
-              <AnimatedNumber value={efficiency * 100} /> % 
+              <AnimatedNumber value={efficiency * 100} /> %
             </LabeledList.Item>
             <LabeledList.Item label="Current Temperaute">
-              <AnimatedNumber value={current_temp} /> K 
+              <AnimatedNumber value={current_temp} /> K
             </LabeledList.Item>
             <LabeledList.Item label="Sink Temperature">
-              <AnimatedNumber value={sink_temp} /> K 
+              <AnimatedNumber value={sink_temp} /> K
             </LabeledList.Item>
             <LabeledList.Item label="Load">
               <ProgressBar
@@ -103,4 +103,3 @@ export const MassiveHeatPump = (props, context) => {
     </Window>
   );
 };
-  

@@ -303,30 +303,23 @@
 	switch(buildmode)
 		if(1) // Basic Build
 			if(istype(object,/turf) && pa.Find("left") && !pa.Find("alt") && !pa.Find("ctrl") )
+				var/turf/T = object
 				if(istype(object,/turf/space))
-					var/turf/T = object
-					T.ChangeTurf(/turf/simulated/floor)
+					T.ChangeTurf(/turf/simulated/floor/plating)
+					return
+				else if(istype(object, /turf/simulated/floor/outdoors))
+					T.PlaceOnTop(/turf/simulated/floor/plating)
 					return
 				else if(istype(object,/turf/simulated/floor))
-					var/turf/T = object
-					T.ChangeTurf(/turf/simulated/wall)
+					T.PlaceOnTop(/turf/simulated/wall)
 					return
 				else if(istype(object,/turf/simulated/wall))
-					var/turf/T = object
 					T.ChangeTurf(/turf/simulated/wall/r_wall)
 					return
 			else if(pa.Find("right"))
-				if(istype(object,/turf/simulated/wall))
+				if(istype(object, /turf))
 					var/turf/T = object
-					T.ChangeTurf(/turf/simulated/floor)
-					return
-				else if(istype(object,/turf/simulated/floor))
-					var/turf/T = object
-					T.ChangeTurf(/turf/space)
-					return
-				else if(istype(object,/turf/simulated/wall/r_wall))
-					var/turf/T = object
-					T.ChangeTurf(/turf/simulated/wall)
+					T.ScrapeAway()
 					return
 				else if(istype(object,/obj))
 					qdel(object)

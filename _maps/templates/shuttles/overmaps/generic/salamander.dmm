@@ -1,14 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "aK" = (
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 1;
 	pixel_x = 24;
@@ -46,7 +46,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_head)
 "bu" = (
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/airlock_sensor{
 	dir = 4;
@@ -181,7 +181,7 @@
 /area/shuttle/salamander_head)
 "cX" = (
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
@@ -269,7 +269,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "eJ" = (
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	pixel_x = 21;
@@ -880,8 +880,8 @@
 /area/shuttle/salamander_engineering)
 "mg" = (
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	pixel_x = 24;
 	pixel_y = -11
@@ -1009,7 +1009,7 @@
 /area/shuttle/salamander)
 "oe" = (
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "oi" = (
@@ -1088,7 +1088,7 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/closet/walllocker/emerglocker/east,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
@@ -1537,7 +1537,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "Kw" = (
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
@@ -1793,7 +1793,7 @@
 /area/shuttle/salamander)
 "UT" = (
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "Vh" = (

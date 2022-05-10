@@ -9,13 +9,13 @@
 /area/ship/ert/dock_port)
 "ae" = (
 /obj/machinery/door/airlock/external,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/airlock_sensor/airlock_exterior{
 	dir = 1;
 	pixel_x = 24;
 	pixel_y = 11
 	},
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "af" = (
@@ -39,7 +39,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -52,7 +52,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = 24
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -137,7 +137,7 @@
 /area/ship/ert/hangar)
 "aQ" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -199,7 +199,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -217,7 +217,7 @@
 /area/ship/ert/atmos)
 "ch" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
 "ci" = (
@@ -316,7 +316,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -478,13 +478,13 @@
 /area/ship/ert/dock_port)
 "dY" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "ee" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "ef" = (
@@ -896,7 +896,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = 21
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
@@ -1326,8 +1326,8 @@
 	pixel_x = 24;
 	pixel_y = -11
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
 "lz" = (
@@ -1608,7 +1608,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = -23
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
@@ -2818,7 +2818,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/sign/vacuum{
 	pixel_x = -32
@@ -3287,7 +3287,7 @@
 /area/ship/ert/hallways_aft)
 "yo" = (
 /obj/machinery/door/airlock/external,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
 "yp" = (
@@ -4015,8 +4015,8 @@
 /area/ship/ert/atmos)
 "DM" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/toolbox/surgery,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/manager,
@@ -5300,7 +5300,7 @@
 /area/ship/ert/med_surg)
 "LR" = (
 /obj/machinery/door/airlock/external,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "LV" = (
@@ -6172,7 +6172,7 @@
 /area/ship/ert/engineering)
 "Rh" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
@@ -6904,7 +6904,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engine)
 "XM" = (
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_x = 24
 	},
