@@ -74,7 +74,7 @@ export class NanoMap extends Component {
 
     this.handleOnClick = e => {
       let byondX = (e.offsetX/this.state.zoom)/zoomScale;
-      let byondY = 1-(e.offsetY/this.state.zoom)/zoomScale; // Byond origin is bottom left, this is top left
+      let byondY = 1-(e.offsetY/this.state.zoom)/zoomScale;
 
       e.byondX = byondX;
       e.byondY = byondY;

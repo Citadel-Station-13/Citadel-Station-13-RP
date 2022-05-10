@@ -40,3 +40,6 @@
 	config_entry_value = "<br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>"
 
 /datum/config_entry/flag/usetaglinestrings
+
+/datum/config_entry/flag/cache_assets
+	default = TRUE

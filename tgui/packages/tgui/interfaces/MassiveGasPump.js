@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, LabeledList, ProgressBar, Section, LabeledControls, AnimatedNumber } from "../components";
+import { Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
 import { formatPower } from '../format';
 import { Fragment } from 'inferno';
 import { Window } from "../layouts";
@@ -83,7 +83,7 @@ export const MassiveGasPump = (props, context) => {
                     content="SET"
                     onClick={() => act("set_pow", { pow: "set" })} />
                 </Fragment>
-                
+
               )}>
               {formatPower(power_level)}
             </LabeledList.Item>

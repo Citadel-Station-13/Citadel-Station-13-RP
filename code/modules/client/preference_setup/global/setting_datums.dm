@@ -356,4 +356,3 @@ datum/client_preference/debug/age_verified
 	key = "EXAMINE_LOOK"
 	enabled_description = "Show"
 	disabled_description = "Hide"
-

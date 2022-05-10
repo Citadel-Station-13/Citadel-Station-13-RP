@@ -14,6 +14,6 @@ SUBSYSTEM_DEF(overmaps)
 		H.get_known_sectors()
 
 /datum/controller/subsystem/overmaps/proc/queue_helm_computer_rebuild()
-	if(!subsystem_initialized)
+	if(!initialized)
 		return
 	addtimer(CALLBACK(src, .proc/rebuild_helm_computers), 0, TIMER_UNIQUE)

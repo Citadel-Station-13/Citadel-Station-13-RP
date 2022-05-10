@@ -15,9 +15,14 @@ export const SmartVend = (props, context) => {
           {data.secure && (
             <NoticeBox danger={data.locked === -1} info={data.locked !== -1}>
               {data.locked === -1 ? (
-                <Box>Sec.re ACC_** //):securi_nt.diag=&gt;##&apos;or 1=1&apos;%($...</Box>
+                <Box>
+                  Sec.re ACC_** //):securi_nt.diag=&gt;##&apos;or
+                  1=1&apos;%($...
+                </Box>
               ) : (
-                <Box>Secure Access: Please have your identification ready.</Box>
+                <Box>
+                  Secure Access: Please have your identification ready.
+                </Box>
               )}
             </NoticeBox>
           ) || null}

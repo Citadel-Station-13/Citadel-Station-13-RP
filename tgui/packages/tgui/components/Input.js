@@ -34,12 +34,8 @@ export class Input extends Component {
     };
     this.handleFocus = e => {
       const { editing } = this.state;
-      const { autoSelect } = this.props;
       if (!editing) {
         this.setEditing(true);
-      }
-      if (autoSelect) {
-        e.target.select();
       }
     };
     this.handleBlur = e => {
@@ -73,6 +69,11 @@ export class Input extends Component {
         return;
       }
       if (e.keyCode === KEY_ESCAPE) {
+        if (this.props.onEscape) {
+          this.props.onEscape(e);
+          return;
+        }
+
         this.setEditing(false);
         e.target.value = toInputValue(this.props.value);
         e.target.blur();
@@ -87,8 +88,15 @@ export class Input extends Component {
     if (input) {
       input.value = toInputValue(nextValue);
     }
-    if (this.props.autoFocus) {
-      setTimeout(() => input.focus(), 1);
+
+    if (this.props.autoFocus || this.props.autoSelect) {
+      setTimeout(() => {
+        input.focus();
+
+        if (this.props.autoSelect) {
+          input.select();
+        }
+      }, 1);
     }
   }
 
