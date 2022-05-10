@@ -1,10 +1,7 @@
-import { round } from 'common/math';
-import { Fragment } from 'inferno';
 import { useBackend, useSharedState } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Divider, Tabs, Stack } from "../components";
+import { Button, LabeledList, ProgressBar, Section, Tabs, Stack } from "../components";
 import { Window } from "../layouts";
 import { sortBy, filter } from 'common/collections';
-import { logger } from '../logging';
 
 export const ICPrinter = (props, context) => {
   const { act, data } = useBackend(context);
@@ -39,9 +36,6 @@ export const ICPrinter = (props, context) => {
               {can_clone ? "Available" : "Unavailable"}
             </LabeledList.Item>
           </LabeledList>
-          <Box mt={1}>
-            Note: A red component name means that the printer must be upgraded to create that component.
-          </Box>
         </Section>
         <ICPrinterCategories />
       </Window.Content>
@@ -71,7 +65,8 @@ const ICPrinterCategories = (props, context) => {
 
   const [categoryTarget, setcategoryTarget] = useSharedState(context, "categoryTarget", null);
 
-  const selectedCategory = filter(cat => cat.name === categoryTarget)(categories)[0];
+  const selectedCategory
+  = filter(cat => cat.name === categoryTarget)(categories)[0];
 
   return (
     <Section title="Circuits">

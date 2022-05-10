@@ -1,7 +1,6 @@
 import { sortBy } from 'common/collections';
-import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Table } from "../components";
+import { Button, Section, Table } from "../components";
 import { Window } from "../layouts";
 
 export const AdminShuttleController = (props, context) => {
@@ -51,23 +50,25 @@ export const ShuttleList = (props, context) => {
       </Section>
       <Section title="Overmap Ships" level={2}>
         <Table>
-          {sortBy(f => f.name?.toLowerCase() || f.name || f.ref)(overmap_ships).map(ship => (
-            <Table.Row key={ship.ref}>
-              <Table.Cell collapsing>
-                <Button
-                  content="JMP"
-                  onClick={() => act("adminobserve", { ref: ship.ref })} />
-              </Table.Cell>
-              <Table.Cell collapsing>
-                <Button
-                  content="Control"
-                  onClick={() => act("overmap_control", { ref: ship.ref })} />
-              </Table.Cell>
-              <Table.Cell>
-                {ship.name}
-              </Table.Cell>
-            </Table.Row>
-          ))}
+          {sortBy(f => f.name?.toLowerCase() || f.name
+            || f.ref)(overmap_ships)
+            .map(ship => (
+              <Table.Row key={ship.ref}>
+                <Table.Cell collapsing>
+                  <Button
+                    content="JMP"
+                    onClick={() => act("adminobserve", { ref: ship.ref })} />
+                </Table.Cell>
+                <Table.Cell collapsing>
+                  <Button
+                    content="Control"
+                    onClick={() => act("overmap_control", { ref: ship.ref })} />
+                </Table.Cell>
+                <Table.Cell>
+                  {ship.name}
+                </Table.Cell>
+              </Table.Row>
+            ))}
         </Table>
       </Section>
     </Section>

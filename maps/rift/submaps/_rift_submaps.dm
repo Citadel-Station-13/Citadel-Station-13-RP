@@ -262,6 +262,17 @@
 	if(!src:target_z)
 		return
 
+	if(isobserver(A) || A.anchored)
+		return
+	if(A.throwing)
+		return
+	if(!A.can_fall())
+		return
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.is_floating || L.flying)
+			return //Flyers/nograv can ignore it
+
 	var/attempts = 100
 	var/turf/simulated/T
 	while(attempts && !T)
