@@ -5,13 +5,22 @@
 	icon = 'icons/mapping/spawners/spawners.dmi'
 	icon_state = ""
 	layer = MID_LANDMARK_LAYER
+	/// lateload?
+	var/late = FALSE
 
 /atom/movable/spawner/Initialize(mapload)
 	flags |= INITIALIZED
-	Spawn()		// we always spawn in Initialize(), because if anything we spawn has LateInitialize behavior, that'll be really bad, huh.
+	if(!late)
+		Spawn()	// we always spawn in Initialize(), because if anything we spawn has LateInitialize behavior, that'll be really bad, huh.
 				// keep in mind though, anything requiring even regular Initialize() behavior will be trampled, so, spawners are only good for
 				// simple things.
-	return INITIALIZE_HINT_QDEL
+		return INITIALIZE_HINT_QDEL
+	else
+				// do not use late unless you absolutely know what you're doing
+		return INITIALIZE_HINT_LATELOAD
+
+/atom/movable/spawner/LateInitialize()
+	Spawn()
 
 /atom/movable/spawner/proc/Spawn()
 	return
