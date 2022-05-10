@@ -96,7 +96,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	mergeConnectedNetworksOnTurf()
 
 	if(d1 & (d1 - 1))// if the cable is layed diagonally, check the others 2 possible directions
-		mergeDiagonalsNetworks(C.d1)
+		mergeDiagonalsNetworks(d1)
 
 	if(d2 & (d2 - 1))// if the cable is layed diagonally, check the others 2 possible directions
 		mergeDiagonalsNetworks(d2)
