@@ -289,10 +289,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			if(ind > 1)
 				. += ", "
 			var/datum/robolimb/R
-			if(pref.rlimb_data[name] && all_robolimbs[pref.rlimb_data[name]])
-				R = all_robolimbs[pref.rlimb_data[name]]
+			if(pref.rlimb_data[name] && GLOB.all_robolimbs[pref.rlimb_data[name]])
+				R = GLOB.all_robolimbs[pref.rlimb_data[name]]
 			else
-				R = basic_robolimb
+				R = GLOB.basic_robolimb
 			. += "\t[R.company] [organ_name] prosthesis"
 		else if(status == "amputated")
 			++ind
@@ -771,8 +771,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			if("Prosthesis")
 				var/tmp_species = pref.species ? pref.species : SPECIES_HUMAN
 				var/list/usable_manufacturers = list()
-				for(var/company in chargen_robolimbs)
-					var/datum/robolimb/M = chargen_robolimbs[company]
+				for(var/company in GLOB.chargen_robolimbs)
+					var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 					if(!(limb in M.parts))
 						continue
 					if(tmp_species in M.species_cannot_use)

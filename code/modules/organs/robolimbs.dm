@@ -1,8 +1,8 @@
-var/list/all_robolimbs = list()
-var/list/robolimb_data = list()
-var/list/chargen_robolimbs = list()
-var/datum/robolimb/basic_robolimb
-var/const/standard_monitor_styles = "blank=ipc_blank;\
+GLOBAL_LIST_EMPTY(all_robolimbs)
+GLOBAL_LIST_EMPTY(robolimb_data)
+GLOBAL_LIST_EMPTY(chargen_robolimbs)
+GLOBAL_DATUM(basic_robolimb, /datum/robolimb)
+GLOBAL_VAR_INIT(standard_monitor_styles, "blank=ipc_blank;\
 	pink=ipc_pink;\
 	green=ipc_green;\
 	red=ipc_red;\
@@ -24,8 +24,9 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	rainbow=ipc_rainbow;\
 	smiley=ipc_smiley;\
 	database=ipc_database"
+)
 
-var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
+GLOBAL_VAR_INIT(cyberbeast_monitor_styles, "blank=cyber_blank;\
 	default=cyber_default;\
 	eyes=eyes;\
 	static=cyber_static;\
@@ -41,22 +42,23 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	question=cyber_question;\
 	lowpower=cyber_lowpower;\
 	idle=cyber_idle"
+)
 
 /proc/populate_robolimb_list()
-	basic_robolimb = new()
+	GLOB.basic_robolimb = new()
 	for(var/limb_type in typesof(/datum/robolimb))
 		var/datum/robolimb/R = new limb_type()
-		all_robolimbs[R.company] = R
+		GLOB.all_robolimbs[R.company] = R
 		if(!R.unavailable_at_chargen)
-			chargen_robolimbs[R.company] = R //List only main brands and solo parts.
+			GLOB.chargen_robolimbs[R.company] = R //List only main brands and solo parts.
 
-	for(var/company in all_robolimbs)
-		var/datum/robolimb/R = all_robolimbs[company]
+	for(var/company in GLOB.all_robolimbs)
+		var/datum/robolimb/R = GLOB.all_robolimbs[company]
 		if(R.species_alternates)
 			for(var/species in R.species_alternates)
 				var/species_company = R.species_alternates[species]
-				if(species_company in all_robolimbs)
-					R.species_alternates[species] = all_robolimbs[species_company]
+				if(species_company in GLOB.all_robolimbs)
+					R.species_alternates[species] = GLOB.all_robolimbs[species_company]
 
 /datum/robolimb
 	/// Shown when selecting the limb.
@@ -113,7 +115,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	desc = "A generic unbranded interpretation of a popular prosthetic head model. It looks rudimentary and cheaply constructed."
 	icon = 'icons/mob/human_races/cyberlimbs/unbranded/unbranded_monitor.dmi'
 	parts = list(BP_HEAD)
-	monitor_styles = standard_monitor_styles
+	monitor_styles = GLOB.standard_monitor_styles
 	unavailable_to_build = TRUE
 
 /datum/robolimb/unbranded_alt1
@@ -201,7 +203,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/bishop/bishop_monitor.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-	monitor_styles = standard_monitor_styles
+	monitor_styles = GLOB.standard_monitor_styles
 
 /datum/robolimb/cenilimicybernetics_teshari
 	company = "Cenilimi Cybernetics"
@@ -285,7 +287,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/grayson/grayson_monitor.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-	monitor_styles = standard_monitor_styles
+	monitor_styles = GLOB.standard_monitor_styles
 
 /datum/robolimb/hephaestus
 	company = "Hephaestus"
@@ -321,14 +323,14 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/hephaestus/hephaestus_monitor.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-	monitor_styles = standard_monitor_styles
+	monitor_styles = GLOB.standard_monitor_styles
 
 /datum/robolimb/morpheus
 	company = "Morpheus"
 	desc = "This limb is simple and functional; no effort has been made to make it look human."
 	icon = 'icons/mob/human_races/cyberlimbs/morpheus/morpheus_main.dmi'
 	unavailable_to_build = TRUE
-	monitor_styles = standard_monitor_styles
+	monitor_styles = GLOB.standard_monitor_styles
 
 /datum/robolimb/morpheus_alt1
 	company = "Morpheus - Zenith"
@@ -418,7 +420,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/wardtakahashi/wardtakahashi_monitor.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-	monitor_styles = standard_monitor_styles
+	monitor_styles = GLOB.standard_monitor_styles
 
 /datum/robolimb/xion
 	company = "Xion"
@@ -464,7 +466,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/xion/xion_monitor.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-	monitor_styles = standard_monitor_styles
+	monitor_styles = GLOB.standard_monitor_styles
 
 
 
@@ -484,7 +486,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/c-tech/c_beast.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
-	monitor_styles = cyberbeast_monitor_styles
+	monitor_styles = GLOB.cyberbeast_monitor_styles
 
 /datum/robolimb/wooden
 	company = "Morgan Trading Co"
@@ -797,7 +799,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	desc = "Mustard-yellow industrial limb. Heavyset and thick."
 	icon = 'icons/mob/human_races/cyberlimbs/antares/antares_main.dmi'
 	unavailable_to_build = TRUE
-	monitor_styles = standard_monitor_styles
+	monitor_styles = GLOB.standard_monitor_styles
 
 /obj/item/disk/limb/antares
 	company = "Antares Robotics"

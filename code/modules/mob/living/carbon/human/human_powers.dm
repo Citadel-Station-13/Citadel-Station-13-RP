@@ -277,7 +277,7 @@
 		to_chat(src, SPAN_WARNING("You don't seem to have a head!"))
 		return
 
-	var/datum/robolimb/robohead = all_robolimbs[E.model]
+	var/datum/robolimb/robohead = GLOB.all_robolimbs[E.model]
 	if(!robohead.monitor_styles || !robohead.monitor_icon)
 		to_chat(src, SPAN_WARNING("Your head doesn't have a monitor, or it doesn't support being changed!"))
 		return
@@ -426,7 +426,7 @@
 	H.eyes_over_markings = !H.eyes_over_markings
 	update_icons_body()
 
-	var/datum/robolimb/robohead = all_robolimbs[H.model]
+	var/datum/robolimb/robohead = GLOB.all_robolimbs[H.model]
 	if(robohead.monitor_styles && robohead.monitor_icon)
 		to_chat(src, SPAN_NOTICE("You reconfigure the rendering order of your facial display."))
 
