@@ -15,12 +15,7 @@
 /obj/item/firing_pin/Initialize(mapload)
 	. = ..()
 	if(istype(loc, /obj/item/gun))
-		var/obj/item/gun/G = loc
-		if(!G.pin || (G.pin == src))
-			G.pin = src
-			gun = G
-		else
-			stack_trace("already had pin in gun when spawning in gun")
+		gun = loc
 
 /obj/item/firing_pin/Destroy()
 	if(gun)
