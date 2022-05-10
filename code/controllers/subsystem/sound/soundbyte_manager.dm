@@ -20,11 +20,12 @@
 	soundbytes_by_alias = list()
 	for(var/T in subtypesof(/datum/soundbyte))
 		var/datum/soundbyte/SB = T
-		if(!initial(SB.path))
+		if(!initial(SB.path) && !ispath(SB, /datum/soundbyte/grouped))
 			continue
 		SB = new T
-		// detect runtime loading
-		SB.runtime_loaded = (istext(SB.path) && (findtext(SB.path, "sound/runtime") == 1)) || FALSE
+		if(!ispath(SB, /datum/soundbyte/grouped))
+			// detect runtime loading
+			SB.runtime_loaded = (istext(SB.path) && (findtext(SB.path, "sound/runtime") == 1)) || FALSE
 		SB.id = "[T]"			// let's have only text in here, eh?
 		soundbytes_by_id[SB.id] = SB
 		if(SB.alias)
@@ -32,8 +33,11 @@
 				soundbytes_by_alias[SB.alias] = list()
 			soundbytes_by_alias[SB.alias] += SB
 
+	// TODO: unit test the shit out of soundbytes so no one does stupid things, like empty grouped lists since we can't initial that
+
 /**
  * fetch soundbyte by alias or id
+ * you should almost never need to do this
  */
 /datum/controller/subsystem/sounds/proc/fetch_soundbyte(alias)
 	RETURN_TYPE(/datum/soundbyte)

@@ -42,7 +42,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 			if(M.z == epicenter.z)
 				// If inside the blast radius + world.view - 2
 				if(dist <= round(max_range + world.view - 2, 1))
-					M.playsound_local(epicenter, get_sfx("explosion"), 100, 1, frequency, falloff = 5) // get_sfx() is so that everyone gets the same sound
+					M.playsound_local(epicenter, get_sfx(SFX_ALIAS_EXPLOSION), 100, 1, frequency, falloff = 5) // get_sfx() is so that everyone gets the same sound
 				else if(dist <= far_dist)
 					far_volume += (dist <= far_dist * 0.5 ? 50 : 0) // add 50 volume if the mob is pretty close to the explosion
 					if(creaking_explosion)

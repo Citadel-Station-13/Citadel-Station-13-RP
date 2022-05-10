@@ -29,7 +29,7 @@ proc/explosion_rec(turf/epicenter, power)
 	log_game("Explosion with size ([power]) in area [epicenter.loc.name] ")
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power*2,1) )
-	playsound(epicenter, "explosion", 100, 1, round(power,1) )
+	playsound(epicenter, SFX_ALIAS_EXPLOSION, 100, 1, round(power,1) )
 
 	explosion_in_progress = 1
 	explosion_turfs = list()
