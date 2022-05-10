@@ -141,7 +141,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	air_master.mark_for_update(src)
 
 	// restore lighting
-	if(SSlighting.subsystem_initialized)
+	if(SSlighting.initialized)
 		recalc_atom_opacity()
 		lighting_object = old_lighting_object
 		affecting_lights = old_affecting_lights

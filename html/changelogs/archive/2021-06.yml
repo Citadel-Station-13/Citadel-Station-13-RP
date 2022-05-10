@@ -1,0 +1,28 @@
+2021-06-03:
+  silicons:
+  - balance: Kinetic daggers have been slightly nerfed.
+2021-06-07:
+  yourdoom9898:
+  - rscdel: Commented out the brand intelligence event
+2021-06-09:
+  yourdoom9898:
+  - rscdel: Comments out Brand Intelligence. Again.
+2021-06-14:
+  MalricB:
+  - rscadd: new songs
+  nevimer:
+  - code_imp: nanoui sync
+2021-06-16:
+  TheLordME:
+  - rscadd: Off-Duty Command
+  - code_imp: Allow_jobhup is no longer double negated
+  - bugfix: Species that shouldnt slip, no longer, infact slip
+  - bugfix: Diona cant get flashed, like they should.
+2021-06-18:
+  drofoljaelisglis:
+  - rscadd: Added a new swimsuit.
+2021-06-30:
+  TheLordME:
+  - rscadd: Adds eggs to the Bio-Generator.
+  drofoljaelisglis:
+  - rscadd: Added 27 new emotes.

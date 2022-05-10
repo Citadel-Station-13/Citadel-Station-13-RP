@@ -50,6 +50,7 @@ const moduleWrapper = tsserver => {
       }
 
       str = normalize(str);
+
       if (str.match(/\.zip\//)) {
         switch (hostInfo) {
           // Absolute VSCode `Uri.fsPath`s need to start with a slash.
