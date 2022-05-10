@@ -14,12 +14,18 @@
 
 /obj/item/firing_pin/Initialize(mapload)
 	. = ..()
-	if(istype(newloc, /obj/item/gun))
-		gun = newloc
+	if(istype(loc, /obj/item/gun))
+		var/obj/item/gun/G = loc
+		if(!G.pin)
+			G.pin = src
+			gun = G
+		else
+			stack_trace("already had pin in gun when spawning in gun")
 
 /obj/item/firing_pin/Destroy()
 	if(gun)
 		gun.pin = null
+		gun = null
 	return ..()
 
 /obj/item/firing_pin/afterattack(atom/target, mob/user, proximity_flag)
