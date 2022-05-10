@@ -28,7 +28,7 @@
 
 /// How this works: On LateInitialize, detect all directions that this should be applicable to, and do what it needs to do, and then inform all network builders in said directions that it's been around since it won't be around afterwards.
 /atom/movable/map_helper/network_builder/LateInitialize()
-	build_network()
+	build()
 	qdel(src)
 
 /atom/movable/map_helper/network_builder/proc/duplicates()

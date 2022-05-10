@@ -4,9 +4,14 @@
 /atom/movable/map_helper/network_builder/atmos_pipe
 	name = "atmos pipe autobuilder"
 	icon_state = "atmospipebuilder"
+	#warn check sprites
 
 	/// Layer to put our pipes on
-	var/pipe_layer = PIPING_LAYER_DEFAULT
+	// var/pipe_layer = PIPING_LAYER_DEFAULT
+
+	// connect types
+	// pipe refactor to true layers instead of b*ystation connect types when :)
+	var/connect_types = CONNECT_TYPE_REGULAR
 
 	/// Color to set our pipes to
 	var/pipe_color
@@ -83,7 +88,8 @@
 
 /atom/movable/map_helper/network_builder/atmos_pipe/distro
 	name = "distro line autobuilder"
-	pipe_layer = PIPING_LAYER_MIN
+	// pipe_layer = PIPING_LAYER_MIN
+	connect_types = CONNECT_TYPE_SUPPLY
 	pixel_x = -PIPING_LAYER_P_X
 	pixel_y = -PIPING_LAYER_P_Y
 	pipe_color = rgb(130,43,255)
@@ -91,8 +97,28 @@
 
 /atom/movable/map_helper/network_builder/atmos_pipe/scrubbers
 	name = "scrubbers line autobuilder"
-	pipe_layer = PIPING_LAYER_MAX
+	// pipe_layer = PIPING_LAYER_MAX
+	connect_types = CONNECT_TYPE_SCRUBBER
 	pixel_x = PIPING_LAYER_P_X
 	pixel_y = PIPING_LAYER_P_Y
 	pipe_color = rgb(255,0,0)
 	color = rgb(255,0,0)
+
+/atom/movable/map_helper/network_builder/atmos_pipe/aux
+	name = "aux line autobuilder"
+	// pipe_layer = PIPING_LAYER_MAX
+	connect_types = CONNECT_TYPE_AUX
+	pixel_x = PIPING_LAYER_P_X * 2
+	pixel_y = PIPING_LAYER_P_Y * 2
+	pipe_color = rgb(255, 0, 221)
+	color = rgb(255, 0, 221)
+
+
+/atom/movable/map_helper/network_builder/atmos_pipe/fuel
+	name = "fuel line autobuilder"
+	// pipe_layer = PIPING_LAYER_MAX
+	connect_types = CONNECT_TYPE_AUX
+	pixel_x = -PIPING_LAYER_P_X * 2
+	pixel_y = -PIPING_LAYER_P_Y * 2
+	pipe_color = rgb(255, 255, 0)
+	pipe_color = rgb(255, 255, 0)

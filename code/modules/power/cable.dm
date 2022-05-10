@@ -600,7 +600,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	if(!selected_color)
 		return
 
-	var/final_color = possible_cable_coil_colours[selected_color]
+	var/final_color = GLOB.possible_cable_coil_colours[selected_color]
 	if(!final_color)
 		final_color = GLOB.possible_cable_coil_colours["Red"]
 		selected_color = "red"
