@@ -54,7 +54,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	var/recipient = ""; //the department which will be receiving the message
 	var/priority = -1 ; //Priority of the message being sent
 	light_range = 0
-	var/datum/announcement/announcement = new
+	var/datum/legacy_announcement/announcement = new
 
 /obj/machinery/requests_console/power_change()
 	..()

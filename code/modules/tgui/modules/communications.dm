@@ -31,7 +31,7 @@
 	var/stat_msg2
 	var/display_type = "blank"
 
-	var/datum/announcement/priority/crew_announcement
+	var/datum/legacy_announcement/priority/crew_announcement
 
 	var/datum/lore/atc_controller/ATC
 
