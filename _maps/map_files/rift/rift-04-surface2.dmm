@@ -1915,10 +1915,14 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/dormitory)
 "dY" = (
-/obj/structure/railing/grey,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
 /obj/structure/railing/grey{
 	dir = 1
 	},
+/obj/structure/railing/grey,
 /turf/simulated/open,
 /area/hallway/primary/surfacetwo)
 "dZ" = (
@@ -5722,10 +5726,14 @@
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "lv" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/structure/railing/grey,
 /turf/simulated/open,
 /area/hallway/primary/surfacetwo)
 "lw" = (
@@ -9385,10 +9393,17 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "sB" = (
-/obj/structure/railing/grey,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /obj/structure/railing/grey{
 	dir = 1
 	},
+/obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 4
 	},
@@ -12146,12 +12161,19 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "yn" = (
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
 	},
 /turf/simulated/open,
 /area/hallway/primary/surfacetwo)
@@ -45632,7 +45654,7 @@ UB
 Re
 hG
 oz
-dY
+lv
 jp
 oz
 aC
