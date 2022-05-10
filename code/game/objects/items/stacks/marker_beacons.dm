@@ -87,7 +87,7 @@ var/list/marker_beacon_colors = list(
 	var/remove_speed = 15
 	var/picked_color
 
-/obj/structure/marker_beacon/Initialize(newloc, set_color)
+/obj/structure/marker_beacon/Initialize(mapload, set_color)
 	. = ..()
 	picked_color = set_color
 	update_icon()

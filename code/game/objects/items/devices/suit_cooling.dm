@@ -28,7 +28,7 @@
 /obj/item/suit_cooling_unit/ui_action_click()
 	toggle(usr)
 
-/obj/item/suit_cooling_unit/Initialize()
+/obj/item/suit_cooling_unit/Initialize(mapload)
 	. = ..()
 	if(ispath(cell))
 		cell = new cell(src)

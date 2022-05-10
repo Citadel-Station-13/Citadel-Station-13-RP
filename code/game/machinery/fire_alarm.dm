@@ -27,7 +27,7 @@ FIRE ALARM
 /obj/machinery/firealarm/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/firealarm/Initialize()
+/obj/machinery/firealarm/Initialize(mapload)
 	. = ..()
 	if(z in GLOB.using_map.contact_levels)
 		set_security_level(security_level ? get_security_level() : "green")

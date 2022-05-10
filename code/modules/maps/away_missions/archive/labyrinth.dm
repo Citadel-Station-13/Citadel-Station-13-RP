@@ -89,7 +89,7 @@
 	name = "Catacombs"
 	desc = "In a temple like this, these doors could be booby trapped..."
 
-/obj/machinery/door/airlock/vault/temple/Initialize()
+/obj/machinery/door/airlock/vault/temple/Initialize(mapload)
 	. = ..()
 	if(prob(33))
 		safe = 0

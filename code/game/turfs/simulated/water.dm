@@ -18,7 +18,7 @@
 
 	var/reagent_type = "water"
 
-/turf/simulated/floor/water/Initialize()
+/turf/simulated/floor/water/Initialize(mapload)
 	. = ..()
 	var/decl/flooring/F = get_flooring_data(/decl/flooring/water)
 	footstep_sounds = F?.footstep_sounds

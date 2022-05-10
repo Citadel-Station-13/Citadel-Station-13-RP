@@ -802,7 +802,7 @@
 	icon_state = "bearmeat"
 	nutriment_amt = 2
 
-/obj/item/reagent_containers/food/snacks/horsemeat/Initialize()
+/obj/item/reagent_containers/food/snacks/horsemeat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 4)
 	bitesize = 3
@@ -5707,7 +5707,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/crab/Initialize()
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/crab/Initialize(mapload)
 	..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 5
@@ -5733,7 +5733,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/horse/Initialize()
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/horse/Initialize(mapload)
 	..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 5
@@ -5759,7 +5759,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery/Initialize()
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery/Initialize(mapload)
 	..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 5

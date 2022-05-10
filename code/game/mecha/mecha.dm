@@ -197,7 +197,7 @@
 
 	var/weapons_only_cycle = FALSE	//So combat mechs don't switch to their equipment at times.
 
-/obj/mecha/Initialize()
+/obj/mecha/Initialize(mapload)
 	. = ..()
 	INVOKE_ASYNC(src, .proc/create_components)
 	update_transform()
@@ -224,7 +224,7 @@
 
 	return cell.drain_power(drain_check)
 
-/obj/mecha/Initialize()
+/obj/mecha/Initialize(mapload)
 	. = ..()
 	events = new
 
