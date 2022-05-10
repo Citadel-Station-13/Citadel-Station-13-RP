@@ -16,7 +16,7 @@
 	. = ..()
 	if(istype(loc, /obj/item/gun))
 		var/obj/item/gun/G = loc
-		if(!G.pin)
+		if(!G.pin || (G.pin == src))
 			G.pin = src
 			gun = G
 		else
