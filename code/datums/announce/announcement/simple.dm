@@ -29,8 +29,16 @@
 	src.source = source
 	src.name = name
 	src.message = message
-	src.sound_preamble = preamble
-	src.sound_main = main
+	src.sound_preamble = SSsounds.fetch_soundbyte(preamble)
+	src.sound_main = SSsounds.fetch_soundbyte(main)
 
 /datum/announcement/simple/Run()
+	var/delay = (istype(sound_preamble) && sound_preamble.length) || 0
+	if(sound_preamble)
+		announcer.
+	addtimer
+	if(delay)
+
+	else
+
 	#warn impl
