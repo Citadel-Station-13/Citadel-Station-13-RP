@@ -2677,10 +2677,10 @@
 /area/bridge)
 "eF" = (
 /obj/structure/table/standard,
-/obj/item/phone,
-/obj/item/folder/blue{
-	pixel_x = 12
+/obj/item/radio{
+	pixel_x = 7
 	},
+/obj/item/phone,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "eG" = (
@@ -4791,9 +4791,10 @@
 /area/rift/stairwell/primary/surfacethree)
 "iF" = (
 /obj/machinery/telecomms/broadcaster/preset_right/rift,
-/obj/machinery/alarm/server{
+/obj/machinery/alarm/nobreach{
 	dir = 4;
-	pixel_x = -24
+	pixel_x = -24;
+	target_temperature = 91
 	},
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -7811,6 +7812,10 @@
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "oA" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 1
@@ -7822,12 +7827,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "oC" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/machinery/space_heater,
 /obj/structure/railing,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "oD" = (
@@ -9170,7 +9175,7 @@
 /area/rift/surfacebase/shuttle)
 "rz" = (
 /obj/structure/railing,
-/obj/machinery/light{
+/obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -11517,6 +11522,9 @@
 	dir = 5
 	},
 /obj/machinery/vending/loadout/loadout_misc,
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "wp" = (
@@ -11594,6 +11602,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "AILockdown";
+	name = "AI Lockdown Shutters";
+	opacity = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
@@ -12263,13 +12279,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/general)
-"xH" = (
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/turf/simulated/open,
-/area/bridge)
 "xJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -14115,6 +14124,20 @@
 "Bw" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/ai_slipper,
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "AICore";
+	name = "AI Core Maintenance Hatch";
+	pixel_x = -26;
+	pixel_y = -6
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "AILockdown";
+	name = "AI Core Maintenance Hatch";
+	pixel_x = -26;
+	pixel_y = 6
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "By" = (
@@ -14414,6 +14437,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
+"Ce" = (
+/obj/structure/catwalk,
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "Cf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -14838,10 +14868,8 @@
 /area/crew_quarters/captain)
 "CZ" = (
 /obj/structure/table/standard,
-/obj/item/radio{
-	pixel_x = -12
-	},
 /obj/item/paper_bin,
+/obj/item/folder/blue,
 /obj/item/pen,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
@@ -15357,12 +15385,19 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "Ej" = (
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
 	},
 /turf/simulated/open,
 /area/crew_quarters/bar)
@@ -20992,6 +21027,7 @@
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
 "PL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "PN" = (
@@ -21437,6 +21473,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "QF" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /obj/structure/railing/grey{
 	dir = 1
 	},
@@ -21553,6 +21593,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
 "QS" = (
@@ -21870,12 +21913,19 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
 "Rt" = (
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 4
+	},
+/obj/structure/railing/grey{
+	dir = 1
 	},
 /turf/simulated/open,
 /area/crew_quarters/bar)
@@ -25871,13 +25921,17 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "ZX" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /obj/structure/railing/grey{
 	dir = 1
 	},
 /obj/structure/railing/grey,
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/simulated/open,
 /area/bridge)
 "ZY" = (
@@ -44440,7 +44494,7 @@ RV
 CD
 dW
 ez
-xH
+QF
 Dl
 PJ
 GU
@@ -51824,7 +51878,7 @@ EY
 YF
 aA
 rz
-Eo
+Ce
 lp
 Eo
 oC
@@ -52394,7 +52448,7 @@ sR
 TG
 So
 za
-NN
+za
 za
 Ai
 TG
@@ -52587,9 +52641,9 @@ Ca
 Ai
 Ai
 So
-za
+NN
 Bw
-za
+NN
 EW
 kH
 kH
