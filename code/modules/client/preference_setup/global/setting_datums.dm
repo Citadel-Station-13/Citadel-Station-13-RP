@@ -212,6 +212,12 @@ var/list/_client_preferences_by_type
 	enabled_description = "Show"
 	disabled_description = "Hide"
 
+/datum/client_preference/safefiring
+	description = "Gun Firing Intent Requirement"
+	key = "SAFE_FIRING"
+	enabled_description = "Safe"
+	disabled_description = "Dangerous"
+
 /datum/client_preference/browser_style
 	description = "Fake NanoUI Browser Style"
 	key = "BROWSER_STYLED"

@@ -254,6 +254,20 @@
 
 	feedback_add_details("admin_verb", "TPickupSounds")
 
+
+/client/verb/toggle_safe_firing()
+	set name = "Toggle Gun Firing Intent Requirement"
+	set category = "Preferences"
+	set desc = "Toggles between safe and dangerous firing. Safe requires a non-help intent to fire, dangerous can be fired on help intent."
+
+	var/pref_path = /datum/client_preference/safefiring
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+
+	to_chat(src,"You will now use [(is_preference_enabled(/datum/client_preference/safefiring)) ? "safe" : "dangerous"] firearms firing.")
+
+	feedback_add_details("admin_verb","TFiringMode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /client/verb/toggle_mob_tooltips()
 	set name = "Toggle Mob Tooltips"
 	set category = "Preferences"

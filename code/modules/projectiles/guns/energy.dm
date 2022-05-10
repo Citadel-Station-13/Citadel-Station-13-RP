@@ -216,8 +216,7 @@
 
 	if(!ignore_inhands)
 		update_held_icon()
-	..()
-	
+
 /obj/item/gun/energy/proc/start_recharge()
 	if(power_supply == null)
 		power_supply = new /obj/item/cell/device/weapon(src)
