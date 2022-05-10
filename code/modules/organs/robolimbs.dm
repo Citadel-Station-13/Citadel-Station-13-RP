@@ -2,7 +2,11 @@ GLOBAL_LIST_EMPTY(all_robolimbs)
 GLOBAL_LIST_EMPTY(robolimb_data)
 GLOBAL_LIST_EMPTY(chargen_robolimbs)
 GLOBAL_DATUM(basic_robolimb, /datum/robolimb)
-GLOBAL_VAR_INIT(standard_monitor_styles, "blank=ipc_blank;\
+
+// fuck you whoever wrote these vars
+// use lists like a normal human
+// TODO: REFACTOR
+var/const/standard_monitor_styles = "blank=ipc_blank;\
 	pink=ipc_pink;\
 	green=ipc_green;\
 	red=ipc_red;\
@@ -23,9 +27,9 @@ GLOBAL_VAR_INIT(standard_monitor_styles, "blank=ipc_blank;\
 	glider=ipc_gol_glider;\
 	rainbow=ipc_rainbow;\
 	smiley=ipc_smiley;\
-	database=ipc_database" )
+	database=ipc_database"
 
-GLOBAL_VAR_INIT(cyberbeast_monitor_styles, "blank=cyber_blank;\
+var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	default=cyber_default;\
 	eyes=eyes;\
 	static=cyber_static;\
@@ -40,7 +44,7 @@ GLOBAL_VAR_INIT(cyberbeast_monitor_styles, "blank=cyber_blank;\
 	uwu=cyber_uwu;\
 	question=cyber_question;\
 	lowpower=cyber_lowpower;\
-	idle=cyber_idle" )
+	idle=cyber_idle"
 
 /proc/populate_robolimb_list()
 	GLOB.basic_robolimb = new()

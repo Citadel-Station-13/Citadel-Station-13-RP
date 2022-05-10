@@ -276,7 +276,7 @@
 	container_name = "Basic Robolimb Blueprint Crate"
 	access = access_robotics
 
-/datum/supply_pack/robotics/GLOB.all_robolimbs
+/datum/supply_pack/robotics/all_robolimbs
 	name = "Advanced Robolimb Blueprints"
 	contains = list(
 			/obj/item/disk/limb/bishop,
