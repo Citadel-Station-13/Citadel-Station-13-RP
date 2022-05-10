@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(mapping)
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	HACK_LoadMapConfig()
-	if(subsystem_initialized)
+	if(initialized)
 		return
 	if(config.defaulted)
 		var/old_config = config
@@ -197,7 +197,7 @@ SUBSYSTEM_DEF(mapping)
 
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)
-	if(clearing_reserved_turfs || !subsystem_initialized)			//in either case this is just not needed.
+	if(clearing_reserved_turfs || !initialized)			//in either case this is just not needed.
 		return
 	clearing_reserved_turfs = TRUE
 //	SSshuttle.transit_requesters.Cut()
@@ -286,7 +286,7 @@ SUBSYSTEM_DEF(mapping)
 
 //DO NOT CALL THIS PROC DIRECTLY, CALL wipe_reservations().
 /datum/controller/subsystem/mapping/proc/do_wipe_turf_reservations()
-	UNTIL(subsystem_initialized)							//This proc is for AFTER init, before init turf reservations won't even exist and using this will likely break things.
+	UNTIL(initialized)							//This proc is for AFTER init, before init turf reservations won't even exist and using this will likely break things.
 	for(var/i in turf_reservations)
 		var/datum/turf_reservation/TR = i
 		if(!QDELETED(TR))

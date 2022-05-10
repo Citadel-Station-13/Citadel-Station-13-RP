@@ -4,7 +4,6 @@ import { useBackend } from "../backend";
 import { Box, Button, Flex, Input, LabeledList, Section, Table, Tabs } from "../components";
 import { Window } from "../layouts";
 import { decodeHtmlEntities } from 'common/string';
-import { COLORS } from "../constants";
 import { CrewManifestContent } from './CrewManifest';
 
 export const IdentificationComputer = (props, context) => {
@@ -163,7 +162,7 @@ export const IdentificationComputerAccessModification = (props, context) => {
                       ))}
                     </Table.Cell>
                   </Table.Row>
-                  <Box mt={-1}>&nbsp;</Box> {/* Hacky little thing to add spacing */}
+                  <Box mt={-1}>&nbsp;</Box>
                 </Fragment>
               ))}
               <Table.Row>
@@ -224,7 +223,8 @@ export const IdentificationComputerRegions = (props, context) => {
                 <Button
                   fluid
                   selected={access.allowed}
-                  onClick={() => act(actName, { access_target: access.ref, allowed: access.allowed })}>
+                  onClick={() => act(actName,
+                    { access_target: access.ref, allowed: access.allowed })}>
                   {decodeHtmlEntities(access.desc)}
                 </Button>
               </Box>

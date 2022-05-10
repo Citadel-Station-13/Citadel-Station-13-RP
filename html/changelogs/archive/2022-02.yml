@@ -1,0 +1,94 @@
+2022-02-06:
+  Captain277:
+  - rscadd: Adds MUTE trait.
+  - rscdel: 'Removes miming variable. tweak: Hexadecimal refactor.'
+  - rscadd: Adds the ability to extract firing pins from guns.
+  - rscadd: Adds new button up shirt accessory.
+  - bugfix: Fixes power cables.
+2022-02-10:
+  Captain277:
+  - rscadd: Adds disruptor cuffs.
+  - rscadd: Adds Chiming Dress.
+  silicons:
+  - rscadd: moth robots
+  - rscadd: '*honk *buzz2 *warn *chime'
+2022-02-13:
+  Ghostcoffeee:
+  - bugfix: Made lifelike limbs give the organic speechbubble
+2022-02-14:
+  Captain277:
+  - rscadd: Adds Main Crafting
+  FreeStylaLT:
+  - rscadd: Voice mimicry, thermal vision, no breathe and some other spells to Xenochimera
+  - rscadd: Wound infection to Xenochimera (and ability to be added to other species)
+  TheLordME:
+  - bugfix: 'fixes #3724'
+  - rscadd: Adds up to 6 linebreaks per emote, works both for subtle and me.
+  - code_imp: sanatize() proc now allows up to 6 linebreaks per message before removeing
+      them all.
+  yourdoom9898:
+  - rscadd: 'Mining headset to QM locker tweak: Replaced QM cargo headset with a mining
+      headset'
+2022-02-16:
+  TheLordME:
+  - rscadd: Adds the weaver abilities from vore.
+  - bugfix: fixed borgs being unable to use dice
+2022-02-17:
+  Captain277:
+  - rscadd: Adds new vectors for forgotten materials.
+2022-02-18:
+  TheLordME:
+  - rscadd: Added Adherent space squids
+  - bugfix: Fixes us not having adherent
+  silicons:
+  - rscdel: Xenobotanist and Xenobiologist have been demoted to Scientist alt titles.
+2022-02-19:
+  ktoma36:
+  - rscadd: More areas, new job role for nebulous gas, and such
+  - bugfix: Wonky wire, people should be able to land now
+  - code_imp: Touched up on some code for job roles, didnt go full out and make nebulous
+      its own job class like talon (I looked into preference code and it causes me
+      fear)
+2022-02-20:
+  Captain277:
+  - bugfix: BYOND file ordering.
+  TheLordME:
+  - bugfix: fixed 16 warnings generated after an update
+2022-02-23:
+  ktoma36:
+  - rscdel: Talon
+2022-02-25:
+  Captain277:
+  - rscadd: Adds the Courser Scouting Vessel.
+  - rscadd: 'Adds an airlock to Lavaland''s engine. tweak: Tweaks the Ghost Sheet
+      to be a head item, not a suit. tweak: Nerfs the Sec Armory substantially. tweak:
+      Nerfs the Pathfinder''s round-start ballistic.'
+  - rscadd: 'Adds the 5.7 pistol add; Adds the 5.7x28mm ammunition type tweak: The
+      H90K now fires 5.7x28mm'
+  - bugfix: Fixes Copper oregen so it actually shows up.
+  TheLordME:
+  - rscadd: Added a couple texts specificly for/from our playerbase
+  - rscdel: Removed some texts that I didnt find funny
+  - bugfix: fixed that champagne doesnt interact with shuttle consoles
+2022-02-26:
+  TheLordME:
+  - bugfix: portable scrubbers can now scrubb the new gases out.
+  - bugfix: 'Fixed idiots touching the forbidden Horse Cock tweak: Mining and solars
+      space suits now actually use suit storages.'
+  - bugfix: The endcard now shows how many people left the station.
+  - bugfix: Fixed the Phoronlock Stationary scrubber cooling gas instantly
+  yeayea130:
+  - rscadd: Added the combat shield generator from the combat borg to the science
+      borg/dogborg's illegal module listing.
+  - rscdel: Removed the hand teleporter from the science borg/dogborg's illegal module
+      listing.
+  - imageadd: Added a bunch of shield overlays for the science borg types, except
+      the coffin.
+2022-02-27:
+  Zandario:
+  - imageadd: a couple new sprites for the last few lockers to not be updated.
+  - refactor: squashed modular_citadel
+2022-02-28:
+  CrystalClearCC:
+  - bugfix: shrodinger shuttle removal/transfer shuttle tells us when it arrives at
+      ship.
