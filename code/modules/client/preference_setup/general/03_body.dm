@@ -188,6 +188,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	for(var/N in character.organs_by_name)
 		var/obj/item/organ/external/O = character.organs_by_name[N]
+		if(!istype(O))
+			continue
 		O.markings.Cut()
 
 	for(var/M in pref.body_markings)
