@@ -1,3 +1,14 @@
+/**
+ * announcement datums
+ * encapsulates data needed to make an announcement
+ *
+ * currently, contains:
+ *
+ */
+/datum/announcement
+
+
+
 //VOREStation Edit - Most of this file has been changed to use the Eris-style PA announcements.
 //You'll need to compare externally, or use your best judgement when merging.
 /var/datum/announcement/priority/priority_announcement = new(do_log = 0)

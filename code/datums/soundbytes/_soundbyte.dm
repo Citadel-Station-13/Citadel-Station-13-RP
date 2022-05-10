@@ -30,7 +30,7 @@
 /datum/soundbyte/Destroy()
 	// it's okay
 	// let go.
-	file = null
+	path = null
 	return ..()
 
 /datum/soundbyte/proc/get_asset()
