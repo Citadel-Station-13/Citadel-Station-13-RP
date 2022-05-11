@@ -1081,9 +1081,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/break_room)
 "cv" = (
-/obj/machinery/camera/network/civilian{
-	dir = 10
-	},
 /obj/machinery/space_heater,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
@@ -2170,6 +2167,9 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 8
 	},
+/obj/machinery/camera/network/engineering{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "ej" = (
@@ -2265,6 +2265,9 @@
 	},
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 4
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
@@ -2431,7 +2434,6 @@
 	pixel_y = -2
 	},
 /obj/item/book/manual/supermatter_engine,
-/obj/item/binoculars,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
 "eH" = (
@@ -2582,6 +2584,9 @@
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
+/obj/machinery/camera/network/engineering{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
 "eX" = (
@@ -4680,6 +4685,9 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 8
 	},
+/obj/machinery/camera/network/engineering{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
 "iF" = (
@@ -4691,6 +4699,9 @@
 	},
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 4
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
@@ -4775,10 +4786,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
 "iO" = (
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
-	scrub_id = "atmos_can_store"
-	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/storage)
 "iR" = (
@@ -5828,6 +5837,9 @@
 /obj/effect/floor_decal/transit/orange{
 	dir = 8
 	},
+/obj/machinery/camera/network/engineering{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/break_room)
 "kN" = (
@@ -5890,6 +5902,9 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/sign/warning/nosmoking_2{
 	pixel_y = -32
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/lower/atmos_lockers)
@@ -7692,6 +7707,9 @@
 /obj/machinery/requests_console/preset/ce{
 	pixel_x = -32
 	},
+/obj/machinery/camera/network/engineering{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/chief)
 "nU" = (
@@ -7791,6 +7809,9 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/sign/warning/nosmoking_2{
 	pixel_y = -32
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
@@ -8130,6 +8151,7 @@
 	dir = 5
 	},
 /obj/item/clothing/glasses/meson,
+/obj/item/clothing/accessory/poncho/roles/cloak/ce,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/chief)
 "oH" = (
@@ -8247,6 +8269,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
 "oQ" = (
@@ -9115,6 +9138,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
 "pQ" = (
@@ -11235,6 +11259,12 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/security/prison)
+"uu" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/lattice,
+/obj/machinery/camera/network/engineering,
+/turf/simulated/open,
+/area/maintenance/public_bunker)
 "uv" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -11293,6 +11323,19 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"wC" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/orange/border,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/engineering_hallway)
 "wE" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -11401,6 +11444,19 @@
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
+"Ay" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/orange/border,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/engineering_hallway)
 "AB" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -11459,6 +11515,11 @@
 /obj/effect/step_trigger/zlevel_fall/cavernfall,
 /turf/simulated/sky/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"BM" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/break_room)
 "BP" = (
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
@@ -11469,6 +11530,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site)
+"BW" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/orange/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/atmos/hallway)
 "Cr" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -11536,6 +11610,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"EF" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/orange/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/engineering_hallway)
 "EG" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	dir = 1;
@@ -11893,6 +11980,19 @@
 "Jy" = (
 /turf/simulated/wall/r_wall,
 /area/security/prison)
+"JK" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/orange/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/atmos/hallway)
 "JL" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "SME Access";
@@ -12281,6 +12381,9 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
 "Sa" = (
@@ -12775,6 +12878,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_smes)
+"Yq" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/orange/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/engineering_hallway)
 "Ys" = (
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 1
@@ -25772,7 +25888,7 @@ hl
 ij
 ij
 ij
-ij
+Yq
 tg
 GT
 TI
@@ -25784,7 +25900,7 @@ jA
 pg
 SR
 TS
-kr
+BW
 kr
 kr
 kr
@@ -26149,7 +26265,7 @@ gq
 au
 cR
 is
-wU
+wC
 dA
 gU
 eQ
@@ -28258,7 +28374,7 @@ aa
 aa
 aa
 aZ
-rc
+uu
 gN
 bn
 bT
@@ -28319,7 +28435,7 @@ ja
 hI
 pB
 in
-ke
+BM
 ld
 mV
 ke
@@ -30417,7 +30533,7 @@ gx
 au
 cR
 lq
-hd
+Ay
 dL
 ef
 ef
@@ -30816,7 +30932,7 @@ dc
 LG
 LG
 LG
-LG
+EF
 Wu
 QX
 Xg
@@ -30828,7 +30944,7 @@ jp
 oW
 MA
 FQ
-tj
+JK
 tj
 tj
 tj

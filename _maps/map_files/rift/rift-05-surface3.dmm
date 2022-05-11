@@ -304,16 +304,16 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "ay" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -396,6 +396,15 @@
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
+"aK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/bridge/bunker)
 "aL" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -766,11 +775,23 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "bl" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -2677,10 +2698,10 @@
 /area/bridge)
 "eF" = (
 /obj/structure/table/standard,
-/obj/item/phone,
-/obj/item/folder/blue{
-	pixel_x = 12
+/obj/item/radio{
+	pixel_x = 7
 	},
+/obj/item/phone,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "eG" = (
@@ -4253,6 +4274,12 @@
 "hA" = (
 /turf/simulated/floor/carpet/blue,
 /area/bridge/meeting_room)
+"hB" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/bridge/bunker)
 "hC" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/borderfloor,
@@ -4642,6 +4669,16 @@
 /obj/item/pen,
 /turf/simulated/floor/carpet/blue,
 /area/bridge/meeting_room)
+"io" = (
+/obj/machinery/door/airlock{
+	id_tag = "combunker4";
+	name = "Bunker Bedroom 4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/bridge/bunker)
 "ip" = (
 /obj/machinery/telecomms/relay/preset/rift/under_deep,
 /turf/simulated/floor/tiled/dark{
@@ -4791,9 +4828,10 @@
 /area/rift/stairwell/primary/surfacethree)
 "iF" = (
 /obj/machinery/telecomms/broadcaster/preset_right/rift,
-/obj/machinery/alarm/server{
+/obj/machinery/alarm/nobreach{
 	dir = 4;
-	pixel_x = -24
+	pixel_x = -24;
+	target_temperature = 91
 	},
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -5302,9 +5340,6 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "jE" = (
@@ -5539,6 +5574,9 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
 "jZ" = (
+/obj/structure/closet/hydrant{
+	pixel_y = -32
+	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -6415,6 +6453,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
+"lB" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/bridge/bunker)
 "lC" = (
 /turf/simulated/floor/tiled/white,
 /area/bridge/bunker)
@@ -6926,7 +6971,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "mH" = (
-/obj/machinery/light/small,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/bridge/bunker)
 "mI" = (
@@ -7010,6 +7057,14 @@
 "mP" = (
 /obj/machinery/newscaster{
 	pixel_y = 32
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "combunker1";
+	name = "Bunker Bedroom 1 Lock";
+	pixel_x = -26;
+	specialfunctions = 4
 	},
 /turf/simulated/floor/wood,
 /area/bridge/bunker)
@@ -7186,8 +7241,12 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c,
 /area/shuttle/excursion/general)
 "nk" = (
-/obj/structure/curtain/open/bed{
-	name = "brown curtain"
+/obj/machinery/door/airlock{
+	id_tag = "combunker1";
+	name = "Bunker Bedroom 1"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/bridge/bunker)
@@ -7811,6 +7870,10 @@
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "oA" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 1
@@ -7822,12 +7885,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "oC" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/machinery/space_heater,
 /obj/structure/railing,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "oD" = (
@@ -8202,6 +8265,12 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "ps" = (
@@ -8317,6 +8386,9 @@
 "pD" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/computer/skills{
+	dir = 1
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -8745,7 +8817,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "qC" = (
-/obj/structure/curtain/open/privacy,
+/obj/machinery/door/airlock{
+	name = "Bunker Bathroom"
+	},
 /turf/simulated/floor/tiled/white,
 /area/bridge/bunker)
 "qD" = (
@@ -8762,6 +8836,16 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/cafeteria)
+"qF" = (
+/obj/machinery/door/airlock{
+	id_tag = "combunker2";
+	name = "Bunker Bedroom 2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/bridge/bunker)
 "qG" = (
 /turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
@@ -8912,6 +8996,9 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -9170,7 +9257,7 @@
 /area/rift/surfacebase/shuttle)
 "rz" = (
 /obj/structure/railing,
-/obj/machinery/light{
+/obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -9690,6 +9777,12 @@
 "sB" = (
 /obj/structure/table/woodentable,
 /obj/item/material/ashtray/glass,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "sC" = (
@@ -9804,8 +9897,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "sO" = (
-/obj/machinery/status_display,
-/turf/simulated/wall/r_wall,
+/obj/machinery/media/jukebox,
+/turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "sP" = (
 /obj/machinery/computer/shuttle_control/explore/civvie,
@@ -10316,6 +10409,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
+"tP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/wood,
+/area/bridge/bunker)
 "tQ" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/ai_slipper,
@@ -10485,6 +10584,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "uj" = (
@@ -10530,6 +10635,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "un" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
 /turf/simulated/floor/wood,
 /area/bridge/bunker)
 "up" = (
@@ -10985,6 +11093,16 @@
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/grass,
 /area/hydroponics)
+"vm" = (
+/obj/machinery/door/airlock{
+	id_tag = "combunker3";
+	name = "Bunker Bedroom 3"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/bridge/bunker)
 "vn" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -11517,6 +11635,9 @@
 	dir = 5
 	},
 /obj/machinery/vending/loadout/loadout_misc,
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "wp" = (
@@ -11526,8 +11647,16 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/emt/general)
 "wq" = (
-/obj/structure/curtain/open/privacy,
-/turf/simulated/floor/tiled/steel_grid,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/machinery/door/airlock{
+	name = "Bunker Bathroom"
+	},
+/turf/simulated/floor/tiled/white,
 /area/bridge/bunker)
 "wt" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -11594,6 +11723,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "AILockdown";
+	name = "AI Lockdown Shutters";
+	opacity = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
@@ -11787,6 +11924,12 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Command Bunker Control Room";
 	req_one_access = list(19)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -12263,13 +12406,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/general)
-"xH" = (
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/turf/simulated/open,
-/area/bridge)
 "xJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -13881,6 +14017,20 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"AY" = (
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "combunker2";
+	name = "Bunker Bedroom 2 Lock";
+	pixel_x = -26;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/bridge/bunker)
 "AZ" = (
 /obj/structure/table/standard,
 /obj/item/book/manual/chef_recipes,
@@ -13973,7 +14123,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small{
-	dir = 1
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/bridge/bunker)
@@ -14115,6 +14265,20 @@
 "Bw" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/ai_slipper,
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "AILockdown";
+	name = "AI Upload Lockdown";
+	pixel_x = -26;
+	pixel_y = 6
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "AICore";
+	name = "AI Bunker Lockdown";
+	pixel_x = -26;
+	pixel_y = -6
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "By" = (
@@ -14212,6 +14376,12 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
+"BJ" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/bridge/bunker)
 "BL" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -14414,6 +14584,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
+"Ce" = (
+/obj/structure/catwalk,
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "Cf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -14821,6 +14998,16 @@
 /obj/machinery/newscaster{
 	pixel_y = -32
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "combunker3";
+	name = "Bunker Bedroom 3 Lock";
+	pixel_x = -26;
+	specialfunctions = 4
+	},
 /turf/simulated/floor/wood,
 /area/bridge/bunker)
 "CY" = (
@@ -14838,10 +15025,8 @@
 /area/crew_quarters/captain)
 "CZ" = (
 /obj/structure/table/standard,
-/obj/item/radio{
-	pixel_x = -12
-	},
 /obj/item/paper_bin,
+/obj/item/folder/blue,
 /obj/item/pen,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
@@ -15092,14 +15277,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "DD" = (
-/obj/structure/catwalk,
 /obj/structure/railing/grey{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -15107,7 +15285,13 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
 /area/maintenance/commandmaint)
 "DE" = (
 /obj/structure/grille,
@@ -15333,13 +15517,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
 "Eh" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 10
+/obj/machinery/vending/boozeomat{
+	req_access = null
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/wall,
 /area/bridge/bunker)
 "Ei" = (
 /obj/effect/floor_decal/techfloor{
@@ -15357,12 +15538,19 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "Ej" = (
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
 	},
 /turf/simulated/open,
 /area/crew_quarters/bar)
@@ -15595,6 +15783,9 @@
 "EF" = (
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -15851,8 +16042,8 @@
 /obj/item/clothing/accessory/holster/leg,
 /obj/item/clothing/accessory/holster/leg,
 /obj/machinery/camera/motion/security,
-/obj/item/clothing/suit/armor/pcarrier/medium/command,
-/obj/item/clothing/suit/armor/pcarrier/medium/command,
+/obj/item/clothing/suit/armor/pcarrier/medium,
+/obj/item/clothing/suit/armor/pcarrier/medium,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Fe" = (
@@ -15877,6 +16068,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
+"Fi" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel_grid,
+/area/bridge/bunker)
 "Fj" = (
 /obj/machinery/ai_slipper,
 /obj/structure/cable/green{
@@ -16019,6 +16214,13 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
+"Fz" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/steel_grid,
+/area/bridge/bunker)
 "FA" = (
 /obj/machinery/turretid/stun{
 	control_area = /area/ai_upload;
@@ -17510,10 +17712,7 @@
 /turf/simulated/wall,
 /area/crew_quarters/cafeteria)
 "IH" = (
-/obj/structure/table/reinforced,
-/obj/machinery/chemical_dispenser/bar_alc{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "II" = (
@@ -17543,12 +17742,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "IK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "IL" = (
@@ -17575,6 +17772,9 @@
 "IN" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/brown,
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/bridge/bunker)
 "IO" = (
@@ -17620,8 +17820,11 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "IT" = (
-/obj/structure/curtain/open/bed{
-	name = "brown curtain"
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -19006,6 +19209,10 @@
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
+"LH" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/white,
+/area/bridge/bunker)
 "LI" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/material/ashtray/glass,
@@ -19169,7 +19376,12 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "Mc" = (
-/obj/structure/closet/firecloset/full,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Md" = (
@@ -19803,6 +20015,12 @@
 "Nt" = (
 /obj/structure/table/woodentable,
 /obj/item/deck/cards,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Nu" = (
@@ -20992,6 +21210,7 @@
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
 "PL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "PN" = (
@@ -21437,6 +21656,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "QF" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /obj/structure/railing/grey{
 	dir = 1
 	},
@@ -21553,6 +21776,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
 "QS" = (
@@ -21870,12 +22096,19 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
 "Rt" = (
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/railing/grey,
 /obj/structure/railing/grey{
 	dir = 4
+	},
+/obj/structure/railing/grey{
+	dir = 1
 	},
 /turf/simulated/open,
 /area/crew_quarters/bar)
@@ -23800,6 +24033,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker/laundry_arrival)
+"VC" = (
+/obj/machinery/newscaster{
+	pixel_y = -32
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "combunker4";
+	name = "Bunker Bedroom 4 Lock";
+	pixel_x = -26;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/bridge/bunker)
 "VD" = (
 /obj/structure/ladder{
 	pixel_y = 10
@@ -24507,6 +24756,12 @@
 "Xa" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Xb" = (
@@ -24850,10 +25105,9 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "XJ" = (
-/obj/machinery/vending/boozeomat{
-	req_access = null
-	},
-/turf/simulated/wall,
+/obj/structure/table/reinforced,
+/obj/machinery/chemical_dispenser/bar_alc,
+/turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "XK" = (
 /obj/random/trash_pile,
@@ -24981,6 +25235,9 @@
 /obj/machinery/computer/med_data/laptop{
 	dir = 1
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "XX" = (
@@ -25059,7 +25316,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
 "Yj" = (
-/obj/machinery/media/jukebox,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Yk" = (
@@ -25142,6 +25399,12 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -25571,6 +25834,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
+"Zl" = (
+/obj/structure/bed/padded,
+/obj/item/bedsheet/brown,
+/obj/machinery/status_display{
+	pixel_y = -32
+	},
+/turf/simulated/floor/wood,
+/area/bridge/bunker)
 "Zm" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -25871,13 +26142,17 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "ZX" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /obj/structure/railing/grey{
 	dir = 1
 	},
 /obj/structure/railing/grey,
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/simulated/open,
 /area/bridge)
 "ZY" = (
@@ -44440,7 +44715,7 @@ RV
 CD
 dW
 ez
-xH
+QF
 Dl
 PJ
 GU
@@ -51414,11 +51689,11 @@ AN
 MK
 BL
 YF
-aA
-aA
-aA
-aA
-aA
+YF
+YF
+YF
+YF
+YF
 YF
 BL
 rP
@@ -51608,12 +51883,12 @@ AN
 MK
 BL
 YF
-aA
-aA
-aA
-aA
-aA
-YF
+BL
+BL
+BL
+BL
+BL
+BL
 BL
 rP
 Yr
@@ -51802,11 +52077,11 @@ eH
 MK
 BL
 YF
-aA
-aA
-aA
-aA
-aA
+YF
+YF
+YF
+YF
+YF
 YF
 HT
 HT
@@ -51824,7 +52099,7 @@ EY
 YF
 aA
 rz
-Eo
+Ce
 lp
 Eo
 oC
@@ -51996,12 +52271,12 @@ AN
 MK
 BL
 YF
-aA
-aA
-aA
-aA
-aA
-YF
+fq
+fq
+fq
+fq
+fq
+fq
 HT
 wN
 Ai
@@ -52192,9 +52467,9 @@ BL
 YF
 YF
 YF
-aA
-aA
-aA
+fq
+fq
+fq
 HT
 HT
 TG
@@ -52386,15 +52661,15 @@ BL
 BL
 BL
 YF
-YF
-YF
+fq
+fq
 HT
 HT
 sR
 TG
 So
 za
-NN
+za
 za
 Ai
 TG
@@ -52587,9 +52862,9 @@ Ca
 Ai
 Ai
 So
-za
+NN
 Bw
-za
+NN
 EW
 kH
 kH
@@ -54903,7 +55178,7 @@ sB
 TC
 uE
 wq
-Eh
+lC
 mH
 JX
 BL
@@ -55098,7 +55373,7 @@ TC
 jZ
 JX
 wl
-lC
+LH
 JX
 BL
 YF
@@ -55285,14 +55560,14 @@ YF
 BL
 JX
 XJ
-IH
+uE
 uE
 bl
 uE
 Qf
 JX
 Ka
-mH
+BJ
 JX
 BL
 YF
@@ -55478,11 +55753,11 @@ fq
 YF
 BL
 JX
-JX
+Eh
 sO
 Yj
-uE
-uE
+aK
+iW
 xt
 JX
 Ka
@@ -55672,11 +55947,11 @@ YF
 YF
 BL
 JX
+JX
+JX
 Mc
-JX
-JX
 IT
-IT
+Fz
 JX
 JX
 JX
@@ -55867,14 +56142,14 @@ BL
 BL
 JX
 EF
-uE
-uE
-uE
-uE
-uE
-uE
-uE
-jZ
+IH
+IH
+Fi
+IH
+hB
+IH
+IH
+lB
 JX
 BL
 BL
@@ -56063,12 +56338,12 @@ JX
 nk
 JX
 JX
-nk
+qF
 JX
-nk
+vm
 JX
 JX
-nk
+io
 JX
 JX
 BL
@@ -56256,14 +56531,14 @@ JX
 mP
 un
 JX
-mP
+AY
 un
 JX
-un
+tP
 CX
 JX
-un
-CX
+tP
+VC
 JX
 BL
 YF
@@ -56454,10 +56729,10 @@ IN
 hH
 JX
 hH
-IN
+Zl
 JX
 hH
-IN
+Zl
 JX
 BL
 YF
