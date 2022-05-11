@@ -10,7 +10,7 @@
 	if(species == new_species)
 		return
 
-	if(!(new_species in GLOB.all_species))
+	if(!(new_species in all_species_names()))
 		return
 
 	set_species(new_species)
@@ -158,7 +158,7 @@
 	return 1
 
 /mob/living/carbon/human/proc/change_skin_color(var/red, var/green, var/blue)
-	if(red == r_skin && green == g_skin && blue == b_skin || !(species.appearance_flags & HAS_SKIN_COLOR))
+	if(red == r_skin && green == g_skin && blue == b_skin || !(species.species_appearance_flags & HAS_SKIN_COLOR))
 		return
 
 	r_skin = red
@@ -170,7 +170,7 @@
 	return 1
 
 /mob/living/carbon/human/proc/change_skin_tone(var/tone)
-	if(s_tone == tone || !(species.appearance_flags & HAS_SKIN_TONE))
+	if(s_tone == tone || !(species.species_appearance_flags & HAS_SKIN_TONE))
 		return
 
 	s_tone = tone
@@ -185,17 +185,17 @@
 
 /mob/living/carbon/human/proc/generate_valid_species(var/check_whitelist = 1, var/list/whitelist = list(), var/list/blacklist = list())
 	var/list/valid_species = new()
-	for(var/current_species_name in GLOB.all_species)
-		var/datum/species/current_species = GLOB.all_species[current_species_name]
+	for(var/datum/species/S in all_static_species_meta())
+		var/current_species_name = S.name
 
 		if(check_whitelist && config_legacy.usealienwhitelist && !check_rights(R_ADMIN, 0, src)) //If we're using the whitelist, make sure to check it!
-			if(!(current_species.spawn_flags & SPECIES_CAN_JOIN))
+			if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 				continue
 			if(whitelist.len && !(current_species_name in whitelist))
 				continue
 			if(blacklist.len && (current_species_name in blacklist))
 				continue
-			if((current_species.spawn_flags & SPECIES_IS_WHITELISTED) && !is_alien_whitelisted(src, current_species))
+			if((S.spawn_flags & SPECIES_IS_WHITELISTED) && !is_alien_whitelisted(src, S))
 				continue
 
 		valid_species += current_species_name

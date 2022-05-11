@@ -42,7 +42,7 @@
 		if(0 to 1)
 			. += "<span class='warning'><b>It is completely destroyed.</b></span>"
 
-/obj/item/mecha_parts/component/Initialize()
+/obj/item/mecha_parts/component/Initialize(mapload)
 	. = ..()
 	integrity = max_integrity
 

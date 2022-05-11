@@ -111,9 +111,7 @@
 /datum/ghostrole_instantiator/human/random/species/Randomize(mob/living/carbon/human/H, list/params)
 	. = ..()
 	var/species = pick(GetSpeciesPath(H, params))
-	// todo species refactor
-	var/datum/species/S = species
-	H.set_species(initial(S.name))
+	H.set_species(species)
 	var/new_name = random_name(H.gender, H.species.name)
 	// H.set_species(new species)
 	// var/new_name

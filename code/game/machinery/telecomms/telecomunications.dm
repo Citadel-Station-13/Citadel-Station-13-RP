@@ -121,7 +121,7 @@
 	else
 		return 0
 
-/obj/machinery/telecomms/Initialize()
+/obj/machinery/telecomms/Initialize(mapload)
 	GLOB.telecomms_list += src
 	. = ..()
 
@@ -270,7 +270,7 @@
 
 	var/list/linked_radios_weakrefs = list()
 
-/obj/machinery/telecomms/receiver/Initialize()
+/obj/machinery/telecomms/receiver/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -353,7 +353,7 @@
 	long_range_link = 1
 	netspeed = 40
 
-/obj/machinery/telecomms/hub/Initialize()
+/obj/machinery/telecomms/hub/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -393,7 +393,7 @@
 	var/broadcasting = 1
 	var/receiving = 1
 
-/obj/machinery/telecomms/relay/Initialize()
+/obj/machinery/telecomms/relay/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -450,7 +450,7 @@
 	netspeed = 40
 	var/change_frequency = 0
 
-/obj/machinery/telecomms/bus/Initialize()
+/obj/machinery/telecomms/bus/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -506,7 +506,7 @@
 	circuit = /obj/item/circuitboard/telecomms/processor
 	var/process_mode = 1 // 1 = Uncompress Signals, 0 = Compress Signals
 
-/obj/machinery/telecomms/processor/Initialize()
+/obj/machinery/telecomms/processor/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -564,7 +564,7 @@
 	. = ..()
 	server_radio = new()
 
-/obj/machinery/telecomms/server/Initialize()
+/obj/machinery/telecomms/server/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 

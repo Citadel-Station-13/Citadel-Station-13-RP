@@ -47,7 +47,7 @@
 	name = "Safecode hint spawner"
 	delete_me = TRUE
 
-/atom/movable/landmark/sc_bible_spawner/Initialize()
+/atom/movable/landmark/sc_bible_spawner/Initialize(mapload)
 	. = ..()
 	var/obj/item/storage/bible/B = new /obj/item/storage/bible/booze(src.loc)
 	B.name = "The Holy book of the Geometer"

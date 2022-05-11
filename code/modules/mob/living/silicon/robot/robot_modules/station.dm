@@ -62,7 +62,8 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	vr_add_sprites() //Vorestation Edit: For vorestation only sprites
 
 	R.set_module_sprites(sprites)
-	R.choose_icon(R.module_sprites.len + 1, R.module_sprites)
+	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
+	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
 
 	for(var/obj/item/I in modules)
 		I.canremove = 0

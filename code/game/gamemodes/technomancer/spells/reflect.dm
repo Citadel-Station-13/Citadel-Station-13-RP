@@ -16,7 +16,7 @@
 	var/damage_to_energy_multiplier = 60.0 //Determines how much energy to charge for blocking, e.g. 20 damage attack = 1200 energy cost
 	var/datum/effect_system/spark_spread/spark_system = null
 
-/obj/item/spell/reflect/Initialize()
+/obj/item/spell/reflect/Initialize(mapload)
 	. = ..()
 	set_light(3, 2, l_color = "#006AFF")
 	spark_system = new /datum/effect_system/spark_spread()

@@ -207,7 +207,7 @@
 	desc = "A candy perfect for those stingy ouchies. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/bicard/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/bicard/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("bicaridine", 5)
 	reagents.add_reagent("sugar", 1)
@@ -218,7 +218,7 @@
 	desc = "A candy perfect for those frowny feelings. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/citalopram/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/citalopram/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("citalopram", 5)
 	reagents.add_reagent("sugar", 1)
@@ -228,7 +228,7 @@
 	name = "Commed-pop"
 	desc = "A lolipop devised to heal wounds overtime, with a slower amount of reagent use. Can be eaten or put in the mask slot"
 
-/obj/item/reagent_containers/hard_candy/lollipop/combat/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/combat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("bicaridine", 5)
 	reagents.add_reagent("kelotane", 5)
@@ -240,7 +240,7 @@
 	desc = "A candy perfect for those raspy gaspies. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/dexalin/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/dexalin/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("dexalin", 5)
 	reagents.add_reagent("sugar", 1)
@@ -251,7 +251,7 @@
 	desc = "A candy perfect for keeping your blood sweet. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/dylovene/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/dylovene/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("dylovene", 5)
 	reagents.add_reagent("sugar", 1)
@@ -262,7 +262,7 @@
 	desc = "A candy perfect for the functional alcoholic. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/ethylredoxrazine/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/ethylredoxrazine/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("ethylredoxrazine", 5)
 	reagents.add_reagent("sugar", 1)
@@ -273,7 +273,7 @@
 	desc = "A candy perfect for keeping your cells from melting. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/hyronalin/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/hyronalin/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("hyronalin", 5)
 	reagents.add_reagent("sugar", 1)
@@ -284,7 +284,7 @@
 	desc = "A candy perfect for those sizzly wizzlies. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/kelotane/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/kelotane/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("kelotane", 5)
 	reagents.add_reagent("sugar", 1)
@@ -295,7 +295,7 @@
 	desc = "Your reward for behaving so well in the medbay. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/tramadol/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/tramadol/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("tramadol", 4)
 	reagents.add_reagent("sugar", 1)
@@ -306,7 +306,7 @@
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 	volume = 15
 
-/obj/item/reagent_containers/hard_candy/lollipop/tricord/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/tricord/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("tricordrazine", 10)
 	reagents.add_reagent("sugar", 1)

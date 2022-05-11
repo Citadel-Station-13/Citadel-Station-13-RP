@@ -51,9 +51,6 @@
 			if (!G && replace)
 				user.put_in_hands(RG)
 
-
-
-
 /*
  * Reinforced glass sheets
  */

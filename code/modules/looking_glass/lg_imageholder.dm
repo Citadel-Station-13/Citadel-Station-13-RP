@@ -9,7 +9,7 @@
 
 	mouse_opacity = 0
 
-/atom/movable/landmark/looking_glass/Initialize()
+/atom/movable/landmark/looking_glass/Initialize(mapload)
 	. = ..()
 	viewers = list()
 

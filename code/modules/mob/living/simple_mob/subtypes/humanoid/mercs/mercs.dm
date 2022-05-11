@@ -71,7 +71,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
 
-	corpse = /atom/movable/landmark/mobcorpse/syndicatesoldier
+	corpse = /atom/movable/spawner/corpse/syndicatesoldier
 	loot_list = list(/obj/item/material/knife/tacknife = 100)	// Might as well give it the knife
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
@@ -228,7 +228,7 @@
 	icon_living = "blueforranged_smg"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/peacekeeper)
 
-	corpse = /atom/movable/landmark/mobcorpse/solarpeacekeeper
+	corpse = /atom/movable/spawner/corpse/solarpeacekeeper
 	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
@@ -348,7 +348,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /atom/movable/landmark/mobcorpse/syndicatecommando
+	corpse = /atom/movable/spawner/corpse/syndicatecommando
 
 /mob/living/simple_mob/humanoid/merc/melee/sword/space/Process_Spacemove(var/check_drift = 0)
 	return
@@ -374,7 +374,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /atom/movable/landmark/mobcorpse/syndicatecommando
+	corpse = /atom/movable/spawner/corpse/syndicatecommando
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
@@ -617,7 +617,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /atom/movable/landmark/mobcorpse/vox/pirate
+	corpse = /atom/movable/spawner/corpse/vox/pirate
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump/rifle/vox_hunting = 100,
 					/obj/item/ammo_magazine/clip/c762 = 30,
 					/obj/item/ammo_magazine/clip/c762 = 30
@@ -660,7 +660,7 @@
 	attack_edge = 1
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
-	corpse = /atom/movable/landmark/mobcorpse/vox/boarder_m
+	corpse = /atom/movable/spawner/corpse/vox/boarder_m
 	loot_list = list(/obj/item/melee/energy/sword = 100)
 
 // They're good with the swords? I dunno. I like the idea they can deflect.
@@ -703,7 +703,7 @@
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
-	corpse = /atom/movable/landmark/mobcorpse/vox/boarder_r
+	corpse = /atom/movable/spawner/corpse/vox/boarder_r
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100,
 					/obj/item/ammo_magazine/m12gdrum = 30,
 					/obj/item/ammo_magazine/m12gdrum = 30
@@ -734,7 +734,7 @@
 	projectilesound = 'sound/weapons/Laser.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
-	corpse = /atom/movable/landmark/mobcorpse/vox/boarder_t
+	corpse = /atom/movable/spawner/corpse/vox/boarder_t
 	loot_list = list(/obj/item/gun/energy/ionrifle)
 
 	needs_reload = TRUE
@@ -766,7 +766,7 @@
 	projectilesound = 'sound/effects/basscannon.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/destructive
-	corpse = /atom/movable/landmark/mobcorpse/vox/suppressor
+	corpse = /atom/movable/spawner/corpse/vox/suppressor
 	loot_list = list(/obj/item/gun/energy/sonic = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
@@ -798,7 +798,7 @@
 	projectilesound = 'sound/weapons/eLuger.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/destructive
-	corpse = /atom/movable/landmark/mobcorpse/vox/captain
+	corpse = /atom/movable/spawner/corpse/vox/captain
 	loot_list = list(/obj/item/gun/energy/darkmatter = 100)
 
 	needs_reload = TRUE

@@ -197,9 +197,14 @@
 
 	var/weapons_only_cycle = FALSE	//So combat mechs don't switch to their equipment at times.
 
-/obj/mecha/Initialize()
+/obj/mecha/Initialize(mapload)
 	. = ..()
+	INVOKE_ASYNC(src, .proc/create_components)
+	update_transform()
 
+// shitcode
+// VEHICLE MECHS WHEN?
+/obj/mecha/proc/create_components()
 	for(var/path in starting_components)
 		var/obj/item/mecha_parts/component/C = new path(src)
 		C.attach(src)
@@ -208,7 +213,6 @@
 		for(var/path in starting_equipment)
 			var/obj/item/mecha_parts/mecha_equipment/ME = new path(src)
 			ME.attach(src)
-	update_transform()
 
 /obj/mecha/drain_power(var/drain_check)
 
@@ -220,7 +224,7 @@
 
 	return cell.drain_power(drain_check)
 
-/obj/mecha/Initialize()
+/obj/mecha/Initialize(mapload)
 	. = ..()
 	events = new
 
@@ -239,12 +243,12 @@
 		src.smoke_system.attach(src)
 
 	add_cell()
-	add_iterators()
+	// TODO: BURN ITERATORS WITH FUCKING FIRE
+	INVOKE_ASYNC(src, /obj/mecha/proc/add_iterators)
 	removeVerb(/obj/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
 	loc.Entered(src)
 	mechas_list += src //global mech list
-	return
 
 /obj/mecha/Exit(atom/movable/O)
 	if(O in cargo)

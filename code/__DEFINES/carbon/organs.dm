@@ -1,9 +1,9 @@
 //! *ALL DEFINES RELATED TO ORGANS GO HERE* !//
 
 /// Global list of organs for future use.
-#define O_ALL list(O_ALL_STANDARD, O_ALL_NONSTANDARD)
+#define O_ALL (O_ALL_STANDARD + O_ALL_NONSTANDARD)
 /// Global list of all standard body parts.
-#define BP_ALL list(BP_ALL_STANDARD) //TODO: Currently used for random limb dmg, needs a refactor to make it species-based instead.
+#define BP_ALL BP_ALL_STANDARD //TODO: Currently used for random limb dmg, needs a refactor to make it species-based instead.
 
 
 //* GENERIC INTERNAL ORGANS *//
