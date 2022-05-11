@@ -695,7 +695,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/is_mechanical()
 	if(mind && (mind.assigned_role == "Cyborg" || mind.assigned_role == "AI"))
 		return 1
-	return istype(src, /mob/living/silicon) || get_species() == "Machine"
+	return istype(src, /mob/living/silicon) || get_species_name() == "Machine"
 
 /mob/proc/is_ready()
 	return client && !!mind
@@ -922,7 +922,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/SetLosebreath(amount)
 	losebreath = clamp(0, amount, 25)
 
-/mob/proc/get_species()
+/mob/proc/get_species_name()
 	return ""
 
 /mob/proc/flash_weak_pain()

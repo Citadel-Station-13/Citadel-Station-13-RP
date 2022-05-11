@@ -85,7 +85,7 @@
 	icon = 'icons/obj/structures/stairs_64x64.dmi'
 	icon_state = ""
 	invisibility = 0
-/obj/effect/step_trigger/teleporter/to_underdark/Initialize()
+/obj/effect/step_trigger/teleporter/to_underdark/Initialize(mapload)
 	. = ..()
 	teleport_x = x
 	teleport_y = y
@@ -98,7 +98,7 @@
 	icon = 'icons/obj/structures/stairs_64x64.dmi'
 	icon_state = ""
 	invisibility = 0
-/obj/effect/step_trigger/teleporter/from_underdark/Initialize()
+/obj/effect/step_trigger/teleporter/from_underdark/Initialize(mapload)
 	. = ..()
 	teleport_x = x
 	teleport_y = y

@@ -450,7 +450,7 @@
 			return TRUE
 		target = usr
 
-	return target && (flags & APPEARANCE_SKIN) && target.species.appearance_flags & HAS_SKIN_TONE
+	return target && (flags & APPEARANCE_SKIN) && target.species.species_appearance_flags & HAS_SKIN_TONE
 
 /datum/tgui_module/appearance_changer/proc/can_change_skin_color()
 	var/mob/living/carbon/human/target = owner
@@ -459,7 +459,7 @@
 			return TRUE
 		target = usr
 
-	return target && (flags & APPEARANCE_SKIN) && target.species.appearance_flags & HAS_SKIN_COLOR
+	return target && (flags & APPEARANCE_SKIN) && target.species.species_appearance_flags & HAS_SKIN_COLOR
 
 /datum/tgui_module/appearance_changer/proc/cut_data()
 	// Making the assumption that the available species remain constant

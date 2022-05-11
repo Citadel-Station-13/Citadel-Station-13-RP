@@ -101,7 +101,8 @@
 	if(!((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)))
 		//VOREStation Add Start
 		if(custom_species)
-			whoismsg += ", a <b>[src.custom_species]</b>"
+			if(custom_species != SPECIES_HUMAN)
+				whoismsg += ", a <b>[src.custom_species]</b>"
 		else if(looks_synth)
 		//VOREStation Add End
 			var/use_gender = "a synthetic"

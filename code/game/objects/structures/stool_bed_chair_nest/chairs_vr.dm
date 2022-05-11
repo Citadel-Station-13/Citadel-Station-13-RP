@@ -6,7 +6,7 @@
 	base_icon = "modern_chair"
 	applies_material_colour = 0
 
-/obj/structure/bed/chair/modern_chair/Initialize()
+/obj/structure/bed/chair/modern_chair/Initialize(mapload)
 	. = ..()
 	var/image/I = image(icon, "[base_icon]_over")
 	I.layer = ABOVE_MOB_LAYER

@@ -19,7 +19,7 @@
 	base_color = "#FFFFFF" //Color mult, start out with this
 
 	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | CONTAMINATION_IMMUNE
-	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
+	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
 	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	health_hud_intensity = 2
 	num_alternate_languages = 5  // Let's not make them know every language, past me.
@@ -168,9 +168,9 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		return H.impersonate_bodytype || ..()
 	return ..()
 
-/datum/species/protean/handle_post_spawn(var/mob/living/carbon/human/H)
-	..()
+/datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE
+	. = ..()
 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
 	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)

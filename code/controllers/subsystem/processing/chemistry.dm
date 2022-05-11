@@ -11,7 +11,8 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 	chemical_reactions = SSchemistry.chemical_reactions
 	chemical_reagents = SSchemistry.chemical_reagents
 
-/datum/controller/subsystem/processing/chemistry/Initialize()
+// honestly hate that we have to do this but some things INITIALIZE_IMMEDIATE so uh fuck me I guess!
+/datum/controller/subsystem/processing/chemistry/PreInit()
 	initialize_chemical_reactions()
 	initialize_chemical_reagents()
 	return ..()
