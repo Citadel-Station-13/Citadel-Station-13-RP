@@ -13,5 +13,5 @@
 		// assume matrix
 		c1 = color1
 		c2 = color2
-	animate(res, color = c1, easing = easing, time = 1080 * 0.5, loop = -1)
-	animate(res, color = c2, easing = easing, time = 1080 * 0.5)
+	animate(A, color = c1, easing = easing, time = 1080 * 0.5, loop = -1)
+	animate(A, color = c2, easing = easing, time = 1080 * 0.5)
