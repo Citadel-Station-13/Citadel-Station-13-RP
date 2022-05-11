@@ -83,7 +83,7 @@
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles(need_rebuild=1)
-	if(SSshuttle.subsystem_initialized)
+	if(SSshuttle.initialized)
 		link_to_ship()
 
 /obj/machinery/atmospherics/unary/engine/proc/link_to_ship()

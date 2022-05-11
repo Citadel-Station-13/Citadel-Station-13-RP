@@ -1,0 +1,138 @@
+2021-10-12:
+  Captain277:
+  - bugfix: Reticks spirit_board.dm.
+  KillianKirilenko:
+  - rscadd: Added the ability to set custom say/whisper/shout/ask 'verbs' on a persistent,
+      per-character basis.
+  Saisni:
+  - rscadd: Added sprites for two new tails and markings
+  - spellcheck: Removed "(Shadekin)" notes on tails since they already stated they
+      are for shadekin
+  - code_imp: Added code for shadekin tails in the Tail menu in Character setup
+2021-10-13:
+  Knouli:
+  - bugfix: Unknown sectors now have visible icon
+  MalricB:
+  - rscadd: bunch of new songs
+2021-10-15:
+  KillianKirilenko:
+  - rscadd: You can now close open doors and firedoors by clicking on their floor
+      tile.
+  Knouli:
+  - bugfix: Garbage disposals can be access and now has a functional conveyor
+  - bugfix: Portable Air-Pump distribution system now functions as expected
+  - rscadd: 'Mr. Wiggleblob has a bed - all rejoice tweak: Dinnerware vendor access
+      rights tweak: APCs, Air Alarms, and Firedoors replaced with Talon equivalents
+      tweak: Security aft maintenance airlock replaced with glass airlock'
+  - rscadd: Autolok suit storage closet in cryogenics
+  - rscadd: 'Four parachutes in EVA tweak: Firedoors for tech room and lifeboat tweak:
+      Firealarms replaced with hidden_alarms equivalent'
+  - rscadd: adds copy of captain's jumpsuit, backpack, satchel, and duffel for talon
+      captain
+  - rscadd: puts these copies in job outfit and talon captain's locker
+  TheLordME:
+  - config: Adds the ability for VSC to launch the dreamdaemon to test local changes
+  - rscadd: Adds the ability to climb on portable atmos devices like canisters, or
+      portable scrubber.
+  UrsaMajora:
+  - code_imp: It was literally just missing one line. Excuse me. It had an extra word
+      where it didn't belong.
+  - code_imp: Makes the shields depend on the variable powered, not density, so it
+      doesn't swap density about.
+2021-10-16:
+  Captain277:
+  - rscadd: Honk pet to Clown post.
+  - rscadd: Nothing as Silencium grind result.
+  - rscadd: New Resin door sprites, ported from TGMC.
+  - rscadd: 'Bananium and Silencium doors. tweak: Slims Seifuku skirts. tweak: CLUWNE
+      wreckage icon pathing. tweak: POI Hard corners'
+  - rscadd: Adds Reticent and Reticence "Mime" mecha, as well as custom weapons and
+      simplemob variants.
+  - bugfix: Clown Op rifle spawn and grenade charges.
+  - rscadd: Taser.
+  Saisni:
+  - bugfix: Fixed Lunarmoths not chilling the room
+  - code_imp: Added code for Lunarmoths to chill the room.
+  UrsaMajora:
+  - rscadd: The Possessed mob
+  - rscadd: 'sound effect: Breathing'
+  - imageadd: The Possessed icons, which are just RIGs mashed into one icon.
+  - rscadd: The things the Possessed can say, over in say_list.
+2021-10-19:
+  Captain277:
+  - rscadd: Adds the Laconic outfit.
+  - rscadd: Adds the Bounty Hunter Skinsuit.
+  KillianKirilenko:
+  - bugfix: adjusted bar layout to properly isolate the booths from each other
+  - bugfix: stopped it from raining inside the maint/eng tram
+  UrsaMajora:
+  - code_imp: Added a check here and a state change there to the Xenomorph egg and
+      facehugger.
+  zeroisthebiggay:
+  - bugfix: we are NOT eris we are not NeoTheology
+2021-10-21:
+  Mount0:
+  - rscadd: meat-kabobs that use meat steaks
+  - bugfix: chocolate truffles
+  - bugfix: 5 sugar producing a fortune cookie
+  UrsaMajora:
+  - code_imp: Forced the update position of the shield on the mob's movement.
+2021-10-22:
+  KillianKirilenko:
+  - bugfix: moved refurb/event suits file to a more logical location, and renamed
+      the talon voidsuits file for consistency
+  UrsaMajora:
+  - code_imp: Causes hostiles to spawn on the Talon when the Talon enters the areas.
+  - bugfix: Grow, eggs. Grow.
+2021-10-23:
+  UrsaMajora:
+  - bugfix: CI integration check shouldn't fail randomly.
+  yeayea130:
+  - rscadd: Added electric RCD to engineering hound module
+  - rscadd: Added plasma cutter mining tool to engineering hound module
+  - rscdel: Removed pickaxe module from Engineering hound.
+2021-10-24:
+  Captain277:
+  - rscdel: Comments out Myrmidon.
+  - rscadd: Adds mecha components to mechfab.
+  - rscadd: Roman, Imperial, and Knight/Crusader replica sets to seasonal costume
+      loadout.
+  - rscadd: Chainsword.
+  - bugfix: Berserker and Roman Lorica icon pathing.
+2021-10-25:
+  KillianKirilenko:
+  - rscadd: added x/y scaling neutral traits
+  - refactor: refactored character preview for greater efficiency
+  - refactor: Replaced old char directory with a tgui-powered one.
+  Mount0:
+  - rscadd: a grand total of 15 new drinks
+  TheLordME:
+  - rscadd: Adds CtrlClick inflate/deflate for inflatables
+  nik707:
+  - bugfix: fixed some missing functions of borg mirror tool
+  - rscadd: '*bcough'
+  yeayea130:
+  - rscadd: Added three modules to the medical hound equipment lineup, enforcing some
+      parity between the medical modules.
+2021-10-27:
+  KillianKirilenko:
+  - rscadd: added hardwood material, orderable via cargo
+  - bugfix: things made out of alien wood will no longer yield regular wood when disassembled
+  - bugfix: the fiftyspawner for alien logs no longer overrides the one for regular
+      logs
+2021-10-29:
+  CharlesWedge:
+  - bugfix: Fixes the Rustic Grille Sprite
+  nik707:
+  - bugfix: fixed explosive engine manuals
+2021-10-30:
+  Captain277:
+  - rscadd: Creates in-depth trap design system.
+  - rscadd: Honk sound effect to bananium floors.
+  - rscadd: Missing icons for plasteel and durasteel floor tile stacks.
+  - rscadd: Shotgun to CLUWNE equipment.
+  HoneyApples:
+  - bugfix: .45 Pistol from sec now accepts practice magazines
+  nik707:
+  - bugfix: The self-deleting mirror is a thing of the past.
+  - imageadd: added new mirror sprites

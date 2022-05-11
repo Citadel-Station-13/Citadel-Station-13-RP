@@ -1,9 +1,7 @@
-import { round } from 'common/math';
-import { Component, Fragment } from 'inferno';
+import { Component } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Slider } from "../components";
+import { Box, Button, Icon, LabeledList, Section, Slider } from "../components";
 import { Window } from "../layouts";
-import { logger } from '../logging';
 
 export const BombTester = (props, context) => {
   const { act, data } = useBackend(context);

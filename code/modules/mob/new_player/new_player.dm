@@ -520,7 +520,7 @@
 	SP.OnSpawn(character)
 	//Announces Cyborgs early, because that is the only way it works
 	if(character.mind.assigned_role == "Cyborg")
-		AnnounceCyborg(character, rank, SP.RenderAnnounceMessage(character, name = character.name, job_name = rank), announce_channel, character.z)
+		AnnounceCyborg(character, rank, SP.RenderAnnounceMessage(character, name = character.name, job_name = character.mind.role_alt_title || rank), announce_channel, character.z)
 	character = job_master.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
 
@@ -560,7 +560,7 @@
 
 		//Grab some data from the character prefs for use in random news procs.
 
-		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = rank))
+		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (character.mind.role_alt_title || rank)))
 
 	qdel(src)
 

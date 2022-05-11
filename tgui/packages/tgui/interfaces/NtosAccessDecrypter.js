@@ -38,7 +38,8 @@ export const NtosAccessDecrypter = (props, context) => {
           <NoticeBox>{message}</NoticeBox>
         ) || running && (
           <Section>
-            Attempting to decrypt network access codes. Please wait. Rate: {rate} PHash/s
+            Attempting to decrypt network access codes. Please wait.
+            Rate: {rate} PHash/s
             <Box>
               {/* I don't care anymore */}
               {generate10String(lineLength)}

@@ -1,8 +1,8 @@
-import { filter, sortBy } from 'common/collections';
+import { sortBy } from 'common/collections';
 import { capitalize, decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, ByondUi, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, ColorBox } from "../components";
+import { Box, Button, ByondUi, Flex, LabeledList, Section, Tabs, ColorBox } from "../components";
 import { Window } from "../layouts";
 
 export const AppearanceChanger = (props, context) => {
@@ -159,14 +159,22 @@ export const AppearanceChanger = (props, context) => {
           ) : null}
         </Tabs>
         <Box height="43%">
-          {(change_race && tabIndex === 0) ? <AppearanceChangerSpecies /> : null}
-          {(change_gender && tabIndex === 1) ? <AppearanceChangerGender /> : null}
-          {(change_color && tabIndex === 2) ? <AppearanceChangerColors /> : null}
-          {(change_hair && tabIndex === 3) ? <AppearanceChangerHair /> : null}
-          {(change_facial_hair && tabIndex === 4) ? <AppearanceChangerFacialHair /> : null}
-          {(change_hair && tabIndex === 5) ? <AppearanceChangerEars /> : null}
-          {(change_hair && tabIndex === 6) ? <AppearanceChangerTails /> : null}
-          {(change_hair && tabIndex === 7) ? <AppearanceChangerWings /> : null}
+          {(change_race && tabIndex === 0)
+            ? <AppearanceChangerSpecies /> : null}
+          {(change_gender && tabIndex === 1)
+            ? <AppearanceChangerGender /> : null}
+          {(change_color && tabIndex === 2)
+            ? <AppearanceChangerColors /> : null}
+          {(change_hair && tabIndex === 3)
+            ? <AppearanceChangerHair /> : null}
+          {(change_facial_hair && tabIndex === 4)
+            ? <AppearanceChangerFacialHair /> : null}
+          {(change_hair && tabIndex === 5)
+            ? <AppearanceChangerEars /> : null}
+          {(change_hair && tabIndex === 6)
+            ? <AppearanceChangerTails /> : null}
+          {(change_hair && tabIndex === 7)
+            ? <AppearanceChangerWings /> : null}
         </Box>
       </Window.Content>
     </Window>

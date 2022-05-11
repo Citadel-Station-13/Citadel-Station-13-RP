@@ -161,7 +161,8 @@
 	desc = "A handsome synthetic leather scabbard with matching belt."
 	icon_state = "holster_machete"
 	concealed_holster = 0
-	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/energy/hfmachete)
+	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/energy/hfmachete, /obj/item/reagent_containers/spray, /obj/item/soap, 
+		/obj/item/c_tube, /obj/item/bikehorn)
 	cant_hold = list(/obj/item/material/knife/machete/armblade)
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
