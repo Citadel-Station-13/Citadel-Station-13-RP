@@ -11,9 +11,9 @@ fi
 
 mkdir -p \
     $1/_maps \
-    #$1/icons/runtime \
-    #$1/sound/runtime \
-    #$1/strings \
+    $1/icons/runtime \
+    $1/sound/runtime \
+    $1/strings \
     $1/tgui/public \
     $1/tgui/packages/tgfont/dist
 
@@ -24,9 +24,9 @@ fi
 
 cp vorestation.dmb vorestation.rsc $1/
 cp -r _maps/* $1/_maps/
-#cp -r icons/runtime/* $1/icons/runtime/
-#cp -r sound/runtime/* $1/sound/runtime/
-#cp -r strings/* $1/strings/
+cp -r icons/runtime/* $1/icons/runtime/
+cp -r sound/runtime/* $1/sound/runtime/
+cp -r strings/* $1/strings/
 cp -r tgui/public/* $1/tgui/public/
 cp -r tgui/packages/tgfont/dist/* $1/tgui/packages/tgfont/dist/
 
