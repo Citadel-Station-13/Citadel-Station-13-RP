@@ -209,6 +209,7 @@
 	. = ..()
 	if(latejoin_active && !spawned)
 		empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
+	qdel(src)
 
 /atom/movable/landmark/spawnpoint/job/ai/secondary
 	icon_state = "AI"
