@@ -557,7 +557,7 @@
 
 	qdel(D)
 
-	target.species = GLOB.all_species[SPECIES_DIONA]
+	target.set_species(/datum/species/diona)
 
 	target.verbs |= /mob/living/carbon/human/proc/diona_split_nymph
 	target.verbs |= /mob/living/carbon/human/proc/regenerate

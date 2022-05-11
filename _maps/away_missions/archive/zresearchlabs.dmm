@@ -1890,7 +1890,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "fL" = (
-/atom/movable/landmark/corpse/scientist{
+/atom/movable/spawner/corpse/scientist{
 	mobname = "Steve Smith";
 	name = "Steve Smith"
 	},
@@ -1925,7 +1925,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "fP" = (
-/atom/movable/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Amando Cruz";
 	name = "Amando Cruz"
 	},
@@ -2323,7 +2323,7 @@
 /area/awaymission/labs/researchdivision)
 "gL" = (
 /obj/effect/decal/cleanable/blood,
-/atom/movable/landmark/corpse/scientist{
+/atom/movable/spawner/corpse/scientist{
 	mobname = "James MacDonald";
 	name = "James MacDonald"
 	},
@@ -2571,7 +2571,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "hs" = (
-/atom/movable/landmark/corpse/scientist{
+/atom/movable/spawner/corpse/scientist{
 	mobname = "Mikhail Ruznov";
 	name = "Mikhail Ruznov"
 	},
@@ -6153,7 +6153,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/labs/cave)
 "qd" = (
-/atom/movable/landmark/corpse/chef{
+/atom/movable/spawner/corpse/chef{
 	mobname = "Harold Brown";
 	name = "Harold Brown"
 	},
@@ -7118,7 +7118,7 @@
 /area/awaymission/labs/medical)
 "ta" = (
 /obj/effect/decal/cleanable/blood,
-/atom/movable/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Elias Smith";
 	name = "Elias Smith"
 	},

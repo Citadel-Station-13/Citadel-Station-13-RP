@@ -17,6 +17,7 @@
 	anchored = 1	// Don't get pushed around
 
 /mob/new_player/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
 	GLOB.mob_list += src
 	flags |= INITIALIZED
 	return INITIALIZE_HINT_NORMAL
@@ -322,7 +323,7 @@
 			src << alert("You are currently not whitelisted to play [client.prefs.species].")
 			return 0
 */
-		var/datum/species/S = GLOB.all_species[client.prefs.species]
+		var/datum/species/S = client.prefs.character_static_species_meta()
 		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 			src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
 			return 0
@@ -621,13 +622,13 @@
 	var/use_species_name
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
+		chosen_species = name_static_species_meta(client.prefs.species)
 		use_species_name = chosen_species.get_station_variant()	// Only used by pariahs atm.
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
 		if(is_alien_whitelisted(chosen_species))
-			new_character = new(T, use_species_name)
+			new_character = new(T, species_type_by_name(use_species_name))
 
 	if(!new_character)
 		new_character = new(T)
@@ -712,10 +713,10 @@
 /mob/new_player/proc/has_admin_rights()
 	return check_rights(R_ADMIN, 0, src)
 
-/mob/new_player/get_species()
+/mob/new_player/get_species_name()
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
+		chosen_species = name_static_species_meta(client.prefs.species)
 
 	if(!chosen_species)
 		return SPECIES_HUMAN
@@ -770,7 +771,7 @@
 		to_chat(src,"<span class='warning'>You have not set your scale yet. Do this on the VORE tab in character setup.</span>")
 
 	//Can they play?
-	if(!is_alien_whitelisted(src,GLOB.all_species[client.prefs.species]) && !check_rights(R_ADMIN, 0))
+	if(!is_alien_whitelisted(src, client.prefs.character_static_species_meta()) && !check_rights(R_ADMIN, 0))
 		pass = FALSE
 		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
 

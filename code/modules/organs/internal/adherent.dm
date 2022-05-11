@@ -84,7 +84,7 @@
 	base_action_state = "adherent-pack"
 	maintenance_cost = 0.2
 
-/obj/item/organ/internal/powered/jets/Initialize()
+/obj/item/organ/internal/powered/jets/Initialize(mapload)
 	. = ..()
 	//verbs |= /obj/item/organ/internal/powered/jets/proc/activatej
 
@@ -124,7 +124,7 @@
 	use_descriptor = "hover"
 	base_action_state = "adherent-float"
 
-/obj/item/organ/internal/powered/float/Initialize()
+/obj/item/organ/internal/powered/float/Initialize(mapload)
 	. = ..()
 	//verbs |= /obj/item/organ/internal/powered/float/proc/flying_toggle
 	verbs |= /obj/item/organ/internal/powered/float/proc/hover
@@ -140,7 +140,7 @@
 	organ_tag = O_EYES
 	innate_flash_protection = FLASH_PROTECTION_MAJOR
 
-/obj/item/organ/internal/eyes/adherent/Initialize()
+/obj/item/organ/internal/eyes/adherent/Initialize(mapload)
 	. = ..()
 	verbs |= /obj/item/organ/internal/eyes/proc/change_eye_color
 
@@ -167,7 +167,7 @@
 	var/max_cooling = 10
 	var/target_temp = T20C
 
-/obj/item/organ/internal/powered/cooling_fins/Initialize()
+/obj/item/organ/internal/powered/cooling_fins/Initialize(mapload)
 	. = ..()
 	verbs |= /obj/item/organ/internal/powered/cooling_fins/proc/activatecf
 

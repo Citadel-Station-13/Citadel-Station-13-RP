@@ -23,7 +23,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	push_flags = ~HEAVY
 	swap_flags = ~HEAVY
 	flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
-	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
+	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
 	spawn_flags = SPECIES_CAN_JOIN
 	health_hud_intensity = 2
 	num_alternate_languages = 3

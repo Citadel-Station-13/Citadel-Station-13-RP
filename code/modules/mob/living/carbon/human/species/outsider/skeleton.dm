@@ -12,7 +12,7 @@
 
 	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
 	spawn_flags = SPECIES_IS_RESTRICTED
-	appearance_flags = null
+	species_appearance_flags = null
 
 	show_ssd = null
 

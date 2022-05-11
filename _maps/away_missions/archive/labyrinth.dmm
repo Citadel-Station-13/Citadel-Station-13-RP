@@ -108,14 +108,14 @@
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "av" = (
-/atom/movable/landmark/corpse/scientist,
+/atom/movable/spawner/corpse/scientist,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/labyrinth/temple/north_west)
 "ax" = (
-/atom/movable/landmark/corpse/scientist,
+/atom/movable/spawner/corpse/scientist,
 /obj/effect/decal/cleanable/blood,
 /turf/unsimulated/floor{
 	dir = 8;
@@ -123,7 +123,7 @@
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "ay" = (
-/atom/movable/landmark/corpse/scientist,
+/atom/movable/spawner/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gibmid3"
 	},
@@ -133,7 +133,7 @@
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "az" = (
-/atom/movable/landmark/corpse/scientist,
+/atom/movable/spawner/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor5"
 	},
@@ -161,7 +161,7 @@
 	},
 /area/awaymission/labyrinth/temple/center)
 "aD" = (
-/atom/movable/landmark/corpse/scientist,
+/atom/movable/spawner/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl4"
 	},
@@ -194,7 +194,7 @@
 	},
 /area/awaymission/labyrinth/temple/west)
 "aJ" = (
-/atom/movable/landmark/corpse/scientist,
+/atom/movable/spawner/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl3"
 	},
@@ -238,7 +238,7 @@
 	},
 /area/awaymission/labyrinth/temple/center)
 "aU" = (
-/atom/movable/landmark/corpse/scientist,
+/atom/movable/spawner/corpse/scientist,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
@@ -263,7 +263,7 @@
 	},
 /area/awaymission/labyrinth/temple/south_east)
 "aZ" = (
-/atom/movable/landmark/corpse/scientist,
+/atom/movable/spawner/corpse/scientist,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroidfloor"
@@ -1504,7 +1504,7 @@
 	},
 /area/awaymission/labyrinth/cave)
 "dU" = (
-/atom/movable/landmark/corpse/scientist,
+/atom/movable/spawner/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor5"
 	},
@@ -1559,7 +1559,7 @@
 	},
 /area/awaymission/labyrinth/boss)
 "ea" = (
-/atom/movable/landmark/corpse/scientist,
+/atom/movable/spawner/corpse/scientist,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl1"
 	},

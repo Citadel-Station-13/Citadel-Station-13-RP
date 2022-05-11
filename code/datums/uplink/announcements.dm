@@ -74,7 +74,7 @@
 		general.fields["name"] = user.real_name
 		general.fields["sex"] = capitalize(user.gender)
 
-	general.fields["species"] = user.get_species()
+	general.fields["species"] = user.get_species_name()
 	var/datum/data/record/medical = data_core.CreateMedicalRecord(general.fields["name"], general.fields["id"])
 	data_core.CreateSecurityRecord(general.fields["name"], general.fields["id"])
 
