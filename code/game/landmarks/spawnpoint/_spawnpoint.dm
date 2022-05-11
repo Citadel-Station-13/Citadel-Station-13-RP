@@ -8,8 +8,6 @@
 	var/spawns_left = INFINITY
 	/// Number of spawns currently
 	var/spawned = 0
-	/// Delete post-roundstart
-	var/delete_after_roundstart = FALSE
 	/// Delete on depletion
 	var/delete_after_depleted = FALSE
 	/// Priority - landmark is binary inserted on register/unregister. Lower numbers are higher priority.
