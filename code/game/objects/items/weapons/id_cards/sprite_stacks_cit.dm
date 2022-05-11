@@ -6,7 +6,7 @@
 
 /obj/item/card
 	icon = 'icons/obj/card_cit.dmi' // These are redefined here so that changing sprites is as easy as clicking the checkbox.
-	base_icon = "icons/obj/card_cit.dmi"
+	base_icon = 'icons/obj/card_cit.dmi'
 
 	// New sprite stacks can be defined here. You could theoretically change icon-states as well but right now this file compiles before station_ids.dm so those wouldn't be affected.
 	id
