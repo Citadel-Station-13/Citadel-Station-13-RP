@@ -15,7 +15,7 @@
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 	max_age = 200
 	health_hud_intensity = 2
-	num_alternate_languages = 3
+	num_alternate_languages = 4
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair

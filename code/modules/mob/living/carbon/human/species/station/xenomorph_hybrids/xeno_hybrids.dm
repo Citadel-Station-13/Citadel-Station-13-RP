@@ -6,7 +6,7 @@
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	num_alternate_languages = 2
+	num_alternate_languages = 3
 
 	max_age = 150//Xenomorphs probably get pretty old if not shot dead
 

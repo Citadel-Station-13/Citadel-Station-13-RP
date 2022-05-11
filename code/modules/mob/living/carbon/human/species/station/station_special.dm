@@ -690,7 +690,7 @@
 	brute_mod = 0.8		//20% brute damage reduction
 	burn_mod =  1.15	//15% burn damage increase. They're spiders. Aerosol can+lighter = dead spiders.
 
-	num_alternate_languages = 2
+	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_VESPINAE)
 	color_mult = 1
 	tail = "tail" //Spider tail.
@@ -827,7 +827,7 @@
 	brute_mod = 0.8		//20% brute damage reduction seems fitting to match spiders, due to exoskeletons.
 	burn_mod =  1.15	//15% burn damage increase, the same as spiders. For the same reason.
 
-	num_alternate_languages = 2
+	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_VESPINAE)
 	color_mult = 1
 	tail = "tail" //Bee tail. I've desaturated it for the sprite sheet.

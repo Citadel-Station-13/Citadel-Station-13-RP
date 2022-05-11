@@ -7,7 +7,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/teshari)
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Teshari"
 
-	num_alternate_languages = 3
+	num_alternate_languages = 4
 	secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SCHECHI
 	species_language = LANGUAGE_SCHECHI
