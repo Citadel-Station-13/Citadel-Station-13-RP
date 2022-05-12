@@ -12748,7 +12748,7 @@
 	name = "Engineering Starboard External Access"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor,
 /area/engineering/engineering_airlock)
 "aCC" = (
@@ -13269,7 +13269,7 @@
 	frequency = 1379;
 	id_tag = "eng_starboard_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engineering_airlock)
 "aEb" = (
@@ -13373,7 +13373,7 @@
 	req_one_access = list(13)
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/station/docks)
 "aEq" = (
@@ -13743,8 +13743,8 @@
 	id_tag = "eng_starboard_airlock";
 	pixel_x = 28
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engineering_airlock)
 "aFL" = (
@@ -13800,8 +13800,8 @@
 	frequency = 1380;
 	id_tag = "dock_d1a1_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/station/docks)
 "aFX" = (
@@ -13825,7 +13825,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/station/docks)
 "aFZ" = (
@@ -13917,7 +13917,7 @@
 	name = "Engineering Starboard Internal Access"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engineering_airlock)
 "aHT" = (
@@ -13930,7 +13930,7 @@
 	name = "Engineering Starboard Internal Access"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engineering_airlock)
 "aHY" = (
@@ -17247,7 +17247,7 @@
 	req_one_access = list(13)
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/station/docks)
 "bPx" = (
@@ -17255,7 +17255,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/station/docks)
 "bPz" = (
@@ -17275,8 +17275,8 @@
 	id_tag = "dock_d2a1";
 	pixel_y = 28
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/station/docks)
 "bPD" = (
@@ -17909,11 +17909,11 @@
 	id_tag = "securiship_docker";
 	pixel_x = -28
 	},
-/obj/effect/map_helper/airlock/atmos/pump_out_internal,
+/atom/movable/map_helper/airlock/atmos/pump_out_internal,
 /obj/machinery/airlock_sensor{
 	pixel_y = 28
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space;
@@ -18288,7 +18288,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/shuttle/medivac/general)
 "dgF" = (
@@ -18533,7 +18533,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "dIr" = (
@@ -18668,7 +18668,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "dYK" = (
@@ -20984,8 +20984,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/shuttle/medivac/general)
 "jKd" = (
@@ -21057,7 +21057,7 @@
 	name = "Medivac Bay"
 	},
 /obj/effect/overmap/visitable/ship/landable/medivac,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/shuttle/medivac/general)
 "jNj" = (
@@ -22244,7 +22244,7 @@
 /area/security/checkpoint/science)
 "nhu" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "njI" = (
@@ -23476,7 +23476,7 @@
 "qgS" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "qgW" = (
@@ -23733,7 +23733,7 @@
 /area/shuttle/securiship/general)
 "qUd" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/shuttle/medivac/general)
 "qWf" = (
@@ -23801,12 +23801,12 @@
 /area/engineering/gravity_lobby)
 "rcu" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 4;
 	pixel_y = -28
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/shuttle/securiship/general)
 "rgd" = (
@@ -24471,7 +24471,7 @@
 	id_tag = "medivac_docker_pump_out_external"
 	},
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/effect/map_helper/airlock/atmos/pump_out_external,
+/atom/movable/map_helper/airlock/atmos/pump_out_external,
 /turf/simulated/floor/airless,
 /area/shuttle/medivac/general)
 "sqw" = (
@@ -24845,8 +24845,8 @@
 	frequency = 1380;
 	id_tag = "medivac_docker_pump_out_internal"
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/pump_out_internal,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/pump_out_internal,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/shuttle/medivac/general)
 "tfs" = (
@@ -24887,7 +24887,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/shuttle/securiship/general)
 "tjt" = (
@@ -25436,7 +25436,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -26091,7 +26091,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/atmos/pump_out_external,
+/atom/movable/map_helper/airlock/atmos/pump_out_external,
 /turf/simulated/floor/airless,
 /area/shuttle/securiship/general)
 "vYM" = (
@@ -26374,7 +26374,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/aux,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -26436,7 +26436,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = 28
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/shuttle/securiship/general)
 "wTJ" = (
@@ -26851,7 +26851,7 @@
 "xJU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/shuttle/medivac/general)
 "xMb" = (
@@ -26969,7 +26969,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/shuttle/securiship/general)
 "xTY" = (

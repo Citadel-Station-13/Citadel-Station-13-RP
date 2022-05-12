@@ -194,7 +194,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "aA" = (
@@ -1081,7 +1081,7 @@
 "dq" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "dr" = (
@@ -2506,7 +2506,7 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "hh" = (
@@ -3995,7 +3995,7 @@
 	id = "QMLoad"
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "lo" = (
@@ -4778,7 +4778,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "nn" = (
@@ -7485,7 +7485,7 @@
 	id_tag = "solar_dock";
 	pixel_x = -24
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "uC" = (
@@ -7864,7 +7864,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	frequency = 1380;
 	master_tag = "triumph_annex_dock";
@@ -8724,8 +8724,8 @@
 	frequency = 1380;
 	id_tag = "triumph_annex_dock_pump"
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "yt" = (
@@ -12099,7 +12099,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "In" = (
@@ -12375,7 +12375,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/shield_diffuser,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Bar External Access"
 	},
@@ -14713,7 +14713,7 @@
 "Qh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/firedoor,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Bar Internal Access"
 	},
@@ -14949,7 +14949,7 @@
 	},
 /obj/machinery/shield_diffuser,
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "Rc" = (
@@ -15492,7 +15492,7 @@
 "SA" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/shield_diffuser,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
 	master_tag = "triumph_annex_dock";
@@ -16260,7 +16260,7 @@
 	},
 /obj/machinery/shield_diffuser,
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "UI" = (
@@ -17518,7 +17518,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/shield_diffuser,
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "XK" = (

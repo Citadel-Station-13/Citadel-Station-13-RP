@@ -4336,7 +4336,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_external"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
@@ -5802,7 +5802,7 @@
 /turf/simulated/open,
 /area/tether/exploration)
 "ati" = (
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	pixel_x = 26;
@@ -6351,7 +6351,7 @@
 	name = "EXTERNAL AIRLOCK";
 	pixel_y = -32
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "auM" = (
@@ -6375,8 +6375,8 @@
 	pixel_y = -28
 	},
 /obj/machinery/camera/network/command,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
 "auO" = (
@@ -6391,7 +6391,7 @@
 	pixel_y = -26;
 	req_access = list(18)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "auP" = (
@@ -7047,7 +7047,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_external"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether/exploration;
@@ -9158,8 +9158,8 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
 	},
@@ -10209,7 +10209,7 @@
 	id_tag = "expshuttle_docker";
 	pixel_y = 28
 	},
-/obj/effect/map_helper/airlock/atmos/pump_out_internal,
+/atom/movable/map_helper/airlock/atmos/pump_out_internal,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
@@ -10503,7 +10503,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_core_foyer)
 "aMZ" = (
-/obj/effect/map_helper/airlock/atmos/pump_out_external,
+/atom/movable/map_helper/airlock/atmos/pump_out_external,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "sec_fore_pump"
@@ -10882,8 +10882,8 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = 28
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/pump_out_internal,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/pump_out_internal,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
@@ -11063,7 +11063,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_external"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
 	},
@@ -13876,7 +13876,7 @@
 /area/shuttle/large_escape_pod1)
 "aYI" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/floor,
 /area/shuttle/large_escape_pod1)
 "aYM" = (
@@ -14634,7 +14634,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "bUK" = (
@@ -15017,7 +15017,7 @@
 /area/tether/station/dock_one)
 "cQI" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "cRn" = (
@@ -15443,11 +15443,11 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "dGA" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	pixel_y = 28
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1379;
@@ -15856,7 +15856,7 @@
 	req_one_access = list(13)
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "ejm" = (
@@ -17929,7 +17929,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
 "hMg" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1379;
@@ -18092,8 +18092,8 @@
 	frequency = 1380;
 	id_tag = "dock_d2a_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "hZK" = (
@@ -18363,7 +18363,7 @@
 	dir = 4;
 	id = "QMLoad2"
 	},
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "iAx" = (
@@ -18800,7 +18800,7 @@
 /area/crew_quarters/sleep/spacedorm1)
 "jpv" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/monofloor{
 	dir = 8
@@ -19137,7 +19137,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "jSo" = (
@@ -19875,7 +19875,7 @@
 /area/tether/station/burial)
 "lfm" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
@@ -19939,7 +19939,7 @@
 "lms" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "loC" = (
@@ -19991,7 +19991,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "lvY" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "belter_access_pump"
@@ -20042,7 +20042,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "lGU" = (
@@ -20393,7 +20393,7 @@
 	req_one_access = list(13)
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "mnz" = (
@@ -20475,13 +20475,13 @@
 	id_tag = "dock_d2r";
 	pixel_y = 28
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "mCB" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "mDI" = (
@@ -21680,7 +21680,7 @@
 	req_access = list(13)
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "ozR" = (
@@ -22111,7 +22111,7 @@
 	dir = 4;
 	id = "QMLoad"
 	},
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "pdh" = (
@@ -22333,8 +22333,8 @@
 	id_tag = "dock_cshutt";
 	pixel_y = 28
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "pyf" = (
@@ -23129,7 +23129,7 @@
 /area/tether/exploration/pilot_office)
 "qOb" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
@@ -23454,7 +23454,7 @@
 	frequency = 1380;
 	id_tag = "dock_d1l_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "ruj" = (
@@ -23533,7 +23533,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
 "rDG" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -23727,8 +23727,8 @@
 	pixel_x = 30;
 	pixel_y = 8
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "rSM" = (
@@ -23752,7 +23752,7 @@
 	req_one_access = list(13)
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "rYs" = (
@@ -24152,8 +24152,8 @@
 	id_tag = "dock_d2b";
 	pixel_y = 28
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "sRw" = (
@@ -25778,7 +25778,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "vLQ" = (
@@ -25836,7 +25836,7 @@
 	req_one_access = list(13)
 	},
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "vSZ" = (
@@ -26566,7 +26566,7 @@
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
 "xjm" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	id_tag = "belter_access_airlock";
 	pixel_y = 28
@@ -27156,7 +27156,7 @@
 /area/maintenance/station/cargo)
 "yht" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
