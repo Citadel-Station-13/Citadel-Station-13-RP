@@ -45,7 +45,29 @@ GLOBAL_VAR_INIT(sound_pressure_environment, FALSE)
 GLOBAL_VAR_INIT(sound_offscreen_falloff_factor, 5)
 GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, channel = 0, pressure_affected = TRUE, sound/S, preference, envwet, envdry, manual_x, manual_y, distance_multiplier = 1)
+/mob/proc/playsound_local(
+		turf/turf_source,
+		soundin,
+		vol,
+		vary,
+		frequency,
+		falloff,
+		is_global,
+		channel = 0,
+		pressure_affected = TRUE,
+		sound/S, preference,
+		envwet,
+		envdry,
+		manual_x,
+		manual_y,
+		distance_multiplier = 1
+		wait = FALSE
+	) {
+	/**
+	 * Yes, this proc is insane. I hate it too. There's nothing we can do about it unless someone wants to go through the work of splitting this proc up.
+	 * We'll do that later, I promise.
+	 */
+
 	if(!client)
 		return
 
@@ -73,7 +95,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 	if(!S)
 		S = sound(get_sfx(soundin))
 
-	S.wait = 0 //No queue
+	S.wait = wait
 	S.channel = channel || SSsounds.random_available_channel()
 	S.volume = vol
 	// TG EDIT
@@ -148,6 +170,8 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 		S.falloff = (falloff ? falloff : FALLOFF_SOUNDS)
 
 	SEND_SOUND(src, S)
+
+}
 
 /proc/sound_to_playing_players(sound, volume = 100, vary)
 	sound = get_sfx(sound)

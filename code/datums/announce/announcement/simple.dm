@@ -60,8 +60,8 @@
 	var/channel = ReserveSoundChannelFor(delay || (15 SECONDS))
 	// get affected first so the announcer doesn't recheck 3 times
 	var/list/affected = announcer.GetAffected()
-	if(premable)
+	if(sound_preamble)
 		announcer.SendSound(sound_preamble, channel, affected, sound_volume, sound_allow_environment)
-	if(main)
+	if(sound_main)
 		addtimer(CALLBACK(announcer, /datum/announcer/proc/SendSound, sound_main, channel, affected, sound_volume, sound_allow_environment), delay)
 	addtimer(CALLBACK(announcer, /datum/announcer/proc/SendText, source, name, message, affected), delay)

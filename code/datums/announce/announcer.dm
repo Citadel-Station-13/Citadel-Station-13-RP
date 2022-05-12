@@ -47,5 +47,5 @@
 	if(!istype(S))
 		CRASH("Invalid sound [S] passed in. Ensure sounds are preprocessed before sending into announcers.")
 	for(var/mob/M in affected)
-		M.playsound_local(turf_source = sound_environment? get_turf(M) : null, soundin = S, channel = channel, volume = volume)
+		M.playsound_local(turf_source = sound_environment? get_turf(M) : null, soundin = S, channel = channel, vol = volume, wait = FALSE)
 
