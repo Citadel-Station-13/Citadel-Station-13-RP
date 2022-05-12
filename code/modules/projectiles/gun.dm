@@ -838,7 +838,7 @@
 	if(user)
 		user.visible_message(
 			SPAN_WARNING("[user] switches the safety of \the [src] [current ? "off" : "on"]."),
-			SPAN_NOTICE("You switch the safety of \the [src] [current ? "off" : "on"].")
+			SPAN_NOTICE("You switch the safety of \the [src] [current ? "off" : "on"]."),
 			SPAN_WARNING("You hear a switch being clicked."),
 			MESSAGE_RANGE_COMBAT_SUBTLE
 		)
