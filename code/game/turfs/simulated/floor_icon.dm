@@ -11,10 +11,6 @@ var/image/no_ceiling_image = null
 	no_ceiling_image.plane = PLANE_MESONS
 
 /turf/simulated/floor/update_icon(var/update_neighbors)
-
-	if(lava)
-		return
-
 	cut_overlays()
 
 	if(flooring)
@@ -95,7 +91,7 @@ var/image/no_ceiling_image = null
 		add_overlay(no_ceiling_image)
 
 	// Update our 'them-to-us' edges, aka edges from external turfs we feel should spill onto us
-	if(edge_blending_priority && !forbid_turf_edge())
+	if(edge_blending_priority)
 		update_icon_edge()
 
 // This updates an edge from an adjacent turf onto us, not our own 'internal' edges.
@@ -109,7 +105,7 @@ var/image/no_ceiling_image = null
 		// Has to have a higher priority than us
 		// Their icon_state is not our icon_state
 		// They don't forbid_turf_edge
-		if(istype(T) && T.edge_blending_priority && edge_blending_priority < T.edge_blending_priority && icon_state != T.icon_state && !T.forbid_turf_edge())
+		if(istype(T) && T.edge_blending_priority && edge_blending_priority < T.edge_blending_priority && icon_state != T.icon_state)
 			var/cache_key = "[T.get_edge_icon_state()]-[checkdir]" // Usually [icon_state]-[dirnum]
 			if(!turf_edge_cache[cache_key])
 				var/image/I = image(icon = 'icons/turf/outdoors_edge.dmi', icon_state = "[T.get_edge_icon_state()]-edge", dir = checkdir, layer = ABOVE_TURF_LAYER) // Icon should be abstracted out
@@ -123,11 +119,14 @@ var/image/no_ceiling_image = null
 
 // Tests if we shouldn't apply a turf edge.
 // Returns the blocker if one exists.
+/*
 /turf/simulated/proc/forbid_turf_edge()
 	for(var/obj/structure/S in contents)
 		if(S.block_turf_edges)
 			return S
 	return null
+*/
+// wip - turf icon stuff needs to be refactored
 
 //Tests whether this flooring will smooth with the specified turf
 //You can override this if you want a flooring to have super special snowflake smoothing behaviour

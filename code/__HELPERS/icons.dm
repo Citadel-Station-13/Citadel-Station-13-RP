@@ -316,6 +316,10 @@ world
 		Higher value means brighter color
  */
 
+/**
+ * reads RGB or RGBA values to list
+ * @return list(r, g, b) or list(r, g, b, a), values 0 to 255.
+ */
 /proc/ReadRGB(rgb)
 	if(!rgb)
 		return

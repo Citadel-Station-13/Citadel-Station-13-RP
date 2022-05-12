@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Box, LabeledList, ProgressBar, Section, Icon, Table } from '../components';
+import { Button, LabeledList, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
 import { filter } from 'common/collections';
 import { Fragment } from 'inferno';

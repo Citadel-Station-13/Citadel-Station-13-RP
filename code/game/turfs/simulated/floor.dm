@@ -32,7 +32,6 @@
 
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
-	var/lava = 0
 
 /turf/simulated/floor/is_plating()
 	return !flooring
@@ -45,7 +44,7 @@
 		set_flooring(get_flooring_data(floortype))
 	else
 		footstep_sounds = base_footstep_sounds
-	if(can_dirty && can_start_dirty)
+	if(mapload && can_dirty && can_start_dirty)
 		if(prob(dirty_prob))
 			dirt += rand(50,100)
 			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
@@ -143,7 +142,7 @@
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
 			to_chat(user, SPAN_NOTICE("You build a wall."))
-			ChangeTurf(/turf/simulated/wall)
+			PlaceOnTop(/turf/simulated/wall)
 			var/turf/simulated/wall/T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
@@ -166,5 +165,5 @@
 			return TRUE
 		if(RCD_DECONSTRUCT)
 			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
-			ChangeTurf(get_base_turf_by_area(src), preserve_outdoors = TRUE)
+			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 			return TRUE

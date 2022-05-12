@@ -84,4 +84,15 @@ SUBSYSTEM_DEF(server_maint)
 		SSblackbox.record_feedback("text", "server_tools", 1, tgsversion)
 */
 
+/datum/controller/subsystem/server_maint/proc/UpdateHubStatus()
+	if(!CONFIG_GET(flag/hub) || !CONFIG_GET(number/max_hub_pop))
+		return FALSE //no point, hub / auto hub controls are disabled
+
+	var/max_pop = CONFIG_GET(number/max_hub_pop)
+
+	if(GLOB.clients.len > max_pop)
+		world.update_hub_visibility(FALSE)
+	else
+		world.update_hub_visibility(TRUE)
+
 #undef PING_BUFFER_TIME

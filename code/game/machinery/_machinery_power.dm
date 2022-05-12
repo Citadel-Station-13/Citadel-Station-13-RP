@@ -71,7 +71,7 @@
 	return 0
 
 // Do not do power stuff in New/Initialize until after ..()
-/obj/machinery/Initialize()
+/obj/machinery/Initialize(mapload)
 	. = ..()
 	var/power = POWER_CONSUMPTION
 	REPORT_POWER_CONSUMPTION_CHANGE(0, power)

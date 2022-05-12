@@ -364,7 +364,7 @@ proc/is_blind(A)
  * ignore_key, ignore_dnr_observers will NOT work!
  */
 /proc/notify_ghosts(message, ghost_sound, enter_link, atom/source, mutable_appearance/alert_overlay, action = NOTIFY_JUMP, flashwindow = TRUE, ignore_mapload = TRUE, ignore_key, ignore_dnr_observers = FALSE, header) //Easy notification of ghosts.
-	if(ignore_mapload && SSatoms.subsystem_initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
+	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
 		return
 	for(var/mob/observer/dead/O in player_list)
 		if(!O.client)

@@ -18,7 +18,7 @@
 
 	var/reagent_type = "water"
 
-/turf/simulated/floor/water/Initialize()
+/turf/simulated/floor/water/Initialize(mapload)
 	. = ..()
 	var/decl/flooring/F = get_flooring_data(/decl/flooring/water)
 	footstep_sounds = F?.footstep_sounds
@@ -219,18 +219,12 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	depth = 4
 	layer = WATER_FLOOR_LAYER
 
-/turf/simulated/floor/water/acid/Initialize(mapload)
-	. = ..()
-	update_icon()
-
 /turf/simulated/floor/water/acid/update_icon()
 	..() // To get the edges.
 
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
 	var/image/acid_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = acid_state, layer = WATER_LAYER)
 	add_overlay(acid_sprite)
-
-	update_icon_edge()
 
 /turf/simulated/floor/water/acid/get_edge_icon_state()
 	return "acid_shallow"
@@ -340,17 +334,11 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	layer = WATER_FLOOR_LAYER
 	depth = 6
 
-/turf/simulated/floor/water/blood/Initialize(mapload)
-	. = ..()
-	update_icon()
-
 /turf/simulated/floor/water/blood/update_icon()
 	..()
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
 	var/image/blood_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = blood_state, layer = WATER_LAYER)
 	add_overlay(blood_sprite)
-
-	update_icon_edge()
 
 /turf/simulated/floor/water/blood/get_edge_icon_state()
 	return "acidb_shallow"

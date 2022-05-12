@@ -88,10 +88,10 @@
 			if(!(path in negative_traits))
 				pref.neg_traits -= path
 
-	var/datum/species/selected_species = GLOB.all_species[pref.species]
+	var/datum/species/selected_species = pref.character_static_species_meta()
 	if(selected_species.selects_bodytype)
 		// Allowed!
-	else if(!pref.custom_base || !(pref.custom_base in custom_species_bases))
+	else if(!pref.custom_base || !(pref.custom_base in GLOB.custom_species_bases))
 		pref.custom_base = SPECIES_HUMAN
 
 	pref.custom_say = lowertext(trim(pref.custom_say))
@@ -105,25 +105,25 @@
 	character.custom_ask		= lowertext(trim(pref.custom_ask))
 	character.custom_whisper	= lowertext(trim(pref.custom_whisper))
 	character.custom_exclaim	= lowertext(trim(pref.custom_exclaim))
-	var/datum/species/selected_species = GLOB.all_species[pref.species]
+	var/datum/species/selected_species = pref.character_static_species_meta()
 	if(selected_species.selects_bodytype)
 		var/datum/species/custom/CS = character.species
 		var/S = pref.custom_base ? pref.custom_base : SPECIES_HUMAN
-		var/datum/species/custom/new_CS = CS.produceCopy(S, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
+		CS.copy_from(S, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
 
 		//Any additional non-trait settings can be applied here
-		new_CS.blood_color = pref.blood_color
+		CS.blood_color = pref.blood_color
 
 		if(pref.species == SPECIES_CUSTOM)
 			//Statistics for this would be nice
-			var/english_traits = english_list(new_CS.traits, and_text = ";", comma_text = ";")
+			var/english_traits = english_list(CS.traits, and_text = ";", comma_text = ";")
 			log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
 
 /datum/category_item/player_setup_item/vore/traits/content(var/mob/user)
 	. += "<b>Custom Species Name:</b> "
 	. += "<a href='?src=\ref[src];custom_species=1'>[pref.custom_species ? pref.custom_species : "-Input Name-"]</a><br>"
 
-	var/datum/species/selected_species = GLOB.all_species[pref.species]
+	var/datum/species/selected_species = pref.character_static_species_meta()
 	if(selected_species.selects_bodytype)
 		. += "<b>Icon Base: </b> "
 		. += "<a href='?src=\ref[src];custom_base=1'>[pref.custom_base ? pref.custom_base : SPECIES_HUMAN]</a><br>"
@@ -192,7 +192,7 @@
 		return TOPIC_REFRESH
 
 	else if(href_list["custom_base"])
-		var/list/choices = custom_species_bases
+		var/list/choices = GLOB.custom_species_bases
 		if(pref.species != SPECIES_CUSTOM)
 			choices = (choices | pref.species)
 		var/text_choice = input("Pick an icon set for your species:","Icon Base") in choices

@@ -17,6 +17,7 @@
 	anchored = 1	// Don't get pushed around
 
 /mob/new_player/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
 	GLOB.mob_list += src
 	flags |= INITIALIZED
 	return INITIALIZE_HINT_NORMAL
@@ -256,12 +257,12 @@
 
 			observer.started_as_observer = 1
 			close_spawn_windows()
-			var/obj/O = locate("landmark*Observer-Start")
-			if(istype(O))
-				to_chat(src,"<span class='notice'>Now teleporting.</span>")
-				observer.forceMove(O.loc)
+			var/atom/movable/landmark/L = pick_landmark_by_key(/atom/movable/landmark/observer_spawn)
+			if(L)
+				to_chat(src, SPAN_NOTICE("Now teleporting."))
+				observer.forceMove(L.loc)
 			else
-				to_chat(src,"<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>")
+				to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
 
 			announce_ghost_joinleave(src)
 
@@ -322,7 +323,7 @@
 			src << alert("You are currently not whitelisted to play [client.prefs.species].")
 			return 0
 */
-		var/datum/species/S = GLOB.all_species[client.prefs.species]
+		var/datum/species/S = client.prefs.character_static_species_meta()
 		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 			src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
 			return 0
@@ -504,11 +505,10 @@
 
 	//Find our spawning point.
 	var/list/join_props = job_master.LateSpawn(client, rank)
-	var/turf/T = join_props["turf"]
-	var/join_message = join_props["msg"]
+	var/atom/movable/landmark/spawnpoint/SP = join_props["spawnpoint"]
 	var/announce_channel = join_props["channel"] || "Common"
 
-	if(!T || !join_message)
+	if(!SP)
 		return 0
 
 	spawning = 1
@@ -516,10 +516,11 @@
 
 	job_master.AssignRole(src, rank, 1)
 
-	var/mob/living/character = create_character(T)		// Creates the human and transfers vars and mind
+	var/mob/living/character = create_character(SP.GetSpawnLoc())		// Creates the human and transfers vars and mind
+	SP.OnSpawn(character)
 	//Announces Cyborgs early, because that is the only way it works
 	if(character.mind.assigned_role == "Cyborg")
-		AnnounceCyborg(character, rank, join_message, announce_channel, character.z)
+		AnnounceCyborg(character, rank, SP.RenderAnnounceMessage(character, name = character.name, job_name = character.mind.role_alt_title || rank), announce_channel, character.z)
 	character = job_master.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
 
@@ -559,8 +560,7 @@
 
 		//Grab some data from the character prefs for use in random news procs.
 
-		AnnounceArrival(character, rank, join_message)
-
+		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (character.mind.role_alt_title || rank)))
 
 	qdel(src)
 
@@ -569,7 +569,7 @@
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
-		GLOB.global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
+		GLOB.global_announcer.autosay("A new [rank] has arrived on the station.", "Arrivals Announcement Computer")
 
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
@@ -622,13 +622,13 @@
 	var/use_species_name
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
+		chosen_species = name_static_species_meta(client.prefs.species)
 		use_species_name = chosen_species.get_station_variant()	// Only used by pariahs atm.
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
 		if(is_alien_whitelisted(chosen_species))
-			new_character = new(T, use_species_name)
+			new_character = new(T, species_type_by_name(use_species_name))
 
 	if(!new_character)
 		new_character = new(T)
@@ -713,10 +713,10 @@
 /mob/new_player/proc/has_admin_rights()
 	return check_rights(R_ADMIN, 0, src)
 
-/mob/new_player/get_species()
+/mob/new_player/get_species_name()
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
+		chosen_species = name_static_species_meta(client.prefs.species)
 
 	if(!chosen_species)
 		return SPECIES_HUMAN
@@ -771,7 +771,7 @@
 		to_chat(src,"<span class='warning'>You have not set your scale yet. Do this on the VORE tab in character setup.</span>")
 
 	//Can they play?
-	if(!is_alien_whitelisted(src,GLOB.all_species[client.prefs.species]) && !check_rights(R_ADMIN, 0))
+	if(!is_alien_whitelisted(src, client.prefs.character_static_species_meta()) && !check_rights(R_ADMIN, 0))
 		pass = FALSE
 		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
 

@@ -6,7 +6,6 @@ var/global/list/map_sectors = list()
 	icon_state = "start"
 	requires_power = 0
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
-	base_turf = /turf/unsimulated/map
 
 /turf/unsimulated/map
 	icon = 'icons/turf/space.dmi'
@@ -19,7 +18,7 @@ var/global/list/map_sectors = list()
 	var/map_is_to_my
 	var/turf/unsimulated/map/edge/wrap_buddy
 
-/turf/unsimulated/map/edge/Initialize()
+/turf/unsimulated/map/edge/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -50,7 +49,7 @@ var/global/list/map_sectors = list()
 	else
 		. = ..()
 
-/turf/unsimulated/map/Initialize()
+/turf/unsimulated/map/Initialize(mapload)
 	. = ..()
 	name = "[x]-[y]"
 	var/list/numbers = list()
@@ -77,7 +76,6 @@ var/global/list/map_sectors = list()
 		if(x == GLOB.using_map.overmap_size)
 			I.pixel_x = 5*i + 2
 		add_overlay(I)
-	AddElement(/datum/element/turf_z_transparency)
 
 /turf/unsimulated/map/Entered(var/atom/movable/O, var/atom/oldloc)
 	..()

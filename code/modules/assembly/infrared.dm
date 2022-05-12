@@ -219,6 +219,7 @@
 	var/propagate = 0
 
 /obj/effect/beam/i_beam/Initialize(mapload, _master, _propagate, _visible, _prev)
+	. = ..()
 	if(_propagate)
 		src.propagate = min(100, _propagate)
 	if(_master)

@@ -1773,7 +1773,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "fx" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor{
@@ -1890,7 +1890,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "fL" = (
-/obj/effect/landmark/corpse/scientist{
+/atom/movable/spawner/corpse/scientist{
 	mobname = "Steve Smith";
 	name = "Steve Smith"
 	},
@@ -1925,7 +1925,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "fP" = (
-/obj/effect/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Amando Cruz";
 	name = "Amando Cruz"
 	},
@@ -2323,7 +2323,7 @@
 /area/awaymission/labs/researchdivision)
 "gL" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpse/scientist{
+/atom/movable/spawner/corpse/scientist{
 	mobname = "James MacDonald";
 	name = "James MacDonald"
 	},
@@ -2571,7 +2571,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "hs" = (
-/obj/effect/landmark/corpse/scientist{
+/atom/movable/spawner/corpse/scientist{
 	mobname = "Mikhail Ruznov";
 	name = "Mikhail Ruznov"
 	},
@@ -3221,7 +3221,7 @@
 	},
 /area/awaymission/labs/command)
 "iW" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -3562,7 +3562,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "jK" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,
@@ -4781,7 +4781,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "mz" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,
@@ -4873,7 +4873,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "mL" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -6153,7 +6153,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/labs/cave)
 "qd" = (
-/obj/effect/landmark/corpse/chef{
+/atom/movable/spawner/corpse/chef{
 	mobname = "Harold Brown";
 	name = "Harold Brown"
 	},
@@ -6788,7 +6788,7 @@
 	},
 /area/awaymission/labs/civilian)
 "rU" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor{
@@ -7118,7 +7118,7 @@
 /area/awaymission/labs/medical)
 "ta" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Elias Smith";
 	name = "Elias Smith"
 	},

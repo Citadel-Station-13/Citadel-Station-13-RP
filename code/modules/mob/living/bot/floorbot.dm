@@ -393,7 +393,7 @@
 			B.skin = "gold"
 		else if(istype(src, /obj/item/storage/toolbox/syndicate))
 			B.skin = "syndicate"
-		else if(istype(src, /obj/item/storage/toolbox/surgery))
+		else if(istype(src, /obj/item/storage/firstaid/surgery))
 			B.skin = "surgerykit"
 		user.put_in_hands(B)
 		to_chat(user, SPAN_NOTICE("You add the tiles into the empty toolbox. They protrude from the top."))

@@ -1,7 +1,5 @@
 /mob/living/Initialize(mapload)
 	. = ..()
-	//Prime this list if we need it.
-	prepare_huds()
 
 	//I'll just hang my coat up over here
 	dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
@@ -28,8 +26,9 @@
 				qdel(S)
 			else
 				S.be_replaced()
-	dsoverlay.loc = null //I'll take my coat with me
-	dsoverlay = null
+	if(dsoverlay)
+		dsoverlay.loc = null
+		dsoverlay = null
 	if(nest) //Ew.
 		if(istype(nest, /obj/structure/prop/nest))
 			var/obj/structure/prop/nest/N = nest

@@ -101,7 +101,7 @@
 			if(HUD_LIST_LIST)
 				hud_list[hud] = list()
 			else
-				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/hud/atom_hud/misc.dmi', src, "")
+				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/screen/atom_hud/misc.dmi', src, "")
 				I.plane = FLOAT_PLANE
 				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
@@ -554,36 +554,6 @@
 	set desc = "Return to the lobby."
 	return abandon_mob()
 
-/client/verb/changes()
-	set name = "Changelog"
-	set category = "OOC"
-	getFiles(
-		'html/88x31.png',
-		'html/bug-minus.png',
-		'html/cross-circle.png',
-		'html/hard-hat-exclamation.png',
-		'html/image-minus.png',
-		'html/image-plus.png',
-		'html/map-pencil.png',
-		'html/music-minus.png',
-		'html/music-plus.png',
-		'html/tick-circle.png',
-		'html/wrench-screwdriver.png',
-		'html/spell-check.png',
-		'html/burn-exclamation.png',
-		'html/chevron.png',
-		'html/chevron-expand.png',
-		'html/changelog.css',
-		'html/changelog.js',
-		'html/changelog.html'
-		)
-	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != GLOB.changelog_hash)
-		prefs.lastchangelog = GLOB.changelog_hash
-		SScharacter_setup.queue_preferences_save(prefs)
-		prefs.save_preferences()
-		winset(src, "infowindow.changelog", "background-color=none;font-style=;")
-
 /mob/verb/observe()
 	set name = "Observe"
 	set category = "OOC"
@@ -725,7 +695,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/is_mechanical()
 	if(mind && (mind.assigned_role == "Cyborg" || mind.assigned_role == "AI"))
 		return 1
-	return istype(src, /mob/living/silicon) || get_species() == "Machine"
+	return istype(src, /mob/living/silicon) || get_species_name() == "Machine"
 
 /mob/proc/is_ready()
 	return client && !!mind
@@ -952,7 +922,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/SetLosebreath(amount)
 	losebreath = clamp(0, amount, 25)
 
-/mob/proc/get_species()
+/mob/proc/get_species_name()
 	return ""
 
 /mob/proc/flash_weak_pain()

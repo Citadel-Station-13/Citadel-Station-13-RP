@@ -813,7 +813,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/wood,
@@ -847,7 +847,7 @@
 /area/tether/surfacebase/medical/triage)
 "abp" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
@@ -1028,7 +1028,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/upperhall)
 "abF" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/structure/cable/green{
@@ -2138,9 +2138,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/atom/movable/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officea)
 "adl" = (
@@ -3108,9 +3106,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "aeD" = (
@@ -3688,7 +3684,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/upperhall)
 "afw" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -3731,9 +3727,7 @@
 "afz" = (
 /obj/structure/bed/chair/office/light,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lobby)
 "afA" = (
@@ -4643,7 +4637,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
 "agU" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -5023,9 +5017,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
 "ahz" = (
@@ -5458,9 +5450,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/medsec_maintenance)
 "aie" = (
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "aif" = (
@@ -5876,9 +5866,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
@@ -8729,7 +8717,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/panic_shelter)
 "aog" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
@@ -11120,9 +11108,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "asy" = (
@@ -11535,9 +11521,7 @@
 /area/hydroponics)
 "atp" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "atq" = (
@@ -11664,9 +11648,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "atD" = (
@@ -12281,9 +12263,7 @@
 /area/hydroponics)
 "auP" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/start{
-	name = "Xenobotanist"
-	},
+/atom/movable/landmark/spawnpoint/job/xenobotanist,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "auQ" = (
@@ -12844,9 +12824,7 @@
 	dir = 4
 	},
 /obj/machinery/hologram/holopad,
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "avW" = (
@@ -14488,9 +14466,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
+/atom/movable/landmark/spawnpoint/job/librarian,
 /turf/simulated/floor/carpet,
 /area/library)
 "ayK" = (
@@ -14798,9 +14774,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
+/atom/movable/landmark/spawnpoint/job/librarian,
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
@@ -18285,9 +18259,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
+/atom/movable/landmark/spawnpoint/job/librarian,
 /turf/simulated/floor/carpet,
 /area/library)
 "aFv" = (
@@ -18630,9 +18602,7 @@
 	pixel_y = 10
 	},
 /obj/item/stool/padded,
-/obj/effect/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
 "aFZ" = (
@@ -20096,9 +20066,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "aIv" = (
@@ -21427,9 +21395,7 @@
 /area/hydroponics)
 "aLc" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/effect/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aLd" = (
@@ -23301,9 +23267,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Facility Director"
-	},
+/atom/movable/landmark/spawnpoint/job/captain,
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
 	id = "cap_office";
@@ -23463,9 +23427,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Xenobiologist"
-	},
+/atom/movable/landmark/spawnpoint/job/xenobiologist,
 /obj/machinery/button/remote/blast_door{
 	id = "xenobiolockdown";
 	name = "Xenobiology Lockdown Control";
@@ -23481,9 +23443,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/outpost/xenobiology/outpost_office)
 "aPz" = (
-/obj/effect/landmark/start{
-	name = "Xenobiologist"
-	},
+/atom/movable/landmark/spawnpoint/job/xenobiologist,
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
@@ -23994,9 +23954,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Xenobiologist"
-	},
+/atom/movable/landmark/spawnpoint/job/xenobiologist,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/xenobiology/outpost_office)
 "aQJ" = (
@@ -24762,9 +24720,7 @@
 /area/tether/surfacebase/medical/admin)
 "aSo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/storage)
 "aSp" = (
@@ -24841,7 +24797,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_main)
 "aSu" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "droppod_landing"
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -24939,9 +24895,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/storage)
 "aSH" = (
@@ -25076,7 +25030,7 @@
 /area/tether/surfacebase/security/upperhall)
 "aST" = (
 /obj/machinery/hologram/holopad,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -26017,7 +25971,7 @@
 /area/tether/surfacebase/medical/surgery2)
 "aUH" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
@@ -26213,9 +26167,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
 "aVc" = (
-/obj/effect/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/storage)
 "aVd" = (
@@ -26271,9 +26223,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Chemist"
-	},
+/atom/movable/landmark/spawnpoint/job/chemist,
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	dir = 1;
@@ -26771,9 +26721,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/tourbus/general)
 "aWd" = (
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/storage)
 "aWe" = (
@@ -28165,7 +28113,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/structure/cable/green{
@@ -28437,13 +28385,11 @@
 /area/maintenance/commandmaint)
 "aYW" = (
 /obj/structure/bed/chair/comfy/brown,
-/obj/effect/landmark/start{
-	name = "Head of Personnel"
-	},
+/atom/movable/landmark/spawnpoint/job/head_of_personnel,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "aYX" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -30806,9 +30752,7 @@
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/stage)
 "bcY" = (
-/obj/effect/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
@@ -31115,9 +31059,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Botanist"
-	},
+/atom/movable/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "bdD" = (
@@ -31467,9 +31409,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "bew" = (
@@ -31546,9 +31486,7 @@
 /area/hallway/lower/third_south)
 "beC" = (
 /obj/structure/table/bench/standard,
-/obj/effect/landmark/start{
-	name = "Botanist"
-	},
+/atom/movable/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "beD" = (
@@ -31713,9 +31651,7 @@
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/stage)
 "beS" = (
-/obj/effect/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /obj/structure/bed/chair/wood,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
@@ -31819,7 +31755,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/shuttle_pad)
 "bfi" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -32190,9 +32126,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/hydroponics)
 "bgd" = (
-/obj/effect/landmark{
-	name = "Observer-Start"
-	},
+/atom/movable/landmark/observer_spawn,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -32387,9 +32321,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Entertainer"
-	},
+/atom/movable/landmark/spawnpoint/job/entertainer,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "bgw" = (
@@ -32843,7 +32775,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/structure/cable/orange{
@@ -32974,7 +32906,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/plating,
@@ -34058,9 +33990,7 @@
 /area/rnd/robotics)
 "bku" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "bkv" = (
@@ -34310,9 +34240,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Roboticist"
-	},
+/atom/movable/landmark/spawnpoint/job/roboticist,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/resleeving)
 "blb" = (
@@ -34569,7 +34497,7 @@
 /area/tether/surfacebase/medical/triage)
 "blM" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
@@ -34616,9 +34544,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "blS" = (
@@ -34647,9 +34573,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "blW" = (
@@ -34948,9 +34872,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -34981,9 +34903,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -35303,9 +35223,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Chemist"
-	},
+/atom/movable/landmark/spawnpoint/job/chemist,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -36202,9 +36120,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /obj/machinery/button/windowtint/multitint{
 	id = "sec_processing";
 	pixel_x = 26;
@@ -37764,9 +37680,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/security/breakroom)
 "hEN" = (
@@ -38172,9 +38086,7 @@
 /area/shuttle/tourbus/general)
 "iQr" = (
 /obj/machinery/hologram/holopad,
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "iRe" = (
@@ -40462,7 +40374,7 @@
 /area/crew_quarters/recreation_area)
 "oTu" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/paper{
 	desc = "";
 	info = "Stop installing NIFs in here you clods! Unless it's on a synth. Otherwise, STOP DOING IT! You're killing people! -Management";
@@ -40514,9 +40426,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/southhall)
 "oWD" = (
-/obj/effect/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
@@ -40841,9 +40751,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/security/breakroom)
 "pKr" = (
@@ -41311,9 +41219,7 @@
 	pixel_y = -33;
 	req_access = list(2)
 	},
-/obj/effect/landmark/start{
-	name = "Head of Security"
-	},
+/atom/movable/landmark/spawnpoint/job/head_of_security,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
@@ -41463,7 +41369,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -41747,9 +41653,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "soZ" = (
@@ -42363,9 +42267,7 @@
 	pixel_x = -25;
 	pixel_y = 7
 	},
-/obj/effect/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/atom/movable/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officeb)
 "tOz" = (
@@ -43585,9 +43487,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
 "wKZ" = (
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/bed/chair/office/light,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
@@ -43886,9 +43786,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "xog" = (
-/obj/effect/landmark/start{
-	name = "Chemist"
-	},
+/atom/movable/landmark/spawnpoint/job/chemist,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
@@ -44144,9 +44042,7 @@
 	pixel_x = 24
 	},
 /obj/structure/bed/chair/comfy/beige,
-/obj/effect/landmark/start{
-	name = "Bartender"
-	},
+/atom/movable/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
 "xOa" = (

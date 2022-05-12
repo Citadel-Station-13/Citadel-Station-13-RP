@@ -311,9 +311,7 @@
 "fb" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hopdouble,
-/obj/effect/landmark/start{
-	name = "Talon Captain"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_captain,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/talon/decktwo/cap_room)
 "fg" = (
@@ -1130,9 +1128,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/effect/landmark/start{
-	name = "Talon Guard"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_guard,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
 "mE" = (
@@ -1345,9 +1341,7 @@
 /area/talon/decktwo/lifeboat)
 "oL" = (
 /obj/item/stool/padded,
-/obj/effect/landmark/start{
-	name = "Talon Captain"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_captain,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/bar)
 "oO" = (
@@ -1411,9 +1405,7 @@
 	dir = 4;
 	pixel_x = 26
 	},
-/obj/effect/landmark/start{
-	name = "Talon Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_engineer,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "pr" = (
@@ -1513,7 +1505,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_starboard)
 "qd" = (
-/obj/effect/landmark/map_data/talon,
+/atom/movable/landmark/map_data/talon,
 /turf/space,
 /area/space)
 "qr" = (
@@ -2384,9 +2376,7 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Talon Captain"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_captain,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -2933,7 +2923,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "FV" = (
-/obj/effect/landmark/talon,
+/atom/movable/landmark/spawnpoint/latejoin/talon,
 /obj/machinery/computer/cryopod{
 	pixel_x = 32
 	},
@@ -3004,9 +2994,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/effect/landmark/start{
-	name = "Talon Pilot"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_pilot,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "GA" = (
@@ -3187,9 +3175,7 @@
 	dir = 4;
 	pixel_x = 26
 	},
-/obj/effect/landmark/start{
-	name = "Talon Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/talon_doctor,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
 "Jj" = (
@@ -4163,7 +4149,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "TD" = (
-/obj/effect/landmark/talon,
+/atom/movable/landmark/spawnpoint/latejoin/talon,
 /turf/simulated/floor/tiled/eris/white/gray_platform,
 /area/talon/decktwo/central_hallway)
 "TI" = (

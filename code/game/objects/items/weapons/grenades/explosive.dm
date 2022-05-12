@@ -87,7 +87,7 @@
 	var/range = 3
 	var/list/times
 
-/obj/item/grenade/explosive/ied/Initialize()
+/obj/item/grenade/explosive/ied/Initialize(mapload)
 	. = ..()
 	times = list("5" = 10, "-1" = 20, "[rand(30,80)]" = 50, "[rand(65,180)]" = 20)// "Premature, Dud, Short Fuse, Long Fuse"=[weighting value]
 	det_time = text2num(pickweight(times))

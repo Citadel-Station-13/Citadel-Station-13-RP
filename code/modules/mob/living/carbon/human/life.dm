@@ -273,10 +273,10 @@
 	radiation = clamp(radiation,0,250)
 
 	if(!radiation)
-		if(species.appearance_flags & RADIATION_GLOWS)
+		if(species.species_appearance_flags & RADIATION_GLOWS)
 			set_light(0)
 	else
-		if(species.appearance_flags & RADIATION_GLOWS)
+		if(species.species_appearance_flags & RADIATION_GLOWS)
 			set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
 		// END DOGSHIT SNOWFLAKE
 
@@ -1420,7 +1420,7 @@
 						break
 
 	else //We aren't dead
-		SetSeeInvisibleSelf(self_perspective.see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
+		SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		if(XRAY in mutations)
 			AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
@@ -1443,7 +1443,7 @@
 		else
 			SetSightSelf(species.get_vision_flags(src))
 			SetSeeInDarkSelf(species.darksight)
-			SetSeeInvisibleSelf(self_perspective.see_in_dark > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
+			SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		var/glasses_processed = 0
 		var/obj/item/rig/rig = back

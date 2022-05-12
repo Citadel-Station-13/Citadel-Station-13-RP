@@ -453,13 +453,15 @@ const ResearchConsoleBuildMenu = (props, context) => {
               <Button
                 mb={-1}
                 icon="wrench"
-                onClick={() => act(buildName, { build: design.id, imprint: design.id })}>
+                onClick={() => act(buildName,
+                  { build: design.id, imprint: design.id })}>
                 Build
               </Button>
               {buildFiveName && (
                 <Button
                   mb={-1}
-                  onClick={() => act(buildFiveName, { build: design.id, imprint: design.id })}>
+                  onClick={() => act(buildFiveName,
+                    { build: design.id, imprint: design.id })}>
                   x5
                 </Button>
               )}
@@ -611,7 +613,8 @@ const ResearchConsoleConstructor = (props, context) => {
                       <Button
                         ml={1}
                         icon="trash"
-                        onClick={() => act(removeQueueAction, { [removeQueueAction]: item.index })}>
+                        onClick={() => act(removeQueueAction,
+                          { [removeQueueAction]: item.index })}>
                         Remove
                       </Button>
                     </Box>
@@ -625,7 +628,8 @@ const ResearchConsoleConstructor = (props, context) => {
               <LabeledList.Item label={item.name} key={item.name}>
                 <Button
                   icon="trash"
-                  onClick={() => act(removeQueueAction, { [removeQueueAction]: item.index })}>
+                  onClick={() => act(removeQueueAction,
+                    { [removeQueueAction]: item.index })}>
                   Remove
                 </Button>
               </LabeledList.Item>
@@ -641,31 +645,40 @@ const ResearchConsoleConstructor = (props, context) => {
           {mats.map(mat => {
             const [ejectAmt, setEjectAmt] = useLocalState(context, "ejectAmt" + mat.name, 0);
             return (
-              <LabeledList.Item label={toTitleCase(mat.name)} key={mat.name} buttons={
-                <Fragment>
-                  <NumberInput
-                    minValue={0}
-                    width="100px"
-                    value={ejectAmt}
-                    maxValue={mat.sheets}
-                    onDrag={(e, val) => setEjectAmt(val)} />
-                  <Button
-                    icon="eject"
-                    disabled={!mat.removable}
-                    onClick={() => {
-                      setEjectAmt(0);
-                      act(ejectSheetAction, { [ejectSheetAction]: mat.name, amount: ejectAmt });
-                    }}>
-                    Num
-                  </Button>
-                  <Button
-                    icon="eject"
-                    disabled={!mat.removable}
-                    onClick={() => act(ejectSheetAction, { [ejectSheetAction]: mat.name, amount: 50 })}>
-                    All
-                  </Button>
-                </Fragment>
-              }>
+              <LabeledList.Item label={toTitleCase(mat.name)}
+                key={mat.name} buttons={
+                  <Fragment>
+                    <NumberInput
+                      minValue={0}
+                      width="100px"
+                      value={ejectAmt}
+                      maxValue={mat.sheets}
+                      onDrag={(e, val) => setEjectAmt(val)} />
+                    <Button
+                      icon="eject"
+                      disabled={!mat.removable}
+                      onClick={() => {
+                        setEjectAmt(0);
+                        act(
+                          ejectSheetAction, {
+                            [ejectSheetAction]: mat.name,
+                            amount: ejectAmt,
+                          });
+                      }}>
+                      Num
+                    </Button>
+                    <Button
+                      icon="eject"
+                      disabled={!mat.removable}
+                      onClick={() => act(ejectSheetAction,
+                        { [ejectSheetAction]:
+                      mat.name,
+                        amount: 50,
+                        })}>
+                      All
+                    </Button>
+                  </Fragment>
+                }>
                 {mat.amount} cm&sup3;
               </LabeledList.Item>
             );

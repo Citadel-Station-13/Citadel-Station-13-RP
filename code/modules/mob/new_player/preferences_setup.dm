@@ -1,28 +1,28 @@
 /datum/preferences
 	//The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
-	var/datum/species/current_species = GLOB.all_species[species ? species : SPECIES_HUMAN]
+	var/datum/species/current_species = name_static_species_meta(species) || get_static_species_meta(/datum/species/human)
 	set_biological_gender(pick(current_species.genders))
 
 	h_style = random_hair_style(biological_gender, species)
 	f_style = random_facial_hair_style(biological_gender, species)
 	if(current_species)
-		if(current_species.appearance_flags & HAS_SKIN_TONE)
+		if(current_species.species_appearance_flags & HAS_SKIN_TONE)
 			s_tone = random_skin_tone()
-		if(current_species.appearance_flags & HAS_SKIN_COLOR)
+		if(current_species.species_appearance_flags & HAS_SKIN_COLOR)
 			r_skin = rand (0,255)
 			g_skin = rand (0,255)
 			b_skin = rand (0,255)
-		if(current_species.appearance_flags & HAS_EYE_COLOR)
+		if(current_species.species_appearance_flags & HAS_EYE_COLOR)
 			randomize_eyes_color()
-		if(current_species.appearance_flags & HAS_HAIR_COLOR)
+		if(current_species.species_appearance_flags & HAS_HAIR_COLOR)
 			randomize_hair_color("hair")
 			randomize_hair_color("facial")
-		if(current_species.appearance_flags & HAS_SKIN_COLOR)
+		if(current_species.species_appearance_flags & HAS_SKIN_COLOR)
 			r_skin = rand (0,255)
 			g_skin = rand (0,255)
 			b_skin = rand (0,255)
-	if(current_species.appearance_flags & HAS_UNDERWEAR)
+	if(current_species.species_appearance_flags & HAS_UNDERWEAR)
 		all_underwear.Cut()
 		for(var/datum/category_group/underwear/WRC in GLOB.global_underwear.categories)
 			var/datum/category_item/underwear/WRI = pick(WRC.items)
@@ -217,7 +217,7 @@
 				previewJob = job
 				break
 
-	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/ai || previewJob.type == /datum/job/cyborg)))
+	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/station/ai || previewJob.type == /datum/job/station/cyborg)))
 		var/list/equipped_slots = list()
 		for(var/thing in gear)
 			var/datum/gear/G = gear_datums[thing]
@@ -252,7 +252,7 @@
 	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
 	mannequin.delete_inventory(TRUE)
 	if(regen_limbs)
-		var/datum/species/current_species = GLOB.all_species[species]
+		var/datum/species/current_species = character_static_species_meta()
 		current_species.create_organs(mannequin)
 		regen_limbs = 0
 	dress_preview_mob(mannequin)
