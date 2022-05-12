@@ -1,78 +1,116 @@
-/datum/wave_automata_cell
-	/// turf
-	var/turf/turf
-	/// power
-	var/power
-	/// directions
-	var/dir
-	/// next
-	var/datum/wave_automata_cell/next
-
 /**
  * wave effects
  */
 /datum/automata/wave
 	/// type of spread
-	var/wave_spread = WAVE_SPREAD_MINIMAL
-	/// current
-	var/list/datum/wave_automata_cell/current
-	/// next
-	var/list/datum/wave_automata_cell/next
+	VAR_PROTECTED/wave_spread = WAVE_SPREAD_MINIMAL
+	/// last turfs, assoc list to true for fast hash lookup. makes sure we don't fold in on ourselves.
+	VAR_PRIVATE/list/last
+	/// current edges associated to directions
+	VAR_PRIVATE/list/edges
+	/// current edges associated to powers
+	VAR_PRIVATE/list/powers
+	/// initial power
+	var/power_initial
+	/// power at which the automata stops
+	var/power_considered_dead = WAVE_AUTOMATA_POWER_DEAD
 
 /datum/automata/wave/setup_auto(turf/T, power, dirs)
+	power_initial = power
+	last = list()
+	edges = list()
+	powers = list()
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
-			// no directionals
-			current = new
-			current.turf = T
-			current.power = power
-			current.dir = ALL_DIRECTION_BITS
+			// no preprocessing at all
+			edges[T] = ALL_DIRECTION_BITS
+			powers[T] = power
 		if(WAVE_SPREAD_SHADOW_LIKE)
-			current = new
-			current.turf = T
-			current.power = power
-			current.dir = dirs? dirs : ALL_DIRECTION_BITS
-
+			edges[T] = dirs? (dirs &= ~(DIAGONAL_DIRECTION_BITS)) : CARDINAL_DIRECTION_BITS
+			powers[T] = power
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// no directionals
-			current = new
-			current.turf = T
-			current.power = power
-			current.dir = ALL_DIRECTION_BITS
+			edges[T] = CARDINAL_DIRECTION_BITS
+			powers[T] = power
+		else
+			CRASH("Invalid wave spread [wave_spread].")
 
 /datum/automata/wave/tick()
-	// make first node so we don't need to detect nulls later
-	var/datum/wave_automata_cell/first = new
-	// processing
-	var/datum/wave_automata_cell/processing = current
-	// holders
-	var/_power
-	var/_dir
-	var/_turf
+	// cache for sanic speed
+	var/list/turf/edges = src.edges
+	var/list/turf/powers = src.powers
+	var/list/turf/last = src.last
+	// current vars - turf, power, dir
+	var/turf/_T
+	var/_P
+	var/_D
+	// next edges, powers
+	var/list/turf/edges_next = list()
+	var/list/turf/powers_next = list()
+	// current vars - returned
+	var/_ret
+	// current vars - expansions
+	var/turf/_expand
+	var/_ND
+
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
-			while(processing)
-				_power = act(processing.turf, processing.dir, processing.power)
-
-
-				processing = processing.next
+			// minimal - very little simulation, just go
+			// we act on current turf in edges
+			// we don't use dir bits here
+			for(var/i in 1 to edges.len)
+				_T = edges[i]
+				if(!_T)
+					continue
+				_P = powers[_T]
+				_D = edges[_T]
+				_ret = act(_T, _D, _P)
+				if(_ret < power_considered_dead)
+					continue
+#define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[_expand] = D; powers_next[_expand] = P;
+				if(_D == ALL_DIRECTION_BITS)	// this only happens on first step
+					SIMPLE_EXPAND(_T, NORTH, _ret)
+					SIMPLE_EXPAND(_T, SOUTH, _ret)
+					SIMPLE_EXPAND(_T, EAST, _ret)
+					SIMPLE_EXPAND(_T, WEST, _ret)
+					SIMPLE_EXPAND(_T, NORTHEAST, _ret)
+					SIMPLE_EXPAND(_T, NORTHWEST, _ret)
+					SIMPLE_EXPAND(_T, SOUTHEAST, _ret)
+					SIMPLE_EXPAND(_T, SOUTHWEST, _ret)
+					continue
+				// at this point there should only be one dir so...
+					SIMPLE_EXPAND(_T, _D, _ret)
+				// check diagonal
+				if(ISDIAGONALDIR(_D))
+					// if so, expand 3 dirs instead of 1
+					_ND = turn(_D, 45)
+					SIMPLE_EXPAND(_T, _ND, _ret)
+					_ND = turn(_D, -45)
+					SIMPLE_EXPAND(_T, _ND, _ret)
+#undef SIMPLE_EXPAND
 		if(WAVE_SPREAD_SHADOW_LIKE)
 
 		if(WAVE_SPREAD_SHOCKWAVE)
 
 	// if next if empty...
-	if(!first.next)
+	if(!edges_next.len)
 		kill()
 	else
-		qdel(current)
-		// we only even bother qdelling so we know from gc if this gets fucked up
-		// we don't qdel every node for this reason, becuase there's only forward references so the chain should follow.
-		current = first.next
+		// continue
+		// shift everything down
+		last = edges
+		edges = edges_next
+		powers = powers_next
 	return ..()
+
+/datum/automata/wave/kill()
+	. = ..()
+	last = edges = powers = null
 
 /**
  * acts on a turf
  * returns new power.
+ * dirs are byond directions
  */
 /datum/automata/wave/proc/act(turf/T, dirs, power)
 	return max(power - 1, 0)

@@ -10,6 +10,8 @@
 	var/next_tick = 0
 	/// delay in ds between ticks
 	var/delay = 0.5
+	/// iteration
+	var/iteration = 0
 
 /datum/automata/New()
 	SSautomata.automatons += src
@@ -30,6 +32,7 @@
 /datum/automata/proc/start(quickstart)
 	ticking = TRUE
 	SSautomata.ticking += src
+	iteration = 0
 	if(quickstart)
 		tick()
 
@@ -54,3 +57,4 @@
 /datum/automata/proc/tick()
 	SHOULD_CALL_PARENT(TRUE)
 	next_tick = world.time + delay
+	++iteration

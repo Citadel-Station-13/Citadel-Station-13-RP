@@ -9,3 +9,7 @@
 #define WAVE_SPREAD_SHADOW_LIKE				1
 /// produces full blastwave simulation - wave spreads out with up to 90 degree turns. does not support directionals because the simulation depends on non-repeating waves.
 #define WAVE_SPREAD_SHOCKWAVE				2
+
+// wave stuff
+/// wave automata power accuracy for dropping a turf expansion when power's below this
+#define WAVE_AUTOMATA_POWER_DEAD			1
