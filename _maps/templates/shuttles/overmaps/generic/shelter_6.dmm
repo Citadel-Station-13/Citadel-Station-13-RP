@@ -355,7 +355,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "ak" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -379,7 +379,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "am" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -531,7 +531,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "aE" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380
 	},
@@ -1529,7 +1529,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bt" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380
 	},

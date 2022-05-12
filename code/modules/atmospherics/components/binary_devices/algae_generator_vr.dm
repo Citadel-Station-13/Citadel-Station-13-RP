@@ -1,7 +1,7 @@
 #define MATERIAL_ALGAE "algae"
 #define MATERIAL_CARBON "carbon"
 
-/obj/machinery/atmospherics/binary/algae_farm
+/obj/machinery/atmospherics/component/binary/algae_farm
 	name = "algae oxygen generator"
 	desc = "An oxygen generator using algae to convert carbon dioxide to oxygen."
 	icon = 'icons/obj/machines/algae_vr.dmi'
@@ -34,10 +34,10 @@
 	var/const/input_gas = /datum/gas/carbon_dioxide
 	var/const/output_gas = /datum/gas/oxygen
 
-/obj/machinery/atmospherics/binary/algae_farm/filled
+/obj/machinery/atmospherics/component/binary/algae_farm/filled
 	stored_material = list(MATERIAL_ALGAE = 10000, MATERIAL_CARBON = 0)
 
-/obj/machinery/atmospherics/binary/algae_farm/Initialize(mapload)
+/obj/machinery/atmospherics/component/binary/algae_farm/Initialize(mapload)
 	. = ..()
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
 	default_apply_parts()
@@ -50,11 +50,11 @@
 	I.color = PIPE_COLOR_BLACK
 	overlays += I
 
-/obj/machinery/atmospherics/binary/algae_farm/Destroy()
+/obj/machinery/atmospherics/component/binary/algae_farm/Destroy()
 	. = ..()
 	internal = null
 
-/obj/machinery/atmospherics/binary/algae_farm/process(delta_time)
+/obj/machinery/atmospherics/component/binary/algae_farm/process(delta_time)
 	..()
 	recent_moles_transferred = 0
 
@@ -113,7 +113,7 @@
 	ui_error = null // Success!
 	update_icon()
 
-/obj/machinery/atmospherics/binary/algae_farm/update_icon()
+/obj/machinery/atmospherics/component/binary/algae_farm/update_icon()
 	if(inoperable() || !anchored || use_power < USE_POWER_ACTIVE)
 		icon_state = "algae-off"
 	else if(recent_moles_transferred >= moles_per_tick)
@@ -124,7 +124,7 @@
 		icon_state = "algae-on"
 	return TRUE
 
-/obj/machinery/atmospherics/binary/algae_farm/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/atmospherics/component/binary/algae_farm/attackby(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -138,12 +138,12 @@
 		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]!"))
 		return
 
-/obj/machinery/atmospherics/binary/algae_farm/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/binary/algae_farm/attack_hand(mob/user)
 	if(..())
 		return TRUE
 	ui_interact(user)
 
-/obj/machinery/atmospherics/binary/algae_farm/RefreshParts()
+/obj/machinery/atmospherics/component/binary/algae_farm/RefreshParts()
 	..()
 
 	var/cap_rating = 0
@@ -166,13 +166,13 @@
 
 	moles_per_tick = initial(moles_per_tick) + (manip_rating**2 - 1)
 
-/obj/machinery/atmospherics/binary/algae_farm/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/atmospherics/component/binary/algae_farm/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AlgaeFarm", name)
 		ui.open()
 
-/obj/machinery/atmospherics/binary/algae_farm/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/algae_farm/ui_data(mob/user)
 	var/list/data = list()
 
 	data["panelOpen"] = panel_open
@@ -208,7 +208,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/binary/algae_farm/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/algae_farm/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -231,7 +231,7 @@
 
 // TODO - These should be replaced with materials datum.
 // 0 amount = 0 means ejecting a full stack; -1 means eject everything
-/obj/machinery/atmospherics/binary/algae_farm/proc/eject_materials(var/material_name, var/amount)
+/obj/machinery/atmospherics/component/binary/algae_farm/proc/eject_materials(var/material_name, var/amount)
 	var/recursive = amount == -1 ? 1 : 0
 	var/datum/material/matdata = get_material_by_name(material_name)
 	var/stack_type = matdata.stack_type
@@ -248,7 +248,7 @@
 		eject_materials(material_name, -1)
 
 // Attept to load materials.  Returns 0 if item wasn't a stack of materials, otherwise 1 (even if failed to load)
-/obj/machinery/atmospherics/binary/algae_farm/proc/try_load_materials(var/mob/user, var/obj/item/stack/material/S)
+/obj/machinery/atmospherics/component/binary/algae_farm/proc/try_load_materials(var/mob/user, var/obj/item/stack/material/S)
 	if(!istype(S))
 		return 0
 	if(!(S.material.name in stored_material))

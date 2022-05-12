@@ -10,7 +10,7 @@
 // Exterior access button: (obj/machinery/access_button/airlock_exterior),  master_tag = "[base]"
 // Interior access button: (obj/machinery/access_button/airlock_interior),  master_tag = "[base]"
 // Srubbers: (obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary), frequency = "1379", scrub_id = "[base]_scrubber"
-// Pumps: (obj/machinery/atmospherics/unary/vent_pump/high_volume), frequency = 1379 id_tag = "[base]_pump"
+// Pumps: (obj/machinery/atmospherics/component/unary/vent_pump/high_volume), frequency = 1379 id_tag = "[base]_pump"
 //
 
 obj/machinery/airlock_sensor/phoron

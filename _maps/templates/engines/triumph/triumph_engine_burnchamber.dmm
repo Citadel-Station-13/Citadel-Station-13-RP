@@ -53,7 +53,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "cj" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -66,7 +66,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "cX" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -204,7 +204,7 @@
 /turf/template_noop,
 /area/template_noop)
 "gW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	id_tag = null;
 	tag = null
 	},
@@ -238,7 +238,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "iC" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1;
 	dir = 1
 	},
@@ -261,7 +261,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "jc" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1;
 	dir = 1
 	},
@@ -332,7 +332,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "kG" = (
-/obj/machinery/atmospherics/omni/mixer,
+/obj/machinery/atmospherics/component/quaternary/mixer,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "mz" = (
@@ -401,7 +401,7 @@
 /area/engineering/engine_room)
 "oP" = (
 /obj/machinery/shield_diffuser,
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1435;
 	id = "exhaust_out";
@@ -439,7 +439,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -484,7 +484,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "qH" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	use_power = 1;
 	volume_rate = 700
 	},
@@ -512,7 +512,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "sE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -617,7 +617,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "yg" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 1;
 	use_power = 1;
 	volume_rate = 700
@@ -674,7 +674,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "AG" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 1;
 	frequency = 1437;
 	id = "engine_in";
@@ -751,7 +751,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1438;
 	id = "hotloop_in";
 	unacidable = 1;
@@ -778,7 +778,7 @@
 /turf/template_noop,
 /area/space)
 "DJ" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
@@ -999,7 +999,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Mx" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1013,7 +1013,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "Oi" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ok" = (
@@ -1104,7 +1104,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "PH" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1114,7 +1114,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 1;
 	frequency = 1438;
 	id = "hotloop_in";
@@ -1191,7 +1191,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Rn" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1201,7 +1201,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 1;
 	frequency = 1438;
 	id = "hotloop_in";
@@ -1282,7 +1282,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1438;
 	id = "hotloop_in";
 	unacidable = 1;
@@ -1380,7 +1380,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "VQ" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,

@@ -72,12 +72,12 @@ SUBSYSTEM_DEF(machines)
 		machine.build_network()
 		CHECK_TICK
 
-	for(var/obj/machinery/atmospherics/unary/U in atmos_machines)
-		if(istype(U, /obj/machinery/atmospherics/unary/vent_pump))
-			var/obj/machinery/atmospherics/unary/vent_pump/T = U
+	for(var/obj/machinery/atmospherics/component/unary/U in atmos_machines)
+		if(istype(U, /obj/machinery/atmospherics/component/unary/vent_pump))
+			var/obj/machinery/atmospherics/component/unary/vent_pump/T = U
 			T.broadcast_status()
-		else if(istype(U, /obj/machinery/atmospherics/unary/vent_scrubber))
-			var/obj/machinery/atmospherics/unary/vent_scrubber/T = U
+		else if(istype(U, /obj/machinery/atmospherics/component/unary/vent_scrubber))
+			var/obj/machinery/atmospherics/component/unary/vent_scrubber/T = U
 			T.broadcast_status()
 		CHECK_TICK
 

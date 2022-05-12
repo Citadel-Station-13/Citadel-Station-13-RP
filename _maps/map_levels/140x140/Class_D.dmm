@@ -212,7 +212,7 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_power)
 "ih" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/sink{
@@ -373,7 +373,7 @@
 	name = "east bump";
 	pixel_x = 28
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -857,7 +857,7 @@
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "wP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
@@ -889,7 +889,7 @@
 /turf/simulated/floor/outdoors/rocks/classd,
 /area/class_d/explored)
 "xO" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor/classd/indoors,
@@ -1102,7 +1102,7 @@
 /turf/simulated/wall/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "DC" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -1125,7 +1125,7 @@
 /turf/simulated/mineral/classd/indoors,
 /area/class_d/unexplored/underground)
 "Ea" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -1293,7 +1293,7 @@
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Ix" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /turf/simulated/floor/classd/indoors,
@@ -1366,7 +1366,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "Kp" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
@@ -1400,7 +1400,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "Lc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -1736,7 +1736,7 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/explored/underground)
 "UZ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/table/bench/steel,

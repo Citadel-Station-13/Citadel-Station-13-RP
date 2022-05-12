@@ -941,7 +941,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "ce" = (
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	icon_state = "freezer"
 	},
 /obj/effect/floor_decal/corner/purple/full{
@@ -1017,7 +1017,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "cq" = (
@@ -1041,7 +1041,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "cs" = (
@@ -1052,7 +1052,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "ct" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -1115,7 +1115,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/table/standard,
@@ -1211,7 +1211,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1281,7 +1281,7 @@
 /area/rnd/outpost/testing_lab)
 "cR" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/newscaster{
@@ -1378,14 +1378,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
 "da" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "sci_outpost_pump"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/airlock)
 "db" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "sci_outpost_pump"
 	},
@@ -1453,7 +1453,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/mixing)
 "dj" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "dk" = (
@@ -1472,7 +1472,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "dn" = (
-/obj/machinery/atmospherics/trinary/mixer/m_mixer{
+/obj/machinery/atmospherics/component/trinary/mixer/m_mixer{
 	dir = 4;
 	name = "High Power Gas mixer";
 	power_rating = 15000
@@ -1488,7 +1488,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "dp" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
@@ -1541,7 +1541,7 @@
 /area/rnd/outpost/testing_lab)
 "dx" = (
 /obj/machinery/washing_machine,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1645,7 +1645,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "dK" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -1654,7 +1654,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "dM" = (
@@ -1677,7 +1677,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "dP" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
@@ -1713,7 +1713,7 @@
 /area/rnd/outpost/testing_lab)
 "dS" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/item/tool/screwdriver,
@@ -1931,7 +1931,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "eo" = (
-/obj/machinery/atmospherics/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter{
 	dir = 4;
 	name = "High Power Gas filter";
 	power_rating = 15000;
@@ -1946,7 +1946,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "eq" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 1;
 	icon_state = "heater"
 	},
@@ -2132,7 +2132,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "eI" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 4
 	},
 /obj/structure/window/basic{
@@ -2150,7 +2150,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/outpost/mixing)
 "eJ" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 8
 	},
 /obj/structure/window/basic{
@@ -2206,7 +2206,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -2571,7 +2571,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "fi" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 4
 	},
 /obj/structure/window/basic{
@@ -2583,7 +2583,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/outpost/mixing)
 "fj" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 8
 	},
 /obj/structure/window/basic{
@@ -2666,7 +2666,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "fr" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2695,7 +2695,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "fu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2773,7 +2773,7 @@
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
 "fB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -2785,7 +2785,7 @@
 /turf/simulated/wall,
 /area/rnd/outpost/atmos)
 "fD" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple{
@@ -2809,7 +2809,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/standard,
@@ -2826,7 +2826,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/table/standard,
@@ -3211,7 +3211,7 @@
 /area/rnd/outpost/atmos)
 "gi" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -3279,18 +3279,18 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "go" = (
-/obj/machinery/atmospherics/binary/pump/on,
+/obj/machinery/atmospherics/component/binary/pump/on,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "gp" = (
-/obj/machinery/atmospherics/binary/passive_gate{
+/obj/machinery/atmospherics/component/binary/passive_gate{
 	icon_state = "on";
 	unlocked = 1
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "gq" = (
-/obj/machinery/atmospherics/trinary/mixer/m_mixer{
+/obj/machinery/atmospherics/component/trinary/mixer/m_mixer{
 	dir = 1;
 	node1_concentration = 0.21;
 	node2_concentration = 0.79
@@ -3376,7 +3376,7 @@
 /obj/effect/floor_decal/corner/purple/full{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/table/standard,
 /obj/item/tool/wrench,
 /obj/machinery/camera/network/research_outpost{
@@ -3387,7 +3387,7 @@
 /area/rnd/outpost/heating)
 "gA" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
@@ -3518,7 +3518,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "gJ" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	tag_east = 3;
 	tag_north = 4;
 	tag_south = 2;
@@ -3530,7 +3530,7 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/chamber)
 "gL" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	external_pressure_bound = 0;
 	frequency = 1445;
@@ -3606,7 +3606,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "gS" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
 	},
@@ -3687,7 +3687,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "gX" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "gY" = (
@@ -3735,7 +3735,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "ha" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "hb" = (
@@ -3848,7 +3848,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "hn" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -4066,7 +4066,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hC" = (
-/obj/machinery/atmospherics/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
 	filter_type = 0;
 	filtered_out = list("phoron")
 	},
@@ -4106,7 +4106,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
 	target_pressure = 200
 	},
@@ -4153,7 +4153,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "hJ" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /obj/structure/cable/green{
@@ -4164,7 +4164,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "hK" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 1
 	},
 /obj/structure/window/basic{
@@ -4176,7 +4176,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/outpost/heating)
 "hL" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 1
 	},
 /obj/structure/window/basic{
@@ -4237,13 +4237,13 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hQ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -4257,7 +4257,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hT" = (
-/obj/machinery/atmospherics/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
 	filter_type = 3;
 	filtered_out = list("carbon_dioxide")
 	},
@@ -4332,13 +4332,13 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "ic" = (
-/obj/machinery/atmospherics/unary/heat_exchanger,
+/obj/machinery/atmospherics/component/unary/heat_exchanger,
 /obj/structure/window/basic,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/outpost/heating)
 "id" = (
-/obj/machinery/atmospherics/unary/heat_exchanger,
+/obj/machinery/atmospherics/component/unary/heat_exchanger,
 /obj/structure/window/basic,
 /obj/structure/window/basic{
 	dir = 8
@@ -4419,7 +4419,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "in" = (
-/obj/machinery/atmospherics/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
 	filter_type = 4;
 	filtered_out = list("nitrous_oxide")
 	},
@@ -4429,7 +4429,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1445;
 	id = "burn_in";
@@ -4544,13 +4544,13 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "iC" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "iD" = (
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 1;
 	icon_state = "freezer_1";
 	use_power = 1
@@ -4563,7 +4563,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "iF" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 1;
 	icon_state = "heater_1";
 	use_power = 1
@@ -4594,7 +4594,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "iJ" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4;
 	target_pressure = 200
 	},
@@ -4834,7 +4834,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "jh" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -4953,7 +4953,7 @@
 /area/rnd/outpost/storage)
 "js" = (
 /obj/structure/closet/excavation,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -5267,7 +5267,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "kc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light_switch{
 	dir = 8;
 	pixel_x = 28
@@ -5276,7 +5276,7 @@
 /area/rnd/outpost/anomaly_lab/storage)
 "kd" = (
 /obj/structure/closet/excavation,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -5617,7 +5617,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "kH" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -5729,7 +5729,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
@@ -5737,7 +5737,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "kR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -5749,7 +5749,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24;
@@ -6027,7 +6027,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -6137,7 +6137,7 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1452;
 	id_tag = "anomaly_airlock_pump";
@@ -6319,7 +6319,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "lF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -6367,7 +6367,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "lM" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -6466,7 +6466,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "lT" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6478,7 +6478,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
 "lV" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -6512,7 +6512,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
 "lY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -6787,7 +6787,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/testing)
 "mA" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/alarm{
 	pixel_y = 25
 	},
@@ -6814,7 +6814,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -6986,7 +6986,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "mP" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
@@ -6999,7 +6999,7 @@
 /obj/machinery/camera/network/research_outpost{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -7024,7 +7024,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
 "mS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -7063,7 +7063,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/analysis)
 "mY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7199,7 +7199,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "np" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/camera/network/research_outpost{
@@ -7291,7 +7291,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "nx" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /obj/structure/cable/green{
@@ -7572,13 +7572,13 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "nZ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "oa" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -7756,7 +7756,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "ov" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
@@ -7774,7 +7774,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "ox" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/alarm{
@@ -7785,7 +7785,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "oy" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light_switch{
@@ -7865,7 +7865,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "oL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "oM" = (
@@ -7907,7 +7907,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "oQ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light_switch{
@@ -8018,7 +8018,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,

@@ -569,8 +569,8 @@
 					Rad.toggle_power()
 				Rad.update_icon()
 
-			else if(istype(M,/obj/machinery/atmospherics/binary/pump))	//Turning on every pump.
-				var/obj/machinery/atmospherics/binary/pump/Pump = M
+			else if(istype(M,/obj/machinery/atmospherics/component/binary/pump))	//Turning on every pump.
+				var/obj/machinery/atmospherics/component/binary/pump/Pump = M
 				if(Pump.name == "Engine Feed" && response == "Setup Completely")
 					found_the_pump = 1
 					Pump.air2.gas[/datum/gas/nitrogen] = 3750	//The contents of 2 canisters.
