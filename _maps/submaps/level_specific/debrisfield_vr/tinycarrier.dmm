@@ -39,7 +39,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/monofloor,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "ag" = (
@@ -59,7 +59,7 @@
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/wall/thull,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aj" = (
@@ -83,7 +83,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external/public,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/monofloor{
 	dir = 4
 	},
@@ -108,8 +108,8 @@
 	pixel_x = 26;
 	pixel_y = 6
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/overmap/visitable/ship/landable/tinycarrier,
 /turf/simulated/floor/tiled/monotile,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
@@ -169,7 +169,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/corner/brown{
 	dir = 6
 	},
