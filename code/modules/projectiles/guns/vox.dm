@@ -37,7 +37,8 @@
 	. = ..()
 	. += "It has [spikes] spike\s remaining."
 
-/obj/item/gun/launcher/spikethrower/update_icon()
+/obj/item/gun/launcher/spikethrower/update_icon_state()
+	. = ..()
 	icon_state = "spikethrower[spikes]"
 
 /obj/item/gun/launcher/spikethrower/update_release_force()

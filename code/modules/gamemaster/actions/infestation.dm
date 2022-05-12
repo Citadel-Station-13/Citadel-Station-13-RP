@@ -90,7 +90,7 @@
 	var/list/vents = list()
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
-		for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in A.contents)
+		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
 			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
 				vents += temp_vent
 
@@ -117,7 +117,7 @@
 		var/num = spawncount
 		var/spawn_type = pick(spawn_types)
 		while(vents.len > 0 && num > 0)
-			var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
+			var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
 			num--
 			new spawn_type(V.loc)
 

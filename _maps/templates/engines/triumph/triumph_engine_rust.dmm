@@ -4,7 +4,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ab" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1;
 	dir = 8
 	},
@@ -58,7 +58,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ai" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -230,7 +230,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "aF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -318,7 +318,7 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "ck" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1438;
 	id_tag = "cooling_out";
 	pump_direction = 0;
@@ -407,7 +407,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "fn" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1;
 	dir = 4
 	},
@@ -458,7 +458,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "jt" = (
-/obj/machinery/atmospherics/binary/pump/high_power{
+/obj/machinery/atmospherics/component/binary/pump/high_power{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -669,7 +669,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -787,7 +787,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_room)
 "vm" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -814,7 +814,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "wL" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -865,7 +865,7 @@
 /turf/template_noop,
 /area/space)
 "yw" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -881,7 +881,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ay" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -904,7 +904,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "CN" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 1;
 	frequency = 1438;
 	id = "cooling_in";
@@ -1122,7 +1122,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "MW" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Nc" = (
@@ -1281,7 +1281,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1438;
 	id_tag = "cooling_out";
@@ -1328,7 +1328,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1438;
 	id = "cooling_in";
 	unacidable = 1;
@@ -1367,7 +1367,7 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "UA" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -1431,7 +1431,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "YK" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Zi" = (

@@ -236,7 +236,7 @@
 			to_chat(user, "You drape the veil to one side.")
 		else
 			body_parts_covered = initial(body_parts_covered)
-			item_flags = initial(item_flags)
+			clothing_flags = initial(clothing_flags)
 			icon_state = initial(icon_state)
 			to_chat(user, "You pull the veil over to cover your face.")
 		update_clothing_icon()

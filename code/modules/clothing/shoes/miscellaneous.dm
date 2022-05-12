@@ -3,7 +3,7 @@
 	name = "brown shoes"
 	icon_state = "brown"
 	permeability_coefficient = 0.05
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/list/clothing_choices = list()
 	siemens_coefficient = 0.8
@@ -23,7 +23,7 @@
 	icon_state = "galoshes"
 	permeability_coefficient = 0.05
 	siemens_coefficient = 0 //They're thick rubber boots! Of course they won't conduct electricity!
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
 	drop_sound = 'sound/items/drop/rubber.ogg'
@@ -136,7 +136,7 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "swimming fins"
 	icon_state = "flippers"
 	item_state_slots = list(slot_r_hand_str = "galoshes", slot_l_hand_str = "galoshes")
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
 

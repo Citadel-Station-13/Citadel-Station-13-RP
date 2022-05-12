@@ -83,7 +83,7 @@
 	var/pirate_boss = list()
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
-		for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in A.contents)
+		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
 			if(temp_vent.network && ((temp_vent.loc.z in GLOB.using_map.station_levels) || isTalon == 1))
 				vents += temp_vent
 
@@ -128,14 +128,14 @@
 
 	var/num = spawncount
 	while(vents.len > 0 && num > 0)
-		var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
+		var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
 		num--
 		var/spawn_type = pick(pirate_spawn)
 		new spawn_type(V.loc)
 	var/bossnum = boss_spawn_count
 	while(vents.len > 0 && bossnum > 0)
 		bossnum--
-		var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
+		var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
 		var/spawn_type = pick(pirate_boss)
 		new spawn_type(V.loc)
 	isTalon = 0

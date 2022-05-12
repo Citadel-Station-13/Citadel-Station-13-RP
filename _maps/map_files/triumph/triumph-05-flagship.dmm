@@ -6874,7 +6874,7 @@
 	},
 /area/centcom/medical)
 "mA" = (
-/obj/machinery/atmospherics/unary/cryo_cell,
+/obj/machinery/atmospherics/component/unary/cryo_cell,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -6886,7 +6886,7 @@
 	},
 /area/centcom/medical)
 "mB" = (
-/obj/machinery/atmospherics/unary/freezer,
+/obj/machinery/atmospherics/component/unary/freezer,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -6899,7 +6899,7 @@
 	},
 /area/centcom/medical)
 "mC" = (
-/obj/machinery/atmospherics/unary/cryo_cell,
+/obj/machinery/atmospherics/component/unary/cryo_cell,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
 	},

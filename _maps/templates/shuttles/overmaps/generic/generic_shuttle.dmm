@@ -41,7 +41,7 @@
 "ah" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -60,7 +60,7 @@
 	dir = 4;
 	pixel_y = 0
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 8
 	},
@@ -78,7 +78,7 @@
 	dir = 8;
 	pixel_y = 0
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 4
 	},
@@ -104,7 +104,7 @@
 "am" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
@@ -133,7 +133,7 @@
 	},
 /area/shuttle/generic_shuttle/gen)
 "ap" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/closet/emcloset,
@@ -209,7 +209,7 @@
 	},
 /area/shuttle/generic_shuttle/gen)
 "av" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 8
 	},
@@ -526,7 +526,7 @@
 	},
 /area/shuttle/generic_shuttle/gen)
 "bf" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 4
 	},
@@ -570,7 +570,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
@@ -628,7 +628,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/gen)
 "bp" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "expshuttle_vent"
@@ -647,7 +647,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "expshuttle_vent"
@@ -778,13 +778,13 @@
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/eng)
 "bC" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/eng)
 "bD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -801,7 +801,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/eng)
 "bG" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 1
 	},
@@ -874,7 +874,7 @@
 /turf/simulated/floor/tiled/monofloor,
 /area/shuttle/generic_shuttle/eng)
 "bP" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -919,7 +919,7 @@
 /turf/simulated/wall/shull,
 /area/shuttle/generic_shuttle/eng)
 "bX" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /turf/space,

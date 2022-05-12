@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/binary
+/obj/machinery/atmospherics/component/binary
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH
 	use_power = USE_POWER_IDLE
@@ -9,7 +9,7 @@
 	var/datum/pipe_network/network1
 	var/datum/pipe_network/network2
 
-/obj/machinery/atmospherics/binary/Initialize(mapload)
+/obj/machinery/atmospherics/component/binary/Initialize(mapload)
 	. = ..()
 
 	air1 = new
@@ -18,7 +18,7 @@
 	air1.volume = 200
 	air2.volume = 200
 
-/obj/machinery/atmospherics/binary/init_dir()
+/obj/machinery/atmospherics/component/binary/init_dir()
 	switch(dir)
 		if(NORTH)
 			initialize_directions = NORTH|SOUTH
@@ -30,10 +30,10 @@
 			initialize_directions = EAST|WEST
 
 // Housekeeping and pipe network stuff below
-/obj/machinery/atmospherics/binary/get_neighbor_nodes_for_init()
+/obj/machinery/atmospherics/component/binary/get_neighbor_nodes_for_init()
 	return list(node1, node2)
 
-/obj/machinery/atmospherics/binary/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
+/obj/machinery/atmospherics/component/binary/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
 	if(reference == node1)
 		network1 = new_network
 
@@ -47,7 +47,7 @@
 
 	return null
 
-/obj/machinery/atmospherics/binary/Destroy()
+/obj/machinery/atmospherics/component/binary/Destroy()
 	. = ..()
 
 	if(node1)
@@ -60,7 +60,7 @@
 	node1 = null
 	node2 = null
 
-/obj/machinery/atmospherics/binary/atmos_init()
+/obj/machinery/atmospherics/component/binary/atmos_init()
 	if(node1 && node2)
 		return
 
@@ -73,7 +73,7 @@
 	update_icon()
 	update_underlays()
 
-/obj/machinery/atmospherics/binary/build_network()
+/obj/machinery/atmospherics/component/binary/build_network()
 	if(!network1 && node1)
 		network1 = new /datum/pipe_network()
 		network1.normal_members += src
@@ -85,7 +85,7 @@
 		network2.build_network(node2, src)
 
 
-/obj/machinery/atmospherics/binary/return_network(obj/machinery/atmospherics/reference)
+/obj/machinery/atmospherics/component/binary/return_network(obj/machinery/atmospherics/reference)
 	build_network()
 
 	if(reference==node1)
@@ -96,7 +96,7 @@
 
 	return null
 
-/obj/machinery/atmospherics/binary/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
+/obj/machinery/atmospherics/component/binary/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
 	if(network1 == old_network)
 		network1 = new_network
 	if(network2 == old_network)
@@ -104,7 +104,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/binary/return_network_air(datum/pipe_network/reference)
+/obj/machinery/atmospherics/component/binary/return_network_air(datum/pipe_network/reference)
 	var/list/results = list()
 
 	if(network1 == reference)
@@ -114,7 +114,7 @@
 
 	return results
 
-/obj/machinery/atmospherics/binary/disconnect(obj/machinery/atmospherics/reference)
+/obj/machinery/atmospherics/component/binary/disconnect(obj/machinery/atmospherics/reference)
 	if(reference==node1)
 		qdel(network1)
 		node1 = null

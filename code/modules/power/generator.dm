@@ -13,8 +13,8 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	var/max_power = 500000
 	var/thermal_efficiency = 0.65
 
-	var/obj/machinery/atmospherics/binary/circulator/circ1
-	var/obj/machinery/atmospherics/binary/circulator/circ2
+	var/obj/machinery/atmospherics/component/binary/circulator/circ1
+	var/obj/machinery/atmospherics/component/binary/circulator/circ2
 
 	var/last_circ1_gen = 0
 	var/last_circ2_gen = 0
@@ -51,8 +51,8 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	circ2 = null
 	if(src.loc && anchored)
 		if(src.dir & (EAST|WEST))
-			circ1 = locate(/obj/machinery/atmospherics/binary/circulator) in get_step(src,WEST)
-			circ2 = locate(/obj/machinery/atmospherics/binary/circulator) in get_step(src,EAST)
+			circ1 = locate(/obj/machinery/atmospherics/component/binary/circulator) in get_step(src,WEST)
+			circ2 = locate(/obj/machinery/atmospherics/component/binary/circulator) in get_step(src,EAST)
 
 			if(circ1 && circ2)
 				if(circ1.dir != NORTH || circ2.dir != SOUTH)
@@ -60,8 +60,8 @@ GLOBAL_LIST_EMPTY(all_turbines)
 					circ2 = null
 
 		else if(src.dir & (NORTH|SOUTH))
-			circ1 = locate(/obj/machinery/atmospherics/binary/circulator) in get_step(src,NORTH)
-			circ2 = locate(/obj/machinery/atmospherics/binary/circulator) in get_step(src,SOUTH)
+			circ1 = locate(/obj/machinery/atmospherics/component/binary/circulator) in get_step(src,NORTH)
+			circ2 = locate(/obj/machinery/atmospherics/component/binary/circulator) in get_step(src,SOUTH)
 
 			if(circ1 && circ2 && (circ1.dir != EAST || circ2.dir != WEST))
 				circ1 = null

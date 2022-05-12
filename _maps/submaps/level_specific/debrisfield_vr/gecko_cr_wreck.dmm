@@ -112,7 +112,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light,
@@ -124,7 +124,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	id_tag = "gecko_cargo_vent"
 	},
@@ -277,7 +277,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/gecko_cr_wreck)
 "gC" = (
-/obj/machinery/atmospherics/unary/engine/biggest{
+/obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -318,7 +318,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/gecko_cr_wreck)
 "hH" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/catwalk,
@@ -682,7 +682,7 @@
 	dir = 4
 	},
 /atom/movable/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /obj/structure/handrail{
@@ -744,7 +744,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "pf" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/firealarm{
 	pixel_y = 26
 	},
@@ -864,7 +864,7 @@
 	},
 /atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /atom/movable/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /obj/structure/handrail,
 /obj/machinery/light{
 	dir = 8
@@ -894,7 +894,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/gecko_cr_engineering_wreck)
 "ru" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/bed/chair/bay/comfy{
 	dir = 1
 	},
@@ -902,7 +902,7 @@
 /area/shuttle/gecko_cr_cockpit_wreck)
 "rv" = (
 /obj/structure/handrail,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/firealarm{
@@ -1027,7 +1027,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "ue" = (
-/obj/machinery/atmospherics/unary/engine/bigger{
+/obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -1042,7 +1042,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr_engineering_wreck)
 "uv" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/bed/pod,
@@ -1118,7 +1118,7 @@
 /area/shuttle/gecko_cr_engineering_wreck)
 "vX" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -1148,7 +1148,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "wV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/closet/crate{
@@ -1229,14 +1229,14 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "yR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/firealarm{
 	pixel_y = 26
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "yX" = (
-/obj/machinery/atmospherics/binary/pump/fuel,
+/obj/machinery/atmospherics/component/binary/pump/fuel,
 /turf/simulated/floor/airless,
 /area/shuttle/gecko_cr_engineering_wreck)
 "zx" = (
@@ -1260,7 +1260,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "zF" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/closet/walllocker/emerglocker/north,
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
@@ -1360,7 +1360,7 @@
 	dir = 1
 	},
 /atom/movable/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /obj/structure/handrail{
@@ -1495,7 +1495,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1513,7 +1513,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "DM" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1577,7 +1577,7 @@
 /area/shuttle/gecko_cr_engineering_wreck)
 "Fx" = (
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/closet/crate{
@@ -1789,7 +1789,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "IM" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/bed/chair/bay/comfy{
 	dir = 1
 	},
@@ -1856,7 +1856,7 @@
 	dir = 1
 	},
 /atom/movable/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /obj/structure/handrail{
@@ -2185,7 +2185,7 @@
 	dir = 8
 	},
 /atom/movable/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /obj/structure/handrail,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
 	id_tag = "geck_sh_docking_port";
@@ -2306,7 +2306,7 @@
 /turf/template_noop,
 /area/shuttle/gecko_cr_engineering_wreck)
 "Ql" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2476,7 +2476,7 @@
 /area/shuttle/gecko_cr_wreck)
 "Td" = (
 /obj/structure/handrail,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/firealarm{
@@ -2496,7 +2496,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr_wreck)
 "Tl" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -2524,7 +2524,7 @@
 	},
 /atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /atom/movable/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /obj/structure/handrail,
 /obj/machinery/light{
 	dir = 4
@@ -2720,7 +2720,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/gecko_cr_engineering_wreck)
 "WN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/catwalk,
@@ -2835,7 +2835,7 @@
 "Yj" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /atom/movable/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /obj/structure/handrail,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
 	id_tag = "geck_sh_docking_star";
@@ -2851,7 +2851,7 @@
 	dir = 4
 	},
 /atom/movable/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /obj/structure/handrail{
@@ -2867,7 +2867,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "YG" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,

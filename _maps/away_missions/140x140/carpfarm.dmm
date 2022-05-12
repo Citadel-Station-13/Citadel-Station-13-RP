@@ -482,7 +482,7 @@
 /area/awaymission/carpfarm/base)
 "bF" = (
 /obj/structure/dispenser/oxygen,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
@@ -598,7 +598,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bV" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1375;
 	id_tag = "carp_pump"
@@ -621,7 +621,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/carpfarm/base)
 "bW" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1375;
 	id_tag = "carp_pump"

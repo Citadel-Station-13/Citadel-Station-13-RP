@@ -18,3 +18,7 @@ Apply regexes in this order:
 // TODO: MAKE SURE NO / AFTER COSTUME
 `/atom/movable/landmark/costume`-`/atom/movable/landmark/costume/random`
 `/atom/movable/landmark/mobcorpse`-`/atom/movable/spawner/corpse`
+
+// ATMOSPHERICS
+`obj/machinery/atmospherics/omni`-`obj/machinery/atmospherics/component/quaternary`
+`obj/machinery/atmospherics/(unary|binary|trinary)`-`obj/machinery/atmospherics/component/$1`

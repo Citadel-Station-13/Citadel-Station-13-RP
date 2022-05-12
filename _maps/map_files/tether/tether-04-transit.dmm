@@ -32,7 +32,7 @@
 /area/maintenance/tether_midpoint)
 "en" = (
 /obj/structure/table/gamblingtable,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -281,7 +281,7 @@
 /area/tether/midpoint)
 "vW" = (
 /obj/structure/table/gamblingtable,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -298,7 +298,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "xw" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/computer/timeclock/premade/east,
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
@@ -549,7 +549,7 @@
 /turf/unsimulated/wall,
 /area/space)
 "Pj" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,

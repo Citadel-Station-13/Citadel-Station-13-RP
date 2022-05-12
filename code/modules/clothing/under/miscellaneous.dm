@@ -1014,7 +1014,7 @@
 
 /obj/item/clothing/under/rank/psych/turtleneck/sweater
 	desc = "A warm looking sweater and a pair of dark blue slacks."
-	name = "sweater_fem"
+	name = "sweater"
 	icon_state = "turtleneck_fem"
 	worn_state = "turtleneck_fem"
 
