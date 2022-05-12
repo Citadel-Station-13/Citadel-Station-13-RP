@@ -45,9 +45,16 @@
 	var/datum/wave_automata_cell/first = new
 	// processing
 	var/datum/wave_automata_cell/processing = current
+	// holders
+	var/_power
+	var/_dir
+	var/_turf
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
+			while(processing)
+				_power = act(processing.turf, processing.dir, processing.power)
 
+				processing = processing.next
 		if(WAVE_SPREAD_SHADOW_LIKE)
 
 		if(WAVE_SPREAD_SHOCKWAVE)
@@ -62,3 +69,29 @@
 		current = first.next
 	return ..()
 
+/**
+ * acts on a turf
+ * returns new power.
+ */
+/datum/automata/wave/proc/act(turf/T, dirs, power)
+	return max(power - 1, 0)
+
+/**
+ * debugging wave automata - displays powers.
+ */
+/datum/automata/wave/debug
+	/// impacted turfs
+	var/list/turf/impacted = list()
+
+/datum/automata/wave/debug/Destroy()
+	clear_impacted()
+	return ..()
+
+/datum/automata/wave/debug/proc/clear_impacted()
+	for(var/turf/T in impacted)
+		T.maptext = null
+	impacted = list()
+
+/datum/automata/wave/debug/act(turf/T, dirs, power)
+	. = ..()
+	T.maptext = "[power]"
