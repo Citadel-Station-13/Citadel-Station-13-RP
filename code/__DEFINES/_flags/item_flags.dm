@@ -1,8 +1,10 @@
 // Flags for the item_flags var on /obj/item
 /*
 #define BEING_REMOVED						(1<<0)
+*/
 ///is this item equipped into an inventory slot or hand of a mob? used for tooltips
 #define IN_INVENTORY						(1<<1)
+/*
 ///used for tooltips
 #define FORCE_STRING_OVERRIDE				(1<<2)
 ///Used by security bots to determine if this item is safe for public use.
@@ -10,8 +12,10 @@
 #define SLOWS_WHILE_IN_HAND					(1<<4)
 ///Stops you from putting things like an RCD or other items into an ORM or protolathe for materials.
 #define NO_MAT_REDEMPTION					(1<<5)
+*/
 ///When dropped, it calls qdel on itself
 #define DROPDEL								(1<<6)
+/*
 ///when an item has this it produces no "X has been hit by Y with Z" message in the default attackby()
 #define NOBLUDGEON							(1<<7)
 ///for all things that are technically items but used for various different stuff
@@ -26,9 +30,12 @@
 #define ITEM_CAN_PARRY						(1<<12)
 /// This item can be used in the directional blocking system. Only a basic check used to determine if we should proceed with directional block handling at all.
 #define ITEM_CAN_BLOCK						(1<<13)
+/// is this item in a storage component?
+#define IN_STORAGE							(1<<14)
+*/
 
 // Flags for the clothing_flags var on /obj/item/clothing
-
+/*
 #define LAVAPROTECT				(1<<0)
 #define STOPSPRESSUREDAMAGE		(1<<1)	// SUIT and HEAD items which stop pressure damage. To stop you taking all pressure damage you must have both a suit and head item with this flag.
 */
@@ -43,8 +50,8 @@
 #define VOICEBOX_TOGGLABLE		(1<<7)	// The voicebox in this clothing can be toggled.
 #define VOICEBOX_DISABLED		(1<<8)	// The voicebox is currently turned off.
 #define IGNORE_HAT_TOSS			(1<<9)	// Hats with negative effects when worn (i.e the tinfoil hat).
-#define SCAN_REAGENTS			(1<<10)	// Allows helmets and glasses to scan reagents.
 */
+#define SCAN_REAGENTS			(1<<10)	// Allows helmets and glasses to scan reagents.
 #define FLEXIBLEMATERIAL		(1<<11)	// At the moment, masks with this flag will not prevent eating even if they are covering your face.
 #define ALLOW_SURVIVALFOOD		(1<<12)	// Allows special survival food items to be eaten through it
 

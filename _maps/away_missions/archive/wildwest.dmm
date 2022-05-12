@@ -149,7 +149,7 @@
 /turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "aK" = (
-/atom/movable/landmark/corpse/miner/rig,
+/atom/movable/spawner/corpse/miner/rig,
 /turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "aL" = (
@@ -177,7 +177,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "aU" = (
-/atom/movable/landmark/corpse/syndicatecommando,
+/atom/movable/spawner/corpse/syndicatecommando,
 /turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "aV" = (
@@ -207,7 +207,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
 "bi" = (
-/atom/movable/landmark/corpse/miner/rig,
+/atom/movable/spawner/corpse/miner/rig,
 /obj/effect/mine/dnascramble,
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
@@ -231,7 +231,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
 "bq" = (
-/atom/movable/landmark/corpse/miner/rig,
+/atom/movable/spawner/corpse/miner/rig,
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
 "br" = (
@@ -424,7 +424,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "cd" = (
-/atom/movable/landmark/corpse/chef{
+/atom/movable/spawner/corpse/chef{
 	mobname = "Chef"
 	},
 /turf/simulated/floor{
@@ -550,7 +550,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "cH" = (
-/atom/movable/landmark/corpse/chef{
+/atom/movable/spawner/corpse/chef{
 	mobname = "Chef"
 	},
 /turf/simulated/floor,
@@ -560,7 +560,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "cM" = (
-/atom/movable/landmark/corpse/miner/rig,
+/atom/movable/spawner/corpse/miner/rig,
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
 "cN" = (
@@ -637,7 +637,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "dh" = (
-/atom/movable/landmark/corpse/syndicatecommando{
+/atom/movable/spawner/corpse/syndicatecommando{
 	mobname = "Syndicate Commando"
 	},
 /turf/simulated/floor/carpet,
@@ -700,7 +700,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "dy" = (
-/atom/movable/landmark/corpse/miner/rig,
+/atom/movable/spawner/corpse/miner/rig,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dB" = (
@@ -963,7 +963,7 @@
 /area/awaymission/wwmines)
 "eL" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/atom/movable/landmark/corpse/miner/rig,
+/atom/movable/spawner/corpse/miner/rig,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "eM" = (
@@ -1045,7 +1045,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "fh" = (
-/atom/movable/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Doctor Mugabee"
 	},
 /turf/simulated/floor/plating,
@@ -1195,7 +1195,7 @@
 /area/awaymission/wwmines)
 "fR" = (
 /obj/effect/mine/dnascramble,
-/atom/movable/landmark/corpse/miner/rig,
+/atom/movable/spawner/corpse/miner/rig,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "fS" = (
@@ -1265,7 +1265,7 @@
 /turf/simulated/floor,
 /area)
 "ge" = (
-/atom/movable/landmark/corpse/miner/rig,
+/atom/movable/spawner/corpse/miner/rig,
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "gf" = (
@@ -1335,7 +1335,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "gy" = (
-/atom/movable/landmark/corpse/syndicatecommando{
+/atom/movable/spawner/corpse/syndicatecommando{
 	mobname = "Syndicate Commando"
 	},
 /turf/simulated/floor/grass,

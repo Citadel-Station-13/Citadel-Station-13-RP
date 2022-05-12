@@ -16,9 +16,6 @@
 	var/skybox_offset_x = 0
 	var/skybox_offset_y = 0
 
-/atom/movable/overmap_object/entity/visitable/planet/Initialize()
-	. = ..()
-
 /atom/movable/overmap_object/entity/visitable/planet/get_skybox_representation()
 	var/image/skybox_image = image('icons/skybox/planet.dmi', "")
 

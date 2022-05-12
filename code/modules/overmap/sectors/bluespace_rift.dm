@@ -11,7 +11,7 @@
 	var/atom/movable/overmap_object/bluespace_rift/partner
 	var/paused
 
-/atom/movable/overmap_object/bluespace_rift/Initialize(var/mapload, var/new_partner)
+/atom/movable/overmap_object/bluespace_rift/Initialize(mapload, new_partner)
 	. = ..()
 	if(new_partner)
 		pair(new_partner)

@@ -230,6 +230,11 @@
 	var/last_no_computer_message = 0
 	var/applies_stasis = 0	//VOREStation Edit: allow people to change their mind
 
+/obj/machinery/crypod/Initialize(mapload)
+	. = ..()
+	if(type == /obj/machinery/cryopod)	// sue me
+		AddComponent(/datum/component/slaved_atom_to_loc, /atom/movable/landmark/spawnpoint/latejoin/station/cryogenics, TRUE)
+
 /obj/machinery/cryopod/robot
 	name = "robotic storage unit"
 	desc = "A storage unit for robots."

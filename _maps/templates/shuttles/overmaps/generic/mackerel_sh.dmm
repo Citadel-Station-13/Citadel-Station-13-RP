@@ -90,7 +90,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_sh)
 "gU" = (
@@ -103,7 +103,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
 	pixel_x = 30
@@ -183,7 +183,7 @@
 /area/shuttle/mackerel_sh)
 "mw" = (
 /obj/structure/handrail,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
@@ -335,7 +335,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_sh)
 "um" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -462,7 +462,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_sh)
 "Dl" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -546,7 +546,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_sh)
 "Gm" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -607,7 +607,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_sh)
 "Kb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -767,13 +767,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_sh)
 "UY" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_sh)
 "Vs" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /obj/structure/handrail,
@@ -870,7 +870,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_sh)
 "ZJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light{

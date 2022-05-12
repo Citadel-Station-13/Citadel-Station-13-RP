@@ -174,7 +174,7 @@
 	desc = "When you want to turn up the heat."
 	icon_state = "swat"
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/shoes/boots/combat //Basically SWAT shoes combined with galoshes.
@@ -183,7 +183,7 @@
 	icon_state = "swat"
 	force = 5
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 
 	cold_protection = FEET
@@ -215,11 +215,11 @@
 /obj/item/clothing/shoes/boots/swat/para/attack_self(mob/user as mob)
 	if(user.mind.isholy && !blessed)
 		blessed = TRUE
-		item_flags |= NOSLIP
+		clothing_flags |= NOSLIP
 		to_chat(user, "<font color=#4F49AF>You repeat the incantations etched into the boots.</font>")
 	else
 		blessed = FALSE
-		item_flags &= ~NOSLIP
+		clothing_flags &= ~NOSLIP
 		to_chat(user, "<font color=#4F49AF>You dispel the incantations etched into the boots for now.</font>")
 
 	if(!user.mind.isholy)

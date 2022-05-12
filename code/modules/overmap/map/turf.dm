@@ -13,7 +13,7 @@
 	/// vis holder
 	var/atom/movable/overmap_visual_holder/vis_holder
 
-/turf/overmap/Initialize()
+/turf/overmap/Initialize(mapload)
 	. = ..()
 	#warn how do we visualize coords
 	name = "[x]-[y]"

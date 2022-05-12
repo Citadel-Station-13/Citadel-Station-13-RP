@@ -2,7 +2,7 @@
 	desc = "Magnetic boots, often used during extravehicular activity to ensure the user remains safely attached to the vehicle. They're large enough to be worn over other footwear."
 	name = "magboots"
 	icon_state = "magboots0"
-	item_flags = PHORONGUARD
+	clothing_flags = PHORONGUARD
 	item_state_slots = list(slot_r_hand_str = "magboots", slot_l_hand_str = "magboots")
 	species_restricted = null
 	force = 3
@@ -26,14 +26,14 @@
 
 /obj/item/clothing/shoes/magboots/attack_self(mob/user)
 	if(magpulse)
-		item_flags &= ~NOSLIP
+		clothing_flags &= ~NOSLIP
 		magpulse = 0
 		set_slowdown()
 		force = 3
 		if(icon_base) icon_state = "[icon_base]0"
 		to_chat(user, "You disable the mag-pulse traction system.")
 	else
-		item_flags |= NOSLIP
+		clothing_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
 		force = 5
@@ -80,7 +80,7 @@
 /obj/item/clothing/shoes/magboots/examine(mob/user)
 	. = ..()
 	var/state = "disabled"
-	if(item_flags & NOSLIP)
+	if(clothing_flags & NOSLIP)
 		state = "enabled"
 	. += "Its mag-pulse traction system appears to be [state]."
 
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/shoes/magboots/vox/attack_self(mob/user)
 	if(src.magpulse)
-		item_flags &= ~NOSLIP
+		clothing_flags &= ~NOSLIP
 		magpulse = 0
 		canremove = 1
 		to_chat(user, "You relax your deathgrip on the flooring.")
@@ -110,7 +110,7 @@
 			to_chat(user, "You will have to put on the [src] before you can do that.")
 			return
 
-		item_flags |= NOSLIP
+		clothing_flags |= NOSLIP
 		magpulse = 1
 		canremove = 0	//kinda hard to take off magclaws when you are gripping them tightly.
 		to_chat(user, "You dig your claws deeply into the flooring, bracing yourself.")
@@ -121,7 +121,7 @@
 	..()
 	if(src.magpulse)
 		user.visible_message("The [src] go limp as they are removed from [usr]'s feet.", "The [src] go limp as they are removed from your feet.")
-		item_flags &= ~NOSLIP
+		clothing_flags &= ~NOSLIP
 		magpulse = 0
 		canremove = 1
 

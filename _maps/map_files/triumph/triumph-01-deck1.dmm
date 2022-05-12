@@ -248,7 +248,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "aU" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
 	icon_state = "map_vent_in";
@@ -298,7 +298,7 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
 "bb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "bc" = (
@@ -515,7 +515,7 @@
 	},
 /area/tcommsat/computer)
 "bO" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8;
 	scrubbing_gas = list(/datum/gas/carbon_dioxide)
 	},
@@ -570,7 +570,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "ca" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -693,7 +693,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/ftl)
 "cx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/bed/chair/comfy/beige{
@@ -720,7 +720,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "cB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "cC" = (
@@ -785,7 +785,7 @@
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -818,7 +818,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/shunt)
 "cR" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 4;
 	name = "fuel pre-heater"
 	},
@@ -945,7 +945,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "dq" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -1015,7 +1015,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "dG" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1441;
 	id = "n2_in";
@@ -1169,7 +1169,7 @@
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
 "ed" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
@@ -1190,7 +1190,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1404,7 +1404,7 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "eZ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
 "fe" = (
@@ -1487,7 +1487,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "fo" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1515,7 +1515,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1642,7 +1642,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)
 "fQ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -1826,7 +1826,7 @@
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
 "gn" = (
-/obj/machinery/atmospherics/trinary/mixer/m_mixer{
+/obj/machinery/atmospherics/component/trinary/mixer/m_mixer{
 	dir = 4
 	},
 /obj/machinery/light/small,
@@ -1883,7 +1883,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "gz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
 	},
@@ -2011,14 +2011,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "ha" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "hb" = (
 /obj/structure/window/reinforced,
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1;
 	name = "Waste Output to Waste Loop"
 	},
@@ -2037,7 +2037,7 @@
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
 "hh" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "hi" = (
@@ -2096,7 +2096,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_airlock)
 "hn" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1;
 	name = "N2 to Mix"
 	},
@@ -2186,7 +2186,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
@@ -2341,7 +2341,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "ig" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -2401,7 +2401,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "is" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1441;
 	id = "tox_in";
@@ -2577,7 +2577,7 @@
 /turf/simulated/floor/carpet,
 /area/maintenance/dormitory)
 "jf" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -2655,7 +2655,7 @@
 /area/engineering/hallway)
 "js" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2802,7 +2802,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
 "jK" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning,
@@ -2869,7 +2869,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -2892,7 +2892,7 @@
 	},
 /area/tcommsat/chamber)
 "jW" = (
-/obj/machinery/atmospherics/binary/passive_gate{
+/obj/machinery/atmospherics/component/binary/passive_gate{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2999,7 +2999,7 @@
 	},
 /area/tcommsat/entrance)
 "kp" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/camera/network/tcomms{
@@ -3291,7 +3291,7 @@
 	health = 1e+006
 	},
 /obj/structure/window/reinforced,
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1;
 	name = "Mix to Nacelles"
 	},
@@ -3338,7 +3338,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3545,7 +3545,7 @@
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -3656,7 +3656,7 @@
 	dir = 8;
 	health = 1e+006
 	},
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
 	name = "Waste to Filter"
 	},
@@ -3686,7 +3686,7 @@
 	id_tag = "deck1_airlock";
 	pixel_x = 22
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	id_tag = "deck1_airlock"
 	},
@@ -3715,7 +3715,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "mU" = (
-/obj/machinery/atmospherics/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter{
 	filter_type = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3853,7 +3853,7 @@
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/atmos)
 "nq" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/closet/hydrant{
 	pixel_x = 32
 	},
@@ -4060,7 +4060,7 @@
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
 "nU" = (
-/obj/machinery/atmospherics/omni/mixer{
+/obj/machinery/atmospherics/component/quaternary/mixer{
 	tag_east = 2;
 	tag_north = 1;
 	tag_north_con = 0.79;
@@ -4254,7 +4254,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 8;
 	icon_state = "freezer_1";
 	set_temperature = 73;
@@ -4534,7 +4534,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "px" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1;
 	name = "O2 to Mix"
 	},
@@ -4587,7 +4587,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 8;
 	frequency = 2345;
 	id = "starboardnacelle_in";
@@ -4628,7 +4628,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "pK" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -4703,7 +4703,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "pZ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -4735,7 +4735,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/trash_pit)
 "qe" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
@@ -4827,7 +4827,7 @@
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
 "qz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "qA" = (
@@ -4984,7 +4984,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -5143,7 +5143,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -5159,7 +5159,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "rE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
 "rF" = (
@@ -5221,7 +5221,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "rQ" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -5736,7 +5736,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "tA" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1441;
 	id = "co2_in";
@@ -5803,7 +5803,7 @@
 	id = "starboardnacelle_blastdoor";
 	pixel_y = 24
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4;
 	name = "Fuel Line to Thrusters"
 	},
@@ -5945,7 +5945,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_airlock)
 "uh" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
 	name = "Airmix to Distro"
 	},
@@ -6111,7 +6111,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "uQ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -6122,7 +6122,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
 "uS" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -6297,7 +6297,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "vp" = (
-/obj/machinery/atmospherics/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter{
 	filter_type = 3
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -6379,7 +6379,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "vE" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 8;
 	frequency = 1443;
 	id = "air_in";
@@ -6484,7 +6484,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/engineering/atmos/storage)
 "wc" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -6720,7 +6720,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "wP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/bed/chair/comfy/beige{
@@ -6877,14 +6877,14 @@
 /obj/effect/floor_decal/corner/lightorange/bordercee{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4;
 	name = "Fuel Line to Thrusters"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "xk" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6902,7 +6902,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "xq" = (
@@ -6917,7 +6917,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "xs" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
 	},
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
@@ -6971,7 +6971,7 @@
 /area/engineering/portnacelle)
 "xF" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction,
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 8;
 	frequency = 2346;
 	id = "portnacelle_in";
@@ -6985,7 +6985,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
@@ -7108,7 +7108,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_airlock)
 "yf" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -7195,7 +7195,7 @@
 /turf/simulated/wall,
 /area/engineering/hallway/lower)
 "yt" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
@@ -7366,7 +7366,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "yN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
@@ -7534,7 +7534,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "zL" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1;
 	name = "Mix to Filter"
 	},
@@ -7588,7 +7588,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/atmospherics/binary/passive_gate/on{
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
 	regulate_mode = 1
 	},
 /turf/simulated/floor/plating,
@@ -7598,7 +7598,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "zW" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -7624,7 +7624,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -7766,7 +7766,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "AJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -7787,14 +7787,14 @@
 /area/space)
 "AQ" = (
 /obj/structure/closet/emcloset,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "AT" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4;
 	name = "N2O to Mix"
 	},
@@ -7941,7 +7941,7 @@
 /turf/space,
 /area/space)
 "Bw" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -8120,7 +8120,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "Cm" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8389,7 +8389,7 @@
 /area/maintenance/engineering)
 "Df" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
@@ -8569,7 +8569,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "DR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
@@ -8755,7 +8755,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/engineering/atmos)
 "Ew" = (
-/obj/machinery/atmospherics/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter{
 	filter_type = 0
 	},
 /obj/structure/cable/green{
@@ -8913,7 +8913,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "EN" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1441;
 	id = "o2_in";
@@ -9026,7 +9026,7 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/trash_pit)
 "Ff" = (
@@ -9152,7 +9152,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Fq" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/blucarpet,
@@ -9582,7 +9582,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "GC" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9661,7 +9661,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9673,7 +9673,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "GR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/bed/chair/office/dark{
@@ -9697,7 +9697,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_smes)
 "GU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9930,7 +9930,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "HK" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "HL" = (
@@ -9951,7 +9951,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_airlock)
 "HP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -10226,7 +10226,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "IU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/blucarpet,
@@ -10265,7 +10265,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8;
 	scrubbing_gas = list(/datum/gas/carbon_dioxide)
 	},
@@ -10592,7 +10592,7 @@
 /area/engineering/hallway)
 "Ko" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4;
 	name = "CO2 to Mix"
 	},
@@ -10715,7 +10715,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "KL" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -10934,7 +10934,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "Ln" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
@@ -10999,7 +10999,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -11037,7 +11037,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "Lx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -11244,7 +11244,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "Ms" = (
-/obj/machinery/atmospherics/binary/passive_gate{
+/obj/machinery/atmospherics/component/binary/passive_gate{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -11263,7 +11263,7 @@
 /area/engineering/starboardnacelle)
 "Mw" = (
 /obj/structure/bed/chair,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 9
 	},
@@ -11302,7 +11302,7 @@
 /turf/space,
 /area/space)
 "MF" = (
-/obj/machinery/atmospherics/unary/engine/biggest{
+/obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 4
 	},
 /turf/space,
@@ -11418,7 +11418,7 @@
 /turf/simulated/floor/plating,
 /area/station/stairs_one)
 "MV" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/storage/tech)
@@ -11737,7 +11737,7 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "NT" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8;
 	scrubbing_gas = list(/datum/gas/carbon_dioxide)
 	},
@@ -11747,7 +11747,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/portnacelle)
 "NV" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -11904,7 +11904,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)
 "On" = (
-/obj/machinery/atmospherics/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter{
 	filter_type = 2
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -11916,7 +11916,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -12036,7 +12036,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
 "OL" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -12059,7 +12059,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos/storage)
 "ON" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -12079,7 +12079,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/trash_pit)
 "OW" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;
@@ -12178,7 +12178,7 @@
 	},
 /area/tcommsat/chamber)
 "Pn" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -12379,7 +12379,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "Qp" = (
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/hydro,
@@ -12750,7 +12750,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
 "Rq" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/camera/network/engineering,
@@ -12911,7 +12911,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "RJ" = (
-/obj/machinery/atmospherics/trinary/mixer{
+/obj/machinery/atmospherics/component/trinary/mixer{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -12953,7 +12953,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
 "RQ" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/hydro,
@@ -12977,7 +12977,7 @@
 "RU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	name = "Mix To Oxygen Generation"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -13047,7 +13047,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8;
 	name = "Air to Mix"
 	},
@@ -13164,7 +13164,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos/storage)
 "Sx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/engineering_welding,
@@ -13359,7 +13359,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "Tf" = (
@@ -13412,7 +13412,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "Tn" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
@@ -13533,7 +13533,7 @@
 /area/engineering/hallway/lower)
 "TD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -13566,14 +13566,14 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "TJ" = (
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "TM" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -13607,7 +13607,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/maintenance/engi_engine)
 "TY" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
@@ -13952,7 +13952,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1;
 	name = "Scrubbers to Filter"
 	},
@@ -14049,7 +14049,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "Vx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -14095,7 +14095,7 @@
 /area/crew_quarters/heads/chief)
 "VE" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4;
 	name = "Phoron to Mix"
 	},
@@ -14136,7 +14136,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/engineering/hallway/lower)
 "VJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -14171,7 +14171,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -14196,7 +14196,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "VQ" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
 	name = "Airmix to Portables"
 	},
@@ -14206,7 +14206,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
 "VR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -14270,7 +14270,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -14336,7 +14336,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "Wt" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	id_tag = "deck1_airlock"
 	},
@@ -14452,7 +14452,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "WO" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -14485,7 +14485,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "WS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -14669,7 +14669,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "XF" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -14699,7 +14699,7 @@
 	dir = 8
 	},
 /obj/structure/closet/firecloset,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -14733,7 +14733,7 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/engineering/hallway/lower)
 "XT" = (
-/obj/machinery/atmospherics/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter{
 	filter_type = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -14778,7 +14778,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
 "Ya" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -15010,7 +15010,7 @@
 /turf/simulated/wall,
 /area/engineering/storage)
 "YK" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -15047,11 +15047,11 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
 "YY" = (
-/obj/machinery/atmospherics/binary/algae_farm/filled{
+/obj/machinery/atmospherics/component/binary/algae_farm/filled{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15123,7 +15123,7 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "Zl" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
@@ -15167,7 +15167,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_monitoring)
 "Zt" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -15237,13 +15237,13 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "ZD" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "ZE" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -15261,7 +15261,7 @@
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "ZI" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1441;
 	id = "nitrous_in";
@@ -15272,7 +15272,7 @@
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "ZJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/chair/office/dark{
@@ -15308,7 +15308,7 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "ZT" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,

@@ -133,7 +133,7 @@
 	matter = list(MAT_GLASS = 20)
 	w_class = ITEMSIZE_TINY
 
-/obj/item/cell/emergency_light/Initialize()
+/obj/item/cell/emergency_light/Initialize(mapload)
 	. = ..()
 	var/area/A = get_area(src)
 	if(!A.lightswitch || !A.light_power)

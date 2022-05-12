@@ -1,5 +1,3 @@
-//Languages/species/whitelist.
-GLOBAL_LIST_INIT(all_species, list())
 GLOBAL_LIST_INIT(all_languages, list())
 /// Table of say codes for all languages
 GLOBAL_LIST_INIT(language_keys, list())

@@ -179,7 +179,7 @@
 		SPECIES_TESHARI			= 'icons/obj/clothing/suits.dmi'
 		)
 
-/obj/item/clothing/suit/space/void/autolok/Initialize()
+/obj/item/clothing/suit/space/void/autolok/Initialize(mapload)
 	. = ..()
 	helmet = new /obj/item/clothing/head/helmet/space/void/autolok //autoinstall the helmet
 

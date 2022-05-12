@@ -71,7 +71,7 @@ Add those other swinging traps you mentioned above!
 	var/id = "trap_debug_controller"
 	var/broken = FALSE
 
-/obj/effect/trap/Initialize()
+/obj/effect/trap/Initialize(mapload)
 	. = ..()
 	RegisterSimpleNetwork(id)
 
@@ -314,7 +314,7 @@ Add those other swinging traps you mentioned above!
 
 	//This needs to check dirs, projectiles, accuracy, reload/recharge. It's kinda gonna suck. Consult Turret code.
 
-/obj/effect/trap/launcher/Initialize()
+/obj/effect/trap/launcher/Initialize(mapload)
 	. = ..()
 	RegisterSimpleNetwork(id)
 	START_PROCESSING(SSobj, src)

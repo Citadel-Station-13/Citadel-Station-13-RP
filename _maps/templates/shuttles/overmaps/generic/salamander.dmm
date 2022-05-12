@@ -78,7 +78,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/closet/walllocker/autolok_wall{
@@ -101,7 +101,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "bN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 26
 	},
@@ -160,7 +160,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/closet/walllocker/autolok_wall{
@@ -265,7 +265,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "eG" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "eJ" = (
@@ -311,7 +311,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "fn" = (
-/obj/machinery/atmospherics/unary/engine/bigger{
+/obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -327,7 +327,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/salamander_engineering)
 "fD" = (
-/obj/machinery/atmospherics/binary/pump/fuel{
+/obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -357,7 +357,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/railing/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander)
@@ -380,7 +380,7 @@
 /obj/item/clothing/suit/space/void/refurb,
 /obj/item/clothing/head/helmet/space/void/refurb,
 /obj/structure/handrail,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/closet/walllocker_double/north{
 	name = "Voidsuit Locker"
 	},
@@ -426,7 +426,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_cockpit)
 "gC" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_cockpit)
 "gD" = (
@@ -599,7 +599,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "iK" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "iL" = (
@@ -716,11 +716,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_cockpit)
 "kx" = (
-/obj/machinery/atmospherics/binary/pump/fuel,
+/obj/machinery/atmospherics/component/binary/pump/fuel,
 /turf/simulated/floor/plating,
 /area/shuttle/salamander_engineering)
 "kK" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -754,7 +754,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/railing/grey{
@@ -795,7 +795,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -976,7 +976,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "nE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
 /area/shuttle/salamander_engineering)
 "nH" = (
@@ -1085,7 +1085,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "pH" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
@@ -1127,7 +1127,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/closet/walllocker/autolok_wall{
@@ -1327,7 +1327,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_engineering)
 "zQ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1349,7 +1349,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/closet/walllocker/autolok_wall{
@@ -1484,7 +1484,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/closet/walllocker_double/south{
@@ -1639,7 +1639,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/salamander)
 "Pk" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1704,7 +1704,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "RU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,

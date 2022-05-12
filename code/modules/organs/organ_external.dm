@@ -1106,7 +1106,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			"<span class='danger'>You hear a sickening crack.</span>")
 		jostle_bone()
 		if(organ_can_feel_pain() && !isbelly(owner.loc))
-			owner.emote("scream")
+			INVOKE_ASYNC(owner, /mob/proc/emote, "scream")
 
 	playsound(src.loc, "fracture", 10, 1, -2)
 	status |= ORGAN_BROKEN
@@ -1162,9 +1162,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(company)
 		model = company
-		var/datum/robolimb/R = all_robolimbs[company]
+		var/datum/robolimb/R = GLOB.all_robolimbs[company]
 		if(!R || (species && (species.name in R.species_cannot_use)))
-			R = basic_robolimb
+			R = GLOB.basic_robolimb
 		if(R)
 			force_icon = R.icon
 			brute_mod *= R.robo_brute_mod

@@ -134,7 +134,7 @@
 	model_text = "Vintage Master"
 	departments = list("Vintage Crew","Vintage Engineering","Vintage Pilot (Bubble Helm)","Vintage Pilot (Closed Helm)","Vintage Medical (Bubble Helm)","Vintage Medical (Closed Helm)","Vintage Research (Bubble Helm)","Vintage Research (Closed Helm)","Vintage Marine","Vintage Officer","Vintage Mercenary","No Change")
 
-/obj/machinery/suit_cycler/vintage/Initialize()
+/obj/machinery/suit_cycler/vintage/Initialize(mapload)
 	species -= SPECIES_TESHARI
 	return ..()
 

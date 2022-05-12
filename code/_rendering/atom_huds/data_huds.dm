@@ -34,7 +34,6 @@
 /datum/atom_hud/antag
 	hud_icons = list(ANTAG_HUD)
 
-
 // one of these days we'll make /datum/hud_supplier
 // and we can standardize everything
 // today is not that day for i have no patience or motivation left

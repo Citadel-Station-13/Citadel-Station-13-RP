@@ -21,7 +21,7 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	//Most things have a radio tag of some sort that needs adjusting
 	var/tag_addon
 
-/obj/effect/map_helper/airlock/Initialize()
+/obj/effect/map_helper/airlock/Initialize(mapload)
 	..()
 	my_controller = get_controller(get_area(src))
 	my_device = locate(my_device_type) in get_turf(src)
@@ -111,10 +111,10 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 */
 /obj/effect/map_helper/airlock/atmos
 	name = "use a subtype! - airlock pump"
-	my_device_type = /obj/machinery/atmospherics/unary/vent_pump
+	my_device_type = /obj/machinery/atmospherics/component/unary/vent_pump
 
 /obj/effect/map_helper/airlock/atmos/setup()
-	var/obj/machinery/atmospherics/unary/vent_pump/my_pump = my_device
+	var/obj/machinery/atmospherics/component/unary/vent_pump/my_pump = my_device
 	my_pump.frequency = my_controller.frequency //Unlike doors, these set up their radios in atmos init, so they won't have gone before us.
 	my_pump.id_tag = my_controller.id_tag + tag_addon
 

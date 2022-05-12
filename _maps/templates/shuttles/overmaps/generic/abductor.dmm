@@ -249,7 +249,7 @@
 /turf/simulated/shuttle/wall/alien,
 /area/abductor/interior)
 "qk" = (
-/obj/machinery/atmospherics/unary/engine/biggest{
+/obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/alienplating,
@@ -493,7 +493,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Fl" = (
-/obj/machinery/atmospherics/binary/pump/fuel,
+/obj/machinery/atmospherics/component/binary/pump/fuel,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Fq" = (

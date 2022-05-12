@@ -59,7 +59,7 @@
 	fire_sound_text = "a solid thunk"
 	fire_delay = 25
 	slot_flags = SLOT_BACK
-	has_safety = FALSE
+	safety_state = GUN_NO_SAFETY
 	one_handed_penalty = 10
 
 	var/obj/item/bolt
@@ -192,14 +192,14 @@
 	bolt.icon_state = "metal-rod-superheated"
 	cell.use(500)
 
-/obj/item/gun/launcher/crossbow/update_icon()
+/obj/item/gun/launcher/crossbow/update_icon_state()
+	. = ..()
 	if(tension > 1)
 		icon_state = "crossbow-drawn"
 	else if(bolt)
 		icon_state = "crossbow-nocked"
 	else
 		icon_state = "crossbow"
-
 
 // Crossbow construction.
 /obj/item/crossbowframe

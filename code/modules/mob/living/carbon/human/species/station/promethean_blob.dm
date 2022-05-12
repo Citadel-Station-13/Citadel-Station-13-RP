@@ -9,7 +9,7 @@
 	water_resist = 100 // Lets not kill the prommies
 	cores = 0
 	movement_cooldown = 3
-	//appearance_flags = RADIATION_GLOWS
+	//species_appearance_flags = RADIATION_GLOWS
 	shock_resist = 0 // Lets not be immune to zaps.
 	friendly = list("nuzzles", "glomps", "snuggles", "cuddles", "squishes") // lets be cute :3
 	melee_damage_upper = 0
@@ -209,8 +209,10 @@
 	if(humanform)
 		humanform.death(gibbed, deathmessage)
 	else
-		animate(src, alpha = 0, time = 2 SECONDS)
-		sleep(2 SECONDS)
+		var/atom/movable/overlay/O = new(loc)
+		O.appearance = src
+		animate(O, alpha = 0, time = 2 SECONDS)
+		QDEL_IN(O, 2 SECONDS)
 
 	if(!QDELETED(src)) // Human's handle death should have taken us, but maybe we were adminspawned or something without a human counterpart
 		qdel(src)

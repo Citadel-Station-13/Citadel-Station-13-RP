@@ -37,74 +37,13 @@
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
+	var/auto_desc = TRUE
 
 	var/list/stamp_sounds = list(
 		'sound/items/stamp1.ogg',
 		'sound/items/stamp2.ogg',
 		'sound/items/stamp3.ogg'
 		)
-
-/obj/item/paper/card
-	name = "blank card"
-	desc = "A gift card with space to write on the cover."
-	icon_state = "greetingcard"
-	slot_flags = null //no fun allowed!!!!
-
-/obj/item/paper/card/AltClick() //No fun allowed
-	return
-
-/obj/item/paper/card/update_icon()
-	return
-
-/obj/item/paper/card/smile
-	name = "happy card"
-	desc = "A gift card with a smiley face on the cover."
-	icon_state = "greetingcard_smile"
-
-/obj/item/paper/card/cat
-	name = "cat card"
-	desc = "A gift card with a cat on the cover."
-	icon_state = "greetingcard_cat"
-
-/obj/item/paper/card/flower
-	name = "flower card"
-	desc = "A gift card with a flower on the cover."
-	icon_state = "greetingcard_flower"
-
-/obj/item/paper/card/heart
-	name = "heart card"
-	desc = "A gift card with a heart on the cover."
-	icon_state = "greetingcard_heart"
-
-/obj/item/paper/card/Initialize(mapload)
-	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
-	stamps = null
-
-	if(info != initial(info))
-		info = html_encode(info)
-		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
-		return
-
-/obj/item/paper/alien
-	name = "alien tablet"
-	desc = "It looks highly advanced"
-	icon = 'icons/obj/abductor.dmi'
-	icon_state = "alienpaper"
-
-/obj/item/paper/alien/update_icon()
-	if(info)
-		icon_state = "alienpaper_words"
-	else
-		icon_state = "alienpaper"
-
-/obj/item/paper/alien/burnpaper()
-	return
-
-/obj/item/paper/alien/AltClick() // No airplanes for me.
-	return
 
 //lipstick wiping is in code/game/objects/items/weapons/cosmetics.dm!
 
@@ -114,19 +53,19 @@
 	pixel_x = rand(-9, 9)
 	stamps = ""
 
-	if(name != "paper")
+	if((name != "paper") && auto_desc)
 		desc = "This is a paper titled '" + name + "'."
 
 	if(info != initial(info))
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
+		info = init_parsepencode(info)
 
-	spawn(2)
+	// TODO: REFACTOR PAPER
+	spawn(0)
 		update_icon()
 		update_space(info)
 		updateinfolinks()
-		return
 
 /obj/item/paper/update_icon()
 	if(icon_state == "paper_talisman")
@@ -290,6 +229,10 @@
 	if(P && istype(P, /obj/item/pen))
 		return P.get_signature(user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
+
+/obj/item/paper/proc/init_parsepencode(t, P, user, iscrayon)
+	set waitfor = FALSE
+	parsepencode(t, P, user, iscrayon)
 
 /obj/item/paper/proc/parsepencode(var/t, var/obj/item/pen/P, mob/user as mob, var/iscrayon = 0)
 //	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
@@ -632,7 +575,7 @@
 	name = "paper- 'Standard Operating Procedure'"
 	info = "Alert Levels:<BR>\nBlue- Emergency<BR>\n\t1. Caused by fire<BR>\n\t2. Caused by manual interaction<BR>\n\tAction:<BR>\n\t\tClose all fire doors. These can only be opened by reseting the alarm<BR>\nRed- Ejection/Self Destruct<BR>\n\t1. Caused by module operating computer.<BR>\n\tAction:<BR>\n\t\tAfter the specified time the module will eject completely.<BR>\n<BR>\nEngine Maintenance Instructions:<BR>\n\tShut off ignition systems:<BR>\n\tActivate internal power<BR>\n\tActivate orbital balance matrix<BR>\n\tRemove volatile liquids from area<BR>\n\tWear a fire suit<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nToxin Laboratory Procedure:<BR>\n\tWear a gas mask regardless<BR>\n\tGet an oxygen tank.<BR>\n\tActivate internal atmosphere<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nDisaster Procedure:<BR>\n\tFire:<BR>\n\t\tActivate sector fire alarm.<BR>\n\t\tMove to a safe area.<BR>\n\t\tGet a fire suit<BR>\n\t\tAfter:<BR>\n\t\t\tAssess Damage<BR>\n\t\t\tRepair damages<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tMeteor Shower:<BR>\n\t\tActivate fire alarm<BR>\n\t\tMove to the back of ship<BR>\n\t\tAfter<BR>\n\t\t\tRepair damage<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tAccidental Reentry:<BR>\n\t\tActivate fire alarms in front of ship.<BR>\n\t\tMove volatile matter to a fire proof area!<BR>\n\t\tGet a fire suit.<BR>\n\t\tStay secure until an emergency ship arrives.<BR>\n<BR>\n\t\tIf ship does not arrive-<BR>\n\t\t\tEvacuate to a nearby safe area!"
 
-/obj/item/paper/natural/Initialize()
+/obj/item/paper/natural/Initialize(mapload)
 	. = ..()
 	color = "#FFF5ED"
 
@@ -719,3 +662,54 @@
 	name = "weathered note"
 	info = "<I>Jason stayed behind at the shelter, so I know he'll be okay. We've been bunkered down for days now. The seismic activity is getting worse, but the barricades are holding. They're adapting, we think. Someone says they saw a cat, probably from the colony. Sick bastards. We're talking about trying to move out for the shuttles at first light. Jason, if you're reading this, meet me there. I love you. -A</I>"
 */
+
+/obj/item/paper/card
+	name = "blank card"
+	desc = "A gift card with space to write on the cover."
+	icon_state = "greetingcard"
+	slot_flags = null //no fun allowed!!!!
+
+/obj/item/paper/card/AltClick() //No fun allowed
+	return
+
+/obj/item/paper/card/update_icon()
+	return
+
+/obj/item/paper/card/smile
+	name = "happy card"
+	desc = "A gift card with a smiley face on the cover."
+	icon_state = "greetingcard_smile"
+
+/obj/item/paper/card/cat
+	name = "cat card"
+	desc = "A gift card with a cat on the cover."
+	icon_state = "greetingcard_cat"
+
+/obj/item/paper/card/flower
+	name = "flower card"
+	desc = "A gift card with a flower on the cover."
+	icon_state = "greetingcard_flower"
+
+/obj/item/paper/card/heart
+	name = "heart card"
+	desc = "A gift card with a heart on the cover."
+	icon_state = "greetingcard_heart"
+	auto_desc = FALSE
+
+/obj/item/paper/alien
+	name = "alien tablet"
+	desc = "It looks highly advanced"
+	icon = 'icons/obj/abductor.dmi'
+	icon_state = "alienpaper"
+
+/obj/item/paper/alien/update_icon()
+	if(info)
+		icon_state = "alienpaper_words"
+	else
+		icon_state = "alienpaper"
+
+/obj/item/paper/alien/burnpaper()
+	return
+
+/obj/item/paper/alien/AltClick() // No airplanes for me.
+	return

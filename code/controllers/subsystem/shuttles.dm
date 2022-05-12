@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(shuttle)
 	hook_up_shuttle_objects(shuttles_made)
 	shuttles_to_initialize = null
 	/// citadel edit - initialize overmaps shuttles here until we rewrite overmaps to not be a dumpster fire god damnit
-	for(var/obj/machinery/atmospherics/unary/engine/E in world)
+	for(var/obj/machinery/atmospherics/component/unary/engine/E in world)
 		if(E.linked)
 			continue
 		E.link_to_ship()

@@ -101,7 +101,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
 
-	corpse = /atom/movable/landmark/mobcorpse/clown/clownop
+	corpse = /atom/movable/spawner/corpse/clown/clownop
 	loot_list = list(/obj/item/melee/clownop = 100)	// Might as well give it the knife
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
@@ -232,7 +232,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /atom/movable/landmark/mobcorpse/clown/clownop/space
+	corpse = /atom/movable/spawner/corpse/clown/clownop/space
 	loot_list = list(/obj/item/melee/clownstaff = 100)
 
 /mob/living/simple_mob/humanoid/clown/commando/melee/space/Process_Spacemove(var/check_drift = 0)
@@ -241,7 +241,7 @@
 /mob/living/simple_mob/humanoid/clown/commando/melee/space/alt
 	icon_state = "clownop_space_alt_melee"
 	icon_living = "clownop_space_alt_melee"
-	corpse = /atom/movable/landmark/mobcorpse/clown/clownop/space/alt
+	corpse = /atom/movable/spawner/corpse/clown/clownop/space/alt
 
 // Ranged Space Clown
 /mob/living/simple_mob/humanoid/clown/commando/ranged/space
@@ -265,7 +265,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /atom/movable/landmark/mobcorpse/clown/clownop/space
+	corpse = /atom/movable/spawner/corpse/clown/clownop/space
 	loot_list = list(/obj/item/gun/projectile/automatic/clown_rifle = 100,
 					/obj/item/ammo_magazine/mcompressedbio/large/banana = 30,
 					/obj/item/ammo_magazine/mcompressedbio/large/banana = 30
@@ -280,4 +280,4 @@
 /mob/living/simple_mob/humanoid/clown/commando/ranged/space/alt
 	icon_state = "clownop_space_alt_ranged"
 	icon_living = "clownop_space_alt_ranged"
-	corpse = /atom/movable/landmark/mobcorpse/clown/clownop/space/alt
+	corpse = /atom/movable/spawner/corpse/clown/clownop/space/alt

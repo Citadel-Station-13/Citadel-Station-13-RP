@@ -28,7 +28,7 @@
 	var/datum/material/material
 	var/drops_debris = 1
 
-/obj/item/material/Initialize(var/newloc, var/material_key)
+/obj/item/material/Initialize(mapload, material_key)
 	. = ..()
 	if(!material_key)
 		material_key = default_material

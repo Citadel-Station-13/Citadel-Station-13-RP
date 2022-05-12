@@ -16,7 +16,8 @@
 	auto_eject_sound = 'sound/weapons/garand_ping.ogg'
 	one_handed_penalty = 15
 
-/obj/item/gun/projectile/garand/update_icon()
+/obj/item/gun/projectile/garand/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = initial(icon_state)
 	else
@@ -56,5 +57,6 @@
 	projectile_type = /obj/item/projectile/bullet/organic/stinger
 	one_handed_penalty = 25
 
-/obj/item/gun/projectile/apinae_stinger/update_icon()
+/obj/item/gun/projectile/apinae_stinger/update_icon_state()
+	. = ..()
 	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
