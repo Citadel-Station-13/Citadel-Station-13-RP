@@ -615,6 +615,7 @@
 
 		if(talkative)
 			new_item.talking_atom = new(new_item)
+			LAZYINITLIST(new_item.origin_tech)
 			new_item.origin_tech[TECH_ARCANE] = 1
 			new_item.origin_tech[TECH_PRECURSOR] = 1
 
@@ -626,5 +627,3 @@
 
 	else if(talkative)
 		src.talking_atom = new(src)
-		new_item.origin_tech[TECH_ARCANE] = 1
-		new_item.origin_tech[TECH_PRECURSOR] = 1

@@ -157,7 +157,7 @@
 /datum/supply_pack/eng/teg
 	contains = list(
 		/obj/machinery/power/generator,
-		/obj/machinery/atmospherics/binary/circulator = 2)
+		/obj/machinery/atmospherics/component/binary/circulator = 2)
 	name = "Mark I TEG + Circulators"
 	cost = 35
 	container_type = /obj/structure/closet/crate/secure/large
@@ -165,7 +165,7 @@
 	access = access_engine
 /*
 /datum/supply_pack/eng/circulator
-	contains = list(/obj/machinery/atmospherics/binary/circulator = 2)
+	contains = list(/obj/machinery/atmospherics/component/binary/circulator = 2)
 	name = "Binary atmospheric circulators"
 	cost = 15
 	container_type = /obj/structure/closet/crate/secure/large

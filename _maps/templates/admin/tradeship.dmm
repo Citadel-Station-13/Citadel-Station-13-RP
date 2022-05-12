@@ -1837,7 +1837,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "ef" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1331;
 	id_tag = "trade2_vent"
@@ -1864,7 +1864,7 @@
 	pixel_x = 25;
 	req_access = list(160)
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1331;
 	id_tag = "trade2_vent"

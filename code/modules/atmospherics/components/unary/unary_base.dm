@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/unary
+/obj/machinery/atmospherics/component/unary
 	dir = SOUTH
 	initialize_directions = SOUTH
 	construction_type = /obj/item/pipe/directional
@@ -13,20 +13,20 @@
 
 	var/welded = 0 //defining this here for ventcrawl stuff
 
-/obj/machinery/atmospherics/unary/Initialize(mapload)
+/obj/machinery/atmospherics/component/unary/Initialize(mapload)
 	. = ..()
 	air_contents = new
 
 	air_contents.volume = 200
 
-/obj/machinery/atmospherics/unary/init_dir()
+/obj/machinery/atmospherics/component/unary/init_dir()
 	initialize_directions = dir
 
 // Housekeeping and pipe network stuff below
-/obj/machinery/atmospherics/unary/get_neighbor_nodes_for_init()
+/obj/machinery/atmospherics/component/unary/get_neighbor_nodes_for_init()
 	return list(node)
 
-/obj/machinery/atmospherics/unary/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
+/obj/machinery/atmospherics/component/unary/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
 	if(reference == node)
 		network = new_network
 
@@ -37,7 +37,7 @@
 
 	return null
 
-/obj/machinery/atmospherics/unary/Destroy()
+/obj/machinery/atmospherics/component/unary/Destroy()
 	. = ..()
 
 	if(node)
@@ -46,7 +46,7 @@
 
 	node = null
 
-/obj/machinery/atmospherics/unary/atmos_init()
+/obj/machinery/atmospherics/component/unary/atmos_init()
 	if(node)
 		return
 
@@ -60,14 +60,14 @@
 	update_icon()
 	update_underlays()
 
-/obj/machinery/atmospherics/unary/build_network()
+/obj/machinery/atmospherics/component/unary/build_network()
 	if(!network && node)
 		network = new /datum/pipe_network()
 		network.normal_members += src
 		network.build_network(node, src)
 
 
-/obj/machinery/atmospherics/unary/return_network(obj/machinery/atmospherics/reference)
+/obj/machinery/atmospherics/component/unary/return_network(obj/machinery/atmospherics/reference)
 	build_network()
 
 	if(reference==node)
@@ -75,13 +75,13 @@
 
 	return null
 
-/obj/machinery/atmospherics/unary/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
+/obj/machinery/atmospherics/component/unary/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
 	if(network == old_network)
 		network = new_network
 
 	return 1
 
-/obj/machinery/atmospherics/unary/return_network_air(datum/pipe_network/reference)
+/obj/machinery/atmospherics/component/unary/return_network_air(datum/pipe_network/reference)
 	var/list/results = list()
 
 	if(network == reference)
@@ -89,7 +89,7 @@
 
 	return results
 
-/obj/machinery/atmospherics/unary/disconnect(obj/machinery/atmospherics/reference)
+/obj/machinery/atmospherics/component/unary/disconnect(obj/machinery/atmospherics/reference)
 	if(reference==node)
 		qdel(network)
 		node = null
@@ -102,7 +102,7 @@
 // Check if there are any other atmos machines in the same turf that will block this machine from initializing.
 // Intended for use when a frame-constructable machine (i.e. not made from pipe fittings) wants to wrench down and connect.
 // Returns TRUE if something is blocking, FALSE if its okay to continue.
-/obj/machinery/atmospherics/unary/proc/check_for_obstacles()
+/obj/machinery/atmospherics/component/unary/proc/check_for_obstacles()
 	for(var/obj/machinery/atmospherics/M in loc)
 		if(M == src) continue
 		if((M.pipe_flags & pipe_flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.

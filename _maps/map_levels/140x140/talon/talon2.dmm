@@ -23,7 +23,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "ay" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/standard,
@@ -482,7 +482,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "gJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -624,7 +624,7 @@
 /turf/simulated/wall,
 /area/talon/decktwo/kitchen)
 "hR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/talon_engineer,
@@ -704,7 +704,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/kitchen)
 "iq" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -1152,7 +1152,7 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/decktwo/central_hallway)
 "nc" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -1176,7 +1176,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "nj" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "nn" = (
@@ -1319,7 +1319,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/kitchen)
 "ov" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/standard,
@@ -1374,7 +1374,7 @@
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/decktwo_port)
 "oW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -1556,7 +1556,7 @@
 /turf/simulated/floor/plating,
 /area/talon/decktwo/bar)
 "rv" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -1660,7 +1660,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_starboard)
 "sq" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/table/standard,
@@ -1745,7 +1745,7 @@
 /turf/simulated/open,
 /area/talon/decktwo/central_hallway)
 "tE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/table/standard,
@@ -2091,7 +2091,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/kitchen)
 "xH" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/vending/wallmed1{
@@ -2153,7 +2153,7 @@
 /area/talon/maintenance/decktwo_solars)
 "yh" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/vending/wallmed1{
@@ -2195,7 +2195,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/decktwo/eng_room)
 "yF" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -2224,7 +2224,7 @@
 /area/talon/decktwo/sec_room)
 "zb" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/extinguisher_cabinet{
@@ -2275,7 +2275,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "zB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -2479,7 +2479,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/talon/decktwo/cap_room)
 "BU" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/standard,
@@ -2593,7 +2593,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/talon/decktwo/cap_room)
 "Db" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "Dh" = (
@@ -2817,7 +2817,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "Ex" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/talon_guard,
@@ -2903,7 +2903,7 @@
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -3078,7 +3078,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "HW" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/talon_doctor,
@@ -3134,7 +3134,7 @@
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "IQ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/standard,
@@ -3401,7 +3401,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_port)
 "LA" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
@@ -3469,7 +3469,7 @@
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "Mm" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/talon_pilot,
@@ -3721,7 +3721,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/bar)
 "NT" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/cafe,
@@ -3934,7 +3934,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_aft)
 "QN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "QR" = (
@@ -4006,7 +4006,7 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
 "RR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
@@ -4326,7 +4326,7 @@
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/central_hallway)
 "Vy" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -4347,7 +4347,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/eng_room)
 "VG" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/extinguisher_cabinet{

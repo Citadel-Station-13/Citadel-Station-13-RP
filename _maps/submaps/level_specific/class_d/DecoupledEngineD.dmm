@@ -340,7 +340,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "bk" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
