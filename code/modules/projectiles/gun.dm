@@ -829,13 +829,19 @@
 	if(safety_state == GUN_NO_SAFETY)
 		to_chat(user, SPAN_WARNING("[src] has no safety."))
 		return
-	if(user)
-		user.visible_message(SPAN_WARNING("[user] switches the safety of \the [src] [safety_state ? "on" : "off"]."), SPAN_NOTICE("You switch the safety of \the [src] [safety_state ? "on" : "off"]."), SPAN_WARNING("You hear a switch being clicked."), MESSAGE_RANGE_COMBAT_SUBTLE)
+	var/current = check_safety()
 	switch(safety_state)
 		if(GUN_SAFETY_ON)
 			safety_state = GUN_SAFETY_OFF
 		if(GUN_SAFETY_OFF)
 			safety_state = GUN_SAFETY_ON
+	if(user)
+		user.visible_message(
+			SPAN_WARNING("[user] switches the safety of \the [src] [current ? "off" : "on"]."),
+			SPAN_NOTICE("You switch the safety of \the [src] [current ? "off" : "on"].")
+			SPAN_WARNING("You hear a switch being clicked."),
+			MESSAGE_RANGE_COMBAT_SUBTLE
+		)
 	update_appearance()
 	playsound(src, 'sound/weapons/flipblade.ogg', 10, 1)
 
