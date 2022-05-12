@@ -84,7 +84,7 @@
 	if((. = ..()))
 		return
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access Denied.</span>")
+		to_chat(user, SPAN_WARNING("Access Denied."))
 		return TRUE
 	if(ui_status(user, ui_state()) > UI_CLOSE)
 		return interface_interact(user)
