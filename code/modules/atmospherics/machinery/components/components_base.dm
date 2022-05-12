@@ -51,6 +51,8 @@
 	var/shift_to_layer = FALSE
 	/// We double-shift to the layer instead of single shift
 	var/double_layer_shift = FALSE
+	/// how many pixels in our pipe caps render
+	var/pipe_cap_shift_interior = 2
 
 	var/showpipe = FALSE
 

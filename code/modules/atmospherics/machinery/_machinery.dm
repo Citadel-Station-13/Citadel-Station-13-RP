@@ -10,12 +10,18 @@ Pipelines + Other Objects -> Pipe network
 
 */
 /obj/machinery/atmospherics
+	#warn split all icons
+	#warn AAAAAAAAA
+
 	anchored = TRUE
+	// move_resist = INFINITY				//Moving a connected machine without actually doing the normal (dis)connection things will probably cause a LOT of issues.
 	idle_power_usage = 0
 	active_power_usage = 0
 	power_channel = ENVIRON
-	layer = ATMOS_LAYER
-	plane = PLATING_PLANE
+	layer = GAS_PIPE_HIDDEN_LAYER //under wires
+	plane = ABOVE_WALL_PLANE
+	// resistance_flags = FIRE_PROOF
+	// max_integrity = 200
 	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
 
 	/// See __DEFINES/atmospherics
@@ -30,8 +36,25 @@ Pipelines + Other Objects -> Pipe network
 	var/device_type = NONE
 	/// Directions we'll connect in. Set dynamically by our dir.
 	var/initialize_directions = NONE
+	#warn impl
+
+#warn eval below (it's still new)
+
+	var/nodealert = 0
+	var/can_unwrench = 0
+	var/pipe_color
+
+	var/static/list/iconsetids = list()
+	var/static/list/pipeimages = list()
+
+	var/image/pipe_vision_img = null
+
+	var/construction_type
+	var/pipe_state //icon_state as a pipe item
+	var/on = FALSE
 
 
+#warn BELOW IS LEGACY
 
 	///The color of the pipe
 	var/pipe_color
@@ -47,6 +70,50 @@ Pipelines + Other Objects -> Pipe network
 	var/global/datum/pipe_icon_manager/icon_manager
 	var/obj/machinery/atmospherics/node1
 	var/obj/machinery/atmospherics/node2
+
+#warn ABOVE IS LEGACY
+
+/obj/machinery/atmospherics/Initialize(mapload, process = TRUE, setdir, setlayer, constructed = FALSE)
+	if(!isnull(setdir))
+		setDir(setdir)
+	if(!isnull(setlayer))
+		pipe_layer = setlayer
+	if (!armor)
+		armor = list("melee" = 25, "bullet" = 10, "laser" = 10, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 70)
+	. = ..()
+	if(process)
+		if(interacts_with_air)
+			SSair.atmos_air_machinery += src
+		else
+			SSair.atmos_machinery += src
+	if(SSair.initialized && !mapload && !constructed)
+		// if not custom constructing, immediately init
+		// If mapload, we're in a template, wait for finish.
+		InitAtmos()
+
+/obj/machinery/atmospherics/Destroy()
+	Leave()
+	SSair.atmos_machinery -= src
+	SSair.atmos_air_machinery -= src
+
+	dropContents()
+	if(pipe_vision_img)
+		qdel(pipe_vision_img)
+
+	return ..()
+	//return QDEL_HINT_FINDREFERENCE
+
+/**
+ * Called once on init.
+ */
+/obj/machinery/atmospherics/proc/InitAtmos(immediate_join = TRUE)
+	connected = new /list(MaximumPossibleNodes())
+	if(!immediate_join)
+		return
+	Join()
+
+#warn ABOVE AAAAAAAAAA
+#warn BELOW IS LEGACY
 
 /obj/machinery/atmospherics/Initialize(mapload, newdir)
 	. = ..()
