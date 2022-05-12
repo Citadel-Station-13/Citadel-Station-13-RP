@@ -31,5 +31,5 @@ Apply regexes in this order:
 `/atom/movable/landmark/mobcorpse`-`/atom/movable/spawner/corpse`
 
 // ATMOSPHERICS
-`obj/machinery/atmospherics/omni`-`obj/machinery/atmospherics/component/quaternary`
-`obj/machinery/atmospherics/(unary|binary|trinary)`-`obj/machinery/atmospherics/component/$1`
+`/obj/machinery/atmospherics/omni`-`/obj/machinery/atmospherics/component/quaternary`
+`/obj/machinery/atmospherics/(unary|binary|trinary)`-`/obj/machinery/atmospherics/component/$1`
