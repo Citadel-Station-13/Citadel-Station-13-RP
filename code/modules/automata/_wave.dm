@@ -22,14 +22,15 @@
 	powers = list()
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
-			// no preprocessing at all
+			// no directionals at all
 			edges[T] = ALL_DIRECTION_BITS
 			powers[T] = power
 		if(WAVE_SPREAD_SHADOW_LIKE)
-			edges[T] = dirs? (dirs &= ~(DIAGONAL_DIRECTION_BITS)) : CARDINAL_DIRECTION_BITS
+			// directionals fully allowed
+			edges[T] = dirs? dirs : ALL_DIRECTION_BITS
 			powers[T] = power
 		if(WAVE_SPREAD_SHOCKWAVE)
-			// no directionals
+			// no directionals. we use cardinal bits, though, due to the algorithm.
 			edges[T] = CARDINAL_DIRECTION_BITS
 			powers[T] = power
 		else
@@ -89,8 +90,18 @@
 					SIMPLE_EXPAND(_T, _ND, _ret)
 #undef SIMPLE_EXPAND
 		if(WAVE_SPREAD_SHADOW_LIKE)
+			#warn impl
+			// preliminary attempt:
+			// propagate cardinals forwards with a cardinal and 45 deg diagonals
+			// propagate diagonals forwards with 45 deg cardinals only
+			// this prevents corner clipping
 
 		if(WAVE_SPREAD_SHOCKWAVE)
+			// this is annoying
+			// to simulate diagonals we do a cardinal tick
+			// and gather the diagonals using turn's at 90 degrees
+			// and then tick the diagonals in a second processing step
+			#warn impl
 
 	// if next if empty...
 	if(!edges_next.len)
