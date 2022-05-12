@@ -60,7 +60,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 		envdry,
 		manual_x,
 		manual_y,
-		distance_multiplier = 1
+		distance_multiplier = 1,
 		wait = FALSE
 	) {
 	/**
