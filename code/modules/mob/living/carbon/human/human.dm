@@ -385,8 +385,14 @@
 /mob/living/carbon/human/Topic(href, href_list)
 
 	if (href_list["refresh"])
-		if((machine)&&(in_range(src, usr)))
-			show_inv(machine)
+		if(ismob(machine) && in_range(src, usr))
+			// hi, if you see me on git blame, trust me, this code is dumb
+			// but what came before was dumber
+			// whoever wrote this initially can go to hell, who the fuck in their right mind uses
+			// "machine"  for a mob?
+			// it makes no sense, fuck you, get bent.
+			var/mob/M = machine
+			M.show_inv(usr)
 
 	if (href_list["mach_close"])
 		var/t1 = text("window=[]", href_list["mach_close"])
