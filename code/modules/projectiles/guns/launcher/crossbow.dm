@@ -59,7 +59,7 @@
 	fire_sound_text = "a solid thunk"
 	fire_delay = 25
 	slot_flags = SLOT_BACK
-	has_safety = FALSE
+	safety_state = GUN_NO_SAFETY
 	one_handed_penalty = 10
 
 	var/obj/item/bolt

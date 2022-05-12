@@ -89,7 +89,7 @@
 	var/tmp/lock_time = -100
 
 	/// whether or not we have safeties and if safeties are on
-	var/safety = GUN_SAFETY_ON
+	var/safety_state = GUN_SAFETY_ON
 
 	var/dna_lock = 0				//whether or not the gun is locked to dna
 	var/obj/item/dnalockingchip/attached_lock
@@ -783,7 +783,7 @@
 	if(firemodes.len > 1)
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		. += "The fire selector is set to [current_mode.name]."
-	if(has_safety)
+	if(safety != GUN_NO_SAFETY)
 		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
@@ -856,5 +856,5 @@
 /**
  * returns TRUE/FALSE based on if we have safeties on
  */
-/obj/item/gun/proc/check_check_safety()
+/obj/item/gun/proc/check_safety()
 	return !(safety_state == GUN_SAFETY_ON)
