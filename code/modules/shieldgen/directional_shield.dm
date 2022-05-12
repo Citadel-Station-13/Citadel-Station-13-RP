@@ -108,7 +108,7 @@
 		QDEL_NULL(C)
 	return ..()
 
-/obj/item/shield_projector/Initialize()
+/obj/item/shield_projector/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	if(always_on)
 		create_shields()

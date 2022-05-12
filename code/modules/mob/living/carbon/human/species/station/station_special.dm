@@ -121,7 +121,7 @@
 
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE//Whitelisted as restricted is broken.
 	flags = NO_SCAN | NO_INFECT | NO_DEFIB //Dying as a chimera is, quite literally, a death sentence. Well, if it wasn't for their revive, that is.
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart/xenochimera,
@@ -409,51 +409,12 @@
 	// HUD update time
 	update_xenochimera_hud(H, danger, feral_state)
 
-/datum/species/shapeshifter/xenochimera/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
-	ASSERT(to_copy)
-	ASSERT(istype(H))
-
-	if(ispath(to_copy))
-		to_copy = "[initial(to_copy.name)]"
-	if(istext(to_copy))
-		to_copy = GLOB.all_species[to_copy]
-
-	var/datum/species/shapeshifter/xenochimera/new_copy = new()
-
-	//Initials so it works with a simple path passed, or an instance
-	new_copy.base_species = to_copy.name
-	new_copy.icobase = to_copy.icobase
-	new_copy.deform = to_copy.deform
-	new_copy.tail = to_copy.tail
-	new_copy.tail_animation = to_copy.tail_animation
-	new_copy.icobase_tail = to_copy.icobase_tail
-	new_copy.color_mult = to_copy.color_mult
-	new_copy.primitive_form = to_copy.primitive_form
-	new_copy.appearance_flags = to_copy.appearance_flags
-	new_copy.flesh_color = to_copy.flesh_color
-	new_copy.base_color = to_copy.base_color
-	new_copy.blood_mask = to_copy.blood_mask
-	new_copy.damage_mask = to_copy.damage_mask
-	new_copy.damage_overlays = to_copy.damage_overlays
-
-	//Set up a mob
-	H.species = new_copy
-	H.icon_state = lowertext(new_copy.get_bodytype())
-
-	if(new_copy.holder_type)
-		H.holder_type = new_copy.holder_type
-
-	if(H.dna)
-		H.dna.ready_dna(H)
-
-	return new_copy
-
 /datum/species/shapeshifter/xenochimera/get_bodytype()
 	return base_species
 
-/datum/species/shapeshifter/xenochimera/get_race_key()
-	var/datum/species/real = GLOB.all_species[base_species]
-	return real.race_key
+/datum/species/shapeshifter/xenochimera/get_race_key(mob/living/carbon/human/H)
+	var/datum/species/real = name_static_species_meta(base_species)
+	return real.real_race_key(H)
 
 /datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
 	if(H.xenochimera_danger_display)
@@ -730,7 +691,7 @@
 
 	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E" //Gray-ish. Not sure if this is really needed, but eh.
 	base_color 	= "#333333" //Blackish-gray
@@ -785,7 +746,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vulpkanin)
 
 	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash)
@@ -864,7 +825,7 @@
 
 	flags = NO_MINOR_CUT
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#D8BB00" //Chitinous yellow.
 	base_color 	= "#333333" //Blackish-gray

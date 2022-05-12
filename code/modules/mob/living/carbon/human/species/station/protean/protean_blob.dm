@@ -52,7 +52,7 @@
 	var/obj/prev_left_hand
 	var/obj/prev_right_hand
 
-	player_msg = "In this form, you can move a little faster, your health will regenerate as long as you have metal in you, and you can ventcrawl!"
+	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
 	can_buckle = TRUE //Blobsurfing
 
@@ -70,7 +70,6 @@
 		humanform = H
 		updatehealth()
 		refactory = locate() in humanform.internal_organs
-		verbs |= /mob/living/proc/ventcrawl
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
@@ -147,9 +146,6 @@
 		humanform.adjustBruteLossByPart(amount, BP_TORSO)
 	else
 		..()
-
-/mob/living/simple_mob/protean_blob/ventcrawl_carry()
-	return TRUE //proteans can have literally any small inside them and should still be able to ventcrawl regardless.
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
 	if(humanform)
@@ -546,7 +542,7 @@
 	..()
 	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
 
-/datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp/ventcrawling
+/datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp
 	name = "Protean Blob Effect - Steel"
 	desc = "You're affected by the presence of steel."
 

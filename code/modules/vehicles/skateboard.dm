@@ -22,7 +22,7 @@
 	var/board_item_type = null
 	var/rough_terrain = FALSE
 
-/obj/vehicle/skateboard/Initialize()
+/obj/vehicle/skateboard/Initialize(mapload)
 	. = ..()
 	sparks = new
 	sparks.set_up(1, 0, src)
@@ -496,7 +496,7 @@
 	icon_state = "scooter"
 	board_item_type = /obj/item/melee/skateboard/scooter
 
-/obj/vehicle/skateboard/scooter/Initialize()
+/obj/vehicle/skateboard/scooter/Initialize(mapload)
 	. = ..()
 
 /obj/vehicle/skateboard/scooter/attackby(obj/item/W, mob/user)
@@ -590,7 +590,7 @@
 	icon = null
 	density = FALSE
 
-/obj/vehicle/ridden/scooter/wheelys/Initialize()
+/obj/vehicle/ridden/scooter/wheelys/Initialize(mapload)
 	. = ..()
 	var/datum/component/riding/D = LoadComponent(/datum/component/riding)
 	D.vehicle_move_delay = 1

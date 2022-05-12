@@ -64,7 +64,7 @@
 	throwforce = round(force*thrown_force_divisor)
 	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throwforce [throwforce] when made from default material [material.name]")
 
-/obj/item/material/twohanded/Initialize(newloc, material_key)
+/obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
 	update_icon()
 

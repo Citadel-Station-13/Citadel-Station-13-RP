@@ -1,92 +1,92 @@
-/mob/living/carbon/human/skrell/Initialize(var/new_loc)
+/mob/living/carbon/human/skrell
 	h_style = "Skrell Short Tentacles"
-	return ..(new_loc, SPECIES_SKRELL)
+	species = /datum/species/skrell
 
-/mob/living/carbon/human/tajaran/Initialize(var/new_loc)
+/mob/living/carbon/human/tajaran
 	h_style = "Tajaran Ears"
-	return ..(new_loc, SPECIES_TAJ)
+	species = /datum/species/tajaran
 
-/mob/living/carbon/human/unathi/Initialize(var/new_loc)
+/mob/living/carbon/human/unathi
 	h_style = "Unathi Horns"
-	return ..(new_loc, SPECIES_UNATHI)
+	species = /datum/species/unathi
 
-/mob/living/carbon/human/vox/Initialize(var/new_loc)
+/mob/living/carbon/human/vox
 	h_style = "Short Vox Quills"
-	return ..(new_loc, SPECIES_VOX)
+	species = /datum/species/vox
 
-/mob/living/carbon/human/diona/Initialize(var/new_loc)
-	return ..(new_loc, SPECIES_DIONA)
+/mob/living/carbon/human/diona
+	species = /datum/species/diona
 
-/mob/living/carbon/human/teshari/Initialize(var/new_loc)
+/mob/living/carbon/human/teshari
 	h_style = "Teshari Default"
-	return ..(new_loc, SPECIES_TESHARI)
+	species = /datum/species/teshari
 
-/mob/living/carbon/human/promethean/Initialize(var/new_loc)
-	return ..(new_loc, SPECIES_PROMETHEAN)
+/mob/living/carbon/human/promethean
+	species = /datum/species/shapeshifter/promethean
 
-/mob/living/carbon/human/zaddat/Initialize(var/new_loc)
-	return ..(new_loc, SPECIES_ZADDAT)
+/mob/living/carbon/human/zaddat
+	species = /datum/species/zaddat
 
-/mob/living/carbon/human/monkey/Initialize(var/new_loc)
-	return ..(new_loc, SPECIES_MONKEY)
+/mob/living/carbon/human/monkey
+	species = /datum/species/monkey
 
-/mob/living/carbon/human/farwa/Initialize(var/new_loc)
-	return ..(new_loc, SPECIES_MONKEY_TAJ)
+/mob/living/carbon/human/farwa
+	species = /datum/species/monkey/tajaran
 
-/mob/living/carbon/human/neaera/Initialize(var/new_loc)
-	return ..(new_loc, SPECIES_MONKEY_SKRELL)
+/mob/living/carbon/human/neaera
+	species = /datum/species/monkey/skrell
 
-/mob/living/carbon/human/stok/Initialize(var/new_loc)
-	return ..(new_loc, SPECIES_MONKEY_UNATHI)
+/mob/living/carbon/human/stok
+	species = /datum/species/monkey/unathi
 
-/mob/living/carbon/human/event1/Initialize(var/new_loc)
-	return ..(new_loc, SPECIES_EVENT1)
-
-/mob/living/carbon/human/sergal/Initialize(mapload, new_species)
+/mob/living/carbon/human/sergal
 	h_style = "Sergal Plain"
-	return ..(mapload, SPECIES_SERGAL)
+	species = /datum/species/sergal
 
-/mob/living/carbon/human/akula/Initialize(mapload)
-	return ..(mapload, SPECIES_AKULA)
+/mob/living/carbon/human/akula
+	species = /datum/species/akula
 
-/mob/living/carbon/human/nevrean/Initialize(mapload)
-	return ..(mapload, SPECIES_NEVREAN)
+/mob/living/carbon/human/nevrean
+	species = /datum/species/nevrean
 
-/mob/living/carbon/human/xenochimera/Initialize(mapload)
-	return ..(mapload, SPECIES_XENOCHIMERA)
+/mob/living/carbon/human/xenochimera
+	species = /datum/species/shapeshifter/xenochimera
 
-/mob/living/carbon/human/xenohybrid/Initialize(mapload, new_species)
-	return ..(mapload, SPECIES_XENOHYBRID)
+/mob/living/carbon/human/xenohybrid
+	species = /datum/species/xenohybrid
 
-/mob/living/carbon/human/spider/Initialize(mapload)
-	return ..(mapload, SPECIES_VASILISSAN)
+/mob/living/carbon/human/spider
+	species = /datum/species/spider
 
-/mob/living/carbon/human/vulpkanin/Initialize(mapload)
-	return ..(mapload, SPECIES_VULPKANIN)
+/mob/living/carbon/human/vulpkanin
+	species = /datum/species/vulpkanin
 
-/mob/living/carbon/human/protean/Initialize(mapload)
-	return ..(mapload, SPECIES_PROTEAN)
+/mob/living/carbon/human/protean
+	species = /datum/species/protean
 
-/mob/living/carbon/human/alraune/Initialize(mapload)
-	return ..(mapload, SPECIES_ALRAUNE)
+/mob/living/carbon/human/alraune
+	species = /datum/species/alraune
 
-/mob/living/carbon/human/apidaen/Initialize(mapload)
-	return ..(mapload, SPECIES_APIDAEN)
+/mob/living/carbon/human/apidaen
+	species = /datum/species/apidaen
 
-/mob/living/carbon/human/vetala_ruddy/Initialize(mapload)
-	return ..(mapload, "Vetala (Ruddy)")
+/mob/living/carbon/human/vetala_ruddy
+	species = /datum/species/vetala_ruddy
 
-/mob/living/carbon/human/vetala_pale/Initialize(mapload)
-	return ..(mapload, "Vetala (Pale)")
+/mob/living/carbon/human/vetala_pale
+	species = /datum/species/vetala_pale
 
-/mob/living/carbon/human/auril/Initialize(mapload)
-	return ..(mapload, SPECIES_AURIL)
+/mob/living/carbon/human/auril
+	species = /datum/species/auril
 
-/mob/living/carbon/human/dremachir/Initialize(mapload)
-	return ..(mapload, SPECIES_DREMACHIR)
+/mob/living/carbon/human/dremachir
+	species = /datum/species/dremachir
 
-/mob/living/carbon/human/shadekin/Initialize(mapload)
-	return ..(mapload, SPECIES_SHADEKIN)
+/mob/living/carbon/human/shadekin
+	species = /datum/species/shadekin
+
+/mob/living/carbon/human/adherent
+	species = /datum/species/adherent
 
 /mob/living/carbon/human/dummy
 	real_name = "Test Dummy"
@@ -112,7 +112,7 @@
 INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
 /mob/living/carbon/human/dummy/mannequin
 
-/mob/living/carbon/human/dummy/mannequin/Initialize()
+/mob/living/carbon/human/dummy/mannequin/Initialize(mapload)
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -143,7 +143,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
 				H.equip_to_slot_or_del(new PICK(H), slot_shoes)
 				H.update_inv_shoes()
 
-/mob/living/carbon/human/dummy/mannequin/plastic/Initialize()
+/mob/living/carbon/human/dummy/mannequin/plastic/Initialize(mapload)
 	. = ..()
 	name = "Plastic Mannequin"
 	real_name = "Plastic Mannequin"
@@ -173,7 +173,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
 				H.equip_to_slot_or_del(new PICK(H), slot_shoes)
 				H.update_inv_shoes()
 
-/mob/living/carbon/human/dummy/mannequin/samurai/Initialize()
+/mob/living/carbon/human/dummy/mannequin/samurai/Initialize(mapload)
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -205,7 +205,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/samurai, slot_wear_suit)
 				H.update_inv_wear_suit()
 
-/mob/living/carbon/human/dummy/mannequin/animegirl/Initialize()
+/mob/living/carbon/human/dummy/mannequin/animegirl/Initialize(mapload)
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -234,7 +234,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
 				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/plain/eyepatch, slot_wear_suit)
 				H.update_inv_glasses()
 
-/mob/living/carbon/human/dummy/mannequin/mummy/Initialize()
+/mob/living/carbon/human/dummy/mannequin/mummy/Initialize(mapload)
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -263,7 +263,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/pharaoh, slot_wear_suit)
 				H.update_inv_wear_suit()
 
-/mob/living/carbon/human/dummy/mannequin/scarecrow/Initialize()
+/mob/living/carbon/human/dummy/mannequin/scarecrow/Initialize(mapload)
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -291,6 +291,3 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
 			if(!gloves)
 				H.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather, slot_wear_suit)
 				H.update_inv_gloves()
-
-/mob/living/carbon/human/adherent/New(var/new_loc)
-	return ..(new_loc, SPECIES_ADHERENT)

@@ -70,6 +70,13 @@
 
 /datum/category_item/player_setup_item/keybinding/bindings/sanitize_preferences()
 	pref.key_bindings = sanitize_islist(pref.key_bindings, list())
+	for(var/key in pref.key_bindings)
+		var/list/L = pref.key_bindings[key]
+		for(var/kb in L)
+			if(!GLOB.keybindings_by_name[kb])
+				L -= kb
+		if(!length(L))
+			pref.key_bindings -= key
 
 /datum/category_item/player_setup_item/keybinding/bindings/content(mob/user)
 	. = list()

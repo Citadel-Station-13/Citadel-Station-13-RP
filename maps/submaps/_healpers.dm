@@ -47,7 +47,7 @@
 	var/obj/structure/fake_stairs/target //Don't set this manually, let it do it!
 	var/stepoff_dir
 
-/obj/structure/fake_stairs/Initialize(var/mapload)
+/obj/structure/fake_stairs/Initialize(mapload)
 	. = ..()
 
 	for(var/obj/structure/fake_stairs/FS in world)

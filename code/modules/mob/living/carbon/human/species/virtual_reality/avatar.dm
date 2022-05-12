@@ -35,7 +35,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,
 		/mob/living/carbon/human/proc/regenerate,
-		/mob/living/carbon/human/proc/shapeshifter_change_opacity,
+		// /mob/living/carbon/human/proc/shapeshifter_change_opacity,	GO FUCK YOURSELF, THAT ENTIRE PROC WAS A DUMPSTER FIRE AND YOU SHOULD KNOW BETTER
 		/mob/living/carbon/human/proc/exit_vr
 		)
 
@@ -46,6 +46,8 @@
 /datum/species/shapeshifter/promethean/avatar/handle_environment_special(var/mob/living/carbon/human/H)
 	return
 
+/* NO. YOU CAN HAVE THIS BACK WHEN THIS DOESNT SWAP SPECIES TO CHANGE OPACITY
+	FUCK OFF
 /mob/living/carbon/human/proc/shapeshifter_change_opacity()
 
 	set name = "Toggle Opacity"
@@ -62,7 +64,7 @@
 	else
 		icon_state = "promethean"
 		shapeshifter_change_species(SPECIES_VR)
-
+*/
 
 // enter_vr is called on the original mob, and puts the mind into the supplied vr mob
 /mob/living/carbon/human/proc/enter_vr(var/mob/living/carbon/human/avatar) // Avatar is currently a human, because we have preexisting setup code for appearance manipulation, etc.
@@ -113,4 +115,4 @@
 
 	if(istype(vr_holder.loc, /obj/machinery/vr_sleeper))
 		var/obj/machinery/vr_sleeper/V = vr_holder.loc
-		V.go_out()
+		INVOKE_ASYNC(V, /obj/machinery/vr_sleeper/proc/go_out, TRUE)

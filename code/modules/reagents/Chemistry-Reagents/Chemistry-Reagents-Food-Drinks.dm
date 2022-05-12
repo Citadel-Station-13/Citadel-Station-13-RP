@@ -4189,7 +4189,7 @@ End Citadel Change */
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
 /datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(var/mob/living/carbon/M)
 	var/threshold = 360//Human heatdamage threshold
-	var/datum/species/S = M.get_species(1)
+	var/datum/species/S = M.get_species_name(1)
 	if (S && istype(S))
 		threshold = S.heat_level_1
 

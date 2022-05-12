@@ -200,7 +200,7 @@
 /atom/movable/landmark/spawnpoint/job/ai
 	name = "AI"
 	icon_state = "AI"
-	delete_after_roundstart = TRUE
+	delete_on_roundstart = TRUE
 	job_path = /datum/job/station/ai
 	var/primary_ai = TRUE
 	var/latejoin_active = TRUE

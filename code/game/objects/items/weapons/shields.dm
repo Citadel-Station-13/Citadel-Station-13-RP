@@ -115,7 +115,7 @@
 	var/obj/item/flash/embedded_flash
 	var/flashfail = 0
 
-/obj/item/shield/riot/flash/Initialize()
+/obj/item/shield/riot/flash/Initialize(mapload)
 	. = ..()
 	embedded_flash = new(src)
 

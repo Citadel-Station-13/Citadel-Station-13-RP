@@ -13,7 +13,7 @@
 
 	var/datum/tgui_module/camera/camera
 
-/obj/machinery/computer/security/Initialize()
+/obj/machinery/computer/security/Initialize(mapload)
 	. = ..()
 	if(!LAZYLEN(network))
 		network = get_default_networks()
@@ -77,7 +77,7 @@
 	circuit = /obj/item/circuitboard/security/telescreen/entertainment
 	var/obj/item/radio/radio = null
 
-/obj/machinery/computer/security/telescreen/entertainment/Initialize()
+/obj/machinery/computer/security/telescreen/entertainment/Initialize(mapload)
 	. = ..()
 	radio = new(src)
 	radio.listening = TRUE
