@@ -783,7 +783,7 @@
 	if(firemodes.len > 1)
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		. += "The fire selector is set to [current_mode.name]."
-	if(safety != GUN_NO_SAFETY)
+	if(safety_state != GUN_NO_SAFETY)
 		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
