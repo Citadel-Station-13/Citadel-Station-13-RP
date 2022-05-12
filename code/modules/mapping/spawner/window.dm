@@ -1,5 +1,5 @@
 /atom/movable/spawner/window
-	icon = 'icons/mapping/spawners/window.dmi'
+	icon = 'icons/mapping/spawners/windows.dmi'
 	icon_state = "glass_grille_pane"
 	late = TRUE
 
@@ -8,9 +8,9 @@
 	/// spawn grille at all?
 	var/spawn_grille = TRUE
 	/// full window path
-	var/window_full_path = /obj/structure/window/full
+	var/window_full_path = /obj/structure/window/basic/full
 	/// pane path
-	var/window_pane_path = /obj/structure/window
+	var/window_pane_path = /obj/structure/window/basic
 	/// found dirs
 	var/found_dirs = NONE
 
