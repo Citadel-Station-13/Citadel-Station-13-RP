@@ -3479,13 +3479,13 @@
 /area/tradeport/safari)
 "mD" = (
 /obj/structure/table/rack,
-/obj/item/kit/paint/ripley/death,
-/obj/item/kit/paint/ripley/flames_blue,
-/obj/item/kit/paint/ripley/flames_red,
-/obj/item/kit/paint/ripley,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/random/paintkit,
+/obj/random/paintkit,
+/obj/random/paintkit,
+/obj/random/paintkit,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "mF" = (
@@ -9767,8 +9767,11 @@
 /area/tradeport/pads)
 "JN" = (
 /obj/structure/table/rack,
-/obj/item/kit/paint/durand,
 /obj/effect/floor_decal/industrial/warning,
+/obj/item/kit/paint/honker,
+/obj/random/paintkit/durand,
+/obj/random/paintkit/gygax,
+/obj/random/paintkit/gygax,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "JO" = (

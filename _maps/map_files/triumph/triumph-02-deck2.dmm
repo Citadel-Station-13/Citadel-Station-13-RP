@@ -4238,9 +4238,6 @@
 /area/crew_quarters/fitness)
 "lY" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/computer/shuttle_control/explore/mining{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "lZ" = (
@@ -13469,7 +13466,6 @@
 	icon_state = "1-2"
 	},
 /obj/effect/shuttle_landmark/triumph/deck2/mining,
-/obj/effect/overmap/visitable/ship/landable/mining,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "MF" = (

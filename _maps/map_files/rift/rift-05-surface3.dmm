@@ -329,6 +329,15 @@
 "aA" = (
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
+"aC" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "aD" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/effect/floor_decal/spline/plain{
@@ -3009,6 +3018,17 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
+"fo" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "32-4"
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/supply{
+	dir = 4
+	},
+/turf/simulated/open/lythios43c,
+/area/rift/trade_shop/landing_pad)
 "fp" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/floor_decal/spline/plain,
@@ -3987,6 +4007,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
+"ha" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Public External Airlock"
+	},
+/obj/effect/map_helper/airlock/door/int_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/trade_shop/landing_pad)
 "hb" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -4747,6 +4780,29 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"iB" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/airlock_sensor/phoron{
+	dir = 5;
+	id_tag = "trade_airlock_sensor";
+	name = "frostlock sensor";
+	pixel_x = 38;
+	pixel_y = 24
+	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/trade_shop/landing_pad)
 "iC" = (
 /obj/machinery/alarm{
 	desc = " ";
@@ -5254,6 +5310,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
+"jy" = (
+/turf/simulated/wall/r_wall,
+/area/rift/trade_shop/landing_pad)
 "jz" = (
 /obj/structure/table/steel,
 /obj/machinery/light/small,
@@ -5644,6 +5703,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
+"kf" = (
+/turf/simulated/floor/tiled/monotile,
+/area/rift/trade_shop/landing_pad)
 "kg" = (
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/glass/bucket,
@@ -5740,6 +5802,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"kr" = (
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "ks" = (
 /obj/structure/table/standard,
 /obj/machinery/light{
@@ -6278,6 +6343,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
+"lo" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1379;
+	id_tag = "trade_airlock_pump"
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/plating,
+/area/rift/trade_shop/landing_pad)
 "lp" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -6416,6 +6493,25 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
+"lB" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	frequency = 1379;
+	scrub_id = "trade_airlock_scrubber"
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop/landing_pad)
 "lC" = (
 /turf/simulated/floor/tiled/white,
 /area/bridge/bunker)
@@ -6549,6 +6645,28 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
+"lT" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Public External Airlock"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/map_helper/airlock/door/int_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "trade_airlock";
+	pixel_x = 26;
+	pixel_y = -8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/trade_shop/landing_pad)
 "lU" = (
 /obj/machinery/computer/shuttle_control/explore/emt{
 	dir = 8
@@ -6974,6 +7092,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"mL" = (
+/obj/structure/metal_edge,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "mM" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -7039,6 +7161,15 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
+"mT" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/monotile,
+/area/rift/trade_shop/landing_pad)
 "mU" = (
 /obj/machinery/door/airlock/glass_command{
 	dir = 1;
@@ -7246,6 +7377,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"np" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/wall,
+/area/rift/surfacebase/outside/outside3)
 "nq" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -8089,6 +8227,18 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/teleporter/departing)
+"pd" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	on = 1
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop/landing_pad)
 "pe" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
@@ -8524,6 +8674,17 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
+"pZ" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/rift/trade_shop/landing_pad)
 "qa" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/machinery/light{
@@ -8664,6 +8825,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"qs" = (
+/turf/simulated/open/lythios43c,
+/area/rift/trade_shop/landing_pad)
 "qt" = (
 /obj/structure/plasticflaps,
 /obj/machinery/conveyor{
@@ -8889,6 +9053,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
+"qS" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/monotile,
+/area/rift/trade_shop/landing_pad)
 "qT" = (
 /obj/structure/railing{
 	dir = 1
@@ -9121,6 +9289,24 @@
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
+"ru" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1379;
+	id_tag = "trade_airlock_pump"
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "trade_airlock";
+	name = "Frost Lock Controller";
+	pixel_x = -6;
+	pixel_y = 26
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop/landing_pad)
 "rv" = (
 /turf/simulated/wall,
 /area/exploration/courser_dock)
@@ -10091,6 +10277,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
+"ts" = (
+/obj/effect/shuttle_landmark/rift/deck3/trade,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "tu" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -10626,6 +10816,20 @@
 /obj/effect/spider/spiderling/virgo,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
+"ux" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/trade_shop/landing_pad)
 "uy" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -10761,6 +10965,17 @@
 /obj/structure/inflatable,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
+"uQ" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop/landing_pad)
 "uR" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -10857,6 +11072,20 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/exploration)
+"uY" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop/landing_pad)
 "uZ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -10990,6 +11219,15 @@
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/grass,
 /area/hydroponics)
+"vm" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "vn" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -12279,6 +12517,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/general)
+"xH" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/rift/trade_shop/landing_pad)
 "xJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -14031,6 +14280,19 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"Bm" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Public External Airlock"
+	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/trade_shop/landing_pad)
 "Bn" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain,
@@ -14235,6 +14497,12 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
+"BK" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "BL" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -16940,6 +17208,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
+"Hs" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/trade_shop/landing_pad)
 "Ht" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -17803,6 +18080,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
+"Ji" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/rift/trade_shop/landing_pad)
 "Jj" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/machinery/firealarm{
@@ -18397,6 +18684,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
+"Kn" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Ko" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
@@ -19041,6 +19337,10 @@
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
+"LH" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "LI" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/material/ashtray/glass,
@@ -22248,6 +22548,26 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
+"RZ" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/trade_shop/landing_pad)
 "Sa" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
@@ -23785,6 +24105,15 @@
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
+"Vt" = (
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "rift_trade_dock";
+	pixel_x = 26;
+	pixel_y = -1
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Vu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -23914,6 +24243,28 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/secondary/docking_hallway)
+"VL" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Public External Airlock"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 1;
+	master_tag = "trade_airlock";
+	pixel_x = 26;
+	pixel_y = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/rift/trade_shop/landing_pad)
 "VM" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -24307,7 +24658,7 @@
 /obj/structure/catwalk,
 /obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/plating,
-/area/shuttle/courser/cockpit)
+/area/shuttle/courser/general)
 "WE" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
@@ -31981,26 +32332,26 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+aC
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+UZ
+mj
+mL
 Oi
 Oi
 Oi
@@ -32174,28 +32525,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+vm
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mj
+mL
 Oi
 Oi
 Oi
@@ -32368,28 +32719,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -32562,28 +32913,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -32756,28 +33107,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -32950,28 +33301,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -33144,28 +33495,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -33338,28 +33689,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -33532,28 +33883,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -33726,28 +34077,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -33920,28 +34271,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -34114,28 +34465,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -34308,28 +34659,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -34502,28 +34853,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -34696,28 +35047,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -34890,28 +35241,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -35084,28 +35435,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -35278,28 +35629,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -35472,28 +35823,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+mL
 Oi
 Oi
 Oi
@@ -35666,30 +36017,30 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
+cH
+cH
 Oi
 Oi
 Oi
@@ -35860,31 +36211,31 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -36054,39 +36405,39 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
+cH
+cH
+cH
+cH
+jy
+jy
+jy
+jy
+jy
+jy
+jp
 Oi
 Oi
 Oi
@@ -36247,41 +36598,41 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
+cH
+jy
+jy
+jy
+jy
+qs
+qs
+jy
+fo
+jy
+jp
+cH
 Oi
 Oi
 Oi
@@ -36440,43 +36791,43 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
+cH
+jy
+pd
+lB
+jy
+qs
+qs
+jy
+uQ
+jy
+jp
+cH
+cH
 Oi
 Oi
 Oi
@@ -36631,47 +36982,47 @@ OC
 xS
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+ts
+us
+us
+LH
+kr
+Bm
+Hs
+ux
+ha
+kf
+qS
+jy
+uQ
+jy
+jp
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -36830,39 +37181,39 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+Zh
+kr
+VL
+iB
+RZ
+lT
+xH
+kf
+jy
+uQ
+jy
+jp
 cH
 cH
 cH
@@ -37024,39 +37375,39 @@ cH
 cH
 cH
 cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+jy
+ru
+lo
+jy
+pZ
+mT
+Ji
+uY
+jy
+jp
 cH
 cH
 cH
@@ -37218,39 +37569,39 @@ cH
 cH
 cH
 cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+jy
+jy
+jy
+jy
+jy
+jy
+jy
+jy
+jy
+jp
 cH
 cH
 cH
@@ -37412,28 +37763,28 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
 cH
 cH
 cH
@@ -37606,28 +37957,28 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
 cH
 cH
 cH
@@ -37800,28 +38151,28 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
 cH
 cH
 cH
@@ -37994,28 +38345,28 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
 cH
 cH
 cH
@@ -38188,28 +38539,28 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
 cH
 cH
 cH
@@ -38382,28 +38733,28 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+BK
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+mn
+jp
 cH
 cH
 cH
@@ -38576,28 +38927,28 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+Kn
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+Vt
+tI
+jp
 cH
 cH
 cH
@@ -38771,26 +39122,26 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+Kn
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+np
+jp
 cH
 cH
 cH
@@ -44342,7 +44693,7 @@ OZ
 Qb
 OZ
 WD
-OZ
+HB
 HB
 Ye
 AC

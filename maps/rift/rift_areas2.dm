@@ -670,3 +670,17 @@ Do this eventually. */
 /area/rift/surfacebase/outside/west_caves
 	name = "Western Plains Caverns"
 	icon_state = "red"
+
+//Trade Pad/Shop
+/area/rift/trade_shop
+	name = "\improper Trade Shop"
+	icon_state = "green"
+
+/area/rift/trade_shop/landing_pad
+	name = "\improper Trade Shop Landing Pad"
+
+/area/rift/trade_shop/loading
+	name = "\improper Trade Shop Loading Corridor"
+
+/area/rift/trade_shop/debugger
+	name = "\improper Trade Shop Debugger"
