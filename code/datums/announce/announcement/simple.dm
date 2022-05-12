@@ -1,7 +1,20 @@
+/**
+ * simple announcement proc
+ * use for when you don't need to edit more variables in the announcement.
+ *
+ * @params
+ * - announcer - announcer to use
+ * - source - message source
+ * - name - name of report
+ * - message - message body. supports HTML.
+ * - sound_preamble - preamble sound, if any - either a sound datum, soundbyte, or soundbyte alias
+ * - sound_main - ditto
+ */
 /proc/simple_announcement(datum/announcer/announcer, source = "Installation Annoucement", name = "General Alert", message = "Test message, please ignore.", sound_preamble, sound_main)
 	#warn defaults
-	var/datum/announcement/simple/A = new(announcer, source, name, message, sound_preamble, sound_main)
-	A.Announce()
+	var/datum/announcement/simple/A = new(source, name, message, sound_preamble, sound_main)
+	A.Announce(announcer)
+	qdel(A)
 
 /**
  * simple one-off announcement
@@ -23,22 +36,32 @@
 	var/datum/soundbyte/sound_preamble
 	/// main soundbyte - synced to message
 	var/datum/soundbyte/sound_main
+	/// volume to play sounds at, if any
+	var/sound_volume
+	/// enable sound environments?
+	var/sound_allow_environment = TRUE
 
-/datum/announcement/simple/New(datum/announcer/announcer, source, name, message, preamble, main)
-	. = ..(announcer)
+/datum/announcement/simple/New(source, name, message, preamble, main)
+	. = ..()
 	src.source = source
 	src.name = name
 	src.message = message
 	src.sound_preamble = SSsounds.fetch_soundbyte(preamble)
 	src.sound_main = SSsounds.fetch_soundbyte(main)
 
-/datum/announcement/simple/Run()
+/datum/announcement/simple/Destroy()
+	sound_preamble = null
+	sound_main = null
+	return ..()
+
+/datum/announcement/simple/Run(datum/announcer/announcer)
 	var/delay = (istype(sound_preamble) && sound_preamble.length) || 0
-	if(sound_preamble)
-		announcer.
-	addtimer
-	if(delay)
-
-	else
-
-	#warn impl
+	// if we aren't using soundbytes, reserve a channel for 15 seconds
+	var/channel = ReserveSoundChannelFor(delay || (15 SECONDS))
+	// get affected first so the announcer doesn't recheck 3 times
+	var/list/affected = announcer.GetAffected()
+	if(premable)
+		announcer.SendSound(sound_preamble, channel, affected, sound_volume, sound_allow_environment)
+	if(main)
+		addtimer(CALLBACK(announcer, /datum/announcer/proc/SendSound, sound_main, channel, affected, sound_volume, sound_allow_environment), delay)
+	addtimer(CALLBACK(announcer, /datum/announcer/proc/SendText, source, name, message, affected), delay)

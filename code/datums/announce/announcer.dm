@@ -14,21 +14,38 @@
 	src.location = location
 
 /**
+ * get affected things
+ */
+/datum/announcer/proc/GetAffected()
+	return location?.get_affected_atoms() || list()
+
+/**
  * sends text in an announcement
  *
  * @params
  * - source - source name, e.g. central command
  * - name - e.g. research director's desk announcement, proximity alarm, etc
  * - message - message body. **supports HTML**
+ * - affected - affected atoms. used to optimize.
  */
-/datum/announcer/proc/SendText(source, name, message)
+/datum/announcer/proc/SendText(source, name, message, list/affected = location?.get_affected_atoms())
+	// no default implementation
+	CRASH("Default announcer SendText called")
 
 /**
  * sends sound in an announcement
  *
  * @params
- * - SB - soundbyte datum, id, or alias. it is ensured within the announcer that the soundbyte is synchronized.
+ * - SB - soundbyte datum
+ * - channel - channel to use. used for reservation/synchronization.
+ * - affected - affected atoms. used to optimize.
+ * - volume - volume override for sound.
+ * - sound_environment - true/false - if true, allow playsound_local to use local environment.
  */
-/datum/announcer/proc/SendSound(datum/soundbyte/SB)
+/datum/announcer/proc/SendSound(sound/S, channel, list/affected = location?.get_affected_atoms(), volume, sound_environment = TRUE)
+	// default implementation given since we only care for players
+	if(!istype(S))
+		CRASH("Invalid sound [S] passed in. Ensure sounds are preprocessed before sending into announcers.")
+	for(var/mob/M in affected)
+		M.playsound_local(turf_source = sound_environment? get_turf(M) : null, soundin = S, channel = channel, volume = volume)
 
-#warn imp

@@ -46,6 +46,9 @@ GLOBAL_VAR_INIT(sound_offscreen_falloff_factor, 5)
 GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 
 /mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, channel = 0, pressure_affected = TRUE, sound/S, preference, envwet, envdry, manual_x, manual_y, distance_multiplier = 1)
+	if(!client)
+		return
+
 	if(isnull(envwet))
 		envwet = GLOB.sound_env_wet
 	if(isnull(envdry))
@@ -61,7 +64,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 		return
 */
 
-	if(!client || ear_deaf > 0)
+	if(ear_deaf > 0)
 		return
 
 	if(preference && !client.is_preference_enabled(preference))
