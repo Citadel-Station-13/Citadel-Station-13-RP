@@ -471,12 +471,12 @@
 	desc = "A healthy, fat pumpkin. It looks as if it was freshly plucked from its vines and shows no signs of decay."
 	icon_state = "decor-pumpkin"
 
-/obj/effect/landmark/carved_pumpkin_spawn
+/atom/movable/landmark/carved_pumpkin_spawn
 	name = "jack o'lantern spawn"
 	icon = 'icons/obj/flora/pumpkins.dmi'
 	icon_state = "spawner-jackolantern"
 
-/obj/effect/landmark/carved_pumpkin_spawn/New()
+/atom/movable/landmark/carved_pumpkin_spawn/New()
     var/new_pumpkin = pick(
 		prob(70);/obj/structure/flora/pumpkin,
         prob(60);/obj/structure/flora/pumpkin/carved,
@@ -523,9 +523,9 @@
 		return
 
 	if(ckeys_that_took[user.ckey])
-		to_chat(user, span("warning", "There are no pumpkins that look familiar to you."))
+		to_chat(user, SPAN_WARNING( "There are no pumpkins that look familiar to you."))
 		return
-	to_chat(user, span("notice", "After a bit of searching, you locate a pumpkin with your face carved into it!"))
+	to_chat(user, SPAN_NOTICE("After a bit of searching, you locate a pumpkin with your face carved into it!"))
 	ckeys_that_took[user.ckey] = TRUE
 	var/obj/item/G = new gift_type(src)
 	user.put_in_hands(G)

@@ -2,7 +2,7 @@
 	name = "syringe gun"
 	desc = "Exosuit-mounted chem synthesizer with syringe gun. Reagents inside are held in stasis, so no reactions will occur. (Can be attached to: Medical Exosuits)"
 	mech_flags = EXOSUIT_MODULE_MEDICAL
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/launcher.dmi'
 	icon_state = "syringegun"
 	var/list/syringes
 	var/list/known_reagents
@@ -317,7 +317,7 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/mecha_parts/mecha_equipment/crisis_drone/Initialize()
+/obj/item/mecha_parts/mecha_equipment/crisis_drone/Initialize(mapload)
 	. = ..()
 	drone_overlay = new(src.icon, icon_state = droid_state)
 

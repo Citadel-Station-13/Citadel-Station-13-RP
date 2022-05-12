@@ -289,7 +289,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "aP" = (
-/obj/effect/landmark/costume,
+/atom/movable/landmark/costume/random,
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
@@ -382,7 +382,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bj" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Holocarp Spawn"
 	},
 /turf/simulated/floor/holofloor/reinforced,
@@ -1347,7 +1347,7 @@
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm5)
 "ec" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Holocarp Spawn Random"
 	},
 /turf/simulated/floor/holofloor/space,
@@ -1496,11 +1496,11 @@
 /area/centcom/control)
 "eF" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm5)
 "eG" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm5)
 "eH" = (
@@ -1529,11 +1529,11 @@
 /area/holodeck/source_beach)
 "eN" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm6)
 "eO" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm6)
 "eP" = (
@@ -1928,7 +1928,7 @@
 	},
 /area/holodeck/holodorm/source_beach)
 "gm" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Wolfgirl Spawn"
 	},
 /turf/simulated/floor/holofloor/snow,
@@ -2039,7 +2039,7 @@
 /area/shuttle/escape)
 "hg" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Catgirl Spawn"
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -3794,7 +3794,7 @@
 /area/centcom/simulated/medical)
 "FH" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "endgame_exit"
 	},
 /obj/item/toy/plushie/mouse{
@@ -4960,11 +4960,11 @@
 /area/unknown/dorm4)
 "SQ" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm4)
 "SR" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm4)
 "SS" = (
@@ -5111,11 +5111,11 @@
 /area/unknown/dorm3)
 "TC" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm3)
 "TD" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm3)
 "TE" = (
@@ -5126,13 +5126,13 @@
 /area/unknown/dorm3)
 "TF" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "endgame_exit"
 	},
 /turf/unsimulated/beach/sand,
 /area/beach)
 "TG" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "endgame_exit"
 	},
 /turf/unsimulated/beach/sand,
@@ -5268,11 +5268,11 @@
 /area/unknown/dorm2)
 "Uk" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm2)
 "Ul" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm2)
 "Um" = (
@@ -5430,11 +5430,11 @@
 /area/unknown/dorm1)
 "UW" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm1)
 "UX" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm1)
 "UY" = (

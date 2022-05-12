@@ -1160,3 +1160,76 @@ obj/item/clothing/suit/kamishimo
 	name = "replica imperial officer armor"
 	desc = "Not all heroes wear capes, but it'd be cooler if they did. This appears less sturdy than the authentic article."
 	icon_state = "ge_armorcent"
+
+/obj/item/clothing/suit/darkfur
+	name = "vexatious coat"
+	desc = "A sleek jacket with a dark fur lining around the collar. All the rage on Infernum."
+	icon_state = "darkfur_jacket"
+	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
+	body_parts_covered = UPPER_TORSO|ARMS
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER\
+		|ACCESSORY_SLOT_UTILITY)
+
+//Main's Formal Coats
+/obj/item/clothing/suit/storage/parade_coat
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal"
+
+/obj/item/clothing/suit/storage/parade_coat/fem
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal_f"
+
+/obj/item/clothing/suit/storage/parade_coat/hos
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "hosformal"
+
+/obj/item/clothing/suit/storage/parade_coat/hos_fem
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "hosformal_f"
+
+/obj/item/clothing/suit/storage/parade_coat/centcom
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "centcomformal"
+
+/obj/item/clothing/suit/storage/parade_coat/centcom_fem
+	name = "central command officer's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "centcomformal_f"
+
+//Someone's on the line.
+/obj/item/clothing/suit/storage/toggle/letterman
+	name = "worn letterman jacket"
+	desc = "A worn varsity letterman jacket. Some of the faded stains around the cuffs are rather suspicious."
+	icon_state = "varsity_letterman"
+
+/obj/item/clothing/suit/storage/pullover
+	name = "pullover hoodie"
+	desc = "A plain-colored hoodie with no zipper to speak of. The exonet debate on whether it's hotter to watch one get pulled off or zipped open still rages on. You could prove one of the sides right today!"
+	icon_state = "hoodie_pullover"
+
+/obj/item/clothing/suit/storage/pullover/nt
+	name = "pullover hoodie (NT)"
+	desc = "A plain-colored hoodie with no zipper to speak of. The exonet debate on whether it's hotter to watch one get pulled off or zipped open still rages on. You could prove one of the sides right today! This one is dyed in NT colors and has the trademark NanoTrasen logo!"
+	icon_state = "hoodie_pullover_NT"
+
+/obj/item/clothing/suit/storage/umbral
+	name = "Umbral Duster"
+	desc = "This thick duster, constructed out of black leather and red suede, presents an utterly demonic profile. Adorned with chased silver chains, anchored into the very fabric itself in the device of an esoteric skull, this jacket will fit in anywhere. As long as it's a leather club or metal concert."
+	icon_state = "umbral"
+
+//Pending shift to Donator.
+/obj/item/clothing/suit/storage/toggle/pariah
+	name = "Springtime Pariah Moto Jacket"
+	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
+	icon_state = "pariah"
+
+/obj/item/clothing/suit/storage/mekkyaku
+	name = "Mekkyaku hoodie"
+	desc = "This crisp white hoodie bears a strange manufacturer's mark. The colorful red accents stand out against the snowy white cloth with evocative flair."
+	icon_state = "mekkyaku"

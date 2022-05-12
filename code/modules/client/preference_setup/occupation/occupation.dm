@@ -160,7 +160,7 @@
 		if(job.minimum_character_age && user.client && (user.client.prefs.age < job.minimum_character_age))
 			. += "<del>[rank]</del></td></a><td> \[MINIMUM CHARACTER AGE: [job.minimum_character_age]]</td></tr>"
 			continue
-		if((pref.job_civilian_low & ASSISTANT) && job.type != /datum/job/assistant)
+		if((pref.job_civilian_low & ASSISTANT) && job.type != /datum/job/station/assistant)
 			. += "<font color=grey>[rank]</font></a></td><td></td></tr>"
 			continue
 		if((rank in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND) ) || (rank == "AI"))//Bold head jobs
@@ -197,7 +197,7 @@
 
 		. += "<a href='?src=\ref[src];set_job=[rank];level=[prefUpperLevel]' oncontextmenu='javascript:return setJobPrefRedirect([prefLowerLevel], \"[rank]\");'>"
 
-		if(job.type == /datum/job/assistant)//Assistant is special
+		if(job.type == /datum/job/station/assistant)//Assistant is special
 			if(pref.job_civilian_low & ASSISTANT)
 				. += " <font color=55cc55>\[Yes]</font>"
 			else
@@ -303,7 +303,7 @@
 	if(!job)
 		return 0
 
-	if(job.type == /datum/job/assistant)
+	if(job.type == /datum/job/station/assistant)
 		if(pref.job_civilian_low & job.flag)
 			pref.job_civilian_low &= ~job.flag
 		else
@@ -365,6 +365,7 @@
 					pref.job_engsec_med |= job.flag
 				if(3)
 					pref.job_engsec_low |= job.flag
+/*	// Commenting out for now (Just in case this breaks everything)
 		//VOREStation Add
 		if(TALON)
 			pref.job_talon_low &= ~job.flag
@@ -379,6 +380,7 @@
 				if(3)
 					pref.job_talon_low |= job.flag
 		//VOREStation Add End
+*/
 
 	return 1
 
@@ -433,6 +435,7 @@
 					return job_engsec_med
 				if(3)
 					return job_engsec_low
+/*	// I really hope this doesnt break anything. It shouldnt, but it always worries me -Bloop
 		//VOREStation Add
 		if(TALON)
 			switch(level)
@@ -443,4 +446,5 @@
 				if(3)
 					return job_talon_low
 		//VOREStation Add End
+*/
 	return 0

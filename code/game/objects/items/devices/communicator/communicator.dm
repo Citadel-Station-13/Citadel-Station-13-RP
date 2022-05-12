@@ -26,7 +26,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	show_messages = 1
 
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_MAGNET = 2, TECH_BLUESPACE = 2, TECH_DATA = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
+	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 	var/video_range = 3
 	var/obj/machinery/camera/communicator/video_source	// Their camera
@@ -79,7 +79,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: None
 // Description: Adds the new communicator to the global list of all communicators, sorts the list, obtains a reference to the Exonet node, then tries to
 //				assign the device to the holder's name automatically in a spectacularly shitty way.
-/obj/item/communicator/Initialize()
+/obj/item/communicator/Initialize(mapload)
 	. = ..()
 	all_communicators += src
 	sortTim(all_communicators, /proc/cmp_name_asc)
@@ -184,9 +184,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: None
 // Description: Simple check to see if the exonet node is active.
 /obj/item/communicator/proc/get_connection_to_tcomms()
-	if(node && node.on && node.allow_external_communicators)
-		return can_telecomm(src,node)
-	return 0
+	return node && node.on && node.allow_external_communicators && can_telecomm(src, node)
 
 // Proc: process()
 // Parameters: None
@@ -194,7 +192,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/process()
 	update_ticks++
 	if(update_ticks % 5)
-		if(!node)
+		if(!get_connection_to_tcomms())
 			node = get_exonet_node()
 		if(!get_connection_to_tcomms())
 			close_connection(reason = "Connection timed out")
@@ -226,13 +224,16 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	update_icon()
 	ui_interact(user)
 
+/obj/item/communicator/AltClick(mob/user)
+	attack_self(user)
+
 // Proc: MouseDrop()
 //Same thing PDAs do
 /obj/item/communicator/MouseDrop(obj/over_object as obj)
 	var/mob/M = usr
 	if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
 		return
-	if(!istype(over_object, /obj/screen))
+	if(!istype(over_object, /atom/movable/screen))
 		return attack_self(M)
 	return
 
@@ -251,7 +252,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Proc: New()
 // Parameters: None
 // Description: Gives ghosts an exonet address based on their key and ghost name.
-/mob/observer/dead/Initialize()
+/mob/observer/dead/Initialize(mapload)
 	. = ..()
 	exonet = new(src)
 	if(client)
@@ -316,6 +317,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: None
 // Description: Self explanatory
 /obj/item/communicator/update_icon_state()
+	. = ..()
 	if(video_source)
 		icon_state = "communicator_wave"
 		return
@@ -349,6 +351,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	slot_flags = SLOT_GLOVES
 
 /obj/item/communicator/watch/update_icon_state()
+	. = ..()
 	if(video_source)
 		icon_state = "commwatch-video"
 		return
@@ -362,4 +365,3 @@ var/global/list/obj/item/communicator/all_communicators = list()
 		return
 
 	icon_state = initial(icon_state)
-

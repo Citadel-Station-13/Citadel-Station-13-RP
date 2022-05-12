@@ -12,9 +12,7 @@
 /area/awaymission/snowfield
 	icon_state = "blank"
 //	requires_power = 0
-	base_turf = /turf/snow/snow2
 	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
-	base_turf = /turf/simulated/floor/snow/snow2
 
 /area/awaymission/snowfield/outside
 	icon_state = "green"
@@ -111,7 +109,7 @@
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. The controls are locked."
 	icon_state = "smes"
 
-/obj/effect/landmark/away
+/atom/movable/landmark/away
 	name = "awaystart"
 
 /obj/effect/floor_decal/derelict/d1

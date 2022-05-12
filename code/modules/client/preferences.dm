@@ -60,6 +60,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/r_skin = 238					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
 	var/g_skin = 206					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
 	var/b_skin = 179					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
+	var/s_base = ""						//For Adherent
 	var/r_eyes = 0						//Eye color
 	var/g_eyes = 0						//Eye color
 	var/b_eyes = 0						//Eye color
@@ -86,7 +87,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/antag_vis = "Hidden"			//How visible antag association is to others.
 
 		//Mob preview
-	var/list/char_render_holders		//Should only be a key-value list of north/south/east/west = obj/screen.
+	var/list/char_render_holders		//Should only be a key-value list of north/south/east/west = atom/movable/screen.
 	var/static/list/preview_screen_locs = list(
 		"1" = "character_preview_map:2,7",
 		"2" = "character_preview_map:2,5",
@@ -162,15 +163,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/lastnews // Hash of last seen lobby news content.
 
-	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
-	var/directory_tag = "Unset" //Sorting tag to use in character directory
-	var/directory_erptag = "Unset"	//ditto, but for non-vore scenes
-	var/directory_ad = ""		//Advertisement stuff to show in character directory.
-	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
+	//Character Directory Stuff
+	///Should we show in Character Directory
+	var/show_in_directory = 1
+	///Sorting tag to use for vore-prefs
+	var/directory_tag = "Unset"
+	///Sorting tag to use for erp-prefs
+	var/directory_erptag = "Unset"
+	///Advertisement stuff to show in character directory.
+	var/directory_ad = ""
 
-	// Should we automatically fit the viewport?
+	///Set character's suit sensor level
+	var/sensorpref = 5
+
+	///Should we automatically fit the viewport?
 	var/auto_fit_viewport = TRUE
-	// Should we be in the widescreen mode set by the config?
+	///Should we be in the widescreen mode set by the config?
 	var/widescreenpref = FALSE	// Doesn't exist... Yet.
 
 /datum/preferences/New(client/C)
@@ -294,7 +302,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(!client)
 		return
 
-	var/obj/screen/setup_preview/bg/BG= LAZYACCESS(char_render_holders, "BG")
+	var/atom/movable/screen/setup_preview/bg/BG= LAZYACCESS(char_render_holders, "BG")
 	if(!BG)
 		BG = new
 		BG.plane = TURF_PLANE
@@ -306,7 +314,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	BG.screen_loc = preview_screen_locs["BG"]
 
 	for(var/D in GLOB.cardinal)
-		var/obj/screen/setup_preview/O = LAZYACCESS(char_render_holders, "[D]")
+		var/atom/movable/screen/setup_preview/O = LAZYACCESS(char_render_holders, "[D]")
 		if(!O)
 			O = new
 			O.pref = src
@@ -324,7 +332,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences/proc/clear_character_previews()
 	for(var/index in char_render_holders)
-		var/obj/screen/S = char_render_holders[index]
+		var/atom/movable/screen/S = char_render_holders[index]
 		client?.screen -= S
 		qdel(S)
 	char_render_holders = null
@@ -392,7 +400,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	player_setup.sanitize_setup()
 
 	// This needs to happen before anything else becuase it sets some variables.
-	character.set_species(species)
+	character.set_species(species_type_by_name(species))
 	// Special Case: This references variables owned by two different datums, so do it here.
 	if(be_random_name)
 		real_name = random_name(identifying_gender,species)
@@ -402,6 +410,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	// VOREStation Edit - Sync up all their organs and species one final time
 	character.force_update_organs()
+//	character.s_base = s_base //doesn't work, fuck me
 
 	if(icon_updates)
 		character.force_update_limbs()
@@ -413,6 +422,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(LAZYLEN(character.descriptors))
 		for(var/entry in body_descriptors)
 			character.descriptors[entry] = body_descriptors[entry]
+
+/datum/preferences/proc/character_static_species_meta()
+	return name_static_species_meta(species) || get_static_species_meta(/datum/species/human)
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body>"

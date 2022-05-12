@@ -11,7 +11,7 @@
 						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "backup_implant"
-//CITADEL CHANGE - ALTERING IMPLANT DATA
+
 /obj/item/implant/backup/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
@@ -24,16 +24,14 @@
 <b>Special Features:</b> Allows the restoration of employees within an eight hour period.<BR>
 <b>Integrity:</b> Sturdy, weak against acidic compounds."}
 	return dat
-//END OF CITADEL CHANGE
+
 /obj/item/implant/backup/Destroy()
 	SStranscore.implants -= src
 	return ..()
 
 /obj/item/implant/backup/post_implant(var/mob/living/carbon/human/H)
 	if(istype(H))
-		BITSET(H.hud_updateflag, BACKUP_HUD)
 		SStranscore.implants |= src
-
 		return 1
 
 //New, modern implanter instead of old style implanter.
@@ -48,7 +46,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000)
+	matter = list(MAT_STEEL = 2000, MAT_GLASS = 2000)
 	var/list/obj/item/implant/backup/imps = list()
 	var/max_implants = 4 //Iconstates need to exist due to the update proc!
 

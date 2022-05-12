@@ -1,6 +1,6 @@
-/*!
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
+/**
+ *! Copyright (c) 2020 Aleksej Komarov
+ *! SPDX-License-Identifier: MIT
  */
 
 /**
@@ -33,6 +33,6 @@ GLOBAL_DATUM_INIT(not_incapacitated_turf_state, /datum/ui_state/not_incapacitate
 		return UI_DISABLED
 	if(isliving(user))
 		var/mob/living/L = user
-		if(!(L.mobility_flags & MOBILITY_STAND))
+		if(!(L.canmove))
 			return UI_DISABLED
 	return UI_INTERACTIVE

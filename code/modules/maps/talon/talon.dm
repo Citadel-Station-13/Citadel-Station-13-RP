@@ -1,23 +1,10 @@
 ///////////////////////////
 //// Spawning and despawning
-var/global/list/latejoin_talon = list()
-/obj/effect/landmark/talon
-	name = "JoinLateTalon"
-	delete_me = 1
-
-/obj/effect/landmark/talon/New()
-	latejoin_talon += loc // Register this turf as tram latejoin.
-	..()
 
 /datum/spawnpoint/talon
 	display_name = "ITV Talon Cryo"
 	restrict_job = list("Talon Captain", "Talon Pilot", "Talon Engineer", "Talon Doctor", "Talon Guard")
-	msg = "has come out of cryostasis"
 	announce_channel = "Talon"
-
-/datum/spawnpoint/talon/New()
-	..()
-	turfs = latejoin_talon
 
 /obj/machinery/cryopod/talon
 	announce_channel = "Talon"
@@ -32,7 +19,7 @@ var/global/list/latejoin_talon = list()
 	announce_channel = "Talon"
 	on_store_name = "ITV Talon Robotic Storage"
 
-/obj/effect/landmark/map_data/talon
+/atom/movable/landmark/map_data/talon
     height = 2
 
 ///////////////////////////
@@ -70,6 +57,7 @@ var/global/list/latejoin_talon = list()
 	shuttle_type = /datum/shuttle/autodock/overmap/talonboat
 
 // The talon's boat
+
 /datum/shuttle/autodock/overmap/talonboat
 	name = "Talon's boat"
 	current_location = "offmap_spawn_talonboat"
@@ -114,6 +102,7 @@ var/global/list/latejoin_talon = list()
 	shuttle_type = /datum/shuttle/autodock/overmap/talon_lifeboat
 
 // The talon's boat
+
 /datum/shuttle/autodock/overmap/talon_lifeboat
 	name = "Talon lifeboat"
 	current_location = "offmap_spawn_talon_lifeboat"
@@ -121,6 +110,7 @@ var/global/list/latejoin_talon = list()
 	shuttle_area = /area/talon/decktwo/lifeboat
 	fuel_consumption = 0
 	defer_initialisation = TRUE
+
 
 ///////////////////////////
 //// The Various Machines
@@ -170,7 +160,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	item_state = "tdgreen"
 	assignment = "Talon synthetic"
 
-/obj/item/card/id/synthetic/talon/Initialize()
+/obj/item/card/id/synthetic/talon/Initialize(mapload)
 	. = ..()
 	access = list(access_talon, access_synth)
 
@@ -482,3 +472,46 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_ship())
 	hard_drive.store_file(new/datum/computer_file/program/suit_sensors/talon())
 	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/talon_helmet())
+
+
+// Just in case someone decides to clean up radio.dm and remove this Im going to leave a copy commented out here. Might save someone some trouble later trying to find this. Bloop
+/*
+/obj/item/bluespace_radio/talon_prelinked
+	name = "bluespace radio (talon)"
+	handset = /obj/item/radio/bluespace_handset/linked/talon_prelinked
+
+/obj/item/radio/bluespace_handset/linked/talon_prelinked
+	bs_tx_preload_id = "talon_aio" //Transmit to a receiver
+	bs_rx_preload_id = "talon_aio" //Recveive from a transmitter
+*/
+/*	//Just keeping this here for reference, this would go into the define's folder of a map -Bloop
+	lateload_z_levels = list(
+		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2")//I swear to god this better work -Bloop
+	)
+*/
+/*
+// Talon offmap spawn stuff
+/datum/map_template/triumph_lateload/offmap/talon1
+	name = "Offmap Ship - Talon Z1"
+	desc = "Offmap spawn ship, the Talon."
+	mappath = "_maps/map_levels/140x140/talon/talon1.dmm"
+	associated_map_datum = /datum/map_z_level/triumph_lateload/talon1
+
+/datum/map_template/triumph_lateload/offmap/talon2
+	name = "Offmap Ship - Talon Z2"
+	desc = "Offmap spawn ship, the Talon."
+	mappath = "_maps/map_levels/140x140/talon/talon2.dmm"
+	associated_map_datum = /datum/map_z_level/triumph_lateload/talon2
+
+/datum/map_z_level/triumph_lateload/talon1
+	name = "Talon Deck One"
+	flags = MAP_LEVEL_PLAYER
+	base_turf = /turf/space
+	z = Z_LEVEL_TALON1
+
+/datum/map_z_level/triumph_lateload/talon2
+	name = "Talon Deck Two"
+	flags = MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/open
+	z = Z_LEVEL_TALON2
+*/

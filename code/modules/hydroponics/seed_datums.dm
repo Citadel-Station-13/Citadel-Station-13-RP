@@ -62,7 +62,7 @@
 	seed_name = "glowberry"
 	display_name = "glowberry bush"
 	mutants = null
-	chems = list("nutriment" = list(1,10), "uranium" = list(3,5))
+	chems = list("nutriment" = list(1,10), MAT_URANIUM = list(3,5))
 
 /datum/seed/berry/glow/New()
 	..()
@@ -281,7 +281,7 @@
 	display_name = "gold apple tree"
 	kitchen_tag = "goldapple"
 	mutants = null
-	chems = list("nutriment" = list(1,10), "gold" = list(1,5))
+	chems = list("nutriment" = list(1,10), MAT_GOLD = list(1,5))
 
 /datum/seed/apple/gold/New()
 	..()
@@ -1450,7 +1450,7 @@
 	seed_name = "alien weed"
 	display_name = "alien weeds"
 	force_layer = 3
-	chems = list("phoron" = list(1,3))
+	chems = list(MAT_PHORON = list(1,3))
 
 /datum/seed/xenomorph/New()
 	..()
@@ -1502,3 +1502,83 @@
 	set_trait(TRAIT_PRODUCT_ICON,"mushroom6")
 	set_trait(TRAIT_PLANT_ICON,"tree")
 	set_trait(TRAIT_PRODUCT_COLOUR,"#DADA00")
+
+// Disho.
+/datum/seed/disho
+	name = "disho"
+	seed_name = "disho"
+	display_name = "disho root"
+	kitchen_tag = "disho"
+	chems = list("capsaicin" = list(1,3), "nutriment" = list(5,25))
+	mutants = list("brickdisho, thatchdisho")
+	catalog_data_grown = list(/datum/category_item/catalogue/flora/disho)
+
+/datum/seed/disho/New()
+	..()
+	set_trait(TRAIT_TOXINS_TOLERANCE,     6)
+	set_trait(TRAIT_PEST_TOLERANCE,       10)
+	set_trait(TRAIT_WEED_TOLERANCE,       7)
+	set_trait(TRAIT_MATURATION,4)
+	set_trait(TRAIT_PRODUCTION,4)
+	set_trait(TRAIT_YIELD,6)
+	set_trait(TRAIT_POTENCY,30)
+	set_trait(TRAIT_PRODUCT_ICON,"disho")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#514147")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_PLANT_COLOUR, "#514147")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_IDEAL_HEAT, 298)
+	set_trait(TRAIT_IDEAL_LIGHT, 10)
+
+
+/datum/category_item/catalogue/flora/disho
+	name = "Flora - Disho"
+	desc = "A hardy root plant native to the desert world of Osmon. \
+	Remarkably resistant to pests, weeds and adverse enviromental conditions make it a relatively common crop on most hot worlds. \
+	However, it requires high temperatures and strong lighting to grow, and as such is not as common in temperature-controlled or cold environments. . \
+	Mutated varieties include the medicinal variety \"Thatch\", used to make healing poultices, and the variety \"Brick\", used to treat radiation burns."
+	value = CATALOGUER_REWARD_TRIVIAL
+
+
+/datum/seed/disho/brick
+	name = "brickdisho"
+	seed_name = "brick disho"
+	display_name = "brick disho root"
+	kitchen_tag = "brickdisho"
+	chems = list("ethanol" = list(1,2), "nutriment" = list(1,5), "cleansalaze" = list (5,15))
+
+/datum/seed/disho/brick/New()
+	..()
+	set_trait(TRAIT_MATURATION,10)
+	set_trait(TRAIT_PRODUCTION,2)
+	set_trait(TRAIT_YIELD,7)
+	set_trait(TRAIT_POTENCY,45)
+	set_trait(TRAIT_PRODUCT_ICON,"disho")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#514147")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_PLANT_COLOUR, "#514147")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_IDEAL_HEAT, 334)
+	set_trait(TRAIT_IDEAL_LIGHT, 10)
+
+
+/datum/seed/disho/thatch
+	name = "thatchdisho"
+	seed_name = "thatch disho"
+	display_name = "thatch disho root"
+	kitchen_tag = "thatchdisho"
+	chems = list("ethanol" = list(1,2), "kelotalaze" = list(5,10), "bicarilaze" = list (5,10))
+
+/datum/seed/disho/thatch/New()
+	..()
+	set_trait(TRAIT_MATURATION,10)
+	set_trait(TRAIT_PRODUCTION,2)
+	set_trait(TRAIT_YIELD,7)
+	set_trait(TRAIT_POTENCY,45)
+	set_trait(TRAIT_PRODUCT_ICON,"disho")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#DBD37D")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_PLANT_COLOUR, "#BFAF82")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_IDEAL_HEAT, 334)
+	set_trait(TRAIT_IDEAL_LIGHT, 10)

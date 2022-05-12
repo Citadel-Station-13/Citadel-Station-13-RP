@@ -151,10 +151,13 @@
 	name = "TTV bomb - proximity"
 	assembly_type = /obj/item/assembly/prox_sensor
 
-/obj/effect/spawner/newbomb/radio/custom/Initialize(newloc, ph, ox, co)
-	if(ph != null) phoron_amt = ph
-	if(ox != null) oxygen_amt = ox
-	if(co != null) carbon_amt = co
+/obj/effect/spawner/newbomb/radio/custom/Initialize(mapload, ph, ox, co)
+	if(ph != null)
+		phoron_amt = ph
+	if(ox != null)
+		oxygen_amt = ox
+	if(co != null)
+		carbon_amt = co
 	return ..()
 
 /obj/effect/spawner/newbomb/Initialize(mapload)
@@ -211,6 +214,7 @@
 	var/oxygen_amt = 0
 
 /obj/effect/spawner/onetankbomb/Initialize(mapload)
+	. = ..()
 	var/type = pick(/obj/item/tank/phoron/onetankbomb, /obj/item/tank/oxygen/onetankbomb)
 	new type(src.loc)
 	return INITIALIZE_HINT_QDEL
@@ -224,6 +228,7 @@
 
 	//Note that the maximum amount of gas you can put in a 70L air tank at 1013.25 kPa and 519K is 16.44 mol.
 /obj/effect/spawner/onetankbomb/full/Initialize(mapload)
+	. = ..()
 	var/type = pick(/obj/item/tank/phoron/onetankbomb/full, /obj/item/tank/oxygen/onetankbomb/full)
 	new type(src.loc)
 	return INITIALIZE_HINT_QDEL

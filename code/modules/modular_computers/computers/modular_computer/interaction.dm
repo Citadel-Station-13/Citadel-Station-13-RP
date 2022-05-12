@@ -98,6 +98,7 @@
 	update_uis()
 
 /obj/item/modular_computer/attack_ghost(var/mob/observer/ghost/user)
+	. = ..()
 	if(enabled)
 		nano_ui_interact(user)
 	else if(check_rights(R_ADMIN, 0, user))

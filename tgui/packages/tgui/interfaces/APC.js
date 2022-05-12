@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, Dimmer, Icon, LabeledList, NoticeBox, ProgressBar, Section, Flex } from '../components';
+import { Box, Button, Dimmer, Icon, LabeledList, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 import { FullscreenNotice } from './common/FullscreenNotice';
@@ -192,6 +192,42 @@ const ApcContent = (props, context) => {
                 selected={data.coverLocked}
                 disabled={locked}
                 onClick={() => act('cover')} />
+            )} />
+          <LabeledList.Item
+            label="Night Shift Lighting"
+            buttons={(
+              <Fragment>
+                <Button
+                  icon="lightbulb-o"
+                  content="Disabled"
+                  selected={data.nightshiftSetting === 2}
+                  onClick={() => act('nightshift', {
+                    nightshift: 2,
+                  })} />
+                <Button
+                  icon="lightbulb-o"
+                  content="Automatic"
+                  selected={data.nightshiftSetting === 1}
+                  onClick={() => act('nightshift', {
+                    nightshift: 1,
+                  })} />
+                <Button
+                  icon="lightbulb-o"
+                  content="Enabled"
+                  selected={data.nightshiftSetting === 3}
+                  onClick={() => act('nightshift', {
+                    nightshift: 3,
+                  })} />
+              </Fragment>
+            )} />
+          <LabeledList.Item
+            label="Emergency Lighting"
+            buttons={(
+              <Button
+                icon="lightbulb-o"
+                content={data.emergencyLights ? 'Enabled' : 'Disabled'}
+                selected={data.emergencyLights}
+                onClick={() => act('emergency_lighting')} />
             )} />
         </LabeledList>
       </Section>

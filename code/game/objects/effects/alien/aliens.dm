@@ -205,7 +205,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/effect/alien/weeds/Initialize(pos, node)
+/obj/effect/alien/weeds/Initialize(mapload, node)
 	. = ..()
 	if(istype(loc, /turf/space))
 		qdel(src)
@@ -412,7 +412,7 @@ Alien plants should do something if theres a lot of poison
 	if(ticks >= target_strength)
 
 		for(var/mob/O in hearers(src, null))
-			O.show_message("<span class='alium'>[src.target] collapses under its own weight into a puddle of goop and undigested debris!</span>", 1)
+			O.show_message("<span class='green'>[src.target] collapses under its own weight into a puddle of goop and undigested debris!</span>", 1)
 
 		if(istype(target, /turf/simulated/wall)) // I hate turf code.
 			var/turf/simulated/wall/W = target
@@ -424,13 +424,13 @@ Alien plants should do something if theres a lot of poison
 
 	switch(target_strength - ticks)
 		if(6)
-			visible_message("<span class='alium'>[src.target] is holding up against the acid!</span>")
+			visible_message("<span class='green'>[src.target] is holding up against the acid!</span>")
 		if(4)
-			visible_message("<span class='alium'>[src.target]\s structure is being melted by the acid!</span>")
+			visible_message("<span class='green'>[src.target]\s structure is being melted by the acid!</span>")
 		if(2)
-			visible_message("<span class='alium'>[src.target] is struggling to withstand the acid!</span>")
+			visible_message("<span class='green'>[src.target] is struggling to withstand the acid!</span>")
 		if(0 to 1)
-			visible_message("<span class='alium'>[src.target] begins to crumble under the acid!</span>")
+			visible_message("<span class='green'>[src.target] begins to crumble under the acid!</span>")
 	spawn(rand(150, 200)) tick()
 
 /*

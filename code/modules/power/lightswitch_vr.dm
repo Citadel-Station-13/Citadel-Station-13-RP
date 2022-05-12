@@ -58,7 +58,7 @@
 	var/x_offset = 26
 	var/y_offset = 26
 
-/obj/structure/construction/Initialize(var/mapload, var/ndir, var/building = FALSE)
+/obj/structure/construction/Initialize(mapload, ndir, building = FALSE)
 	. = ..()
 	if(ndir)
 		setDir(ndir)

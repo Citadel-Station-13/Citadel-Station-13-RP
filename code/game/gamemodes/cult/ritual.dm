@@ -65,7 +65,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 
 // self other technology - Communication rune  //was other hear blood
 // join hide technology - stun rune. Rune color: bright pink.
-/obj/effect/rune/Initialize()
+/obj/effect/rune/Initialize(mapload)
 	. = ..()
 	blood_image = image(loc = src)
 	blood_image.override = 1
@@ -283,8 +283,8 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 				</body>
 				</html>
 				"}
-/obj/item/book/tome/Initialize()
-	..()
+/obj/item/book/tome/Initialize(mapload)
+	. = ..()
 	if(!cultwords["travel"])
 		runerandom()
 	for(var/V in cultwords)

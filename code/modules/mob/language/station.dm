@@ -117,6 +117,18 @@
 	space_chance = 30
 	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix")
 
+/datum/language/akula
+    name = LANGUAGE_AKULA
+    desc = "The language of the Akula consists of a wildly melodic combination of hard and soft consonants working in flowing conjuncture with one another."
+    speech_verb = "cants"
+    ask_verb = "inflects"
+    exclaim_verb = "shouts"
+    whisper_verb = "murmurs"
+    colour = "akula"
+    key = "a"
+    space_chance = 80
+    syllables = list("ko'lakou","hiki","iloko'o","o'e","kekahi","olelo","keia","'ekahi","loaa","no'ka'mea","ia","ka'mea","ko'ino", "kela", "ma", "keia", "hai aku", "paani", "hopena", "heluhelu", "mai'o", "ke'awa", "a'hiki", "nui", "maanei", "ki'eki'e", "no'ke'aha'mai", "no'i", "malamalama", "keia'ano", "ka'hale", "pono", "ki'i", "holoholona", "wahi", "makuahine", "kokoke", "makuakāne", "kekahi", "lawe", "wahi", "mahope'iho'o", "ma'popo'eka")
+
 /datum/language/skrellfar
 	name = LANGUAGE_SKRELLIANFAR
 	desc = "The most common language among the Skrellian Far Kingdoms. Has an even higher than usual concentration of inaudible phonemes."
@@ -131,8 +143,8 @@
 	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix", "...", "oo", "q", "nq", "x", "xq", "ll", "...", "...", "...") //should sound like there's holes in it
 
 /datum/language/skrell/get_random_name(var/gender)
-	var/list/first_names = file2list('config/names/first_name_skrell.txt')
-	var/list/last_names = file2list('config/names/last_name_skrell.txt')
+	var/list/first_names = file2list('strings/names/first_name_skrell.txt')
+	var/list/last_names = file2list('strings/names/last_name_skrell.txt')
 	return "[pick(first_names)] [pick(last_names)]"
 
 /datum/language/human
@@ -392,3 +404,19 @@
 "ad", "al", "an", "ar", "as", "ci", "co", "de", "do", "el", "en", "er", "es", "ie", "in", "la", "lo", "me", "na",
 "no", "nt", "or", "os", "pa", "qu", "ra", "re", "ro", "se", "st", "ta", "te", "to", "ue", "un",
 "tod", "ser", "su", "no", "nue", "el")
+
+/datum/language/adherent
+	name = LANGUAGE_ADHERENT
+	desc = "The mellifluous wind chime tones of the Vigil's formal shared language."
+	speech_verb = "chimes"
+	ask_verb = "rings"
+	exclaim_verb = "peals"
+	colour = "adherent"
+	key = "p"
+	flags = WHITELISTED
+	syllables = list("\[Ab\]", "\[Bb\]", "\[Cb\]", "\[Db\]", "\[Eb\]", "\[Fb\]",
+		"\[Gb\]", "\[A#\]", "\[B#\]", "\[C#\]", "\[D#\]", "\[E#\]", "\[F#\]",
+		"\[G#\]", "\[A\]", "\[B\]", "\[C\]", "\[D\]", "\[E\]", "\[F\]", "\[G\]",
+		"\[harmonic\]", "\[disharmonic\]", "\[choral\]"
+	)
+	space_chance = 0

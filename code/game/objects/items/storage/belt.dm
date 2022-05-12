@@ -555,7 +555,7 @@
 		/obj/item/gun/energy/lasertag,
 		/obj/item/gun/energy/netgun,
 		/obj/item/gun/energy/phasegun/pistol,
-		/obj/item/gun/energy/pulse_rifle/M1911,
+		/obj/item/gun/energy/pulse_pistol,
 		/obj/item/gun/energy/retro,
 		/obj/item/gun/energy/service,
 		/obj/item/gun/energy/stunrevolver,
@@ -578,4 +578,14 @@
 		/obj/item/gun/projectile/p92x,
 		/obj/item/gun/projectile/pistol,
 		/obj/item/gun/projectile/pirate
+		)
+
+/obj/item/storage/belt/quiver
+	name = "leather quiver"
+	desc = "A quiver made from the hide of some animal. Used to hold arrows."
+	icon_state = "quiver"
+	storage_slots = 15
+	max_w_class = ITEMSIZE_NORMAL
+	can_hold = list(
+		/obj/item/ammo_casing/arrow
 		)

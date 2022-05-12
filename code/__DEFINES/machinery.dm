@@ -1,7 +1,7 @@
-var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called manually after an event.
+var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manually after an event.
 
-#define CELLRATE 0.002	// Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
-						// It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
+#define CELLRATE 0.002 // Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
+					   // It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
 
 #define KILOWATTS *1000
 #define MEGAWATTS *1000000
@@ -29,6 +29,11 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define POWEROFF 0x4	// TBD.
 #define MAINT	 0x8	// Under maintenance.
 #define EMPED	 0x10	// Temporary broken by EMP pulse.
+
+// Remote control states
+#define RCON_NO		1
+#define RCON_AUTO	2
+#define RCON_YES	3
 
 // Used by firelocks
 #define FIREDOOR_OPEN 1
@@ -66,12 +71,15 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define NETWORK_ALARM_ATMOS "Atmosphere Alarms"
 #define NETWORK_ALARM_POWER "Power Alarms"
 #define NETWORK_ALARM_FIRE "Fire Alarms"
-#define NETWORK_TALON_HELMETS "TalonHelmets" //VOREStation Add
-#define NETWORK_TALON_SHIP "TalonShip" //VOREStation Add
 #define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
 #define NETWORK_OUTSIDE "Outside"
 #define NETWORK_EXPLORATION "Exploration"
 #define NETWORK_XENOBIO "Xenobiology"
+
+// Off Station Camera Networks
+#define NETWORK_TALON_HELMETS "TalonHelmets" //VOREStation Add //We can keep these for now
+#define NETWORK_TALON_SHIP "TalonShip" //VOREStation Add
+#define NETWORK_TRADE_STATION "Beruang Trade Station"
 
 // Station Specific Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
@@ -161,3 +169,8 @@ if (!(DATUM.datum_flags & DF_ISPROCESSING)) {\
 
 #define START_PROCESSING_POWER_OBJECT(Datum) START_PROCESSING_IN_LIST(Datum, global.processing_power_items)
 #define STOP_PROCESSING_POWER_OBJECT(Datum) STOP_PROCESSING_IN_LIST(Datum, global.processing_power_items)
+
+// Computer login types
+#define LOGIN_TYPE_NORMAL 1
+#define LOGIN_TYPE_AI 2
+#define LOGIN_TYPE_ROBOT 3

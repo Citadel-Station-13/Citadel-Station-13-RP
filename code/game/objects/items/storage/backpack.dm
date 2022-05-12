@@ -143,6 +143,11 @@
 	desc = "It's an orange backpack which was designed to hold beakers, pill bottles and bottles."
 	icon_state = "chempack"
 
+/obj/item/storage/backpack/voyager
+	name = "voyager backpack"
+	desc = "A leather pack designed for expeditions, covered in multi-purpose pouches and pockets."
+	icon_state = "explorerpack"
+
 /*
  * Duffle Types
  */
@@ -279,6 +284,16 @@
 	name = "Talon captain's satchel"
 	desc = "An exclusive satchel for the Talon's captain."
 
+/obj/item/storage/backpack/satchel/voyager
+	name = "voyager satchel"
+	desc = "A leather satchel designed for expeditions."
+	icon_state = "satchel_explorer"
+
+/obj/item/storage/backpack/satchel/bone
+	name = "bone satchel"
+	desc = "A grotesque satchel made of sinew and bone."
+	icon_state = "satchel_bone"
+
 //ERT backpacks.
 /obj/item/storage/backpack/ert
 	name = "emergency response team backpack"
@@ -372,6 +387,44 @@
 /obj/item/storage/backpack/messenger/black
 	icon_state = "courierbagblk"
 
+//RIG Spines
+/obj/item/storage/backpack/rig
+	name = "resource integration gear"
+	desc = "An advanced system that mounts to the user's spine to serve as a load bearing structure with medical utilities. More complex variants have a wider array of functions and uses."
+	icon_state = "civilian_rig"
+	item_state_slots = list(slot_r_hand_str = "backpack", slot_l_hand_str = "backpack")
+
+/*
+/obj/item/storage/backpack/rig/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/storage/backpack/rig/process(mob/living/M)
+	if(M.health <= M.maxHealth)
+		update_icon()
+
+/obj/item/storage/backpack/rig/update_icon(mob/living/M)
+	if(M.stat > 1) // Dead
+		icon_state = "[initial(icon_state)]_0"
+		item_state = "[initial(icon_state)]_0"
+		M.update_inv_back()
+	else if(round((M.health/M.getMaxHealth())*100) <= 25)
+		icon_state = "[initial(icon_state)]_25"
+		item_state = "[initial(icon_state)]_25"
+		M.update_inv_back()
+	else if(round((M.health/M.getMaxHealth())*100) <= 50)
+		icon_state = "[initial(icon_state)]_50"
+		item_state = "[initial(icon_state)]_50"
+		M.update_inv_back()
+	else if(round((M.health/M.getMaxHealth())*100) <= 75)
+		icon_state = "[initial(icon_state)]_75"
+		item_state = "[initial(icon_state)]_75"
+		M.update_inv_back()
+	else
+		icon_state = "[initial(icon_state)]"
+		item_state = "[initial(icon_state)]"
+		M.update_inv_back()
+*/
 
 //Purses
 /obj/item/storage/backpack/purse
@@ -591,3 +644,8 @@
 	name = "plain black dufflebag"
 	desc = "A large dufflebag for holding extra tactical supplies."
 	icon_state = "duffle_syndie"
+
+/obj/item/storage/backpack/rebel
+	name = "rebel backpack"
+	desc = "A sturdy canvas bag designed to withstand harsh environmental conditions."
+	icon_state = "backpack_rebel"

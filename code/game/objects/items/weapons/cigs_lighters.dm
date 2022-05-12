@@ -321,6 +321,21 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			quench()
 	return ..()
 
+/obj/item/clothing/mask/smokable/cigarette/import
+	name = "cigarette"
+	desc = "A roll of tobacco and blended herbs."
+	icon_state = "cigimp"
+	item_state = "cigimp"
+	throw_speed = 0.5
+	w_class = ITEMSIZE_TINY
+	slot_flags = SLOT_EARS | SLOT_MASK
+	attack_verb = list("burnt", "singed")
+	type_butt = /obj/item/cigbutt/imp
+	chem_volume = 15
+	max_smoketime = 300
+	smoketime = 300
+	nicotine_amt = 2
+
 ////////////
 // CIGARS //
 ////////////
@@ -403,6 +418,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	user.update_inv_wear_mask(0)
 	user.update_inv_l_hand(0)
 	user.update_inv_r_hand(1)
+
+/obj/item/cigbutt/imp
+	name = "cigarette butt"
+	desc = "A manky old cigarette butt."
+	icon_state = "cigimpbutt"
 
 /////////////////
 //SMOKING PIPES//
@@ -492,10 +512,19 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 500
 	nicotine_amt = 0
 
+/obj/item/clothing/mask/smokable/cigarette/blunt
+	name = "blunt"
+	desc = "This probably shouldn't ever show up."
+	icon_state = "blunt"
+	max_smoketime = 750
+	smoketime = 750
+	nicotine_amt = 0
+
 /obj/item/rollingpaper
 	name = "rolling paper"
 	desc = "A small, thin piece of easily flammable paper, commonly used for rolling and smoking various dried plants."
 	icon = 'icons/obj/cigarettes.dmi'
+	w_class = ITEMSIZE_TINY
 	icon_state = "cig paper"
 
 /obj/item/rollingpaper/attackby(obj/item/W as obj, mob/user as mob)
@@ -513,6 +542,30 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		J.desc = "A joint lovingly rolled and filled with [G.name]. Blaze it."
 		qdel(G)
 		qdel(src)
+
+/obj/item/rollingblunt
+	name = "blunt paper"
+	desc = "A small, thin piece of tobacco-based paper, commonly used for rolling and smoking various dried plants."
+	icon = 'icons/obj/cigarettes.dmi'
+	w_class = ITEMSIZE_TINY
+	icon_state = "blunt paper"
+
+/obj/item/rollingblunt/attackby(obj/item/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/grown/G = W
+		if (!G.dry)
+			to_chat(user, "<span class='notice'>[G] must be dried before you roll it into [src].</span>")
+			return
+		var/obj/item/clothing/mask/smokable/cigarette/blunt/B = new /obj/item/clothing/mask/smokable/cigarette/blunt(user.loc)
+		to_chat(usr,"<span class='notice'>You roll the [G.name] into a blunt!</span>")
+		B.add_fingerprint(user)
+		if(G.reagents)
+			G.reagents.trans_to_obj(B, G.reagents.total_volume)
+		B.name = "[G.name] blunt"
+		B.desc = "A blunt lovingly rolled and filled with [G.name]. Blaze it."
+		qdel(G)
+		qdel(src)
+
 
 /////////
 //ZIPPO//
@@ -551,7 +604,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		item_state = "[base_state]on"
 		if(istype(src, /obj/item/flame/lighter/zippo) )
 			user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
-			playsound(loc, "modular_citadel/sound/items/zippo_open.ogg", 75, 1, -1)
+			playsound(loc, "sound/items/zippo_open.ogg", 75, 1, -1)
 		else
 			if(prob(95))
 				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
@@ -571,7 +624,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		item_state = "[base_state]"
 		if(istype(src, /obj/item/flame/lighter/zippo) )
 			user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing.</span>")
-			playsound(loc, "modular_citadel/sound/items/zippo_close.ogg", 75, 1, -1)
+			playsound(loc, "sound/items/zippo_close.ogg", 75, 1, -1)
 		else
 			user.visible_message("<span class='notice'>[user] quietly shuts off the [src].</span>")
 
@@ -677,4 +730,3 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "\improper Adhomai lighter"
 	desc = "A brass mechanical lighter made on Adhomai. Its robust design made it a staple tool for Tajara on all sides of the civil war."
 	icon_state = "tajzippo"
-

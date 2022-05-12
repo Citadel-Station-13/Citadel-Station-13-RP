@@ -16,7 +16,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/space)
 "af" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -255,7 +255,7 @@
 /area/awaymission)
 "aP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission)
 "aQ" = (
@@ -333,7 +333,7 @@
 "be" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/landmark/costume,
+/atom/movable/landmark/costume/random,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission)
 "bf" = (

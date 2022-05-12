@@ -73,7 +73,7 @@
 	return ..()
 
 /obj/machinery/door/firedoor/get_material()
-	return get_material_by_name(DEFAULT_WALL_MATERIAL)
+	return get_material_by_name(MAT_STEEL)
 
 /obj/machinery/door/firedoor/examine(mob/user)
 	. = ..()
@@ -194,14 +194,14 @@
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
 			if(src.blocked)
-				visible_message("<span class='alium'>\The [user] begins digging into \the [src] internals!</span>")
+				visible_message("<span class='green'>\The [user] begins digging into \the [src] internals!</span>")
 				if(do_after(user,5 SECONDS,src))
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					src.blocked = 0
 					update_icon()
 					open(1)
 			else if(src.density)
-				visible_message("<span class='alium'>\The [user] begins forcing \the [src] open!</span>")
+				visible_message("<span class='green'>\The [user] begins forcing \the [src] open!</span>")
 				if(do_after(user, 2 SECONDS,src))
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					visible_message("<span class='danger'>\The [user] forces \the [src] open!</span>")
@@ -240,7 +240,7 @@
 	..()
 
 /obj/machinery/door/firedoor/attackby(obj/item/C as obj, mob/user as mob)
-	add_fingerprint(user)
+	add_fingerprint(user, 0, C)
 	if(istype(C, /obj/item/barrier_tape_roll))
 		return //Don't open the door if we're putting tape on it to tell people 'don't open the door'.
 	if(operating)

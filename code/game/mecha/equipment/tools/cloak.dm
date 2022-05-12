@@ -11,7 +11,7 @@
 
 	var/datum/global_iterator/mecha_cloak/cloak_iterator
 
-/obj/item/mecha_parts/mecha_equipment/cloak/Initialize()
+/obj/item/mecha_parts/mecha_equipment/cloak/Initialize(mapload)
 	. = ..()
 	cloak_iterator = new /datum/global_iterator/mecha_cloak(list(src),0)
 	cloak_iterator.set_delay(equip_cooldown)

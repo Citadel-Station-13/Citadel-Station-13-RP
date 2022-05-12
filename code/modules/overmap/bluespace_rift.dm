@@ -11,7 +11,7 @@
 	var/obj/effect/overmap/bluespace_rift/partner
 	var/paused
 
-/obj/effect/overmap/bluespace_rift/Initialize(var/mapload, var/new_partner)
+/obj/effect/overmap/bluespace_rift/Initialize(mapload, new_partner)
 	. = ..()
 	if(new_partner)
 		pair(new_partner)

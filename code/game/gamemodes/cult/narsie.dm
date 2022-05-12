@@ -46,7 +46,7 @@ var/global/list/narsie_list = list()
 		to_chat(world, "<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>")
 		SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
-	narsie_spawn_animation()
+	INVOKE_ASYNC(src, .proc/narsie_spawn_animation)
 
 	if(!narsie_cometh)//so we don't initiate Hell more than one time.
 		if(cause_hell)
@@ -223,9 +223,9 @@ var/global/list/narsie_list = list()
 				consume(AM2)
 				continue
 
-		if (dist <= consume_range && !istype(A, get_base_turf_by_area(A)))
+		if (dist <= consume_range)
 			var/turf/T2 = A
-			T2.ChangeTurf(get_base_turf_by_area(A))
+			T2.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /obj/singularity/narsie/consume(const/atom/A) //This one is for the small ones.
 	if(!(A.singuloCanEat()))
@@ -265,9 +265,9 @@ var/global/list/narsie_list = list()
 				spawn (0)
 					AM2.singularity_pull(src, src.current_size)
 
-		if (dist <= consume_range && !istype(A, get_base_turf_by_area(A)))
+		if (dist <= consume_range)
 			var/turf/T2 = A
-			T2.ChangeTurf(get_base_turf_by_area(A))
+			T2.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /obj/singularity/narsie/ex_act(severity) //No throwing bombs at it either. --NEO
 	return

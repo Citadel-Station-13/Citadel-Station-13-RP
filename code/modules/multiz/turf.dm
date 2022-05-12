@@ -5,7 +5,7 @@
 		if(direction == UP)	// On a turf below, trying to enter
 			return 0
 		if(direction == DOWN)	// On a turf above, trying to enter
-			return !density && isopenspace(GetAbove(src))
+			return !density && isopenturf(GetAbove(src))
 
 /turf/simulated/open/CanZPass(atom, direction)
 	return 1
@@ -18,6 +18,19 @@
 
 /turf/proc/multiz_turf_new(turf/T, dir)
 	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
+
+/**
+ * called during AfterChange() to request the turfs above and below us update their graphics.
+ */
+/turf/proc/update_vertical_turf_graphics()
+	var/turf/simulated/open/above = GetAbove(src)
+	if(istype(above))
+		above.update_icon()
+
+	var/turf/simulated/below = GetBelow(src)
+	if(istype(below))
+		below.update_icon() // To add or remove the 'ceiling-less' overlay.
+
 
 //
 // Open Space - "empty" turf that lets stuff fall thru it to the layer below
@@ -35,10 +48,6 @@
 	allow_gas_overlays = FALSE
 
 	var/turf/below
-
-/turf/simulated/open/post_change()
-	..()
-	update()
 
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
@@ -59,8 +68,6 @@
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
-	GLOB.turf_changed_event.register(below, src, /atom/proc/update_icon)
-	levelupdate()
 	below.update_icon()	// So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
 		if(A.movement_type & GROUND)
@@ -75,7 +82,7 @@
 /turf/simulated/open/examine(mob/user)
 	. = ..()
 	var/depth = 1
-	for(var/T = GetBelow(src); isopenspace(T); T = GetBelow(T))
+	for(var/T = GetBelow(src); isopenturf(T); T = GetBelow(T))
 		depth += 1
 	. += "It is about [depth] levels deep."
 
@@ -87,7 +94,7 @@
 	update_icon_edge()// Add - Get grass into open spaces and whatnot.
 	var/turf/below = GetBelow(src)
 	if(below)
-		var/below_is_open = isopenspace(below)
+		var/below_is_open = isopenturf(below)
 
 		if(below_is_open)
 			underlays = below.underlays
@@ -133,7 +140,7 @@
 		if (R.use(1))
 			to_chat(user, "<span class='notice'>Constructing support lattice ...</span>")
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-			ReplaceWithLattice()
+			new /obj/structure/lattice(src)
 		return
 
 	if (istype(C, /obj/item/stack/tile/floor))
@@ -145,7 +152,7 @@
 			qdel(L)
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 			S.use(1)
-			ChangeTurf(/turf/simulated/floor/airless)
+			ChangeTurf(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR)
 			return
 		else
 			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
@@ -154,8 +161,6 @@
 	if(istype(C, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = C
 		coil.turf_place(src, user)
-		return
-	return
 
 // Most things use is_plating to test if there is a cover tile on top (like regular floors)
 /turf/simulated/open/is_plating()

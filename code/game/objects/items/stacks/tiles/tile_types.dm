@@ -143,7 +143,7 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	desc = "A metal tile fit for covering a section of floor."
 	icon_state = "tile"
 	force = 6.0
-	matter = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 4)
 	throwforce = 15.0
 	throw_speed = 5
 	throw_range = 20
@@ -172,21 +172,21 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/steel
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/white
 	name = "white floor tile"
 	singular_name = "white floor tile"
 	icon_state = "tile_white"
-	matter = list("plastic" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/yellow
@@ -200,14 +200,14 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	name = "dark floor tile"
 	singular_name = "dark floor tile"
 	icon_state = "tile_steel"
-	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/freezer
 	name = "freezer floor tile"
 	singular_name = "freezer floor tile"
 	icon_state = "tile_freezer"
-	matter = list("plastic" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/cyborg
@@ -377,6 +377,28 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	icon_state = "tile-brass"
 	force = 6.0
 	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/wax
+	name = "wax tile"
+	singular_name = "wax tile"
+	icon_state = "tile-wax"
+	force = 1
+	throwforce = 1
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/honeycomb
+	name = "honeycomb tile"
+	singular_name = "honeycomb tile"
+	icon_state = "tile-honeycomb"
+	force = 1
+	throwforce = 1
 	throw_speed = 5
 	throw_range = 20
 	flags = 0

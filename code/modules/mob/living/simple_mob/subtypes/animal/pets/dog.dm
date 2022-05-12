@@ -33,6 +33,9 @@
 
 	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/corgi
+	bone_amount = 2
+	hide_amount = 5
+	hide_type = /obj/item/stack/animalhide/corgi
 
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back

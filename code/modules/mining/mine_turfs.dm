@@ -21,6 +21,7 @@ var/list/mining_overlay_cache = list()
 	density = 1
 	blocks_air = 1
 	can_dirty = FALSE
+	edge_blending_priority = 0
 
 	var/datum/ore/mineral
 	var/sand_dug
@@ -92,9 +93,6 @@ turf/simulated/mineral/floor/light_corner
 	SSplanets.addTurf(src)
 	update_general()
 
-/turf/simulated/mineral/proc/make_floor_lavaland() // so when a turf is mined in lavaland, it places the correct one
-	src.ChangeTurf(get_base_turf_by_area(src))
-
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
 		return
@@ -104,6 +102,7 @@ turf/simulated/mineral/floor/light_corner
 	reconsider_lights()
 	blocks_air = 1
 	can_build_into_floor = FALSE
+	SSplanets.removeTurf(src)
 	update_general()
 
 /turf/simulated/mineral/proc/update_general()
@@ -260,7 +259,7 @@ turf/simulated/mineral/floor/light_corner
 	if(istype(AM,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
 		var/obj/item/pickaxe/P = H.get_inactive_hand()
-		if(istype(P))
+		if(istype(P) && P.active)
 			src.attackby(P, H)
 
 	else if(istype(AM,/mob/living/silicon/robot))
@@ -315,7 +314,7 @@ turf/simulated/mineral/floor/light_corner
 
 		if(istype(W, /obj/item/pickaxe))
 			var/obj/item/pickaxe/P = W
-			if(P.sand_dig)
+			if(P.sand_dig && P.active)
 				valid_tool = 1
 				digspeed = P.digspeed
 
@@ -369,7 +368,7 @@ turf/simulated/mineral/floor/light_corner
 					return
 				qdel(L)
 				playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-				ChangeTurf(/turf/simulated/floor)
+				PlaceOnTop(/turf/simulated/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 				S.use(1)
 				return
 			else
@@ -411,52 +410,110 @@ turf/simulated/mineral/floor/light_corner
 				return
 
 			var/obj/item/pickaxe/P = W
-			if(last_act + P.digspeed > world.time)//prevents message spam
-				return
-			last_act = world.time
+			if(P.active)
+				if(last_act + P.digspeed > world.time)//prevents message spam
+					return
+				last_act = world.time
 
-			playsound(user, P.drill_sound, 20, 1)
-			var/newDepth = excavation_level + P.excavation_amount // Used commonly below
+				playsound(user, P.drill_sound, 20, 1)
+				var/newDepth = excavation_level + P.excavation_amount // Used commonly below
 
-			//handle any archaeological finds we might uncover
-			var/fail_message = ""
-			if(finds && finds.len)
-				var/datum/find/F = finds[1]
-				if(newDepth > F.excavation_required) // Digging too deep can break the item. At least you won't summon a Balrog (probably)
-					fail_message = "<b>[pick("There is a crunching noise","[W] collides with some different rock","Part of the rock face crumbles away","Something breaks under [W]")]</b>"
-				wreckfinds(P.destroy_artefacts)
-			if(fail_message)
-				to_chat(user, "<span class='notice'>[fail_message].</span>")
-
-			if(do_after(user,P.digspeed))
-
+				//handle any archaeological finds we might uncover
+				var/fail_message = ""
 				if(finds && finds.len)
 					var/datum/find/F = finds[1]
-					if(newDepth == F.excavation_required) // When the pick hits that edge just right, you extract your find perfectly, it's never confined in a rock
-						excavate_find(1, F)
-					else if(newDepth > F.excavation_required - F.clearance_range) // Not quite right but you still extract your find, the closer to the bottom the better, but not above 80%
-						excavate_find(prob(80 * (F.excavation_required - newDepth) / F.clearance_range), F)
+					if(newDepth > F.excavation_required) // Digging too deep can break the item. At least you won't summon a Balrog (probably)
+						fail_message = "<b>[pick("There is a crunching noise","[W] collides with some different rock","Part of the rock face crumbles away","Something breaks under [W]")]</b>"
+					wreckfinds(P.destroy_artefacts)
+				if(fail_message)
+					to_chat(user, "<span class='notice'>[fail_message].</span>")
 
-				//to_chat(user, "<span class='notice'>You finish [P.drill_verb] \the [src].</span>")
+				if(do_after(user,P.digspeed))
 
-				if(newDepth >= 200) // This means the rock is mined out fully
-					if(P.destroy_artefacts)
-						GetDrilled(0)
-					else
-						excavate_turf()
+					if(finds && finds.len)
+						var/datum/find/F = finds[1]
+						if(newDepth == F.excavation_required) // When the pick hits that edge just right, you extract your find perfectly, it's never confined in a rock
+							excavate_find(1, F)
+						else if(newDepth > F.excavation_required - F.clearance_range) // Not quite right but you still extract your find, the closer to the bottom the better, but not above 80%
+							excavate_find(prob(80 * (F.excavation_required - newDepth) / F.clearance_range), F)
+
+					//to_chat(user, "<span class='notice'>You finish [P.drill_verb] \the [src].</span>")
+
+					if(newDepth >= 200) // This means the rock is mined out fully
+						if(P.destroy_artefacts)
+							GetDrilled(0)
+						else
+							excavate_turf()
+						return
+
+					excavation_level += P.excavation_amount
+					update_archeo_overlays(P.excavation_amount)
+
+					//drop some rocks
+					next_rock += P.excavation_amount
+					while(next_rock > 50)
+						next_rock -= 50
+						var/obj/item/ore/O = new(src)
+						geologic_data.UpdateNearbyArtifactInfo(src)
+						O.geologic_data = geologic_data
+				return
+			else
+				return
+
+		if (istype(W, /obj/item/melee/thermalcutter))
+			if(!istype(user.loc, /turf))
+				return
+
+			var/obj/item/melee/thermalcutter/T = W
+			if(T.active)
+				if(last_act + T.digspeed > world.time)//prevents message spam
 					return
+				last_act = world.time
 
-				excavation_level += P.excavation_amount
-				update_archeo_overlays(P.excavation_amount)
+				playsound(user, 'sound/items/Welder.ogg', 20, 1)
+				var/newDepth = excavation_level + T.excavation_amount // Used commonly below
 
-				//drop some rocks
-				next_rock += P.excavation_amount
-				while(next_rock > 50)
-					next_rock -= 50
-					var/obj/item/ore/O = new(src)
-					geologic_data.UpdateNearbyArtifactInfo(src)
-					O.geologic_data = geologic_data
-			return
+				//handle any archaeological finds we might uncover
+				var/fail_message = ""
+				if(finds && finds.len)
+					var/datum/find/F = finds[1]
+					if(newDepth > F.excavation_required) // Digging too deep can break the item. At least you won't summon a Balrog (probably)
+						fail_message = "<b>[pick("There is a crunching noise","[W] collides with some different rock","Part of the rock face crumbles away","Something breaks under [W]")]</b>"
+					wreckfinds(T.destroy_artefacts)
+				if(fail_message)
+					to_chat(user, "<span class='notice'>[fail_message].</span>")
+
+				if(do_after(user,T.digspeed))
+
+					if(finds && finds.len)
+						var/datum/find/F = finds[1]
+						if(newDepth == F.excavation_required) // When the pick hits that edge just right, you extract your find perfectly, it's never confined in a rock
+							excavate_find(1, F)
+						else if(newDepth > F.excavation_required - F.clearance_range) // Not quite right but you still extract your find, the closer to the bottom the better, but not above 80%
+							excavate_find(prob(80 * (F.excavation_required - newDepth) / F.clearance_range), F)
+
+					//to_chat(user, "<span class='notice'>You finish [P.drill_verb] \the [src].</span>")
+
+					if(newDepth >= 200) // This means the rock is mined out fully
+						if(T.destroy_artefacts)
+							GetDrilled(0)
+						else
+							excavate_turf()
+						return
+
+					excavation_level += T.excavation_amount
+					update_archeo_overlays(T.excavation_amount)
+
+					//drop some rocks
+					next_rock += T.excavation_amount
+					while(next_rock > 50)
+						next_rock -= 50
+						var/obj/item/ore/O = new(src)
+						geologic_data.UpdateNearbyArtifactInfo(src)
+						O.geologic_data = geologic_data
+				return
+			else
+				return
 
 	return attack_hand(user)
 
@@ -581,11 +638,7 @@ turf/simulated/mineral/floor/light_corner
 		visible_message("<span class='notice'>An old dusty crate was buried within!</span>")
 		new /obj/structure/closet/crate/secure/loot(src)
 
-	var/the_z = get_z(src)
-	if(the_z == 20)
-		src.make_floor_lavaland()
-	else
-		make_floor()
+	make_floor()
 	update_icon(1)
 
 /turf/simulated/mineral/proc/excavate_find(var/is_clean = 0, var/datum/find/F)
@@ -648,10 +701,10 @@ turf/simulated/mineral/floor/light_corner
 
 	var/mineral_name
 	if(rare_ore)
-		mineral_name = pickweight(list("marble" = 5, "uranium" = 10, "platinum" = 10, "hematite" = 20, "carbon" = 20, "diamond" = 2, "gold" = 10, "silver" = 10, "phoron" = 20, "lead" = 5, "verdantium" = 1))
+		mineral_name = pickweight(list(MAT_MARBLE = 5, MAT_URANIUM = 10, MAT_PLATINUM = 10, MAT_HEMATITE = 20, MAT_CARBON = 20, MAT_DIAMOND = 2, MAT_GOLD = 10, MAT_SILVER = 10, MAT_COPPER = 15, MAT_PHORON = 20, MAT_LEAD = 5, MAT_VERDANTIUM = 1))
 
 	else
-		mineral_name = pickweight(list("marble" = 3, "uranium" = 10, "platinum" = 10, "hematite" = 70, "carbon" = 70, "diamond" = 2, "gold" = 10, "silver" = 10, "phoron" = 20, "lead" = 2, "verdantium" = 1))
+		mineral_name = pickweight(list(MAT_MARBLE = 3, MAT_URANIUM = 10, MAT_PLATINUM = 10, MAT_HEMATITE = 70, MAT_CARBON = 70, MAT_DIAMOND = 2, MAT_GOLD = 10, MAT_SILVER = 10, MAT_COPPER = 15, MAT_PHORON = 20, MAT_LEAD = 2, MAT_VERDANTIUM = 1))
 
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]

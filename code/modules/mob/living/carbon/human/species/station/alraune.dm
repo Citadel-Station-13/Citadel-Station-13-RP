@@ -13,7 +13,6 @@
 	metabolic_rate = 0.75 // slow metabolism
 	item_slowdown_mod = 0.25 //while they start slow, they don't get much slower
 	bloodloss_rate = 0.1 //While they do bleed, they bleed out VERY slowly
-	min_age = 18
 	max_age = 500 //cit lore change
 	health_hud_intensity = 1.5
 	base_species = SPECIES_ALRAUNE
@@ -46,7 +45,7 @@
 
 	spawn_flags = SPECIES_CAN_JOIN
 	flags = NO_SCAN | IS_PLANT | NO_MINOR_CUT
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/succubus_drain,
@@ -94,7 +93,7 @@
 		O_KIDNEYS =  /obj/item/organ/internal/kidneys/alraune,
 		O_BRAIN =    /obj/item/organ/internal/brain/alraune,
 		O_EYES =     /obj/item/organ/internal/eyes/alraune,
-		A_FRUIT =    /obj/item/organ/internal/fruitgland,
+		O_FRUIT =    /obj/item/organ/internal/fruitgland,
 		)
 
 /datum/species/alraune/can_breathe_water()
@@ -120,8 +119,7 @@
 	if(H.wear_suit && (H.wear_suit.min_pressure_protection = 0) && H.head && (H.head.min_pressure_protection = 0))
 		fullysealed = TRUE
 	else // find out if local gas mixture is enough to override use of internals
-		var/datum/gas_mixture/environment = H.loc.return_air()
-		var/envpressure = environment.return_pressure()
+		var/envpressure = H.loc.return_pressure()
 		if(envpressure >= hazard_low_pressure)
 			environmentalair = TRUE
 
@@ -350,7 +348,7 @@
 	icon_state = "phytoextractor"
 	name = "fruit gland"
 	desc = "A bulbous gourd-like structure."
-	organ_tag = A_FRUIT
+	organ_tag = O_FRUIT
 	var/generated_reagents = list("sugar" = 2) //This actually allows them. This could be anything, but sugar seems most fitting.
 	var/usable_volume = 250 //Five fruit.
 	var/transfer_amount = 50
@@ -437,7 +435,7 @@
 			to_chat(src, "<span class='notice'>[pick(fruit_gland.empty_message)]</span>")
 			return
 
-		var/datum/seed/S = plant_controller.seeds["[fruit_gland.fruit_type]"]
+		var/datum/seed/S = SSplants.seeds["[fruit_gland.fruit_type]"]
 		S.harvest(usr,0,0,1)
 
 		var/index = rand(0,2)
@@ -456,48 +454,9 @@
 
 //End of fruit gland code.
 
-/datum/species/alraune/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
-	ASSERT(to_copy)
-	ASSERT(istype(H))
-
-	if(ispath(to_copy))
-		to_copy = "[initial(to_copy.name)]"
-	if(istext(to_copy))
-		to_copy = GLOB.all_species[to_copy]
-
-	var/datum/species/alraune/new_copy = new()
-
-	//Initials so it works with a simple path passed, or an instance
-	new_copy.base_species = to_copy.name
-	new_copy.icobase = to_copy.icobase
-	new_copy.deform = to_copy.deform
-	new_copy.tail = to_copy.tail
-	new_copy.tail_animation = to_copy.tail_animation
-	new_copy.icobase_tail = to_copy.icobase_tail
-	new_copy.color_mult = to_copy.color_mult
-	new_copy.primitive_form = to_copy.primitive_form
-	new_copy.appearance_flags = to_copy.appearance_flags
-	new_copy.flesh_color = to_copy.flesh_color
-	new_copy.base_color = to_copy.base_color
-	new_copy.blood_mask = to_copy.blood_mask
-	new_copy.damage_mask = to_copy.damage_mask
-	new_copy.damage_overlays = to_copy.damage_overlays
-
-	//Set up a mob
-	H.species = new_copy
-	H.icon_state = lowertext(new_copy.get_bodytype())
-
-	if(new_copy.holder_type)
-		H.holder_type = new_copy.holder_type
-
-	if(H.dna)
-		H.dna.ready_dna(H)
-
-	return new_copy
-
 /datum/species/alraune/get_bodytype()
 	return base_species
 
-/datum/species/alraune/get_race_key()
-	var/datum/species/real = GLOB.all_species[base_species]
-	return real.race_key
+/datum/species/alraune/get_race_key(mob/living/carbon/human/H)
+	var/datum/species/real = name_static_species_meta(base_species)
+	return real.real_race_key(H)

@@ -25,8 +25,13 @@
 	var/movement_type = GROUND
 	/// The orbiter component of the thing we're orbiting.
 	var/datum/component/orbiter/orbiting
+	///Used for the calculate_adjacencies proc for icon smoothing.
+	var/can_be_unanchored = FALSE
 	/// Our default glide_size.
 	var/default_glide_size = 0
+
+	/// our default perspective - if none, a temporary one will be generated when a mob requires it
+	var/datum/perspective/self_perspective
 
 	var/anchored = 0
 	var/move_speed = 10
@@ -56,25 +61,28 @@
 	///Reference to atom being orbited
 	var/atom/orbit_target
 
-/atom/movable/Destroy()
+/atom/movable/Destroy(force)
 	. = ..()
 	if(reagents)
-		qdel(reagents)
-		reagents = null
+		QDEL_NULL(reagents)
+	unbuckle_all_mobs(force = TRUE)
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
 	var/turf/un_opaque
 	if(opacity && isturf(loc))
 		un_opaque = loc
-
+	// kick perspectives before moving
+	if(self_perspective)
+		QDEL_NULL(self_perspective)
 	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
-	if (pulledby)
-		if (pulledby.pulling == src)
-			pulledby.pulling = null
-		pulledby = null
-	QDEL_NULL(riding_datum) //VOREStation Add
+	if(pulledby)
+		pulledby.stop_pulling()
+	if(pulling)
+		stop_pulling()
+	if(riding_datum)
+		QDEL_NULL(riding_datum)
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -306,7 +314,6 @@
 
 //Called when touching an acid pool.
 /atom/movable/proc/acid_act()
-	acid_act(null, 500, 50)
 
 //Called when touching a blood pool.
 /atom/movable/proc/blood_act()
@@ -421,5 +428,64 @@
 
 	return selfimage
 
-/atom/movable/proc/get_cell()
-	return
+/atom/movable/proc/ghost_tag(text)
+	var/atom/movable/ghost_tag_container/G = locate() in vis_contents
+	if(!length(text) || !istext(text))
+		if(G)
+			qdel(G)
+		return
+	if(!G)
+		G = new(src)
+	G.master = src
+	// for the love of god macro this when we get runechat
+	G.maptext = "<center><span style=\"font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1;\">[text]</span></center>"
+	G.maptext_height = 256
+	G.maptext_width = 256
+	G.maptext_x = -128 + (world.icon_size * 0.5)
+	G.maptext_y = 32
+	G.plane = PLANE_GHOSTS
+	vis_contents += G
+	if(G.loc != src)
+		G.forceMove(src)
+	return G
+
+/atom/movable/ghost_tag_container
+	var/atom/movable/master
+
+/atom/movable/ghost_tag_container/Destroy()
+	if(istype(master))
+		master.vis_contents -= src
+		master = null
+	return ..()
+
+/atom/movable/proc/get_bullet_impact_effect_type()
+	return BULLET_IMPACT_NONE
+
+/**
+ * get perspective to use when shifting eye to us,
+ */
+/atom/movable/proc/get_perspective()
+	return self_perspective || temporary_perspective()
+
+/**
+ * gets a tempoerary perspective for ourselves
+ */
+/atom/movable/proc/temporary_perspective()
+	var/datum/perspective/self/temporary/P = new
+	P.eye = src
+	return P
+
+/**
+ * make a permanent self perspective
+ */
+/atom/movable/proc/make_perspective()
+	ASSERT(!self_perspective)
+	. = self_perspective = new /datum/perspective/self
+	self_perspective.eye = src
+
+/**
+ * ensure we have a self perspective
+ */
+/atom/movable/proc/ensure_self_perspective()
+	if(!self_perspective)
+		make_perspective()

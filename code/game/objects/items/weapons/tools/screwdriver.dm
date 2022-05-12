@@ -7,6 +7,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "screwdriver"
 	slot_flags = SLOT_BELT | SLOT_EARS
+	tool_behaviour = TOOL_SCREWDRIVER
 	force = 6
 	w_class = ITEMSIZE_TINY
 	throwforce = 5
@@ -16,7 +17,7 @@
 	usesound = 'sound/items/screwdriver.ogg'
 	drop_sound = 'sound/items/drop/screwdriver.ogg'
 	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
-	matter = list(DEFAULT_WALL_MATERIAL = 75)
+	matter = list(MAT_STEEL = 75)
 	attack_verb = list("stabbed")
 	sharp  = 1
 	toolspeed = 1
@@ -70,6 +71,20 @@
 	return TRUE
 
 
+/obj/item/tool/screwdriver/bone
+	name = "primitive screwdriver"
+	desc = "A whittled bone with a tapered point, used to remove screws, or stab."
+	icon_state = "screwdriver_bone"
+	random_color = FALSE
+	toolspeed = 1.25
+
+/obj/item/tool/screwdriver/brass
+	name = "brass screwdriver"
+	desc = "A screwdriver with a very sharp tip, that ensures fine deliberate adjustments."
+	icon_state = "screwdriver_brass"
+	toolspeed = 0.75
+	random_color = FALSE
+
 /datum/category_item/catalogue/anomalous/precursor_a/alien_screwdriver
 	name = "Precursor Alpha Object - Hard Light Torgue Tool"
 	desc = "This appears to be a tool, with a solid handle, and a thin hard light \
@@ -121,7 +136,7 @@
 	desc = "A simple powered hand drill. It's fitted with a screw bit."
 	icon_state = "drill_screw"
 	item_state = "drill"
-	matter = list(DEFAULT_WALL_MATERIAL = 150, MAT_SILVER = 50)
+	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
 	force = 8

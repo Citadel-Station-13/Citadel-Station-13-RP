@@ -39,7 +39,7 @@
 	icon_state = "detective"
 	item_state = "gun"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 	w_class = ITEMSIZE_NORMAL
 	throwforce = 5
 	throw_speed = 4
@@ -71,12 +71,13 @@
 
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
-	var/obj/screen/auto_target/auto_target
+	var/atom/movable/screen/auto_target/auto_target
 	var/shooting = 0
 	var/next_fire_time = 0
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
+	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
@@ -86,6 +87,10 @@
 	var/tmp/mob/living/last_moved_mob //Used to fire faster at more than one person.
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
+
+	var/safety_state = 1
+	var/has_safety = TRUE
+	var/safety_icon 	   //overlay to apply to gun based on safety state, if any
 
 	var/dna_lock = 0				//whether or not the gun is locked to dna
 	var/obj/item/dnalockingchip/attached_lock
@@ -106,6 +111,7 @@
 
 	var/obj/item/firing_pin/pin = /obj/item/firing_pin
 	var/no_pin_required = 0
+	var/scrambled = 0
 
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
@@ -224,6 +230,14 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
+/obj/item/gun/dropped(mob/living/user)
+	update_icon()
+	. = ..()
+
+/obj/item/gun/equipped()
+	update_icon()
+	. = ..()
+
 /obj/item/gun/afterattack(atom/A, mob/living/user, adjacent, params)
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
 
@@ -233,11 +247,6 @@
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
 		return
-
-	if(user && user.a_intent == INTENT_HELP && user.is_preference_enabled(/datum/client_preference/safefiring)) //regardless of what happens, refuse to shoot if help intent is on
-		to_chat(user, "<span class='warning'>You refrain from firing your [src] as your intent is set to help.</span>")
-		return
-
 	else
 		Fire(A, user, params) //Otherwise, fire normally.
 		return
@@ -283,6 +292,50 @@
 				verbs -= /obj/item/gun/verb/allow_dna
 		else
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
+
+	if(A.is_multitool())
+		if(!scrambled)
+			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
+			playsound(src, A.usesound, 50, 1)
+			if(do_after(user, 60 * A.toolspeed))
+				switch(rand(1,100))
+					if(1 to 10)
+						to_chat(user, "<span class='danger'>The electronic pin suite detects the intrusion and explodes!</span>")
+						user.show_message("<span class='danger'>SELF-DESTRUCTING...</span><br>", 2)
+						explosion(get_turf(src), -1, 0, 2, 3)
+						qdel(src)
+					if(11 to 49)
+						to_chat(user, "<span class='notice'>You fail to disrupt \the electronic warfare suite.</span>")
+						return
+					if(50 to 100)
+						to_chat(user, "<span class='notice'>You disrupt \the electronic warfare suite.</span>")
+						scrambled = 1
+		else
+			to_chat(user, "<span class='warning'>\The [src] does not have an active electronic warfare suite!</span>")
+
+	if(A.is_wirecutter())
+		if(pin && scrambled)
+			to_chat(user, "<span class='notice'>You attempt to remove \the firing pin from \the [src].</span>")
+			playsound(src, A.usesound, 50, 1)
+			if(do_after(user, 60* A.toolspeed))
+				switch(rand(1,100))
+					if(1 to 10)
+						to_chat(user, "<span class='danger'>You twist \the firing pin as you tug, destroying the firing pin.</span>")
+						pin = null
+					if(11 to 74)
+						to_chat(user, "<span class='notice'>You grasp the firing pin, but it slips free!</span>")
+						return
+					if(75 to 100)
+						to_chat(user, "<span class='notice'>You remove \the firing pin from \the [src].</span>")
+						user.put_in_hands(src.pin)
+						pin = null
+			else if(!do_after())
+				return
+		else if(pin && !scrambled)
+			to_chat(user, "<span class='notice'>The \the firing pin is firmly locked into \the [src].</span>")
+		else
+			to_chat(user, "<span class='warning'>\The [src] does not have a firing pin installed!</span>")
+
 	..()
 
 /obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
@@ -304,7 +357,7 @@
 		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
 			return
 
-		if (!( istype(over_object, /obj/screen) ))
+		if (!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 
 		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
@@ -315,7 +368,7 @@
 		if (( usr.restrained() ) || ( usr.stat ))
 			return
 
-		if ((src.loc == usr) && !(istype(over_object, /obj/screen)) && !usr.unEquip(src))
+		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
 			return
 
 		switch(over_object.name)
@@ -342,6 +395,15 @@
 		if (world.time % 3) //to prevent spam
 			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
 		return
+
+	if(safety())
+		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
+		//will reflexively do it anyway
+		if(user.a_intent == INTENT_HARM && prob(50))
+			toggle_safety(user)
+		else
+			handle_click_safety(user)
+			return
 
 	var/shoot_time = (burst - 1)* burst_delay
 
@@ -504,6 +566,9 @@
 	else
 		src.visible_message("*click click*")
 	playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
+
+/obj/item/gun/proc/handle_click_safety(mob/user)
+	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"))
 
 //called after successfully firing
 /obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
@@ -715,6 +780,8 @@
 	if(firemodes.len > 1)
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		. += "The fire selector is set to [current_mode.name]."
+	if(has_safety)
+		to_chat(user, SPAN_NOTICE("The safety is [safety() ? "on" : "off"]."))
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)
@@ -726,7 +793,7 @@
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
 	to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
-
+	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
 /obj/item/gun/attack_self(mob/user)
@@ -744,3 +811,42 @@
 	else
 		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
 	return 0
+
+/obj/item/gun/update_icon()
+	. = ..()
+	//Code for handling safety icon updates
+	overlays.Cut()
+
+	var/mob/living/M = loc
+	if(istype(M)) //If we are currently being held by a mob
+		overlays += image('icons/obj/gun/gui.dmi', "safety[safety()]")
+	if(safety_icon)
+		overlays += image(icon, "[safety_icon][safety()]")
+
+
+/obj/item/gun/proc/toggle_safety(var/mob/user)
+	if (user.stat || user.restrained() || user.lying)
+		to_chat(user, SPAN_WARNING("You can't do that right now."))
+		return
+
+	safety_state = !safety_state
+	update_icon()
+	if(user)
+		user.visible_message(SPAN_WARNING("[user] switches the safety of \the [src] [safety_state ? "on" : "off"]."), SPAN_NOTICE("You switch the safety of \the [src] [safety_state ? "on" : "off"]."))
+		playsound(src, 'sound/weapons/flipblade.ogg', 15, 1)
+
+/obj/item/gun/verb/toggle_safety_verb()
+	set src in usr
+	set category = "Object"
+	set name = "Toggle Gun Safety"
+	if(usr == loc)
+		toggle_safety(usr)
+
+/obj/item/gun/CtrlClick(var/mob/user)
+	if(loc == user)
+		toggle_safety(user)
+		return TRUE
+	. = ..()
+
+/obj/item/gun/proc/safety()
+	return has_safety && safety_state

@@ -78,13 +78,16 @@
 /turf/simulated/floor/trap/asteroidfloor
 	icon_state = "asteroidfloor"
 
+/turf/simulated/floor/trap/crystal
+	icon_state = "crystal"
+
 /turf/simulated/floor/trap/cult
 	icon_state = "cult"
 
-/turf/simulated/floor/trap/lightmarble
+/turf/simulated/floor/trap/wmarble
 	icon_state = "lightmarble"
 
-/turf/simulated/floor/trap/darkmarble
+/turf/simulated/floor/trap/bmarble
 	icon_state = "darkmarble"
 
 /turf/simulated/floor/trap/silver
@@ -92,6 +95,9 @@
 
 /turf/simulated/floor/trap/gold
 	icon_state = "gold"
+
+/turf/simulated/floor/trap/phoron
+	icon_state = "phoron"
 
 /turf/simulated/floor/trap/uranium
 	icon_state = "uranium"
@@ -130,13 +136,16 @@
 /turf/simulated/floor/trap/delayed/asteroidfloor
 	icon_state = "asteroidfloor"
 
+/turf/simulated/floor/trap/delayed/crystal
+	icon_state = "crystal"
+
 /turf/simulated/floor/trap/delayed/cult
 	icon_state = "cult"
 
-/turf/simulated/floor/trap/delayed/lightmarble
+/turf/simulated/floor/trap/delayed/wmarble
 	icon_state = "lightmarble"
 
-/turf/simulated/floor/trap/delayed/darkmarble
+/turf/simulated/floor/trap/delayed/bmarble
 	icon_state = "darkmarble"
 
 /turf/simulated/floor/trap/delayed/silver
@@ -148,6 +157,9 @@
 /turf/simulated/floor/trap/delayed/uranium
 	icon_state = "uranium"
 
+/turf/simulated/floor/trap/delayed/phoron
+	icon_state = "phoron"
+
 /turf/simulated/floor/trap/delayed/diamond
 	icon_state = "diamond"
 
@@ -156,6 +168,31 @@
 
 /turf/simulated/floor/trap/delayed/sifwood
 	icon_state = "sifwood"
+
+//Lavaland Subtypes
+/turf/simulated/floor/trap/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/plating/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/steel/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/wood/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/delayed/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/delayed/steel/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/delayed/plating/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/delayed/wood/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
 
 
 /*

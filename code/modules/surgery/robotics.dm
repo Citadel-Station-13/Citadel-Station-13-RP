@@ -68,6 +68,7 @@
 /datum/surgery_step/robotics/open_hatch
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75,
 		/obj/item/material/kitchen/utensil = 50
 	)
 
@@ -105,6 +106,7 @@
 /datum/surgery_step/robotics/close_hatch
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75,
 		/obj/item/material/kitchen/utensil = 50
 	)
 
@@ -555,7 +557,7 @@
 
 	qdel(D)
 
-	target.species = GLOB.all_species[SPECIES_DIONA]
+	target.set_species(/datum/species/diona)
 
 	target.verbs |= /mob/living/carbon/human/proc/diona_split_nymph
 	target.verbs |= /mob/living/carbon/human/proc/regenerate

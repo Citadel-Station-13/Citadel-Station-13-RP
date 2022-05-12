@@ -2628,11 +2628,11 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
 "fo" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
 "fp" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
 "fq" = (

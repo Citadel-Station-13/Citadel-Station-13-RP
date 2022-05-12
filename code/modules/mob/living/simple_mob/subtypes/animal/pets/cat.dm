@@ -34,6 +34,11 @@
 	var/named = FALSE //have I been named yet?
 	var/friend_name = null //VOREStation Edit - Lock befriending to this character
 
+	meat_amount = 2
+	bone_amount = 2
+	hide_amount = 5
+	hide_type = /obj/item/stack/animalhide/cat
+
 /mob/living/simple_mob/animal/passive/cat/Initialize(mapload)
 	icon_living = "[initial(icon_state)]"
 	icon_dead = "[initial(icon_state)]_dead"
@@ -85,24 +90,24 @@
 
 	if(friend)
 		if(friend == usr)
-			to_chat(L, span("notice", "\The [src] is already your friend! Meow!"))
+			to_chat(L, SPAN_NOTICE("\The [src] is already your friend! Meow!"))
 			return
 		else
-			to_chat(L, span("warning", "\The [src] ignores you."))
+			to_chat(L, SPAN_WARNING( "\The [src] ignores you."))
 			return
 
 	//VOREStation Edit Start - Adds friend_name var checks
 	if(!friend_name || L.real_name == friend_name)
 		friend = L
 		face_atom(L)
-		to_chat(L, span("notice", "\The [src] is now your friend! Meow."))
+		to_chat(L, SPAN_NOTICE("\The [src] is now your friend! Meow."))
 		visible_emote(pick("nuzzles [friend].", "brushes against [friend].", "rubs against [friend].", "purrs."))
 
 		if(has_AI())
 			var/datum/ai_holder/AI = ai_holder
 			AI.set_follow(friend)
 	else
-		to_chat(L, span("notice", "[src] ignores you."))
+		to_chat(L, SPAN_NOTICE("[src] ignores you."))
 	//VOREStation Edit End
 
 

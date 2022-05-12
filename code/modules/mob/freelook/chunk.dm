@@ -103,7 +103,7 @@
 			LAZYINITLIST(t.obfuscations)
 			if(!t.obfuscations[obfuscation.type])
 				var/image/ob_image = image(obfuscation.icon, t, obfuscation.icon_state, OBFUSCATION_LAYER)
-				ob_image.plane = PLANE_FULLSCREEN
+				ob_image.plane = FULLSCREEN_PLANE
 				t.obfuscations[obfuscation.type] = ob_image
 
 			obscured += t.obfuscations[obfuscation.type]
@@ -145,7 +145,7 @@
 		LAZYINITLIST(t.obfuscations)
 		if(!t.obfuscations[obfuscation.type])
 			var/image/ob_image = image(obfuscation.icon, t, obfuscation.icon_state, OBFUSCATION_LAYER)
-			ob_image.plane = PLANE_FULLSCREEN
+			ob_image.plane = FULLSCREEN_PLANE
 			t.obfuscations[obfuscation.type] = ob_image
 		obscured += t.obfuscations[obfuscation.type]
 

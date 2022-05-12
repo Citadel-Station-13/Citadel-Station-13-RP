@@ -17,13 +17,9 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/sprinter,
 		/obj/item/rig_module/pat_module,
-		/obj/item/rig_module/rescue_pharm
+		/obj/item/rig_module/rescue_pharm,
+		/obj/item/rig_module/device/hand_defib
 		)
-/* cit change - this is fucking gay
-//Armor reduction for industrial suit
-/obj/item/rig/industrial
-	armor = list(melee = 50, bullet = 10, laser = 20, energy = 15, bomb = 30, bio = 100, rad = 50)
-*/
 
 //Area allowing backpacks to be placed on rigsuits.
 /obj/item/rig/vox

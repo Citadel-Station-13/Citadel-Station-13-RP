@@ -10,7 +10,7 @@
 /turf/space,
 /area/space)
 "af" = (
-/obj/effect/landmark/gateway_scatter,
+/atom/movable/landmark/gateway_scatter,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/space)
 "ah" = (
@@ -255,7 +255,7 @@
 /area/awaymission/carpfarm/base)
 "aT" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/landmark/loot_spawn,
+/atom/movable/landmark/loot_spawn,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "aU" = (
@@ -333,7 +333,7 @@
 "bi" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/landmark/costume,
+/atom/movable/landmark/costume/random,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "bj" = (

@@ -62,7 +62,7 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("tether2_night")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'
+	id_hud_icons = 'icons/mob/hud_jobs_cit.dmi'
 
 	holomap_smoosh = list(list(
 		Z_LEVEL_SURFACE_LOW,
@@ -118,13 +118,12 @@
 							NETWORK_ALARM_ATMOS,
 							NETWORK_ALARM_POWER,
 							NETWORK_ALARM_FIRE,
-							NETWORK_TALON_HELMETS,
-							NETWORK_TALON_SHIP
+							NETWORK_TRADE_STATION
 							)
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage","ITV Talon Cryo")
+	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/tram
 	spawnpoint_left = /datum/spawnpoint/tram
 	spawnpoint_stayed = /datum/spawnpoint/cryo
@@ -158,7 +157,6 @@
 
 	lateload_z_levels = list(
 		list("Tether - Misc","Tether - Underdark","Tether - Plains"), //Stock Tether lateload maps
-		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2"),
 		list("Asteroid Belt 1","Asteroid Belt 2"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave","Desert Planet - Z3 Desert"),
 		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface"),
@@ -341,7 +339,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	color = "#33BB33"
 
-/obj/effect/overmap/visitable/sector/frozen_planet
+/obj/effect/overmap/visitable/sector/class_p
 	name = "Frozen Planet"
 	desc = "A world shrouded in cold and snow that seems to never let up."
 	scanner_desc = @{"[i]Information[/i]: A planet with a very cold atmosphere. Possible life signs detected."}
@@ -350,6 +348,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	in_space = 0
 
+/*
 /obj/effect/overmap/visitable/sector/trade_post
 	name = "Nebula Gas Food Mart"
 	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
@@ -370,6 +369,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 		"Civilian Transport" = list("nebula_pad_6")
 		)
 
+*/
 
 /obj/effect/overmap/visitable/sector/virgo3b/Crossed(var/atom/movable/AM)
 	. = ..()
@@ -402,6 +402,9 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 #define TETHER_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TETHER_MAP_SIZE)) / 2) // 30
 
 // We have a bunch of stuff common to the station z levels
+/datum/map_z_level/tether
+	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+
 /datum/map_z_level/tether/station
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_legend_x = 220

@@ -124,9 +124,9 @@
 	nodes.len = 2
 	. = ..()
 	switch(dir)
-		if(SOUTH || NORTH)
+		if(SOUTH, NORTH)
 			initialize_mains_directions = SOUTH|NORTH
-		if(EAST || WEST)
+		if(EAST, WEST)
 			initialize_mains_directions = EAST|WEST
 		if(NORTHEAST)
 			initialize_mains_directions = NORTH|EAST
@@ -144,6 +144,7 @@
 		setDir(4)
 
 /obj/machinery/atmospherics/mains_pipe/simple/update_icon_state()
+	. = ..()
 	if(nodes[1] && nodes[2])
 		icon_state = "intact[invisibility ? "-f" : "" ]"
 
@@ -249,6 +250,7 @@
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/manifold/update_icon_state()
+	. = ..()
 	icon_state = "manifold[invisibility ? "-f" : "" ]"
 
 /obj/machinery/atmospherics/mains_pipe/manifold/hidden
@@ -299,6 +301,7 @@
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/manifold4w/update_icon_state()
+	. = ..()
 	icon_state = "manifold4w[invisibility ? "-f" : "" ]"
 
 /obj/machinery/atmospherics/mains_pipe/manifold4w/hidden
@@ -360,6 +363,7 @@
 	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/split/update_icon_state()
+	. = ..()
 	icon_state = "split-[icon_type][invisibility ? "-f" : "" ]"
 
 /obj/machinery/atmospherics/mains_pipe/split/return_network(A)

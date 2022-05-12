@@ -62,6 +62,9 @@
 	else if(I.is_wirecutter())
 		finished = new /obj/item/melee/baton/cattleprod(get_turf(user))
 		to_chat(user, "<span class='notice'>You fasten the wirecutters to the top of the rod with the cable, prongs outward.</span>")
+	else if(istype(I, /obj/item/weldingtool/mini))
+		finished = new /obj/item/weldingtool/welder_spear(get_turf(user))
+		to_chat(user, "<span class='notice'>You fasten the mini welder to the top of the rod with the cable, nozzle outward.</span>")
 	if(finished)
 		user.drop_from_inventory(src)
 		user.drop_from_inventory(I)
@@ -140,7 +143,7 @@
 	if(istype(thing, /obj/item/stack/material) && construction_stage == 5)
 		var/obj/item/stack/material/reinforcing = thing
 		var/datum/material/reinforcing_with = reinforcing.get_material()
-		if(reinforcing_with.name == DEFAULT_WALL_MATERIAL) // Steel
+		if(reinforcing_with.name == MAT_STEEL) // Steel
 			if(reinforcing.get_amount() < 3)
 				to_chat(user, "<span class='warning'>You need at least 3 [reinforcing.singular_name]\s for this task.</span>")
 				return

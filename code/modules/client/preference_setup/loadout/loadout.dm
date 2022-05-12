@@ -123,10 +123,17 @@ var/list/gear_datums = list()
 /datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(var/max_cost)
 	. = list()
 	var/mob/preference_mob = preference_mob()
+	var/list/whitelist_cache = list()
 	for(var/gear_name in gear_datums)
 		var/datum/gear/G = gear_datums[gear_name]
+		if(G.whitelisted)
+			var/spec = G.whitelisted
+			if(whitelist_cache[spec] == null)
+				whitelist_cache[spec] = is_alien_whitelisted(preference_mob, name_static_species_meta(spec))
+			if(!whitelist_cache[spec])
+				continue
 
-		if(G.whitelisted && !is_alien_whitelisted(preference_mob, GLOB.all_species[G.whitelisted]))
+		if(G.whitelisted && !is_alien_whitelisted(preference_mob, name_static_species_meta(G.whitelisted)))
 			continue
 		if(max_cost && G.cost > max_cost)
 			continue

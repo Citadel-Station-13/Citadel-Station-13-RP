@@ -15,7 +15,6 @@
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
-	min_age = 18
 	max_age = 130
 
 	economic_modifier = 10
@@ -23,7 +22,7 @@
 	health_hud_intensity = 1.5
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	has_organ = list(
 		O_HEART =		/obj/item/organ/internal/heart,
@@ -45,16 +44,16 @@
 	color_mult = 1
 	icobase = 'icons/mob/human_races/r_human_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
-	wikilink="https://wiki.vore-station.net/Human"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Humanity"
 
 /datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
 	return SPECIES_HUMAN
 
 /datum/species/unathi
 	name = SPECIES_UNATHI
-	name_plural = "Unathi"
+	name_plural = SPECIES_UNATHI
 	icobase = 'icons/mob/human_races/r_lizard_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_lizard_vr.dmi'
 	tail = "sogtail"
@@ -77,7 +76,6 @@
 	species_language = LANGUAGE_UNATHI
 	health_hud_intensity = 2.5
 
-	min_age = 18
 	max_age = 260
 
 	economic_modifier = 10
@@ -110,7 +108,7 @@
 	body_temperature = T20C
 
 	spawn_flags = SPECIES_CAN_JOIN //Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#34AF10"
 	blood_color = "#b3cbc3"
@@ -164,7 +162,7 @@
 
 	color_mult = 1
 	gluttonous = 0
-	wikilink="https://wiki.vore-station.net/Unathi"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Unathi"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
@@ -196,7 +194,6 @@
 	species_language = LANGUAGE_SIIK
 	health_hud_intensity = 2.5
 
-	min_age = 18
 	max_age = 80
 
 	economic_modifier = 10
@@ -229,7 +226,7 @@
 	primitive_form = SPECIES_MONKEY_TAJ
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
@@ -260,7 +257,7 @@
 		)
 
 	color_mult = 1
-	wikilink="https://wiki.vore-station.net/Tajaran"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Tajarans"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
@@ -272,7 +269,7 @@
 
 /datum/species/skrell
 	name = SPECIES_SKRELL
-	name_plural = "Skrell"
+	name_plural = SPECIES_SKRELL
 	icobase = 'icons/mob/human_races/r_skrell_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_skrell_vr.dmi'
 	primitive_form = SPECIES_MONKEY_SKRELL
@@ -292,7 +289,6 @@
 
 	water_movement = -3
 
-	min_age = 18
 	max_age = 130
 
 	economic_modifier = 10
@@ -306,7 +302,7 @@
 	ambiguous_genders = TRUE
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
 	flesh_color = "#8CD7A3"
 	blood_color = "#1D2CBF"
@@ -345,14 +341,14 @@
 		)
 
 	color_mult = 1
-	wikilink="https://wiki.vore-station.net/Skrell"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Skrell"
 
 /datum/species/skrell/can_breathe_water()
 	return TRUE
 
 /datum/species/zaddat
 	name = SPECIES_ZADDAT
-	name_plural = "Zaddat"
+	name_plural = SPECIES_ZADDAT
 	icobase = 'icons/mob/human_races/r_zaddat.dmi'
 	deform = 'icons/mob/human_races/r_zaddat.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
@@ -375,7 +371,6 @@
 
 	economic_modifier = 3
 
-	min_age = 18
 	max_age = 90
 
 	blurb = "The Zaddat are an Unathi client race only recently introduced to OriCon space. Having evolved on \
@@ -395,7 +390,7 @@
 	genders = list(FEMALE, PLURAL) //females are polyp-producing, infertile females and males are nigh-identical
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = null
+	species_appearance_flags = null
 
 	flesh_color = "#AFA59E"
 	base_color = "#e2e4a6"
@@ -470,42 +465,39 @@
 
 /datum/species/sergal
 	name = SPECIES_SERGAL
-	name_plural = "Sergals"
+	name_plural = "Naramadi"
 	icobase = 'icons/mob/human_races/r_sergal.dmi'
 	deform = 'icons/mob/human_races/r_def_sergal.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	slowdown      = -0.25
+	snow_movement = -1 // Ignores light snow
 	//darksight = 8
 	//slowdown = -0.5
 	//brute_mod = 1.15
 	//burn_mod =  1.15
 	//gluttonous = 1
+	hunger_factor = 0.1 // By math should be half of the Teshari Nutrition drain
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SAGARU)
 	name_language = LANGUAGE_SAGARU
 	color_mult = 1
 
-	min_age = 18
-	max_age = 80
+	max_age = 120
 
-	blurb = "There are two subspecies of Sergal; Southern and Northern. Northern sergals are a highly aggressive race \
-	that lives in the plains and tundra of their homeworld. They are characterized by long, fluffy fur bodies with cold colors; \
-	usually with white abdomens, somewhat short ears, and thick faces. Southern sergals are much more docile and live in the \
-	Gold Ring City and are scattered around the outskirts in rural areas and small towns. They usually have short, brown or yellow \
-	(or other 'earthy' colors) fur, long ears, and a long, thin face. They are smaller than their Northern relatives. Both have strong \
-	racial tensions which has resulted in more than a number of wars and outright attempts at genocide. Sergals have an incredibly long \
-	lifespan, but due to their lust for violence, only a handful have ever survived beyond the age of 80, such as the infamous and \
-	legendary General Rain Silves who is claimed to have lived to 5000."
+	blurb = "The Naramadi (Plural of Naramad) are a species of bipedal, furred mammalians originating from the Verkihar Major system. \
+	They share a border with the Unathi, granting both of the species a history of war. \
+	Naramadi Ascendancy's location also brings forth a constant danger of Hivebot Fleets attacks, leaving the Empire in a state of constant Defense."
 
-	wikilink="https://wiki.vore-station.net/Backstory#Sergal"
+	wikilink=""
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/sergal)
 
-	primitive_form = "Saru"
+	primitive_form = SPECIES_MONKEY_SERGAL
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
@@ -536,7 +528,7 @@
 
 /datum/species/akula
 	name = SPECIES_AKULA
-	name_plural = "Akula"
+	name_plural = SPECIES_AKULA //It's singular and plural. English is weird.
 	icobase = 'icons/mob/human_races/r_akula.dmi'
 	deform = 'icons/mob/human_races/r_def_akula.dmi'
 	tail = "tail"
@@ -547,6 +539,7 @@
 	//brute_mod = 1.15
 	//burn_mod =  1.15
 	//gluttonous = 1
+	water_movement = -4
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SKRELLIAN
@@ -557,7 +550,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark. \
@@ -568,14 +560,14 @@
 	surviving in open air for long periods of time. However, Akula even today still require a high humidity environment to avoid drying out \
 	after a few days, which would make life on an arid world like Virgo-Prime nearly impossible if it were not for Skrellean technology to aid them."
 
-	wikilink="https://wiki.vore-station.net/Backstory#Akula"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Akula"
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/akula)
 
-	primitive_form = "Sobaka"
+	primitive_form = SPECIES_MONKEY_AKULA
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
 	base_color = "#777777"
@@ -608,7 +600,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "Nevreans are a race of avian and dinosaur-like creatures living on Tal. They belong to a group of races that hails from Eltus, \
@@ -617,14 +608,14 @@
 	over and over again. Consequently, they struggle to make copies of same things. Both genders have a voice that echoes a lot. Their natural \
 	tone oscillates between tenor and soprano. They are excessively noisy when they quarrel in their native language."
 
-	wikilink="https://wiki.vore-station.net/Backstory#Nevrean"
+	wikilink=""
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nevrean)
 
-	primitive_form = "Sparra"
+	primitive_form = SPECIES_MONKEY_NEVREAN
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
@@ -648,7 +639,6 @@
 	name_language = LANGUAGE_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
@@ -658,7 +648,7 @@
 	mountainous areas, they have a differing societal structure than the Flatland Zorren having a more feudal social structure, like the Flatland Zorren, \
 	the Highland Zorren have also only recently been hired by the Trans-Stellar Corporations, but thanks to the different social structure they seem to \
 	have adjusted better to their new lives. Though similar fox-like beings have been seen they are different than the Zorren."
-	wikilink="https://wiki.vore-station.net/Zorren"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Zorren"
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/zorren,
 						/datum/category_item/catalogue/fauna/highzorren)
@@ -666,7 +656,7 @@
 	//primitive_form = "" //We don't have fox-monkey sprites.
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
 	blood_color = "#240bc4"
@@ -695,7 +685,6 @@
 	name_language = LANGUAGE_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "The fox-like Zorren are native to Virgo-Prime, however there are two distinct varieties of Zorren one with large ears and shorter fur, \
@@ -705,14 +694,14 @@
 	mountainous areas, they have a differing societal structure than the Flatland Zorren having a more feudal social structure, like the Flatland Zorren, \
 	the Highland Zorren have also only recently been hired by the Trans-Stellar Corporations, but thanks to the different social structure they \
 	seem to have adjusted better to their new lives. Though similar fox-like beings have been seen they are different than the Zorren."
-	wikilink="https://wiki.vore-station.net/Zorren"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Zorren"
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/zorren,
 						/datum/category_item/catalogue/fauna/flatzorren)
 
 	//primitive_form = "" //We don't have fennec-monkey sprites.
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
@@ -731,14 +720,14 @@
 
 /datum/species/vulpkanin
 	name = SPECIES_VULPKANIN
-	name_plural = "Vulpkanin"
+	name_plural = SPECIES_VULPKANIN
 	icobase = 'icons/mob/human_races/r_vulpkanin.dmi'
 	deform = 'icons/mob/human_races/r_vulpkanin.dmi'
 //	path = /mob/living/carbon/human/vulpkanin
 //	default_language = "Sol Common"
 	secondary_langs = list(LANGUAGE_CANILUNZT)
 	name_language = LANGUAGE_CANILUNZT
-	primitive_form = "Wolpin"
+	primitive_form = SPECIES_MONKEY_VULPKANIN
 	tail = "vulptail"
 	tail_animation = 'icons/mob/species/vulpkanin/tail.dmi' // probably need more than just one of each, but w/e
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -757,110 +746,19 @@
 	to the degree it can cause conflict with more rigorous and strict authorities. They speak a guttural language known as 'Canilunzt' \
     which has a heavy emphasis on utilizing tail positioning and ear twitches to communicate intent."
 
-	wikilink="https://wiki.vore-station.net/Backstory#Vulpkanin"
+	wikilink=""
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vulpkanin)
 
-	primitive_form = "Wolpin"
+	primitive_form = SPECIES_MONKEY_VULPKANIN
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#966464"
 	base_color = "#B43214"
 
-	min_age = 18
 	max_age = 80
-
-/datum/species/xenohybrid
-	name = SPECIES_XENOHYBRID
-	name_plural = "Xenohybrids"
-	icobase = 'icons/mob/human_races/r_xenomorph.dmi'
-	deform = 'icons/mob/human_races/r_def_xenomorph.dmi'
-	tail = "tail"
-	icobase_tail = 1
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	num_alternate_languages = 2
-
-	min_age = 18
-	max_age = 150//Xenomorphs probably get pretty old if not shot dead
-
-	blurb = "Xenohybrids are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
-	Xenohybrids are civilised and capable of communicating with other species, without knowing their language. \
-	Over the years crusading the stars xenomorphs gathered genetic material of almost all known species(and probably some unknown as well), \
-	allowing Xenohybrids to reproduce with most other species. This reproduction is not as invasive as the facehuggers of their relatives, \
-	but can still be dangerous to the host. Their chitinous exoskeleton allows them to endure low pressure and freezing cold \
-	quite well, but leaves them vurnerable to fire and heat."
-	catalogue_data = list(/datum/category_item/catalogue/fauna/xenohybrid)
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
-
-	//primitive_form = "" //None for these guys
-	language = "Xenomorph"
-	name_language = "Xenomorph"
-	species_language = "Xenomorph"
-	secondary_langs = list("Xenomorph")
-	num_alternate_languages = 3
-
-	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
-
-	blood_color = "#12ff12"
-	flesh_color = "#201730"
-	base_color = "#201730"
-
-	heat_discomfort_strings = list(
-		"Your chitin feels extremely warm.",
-		"You feel uncomfortably warm.",
-		"Your chitin feels hot."
-		)
-	inherent_verbs = list(
-		/mob/living/proc/shred_limb,
-		/mob/living/carbon/human/proc/tie_hair
-		)
-
-	total_health = 110	//Exoskeleton makes you tougher than baseline
-	brute_mod = 0.95 // Chitin is somewhat hard to crack
-	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
-	blood_volume = 560	//Baseline
-	darksight = 4 //Better hunters in the dark.
-	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
-
-	slowdown = -0.2//Speedboost Tesh have -0.5
-
-	warning_low_pressure = 30//lower than baseline, still not vacuum prove
-	hazard_low_pressure = -1
-
-	warning_high_pressure = 325//Both baseline
-	hazard_high_pressure = 550
-
-	//Doesnt work, defaults are set at checks
-	//breath_type = null	//they don't breathe
-	//poison_type = null
-
-	cold_level_1 = 90	//Space if fucking cold, so we need low temperature tolerance
-	cold_level_2 = -1
-	cold_level_3 = -1
-
-	heat_level_1 = 350	//dont like the heat
-	heat_level_2 = 400
-	heat_level_3 = 700
-
-	//Organ-List to remove need to breath(?)
-	has_organ = list(
-		O_HEART =		/obj/item/organ/internal/heart,
-		O_VOICE = 		/obj/item/organ/internal/voicebox,
-		O_LIVER =		/obj/item/organ/internal/liver,
-		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
-		O_BRAIN =		/obj/item/organ/internal/brain,
-		//O_EYES =		/obj/item/organ/internal/eyes,
-		O_STOMACH =		/obj/item/organ/internal/stomach,
-		O_INTESTINE =	/obj/item/organ/internal/intestine
-		)
-	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
-
-/datum/species/xenohybrid/can_breathe_water()
-	return TRUE	//they dont quite breathe
 
 /datum/species/harpy
 	name = SPECIES_RAPALA
@@ -880,7 +778,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	base_color = "#EECEB3"
@@ -890,12 +787,12 @@
 	who are known for having massive winged arms and talons as feet. They've been clocked at speeds of over 35 miler per hour chasing the planet's many fish-like fauna.\
 	The Rapalan's home-world 'Verita' is a strangely habitable gas giant, while no physical earth exists, there are fertile floating islands orbiting around the planet from past asteroid activity."
 
-	wikilink="https://wiki.vore-station.net/Backstory#Rapala"
+	wikilink=""
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/rapala)
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 
 	heat_discomfort_strings = list(
@@ -906,7 +803,7 @@
 
 /datum/species/crew_shadekin
 	name = SPECIES_SHADEKIN_CREW
-	name_plural = "Black-Eyed Shadekin"
+	name_plural = SPECIES_SHADEKIN_CREW
 	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	tail = "tail"
@@ -915,7 +812,7 @@
 	but next to no verifiable evidence to their existence. However, they have recently been more verifiably \
 	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have \
 	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something more fitting for black-eyes	//CIT ADDENDUM: since we're not really on the tether anymore we'll need a bullshit reason as to why we have shadekin on a ship
-	wikilink = "https://wiki.vore-station.net/Shadekin"
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 
 	language = LANGUAGE_SHADEKIN
 	name_language = LANGUAGE_SHADEKIN
@@ -977,7 +874,7 @@
 	breath_type = null	//they don't breathe
 	poison_type = null
 
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_UNDERWEAR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_UNDERWEAR
 
 	has_organ = list(
 		O_HEART =		/obj/item/organ/internal/heart,
@@ -1009,4 +906,3 @@
 
 /datum/species/shadekin/can_breathe_water()
 	return TRUE	//they dont quite breathe
-

@@ -54,6 +54,7 @@
 
 	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat
+	bone_amount = 3
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
@@ -64,7 +65,7 @@
 		var/mob/living/L = A
 		if(prob(knockdown_chance))
 			L.Weaken(3)
-			L.visible_message(span("danger", "\The [src] knocks down \the [L]!"))
+			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))
 
 // Subtypes.
 
@@ -92,6 +93,7 @@
 	icon_expected_height = 32
 
 	meat_amount = 5
+	bone_amount = 4
 
 	mod_min = 90
 	mod_max = 140
@@ -118,6 +120,7 @@
 	icon_expected_height = 64
 
 	meat_amount = 10
+	bone_amount = 7
 
 
 /mob/living/simple_mob/animal/space/carp/holographic
@@ -148,7 +151,7 @@
 
 // Called on death.
 /mob/living/simple_mob/animal/space/carp/holographic/proc/derez()
-	visible_message(span("notice", "\The [src] fades away!"))
+	visible_message(SPAN_NOTICE("\The [src] fades away!"))
 	qdel(src)
 
 /mob/living/simple_mob/animal/space/carp/holographic/gib()
@@ -157,5 +160,3 @@
 /mob/living/simple_mob/animal/space/carp/holographic/death()
 	..()
 	derez()
-
-

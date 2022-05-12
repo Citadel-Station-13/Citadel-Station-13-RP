@@ -12,7 +12,7 @@
 
 //Turfs
 
-#define isopenspace(A) istype(A, /turf/simulated/open)
+#define isopenturf(A) istype(A, /turf/simulated/open)
 
 #define isspaceturf(A) istype(A, /turf/space)
 
@@ -82,3 +82,11 @@
 #define isxeno(A) istype(A, /mob/living/simple_mob/xeno)
 
 #define issimple(A) istype(A, /mob/living/simple_mob)
+
+/proc/is_species_type(atom/A, path)
+	if(!istype(A, /mob/living/carbon/human))
+		return FALSE
+	var/mob/living/carbon/human/H = A
+	return istype(H.species, path)
+
+#define fast_is_species_type(H, path)	istype(H.species, path)

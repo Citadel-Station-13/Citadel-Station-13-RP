@@ -4,9 +4,19 @@
 # In the event that multiple org members are to be informed of changes
 # to the same file or dir, add them to the end under Multiple Owners
 
-#deathride58
-/modular_citadel/ @deathride58
+# LetterJay
 
-#LetterJay 
-/modular_citadel/code/modules/client/loadout/__donator.dm @LetterJay 
+/code/modules/client/preference_setup/loadout/loadout_donator.dm @LetterJay
 /SQL/database_changelog.txt @LetterJay
+
+# Zandario
+
+/code/__DEFINES/chat.dm @Zandario
+/code/__DEFINES/tgui.dm @Zandario
+/code/controllers/subsystem/chat.dm @Zandario
+/code/controllers/subsystem/ping.dm @Zandario
+/code/controllers/subsystem/tgui.dm @Zandario
+/code/modules/tgchat @Zandario
+/code/modules/tgui @Zandario
+/code/modules/tgui_panel @Zandario
+/tgui @Zandario

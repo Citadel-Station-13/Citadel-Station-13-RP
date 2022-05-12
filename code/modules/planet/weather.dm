@@ -117,7 +117,7 @@
 	wind_speed = new_wind_speed
 	wind_dir = pick(GLOB.alldirs)
 	var/message = "You feel the wind blowing [wind_speed > 2 ? "strongly ": ""]towards the <b>[dir2text(wind_dir)]</b>."
-	message_all_outdoor_players(span("warning", message))
+	message_all_outdoor_players(SPAN_WARNING( message))
 
 /datum/weather_holder/proc/message_all_outdoor_players(message)
 	for(var/mob/M in player_list) // Don't need to care about clientless mobs.
@@ -257,4 +257,4 @@
 // This is for special effects for specific types of weather, such as lightning flashes in a storm.
 // It's a seperate object to allow the use of flick().
 /atom/movable/weather_visuals/special
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE

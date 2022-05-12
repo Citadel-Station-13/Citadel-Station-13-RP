@@ -1,6 +1,7 @@
 /obj/item/sample
 	name = "forensic sample"
 	icon = 'icons/obj/forensics.dmi'
+	flags = NOPRINT
 	w_class = ITEMSIZE_TINY
 	var/list/evidence = list()
 
@@ -120,6 +121,9 @@
 		for(var/print in supplied.fingerprints)
 			evidence[print] = supplied.fingerprints[print]
 		supplied.fingerprints.Cut()
+
+/obj/item/forensics
+	flags = NOPRINT
 
 /obj/item/forensics/sample_kit
 	name = "fiber collection kit"

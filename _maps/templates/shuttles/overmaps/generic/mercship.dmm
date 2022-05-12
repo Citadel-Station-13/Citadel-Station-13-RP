@@ -3455,7 +3455,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
 	},
-/obj/machinery/shield_gen,
+/obj/machinery/power/shield_generator/charged,
 /turf/simulated/floor,
 /area/ship/mercenary/med)
 "gh" = (

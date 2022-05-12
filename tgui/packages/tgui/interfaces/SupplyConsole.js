@@ -1,9 +1,8 @@
 import { filter, sortBy } from 'common/collections';
-import { round } from "common/math";
 import { Fragment } from "inferno";
 import { formatTime } from "../format";
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Collapsible, AnimatedNumber } from "../components";
+import { Box, Button, LabeledList, Section, Tabs, AnimatedNumber, Stack } from "../components";
 import { ComplexModal, modalRegisterBodyOverride } from '../interfaces/common/ComplexModal';
 import { Window } from "../layouts";
 import { flow } from 'common/fp';
@@ -81,7 +80,8 @@ const SupplyConsoleShuttleStatus = (props, context) => {
           content="Send Away"
           onClick={() => act("send_shuttle", { mode: "send_away" })} />
       );
-    } else if (shuttle.launch === 2 && (shuttle.mode === 3 || shuttle.mode === 1)) {
+    } else if (
+      shuttle.launch === 2 && (shuttle.mode === 3 || shuttle.mode === 1)) {
       shuttle_buttons = (
         <Button
           icon="ban"
@@ -208,12 +208,13 @@ const SupplyConsoleMenuOrder = (props, context) => {
     sortBy(val => (val.cost > supply_points)),
   ])(supply_packs);
 
-  // const viewingPacks = sortBy(val => val.name)(supply_packs).filter(val => val.group === activeCategory);
+  // const viewingPacks = sortBy(val => val.name)(
+  // supply_packs).filter(val => val.group === activeCategory);
 
   return (
     <Section level={2}>
-      <Flex spacing={1}>
-        <Flex.Item basis="25%">
+      <Stack>
+        <Stack.Item basis="25%">
           <Section title="Categories" scrollable fill height="290px">
             {categories.map(category => (
               <Button
@@ -224,13 +225,13 @@ const SupplyConsoleMenuOrder = (props, context) => {
                 onClick={() => setActiveCategory(category)} />
             ))}
           </Section>
-        </Flex.Item>
-        <Flex.Item grow={1}>
+        </Stack.Item>
+        <Stack.Item grow={1} ml={2}>
           <Section title="Contents" scrollable fill height="290px">
             {viewingPacks.map(pack => (
               <Box key={pack.name}>
-                <Flex align="center" justify="flex-start" spacing={1}>
-                  <Flex.Item basis="70%">
+                <Stack align="center" justify="flex-start">
+                  <Stack.Item basis="70%">
                     <Button
                       fluid
                       icon="shopping-cart"
@@ -238,23 +239,23 @@ const SupplyConsoleMenuOrder = (props, context) => {
                       content={pack.name}
                       color={(pack.cost > supply_points) ? "red" : null}
                       onClick={() => act("request_crate", { ref: pack.ref })} />
-                  </Flex.Item>
-                  <Flex.Item>
+                  </Stack.Item>
+                  <Stack.Item>
                     <Button
                       content="#"
                       color={(pack.cost > supply_points) ? "red" : null}
                       onClick={() => act("request_crate_multi", { ref: pack.ref })} />
-                  </Flex.Item>
-                  <Flex.Item>
+                  </Stack.Item>
+                  <Stack.Item>
                     <Button
                       content="C"
                       color={(pack.cost > supply_points) ? "red" : null}
                       onClick={() => act("view_crate", { crate: pack.ref })} />
-                  </Flex.Item>
-                  <Flex.Item grow={1}>
+                  </Stack.Item>
+                  <Stack.Item grow={1}>
                     {pack.cost} points
-                  </Flex.Item>
-                </Flex>
+                  </Stack.Item>
+                </Stack>
               </Box>
             ))}
             {/* Alternative collapsible style folders */}
@@ -274,8 +275,8 @@ const SupplyConsoleMenuOrder = (props, context) => {
               </Collapsible>
             ))} */}
           </Section>
-        </Flex.Item>
-      </Flex>
+        </Stack.Item>
+      </Stack>
     </Section>
   );
 };
@@ -380,12 +381,13 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
         <Section key={ri}>
           <LabeledList>
             {r.title.map(title => (
-              <LabeledList.Item label={title.field} key={title.field} buttons={order_auth ? (
-                <Button
-                  icon="pen"
-                  content="Edit"
-                  onClick={() => act("export_edit", { ref: r.ref, edit: title.field, default: title.entry })} />
-              ) : null}>
+              <LabeledList.Item
+                label={title.field} key={title.field} buttons={order_auth ? (
+                  <Button
+                    icon="pen"
+                    content="Edit"
+                    onClick={() => act("export_edit", { ref: r.ref, edit: title.field, default: title.entry })} />
+                ) : null}>
                 {title.entry}
               </LabeledList.Item>
             ))}
@@ -394,27 +396,28 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
                 {r.error}
               </LabeledList.Item>
             ) : r.contents.map((item, i) => (
-              <LabeledList.Item label={item.object} key={i} buttons={order_auth ? (
-                <Fragment>
-                  <Button
-                    icon="pen"
-                    content="Edit"
-                    onClick={() => act("export_edit_field", {
-                      ref: r.ref,
-                      index: i + 1,
-                      edit: "meow",
-                      default: item.object,
-                    })} />
-                  <Button
-                    icon="trash"
-                    color="red"
-                    content="Delete"
-                    onClick={() => act("export_delete_field", {
-                      ref: r.ref,
-                      index: i + 1,
-                    })} />
-                </Fragment>
-              ) : null}>
+              <LabeledList.Item
+                label={item.object} key={i} buttons={order_auth ? (
+                  <Fragment>
+                    <Button
+                      icon="pen"
+                      content="Edit"
+                      onClick={() => act("export_edit_field", {
+                        ref: r.ref,
+                        index: i + 1,
+                        edit: "meow",
+                        default: item.object,
+                      })} />
+                    <Button
+                      icon="trash"
+                      color="red"
+                      content="Delete"
+                      onClick={() => act("export_delete_field", {
+                        ref: r.ref,
+                        index: i + 1,
+                      })} />
+                  </Fragment>
+                ) : null}>
                 {item.quantity}x -&gt; {item.value} points
               </LabeledList.Item>
             ))}

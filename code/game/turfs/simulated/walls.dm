@@ -1,21 +1,22 @@
 /turf/simulated/wall
 	name = "wall"
-	desc = "A huge chunk of metal used to seperate rooms."
+	desc = "A huge chunk of iron used to separate rooms."
 	icon = 'icons/turf/wall_masks.dmi'
 	icon_state = "generic"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 	blocks_air = TRUE
 //	air_status = AIR_STATUS_BLOCK
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
+	baseturfs = /turf/simulated/floor/plating
 
 	var/icon/wall_masks = 'icons/turf/wall_masks.dmi'
 	var/damage = 0
 	var/damage_overlay = 0
 	var/global/damage_overlays[16]
 	var/active
-	var/can_open = 0
+	var/can_open = FALSE
 	var/datum/material/girder_material
 	var/datum/material/material
 	var/datum/material/reinf_material
@@ -33,10 +34,10 @@
 	. = ..()
 	icon_state = "blank"
 	if(!materialtype)
-		materialtype = DEFAULT_WALL_MATERIAL
+		materialtype = MAT_STEEL
 	material = get_material_by_name(materialtype)
 	if(!girdertype)
-		girdertype = DEFAULT_WALL_MATERIAL
+		girdertype = MAT_STEEL
 	girder_material = get_material_by_name(girdertype)
 	if(!isnull(rmaterialtype))
 		reinf_material = get_material_by_name(rmaterialtype)
@@ -46,7 +47,11 @@
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
-	dismantle_wall(null, null, TRUE, !changing_turf)
+	clear_plants()
+	material = get_material_by_name("placeholder")
+	reinf_material = null
+	girder_material = null
+	update_connections(1)
 	return ..()
 
 /turf/simulated/wall/process(delta_time)
@@ -92,6 +97,9 @@
 			// redirect the projectile
 			Proj.redirect(new_x, new_y, curloc, null)
 
+	if(Proj.ricochet_sounds && prob(15))
+		playsound(src, pick(Proj.ricochet_sounds), 100, 1)
+
 	take_damage(damage)
 	return
 
@@ -116,10 +124,6 @@
 			plant.pixel_x = 0
 			plant.pixel_y = 0
 		plant.update_neighbors()
-
-/turf/simulated/wall/ChangeTurf(var/turf/N, var/tell_universe, var/force_lighting_update, var/preserve_outdoors)
-	clear_plants()
-	return ..(N, tell_universe, force_lighting_update, preserve_outdoors)
 
 //Appearance
 /turf/simulated/wall/examine(mob/user)
@@ -187,8 +191,7 @@
 
 	return ..()
 
-/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product, changeturf = TRUE)
-
+/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product)
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
 		if(reinf_material)
@@ -206,22 +209,14 @@
 			P.roll_and_drop(src)
 		else
 			O.forceMove(src)
-
-	clear_plants()
-	material = get_material_by_name("placeholder")
-	reinf_material = null
-	girder_material = null
-	update_connections(1)
-
-	if(changeturf)
-		ChangeTurf(/turf/simulated/floor/plating)
+	ScrapeAway()
 
 /turf/simulated/wall/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))
 				new /obj/structure/girder/displaced(src, girder_material.name)
-			src.ChangeTurf(get_base_turf_by_area(src))
+			ScrapeAway()
 		if(2.0)
 			if(prob(75))
 				take_damage(rand(150, 250))
@@ -229,8 +224,6 @@
 				dismantle_wall(1,1)
 		if(3.0)
 			take_damage(rand(0, 250))
-		else
-			return
 
 // Wall-rot effect, a nasty fungus that destroys walls.
 /turf/simulated/wall/proc/rot()
@@ -310,7 +303,7 @@
 
 /turf/simulated/wall/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_DECONSTRUCT)
-		to_chat(user, span("notice", "You deconstruct \the [src]."))
-		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
+		to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
+		ScrapeAway()
 		return TRUE
 	return FALSE

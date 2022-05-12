@@ -95,7 +95,7 @@ var/hadevent    = 0
 				spawn(0) temp_glassairlock.prison_open()
 
 			for (var/obj/machinery/door_timer/temp_timer in A)
-				temp_timer.releasetime = 1
+				temp_timer.timer_duration = 1
 
 		sleep(150)
 		command_announcement.Announce("Gr3y.T1d3 virus detected in [station_name()] imprisonment subroutines. Recommend station AI involvement.", "Security Alert")
@@ -103,7 +103,7 @@ var/hadevent    = 0
 		log_world("ERROR: Could not initate grey-tide. Unable find prison or brig area.")
 
 /proc/carp_migration() // -- Darem
-	for(var/obj/effect/landmark/C in GLOB.landmarks_list)
+	for(var/atom/movable/landmark/C in GLOB.landmarks_list)
 		if(C.name == "carpspawn")
 			new /mob/living/simple_mob/animal/space/carp(C.loc)
 	//sleep(100)
@@ -119,7 +119,7 @@ var/hadevent    = 0
 
 		for(var/i=1,i<=lightsoutAmount,i++)
 			var/list/possibleEpicentres = list()
-			for(var/obj/effect/landmark/newEpicentre in GLOB.landmarks_list)
+			for(var/atom/movable/landmark/newEpicentre in GLOB.landmarks_list)
 				if(newEpicentre.name == "lightsout" && !(newEpicentre in epicentreList))
 					possibleEpicentres += newEpicentre
 			if(possibleEpicentres.len)
@@ -130,12 +130,12 @@ var/hadevent    = 0
 		if(!epicentreList.len)
 			return
 
-		for(var/obj/effect/landmark/epicentre in epicentreList)
+		for(var/atom/movable/landmark/epicentre in epicentreList)
 			for(var/obj/machinery/power/apc/apc in range(epicentre,lightsoutRange))
 				apc.overload_lighting()
 
 	else
-		for(var/obj/machinery/power/apc/apc in machines)
+		for(var/obj/machinery/power/apc/apc in GLOB.apcs)
 			apc.overload_lighting()
 
 	return
@@ -261,14 +261,14 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 
 	spawn(0)
 		to_chat(world, "Started processing APCs")
-		for (var/obj/machinery/power/apc/APC in machines)
+		for (var/obj/machinery/power/apc/apc in GLOB.apcs)
 			if(APC.z in station_levels)
 				APC.ion_act()
 				apcnum++
 		to_chat(world, "Finished processing APCs. Processed: [apcnum]")
 	spawn(0)
 		to_chat(world, "Started processing SMES")
-		for (var/obj/machinery/power/smes/SMES in machines)
+		for (var/obj/machinery/power/smes/SMES in GLOB.smeses)
 			if(SMES.z in station_levels)
 				SMES.ion_act()
 				smesnum++

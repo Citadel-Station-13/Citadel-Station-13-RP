@@ -12,7 +12,7 @@
 	icon_state = "frame";
 	pixel_y = 32
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /turf/unsimulated/floor{
@@ -124,7 +124,7 @@
 	dir = 5
 	},
 /obj/structure/table/rack,
-/obj/item/gun/launcher/rocket,
+/obj/item/gun/projectile/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
@@ -456,7 +456,7 @@
 /area/antag/antag_base)
 "aN" = (
 /obj/structure/bed/padded,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/red,
@@ -613,7 +613,7 @@
 	icon_state = "frame";
 	pixel_x = 32
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/red,
@@ -972,7 +972,7 @@
 	},
 /area/antag/antag_base)
 "bB" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Uplink"
 	},
 /turf/unsimulated/floor{
@@ -3739,13 +3739,13 @@
 	},
 /area/shuttle/mercenary)
 "gy" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},
 /area/shuttle/mercenary)
 "gz" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},

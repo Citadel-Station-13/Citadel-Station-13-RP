@@ -42,7 +42,7 @@
 	if(LAZYLEN(map_z))
 		return // We're already set up!
 	for(var/i = 0 to multiz)
-		world.increment_max_z()
+		SSmapping.add_new_zlevel("[src] transit [i+1]", list())
 		map_z += world.maxz
 
 	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), world.maxz)
@@ -56,7 +56,7 @@
 		visitor_dir = turn(visitor_dir, 90)
 
 	if(multiz)
-		new /obj/effect/landmark/map_data(center_loc, (multiz + 1))
+		new /atom/movable/landmark/map_data(center_loc, (multiz + 1))
 	register_z_levels()
 	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
 

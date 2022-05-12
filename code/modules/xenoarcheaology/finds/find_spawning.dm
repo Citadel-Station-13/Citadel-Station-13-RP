@@ -23,7 +23,7 @@
 
 	if(prob(40))
 		material_descriptor = pick("rusted ","dusty ","archaic ","fragile ")
-	source_material = pick("cordite","quadrinium",DEFAULT_WALL_MATERIAL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
+	source_material = pick("cordite","quadrinium",MAT_STEEL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
 
 	var/talkative = 0
 	if(prob(5))
@@ -55,7 +55,7 @@
 			else
 				new_item = new /obj/item/reagent_containers/glass/beaker(src.loc)
 			new_item.icon = 'icons/obj/xenoarchaeology.dmi'
-			new_item.icon_state = "urn[rand(1,2)]"
+			new_item.icon_state = "urn[rand(1,3)]"
 			apply_image_decorations = 1
 			if(prob(20))
 				additional_desc = "It [pick("whispers faintly","makes a quiet roaring sound","whistles softly","thrums quietly","throbs")] if you put it to your ear."
@@ -76,7 +76,7 @@
 			name = "statuette"
 			icon = 'icons/obj/xenoarchaeology.dmi'
 			item_type = "statuette"
-			icon_state = "statuette[rand(1,3)]"
+			icon_state = "statuette[rand(1,4)]"
 			additional_desc = "It depicts a [pick("small","ferocious","wild","pleasing","hulking")] \
 			[pick("alien figure","rodent-like creature","reptilian alien","primate","unidentifiable object")] \
 			[pick("performing unspeakable acts","posing heroically","in a fetal position","cheering","sobbing","making a plaintive gesture","making a rude gesture")]."
@@ -179,6 +179,7 @@
 			possible_spawns += /obj/item/stack/material/phoron
 			possible_spawns += /obj/item/stack/material/gold
 			possible_spawns += /obj/item/stack/material/silver
+			possible_spawns += /obj/item/stack/material/copper
 			possible_spawns += /obj/item/stack/material/uranium
 			possible_spawns += /obj/item/stack/material/sandstone
 			possible_spawns += /obj/item/stack/material/silver
@@ -477,7 +478,7 @@
 			var/new_boat_mat = pickweight(list(
 				MAT_WOOD = 100,
 				MAT_SIFWOOD = 200,
-				DEFAULT_WALL_MATERIAL = 60,
+				MAT_STEEL = 60,
 				MAT_URANIUM = 14,
 				MAT_MARBLE = 16,
 				MAT_GOLD = 20,
@@ -525,7 +526,7 @@
 
 	if(istype(new_item, /obj/item/material))
 		var/new_item_mat = pickweight(list(
-			DEFAULT_WALL_MATERIAL = 80,
+			MAT_STEEL = 80,
 			MAT_WOOD = 20,
 			MAT_SIFWOOD = 40,
 			MAT_URANIUM = 14,
@@ -554,7 +555,7 @@
 
 	var/decorations = ""
 	if(apply_material_decorations)
-		source_material = pick("cordite","quadrinium",DEFAULT_WALL_MATERIAL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
+		source_material = pick("cordite","quadrinium",MAT_STEEL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
 		if(istype(new_item, /obj/item/material))
 			var/obj/item/material/MW = new_item
 			source_material = MW.material.display_name

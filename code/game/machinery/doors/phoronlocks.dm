@@ -50,7 +50,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	var/frequency = 0
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/Initialize()
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
@@ -106,7 +106,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 			var/datum/gas_mixture/removed = env.remove_ratio(0.99)
 			if(removed)
 				var/heat_transfer = removed.get_thermal_energy_change(target_temp)
-				removed.add_thermal_energy(min(heating_power,heat_transfer))
+				removed.add_thermal_energy(clamp(heat_transfer,-heating_power,heating_power))
 				env.merge(removed)
 
 		var/transfer_moles = min(1, volume_rate/env.volume)*env.total_moles
@@ -119,7 +119,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 /obj/machinery/embedded_controller/radio/airlock/phoron
 	var/tag_scrubber
 
-/obj/machinery/embedded_controller/radio/airlock/phoron/Initialize()
+/obj/machinery/embedded_controller/radio/airlock/phoron/Initialize(mapload)
 	. = ..()
 	program = new/datum/computer/file/embedded_program/airlock/phoron(src)
 

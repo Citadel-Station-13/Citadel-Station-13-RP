@@ -15,7 +15,7 @@
 	blood_color = "#CCCCCC"
 	flesh_color = "#AAAAAA"
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	remains_type = /obj/effect/decal/cleanable/ash
 	death_message = "dissolves into ash..."

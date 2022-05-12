@@ -17,15 +17,15 @@
 #define DNA_HARD_BOUNDS    list(1,3490,3500,4095)
 
 // UI Indices (can change to mutblock style, if desired)
-#define DNA_UI_HAIR_R      1
-#define DNA_UI_HAIR_G      2
-#define DNA_UI_HAIR_B      3
-#define DNA_UI_BEARD_R     4
-#define DNA_UI_BEARD_G     5
-#define DNA_UI_BEARD_B     6
-#define DNA_UI_SKIN_TONE   7
-#define DNA_UI_SKIN_R      8
-#define DNA_UI_SKIN_G      9
+#define DNA_UI_HAIR_R       1
+#define DNA_UI_HAIR_G       2
+#define DNA_UI_HAIR_B       3
+#define DNA_UI_BEARD_R      4
+#define DNA_UI_BEARD_G      5
+#define DNA_UI_BEARD_B      6
+#define DNA_UI_SKIN_TONE    7
+#define DNA_UI_SKIN_R       8
+#define DNA_UI_SKIN_G       9
 #define DNA_UI_SKIN_B      10
 #define DNA_UI_EYES_R      11
 #define DNA_UI_EYES_G      12
@@ -42,25 +42,31 @@
 #define DNA_UI_TAIL2_R     23
 #define DNA_UI_TAIL2_G     24
 #define DNA_UI_TAIL2_B     25
-#define DNA_UI_EARS_R      26
-#define DNA_UI_EARS_G      27
-#define DNA_UI_EARS_B      28
-#define DNA_UI_EARS2_R     29
-#define DNA_UI_EARS2_G     30
-#define DNA_UI_EARS2_B     31
-#define DNA_UI_WING_STYLE  32
-#define DNA_UI_WING_R      33
-#define DNA_UI_WING_G      34
-#define DNA_UI_WING_B      35
-#define DNA_UI_WING2_R     36
-#define DNA_UI_WING2_G     37
-#define DNA_UI_WING2_B     38
-#define DNA_UI_LENGTH      38
+#define DNA_UI_TAIL3_R     26
+#define DNA_UI_TAIL3_G     27
+#define DNA_UI_TAIL3_B     28
+#define DNA_UI_EARS_R      29
+#define DNA_UI_EARS_G      30
+#define DNA_UI_EARS_B      31
+#define DNA_UI_EARS2_R     32
+#define DNA_UI_EARS2_G     33
+#define DNA_UI_EARS2_B     34
+#define DNA_UI_EARS3_R     35
+#define DNA_UI_EARS3_G     36
+#define DNA_UI_EARS3_B     37
+#define DNA_UI_WING_STYLE  38
+#define DNA_UI_WING_R      39
+#define DNA_UI_WING_G      40
+#define DNA_UI_WING_B      41
+#define DNA_UI_WING2_R     42
+#define DNA_UI_WING2_G     43
+#define DNA_UI_WING2_B     44
+#define DNA_UI_WING3_R     45
+#define DNA_UI_WING3_G     46
+#define DNA_UI_WING3_B     47
+#define DNA_UI_LENGTH      47 //! Needs to match the highest number above.
 
-#define DNA_SE_LENGTH 49 // original was UI+11
-// For later:
-//#define DNA_SE_LENGTH 50 // Was STRUCDNASIZE, size 27. 15 new blocks added = 42, plus room to grow.
-
+#define DNA_SE_LENGTH 50 // (original was UI+11)
 
 // Defines which values mean "on" or "off".
 //  This is to make some of the more OP superpowers a larger PITA to activate,
@@ -102,7 +108,7 @@ var/global/list/datum/gene/dna_genes[0]
 
 	// VOREStation
 	var/custom_species
-	var/base_species = "Human"
+	var/base_species = SPECIES_HUMAN
 	var/list/species_traits = list()
 	var/blood_color = "#A10808"
 	var/custom_say
@@ -117,6 +123,7 @@ var/global/list/datum/gene/dna_genes[0]
 	var/list/body_descriptors = null
 	var/list/genetic_modifiers = list() // Modifiers with the MODIFIER_GENETIC flag are saved.  Note that only the type is saved, not an instance.
 
+	var/s_base = ""
 // Make a copy of this strand.
 // USE THIS WHEN COPYING STUFF OR YOU'LL GET CORRUPTION!
 /datum/dna/proc/Clone()
@@ -126,13 +133,15 @@ var/global/list/datum/gene/dna_genes[0]
 	new_dna.real_name=real_name
 	new_dna.species=species
 	new_dna.body_markings=body_markings.Copy()
-	new_dna.base_species=base_species //VOREStation Edit
-	new_dna.species_traits=species_traits.Copy() //VOREStation Edit
-	new_dna.blood_color=blood_color //VOREStation Edit
-	new_dna.custom_say=custom_say //VOREStaton Edit
-	new_dna.custom_ask=custom_ask //VOREStaton Edit
-	new_dna.custom_whisper=custom_whisper //VOREStaton Edit
-	new_dna.custom_exclaim=custom_exclaim //VOREStaton Edit
+	new_dna.base_species=base_species
+	new_dna.custom_species=custom_species
+	new_dna.species_traits=species_traits.Copy()
+	new_dna.blood_color=blood_color
+	new_dna.custom_say=custom_say
+	new_dna.custom_ask=custom_ask
+	new_dna.custom_whisper=custom_whisper
+	new_dna.custom_exclaim=custom_exclaim
+	new_dna.s_base=s_base
 	for(var/b=1;b<=DNA_SE_LENGTH;b++)
 		new_dna.SE[b]=SE[b]
 		if(b<=DNA_UI_LENGTH)
@@ -140,6 +149,7 @@ var/global/list/datum/gene/dna_genes[0]
 	new_dna.UpdateUI()
 	new_dna.UpdateSE()
 	return new_dna
+
 ///////////////////////////////////////
 // UNIQUE IDENTITY
 ///////////////////////////////////////
@@ -233,13 +243,21 @@ var/global/list/datum/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_TAIL2_G,   character.g_tail2,   255,    1)
 	SetUIValueRange(DNA_UI_TAIL2_B,   character.b_tail2,   255,    1)
 
+	SetUIValueRange(DNA_UI_TAIL3_R,   character.r_tail3,   255,    1)
+	SetUIValueRange(DNA_UI_TAIL3_G,   character.g_tail3,   255,    1)
+	SetUIValueRange(DNA_UI_TAIL3_B,   character.b_tail3,   255,    1)
+
 	SetUIValueRange(DNA_UI_WING_R,    character.r_wing,    255,    1)
 	SetUIValueRange(DNA_UI_WING_G,    character.g_wing,    255,    1)
 	SetUIValueRange(DNA_UI_WING_B,    character.b_wing,    255,    1)
 
-	SetUIValueRange(DNA_UI_WING2_R,    character.r_wing2,  255,    1)
-	SetUIValueRange(DNA_UI_WING2_G,    character.g_wing2,  255,    1)
-	SetUIValueRange(DNA_UI_WING2_B,    character.b_wing2,  255,    1)
+	SetUIValueRange(DNA_UI_WING2_R,   character.r_wing2,   255,    1)
+	SetUIValueRange(DNA_UI_WING2_G,   character.g_wing2,   255,    1)
+	SetUIValueRange(DNA_UI_WING2_B,   character.b_wing2,   255,    1)
+
+	SetUIValueRange(DNA_UI_WING3_R,   character.r_wing3,   255,    1)
+	SetUIValueRange(DNA_UI_WING3_G,   character.g_wing3,   255,    1)
+	SetUIValueRange(DNA_UI_WING3_B,   character.b_wing3,   255,    1)
 
 	SetUIValueRange(DNA_UI_EARS_R,    character.r_ears,    255,    1)
 	SetUIValueRange(DNA_UI_EARS_G,    character.g_ears,    255,    1)
@@ -249,7 +267,9 @@ var/global/list/datum/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_EARS2_G,   character.g_ears2,   255,    1)
 	SetUIValueRange(DNA_UI_EARS2_B,   character.b_ears2,   255,    1)
 
-	// VORE Station Edit End
+	SetUIValueRange(DNA_UI_EARS3_R,   character.r_ears3,   255,    1)
+	SetUIValueRange(DNA_UI_EARS3_G,   character.g_ears3,   255,    1)
+	SetUIValueRange(DNA_UI_EARS3_B,   character.b_ears3,   255,    1)
 
 	SetUIValueRange(DNA_UI_HAIR_R,    character.r_hair,    255,    1)
 	SetUIValueRange(DNA_UI_HAIR_G,    character.g_hair,    255,    1)
@@ -275,7 +295,9 @@ var/global/list/datum/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, facial_hair_styles_list.len,1)
 
 	body_markings.Cut()
+	//s_base = character.s_base //doesn't work, fuck me
 	for(var/obj/item/organ/external/E in character.organs)
+		E.s_base = s_base
 		if(E.markings.len)
 			body_markings[E.organ_tag] = E.markings.Copy()
 

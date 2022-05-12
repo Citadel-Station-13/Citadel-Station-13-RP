@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Table, AnimatedNumber } from "../components";
+import { useBackend } from "../backend";
+import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
 import { Window } from "../layouts";
 
 export const OvermapShieldGenerator = (props, context) => {
@@ -121,7 +120,8 @@ const OvermapShieldGeneratorStatus = (props, context) => {
           <AnimatedNumber value={field_integrity} />%
         </LabeledList.Item>
         <LabeledList.Item label="Mitigation">
-          {mitigation_em}% EM / {mitigation_physical}% PH / {mitigation_heat}% HE / {mitigation_max}% MAX
+          {mitigation_em}% EM / {mitigation_physical}% PH
+          / {mitigation_heat}% HE / {mitigation_max}% MAX
         </LabeledList.Item>
         <LabeledList.Item label="Upkeep Energy Use">
           <AnimatedNumber value={upkeep_power_usage} /> kW
@@ -144,7 +144,8 @@ const OvermapShieldGeneratorStatus = (props, context) => {
         <LabeledList.Item label="Field Size">
           <AnimatedNumber value={functional_segments} />&nbsp;/&nbsp;
           <AnimatedNumber value={total_segments} /> m&sup2;
-          (radius <AnimatedNumber value={field_radius} />, target <AnimatedNumber value={target_radius} />)
+          (radius <AnimatedNumber value={field_radius} />,
+          target <AnimatedNumber value={target_radius} />)
         </LabeledList.Item>
       </LabeledList>
     </Section>

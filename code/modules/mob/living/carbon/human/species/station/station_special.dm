@@ -16,7 +16,7 @@
 	brute_mod = 0.8		//About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod =  1.15	//As vulnerable to burn as a Tajara.
 	radiation_mod = 1.15	//To help simulate the volatility of a living 'viral' cluster.
-	base_species = "Xenochimera"
+	base_species = SPECIES_XENOCHIMERA
 	selects_bodytype = TRUE
 
 	num_alternate_languages = 5
@@ -26,7 +26,6 @@
 	tail = "tail" //Scree's tail. Can be disabled in the vore tab by choosing "hide species specific tail sprite"
 	icobase_tail = 1
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/reconstitute_form,
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
@@ -40,11 +39,10 @@
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
-		/mob/living/carbon/human/proc/lick_wounds ,
+		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/resp_biomorph,
 		/mob/living/carbon/human/proc/biothermic_adapt,
 		/mob/living/carbon/human/proc/atmos_biomorph,
-		/mob/living/carbon/human/proc/vocal_biomorph,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -53,11 +51,26 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_wings,
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
-		/mob/living/carbon/human/proc/regenerate,
-		/mob/living/carbon/human/proc/commune) //Xenochimera get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/shapeshifter_select_shape,
+		/mob/living/carbon/human/proc/commune
+		) //Xenochimera get all the special verbs since they can't select traits.
 
-	virus_immune = 1 // They practically ARE one.
-	min_age = 18
+	inherent_spells = list(
+		/spell/targeted/chimera/thermal_sight,
+		/spell/targeted/chimera/voice_mimic,
+		/spell/targeted/chimera/regenerate,
+		/spell/targeted/chimera/hatch,
+		/spell/targeted/chimera/no_breathe
+	)
+
+	var/list/feral_spells = list(
+		/spell/aoe_turf/dissonant_shriek
+	)
+
+	var/list/removable_spells = list()
+
+	var/has_feral_spells = FALSE
+	virus_immune = TRUE // They practically ARE one.
 	max_age = 200
 
 	blurb = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \
@@ -97,18 +110,18 @@
 		)
 
 	valid_transform_species = list(
-		"Human", "Unathi", "Tajara", "Skrell",
-		"Diona", "Teshari", "Monkey","Sergal",
-		"Akula","Nevrean","Highlander Zorren",
-		"Flatland Zorren", "Vulpkanin", "Vasilissan",
-		"Rapala", "Neaera", "Stok", "Farwa", "Sobaka",
-		"Wolpin", "Saru", "Sparra")
+		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL,
+		SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY,SPECIES_SERGAL,
+		SPECIES_AKULA,SPECIES_NEVREAN,SPECIES_ZORREN_HIGH,
+		SPECIES_ZORREN_FLAT, SPECIES_VULPKANIN, SPECIES_VASILISSAN,
+		SPECIES_RAPALA, SPECIES_MONKEY_SKRELL, SPECIES_MONKEY_UNATHI, SPECIES_MONKEY_TAJ, SPECIES_MONKEY_AKULA,
+		SPECIES_MONKEY_VULPKANIN, SPECIES_MONKEY_SERGAL, SPECIES_MONKEY_NEVREAN, SPECIES_VOX)
 
-	//primitive_form = "Farwa"
+	//primitive_form = SPECIES_MONKEY_TAJ
 
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE//Whitelisted as restricted is broken.
 	flags = NO_SCAN | NO_INFECT | NO_DEFIB //Dying as a chimera is, quite literally, a death sentence. Well, if it wasn't for their revive, that is.
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart/xenochimera,
@@ -123,6 +136,7 @@
 		)
 
 	heal_rate = 0.5
+	infect_wounds = 1
 	flesh_color = "#AFA59E"
 	base_color 	= "#333333"
 	blood_color = "#14AD8B"
@@ -142,8 +156,7 @@
 
 	//Cold/pressure effects when not regenerating
 	else
-		var/datum/gas_mixture/environment = H.loc.return_air()
-		var/pressure2 = environment.return_pressure()
+		var/pressure2 = H.loc.return_pressure()
 		var/adjusted_pressure2 = H.calculate_affecting_pressure(pressure2)
 
 		//Very low pressure damage
@@ -158,6 +171,47 @@
 			H.eye_blurry = max(5,H.eye_blurry)
 	..()
 
+/datum/species/shapeshifter/xenochimera/add_inherent_spells(var/mob/living/carbon/human/H)
+	var/master_type = /atom/movable/screen/movable/spell_master/chimera
+	var/atom/movable/screen/movable/spell_master/chimera/new_spell_master = new master_type
+
+	if(!H.spell_masters)
+		H.spell_masters = list()
+
+	if(H.client)
+		H.client.screen += new_spell_master
+	new_spell_master.spell_holder = H
+	H.spell_masters.Add(new_spell_master)
+
+	for(var/spell_to_add in inherent_spells)
+		var/spell/S = new spell_to_add(H)
+		H.add_spell(S, "cult", master_type)
+
+/datum/species/shapeshifter/xenochimera/proc/add_feral_spells(var/mob/living/carbon/human/H)
+	if(!has_feral_spells)
+		var/check = FALSE
+		var/master_type = /atom/movable/screen/movable/spell_master/chimera
+		for(var/spell/S as anything in feral_spells)
+			var/spell/spell_to_add = new S(H)
+			check = H.add_spell(spell_to_add, "cult", master_type)
+			removable_spells += spell_to_add
+		if(check)
+			has_feral_spells = TRUE
+		else
+			return
+	else
+		return
+
+/datum/species/shapeshifter/xenochimera/proc/remove_feral_spells(var/mob/living/carbon/human/H)
+	for(var/spell/S as anything in removable_spells)
+		S.remove_self(H)
+	removable_spells.Cut()
+	has_feral_spells = FALSE
+
+/datum/species/shapeshifter/xenochimera/handle_post_spawn(mob/living/carbon/human/H)
+	..()
+	for(var/spell/S as anything in feral_spells)
+		S = new S(H)
 
 /datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
@@ -238,6 +292,10 @@
 		//we're feral
 		feral_state = TRUE
 
+		//We check if the current spell list already has feral spells.
+		if(!has_feral_spells)
+			add_feral_spells(H)
+
 		//Shock due to mostly halloss. More feral.
 		if(shock && 2.5*H.halloss >= H.traumatic_shock)
 			danger = TRUE
@@ -266,6 +324,8 @@
 		//Did we just finish being feral?
 		if(!feral)
 			feral_state = FALSE
+			if(has_feral_spells)
+				remove_feral_spells(H)
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
 			update_xenochimera_hud(H, danger, feral_state)
@@ -349,51 +409,12 @@
 	// HUD update time
 	update_xenochimera_hud(H, danger, feral_state)
 
-/datum/species/shapeshifter/xenochimera/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
-	ASSERT(to_copy)
-	ASSERT(istype(H))
-
-	if(ispath(to_copy))
-		to_copy = "[initial(to_copy.name)]"
-	if(istext(to_copy))
-		to_copy = GLOB.all_species[to_copy]
-
-	var/datum/species/shapeshifter/xenochimera/new_copy = new()
-
-	//Initials so it works with a simple path passed, or an instance
-	new_copy.base_species = to_copy.name
-	new_copy.icobase = to_copy.icobase
-	new_copy.deform = to_copy.deform
-	new_copy.tail = to_copy.tail
-	new_copy.tail_animation = to_copy.tail_animation
-	new_copy.icobase_tail = to_copy.icobase_tail
-	new_copy.color_mult = to_copy.color_mult
-	new_copy.primitive_form = to_copy.primitive_form
-	new_copy.appearance_flags = to_copy.appearance_flags
-	new_copy.flesh_color = to_copy.flesh_color
-	new_copy.base_color = to_copy.base_color
-	new_copy.blood_mask = to_copy.blood_mask
-	new_copy.damage_mask = to_copy.damage_mask
-	new_copy.damage_overlays = to_copy.damage_overlays
-
-	//Set up a mob
-	H.species = new_copy
-	H.icon_state = lowertext(new_copy.get_bodytype())
-
-	if(new_copy.holder_type)
-		H.holder_type = new_copy.holder_type
-
-	if(H.dna)
-		H.dna.ready_dna(H)
-
-	return new_copy
-
 /datum/species/shapeshifter/xenochimera/get_bodytype()
 	return base_species
 
-/datum/species/shapeshifter/xenochimera/get_race_key()
-	var/datum/species/real = GLOB.all_species[base_species]
-	return real.race_key
+/datum/species/shapeshifter/xenochimera/get_race_key(mob/living/carbon/human/H)
+	var/datum/species/real = name_static_species_meta(base_species)
+	return real.real_race_key(H)
 
 /datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
 	if(H.xenochimera_danger_display)
@@ -409,11 +430,11 @@
 
 	return
 
-/obj/screen/xenochimera
+/atom/movable/screen/xenochimera
 	icon = 'icons/mob/chimerahud.dmi'
 	invisibility = 101
 
-/obj/screen/xenochimera/danger_level
+/atom/movable/screen/xenochimera/danger_level
 	name = "danger level"
 	icon_state = "danger00"		//first number is bool of whether or not we're in danger, second is whether or not we're feral
 	alpha = 200
@@ -423,7 +444,7 @@
 /mob/living/carbon/human/proc/resp_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Respiratory Biomorph"
 	set desc = "Changes the gases we need to breathe."
-	set category = "Abilities"
+	set category = "Chimera"
 
 	var/list/gas_choices = list(
 		"oxygen" = /datum/gas/oxygen,
@@ -465,7 +486,7 @@
 		if(target == src)
 			to_chat("<span class = 'Notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
@@ -476,7 +497,7 @@
 /mob/living/carbon/human/proc/biothermic_adapt(mob/living/carbon/human/target in view(1))
 	set name = "Biothermic Adaptation"
 	set desc = "Changes our core body temperature."
-	set category = "Abilities"
+	set category = "Chimera"
 
 	var/list/temperature_options = list(
 	"warm-blooded",
@@ -560,7 +581,7 @@
 		if(target == src)
 			to_chat(src, "<span class = 'Notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
@@ -570,7 +591,7 @@
 /mob/living/carbon/human/proc/atmos_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Atmospheric Biomorph"
 	set desc = "Changes our sensitivity to atmospheric pressure."
-	set category = "Abilities"
+	set category = "Chimera"
 
 
 	var/list/pressure_options = list(
@@ -609,34 +630,12 @@
 		if(target == src)
 			to_chat(src, "<span class = 'notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
 				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
 		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
-
-
-/mob/living/carbon/human/proc/vocal_biomorph()
-	set name = "Vocalization Biomorph"
-	set desc = "Changes our speech pattern."
-	set category = "Abilities"
-
-	var/vocal_biomorph = input(src, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
-	if(!vocal_biomorph)
-		return
-	to_chat(src, "You begin modifying your internal structure!")
-	if(do_after(src,15 SECONDS))
-		switch(vocal_biomorph)
-			if("common")
-				return
-			if("unathi")
-				species.autohiss_basic_map = list("s" = list("ss", "sss", "ssss"))
-				species.autohiss_extra_map = list("x" = list("ks", "kss", "ksss"))
-				species.autohiss_exempt = "Sinta'unathi"
-			if("tajaran")
-				species.autohiss_basic_map = list("r" = list("rr", "rrr", "rrrr"))
-				species.autohiss_exempt = "Siik"
 
 /////////////////////
 /////SPIDER RACE/////
@@ -658,12 +657,19 @@
 	tail = "tail" //Spider tail.
 	icobase_tail = 1
 
+	is_weaver = TRUE
+	silk_reserve = 500
+	silk_max_reserve = 1000
+
 	inherent_verbs = list(
-		/mob/proc/weaveWebBindings,
+		/mob/living/carbon/human/proc/check_silk_amount,
+		/mob/living/carbon/human/proc/toggle_silk_production,
+		/mob/living/carbon/human/proc/weave_structure,
+		/mob/living/carbon/human/proc/weave_item,
+		/mob/living/carbon/human/proc/set_silk_color,
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "Vasilissans are a tall, lanky, spider like people. \
@@ -681,11 +687,11 @@
 	cold_level_2 = -1
 	cold_level_3 = -1
 
-	//primitive_form = "Monkey" //I dunno. Replace this in the future.
+	//primitive_form = SPECIES_MONKEY //I dunno. Replace this in the future.
 
 	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E" //Gray-ish. Not sure if this is really needed, but eh.
 	base_color 	= "#333333" //Blackish-gray
@@ -728,10 +734,9 @@
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_CANILUNZT)
 	name_language = LANGUAGE_CANILUNZT
-	primitive_form = "Wolpin"
+	primitive_form = SPECIES_MONKEY_VULPKANIN
 	color_mult = 1
 
-	min_age = 18
 	max_age = 200
 
 	blurb = "Big buff werewolves. These are a limited functionality event species that are not balanced for regular gameplay. Adminspawn only."
@@ -741,7 +746,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vulpkanin)
 
 	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash)
@@ -774,7 +779,7 @@
 /////////////////////
 /datum/species/apidaen
 	name = SPECIES_APIDAEN
-	name_plural = "Apidaen"
+	name_plural = SPECIES_APIDAEN
 	icobase = 'icons/mob/human_races/r_def_apidaen.dmi'
 	deform = 'icons/mob/human_races/r_def_apidaen.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -799,7 +804,6 @@
 		/mob/living/carbon/human/proc/tie_hair
 		)
 
-	min_age = 18
 	max_age = 80
 
 	blurb = "Apidaens are an insectoid race from the far galactic rim. \
@@ -817,11 +821,11 @@
 
 	hazard_low_pressure = 20
 
-	//primitive_form = "Monkey" //I dunno. Replace this in the future.
+	//primitive_form = SPECIES_MONKEY //I dunno. Replace this in the future.
 
 	flags = NO_MINOR_CUT
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#D8BB00" //Chitinous yellow.
 	base_color 	= "#333333" //Blackish-gray
@@ -838,7 +842,7 @@
 		O_EYES =     /obj/item/organ/internal/eyes,
 		O_STOMACH =	 /obj/item/organ/internal/stomach,
 		O_INTESTINE =/obj/item/organ/internal/intestine,
-		H_STOMACH =  /obj/item/organ/internal/honey_stomach
+		O_HONEYSTOMACH =  /obj/item/organ/internal/honey_stomach
 		)
 
 //Did you know it's actually called a honey stomach? I didn't!
@@ -847,7 +851,7 @@
 	icon_state = "innards"
 	name = "honey stomach"
 	desc = "A squishy enzymatic processor that turns airborne pollen into nectar."
-	organ_tag = H_STOMACH
+	organ_tag = O_HONEYSTOMACH
 	var/generated_reagents = list("honey" = 5)
 	var/usable_volume = 50
 	var/transfer_amount = 50

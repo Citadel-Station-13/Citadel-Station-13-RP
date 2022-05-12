@@ -82,7 +82,11 @@
 	has_langs = list("Mouse")
 
 	holder_type = /obj/item/holder/mouse
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+
+	meat_amount = 1
+	bone_amount = 1
+	hide_amount = 1
+	hide_type = /obj/item/stack/hairlesshide
 
 	say_list_type = /datum/say_list/mouse
 
@@ -134,7 +138,7 @@
 
 /mob/living/simple_mob/animal/space/mouse_army/proc/splat()
 	src.health = 0
-	src.stat = DEAD
+	src.set_stat(DEAD)
 	src.icon_dead = "mouse_[rank]_splat"
 	src.icon_state = "mouse_[rank]_splat"
 	layer = MOB_LAYER
@@ -410,7 +414,7 @@
 		if(isliving(A))
 			var/mob/living/L = A
 			L.Weaken(stealthed_weaken_amount)
-			to_chat(L, span("danger", "\The [src] ambushes you!"))
+			to_chat(L, SPAN_DANGER("\The [src] ambushes you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	unstealth()
 	..() // For the poison.

@@ -20,7 +20,7 @@
 	w_class = ITEMSIZE_TINY
 	throw_speed = 7
 	throw_range = 15
-	matter = list(DEFAULT_WALL_MATERIAL = 10)
+	matter = list(MAT_STEEL = 10)
 	var/colour = "black"	//what colour the ink is!
 	pressure_resistance = 2
 	drop_sound = 'sound/items/drop/accessory.ogg'
@@ -144,7 +144,7 @@
 	var/active_icon_state
 	var/default_icon_state
 
-/obj/item/pen/blade/Initialize()
+/obj/item/pen/blade/Initialize(mapload)
 	. = ..()
 	active_icon_state = "[icon_state]-x"
 	default_icon_state = icon_state

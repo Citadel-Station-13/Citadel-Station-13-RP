@@ -18,7 +18,6 @@
 
 	show_ssd = "eerily still."
 
-	min_age = 0
 	max_age = 999
 
 	health_hud_intensity = 1.5
@@ -39,7 +38,7 @@
 	heal_rate = 0
 
 	spawn_flags = SPECIES_IS_RESTRICTED
-	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR
+	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR
 
 	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY, SPECIES_VOX)
 

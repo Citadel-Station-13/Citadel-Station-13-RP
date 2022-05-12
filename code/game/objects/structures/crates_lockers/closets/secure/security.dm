@@ -17,12 +17,13 @@
 		/obj/item/radio/headset/heads/captain,
 		/obj/item/radio/headset/heads/captain/alt,
 		/obj/item/gun/energy/gun,
+		/obj/item/clothing/accessory/holster/waist,
+		/obj/item/clothing/accessory/holster/leg,
 		/obj/item/melee/telebaton,
 		/obj/item/flash,
 		/obj/item/gps/command,
 		/obj/item/storage/belt/sheath,
 		/obj/item/storage/box/ids)
-
 
 /obj/structure/closet/secure_closet/hop
 	name = "head of personnel's locker"
@@ -41,7 +42,6 @@
 		/obj/item/radio/headset/heads/hop,
 		/obj/item/radio/headset/heads/hop/alt,
 		/obj/item/storage/box/ids = 2,
-		/obj/item/gun/energy/gun,
 		/obj/item/gps/command,
 		/obj/item/gun/energy/gun/martin, //VOREStation Add,
 		/obj/item/storage/box/commandkeys, //VOREStation Add,
@@ -449,7 +449,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 //Custom NT Security Lockers, Only found at central command
 /obj/structure/closet/secure_closet/nanotrasen_security
 	name = "NanoTrasen security officer's locker"
-	icon = 'icons/obj/closet_vr.dmi'
+	icon = 'icons/obj/closet.dmi'
 	icon_state = "secC1"
 	icon_closed = "secC"
 	icon_locked = "secC1"
@@ -497,7 +497,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/nanotrasen_commander
 	name = "NanoTrasen commander's locker"
-	icon = 'icons/obj/closet_vr.dmi'
+	icon = 'icons/obj/closet.dmi'
 	icon_state = "secC1"
 	icon_closed = "secC"
 	icon_locked = "secC1"
@@ -551,7 +551,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/nanotrasen_warden
 	name = "NanoTrasen warden's locker"
-	icon = 'icons/obj/closet_vr.dmi'
+	icon = 'icons/obj/closet.dmi'
 	icon_state = "secC1"
 	icon_closed = "secC"
 	icon_locked = "secC1"

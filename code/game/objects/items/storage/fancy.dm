@@ -232,7 +232,7 @@
 /obj/item/storage/fancy/cigarettes
 	name = "\improper pack of Trans-Stellar Duty-frees"
 	desc = "A ubiquitous brand of cigarettes, found in every major spacefaring corporation in the universe. As mild and flavorless as it gets."
-	icon = 'modular_citadel/icons/obj/cigarettes.dmi'
+	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigpacket"
 	item_state_slots = list(slot_r_hand_str = "cigpacket", slot_l_hand_str = "cigpacket")
 	w_class = ITEMSIZE_TINY
@@ -337,6 +337,13 @@
 	icon_state = "P100packet"
 	brand = "\improper Professional 120"
 
+/obj/item/storage/fancy/cigarettes/blackstars
+	name = "\improper pack of Black Stars"
+	desc = "A rare brand of imported herbal cigarettes. The package smells faintly of allspice."
+	icon_state = "BSpacket"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/import = 6)
+	brand = "\improper Black Star"
+
 /obj/item/storage/fancy/cigar
 	name = "cigar case"
 	desc = "A case for holding your cigars when you are not smoking them."
@@ -376,6 +383,18 @@
 	storage_slots = 14
 	can_hold = list(/obj/item/rollingpaper)
 	starts_with = list(/obj/item/rollingpaper = 14)
+
+/obj/item/storage/rollingblunts
+	name = "blunt paper pack"
+	desc = "A small cardboard pack containing a few tabacco-based blunt papers."
+	icon_state = "bluntbox"
+	icon = 'icons/obj/cigarettes.dmi'
+	w_class = ITEMSIZE_TINY
+	throwforce = 2
+	slot_flags = SLOT_BELT
+	storage_slots = 7
+	can_hold = list(/obj/item/rollingblunt)
+	starts_with = list(/obj/item/rollingblunt = 7)
 
 /*
  * Vial Box

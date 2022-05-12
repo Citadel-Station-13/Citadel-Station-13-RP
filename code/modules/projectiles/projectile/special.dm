@@ -122,6 +122,12 @@
 	else
 		return 0
 
+/obj/item/projectile/meteor/slug
+	name = "meteor"
+	damage = 25
+	damage_type = BRUTE
+	nodamage = 0
+
 /obj/item/projectile/energy/floramut
 	name = "alpha somatoray"
 	icon_state = "energy"
@@ -371,3 +377,14 @@
 	check_armour = "bullet"
 	hitsound = 'sound/effects/splat.ogg'
 	icon_state = "organic"
+
+/obj/item/projectile/bullet/organic/wax
+	damage_type = HALLOSS
+	color = "#E6E685"
+	icon_state = "organic"
+
+/obj/item/projectile/bullet/organic/stinger
+	damage = 15
+	damage_type = TOX
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	icon_state = "SpearFlight"

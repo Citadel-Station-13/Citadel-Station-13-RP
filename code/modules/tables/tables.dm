@@ -234,7 +234,8 @@ var/list/table_icon_cache = list()
 		update_icon()
 		update_material()
 
-/obj/structure/table/proc/update_desc()
+/obj/structure/table/update_desc()
+	. = ..()
 	if(material)
 		name = "[material.display_name] table"
 	else
@@ -333,7 +334,7 @@ var/list/table_icon_cache = list()
 	if(full_return || prob(20))
 		new /obj/item/stack/material/steel(src.loc)
 	else
-		var/datum/material/M = get_material_by_name(DEFAULT_WALL_MATERIAL)
+		var/datum/material/M = get_material_by_name(MAT_STEEL)
 		S = M.place_shard(loc)
 		if(S) shards += S
 	qdel(src)

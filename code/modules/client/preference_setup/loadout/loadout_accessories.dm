@@ -360,3 +360,32 @@
 	name = "Laconic Field Pouch System"
 	path = /obj/item/clothing/accessory/storage/laconic
 	cost = 1
+
+/datum/gear/accessory/buttonup
+	name = "Button Up Shirt"
+	path = /obj/item/clothing/accessory/buttonup
+	slot = slot_tie
+	sort_category = "Accessories"
+
+/datum/gear/accessory/buttonup/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/accessory/buttonup/untucked
+	name = "Button Up Shirt - Untucked"
+	path = /obj/item/clothing/accessory/buttonup/untucked
+	slot = slot_tie
+	sort_category = "Accessories"
+
+/datum/gear/accessory/antediluvian
+	name = "Antediluvian Loincloth"
+	path = /obj/item/clothing/accessory/antediluvian
+	cost = 1
+
+/datum/gear/accessory/antediluvian_gloves
+	name = "Antediluvian Bracers"
+	path = /obj/item/clothing/accessory/antediluvian_gloves
+
+/datum/gear/accessory/mekkyaku
+	name = "Mekkyaku Turtleneck"
+	path = /obj/item/clothing/accessory/mekkyaku

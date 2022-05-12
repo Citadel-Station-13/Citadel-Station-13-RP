@@ -1,11 +1,11 @@
-	/*
-	Global associative list for caching humanoid icons.
-	Index format m or f, followed by a string of 0 and 1 to represent bodyparts followed by husk fat hulk skeleton 1 or 0.
-*/
-var/global/list/human_icon_cache = list() //key is incredibly complex, see update_icons_body()
-var/global/list/tail_icon_cache = list() //key is [species.race_key][r_skin][g_skin][b_skin]
-var/global/list/light_overlay_cache = list() //see make_worn_icon() on helmets
-var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
+/**
+ * * Global associative list for caching humanoid icons.
+ * * Index format m or f, followed by a string of 0 and 1 to represent bodyparts followed by husk fat hulk skeleton 1 or 0.
+ */
+GLOBAL_LIST_EMPTY(human_icon_cache)
+GLOBAL_LIST_EMPTY(tail_icon_cache)
+GLOBAL_LIST_EMPTY(light_overlay_cache)
+GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // # Human Icon Updating System
@@ -142,11 +142,11 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			M.Turn(90)
 		M.Scale(desired_scale_y, desired_scale_x)
 		M.Translate(1,-6)
-		layer = MOB_LAYER -0.01 // Fix for a byond bug where turf entry order no longer matters
+		set_base_layer(MOB_LAYER - 0.01)
 	else
 		M.Scale(desired_scale_x, desired_scale_y)
 		M.Translate(0, 16*(desired_scale_y-1))
-		layer = MOB_LAYER // Fix for a byond bug where turf entry order no longer matters
+		set_base_layer(MOB_LAYER)
 
 	animate(src, transform = M, time = anim_time)
 	update_icon_special() //May contain transform-altering things
@@ -184,13 +184,13 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		if(O.damage_state == "00") continue
 		var/icon/DI
 		var/cache_index = "[O.damage_state]/[O.icon_name]/[species.get_blood_colour(src)]/[species.get_bodytype(src)]"
-		if(damage_icon_parts[cache_index] == null)
+		if(GLOB.damage_icon_parts[cache_index] == null)
 			DI = icon(species.get_damage_overlays(src), O.damage_state)			// the damage icon for whole human
 			DI.Blend(icon(species.get_damage_mask(src), O.icon_name), ICON_MULTIPLY)	// mask with this organ's pixels
 			DI.Blend(species.get_blood_colour(src), ICON_MULTIPLY)
-			damage_icon_parts[cache_index] = DI
+			GLOB.damage_icon_parts[cache_index] = DI
 		else
-			DI = damage_icon_parts[cache_index]
+			DI = GLOB.damage_icon_parts[cache_index]
 
 		standing_image.overlays += DI
 
@@ -219,9 +219,12 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	//Create a new, blank icon for our mob to use.
 	var/icon/stand_icon = new(species.icon_template ? species.icon_template : 'icons/mob/human.dmi', icon_state = "blank")
 
+	var/g = gender == FEMALE ? "f" : "m"
+	/* 	This was the prior code before the above line. It was faulty and has been commented out.
 	var/g = "male"
 	if(gender == FEMALE)
 		g = "female"
+	*/
 
 	var/icon_key = "[species.get_race_key(src)][g][s_tone][r_skin][g_skin][b_skin]"
 	if(lip_style)
@@ -236,7 +239,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	var/obj/item/organ/external/head/head = organs_by_name[BP_HEAD]
 	if(head)
-		icon_key += "[head.eye_icon]"
+		if(!istype(head, /obj/item/organ/external/stump))
+			icon_key += "[head.eye_icon]"
 	for(var/organ_tag in species.has_limbs)
 		var/obj/item/organ/external/part = organs_by_name[organ_tag]
 		if(isnull(part) || part.is_stump() || part.is_hidden_by_tail()) //VOREStation Edit allowing tails to prevent bodyparts rendering, granting more spriter freedom for taur/digitigrade stuff.
@@ -276,8 +280,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	icon_key = "[icon_key][husk ? 1 : 0][fat ? 1 : 0][hulk ? 1 : 0][skeleton ? 1 : 0]"
 
 	var/icon/base_icon
-	if(human_icon_cache[icon_key])
-		base_icon = human_icon_cache[icon_key]
+	if(GLOB.human_icon_cache[icon_key])
+		base_icon = GLOB.human_icon_cache[icon_key]
 	else
 		//BEGIN CACHED ICON GENERATION.
 		var/obj/item/organ/external/chest = get_organ(BP_TORSO)
@@ -323,7 +327,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			husk_over.Blend(mask, ICON_ADD)
 			base_icon.Blend(husk_over, ICON_OVERLAY)
 
-		human_icon_cache[icon_key] = base_icon
+		GLOB.human_icon_cache[icon_key] = base_icon
 
 	//END CACHED ICON GENERATION.
 	stand_icon.Blend(base_icon,ICON_OVERLAY)
@@ -392,7 +396,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	remove_layer(UNDERWEAR_LAYER)
 
-	if(species.appearance_flags & HAS_UNDERWEAR)
+	if(species.species_appearance_flags & HAS_UNDERWEAR)
 		overlays_standing[UNDERWEAR_LAYER] = list()
 		for(var/category in all_underwear)
 			if(hide_underwear[category])
@@ -428,7 +432,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		if(facial_hair_style && facial_hair_style.species_allowed && (src.species.get_bodytype(src) in facial_hair_style.species_allowed))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
-				facial_s.Blend(rgb(r_facial, g_facial, b_facial), ICON_MULTIPLY) //VOREStation edit
+				facial_s.Blend(rgb(r_facial, g_facial, b_facial), facial_hair_style.color_blend_mode)
 
 			face_standing.Blend(facial_s, ICON_OVERLAY)
 
@@ -508,7 +512,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		eyes_icon.Blend(rgb(128,0,0), ICON_ADD)
 
 	var/image/eyes_image = image(eyes_icon)
-	eyes_image.plane = PLANE_LIGHTING_ABOVE
+	eyes_image.plane = ABOVE_LIGHTING_PLANE
 
 	overlays_standing[EYES_LAYER] = eyes_image
 	apply_layer(EYES_LAYER)
@@ -574,7 +578,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	update_inv_wear_suit()
 	update_inv_r_hand()
 	update_inv_l_hand()
-	update_inv_handcuffed()
+	update_handcuffed()
 	update_inv_legcuffed()
 	//update_inv_pockets() //Doesn't do anything
 	update_fire()
@@ -847,7 +851,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		hud_used.l_hand_hud_object.update_icon()
 		hud_used.r_hand_hud_object.update_icon()
 
-/mob/living/carbon/human/update_inv_handcuffed()
+/mob/living/carbon/human/update_handcuffed()
 	if(QDESTROYING(src))
 		return
 
@@ -928,7 +932,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 //TODO: Is this the appropriate place for this, and not on species...?
 /mob/living/carbon/human/proc/get_tail_icon()
 	var/icon_key = "[species.get_race_key(src)][r_skin][g_skin][b_skin][r_hair][g_hair][b_hair]"
-	var/icon/tail_icon = tail_icon_cache[icon_key]
+	var/icon/tail_icon = GLOB.tail_icon_cache[icon_key]
 	if(!tail_icon)
 		//generate a new one
 		var/species_tail_anim = species.get_tail_animation(src)
@@ -942,7 +946,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			var/icon/hair_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]_[use_species_tail]_s")	//VOREStation edit -- Suffix icon state string with '_s' to compensate for diff in .dmi b/w us & Polaris.
 			hair_icon.Blend(rgb(r_hair, g_hair, b_hair), species.color_mult ? ICON_MULTIPLY : ICON_ADD)				//VOREStation edit -- Check for species color_mult
 			tail_icon.Blend(hair_icon, ICON_OVERLAY)
-		tail_icon_cache[icon_key] = tail_icon
+		GLOB.tail_icon_cache[icon_key] = tail_icon
 
 	return tail_icon
 
@@ -1017,10 +1021,17 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	remove_layer(WING_LAYER)
 
-	var/image/vr_wing_image = get_wing_image()
+	overlays_standing[WING_LAYER] = list()
+
+	var/image/vr_wing_image = get_wing_image(TRUE)
 	if(vr_wing_image)
 		vr_wing_image.layer = BODY_LAYER+WING_LAYER
-		overlays_standing[WING_LAYER] = vr_wing_image
+		overlays_standing[WING_LAYER] += vr_wing_image
+
+	if(wing_style?.front_behind_system)
+		var/image/vr_wing_image_2 = get_wing_image(FALSE)
+		vr_wing_image_2.layer = BODY_LAYER - WING_LAYER
+		overlays_standing[WING_LAYER] += vr_wing_image_2
 
 	apply_layer(WING_LAYER)
 // VOREStation Edit end
@@ -1126,7 +1137,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		overlays_standing[SURGERY_LAYER] = total
 		apply_layer(SURGERY_LAYER)
 
-/mob/living/carbon/human/proc/get_wing_image() //redbull gives you wings
+/mob/living/carbon/human/proc/get_wing_image(front) //redbull gives you wings
 	var/icon/grad_swing
 	if(QDESTROYING(src))
 		return
@@ -1138,8 +1149,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		return image(wing_s)
 
 	//If you have custom wings selected
-	if(wing_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL))
-		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : wing_style.icon_state)
+	if(wing_style && (!(wear_suit && wear_suit.flags_inv & HIDETAIL) || !wing_style.clothing_can_hide))
+		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state))
 		if(wing_style.do_colouration)
 			if(grad_wingstyle)
 				grad_swing = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])
@@ -1153,6 +1164,21 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			overlay.Blend(rgb(src.r_wing2, src.g_wing2, src.b_wing2), wing_style.color_blend_mode)
 			wing_s.Blend(overlay, ICON_OVERLAY)
 			qdel(overlay)
+
+		if(wing_style.extra_overlay2)
+			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay2)
+			if(wing_style.ani_state)
+				overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay2_w)
+				overlay.Blend(rgb(src.r_wing3, src.g_wing3, src.b_wing3), wing_style.color_blend_mode)
+				wing_s.Blend(overlay, ICON_OVERLAY)
+				qdel(overlay)
+			else
+				overlay.Blend(rgb(src.r_wing3, src.g_wing3, src.b_wing3), wing_style.color_blend_mode)
+				wing_s.Blend(overlay, ICON_OVERLAY)
+				qdel(overlay)
+
+		if(wing_style.center)
+			center_image(wing_style, wing_style.dimension_x, wing_style.dimension_y)
 		return image(wing_s)
 
 // TODO - Move this to where it should go ~Leshana
@@ -1165,6 +1191,14 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 /mob/living/carbon/human/stop_flying()
 	if((. = ..()))
 		update_wing_showing()
+
+//Stolen from bay for shifting equipment by default and not having to resprite it
+/proc/overlay_image(icon,icon_state,color,flags)
+	var/image/ret = image(icon,icon_state)
+	ret.color = color
+	ret.appearance_flags = (PIXEL_SCALE) | flags
+	return ret
+
 
 //Human Overlays Indexes/////////
 #undef MUTATIONS_LAYER

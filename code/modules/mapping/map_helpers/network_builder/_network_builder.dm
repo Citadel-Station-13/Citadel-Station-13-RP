@@ -4,7 +4,7 @@
 	/// set var to true to not del on lateload
 	var/custom_spawned = FALSE
 
-	icon = 'icons/map/mapping_helpers.dmi'
+	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
 
 	late = TRUE
 	/// what directions we know connections are in

@@ -95,7 +95,7 @@ var/global/photo_count = 0
 
 	if((istype(usr, /mob/living/carbon/human)))
 		var/mob/living/carbon/human/M = usr
-		if(!( istype(over_object, /obj/screen) ))
+		if(!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 		playsound(loc, "rustle", 50, 1, -5)
 		if((!( M.restrained() ) && !( M.stat ) && M.back == src))
@@ -126,7 +126,7 @@ var/global/photo_count = 0
 	item_state = "camera"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 	var/pictures_max = 10
 	var/pictures_left = 10
 	var/on = 1
@@ -326,3 +326,8 @@ var/global/photo_count = 0
 		p.id = id
 
 	return p
+
+/obj/item/camera/spooky
+	name = "camera obscura"
+	desc = "A polaroid camera, some say it can see ghosts!"
+	//see_ghosts = CAMERA_SEE_GHOSTS_BASIC (We should discuss whether this should exist before I bother coding it.)

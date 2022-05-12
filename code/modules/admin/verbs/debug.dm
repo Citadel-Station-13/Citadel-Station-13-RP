@@ -273,15 +273,21 @@
 	set name = "Display Initialize() Log"
 	set desc = "Displays a list of things that didn't handle Initialize() properly"
 
-	if(!check_rights(R_DEBUG))	return
-	src << browse(replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
+	if(!check_rights(R_DEBUG))
+		return
+	var/rendered = replacetext(SSatoms.InitLog(), "\n", "<br>")
+	if(!length(rendered))
+		to_chat(usr, SPAN_BOLDNOTICE("There were no bad init calls so far! Yay :)"))
+		return
+	src << browse(rendered, "window=initlog")
 
 /client/proc/cmd_display_overlay_log()
 	set category = "Debug"
 	set name = "Display overlay Log"
 	set desc = "Display SSoverlays log of everything that's passed through it."
 
-	if(!check_rights(R_DEBUG))	return
+	if(!check_rights(R_DEBUG))
+		return
 	render_stats(SSoverlays.stats, src)
 
 // Render stats list for round-end statistics.
@@ -376,8 +382,8 @@
 		if(!(A.type in areas_all))
 			areas_all.Add(A.type)
 
-	for(var/obj/machinery/power/apc/APC in machines)
-		var/area/A = get_area(APC)
+	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
+		var/area/A = get_area(apc)
 		if(A && !(A.type in areas_with_APC))
 			areas_with_APC.Add(A.type)
 
@@ -463,14 +469,14 @@
 
 	var/mob/living/carbon/human/H = target
 
-	var/decl/hierarchy/outfit/outfit = input("Select outfit.", "Select equipment.") as null|anything in outfits()
+	var/datum/outfit/outfit = input("Select outfit.", "Select equipment.") as null|anything in get_all_outfits()
 	if(!outfit)
 		return
 
 	feedback_add_details("admin_verb","SEQ")
 	dressup_human(H, outfit, 1)
 
-/proc/dressup_human(var/mob/living/carbon/human/H, var/decl/hierarchy/outfit/outfit)
+/proc/dressup_human(var/mob/living/carbon/human/H, var/datum/outfit/outfit)
 	if(!H || !outfit)
 		return
 	if(outfit.undress)
@@ -702,3 +708,55 @@
 	if(alert(usr, "Are you absolutely sure you want to reload the configuration from the default path on the disk, wiping any in-round modificatoins?", "Really reset?", "No", "Yes") == "Yes")
 		config.admin_reload()
 		load_configuration()		//for legacy
+
+/datum/admins/proc/quick_nif()
+	set category = "Fun"
+	set name = "Quick NIF"
+	set desc = "Spawns a NIF into someone in quick-implant mode."
+
+	var/input_NIF
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/mob/living/carbon/human/H = input("Pick a mob with a player","Quick NIF") as null|anything in player_list
+
+	if(!H)
+		return
+
+	if(!istype(H))
+		to_chat(usr,"<span class='warning'>That mob type ([H.type]) doesn't support NIFs, sorry.</span>")
+		return
+
+	if(!H.get_organ(BP_HEAD))
+		to_chat(usr,"<span class='warning'>Target is unsuitable.</span>")
+		return
+
+	if(H.nif)
+		to_chat(usr,"<span class='warning'>Target already has a NIF.</span>")
+		return
+
+	if(H.species.flags & NO_SCAN)
+		var/obj/item/nif/S = /obj/item/nif/bioadap
+		input_NIF = initial(S.name)
+		new /obj/item/nif/bioadap(H)
+	else
+		var/list/NIF_types = typesof(/obj/item/nif)
+		var/list/NIFs = list()
+
+		for(var/NIF_type in NIF_types)
+			var/obj/item/nif/S = NIF_type
+			NIFs[capitalize(initial(S.name))] = NIF_type
+
+		var/list/show_NIFs = sortList(NIFs) // the list that will be shown to the user to pick from
+
+		input_NIF = input("Pick the NIF type","Quick NIF") in show_NIFs
+		var/chosen_NIF = NIFs[capitalize(input_NIF)]
+
+		if(chosen_NIF)
+			new chosen_NIF(H)
+		else
+			new /obj/item/nif(H)
+
+	log_and_message_admins("[key_name(src)] Quick NIF'd [H.real_name] with a [input_NIF].")
+	feedback_add_details("admin_verb","QNIF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

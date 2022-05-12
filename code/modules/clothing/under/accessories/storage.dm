@@ -94,6 +94,11 @@
 	icon_state = "unathiharness2"
 	slots = 2
 
+/obj/item/clothing/accessory/storage/voyager
+	name = "voyager harness"
+	desc = "A leather harness adorned with soft and hard-case pouches, designed for expeditions."
+	icon_state = "explorer"
+
 //Pilot
 /obj/item/clothing/accessory/storage/webbing/pilot1
 	name = "pilot harness"
@@ -105,7 +110,7 @@
 	desc = "Sturdy mess of black synthcotton belts and buckles."
 	icon_state = "pilot_webbing2"
 	sprite_sheets = list(
-			"Teshari" = 'icons/mob/species/teshari/ties.dmi'
+			SPECIES_TESHARI = 'icons/mob/species/teshari/ties.dmi'
 			)
 
 /obj/item/clothing/accessory/storage/knifeharness/Initialize(mapload)

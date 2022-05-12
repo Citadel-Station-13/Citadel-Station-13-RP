@@ -130,10 +130,11 @@
 	icon_state = "xenode"
 	organ_tag = O_RESIN
 
-	organ_verbs = list(
+	/*organ_verbs = list(
 		/mob/living/carbon/human/proc/resin,
 		/mob/living/carbon/human/proc/plant
 		)
+	edit because the xenos that use it have the verbs anyways and hybrids dont want the plant verb*/
 
 /obj/item/organ/internal/xenos/resinspinner/grey
 	icon_state = "xenode_grey"

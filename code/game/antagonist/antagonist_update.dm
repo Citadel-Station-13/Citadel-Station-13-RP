@@ -34,7 +34,7 @@
 		return
 	var/indicator = (faction_indicator && (other in faction_members)) ? faction_indicator : antag_indicator
 	var/image/returnimage = image('icons/mob/mob.dmi', loc = other.current, icon_state = indicator)
-	returnimage.plane = PLANE_LIGHTING_ABOVE
+	returnimage.plane = ABOVE_LIGHTING_PLANE
 	return returnimage
 
 /datum/antagonist/proc/update_all_icons()

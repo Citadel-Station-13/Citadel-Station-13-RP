@@ -8,6 +8,7 @@
 	icon_state = "welder"
 	item_state = "welder"
 	slot_flags = SLOT_BELT
+	tool_behaviour = TOOL_WELDER
 
 	//Amount of OUCH when it's thrown
 	force = 3.0
@@ -17,7 +18,7 @@
 	w_class = ITEMSIZE_SMALL
 
 	//Cost to make in the autolathe
-	matter = list(DEFAULT_WALL_MATERIAL = 70, "glass" = 30)
+	matter = list(MAT_STEEL = 70, MAT_GLASS = 30)
 
 	//R&D tech level
 	origin_tech = list(TECH_ENGINEERING = 1)
@@ -135,7 +136,7 @@
 /obj/item/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity)
 		return
-	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if(istype(O, /obj/structure/reagent_dispensers/fueltank) || istype(O, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,O) <= 1)
 		if(!welding && max_fuel)
 			O.reagents.trans_to_obj(src, max_fuel)
 			to_chat(user, "<span class='notice'>You refill [src].</span>")
@@ -230,7 +231,7 @@
 		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
 			return
 
-		if (!( istype(over_object, /obj/screen) ))
+		if (!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 
 		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
@@ -241,7 +242,7 @@
 		if (( usr.restrained() ) || ( usr.stat ))
 			return
 
-		if ((src.loc == usr) && !(istype(over_object, /obj/screen)) && !usr.unEquip(src))
+		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
 			return
 
 		switch(over_object.name)
@@ -350,7 +351,7 @@
 	icon_state = "indwelder"
 	max_fuel = 40
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_PHORON = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 70, "glass" = 60)
+	matter = list(MAT_STEEL = 70, MAT_GLASS = 60)
 
 /obj/item/weldingtool/largetank/cyborg
 	name = "integrated welding tool"
@@ -364,7 +365,7 @@
 	max_fuel = 80
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 3)
-	matter = list(DEFAULT_WALL_MATERIAL = 70, "glass" = 120)
+	matter = list(MAT_STEEL = 70, MAT_GLASS = 120)
 
 /obj/item/weldingtool/mini
 	name = "emergency welding tool"
@@ -376,6 +377,23 @@
 	change_icons = 0
 	toolspeed = 2
 	eye_safety_modifier = 1 // Safer on eyes.
+
+/obj/item/weldingtool/bone
+	name = "primitive welding tool"
+	desc = "A curious welding tool that uses an anomalous ignition method."
+	icon_state = "ashwelder"
+	max_fuel = 20
+	matter = list(MAT_METAL = 30, MAT_BONE = 10)
+	toolspeed = 1.5
+	eye_safety_modifier = 1 // Safer on eyes.
+
+/obj/item/weldingtool/brass
+	name = "brass welding tool"
+	desc = "A brass plated welder utilizing an antiquated, yet incredibly efficient, fuel system."
+	icon_state = "brasswelder"
+	max_fuel = 40
+	matter = list(MAT_STEEL = 70, "brass" = 60)
+	toolspeed = 0.75
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_welder
 	name = "Precursor Alpha Object - Self Refueling Exothermic Tool"
@@ -426,7 +444,7 @@
 	max_fuel = 40
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3)
-	matter = list(DEFAULT_WALL_MATERIAL = 70, "glass" = 120)
+	matter = list(MAT_STEEL = 70, MAT_GLASS = 120)
 	toolspeed = 0.5
 	change_icons = 0
 	flame_intensity = 3
@@ -514,6 +532,18 @@
 	max_fuel = 5
 	toolspeed = 1.75
 	eye_safety_modifier = 2
+
+//Welder Spear
+/obj/item/weldingtool/welder_spear
+	name = "welder spear"
+	desc = "A miniature welder attached to a spear, providing more reach. Typically used by Tyrmalin workers."
+	icon_state = "welderspear"
+	max_fuel = 10
+	w_class = ITEMSIZE_NORMAL
+	matter = list(MAT_METAL = 50, MAT_GLASS = 10)
+	toolspeed = 1.5
+	eye_safety_modifier = 1 // Safer on eyes.
+	reach = 2
 
 /*
  * Electric/Arc Welder
@@ -653,7 +683,7 @@
 	eye_safety_modifier = 2
 	always_process = TRUE
 
-/obj/item/weldingtool/electric/mounted/exosuit/Initialize()
+/obj/item/weldingtool/electric/mounted/exosuit/Initialize(mapload)
 	. = ..()
 
 	if(istype(loc, /obj/item/mecha_parts/mecha_equipment))

@@ -2,7 +2,7 @@ import { classes } from 'common/react';
 import { Fragment } from 'inferno';
 import { multiline } from 'common/string';
 import { useBackend } from '../backend';
-import { Box, Button, Collapsible, Flex, NoticeBox, Section, TimeDisplay, Tooltip } from '../components';
+import { Box, Button, Collapsible, Flex, NoticeBox, Section, TimeDisplay } from '../components';
 import { Window } from '../layouts';
 
 export const MafiaPanel = (props, context) => {
@@ -96,7 +96,7 @@ export const MafiaPanel = (props, context) => {
                   <Button
                     color="red"
                     icon="gavel"
-                    tooltipPosition="bottom-left"
+                    tooltipPosition="bottom-start"
                     tooltip={multiline`
                     Hello admin! If it is the admin controls you seek,
                     please notice the extra scrollbar you have that players
@@ -266,7 +266,7 @@ export const MafiaPanel = (props, context) => {
                       <Button
                         color="transparent"
                         icon="address-book"
-                        tooltipPosition="bottom-left"
+                        tooltipPosition="bottom-start"
                         tooltip={multiline`
                         The top section is the roles in the game. You can
                         press the question mark to get a quick blurb
@@ -275,7 +275,7 @@ export const MafiaPanel = (props, context) => {
                       <Button
                         color="transparent"
                         icon="edit"
-                        tooltipPosition="bottom-left"
+                        tooltipPosition="bottom-start"
                         tooltip={multiline`
                         The bottom section are your notes. on some roles this
                         will just be an empty box, but on others it records the
@@ -435,7 +435,7 @@ const LobbyDisplay = (props, context) => {
       [Phase = {phase} | <TimeDisplay auto="down" value={timeleft} />]{' '}
       <Button
         icon="clipboard-check"
-        tooltipPosition="bottom-left"
+        tooltipPosition="bottom-start"
         tooltip={multiline`
         Signs you up for the next game. If there
         is an ongoing one, you will be signed up
@@ -444,7 +444,7 @@ const LobbyDisplay = (props, context) => {
         onClick={() => act("mf_signup")} />
       <Button
         icon="eye"
-        tooltipPosition="bottom-left"
+        tooltipPosition="bottom-start"
         tooltip={multiline`
         Spectates games until you turn it off.
         Automatically enabled when you die in game,
@@ -457,7 +457,7 @@ const LobbyDisplay = (props, context) => {
         <Button
           color="red"
           icon="gavel"
-          tooltipPosition="bottom-left"
+          tooltipPosition="bottom-start"
           tooltip={multiline`
           Hello admin! If it is the admin controls you seek,
           please notice the scrollbar you have that players

@@ -1,3 +1,5 @@
+/* eslint-disable unused-imports/no-unused-imports */
+/* eslint-disable max-len */
 import { filter } from 'common/collections';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
@@ -764,7 +766,7 @@ const MessagingThreadTab = (props, context) => {
             icon="eye"
             selected={clipboardMode}
             tooltip="Exit Clipboard Mode"
-            tooltipPosition="bottom-left"
+            tooltipPosition="bottom-end"
             onClick={() => setClipboardMode(!clipboardMode)} />
         }
         height="100%"
@@ -807,7 +809,7 @@ const MessagingThreadTab = (props, context) => {
           icon="eye"
           selected={clipboardMode}
           tooltip="Enter Clipboard Mode"
-          tooltipPosition="bottom-left"
+          tooltipPosition="bottom-end"
           onClick={() => setClipboardMode(!clipboardMode)} />
       }
       height="100%"
@@ -1129,6 +1131,10 @@ const SettingsTab = (props, context) => {
                 : "Ringer off."
             }
             onClick={() => act("toggle_ringer")} />
+          <Button
+            fluid
+            content="Set Ringer Tone"
+            onClick={() => act("set_ringer_tone")} />
         </LabeledList.Item>
       </LabeledList>
     </Section>

@@ -4,13 +4,12 @@ var/global/floorIsLava = 0
 
 
 ////////////////////////////////
-/proc/message_admins(var/msg)
-	msg = "<span class='log_message'><span class='prefix'>ADMIN LOG:</span> <span class='message'>[msg]</span></span>"
-	//log_adminwarn(msg) //log_and_message_admins is for this
-
-	for(var/client/C in admins)
-		if((R_ADMIN|R_MOD) & C.holder.rights)
-			to_chat(C, msg)
+/proc/message_admins(msg)
+	msg = SPAN_ADMIN("<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span>")
+	to_chat(GLOB.admins,
+		type = MESSAGE_TYPE_ADMINLOG,
+		html = msg,
+		confidential = TRUE)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
 	var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
@@ -983,7 +982,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set name = "Unprison"
 	if (M.z == 2)
 		if (config_legacy.allow_admin_jump)
-			M.loc = pick(latejoin)
+			M.forceMove(SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION))
 			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
 			log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
 		else
@@ -1019,16 +1018,16 @@ var/datum/announcement/minor/admin_min_announcer = new
 
 	return 0
 
-/datum/admins/proc/spawn_fruit(seedtype in plant_controller.seeds)
+/datum/admins/proc/spawn_fruit(seedtype in SSplants.seeds)
 	set category = "Debug"
 	set desc = "Spawn the product of a seed."
 	set name = "Spawn Fruit"
 
 	if(!check_rights(R_SPAWN))	return
 
-	if(!seedtype || !plant_controller.seeds[seedtype])
+	if(!seedtype || !SSplants.seeds[seedtype])
 		return
-	var/datum/seed/S = plant_controller.seeds[seedtype]
+	var/datum/seed/S = SSplants.seeds[seedtype]
 	S.harvest(usr,0,0,1)
 	log_admin("[key_name(usr)] spawned [seedtype] fruit at ([usr.x],[usr.y],[usr.z])")
 
@@ -1072,16 +1071,16 @@ var/datum/announcement/minor/admin_min_announcer = new
 		for(var/datum/custom_item/item in current_items)
 			to_chat(usr, "- name: [item.name] icon: [item.item_icon] path: [item.item_path] desc: [item.item_desc]")
 
-/datum/admins/proc/spawn_plant(seedtype in plant_controller.seeds)
+/datum/admins/proc/spawn_plant(seedtype in SSplants.seeds)
 	set category = "Debug"
 	set desc = "Spawn a spreading plant effect."
 	set name = "Spawn Plant"
 
 	if(!check_rights(R_SPAWN))	return
 
-	if(!seedtype || !plant_controller.seeds[seedtype])
+	if(!seedtype || !SSplants.seeds[seedtype])
 		return
-	new /obj/effect/plant(get_turf(usr), plant_controller.seeds[seedtype])
+	new /obj/effect/plant(get_turf(usr), SSplants.seeds[seedtype])
 	log_admin("[key_name(usr)] spawned [seedtype] vines at ([usr.x],[usr.y],[usr.z])")
 
 /datum/admins/proc/spawn_atom(var/object as text)
@@ -1255,6 +1254,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	if(!ai_number)
 		to_chat(usr, "<b>No AIs located</b>") //Just so you know the thing is actually working and not just ignoring you.
 
+/*
 /datum/admins/proc/show_skills()
 	set category = "Admin"
 	set name = "Show Skills"
@@ -1271,7 +1271,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	show_skill_window(usr, M)
 
 	return
-
+*/
 /client/proc/update_mob_sprite(mob/living/carbon/human/H as mob)
 	set category = "Admin"
 	set name = "Update Mob Sprite"
@@ -1535,12 +1535,12 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")
 			for(var/client/C in admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
-					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C, "<span class='admin'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 		else
 			log_admin("[key_name(src.owner)] has sent a fax message to [destination.department]")
 			for(var/client/C in admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
-					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C, "<span class='admin'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 
 	else
 		to_chat(src.owner, "<span class='warning'>Message reply failed.</span>")

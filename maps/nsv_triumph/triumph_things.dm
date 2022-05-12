@@ -1,7 +1,7 @@
 
 // Special map objects
 /* // Moved to map/generic/map_data.dm
-/obj/effect/landmark/map_data/triumph
+/atom/movable/landmark/map_data/triumph
 	height = 4
 */
 /*
@@ -21,7 +21,7 @@
 		)
 
 /datum/turbolift
-	music = list('sound/music/elevator.ogg')  // Woo elevator music!
+	music = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')  // Woo elevator music!
 */
 /*
 // shuttle departure cryo doors that turn into ordinary airlock doors at round end
@@ -66,11 +66,11 @@
 // shuttle arrival point landmarks and datum
 var/global/list/latejoin_shuttle   = list()
 
-/obj/effect/landmark/shuttle
+/atom/movable/landmark/shuttle
 	name = "JoinLateShuttle"
 	delete_me = 1
 
-/obj/effect/landmark/shuttle/New()
+/atom/movable/landmark/shuttle/New()
 	latejoin_shuttle += loc // Register this turf as shuttle latejoin.
 	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
 	return ..()
@@ -159,4 +159,3 @@ var/global/list/latejoin_shuttle   = list()
 		/mob/living/simple_animal/hostile/dragon = 1
 	)
 */
-

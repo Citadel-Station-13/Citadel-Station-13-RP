@@ -121,7 +121,7 @@ var/const/SCI_FREQ = 1351
 var/const/SRV_FREQ = 1349
 var/const/SUP_FREQ = 1347
 var/const/EXP_FREQ = 1361
-var/const/TALON_FREQ = 1363
+var/const/TALON_FREQ = 1363	// No need to remove at the moment, Talon equipment can still be used and such - Bloop
 
 // internal department channels
 var/const/MED_I_FREQ = 1485
@@ -169,7 +169,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 		return "comradio"
 	// AI private channel
 	if(frequency == AI_FREQ)
-		return "airadio"
+		return "aiprivradio"
 	// department radio formatting (poorly optimized, ugh)
 	if(frequency == SEC_FREQ)
 		return "secradio"
@@ -180,9 +180,9 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 	if(frequency == MED_FREQ)
 		return "medradio"
 	if(frequency == SUP_FREQ) // cargo
-		return "supradio"
+		return "suppradio"
 	if(frequency == SRV_FREQ) // service
-		return "srvradio"
+		return "servradio"
 	if(frequency == EXP_FREQ) // explorer
 		return "expradio"
 	if(frequency == ENT_FREQ) // entertainment

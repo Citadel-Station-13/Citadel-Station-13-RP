@@ -4528,7 +4528,7 @@
 	icon_state = "bordercolor";
 	dir = 1
 	},
-/obj/item/clothing/under/hephaestus,
+/obj/item/clothing/under/brandjumpsuit/hephaestus,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/shoes/boots/duty,
 /obj/item/clothing/head/beret,
@@ -8348,7 +8348,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicaleq)
 "pl" = (
-/obj/machinery/shield_gen,
+/obj/machinery/power/shield_generator/charged,
 /turf/simulated/floor/bluegrid,
 /area/ship/expe/corridor4)
 "pm" = (
@@ -12691,7 +12691,7 @@
 	icon_state = "bordercolor";
 	dir = 1
 	},
-/obj/item/clothing/under/hephaestus,
+/obj/item/clothing/under/brandjumpsuit/hephaestus,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/shoes/boots/duty,
 /obj/item/clothing/head/beret,

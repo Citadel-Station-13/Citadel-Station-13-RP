@@ -9,9 +9,19 @@
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 7
 	throw_range = 15
-	matter = list(DEFAULT_WALL_MATERIAL = 60)
+	matter = list(MAT_STEEL = 60)
 	pressure_resistance = 2
 	attack_verb = list("stamped")
+
+	var/list/stamp_sounds = list(
+		'sound/items/stamp1.ogg',
+		'sound/items/stamp2.ogg',
+		'sound/items/stamp3.ogg'
+		)
+
+/obj/item/stamp/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+	. = ..()
+	playsound(M, pick(stamp_sounds), 30, 1, -1)
 
 /obj/item/stamp/captain
 	name = "Facility Director's rubber stamp"

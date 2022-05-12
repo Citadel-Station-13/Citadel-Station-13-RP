@@ -217,7 +217,6 @@ I said no!
 	)
 	result = /obj/item/reagent_containers/food/snacks/wingfangchu
 
-
 /datum/recipe/humankabob
 	items = list(
 		/obj/item/stack/rods,
@@ -410,6 +409,11 @@ I said no!
 	reagents = list("water" = 10)
 	items = list(/obj/item/reagent_containers/food/snacks/meat)
 	result = /obj/item/reagent_containers/food/snacks/stew
+
+/datum/recipe/dishostew
+	fruit = list("disho" = 3, "mushroom" = 2, "chili" = 1)
+	reagents = list("water" = 10)
+	result = /obj/item/reagent_containers/food/snacks/dishostew
 
 /datum/recipe/slimetoast
 	reagents = list("slimejelly" = 5)
@@ -622,6 +626,11 @@ I said no!
 	fruit = list("whitebeet" = 1, "cabbage" = 1)
 	reagents = list("water" = 10)
 	result = /obj/item/reagent_containers/food/snacks/beetsoup
+
+/datum/recipe/dishosoup
+	fruit = list("disho" = 1)
+	reagents = list("water" = 10)
+	result = /obj/item/reagent_containers/food/snacks/dishosoup
 
 /datum/recipe/tossedsalad
 	fruit = list("cabbage" = 2, "tomato" = 1, "carrot" = 1, "apple" = 1)
@@ -1279,7 +1288,7 @@ I said no!
 	result = /obj/item/reagent_containers/food/snacks/kitsuneudon
 
 /datum/recipe/pillbugball
-	reagents = list("carbon" = 5)
+	reagents = list(MAT_CARBON = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/meat/grubmeat
 	)
@@ -1471,3 +1480,106 @@ I said no!
 		/obj/item/holder/fuhrer
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/reich
+
+/datum/recipe/fruitsalad
+	fruit = list("apple" = 1, "berries" = 1, "banana" = 1, "cherries" = 1)
+	reagents = list("milk" = 10, "cream" = 5)
+	result = /obj/item/reagent_containers/food/snacks/fruitsalad
+
+/datum/recipe/mushroompasta
+	fruit = list("mushroom" = 1)
+	items = list(/obj/item/reagent_containers/food/snacks/spagetti)
+	reagents = list("water" = 5)
+	result = /obj/item/reagent_containers/food/snacks/mushroompasta
+
+/datum/recipe/carbonara
+	items = list(
+		/obj/item/reagent_containers/food/snacks/spagetti,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/meat
+	)
+	reagents = list("water" = 5, "sodiumchloride" = 1, "blackpepper" = 1)
+	result = /obj/item/reagent_containers/food/snacks/carbonara
+
+/datum/recipe/bloodsausage
+	items = list(
+		/obj/item/reagent_containers/food/snacks/sausage
+	)
+	reagents = list("blood" = 15)
+	result = /obj/item/reagent_containers/food/snacks/bloodsausage
+
+/datum/recipe/weisswurst
+	fruit = list("onion" = 1, "lemon" = 1)
+	items = list(/obj/item/reagent_containers/food/snacks/sausage)
+	reagents = list("water" = 15, "sodiumchloride" = 1)
+	result = /obj/item/reagent_containers/food/snacks/weisswurst
+
+/datum/recipe/sauerkraut
+	fruit = list("cabbage" = 1)
+	reagents = list("brine" = 5)
+	result = /obj/item/reagent_containers/food/snacks/sauerkraut
+
+/datum/recipe/kimchi
+	fruit = list("cabbage" = 1, "whitebeet" = 1)
+	reagents = list("brine" = 5, "blackpepper" = 2)
+	result = /obj/item/reagent_containers/food/snacks/kimchi
+
+/datum/recipe/chickensatay
+	fruit = list("peanut" = 1, "lime" = 1)
+	items = list(
+		/obj/item/stack/rods,
+		/obj/item/reagent_containers/food/snacks/meat/chicken,
+		/obj/item/reagent_containers/food/snacks/yellowcurry
+	)
+	reagents = list("water" = 5, "milk" = 5, "soysauce" = 5, "sodiumchloride" = 1, "sugar" = 1)
+	result = /obj/item/reagent_containers/food/snacks/chickensatay
+
+/datum/recipe/frenchonionsoup
+	fruit = list("onion" = 1)
+	items = list(/obj/item/reagent_containers/food/snacks/cheesewedge)
+	reagents = list("water" = 10, "sodiumchloride" = 1, "sugar" = 1)
+	result = /obj/item/reagent_containers/food/snacks/frenchonionsoup
+
+/datum/recipe/bananasplit
+	fruit = list("banana" = 1, "cherries" = 1)
+	reagents = list("milk" = 5, "ice" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/chocolatebar,
+		/obj/item/reagent_containers/food/snacks/icecream,
+		/obj/item/reagent_containers/food/snacks/icecream
+	)
+	result = /obj/item/reagent_containers/food/snacks/bananasplit
+
+/datum/recipe/wormburger
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/meat
+	)
+	result = /obj/item/reagent_containers/food/snacks/wormburger
+
+/datum/recipe/spider_wingfangchu
+	reagents = list("soysauce" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat
+	)
+	result = /obj/item/reagent_containers/food/snacks/spider_wingfangchu
+
+/datum/recipe/steamedspider
+	reagents = list("water" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/spreads/butter,
+		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat
+	)
+	result = /obj/item/reagent_containers/food/snacks/steamedspider
+
+/datum/recipe/saplingsdelight
+	items = list(
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/badrecipe
+	)
+	result = /obj/item/reagent_containers/food/snacks/saplingsdelight

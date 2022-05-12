@@ -290,7 +290,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	attacktext = list("grasped")
 
-	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
+	var/set_stat(CONSCIOUS) //UNCONSCIOUS is the idle state in this case
 	var/sterile = 0
 	var/strength = 5
 	var/attached = 0
@@ -443,7 +443,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(stat == DEAD || stat == CONSCIOUS)
 		return
 
-	stat = CONSCIOUS
+	set_stat(CONSCIOUS)
 	icon_state = "[initial(icon_state)]"
 
 	return
@@ -454,7 +454,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 /*		RemoveActiveIndicators()	*/
 
-	stat = UNCONSCIOUS
+	set_stat(UNCONSCIOUS)
 	icon_state = "[initial(icon_state)]_inactive"
 
 	spawn(rand(min_time,max_time))
@@ -468,7 +468,7 @@ var/const/MAX_ACTIVE_TIME = 400
 /*		RemoveActiveIndicators()	*/
 
 	icon_state = "[initial(icon_state)]_dead"
-	stat = DEAD
+	set_stat(DEAD)
 
 	src.visible_message("<span class='danger'><b>[src] curls up into a ball!</b></span>")
 

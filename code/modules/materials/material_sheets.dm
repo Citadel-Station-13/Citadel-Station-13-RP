@@ -12,7 +12,7 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
 		)
 
-	var/default_type = DEFAULT_WALL_MATERIAL
+	var/default_type = MAT_STEEL
 	var/datum/material/material
 	var/perunit = SHEET_MATERIAL_AMOUNT
 	var/apply_colour //temp pending icon rewrite
@@ -22,7 +22,7 @@
 
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE)
 	if(!default_type)
-		default_type = DEFAULT_WALL_MATERIAL
+		default_type = MAT_STEEL
 	material = get_material_by_name("[default_type]")
 	if(!material)
 		return INITIALIZE_HINT_QDEL
@@ -196,9 +196,9 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/steel
-	name = DEFAULT_WALL_MATERIAL
+	name = MAT_STEEL
 	icon_state = "sheet-metal"
-	default_type = DEFAULT_WALL_MATERIAL
+	default_type = MAT_STEEL
 	no_variants = FALSE
 
 /obj/item/stack/material/steel/hull
@@ -271,6 +271,7 @@
 	icon_state = "sheet-super"
 	item_state = "diamond"
 	default_type = MAT_SUPERMATTER
+	no_variants = FALSE
 	apply_colour = TRUE
 
 /obj/item/stack/material/supermatter/proc/update_mass()	// Due to how dangerous they can be, the item will get heavier and larger the more are in the stack.
@@ -433,7 +434,18 @@
 	name = "leather"
 	desc = "The by-product of mob grinding."
 	icon_state = "sheet-leather"
-	default_type = "leather"
+	default_type = MAT_LEATHER
+	no_variants = FALSE
+	pass_color = TRUE
+	strict_color_stacking = TRUE
+	drop_sound = 'sound/items/drop/leather.ogg'
+	pickup_sound = 'sound/items/pickup/leather.ogg'
+
+/obj/item/stack/material/chitin
+	name = "chitin"
+	desc = "The by-product of mob grinding."
+	icon_state = "chitin"
+	default_type = MAT_CHITIN
 	no_variants = FALSE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
@@ -496,3 +508,32 @@
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/bone
+	name = "bone"
+	desc = "These dense calcium structures are a common support system for organic life."
+	icon_state = "sheet-bone"
+	default_type = "bone"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/copper
+	name = "copper"
+	desc = "This common metal remains a popular choice as an electrical and thermal conductor due to how easily it can be worked."
+	icon_state = "sheet-copper"
+	default_type = "copper"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+//Moved out of beehive.dm in conjunction with the primary material.
+/obj/item/stack/material/wax
+	name = "wax"
+	singular_name = "wax piece"
+	desc = "Soft substance produced by bees. Used to make candles."
+	icon_state = "sheet-rtransparent"
+	apply_colour = 1
+	default_type = "wax"
+	no_variants = FALSE
+	pass_color = TRUE

@@ -56,7 +56,7 @@
 	if(istype(W, /obj/item/weldingtool) && material.shard_can_repair)
 		var/obj/item/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
-			material.place_sheet(loc)
+			material.place_sheet(drop_location())
 			qdel(src)
 			return
 	return ..()
@@ -153,3 +153,6 @@
 
 /obj/item/material/shard/phoron/Initialize(mapload, material_key)
 	. = ..(mapload, "phglass")
+
+/obj/item/material/shard/wood/Initialize(mapload, material_key)
+	. = ..(mapload, "wood")

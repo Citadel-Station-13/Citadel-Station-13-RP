@@ -5,7 +5,8 @@
 	load_method = SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a9mm
 	projectile_type = /obj/item/projectile/bullet/pistol
-
+	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 //Burst is the number of bullets fired; Fire delay is the time you have to wait to shoot the gun again, Move delay is the same but for moving after shooting. .
 //Burst accuracy is the accuracy of each bullet fired in the burst. Dispersion is how much the bullets will 'spread' away from where you aimed.
 
@@ -24,7 +25,7 @@
 	slot_flags = SLOT_BELT
 	magazine_type = null // R&D builds this. Starts unloaded.
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mmAdvanced, /obj/item/ammo_magazine/m9mm)
-
+	
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,20), dispersion=list(0.0, 0.3, 0.6))
@@ -81,7 +82,9 @@
 	magazine_type = /obj/item/ammo_magazine/m545
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
-
+	mag_insert_sound = 'sound/weapons/guns/interaction/ltrifle_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/ltrifle_magout.ogg'
+	heavy = TRUE
 	one_handed_penalty = 30
 
 	firemodes = list(
@@ -141,7 +144,9 @@
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-
+	mag_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
+	heavy = TRUE
 	one_handed_penalty = 60
 
 	burst_delay = 4
@@ -210,25 +215,28 @@
 	magazine_type = /obj/item/ammo_magazine/m545saw
 	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
-
+	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
+	can_special_reload = FALSE
+	heavy = TRUE
 	one_handed_penalty = 90
 
 	var/cover_open = 0
 
-/*	Commented out for quality control and testing.
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 0),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-1,-1), dispersion=list(0.0, 0.6, 1.0), automatic = 0),
 		list(mode_name="short bursts",	burst=5, move_delay=6, burst_accuracy = list(0,-1,-1,-2,-2), dispersion = list(0.6, 1.0, 1.0, 1.0, 1.2), automatic = 0),
 		list(mode_name="automatic",       burst=1, fire_delay=-1,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1),
 		)
-*/
 
+/*
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,0), dispersion=list(0.0, 0.6, 1.0)),
 		list(mode_name="short bursts",	burst=5, move_delay=6, burst_accuracy = list(60,50,45,40,35), dispersion = list(0.6, 1.0, 1.0, 1.0, 1.2))
 		)
+*/
 
 /obj/item/gun/projectile/automatic/l6_saw/special_check(mob/user)
 	if(cover_open)
@@ -289,9 +297,11 @@
 	magazine_type = /obj/item/ammo_magazine/m12gdrum
 	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
 	projectile_type = /obj/item/projectile/bullet/shotgun
-
+	heavy = TRUE
 	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
-
+	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
+	
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
 		list(mode_name="3-round bursts", burst=3, move_delay=6, burst_accuracy = list(60,40,30,25,15), dispersion = list(0.0, 0.6, 0.6))
@@ -331,7 +341,7 @@
 
 /obj/item/gun/projectile/automatic/mini_uzi/custom
 	name = "\improper custom Uzi"
-	desc = "The icon Uzi si a lightweight, compact, fast firing machine pistol. These traits make it a popular holdout option for Pathfinders assigned to hazardous expeditions. Uses .45 rounds."
+	desc = "The iconic Uzi is a lightweight, compact, fast firing machine pistol. These traits make it a popular holdout option for Pathfinders assigned to hazardous expeditions. Uses .45 rounds."
 	icon_state = "mini-uzi-custom"
 	pin = /obj/item/firing_pin/explorer
 
@@ -359,17 +369,17 @@
 
 /obj/item/gun/projectile/automatic/p90
 	name = "personal defense weapon"
-	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
+	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 5.7x28mm rounds."
 	icon_state = "p90smg"
 	item_state = "p90"
 	w_class = ITEMSIZE_NORMAL
-	caliber = "9mm"
+	caliber = "5.7x28mm"
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mmp90
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mmp90, /obj/item/ammo_magazine/m9mmt) // ToDo: New sprite for the different mag.
+	magazine_type = /obj/item/ammo_magazine/m57x28mmp90
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mmp90) // ToDo: New sprite for the different mag.
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -383,7 +393,7 @@
 	name = "custom personal defense weapon"
 	desc = "An H90K from Hephaestus Industries. This one has a different colored receiver and a sling."
 	icon_state = "p90smgC"
-	magazine_type = /obj/item/ammo_magazine/m9mmp90/hunter
+	magazine_type = /obj/item/ammo_magazine/m57x28mmp90/hunter
 	slot_flags = SLOT_BELT|SLOT_BACK
 	pin = /obj/item/firing_pin/explorer
 
@@ -426,7 +436,7 @@
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
-
+	heavy = TRUE
 	one_handed_penalty = 45
 
 	firemodes = list(
@@ -458,6 +468,7 @@ obj/item/gun/projectile/automatic/fal
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m762m
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 
 	firemodes = list(
@@ -481,6 +492,7 @@ obj/item/gun/projectile/automatic/automat
 	w_class = ITEMSIZE_LARGE
 	force = 10
 	caliber = "7.62mm"
+	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3) //A real work around to a automatic rifle.
 	slot_flags = SLOT_BACK
 	load_method = SPEEDLOADER
@@ -511,6 +523,7 @@ obj/item/gun/projectile/automatic/automat/taj
 	icon_state = "holyshotgun"
 	item_state = null
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	caliber = "12g"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
@@ -543,6 +556,7 @@ obj/item/gun/projectile/automatic/automat/taj
 	item_state = "clownrifle"
 	wielded_item_state = "clownrifle_wielded"
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	caliber = "organic"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
@@ -566,3 +580,112 @@ obj/item/gun/projectile/automatic/automat/taj
 		icon_state = "[initial(icon_state)]"
 	else
 		icon_state = "[initial(icon_state)]-empty"
+
+//Muh Alternator
+/obj/item/gun/projectile/automatic/wt274
+	name = "alternating barrel SMG"
+	desc = "Although it experienced an initially successful production run, the WT274 AB-SMG was discontinued in favor of the more reliable WT550. Utilizing a twin-linked barrel assembly, the WT274's ammo consumption was a major factor in its retirement."
+	icon_state = "wt274"
+	item_state = "gun"
+	load_method = MAGAZINE
+	caliber = ".45"
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
+	magazine_type = /obj/item/ammo_magazine/m45uzi/wt274
+	allowed_magazines = list(/obj/item/ammo_magazine/m45uzi/wt274)
+	one_handed_penalty = 10
+
+	firemodes = list(
+		list(mode_name="standard fire", burst=2, fire_delay=0),
+		list(mode_name="double tap", burst=4, burst_delay=1, fire_delay=4, move_delay=2, burst_accuracy = list(40,30,20,15), dispersion = list(0.6, 0.6, 1.0, 1.0))
+		)
+
+/obj/item/gun/projectile/automatic/wt274/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-empty"
+
+//Foam Weapons
+/obj/item/gun/projectile/automatic/advanced_smg/foam
+	name = "toy submachine gun"
+	desc = "The existence of this DONKsoft toy has instigated allegations of corporate espionage from NanoTrasen."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "toy_smg"
+	caliber = "foamdart"
+	magazine_type = /obj/item/ammo_magazine/mfoam/smg
+	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/smg)
+	fire_sound = 'sound/items/syringeproj.ogg'
+
+/obj/item/gun/projectile/automatic/advanced_smg/foam/update_icon()
+	..()
+	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-empty"
+	return
+
+/obj/item/gun/projectile/automatic/advanced_smg/foam/handle_suicide(mob/living/user)
+	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	mouthshoot = 0
+	return
+
+/obj/item/gun/projectile/automatic/advanced_smg/foam/blue
+	icon_state = "toy_smg_blue"
+
+/obj/item/gun/projectile/automatic/advanced_smg/foam/blue/update_icon()
+	..()
+	icon_state = (ammo_magazine)? "toy_smg_blue" : "toy_smg_blue-empty"
+	return
+
+//Foam c20r
+/obj/item/gun/projectile/automatic/c20r/foam
+	name = "toy submachine gun"
+	desc = "A DONKsoft rendition of an infamous submachine gun."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "toy_c20"
+	force = 5
+	caliber = "foamdart"
+	magazine_type = /obj/item/ammo_magazine/mfoam/c20
+	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/c20)
+	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	one_handed_penalty = 5
+	fire_sound = 'sound/items/syringeproj.ogg'
+
+/obj/item/gun/projectile/automatic/c20r/foam/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "toy_c20r-[round(ammo_magazine.stored_ammo.len,4)]"
+	else
+		icon_state = "toy_c20r"
+	return
+
+/obj/item/gun/projectile/automatic/c20r/foam/handle_suicide(mob/living/user)
+	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	mouthshoot = 0
+	return
+
+//Foam LMG
+/obj/item/gun/projectile/automatic/l6_saw/foam
+	name = "toy light machine gun"
+	desc = "This plastic replica of a common light machine gun weighs about half as much. It's still pretty bulky, but nothing lays down suppressive fire like this bad boy. The bane of schoolyards across the galaxy."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "toy_lmgclosed100"
+	force = 5
+	caliber = "foamdart"
+	magazine_type = /obj/item/ammo_magazine/mfoam/lmg
+	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/lmg)
+	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	one_handed_penalty = 45 //It's plastic.
+	fire_sound = 'sound/items/syringeproj.ogg'
+
+/obj/item/gun/projectile/automatic/l6_saw/foam/update_icon()
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
+		icon_state = "toy_lmg[cover_open ? "open" : "closed"]mag"
+		item_state = icon_state
+	else
+		icon_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 25) : "-empty"]"
+		item_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
+	update_held_icon()
+
+/obj/item/gun/projectile/automatic/l6_saw/foam/handle_suicide(mob/living/user)
+	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	mouthshoot = 0
+	return

@@ -179,7 +179,6 @@
 			return 0 // don't update UIs attached to this object
 		go_out()
 
-	add_fingerprint(usr)
 	return 1 // update UIs attached to this object
 
 /obj/machinery/atmospherics/unary/cryo_cell/attackby(var/obj/item/G as obj, var/mob/user as mob)
@@ -200,7 +199,7 @@
 		if(occupant)
 			to_chat(user,"<span class='warning'>\The [src] is already occupied by [occupant].</span>")
 		if(grab.affecting.has_buckled_mobs())
-			to_chat(user, span("warning", "\The [grab.affecting] has other entities attached to it. Remove them first."))
+			to_chat(user, SPAN_WARNING( "\The [grab.affecting] has other entities attached to it. Remove them first."))
 			return
 		var/mob/M = grab.affecting
 		qdel(grab)
@@ -229,7 +228,7 @@
 			return
 		occupant.bodytemperature += 2*(air_contents.temperature - occupant.bodytemperature)*current_heat_capacity/(current_heat_capacity + air_contents.heat_capacity())
 		occupant.bodytemperature = max(occupant.bodytemperature, air_contents.temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
-		occupant.stat = UNCONSCIOUS
+		occupant.set_stat(UNCONSCIOUS)
 		occupant.dir = SOUTH
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(max(5, (1/occupant.bodytemperature)*2000))
@@ -274,18 +273,13 @@
 /obj/machinery/atmospherics/unary/cryo_cell/proc/go_out()
 	if(!(occupant))
 		return
-	//for(var/obj/O in src)
-	//	O.loc = src.loc
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
 	vis_contents -= occupant
 	occupant.pixel_x = occupant.default_pixel_x
 	occupant.pixel_y = occupant.default_pixel_y
-	occupant.loc = get_step(src.loc, SOUTH)	//this doesn't account for walls or anything, but i don't forsee that being a problem.
+	occupant.forceMove(get_step(loc, SOUTH))	//this doesn't account for walls or anything, but i don't forsee that being a problem.
 	if(occupant.bodytemperature < 261 && occupant.bodytemperature >= 70) //Patch by Aranclanos to stop people from taking burn damage after being ejected
 		occupant.bodytemperature = 261									  // Changed to 70 from 140 by Zuhayr due to reoccurance of bug.
-	unbuckle_mob(occupant, force = TRUE)
+	occupant.forceMove(loc)
 	occupant = null
 	current_heat_capacity = initial(current_heat_capacity)
 	update_use_power(USE_POWER_IDLE)
@@ -309,15 +303,12 @@
 	if(!node)
 		to_chat(usr, "<span class='warning'>The cell is not correctly connected to its pipe network!</span>")
 		return
-	if(M.client)
-		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
 	M.forceMove(src)
 	M.ExtinguishMob()
 	if(M.health > -100 && (M.health < 0 || M.sleeping))
 		to_chat(M, "<span class='notice'><b>You feel a cold liquid surround you. Your skin starts to freeze up.</b></span>")
 	occupant = M
-	buckle_mob(occupant, forced = TRUE, check_loc = FALSE)
+	occupant.update_perspective()
 	vis_contents |= occupant
 	occupant.pixel_y += 19
 	current_heat_capacity = HEAT_CAPACITY_HUMAN
@@ -353,7 +344,7 @@
 	if(isliving(usr))
 		var/mob/living/L = usr
 		if(L.has_buckled_mobs())
-			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
+			to_chat(L, SPAN_WARNING( "You have other entities attached to yourself. Remove them first."))
 			return
 		if(L.stat != CONSCIOUS)
 			return

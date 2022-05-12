@@ -50,7 +50,7 @@
 
 	if(subspecies && istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		H.set_species(subspecies)
+		H.set_species(species_type_by_name(subspecies))
 
 	if(delete_old_mob)
 		spawn(1)

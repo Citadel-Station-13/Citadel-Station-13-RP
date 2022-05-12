@@ -192,7 +192,7 @@ proc/cardinalrange(var/center)
 	throwforce = 5
 	throw_speed = 1
 	throw_range = 2
-	matter = list(DEFAULT_WALL_MATERIAL = 100)
+	matter = list(MAT_STEEL = 100)
 
 /obj/item/am_shielding_container/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/multitool) && istype(src.loc,/turf))

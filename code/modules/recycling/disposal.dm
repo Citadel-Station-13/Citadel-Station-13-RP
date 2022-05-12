@@ -14,13 +14,13 @@
 	desc = "A pneumatic waste disposal unit."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "disposal"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	var/datum/gas_mixture/air_contents	// internal reservoir
 	var/mode = 1	// item mode 0=off 1=charging 2=charged
-	var/flush = 0	// true if flush handle is pulled
+	var/flush = FALSE	// true if flush handle is pulled
 	var/obj/structure/disposalpipe/trunk/trunk = null // the attached pipe trunk
-	var/flushing = 0	// true if flushing in progress
+	var/flushing = FALSE	// true if flushing in progress
 	var/flush_every_ticks = 30 //Every 30 ticks it will look whether it is ready to flush
 	var/flush_count = 0 //this var adds 1 once per tick. When it reaches flush_every_ticks it resets and tries to flush.
 	var/last_sound = 0
@@ -38,7 +38,7 @@
 	trunk = locate() in src.loc
 	if(!trunk)
 		mode = 0
-		flush = 0
+		flush = FALSE
 	else
 		trunk.linked = src	// link the pipe trunk to self
 
@@ -56,7 +56,7 @@
 	if(stat & BROKEN || !I || !user)
 		return
 
-	src.add_fingerprint(user)
+	add_fingerprint(user, 0, I)
 	if(mode<=0) // It's off
 		if(I.is_screwdriver())
 			if(contents.len > 0)
@@ -126,10 +126,8 @@
 			for (var/mob/V in viewers(usr))
 				V.show_message("[usr] starts putting [GM.name] into the disposal.", 3)
 			if(do_after(usr, 20))
-				if (GM.client)
-					GM.client.perspective = EYE_PERSPECTIVE
-					GM.client.eye = src
 				GM.forceMove(src)
+				GM.update_perspective()
 				for (var/mob/C in viewers(src))
 					C.show_message("<font color='red'>[GM.name] has been placed in the [src] by [user].</font>", 3)
 				qdel(G)
@@ -190,11 +188,8 @@
 		add_attack_logs(user,target,"Disposals dunked")
 	else
 		return
-	if (target.client)
-		target.client.perspective = EYE_PERSPECTIVE
-		target.client.eye = src
-
 	target.forceMove(src)
+	target.update_perspective()
 
 	for (var/mob/C in viewers(src))
 		if(C == user)
@@ -214,11 +209,8 @@
 
 // leave the disposal
 /obj/machinery/disposal/proc/go_out(mob/user)
-
-	if (user.client)
-		user.client.eye = user.client.mob
-		user.client.perspective = MOB_PERSPECTIVE
-	user.forceMove(src.loc)
+	user.forceMove(loc)
+	user.update_perspective()
 	update()
 	return
 
@@ -607,8 +599,7 @@
 			AM.forceMove(src)		// move everything in other holder to this one
 			if(ismob(AM))
 				var/mob/M = AM
-				if(M.client)	// if a client mob, update eye to follow this holder
-					M.client.eye = src
+				M.update_perspective()
 
 		qdel(other)
 
@@ -668,7 +659,7 @@
 	var/health = 10 	// health points 0-10
 	plane = PLATING_PLANE
 	layer = DISPOSAL_LAYER	// slightly lower than wires and other pipes
-	var/base_icon_state	// initial icon state on map
+	base_icon_state	// initial icon state on map
 	var/sortType = ""
 	var/subtype = 0
 	// new pipe, set the icon_state as on map
@@ -879,7 +870,7 @@
 		var/turf/T = src.loc
 		if(!T.is_plating())
 			return		// prevent interaction with T-scanner revealed pipes
-		src.add_fingerprint(user)
+		src.add_fingerprint(user, 0, I)
 		if(istype(I, /obj/item/weldingtool))
 			var/obj/item/weldingtool/W = I
 
@@ -1157,7 +1148,7 @@
 	New()
 		. = ..()
 		dpdir = dir | turn(dir, 180)
-		if(sort_tag) tagger_locations |= sort_tag
+		if(sort_tag) GLOB.tagger_locations |= sort_tag
 		updatename()
 		updatedesc()
 		update()
@@ -1223,7 +1214,7 @@
 
 	New()
 		. = ..()
-		if(sortType) tagger_locations |= sortType
+		if(sortType) GLOB.tagger_locations |= sortType
 
 		updatedir()
 		updatename()
@@ -1360,7 +1351,7 @@
 	var/turf/T = src.loc
 	if(!T.is_plating())
 		return		// prevent interaction with T-scanner revealed pipes
-	src.add_fingerprint(user)
+	src.add_fingerprint(user, 0, I)
 	if(istype(I, /obj/item/weldingtool))
 		var/obj/item/weldingtool/W = I
 
@@ -1478,7 +1469,7 @@
 	attackby(var/obj/item/I, var/mob/user)
 		if(!I || !user)
 			return
-		src.add_fingerprint(user)
+		src.add_fingerprint(user, 0, I)
 		if(I.is_screwdriver())
 			if(mode==0)
 				mode=1
@@ -1518,11 +1509,7 @@
 
 // check if mob has client, if so restore client view on eject
 /mob/pipe_eject(var/direction)
-	if (src.client)
-		src.client.perspective = MOB_PERSPECTIVE
-		src.client.eye = src
-
-	return
+	update_perspective()
 
 /obj/effect/decal/cleanable/blood/gibs/pipe_eject(var/direction)
 	var/list/dirs

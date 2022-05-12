@@ -2421,7 +2421,7 @@
 	pixel_y = 0
 	},
 /obj/item/clothing/shoes/brown,
-/obj/item/clothing/under/mbill,
+/obj/item/clothing/under/brandjumpsuit/mbill,
 /obj/item/clothing/head/soft/mbill,
 /turf/simulated/floor/water,
 /area/awaymission/snow_outpost/outside)

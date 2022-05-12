@@ -5,6 +5,11 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/fries
 
+/datum/recipe/dishofries
+	appliance = FRYER
+	fruit = list("disho" = 1)
+	coating = /datum/reagent/nutriment/coating/batter
+	result = /obj/item/reagent_containers/food/snacks/dishofries
 
 /datum/recipe/jpoppers
 	appliance = FRYER
@@ -164,3 +169,21 @@
 		/obj/item/reagent_containers/food/snacks/meat
 	)
 	result = /obj/item/storage/box/wings //This is kinda like the donut box.
+
+/datum/recipe/schnitzel
+	appliance = FRYER
+	reagents = list("sodiumchloride" = 1, "blackpepper" = 1, "batter" = 10)
+	fruit = list("onion" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/cutlet,
+		/obj/item/reagent_containers/food/snacks/cutlet
+	)
+	result = /obj/item/reagent_containers/food/snacks/schnitzel
+
+/datum/recipe/churro
+	appliance = FRYER
+	reagents = list("sugar" = 5, "batter" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/dough
+	)
+	result = /obj/item/reagent_containers/food/snacks/churro
