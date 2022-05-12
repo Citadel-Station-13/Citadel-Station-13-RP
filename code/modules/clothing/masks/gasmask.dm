@@ -2,7 +2,7 @@
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air."
 	icon_state = "gas_alt"
-	item_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE
 	body_parts_covered = FACE|EYES
 	w_class = ITEMSIZE_NORMAL
@@ -58,7 +58,7 @@
 			gas_transfer_coefficient = 1
 			gas_filter_strength = 0
 			body_parts_covered = body_parts_covered & ~FACE
-			item_flags = item_flags & ~BLOCK_GAS_SMOKE_EFFECT & ~ALLOWINTERNALS
+			clothing_flags = clothing_flags & ~BLOCK_GAS_SMOKE_EFFECT & ~ALLOWINTERNALS
 			flags_inv = 0
 			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 			icon_state = "halfgas_up"
@@ -67,7 +67,7 @@
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
 			gas_filter_strength = initial(gas_filter_strength)
 			body_parts_covered = initial(body_parts_covered)
-			item_flags = initial(item_flags)
+			clothing_flags = initial(clothing_flags)
 			flags_inv = initial(flags_inv)
 			armor = initial(armor)
 			icon_state = initial(icon_state)
@@ -104,7 +104,7 @@
 	name = "\improper alien mask"
 	desc = "Clearly not designed for a human face."
 	flags = PHORONGUARD
-	item_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS
 	species_restricted = list(SPECIES_VOX)
 	filtered_gases = list(/datum/gas/oxygen, /datum/gas/nitrous_oxide)
 	var/mask_open = FALSE	// Controls if the Vox can eat through this mask

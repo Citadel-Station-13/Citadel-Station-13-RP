@@ -824,6 +824,10 @@
 		overlays += image(icon, "[safety_icon][safety()]")
 
 
+/obj/item/gun/update_overlays()
+	. = ..()
+
+
 /obj/item/gun/proc/toggle_safety(var/mob/user)
 	if (user.stat || user.restrained() || user.lying)
 		to_chat(user, SPAN_WARNING("You can't do that right now."))

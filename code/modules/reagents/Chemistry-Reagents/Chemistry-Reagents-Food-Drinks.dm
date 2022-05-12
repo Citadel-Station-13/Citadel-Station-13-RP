@@ -551,14 +551,14 @@ End Citadel Change */
 			if(H.head.body_parts_covered & EYES)
 				eyes_covered = 1
 				safe_thing = H.head
-			if((H.head.body_parts_covered & FACE) && !(H.head.item_flags & FLEXIBLEMATERIAL))
+			if((H.head.body_parts_covered & FACE) && !(H.head.clothing_flags & FLEXIBLEMATERIAL))
 				mouth_covered = 1
 				safe_thing = H.head
 		if(H.wear_mask)
 			if(!eyes_covered && H.wear_mask.body_parts_covered & EYES)
 				eyes_covered = 1
 				safe_thing = H.wear_mask
-			if(!mouth_covered && (H.wear_mask.body_parts_covered & FACE) && !(H.wear_mask.item_flags & FLEXIBLEMATERIAL))
+			if(!mouth_covered && (H.wear_mask.body_parts_covered & FACE) && !(H.wear_mask.clothing_flags & FLEXIBLEMATERIAL))
 				mouth_covered = 1
 				safe_thing = H.wear_mask
 		if(H.glasses && H.glasses.body_parts_covered & EYES)

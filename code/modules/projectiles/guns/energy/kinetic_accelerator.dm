@@ -22,7 +22,7 @@
 	item_state = "kineticgun"
 	// ammo_type = list(/obj/item/ammo_casing/energy/kinetic)
 	cell_type = /obj/item/cell/device/weapon/empproof
-	item_flags = NONE
+	clothing_flags = NONE
 	charge_meter = FALSE
 	// obj_flags = UNIQUE_RENAME
 	// weapon_weight = WEAPON_LIGHT

@@ -34,10 +34,12 @@
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.Remove(user)
+*/
 	if(item_flags & DROPDEL)
 		qdel(src)
+
 	item_flags &= ~IN_INVENTORY
-*/
+
 	var/old_slot = current_equipped_slot
 	current_equipped_slot = null
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, old_slot)
@@ -54,7 +56,7 @@
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
-	// item_flags |= IN_INVENTORY
+	item_flags |= IN_INVENTORY
 
 /**
  * get the slowdown we incur when we're worn
