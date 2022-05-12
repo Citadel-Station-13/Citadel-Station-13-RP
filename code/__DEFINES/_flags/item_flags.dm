@@ -50,8 +50,8 @@
 #define VOICEBOX_TOGGLABLE		(1<<7)	// The voicebox in this clothing can be toggled.
 #define VOICEBOX_DISABLED		(1<<8)	// The voicebox is currently turned off.
 #define IGNORE_HAT_TOSS			(1<<9)	// Hats with negative effects when worn (i.e the tinfoil hat).
-#define SCAN_REAGENTS			(1<<10)	// Allows helmets and glasses to scan reagents.
 */
+#define SCAN_REAGENTS			(1<<10)	// Allows helmets and glasses to scan reagents.
 #define FLEXIBLEMATERIAL		(1<<11)	// At the moment, masks with this flag will not prevent eating even if they are covering your face.
 #define ALLOW_SURVIVALFOOD		(1<<12)	// Allows special survival food items to be eaten through it
 

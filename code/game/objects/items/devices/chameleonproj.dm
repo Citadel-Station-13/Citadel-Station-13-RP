@@ -20,7 +20,7 @@
 	disrupt()
 	..()
 
-/obj/item/chameleon/equipped()
+/obj/item/chameleon/equipped(mob/user, slot)
 	..()
 	disrupt()
 	..()

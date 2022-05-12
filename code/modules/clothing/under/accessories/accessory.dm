@@ -552,7 +552,7 @@
 
 // Solution for race-specific sprites for an accessory which is also a suit.
 // Suit icons break if you don't use icon override which then also overrides race-specific sprites.
-/obj/item/clothing/accessory/collar/equipped()
+/obj/item/clothing/accessory/collar/equipped(mob/user, slot)
 	..()
 	setUniqueSpeciesSprite()
 

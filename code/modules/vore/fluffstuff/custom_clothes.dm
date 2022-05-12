@@ -1075,7 +1075,7 @@ END OF CITADEL CHANGES */
 		)
 	armor = list(melee = 20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 20, rad = 25)
 
-/obj/item/clothing/suit/storage/trek/ds9/equipped()
+/obj/item/clothing/suit/storage/trek/ds9/equipped(mob/user, slot)
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
@@ -1098,7 +1098,7 @@ END OF CITADEL CHANGES */
 	icon_state = "trek_command"
 	item_state = "trek_ds9_command"
 
-/obj/item/clothing/under/rank/trek/command/ds9/equipped() // Cit change to take into account weirdness with defines. When put on it forces the correct sprite sheet. However when removed it shows a missing sprite for either uniform or suit depending on if it's the overcoat or uniform. Don't know how to fix
+/obj/item/clothing/under/rank/trek/command/ds9/equipped(mob/user, slot) // Cit change to take into account weirdness with defines. When put on it forces the correct sprite sheet. However when removed it shows a missing sprite for either uniform or suit depending on if it's the overcoat or uniform. Don't know how to fix
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
@@ -1113,7 +1113,7 @@ END OF CITADEL CHANGES */
 	icon_state = "trek_engsec"
 	item_state = "trek_ds9_engsec"
 
-/obj/item/clothing/under/rank/trek/engsec/ds9/equipped() // Cit change, ditto
+/obj/item/clothing/under/rank/trek/engsec/ds9/equipped(mob/user, slot) // Cit change, ditto
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
@@ -1128,7 +1128,7 @@ END OF CITADEL CHANGES */
 	icon_state = "trek_medsci"
 	item_state = "trek_ds9_medsci"
 
-/obj/item/clothing/under/rank/trek/medsci/ds9/equipped() // Cit change, ditto
+/obj/item/clothing/under/rank/trek/medsci/ds9/equipped(mob/user, slot) // Cit change, ditto
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
