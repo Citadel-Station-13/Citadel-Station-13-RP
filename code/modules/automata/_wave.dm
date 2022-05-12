@@ -54,6 +54,7 @@
 			while(processing)
 				_power = act(processing.turf, processing.dir, processing.power)
 
+
 				processing = processing.next
 		if(WAVE_SPREAD_SHADOW_LIKE)
 
