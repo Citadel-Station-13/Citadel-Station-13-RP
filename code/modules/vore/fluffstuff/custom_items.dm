@@ -1213,7 +1213,7 @@
 	desc = "The goggles really do nothing this time!"
 	icon_state = "purple"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 
 //General use, Verk felt like sharing.
 /obj/item/clothing/glasses/fluff/spiffygogs

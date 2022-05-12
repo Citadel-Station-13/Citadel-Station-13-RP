@@ -257,6 +257,13 @@ var/list/_client_preferences_by_type
 	enabled_description = "Announce"
 	disabled_description = "Silent"
 
+/datum/client_preference/help_intent_firing
+	description = "Allow firing on help intent"
+	key = "HELP_INTENT_SAFETY"
+	enabled_by_default = FALSE
+	enabled_description = "Allow"
+	disabled_description = "Forbid"
+
 /datum/client_preference/status_indicators
 	description = "Status Indicators"
 	key = "SHOW_STATUS"

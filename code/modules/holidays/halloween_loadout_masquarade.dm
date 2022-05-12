@@ -87,7 +87,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = HEAD|EYES
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/syndicate/sneaksuit_shoes
@@ -112,7 +112,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = HEAD|EYES
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_masks.dmi',
@@ -129,7 +129,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = HEAD|EYES
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/syndicate/contractor_suit
@@ -175,7 +175,7 @@
 	icon = 'icons/antagonists/changeling/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
 	body_parts_covered = HEAD|EYES
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/changeling/chitin_suit
@@ -200,7 +200,7 @@
 	icon = 'icons/antagonists/changeling/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
 	body_parts_covered = HEAD|EYES
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/changeling/flesh_suit
@@ -271,7 +271,7 @@
 	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "clockwork_helmet"
 	body_parts_covered = HEAD|EYES
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/clockcult/suit
@@ -434,7 +434,7 @@
 	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
 	icon_state = "cult_helmet"
 	body_parts_covered = HEAD|EYES
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/cult/robes_new
@@ -530,7 +530,7 @@
 	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
 	icon_state = "void_cloak_hood"
 	body_parts_covered = HEAD|EYES
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /*

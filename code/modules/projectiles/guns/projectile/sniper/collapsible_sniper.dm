@@ -169,7 +169,8 @@
 				user.put_in_any_hand_if_possible(gun) || gun.dropInto(loc)
 			qdel(src)
 
-/obj/item/gun/projectile/heavysniper/update_icon()
+/obj/item/gun/projectile/heavysniper/update_icon_state()
+	. = ..()
 	if(bolt_open)
 		icon_state = "heavysniper-open"
 	else

@@ -207,7 +207,7 @@
 	max_integrity = 100
 	obj_integrity = 100
 	can_shatter = FALSE
-	item_flags = ITEM_CAN_BLOCK
+	clothing_flags = ITEM_CAN_BLOCK
 	shield_flags = SHIELD_FLAGS_DEFAULT | SHIELD_KINETIC_STRONG | SHIELD_DISABLER_DISRUPTED
 	var/recharge_timerid
 	var/recharge_delay = 15 SECONDS
