@@ -6,7 +6,6 @@
 /atom/movable/map_helper/network_builder/power_cable
 	name = "power line autobuilder"
 	icon_state = "powerlinebuilder"
-	#warn check sprites
 	base_type = /atom/movable/map_helper/network_builder/power_cable
 	color = "#ff0000"
 
@@ -19,6 +18,8 @@
 /atom/movable/map_helper/network_builder/power_cable/duplicates()
 	. = list()
 	for(var/atom/movable/map_helper/network_builder/power_cable/B in loc)
+		if(B == src)
+			continue
 		. += B
 	for(var/obj/structure/cable/C in loc)
 		. += C

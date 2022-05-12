@@ -1,7 +1,6 @@
 /atom/movable/spawner/window
 	icon = 'icons/mapping/spawners/window.dmi'
 	icon_state = "glass_grille_pane"
-	#warn make sprites
 	late = TRUE
 
 	/// spawn full windows or panes on grille?
