@@ -3,5 +3,6 @@
 	desc = "Legacy minor announce/request console style announcements."
 
 /datum/announcer/minor_announce/SendText(source, name, message, list/affected)
-
-#warn old minor_announce
+	var/msg = "[SPAN_MINORANNOUNCE("[source] - [SPAN_RED(name)]: [message]")]"
+	for(var/mob/M in affected)
+		to_chat(M, msg)

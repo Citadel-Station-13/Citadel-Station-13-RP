@@ -408,6 +408,7 @@
 #include "code\datums\announce\announce_location.dm"
 #include "code\datums\announce\announcement.dm"
 #include "code\datums\announce\announcer.dm"
+#include "code\datums\announce\static.dm"
 #include "code\datums\announce\announcement\simple.dm"
 #include "code\datums\announce\announcer\major_announce.dm"
 #include "code\datums\announce\announcer\minor_announce.dm"
