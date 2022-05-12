@@ -11,10 +11,6 @@
 		return
 
 	to_chat(usr, "Checking for disconnected pipes...")
-	//all plumbing - yes, some things might get stated twice, doesn't matter.
-	for (var/obj/machinery/atmospherics/plumbing in machines)
-		if (plumbing.nodealert)
-			to_chat(usr, "Unconnected [plumbing.name] located at [plumbing.x],[plumbing.y],[plumbing.z] ([get_area(plumbing.loc)])")
 
 	//Manifolds
 	for (var/obj/machinery/atmospherics/pipe/manifold/pipe in machines)
