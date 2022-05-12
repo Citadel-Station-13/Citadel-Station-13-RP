@@ -85,13 +85,16 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30), dispersion=list(0.0, 0.6, 0.6))
 		)
 
-/obj/item/gun/projectile/automatic/pdw/update_icon(var/ignore_inhands)
-	..()
+/obj/item/gun/projectile/automatic/pdw/update_icon()
+	. = ..()
+	update_held_icon()
+
+/obj/item/gun/projectile/automatic/pdw/update_icon_state()
+	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m9mm))
 		icon_state = "pdw-short"
 	else
 		icon_state = (ammo_magazine)? "pdw" : "pdw-empty"
-	if(!ignore_inhands) update_held_icon()
 
 // For general use
 /obj/item/gun/energy/imperial
@@ -225,11 +228,14 @@ END OF CITADEL CHANGES */
 	allowed_magazines = list(/obj/item/ammo_magazine/mtg)
 	load_method = MAGAZINE
 
-/obj/item/gun/projectile/automatic/stg/update_icon(var/ignore_inhands)
-	..()
+/obj/item/gun/projectile/automatic/stg/update_icon()
+	. = ..()
+	update_held_icon()
+
+/obj/item/gun/projectile/automatic/stg/update_icon_state()
+	. = ..()
 	icon_state = (ammo_magazine)? "stg60" : "stg60-empty"
 	item_state = (ammo_magazine)? "arifle" : "arifle-empty"
-	if(!ignore_inhands) update_held_icon()
 
 //-----------------------Tranq Gun----------------------------------
 /obj/item/gun/projectile/dartgun/tranq
@@ -247,19 +253,6 @@ END OF CITADEL CHANGES */
 	magazine_type = /obj/item/ammo_magazine/chemdart
 	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
 	auto_eject = 0
-
-/obj/item/gun/projectile/dartgun/tranq/update_icon()
-	if(!ammo_magazine)
-		icon_state = "tranqgun"
-		return 1
-
-	if(!ammo_magazine.stored_ammo || ammo_magazine.stored_ammo.len)
-		icon_state = "tranqgun"
-	else if(ammo_magazine.stored_ammo.len > 5)
-		icon_state = "tranqgun"
-	else
-		icon_state = "tranqgun"
-	return 1
 
 // Removed because gun64_vr.dmi guns don't work.
 /*//-----------------------UF-ARC----------------------------------
@@ -409,8 +402,8 @@ END OF CITADEL CHANGES */
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 
-/obj/item/gun/projectile/giskard/update_icon()
-	..()
+/obj/item/gun/projectile/giskard/update_icon_state()
+	. = ..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "giskardcivil"
 	else
@@ -426,8 +419,8 @@ END OF CITADEL CHANGES */
 		list(mode_name="2-round bursts", burst=2, fire_delay=0.2, move_delay=4,    burst_accuracy=list(0,-15),       dispersion=list(1.2, 1.8)),
 		)
 
-/obj/item/gun/projectile/giskard/olivaw/update_icon()
-	..()
+/obj/item/gun/projectile/giskard/olivaw/update_icon_state()
+	. = ..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "olivawcivil"
 	else
@@ -444,15 +437,12 @@ END OF CITADEL CHANGES */
 	handle_casings = CYCLE_CASINGS
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
 
-/obj/item/gun/projectile/revolver/consul/proc/update_charge()
+/obj/item/gun/projectile/revolver/consul/update_overlays()
+	. = ..()
 	if(loaded.len==0)
-		overlays += "inspector_off"
+		. += "inspector_off"
 	else
-		overlays += "inspector_on"
-
-/obj/item/gun/projectile/revolver/consul/update_icon()
-	overlays.Cut()
-	update_charge()
+		. += "inspector_on"
 
 // No idea what this is for.
 /obj/item/gun/projectile/automatic/sol
@@ -507,15 +497,14 @@ END OF CITADEL CHANGES */
 		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_sound='sound/weapons/Laser.ogg', charge_cost = 1200),
 		)
 
-/obj/item/gun/energy/gun/martin/proc/update_mode()
+/obj/item/gun/energy/gun/martin/update_overlays()
+	. = ..()
 	var/datum/firemode/current_mode = firemodes[sel_mode]
 	switch(current_mode.name)
-		if("stun") add_overlay("taser_pdw")
-		if("lethal") add_overlay("lazer_pdw")
-
-/obj/item/gun/energy/gun/martin/update_icon()
-	cut_overlays()
-	update_mode()
+		if("stun")
+			. += "taser_pdw"
+		if("lethal")
+			. += "lazer_pdw"
 
 /////////////////////////////////////////////////////
 //////////////////// Custom Ammo ////////////////////
@@ -786,12 +775,11 @@ END OF CITADEL CHANGES */
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, modifystate="carbinestun", charge_cost = 60),
 	)
 
-/obj/item/gun/energy/frontier/locked/carbine/update_icon()
+/obj/item/gun/energy/frontier/locked/carbine/update_icon_state()
+	. = ..()
 	if(recharging)
 		icon_state = "[modifystate]_pump"
 		update_held_icon()
-		return
-	..()
 
 //Expeditionary Holdout Phaser Pistol
 /obj/item/gun/energy/frontier/locked/holdout

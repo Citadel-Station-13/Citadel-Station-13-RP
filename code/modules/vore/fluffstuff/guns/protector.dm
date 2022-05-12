@@ -97,6 +97,11 @@
 		item_state = itemState
 	*/
 
+	// todo: burn this entire proc to the ground, because the writer deserves to have their eyelids replaced with lemons
+	// "this goodd system but i'm going to snowflake it for one gun"
+
+	return ..()
+
 
 // Protector beams
 /obj/item/projectile/beam/stun/protector
