@@ -1,7 +1,11 @@
-var/list/all_robolimbs = list()
-var/list/robolimb_data = list()
-var/list/chargen_robolimbs = list()
-var/datum/robolimb/basic_robolimb
+GLOBAL_LIST_EMPTY(all_robolimbs)
+GLOBAL_LIST_EMPTY(robolimb_data)
+GLOBAL_LIST_EMPTY(chargen_robolimbs)
+GLOBAL_DATUM(basic_robolimb, /datum/robolimb)
+
+// fuck you whoever wrote these vars
+// use lists like a normal human
+// TODO: REFACTOR
 var/const/standard_monitor_styles = "blank=ipc_blank;\
 	pink=ipc_pink;\
 	green=ipc_green;\
@@ -25,7 +29,7 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	smiley=ipc_smiley;\
 	database=ipc_database"
 
-var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
+var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	default=cyber_default;\
 	eyes=eyes;\
 	static=cyber_static;\
@@ -43,20 +47,20 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	idle=cyber_idle"
 
 /proc/populate_robolimb_list()
-	basic_robolimb = new()
+	GLOB.basic_robolimb = new()
 	for(var/limb_type in typesof(/datum/robolimb))
 		var/datum/robolimb/R = new limb_type()
-		all_robolimbs[R.company] = R
+		GLOB.all_robolimbs[R.company] = R
 		if(!R.unavailable_at_chargen)
-			chargen_robolimbs[R.company] = R //List only main brands and solo parts.
+			GLOB.chargen_robolimbs[R.company] = R //List only main brands and solo parts.
 
-	for(var/company in all_robolimbs)
-		var/datum/robolimb/R = all_robolimbs[company]
+	for(var/company in GLOB.all_robolimbs)
+		var/datum/robolimb/R = GLOB.all_robolimbs[company]
 		if(R.species_alternates)
 			for(var/species in R.species_alternates)
 				var/species_company = R.species_alternates[species]
-				if(species_company in all_robolimbs)
-					R.species_alternates[species] = all_robolimbs[species_company]
+				if(species_company in GLOB.all_robolimbs)
+					R.species_alternates[species] = GLOB.all_robolimbs[species_company]
 
 /datum/robolimb
 	/// Shown when selecting the limb.
@@ -765,8 +769,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 /datum/robolimb/dsi_teshari/New()
-	species_cannot_use = GLOB.all_species.Copy()
-	species_cannot_use -= SPECIES_TESHARI
+	species_cannot_use = all_species_names() - SPECIES_TESHARI
 	..()
 
 /obj/item/disk/limb/dsi_teshari
@@ -803,7 +806,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 /obj/item/disk/limb/antares
 	company = "Antares Robotics"
 
-
 /datum/robolimb/adherent
 	company = "NULL DATA."
 	desc = "NULL DATA."
@@ -812,6 +814,5 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	suggested_species = SPECIES_ADHERENT
 
 /datum/robolimb/adherent/New()
-	species_cannot_use = GLOB.all_species.Copy()
-	species_cannot_use -= SPECIES_ADHERENT
+	species_cannot_use = all_species_names() - SPECIES_ADHERENT
 	..()

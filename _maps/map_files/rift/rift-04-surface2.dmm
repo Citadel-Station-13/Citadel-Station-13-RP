@@ -1518,7 +1518,6 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/camera/network/civilian,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -1632,6 +1631,9 @@
 "dt" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/triumph/surfacebase/sauna)
@@ -2938,6 +2940,9 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/machinery/camera/network/medbay{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
 "fY" = (
@@ -3802,6 +3807,14 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"hC" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "hE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -3845,6 +3858,9 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
+/obj/machinery/camera/network/medbay{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "hK" = (
@@ -3873,6 +3889,7 @@
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 5
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
 "hP" = (
@@ -4016,15 +4033,15 @@
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
 "ie" = (
-/obj/machinery/door/airlock/glass{
-	name = "Dormitories"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock{
+	name = "Locker Room"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
@@ -4590,6 +4607,9 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -5495,6 +5515,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/loading)
+/obj/structure/morgue{
+	dir = 2
+	},
+/obj/machinery/camera/network/medbay,
+/turf/simulated/floor/tiled/techfloor,
+/area/medical/morgue)
 "kR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -8355,6 +8381,9 @@
 /obj/machinery/newscaster{
 	pixel_x = 32
 	},
+/obj/machinery/camera/network/medbay{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/recovery_room)
 "qi" = (
@@ -10454,6 +10483,9 @@
 /obj/item/storage/box/gloves{
 	pixel_x = 8
 	},
+/obj/machinery/camera/network/medbay{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "uE" = (
@@ -11628,8 +11660,10 @@
 /area/security/warden)
 "wM" = (
 /obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/polarized/full{
+	id = "lockerroom"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker)
 "wN" = (
@@ -11907,6 +11941,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
+"xr" = (
+/obj/structure/closet/secure_closet/medical3,
+/obj/item/soap/nanotrasen,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/item/storage/belt/medical,
+/obj/machinery/camera/network/medbay{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/medbay_primary_storage)
 "xs" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -13243,6 +13292,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/closet/l3closet/medical,
+/obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "Ad" = (
@@ -16107,6 +16157,9 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
+/obj/machinery/camera/network/medbay{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "Fk" = (
@@ -17484,6 +17537,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
+"HI" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "HJ" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -17907,7 +17968,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "Iy" = (
-/obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -18033,6 +18093,9 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
@@ -20514,6 +20577,9 @@
 	icon_opened = "biohazardopen";
 	icon_state = "biohazard";
 	name = "biohazard bin"
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
@@ -23863,6 +23929,16 @@
 /obj/structure/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"TR" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/sleep)
 "TS" = (
 /obj/machinery/door/window/eastright,
 /obj/structure/catwalk,
@@ -24581,6 +24657,9 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 5
 	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "Vm" = (
@@ -24887,6 +24966,18 @@
 "VL" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
+"VM" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/item/clothing/under/bathrobe,
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 5
+	},
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/showers)
 "VN" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -38473,7 +38564,7 @@ Zi
 Yy
 Yu
 fd
-PD
+kQ
 Av
 UO
 ym
@@ -39241,7 +39332,7 @@ Ug
 KM
 Tr
 ZP
-ZP
+xr
 vu
 Wg
 TT
@@ -39844,7 +39935,7 @@ sZ
 oz
 sB
 cs
-oz
+hC
 tC
 tC
 gm
@@ -45664,7 +45755,7 @@ BB
 oz
 yn
 jp
-gI
+HI
 tv
 tv
 tv
@@ -47795,7 +47886,7 @@ yQ
 fO
 ZK
 zo
-bp
+TR
 Sr
 nm
 zL
@@ -49536,7 +49627,7 @@ Li
 Xn
 BY
 Fq
-UL
+VM
 ne
 Ge
 Ge
@@ -49929,7 +50020,7 @@ SS
 wI
 SS
 SS
-bp
+TR
 uJ
 nm
 KN

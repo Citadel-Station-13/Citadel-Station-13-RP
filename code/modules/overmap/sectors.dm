@@ -35,7 +35,7 @@
 	var/list/levels_for_distress
 	var/list/unowned_areas // areas we don't own despite them being present on our z
 
-/obj/effect/overmap/visitable/Initialize()
+/obj/effect/overmap/visitable/Initialize(mapload)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return

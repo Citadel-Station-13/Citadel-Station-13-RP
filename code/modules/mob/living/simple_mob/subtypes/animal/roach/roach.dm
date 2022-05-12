@@ -119,7 +119,7 @@
 	taser_kill = 0
 
 //Unrandom the pet...?
-/mob/living/simple_mob/animal/roach/Greta/Initialize()
+/mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
     . = ..()
     size_multiplier = 1
     maxHealth = maxHealth

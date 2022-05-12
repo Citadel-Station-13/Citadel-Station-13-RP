@@ -224,7 +224,7 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 /turf/simulated/sky/virgo3b
 	color = "#FFBBBB"
 
-/turf/simulated/sky/virgo3b/Initialize()
+/turf/simulated/sky/virgo3b/Initialize(mapload)
 	. = ..()
 	set_light(2, 2, "#FFBBBB")
 

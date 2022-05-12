@@ -522,7 +522,7 @@
 	var/power_gen = 1000 // Enough to power a single APC. 4000 output with T4 capacitor.
 	var/irradiate = TRUE // RTGs irradiate surroundings, but only when panel is open.
 
-/obj/machinery/power/rtg/Initialize()
+/obj/machinery/power/rtg/Initialize(mapload)
 	. = ..()
 	if(ispath(circuit))
 		circuit = new circuit(src)
@@ -672,7 +672,7 @@
 /obj/machinery/power/rtg/abductor/built
 	icon_state = "core"
 
-/obj/machinery/power/rtg/abductor/built/Initialize()
+/obj/machinery/power/rtg/abductor/built/Initialize(mapload)
 	. = ..()
 	alien = new(src)
 	RefreshParts()
@@ -686,7 +686,7 @@
 /obj/machinery/power/rtg/abductor/hybrid/built
 	icon_state = "coreb"
 
-/obj/machinery/power/rtg/abductor/hybrid/built/Initialize()
+/obj/machinery/power/rtg/abductor/hybrid/built/Initialize(mapload)
 	. = ..()
 	alien = new /obj/item/cell/device/weapon/recharge/alien(src)
 	RefreshParts()

@@ -31,7 +31,8 @@
 
 	//Get the DNA and generate a new mob
 	var/datum/dna2/record/R = current_project.mydna
-	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src, R.dna.species)
+	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
+	H.set_species(species_type_by_name(R.dna.species))
 	if(current_project.locked)
 		H.resleeve_lock = current_project.ckey
 
@@ -78,6 +79,11 @@
 
 	//Apply DNA
 	H.dna = R.dna.Clone()
+	for(var/trait in H.dna.species_traits)
+		if(!all_traits[trait])
+			continue
+		var/datum/trait/T = all_traits[trait]
+		T.apply(H.species, H)
 	H.original_player = current_project.ckey
 
 	//Apply genetic modifiers

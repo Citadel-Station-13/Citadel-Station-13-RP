@@ -2490,12 +2490,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.1":
-  version: 0.21.1
-  resolution: "axios@npm:0.21.1"
+"axios@npm:^0.21.2":
+  version: 0.21.4
+  resolution: "axios@npm:0.21.4"
   dependencies:
-    follow-redirects: ^1.10.0
-  checksum: c87915fa0b18c15c63350112b6b3563a3e2ae524d7707de0a73d2e065e0d30c5d3da8563037bc29d4cc1b7424b5a350cb7274fa52525c6c04a615fe561c6ab11
+    follow-redirects: ^1.14.0
+  checksum: 44245f24ac971e7458f3120c92f9d66d1fc695e8b97019139de5b0cc65d9b8104647db01e5f46917728edfc0cfd88eb30fc4c55e6053eef4ace76768ce95ff3c
   languageName: node
   linkType: hard
 
@@ -4085,17 +4085,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-static@npm:^4.2.3":
-  version: 4.2.3
-  resolution: "fastify-static@npm:4.2.3"
+"fastify-static-deprecated@npm:fastify-static@4.6.1":
+  version: 4.6.1
+  resolution: "fastify-static@npm:4.6.1"
   dependencies:
     content-disposition: ^0.5.3
     encoding-negotiator: ^2.0.1
     fastify-plugin: ^3.0.0
     glob: ^7.1.4
+    p-limit: ^3.1.0
     readable-stream: ^3.4.0
     send: ^0.17.1
-  checksum: 196abf8d2f2547feacf5959a104e6d431b1428149574a995adc1f596d559a33c1fbcfb931bc94dd930a5ec88323e71c6f0f46fdc24ce6c5d0acea7b6bf292a9e
+  checksum: f2276167bac8176cd943a67b5a4f4dbd683c27e06313d8d53ed48f405cbfae3a1bb5b95bc3a7cf0ce1f553e5ea0a434f292be4edc9779f4380cf5bd7477eef42
+  languageName: node
+  linkType: hard
+
+"fastify-static@npm:^4.4.1":
+  version: 4.7.0
+  resolution: "fastify-static@npm:4.7.0"
+  dependencies:
+    fastify-static-deprecated: "npm:fastify-static@4.6.1"
+    process-warning: ^1.0.0
+  checksum: 68e06472ab8e11bffa50697d1ecede4f368f8593e0d72b367ba0faff1b009c56db60c382b683307c4bbc016d1092d70c2c3a62c35ebc2f49d83757b52422bc98
   languageName: node
   linkType: hard
 
@@ -4242,13 +4253,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.10.0":
-  version: 1.13.2
-  resolution: "follow-redirects@npm:1.13.2"
+"follow-redirects@npm:^1.14.0":
+  version: 1.15.0
+  resolution: "follow-redirects@npm:1.15.0"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: c17f14c186e8a5cc9e6f179f87286306151017a919735d68e2d440fd353da9f9d15789e03ea057a1c2b49dda9d662b05bb4370c7350f70de43b18d3ead2b36a0
+  checksum: eaec81c3e0ae57aae2422e38ad3539d0e7279b3a63f9681eeea319bb683dea67502c4e097136b8ce9721542b4e236e092b6b49e34e326cdd7733c274f0a3f378
   languageName: node
   linkType: hard
 
@@ -6888,6 +6899,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"process-warning@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "process-warning@npm:1.0.0"
+  checksum: c708a03241deec3cabaeee39c4f9ee8c4d71f1c5ef9b746c8252cdb952a6059068cfcdaf348399775244cbc441b6ae5e26a9c87ed371f88335d84f26d19180f9
+  languageName: node
+  linkType: hard
+
 "progress@npm:^2.0.0":
   version: 2.0.3
   resolution: "progress@npm:2.0.3"
@@ -8153,7 +8171,7 @@ resolve@^2.0.0-next.3:
   dependencies:
     common: "workspace:*"
     fastify: ^3.20.2
-    fastify-static: ^4.2.3
+    fastify-static: ^4.4.1
     inferno: ^7.4.8
     inferno-vnode-flags: ^7.4.8
     lodash: ^4.17.21
@@ -8166,7 +8184,7 @@ resolve@^2.0.0-next.3:
   version: 0.0.0-use.local
   resolution: "tgui-dev-server@workspace:packages/tgui-dev-server"
   dependencies:
-    axios: ^0.21.1
+    axios: ^0.21.2
     glob: ^7.1.7
     source-map: ^0.7.3
     stacktrace-parser: ^0.1.10

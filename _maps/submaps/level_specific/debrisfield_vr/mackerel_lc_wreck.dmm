@@ -893,7 +893,7 @@
 /area/shuttle/mackerel_lc_wreck)
 "Zp" = (
 /obj/effect/decal/cleanable/blood,
-/atom/movable/landmark/corpse/vintage/pilot,
+/atom/movable/spawner/corpse/vintage/pilot,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/mackerel_lc_wreck)
 "ZJ" = (

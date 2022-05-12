@@ -180,8 +180,8 @@
  * * [/turf/proc/Initialize]
  */
 /atom/proc/Initialize(mapload, ...)
-	//SHOULD_NOT_SLEEP(TRUE)
-	//SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 	if(flags & INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
