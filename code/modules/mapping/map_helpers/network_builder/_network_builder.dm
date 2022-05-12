@@ -3,6 +3,7 @@
 /atom/movable/map_helper/network_builder
 	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
 	late = TRUE
+	invisibility = INVISIBILITY_MAXIMUM
 	/// what directions we know connections are in. flag. uses X_BIT defines!
 	var/network_directions
 	/// adminspawned
@@ -52,5 +53,5 @@
 			var/atom/movable/map_helper/network_builder/NB = locate(base_type) in get_step(src, d)
 			if(NB)
 				NB.rebuild(FALSE)
-	scan()
+	network_directions = scan()
 	build()

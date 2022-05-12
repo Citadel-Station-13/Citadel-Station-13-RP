@@ -9,6 +9,7 @@
 	var/late = FALSE
 
 /atom/movable/spawner/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 	flags |= INITIALIZED
 	if(!late)
 		Spawn()	// we always spawn in Initialize(), because if anything we spawn has LateInitialize behavior, that'll be really bad, huh.
