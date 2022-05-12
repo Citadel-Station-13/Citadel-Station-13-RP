@@ -4,7 +4,7 @@
 /turf/simulated/shuttle/floor/red/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cockpit)
 "al" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light,
@@ -89,7 +89,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle)
 "eF" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/item/reagent_containers/food/snacks/clownburger,
@@ -217,7 +217,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/engine)
 "kY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/item/storage/toolbox/electrical,
@@ -249,7 +249,7 @@
 /turf/simulated/shuttle/wall,
 /area/submap/debrisfiled_vr/clownshuttle)
 "mN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/closet/syndicate/clownops/personal,
@@ -286,7 +286,7 @@
 /turf/simulated/shuttle/floor/red/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cockpit)
 "nW" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1
 	},
 /obj/structure/cable/green{
@@ -362,7 +362,7 @@
 /turf/simulated/shuttle/wall/hard_corner,
 /area/submap/debrisfiled_vr/clownshuttle/bunk)
 "qD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/item/reagent_containers/food/snacks/pie,
@@ -380,7 +380,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle)
 "ri" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/item/storage/toolbox/emergency,
@@ -445,7 +445,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cockpit)
 "vc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/table/bananium_reinforced,
@@ -487,7 +487,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/atmos)
 "wB" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/yellow/airless,
@@ -496,7 +496,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/engine)
 "wV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/item/clothing/mask/gas/clown_hat,
@@ -641,7 +641,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle)
 "EG" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/item/toy/prize/honk,
@@ -754,7 +754,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/atmos)
 "IE" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light,
@@ -871,7 +871,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/bunk)
 "Pw" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/table/bananium_reinforced,
@@ -1012,7 +1012,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/bunk)
 "Vl" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/closet/syndicate/clownops/personal,
@@ -1042,7 +1042,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cargo)
 "XK" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/table/bananium_reinforced,
@@ -1052,7 +1052,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cargo)
 "Yn" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/table/bananium_reinforced,

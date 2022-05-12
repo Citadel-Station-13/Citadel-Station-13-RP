@@ -144,7 +144,7 @@
 	},
 /area/class_p/facility)
 "ej" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/blob/normal,
 /turf/simulated/floor/classp,
 /area/class_p/facility)
@@ -196,7 +196,7 @@
 	},
 /area/class_p/facility)
 "fn" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 4
 	},
 /turf/simulated/floor/old_tile/blue/classp{
@@ -484,7 +484,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
@@ -545,7 +545,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/facility)
 "vS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/blob/normal,
@@ -597,7 +597,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/facility)
 "xS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -691,7 +691,7 @@
 	},
 /area/class_p/facility)
 "Cu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
@@ -777,7 +777,7 @@
 	},
 /area/class_p/facility)
 "GL" = (
-/obj/machinery/atmospherics/binary/pump/on,
+/obj/machinery/atmospherics/component/binary/pump/on,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -979,7 +979,7 @@
 	},
 /area/class_p/facility)
 "Qg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/classp,
@@ -1102,7 +1102,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/facility)
 "Wn" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";

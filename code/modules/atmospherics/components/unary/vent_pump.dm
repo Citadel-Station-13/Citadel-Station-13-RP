@@ -7,7 +7,7 @@
 #define PRESSURE_CHECK_EXTERNAL 1
 #define PRESSURE_CHECK_INTERNAL 2
 
-/obj/machinery/atmospherics/unary/vent_pump
+/obj/machinery/atmospherics/component/unary/vent_pump
 	icon = 'icons/atmos/vent_pump.dmi'
 	icon_state = "map_vent"
 	pipe_state = "uvent"
@@ -51,28 +51,28 @@
 	var/datum/looping_sound/air_pump/soundloop
 */
 
-/obj/machinery/atmospherics/unary/vent_pump/on
+/obj/machinery/atmospherics/component/unary/vent_pump/on
 	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_out"
 
-/obj/machinery/atmospherics/unary/vent_pump/aux
+/obj/machinery/atmospherics/component/unary/vent_pump/aux
 	icon_state = "map_vent_aux"
 	icon_connect_type = "-aux"
 	connect_types = CONNECT_TYPE_AUX //connects to aux pipes
 
-/obj/machinery/atmospherics/unary/vent_pump/siphon
+/obj/machinery/atmospherics/component/unary/vent_pump/siphon
 	pump_direction = 0
 
-/obj/machinery/atmospherics/unary/vent_pump/siphon/on
+/obj/machinery/atmospherics/component/unary/vent_pump/siphon/on
 	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_in"
 
-/obj/machinery/atmospherics/unary/vent_pump/positive // For some reason was buried in tether_things.dm -Bloop
+/obj/machinery/atmospherics/component/unary/vent_pump/positive // For some reason was buried in tether_things.dm -Bloop
 	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_out"
 	external_pressure_bound = ONE_ATMOSPHERE * 1.1
 
-/obj/machinery/atmospherics/unary/vent_pump/siphon/on/atmos
+/obj/machinery/atmospherics/component/unary/vent_pump/siphon/on/atmos
 	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_in"
 	external_pressure_bound = 0
@@ -82,13 +82,13 @@
 	pressure_checks = 2
 	pressure_checks_default = 2
 
-/obj/machinery/atmospherics/unary/vent_pump/Initialize(mapload)
+/obj/machinery/atmospherics/component/unary/vent_pump/Initialize(mapload)
 	. = ..()
 	/*
 	soundloop = new(list(src), FALSE)
 	*/
 
-/obj/machinery/atmospherics/unary/vent_pump/Initialize(mapload)
+/obj/machinery/atmospherics/component/unary/vent_pump/Initialize(mapload)
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP
 
@@ -99,7 +99,7 @@
 		assign_uid()
 		id_tag = num2text(uid)
 
-/obj/machinery/atmospherics/unary/vent_pump/Destroy()
+/obj/machinery/atmospherics/component/unary/vent_pump/Destroy()
 	unregister_radio(src, frequency)
 	if(initial_loc)
 		initial_loc.air_vent_info -= id_tag
@@ -107,26 +107,26 @@
 	//QDEL_NULL(soundloop)
 	return ..()
 
-/obj/machinery/atmospherics/unary/vent_pump/high_volume
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume
 	name = "Large Air Vent"
 	power_channel = EQUIP
 	power_rating = 45000	//15 kW ~ 20 HP //VOREStation Edit - 45000
 
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux
 	icon_state = "map_vent_aux"
 	icon_connect_type = "-aux"
 	connect_types = CONNECT_TYPE_AUX //connects to aux pipes
 
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/Initialize(mapload)
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/Initialize(mapload)
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 800
 
 // VOREStation Edit Start - Wall mounted vents
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/wall_mounted
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/wall_mounted
 	name = "Wall Mounted Air Vent"
 
 // Return the air from the turf in "front" of us (opposite the way the pipe is facing)
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/wall_mounted/return_air()
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/wall_mounted/return_air()
 	var/turf/T = get_step(src, GLOB.reverse_dir[dir])
 	if(isnull(T))
 		return ..()
@@ -134,16 +134,16 @@
 
 // VOREStation Edit End
 
-/obj/machinery/atmospherics/unary/vent_pump/engine
+/obj/machinery/atmospherics/component/unary/vent_pump/engine
 	name = "Engine Core Vent"
 	power_channel = ENVIRON
 	power_rating = 30000	//15 kW ~ 20 HP
 
-/obj/machinery/atmospherics/unary/vent_pump/engine/Initialize(mapload)
+/obj/machinery/atmospherics/component/unary/vent_pump/engine/Initialize(mapload)
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500 //meant to match air injector
 
-/obj/machinery/atmospherics/unary/vent_pump/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_pump/update_icon(var/safety = 0)
 	if(!check_icon_cache())
 		return
 
@@ -167,7 +167,7 @@
 
 	overlays += icon_manager.get_atmos_icon("device", , , vent_icon)
 
-/obj/machinery/atmospherics/unary/vent_pump/update_underlays()
+/obj/machinery/atmospherics/component/unary/vent_pump/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
@@ -181,11 +181,11 @@
 			else
 				add_underlay(T,, dir)
 
-/obj/machinery/atmospherics/unary/vent_pump/hide()
+/obj/machinery/atmospherics/component/unary/vent_pump/hide()
 	update_icon()
 	update_underlays()
 
-/obj/machinery/atmospherics/unary/vent_pump/proc/can_pump()
+/obj/machinery/atmospherics/component/unary/vent_pump/proc/can_pump()
 	if(stat & (NOPOWER|BROKEN))
 		//soundloop.stop()
 		return 0
@@ -198,7 +198,7 @@
 	//soundloop.start()
 	return 1
 
-/obj/machinery/atmospherics/unary/vent_pump/process(delta_time)
+/obj/machinery/atmospherics/component/unary/vent_pump/process(delta_time)
 	..()
 
 	if (hibernate)
@@ -237,7 +237,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/unary/vent_pump/proc/get_pressure_delta(datum/gas_mixture/environment)
+/obj/machinery/atmospherics/component/unary/vent_pump/proc/get_pressure_delta(datum/gas_mixture/environment)
 	var/pressure_delta = DEFAULT_PRESSURE_DELTA
 	var/environment_pressure = environment.return_pressure()
 
@@ -254,7 +254,7 @@
 
 	return pressure_delta
 
-/obj/machinery/atmospherics/unary/vent_pump/proc/broadcast_status()
+/obj/machinery/atmospherics/component/unary/vent_pump/proc/broadcast_status()
 	if(!radio_connection)
 		return 0
 
@@ -288,7 +288,7 @@
 	return 1
 
 
-/obj/machinery/atmospherics/unary/vent_pump/atmos_init()
+/obj/machinery/atmospherics/component/unary/vent_pump/atmos_init()
 	..()
 
 	//some vents work his own special way
@@ -298,13 +298,13 @@
 		radio_connection = register_radio(src, frequency, frequency, radio_filter_in)
 		src.broadcast_status()
 
-/obj/machinery/atmospherics/unary/vent_pump/receive_signal(datum/signal/signal)
+/obj/machinery/atmospherics/component/unary/vent_pump/receive_signal(datum/signal/signal)
 	if(stat & (NOPOWER|BROKEN))
 		return
 
 	hibernate = 0
 
-	//log_admin("DEBUG \[[world.timeofday]\]: /obj/machinery/atmospherics/unary/vent_pump/receive_signal([signal.debug_print()])")
+	//log_admin("DEBUG \[[world.timeofday]\]: /obj/machinery/atmospherics/component/unary/vent_pump/receive_signal([signal.debug_print()])")
 	if(!signal.data["tag"] || (signal.data["tag"] != id_tag) || (signal.data["sigtype"]!="command"))
 		return 0
 
@@ -391,7 +391,7 @@
 	update_icon()
 	return
 
-/obj/machinery/atmospherics/unary/vent_pump/attackby(obj/item/W, mob/user)
+/obj/machinery/atmospherics/component/unary/vent_pump/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
 		if (WT.remove_fuel(0,user))
@@ -415,19 +415,19 @@
 	else
 		..()
 
-/obj/machinery/atmospherics/unary/vent_pump/examine(mob/user)
+/obj/machinery/atmospherics/component/unary/vent_pump/examine(mob/user)
 	. = ..()
 	. += "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W"
 	if(welded)
 		. += "It seems welded shut."
 
-/obj/machinery/atmospherics/unary/vent_pump/power_change()
+/obj/machinery/atmospherics/component/unary/vent_pump/power_change()
 	var/old_stat = stat
 	..()
 	if(old_stat != stat)
 		update_icon()
 
-/obj/machinery/atmospherics/unary/vent_pump/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/unary/vent_pump/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
 	if (!(stat & NOPOWER) && use_power)

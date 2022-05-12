@@ -6,7 +6,7 @@
 		breathe()
 
 /mob/living/carbon/proc/breathe()
-	//if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell)) return
+	//if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell)) return
 	if(!should_have_organ(O_LUNGS)) return
 
 	var/datum/gas_mixture/breath = null

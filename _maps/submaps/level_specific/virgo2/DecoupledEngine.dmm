@@ -384,7 +384,7 @@
 /turf/simulated/floor,
 /area/submap/virgo2/DecoupledEngine)
 "bk" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,

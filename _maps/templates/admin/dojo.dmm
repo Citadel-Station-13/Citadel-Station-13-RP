@@ -319,7 +319,7 @@
 	pixel_y = -25;
 	req_access = list(150)
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1331;
 	id_tag = null

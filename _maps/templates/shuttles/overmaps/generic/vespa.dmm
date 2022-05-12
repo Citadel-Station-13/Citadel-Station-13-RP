@@ -41,7 +41,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/atmospherics)
 "ag" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/wall/rpshull,
 /area/ship/expe/atmospherics)
 "ah" = (
@@ -105,7 +105,7 @@
 /turf/simulated/floor,
 /area/ship/expe/atmospherics)
 "at" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	icon_state = "map_off";
 	dir = 4
 	},
@@ -152,7 +152,7 @@
 /turf/simulated/floor,
 /area/ship/expe/atmospherics)
 "aC" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	name = "gas pump - air - distro"
 	},
 /obj/machinery/light{
@@ -162,7 +162,7 @@
 /turf/simulated/floor,
 /area/ship/expe/atmospherics)
 "aD" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor,
 /area/ship/expe/atmospherics)
 "aE" = (
@@ -174,7 +174,7 @@
 /turf/simulated/floor,
 /area/ship/expe/atmospherics)
 "aF" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	name = "gas pump - waste - scrubbers";
 	icon_state = "map_on";
 	dir = 1
@@ -337,7 +337,7 @@
 /turf/simulated/floor,
 /area/space)
 "aZ" = (
-/obj/machinery/atmospherics/binary/pump/fuel,
+/obj/machinery/atmospherics/component/binary/pump/fuel,
 /turf/simulated/floor,
 /area/ship/expe/engines)
 "ba" = (
@@ -577,7 +577,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/hangar)
 "bA" = (
-/obj/machinery/atmospherics/unary/vent_pump/aux{
+/obj/machinery/atmospherics/component/unary/vent_pump/aux{
 	frequency = 1449;
 	id_tag = "northvent"
 	},
@@ -770,7 +770,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringstorage)
 "bV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack,
@@ -914,7 +914,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/maintenance2)
 "ct" = (
-/obj/machinery/atmospherics/unary/vent_pump/aux{
+/obj/machinery/atmospherics/component/unary/vent_pump/aux{
 	dir = 1;
 	frequency = 1459;
 	icon_state = "map_vent_aux";
@@ -1268,7 +1268,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/northairlock)
 "de" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -1277,7 +1277,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/northairlock)
 "df" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
@@ -1369,7 +1369,7 @@
 /turf/simulated/floor,
 /area/ship/expe/maintenance2)
 "do" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	icon_state = "nozzle";
 	dir = 4
 	},
@@ -1392,7 +1392,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "ds" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1423,7 +1423,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
 "dx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/double/padded,
@@ -1447,13 +1447,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin1)
 "dz" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin1)
 "dA" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/double/padded,
@@ -1477,13 +1477,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin2)
 "dC" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin2)
 "dD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/double/padded,
@@ -1507,13 +1507,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin3)
 "dF" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin3)
 "dG" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/double/padded,
@@ -1537,13 +1537,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin4)
 "dI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin4)
 "dJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/double/padded,
@@ -1567,13 +1567,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin5)
 "dL" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin5)
 "dM" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/double/padded,
@@ -1597,13 +1597,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin6)
 "dO" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin6)
 "dP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/double/padded,
@@ -1627,13 +1627,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin7)
 "dR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin7)
 "dS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/double/padded,
@@ -1657,13 +1657,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin8)
 "dU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin8)
 "dV" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/double/padded,
@@ -1687,7 +1687,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin9)
 "dX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1750,7 +1750,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/hangarcontrol)
 "ej" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -2016,7 +2016,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "eW" = (
-/obj/machinery/atmospherics/binary/pump/fuel{
+/obj/machinery/atmospherics/component/binary/pump/fuel{
 	icon_state = "map_off-fuel";
 	dir = 4
 	},
@@ -2097,7 +2097,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "fg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2304,7 +2304,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
 "fx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/techfloor{
 	icon_state = "techfloor_edges";
 	dir = 1
@@ -2312,7 +2312,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
 "fy" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -2376,7 +2376,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
 "fD" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/techfloor{
 	icon_state = "techfloor_edges";
 	dir = 1
@@ -2387,7 +2387,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
 "fE" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor{
 	icon_state = "techfloor_edges";
 	dir = 1
@@ -2608,7 +2608,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "ga" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3063,7 +3063,7 @@
 	icon_state = "corner_techfloor_grid";
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3125,7 +3125,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "gJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,
@@ -3165,7 +3165,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
 "gN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -3192,7 +3192,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "gQ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3238,14 +3238,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor3)
 "gX" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor3)
 "gY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
@@ -3318,7 +3318,7 @@
 /turf/simulated/wall/r_lead,
 /area/ship/expe/sm)
 "hi" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/techfloor{
@@ -3391,7 +3391,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "ho" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/computer/ship/engines{
@@ -4692,7 +4692,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "iY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloorwhite{
 	icon_state = "borderfloor_white";
 	dir = 1
@@ -4712,7 +4712,7 @@
 	icon_state = "bordercolor";
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/freezer,
+/obj/machinery/atmospherics/component/unary/freezer,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "ja" = (
@@ -4753,7 +4753,7 @@
 	icon_state = "bordercolor";
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/cryo_cell,
+/obj/machinery/atmospherics/component/unary/cryo_cell,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "jd" = (
@@ -4879,7 +4879,7 @@
 /turf/simulated/floor/reinforced,
 /area/ship/expe/hangar)
 "jm" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/closet/crate,
@@ -5067,7 +5067,7 @@
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "jE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -5083,7 +5083,7 @@
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "jF" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	icon_state = "map_off";
 	dir = 4
 	},
@@ -5119,7 +5119,7 @@
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "jI" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -5225,7 +5225,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangar)
 "jU" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack,
@@ -5479,7 +5479,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "kv" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -5541,7 +5541,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicaleq)
 "kC" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicaleq)
 "kD" = (
@@ -5712,7 +5712,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "kO" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
 	dir = 1
@@ -5724,7 +5724,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "kP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
 	dir = 5
@@ -5770,7 +5770,7 @@
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "kS" = (
-/obj/machinery/atmospherics/binary/pump/high_power{
+/obj/machinery/atmospherics/component/binary/pump/high_power{
 	icon_state = "map_off";
 	dir = 4
 	},
@@ -5784,7 +5784,7 @@
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "kU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5869,7 +5869,7 @@
 	icon_state = "techfloor_edges";
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5908,7 +5908,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "li" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack,
@@ -6152,7 +6152,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicaleq)
 "lI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
 	dir = 9
@@ -6165,7 +6165,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "lJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
 	dir = 1
@@ -6254,11 +6254,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "lP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "lQ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "lR" = (
@@ -6279,14 +6279,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "lT" = (
-/obj/machinery/atmospherics/binary/pump/high_power{
+/obj/machinery/atmospherics/component/binary/pump/high_power{
 	icon_state = "map_off";
 	dir = 8
 	},
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "lU" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -6383,7 +6383,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "me" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -6514,7 +6514,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
 "mn" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -7073,7 +7073,7 @@
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "nd" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/phoron,
@@ -7083,7 +7083,7 @@
 /turf/simulated/floor/reinforced/phoron,
 /area/ship/expe/sm)
 "nf" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced/phoron,
@@ -7196,7 +7196,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/bridge)
 "no" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -7289,7 +7289,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
 "ny" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -7299,7 +7299,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
 "nz" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -7474,7 +7474,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalchem)
 "nP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/chair/office/light{
@@ -7894,7 +7894,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor5)
 "ov" = (
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	icon_state = "freezer_0";
 	dir = 1
 	},
@@ -7990,7 +7990,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "oE" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
@@ -8073,7 +8073,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangar)
 "oO" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -8090,7 +8090,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/expedition)
 "oQ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -8296,7 +8296,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "pg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -8331,7 +8331,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicaleq)
 "pj" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -8519,7 +8519,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangar)
 "pD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
 	dir = 1
@@ -8531,7 +8531,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangar)
 "pE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
 	dir = 1
@@ -8724,7 +8724,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "pS" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -8937,7 +8937,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalchem)
 "qh" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -9338,7 +9338,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "qW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "qX" = (
@@ -9602,7 +9602,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "rA" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -9612,7 +9612,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "rB" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -9774,7 +9774,7 @@
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "rQ" = (
-/obj/machinery/atmospherics/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
 	icon_state = "mmap";
 	dir = 4
 	},
@@ -9887,7 +9887,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
 "rZ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -10260,7 +10260,7 @@
 /area/ship/expe/medicalsur)
 "sF" = (
 /obj/structure/closet/walllocker/emerglocker/north,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -10306,7 +10306,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -10503,7 +10503,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
 "ta" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/bed/chair/bay/comfy/captain{
@@ -10760,7 +10760,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical1)
 "tN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/cable{
@@ -11393,7 +11393,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalsur)
 "uW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -11518,14 +11518,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor5)
 "vj" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor5)
 "vk" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -11554,7 +11554,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor5)
 "vo" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
@@ -11572,14 +11572,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor5)
 "vr" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor6)
 "vs" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor{
@@ -11589,7 +11589,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor6)
 "vt" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -11604,7 +11604,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
 "vu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border,
@@ -11775,7 +11775,7 @@
 /turf/simulated/floor,
 /area/ship/expe/captqua)
 "vX" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -11800,7 +11800,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "vZ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/techfloor{
@@ -12136,7 +12136,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "wI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack,
@@ -12164,7 +12164,7 @@
 	icon_state = "techfloor_edges";
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -12218,7 +12218,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
 "wR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -12257,7 +12257,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
 "wV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -12278,7 +12278,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
 "wX" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -12335,7 +12335,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/southairlock)
 "xc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -12394,7 +12394,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/maintenancerim)
 "xq" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -12617,7 +12617,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
 "yL" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
 	dir = 1
