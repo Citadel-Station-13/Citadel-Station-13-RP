@@ -53,7 +53,4 @@
  */
 /datum/automata/proc/tick()
 	SHOULD_CALL_PARENT(TRUE)
-	if(!next.len)
-		kill()
-		return
 	next_tick = world.time + delay
