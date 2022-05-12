@@ -5,7 +5,6 @@
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
-	sight = SEE_INFRA
 
 //! ## Rendering
 	/// Fullscreen objects
