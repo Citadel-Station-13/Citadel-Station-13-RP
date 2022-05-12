@@ -819,7 +819,7 @@
 	. = ..()
 	if(!(item_flags & IN_INVENTORY))
 		return
-	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()]")
+	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
 
 /obj/item/gun/proc/toggle_safety(mob/user)
 	if(user)
@@ -829,14 +829,14 @@
 	if(safety_state == GUN_NO_SAFETY)
 		to_chat(user, SPAN_WARNING("[src] has no safety."))
 		return
+	if(user)
+		user.visible_message(SPAN_WARNING("[user] switches the safety of \the [src] [safety_state ? "on" : "off"]."), SPAN_NOTICE("You switch the safety of \the [src] [safety_state ? "on" : "off"]."), SPAN_WARNING("You hear a switch being clicked."), MESSAGE_RANGE_COMBAT_SUBTLE)
 	switch(safety_state)
 		if(GUN_SAFETY_ON)
 			safety_state = GUN_SAFETY_OFF
 		if(GUN_SAFETY_OFF)
 			safety_state = GUN_SAFETY_ON
 	update_appearance()
-	if(user)
-		user.visible_message(SPAN_WARNING("[user] switches the safety of \the [src] [safety_state ? "on" : "off"]."), SPAN_NOTICE("You switch the safety of \the [src] [safety_state ? "on" : "off"]."), SPAN_WARNING("You hear a switch being clicked."), MESSAGE_RANGE_COMBAT_SUBTLE)
 	playsound(src, 'sound/weapons/flipblade.ogg', 10, 1)
 
 /obj/item/gun/verb/toggle_safety_verb()
@@ -857,4 +857,4 @@
  * returns TRUE/FALSE based on if we have safeties on
  */
 /obj/item/gun/proc/check_safety()
-	return !(safety_state == GUN_SAFETY_ON)
+	return !!(safety_state == GUN_SAFETY_ON)

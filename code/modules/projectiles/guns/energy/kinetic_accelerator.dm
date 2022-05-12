@@ -195,10 +195,10 @@
 	overheat = FALSE
 	update_icon()
 
-/obj/item/gun/energy/kinetic_accelerator/update_icon()
-	cut_overlays()
+/obj/item/gun/energy/kinetic_accelerator/update_overlays()
+	. = ..()
 	if(overheat || (power_supply.charge == 0))
-		add_overlay(emptystate)
+		. += emptystate
 
 //Projectiles
 /obj/item/projectile/kinetic
