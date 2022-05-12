@@ -269,6 +269,15 @@ var/list/_client_preferences_by_type
 		var/datum/plane_holder/PH = preference_mob.plane_holder
 		PH.set_vis(VIS_STATUS, enabled)
 
+/datum/client_preference/parallax
+	description = "Parallax (fancy space, disable for FPS issues"
+	key = "PARALLAX_ENABLED"
+	enabled_description = "Enabled"
+	disabled_description = "Disabled"
+
+/datum/client_preference/parallax/toggled(mob/preference_mob, enabled)
+	. = ..()
+	preference_mob?.client?.parallax_holder?.Reset()
 
 /********************
 * Staff Preferences *
