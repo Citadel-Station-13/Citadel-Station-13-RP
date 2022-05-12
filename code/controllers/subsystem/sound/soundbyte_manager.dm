@@ -41,9 +41,10 @@
  */
 /datum/controller/subsystem/sounds/proc/fetch_soundbyte(alias)
 	RETURN_TYPE(/datum/soundbyte)
+	alias = "[alias]"
 	if(soundbytes_by_alias[alias])
 		return pick(soundbytes_by_alias[alias])
-	return soundbytes_by_id["[alias]"]
+	return soundbytes_by_id[alias]
 
 /**
  * fetch sound file/path/asset by alias or id

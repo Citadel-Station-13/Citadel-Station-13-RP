@@ -95,7 +95,7 @@ datum/legacy_announcement/proc/NewsCast(message as text, message_title as text)
 		if(zlevels && !(M.z in zlevels))
 			continue
 		if(!istype(M,/mob/new_player) && !isdeaf(M))
-			SEND_SOUND(M, 'sound/AI/preamble.ogg')
+			SEND_SOUND(M, 'sound/soundbytes/announcer/preamble.ogg')
 
 	if(!message_sound)
 		return

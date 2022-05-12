@@ -10,8 +10,7 @@
  * - sound_preamble - preamble sound, if any - either a sound datum, soundbyte, or soundbyte alias
  * - sound_main - ditto
  */
-/proc/simple_announcement(datum/announcer/announcer, source = "Installation Annoucement", name = "General Alert", message = "Test message, please ignore.", sound_preamble, sound_main)
-	#warn defaults
+/proc/simple_announcement(datum/announcer/announcer, source = "Installation Annoucement", name = "General Alert", message = "Test message, please ignore.", sound_preamble = /datum/soundbyte/announcer/preamble, sound_main = /datum/soundbyte/announcer/notice)
 	var/datum/announcement/simple/A = new(source, name, message, sound_preamble, sound_main)
 	A.Announce(announcer)
 	qdel(A)
