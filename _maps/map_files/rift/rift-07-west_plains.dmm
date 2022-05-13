@@ -1041,7 +1041,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "gK" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	tag_east = 3;
 	tag_north = 4;
 	tag_south = 2;

@@ -7877,7 +7877,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "qm" = (
-/obj/machinery/atmospherics/omni/mixer{
+/obj/machinery/atmospherics/component/quaternary/mixer{
 	name = "Gas Mixer";
 	tag_east = 1;
 	tag_east_con = 0.5;
@@ -7890,7 +7890,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "qn" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "CO2 Filter";
 	tag_east = 2;
 	tag_south = 5;
@@ -7923,7 +7923,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "qq" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "Phoron Filter";
 	tag_east = 2;
 	tag_south = 6;
@@ -7954,7 +7954,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos)
 "qu" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "N2O Filter";
 	tag_east = 2;
 	tag_south = 7;
@@ -8032,7 +8032,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "qF" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "N2/O2 Filter";
 	tag_east = 2;
 	tag_south = 4;
@@ -8102,7 +8102,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "qO" = (
-/obj/machinery/atmospherics/omni/mixer{
+/obj/machinery/atmospherics/component/quaternary/mixer{
 	name = "Air Mixer";
 	tag_north = 1;
 	tag_north_con = 0.21;
