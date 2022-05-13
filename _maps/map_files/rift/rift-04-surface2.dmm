@@ -5513,13 +5513,13 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/rift/trade_shop/loading)
 /obj/structure/morgue{
 	dir = 2
 	},
 /obj/machinery/camera/network/medbay,
+/turf/simulated/floor/plating,
 /turf/simulated/floor/tiled/techfloor,
+/area/rift/trade_shop/loading,
 /area/medical/morgue)
 "kR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9143,6 +9143,20 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"rI" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/turf/space/basic,
+/area/rift/trade_shop/loading,
+/area/medical/morgue)
 "rJ" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -36755,7 +36769,7 @@ lE
 lE
 lE
 lE
-kQ
+rI
 lE
 lE
 lE

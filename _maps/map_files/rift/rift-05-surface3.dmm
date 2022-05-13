@@ -6547,13 +6547,13 @@
 	frequency = 1379;
 	scrub_id = "trade_airlock_scrubber"
 	},
-/turf/simulated/floor/plating,
-/area/rift/trade_shop/landing_pad)
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/turf/simulated/floor/plating,
 /turf/simulated/floor/tiled/steel_grid,
+/area/rift/trade_shop/landing_pad,
 /area/bridge/bunker)
 "lC" = (
 /turf/simulated/floor/tiled/white,
@@ -11328,8 +11328,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 /obj/machinery/door/airlock{
 	id_tag = "combunker3";
 	name = "Bunker Bedroom 3"
@@ -11337,7 +11335,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/turf/simulated/floor/reinforced/lythios43c,
 /turf/simulated/floor/wood,
+/area/rift/surfacebase/outside/outside3,
 /area/bridge/bunker)
 "vn" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -14636,18 +14636,18 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
-"BK" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "BJ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/bridge/bunker)
+"BK" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "BL" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -19505,10 +19505,10 @@
 /area/rift/surfaceeva/airlock/arrivals)
 "LH" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 /obj/machinery/light/small,
+/turf/simulated/open/lythios43c,
 /turf/simulated/floor/tiled/white,
+/area/rift/surfacebase/outside/outside3,
 /area/bridge/bunker)
 "LI" = (
 /obj/structure/table/wooden_reinforced,
@@ -24696,6 +24696,17 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
+"Wm" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/turf/space/basic,
+/area/rift/surfacebase/outside/outside3,
+/area/bridge/bunker)
 "Wn" = (
 /obj/machinery/door/airlock/command{
 	name = "Head of Personnel";
@@ -32743,7 +32754,7 @@ Oi
 Oi
 Oi
 Oi
-vm
+Wm
 us
 us
 us

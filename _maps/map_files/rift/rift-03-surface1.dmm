@@ -120,6 +120,9 @@
 /area/rift/surfaceeva/airlock/main/secondary)
 "aq" = (
 /obj/machinery/vending/cola,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
 "ar" = (
@@ -178,6 +181,9 @@
 /area/crew_quarters/game_room)
 "aw" = (
 /obj/structure/flora/pottedplant/minitree,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
 "ax" = (
@@ -2878,6 +2884,9 @@
 /area/rift/surfaceeva/airlock/main)
 "fy" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
 "fz" = (
@@ -4767,6 +4776,9 @@
 /area/maintenance/cargo)
 "iU" = (
 /obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
 "iV" = (
@@ -9323,6 +9335,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/tankstorage)
+"qX" = (
+/obj/structure/flora/pottedplant/minitree,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/trade_shop)
 "qY" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -10411,6 +10430,12 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
+"sZ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/trade_shop)
 "ta" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -12956,6 +12981,12 @@
 /obj/effect/zone_divider,
 /turf/simulated/wall/r_wall,
 /area/maintenance/lowmedbaymaint)
+"xj" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/trade_shop)
 "xk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -14193,6 +14224,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"zF" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/borderfloor,
+/turf/simulated/floor/tiled/steel,
+/area/rift/trade_shop)
 "zG" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -14452,6 +14488,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
+"Ah" = (
+/obj/effect/floor_decal/borderfloor,
+/turf/simulated/floor/tiled/steel,
+/area/rift/trade_shop)
 "Ai" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -16500,6 +16540,9 @@
 	dir = 8;
 	light_range = 12
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
 "Ef" = (
@@ -17455,6 +17498,9 @@
 	req_access = list(160)
 	},
 /obj/structure/table/reinforced,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
 "FW" = (
@@ -18357,6 +18403,9 @@
 	dir = 2;
 	id = "shop_shutter";
 	name = "Shop Shutters"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
@@ -21115,6 +21164,13 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfacebase/outside/outside1)
+"MQ" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/trade_shop)
 "MR" = (
 /obj/machinery/photocopier/faxmachine{
 	department = "CMO's Office"
@@ -23799,6 +23855,16 @@
 /obj/effect/zone_divider,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"RV" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "shop_shutter";
+	name = "Shop Shutters"
+	},
+/obj/effect/floor_decal/borderfloor,
+/turf/simulated/floor/tiled/steel,
+/area/rift/trade_shop)
 "RW" = (
 /obj/structure/railing{
 	dir = 4
@@ -24444,6 +24510,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfaceeva)
+"Tv" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/trade_shop)
 "Tw" = (
 /obj/structure/sink{
 	dir = 4;
@@ -35084,10 +35159,10 @@ wP
 wP
 wP
 FV
-Iu
+sZ
 fy
 Ee
-fy
+MQ
 wP
 pF
 aa
@@ -35281,7 +35356,7 @@ Pc
 Pc
 aE
 SB
-fy
+zF
 wP
 pF
 aa
@@ -35471,11 +35546,11 @@ wP
 Iu
 Iu
 wP
-Iu
+xj
 Iu
 Iu
 IQ
-fy
+zF
 wP
 pF
 aa
@@ -35665,11 +35740,11 @@ wP
 Ws
 Iu
 wP
-Iu
+xj
 in
 Iu
 IQ
-Iu
+Ah
 wP
 wP
 wP
@@ -35863,7 +35938,7 @@ Hy
 VO
 UE
 Bu
-UE
+RV
 wP
 NM
 De
@@ -36053,7 +36128,7 @@ wP
 Iu
 Iu
 wP
-Iu
+xj
 Iu
 Iu
 IQ
@@ -36442,10 +36517,10 @@ wP
 wP
 wP
 aq
-Kh
+Tv
 iU
 iU
-aw
+qX
 wP
 am
 GV
