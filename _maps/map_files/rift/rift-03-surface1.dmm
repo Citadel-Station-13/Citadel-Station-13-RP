@@ -3,7 +3,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "ab" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -18,7 +18,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "ad" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -96,12 +96,12 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "shop_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "shop_airlock";
 	name = "Frost Lock Controller";
@@ -166,7 +166,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/binary/passive_gate/on{
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 8;
 	pressure_resistance = 750;
 	target_pressure = 750
@@ -369,7 +369,7 @@
 /turf/simulated/open,
 /area/maintenance/engineering/pumpstation)
 "bg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -507,7 +507,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
 "by" = (
-/obj/machinery/atmospherics/unary/heater,
+/obj/machinery/atmospherics/component/unary/heater,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "bz" = (
@@ -589,7 +589,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
 "bI" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -644,13 +644,13 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfacebase/outside/outside1)
 "bQ" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -829,7 +829,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
 "cj" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -1238,7 +1238,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/chair/office/dark{
@@ -1318,7 +1318,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -1349,7 +1349,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -1444,7 +1444,7 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -1474,7 +1474,7 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1482,7 +1482,7 @@
 "dt" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/borderfloor/corner2,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2005,20 +2005,20 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "ef" = (
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1379;
 	id_tag = "central_airlock_pump"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "eg" = (
@@ -2108,7 +2108,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2207,12 +2207,12 @@
 /area/maintenance/cargo)
 "eB" = (
 /obj/structure/railing,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "central_airlock_two_pump"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
 "eC" = (
@@ -2390,7 +2390,7 @@
 /area/storage/tools)
 "eR" = (
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"
@@ -2941,7 +2941,7 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
@@ -3289,7 +3289,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -3460,7 +3460,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "gI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/lino,
@@ -3642,7 +3642,7 @@
 "gW" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -4565,7 +4565,7 @@
 /area/quartermaster/warehouse)
 "iz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -5369,7 +5369,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "jK" = (
@@ -5731,7 +5731,7 @@
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6091,7 +6091,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -6344,7 +6344,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_2)
 "lG" = (
@@ -6423,7 +6423,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -6671,7 +6671,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "mi" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -6682,7 +6682,7 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
 "mk" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 1;
 	icon_state = "heater"
 	},
@@ -7114,7 +7114,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "mV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monowhite,
@@ -7237,7 +7237,7 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/cargodock)
 "nk" = (
@@ -7277,7 +7277,7 @@
 	opacity = 0
 	},
 /obj/structure/fans/tiny,
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/cargodock)
 "nn" = (
@@ -7845,7 +7845,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
 "ol" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/lino,
@@ -8492,7 +8492,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/storage/surface_eva)
 "pu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -8530,7 +8530,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/storage/surface_eva)
 "pz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_cell_hallway)
 "pA" = (
@@ -8624,7 +8624,7 @@
 	pixel_y = 6
 	},
 /obj/structure/grille,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "pI" = (
@@ -9348,7 +9348,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -9801,7 +9801,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "rX" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -10001,7 +10001,7 @@
 	id = "main_ext_shutter";
 	name = "Surface External Shutter"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
@@ -10140,13 +10140,13 @@
 	name = "External airlock emergency override";
 	pixel_x = 24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1379;
 	id_tag = "central_airlock_pump"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "sE" = (
@@ -10164,7 +10164,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
 "sF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/patient_wing)
 "sG" = (
@@ -10283,12 +10283,12 @@
 	name = "External airlock emergency override";
 	pixel_x = 24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "central_airlock_two_pump"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
 "sP" = (
@@ -10332,7 +10332,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -10372,7 +10372,7 @@
 	pixel_y = -6
 	},
 /obj/structure/grille,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
 "sU" = (
@@ -10427,7 +10427,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
 "sZ" = (
@@ -11010,7 +11010,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -11174,7 +11174,7 @@
 	pixel_x = 26;
 	pixel_y = 8
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Nebula Trade Shop"
 	},
@@ -11272,7 +11272,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "uj" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -11502,7 +11502,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Nebula Trade Shop"
 	},
@@ -11968,7 +11968,7 @@
 /area/rift/surfacebase/outside/outside1)
 "vn" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -12087,7 +12087,7 @@
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -12141,7 +12141,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "vE" = (
@@ -12414,7 +12414,7 @@
 /turf/simulated/wall,
 /area/tether/surfacebase/entertainment)
 "wa" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -12431,7 +12431,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "wc" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
@@ -12529,7 +12529,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "wn" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
 "wo" = (
@@ -12768,7 +12768,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "wM" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -13020,7 +13020,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "xn" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -13031,7 +13031,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
 "xo" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -13125,7 +13125,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfacebase/outside/outside1)
 "xx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
 "xy" = (
@@ -13195,7 +13195,7 @@
 /area/rnd/hallway)
 "xE" = (
 /obj/structure/table/glass,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "xF" = (
@@ -13811,7 +13811,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -14248,7 +14248,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/surfacebase/outside/outside1)
 "zI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -14257,7 +14257,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
 "zK" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "zL" = (
@@ -14284,7 +14284,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "zO" = (
@@ -14372,7 +14372,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "zU" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -14415,7 +14415,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "zX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -14457,7 +14457,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/medbreak)
 "Ac" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monowhite,
@@ -14483,7 +14483,7 @@
 /area/medical/medbay_emt_bay)
 "Ag" = (
 /atom/movable/landmark/spawnpoint/job/assistant,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -14674,7 +14674,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "AB" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	icon_state = "map_vent_out";
 	use_power = 1
@@ -15227,7 +15227,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "BB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfaceone)
 "BC" = (
@@ -15250,7 +15250,7 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/testingroom)
 "BE" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "BF" = (
@@ -15434,7 +15434,7 @@
 	pixel_y = -24
 	},
 /obj/structure/cable/green,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -15515,7 +15515,7 @@
 	id = "main_ext_shutter";
 	name = "Surface External Shutter"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
@@ -15687,7 +15687,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "CG" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -15998,7 +15998,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
 /area/rift/surfacebase/outside/outside1)
 "De" = (
@@ -16307,7 +16307,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "DK" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "DL" = (
@@ -16591,7 +16591,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
 "Ej" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monowhite,
@@ -16733,7 +16733,7 @@
 	id = "main_ext_shutter";
 	name = "Surface External Shutter"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -16836,7 +16836,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "EJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/library)
 "EK" = (
@@ -16913,7 +16913,7 @@
 /turf/simulated/floor/carpet,
 /area/library)
 "EU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -17181,7 +17181,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/patient_wing)
 "Fx" = (
@@ -17568,7 +17568,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/testingroom)
 "Gc" = (
@@ -18046,8 +18046,8 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "shop_airlock_pump"
@@ -18625,7 +18625,7 @@
 	pixel_x = 26;
 	pixel_y = -8
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Nebula Trade Shop"
 	},
@@ -18713,7 +18713,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
 "Ia" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -18917,7 +18917,7 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "Iw" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -18990,7 +18990,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "IE" = (
@@ -19148,7 +19148,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "IT" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -19170,7 +19170,7 @@
 /turf/simulated/wall,
 /area/tether/surfacebase/funny/clownoffice)
 "IX" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -19257,7 +19257,7 @@
 	name = "Mental Health Locker";
 	req_access = list(5)
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_2)
 "Ji" = (
@@ -19341,7 +19341,7 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
@@ -19407,7 +19407,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop)
 "Jz" = (
@@ -19477,7 +19477,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -19525,7 +19525,7 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "JL" = (
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 1
 	},
 /atom/movable/landmark{
@@ -19658,7 +19658,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
 "Ka" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monotile,
 /area/rift/surfacebase/outside/outside1)
 "Kb" = (
@@ -19736,7 +19736,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
 "Ki" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled/monotile,
 /area/rift/surfacebase/outside/outside1)
 "Kj" = (
@@ -20134,7 +20134,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
 "KY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -20377,7 +20377,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfacebase/outside/outside1)
 "Lv" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -20444,7 +20444,7 @@
 	id = "main_ext_shutter";
 	name = "Surface External Shutter"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -20680,13 +20680,13 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/chemistry_lab)
 "LY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/cargo_hallway)
 "LZ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -20711,7 +20711,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "Mc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -20722,7 +20722,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/tankstorage)
 "Md" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -20766,7 +20766,7 @@
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/heads/cmo)
 "Mg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monotile,
 /area/janitor)
 "Mh" = (
@@ -20852,7 +20852,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfacebase/outside/outside1)
 "Mn" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -21466,7 +21466,7 @@
 "Nq" = (
 /obj/structure/bed/chair/office/dark,
 /atom/movable/landmark/spawnpoint/job/scientist,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monowhite,
@@ -21572,7 +21572,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "NE" = (
@@ -21646,7 +21646,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "NJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -21808,7 +21808,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/recoveryrestroom)
 "Oc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monowhite,
@@ -21826,7 +21826,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "Oe" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -22314,7 +22314,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "Pb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -22455,7 +22455,7 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
@@ -22495,7 +22495,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "Pu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -22704,7 +22704,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "PL" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -22731,7 +22731,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -22745,7 +22745,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -22811,7 +22811,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "PT" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -22907,7 +22907,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -23109,7 +23109,7 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
 "Qw" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monowhite,
@@ -23447,7 +23447,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -23477,7 +23477,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "Ri" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
 "Rj" = (
@@ -23687,7 +23687,7 @@
 /area/rift/surfacebase/outside/outside1)
 "RE" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -23848,7 +23848,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "RT" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "RU" = (
@@ -23939,7 +23939,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "Sf" = (
@@ -24020,7 +24020,7 @@
 	name = "Mental Health Locker";
 	req_access = list(5)
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -24071,7 +24071,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monowhite,
@@ -24164,7 +24164,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
 "SF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -24187,7 +24187,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/tether/surfacebase/entertainment)
 "SH" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology/xenoflora)
 "SI" = (
@@ -24269,7 +24269,7 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "SU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "SV" = (
@@ -24801,7 +24801,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "Ub" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -24852,7 +24852,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "Uh" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -25010,7 +25010,7 @@
 	pixel_x = 38;
 	pixel_y = 24
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
@@ -25072,7 +25072,7 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
@@ -25213,7 +25213,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "UM" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -25239,7 +25239,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "UQ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/cable/green{
@@ -25537,7 +25537,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "Vu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
 /area/janitor)
 "Vv" = (
@@ -25571,7 +25571,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -25688,7 +25688,7 @@
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside1)
 "VH" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -26321,7 +26321,7 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "WL" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/bed/chair/office/dark{
@@ -26352,7 +26352,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "WO" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -26596,7 +26596,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfacebase/outside/outside1)
 "Xi" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/testingroom)
 "Xj" = (
@@ -26712,7 +26712,7 @@
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/lino,
@@ -26872,7 +26872,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet,
@@ -27175,7 +27175,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 4;
 	icon_state = "freezer_1";
 	set_temperature = 73;
@@ -27243,7 +27243,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -27482,7 +27482,7 @@
 	dir = 8
 	},
 /atom/movable/landmark/spawnpoint/job/cargo_technician,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -27749,7 +27749,7 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
 "ZD" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monowhite,
@@ -27780,7 +27780,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
 "ZG" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -27846,7 +27846,7 @@
 /area/library)
 "ZL" = (
 /atom/movable/landmark/spawnpoint/job/assistant,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -27857,13 +27857,13 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet,
 /area/library/study)
 "ZN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
