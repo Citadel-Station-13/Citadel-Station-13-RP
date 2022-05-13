@@ -5,7 +5,7 @@
 /obj/item/clothing/head/helmet/space/rig
 	name = "helmet"
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL|ALLOW_SURVIVALFOOD
+	clothing_flags = THICKMATERIAL|ALLOW_SURVIVALFOOD
 	flags_inv = 		 HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = HEAD|FACE|EYES
 	heat_protection =    HEAD|FACE|EYES
@@ -35,7 +35,7 @@
 
 /obj/item/clothing/gloves/gauntlets/rig
 	name = "gauntlets"
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	flags = PHORONGUARD
 	body_parts_covered = HANDS
 	heat_protection =    HANDS
@@ -70,7 +70,7 @@
 	heat_protection =	 UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection =	 UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv =			 HIDEJUMPSUIT|HIDETAIL
-	item_flags =		 THICKMATERIAL | ALLOWINTERNALS
+	clothing_flags =		 THICKMATERIAL | ALLOWINTERNALS
 	slowdown = 0
 	//will reach 10 breach damage after 25 laser carbine blasts, 3 revolver hits, or ~1 PTR hit. Completely immune to smg or sts hits.
 	breach_threshold = 38

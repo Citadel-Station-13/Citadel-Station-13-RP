@@ -78,7 +78,8 @@
 			beakers += B
 	update_icon()
 
-/obj/item/gun/projectile/dartgun/update_icon()
+/obj/item/gun/projectile/dartgun/update_icon_state()
+	. = ..()
 	if(!ammo_magazine)
 		icon_state = "[base_state]-empty"
 		return 1

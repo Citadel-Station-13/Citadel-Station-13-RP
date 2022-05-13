@@ -3,6 +3,11 @@
 	icon = 'icons/obj/items.dmi'
 	w_class = ITEMSIZE_NORMAL
 
+	/// flags relating to items - see [code/__DEFINES/_flags/item_flags.dm]
+	var/item_flags = NONE
+	/// Miscellaneous flags pertaining to equippable objects. - see [code/__DEFINES/_flags/item_flags.dm]
+	var/clothing_flags = NONE
+
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/abstract = 0
@@ -56,9 +61,6 @@
 	var/body_parts_covered = 0
 
 	var/tool_behaviour = NONE
-
-	/// Miscellaneous flags pertaining to equippable objects.
-	var/item_flags = 0
 
 	/// 0 prevents all transfers, 1 is invisible
 	//var/heat_transfer_coefficient = 1

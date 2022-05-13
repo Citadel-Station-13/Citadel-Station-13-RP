@@ -187,7 +187,8 @@
 		. += "Does not have a power cell."
 	return
 
-/obj/item/gun/energy/update_icon(var/ignore_inhands)
+/obj/item/gun/energy/update_icon(ignore_inhands)
+	. = ..()
 	if(power_supply == null)
 		if(modifystate)
 			icon_state = "[modifystate]_open"
@@ -216,8 +217,7 @@
 
 	if(!ignore_inhands)
 		update_held_icon()
-	..()
-	
+
 /obj/item/gun/energy/proc/start_recharge()
 	if(power_supply == null)
 		power_supply = new /obj/item/cell/device/weapon(src)

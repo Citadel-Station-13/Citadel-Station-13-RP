@@ -94,7 +94,7 @@
 	M.emote("scream")
 	M.stop_flying()
 
-/obj/machinery/atmospherics/unary/cryo_cell/stumble_into(mob/living/M)
+/obj/machinery/atmospherics/component/unary/cryo_cell/stumble_into(mob/living/M)
 	if((stat & (NOPOWER|BROKEN)) || !istype(M, /mob/living/carbon) || occupant || M.abiotic() || !node)
 		return ..()
 	playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 25, 1, -1)

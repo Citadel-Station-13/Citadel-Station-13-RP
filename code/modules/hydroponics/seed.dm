@@ -156,7 +156,7 @@
 		for(var/obj/item/clothing/clothes in target)
 			if(target.item_is_in_hands(clothes))
 				continue
-			if(clothes.item_flags & THICKMATERIAL)
+			if(clothes.clothing_flags & THICKMATERIAL)
 				body_coverage &= ~(clothes.body_parts_covered)
 
 		if(!body_coverage)

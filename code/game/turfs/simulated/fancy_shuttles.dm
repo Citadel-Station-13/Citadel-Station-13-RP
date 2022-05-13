@@ -184,7 +184,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
  * Invisible ship equipment (otherwise the same as normal)
  */
 // Gas engine
-/obj/machinery/atmospherics/unary/engine/fancy_shuttle
+/obj/machinery/atmospherics/component/unary/engine/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	icon_state = "gas_engine"
 	invisibility = INVISIBILITY_MAXIMUM

@@ -218,3 +218,8 @@
 	build_path = /obj/machinery/computer/shutoff_monitor
 	origin_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
 */
+
+/obj/item/circuitboard/stockexchange
+	name = T_BOARD("stock exchange console")
+	build_path = /obj/machinery/computer/stockexchange
+	origin_tech = list(TECH_DATA = 2, TECH_MAGNET = 1)

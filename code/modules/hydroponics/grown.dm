@@ -154,7 +154,7 @@
 
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
-				if(H.shoes && H.shoes.item_flags & NOSLIP)
+				if(H.shoes && H.shoes.clothing_flags & NOSLIP)
 					return
 				if(H.flags & NO_SLIP)//Species that dont slip naturally
 					return

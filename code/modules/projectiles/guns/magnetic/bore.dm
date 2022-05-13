@@ -29,26 +29,25 @@
 
 /obj/item/gun/magnetic/matfed/examine(mob/user)
 	. = ..()
-	show_ammo(user)
+	if(mat_storage)
+		. += SPAN_NOTICE("It has [mat_storage] out of [max_mat_storage] units of [ammo_material] loaded.")
 
-/obj/item/gun/magnetic/matfed/update_icon()
-	var/list/overlays_to_add = list()
+/obj/item/gun/magnetic/matfed/update_overlays()
+	. = ..()
 	if(removable_components)
 		if(cell)
-			overlays_to_add += image(icon, "[icon_state]_cell")
+			. += image(icon, "[icon_state]_cell")
 		if(capacitor)
-			overlays_to_add += image(icon, "[icon_state]_capacitor")
+			. += image(icon, "[icon_state]_capacitor")
 	if(!cell || !capacitor)
-		overlays_to_add += image(icon, "[icon_state]_red")
+		. += image(icon, "[icon_state]_red")
 	else if(capacitor.charge < power_cost)
-		overlays_to_add += image(icon, "[icon_state]_amber")
+		. += image(icon, "[icon_state]_amber")
 	else
-		overlays_to_add += image(icon, "[icon_state]_green")
+		. += image(icon, "[icon_state]_green")
 	if(mat_storage)
-		overlays_to_add += image(icon, "[icon_state]_loaded")
+		. += image(icon, "[icon_state]_loaded")
 
-	overlays = overlays_to_add
-	..()
 /obj/item/gun/magnetic/matfed/attack_hand(var/mob/user) // It doesn't keep a loaded item inside.
 	if(user.get_inactive_hand() == src)
 		var/obj/item/removing
@@ -73,10 +72,6 @@
 
 /obj/item/gun/magnetic/matfed/use_ammo()
 	mat_storage -= mat_cost
-
-/obj/item/gun/magnetic/matfed/show_ammo(var/mob/user)
-	if(mat_storage)
-		to_chat(user, "<span class='notice'>It has [mat_storage] out of [max_mat_storage] units of [ammo_material] loaded.</span>")
 
 /obj/item/gun/magnetic/matfed/attackby(var/obj/item/thing, var/mob/user)
 	if(removable_components)

@@ -385,8 +385,14 @@
 /mob/living/carbon/human/Topic(href, href_list)
 
 	if (href_list["refresh"])
-		if((machine)&&(in_range(src, usr)))
-			show_inv(machine)
+		if(ismob(machine) && in_range(src, usr))
+			// hi, if you see me on git blame, trust me, this code is dumb
+			// but what came before was dumber
+			// whoever wrote this initially can go to hell, who the fuck in their right mind uses
+			// "machine"  for a mob?
+			// it makes no sense, fuck you, get bent.
+			var/mob/M = machine
+			M.show_inv(usr)
 
 	if (href_list["mach_close"])
 		var/t1 = text("window=[]", href_list["mach_close"])
@@ -1314,10 +1320,10 @@
 	else
 		switch(target_zone)
 			if(BP_HEAD) //If targeting head, check helmets
-				if(head && (head.item_flags & THICKMATERIAL) && !ignore_thickness && !istype(head, /obj/item/clothing/head/helmet/space)) //If they're wearing a head piece, if that head piece is thick, the injector doesn't bypass thickness, and that headpiece isn't a space helmet with an injection port - it fails
+				if(head && (head.clothing_flags & THICKMATERIAL) && !ignore_thickness && !istype(head, /obj/item/clothing/head/helmet/space)) //If they're wearing a head piece, if that head piece is thick, the injector doesn't bypass thickness, and that headpiece isn't a space helmet with an injection port - it fails
 					. = 0
 			else //Otherwise, if not targeting head, check the suit
-				if(wear_suit && (wear_suit.item_flags & THICKMATERIAL) && !ignore_thickness&& !istype(wear_suit, /obj/item/clothing/suit/space)) //If they're wearing a suit piece, if that suit piece is thick, the injector doesn't bypass thickness, and that suit isn't a space suit with an injection port - it fails
+				if(wear_suit && (wear_suit.clothing_flags & THICKMATERIAL) && !ignore_thickness&& !istype(wear_suit, /obj/item/clothing/suit/space)) //If they're wearing a suit piece, if that suit piece is thick, the injector doesn't bypass thickness, and that suit isn't a space suit with an injection port - it fails
 					. = 0
 	if(!. && error_msg && user)
 		if(!fail_msg)
@@ -1399,7 +1405,7 @@
 		if(C.body_parts_covered & FEET)
 			footcoverage_check = TRUE
 			break
-	if((species.flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.item_flags & NOSLIP))) //Footwear negates a species' natural traction.
+	if((species.flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.clothing_flags & NOSLIP))) //Footwear negates a species' natural traction.
 		return 0
 	if(..(slipped_on,stun_duration))
 		return 1
@@ -1462,7 +1468,7 @@
 	..()
 
 /mob/living/carbon/human/Check_Shoegrip()
-	if(shoes && (shoes.item_flags & NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
+	if(shoes && (shoes.clothing_flags & NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
 		return 1
 	if(flying) //VOREStation Edit. Checks to see if they have wings and are flying.
 		return 1 //VOREStation Edit.

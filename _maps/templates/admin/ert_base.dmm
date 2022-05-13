@@ -156,7 +156,7 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/specops/centcom)
 "at" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
 	id_tag = "ert1_vent"
 	},
@@ -184,7 +184,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
 	id_tag = "ert1_vent"
 	},
@@ -1979,7 +1979,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "ea" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1381;
 	id_tag = "ert2_vent"
@@ -2005,7 +2005,7 @@
 	id_tag = "ert2_sensor";
 	pixel_x = 25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1381;
 	id_tag = "ert2_vent"

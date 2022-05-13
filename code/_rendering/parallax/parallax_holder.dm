@@ -166,6 +166,8 @@
 	if(QDELETED(C))
 		return
 	. = list()
+	if(!C.is_preference_enabled(/datum/client_preference/parallax))
+		return
 	for(var/atom/movable/screen/parallax_layer/L in layers)
 		// if(L.parallax_intensity > owner.prefs.parallax)
 		// 	continue
@@ -307,5 +309,6 @@
 /client/proc/CreateParallax()
 	if(!parallax_holder)
 		parallax_holder = new(src)
+
 /atom/movable/screen/parallax_vis
 	screen_loc = "CENTER,CENTER"
