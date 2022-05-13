@@ -1366,6 +1366,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"cn" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/turf/space/basic,
+/area/rift/surfacebase/outside/outside3)
 "co" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -6553,8 +6563,7 @@
 	},
 /turf/simulated/floor/plating,
 /turf/simulated/floor/tiled/steel_grid,
-/area/rift/trade_shop/landing_pad,
-/area/bridge/bunker)
+/area/rift/trade_shop/landing_pad)
 "lC" = (
 /turf/simulated/floor/tiled/white,
 /area/bridge/bunker)
@@ -11337,8 +11346,7 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /turf/simulated/floor/wood,
-/area/rift/surfacebase/outside/outside3,
-/area/bridge/bunker)
+/area/rift/surfacebase/outside/outside3)
 "vn" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -19508,8 +19516,7 @@
 /obj/machinery/light/small,
 /turf/simulated/open/lythios43c,
 /turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/outside/outside3,
-/area/bridge/bunker)
+/area/rift/surfacebase/outside/outside3)
 "LI" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/material/ashtray/glass,
@@ -24696,17 +24703,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
-"Wm" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/turf/space/basic,
-/area/rift/surfacebase/outside/outside3,
-/area/bridge/bunker)
 "Wn" = (
 /obj/machinery/door/airlock/command{
 	name = "Head of Personnel";
@@ -32754,7 +32750,7 @@ Oi
 Oi
 Oi
 Oi
-Wm
+cn
 us
 us
 us
