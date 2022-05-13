@@ -66,13 +66,14 @@
 	src.ready = 0
 	update_icon()
 
-/obj/item/gun/projectile/bow/update_icon()
+/obj/item/gun/projectile/bow/update_icon_state()
+	. = ..()
 	if(ready)
-		src.icon_state = "[initial(icon_state)]_firing"
+		icon_state = "[initial(icon_state)]_firing"
 	else if(loaded.len)
-		src.icon_state = "[initial(icon_state)]_loaded"
+		icon_state = "[initial(icon_state)]_loaded"
 	else
-		src.icon_state = initial(icon_state)
+		icon_state = initial(icon_state)
 
 /obj/item/gun/projectile/bow/ashen
 	name = "bone bow"

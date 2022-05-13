@@ -120,7 +120,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_port_aft_wing)
 "bp" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = -24
@@ -135,7 +135,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
@@ -194,7 +194,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "bP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "bU" = (
@@ -265,7 +265,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
@@ -407,7 +407,7 @@
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
 "dE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -495,7 +495,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "eu" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
@@ -538,7 +538,7 @@
 	id = "talon_sensor";
 	name = "sensor blast shields"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
@@ -673,7 +673,7 @@
 /turf/simulated/floor/tiled/eris/white/gray_platform,
 /area/shuttle/talonboat)
 "gb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -1080,7 +1080,7 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "jp" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/closet/wardrobe/black{
@@ -1155,7 +1155,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/central_hallway)
 "kb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/steel,
@@ -1307,7 +1307,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "lb" = (
@@ -1394,7 +1394,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_engine)
 "lF" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/brig)
 "lH" = (
@@ -1419,12 +1419,12 @@
 	pixel_x = -28;
 	req_one_access = list(301)
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/eris/dark/gray_perforated,
@@ -1517,7 +1517,7 @@
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/deckone/port_solar)
 "mZ" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_eng)
@@ -1533,7 +1533,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "ne" = (
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	pixel_x = 28;
@@ -1605,7 +1605,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
@@ -1648,7 +1648,7 @@
 /turf/simulated/floor/airless,
 /area/talon/maintenance/deckone_starboard_aft_wing)
 "ol" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
@@ -1660,7 +1660,7 @@
 /turf/simulated/floor/airless,
 /area/talon/deckone/engine)
 "oq" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/closet/walllocker/autolok_wall{
@@ -1676,7 +1676,7 @@
 	dir = 4;
 	pixel_x = -30
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
@@ -1772,7 +1772,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
@@ -1869,8 +1869,8 @@
 	id_tag = "talon_boat";
 	pixel_x = 28
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/dark/gray_perforated,
@@ -2170,13 +2170,13 @@
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/starboard_engine)
 "rY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "sd" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/eris/steel,
@@ -2285,7 +2285,7 @@
 /turf/simulated/wall,
 /area/talon/deckone/central_hallway)
 "ta" = (
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 10
 	},
@@ -2333,7 +2333,7 @@
 	id = "talon_windows";
 	name = "window blast shields"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
@@ -2352,7 +2352,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "tE" = (
@@ -2462,7 +2462,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_starboard)
 "uF" = (
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
@@ -2520,13 +2520,13 @@
 	pixel_y = -30;
 	req_one_access = list(301)
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_y = 28;
 	req_one_access = list(301)
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
 	dir = 8
 	},
 /turf/simulated/floor/plating/eris/under,
@@ -2641,7 +2641,7 @@
 	dir = 1;
 	icon_state = "4-8"
 	},
-/obj/effect/map_helper/airlock/door/simple,
+/atom/movable/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/eris/dark/techfloor,
 /area/shuttle/talonboat)
 "vW" = (
@@ -2649,7 +2649,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "vY" = (
-/obj/machinery/atmospherics/binary/pump/fuel,
+/obj/machinery/atmospherics/component/binary/pump/fuel,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
@@ -2770,7 +2770,7 @@
 	pixel_y = 28;
 	req_one_access = list(301)
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
 /area/talon/maintenance/deckone_starboard)
@@ -3231,14 +3231,14 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "Al" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_eng)
 "An" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/table/standard,
@@ -3282,7 +3282,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "Az" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/standard,
@@ -3399,7 +3399,7 @@
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "Bp" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/steel,
@@ -3533,7 +3533,7 @@
 /obj/structure/sign/department/bridge{
 	pixel_y = 31
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "Cw" = (
@@ -3654,7 +3654,7 @@
 /area/talon/deckone/brig)
 "CU" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -3679,7 +3679,7 @@
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "De" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
 /obj/item/cell/super{
@@ -3876,20 +3876,20 @@
 	req_one_access = list(301);
 	tag_airpump = "talon_port_wing_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_y = 28;
 	req_one_access = list(301)
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
 	dir = 4;
 	id_tag = "talon_port_wing_pump"
 	},
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "Ey" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/brig)
 "EC" = (
@@ -3934,7 +3934,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/port_eng_store)
 "ET" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/item/deck/cards,
@@ -4073,7 +4073,7 @@
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
 "FR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4147,7 +4147,7 @@
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "Gg" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/light_switch{
 	dir = 8;
 	pixel_x = 24
@@ -4190,7 +4190,7 @@
 	pixel_y = 28;
 	req_one_access = list(301)
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
@@ -4295,7 +4295,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/table/standard,
@@ -4467,7 +4467,7 @@
 /turf/space,
 /area/space)
 "Iu" = (
-/obj/machinery/atmospherics/binary/pump/fuel,
+/obj/machinery/atmospherics/component/binary/pump/fuel,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
@@ -4500,7 +4500,7 @@
 /turf/simulated/wall,
 /area/talon/deckone/brig)
 "IS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
@@ -4586,7 +4586,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
 "JB" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -4600,8 +4600,8 @@
 /area/talon/deckone/central_hallway)
 "JF" = (
 /obj/machinery/light/small,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "talon_port";
@@ -4612,7 +4612,7 @@
 	id_tag = "talon_port_sensor";
 	pixel_y = -30
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380
 	},
@@ -4661,7 +4661,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/engine/biggest{
+/obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 1
 	},
 /turf/simulated/floor/airless,
@@ -4669,7 +4669,7 @@
 "Kd" = (
 /obj/structure/cable/green,
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -4883,7 +4883,7 @@
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/deckone/port_eng)
 "LV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
@@ -5007,7 +5007,7 @@
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/atmospherics/binary/pump/high_power{
+/obj/machinery/atmospherics/component/binary/pump/high_power{
 	dir = 8;
 	name = "Portable Air Pump Refill"
 	},
@@ -5035,7 +5035,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/starboard_eng_store)
 "Ny" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/eris/white/bluecorner,
@@ -5159,7 +5159,7 @@
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/armory)
 "OD" = (
-/obj/machinery/atmospherics/unary/engine/biggest{
+/obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 1
 	},
 /turf/space,
@@ -5280,7 +5280,7 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "PP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/closet/walllocker/autolok_wall{
@@ -5345,7 +5345,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "QD" = (
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(301)
 	},
@@ -5353,7 +5353,7 @@
 	pixel_x = 28;
 	pixel_y = -4
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/eris/dark/gray_perforated,
 /area/shuttle/talonboat)
 "QM" = (
@@ -5432,7 +5432,7 @@
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "Rg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/extinguisher_cabinet{
@@ -5653,7 +5653,7 @@
 /area/talon/maintenance/deckone_starboard_aft_wing)
 "Th" = (
 /obj/structure/closet/emcloset,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "Ti" = (
@@ -5847,7 +5847,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_port_aft_wing)
 "UB" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/window/reinforced,
@@ -5893,7 +5893,7 @@
 /turf/simulated/floor/airless,
 /area/talon/maintenance/deckone_port_aft_wing)
 "UT" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "UV" = (
@@ -6167,7 +6167,7 @@
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "Xy" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
@@ -6184,7 +6184,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "XB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
@@ -6255,7 +6255,7 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/port_solar)
 "Yl" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/window/reinforced,
@@ -6378,7 +6378,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/central_hallway)
 "Zg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/steel,
@@ -6432,7 +6432,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_starboard)
 "ZH" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/central_hallway)
 "ZJ" = (
@@ -6442,7 +6442,7 @@
 	pixel_y = 28;
 	req_one_access = list(301)
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
@@ -6497,7 +6497,7 @@
 "ZZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /atom/movable/landmark/spawnpoint/job/talon_engineer,
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/blue,

@@ -256,9 +256,9 @@
 					else
 
 						var/no_mask
-						if(!(C.wear_mask && C.wear_mask.item_flags & ALLOWINTERNALS))
+						if(!(C.wear_mask && C.wear_mask.clothing_flags & ALLOWINTERNALS))
 							var/mob/living/carbon/human/H = C
-							if(!(H.head && H.head.item_flags & ALLOWINTERNALS))
+							if(!(H.head && H.head.clothing_flags & ALLOWINTERNALS))
 								no_mask = 1
 
 						if(no_mask)

@@ -16,7 +16,7 @@
 /turf/simulated/floor/airless,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
 	},
 /turf/simulated/floor/airless,

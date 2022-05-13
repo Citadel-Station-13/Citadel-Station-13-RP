@@ -189,14 +189,14 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "az" = (
-/obj/machinery/atmospherics/binary/algae_farm,
+/obj/machinery/atmospherics/component/binary/algae_farm,
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "aA" = (
-/obj/machinery/atmospherics/binary/algae_farm,
+/obj/machinery/atmospherics/component/binary/algae_farm,
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 9
 	},
@@ -215,7 +215,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "aC" = (
-/obj/machinery/atmospherics/binary/algae_farm,
+/obj/machinery/atmospherics/component/binary/algae_farm,
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 5
 	},
@@ -246,7 +246,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "aF" = (
-/obj/machinery/atmospherics/binary/algae_farm,
+/obj/machinery/atmospherics/component/binary/algae_farm,
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 6
 	},
@@ -276,7 +276,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "aI" = (
-/obj/machinery/atmospherics/binary/algae_farm,
+/obj/machinery/atmospherics/component/binary/algae_farm,
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 10
 	},
@@ -652,7 +652,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "bM" = (
-/obj/machinery/atmospherics/binary/algae_farm,
+/obj/machinery/atmospherics/component/binary/algae_farm,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "bN" = (

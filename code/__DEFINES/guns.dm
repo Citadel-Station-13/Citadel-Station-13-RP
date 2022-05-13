@@ -15,3 +15,11 @@
 #define SOUNDS_BULLET_METAL  list('sound/effects/projectile_impact/bullet_metal1.ogg', 'sound/effects/projectile_impact/bullet_metal2.ogg', 'sound/effects/projectile_impact/bullet_metal3.ogg')
 #define SOUNDS_LASER_MEAT  list('sound/effects/projectile_impact/energy_meat1.ogg','sound/effects/projectile_impact/energy_meat2.ogg')
 #define SOUNDS_LASER_METAL  list('sound/effects/projectile_impact/energy_metal1.ogg','sound/effects/projectile_impact/energy_metal2.ogg')
+
+// safety states
+/// no safeties are on this gun
+#define GUN_NO_SAFETY				-1
+/// safety off
+#define GUN_SAFETY_OFF				0
+/// safety on
+#define GUN_SAFETY_ON				1

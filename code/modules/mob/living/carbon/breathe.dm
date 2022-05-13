@@ -6,7 +6,7 @@
 		breathe()
 
 /mob/living/carbon/proc/breathe()
-	//if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell)) return
+	//if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell)) return
 	if(!should_have_organ(O_LUNGS)) return
 
 	var/datum/gas_mixture/breath = null
@@ -44,7 +44,7 @@
 	if(internal)
 		if (!contents.Find(internal))
 			internal = null
-		if (!(wear_mask && (wear_mask.item_flags & ALLOWINTERNALS)))
+		if (!(wear_mask && (wear_mask.clothing_flags & ALLOWINTERNALS)))
 			internal = null
 		if(internal)
 			if (internals)
@@ -77,7 +77,7 @@
 
 //Handle possble chem smoke effect
 /mob/living/carbon/proc/handle_chemical_smoke(var/datum/gas_mixture/environment)
-	if(wear_mask && (wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(wear_mask && (wear_mask.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 
 	for(var/obj/effect/smoke/chem/smoke in view(1, src))

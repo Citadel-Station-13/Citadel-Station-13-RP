@@ -8,6 +8,8 @@ All of these regexes are for VSC. They are not necessarily optimized, so, if you
 
 Apply regexes in this order:
 
+`/obj/effect/map_helper`-`/atom/movable/map_helper`
+
 // TODO: tape roll
 // todo: devices/weapons
 
@@ -25,9 +27,10 @@ Apply regexes in this order:
 `/atom/movable/spawnpoint/job/internal_affairs_agent`-`/atom/movable/spawnpoint/job/lawyer`
 `/atom/movable/spawnpoint/job/gardener`-`/atom/movable/spawnpoint/job/botanist`
 
-// TODO: ADD JOB REGEXES
-// TODO: OBSERVER START
-
 // TODO: MAKE SURE NO / AFTER COSTUME
 `/atom/movable/landmark/costume`-`/atom/movable/landmark/costume/random`
 `/atom/movable/landmark/mobcorpse`-`/atom/movable/spawner/corpse`
+
+// ATMOSPHERICS
+`/obj/machinery/atmospherics/omni`-`/obj/machinery/atmospherics/component/quaternary`
+`/obj/machinery/atmospherics/(unary|binary|trinary)`-`/obj/machinery/atmospherics/component/$1`

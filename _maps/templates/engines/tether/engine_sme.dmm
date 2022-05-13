@@ -137,13 +137,13 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "az" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 8
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "aA" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -153,7 +153,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "aC" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -199,7 +199,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "aJ" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -231,7 +231,7 @@
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/engine{
+/obj/machinery/atmospherics/component/unary/vent_pump/engine{
 	dir = 4;
 	external_pressure_bound = 100;
 	external_pressure_bound_default = 0;
@@ -415,7 +415,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -472,7 +472,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1438;
 	id = "cooling_in";
 	name = "Coolant Injector";
@@ -654,7 +654,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bw" = (
-/obj/machinery/atmospherics/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
 	dir = 1;
 	use_power = 0
 	},
@@ -783,7 +783,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bM" = (
@@ -942,7 +942,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cd" = (
-/obj/machinery/atmospherics/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/atmos_filter{
 	dir = 1;
 	use_power = 0
 	},
@@ -978,11 +978,11 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cg" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "ch" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -995,7 +995,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cj" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1;
 	dir = 1
 	},
@@ -1013,7 +1013,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cl" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1
 	},
 /turf/simulated/floor,
@@ -1031,7 +1031,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -1064,7 +1064,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/atmospherics/binary/pump/high_power,
+/obj/machinery/atmospherics/component/binary/pump/high_power,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cr" = (
@@ -1429,7 +1429,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dj" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -1476,7 +1476,7 @@
 /area/engineering/engine_gas)
 "dp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor,

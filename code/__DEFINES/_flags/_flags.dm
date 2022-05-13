@@ -95,10 +95,6 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define PASSBLOB				(1<<3)
 #define PASSMOB					(1<<4)
 
-// Flags for the clothing_flags var on /obj/item/clothing
-//flags for clothing_flags. only 1 exists at the moment because this is an examine refactor not aclothing refactor
-#define SCAN_REAGENTS			(1<<10)	// Allows helmets and glasses to scan reagents.
-
 //silicon_privileges flags on /mob
 #define PRIVILEGES_SILICON	(1<<0)
 #define PRIVILEGES_PAI		(1<<1)

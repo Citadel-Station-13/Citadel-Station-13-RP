@@ -102,11 +102,11 @@
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ak" = (
-/obj/machinery/atmospherics/binary/pump/fuel{
+/obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 1;
 	name = "phoron pump"
 	},
-/obj/machinery/atmospherics/binary/pump/aux{
+/obj/machinery/atmospherics/component/binary/pump/aux{
 	dir = 1;
 	name = "oxygen pump"
 	},
@@ -465,11 +465,11 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "bh" = (
-/obj/machinery/atmospherics/binary/pump/aux{
+/obj/machinery/atmospherics/component/binary/pump/aux{
 	dir = 8;
 	name = "oxygen pump"
 	},
-/obj/machinery/atmospherics/binary/pump/fuel{
+/obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 8;
 	name = "phoron pump"
 	},
@@ -948,11 +948,11 @@
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cf" = (
-/obj/machinery/atmospherics/binary/pump/aux{
+/obj/machinery/atmospherics/component/binary/pump/aux{
 	dir = 4;
 	name = "oxygen pump"
 	},
-/obj/machinery/atmospherics/binary/pump/fuel{
+/obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 4;
 	name = "phoron pump"
 	},
@@ -1144,10 +1144,10 @@
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cB" = (
-/obj/machinery/atmospherics/binary/pump/fuel{
+/obj/machinery/atmospherics/component/binary/pump/fuel{
 	name = "phoron pump"
 	},
-/obj/machinery/atmospherics/binary/pump/aux{
+/obj/machinery/atmospherics/component/binary/pump/aux{
 	name = "oxygen pump"
 	},
 /obj/effect/floor_decal/industrial/outline,

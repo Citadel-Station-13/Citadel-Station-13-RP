@@ -10,7 +10,8 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
-/obj/item/gun/projectile/colt/update_icon()
+/obj/item/gun/projectile/colt/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		if(unique_reskin)
 			icon_state = unique_reskin
@@ -91,8 +92,8 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
-/obj/item/gun/projectile/sec/update_icon()
-	..()
+/obj/item/gun/projectile/sec/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "secguncomp"
 	else
@@ -107,8 +108,8 @@
 	name = "custom .45 pistol"
 	icon_state = "secgundark"
 
-/obj/item/gun/projectile/sec/wood/update_icon()
-	..()
+/obj/item/gun/projectile/sec/wood/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "secgundark"
 	else
@@ -141,8 +142,8 @@
 	magazine_type = /obj/item/ammo_magazine/m44
 	allowed_magazines = list(/obj/item/ammo_magazine/m44)
 
-/obj/item/gun/projectile/deagle/update_icon()
-	..()
+/obj/item/gun/projectile/deagle/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
@@ -178,8 +179,8 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
-/obj/item/gun/projectile/gyropistol/update_icon()
-	..()
+/obj/item/gun/projectile/gyropistol/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "gyropistolloaded"
 	else
@@ -199,8 +200,8 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
 	projectile_type = /obj/item/projectile/bullet/pistol
 
-/obj/item/gun/projectile/pistol/update_icon()
-	..()
+/obj/item/gun/projectile/pistol/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
@@ -238,8 +239,8 @@
 		return
 	..()
 
-/obj/item/gun/projectile/pistol/update_icon()
-	..()
+/obj/item/gun/projectile/pistol/update_icon_state()
+	. = ..()
 	if(silenced)
 		icon_state = "pistol-silencer"
 	else
@@ -260,7 +261,7 @@
 	recoil = 3 //Improvised weapons = poor ergonomics
 	handle_casings = CYCLE_CASINGS //player has to take the old casing out manually before reloading
 	load_method = SINGLE_CASING
-	has_safety = FALSE
+	safety_state = GUN_NO_SAFETY
 	max_shells = 1 //literally just a barrel
 
 	var/global/list/ammo_types = list(
@@ -312,8 +313,8 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
 	projectile_type = /obj/item/projectile/bullet/pistol
 
-/obj/item/gun/projectile/luger/update_icon()
-	..()
+/obj/item/gun/projectile/luger/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
@@ -332,8 +333,8 @@
 	magazine_type = /obj/item/ammo_magazine/m9mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm) // Can accept illegal large capacity magazines, or compact magazines.
 
-/obj/item/gun/projectile/p92x/update_icon()
-	..()
+/obj/item/gun/projectile/p92x/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
@@ -389,8 +390,8 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
 	projectile_type = /obj/item/projectile/bullet/organic
 
-/obj/item/gun/projectile/clown_pistol/update_icon()
-	..()
+/obj/item/gun/projectile/clown_pistol/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
@@ -412,8 +413,8 @@
 	var/collapsible = 1
 	var/extended = 0
 
-/obj/item/gun/projectile/fnseven/update_icon()
-	..()
+/obj/item/gun/projectile/fnseven/update_icon_state()
+	. = ..()
 	if(!extended && ammo_magazine)
 		icon_state = "nt57"
 	else if(extended && ammo_magazine)
@@ -450,8 +451,8 @@
 	collapsible = 0
 	extended = 1
 
-/obj/item/gun/projectile/fnseven/vintage/update_icon()
-	..()
+/obj/item/gun/projectile/fnseven/vintage/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "fnseven"
 	else
@@ -471,7 +472,8 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
 	projectile_type = /obj/item/projectile/bullet/organic/wax
 
-/obj/item/gun/projectile/apinae_pistol/update_icon()
+/obj/item/gun/projectile/apinae_pistol/update_icon_state()
+	. = ..()
 	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
 
 //Tyrmalin Weapons
@@ -501,8 +503,8 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/pistol)
 	fire_sound = 'sound/items/syringeproj.ogg'
 
-/obj/item/gun/projectile/pistol/foam/update_icon()
-	..()
+/obj/item/gun/projectile/pistol/foam/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else

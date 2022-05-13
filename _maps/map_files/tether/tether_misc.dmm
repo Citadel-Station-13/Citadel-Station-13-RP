@@ -3898,7 +3898,7 @@
 	pixel_x = -4;
 	pixel_y = 12
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/camera/network/crescent{
@@ -6090,7 +6090,7 @@
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "XN" = (
-/obj/machinery/atmospherics/unary/freezer,
+/obj/machinery/atmospherics/component/unary/freezer,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -6419,7 +6419,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "YQ" = (
-/obj/machinery/atmospherics/unary/cryo_cell,
+/obj/machinery/atmospherics/component/unary/cryo_cell,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
