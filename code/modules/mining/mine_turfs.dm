@@ -14,7 +14,6 @@
 	var/rock_side_icon_state = "rock_side"
 	var/sand_icon_state = "asteroid"
 	var/rock_icon_state = "rock"
-	var/rock_side_icon_state = "rock_side"
 	var/random_icon = 0
 	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
