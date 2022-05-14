@@ -54,41 +54,55 @@
 	var/turf/_expand
 	var/_ND
 
+#define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[_expand] = D; powers_next[_expand] = P;
+
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
 			// minimal - very little simulation, just go
 			// we act on current turf in edges
 			// we don't use dir bits here
-			for(var/i in 1 to edges.len)
-				_T = edges[i]
-				if(!_T)
-					continue
-				_P = powers[_T]
-				_D = edges[_T]
-				_ret = act(_T, _D, _P)
-				if(_ret < power_considered_dead)
-					continue
-#define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[_expand] = D; powers_next[_expand] = P;
-				if(_D == ALL_DIRECTION_BITS)	// this only happens on first step
-					SIMPLE_EXPAND(_T, NORTH, _ret)
-					SIMPLE_EXPAND(_T, SOUTH, _ret)
-					SIMPLE_EXPAND(_T, EAST, _ret)
-					SIMPLE_EXPAND(_T, WEST, _ret)
-					SIMPLE_EXPAND(_T, NORTHEAST, _ret)
-					SIMPLE_EXPAND(_T, NORTHWEST, _ret)
-					SIMPLE_EXPAND(_T, SOUTHEAST, _ret)
-					SIMPLE_EXPAND(_T, SOUTHWEST, _ret)
-					continue
-				// at this point there should only be one dir so...
+
+			// first check first step
+			if(iteration == 1)
+				// first step just sets up expanding rings
+				for(var/i in 1 to edges.len)
+					_T = edges[i]
+					if(!_T)
+						continue
+					_P = powers[_T]
+					_D = edges[_T]
+					_ret = act(_T, _D, _P)
+					if(_ret < power_considered_dead)
+						continue
+					if(_D == ALL_DIRECTION_BITS)
+						SIMPLE_EXPAND(_T, NORTH, _ret)
+						SIMPLE_EXPAND(_T, SOUTH, _ret)
+						SIMPLE_EXPAND(_T, EAST, _ret)
+						SIMPLE_EXPAND(_T, WEST, _ret)
+						SIMPLE_EXPAND(_T, NORTHEAST, _ret)
+						SIMPLE_EXPAND(_T, NORTHWEST, _ret)
+						SIMPLE_EXPAND(_T, SOUTHEAST, _ret)
+						SIMPLE_EXPAND(_T, SOUTHWEST, _ret)
+			else
+				// other steps do full sim
+				for(var/i in 1 to edges.len)
+					_T = edges[i]
+					if(!_T)
+						continue
+					_P = powers[_T]
+					_D = edges[_T]
+					_ret = act(_T, _D, _P)
+					if(_ret < power_considered_dead)
+						continue
+					// at this point there should only be one dir so...
 					SIMPLE_EXPAND(_T, _D, _ret)
-				// check diagonal
-				if(ISDIAGONALDIR(_D))
-					// if so, expand 3 dirs instead of 1
-					_ND = turn(_D, 45)
-					SIMPLE_EXPAND(_T, _ND, _ret)
-					_ND = turn(_D, -45)
-					SIMPLE_EXPAND(_T, _ND, _ret)
-#undef SIMPLE_EXPAND
+					// check diagonal
+					if(ISDIAGONALDIR(_D))
+						// if so, expand 3 dirs instead of 1
+						_ND = turn(_D, 45)
+						SIMPLE_EXPAND(_T, _ND, _ret)
+						_ND = turn(_D, -45)
+						SIMPLE_EXPAND(_T, _ND, _ret)
 		if(WAVE_SPREAD_SHADOW_LIKE)
 			#warn impl
 			// preliminary attempt:
@@ -96,12 +110,59 @@
 			// propagate diagonals forwards with 45 deg cardinals only
 			// this prevents corner clipping
 
+			// first check first step
+			if(iteration == 1)
+				// first step just sets up expanding rings
+				for(var/i in 1 to edges.len)
+					_T = edges[i]
+					if(!_T)
+						continue
+					_P = powers[_T]
+					_D = edges[_T]
+					_ret = act(_T, _D, _P)
+					if(_ret < power_considered_dead)
+						continue
+					if(_D == ALL_DIRECTION_BITS)
+						#warn change
+						SIMPLE_EXPAND(_T, NORTH, _ret)
+						SIMPLE_EXPAND(_T, SOUTH, _ret)
+						SIMPLE_EXPAND(_T, EAST, _ret)
+						SIMPLE_EXPAND(_T, WEST, _ret)
+						SIMPLE_EXPAND(_T, NORTHEAST, _ret)
+						SIMPLE_EXPAND(_T, NORTHWEST, _ret)
+						SIMPLE_EXPAND(_T, SOUTHEAST, _ret)
+						SIMPLE_EXPAND(_T, SOUTHWEST, _ret)
+			else
+				// other steps do full sim
+				for(var/i in 1 to edges.len)
+					_T = edges[i]
+					if(!_T)
+						continue
+					_P = powers[_T]
+					_D = edges[_T]
+					_ret = act(_T, _D, _P)
+					if(_ret < power_considered_dead)
+						continue
+					#warn change this is all wrong because it's shadow
+					// at this point there should only be one dir so...
+					SIMPLE_EXPAND(_T, _D, _ret)
+					// check diagonal
+					if(ISDIAGONALDIR(_D))
+						// if so, expand 3 dirs instead of 1
+						_ND = turn(_D, 45)
+						SIMPLE_EXPAND(_T, _ND, _ret)
+						_ND = turn(_D, -45)
+						SIMPLE_EXPAND(_T, _ND, _ret)
+
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// this is annoying
 			// to simulate diagonals we do a cardinal tick
 			// and gather the diagonals using turn's at 90 degrees
 			// and then tick the diagonals in a second processing step
 			#warn impl
+
+
+#undef SIMPLE_EXPAND
 
 	// if next if empty...
 	if(!edges_next.len)
