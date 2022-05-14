@@ -25,14 +25,9 @@
 	var/edge_icon_state
 
 /turf/simulated/Initialize(mapload)
-	PROFILE_SET
 	. = ..()
-	PROFILE_TICK
 	if(mapload)
 		levelupdate()
-	PROFILE_TICK
-	// HOOK FOR MOB/FREELOOK SYSTEM
-	PROFILE_TICK
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
