@@ -25,7 +25,7 @@
 	return list("title" = title, "message" = message)
 
 /datum/uplink_item/abstract/announcements/fake_centcom/get_goods(obj/item/uplink/U, loc, mob/user, list/args)
-	for (var/obj/machinery/computer/communications/C in machines)
+	for (var/obj/machinery/computer/communications/C in GLOB.machines)
 		if(! (C.machine_stat & (BROKEN|NOPOWER)) )
 			var/obj/item/paper/P = new /obj/item/paper( C.loc )
 			P.name = "'[command_name()] Update.'"

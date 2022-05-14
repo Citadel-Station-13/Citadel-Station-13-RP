@@ -1,14 +1,14 @@
 var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manually after an event.
 
 /// Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
-#define CELLRATE 0.002
-					   // It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
+#define CELLRATE 0.002 // It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
+
 
 #define KILOWATTS *1000
 #define MEGAWATTS *1000000
 #define GIGAWATTS *1000000000
 
-// Doors!
+//! Doors!
 #define DOOR_CRUSH_DAMAGE 20
 /// How many minutes that a person can be AFK before not being allowed to be an alien.
 #define ALIEN_SELECT_AFK_BUFFER 1
@@ -19,7 +19,14 @@ var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manu
 #define USE_POWER_IDLE   1
 /// Machine is using power at its active power level
 #define USE_POWER_ACTIVE 2
-// Channel numbers for power.
+
+//! Bitflags for a machine's preferences on when it should start processing. For use with machinery's `processing_flags` var.
+/// Indicates the machine will automatically start processing right after it's `Initialize()` is ran.
+#define START_PROCESSING_ON_INIT (1<<0)
+/// Machines with this flag will not start processing when it's spawned. Use this if you want to manually control when a machine starts processing.
+#define START_PROCESSING_MANUALLY (1<<1)
+
+//! Channel numbers for power.
 /// Passed as an argument this means "use whatever current channel is"
 #define CURRENT_CHANNEL -1
 #define EQUIP   1
@@ -27,7 +34,8 @@ var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manu
 #define ENVIRON 3
 /// For total power used only.
 #define TOTAL   4
-// Bitflags for machine stat variable.
+
+//! Bitflags for machine stat variable.
 #define BROKEN	 0x1
 #define NOPOWER	 0x2
 /// TBD.
@@ -36,18 +44,19 @@ var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manu
 #define MAINT	 0x8
 /// Temporary broken by EMP pulse.
 #define EMPED	 0x10
-// Remote control states
+
+//! Remote control states
 #define RCON_NO		1
 #define RCON_AUTO	2
 #define RCON_YES	3
 
-// Used by firelocks
+//! Used by firelocks
 #define FIREDOOR_OPEN 1
 #define FIREDOOR_CLOSED 2
 
 #define AI_CAMERA_LUMINOSITY 6
 
-// Camera networks
+//! Camera networks
 #define NETWORK_CRESCENT "Spaceport"
 // #define NETWORK_CAFE_DOCK "Cafe Dock"
 #define NETWORK_CARGO "Cargo"
@@ -83,13 +92,13 @@ var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manu
 #define NETWORK_EXPLORATION "Exploration"
 #define NETWORK_XENOBIO "Xenobiology"
 
-// Off Station Camera Networks
+//! Off Station Camera Networks
 //TODO: Remove. Though we can keep these for now.
 #define NETWORK_TALON_HELMETS "TalonHelmets"
 #define NETWORK_TALON_SHIP "TalonShip"
 #define NETWORK_TRADE_STATION "Beruang Trade Station"
 
-// Station Specific Camera Networks
+//! Station Specific Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
 #define NETWORK_TETHER "Tether"
 
@@ -130,9 +139,9 @@ var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret
 #define STAGE_FIVE	9
 #define STAGE_SUPER	11
 
-/*
- *	Atmospherics Machinery.
-*/
+/**
+ *! Atmospherics Machinery.
+ */
 /// L/s. This can be used to balance how fast a room is siphoned. Anything higher than CELL_VOLUME has no effect.
 #define MAX_SIPHON_FLOWRATE   2500
 /// L/s. Max flow rate when scrubbing from a turf.

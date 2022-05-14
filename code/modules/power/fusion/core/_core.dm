@@ -38,7 +38,7 @@ var/list/fusion_cores = list()
 	connect_to_network()
 
 /obj/machinery/power/fusion_core/Destroy()
-	for(var/obj/machinery/computer/fusion_core_control/FCC in machines)
+	for(var/obj/machinery/computer/fusion_core_control/FCC in GLOB.machines)
 		FCC.connected_devices -= src
 		if(FCC.cur_viewed_device == src)
 			FCC.cur_viewed_device = null

@@ -134,23 +134,27 @@
 /obj/machinery/Initialize(mapload, newdir)
 	if(newdir)
 		setDir(newdir)
+	. = ..()
+
+	GLOB.machines += src
+
 	if(ispath(circuit))
 		circuit = new circuit(src)
-	. = ..()
-	global.machines += src
+
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)
 	else
 		START_PROCESSING(SSfastprocess, src)
+
 	if(!mapload)	// area handles this
 		power_change()
 
 /obj/machinery/Destroy()
+	GLOB.machines.Remove(src)
 	if(!speed_process)
 		STOP_MACHINE_PROCESSING(src)
 	else
 		STOP_PROCESSING(SSfastprocess, src)
-	global.machines -= src
 	if(component_parts)
 		for(var/atom/A in component_parts)
 			if(A.loc == src) // If the components are inside the machine, delete them.
@@ -168,7 +172,7 @@
 				qdel(A)
 	return ..()
 
-/obj/machinery/process(delta_time)//If you dont use process or power why are you here
+/obj/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL
 
 /obj/machinery/emp_act(severity)

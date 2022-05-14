@@ -227,7 +227,7 @@
 	. = ..()
 
 	if(autolink)
-		for(var/obj/machinery/magnetic_module/M in machines)
+		for(var/obj/machinery/magnetic_module/M in GLOB.machines)
 			if(M.freq == frequency && M.code == code)
 				magnets.Add(M)
 
@@ -243,7 +243,7 @@
 
 /obj/machinery/magnetic_controller/process(delta_time)
 	if(magnets.len == 0 && autolink)
-		for(var/obj/machinery/magnetic_module/M in machines)
+		for(var/obj/machinery/magnetic_module/M in GLOB.machines)
 			if(M.freq == frequency && M.code == code)
 				magnets.Add(M)
 

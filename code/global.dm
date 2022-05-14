@@ -6,7 +6,6 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null
-var/global/list/machines                 = list()	// ALL Machines, wether processing or not.
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
 var/global/list/processing_power_items   = list()	// TODO - Move into SSmachines
 var/global/list/active_diseases          = list()

@@ -167,7 +167,7 @@
 // Parameters: None
 // Description: Helper proc to get a reference to an Exonet node.
 /proc/get_exonet_node(atom/host)
-	for(var/obj/machinery/exonet_node/E in machines)
+	for(var/obj/machinery/exonet_node/E in GLOB.machines)
 		if(E.on && (!host || can_telecomm(host, E)))
 			return E
 

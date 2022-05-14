@@ -136,7 +136,7 @@ Frequency:
 		to_chat(user, "<span class='notice'>\The [src] is malfunctioning.</span>")
 		return
 	var/list/L = list(  )
-	for(var/obj/machinery/tele_pad/R in machines)
+	for(var/obj/machinery/tele_pad/R in GLOB.machines)
 		var/obj/machinery/computer/teleporter/com
 		var/obj/machinery/tele_projector/station
 		for(var/direction in GLOB.cardinal)

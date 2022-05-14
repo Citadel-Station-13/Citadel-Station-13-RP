@@ -6,9 +6,9 @@
 
 //! ## /atom Signals.
 /// From base of atom/proc/Initialize(): sent any time a new atom is created in this atom
-////#define COMSIG_ATOM_INITIALIZED_ON "atom_initialized_on"
+#define COMSIG_ATOM_INITIALIZED_ON "atom_initialized_on"
 /// From SSatoms InitAtom - Only if the  atom was not deleted or failed initialization
-////#define COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE "atom_init_success"
+#define COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE "atom_init_success"
 /// From base of atom/examine(): (/mob, list/examine_text)
 #define COMSIG_PARENT_EXAMINE "atom_examine"
 /// From base of atom/get_examine_name(): (/mob, list/overrides)

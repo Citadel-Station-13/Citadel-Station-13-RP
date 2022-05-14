@@ -92,7 +92,7 @@
 	var/specialfunctions = 1
 
 /obj/machinery/button/remote/airlock/trigger()
-	for(var/obj/machinery/door/airlock/D in machines)
+	for(var/obj/machinery/door/airlock/D in GLOB.machines)
 		if(D.id_tag == id)
 			if(specialfunctions & OPEN)
 				if(D.density)
@@ -137,7 +137,7 @@
 	desc = "It controls blast doors, remotely."
 
 /obj/machinery/button/remote/blast_door/trigger()
-	for(var/obj/machinery/door/blast/M in machines)
+	for(var/obj/machinery/door/blast/M in GLOB.machines)
 		if(M.id == id)
 			if(M.density)
 				spawn(0)
@@ -156,7 +156,7 @@
 	desc = "It controls emitters, remotely."
 
 /obj/machinery/button/remote/emitter/trigger(mob/user)
-	for(var/obj/machinery/power/emitter/E in machines)
+	for(var/obj/machinery/power/emitter/E in GLOB.machines)
 		if(E.id == id)
 			spawn(0)
 				E.activate(user)
@@ -175,7 +175,7 @@
 	active = TRUE
 	update_icon()
 
-	for(var/obj/machinery/door/blast/M in machines)
+	for(var/obj/machinery/door/blast/M in GLOB.machines)
 		if(M.id == id)
 			spawn(0)
 				M.open()
@@ -183,13 +183,13 @@
 
 	sleep(20)
 
-	for(var/obj/machinery/mass_driver/M in machines)
+	for(var/obj/machinery/mass_driver/M in GLOB.machines)
 		if(M.id == id)
 			M.drive()
 
 	sleep(50)
 
-	for(var/obj/machinery/door/blast/M in machines)
+	for(var/obj/machinery/door/blast/M in GLOB.machines)
 		if(M.id == id)
 			spawn(0)
 				M.close()

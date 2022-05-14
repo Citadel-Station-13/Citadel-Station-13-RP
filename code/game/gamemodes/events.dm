@@ -9,7 +9,7 @@ var/hadevent    = 0
 
 /proc/alien_infestation(var/spawncount = 1) // -- TLE
 	var/list/vents = list()
-	for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in machines)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in GLOB.machines)
 		if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
 			if(temp_vent.network.normal_members.len > 50) // Stops Aliens getting stuck in small networks. See: Security, Virology
 				vents += temp_vent
@@ -35,7 +35,7 @@ var/hadevent    = 0
 /proc/high_radiation_event()
 
 /* // Haha, this is way too laggy. I'll keep the prison break though.
-	for(var/obj/machinery/light/L in machines)
+	for(var/obj/machinery/light/L in GLOB.machines)
 		if(isNotStationLevel(L.z)) continue
 		L.flicker(50)
 
@@ -246,7 +246,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 					M.add_ion_law("THE STATION IS [who2pref] [who2]")
 /* //VOREStation Edit
 	if(botEmagChance)
-		for(var/mob/living/bot/bot in machines)
+		for(var/mob/living/bot/bot in GLOB.machines)
 			if(prob(botEmagChance))
 				bot.emag_act(1)
 */ //VOREStation Edit
@@ -275,7 +275,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 		to_chat(world, "Finished processing SMES. Processed: [smesnum]")
 	spawn(0)
 		to_chat(world, "Started processing AIRLOCKS")
-		for (var/obj/machinery/door/airlock/D in machines)
+		for (var/obj/machinery/door/airlock/D in GLOB.machines)
 			if(D.z in station_levels)
 				//if(length(D.req_access) > 0 && !(12 in D.req_access)) //not counting general access and maintenance airlocks
 				airlocknum++
@@ -284,7 +284,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 		to_chat(world, "Finished processing AIRLOCKS. Processed: [airlocknum]")
 	spawn(0)
 		to_chat(world, "Started processing FIREDOORS")
-		for (var/obj/machinery/door/firedoor/D in machines)
+		for (var/obj/machinery/door/firedoor/D in GLOB.machines)
 			if(D.z in station_levels)
 				firedoornum++;
 				spawn(0)

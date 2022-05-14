@@ -63,7 +63,7 @@ In short:
 		if(!T.holy && prob(1))
 			new /obj/effect/gateway/active/cult(T)
 
-	for (var/obj/machinery/firealarm/alm in machines)
+	for (var/obj/machinery/firealarm/alm in GLOB.machines)
 		if (!(alm.machine_stat & BROKEN))
 			alm.ex_act(2)
 

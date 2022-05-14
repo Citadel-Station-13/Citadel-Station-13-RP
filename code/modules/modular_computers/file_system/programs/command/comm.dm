@@ -305,7 +305,7 @@ proc/post_comm_message(var/message_title, var/message_text)
 		l.Add(message)
 
 	//Old console support
-	for (var/obj/machinery/computer/communications/comm in machines)
+	for (var/obj/machinery/computer/communications/comm in GLOB.machines)
 		if (!(comm.machine_stat & (BROKEN | NOPOWER)) && comm.prints_intercept)
 			var/obj/item/paper/intercept = new /obj/item/paper( comm.loc )
 			intercept.name = message_title
