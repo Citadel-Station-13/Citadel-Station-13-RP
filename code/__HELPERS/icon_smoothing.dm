@@ -162,11 +162,15 @@ DEFINE_BITFIELD(smoothing_junction, list(
 			corners_cardinal_smooth(calculate_adjacencies())
 	else if(smoothing_flags & SMOOTH_BITMASK)
 		bitmask_smooth()
+	else if(smoothing_flags & SMOOTH_CUSTOM)
+		custom_smooth(calculate_adjacencies())		// citrp snowflake smoothing for turfs
 	else
 		CRASH("smooth_icon called for [src] with smoothing_flags == [smoothing_flags]")
 	SEND_SIGNAL(src, COMSIG_ATOM_SMOOTHED_ICON)
 	update_appearance(~UPDATE_SMOOTHING)
 
+/atom/proc/custom_smooth()
+	CRASH("based custom_smooth called on atom")
 
 /atom/proc/corners_diagonal_smooth(adjacencies)
 	switch(adjacencies)
@@ -399,14 +403,14 @@ DEFINE_BITFIELD(smoothing_junction, list(
 	var/list/away_turfs = block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel))
 	for(var/V in away_turfs)
 		var/turf/T = V
-		if(T.smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		if(IS_SMOOTH(T))
 			if(now)
 				T.smooth_icon()
 			else
 				QUEUE_SMOOTH(T)
 		for(var/R in T)
 			var/atom/A = R
-			if(A.smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+			if(IS_SMOOTH(A))
 				if(now)
 					A.smooth_icon()
 				else

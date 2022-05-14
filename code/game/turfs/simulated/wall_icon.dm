@@ -35,7 +35,10 @@
 		girder_material = newgmaterial
 	update_material()
 
-/turf/simulated/wall/update_icon()
+/turf/simulated/wall/update_overlays()
+	. = ..()
+	cut_overlays()
+
 	if(!material)
 		return
 
@@ -83,7 +86,6 @@
 			overlay = damage_overlays.len
 
 		add_overlay(damage_overlays[overlay])
-	return
 
 /turf/simulated/wall/proc/generate_overlays()
 	var/alpha_inc = 256 / damage_overlays.len
