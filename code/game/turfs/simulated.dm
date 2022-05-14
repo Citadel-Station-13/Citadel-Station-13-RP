@@ -17,6 +17,13 @@
 	var/dirt = 0
 	var/special_temperature //Used for Lava HE-Pipe interaction
 
+	// If greater than 0, this turf will apply edge overlays on top of other turfs cardinally adjacent to it, if those adjacent turfs are of a different icon_state,
+	// and if those adjacent turfs have a lower edge_blending_priority.
+	// this is on /simulated even though only floors give borders because floors can render onto other simulated tiles like openspace.
+	var/edge_blending_priority = 0
+	/// edge icon state, overrides icon_state if set
+	var/edge_icon_state
+
 /turf/simulated/Initialize(mapload)
 	. = ..()
 	levelupdate()

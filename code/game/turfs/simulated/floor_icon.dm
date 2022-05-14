@@ -103,7 +103,7 @@ var/list/flooring_cache = list()
 	if(!edge_blending_priority)
 		return		// not us
 	for(var/d in GLOB.cardinal)
-		var/turf/simulated/floor/F = get_step(src, d)
+		var/turf/simulated/F = get_step(src, d)
 		if(!istype(F))
 			continue
 		// check that their priority is lower than ours, and we don't have the same icon state
@@ -113,7 +113,7 @@ var/list/flooring_cache = list()
 
 /proc/generate_border_cache_for(state, dir)
 	// make it
-	var/image/I = image(icon = 'icons/turf/oudoors_edge.dmi', icon_State = "[F.icon_state || F.edge_icon_state]-edge", dir = turn(d, 180), layer = ABOVE_TURF_LAYER)
+	var/image/I = image(icon = 'icons/turf/oudoors_edge.dmi', icon_state = state, dir = turn(dir, 180), layer = ABOVE_TURF_LAYER)
 	I.plane = TURF_PLANE
 	switch(dir)
 		if(NORTH)
