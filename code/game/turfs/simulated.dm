@@ -28,10 +28,12 @@
 	PROFILE_SET
 	. = ..()
 	PROFILE_TICK
-	levelupdate()
+	if(mapload)
+		levelupdate()
 	PROFILE_TICK
 	// HOOK FOR MOB/FREELOOK SYSTEM
 	updateVisibility(src)
+	#warn above
 	PROFILE_TICK
 
 // This is not great.

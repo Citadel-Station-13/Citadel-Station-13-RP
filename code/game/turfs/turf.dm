@@ -81,12 +81,10 @@
 	flags |= INITIALIZED
 
 	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.Cut()
-
+	vis_contents.len = 0
 	PROFILE_TICK
 
 	assemble_baseturfs()
-
 	PROFILE_TICK
 
 	//atom color stuff
@@ -97,12 +95,10 @@
 	if (canSmoothWith)
 		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
 */
-
 	PROFILE_TICK
 
 	for(var/atom/movable/AM in src)
 		Entered(AM)
-
 	PROFILE_TICK
 
 	var/area/A = loc
@@ -111,7 +107,6 @@
 
 	if (light_power && light_range)
 		update_light()
-
 	PROFILE_TICK
 
 	if (opacity)
@@ -120,11 +115,6 @@
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
-
-	PROFILE_TICK
-
-	ComponentInitialize()
-
 	PROFILE_TICK
 
 	return INITIALIZE_HINT_NORMAL

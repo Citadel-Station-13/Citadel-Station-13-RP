@@ -92,25 +92,21 @@ var/list/flooring_cache = list()
 			icon = 'icons/turf/flooring/plating.dmi'
 			icon_state = "dmg[rand(1,4)]"
 		PROFILE_TICK
-
 	PROFILE_TICK
 
 	// Re-apply floor decals
 	if(LAZYLEN(decals))
 		add_overlay(decals)
-
 	PROFILE_TICK
 
 	// Show 'ceilingless' overlay.
 	var/turf/above = Above(src)
 	if(isopenturf(above) && !istype(src, /turf/simulated/floor/outdoors)) // This won't apply to outdoor turfs since its assumed they don't have a ceiling anyways.
 		add_overlay(GLOB.no_ceiling_image)
-
 	PROFILE_TICK
 
 	// ..() has to be last to prevent trampling managed overlays
 	. = ..()
-
 	PROFILE_TICK
 
 /**

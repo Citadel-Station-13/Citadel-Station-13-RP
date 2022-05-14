@@ -41,7 +41,7 @@
 	if(!floortype && initial_flooring)
 		floortype = initial_flooring
 	if(floortype)
-		set_flooring(get_flooring_data(floortype), mapload)
+		set_flooring(get_flooring_data(floortype), TRUE)
 	else
 		footstep_sounds = base_footstep_sounds
 	PROFILE_TICK
@@ -77,7 +77,7 @@
 		else
 			make_indoors()
 
-/turf/simulated/floor/proc/set_flooring(decl/flooring/newflooring, mapload)
+/turf/simulated/floor/proc/set_flooring(decl/flooring/newflooring, init)
 	PROFILE_SET
 	make_plating(null, TRUE, TRUE)
 	PROFILE_TICK
@@ -90,9 +90,10 @@
 	decals = overfloor_decals
 	// VOREStation Edit End
 	PROFILE_TICK
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
-	levelupdate()
+	if(!init)
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+		levelupdate()
 	PROFILE_TICK
 
 //This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
