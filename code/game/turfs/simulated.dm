@@ -32,8 +32,6 @@
 		levelupdate()
 	PROFILE_TICK
 	// HOOK FOR MOB/FREELOOK SYSTEM
-	updateVisibility(src)
-	#warn above
 	PROFILE_TICK
 
 // This is not great.

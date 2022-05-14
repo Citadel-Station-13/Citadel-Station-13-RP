@@ -40,7 +40,6 @@
 			smooshTetherHolomaps(smoosh_list)
 
 	holomaps_initialized = TRUE
-	admin_notice("<span class='notice'>Holomaps initialized in [round(0.1*(world.timeofday-start_time),0.1)] seconds.</span>", R_DEBUG)
 
 	// TODO - Check - They had a delayed init perhaps?
 	for (var/obj/machinery/station_map/S in station_holomaps)

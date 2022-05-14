@@ -12,10 +12,6 @@
 /turf/drain_power()
 	return -1
 
-/turf/simulated/Destroy()
-	updateVisibility(src)
-	return ..()
-
 // STRUCTURES
 
 /obj/structure/Destroy()
@@ -34,7 +30,8 @@
 
 /obj/effect/Initialize(mapload)
 	. = ..()
-	updateVisibility(src)
+	if(!mapload)
+		updateVisibility(src)
 
 // DOORS
 

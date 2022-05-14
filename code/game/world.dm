@@ -18,6 +18,7 @@ GLOBAL_LIST(topic_status_cache)
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
 /world/New()
+	LINE_PROFILE_START
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
 		call(debug_server, "auxtools_init")()
@@ -422,7 +423,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 		. += "[GLOB.using_map.station_short], "
 
 	. += "[get_security_level()] alert, "
-	
+
 	. += "[GLOB.clients.len] players"
 
 	status = .
