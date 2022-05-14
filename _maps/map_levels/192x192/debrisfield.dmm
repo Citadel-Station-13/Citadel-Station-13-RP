@@ -19,6 +19,10 @@
 	},
 /turf/simulated/floor/tiled/airless,
 /area/space/debrisfield/explored)
+"gk" = (
+/obj/effect/shuttle_landmark/automatic,
+/turf/space,
+/area/space/debrisfield/explored)
 "gF" = (
 /obj/machinery/computer/ship/sensors,
 /turf/simulated/floor/carpet/oracarpet,
@@ -208,8 +212,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/space/debrisfield/explored)
 "TP" = (
-/obj/effect/shuttle_landmark/automatic,
-/turf/space,
+/turf/space/basic,
 /area/space/debrisfield/explored)
 "Xj" = (
 /obj/effect/overmap/visitable/sector/debrisfield,
@@ -3122,7 +3125,7 @@ Pa
 Pa
 Pa
 Pa
-Pa
+gk
 Pa
 Pa
 Pa
@@ -4857,7 +4860,7 @@ YI
 Pa
 Pa
 Pa
-Pa
+gk
 Pa
 Pa
 Pa
@@ -32166,7 +32169,7 @@ Pa
 Pa
 Pa
 Pa
-Pa
+gk
 Pa
 Pa
 Pa
@@ -33127,7 +33130,7 @@ Pa
 Pa
 Pa
 Pa
-TP
+Pa
 Pa
 Pa
 Pa
@@ -33581,7 +33584,7 @@ Pa
 Pa
 Pa
 Pa
-Pa
+gk
 Pa
 Pa
 Pa
@@ -33797,9 +33800,9 @@ Pa
 Pa
 Pa
 Pa
+gk
 Pa
-Pa
-Pa
+TP
 Pa
 Pa
 Pa
@@ -34480,6 +34483,7 @@ Pa
 Pa
 Pa
 Pa
+gk
 Pa
 Pa
 Pa
@@ -34498,7 +34502,6 @@ Pa
 Pa
 Pa
 Pa
-Pa
 YI
 YI
 YI
@@ -34541,7 +34544,7 @@ Pa
 Pa
 Pa
 Pa
-TP
+Pa
 Pa
 Pa
 Pa
@@ -35316,7 +35319,7 @@ YI
 Pa
 Pa
 Pa
-Pa
+gk
 Pa
 Pa
 Pa
@@ -35339,6 +35342,7 @@ Pa
 Pa
 Pa
 Pa
+gk
 Pa
 Pa
 Pa
@@ -35350,7 +35354,6 @@ Pa
 Pa
 Pa
 Pa
-TP
 Pa
 Pa
 Pa

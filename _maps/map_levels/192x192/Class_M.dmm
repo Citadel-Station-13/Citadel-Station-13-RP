@@ -2325,12 +2325,6 @@
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/outdoors/dirt/classm,
 /area/class_m/outside)
-"ZI" = (
-/obj/effect/shuttle_landmark/automatic{
-	docking_controller = "gaia_1"
-	},
-/turf/simulated/floor/tiled/classm/outdoors,
-/area/class_m/outside)
 "ZM" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/outdoors/grass/classm,
@@ -8427,7 +8421,7 @@ tF
 tF
 tF
 tF
-tF
+yX
 tF
 tF
 tF
@@ -34706,7 +34700,7 @@ oT
 oT
 oT
 oT
-oT
+HP
 oT
 oT
 oT
@@ -35240,7 +35234,7 @@ oT
 oT
 oT
 oT
-HP
+oT
 oT
 oT
 oT
@@ -35443,7 +35437,7 @@ oT
 oT
 oT
 oT
-oT
+HP
 oT
 oT
 oT
@@ -35468,7 +35462,7 @@ oT
 oT
 oT
 oT
-ZI
+oT
 oT
 oT
 oT
@@ -36828,7 +36822,7 @@ oT
 oT
 oT
 oT
-oT
+HP
 oT
 oT
 oT
@@ -36985,7 +36979,7 @@ oT
 oT
 oT
 oT
-oT
+HP
 oT
 oT
 oT

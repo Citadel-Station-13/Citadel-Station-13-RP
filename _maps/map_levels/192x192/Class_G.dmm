@@ -40,6 +40,12 @@
 /obj/effect/overmap/visitable/sector/mining_planet,
 /turf/unsimulated/mineral/triumph,
 /area/class_g/explored)
+"E" = (
+/obj/effect/shuttle_landmark/automatic{
+	docking_controller = "airless"
+	},
+/turf/simulated/mineral/floor/ignore_cavegen/classg,
+/area/class_g/explored)
 "H" = (
 /turf/simulated/mineral/floor/ignore_cavegen/classg,
 /area/class_g/explored)
@@ -3335,7 +3341,7 @@ H
 H
 H
 H
-H
+E
 H
 H
 H
@@ -3521,7 +3527,7 @@ H
 H
 H
 H
-b
+H
 H
 H
 H
@@ -4683,7 +4689,7 @@ q
 q
 H
 H
-H
+b
 H
 H
 H
@@ -5689,16 +5695,16 @@ H
 H
 H
 H
+H
+H
+H
+H
+H
+H
+H
+H
+H
 b
-H
-H
-H
-H
-H
-H
-H
-H
-H
 H
 H
 H
@@ -7046,7 +7052,7 @@ H
 H
 H
 H
-H
+b
 H
 H
 H
@@ -27566,7 +27572,7 @@ H
 H
 H
 H
-H
+E
 H
 H
 H
@@ -33628,7 +33634,7 @@ H
 H
 H
 H
-H
+E
 H
 H
 H
