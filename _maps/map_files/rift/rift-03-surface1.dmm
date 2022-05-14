@@ -19958,7 +19958,9 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "KJ" = (
-/obj/machinery/power/rtg,
+/obj/machinery/power/rtg{
+	power_gen = 20000
+	},
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"

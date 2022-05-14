@@ -3073,6 +3073,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/down/supply{
 	dir = 4
 	},
+/obj/effect/ceiling,
 /turf/simulated/open/lythios43c,
 /area/rift/trade_shop/landing_pad)
 "fp" = (
@@ -8901,6 +8902,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "qs" = (
+/obj/effect/ceiling,
 /turf/simulated/open/lythios43c,
 /area/rift/trade_shop/landing_pad)
 "qt" = (
