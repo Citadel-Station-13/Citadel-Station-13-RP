@@ -90,7 +90,6 @@ turf/simulated/mineral/floor/light_corner
 	can_build_into_floor = TRUE
 	SSplanets.addTurf(src)
 	SSair.mark_for_update(src)
-	update_general()
 	QUEUE_SMOOTH_NEIGHBORS(src)
 
 /turf/simulated/mineral/proc/make_wall()
@@ -104,7 +103,6 @@ turf/simulated/mineral/floor/light_corner
 	can_build_into_floor = FALSE
 	SSplanets.removeTurf(src)
 	SSair.mark_for_update(src)
-	update_general()
 	QUEUE_SMOOTH_NEIGHBORS(src)
 
 /turf/simulated/mineral/Entered(atom/movable/M as mob|obj)
@@ -155,13 +153,13 @@ turf/simulated/mineral/floor/light_corner
 		icon = 'icons/turf/walls.dmi'
 		icon_state = rock_icon_state
 
-		if(smoothing_junction & NORTH_JUNCTION)
+		if(!(smoothing_junction & NORTH_JUNCTION))
 			add_overlay(get_cached_border(rock_side_icon_state, NORTH, icon, rock_side_icon_state))
-		if(smoothing_junction & SOUTH_JUNCTION)
+		if(!(smoothing_junction & SOUTH_JUNCTION))
 			add_overlay(get_cached_border(rock_side_icon_state, SOUTH, icon, rock_side_icon_state))
-		if(smoothing_junction & EAST_JUNCTION)
+		if(!(smoothing_junction & EAST_JUNCTION))
 			add_overlay(get_cached_border(rock_side_icon_state, EAST, icon, rock_side_icon_state))
-		if(smoothing_junction & WEST_JUNCTION)
+		if(!(smoothing_junction & WEST_JUNCTION))
 			add_overlay(get_cached_border(rock_side_icon_state, WEST, icon, rock_side_icon_state))
 
 		//Apply overlays if we should have borders
@@ -191,8 +189,8 @@ turf/simulated/mineral/floor/light_corner
 
 GLOBAL_LIST_EMPTY(mining_overlay_cache)
 
-/turf/simulated/mineral/proc/get_cached_border(cache_id, direction, icon_file, icon_state)
-	cache_id = "[cached_id]_[direction]"
+/proc/get_cached_rock_border(cache_id, direction, icon_file, icon_state)
+	cache_id = "[cache_id]_[direction]"
 	//Cache miss
 	if(!GLOB.mining_overlay_cache[cache_id])
 		var/image/new_cached_image = image(icon_state, dir = turn(direction, 180), layer = ABOVE_TURF_LAYER)
