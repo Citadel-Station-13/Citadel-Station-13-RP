@@ -17,7 +17,6 @@ GLOBAL_LIST_EMPTY(turf_edge_cache)
 var/list/flooring_cache = list()
 
 /turf/simulated/floor/update_icon()
-	. = ..()
 	cut_overlays()
 
 	if(flooring)
@@ -90,6 +89,9 @@ var/list/flooring_cache = list()
 	var/turf/above = Above(src)
 	if(isopenturf(above) && !istype(src, /turf/simulated/floor/outdoors)) // This won't apply to outdoor turfs since its assumed they don't have a ceiling anyways.
 		add_overlay(GLOB.no_ceiling_image)
+
+	// ..() has to be last to prevent trampling managed overlays
+	return ..()
 
 /**
  * welcome to the less modular but more sensical and efficient way to do icon edges

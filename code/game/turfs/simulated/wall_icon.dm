@@ -32,11 +32,9 @@
 	update_icon()
 
 /turf/simulated/wall/update_overlays()
-	. = ..()
-
 	// materrialless walls don't use this system.
 	if(!material)
-		return
+		return ..()
 
 	cut_overlays()
 
@@ -48,7 +46,7 @@
 		I = image('icons/turf/wall_masks.dmi', "[material.icon_base]fwall_open")
 		I.color = material.icon_colour
 		add_overlay(I)
-		return
+		return ..()
 
 	// modern smoothiing when
 	// sigh
@@ -98,3 +96,6 @@
 			overlay = damage_overlays.len
 
 		add_overlay(damage_overlays[overlay])
+
+	// ..() has to be last to prevent trampling managed overlays
+	return ..()
