@@ -46,7 +46,7 @@
 	girder_material = get_material_by_name(girdertype)
 	if(!isnull(rmaterialtype))
 		reinf_material = get_material_by_name(rmaterialtype)
-	update_material()
+	update_material(TRUE)
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
 
@@ -56,7 +56,6 @@
 	material = get_material_by_name("placeholder")
 	reinf_material = null
 	girder_material = null
-	QUEUE_SMOOTH_NEIGHBORS(src)
 	return ..()
 
 /turf/simulated/wall/process(delta_time)

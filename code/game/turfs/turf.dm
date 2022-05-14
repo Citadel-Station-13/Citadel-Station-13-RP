@@ -74,6 +74,7 @@
  * Doesn't call parent, see [/atom/proc/Initialize]
  */
 /turf/Initialize(mapload)
+	PROFILE_SET
 	SHOULD_CALL_PARENT(FALSE)
 	if(flags & INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
@@ -82,7 +83,11 @@
 	// by default, vis_contents is inherited from the turf that was here before
 	vis_contents.Cut()
 
+	PROFILE_TICK
+
 	assemble_baseturfs()
+
+	PROFILE_TICK
 
 	//atom color stuff
 	if(color)
@@ -93,8 +98,12 @@
 		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
 */
 
+	PROFILE_TICK
+
 	for(var/atom/movable/AM in src)
 		Entered(AM)
+
+	PROFILE_TICK
 
 	var/area/A = loc
 	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
@@ -103,6 +112,8 @@
 	if (light_power && light_range)
 		update_light()
 
+	PROFILE_TICK
+
 	if (opacity)
 		has_opaque_atom = TRUE
 
@@ -110,7 +121,11 @@
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
 
+	PROFILE_TICK
+
 	ComponentInitialize()
+
+	PROFILE_TICK
 
 	return INITIALIZE_HINT_NORMAL
 

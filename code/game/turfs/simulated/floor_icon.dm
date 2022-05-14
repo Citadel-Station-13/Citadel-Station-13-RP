@@ -6,8 +6,11 @@ GLOBAL_DATUM_INIT(no_ceiling_image, /image, generate_no_ceiling_image())
 	return I
 
 /turf/simulated/floor/custom_smooth()
+	PROFILE_SET
 	update_icon()
+	PROFILE_TICK
 	update_border_spillover()
+	PROFILE_TICK
 
 /turf/simulated/floor/calculate_adjacencies()
 	return NONE
@@ -95,6 +98,8 @@ var/list/flooring_cache = list()
 	// Re-apply floor decals
 	if(LAZYLEN(decals))
 		add_overlay(decals)
+
+	PROFILE_TICK
 
 	// Show 'ceilingless' overlay.
 	var/turf/above = Above(src)

@@ -127,9 +127,6 @@ turf/simulated/mineral/floor/light_corner
 			MineralSpread()
 		else
 			UpdateMineral()	// this'll work because we're INITIALIZED
-	if(!mapload)
-		QUEUE_SMOOTH(src)
-		QUEUE_SMOOTH_NEIGHBORS(src)
 
 /* custom smoothing code */
 /turf/simulated/mineral/find_type_in_direction(direction)

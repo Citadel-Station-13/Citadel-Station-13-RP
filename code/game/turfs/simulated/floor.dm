@@ -78,21 +78,27 @@
 			make_indoors()
 
 /turf/simulated/floor/proc/set_flooring(decl/flooring/newflooring, mapload)
+	PROFILE_SET
 	make_plating(null, TRUE, TRUE)
+	PROFILE_TICK
 	flooring = newflooring
 	footstep_sounds = newflooring.footstep_sounds
+	PROFILE_TICK
 	// VOREStation Edit - We are plating switching to flooring, swap out old_decals for decals
 	var/list/overfloor_decals = old_decals
 	old_decals = decals
 	decals = overfloor_decals
 	// VOREStation Edit End
+	PROFILE_TICK
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 	levelupdate()
+	PROFILE_TICK
 
 //This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
 //This proc auto corrects the grass tiles' siding.
 /turf/simulated/floor/proc/make_plating(place_product, defer_icon_update, strip_bare)
+	PROFILE_SET
 	if(!defer_icon_update)
 		name = base_name
 		desc = base_desc
@@ -103,6 +109,8 @@
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 		levelupdate()
+
+	PROFILE_TICK
 
 	if(flooring)
 		// VOREStation Edit - We are flooring switching to plating, swap out old_decals for decals.
@@ -118,6 +126,8 @@
 			set_flooring(get_flooring_data(newtype))
 		else
 			flooring = null
+
+	PROFILE_TICK
 
 	broken = null
 	burnt = null
