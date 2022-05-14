@@ -25,7 +25,6 @@
 
 /// Generates all the holo minimaps, initializing it all nicely, probably.
 /datum/controller/subsystem/holomaps/proc/generateHoloMinimaps()
-	var/start_time = world.timeofday
 	// Build the base map for each z level
 	for (var/z = 1 to world.maxz)
 		holoMiniMaps |= z // hack, todo fix
