@@ -35,7 +35,6 @@
 /turf/simulated/wall/solidrock/Initialize(mapload)
 	. = ..()
 	icon_state = base_state
-	update_icon(1)		// TODO: /tg/ icon smoothing
 
 /turf/simulated/wall/solidrock/attackby()
 	return

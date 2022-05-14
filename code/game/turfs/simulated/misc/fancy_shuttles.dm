@@ -128,7 +128,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 // Trust me, this is WAY faster than the normal wall overlays shenanigans, don't worry about performance
 /turf/simulated/wall/fancy_shuttle/update_icon()
 	if(!damage_overlays[1])
-		generate_overlays()
+		generate_damage_overlays()
 
 	cut_overlays()
 	if(fancy_shuttle_tag) // after a shuttle jump it won't be set anymore, but the shuttle jump proc will set our icon and state

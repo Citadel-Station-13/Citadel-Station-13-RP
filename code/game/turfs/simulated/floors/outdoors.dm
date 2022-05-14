@@ -1,12 +1,3 @@
-var/list/turf_edge_cache = list()
-
-/turf/
-	// If greater than 0, this turf will apply edge overlays on top of other turfs cardinally adjacent to it, if those adjacent turfs are of a different icon_state,
-	// and if those adjacent turfs have a lower edge_blending_priority.
-	var/edge_blending_priority = 0
-	// Outdoors var determines if the game should consider the turf to be 'outdoors', which controls certain things such as weather effects.
-	var/outdoors = FALSE
-
 /turf/simulated/floor/outdoors
 	name = "generic ground"
 	desc = "Rather boring."
@@ -19,7 +10,7 @@ var/list/turf_edge_cache = list()
 	baseturfs = /turf/simulated/floor/outdoors/rocks
 
 /turf/simulated/floor/outdoors/Initialize(mapload)
-	update_icon()
+	QUEUE_SMOOTH(src)
 	. = ..()
 
 /turf/simulated/floor/Initialize(mapload)

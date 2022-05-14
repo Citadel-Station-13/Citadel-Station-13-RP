@@ -6,10 +6,10 @@
 	var/amt = 16
 	var/alpha_inc = 256 / 16
 	var/list/generated = list()
-	generated.len = mat
+	generated.len = amt
 	. = generated
 	for(var/i in 1 to 16)
-		var/image/I = imiage(icon = 'icons/turf/wall/damage_masks.dmi')
+		var/image/I = image(icon = 'icons/turf/wall/damage_masks.dmi', icon_state = "overlay_damage")
 		I.blend_mode = BLEND_MULTIPLY
 		I.alpha = (i * alpha_inc) - 1
 		damage_overlays[i] = I

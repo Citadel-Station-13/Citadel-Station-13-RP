@@ -3,6 +3,10 @@
 	desc = "Unfinished flooring."
 	icon = 'icons/turf/flooring/plating_vr.dmi'
 	icon_state = "plating"
+	smoothing_flags = SMOOTH_CUSTOM
+	base_icon_state = "plating"
+	thermal_conductivity = 0.040
+	heat_capacity = 10000
 
 	// Damage to flooring.
 	var/broken
@@ -12,7 +16,6 @@
 	var/base_name = "plating"
 	var/base_desc = "The naked hull."
 	var/base_icon = 'icons/turf/flooring/plating_vr.dmi'
-	base_icon_state = "plating"
 	var/static/list/base_footstep_sounds = list("human" = list(
 		'sound/effects/footstep/plating1.ogg',
 		'sound/effects/footstep/plating2.ogg',
@@ -28,8 +31,13 @@
 	var/decl/flooring/flooring
 	var/mineral = MAT_STEEL
 
-	thermal_conductivity = 0.040
-	heat_capacity = 10000
+	// If greater than 0, this turf will apply edge overlays on top of other turfs cardinally adjacent to it, if those adjacent turfs are of a different icon_state,
+	// and if those adjacent turfs have a lower edge_blending_priority.
+	var/edge_blending_priority = 0
+	/// edge icon state, overrides icon_state if set
+	var/edge_icon_state
+	// Outdoors var determines if the game should consider the turf to be 'outdoors', which controls certain things such as weather effects.
+	var/outdoors = FALSE
 
 /turf/simulated/floor/is_plating()
 	return !flooring
@@ -56,7 +64,7 @@
 	old_decals = decals
 	decals = overfloor_decals
 	// VOREStation Edit End
-	update_icon(1)
+	QUEUE_SMOOTH_NEIGHBORS(src)
 	levelupdate()
 
 //This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
@@ -92,7 +100,7 @@
 	levelupdate()
 
 	if(!defer_icon_update)
-		update_icon(1)
+		QUEUE_SMOOTH_NEIGHBORS(src)
 
 /turf/simulated/floor/levelupdate()
 	for(var/obj/O in src)

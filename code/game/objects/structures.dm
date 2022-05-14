@@ -7,7 +7,6 @@
 	var/breakable
 	var/parts
 	var/list/climbers = list()
-	var/block_turf_edges = FALSE // If true, turf edge icons will not be made on the turf this occupies.
 
 	var/list/connections
 	var/list/other_connections
