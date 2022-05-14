@@ -511,7 +511,18 @@ var/list/table_icon_cache = list()
 /atom/proc/get_corner_state_using_junctions(corner)
 	// north, south, east, west, in that order
 	// which translates to northwest, southeast, northeast, southwest in that order
+	// honestly fuck you, precompute.
+	// cache for sanic speed
+	var/smoothing_junction = src.smoothing_junction
 	switch(corner)
+		if(1)
+			return ((smoothing_junction & NORTHWEST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & NORTH_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & WEST_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
+		if(2)
+			return ((smoothing_junction & SOUTHEAST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & SOUTH_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & EAST_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
+		if(3)
+			return ((smoothing_junction & NORTHEAST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & EAST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & NORTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
+		if(4)
+			return ((smoothing_junction & SOUTHWEST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & WEST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & SOUTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
 
 #undef CORNER_NONE
 #undef CORNER_COUNTERCLOCKWISE

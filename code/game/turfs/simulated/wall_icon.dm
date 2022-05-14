@@ -55,31 +55,37 @@
 	// i need to learn how to use the icon cutter
 	// anyways, 1 to 4 means NORTH SOUTH EAST WEST
 	var/dir
-	for(var/i in 0 to 3)
-		dir = (1 << i)
-
-
-	for(var/i in 1 to 4)
-		I = image('icons/turf/wall_masks.dmi', "[material.icon_base][wall_connections[i]]", dir = 1<<(i-1))
-		I.color = material.icon_colour
-		add_overlay(I)
-
+	var/state
 	if(reinf_material)
+		// normal and reinf
 		if(construction_stage != null && construction_stage < 6)
 			I = image('icons/turf/wall_masks.dmi', "reinf_construct-[construction_stage]")
 			I.color = reinf_material.icon_colour
 			add_overlay(I)
-		else
-			if("[reinf_material.icon_reinf]0" in icon_states('icons/turf/wall_masks.dmi'))
-				// Directional icon
-				for(var/i = 1 to 4)
-					I = image('icons/turf/wall_masks.dmi', "[reinf_material.icon_reinf][wall_connections[i]]", dir = 1<<(i-1))
-					I.color = reinf_material.icon_colour
-					add_overlay(I)
-			else
-				I = image('icons/turf/wall_masks.dmi', reinf_material.icon_reinf)
-				I.color = reinf_material.icon_colour
+		if(reinf_material.icon_reinf_directionals)
+			for(var/i in 0 to 3)
+				state = get_corner_state_using_junctions(i)
+				dir = (1<<i)
+				I = image('icons/turf/wall_masks.dmi', "[material.icon_base][state]", dir = dir)
+				I.color = material.icon_colour
 				add_overlay(I)
+				I = image('icons/turf/wall_masks.dmi', "[reinf_material.icon_reinf][state]", dir = dir)
+				I.color = material.icon_colour
+				add_overlay(I)
+		else
+			for(var/i in 0 to 3)
+				I = image('icons/turf/wall_masks.dmi', "[material.icon_base][get_corner_state_using_junctions(i)]", dir = (1<<i))
+				I.color = material.icon_colour
+				add_overlay(I)
+		I = image('icons/turf/wall_masks.dmi', reinf_material.icon_reinf)
+		I.color = reinf_material.icon_colour
+		add_overlay(I)
+	else
+		// just normal
+		for(var/i in 0 to 3)
+			I = image('icons/turf/wall_masks.dmi', "[material.icon_base][get_corner_state_using_junctions(i)]", dir = (1<<i))
+			I.color = material.icon_colour
+			add_overlay(I)
 
 	// handle damage overlays
 	if(damage != 0)
