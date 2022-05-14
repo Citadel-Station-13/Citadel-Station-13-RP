@@ -1,7 +1,7 @@
 /**
  * generates damage overlays
  */
-/turf/simulated/wall/proc/generate_damage_overlays()
+/proc/generate_wall_damage_overlays()
 	// arbitrary, hardcoded number for now: 16
 	var/amt = 16
 	var/alpha_inc = 256 / 16
@@ -12,7 +12,7 @@
 		var/image/I = image(icon = 'icons/turf/wall/damage_masks.dmi', icon_state = "overlay_damage")
 		I.blend_mode = BLEND_MULTIPLY
 		I.alpha = (i * alpha_inc) - 1
-		damage_overlays[i] = I
+		generated[i] = I
 
 // funny thing
 // we nowadays hijack tg's smoothing for our own purposes.
@@ -23,9 +23,9 @@
 	if(!material)
 		return NO_ADJ_FOUND
 	var/turf/simulated/wall/T = get_step(src, direction)
-	if(!T || !T.material)
+	if(!T)
 		return NULLTURF_BORDER
-	return (istype(T) && (material.icon_base == T.material.icon_base))? NO_ADJ_FOUND : ADJ_FOUND
+	return (istype(T) && (material.icon_base == T.material?.icon_base))? ADJ_FOUND : NO_ADJ_FOUND
 
 /turf/simulated/wall/custom_smooth(dirs)
 	smoothing_junction = dirs

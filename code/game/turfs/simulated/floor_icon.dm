@@ -113,7 +113,7 @@ var/list/flooring_cache = list()
 
 /proc/generate_border_cache_for(state, dir)
 	// make it
-	var/image/I = image(icon = 'icons/turf/oudoors_edge.dmi', icon_state = state, dir = turn(dir, 180), layer = ABOVE_TURF_LAYER)
+	var/image/I = image(icon = 'icons/turf/outdoors_edge.dmi', icon_state = state, dir = turn(dir, 180), layer = ABOVE_TURF_LAYER)
 	I.plane = TURF_PLANE
 	switch(dir)
 		if(NORTH)
@@ -124,7 +124,7 @@ var/list/flooring_cache = list()
 			I.pixel_x = 32
 		if(WEST)
 			I.pixel_x = -32
-	GLOB.turf_edge_cache[key] = I
+	GLOB.turf_edge_cache["[state]-[dir]"] = I
 	return I
 
 // wip - turf icon stuff needs to be refactored

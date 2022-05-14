@@ -112,12 +112,10 @@
 				if(ADJ_FOUND)
 					. |= SOUTHEAST_JUNCTION
 
-
 /atom/movable/calculate_adjacencies()
 	if(can_be_unanchored && !anchored)
 		return NONE
 	return ..()
-
 
 ///do not use, use QUEUE_SMOOTH(atom)
 /atom/proc/smooth_icon()

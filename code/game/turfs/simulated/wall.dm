@@ -21,7 +21,7 @@
 	var/damage = 0
 	var/damage_overlay = 0
 	/// damage overlays are cached
-	var/static/list/damage_overlays = generate_damage_overlays()
+	var/static/list/damage_overlays = generate_wall_damage_overlays()
 	var/active
 	var/can_open = FALSE
 	var/datum/material/girder_material

@@ -505,6 +505,7 @@ var/list/table_icon_cache = list()
 /**
  * generates corner state for a corner
  * smoothing_junction must be set at this point
+ * corner is 0 to 3 not 1 to 4
  *
  * proc usually used for helping us commit war crimes with custom_smooth().
  */
@@ -515,13 +516,13 @@ var/list/table_icon_cache = list()
 	// cache for sanic speed
 	var/smoothing_junction = src.smoothing_junction
 	switch(corner)
-		if(1)
+		if(0)
 			return ((smoothing_junction & NORTHWEST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & NORTH_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & WEST_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
-		if(2)
+		if(1)
 			return ((smoothing_junction & SOUTHEAST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & SOUTH_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & EAST_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
-		if(3)
+		if(2)
 			return ((smoothing_junction & NORTHEAST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & EAST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & NORTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
-		if(4)
+		if(3)
 			return ((smoothing_junction & SOUTHWEST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & WEST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & SOUTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
 
 #undef CORNER_NONE
