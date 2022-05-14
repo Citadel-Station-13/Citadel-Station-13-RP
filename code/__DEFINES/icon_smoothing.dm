@@ -15,7 +15,7 @@
 #define SMOOTH_CUSTOM			(1<<6)
 
 /// macro for checking if something is smooth
-#define IS_SMOOTH(A)			(A.smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK|SMOOTH_CUSTOM)
+#define IS_SMOOTH(A)			(A.smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK|SMOOTH_CUSTOM))
 
 DEFINE_BITFIELD(smoothing_flags, list(
 	"SMOOTH_CORNERS" = SMOOTH_CORNERS,
@@ -32,6 +32,33 @@ DEFINE_BITFIELD(smoothing_flags, list(
 
 #define QUEUE_SMOOTH_NEIGHBORS(thing_to_queue) for(var/neighbor in orange(1, thing_to_queue)) {var/atom/atom_neighbor = neighbor; QUEUE_SMOOTH(atom_neighbor)}
 
+/* smoothing internals */
+#define NORTH_JUNCTION NORTH //(1<<0)
+#define SOUTH_JUNCTION SOUTH //(1<<1)
+#define EAST_JUNCTION EAST  //(1<<2)
+#define WEST_JUNCTION WEST  //(1<<3)
+#define NORTHEAST_JUNCTION (1<<4)
+#define SOUTHEAST_JUNCTION (1<<5)
+#define SOUTHWEST_JUNCTION (1<<6)
+#define NORTHWEST_JUNCTION (1<<7)
+
+#define NO_ADJ_FOUND 0
+#define ADJ_FOUND 1
+#define NULLTURF_BORDER 2
+
+DEFINE_BITFIELD(smoothing_junction, list(
+	"NORTH_JUNCTION" = NORTH_JUNCTION,
+	"SOUTH_JUNCTION" = SOUTH_JUNCTION,
+	"EAST_JUNCTION" = EAST_JUNCTION,
+	"WEST_JUNCTION" = WEST_JUNCTION,
+	"NORTHEAST_JUNCTION" = NORTHEAST_JUNCTION,
+	"SOUTHEAST_JUNCTION" = SOUTHEAST_JUNCTION,
+	"SOUTHWEST_JUNCTION" = SOUTHWEST_JUNCTION,
+	"NORTHWEST_JUNCTION" = NORTHWEST_JUNCTION,
+))
+
+#define DEFAULT_UNDERLAY_ICON 'icons/turf/floors.dmi'
+#define DEFAULT_UNDERLAY_ICON_STATE "plating"
 
 /**SMOOTHING GROUPS
  * Groups of things to smooth with.

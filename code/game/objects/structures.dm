@@ -223,7 +223,7 @@
 				if(propagate)
 					var/turf/simulated/wall/W = T
 					if(istype(W))
-						W.update_connections(1)
+						QUEUE_SMOOTH(W)
 				if(success)
 					break // breaks inner loop
 		if(!success)

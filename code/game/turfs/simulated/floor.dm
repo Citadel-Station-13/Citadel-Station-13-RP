@@ -3,7 +3,6 @@
 	desc = "Unfinished flooring."
 	icon = 'icons/turf/flooring/plating_vr.dmi'
 	icon_state = "plating"
-	smoothing_flags = CUSTOM_SMOOTH
 
 	// Damage to flooring.
 	var/broken

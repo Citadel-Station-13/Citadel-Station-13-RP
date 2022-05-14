@@ -20,6 +20,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	invisibility = INVISIBILITY_MAXIMUM
+	smoothing_flags = NONE	// don't run default wall/floor behavior
 	alpha = 90 // so you can see it a bit easier on the map if you placed walls properly
 	var/split_file = 'icons/turf/fancy_shuttles/generic.dmi'
 	var/icon/split_icon

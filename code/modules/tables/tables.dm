@@ -502,6 +502,17 @@ var/list/table_icon_cache = list()
 
 	return ret
 
+/**
+ * generates corner state for a corner
+ * smoothing_junction must be set at this point
+ *
+ * proc usually used for helping us commit war crimes with custom_smooth().
+ */
+/atom/proc/get_corner_state_using_junctions(corner)
+	// north, south, east, west, in that order
+	// which translates to northwest, southeast, northeast, southwest in that order
+	switch(corner)
+
 #undef CORNER_NONE
 #undef CORNER_COUNTERCLOCKWISE
 #undef CORNER_DIAGONAL

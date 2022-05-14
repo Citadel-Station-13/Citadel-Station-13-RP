@@ -1,5 +1,6 @@
 /turf/simulated
 	name = "station"
+	smoothing_flags = SMOOTH_CUSTOM
 	var/wet = 0
 	var/image/wet_overlay = null
 
