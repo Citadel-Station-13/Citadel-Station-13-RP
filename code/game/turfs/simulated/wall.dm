@@ -1,3 +1,8 @@
+/**
+ * **Wall.** Our powerful, generic, material wall system.
+ * Surely, *surely*, such a nice, amazing thing wouldn't be entirely shitcode.
+ * Right?
+ */
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
@@ -10,11 +15,13 @@
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 	baseturfs = /turf/simulated/floor/plating
+	smoothing_flags = SMOOTH_CUSTOM
 
 	var/icon/wall_masks = 'icons/turf/wall_masks.dmi'
 	var/damage = 0
 	var/damage_overlay = 0
-	var/global/damage_overlays[16]
+	/// damage overlays are cached
+	var/static/list/damage_overlays = generate_wall_damage_overlays()
 	var/active
 	var/can_open = FALSE
 	var/datum/material/girder_material
@@ -22,8 +29,6 @@
 	var/datum/material/reinf_material
 	var/last_state
 	var/construction_stage
-
-	var/list/wall_connections = list("0", "0", "0", "0")
 
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
@@ -41,7 +46,7 @@
 	girder_material = get_material_by_name(girdertype)
 	if(!isnull(rmaterialtype))
 		reinf_material = get_material_by_name(rmaterialtype)
-	update_material()
+	update_material(TRUE)
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
 
@@ -51,7 +56,6 @@
 	material = get_material_by_name("placeholder")
 	reinf_material = null
 	girder_material = null
-	update_connections(1)
 	return ..()
 
 /turf/simulated/wall/process(delta_time)
@@ -178,8 +182,6 @@
 		dismantle_wall()
 	else
 		update_icon()
-
-	return
 
 /turf/simulated/wall/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)//Doesn't fucking work because walls don't interact with air :(
 	burn(exposed_temperature)

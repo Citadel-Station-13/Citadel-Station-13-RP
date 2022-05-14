@@ -498,14 +498,15 @@
 	..(severity)
 
 
-/obj/machinery/computer/med_data/laptop
-	name = "Medical Laptop"
-	desc = "A cheap laptop."
-	icon_state = "laptop"
-	icon_keyboard = "laptop_key"
-	icon_screen = "medlaptop"
-	throwpass = 1 //VOREStation Edit - Really???
-	density = FALSE			//THIS IS A LAPTOP.	--CITADEL EDIT
+/obj/machinery/computer/med_data/laptop //TODO: Change name to PCU and update mapdata to include replacement computers
+	name = "\improper Medical Laptop"
+	desc = "A personal computer unit. It seems to have only the medical records program installed."
+	icon_screen = "pcu_generic"
+	icon_state = "pcu_med"
+	icon_keyboard = "pcu_key"
+	light_color = "#5284e7"
+	circuit = /obj/item/circuitboard/med_data/pcu
+	density = FALSE
 
 
 #undef FIELD

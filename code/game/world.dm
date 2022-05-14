@@ -422,7 +422,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 		. += "[GLOB.using_map.station_short], "
 
 	. += "[get_security_level()] alert, "
-	
+
 	. += "[GLOB.clients.len] players"
 
 	status = .
