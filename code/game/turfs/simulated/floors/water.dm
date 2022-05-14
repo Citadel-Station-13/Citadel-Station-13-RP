@@ -7,6 +7,7 @@
 	var/water_state = "water_shallow"
 	var/under_state = "rock"
 	edge_blending_priority = -1
+	edge_icon_state = "water_shallow"
 	movement_cost = 4
 	outdoors = TRUE
 
@@ -31,9 +32,6 @@
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
 	var/image/water_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = water_state, layer = WATER_LAYER)
 	add_overlay(water_sprite)
-
-/turf/simulated/floor/water/get_edge_icon_state()
-	return "water_shallow"
 
 /turf/simulated/floor/water/attackby(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_containers/RG = O
@@ -226,9 +224,6 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	var/image/acid_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = acid_state, layer = WATER_LAYER)
 	add_overlay(acid_sprite)
 
-/turf/simulated/floor/water/acid/get_edge_icon_state()
-	return "acid_shallow"
-
 /turf/simulated/floor/water/acid/return_air_for_internal_lifeform(var/mob/living/L)
 	if(L && L.lying)
 		if(L.can_breathe_water()) // For squid.
@@ -339,9 +334,6 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
 	var/image/blood_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = blood_state, layer = WATER_LAYER)
 	add_overlay(blood_sprite)
-
-/turf/simulated/floor/water/blood/get_edge_icon_state()
-	return "acidb_shallow"
 
 /turf/simulated/floor/water/blood/return_air_for_internal_lifeform(var/mob/living/L)
 	if(L && L.lying)

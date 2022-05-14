@@ -151,6 +151,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		lc_bottomleft = old_lc_bottomleft
 		if (old_opacity != opacity || dynamic_lighting != old_dynamic_lighting)
 			reconsider_lights()
+			updateVisibility(src)
 
 		if (dynamic_lighting != old_dynamic_lighting)
 			if (IS_DYNAMIC_LIGHTING(src))
@@ -403,10 +404,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
 	levelupdate()
 	update_vertical_turf_graphics()
-
-/turf/simulated/AfterChange(flags, oldType)
-	..()
-	RemoveLattice()
 
 /turf/proc/RemoveLattice()
 	for(var/obj/structure/lattice/L in src)

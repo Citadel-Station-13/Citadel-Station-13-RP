@@ -1,6 +1,3 @@
-var/list/mining_overlay_cache = list()
-
-
 /**********************Mineral deposits**************************/
 /turf/unsimulated/mineral
 	name = "impassable rock"
@@ -12,7 +9,9 @@ var/list/mining_overlay_cache = list()
 	name = "rock"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "rock"
+	smoothing_flags = SMOOTH_CUSTOM
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
+	var/rock_side_icon_state = "rock_side"
 	var/sand_icon_state = "asteroid"
 	var/rock_icon_state = "rock"
 	var/rock_side_icon_state = "rock_side"
@@ -104,35 +103,30 @@ turf/simulated/mineral/floor/light_corner
 /turf/simulated/mineral/proc/make_floor()
 	if(!density && !opacity)
 		return
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	recalc_atom_opacity()
 	reconsider_lights()
-	blocks_air = 0
+	blocks_air = FALSE
 	can_build_into_floor = TRUE
 	SSplanets.addTurf(src)
-	update_general()
+	SSair.mark_for_update(src)
+	QUEUE_SMOOTH(src)
+	QUEUE_SMOOTH_NEIGHBORS(src)
 
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
 		return
-	density = 1
-	opacity = 1
+	density = TRUE
+	opacity = TRUE
 	recalc_atom_opacity()
 	reconsider_lights()
-	blocks_air = 1
+	blocks_air = TRUE
 	can_build_into_floor = FALSE
 	SSplanets.removeTurf(src)
-	update_general()
-
-/turf/simulated/mineral/proc/update_general()
-	if(!(flags & INITIALIZED))
-		update_icon(TRUE)
-		recalc_atom_opacity()
-	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
-		reconsider_lights()
-		if(air_master)
-			air_master.mark_for_update(src)
+	SSair.mark_for_update(src)
+	QUEUE_SMOOTH(src)
+	QUEUE_SMOOTH_NEIGHBORS(src)
 
 /turf/simulated/mineral/Entered(atom/movable/M as mob|obj)
 	..()
@@ -143,25 +137,6 @@ turf/simulated/mineral/floor/light_corner
 				O.autoload(R)
 				return
 
-/turf/simulated/mineral/proc/get_cached_border(var/cache_id, var/direction, var/icon_file, var/icon_state, var/offset = 32)
-	//Cache miss
-	if(!mining_overlay_cache["[cache_id]_[direction]"])
-		var/image/new_cached_image = image(icon_state, dir = direction, layer = ABOVE_TURF_LAYER)
-		switch(direction)
-			if(NORTH)
-				new_cached_image.pixel_y = offset
-			if(SOUTH)
-				new_cached_image.pixel_y = -offset
-			if(EAST)
-				new_cached_image.pixel_x = offset
-			if(WEST)
-				new_cached_image.pixel_x = -offset
-		mining_overlay_cache["[cache_id]_[direction]"] = new_cached_image
-		return new_cached_image
-
-	//Cache hit
-	return mining_overlay_cache["[cache_id]_[direction]"]
-
 /turf/simulated/mineral/Initialize(mapload)
 	. = ..()
 	if(prob(20))
@@ -170,66 +145,86 @@ turf/simulated/mineral/floor/light_corner
 		dir = pick(GLOB.alldirs)
 	if(mineral)
 		if(density)
-			MineralSpread(mapload)
+			MineralSpread()
 		else
-			UpdateMineral(!mapload)
-	else
-		update_icon(!mapload)
+			UpdateMineral()	// this'll work because we're INITIALIZED
 
-/turf/simulated/mineral/update_icon(var/update_neighbors)
+/* custom smoothing code */
+/turf/simulated/mineral/find_type_in_direction(direction)
+	var/turf/T = get_step(src, direction)
+	if(!T)
+		return NULLTURF_BORDER
+	return T.density? ADJ_FOUND : NO_ADJ_FOUND
 
+/turf/simulated/mineral/custom_smooth(dirs)
+	smoothing_junction = dirs
+	update_icon()
+
+/turf/simulated/mineral/update_icon()
 	cut_overlays()
 
 	//We are a wall (why does this system work like this??)
+	// todo: refactor this shitheap because this is pants on fucking head awful
 	if(density)
 		if(mineral)
 			name = "[mineral.display_name] deposit"
-//		else
-//			name = "rock" why reset the name? 
+		else
+			name = "rock"
 
 		icon = 'icons/turf/walls.dmi'
 		icon_state = rock_icon_state
 
-		//Apply overlays if we should have borders
-		for(var/direction in GLOB.cardinal)
-			var/turf/T = get_step(src,direction)
-			if(istype(T) && !T.density)
-				add_overlay(get_cached_border(rock_side_icon_state,direction,icon,rock_side_icon_state))
+		if(!(smoothing_junction & NORTH_JUNCTION))
+			add_overlay(get_cached_rock_border(rock_side_icon_state, NORTH, icon, rock_side_icon_state))
+		if(!(smoothing_junction & SOUTH_JUNCTION))
+			add_overlay(get_cached_rock_border(rock_side_icon_state, SOUTH, icon, rock_side_icon_state))
+		if(!(smoothing_junction & EAST_JUNCTION))
+			add_overlay(get_cached_rock_border(rock_side_icon_state, EAST, icon, rock_side_icon_state))
+		if(!(smoothing_junction & WEST_JUNCTION))
+			add_overlay(get_cached_rock_border(rock_side_icon_state, WEST, icon, rock_side_icon_state))
 
-			if(archaeo_overlay)
-				add_overlay(archaeo_overlay)
-
-			if(excav_overlay)
-				add_overlay(excav_overlay)
+		if(archaeo_overlay)
+			add_overlay(archaeo_overlay)
+		if(excav_overlay)
+			add_overlay(excav_overlay)
 
 	//We are a sand floor
 	else
-//		name = "sand" why reset our prior definitions?
+		name = "sand"
 		icon = sand_icon // So that way we can source from other files.
 		icon_state = sand_icon_state
 
 		if(sand_dug)
 			add_overlay("dug_overlay")
-
-		//Apply overlays if there's space
-		for(var/direction in GLOB.cardinal)
-			if(istype(get_step(src, direction), /turf/space) && !istype(get_step(src, direction), /turf/space/cracked_asteroid))
-				add_overlay(get_cached_border("asteroid_edge",direction,icon,"asteroid_edges", 0))
-
-			//Or any time
-			else
-				var/turf/T = get_step(src, direction)
-				if(istype(T) && T.density)
-					add_overlay(get_cached_border(rock_side_icon_state,direction,'icons/turf/walls.dmi',rock_side_icon_state))
-
 		if(overlay_detail)
 			add_overlay('icons/turf/flooring/decals.dmi',overlay_detail)
 
-	if(update_neighbors)
-		for(var/direction in GLOB.alldirs)
-			if(istype(get_step(src, direction), /turf/simulated/mineral))
-				var/turf/simulated/mineral/M = get_step(src, direction)
-				M.update_icon()
+	// ..() has to be last to prevent trampling managed overlays
+	return ..()
+
+GLOBAL_LIST_EMPTY(mining_overlay_cache)
+
+/proc/get_cached_rock_border(cache_id, direction, icon_file, icon_state)
+	cache_id = "[cache_id]_[direction]"
+	//Cache miss
+	if(!GLOB.mining_overlay_cache[cache_id])
+		var/image/new_cached_image = image(icon_file, icon_state, dir = direction, layer = ABOVE_TURF_LAYER)
+		switch(direction)
+			if(NORTH)
+				new_cached_image.pixel_y = 32
+			if(SOUTH)
+				new_cached_image.pixel_y = -32
+			if(EAST)
+				new_cached_image.pixel_x = 32
+			if(WEST)
+				new_cached_image.pixel_x = -32
+		GLOB.mining_overlay_cache[cache_id] = new_cached_image
+		return new_cached_image
+
+	//Cache hit
+	return GLOB.mining_overlay_cache[cache_id]
+
+/* smoothing end */
 
 /turf/simulated/mineral/ex_act(severity)
 
@@ -292,21 +287,22 @@ turf/simulated/mineral/floor/light_corner
 		if(istype(M.selected,/obj/item/mecha_parts/mecha_equipment/tool/drill))
 			M.selected.action(src)
 
-/turf/simulated/mineral/proc/MineralSpread(mapload)
-	UpdateMineral(!mapload)
+/turf/simulated/mineral/proc/MineralSpread()
+	UpdateMineral()
 	if(mineral && mineral.spread)
 		for(var/trydir in GLOB.cardinal)
 			if(prob(mineral.spread_chance))
 				var/turf/simulated/mineral/target_turf = get_step(src, trydir)
 				if(istype(target_turf) && target_turf.density && !target_turf.mineral)
 					target_turf.mineral = mineral
-					target_turf.MineralSpread(mapload)
+					target_turf.MineralSpread()
 
 /turf/simulated/mineral/proc/UpdateMineral(update_neighbors)
+	if(!(flags & INITIALIZED))
+		return	// /Initialize() will handle us
 	clear_ore_effects()
 	if(mineral && density)
 		new /obj/effect/mineral(src, mineral)
-	update_icon(update_neighbors)
 
 //Not even going to touch this pile of spaghetti
 /turf/simulated/mineral/attackby(obj/item/W as obj, mob/user as mob)
@@ -625,7 +621,7 @@ turf/simulated/mineral/floor/light_corner
 			sand_dug = 1
 			for(var/i=0;i<5;i++)
 				new/obj/item/ore/glass(src)
-			update_icon()
+			QUEUE_SMOOTH(src)
 		return
 
 	if (mineral && mineral.result_amount)
@@ -658,7 +654,6 @@ turf/simulated/mineral/floor/light_corner
 		new /obj/structure/closet/crate/secure/loot(src)
 
 	make_floor()
-	update_icon(1)
 
 /turf/simulated/mineral/proc/excavate_find(var/is_clean = 0, var/datum/find/F)
 	//with skill and luck, players can cleanly extract finds
@@ -727,5 +722,4 @@ turf/simulated/mineral/floor/light_corner
 
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
