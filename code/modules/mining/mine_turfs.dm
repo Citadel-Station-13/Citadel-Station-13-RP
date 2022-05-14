@@ -187,7 +187,7 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 	cache_id = "[cache_id]_[direction]"
 	//Cache miss
 	if(!GLOB.mining_overlay_cache[cache_id])
-		var/image/new_cached_image = image(icon_state, dir = turn(direction, 180), layer = ABOVE_TURF_LAYER)
+		var/image/new_cached_image = image(icon_state, dir = direction), layer = ABOVE_TURF_LAYER)
 		switch(direction)
 			if(NORTH)
 				new_cached_image.pixel_y = 32

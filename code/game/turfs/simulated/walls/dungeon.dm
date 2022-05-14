@@ -33,13 +33,13 @@
 	smoothing_junction = dirs
 
 	if(!(smoothing_junction & NORTH_JUNCTION))
-		add_overlay(get_cached_border("rock_side", NORTH, 'icons/turf/walls.dmi', "rock_side"))
+		add_overlay(get_cached_rock_border("rock_side", NORTH, 'icons/turf/walls.dmi', "rock_side"))
 	if(!(smoothing_junction & SOUTH_JUNCTION))
-		add_overlay(get_cached_border("rock_side", SOUTH, 'icons/turf/walls.dmi', "rock_side"))
+		add_overlay(get_cached_rock_border("rock_side", SOUTH, 'icons/turf/walls.dmi', "rock_side"))
 	if(!(smoothing_junction & EAST_JUNCTION))
-		add_overlay(get_cached_border("rock_side", EAST, 'icons/turf/walls.dmi', "rock_side"))
+		add_overlay(get_cached_rock_border("rock_side", EAST, 'icons/turf/walls.dmi', "rock_side"))
 	if(!(smoothing_junction & WEST_JUNCTION))
-		add_overlay(get_cached_border("rock_side", WEST, 'icons/turf/walls.dmi', "rock_side"))
+		add_overlay(get_cached_rock_border("rock_side", WEST, 'icons/turf/walls.dmi', "rock_side"))
 
 /turf/simulated/wall/solidrock/Initialize(mapload)
 	. = ..()
