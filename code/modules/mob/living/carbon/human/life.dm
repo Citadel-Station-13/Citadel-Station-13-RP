@@ -58,9 +58,6 @@
 
 	..()
 
-	if(life_tick % 30)
-		hud_updateflag = (1 << TOTAL_HUDS) - 1
-
 	voice = GetVoice()
 
 	var/stasis = inStasisNow()
@@ -89,7 +86,10 @@
 		if(!client)
 			species.handle_npc(src)
 
-	if(!handle_some_updates())
+	else if(stat == DEAD && !stasis)
+		handle_defib_timer()
+
+	if(skip_some_updates())
 		return											//We go ahead and process them 5 times for HUD images and other stuff though.
 
 	//Update our name based on whether our face is obscured/disfigured
@@ -97,10 +97,10 @@
 
 	pulse = handle_pulse()
 
-/mob/living/carbon/human/proc/handle_some_updates()
+/mob/living/carbon/human/proc/skip_some_updates()
 	if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle
-		return 0
-	return 1
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/breathe()
 	if(!inStasisNow())
@@ -273,10 +273,10 @@
 	radiation = clamp(radiation,0,250)
 
 	if(!radiation)
-		if(species.appearance_flags & RADIATION_GLOWS)
+		if(species.species_appearance_flags & RADIATION_GLOWS)
 			set_light(0)
 	else
-		if(species.appearance_flags & RADIATION_GLOWS)
+		if(species.species_appearance_flags & RADIATION_GLOWS)
 			set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
 		// END DOGSHIT SNOWFLAKE
 
@@ -344,11 +344,11 @@
 	/** breathing **/
 
 /mob/living/carbon/human/handle_chemical_smoke(var/datum/gas_mixture/environment)
-	if(wear_mask && (wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(wear_mask && (wear_mask.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
-	if(glasses && (glasses.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(glasses && (glasses.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
-	if(head && (head.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(head && (head.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 	..()
 
@@ -370,7 +370,7 @@
 			if(!rig.offline && (rig.air_supply && internal == rig.air_supply))
 				rig_supply = rig.air_supply
 
-		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.item_flags & ALLOWINTERNALS)) || (head && (head.item_flags & ALLOWINTERNALS))))
+		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.clothing_flags & ALLOWINTERNALS)) || (head && (head.clothing_flags & ALLOWINTERNALS))))
 			internal = null
 
 		if(internal)
@@ -630,7 +630,7 @@
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		var/mob/living/carbon/human/H = src
-		if(H.species.name == "Protean")
+		if(H.species.name == SPECIES_PROTEAN)
 			return // dont modify protean heat levels
 
 		else
@@ -686,8 +686,8 @@
 		if(istype(loc, /obj/mecha))
 			var/obj/mecha/M = loc
 			loc_temp =  M.return_temperature()
-		else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			var/obj/machinery/atmospherics/unary/cryo_cell/CC = loc
+		else if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
+			var/obj/machinery/atmospherics/component/unary/cryo_cell/CC = loc
 			loc_temp = CC.air_contents.temperature
 		else
 			loc_temp = environment.temperature
@@ -744,7 +744,7 @@
 			return 1	//godmode
 
 
-		if(!istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
+		if(!istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
 			var/cold_dam = 0
 			if(bodytemperature <= species.cold_level_1)
 				if(bodytemperature <= species.cold_level_2)
@@ -822,10 +822,13 @@
 	if (species.body_temperature == null)
 		return //this species doesn't have metabolic thermoregulation
 
-	// FBPs will overheat, prosthetic limbs are fine.
-	if(robobody_count)
-		if(!nif || !nif.flag_check(NIF_O_HEATSINKS,NIF_FLAGS_OTHER)) //VOREStation Edit - NIF heatsinks
-			bodytemperature += round(robobody_count*1.75)
+	// FBPs will overheat when alive, prosthetic limbs are fine.
+	if(stat != DEAD && robobody_count)
+		if(!nif || !nif.flag_check(NIF_O_HEATSINKS,NIF_FLAGS_OTHER)) // NIF heatsinks prevent the base heat increase per tick if installed.
+			bodytemperature += round(robobody_count*1.15)
+		var/obj/item/organ/internal/robotic/heatsink/HS = internal_organs_by_name[O_HEATSINK]
+		if(!HS || HS.is_broken()) // However, NIF Heatsinks will not compensate for a core FBP component (your heatsink) being lost.
+			bodytemperature += round(robobody_count*0.5)
 
 	var/body_temperature_difference = species.body_temperature - bodytemperature
 
@@ -848,7 +851,7 @@
 //				log_debug("Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 	else if(bodytemperature > species.heat_level_1) //360.15 is 310.15 + 50, the temperature where you start to feel effects.
-		//We totally need a sweat system cause it totally makes sense...~
+		adjust_hydration(-(10 * DEFAULT_THIRST_FACTOR)) //Sweating
 		var/recovery_amt = min((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)	//We're dealing with negative numbers
 		//to_chat(world, "Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
@@ -919,14 +922,14 @@
 	if(reagents)
 		chem_effects.Cut()
 
-		if(!isSynthetic())
+		if(touching)
+			touching.metabolize()
+		if(ingested)
+			ingested.metabolize()
+		if(bloodstr)
+			bloodstr.metabolize()
 
-			if(touching)
-				touching.metabolize()
-			if(ingested)
-				ingested.metabolize()
-			if(bloodstr)
-				bloodstr.metabolize()
+		if(!isSynthetic())
 
 			var/total_phoronloss = 0
 			GET_VSC_PROP(atmos_vsc, /atmos/phoron/contamination_loss, loss_per_part)
@@ -945,7 +948,7 @@
 					adjustToxLoss(total_phoronloss)
 
 	if(status_flags & GODMODE)
-		return 0	//godmode
+		return FALSE	//godmode
 
 	if(species.light_dam)
 		var/light_amount = 0
@@ -965,14 +968,23 @@
 			if(!isnull(mod.metabolism_percent))
 				nutrition_reduction *= mod.metabolism_percent
 
-		nutrition = max (0, nutrition - nutrition_reduction)
+		adjust_nutrition(-nutrition_reduction)
 
-	if (nutrition > 450)
+	if (nutrition > species.max_nutrition)
 		if(overeatduration < 600) //capped so people don't take forever to unfat
 			overeatduration++
 	else
 		if(overeatduration > 1)
 			overeatduration -= 2 //doubled the unfat rate
+
+	// hydration decrease
+	if (hydration > 0 && stat != DEAD)
+		var/hydration_reduction = species.thirst_factor
+
+		for(var/datum/modifier/mod in modifiers)
+			if(!isnull(mod.metabolism_percent)) //Metabolism affects thirst too in this weird world.
+				hydration_reduction *= mod.metabolism_percent
+		adjust_hydration(-hydration_reduction)
 
 	if(noisy == TRUE && nutrition < 250 && prob(10)) //VOREStation edit for hunger noises.
 		var/sound/growlsound = sound(get_sfx("hunger_sounds"))
@@ -990,8 +1002,8 @@
 
 //DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
 /mob/living/carbon/human/handle_regular_UI_updates()
-	if(!handle_some_updates())
-		return 0
+	if(skip_some_updates())
+		return FALSE
 
 	if(status_flags & GODMODE)	return 0
 
@@ -1149,13 +1161,10 @@
 
 /mob/living/carbon/human/set_stat(var/new_stat)
 	. = ..()
-	if(stat)
+	if(. && stat)
 		update_skin(1)
 
 /mob/living/carbon/human/handle_regular_hud_updates()
-	if(hud_updateflag) // update our mob's hud overlays, AKA what others see flaoting above our head
-		handle_hud_list()
-
 	// now handle what we see on our screen
 
 	if(!client)
@@ -1163,15 +1172,17 @@
 
 	..()
 
-	client.screen.Remove(GLOB.global_hud.blurry, GLOB.global_hud.druggy, GLOB.global_hud.vimpaired, GLOB.global_hud.darkMask, GLOB.global_hud.nvg, GLOB.global_hud.thermal, GLOB.global_hud.meson, GLOB.global_hud.science, GLOB.global_hud.material, GLOB.global_hud.yellow, GLOB.global_hud.blue, GLOB.global_hud.pink, GLOB.global_hud.beige, GLOB.global_hud.orange, GLOB.global_hud.whitense)
+	client.screen.Remove(GLOB.global_hud.darkMask, GLOB.global_hud.nvg, GLOB.global_hud.thermal, GLOB.global_hud.meson, GLOB.global_hud.science, GLOB.global_hud.material, GLOB.global_hud.yellow, GLOB.global_hud.blue, GLOB.global_hud.pink, GLOB.global_hud.beige, GLOB.global_hud.orange, GLOB.global_hud.whitense)
 
 	if(istype(client.eye,/obj/machinery/camera))
 		var/obj/machinery/camera/cam = client.eye
 		client.screen |= cam.client_huds
 
 	if(stat == DEAD) //Dead
-		if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-		if(healths)		healths.icon_state = "health7"	//DEAD healthmeter
+		if(!druggy)
+			SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+		if(healths)
+			healths.icon_state = "health7"	//DEAD healthmeter
 
 	else if(stat == UNCONSCIOUS && health <= 0) //Crit
 		//Critical damage passage overlay
@@ -1187,7 +1198,7 @@
 			if(-90 to -80)			severity = 8
 			if(-95 to -90)			severity = 9
 			if(-INFINITY to -95)	severity = 10
-		overlay_fullscreen("crit", /atom/movable/screen/fullscreen/crit, severity)
+		overlay_fullscreen("crit", /atom/movable/screen/fullscreen/scaled/crit, severity)
 	else //Alive
 		clear_fullscreen("crit")
 		//Oxygen damage overlay
@@ -1201,7 +1212,7 @@
 				if(35 to 40)		severity = 5
 				if(40 to 45)		severity = 6
 				if(45 to INFINITY)	severity = 7
-			overlay_fullscreen("oxy", /atom/movable/screen/fullscreen/oxy, severity)
+			overlay_fullscreen("oxy", /atom/movable/screen/fullscreen/scaled/oxy, severity)
 		else
 			clear_fullscreen("oxy")
 
@@ -1217,7 +1228,7 @@
 				if(55 to 70)		severity = 4
 				if(70 to 85)		severity = 5
 				if(85 to INFINITY)	severity = 6
-			overlay_fullscreen("brute", /atom/movable/screen/fullscreen/brute, severity)
+			overlay_fullscreen("brute", /atom/movable/screen/fullscreen/scaled/brute, severity)
 		else
 			clear_fullscreen("brute")
 
@@ -1261,12 +1272,20 @@
 				healths.appearance = healths_ma
 
 		if(nutrition_icon)
-			switch(nutrition)
-				if(450 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
-				if(350 to 450)					nutrition_icon.icon_state = "nutrition1"
-				if(250 to 350)					nutrition_icon.icon_state = "nutrition2"
-				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
+			switch(nutrition/species.max_nutrition)
+				if(1 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
+				if(0.778 to 1)					nutrition_icon.icon_state = "nutrition1"
+				if(0.556 to 0.778)				nutrition_icon.icon_state = "nutrition2"
+				if(0.333 to 0.556)				nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"
+
+		if(hydration_icon)
+			switch(hydration)
+				if(450 to INFINITY)				hydration_icon.icon_state = "hydration0"
+				if(350 to 450)					hydration_icon.icon_state = "hydration1"
+				if(250 to 350)					hydration_icon.icon_state = "hydration2"
+				if(150 to 250)					hydration_icon.icon_state = "hydration3"
+				else							hydration_icon.icon_state = "hydration4"
 
 		if(synthbattery_icon)
 			switch(nutrition)
@@ -1339,27 +1358,34 @@
 					else
 						bodytemp.icon_state = "temp0"
 		if(blinded)
-			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 
 		else
-			clear_fullscreens()
-
-		if(blinded)
-			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
-
-		else if(!machine)
-			clear_fullscreens()
+			clear_fullscreen("blind")
 
 		if(disabilities & NEARSIGHTED)	//this looks meh but saves a lot of memory by not requiring to add var/prescription
+			var/corrected = FALSE
 			if(glasses)					//to every /obj/item
 				var/obj/item/clothing/glasses/G = glasses
-				if(!G.prescription)
-					set_fullscreen(disabilities & NEARSIGHTED, "impaired", /atom/movable/screen/fullscreen/impaired, 1)
-			else if (!nif || !nif.flag_check(NIF_V_CORRECTIVE,NIF_FLAGS_VISION))	//VOREStation Edit - NIF
-				set_fullscreen(disabilities & NEARSIGHTED, "impaired", /atom/movable/screen/fullscreen/impaired, 1)
+				if(G.prescription)
+					corrected = TRUE
+			if(nif?.flag_check(NIF_V_CORRECTIVE,NIF_FLAGS_VISION))	//VOREStation Edit - NIF
+				corrected = TRUE
+			if(!corrected)
+				overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
+			else
+				clear_fullscreen("impaired")
+		else
+			clear_fullscreen("impaired")
 
-		set_fullscreen(eye_blurry, "blurry", /atom/movable/screen/fullscreen/blurry)
-		set_fullscreen(druggy, "high", /atom/movable/screen/fullscreen/high)
+		if(eye_blurry)
+			overlay_fullscreen("blurry", /atom/movable/screen/fullscreen/tiled/blurry)
+		else
+			clear_fullscreen("blurry")
+		if(druggy)
+			overlay_fullscreen("high", /atom/movable/screen/fullscreen/tiled/high)
+		else
+			clear_fullscreen("high")
 
 		if(config_legacy.welder_vision)
 			var/found_welder
@@ -1384,11 +1410,6 @@
 			if(found_welder)
 				client.screen |= GLOB.global_hud.darkMask
 
-/mob/living/carbon/human/reset_view(atom/A)
-	..()
-	if(machine_visual && machine_visual != A)
-		machine_visual.remove_visual(src)
-
 /mob/living/carbon/human/handle_vision()
 	if(stat == DEAD)
 		if(client)
@@ -1399,12 +1420,13 @@
 						break
 
 	else //We aren't dead
-		see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+		SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		if(XRAY in mutations)
-			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+			SetSeeInDarkSelf(8)
+			if(!druggy)
+				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 
 		if(seer==1)
 			var/obj/effect/rune/R = locate() in loc
@@ -1415,71 +1437,92 @@
 				seer = 0
 
 		if(!seedarkness)
-			sight = species.get_vision_flags(src)
-			see_in_dark = 8
-			see_invisible = SEE_INVISIBLE_NOLIGHTING
-
+			SetSightSelf(species.get_vision_flags(src))
+			SetSeeInDarkSelf(8)
+			SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
 		else
-			sight = species.get_vision_flags(src)
-			see_in_dark = species.darksight
-			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+			SetSightSelf(species.get_vision_flags(src))
+			SetSeeInDarkSelf(species.darksight)
+			SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		var/glasses_processed = 0
 		var/obj/item/rig/rig = back
 		if(istype(rig) && rig.visor)
 			if(!rig.helmet || (head && rig.helmet == head))
 				if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
-					glasses_processed = 1
-					process_glasses(rig.visor.vision.glasses)
+					glasses_processed = process_glasses(rig.visor.vision.glasses)
 
 		if(glasses && !glasses_processed)
-			glasses_processed = 1
-			process_glasses(glasses)
+			glasses_processed = process_glasses(glasses)
+
 		if(XRAY in mutations)
-			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			AddSightSelf(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+			SetSeeInDarkSelf(8)
+			if(!druggy)
+				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+
+		if(!glasses_processed && nif)
+			var/datum/nifsoft/vision_soft
+			for(var/datum/nifsoft/NS in nif.nifsofts)
+				if(NS.vision_exclusive && NS.active)
+					vision_soft = NS
+					break
+			if(vision_soft)
+				glasses_processed = process_nifsoft_vision(vision_soft) //Not really glasses but equitable
 
 		if(!glasses_processed && (species.get_vision_flags(src) > 0))
-			sight |= species.get_vision_flags(src)
+			AddSightSelf(species.get_vision_flags(src))
 		if(!seer && !glasses_processed && seedarkness)
-			see_invisible = see_invisible_default
+			SetSeeInvisibleSelf(see_invisible_default)
 
 		if(machine)
 			var/viewflags = machine.check_eye(src)
-			machine.apply_visual(src)
 			if(viewflags < 0)
-				reset_view(null, 0)
-			else if(viewflags)
+				reset_perspective()
+			else if(viewflags && !looking_elsewhere)
+				AddSightSelf(viewflags)
 				sight |= viewflags
 		else if(eyeobj)
 			if(eyeobj.owner != src)
-
-				reset_view(null)
+				reset_perspective()
 		else
 			var/isRemoteObserve = 0
 			if((mRemote in mutations) && remoteview_target)
 				if(remoteview_target.stat==CONSCIOUS)
 					isRemoteObserve = 1
-			if(!isRemoteObserve && client && !client.adminobs)
+			if(!isRemoteObserve && remoteview_target)
 				remoteview_target = null
-				reset_view(null, 0)
+				reset_perspective()
 	return 1
 
 /mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
+	. = FALSE
 	if(G && G.active)
-		see_in_dark += G.darkness_view
+		if(G.darkness_view)
+			SetSeeInDarkSelf((using_perspective?.see_in_dark || 2) + G.darkness_view)
+			. = TRUE
 		if(G.overlay && client)
 			client.screen |= G.overlay
 		if(G.vision_flags)
-			sight |= G.vision_flags
+			AddSightSelf(G.vision_flags)
+			. = TRUE
 		if(istype(G,/obj/item/clothing/glasses/night) && !seer)
-			see_invisible = SEE_INVISIBLE_MINIMUM
-
+			SetSeeInvisibleSelf(SEE_INVISIBLE_MINIMUM)
 		if(G.see_invisible >= 0)
-			see_invisible = G.see_invisible
+			SetSeeInvisibleSelf(G.see_invisible)
+			. = TRUE
 		else if(!druggy && !seer)
-			see_invisible = see_invisible_default
+			SetSeeInvisibleSelf(see_invisible_default)
+
+/mob/living/carbon/human/proc/process_nifsoft_vision(var/datum/nifsoft/NS)
+	. = FALSE
+	if(NS && NS.active)
+		if(NS.darkness_view)
+			SetSeeInDarkSelf((using_perspective?.see_in_dark || 2) + NS.darkness_view)
+			. = TRUE
+		if(NS.vision_flags_mob)
+			AddSightSelf(NS.vision_flags_mob)
+			. = TRUE
 
 /mob/living/carbon/human/handle_random_events()
 	if(inStasisNow())
@@ -1490,9 +1533,9 @@
 		if (getToxLoss() >= 30 && isSynthetic())
 			if(!confused)
 				if(prob(5))
-					to_chat(src, "<span class='danger'>You lose directional control!</span>")
+					to_chat(src, SPAN_USERDANGER("You lose directional control!"))
 					Confuse(10)
-		if (getToxLoss() >= 45)
+		if (getToxLoss() >= 45 && !isSynthetic())
 			spawn vomit()
 
 
@@ -1668,7 +1711,7 @@
 	if(Pump)
 		temp += Pump.standard_pulse_level - PULSE_NORM
 
-	if(round(vessel.get_reagent_amount("blood")) <= BLOOD_VOLUME_BAD)	//how much blood do we have
+	if(round(vessel.get_reagent_amount("blood")) <= species.blood_volume*species.blood_level_danger)	//how much blood do we have
 		temp = temp + 3	//not enough :(
 
 	if(status_flags & FAKEDEATH)
@@ -1730,143 +1773,6 @@
 		else
 			heartbeat++
 
-/*
-	Called by life(), instead of having the individual hud items update icons each tick and check for status changes
-	we only set those statuses and icons upon changes.  Then those HUD items will simply add those pre-made images.
-	This proc below is only called when those HUD elements need to change as determined by the mobs hud_updateflag.
-*/
-/mob/living/carbon/human/proc/handle_hud_list()
-	if (BITTEST(hud_updateflag, HEALTH_HUD))
-		var/image/holder = grab_hud(HEALTH_HUD)
-		if(stat == DEAD)
-			holder.icon_state = "-100" 	// X_X
-		else
-			holder.icon_state = RoundHealth((health-config_legacy.health_threshold_crit)/(getMaxHealth()-config_legacy.health_threshold_crit)*100)
-		apply_hud(HEALTH_HUD, holder)
-
-	if (BITTEST(hud_updateflag, LIFE_HUD))
-		var/image/holder = grab_hud(LIFE_HUD)
-		if(isSynthetic())
-			holder.icon_state = "hudrobo"
-		else if(stat == DEAD)
-			holder.icon_state = "huddead"
-		else
-			holder.icon_state = "hudhealthy"
-		apply_hud(LIFE_HUD, holder)
-
-	if (BITTEST(hud_updateflag, STATUS_HUD))
-		var/foundVirus = 0
-		for (var/ID in virus2)
-			if (ID in virusDB)
-				foundVirus = 1
-				break
-
-		var/image/holder = grab_hud(STATUS_HUD)
-		var/image/holder2 = grab_hud(STATUS_HUD_OOC)
-		if (isSynthetic())
-			holder.icon_state = "hudrobo"
-		else if(stat == DEAD)
-			holder.icon_state = "huddead"
-			holder2.icon_state = "huddead"
-		else if(foundVirus)
-			holder.icon_state = "hudill"
-		else if(has_brain_worms())
-			var/mob/living/simple_mob/animal/borer/B = has_brain_worms()
-			if(B.controlling)
-				holder.icon_state = "hudbrainworm"
-			else
-				holder.icon_state = "hudhealthy"
-			holder2.icon_state = "hudbrainworm"
-		else
-			holder.icon_state = "hudhealthy"
-			if(virus2.len)
-				holder2.icon_state = "hudill"
-			else
-				holder2.icon_state = "hudhealthy"
-
-		apply_hud(STATUS_HUD, holder)
-		apply_hud(STATUS_HUD_OOC, holder2)
-
-	if (BITTEST(hud_updateflag, ID_HUD))
-		var/image/holder = grab_hud(ID_HUD)
-		if(wear_id)
-			var/obj/item/card/id/I = wear_id.GetID()
-			if(I)
-				holder.icon_state = "hud[ckey(I.GetJobName())]"
-			else
-				holder.icon_state = "hudunknown"
-		else
-			holder.icon_state = "hudunknown"
-
-		apply_hud(ID_HUD, holder)
-
-	if (BITTEST(hud_updateflag, WANTED_HUD))
-		var/image/holder = grab_hud(WANTED_HUD)
-		holder.icon_state = "hudblank"
-		var/perpname = name
-		if(wear_id)
-			var/obj/item/card/id/I = wear_id.GetID()
-			if(I)
-				perpname = I.registered_name
-
-		for(var/datum/data/record/E in data_core.general)
-			if(E.fields["name"] == perpname)
-				for (var/datum/data/record/R in data_core.security)
-					if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
-						holder.icon_state = "hudwanted"
-						break
-					else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
-						holder.icon_state = "hudprisoner"
-						break
-					else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Parolled"))
-						holder.icon_state = "hudparolled"
-						break
-					else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
-						holder.icon_state = "hudreleased"
-						break
-
-		apply_hud(WANTED_HUD, holder)
-
-	if (  BITTEST(hud_updateflag, IMPLOYAL_HUD) \
-	   || BITTEST(hud_updateflag,  IMPCHEM_HUD) \
-	   || BITTEST(hud_updateflag, IMPTRACK_HUD))
-
-		var/image/holder1 = grab_hud(IMPTRACK_HUD)
-		var/image/holder2 = grab_hud(IMPLOYAL_HUD)
-		var/image/holder3 = grab_hud(IMPCHEM_HUD)
-
-		holder1.icon_state = "hudblank"
-		holder2.icon_state = "hudblank"
-		holder3.icon_state = "hudblank"
-
-		for(var/obj/item/implant/I in src)
-			if(I.implanted)
-				if(!I.malfunction)
-					if(istype(I,/obj/item/implant/tracking))
-						holder1.icon_state = "hud_imp_tracking"
-					if(istype(I,/obj/item/implant/loyalty))
-						holder2.icon_state = "hud_imp_loyal"
-					if(istype(I,/obj/item/implant/chem))
-						holder3.icon_state = "hud_imp_chem"
-
-		apply_hud(IMPTRACK_HUD, holder1)
-		apply_hud(IMPLOYAL_HUD, holder2)
-		apply_hud(IMPCHEM_HUD, holder3)
-
-	if (BITTEST(hud_updateflag, SPECIALROLE_HUD))
-		var/image/holder = grab_hud(SPECIALROLE_HUD)
-		holder.icon_state = "hudblank"
-		if(mind && mind.special_role)
-			if(hud_icon_reference[mind.special_role])
-				holder.icon_state = hud_icon_reference[mind.special_role]
-			else
-				holder.icon_state = "hudsyndicate"
-		apply_hud(SPECIALROLE_HUD, holder)
-
-	attempt_vr(src,"handle_hud_list_vr",list()) //VOREStation Add - Custom HUDs.
-
-	hud_updateflag = 0
-
 /mob/living/carbon/human/handle_fire()
 	if(..())
 		return
@@ -1900,56 +1806,22 @@
 		species.silk_reserve = min(species.silk_reserve + 2, species.silk_max_reserve)
 		nutrition -= 0.4//suck nutrition from the user
 
-/mob/living/carbon/human/proc/handle_hud_list_vr()
-
-	//Right-side status hud updates with left side one.
-	if (BITTEST(hud_updateflag, STATUS_HUD))
-		var/image/other_status = hud_list[STATUS_HUD]
-		var/image/status_r = grab_hud(STATUS_R_HUD)
-		status_r.icon_state = other_status.icon_state
-		apply_hud(STATUS_R_HUD, status_r)
-
-	//Our custom health bar HUD
-	if (BITTEST(hud_updateflag, HEALTH_HUD))
-		var/image/other_health = hud_list[HEALTH_HUD]
-		var/image/health_us = grab_hud(HEALTH_VR_HUD)
-		health_us.icon_state = other_health.icon_state
-		apply_hud(HEALTH_VR_HUD, health_us)
-
-	//Backup implant hud status
-	if (BITTEST(hud_updateflag, BACKUP_HUD))
-		var/image/holder = grab_hud(BACKUP_HUD)
-
-		holder.icon_state = "hudblank"
-
-		for(var/obj/item/organ/external/E in organs)
-			for(var/obj/item/implant/I in E.implants)
-				if(I.implanted)
-					if(istype(I,/obj/item/implant/backup))
-						if(!mind)
-							holder.icon_state = "hud_backup_nomind"
-						else if(!(mind.name in SStranscore.body_scans))
-							holder.icon_state = "hud_backup_nobody"
-						else
-							holder.icon_state = "hud_backup_norm"
-
-		apply_hud(BACKUP_HUD, holder)
-
-	//VOREStation Antag Hud
-	if (BITTEST(hud_updateflag, VANTAG_HUD))
-		var/image/vantag = grab_hud(VANTAG_HUD)
-		if(vantag_pref)
-			vantag.icon_state = vantag_pref
-		else
-			vantag.icon_state = "hudblank"
-		apply_hud(VANTAG_HUD, vantag)
-
 //Our call for the NIF to do whatever
 /mob/living/carbon/human/proc/handle_nif()
 	if(!nif) return
 
 	//Process regular life stuff
 	nif.life()
+
+/mob/living/carbon/human/proc/handle_defib_timer()
+	if(!should_have_organ(O_BRAIN))
+		return // No brain.
+
+	var/obj/item/organ/internal/brain/brain = internal_organs_by_name[O_BRAIN]
+	if(!brain)
+		return // Still no brain.
+
+	brain.tick_defib_timer()
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS

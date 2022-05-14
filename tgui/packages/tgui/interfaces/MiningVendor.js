@@ -1,7 +1,6 @@
 import { createSearch } from 'common/string';
-import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Collapsible, Dropdown, Flex, Input, NoticeBox, Section } from '../components';
+import { Box, Button, Collapsible, Dropdown, Flex, Input, Section } from '../components';
 import { Window } from "../layouts";
 import { refocusLayout } from '../layouts';
 import { MiningUser } from './common/Mining';
@@ -124,7 +123,7 @@ const MiningVendorSearch = (props, context) => {
             icon={descending ? "arrow-down" : "arrow-up"}
             height="19px"
             tooltip={descending ? "Descending order" : "Ascending order"}
-            tooltipPosition="bottom-left"
+            tooltipPosition="bottom-end"
             ml="0.5rem"
             onClick={() => setDescending(!descending)}
           />

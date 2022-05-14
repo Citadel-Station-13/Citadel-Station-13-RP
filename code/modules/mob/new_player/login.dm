@@ -1,6 +1,4 @@
-///var/atom/movable/lobby_image = new /atom/movable{icon = 'icons/misc/title.dmi'; icon_state = lobby_image_state; screen_loc = "1,1"; name = "Polaris"}
-
-var/obj/effect/lobby_image = new /obj/effect/lobby_image
+GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 
 /obj/effect/lobby_image
 	name = "Citadel Station 13"
@@ -32,16 +30,14 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 	if(client)
 		to_chat(src, client.getAlertDesc())
-		
+
 	if(!mind)
 		mind = new /datum/mind(key)
 		mind.active = 1
 		mind.current = src
 
 	loc = null
-	client.screen += lobby_image
 	my_client = client
-	sight |= SEE_TURFS
 	player_list |= src
 
 	new_player_panel()
@@ -50,4 +46,4 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 			handle_privacy_poll()
 			client.playtitlemusic()
 
-	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
+	return ..()

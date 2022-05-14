@@ -90,7 +90,7 @@
 	var/rigsuit_min_pressure = 0							  // Min pressure the rig protects against when sealed
 
 	var/emp_protection = 0
-	item_flags = PHORONGUARD //VOREStation add
+	clothing_flags = PHORONGUARD //VOREStation add
 
 	// Wiring! How exciting.
 	var/datum/wires/rig/wires
@@ -226,11 +226,11 @@
 	if(seal == 1)
 		piece.min_pressure_protection = rigsuit_min_pressure
 		piece.max_pressure_protection = rigsuit_max_pressure
-		piece.item_flags |= ALLOWINTERNALS
+		piece.clothing_flags |= ALLOWINTERNALS
 	else
 		piece.min_pressure_protection = null
 		piece.max_pressure_protection = null
-		piece.item_flags &= ~ALLOWINTERNALS
+		piece.clothing_flags &= ~ALLOWINTERNALS
 	return
 
 
@@ -469,8 +469,8 @@
 		if(istype(H.loc, /obj/mecha))
 			var/obj/mecha/M = H.loc
 			return M.return_temperature()
-		else if(istype(H.loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			var/obj/machinery/atmospherics/unary/cryo_cell/cryo = H.loc
+		else if(istype(H.loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
+			var/obj/machinery/atmospherics/component/unary/cryo_cell/cryo = H.loc
 			return cryo.air_contents.temperature
 
 	var/turf/T = get_turf(src)
@@ -1164,7 +1164,7 @@
 	icon = 'icons/obj/rig_boot.dmi'
 	icon_state = ""
 	layer = SCREEN_LAYER
-	plane = PLANE_FULLSCREEN
+	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
 	alpha = 20 //Animated up when loading
 

@@ -26,15 +26,6 @@ In short:
 		for(var/obj/machinery/light/L in T.contents)
 			new /obj/structure/cult/pylon(L.loc)
 			qdel(L)
-	return
-
-
-/datum/universal_state/hell/OnTurfChange(var/turf/T)
-	var/turf/space/S = T
-	if(istype(S))
-		S.color = "#FF0000"
-	else
-		S.color = initial(S.color)
 
 // Apply changes when entering state
 /datum/universal_state/hell/OnEnter()
@@ -64,9 +55,8 @@ In short:
 	spawn(0)
 		for(var/datum/lighting_corner/L in world)
 			L.update_lumcount(1, 0, 0)
-
 		for(var/turf/space/T in world)
-			OnTurfChange(T)
+			T.color = "#FF0000"
 
 /datum/universal_state/hell/proc/MiscSet()
 	for(var/turf/simulated/floor/T in world)
@@ -81,4 +71,4 @@ In short:
 	for (var/obj/machinery/power/apc/APC in GLOB.apcs)
 		if (!(APC.stat & BROKEN) && !APC.is_critical)
 			APC.emagged = 1
-			APC.queue_icon_update()
+			APC.update_icon()

@@ -129,7 +129,7 @@
 		M.setDir(SOUTH)
 		return
 	else
-		var/obj/effect/landmark/dest = pick(awaydestinations)
+		var/atom/movable/landmark/dest = pick(awaydestinations)
 		if(dest)
 			M.forceMove(dest.loc)
 			M.setDir(SOUTH)

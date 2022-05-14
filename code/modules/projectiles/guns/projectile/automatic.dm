@@ -5,7 +5,8 @@
 	load_method = SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a9mm
 	projectile_type = /obj/item/projectile/bullet/pistol
-
+	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 //Burst is the number of bullets fired; Fire delay is the time you have to wait to shoot the gun again, Move delay is the same but for moving after shooting. .
 //Burst accuracy is the accuracy of each bullet fired in the burst. Dispersion is how much the bullets will 'spread' away from where you aimed.
 
@@ -30,10 +31,9 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,20), dispersion=list(0.0, 0.3, 0.6))
 	)
 
-/obj/item/gun/projectile/automatic/advanced_smg/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/advanced_smg/update_icon_state()
+	. = ..()
 	icon_state = (ammo_magazine)? "advanced_smg" : "advanced_smg-empty"
-	return
 
 /obj/item/gun/projectile/automatic/advanced_smg/loaded
 	magazine_type = /obj/item/ammo_magazine/m9mmAdvanced
@@ -57,13 +57,12 @@
 
 	one_handed_penalty = 15
 
-/obj/item/gun/projectile/automatic/c20r/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/c20r/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "c20r-[round(ammo_magazine.stored_ammo.len,4)]"
 	else
 		icon_state = "c20r"
-	return
 
 /obj/item/gun/projectile/automatic/sts35
 	name = "assault rifle"
@@ -81,7 +80,9 @@
 	magazine_type = /obj/item/ammo_magazine/m545
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
-
+	mag_insert_sound = 'sound/weapons/guns/interaction/ltrifle_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/ltrifle_magout.ogg'
+	heavy = TRUE
 	one_handed_penalty = 30
 
 	firemodes = list(
@@ -90,13 +91,17 @@
 //		list(mode_name="short bursts", 	burst=5, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30,-30,-45), dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2)),
 		)
 
-/obj/item/gun/projectile/automatic/sts35/update_icon(var/ignore_inhands)
-	..()
+/obj/item/gun/projectile/automatic/sts35/update_icon_state()
+	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m545/small))
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
 	else
 		icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
-	if(!ignore_inhands) update_held_icon()
+
+/obj/item/gun/projectile/automatic/sts35/update_icon(ignore_inhands)
+	. = ..()
+
+	update_held_icon()
 
 /obj/item/gun/projectile/automatic/wt550
 	name = "machine pistol"
@@ -113,13 +118,12 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mmt)
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 
-/obj/item/gun/projectile/automatic/wt550/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/wt550/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "wt550-[round(ammo_magazine.stored_ammo.len,4)]"
 	else
 		icon_state = "wt550"
-	return
 
 /obj/item/gun/projectile/automatic/wt550/lethal
 	magazine_type = /obj/item/ammo_magazine/m9mmt
@@ -141,7 +145,9 @@
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-
+	mag_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
+	heavy = TRUE
 	one_handed_penalty = 60
 
 	burst_delay = 4
@@ -178,14 +184,16 @@
 	else
 		..()
 
-/obj/item/gun/projectile/automatic/z8/update_icon(var/ignore_inhands)
-	..()
+/obj/item/gun/projectile/automatic/z8/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "carbine-[round(ammo_magazine.stored_ammo.len,2)]"
 	else
 		icon_state = "carbine"
-	if(!ignore_inhands) update_held_icon()
-	return
+
+/obj/item/gun/projectile/automatic/z8/update_icon()
+	. = ..()
+	update_held_icon()
 
 /obj/item/gun/projectile/automatic/z8/examine(mob/user)
 	. = ..()
@@ -210,7 +218,10 @@
 	magazine_type = /obj/item/ammo_magazine/m545saw
 	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
+	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
 	can_special_reload = FALSE
+	heavy = TRUE
 	one_handed_penalty = 90
 
 	var/cover_open = 0
@@ -255,13 +266,17 @@
 		return ..() //once open, behave like normal
 
 /obj/item/gun/projectile/automatic/l6_saw/update_icon()
+	. = ..()
+	update_held_icon()
+
+/obj/item/gun/projectile/automatic/l6_saw/update_icon_state()
+	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
 		icon_state = "l6[cover_open ? "open" : "closed"]mag"
 		item_state = icon_state
 	else
 		icon_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 25) : "-empty"]"
 		item_state = "l6[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
-	update_held_icon()
 
 /obj/item/gun/projectile/automatic/l6_saw/load_ammo(var/obj/item/A, mob/user)
 	if(!cover_open)
@@ -289,8 +304,10 @@
 	magazine_type = /obj/item/ammo_magazine/m12gdrum
 	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
 	projectile_type = /obj/item/projectile/bullet/shotgun
-
+	heavy = TRUE
 	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
+	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -298,8 +315,8 @@
 //		list(mode_name="6-round bursts", burst=6, move_delay=6, burst_accuracy = list(0,-15,-15,-30,-30, -30), dispersion = list(0.6, 1.0, 1.0, 1.0, 1.2, 1.2)),
 		)
 
-/obj/item/gun/projectile/automatic/as24/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/as24/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "ashot"
 	else
@@ -322,8 +339,8 @@
 		list(mode_name="3-round bursts", burst=3, burst_delay=1, fire_delay=4, move_delay=4, burst_accuracy = list(60,40,30,20,15), dispersion = list(0.6, 1.0, 1.0))
 		)
 
-/obj/item/gun/projectile/automatic/mini_uzi/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/mini_uzi/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "mini-uzi"
 	else
@@ -335,8 +352,8 @@
 	icon_state = "mini-uzi-custom"
 	pin = /obj/item/firing_pin/explorer
 
-/obj/item/gun/projectile/automatic/mini_uzi/custom/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/mini_uzi/custom/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "mini-uzi-custom"
 	else
@@ -348,8 +365,8 @@
 	icon_state = "mini-uzi-taj"
 	item_state = "mini-uzi-taj"
 
-/obj/item/gun/projectile/automatic/mini_uzi/taj/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/mini_uzi/taj/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "mini-uzi-taj"
 		item_state = "mini-uzi-taj"
@@ -376,7 +393,8 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,30), dispersion=list(0.0, 0.6, 1.0))
 		)
 
-/obj/item/gun/projectile/automatic/p90/update_icon()
+/obj/item/gun/projectile/automatic/p90/update_icon_state()
+	. = ..()
 	icon_state = "p90smg-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
 
 /obj/item/gun/projectile/automatic/p90/custom
@@ -387,7 +405,8 @@
 	slot_flags = SLOT_BELT|SLOT_BACK
 	pin = /obj/item/firing_pin/explorer
 
-/obj/item/gun/projectile/automatic/p90/custom/update_icon()
+/obj/item/gun/projectile/automatic/p90/custom/update_icon_state()
+	. = ..()
 	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
 
 /obj/item/gun/projectile/automatic/tommygun
@@ -407,8 +426,8 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,25), dispersion=list(0.0, 0.6, 1.0))
 		)
 
-/obj/item/gun/projectile/automatic/tommygun/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/tommygun/update_icon_state()
+	. = ..()
 	icon_state = (ammo_magazine)? "tommygun" : "tommygun-empty"
 //	update_held_icon()
 
@@ -426,7 +445,7 @@
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
-
+	heavy = TRUE
 	one_handed_penalty = 45
 
 	firemodes = list(
@@ -434,16 +453,18 @@
 		list(mode_name="2-round bursts", burst=2, fire_delay=null, move_delay=6,    burst_accuracy=list(60,45), dispersion=list(0.0, 0.6))
 		)
 
-/obj/item/gun/projectile/automatic/bullpup/update_icon(var/ignore_inhands)
-	..()
+/obj/item/gun/projectile/automatic/bullpup/update_icon_state()
+	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
 		icon_state = "bullpup-small"
 	else if(istype(ammo_magazine,/obj/item/ammo_magazine/m762m))
 		icon_state = "bullpup"
 	else
 		item_state = "bullpup-empty"
-	if(!ignore_inhands)
-		update_held_icon()
+
+/obj/item/gun/projectile/automatic/bullpup/update_icon()
+	. = ..()
+	update_held_icon()
 
 obj/item/gun/projectile/automatic/fal
 	name = "FN-FAL"
@@ -458,6 +479,7 @@ obj/item/gun/projectile/automatic/fal
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m762m
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 
 	firemodes = list(
@@ -465,8 +487,8 @@ obj/item/gun/projectile/automatic/fal
 		list(mode_name="2-round bursts", burst=2, fire_delay=null, move_delay=6,    burst_accuracy=list(60,35), dispersion=list(0.0, 0.6))
 		)
 
-/obj/item/gun/projectile/automatic/fal/update_icon(var/ignore_inhands)
-	..()
+/obj/item/gun/projectile/automatic/fal/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = initial(icon_state)
 	else
@@ -481,6 +503,7 @@ obj/item/gun/projectile/automatic/automat
 	w_class = ITEMSIZE_LARGE
 	force = 10
 	caliber = "7.62mm"
+	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3) //A real work around to a automatic rifle.
 	slot_flags = SLOT_BACK
 	load_method = SPEEDLOADER
@@ -511,6 +534,7 @@ obj/item/gun/projectile/automatic/automat/taj
 	icon_state = "holyshotgun"
 	item_state = null
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	caliber = "12g"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
@@ -527,13 +551,12 @@ obj/item/gun/projectile/automatic/automat/taj
 		list(mode_name="2-round burst", burst=2, move_delay=6, burst_accuracy = list(60,50,40,30,25), dispersion = list(0.0, 0.6, 0.6))
 		)
 
-/obj/item/gun/projectile/automatic/holyshot/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/holyshot/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "holyshotgun"
 	else
 		icon_state = "holyshotgun_empty"
-	return
 
 //Clown Rifle
 /obj/item/gun/projectile/automatic/clown_rifle
@@ -543,6 +566,7 @@ obj/item/gun/projectile/automatic/automat/taj
 	item_state = "clownrifle"
 	wielded_item_state = "clownrifle_wielded"
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	caliber = "organic"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
@@ -560,8 +584,8 @@ obj/item/gun/projectile/automatic/automat/taj
 //		list(mode_name="short bursts", 	burst=5, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30,-30,-45), dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2)),
 		)
 
-/obj/item/gun/projectile/automatic/clown_rifle/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/clown_rifle/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
@@ -585,8 +609,8 @@ obj/item/gun/projectile/automatic/automat/taj
 		list(mode_name="double tap", burst=4, burst_delay=1, fire_delay=4, move_delay=2, burst_accuracy = list(40,30,20,15), dispersion = list(0.6, 0.6, 1.0, 1.0))
 		)
 
-/obj/item/gun/projectile/automatic/wt274/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/wt274/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]"
 	else
@@ -603,23 +627,20 @@ obj/item/gun/projectile/automatic/automat/taj
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/smg)
 	fire_sound = 'sound/items/syringeproj.ogg'
 
-/obj/item/gun/projectile/automatic/advanced_smg/foam/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/advanced_smg/foam/update_icon_state()
+	. = ..()
 	icon_state = (ammo_magazine)? "toy_smg" : "toy_smg-empty"
-	return
 
 /obj/item/gun/projectile/automatic/advanced_smg/foam/handle_suicide(mob/living/user)
 	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
 	mouthshoot = 0
-	return
 
 /obj/item/gun/projectile/automatic/advanced_smg/foam/blue
 	icon_state = "toy_smg_blue"
 
-/obj/item/gun/projectile/automatic/advanced_smg/foam/blue/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/advanced_smg/foam/blue/update_icon_state()
+	. = ..()
 	icon_state = (ammo_magazine)? "toy_smg_blue" : "toy_smg_blue-empty"
-	return
 
 //Foam c20r
 /obj/item/gun/projectile/automatic/c20r/foam
@@ -635,18 +656,16 @@ obj/item/gun/projectile/automatic/automat/taj
 	one_handed_penalty = 5
 	fire_sound = 'sound/items/syringeproj.ogg'
 
-/obj/item/gun/projectile/automatic/c20r/foam/update_icon()
-	..()
+/obj/item/gun/projectile/automatic/c20r/foam/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "toy_c20r-[round(ammo_magazine.stored_ammo.len,4)]"
 	else
 		icon_state = "toy_c20r"
-	return
 
 /obj/item/gun/projectile/automatic/c20r/foam/handle_suicide(mob/living/user)
 	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
 	mouthshoot = 0
-	return
 
 //Foam LMG
 /obj/item/gun/projectile/automatic/l6_saw/foam
@@ -662,13 +681,17 @@ obj/item/gun/projectile/automatic/automat/taj
 	one_handed_penalty = 45 //It's plastic.
 	fire_sound = 'sound/items/syringeproj.ogg'
 
-/obj/item/gun/projectile/automatic/l6_saw/foam/update_icon()
+/obj/item/gun/projectile/automatic/l6_saw/foam/update_icon_state()
+	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
 		icon_state = "toy_lmg[cover_open ? "open" : "closed"]mag"
 		item_state = icon_state
 	else
 		icon_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? round(ammo_magazine.stored_ammo.len, 25) : "-empty"]"
 		item_state = "toy_lmg[cover_open ? "open" : "closed"][ammo_magazine ? "" : "-empty"]"
+
+/obj/item/gun/projectile/automatic/l6_saw/foam/update_icon()
+	. = ..()
 	update_held_icon()
 
 /obj/item/gun/projectile/automatic/l6_saw/foam/handle_suicide(mob/living/user)

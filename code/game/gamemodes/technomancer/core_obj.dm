@@ -13,7 +13,7 @@
 		TECH_COMBAT = 7, TECH_MAGNET = 9, TECH_DATA = 5
 		)
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/teshari/back.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/back.dmi'
 		)
 	var/energy = 10000
 	var/max_energy = 10000
@@ -46,7 +46,7 @@
 	return ..()
 
 // Add the spell buttons to the HUD.
-/obj/item/technomancer_core/equipped(mob/user)
+/obj/item/technomancer_core/equipped(mob/user, slot)
 	wearer = user
 	for(var/obj/spellbutton/spell in spells)
 		wearer.ability_master.add_technomancer_ability(spell, spell.ability_icon_state)

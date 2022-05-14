@@ -276,7 +276,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "fD" = (
-/obj/effect/landmark/map_data/lavaland_east,
+/atom/movable/landmark/map_data/lavaland_east,
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
 "fL" = (
@@ -2531,7 +2531,7 @@
 /area/lavaland/east/colony)
 "XF" = (
 /obj/structure/table/glass,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},

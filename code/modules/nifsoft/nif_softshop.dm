@@ -12,45 +12,48 @@
 	products = list()
 	contraband = list()
 	premium = list()
+
+	/**
+	 * hud refactor when
+	 */
+	var/atom/movable/augmented_holder/ar_image_holder
 	var/global/list/starting_legal_nifsoft
 	var/global/list/starting_illegal_nifsoft
 
 	density = 0
 	opacity = 0
-	var/datum/entopic/entopic
 
 /obj/machinery/vending/nifsoft_shop/Initialize(mapload)
 	. = ..()
-
 	if(wires)
 		qdel(wires)
 	wires = new /datum/wires/vending/no_contraband(src) //These wires can't be hacked for contraband.
-	entopic = new(aholder = src, aicon = icon, aicon_state = "beacon")
+	var/mutable_appearance/A = new(src)
+	A.icon_state = "beacon"
+	ar_image_holder = new(null, src, A)
 
 /obj/machinery/vending/nifsoft_shop/Destroy()
-	QDEL_NULL(entopic)
+	QDEL_NULL(ar_image_holder)
 	return ..()
 
 /obj/machinery/vending/nifsoft_shop/power_change()
 	..()
-	if(!entopic) return //Early APC init(), ignore
 	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
-		entopic.hide()
+		ar_image_holder.alpha = 0
 	else
 		if(!(stat & NOPOWER))
 			icon_state = initial(icon_state)
-			entopic.show()
+			ar_image_holder.alpha = 255
 		else
 			spawn(rand(0, 15))
 				icon_state = "[initial(icon_state)]-off"
-				entopic.hide()
+				ar_image_holder.alpha = 0
 
 /obj/machinery/vending/nifsoft_shop/malfunction()
 	stat |= BROKEN
 	icon_state = "[initial(icon_state)]-broken"
-	entopic.hide()
-	return
+	ar_image_holder.alpha = 0
 
 // Special Treatment!
 /obj/machinery/vending/nifsoft_shop/build_inventory()
@@ -102,7 +105,7 @@
 	var/mob/living/carbon/human/H = user
 	if(!H.nif || !H.nif.stat == NIF_WORKING)
 		to_chat(H,"<span class='warning'>[src] seems unable to connect to your NIF...</span>")
-		flick(icon_deny,entopic.my_image)
+		flick(icon_deny, ar_image_holder)
 		return FALSE
 
 	return ..()
@@ -130,7 +133,7 @@
 		if((href_list["vend"]) && (vend_ready) && (!currently_vending))
 			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
 				to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
-				flick(icon_deny,entopic.my_image)
+				flick(icon_deny, ar_image_holder)
 				return
 
 			var/key = text2num(href_list["vend"])
@@ -147,7 +150,7 @@
 				var/list/usr_access = usr.GetAccess()
 				if(scan_id && !has_access(soft_access, list(), usr_access) && !emagged)
 					to_chat(usr, "<span class='warning'>You aren't authorized to buy [initial(path.name)].</span>")
-					flick(icon_deny,entopic.my_image)
+					flick(icon_deny, ar_image_holder)
 					return
 
 			if(R.price <= 0)
@@ -178,7 +181,7 @@
 	var/mob/living/carbon/human/H = user
 	if((!allowed(usr)) && !emagged && scan_id && istype(H))	//For SECURE VENDING MACHINES YEAH
 		to_chat(usr, "<span class='warning'>Purchase not allowed.</span>")	//Unless emagged of course
-		flick(icon_deny,entopic.my_image)
+		flick(icon_deny, ar_image_holder)
 		return
 	vend_ready = 0 //One thing at a time!!
 	status_message = "Installing..."
@@ -211,7 +214,7 @@
 	spawn(vend_delay)
 		R.amount--
 		new R.item_path(H.nif)
-		flick(icon_vend,entopic.my_image)
+		flick(icon_vend, ar_image_holder)
 		if(has_logs)
 			do_logging(R, user, 1)
 

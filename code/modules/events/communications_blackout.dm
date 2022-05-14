@@ -1,19 +1,16 @@
 /datum/event/communications_blackout
 	has_skybox_image = TRUE
 	var/botEmagChance = 0
-	var/cloud_hueshift
 	var/list/players = list()
 
 /datum/event/communications_blackout/get_skybox_image()
-	if(!cloud_hueshift)
-		cloud_hueshift = color_rotation(rand(-3, 3) * 15)
+	var/color1 = color_matrix_multiply(color_matrix_rotate_hue(rand(-3, 3) * 15), rgba_auto_greyscale_matrix("#8888ff"))
+	var/color2 = color_matrix_multiply(color_matrix_rotate_hue(rand(-3, 3) * 15), rgba_auto_greyscale_matrix("#88ff88"))
 	var/image/res = image('icons/skybox/caelus.dmi', "aurora")
-	res.color = cloud_hueshift
 	res.appearance_flags = RESET_COLOR
 	res.blend_mode = BLEND_ADD
+	animate_color_shift(res, color1, color2, 1080 * 0.5, 1080 * 0.5)
 	return res
-
-
 
 /datum/event/communications_blackout/announce()
 	var/alert = pick(	"Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you*%fj00)`5vc-BZZT", \

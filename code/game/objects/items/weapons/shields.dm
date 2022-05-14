@@ -68,7 +68,7 @@
 	throw_range = 4
 	w_class = ITEMSIZE_LARGE
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list("glass" = 7500, DEFAULT_WALL_MATERIAL = 1000)
+	matter = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
@@ -115,7 +115,7 @@
 	var/obj/item/flash/embedded_flash
 	var/flashfail = 0
 
-/obj/item/shield/riot/flash/Initialize()
+/obj/item/shield/riot/flash/Initialize(mapload)
 	. = ..()
 	embedded_flash = new(src)
 
@@ -207,7 +207,7 @@
 	max_integrity = 100
 	obj_integrity = 100
 	can_shatter = FALSE
-	item_flags = ITEM_CAN_BLOCK
+	clothing_flags = ITEM_CAN_BLOCK
 	shield_flags = SHIELD_FLAGS_DEFAULT | SHIELD_KINETIC_STRONG | SHIELD_DISABLER_DISRUPTED
 	var/recharge_timerid
 	var/recharge_delay = 15 SECONDS
@@ -260,7 +260,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "roman_shield"
 	slot_flags = SLOT_BACK
-	matter = list("wood" = 7500, DEFAULT_WALL_MATERIAL = 1000)
+	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
 			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
@@ -272,7 +272,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "buckler"
 	slot_flags = SLOT_BACK | SLOT_BELT
-	matter = list("wood" = 7500, DEFAULT_WALL_MATERIAL = 1000)
+	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
 			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
@@ -478,7 +478,7 @@
 	throwforce = 0
 	throw_speed = 2
 	throw_range = 6
-	matter = list("plastic" = 7500, "foam" = 1000)
+	matter = list(MAT_PLASTIC = 7500, "foam" = 1000)
 	item_icons = list(
 			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',

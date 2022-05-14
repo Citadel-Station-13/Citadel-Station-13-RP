@@ -1,0 +1,4 @@
+author: "lingonberry1234"
+delete-after: True
+changes: 
+  - bugfix: "Memory circuits and cell removal"

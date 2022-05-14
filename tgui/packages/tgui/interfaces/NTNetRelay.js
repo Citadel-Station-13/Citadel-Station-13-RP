@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Button, Box, Icon, Flex, LabeledList, Section } from "../components";
+import { Button, Box, Icon, LabeledList, Section } from "../components";
 import { Window } from "../layouts";
 import { FullscreenNotice } from './common/FullscreenNotice';
 
@@ -14,7 +14,7 @@ export const NTNetRelay = (props, context) => {
   } = data;
 
   let body = <NTNetRelayContent />;
-  
+
   if (dos_crashed) {
     body = <NTNetRelayCrash />;
   }
@@ -68,7 +68,7 @@ const NTNetRelayContent = (props, context) => {
 
 const NTNetRelayCrash = (props, context) => {
   const { act, data } = useBackend(context);
-  
+
   return (
     <FullscreenNotice title="ERROR">
       <Box fontSize="1.5rem" bold color="bad">
@@ -81,10 +81,12 @@ const NTNetRelayCrash = (props, context) => {
         <h2>NETWORK BUFFERS OVERLOADED</h2>
         <h3>Overload Recovery Mode</h3>
         <i>
-          This system is suffering temporary outage due to overflow of traffic buffers.
-          Until buffered traffic is processed, all further requests will be dropped.
-          Frequent occurences of this error may indicate insufficient hardware capacity of your network.
-          Please contact your network planning department for instructions on how to resolve this issue.
+          This system is suffering temporary outage due to overflow of traffic
+          buffers.  Until buffered traffic is processed, all further requests
+          will be dropped.  Frequent occurences of this error may indicate
+          insufficient hardware capacity of your network.  Please contact your
+          network planning department for instructions on how to resolve this
+          issue.
         </i>
         <h3>ADMINISTRATIVE OVERRIDE</h3>
         <b> CAUTION - Data loss may occur </b>

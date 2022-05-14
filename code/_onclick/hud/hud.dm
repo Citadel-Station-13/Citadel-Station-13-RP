@@ -12,10 +12,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/atom/movable/screen/help_intent
 
 /datum/global_hud
-	var/atom/movable/screen/druggy
-	var/atom/movable/screen/blurry
 	var/atom/movable/screen/whitense
-	var/list/vimpaired
 	var/list/darkMask
 	var/atom/movable/screen/centermarker
 	var/atom/movable/screen/darksight
@@ -37,25 +34,17 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	screen.icon = 'icons/obj/hud_full.dmi'
 	screen.icon_state = icon_state
 	screen.layer = SCREEN_LAYER
-	screen.plane = PLANE_FULLSCREEN
+	screen.plane = FULLSCREEN_PLANE
 	screen.mouse_opacity = 0
 
 	return screen
 
 /atom/movable/screen/global_screen
 	screen_loc = ui_entire_screen
-	plane = PLANE_FULLSCREEN
+	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
 
 /datum/global_hud/New()
-	//420erryday psychedellic colours screen overlay for when you are high
-	druggy = new /atom/movable/screen/global_screen()
-	druggy.icon_state = "druggy"
-
-	//that white blurry effect you get when you eyes are damaged
-	blurry = new /atom/movable/screen/global_screen()
-	blurry.icon_state = "blurry"
-
 	//static overlay effect for cameras and the like
 	whitense = new /atom/movable/screen/global_screen()
 	whitense.icon = 'icons/effects/static.dmi'
@@ -65,7 +54,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	darksight = new /atom/movable/screen()
 	darksight.icon = null
 	darksight.screen_loc = "1,1"
-	darksight.plane = PLANE_LIGHTING
+	darksight.plane = LIGHTING_PLANE
 
 	//Marks the center of the screen, for things like ventcrawl
 	centermarker = new /atom/movable/screen()
@@ -104,20 +93,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 	var/atom/movable/screen/O
 	var/i
-	//that nasty looking dither you  get when you're short-sighted
-	vimpaired = newlist(/atom/movable/screen,/atom/movable/screen,/atom/movable/screen,/atom/movable/screen)
-	O = vimpaired[1]
-	O.screen_loc = "1,1 to 5,15"
-	O.plane = PLANE_FULLSCREEN
-	O = vimpaired[2]
-	O.screen_loc = "5,1 to 10,5"
-	O.plane = PLANE_FULLSCREEN
-	O = vimpaired[3]
-	O.screen_loc = "6,11 to 10,15"
-	O.plane = PLANE_FULLSCREEN
-	O = vimpaired[4]
-	O.screen_loc = "11,1 to 15,15"
-	O.plane = PLANE_FULLSCREEN
 
 	//welding mask overlay black/dither
 	darkMask = newlist(/atom/movable/screen, /atom/movable/screen, /atom/movable/screen, /atom/movable/screen, /atom/movable/screen, /atom/movable/screen, /atom/movable/screen, /atom/movable/screen)
@@ -139,20 +114,15 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	O.screen_loc = "WEST+2,NORTH-1 to EAST-2,NORTH"
 
 	for(i = 1, i <= 4, i++)
-		O = vimpaired[i]
-		O.icon_state = "dither50"
-		O.plane = PLANE_FULLSCREEN
-		O.mouse_opacity = 0
-
 		O = darkMask[i]
 		O.icon_state = "dither50"
-		O.plane = PLANE_FULLSCREEN
+		O.plane = FULLSCREEN_PLANE
 		O.mouse_opacity = 0
 
 	for(i = 5, i <= 8, i++)
 		O = darkMask[i]
 		O.icon_state = "black"
-		O.plane = PLANE_FULLSCREEN
+		O.plane = FULLSCREEN_PLANE
 		O.mouse_opacity = 2
 
 /*
@@ -182,7 +152,10 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/list/static_inventory = list() //the screen objects which are static
 
 	var/list/adding
+	///Misc hud elements that are hidden when the hud is minimized
 	var/list/other
+	///Misc hud elements that are always shown even when the hud is minimized
+	var/list/other_important
 	var/list/miniobjs
 	var/list/atom/movable/screen/hotkeybuttons
 
@@ -219,6 +192,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	move_intent = null
 	adding = null
 	other = null
+	other_important = null
 	hotkeybuttons = null
 //	item_action_list = null // ?
 	mymob = null
@@ -438,6 +412,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			src.client.screen -= src.hud_used.other
 		if(src.hud_used.hotkeybuttons)
 			src.client.screen -= src.hud_used.hotkeybuttons
+		if(src.hud_used.other_important)
+			src.client.screen -= src.hud_used.other_important
 		src.client.screen -= src.internals
 		src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
 	else
@@ -446,6 +422,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			src.client.screen += src.hud_used.adding
 		if(src.hud_used.other && src.hud_used.inventory_shown)
 			src.client.screen += src.hud_used.other
+		if(src.hud_used.other_important)
+			src.client.screen += src.hud_used.other_important
 		if(src.hud_used.hotkeybuttons && !src.hud_used.hotkey_ui_hidden)
 			src.client.screen += src.hud_used.hotkeybuttons
 		if(src.internals)
@@ -455,9 +433,3 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	hud_used.hidden_inventory_update()
 	hud_used.persistant_inventory_update()
 	update_action_buttons()
-
-/mob/proc/add_click_catcher()
-	client.screen += client.void
-
-/mob/new_player/add_click_catcher()
-	return

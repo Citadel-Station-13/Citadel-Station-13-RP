@@ -7,6 +7,7 @@
 	max_shells = 1
 	load_method = SINGLE_CASING
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	throw_speed = 2
 	throw_range = 10
 	force = 5.0

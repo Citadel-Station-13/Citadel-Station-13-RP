@@ -5,7 +5,7 @@
 /area/abductor/exterior)
 "bG" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/abductor/interior)
 "bP" = (
@@ -249,7 +249,7 @@
 /turf/simulated/shuttle/wall/alien,
 /area/abductor/interior)
 "qk" = (
-/obj/machinery/atmospherics/unary/engine/biggest{
+/obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/alienplating,
@@ -493,7 +493,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Fl" = (
-/obj/machinery/atmospherics/binary/pump/fuel,
+/obj/machinery/atmospherics/component/binary/pump/fuel,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Fq" = (
@@ -571,7 +571,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Ji" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "JF" = (

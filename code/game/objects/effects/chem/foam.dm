@@ -18,7 +18,7 @@
 	var/dries = 1 //VOREStation Add
 	var/slips = 0 //VOREStation Add
 
-/obj/effect/foam/Initialize(var/mapload, var/ismetal = 0)
+/obj/effect/foam/Initialize(mapload, ismetal = FALSE)
 	. = ..()
 	//icon_state = "[ismetal? "m" : ""]foam" //VOREStation Removal
 	metal = ismetal

@@ -406,7 +406,7 @@
   * Sets our glide size
   */
 /atom/movable/proc/set_glide_size(new_glide_size)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_CHANGE_GLIDE_SIZE, new_glide_size, glide_size)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
 	glide_size = new_glide_size
 
 /**

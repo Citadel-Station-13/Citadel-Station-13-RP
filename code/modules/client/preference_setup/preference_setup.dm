@@ -7,11 +7,12 @@
 	sort_order = 1
 	category_item_type = /datum/category_item/player_setup_item/general
 
+/*
 /datum/category_group/player_setup_category/skill_preferences
-	name = "Skills"
-	sort_order = 2
-	category_item_type = /datum/category_item/player_setup_item/skills
-
+name = "Skills"
+sort_order = 2
+category_item_type = /datum/category_item/player_setup_item/skills
+*/
 /datum/category_group/player_setup_category/appearance_preferences
 	name = "Antagonism"
 	sort_order = 4
@@ -109,8 +110,11 @@
 /datum/category_group/player_setup_category
 	var/sort_order = 0
 
-/datum/category_group/player_setup_category/dd_SortValue()
-	return sort_order
+/datum/category_group/player_setup_category/compare_to(datum/D)
+	if(istype(D, /datum/category_group/player_setup_category))
+		var/datum/category_group/player_setup_category/G = D
+		return cmp_numeric_asc(sort_order, G.sort_order)
+	return ..()
 
 /datum/category_group/player_setup_category/proc/sanitize_setup()
 	for(var/datum/category_item/player_setup_item/PI in items)
@@ -172,8 +176,11 @@
 	pref = null
 	return ..()
 
-/datum/category_item/player_setup_item/dd_SortValue()
-	return sort_order
+/datum/category_item/player_setup_item/compare_to(datum/D)
+	if(istype(D, /datum/category_item/player_setup_item))
+		var/datum/category_item/player_setup_item/I = D
+		return cmp_numeric_asc(sort_order, I.sort_order)
+	return ..()
 
 /*
 * Called when the item is asked to load per character settings
@@ -265,7 +272,7 @@
 	return 0 //Something went wrong!
 
 /datum/category_item/player_setup_item/proc/get_min_age() //Minimum limit is 18
-	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
+	var/datum/species/S = pref.character_static_species_meta()
 	if(S.min_age > 18)
 		return S.min_age
 	else if(!is_FBP())
@@ -273,7 +280,7 @@
 	return S.min_age
 
 /datum/category_item/player_setup_item/proc/get_max_age()
-	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
+	var/datum/species/S = pref.character_static_species_meta()
 	if(!is_FBP())
 		return S.max_age // If they're not a robot, we can just use the species var.
 	var/FBP_type = get_FBP_type()

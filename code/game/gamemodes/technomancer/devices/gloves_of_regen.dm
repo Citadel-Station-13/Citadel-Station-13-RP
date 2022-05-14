@@ -36,7 +36,7 @@
 			wearer.custom_pain("Your hands hurt like hell!",1)
 		wearer = null
 
-/obj/item/clothing/gloves/regen/Initialize()
+/obj/item/clothing/gloves/regen/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 

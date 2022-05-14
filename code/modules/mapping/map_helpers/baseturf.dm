@@ -1,12 +1,12 @@
 /obj/effect/baseturf_helper //Set the baseturfs of every turf in the /area/ it is placed.
 	name = "baseturf editor"
-	icon = 'icons/effects/mapping_helpers.dmi'
+	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
 	icon_state = ""
 
 	var/list/baseturf_to_replace
 	var/baseturf
 
-	layer = POINT_LAYER
+	layer = ABOVE_WINDOW_LAYER
 
 /obj/effect/baseturf_helper/Initialize(mapload)
 	. = ..()
@@ -14,7 +14,7 @@
 
 /obj/effect/baseturf_helper/LateInitialize()
 	if(!baseturf_to_replace)
-		baseturf_to_replace = typecacheof(list(/turf/open/space,/turf/baseturf_bottom))
+		baseturf_to_replace = typecacheof(list(/turf/space, /turf/baseturf_bottom))
 	else if(!length(baseturf_to_replace))
 		baseturf_to_replace = list(baseturf_to_replace = TRUE)
 	else if(baseturf_to_replace[baseturf_to_replace[1]] != TRUE) // It's not associative
@@ -46,37 +46,37 @@
 
 /obj/effect/baseturf_helper/space
 	name = "space baseturf editor"
-	baseturf = /turf/open/space
+	baseturf = /turf/space
 
-/obj/effect/baseturf_helper/asteroid
-	name = "asteroid baseturf editor"
-	baseturf = /turf/open/floor/plating/asteroid
+// /obj/effect/baseturf_helper/asteroid
+// 	name = "asteroid baseturf editor"
+// 	baseturf = /turf/open/floor/plating/asteroid
 
-/obj/effect/baseturf_helper/asteroid/airless
-	name = "asteroid airless baseturf editor"
-	baseturf = /turf/open/floor/plating/asteroid/airless
+// /obj/effect/baseturf_helper/asteroid/airless
+// 	name = "asteroid airless baseturf editor"
+// 	baseturf = /turf/open/floor/plating/asteroid/airless
 
-/obj/effect/baseturf_helper/asteroid/basalt
-	name = "asteroid basalt baseturf editor"
-	baseturf = /turf/open/floor/plating/asteroid/basalt
+// /obj/effect/baseturf_helper/asteroid/basalt
+// 	name = "asteroid basalt baseturf editor"
+// 	baseturf = /turf/open/floor/plating/asteroid/basalt
 
-/obj/effect/baseturf_helper/asteroid/snow
-	name = "asteroid snow baseturf editor"
-	baseturf = /turf/open/floor/plating/asteroid/snow
+// /obj/effect/baseturf_helper/asteroid/snow
+// 	name = "asteroid snow baseturf editor"
+// 	baseturf = /turf/open/floor/plating/asteroid/snow
 
-/obj/effect/baseturf_helper/beach/sand
-	name = "beach sand baseturf editor"
-	baseturf = /turf/open/floor/plating/beach/sand
+// /obj/effect/baseturf_helper/beach/sand
+// 	name = "beach sand baseturf editor"
+// 	baseturf = /turf/open/floor/plating/beach/sand
 
-/obj/effect/baseturf_helper/beach/water
-	name = "water baseturf editor"
-	baseturf = /turf/open/floor/plating/beach/water
+// /obj/effect/baseturf_helper/beach/water
+// 	name = "water baseturf editor"
+// 	baseturf = /turf/open/floor/plating/beach/water
 
-/obj/effect/baseturf_helper/lava
-	name = "lava baseturf editor"
-	baseturf = /turf/open/lava/smooth
+// /obj/effect/baseturf_helper/lava
+// 	name = "lava baseturf editor"
+// 	baseturf = /turf/open/lava/smooth
 
-/obj/effect/baseturf_helper/lava_land/surface
-	name = "lavaland baseturf editor"
-	baseturf = /turf/open/lava/smooth/lava_land_surface
+// /obj/effect/baseturf_helper/lava_land/surface
+// 	name = "lavaland baseturf editor"
+// 	baseturf = /turf/open/lava/smooth/lava_land_surface
 

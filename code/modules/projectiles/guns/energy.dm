@@ -187,7 +187,8 @@
 		. += "Does not have a power cell."
 	return
 
-/obj/item/gun/energy/update_icon(var/ignore_inhands)
+/obj/item/gun/energy/update_icon(ignore_inhands)
+	. = ..()
 	if(power_supply == null)
 		if(modifystate)
 			icon_state = "[modifystate]_open"
@@ -236,3 +237,8 @@
 	results += ..()
 
 	return results
+
+/obj/item/gun/energy/inducer_scan(obj/item/inducer/I, list/things_to_induce, inducer_flags)
+	if(inducer_flags & INDUCER_NO_GUNS)
+		return
+	return ..()

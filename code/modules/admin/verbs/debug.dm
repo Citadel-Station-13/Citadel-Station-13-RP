@@ -273,15 +273,21 @@
 	set name = "Display Initialize() Log"
 	set desc = "Displays a list of things that didn't handle Initialize() properly"
 
-	if(!check_rights(R_DEBUG))	return
-	src << browse(replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
+	if(!check_rights(R_DEBUG))
+		return
+	var/rendered = replacetext(SSatoms.InitLog(), "\n", "<br>")
+	if(!length(rendered))
+		to_chat(usr, SPAN_BOLDNOTICE("There were no bad init calls so far! Yay :)"))
+		return
+	src << browse(rendered, "window=initlog")
 
 /client/proc/cmd_display_overlay_log()
 	set category = "Debug"
 	set name = "Display overlay Log"
 	set desc = "Display SSoverlays log of everything that's passed through it."
 
-	if(!check_rights(R_DEBUG))	return
+	if(!check_rights(R_DEBUG))
+		return
 	render_stats(SSoverlays.stats, src)
 
 // Render stats list for round-end statistics.
@@ -463,14 +469,14 @@
 
 	var/mob/living/carbon/human/H = target
 
-	var/decl/hierarchy/outfit/outfit = input("Select outfit.", "Select equipment.") as null|anything in outfits()
+	var/datum/outfit/outfit = input("Select outfit.", "Select equipment.") as null|anything in get_all_outfits()
 	if(!outfit)
 		return
 
 	feedback_add_details("admin_verb","SEQ")
 	dressup_human(H, outfit, 1)
 
-/proc/dressup_human(var/mob/living/carbon/human/H, var/decl/hierarchy/outfit/outfit)
+/proc/dressup_human(var/mob/living/carbon/human/H, var/datum/outfit/outfit)
 	if(!H || !outfit)
 		return
 	if(outfit.undress)
@@ -563,8 +569,8 @@
 					Rad.toggle_power()
 				Rad.update_icon()
 
-			else if(istype(M,/obj/machinery/atmospherics/binary/pump))	//Turning on every pump.
-				var/obj/machinery/atmospherics/binary/pump/Pump = M
+			else if(istype(M,/obj/machinery/atmospherics/component/binary/pump))	//Turning on every pump.
+				var/obj/machinery/atmospherics/component/binary/pump/Pump = M
 				if(Pump.name == "Engine Feed" && response == "Setup Completely")
 					found_the_pump = 1
 					Pump.air2.gas[/datum/gas/nitrogen] = 3750	//The contents of 2 canisters.

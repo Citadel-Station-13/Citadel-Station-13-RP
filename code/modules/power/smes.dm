@@ -549,3 +549,25 @@ GLOBAL_LIST_EMPTY(smeses)
 	input_level = 100000
 	output_level = 200000
 
+#define SMES_UI_INPUT 1
+#define SMES_UI_OUTPUT 2
+
+/obj/machinery/power/smes/proc/ui_set_io(io, target, adjust)
+	if(target == "min")
+		target = 0
+		. = TRUE
+	else if(target == "max")
+		target = output_level_max
+		. = TRUE
+	else if(adjust)
+		target = output_level + adjust
+		. = TRUE
+	else if(text2num(target) != null)
+		target = text2num(target)
+		. = TRUE
+	if(.)
+		switch(io)
+			if(SMES_UI_INPUT)
+				set_input(target)
+			if(SMES_UI_OUTPUT)
+				set_output(target)

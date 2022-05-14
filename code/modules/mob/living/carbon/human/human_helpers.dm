@@ -99,12 +99,13 @@
 // This is the 'mechanical' check for synthetic-ness, not appearance
 // Returns the company that made the synthetic
 /mob/living/carbon/human/isSynthetic()
-	if(synthetic) return synthetic //Your synthetic-ness is not going away
+	if(synthetic)
+		return synthetic //Your synthetic-ness is not going away
 	var/obj/item/organ/external/T = organs_by_name[BP_TORSO]
 	if(T && T.robotic >= ORGAN_ROBOT)
 		src.verbs += /mob/living/carbon/human/proc/self_diagnostics
 		src.verbs += /mob/living/carbon/human/proc/setmonitor_state
-		var/datum/robolimb/R = all_robolimbs[T.model]
+		var/datum/robolimb/R = GLOB.all_robolimbs[T.model]
 		synthetic = R
 		return synthetic
 
@@ -146,23 +147,6 @@
 				return FBP_CYBORG
 
 	return FBP_NONE
-
-/mob/living/carbon/human/make_hud_overlays()
-	hud_list[HEALTH_HUD]      = gen_hud_image(ingame_hud_med, src, "100", plane = PLANE_CH_HEALTH)
-	if(isSynthetic())
-		hud_list[STATUS_HUD]  = gen_hud_image(ingame_hud, src, "hudrobo", plane = PLANE_CH_STATUS)
-		hud_list[LIFE_HUD]	  = gen_hud_image(ingame_hud, src, "hudrobo", plane = PLANE_CH_LIFE)
-	else
-		hud_list[STATUS_HUD]  = gen_hud_image(ingame_hud, src, "hudhealthy", plane = PLANE_CH_STATUS)
-		hud_list[LIFE_HUD]    = gen_hud_image(ingame_hud, src, "hudhealthy", plane = PLANE_CH_LIFE)
-	hud_list[ID_HUD]          = gen_hud_image(GLOB.using_map.id_hud_icons, src, "hudunknown", plane = PLANE_CH_ID)
-	hud_list[WANTED_HUD]      = gen_hud_image(ingame_hud, src, "hudblank", plane = PLANE_CH_WANTED)
-	hud_list[IMPLOYAL_HUD]    = gen_hud_image(ingame_hud, src, "hudblank", plane = PLANE_CH_IMPLOYAL)
-	hud_list[IMPCHEM_HUD]     = gen_hud_image(ingame_hud, src, "hudblank", plane = PLANE_CH_IMPCHEM)
-	hud_list[IMPTRACK_HUD]    = gen_hud_image(ingame_hud, src, "hudblank", plane = PLANE_CH_IMPTRACK)
-	hud_list[SPECIALROLE_HUD] = gen_hud_image(ingame_hud, src, "hudblank", plane = PLANE_CH_SPECIAL)
-	hud_list[STATUS_HUD_OOC]  = gen_hud_image(ingame_hud, src, "hudhealthy", plane = PLANE_CH_STATUS_OOC)
-	add_overlay(hud_list)
 
 /mob/living/carbon/human/recalculate_vis()
 	if(!vis_enabled || !plane_holder)
@@ -208,19 +192,19 @@
 		plane_holder.set_vis(vis,FALSE)
 		vis_enabled -= vis
 
-var/static/icon/ingame_hud_vr = icon('icons/mob/hud_vr.dmi')
-var/static/icon/ingame_hud_med_vr = icon('icons/mob/hud_med_vr.dmi')
+/mob/living/carbon/human/get_restraining_bolt()
+	var/obj/item/implant/restrainingbolt/RB
 
-/mob/living/carbon/human/make_hud_overlays()
-	. = ..()
-	hud_list[HEALTH_VR_HUD]   = gen_hud_image(ingame_hud_med_vr, src, "100", plane = PLANE_CH_HEALTH_VR)
-	hud_list[STATUS_R_HUD]    = gen_hud_image(ingame_hud_vr, src, plane = PLANE_CH_STATUS_R)
-	hud_list[BACKUP_HUD]      = gen_hud_image(ingame_hud_vr, src, plane = PLANE_CH_BACKUP)
-	hud_list[VANTAG_HUD]      = gen_hud_image(ingame_hud_vr, src, plane = PLANE_CH_VANTAG)
+	for(var/obj/item/organ/external/EX in organs)
+		RB = locate() in EX
+		if(istype(RB) && !(RB.malfunction))
+			break
 
-#undef HUMAN_EATING_NO_ISSUE
-#undef HUMAN_EATING_NO_MOUTH
-#undef HUMAN_EATING_BLOCKED_MOUTH
+	if(RB)
+		if(!RB.malfunction)
+			return TRUE
+
+	return FALSE
 
 /mob/living/carbon/human/can_see_reagents()
 	. = ..()
@@ -230,3 +214,8 @@ var/static/icon/ingame_hud_med_vr = icon('icons/mob/hud_med_vr.dmi')
 		var/obj/item/clothing/C = glasses
 		if(C.clothing_flags & SCAN_REAGENTS)
 			return TRUE
+
+
+#undef HUMAN_EATING_NO_ISSUE
+#undef HUMAN_EATING_NO_MOUTH
+#undef HUMAN_EATING_BLOCKED_MOUTH

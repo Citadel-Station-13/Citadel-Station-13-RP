@@ -526,7 +526,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/academy/headmaster)
 "bQ" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,
@@ -768,7 +768,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -920,7 +920,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /obj/item/weldingtool,
@@ -1495,7 +1495,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/academy/classrooms)
 "fW" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,
@@ -2325,7 +2325,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -2569,7 +2569,7 @@
 	},
 /area/awaymission/academy/academyaft)
 "jf" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/tiled/old_tile/gray,

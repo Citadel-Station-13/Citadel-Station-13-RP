@@ -30,7 +30,7 @@ export const CommunicationsConsoleContent = (props, context) => {
   // 1 = main screen
   if (menu_state === 1) {
     mainTemplate = <CommunicationsConsoleMain />;
-  } else if (menu_state === 2) { 
+  } else if (menu_state === 2) {
     // 2 = status screen
     mainTemplate = <CommunicationsConsoleStatusDisplay />;
   } else if (menu_state === 3) {

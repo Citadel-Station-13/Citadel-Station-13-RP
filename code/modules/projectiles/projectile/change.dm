@@ -32,7 +32,7 @@
 		var/mob/living/new_mob
 
 		var/options = list("robot", "slime")
-		for(var/t in GLOB.all_species)
+		for(var/t in all_species_names())
 			options += t
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -77,7 +77,7 @@
 				H.name += " [pick(last_names)]"
 				H.real_name = H.name
 
-				H.set_species(randomize)
+				H.set_species(species_type_by_name(randomize))
 				H.universal_speak = 1
 				var/datum/preferences/A = new() //Randomize appearance for the human
 				A.randomize_appearance_and_body_for(H)

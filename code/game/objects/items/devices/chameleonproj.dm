@@ -20,7 +20,7 @@
 	disrupt()
 	..()
 
-/obj/item/chameleon/equipped()
+/obj/item/chameleon/equipped(mob/user, slot)
 	..()
 	disrupt()
 	..()
@@ -79,10 +79,10 @@
 
 /obj/item/chameleon/proc/eject_all()
 	for(var/atom/movable/A in active_dummy)
-		A.loc = active_dummy.loc
+		A.forceMove(active_dummy.loc)
 		if(ismob(A))
 			var/mob/M = A
-			M.reset_view(null)
+			M.update_perspective()
 
 /obj/effect/dummy/chameleon
 	name = ""

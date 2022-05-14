@@ -81,7 +81,7 @@
 	last_law_notification = world.time
 	SEND_SOUND(src, 'sound/machines/defib_success.ogg')
 	window_flash(client)
-	to_chat(src, span("warning", message))
+	to_chat(src, SPAN_WARNING( message))
 
 /mob/living/silicon/proc/statelaws(var/datum/ai_laws/laws)
 	var/prefix = ""

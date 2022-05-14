@@ -1,6 +1,6 @@
 /datum/species/shadekin
 	name = SPECIES_SHADEKIN
-	name_plural = "Shadekin"
+	name_plural = SPECIES_SHADEKIN
 	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	tail = "tail"
@@ -14,11 +14,20 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
 
 	language = LANGUAGE_SHADEKIN
-	assisted_langs = list()
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/shadekin, /datum/unarmed_attack/bite/sharp/shadekin)
+	name_language = LANGUAGE_SHADEKIN
+	species_language = LANGUAGE_SHADEKIN
+	secondary_langs = list(LANGUAGE_SHADEKIN)
+	num_alternate_languages = 3
+	unarmed_types = list(
+		/datum/unarmed_attack/stomp,
+		/datum/unarmed_attack/kick,
+		/datum/unarmed_attack/claws/shadekin,
+		/datum/unarmed_attack/bite/sharp/shadekin
+		)
+
 	rarity_value = 15	//INTERDIMENSIONAL FLUFFERS
 
-	siemens_coefficient = 0
+	siemens_coefficient = 1
 	darksight = 10
 
 	slowdown = -0.5
@@ -62,13 +71,13 @@
 
 	genders = list(MALE, FEMALE, PLURAL, NEUTER, HERM)	//fuck it. shadekins with titties
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	breath_type = null
 	poison_type = null
 
 	vision_flags = SEE_SELF|SEE_MOBS
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_UNDERWEAR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_UNDERWEAR
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 

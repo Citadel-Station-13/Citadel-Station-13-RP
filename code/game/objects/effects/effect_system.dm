@@ -190,11 +190,11 @@ steam.start() -- spawns the effect
 /obj/effect/smoke/proc/affect(var/mob/living/carbon/M)
 	if (!istype(M))
 		return 0
-	if(M.wear_mask && (M.wear_mask.item_flags & ALLOWINTERNALS))
+	if(M.wear_mask && (M.wear_mask.clothing_flags & ALLOWINTERNALS))
 		return 0
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if(H.head && (H.head.item_flags & ALLOWINTERNALS))
+		if(H.head && (H.head.clothing_flags & ALLOWINTERNALS))
 			return 0
 	return 1
 

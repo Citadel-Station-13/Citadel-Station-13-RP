@@ -9,7 +9,7 @@
 	name = "boots of speed"
 	desc = "The latest in sure footing technology."
 	icon_state = "swat"
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 	slowdown = -1
 

@@ -116,14 +116,10 @@ var/list/all_maps = list()
 	var/overmap_z = 0			// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
 	var/overmap_event_areas = 0	// How many event "clouds" will be generated
 
-	var/default_skybox = /datum/skybox_settings	// What skybox do we use if a zlevel doesn't have a custom one?
-
 	var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)
 	var/list/lobby_screens = list("mockingjay00")	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.
 
 	var/default_law_type = /datum/ai_laws/nanotrasen	// The default lawset use by synth units, if not overriden by their laws var.
-
-	var/id_hud_icons = 'icons/mob/hud.dmi'	// Used by the ID HUD (primarily sechud) overlay.
 
 	// Some maps include areas for that map only and don't exist when not compiled, so Travis needs this to learn of new areas that are specific to a map.
 	var/list/unit_test_exempt_areas = list()
@@ -257,14 +253,6 @@ var/list/all_maps = list()
 		num2text(SRV_FREQ)   = list(access_janitor, access_hydroponics),
 	)
 
-/datum/map/proc/get_skybox_datum(z)
-	if(map_levels["[z]"])
-		var/datum/map_z_level/picked = map_levels["[z]"]
-		if(picked.custom_skybox)
-			return new picked.custom_skybox
-
-	return new default_skybox
-
 // Another way to setup the map datum that can be convenient.  Just declare all your zlevels as subtypes of a common
 // 	subtype of /datum/map_z_level and set zlevel_datum_type on /datum/map to have the lists auto-initialized.
 
@@ -273,7 +261,7 @@ var/list/all_maps = list()
 	var/z = 0				// Actual z-index of the zlevel. This had better be right!
 	var/name				// Friendly name of the zlevel
 	var/flags = 0			// Bitflag of which *_levels lists this z should be put into.
-	var/turf/base_turf		// Type path of the base turf for this z
+	var/turf/base_turf = /turf/space // Type path of the base turf for this z
 	var/transit_chance = 0	// Percentile chance this z will be chosen for map-edge space transit.
 
 // Holomaps
@@ -281,9 +269,6 @@ var/list/all_maps = list()
 	var/holomap_offset_y = -1	// Number of pixels to offset the map up (for centering) for this z
 	var/holomap_legend_x = 96	// x position of the holomap legend for this z
 	var/holomap_legend_y = 96	// y position of the holomap legend for this z
-
-// Skybox
-	var/custom_skybox = null  // Can override skybox type here for this z
 
 // Default constructor applies itself to the parent map datum
 /datum/map_z_level/New(var/datum/map/map, _z)

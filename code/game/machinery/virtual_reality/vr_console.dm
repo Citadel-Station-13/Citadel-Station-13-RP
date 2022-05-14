@@ -170,10 +170,8 @@
 			to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
 			return
 		M.stop_pulling()
-		if(M.client)
-			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
-		M.loc = src
+		M.forceMove(src)
+		M.update_perspective()
 		update_use_power(USE_POWER_ACTIVE)
 		occupant = M
 
@@ -192,10 +190,8 @@
 	avatar.exit_vr()
 	avatar = null
 
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-	occupant.loc = src.loc
+	occupant.forceMove(loc)
+	occupant.reset_perspective()
 	occupant = null
 	for(var/atom/movable/A in src) // In case an object was dropped inside or something
 		if(A == circuit)
@@ -231,21 +227,21 @@
 		// Get the desired spawn location to put the body
 		var/S = null
 		var/list/vr_landmarks = list()
-		for(var/obj/effect/landmark/virtual_reality/sloc in GLOB.landmarks_list)
+		for(var/atom/movable/landmark/virtual_reality/sloc in GLOB.landmarks_list)
 			vr_landmarks += sloc.name
 
 		S = input(occupant, "Please select a location to spawn your avatar at:", "Spawn location") as null|anything in vr_landmarks
 		if(!S)
 			return 0
 
-		for(var/obj/effect/landmark/virtual_reality/i in GLOB.landmarks_list)
+		for(var/atom/movable/landmark/virtual_reality/i in GLOB.landmarks_list)
 			if(i.name == S)
 				S = i
 				break
 
-		avatar = new(S, "Virtual Reality Avatar")
+		avatar = new(S, SPECIES_VR)
 		// If the user has a non-default (Human) bodyshape, make it match theirs.
-		if(occupant.species.name != "Promethean" && occupant.species.name != "Human" && mirror_first_occupant)
+		if(occupant.species.name != SPECIES_PROMETHEAN && occupant.species.name != SPECIES_HUMAN && mirror_first_occupant)
 			avatar.shapeshifter_change_shape(occupant.species.name)
 		avatar.forceMove(get_turf(S))			// Put the mob on the landmark, instead of inside it
 		avatar.Sleeping(1)
@@ -259,4 +255,3 @@
 
 	else
 		occupant.enter_vr(avatar)
-

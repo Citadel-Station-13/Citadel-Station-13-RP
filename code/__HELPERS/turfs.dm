@@ -48,8 +48,7 @@
 			return locate(clearance, rand(clearance, world.maxy - clearance), Z)
 
 /proc/is_below_sound_pressure(var/turf/T)
-	var/datum/gas_mixture/environment = T ? T.return_air() : null
-	var/pressure =  environment ? environment.return_pressure() : 0
+	var/pressure =  T.return_pressure() || 0
 	if(pressure < SOUND_MINIMUM_PRESSURE)
 		return TRUE
 	return FALSE
@@ -80,10 +79,12 @@
 		var/turf/target = translation[source]
 
 		if(target)
-			if(base_area) ChangeArea(target, get_area(source))
-			var/leave_turf = base_turf ? base_turf : get_base_turf_by_area(base_area ? base_area : source)
+			if(base_area)
+				ChangeArea(target, get_area(source))
+			var/leave_turf = base_turf ? base_turf : /turf/simulated/floor/plating
 			translate_turf(source, target, leave_turf)
-			if(base_area) ChangeArea(source, base_area)
+			if(base_area)
+				ChangeArea(source, base_area)
 
 	// Change the old turfs (Currently done by translate_turf for us)
 	//for(var/turf/source in translation)
@@ -101,31 +102,19 @@
 
 	var/turf/X	// New Destination Turf
 
-	// Are we doing shuttlework? Just to save another type check later.
-	var/shuttlework = 0
+	var/old_dir1 = T.dir
+	var/old_icon_state1 = T.icon_state
+	var/old_icon1 = T.icon
+	var/old_underlays = T.underlays.Copy()
+	var/old_decals = T.decals ? T.decals.Copy() : null
 
-	// Shuttle turfs handle their own fancy moving.
-	if(istype(T,/turf/simulated/shuttle))
-		shuttlework = 1
-		var/turf/simulated/shuttle/SS = T
-		if(!SS.landed_holder) SS.landed_holder = new(turf = SS)
-		X = SS.landed_holder.land_on(B)
-
-	// Generic non-shuttle turf move.
-	else
-		var/old_dir1 = T.dir
-		var/old_icon_state1 = T.icon_state
-		var/old_icon1 = T.icon
-		var/old_underlays = T.underlays.Copy()
-		var/old_decals = T.decals ? T.decals.Copy() : null
-
-		X = B.ChangeTurf(T.type)
-		X.setDir(old_dir1)
-		X.icon_state = old_icon_state1
-		X.icon = old_icon1
-		X.copy_overlays(T, TRUE)
-		X.underlays = old_underlays
-		X.decals = old_decals
+	X = B.PlaceOnTop(T.type)
+	X.setDir(old_dir1)
+	X.icon_state = old_icon_state1
+	X.icon = old_icon1
+	X.copy_overlays(T, TRUE)
+	X.underlays = old_underlays
+	X.decals = old_decals
 
 	// Move the air from source to dest
 	var/turf/simulated/ST = T
@@ -160,13 +149,10 @@
 			var/mob/living/LM = M
 			LM.check_shadow()	// Need to check their Z-shadow, which is normally done in forceMove().
 
-	if(shuttlework)
-		var/turf/simulated/shuttle/SS = T
-		SS.landed_holder.leave_turf(turftoleave)
-	else if(turftoleave)
+	if(turftoleave)
 		T.ChangeTurf(turftoleave)
 	else
-		T.ChangeTurf(get_base_turf_by_area(T))
+		T.ScrapeAway()
 
 	return TRUE
 

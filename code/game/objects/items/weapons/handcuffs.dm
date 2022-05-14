@@ -10,7 +10,7 @@
 	throw_speed = 2
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 500)
+	matter = list(MAT_STEEL = 500)
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	var/elastic
@@ -99,7 +99,7 @@
 		user.drop_from_inventory(cuffs)
 	cuffs.loc = target
 	target.handcuffed = cuffs
-	target.update_inv_handcuffed()
+	target.update_handcuffed()
 	target.drop_r_hand()
 	target.drop_l_hand()
 	target.stop_pulling()
@@ -240,7 +240,7 @@ var/last_chew = 0
 	origin_tech = list(TECH_MATERIAL = 1)
 	breakouttime = 300	//Deciseconds = 30s = 0.5 minute
 	cuff_type = "legcuffs"
-	sprite_sheets = list("Teshari" = 'icons/mob/species/teshari/handcuffs.dmi')
+	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/handcuffs.dmi')
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 

@@ -62,7 +62,7 @@
 	seed_name = "glowberry"
 	display_name = "glowberry bush"
 	mutants = null
-	chems = list("nutriment" = list(1,10), "uranium" = list(3,5))
+	chems = list("nutriment" = list(1,10), MAT_URANIUM = list(3,5))
 
 /datum/seed/berry/glow/New()
 	..()
@@ -281,7 +281,7 @@
 	display_name = "gold apple tree"
 	kitchen_tag = "goldapple"
 	mutants = null
-	chems = list("nutriment" = list(1,10), "gold" = list(1,5))
+	chems = list("nutriment" = list(1,10), MAT_GOLD = list(1,5))
 
 /datum/seed/apple/gold/New()
 	..()
@@ -1450,7 +1450,7 @@
 	seed_name = "alien weed"
 	display_name = "alien weeds"
 	force_layer = 3
-	chems = list("phoron" = list(1,3))
+	chems = list(MAT_PHORON = list(1,3))
 
 /datum/seed/xenomorph/New()
 	..()

@@ -318,7 +318,7 @@
 		to_chat(user, "<span class='warning'>This isn't even an ID card you idiot.</span>")
 		return
 
-//arokha:Aronai Kadigan - Centcom ID (Medical dept)
+//arokha:Aronai Sieyes - Centcom ID (Medical dept)
 /obj/item/card/id/centcom/station/fluff/aronai
 	registered_name = "CONFIGURE ME"
 	assignment = "CC Medical"
@@ -535,7 +535,7 @@
 	force = 5.0
 	throwforce = 7.0
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 50)
+	matter = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/cane/fluff/tasald
@@ -554,7 +554,7 @@
     force = 1.0
     throwforce = 2.0
     w_class = ITEMSIZE_SMALL
-    matter = list(DEFAULT_WALL_MATERIAL = 50)
+    matter = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
     hitsound = 'sound/weapons/sparkle.ogg'
     var/last_use = 0
@@ -1213,7 +1213,7 @@
 	desc = "The goggles really do nothing this time!"
 	icon_state = "purple"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 
 //General use, Verk felt like sharing.
 /obj/item/clothing/glasses/fluff/spiffygogs

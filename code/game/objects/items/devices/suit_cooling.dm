@@ -13,7 +13,7 @@
 	throw_range = 4
 	action_button_name = "Toggle Heatsink"
 
-	matter = list("steel" = 15000, "glass" = 3500)
+	matter = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)
 
 	var/on = 0				//is it turned on?
@@ -28,7 +28,7 @@
 /obj/item/suit_cooling_unit/ui_action_click()
 	toggle(usr)
 
-/obj/item/suit_cooling_unit/Initialize()
+/obj/item/suit_cooling_unit/Initialize(mapload)
 	. = ..()
 	if(ispath(cell))
 		cell = new cell(src)
@@ -79,8 +79,8 @@
 		if(istype(H.loc, /obj/mecha))
 			var/obj/mecha/M = H.loc
 			return M.return_temperature()
-		else if(istype(H.loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			var/obj/machinery/atmospherics/unary/cryo_cell/C = H.loc
+		else if(istype(H.loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
+			var/obj/machinery/atmospherics/component/unary/cryo_cell/C = H.loc
 			return C.air_contents.temperature
 
 	var/turf/T = get_turf(src)

@@ -10,8 +10,9 @@
 	attack_hand(mob/user as mob)
 		switch(alert("Travel back to ss13?",,"Yes","No"))
 			if("Yes")
-				if(user.z != src.z)	return
-				user.forceMove(pick(latejoin))
+				if(user.z != src.z)
+					return
+				user.forceMove(SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION))
 			if("No")
 				return
 

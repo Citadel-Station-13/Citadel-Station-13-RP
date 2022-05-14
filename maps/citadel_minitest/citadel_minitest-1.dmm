@@ -195,7 +195,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "aD" = (
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 2;
 	icon_state = "freezer_1";
 	set_temperature = 73;
@@ -324,7 +324,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "aN" = (
-/obj/machinery/atmospherics/binary/pump/on,
+/obj/machinery/atmospherics/component/binary/pump/on,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
@@ -484,7 +484,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ba" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -516,7 +516,7 @@
 /turf/space,
 /area/engineering/engine_room)
 "be" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	icon_state = "map_vent_out";
@@ -1022,7 +1022,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1125,7 +1125,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/engineering_hallway)
 "cv" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;
@@ -1151,7 +1151,7 @@
 	},
 /area/tcommsat/chamber)
 "cx" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -1180,7 +1180,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1368,7 +1368,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "cX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
 "cY" = (
@@ -1554,7 +1554,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
 "dt" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1563,7 +1563,7 @@
 /turf/simulated/wall,
 /area/medical/medbay)
 "dv" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1573,7 +1573,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay2)
 "dx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1590,7 +1590,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/medical/medbay2)
 "dB" = (
@@ -1774,7 +1774,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1805,7 +1805,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1814,7 +1814,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2021,7 +2021,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -2072,7 +2072,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "eE" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "eF" = (
@@ -2255,7 +2255,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -2343,7 +2343,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -2452,7 +2452,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2472,7 +2472,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2626,7 +2626,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
 "fR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -2640,7 +2640,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
 "fT" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -2814,7 +2814,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gq" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -2842,7 +2842,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gu" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -2859,21 +2859,15 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
 "gx" = (
-/obj/effect/landmark{
-	name = "JoinLateElevator"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/elevator,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gy" = (
-/obj/effect/landmark{
-	name = "JoinLateGateway"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gz" = (
-/obj/effect/landmark{
-	name = "Observer-Start"
-	},
+/atom/movable/landmark/observer_spawn,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gA" = (
@@ -2881,15 +2875,11 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gB" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gC" = (
-/obj/effect/landmark{
-	name = "JoinLateCryo"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gD" = (
@@ -3096,9 +3086,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/ferrydemo)
 "hp" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station,
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	id_tag = "station_hangar";
 	layer = 3.1;

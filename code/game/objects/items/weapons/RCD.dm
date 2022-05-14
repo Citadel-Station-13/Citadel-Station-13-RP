@@ -18,7 +18,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 50000)
+	matter = list(MAT_STEEL = 50000)
 	preserve_item = TRUE // RCDs are pretty important.
 	var/datum/effect_system/spark_spread/spark_system
 	var/stored_matter = 0
@@ -31,7 +31,7 @@
 	var/can_remove_rwalls = FALSE
 	var/airlock_type = /obj/machinery/door/airlock
 	var/window_type = /obj/structure/window/reinforced/full
-	var/material_to_use = DEFAULT_WALL_MATERIAL // So badmins can make RCDs that print diamond walls.
+	var/material_to_use = MAT_STEEL // So badmins can make RCDs that print diamond walls.
 	var/make_rwalls = FALSE // If true, when building walls, they will be reinforced.
 	var/ammostate
 	var/list/effects = list()
@@ -82,16 +82,16 @@
 		var/obj/item/rcd_ammo/cartridge = W
 		var/can_store = min(max_stored_matter - stored_matter, cartridge.remaining)
 		if(can_store <= 0)
-			to_chat(user, span("warning", "There's either no space or \the [cartridge] is empty!"))
+			to_chat(user, SPAN_WARNING( "There's either no space or \the [cartridge] is empty!"))
 			return FALSE
 		stored_matter += can_store
 		cartridge.remaining -= can_store
 		if(!cartridge.remaining)
-			to_chat(user, span("warning", "\The [cartridge] dissolves as it empties of compressed matter."))
+			to_chat(user, SPAN_WARNING( "\The [cartridge] dissolves as it empties of compressed matter."))
 			user.drop_from_inventory(W)
 			qdel(W)
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
-		to_chat(user, span("notice", "The RCD now holds [stored_matter]/[max_stored_matter] matter-units."))
+		to_chat(user, SPAN_NOTICE("The RCD now holds [stored_matter]/[max_stored_matter] matter-units."))
 		update_icon()
 		return TRUE
 	return ..()
@@ -189,16 +189,16 @@
 // Used to call rcd_act() on the atom hit.
 /obj/item/rcd/proc/use_rcd(atom/A, mob/living/user)
 	if(busy && !allow_concurrent_building)
-		to_chat(user, span("warning", "\The [src] is busy finishing its current operation, be patient."))
+		to_chat(user, SPAN_WARNING( "\The [src] is busy finishing its current operation, be patient."))
 		return FALSE
 
 	var/list/rcd_results = A.rcd_values(user, src, modes[mode_index])
 	if(!rcd_results)
-		to_chat(user, span("warning", "\The [src] blinks a red light as you point it towards \the [A], indicating \
+		to_chat(user, SPAN_WARNING( "\The [src] blinks a red light as you point it towards \the [A], indicating \
 		that it won't work. Try changing the mode, or use it on something else."))
 		return FALSE
 	if(!can_afford(rcd_results[RCD_VALUE_COST]))
-		to_chat(user, span("warning", "\The [src] lacks the required material to start."))
+		to_chat(user, SPAN_WARNING( "\The [src] lacks the required material to start."))
 		return FALSE
 
 	playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
@@ -218,7 +218,7 @@
 		busy = FALSE
 		// Doing another check in case we lost matter during the delay for whatever reason.
 		if(!can_afford(rcd_results[RCD_VALUE_COST]))
-			to_chat(user, span("warning", "\The [src] lacks the required material to finish the operation."))
+			to_chat(user, SPAN_WARNING( "\The [src] lacks the required material to finish the operation."))
 			return FALSE
 		if(A.rcd_act(user, src, rcd_results[RCD_VALUE_MODE]))
 			consume_resources(rcd_results[RCD_VALUE_COST])
@@ -367,7 +367,7 @@
 	else
 		mode_index++
 
-	to_chat(user, span("notice", "Changed mode to '[modes[mode_index]]'."))
+	to_chat(user, SPAN_NOTICE("Changed mode to '[modes[mode_index]]'."))
 	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
 
 	if(prob(20))
@@ -397,7 +397,7 @@
 
 /obj/item/rcd/debug/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/rcd_ammo))
-		to_chat(user, span("notice", "\The [src] makes its own material, no need to add more."))
+		to_chat(user, SPAN_NOTICE("\The [src] makes its own material, no need to add more."))
 		return FALSE
 	return ..()
 
@@ -418,13 +418,13 @@
 
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 30000,"glass" = 15000)
+	matter = list(MAT_STEEL = 30000, MAT_GLASS = 15000)
 	var/remaining = RCD_MAX_CAPACITY / 3
 
 /obj/item/rcd_ammo/large
 	name = "high-capacity matter cartridge"
 	desc = "Do not ingest."
-	matter = list(DEFAULT_WALL_MATERIAL = 45000,"glass" = 22500)
+	matter = list(MAT_STEEL = 45000, MAT_GLASS = 22500)
 	origin_tech = list(TECH_MATERIAL = 4)
 	remaining = RCD_MAX_CAPACITY
 

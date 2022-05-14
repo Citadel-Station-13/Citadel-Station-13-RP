@@ -54,49 +54,6 @@
 			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
 			return
 
-	return
-
-/mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	if(status_flags & GODMODE)	return 0	//godmode
-	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
-		if(species.flags & IS_PLANT)
-			return 0
-	shock_damage *= siemens_coeff
-	if (shock_damage<1)
-		return 0
-
-	src.apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
-	playsound(loc, "sparks", 50, 1, -1)
-	if (shock_damage > 15)
-		src.visible_message(
-			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \
-			"<span class='danger'>You feel a powerful shock course through your body!</span>", \
-			"<span class='warning'>You hear a heavy electrical crack.</span>" \
-		)
-	else
-		src.visible_message(
-			"<span class='warning'>[src] was shocked[source ? " by the [source]" : ""].</span>", \
-			"<span class='warning'>You feel a shock course through your body.</span>", \
-			"<span class='warning'>You hear a zapping sound.</span>" \
-		)
-
-	if(stun)
-		switch(shock_damage)
-			if(16 to 20)
-				Stun(2)
-			if(21 to 25)
-				Weaken(2)
-			if(26 to 30)
-				Weaken(5)
-			if(31 to INFINITY)
-				Weaken(10) //This should work for now, more is really silly and makes you lay there forever
-
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, loc)
-	s.start()
-
-	return shock_damage
-
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if (src.health >= config_legacy.health_threshold_crit)
 		if(src == M && istype(src, /mob/living/carbon/human))
@@ -227,7 +184,7 @@
 /mob/living/carbon/proc/eyecheck()
 	return 0
 
-/mob/living/carbon/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/flash)
+/mob/living/carbon/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(eyecheck() < intensity || override_blindness_check)
 		return ..()
 
@@ -264,7 +221,7 @@
 
 	else if (W == handcuffed)
 		handcuffed = null
-		update_inv_handcuffed()
+		update_handcuffed()
 		if(buckled && buckled.buckle_require_restraints)
 			buckled.unbuckle_mob()
 
@@ -357,3 +314,23 @@
 	if(does_not_breathe)
 		return FALSE
 	return ..()
+
+/mob/living/carbon/proc/set_nutrition(amount)
+	nutrition = clamp(amount, 0, initial(nutrition) * 1.5)
+
+/mob/living/carbon/proc/adjust_nutrition(amount)
+	set_nutrition(nutrition + amount)
+
+/mob/living/carbon/proc/set_hydration(amount)
+	hydration = clamp(amount, 0, initial(hydration)  * 1.5) //We can overeat but not to ludicrous amounts, otherwise we'd never be normal again
+
+/mob/living/carbon/proc/adjust_hydration(amount)
+	set_hydration(hydration + amount)
+
+/mob/living/carbon/proc/update_handcuffed()
+	if(handcuffed)
+		drop_l_hand()
+		drop_r_hand()
+		stop_pulling()
+	update_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
+	update_inv_handcuffed()

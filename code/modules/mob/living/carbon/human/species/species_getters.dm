@@ -31,8 +31,14 @@
 /datum/species/proc/get_station_variant()
 	return name
 
+// used for limb caching
+// todo: rework limbs and get rid of this, numerical static keys are dumb as fuck,
+// limbs should use their own types!
 /datum/species/proc/get_race_key(var/mob/living/carbon/human/H)
-	return race_key
+	return real_race_key(H)
+
+/datum/species/proc/real_race_key(mob/living/carbon/human/H)
+	return name
 
 /datum/species/proc/get_bodytype(var/mob/living/carbon/human/H)
 	return name
@@ -62,6 +68,14 @@
 			return company.blood_color
 		else
 			return blood_color
+
+/datum/species/proc/get_blood_name(var/mob/living/carbon/human/H)
+	if(H)
+		var/datum/robolimb/company = H.isSynthetic()
+		if(company)
+			return company.blood_name
+		else
+			return blood_name
 
 /datum/species/proc/get_virus_immune(var/mob/living/carbon/human/H)
 	return ((H && H.isSynthetic()) ? 1 : virus_immune)

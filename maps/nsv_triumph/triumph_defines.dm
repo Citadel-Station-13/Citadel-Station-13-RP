@@ -41,7 +41,6 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\triumph\triumph_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
 	admin_levels = list()
 	sealed_levels = list()
@@ -75,9 +74,9 @@
 	company_short	= "NT"
 	starsys_name	= "Sigmar Concord"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the NSV Triupmh. The scheduled crew transfer shuttle has docked with the NSV Triumph. Departing crew should board the shuttle within %ETD%."
+	shuttle_docked_message = "This is the %dock_name% calling to the NSV Triumph. The scheduled crew transfer shuttle has docked with the NSV Triumph. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "This is the %dock_name% calling to the NSV Triupmh. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
+	shuttle_called_message = "This is the %dock_name% calling to the NSV Triumph. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "Crew Hands Transfer"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
@@ -117,14 +116,12 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
+	allowed_spawns = list("Shuttle Bay","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
 
 	meteor_strike_areas = null
-
-	default_skybox = /datum/skybox_settings/triumph
 
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
@@ -189,16 +186,11 @@
 /datum/map/triumph/perform_map_generation()
 	return 1
 
-/datum/skybox_settings/triumph/New()
-	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
-	return icon_state
-
 // For making the 4-in-1 holomap, we calculate some offsets
 #define TRIUMPH_MAP_SIZE 140 // Width and height of compiled in triumph z levels.
 #define TRIUMPH_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
 #define TRIUMPH_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TRIUMPH_MAP_SIZE) - TRIUMPH_HOLOMAP_CENTER_GUTTER) / 2) // 100
 #define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2) // 60
-
 
 // We have a bunch of stuff common to the station z levels
 /datum/map_z_level/triumph/ship

@@ -15,25 +15,25 @@
 	var/desc
 	//borrow the same colors from the fire alarms
 	switch(get_security_level())
-		if("green")	 
+		if("green")
 			color = "#00ff00"
 			desc = "" //no special description if nothing special is going on
-		if("yellow") 
+		if("yellow")
 			color = "#ffff00"
 			desc = CONFIG_GET(string/alert_desc_yellow_upto)
-		if("violet") 
+		if("violet")
 			color = "#9933ff"
 			desc = CONFIG_GET(string/alert_desc_violet_upto)
-		if("orange") 
+		if("orange")
 			color = "#ff9900"
 			desc = CONFIG_GET(string/alert_desc_orange_upto)
-		if("blue")	 
+		if("blue")
 			color = "#1024A9"
 			desc = CONFIG_GET(string/alert_desc_blue_upto)
-		if("red")	 
+		if("red")
 			color = "#ff0000"
 			desc = CONFIG_GET(string/alert_desc_red_upto)
-		if("delta")	 
+		if("delta")
 			color = "#FF6633"
 			desc = CONFIG_GET(string/alert_desc_delta)
 	. = SPAN_NOTICE("<br>The alert level on \the [station_name()] is currently: <font color=[color]>Code [capitalize(get_security_level())]</font>. [desc]")

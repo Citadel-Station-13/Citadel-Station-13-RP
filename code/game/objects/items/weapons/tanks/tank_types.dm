@@ -121,7 +121,7 @@
 	icon_state = "phoron_vox"
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/tank/phoron/pressurized/Initialize()
+/obj/item/tank/phoron/pressurized/Initialize(mapload)
 	. = ..()
 	adjust_scale(0.8)
 	air_contents.adjust_gas(/datum/gas/phoron, (7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))

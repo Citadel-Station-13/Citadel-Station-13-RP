@@ -49,7 +49,7 @@
 	client_huds |= GLOB.global_hud.whitense
 
 	/* // Use this to look for cameras that have the same c_tag.
-	for(var/obj/machinery/camera/C in cameranet.cameras)
+	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		var/list/tempnetwork = C.network&src.network
 		if(C != src && C.c_tag == src.c_tag && tempnetwork.len)
 			log_world("[src.c_tag] [src.x] [src.y] [src.z] conflicts with [C.c_tag] [C.x] [C.y] [C.z]")
@@ -127,7 +127,7 @@
 
 /obj/machinery/camera/proc/setViewRange(var/num = 7)
 	src.view_range = num
-	cameranet.updateVisibility(src, 0)
+	GLOB.cameranet.updateVisibility(src, 0)
 
 /obj/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
 	if(!istype(user))
@@ -210,18 +210,6 @@
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
 
-
-	else if (istype(W, /obj/item/camera_bug))
-		if (!src.can_use())
-			to_chat(user, "<span class='warning'>Camera non-functional.</span>")
-			return
-		if (src.bugged)
-			to_chat(user, "<span class='notice'>Camera bug removed.</span>")
-			src.bugged = 0
-		else
-			to_chat(user, "<span class='notice'>Camera bugged.</span>")
-			src.bugged = 1
-
 	else if(W.damtype == BRUTE || W.damtype == BURN) //bashing cameras
 		user.setClickCooldown(user.get_attack_speed(W))
 		if (W.force >= src.toughness)
@@ -292,6 +280,12 @@
 	if(isXRay()) return SEE_TURFS|SEE_MOBS|SEE_OBJS
 	return 0
 
+/obj/machinery/camera/temporary_perspective()
+	var/datum/perspective/P = ..()
+	. = P
+	if(isXRay())
+		P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+
 /obj/machinery/camera/update_icon()
 	if (!status || (stat & BROKEN))
 		icon_state = "[initial(icon_state)]1"
@@ -302,14 +296,14 @@
 
 /obj/machinery/camera/proc/triggerCameraAlarm(var/duration = 0)
 	alarm_on = 1
-	SSalarms.camera_alarm.triggerAlarm(loc, src, duration)
+	camera_alarm.triggerAlarm(loc, src, duration)
 
 /obj/machinery/camera/proc/cancelCameraAlarm()
 	if(wires.is_cut(WIRE_CAM_ALARM))
 		return
 
 	alarm_on = 0
-	SSalarms.camera_alarm.clearAlarm(loc, src)
+	camera_alarm.clearAlarm(loc, src)
 
 //if false, then the camera is listed as DEACTIVATED and cannot be used
 /obj/machinery/camera/proc/can_use()
@@ -437,7 +431,7 @@
 		network.Cut()
 		update_coverage(1)
 
-/obj/machinery/camera/proc/nano_structure()
+/obj/machinery/camera/proc/ui_structure()
 	var/cam[0]
 	cam["name"] = sanitize(c_tag)
 	cam["deact"] = !can_use()
@@ -452,12 +446,12 @@
 		var/list/open_networks = difflist(network, restricted_camera_networks)
 		// Add or remove camera from the camera net as necessary
 		if(on_open_network && !open_networks.len)
-			cameranet.removeCamera(src)
+			GLOB.cameranet.removeCamera(src)
 		else if(!on_open_network && open_networks.len)
 			on_open_network = 1
-			cameranet.addCamera(src)
+			GLOB.cameranet.addCamera(src)
 	else
-		cameranet.updateVisibility(src, 0)
+		GLOB.cameranet.updateVisibility(src, 0)
 
 
 

@@ -11,6 +11,7 @@
 	projectile_type = /obj/item/projectile/bullet/pistol/strong
 	var/retracted_bolt = 0
 	load_method = SINGLE_CASING
+	heavy = TRUE
 
 /obj/item/gun/projectile/contender/attack_self(mob/user as mob)
 	if(chambered)

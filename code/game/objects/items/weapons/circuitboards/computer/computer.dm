@@ -21,8 +21,8 @@
 	name = T_BOARD("medical records console")
 	build_path = /obj/machinery/computer/med_data
 
-/obj/item/circuitboard/med_data/laptop
-	name = T_BOARD("medical records laptop")
+/obj/item/circuitboard/med_data/pcu
+	name = T_BOARD("medical records PCU")
 	build_path = /obj/machinery/computer/med_data/laptop
 
 /obj/item/circuitboard/scan_consolenew
@@ -52,8 +52,8 @@
 	name = T_BOARD("security records console")
 	build_path = /obj/machinery/computer/secure_data
 
-/obj/item/circuitboard/skills
-	name = T_BOARD("employment records console")
+/obj/item/circuitboard/skills/pcu
+	name = T_BOARD("employment records PCU")
 	build_path = /obj/machinery/computer/skills
 
 /obj/item/circuitboard/stationalert_engineering
@@ -218,3 +218,8 @@
 	build_path = /obj/machinery/computer/shutoff_monitor
 	origin_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
 */
+
+/obj/item/circuitboard/stockexchange
+	name = T_BOARD("stock exchange console")
+	build_path = /obj/machinery/computer/stockexchange
+	origin_tech = list(TECH_DATA = 2, TECH_MAGNET = 1)

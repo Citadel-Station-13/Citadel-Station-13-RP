@@ -3,7 +3,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 8;
 	name = "Waste"
 	},
@@ -86,7 +86,7 @@
 /obj/item/towel/random,
 /obj/item/towel/random,
 /obj/item/towel/random,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -139,7 +139,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "eT" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -232,13 +232,13 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "gd" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "gf" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/ore_box,
@@ -416,7 +416,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "jE" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -468,7 +468,7 @@
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/reagent_containers/glass/rag,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -477,7 +477,7 @@
 /turf/simulated/wall/solidrock,
 /area/lavaland/central/explored)
 "lm" = (
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 8;
 	target_pressure = 15000
 	},
@@ -554,7 +554,7 @@
 "mt" = (
 /obj/structure/table/standard,
 /obj/item/storage/toolbox/electrical,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -625,7 +625,7 @@
 	pixel_y = 25;
 	req_one_access = list(48)
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
@@ -633,7 +633,7 @@
 /area/lavaland/central/base/common)
 "nz" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/blucarpet,
@@ -698,13 +698,13 @@
 /area/lavaland/central/explored)
 "oC" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/lavaland/central/base/common)
 "oK" = (
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	target_pressure = 15000
 	},
 /obj/structure/cable/green{
@@ -737,7 +737,7 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "pi" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -761,7 +761,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	dir = 4;
 	frequency = 1384;
@@ -810,13 +810,13 @@
 	pixel_x = 25;
 	req_one_access = list(48)
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1384;
 	id_tag = "mining_engine";
 	power_rating = 20000
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "pQ" = (
@@ -832,13 +832,13 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "qb" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/base/common)
 "qc" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1;
 	dir = 8
 	},
@@ -850,7 +850,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	target_pressure = 15000
 	},
 /turf/simulated/floor/plating,
@@ -986,7 +986,7 @@
 	id_tag = "mining_engine";
 	pixel_y = -25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "rV" = (
@@ -1031,15 +1031,15 @@
 	id_tag = "mining_outpost";
 	pixel_y = -25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1384;
 	id_tag = "mining_outpost";
 	power_rating = 20000
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "sQ" = (
@@ -1061,14 +1061,14 @@
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "tE" = (
 /obj/structure/table/woodentable,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/button/windowtint{
@@ -1078,7 +1078,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/lavaland/central/base/common)
 "tU" = (
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 4;
 	target_pressure = 15000
 	},
@@ -1131,7 +1131,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/lavaland/central/base/common)
 "uS" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -1164,7 +1164,7 @@
 "vE" = (
 /obj/structure/table/woodentable,
 /obj/machinery/recharger,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/blucarpet,
@@ -1172,7 +1172,7 @@
 "vW" = (
 /obj/structure/table/standard,
 /obj/machinery/light/small,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/item/storage/firstaid/regular{
@@ -1284,7 +1284,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/passive_gate{
+/obj/machinery/atmospherics/component/binary/passive_gate{
 	icon_state = "on";
 	target_pressure = 14900;
 	unlocked = 1
@@ -1292,7 +1292,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "zf" = (
-/obj/machinery/atmospherics/binary/pump/high_power{
+/obj/machinery/atmospherics/component/binary/pump/high_power{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -1329,7 +1329,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	dir = 8;
 	frequency = 1384;
@@ -1387,7 +1387,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/lavaland/central/base/common)
 "AG" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -1450,7 +1450,7 @@
 /area/lavaland/central/base/common)
 "Bx" = (
 /obj/structure/table/woodentable,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -1500,7 +1500,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
@@ -1546,7 +1546,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -1566,7 +1566,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/lavaland/central/base/common)
 "CX" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1;
 	dir = 4
 	},
@@ -1625,7 +1625,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "EE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "EX" = (
@@ -1635,7 +1635,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "Fe" = (
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior{
 	dir = 4;
 	frequency = 1384;
@@ -1900,7 +1900,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -1914,7 +1914,7 @@
 	dir = 4;
 	pixel_x = -11
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1934,14 +1934,14 @@
 /area/lavaland/central/explored)
 "Kq" = (
 /obj/structure/table/woodentable,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/lavaland/central/base/common)
 "KB" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1384;
 	id_tag = "mining_outpost";
@@ -1959,13 +1959,13 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "KW" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1384;
 	id_tag = "mining_engine";
 	power_rating = 20000
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "KX" = (
@@ -1980,7 +1980,7 @@
 	pixel_y = -25;
 	req_one_access = list(48)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
@@ -2029,7 +2029,7 @@
 "Lr" = (
 /obj/structure/table/standard,
 /obj/item/storage/toolbox/mechanical,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -2119,7 +2119,7 @@
 /obj/structure/table/marble,
 /obj/machinery/reagentgrinder,
 /obj/item/reagent_containers/glass/rag,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -2149,7 +2149,7 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "OQ" = (
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 8;
 	icon_state = "freezer_1";
 	set_temperature = 65;
@@ -2195,20 +2195,20 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "Pu" = (
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 1;
 	target_pressure = 15000
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "PZ" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1384;
 	id_tag = "mining_outpost";
 	power_rating = 20000
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Qo" = (
@@ -2231,7 +2231,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
@@ -2269,7 +2269,7 @@
 	pixel_x = -22;
 	pixel_y = -4
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/base/common)
 "RJ" = (
@@ -2314,7 +2314,7 @@
 /area/lavaland/central/base/common)
 "Ss" = (
 /obj/structure/table/woodentable,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2365,7 +2365,7 @@
 "SZ" = (
 /obj/structure/table/standard,
 /obj/item/roller,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2408,12 +2408,12 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "TQ" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -2483,7 +2483,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "VD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2601,7 +2601,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
@@ -2706,7 +2706,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile,

@@ -1,14 +1,14 @@
-import { filter } from 'common/collections';
-import { decodeHtmlEntities, toTitleCase } from 'common/string';
+import { decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section } from "../../components";
+import { useBackend } from "../../backend";
+import { Box, Button, Section } from "../../components";
 
-// Stolen wholesale from communicators. TGUITODO: Merge PDA & Communicator shared code once both are in
+// Stolen wholesale from communicators.
+// TGUITODO: Merge PDA & Communicator shared code once both are in
 /* News */
 export const pda_news = (props, context) => {
   const { act, data } = useBackend(context);
-  
+
   const {
     feeds,
     target_feed,
@@ -56,7 +56,9 @@ const NewsTargetFeed = (props, context) => {
             </Box>
           )}
           <Box color="grey">
-            [{message.message_type} by {decodeHtmlEntities(message.author)} - {message.time_stamp}]
+            [{message.message_type} by {decodeHtmlEntities(message.author)} - {
+              message.time_stamp
+            }]
           </Box>
         </Section>
       )) || (

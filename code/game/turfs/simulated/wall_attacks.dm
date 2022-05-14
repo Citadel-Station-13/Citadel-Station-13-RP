@@ -181,8 +181,7 @@
 		if(T)
 			if(istype(T, /turf/simulated/open) || istype(T, /turf/space))
 				if(R.use(1)) // Cost of roofing tiles is 1:1 with cost to place lattice and plating
-					T.ReplaceWithLattice()
-					T.ChangeTurf(/turf/simulated/floor, preserve_outdoors = TRUE)
+					T.ChangeTurf(/turf/simulated/floor/plating, flags = CHANGETURF_PRESERVE_OUTDOORS)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 					user.visible_message("<span class='notice'>[user] patches a hole in the ceiling.</span>", "<span class='notice'>You patch a hole in the ceiling.</span>")
 					expended_tile = TRUE
@@ -455,9 +454,4 @@
 	if(istype(W,/obj/item/frame))
 		var/obj/item/frame/F = W
 		F.try_build(src, user)
-		return
-
-	else if(!istype(W,/obj/item/rcd) && !istype(W, /obj/item/reagent_containers))
-		return attack_hand(user)
-
 

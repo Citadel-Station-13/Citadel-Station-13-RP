@@ -6,7 +6,7 @@
 	item_state = "pen"
 	var/pointer_icon_state
 	slot_flags = SLOT_BELT
-	matter = list("glass" = 500,"metal" = 500)
+	matter = list(MAT_GLASS = 500,"metal" = 500)
 	w_class = 2 //Increased to 2, because diodes are w_class 2. Conservation of matter.
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
 	var/turf/pointer_loc
@@ -190,7 +190,7 @@
 		if(M.client)
 			showto.Add(M.client)
 	var/image/I = image('icons/obj/projectiles.dmi',targloc,pointer_icon_state,cooldown)
-	I.plane = PLANE_LIGHTING_ABOVE
+	I.plane = ABOVE_LIGHTING_PLANE
 	I.pixel_x = target.pixel_x + rand(-5,5)
 	I.pixel_y = target.pixel_y + rand(-5,5)
 

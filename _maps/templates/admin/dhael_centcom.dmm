@@ -226,7 +226,7 @@
 /obj/item/clothing/mask/surgical,
 /obj/item/stack/nanopaste/advanced,
 /obj/item/stack/nanopaste/advanced,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -1295,13 +1295,13 @@
 	},
 /area/centcom/specops)
 "cE" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "cF" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2459,7 +2459,7 @@
 /area/tdome/tdomeobserve)
 "fc" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdomeobserve"
 	},
 /turf/unsimulated/floor{
@@ -3088,7 +3088,7 @@
 	},
 /area/tdome/tdome1)
 "gm" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome2"
 	},
 /turf/unsimulated/floor{
@@ -3107,7 +3107,7 @@
 	},
 /area/tdome/tdome1)
 "go" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome1"
 	},
 /turf/unsimulated/floor{
@@ -3198,7 +3198,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome2"
 	},
 /turf/unsimulated/floor{
@@ -3210,7 +3210,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome1"
 	},
 /turf/unsimulated/floor{
@@ -3367,7 +3367,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "hc" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome2"
 	},
 /obj/machinery/camera/network/thunder{
@@ -3388,7 +3388,7 @@
 	},
 /area/tdome)
 "he" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "tdome1"
 	},
 /obj/machinery/camera/network/thunder{
@@ -5703,11 +5703,11 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lW" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lX" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lY" = (
@@ -6039,7 +6039,7 @@
 	},
 /area/centcom/medical)
 "mA" = (
-/obj/machinery/atmospherics/unary/cryo_cell,
+/obj/machinery/atmospherics/component/unary/cryo_cell,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -6051,7 +6051,7 @@
 	},
 /area/centcom/medical)
 "mB" = (
-/obj/machinery/atmospherics/unary/freezer,
+/obj/machinery/atmospherics/component/unary/freezer,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -6064,7 +6064,7 @@
 	},
 /area/centcom/medical)
 "mC" = (
-/obj/machinery/atmospherics/unary/cryo_cell,
+/obj/machinery/atmospherics/component/unary/cryo_cell,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
 	},

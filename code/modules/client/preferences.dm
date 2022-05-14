@@ -163,15 +163,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/lastnews // Hash of last seen lobby news content.
 
-	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
-	var/directory_tag = "Unset" //Sorting tag to use in character directory
-	var/directory_erptag = "Unset"	//ditto, but for non-vore scenes
-	var/directory_ad = ""		//Advertisement stuff to show in character directory.
-	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
+	//Character Directory Stuff
+	///Should we show in Character Directory
+	var/show_in_directory = 1
+	///Sorting tag to use for vore-prefs
+	var/directory_tag = "Unset"
+	///Sorting tag to use for erp-prefs
+	var/directory_erptag = "Unset"
+	///Advertisement stuff to show in character directory.
+	var/directory_ad = ""
 
-	// Should we automatically fit the viewport?
+	///Set character's suit sensor level
+	var/sensorpref = 5
+
+	///Should we automatically fit the viewport?
 	var/auto_fit_viewport = TRUE
-	// Should we be in the widescreen mode set by the config?
+	///Should we be in the widescreen mode set by the config?
 	var/widescreenpref = FALSE	// Doesn't exist... Yet.
 
 /datum/preferences/New(client/C)
@@ -393,7 +400,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	player_setup.sanitize_setup()
 
 	// This needs to happen before anything else becuase it sets some variables.
-	character.set_species(species)
+	character.set_species(species_type_by_name(species))
 	// Special Case: This references variables owned by two different datums, so do it here.
 	if(be_random_name)
 		real_name = random_name(identifying_gender,species)
@@ -415,6 +422,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(LAZYLEN(character.descriptors))
 		for(var/entry in body_descriptors)
 			character.descriptors[entry] = body_descriptors[entry]
+
+/datum/preferences/proc/character_static_species_meta()
+	return name_static_species_meta(species) || get_static_species_meta(/datum/species/human)
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body>"

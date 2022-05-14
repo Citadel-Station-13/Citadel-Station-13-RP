@@ -1,25 +1,10 @@
 ///////////////////////////
 //// Spawning and despawning
 
-/// Most of this can be left uncommented out except for ship datums (those get upset if they cant find their landmarks) -Bloop
-var/global/list/latejoin_talon = list()
-/obj/effect/landmark/talon
-	name = "JoinLateTalon"
-	delete_me = 1
-
-/obj/effect/landmark/talon/New()
-	latejoin_talon += loc // Register this turf as tram latejoin.
-	..()
-
 /datum/spawnpoint/talon
 	display_name = "ITV Talon Cryo"
 	restrict_job = list("Talon Captain", "Talon Pilot", "Talon Engineer", "Talon Doctor", "Talon Guard")
-	msg = "has come out of cryostasis"
 	announce_channel = "Talon"
-
-/datum/spawnpoint/talon/New()
-	..()
-	turfs = latejoin_talon
 
 /obj/machinery/cryopod/talon
 	announce_channel = "Talon"
@@ -34,7 +19,7 @@ var/global/list/latejoin_talon = list()
 	announce_channel = "Talon"
 	on_store_name = "ITV Talon Robotic Storage"
 
-/obj/effect/landmark/map_data/talon
+/atom/movable/landmark/map_data/talon
     height = 2
 
 ///////////////////////////
@@ -175,7 +160,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	item_state = "tdgreen"
 	assignment = "Talon synthetic"
 
-/obj/item/card/id/synthetic/talon/Initialize()
+/obj/item/card/id/synthetic/talon/Initialize(mapload)
 	. = ..()
 	access = list(access_talon, access_synth)
 

@@ -1476,7 +1476,8 @@
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	metabolism = REM * 4 // Nanomachines gotta go fast.
-	scannable = 1
+	scannable = TRUE
+	affects_robots = TRUE
 
 /datum/reagent/healing_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.heal_organ_damage(2 * removed, 2 * removed)
@@ -1576,9 +1577,9 @@
 	var/datum/gas_mixture/environment = T.return_air()
 	var/min_temperature = T0C + 100 // 100C, the boiling point of water
 
-	var/hotspot = (locate(/obj/fire) in T)
+	var/hotspot = (locate(/atom/movable/fire) in T)
 	if(hotspot && !isspaceturf(T))
-		var/datum/gas_mixture/lowertemp = T.remove_air(T.air.total_moles)
+		var/datum/gas_mixture/lowertemp = T.remove_cell_volume()
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
 		lowertemp.react()
 		T.assume_air(lowertemp)

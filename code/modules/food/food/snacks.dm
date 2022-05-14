@@ -802,7 +802,7 @@
 	icon_state = "bearmeat"
 	nutriment_amt = 2
 
-/obj/item/reagent_containers/food/snacks/horsemeat/Initialize()
+/obj/item/reagent_containers/food/snacks/horsemeat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 4)
 	bitesize = 3
@@ -1789,7 +1789,7 @@
 	filling_color = "#ADAC7F"
 
 	var/wrapped = 0
-	var/monkey_type = "Monkey"
+	var/monkey_type = SPECIES_MONKEY
 
 /obj/item/reagent_containers/food/snacks/monkeycube/Initialize(mapload)
 	. = ..()
@@ -1802,7 +1802,7 @@
 /obj/item/reagent_containers/food/snacks/monkeycube/proc/Expand()
 	src.visible_message("<span class='notice'>\The [src] expands!</span>")
 	var/mob/living/carbon/human/H = new(get_turf(src))
-	H.set_species(monkey_type)
+	H.set_species(species_type_by_name(monkey_type))
 	H.real_name = H.species.get_random_name()
 	H.name = H.real_name
 	if(ismob(loc))
@@ -1839,27 +1839,27 @@
 
 /obj/item/reagent_containers/food/snacks/monkeycube/farwacube
 	name = "farwa cube"
-	monkey_type = "Farwa"
+	monkey_type = SPECIES_MONKEY_TAJ
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/farwacube
 	name = "farwa cube"
-	monkey_type = "Farwa"
+	monkey_type = SPECIES_MONKEY_TAJ
 
 /obj/item/reagent_containers/food/snacks/monkeycube/stokcube
 	name = "stok cube"
-	monkey_type = "Stok"
+	monkey_type = SPECIES_MONKEY_UNATHI
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/stokcube
 	name = "stok cube"
-	monkey_type = "Stok"
+	monkey_type = SPECIES_MONKEY_UNATHI
 
 /obj/item/reagent_containers/food/snacks/monkeycube/neaeracube
 	name = "neaera cube"
-	monkey_type = "Neaera"
+	monkey_type = SPECIES_MONKEY_SKRELL
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/neaeracube
 	name = "neaera cube"
-	monkey_type = "Neaera"
+	monkey_type = SPECIES_MONKEY_SKRELL
 
 /obj/item/reagent_containers/food/snacks/spellburger
 	name = "Spell Burger"
@@ -3960,7 +3960,7 @@ END CITADEL CHANGE */
 		return 0
 
 	if (C.volume < req)
-		to_chat(user, span("warning", "There's not enough [C.name] to coat the [src]!"))
+		to_chat(user, SPAN_WARNING( "There's not enough [C.name] to coat the [src]!"))
 		return 0
 
 	var/id = C.id
@@ -3995,7 +3995,7 @@ END CITADEL CHANGE */
 	overlays += J
 
 	if (user)
-		user.visible_message(span("notice", "[user] dips \the [src] into \the [coating.name]"), span("notice", "You dip \the [src] into \the [coating.name]"))
+		user.visible_message(SPAN_NOTICE("[user] dips \the [src] into \the [coating.name]"), SPAN_NOTICE("You dip \the [src] into \the [coating.name]"))
 
 	return 1
 
@@ -5707,7 +5707,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/crab/Initialize()
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/crab/Initialize(mapload)
 	..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 5
@@ -5733,7 +5733,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/horse/Initialize()
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/horse/Initialize(mapload)
 	..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 5
@@ -5759,7 +5759,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery/Initialize()
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery/Initialize(mapload)
 	..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 5
@@ -6118,35 +6118,35 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/monkeycube/sobakacube
 	name = "sobaka cube"
-	monkey_type = "Sobaka"
+	monkey_type = SPECIES_MONKEY_AKULA
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/sobakacube
 	name = "sobaka cube"
-	monkey_type = "Sobaka"
+	monkey_type = SPECIES_MONKEY_AKULA
 
 /obj/item/reagent_containers/food/snacks/monkeycube/sarucube
 	name = "saru cube"
-	monkey_type = "Saru"
+	monkey_type = SPECIES_MONKEY_SERGAL
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/sarucube
 	name = "saru cube"
-	monkey_type = "Saru"
+	monkey_type = SPECIES_MONKEY_SERGAL
 
 /obj/item/reagent_containers/food/snacks/monkeycube/sparracube
 	name = "sparra cube"
-	monkey_type = "Sparra"
+	monkey_type = SPECIES_MONKEY_NEVREAN
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/sparracube
 	name = "sparra cube"
-	monkey_type = "Sparra"
+	monkey_type = SPECIES_MONKEY_NEVREAN
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wolpincube
 	name = "wolpin cube"
-	monkey_type = "Wolpin"
+	monkey_type = SPECIES_MONKEY_VULPKANIN
 
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/wolpincube
 	name = "wolpin cube"
-	monkey_type = "Wolpin"
+	monkey_type = SPECIES_MONKEY_VULPKANIN
 
 //Goblin food, yes?
 /obj/item/reagent_containers/food/snacks/cavenuggets
@@ -6548,7 +6548,7 @@ END CITADEL CHANGE */
 	trash = /obj/item/trash/rust_can
 	filling_color = "#7a3f07"
 	nutriment_amt = 5
-	nutriment_desc = list("iron" = 3, "water" = 2)
+	nutriment_desc = list(MAT_IRON = 3, "water" = 2)
 
 /obj/item/reagent_containers/food/snacks/rust_can/Initialize(mapload)
 	. = ..()

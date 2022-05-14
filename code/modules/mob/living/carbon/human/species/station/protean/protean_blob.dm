@@ -52,7 +52,7 @@
 	var/obj/prev_left_hand
 	var/obj/prev_right_hand
 
-	player_msg = "In this form, you can move a little faster, your health will regenerate as long as you have metal in you, and you can ventcrawl!"
+	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
 	can_buckle = TRUE //Blobsurfing
 
@@ -70,7 +70,6 @@
 		humanform = H
 		updatehealth()
 		refactory = locate() in humanform.internal_organs
-		verbs |= /mob/living/proc/ventcrawl
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
@@ -148,9 +147,6 @@
 	else
 		..()
 
-/mob/living/simple_mob/protean_blob/ventcrawl_carry()
-	return TRUE //proteans can have literally any small inside them and should still be able to ventcrawl regardless.
-
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
 	if(humanform)
 		humanform.adjustFireLossByPart(amount, BP_TORSO)
@@ -186,7 +182,7 @@
 /mob/living/simple_mob/protean_blob/Life()
 	. = ..()
 	if(. && istype(refactory) && humanform)
-		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= 100 && refactory.processingbuffs)
+		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(MAT_STEEL) >= 100 && refactory.processingbuffs)
 			healing = humanform.add_modifier(/datum/modifier/protean/steelBlob, origin = refactory)
 		else if(humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health >= maxHealth)
 			humanform.remove_a_modifier_of_type(/datum/modifier/protean/steelBlob)
@@ -305,7 +301,7 @@
 		pulledby.stop_pulling()
 	stop_pulling()
 
-	var/panel_selected = client?.statpanel == "Protean"
+	var/panel_selected = client?.statpanel == SPECIES_PROTEAN
 
 	//Record where they should go
 	var/atom/creation_spot = drop_location()
@@ -378,7 +374,7 @@
 	moveToNullspace()
 
 	if(blob.client && panel_selected)
-		blob.client.statpanel = "Protean"
+		blob.client.statpanel = SPECIES_PROTEAN
 
 	//Message
 	blob.visible_message("<b>[src.name]</b> collapses into a gooey blob!")
@@ -473,7 +469,7 @@
 		pulledby.stop_pulling()
 	stop_pulling()
 
-	var/panel_selected = blob.client?.statpanel == "Protean"
+	var/panel_selected = blob.client?.statpanel == SPECIES_PROTEAN
 
 	//Stop healing if we are
 	if(blob.healing)
@@ -502,7 +498,7 @@
 	temporary_form = null
 
 	if(client && panel_selected)
-		client.statpanel = "Protean"
+		client.statpanel = SPECIES_PROTEAN
 
 	//Transfer vore organs
 	vore_selected = blob.vore_selected
@@ -546,7 +542,7 @@
 	..()
 	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
 
-/datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp/ventcrawling
+/datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp
 	name = "Protean Blob Effect - Steel"
 	desc = "You're affected by the presence of steel."
 

@@ -61,6 +61,7 @@
 /datum/map_z_level/triumph_lateload/away_piratebase
 	name = "Away Mission - Pirate Base"
 	z = Z_LEVEL_PIRATEBASE
+	base_turf = /turf/space
 
 // lavaland start
 #include "lavaland/_lavaland.dm"
@@ -74,6 +75,7 @@
 /datum/map_z_level/triumph_lateload/lavaland
 	name = "Away Mission - Lava Land"
 	z = Z_LEVEL_LAVALAND
+	base_turf = /turf/simulated/mineral/floor/lavaland
 
 /datum/map_template/triumph_lateload/lavaland/on_map_loaded(z)
 	. = ..()
@@ -120,7 +122,7 @@
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, Z_LEVEL_LAVALAND_EAST, 64, 64)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_LAVALAND_EAST, world.maxx - 4, world.maxy - 4)
 
-/obj/effect/landmark/map_data/lavaland_east
+/atom/movable/landmark/map_data/lavaland_east
     height = 3
 
 // Class G Mining Planet Exploration Zone
@@ -134,6 +136,7 @@
 /datum/map_z_level/triumph_lateload/away_g_world
 	name = "Away Mission - Mining Planet"
 	z = Z_LEVEL_MININGPLANET
+	base_turf = /turf/simulated/mineral/floor/classg
 
 /datum/map_template/triumph_lateload/away_g_world/on_map_loaded(z)
 	. = ..()
@@ -158,6 +161,7 @@
 /datum/map_z_level/triumph_lateload/away_d_world
 	name = "Away Mission - Rogue Planet"
 	z = Z_LEVEL_UNKNOWN_PLANET
+	base_turf = /turf/simulated/floor/outdoors/rocks/classd
 
 // Class H Desert Planet Exploration Zone.
 /datum/map_template/triumph_lateload/away_h_world
@@ -177,6 +181,7 @@
 /datum/map_z_level/triumph_lateload/away_h_world
 	name = "Away Mission - Desert Planet"
 	z = Z_LEVEL_DESERT_PLANET
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 // Gaia Planet Zone.
 /datum/map_template/triumph_lateload/away_m_world
@@ -196,6 +201,7 @@
 /datum/map_z_level/triumph_lateload/away_m_world
 	name = "Away Mission - Gaia Planet"
 	z = Z_LEVEL_GAIA_PLANET
+	base_turf = /turf/simulated/floor/outdoors/grass/forest
 
 // Frozen Planet Zone.
 /datum/map_template/triumph_lateload/away_p_world
@@ -213,6 +219,7 @@
 /datum/map_z_level/triumph_lateload/away_p_world
 	name = "Away Mission - Frozen Planet"
 	z = Z_LEVEL_FROZEN_PLANET
+	base_turf = /turf/simulated/floor/outdoors/snow/classp
 
 // Trade post
 #include "space/trade_port/_tradeport.dm"
@@ -227,6 +234,7 @@
 /datum/map_z_level/triumph_lateload/away_tradeport
 	name = "Away Mission - Trade Port"
 	z = Z_LEVEL_TRADEPORT
+	base_turf = /turf/space
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Code Shenanigans for Triumph lateload maps

@@ -173,19 +173,21 @@
 	overlays.Cut()
 	overlays += image('icons/mob/zone_sel.dmi', "[selecting]")
 
-//Crafting Screen Port
+/// The UI Button to open the TGUI Crafting Menu
 /atom/movable/screen/craft
 	name = "crafting menu"
 	icon = 'icons/mob/screen/midnight.dmi'
 	icon_state = "craft"
-	screen_loc = ui_crafting
+	screen_loc = ui_smallquad
 
 /atom/movable/screen/craft/Click(location, control, params)
 	var/datum/component/personal_crafting/C = usr.GetComponent(/datum/component/personal_crafting)
 	C?.ui_interact(usr)
 
 /atom/movable/screen/Click(location, control, params)
-	if(!usr)	return 1
+	..() //Why the FUCK was this not called before
+	if(!usr)
+		return TRUE
 	switch(name)
 		if("toggle")
 			if(usr.hud_used.inventory_shown)
@@ -254,9 +256,9 @@
 					else
 
 						var/no_mask
-						if(!(C.wear_mask && C.wear_mask.item_flags & ALLOWINTERNALS))
+						if(!(C.wear_mask && C.wear_mask.clothing_flags & ALLOWINTERNALS))
 							var/mob/living/carbon/human/H = C
-							if(!(H.head && H.head.item_flags & ALLOWINTERNALS))
+							if(!(H.head && H.head.clothing_flags & ALLOWINTERNALS))
 								no_mask = 1
 
 						if(no_mask)

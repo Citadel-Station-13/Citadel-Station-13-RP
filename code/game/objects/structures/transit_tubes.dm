@@ -347,12 +347,6 @@
 /obj/structure/transit_tube_pod/return_air()
 	return air_contents
 
-/obj/structure/transit_tube_pod/assume_air(datum/gas_mixture/giver)
-	return air_contents.merge(giver)
-
-/obj/structure/transit_tube_pod/remove_air(amount)
-	return air_contents.remove(amount)
-
 // Called when a pod arrives at, and before a pod departs from a station,
 //  giving it a chance to mix its internal air supply with the turf it is
 //  currently on.

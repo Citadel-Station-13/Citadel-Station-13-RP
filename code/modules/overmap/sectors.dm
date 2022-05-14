@@ -35,7 +35,7 @@
 	var/list/levels_for_distress
 	var/list/unowned_areas // areas we don't own despite them being present on our z
 
-/obj/effect/overmap/visitable/Initialize()
+/obj/effect/overmap/visitable/Initialize(mapload)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return
@@ -59,7 +59,7 @@
 	SSshuttle.process_init_queues()
 
 	if(known)
-		plane = PLANE_LIGHTING_ABOVE
+		plane = ABOVE_LIGHTING_PLANE
 		for(var/obj/machinery/computer/ship/helm/H in global.machines)
 			H.get_known_sectors()
 	else
@@ -169,9 +169,6 @@
 		for(var/thing in restricted_waypoints[shuttle_name])
 			.[thing] = name
 
-/obj/effect/overmap/visitable/proc/generate_skybox(zlevel)
-	return
-
 /obj/effect/overmap/visitable/proc/cleanup()
 	return FALSE
 
@@ -217,7 +214,7 @@
 		priority_announcement.Announce(message, new_title = "Automated Distress Signal", new_sound = 'sound/AI/sos.ogg', zlevel = zlevel)
 
 	var/image/I = image(icon, icon_state = "distress")
-	I.plane = PLANE_LIGHTING_ABOVE
+	I.plane = ABOVE_LIGHTING_PLANE
 	I.appearance_flags = KEEP_APART|RESET_TRANSFORM|RESET_COLOR
 	add_overlay(I)
 

@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/binary/pump/high_power
+/obj/machinery/atmospherics/component/binary/pump/high_power
 	icon = 'icons/atmos/volume_pump.dmi'
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional
@@ -10,11 +10,11 @@
 
 	power_rating = 15000	//15000 W ~ 20 HP
 
-/obj/machinery/atmospherics/binary/pump/high_power/on
+/obj/machinery/atmospherics/component/binary/pump/high_power/on
 	use_power = USE_POWER_IDLE
 	icon_state = "map_on"
 
-/obj/machinery/atmospherics/binary/pump/high_power/update_icon()
+/obj/machinery/atmospherics/component/binary/pump/high_power/update_icon()
 	if(!powered())
 		icon_state = "off"
 	else

@@ -3,6 +3,10 @@
 #define ALL (~0)	// For convenience.
 #define NONE 0
 
+/* Directions */
+///All the cardinal direction bitflags.
+#define ALL_CARDINALS (NORTH|SOUTH|EAST|WEST)
+
 // For convenience
 #define ENABLE_BITFIELD(variable, flag)				(variable |= (flag))
 #define DISABLE_BITFIELD(variable, flag)			(variable &= ~(flag))
@@ -47,15 +51,16 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define OVERLAY_QUEUED				(1<<12)	// Atom queued to SSoverlay for COMPILE_OVERLAYS
 #define PHORONGUARD					(1<<13)	// Does not get contaminated by phoron.
 #define PROXMOVE					(1<<14)	// Does this object require proximity checking in Enter()?
+#define NOPRINT						(1<<15)	// Does not leave user's fingerprints/fibers when used on things?
 ///CITMAIN FLAG BITMASKS - Completely unused
-#define BLOCK_FACE_ATOM				(1<<15)	// Early returns mob.face_atom()
-#define SHOCKED						(1<<16)	// Prevents mobs from getting chainshocked by teslas and the supermatter.
-#define DEFAULT_RICOCHET			(1<<17)	// Projectiles will use default chance-based ricochet handling on things with this.
-#define NODECONSTRUCT				(1<<18)	// For machines and structures that should not break into parts, eg, holodeck stuff.
-#define PREVENT_CLICK_UNDER			(1<<19)	// Prevent clicking things below it on the same turf eg. doors/ fulltile windows.
-#define HOLOGRAM					(1<<20)
-#define PREVENT_CONTENTS_EXPLOSION	(1<<21)	// should not get harmed if this gets caught by an explosion?
-#define HTML_USE_INITAL_ICON		(1<<22)
+#define BLOCK_FACE_ATOM				(1<<16)	// Early returns mob.face_atom()
+#define SHOCKED						(1<<17)	// Prevents mobs from getting chainshocked by teslas and the supermatter.
+#define DEFAULT_RICOCHET			(1<<18)	// Projectiles will use default chance-based ricochet handling on things with this.
+#define NODECONSTRUCT				(1<<19)	// For machines and structures that should not break into parts, eg, holodeck stuff.
+#define PREVENT_CLICK_UNDER			(1<<20)	// Prevent clicking things below it on the same turf eg. doors/ fulltile windows.
+#define HOLOGRAM					(1<<21)
+#define PREVENT_CONTENTS_EXPLOSION	(1<<22)	// should not get harmed if this gets caught by an explosion?
+#define HTML_USE_INITAL_ICON		(1<<23)
 
 ///TURF FLAGS
 #define NO_JAUNT					(1<<0)	// This is used in literally one place, turf.dm, to block ethereal jaunt.
@@ -89,10 +94,6 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define PASSGRILLE				(1<<2)
 #define PASSBLOB				(1<<3)
 #define PASSMOB					(1<<4)
-
-// Flags for the clothing_flags var on /obj/item/clothing
-//flags for clothing_flags. only 1 exists at the moment because this is an examine refactor not aclothing refactor
-#define SCAN_REAGENTS			(1<<10)	// Allows helmets and glasses to scan reagents.
 
 //silicon_privileges flags on /mob
 #define PRIVILEGES_SILICON	(1<<0)

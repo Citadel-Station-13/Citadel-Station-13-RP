@@ -33,3 +33,13 @@
 	dir = WEST; \
 	pixel_x = -offset; \
 }
+
+// each dir plus diagonals in its own bit
+#define NORTH_BIT		NORTH
+#define SOUTH_BIT		SOUTH
+#define EAST_BIT		EAST
+#define WEST_BIT		WEST
+#define NORTHEAST_BIT	(1<<4)
+#define NORTHWEST_BIT	(1<<5)
+#define SOUTHEAST_BIT	(1<<6)
+#define SOUTHWEST_BIT	(1<<7)

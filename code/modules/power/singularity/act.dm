@@ -34,7 +34,7 @@
 				step_towards(hand, S)
 				to_chat(src, "<span class = 'warning'>The [S] pulls \the [hand] from your grip!</span>")
 
-	if(!lying && (!shoes || !(shoes.item_flags & NOSLIP)) && (!species || !(species.flags & NOSLIP)) && prob(current_size*5))
+	if(!lying && (!shoes || !(shoes.clothing_flags & NOSLIP)) && (!species || !(species.flags & NOSLIP)) && prob(current_size*5))
 		to_chat(src, "<span class='danger'>A strong gravitational force slams you to the ground!</span>")
 		Weaken(current_size)
 	..()
@@ -104,13 +104,7 @@
 	return 1000
 
 /turf/singularity_act(S, current_size)
-	if(!is_plating())
-		for(var/obj/O in contents)
-			if(O.level != 1)
-				continue
-			if(O.invisibility == 101)
-				O.singularity_act(src, current_size)
-	ChangeTurf(get_base_turf_by_area(src))
+	ScrapeAway()
 	return 2
 
 /turf/simulated/floor/singularity_pull(S, current_size)

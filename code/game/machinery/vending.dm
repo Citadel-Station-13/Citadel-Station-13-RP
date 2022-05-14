@@ -145,30 +145,44 @@
 		to_chat(user, "You short out \the [src]'s product lock.")
 		return 1
 
-/obj/machinery/vending/attackby(obj/item/W as obj, mob/user as mob)
-
+/obj/machinery/vending/attackby(obj/item/W, mob/user)
 	var/obj/item/card/id/I = W.GetID()
 
 	if(currently_vending && vendor_account && !vendor_account.suspended)
-		var/paid = 0
-		var/handled = 0
+		var/paid = FALSE
+		var/handled = FALSE
 
-		if(I) //for IDs and PDAs and wallets with IDs
-			paid = pay_with_card(I,W)
-			handled = 1
-		else if(istype(W, /obj/item/spacecash/ewallet))
-			var/obj/item/spacecash/ewallet/C = W
-			paid = pay_with_ewallet(C)
-			handled = 1
-		else if(istype(W, /obj/item/spacecash))
-			var/obj/item/spacecash/C = W
-			paid = pay_with_cash(C, user)
-			handled = 1
+		var/obj/item/paying_with = I || W
+		var/list/data = list()
+		var/amount = paying_with.attempt_use_currency(user, src, currently_vending.price, FALSE, NONE, data, FALSE, 7)
+		switch(amount)
+			if(PAYMENT_DYNAMIC_ERROR)
+				if(data[DYNAMIC_PAYMENT_DATA_FAIL_REASON])
+					status_message = data[DYNAMIC_PAYMENT_DATA_FAIL_REASON]
+					status_error = TRUE
+				SSnanoui.update_uis(src)
+				return
+			if(PAYMENT_NOT_CURRENCY)
+				handled = FALSE
+			if(PAYMENT_INSUFFICIENT)
+				handled = TRUE
+				to_chat(user, SPAN_WARNING("That is not enough money!"))
+			else
+				handled = TRUE
+				paid = amount == currently_vending.price
 
-		if(paid)
-			vend(currently_vending, usr)
-			return
-		else if(handled)
+		if(handled)
+			if(paid)
+				var/payer_name = "Unknown"
+				switch(data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE])
+					if(PAYMENT_TYPE_BANK_CARD)
+						var/datum/money_account/A = data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT]
+						if(A)
+							payer_name = A.owner_name
+					else
+						payer_name = "(cash)"
+				credit_purchase(payer_name)
+				vend(currently_vending, usr)
 			SSnanoui.update_uis(src)
 			return // don't smack that machine with your 2 thalers
 
@@ -217,112 +231,12 @@
 				return
 		..()
 
-/**
- *  Receive payment with cashmoney.
- *
- *  usr is the mob who gets the change.
- */
-/obj/machinery/vending/proc/pay_with_cash(var/obj/item/spacecash/cashmoney, mob/user)
-	if(currently_vending.price > cashmoney.worth)
-
-		// This is not a status display message, since it's something the character
-		// themselves is meant to see BEFORE putting the money in
-		to_chat(user, "[icon2html(thing = cashmoney, target = user)] <span class='warning'>That is not enough money.</span>")
-		return 0
-
-	if(istype(cashmoney, /obj/item/spacecash))
-
-		visible_message("<span class='info'>\The [usr] inserts some cash into \the [src].</span>")
-		cashmoney.worth -= currently_vending.price
-
-		if(cashmoney.worth <= 0)
-			user.drop_from_inventory(cashmoney)
-			qdel(cashmoney)
-		else
-			cashmoney.update_icon()
-
-	// Vending machines have no idea who paid with cash
-	credit_purchase("(cash)")
-	return 1
-
-/**
- * Scan a chargecard and deduct payment from it.
- *
- * Takes payment for whatever is the currently_vending item. Returns 1 if
- * successful, 0 if failed.
- */
-/obj/machinery/vending/proc/pay_with_ewallet(var/obj/item/spacecash/ewallet/wallet)
-	visible_message("<span class='info'>\The [usr] swipes \the [wallet] through \the [src].</span>")
-	if(currently_vending.price > wallet.worth)
-		status_message = "Insufficient funds on chargecard."
-		status_error = 1
-		return 0
-	else
-		wallet.worth -= currently_vending.price
-		credit_purchase("[wallet.owner_name] (chargecard)")
-		return 1
-
-/**
- * Scan a card and attempt to transfer payment from associated account.
- *
- * Takes payment for whatever is the currently_vending item. Returns 1 if
- * successful, 0 if failed
- */
-/obj/machinery/vending/proc/pay_with_card(var/obj/item/card/id/I, var/obj/item/ID_container)
-	if(I==ID_container || ID_container == null)
-		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
-	else
-		visible_message("<span class='info'>\The [usr] swipes \the [ID_container] through \the [src].</span>")
-	var/datum/money_account/customer_account = get_account(I.associated_account_number)
-	if(!customer_account)
-		status_message = "Error: Unable to access account. Please contact technical support if problem persists."
-		status_error = 1
-		return 0
-
-	if(customer_account.suspended)
-		status_message = "Unable to access account: account suspended."
-		status_error = 1
-		return 0
-
-	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
-	// empty at high security levels
-	if(customer_account.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
-		var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
-		customer_account = attempt_account_access(I.associated_account_number, attempt_pin, 2)
-
-		if(!customer_account)
-			status_message = "Unable to access account: incorrect credentials."
-			status_error = 1
-			return 0
-
-	if(currently_vending.price > customer_account.money)
-		status_message = "Insufficient funds in account."
-		status_error = 1
-		return 0
-	else
-		// Okay to move the money at this point
-
-		// debit money from the purchaser's account
-		customer_account.money -= currently_vending.price
-
-		// create entry in the purchaser's account log
-		var/datum/transaction/T = new()
-		T.target_name = "[vendor_account.owner_name] (via [name])"
-		T.purpose = "Purchase of [currently_vending.item_name]"
-		if(currently_vending.price > 0)
-			T.amount = "([currently_vending.price])"
-		else
-			T.amount = "[currently_vending.price]"
-		T.source_terminal = name
-		T.date = current_date_string
-		T.time = stationtime2text()
-		customer_account.transaction_log.Add(T)
-
-		// Give the vendor the money. We use the account owner name, which means
-		// that purchases made with stolen/borrowed card will look like the card
-		// owner made them
-		credit_purchase(customer_account.owner_name)
-		return 1
+/obj/machinery/vending/query_transaction_details(list/data)
+	. = ..()
+	.[CHARGE_DETAIL_DEVICE] = name
+	.[CHARGE_DETAIL_LOCATION] = get_area(src).name
+	.[CHARGE_DETAIL_REASON] = currently_vending? "Purchase of [currently_vending.item_name]" : "Unknown"
+	.[CHARGE_DETAIL_RECIPIENT] = vendor_account.owner_name
 
 /**
  *  Add money for current purchase to the vendor account.
@@ -458,7 +372,6 @@
 		else if((href_list["togglevoice"]) && (panel_open))
 			shut_up = !shut_up
 
-		add_fingerprint(usr)
 		SSnanoui.update_uis(src)
 
 /obj/machinery/vending/proc/vend(datum/stored_item/vending_product/R, mob/user)
@@ -799,7 +712,9 @@
 					/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
  					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10,
-					 /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 10)
+					 /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 10,
+					 /obj/item/reagent_containers/food/drinks/bludbox = 5,
+					 /obj/item/reagent_containers/food/drinks/bludboxlight = 5)
 	contraband = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6,
 				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 4, /obj/item/reagent_containers/food/drinks/cans/geometer = 2)
 	prices = list(/obj/item/reagent_containers/food/drinks/cans/cola = 1,/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1,
@@ -809,7 +724,8 @@
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1,
 					/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 1, /obj/item/reagent_containers/food/drinks/cans/ochamidori = 3,
 					/obj/item/reagent_containers/food/drinks/cans/ramune = 2, /obj/item/reagent_containers/food/drinks/cans/battery = 5,
-					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2, /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 5)
+					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2, /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 5,
+					/obj/item/reagent_containers/food/drinks/bludbox = 50, /obj/item/reagent_containers/food/drinks/bludboxlight = 70)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.
@@ -836,7 +752,8 @@
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 25,
 					///obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,	//VOREStation Removal,
-					/obj/item/towel/random = 40)
+					/obj/item/towel/random = 40,
+					)
 
 	contraband = list(/obj/item/reagent_containers/syringe/steroid = 4)
 
@@ -1353,7 +1270,9 @@
 					/obj/item/reagent_containers/blood/prelabeled/BPlus = 3,/obj/item/reagent_containers/blood/prelabeled/BMinus = 3,
 					/obj/item/reagent_containers/blood/prelabeled/ABPlus = 2,/obj/item/reagent_containers/blood/prelabeled/ABMinus = 1,
 					/obj/item/reagent_containers/blood/prelabeled/OPlus = 2,/obj/item/reagent_containers/blood/prelabeled/OMinus = 5,
-					/obj/item/reagent_containers/blood/empty = 5)
+					/obj/item/reagent_containers/blood/empty = 5,
+					/obj/item/reagent_containers/food/drinks/bludboxmax = 5,
+					/obj/item/reagent_containers/food/drinks/bludboxmaxlight = 5)
 	contraband = list(/obj/item/reagent_containers/glass/bottle/stoxin = 2)
 	req_log_access = access_cmo
 	has_logs = 1

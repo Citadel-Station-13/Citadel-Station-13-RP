@@ -83,7 +83,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "ap" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
 	name = "Airmix to Distro"
 	},
@@ -269,7 +269,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -355,14 +355,14 @@
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "bn" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "bq" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 8;
 	frequency = 8018;
 	id = "pumpone";
@@ -548,7 +548,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -798,7 +798,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "cR" = (
@@ -917,7 +917,7 @@
 	id_tag = "tradeport_hangar_docker";
 	pixel_x = 25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "tradeport_hangar_docker_pump"
@@ -927,8 +927,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "di" = (
@@ -948,9 +948,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "dl" = (
@@ -984,7 +982,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "dp" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
@@ -1019,13 +1017,13 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "dw" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport)
 "dy" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/sign/poster{
@@ -1040,7 +1038,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "dA" = (
@@ -1066,7 +1064,7 @@
 	frequency = null;
 	name = "Ship Hatch"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "dD" = (
@@ -1085,7 +1083,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
 "dH" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -1137,9 +1135,7 @@
 	pixel_y = -26;
 	specialfunctions = 4
 	},
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "dU" = (
@@ -1194,7 +1190,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
 "eg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -1299,7 +1295,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "ex" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -1353,7 +1349,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "eN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1424,7 +1420,7 @@
 /turf/simulated/floor/grass,
 /area/tradeport/safarizoo)
 "eZ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/white,
@@ -1666,7 +1662,7 @@
 /turf/simulated/floor/grass,
 /area/tradeport)
 "gb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
@@ -1686,7 +1682,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "gf" = (
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	frequency = 8018;
 	id = "emergencycut";
 	name = "emergency cut-off pump";
@@ -1747,7 +1743,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - Employees Only"
 	},
@@ -1924,7 +1920,7 @@
 	frequency = null;
 	name = "Ship Hatch"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "gV" = (
@@ -2072,9 +2068,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
 	},
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "hC" = (
@@ -2095,7 +2089,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -2151,7 +2145,7 @@
 /turf/simulated/floor/outdoors/dirtlight,
 /area/tradeport/cyndishow)
 "hR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/table/rack/shelf/steel,
@@ -2282,7 +2276,7 @@
 /area/space)
 "iy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
@@ -2328,9 +2322,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
 "iH" = (
@@ -2714,7 +2706,7 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
 "jS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -2811,7 +2803,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = null;
 	name = "Ship Hatch"
@@ -2954,13 +2946,13 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport)
 "kS" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/table/glass,
@@ -3106,7 +3098,7 @@
 	pixel_x = 22;
 	req_one_access = list(160)
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -3240,7 +3232,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "lO" = (
@@ -3270,7 +3262,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "lV" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -3310,7 +3302,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "mh" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
@@ -3321,7 +3313,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "mk" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/catwalk,
@@ -3329,7 +3321,7 @@
 /area/tradeport/pads)
 "mm" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/door/blast/shutters{
@@ -3409,7 +3401,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -3432,7 +3424,7 @@
 	dir = 8;
 	pixel_x = -25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -3496,7 +3488,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -3523,7 +3515,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "mX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/table/alien,
@@ -3753,7 +3745,7 @@
 /area/tradeport/cyndi)
 "nD" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/door/blast/shutters{
@@ -3834,7 +3826,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "nP" = (
@@ -3871,7 +3863,7 @@
 /obj/item/silencer,
 /obj/item/silencer,
 /obj/item/silencer,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -3968,7 +3960,7 @@
 	dir = 8;
 	pixel_x = -25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -4185,7 +4177,7 @@
 /obj/item/syndie/c4explosive,
 /obj/item/syndie/c4explosive,
 /obj/item/syndie/c4explosive,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -4255,17 +4247,17 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "pm" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "pn" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "pp" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "pq" = (
@@ -4335,7 +4327,7 @@
 /area/tradeport/medical)
 "pw" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/item/reagent_containers/food/drinks/bottle/cream,
 /obj/item/reagent_containers/food/drinks/bottle/cream,
 /obj/item/reagent_containers/food/drinks/bottle/cream,
@@ -4433,7 +4425,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "pM" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -4442,7 +4434,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "pP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -4626,9 +4618,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
 "qv" = (
@@ -4897,7 +4887,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
@@ -4999,7 +4989,7 @@
 /obj/machinery/camera{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -5042,7 +5032,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/spine)
 "sc" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/corner/blue/diagonal{
 	dir = 4
 	},
@@ -5097,7 +5087,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/trade_ship/general)
 "si" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/table/alien,
@@ -5200,7 +5190,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/spine)
 "sB" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "sC" = (
@@ -5288,7 +5278,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "sT" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1445;
 	id = "burn_in";
@@ -5321,7 +5311,7 @@
 /area/shuttle/trade_ship/general)
 "sZ" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -5339,7 +5329,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/spine)
 "tc" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -5663,7 +5653,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = -25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
 "up" = (
@@ -5674,7 +5664,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/spine)
 "ur" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8;
 	frequency = 8018;
 	id_tag = "tradeport_hangar_dock"
@@ -5761,7 +5751,7 @@
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
 "uH" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -5797,7 +5787,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "uT" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -5841,7 +5831,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Trader"
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -5986,7 +5976,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -6014,7 +6004,7 @@
 /area/tradeport/atmospherics)
 "vC" = (
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/stack/nanopaste{
 	pixel_x = -7;
 	pixel_y = -4
@@ -6039,7 +6029,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tradeport/medical)
 "vD" = (
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = null;
 	name = "Ship Hatch"
@@ -6074,7 +6064,7 @@
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
 "vH" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/table/glass,
@@ -6193,7 +6183,7 @@
 /obj/machinery/camera{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -6219,7 +6209,7 @@
 /area/tradeport/facility)
 "wc" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -6259,7 +6249,7 @@
 /turf/simulated/floor/wmarble,
 /area/tradeport/cafeteria)
 "wn" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "wo" = (
@@ -6275,7 +6265,7 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/tradeport/pads)
 "wv" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/icecream_vat,
@@ -6327,7 +6317,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "wA" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/red,
@@ -6369,7 +6359,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "wM" = (
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 8;
 	frequency = 8018;
 	id = "pumpthree";
@@ -6395,7 +6385,7 @@
 /turf/space,
 /area/space)
 "wQ" = (
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_y = -25
 	},
@@ -6410,13 +6400,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
 	id_tag = "trade_solars"
@@ -6481,7 +6471,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "xb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/computer/arcade/orion_trail,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport)
@@ -6518,7 +6508,7 @@
 /obj/structure/closet/walllocker/autolok_wall{
 	pixel_y = 24
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6555,7 +6545,7 @@
 /obj/machinery/door/airlock/external/glass{
 	req_access = list(160)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	pixel_x = -10;
@@ -6667,7 +6657,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "xB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
@@ -6726,7 +6716,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "xI" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/red,
@@ -6847,7 +6837,7 @@
 /area/tradeport/pads)
 "yf" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6873,7 +6863,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 8018;
 	id_tag = "trade_space_lock_pump"
 	},
@@ -6883,8 +6873,8 @@
 	master_tag = null;
 	pixel_x = 25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "yi" = (
@@ -6934,7 +6924,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Trader"
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -6944,7 +6934,7 @@
 	frequency = null;
 	name = "Ship Hatch"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "yr" = (
@@ -7020,7 +7010,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Trader"
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -7111,13 +7101,13 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport)
 "yZ" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	pixel_x = -25;
 	pixel_y = 25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
 	id_tag = "trade_pumps"
 	},
@@ -7312,7 +7302,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "zM" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/item/radio/intercom/trader{
@@ -7332,7 +7322,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/atmospherics)
 "zO" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_cargo/beige,
@@ -7360,12 +7350,12 @@
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "zU" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "trade_docks"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "zV" = (
@@ -7403,7 +7393,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Ag" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/red,
@@ -7426,7 +7416,7 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/tradeport/pads)
 "Ak" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7475,7 +7465,7 @@
 /obj/item/deck/cards{
 	pixel_x = -12
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -7576,8 +7566,8 @@
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "Bi" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
 "Bj" = (
@@ -7587,7 +7577,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - Employees Only"
 	},
@@ -7652,7 +7642,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8;
 	name = "air to distro"
 	},
@@ -7785,7 +7775,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7950,7 +7940,7 @@
 /area/tradeport/cyndi)
 "Cx" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 4;
 	frequency = 8018;
 	id = "pumptwo";
@@ -7961,7 +7951,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Cy" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -8163,7 +8153,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
@@ -8181,7 +8171,7 @@
 /area/tradeport/pads)
 "Dg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
@@ -8214,7 +8204,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
 "Dw" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -8223,7 +8213,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 8;
 	frequency = 8018;
 	id = "pumpfive";
@@ -8234,13 +8224,13 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "DA" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
 "DE" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/blue,
@@ -8382,7 +8372,7 @@
 	id_tag = "tradeport_hangar_dock";
 	pixel_x = 25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "Em" = (
@@ -8424,14 +8414,14 @@
 /obj/item/flame/lighter/zippo/red,
 /obj/item/flame/lighter/zippo/red,
 /obj/item/flame/lighter/zippo/red,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "Eu" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
 	id_tag = "trade_pumps"
 	},
@@ -8498,7 +8488,7 @@
 	pixel_y = -32;
 	req_access = null
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8685,7 +8675,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Fv" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -8709,7 +8699,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "FA" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/bench/wooden,
@@ -8835,13 +8825,13 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "Gb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "Gc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "Gf" = (
@@ -8889,7 +8879,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Gq" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
@@ -8947,7 +8937,7 @@
 /obj/item/grenade/chem_grenade/metalfoam,
 /obj/item/grenade/chem_grenade/metalfoam,
 /obj/item/grenade/chem_grenade/metalfoam,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/cobweb,
@@ -9089,7 +9079,7 @@
 	pixel_x = 23;
 	req_one_access = list(160)
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -9204,7 +9194,7 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/tradeport/exterior)
 "HX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
@@ -9484,7 +9474,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "IN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -9517,7 +9507,7 @@
 /turf/simulated/floor/grass,
 /area/tradeport)
 "IV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9579,7 +9569,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -9717,7 +9707,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -9732,9 +9722,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
@@ -9745,7 +9733,7 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport)
 "JR" = (
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	frequency = 8018;
 	id = "mainfuel";
 	name = "main fuel pump";
@@ -9790,7 +9778,7 @@
 /area/tradeport/cafeteria)
 "JY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9867,7 +9855,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/urinal{
 	pixel_y = 31
 	},
@@ -9925,7 +9913,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = null;
 	name = "Ship Hatch"
@@ -10022,7 +10010,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "KU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/catwalk,
@@ -10141,7 +10129,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "Ls" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/flora/pottedplant/thinbush{
@@ -10205,7 +10193,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "Lz" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -10375,7 +10363,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 4;
 	frequency = 8018;
 	id = "pumpsix";
@@ -10412,7 +10400,7 @@
 /obj/machinery/camera{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -10579,7 +10567,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "MO" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -10598,9 +10586,7 @@
 /area/tradeport/pads)
 "MS" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "MT" = (
@@ -10653,7 +10639,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
 "Nc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -10671,7 +10657,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "Ne" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/corner/blue/diagonal{
 	dir = 4
 	},
@@ -10770,7 +10756,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -10966,7 +10952,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - Employees Only"
 	},
@@ -11003,7 +10989,7 @@
 	frequency = null;
 	name = "Ship Hatch"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Op" = (
@@ -11103,7 +11089,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "OK" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -11113,7 +11099,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /turf/simulated/floor/plating,
 /area/tradeport/expansion)
 "OP" = (
@@ -11281,7 +11267,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "Pu" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/smartfridge/seeds,
@@ -11346,7 +11332,7 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/safarizoo)
 "PN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
@@ -11502,7 +11488,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/cyndishow)
 "Qj" = (
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 4;
 	frequency = 8018;
 	id = "pumpfour";
@@ -11658,9 +11644,7 @@
 /area/tradeport)
 "QJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "QK" = (
@@ -11720,7 +11704,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "QR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11764,18 +11748,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/commons)
 "Rb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8;
 	frequency = 1380;
 	id_tag = "tradeport_hangar_dock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "Rd" = (
@@ -11803,7 +11787,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "Ri" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/light/small,
@@ -11813,7 +11797,7 @@
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - External Access"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
 	master_tag = "trade_docks";
@@ -11884,7 +11868,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "Ry" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -11929,9 +11913,7 @@
 	pixel_x = -26
 	},
 /obj/item/toy/plushie/squid/blue,
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
@@ -11979,9 +11961,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -27
 	},
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "RP" = (
@@ -12030,14 +12010,14 @@
 /turf/simulated/wall,
 /area/tradeport)
 "Sc" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "Si" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
@@ -12115,7 +12095,7 @@
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - External Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -12255,7 +12235,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
 "SP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/red,
@@ -12529,7 +12509,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "TV" = (
-/obj/effect/landmark/trade,
+/atom/movable/landmark/spawnpoint/latejoin/tradeport,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/commons)
 "TW" = (
@@ -12565,7 +12545,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "Ug" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -12805,7 +12785,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport)
 "Vc" = (
-/obj/machinery/atmospherics/binary/passive_gate/on{
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
@@ -12868,7 +12848,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "Vp" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
@@ -12985,7 +12965,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
 "VR" = (
-/obj/effect/landmark/trade,
+/atom/movable/landmark/spawnpoint/latejoin/tradeport,
 /obj/machinery/computer/cryopod/robot{
 	pixel_y = -30
 	},
@@ -13028,7 +13008,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndi)
 "VV" = (
-/obj/effect/landmark/trade,
+/atom/movable/landmark/spawnpoint/latejoin/tradeport,
 /obj/machinery/computer/cryopod{
 	pixel_y = -32
 	},
@@ -13360,7 +13340,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/spine)
 "Xc" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	name = "Waste"
 	},
 /turf/simulated/floor/plating,
@@ -13422,7 +13402,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/steel,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/fiftyspawner/glass,
@@ -13449,7 +13429,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "Xv" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -13539,12 +13519,12 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
 "XJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "trade_docks"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1380;
 	id_tag = "trade_docks";
@@ -13589,7 +13569,7 @@
 	pixel_x = -25;
 	pixel_y = 25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -13648,7 +13628,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "Yc" = (
@@ -13721,7 +13701,7 @@
 	dir = 8;
 	light_range = 12
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -13814,7 +13794,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "YM" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -13910,7 +13890,7 @@
 /turf/simulated/floor/grass,
 /area/tradeport/safarizoo)
 "YY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/table/bench/wooden,
@@ -14035,9 +14015,7 @@
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
-/obj/effect/landmark/start{
-	name = "Trader"
-	},
+/atom/movable/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "ZA" = (
@@ -14046,7 +14024,7 @@
 	pixel_x = -5;
 	pixel_y = 27
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/button/remote/blast_door{
@@ -14109,7 +14087,7 @@
 /obj/machinery/door/airlock/external/glass{
 	req_access = list(160)
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	pixel_x = 10;

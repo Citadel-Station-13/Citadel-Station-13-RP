@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, LabeledList, ProgressBar, Slider, Section } from "../components";
+import { Box, Button, Flex, LabeledList, Slider, Section } from "../components";
 import { BeakerContents } from "../interfaces/common/BeakerContents";
 import { Window } from "../layouts";
 
@@ -81,11 +81,9 @@ const ChemDispenserChemicals = (properties, context) => {
         direction="row"
         wrap="wrap"
         height="100%"
-        spacingPrecise="2"
-        align="flex-start"
-        alignContent="flex-start">
+        align="flex-start">
         {chemicals.map((c, i) => (
-          <Flex.Item key={i} grow="1" basis="40%" height="20px">
+          <Flex.Item key={i} grow="1" m={0.2} basis="40%" height="20px">
             <Button
               icon="arrow-circle-down"
               width="100%"

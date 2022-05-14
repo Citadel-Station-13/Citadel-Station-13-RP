@@ -11,7 +11,6 @@
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans. \
 	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and phoron in."
 	name_language = null // name randomisers are fucking weird
-	min_age = 18
 	max_age = 180
 	health_hud_intensity = 1.5
 	rarity_value = 5
@@ -19,7 +18,7 @@
 
 	flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_EYE_COLOR
+	species_appearance_flags = HAS_EYE_COLOR
 
 	show_ssd = "completely motionless"
 
@@ -27,7 +26,7 @@
 	hunger_factor = 0
 	metabolic_rate = 1
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	brute_mod =     1
 	burn_mod =      1.2
@@ -73,7 +72,7 @@
 /datum/species/plasmaman/handle_environment_special(var/mob/living/carbon/human/H)
 	var/turf/T = H.loc
 	if(!T) return
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture/environment = T.copy_cell_volume()
 	if(!environment) return
 	var/enviroment_bad = 0 //In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 

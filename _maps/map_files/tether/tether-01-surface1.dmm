@@ -128,7 +128,7 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/mentalhealth)
 "aas" = (
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -146,7 +146,7 @@
 	pixel_x = 25;
 	pixel_y = 8
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -242,7 +242,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -262,8 +262,8 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1379;
 	id_tag = "northciv_airlock_pump"
@@ -328,7 +328,7 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "aaE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "aaF" = (
@@ -459,7 +459,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "northciv_airlock";
 	pixel_x = 25;
@@ -536,7 +536,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -561,7 +561,7 @@
 	dir = 8;
 	pixel_y = 6
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "aaW" = (
@@ -582,9 +582,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/paramed)
 "aaY" = (
-/obj/effect/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -754,9 +752,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "abi" = (
 /obj/machinery/hologram/holopad,
-/obj/effect/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -773,7 +769,7 @@
 "abj" = (
 /obj/structure/table/woodentable,
 /obj/random/plushie,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "abk" = (
@@ -792,7 +788,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1072,9 +1068,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
 "abV" = (
-/obj/effect/landmark/start{
-	name = "Psychiatrist"
-	},
+/atom/movable/landmark/spawnpoint/job/psychiatrist,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -1194,7 +1188,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1231,9 +1225,7 @@
 /area/maintenance/lower/mining_eva)
 "ach" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/landmark/start{
-	name = "Paramedic"
-	},
+/atom/movable/landmark/spawnpoint/job/paramedic,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
@@ -1247,7 +1239,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/public_garden_maintenence)
 "ack" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;
 	icon_state = "map_vent_out";
@@ -1390,7 +1382,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "acx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/camera/network/research{
 	dir = 4
 	},
@@ -1465,7 +1457,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
 "acD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/rnd/hardstorage)
 "acE" = (
@@ -1530,7 +1522,7 @@
 "acJ" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled,
@@ -1583,7 +1575,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/camera/network/medbay,
@@ -1654,7 +1646,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "acW" = (
@@ -1738,14 +1730,14 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "ade" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -1830,7 +1822,7 @@
 "adl" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/atmospherics/binary/passive_gate/on{
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -1873,7 +1865,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
 "ads" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/table/rack,
@@ -2236,7 +2228,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/light,
@@ -2261,14 +2253,14 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lowerhall)
 "adT" = (
 /obj/structure/flora/pottedplant/fern,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -2283,7 +2275,7 @@
 /area/tether/surfacebase/medical/lowerhall)
 "adV" = (
 /obj/structure/table/glass,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/camera/network/research{
@@ -2445,7 +2437,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -2476,7 +2468,7 @@
 	pixel_x = -32
 	},
 /obj/machinery/washing_machine,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3191,7 +3183,7 @@
 /turf/simulated/floor/tiled/monofloor,
 /area/tether/surfacebase/surface_one_hall)
 "afi" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -3241,7 +3233,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
@@ -3652,7 +3644,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hardstorage)
 "afV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "afW" = (
@@ -3773,7 +3765,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenoarch_storage)
 "agl" = (
-/obj/machinery/atmospherics/unary/outlet_injector,
+/obj/machinery/atmospherics/component/unary/outlet_injector,
 /turf/simulated/floor/reinforced,
 /area/rnd/testingroom)
 "agm" = (
@@ -3974,7 +3966,7 @@
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "agJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "agK" = (
@@ -4927,7 +4919,7 @@
 /obj/structure/table/glass,
 /obj/item/storage/box/beakers,
 /obj/item/clothing/glasses/science,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -4940,7 +4932,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "aiq" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -5058,7 +5050,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "aiF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -5074,9 +5066,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/atom/movable/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "aiI" = (
@@ -5259,7 +5249,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
 "aiX" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -5428,13 +5418,13 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/engineering/atmos_intake)
 "ajh" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -5452,7 +5442,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -5461,7 +5451,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -5479,7 +5469,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -5528,7 +5518,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump/high_power/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -5608,19 +5598,19 @@
 "ajw" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/black/border,
-/obj/machinery/atmospherics/binary/pump/high_power/on,
+/obj/machinery/atmospherics/component/binary/pump/high_power/on,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "ajx" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/orange/border,
-/obj/machinery/atmospherics/binary/pump/high_power/on,
+/obj/machinery/atmospherics/component/binary/pump/high_power/on,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "ajy" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/white/border,
-/obj/machinery/atmospherics/binary/pump/high_power/on,
+/obj/machinery/atmospherics/component/binary/pump/high_power/on,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "ajz" = (
@@ -5663,7 +5653,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -6073,7 +6063,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining_eva)
 "akp" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -6216,7 +6206,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
@@ -6301,7 +6291,7 @@
 	},
 /area/holodeck_control)
 "akP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
 	},
@@ -6511,7 +6501,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -6791,7 +6781,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
 "alx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -7306,7 +7296,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
 "amp" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/light_switch{
@@ -7354,7 +7344,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -7363,7 +7353,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -7393,7 +7383,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
 "amw" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7509,16 +7499,12 @@
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amG" = (
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amH" = (
 /obj/item/stool,
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amI" = (
@@ -7722,7 +7708,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -8272,7 +8258,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_one)
 "anS" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/camera/network/tether,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -8556,11 +8542,11 @@
 "aos" = (
 /obj/structure/railing,
 /obj/structure/grille,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "civ_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva/external)
 "aot" = (
@@ -8571,16 +8557,16 @@
 	icon_state = "1-2"
 	},
 /obj/structure/grille,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "civ_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva/external)
 "aou" = (
 /obj/machinery/washing_machine,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/camera/network/civilian,
 /obj/structure/sign/nosmoking_2{
 	pixel_y = 30
@@ -8656,7 +8642,7 @@
 /area/storage/surface_eva)
 "aoA" = (
 /obj/structure/table/rack,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -8891,7 +8877,7 @@
 	id_tag = "civ_airlock_outer";
 	locked = 1
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/storage/surface_eva/external)
 "aoX" = (
@@ -8939,7 +8925,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/storage/surface_eva/external)
 "apa" = (
@@ -9157,7 +9143,7 @@
 /area/vacant/vacant_site)
 "apm" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/atmospherics/binary/passive_gate/on{
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -9230,7 +9216,7 @@
 /area/tether/surfacebase/north_stairs_one)
 "apx" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -9310,7 +9296,7 @@
 	id_tag = "civ_airlock_outer";
 	locked = 1
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/storage/surface_eva/external)
 "apI" = (
@@ -9333,7 +9319,7 @@
 	pixel_x = 25;
 	pixel_y = -40
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva/external)
 "apK" = (
@@ -9344,7 +9330,7 @@
 	id_tag = "civ_airlock_inner";
 	locked = 1
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/storage/surface_eva/external)
 "apL" = (
@@ -9357,7 +9343,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -9535,7 +9521,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
@@ -9657,7 +9643,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/newscaster{
@@ -9754,7 +9740,7 @@
 /area/storage/surface_eva)
 "aqv" = (
 /obj/structure/table/reinforced,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning,
@@ -9899,7 +9885,7 @@
 /obj/structure/table/steel,
 /obj/item/storage/box/lights/mixed,
 /obj/item/storage/box/lights/mixed,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -10033,7 +10019,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "aqX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -10101,7 +10087,7 @@
 /obj/item/stack/cable_coil/random,
 /obj/item/tape_recorder,
 /obj/item/tape_recorder,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -10266,7 +10252,7 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -10498,7 +10484,7 @@
 /obj/item/radio/phone/medbay{
 	name = "Medical Emergency Phone"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -10523,7 +10509,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/first_aid_west)
 "arS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/newscaster{
@@ -10889,7 +10875,7 @@
 /obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/structure/table/steel,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/rnd/xenoarch_storage)
 "asB" = (
@@ -10899,7 +10885,7 @@
 /obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/structure/table/steel,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/rnd/xenoarch_storage)
 "asC" = (
@@ -11097,7 +11083,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "asZ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -11133,7 +11119,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lowerhall)
 "atd" = (
@@ -11291,7 +11277,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lowerhall)
 "atr" = (
@@ -11316,7 +11302,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker)
 "att" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
@@ -11821,7 +11807,7 @@
 /area/maintenance/lower/mining_eva)
 "auq" = (
 /obj/structure/closet/wardrobe/virology_white,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -11829,7 +11815,7 @@
 /area/medical/virologyaccess)
 "aur" = (
 /obj/structure/closet/l3closet/virology,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
@@ -12161,7 +12147,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "auV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "auW" = (
@@ -12336,9 +12322,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -12681,7 +12665,7 @@
 	dir = 10
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "avE" = (
@@ -12821,7 +12805,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/solars)
 "avN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/random/soap,
@@ -12954,7 +12938,7 @@
 "awa" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
@@ -13504,7 +13488,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -13544,7 +13528,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/solars)
 "awV" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -13885,9 +13869,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -14083,7 +14065,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -14252,7 +14234,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -14314,7 +14296,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
@@ -14758,7 +14740,7 @@
 /obj/effect/floor_decal/corner/lime{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -14850,15 +14832,15 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "ayI" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "ayJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "ayK" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled/white,
@@ -14983,7 +14965,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker/laundry_arrival)
 "ayW" = (
@@ -15002,7 +14984,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 5
 	},
@@ -15037,7 +15019,7 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
 "ayY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/random/soap,
@@ -15071,7 +15053,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralstairwell)
 "aza" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -15257,7 +15239,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "azo" = (
@@ -15267,7 +15249,7 @@
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "azp" = (
@@ -15342,7 +15324,7 @@
 /obj/machinery/camera/network/medbay{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -15426,7 +15408,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -15469,7 +15451,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralstairwell)
 "azF" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/random/soap,
@@ -15672,7 +15654,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "azW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/camera/network/medbay{
@@ -15701,7 +15683,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "azY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/camera/network/medbay{
@@ -15820,7 +15802,7 @@
 	pixel_y = -28;
 	req_access = list(67)
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -15861,7 +15843,7 @@
 	dir = 6
 	},
 /obj/structure/bed/padded,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -16706,7 +16688,7 @@
 "aBG" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -17011,7 +16993,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "aCi" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "maint_pred"
 	},
 /turf/simulated/floor/plating,
@@ -17274,7 +17256,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker/laundry_arrival)
 "aCF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -17488,7 +17470,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "aDd" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -17555,7 +17537,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker/laundry_arrival)
 "aDn" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/light_switch{
@@ -17729,7 +17711,7 @@
 /area/tether/surfacebase/cargostore/warehouse)
 "aDE" = (
 /obj/structure/table/rack,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/cargostore/warehouse)
 "aDF" = (
@@ -18277,7 +18259,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aEE" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "maint_pred"
 	},
 /turf/simulated/floor/plating,
@@ -18294,7 +18276,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "aEG" = (
 /obj/structure/table/rack,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -18391,7 +18373,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -18427,7 +18409,7 @@
 /area/rnd/hallway)
 "aEU" = (
 /obj/structure/table/rack,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -18444,7 +18426,7 @@
 /area/tether/surfacebase/cargostore/warehouse)
 "aEW" = (
 /obj/structure/table/rack,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -18506,7 +18488,7 @@
 	pixel_y = 30
 	},
 /obj/structure/flora/pottedplant/stoutbush,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 5
 	},
@@ -18825,9 +18807,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/effect/landmark/start{
-	name = "Bartender"
-	},
+/atom/movable/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_dining)
 "aFC" = (
@@ -18835,7 +18815,7 @@
 /obj/machinery/floor_light/prebuilt{
 	on = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/item/storage/box/glasses/meta{
@@ -18901,7 +18881,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "aFG" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -19095,7 +19075,7 @@
 /obj/machinery/floor_light/prebuilt{
 	on = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -19111,7 +19091,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/tram)
 "aFV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/random/soap,
@@ -19176,7 +19156,7 @@
 	dir = 9
 	},
 /obj/structure/table/rack,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore)
 "aGc" = (
@@ -19194,7 +19174,7 @@
 	dir = 8;
 	pixel_x = -4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -19333,7 +19313,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore/office)
 "aGm" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -19424,9 +19404,7 @@
 /area/tether/surfacebase/cargostore/office)
 "aGs" = (
 /obj/structure/bed/chair/sofa/brown/corner,
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -20032,7 +20010,7 @@
 	dir = 6
 	},
 /obj/structure/flora/pottedplant/stoutbush,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
@@ -20126,7 +20104,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore)
 "aHA" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled,
@@ -20634,7 +20612,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/visitor_dining)
 "aIz" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/table/woodentable,
@@ -20678,12 +20656,12 @@
 /obj/machinery/vending/wallmed_airlock{
 	pixel_x = 32
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "aIC" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/atmospherics/binary/passive_gate/on,
+/obj/machinery/atmospherics/component/binary/passive_gate/on,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "aID" = (
@@ -20767,7 +20745,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_atmos)
 "aIM" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -20821,7 +20799,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "aIR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -20873,7 +20851,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "aIV" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -21082,14 +21060,14 @@
 "aJm" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/condiment/small/sugar,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/visitor_dining)
 "aJn" = (
 /obj/structure/table/woodentable,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/item/reagent_containers/food/drinks/cup,
@@ -21275,7 +21253,7 @@
 	pixel_y = 6
 	},
 /obj/item/retail_scanner/civilian,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -21308,7 +21286,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -21334,7 +21312,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/maintDorm3)
 "aJE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aJF" = (
@@ -21482,7 +21460,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -21543,7 +21521,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -21826,7 +21804,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "aKA" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light/small,
@@ -21862,7 +21840,7 @@
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/table/standard,
@@ -21898,7 +21876,7 @@
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/lapvend{
@@ -21951,9 +21929,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "aKI" = (
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -22005,7 +21981,7 @@
 	id_tag = "rnd_s_airlock_inner";
 	locked = 1
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/external)
 "aKN" = (
@@ -22022,7 +21998,7 @@
 	locked = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/external)
 "aKO" = (
@@ -22083,9 +22059,7 @@
 /area/engineering/atmos)
 "aKV" = (
 /obj/item/stool,
-/obj/effect/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aKW" = (
@@ -22264,7 +22238,7 @@
 	pixel_x = 11;
 	pixel_y = 30
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled,
 /area/rnd/external)
 "aLp" = (
@@ -22318,12 +22292,12 @@
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "rnd_s_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/rnd/external)
 "aLs" = (
@@ -22344,7 +22318,7 @@
 	dir = 10
 	},
 /obj/structure/table/rack,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -22366,7 +22340,7 @@
 	dir = 8;
 	pixel_x = -4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -22469,7 +22443,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	name = "Ports to Waste"
 	},
 /turf/simulated/floor/tiled,
@@ -22483,24 +22457,24 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aLG" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aLH" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	name = "Scrubber to Waste"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aLI" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
 	name = "Air to Distro"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aLJ" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
 	name = "Air to Ports"
 	},
@@ -22532,7 +22506,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "aLL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aLM" = (
@@ -22541,7 +22515,7 @@
 	},
 /area/crew_quarters/sleep/Dorm_7/holo)
 "aLN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
@@ -22564,7 +22538,7 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
 	d2 = 2;
 	icon_state = "0-2"
@@ -22619,7 +22593,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light_switch{
 	name = "light switch ";
 	pixel_y = 26
@@ -22639,7 +22613,7 @@
 "aLU" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/donkpockets,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "aLV" = (
@@ -22770,7 +22744,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/gas_storage)
 "aMh" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -22851,7 +22825,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aMq" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8;
 	target_pressure = 300
 	},
@@ -23019,7 +22993,7 @@
 /area/crew_quarters/sleep/Dorm_8)
 "aMG" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light_construct/small,
@@ -23045,7 +23019,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -23057,7 +23031,7 @@
 	id_tag = "rnd_s_airlock_outer";
 	locked = 1
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/external)
 "aMK" = (
@@ -23073,7 +23047,7 @@
 	id_tag = "rnd_s_airlock_outer";
 	locked = 1
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/external)
 "aML" = (
@@ -23101,7 +23075,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/gas_storage)
 "aMO" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -23164,7 +23138,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aMX" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -23239,7 +23213,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aNg" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -23455,7 +23429,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "aNt" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light_construct/small,
@@ -23540,7 +23514,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aND" = (
@@ -23581,13 +23555,11 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aNI" = (
-/obj/effect/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aNJ" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -23756,7 +23728,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "aOa" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -23772,7 +23744,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aOc" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4;
 	name = "Port to Isolation"
 	},
@@ -23831,7 +23803,7 @@
 	},
 /area/crew_quarters/sleep/Dorm_5/holo)
 "aOl" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
@@ -23854,7 +23826,7 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
 	d2 = 2;
 	icon_state = "0-2"
@@ -23900,7 +23872,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -23919,7 +23891,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light_switch{
 	name = "light switch ";
 	pixel_y = 26
@@ -23939,7 +23911,7 @@
 "aOs" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/donkpockets,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "aOt" = (
@@ -23974,13 +23946,13 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/gas_storage)
 "aOx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aOy" = (
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -24022,7 +23994,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aOD" = (
-/obj/machinery/atmospherics/omni/mixer{
+/obj/machinery/atmospherics/component/quaternary/mixer{
 	name = "Air Mixer";
 	tag_north = 2;
 	tag_south = 1;
@@ -24181,7 +24153,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -24631,7 +24603,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aPw" = (
-/obj/machinery/atmospherics/binary/passive_gate{
+/obj/machinery/atmospherics/component/binary/passive_gate{
 	dir = 8;
 	name = "Waste Purge Valve";
 	target_pressure = 4500
@@ -24783,7 +24755,7 @@
 /turf/simulated/wall,
 /area/crew_quarters/sleep/Dorm_4)
 "aPL" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -24810,7 +24782,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
 "aPP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -24823,7 +24795,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
 "aPR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -24833,7 +24805,7 @@
 	dir = 1;
 	pixel_y = -25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -24861,7 +24833,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/on{
 	name = "Waste Compresser"
 	},
 /turf/simulated/floor/tiled,
@@ -24908,7 +24880,7 @@
 	},
 /area/crew_quarters/sleep/Dorm_3/holo)
 "aQd" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
@@ -24931,7 +24903,7 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
 	d2 = 2;
 	icon_state = "0-2"
@@ -24982,7 +24954,7 @@
 	pixel_x = 26
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -25001,7 +24973,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "aQj" = (
@@ -25016,7 +24988,7 @@
 "aQk" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/donkpockets,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/light_switch{
 	name = "light switch ";
 	pixel_y = 26
@@ -25345,7 +25317,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -25366,13 +25338,13 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
 "aQT" = (
-/obj/machinery/atmospherics/binary/algae_farm/filled{
+/obj/machinery/atmospherics/component/binary/algae_farm/filled{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
 "aQU" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
 "aQV" = (
@@ -25744,7 +25716,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -25843,7 +25815,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_lodging)
 "aRP" = (
-/obj/machinery/atmospherics/unary/heater,
+/obj/machinery/atmospherics/component/unary/heater,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
 "aRQ" = (
@@ -25942,7 +25914,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aSa" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "CO2 Filter";
 	tag_east = 2;
 	tag_north = 1;
@@ -25958,7 +25930,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aSc" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "Phoron Filter";
 	tag_east = 2;
 	tag_south = 6;
@@ -25967,7 +25939,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aSd" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "N2O Filter";
 	tag_east = 2;
 	tag_south = 7;
@@ -25983,7 +25955,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aSf" = (
-/obj/machinery/atmospherics/omni/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "N2/O2 Filter";
 	tag_east = 4;
 	tag_north = 3;
@@ -26013,7 +25985,7 @@
 	},
 /area/crew_quarters/sleep/Dorm_1/holo)
 "aSk" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
@@ -26036,7 +26008,7 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
 	d2 = 2;
 	icon_state = "0-2"
@@ -26077,7 +26049,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_lodging)
 "aSn" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -26099,7 +26071,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/random/action_figure,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
@@ -26115,7 +26087,7 @@
 "aSs" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/donkpockets,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/light_switch{
 	name = "light switch ";
 	pixel_y = 26
@@ -26194,13 +26166,13 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aSE" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aSF" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -26270,7 +26242,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aSQ" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8;
 	target_pressure = 300
 	},
@@ -26371,7 +26343,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -26384,7 +26356,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
 "aTd" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -26445,7 +26417,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -26470,7 +26442,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "aTo" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -27244,7 +27216,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "aUI" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -27264,7 +27236,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/showers)
 "aUL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/showers)
 "aUM" = (
@@ -27474,7 +27446,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "aVe" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -27494,7 +27466,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "aVg" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -27973,7 +27945,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "aVQ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -27985,7 +27957,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "aVR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -28014,7 +27986,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "aVU" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1441;
 	id = "atmos_out";
@@ -28042,7 +28014,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "aVW" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -28069,7 +28041,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aWb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/stool/padded,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
@@ -28099,7 +28071,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "aWh" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -28117,7 +28089,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/showers)
 "aWj" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/cable/orange{
@@ -28847,7 +28819,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -28881,7 +28853,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aYa" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/item/stool/padded,
@@ -29135,7 +29107,7 @@
 /turf/simulated/floor/tiled/white,
 /area/vacant/vacant_bar)
 "aYO" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -29145,7 +29117,7 @@
 /turf/simulated/floor/tiled/white,
 /area/vacant/vacant_bar)
 "aYT" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -29155,7 +29127,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/maintDorm3)
 "aYY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -29243,7 +29215,7 @@
 /area/crew_quarters/sleep/maintDorm2)
 "aZp" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light_construct/small,
@@ -29304,7 +29276,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/maintDorm3)
 "aZL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light_construct{
 	dir = 1
 	},
@@ -29323,7 +29295,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/maintDorm2)
 "aZP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light_construct{
 	dir = 1
 	},
@@ -29339,7 +29311,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm1)
 "aZS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light_construct{
 	dir = 1
 	},
@@ -29352,7 +29324,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm1)
 "aZX" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/bench/padded,
@@ -29446,14 +29418,14 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "bau" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "baA" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -29464,7 +29436,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm2)
 "baC" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -30263,7 +30235,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -30456,7 +30428,7 @@
 /obj/effect/floor_decal/corner/grey/bordercorner2{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -30498,7 +30470,7 @@
 /obj/effect/floor_decal/corner/grey/bordercorner2{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -30530,7 +30502,7 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
@@ -30657,7 +30629,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "rnd_s_airlock_pump"
@@ -30668,11 +30640,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals3{
 	dir = 5
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/rnd/external)
 "bcV" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "droppod_landing"
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -30833,7 +30805,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -30868,7 +30840,7 @@
 /area/holodeck_control)
 "bdq" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/techfloor/orange{
@@ -31373,14 +31345,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "bSx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "bTt" = (
@@ -31416,7 +31388,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -31510,7 +31482,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "cqZ" = (
@@ -31535,7 +31507,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -31556,7 +31528,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/xenoflora)
 "csd" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -31584,7 +31556,7 @@
 "czD" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/table/glass,
@@ -31724,7 +31696,7 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/clownoffice)
 "cWJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -31774,7 +31746,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -31786,7 +31758,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -31823,7 +31795,7 @@
 /obj/effect/floor_decal/corner/lightorange{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -31923,7 +31895,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "dFD" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -31932,7 +31904,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "dJZ" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /obj/structure/cable/green{
@@ -32117,7 +32089,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/brig)
 "ebN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/bed/chair/wood{
@@ -32200,7 +32172,7 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "emK" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -32356,7 +32328,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "eGp" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -32522,7 +32494,7 @@
 	dir = 4;
 	pixel_x = -30
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -32622,7 +32594,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig/bathroom)
 "fPf" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -32840,7 +32812,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled,
@@ -32859,7 +32831,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/item/beach_ball/holoball,
@@ -33169,7 +33141,7 @@
 /area/rnd/hallway)
 "hpB" = (
 /obj/machinery/door/firedoor/glass,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -33371,7 +33343,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
 "hQw" = (
-/obj/machinery/atmospherics/unary/outlet_injector,
+/obj/machinery/atmospherics/component/unary/outlet_injector,
 /obj/effect/floor_decal/corner/lightorange,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
@@ -33484,7 +33456,7 @@
 "hYh" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -33738,10 +33710,10 @@
 /turf/simulated/floor/tiled/techfloor/grid/virgo3b,
 /area/tether/surfacebase/tunnel)
 "jbU" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "maint_pred"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -33860,7 +33832,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "jvS" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -34096,7 +34068,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "jTQ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -34288,7 +34260,7 @@
 	},
 /obj/structure/bed/padded,
 /obj/item/bedsheet,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/lowerhall)
 "kxx" = (
@@ -34710,7 +34682,7 @@
 /turf/simulated/wall,
 /area/tether/surfacebase/funny/mimeoffice)
 "lsh" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -34774,7 +34746,7 @@
 /turf/simulated/wall,
 /area/hallway/lower/first_west)
 "lBO" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -35327,7 +35299,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -35357,7 +35329,7 @@
 	name = "asset retention console";
 	pixel_y = -30
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -36096,7 +36068,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -36202,7 +36174,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "owv" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -36396,7 +36368,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "pmV" = (
-/obj/machinery/atmospherics/unary/outlet_injector,
+/obj/machinery/atmospherics/component/unary/outlet_injector,
 /obj/effect/floor_decal/corner/lightorange{
 	dir = 8
 	},
@@ -36590,12 +36562,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/vacant_site)
 "qfJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/effect/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "qhk" = (
@@ -36834,7 +36806,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -36871,7 +36843,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker)
 "qPk" = (
@@ -36992,7 +36964,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "qWk" = (
@@ -37059,7 +37031,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -37139,7 +37111,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -37244,15 +37216,13 @@
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "rHb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "rIU" = (
-/obj/effect/landmark/start{
-	name = "Mime"
-	},
+/atom/movable/landmark/spawnpoint/job/mime,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/funny/mimeoffice)
 "rJi" = (
@@ -37374,7 +37344,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "rVW" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -37664,7 +37634,7 @@
 /obj/item/material/twohanded/fireaxe/foam,
 /obj/item/toy/nanotrasenballoon,
 /obj/item/deck/cards,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24
@@ -37693,7 +37663,7 @@
 /obj/effect/floor_decal/corner/lightorange{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
 "tdg" = (
@@ -37762,7 +37732,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -37889,7 +37859,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/landmark/tram,
+/atom/movable/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -38090,7 +38060,7 @@
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
 "uge" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -38440,7 +38410,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -38892,7 +38862,7 @@
 	dir = 1
 	},
 /obj/structure/table/steel,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
@@ -39230,7 +39200,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "xts" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/gaycarpet,
@@ -39247,7 +39217,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tether/surfacebase/security/brig/bathroom)
 "xtV" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -39356,9 +39326,7 @@
 /area/tether/surfacebase/outside/outside1)
 "xRP" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/landmark/start{
-	name = "Clown"
-	},
+/atom/movable/landmark/spawnpoint/job/clown,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -39401,7 +39369,7 @@
 /obj/effect/floor_decal/corner/lightorange{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/camera/network/security{
@@ -39468,7 +39436,7 @@
 /obj/effect/floor_decal/corner/lightorange{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
 "ybQ" = (
@@ -39532,9 +39500,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
+/atom/movable/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
 "ylH" = (

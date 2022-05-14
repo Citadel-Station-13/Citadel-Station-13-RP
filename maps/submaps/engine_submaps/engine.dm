@@ -54,24 +54,24 @@
 	display_name = "Nuclear Bomb"
 
 // Landmark for where to load in the engine on permament map
-/obj/effect/landmark/engine_loader
+/atom/movable/landmark/engine_loader
 	name = "Engine Loader"
 	var/clean_turfs // A list of lists, where each list is (x, )
 
-/obj/effect/landmark/engine_loader/New()
+/atom/movable/landmark/engine_loader/Initialize(mapload)
+	. = ..()
 	if(SSmapping.engine_loader)
 		warning("Duplicate engine_loader landmarks: [log_info_line(src)] and [log_info_line(SSmapping.engine_loader)]")
-		delete_me = TRUE
+		return INITIALIZE_HINT_QDEL
 	SSmapping.engine_loader = src
-	return ..()
 
-/obj/effect/landmark/engine_loader/proc/get_turfs_to_clean()
+/atom/movable/landmark/engine_loader/proc/get_turfs_to_clean()
 	. = list()
 	if(clean_turfs)
 		for(var/list/coords in clean_turfs)
 			. += block(locate(coords[1], coords[2], src.z), locate(coords[3], coords[4], src.z))
 
-/obj/effect/landmark/engine_loader/proc/annihilate_bounds()
+/atom/movable/landmark/engine_loader/proc/annihilate_bounds()
 	var/deleted_atoms = 0
 	admin_notice("<span class='danger'>Annihilating objects in engine loading locatation.</span>", R_DEBUG)
 	var/list/turfs_to_clean = get_turfs_to_clean()

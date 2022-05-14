@@ -174,23 +174,36 @@
 					healths.icon_state = "health6"
 		else
 			healths.icon_state = "health7"
-	if (client)
-		client.screen.Remove(GLOB.global_hud.blurry,GLOB.global_hud.druggy,GLOB.global_hud.vimpaired)
+
+	if (stat == 2 || (XRAY in src.mutations))
+		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		SetSeeInDarkSelf(8)
+		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+	else if (stat != 2)
+		RemoveSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		SetSeeInDarkSelf(2)
+		SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 
 	if (stat != 2)
 		if ((blinded))
-			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 		else
 			clear_fullscreen("blind")
-			set_fullscreen(disabilities & NEARSIGHTED, "impaired", /atom/movable/screen/fullscreen/impaired, 1)
-			set_fullscreen(eye_blurry, "blurry", /atom/movable/screen/fullscreen/blurry)
-			set_fullscreen(druggy, "high", /atom/movable/screen/fullscreen/high)
+			if(disabilities & NEARSIGHTED)
+				overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
+			else
+				clear_fullscreen("impaired")
+			if(eye_blurry)
+				overlay_fullscreen("blurry", /atom/movable/screen/fullscreen/tiled/blurry)
+			else
+				clear_fullscreen("blurry")
+			if(druggy)
+				overlay_fullscreen("high", /atom/movable/screen/fullscreen/tiled/high)
+			else
+				clear_fullscreen("high")
 
-		if (machine)
-			if (!( machine.check_eye(src) ))
-				reset_view(null)
-		else
-			if(client && !client.adminobs)
-				reset_view(null)
+		if(IsRemoteViewing())
+			if(machine && machine.check_eye(src) < 0)
+				reset_perspective()
 
 	return 1

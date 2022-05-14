@@ -11,7 +11,7 @@
 
 		if(turfs.len) //Pick a turf to spawn at if we can
 			var/turf/simulated/floor/T = pick(turfs)
-			var/datum/seed/seed = plant_controller.create_random_seed(1)
+			var/datum/seed/seed = SSplants.create_random_seed(1)
 			seed.set_trait(TRAIT_SPREAD,2)             // So it will function properly as vines.
 			seed.set_trait(TRAIT_POTENCY,rand(potency_min, potency_max))
 			seed.set_trait(TRAIT_MATURATION,rand(maturation_min, maturation_max))
@@ -72,10 +72,10 @@
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 
 /obj/effect/plant/Destroy()
-	if(plant_controller)
-		plant_controller.remove_plant(src)
+	if(SSplants)
+		SSplants.remove_plant(src)
 	for(var/obj/effect/plant/neighbor in range(1,src))
-		plant_controller.add_plant(neighbor)
+		SSplants.add_plant(neighbor)
 	return ..()
 
 /obj/effect/plant/single
@@ -88,15 +88,8 @@
 	else
 		parent = newparent
 
-	if(!plant_controller)
-		sleep(250) // ugly hack, should mean roundstart plants are fine. TODO initialize perhaps?
-	if(!plant_controller)
-		to_chat(world, "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
-		qdel(src)
-		return
-
 	if(!istype(newseed))
-		newseed = plant_controller.seeds[DEFAULT_SEED]
+		newseed = SSplants.seeds[DEFAULT_SEED]
 	seed = newseed
 	if(!seed)
 		qdel(src)
@@ -124,7 +117,7 @@
 /obj/effect/plant/proc/finish_spreading()
 	setDir(calc_dir())
 	update_icon()
-	plant_controller.add_plant(src)
+	SSplants.add_plant(src)
 	//Some plants eat through plating.
 	if(islist(seed.chems) && !isnull(seed.chems["pacid"]))
 		var/turf/T = get_turf(src)
@@ -228,7 +221,7 @@
 /obj/effect/plant/attackby(var/obj/item/W, var/mob/user)
 
 	user.setClickCooldown(user.get_attack_speed(W))
-	plant_controller.add_plant(src)
+	SSplants.add_plant(src)
 
 	if(W.is_wirecutter() || istype(W, /obj/item/surgical/scalpel))
 		if(sampled)

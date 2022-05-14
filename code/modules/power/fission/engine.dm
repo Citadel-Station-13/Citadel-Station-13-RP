@@ -322,7 +322,7 @@
 					removed.temperature = between(0, removed.temperature, REACTOR_TEMPERATURE_CUTOFF)
 				env.merge(removed)
 
-/obj/machinery/power/fission/proc/add_thermal_energy(var/thermal_energy)
+/obj/machinery/power/fission/add_thermal_energy(var/thermal_energy)
 	if(mass < 1)
 		return 0
 

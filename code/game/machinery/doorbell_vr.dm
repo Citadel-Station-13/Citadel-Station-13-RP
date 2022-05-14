@@ -133,7 +133,7 @@
 	else if(panel_open && istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		M.connectable = src
-		to_chat(user, "<span class='caution'>You save the data in \the [M]'s buffer.</span>")
+		to_chat(user, SPAN_CAUTION("You save the data in \the [M]'s buffer."))
 	else if(W.is_wrench())
 		to_chat(user, "<span class='notice'>You start to unwrench \the [src].</span>")
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)

@@ -196,21 +196,21 @@
 		// Get the desired spawn location to put the body
 		var/S = null
 		var/list/vr_landmarks = list()
-		for(var/obj/effect/landmark/virtual_reality/sloc in GLOB.landmarks_list)
+		for(var/atom/movable/landmark/virtual_reality/sloc in GLOB.landmarks_list)
 			vr_landmarks += sloc.name
 
 		S = input(occupant, "Please select a location to spawn your avatar at:", "Spawn location") as null|anything in vr_landmarks
 		if(!S)
 			return 0
 
-		for(var/obj/effect/landmark/virtual_reality/i in GLOB.landmarks_list)
+		for(var/atom/movable/landmark/virtual_reality/i in GLOB.landmarks_list)
 			if(i.name == S)
 				S = i
 				break
 
-		avatar = new(S, "Virtual Reality Avatar")
+		avatar = new(S, SPECIES_VR)
 		// If the user has a non-default (Human) bodyshape, make it match theirs.
-		if(occupant.species.name != "Promethean" && occupant.species.name != "Human")
+		if(occupant.species.name != SPECIES_PROMETHEAN && occupant.species.name != SPECIES_HUMAN)
 			avatar.shapeshifter_change_shape(occupant.species.name)
 		avatar.forceMove(get_turf(S))			// Put the mob on the landmark, instead of inside it
 		avatar.Sleeping(1)
@@ -224,4 +224,3 @@
 
 	else
 		occupant.enter_vr(avatar)
-

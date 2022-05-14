@@ -1,7 +1,5 @@
-import { round } from 'common/math';
-import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section } from "../components";
+import { Button, Icon } from "../components";
 import { Window } from "../layouts";
 
 export const JanitorCart = (props, context) => {
@@ -25,7 +23,7 @@ export const JanitorCart = (props, context) => {
           height="64px"
           position="relative"
           tooltip={mybag ? mybag : "Garbage Bag Slot"}
-          tooltipPosition="bottom-right"
+          tooltipPosition="bottom-end"
           color={mybag ? "grey" : "transparent"}
           style={{
             border: mybag ? null : "2px solid grey",
@@ -51,7 +49,7 @@ export const JanitorCart = (props, context) => {
           height="64px"
           position="relative"
           tooltip={mymop ? mymop : "Mop Slot"}
-          tooltipPosition="bottom-left"
+          tooltipPosition="bottom-end"
           color={mymop ? "grey" : "transparent"}
           style={{
             border: mymop ? null : "2px solid grey",
@@ -64,7 +62,7 @@ export const JanitorCart = (props, context) => {
           height="64px"
           position="relative"
           tooltip={myspray ? myspray : "Spray Slot"}
-          tooltipPosition="top-right"
+          tooltipPosition="top-end"
           color={myspray ? "grey" : "transparent"}
           style={{
             border: myspray ? null : "2px solid grey",
@@ -90,7 +88,7 @@ export const JanitorCart = (props, context) => {
           height="64px"
           position="relative"
           tooltip={signs ? signs : "Signs Slot"}
-          tooltipPosition="top-left"
+          tooltipPosition="top-start"
           color={signs ? "grey" : "transparent"}
           style={{
             border: signs ? null : "2px solid grey",

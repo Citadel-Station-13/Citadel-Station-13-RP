@@ -24,7 +24,7 @@
 	},
 /area/awaymission/snowfield)
 "af" = (
-/obj/effect/landmark/gateway_scatter,
+/atom/movable/landmark/gateway_scatter,
 /turf/simulated/floor/outdoors/snow{
 	temperature = 243.15
 	},
@@ -294,7 +294,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)
 "aQ" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8;
 	name = "Isolation to Waste"
 	},
@@ -331,7 +331,7 @@
 /area/awaymission/snowfield/base)
 "aV" = (
 /obj/effect/floor_decal/corner/green/full,
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8;
 	name = "Port to Isolation"
 	},
@@ -414,7 +414,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "bi" = (
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 2;
 	icon_state = "freezer"
 	},
@@ -424,7 +424,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "bj" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 2;
 	icon_state = "heater"
 	},

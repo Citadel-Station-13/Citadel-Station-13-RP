@@ -370,8 +370,6 @@
 	if(Options_Act(action, params))
 		. = TRUE
 
-	add_fingerprint(usr)
-
 /obj/machinery/telecomms/proc/canAccess(var/mob/user)
 	if(issilicon(user) || in_range(user, src))
 		return 1

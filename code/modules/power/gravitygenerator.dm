@@ -92,7 +92,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	icon_state = "on_8"
 	use_power = USE_POWER_ACTIVE
 
-/obj/machinery/gravity_generator/main/station/Initialize()
+/obj/machinery/gravity_generator/main/station/Initialize(mapload)
 	. = ..()
 	setup_parts()
 	middle.add_overlay("activated")
@@ -126,7 +126,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	var/list/levels = list()
 	var/list/areas = list()
 
-/obj/machinery/gravity_generator/main/Initialize()
+/obj/machinery/gravity_generator/main/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD
 

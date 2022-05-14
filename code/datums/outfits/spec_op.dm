@@ -1,4 +1,4 @@
-/decl/hierarchy/outfit/spec_op_officer
+/datum/outfit/spec_op_officer
 	name = "Special ops - Officer"
 	uniform = /obj/item/clothing/under/syndicate/combat
 	suit = /obj/item/clothing/suit/armor/swat/officer
@@ -16,7 +16,7 @@
 	id_desc = "Special operations ID."
 	id_pda_assignment = "Special Operations Officer"
 
-/decl/hierarchy/outfit/spec_op_officer/space
+/datum/outfit/spec_op_officer/space
 	name = "Special ops - Officer in space"
 	suit = /obj/item/clothing/suit/armor/swat	//obj/item/clothing/suit/space/void/swat
 	back = /obj/item/tank/jetpack/oxygen
@@ -24,7 +24,7 @@
 
 	flags = OUTFIT_HAS_JETPACK
 
-/decl/hierarchy/outfit/ert
+/datum/outfit/ert
 	name = "Spec ops - Emergency response team"
 	uniform = /obj/item/clothing/under/ert
 	shoes = /obj/item/clothing/shoes/boots/swat
@@ -37,21 +37,21 @@
 	id_slot = slot_wear_id
 	id_type = /obj/item/card/id/centcom/ERT
 
-/decl/hierarchy/outfit/death_command
+/datum/outfit/death_command
 	name = "Spec ops - Death commando"
 
-/decl/hierarchy/outfit/death_command/equip(var/mob/living/carbon/human/H)
+/datum/outfit/death_command/equip(var/mob/living/carbon/human/H)
 	deathsquad.equip(H)
 	return 1
 
-/decl/hierarchy/outfit/syndicate_command
+/datum/outfit/syndicate_command
 	name = "Spec ops - Syndicate commando"
 
-/decl/hierarchy/outfit/syndicate_command/equip(var/mob/living/carbon/human/H)
+/datum/outfit/syndicate_command/equip(var/mob/living/carbon/human/H)
 	commandos.equip(H)
 	return 1
 
-/decl/hierarchy/outfit/mercenary
+/datum/outfit/mercenary
 	name = "Spec ops - Mercenary"
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/boots/combat
@@ -68,7 +68,7 @@
 
 	flags = OUTFIT_HAS_BACKPACK
 
-/decl/hierarchy/outfit/PARA
+/datum/outfit/PARA
 	name = "Spec ops - PARA"
 	uniform = /obj/item/clothing/under/para
 	suit = /obj/item/clothing/suit/armor/vest/para
@@ -84,7 +84,7 @@
 	id_slot = slot_wear_id
 	id_type = /obj/item/card/id/centcom/ERT/PARA
 
-/decl/hierarchy/outfit/PARA/equip(var/mob/living/carbon/human/H)
+/datum/outfit/PARA/equip(var/mob/living/carbon/human/H)
 	. = ..()
 	if(H.mind)
 		H.mind.isholy = TRUE

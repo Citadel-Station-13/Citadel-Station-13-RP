@@ -9,6 +9,8 @@
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a357
 	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	mag_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
 	var/chamber_offset = 0 //how many empty chambers in the cylinder until you hit a round
 
 /obj/item/gun/projectile/revolver/holy
@@ -151,8 +153,8 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	ammo_type = /obj/item/ammo_casing/a38/emp
 
 
-/obj/item/gun/projectile/revolver/deckard/update_icon()
-	..()
+/obj/item/gun/projectile/revolver/deckard/update_icon_state()
+	. = ..()
 	if(loaded.len)
 		icon_state = "deckard-loaded"
 	else
@@ -331,8 +333,8 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
 	ammo_type = /obj/item/ammo_casing/a44
 
-/obj/item/gun/projectile/revolver/combat/update_icon()
-	..()
+/obj/item/gun/projectile/revolver/combat/update_icon_state()
+	. = ..()
 	if(loaded.len)
 		icon_state = "combatrevolver"
 	else

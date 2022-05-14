@@ -211,7 +211,7 @@
 	..()
 
 /obj/machinery/door/attackby(obj/item/I as obj, mob/user as mob)
-	src.add_fingerprint(user)
+	src.add_fingerprint(user, 0, I)
 
 	if(istype(I))
 		if(attackby_vr(I, user))	//VOREStation begin: Fireproofing
@@ -461,7 +461,7 @@
 	operating = 0
 
 	//I shall not add a check every x ticks if a door has closed over some fire.
-	var/obj/fire/fire = locate() in loc
+	var/atom/movable/fire/fire = locate() in loc
 	if(fire)
 		qdel(fire)
 
