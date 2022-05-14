@@ -3,6 +3,13 @@
 	desc = "Legacy command report style announcements."
 
 /datum/announcer/major_announce/SendText(source, name, message, list/affected)
+	var/list/assembled = list()
+
+
+
+	var/msg = assembled.Join("")
+	for(var/mob/M in affected)
+		to_chat(M, msg)
 
 
 #warn old command report/emergency shuttle
