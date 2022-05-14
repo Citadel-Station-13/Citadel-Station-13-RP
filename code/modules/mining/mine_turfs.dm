@@ -90,6 +90,7 @@ turf/simulated/mineral/floor/light_corner
 	can_build_into_floor = TRUE
 	SSplanets.addTurf(src)
 	SSair.mark_for_update(src)
+	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 
 /turf/simulated/mineral/proc/make_wall()
@@ -103,6 +104,7 @@ turf/simulated/mineral/floor/light_corner
 	can_build_into_floor = FALSE
 	SSplanets.removeTurf(src)
 	SSair.mark_for_update(src)
+	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 
 /turf/simulated/mineral/Entered(atom/movable/M as mob|obj)
@@ -126,6 +128,7 @@ turf/simulated/mineral/floor/light_corner
 		else
 			UpdateMineral()	// this'll work because we're INITIALIZED
 	if(!mapload)
+		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 
 /* custom smoothing code */

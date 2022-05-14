@@ -404,10 +404,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	levelupdate()
 	update_vertical_turf_graphics()
 
-/turf/simulated/AfterChange(flags, oldType)
-	..()
-	RemoveLattice()
-
 /turf/proc/RemoveLattice()
 	for(var/obj/structure/lattice/L in src)
 		qdel(L)

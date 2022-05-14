@@ -17,13 +17,17 @@ GLOBAL_LIST_EMPTY(turf_edge_cache)
 var/list/flooring_cache = list()
 
 /turf/simulated/floor/update_icon()
+	PROFILE_SET
 	cut_overlays()
 
+	PROFILE_TICK
 	if(flooring)
 		// Set initial icon and strings.
+		PROFILE_TICK
 		name = flooring.name
 		desc = flooring.desc
 		icon = flooring.icon
+		PROFILE_TICK
 
 		if(flooring_override)
 			icon_state = flooring_override
@@ -32,6 +36,7 @@ var/list/flooring_cache = list()
 			if(flooring.has_base_range)
 				icon_state = "[icon_state][rand(0,flooring.has_base_range)]"
 				flooring_override = icon_state
+		PROFILE_TICK
 
 		// Apply edges, corners, and inner corners.
 		if(flooring.flags & TURF_HAS_EDGES)
@@ -71,15 +76,21 @@ var/list/flooring_cache = list()
 					var/turf/simulated/floor/T = get_step(src, SOUTHWEST)
 					if(!flooring.test_link(src, T))
 						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[SOUTHWEST]", "[flooring.icon_base]_corners", SOUTHWEST))
+		PROFILE_TICK
 		if(!isnull(broken) && (flooring.flags & TURF_CAN_BREAK))
 			add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-broken-[broken]","broken[broken]"))
 		if(!isnull(burnt) && (flooring.flags & TURF_CAN_BURN))
 			add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-burned-[burnt]","burned[burnt]"))
+		PROFILE_TICK
 	else
+		PROFILE_TICK
 		// no flooring - just handle plating stuff
 		if(is_plating() && !(isnull(broken) && isnull(burnt))) //temp, todo
 			icon = 'icons/turf/flooring/plating.dmi'
 			icon_state = "dmg[rand(1,4)]"
+		PROFILE_TICK
+
+	PROFILE_TICK
 
 	// Re-apply floor decals
 	if(LAZYLEN(decals))
@@ -90,8 +101,12 @@ var/list/flooring_cache = list()
 	if(isopenturf(above) && !istype(src, /turf/simulated/floor/outdoors)) // This won't apply to outdoor turfs since its assumed they don't have a ceiling anyways.
 		add_overlay(GLOB.no_ceiling_image)
 
+	PROFILE_TICK
+
 	// ..() has to be last to prevent trampling managed overlays
-	return ..()
+	. = ..()
+
+	PROFILE_TICK
 
 /**
  * welcome to the less modular but more sensical and efficient way to do icon edges

@@ -11,35 +11,7 @@
 
 /turf/simulated/floor/outdoors/Initialize(mapload)
 	QUEUE_SMOOTH(src)
-	. = ..()
-
-/turf/simulated/floor/Initialize(mapload)
-	. = ..()
-	if(outdoors)
-		SSplanets.addTurf(src)
-
-/turf/simulated/floor/Destroy()
-	if(outdoors)
-		SSplanets.removeTurf(src)
 	return ..()
-
-/turf/simulated/proc/make_outdoors()
-	outdoors = TRUE
-	SSplanets.addTurf(src)
-
-/turf/simulated/proc/make_indoors()
-	outdoors = FALSE
-	SSplanets.removeTurf(src)
-
-/turf/simulated/AfterChange(flags, oldType)
-	. = ..()
-	// If it was outdoors and still is, it will not get added twice when the planet controller gets around to putting it in.
-	if(flags & CHANGETURF_PRESERVE_OUTDOORS)
-		// if it didn't preserve then we don't need to recheck now do we
-		if(outdoors)
-			make_outdoors()
-		else
-			make_indoors()
 
 /turf/simulated/floor/outdoors/mud
 	name = "mud"
