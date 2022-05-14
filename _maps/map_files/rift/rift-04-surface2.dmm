@@ -5168,15 +5168,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
-	},
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
 	pixel_x = -24
 	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/loading)
 "kp" = (

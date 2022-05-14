@@ -249,20 +249,6 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
-"aJ" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/rift/trade_shop)
 "aK" = (
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 8
@@ -11159,11 +11145,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "tY" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -16004,15 +15985,6 @@
 "De" = (
 /obj/structure/railing{
 	dir = 4
-	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
 	},
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
 	frequency = 1379;
@@ -24998,11 +24970,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/airlock_sensor/phoron{
 	dir = 5;
 	id_tag = "shop_airlock_sensor";
@@ -26295,11 +26262,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -36135,7 +36097,7 @@ IQ
 Iu
 uz
 Ch
-aJ
+Ch
 Jy
 ps
 aa
