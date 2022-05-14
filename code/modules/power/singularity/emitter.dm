@@ -99,7 +99,7 @@
 	return 1
 
 /obj/machinery/power/emitter/process(delta_time)
-	if(stat & (BROKEN))
+	if(machine_stat & (BROKEN))
 		return
 	if(src.state != 2 || (!powernet && active_power_usage))
 		src.active = 0

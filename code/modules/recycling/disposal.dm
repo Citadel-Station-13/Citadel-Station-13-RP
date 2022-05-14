@@ -55,7 +55,7 @@
 
 // attack by item places it in to disposal
 /obj/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
-	if(stat & BROKEN || !I || !user)
+	if(machine_stat & BROKEN || !I || !user)
 		return
 
 	add_fingerprint(user, 0, I)
@@ -223,7 +223,7 @@
 // human interact with machine
 /obj/machinery/disposal/attack_hand(mob/user as mob)
 
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		return
 
 	if(user && user.loc == src)
@@ -242,7 +242,7 @@
 /obj/machinery/disposal/interact(mob/user, var/ai=0)
 
 	src.add_fingerprint(user)
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		user.unset_machine()
 		return
 
@@ -285,7 +285,7 @@
 	if(..())
 		return
 
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		return
 	if(usr.stat || usr.restrained() || src.flushing)
 		return
@@ -328,7 +328,7 @@
 // update the icon & overlays to reflect mode & status
 /obj/machinery/disposal/proc/update()
 	overlays.Cut()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "disposal-broken"
 		mode = 0
 		flush = 0
@@ -339,7 +339,7 @@
 		overlays += image('icons/obj/pipes/disposal.dmi', "dispover-handle")
 
 	// only handle is shown if no power
-	if(stat & NOPOWER || mode == -1)
+	if(machine_stat & NOPOWER || mode == -1)
 		return
 
 	// 	check for items in disposal - occupied light
@@ -355,7 +355,7 @@
 // timed process
 // charge the gas reservoir and perform flush if ready
 /obj/machinery/disposal/process(delta_time)
-	if(!air_contents || (stat & BROKEN))			// nothing can happen if broken
+	if(!air_contents || (machine_stat & BROKEN))			// nothing can happen if broken
 		update_use_power(USE_POWER_OFF)
 		return
 
@@ -382,7 +382,7 @@
 		src.pressurize() //otherwise charge
 
 /obj/machinery/disposal/proc/pressurize()
-	if(stat & NOPOWER)			// won't charge if no power
+	if(machine_stat & NOPOWER)			// won't charge if no power
 		update_use_power(USE_POWER_OFF)
 		return
 

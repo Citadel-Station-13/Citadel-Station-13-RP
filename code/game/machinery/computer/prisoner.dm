@@ -6,11 +6,11 @@
 	light_color = "#a91515"
 	req_access = list(access_armory)
 	circuit = /obj/item/circuitboard/prisoner
-	var/id = 0.0
+	var/id = 0
 	var/temp = null
 	var/status = 0
-	var/timeleft = 60
-	var/stop = 0.0
+	var/timeleft = 6 SECONDS
+	var/stop = 0
 	var/screen = 0 // 0 - No Access Denied, 1 - Access allowed
 
 /obj/machinery/computer/prisoner/attack_ai(var/mob/user as mob)

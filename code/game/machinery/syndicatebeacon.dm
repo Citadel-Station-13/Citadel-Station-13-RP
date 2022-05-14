@@ -9,13 +9,13 @@
 	desc = "This looks suspicious..."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndbeacon"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	var/temptext = ""
-	var/selfdestructing = 0
+	var/selfdestructing = FALSE
 	var/charges = 1
 
-/obj/machinery/syndicate_beacon/attack_hand(var/mob/user as mob)
+/obj/machinery/syndicate_beacon/attack_hand(mob/user)
 	usr.set_machine(src)
 	var/dat = "<font color=#005500><i>Scanning [pick("retina pattern", "voice print", "fingerprints", "dna sequence")]...<br>Identity confirmed,<br></i></font>"
 	if(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon/ai))
@@ -75,12 +75,11 @@
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "beacon"
 
-	anchored = 0
-	density = 1
+	anchored = FALSE
+	density = TRUE
 	layer = MOB_LAYER - 0.1 //so people can't hide it and it's REALLY OBVIOUS
-	stat = 0
 
-	var/active = 0
+	var/active = FALSE
 	var/icontype = "beacon"
 
 /obj/machinery/power/singularity_beacon/proc/Activate(mob/user = null)
@@ -106,17 +105,17 @@
 	if(user)
 		to_chat(user, "<span class='notice'>You deactivate the beacon.</span>")
 
-/obj/machinery/power/singularity_beacon/attack_ai(mob/user as mob)
+/obj/machinery/power/singularity_beacon/attack_ai(mob/user)
 	return
 
-/obj/machinery/power/singularity_beacon/attack_hand(var/mob/user as mob)
+/obj/machinery/power/singularity_beacon/attack_hand(mob/user)
 	if(anchored)
 		return active ? Deactivate(user) : Activate(user)
 	else
 		to_chat(user, "<span class='danger'>You need to screw the beacon to the floor first!</span>")
 		return
 
-/obj/machinery/power/singularity_beacon/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/power/singularity_beacon/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
 		if(active)
 			to_chat(user, "<span class='danger'>You need to deactivate the beacon first!</span>")
@@ -159,7 +158,7 @@
 //! ## VR FILE MERGE ## !//
 //  Virgo modified syndie beacon, does not give objectives
 
-/obj/machinery/syndicate_beacon/virgo/attack_hand(var/mob/user as mob)
+/obj/machinery/syndicate_beacon/virgo/attack_hand(mob/user )
 	usr.set_machine(src)
 	var/dat = "<font color=#005500><i>Scanning [pick("retina pattern", "voice print", "fingerprints", "dna sequence")]...<br>Identity confirmed,<br></i></font>"
 	if(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon/ai))

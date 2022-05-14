@@ -5,6 +5,11 @@
 	icon_state = "doorctrl0"
 	power_channel = ENVIRON
 	layer = ABOVE_WINDOW_LAYER
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
+	idle_power_usage = 2
+	active_power_usage = 4
+
 	var/desiredstate = 0
 	var/exposedwires = 0
 	var/wires = 3
@@ -13,36 +18,31 @@
 				2=Network Access
 	*/
 
-	anchored = 1.0
-	use_power = USE_POWER_IDLE
-	idle_power_usage = 2
-	active_power_usage = 4
-
-/obj/machinery/button/remote/attack_ai(mob/user as mob)
+/obj/machinery/button/remote/attack_ai(mob/user)
 	if(wires & 2)
 		return attack_hand(user)
 	else
 		to_chat(user, "Error, no route to host.")
 
-/obj/machinery/button/remote/attackby(obj/item/W, mob/user as mob)
+/obj/machinery/button/remote/attackby(obj/item/W, mob/user)
 	return attack_hand(user)
 
-/obj/machinery/button/remote/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/button/remote/emag_act(remaining_charges, mob/user)
 	if(LAZYLEN(req_access) || LAZYLEN(req_one_access.len))
 		req_access = req_access ? list() : null
 		req_one_access = req_one_access ? list() : null // if it's not set keep it not set
-		playsound(src.loc, "sparks", 100, 1)
+		playsound(src.loc, "sparks", 100, TRUE)
 		return 1
 
 /obj/machinery/button/remote/attack_hand(mob/user as mob)
 	if(..())
 		return
 
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	if(!allowed(user) && (wires & 1))
-		to_chat(user, "<span class='warning'>Access Denied</span>")
+		to_chat(user, SPAN_WARNING("Access Denied"))
 		flick("doorctrl-denied",src)
 		return
 
@@ -61,7 +61,7 @@
 	update_icon()
 
 /obj/machinery/button/remote/update_icon()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "doorctrl-p"
 	else
 		icon_state = "doorctrl0"
@@ -155,7 +155,7 @@
 	name = "remote emitter control"
 	desc = "It controls emitters, remotely."
 
-/obj/machinery/button/remote/emitter/trigger(mob/user as mob)
+/obj/machinery/button/remote/emitter/trigger(mob/user)
 	for(var/obj/machinery/power/emitter/E in machines)
 		if(E.id == id)
 			spawn(0)
@@ -171,8 +171,8 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "launcherbtt"
 
-/obj/machinery/button/remote/driver/trigger(mob/user as mob)
-	active = 1
+/obj/machinery/button/remote/driver/trigger(mob/user)
+	active = TRUE
 	update_icon()
 
 	for(var/obj/machinery/door/blast/M in machines)
@@ -201,7 +201,7 @@
 	return
 
 /obj/machinery/button/remote/driver/update_icon()
-	if(!active || (stat & NOPOWER))
+	if(!active || (machine_stat & NOPOWER))
 		icon_state = "launcherbtt"
 	else
 		icon_state = "launcheract"

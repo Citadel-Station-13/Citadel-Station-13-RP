@@ -48,7 +48,7 @@
 	icon_state = "offcenter"
 
 /obj/machinery/gateway/centerstation/process(delta_time)
-	if(stat & (NOPOWER))
+	if(machine_stat & (NOPOWER))
 		if(active) toggleoff()
 		return
 

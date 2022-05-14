@@ -166,7 +166,7 @@
 		elect_master()
 
 /obj/machinery/alarm/process(delta_time)
-	if((stat & (NOPOWER|BROKEN)) || shorted)
+	if((machine_stat & (NOPOWER|BROKEN)) || shorted)
 		return
 
 	var/turf/simulated/location = src.loc
@@ -290,37 +290,36 @@
 		temperature_dangerlevel
 		)
 
-// Returns whether this air alarm thinks there is a breach, given the sensors that are available to it.
+/// Returns whether this air alarm thinks there is a breach, given the sensors that are available to it.
 /obj/machinery/alarm/proc/breach_detected()
 	var/turf/simulated/location = src.loc
 
 	if(!istype(location))
-		return 0
+		return FALSE
 
-	if(breach_detection	== 0)
-		return 0
+	if(!breach_detection)
+		return FALSE
 
 	var/datum/gas_mixture/environment = location.return_air()
 	var/environment_pressure = environment.return_pressure()
 	var/pressure_levels = TLV["pressure"]
 
-	if(environment_pressure <= pressure_levels[1])		//low pressures
+	if(environment_pressure <= pressure_levels[1]) // Low pressures
 		if(!(mode == AALARM_MODE_PANIC || mode == AALARM_MODE_CYCLE))
-			return 1
-
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/machinery/alarm/proc/master_is_operating()
-	return alarm_area && alarm_area.master_air_alarm && !(alarm_area.master_air_alarm.stat & (NOPOWER | BROKEN))
+	return alarm_area && alarm_area.master_air_alarm && !(alarm_area.master_air_alarm.machine_stat & (NOPOWER | BROKEN))
 
 /obj/machinery/alarm/proc/elect_master(exclude_self = FALSE)
 	for(var/obj/machinery/alarm/AA in alarm_area)
 		if(exclude_self && AA == src)
 			continue
-		if(!(AA.stat & (NOPOWER|BROKEN)))
+		if(!(AA.machine_stat & (NOPOWER|BROKEN)))
 			alarm_area.master_air_alarm = AA
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/machinery/alarm/update_icon()
 	cut_overlays()
@@ -330,7 +329,7 @@
 		set_light(0)
 		//set_light_on(FALSE)
 		return
-	if((stat & (NOPOWER|BROKEN)) || shorted)
+	if((machine_stat & (NOPOWER|BROKEN)) || shorted)
 		icon_state = "alarmp"
 		set_light(0)
 		//set_light_on(FALSE)
@@ -362,7 +361,7 @@
 	//set_light_on(TRUE)
 
 /obj/machinery/alarm/receive_signal(datum/signal/signal)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(alarm_area.master_air_alarm != src)
 		if(master_is_operating())
@@ -811,7 +810,7 @@
 	return ..()
 
 /obj/machinery/alarm/verb/togglelock(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "It does nothing.")
 		return
 	else

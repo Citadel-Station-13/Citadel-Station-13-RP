@@ -24,9 +24,9 @@
 	update_icon()
 
 /obj/machinery/computer/process(delta_time)
-	if(stat & (NOPOWER|BROKEN))
-		return 0
-	return 1
+	if(machine_stat & (NOPOWER|BROKEN))
+		return FALSE
+	return TRUE
 
 /obj/machinery/computer/emp_act(severity)
 	if(prob(20/severity)) set_broken()
@@ -64,7 +64,7 @@
 
 /obj/machinery/computer/update_icon()
 	overlays.Cut()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		set_light(0)
 		if(icon_keyboard)
 			overlays += image(icon,"[icon_keyboard]_off", overlay_layer)
@@ -72,7 +72,7 @@
 	else
 		set_light(light_range_on, light_power_on)
 
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		overlays += image(icon,"[icon_state]_broken", overlay_layer)
 	else
 		overlays += image(icon,icon_screen, overlay_layer)
@@ -83,14 +83,14 @@
 /obj/machinery/computer/power_change()
 	..()
 	update_icon()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		set_light(0)
 	else
 		set_light(light_range_on, light_power_on)
 
 
 /obj/machinery/computer/proc/set_broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update_icon()
 
 /obj/machinery/computer/proc/decode(text)
@@ -98,7 +98,7 @@
 	text = replacetext(text, "\n", "<BR>")
 	return text
 
-/obj/machinery/computer/attackby(I as obj, user as mob)
+/obj/machinery/computer/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else

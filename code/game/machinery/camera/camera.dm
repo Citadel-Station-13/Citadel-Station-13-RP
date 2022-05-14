@@ -1,7 +1,7 @@
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/monitors_vr.dmi' //VOREStation Edit - New Icons
+	icon = 'icons/obj/monitors_vr.dmi'
 	icon_state = "camera"
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
@@ -78,8 +78,8 @@
 	return ..()
 
 /obj/machinery/camera/process(delta_time)
-	if((stat & EMPED) && world.time >= affected_by_emp_until)
-		stat &= ~EMPED
+	if((machine_stat & EMPED) && world.time >= affected_by_emp_until)
+		machine_stat &= ~EMPED
 		cancelCameraAlarm()
 		update_icon()
 		update_coverage()
@@ -92,7 +92,7 @@
 	if(!isEmpProof() && prob(100/severity))
 		if(!affected_by_emp_until || (world.time > affected_by_emp_until))
 			affected_by_emp_until = max(affected_by_emp_until, world.time + (90 SECONDS / severity))
-			stat |= EMPED
+			machine_stat |= EMPED
 			set_light(0)
 			triggerCameraAlarm()
 			update_icon()
@@ -113,7 +113,7 @@
 	..() //and give it the regular chance of being deleted outright
 
 /obj/machinery/camera/blob_act()
-	if((stat & BROKEN) || invuln)
+	if((machine_stat & BROKEN) || invuln)
 		return
 	destroy()
 
@@ -168,7 +168,7 @@
 	else if((W.is_wirecutter() || istype(W, /obj/item/multitool)) && panel_open)
 		interact(user)
 
-	else if(istype(W, /obj/item/weldingtool) && (wires.CanDeconstruct() || (stat & BROKEN)))
+	else if(istype(W, /obj/item/weldingtool) && (wires.CanDeconstruct() || (machine_stat & BROKEN)))
 		if(weld(W, user))
 			if(assembly)
 				assembly.loc = src.loc
@@ -177,7 +177,7 @@
 				assembly.camera_network = english_list(network, NETWORK_DEFAULT, ",", ",")
 				assembly.update_icon()
 				assembly.dir = src.dir
-				if(stat & BROKEN)
+				if(machine_stat & BROKEN)
 					assembly.state = 2
 					to_chat(user, "<span class='notice'>You repaired \the [src] frame.</span>")
 				else
@@ -250,14 +250,14 @@
 		icon_state = initial(icon_state)
 		add_hiddenprint(user)
 
-/obj/machinery/camera/take_damage(var/force, var/message)
+/obj/machinery/camera/take_damage(force, message)
 	//prob(25) gives an average of 3-4 hits
 	if (force >= toughness && (force > toughness*4 || prob(25)))
 		destroy()
 
 //Used when someone breaks a camera
 /obj/machinery/camera/proc/destroy()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	wires.cut_all()
 
 	triggerCameraAlarm()
@@ -287,14 +287,14 @@
 		P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 
 /obj/machinery/camera/update_icon()
-	if (!status || (stat & BROKEN))
+	if (!status || (machine_stat & BROKEN))
 		icon_state = "[initial(icon_state)]1"
-	else if (stat & EMPED)
+	else if (machine_stat & EMPED)
 		icon_state = "[initial(icon_state)]emp"
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/camera/proc/triggerCameraAlarm(var/duration = 0)
+/obj/machinery/camera/proc/triggerCameraAlarm(duration = 0)
 	alarm_on = 1
 	camera_alarm.triggerAlarm(loc, src, duration)
 
@@ -309,7 +309,7 @@
 /obj/machinery/camera/proc/can_use()
 	if(!status)
 		return FALSE
-	if(stat & (EMPED|BROKEN))
+	if(machine_stat & (EMPED|BROKEN))
 		return FALSE
 	return TRUE
 
@@ -379,7 +379,7 @@
 	if(!panel_open || istype(user, /mob/living/silicon/ai))
 		return
 
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		to_chat(user, "<span class='warning'>\The [src] is broken.</span>")
 		return
 
@@ -459,8 +459,8 @@
 /obj/machinery/camera/proc/reset_wires()
 	if(!wires)
 		return
-	if (stat & BROKEN) // Fix the camera
-		stat &= ~BROKEN
+	if (machine_stat & BROKEN) // Fix the camera
+		machine_stat &= ~BROKEN
 	wires.repair()
 	update_icon()
 	update_coverage()

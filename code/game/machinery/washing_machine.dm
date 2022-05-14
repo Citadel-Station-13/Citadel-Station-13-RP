@@ -2,8 +2,8 @@
 	name = "Washing Machine"
 	icon = 'icons/obj/machines/washing_machine.dmi'
 	icon_state = "wm_10"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/washing
 	var/state = 1
 	//1 = empty, open door
@@ -27,10 +27,7 @@
 
 /obj/machinery/washing_machine/Initialize(mapload, newdir)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/motor(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
+	default_apply_parts()
 	RefreshParts()
 
 /obj/machinery/washing_machine/verb/start()

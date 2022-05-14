@@ -22,7 +22,7 @@
 		produce_species = pick(possible_species)
 
 /obj/machinery/vr_sleeper/alien/process(delta_time)
-	if(stat & (BROKEN))
+	if(machine_stat & (BROKEN))
 		if(occupant)
 			go_out()
 			visible_message("<span class='notice'>\The [src] emits a low droning sound, before the pod door clicks open.</span>")
@@ -47,7 +47,7 @@
 
 	var/forced = FALSE
 
-	if(stat & (BROKEN) || (eject_dead && occupant && occupant.stat == DEAD))
+	if(machine_stat & (BROKEN) || (eject_dead && occupant && occupant.stat == DEAD))
 		forced = TRUE
 
 	go_out(forced)

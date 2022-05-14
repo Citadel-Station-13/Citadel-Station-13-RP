@@ -26,7 +26,7 @@
 // Proc: attack_hand()
 // Parameters: 1 (user - Person which clicked this computer)
 // Description: Opens UI of this machine.
-/obj/machinery/computer/rcon/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/rcon/attack_hand(mob/user)
 	..()
 	ui_interact(user)
 
@@ -38,5 +38,5 @@
 
 /obj/machinery/computer/rcon/update_icon()
 	..()
-	if(!(stat & (NOPOWER|BROKEN)))
+	if(!(machine_stat & (NOPOWER|BROKEN)))
 		overlays += image(icon, "ai-fixer-empty", overlay_layer) //VOREStation Edit

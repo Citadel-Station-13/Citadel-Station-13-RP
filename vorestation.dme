@@ -791,7 +791,6 @@
 #include "code\game\machinery\bioprinter.dm"
 #include "code\game\machinery\bomb_tester.dm"
 #include "code\game\machinery\buttons.dm"
-#include "code\game\machinery\buttons_vr.dm"
 #include "code\game\machinery\CableLayer.dm"
 #include "code\game\machinery\cell_charger.dm"
 #include "code\game\machinery\cloning.dm"

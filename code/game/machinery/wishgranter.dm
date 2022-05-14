@@ -4,12 +4,12 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndbeacon"
 	use_power = USE_POWER_OFF
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	var/charges = 1
 	var/insisting = 0
 
-/obj/machinery/wish_granter/attack_hand(var/mob/user as mob)
+/obj/machinery/wish_granter/attack_hand(mob/user)
 	usr.set_machine(src)
 
 	if(charges <= 0)

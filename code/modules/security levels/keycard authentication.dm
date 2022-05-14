@@ -26,7 +26,7 @@
 	return
 
 /obj/machinery/keycard_auth/attackby(obj/item/W as obj, mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
 	if(istype(W,/obj/item/card/id))
@@ -65,11 +65,11 @@
 
 /obj/machinery/keycard_auth/power_change()
 	..()
-	if(stat &NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "auth_off"
 
 /obj/machinery/keycard_auth/attack_hand(mob/user as mob)
-	if(user.stat || stat & (NOPOWER|BROKEN))
+	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
 	if(!user.IsAdvancedToolUser())
@@ -107,7 +107,7 @@
 	if(busy)
 		to_chat(usr, "This device is busy.")
 		return
-	if(usr.stat || stat & (BROKEN|NOPOWER))
+	if(usr.stat || machine_stat & (BROKEN|NOPOWER))
 		to_chat(usr, "This device is without power.")
 		return
 	if(href_list["triggerevent"])
@@ -145,8 +145,8 @@
 		message_admins("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]", 1)
 	reset()
 
-/obj/machinery/keycard_auth/proc/receive_request(var/obj/machinery/keycard_auth/source)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/keycard_auth/proc/receive_request(obj/machinery/keycard_auth/source)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	event_source = source
 	busy = 1

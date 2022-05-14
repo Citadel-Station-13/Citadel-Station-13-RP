@@ -22,7 +22,7 @@
 	max_contents = 2
 	container_type = /obj/item/reagent_containers/cooking_container/fryer
 
-	stat = POWEROFF//Starts turned off
+	machine_stat = POWEROFF//Starts turned off
 
 	var/datum/reagents/oil
 	var/optimal_oil = 9000//90 litres of cooking oil

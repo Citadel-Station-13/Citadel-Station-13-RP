@@ -35,34 +35,42 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 /obj/machinery/requests_console
 	name = "requests console"
 	desc = "A console intended to send requests to different departments on the station."
-	anchored = 1
+	anchored = TRUE
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "req_comp0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	circuit = /obj/item/circuitboard/request
-	var/department = "Unknown" //The list of all departments on the station (Determined from this variable on each unit) Set this to the same thing if you want several consoles in one department
-	var/list/message_log = list() //List of all messages
-	var/departmentType = 0 		//Bitflag. Zero is reply-only. Map currently uses raw numbers instead of defines.
+
+	/// The list of all departments on the station. (Determined from this variable on each unit)
+	/// Set this to the same thing if you want several consoles in one department.
+	var/department = "Unknown"
+	/// List of all messages.
+	var/list/message_log = list()
+	/// Bitflag. Zero is reply-only. Map currently uses raw numbers instead of defines.
+	var/departmentType = 0
+	/// New Message Priority: 0 for no new messages, 1 for normal priority, 2 for high priority.
 	var/newmessagepriority = 0
-		// 0 = no new message
-		// 1 = normal priority
-		// 2 = high priority
+
 	var/screen = RCS_MAINMENU
-	var/silent = 0 // set to 1 for it not to beep all the time
-//	var/hackState = 0
-		// 0 = not hacked
-		// 1 = hacked
-	var/announcementConsole = 0
-		// 0 = This console cannot be used to send department announcements
-		// 1 = This console can send department announcementsf
-	var/open = 0 // 1 if open
-	var/announceAuth = 0 //Will be set to 1 when you authenticate yourself for announcements
-	var/msgVerified = "" //Will contain the name of the person who varified it
-	var/msgStamped = "" //If a message is stamped, this will contain the stamp name
+	/// set to TRUE for it not to beep all the time.
+	var/silent = FALSE
+	/// Whether if's hacked or not.
+//	var/hackState = FALSE
+	/// Can this console be used to send department annoucements?
+	var/announcementConsole = FALSE
+	var/open = FALSE
+	/// Will be set to 1 when you authenticate yourself for announcements.
+	var/announceAuth = 0
+	/// Will contain the name of the person who varified it.
+	var/msgVerified = ""
+	/// If a message is stamped, this will contain the stamp name.
+	var/msgStamped = ""
 	var/message = "";
-	var/recipient = ""; //the department which will be receiving the message
-	var/priority = -1 ; //Priority of the message being sent
+	/// The department which will be receiving the message.
+	var/recipient = "";
+	/// Priority of the message being sent.
+	var/priority = -1 ;
 	light_range = 0
 	var/datum/announcement/announcement = new
 
@@ -71,7 +79,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	update_icon()
 
 /obj/machinery/requests_console/update_icon()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		if(icon_state != "req_comp_off")
 			icon_state = "req_comp_off"
 	else

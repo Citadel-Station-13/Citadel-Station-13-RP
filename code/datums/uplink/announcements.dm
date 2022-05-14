@@ -15,7 +15,7 @@
 	desc = "Causes a falsified Command Update. Triggers immediately after supplying additional data."
 	item_cost = 40
 
-/datum/uplink_item/abstract/announcements/fake_centcom/extra_args(var/mob/user)
+/datum/uplink_item/abstract/announcements/fake_centcom/extra_args(mob/user)
 	var/title = sanitize(input("Enter your announcement title.", "Announcement Title") as null|text)
 	if(!title)
 		return
@@ -24,9 +24,9 @@
 		return
 	return list("title" = title, "message" = message)
 
-/datum/uplink_item/abstract/announcements/fake_centcom/get_goods(var/obj/item/uplink/U, var/loc, var/mob/user, var/list/args)
+/datum/uplink_item/abstract/announcements/fake_centcom/get_goods(obj/item/uplink/U, loc, mob/user, list/args)
 	for (var/obj/machinery/computer/communications/C in machines)
-		if(! (C.stat & (BROKEN|NOPOWER) ) )
+		if(! (C.machine_stat & (BROKEN|NOPOWER)) )
 			var/obj/item/paper/P = new /obj/item/paper( C.loc )
 			P.name = "'[command_name()] Update.'"
 			P.info = replacetext(args["message"], "\n", "<br/>")
@@ -114,4 +114,3 @@
 	var/datum/event_meta/EM = new(EVENT_LEVEL_MUNDANE, "Fake Radiation Storm", add_to_queue = 0)
 	new/datum/event/radiation_storm/syndicate(EM)
 	return 1
-

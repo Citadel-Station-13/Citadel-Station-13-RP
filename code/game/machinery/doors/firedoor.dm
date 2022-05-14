@@ -157,7 +157,7 @@
 	if(user.incapacitated() || (get_dist(src, user) > 1 && !issilicon(user)))
 		to_chat(user, "Sorry, you must remain able bodied and close to \the [src] in order to use it.")
 		return
-	if(density && (stat & (BROKEN|NOPOWER))) //can still close without power
+	if(density && (machine_stat & (BROKEN|NOPOWER))) //can still close without power
 		to_chat(user, "\The [src] is not functioning, you'll have to force it open manually.")
 		return
 
@@ -217,7 +217,7 @@
 	..()
 
 /obj/machinery/door/firedoor/attack_generic(var/mob/living/user, var/damage)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 			var/time_to_force = (2 + (2 * blocked)) * 5
 			if(src.density)
@@ -280,7 +280,7 @@
 					user.visible_message("<span class='danger'>[user] has removed the electronics from \the [src].</span>",
 										"You have removed the electronics from [src].")
 
-					if (stat & BROKEN)
+					if (machine_stat & BROKEN)
 						new /obj/item/circuitboard/broken(src.loc)
 					else
 						new/obj/item/circuitboard/airalarm(src.loc)
@@ -324,7 +324,7 @@
 		playsound(src, C.usesound, 100, 1)
 		if(do_after(user,30 * C.toolspeed))
 			if(C.is_crowbar())
-				if(stat & (BROKEN|NOPOWER) || !density)
+				if(machine_stat & (BROKEN|NOPOWER) || !density)
 					user.visible_message("<span class='danger'>\The [user] forces \the [src] [density ? "open" : "closed"] with \a [C]!</span>",\
 					"You force \the [src] [density ? "open" : "closed"] with \the [C]!",\
 					"You hear metal strain, and a door [density ? "open" : "close"].")
@@ -413,7 +413,7 @@
 		update_icon()
 
 	if(!forced)
-		if(stat & (BROKEN|NOPOWER))
+		if(machine_stat & (BROKEN|NOPOWER))
 			return //needs power to open unless it was forced
 		else
 			use_power(360)

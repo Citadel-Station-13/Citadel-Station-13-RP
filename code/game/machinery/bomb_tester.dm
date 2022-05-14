@@ -70,7 +70,7 @@
 		overlays += image(icon, "[icon_name]-tank1")
 	if(tank2)
 		overlays += image(icon, "[icon_name]-tank2")
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "[icon_name]-p"
 	else
 		icon_state = "[icon_name][simulating]"
@@ -78,7 +78,7 @@
 /obj/machinery/bomb_tester/power_change()
 	..()
 	update_icon()
-	if(simulating && stat & NOPOWER)
+	if(simulating && machine_stat & NOPOWER)
 		simulation_finish(1)
 
 /obj/machinery/bomb_tester/RefreshParts()
@@ -88,7 +88,7 @@
 		scan_rating += S.rating
 	simulation_delay = 25 SECONDS - scan_rating SECONDS
 
-/obj/machinery/bomb_tester/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/bomb_tester/attackby(obj/item/I, mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 	if(default_deconstruction_crowbar(user, I))
@@ -109,7 +109,7 @@
 			return
 	..()
 
-/obj/machinery/bomb_tester/attack_hand(var/mob/user)
+/obj/machinery/bomb_tester/attack_hand(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)
 
@@ -344,7 +344,7 @@
 	if(intervals == 10)
 		simulation_results += "<hr>Final Result: No detonation."
 
-/obj/machinery/bomb_tester/proc/simulation_finish(cancelled = 0)
+/obj/machinery/bomb_tester/proc/simulation_finish(cancelled = FALSE)
 	simulating = 0
 	update_use_power(USE_POWER_IDLE)
 	update_icon()
@@ -353,16 +353,16 @@
 	if(cancelled)
 		return
 	if(simulation_results == "Error")
-		playsound(get_turf(src), 'sound/machines/buzz-sigh.ogg', 50, 0)
+		playsound(get_turf(src), 'sound/machines/buzz-sigh.ogg', 50, FALSE)
 		state("Invalid parameters.")
 	else
 		ping("Simulation complete!")
-		playsound(src, "sound/machines/printer.ogg", 50, 1)
+		playsound(src, "sound/machines/printer.ogg", 50, TRUE)
 		var/obj/item/paper/P = new(get_turf(src))
 		P.name = "Explosive Simulator printout"
 		P.info = simulation_results
 
-/obj/machinery/bomb_tester/proc/format_gas_for_results(var/datum/gas_mixture/G)
+/obj/machinery/bomb_tester/proc/format_gas_for_results(datum/gas_mixture/G)
 	G.update_values() //Just in case
 	var/results = ""
 	var/pressure = G.return_pressure()

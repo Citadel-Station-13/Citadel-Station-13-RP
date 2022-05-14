@@ -81,13 +81,13 @@
 		backwards = turn(dir, 180)
 
 /obj/machinery/conveyor/proc/update()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "conveyor-broken"
 		operating = OFF
 		return
 	if(!operable)
 		operating = OFF
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		operating = OFF
 	if(operating)
 		for(var/atom/movable/AM in loc)
@@ -96,8 +96,8 @@
 
 	// machine process
 	// move items to the target location
-/obj/machinery/conveyor/process()
-	if(stat & (BROKEN | NOPOWER))
+/obj/machinery/conveyor/process(delta_time)
+	if(machine_stat & (BROKEN | NOPOWER))
 		return
 	if(!operating)
 		return
@@ -172,7 +172,7 @@
 // make the conveyor broken
 // also propagate inoperability to any connected conveyor with the same ID
 /obj/machinery/conveyor/proc/broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update()
 
 	var/obj/machinery/conveyor/C = locate() in get_step(src, dir)

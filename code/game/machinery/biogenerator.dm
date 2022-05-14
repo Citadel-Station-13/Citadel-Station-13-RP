@@ -265,7 +265,7 @@
 /obj/machinery/biogenerator/proc/activate()
 	if(usr.stat)
 		return
-	if(stat) //NOPOWER etc
+	if(machine_stat) //NOPOWER etc
 		return
 	if(processing)
 		to_chat(usr, SPAN_NOTICE("The biogenerator is in the process of working."))

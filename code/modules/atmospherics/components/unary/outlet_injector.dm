@@ -47,9 +47,9 @@
 		add_underlay(T, node, dir)
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/process(delta_time)
@@ -58,7 +58,7 @@
 	last_power_draw = 0
 	last_flow_rate = 0
 
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 
 	var/power_draw = -1
@@ -78,7 +78,7 @@
 	return 1
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/proc/inject()
-	if(injecting || (stat & NOPOWER))
+	if(injecting || (machine_stat & NOPOWER))
 		return 0
 
 	var/datum/gas_mixture/environment = loc.return_air()
@@ -228,7 +228,7 @@
 	if(!W.is_wrench())
 		return ..()
 
-	if(!(stat & NOPOWER) && use_power)
+	if(!(machine_stat & NOPOWER) && use_power)
 		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
 		return 1
 

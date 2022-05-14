@@ -42,7 +42,7 @@
 			if(nozzle.check_blockage())
 				return
 		nozzle.update_use_power(USE_POWER_IDLE)
-		if(nozzle.stat & NOPOWER)//try again
+		if(nozzle.machine_stat & NOPOWER)//try again
 			nozzle.power_change()
 		if(nozzle.is_on())//if everything is in working order, start booting!
 			nozzle.next_on = world.time + nozzle.boot_time
@@ -105,11 +105,11 @@
 /obj/machinery/atmospherics/component/unary/engine/proc/get_status()
 	. = list()
 	.+= "Location: [get_area(src)]."
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		.+= list(list("Insufficient power to operate.", "bad"))
 	if(!check_fuel())
 		.+= list(list("Insufficient fuel for a burn.", "bad"))
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		.+= list(list("Inoperable engine configuration.", "bad"))
 	if(blockage)
 		.+= list(list("Obstruction of airflow detected.", "bad"))
@@ -120,7 +120,7 @@
 
 /obj/machinery/atmospherics/component/unary/engine/power_change()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		update_use_power(USE_POWER_OFF)
 
 /obj/machinery/atmospherics/component/unary/engine/proc/is_on()

@@ -178,7 +178,7 @@
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/binary/passive_gate/ui_interact(mob/user, datum/tgui/ui)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return FALSE
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

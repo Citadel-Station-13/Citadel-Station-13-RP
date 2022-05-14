@@ -46,7 +46,7 @@ var/list/fusion_cores = list()
 	return ..()
 
 /obj/machinery/power/fusion_core/process(delta_time)
-	if((stat & BROKEN) || !powernet || !owned_field)
+	if((machine_stat & BROKEN) || !powernet || !owned_field)
 		Shutdown()
 	if(owned_field)
 		spawn(1)

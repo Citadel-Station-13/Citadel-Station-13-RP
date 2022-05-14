@@ -5,10 +5,10 @@
 	icon_screen = "mass_driver"
 	light_color = "#00b000"
 	circuit = /obj/item/circuitboard/pod
-	var/id = 1.0
+	var/id = 1
 	var/obj/machinery/mass_driver/connected = null
-	var/timing = 0.0
-	var/time = 30.0
+	var/timing = 0
+	var/time = 3 SECONDS
 	var/title = "Mass Driver Controls"
 
 /obj/machinery/computer/pod/Initialize(mapload)
@@ -18,7 +18,7 @@
 			connected = M
 
 /obj/machinery/computer/pod/proc/alarm()
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	if(!connected)

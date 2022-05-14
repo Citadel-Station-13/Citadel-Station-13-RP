@@ -61,7 +61,7 @@
 		network1?.update = 1
 		network2?.update = 1
 		return
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 
 	if(!power_machine || !power_machine.powernet)
@@ -157,7 +157,7 @@
 	return TRUE
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/ui_interact(mob/user, datum/tgui/ui)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return FALSE
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

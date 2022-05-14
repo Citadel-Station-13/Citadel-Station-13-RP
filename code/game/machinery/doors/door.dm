@@ -216,7 +216,7 @@
 		if(attackby_vr(I, user))	//VOREStation begin: Fireproofing
 			return					//VOREStation begin: Fireproofing
 		if(istype(I, /obj/item/stack/material) && I.get_material_name() == src.get_material_name())
-			if(stat & BROKEN)
+			if(machine_stat & BROKEN)
 				to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
 				return
 			if(health >= maxhealth)
@@ -340,7 +340,7 @@
 
 
 /obj/machinery/door/proc/set_broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	for (var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
 			O.show_message("[src.name] breaks!" )
@@ -375,7 +375,7 @@
 
 /obj/machinery/door/blob_act()
 	if(density) // If it's closed.
-		if(stat & BROKEN)
+		if(machine_stat & BROKEN)
 			spawn(0)
 				open(1)
 		else
@@ -406,11 +406,11 @@
 			if(density)
 				flick("door_spark", src)
 		if("deny")
-			if(density && !(stat & (NOPOWER|BROKEN)))
+			if(density && !(machine_stat & (NOPOWER|BROKEN)))
 				flick("door_deny", src)
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
 		if("smdeny")
-			if(density && !(stat & (NOPOWER|BROKEN)))
+			if(density && !(machine_stat & (NOPOWER|BROKEN)))
 				flick("door_deny", src)
 	return
 

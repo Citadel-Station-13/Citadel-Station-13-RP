@@ -123,7 +123,7 @@ Thus, the two variables affect pump operation are set in New():
 	last_power_draw = 0
 	last_flow_rate = 0
 
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 
 	var/power_draw = -1
@@ -175,7 +175,7 @@ Thus, the two variables affect pump operation are set in New():
 	return 1
 
 /obj/machinery/atmospherics/component/binary/pump/ui_interact(mob/user, datum/tgui/ui)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return FALSE
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -263,9 +263,9 @@ Thus, the two variables affect pump operation are set in New():
 	update_icon()
 
 /obj/machinery/atmospherics/component/binary/pump/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/atmospherics/component/binary/pump/attackby(var/obj/item/W as obj, var/mob/user as mob)
@@ -276,7 +276,7 @@ Thus, the two variables affect pump operation are set in New():
 		return
 	if (!W.is_wrench())
 		return ..()
-	if (!(stat & NOPOWER) && use_power)
+	if (!(machine_stat & NOPOWER) && use_power)
 		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
 		return 1
 	if(unsafe_pressure())

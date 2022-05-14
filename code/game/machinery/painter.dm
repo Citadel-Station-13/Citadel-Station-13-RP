@@ -41,9 +41,9 @@
 	processing.Cut()
 	return ..()
 
-/obj/machinery/gear_painter/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/gear_painter/attackby(obj/item/W, mob/user)
 	if(processing.len)
-		to_chat(user, "<span class='warning'>The machine is already loaded.</span>")
+		to_chat(user, SPAN_WARNING("The machine is already loaded."))
 		return
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -53,7 +53,7 @@
 		return
 
 	if(is_type_in_list(W, allowed_types) && !inoperable())
-		user.visible_message("<span class='notice'>[user] inserts \the [W] into the Color Mate receptable.</span>")
+		user.visible_message(SPAN_NOTICE("[user] inserts \the [W] into \the [src] receptable."))
 		user.drop_from_inventory(W)
 		W.forceMove(src)
 		processing |= W
@@ -61,12 +61,12 @@
 		..()
 	update_icon()
 
-/obj/machinery/gear_painter/attack_hand(mob/user as mob)
+/obj/machinery/gear_painter/attack_hand(mob/user)
 	if(..())
 		return
 	interact(user)
 
-/obj/machinery/gear_painter/interact(mob/user as mob)
+/obj/machinery/gear_painter/interact(mob/user)
 	if(inoperable())
 		return
 	user.set_machine(src)
