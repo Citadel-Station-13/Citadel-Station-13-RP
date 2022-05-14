@@ -154,19 +154,13 @@ turf/simulated/mineral/floor/light_corner
 		icon_state = rock_icon_state
 
 		if(!(smoothing_junction & NORTH_JUNCTION))
-			add_overlay(get_cached_border(rock_side_icon_state, NORTH, icon, rock_side_icon_state))
+			add_overlay(get_cached_rock_border(rock_side_icon_state, NORTH, icon, rock_side_icon_state))
 		if(!(smoothing_junction & SOUTH_JUNCTION))
-			add_overlay(get_cached_border(rock_side_icon_state, SOUTH, icon, rock_side_icon_state))
+			add_overlay(get_cached_rock_border(rock_side_icon_state, SOUTH, icon, rock_side_icon_state))
 		if(!(smoothing_junction & EAST_JUNCTION))
-			add_overlay(get_cached_border(rock_side_icon_state, EAST, icon, rock_side_icon_state))
+			add_overlay(get_cached_rock_border(rock_side_icon_state, EAST, icon, rock_side_icon_state))
 		if(!(smoothing_junction & WEST_JUNCTION))
-			add_overlay(get_cached_border(rock_side_icon_state, WEST, icon, rock_side_icon_state))
-
-		//Apply overlays if we should have borders
-		for(var/direction in GLOB.cardinal)
-			var/turf/T = get_step(src,direction)
-			if(istype(T) && !T.density)
-				add_overlay(get_cached_border(rock_side_icon_state,direction,icon,rock_side_icon_state))
+			add_overlay(get_cached_rock_border(rock_side_icon_state, WEST, icon, rock_side_icon_state))
 
 		if(archaeo_overlay)
 			add_overlay(archaeo_overlay)
