@@ -544,7 +544,7 @@ BLIND     // can't see anything
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunSecHud"
 
-/obj/item/clothing/glasses/sunglasses/sechud/ComponentInitialize()
+/obj/item/clothing/glasses/sunglasses/sechud/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
 
@@ -600,7 +600,7 @@ BLIND     // can't see anything
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunMedHud"
 
-/obj/item/clothing/glasses/sunglasses/medhud/ComponentInitialize()
+/obj/item/clothing/glasses/sunglasses/medhud/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(slot_glasses))
 

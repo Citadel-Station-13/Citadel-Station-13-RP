@@ -94,6 +94,8 @@ var/list/name_to_material
 	var/icon_base = "metal"                              // Wall and table base icon tag. See header.
 	var/door_icon_base = "metal"                         // Door base icon tag. See header.
 	var/icon_reinf = "reinf_metal"                       // Overlay used
+	/// do we have directional reinforced states on walls?
+	var/icon_reinf_directionals = FALSE
 	var/list/stack_origin_tech = list(TECH_MATERIAL = 1) // Research level for stacks.
 	var/pass_stack_colors = FALSE                        // Will stacks made from this material pass their colors onto objects?
 
@@ -251,6 +253,7 @@ var/list/name_to_material
 	radioactivity = 12
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	icon_colour = "#007A00"
 	weight = 22
 	stack_origin_tech = list(TECH_MATERIAL = 5)
@@ -350,6 +353,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/sandstone
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	icon_colour = "#D9C179"
 	shard_type = SHARD_STONE_PIECE
 	weight = 22
@@ -917,6 +921,7 @@ var/list/name_to_material
 	icon_colour = "#42291a"
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	integrity = 65	//a bit stronger than regular wood
 	hardness = 20
 	weight = 20	//likewise, heavier
@@ -965,6 +970,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/snowbrick
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	icon_colour = "#D8FDFF"
 	integrity = 50
 	weight = 2

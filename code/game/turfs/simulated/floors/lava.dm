@@ -21,7 +21,6 @@
 /turf/simulated/floor/outdoors/lava/Initialize(mapload)
 	if(!outdoors)
 		name = "magma"
-	update_icon()
 	return ..()
 
 /turf/simulated/floor/outdoors/lava/make_outdoors()
