@@ -3,12 +3,16 @@
 #define TEST_TLV_VALUES (((tlv_comparitor >= red_max && red_max > 0) || tlv_comparitor <= red_min) ? 2 : ((tlv_comparitor >= yel_max && yel_max > 0) || tlv_comparitor <= yel_min) ? 1 : 0)
 
 #define AALARM_MODE_SCRUBBING	1
-#define AALARM_MODE_REPLACEMENT	2 //like scrubbing, but faster.
-#define AALARM_MODE_PANIC		3 //constantly sucks all air
-#define AALARM_MODE_CYCLE		4 //sucks off all air, then refill and switches to scrubbing
-#define AALARM_MODE_FILL		5 //emergency fill
-#define AALARM_MODE_OFF			6 //Shuts it all down.
-
+///like scrubbing, but faster.
+#define AALARM_MODE_REPLACEMENT	2
+///constantly sucks all air
+#define AALARM_MODE_PANIC		3
+///sucks off all air, then refill and switches to scrubbing
+#define AALARM_MODE_CYCLE		4
+///emergency fill
+#define AALARM_MODE_FILL		5
+///Shuts it all down.
+#define AALARM_MODE_OFF			6
 #define AALARM_SCREEN_MAIN		1
 #define AALARM_SCREEN_VENT		2
 #define AALARM_SCREEN_SCRUB		3

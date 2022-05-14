@@ -1,7 +1,9 @@
-#define SECBOT_WAIT_TIME	3		//Around number*2 real seconds to surrender.
-#define SECBOT_THREAT_ARREST 4		//threat level at which we decide to arrest someone
-#define SECBOT_THREAT_ATTACK 8		//threat level at which was assume immediate danger and attack right away
-
+///Around number*2 real seconds to surrender.
+#define SECBOT_WAIT_TIME	3
+///threat level at which we decide to arrest someone
+#define SECBOT_THREAT_ARREST 4
+///threat level at which was assume immediate danger and attack right away
+#define SECBOT_THREAT_ATTACK 8
 /datum/category_item/catalogue/technology/bot/secbot
 	name = "Bot - Securitron"
 	desc = "The Securitron is a proprietary support bot designed by NanoTrasen. \

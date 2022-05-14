@@ -56,13 +56,18 @@
 #define SS_POST_FIRE_TIMING 64
 
 //! SUBSYSTEM STATES
-#define SS_IDLE 0		/// aint doing shit.
-#define SS_QUEUED 1		/// queued to run
-#define SS_RUNNING 2	/// actively running
-#define SS_PAUSED 3		/// paused by mc_tick_check
-#define SS_SLEEPING 4	/// fire() slept.
-#define SS_PAUSING 5 	/// in the middle of pausing
-
+/// aint doing shit.
+#define SS_IDLE 0
+/// queued to run
+#define SS_QUEUED 1
+/// actively running
+#define SS_RUNNING 2
+/// paused by mc_tick_check
+#define SS_PAUSED 3
+/// fire() slept.
+#define SS_SLEEPING 4
+/// in the middle of pausing
+#define SS_PAUSING 5
 #define SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/##X);\
 /datum/controller/subsystem/##X/New(){\
     NEW_SS_GLOBAL(SS##X);\

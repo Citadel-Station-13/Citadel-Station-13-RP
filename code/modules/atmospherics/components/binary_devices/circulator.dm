@@ -1,8 +1,8 @@
 //node1, air1, network1 correspond to input
 //node2, air2, network2 correspond to output
 
-#define ADIABATIC_EXPONENT 0.667 //Actually adiabatic exponent - 1.
-
+///Actually adiabatic exponent - 1.
+#define ADIABATIC_EXPONENT 0.667
 /obj/machinery/atmospherics/component/binary/circulator
 	name = "circulator"
 	desc = "A gas circulator turbine and heat exchanger."

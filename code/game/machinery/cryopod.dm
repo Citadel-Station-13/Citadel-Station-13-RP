@@ -704,7 +704,7 @@
 		add_fingerprint(M)
 
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 //Overrides!
 
 /obj/machinery/cryopod

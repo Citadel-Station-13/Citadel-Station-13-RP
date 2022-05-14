@@ -1,5 +1,5 @@
-#define HEAT_CAPACITY_HUMAN 100 //249840 J/K, for a 72 kg person.
-
+///249840 J/K, for a 72 kg person.
+#define HEAT_CAPACITY_HUMAN 100
 /obj/machinery/atmospherics/component/unary/cryo_cell
 	name = "cryo cell"
 	icon = 'icons/obj/cryogenics.dmi' // map only

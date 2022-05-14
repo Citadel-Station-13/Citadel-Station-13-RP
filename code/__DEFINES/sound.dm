@@ -3,18 +3,19 @@
 #define CHANNEL_ADMIN 1023
 #define CHANNEL_VOX 1022
 #define CHANNEL_JUKEBOX 1021
-#define CHANNEL_HEARTBEAT 1020 //sound channel for heartbeats
+///sound channel for heartbeats
+#define CHANNEL_HEARTBEAT 1020
 #define CHANNEL_AMBIENCE_FORCED 1019
 #define CHANNEL_AMBIENCE 1018
 #define CHANNEL_BUZZ 1017
 #define CHANNEL_BICYCLE 1016
-#define CHANNEL_PREYLOOP 1015	//VORESTATION ADD - Fancy Sound Loop channel
-
+///VORESTATION ADD - Fancy Sound Loop channel
+#define CHANNEL_PREYLOOP 1015
 //THIS SHOULD ALWAYS BE THE LOWEST ONE!
 //KEEP IT UPDATED
 
-#define CHANNEL_HIGHEST_AVAILABLE 1014	//VORESTATION EDIT - Fancy Sound Loop channel from 1015
-
+///VORESTATION EDIT - Fancy Sound Loop channel from 1015
+#define CHANNEL_HIGHEST_AVAILABLE 1014
 #define MAX_INSTRUMENT_CHANNELS (128 * 6)
 
 #define SOUND_MINIMUM_PRESSURE 10
@@ -233,4 +234,3 @@
 	'sound/ambience/engineering/engineering3.ogg',\
 	'sound/ambience/atmospherics/atmospherics1.ogg'\
 	)
-

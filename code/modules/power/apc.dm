@@ -1,6 +1,7 @@
 GLOBAL_LIST_EMPTY(apcs)
 
-#define CRITICAL_APC_EMP_PROTECTION 10 // EMP effect duration is divided by this number if the APC has "critical" flag
+/// EMP effect duration is divided by this number if the APC has "critical" flag
+#define CRITICAL_APC_EMP_PROTECTION 10
 //update_state
 #define UPDATE_CELL_IN 1
 #define UPDATE_OPENED1 2
@@ -28,19 +29,22 @@ GLOBAL_LIST_EMPTY(apcs)
 #define APC_UPOVERLAY_OPERATING 8192
 
 
-#define APC_UPDATE_ICON_COOLDOWN 100 // 10 seconds
-
+/// 10 seconds
+#define APC_UPDATE_ICON_COOLDOWN 100
 // the Area Power Controller (APC), formerly Power Distribution Unit (PDU)
 // one per area, needs wire conection to power network through a terminal
 
 // controls power to devices in that area
 // may be opened to change power cell
 // three different channels (lighting/equipment/environ) - may each be set to on, off, or auto
-#define POWERCHAN_OFF      0 // Power channel is off and will stay that way dammit
-#define POWERCHAN_OFF_AUTO 1 // Power channel is off until power rises above a threshold
-#define POWERCHAN_ON       2 // Power channel is on until there is no power
-#define POWERCHAN_ON_AUTO  3 // Power channel is on until power drops below a threshold
-
+/// Power channel is off and will stay that way dammit
+#define POWERCHAN_OFF      0
+/// Power channel is off until power rises above a threshold
+#define POWERCHAN_OFF_AUTO 1
+/// Power channel is on until there is no power
+#define POWERCHAN_ON       2
+/// Power channel is on until power drops below a threshold
+#define POWERCHAN_ON_AUTO  3
 #define NIGHTSHIFT_AUTO 1
 #define NIGHTSHIFT_NEVER 2
 #define NIGHTSHIFT_ALWAYS 3

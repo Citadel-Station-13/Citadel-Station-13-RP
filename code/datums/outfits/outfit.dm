@@ -172,7 +172,7 @@
 	return name
 
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 
 /datum/outfit/JSDF/Marine
 	name = "JSDF marine"

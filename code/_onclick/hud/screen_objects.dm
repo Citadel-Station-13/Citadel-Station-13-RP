@@ -511,7 +511,7 @@
 		if(C.handcuffed)
 			overlays |= handcuff_overlay
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 
 /atom/movable/screen/proc/Click_vr(location, control, params)
 	if(!usr)	return 1

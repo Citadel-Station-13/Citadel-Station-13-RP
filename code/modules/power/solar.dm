@@ -1,8 +1,10 @@
 #define SOLAR_MAX_DIST 40
-#define SOLAR_AUTO_START_NO     0 // Will never start itself.
-#define SOLAR_AUTO_START_YES    1 // Will always start itself.
-#define SOLAR_AUTO_START_CONFIG 2 // Will start itself if config allows it (default is no).
-
+/// Will never start itself.
+#define SOLAR_AUTO_START_NO     0
+/// Will always start itself.
+#define SOLAR_AUTO_START_YES    1
+/// Will start itself if config allows it (default is no).
+#define SOLAR_AUTO_START_CONFIG 2
 GLOBAL_VAR_INIT(solar_gen_rate, 1500)
 GLOBAL_LIST_EMPTY(solars_list)
 

@@ -1,11 +1,14 @@
 // temperature of the core of the sun
 #define FUSION_HEAT_CAP 1.57e7
 
-#define SETUP_OK 1			// All good
-#define SETUP_WARNING 2		// Something that shouldn't happen happened, but it's not critical so we will continue
-#define SETUP_ERROR 3		// Something bad happened, and it's important so we won't continue setup.
-#define SETUP_DELAYED 4		// Wait for other things first.
-
+/// All good
+#define SETUP_OK 1
+/// Something that shouldn't happen happened, but it's not critical so we will continue
+#define SETUP_WARNING 2
+/// Something bad happened, and it's important so we won't continue setup.
+#define SETUP_ERROR 3
+/// Wait for other things first.
+#define SETUP_DELAYED 4
 /datum/admins/proc/setup_fusion()
 	set category = "Debug"
 	set name = "Setup Fusion Core"

@@ -99,7 +99,7 @@
 
 */
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /obj/item/paicard/attack_ghost(mob/user)
 	. = ..()
 	if(src.pai != null) //Have a person in them already?

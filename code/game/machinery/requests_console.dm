@@ -2,21 +2,31 @@
 /** Originally written by errorage, updated by: Carn, needs more work though. I just added some security fixes */
 
 //Request Console Department Types
-#define RC_ASSIST 1		//Request Assistance
-#define RC_SUPPLY 2		//Request Supplies
-#define RC_INFO   4		//Relay Info
-
+///Request Assistance
+#define RC_ASSIST 1
+///Request Supplies
+#define RC_SUPPLY 2
+///Relay Info
+#define RC_INFO   4
 //Request Console Screens
-#define RCS_MAINMENU 0	// Main menu
-#define RCS_RQASSIST 1	// Request supplies
-#define RCS_RQSUPPLY 2	// Request assistance
-#define RCS_SENDINFO 3	// Relay information
-#define RCS_SENTPASS 4	// Message sent successfully
-#define RCS_SENTFAIL 5	// Message sent unsuccessfully
-#define RCS_VIEWMSGS 6	// View messages
-#define RCS_MESSAUTH 7	// Authentication before sending
-#define RCS_ANNOUNCE 8	// Send announcement
-
+/// Main menu
+#define RCS_MAINMENU 0
+/// Request supplies
+#define RCS_RQASSIST 1
+/// Request assistance
+#define RCS_RQSUPPLY 2
+/// Relay information
+#define RCS_SENDINFO 3
+/// Message sent successfully
+#define RCS_SENTPASS 4
+/// Message sent unsuccessfully
+#define RCS_SENTFAIL 5
+/// View messages
+#define RCS_VIEWMSGS 6
+/// Authentication before sending
+#define RCS_MESSAUTH 7
+/// Send announcement
+#define RCS_ANNOUNCE 8
 var/req_console_assistance = list()
 var/req_console_supplies = list()
 var/req_console_information = list()
@@ -268,15 +278,18 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		screen = RCS_MAINMENU
 
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 
 // Request Console Presets!  Make mapping 400% easier!
 // By using these presets we can rename the departments easily.
 
-//Request Console Department Types
-// #define RC_ASSIST 1		//Request Assistance
-// #define RC_SUPPLY 2		//Request Supplies
-// #define RC_INFO   4		//Relay Info
+//!Request Console Department Types
+///Request Assistance
+// #define RC_ASSIST 1
+///Request Supplies
+// #define RC_SUPPLY 2
+///Relay Info
+// #define RC_INFO   4
 
 /obj/machinery/requests_console/preset
 	name = ""

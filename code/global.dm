@@ -112,8 +112,8 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
 	"Standard", "Engineering", "Medical",
-	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
-	"Research"
+	"Miner",    "Janitor",     "Service",
+	"Clerical", "Security",    "Research"
 )
 
 // Some scary sounds.
@@ -144,7 +144,7 @@ var/max_explosion_range = 14
 //Could be useful for AI impersonation or something at some point?
 var/static/list/cached_character_icons = list()
 
-//VR FILE MERGE BELOW
+//! ## VR FILE MERGE ## !//
 
 /hook/startup/proc/modules_vr()
 	robot_module_types += "Medihound"

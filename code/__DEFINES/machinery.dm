@@ -1,6 +1,7 @@
 var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manually after an event.
 
-#define CELLRATE 0.002 // Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
+/// Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
+#define CELLRATE 0.002
 					   // It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
 
 #define KILOWATTS *1000
@@ -9,27 +10,32 @@ var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manu
 
 // Doors!
 #define DOOR_CRUSH_DAMAGE 20
-#define ALIEN_SELECT_AFK_BUFFER 1	// How many minutes that a person can be AFK before not being allowed to be an alien.
-
+/// How many minutes that a person can be AFK before not being allowed to be an alien.
+#define ALIEN_SELECT_AFK_BUFFER 1
 // Constants for machine's use_power
-#define USE_POWER_OFF    0	// No continuous power use
-#define USE_POWER_IDLE   1	// Machine is using power at its idle power level
-#define USE_POWER_ACTIVE 2	// Machine is using power at its active power level
-
+/// No continuous power use
+#define USE_POWER_OFF    0
+/// Machine is using power at its idle power level
+#define USE_POWER_IDLE   1
+/// Machine is using power at its active power level
+#define USE_POWER_ACTIVE 2
 // Channel numbers for power.
-#define CURRENT_CHANNEL -1 // Passed as an argument this means "use whatever current channel is"
+/// Passed as an argument this means "use whatever current channel is"
+#define CURRENT_CHANNEL -1
 #define EQUIP   1
 #define LIGHT   2
 #define ENVIRON 3
-#define TOTAL   4 // For total power used only.
-
+/// For total power used only.
+#define TOTAL   4
 // Bitflags for machine stat variable.
 #define BROKEN	 0x1
 #define NOPOWER	 0x2
-#define POWEROFF 0x4	// TBD.
-#define MAINT	 0x8	// Under maintenance.
-#define EMPED	 0x10	// Temporary broken by EMP pulse.
-
+/// TBD.
+#define POWEROFF 0x4
+/// Under maintenance.
+#define MAINT	 0x8
+/// Temporary broken by EMP pulse.
+#define EMPED	 0x10
 // Remote control states
 #define RCON_NO		1
 #define RCON_AUTO	2
@@ -71,14 +77,16 @@ var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manu
 #define NETWORK_ALARM_ATMOS "Atmosphere Alarms"
 #define NETWORK_ALARM_POWER "Power Alarms"
 #define NETWORK_ALARM_FIRE "Fire Alarms"
-#define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
+///Using different from Polaris one for better name
+#define NETWORK_TCOMMS "Telecommunications"
 #define NETWORK_OUTSIDE "Outside"
 #define NETWORK_EXPLORATION "Exploration"
 #define NETWORK_XENOBIO "Xenobiology"
 
 // Off Station Camera Networks
-#define NETWORK_TALON_HELMETS "TalonHelmets" //VOREStation Add //We can keep these for now
-#define NETWORK_TALON_SHIP "TalonShip" //VOREStation Add
+//TODO: Remove. Though we can keep these for now.
+#define NETWORK_TALON_HELMETS "TalonHelmets"
+#define NETWORK_TALON_SHIP "TalonShip"
 #define NETWORK_TRADE_STATION "Beruang Trade Station"
 
 // Station Specific Camera Networks
@@ -88,22 +96,32 @@ var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manu
 // Those networks can only be accessed by pre-existing terminals. AIs and new terminals can't use them.
 var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret", NETWORK_COMMUNICATORS)
 
-#define TRANSMISSION_WIRE		0 //Is this ever used? I don't think it is.
-#define TRANSMISSION_RADIO		1 //Radio transmissions (like airlock controller to pump)
-#define TRANSMISSION_SUBSPACE	2 //Like headsets
-#define TRANSMISSION_BLUESPACE	3 //Point-to-point links
-
-#define SIGNAL_NORMAL	0 //Normal subspace signals
-#define SIGNAL_SIMPLE	1 //Normal inter-machinery(?) signals
-#define SIGNAL_FAKE		2 //Untrackable signals
-#define SIGNAL_TEST		4 //Unlogged signals
-
-#define DATA_NORMAL		0 //Normal data
-#define DATA_INTERCOM	1 //Intercoms only
-#define DATA_LOCAL		2 //Intercoms and SBRs
-#define DATA_ANTAG		3 //Antag interception
-#define DATA_FAKE		4 //Not from a real mob
-
+///Is this ever used? I don't think it is.
+#define TRANSMISSION_WIRE		0
+///Radio transmissions (like airlock controller to pump)
+#define TRANSMISSION_RADIO		1
+///Like headsets
+#define TRANSMISSION_SUBSPACE	2
+///Point-to-point links
+#define TRANSMISSION_BLUESPACE	3
+///Normal subspace signals
+#define SIGNAL_NORMAL	0
+///Normal inter-machinery(?) signals
+#define SIGNAL_SIMPLE	1
+///Untrackable signals
+#define SIGNAL_FAKE		2
+///Unlogged signals
+#define SIGNAL_TEST		4
+///Normal data
+#define DATA_NORMAL		0
+///Intercoms only
+#define DATA_INTERCOM	1
+///Intercoms and SBRs
+#define DATA_LOCAL		2
+///Antag interception
+#define DATA_ANTAG		3
+///Not from a real mob
+#define DATA_FAKE		4
 //singularity defines
 #define STAGE_ONE 	1
 #define STAGE_TWO 	3
@@ -115,9 +133,10 @@ var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret
 /*
  *	Atmospherics Machinery.
 */
-#define MAX_SIPHON_FLOWRATE   2500 // L/s. This can be used to balance how fast a room is siphoned. Anything higher than CELL_VOLUME has no effect.
-#define MAX_SCRUBBER_FLOWRATE 200  // L/s. Max flow rate when scrubbing from a turf.
-
+/// L/s. This can be used to balance how fast a room is siphoned. Anything higher than CELL_VOLUME has no effect.
+#define MAX_SIPHON_FLOWRATE   2500
+/// L/s. Max flow rate when scrubbing from a turf.
+#define MAX_SCRUBBER_FLOWRATE 200
 // These balance how easy or hard it is to create huge pressure gradients with pumps and filters.
 // Lower values means it takes longer to create large pressures differences.
 // Has no effect on pumping gasses from high pressure to low, only from low to high.
@@ -132,21 +151,31 @@ var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret
 
 // The flow rate/effectiveness of various atmos devices is limited by their internal volume,
 // so for many atmos devices these will control maximum flow rates in L/s.
-#define ATMOS_DEFAULT_VOLUME_PUMP   200 // Liters.
-#define ATMOS_DEFAULT_VOLUME_FILTER 200 // L.
-#define ATMOS_DEFAULT_VOLUME_MIXER  200 // L.
-#define ATMOS_DEFAULT_VOLUME_PIPE   70  // L.
-
+/// Liters.
+#define ATMOS_DEFAULT_VOLUME_PUMP   200
+/// L.
+#define ATMOS_DEFAULT_VOLUME_FILTER 200
+/// L.
+#define ATMOS_DEFAULT_VOLUME_MIXER  200
+/// L.
+#define ATMOS_DEFAULT_VOLUME_PIPE   70
 // These are used by supermatter and supermatter monitor program, mostly for UI updating purposes. Higher should always be worse!
-#define SUPERMATTER_ERROR -1		// Unknown status, shouldn't happen but just in case.
-#define SUPERMATTER_INACTIVE 0		// No or minimal energy
-#define SUPERMATTER_NORMAL 1		// Normal operation
-#define SUPERMATTER_NOTIFY 2		// Ambient temp > 80% of CRITICAL_TEMPERATURE
-#define SUPERMATTER_WARNING 3		// Ambient temp > CRITICAL_TEMPERATURE OR integrity damaged
-#define SUPERMATTER_DANGER 4		// Integrity < 50%
-#define SUPERMATTER_EMERGENCY 5		// Integrity < 25%
-#define SUPERMATTER_DELAMINATING 6	// Pretty obvious.
-
+/// Unknown status, shouldn't happen but just in case.
+#define SUPERMATTER_ERROR -1
+/// No or minimal energy
+#define SUPERMATTER_INACTIVE 0
+/// Normal operation
+#define SUPERMATTER_NORMAL 1
+/// Ambient temp > 80% of CRITICAL_TEMPERATURE
+#define SUPERMATTER_NOTIFY 2
+/// Ambient temp > CRITICAL_TEMPERATURE OR integrity damaged
+#define SUPERMATTER_WARNING 3
+/// Integrity < 50%
+#define SUPERMATTER_DANGER 4
+/// Integrity < 25%
+#define SUPERMATTER_EMERGENCY 5
+/// Pretty obvious.
+#define SUPERMATTER_DELAMINATING 6
 //wIP - PORT ALL OF THESE TO SUBSYSTEMS AND GET RID OF THE WHOLE LIST PROCESS THING
 // Fancy-pants START/STOP_PROCESSING() macros that lets us custom define what the list is.
 #define START_PROCESSING_IN_LIST(DATUM, LIST) \

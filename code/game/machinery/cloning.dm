@@ -23,8 +23,8 @@
 			break
 	return selected
 
-#define CLONE_BIOMASS 30 //VOREstation Edit
-
+///VOREstation Edit
+#define CLONE_BIOMASS 30
 /obj/machinery/clonepod
 	name = "cloning pod"
 	desc = "An electronically-lockable pod for growing organic tissue."

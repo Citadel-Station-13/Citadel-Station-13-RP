@@ -59,40 +59,74 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 // These are used as the layers for the icons, as well as indexes in a list that holds onto them.
 // Technically the layers used are all -100+layer to make them FLOAT_LAYER overlays.
 //Human Overlays Indexes/////////
-#define MUTATIONS_LAYER			1		//Mutations like fat, and lasereyes
-#define SKIN_LAYER				2		//Skin things added by a call on species
-#define BLOOD_LAYER				3		//Bloodied hands/feet/anything else
-#define DAMAGE_LAYER			4		//Injury overlay sprites like open wounds
-#define SURGERY_LAYER			5		//Overlays for open surgical sites
-#define UNDERWEAR_LAYER  		6		//Underwear/bras/etc
-#define SHOES_LAYER_ALT			7		//Shoe-slot item (when set to be under uniform via verb)
-#define UNIFORM_LAYER			8		//Uniform-slot item
-#define ID_LAYER				9		//ID-slot item
-#define SHOES_LAYER				10		//Shoe-slot item
-#define GLOVES_LAYER			11		//Glove-slot item
-#define BELT_LAYER				12		//Belt-slot item
-#define SUIT_LAYER				13		//Suit-slot item
-#define TAIL_LAYER				14		//Some species have tails to render
-#define GLASSES_LAYER			15		//Eye-slot item
-#define BELT_LAYER_ALT			16		//Belt-slot item (when set to be above suit via verb)
-#define SUIT_STORE_LAYER		17		//Suit storage-slot item
-#define BACK_LAYER				18		//Back-slot item
-#define HAIR_LAYER				19		//The human's hair
-#define EARS_LAYER				20		//Both ear-slot items (combined image)
-#define EYES_LAYER				21		//Mob's eyes (used for glowing eyes)
-#define FACEMASK_LAYER			22		//Mask-slot item
-#define HEAD_LAYER				23		//Head-slot item
-#define HANDCUFF_LAYER			24		//Handcuffs, if the human is handcuffed, in a secret inv slot
-#define LEGCUFF_LAYER			25		//Same as handcuffs, for legcuffs
-#define L_HAND_LAYER			26		//Left-hand item
-#define R_HAND_LAYER			27		//Right-hand item
-#define WING_LAYER				28		//VOREStation edit. Simply move this up a number if things are added.
-#define TAIL_LAYER_ALT			29		//VOREStation edit. Simply move this up a number if things are added.
-#define MODIFIER_EFFECTS_LAYER	30		//Effects drawn by modifiers
-#define FIRE_LAYER				31		//'Mob on fire' overlay layer
-#define MOB_WATER_LAYER				32		//'Mob submerged' overlay layer
-#define TARGETED_LAYER			33		//'Aimed at' overlay layer
-#define TOTAL_LAYERS			33		//VOREStation edit. <---- KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
+///Mutations like fat, and lasereyes
+#define MUTATIONS_LAYER			1
+///Skin things added by a call on species
+#define SKIN_LAYER				2
+///Bloodied hands/feet/anything else
+#define BLOOD_LAYER				3
+///Injury overlay sprites like open wounds
+#define DAMAGE_LAYER			4
+///Overlays for open surgical sites
+#define SURGERY_LAYER			5
+///Underwear/bras/etc
+#define UNDERWEAR_LAYER  		6
+///Shoe-slot item (when set to be under uniform via verb)
+#define SHOES_LAYER_ALT			7
+///Uniform-slot item
+#define UNIFORM_LAYER			8
+///ID-slot item
+#define ID_LAYER				9
+///Shoe-slot item
+#define SHOES_LAYER				10
+///Glove-slot item
+#define GLOVES_LAYER			11
+///Belt-slot item
+#define BELT_LAYER				12
+///Suit-slot item
+#define SUIT_LAYER				13
+///Some species have tails to render
+#define TAIL_LAYER				14
+///Eye-slot item
+#define GLASSES_LAYER			15
+///Belt-slot item (when set to be above suit via verb)
+#define BELT_LAYER_ALT			16
+///Suit storage-slot item
+#define SUIT_STORE_LAYER		17
+///Back-slot item
+#define BACK_LAYER				18
+///The human's hair
+#define HAIR_LAYER				19
+///Both ear-slot items (combined image)
+#define EARS_LAYER				20
+///Mob's eyes (used for glowing eyes)
+#define EYES_LAYER				21
+///Mask-slot item
+#define FACEMASK_LAYER			22
+///Head-slot item
+#define HEAD_LAYER				23
+///Handcuffs, if the human is handcuffed, in a secret inv slot
+#define HANDCUFF_LAYER			24
+///Same as handcuffs, for legcuffs
+#define LEGCUFF_LAYER			25
+///Left-hand item
+#define L_HAND_LAYER			26
+///Right-hand item
+#define R_HAND_LAYER			27
+///VOREStation edit. Simply move this up a number if things are added.
+#define WING_LAYER				28
+///VOREStation edit. Simply move this up a number if things are added.
+#define TAIL_LAYER_ALT			29
+///Effects drawn by modifiers
+#define MODIFIER_EFFECTS_LAYER	30
+///'Mob on fire' overlay layer
+#define FIRE_LAYER				31
+///'Mob submerged' overlay layer
+#define MOB_WATER_LAYER				32
+///'Aimed at' overlay layer
+#define TARGETED_LAYER			33
+///VOREStation edit. <---- KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
+#define TOTAL_LAYERS			33
 //////////////////////////////////
 
 /mob/living/carbon/human

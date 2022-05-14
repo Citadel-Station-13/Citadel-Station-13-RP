@@ -3,7 +3,8 @@
 
 GLOBAL_LIST_EMPTY(smeses)
 
-#define SMESRATE 0.03333		//translates Watt into Kilowattminutes with respect to machinery schedule_interval ~(2s*1W*1min/60s)
+///translates Watt into Kilowattminutes with respect to machinery schedule_interval ~(2s*1W*1min/60s)
+#define SMESRATE 0.03333
 #define SMESMAXCHARGELEVEL 250000
 #define SMESMAXOUTPUT 250000
 

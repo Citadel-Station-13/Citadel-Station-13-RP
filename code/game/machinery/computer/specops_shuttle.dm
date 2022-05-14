@@ -1,9 +1,12 @@
 //Config stuff
-#define SPECOPS_MOVETIME 600	//Time to station is milliseconds. 60 seconds, enough time for everyone to be on the shuttle before it leaves.
-#define SPECOPS_STATION_AREATYPE "/area/shuttle/specops/station" //Type of the spec ops shuttle area for station
-#define SPECOPS_DOCK_AREATYPE "/area/shuttle/specops/centcom"	//Type of the spec ops shuttle area for dock
-#define SPECOPS_RETURN_DELAY 600 //Time between the shuttle is capable of moving.
-
+///Time to station is milliseconds. 60 seconds, enough time for everyone to be on the shuttle before it leaves.
+#define SPECOPS_MOVETIME 600
+///Type of the spec ops shuttle area for station
+#define SPECOPS_STATION_AREATYPE "/area/shuttle/specops/station"
+///Type of the spec ops shuttle area for dock
+#define SPECOPS_DOCK_AREATYPE "/area/shuttle/specops/centcom"
+///Time between the shuttle is capable of moving.
+#define SPECOPS_RETURN_DELAY 600
 var/specops_shuttle_moving_to_station = 0
 var/specops_shuttle_moving_to_centcom = 0
 var/specops_shuttle_at_station = 0

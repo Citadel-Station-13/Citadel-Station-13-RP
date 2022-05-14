@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 //  Beacon randomly spawns in space
 //	When a non-traitor (no special role in /mind) uses it, he is given the choice to become a traitor
@@ -157,7 +156,7 @@
 	icontype = "beaconsynd"
 	icon_state = "beaconsynd0"
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 //  Virgo modified syndie beacon, does not give objectives
 
 /obj/machinery/syndicate_beacon/virgo/attack_hand(var/mob/user as mob)

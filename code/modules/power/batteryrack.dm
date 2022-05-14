@@ -191,7 +191,8 @@
 			charge = 0
 
 
-#define SMESRATE 0.05			// rate of internal charge to external power
+/// rate of internal charge to external power
+#define SMESRATE 0.05
 /obj/machinery/power/smes/batteryrack/makeshift/process(delta_time)
 	if(stat & BROKEN)	return
 
