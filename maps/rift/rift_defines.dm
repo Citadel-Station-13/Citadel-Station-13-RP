@@ -52,12 +52,14 @@
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
+		Z_LEVEL_WEST_BASE,
 		Z_LEVEL_WEST_PLAIN)
 	player_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
+		Z_LEVEL_WEST_BASE,
 		Z_LEVEL_WEST_PLAIN,
 		Z_LEVEL_WEST_CAVERN)
 
@@ -196,6 +198,7 @@
 
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_WEST_CAVERN, 64, 64)         // Create the mining ore distribution map.
+	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_WEST_BASE, 64, 64)         // Create the mining ore distribution map.
 
 	return 1
 
@@ -252,23 +255,22 @@
 /datum/map_z_level/rift/base
 	z = Z_LEVEL_WEST_BASE
 	name = "Western Canyon"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
 
 /datum/map_z_level/rift/caves
 	z = Z_LEVEL_WEST_CAVERN
 	name = "Western Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+	base_turf = /turf/simulated/open
 
 /datum/map_z_level/rift/plains
 	z = Z_LEVEL_WEST_PLAIN
 	name = "Western Plains"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
+	base_turf = /turf/simulated/open
 
 /datum/map_z_level/rift/colony
 	z = Z_LEVEL_MISC
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-

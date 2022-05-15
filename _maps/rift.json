@@ -70,7 +70,7 @@
         "Station":false,
         "Linkage":null,
         "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/safeice/lythios43c/indoors",
+        "Baseturf":"/turf/simulated/open",
         "FacilityWeaponLock":false
       },
       {
@@ -78,7 +78,7 @@
         "Station":false,
         "Linkage":null,
         "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/safeice/lythios43c",
+        "Baseturf":"/turf/simulated/open",
         "FacilityWeaponLock":false
       },
       {
