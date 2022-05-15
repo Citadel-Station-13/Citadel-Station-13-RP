@@ -353,7 +353,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 	if(config_legacy.admin_legacy_system)
 		var/text = file2text("config/moderators.txt")
 		if (!text)
-			log_world("Failed to load config/mods.txt")
+			log_world("Failed to load config/moderators.txt")
 		else
 			var/list/lines = splittext(text, "\n")
 			for(var/line in lines)
@@ -432,7 +432,7 @@ var/failed_db_connections = 0
 var/failed_old_db_connections = 0
 
 /hook/startup/proc/connectDB()
-	if(!config_legacy.sql_enabled)
+	(!CONFIG_GET(flag/sql_enabled))
 		log_world("SQL connection disabled in config_legacy.")
 	else if(!setup_database_connection())
 		log_world("Your server failed to establish a connection with the feedback database.")
@@ -476,7 +476,7 @@ proc/establish_db_connection()
 
 
 /hook/startup/proc/connectOldDB()
-	if(!config_legacy.sql_enabled)
+	(!CONFIG_GET(flag/sql_enabled))
 		log_world("SQL connection disabled in config_legacy.")
 	else if(!setup_old_database_connection())
 		log_world("Your server failed to establish a connection with the SQL database.")
