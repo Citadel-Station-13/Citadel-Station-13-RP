@@ -1095,7 +1095,7 @@
 	ASSERT(isnum(new_layer))
 	base_layer = new_layer
 	// rel layer being null is fine
-	layer = base_layer + 0.000001 * relative_layer
+	layer = base_layer + 0.001 * relative_layer
 
 /// Set the relative layer within our layer we should be on.
 /atom/proc/set_relative_layer(new_layer)
@@ -1104,7 +1104,7 @@
 		base_layer = layer
 	relative_layer = new_layer
 	// base layer being null isn't
-	layer = base_layer + 0.000001 * relative_layer
+	layer = base_layer + 0.001 * relative_layer
 
 /atom/proc/get_cell()
 	return

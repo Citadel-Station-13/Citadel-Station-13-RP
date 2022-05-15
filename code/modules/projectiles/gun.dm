@@ -863,4 +863,4 @@
  * returns TRUE/FALSE based on if we have safeties on
  */
 /obj/item/gun/proc/check_safety()
-	return !!(safety_state == GUN_SAFETY_ON)
+	return (safety_state == GUN_SAFETY_ON)

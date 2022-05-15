@@ -267,11 +267,10 @@ SUBSYSTEM_DEF(ticker)
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
-	if(config_legacy.sql_enabled)
+	if(CONFIG_GET(flag/sql_enabled))
 		//THIS REQUIRES THE INVOKE ASYNC.
 		INVOKE_ASYNC(GLOBAL_PROC, .proc/statistic_cycle) // Polls population totals regularly and stores them in an SQL DB -- TLE
-
-	return 1
+	return TRUE
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)
