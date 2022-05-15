@@ -45,7 +45,7 @@
 /obj/machinery/computer/power_monitor/attack_hand(mob/user)
 	add_fingerprint(user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	nano_ui_interact(user)
 

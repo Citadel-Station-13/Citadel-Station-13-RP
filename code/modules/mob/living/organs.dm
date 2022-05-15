@@ -8,9 +8,10 @@
 	/// Organs we check until they are good.
 	var/list/bad_external_organs = list()
 
-/mob/living/proc/get_bodypart_name(var/zone)
+/mob/living/proc/get_bodypart_name(zone)
 	var/obj/item/organ/external/E = get_organ(zone)
-	if(E) . = E.name
+	if(E)
+		. = E.name
 
 /mob/living/proc/get_organ(var/zone)
 	if(!zone)

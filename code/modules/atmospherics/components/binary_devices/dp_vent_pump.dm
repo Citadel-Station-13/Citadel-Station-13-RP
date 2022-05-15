@@ -110,7 +110,7 @@
 	last_power_draw = 0
 	last_flow_rate = 0
 
-	if(stat & (NOPOWER|BROKEN) || !use_power)
+	if(machine_stat & (NOPOWER|BROKEN) || !use_power)
 		return 0
 
 	var/datum/gas_mixture/environment = loc.return_air()
@@ -205,9 +205,9 @@
 
 
 /obj/machinery/atmospherics/component/unary/vent_pump/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/atmospherics/component/binary/dp_vent_pump/receive_signal(datum/signal/signal)

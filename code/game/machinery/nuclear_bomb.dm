@@ -5,17 +5,17 @@ var/bomb_set
 	desc = "Uh oh. RUN!!!!"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "nuclearbomb0"
-	density = 1
-	var/deployable = 0.0
-	var/extended = 0.0
-	var/lighthack = 0
-	var/opened = 0.0
-	var/timeleft = 60.0
-	var/timing = 0.0
+	density = TRUE
+	var/deployable = FALSE
+	var/extended = FALSE
+	var/lighthack = FALSE
+	var/opened = FALSE
+	var/timeleft = 1 MINUTE
+	var/timing = 0
 	var/r_code = "ADMIN"
 	var/code = ""
-	var/yes_code = 0.0
-	var/safety = 1.0
+	var/yes_code = 0
+	var/safety = TRUE
 	var/obj/item/disk/nuclear/auth = null
 	var/list/wires = list()
 	var/light_wire
@@ -54,25 +54,25 @@ var/bomb_set
 				attack_hand(M)
 	return
 
-/obj/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
+/obj/machinery/nuclearbomb/attackby(obj/item/O, mob/user)
 	if(O.is_screwdriver())
-		playsound(src, O.usesound, 50, 1)
+		playsound(src, O.usesound, 50, TRUE)
 		add_fingerprint(user)
 		if(auth)
-			if(opened == 0)
-				opened = 1
+			if(opened == FALSE)
+				opened = TRUE
 				overlays += image(icon, "npanel_open")
 				to_chat(user, "You unscrew the control panel of [src].")
 
 			else
-				opened = 0
+				opened = FALSE
 				overlays -= image(icon, "npanel_open")
 				to_chat(user, "You screw the control panel of [src] back on.")
 		else
-			if(opened == 0)
+			if(opened == FALSE)
 				to_chat(user, "The [src] emits a buzzing noise, the panel staying locked in.")
-			if(opened == 1)
-				opened = 0
+			if(opened == TRUE)
+				opened = FALSE
 				overlays -= image(icon, "npanel_open")
 				to_chat(user, "You screw the control panel of [src] back on.")
 			flick("nuclearbombc", src)
@@ -162,7 +162,7 @@ var/bomb_set
 				return
 	..()
 
-/obj/machinery/nuclearbomb/attack_hand(mob/user as mob)
+/obj/machinery/nuclearbomb/attack_hand(mob/user)
 	if(extended)
 		if(!ishuman(user))
 			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")

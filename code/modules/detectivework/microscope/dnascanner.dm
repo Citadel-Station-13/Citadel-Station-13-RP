@@ -51,7 +51,7 @@
 		return
 
 /obj/machinery/dnaforensics/ui_interact(mob/user, datum/tgui/ui)
-	if(stat & (NOPOWER))
+	if(machine_stat & (NOPOWER))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -74,7 +74,7 @@
 	if(..())
 		return TRUE
 
-	if(stat & (NOPOWER))
+	if(machine_stat & (NOPOWER))
 		return FALSE //Don't update UIs attached to this object
 
 	. = TRUE
@@ -146,7 +146,7 @@
 
 /obj/machinery/dnaforensics/update_icon()
 	..()
-	if(!(stat & NOPOWER) && scanning)
+	if(!(machine_stat & NOPOWER) && scanning)
 		icon_state = "dnaworking"
 	else if(bloodsamp)
 		icon_state = "dnaclosed"

@@ -1,8 +1,8 @@
 //node1, air1, network1 correspond to input
 //node2, air2, network2 correspond to output
 
-#define ADIABATIC_EXPONENT 0.667 //Actually adiabatic exponent - 1.
-
+///Actually adiabatic exponent - 1.
+#define ADIABATIC_EXPONENT 0.667
 /obj/machinery/atmospherics/component/binary/circulator
 	name = "circulator"
 	desc = "A gas circulator turbine and heat exchanger."
@@ -33,7 +33,7 @@
 
 /obj/machinery/atmospherics/component/binary/circulator/proc/return_transfer_air()
 	var/datum/gas_mixture/removed
-	if(anchored && !(stat&BROKEN) && network1)
+	if(anchored && !(machine_stat & BROKEN) && network1)
 		var/input_starting_pressure = air1.return_pressure()
 		var/output_starting_pressure = air2.return_pressure()
 		last_pressure_delta = max(input_starting_pressure - output_starting_pressure - 5, 0)
@@ -79,7 +79,7 @@
 /obj/machinery/atmospherics/component/binary/circulator/update_icon()
 	icon_state = anchored ? "circ-assembled" : "circ-unassembled"
 	cut_overlays()
-	if (stat & (BROKEN|NOPOWER) || !anchored)
+	if (machine_stat & (BROKEN|NOPOWER) || !anchored)
 		return 1
 	if (last_pressure_delta > 0 && recent_moles_transferred > 0)
 		if (temperature_overlay)

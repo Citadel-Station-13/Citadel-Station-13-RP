@@ -558,7 +558,7 @@ var/global/datum/controller/occupations/job_master
 		if(!config_legacy.load_jobs_from_txt)
 			return 0
 
-		var/list/jobEntries = file2list(jobsfile)
+		var/list/jobEntries = world.file2list(jobsfile)
 
 		for(var/job in jobEntries)
 			if(!job)

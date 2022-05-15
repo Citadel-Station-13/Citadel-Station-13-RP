@@ -184,7 +184,7 @@ This actually tests if they have the same entries and values.
 	return L
 
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /proc/dd_sortedObjectList(var/list/L, var/cache=list())
 	if(L.len < 2)
 		return L

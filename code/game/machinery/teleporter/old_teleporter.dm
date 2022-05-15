@@ -46,7 +46,7 @@
 /obj/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/card/data/))
 		var/obj/item/card/data/C = I
-		if(stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))
+		if(machine_stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))
 			attack_hand()
 
 		var/obj/L = null
@@ -150,7 +150,7 @@
 	set src in oview(1)
 	set desc = "ID Tag:"
 
-	if(stat & (NOPOWER|BROKEN) || !istype(usr,/mob/living))
+	if(machine_stat & (NOPOWER|BROKEN) || !istype(usr,/mob/living))
 		return
 	if(t)
 		id = t
@@ -282,7 +282,7 @@
 		engage()
 
 /obj/machinery/teleport/station/proc/engage()
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	engaged = TRUE
@@ -298,7 +298,7 @@
 	return
 
 /obj/machinery/teleport/station/proc/disengage()
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	engaged = FALSE

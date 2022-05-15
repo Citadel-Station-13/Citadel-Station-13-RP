@@ -4,7 +4,7 @@
 	icon_screen = "power_monitor"
 
 /obj/machinery/computer/power_monitor/update_icon()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_screen = "broken"
 	else if(alerting)
 		icon_screen = "power_monitor_warn"

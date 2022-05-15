@@ -160,7 +160,7 @@
 
 	if(welded)
 		vent_icon += "weld"
-	else if(!use_power || !node || (stat & (NOPOWER|BROKEN)))
+	else if(!use_power || !node || (machine_stat & (NOPOWER|BROKEN)))
 		vent_icon += "off"
 	else
 		vent_icon += "[pump_direction ? "out" : "in"]"
@@ -186,7 +186,7 @@
 	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/vent_pump/proc/can_pump()
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		//soundloop.stop()
 		return 0
 	if(!use_power)
@@ -299,7 +299,7 @@
 		src.broadcast_status()
 
 /obj/machinery/atmospherics/component/unary/vent_pump/receive_signal(datum/signal/signal)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	hibernate = 0
@@ -422,15 +422,15 @@
 		. += "It seems welded shut."
 
 /obj/machinery/atmospherics/component/unary/vent_pump/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/component/unary/vent_pump/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/unary/vent_pump/attackby(obj/item/W, mob/user)
 	if (!W.is_wrench())
 		return ..()
-	if (!(stat & NOPOWER) && use_power)
+	if (!(machine_stat & NOPOWER) && use_power)
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
 	var/turf/T = src.loc

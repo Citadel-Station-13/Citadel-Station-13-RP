@@ -45,7 +45,7 @@
 	return
 
 /obj/machinery/portable_atmospherics/powered/pump/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 
@@ -221,19 +221,19 @@
 /obj/machinery/portable_atmospherics/powered/pump/huge/update_icon()
 	overlays.Cut()
 
-	if(on && !(stat & (NOPOWER|BROKEN)))
+	if(on && !(machine_stat & (NOPOWER|BROKEN)))
 		icon_state = "siphon:1"
 	else
 		icon_state = "siphon:0"
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if (old_stat != stat)
+	if (old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/process(delta_time)
-	if(!anchored || (stat & (NOPOWER|BROKEN)))
+	if(!anchored || (machine_stat & (NOPOWER|BROKEN)))
 		on = 0
 		last_flow_rate = 0
 		last_power_draw = 0
@@ -317,6 +317,6 @@
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/stationary/purge/power_change()
 	..()
-	if(!(stat & (NOPOWER|BROKEN)))
+	if(!(machine_stat & (NOPOWER|BROKEN)))
 		on = 1
 		update_icon()

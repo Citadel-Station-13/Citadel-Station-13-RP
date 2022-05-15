@@ -23,109 +23,107 @@
 			break
 	return selected
 
-#define CLONE_BIOMASS 30 //VOREstation Edit
-
+#define CLONE_BIOMASS 30
 /obj/machinery/clonepod
 	name = "cloning pod"
 	desc = "An electronically-lockable pod for growing organic tissue."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/clonepod
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "pod_0"
 	req_access = list(access_genetics) // For premature unlocking.
 	var/mob/living/occupant
-	var/heal_level = 20				// The clone is released once its health reaches this level.
+	/// The clone is released once its health reaches this level.
+	var/heal_level = 20
 	var/heal_rate = 1
-	var/locked = 0
-	var/obj/machinery/computer/cloning/connected = null //So we remember the connected clone machine.
-	var/mess = 0					// Need to clean out it if it's full of exploded clone.
-	var/attempting = 0				// One clone attempt at a time thanks
-	var/eject_wait = 0				// Don't eject them as soon as they are created fuckkk
-
-	var/list/containers = list()	// Beakers for our liquid biomass
-	var/container_limit = 3			// How many beakers can the machine hold?
+	var/locked = FALSE
+	/// So we remember the connected clone machine.
+	var/obj/machinery/computer/cloning/connected = null
+	/// Need to clean out it if it's full of exploded clone.
+	var/mess = FALSE
+	/// One clone attempt at a time thanks.
+	var/attempting = FALSE
+	/// Don't eject them as soon as they are created.
+	var/eject_wait = FALSE
+	/// Beakers for our liquid biomass.
+	var/list/containers = list()
+	/// How many beakers can the machine hold?
+	var/container_limit = 3
 
 /obj/machinery/clonepod/Initialize(mapload, newdir)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/console_screen(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 2)
-
+	default_apply_parts()
 	RefreshParts()
 	update_icon()
 
-/obj/machinery/clonepod/attack_ai(mob/user as mob)
+/obj/machinery/clonepod/attack_ai(mob/user)
 
 	add_hiddenprint(user)
 	return attack_hand(user)
 
-/obj/machinery/clonepod/attack_hand(mob/user as mob)
-	if((isnull(occupant)) || (stat & NOPOWER))
+/obj/machinery/clonepod/attack_hand(mob/user)
+	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))
 		var/completion = (100 * ((occupant.health + 50) / (heal_level + 100))) // Clones start at -150 health
 		to_chat(user, "Current clone cycle is [round(completion)]% complete.")
 	return
 
-//Start growing a human clone in the pod!
+/// Start growing a human clone in the pod!
 /obj/machinery/clonepod/proc/growclone(var/datum/dna2/record/R)
 	if(mess || attempting)
-		return 0
+		return FALSE
 	var/datum/mind/clonemind = locate(R.mind)
 
-	if(!istype(clonemind, /datum/mind))	//not a mind
-		return 0
-	if(clonemind.current && clonemind.current.stat != DEAD)	//mind is associated with a non-dead body
-		return 0
-	if(clonemind.active)	//somebody is using that mind
+	if(!istype(clonemind, /datum/mind)) // Not a mind.
+		return FALSE
+	if(clonemind.current && clonemind.current.stat != DEAD) // Mind is associated with a non-dead body.
+		return FALSE
+	if(clonemind.active) // Somebody is using that mind.
 		if(ckey(clonemind.key) != R.ckey)
-			return 0
+			return FALSE
 	else
 		for(var/mob/observer/dead/G in player_list)
 			if(G.ckey == R.ckey)
 				if(G.can_reenter_corpse)
 					break
 				else
-					return 0
+					return FALSE
 
-	for(var/modifier_type in R.genetic_modifiers)	//Can't be cloned, even if they had a previous scan
+	for(var/modifier_type in R.genetic_modifiers) // Can't be cloned, even if they had a previous scan
 		if(istype(modifier_type, /datum/modifier/no_clone))
-			return 0
+			return FALSE
 
 	// Remove biomass when the cloning is started, rather than when the guy pops out
 	remove_biomass(CLONE_BIOMASS)
 
-	attempting = 1 //One at a time!!
-	locked = 1
+	attempting = TRUE // One at a time!!
+	locked = TRUE
 
-	eject_wait = 1
+	eject_wait = TRUE
 	spawn(30)
-		eject_wait = 0
+		eject_wait = FALSE
 
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src, R.dna.species)
 	occupant = H
 
-	if(!R.dna.real_name)	//to prevent null names
+	if(!R.dna.real_name) // To prevent null names
 		R.dna.real_name = "clone ([rand(0,999)])"
 	H.real_name = R.dna.real_name
 	H.gender = R.gender
 	H.descriptors = R.body_descriptors
 
-	//Get the clone body ready
+	// Get the clone body ready
 	H.adjustCloneLoss(150) // New damage var so you can't eject a clone early then stab them to abuse the current damage system --NeoFite
 	H.Paralyse(4)
 
-	//Here let's calculate their health so the pod doesn't immediately eject them!!!
+	// Here let's calculate their health so the pod doesn't immediately eject them!!!
 	H.updatehealth()
 
 	clonemind.transfer_to(H)
 	H.ckey = R.ckey
-	to_chat(H, "<span class='warning'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><b><font size='3'>Your recent memories are fuzzy, and it's hard to remember anything from today...</font></b></span><br><span class='notice'><i>So this is what cloning feels like?</i></span>")
+	to_chat(H, SPAN_BOLDDANGER("Consciousness slowly creeps over you as your body regenerates.<br>") + SPAN_USERDANGER("Your recent memories are fuzzy, and it's hard to remember anything from today...<br>") + SPAN_NOTICE(SPAN_ROSE("So this is what cloning feels like?")))
 
 	// -- Mode/mind specific stuff goes here
 	callHook("clone", list(H))
@@ -174,9 +172,9 @@
 	attempting = 0
 	return 1
 
-//Grow clones to maturity then kick them out.  FREELOADERS
+/// Grow clones to maturity then kick them out.  FREELOADERS
 /obj/machinery/clonepod/process(delta_time)
-	if(stat & NOPOWER) //Autoeject if power is lost
+	if(machine_stat & NOPOWER) // Autoeject if power is lost
 		if(occupant)
 			locked = 0
 			go_out()
@@ -235,19 +233,19 @@
 			return
 	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
 		if(!check_access(W))
-			to_chat(user, "<span class='warning'>Access Denied.</span>")
+			to_chat(user, SPAN_WARNING("Access Denied."))
 			return
 		if((!locked) || (isnull(occupant)))
 			return
 		if((occupant.health < -20) && (occupant.stat != 2))
-			to_chat(user, "<span class='warning'>Access Refused.</span>")
+			to_chat(user, SPAN_WARNING("Access Refused."))
 			return
 		else
-			locked = 0
+			locked = FALSE
 			to_chat(user, "System unlocked.")
 	else if(istype(W,/obj/item/reagent_containers/glass))
 		if(LAZYLEN(containers) >= container_limit)
-			to_chat(user, "<span class='warning'>\The [src] has too many containers loaded!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] has too many containers loaded!"))
 		else if(do_after(user, 1 SECOND))
 			user.visible_message("[user] has loaded \the [W] into \the [src].", "You load \the [W] into \the [src].")
 			containers += W
@@ -256,15 +254,15 @@
 		return
 	else if(W.is_wrench())
 		if(locked && (anchored || occupant))
-			to_chat(user, "<span class='warning'>Can not do that while [src] is in use.</span>")
+			to_chat(user, SPAN_WARNING("Can not do that while [src] is in use."))
 		else
 			if(anchored)
-				anchored = 0
+				anchored = FALSE
 				connected.pods -= src
 				connected = null
 			else
-				anchored = 1
-			playsound(src, W.usesound, 100, 1)
+				anchored = TRUE
+			playsound(src, W.usesound, 100, TRUE)
 			if(anchored)
 				user.visible_message("[user] secures [src] to the floor.", "You secure [src] to the floor.")
 			else
@@ -272,7 +270,7 @@
 	else if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		M.connecting = src
-		to_chat(user, "<span class='notice'>You load connection data from [src] to [M].</span>")
+		to_chat(user, SPAN_NOTICE("You load connection data from [src] to [M]."))
 		M.update_icon()
 		return
 	else
@@ -286,12 +284,12 @@
 	go_out()
 	return 1
 
-//Put messages in the connected computer's temp var for display.
+/// Put messages in the connected computer's temp var for display.
 /obj/machinery/clonepod/proc/connected_message(var/message)
 	if((isnull(connected)) || (!istype(connected, /obj/machinery/computer/cloning)))
-		return 0
+		return FALSE
 	if(!message)
-		return 0
+		return FALSE
 
 	connected.temp = "[name] : [message]"
 	connected.updateUsrDialog()
@@ -452,7 +450,7 @@
 /obj/machinery/clonepod/update_icon()
 	..()
 	icon_state = "pod_0"
-	if(occupant && !(stat & NOPOWER))
+	if(occupant && !(machine_stat & NOPOWER))
 		icon_state = "pod_1"
 	else if(mess)
 		icon_state = "pod_g"
@@ -463,8 +461,7 @@
 	for(var/i = 1 to container_limit)
 		containers += new /obj/item/reagent_containers/glass/bottle/biomass(src)
 
-//Health Tracker Implant
-
+/// Health Tracker Implant
 /obj/item/implant/health
 	name = "health implant"
 	var/healthstring = ""
@@ -480,9 +477,9 @@
 			healthstring = "ERROR"
 		return healthstring
 
-//Disk stuff.
-//The return of data disks?? Just for transferring between genetics machine/cloning machine.
-//TO-DO: Make the genetics machine accept them.
+///Disk stuff.
+///The return of data disks?? Just for transferring between genetics machine/cloning machine.
+///TODO: Make the genetics machine accept them.
 /obj/item/disk/data
 	name = "Cloning Data Disk"
 	icon = 'icons/obj/cloning.dmi'

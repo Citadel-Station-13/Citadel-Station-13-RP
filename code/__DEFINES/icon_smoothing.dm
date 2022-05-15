@@ -66,16 +66,17 @@ DEFINE_BITFIELD(smoothing_junction, list(
  * * Matched with the `list/canSmoothWith` variable to check whether smoothing is possible or not.
  */
 
-#define S_TURF(num) ((24 * 0) + num) //Not any different from the number itself, but kept this way in case someone wants to expand it by adding stuff before it.
+///Not any different from the number itself, but kept this way in case someone wants to expand it by adding stuff before it.
+#define S_TURF(num) ((24 * 0) + num)
 /* /turf only */
 
 // empty for now
-#define MAX_S_TURF S_TURF(0) //Always match this value with the one above it.
-
-
+///Always match this value with the one above it.
+#define MAX_S_TURF S_TURF(0)
 #define S_OBJ(num) (MAX_S_TURF + 1 + num)
 /* /obj included */
 
-#define SMOOTH_GROUP_SANDBAGS S_OBJ(0) ///obj/structure/sandbag
-
-#define MAX_S_OBJ SMOOTH_GROUP_SANDBAGS //Always match this value with the one above it.
+///obj/structure/sandbag
+#define SMOOTH_GROUP_SANDBAGS S_OBJ(0)
+///Always match this value with the one above it.
+#define MAX_S_OBJ SMOOTH_GROUP_SANDBAGS

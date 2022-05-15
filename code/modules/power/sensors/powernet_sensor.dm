@@ -35,7 +35,7 @@
 /obj/machinery/power/sensor/Destroy()
 	. = ..()
 	// TODO - Switch power_monitor to register deletion events instead of this.
-	for(var/obj/machinery/computer/power_monitor/PM in machines)
+	for(var/obj/machinery/computer/power_monitor/PM in GLOB.machines)
 		if(PM.power_monitor)
 			PM.power_monitor.refresh_sensors()
 
@@ -197,8 +197,3 @@
 		data["load_percentage"] = 100
 	data["alarm"] = powernet.problem ? 1 : 0
 	return data
-
-
-
-
-

@@ -333,7 +333,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 		return
 
 
-	var/list/Lines = file2list("data/mode.txt")
+	var/list/Lines = world.file2list("data/mode.txt")
 	if(Lines.len)
 		if(Lines[1])
 			master_mode = Lines[1]

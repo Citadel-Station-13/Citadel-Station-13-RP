@@ -7,21 +7,21 @@
 	circuit = /obj/item/circuitboard/shutoff_monitor
 	var/datum/tgui_module/shutoff_monitor/monitor
 
-/obj/machinery/computer/shutoff_monitor/New()
-	..()
+/obj/machinery/computer/shutoff_monitor/Initialize(mapload)
+	. = ..()
 	ui_interact(user)
 
 /obj/machinery/computer/shutoff_monitor/Destroy()
 	QDEL_NULL(monitor)
 	..()
 
-/obj/machinery/computer/shutoff_monitor/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/shutoff_monitor/attack_hand(mob/user)
 	..()
 	monitor.ui_interact(user)
 
 /obj/machinery/computer/shutoff_monitor/update_icon()
 	..()
-	if(!(stat & (NOPOWER|BROKEN)))
+	if(!(machine_stat & (NOPOWER|BROKEN)))
 		add_overlay("ai-fixer-empty")
 	else
 		cut_overlay("ai-fixer-empty")

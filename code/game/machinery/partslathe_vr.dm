@@ -27,18 +27,18 @@
 	idle_power_usage = 30
 	active_power_usage = 5000
 
-	///Amount of materials we can store total
+	/// Amount of materials we can store total
 	var/list/materials = list(MAT_STEEL = 0, MAT_GLASS = 0)
 	var/list/storage_capacity = list(MAT_STEEL = 0, MAT_GLASS = 0)
-	///The inserted board
+	/// The inserted board
 	var/obj/item/circuitboard/copy_board
-	///The queue of things to build
+	/// The queue of things to build
 	var/list/datum/category_item/partslathe/queue = list()
-	///Are we currently busy building stuff?
-	var/busy = 0
-	///How many machine ticks have we spent building current thing?
+	/// Are we currently busy building stuff?
+	var/busy = FALSE
+	/// How many machine ticks have we spent building current thing?
 	var/progress = 0
-	///Material usage efficiency (less efficient than protolathe)
+	/// Material usage efficiency (less efficient than protolathe)
 	var/mat_efficiency = 3
 	/// Ticks per tick build speed multiplier
 	var/speed = 1
@@ -53,7 +53,7 @@
 	update_icon()
 	update_recipe_list()
 
-/obj/machinery/partslathe/proc/getHighestOriginTechLevel(var/obj/item/I)
+/obj/machinery/partslathe/proc/getHighestOriginTechLevel(obj/item/I)
 	if(!istype(I) || !I.origin_tech)
 		return FALSE
 	var/highest = 0
@@ -90,7 +90,7 @@
 			flick("partslathe-lidopen", src)
 		icon_state = "partslathe-idle"
 
-/obj/machinery/partslathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/partslathe/attackby(obj/item/O, mob/user)
 	if(busy)
 		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return TRUE
@@ -123,7 +123,7 @@
 		return
 
 // Attept to load materials.  Returns 0 if item wasn't a stack of materials, otherwise 1 (even if failed to load)
-/obj/machinery/partslathe/proc/try_load_materials(var/mob/user, var/obj/item/stack/material/S)
+/obj/machinery/partslathe/proc/try_load_materials(mob/user, obj/item/stack/material/S)
 	if(!istype(S))
 		return FALSE
 	if(!(S.material.name in materials))
@@ -138,7 +138,10 @@
 			materials[S.material.name] += S.perunit
 			S.use(1)
 			count++
-		user.visible_message("[user] inserts [S.name] into \the [src].", SPAN_NOTICE("You insert [count] [S.name] into \the [src]."))
+		user.visible_message( \
+			"[user] inserts [S.name] into \the [src].", \
+			SPAN_NOTICE("You insert [count] [S.name] into \the [src]."))
+
 		flick("partslathe-load-[S.material.name]", src)
 		updateUsrDialog()
 	else
@@ -147,7 +150,7 @@
 
 /obj/machinery/partslathe/process(delta_time)
 	..()
-	if(stat)
+	if(machine_stat)
 		update_icon()
 		return
 	if(queue.len == 0)
@@ -171,23 +174,23 @@
 		busy = FALSE
 		update_use_power(USE_POWER_IDLE)
 		update_icon()
-		playsound(src.loc, 'sound/machines/chime.ogg', 50, 0)
+		playsound(src.loc, 'sound/machines/chime.ogg', 50, FALSE)
 
-/obj/machinery/partslathe/proc/addToQueue(var/datum/category_item/partslathe/D)
+/obj/machinery/partslathe/proc/addToQueue(datum/category_item/partslathe/D)
 	queue += D
 	return
 
-/obj/machinery/partslathe/proc/removeFromQueue(var/index)
+/obj/machinery/partslathe/proc/removeFromQueue(index)
 	queue.Cut(index, index + 1)
 	return
 
-/obj/machinery/partslathe/proc/canBuild(var/datum/category_item/partslathe/D)
+/obj/machinery/partslathe/proc/canBuild(datum/category_item/partslathe/D)
 	for(var/M in D.resources)
 		if(materials[M] < CEILING((D.resources[M] * mat_efficiency), 1))
 			return FALSE
 	return TRUE
 
-/obj/machinery/partslathe/proc/getLackingMaterials(var/datum/category_item/partslathe/D)
+/obj/machinery/partslathe/proc/getLackingMaterials(datum/category_item/partslathe/D)
 	var/ret = ""
 	for(var/M in D.resources)
 		if(materials[M] < CEILING((D.resources[M] * mat_efficiency), 1))
@@ -196,7 +199,7 @@
 			ret += "[CEILING((D.resources[M] * mat_efficiency), 1) - materials[M]] [M]"
 	return ret
 
-/obj/machinery/partslathe/proc/build(var/datum/category_item/partslathe/D)
+/obj/machinery/partslathe/proc/build(datum/category_item/partslathe/D)
 	for(var/M in D.resources)
 		materials[M] = max(0, materials[M] - CEILING((D.resources[M] * mat_efficiency), 1))
 	var/obj/new_item = D.build(loc);
@@ -366,5 +369,5 @@
 /datum/category_item/partslathe/dd_SortValue()
 	return name
 
-/datum/category_item/partslathe/proc/build(var/loc)
+/datum/category_item/partslathe/proc/build(loc)
 	return new path(loc)

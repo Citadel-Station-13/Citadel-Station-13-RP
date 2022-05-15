@@ -30,10 +30,11 @@
 		var/obj/item/cell/C = charging.get_cell()
 		. += "<span class = 'notice'>Current charge: [C.charge] / [C.maxcharge]</span>"
 
-/obj/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
-	var/allowed = 0
+/obj/machinery/recharger/attackby(obj/item/G, mob/user)
+	var/allowed = FALSE
 	for (var/allowed_type in allowed_devices)
-		if(istype(G, allowed_type)) allowed = 1
+		if(istype(G, allowed_type))
+			allowed = TRUE
 
 	if(allowed)
 		if(charging)
@@ -104,7 +105,7 @@
 	else if(default_part_replacement(user, G))
 		return
 
-/obj/machinery/recharger/attack_hand(mob/user as mob)
+/obj/machinery/recharger/attack_hand(mob/user)
 	if(istype(user,/mob/living/silicon))
 		return
 
@@ -127,7 +128,7 @@
 			update_icon()
 
 /obj/machinery/recharger/process(delta_time)
-	if(stat & (NOPOWER|BROKEN) || !anchored)
+	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
 		update_use_power(USE_POWER_OFF)
 		icon_state = icon_state_idle
 		return
@@ -188,7 +189,7 @@
 			var/obj/item/gun/projectile/cell_loaded/gunny = charging
 			charge_mag(gunny.ammo_magazine)
 
-/obj/machinery/recharger/proc/charge_mag(var/obj/item/ammo_magazine/cell_mag/maggy)
+/obj/machinery/recharger/proc/charge_mag(obj/item/ammo_magazine/cell_mag/maggy)
 	var/tally = maggy.stored_ammo.len
 	for(var/obj/item/ammo_casing/microbattery/batt in maggy)
 		if(batt.shots_left < initial(batt.shots_left))
@@ -204,7 +205,7 @@
 
 
 /obj/machinery/recharger/emp_act(severity)
-	if(stat & (NOPOWER|BROKEN) || !anchored)
+	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
 		..(severity)
 		return
 

@@ -28,10 +28,10 @@ AI MODULES
 
 	if (istype(AM, /obj/machinery/computer/aiupload))
 		var/obj/machinery/computer/aiupload/comp = AM
-		if(comp.stat & NOPOWER)
+		if(comp.machine_stat & NOPOWER)
 			to_chat(usr, "The upload computer has no power!")
 			return
-		if(comp.stat & BROKEN)
+		if(comp.machine_stat & BROKEN)
 			to_chat(usr, "The upload computer is broken!")
 			return
 		if (!comp.current)
@@ -55,10 +55,10 @@ AI MODULES
 
 	else if (istype(AM, /obj/machinery/computer/borgupload))
 		var/obj/machinery/computer/borgupload/comp = AM
-		if(comp.stat & NOPOWER)
+		if(comp.machine_stat & NOPOWER)
 			to_chat(usr, "The upload computer has no power!")
 			return
-		if(comp.stat & BROKEN)
+		if(comp.machine_stat & BROKEN)
 			to_chat(usr, "The upload computer is broken!")
 			return
 		if (!comp.current)

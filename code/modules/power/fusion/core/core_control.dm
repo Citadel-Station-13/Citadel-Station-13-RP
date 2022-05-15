@@ -27,7 +27,7 @@
 
 /obj/machinery/computer/fusion_core_control/interact(mob/user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		user.unset_machine()
 		user << browse(null, "window=fusion_control")
 		return
@@ -173,24 +173,24 @@
 /obj/machinery/computer/fusion_core_control/proc/check_core_status(var/obj/machinery/power/fusion_core/C)
 	if(isnull(C))
 		return
-	if(C.stat & BROKEN)
+	if(C.machine_stat & BROKEN)
 		return
 	if(C.idle_power_usage > C.avail())
 		return
 	. = 1
 
 /obj/machinery/computer/fusion_core_control/update_icon()
-	if(stat & (BROKEN))
+	if(machine_stat & (BROKEN))
 		icon = 'icons/obj/computer.dmi'
 		icon_state = "broken"
 		set_light(0)
 
-	if(stat & (NOPOWER))
+	if(machine_stat & (NOPOWER))
 		icon = 'icons/obj/computer.dmi'
 		icon_state = "computer"
 		set_light(0)
 
-	if(!(stat & (BROKEN|NOPOWER)))
+	if(!(machine_stat & (BROKEN|NOPOWER)))
 		icon = initial(icon)
 		icon_state = initial(icon_state)
 		set_light(light_range_on, light_power_on)

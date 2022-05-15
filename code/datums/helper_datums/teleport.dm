@@ -221,7 +221,7 @@
 		return TRUE
 	//VOREStation Edit End
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 
 //wrapper
 /proc/do_noeffect_teleport(ateleatom, adestination, aprecision=0, afteleport=1, aeffectin=null, aeffectout=null, asoundin=null, asoundout=null, local=FALSE)
