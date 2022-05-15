@@ -130,12 +130,14 @@
 	name = "triumph backup shuttle control console"
 	shuttle_tag = "Triumph Backup"
 	req_one_access = list(access_heads,access_pilot)
+*/
 
 /obj/machinery/computer/shuttle_control/multi/mercenary
 	name = "vessel control console"
 	shuttle_tag = "Mercenary"
 	req_one_access = list(access_syndicate)
 
+/*
 /obj/machinery/computer/shuttle_control/multi/ninja
 	name = "vessel control console"
 	shuttle_tag = "Ninja"
@@ -150,12 +152,14 @@
 	name = "vessel control console"
 	shuttle_tag = "NDV Phantom"
 	req_one_access = list(access_cent_specops)
+*/
 
 /obj/machinery/computer/shuttle_control/multi/trade
 	name = "vessel control console"
 	shuttle_tag = "Trade"
 	req_one_access = list(access_trader)
 
+/*
 /obj/machinery/computer/shuttle_control/cruiser_shuttle
 	name = "cruiser shuttle control console"
 	shuttle_tag = "Cruiser Shuttle"
