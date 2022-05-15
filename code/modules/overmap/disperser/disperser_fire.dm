@@ -37,7 +37,7 @@
 			continue
 		shake_camera(M, 25)
 		if(!isdeaf(M))
-			M << sound('sound/soundbytes/effects/explosionfar.ogg', volume=10)
+			M << sound('sound/soundbytes/effects/explosion/explosionfar.ogg', volume=10)
 
 	if(front) //Meanwhile front might have exploded
 		front.layer = ABOVE_JUNK_LAYER //So the beam goes below us. Looks a lot better

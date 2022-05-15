@@ -2,7 +2,7 @@
 /// Drinks.
 ////////////////////////////////////////////////////////////////////////////////
 //custom_open_sound is for a sound path to use instead of the default opening
-//example: custom_open_sound = 'sound/soundbytes/effects/explosion1.ogg'
+//example: custom_open_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 /obj/item/reagent_containers/food/drinks
 	name = "drink"
 	desc = "yummy"

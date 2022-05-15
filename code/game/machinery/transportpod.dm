@@ -27,7 +27,7 @@
 			build()
 			sleep(20) //Give explosion time so the pod itself doesn't go boom
 			src.forceMove(L)
-			playsound(src, pick('sound/soundbytes/effects/explosion1.ogg', 'sound/soundbytes/effects/explosion2.ogg', 'sound/soundbytes/effects/explosion3.ogg', 'sound/soundbytes/effects/explosion4.ogg'))
+			playsound(src, pick('sound/soundbytes/effects/explosion/explosion1.ogg', 'sound/soundbytes/effects/explosion/explosion2.ogg', 'sound/soundbytes/effects/explosion/explosion3.ogg', 'sound/soundbytes/effects/explosion/explosion4.ogg'))
 			in_transit = 0
 			sleep(2)
 			go_out()

@@ -357,7 +357,7 @@
 
 /obj/item/projectile/bullet/burstbullet
 	name = "exploding bullet"
-	fire_sound = 'sound/soundbytes/effects/explosion1.ogg'
+	fire_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 	damage = 20
 	embed_chance = 0
 	edge = 1
@@ -369,7 +369,7 @@
 
 /obj/item/projectile/bullet/burstbullet/service
 	name = "charge bullet"
-	fire_sound = 'sound/soundbytes/effects/explosion1.ogg'
+	fire_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 	damage = 20
 	embed_chance = 0
 	edge = 1

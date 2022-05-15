@@ -46,9 +46,9 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 				else if(dist <= far_dist)
 					far_volume += (dist <= far_dist * 0.5 ? 50 : 0) // add 50 volume if the mob is pretty close to the explosion
 					if(creaking_explosion)
-						M.playsound_local(epicenter, list('sound/soundbytes/effects/explosioncreak1.ogg','sound/soundbytes/effects/explosioncreak2.ogg'), far_volume, 1, frequency, falloff = 2)
+						M.playsound_local(epicenter, list('sound/soundbytes/effects/explosion/explosioncreak1.ogg','sound/soundbytes/effects/explosion/explosioncreak2.ogg'), far_volume, 1, frequency, falloff = 2)
 					else
-						M.playsound_local(epicenter, 'sound/soundbytes/effects/explosionfar.ogg', far_volume, 1, frequency, falloff = 2)
+						M.playsound_local(epicenter, 'sound/soundbytes/effects/explosion/explosionfar.ogg', far_volume, 1, frequency, falloff = 2)
 
 				var/close = range(world.view+round(devastation_range,1), epicenter)
 				if(!(M in close))
@@ -57,11 +57,11 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 						if(!istype(M.loc,/turf/space))
 							if(creaking_explosion)
 								if(prob(65))
-									SEND_SOUND(M, sound('sound/soundbytes/effects/explosioncreak1.ogg'))
+									SEND_SOUND(M, sound('sound/soundbytes/effects/explosion/explosioncreak1.ogg'))
 								else
-									SEND_SOUND(M, sound('sound/soundbytes/effects/explosioncreak2.ogg'))
+									SEND_SOUND(M, sound('sound/soundbytes/effects/explosion/explosioncreak2.ogg'))
 							else
-								SEND_SOUND(M, sound('sound/soundbytes/effects/explosionfar.ogg'))
+								SEND_SOUND(M, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 
 				if(creaking_explosion)
 					addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, 'sound/effects/creak1.ogg', null, null, null, null, 0), 5 SECONDS)
