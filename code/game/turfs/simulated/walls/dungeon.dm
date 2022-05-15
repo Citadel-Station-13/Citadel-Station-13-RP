@@ -23,19 +23,27 @@
 	var/base_state = "bedrock"
 	block_tele = TRUE
 
-/turf/simulated/wall/solidrock/update_icon()
-	for(var/direction in GLOB.cardinal)
-		var/turf/T = get_step(src,direction)
-		if(istype(T) && !T.density)
-			var/place_dir = turn(direction, 180)
-			if(!mining_overlay_cache["rock_side_[place_dir]"])
-				mining_overlay_cache["rock_side_[place_dir]"] = image('icons/turf/walls.dmi', "rock_side", dir = place_dir)
-			T.add_overlay(mining_overlay_cache["rock_side_[place_dir]"])
+/turf/simulated/wall/solidrock/find_type_in_direction(direction)
+	var/turf/T = get_step(src, direction)
+	if(!T)
+		return NULLTURF_BORDER
+	return T.density? ADJ_FOUND : NO_ADJ_FOUND
+
+/turf/simulated/wall/solidrock/custom_smooth(dirs)
+	smoothing_junction = dirs
+
+	if(!(smoothing_junction & NORTH_JUNCTION))
+		add_overlay(get_cached_rock_border("rock_side", NORTH, 'icons/turf/walls.dmi', "rock_side"))
+	if(!(smoothing_junction & SOUTH_JUNCTION))
+		add_overlay(get_cached_rock_border("rock_side", SOUTH, 'icons/turf/walls.dmi', "rock_side"))
+	if(!(smoothing_junction & EAST_JUNCTION))
+		add_overlay(get_cached_rock_border("rock_side", EAST, 'icons/turf/walls.dmi', "rock_side"))
+	if(!(smoothing_junction & WEST_JUNCTION))
+		add_overlay(get_cached_rock_border("rock_side", WEST, 'icons/turf/walls.dmi', "rock_side"))
 
 /turf/simulated/wall/solidrock/Initialize(mapload)
 	. = ..()
 	icon_state = base_state
-	update_icon(1)		// TODO: /tg/ icon smoothing
 
 /turf/simulated/wall/solidrock/attackby()
 	return
