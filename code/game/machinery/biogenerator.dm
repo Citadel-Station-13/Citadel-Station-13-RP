@@ -144,10 +144,10 @@
 
 	if(user.put_in_hands(beaker))
 		if(!silent)
-			to_chat(user, span_notice("You eject [beaker] from [src]."))
+			to_chat(user, SPAN_NOTICE("You eject [beaker] from [src]."))
 	else
 		if(!silent)
-			to_chat(user, span_notice("You eject [beaker] from [src] onto the ground."))
+			to_chat(user, SPAN_NOTICE("You eject [beaker] from [src] onto the ground."))
 		beaker.forceMove(drop_location())
 
 	beaker = null
