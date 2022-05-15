@@ -1,38 +1,38 @@
 // Flags for the item_flags var on /obj/item
 /*
-#define BEING_REMOVED						(1<<0)
+#define BEING_REMOVED			(1<<0)
 */
 ///is this item equipped into an inventory slot or hand of a mob? used for tooltips
-#define IN_INVENTORY						(1<<1)
+#define IN_INVENTORY			(1<<1)
 /*
 ///used for tooltips
-#define FORCE_STRING_OVERRIDE				(1<<2)
+#define FORCE_STRING_OVERRIDE	(1<<2)
 ///Used by security bots to determine if this item is safe for public use.
-#define NEEDS_PERMIT						(1<<3)
-#define SLOWS_WHILE_IN_HAND					(1<<4)
+#define NEEDS_PERMIT			(1<<3)
+#define SLOWS_WHILE_IN_HAND		(1<<4)
 ///Stops you from putting things like an RCD or other items into an ORM or protolathe for materials.
-#define NO_MAT_REDEMPTION					(1<<5)
+#define NO_MAT_REDEMPTION		(1<<5)
 */
 ///When dropped, it calls qdel on itself
-#define DROPDEL								(1<<6)
-/*
+#define DROPDEL					(1<<6)
+
 ///when an item has this it produces no "X has been hit by Y with Z" message in the default attackby()
-#define NOBLUDGEON							(1<<7)
+////#define NOBLUDGEON			(1<<7)
 ///for all things that are technically items but used for various different stuff
-#define ABSTRACT							(1<<8)
+#define ABSTRACT				(1<<8)
 ///When players should not be able to change the slowdown of the item (Speed potions, ect)
-#define IMMUTABLE_SLOW          			(1<<9)
+#define IMMUTABLE_SLOW			(1<<9)
 ///Tool commonly used for surgery: won't attack targets in an active surgical operation on help intent (in case of mistakes)
-#define SURGICAL_TOOL						(1<<10)
+#define SURGICAL_TOOL			(1<<10)
 ///Can be worn on certain slots (currently belt and id) that would otherwise require an uniform.
-#define NO_UNIFORM_REQUIRED					(1<<11)
+#define NO_UNIFORM_REQUIRED		(1<<11)
 /// This item can be used to parry. Only a basic check used to determine if we should proceed with parry chain at all.
-#define ITEM_CAN_PARRY						(1<<12)
+#define ITEM_CAN_PARRY			(1<<12)
 /// This item can be used in the directional blocking system. Only a basic check used to determine if we should proceed with directional block handling at all.
-#define ITEM_CAN_BLOCK						(1<<13)
+#define ITEM_CAN_BLOCK			(1<<13)
 /// is this item in a storage component?
-#define IN_STORAGE							(1<<14)
-*/
+#define IN_STORAGE				(1<<14)
+
 
 // Flags for the clothing_flags var on /obj/item/clothing
 /*

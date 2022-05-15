@@ -25,7 +25,7 @@
 		log_misc("Downloading updated ToR data...")
 		var/http[] = world.Export("https://check.torproject.org/exit-addresses")
 
-		var/list/rawlist = file2list(http["CONTENT"])
+		var/list/rawlist = world.file2list(http["CONTENT"])
 		if(rawlist.len)
 			fdel(TORFILE)
 			var/savefile/F = new(TORFILE)

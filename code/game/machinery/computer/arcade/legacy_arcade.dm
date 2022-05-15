@@ -1,9 +1,8 @@
-/obj/machinery/computer/arcade/
+/obj/machinery/computer/arcade
 	name = "random arcade"
 	desc = "random arcade machine"
-	icon_state = "arcade"
+	icon_state = "arcade1"
 	icon_keyboard = null
-	icon_screen = "invaders"
 	clicksound = null // Gets too spammy and makes no sense for arcade to have the console keyboard noise anyway
 	var/list/prizes = list(
 		/obj/item/storage/box/snappops					= 2,
@@ -35,37 +34,41 @@
 		/obj/item/clothing/head/cowboy_hat/small		= 2,
 		/obj/item/toy/stickhorse						= 2
 		)
+	/// Holds instanced objects, intended for admins to shove surprises inside or something.
+	var/list/special_prizes = list()
+
 
 /obj/machinery/computer/arcade/Initialize(mapload)
 	. = ..()
 	// If it's a generic arcade machine, pick a random arcade
 	// circuit board for it and make the new machine
 	if(!circuit)
-		var/choice = pick(typesof(/obj/item/circuitboard/arcade) - /obj/item/circuitboard/arcade)
+		var/choice = pick(subtypesof(/obj/item/circuitboard/arcade) - /obj/item/circuitboard/arcade/clawmachine)
 		var/obj/item/circuitboard/CB = new choice()
 		new CB.build_path(loc, CB)
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 /obj/machinery/computer/arcade/proc/prizevend()
-	if(!(contents-circuit).len)
+	if(LAZYLEN(special_prizes))
+		var/atom/movable/AM = pick_n_take(special_prizes)
+		AM.forceMove(get_turf(src))
+		special_prizes -= AM
+
+	else if(LAZYLEN(prizes))
 		var/prizeselect = pickweight(prizes)
 		new prizeselect(src.loc)
 
 		if(istype(prizeselect, /obj/item/clothing/suit/syndicatefake)) //Helmet is part of the suit
 			new	/obj/item/clothing/head/syndicatefake(src.loc)
 
-	else
-		var/atom/movable/prize = pick(contents-circuit)
-		prize.loc = src.loc
-
-/obj/machinery/computer/arcade/attack_ai(mob/user as mob)
+/obj/machinery/computer/arcade/attack_ai(mob/user)
 	return attack_hand(user)
-
 
 /obj/machinery/computer/arcade/emp_act(severity)
 	if(machine_stat & (NOPOWER|BROKEN))
 		..(severity)
 		return
+
 	var/empprize = null
 	var/num_of_prizes = 0
 	switch(severity)
@@ -88,9 +91,10 @@
 ///////////////////
 
 /obj/machinery/computer/arcade/battle
-	name = "arcade machine"
-	desc = "Does not support Pinball."
-	icon_state = "arcade"
+	name = "Battler"
+	desc = "Fight through what space has to offer!"
+	icon_state = "arcade2"
+	icon_screen = "battler"
 	circuit = /obj/item/circuitboard/arcade/battle
 	var/enemy_name = "Space Villian"
 	var/temp = "Winners don't use space drugs" //Temporary message, for attack messages, etc
@@ -103,8 +107,11 @@
 	var/blocked = 0 //Player cannot attack/heal while set
 	var/turtle = 0
 
-/obj/machinery/computer/arcade/battle/Initialize(mapload)
+/obj/machinery/computer/arcade/battle/Initialize()
 	. = ..()
+	randomize_characters()
+
+/obj/machinery/computer/arcade/battle/proc/randomize_characters()
 	var/name_action
 	var/name_part1
 	var/name_part2
@@ -118,21 +125,21 @@
 	name = (name_action + name_part1 + name_part2)
 
 
-/obj/machinery/computer/arcade/battle/attack_hand(mob/user as mob)
+/obj/machinery/computer/arcade/battle/attack_hand(mob/user)
 	if(..())
 		return
 	user.set_machine(src)
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/**
- *  Display the NanoUI window for the arcade machine.
- *
- *  See NanoUI documentation for details.
- */
-/obj/machinery/computer/arcade/battle/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	user.set_machine(src)
+/obj/machinery/computer/arcade/battle/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ArcadeBattle", name)
+		ui.open()
 
-	var/list/data = list()
+/obj/machinery/computer/arcade/battle/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
+	data["name"] = name
 	data["temp"] = temp
 	data["enemyAction"] = enemy_action
 	data["enemyName"] = enemy_name
@@ -141,55 +148,54 @@
 	data["enemyHP"] = enemy_hp
 	data["gameOver"] = gameover
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "arcade_battle.tmpl", src.name, 400, 300)
-		ui.set_initial_data(data)
-		ui.open()
-		//ui.set_auto_update(2)
+	return data
 
-/obj/machinery/computer/arcade/battle/Topic(href, href_list)
+/obj/machinery/computer/arcade/battle/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return 1
+		return TRUE
 
-	if (!blocked && !gameover)
-		if (href_list["attack"])
-			blocked = 1
-			var/attackamt = rand(2,6)
-			temp = "You attack for [attackamt] damage!"
-			if(turtle > 0)
-				turtle--
+	if(!blocked && !gameover)
+		switch(action)
+			if("attack")
+				blocked = 1
+				var/attackamt = rand(2,6)
+				temp = "You attack for [attackamt] damage!"
+				playsound(src, 'sound/arcade/hit.ogg', 50, TRUE, extrarange = -3, falloff = 0.1, ignore_walls = FALSE)
+				if(turtle > 0)
+					turtle--
 
-			sleep(10)
-			enemy_hp -= attackamt
-			arcade_action()
+				sleep(10)
+				enemy_hp -= attackamt
+				arcade_action()
 
-		else if (href_list["heal"])
-			blocked = 1
-			var/pointamt = rand(1,3)
-			var/healamt = rand(6,8)
-			temp = "You use [pointamt] magic to heal for [healamt] damage!"
-			turtle++
+			if("heal")
+				blocked = 1
+				var/pointamt = rand(1,3)
+				var/healamt = rand(6,8)
+				temp = "You use [pointamt] magic to heal for [healamt] damage!"
+				playsound(src, 'sound/arcade/heal.ogg', 50, TRUE, extrarange = -3, falloff = 0.1, ignore_walls = FALSE)
+				turtle++
 
-			sleep(10)
-			player_mp -= pointamt
-			player_hp += healamt
-			blocked = 1
-			arcade_action()
+				sleep(10)
+				player_mp -= pointamt
+				player_hp += healamt
+				blocked = 1
+				arcade_action()
 
-		else if (href_list["charge"])
-			blocked = 1
-			var/chargeamt = rand(4,7)
-			temp = "You regain [chargeamt] points"
-			player_mp += chargeamt
-			if(turtle > 0)
-				turtle--
+			if("charge")
+				blocked = 1
+				var/chargeamt = rand(4,7)
+				temp = "You regain [chargeamt] points"
+				playsound(src, 'sound/arcade/mana.ogg', 50, TRUE, extrarange = -3, falloff = 0.1, ignore_walls = FALSE)
+				player_mp += chargeamt
+				if(turtle > 0)
+					turtle--
 
-			sleep(10)
-			arcade_action()
+				sleep(10)
+				arcade_action()
 
 
-	else if (href_list["newgame"]) //Reset everything
+	if(action == "newgame") //Reset everything
 		temp = "New Round"
 		player_hp = 30
 		player_mp = 10
@@ -199,11 +205,11 @@
 		turtle = 0
 
 		if(emagged)
-			src.New()
+			randomize_characters()
 			emagged = 0
 
-	SSnanoui.update_uis(src)
-	return
+	add_fingerprint(usr)
+	return TRUE
 
 /obj/machinery/computer/arcade/battle/proc/arcade_action()
 	if ((enemy_mp <= 0) || (enemy_hp <= 0))
@@ -217,7 +223,7 @@
 				new /obj/item/clothing/head/collectable/petehat(src.loc)
 				message_admins("[key_name_admin(usr)] has outbombed Cuban Pete and been awarded a bomb.")
 				log_game("[key_name_admin(usr)] has outbombed Cuban Pete and been awarded a bomb.")
-				src.New()
+				randomize_characters()
 				emagged = 0
 			else if(!contents.len)
 				feedback_inc("arcade_win_normal")
@@ -314,7 +320,8 @@
 /obj/machinery/computer/arcade/orion_trail
 	name = "The Orion Trail"
 	desc = "Learn how our ancestors got to Orion, and have fun in the process!"
-	icon_state = "arcade"
+	icon_state = "arcade1"
+	icon_screen = "orion"
 	circuit = /obj/item/circuitboard/arcade/orion_trail
 	var/busy = 0 //prevent clickspam that allowed people to ~speedrun~ the game.
 	var/engine = 0
@@ -327,15 +334,16 @@
 	var/eventdat = null
 	var/event = null
 	var/list/settlers = list("Harry","Larry","Bob")
-	var/list/events = list(ORION_TRAIL_RAIDERS		= 3,
-						   ORION_TRAIL_FLUX			= 1,
-						   ORION_TRAIL_ILLNESS		= 3,
-						   ORION_TRAIL_BREAKDOWN	= 2,
-						   ORION_TRAIL_MUTINY		= 3,
-						   ORION_TRAIL_MALFUNCTION	= 2,
-						   ORION_TRAIL_COLLISION	= 1,
-						   ORION_TRAIL_SPACEPORT	= 2
-						   )
+	var/list/events = list(
+		ORION_TRAIL_RAIDERS     = 3,
+		ORION_TRAIL_FLUX        = 1,
+		ORION_TRAIL_ILLNESS     = 3,
+		ORION_TRAIL_BREAKDOWN   = 2,
+		ORION_TRAIL_MUTINY      = 3,
+		ORION_TRAIL_MALFUNCTION = 2,
+		ORION_TRAIL_COLLISION   = 1,
+		ORION_TRAIL_SPACEPORT   = 2
+		)
 	var/list/stops = list()
 	var/list/stopblurbs = list()
 	var/traitors_aboard = 0
