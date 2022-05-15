@@ -1,9 +1,9 @@
-/obj/structure/bed/chair //YES, chairs are a type of bed, which are a type of stool. This works, believe me. -Pete
+/obj/structure/bed/chair	//YES, chairs are a type of bed, which are a type of stool. This works, believe me.	-Pete
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
-	icon = 'icons/obj/chairs.dmi'
-	icon_state = "chair_greyscale"
-	color = "#878687"
+	icon = 'icons/obj/furniture_vr.dmi' //VOREStation Edit - Using Eris furniture
+	icon_state = "chair_preview"
+	color = "#666666"
 	base_icon = "chair"
 	buckle_dir = 0
 	buckle_lying = 0 //force people to sit up in chairs when buckled
@@ -88,13 +88,14 @@
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "shuttle_chair"
+	color = null
 	base_icon = "shuttle_chair"
-	applies_material_colour = FALSE
+	applies_material_colour = 0
 
 // Leaving this in for the sake of compilation.
 /obj/structure/bed/chair/comfy
 	desc = "It's a chair. It looks comfy."
-	icon_state = "comfychair"
+	icon_state = "comfychair_preview"
 
 /obj/structure/bed/chair/comfy/brown/Initialize(mapload, newmaterial)
 	return ..(mapload, "steel", "leather")
@@ -420,7 +421,6 @@
 /obj/structure/bed/chair/apidean
 	name = "\improper Apidean throne"
 	desc = "This waxy chair is designed to allow creatures with insectoid abdomens to lounge comfortably. Typically reserved for the Apidean upper class."
-	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "queenthrone"
 	base_icon = "queenthrone"
 
@@ -431,7 +431,6 @@
 /obj/structure/bed/chair/apidean_stool
 	name = "\improper Apidean stool"
 	desc = "A specially crafted stool made out of hardened wax. Often found on Apidean colonies and vessels."
-	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "stool_apidean"
 	base_icon = "stool_apidean"
 
