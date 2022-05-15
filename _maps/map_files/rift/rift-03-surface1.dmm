@@ -212,6 +212,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
+"aC" = (
+/obj/structure/metal_edge,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "aE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/table/rack/shelf/steel,
@@ -26162,6 +26169,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
+"WB" = (
+/obj/structure/metal_edge,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "WC" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 4;
@@ -35907,7 +35921,7 @@ wP
 NM
 De
 al
-pF
+aC
 aa
 aa
 xe
@@ -36489,7 +36503,7 @@ wP
 am
 GV
 wP
-pF
+WB
 aa
 aa
 xe

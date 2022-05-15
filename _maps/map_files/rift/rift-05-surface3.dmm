@@ -1492,7 +1492,7 @@
 "cA" = (
 /obj/structure/sign/warning/secure_area,
 /turf/simulated/wall/r_wall,
-/area/ai)
+/area/ai_upload)
 "cB" = (
 /obj/structure/closet/emcloset,
 /obj/structure/cable/green{
@@ -1852,7 +1852,7 @@
 "dm" = (
 /obj/structure/sign/warning/lethal_turrets,
 /turf/simulated/wall/r_wall,
-/area/ai)
+/area/ai_upload)
 "dn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4906,6 +4906,7 @@
 "iF" = (
 /obj/machinery/telecomms/broadcaster/preset_right/rift,
 /obj/machinery/alarm/nobreach{
+	alarms_hidden = 1;
 	dir = 4;
 	pixel_x = -24;
 	target_temperature = 91
@@ -14460,7 +14461,6 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
 "Bp" = (
-/obj/machinery/washing_machine,
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
@@ -14476,6 +14476,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 9
 	},
+/obj/machinery/gear_painter,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "Bq" = (
@@ -18524,6 +18525,13 @@
 /obj/machinery/camera/network/command{
 	dir = 9
 	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "AICore";
+	name = "AI Bunker Access";
+	pixel_x = 26;
+	pixel_y = -6
+	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "JK" = (
@@ -19443,6 +19451,10 @@
 "LA" = (
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
+"LB" = (
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "LC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -51449,9 +51461,9 @@ BL
 BL
 rP
 rP
-rP
+cA
 wx
-rP
+dm
 rP
 rP
 BL
@@ -52038,7 +52050,7 @@ CZ
 rP
 BL
 YF
-aA
+LB
 vv
 aA
 YF
@@ -52419,9 +52431,9 @@ YF
 HT
 HT
 HT
-cA
+HT
 aT
-dm
+HT
 HT
 HT
 HT
