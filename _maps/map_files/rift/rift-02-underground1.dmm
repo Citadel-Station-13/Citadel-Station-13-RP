@@ -2794,7 +2794,8 @@
 	dir = 1
 	},
 /obj/machinery/door/window{
-	dir = 1
+	dir = 1;
+	req_one_access = list(10)
 	},
 /obj/item/folder/yellow,
 /obj/item/pen/red,
@@ -2995,7 +2996,9 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/door/window/northright,
+/obj/machinery/door/window/northright{
+	req_one_access = list(10)
+	},
 /obj/item/packageWrap,
 /obj/item/hand_labeler,
 /obj/machinery/door/firedoor/glass/hidden{
@@ -5022,7 +5025,8 @@
 /area/engineering/atmos/hallway)
 "jl" = (
 /obj/machinery/door/window{
-	dir = 2
+	dir = 2;
+	req_one_access = list(10)
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/secondary/engineering_hallway)
@@ -5088,7 +5092,8 @@
 /area/hallway/secondary/engineering_hallway)
 "js" = (
 /obj/machinery/door/window/northright{
-	dir = 2
+	dir = 2;
+	req_one_access = list(10)
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/secondary/engineering_hallway)
