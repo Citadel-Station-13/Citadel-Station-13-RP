@@ -30,7 +30,6 @@
 	var/log_runtime = 0					// logs world.log to a file
 	var/log_world_output = 0			// log world.log << messages
 	var/log_topic = TRUE
-	var/sql_enabled = 0					// for sql switching
 	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc colour
 	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
@@ -333,9 +332,6 @@
 
 				if ("log_access")
 					config_legacy.log_access = 1
-
-				if ("sql_enabled")
-					config_legacy.sql_enabled = 1
 
 				if ("log_say")
 					config_legacy.log_say = 1
