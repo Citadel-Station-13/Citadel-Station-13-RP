@@ -6553,29 +6553,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
 "lB" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
-	frequency = 1379;
-	scrub_id = "trade_airlock_scrubber"
-	},
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/plating,
 /turf/simulated/floor/tiled/steel_grid,
-/area/rift/trade_shop/landing_pad)
+/turf/space/basic,
+/area/bridge/bunker)
 "lC" = (
 /turf/simulated/floor/tiled/white,
 /area/bridge/bunker)
@@ -11335,12 +11319,6 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "vm" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/machinery/door/airlock{
 	id_tag = "combunker3";
 	name = "Bunker Bedroom 3"
@@ -11350,7 +11328,7 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /turf/simulated/floor/wood,
-/area/rift/surfacebase/outside/outside3)
+/area/bridge/bunker)
 "vn" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
