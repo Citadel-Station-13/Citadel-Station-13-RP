@@ -7170,6 +7170,9 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/loading)
 "nR" = (
