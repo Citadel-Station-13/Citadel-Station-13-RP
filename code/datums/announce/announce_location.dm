@@ -26,3 +26,6 @@
  */
 /datum/announce_location/proc/get_affected_levels()
 	return list()
+
+/datum/announce_location/proc/render_proper_possessive_name()
+	return "A"

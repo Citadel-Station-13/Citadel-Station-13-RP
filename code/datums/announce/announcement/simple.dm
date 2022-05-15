@@ -4,7 +4,7 @@
  *
  * @params
  * - announcer - announcer to use
- * - source - message source
+ * - source - message source (not all announcers support this)
  * - name - name of report
  * - message - message body. supports HTML.
  * - sound_preamble - preamble sound, if any - either a sound datum, soundbyte, or soundbyte alias
@@ -18,14 +18,14 @@
 /**
  * simple one-off announcement
  * supports:
- * - source
- * - name
- * - message
+ * - source - e.g. "Central Command Update", "ATC Proximity Alert", etc. Not all announcers support this.
+ * - name - e.g. "Research Director's Desk", "Bridge Announcement", etc
+ * - message - etc. "Unidentified ship detected"
  * - preamble soundbyte
  * - announcement sonud
  */
 /datum/announcement/simple
-	/// announcer source - e.g. "Facility PA"
+	/// announcer source - e.g. "Central Command Update", "Facility Update", "Facility PA", etc
 	var/source
 	/// announcer topic - e.g. "Research Director's Desk", "Bridge Announcement", "ATC Proximity Alert"
 	var/name

@@ -11,3 +11,6 @@
 
 /datum/announce_location/overmap_sector/get_affected_levels()
 	return sector?.map_z.Copy() || list()
+
+/datum/announce_location/overmap_sector/render_proper_possessive_name()
+	return "The [sector]'s"
