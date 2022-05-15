@@ -1,7 +1,8 @@
 #define REGULATE_NONE	0
-#define REGULATE_INPUT	1	//shuts off when input side is below the target pressure
-#define REGULATE_OUTPUT	2	//shuts off when output side is above the target pressure
-
+///shuts off when input side is below the target pressure
+#define REGULATE_INPUT	1
+///shuts off when output side is above the target pressure
+#define REGULATE_OUTPUT	2
 /obj/machinery/atmospherics/component/binary/passive_gate
 	icon = 'icons/atmos/passive_gate.dmi'
 	icon_state = "map"
@@ -177,7 +178,7 @@
 	ui_interact(user)
 
 /obj/machinery/atmospherics/component/binary/passive_gate/ui_interact(mob/user, datum/tgui/ui)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return FALSE
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

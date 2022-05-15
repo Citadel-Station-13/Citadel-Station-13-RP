@@ -1,5 +1,5 @@
-#define DOCK_ATTEMPT_TIMEOUT 200	// How long in ticks we wait before assuming the docking controller is broken or blown up.
-
+/// How long in ticks we wait before assuming the docking controller is broken or blown up.
+#define DOCK_ATTEMPT_TIMEOUT 200
 // Subtype of shuttle that handles docking with docking controllers
 // Consists of code pulled down from the old /datum/shuttle and up from /datum/shuttle/ferry
 // Note: Since all known shuttles extend this type, this really could just be built into /datum/shuttle

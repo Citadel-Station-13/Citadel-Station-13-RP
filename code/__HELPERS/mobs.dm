@@ -289,7 +289,7 @@ Proc for attack log creation, because really why not
 
 	return living
 
-/atom/proc/human_mobs(var/range = world.view)
+/atom/proc/human_mobs(range = world.view)
 	var/list/viewers = oviewers(src,range)
 	var/list/humans = list()
 	for(var/mob/living/carbon/human/H in viewers)
@@ -297,7 +297,7 @@ Proc for attack log creation, because really why not
 
 	return humans
 
-/proc/cached_character_icon(var/mob/desired)
+/proc/cached_character_icon(mob/desired)
 	var/cachekey = "\ref[desired][desired.real_name]"
 
 	if(cached_character_icons[cachekey])

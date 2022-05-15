@@ -34,15 +34,15 @@
 
 // called whenever the power settings of the containing area change
 // by default, check equipment channel & set/clear NOPOWER flag
-// Returns TRUE if NOPOWER stat flag changed.
+// Returns TRUE if NOPOWER machine_stat flag changed.
 // can override if needed
 /obj/machinery/proc/power_change()
-	var/oldstat = stat
+	var/oldstat = machine_stat
 	if(powered(power_channel))
-		stat &= ~NOPOWER
+		machine_stat &= ~NOPOWER
 	else
-		stat |= NOPOWER
-	return (stat != oldstat)
+		machine_stat |= NOPOWER
+	return (machine_stat != oldstat)
 
 // Get the amount of power this machine will consume each cycle.  Override by experts only!
 /obj/machinery/proc/get_power_usage()

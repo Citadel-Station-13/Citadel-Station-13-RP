@@ -92,7 +92,7 @@
 	inturf = get_step(src, dir)
 	locate_machinery()
 	if(!turbine)
-		stat |= BROKEN
+		machine_stat |= BROKEN
 
 // When anchored, don't let air past us.
 /obj/machinery/compressor/CanZASPass(turf/T, is_zone)
@@ -137,15 +137,15 @@
 			locate_machinery()
 			if(turbine)
 				to_chat(user, "<span class='notice'>Turbine connected.</span>")
-				stat &= ~BROKEN
+				machine_stat &= ~BROKEN
 			else
 				to_chat(user, "<span class='alert'>Turbine not connected.</span>")
-				stat |= BROKEN
+				machine_stat |= BROKEN
 
 /obj/machinery/compressor/process(delta_time)
 	if(!turbine)
-		stat = BROKEN
-	if(stat & BROKEN || panel_open)
+		machine_stat = BROKEN
+	if(machine_stat & BROKEN || panel_open)
 		return
 	if(!starter)
 		return
@@ -162,7 +162,7 @@
 	// RPM function to include compression friction - be advised that too low/high of a compfriction value can make things screwy
 	rpm = max(0, rpm - (rpm*rpm)/(COMPFRICTION*efficiency))
 
-	if(starter && !(stat & NOPOWER))
+	if(starter && !(machine_stat & NOPOWER))
 		use_power(2800)
 		if(rpm<1000)
 			rpmtarget = 1000
@@ -199,7 +199,7 @@
 	outturf = get_step(src, dir)
 	locate_machinery()
 	if(!compressor)
-		stat |= BROKEN
+		machine_stat |= BROKEN
 
 /obj/machinery/power/turbine/RefreshParts()
 	var/P = 0
@@ -235,15 +235,15 @@
 			locate_machinery()
 			if(compressor)
 				to_chat(user, "<span class='notice'>Compressor connected.</span>")
-				stat &= ~BROKEN
+				machine_stat &= ~BROKEN
 			else
 				to_chat(user, "<span class='alert'>Compressor not connected.</span>")
-				stat |= BROKEN
+				machine_stat |= BROKEN
 
 /obj/machinery/power/turbine/process(delta_time)
 	if(!compressor)
-		stat = BROKEN
-	if((stat & BROKEN) || panel_open)
+		machine_stat = BROKEN
+	if((machine_stat & BROKEN) || panel_open)
 		return
 	if(!compressor.starter)
 		return
@@ -280,7 +280,7 @@
 	src.interact(user)
 
 /obj/machinery/power/turbine/interact(mob/user)
-	if(!Adjacent(user)  || (stat & (NOPOWER|BROKEN)) && !issilicon(user))
+	if(!Adjacent(user)  || (machine_stat & (NOPOWER|BROKEN)) && !issilicon(user))
 		user.unset_machine(src)
 		user << browse(null, "window=turbine")
 		return
@@ -326,11 +326,11 @@
 /obj/machinery/computer/turbine_computer/proc/locate_machinery()
 	if(!id)
 		return
-	for(var/obj/machinery/compressor/C in machines)
+	for(var/obj/machinery/compressor/C in GLOB.machines)
 		if(C.comp_id == id)
 			compressor = C
 	LAZYINITLIST(doors)
-	for(var/obj/machinery/door/blast/P in machines)
+	for(var/obj/machinery/door/blast/P in GLOB.machines)
 		if(P.id == id)
 			doors += P
 
@@ -352,8 +352,8 @@
 /obj/machinery/computer/turbine_computer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/list/data = list()
 	data["connected"] = (compressor && compressor.turbine) ? TRUE : FALSE
-	data["compressor_broke"] = (!compressor || (compressor.stat & BROKEN)) ? TRUE : FALSE
-	data["turbine_broke"] = (!compressor || !compressor.turbine || (compressor.turbine.stat & BROKEN)) ? TRUE : FALSE
+	data["compressor_broke"] = (!compressor || (compressor.machine_stat & BROKEN)) ? TRUE : FALSE
+	data["turbine_broke"] = (!compressor || !compressor.turbine || (compressor.turbine.machine_stat & BROKEN)) ? TRUE : FALSE
 	data["broken"] = (data["compressor_broke"] || data["turbine_broke"])
 	data["door_status"] = door_status ? TRUE : FALSE
 	if(compressor && compressor.turbine)

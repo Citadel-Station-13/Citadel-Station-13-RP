@@ -412,7 +412,7 @@ var/list/ai_verbs_default = list(
 
 	// hack to display shuttle timer
 	if(SSemergencyshuttle.online())
-		var/obj/machinery/computer/communications/C = locate() in machines
+		var/obj/machinery/computer/communications/C = locate() in GLOB.machines
 		if(C)
 			C.post_status("shuttle")
 

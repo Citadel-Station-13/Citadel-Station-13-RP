@@ -81,13 +81,13 @@
 		backwards = turn(dir, 180)
 
 /obj/machinery/conveyor/proc/update()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "conveyor-broken"
 		operating = OFF
 		return
 	if(!operable)
 		operating = OFF
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		operating = OFF
 	if(operating)
 		for(var/atom/movable/AM in loc)
@@ -96,8 +96,8 @@
 
 	// machine process
 	// move items to the target location
-/obj/machinery/conveyor/process()
-	if(stat & (BROKEN | NOPOWER))
+/obj/machinery/conveyor/process(delta_time)
+	if(machine_stat & (BROKEN | NOPOWER))
 		return
 	if(!operating)
 		return
@@ -142,7 +142,7 @@
 				to_chat(user, "No input found. Please hang up and try your call again.")
 				return
 			id = input
-			for(var/obj/machinery/conveyor_switch/C in machines)
+			for(var/obj/machinery/conveyor_switch/C in GLOB.machines)
 				if(C.id == id)
 					C.conveyors |= src
 			return
@@ -172,7 +172,7 @@
 // make the conveyor broken
 // also propagate inoperability to any connected conveyor with the same ID
 /obj/machinery/conveyor/proc/broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update()
 
 	var/obj/machinery/conveyor/C = locate() in get_step(src, dir)
@@ -229,7 +229,7 @@
 
 /obj/machinery/conveyor_switch/LateInitialize()
 	conveyors = list()
-	for(var/obj/machinery/conveyor/C in machines)
+	for(var/obj/machinery/conveyor/C in GLOB.machines)
 		if(C.id == id)
 			conveyors += C
 
@@ -277,7 +277,7 @@
 	update()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/machinery/conveyor_switch/S in machines)
+	for(var/obj/machinery/conveyor_switch/S in GLOB.machines)
 		if(S.id == src.id)
 			S.position = position
 			S.update()
@@ -308,7 +308,7 @@
 				return
 			id = input
 			conveyors = list() // Clear list so they aren't double added.
-			for(var/obj/machinery/conveyor/C in machines)
+			for(var/obj/machinery/conveyor/C in GLOB.machines)
 				if(C.id == id)
 					conveyors += C
 			return
@@ -328,7 +328,7 @@
 	update()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/machinery/conveyor_switch/S in machines)
+	for(var/obj/machinery/conveyor_switch/S in GLOB.machines)
 		if(S.id == src.id)
 			S.position = position
 			S.update()

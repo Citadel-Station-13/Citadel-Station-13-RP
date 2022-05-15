@@ -1,9 +1,9 @@
-/obj/structure/bed/chair	//YES, chairs are a type of bed, which are a type of stool. This works, believe me.	-Pete
+/obj/structure/bed/chair //YES, chairs are a type of bed, which are a type of stool. This works, believe me. -Pete
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
-	icon = 'icons/obj/furniture_vr.dmi' //VOREStation Edit - Using Eris furniture
-	icon_state = "chair_preview"
-	color = "#666666"
+	icon = 'icons/obj/chairs.dmi'
+	icon_state = "chair_greyscale"
+	color = "#878687"
 	base_icon = "chair"
 	buckle_dir = 0
 	buckle_lying = 0 //force people to sit up in chairs when buckled
@@ -17,12 +17,12 @@
 	. = ..()
 	update_layer()
 
-/obj/structure/bed/chair/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/chair/attackby(obj/item/W, mob/user)
 	..()
 	if(!padding_material && istype(W, /obj/item/assembly/shock_kit))
 		var/obj/item/assembly/shock_kit/SK = W
 		if(!SK.status)
-			to_chat(user, "<span class='notice'>\The [SK] is not ready to be attached!</span>")
+			to_chat(user, SPAN_NOTICE("\The [SK] is not ready to be attached!"))
 			return
 		user.drop_item()
 		var/obj/structure/bed/chair/e_chair/E = new (src.loc, material.name)
@@ -33,7 +33,7 @@
 		SK.master = E
 		qdel(src)
 
-/obj/structure/bed/chair/attack_tk(mob/user as mob)
+/obj/structure/bed/chair/attack_tk(mob/user)
 	if(has_buckled_mobs())
 		..()
 	else
@@ -88,14 +88,13 @@
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "shuttle_chair"
-	color = null
 	base_icon = "shuttle_chair"
-	applies_material_colour = 0
+	applies_material_colour = FALSE
 
 // Leaving this in for the sake of compilation.
 /obj/structure/bed/chair/comfy
 	desc = "It's a chair. It looks comfy."
-	icon_state = "comfychair_preview"
+	icon_state = "comfychair"
 
 /obj/structure/bed/chair/comfy/brown/Initialize(mapload, newmaterial)
 	return ..(mapload, "steel", "leather")
@@ -421,6 +420,7 @@
 /obj/structure/bed/chair/apidean
 	name = "\improper Apidean throne"
 	desc = "This waxy chair is designed to allow creatures with insectoid abdomens to lounge comfortably. Typically reserved for the Apidean upper class."
+	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "queenthrone"
 	base_icon = "queenthrone"
 
@@ -431,6 +431,7 @@
 /obj/structure/bed/chair/apidean_stool
 	name = "\improper Apidean stool"
 	desc = "A specially crafted stool made out of hardened wax. Often found on Apidean colonies and vessels."
+	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "stool_apidean"
 	base_icon = "stool_apidean"
 

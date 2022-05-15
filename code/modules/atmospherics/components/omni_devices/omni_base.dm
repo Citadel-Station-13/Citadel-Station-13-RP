@@ -3,7 +3,7 @@
 //--------------------------------------------
 /obj/machinery/atmospherics/component/quaternary
 	name = "omni device"
-	icon = 'icons/atmos/omni_devices_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/atmos/omni_devices_vr.dmi'
 	icon_state = "base"
 	use_power = USE_POWER_IDLE
 	initialize_directions = 0
@@ -48,7 +48,7 @@
 	build_icons()
 
 /obj/machinery/atmospherics/component/quaternary/update_icon()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		overlays = overlays_off
 	else if(error_check())
 		overlays = overlays_error
@@ -69,14 +69,14 @@
 	if(error_check())
 		update_use_power(USE_POWER_OFF)
 
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return 0
 	return 1
 
 /obj/machinery/atmospherics/component/quaternary/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/atmospherics/component/quaternary/attackby(var/obj/item/W as obj, var/mob/user as mob)

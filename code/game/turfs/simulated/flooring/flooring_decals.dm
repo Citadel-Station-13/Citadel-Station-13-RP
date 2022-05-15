@@ -1174,7 +1174,7 @@ var/list/floor_decals = list()
 	name = "grass edge"
 	icon_state = "grass_edge_corner"
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 
 /obj/effect/floor_decal/flesh
 	name = "flesh"

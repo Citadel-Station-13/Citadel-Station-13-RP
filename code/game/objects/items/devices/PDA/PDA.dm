@@ -893,7 +893,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 		if("Toggle Door")
 			if(cartridge && cartridge.access_remote_door)
-				for(var/obj/machinery/door/blast/M in machines)
+				for(var/obj/machinery/door/blast/M in GLOB.machines)
 					if(M.id == cartridge.remote_door_id)
 						if(M.density)
 							M.open()
@@ -1583,7 +1583,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		results = list(list("entry" = "pressure", "units" = "kPa", "val" = "0", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80))
 	return results
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /obj/item/pda/centcom
 	default_cartridge = /obj/item/cartridge/captain
 	icon_state = "pda-h"

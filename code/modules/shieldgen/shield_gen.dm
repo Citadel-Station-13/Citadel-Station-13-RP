@@ -95,12 +95,12 @@
 	return src.attack_hand(user)
 
 /obj/machinery/shield_gen/attack_hand(mob/user)
-	if(stat & (BROKEN))
+	if(machine_stat & (BROKEN))
 		return
 	interact(user)
 
 /obj/machinery/shield_gen/interact(mob/user)
-	if ( (get_dist(src, user) > 1 ) || (stat & (BROKEN)) )
+	if ( (get_dist(src, user) > 1 ) || (machine_stat & (BROKEN)) )
 		if (!istype(user, /mob/living/silicon))
 			user.unset_machine()
 			user << browse(null, "window=shield_generator")
@@ -264,7 +264,7 @@
 			to_chat(M, "[icon2html(thing = src, target = M)] You hear heavy droning fade out.")
 
 /obj/machinery/shield_gen/update_icon()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "broke"
 		set_light(0)
 	else

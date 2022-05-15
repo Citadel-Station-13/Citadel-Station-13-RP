@@ -4,8 +4,8 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool
 	name = "stool"
 	desc = "Apply butt."
-	icon = 'icons/obj/furniture_vr.dmi' //VOREStation Edit - new Icons
-	icon_state = "stool_preview" //set for the map
+	icon = 'icons/obj/chairs.dmi'
+	icon_state = "stool" //set for the map
 	force = 10
 	throwforce = 10
 	w_class = ITEMSIZE_HUGE
@@ -14,6 +14,7 @@ var/global/list/stool_cache = list() //haha stool
 	var/datum/material/padding_material
 
 /obj/item/stool/padded
+	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "stool_padded_preview" //set for the map
 
 /obj/item/stool/Initialize(mapload, new_material, new_padding_material)

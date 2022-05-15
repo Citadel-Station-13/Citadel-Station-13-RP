@@ -59,7 +59,7 @@
 		network2?.update = 1
 		last_flow_rate = last_power_draw = 0
 		return
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		last_flow_rate = last_power_draw = 0
 		return
 
@@ -123,7 +123,7 @@
 	return TRUE
 
 /obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_interact(mob/user, datum/tgui/ui)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return FALSE
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -187,4 +187,3 @@
 			. = TRUE
 
 	update_icon()
-

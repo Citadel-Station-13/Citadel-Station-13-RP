@@ -102,7 +102,7 @@
 		return
 	if (!W.is_wrench())
 		return ..()
-	if (!(stat & NOPOWER) && use_power)
+	if (!(machine_stat & NOPOWER) && use_power)
 		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
 		return 1
 	add_fingerprint(user)
@@ -128,7 +128,7 @@
 
 /obj/machinery/atmospherics/component/binary/heat_pump/process(delta_time)
 	update_icon()
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 
 	if(!air1 || !air2)

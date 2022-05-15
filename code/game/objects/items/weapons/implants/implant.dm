@@ -614,7 +614,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/compressed/islegal()
 	return 0
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /obj/item/implant/vrlanguage
 	name = "language"
 	desc = "Allows the user to understand and speak almost all known languages.."

@@ -1,5 +1,5 @@
-#define PROCESS_REACTION_ITER 5 //when processing a reaction, iterate this many times
-
+///when processing a reaction, iterate this many times
+#define PROCESS_REACTION_ITER 5
 /datum/reagents
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0

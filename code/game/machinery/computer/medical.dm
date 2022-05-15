@@ -1,9 +1,13 @@
-#define MED_DATA_R_LIST  2 //Record list
-#define MED_DATA_MAINT   3 //Records maintenance
-#define MED_DATA_RECORD  4 //Record
-#define MED_DATA_V_DATA  5 //Virus database
-#define MED_DATA_MEDIBOT 6 //Medibot monitor
-
+///Record list
+#define MED_DATA_R_LIST  2
+///Records maintenance
+#define MED_DATA_MAINT   3
+///Record
+#define MED_DATA_RECORD  4
+///Virus database
+#define MED_DATA_V_DATA  5
+///Medibot monitor
+#define MED_DATA_MEDIBOT 6
 #define FIELD(N, V, E) list(field = N, value = V, edit = E)
 #define MED_FIELD(N, V, E, LB) list(field = N, value = V, edit = E, line_break = LB)
 
@@ -464,7 +468,7 @@
 		SStgui.update_uis(src)
 
 /obj/machinery/computer/med_data/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 

@@ -4,8 +4,8 @@
 	icon_state = "mechfab"
 	density = TRUE
 	anchored = TRUE
-	var/metal_amount = 0
-	var/operating = 0
+	var/metal_amount = NONE
+	var/operating = FALSE
 	var/obj/item/robot_parts/being_built = null
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40

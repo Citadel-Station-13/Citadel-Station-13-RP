@@ -1,5 +1,5 @@
-#define EMITTER_DAMAGE_POWER_TRANSFER 500 //used to transfer power to containment field generators
-
+///used to transfer power to containment field generators
+#define EMITTER_DAMAGE_POWER_TRANSFER 500
 /obj/machinery/power/emitter
 	name = "emitter"
 	desc = "It is a heavy duty industrial laser."
@@ -99,7 +99,7 @@
 	return 1
 
 /obj/machinery/power/emitter/process(delta_time)
-	if(stat & (BROKEN))
+	if(machine_stat & (BROKEN))
 		return
 	if(src.state != 2 || (!powernet && active_power_usage))
 		src.active = 0

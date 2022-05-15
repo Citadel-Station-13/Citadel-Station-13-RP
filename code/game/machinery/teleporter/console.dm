@@ -161,7 +161,7 @@
 	. = ..()
 	if(!.)
 		return
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		clear_target()
 
 
