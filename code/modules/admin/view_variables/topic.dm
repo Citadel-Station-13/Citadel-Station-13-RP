@@ -441,7 +441,7 @@
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species", GLOB.all_species)
+		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species", GLOB.species_meta)
 
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")

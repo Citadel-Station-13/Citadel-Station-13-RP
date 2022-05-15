@@ -319,7 +319,7 @@
 			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
 			return
 /*
-		if(!is_alien_whitelisted(src, GLOB.all_species[client.prefs.species]))
+		if(!is_alien_whitelisted(src, GLOB.species_meta[client.prefs.species]))
 			src << alert("You are currently not whitelisted to play [client.prefs.species].")
 			return 0
 */
