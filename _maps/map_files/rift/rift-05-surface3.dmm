@@ -19751,12 +19751,6 @@
 /obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/cliff_south)
-"Mo" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/rift/trade_shop/landing_pad)
 "Mp" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/regular,
@@ -37585,7 +37579,7 @@ RZ
 qz
 jy
 kf
-Mo
+kf
 pZ
 mT
 Ji
