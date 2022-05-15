@@ -44,10 +44,6 @@ if grep -P '/turf[0-z/_]*,\n/turf' _maps/**/*.dmm; then
 	echo "FATAL: found multiple tiles on one tile, this will result in severe glitches."
 	st=1
 fi;
-if grep -P '^/turf/.+[\{]' _maps/**/*.dmm;	then
-    echo "ERROR: Vareditted /turf path use detected in maps, please replace with proper paths."
-    st=1
-fi;
 if grep -P '^/area/.+[\{]' _maps/**/*.dmm;	then
     echo "ERROR: Vareditted /area path use detected in maps, please replace with proper paths."
     st=1
