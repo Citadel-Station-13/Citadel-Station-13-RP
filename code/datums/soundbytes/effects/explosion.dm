@@ -2,10 +2,10 @@
 	name = "Explosion"
 	alias = SFX_ALIAS_EXPLOSION
 	path = list(
-		'sound/effects/Explosion1.ogg',
-		'sound/effects/Explosion2.ogg',
-		'sound/effects/Explosion3.ogg',
-		'sound/effects/Explosion4.ogg',
-		'sound/effects/Explosion5.ogg',
-		'sound/effects/Explosion6.ogg',
+		'sound/soundbytes/effects/explosion1.ogg',
+		'sound/soundbytes/effects/explosion2.ogg',
+		'sound/soundbytes/effects/explosion3.ogg',
+		'sound/soundbytes/effects/explosion4.ogg',
+		'sound/soundbytes/effects/explosion5.ogg',
+		'sound/soundbytes/effects/explosion6.ogg',
 	)

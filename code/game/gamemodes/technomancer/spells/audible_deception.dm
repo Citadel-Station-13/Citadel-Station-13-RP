@@ -19,7 +19,7 @@
 		"Blade Slice"			=	'sound/weapons/bladeslice.ogg',
 		"Energy Blade Slice"	=	'sound/weapons/blade1.ogg',
 		"Explosions"			=	SFX_ALIAS_EXPLOSION,
-		"Distant Explosion"		=	'sound/effects/explosionfar.ogg',
+		"Distant Explosion"		=	'sound/soundbytes/effects/explosionfar.ogg',
 		"Sparks"				=	"sparks",
 		"Punches"				=	"punch",
 		"Glass Shattering"		=	"shatter",

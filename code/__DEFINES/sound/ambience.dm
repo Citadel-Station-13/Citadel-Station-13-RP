@@ -131,8 +131,8 @@
 
 // Explosion sounds
 #define EXPLOSION_CREAKING list(\
-	'sound/effects/explosioncreak1.ogg',\
-	'sound/effects/explosioncreak2.ogg'\
+	'sound/soundbytes/effects/explosioncreak1.ogg',\
+	'sound/soundbytes/effects/explosioncreak2.ogg'\
 	)
 
 #define HULL_CREAKING list(\
