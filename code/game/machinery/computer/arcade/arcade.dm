@@ -59,8 +59,8 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		//SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "arcade", /datum/mood_event/arcade)
 		// if(prob(0.0001)) //1 in a million
 		// 	new /obj/item/gun/energy/pulse/prize(src)
-		// 	visible_message( \
-		// 		SPAN_NOTICE("[src] dispenses.. woah, a gun! Way past cool."), \
+		// 	visible_message(
+		// 		SPAN_NOTICE("[src] dispenses.. woah, a gun! Way past cool."),
 		// 		SPAN_NOTICE("You hear a chime and a shot."))
 		// 	//user.client.give_award(/datum/award/achievement/misc/pulse, user)
 		// 	return
