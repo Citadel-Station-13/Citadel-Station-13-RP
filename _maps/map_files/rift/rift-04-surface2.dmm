@@ -2615,8 +2615,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/down/supply{
 	dir = 8
 	},
-/obj/effect/ceiling,
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/trade_shop/loading)
 "fk" = (
 /obj/structure/catwalk,
@@ -9212,8 +9211,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/medical/reception)
 "rM" = (
-/obj/effect/ceiling,
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/trade_shop/loading)
 "rN" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -16518,7 +16516,6 @@
 /area/security/security_equiptment_storage)
 "FS" = (
 /obj/structure/table/rack/shelf,
-/obj/item/bluespace_harpoon,
 /obj/item/rig/hazmat/equipped,
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/window/reinforced{

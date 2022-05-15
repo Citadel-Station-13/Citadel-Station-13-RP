@@ -7,9 +7,10 @@
         "rift-03-surface1.dmm",
         "rift-04-surface2.dmm",
         "rift-05-surface3.dmm",
-        "rift-06-west_caves.dmm",
-        "rift-07-west_plains.dmm",
-        "rift-08-orbital.dmm"
+		"rift-06-west_base.dmm",
+        "rift-07-west_caves.dmm",
+        "rift-08-west_plains.dmm",
+        "rift-09-orbital.dmm"
    ],
    "traits":[
       {

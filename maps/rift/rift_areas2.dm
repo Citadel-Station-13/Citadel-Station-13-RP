@@ -671,6 +671,10 @@ Do this eventually. */
 	name = "Western Plains Caverns"
 	icon_state = "red"
 
+/area/rift/surfacebase/outside/west_base
+	name = "Western Plains Canyon"
+	icon_state = "blue"
+
 //Trade Pad/Shop
 /area/rift/trade_shop
 	name = "\improper Trade Shop"

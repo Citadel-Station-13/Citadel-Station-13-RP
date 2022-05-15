@@ -5,22 +5,23 @@
 #define Z_LEVEL_SURFACE_MID				5
 #define Z_LEVEL_SURFACE_HIGH			6
 
-#define Z_LEVEL_WEST_CAVERN				7
-#define Z_LEVEL_WEST_PLAIN				8
+#define Z_LEVEL_WEST_BASE				7
+#define Z_LEVEL_WEST_CAVERN				8
+#define Z_LEVEL_WEST_PLAIN				9
 
-#define Z_LEVEL_MISC					9
+#define Z_LEVEL_MISC					10
 
-#define Z_LEVEL_DEBRISFIELD				10
-#define Z_LEVEL_PIRATEBASE				11
-#define Z_LEVEL_MININGPLANET			12 // CLASS G
-#define Z_LEVEL_UNKNOWN_PLANET			13 // CLASS D
-#define Z_LEVEL_DESERT_PLANET			14 // CLASS H
-#define Z_LEVEL_GAIA_PLANET				15 // CLASS M
-#define Z_LEVEL_FROZEN_PLANET			16 // CLASS P
-#define Z_LEVEL_TRADEPORT				17
+#define Z_LEVEL_DEBRISFIELD				11
+#define Z_LEVEL_PIRATEBASE				12
+#define Z_LEVEL_MININGPLANET			13 // CLASS G
+#define Z_LEVEL_UNKNOWN_PLANET			14 // CLASS D
+#define Z_LEVEL_DESERT_PLANET			15 // CLASS H
+#define Z_LEVEL_GAIA_PLANET				16 // CLASS M
+#define Z_LEVEL_FROZEN_PLANET			17 // CLASS P
+#define Z_LEVEL_TRADEPORT				18
 
-#define Z_LEVEL_LAVALAND				18
-#define Z_LEVEL_LAVALAND_EAST			19
+#define Z_LEVEL_LAVALAND				19
+#define Z_LEVEL_LAVALAND_EAST			20
 
 /datum/map/rift
 	name = "Rift"
@@ -247,6 +248,12 @@
 	base_turf = /turf/simulated/open
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
+
+/datum/map_z_level/rift/base
+	z = Z_LEVEL_WEST_BASE
+	name = "Western Canyon"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
 
 /datum/map_z_level/rift/caves
 	z = Z_LEVEL_WEST_CAVERN

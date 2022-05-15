@@ -290,7 +290,7 @@
 	shuttle_area = list(/area/shuttle/trade_ship/cockpit, /area/shuttle/trade_ship/general)
 	current_location = "tradeport_hangar"
 	docking_controller_tag = "tradeport_hangar_docker"
-	//landmark_transition = "nav_transit_trade"
+	landmark_transition = "nav_transit_trade"
 	fuel_consumption = 5
 	move_time = 10
 

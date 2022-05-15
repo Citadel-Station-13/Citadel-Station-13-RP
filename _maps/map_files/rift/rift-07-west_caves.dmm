@@ -12,8 +12,7 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "L" = (
-/obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/sky/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "M" = (
 /obj/structure/stairs/spawner/north,
@@ -21,8 +20,7 @@
 /area/rift/surfacebase/outside/west_caves)
 "P" = (
 /obj/effect/blocker,
-/obj/effect/step_trigger/zlevel_fall/cavernfall,
-/turf/simulated/sky/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 
 (1,1,1) = {"
@@ -31948,8 +31946,8 @@ h
 w
 w
 w
-w
-w
+h
+h
 w
 w
 w
@@ -32140,11 +32138,11 @@ h
 h
 h
 h
-w
-w
-w
-w
-w
+h
+h
+h
+h
+h
 w
 w
 w
@@ -32334,12 +32332,12 @@ h
 h
 h
 h
-w
-w
-w
-w
-w
-w
+h
+L
+L
+h
+h
+h
 w
 w
 w
@@ -32528,12 +32526,12 @@ h
 h
 h
 h
-w
-w
-w
-w
-w
-w
+h
+L
+L
+h
+h
+h
 w
 w
 w
@@ -32722,11 +32720,11 @@ h
 h
 h
 h
-w
-w
-w
-w
-w
+h
+h
+h
+h
+h
 w
 w
 w
@@ -32916,11 +32914,11 @@ h
 h
 h
 w
-w
-w
-w
-w
-w
+h
+h
+h
+h
+h
 w
 w
 w
