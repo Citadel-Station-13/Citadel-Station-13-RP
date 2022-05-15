@@ -1,4 +1,4 @@
-## Citadel Station 13 RP 
+## Citadel Station 13 RP
 
 [![Build Status](https://github.com/Citadel-Station-13/Citadel-Station-13-RP/workflows/CI%20Suite/badge.svg)](https://github.com/Citadel-Station-13/Citadel-Station-13-RP/actions?query=workflow%3A%22CI+Suite%22)
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/Citadel-Station-13/Citadel-Station-13-RP.svg)](https://isitmaintained.com/project/Citadel-Station-13/Citadel-Station-13-RP "Percentage of issues still open")
@@ -40,7 +40,7 @@ On **May 9, 2022** we have changed the way to compile the codebase.
 ## SQL Setup
 
 The SQL backend for the library and stats tracking requires a MySQL server.
-Your server details go in /config/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql.
+Your server details go in /config/legacy/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql.
 More detailed setup instructions arecoming soon, for now ask in our Discord.
 
 ## LICENSE
@@ -61,4 +61,3 @@ The TGS DMAPI API is licensed as a subproject under the MIT license.
 See the footer of [code/__DEFINES/tgs.dm](./code/__DEFINES/tgs.dm) and [code/modules/tgs/LICENSE](./code/modules/tgs/LICENSE) for the MIT license.
 
 All assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated.
-
