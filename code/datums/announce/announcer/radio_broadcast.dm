@@ -11,5 +11,3 @@
 /datum/announcer/radio_broadcast/SendText(source, name, message, list/affected)
 	var/msg = "[SPAN_BOLDNOTICE(source)] - [SPAN_ALERT(name)]: [message]"
 	GLOB.global_announcer.autosay(msg, "Automated Announcement System", channel, location.get_affected_levels())
-
-#warn impl
