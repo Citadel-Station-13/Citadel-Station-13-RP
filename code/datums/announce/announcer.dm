@@ -42,10 +42,9 @@
  * - volume - volume override for sound.
  * - sound_environment - true/false - if true, allow playsound_local to use local environment.
  */
-/datum/announcer/proc/SendSound(sound/S, channel, list/affected = location?.get_affected_atoms(), volume, sound_environment = TRUE)
+/datum/announcer/proc/SendSound(datum/soundbyte/SB, channel, list/affected = location?.get_affected_atoms(), volume, sound_environment = TRUE)
 	// default implementation given since we only care for players
-	if(!istype(S))
-		CRASH("Invalid sound [S] passed in. Ensure sounds are preprocessed before sending into announcers.")
+	var/sound/S = SB.instance_sound()
 	for(var/mob/M in affected)
 		M.playsound_local(turf_source = sound_environment? get_turf(M) : null, soundin = S, channel = channel, vol = volume, wait = FALSE)
 
