@@ -297,10 +297,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
 "ax" = (
-/obj/random/trash_pile,
-/obj/structure/railing{
-	dir = 8
-	},
+/obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "ay" = (
@@ -1422,8 +1419,9 @@
 "cs" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
@@ -2606,6 +2604,15 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
+"ex" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/closet/crate,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/bar)
 "ey" = (
 /obj/machinery/computer/station_alert/security{
 	dir = 8
@@ -2936,14 +2943,6 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "arv_check_hall_shutter";
-	name = "Arrivals Hallway Shutter";
-	opacity = 0
-	},
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"
@@ -3272,7 +3271,10 @@
 	name = "west bump";
 	pixel_x = -24
 	},
-/obj/random/trash_pile,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "fH" = (
@@ -8515,14 +8517,6 @@
 /area/maintenance/commandmaint)
 "pC" = (
 /obj/machinery/door/airlock/maintenance/sec,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "arv_check_shutter";
-	name = "Arrivals Checkpoint Shutter";
-	opacity = 0
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -13489,6 +13483,13 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/civvie/general)
+"zv" = (
+/obj/random/trash_pile,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar)
 "zw" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
@@ -39592,14 +39593,14 @@ cH
 vz
 Rc
 aF
-aF
+zv
 aF
 aF
 aF
 aF
 Ya
 fG
-NS
+ex
 fJ
 NS
 Zc
