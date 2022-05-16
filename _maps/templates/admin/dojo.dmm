@@ -129,7 +129,7 @@
 	},
 /area/ninja_dojo/dojo)
 "au" = (
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor{
 	icon_state = "plating";
@@ -137,7 +137,7 @@
 	},
 /area/ninja_dojo/dojo)
 "av" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -194,11 +194,11 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/ninja)
 "aE" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/plating,
 /area/shuttle/ninja)
 "aF" = (
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/shuttle/plating,
 /area/shuttle/ninja)

@@ -1496,11 +1496,11 @@
 /area/centcom/control)
 "eF" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm5)
 "eG" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm5)
 "eH" = (
@@ -1529,11 +1529,11 @@
 /area/holodeck/source_beach)
 "eN" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm6)
 "eO" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm6)
 "eP" = (
@@ -4960,11 +4960,11 @@
 /area/unknown/dorm4)
 "SQ" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm4)
 "SR" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm4)
 "SS" = (
@@ -5111,11 +5111,11 @@
 /area/unknown/dorm3)
 "TC" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm3)
 "TD" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm3)
 "TE" = (
@@ -5268,11 +5268,11 @@
 /area/unknown/dorm2)
 "Uk" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm2)
 "Ul" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm2)
 "Um" = (
@@ -5430,11 +5430,11 @@
 /area/unknown/dorm1)
 "UW" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/unknown/dorm1)
 "UX" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm1)
 "UY" = (

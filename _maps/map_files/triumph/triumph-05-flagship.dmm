@@ -1674,13 +1674,13 @@
 	},
 /area/centcom/specops)
 "cE" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "cF" = (
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -6526,11 +6526,11 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lW" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lX" = (
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lY" = (

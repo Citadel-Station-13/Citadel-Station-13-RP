@@ -1,30 +1,34 @@
-/obj/machinery/teleport/projector
+/obj/machinery/tele_projector
 	name = "projector"
 	desc = "This machine is capable of projecting a miniature wormhole leading directly to its provided target."
+	icon = 'icons/obj/machines/teleporter.dmi'
 	icon_state = "station"
-	var/engaged = FALSE
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
 	circuit = /obj/item/circuitboard/teleporter_station
-	var/obj/machinery/teleport/pad/pad
 
-/obj/machinery/teleport/projector/Initialize(mapload)
+	var/obj/machinery/tele_pad/pad
+	var/engaged = FALSE
+
+/obj/machinery/tele_projector/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	update_appearance()
 
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/teleport/projector/LateInitialize()
+/obj/machinery/tele_projector/LateInitialize()
 	. = ..()
 	for(var/target_dir in GLOB.cardinal)
-		var/obj/machinery/teleport/pad/found_pad = locate() in get_step(src, target_dir)
+		var/obj/machinery/tele_pad/found_pad = locate() in get_step(src, target_dir)
 		if(found_pad)
 			setDir(get_dir(src, found_pad))
 			break
 
-/obj/machinery/teleport/projector/update_icon()
+/obj/machinery/tele_projector/update_icon()
 	overlays.Cut()
 	if(engaged)
 		update_use_power(USE_POWER_ACTIVE)
@@ -40,19 +44,19 @@
 			I.layer = ABOVE_LIGHTING_LAYER
 			overlays += I
 
-/obj/machinery/teleport/projector/attackby(var/obj/item/W)
+/obj/machinery/tele_projector/attackby(var/obj/item/W)
 	attack_hand()
 
-/obj/machinery/teleport/projector/attack_ai()
+/obj/machinery/tele_projector/attack_ai()
 	attack_hand()
 
-/obj/machinery/teleport/projector/attack_hand()
+/obj/machinery/tele_projector/attack_hand()
 	if(engaged)
 		disengage()
 	else
 		engage()
 
-/obj/machinery/teleport/projector/proc/engage()
+/obj/machinery/tele_projector/proc/engage()
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
@@ -68,7 +72,7 @@
 	add_fingerprint(usr)
 	return
 
-/obj/machinery/teleport/projector/proc/disengage()
+/obj/machinery/tele_projector/proc/disengage()
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 

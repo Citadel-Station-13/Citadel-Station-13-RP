@@ -10,13 +10,13 @@
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/old_tele)
 "d" = (
-/obj/machinery/teleport/projector{
+/obj/machinery/tele_projector{
 	icon = 'icons/obj/stationobjs.dmi'
 	},
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/old_tele)
 "e" = (
-/obj/machinery/teleport/pad{
+/obj/machinery/tele_pad{
 	icon = 'icons/obj/stationobjs.dmi'
 	},
 /turf/simulated/floor/airless,

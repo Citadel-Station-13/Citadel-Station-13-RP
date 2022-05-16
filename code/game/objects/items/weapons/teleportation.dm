@@ -136,11 +136,11 @@ Frequency:
 		to_chat(user, "<span class='notice'>\The [src] is malfunctioning.</span>")
 		return
 	var/list/L = list(  )
-	for(var/obj/machinery/teleport/pad/R in GLOB.machines)
+	for(var/obj/machinery/tele_pad/R in GLOB.machines)
 		var/obj/machinery/computer/teleporter/com
-		var/obj/machinery/teleport/projector/station
+		var/obj/machinery/tele_projector/station
 		for(var/direction in GLOB.cardinal)
-			station = locate(/obj/machinery/teleport/projector, get_step(R, direction))
+			station = locate(/obj/machinery/tele_projector, get_step(R, direction))
 			if(station)
 				for(direction in GLOB.cardinal)
 					com = locate(/obj/machinery/computer/teleporter, get_step(station, direction))

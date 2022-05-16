@@ -4,8 +4,8 @@
 	icon_keyboard = "teleport_key"
 	icon_screen = "teleport"
 	circuit = /obj/item/circuitboard/teleporter
-	var/obj/machinery/teleport/projector/projector = null
-	var/obj/machinery/teleport/pad/pad = null
+	var/obj/machinery/tele_projector/projector = null
+	var/obj/machinery/tele_pad/pad = null
 	var/obj/item/locked = null
 	var/id = null
 	var/one_time_use = 0 //Used for one-time-use teleport cards (such as clown planet coordinates.)
@@ -17,10 +17,10 @@
 
 	// Search surrounding turfs for the projector, and then search the projector's surrounding turfs for the pad.
 	for(var/direction in GLOB.cardinal)
-		projector = locate(/obj/machinery/teleport/projector, get_step(src, direction))
+		projector = locate(/obj/machinery/tele_projector, get_step(src, direction))
 		if(projector)
 			for(direction in GLOB.cardinal)
-				pad = locate(/obj/machinery/teleport/pad, get_step(projector, direction))
+				pad = locate(/obj/machinery/tele_pad, get_step(projector, direction))
 				if(pad)
 					break
 			break
@@ -67,7 +67,7 @@
 				for(var/mob/O in hearers(src, null))
 					O.show_message("<span class='warning'>Incoming bluespace portal detected, unable to lock in.</span>", 2)
 
-				for(var/obj/machinery/teleport/pad/H in range(1))
+				for(var/obj/machinery/tele_pad/H in range(1))
 					var/amount = rand(2,5)
 					for(var/i=0;i<amount;i++)
 						new /mob/living/simple_mob/animal/space/carp(get_turf(H))

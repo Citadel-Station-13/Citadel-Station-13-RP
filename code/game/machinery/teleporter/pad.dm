@@ -1,32 +1,28 @@
-/obj/machinery/teleport
-	name = "teleport"
-	icon = 'icons/obj/machines/teleporter.dmi'
-	density = TRUE
-	anchored = TRUE
-	var/lockeddown = FALSE
-
-/obj/machinery/teleport/pad
+/obj/machinery/tele_pad
 	name = "teleporter pad"
 	desc = "The teleporter pad handles all of the impossibly complex busywork required in instant matter transmission."
+	icon = 'icons/obj/machines/teleporter.dmi'
 	icon_state = "pad"
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
 	circuit = /obj/item/circuitboard/teleporter_hub
+	light_color = LIGHT_COLOR_BLUEGREEN
 	var/obj/machinery/computer/teleporter/com
-	light_color = "#02d1c7"
 
-/obj/machinery/teleport/pad/Initialize(mapload)
+/obj/machinery/tele_pad/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	RefreshParts()
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/teleport/pad/LateInitialize()
+/obj/machinery/tele_pad/LateInitialize()
 	. = ..()
 	update_icon()
 
-/obj/machinery/teleport/pad/update_icon()
+/obj/machinery/tele_pad/update_icon()
 	overlays.Cut()
 	if(com?.projector?.engaged)
 		update_use_power(USE_POWER_ACTIVE)
@@ -44,12 +40,12 @@
 			I.layer = ABOVE_LIGHTING_LAYER
 			overlays += I
 
-/obj/machinery/teleport/pad/Bumped(M as mob|obj)
+/obj/machinery/tele_pad/Bumped(M as mob|obj)
 	if(com?.projector?.engaged)
 		teleport(M)
 		use_power_oneoff(5000)
 
-/obj/machinery/teleport/pad/proc/teleport(atom/movable/M as mob|obj)
+/obj/machinery/tele_pad/proc/teleport(atom/movable/M as mob|obj)
 	if(!com)
 		return
 	if(!com.locked)
@@ -65,6 +61,6 @@
 		update_icon()
 	return
 
-/obj/machinery/teleport/pad/Destroy()
+/obj/machinery/tele_pad/Destroy()
 	com = null
 	return ..()

@@ -5,7 +5,7 @@
 /area/abductor/exterior)
 "bG" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/teleport/pad,
+/obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/abductor/interior)
 "bP" = (
@@ -571,7 +571,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Ji" = (
-/obj/machinery/teleport/projector,
+/obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "JF" = (
