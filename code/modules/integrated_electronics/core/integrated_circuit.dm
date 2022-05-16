@@ -212,10 +212,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		if("examine")
 			var/obj/item/integrated_circuit/examined = locate(params["ref"])
 			if(istype(examined) && (examined.loc == loc))
-				if(ui.parent_ui)
-					examined.ui_interact(usr, null, ui.parent_ui)
-				else
-					examined.ui_interact(usr)
+				examined.ui_interact(usr)
 
 		if("remove")
 			remove(usr)

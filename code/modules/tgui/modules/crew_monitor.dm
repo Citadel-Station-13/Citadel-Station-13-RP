@@ -27,9 +27,6 @@
 				if(hassensorlevel(H, SUIT_SENSOR_TRACKING))
 					AI.ai_actual_track(H)
 			return TRUE
-		if("setZLevel")
-			ui.set_map_z_level(params["mapZLevel"])
-			return TRUE
 
 /datum/tgui_module/crew_monitor/ui_interact(mob/user, datum/tgui/ui = null)
 	var/z = get_z(user)

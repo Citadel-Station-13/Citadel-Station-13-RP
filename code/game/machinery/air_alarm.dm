@@ -517,19 +517,16 @@
 		return ..()
 	return UI_CLOSE
 
-/obj/machinery/alarm/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui, datum/ui_state/state)
+/obj/machinery/alarm/ui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AirAlarm", name, parent_ui)
-		if(state)
-			ui.set_state(state)
+		ui = new(user, src, "AirAlarm", name)
 		ui.open()
 
 /obj/machinery/alarm/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = list(
 		"locked" = locked,
 		"siliconUser" = issilicon(user),
-		"remoteUser" = !!ui.parent_ui,
 		"danger_level" = danger_level,
 		"target_temperature" = "[target_temperature - T0C]C",
 		"rcon" = rcon_setting,
@@ -572,13 +569,13 @@
 			continue
 		LOAD_TLV_VALUES(TLV[gas_id], environment.gas[gas_id] * partial_pressure)
 		environment_data.Add(list(list(
-			"name" = gas_id,
+			"name"  = gas_id,
 			"value" = environment.gas[gas_id] / total_moles * 100,
-			"unit" = "%",
+			"unit"  = "%",
 			"danger_level" = TEST_TLV_VALUES
 		)))
 
-	if(!locked || issilicon(user) || data["remoteUser"])
+	if(!locked || issilicon(user) && !aidisabled)
 		var/list/list/vents = list()
 		data["vents"] = vents
 		for(var/id_tag in A.air_vent_names)
@@ -587,54 +584,51 @@
 			if(!info)
 				continue
 			vents.Add(list(list(
-				"id_tag"	= id_tag,
+				"id_tag"    = id_tag,
 				"long_name" = sanitize(long_name),
-				"power"		= info["power"],
-				"checks"	= info["checks"],
-				"excheck"	= info["checks"]&1,
-				"incheck"	= info["checks"]&2,
-				"direction"	= info["direction"],
-				"external"	= info["external"],
-				"internal"	= info["internal"],
+				"power"     = info["power"],
+				"checks"    = info["checks"],
+				"excheck"   = info["checks"]&1,
+				"incheck"   = info["checks"]&2,
+				"direction" = info["direction"],
+				"external"  = info["external"],
+				"internal"  = info["internal"],
 				"extdefault"= (info["external"] == ONE_ATMOSPHERE),
 				"intdefault"= (info["internal"] == 0),
 			)))
 
-
-		var/list/list/scrubbers = list()
-		data["scrubbers"] = scrubbers
+		data["scrubbers"] = list()
 		for(var/id_tag in alarm_area.air_scrub_names)
 			var/long_name = alarm_area.air_scrub_names[id_tag]
 			var/list/info = alarm_area.air_scrub_info[id_tag]
-			if(!info)
+			if(!info || info["frequency"] != frequency)
 				continue
-			scrubbers += list(list(
-				"id_tag"	= id_tag,
-				"long_name" = sanitize(long_name),
-				"power"		= info["power"],
-				"scrubbing"	= info["scrubbing"],
-				"panic"		= info["panic"],
-				"filters"   = list(
-					list("name" = "Oxygen",			"command" = "o2_scrub",	"val" = info["filter_o2"]),
-					list("name" = "Nitrogen",		"command" = "n2_scrub",	"val" = info["filter_n2"]),
-					list("name" = "Carbon Dioxide", "command" = "co2_scrub","val" = info["filter_co2"]),
-					list("name" = "Toxin"	, 		"command" = "tox_scrub","val" = info["filter_phoron"]),
-					list("name" = "Nitrous Oxide",	"command" = "n2o_scrub","val" = info["filter_n2o"]),
-					list("name" = "Fuel",			"command" = "fuel_scrub","val" = info["filter_fuel"])
-				)
+			data["scrubbers"] += list(list(
+					"id_tag"    = id_tag,
+					"long_name" = sanitize(long_name),
+					"power"     = info["power"],
+					"scrubbing" = info["scrubbing"],
+					"panic"     = info["panic"],
+					"filters"   = list(
+						list("name" = "Oxygen",         "command" = "o2_scrub",   "val" = info["filter_o2"]),
+						list("name" = "Nitrogen",       "command" = "n2_scrub",   "val" = info["filter_n2"]),
+						list("name" = "Carbon Dioxide", "command" = "co2_scrub",  "val" = info["filter_co2"]),
+						list("name" = "Toxin",          "command" = "tox_scrub",  "val" = info["filter_phoron"]),
+						list("name" = "Nitrous Oxide",  "command" = "n2o_scrub",  "val" = info["filter_n2o"]),
+						list("name" = "Fuel",           "command" = "fuel_scrub", "val" = info["filter_fuel"])
+					)
 			))
-		data["scrubbers"] = scrubbers
 
 		data["mode"] = mode
 
 		var/list/list/modes = list()
 		data["modes"] = modes
-		modes[++modes.len] = list("name" = "Filtering - Scrubs out contaminants", 			"mode" = AALARM_MODE_SCRUBBING,		"selected" = mode == AALARM_MODE_SCRUBBING, 	"danger" = 0)
-		modes[++modes.len] = list("name" = "Replace Air - Siphons out air while replacing", "mode" = AALARM_MODE_REPLACEMENT,	"selected" = mode == AALARM_MODE_REPLACEMENT,	"danger" = 0)
-		modes[++modes.len] = list("name" = "Panic - Siphons air out of the room", 			"mode" = AALARM_MODE_PANIC,			"selected" = mode == AALARM_MODE_PANIC, 		"danger" = 1)
-		modes[++modes.len] = list("name" = "Cycle - Siphons air before replacing", 			"mode" = AALARM_MODE_CYCLE,			"selected" = mode == AALARM_MODE_CYCLE, 		"danger" = 1)
-		modes[++modes.len] = list("name" = "Fill - Shuts off scrubbers and opens vents", 	"mode" = AALARM_MODE_FILL,			"selected" = mode == AALARM_MODE_FILL, 			"danger" = 0)
-		modes[++modes.len] = list("name" = "Off - Shuts off vents and scrubbers", 			"mode" = AALARM_MODE_OFF,			"selected" = mode == AALARM_MODE_OFF, 			"danger" = 0)
+		modes[++modes.len] = list("name" = "Filtering - Scrubs out contaminants",           "mode" = AALARM_MODE_SCRUBBING,   "selected" = mode == AALARM_MODE_SCRUBBING,   "danger" = 0)
+		modes[++modes.len] = list("name" = "Replace Air - Siphons out air while replacing", "mode" = AALARM_MODE_REPLACEMENT, "selected" = mode == AALARM_MODE_REPLACEMENT, "danger" = 0)
+		modes[++modes.len] = list("name" = "Panic - Siphons air out of the room",           "mode" = AALARM_MODE_PANIC,       "selected" = mode == AALARM_MODE_PANIC,       "danger" = 1)
+		modes[++modes.len] = list("name" = "Cycle - Siphons air before replacing",          "mode" = AALARM_MODE_CYCLE,       "selected" = mode == AALARM_MODE_CYCLE,       "danger" = 1)
+		modes[++modes.len] = list("name" = "Fill - Shuts off scrubbers and opens vents",    "mode" = AALARM_MODE_FILL,        "selected" = mode == AALARM_MODE_FILL,        "danger" = 0)
+		modes[++modes.len] = list("name" = "Off - Shuts off vents and scrubbers",           "mode" = AALARM_MODE_OFF,         "selected" = mode == AALARM_MODE_OFF,         "danger" = 0)
 
 		var/list/selected
 		var/list/thresholds = list()
@@ -657,6 +651,7 @@
 			thresholds[thresholds.len]["settings"] += list(list("env" = "temperature", "val" = i, "selected" = selected[i]))
 
 		data["thresholds"] = thresholds
+
 	return data
 
 /obj/machinery/alarm/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)

@@ -94,7 +94,7 @@
 	var/image/selected_image = null
 
 	//Pending Refactor, as per Kev.
-	//var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
 
 	// TODO: execute iamcrystalclear for making this var
 	var/last_blood_warn = -INFINITY

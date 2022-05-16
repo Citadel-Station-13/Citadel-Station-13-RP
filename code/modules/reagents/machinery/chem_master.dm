@@ -165,25 +165,6 @@
 
 					arguments["analysis"] = result
 					ui_modal_message(src, id, "", null, arguments)
-				// if("change_pill_bottle_style")
-				// 	if(!loaded_pill_bottle)
-				// 		return
-				// 	if(!pill_bottle_wrappers)
-				// 		pill_bottle_wrappers = list(
-				// 			"CLEAR" = "Default",
-				// 			COLOR_RED = "Red",
-				// 			COLOR_GREEN = "Green",
-				// 			COLOR_PALE_BTL_GREEN = "Pale green",
-				// 			COLOR_BLUE = "Blue",
-				// 			COLOR_CYAN_BLUE = "Light blue",
-				// 			COLOR_TEAL = "Teal",
-				// 			COLOR_YELLOW = "Yellow",
-				// 			COLOR_ORANGE = "Orange",
-				// 			COLOR_PINK = "Pink",
-				// 			COLOR_MAROON = "Brown"
-				// 		)
-				// 	var/current = pill_bottle_wrappers[loaded_pill_bottle.wrapper_color] || "Default"
-				// 	ui_modal_choice(src, id, "Please select a pill bottle wrapper:", null, arguments, current, pill_bottle_wrappers)
 				if("addcustom")
 					if(!beaker || !beaker.reagents.total_volume)
 						return
@@ -286,21 +267,6 @@
 		if(UI_MODAL_ANSWER)
 			var/answer = params["answer"]
 			switch(id)
-				// if("change_pill_bottle_style")
-				// 	if(!pill_bottle_wrappers || !loaded_pill_bottle) // wat?
-				// 		return
-				// 	var/color = "CLEAR"
-				// 	for(var/col in pill_bottle_wrappers)
-				// 		var/col_name = pill_bottle_wrappers[col]
-				// 		if(col_name == answer)
-				// 			color = col
-				// 			break
-				// 	if(length(color) && color != "CLEAR")
-				// 		loaded_pill_bottle.wrapper_color = color
-				// 		loaded_pill_bottle.apply_wrap()
-				// 	else
-				// 		loaded_pill_bottle.wrapper_color = null
-				// 		loaded_pill_bottle.cut_overlays()
 				if("addcustom")
 					var/amount = isgoodnumber(text2num(answer))
 					if(!amount || !arguments["id"])
@@ -366,7 +332,6 @@
 					if(!length(answer))
 						answer = reagents.get_master_reagent_name()
 					var/amount_per_patch = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_PATCH)
-					// var/is_medical_patch = chemical_safety_check(reagents)
 					while(count--)
 						if(reagents.total_volume <= 0)
 							to_chat(usr, "<span class='notice'>Not enough reagents to create these patches!</span>")
@@ -377,9 +342,6 @@
 						P.pixel_x = rand(-7, 7) // random position
 						P.pixel_y = rand(-7, 7)
 						reagents.trans_to_obj(P, amount_per_patch)
-						// if(is_medical_patch)
-							// P.instant_application = TRUE
-							// P.icon_state = "bandaid_med"
 				if("create_patch_multiple")
 					if(condi || !reagents.total_volume)
 						return
@@ -394,7 +356,6 @@
 					if(!length(answer))
 						answer = reagents.get_master_reagent_name()
 					var/amount_per_lolli = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_LOLLI)
-					// var/is_medical_patch = chemical_safety_check(reagents)
 					while(count--)
 						if(reagents.total_volume <= 0)
 							to_chat(usr, "<span class='notice'>Not enough reagents to create these candies!</span>")

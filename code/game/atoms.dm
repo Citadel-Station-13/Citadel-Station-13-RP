@@ -1126,3 +1126,11 @@
 
 /atom/proc/get_cell()
 	return
+
+///Returns true if the src countain the atom target
+/atom/proc/contains(atom/target)
+	if(!target)
+		return FALSE
+	for(var/atom/location = target.loc, location, location = location.loc)
+		if(location == src)
+			return TRUE

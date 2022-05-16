@@ -28,10 +28,7 @@
 				var/obj/machinery/alarm/alarm = locate(params["alarm"]) in (monitored_alarms.len ? monitored_alarms : GLOB.machines)
 				if(alarm)
 					var/datum/ui_state/TS = generate_state(alarm)
-					alarm.ui_interact(usr, parent_ui = ui_ref, state = TS)
-			return 1
-		if("setZLevel")
-			ui.set_map_z_level(params["mapZLevel"])
+					alarm.ui_interact(usr, state = TS)
 			return TRUE
 
 /datum/tgui_module/atmos_control/ui_assets(mob/user)
