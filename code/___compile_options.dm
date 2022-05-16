@@ -1,5 +1,5 @@
 ///By using the testing("message") proc you can create debug-feedback for people with this
-//#define TESTING
+#define TESTING
 								//uncommented, but not visible in the release version)
 
 /// uncomment to enable laggy as sin ZAS debugging systems coded in for when doing bugfixes or major systems overhaulling.
