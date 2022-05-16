@@ -322,8 +322,9 @@ SUBSYSTEM_DEF(garbage)
 	else if(D.gc_destroyed == GC_CURRENTLY_BEING_QDELETED)
 		CRASH("[D.type] destroy proc was called multiple times, likely due to a qdel loop in the Destroy logic")
 
-
-#ifdef TESTING
+/**
+ * considered cheap enough to run on live
+ */
 /proc/__memdbg_count_datums()
 	var/list/L = list()
 	var/c = 0
@@ -338,13 +339,13 @@ SUBSYSTEM_DEF(garbage)
 	start = world.timeofday
 	sortTim(L, /proc/cmp_numeric_dsc, associative = TRUE)
 	built += "sorted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds"
-	var/list/built = list()
 	for(var/i in L)
 		built += "[i] - [L[i]]"
 	var/datum/browser/B = new(usr, "datum_count", "datum count")
 	B.set_content(built.Join("<br>"))
 	B.open()
 
+#ifdef TESTING
 /proc/__memdbg_count_datum_refs()
 	var/list/L = list()
 	var/list/L2 = list()
@@ -376,39 +377,53 @@ SUBSYSTEM_DEF(garbage)
 	)
 	var/start = world.timeofday
 	var/count
+	var/lcount
+	var/val
+	var/list/L4
 	for(var/datum/D)
 		count = 0
+		lcount = 0
 		for(var/v in D.vars)
 			if(blacklist[v])
 				continue
-			if(isdatum(v))
+			val = D.vars[v]
+			if(isdatum(val))
 				// datum ref
 				count++
 				continue
-			if(islist(V))
+			if(islist(val))
 				// list ref
 				count++
-				L2[V] = TRUE
+				L4 = val
+				lcount += L4.len
+				L2[val] = TRUE
 				continue
+		L["[D.type] - lists"] += lcount
 		L[D.type] += count
 		++c
 	for(var/atom/D in world)
-		L[D.type] += count
-		++c
+		count = 0
+		lcount = 0
 		for(var/v in D.vars)
 			if(blacklist[v])
 				continue
-			if(isdatum(v))
+			val = D.vars[v]
+			if(isdatum(val))
 				// datum ref
 				count++
 				continue
-			if(islist(V))
+			if(islist(val))
 				// list ref
 				count++
-				L2[V] = TRUE
+				L4 = val
+				lcount += L4.len
+				L2[val] = TRUE
 				continue
+		L["[D.type] - lists"] += lcount
+		L[D.type] += count
+		++c
 	for(var/list/L3 as anything in L2)
-		L1["object count in /list"] += L3.len
+		L["ref count in /list"] += L3.len
 	var/list/built = list("counted [c] datums and [L2.len] lists in [round((world.timeofday - start) * 0.1, 0.01)] seconds")
 	start = world.timeofday
 	built += "sorted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds"
@@ -418,5 +433,4 @@ SUBSYSTEM_DEF(garbage)
 	var/datum/browser/B = new(usr, "datum_outgoing_ref_count", "datum outgoing ref count")
 	B.set_content(built.Join("<br>"))
 	B.open()
-
 #endif
