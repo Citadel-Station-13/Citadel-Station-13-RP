@@ -1106,13 +1106,13 @@
 	},
 /area/wizard_station)
 "cC" = (
-/obj/machinery/tele_projector,
+/obj/machinery/teleport/projector,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/wizard_station)
 "cD" = (
-/obj/machinery/tele_pad,
+/obj/machinery/teleport/pad,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

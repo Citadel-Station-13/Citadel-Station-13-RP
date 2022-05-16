@@ -2323,11 +2323,11 @@
 /area/mothership/hallway)
 "eN" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/tele_pad,
+/obj/machinery/teleport/pad,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "eO" = (
-/obj/machinery/tele_projector,
+/obj/machinery/teleport/projector,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "eP" = (

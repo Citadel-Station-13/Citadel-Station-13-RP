@@ -1,76 +1,34 @@
-/obj/machinery/tele_pad
-	name = "teleporter pad"
-	desc = "The teleporter pad handles all of the impossibly complex busywork required in instant matter transmission."
+/obj/machinery/teleport
+	name = "teleport"
 	icon = 'icons/obj/machines/teleporter.dmi'
-	icon_state = "pad"
 	density = TRUE
 	anchored = TRUE
+	var/lockeddown = FALSE
+
+/obj/machinery/teleport/pad
+	name = "teleporter pad"
+	desc = "The teleporter pad handles all of the impossibly complex busywork required in instant matter transmission."
+	icon_state = "pad"
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
+	circuit = /obj/item/circuitboard/teleporter_hub
+	var/obj/machinery/computer/teleporter/com
 	light_color = "#02d1c7"
 
-	var/obj/machinery/computer/teleporter/computer
-
-
-/obj/machinery/tele_pad/Destroy()
-	if (computer)
-		computer.lost_pad()
-	clear_computer()
+/obj/machinery/teleport/pad/Initialize(mapload)
 	. = ..()
+	default_apply_parts()
+	RefreshParts()
+	return INITIALIZE_HINT_LATELOAD
 
-
-/obj/machinery/tele_pad/proc/set_computer(obj/machinery/computer/teleporter/_computer)
-	if (computer == _computer)
-		return
-	clear_computer()
-	computer = _computer
-	RegisterSignal(computer, COMSIG_PARENT_QDELETING, .proc/lost_computer)
-	//GLOB.destroyed_event.register(computer, src, /obj/machinery/tele_pad/proc/lost_computer)
-
-
-/obj/machinery/tele_pad/proc/clear_computer()
-	if (!computer)
-		return
-	//GLOB.unregister(computer, src, /obj/machinery/tele_pad/proc/lost_computer)
-	UnregisterSignal(computer, COMSIG_PARENT_QDELETING)
-	computer = null
-
-
-/obj/machinery/tele_pad/proc/lost_computer()
-	clear_computer()
+/obj/machinery/teleport/pad/LateInitialize()
+	. = ..()
 	update_icon()
 
-
-/obj/machinery/tele_pad/Bumped(atom/movable/AM)
-	if (!computer?.active)
-		return
-	var/turf/T = get_turf(computer.target)
-	if (!T)
-		return
-	use_power_oneoff(5000)
-	do_teleport(AM, T)
-
-
-/obj/machinery/tele_pad/attack_ghost(mob/user)
-	. = ..()
-	if (!computer?.active)
-		return
-	var/turf/T = get_turf(computer.target)
-	if (!T)
-		return
-	user.forceMove(T)
-
-
-/obj/machinery/tele_pad/power_change()
-	. = ..()
-	if (!.)
-		return
-	update_icon()
-
-
-/obj/machinery/tele_pad/update_icon()
+/obj/machinery/teleport/pad/update_icon()
 	overlays.Cut()
-	if(computer?.active)
+	if(com?.projector?.engaged)
 		update_use_power(USE_POWER_ACTIVE)
 		var/image/I = image(icon, src, "[initial(icon_state)]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE
@@ -85,3 +43,28 @@
 			I.plane = ABOVE_LIGHTING_PLANE
 			I.layer = ABOVE_LIGHTING_LAYER
 			overlays += I
+
+/obj/machinery/teleport/pad/Bumped(M as mob|obj)
+	if(com?.projector?.engaged)
+		teleport(M)
+		use_power_oneoff(5000)
+
+/obj/machinery/teleport/pad/proc/teleport(atom/movable/M as mob|obj)
+	if(!com)
+		return
+	if(!com.locked)
+		for(var/mob/O in hearers(src, null))
+			O.show_message(SPAN_WARNING("Failure: Cannot authenticate locked on coordinates. Please reinstate coordinate matrix."))
+		return
+	do_teleport(M, com.locked)
+	if(com.one_time_use) //Make one-time-use cards only usable one time!
+		com.one_time_use = FALSE
+		com.locked = null
+		if(com.projector)
+			com.projector.engaged = FALSE
+		update_icon()
+	return
+
+/obj/machinery/teleport/pad/Destroy()
+	com = null
+	return ..()

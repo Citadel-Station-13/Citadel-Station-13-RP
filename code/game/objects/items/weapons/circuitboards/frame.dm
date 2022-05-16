@@ -181,7 +181,7 @@
 
 /obj/item/circuitboard/teleporter_hub
 	name = T_BOARD("teleporter hub")
-	build_path = /obj/machinery/tele_pad
+	build_path = /obj/machinery/teleport/pad
 	board_type = "teleporter_hub"
 //	origin_tech = list(TECH_DATA = 2, TECH_BLUESPACE = 4)
 	req_components = list(
@@ -191,7 +191,7 @@
 
 /obj/item/circuitboard/teleporter_station
 	name = T_BOARD("teleporter station")
-	build_path = /obj/machinery/tele_projector
+	build_path = /obj/machinery/teleport/projector
 	board_type = "teleporter_station"
 //	origin_tech = list(TECH_DATA = 2, TECH_BLUESPACE = 3)
 	req_components = list(

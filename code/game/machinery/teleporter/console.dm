@@ -1,196 +1,158 @@
 /obj/machinery/computer/teleporter
-	name = "Teleporter Control Console"
-	desc = "Used to control a linked teleportation hub and station."
+	name = "teleporter control console"
+	desc = "Used to control a linked teleportation Pad and Projector."
 	icon_keyboard = "teleport_key"
 	icon_screen = "teleport"
-
-	var/obj/machinery/tele_projector/projector
-	var/obj/machinery/tele_pad/pad
-	var/atom/target
-	var/active
-	var/id
-
-
-/obj/machinery/computer/teleporter/Destroy()
-	clear_target()
-	if(projector)
-		projector.lost_computer()
-	clear_projector()
-	if(pad)
-		pad.lost_computer()
-	clear_pad()
-	. = ..()
-
+	circuit = /obj/item/circuitboard/teleporter
+	var/obj/machinery/teleport/projector/projector = null
+	var/obj/machinery/teleport/pad/pad = null
+	var/obj/item/locked = null
+	var/id = null
+	var/one_time_use = 0 //Used for one-time-use teleport cards (such as clown planet coordinates.)
+						 //Setting this to 1 will set locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
 
 /obj/machinery/computer/teleporter/Initialize(mapload)
+	id = "[rand(1000, 9999)]"
 	. = ..()
-	underlays.Cut()
-	underlays += image('icons/obj/stationobjs.dmi', icon_state = "telecomp-wires")
-	id = "[random_id(/obj/machinery/computer/teleporter, 1000, 9999)]"
-	update_refs()
 
-
-/obj/machinery/computer/teleporter/proc/update_refs()
-	for(var/dir in GLOB.cardinal)
-		projector = locate() in get_step(src, dir)
+	// Search surrounding turfs for the projector, and then search the projector's surrounding turfs for the pad.
+	for(var/direction in GLOB.cardinal)
+		projector = locate(/obj/machinery/teleport/projector, get_step(src, direction))
 		if(projector)
+			for(direction in GLOB.cardinal)
+				pad = locate(/obj/machinery/teleport/pad, get_step(projector, direction))
+				if(pad)
+					break
 			break
-	if(projector)
-		var/pad_dir
-		for(var/dir in GLOB.cardinal)
-			pad = locate() in get_step(projector, dir)
-			if(pad)
-				pad_dir = dir
-				break
-		if(pad)
-			projector.set_computer(src)
-			projector.setDir(pad_dir)
-			pad.set_computer(src)
-			projector.update_icon()
-			pad.update_icon()
 
+	if(istype(projector))
+		projector.pad = pad
+		projector.setDir(dir)
 
-/obj/machinery/computer/teleporter/proc/clear_projector()
-	if(!projector)
-		return
-	UnregisterSignal(projector, COMSIG_PARENT_QDELETING)
-	//GLOB.destroyed_event.unregister(projector, src, /obj/machinery/computer/teleporter/proc/lost_projector)
-	projector = null
-	set_active(FALSE)
+	if(istype(pad))
+		pad.com = src
+		pad.setDir(dir)
 
+/obj/machinery/computer/teleporter/examine(mob/user)
+	. = ..()
+	if(locked)
+		var/turf/T = get_turf(locked)
+		to_chat(user, SPAN_NOTICE("The console is locked on to \[[T.loc.name]\]."))
 
-/obj/machinery/computer/teleporter/proc/lost_projector()
-	audible_message(SPAN_WARNING("\The [src] buzzes, \"Projector missing.\""))
-	clear_projector()
+/obj/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
+	if(istype(I, /obj/item/card/data/))
+		var/obj/item/card/data/C = I
+		if(machine_stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))
+			attack_hand()
 
+		var/obj/L = null
 
-/obj/machinery/computer/teleporter/proc/set_projector(obj/machinery/tele_projector/_projector)
-	if(projector == _projector)
-		return
-	clear_projector()
-	projector = _projector
-	RegisterSignal(projector, COMSIG_PARENT_QDELETING, .proc/lost_projector)
-	//GLOB.destroyed_event.register(projector, src, /obj/machinery/computer/teleporter/proc/lost_projector)
+		for(var/atom/movable/landmark/sloc in GLOB.landmarks_list)
+			if(sloc.name != C.data) continue
+			if(locate(/mob/living) in sloc.loc) continue
+			L = sloc
+			break
 
+		if(!L)
+			L = locate("landmark*[C.data]") // use old stype
 
-/obj/machinery/computer/teleporter/proc/clear_pad()
-	if(!pad)
-		return
-	UnregisterSignal(pad, COMSIG_PARENT_QDELETING)
-	//GLOB.destroyed_event.unregister(pad, src, /obj/machinery/computer/teleporter/proc/lost_pad)
-	pad = null
-	set_active(FALSE)
+		if(istype(L, /atom/movable/landmark/) && istype(L.loc, /turf))
+			to_chat(usr, "You insert the coordinates into the machine.")
+			to_chat(usr, "A message flashes across the screen, reminding the user that the nuclear authentication disk is not transportable via insecure means.")
+			user.drop_item()
+			qdel(I)
 
+			if(C.data == "Clown Land")
+				//whoops
+				for(var/mob/O in hearers(src, null))
+					O.show_message("<span class='warning'>Incoming bluespace portal detected, unable to lock in.</span>", 2)
 
-/obj/machinery/computer/teleporter/proc/lost_pad()
-	audible_message(SPAN_WARNING("\The [src] buzzes, \"Pad missing.\""))
-	clear_pad()
+				for(var/obj/machinery/teleport/pad/H in range(1))
+					var/amount = rand(2,5)
+					for(var/i=0;i<amount;i++)
+						new /mob/living/simple_mob/animal/space/carp(get_turf(H))
+				//
+			else
+				for(var/mob/O in hearers(src, null))
+					O.show_message(SPAN_NOTICE("Locked In"), 2)
+				locked = L
+				one_time_use = TRUE
 
+			add_fingerprint(usr)
+	else
+		..()
 
-/obj/machinery/computer/teleporter/proc/set_pad(obj/machinery/tele_pad/_pad)
-	if(pad == _pad)
-		return
-	clear_pad()
-	pad = _pad
-	RegisterSignal(projector, COMSIG_PARENT_QDELETING, .proc/lost_pad)
-	//GLOB.destroyed_event.register(pad, src, /obj/machinery/computer/teleporter/proc/lost_pad)
+	return
 
+/obj/machinery/computer/teleporter/attack_hand(mob/user)
+	if(..()) return
 
-/obj/machinery/computer/teleporter/proc/clear_target()
-	if(!target)
-		return
-	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
-	//GLOB.destroyed_event.unregister(target, src, /obj/machinery/computer/teleporter/proc/lost_target)
-	target = null
-	set_active(FALSE)
+	/* Ghosts can't use this one because it's a direct selection */
+	if(istype(user, /mob/observer/dead)) return
 
+	var/list/L = list()
+	var/list/areaindex = list()
 
-/obj/machinery/computer/teleporter/proc/lost_target()
-	audible_message(SPAN_WARNING("\The [src] buzzes, \"Target lost.\""))
-	clear_target()
-
-
-/obj/machinery/computer/teleporter/proc/set_target(atom/_target)
-	if(target == _target)
-		return
-	clear_target()
-	target = _target
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/lost_target)
-	//GLOB.destroyed_event.register(target, src, /obj/machinery/computer/teleporter/proc/lost_target)
-
-
-/obj/machinery/computer/teleporter/proc/set_active(_active, notify)
-	var/effective = _active && target && projector && pad
-	if(active == effective)
-		return
-	active = effective
-	if(notify && effective)
-		if(active)
-			visible_message(SPAN_NOTICE("The teleporter sparks and hums to life."))
+	for(var/obj/item/radio/beacon/R in GLOB.all_beacons)
+		var/turf/T = get_turf(R)
+		if(!T)
+			continue
+		if(!(T.z in GLOB.using_map.player_levels))
+			continue
+		var/tmpname = T.loc.name
+		if(areaindex[tmpname])
+			tmpname = "[tmpname] ([++areaindex[tmpname]])"
 		else
-			visible_message(SPAN_WARNING("The teleporter sputters and fails."))
-	if(projector)
-		projector.update_icon()
-	if(pad)
-		pad.update_icon()
+			areaindex[tmpname] = 1
+		L[tmpname] = R
 
+	for (var/obj/item/implant/tracking/I in GLOB.all_tracking_implants)
+		if(!I.implanted || !ismob(I.loc))
+			continue
+		else
+			var/mob/M = I.loc
+			if(M.stat == 2)
+				if(M.timeofdeath + 6000 < world.time)
+					continue
+			var/turf/T = get_turf(M)
+			if(!T)
+				continue
+			if(!(T.z in GLOB.using_map.player_levels))
+				continue
+			var/tmpname = M.real_name
+			if(areaindex[tmpname])
+				tmpname = "[tmpname] ([++areaindex[tmpname]])"
+			else
+				areaindex[tmpname] = 1
+			L[tmpname] = I
 
-/obj/machinery/computer/teleporter/proc/get_targets()
-	var/list/ids = list()
-	var/list/result = list()
-	for(var/obj/item/radio/beacon/B)
-		if(QDELETED(B) || !B.functioning || !isPlayerLevel(B.z))
-			continue
-		var/area/A = get_area(B)
-		if(!A)
-			continue
-		result["[A.name] \[[++ids[A]]\]"] = B
-	for(var/obj/item/implant/tracking/T)
-		if(QDELETED(T) || !T.implanted || !ismob(T.loc))
-			continue
-		var/mob/M = T.loc
-		if(M.stat == DEAD && world.time > M.timeofdeath + 15 MINUTES)
-			continue
-		if(!isPlayerLevel(M.z))
-			continue
-		result["[M.name] \[[++ids[M]]\]"] = T
-	return result
-
-
-/obj/machinery/computer/teleporter/power_change()
-	. = ..()
-	if(!.)
+	var/desc = tgui_input_list(user, "Please select a location to lock in.", "Locking Computer", L)
+	if(!desc)
 		return
-	if(machine_stat & NOPOWER)
-		clear_target()
+	if(get_dist(src, usr) > 1 && !issilicon(usr))
+		return
 
+	locked = L[desc]
+	for(var/mob/O in hearers(src, null))
+		O.show_message(SPAN_NOTICE("Locked In"), 2)
+	return
 
-/obj/machinery/computer/teleporter/nano_ui_interact(mob/user)
-	. = ..()
-	if(!projector || !pad)
-		var/data_search = alert(user, "Projector or Pad missing. Search?", "Teleporter", "Yes", "No")
-		if(isnull(data_search) || !CanDefaultInteract(usr))
-			return TRUE
-		if(data_search == "Yes")
-			update_refs()
-		return TRUE
-	var/message = "Teleporter [!target ? "Idle" : !active ? "Locked" : "Engaged"]\n[!target ? "" : "\[[get_area(target)]\]"]"
-	var/btn_active = active ? "Shut Down" : target ? "Start Up" : "-"
-	var/btn_target = active ? "-" : "Set Target"
-	var/data_action = alert(user, message, "Teleporter", btn_active, "Cancel", btn_target)
-	if(isnull(data_action) || !CanDefaultInteract(user))
-		return TRUE
-	switch (data_action)
-		if("-", "Cancel")
-			return
-		if("Shut Down")
-			set_active(FALSE, TRUE)
-		if("Start Up")
-			set_active(TRUE, TRUE)
-		if("Set Target")
-			var/list/targets = get_targets()
-			var/data_target = input(user, "Select Target", "Teleporter") in null | targets
-			if(isnull(data_target) || !CanDefaultInteract(user))
-				return TRUE
-			audible_message(SPAN_NOTICE("\The [src] hums, \"Target updated.\""))
-			set_target(targets[data_target])
+/obj/machinery/computer/teleporter/verb/set_id(t as text)
+	set category = "Object"
+	set name = "Set teleporter ID"
+	set src in oview(1)
+	set desc = "ID Tag:"
+
+	if(machine_stat & (NOPOWER|BROKEN) || !istype(usr,/mob/living))
+		return
+	if(t)
+		id = t
+	return
+
+/proc/find_loc(obj/R)
+	if(!R)	return null
+	var/turf/T = R.loc
+	while(!istype(T, /turf))
+		T = T.loc
+		if(!T || istype(T, /area))	return null
+	return T

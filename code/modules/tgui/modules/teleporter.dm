@@ -3,8 +3,8 @@
 	tgui_id = "Teleporter"
 	var/locked_name = "Not Locked"
 	var/obj/item/locked = null
-	var/obj/machinery/tele_projector/station = null
-	var/obj/machinery/tele_pad/hub = null
+	var/obj/machinery/teleport/projector/station = null
+	var/obj/machinery/teleport/pad/hub = null
 
 /datum/tgui_module/teleport_control/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()

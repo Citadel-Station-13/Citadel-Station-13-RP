@@ -382,12 +382,12 @@
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
 "bn" = (
-/obj/machinery/tele_pad,
+/obj/machinery/teleport/pad,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
 "bo" = (
-/obj/machinery/tele_projector{
+/obj/machinery/teleport/projector{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning,

@@ -1222,7 +1222,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "fR" = (
-/obj/machinery/tele_projector,
+/obj/machinery/teleport/projector,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -9014,7 +9014,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_as)
 "RO" = (
-/obj/machinery/tele_pad,
+/obj/machinery/teleport/pad,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},

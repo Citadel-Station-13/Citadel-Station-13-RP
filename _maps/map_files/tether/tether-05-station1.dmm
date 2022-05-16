@@ -11438,7 +11438,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/secondary)
 "ayv" = (
-/obj/machinery/tele_projector{
+/obj/machinery/teleport/projector{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11527,7 +11527,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/secondary/teleporter)
 "ayK" = (
-/obj/machinery/tele_pad{
+/obj/machinery/teleport/pad{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/dark,

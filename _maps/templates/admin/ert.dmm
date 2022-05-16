@@ -1092,7 +1092,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/barracks)
 "jI" = (
-/obj/machinery/tele_projector,
+/obj/machinery/teleport/projector,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/teleporter)
 "jK" = (
@@ -2990,7 +2990,7 @@
 /area/ship/ert/teleporter)
 "wo" = (
 /obj/machinery/light,
-/obj/machinery/tele_pad,
+/obj/machinery/teleport/pad,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/teleporter)
