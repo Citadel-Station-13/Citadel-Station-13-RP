@@ -348,7 +348,7 @@ SUBSYSTEM_DEF(garbage)
 #ifdef TESTING
 /proc/__memdbg_count_datum_refs()
 	var/list/L = list()
-	var/list/L2 = list()
+	// var/list/L2 = list()
 	var/c = 0
 	var/static/list/blacklist = list(
 		"parent_type" = TRUE,
@@ -396,7 +396,6 @@ SUBSYSTEM_DEF(garbage)
 				count++
 				L4 = val
 				lcount += L4.len
-				L2[val] = TRUE
 				continue
 		L["[D.type] - lists"] += lcount
 		L[D.type] += count
@@ -417,14 +416,11 @@ SUBSYSTEM_DEF(garbage)
 				count++
 				L4 = val
 				lcount += L4.len
-				L2[val] = TRUE
 				continue
 		L["[D.type] - lists"] += lcount
 		L[D.type] += count
 		++c
-	for(var/list/L3 as anything in L2)
-		L["ref count in /list"] += L3.len
-	var/list/built = list("counted [c] datums and [L2.len] lists in [round((world.timeofday - start) * 0.1, 0.01)] seconds")
+	var/list/built = list("counted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds")
 	start = world.timeofday
 	built += "sorted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds"
 	sortTim(L, /proc/cmp_numeric_dsc, associative = TRUE)
