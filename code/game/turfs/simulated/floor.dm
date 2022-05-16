@@ -85,8 +85,7 @@
 	if(!init)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
-	else		// if we are initing we aren't changeturfing which usually handles levelupdates
-		levelupdate()
+	levelupdate()
 
 //This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
 //This proc auto corrects the grass tiles' siding.
