@@ -11,10 +11,9 @@
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_opening", src)
 		density = 0
-		blocks_air = ZONE_BLOCKED
+		blocks_air = FALSE
 		update_icon()
 		update_air()
-		src.blocks_air = 0
 		set_opacity(0)
 		for(var/turf/simulated/turf in loc)
 			air_master.mark_for_update(turf)
@@ -22,10 +21,9 @@
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_closing", src)
 		density = 1
-		blocks_air = AIR_BLOCKED
+		blocks_air = TRUE
 		update_icon()
 		update_air()
-		src.blocks_air = 1
 		set_opacity(1)
 		for(var/turf/simulated/turf in loc)
 			air_master.mark_for_update(turf)
