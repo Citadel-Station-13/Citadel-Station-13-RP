@@ -94,7 +94,7 @@
 	name = "\improper Shuttle Station"
 	icon = 'icons/obj/doors/Doorextglass.dmi'
 	icon_state = "door_closed"
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
 	desc = "The shuttle bay you might've came in from. You could leave the base easily using this."
