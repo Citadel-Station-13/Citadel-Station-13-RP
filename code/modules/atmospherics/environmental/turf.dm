@@ -25,11 +25,12 @@
 		return ATMOS_PASS_NOT_BLOCKED
 	// we only care about objects, compiler fastpath
 	// plus, wtf are you doing using /atom/movable to block atmos??
+	. = ATMOS_PASS_NOT_BLOCKED
 	for(var/obj/O in contents)
-		. = v? CANVERTICALATMOSPASS(O, T, d) : CANATMOSPASS(O, T, d)
-		if(. != ATMOS_PASS_NOT_BLOCKED)
+		. = min(., v? CANVERTICALATMOSPASS(O, T, d) : CANATMOSPASS(O, T, d))
+		if(. == ATMOS_PASS_AIR_BLOCKED)
+			// can't go lower than this
 			return
-	return ATMOS_PASS_NOT_BLOCKED
 
 /turf/proc/CheckAirBlock(turf/other)
 	var/d = other.z == z? get_dir(src, other) : get_dir_multiz(src, other)
