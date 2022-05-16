@@ -90,7 +90,7 @@
 		c_copy_air()
 		zone = null //Easier than iterating through the list at the zone.
 
-	var/s_block = CanAtmosPass(src, NOnE)
+	var/s_block = CanAtmosPass(src, NONE)
 	if(s_block == ATMOS_PASS_AIR_BLOCKED)
 		#ifdef ZASDBG
 		if(verbose) to_chat(world, "Self-blocked.")

@@ -276,19 +276,18 @@ Alien plants should do something if theres a lot of poison
 	if(linked_node != src)
 		color = linked_node.set_color
 
-	direction_loop:
-		for(var/dirn in GLOB.cardinal)
-			var/turf/T = get_step(src, dirn)
+	for(var/dirn in GLOB.cardinal)
+		var/turf/T = get_step(src, dirn)
 
-			if (!istype(T) || T.density || locate(/obj/effect/alien/weeds) in T || istype(T.loc, /area/arrival) || istype(T, /turf/space))
-				continue
+		if (!istype(T) || T.density || locate(/obj/effect/alien/weeds) in T || istype(T.loc, /area/arrival) || istype(T, /turf/space))
+			continue
 
-			if(U.CheckAirBlock(T) == AIR_BLOCKED)
-				continue
+		if(U.CheckAirBlock(T) == AIR_BLOCKED)
+			continue
 
-			var/obj/effect/E = new /obj/effect/alien/weeds(T, linked_node)
+		var/obj/effect/E = new /obj/effect/alien/weeds(T, linked_node)
 
-			E.color = color
+		E.color = color
 
 	if(istype(src, /obj/effect/alien/weeds/node))
 		var/obj/effect/alien/weeds/node/N = src

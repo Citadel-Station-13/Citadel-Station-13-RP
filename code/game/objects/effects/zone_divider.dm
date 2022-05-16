@@ -8,7 +8,7 @@
 	density = FALSE
 	opacity = FALSE
 
-/obj/effect/zone_divider/CanZASPass(turf/T, is_zone)
+/obj/effect/zone_divider/CanAtmosPass(turf/T, d)
 	// Special case to prevent us from being part of a zone during the first air master tick.
 	// We must merge ourselves into a zone on next tick.  This will cause a bit of lag on
 	// startup, but it can't really be helped you know?
