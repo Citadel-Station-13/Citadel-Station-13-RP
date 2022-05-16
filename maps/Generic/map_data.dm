@@ -15,7 +15,7 @@
     height = 5
 
 /atom/movable/landmark/map_data/west_plains
-    height = 2
+    height = 3
 
 // See beach.dm for more details on this. Placeholder for now to stop compiling issues -Bloop
 /obj/away_mission_init/beachcave

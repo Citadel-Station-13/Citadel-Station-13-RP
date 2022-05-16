@@ -9887,6 +9887,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
+"AW" = (
+/obj/effect/blocker,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Bd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 8
@@ -12875,7 +12879,7 @@
 /area/maintenance/cargo/mining)
 
 (1,1,1) = {"
-yT
+AW
 yT
 yT
 yT
@@ -13069,7 +13073,7 @@ aa
 Xh
 "}
 (2,1,1) = {"
-WA
+AW
 WA
 WA
 WA
@@ -13263,7 +13267,7 @@ aa
 Xh
 "}
 (3,1,1) = {"
-WA
+AW
 WA
 WA
 WA
@@ -13457,7 +13461,7 @@ aa
 Xh
 "}
 (4,1,1) = {"
-WA
+AW
 WA
 WA
 WA
@@ -13651,7 +13655,7 @@ aa
 Xh
 "}
 (5,1,1) = {"
-WA
+AW
 WA
 WA
 WA
@@ -13845,7 +13849,7 @@ aa
 Xh
 "}
 (6,1,1) = {"
-WA
+AW
 WA
 WA
 WA
@@ -14039,7 +14043,7 @@ aa
 Xh
 "}
 (7,1,1) = {"
-WA
+AW
 WA
 WA
 WA
@@ -14233,7 +14237,7 @@ aa
 Xh
 "}
 (8,1,1) = {"
-WA
+AW
 WA
 WA
 WA
@@ -14427,7 +14431,7 @@ aa
 Xh
 "}
 (9,1,1) = {"
-WA
+AW
 WA
 WA
 WA
@@ -14621,7 +14625,7 @@ aa
 Xh
 "}
 (10,1,1) = {"
-WA
+AW
 WA
 WA
 WA
@@ -14815,7 +14819,7 @@ aa
 Xh
 "}
 (11,1,1) = {"
-WA
+AW
 WA
 WA
 WA
@@ -15009,7 +15013,7 @@ aa
 Xh
 "}
 (12,1,1) = {"
-UC
+AW
 UC
 UC
 UC

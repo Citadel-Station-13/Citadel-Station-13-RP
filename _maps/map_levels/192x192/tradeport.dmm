@@ -4219,6 +4219,7 @@
 "pM" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
+/obj/item/material/knife/tacknife/dataknife,
 /obj/item/gun/energy/frontier/taj,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)

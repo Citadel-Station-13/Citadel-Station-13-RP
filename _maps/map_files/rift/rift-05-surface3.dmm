@@ -5834,6 +5834,21 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"kr" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(160)
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop/landing_pad)
 "ks" = (
 /obj/structure/table/standard,
 /obj/machinery/light{
@@ -10598,6 +10613,14 @@
 /obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/cliff_north)
+"tZ" = (
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 22;
+	req_one_access = list(160)
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/rift/trade_shop/landing_pad)
 "ua" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/light,
@@ -16398,6 +16421,10 @@
 "Fw" = (
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
+"Fx" = (
+/obj/structure/metal_edge,
+/turf/simulated/floor/airless/ceiling,
+/area/rift/surfacebase/outside/outside3)
 "Fy" = (
 /obj/machinery/telecomms/server/presets/medical,
 /turf/simulated/floor/tiled/dark{
@@ -22715,6 +22742,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
+"Sb" = (
+/turf/simulated/floor/airless/ceiling,
+/area/rift/surfacebase/outside/outside3)
 "Sc" = (
 /obj/structure/railing{
 	dir = 8
@@ -36023,16 +36053,16 @@ us
 us
 us
 mn
-np
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+Fx
+Sb
+Sb
+Sb
+Sb
+Sb
+Sb
+Sb
+Sb
+Sb
 Oi
 Oi
 Oi
@@ -36219,14 +36249,14 @@ us
 mn
 jp
 cH
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+Sb
+Sb
+Sb
+Sb
+Sb
+Sb
+Sb
+Sb
 Oi
 Oi
 Oi
@@ -36414,13 +36444,13 @@ mn
 jp
 cH
 cH
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+Sb
+Sb
+Sb
+Sb
+Sb
+Sb
+Sb
 Oi
 Oi
 Oi
@@ -37001,7 +37031,7 @@ jy
 qs
 qs
 jy
-uQ
+kr
 jy
 jp
 cH
@@ -37579,7 +37609,7 @@ RZ
 qz
 jy
 kf
-kf
+tZ
 pZ
 mT
 Ji
