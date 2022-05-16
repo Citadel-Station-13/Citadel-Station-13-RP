@@ -282,7 +282,7 @@ Alien plants should do something if theres a lot of poison
 		if (!istype(T) || T.density || locate(/obj/effect/alien/weeds) in T || istype(T.loc, /area/arrival) || istype(T, /turf/space))
 			continue
 
-		if(U.CheckAirBlock(T) == AIR_BLOCKED)
+		if(U.CheckAirBlock(T) == ATMOS_PASS_AIR_BLOCKED)
 			continue
 
 		var/obj/effect/E = new /obj/effect/alien/weeds(T, linked_node)

@@ -122,7 +122,7 @@
 			continue
 
 		var/block = unsim.CanAtmosPass(src, REVERSE_DIR(d))
-		if(block & AIR_BLOCKED)
+		if(block == ATMOS_PASS_AIR_BLOCKED)
 
 			#ifdef ZASDBG
 			if(verbose) to_chat(world, "[d] is blocked.")
@@ -132,7 +132,7 @@
 			continue
 
 		var/r_block = CanAtmosPass(unsim, d)
-		if(r_block & AIR_BLOCKED)
+		if(r_block == ATMOS_PASS_AIR_BLOCKED)
 
 			#ifdef ZASDBG
 			if(verbose) to_chat(world, "[d] is blocked.")
@@ -164,7 +164,7 @@
 					//We do not merge if
 					//    they are blocking us and we are not blocking them, or if
 					//    we are blocking them and not blocking ourselves - this prevents tiny zones from forming on doorways.
-					if(((block & ZONE_BLOCKED) && !(r_block & ZONE_BLOCKED)) || ((r_block & ZONE_BLOCKED) && !(s_block & ZONE_BLOCKED)))
+					if(((block == ATMOS_PASS_ZONE_BLOCKED) && (r_block != ATMOS_PASS_ZONE_BLOCKED)) || ((r_block == ATMOS_PASS_ZONE_BLOCKED) && (s_block != ATMOS_PASS_ZONE_BLOCKED)))
 						#ifdef ZASDBG
 						if(verbose) to_chat(world, "[d] is zone blocked.")
 						//dbg(zone_blocked, d)

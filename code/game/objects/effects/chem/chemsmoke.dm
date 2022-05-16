@@ -211,7 +211,7 @@
 					continue
 				if(!(target in targetTurfs))
 					continue
-				if(current.CheckAirBlock(target) == AIR_BLOCKED) //this is needed to stop chemsmoke from passing through thin window walls
+				if(current.CheckAirBlock(target) == ATMOS_PASS_AIR_BLOCKED) //this is needed to stop chemsmoke from passing through thin window walls
 					continue
 				pending += target
 

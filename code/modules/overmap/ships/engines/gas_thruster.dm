@@ -144,7 +144,7 @@
 		if(!next)
 			// not found
 			return TRUE
-		if(T.CheckAirBlock(next) == AIR_BLOCKED)
+		if(T.CheckAirBlock(next) == ATMOS_PASS_AIR_BLOCKED)
 			// couldn't go past
 			return TRUE
 	return FALSE
