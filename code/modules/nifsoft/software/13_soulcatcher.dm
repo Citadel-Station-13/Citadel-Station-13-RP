@@ -544,10 +544,10 @@
 
 	src.nsay_act(message)
 
-/mob/proc/nsay_act(message as text|null)
+/mob/proc/nsay_act(message)
 	to_chat(src, SPAN_WARNING("You must be a humanoid with a NIF implanted to use that."))
 
-/mob/living/carbon/human/nsay_act(message as text|null)
+/mob/living/carbon/human/nsay_act(message)
 	if(stat != CONSCIOUS)
 		to_chat(src, SPAN_WARNING("You can't use NSay while unconscious."))
 		return
@@ -562,22 +562,22 @@
 		to_chat(src, SPAN_WARNING("You need a loaded mind to use NSay."))
 		return
 	if(!message)
-		message = input(usr, "Type a message to say.","Speak into Soulcatcher") as text|null
+		message = input(usr, "Type a message to say.","Speak into Soulcatcher") as message|null
 	if(message)
 		var/sane_message = sanitize(message)
 		SC.say_into(sane_message,src)
 
-/mob/proc/nme(message as text|null)
+/mob/proc/nme(message as message|null)
 	set name = "NMe"
 	set desc = "Emote into your NIF's Soulcatcher."
 	set category = "IC"
 
 	src.nme_act(message)
 
-/mob/proc/nme_act(message as text|null)
+/mob/proc/nme_act(message)
 	to_chat(src, SPAN_WARNING("You must be a humanoid with a NIF implanted to use that."))
 
-/mob/living/carbon/human/nme_act(message as text|null)
+/mob/living/carbon/human/nme_act(message)
 	if(stat != CONSCIOUS)
 		to_chat(src, SPAN_WARNING("You can't use NMe while unconscious."))
 		return
@@ -593,7 +593,7 @@
 		return
 
 	if(!message)
-		message = input(usr, "Type an action to perform.","Emote into Soulcatcher") as text|null
+		message = input(usr, "Type an action to perform.","Emote into Soulcatcher") as message|null
 	if(message)
 		var/sane_message = sanitize(message)
 		SC.emote_into(sane_message,src)
