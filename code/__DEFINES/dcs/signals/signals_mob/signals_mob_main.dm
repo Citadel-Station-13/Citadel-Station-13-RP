@@ -96,6 +96,8 @@
 	////#define MOB_DEADSAY_SIGNAL_INTERCEPT (1<<0)
 /// From /mob/living/emote(): ()
 ////#define COMSIG_MOB_EMOTE "mob_emote"
+/// Sent on custom emote. (mob, raw_emote)
+#define COMSIG_MOB_CUSTOM_EMOTE				"custom_emote"
 /// From base of mob/swap_hand(): (obj/item)
 ////#define COMSIG_MOB_SWAP_HANDS "mob_swap_hands"
 	////#define COMPONENT_BLOCK_SWAP (1<<0)
