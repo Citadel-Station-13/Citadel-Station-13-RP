@@ -165,9 +165,9 @@
 // No falling if we've got our boosters on
 /obj/mecha/combat/fighter/can_fall()
 	if(stabilization_enabled && has_charge(step_energy_drain))
-		return TRUE
-	else
 		return FALSE
+	else
+		return TRUE
 
 /obj/mecha/combat/fighter/proc/consider_gravity(var/moved = FALSE)
 	var/gravity = has_gravity()

@@ -80,9 +80,9 @@
 // No falling if we've got our boosters on
 /obj/mecha/working/hoverpod/can_fall()
 	if(stabilization_enabled && has_charge(step_energy_drain))
-		return TRUE
-	else
 		return FALSE
+	else
+		return TRUE
 
 /*	// One horrific bastardization of glorious inheritence dead. A billion to go. ~Mech
 //these three procs overriden to play different sounds
