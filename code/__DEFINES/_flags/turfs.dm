@@ -10,7 +10,7 @@
 /// Considered open - below turfs will get the openspace overlay if so
 #define Z_CONSIDERED_OPEN	(1<<4)
 
-DEFINE_BITFIELD("z_flags", list(
+DEFINE_BITFIELD(z_flags, list(
 	"Z_AIR_UP" = Z_AIR_UP,
 	"Z_AIR_DOWN" = Z_AIR_DOWN,
 	"Z_OPEN_UP" = Z_OPEN_UP,

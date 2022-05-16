@@ -12,7 +12,7 @@
 /turf/CanAtmosPass(turf/T, d)
 	if(blocks_air)
 		return ATMOS_PASS_AIR_BLOCKED
-	var/v = dir & (UP|DOWN)
+	var/v = d & (UP|DOWN)
 	switch(v)
 		if(UP)
 			if(!(z_flags & Z_AIR_UP))
@@ -29,7 +29,7 @@
 		. = v? CANVERTICALATMOSPASS(O, T, dir) : CANATMOSPASS(O, T, dir)
 		if(. != ATMOS_PASS_NOT_BLOCKED)
 			return
-	// at this point . will be atmos pass not blocked and we already checked ourselves so we're gucci with returning .
+	return ATMOS_PASS_NOT_BLOCKED
 
 /turf/proc/CheckAirBlock(turf/other)
 	var/d = other.z == z? get_dir(src, other) : get_dir_multiz(src, other)
