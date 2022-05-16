@@ -26,7 +26,7 @@
 	density = 1
 	opacity = 1
 	anchored = 1
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/health = 200
 	//var/mob/living/affecting = null
 

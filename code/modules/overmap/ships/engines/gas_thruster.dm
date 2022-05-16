@@ -59,7 +59,7 @@
 	icon_state = "nozzle"
 	opacity = TRUE
 	density = TRUE
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_FUEL
 
 	// construct_state = /decl/machine_construction/default/panel_closed
@@ -137,17 +137,17 @@
 	return
 
 /obj/machinery/atmospherics/component/unary/engine/proc/check_blockage()
-	blockage = FALSE
-	var/exhaust_dir = reverse_direction(dir)
-	var/turf/A = get_step(src, exhaust_dir)
-	var/turf/B = A
-	while(isturf(A) && !(istype(A, /turf/space) || isopenturf(A)))
-		if((B.c_airblock(A)) & AIR_BLOCKED)
-			blockage = TRUE
-			break
-		B = A
-		A = get_step(A, exhaust_dir)
-	return blockage
+	var/exhaust_dir = REVERSE_DIR(dir)
+	var/turf/T = get_step(src, exhaust_dir)		// turf we're on is blocked by ourselves
+	while(!(isspaceturf(T) || (T.z_flags & (Z_AIR_UP | Z_AIR_DOWN))))
+		var/turf/next = get_step(T, exhaust_dir)
+		if(!next)
+			// not found
+			return TRUE
+		if(T.CheckAirBlock(next) == AIR_BLOCKED)
+			// couldn't go past
+			return TRUE
+	return FALSE
 
 /obj/machinery/atmospherics/component/unary/engine/proc/burn()
 	if(!is_on())

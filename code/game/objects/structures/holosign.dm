@@ -44,7 +44,7 @@
 	icon_state = "holo_combifan"
 	anchored = TRUE
 	density = FALSE
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	layer = ABOVE_TURF_LAYER
 	alpha = 150
 
