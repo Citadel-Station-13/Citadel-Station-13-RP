@@ -63,7 +63,7 @@
 	desc = "Looks slippery."
 	movement_cost = 4
 
-// Ice that is safe to walk on. 
+// Ice that is safe to walk on.
 /turf/simulated/floor/outdoors/safeice
 	name = "ice"
 	icon_state = "ice"

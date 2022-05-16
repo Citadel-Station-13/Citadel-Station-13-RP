@@ -154,6 +154,7 @@
 	name = "bluespace"
 	icon = 'icons/turf/space.dmi'
 	icon_state = "bluespace"
+
 /turf/space/bluespace/Initialize(mapload)
 	. = ..()
 	icon = 'icons/turf/space.dmi'
@@ -164,6 +165,7 @@
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
+
 /turf/space/sandyscroll/Initialize(mapload)
 	. = ..()
 	icon_state = "desert_ns"
