@@ -14,8 +14,7 @@
 #define ATMOS_PASS_VERTICAL_DEFAULT	-3
 
 #define CANATMOSPASS(A, O, D) ( A.CanAtmosPass == ATMOS_PASS_PROC ? A.CanAtmosPass(O, D) : ( A.CanAtmosPass == ATMOS_PASS_DENSITY ? (A.density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED) : A.CanAtmosPass ) )
-#define CANVERTICALATMOSPASS(A, O, D) ( A.CanAtmosPassVertical == ATMOS_PASS_PROC ? A.CanAtmosPass(O, D) : ( A.CanAtmosPassVertical == ATMOS_PASS_DENSITY ? (A.density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED) : A.CanAtmosPassVertical ) )
-
+#define CANVERTICALATMOSPASS(A, O, D) (A.CanAtmosPassvertical == ATMOS_PASS_VERTICAL_DEFAULT? CAN_ATMOS_PASS(A, O, D) : ( A.CanAtmosPassVertical == ATMOS_PASS_PROC ? A.CanAtmosPass(O, D) : ( A.CanAtmosPassVertical == ATMOS_PASS_DENSITY ? (A.density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED) : A.CanAtmosPassVertical ) ))
 
 /**
  * LEGACY BELOW

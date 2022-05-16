@@ -95,9 +95,11 @@ proc/soft_assert(thing,fail)
 
 		else
 			to_chat(mob, "The initial turf only can connect. :\\")
+		return
 	else
 		if(t_block == ATMOS_PASS_AIR_BLOCKED)
 			to_chat(mob, "The other turf can connect, but not the initial turf. :/")
+			return
 
 		else
 			to_chat(mob, "Both turfs can connect! :)")
