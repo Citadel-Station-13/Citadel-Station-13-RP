@@ -297,7 +297,7 @@
 	if(!sample)
 		return FALSE
 
-	if(vacuum_exception && (!total_moles ^ !sample.total_moles))
+	if(vacuum_exception && ((!total_moles) ^ (!sample.total_moles)))
 		return FALSE
 
 	if(abs(temperature - sample.temperature) > MINIMUM_MEANINGFUL_TEMPERATURE_DELTA)
