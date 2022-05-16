@@ -200,15 +200,15 @@
 /atom/movable/landmark/spawnpoint/job/ai
 	name = "AI"
 	icon_state = "AI"
-	delete_after_roundstart = TRUE
+	delete_on_roundstart = TRUE
 	job_path = /datum/job/station/ai
 	var/primary_ai = TRUE
 	var/latejoin_active = TRUE
 
 /atom/movable/landmark/spawnpoint/job/ai/OnRoundstart()
-	. = ..()
 	if(latejoin_active && !spawned)
 		empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
+	return ..()		// qdel happens AFTER we spawn core THANK YOU!
 
 /atom/movable/landmark/spawnpoint/job/ai/secondary
 	icon_state = "AI"

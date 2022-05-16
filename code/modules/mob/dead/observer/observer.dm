@@ -496,9 +496,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	//find a viable mouse candidate
 	var/mob/living/simple_mob/animal/passive/mouse/host
-	var/obj/machinery/atmospherics/unary/vent_pump/vent_found
+	var/obj/machinery/atmospherics/component/unary/vent_pump/vent_found
 	var/list/found_vents = list()
-	for(var/obj/machinery/atmospherics/unary/vent_pump/v in machines)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/v in GLOB.machines)
 		if(!v.welded && v.z == T.z && v.network && v.network.normal_members.len > 20)
 			found_vents.Add(v)
 	if(found_vents.len)

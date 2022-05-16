@@ -205,7 +205,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/effect/alien/weeds/Initialize(pos, node)
+/obj/effect/alien/weeds/Initialize(mapload, node)
 	. = ..()
 	if(istype(loc, /turf/space))
 		qdel(src)

@@ -35,7 +35,7 @@
 	var/list/levels_for_distress
 	var/list/unowned_areas // areas we don't own despite them being present on our z
 
-/obj/effect/overmap/visitable/Initialize()
+/obj/effect/overmap/visitable/Initialize(mapload)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return
@@ -60,7 +60,7 @@
 
 	if(known)
 		plane = ABOVE_LIGHTING_PLANE
-		for(var/obj/machinery/computer/ship/helm/H in global.machines)
+		for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
 			H.get_known_sectors()
 	else
 		real_appearance = image(icon, src, icon_state)

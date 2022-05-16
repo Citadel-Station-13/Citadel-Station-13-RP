@@ -387,7 +387,7 @@
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "bj" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,

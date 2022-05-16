@@ -121,7 +121,7 @@
 	else
 		return 0
 
-/obj/machinery/telecomms/Initialize()
+/obj/machinery/telecomms/Initialize(mapload)
 	GLOB.telecomms_list += src
 	. = ..()
 
@@ -167,14 +167,13 @@
 		icon_state = "[initial(icon_state)]_off"
 
 /obj/machinery/telecomms/proc/update_power()
-
 	if(toggled)
-		if(stat & (BROKEN|NOPOWER|EMPED) || integrity <= 0) // if powered, on. if not powered, off. if too damaged, off
-			on = 0
+		if(machine_stat & (BROKEN|NOPOWER|EMPED) || integrity <= 0) // if powered, on. if not powered, off. if too damaged, off
+			on = FALSE
 		else
-			on = 1
+			on = TRUE
 	else
-		on = 0
+		on = FALSE
 
 /obj/machinery/telecomms/process()
 	update_power()
@@ -190,11 +189,11 @@
 
 /obj/machinery/telecomms/emp_act(severity)
 	if(prob(100/severity))
-		if(!(stat & EMPED))
-			stat |= EMPED
+		if(!(machine_stat & EMPED))
+			machine_stat |= EMPED
 			var/duration = (300 * 10)/severity
 			spawn(rand(duration - 20, duration + 20)) // Takes a long time for the machines to reboot.
-				stat &= ~EMPED
+				machine_stat &= ~EMPED
 	..()
 
 /obj/machinery/telecomms/proc/checkheat()
@@ -225,7 +224,7 @@
 	if (!use_power)
 		return
 
-	if(!(stat & (NOPOWER|BROKEN)))
+	if(!(machine_stat & (NOPOWER|BROKEN)))
 		var/turf/simulated/L = loc
 		if(istype(L))
 			var/datum/gas_mixture/env = L.return_air()
@@ -270,7 +269,7 @@
 
 	var/list/linked_radios_weakrefs = list()
 
-/obj/machinery/telecomms/receiver/Initialize()
+/obj/machinery/telecomms/receiver/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -353,7 +352,7 @@
 	long_range_link = 1
 	netspeed = 40
 
-/obj/machinery/telecomms/hub/Initialize()
+/obj/machinery/telecomms/hub/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -393,7 +392,7 @@
 	var/broadcasting = 1
 	var/receiving = 1
 
-/obj/machinery/telecomms/relay/Initialize()
+/obj/machinery/telecomms/relay/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -450,7 +449,7 @@
 	netspeed = 40
 	var/change_frequency = 0
 
-/obj/machinery/telecomms/bus/Initialize()
+/obj/machinery/telecomms/bus/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -506,7 +505,7 @@
 	circuit = /obj/item/circuitboard/telecomms/processor
 	var/process_mode = 1 // 1 = Uncompress Signals, 0 = Compress Signals
 
-/obj/machinery/telecomms/processor/Initialize()
+/obj/machinery/telecomms/processor/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -564,7 +563,7 @@
 	. = ..()
 	server_radio = new()
 
-/obj/machinery/telecomms/server/Initialize()
+/obj/machinery/telecomms/server/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 

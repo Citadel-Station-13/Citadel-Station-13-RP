@@ -7,14 +7,14 @@
 #define EFFICENCY_LIMIT_MULT 1
 
 
-/obj/machinery/atmospherics/binary/massive_heat_pump
+/obj/machinery/atmospherics/component/binary/massive_heat_pump
 	name = "High performance heat pump"
 	use_power = USE_POWER_OFF
 	idle_power_usage = 150
 	power_rating = MAX_POWER_FOR_MASSIVE
 	var/target_temp = T20C
 	var/min_heat_setting = TCMB
-	var/max_heat_setting = 99999999	
+	var/max_heat_setting = 99999999
 
 	icon = 'icons/obj/machines/massive_pumps.dmi'
 	icon_state = "pump"
@@ -23,7 +23,7 @@
 	density = 1
 	circuit = /obj/item/circuitboard/massive_heat_pump
 
-	var/power_level = MAX_POWER_FOR_MASSIVE//So we can limit the power we work with and 
+	var/power_level = MAX_POWER_FOR_MASSIVE//So we can limit the power we work with and
 	//dont just have a stupid pump that drains all power
 
 	var/obj/machinery/power/powersupply/power_machine //for funky massive power machines
@@ -32,7 +32,7 @@
 	var/on = 0
 	var/efficiency = 0
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/Initialize(mapload)
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/Initialize(mapload)
 	. = ..()
 	power_machine = new(src)
 
@@ -51,21 +51,21 @@
 	I.color = PIPE_COLOR_GREY
 	overlays += I
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/Destroy()
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/Destroy()
 	. = ..()
 	qdel(power_machine)
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/process(delta_time)
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/process(delta_time)
 	if(!network1 || !network2)
 		build_network()//built networks if we are missing them
 		network1?.update = 1
 		network2?.update = 1
 		return
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
-	
+
 	if(!power_machine || !power_machine.powernet)
-		if(!power_machine || !power_machine.connect_to_network())//returns 0 if it fails to find a 
+		if(!power_machine || !power_machine.connect_to_network())//returns 0 if it fails to find a
 			return//make sure we are connected to a powernet
 
 	power_rating = power_machine.surplus()//update power rateing to what ever is avaiable
@@ -91,7 +91,7 @@
 
 	power_draw = abs(energy_transfered/performance_factor)
 	air2.add_thermal_energy(-air1.add_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
-	
+
 	if (power_draw >= 0)
 		last_power_draw = power_draw
 
@@ -104,13 +104,13 @@
 
 	return 1
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/proc/get_thermal_efficency()
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/proc/get_thermal_efficency()
 	if((target_temp < air2.temperature))
 		return clamp((air2.temperature / air1.temperature) * EFFICENCY_MULT, 0, 1 * EFFICENCY_LIMIT_MULT)
 	else if((target_temp > air2.temperature))
 		return clamp((air1.temperature / air2.temperature) * EFFICENCY_MULT, 0, 1 * EFFICENCY_LIMIT_MULT)
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/proc/handle_passive_flow()
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/proc/handle_passive_flow()
 	var/air_heat_capacity = air1.heat_capacity()
 	var/other_air_heat_capacity = air2.heat_capacity()
 	var/combined_heat_capacity = other_air_heat_capacity + air_heat_capacity
@@ -122,14 +122,14 @@
 		air1.temperature = new_temperature
 		air2.temperature = new_temperature
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/proc/check_passive_opportunity()
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/proc/check_passive_opportunity()
     if((target_temp < air2.temperature) && (air1.temperature < air2.temperature - 5))//Little offsets to prevent just constant passive flow for minor temperature differences
         return TRUE
     if((target_temp > air2.temperature) && (air1.temperature > air2.temperature + 5))
         return TRUE
     return FALSE
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/attackby(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -141,7 +141,7 @@
 		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]!"))
 		return
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/update_icon()
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/update_icon()
 	if(inoperable() || !anchored || !power_machine.powernet)
 		icon_state = "pump"
 	else if(use_power)
@@ -156,8 +156,8 @@
 		icon_state = "pump"
 	return TRUE
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/ui_interact(mob/user, datum/tgui/ui)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/ui_interact(mob/user, datum/tgui/ui)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return FALSE
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -165,7 +165,7 @@
 		ui.open()
 
 //This is the data which will be sent to the ui
-/obj/machinery/atmospherics/binary/massive_heat_pump/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/ui_data(mob/user)
 	var/list/data = list()
 
 	data = list(
@@ -183,7 +183,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/attack_hand(mob/user)
 	if(..())
 		return
 	add_fingerprint(usr)
@@ -192,7 +192,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/binary/massive_heat_pump/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/massive_heat_pump/ui_act(action, params)
 	if(..())
 		return TRUE
 

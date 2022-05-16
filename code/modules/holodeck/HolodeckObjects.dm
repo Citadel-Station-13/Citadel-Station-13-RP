@@ -410,7 +410,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 
 /obj/machinery/readybutton/attack_hand(mob/user as mob)
 
-	if(user.stat || stat & (NOPOWER|BROKEN))
+	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
 
@@ -495,3 +495,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 /mob/living/simple_mob/animal/space/carp/holodeck/proc/derez()
 	visible_message("<span class='notice'>\The [src] fades away!</span>")
 	qdel(src)
+
+/obj/item/paper/fluff/holodeck/trek_diploma
+	name = "paper - Starfleet Academy Diploma"
+	info = {"<h2>Starfleet Academy</h2></br><p>Official Diploma</p></br>"}

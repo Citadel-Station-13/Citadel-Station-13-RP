@@ -4,7 +4,7 @@
 /area/class_h/POIs/landing_pad)
 "b" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -146,7 +146,7 @@
 /area/class_h/POIs/landing_pad)
 "B" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "rnd_s_airlock_pump"

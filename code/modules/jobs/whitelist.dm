@@ -8,7 +8,7 @@ var/list/whitelist = list()
 	return 1
 
 /proc/load_whitelist()
-	whitelist = file2list(WHITELISTFILE)
+	whitelist = world.file2list(WHITELISTFILE)
 	if(!whitelist.len)	whitelist = null
 
 /proc/check_whitelist(mob/M /*, var/rank*/)

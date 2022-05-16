@@ -8,10 +8,13 @@
 #define LIGHT_EMPTY 1
 #define LIGHT_BROKEN 2
 #define LIGHT_BURNED 3
-#define LIGHT_BULB_TEMPERATURE 400 //K - used value for a 60W bulb
-#define LIGHTING_POWER_FACTOR 2		//5W per luminosity * range		//VOREStation Edit: why the fuck are lights eating so much power, 2W per thing
-#define LIGHT_EMERGENCY_POWER_USE 0.2 //How much power emergency lights will consume per tick
-
+///K - used value for a 60W bulb
+#define LIGHT_BULB_TEMPERATURE 400
+///VOREStation Edit: why the fuck are lights eating so much power, 2W per thing
+///5W per luminosity * range
+#define LIGHTING_POWER_FACTOR 2
+///How much power emergency lights will consume per tick
+#define LIGHT_EMERGENCY_POWER_USE 0.2
 var/global/list/light_type_cache = list()
 /proc/get_light_type_instance(var/light_type)
 	. = light_type_cache[light_type]

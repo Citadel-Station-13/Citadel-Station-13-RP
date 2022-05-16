@@ -88,9 +88,8 @@
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
 
-	var/safety_state = 1
-	var/has_safety = TRUE
-	var/safety_icon 	   //overlay to apply to gun based on safety state, if any
+	/// whether or not we have safeties and if safeties are on
+	var/safety_state = GUN_SAFETY_ON
 
 	var/dna_lock = 0				//whether or not the gun is locked to dna
 	var/obj/item/dnalockingchip/attached_lock
@@ -231,12 +230,12 @@
 		O.emp_act(severity)
 
 /obj/item/gun/dropped(mob/living/user)
-	update_icon()
 	. = ..()
+	update_appearance()
 
-/obj/item/gun/equipped()
-	update_icon()
+/obj/item/gun/equipped(mob/user, slot)
 	. = ..()
+	update_appearance()
 
 /obj/item/gun/afterattack(atom/A, mob/living/user, adjacent, params)
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
@@ -396,7 +395,7 @@
 			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
 		return
 
-	if(safety())
+	if(check_safety())
 		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
 		//will reflexively do it anyway
 		if(user.a_intent == INTENT_HARM && prob(50))
@@ -404,6 +403,10 @@
 		else
 			handle_click_safety(user)
 			return
+
+	if(user?.client?.is_preference_enabled(/datum/client_preference/help_intent_firing) && user.a_intent == INTENT_HELP)
+		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
+		return
 
 	var/shoot_time = (burst - 1)* burst_delay
 
@@ -564,11 +567,11 @@
 	if (user)
 		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
 	else
-		src.visible_message("*click click*")
-	playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
+		visible_message("*click click*")
+	playsound(src, 'sound/weapons/empty.ogg', 100, 1)
 
 /obj/item/gun/proc/handle_click_safety(mob/user)
-	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"))
+	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
 
 //called after successfully firing
 /obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
@@ -780,8 +783,8 @@
 	if(firemodes.len > 1)
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		. += "The fire selector is set to [current_mode.name]."
-	if(has_safety)
-		to_chat(user, SPAN_NOTICE("The safety is [safety() ? "on" : "off"]."))
+	if(safety_state != GUN_NO_SAFETY)
+		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)
@@ -812,41 +815,52 @@
 		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
 	return 0
 
-/obj/item/gun/update_icon()
+/obj/item/gun/update_overlays()
 	. = ..()
-	//Code for handling safety icon updates
-	overlays.Cut()
-
-	var/mob/living/M = loc
-	if(istype(M)) //If we are currently being held by a mob
-		overlays += image('icons/obj/gun/gui.dmi', "safety[safety()]")
-	if(safety_icon)
-		overlays += image(icon, "[safety_icon][safety()]")
-
-
-/obj/item/gun/proc/toggle_safety(var/mob/user)
-	if (user.stat || user.restrained() || user.lying)
-		to_chat(user, SPAN_WARNING("You can't do that right now."))
+	if(!(item_flags & IN_INVENTORY))
 		return
+	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
 
-	safety_state = !safety_state
-	update_icon()
+/obj/item/gun/proc/toggle_safety(mob/user)
 	if(user)
-		user.visible_message(SPAN_WARNING("[user] switches the safety of \the [src] [safety_state ? "on" : "off"]."), SPAN_NOTICE("You switch the safety of \the [src] [safety_state ? "on" : "off"]."))
-		playsound(src, 'sound/weapons/flipblade.ogg', 15, 1)
+		if(user.stat || user.restrained() || user.incapacitated(INCAPACITATION_DISABLED))
+			to_chat(user, SPAN_WARNING("You can't do that right now."))
+			return
+	if(safety_state == GUN_NO_SAFETY)
+		to_chat(user, SPAN_WARNING("[src] has no safety."))
+		return
+	var/current = check_safety()
+	switch(safety_state)
+		if(GUN_SAFETY_ON)
+			safety_state = GUN_SAFETY_OFF
+		if(GUN_SAFETY_OFF)
+			safety_state = GUN_SAFETY_ON
+	if(user)
+		user.visible_message(
+			SPAN_WARNING("[user] switches the safety of \the [src] [current ? "off" : "on"]."),
+			SPAN_NOTICE("You switch the safety of \the [src] [current ? "off" : "on"]."),
+			SPAN_WARNING("You hear a switch being clicked."),
+			MESSAGE_RANGE_COMBAT_SUBTLE
+		)
+	update_appearance()
+	playsound(src, 'sound/weapons/flipblade.ogg', 10, 1)
 
 /obj/item/gun/verb/toggle_safety_verb()
 	set src in usr
 	set category = "Object"
 	set name = "Toggle Gun Safety"
+
 	if(usr == loc)
 		toggle_safety(usr)
 
-/obj/item/gun/CtrlClick(var/mob/user)
+/obj/item/gun/AltClick(mob/user)
 	if(loc == user)
 		toggle_safety(user)
 		return TRUE
-	. = ..()
+	return ..()
 
-/obj/item/gun/proc/safety()
-	return has_safety && safety_state
+/**
+ * returns TRUE/FALSE based on if we have safeties on
+ */
+/obj/item/gun/proc/check_safety()
+	return (safety_state == GUN_SAFETY_ON)

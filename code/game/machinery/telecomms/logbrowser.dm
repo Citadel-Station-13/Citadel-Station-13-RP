@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/machinery/computer/telecomms
 	icon_keyboard = "tech_key"
@@ -62,7 +61,7 @@
 	return data
 
 /obj/machinery/computer/telecomms/server/attack_hand(mob/user)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 

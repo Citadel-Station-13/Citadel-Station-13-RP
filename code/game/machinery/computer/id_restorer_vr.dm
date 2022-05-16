@@ -27,8 +27,10 @@
 	..()
 
 /obj/machinery/computer/id_restorer/attack_hand(mob/user)
-	if(..()) return
-	if(stat & (NOPOWER|BROKEN)) return
+	if(..())
+		return
+	if(machine_stat & (NOPOWER|BROKEN))
+		return
 
 	var/choice = alert(user,"What do you want to do?","[src]","Restore ID access","Eject ID","Cancel")
 	if(user.incapacitated() || (get_dist(src, user) > 1))

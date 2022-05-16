@@ -381,7 +381,7 @@ var/global/datum/controller/occupations/job_master
 						permitted = 1
 
 					// Check if they're whitelisted for this gear (in alien whitelist? seriously?)
-					if(G.whitelisted && !is_alien_whitelisted(H, GLOB.all_species[G.whitelisted]))
+					if(G.whitelisted && !is_alien_whitelisted(H, name_static_species_meta(G.whitelisted)))
 						permitted = 0
 
 					// If they aren't, tell them
@@ -558,7 +558,7 @@ var/global/datum/controller/occupations/job_master
 		if(!config_legacy.load_jobs_from_txt)
 			return 0
 
-		var/list/jobEntries = file2list(jobsfile)
+		var/list/jobEntries = world.file2list(jobsfile)
 
 		for(var/job in jobEntries)
 			if(!job)

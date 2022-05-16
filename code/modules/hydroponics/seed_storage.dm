@@ -200,7 +200,7 @@
 		)
 
 /obj/machinery/seed_storage/attack_hand(mob/user as mob)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(seconds_electrified != 0)

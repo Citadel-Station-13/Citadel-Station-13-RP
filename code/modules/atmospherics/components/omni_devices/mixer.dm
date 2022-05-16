@@ -1,7 +1,7 @@
 //--------------------------------------------
 // Gas mixer - omni variant
 //--------------------------------------------
-/obj/machinery/atmospherics/omni/mixer
+/obj/machinery/atmospherics/component/quaternary/mixer
 	name = "omni gas mixer"
 	icon_state = "map_mixer"
 	pipe_state = "omni_mixer"
@@ -24,7 +24,7 @@
 
 	var/list/mixing_inputs = list()
 
-/obj/machinery/atmospherics/omni/mixer/Initialize(mapload)
+/obj/machinery/atmospherics/component/quaternary/mixer/Initialize(mapload)
 	. = ..()
 	if(mapper_set())
 		var/con = 0
@@ -50,12 +50,12 @@
 	for(var/datum/omni_port/P in ports)
 		P.air.volume = ATMOS_DEFAULT_VOLUME_MIXER
 
-/obj/machinery/atmospherics/omni/mixer/Destroy()
+/obj/machinery/atmospherics/component/quaternary/mixer/Destroy()
 	inputs.Cut()
 	output = null
 	. = ..()
 
-/obj/machinery/atmospherics/omni/mixer/sort_ports()
+/obj/machinery/atmospherics/component/quaternary/mixer/sort_ports()
 	for(var/datum/omni_port/P in ports)
 		if(P.update)
 			if(output == P)
@@ -79,10 +79,10 @@
 
 	rebuild_mixing_inputs()
 
-/obj/machinery/atmospherics/omni/mixer/proc/mapper_set()
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/mapper_set()
 	return (tag_north_con || tag_south_con || tag_east_con || tag_west_con)
 
-/obj/machinery/atmospherics/omni/mixer/error_check()
+/obj/machinery/atmospherics/component/quaternary/mixer/error_check()
 	if(!output || !inputs)
 		return 1
 	if(inputs.len < 2) //requires at least 2 inputs ~otherwise why are you using a mixer?
@@ -98,7 +98,7 @@
 
 	return 0
 
-/obj/machinery/atmospherics/omni/mixer/process(delta_time)
+/obj/machinery/atmospherics/component/quaternary/mixer/process(delta_time)
 	if(!..())
 		return 0
 
@@ -124,13 +124,13 @@
 
 	return 1
 
-/obj/machinery/atmospherics/omni/mixer/ui_interact(mob/user,datum/tgui/ui = null)
+/obj/machinery/atmospherics/component/quaternary/mixer/ui_interact(mob/user,datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "OmniMixer", name)
 		ui.open()
 
-/obj/machinery/atmospherics/omni/mixer/ui_data(mob/user)
+/obj/machinery/atmospherics/component/quaternary/mixer/ui_data(mob/user)
 	var/list/data = new()
 
 	data["power"] = use_power
@@ -163,7 +163,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/omni/mixer/ui_act(action, params)
+/obj/machinery/atmospherics/component/quaternary/mixer/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -203,7 +203,7 @@
 
 	update_icon()
 
-/obj/machinery/atmospherics/omni/mixer/proc/switch_mode(var/port = NORTH, var/mode = ATM_NONE)
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/switch_mode(var/port = NORTH, var/mode = ATM_NONE)
 	if(mode != ATM_INPUT && mode != ATM_OUTPUT)
 		switch(mode)
 			if("in")
@@ -243,7 +243,7 @@
 	update_ports()
 	rebuild_mixing_inputs()
 
-/obj/machinery/atmospherics/omni/mixer/proc/change_concentration(var/port = NORTH)
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/change_concentration(var/port = NORTH)
 	tag_north_con = null
 	tag_south_con = null
 	tag_east_con = null
@@ -286,12 +286,12 @@
 
 	rebuild_mixing_inputs()
 
-/obj/machinery/atmospherics/omni/mixer/proc/rebuild_mixing_inputs()
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/rebuild_mixing_inputs()
 	mixing_inputs.Cut()
 	for(var/datum/omni_port/P in inputs)
 		mixing_inputs[P.air] = P.concentration
 
-/obj/machinery/atmospherics/omni/mixer/proc/con_lock(var/port = NORTH)
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/con_lock(var/port = NORTH)
 	for(var/datum/omni_port/P in inputs)
 		if(P.dir == port)
 			P.con_lock = !P.con_lock

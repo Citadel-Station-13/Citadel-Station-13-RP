@@ -44,7 +44,7 @@ var/global/list/weavable_items = list()
 	var/possible_icon_states = list("floorweb1", "floorweb2", "floorweb3", "floorweb4", "floorweb5", "floorweb6", "floorweb7", "floorweb8")
 	plane = DIRTY_PLANE
 
-/obj/effect/weaversilk/floor/Initialize()
+/obj/effect/weaversilk/floor/Initialize(mapload)
 	..()
 	icon_state = pick(possible_icon_states)
 
@@ -55,7 +55,7 @@ var/global/list/weavable_items = list()
 	var/possible_icon_states = list("wallweb1", "wallweb2", "wallweb3")
 	density = TRUE
 
-/obj/effect/weaversilk/wall/Initialize()
+/obj/effect/weaversilk/wall/Initialize(mapload)
 	..()
 	icon_state = pick(possible_icon_states)
 

@@ -120,7 +120,7 @@
 	name = "spider crate"
 	starts_with = list(/mob/living/simple_mob/animal/giant_spider= 3)
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /obj/structure/largecrate/birds //This is an awful hack, but it's the only way to get multiple mobs spawned in one crate.
 	name = "Bird crate"
 	desc = "You hear chirping and cawing inside the crate. It sounds like there are a lot of birds in there..."

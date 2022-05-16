@@ -12,20 +12,20 @@
 		var/obj/machinery/mecha_part_fabricator/pros/prosfab = fabricator
 		var/obj/item/organ/O = new build_path(newloc)
 		if(prosfab.manufacturer)
-			var/datum/robolimb/manf = all_robolimbs[prosfab.manufacturer]
+			var/datum/robolimb/manf = GLOB.all_robolimbs[prosfab.manufacturer]
 
 			if(!(O.organ_tag in manf.parts))	// Make sure we're using an actually present icon.
-				manf = all_robolimbs["Unbranded"]
+				manf = GLOB.all_robolimbs["Unbranded"]
 
 			if(prosfab.species in manf.species_alternates)	// If the prosthetics fab is set to say, Unbranded, and species set to 'Tajaran', it will make the Taj variant of Unbranded, if it exists.
 				manf = manf.species_alternates[prosfab.species]
 
 			if(!prosfab.species || (prosfab.species in manf.species_cannot_use))	// Fabricator ensures the manufacturer can make parts for the species we're set to.
-				O.species = GLOB.all_species["[manf.suggested_species]"]
+				O.species = name_static_species_meta(manf.suggested_species)
 			else
-				O.species = GLOB.all_species[prosfab.species]
+				O.species = name_static_species_meta(prosfab.species)
 		else
-			O.species = GLOB.all_species[SPECIES_HUMAN]
+			O.species = get_static_species_meta(/datum/species/human)
 		O.robotize(prosfab.manufacturer)
 		O.dna = new/datum/dna() //Uuughhhh... why do I have to do this?
 		O.dna.ResetUI()
@@ -41,7 +41,7 @@
 		var/obj/machinery/mecha_part_fabricator/pros/prosfab = fabricator
 		var/newspecies = SPECIES_HUMAN
 
-		var/datum/robolimb/manf = all_robolimbs[prosfab.manufacturer]
+		var/datum/robolimb/manf = GLOB.all_robolimbs[prosfab.manufacturer]
 
 		if(manf)
 			if(prosfab.species in manf.species_alternates)	// If the prosthetics fab is set to say, Unbranded, and species set to 'Tajaran', it will make the Taj variant of Unbranded, if it exists.
@@ -62,10 +62,10 @@
 				EO.remove_rejuv()
 
 		for(var/obj/item/organ/external/O in H.organs)
-			O.species = GLOB.all_species[newspecies]
+			O.species = name_static_species_meta(newspecies)
 
 			if(!(O.organ_tag in manf.parts))	// Make sure we're using an actually present icon.
-				manf = all_robolimbs["Unbranded"]
+				manf = GLOB.all_robolimbs["Unbranded"]
 
 			O.robotize(manf.company)
 			O.dna = new/datum/dna()

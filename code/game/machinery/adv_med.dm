@@ -27,7 +27,7 @@
 
 /obj/machinery/bodyscanner/power_change()
 	..()
-	if(!(stat & (BROKEN|NOPOWER)))
+	if(!(machine_stat & (BROKEN|NOPOWER)))
 		set_light(2)
 	else
 		set_light(0)
@@ -210,15 +210,15 @@
 
 /obj/machinery/body_scanconsole/power_change()
 	/* VOREStation Removal
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "body_scannerconsole-p"
 	else if(powered() && !panel_open)
 		icon_state = initial(icon_state)
-		stat &= ~NOPOWER
+		machine_stat &= ~NOPOWER
 	else
 		spawn(rand(0, 15))
 			icon_state = "body_scannerconsole-p"
-			stat |= NOPOWER
+			machine_stat |= NOPOWER
 	*/
 	update_icon() //Health display for consoles with light and such.
 
@@ -257,7 +257,7 @@
 	return attack_hand(user)
 
 /obj/machinery/body_scanconsole/attack_hand(user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	if(!scanner)
@@ -284,7 +284,7 @@
 
 		var/occupantData[0]
 		if(scanner.occupant && ishuman(scanner.occupant))
-			update_icon() //VOREStation Edit - Health display for consoles with light and such.
+			update_icon() // Update health display for consoles with light and such.
 			var/mob/living/carbon/human/H = scanner.occupant
 			occupantData["name"] = H.name
 			occupantData["stat"] = H.stat
@@ -646,7 +646,7 @@
 	return incoming
 
 /obj/machinery/bodyscanner/update_icon()
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "scanner_off"
 		set_light(0)
 	else
@@ -673,7 +673,7 @@
 			console.update_icon(h_ratio)
 
 /obj/machinery/body_scanconsole/update_icon(var/h_ratio)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "scanner_terminal_off"
 		set_light(0)
 	else

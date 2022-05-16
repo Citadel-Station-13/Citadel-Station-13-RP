@@ -17,11 +17,17 @@
 	var/dirt = 0
 	var/special_temperature //Used for Lava HE-Pipe interaction
 
+	// If greater than 0, this turf will apply edge overlays on top of other turfs cardinally adjacent to it, if those adjacent turfs are of a different icon_state,
+	// and if those adjacent turfs have a lower edge_blending_priority.
+	// this is on /simulated even though only floors give borders because floors can render onto other simulated tiles like openspace.
+	var/edge_blending_priority = 0
+	/// edge icon state, overrides icon_state if set
+	var/edge_icon_state
+
 /turf/simulated/Initialize(mapload)
 	. = ..()
-	levelupdate()
-	// HOOK FOR MOB/FREELOOK SYSTEM
-	updateVisibility(src)
+	if(mapload)
+		levelupdate()
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
@@ -116,28 +122,30 @@
 				bloodDNA = null
 
 		if(src.wet)
+			process_slip(M)
 
-			if(M.buckled || (src.wet == 1 && M.m_intent == "walk"))
-				return
+/turf/simulated/proc/process_slip(mob/living/M)
+	if(M.buckled || (src.wet == 1 && M.m_intent == "walk"))
+		return
 
-			var/slip_dist = 1
-			var/slip_stun = 6
-			var/floor_type = "wet"
+	var/slip_dist = 1
+	var/slip_stun = 6
+	var/floor_type = "wet"
 
-			switch(src.wet)
-				if(2) // Lube
-					floor_type = "slippery"
-					slip_dist = 4
-					slip_stun = 10
-				if(3) // Ice
-					floor_type = "icy"
-					slip_stun = 4
-					slip_dist = 2
+	switch(src.wet)
+		if(2) // Lube
+			floor_type = "slippery"
+			slip_dist = 4
+			slip_stun = 10
+		if(3) // Ice
+			floor_type = "icy"
+			slip_stun = 4
+			slip_dist = 2
 
-			if(M.slip("the [floor_type] floor", slip_stun))
-				for(var/i = 1 to slip_dist)
-					step(M, M.dir)
-					sleep(1)
+	if(M.slip("the [floor_type] floor", slip_stun))
+		for(var/i = 1 to slip_dist)
+			step(M, M.dir)
+			sleep(1)
 
 //returns 1 if made bloody, returns 0 otherwise
 /turf/simulated/add_blood(mob/living/carbon/human/M as mob)

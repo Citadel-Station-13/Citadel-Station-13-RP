@@ -41,11 +41,11 @@
 		icon_state = "[initial(icon_state)]"
 
 /obj/machinery/computer/timeclock/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	. = ..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		set_light(0)
 	else
 		set_light(light_range_on, light_power_on)

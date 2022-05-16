@@ -3,6 +3,10 @@
 	desc = "Unfinished flooring."
 	icon = 'icons/turf/flooring/plating_vr.dmi'
 	icon_state = "plating"
+	smoothing_flags = SMOOTH_CUSTOM
+	base_icon_state = "plating"
+	thermal_conductivity = 0.040
+	heat_capacity = 10000
 
 	// Damage to flooring.
 	var/broken
@@ -12,7 +16,6 @@
 	var/base_name = "plating"
 	var/base_desc = "The naked hull."
 	var/base_icon = 'icons/turf/flooring/plating_vr.dmi'
-	base_icon_state = "plating"
 	var/static/list/base_footstep_sounds = list("human" = list(
 		'sound/effects/footstep/plating1.ogg',
 		'sound/effects/footstep/plating2.ogg',
@@ -28,9 +31,6 @@
 	var/decl/flooring/flooring
 	var/mineral = MAT_STEEL
 
-	thermal_conductivity = 0.040
-	heat_capacity = 10000
-
 /turf/simulated/floor/is_plating()
 	return !flooring
 
@@ -39,16 +39,42 @@
 	if(!floortype && initial_flooring)
 		floortype = initial_flooring
 	if(floortype)
-		set_flooring(get_flooring_data(floortype))
+		set_flooring(get_flooring_data(floortype), TRUE)
 	else
 		footstep_sounds = base_footstep_sounds
 	if(mapload && can_dirty && can_start_dirty)
 		if(prob(dirty_prob))
 			dirt += rand(50,100)
 			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
+	if(outdoors)
+		SSplanets.addTurf(src)
 
-/turf/simulated/floor/proc/set_flooring(var/decl/flooring/newflooring)
-	make_plating(defer_icon_update = TRUE, strip_bare = TRUE)
+/turf/simulated/floor/Destroy()
+	if(outdoors)
+		SSplanets.removeTurf(src)
+	return ..()
+
+/turf/simulated/proc/make_outdoors()
+	outdoors = TRUE
+	SSplanets.addTurf(src)
+
+/turf/simulated/proc/make_indoors()
+	outdoors = FALSE
+	SSplanets.removeTurf(src)
+
+/turf/simulated/AfterChange(flags, oldType)
+	. = ..()
+	RemoveLattice()
+	// If it was outdoors and still is, it will not get added twice when the planet controller gets around to putting it in.
+	if(flags & CHANGETURF_PRESERVE_OUTDOORS)
+		// if it didn't preserve then we don't need to recheck now do we
+		if(outdoors)
+			make_outdoors()
+		else
+			make_indoors()
+
+/turf/simulated/floor/proc/set_flooring(decl/flooring/newflooring, init)
+	make_plating(null, TRUE, TRUE)
 	flooring = newflooring
 	footstep_sounds = newflooring.footstep_sounds
 	// VOREStation Edit - We are plating switching to flooring, swap out old_decals for decals
@@ -56,28 +82,34 @@
 	old_decals = decals
 	decals = overfloor_decals
 	// VOREStation Edit End
-	update_icon(1)
-	levelupdate()
+	if(!init)
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+	else		// if we are initing we aren't changeturfing which usually handles levelupdates
+		levelupdate()
 
 //This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
 //This proc auto corrects the grass tiles' siding.
-/turf/simulated/floor/proc/make_plating(place_product, defer_icon_update, strip_bare = FALSE)
+/turf/simulated/floor/proc/make_plating(place_product, defer_icon_update, strip_bare)
+	if(!defer_icon_update)		// if we're set flooring all of these get set again anyways, if it doesn't someone fucked up
+		name = base_name
+		desc = base_desc
+		icon = base_icon
+		icon_state = base_icon_state
+		footstep_sounds = base_footstep_sounds
+		cut_overlays()
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+		levelupdate()
 
-	cut_overlays()
-	// VOREStation Edit - We are flooring switching to plating, swap out old_decals for decals.
+
 	if(flooring)
+		// VOREStation Edit - We are flooring switching to plating, swap out old_decals for decals.
 		var/list/underfloor_decals = old_decals
 		old_decals = decals
 		decals = underfloor_decals
-	// VOREStation Edit End
+		// VOREStation Edit End
 
-	name = base_name
-	desc = base_desc
-	icon = base_icon
-	icon_state = base_icon_state
-	footstep_sounds = base_footstep_sounds
-
-	if(flooring)
 		if(place_product)
 			flooring.drop_product(src)
 		var/newtype = flooring.get_plating_type()
@@ -86,13 +118,10 @@
 		else
 			flooring = null
 
+
 	broken = null
 	burnt = null
 	flooring_override = null
-	levelupdate()
-
-	if(!defer_icon_update)
-		update_icon(1)
 
 /turf/simulated/floor/levelupdate()
 	for(var/obj/O in src)

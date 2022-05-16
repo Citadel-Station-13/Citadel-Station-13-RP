@@ -1,6 +1,10 @@
-/mob/living/carbon/
+/mob/living/carbon
 	gender = MALE
-	var/datum/species/species //Contains icon generation and language information, set during New().
+
+//! ## Basics
+	/// species - datumized handling of racial intrinsics like health, environmental, breathing, etc. set using set_species() **only**
+	var/datum/species/species
+
 	var/list/stomach_contents = list()
 	var/list/datum/disease2/disease/virus2 = list()
 	var/list/antibodies = list()

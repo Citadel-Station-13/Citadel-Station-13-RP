@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/trinary/atmos_filter
+/obj/machinery/atmospherics/component/trinary/atmos_filter
 	icon = 'icons/atmos/filter.dmi'
 	icon_state = "map"
 	construction_type = /obj/item/pipe/trinary/flippable
@@ -32,13 +32,13 @@
 	var/frequency = 0
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/atmospherics/trinary/atmos_filter/proc/set_frequency(new_frequency)
+/obj/machinery/atmospherics/component/trinary/atmos_filter/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	if(frequency)
 		radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-/obj/machinery/atmospherics/trinary/atmos_filter/Initialize(mapload)
+/obj/machinery/atmospherics/component/trinary/atmos_filter/Initialize(mapload)
 	. = ..()
 	switch(filter_type)
 		if(0) //removing hydrocarbons
@@ -57,11 +57,11 @@
 	air2.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	air3.volume = ATMOS_DEFAULT_VOLUME_FILTER
 
-/obj/machinery/atmospherics/trinary/atmos_filter/Destroy()
+/obj/machinery/atmospherics/component/trinary/atmos_filter/Destroy()
 	unregister_radio(src, frequency)
 	. = ..()
 
-/obj/machinery/atmospherics/trinary/atmos_filter/update_icon()
+/obj/machinery/atmospherics/component/trinary/atmos_filter/update_icon()
 	if(mirrored)
 		icon_state = "m"
 	else
@@ -75,13 +75,13 @@
 		icon_state += "off"
 		update_use_power(USE_POWER_OFF)
 
-/obj/machinery/atmospherics/trinary/atmos_filter/process(delta_time)
+/obj/machinery/atmospherics/component/trinary/atmos_filter/process(delta_time)
 	..()
 
 	last_power_draw = 0
 	last_flow_rate = 0
 
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 
 	//Figure out the amount of moles to transfer
@@ -106,12 +106,12 @@
 
 	return 1
 
-/obj/machinery/atmospherics/trinary/atmos_filter/Initialize(mapload)
+/obj/machinery/atmospherics/component/trinary/atmos_filter/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
 
-/obj/machinery/atmospherics/trinary/atmos_filter/attack_hand(user)
+/obj/machinery/atmospherics/component/trinary/atmos_filter/attack_hand(user)
 	if(..())
 		return
 	if(!src.allowed(user))
@@ -119,13 +119,13 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/trinary/atmos_filter/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosFilter", name)
 		ui.open()
 
-/obj/machinery/atmospherics/trinary/atmos_filter/ui_data(mob/user)
+/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_data(mob/user)
 	var/list/data = list()
 
 	data["on"] = use_power
@@ -143,7 +143,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/trinary/atmos_filter/ui_act(action, params)
+/obj/machinery/atmospherics/component/trinary/atmos_filter/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -182,7 +182,7 @@
 //
 // Mirrored Orientation - Flips the output dir to opposite side from normal.
 //
-/obj/machinery/atmospherics/trinary/atmos_filter/m_filter
+/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter
 	icon_state = "mmap"
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH|EAST

@@ -4,8 +4,8 @@
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "borg_pod_opened"
 
-	density = 1 //thicc
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_OFF
 
 	var/in_transit = 0
@@ -34,7 +34,7 @@
 			sleep(2)
 			del(src)
 
-/obj/machinery/transportpod/relaymove(mob/user as mob)
+/obj/machinery/transportpod/relaymove(mob/user)
 	if(user.stat)
 		return
 	go_out()
@@ -47,10 +47,10 @@
 	else
 		icon_state = "borg_pod_opened"
 
-/obj/machinery/transportpod/Bumped(var/mob/living/O)
+/obj/machinery/transportpod/Bumped(mob/living/O)
 	go_in(O)
 
-/obj/machinery/transportpod/proc/go_in(var/mob/living/carbon/human/O)
+/obj/machinery/transportpod/proc/go_in(mob/living/carbon/human/O)
 	if(occupant)
 		return
 

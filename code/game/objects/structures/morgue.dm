@@ -362,7 +362,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 		to_chat(user,"<span class='warning'>Access denied.</span>")
 
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /obj/structure/morgue/crematorium/vr
 	var/list/allowed_items = list(/obj/item/organ,
 			/obj/item/implant,

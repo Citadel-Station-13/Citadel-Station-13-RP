@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /*
  * A large number of misc global procs.
@@ -1212,7 +1211,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	var/ready_to_die = FALSE
 
 // Properly prevents this mob from gaining huds or joining any global lists
-/mob/dview/Initialize()
+/mob/dview/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
 	if(flags & INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
@@ -1546,11 +1545,11 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	for(A=O, A && !isturf(A.loc), A=A.loc); //Semicolon is for the empty statement
 	return A
 
-/proc/get_safe_ventcrawl_target(var/obj/machinery/atmospherics/unary/vent_pump/start_vent)
+/proc/get_safe_ventcrawl_target(var/obj/machinery/atmospherics/component/unary/vent_pump/start_vent)
 	if(!start_vent.network || !start_vent.network.normal_members.len)
 		return
 	var/list/vent_list = list()
-	for(var/obj/machinery/atmospherics/unary/vent_pump/vent in start_vent.network.normal_members)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/vent in start_vent.network.normal_members)
 		if(vent == start_vent)
 			continue
 		if(vent.welded)

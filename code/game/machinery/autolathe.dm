@@ -129,7 +129,7 @@
 	if(default_part_replacement(user, O))
 		return
 
-	if(stat)
+	if(machine_stat)
 		return
 
 	if(panel_open)

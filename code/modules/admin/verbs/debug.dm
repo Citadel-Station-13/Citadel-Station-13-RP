@@ -387,32 +387,32 @@
 		if(A && !(A.type in areas_with_APC))
 			areas_with_APC.Add(A.type)
 
-	for(var/obj/machinery/alarm/alarm in machines)
+	for(var/obj/machinery/alarm/alarm in GLOB.machines)
 		var/area/A = get_area(alarm)
 		if(A && !(A.type in areas_with_air_alarm))
 			areas_with_air_alarm.Add(A.type)
 
-	for(var/obj/machinery/requests_console/RC in machines)
+	for(var/obj/machinery/requests_console/RC in GLOB.machines)
 		var/area/A = get_area(RC)
 		if(A && !(A.type in areas_with_RC))
 			areas_with_RC.Add(A.type)
 
-	for(var/obj/machinery/light/L in machines)
+	for(var/obj/machinery/light/L in GLOB.machines)
 		var/area/A = get_area(L)
 		if(A && !(A.type in areas_with_light))
 			areas_with_light.Add(A.type)
 
-	for(var/obj/machinery/light_switch/LS in machines)
+	for(var/obj/machinery/light_switch/LS in GLOB.machines)
 		var/area/A = get_area(LS)
 		if(A && !(A.type in areas_with_LS))
 			areas_with_LS.Add(A.type)
 
-	for(var/obj/item/radio/intercom/I in machines)
+	for(var/obj/item/radio/intercom/I in GLOB.machines)
 		var/area/A = get_area(I)
 		if(A && !(A.type in areas_with_intercom))
 			areas_with_intercom.Add(A.type)
 
-	for(var/obj/machinery/camera/C in machines)
+	for(var/obj/machinery/camera/C in GLOB.machines)
 		var/area/A = get_area(C)
 		if(A && !(A.type in areas_with_camera))
 			areas_with_camera.Add(A.type)
@@ -493,31 +493,31 @@
 	if(alert("Are you sure? This will start up the engine. Should only be used during debug!",,"Yes","No") != "Yes")
 		return
 
-	for(var/obj/machinery/power/emitter/E in machines)
+	for(var/obj/machinery/power/emitter/E in GLOB.machines)
 		if(istype(get_area(E), /area/space))
 			E.anchored = TRUE
 			E.state = 2
 			E.connect_to_network()
 			E.active = TRUE
-	for(var/obj/machinery/field_generator/F in machines)
+	for(var/obj/machinery/field_generator/F in GLOB.machines)
 		if(istype(get_area(F), /area/space))
 			F.Varedit_start = 1
-	for(var/obj/machinery/power/grounding_rod/GR in machines)
+	for(var/obj/machinery/power/grounding_rod/GR in GLOB.machines)
 		GR.anchored = TRUE
 		GR.update_icon()
-	for(var/obj/machinery/power/tesla_coil/TC in machines)
+	for(var/obj/machinery/power/tesla_coil/TC in GLOB.machines)
 		TC.anchored = TRUE
 		TC.update_icon()
-	for(var/obj/structure/particle_accelerator/PA in machines)
+	for(var/obj/structure/particle_accelerator/PA in GLOB.machines)
 		PA.anchored = TRUE
 		PA.construction_state = 3
 		PA.update_icon()
-	for(var/obj/machinery/particle_accelerator/PA in machines)
+	for(var/obj/machinery/particle_accelerator/PA in GLOB.machines)
 		PA.anchored = TRUE
 		PA.construction_state = 3
 		PA.update_icon()
 
-	for(var/obj/machinery/power/rad_collector/Rad in machines)
+	for(var/obj/machinery/power/rad_collector/Rad in GLOB.machines)
 		if(Rad.anchored)
 			if(!Rad.P)
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
@@ -544,7 +544,7 @@
 	var/found_the_pump = 0
 	var/obj/machinery/power/supermatter/SM
 
-	for(var/obj/machinery/M in machines)
+	for(var/obj/machinery/M in GLOB.machines)
 		if(!M)
 			continue
 		if(!M.loc)
@@ -569,8 +569,8 @@
 					Rad.toggle_power()
 				Rad.update_icon()
 
-			else if(istype(M,/obj/machinery/atmospherics/binary/pump))	//Turning on every pump.
-				var/obj/machinery/atmospherics/binary/pump/Pump = M
+			else if(istype(M,/obj/machinery/atmospherics/component/binary/pump))	//Turning on every pump.
+				var/obj/machinery/atmospherics/component/binary/pump/Pump = M
 				if(Pump.name == "Engine Feed" && response == "Setup Completely")
 					found_the_pump = 1
 					Pump.air2.gas[/datum/gas/nitrogen] = 3750	//The contents of 2 canisters.

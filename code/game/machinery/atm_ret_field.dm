@@ -80,11 +80,12 @@
 			qdel(src)
 		return
 
-/obj/machinery/atmospheric_field_generator/perma/Initialize()
+/obj/machinery/atmospheric_field_generator/perma/Initialize(mapload)
+	. = ..()
 	generate_field()
 
 /obj/machinery/atmospheric_field_generator/update_icon()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "arfg_broken"
 	else if(hatch_open && wires_intact)
 		icon_state = "arfg_open_wires"
@@ -98,13 +99,13 @@
 /obj/machinery/atmospheric_field_generator/power_change()
 	var/oldstat
 	..()
-	if(!(stat & NOPOWER))
-		ispowered = 1
+	if(!(machine_stat & NOPOWER))
+		ispowered = TRUE
 		update_icon()
 		if(alwaysactive || wasactive)	//reboot our field if we were on or are supposed to be always-on
 			generate_field()
-	if(stat != oldstat && isactive && (stat & NOPOWER))
-		ispowered = 0
+	if(machine_stat != oldstat && isactive && (machine_stat & NOPOWER))
+		ispowered = FALSE
 		disable_field()
 		update_icon()
 
@@ -122,7 +123,7 @@
 			qdel(src)
 			return
 		if(2)
-			stat |= BROKEN
+			machine_stat |= BROKEN
 			update_icon()
 			src.visible_message("The ARF-G cracks and shatters!","You hear an uncomfortable metallic crunch.")
 			disable_field()
@@ -151,7 +152,7 @@
 		isactive = 0
 	return
 
-/obj/machinery/atmospheric_field_generator/Initialize()
+/obj/machinery/atmospheric_field_generator/Initialize(mapload)
 	. = ..()
 	//Delete ourselves if we find extra mapped in arfgs
 	for(var/obj/machinery/atmospheric_field_generator/F in loc)
@@ -205,7 +206,7 @@
 
 	return
 
-/obj/structure/atmospheric_retention_field/Initialize()
+/obj/structure/atmospheric_retention_field/Initialize(mapload)
 	. = ..()
 	update_nearby_tiles() //Force ZAS update
 	update_connections(1)

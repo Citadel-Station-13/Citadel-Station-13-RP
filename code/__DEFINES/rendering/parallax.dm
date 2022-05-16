@@ -11,4 +11,5 @@
 #define PARALLAX_LOW     1
 #define PARALLAX_MED     2
 #define PARALLAX_HIGH    3
-#define PARALLAX_INSANE  4  // default
+/// default
+#define PARALLAX_INSANE  4

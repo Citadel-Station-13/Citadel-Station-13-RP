@@ -157,7 +157,7 @@
 
 /obj/machinery/smartfridge/drying_rack/process(delta_time)
 	..()
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(contents.len)
 		dry()
@@ -165,7 +165,7 @@
 
 /obj/machinery/smartfridge/drying_rack/update_icon()
 	overlays.Cut()
-	var/not_working = stat & (BROKEN|NOPOWER)
+	var/not_working = machine_stat & (BROKEN|NOPOWER)
 	if(not_working)
 		icon_state = icon_off
 	else
@@ -215,7 +215,7 @@
 		return
 
 /obj/machinery/smartfridge/process(delta_time)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(src.seconds_electrified > 0)
 		src.seconds_electrified--
@@ -223,13 +223,13 @@
 		src.throw_item()
 
 /obj/machinery/smartfridge/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/smartfridge/update_icon()
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		icon_state = icon_off
 	else
 		icon_state = icon_on
@@ -257,7 +257,7 @@
 			attack_hand(user)
 		return
 
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		to_chat(user, "<span class='notice'>\The [src] is unpowered and useless.</span>")
 		return
 
@@ -322,7 +322,7 @@
 	attack_hand(user)
 
 /obj/machinery/smartfridge/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	wires.Interact(user)
 	nano_ui_interact(user)
@@ -410,7 +410,7 @@
 *************************/
 
 /obj/machinery/smartfridge/secure/Topic(href, href_list)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 	if(usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf)))
 		if(!allowed(usr) && !emagged && locked != -1 && href_list["vend"])

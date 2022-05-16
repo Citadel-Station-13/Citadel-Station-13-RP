@@ -106,7 +106,7 @@
 
 /obj/machinery/mecha_part_fabricator/update_icon_state()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "[base_icon_state]-off"
 	else
 		icon_state = base_icon_state

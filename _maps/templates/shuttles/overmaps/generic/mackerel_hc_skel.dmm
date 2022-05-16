@@ -96,8 +96,8 @@
 /area/shuttle/mackerel_hc_skel_cockpit)
 "eh" = (
 /obj/machinery/door/airlock/hatch,
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 6;
 	pixel_x = 7;
@@ -213,7 +213,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_hc_skel)
 "lT" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -247,8 +247,8 @@
 /area/shuttle/mackerel_hc_skel)
 "mw" = (
 /obj/machinery/door/airlock/hatch,
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 10;
 	pixel_x = -8;
@@ -257,7 +257,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_hc_skel)
 "mO" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	id_tag = "spartan_regulator"
 	},
@@ -474,7 +474,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel_cockpit)
 "xG" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -632,12 +632,12 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/mackerel_hc_skel)
 "FL" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /obj/structure/handrail,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -660,7 +660,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_hc_skel)
 "FS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -714,7 +714,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel_eng)
 "GK" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -788,7 +788,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -835,7 +835,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_hc_skel)
 "Pu" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	id_tag = "spartan_regulator"
 	},
@@ -858,11 +858,11 @@
 /area/shuttle/mackerel_hc_skel)
 "PL" = (
 /obj/structure/handrail,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -918,7 +918,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = 26
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -954,7 +954,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/mackerel_hc_skel)
 "TB" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -967,7 +967,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_hc_skel_eng)
 "UY" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /turf/simulated/floor/airless,
@@ -990,7 +990,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
 	pixel_x = 30
@@ -1062,7 +1062,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
@@ -1084,7 +1084,7 @@
 "ZK" = (
 /obj/machinery/door/airlock/hatch,
 /obj/machinery/door/firedoor/glass,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_hc_skel)

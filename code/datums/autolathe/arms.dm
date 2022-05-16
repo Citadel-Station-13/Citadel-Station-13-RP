@@ -448,7 +448,7 @@
 	path =/obj/item/flamethrower/full
 	hidden = 1
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 
 /datum/category_item/autolathe/arms/speedloader_357_flash
 	name = "speedloader (.357 flash)"

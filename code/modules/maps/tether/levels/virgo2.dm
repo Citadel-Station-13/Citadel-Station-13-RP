@@ -113,7 +113,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 	color = "#eacd7c"
 	initial_gas_mix = ATMOSPHERE_ID_VIRGO2
 
-/turf/unsimulated/floor/sky/virgo2_sky/Initialize()
+/turf/unsimulated/floor/sky/virgo2_sky/Initialize(mapload)
 	skyfall_levels = list(z+1)
 	. = ..()
 
@@ -140,8 +140,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral)
 
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
 
 VIRGO2_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor)

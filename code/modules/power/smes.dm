@@ -3,7 +3,8 @@
 
 GLOBAL_LIST_EMPTY(smeses)
 
-#define SMESRATE 0.03333		//translates Watt into Kilowattminutes with respect to machinery schedule_interval ~(2s*1W*1min/60s)
+///translates Watt into Kilowattminutes with respect to machinery schedule_interval ~(2s*1W*1min/60s)
+#define SMESRATE 0.03333
 #define SMESMAXCHARGELEVEL 250000
 #define SMESMAXOUTPUT 250000
 
@@ -77,7 +78,7 @@ GLOBAL_LIST_EMPTY(smeses)
 					terminal = term
 					break dir_loop
 	if(!terminal)
-		stat |= BROKEN
+		machine_stat |= BROKEN
 		return
 	terminal.master = src
 	if(!terminal.powernet)
@@ -100,7 +101,8 @@ GLOBAL_LIST_EMPTY(smeses)
 
 /obj/machinery/power/smes/update_icon()
 	overlays.Cut()
-	if(stat & BROKEN)	return
+	if(machine_stat & BROKEN)
+		return
 
 	overlays += image('icons/obj/power.dmi', "smes-op[outputting]")
 
@@ -122,7 +124,8 @@ GLOBAL_LIST_EMPTY(smeses)
 	return round(5.5*charge/(capacity ? capacity : 5e6))
 
 /obj/machinery/power/smes/process(delta_time)
-	if(stat & BROKEN)	return
+	if(machine_stat & BROKEN)
+		return
 
 	//store machine state to see if we need to update the icon overlays
 	var/last_disp = chargedisplay()
@@ -168,7 +171,7 @@ GLOBAL_LIST_EMPTY(smeses)
 // called after all power processes are finished
 // restores charge level to smes if there was excess this ptick
 /obj/machinery/power/smes/proc/restore()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		return
 
 	if(!outputting)
@@ -272,7 +275,7 @@ GLOBAL_LIST_EMPTY(smeses)
 		user.visible_message(\
 				"<span class='notice'>[user.name] has added cables to the [src].</span>",\
 				"<span class='notice'>You added cables to the [src].</span>")
-		stat = 0
+		machine_stat = NONE
 		return 0
 
 	else if(W.is_wirecutter() && terminal && !building_terminal)
@@ -377,7 +380,7 @@ GLOBAL_LIST_EMPTY(smeses)
 /*
 /obj/machinery/power/smes/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		return
 
 	// this is the data which will be sent to the ui

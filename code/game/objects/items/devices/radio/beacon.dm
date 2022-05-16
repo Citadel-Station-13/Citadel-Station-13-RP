@@ -58,7 +58,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	functioning = FALSE
 	visible_message(SPAN_WARNING("\The [src] pops and cracks, and a thin wisp of dark smoke rises from the casing."))
 	update_icon()
-	for(var/obj/machinery/computer/teleporter/T in machines)
+	for(var/obj/machinery/computer/teleporter/T in GLOB.machines)
 		if(T.target == src)
 			T.lost_target()
 

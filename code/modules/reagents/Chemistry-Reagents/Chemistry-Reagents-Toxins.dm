@@ -688,7 +688,7 @@
 				for(var/obj/item/implant/backup/BI in backup_implants)
 					BI.forceMove(src)
 
-			H.set_species(SPECIES_PROMETHEAN)
+			H.set_species(/datum/species/shapeshifter/promethean)
 			H.shapeshifter_set_colour("#05FF9B") //They can still change their color.
 
 			if(backup_implants.len)

@@ -90,7 +90,7 @@
 		return
 
 	var/datum/reagents/R = new/datum/reagents(100)
-	if(chems.len)
+	if(chems && chems.len)
 		for(var/rid in chems)
 			var/injecting = min(5,max(1,get_trait(TRAIT_POTENCY)/3))
 			R.add_reagent(rid,injecting)
@@ -156,7 +156,7 @@
 		for(var/obj/item/clothing/clothes in target)
 			if(target.item_is_in_hands(clothes))
 				continue
-			if(clothes.item_flags & THICKMATERIAL)
+			if(clothes.clothing_flags & THICKMATERIAL)
 				body_coverage &= ~(clothes.body_parts_covered)
 
 		if(!body_coverage)
@@ -184,7 +184,7 @@
 			if(!flesh_colour) flesh_colour = get_trait(TRAIT_PRODUCT_COLOUR)
 			if(flesh_colour) splat.color = get_trait(TRAIT_PRODUCT_COLOUR)
 
-	if(chems)
+	if(chems && chems.len)
 		for(var/mob/living/M in T.contents)
 			if(!M.reagents)
 				continue

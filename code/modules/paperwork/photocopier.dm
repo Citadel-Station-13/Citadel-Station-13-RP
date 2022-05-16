@@ -106,7 +106,7 @@
 
 /obj/machinery/photocopier/Topic(href, href_list)
 	if(href_list["copy"])
-		if(stat & (BROKEN|NOPOWER))
+		if(machine_stat & (BROKEN|NOPOWER))
 			return
 		addtimer(CALLBACK(src, .proc/copy_operation, usr), 0)
 
@@ -126,8 +126,10 @@
 		if(copies < maxcopies)
 			copies++
 	else if(href_list["aipic"])
-		if(!istype(usr,/mob/living/silicon)) return
-		if(stat & (BROKEN|NOPOWER)) return
+		if(!istype(usr,/mob/living/silicon))
+			return
+		if(machine_stat & (BROKEN|NOPOWER))
+			return
 
 		if(toner >= 5)
 			var/mob/living/silicon/tempAI = usr
@@ -269,7 +271,7 @@
 	var/mob/sitter = buckled_mobs[1] // You have to be sitting on the copier/buckled to it and either be a xeno or a human without clothes on that cover your ass.
 	if(ishuman(sitter)) // Suit checks are in can_buckle_mobs at the bottom of the file.
 		var/mob/living/carbon/human/H = sitter // All human subtypes.
-		var/species_to_check = H.get_species()
+		var/species_to_check = H.get_species_name()
 		if(species_to_check == SPECIES_CUSTOM || species_to_check == SPECIES_XENOCHIMERA) // Are we a custom species, or Xenochimera? If so, what is the base icon sprite for our species?
 			species_to_check = H.species.base_species // Grab the base species and use that as the 'species' for the purpose of printing off your asscheeks.
 		switch(species_to_check)

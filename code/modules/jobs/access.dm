@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/var/list/req_access
 /obj/var/list/req_one_access

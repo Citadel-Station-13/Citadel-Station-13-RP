@@ -58,7 +58,7 @@
 	AddElement(/datum/element/conflict_checking, CONFLICT_ELEMENT_CRUSHER)
 
 /*
-/obj/item/kinetic_crusher/Initialize()
+/obj/item/kinetic_crusher/Initialize(mapload)
 	. = ..()
 	if(requires_Wield)
 		RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)

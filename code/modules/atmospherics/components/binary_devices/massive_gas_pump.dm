@@ -3,7 +3,7 @@
  *  do the job of normal gas pumps
  */
 #define MAX_POWER_FOR_MASSIVE 100000000
-/obj/machinery/atmospherics/binary/massive_gas_pump
+/obj/machinery/atmospherics/component/binary/massive_gas_pump
 	name = "High performance gas pump"
 
 
@@ -22,14 +22,14 @@
 	density = 1
 	circuit = /obj/item/circuitboard/massive_gas_pump
 
-	var/power_level = MAX_POWER_FOR_MASSIVE//So we can limit the power we work with and 
+	var/power_level = MAX_POWER_FOR_MASSIVE//So we can limit the power we work with and
 	//dont just have a stupid pump that drains all power
 
 	var/obj/machinery/power/powersupply/power_machine = null//for funky massive power machines
 	//if its not null the machine attempts to draw from the grid the power machinery is connected to
 	//see examples in the file "code\modules\atmospherics\components\binary_devices\massive_gas_pump.dm"
 
-/obj/machinery/atmospherics/binary/massive_gas_pump/Initialize(mapload)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/Initialize(mapload)
 	. = ..()
 	power_machine = new(src)
 
@@ -48,23 +48,23 @@
 	I.color = PIPE_COLOR_GREY
 	overlays += I
 
-/obj/machinery/atmospherics/binary/massive_gas_pump/Destroy()
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/Destroy()
 	. = ..()
 	qdel(power_machine)
 
-/obj/machinery/atmospherics/binary/massive_gas_pump/process(delta_time)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/process(delta_time)
 	if(!network1 || !network2)
 		build_network()//built networks if we are missing them
 		network1?.update = 1
 		network2?.update = 1
 		last_flow_rate = last_power_draw = 0
 		return
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		last_flow_rate = last_power_draw = 0
 		return
-	
+
 	if(!power_machine || !power_machine.powernet)
-		if(!power_machine || !power_machine.connect_to_network())//returns 0 if it fails to find a 
+		if(!power_machine || !power_machine.connect_to_network())//returns 0 if it fails to find a
 			last_flow_rate = last_power_draw = 0
 			return//make sure we are connected to a powernet
 
@@ -82,7 +82,7 @@
 		//Figure out how much gas to transfer to meet the target pressure.
 		var/transfer_moles = calculate_transfer_moles(air1, air2, pressure_delta, (network2)? network2.volume : 0)
 		power_draw = pump_gas(src, air1, air2, transfer_moles, power_rating)
-	
+
 	if (power_draw >= 0)
 		last_power_draw = power_draw
 
@@ -95,7 +95,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/binary/massive_gas_pump/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/attackby(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -107,7 +107,7 @@
 		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]!"))
 		return
 
-/obj/machinery/atmospherics/binary/massive_gas_pump/update_icon()
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/update_icon()
 	if(inoperable() || !anchored || !power_machine.powernet)
 		icon_state = "pump"
 	else if(use_power)
@@ -122,8 +122,8 @@
 		icon_state = "pump"
 	return TRUE
 
-/obj/machinery/atmospherics/binary/massive_gas_pump/ui_interact(mob/user, datum/tgui/ui)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_interact(mob/user, datum/tgui/ui)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return FALSE
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -131,7 +131,7 @@
 		ui.open()
 
 //This is the data which will be sent to the ui
-/obj/machinery/atmospherics/binary/massive_gas_pump/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_data(mob/user)
 	var/list/data = list()
 
 	data = list(
@@ -146,7 +146,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/binary/massive_gas_pump/attack_hand(mob/user)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/attack_hand(mob/user)
 	if(..())
 		return
 	add_fingerprint(usr)
@@ -155,7 +155,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/binary/massive_gas_pump/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -187,4 +187,3 @@
 			. = TRUE
 
 	update_icon()
-

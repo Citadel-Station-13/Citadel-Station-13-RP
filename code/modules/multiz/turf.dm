@@ -91,7 +91,6 @@
 */
 /turf/simulated/open/update_icon()
 	cut_overlays() // Edit - Overlays are being crashy when modified.
-	update_icon_edge()// Add - Get grass into open spaces and whatnot.
 	var/turf/below = GetBelow(src)
 	if(below)
 		var/below_is_open = isopenturf(below)

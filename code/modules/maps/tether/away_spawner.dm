@@ -26,7 +26,7 @@
 	var/mob/living/simple_mob/my_mob
 	var/depleted = FALSE
 
-/obj/tether_away_spawner/Initialize()
+/obj/tether_away_spawner/Initialize(mapload)
 	. = ..()
 
 	if(!LAZYLEN(mobs_to_pick_from))

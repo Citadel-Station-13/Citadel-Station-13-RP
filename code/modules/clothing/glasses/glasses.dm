@@ -165,7 +165,7 @@ BLIND     // can't see anything
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
-	item_flags = ALLOWINTERNALS //cit change
+	clothing_flags = ALLOWINTERNALS //cit change
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
@@ -212,7 +212,7 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 	clothing_flags = SCAN_REAGENTS
 
@@ -225,7 +225,7 @@ BLIND     // can't see anything
 	desc = "Just some plain old goggles."
 	icon_state = "plaingoggles"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 
 /obj/item/clothing/glasses/night
@@ -237,7 +237,7 @@ BLIND     // can't see anything
 	darkness_view = 7
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	item_flags = ALLOWINTERNALS //  Cit change
+	clothing_flags = ALLOWINTERNALS //  Cit change
 	body_parts_covered = EYES // Cit change
 	off_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
@@ -315,7 +315,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
-	item_flags = ALLOWINTERNALS //cit change
+	clothing_flags = ALLOWINTERNALS //cit change
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT)
 
@@ -338,7 +338,7 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	off_state = "denight"
 	vision_flags = SEE_OBJS | SEE_TURFS
-	item_flags = ALLOWINTERNALS //  Cit change
+	clothing_flags = ALLOWINTERNALS //  Cit change
 	body_parts_covered = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
@@ -458,7 +458,7 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "welding-g", slot_l_hand_str = "welding-g")
 	action_button_name = "Flip Welding Goggles"
 	matter = list(MAT_STEEL = 1500, MAT_GLASS = 1000)
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	var/up = 0
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
@@ -544,7 +544,7 @@ BLIND     // can't see anything
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunSecHud"
 
-/obj/item/clothing/glasses/sunglasses/sechud/ComponentInitialize()
+/obj/item/clothing/glasses/sunglasses/sechud/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
 
@@ -552,7 +552,7 @@ BLIND     // can't see anything
 	name = "tactical HUD"
 	desc = "Flash-resistant goggles with inbuilt combat and security information."
 	icon_state = "swatgoggles"
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator
@@ -600,7 +600,7 @@ BLIND     // can't see anything
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunMedHud"
 
-/obj/item/clothing/glasses/sunglasses/medhud/ComponentInitialize()
+/obj/item/clothing/glasses/sunglasses/medhud/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(slot_glasses))
 
@@ -679,7 +679,7 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	action_button_name = "Adjust Orange Goggles"
 	var/up = 0
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 	species_restricted = list(SPECIES_TESHARI)
 

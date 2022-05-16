@@ -1,27 +1,37 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 //NOTE: Breathing happens once per FOUR TICKS, unless the last breath fails. In which case it happens once per ONE TICK! So oxyloss healing is done once per 4 ticks while oxyloss damage is applied once per tick!
-#define HUMAN_MAX_OXYLOSS 1 //Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
-#define HUMAN_CRIT_MAX_OXYLOSS ( 2.0 / 6) //The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 4 ticks. last_tick_duration = ~2.0 on average
-
-#define HEAT_DAMAGE_SYNTH 1.5 //Amount of damage applied for synths experiencing heat just above 360.15k such as space walking
-#define HEAT_DAMAGE_LEVEL_1 5 //Amount of damage applied when your body temperature just passes the 360.15k safety point
-#define HEAT_DAMAGE_LEVEL_2 10 //Amount of damage applied when your body temperature passes the 400K point
-#define HEAT_DAMAGE_LEVEL_3 20 //Amount of damage applied when your body temperature passes the 1000K point
-
-#define COLD_DAMAGE_LEVEL_1 0.5 //Amount of damage applied when your body temperature just passes the 260.15k safety point
-#define COLD_DAMAGE_LEVEL_2 1.5 //Amount of damage applied when your body temperature passes the 200K point
-#define COLD_DAMAGE_LEVEL_3 3 //Amount of damage applied when your body temperature passes the 120K point
-
+///Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
+#define HUMAN_MAX_OXYLOSS 1
+///The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 4 ticks. last_tick_duration = ~2.0 on average
+#define HUMAN_CRIT_MAX_OXYLOSS ( 2.0 / 6)
+///Amount of damage applied for synths experiencing heat just above 360.15k such as space walking
+#define HEAT_DAMAGE_SYNTH 1.5
+///Amount of damage applied when your body temperature just passes the 360.15k safety point
+#define HEAT_DAMAGE_LEVEL_1 5
+///Amount of damage applied when your body temperature passes the 400K point
+#define HEAT_DAMAGE_LEVEL_2 10
+///Amount of damage applied when your body temperature passes the 1000K point
+#define HEAT_DAMAGE_LEVEL_3 20
+///Amount of damage applied when your body temperature just passes the 260.15k safety point
+#define COLD_DAMAGE_LEVEL_1 0.5
+///Amount of damage applied when your body temperature passes the 200K point
+#define COLD_DAMAGE_LEVEL_2 1.5
+///Amount of damage applied when your body temperature passes the 120K point
+#define COLD_DAMAGE_LEVEL_3 3
 //Note that gas heat damage is only applied once every FOUR ticks.
-#define HEAT_GAS_DAMAGE_LEVEL_1 2 //Amount of damage applied when the current breath's temperature just passes the 360.15k safety point
-#define HEAT_GAS_DAMAGE_LEVEL_2 4 //Amount of damage applied when the current breath's temperature passes the 400K point
-#define HEAT_GAS_DAMAGE_LEVEL_3 8 //Amount of damage applied when the current breath's temperature passes the 1000K point
-
-#define COLD_GAS_DAMAGE_LEVEL_1 0.5 //Amount of damage applied when the current breath's temperature just passes the 260.15k safety point
-#define COLD_GAS_DAMAGE_LEVEL_2 1.5 //Amount of damage applied when the current breath's temperature passes the 200K point
-#define COLD_GAS_DAMAGE_LEVEL_3 3 //Amount of damage applied when the current breath's temperature passes the 120K point
-
+///Amount of damage applied when the current breath's temperature just passes the 360.15k safety point
+#define HEAT_GAS_DAMAGE_LEVEL_1 2
+///Amount of damage applied when the current breath's temperature passes the 400K point
+#define HEAT_GAS_DAMAGE_LEVEL_2 4
+///Amount of damage applied when the current breath's temperature passes the 1000K point
+#define HEAT_GAS_DAMAGE_LEVEL_3 8
+///Amount of damage applied when the current breath's temperature just passes the 260.15k safety point
+#define COLD_GAS_DAMAGE_LEVEL_1 0.5
+///Amount of damage applied when the current breath's temperature passes the 200K point
+#define COLD_GAS_DAMAGE_LEVEL_2 1.5
+///Amount of damage applied when the current breath's temperature passes the 120K point
+#define COLD_GAS_DAMAGE_LEVEL_3 3
 #define RADIATION_SPEED_COEFFICIENT 0.1
 
 /mob/living/carbon/human
@@ -273,10 +283,10 @@
 	radiation = clamp(radiation,0,250)
 
 	if(!radiation)
-		if(species.appearance_flags & RADIATION_GLOWS)
+		if(species.species_appearance_flags & RADIATION_GLOWS)
 			set_light(0)
 	else
-		if(species.appearance_flags & RADIATION_GLOWS)
+		if(species.species_appearance_flags & RADIATION_GLOWS)
 			set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
 		// END DOGSHIT SNOWFLAKE
 
@@ -344,11 +354,11 @@
 	/** breathing **/
 
 /mob/living/carbon/human/handle_chemical_smoke(var/datum/gas_mixture/environment)
-	if(wear_mask && (wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(wear_mask && (wear_mask.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
-	if(glasses && (glasses.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(glasses && (glasses.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
-	if(head && (head.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(head && (head.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 	..()
 
@@ -370,7 +380,7 @@
 			if(!rig.offline && (rig.air_supply && internal == rig.air_supply))
 				rig_supply = rig.air_supply
 
-		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.item_flags & ALLOWINTERNALS)) || (head && (head.item_flags & ALLOWINTERNALS))))
+		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.clothing_flags & ALLOWINTERNALS)) || (head && (head.clothing_flags & ALLOWINTERNALS))))
 			internal = null
 
 		if(internal)
@@ -686,8 +696,8 @@
 		if(istype(loc, /obj/mecha))
 			var/obj/mecha/M = loc
 			loc_temp =  M.return_temperature()
-		else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			var/obj/machinery/atmospherics/unary/cryo_cell/CC = loc
+		else if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
+			var/obj/machinery/atmospherics/component/unary/cryo_cell/CC = loc
 			loc_temp = CC.air_contents.temperature
 		else
 			loc_temp = environment.temperature
@@ -744,7 +754,7 @@
 			return 1	//godmode
 
 
-		if(!istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
+		if(!istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
 			var/cold_dam = 0
 			if(bodytemperature <= species.cold_level_1)
 				if(bodytemperature <= species.cold_level_2)

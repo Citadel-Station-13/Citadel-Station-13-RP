@@ -19,7 +19,7 @@
 		slot_wear_mask_str = 'icons/mob/mask.dmi'
 		)
 
-/obj/item/beartrap/equipped()
+/obj/item/beartrap/equipped(mob/user, slot)
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/H = src.loc
 		if(H.wear_mask == src)

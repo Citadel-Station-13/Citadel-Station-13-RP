@@ -3,13 +3,12 @@
 	icon_state = "gsensor1"
 	name = "Gas Sensor"
 
-	anchored = 1
-	var/state = 0
-
+	anchored = TRUE
+	var/on = TRUE
 	var/id_tag
 	var/frequency = 1439
+	var/state = 0
 
-	var/on = 1
 	var/output = 3
 	//Flags:
 	// 1 for pressure

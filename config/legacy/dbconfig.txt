@@ -1,4 +1,9 @@
-# MySQL Connection Configuration
+## MySQL Connection Configuration
+## This is used for stats, feedback gathering,
+## administration, and the in game library.
+
+## Enable/disable SQL connection (comment out to disable)
+#SQL_ENABLED
 
 # Server the MySQL database can be found at
 # Examples: localhost, 200.135.5.43, www.mysqldb.com, etc.
@@ -8,7 +13,7 @@ ADDRESS localhost
 PORT 3306
 
 # Database the population, death, karma, etc. tables may be found in
-DATABASE tgstation
+DATABASE CitadelRP
 
 # Username/Login used to access the database
 LOGIN mylogin

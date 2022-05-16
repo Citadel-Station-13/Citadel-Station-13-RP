@@ -15,8 +15,8 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	name = "status display"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	circuit = /obj/item/circuitboard/status_display
@@ -72,13 +72,13 @@
 
 // Timed process
 /obj/machinery/status_display/process(delta_time)
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		remove_display()
 		return
 	update()
 
 /obj/machinery/status_display/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	set_picture("ai_bsod")
@@ -168,7 +168,7 @@
 		message2 = ""
 		index2 = 0
 
-/obj/machinery/status_display/proc/display_alert(var/newlevel)
+/obj/machinery/status_display/proc/display_alert(newlevel)
 	remove_display()
 	if(seclevel != newlevel)
 		seclevel = newlevel

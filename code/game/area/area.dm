@@ -239,7 +239,7 @@
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
 	for (var/obj/machinery/alarm/AA in src)
-		if (!(AA.stat & (NOPOWER|BROKEN)) && !AA.shorted && AA.report_danger_level)
+		if (!(AA.machine_stat & (NOPOWER|BROKEN)) && !AA.shorted && AA.report_danger_level)
 			danger_level = max(danger_level, AA.danger_level)
 
 	if(danger_level != atmosalm)
@@ -556,7 +556,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		var/mob/living/carbon/human/H = mob
 		if(H.buckled)
 			return // Being buckled to something solid keeps you in place.
-		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.item_flags & NOSLIP))
+		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.clothing_flags & NOSLIP))
 			return
 		if(H.flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
 			return

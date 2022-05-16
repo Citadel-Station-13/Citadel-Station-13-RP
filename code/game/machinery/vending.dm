@@ -6,66 +6,88 @@
 	desc = "A generic vending machine."
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "generic"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
-	var/icon_vend //Icon_state when vending
-	var/icon_deny //Icon_state when denying access
+//! ## Icons
+	/// Icon_state when vending.
+	var/icon_vend
+	/// Icon_state when denying access.
+	var/icon_deny
 
-	// Power
+//! ## Power
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/vend_power_usage = 150 //actuators and stuff
 
-	// Vending-related
-	var/active = 1 //No sales pitches if off!
-	var/vend_ready = 1 //Are we ready to vend?? Is it time??
-	var/vend_delay = 10 //How long does it take to vend?
-	var/categories = CAT_NORMAL // Bitmask of cats we're currently showing
-	var/datum/stored_item/vending_product/currently_vending = null // What we're requesting payment for right now
-	var/status_message = "" // Status screen messages like "insufficient funds", displayed in NanoUI
-	var/status_error = 0 // Set to 1 if status_message is an error
+//! ## Vending-related
+	/// No sales pitches if off!
+	var/active = TRUE
+	/// Are we ready to vend?? Is it time??
+	var/vend_ready = TRUE
+	/// How long does it take to vend?
+	var/vend_delay = 1 SECOND
+	/// Bitmask of categories we're currently showing.
+	var/categories = CAT_NORMAL
+	/// What we're requesting payment for right now.
+	var/datum/stored_item/vending_product/currently_vending = null
+	/// Status screen messages like "insufficient funds", displayed in NanoUI.
+	var/status_message = ""
+	/// Set to TRUE if status_message is an error.
+	var/status_error = FALSE
 
-	/*
-		Variables used to initialize the product list
-		These are used for initialization only, and so are optional if
-		product_records is specified
+	/**
+	 * Variables used to initialize the product list
+	 * These are used for initialization only, and so are optional if
+	 * product_records is specified
 	*/
 	var/list/products	= list() // For each, use the following pattern:
 	var/list/contraband	= list() // list(/type/path = amount,/type/path2 = amount2)
 	var/list/premium 	= list() // No specified amount = only one in stock
 	var/list/prices     = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
 
-	// List of vending_product items available.
+	/// List of vending_product items available.
 	var/list/product_records = list()
 
 
 	// Variables used to initialize advertising
-	var/product_slogans = "" //String of slogans spoken out loud, separated by semicolons
-	var/product_ads = "" //String of small ad messages in the vending screen
+	/// String of slogans spoken out loud, separated by semicolons.
+	var/product_slogans = ""
+	/// String of small ad messages in the vending screen.
+	var/product_ads = ""
 
 	var/list/ads_list = list()
 
 	// Stuff relating vocalizations
 	var/list/slogan_list = list()
-	var/shut_up = 1 //Stop spouting those godawful pitches!
-	var/vend_reply //Thank you for shopping!
-	var/last_reply = 0
-	var/last_slogan = 0 //When did we last pitch?
-	var/slogan_delay = 6000 //How long until we can pitch again?
+	/// Set to true to silence it.
+	var/shut_up = TRUE
+	/// Thank you for shopping!
+	var/vend_reply
+	var/last_reply = FALSE
+	/// When did we last pitch?
+	var/last_slogan = 0
+	/// How long until we can pitch again?
+	var/slogan_delay = 10 MINUTES
 
 	// Things that can go wrong
-	emagged = 0 //Ignores if somebody doesn't have card access to that machine.
-	var/seconds_electrified = 0 //Shock customers like an airlock.
-	var/shoot_inventory = 0 //Fire items at customers! We're broken!
+	/// Ignores if somebody doesn't have card access to that machine.
+	emagged = FALSE
+	/// Shock customers like an airlock.
+	var/seconds_electrified = 0
+	/// Fire items at customers! We're broken!
+	var/shoot_inventory = FALSE
 
-	var/scan_id = 1
+	var/scan_id = TRUE
 	var/obj/item/coin/coin
 	var/datum/wires/vending/wires = null
 
 	var/list/log = list()
-	var/req_log_access = access_cargo //default access for checking logs is cargo
-	var/has_logs = 0 //defaults to 0, set to anything else for vendor to have logs
+
+	/// Default access for checking logs is cargo.
+	var/req_log_access = access_cargo
+	/// Defaults to 0, set to anything else for vendor to have logs.
+	var/has_logs = NONE
 
 
 /obj/machinery/vending/Initialize(mapload)
@@ -259,7 +281,7 @@
 	return attack_hand(user)
 
 /obj/machinery/vending/attack_hand(mob/user as mob)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(seconds_electrified != 0)
@@ -320,7 +342,7 @@
 		ui.open()
 
 /obj/machinery/vending/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(!IsAdminGhost(usr) && (usr.stat || usr.restrained()))
 		return
@@ -484,7 +506,7 @@
 	SSnanoui.update_uis(src)
 
 /obj/machinery/vending/process(delta_time)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(!active)
@@ -504,8 +526,8 @@
 
 	return
 
-/obj/machinery/vending/proc/speak(var/message)
-	if(stat & NOPOWER)
+/obj/machinery/vending/proc/speak(message)
+	if(machine_stat & NOPOWER)
 		return
 
 	if(!message)
@@ -517,10 +539,10 @@
 
 /obj/machinery/vending/power_change()
 	..()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
 	else
-		if(!(stat & NOPOWER))
+		if(!(machine_stat & NOPOWER))
 			icon_state = initial(icon_state)
 		else
 			spawn(rand(0, 15))
@@ -533,7 +555,7 @@
 			R.get_product(loc)
 		break
 
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	icon_state = "[initial(icon_state)]-broken"
 	return
 

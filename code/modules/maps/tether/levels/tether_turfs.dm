@@ -94,8 +94,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 			MAT_LEAD = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
 
 turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
@@ -127,8 +126,7 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 			MAT_VERDANTIUM = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
 
 //Unsimulated
 /turf/unsimulated/mineral/virgo3b
@@ -168,8 +166,7 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 			MAT_VERDANTIUM = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
 
 // Some turfs to make floors look better in centcom tram station.
 
@@ -224,7 +221,7 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 /turf/simulated/sky/virgo3b
 	color = "#FFBBBB"
 
-/turf/simulated/sky/virgo3b/Initialize()
+/turf/simulated/sky/virgo3b/Initialize(mapload)
 	. = ..()
 	set_light(2, 2, "#FFBBBB")
 

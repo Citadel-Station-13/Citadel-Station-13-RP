@@ -31,7 +31,7 @@
 		/obj/structure/closet,
 		/obj/structure/sink,
 		/obj/item/storage,
-		/obj/machinery/atmospherics/unary/cryo_cell,
+		/obj/machinery/atmospherics/component/unary/cryo_cell,
 		/obj/machinery/dna_scannernew,
 		/obj/item/grenade/chem_grenade,
 		/mob/living/bot/medibot,

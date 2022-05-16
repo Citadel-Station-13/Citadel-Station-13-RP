@@ -57,7 +57,7 @@
 /obj/machinery/atmospherics/proc/can_crawl_through()
 	return 1
 
-/obj/machinery/atmospherics/unary/can_crawl_through()
+/obj/machinery/atmospherics/component/unary/can_crawl_through()
 	if(welded)
 		return 0
 
@@ -75,7 +75,7 @@
 /obj/machinery/atmospherics/pipe/manifold/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
-obj/machinery/atmospherics/trinary/isConnectable(var/obj/machinery/atmospherics/target)
+obj/machinery/atmospherics/component/trinary/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
 /obj/machinery/atmospherics/pipe/manifold4w/isConnectable(var/obj/machinery/atmospherics/target)
@@ -90,5 +90,5 @@ obj/machinery/atmospherics/trinary/isConnectable(var/obj/machinery/atmospherics/
 /obj/machinery/atmospherics/portables_connector/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node || ..())
 
-/obj/machinery/atmospherics/unary/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/component/unary/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node || ..())

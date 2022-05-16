@@ -63,22 +63,22 @@
 /obj/machinery/atmospherics/portables_connector/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.network.gases, user)
 
-/obj/machinery/atmospherics/unary/atmosanalyze(var/mob/user)
+/obj/machinery/atmospherics/component/unary/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air_contents, user)
 
-/obj/machinery/atmospherics/binary/atmosanalyze(var/mob/user)
+/obj/machinery/atmospherics/component/binary/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air1, user)
 
-/obj/machinery/atmospherics/trinary/atmos_filter/atmosanalyze(var/mob/user)
+/obj/machinery/atmospherics/component/trinary/atmos_filter/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air1, user)
 
-/obj/machinery/atmospherics/trinary/mixer/atmosanalyze(var/mob/user)
+/obj/machinery/atmospherics/component/trinary/mixer/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air3, user)
 
-/obj/machinery/atmospherics/omni/atmos_filter/atmosanalyze(var/mob/user)
+/obj/machinery/atmospherics/component/quaternary/atmos_filter/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.input.air, user)
 
-/obj/machinery/atmospherics/omni/mixer/atmosanalyze(var/mob/user)
+/obj/machinery/atmospherics/component/quaternary/mixer/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.output.air, user)
 
 /obj/machinery/meter/atmosanalyze(var/mob/user)
