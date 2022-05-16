@@ -8,7 +8,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
-	circuit = /obj/item/circuitboard/teleporter_hub
+	circuit = /obj/item/circuitboard/tele_pad
 	light_color = LIGHT_COLOR_BLUEGREEN
 	var/obj/machinery/computer/teleporter/com
 

@@ -179,7 +179,7 @@
 							/obj/item/stock_parts/motor = 2,
 							/obj/item/stock_parts/gear = 1)
 
-/obj/item/circuitboard/teleporter_hub
+/obj/item/circuitboard/tele_pad
 	name = T_BOARD("teleporter hub")
 	build_path = /obj/machinery/tele_pad
 	board_type = "teleporter_hub"
@@ -189,7 +189,7 @@
 							/obj/item/stock_parts/micro_laser = 4,
 							/obj/item/stack/cable_coil = 10)
 
-/obj/item/circuitboard/teleporter_station
+/obj/item/circuitboard/tele_projector
 	name = T_BOARD("teleporter station")
 	build_path = /obj/machinery/tele_projector
 	board_type = "teleporter_station"

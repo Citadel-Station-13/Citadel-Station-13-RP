@@ -8,7 +8,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
-	circuit = /obj/item/circuitboard/teleporter_station
+	circuit = /obj/item/circuitboard/tele_projector
 
 	var/obj/machinery/tele_pad/pad
 	var/engaged = FALSE
