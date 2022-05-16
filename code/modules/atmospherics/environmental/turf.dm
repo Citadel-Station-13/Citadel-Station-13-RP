@@ -26,7 +26,7 @@
 	// we only care about objects, compiler fastpath
 	// plus, wtf are you doing using /atom/movable to block atmos??
 	for(var/obj/O in contents)
-		. = v? CANVERTICALATMOSPASS(O, T, dir) : CANATMOSPASS(O, T, dir)
+		. = v? CANVERTICALATMOSPASS(O, T, d) : CANATMOSPASS(O, T, d)
 		if(. != ATMOS_PASS_NOT_BLOCKED)
 			return
 	return ATMOS_PASS_NOT_BLOCKED

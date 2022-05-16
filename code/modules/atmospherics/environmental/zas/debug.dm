@@ -82,12 +82,12 @@ proc/soft_assert(thing,fail)
 			to_chat(mob, "No air passage :x")
 		return
 
-	var/turf/simulated/other_turf = get_step(T, direction_list[direction])
+	var/turf/simulated/other_turf = get_step_multiz(T, direction_list[direction])
 	if(!istype(other_turf))
 		return
 
-	var/t_block = T.CanAtmosPass(other_turf, get_dir(T, other_turf))
-	var/o_block = other_turf.CanAtmosPass(T, get_dir(other_turf, T))
+	var/t_block = T.CanAtmosPass(other_turf, get_dir_multiz(T, other_turf))
+	var/o_block = other_turf.CanAtmosPass(T, get_dir_multiz(other_turf, T))
 
 	if(o_block == ATMOS_PASS_AIR_BLOCKED)
 		if(t_block == ATMOS_PASS_AIR_BLOCKED)

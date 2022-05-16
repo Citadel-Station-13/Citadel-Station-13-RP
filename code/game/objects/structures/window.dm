@@ -150,7 +150,6 @@
 	else
 		return TRUE
 
-
 /obj/structure/window/CanAtmosPass(turf/T, d)
 	if(is_fulltile() || (d == dir))
 		return anchored? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED

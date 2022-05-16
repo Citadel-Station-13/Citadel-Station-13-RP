@@ -116,7 +116,7 @@
 	for(var/d = 1, d < 16, d *= 2)
 	#endif
 
-		var/turf/unsim = get_step(src, d)
+		var/turf/unsim = get_step_multiz(src, d)
 
 		if(!unsim) //edge of map
 			continue
