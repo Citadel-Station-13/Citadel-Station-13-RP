@@ -7,7 +7,7 @@ var/datum/planet/classg/planet_classg = null
 	name = "Class-G Mineral Rich Planet"
 	desc = "A mineral rich planet with a volatile atmosphere."
 	current_time = new /datum/time/classg()
-	expected_z_levels = list(12)
+	expected_z_levels = list(13)
 
 /datum/planet/classg/New()
 	..()
