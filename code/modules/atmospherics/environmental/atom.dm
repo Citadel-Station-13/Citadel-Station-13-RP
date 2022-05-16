@@ -2,7 +2,7 @@
 	var/CanAtmosPass = ATMOS_PASS_NOT_BLOCKED
 	var/CanAtmosPassVertical = ATMOS_PASS_VERTICAL_DEFAULT
 
-/atom/proc/CanAtmosPass(turf/T, dir)
+/atom/proc/CanAtmosPass(turf/T, d)
 	switch (CanAtmosPass)
 		if (ATMOS_PASS_PROC)
 			return ATMOS_PASS_NOT_BLOCKED

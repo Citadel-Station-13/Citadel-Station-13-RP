@@ -93,15 +93,6 @@ Class Procs:
 	zones.Remove(z)
 	zones_to_update.Remove(z)
 
-/datum/controller/subsystem/air/proc/air_blocked(turf/A, turf/B)
-	#ifdef ZASDBG
-	ASSERT(isturf(A))
-	ASSERT(isturf(B))
-	#endif
-	var/ablock = A.c_airblock(B)
-	if(ablock == BLOCKED) return BLOCKED
-	return ablock | B.c_airblock(A)
-
 /datum/controller/subsystem/air/proc/has_valid_zone(turf/simulated/T)
 	#ifdef ZASDBG
 	ASSERT(istype(T))
@@ -133,10 +124,11 @@ Class Procs:
 	ASSERT(A != B)
 	#endif
 
-	var/block = air_master.air_blocked(A,B)
-	if(block & AIR_BLOCKED) return
+	var/block = A.CheckAirBlock(B)
+	if(block == ATMOS_PASS_AIR_BLOCKED)
+		return
 
-	var/direct = !(block & ZONE_BLOCKED)
+	var/direct = block == ATMOS_PASS_NOT_BLOCKED
 	var/space = !istype(B)
 
 	if(!space)
@@ -161,7 +153,8 @@ Class Procs:
 	A.connections.place(c, a_to_b)
 	B.connections.place(c, b_to_a)
 
-	if(direct) c.mark_direct()
+	if(direct)
+		c.mark_direct()
 
 /datum/controller/subsystem/air/proc/mark_for_update(turf/T)
 	#ifdef ZASDBG

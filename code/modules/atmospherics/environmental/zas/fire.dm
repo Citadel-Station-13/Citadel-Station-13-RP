@@ -203,7 +203,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 					continue
 
 				//Spread the fire.
-				if(prob( 50 + 50 * (firelevel/firelevel_multiplier) ) && my_tile.CanZASPass(enemy_tile) && enemy_tile.CanZASPass(my_tile))
+				if(prob( 50 + 50 * (firelevel/firelevel_multiplier) ) && (my_tile.CheckAirBlock(enemy_tile) != ATMOS_PASS_AIR_BLOCKED))
 					enemy_tile.create_fire(firelevel)
 
 			else

@@ -7,8 +7,8 @@
 	var/allow_gas_overlays = TRUE
 
 /turf/proc/update_air_properties()
-	var/block = c_airblock(src)
-	if(block & AIR_BLOCKED)
+	var/block = CanAtmosPass(src, NONE)
+	if(block == ATMOS_PASS_AIR_BLOCKED)
 		//dbg(blocked)
 		return 1
 
@@ -23,15 +23,15 @@
 		if(!unsim)
 			continue
 
-		block = unsim.c_airblock(src)
+		block = unsim.CanAtmosPass(src, REVERSE_DIR(d))
 
-		if(block & AIR_BLOCKED)
+		if(block == ATMOS_PASS_AIR_BLOCKED)
 			//unsim.dbg(air_blocked, turn(180,d))
 			continue
 
-		var/r_block = c_airblock(unsim)
+		var/r_block = CanAtmosPass(unsim, d)
 
-		if(r_block & AIR_BLOCKED)
+		if(r_block == ATMOS_PASS_AIR_BLOCKED)
 			continue
 
 		if(istype(unsim, /turf/simulated))
@@ -82,7 +82,7 @@
 		#endif
 		for(var/dir in to_check)
 			var/turf/simulated/other = get_step(T, dir)
-			if(istype(other) && other.zone == T.zone && !(other.c_airblock(T) & AIR_BLOCKED) && get_dist(src, other) <= 1)
+			if(istype(other) && other.zone == T.zone && !(other.CanAtmosPass(T, REVERSE_DIR(dir)) == ATMOS_PASS_AIR_BLOCKED) && get_dist(src, other) <= 1)
 				. |= dir
 
 /turf/simulated/update_air_properties()
@@ -90,8 +90,8 @@
 		c_copy_air()
 		zone = null //Easier than iterating through the list at the zone.
 
-	var/s_block = c_airblock(src)
-	if(s_block & AIR_BLOCKED)
+	var/s_block = CanAtmosPass(src, NOnE)
+	if(s_block == ATMOS_PASS_AIR_BLOCKED)
 		#ifdef ZASDBG
 		if(verbose) to_chat(world, "Self-blocked.")
 		//dbg(blocked)
@@ -121,7 +121,7 @@
 		if(!unsim) //edge of map
 			continue
 
-		var/block = unsim.c_airblock(src)
+		var/block = unsim.CanAtmosPass(src, REVERSE_DIR(d))
 		if(block & AIR_BLOCKED)
 
 			#ifdef ZASDBG
@@ -131,7 +131,7 @@
 
 			continue
 
-		var/r_block = c_airblock(unsim)
+		var/r_block = CanAtmosPass(unsim, d)
 		if(r_block & AIR_BLOCKED)
 
 			#ifdef ZASDBG

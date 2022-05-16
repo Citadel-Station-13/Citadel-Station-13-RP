@@ -8,7 +8,7 @@
 	anchored = 1
 	opacity = 1
 	density = 1
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	CanAtmosPass = ATMOS_PASS_PROC
 	layer = DOOR_OPEN_LAYER
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
@@ -141,10 +141,12 @@
 		return !opacity
 	return !density
 
-/obj/machinery/door/CanZASPass(turf/T, is_zone)
-	if(is_zone)
-		return block_air_zones ? ATMOS_PASS_NO : ATMOS_PASS_YES
-	return ..()
+/obj/machinery/door/CanAtmosPass(turf/T, d)
+	if(density)
+		return ATMOS_PASS_AIR_BLOCKED
+	if(block_air_zones)
+		return ATMOS_PASS_ZONE_BLOCKED
+	return ATMOS_PASS_NOT_BLOCKED
 
 /obj/machinery/door/proc/bumpopen(mob/user as mob)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/retrigger_delay, airflow_delay)

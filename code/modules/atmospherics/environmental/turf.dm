@@ -9,9 +9,9 @@
  * semantically means "we can pass to them", not "they can pass to us"
  * use CheckAirBlock instead
  */
-/turf/CanAtmosPass(turf/T, dir)
+/turf/CanAtmosPass(turf/T, d)
 	if(blocks_air)
-		return = ATMOS_PASS_AIR_BLOCKED
+		return ATMOS_PASS_AIR_BLOCKED
 	var/v = dir & (UP|DOWN)
 	switch(v)
 		if(UP)
@@ -41,7 +41,7 @@
  */
 /turf/proc/AtmosAdjacencyFloodfillHeuristic(amount, radius)
 	. = list()
-	amount = clamp(amount 0, 100)
+	amount = clamp(amount, 0, 100)
 	if(!amount)
 		return
 	var/list/turfs = list(src = TRUE)
