@@ -631,7 +631,7 @@
 				if(!can_finish_build(W, user))
 					return
 				qdel(W)
-				var/mob/living/bot/medibot/S = new(drop_location(), skin)
+				var/mob/living/bot/medibot/S = new(get_turf(src), skin)
 				to_chat(user, SPAN_NOTICE("You complete the Medibot! Beep boop."))
 				S.name = created_name
 				S.firstaid = firstaid
