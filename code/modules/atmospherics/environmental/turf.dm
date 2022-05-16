@@ -46,7 +46,7 @@
 		return
 	var/list/turfs = list(src = TRUE)
 	var/i = 1
-	whlie(i <= turfs.len)
+	while(i <= turfs.len)
 		var/turf/check = turfs[i]
 		. += check
 		for(var/d in GLOB.cardinal)
