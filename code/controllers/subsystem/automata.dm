@@ -14,5 +14,9 @@ SUBSYSTEM_DEF(automata)
 /datum/controller/subsystem/automata/fire(resumed)
 	. = ..()
 	for(var/datum/automata/A as anything in ticking)
-
+		if(world.time > A.next_tick)
+			continue
+		A.tick()
+		if(MC_TICK_CHECK)
+			return
 

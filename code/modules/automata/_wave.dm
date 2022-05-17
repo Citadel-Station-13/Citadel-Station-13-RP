@@ -20,7 +20,6 @@
 	last = list()
 	edges = list()
 	powers = list()
-	dirs = list()
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
 			// no directionals at all
@@ -132,7 +131,7 @@
 	if(last[_expand] || edges[_expand]){							\
 		continue;													\
 	}																\
-	edges_next[_expand] |= D										\
+	edges_next[_expand] |= D;										\
 	powers_next[_expand] = max(powers_next[_expand], P);
 /**
  * iteration base for diagonals, basically modified ITERATION_BASE
@@ -285,6 +284,8 @@
 /datum/automata/wave/debug
 	/// impacted turfs
 	var/list/turf/impacted = list()
+	/// additional dense falloff
+	var/dense_falloff = 0
 
 /datum/automata/wave/debug/Destroy()
 	clear_impacted()
@@ -297,16 +298,19 @@
 
 /datum/automata/wave/debug/act(turf/T, dirs, power)
 	. = ..()
+	if(T.contains_dense_objects())
+		. -= dense_falloff
 	T.maptext = "[power]"
 
 GLOBAL_DATUM(active_wave_automata_test, /datum/automata/wave)
 
-/proc/wave_automata_test(turf/T, type = WAVE_SPREAD_MINIMAL, power = 50)
+/proc/wave_automata_test(turf/T, type = WAVE_SPREAD_MINIMAL, power = 50, dense_falloff = 0, dirs)
 	power = clamp(power, 0, 100)
 	var/datum/automata/wave/debug/W = new
 	if(GLOB.active_wave_automata_test)
 		QDEL_NULL(GLOB.active_wave_automata_test)
 	GLOB.active_wave_automata_test = W
+	W.dense_falloff = dense_falloff
 	W.setup_auto(T, power, dirs)
 	W.delay = 0.25 SECONDS
 	W.start()

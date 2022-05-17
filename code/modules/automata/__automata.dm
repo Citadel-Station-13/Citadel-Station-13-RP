@@ -11,14 +11,18 @@
 	/// delay in ds between ticks
 	var/delay = 0.5
 	/// iteration
-	var/iteration = 0
+	var/iteration = 1
+	/// start at
+	var/start_at
+	/// last tick at
+	var/last_tick
 
 /datum/automata/New()
 	SSautomata.automatons += src
 
 /datum/automata/Destroy()
 	if(ticking)
-		kill()
+		stop()
 	cleanup()
 	SSautomata.automatons -= src
 	return ..()
@@ -35,14 +39,15 @@
 /datum/automata/proc/start(quickstart)
 	ticking = TRUE
 	SSautomata.ticking += src
-	iteration = 1
+	if(isnull(start_at))
+		start_at = world.time
 	if(quickstart)
 		tick()
 
 /**
  * stop ticking
  */
-/datum/automata/proc/kill()
+/datum/automata/proc/stop()
 	ticking = FALSE
 	SSautomata.ticking -= src
 
@@ -59,3 +64,4 @@
 	SHOULD_CALL_PARENT(TRUE)
 	next_tick = world.time + delay
 	++iteration
+	last_tick = world.time
