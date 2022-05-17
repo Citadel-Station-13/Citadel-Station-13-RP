@@ -6,36 +6,36 @@
 	VAR_PROTECTED/wave_spread = WAVE_SPREAD_MINIMAL
 	/// last turfs, assoc list to true for fast hash lookup. makes sure we don't fold in on ourselves.
 	VAR_PRIVATE/list/last
-	/// current edges associated to directions
+	/// current edges = dirs
 	VAR_PRIVATE/list/edges
-	/// current edges associated to powers
+	/// current powers
 	VAR_PRIVATE/list/powers
 	/// initial power
 	var/power_initial
 	/// power at which the automata stops
 	var/power_considered_dead = WAVE_AUTOMATA_POWER_DEAD
 
-/datum/automata/wave/setup_auto(turf/T, power, dirs)
+/datum/automata/wave/setup_auto(turf/T, power, dir)
 	power_initial = power
 	last = list()
 	edges = list()
 	powers = list()
+	dirs = list()
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
 			// no directionals at all
 			// we use byond dir bits
 			edges[T] = NORTH|SOUTH|EAST|WEST
-			powers[T] = power
+			powers += power
 		if(WAVE_SPREAD_SHADOW_LIKE)
 			// directionals fully allowed
 			// we use our own dir bits
-			edges[T] = dirs? dirs : ALL_DIRECTION_BITS
-			powers[T] = power
+			edges[T] = dir? dir : ALL_DIRECTION_BITS
+			powers += power
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// no directionals. we use cardinal bits, though, due to the algorithm.
-			#warn what bits to use
 			edges[T] = NORTH|SOUTH|EAST|WEST
-			powers[T] = power
+			powers += power
 		else
 			CRASH("Invalid wave spread [wave_spread].")
 
@@ -50,8 +50,7 @@
 	var/_D
 	// next edges, powers
 	var/list/turf/edges_next = list()
-	var/list/turf/powers_next = list()
-	// current vars - returned
+	var/list/turf/powers_next = list()	// current vars - returned
 	var/_ret
 	// current vars - expansions
 	var/turf/_expand
@@ -60,6 +59,21 @@
 // usually i wouldn't bother documenting forbidden defines but
 // just incase someone needs to debug/read later
 /**
+ * base run for current turf
+ */
+#define ITERATION_BASE							\
+	_T = edges[i];								\
+	if(!_T) {									\
+		continue;								\
+	}											\
+	_P = powers[_T];							\
+	_D = edges[_T];								\
+	_ret = act(_T, _D, _P);						\
+	if(_ret < power_considered_dead){			\
+		contune;								\
+	}
+// FOR MINIMAL
+/**
  * simple expand: really simple, take dir, set next turf in edges next, set power, etc
  *
  * params:
@@ -67,7 +81,8 @@
  * D - dir to expand in
  * P - power to set expanded turf to
  */
-#define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[_expand] = D; powers_next[_expand] = P;
+#define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[T] = D; powers_next += P;
+// FOR SHADOWCAST
 /**
  * shadowcast helper
  * expands a turf's dirs to edges next
@@ -93,7 +108,11 @@
 		edges_next[_expand] |= PD;										\
 		powers_next[_expand] = max(powers_next[_expand], P);			\
 	}
-
+// FOR SHOCKWAVE
+/**
+ * runs a specific cardinal
+ */
+#define MARK_CARDINAL(T, P, RD)
 
 
 	switch(wave_spread)
@@ -109,14 +128,7 @@
 			if(iteration == 1)
 				// first step just sets up expanding rings
 				for(var/i in 1 to edges.len)
-					_T = edges[i]
-					if(!_T)
-						continue
-					_P = powers[_T]
-					_D = edges[_T]
-					_ret = act(_T, _D, _P)
-					if(_ret < power_considered_dead)
-						continue
+					ITERATION_BASE
 					if(_D == ALL_DIRECTION_BITS)
 						SIMPLE_EXPAND(_T, NORTH, _ret)
 						SIMPLE_EXPAND(_T, SOUTH, _ret)
@@ -129,14 +141,7 @@
 			else
 				// other steps do full sim
 				for(var/i in 1 to edges.len)
-					_T = edges[i]
-					if(!_T)
-						continue
-					_P = powers[_T]
-					_D = edges[_T]
-					_ret = act(_T, _D, _P)
-					if(_ret < power_considered_dead)
-						continue
+					ITERATION_BASE
 					// at this point there should only be one dir so...
 					SIMPLE_EXPAND(_T, _D, _ret)
 					// check diagonal
@@ -159,14 +164,7 @@
 			if(iteration == 1)
 				// first step just sets up expanding rings
 				for(var/i in 1 to edges.len)
-					_T = edges[i]
-					if(!_T)
-						continue
-					_P = powers[_T]
-					_D = edges[_T]
-					_ret = act(_T, _D, _P)
-					if(_ret < power_considered_dead)
-						continue
+					ITERATION_BASE
 					SHADOWCAST_INIT(_T, _P, _D, NORTH_BIT, NORTH, CONICAL_NORTH_BITS)
 					SHADOWCAST_INIT(_T, _P, _D, NORTHEAST_BIT, NORTHEAST, CONICAL_NORTHEAST_BITS)
 					SHADOWCAST_INIT(_T, _P, _D, NORTHWEST_BIT, NORTHWEST, CONICAL_NORTHWEST_BITS)
@@ -178,14 +176,7 @@
 			else
 				// other steps do full sim
 				for(var/i in 1 to edges.len)
-					_T = edges[i]
-					if(!_T)
-						continue
-					_P = powers[_T]
-					_D = edges[_T]
-					_ret = act(_T, _D, _P)
-					if(_ret < power_considered_dead)
-						continue
+					ITERATION_BASE
 					SHADOWCAST(_T, _P, _D, NORTH_BIT, NORTH)
 					SHADOWCAST(_T, _P, _D, EAST_BIT, EAST)
 					SHADOWCAST(_T, _P, _D, WEST_BIT, WEST)
@@ -195,6 +186,7 @@
 					SHADOWCAST(_T, _P, _D, SOUTHEAST_BIT, SOUTHEAST)
 					SHADOWCAST(_T, _P, _D, SOUTHWEST_BIT, SOUTHWEST)
 
+			//
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// this is annoying
 			// to simulate diagonals we do a cardinal tick
@@ -202,12 +194,19 @@
 			// and then tick the diagonals in a second processing step
 			#warn impl
 
+			// we will check last here to prevent folding on a previous wave,
+
+
+			// first, process all edges's cardinality,
+			for(var/i in 1 to edges.len)
+				ITERATION_BASE
 
 
 
 #undef SHADOWCAST_INIT
 #undef SHADOWCAST
 #undef SIMPLE_EXPAND
+#undef ITERATION_BASE
 
 	// if next if empty...
 	if(!edges_next.len)
@@ -215,9 +214,9 @@
 	else
 		// continue
 		// shift everything down
-		last = edges
-		edges = edges_next
-		powers = powers_next
+		src.last = edges
+		src.edges = edges_next
+		src.powers = powers_next
 	return ..()
 
 /datum/automata/wave/kill()
