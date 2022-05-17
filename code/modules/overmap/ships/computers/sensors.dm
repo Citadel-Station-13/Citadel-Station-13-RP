@@ -172,7 +172,8 @@
 	var/turf/T=get_turf(src)
 	if(istype(T))
 		var/datum/gas_mixture/environment = T.return_air()
-		if(environment && environment.return_pressure() > MINIMUM_PRESSURE_DIFFERENCE_TO_SUSPEND)
+		// this is a hardcoded constant now
+		if(environment && environment.return_pressure() > MINIMUM_MEANINGFUL_PRESSURE_VACUUM)
 			return 0
 	return 1
 

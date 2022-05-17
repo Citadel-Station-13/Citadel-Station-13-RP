@@ -281,7 +281,7 @@
 	var/our_heatcap = heat_capacity()
 	var/share_heatcap = sharer.heat_capacity()
 
-	if((abs(temperature-sharer.temperature)>MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER) && our_heatcap + share_heatcap)
+	if((abs(temperature-sharer.temperature)>MINIMUM_MEANINGFUL_TEMPERATURE_DELTA) && our_heatcap + share_heatcap)
 		var/new_temperature = ((temperature * our_heatcap) + (sharer.temperature * share_heatcap)) / (our_heatcap + share_heatcap)
 		temperature += (new_temperature - temperature)
 		temperature = between(0, temperature, REACTOR_TEMPERATURE_CUTOFF)
