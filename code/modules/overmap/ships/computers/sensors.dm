@@ -121,7 +121,7 @@
 				. = TRUE
 
 	if(. && !issilicon(usr))
-		playsound(src, "terminal_type", 50, 1)
+		playsound(src, SFX_ALIAS_TERMINAL, 50, 1)
 
 /obj/machinery/computer/ship/sensors/process()
 	..()
