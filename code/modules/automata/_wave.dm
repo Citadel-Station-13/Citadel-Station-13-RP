@@ -34,7 +34,7 @@
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// no directionals. we use cardinal bits, though, due to the algorithm.
 			#warn what bits to use
-			edges[T] = CARDINAL_DIRECTION_BITS
+			edges[T] = NORTH|SOUTH|EAST|WEST
 			powers[T] = power
 		else
 			CRASH("Invalid wave spread [wave_spread].")
@@ -57,13 +57,36 @@
 	var/turf/_expand
 	var/_ND
 
+// usually i wouldn't bother documenting forbidden defines but
+// just incase someone needs to debug/read later
+/**
+ * simple expand: really simple, take dir, set next turf in edges next, set power, etc
+ *
+ * params:
+ * T - turf to expand from
+ * D - dir to expand in
+ * P - power to set expanded turf to
+ */
 #define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[_expand] = D; powers_next[_expand] = P;
+/**
+ * shadowcast helper
+ * expands a turf's dirs to edges next
+ *
+ * params:
+ * T, D, P - ditto, thuogh D is direction_BIT and not byond direction defines
+ * CD - dir to check.
+ * RD - real byond dir, used for the get_step since we use direction bits now
+ */
 #define SHADOWCAST(T, P, D, CD, RD)										\
 	if(D & CD){															\
 		_expand = get_step(T, RD);										\
 		edges_next[_expand] |= D;										\
 		powers_next[_expand] = max(powers_next[_expand], P);			\
 	}
+/**
+ * the above but PD is "put direction", used to direct where the wave goes
+ * since on the first step the singular turf has all dirs.
+ */
 #define SHADOWCAST_INIT(T, P, D, CD, RD, PD)							\
 	if(D & CD){															\
 		_expand = get_step(T, RD);										\
@@ -71,11 +94,16 @@
 		powers_next[_expand] = max(powers_next[_expand], P);			\
 	}
 
+
+
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
 			// minimal - very little simulation, just go
 			// we act on current turf in edges
 			// we don't use dir bits here
+
+			// we so not check last list
+			// because we ""know"" we're going in a linear circular spread
 
 			// first check first step
 			if(iteration == 1)
@@ -119,11 +147,13 @@
 						_ND = turn(_D, -45)
 						SIMPLE_EXPAND(_T, _ND, _ret)
 		if(WAVE_SPREAD_SHADOW_LIKE)
-			#warn impl
 			// preliminary attempt:
 			// propagate cardinals forwards with a cardinal and 45 deg diagonals
 			// propagate diagonals forwards with 45 deg cardinals only
 			// this prevents corner clipping
+
+			// we do not check last here either because we can't bend around
+			// to save some list lookups
 
 			// first check first step
 			if(iteration == 1)
