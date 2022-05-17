@@ -19,6 +19,7 @@
 /datum/automata/Destroy()
 	if(ticking)
 		kill()
+	cleanup()
 	SSautomata.automatons -= src
 	return ..()
 

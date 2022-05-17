@@ -112,8 +112,38 @@
 /**
  * runs a specific cardinal
  */
-#define MARK_CARDINAL(T, P, RD)
+#define SHOCKWAVE_MARK_CARDINAL(T, P, D)							\
+	_expand = get_step(T, D);										\
+	if(last[_expand] || edges[_expand]){							\
+		continue;													\
+	}																\
+	edges_next[_expand] = _CD = (edges_next[_expand] | D);			\
+	powers_next[_expand] = max(powers_next[_expand], P);			\
+	if(ISDIAGONALDIR(_CD)){											\
+		diagonals[_T] |= _CD;										\
+		diagonal_powers[_T] = max(diagonal_powers[_T], P)			\
+	}
 
+/**
+ * runs a specific cardinal on diagstep
+ */
+#define SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(T, P, D)					\
+	_expand = get_step(T, D);										\
+	if(last[_expand] || edges[_expand]){							\
+		continue;													\
+	}																\
+	edges_next[_expand] |= D										\
+	powers_next[_expand] = max(powers_next[_expand], P);
+/**
+ * iteration base for diagonals, basically modified ITERATION_BASE
+ */
+#define ITERATION_BASE_DIAGONAL					\
+	_P = diagonal_powers[_T];					\
+	_D = diagonals[_T];							\
+	_ret = act(_T, _D, _P);						\
+	if(_ret < power_considered_dead){			\
+		contune;								\
+	}
 
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
@@ -195,14 +225,32 @@
 			#warn impl
 
 			// we will check last here to prevent folding on a previous wave,
+			// also set up diags list
+			var/list/turf/diagonals = list()
+			var/list/turf/diagonal_powers = list()
+			// current dir
+			var/_CD
 
-
-			// first, process all edges's cardinality,
+			// first, process all edges cardinally
 			for(var/i in 1 to edges.len)
 				ITERATION_BASE
+				SHOCKWAVE_MARK_CARDINAL(_T, _P, NORTH)
+				SHOCKWAVE_MARK_CARDINAL(_T, _P, SOUTH)
+				SHOCKWAVE_MARK_CARDINAL(_T, _P, EAST)
+				SHOCKWAVE_MARK_CARDINAL(_T, _P, WEST)
+			// then, process diagonals
+			// make sure diagonals are added to edges so they're part of the last[] and edges[] exclusion
+			edges += diagonals
+			for(var/turf/_T in diagonals)
+				ITERATION_BASE_DIAGONAL
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, NORTH)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, SOUTH)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, EAST)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, WEST)
 
-
-
+#undef ITERATION_BASE_DIAGONAL
+#undef SHOCKWAVE_MARK_CARDINAL
+#undef SHOCKWAVE_MARK_DIAGONAL_SUBSTEP
 #undef SHADOWCAST_INIT
 #undef SHADOWCAST
 #undef SIMPLE_EXPAND
@@ -219,7 +267,7 @@
 		src.powers = powers_next
 	return ..()
 
-/datum/automata/wave/kill()
+/datum/automata/wave/cleanup()
 	. = ..()
 	last = edges = powers = null
 
@@ -260,5 +308,6 @@ GLOBAL_DATUM(active_wave_automata_test, /datum/automata/wave)
 		QDEL_NULL(GLOB.active_wave_automata_test)
 	GLOB.active_wave_automata_test = W
 	W.setup_auto(T, power, dirs)
+	W.delay = 0.25 SECONDS
 	W.start()
 	QDEL_IN(W, 10 SECONDS)
