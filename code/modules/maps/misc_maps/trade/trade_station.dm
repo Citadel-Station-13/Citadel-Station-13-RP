@@ -61,7 +61,7 @@
 	on_store_name = "Beruang Trading Corp Storage"
 
 /atom/movable/landmark/map_data/trade
-    height = 2
+    height = 1
 
 // Their shuttle
 

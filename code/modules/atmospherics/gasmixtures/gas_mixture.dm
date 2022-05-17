@@ -515,6 +515,16 @@
 	update_values()
 	return TRUE
 
+/**
+  * Adds from a specially formatted gas string, taking on its gas values as our own as well as their temperature.
+  */
+/datum/gas_mixture/proc/merge_gas_string(gas_string)
+	var/datum/gas_mixture/temp = new(volume)
+	temp.parse_gas_string(gas_string)
+	merge(temp)
+	qdel(temp)
+	return TRUE
+
 /datum/gas_mixture/proc/get_mass()
 	for(var/g in gas)
 		. += gas[g] * GLOB.meta_gas_molar_mass[g] * group_multiplier

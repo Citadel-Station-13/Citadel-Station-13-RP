@@ -5,6 +5,7 @@
 	plane = TURF_PLANE
 	luminosity = 1
 	level = 1
+
 	var/holy = 0
 
 	// Atmospherics / ZAS Environmental
