@@ -579,13 +579,13 @@
 	src.storage_end.icon_state = "storage_end"
 	src.storage_end.screen_loc = "7,7 to 10,8"
 
-	src.stored_start = new /obj //we just need these to hold the icon
+	src.stored_start = new /atom/movable //we just need these to hold the icon
 	src.stored_start.icon_state = "stored_start"
 
-	src.stored_continue = new /obj
+	src.stored_continue = new /atom/movable
 	src.stored_continue.icon_state = "stored_continue"
 
-	src.stored_end = new /obj
+	src.stored_end = new /atom/movable
 	src.stored_end.icon_state = "stored_end"
 
 	src.closer = new /atom/movable/screen/close(  )
