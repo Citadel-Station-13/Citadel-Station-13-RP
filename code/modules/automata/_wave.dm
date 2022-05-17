@@ -180,6 +180,7 @@
 						SIMPLE_EXPAND(_T, _ND, _ret)
 						_ND = turn(_D, -45)
 						SIMPLE_EXPAND(_T, _ND, _ret)
+
 		if(WAVE_SPREAD_SHADOW_LIKE)
 			// preliminary attempt:
 			// propagate cardinals forwards with a cardinal and 45 deg diagonals
@@ -215,13 +216,11 @@
 					SHADOWCAST(_T, _P, _D, SOUTHEAST_BIT, SOUTHEAST)
 					SHADOWCAST(_T, _P, _D, SOUTHWEST_BIT, SOUTHWEST)
 
-			//
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// this is annoying
 			// to simulate diagonals we do a cardinal tick
 			// and gather the diagonals using turn's at 90 degrees
 			// and then tick the diagonals in a second processing step
-			#warn impl
 
 			// we will check last here to prevent folding on a previous wave,
 			// also set up diags list
