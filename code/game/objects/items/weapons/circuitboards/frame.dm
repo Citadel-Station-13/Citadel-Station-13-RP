@@ -96,10 +96,11 @@
 	board_type = new /datum/frame/frame_types/photocopier
 	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 	req_components = list(
-							/obj/item/stock_parts/scanning_module = 1,
-							/obj/item/stock_parts/motor = 1,
-							/obj/item/stock_parts/micro_laser = 1,
-							/obj/item/stock_parts/matter_bin = 1)
+		/obj/item/stock_parts/scanning_module = 1,
+		/obj/item/stock_parts/motor = 1,
+		/obj/item/stock_parts/micro_laser = 1,
+		/obj/item/stock_parts/matter_bin = 1,
+	)
 
 /obj/item/circuitboard/fax
 	name = T_BOARD("fax")
@@ -107,19 +108,21 @@
 	board_type = new /datum/frame/frame_types/fax
 	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 	req_components = list(
-							/obj/item/stock_parts/scanning_module = 1,
-							/obj/item/stock_parts/motor = 1,
-							/obj/item/stock_parts/micro_laser = 1,
-							/obj/item/stock_parts/matter_bin = 1)
+		/obj/item/stock_parts/scanning_module = 1,
+		/obj/item/stock_parts/motor = 1,
+		/obj/item/stock_parts/micro_laser = 1,
+		/obj/item/stock_parts/matter_bin = 1,
+	)
 
 /obj/item/circuitboard/conveyor
 	name = T_BOARD("conveyor")
 	build_path = /obj/machinery/conveyor
 	board_type = new /datum/frame/frame_types/conveyor
 	req_components = list(
-							/obj/item/stock_parts/gear = 2,
-							/obj/item/stock_parts/motor = 2,
-							/obj/item/stack/cable_coil = 5)
+		/obj/item/stock_parts/gear = 2,
+		/obj/item/stock_parts/motor = 2,
+		/obj/item/stack/cable_coil = 5,
+	)
 
 /obj/item/circuitboard/microwave
 	name = T_BOARD("microwave")
@@ -127,17 +130,19 @@
 	board_type = new /datum/frame/frame_types/microwave
 	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 	req_components = list(
-							/obj/item/stock_parts/console_screen = 1,
-							/obj/item/stock_parts/motor = 1,
-							/obj/item/stock_parts/capacitor = 1)
+		/obj/item/stock_parts/console_screen = 1,
+		/obj/item/stock_parts/motor = 1,
+		/obj/item/stock_parts/capacitor = 1,
+	)
 
 /obj/item/circuitboard/recharger
 	name = T_BOARD("recharger")
 	build_path = /obj/machinery/recharger
 	board_type = new /datum/frame/frame_types/recharger
 	req_components = list(
-							/obj/item/stock_parts/capacitor = 1,
-							/obj/item/stack/cable_coil = 5)
+		/obj/item/stock_parts/capacitor = 1,
+		/obj/item/stack/cable_coil = 5,
+	)
 
 /obj/item/circuitboard/recharger/wrecharger
 	name = T_BOARD("wall recharger")
@@ -149,8 +154,9 @@
 	build_path = /obj/machinery/cell_charger
 	board_type = new /datum/frame/frame_types/cell_charger
 	req_components = list(
-							/obj/item/stock_parts/capacitor = 1,
-							/obj/item/stack/cable_coil = 5)
+		/obj/item/stock_parts/capacitor = 1,
+		/obj/item/stack/cable_coil = 5,
+	)
 
 /obj/item/circuitboard/washing
 	name = T_BOARD("washing machine")
@@ -158,46 +164,51 @@
 	board_type = new /datum/frame/frame_types/washing_machine
 	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 	req_components = list(
-							/obj/item/stock_parts/motor = 1,
-							/obj/item/stock_parts/gear = 2)
+		/obj/item/stock_parts/motor = 1,
+		/obj/item/stock_parts/gear = 2,
+	)
 
 /obj/item/circuitboard/grinder
 	name = T_BOARD("reagent grinder")
 	build_path = /obj/machinery/reagentgrinder
 	board_type = new /datum/frame/frame_types/grinder
 	req_components = list(
-							/obj/item/stock_parts/motor = 1,
-							/obj/item/stock_parts/gear = 1,
-							/obj/item/reagent_containers/glass/beaker/large = 1)
+		/obj/item/stock_parts/motor = 1,
+		/obj/item/stock_parts/gear = 1,
+		/obj/item/reagent_containers/glass/beaker/large = 1,
+	)
 
 /obj/item/circuitboard/distiller
 	build_path = /obj/machinery/portable_atmospherics/powered/reagent_distillery
 	board_type = new /datum/frame/frame_types/reagent_distillery
 	req_components = list(
-							/obj/item/stock_parts/capacitor = 1,
-							/obj/item/stock_parts/micro_laser = 1,
-							/obj/item/stock_parts/motor = 2,
-							/obj/item/stock_parts/gear = 1)
+		/obj/item/stock_parts/capacitor = 1,
+		/obj/item/stock_parts/micro_laser = 1,
+		/obj/item/stock_parts/motor = 2,
+		/obj/item/stock_parts/gear = 1,
+	)
 
-/obj/item/circuitboard/teleporter_hub
-	name = T_BOARD("teleporter hub")
+/obj/item/circuitboard/tele_pad
+	name = T_BOARD("teleporter pad")
 	build_path = /obj/machinery/tele_pad
-	board_type = "teleporter_hub"
-//	origin_tech = list(TECH_DATA = 2, TECH_BLUESPACE = 4)
+	board_type = "tele_pad"
+	origin_tech = list(TECH_DATA = 2, TECH_BLUESPACE = 4)
 	req_components = list(
-							/obj/item/stock_parts/scanning_module = 4,
-							/obj/item/stock_parts/micro_laser = 4,
-							/obj/item/stack/cable_coil = 10)
+		/obj/item/stock_parts/scanning_module = 4,
+		/obj/item/stock_parts/micro_laser = 4,
+		/obj/item/stack/cable_coil = 10,
+	)
 
-/obj/item/circuitboard/teleporter_station
-	name = T_BOARD("teleporter station")
+/obj/item/circuitboard/tele_projector
+	name = T_BOARD("teleporter projector")
 	build_path = /obj/machinery/tele_projector
-	board_type = "teleporter_station"
-//	origin_tech = list(TECH_DATA = 2, TECH_BLUESPACE = 3)
+	board_type = "tele_projector"
+	origin_tech = list(TECH_DATA = 2, TECH_BLUESPACE = 3)
 	req_components = list(
-							/obj/item/stock_parts/console_screen = 1,
-							/obj/item/stock_parts/capacitor = 2,
-							/obj/item/stack/cable_coil = 10)
+		/obj/item/stock_parts/console_screen = 1,
+		/obj/item/stock_parts/capacitor = 2,
+		/obj/item/stack/cable_coil = 10,
+	)
 
 /obj/item/circuitboard/body_scanner
 	name = T_BOARD("body scanner")
@@ -205,8 +216,9 @@
 	board_type = new /datum/frame/frame_types/medical_pod
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	req_components = list(
-							/obj/item/stock_parts/scanning_module = 3,
-							/obj/item/stack/material/glass/reinforced = 2)
+		/obj/item/stock_parts/scanning_module = 3,
+		/obj/item/stack/material/glass/reinforced = 2,
+	)
 
 /obj/item/circuitboard/sleeper
 	name = T_BOARD("sleeper")
@@ -214,11 +226,12 @@
 	board_type = new /datum/frame/frame_types/medical_pod
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	req_components = list(
-							/obj/item/stock_parts/manipulator = 1,
-							/obj/item/stock_parts/scanning_module = 1,
-							/obj/item/reagent_containers/glass/beaker = 3,
-							/obj/item/reagent_containers/syringe = 3,
-							/obj/item/stack/material/glass/reinforced = 2)
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stock_parts/scanning_module = 1,
+		/obj/item/reagent_containers/glass/beaker = 3,
+		/obj/item/reagent_containers/syringe = 3,
+		/obj/item/stack/material/glass/reinforced = 2,
+	)
 
 /obj/item/circuitboard/vr_sleeper
 	name = T_BOARD("VR sleeper")
@@ -226,8 +239,9 @@
 	board_type = new /datum/frame/frame_types/medical_pod
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	req_components = list(
-							/obj/item/stock_parts/scanning_module = 1,
-							/obj/item/stack/material/glass/reinforced = 2)
+		/obj/item/stock_parts/scanning_module = 1,
+		/obj/item/stack/material/glass/reinforced = 2,
+	)
 
 /obj/item/circuitboard/dna_analyzer
 	name = T_BOARD("dna analyzer")
@@ -235,20 +249,22 @@
 	board_type = new /datum/frame/frame_types/dna_analyzer
 	origin_tech = list(TECH_MAGNET = 4, TECH_BIO = 2, TECH_DATA = 2)
 	req_components = list(
-							/obj/item/stock_parts/scanning_module = 2,
-							/obj/item/stock_parts/micro_laser = 1,
-							/obj/item/stock_parts/console_screen = 1)
+		/obj/item/stock_parts/scanning_module = 2,
+		/obj/item/stock_parts/micro_laser = 1,
+		/obj/item/stock_parts/console_screen = 1,
+	)
 
 /obj/item/circuitboard/mass_driver
 	name = T_BOARD("mass driver")
 	build_path = /obj/machinery/mass_driver
 	board_type = new /datum/frame/frame_types/mass_driver
 	req_components = list(
-							/obj/item/stock_parts/gear = 2,
-							/obj/item/stock_parts/motor = 2,
-							/obj/item/stock_parts/capacitor = 1,
-							/obj/item/stock_parts/spring = 1,
-							/obj/item/stack/cable_coil = 5)
+		/obj/item/stock_parts/gear = 2,
+		/obj/item/stock_parts/motor = 2,
+		/obj/item/stock_parts/capacitor = 1,
+		/obj/item/stock_parts/spring = 1,
+		/obj/item/stack/cable_coil = 5,
+	)
 
 /obj/item/circuitboard/operating_table
 	name = T_BOARD("operating table")
@@ -256,12 +272,13 @@
 	board_type = new /datum/frame/frame_types/operating_table
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	req_components = list(
-							/obj/item/stock_parts/manipulator = 2,
-							/obj/item/stock_parts/scanning_module = 1,
-							/obj/item/stock_parts/capacitor = 1,
-							/obj/item/stock_parts/console_screen = 1,
-							/obj/item/healthanalyzer = 1,
-							/obj/item/stack/material/glass/reinforced = 2)
+		/obj/item/stock_parts/manipulator = 2,
+		/obj/item/stock_parts/scanning_module = 1,
+		/obj/item/stock_parts/capacitor = 1,
+		/obj/item/stock_parts/console_screen = 1,
+		/obj/item/healthanalyzer = 1,
+		/obj/item/stack/material/glass/reinforced = 2,
+	)
 
 /obj/item/circuitboard/arf_generator
 	name = T_BOARD("atmospheric field generator")
@@ -269,7 +286,8 @@
 	board_type = new /datum/frame/frame_types/arfgs
 	origin_tech = list(TECH_MAGNET = 4, TECH_POWER = 4, TECH_BIO = 3)
 	req_components = list(
-							/obj/item/stock_parts/micro_laser/high = 2,	//field emitters
-							/obj/item/stock_parts/scanning_module = 1,	//atmosphere sensor
-							/obj/item/stock_parts/capacitor/adv = 1,		//for the JUICE
-							/obj/item/stack/cable_coil = 10)
+		/obj/item/stock_parts/micro_laser/high = 2,	//field emitters
+		/obj/item/stock_parts/scanning_module = 1,	//atmosphere sensor
+		/obj/item/stock_parts/capacitor/adv = 1,		//for the JUICE
+		/obj/item/stack/cable_coil = 10,
+	)
