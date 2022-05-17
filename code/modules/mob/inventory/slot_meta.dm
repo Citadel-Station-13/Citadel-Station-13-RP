@@ -34,6 +34,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	/// always show on strip/force equip menu, or only show when full
 	var/always_show_on_strip_menu = TRUE
 
+/datum/inventory_slot_meta/restraints
+
 	#warn impl
 #define slot_back_str		"slot_back"
 #define slot_l_hand_str		"slot_l_hand"

@@ -159,6 +159,7 @@
 #include "code\__DEFINES\rendering\alert.dm"
 #include "code\__DEFINES\rendering\atom_huds.dm"
 #include "code\__DEFINES\rendering\parallax.dm"
+#include "code\__DEFINES\rendering\ui_style.dm"
 #include "code\__DEFINES\research\exosuit_fab.dm"
 #include "code\__DEFINES\research\integrated_circuits.dm"
 #include "code\__DEFINES\research\research.dm"
