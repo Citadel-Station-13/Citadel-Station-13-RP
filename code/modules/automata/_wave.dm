@@ -23,14 +23,17 @@
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
 			// no directionals at all
-			edges[T] = ALL_DIRECTION_BITS
+			// we use byond dir bits
+			edges[T] = NORTH|SOUTH|EAST|WEST
 			powers[T] = power
 		if(WAVE_SPREAD_SHADOW_LIKE)
 			// directionals fully allowed
+			// we use our own dir bits
 			edges[T] = dirs? dirs : ALL_DIRECTION_BITS
 			powers[T] = power
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// no directionals. we use cardinal bits, though, due to the algorithm.
+			#warn what bits to use
 			edges[T] = CARDINAL_DIRECTION_BITS
 			powers[T] = power
 		else
@@ -55,6 +58,18 @@
 	var/_ND
 
 #define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[_expand] = D; powers_next[_expand] = P;
+#define SHADOWCAST(T, P, D, CD, RD)										\
+	if(D & CD){															\
+		_expand = get_step(T, RD);										\
+		edges_next[_expand] |= D;										\
+		powers_next[_expand] = max(powers_next[_expand], P);			\
+	}
+#define SHADOWCAST_INIT(T, P, D, CD, RD, PD)							\
+	if(D & CD){															\
+		_expand = get_step(T, RD);										\
+		edges_next[_expand] |= PD;										\
+		powers_next[_expand] = max(powers_next[_expand], P);			\
+	}
 
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
@@ -122,16 +137,14 @@
 					_ret = act(_T, _D, _P)
 					if(_ret < power_considered_dead)
 						continue
-					if(_D == ALL_DIRECTION_BITS)
-						#warn change
-						SIMPLE_EXPAND(_T, NORTH, _ret)
-						SIMPLE_EXPAND(_T, SOUTH, _ret)
-						SIMPLE_EXPAND(_T, EAST, _ret)
-						SIMPLE_EXPAND(_T, WEST, _ret)
-						SIMPLE_EXPAND(_T, NORTHEAST, _ret)
-						SIMPLE_EXPAND(_T, NORTHWEST, _ret)
-						SIMPLE_EXPAND(_T, SOUTHEAST, _ret)
-						SIMPLE_EXPAND(_T, SOUTHWEST, _ret)
+					SHADOWCAST_INIT(_T, _P, _D, NORTH_BIT, NORTH, CONICAL_NORTH_BITS)
+					SHADOWCAST_INIT(_T, _P, _D, NORTHEAST_BIT, NORTHEAST, CONICAL_NORTHEAST_BITS)
+					SHADOWCAST_INIT(_T, _P, _D, NORTHWEST_BIT, NORTHWEST, CONICAL_NORTHWEST_BITS)
+					SHADOWCAST_INIT(_T, _P, _D, SOUTH_BIT, SOUTH, CONICAL_SOUTH_BITS)
+					SHADOWCAST_INIT(_T, _P, _D, SOUTHEAST_BIT, SOUTHEAST, CONICAL_SOUTHEAST_BITS)
+					SHADOWCAST_INIT(_T, _P, _D, SOUTHWEST_BIT, SOUTHWEST, CONICAL_SOUTHWEST_BITS)
+					SHADOWCAST_INIT(_T, _P, _D, WEST_BIT, WEST, CONICAL_WEST_BITS)
+					SHADOWCAST_INIT(_T, _P, _D, EAST_BIT, EAST, CONICAL_EAST_BITS)
 			else
 				// other steps do full sim
 				for(var/i in 1 to edges.len)
@@ -143,16 +156,14 @@
 					_ret = act(_T, _D, _P)
 					if(_ret < power_considered_dead)
 						continue
-					#warn change this is all wrong because it's shadow
-					// at this point there should only be one dir so...
-					SIMPLE_EXPAND(_T, _D, _ret)
-					// check diagonal
-					if(ISDIAGONALDIR(_D))
-						// if so, expand 3 dirs instead of 1
-						_ND = turn(_D, 45)
-						SIMPLE_EXPAND(_T, _ND, _ret)
-						_ND = turn(_D, -45)
-						SIMPLE_EXPAND(_T, _ND, _ret)
+					SHADOWCAST(_T, _P, _D, NORTH_BIT, NORTH)
+					SHADOWCAST(_T, _P, _D, EAST_BIT, EAST)
+					SHADOWCAST(_T, _P, _D, WEST_BIT, WEST)
+					SHADOWCAST(_T, _P, _D, SOUTH_BIT, SOUTH)
+					SHADOWCAST(_T, _P, _D, NORTHEAST_BIT, NORTHEAST)
+					SHADOWCAST(_T, _P, _D, NORTHWEST_BIT, NORTHWEST)
+					SHADOWCAST(_T, _P, _D, SOUTHEAST_BIT, SOUTHEAST)
+					SHADOWCAST(_T, _P, _D, SOUTHWEST_BIT, SOUTHWEST)
 
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// this is annoying
@@ -206,3 +217,15 @@
 /datum/automata/wave/debug/act(turf/T, dirs, power)
 	. = ..()
 	T.maptext = "[power]"
+
+GLOBAL_DATUM(active_wave_automata_test, /datum/automata/wave)
+
+/proc/wave_automata_test(turf/T, type = WAVE_SPREAD_MINIMAL, power = 50)
+	power = clamp(power, 0, 100)
+	var/datum/automata/wave/debug/W = new
+	if(GLOB.active_wave_automata_test)
+		QDEL_NULL(GLOB.active_wave_automata_test)
+	GLOB.active_wave_automata_test = W
+	W.setup_auto(T, power, dirs)
+	W.start()
+	QDEL_IN(W, 10 SECONDS)

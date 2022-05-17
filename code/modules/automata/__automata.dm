@@ -17,8 +17,10 @@
 	SSautomata.automatons += src
 
 /datum/automata/Destroy()
-	kill()
+	if(ticking)
+		kill()
 	SSautomata.automatons -= src
+	return ..()
 
 /**
  * sets up with a single turf and data
@@ -32,7 +34,7 @@
 /datum/automata/proc/start(quickstart)
 	ticking = TRUE
 	SSautomata.ticking += src
-	iteration = 0
+	iteration = 1
 	if(quickstart)
 		tick()
 
@@ -47,8 +49,6 @@
  * cleans up vars
  */
 /datum/automata/proc/cleanup()
-	current = null
-	next = null
 
 /**
  * ticks
