@@ -8,8 +8,8 @@
 //6 = code delta
 
 //config_legacy.alert_desc_blue_downto
-/var/datum/announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/effects/alert_levels/alert_raise.ogg'))
-/var/datum/announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
+/var/datum/legacy_announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/effects/alert_levels/alert_raise.ogg'))
+/var/datum/legacy_announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
 
 /proc/set_security_level(var/level)
 	switch(level)

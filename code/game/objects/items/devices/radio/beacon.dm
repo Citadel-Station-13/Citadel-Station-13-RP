@@ -11,11 +11,9 @@
 
 GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 
-
 /obj/item/radio/beacon/Initialize(mapload)
 	. = ..()
 	update_icon()
-
 
 /obj/item/radio/beacon/update_icon()
 	cut_overlays()
@@ -24,44 +22,23 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	else
 		add_overlay("[base_icon_state]_on")
 
-
 /obj/item/radio/beacon/hear_talk()
 	return
-
 
 /obj/item/radio/beacon/send_hear()
 	return null
 
-
-/obj/item/radio/beacon/emp_act(severity)
-	if(functioning && severity >= 1)
-		fry()
-	..()
-
-
-/obj/item/radio/beacon/emag_act(remaining_charges, user, emag_source)
-	if(functioning)
-		fry()
-
-
-/obj/item/radio/beacon/verb/alter_signal(newcode as text)
+/obj/item/radio/beacon/verb/alter_signal(t as text)
 	set name = "Alter Beacon's Signal"
 	set category = "Object"
 	set src in usr
-	var/mob/user = usr
-	if(!user.incapacitated())
-		code = newcode
-		add_fingerprint(user)
 
-
-/obj/item/radio/beacon/proc/fry()
-	functioning = FALSE
-	visible_message(SPAN_WARNING("\The [src] pops and cracks, and a thin wisp of dark smoke rises from the casing."))
-	update_icon()
-	for(var/obj/machinery/computer/teleporter/T in GLOB.machines)
-		if(T.target == src)
-			T.lost_target()
-
+	if ((usr.canmove && !( usr.restrained() )))
+		src.code = t
+	if (!( src.code ))
+		src.code = "beacon"
+	src.add_fingerprint(usr)
+	return
 
 /obj/item/radio/beacon/anchored
 	desc = "A beacon used by a teleporter. This one appears to be bolted to the ground."
@@ -98,15 +75,13 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 		else
 			to_chat(user, SPAN_WARNING("You can't work on \the [src] until its been opened up."))
 
-
 /obj/item/radio/beacon/bacon //Probably a better way of doing this, I'm lazy.
 	proc/digest_delay()
 		spawn(600)
 			qdel(src)
 
 
-// SINGULO BEACON SPAWNER
-
+/// SINGULO BEACON SPAWNER
 /obj/item/radio/beacon/syndicate
 	name = "suspicious beacon"
 	desc = "A label on it reads: <i>Activate to have a singularity beacon teleported to your location</i>."

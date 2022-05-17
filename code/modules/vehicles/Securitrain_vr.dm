@@ -198,7 +198,7 @@
 		return 0
 
 	if(is_train_head())
-		if(direction == reverse_direction(dir) && tow)
+		if(direction == REVERSE_DIR(dir) && tow)
 			return 0
 		if(Move(get_step(src, direction)))
 			return 1
@@ -350,7 +350,7 @@
 
 		if(dir == T_dir) 	//if car is ahead
 			src.attach_to(T, user)
-		else if(reverse_direction(dir) == T_dir)	//else if car is behind
+		else if(REVERSE_DIR(dir) == T_dir)	//else if car is behind
 			T.attach_to(src, user)
 
 //-------------------------------------------------------

@@ -35,7 +35,7 @@
 	var/stat_msg2
 
 	var/datum/lore/atc_controller/ATC
-	var/datum/announcement/priority/crew_announcement = new
+	var/datum/legacy_announcement/priority/crew_announcement = new
 
 /obj/machinery/computer/communications/Initialize(mapload)
 	. = ..()

@@ -62,23 +62,44 @@
 #define    MAX_HIGH_PRESSURE_DAMAGE 4
 /// The amount of damage someone takes when in a low pressure area. (The pressure threshold is so low that it doesn't make sense to do any calculations, so it just applies this flat value).
 #define         LOW_PRESSURE_DAMAGE 2
-/// Minimum ratio of air that must move to/from a tile to suspend group processing
-#define MINIMUM_AIR_RATIO_TO_SUSPEND 0.005
-/// Minimum amount of air that has to move before a group processing can be suspended
-#define MINIMUM_AIR_TO_SUSPEND       0.01
-/// Either this must be active
-#define MINIMUM_MOLES_DELTA_TO_MOVE  0.01
-/// or this (or both, obviously)
-#define MINIMUM_TEMPERATURE_TO_MOVE  (T20C + 100)
-/// Minimum pressure difference between zones to suspend
-#define MINIMUM_PRESSURE_DIFFERENCE_TO_SUSPEND (MINIMUM_AIR_TO_SUSPEND*R_IDEAL_GAS_EQUATION*T20C)/CELL_VOLUME
-/// Minimum temperature difference before group processing is suspended.
-#define MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND      0.5
-#define MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND      0.5
-/// Minimum temperature difference before the gas temperatures are just set to be equal.
-#define MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER     0.5
-#define MINIMUM_TEMPERATURE_FOR_SUPERCONDUCTION   (T20C + 10)
-#define MINIMUM_TEMPERATURE_START_SUPERCONDUCTION (T20C + 200)
+
+/**
+ * these control how "similar" air has to be before it's considered the same and just entirely equalized
+ */
+/// minimum moles of gas that has to move before we can stop ticking/just equalize
+#define MINIMUM_MEANINGFUL_MOLES_DELTA				0.01
+/// minimum temperature difference before we can stop ticking/just equalize
+#define MINIMUM_MEANINGFUL_TEMPERATURE_DELTA		0.5
+/// when checking for vacuum we're fine with pressure as long as it's below this
+#define MINIMUM_MEANINGFUL_PRESSURE_VACUUM			5
+/// ZAS: if a sharer and our moles are below this, we nuke both to 0 because we consider it a vacuum
+#define MINIMUM_MOLES_TO_DISSIPATE					0.01
+
+/**
+ * stupid shit below, all of this needsd redone
+ * not to say the rest of the file is good but these are especially bad
+ */
+// /// Minimum ratio of air that must move to/from a tile to suspend group processing
+// #define MINIMUM_AIR_RATIO_TO_SUSPEND 0.005
+// // /// Minimum amount of air that has to move before a group processing can be suspended
+// #define MINIMUM_AIR_TO_SUSPEND       0.01
+// // /// Either this must be active
+// // #define MINIMUM_MOLES_DELTA_TO_MOVE  0.01
+// // /// or this (or both, obviously)
+// // #define MINIMUM_TEMPERATURE_TO_MOVE  (T20C + 100)
+// // /// Minimum pressure difference between zones to suspend
+// #define MINIMUM_PRESSURE_DIFFERENCE_TO_SUSPEND (MINIMUM_AIR_TO_SUSPEND*R_IDEAL_GAS_EQUATION*T20C)/CELL_VOLUME
+// // /// Minimum temperature difference before group processing is suspended.
+// #define MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND      0.5
+// #define MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND      0.5
+// // /// Minimum temperature difference before the gas temperatures are just set to be equal.
+// #define MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER0.5
+/// currently unused and requires a rework - eventually we need superconduction
+// #define MINIMUM_TEMPERATURE_FOR_SUPERCONDUCTION   (T20C + 10)
+// #define MINIMUM_TEMPERATURE_START_SUPERCONDUCTION (T20C + 200)
+/**
+ * stupid shit end
+ */
 
 // Must be between 0 and 1. Values closer to 1 equalize temperature faster. Should not exceed 0.4, else strange heat flow occurs.
 #define  FLOOR_HEAT_TRANSFER_COEFFICIENT 0.4
@@ -135,9 +156,3 @@
 #define ATMOSTANK_PHORON        25000
 /// N2O doesn't have a real useful use, i guess it's on station just to allow refilling of sec's riot control canisters?
 #define ATMOSTANK_NITROUSOXIDE  10000
-// Used for quickly making certain things allow airflow or not.
-// More complicated, conditional airflow should override CanZASPass().
-#define ATMOS_PASS_YES		1
-#define ATMOS_PASS_NO		0
-/// Just checks density.
-#define ATMOS_PASS_DENSITY	-1

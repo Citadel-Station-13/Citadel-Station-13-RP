@@ -72,7 +72,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	/// Priority of the message being sent.
 	var/priority = -1 ;
 	light_range = 0
-	var/datum/announcement/announcement = new
+	var/datum/legacy_announcement/announcement = new
 
 /obj/machinery/requests_console/power_change()
 	..()

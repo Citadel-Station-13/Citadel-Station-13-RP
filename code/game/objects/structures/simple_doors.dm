@@ -2,7 +2,7 @@
 	name = "door"
 	density = 1
 	anchored = 1
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	CanAtmosPass = ATMOS_PASS_DENSITY
 
 	icon = 'icons/obj/doors/material_doors.dmi'
 	icon_state = "metal"
