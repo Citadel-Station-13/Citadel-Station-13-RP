@@ -173,6 +173,10 @@
 			#warn impl
 
 
+
+
+#undef SHADOWCAST_INIT
+#undef SHADOWCAST
 #undef SIMPLE_EXPAND
 
 	// if next if empty...
