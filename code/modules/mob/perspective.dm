@@ -97,7 +97,7 @@
 			CRASH("client had no using perspective, how? in mob/update_perspective")
 		if(shunted)
 			CRASH("Caught an infinite loop. What's going on here?")
-		reset_perspective(using_perspectivew)
+		reset_perspective(using_perspective)
 		return
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_PERSPECTIVE)
 	using_perspective?.Update(client)
