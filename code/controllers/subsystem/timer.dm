@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(timer)
 	wait = 1 // SS_TICKER subsystem, so wait is in ticks
 	init_order = INIT_ORDER_TIMER
 	priority = FIRE_PRIORITY_TIMER
-	flags = SS_TICKER|SS_NO_INIT
+	subsystem_flags = SS_TICKER|SS_NO_INIT
 
 	/// Queue used for storing timers that do not fit into the current buckets
 	var/list/datum/timedevent/second_queue = list()

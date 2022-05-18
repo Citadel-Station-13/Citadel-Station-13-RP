@@ -12,7 +12,7 @@
 SUBSYSTEM_DEF(airflow)
 	name = "Airflow"
 	wait = 2
-	flags = SS_NO_INIT
+	subsystem_flags = SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	priority = FIRE_PRIORITY_AIRFLOW
 
