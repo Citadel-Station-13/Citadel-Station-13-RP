@@ -16,6 +16,8 @@
 	var/start_at
 	/// last tick at
 	var/last_tick
+	/// turfs we're acting on
+	var/list/turfs_acting = list()
 
 /datum/automata/New()
 	SSautomata.automatons += src
@@ -37,6 +39,7 @@
  * start ticking
  */
 /datum/automata/proc/start(quickstart)
+	SHOULD_CALL_PARENT(TRUE)
 	ticking = TRUE
 	SSautomata.ticking += src
 	if(isnull(start_at))
@@ -48,13 +51,39 @@
  * stop ticking
  */
 /datum/automata/proc/stop()
+	SHOULD_CALL_PARENT(TRUE)
 	ticking = FALSE
 	SSautomata.ticking -= src
+	cleanup_turfs_acting()
 
 /**
  * cleans up vars
  */
 /datum/automata/proc/cleanup()
+	SHOULD_CALL_PARENT(TRUE)
+	cleanup_turfs_acting()
+
+/**
+ * cleans up turfs acting
+ */
+/datum/automata/proc/cleanup_turfs_acting()
+	SHOULD_CALL_PARENT(TRUE)
+	if(turfs_acting.len)
+		for(var/turf/T in turfs_acting)
+			LAZYREMOVE(T.acting_automata, src)
+		turfs_acting.len = 0
+
+/**
+ * adds us to a turf's acting_automata
+ */
+/datum/automata/proc/add_turf_acting(turf/T, power)
+	LAZYSET(T.acting_automata, src, power)
+	turfs_acting += T
+
+/**
+ * act on crossed atom
+ */
+/datum/automata/proc/act_cross(atom/movable/AM, power)
 
 /**
  * ticks

@@ -7,7 +7,8 @@
 #define SONAR_IMAGE_STATIC		"static"
 
 // resolutions
-/// exact outlines
+/// greyscale image, literal
+
 #define SONAR_RESOLUTION_WALLHACK			1
 /// approximate outlines
 #define SONAR_RESOLUTION_VISIBLE			2

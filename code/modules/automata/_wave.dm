@@ -39,6 +39,8 @@
 			CRASH("Invalid wave spread [wave_spread].")
 
 /datum/automata/wave/tick()
+	// remove old acting
+	cleanup_turfs_acting()
 	// cache for sanic speed
 	var/list/turf/edges = src.edges
 	var/list/turf/powers = src.powers

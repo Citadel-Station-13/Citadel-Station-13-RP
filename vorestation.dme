@@ -220,6 +220,7 @@
 #include "code\__HELPERS\type2type\color.dm"
 #include "code\__HELPERS\unsorted\contents.dm"
 #include "code\__HELPERS\vfx\color_animations.dm"
+#include "code\__HELPERS\vfx\see_anywhere.dm"
 #include "code\__HELPERS\vfx\shake_camera.dm"
 #include "code\_globals\regexes.dm"
 #include "code\_globalvars\bitfields.dm"
