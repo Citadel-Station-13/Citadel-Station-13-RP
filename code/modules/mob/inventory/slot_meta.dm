@@ -18,6 +18,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
  * returns inventory slot meta for an id
  */
 /proc/get_inventory_slot_meta(id)
+	RETURN_TYPE(/datum/inventory_slot_meta)
 	return GLOB.inventory_slot_meta["[id]"]
 
 /**
@@ -33,25 +34,115 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	var/is_inventory = FALSE
 	/// always show on strip/force equip menu, or only show when full
 	var/always_show_on_strip_menu = TRUE
+	/// fully abstract - represents "put into something"
+	var/is_abstract = FALSE
+	/// rendering slot key
+	var/render_key
+	/// do we render on mob?
+	var/is_rendered = TRUE
+
+/datum/inventory_slot_meta/inventory
+	abstract_type = /datum/inventory_slot_meta/inventory
+	is_inventory = TRUE
+	always_show_on_strip_menu = TRUE
+
+/datum/inventory_slot_meta/inventory/back
+	name = "back"
+	render_key = "back"
+
+/datum/inventory_slot_meta/inventory/uniform
+	name = "uniform"
+	render_key = "under"
+
+/datum/inventory_slot_meta/inventory/head
+	name = "head"
+	render_key = "head"
+
+/datum/inventory_slot_meta/inventory/suit
+	name = "outerwear"
+	render_key = "suit"
+
+/datum/inventory_slot_meta/inventory/belt
+	name = "belt"
+	render_key = "belt"
+
+/datum/inventory_slot_meta/inventory/pocket
+	abstract_type = /datum/inventory_slot_meta/inventory/pocket
+	is_rendered = FALSE
+
+/datum/inventory_slot_meta/inventory/pocket/left
+	name = "left pocket"
+
+/datum/inventory_slot_meta/inventory/pocket/right
+	name = "right pocket"
+
+/datum/inventory_slot_meta/inventory/id
+	name = "id"
+	render_key = "id"
+
+/datum/inventory_slot_meta/inventory/shoes
+	name = "shoes"
+	render_key = "shoes"
+
+/datum/inventory_slot_meta/inventory/gloves
+	name = "gloves"
+	render_key = "gloves"
+
+/datum/inventory_slot_meta/inventory/glasses
+	name = "glasses"
+	render_key = "glasses"
+
+/datum/inventory_slot_meta/inventory/suit_storage
+	name = "suit storage"
+	render_key = "suit-store"
+
+/datum/inventory_slot_meta/inventory/ears
+	abstract_type = /datum/inventory_slot_meta/inventory/ears
+
+/datum/inventory_slot_meta/inventory/ears/left
+	name = "left ear"
+	render_key = "ear-l"
+
+/datum/inventory_slot_meta/inventory/ears/right
+	name = "right ear"
+	render_key = "ear-r"
+
+/datum/inventory_slot_meta/inventory/mask
+	name = "mask"
+	render_key = "mask"
 
 /datum/inventory_slot_meta/restraints
+	is_inventory = FALSE
+	always_show_on_strip_menu = FALSE
+	abstract_type = /datum/inventory_slot_meta/restraints
 
-	#warn impl
-#define slot_back_str		"slot_back"
-#define slot_l_hand_str		"slot_l_hand"
-#define slot_r_hand_str		"slot_r_hand"
-#define slot_w_uniform_str	"slot_w_uniform"
-#define slot_head_str		"slot_head"
-#define slot_wear_suit_str	"slot_suit"
-#define slot_l_ear_str      "slot_l_ear"
-#define slot_r_ear_str      "slot_r_ear"
-#define slot_belt_str       "slot_belt"
-#define slot_shoes_str      "slot_shoes"
-#define slot_handcuffed_str "slot_handcuffed"
-#define slot_legcuffed_str	"slot_legcuffed"
-#define slot_wear_mask_str 	"slot_wear_mask"
-#define slot_wear_id_str  	"slot_wear_id"
-#define slot_gloves_str  	"slot_gloves"
-#define slot_glasses_str  	"slot_glasses"
-#define slot_s_store_str	"slot_s_store"
-#define slot_tie_str		"slot_tie"
+/datum/inventory_slot_meta/restraints/handcuffs	
+	name = "handcuffed"
+	render_key = "handcuffs"
+
+/datum/inventory_slot_meta/restraints/legcuffs
+	name = "legcuffed"
+	render_key = "legcuffs"
+
+/datum/inventory_slot_meta/abstract
+	is_inventory = FALSE
+	always_show_on_strip_menu = FALSE
+	is_abstract = FALSE
+	is_rendered = FALSE
+	abstract_type = /datum/inventory_slot_meta/abstract
+
+/datum/inventory_slot_meta/abstract/put_in_hands
+	name = "put in hands"
+
+/datum/inventory_slot_meta/abstract/attach_as_accessory
+	name = "attach as accessory"
+
+/datum/inventory_slot_meta/abstract/put_in_backpack
+	name = "put in backpack"
+
+/datum/inventory_slot_meta/abstract/put_in_belt
+	name = "put in belt"
+
+/datum/inventory_slot_meta/abstract/put_in_storage
+	name = "put in storage"
+
