@@ -53,9 +53,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/solar{
-	stat = 1
-	},
+/obj/machinery/power/solar,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "aU" = (
@@ -421,9 +419,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "jg" = (
-/obj/machinery/power/solar{
-	stat = 1
-	},
+/obj/machinery/power/solar,
 /obj/structure/cable/yellow{
 	d2 = 8;
 	icon_state = "0-8"
@@ -519,9 +515,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/solar{
-	stat = 1
-	},
+/obj/machinery/power/solar,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "lo" = (
@@ -1130,8 +1124,7 @@
 /area/lavaland/east/colony)
 "wY" = (
 /obj/machinery/power/solar_control{
-	dir = 1;
-	stat = 1
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
@@ -1400,9 +1393,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/solar{
-	stat = 1
-	},
+/obj/machinery/power/solar,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "CM" = (
@@ -1620,9 +1611,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/solar{
-	stat = 1
-	},
+/obj/machinery/power/solar,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Gt" = (
@@ -1630,9 +1619,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/solar{
-	stat = 1
-	},
+/obj/machinery/power/solar,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Gv" = (
@@ -2316,9 +2303,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/solar{
-	stat = 1
-	},
+/obj/machinery/power/solar,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "TB" = (
