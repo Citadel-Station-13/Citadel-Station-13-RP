@@ -69,3 +69,14 @@ var/list/global/slot_flags_enumeration = list(
 	"[slot_wear_id]" = SLOT_ID,
 	"[slot_tie]" = SLOT_TIE,
 	)
+
+// Inventory slot strings.
+// since numbers cannot be used as associative list keys.
+//icon_back, icon_l_hand, etc would be much better names for these...
+#define slot_l_hand_str		"slot_l_hand"
+#define slot_r_hand_str		"slot_r_hand"
+
+// rest got converted to typepath ids
+// one day i'll come for you, inhand icons.
+// one day.... mark my words...
+
