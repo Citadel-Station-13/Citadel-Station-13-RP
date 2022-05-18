@@ -12,7 +12,8 @@
   * - no_optimizations - if true, it'll be a true reset. use for things like cancel camera view which should always force updates.
   */
 /mob/proc/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
-	ASSERT(istype(P) || ismovable(P))
+	if(P)
+		ASSERT(istype(P) || ismovable(P))
 	if(!no_optimizations && (																																\
 		P?	(ismovable(P)? (istype(using_perspective, /datum/perspective/self/temporary) && (using_perspective.eye == P)) : (using_perspective == P))		\
 		:																																					\
