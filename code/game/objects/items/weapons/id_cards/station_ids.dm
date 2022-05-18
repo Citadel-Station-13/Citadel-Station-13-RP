@@ -114,7 +114,7 @@
 	return
 
 /obj/item/card/id/get_worn_icon_state(var/slot_name)
-	if(slot_name == slot_wear_id_str)
+	if(slot_name == /datum/inventory_slot_meta/inventory/id)
 		return "id" //Legacy, just how it is. There's only one sprite.
 
 	return ..()

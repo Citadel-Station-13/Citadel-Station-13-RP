@@ -500,7 +500,7 @@
 	slot_flags = SLOT_MASK
 	body_parts_covered = FACE|EYES
 	item_icons = list(
-		slot_wear_mask_str = 'icons/mob/mask.dmi'
+		/datum/inventory_slot_meta/inventory/mask = 'icons/mob/mask.dmi'
 		) //custom species support.
 	blood_sprite_state = "maskblood"
 	sprite_sheets = list(
@@ -735,7 +735,7 @@
 		var/mob/living/carbon/human/H = user
 		if(isTaurTail(H.tail_style))
 			var/datum/sprite_accessory/tail/taur/taurtail = H.tail_style
-			if(taurtail.suit_sprites && (get_worn_icon_state(slot_wear_suit_str) in icon_states(taurtail.suit_sprites)))
+			if(taurtail.suit_sprites && (get_worn_icon_state(/datum/inventory_slot_meta/inventory/suit) in icon_states(taurtail.suit_sprites)))
 				icon_override = taurtail.suit_sprites
 				normalize = FALSE
 				taurized = TRUE
@@ -837,7 +837,7 @@
 	if(worn_state)
 		if(!item_state_slots)
 			item_state_slots = list()
-		item_state_slots[slot_w_uniform_str] = worn_state
+		item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = worn_state
 	else
 		worn_state = icon_state
 
@@ -873,8 +873,8 @@
 		under_icon = icon_override
 	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
 		under_icon = sprite_sheets[H.species.get_bodytype(H)]
-	else if(item_icons && item_icons[slot_w_uniform_str])
-		under_icon = item_icons[slot_w_uniform_str]
+	else if(item_icons && item_icons[/datum/inventory_slot_meta/inventory/uniform])
+		under_icon = item_icons[/datum/inventory_slot_meta/inventory/uniform]
 	else if ("[worn_state]_s" in icon_states(rolled_down_icon))
 		under_icon = rolled_down_icon
 	else
@@ -898,8 +898,8 @@
 		under_icon = icon_override
 	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
 		under_icon = sprite_sheets[H.species.get_bodytype(H)]
-	else if(item_icons && item_icons[slot_w_uniform_str])
-		under_icon = item_icons[slot_w_uniform_str]
+	else if(item_icons && item_icons[/datum/inventory_slot_meta/inventory/uniform])
+		under_icon = item_icons[/datum/inventory_slot_meta/inventory/uniform]
 	else if ("[worn_state]_s" in icon_states(rolled_down_sleeves_icon))
 		under_icon = rolled_down_sleeves_icon
 	else
@@ -989,16 +989,16 @@
 		body_parts_covered &= ~(UPPER_TORSO|ARMS)
 		if("[worn_state]_s" in icon_states(rolled_down_icon))
 			icon_override = rolled_down_icon
-			item_state_slots[slot_w_uniform_str] = "[worn_state]"
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]"
 		else
-			item_state_slots[slot_w_uniform_str] = "[worn_state]_d"
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]_d"
 
 		to_chat(usr, "<span class='notice'>You roll your [src].</span>")
 	else
 		body_parts_covered = initial(body_parts_covered)
 		if(icon_override == rolled_down_icon)
 			icon_override = initial(icon_override)
-		item_state_slots[slot_w_uniform_str] = "[worn_state]"
+		item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]"
 		to_chat(usr, "<span class='notice'>You unroll your [src].</span>")
 	update_clothing_icon()
 
@@ -1022,15 +1022,15 @@
 		body_parts_covered &= ~(ARMS)
 		if("[worn_state]_s" in icon_states(rolled_down_sleeves_icon))
 			icon_override = rolled_down_sleeves_icon
-			item_state_slots[slot_w_uniform_str] = "[worn_state]"
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]"
 		else
-			item_state_slots[slot_w_uniform_str] = "[worn_state]_r"
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]_r"
 		to_chat(usr, "<span class='notice'>You roll up your [src]'s sleeves.</span>")
 	else
 		body_parts_covered = initial(body_parts_covered)
 		if(icon_override == rolled_down_sleeves_icon)
 			icon_override = initial(icon_override)
-		item_state_slots[slot_w_uniform_str] = "[worn_state]"
+		item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]"
 		to_chat(usr, "<span class='notice'>You roll down your [src]'s sleeves.</span>")
 	update_clothing_icon()
 
