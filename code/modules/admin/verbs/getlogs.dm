@@ -14,7 +14,7 @@
 	browseserverlogs(BROWSE_ROOT_CURRENT_LOGS)
 
 /client/proc/browseserverlogs(root = BROWSE_ROOT_ALL_LOGS)
-	path = browse_files(root)
+	var/path = browse_files(root)
 	if(!path)
 		return
 
