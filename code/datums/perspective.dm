@@ -164,7 +164,12 @@
 /datum/perspective/proc/Update(client/C)
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_UPDATE, C)
 	var/changed = C.eye
-	C.eye = GetEye(C)
+	var/new_eye = GetEye(C)
+	if(!new_eye)
+		stack_trace("got null on GetEye, this shouldn't be possible")
+		C.eye = C.mob
+	else
+		C.eye = new_eye
 	if(changed != C.eye)
 		C.parallax_holder?.Reset(force = TRUE)
 	C.perspective = GetEyeMode(C)
@@ -238,7 +243,7 @@
 	src.eye = AM
 	for(var/client/C as anything in clients)
 		var/changed = C.eye
-		C.eye = GetEye()
+		C.eye = GetEye(C)
 		if(changed != C.eye)
 			C.parallax_holder?.Reset(force = TRUE)
 		C.perspective = GetEyeMode()
@@ -299,8 +304,12 @@
 /datum/perspective/self/proc/get_top_atom(atom/movable/where)
 	if(isturf(where))
 		return where		// already on turf
-	while(where && where.loc && !isturf(where.loc))
-		where = where.loc	// if we can go up, and we're not already the top atom on a turf, go up. where.loc check needed for anti-null.
+	var/turf/T = get_turf(where)
+	if(!T)
+		return where	// either the perspective owner's mob or someone fucked up royally
+	// we know we're on a turf now (assuming get_turf() didn't break but that'd be a byond thing) so
+	while(!isturf(where.loc))
+		where = where.loc
 	return where
 
 /**
