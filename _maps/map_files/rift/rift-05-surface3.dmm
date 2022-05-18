@@ -22068,8 +22068,8 @@
 	RCon_tag = "AI Power Reserve";
 	charge = 5e+006;
 	input_attempt = 1;
-	input_level = 25000;
-	output_level = 20000
+	input_level = 250000;
+	output_level = 100000
 	},
 /obj/machinery/camera/network/command{
 	dir = 8
