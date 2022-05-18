@@ -11277,11 +11277,10 @@
 	dir = 8;
 	health = 1e+006
 	},
-/obj/item/storage/box/sniperammo,
-/obj/item/gun/projectile/heavysniper,
 /obj/effect/floor_decal/borderfloorblack/cee{
 	dir = 1
 	},
+/obj/item/orion_ship,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "vH" = (
@@ -16874,10 +16873,10 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/item/orion_ship,
 /obj/machinery/holoposter{
 	pixel_y = 32
 	},
+/obj/item/storage/box/donut,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "Gb" = (
@@ -23068,7 +23067,6 @@
 /obj/effect/floor_decal/borderfloorblack/cee{
 	dir = 1
 	},
-/obj/item/clothing/mask/gas/swat,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
 "RH" = (

@@ -56,6 +56,7 @@
 		/obj/item/tank/air,
 		/obj/item/clothing/mask/gas,
 		/obj/item/flash,
+		/obj/item/storage/box/firingpins,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/science,
 		/obj/item/clothing/shoes/boots/winter/science,
 		/obj/item/gps/science/rd,
