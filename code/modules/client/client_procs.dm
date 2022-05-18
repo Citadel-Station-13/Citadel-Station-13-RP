@@ -732,7 +732,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		perspective = EYE_PERSPECTIVE
 		return
 	P.AddClient(src)
-	using_perspective = P
+	if(using_perspective != P)
+		stack_trace("using perspective didn't set")
 
 /**
  * reset perspective to default - usually to our mob's

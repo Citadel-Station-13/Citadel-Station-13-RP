@@ -13,10 +13,10 @@
   */
 /mob/proc/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
 	ASSERT(istype(P) || ismovable(P))
-	if(!no_optimizations && (
-		P?	(ismovable(P)? (istype(using_perspective, /datum/perspective/self/temporary) && (using_perspective.eye == P)) : (using_perspective == P))
-		:
-			(using_perspective && (using_perspective == self_perspective))
+	if(!no_optimizations && (																																\
+		P?	(ismovable(P)? (istype(using_perspective, /datum/perspective/self/temporary) && (using_perspective.eye == P)) : (using_perspective == P))		\
+		:																																					\
+			(using_perspective && (using_perspective == self_perspective))																					\
 	))
 		// if we don't need to reset, assume it's an update.
 		// this is bad practice but stuff like mechs need this to work, since
