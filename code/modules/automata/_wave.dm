@@ -258,7 +258,7 @@
 
 	// if next if empty...
 	if(!edges_next.len)
-		kill()
+		stop(TRUE)
 	else
 		// continue
 		// shift everything down

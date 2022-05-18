@@ -18,6 +18,8 @@
 	var/last_tick
 	/// turfs we're acting on
 	var/list/turfs_acting = list()
+	/// callback to call when done
+	var/datum/callback/on_finish
 
 /datum/automata/New()
 	SSautomata.automatons += src
@@ -50,11 +52,13 @@
 /**
  * stop ticking
  */
-/datum/automata/proc/stop()
+/datum/automata/proc/stop(done)
 	SHOULD_CALL_PARENT(TRUE)
 	ticking = FALSE
 	SSautomata.ticking -= src
 	cleanup_turfs_acting()
+	if(done)
+		on_finish.InvokeAsync()
 
 /**
  * cleans up vars

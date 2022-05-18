@@ -7,9 +7,10 @@
 /**
  * gets an abstract sonar appearance
  */
-/datum/controller/subsystem/sonar/proc/get_shape_appearance(type, size = world.icon_size)
+/datum/controller/subsystem/sonar/proc/get_shape_appearance(type, color)
 	RETURN_TYPE(/mutable_appearance)
 	. = new /mutable_appearance
+
 	#warn impl
 
 /**
