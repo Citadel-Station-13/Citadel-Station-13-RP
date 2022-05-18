@@ -385,3 +385,7 @@ datum/gear/suit/duster
 /datum/gear/suit/highwayman_jacket
 	display_name = "Black Jacket w/ Fur Lining"
 	path = /obj/item/clothing/suit/highwayman_jacket
+
+/datum/gear/suit/utility_coat
+	display_name = "Utility Coat"
+	path = /obj/item/clothing/suit/storage/utility_coat

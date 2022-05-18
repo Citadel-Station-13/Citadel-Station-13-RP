@@ -1088,3 +1088,13 @@ obj/item/clothing/suit/kamishimo
 	name = "Colonial Red Coat"
 	desc = "A thick cotton long coat, adorned with antique buttons. Dyed a brilliant red, it's hard not to be seen in this."
 	icon_state = "pineapple_trench"
+
+/obj/item/clothing/suit/storage/utility_coat
+	name = "Utility Coat"
+	desc = "A short coat with a utilitarian look, straps function to hold it against the body. Fur around the neck helps to stay warm."
+	icon_state = "coat_utility"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
