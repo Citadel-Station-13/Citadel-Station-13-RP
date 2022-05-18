@@ -174,7 +174,7 @@
 				H.hallucination += max(50, min(300, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)) ) )
 	spawn(pull_time)
 		explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
-		spawn(5) //to allow the explosion to finish
+		sleep(5) //to allow the explosion to finish
 		new /obj/item/broken_sm(TS)
 		qdel(src)
 		return
@@ -267,8 +267,6 @@
 			announce_warning()
 	else
 		shift_light(4,initial(light_color))
-	if(grav_pulling)
-		supermatter_pull(src)
 	// Vary volume by power produced.
 	if(power)
 		// Volume will be 1 at no power, ~12.5 at ENERGY_NITROGEN, and 20+ at ENERGY_PHORON.
@@ -498,10 +496,6 @@
 			l.show_message("<span class=\"warning\">You hear an uneartly ringing and notice your skin is covered in fresh radiation burns.</span>", 2)
 	var/rads = 500
 	SSradiation.radiate(src, rads)
-
-/proc/supermatter_pull(var/atom/target, var/pull_range = 255, var/pull_power = STAGE_FIVE)
-	for(var/atom/A in range(pull_range, target))
-		A.singularity_pull(target, pull_power)
 
 /obj/machinery/power/supermatter/GotoAirflowDest(n) //Supermatter not pushed around by airflow
 	return
