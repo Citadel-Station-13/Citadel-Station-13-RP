@@ -92,6 +92,9 @@
 	if(!client)
 		return
 	if(using_perspective != client.using_perspective)	// shunt them back in, useful if something's temporarily shunted our client away
+		if(!client.using_perspective)
+			reset_perspective(using_perspective)
+			CRASH("client had no using perspective, how? in mob/update_perspective")
 		if(shunted)
 			CRASH("Caught an infinite loop. What's going on here?")
 		reset_perspective(using_perspectivew)
