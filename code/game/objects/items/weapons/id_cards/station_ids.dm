@@ -113,8 +113,8 @@
 	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
 	return
 
-/obj/item/card/id/get_worn_icon_state(var/slot_name)
-	if(slot_name == /datum/inventory_slot_meta/inventory/id)
+/obj/item/card/id/get_worn_icon_state(var/slot_id)
+	if(slot_id == /datum/inventory_slot_meta/inventory/id)
 		return "id" //Legacy, just how it is. There's only one sprite.
 
 	return ..()

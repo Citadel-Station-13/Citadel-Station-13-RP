@@ -72,10 +72,10 @@
 			return ..(freq, level)
 	return -1
 
-/obj/item/radio/headset/get_worn_icon_state(var/slot_name)
+/obj/item/radio/headset/get_worn_icon_state(var/slot_id)
 	var/append = ""
 	if(icon_override)
-		switch(slot_name)
+		switch(slot_id)
 			if(/datum/inventory_slot_meta/inventory/ears/left)
 				append = "_l"
 			if(/datum/inventory_slot_meta/inventory/ears/right)

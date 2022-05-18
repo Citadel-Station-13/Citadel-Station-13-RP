@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 		var/datum/inventory_slot_meta/M = path
 		if(initial(M.abstract_type) == path)
 			continue
-		.["[path]"] = new path
+		.[path] = new path
 
 /proc/all_inventory_slot_ids()
 	. = list()
@@ -16,14 +16,20 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 
 /**
  * returns inventory slot meta for an id
+ * 
+ * **You must use a typepath for hardcoded datums.**
+ * String IDs are not automatically converted to paths for speed.
  */
 /proc/get_inventory_slot_meta(id)
 	RETURN_TYPE(/datum/inventory_slot_meta)
-	return GLOB.inventory_slot_meta["[id]"]
+	return GLOB.inventory_slot_meta[id]
 
 /**
  * inventory slot meta
  * stores all the required information for an inventory slot
+ * 
+ * **Typepaths for these are used directly in most circumstances of slot IDs**
+ * **Use get_inventory_slot_meta(id) to automatically translate anything to the static datum.**
  */
 /datum/inventory_slot_meta
 	/// slot name

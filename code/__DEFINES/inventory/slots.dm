@@ -69,25 +69,3 @@ var/list/global/slot_flags_enumeration = list(
 	"[slot_wear_id]" = SLOT_ID,
 	"[slot_tie]" = SLOT_TIE,
 	)
-
-// Inventory slot strings.
-// since numbers cannot be used as associative list keys.
-//icon_back, icon_l_hand, etc would be much better names for these...
-#define /datum/inventory_slot_meta/inventory/back		"slot_back"
-#define slot_l_hand_str		"slot_l_hand"
-#define slot_r_hand_str		"slot_r_hand"
-#define /datum/inventory_slot_meta/inventory/uniform	"slot_w_uniform"
-#define /datum/inventory_slot_meta/inventory/head		"slot_head"
-#define /datum/inventory_slot_meta/inventory/suit	"slot_suit"
-#define /datum/inventory_slot_meta/inventory/ears/left      "slot_l_ear"
-#define /datum/inventory_slot_meta/inventory/ears/right      "slot_r_ear"
-#define /datum/inventory_slot_meta/inventory/belt       "slot_belt"
-#define /datum/inventory_slot_meta/inventory/shoes      "slot_shoes"
-#define /datum/inventory_slot_meta/restraints/handcuffs "slot_handcuffed"
-#define /datum/inventory_slot_meta/restraints/legcuffs	"slot_legcuffed"
-#define /datum/inventory_slot_meta/inventory/mask 	"slot_wear_mask"
-#define /datum/inventory_slot_meta/inventory/id  	"slot_wear_id"
-#define /datum/inventory_slot_meta/inventory/gloves  	"slot_gloves"
-#define /datum/inventory_slot_meta/inventory/glasses  	"slot_glasses"
-#define /datum/inventory_slot_meta/inventory/suit_storage	"slot_s_store"
-#define slot_tie_str		"slot_tie"
