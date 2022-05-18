@@ -1,10 +1,14 @@
 
-#define NITROGEN_SLOWING_FACTOR 0.15	//Higher == N2 slows reaction more
-#define THERMAL_RELEASE_MODIFIER 10000		//Higher == more heat released during reaction
-#define PHORON_RELEASE_MODIFIER 1500		//Higher == less phoron released by reaction
-#define OXYGEN_RELEASE_MODIFIER 15000		//Higher == less oxygen released at high temperature/power
-#define REACTION_POWER_MODIFIER 1.1			//Higher == more overall power
-
+///Higher == N2 slows reaction more
+#define NITROGEN_SLOWING_FACTOR 0.15
+///Higher == more heat released during reaction
+#define THERMAL_RELEASE_MODIFIER 10000
+///Higher == less phoron released by reaction
+#define PHORON_RELEASE_MODIFIER 1500
+///Higher == less oxygen released at high temperature/power
+#define OXYGEN_RELEASE_MODIFIER 15000
+///Higher == more overall power
+#define REACTION_POWER_MODIFIER 1.1
 /*
 	How to tweak the SM
 
@@ -17,13 +21,15 @@
 
 //Controls how much power is produced by each collector in range - this is the main parameter for tweaking SM balance, as it basically controls how the power variable relates to the rest of the game.
 #define POWER_FACTOR 1.0
-#define DECAY_FACTOR 700			//Affects how fast the supermatter power decays
-#define CRITICAL_TEMPERATURE 5000	//K
+///Affects how fast the supermatter power decays
+#define DECAY_FACTOR 700
+///K
+#define CRITICAL_TEMPERATURE 5000
 #define CHARGING_FACTOR 0.05
-#define DAMAGE_RATE_LIMIT 3			//damage rate cap at power = 300, scales linearly with power
-#define DAMAGE_HARD_LIMIT 50		// max damage per tick, 1000 div 50 = 20 * 2 = 80 seconds
-
-
+///damage rate cap at power = 300, scales linearly with power
+#define DAMAGE_RATE_LIMIT 3
+/// max damage per tick, 1000 div 50 = 20 * 2 = 80 seconds
+#define DAMAGE_HARD_LIMIT 50
 // Base variants are applied to everyone on the same Z level
 // Range variants are applied on per-range basis: numbers here are on point blank, it scales with the map size (assumes square shaped Z levels)
 #define DETONATION_RADS 20
@@ -32,8 +38,8 @@
 #define DETONATION_HALLUCINATION 600
 
 
-#define WARNING_DELAY 20			//seconds between warnings.
-
+///seconds between warnings.
+#define WARNING_DELAY 20
 // Keeps Accent sounds from layering, increase or decrease as preferred.
 #define SUPERMATTER_ACCENT_SOUND_COOLDOWN 2 SECONDS
 
@@ -49,7 +55,7 @@
 
 	var/gasefficency = 0.25
 
-	var/base_icon_state = "darkmatter"
+	base_icon_state = "darkmatter"
 
 	var/damage = 0
 	var/damage_archived = 0

@@ -4,6 +4,7 @@
 	icon_state = "riotgun"
 	item_state = "riotgun"
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	one_handed_penalty = 5
 
@@ -15,7 +16,7 @@
 
 	var/list/grenades = new/list()
 	var/max_grenades = 5 //holds this + one in the chamber
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 
 //revolves the magazine, allowing players to choose between multiple grenade types
 /obj/item/gun/launcher/grenade/proc/pump(mob/M as mob)

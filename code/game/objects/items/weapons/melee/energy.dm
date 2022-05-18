@@ -305,7 +305,7 @@
 	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile/))
 		return 0
 
-	var/bad_arc = reverse_direction(user.dir)
+	var/bad_arc = REVERSE_DIR(user.dir)
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 
@@ -440,9 +440,6 @@
 		if(HAS_TRAIT(W, TRAIT_NODROP) || HAS_TRAIT(src, TRAIT_NODROP))
 			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_NODROP) ? W : src]!</span>")
 			return
-		if(istype(W, /obj/item/melee/energy/sword))
-			to_chat(user,"<span class='warning'>These blades are incompatible, you can't attach them to each other!</span>")
-			return
 		else
 			to_chat(user, "<span class='notice'>You combine the two charge swords, making a single supermassive blade! You're cool.</span>")
 			new /obj/item/melee/energy/sword/charge/dualsaber(user.drop_location())
@@ -564,7 +561,7 @@
 	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile/))
 		return 0
 
-	var/bad_arc = reverse_direction(user.dir)
+	var/bad_arc = REVERSE_DIR(user.dir)
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 

@@ -127,6 +127,10 @@
 		proj_sharp = 0
 		proj_edge = 0
 
+	var/list/impact_sounds = LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone))
+	if(length(impact_sounds))
+		playsound(src, pick(impact_sounds), 75)
+
 	//Stun Beams
 	if(P.taser_effect)
 		stun_effect_act(0, P.agony, def_zone, P)
@@ -148,6 +152,9 @@
 		return 0
 
 //	return absorb
+
+/mob/living/get_bullet_impact_effect_type(var/def_zone)
+	return BULLET_IMPACT_MEAT
 
 //Handles the effects of "stun" weapons
 /mob/living/proc/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
@@ -454,7 +461,7 @@
 	stuttering += 20
 	make_jittery(150)
 	emp_act(1)
-	to_chat(src, span("critical", "You've been struck by lightning!"))
+	to_chat(src, SPAN_CRITICAL("You've been struck by lightning!"))
 
 // Called when touching a lava tile.
 // Does roughly 100 damage to unprotected mobs, and 20 to fully protected mobs.
@@ -528,11 +535,11 @@
 	for(var/datum/action/A in actions)
 		button_number++
 		if(A.button == null)
-			var/obj/screen/movable/action_button/N = new(hud_used)
+			var/atom/movable/screen/movable/action_button/N = new(hud_used)
 			N.owner = A
 			A.button = N
 
-		var/obj/screen/movable/action_button/B = A.button
+		var/atom/movable/screen/movable/action_button/B = A.button
 
 		B.UpdateIcon()
 
@@ -564,7 +571,7 @@
 /mob/living/proc/get_accuracy_penalty()
 	// Certain statuses make it harder to score a hit.
 	var/accuracy_penalty = 0
-	if(eye_blind)
+	if(blinded)
 		accuracy_penalty += 75
 	if(eye_blurry)
 		accuracy_penalty += 30

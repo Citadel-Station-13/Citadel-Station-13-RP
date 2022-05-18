@@ -221,7 +221,7 @@
 	desc = "A matrice built out of an unknown material, with some sort of force field blocking air around it."
 	icon_state = "grillecult"
 	health = 40 // Make it strong enough to avoid people breaking in too easily.
-	can_atmos_pass = ATMOS_PASS_NO // Make sure air doesn't drain.
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED // Make sure air doesn't drain.
 
 /obj/structure/grille/broken/cult
 	icon_state = "grillecult-b"
@@ -256,13 +256,13 @@
 /obj/structure/grille/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
-			to_chat(user, span("notice", "You deconstruct \the [src]."))
+			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
 			qdel(src)
 			return TRUE
 		if(RCD_WINDOWGRILLE)
 			if(locate(/obj/structure/window) in loc)
 				return FALSE
-			to_chat(user, span("notice", "You construct a window."))
+			to_chat(user, SPAN_NOTICE("You construct a window."))
 			var/obj/structure/window/WD = new the_rcd.window_type(loc)
 			WD.anchored = TRUE
 			return TRUE
@@ -272,4 +272,3 @@
 	health -= damage
 	spawn(1) healthcheck()
 	return 1
-

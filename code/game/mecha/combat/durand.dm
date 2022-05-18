@@ -81,7 +81,7 @@
 /obj/mecha/combat/durand/old
 	desc = "An aging combat exosuit utilized by many corporations. Originally developed to combat hostile alien lifeforms. This one is particularly worn looking and likely isn't as sturdy."
 
-/obj/mecha/combat/durand/old/Initialize()
+/obj/mecha/combat/durand/old/Initialize(mapload)
 	. = ..()
 	health = 25
 	maxhealth = 250	//Just slightly worse.

@@ -1,9 +1,11 @@
+/// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	icon = 'icons/turf/floors.dmi'
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 	luminosity = 1
 	level = 1
+
 	var/holy = 0
 
 	// Atmospherics / ZAS Environmental
@@ -16,34 +18,72 @@
 	var/heat_capacity = 1
 
 	// Properties for both
-	var/temperature = T20C		// Initial turf temperature.
-	var/blocks_air = 0			// Does this turf contain air/let air through?
+	/// Initial turf temperature.
+	var/temperature = T20C
+	/// Does this turf contain air/let air through?
+	var/blocks_air = FALSE
 
+	// Baseturfs System
+	// baseturfs can be either a list or a single turf type.
+	// In class definition like here it should always be a single type.
+	// A list will be created in initialization that figures out the baseturf's baseturf etc.
+	// In the case of a list it is sorted from bottom layer to top.
+	// This shouldn't be modified directly, use the helper procs.
+	var/list/baseturfs = /turf/baseturf_bottom
+	/// are we mid changeturf?
 	var/changing_turf = FALSE
+	// End
+
+	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
+	var/list/fixed_underlay = null
 
 	// General properties.
 	var/icon_old = null
-	var/pathweight = 1			// How much does it cost to pathfind over this turf?
-	var/blessed = 0				// Has the turf been blessed?
+	/// How much does it cost to pathfind over this turf?
+	var/pathweight = 1
+	/// Has the turf been blessed?
+	var/blessed = FALSE
 
 	var/list/decals
 
-	var/movement_cost = 0		// How much the turf slows down movement, if any.
+	/// How much the turf slows down movement, if any.
+	var/movement_cost = 0
 
 	var/list/footstep_sounds = null
 
-	var/block_tele = FALSE			 // If true, most forms of teleporting to or from this turf tile will fail.
-	var/can_build_into_floor = FALSE // Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
-	var/list/dangerous_objects		 // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
-	var/noshield = 0				// For if you explicitly want a turf to not be affected by shield generators
+	// Outdoors var determines if the game should consider the turf to be 'outdoors', which controls certain things such as weather effects.
+	var/outdoors = FALSE
 
+	/// If true, most forms of teleporting to or from this turf tile will fail.
+	var/block_tele = FALSE
+	/// Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
+	var/can_build_into_floor = FALSE
+	/// List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
+	var/list/dangerous_objects
+	/// For if you explicitly want a turf to not be affected by shield generators
+	var/noshield = FALSE
+
+/turf/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF(src, x), NAMEOF(src, y), NAMEOF(src, z))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
+/**
+ * Turf Initialize
+ *
+ * Doesn't call parent, see [/atom/proc/Initialize]
+ */
 /turf/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 	if(flags & INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 
 	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.Cut()
+	vis_contents.len = 0
+
+	assemble_baseturfs()
 
 	//atom color stuff
 	if(color)
@@ -70,8 +110,6 @@
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
-
-	ComponentInitialize()
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -184,7 +222,7 @@
 	var/area/A = T.loc
 	if((istype(A) && !(A.has_gravity)) || (istype(T,/turf/space)))
 		return
-	if(istype(O, /obj/screen))
+	if(istype(O, /atom/movable/screen))
 		return
 	if(user.restrained() || user.stat || user.stunned || user.paralysis || (!user.lying && !istype(user, /mob/living/silicon/robot)))
 		return
@@ -331,8 +369,8 @@
 
 /turf/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_FLOORWALL)
-		to_chat(user, span("notice", "You build a floor."))
-		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
+		to_chat(user, SPAN_NOTICE("You build a floor."))
+		PlaceOnTop(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 		return TRUE
 	return FALSE
 

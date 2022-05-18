@@ -42,7 +42,7 @@
 	name = "magnetic 'pin'"
 	addblends = null
 	desc = "Finally, a hair pin even a Morpheus chassis can use."
-	matter = list(DEFAULT_WALL_MATERIAL = 10)
+	matter = list(MAT_STEEL = 10)
 
 /obj/item/clothing/head/pin/flower
 	name = "red flower pin"
@@ -275,6 +275,11 @@
 	item_state_slots = list(slot_r_hand_str = "detective", slot_l_hand_str = "detective")
 	desc = "A grey fedora - either the cornerstone of a reporter's style or a poor attempt at looking cool, depending on the person wearing it."
 
+/obj/item/clothing/head/fedora/floppy
+	name = "wide brimmed hat"
+	desc = "A dark fedora with an incredibly wide brim. It's very avant garde."
+	icon_state = "floppy"
+	item_state_slots = list(slot_r_hand_str = "witch", slot_l_hand_str = "witch")
 
 /obj/item/clothing/head/feathertrilby
 	name = "feather trilby"

@@ -188,6 +188,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	for(var/N in character.organs_by_name)
 		var/obj/item/organ/external/O = character.organs_by_name[N]
+		if(!istype(O))
+			continue
 		O.markings.Cut()
 
 	for(var/M in pref.body_markings)
@@ -204,7 +206,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		last_descriptors = pref.body_descriptors.Copy()
 	pref.body_descriptors = list()
 
-	var/datum/species/mob_species = GLOB.all_species[pref.species]
+	var/datum/species/mob_species = pref.character_static_species_meta()
 	if(LAZYLEN(mob_species.descriptors))
 		for(var/entry in mob_species.descriptors)
 			var/datum/mob_descriptor/descriptor = mob_species.descriptors[entry]
@@ -219,7 +221,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 /datum/category_item/player_setup_item/general/body/content(var/mob/user)
 	. = list()
 
-	var/datum/species/mob_species = GLOB.all_species[pref.species]
+	var/datum/species/mob_species = pref.character_static_species_meta()
 	. += "<table><tr style='vertical-align:top'><td><b>Body</b> "
 	. += "(<a href='?src=\ref[src];random=1'>&reg;</A>)"
 	. += "<br>"
@@ -289,10 +291,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			if(ind > 1)
 				. += ", "
 			var/datum/robolimb/R
-			if(pref.rlimb_data[name] && all_robolimbs[pref.rlimb_data[name]])
-				R = all_robolimbs[pref.rlimb_data[name]]
+			if(pref.rlimb_data[name] && GLOB.all_robolimbs[pref.rlimb_data[name]])
+				R = GLOB.all_robolimbs[pref.rlimb_data[name]]
 			else
-				R = basic_robolimb
+				R = GLOB.basic_robolimb
 			. += "\t[R.company] [organ_name] prosthesis"
 		else if(status == "amputated")
 			++ind
@@ -385,10 +387,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. = jointext(.,null)
 
 /datum/category_item/player_setup_item/general/body/proc/has_flag(var/datum/species/mob_species, var/flag)
-	return mob_species && (mob_species.appearance_flags & flag)
+	return mob_species && (mob_species.species_appearance_flags & flag)
 
 /datum/category_item/player_setup_item/general/body/OnTopic(var/href,var/list/href_list, var/mob/user)
-	var/datum/species/mob_species = GLOB.all_species[pref.species]
+	var/datum/species/mob_species = pref.character_static_species_meta()
 
 	if(href_list["random"])
 		pref.randomize_appearance_and_body_for()
@@ -421,13 +423,13 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["set_species"])
 		user << browse(null, "window=species")
-		if(!pref.species_preview || !(pref.species_preview in GLOB.all_species))
+		if(!pref.species_preview || !(pref.species_preview in all_species_names()))
 			return TOPIC_NOACTION
 
 		var/datum/species/setting_species
 
-		if(GLOB.all_species[href_list["set_species"]])
-			setting_species = GLOB.all_species[href_list["set_species"]]
+		if(name_static_species_meta(href_list["set_species"]))
+			setting_species = name_static_species_meta(href_list["set_species"])
 		else
 			return TOPIC_NOACTION
 
@@ -689,7 +691,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/list/limb_selection_list = list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand","Full Body")
 
 		// Full prosthetic bodies without a brain are borderline unkillable so make sure they have a brain to remove/destroy.
-		var/datum/species/current_species = GLOB.all_species[pref.species]
+		var/datum/species/current_species = pref.character_static_species_meta()
 		if(!current_species.has_organ["brain"])
 			limb_selection_list -= "Full Body"
 		else if(pref.organ_data[BP_TORSO] == "cyborg")
@@ -752,7 +754,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 					for(var/other_limb in BP_ALL - BP_TORSO)
 						pref.organ_data[other_limb] = null
 						pref.rlimb_data[other_limb] = null
-						for(var/internal in O_STANDARD)
+						for(var/internal in O_ALL_STANDARD)
 							pref.organ_data[internal] = null
 							pref.rlimb_data[internal] = null
 				if(third_limb)
@@ -771,8 +773,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			if("Prosthesis")
 				var/tmp_species = pref.species ? pref.species : SPECIES_HUMAN
 				var/list/usable_manufacturers = list()
-				for(var/company in chargen_robolimbs)
-					var/datum/robolimb/M = chargen_robolimbs[company]
+				for(var/company in GLOB.chargen_robolimbs)
+					var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 					if(!(limb in M.parts))
 						continue
 					if(tmp_species in M.species_cannot_use)
@@ -936,9 +938,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		pref.real_name      = random_name(pref.identifying_gender, pref.species)
 
 /datum/category_item/player_setup_item/general/body/proc/SetSpecies(mob/user)
-	if(!pref.species_preview || !(pref.species_preview in GLOB.all_species))
+	if(!pref.species_preview || !(pref.species_preview in all_species_names()))
 		pref.species_preview = SPECIES_HUMAN
-	var/datum/species/current_species = GLOB.all_species[pref.species_preview]
+	var/datum/species/current_species = name_static_species_meta(pref.species_preview)
 	var/dat = "<body>"
 	dat += "<center><h2>[current_species.name] \[<a href='?src=\ref[src];show_species=1'>change</a>\]</h2></center><hr/>"
 	dat += "<table padding='8px'>"
@@ -977,13 +979,13 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		dat += "</br><b>Has excellent traction.</b>"
 	if(current_species.flags & NO_POISON)
 		dat += "</br><b>Immune to most poisons.</b>"
-	if(current_species.appearance_flags & HAS_SKIN_TONE)
+	if(current_species.species_appearance_flags & HAS_SKIN_TONE)
 		dat += "</br><b>Has a variety of skin tones.</b>"
-	if(current_species.appearance_flags & BASE_SKIN_COLOR)
+	if(current_species.species_appearance_flags & BASE_SKIN_COLOR)
 		dat += "</br><b>Has a small number of base skin colors.</b>"
-	if(current_species.appearance_flags & HAS_SKIN_COLOR)
+	if(current_species.species_appearance_flags & HAS_SKIN_COLOR)
 		dat += "</br><b>Has a variety of skin colours.</b>"
-	if(current_species.appearance_flags & HAS_EYE_COLOR)
+	if(current_species.species_appearance_flags & HAS_EYE_COLOR)
 		dat += "</br><b>Has a variety of eye colours.</b>"
 	if(current_species.flags & IS_PLANT)
 		dat += "</br><b>Has a plantlike physiology.</b>"

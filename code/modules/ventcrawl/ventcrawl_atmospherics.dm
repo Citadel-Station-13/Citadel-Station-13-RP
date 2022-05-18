@@ -41,14 +41,14 @@
 				user.remove_ventcrawl()
 				user.add_ventcrawl(target_move)
 			user.forceMove(target_move)
-			user.client.eye = target_move //if we don't do this, Byond only updates the eye every tick - required for smooth movement
+			user.update_perspective()
 			if(world.time > user.next_play_vent)
 				user.next_play_vent = world.time+30
 				playsound(src, 'sound/machines/ventcrawl.ogg', 50, 1, -3)
 	else
 		if((direction & initialize_directions) || is_type_in_list(src, ventcrawl_machinery) && src.can_crawl_through()) //if we move in a way the pipe can connect, but doesn't - or we're in a vent
 			user.remove_ventcrawl()
-			user.forceMove(src.loc)
+			user.forceMove(loc)
 			user.visible_message("You hear something squeezing through the pipes.", "You climb out the ventilation system.")
 	user.canmove = 0
 	spawn(1)
@@ -57,7 +57,7 @@
 /obj/machinery/atmospherics/proc/can_crawl_through()
 	return 1
 
-/obj/machinery/atmospherics/unary/can_crawl_through()
+/obj/machinery/atmospherics/component/unary/can_crawl_through()
 	if(welded)
 		return 0
 
@@ -75,7 +75,7 @@
 /obj/machinery/atmospherics/pipe/manifold/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
-obj/machinery/atmospherics/trinary/isConnectable(var/obj/machinery/atmospherics/target)
+obj/machinery/atmospherics/component/trinary/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
 /obj/machinery/atmospherics/pipe/manifold4w/isConnectable(var/obj/machinery/atmospherics/target)
@@ -90,5 +90,5 @@ obj/machinery/atmospherics/trinary/isConnectable(var/obj/machinery/atmospherics/
 /obj/machinery/atmospherics/portables_connector/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node || ..())
 
-/obj/machinery/atmospherics/unary/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/component/unary/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node || ..())

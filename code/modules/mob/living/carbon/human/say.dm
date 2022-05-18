@@ -138,7 +138,7 @@
 	return verb
 
 /mob/living/carbon/human/handle_speech_problems(var/list/message_data)
-	if(silent || (sdisabilities & MUTE))
+	if(sdisabilities & MUTE)
 		message_data[1] = ""
 		. = 1
 

@@ -90,7 +90,7 @@
 	var/rigsuit_min_pressure = 0							  // Min pressure the rig protects against when sealed
 
 	var/emp_protection = 0
-	item_flags = PHORONGUARD //VOREStation add
+	clothing_flags = PHORONGUARD //VOREStation add
 
 	// Wiring! How exciting.
 	var/datum/wires/rig/wires
@@ -226,11 +226,11 @@
 	if(seal == 1)
 		piece.min_pressure_protection = rigsuit_min_pressure
 		piece.max_pressure_protection = rigsuit_max_pressure
-		piece.item_flags |= ALLOWINTERNALS
+		piece.clothing_flags |= ALLOWINTERNALS
 	else
 		piece.min_pressure_protection = null
 		piece.max_pressure_protection = null
-		piece.item_flags &= ~ALLOWINTERNALS
+		piece.clothing_flags &= ~ALLOWINTERNALS
 	return
 
 
@@ -304,8 +304,8 @@
 	var/seal_target = !canremove
 	var/failed_to_seal
 
-	var/obj/screen/rig_booting/booting_L = new
-	var/obj/screen/rig_booting/booting_R = new
+	var/atom/movable/screen/rig_booting/booting_L = new
+	var/atom/movable/screen/rig_booting/booting_R = new
 
 	if(!seal_target)
 		booting_L.icon_state = "boot_left"
@@ -469,8 +469,8 @@
 		if(istype(H.loc, /obj/mecha))
 			var/obj/mecha/M = H.loc
 			return M.return_temperature()
-		else if(istype(H.loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			var/obj/machinery/atmospherics/unary/cryo_cell/cryo = H.loc
+		else if(istype(H.loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
+			var/obj/machinery/atmospherics/component/unary/cryo_cell/cryo = H.loc
 			return cryo.air_contents.temperature
 
 	var/turf/T = get_turf(src)
@@ -1159,18 +1159,18 @@
 		return null
 
 //Boot animation screen objects
-/obj/screen/rig_booting
+/atom/movable/screen/rig_booting
 	screen_loc = "1,1"
 	icon = 'icons/obj/rig_boot.dmi'
 	icon_state = ""
 	layer = SCREEN_LAYER
-	plane = PLANE_FULLSCREEN
+	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
 	alpha = 20 //Animated up when loading
 
 //Shows cell charge on screen, ideally.
 
-var/obj/screen/cells = null
+var/atom/movable/screen/cells = null
 
 // update the status screen display
 /obj/item/rig/Stat()

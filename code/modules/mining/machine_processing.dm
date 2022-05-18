@@ -171,20 +171,20 @@
 	var/points = 0
 	var/static/list/ore_values = list(
 		"sand" = 1,
-		"hematite" = 1,
-		"carbon" = 1,
-		"phoron" = 15,
-		"copper" = 15,
-		"silver" = 16,
-		"gold" = 18,
-		"marble" = 20,
-		"uranium" = 30,
-		"diamond" = 50,
-		"platinum" = 40,
-		"lead" = 40,
-		"mhydrogen" = 40,
-		"vaudium" = 50,
-		"verdantium" = 60)
+		MAT_HEMATITE = 1,
+		MAT_CARBON = 1,
+		MAT_PHORON = 15,
+		MAT_COPPER = 15,
+		MAT_SILVER = 16,
+		MAT_GOLD = 18,
+		MAT_MARBLE = 20,
+		MAT_URANIUM = 30,
+		MAT_DIAMOND = 50,
+		MAT_PLATINUM = 40,
+		MAT_LEAD = 40,
+		MAT_METALHYDROGEN = 40,
+		MAT_VAUDIUM = 50,
+		MAT_VERDANTIUM = 60)
 
 /obj/machinery/mineral/processing_unit/Initialize(mapload)
 	. = ..()

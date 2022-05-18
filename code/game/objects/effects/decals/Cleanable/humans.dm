@@ -1,4 +1,5 @@
-#define DRYING_TIME 5 * 60*10                        //for 1 unit of depth in puddle (amount var)
+//for 1 unit of depth in puddle (amount var)
+#define DRYING_TIME 5 * 60*10
 
 var/global/list/image/splatter_cache=list()
 
@@ -60,7 +61,11 @@ var/global/list/image/splatter_cache=list()
 	if(basecolor == "rainbow")
 		basecolor = "#[get_random_colour(1)]"
 	add_atom_colour(basecolor, FIXED_COLOUR_PRIORITY)
-	if(synthblood)
+
+	if(basecolor == SYNTH_BLOOD_COLOUR)
+		name = "oil"
+		desc = "It's quite oily."
+	else if(synthblood)
 		name = "synthetic blood"
 		desc = "It's quite greasy."
 	else
@@ -120,12 +125,11 @@ var/global/list/image/splatter_cache=list()
 /obj/effect/decal/cleanable/blood/attack_hand(mob/living/carbon/human/user)
 	..()
 	if (amount && istype(user))
-		add_fingerprint(user)
 		if (user.gloves)
 			return
 		var/taken = rand(1,amount)
 		amount -= taken
-		to_chat(user, "<span class='notice'>You get some of \the [src] on your hands.</span>")
+		to_chat(user, SPAN_NOTICE("You get some of \the [src] on your hands."))
 		if (!user.blood_DNA)
 			user.blood_DNA = list()
 		user.blood_DNA |= blood_DNA.Copy()

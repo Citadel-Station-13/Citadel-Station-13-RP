@@ -31,7 +31,7 @@
 	var/stat_msg2
 	var/display_type = "blank"
 
-	var/datum/announcement/priority/crew_announcement
+	var/datum/legacy_announcement/priority/crew_announcement
 
 	var/datum/lore/atc_controller/ATC
 
@@ -45,7 +45,7 @@
 
 /datum/tgui_module/communications/ui_interact(mob/user, datum/tgui/ui)
 	if(GLOB.using_map && !(get_z(user) in GLOB.using_map.contact_levels))
-		to_chat(user, "<span class='danger'>Unable to establish a connection: You're too far away from the station!</span>")
+		to_chat(user, SPAN_DANGER("Unable to establish a connection: You're too far away from the station!"))
 		return FALSE
 	. = ..()
 
@@ -60,7 +60,7 @@
 		return COMM_AUTHENTICATION_MIN
 	else
 		if(message)
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			to_chat(user, SPAN_WARNING("Access denied."))
 		return COMM_AUTHENTICATION_NONE
 
 /datum/tgui_module/communications/proc/change_security_level(new_level)
@@ -106,7 +106,7 @@
 		"presets" = list(
 			list("name" = "blank",    "label" = "Clear",        "desc" = "Blank slate."),
 			list("name" = "time",     "label" = "Station Time", "desc" = "The current time according to the station's clock."),
-			list("name" = "shuttle",  "label" = "Tram ETA",     "desc" = "Display how much time is left."),  //VOREStation Edit - Shuttle ETA -> Tram ETA because we use trams
+			list("name" = "shuttle",  "label" = "Tram ETA",     "desc" = "Display how much time is left."),  // Shuttle ETA -> Tram ETA because we use trams
 			list("name" = "message",  "label" = "Message",      "desc" = "A custom message.")
 		),
 	)
@@ -200,14 +200,14 @@
 /datum/tgui_module/communications/ui_act(action, params)
 	if(..())
 		return TRUE
-	if(GLOB.using_map && !(get_z(usr) in GLOB.using_map.contact_levels))
-		to_chat(usr, "<span class='danger'>Unable to establish a connection: You're too far away from the station!</span>")
+	if(using_map && !(get_z(usr) in using_map.contact_levels))
+		to_chat(usr, SPAN_DANGER("Unable to establish a connection: You're too far away from the station!"))
 		return FALSE
 
 	. = TRUE
 	if(action == "auth")
 		if(!ishuman(usr))
-			to_chat(usr, "<span class='warning'>Access denied.</span>")
+			to_chat(usr, SPAN_WARNING("Access denied."))
 			return FALSE
 		// Logout function.
 		if(authenticated != COMM_AUTHENTICATION_NONE)
@@ -225,7 +225,7 @@
 			if(istype(id))
 				crew_announcement.announcer = GetNameAndAssignmentFromId(id)
 		if(authenticated == COMM_AUTHENTICATION_NONE)
-			to_chat(usr, "<span class='warning'>You need to wear your ID.</span>")
+			to_chat(usr, SPAN_WARNING("You need to wear your ID."))
 
 	// All functions below this point require authentication.
 	if(!is_authenticated(usr))
@@ -238,7 +238,7 @@
 
 		if("newalertlevel")
 			if(isAI(usr) || isrobot(usr))
-				to_chat(usr, "<span class='warning'>Firewalls prevent you from changing the alert level.</span>")
+				to_chat(usr, SPAN_WARNING("Firewalls prevent you from changing the alert level."))
 				return
 			else if(isobserver(usr))
 				var/mob/observer/dead/D = usr
@@ -246,25 +246,25 @@
 					change_security_level(text2num(params["level"]))
 					return TRUE
 			else if(!ishuman(usr))
-				to_chat(usr, "<span class='warning'>Security measures prevent you from changing the alert level.</span>")
+				to_chat(usr, SPAN_WARNING("Security measures prevent you from changing the alert level."))
 				return
 
 			if(is_authenticated(usr))
 				change_security_level(text2num(params["level"]))
 			else
-				to_chat(usr, "<span class='warning'>You are not authorized to do this.</span>")
+				to_chat(usr, SPAN_WARNING("You are not authorized to do this."))
 			setMenuState(usr, COMM_SCREEN_MAIN)
 
 		if("announce")
 			if(is_authenticated(usr) == COMM_AUTHENTICATION_MAX)
 				if(message_cooldown > world.time)
-					to_chat(usr, "<span class='warning'>Please allow at least one minute to pass between announcements.</span>")
+					to_chat(usr, SPAN_WARNING("Please allow at least one minute to pass between announcements."))
 					return
 				var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement") as null|message
 				if(!input || message_cooldown > world.time || ..() || !(is_authenticated(usr) == COMM_AUTHENTICATION_MAX))
 					return
 				if(length(input) < COMM_MSGLEN_MINIMUM)
-					to_chat(usr, "<span class='warning'>Message '[input]' is too short. [COMM_MSGLEN_MINIMUM] character minimum.</span>")
+					to_chat(usr, SPAN_WARNING("Message '[input]' is too short. [COMM_MSGLEN_MINIMUM] character minimum."))
 					return
 				crew_announcement.Announce(input)
 				message_cooldown = world.time + 600 //One minute
@@ -280,9 +280,9 @@
 
 		if("cancelshuttle")
 			if(isAI(usr) || isrobot(usr))
-				to_chat(usr, "<span class='warning'>Firewalls prevent you from recalling the shuttle.</span>")
+				to_chat(usr, SPAN_WARNING("Firewalls prevent you from recalling the shuttle."))
 				return
-			var/response = alert("Are you sure you wish to recall the shuttle?", "Confirm", "Yes", "No")
+			var/response = tgui_alert(usr, "Are you sure you wish to recall the shuttle?", "Confirm", list("Yes", "No"))
 			if(response == "Yes")
 				cancel_call_proc(usr)
 			setMenuState(usr, COMM_SCREEN_MAIN)
@@ -301,7 +301,7 @@
 			var/datum/comm_message_listener/l = obtain_message_listener()
 			if(params["msgid"])
 				setCurrentMessage(usr, text2num(params["msgid"]))
-			var/response = alert("Are you sure you wish to delete this message?", "Confirm", "Yes", "No")
+			var/response = tgui_alert(usr, "Are you sure you wish to delete this message?", "Confirm", list("Yes", "No"))
 			if(response == "Yes")
 				if(current_viewing_message)
 					if(l != global_message_listener)
@@ -324,31 +324,31 @@
 					post_status(src, params["statdisp"], user = usr)
 
 		if("setmsg1")
-			stat_msg1 = reject_bad_text(sanitize(input("Line 1", "Enter Message Text", stat_msg1) as text|null, 40), 40)
+			stat_msg1 = reject_bad_text(sanitize(input(usr, "Line 1", "Enter Message Text", stat_msg1) as text|null, 40), 40)
 			setMenuState(usr, COMM_SCREEN_STAT)
 
 		if("setmsg2")
-			stat_msg2 = reject_bad_text(sanitize(input("Line 2", "Enter Message Text", stat_msg2) as text|null, 40), 40)
+			stat_msg2 = reject_bad_text(sanitize(input(usr, "Line 2", "Enter Message Text", stat_msg2) as text|null, 40), 40)
 			setMenuState(usr, COMM_SCREEN_STAT)
 
 		// OMG CENTCOMM LETTERHEAD
 		if("MessageCentCom")
 			if(is_authenticated(usr) == COMM_AUTHENTICATION_MAX)
 				if(centcomm_message_cooldown > world.time)
-					to_chat(usr, "<span class='warning'>Arrays recycling. Please stand by.</span>")
+					to_chat(usr, SPAN_WARNING("Arrays recycling. Please stand by."))
 					return
-				var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement. \
+				var/input = sanitize(input(usr, "Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement. \
 				Please be aware that this process is very expensive, and abuse will lead to... termination.  \
 				Transmission does not guarantee a response. \
 				There is a 30 second delay before you may send another message, be clear, full and concise.", "Central Command Quantum Messaging") as null|message)
 				if(!input || ..() || !(is_authenticated(usr) == COMM_AUTHENTICATION_MAX))
 					return
 				if(length(input) < COMM_CCMSGLEN_MINIMUM)
-					to_chat(usr, "<span class='warning'>Message '[input]' is too short. [COMM_CCMSGLEN_MINIMUM] character minimum.</span>")
+					to_chat(usr, SPAN_WARNING("Message '[input]' is too short. [COMM_CCMSGLEN_MINIMUM] character minimum."))
 					return
 				CentCom_announce(input, usr)
-				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
-				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
+				to_chat(usr, SPAN_NOTICE("Message transmitted."))
+				log_game("[key_name(usr)] has made an IA [using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = world.time + 300 // 30 seconds
 			setMenuState(usr, COMM_SCREEN_MAIN)
 
@@ -362,10 +362,10 @@
 				if(!input || ..() || !(is_authenticated(usr) == COMM_AUTHENTICATION_MAX))
 					return
 				if(length(input) < COMM_CCMSGLEN_MINIMUM)
-					to_chat(usr, "<span class='warning'>Message '[input]' is too short. [COMM_CCMSGLEN_MINIMUM] character minimum.</span>")
+					to_chat(usr, SPAN_WARNING("Message '[input]' is too short. [COMM_CCMSGLEN_MINIMUM] character minimum."))
 					return
 				Syndicate_announce(input, usr)
-				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
+				to_chat(usr, SPAN_NOTICE("Message transmitted."))
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
 				centcomm_message_cooldown = world.time + 300 // 30 seconds
 
@@ -379,7 +379,7 @@
 
 /* Etc global procs */
 /proc/enable_prison_shuttle(var/mob/user)
-	for(var/obj/machinery/computer/prison_shuttle/PS in machines)
+	for(var/obj/machinery/computer/prison_shuttle/PS in GLOB.machines)
 		PS.allowedtocall = !(PS.allowedtocall)
 
 /proc/call_shuttle_proc(var/mob/user)
@@ -387,7 +387,7 @@
 		return
 
 	if(!universe.OnShuttleCall(usr))
-		to_chat(user, "<span class='notice'>Cannot establish a bluespace connection.</span>")
+		to_chat(user, SPAN_NOTICE("Cannot establish a bluespace connection."))
 		return
 
 	if(deathsquad.deployed)

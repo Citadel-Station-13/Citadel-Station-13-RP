@@ -1,8 +1,8 @@
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
 	desc = "Used to seperate and package chemicals in to autoinjectors, lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
 	circuit = /obj/item/circuitboard/chem_master
@@ -78,8 +78,8 @@
 
 	return
 
-/obj/machinery/chem_master/attack_hand(mob/user as mob)
-	if(stat & BROKEN)
+/obj/machinery/chem_master/attack_hand(mob/user)
+	if(machine_stat & BROKEN)
 		return
 	user.set_machine(src)
 	ui_interact(user)
@@ -425,7 +425,7 @@
 							to_chat(usr, "<span class='notice'>Not enough reagents to create these injectors!</span>")
 							return
 
-						var/obj/item/reagent_containers/hypospray/autoinjector/A = new(loc)
+						var/obj/item/reagent_containers/hypospray/autoinjector/empty/A = new(loc)
 						A.name = "[answer] autoinjector"
 						A.pixel_x = rand(-7, 7) // random position
 						A.pixel_y = rand(-7, 7)

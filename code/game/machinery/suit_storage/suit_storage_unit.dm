@@ -9,7 +9,7 @@
 	icon_state = "suitstorage000000100" //order is: [has helmet][has suit][has human][is open][is locked][is UV cycling][is powered][is dirty/broken] [is superUVcycling]
 	anchored = 1
 	density = 1
-	var/mob/living/carbon/human/OCCUPANT = null
+	var/mob/living/carbon/human/occupant = null
 	var/obj/item/clothing/suit/space/suit_stored = null
 	var/suit_stored_TYPE = null
 	var/obj/item/clothing/head/helmet/space/helmet_stored = null
@@ -49,13 +49,13 @@
 		hashelmet = 1
 	if(suit_stored)
 		hassuit = 1
-	if(OCCUPANT)
+	if(occupant)
 		hashuman = 1
 	icon_state = text("suitstorage[][][][][][][][][]", hashelmet, hassuit, hashuman, isopen, islocked, isUV, ispowered, isbroken, issuperUV)
 
 /obj/machinery/suit_storage_unit/power_change()
 	..()
-	if(!(stat & NOPOWER))
+	if(!(machine_stat & NOPOWER))
 		ispowered = 1
 		update_icon()
 	else
@@ -80,7 +80,7 @@
 /obj/machinery/suit_storage_unit/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		return
 	if(!user.IsAdvancedToolUser())
 		return 0
@@ -123,7 +123,7 @@
 	else
 		data["boots"] = null
 	data["storage"] = null
-	if(OCCUPANT)
+	if(occupant)
 		data["occupied"] = TRUE
 	else
 		data["occupied"] = FALSE
@@ -169,9 +169,6 @@
 				. = TRUE
 
 	update_icon()
-	add_fingerprint(usr)
-
-
 
 /obj/machinery/suit_storage_unit/proc/toggleUV(mob/user as mob)
 //	var/protected = 0
@@ -268,8 +265,8 @@
 	if(boots_stored)
 		boots_stored.loc = src.loc
 		boots_stored = null
-	if(OCCUPANT)
-		eject_occupant(OCCUPANT)
+	if(occupant)
+		eject_occupant(occupant)
 	return
 
 
@@ -277,7 +274,7 @@
 	if(islocked || isUV)
 		to_chat(user, "<font color='red'>Unable to open unit.</font>")
 		return
-	if(OCCUPANT)
+	if(occupant)
 		eject_occupant(user)
 		return  // eject_occupant opens the door, so we need to return
 	isopen = !isopen
@@ -285,7 +282,7 @@
 
 
 /obj/machinery/suit_storage_unit/proc/toggle_lock(mob/user as mob)
-	if(OCCUPANT && safetieson)
+	if(occupant && safetieson)
 		to_chat(user, "<font color='red'>The Unit's safety protocols disallow locking when a biological form is detected inside its compartments.</font>")
 		return
 	if(isopen)
@@ -297,16 +294,16 @@
 /obj/machinery/suit_storage_unit/proc/start_UV(mob/user as mob)
 	if(isUV || isopen) //I'm bored of all these sanity checks
 		return
-	if(OCCUPANT && safetieson)
+	if(occupant && safetieson)
 		to_chat(user, "<font color='red'><B>WARNING:</B> Biological entity detected in the confines of the Unit's storage. Cannot initiate cycle.</font>")
 		return
-	if(!helmet_stored && !mask_stored && !suit_stored && !OCCUPANT) //shit's empty yo
+	if(!helmet_stored && !mask_stored && !suit_stored && !occupant) //shit's empty yo
 		to_chat(user, "<font color='red'>Unit storage bays empty. Nothing to disinfect -- Aborting.</font>")
 		return
 	to_chat(user, "You start the Unit's cauterisation cycle.")
 	cycletime_left = 20
 	isUV = 1
-	if(OCCUPANT && !islocked)
+	if(occupant && !islocked)
 		islocked = 1 //Let's lock it for good measure
 	update_icon()
 	updateUsrDialog()
@@ -314,18 +311,18 @@
 	var/i //our counter
 	for(i=0,i<4,i++)
 		sleep(50)
-		if(OCCUPANT)
-			OCCUPANT.apply_effect(50, IRRADIATE)
-			var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in OCCUPANT.internal_organs
+		if(occupant)
+			occupant.apply_effect(50, IRRADIATE)
+			var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in occupant.internal_organs
 			if(!rad_organ)
-				if(OCCUPANT.can_feel_pain())
-					OCCUPANT.emote("scream")
+				if(occupant.can_feel_pain())
+					occupant.emote("scream")
 				if(issuperUV)
 					var/burndamage = rand(28,35)
-					OCCUPANT.take_organ_damage(0,burndamage)
+					occupant.take_organ_damage(0,burndamage)
 				else
 					var/burndamage = rand(6,10)
-					OCCUPANT.take_organ_damage(0,burndamage)
+					occupant.take_organ_damage(0,burndamage)
 		if(i==3) //End of the cycle
 			if(!issuperUV)
 				if(helmet_stored)
@@ -349,7 +346,7 @@
 				isbroken = 1
 				isopen = 1
 				islocked = 0
-				eject_occupant(OCCUPANT) //Mixing up these two lines causes bug. DO NOT DO IT.
+				eject_occupant(occupant) //Mixing up these two lines causes bug. DO NOT DO IT.
 			isUV = 0 //Cycle ends
 	update_icon()
 	updateUsrDialog()
@@ -369,12 +366,12 @@
 	var/i
 	for(i=0,i<4,i++) //Gradually give the guy inside some damaged based on the intensity
 		spawn(50)
-			if(OCCUPANT)
+			if(occupant)
 				if(issuperUV)
-					OCCUPANT.take_organ_damage(0,40)
+					occupant.take_organ_damage(0,40)
 					to_chat(user, "Test. You gave him 40 damage")
 				else
-					OCCUPANT.take_organ_damage(0,8)
+					occupant.take_organ_damage(0,8)
 					to_chat(user, "Test. You gave him 8 damage")
 	return*/
 
@@ -389,21 +386,20 @@
 	if(islocked)
 		return
 
-	if(!OCCUPANT)
+	if(!occupant)
 		return
 //	for(var/obj/O in src)
 //		O.loc = src.loc
 
-	if(OCCUPANT.client)
-		if(user != OCCUPANT)
-			to_chat(OCCUPANT, "<font color=#4F49AF>The machine kicks you out!</font>")
+	if(occupant.client)
+		if(user != occupant)
+			to_chat(occupant, "<font color=#4F49AF>The machine kicks you out!</font>")
 		if(user.loc != src.loc)
-			to_chat(OCCUPANT, "<font color=#4F49AF>You leave the not-so-cozy confines of the SSU.</font>")
+			to_chat(occupant, "<font color=#4F49AF>You leave the not-so-cozy confines of the SSU.</font>")
 
-		OCCUPANT.client.eye = OCCUPANT.client.mob
-		OCCUPANT.client.perspective = MOB_PERSPECTIVE
-	OCCUPANT.loc = src.loc
-	OCCUPANT = null
+	occupant.forceMove(loc)
+	occupant.update_perspective()
+	occupant = null
 	if(!isopen)
 		isopen = 1
 	update_icon()
@@ -437,17 +433,16 @@
 	if(!ispowered || isbroken)
 		to_chat(usr, "<font color='red'>The unit is not operational.</font>")
 		return
-	if((OCCUPANT) || (helmet_stored) || (suit_stored))
+	if((occupant) || (helmet_stored) || (suit_stored))
 		to_chat(usr, "<font color='red'>It's too cluttered inside for you to fit in!</font>")
 		return
 	visible_message("[usr] starts squeezing into the suit storage unit!", 3)
 	if(do_after(usr, 10))
 		usr.stop_pulling()
-		usr.client.perspective = EYE_PERSPECTIVE
-		usr.client.eye = src
-		usr.loc = src
+		usr.forceMove(src)
+		usr.update_perspective()
 //		usr.metabslow = 1
-		OCCUPANT = usr
+		occupant = usr
 		isopen = 0 //Close the thing after the guy gets inside
 		update_icon()
 
@@ -458,7 +453,7 @@
 		updateUsrDialog()
 		return
 	else
-		OCCUPANT = null //Testing this as a backup sanity test
+		occupant = null //Testing this as a backup sanity test
 	return
 
 
@@ -481,18 +476,16 @@
 		if(!ispowered || isbroken)
 			to_chat(user, "<font color='red'>The unit is not operational.</font>")
 			return
-		if((OCCUPANT) || (helmet_stored) || (suit_stored)) //Unit needs to be absolutely empty
+		if((occupant) || (helmet_stored) || (suit_stored)) //Unit needs to be absolutely empty
 			to_chat(user, "<font color='red'>The unit's storage area is too cluttered.</font>")
 			return
 		visible_message("[user] starts putting [G.affecting.name] into the Suit Storage Unit.", 3)
 		if(do_after(user, 20))
 			if(!G || !G.affecting) return //derpcheck
 			var/mob/M = G.affecting
-			if(M.client)
-				M.client.perspective = EYE_PERSPECTIVE
-				M.client.eye = src
-			M.loc = src
-			OCCUPANT = M
+			M.forceMove(src)
+			M.update_perspective()
+			occupant = M
 			isopen = 0 //close ittt
 
 			//for(var/obj/O in src)

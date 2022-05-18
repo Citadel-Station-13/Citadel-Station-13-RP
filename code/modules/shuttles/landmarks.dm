@@ -1,4 +1,4 @@
-// Making this separate from /obj/effect/landmark until that mess can be dealt with
+// Making this separate from /atom/movable/landmark until that mess can be dealt with
 /obj/effect/shuttle_landmark
 	name = "Nav Point"
 	icon = 'icons/effects/effects.dmi'
@@ -146,8 +146,7 @@
 	..()
 	for(var/turf/T in range(radius, src))
 		if(T.density)
-			T.ChangeTurf(get_base_turf_by_area(T))
-
+			T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 // Subtype that also queues a shuttle datum (for shuttles starting on maps loaded at runtime)
 /obj/effect/shuttle_landmark/shuttle_initializer

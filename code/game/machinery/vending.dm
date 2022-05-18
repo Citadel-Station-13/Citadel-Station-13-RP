@@ -6,66 +6,88 @@
 	desc = "A generic vending machine."
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "generic"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
-	var/icon_vend //Icon_state when vending
-	var/icon_deny //Icon_state when denying access
+//! ## Icons
+	/// Icon_state when vending.
+	var/icon_vend
+	/// Icon_state when denying access.
+	var/icon_deny
 
-	// Power
+//! ## Power
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/vend_power_usage = 150 //actuators and stuff
 
-	// Vending-related
-	var/active = 1 //No sales pitches if off!
-	var/vend_ready = 1 //Are we ready to vend?? Is it time??
-	var/vend_delay = 10 //How long does it take to vend?
-	var/categories = CAT_NORMAL // Bitmask of cats we're currently showing
-	var/datum/stored_item/vending_product/currently_vending = null // What we're requesting payment for right now
-	var/status_message = "" // Status screen messages like "insufficient funds", displayed in NanoUI
-	var/status_error = 0 // Set to 1 if status_message is an error
+//! ## Vending-related
+	/// No sales pitches if off!
+	var/active = TRUE
+	/// Are we ready to vend?? Is it time??
+	var/vend_ready = TRUE
+	/// How long does it take to vend?
+	var/vend_delay = 1 SECOND
+	/// Bitmask of categories we're currently showing.
+	var/categories = CAT_NORMAL
+	/// What we're requesting payment for right now.
+	var/datum/stored_item/vending_product/currently_vending = null
+	/// Status screen messages like "insufficient funds", displayed in NanoUI.
+	var/status_message = ""
+	/// Set to TRUE if status_message is an error.
+	var/status_error = FALSE
 
-	/*
-		Variables used to initialize the product list
-		These are used for initialization only, and so are optional if
-		product_records is specified
+	/**
+	 * Variables used to initialize the product list
+	 * These are used for initialization only, and so are optional if
+	 * product_records is specified
 	*/
 	var/list/products	= list() // For each, use the following pattern:
 	var/list/contraband	= list() // list(/type/path = amount,/type/path2 = amount2)
 	var/list/premium 	= list() // No specified amount = only one in stock
 	var/list/prices     = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
 
-	// List of vending_product items available.
+	/// List of vending_product items available.
 	var/list/product_records = list()
 
 
 	// Variables used to initialize advertising
-	var/product_slogans = "" //String of slogans spoken out loud, separated by semicolons
-	var/product_ads = "" //String of small ad messages in the vending screen
+	/// String of slogans spoken out loud, separated by semicolons.
+	var/product_slogans = ""
+	/// String of small ad messages in the vending screen.
+	var/product_ads = ""
 
 	var/list/ads_list = list()
 
 	// Stuff relating vocalizations
 	var/list/slogan_list = list()
-	var/shut_up = 1 //Stop spouting those godawful pitches!
-	var/vend_reply //Thank you for shopping!
-	var/last_reply = 0
-	var/last_slogan = 0 //When did we last pitch?
-	var/slogan_delay = 6000 //How long until we can pitch again?
+	/// Set to true to silence it.
+	var/shut_up = TRUE
+	/// Thank you for shopping!
+	var/vend_reply
+	var/last_reply = FALSE
+	/// When did we last pitch?
+	var/last_slogan = 0
+	/// How long until we can pitch again?
+	var/slogan_delay = 10 MINUTES
 
 	// Things that can go wrong
-	emagged = 0 //Ignores if somebody doesn't have card access to that machine.
-	var/seconds_electrified = 0 //Shock customers like an airlock.
-	var/shoot_inventory = 0 //Fire items at customers! We're broken!
+	/// Ignores if somebody doesn't have card access to that machine.
+	emagged = FALSE
+	/// Shock customers like an airlock.
+	var/seconds_electrified = 0
+	/// Fire items at customers! We're broken!
+	var/shoot_inventory = FALSE
 
-	var/scan_id = 1
+	var/scan_id = TRUE
 	var/obj/item/coin/coin
 	var/datum/wires/vending/wires = null
 
 	var/list/log = list()
-	var/req_log_access = access_cargo //default access for checking logs is cargo
-	var/has_logs = 0 //defaults to 0, set to anything else for vendor to have logs
+
+	/// Default access for checking logs is cargo.
+	var/req_log_access = access_cargo
+	/// Defaults to 0, set to anything else for vendor to have logs.
+	var/has_logs = NONE
 
 
 /obj/machinery/vending/Initialize(mapload)
@@ -145,30 +167,44 @@
 		to_chat(user, "You short out \the [src]'s product lock.")
 		return 1
 
-/obj/machinery/vending/attackby(obj/item/W as obj, mob/user as mob)
-
+/obj/machinery/vending/attackby(obj/item/W, mob/user)
 	var/obj/item/card/id/I = W.GetID()
 
 	if(currently_vending && vendor_account && !vendor_account.suspended)
-		var/paid = 0
-		var/handled = 0
+		var/paid = FALSE
+		var/handled = FALSE
 
-		if(I) //for IDs and PDAs and wallets with IDs
-			paid = pay_with_card(I,W)
-			handled = 1
-		else if(istype(W, /obj/item/spacecash/ewallet))
-			var/obj/item/spacecash/ewallet/C = W
-			paid = pay_with_ewallet(C)
-			handled = 1
-		else if(istype(W, /obj/item/spacecash))
-			var/obj/item/spacecash/C = W
-			paid = pay_with_cash(C, user)
-			handled = 1
+		var/obj/item/paying_with = I || W
+		var/list/data = list()
+		var/amount = paying_with.attempt_use_currency(user, src, currently_vending.price, FALSE, NONE, data, FALSE, 7)
+		switch(amount)
+			if(PAYMENT_DYNAMIC_ERROR)
+				if(data[DYNAMIC_PAYMENT_DATA_FAIL_REASON])
+					status_message = data[DYNAMIC_PAYMENT_DATA_FAIL_REASON]
+					status_error = TRUE
+				SSnanoui.update_uis(src)
+				return
+			if(PAYMENT_NOT_CURRENCY)
+				handled = FALSE
+			if(PAYMENT_INSUFFICIENT)
+				handled = TRUE
+				to_chat(user, SPAN_WARNING("That is not enough money!"))
+			else
+				handled = TRUE
+				paid = amount == currently_vending.price
 
-		if(paid)
-			vend(currently_vending, usr)
-			return
-		else if(handled)
+		if(handled)
+			if(paid)
+				var/payer_name = "Unknown"
+				switch(data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE])
+					if(PAYMENT_TYPE_BANK_CARD)
+						var/datum/money_account/A = data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT]
+						if(A)
+							payer_name = A.owner_name
+					else
+						payer_name = "(cash)"
+				credit_purchase(payer_name)
+				vend(currently_vending, usr)
 			SSnanoui.update_uis(src)
 			return // don't smack that machine with your 2 thalers
 
@@ -217,112 +253,12 @@
 				return
 		..()
 
-/**
- *  Receive payment with cashmoney.
- *
- *  usr is the mob who gets the change.
- */
-/obj/machinery/vending/proc/pay_with_cash(var/obj/item/spacecash/cashmoney, mob/user)
-	if(currently_vending.price > cashmoney.worth)
-
-		// This is not a status display message, since it's something the character
-		// themselves is meant to see BEFORE putting the money in
-		to_chat(user, "[icon2html(thing = cashmoney, target = user)] <span class='warning'>That is not enough money.</span>")
-		return 0
-
-	if(istype(cashmoney, /obj/item/spacecash))
-
-		visible_message("<span class='info'>\The [usr] inserts some cash into \the [src].</span>")
-		cashmoney.worth -= currently_vending.price
-
-		if(cashmoney.worth <= 0)
-			user.drop_from_inventory(cashmoney)
-			qdel(cashmoney)
-		else
-			cashmoney.update_icon()
-
-	// Vending machines have no idea who paid with cash
-	credit_purchase("(cash)")
-	return 1
-
-/**
- * Scan a chargecard and deduct payment from it.
- *
- * Takes payment for whatever is the currently_vending item. Returns 1 if
- * successful, 0 if failed.
- */
-/obj/machinery/vending/proc/pay_with_ewallet(var/obj/item/spacecash/ewallet/wallet)
-	visible_message("<span class='info'>\The [usr] swipes \the [wallet] through \the [src].</span>")
-	if(currently_vending.price > wallet.worth)
-		status_message = "Insufficient funds on chargecard."
-		status_error = 1
-		return 0
-	else
-		wallet.worth -= currently_vending.price
-		credit_purchase("[wallet.owner_name] (chargecard)")
-		return 1
-
-/**
- * Scan a card and attempt to transfer payment from associated account.
- *
- * Takes payment for whatever is the currently_vending item. Returns 1 if
- * successful, 0 if failed
- */
-/obj/machinery/vending/proc/pay_with_card(var/obj/item/card/id/I, var/obj/item/ID_container)
-	if(I==ID_container || ID_container == null)
-		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
-	else
-		visible_message("<span class='info'>\The [usr] swipes \the [ID_container] through \the [src].</span>")
-	var/datum/money_account/customer_account = get_account(I.associated_account_number)
-	if(!customer_account)
-		status_message = "Error: Unable to access account. Please contact technical support if problem persists."
-		status_error = 1
-		return 0
-
-	if(customer_account.suspended)
-		status_message = "Unable to access account: account suspended."
-		status_error = 1
-		return 0
-
-	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
-	// empty at high security levels
-	if(customer_account.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
-		var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
-		customer_account = attempt_account_access(I.associated_account_number, attempt_pin, 2)
-
-		if(!customer_account)
-			status_message = "Unable to access account: incorrect credentials."
-			status_error = 1
-			return 0
-
-	if(currently_vending.price > customer_account.money)
-		status_message = "Insufficient funds in account."
-		status_error = 1
-		return 0
-	else
-		// Okay to move the money at this point
-
-		// debit money from the purchaser's account
-		customer_account.money -= currently_vending.price
-
-		// create entry in the purchaser's account log
-		var/datum/transaction/T = new()
-		T.target_name = "[vendor_account.owner_name] (via [name])"
-		T.purpose = "Purchase of [currently_vending.item_name]"
-		if(currently_vending.price > 0)
-			T.amount = "([currently_vending.price])"
-		else
-			T.amount = "[currently_vending.price]"
-		T.source_terminal = name
-		T.date = current_date_string
-		T.time = stationtime2text()
-		customer_account.transaction_log.Add(T)
-
-		// Give the vendor the money. We use the account owner name, which means
-		// that purchases made with stolen/borrowed card will look like the card
-		// owner made them
-		credit_purchase(customer_account.owner_name)
-		return 1
+/obj/machinery/vending/query_transaction_details(list/data)
+	. = ..()
+	.[CHARGE_DETAIL_DEVICE] = name
+	.[CHARGE_DETAIL_LOCATION] = get_area(src).name
+	.[CHARGE_DETAIL_REASON] = currently_vending? "Purchase of [currently_vending.item_name]" : "Unknown"
+	.[CHARGE_DETAIL_RECIPIENT] = vendor_account.owner_name
 
 /**
  *  Add money for current purchase to the vendor account.
@@ -345,7 +281,7 @@
 	return attack_hand(user)
 
 /obj/machinery/vending/attack_hand(mob/user as mob)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(seconds_electrified != 0)
@@ -406,7 +342,7 @@
 		ui.open()
 
 /obj/machinery/vending/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(!IsAdminGhost(usr) && (usr.stat || usr.restrained()))
 		return
@@ -458,7 +394,6 @@
 		else if((href_list["togglevoice"]) && (panel_open))
 			shut_up = !shut_up
 
-		add_fingerprint(usr)
 		SSnanoui.update_uis(src)
 
 /obj/machinery/vending/proc/vend(datum/stored_item/vending_product/R, mob/user)
@@ -571,7 +506,7 @@
 	SSnanoui.update_uis(src)
 
 /obj/machinery/vending/process(delta_time)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(!active)
@@ -591,8 +526,8 @@
 
 	return
 
-/obj/machinery/vending/proc/speak(var/message)
-	if(stat & NOPOWER)
+/obj/machinery/vending/proc/speak(message)
+	if(machine_stat & NOPOWER)
 		return
 
 	if(!message)
@@ -604,10 +539,10 @@
 
 /obj/machinery/vending/power_change()
 	..()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
 	else
-		if(!(stat & NOPOWER))
+		if(!(machine_stat & NOPOWER))
 			icon_state = initial(icon_state)
 		else
 			spawn(rand(0, 15))
@@ -620,7 +555,7 @@
 			R.get_product(loc)
 		break
 
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	icon_state = "[initial(icon_state)]-broken"
 	return
 
@@ -697,6 +632,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/peachschnapps = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/lemonadeschnapps = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/rum = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/whiterum = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/sake = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/tequilla = 5,
@@ -797,9 +733,12 @@
 					/obj/item/reagent_containers/food/drinks/cans/cola = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10,
 					/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
- /obj/item/reagent_containers/food/drinks/cans/iced_tea = 10)
+ 					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10,
+					 /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 10,
+					 /obj/item/reagent_containers/food/drinks/bludbox = 5,
+					 /obj/item/reagent_containers/food/drinks/bludboxlight = 5)
 	contraband = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6,
-				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 1)
+				    /obj/item/reagent_containers/food/drinks/cans/dumbjuice = 4, /obj/item/reagent_containers/food/drinks/cans/geometer = 2)
 	prices = list(/obj/item/reagent_containers/food/drinks/cans/cola = 1,/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1,
 					/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 1,/obj/item/reagent_containers/food/drinks/cans/starkist = 1,
 					/obj/item/reagent_containers/food/drinks/cans/waterbottle = 2,/obj/item/reagent_containers/food/drinks/cans/space_up = 1,
@@ -807,7 +746,8 @@
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1,
 					/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 1, /obj/item/reagent_containers/food/drinks/cans/ochamidori = 3,
 					/obj/item/reagent_containers/food/drinks/cans/ramune = 2, /obj/item/reagent_containers/food/drinks/cans/battery = 5,
-					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2)
+					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2, /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 5,
+					/obj/item/reagent_containers/food/drinks/bludbox = 50, /obj/item/reagent_containers/food/drinks/bludboxlight = 70)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.
@@ -834,7 +774,8 @@
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 25,
 					///obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,	//VOREStation Removal,
-					/obj/item/towel/random = 40)
+					/obj/item/towel/random = 40,
+					)
 
 	contraband = list(/obj/item/reagent_containers/syringe/steroid = 4)
 
@@ -865,12 +806,14 @@
 					/obj/item/storage/fancy/cigarettes/jerichos = 5,
 					/obj/item/storage/fancy/cigarettes/menthols = 5,
 					/obj/item/storage/rollingpapers = 5,
+					/obj/item/storage/rollingblunts = 5,
 					/obj/item/storage/box/matches = 10,
 					/obj/item/flame/lighter/random = 4)
 	contraband = list(/obj/item/flame/lighter/zippo = 4)
 	premium = list(/obj/item/storage/fancy/cigar = 5,
 					/obj/item/storage/fancy/cigarettes/carcinomas = 5,
-					/obj/item/storage/fancy/cigarettes/professionals = 5)
+					/obj/item/storage/fancy/cigarettes/professionals = 5,
+					/obj/item/storage/fancy/cigarettes/blackstars = 5)
 	prices = list(/obj/item/storage/fancy/cigarettes = 12,
 					/obj/item/storage/fancy/cigarettes/dromedaryco = 15,
 					/obj/item/storage/fancy/cigarettes/killthroat = 17,
@@ -878,6 +821,7 @@
 					/obj/item/storage/fancy/cigarettes/jerichos = 22,
 					/obj/item/storage/fancy/cigarettes/menthols = 18,
 					/obj/item/storage/rollingpapers = 10,
+					/obj/item/storage/rollingblunts = 17,
 					/obj/item/storage/box/matches = 1,
 					/obj/item/flame/lighter/random = 2)
 
@@ -1178,6 +1122,7 @@
 					/obj/item/toy/plushie/bear_soda = 2,
 					/obj/item/toy/plushie/bear_bloody = 2,
 					/obj/item/toy/plushie/bear_space = 1,
+					/obj/item/toy/plushie/doll = 3,
 					/obj/item/storage/daki = 10)
 	premium = list(/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
 					/obj/item/storage/trinketbox = 2)
@@ -1215,6 +1160,7 @@
 					/obj/item/toy/plushie/bear_soda = 35,
 					/obj/item/toy/plushie/bear_bloody = 35,
 					/obj/item/toy/plushie/bear_space = 50,
+					/obj/item/toy/plushie/doll = 50,
 					/obj/item/storage/daki = 100)
 
 /obj/machinery/vending/fishing
@@ -1346,7 +1292,9 @@
 					/obj/item/reagent_containers/blood/prelabeled/BPlus = 3,/obj/item/reagent_containers/blood/prelabeled/BMinus = 3,
 					/obj/item/reagent_containers/blood/prelabeled/ABPlus = 2,/obj/item/reagent_containers/blood/prelabeled/ABMinus = 1,
 					/obj/item/reagent_containers/blood/prelabeled/OPlus = 2,/obj/item/reagent_containers/blood/prelabeled/OMinus = 5,
-					/obj/item/reagent_containers/blood/empty = 5)
+					/obj/item/reagent_containers/blood/empty = 5,
+					/obj/item/reagent_containers/food/drinks/bludboxmax = 5,
+					/obj/item/reagent_containers/food/drinks/bludboxmaxlight = 5)
 	contraband = list(/obj/item/reagent_containers/glass/bottle/stoxin = 2)
 	req_log_access = access_cmo
 	has_logs = 1
@@ -1786,10 +1734,10 @@
 					/obj/item/clothing/under/color/white = 5,
 					/obj/item/clothing/under/color/yellow = 5,
 					/obj/item/clothing/under/color/yellowgreen = 5,
-					/obj/item/clothing/under/aether = 5,
-					/obj/item/clothing/under/focal = 5,
-					/obj/item/clothing/under/hephaestus = 5,
-					/obj/item/clothing/under/wardt = 5,
+					/obj/item/clothing/under/brandjumpsuit/aether = 5,
+					/obj/item/clothing/under/brandjumpsuit/focal = 5,
+					/obj/item/clothing/under/brandjumpsuit/hephaestus = 5,
+					/obj/item/clothing/under/brandjumpsuit/wardt = 5,
 					/obj/item/clothing/under/kilt = 5,
 					/obj/item/clothing/under/fluff/latexmaid = 5,
 					/obj/item/clothing/under/dress/lilacdress = 5,
@@ -1823,7 +1771,7 @@
 					/obj/item/clothing/under/permit = 5,
 					/obj/item/clothing/under/oldwoman = 5,
 					/obj/item/clothing/under/frontier = 5,
-					/obj/item/clothing/under/mbill = 5,
+					/obj/item/clothing/under/brandjumpsuit/mbill = 5,
 					/obj/item/clothing/under/pants/baggy/ = 5,
 					/obj/item/clothing/under/pants/baggy/classicjeans = 5,
 					/obj/item/clothing/under/pants/baggy/mustangjeans = 5,
@@ -1928,7 +1876,9 @@
 					/obj/item/storage/box/fluff/swimsuit/medical = 5,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 5,
 					/obj/item/storage/box/fluff/swimsuit/captain = 5,
-					/obj/item/storage/box/fluff/swimsuit/highclass = 5,
+					/obj/item/storage/box/fluff/swimsuit/highclass = 3,
+					/obj/item/storage/box/fluff/swimsuit/latex = 3,
+					/obj/item/storage/box/rainponcho = 5,
 					/obj/item/clothing/under/utility = 5,
 					/obj/item/clothing/under/utility/grey = 5,
 					/obj/item/clothing/under/utility/blue = 5,
@@ -1987,10 +1937,10 @@
 					/obj/item/clothing/under/color/white = 25,
 					/obj/item/clothing/under/color/yellow = 25,
 					/obj/item/clothing/under/color/yellowgreen = 25,
-					/obj/item/clothing/under/aether = 25,
-					/obj/item/clothing/under/focal = 25,
-					/obj/item/clothing/under/hephaestus = 25,
-					/obj/item/clothing/under/wardt = 25,
+					/obj/item/clothing/under/brandjumpsuit/aether = 25,
+					/obj/item/clothing/under/brandjumpsuit/focal = 25,
+					/obj/item/clothing/under/brandjumpsuit/hephaestus = 25,
+					/obj/item/clothing/under/brandjumpsuit/wardt = 25,
 					/obj/item/clothing/under/kilt = 25,
 					/obj/item/clothing/under/fluff/latexmaid = 25,
 					/obj/item/clothing/under/dress/lilacdress = 25,
@@ -2024,7 +1974,7 @@
 					/obj/item/clothing/under/permit = 25,
 					/obj/item/clothing/under/oldwoman = 25,
 					/obj/item/clothing/under/frontier = 25,
-					/obj/item/clothing/under/mbill = 25,
+					/obj/item/clothing/under/brandjumpsuit/mbill = 25,
 					/obj/item/clothing/under/pants/baggy/ = 25,
 					/obj/item/clothing/under/pants/baggy/classicjeans = 25,
 					/obj/item/clothing/under/pants/baggy/mustangjeans = 25,
@@ -2129,7 +2079,9 @@
 					/obj/item/storage/box/fluff/swimsuit/medical = 25,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 25,
 					/obj/item/storage/box/fluff/swimsuit/captain = 25,
-					/obj/item/storage/box/fluff/swimsuit/highclass = 25,
+					/obj/item/storage/box/fluff/swimsuit/highclass = 40,
+					/obj/item/storage/box/fluff/swimsuit/latex = 40,
+					/obj/item/storage/box/rainponcho = 10,
 					/obj/item/clothing/under/utility = 25,
 					/obj/item/clothing/under/utility/grey = 25,
 					/obj/item/clothing/under/utility/blue = 25,

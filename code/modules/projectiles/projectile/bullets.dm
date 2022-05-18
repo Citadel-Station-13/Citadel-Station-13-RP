@@ -11,6 +11,10 @@
 	var/mob_passthrough_check = 0
 
 	muzzle_type = /obj/effect/projectile/muzzle/bullet
+	miss_sounds = list('sound/weapons/guns/miss1.ogg','sound/weapons/guns/miss2.ogg','sound/weapons/guns/miss3.ogg','sound/weapons/guns/miss4.ogg')
+	ricochet_sounds = list('sound/weapons/guns/ricochet1.ogg', 'sound/weapons/guns/ricochet2.ogg',
+							'sound/weapons/guns/ricochet3.ogg', 'sound/weapons/guns/ricochet4.ogg')
+	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_BULLET_MEAT, BULLET_IMPACT_METAL = SOUNDS_BULLET_METAL)
 
 /obj/item/projectile/bullet/on_hit(var/atom/target, var/blocked = 0)
 	if (..(target, blocked))
@@ -343,9 +347,17 @@
 	damage = 40
 	damage_type = TOX
 
+/obj/item/projectile/bullet/cyanideround/jezzail
+	name = "toxic penetrator shard"
+	damage = 25
+	armor_penetration = 20
+	agony = 5
+	embed_chance = 1
+	damage_type = TOX
+
 /obj/item/projectile/bullet/burstbullet
 	name = "exploding bullet"
-	fire_sound = 'sound/effects/Explosion1.ogg'
+	fire_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 	damage = 20
 	embed_chance = 0
 	edge = 1
@@ -357,7 +369,7 @@
 
 /obj/item/projectile/bullet/burstbullet/service
 	name = "charge bullet"
-	fire_sound = 'sound/effects/Explosion1.ogg'
+	fire_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 	damage = 20
 	embed_chance = 0
 	edge = 1

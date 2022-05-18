@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from "../../backend";
+import { useBackend } from "../../backend";
 import { Box, Button, Dropdown, Flex, Input, Modal } from '../../components';
 
 let bodyOverrides = {};
@@ -77,7 +77,6 @@ export const ComplexModal = (props, context) => {
     id,
     text,
     type,
-    uid,
   } = data.modal;
 
   let modalOnEnter;
@@ -95,7 +94,7 @@ export const ComplexModal = (props, context) => {
   if (bodyOverrides[id]) {
     modalBody = bodyOverrides[id](data.modal, context);
   } else if (type === "input") {
-    const [curValue, setCurValue] = useLocalState(context, 'curValue' + data.modal.uid.toString(), data.modal.value.toString());
+    let curValue = data.modal.value;
     modalOnEnter = e => modalAnswer(context, id, curValue);
     modalBody = (
       <Input
@@ -103,9 +102,10 @@ export const ComplexModal = (props, context) => {
         placeholder="ENTER to submit"
         width="100%"
         my="0.5rem"
-        autofocus
+        autoFocus
+        autoSelect
         onChange={(_e, val) => {
-          setCurValue(val);
+          curValue = val;
         }}
       />
     );
@@ -189,7 +189,7 @@ export const ComplexModal = (props, context) => {
       maxHeight={props.maxHeight || (window.innerHeight / 2 + "px")}
       onEnter={modalOnEnter}
       mx="auto">
-      <Box display="inline">
+      <Box inline>
         {text}
       </Box>
       {modalBody}

@@ -75,7 +75,7 @@ proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
 proc/sanitize_name(name, species = SPECIES_HUMAN)
 	var/datum/species/current_species
 	if(species)
-		current_species = GLOB.all_species[species]
+		current_species = name_static_species_meta(species)
 
 	return current_species ? current_species.sanitize_name(name) : sanitizeName(name, MAX_NAME_LEN)
 
@@ -83,7 +83,7 @@ proc/random_name(gender, species = SPECIES_HUMAN)
 
 	var/datum/species/current_species
 	if(species)
-		current_species = GLOB.all_species[species]
+		current_species = name_static_species_meta(species)
 
 	if(!current_species || current_species.name_language == null)
 		if(gender==FEMALE)
@@ -127,13 +127,6 @@ proc/age2agedescription(age)
 		if(60 to 70)		return "aging"
 		if(70 to INFINITY)	return "elderly"
 		else				return "unknown"
-
-/proc/RoundHealth(health)
-	var/list/icon_states = icon_states(ingame_hud_med)
-	for(var/icon_state in icon_states)
-		if(health >= text2num(icon_state))
-			return icon_state
-	return icon_states[icon_states.len] // If we had no match, return the last element
 
 /*
 Proc for attack log creation, because really why not
@@ -296,7 +289,7 @@ Proc for attack log creation, because really why not
 
 	return living
 
-/atom/proc/human_mobs(var/range = world.view)
+/atom/proc/human_mobs(range = world.view)
 	var/list/viewers = oviewers(src,range)
 	var/list/humans = list()
 	for(var/mob/living/carbon/human/H in viewers)
@@ -304,7 +297,7 @@ Proc for attack log creation, because really why not
 
 	return humans
 
-/proc/cached_character_icon(var/mob/desired)
+/proc/cached_character_icon(mob/desired)
 	var/cachekey = "\ref[desired][desired.real_name]"
 
 	if(cached_character_icons[cachekey])

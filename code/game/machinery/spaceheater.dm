@@ -1,14 +1,15 @@
 /obj/machinery/space_heater
-	anchored = 0
-	density = 1
-	icon = 'icons/obj/atmos.dmi'
-	icon_state = "sheater0"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
+	icon = 'icons/obj/atmos.dmi'
+	icon_state = "sheater0"
+	anchored = FALSE
+	density = TRUE
+
 	var/obj/item/cell/cell
 	var/cell_type = /obj/item/cell/high
-	var/on = 0
-	var/set_temperature = T0C + 20	//K
+	var/on = FALSE
+	var/set_temperature = T0C + 20 //K
 	var/heating_power = 40000
 
 /obj/machinery/space_heater/Initialize(mapload, newdir)
@@ -28,22 +29,18 @@
 		set_light(0)
 
 /obj/machinery/space_heater/examine(mob/user)
-	..(user)
-
-	to_chat(user, "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"].")
+	. = ..()
+	. += "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"]."
 	if(panel_open)
-		to_chat(user, "The power cell is [cell ? "installed" : "missing"].")
+		. += "The power cell is [cell ? "installed" : "missing"]."
 	else
-		to_chat(user, "The charge meter reads [cell ? round(cell.percent(),1) : 0]%")
-	return
+		. += "The charge meter reads [cell ? round(cell.percent(),1) : 0]%"
 
 /obj/machinery/space_heater/powered()
-	if(cell && cell.charge)
-		return 1
-	return 0
+	return !!cell?.charge
 
 /obj/machinery/space_heater/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	if(cell)
@@ -83,11 +80,9 @@
 	return
 
 /obj/machinery/space_heater/attack_hand(mob/user as mob)
-	add_fingerprint(user)
 	interact(user)
 
 /obj/machinery/space_heater/interact(mob/user as mob)
-
 	if(panel_open)
 
 		var/dat
@@ -113,7 +108,6 @@
 		on = !on
 		user.visible_message("<span class='notice'>[user] switches [on ? "on" : "off"] the [src].</span>","<span class='notice'>You switch [on ? "on" : "off"] the [src].</span>")
 		update_icon()
-	return
 
 
 /obj/machinery/space_heater/Topic(href, href_list)
@@ -212,7 +206,7 @@
 	var/target_temp = T20C
 	var/mode = MODE_IDLE
 
-/obj/machinery/power/thermoregulator/Initialize()
+/obj/machinery/power/thermoregulator/Initialize(mapload)
 	.=..()
 	default_apply_parts()
 

@@ -35,7 +35,7 @@ var/list/fuel_injectors = list()
 
 /obj/machinery/fusion_fuel_injector/process(delta_time)
 	if(injecting)
-		if(stat & (BROKEN|NOPOWER))
+		if(machine_stat & (BROKEN|NOPOWER))
 			StopInjecting()
 		else
 			Inject()

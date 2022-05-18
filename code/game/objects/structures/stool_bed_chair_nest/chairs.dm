@@ -17,12 +17,12 @@
 	. = ..()
 	update_layer()
 
-/obj/structure/bed/chair/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/chair/attackby(obj/item/W, mob/user)
 	..()
 	if(!padding_material && istype(W, /obj/item/assembly/shock_kit))
 		var/obj/item/assembly/shock_kit/SK = W
 		if(!SK.status)
-			to_chat(user, "<span class='notice'>\The [SK] is not ready to be attached!</span>")
+			to_chat(user, SPAN_NOTICE("\The [SK] is not ready to be attached!"))
 			return
 		user.drop_item()
 		var/obj/structure/bed/chair/e_chair/E = new (src.loc, material.name)
@@ -33,7 +33,7 @@
 		SK.master = E
 		qdel(src)
 
-/obj/structure/bed/chair/attack_tk(mob/user as mob)
+/obj/structure/bed/chair/attack_tk(mob/user)
 	if(has_buckled_mobs())
 		..()
 	else
@@ -416,3 +416,23 @@
 /obj/structure/bed/chair/pew/right
 	icon_state = "pewend_right"
 	base_icon = "pewend_right"
+
+//Apidean Chairs!
+/obj/structure/bed/chair/apidean
+	name = "\improper Apidean throne"
+	desc = "This waxy chair is designed to allow creatures with insectoid abdomens to lounge comfortably. Typically reserved for the Apidean upper class."
+	icon_state = "queenthrone"
+	base_icon = "queenthrone"
+
+/obj/structure/bed/chair/apidean/Initialize(mapload, new_material)
+	. = ..(mapload, "wax", null)
+
+//Wax Stools for Bees! I've put it here because it shouldn't inherit stool properties.
+/obj/structure/bed/chair/apidean_stool
+	name = "\improper Apidean stool"
+	desc = "A specially crafted stool made out of hardened wax. Often found on Apidean colonies and vessels."
+	icon_state = "stool_apidean"
+	base_icon = "stool_apidean"
+
+/obj/structure/bed/chair/apidean_stool/Initialize(mapload, new_material)
+	. = ..(mapload, "wax", null)

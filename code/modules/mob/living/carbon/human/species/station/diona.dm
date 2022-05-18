@@ -22,7 +22,6 @@
 	species_language = LANGUAGE_ROOTLOCAL
 	secondary_langs = list(LANGUAGE_ROOTGLOBAL)
 	assisted_langs = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
-	min_age = 18
 	max_age = 300
 
 	economic_modifier = 4
@@ -91,7 +90,7 @@
 
 	genders = list(PLURAL)
 
-	wikilink="https://wiki.vore-station.net/Diona"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
 
 /datum/species/diona/can_understand(var/mob/other)
 	var/mob/living/carbon/alien/diona/D = other
@@ -105,10 +104,6 @@
 	else
 		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), slot_in_backpack)
 
-/datum/species/diona/handle_post_spawn(var/mob/living/carbon/human/H)
-	H.gender = NEUTER
-	return ..()
-
 /datum/species/diona/handle_death(var/mob/living/carbon/human/H)
 
 	var/mob/living/carbon/alien/diona/S = new(get_turf(H))
@@ -118,8 +113,7 @@
 
 	if(H.isSynthetic())
 		H.visible_message("<span class='danger'>\The [H] collapses into parts, revealing a solitary diona nymph at the core.</span>")
-
-		H.species = GLOB.all_species[SPECIES_HUMAN] // This is hard-set to default the body to a normal FBP, without changing anything.
+		H.set_species(get_static_species_meta(/datum/species/human), skip = TRUE, force = TRUE)
 
 		for(var/obj/item/organ/internal/diona/Org in H.internal_organs) // Remove Nymph organs.
 			qdel(Org)
@@ -152,8 +146,8 @@
 		H.nutrition += light_amount
 		H.shock_stage -= light_amount
 
-		if(H.nutrition > 300)
-			H.nutrition = 300
+		if(H.nutrition > max_nutrition)
+			H.nutrition = max_nutrition
 		if(light_amount >= 3 && H.nutrition >= 100) //if there's enough light, heal
 			H.adjustBruteLoss(-(round(light_amount/2)))
 			H.adjustFireLoss(-(round(light_amount/2)))

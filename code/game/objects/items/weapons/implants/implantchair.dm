@@ -80,7 +80,7 @@
 			if(!ismob(grab.affecting))
 				return
 			if(grab.affecting.has_buckled_mobs())
-				to_chat(user, span("warning", "\The [grab.affecting] has other entities attached to them. Remove them first."))
+				to_chat(user, SPAN_WARNING( "\The [grab.affecting] has other entities attached to them. Remove them first."))
 				return
 			var/mob/M = grab.affecting
 			if(put_mob(M))
@@ -94,10 +94,8 @@
 			return
 		if(M == occupant) // so that the guy inside can't eject himself -Agouri
 			return
-		if (src.occupant.client)
-			src.occupant.client.eye = src.occupant.client.mob
-			src.occupant.client.perspective = MOB_PERSPECTIVE
-		src.occupant.loc = src.loc
+		occupant.forceMove(loc)
+		occupant.update_perspective()
 		if(injecting)
 			implant(src.occupant)
 			injecting = 0
@@ -110,15 +108,12 @@
 		if(!iscarbon(M))
 			to_chat(usr, "<span class='warning'>\The [src] cannot hold this!</span>")
 			return
-		if(src.occupant)
+		if(occupant)
 			to_chat(usr, "<span class='warning'>\The [src] is already occupied!</span>")
 			return
-		if(M.client)
-			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
-		M.stop_pulling()
-		M.loc = src
-		src.occupant = M
+		M.forceMove(src)
+		M.update_perspective()
+		occupant = M
 		src.add_fingerprint(usr)
 		icon_state = "implantchair_on"
 		return 1
@@ -164,7 +159,7 @@
 			set name = "Move Inside"
 			set category = "Object"
 			set src in oview(1)
-			if(usr.stat != 0 || stat & (NOPOWER|BROKEN))
+			if(usr.stat != 0 || machine_stat & (NOPOWER|BROKEN))
 				return
 			put_mob(usr)
 			return

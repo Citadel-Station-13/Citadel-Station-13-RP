@@ -4,22 +4,22 @@
 /area/template_noop)
 "d" = (
 /turf/simulated/wall/titanium,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "e" = (
 /obj/structure/droppod_door{
 	dir = 1
 	},
 /turf/simulated/wall/titanium,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "f" = (
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "g" = (
 /obj/structure/droppod_door{
 	dir = 8
 	},
 /turf/simulated/wall/titanium,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "h" = (
 /obj/structure/closet/crate,
 /obj/item/gun/energy/stunrevolver,
@@ -37,23 +37,20 @@
 /obj/item/flame/lighter/random,
 /obj/item/gps,
 /turf/simulated/floor/reinforced,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "i" = (
 /obj/structure/droppod_door{
 	dir = 4
 	},
 /turf/simulated/wall/titanium,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "j" = (
 /obj/structure/droppod_door,
 /turf/simulated/wall/titanium,
-/area/tether_away/beach/desert/explored)
-"k" = (
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "I" = (
 /turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/template_noop)
+/area/class_h/explored)
 
 (1,1,1) = {"
 I
@@ -83,83 +80,83 @@ b
 b
 I
 I
-k
-k
-k
-k
-k
+I
+I
+I
+I
+I
 I
 I
 "}
 (4,1,1) = {"
 b
 I
-k
-k
+I
+I
 d
 g
 d
-k
-k
+I
+I
 I
 "}
 (5,1,1) = {"
 b
 I
-k
+I
 d
 d
 f
 d
 d
-k
+I
 I
 "}
 (6,1,1) = {"
 I
 I
-k
+I
 e
 f
 h
 f
 j
-k
+I
 I
 "}
 (7,1,1) = {"
 I
 I
-k
+I
 d
 d
 f
 d
 d
-k
+I
 I
 "}
 (8,1,1) = {"
 I
 I
-k
-k
+I
+I
 d
 i
 d
-k
-k
+I
+I
 I
 "}
 (9,1,1) = {"
 I
 I
 I
-k
-k
-k
-k
-k
+I
+I
+I
+I
+I
 I
 I
 "}

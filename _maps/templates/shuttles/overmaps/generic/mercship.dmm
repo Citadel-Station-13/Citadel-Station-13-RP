@@ -6,7 +6,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/mercenary/engine1)
 "ac" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	icon_state = "nozzle";
 	dir = 4
 	},
@@ -54,7 +54,7 @@
 	icon_state = "intact-scrubbers";
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -75,7 +75,7 @@
 	icon_state = "intact-fuel";
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
@@ -146,7 +146,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/mercenary/med)
 "aq" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
 	dir = 4;
 	frequency = 1313;
 	icon_state = "map_vent_aux";
@@ -201,7 +201,7 @@
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine1)
 "aw" = (
-/obj/machinery/atmospherics/binary/pump/fuel{
+/obj/machinery/atmospherics/component/binary/pump/fuel{
 	icon_state = "map_off-fuel";
 	dir = 1
 	},
@@ -321,7 +321,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall1)
 "aL" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
 	dir = 4;
 	frequency = 1313;
 	icon_state = "map_vent_aux";
@@ -544,7 +544,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med)
 "bh" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
@@ -628,7 +628,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "bp" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -708,7 +708,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/mercboat)
 "bx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 4
 	},
@@ -727,7 +727,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med1)
 "bz" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -767,7 +767,7 @@
 /turf/simulated/floor,
 /area/ship/mercenary/barracks)
 "bE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 4
 	},
@@ -841,7 +841,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "bJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
@@ -1054,7 +1054,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "cb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
@@ -1190,7 +1190,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med1)
 "ck" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 4
 	},
@@ -1305,7 +1305,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "cu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 4
 	},
@@ -1351,7 +1351,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/northairlock)
 "cz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 4
 	},
@@ -1619,7 +1619,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med)
 "cU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 4
 	},
@@ -2034,7 +2034,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall2)
 "dE" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 4
 	},
@@ -2236,7 +2236,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall1)
 "dX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -2249,7 +2249,7 @@
 /turf/simulated/floor/plating/external,
 /area/ship/mercenary/med)
 "dZ" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	icon_state = "map_off";
 	dir = 1
 	},
@@ -2259,11 +2259,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/atmos)
 "eb" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/atmos)
 "ec" = (
@@ -2281,7 +2281,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall2)
 "ed" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -2318,7 +2318,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineering)
 "eg" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 4
 	},
@@ -2463,7 +2463,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/atmos)
 "ey" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -2499,11 +2499,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineeringcntrl)
 "eD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineeringcntrl)
 "eE" = (
@@ -2572,7 +2572,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med1)
 "eL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 1
@@ -2586,7 +2586,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/atmos)
@@ -2861,7 +2861,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/mercenary/air)
 "fh" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	icon_state = "nozzle";
 	dir = 4
 	},
@@ -2913,11 +2913,11 @@
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine)
 "fm" = (
-/obj/machinery/atmospherics/binary/pump/fuel,
+/obj/machinery/atmospherics/component/binary/pump/fuel,
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine)
 "fn" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
 	dir = 4;
 	frequency = 1414;
 	icon_state = "map_vent_aux";
@@ -3030,7 +3030,7 @@
 /area/ship/mercenary/engine)
 "fx" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3052,7 +3052,7 @@
 	icon_state = "intact-fuel";
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
@@ -3062,7 +3062,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/mercenary/southairlock)
 "fB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 4
 	},
@@ -3086,7 +3086,7 @@
 /turf/simulated/floor,
 /area/ship/mercenary/barracks)
 "fE" = (
-/obj/machinery/atmospherics/binary/passive_gate{
+/obj/machinery/atmospherics/component/binary/passive_gate{
 	icon_state = "map";
 	dir = 1
 	},
@@ -3252,14 +3252,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineeringcntrl)
 "fR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hangar)
 "fS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 4
 	},
@@ -3385,7 +3385,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "gc" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
 	dir = 4;
 	frequency = 1414;
 	icon_state = "map_vent_aux";
@@ -3455,7 +3455,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
 	},
-/obj/machinery/shield_gen,
+/obj/machinery/power/shield_generator/charged,
 /turf/simulated/floor,
 /area/ship/mercenary/med)
 "gh" = (
@@ -3487,7 +3487,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineering)
 "gj" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
@@ -3842,7 +3842,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hangar)
 "gQ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 4
 	},
@@ -3869,7 +3869,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/fighter)
 "gS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
@@ -3890,7 +3890,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/armoury)
 "gU" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
@@ -3928,7 +3928,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hangar)
 "gY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	icon_state = "map_vent_out";
 	dir = 4
 	},
@@ -3959,7 +3959,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/armoury)
 "hb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},

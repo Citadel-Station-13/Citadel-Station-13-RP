@@ -16,9 +16,6 @@
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	return (!mover.density || !density || lying)
 
-/mob/CanZASPass(turf/T, is_zone)
-	return ATMOS_PASS_YES
-
 /**
   * Toggle the move intent of the mob
   *
@@ -31,7 +28,7 @@
 		m_intent = MOVE_INTENT_RUN
 /*
 	if(hud_used && hud_used.static_inventory)
-		for(var/obj/screen/mov_intent/selector in hud_used.static_inventory)
+		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_icon()
 */
 	// nah, vorecode bad.

@@ -12,14 +12,15 @@
 	var/obj/item/gun/gun
 	var/emagged = 0
 
-/obj/item/firing_pin/Initialize(newloc)
+/obj/item/firing_pin/Initialize(mapload)
 	. = ..()
-	if(istype(newloc, /obj/item/gun))
-		gun = newloc
+	if(istype(loc, /obj/item/gun))
+		gun = loc
 
 /obj/item/firing_pin/Destroy()
 	if(gun)
 		gun.pin = null
+		gun = null
 	return ..()
 
 /obj/item/firing_pin/afterattack(atom/target, mob/user, proximity_flag)

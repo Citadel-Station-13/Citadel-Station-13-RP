@@ -119,7 +119,7 @@
 	flags = PHORONGUARD
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	species_restricted = list("Vox")
+	species_restricted = list(SPECIES_VOX)
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 
@@ -287,7 +287,7 @@
 	secondary_trait = TRAIT_ANTIMAGIC
 	var/chaplain_spawnable = TRUE
 
-/obj/item/clothing/gloves/fingerless/pugilist/chaplain/Initialize()
+/obj/item/clothing/gloves/fingerless/pugilist/chaplain/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
@@ -327,7 +327,7 @@
 	var/warcry = "AT"
 	secondary_trait = TRAIT_NOSOFTCRIT //basically extra health
 
-/obj/item/clothing/gloves/fingerless/pugilist/rapid/Initialize()
+/obj/item/clothing/gloves/fingerless/pugilist/rapid/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, GLOVE_TRAIT)
 
@@ -620,3 +620,9 @@
 	cold_protection = HANDS
 	heat_protection = HANDS
 	armor = list("melee" = 15, "bullet" = 5, "laser" = 5, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 15, "acid" = 0)
+
+/obj/item/clothing/gloves/hasie
+	name = "Hasie fingerless gloves"
+	desc = "Fashioned from flexible, creamy white leather, one of these gloves has been dyed red. This duality provides the perfect asymmetric flair when paired with the matching Hasie skirt."
+	icon_state = "hasie"
+	fingerprint_chance = 100

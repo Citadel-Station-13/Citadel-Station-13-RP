@@ -1,5 +1,5 @@
 /datum/species/human/gravworlder
-	name = "grav-adapted Human"
+	name = SPECIES_HUMAN_GRAV
 	name_plural = "grav-adapted Humans"
 	blurb = "Heavier and stronger than a baseline human, gravity-adapted people have \
 	thick radiation-resistant skin with a high lead content, denser bones, and recessed \
@@ -39,15 +39,15 @@
 	flags = NO_MINOR_CUT
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
 	icobase = 'icons/mob/human_races/subspecies/r_gravworlder.dmi'
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
 
 /datum/species/human/spacer
-	name = "space-adapted Human"
+	name = SPECIES_HUMAN_SPACER
 	name_plural = "space-adapted Humans"
 	blurb = "Lithe and frail, these sickly folk were engineered for work in environments that \
 	lack both light and atmosphere. As such, they're quite resistant to asphyxiation as well as \
@@ -84,13 +84,13 @@
 	color_mult = 1
 	icobase = 'icons/mob/human_races/subspecies/r_spacer.dmi'
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
 
 
 /datum/species/human/vatgrown
 	name = SPECIES_HUMAN_VATBORN
-	name_plural = "Vatborn"
+	name_plural = SPECIES_HUMAN_VATBORN
 	blurb = "With cloning on the forefront of human scientific advancement, cheap mass production \
 	of bodies is a very real and rather ethically grey industry. Vat-grown or Vatborn humans tend to be \
 	paler than baseline, with no appendix and fewer inherited genetic disabilities, but a more aggressive metabolism."
@@ -119,7 +119,7 @@
 	//icobase = 'icons/mob/human_races/subspecies/r_vatgrown.dmi'
 	//Icon base needs Greyscaleing
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
 
 /*

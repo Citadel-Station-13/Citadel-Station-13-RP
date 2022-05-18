@@ -82,6 +82,6 @@
 	output.assembly = src
 
 /obj/item/electronic_assembly/device/check_interactivity(mob/user)
-	if(!CanInteract(user, state = deep_inventory_state))
+	if(!CanInteract(user, state = GLOB.deep_inventory_state))
 		return 0
 	return 1

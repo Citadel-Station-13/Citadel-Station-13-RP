@@ -10,7 +10,10 @@
 	icon_state = "healthhud"
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)
+
+/obj/item/clothing/glasses/hud/health/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(slot_glasses))
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "Prescription Health Scanner HUD"
@@ -25,7 +28,10 @@
 	icon_state = "securityhud"
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
-	enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM)
+
+/obj/item/clothing/glasses/hud/security/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "Prescription Security HUD"
@@ -56,8 +62,12 @@
 	var/datum/tgui_module/tgarscreen
 	var/tgarscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED,VIS_CH_BACKUP)
+	enables_planes = list(VIS_AUGMENTED)
 	plane_slots = list(slot_glasses)
+
+/obj/item/clothing/glasses/omnihud/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB), list(slot_glasses))
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
@@ -128,7 +138,11 @@
 	action_button_name = "AR Console (Crew Monitor)"
 	prescription = 1
 	tgarscreen_path = /datum/tgui_module/crew_monitor/glasses
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_AUGMENTED)
+	enables_planes = list(VIS_AUGMENTED)
+
+/obj/item/clothing/glasses/omnihud/med/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB, DATA_HUD_MEDICAL), list(slot_glasses))
 
 /obj/item/clothing/glasses/omnihud/med/ar_interact(var/mob/living/carbon/human/user)
 	if(tgarscreen)
@@ -144,7 +158,12 @@
 	prescription = 1
 	action_button_name = "AR Console (Security Alerts)"
 	arscreen_path = /datum/nano_module/alarm_monitor/security
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_WANTED,VIS_AUGMENTED)
+	enables_planes = list(VIS_AUGMENTED)
+
+
+/obj/item/clothing/glasses/omnihud/sec/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(slot_glasses))
 
 /obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
 	if(arscreen)
@@ -224,7 +243,7 @@
 	icon_state = "pf_goggles"
 	prescription = 1
 	action_button_name = "Toggle Zoom"
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED)
+	enables_planes = list(VIS_AUGMENTED)
 
 /obj/item/clothing/glasses/omnihud/exp/ui_action_click()
 	zoom(wornslot = slot_glasses)
@@ -236,7 +255,11 @@
 	mode = "best"
 	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_CH_WANTED, VIS_AUGMENTED)
+	enables_planes = list(VIS_AUGMENTED)
+
+/obj/item/clothing/glasses/omnihud/all/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(slot_glasses))
 
 /obj/item/clothing/glasses/hud/security/eyepatch
     name = "Security Hudpatch"
@@ -244,7 +267,7 @@
     icon_state = "hudpatch"
     item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
     body_parts_covered = 0
-    enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM, VIS_AUGMENTED)
+    enables_planes = list(VIS_AUGMENTED)
     var/eye = null
 
 /obj/item/clothing/glasses/hud/security/eyepatch/verb/switcheye()
@@ -302,4 +325,4 @@
 	icon_state = "medpatch"
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP, VIS_AUGMENTED)
+	enables_planes = list(VIS_AUGMENTED)

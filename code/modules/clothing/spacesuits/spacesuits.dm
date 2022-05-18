@@ -7,7 +7,7 @@
 	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
+	clothing_flags = THICKMATERIAL | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	permeability_coefficient = 0.01
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
@@ -71,7 +71,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
 	slowdown = 1

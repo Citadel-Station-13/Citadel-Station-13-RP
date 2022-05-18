@@ -376,3 +376,16 @@
 	path = /obj/item/clothing/accessory/buttonup/untucked
 	slot = slot_tie
 	sort_category = "Accessories"
+
+/datum/gear/accessory/antediluvian
+	name = "Antediluvian Loincloth"
+	path = /obj/item/clothing/accessory/antediluvian
+	cost = 1
+
+/datum/gear/accessory/antediluvian_gloves
+	name = "Antediluvian Bracers"
+	path = /obj/item/clothing/accessory/antediluvian_gloves
+
+/datum/gear/accessory/mekkyaku
+	name = "Mekkyaku Turtleneck"
+	path = /obj/item/clothing/accessory/mekkyaku

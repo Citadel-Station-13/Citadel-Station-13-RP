@@ -13,7 +13,7 @@
 	throw_range = 9
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 80)
+	matter = list(MAT_STEEL = 80)
 	attack_verb = list("pinched", "nipped")
 	hitsound = 'sound/items/wirecutter.ogg'
 	usesound = 'sound/items/wirecutter.ogg'
@@ -26,9 +26,20 @@
 
 /obj/item/tool/wirecutters/Initialize(mapload)
 	. = ..()
-	if(random_color && prob(50))
-		icon_state = "cutters-y"
-		item_state = "cutters_yellow"
+	if(random_color)
+		switch(pick("red","yellow","green","blue"))
+			if ("red")
+				icon_state = "cutters"
+				item_state = "cutters"
+			if ("yellow")
+				icon_state = "cutters_yellow"
+				item_state = "cutters_yellow"
+			if ("green")
+				icon_state = "cutters_green"
+				item_state = "cutters_green"
+			if ("blue")
+				icon_state = "cutters_blue"
+				item_state = "cutters_blue"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C as mob, mob/user as mob)
 	if(istype(C) && user.a_intent == INTENT_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
@@ -38,7 +49,7 @@
 		C.handcuffed = null
 		if(C.buckled && C.buckled.buckle_require_restraints)
 			C.buckled.unbuckle_mob()
-		C.update_inv_handcuffed()
+		C.update_handcuffed()
 		return
 	else
 		..()

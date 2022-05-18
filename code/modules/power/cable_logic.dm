@@ -264,8 +264,8 @@
 	else
 		pn_output.draw_power(LOGIC_HIGH)		//Otherwise increase the load to 5
 
-#define RELAY_POWER_TRANSFER 2000	//How much power a relay transfers through.
-
+///How much power a relay transfers through.
+#define RELAY_POWER_TRANSFER 2000
 //RELAY - input1 governs the flow from input2 to output
 /obj/machinery/logic/twoinput/relay/process(delta_time)
 	if(!..())	//Parent proc checks if input1, input2 and output exist.

@@ -94,12 +94,10 @@
 		return !density
 	return TRUE
 
-/obj/machinery/door/window/CanZASPass(turf/T, is_zone)
-	if(get_dir(T, loc) == turn(dir, 180))
-		if(is_zone) // No merging allowed.
-			return ATMOS_PASS_NO
-		return ..() // Air can flow if open (density == FALSE).
-	return ATMOS_PASS_YES // Windoors don't block if not facing the right way.
+/obj/machinery/door/window/CanAtmosPass(turf/T, d)
+	if(d != dir)
+		return ATMOS_PASS_NOT_BLOCKED
+	return density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_ZONE_BLOCKED
 
 /obj/machinery/door/window/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
@@ -268,7 +266,7 @@
 			return
 
 
-	src.add_fingerprint(user)
+	src.add_fingerprint(user, 0, I)
 
 	if (src.allowed(user))
 		if (src.density)

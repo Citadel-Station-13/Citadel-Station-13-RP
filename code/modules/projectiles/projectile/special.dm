@@ -377,3 +377,14 @@
 	check_armour = "bullet"
 	hitsound = 'sound/effects/splat.ogg'
 	icon_state = "organic"
+
+/obj/item/projectile/bullet/organic/wax
+	damage_type = HALLOSS
+	color = "#E6E685"
+	icon_state = "organic"
+
+/obj/item/projectile/bullet/organic/stinger
+	damage = 15
+	damage_type = TOX
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	icon_state = "SpearFlight"

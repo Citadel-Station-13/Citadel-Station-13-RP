@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/machinery/computer/prisoner
 	name = "prisoner management console"
@@ -7,93 +6,89 @@
 	light_color = "#a91515"
 	req_access = list(access_armory)
 	circuit = /obj/item/circuitboard/prisoner
-	var/id = 0.0
+	var/id = 0
 	var/temp = null
 	var/status = 0
-	var/timeleft = 60
-	var/stop = 0.0
+	var/timeleft = 6 SECONDS
+	var/stop = 0
 	var/screen = 0 // 0 - No Access Denied, 1 - Access allowed
 
 /obj/machinery/computer/prisoner/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/prisoner/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/prisoner/attack_hand(mob/user)
 	if(..())
 		return
-	user.set_machine(src)
-	var/dat
-	dat += "<B>Prisoner Implant Manager System</B><BR>"
-	if(screen == 0)
-		dat += "<HR><A href='?src=\ref[src];lock=1'>Unlock Console</A>"
-	else if(screen == 1)
-		dat += "<HR>Chemical Implants<BR>"
-		var/turf/Tr = null
+	ui_interact(user)
+
+/obj/machinery/computer/prisoner/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PrisonerManagement", name)
+		ui.open()
+
+/obj/machinery/computer/prisoner/ui_data(mob/user)
+	var/list/chemImplants = list()
+	var/list/trackImplants = list()
+	if(screen)
 		for(var/obj/item/implant/chem/C in GLOB.all_chem_implants)
-			Tr = get_turf(C)
-			if(!Tr)	continue//Out of range
-			if(!C.implanted) continue
-			dat += "[C.imp_in.name] | Remaining Units: [C.reagents.total_volume] | Inject: "
-			dat += "<A href='?src=\ref[src];inject1=\ref[C]'>(<font color=red>(1)</font>)</A>"
-			dat += "<A href='?src=\ref[src];inject5=\ref[C]'>(<font color=red>(5)</font>)</A>"
-			dat += "<A href='?src=\ref[src];inject10=\ref[C]'>(<font color=red>(10)</font>)</A><BR>"
-			dat += "********************************<BR>"
-		dat += "<HR>Tracking Implants<BR>"
-		for(var/obj/item/implant/tracking/T in GLOB.all_tracking_implants)
-			Tr = get_turf(T)
-			if(!Tr) continue//Out of range
-			if(!T.implanted) continue
+			var/turf/T = get_turf(C)
+			if(!T)
+				continue
+			if(!C.implanted)
+				continue
+			chemImplants.Add(list(list(
+				"host" = C.imp_in,
+				"units" = C.reagents.total_volume,
+				"ref" = "\ref[C]"
+			)))
+		for(var/obj/item/implant/tracking/track in GLOB.all_tracking_implants)
+			var/turf/T = get_turf(track)
+			if(!T)
+				continue
+			if(!track.implanted)
+				continue
 			var/loc_display = "Unknown"
-			var/mob/living/carbon/M = T.imp_in
-			if((M.z in GLOB.using_map.station_levels) && !istype(M.loc, /turf/space))
-				var/turf/mob_loc = get_turf(M)
-				loc_display = mob_loc.loc
-			if(T.malfunction)
+			var/mob/living/L = track.imp_in
+			if((get_z(L) in GLOB.using_map.station_levels) && !istype(L.loc, /turf/space))
+				loc_display = T.loc
+			if(track.malfunction)
 				loc_display = pick(teleportlocs)
-			dat += "ID: [T.id] | Location: [loc_display]<BR>"
-			dat += "<A href='?src=\ref[src];warn=\ref[T]'>(<font color=red><i>Message Holder</i></font>)</A> |<BR>"
-			dat += "********************************<BR>"
-		dat += "<HR><A href='?src=\ref[src];lock=1'>Lock Console</A>"
+			trackImplants.Add(list(list(
+				"host" = L,
+				"ref" = "\ref[track]",
+				"id" = "[track.id]",
+				"loc" = "[loc_display]",
+			)))
 
-	user << browse(dat, "window=computer;size=400x500")
-	onclose(user, "computer")
-	return
+	return list("locked" = !screen, "chemImplants" = chemImplants, "trackImplants" = trackImplants)
 
 
-/obj/machinery/computer/prisoner/process()
-	if(!..())
-		src.updateDialog()
-
-/obj/machinery/computer/prisoner/Topic(href, href_list)
+/obj/machinery/computer/prisoner/ui_act(action, list/params)
 	if(..())
-		return
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)) || IsAdminGhost(usr))
-		usr.set_machine(src)
+		return TRUE
 
-		if(href_list["inject1"])
-			var/obj/item/implant/I = locate(href_list["inject1"])
-			if(I)	I.activate(1)
+	switch(action)
+		if("inject")
+			var/obj/item/implant/I = locate(params["imp"])
+			if(I)
+				I.activate(clamp(params["val"], 0, 10))
+			. = TRUE
 
-		else if(href_list["inject5"])
-			var/obj/item/implant/I = locate(href_list["inject5"])
-			if(I)	I.activate(5)
-
-		else if(href_list["inject10"])
-			var/obj/item/implant/I = locate(href_list["inject10"])
-			if(I)	I.activate(10)
-
-		else if(href_list["lock"])
-			if(src.allowed(usr))
+		if("lock")
+			if(allowed(usr))
 				screen = !screen
 			else
 				to_chat(usr, "Unauthorized Access.")
+			. = TRUE
 
-		else if(href_list["warn"])
-			var/warning = sanitize(input(usr,"Message:","Enter your message here!",""))
-			if(!warning) return
-			var/obj/item/implant/I = locate(href_list["warn"])
-			if((I)&&(I.imp_in))
-				var/mob/living/carbon/R = I.imp_in
-				to_chat(R, "<span class='notice'>You hear a voice in your head saying: '[warning]'</span>")
+		if("warn")
+			var/warning = sanitize(input(usr, "Message:", "Enter your message here!", ""))
+			if(!warning)
+				return
+			var/obj/item/implant/I = locate(params["imp"])
+			if(I && I.imp_in)
+				to_chat(I.imp_in, SPAN_NOTICE("You hear a voice in your head saying: '[warning]'"))
+			. = TRUE
 
-		src.add_fingerprint(usr)
-	src.updateUsrDialog()
+	add_fingerprint(usr)

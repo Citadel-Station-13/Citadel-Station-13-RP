@@ -14,20 +14,20 @@ var/global/list/limb_icon_cache = list()
 	s_col = null
 	h_col = null
 	if(robotic >= ORGAN_ROBOT)
-		var/datum/robolimb/franchise = all_robolimbs[model]
+		var/datum/robolimb/franchise = GLOB.all_robolimbs[model]
 		if(!(franchise && franchise.skin_tone) && !(franchise && franchise.skin_color))
 			if(human.synth_color)
 				s_col = list(human.r_synth, human.g_synth, human.b_synth)
 			return
-	if(robotic && !(human.species.appearance_flags & BASE_SKIN_COLOR))
-		var/datum/robolimb/franchise = all_robolimbs[model]
+	if(robotic && !(human.species.species_appearance_flags & BASE_SKIN_COLOR))
+		var/datum/robolimb/franchise = GLOB.all_robolimbs[model]
 		if(!(franchise && franchise.skin_tone))
 			return
 	if(species && human.species && species.name != human.species.name)
 		return
-	if(!isnull(human.s_tone) && (human.species.appearance_flags & HAS_SKIN_TONE))
+	if(!isnull(human.s_tone) && (human.species.species_appearance_flags & HAS_SKIN_TONE))
 		s_tone = human.s_tone
-	if(human.species.appearance_flags & HAS_SKIN_COLOR)
+	if(human.species.species_appearance_flags & HAS_SKIN_COLOR)
 		s_col = list(human.r_skin, human.g_skin, human.b_skin)
 	h_col = list(human.r_hair, human.g_hair, human.b_hair)
 
@@ -36,12 +36,12 @@ var/global/list/limb_icon_cache = list()
 	s_col = null
 	h_col = null
 	if(robotic >= ORGAN_ROBOT)
-		var/datum/robolimb/franchise = all_robolimbs[model]
+		var/datum/robolimb/franchise = GLOB.all_robolimbs[model]
 		if(!(franchise && franchise.skin_tone) && !(franchise && franchise.skin_color))
 			return
-	if(!isnull(dna.GetUIValue(DNA_UI_SKIN_TONE)) && (species.appearance_flags & HAS_SKIN_TONE))
+	if(!isnull(dna.GetUIValue(DNA_UI_SKIN_TONE)) && (species.species_appearance_flags & HAS_SKIN_TONE))
 		s_tone = dna.GetUIValue(DNA_UI_SKIN_TONE)
-	if(species.appearance_flags & HAS_SKIN_COLOR)
+	if(species.species_appearance_flags & HAS_SKIN_COLOR)
 		s_col = list(dna.GetUIValue(DNA_UI_SKIN_R), dna.GetUIValue(DNA_UI_SKIN_G), dna.GetUIValue(DNA_UI_SKIN_B))
 	h_col = list(dna.GetUIValue(DNA_UI_HAIR_R),dna.GetUIValue(DNA_UI_HAIR_G),dna.GetUIValue(DNA_UI_HAIR_B))
 
@@ -57,12 +57,15 @@ var/global/list/limb_icon_cache = list()
 	cut_overlays()
 
 	//Every 'addon' below requires information from species
-	if(!owner || !owner.species)
+	if(!iscarbon(owner) || !owner.species)
 		return
+
+	///? Holds eye icon to render over markings later.
+	var/icon/eyecon
 
 	//Eye color/icon
 	var/should_have_eyes = owner.should_have_organ(O_EYES)
-	var/has_eye_color = owner.species.appearance_flags & HAS_EYE_COLOR
+	var/has_eye_color = owner.species.species_appearance_flags & HAS_EYE_COLOR
 	if((should_have_eyes || has_eye_color) && eye_icon)
 		var/obj/item/organ/internal/eyes/eyes = owner.internal_organs_by_name[O_EYES]
 		var/icon/eyes_icon = new/icon(eye_icon_location, eye_icon)
@@ -70,18 +73,25 @@ var/global/list/limb_icon_cache = list()
 		if(should_have_eyes)
 			//And we have them
 			if(eyes)
-				eyes_icon.Blend(rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3]), ICON_ADD)
+				if(has_eye_color)
+					eyes_icon.Blend(rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3]), ICON_ADD)
 			//They're gone!
 			else
 				eyes_icon.Blend(rgb(128,0,0), ICON_ADD)
 		//We have weird other-sorts of eyes (as we're not supposed to have eye organ, but we have HAS_EYE_COLOR species)
 		else
 			eyes_icon.Blend(rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes), ICON_ADD)
-		add_overlay(eyes_icon)
-		mob_icon.Blend(eyes_icon, ICON_OVERLAY)
+
+		//Allow rendering of eyes over markings.
+		if(eyes_over_markings)
+			eyecon = eyes_icon
+		else
+			add_overlay(eyes_icon)
+			mob_icon.Blend(eyes_icon, ICON_OVERLAY)
+			icon_cache_key += "[eye_icon]"
 
 	//Lip color/icon
-	if(owner.lip_style && (species && (species.appearance_flags & HAS_LIPS)))
+	if(owner.lip_style && (species && (species.species_appearance_flags & HAS_LIPS)))
 		var/icon/lip_icon = new/icon('icons/mob/human_face.dmi', "lips_[owner.lip_style]_s")
 		add_overlay(lip_icon)
 		mob_icon.Blend(lip_icon, ICON_OVERLAY)
@@ -95,6 +105,12 @@ var/global/list/limb_icon_cache = list()
 		mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
 		icon_cache_key += "[M][markings[M]["color"]]"
 
+	//Toggle to render eyes above markings.
+	if(eyes_over_markings && eyecon)
+		add_overlay(eyecon)
+		mob_icon.Blend(eyecon, ICON_OVERLAY)
+		icon_cache_key += "[eye_icon]"
+
 	add_overlay(get_hair_icon())
 
 	return mob_icon
@@ -107,7 +123,7 @@ var/global/list/limb_icon_cache = list()
 		if(facial_hair_style && facial_hair_style.species_allowed && (species.get_bodytype(owner) in facial_hair_style.species_allowed))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
-				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), ICON_MULTIPLY) // VOREStation edit
+				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), facial_hair_style.color_blend_mode)
 			res.add_overlay(facial_s)
 
 	//Head hair
@@ -133,7 +149,10 @@ var/global/list/limb_icon_cache = list()
 	if(owner && owner.gender == MALE)
 		gender = "m"
 
-	icon_cache_key = "[icon_name]_[species ? species.get_bodytype() : SPECIES_HUMAN]" //VOREStation Edit
+	if(!force_icon_key)
+		icon_cache_key = "[icon_name]_[species ? species.get_bodytype() : SPECIES_HUMAN]"
+	else
+		icon_cache_key = "[icon_name]_[force_icon_key]"
 
 	if(force_icon)
 		mob_icon = new /icon(force_icon, "[icon_name][gendered_icon ? "_[gender]" : ""]")
@@ -274,7 +293,7 @@ var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F
 			var/b = 0.11 * species.health_hud_intensity
 			temp.color = list(r, r, r, g, g, g, b, b, b)
 		else if(model)
-			var/datum/robolimb/R = all_robolimbs[model]
+			var/datum/robolimb/R = GLOB.all_robolimbs[model]
 			if(istype(R))
 				var/r = 0.30 * R.health_hud_intensity
 				var/g = 0.59 * R.health_hud_intensity

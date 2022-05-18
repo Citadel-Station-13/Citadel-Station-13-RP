@@ -58,7 +58,7 @@
 				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
 				return 0
 		else if(ismob(src)) //VOREStation Edit Start. Are they a mob, and are they currently flying??
-			var/mob/H = src
+			var/mob/living/H = src
 			if(H.flying)
 				if(H.incapacitated(INCAPACITATION_ALL))
 					to_chat(src, "<span class='notice'>You can't fly in your current state.</span>")
@@ -350,7 +350,7 @@
 	return FALSE
 
 /atom/movable/proc/find_fall_target(var/turf/oldloc, var/turf/landing)
-	if(isopenspace(oldloc))
+	if(isopenturf(oldloc))
 		oldloc.visible_message("\The [src] falls down through \the [oldloc]!", "You hear something falling through the air.")
 
 	// If the turf has density, we give it first dibs

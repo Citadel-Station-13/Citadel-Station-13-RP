@@ -355,7 +355,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "ak" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -379,7 +379,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "am" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -527,11 +527,11 @@
 	pixel_x = -5;
 	pixel_y = -26
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "aE" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380
 	},
@@ -545,8 +545,8 @@
 	frequency = 1380;
 	pixel_y = 25
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -664,7 +664,7 @@
 	pixel_x = 5;
 	pixel_y = 26
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "aL" = (
@@ -682,7 +682,7 @@
 	pixel_x = -5;
 	pixel_y = 26
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "aM" = (
@@ -1529,7 +1529,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bt" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380
 	},
@@ -1548,8 +1548,8 @@
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/tabiranth,
 /obj/effect/overmap/visitable/ship/landable/tabiranth,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/handrail{
 	dir = 1
 	},
@@ -1693,7 +1693,7 @@
 /obj/machinery/door/airlock/alien/blue/locked{
 	req_one_access = list(101)
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;

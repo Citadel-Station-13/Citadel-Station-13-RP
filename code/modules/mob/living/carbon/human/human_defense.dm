@@ -68,10 +68,10 @@ emp_act
 
 				drop_from_inventory(c_hand)
 				if (affected.robotic >= ORGAN_ROBOT)
-					emote("me", 1, "drops what they were holding, their [affected.name] malfunctioning!")
+					INVOKE_ASYNC(src, /mob/proc/custom_emote, 1, "drops what they were holding, their [affected.name] malfunctioning!")
 				else
 					var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-					emote("me", 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
+					INVOKE_ASYNC(src, /mob/proc/custom_emote, 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
 
 	..(stun_amount, agony_amount, def_zone)
 
@@ -196,7 +196,7 @@ emp_act
 	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
-		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.item_flags & FLEXIBLEMATERIAL))
+		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL))
 			return gear
 	return null
 
@@ -204,7 +204,7 @@ emp_act
 	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
-		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.item_flags & FLEXIBLEMATERIAL) && !(gear.item_flags & ALLOW_SURVIVALFOOD))
+		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL) && !(gear.clothing_flags & ALLOW_SURVIVALFOOD))
 			return gear
 	return null
 
@@ -605,12 +605,17 @@ emp_act
 	if(!(G && G.assailant == user && G.affecting == src)) //check that we still have a grab
 		return 0
 
-	user.visible_message("<span class='danger'>\The [user] twists \the [W] around inside [src]'s [chest]!</span>")
-
-	if(prob(organ_chance))
-		var/obj/item/organ/internal/selected_organ = pick(chest.internal_organs)
-		selected_organ.damage = max(selected_organ.damage, damage * 0.5)
+	user.visible_message("<span class='danger'>\The x[user] twists \the [W] around inside [src]'s [chest]!</span>")
+	var/obj/item/organ/internal/selected_organ = pick(chest.internal_organs)
+	if(istype(W,/obj/item/material/knife/stiletto))
+		selected_organ.damage = max(selected_organ.damage, damage * 5)
 		G.last_action = world.time
 		flick(G.hud.icon_state, G.hud)
-
+		add_attack_logs(user,src,"stiletto stabbed")
+	else
+		if(prob(organ_chance))
+			selected_organ.damage = max(selected_organ.damage, damage * 0.5)
+			G.last_action = world.time
+			flick(G.hud.icon_state, G.hud)
+			add_attack_logs(user,src,"shanked")
 	return 1

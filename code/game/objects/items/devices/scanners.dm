@@ -1,4 +1,5 @@
-#define DEFIB_TIME_LIMIT (10 MINUTES)	// Past this many seconds, defib is useless.
+/// Past this many seconds, defib is useless.
+#define DEFIB_TIME_LIMIT (10 MINUTES)
 /*
 CONTAINS:
 T-RAY
@@ -9,7 +10,6 @@ MASS SPECTROMETER
 REAGENT SCANNER
 HALOGEN COUNTER	- Radcount on mobs
 */
-
 
 /obj/item/healthanalyzer
 	name = "health analyzer"
@@ -22,7 +22,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(DEFAULT_WALL_MATERIAL = 200)
+	matter = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 1)
 	var/mode = 1;
 	var/advscan = 0
@@ -273,10 +273,12 @@ HALOGEN COUNTER	- Radcount on mobs
 			var/blood_volume = H.vessel.get_reagent_amount("blood")
 			var/blood_percent =  round((blood_volume / H.species.blood_volume)*100)
 			var/blood_type = H.dna.b_type
-			if(blood_percent <= BLOOD_VOLUME_BAD)
-				dat += "<span class='danger'><i>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i></span><br>"
-			else if(blood_percent <= BLOOD_VOLUME_SAFE)
-				dat += "<span class='danger'>Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]</span><br>"
+			if(blood_volume <= H.species.blood_volume*H.species.blood_level_danger)
+				dat += SPAN_DANGER("<i>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i><br>")
+			else if(blood_volume <= H.species.blood_volume*H.species.blood_level_warning)
+				dat += SPAN_DANGER("<i>Warning: Blood Level VERY LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i><br>")
+			else if(blood_volume <= H.species.blood_volume*H.species.blood_level_safe)
+				dat += SPAN_DANGER("Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]<br>")
 			else
 				dat += "<span class='notice'>Blood Level Normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]</span><br>"
 		dat += "<span class='notice'>Subject's pulse: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</font></span>"
@@ -303,6 +305,11 @@ HALOGEN COUNTER	- Radcount on mobs
 			to_chat(usr, "The scanner will now perform an advanced analysis.")
 		if(0)
 			to_chat(usr, "The scanner will now perform a basic analysis.")
+
+/obj/item/healthanalyzer/apidean
+	name = "\improper Apidean health analyzer"
+	desc = "This medical scanner feels oddly warm and has two insectiod antennae."
+	icon_state = "apidae-health"
 
 /obj/item/healthanalyzer/improved //reports bone fractures, IB, quantity of beneficial reagents in stomach; also regular health analyzer stuff
 	name = "improved health analyzer"
@@ -337,9 +344,15 @@ HALOGEN COUNTER	- Radcount on mobs
 	throw_speed = 4
 	throw_range = 20
 
-	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
+	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
+
+/obj/item/analyzer/apidean
+	name = "\improper Apidean analyzer"
+	desc = "This analyzer has a strange, soft exterior and seems to faintly breathe."
+	icon_state = "apidae-analyzer"
+
 /obj/item/analyzer/longrange
 	name = "long-range analyzer"
 	desc = "A hand-held environmental scanner which reports current gas levels. This one uses bluespace technology."
@@ -351,7 +364,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	throwforce = 5
 	throw_speed = 4
 	throw_range = 20
-	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
+	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 
 /obj/item/analyzer/atmosanalyze(var/mob/user)
@@ -396,7 +409,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	throw_speed = 4
 	throw_range = 20
 
-	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
+	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	var/details = 0
@@ -457,7 +470,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	throwforce = 5
 	throw_speed = 4
 	throw_range = 20
-	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
+	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	var/details = 0
@@ -471,22 +484,27 @@ HALOGEN COUNTER	- Radcount on mobs
 
 	if(!isnull(O.reagents))
 		if(!(O.flags & OPENCONTAINER)) // The idea is that the scanner has to touch the reagents somehow. This is done to prevent cheesing unidentified autoinjectors.
-			to_chat(user, span("warning", "\The [O] is sealed, and cannot be scanned by \the [src] until unsealed."))
+			to_chat(user, SPAN_WARNING( "\The [O] is sealed, and cannot be scanned by \the [src] until unsealed."))
 			return
 
 		var/dat = ""
 		if(O.reagents.reagent_list.len > 0)
 			var/one_percent = O.reagents.total_volume / 100
 			for (var/datum/reagent/R in O.reagents.reagent_list)
-				dat += "\n \t " + span("notice", "[R][details ? ": [R.volume / one_percent]%" : ""]")
+				dat += "\n \t " + SPAN_NOTICE("[R][details ? ": [R.volume / one_percent]%" : ""]")
 		if(dat)
-			to_chat(user, span("notice", "Chemicals found: [dat]"))
+			to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
 		else
-			to_chat(user, span("notice", "No active chemical agents found in [O]."))
+			to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
 	else
-		to_chat(user, span("notice", "No significant chemical agents found in [O]."))
+		to_chat(user, SPAN_NOTICE("No significant chemical agents found in [O]."))
 
 	return
+
+/obj/item/reagent_scanner/apidean
+	name = "\improper Apidean taster"
+	desc = "This reagent scanner appears to be an artificially created lifeform. Often used by Apidaen guards to test food and drinks during diplomatic meetings."
+	icon_state = "apidae-reagent"
 
 /obj/item/reagent_scanner/adv
 	name = "advanced reagent scanner"
@@ -504,7 +522,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	throwforce = 0
 	throw_speed = 3
 	throw_range = 7
-	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
+	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 /obj/item/slime_scanner/attack(mob/living/M as mob, mob/living/user as mob)
 	if(!istype(M, /mob/living/simple_mob/slime/xenobio))

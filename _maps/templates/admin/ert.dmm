@@ -9,13 +9,13 @@
 /area/ship/ert/dock_port)
 "ae" = (
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/airlock_sensor/airlock_exterior{
 	dir = 1;
 	pixel_x = 24;
 	pixel_y = 11
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "af" = (
@@ -36,10 +36,10 @@
 /turf/simulated/wall/rshull,
 /area/ship/ert/dock_port)
 "al" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -52,7 +52,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = 24
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -196,10 +196,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "bJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -217,7 +217,7 @@
 /area/ship/ert/atmos)
 "ch" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
 "ci" = (
@@ -313,10 +313,10 @@
 /turf/simulated/wall/shull,
 /area/ship/ert/dock_port)
 "dg" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -478,13 +478,13 @@
 /area/ship/ert/dock_port)
 "dY" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "ee" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "ef" = (
@@ -570,14 +570,14 @@
 /area/ship/ert/eng_storage)
 "eP" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/item/storage/box/cdeathalarm_kit,
 /obj/item/storage/box/cdeathalarm_kit,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "eX" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/storage/box/backup_kit,
 /obj/item/storage/box/backup_kit,
 /turf/simulated/floor/tiled/techfloor,
@@ -896,7 +896,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = 21
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
@@ -946,7 +946,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/dock_port)
 "hV" = (
@@ -998,7 +998,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/dock_port)
 "ip" = (
@@ -1037,7 +1037,7 @@
 /obj/item/healthanalyzer/advanced,
 /obj/item/healthanalyzer/advanced,
 /obj/structure/table/rack/steel,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline,
@@ -1081,18 +1081,18 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
 "jz" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/barracks)
 "jA" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/teleporter)
 "jD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/barracks)
 "jI" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/teleporter)
 "jK" = (
@@ -1106,11 +1106,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
 "jU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
 "jY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
 "kd" = (
@@ -1164,7 +1164,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
 "km" = (
@@ -1293,7 +1293,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "lq" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning,
@@ -1326,8 +1326,8 @@
 	pixel_x = 24;
 	pixel_y = -11
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
 "lz" = (
@@ -1427,19 +1427,19 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
 "mj" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Commando"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "mq" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Commando"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1608,7 +1608,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = -23
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
@@ -1783,7 +1783,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/dock_star)
 "nM" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1812,14 +1812,14 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 4
 	},
 /turf/space,
 /area/ship/ert/engine)
 "nY" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2024,11 +2024,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "pf" = (
-/obj/effect/landmark/map_data/ert_ship,
+/atom/movable/landmark/map_data/ert_ship,
 /turf/space,
 /area/space)
 "pg" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Commando"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2121,7 +2121,7 @@
 /area/ship/ert/med)
 "pA" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/hallways_aft)
 "pG" = (
@@ -2556,7 +2556,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -2664,7 +2664,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/dock_star)
 "tx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -2675,7 +2675,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -2753,7 +2753,7 @@
 /obj/item/healthanalyzer/advanced,
 /obj/item/healthanalyzer/advanced,
 /obj/structure/table/rack/steel,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline,
@@ -2811,14 +2811,14 @@
 /area/ship/ert/dock_star)
 "ux" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engine)
 "uE" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/sign/vacuum{
 	pixel_x = -32
@@ -2942,7 +2942,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/med_surg)
 "vQ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning,
@@ -2990,7 +2990,7 @@
 /area/ship/ert/teleporter)
 "wo" = (
 /obj/machinery/light,
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/teleporter)
@@ -3033,7 +3033,7 @@
 /turf/simulated/wall/shull,
 /area/ship/ert/hallways)
 "wX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3178,7 +3178,7 @@
 /area/ship/ert/barracks)
 "xC" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
@@ -3209,7 +3209,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
 "xU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/structure/cable/yellow{
@@ -3282,12 +3282,12 @@
 /area/ship/ert/hangar)
 "yl" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/hallways_aft)
 "yo" = (
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
 "yp" = (
@@ -3331,7 +3331,7 @@
 /area/space)
 "yB" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -3355,7 +3355,7 @@
 /area/ship/ert/hangar)
 "yG" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3460,7 +3460,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -3506,7 +3506,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/bridge)
 "zP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
 "zT" = (
@@ -3541,7 +3541,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/table/woodentable,
 /obj/item/implantpad,
 /obj/item/implanter,
@@ -3882,7 +3882,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3909,7 +3909,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
 "CT" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4028,13 +4028,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/med)
 "DN" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 4
 	},
 /turf/space,
 /area/ship/ert/engine)
 "DQ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4365,7 +4365,7 @@
 /area/ship/ert/hallways_aft)
 "FX" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/item/cell/device/weapon,
@@ -4411,7 +4411,7 @@
 "Ga" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4874,7 +4874,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways)
 "Js" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4944,7 +4944,7 @@
 /area/shuttle/ert_ship_boat)
 "JW" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 4
 	},
 /turf/space,
@@ -5118,7 +5118,7 @@
 /turf/simulated/wall/shull,
 /area/ship/ert/med)
 "KJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/railing/grey{
@@ -5287,20 +5287,20 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_st)
 "LH" = (
-/obj/machinery/shield_gen/external,
 /obj/effect/floor_decal/corner/white,
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/shield_gen,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
 "LJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
 "LR" = (
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "LV" = (
@@ -5310,7 +5310,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/button/remote/blast_door{
 	description_fluff = "\\(OOC) DO NOT TOUCH THIS BUTTON WITHOUT THE EXPLICIT PERMISSION OF AN ADMINISTRATOR.";
 	dir = 1;
@@ -5565,7 +5565,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump/fuel/on,
+/obj/machinery/atmospherics/component/binary/pump/fuel/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engine)
 "NR" = (
@@ -5645,7 +5645,7 @@
 /area/ship/ert/engineering)
 "Of" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5858,7 +5858,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Commando"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -5870,7 +5870,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/shield_gen,
 /obj/structure/cable/yellow{
 	d2 = 8;
 	icon_state = "0-8"
@@ -5878,6 +5877,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
+/obj/machinery/power/shield_generator/charged,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "OX" = (
@@ -6172,7 +6172,7 @@
 /area/ship/ert/engineering)
 "Rh" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
@@ -6222,7 +6222,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_dl)
 "RB" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6280,7 +6280,7 @@
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
 "Sc" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6301,7 +6301,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "Sl" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/structure/railing/grey,
@@ -6430,7 +6430,7 @@
 /area/ship/ert/eng_storage)
 "SI" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
@@ -6636,7 +6636,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_dl)
 "Vm" = (
@@ -6687,7 +6687,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways)
 "VP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -6768,7 +6768,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -6848,7 +6848,7 @@
 	dir = 1
 	},
 /obj/effect/catwalk_plated,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Commando"
 	},
 /turf/simulated/floor/plating,
@@ -6866,7 +6866,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/hallways_aft)
 "Xo" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -6904,7 +6904,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engine)
 "XM" = (
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_x = 24
 	},

@@ -62,10 +62,6 @@
 	name = "\proper space"
 	icon_state = "white"
 
-/turf/simulated/floor/holofloor/space/update_icon()
-	. = ..()
-	add_overlay(SSskybox.dust_cache["[((x + y) ^ ~(x * y) + z) % 25]"])
-
 /turf/simulated/floor/holofloor/reinforced
 	icon = 'icons/turf/flooring/tiles.dmi'
 	initial_flooring = /decl/flooring/reinforced
@@ -383,9 +379,9 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 			return TRUE
 		if(prob(50))
 			I.forceMove(loc)
-			visible_message(span("notice", "Swish! \the [I] lands in \the [src]."), 3)
+			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), 3)
 		else
-			visible_message(span("warning", "\The [I] bounces off of \the [src]'s rim!"), 3)
+			visible_message(SPAN_WARNING( "\The [I] bounces off of \the [src]'s rim!"), 3)
 		return FALSE
 	return ..()
 
@@ -414,7 +410,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 
 /obj/machinery/readybutton/attack_hand(mob/user as mob)
 
-	if(user.stat || stat & (NOPOWER|BROKEN))
+	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
 
@@ -499,3 +495,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 /mob/living/simple_mob/animal/space/carp/holodeck/proc/derez()
 	visible_message("<span class='notice'>\The [src] fades away!</span>")
 	qdel(src)
+
+/obj/item/paper/fluff/holodeck/trek_diploma
+	name = "paper - Starfleet Academy Diploma"
+	info = {"<h2>Starfleet Academy</h2></br><p>Official Diploma</p></br>"}

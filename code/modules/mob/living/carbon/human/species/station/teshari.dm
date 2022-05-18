@@ -5,13 +5,13 @@
 	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \
 	hunting skills that emphasized taking out their prey without themselves getting hit."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/teshari)
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Teshari"
 
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SCHECHI
 	species_language = LANGUAGE_SCHECHI
 
-	min_age = 18
 	max_age = 75
 
 	economic_modifier = 6
@@ -63,7 +63,7 @@
 	ambiguous_genders = TRUE
 
 	spawn_flags	= SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	bump_flag	= MONKEY
 	swap_flags	= MONKEY|SLIME|SIMPLE_ANIMAL
 	push_flags	= MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
@@ -181,8 +181,8 @@
 		return ..()
 
 	// Is there enough air to flap against?
-	var/datum/gas_mixture/environment = landing.return_air()
-	if(!environment || environment.return_pressure() < (ONE_ATMOSPHERE * 0.75))
+	var/pressure = landing.return_pressure()
+	if(pressure < (ONE_ATMOSPHERE * 0.75))
 		if(!silent)
 			to_chat(H, SPAN_WARNING("You spread your wings to slow your fall, but the air is too thin!"))
 		return ..()

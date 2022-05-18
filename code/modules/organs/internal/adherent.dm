@@ -1,11 +1,13 @@
-#define PROTOCOL_ARTICLE "Protocol article [rand(100,999)]-[uppertext(pick(GLOB.full_alphabet))] subsection #[rand(10,99)]"
+
+///Don't ask why it's here, I just know it won't work without it. This is my personnal coconut.jpg - Papalus
+//GLOBAL_LIST_INIT(full_alphabet, list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"))
+//#define PROTOCOL_ARTICLE "Protocol article [rand(100,999)]-[uppertext(pick(GLOB.full_alphabet))] subsection #[rand(10,99)]"
 
 /obj/item/organ/internal/brain/adherent
 	name = "mentality matrix"
 	desc = "The self-contained, self-supporting internal 'brain' of an Adherent unit."
 	icon = 'icons/mob/human_races/adherent/organs.dmi'
 	icon_state = "brain"
-	robotic = ORGAN_ROBOT
 	organ_tag = O_BRAIN
 	robotic = ORGAN_CRYSTAL
 
@@ -44,10 +46,12 @@
 /obj/item/organ/internal/powered/process()
 	. = ..()
 	if(owner)
-		if(active && !(owner.nutrition = owner.nutrition - maintenance_cost))
-			active = FALSE
-			to_chat(owner, "<span class='danger'>Your [name] [gender == PLURAL ? "are" : "is"] out of power!</span>")
-			refresh_action_button()
+		if(active)
+			if(owner.nutrition > 0)
+				owner.adjust_nutrition(-maintenance_cost)
+				active = FALSE
+				to_chat(owner, "<span class='danger'>Your [name] [gender == PLURAL ? "are" : "is"] out of power!</span>")
+				refresh_action_button()
 
 /obj/item/organ/internal/powered/refresh_action_button()
 	. = ..()
@@ -80,7 +84,7 @@
 	base_action_state = "adherent-pack"
 	maintenance_cost = 0.2
 
-/obj/item/organ/internal/powered/jets/Initialize()
+/obj/item/organ/internal/powered/jets/Initialize(mapload)
 	. = ..()
 	//verbs |= /obj/item/organ/internal/powered/jets/proc/activatej
 
@@ -120,7 +124,7 @@
 	use_descriptor = "hover"
 	base_action_state = "adherent-float"
 
-/obj/item/organ/internal/powered/float/Initialize()
+/obj/item/organ/internal/powered/float/Initialize(mapload)
 	. = ..()
 	//verbs |= /obj/item/organ/internal/powered/float/proc/flying_toggle
 	verbs |= /obj/item/organ/internal/powered/float/proc/hover
@@ -136,7 +140,7 @@
 	organ_tag = O_EYES
 	innate_flash_protection = FLASH_PROTECTION_MAJOR
 
-/obj/item/organ/internal/eyes/adherent/Initialize()
+/obj/item/organ/internal/eyes/adherent/Initialize(mapload)
 	. = ..()
 	verbs |= /obj/item/organ/internal/eyes/proc/change_eye_color
 
@@ -163,7 +167,7 @@
 	var/max_cooling = 10
 	var/target_temp = T20C
 
-/obj/item/organ/internal/powered/cooling_fins/Initialize()
+/obj/item/organ/internal/powered/cooling_fins/Initialize(mapload)
 	. = ..()
 	verbs |= /obj/item/organ/internal/powered/cooling_fins/proc/activatecf
 
@@ -179,13 +183,12 @@
 	cooling = !cooling
 	to_chat(C, "You toggle your cooling fans [cooling ? "on" : "off"] ")
 
-/obj/item/organ/internal/powered/cooling_fins/process()
+/obj/item/organ/internal/powered/cooling_fins/process(delta_time)
 	var/mob/living/carbon/human/C = src.owner
 	if(cooling)
 		var/temp_diff = min(C.bodytemperature - target_temp, max_cooling)
 		if(temp_diff >= 1)
 			maintenance_cost = max(temp_diff, 1)
-			C.nutrition = C.nutrition - maintenance_cost
 			C.bodytemperature -= temp_diff
 		else
 			maintenance_cost = 0

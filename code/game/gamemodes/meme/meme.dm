@@ -1,5 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 29/05/2012 15:03:04
-
 /datum/game_mode/var/list/memes = list()
 
 /datum/game_mode/meme

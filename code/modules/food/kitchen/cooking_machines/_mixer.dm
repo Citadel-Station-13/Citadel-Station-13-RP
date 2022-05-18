@@ -11,7 +11,7 @@ fundamental differences
 
 /obj/machinery/appliance/mixer
 	max_contents = 1
-	stat = POWEROFF
+	machine_stat = POWEROFF
 	cooking_power = 0.4
 	active_power_usage = 3000
 	idle_power_usage = 50
@@ -69,11 +69,11 @@ fundamental differences
 	return 0
 
 
-/obj/machinery/appliance/mixer/can_remove_items(var/mob/user)
-	if (stat)
-		return 1
+/obj/machinery/appliance/mixer/can_remove_items(mob/user)
+	if(machine_stat)
+		return TRUE
 	else
-		to_chat(user, span("warning", "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish."))
+		to_chat(user, SPAN_WARNING( "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish."))
 
 //Container is not removable
 /obj/machinery/appliance/mixer/removal_menu(var/mob/user)
@@ -109,14 +109,14 @@ fundamental differences
 		to_chat(usr, "There's nothing in it! Add ingredients before turning [src] on!")
 		return
 
-	if (stat & POWEROFF)//Its turned off
-		stat &= ~POWEROFF
+	if (machine_stat & POWEROFF)//Its turned off
+		machine_stat &= ~POWEROFF
 		if (usr)
 			usr.visible_message("[usr] turns the [src] on", "You turn on \the [src].")
 			get_cooking_work(CI)
 			use_power = 2
 	else //Its on, turn it off
-		stat |= POWEROFF
+		machine_stat |= POWEROFF
 		use_power = 0
 		if (usr)
 			usr.visible_message("[usr] turns the [src] off", "You turn off \the [src].")
@@ -124,22 +124,22 @@ fundamental differences
 	update_icon()
 
 /obj/machinery/appliance/mixer/can_insert(var/obj/item/I, var/mob/user)
-	if (!stat)
-		user << span("warning","You can't add items while \the [src] is running. Wait for it to finish or turn the power off to abort.")
+	if (!machine_stat)
+		user << SPAN_WARNING("You can't add items while \the [src] is running. Wait for it to finish or turn the power off to abort.")
 		return 0
 	else
 		return ..()
 
 /obj/machinery/appliance/mixer/finish_cooking(var/datum/cooking_item/CI)
 	..()
-	stat |= POWEROFF
+	machine_stat |= POWEROFF
 	playsound(src, 'sound/machines/click.ogg', 40, 1)
 	use_power = 0
 	CI.reset()
 	update_icon()
 
 /obj/machinery/appliance/mixer/update_icon()
-	if (!stat)
+	if (!machine_stat)
 		icon_state = on_icon
 		if(mixer_loop)
 			mixer_loop.start(src)
@@ -150,6 +150,6 @@ fundamental differences
 
 
 /obj/machinery/appliance/mixer/process(delta_time)
-	if (!stat)
+	if (!machine_stat)
 		for (var/i in cooking_objs)
 			do_cooking_tick(i)

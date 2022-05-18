@@ -14,15 +14,15 @@
 /obj/machinery/appliance/cooker/examine(var/mob/user)
 	. = ..()
 	if(.)	//no need to duplicate adjacency check
-		if(!stat)
+		if(!machine_stat)
 			if(temperature < min_temp)
-				. += span("warning", "\The [src] is still heating up and is too cold to cook anything yet.")
+				. += SPAN_WARNING( "\The [src] is still heating up and is too cold to cook anything yet.")
 			else
-				. += span("notice", "It is running at [round(get_efficiency(), 0.1)]% efficiency!")
+				. += SPAN_NOTICE("It is running at [round(get_efficiency(), 0.1)]% efficiency!")
 			. += "Temperature: [round(temperature - T0C, 0.1)]C / [round(optimal_temp - T0C, 0.1)]C"
 		else
-			if(stat)
-				. += span("warning", "It is switched off.")
+			if(machine_stat)
+				. += SPAN_WARNING( "It is switched off.")
 
 /obj/machinery/appliance/cooker/list_contents(var/mob/user)
 	if (cooking_objs.len)
@@ -35,7 +35,7 @@
 				string += "- [CI.container.label(num)], [report_progress(CI)]</br>"
 		to_chat(user, string)
 	else
-		to_chat(user, span("notice","It is empty."))
+		to_chat(user, SPAN_NOTICE("It is empty."))
 
 /obj/machinery/appliance/cooker/proc/get_efficiency()
 	//RefreshParts()
@@ -49,12 +49,12 @@
 		cooking_objs.Add(new /datum/cooking_item/(new container_type(src)))
 	cooking = 0
 
-	update_icon() // this probably won't cause issues, but Aurora used SSIcons and queue_icon_update() instead
+	update_icon() // this probably won't cause issues, but Aurora used SSIcons and update_icon() instead
 
 /obj/machinery/appliance/cooker/update_icon()
 	cut_overlays()
 	var/image/light
-	if (use_power == 2 && !stat)
+	if (use_power == 2 && !machine_stat)
 		light = image(icon, "light_on")
 	else
 		light = image(icon, "light_off")
@@ -63,7 +63,7 @@
 	add_overlay(light)
 
 /obj/machinery/appliance/cooker/process(delta_time)
-	if (!stat)
+	if (!machine_stat)
 		heat_up()
 	else
 		var/turf/T = get_turf(src)
@@ -73,7 +73,7 @@
 
 /obj/machinery/appliance/cooker/power_change()
 	. = ..()
-	update_icon() // this probably won't cause issues, but Aurora used SSIcons and queue_icon_update() instead
+	update_icon() // this probably won't cause issues, but Aurora used SSIcons and update_icon() instead
 
 /obj/machinery/appliance/cooker/proc/update_cooking_power()
 	var/temp_scale = 0

@@ -240,9 +240,9 @@
 					switch(rand(1,12))
 						if(1) SEND_SOUND(src, sound('sound/machines/airlock.ogg'))
 						if(2)
-							if(prob(50))SEND_SOUND(src, sound('sound/effects/Explosion1.ogg'))
-							else SEND_SOUND(src, sound('sound/effects/Explosion2.ogg'))
-						if(3) SEND_SOUND(src, sound('sound/effects/explosionfar.ogg'))
+							if(prob(50))SEND_SOUND(src, sound('sound/soundbytes/effects/explosion/explosion1.ogg'))
+							else SEND_SOUND(src, sound('sound/soundbytes/effects/explosion/explosion2.ogg'))
+						if(3) SEND_SOUND(src, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 						if(4) SEND_SOUND(src, sound('sound/effects/Glassbr1.ogg'))
 						if(5) SEND_SOUND(src, sound('sound/effects/Glassbr2.ogg'))
 						if(6) SEND_SOUND(src, sound('sound/effects/Glassbr3.ogg'))
@@ -390,12 +390,12 @@
 			sleep(50)
 			H.drip(1)
 
-			if(!B.bitten) // first time biting them
-				src.nutrition += 300
-				B.nutrition -= 150
-			else
-				src.nutrition += 150 // halves our reward if we've already fed on this person before
-				B.nutrition -= 75
+			//if(!B.bitten) // first time biting them
+			src.nutrition += 400 //Commented out code to do with "B.bitten" in an attempt to rebalance vampires on a whole. Vampires now are more efficient
+			B.nutrition -= 200
+			//else
+				//src.nutrition += 150 // halves our reward if we've already fed on this person before
+				//B.nutrition -= 75
 			if(src.nutrition > 901) //prevent going into the fat ranges of nutrition needlessly and prevents minmaxing certain racial traits/abilities that rely on nutrition via farming one victim
 				src.nutrition = 900
 			if(B.nutrition < 100)
@@ -429,7 +429,7 @@
 		return
 
 	var/mob/living/carbon/human/T = G.affecting // I must say, this is a quite ingenious way of doing it. Props to the original coders.
-	if(!istype(T) || T.isSynthetic())
+	if(!istype(T)) // Allows for synths to be drained solargrub style
 		to_chat(src, "<span class='warning'>\The [T] is not able to be drained.</span>")
 		return
 
@@ -445,14 +445,24 @@
 	for(var/stage = 1, stage<=100, stage++) //100 stages.
 		switch(stage)
 			if(1)
-				to_chat(C, "<span class='notice'>You begin to drain [T]...</span>")
-				to_chat(T, "<span class='danger'>An odd sensation flows through your body as [C] begins to drain you!</span>")
+				if(T.isSynthetic())
+					to_chat(C, "<span class='notice'>You begin to siphon power out of [T]...</span>")
+					to_chat(T, "<span class='danger'>Various sensors and alarms flare as [C] begins to drain your power!</span>")
+				else
+					to_chat(C, "<span class='notice'>You begin to drain [T]...</span>")
+					to_chat(T, "<span class='danger'>An odd sensation flows through your body as [C] begins to drain you!</span>")
 				C.nutrition = (C.nutrition + (T.nutrition*0.05)) //Drain a small bit at first. 5% of the prey's nutrition.
 				T.nutrition = T.nutrition*0.95
 			if(2)
-				to_chat(C, "<span class='notice'>You feel stronger with every passing moment of draining [T].</span>")
+				if(C.isSynthetic())
+					to_chat(C, "<span class='notice'>You feel energized with every passing moment of draining [T].</span>")
+				else
+					to_chat(C, "<span class='notice'>You feel stronger with every passing moment of draining [T].</span>")
 				src.visible_message("<span class='danger'>[C] seems to be doing something to [T], resulting in [T]'s body looking weaker with every passing moment!</span>")
-				to_chat(T, "<span class='danger'>You feel weaker with every passing moment as [C] drains you!</span>")
+				if(T.isSynthetic())
+					to_chat(T, "<span class='danger'>You feel weak as power drains from your mechanisms to [C]!</span>")
+				else
+					to_chat(T, "<span class='danger'>You feel weaker with every passing moment as [C] drains you!</span>")
 				C.nutrition = (C.nutrition + (T.nutrition*0.1))
 				T.nutrition = T.nutrition*0.9
 			if(3 to 99)
@@ -469,8 +479,12 @@
 				var/damage_to_be_applied = T.species.total_health //Get their max health.
 				T.apply_damage(damage_to_be_applied, HALLOSS) //Knock em out.
 				C.absorbing_prey = 0
-				to_chat(C, "<span class='notice'>You have completely drained [T], causing them to pass out.</span>")
-				to_chat(T, "<span class='danger'>You feel weak, as if you have no control over your body whatsoever as [C] finishes draining you.!</span>")
+				if(T.isSynthetic())
+					to_chat(C, "<span class='notice'>You have siphoned the power out of [T], causing them to crumple on the floor.</span>")
+					to_chat(T, "<span class='danger'>You feel powerless as all the power in your mechanisms has been drained by [C]!</span>")
+				else
+					to_chat(C, "<span class='notice'>You have completely drained [T], causing them to pass out.</span>")
+					to_chat(T, "<span class='danger'>You feel weak, as if you have no control over your body whatsoever as [C] finishes draining you.!</span>")
 				add_attack_logs(C,T,"Succubus drained")
 				return
 
@@ -492,7 +506,7 @@
 		return
 
 	var/mob/living/carbon/human/T = G.affecting // I must say, this is a quite ingenious way of doing it. Props to the original coders.
-	if(!istype(T) || T.isSynthetic())
+	if(!istype(T))
 		to_chat(src, "<span class='warning'>\The [T] is not able to be drained.</span>")
 		return
 
@@ -511,14 +525,24 @@
 				if(T.stat == DEAD)
 					to_chat(src, "<span class='warning'>[T] is dead and can not be drained..</span>")
 					return
-				to_chat(src, "<span class='notice'>You begin to drain [T]...</span>")
-				to_chat(T, "<span class='danger'>An odd sensation flows through your body as [src] begins to drain you!</span>")
+				if(T.isSynthetic())
+					to_chat(src, "<span class='notice'>You begin to siphon power out of [T]...</span>")
+					to_chat(T, "<span class='danger'>Various sensors and alarms flare as [src] begins to drain your power!</span>")
+				else
+					to_chat(src, "<span class='notice'>You begin to drain [T]...</span>")
+					to_chat(T, "<span class='danger'>An odd sensation flows through your body as [src] begins to drain you!</span>")
 				nutrition = (nutrition + (T.nutrition*0.05)) //Drain a small bit at first. 5% of the prey's nutrition.
 				T.nutrition = T.nutrition*0.95
 			if(2)
-				to_chat(src, "<span class='notice'>You feel stronger with every passing moment as you drain [T].</span>")
-				visible_message("<span class='danger'>[src] seems to be doing something to [T], resulting in [T]'s body looking weaker with every passing moment!</span>")
-				to_chat(T, "<span class='danger'>You feel weaker with every passing moment as [src] drains you!</span>")
+				if(src.isSynthetic())
+					to_chat(src, "<span class='notice'>You feel energized with every passing moment of draining [T].</span>")
+				else
+					to_chat(src, "<span class='notice'>You feel stronger with every passing moment of draining [T].</span>")
+				src.visible_message("<span class='danger'>[src] seems to be doing something to [T], resulting in [T]'s body looking weaker with every passing moment!</span>")
+				if(T.isSynthetic())
+					to_chat(T, "<span class='danger'>You feel weak as power drains from your mechanisms to [src]!</span>")
+				else
+					to_chat(T, "<span class='danger'>You feel weaker with every passing moment as [src] drains you!</span>")
 				nutrition = (nutrition + (T.nutrition*0.1))
 				T.nutrition = T.nutrition*0.9
 			if(3 to 48) //Should be more than enough to get under 100.
@@ -532,22 +556,34 @@
 					stage = 3 //Otherwise, advance to stage 50 (Lethal draining.)
 			if(50)
 				if(!T.digestable)
-					to_chat(src, "<span class='danger'>You feel invigorated as you completely drain [T] and begin to move onto draining them lethally before realizing they are too strong for you to do so!</span>")
-					to_chat(T, "<span class='danger'>You feel completely drained as [src] finishes draining you and begins to move onto draining you lethally, but you are too strong for them to do so!</span>")
+					if(T.isSynthetic())
+						to_chat(src, "<span class='notice'>You have siphoned the power out of [T], causing them to crumple on the floor, but feel a sudden stop in power flow, cutting you off from the source.</span>")
+						to_chat(T, "<span class='danger'>You feel utterly powerless as all the power in your mechanisms has been drained by [src], but safeguards kick in, preventing them from completely draining you!</span>")
+					else
+						to_chat(src, "<span class='danger'>You feel invigorated as you completely drain [T] and begin to move onto draining them lethally before realizing they are too strong for you to do so!</span>")
+						to_chat(T, "<span class='danger'>You feel completely drained as [src] finishes draining you and begins to move onto draining you lethally, but you are too strong for them to do so!</span>")
 					nutrition = (nutrition + T.nutrition)
 					T.nutrition = 0 //Completely drained of everything.
 					var/damage_to_be_applied = T.species.total_health //Get their max health.
 					T.apply_damage(damage_to_be_applied, HALLOSS) //Knock em out.
 					absorbing_prey = 0 //Clean this up before we return
 					return
-				to_chat(src, "<span class='notice'>You begin to drain [T] completely...</span>")
-				to_chat(T, "<span class='danger'>An odd sensation flows through your body as you as [src] begins to drain you to dangerous levels!</span>")
+				if(T.isSynthetic())
+					to_chat(src, "<span class='notice'>You begin to siphon what power remains in [T] and their internal mechanisms.</span>")
+					to_chat(T, "<span class='danger'>You feel weaker and weaker as the power in your mechanisms is drained by [src]!</span>")
+				else
+					to_chat(src, "<span class='notice'>You begin to drain [T] completely...</span>")
+					to_chat(T, "<span class='danger'>An odd sensation flows through your body as you as [src] begins to drain you to dangerous levels!</span>")
 			if(51 to 98)
 				if(T.stat == DEAD)
 					T.apply_damage(500, OXY) //Bit of fluff.
 					absorbing_prey = 0
-					to_chat(src, "<span class='notice'>You have completely drained [T], killing them.</span>")
-					to_chat(T, "<span class='danger'size='5'>You feel... So... Weak...</span>")
+					if(T.isSynthetic())
+						to_chat(src, "<span class='notice'>You have completely drained the power from [T], shutting them down for good.</span>")
+						to_chat(T, "<span class='danger'size='5'>Alarms flare and flash, before they suddenly turn off. And so do you.</span>")
+					else
+						to_chat(src, "<span class='notice'>You have completely drained [T], killing them.</span>")
+						to_chat(T, "<span class='danger'size='5'>You feel... So... Weak...</span>")
 					add_attack_logs(src,T,"Succubus drained (almost lethal)")
 					return
 				if(drain_finalized == 1 || T.getBrainLoss() < 55) //Let's not kill them with this unless the drain is finalized. This will still stack up to 55, since 60 is lethal.
@@ -560,8 +596,12 @@
 			if(100) //They shouldn't  survive long enough to get here, but just in case.
 				T.apply_damage(500, OXY) //Kill them.
 				absorbing_prey = 0
-				to_chat(src, "<span class='notice'>You have completely drained [T], killing them in the process.</span>")
-				to_chat(T, "<span class='danger'><font size='7'>You... Feel... So... Weak...</font></span>")
+				if(T.isSynthetic())
+					to_chat(src, "<span class='notice'>You have completely drained the power from [T], shutting them down for good.</span>")
+					to_chat(T, "<span class='danger'size='5'>Alarms flare and flash, before they suddenly turn off. And so do you.</span>")
+				else
+					to_chat(src, "<span class='notice'>You have completely drained [T], killing them.</span>")
+					to_chat(T, "<span class='danger'size='5'>You feel... So... Weak...</span>")
 				visible_message("<span class='danger'>[src] seems to finish whatever they were doing to [T].</span>")
 				add_attack_logs(src,T,"Succubus drained (lethal)")
 				return

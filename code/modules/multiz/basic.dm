@@ -2,13 +2,13 @@
 var/list/z_levels = list()// Each bit re... haha just kidding this is a list of bools now
 
 // If the height is more than 1, we mark all contained levels as connected.
-/obj/effect/landmark/map_data/New()
+/atom/movable/landmark/map_data/New()
 	for(var/i = (z - height + 1) to (z-1))
 		if (z_levels.len <i)
 			z_levels.len = i
 		z_levels[i] = TRUE
 
-/obj/effect/landmark/map_data/Initialize()
+/atom/movable/landmark/map_data/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_QDEL
 
@@ -35,6 +35,12 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 	if(!turf)
 		return null
 	return HasBelow(turf.z) ? get_step(turf, DOWN) : null
+
+/turf/proc/Above()
+	return HasAbove(z)? get_step(src, UP) : null
+
+/turf/proc/Below()
+	return HasBelow(z)? get_step(src, DOWN) : null
 
 /proc/GetConnectedZlevels(z)
 	. = list(z)

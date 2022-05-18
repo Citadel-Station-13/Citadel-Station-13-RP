@@ -366,7 +366,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		G.fields["p_stat"]		= "Active"
 		G.fields["m_stat"]		= "Stable"
 		G.fields["sex"]			= gender2text(H.gender)
-		G.fields["species"]		= H.get_species()
+		G.fields["species"]		= H.get_species_name()
 		G.fields["home_system"]	= H.home_system
 		G.fields["citizenship"]	= H.citizenship
 		G.fields["faction"]		= H.personal_faction
@@ -412,7 +412,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		L.fields["b_dna"]		= H.dna.unique_enzymes
 		L.fields["enzymes"]		= H.dna.SE // Used in respawning
 		L.fields["identity"]	= H.dna.UI // "
-		L.fields["species"]		= H.get_species()
+		L.fields["species"]		= H.get_species_name()
 		L.fields["home_system"]	= H.home_system
 		L.fields["citizenship"]	= H.citizenship
 		L.fields["faction"]		= H.personal_faction
@@ -431,7 +431,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 /proc/generate_record_id()
 	return add_zero(num2hex(rand(1, 65535)), 4)	//no point generating higher numbers because of the limitations of num2hex
 
-/datum/datacore/proc/CreateGeneralRecord(var/mob/living/carbon/human/H, var/id, var/hidden)
+/datum/datacore/proc/CreateGeneralRecord(mob/living/carbon/human/H, id, hidden)
 	ResetPDAManifest()
 	var/icon/front
 	var/icon/side

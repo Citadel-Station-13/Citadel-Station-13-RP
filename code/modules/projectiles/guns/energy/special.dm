@@ -8,6 +8,7 @@
 	w_class = ITEMSIZE_LARGE
 	force = 10
 	slot_flags = SLOT_BACK
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/ion
 	one_handed_penalty = 15
 
@@ -22,6 +23,7 @@
 	w_class = ITEMSIZE_NORMAL
 	force = 5
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	heavy = FALSE
 	charge_cost = 480
 	projectile_type = /obj/item/projectile/ion/pistol
 
@@ -65,12 +67,12 @@
 	set category = "Object"
 	set src in view(1)
 
-	var/genemask = input("Choose a gene to modify.") as null|anything in plant_controller.plant_gene_datums
+	var/genemask = input("Choose a gene to modify.") as null|anything in SSplants.plant_gene_datums
 
 	if(!genemask)
 		return
 
-	gene = plant_controller.plant_gene_datums[genemask]
+	gene = SSplants.plant_gene_datums[genemask]
 
 	to_chat(usr, "<span class='info'>You set the [src]'s targeted genetic area to [genemask].</span>")
 
@@ -89,6 +91,7 @@
 	item_state = "c20r"
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/meteor
 	cell_type = /obj/item/cell/potato
 	charge_cost = 100
@@ -104,6 +107,7 @@
 	icon_state = "pen"
 	item_state = "pen"
 	w_class = ITEMSIZE_TINY
+	heavy = FALSE
 	slot_flags = SLOT_BELT
 	one_handed_penalty = 0
 
@@ -186,6 +190,7 @@ obj/item/gun/energy/staff/focus
 	item_state = "dakkalaser"
 	wielded_item_state = "dakkalaser-wielded"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
 	projectile_type = /obj/item/projectile/energy/blue_pellet
 	cell_type = /obj/item/cell/device/weapon/recharge
@@ -210,6 +215,7 @@ obj/item/gun/energy/staff/focus
 	item_state = "mhdhowitzer"
 	wielded_item_state = "mhdhowitzer-wielded"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 
 	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
 	projectile_type = /obj/item/projectile/beam/tungsten
@@ -394,3 +400,59 @@ obj/item/gun/energy/staff/focus
 	projectile_type = /obj/item/projectile/bullet/burstbullet/service    //Formerly: obj/item/projectile/bullet/gyro. A little too robust.
 	fire_delay = 20
 	charge_cost = 800	//Three shots.
+
+/obj/item/gun/energy/puzzle_key
+	name = "Key of Anak-Hun-Tamuun"
+	desc = "An arcane stave that fires a powerful energy blast. Why was this just left laying around here?"
+	fire_sound = 'sound/magic/staff_change.ogg'
+	icon = 'icons/obj/gun/magic.dmi'
+	icon_state = "staffofchaos"
+	item_state = "staffofchaos"
+	force = 5
+	charge_meter = 0
+	projectile_type = /obj/item/projectile/beam/emitter
+	fire_delay = 10
+	charge_cost = 800
+	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	battery_lock = 1
+	one_handed_penalty = 0
+
+/obj/item/gun/energy/ermitter
+	name = "Ermitter rifle"
+	desc = "A industrial energy projector turned into a crude, portable weapon. The Tyrmalin answer to armored hardsuits used by pirates, what it lacks in precision, it makes up for in firepower."
+	icon_state = "ermitter_gun"
+	item_state = "pulse"
+	projectile_type = /obj/item/projectile/beam/emitter
+	fire_delay = 10
+	charge_cost = 900
+	cell_type = /obj/item/cell
+	slot_flags = SLOT_BELT|SLOT_BACK
+	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
+	force = 10
+	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
+	matter = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
+	one_handed_penalty = 50
+
+/obj/item/gun/energy/ionrifle/pistol/tyrmalin
+	name = "botbuster pistol"
+	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing sythetic pirates or faulty machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
+	icon_state = "botbuster"
+	charge_cost = 1300
+	projectile_type = /obj/item/projectile/ion/pistol
+
+/obj/item/gun/energy/jezzail
+	name = "Microfission Jezzail"
+	desc = "Deceptively primitive in appearance, this finely tuned rifle uses an onboard reactor to stimulate the growth of an anomalous crystal. Fragments of this crystal are utilized as ammunition by the weapon."
+	icon_state = "warplockgun"
+	item_state = "huntrifle"
+	projectile_type = /obj/item/projectile/bullet/cyanideround/jezzail
+	fire_delay = 20
+	charge_cost = 600
+	cell_type = /obj/item/cell/device/weapon
+	battery_lock = 1
+	slot_flags = SLOT_BACK
+	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
+	force = 10
+	one_handed_penalty = 60

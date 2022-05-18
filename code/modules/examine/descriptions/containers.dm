@@ -58,6 +58,9 @@
 /obj/item/reagent_containers/food/drinks/bottle/rum
 	description_fluff = "Captain Pete's was involved in a long, expensive lawsuit against Gilthari concerning their claims to be from Cuba. They're actually owned and operated by none other than Centauri Provisions, with no distillaries on Earth to speak of."
 
+/obj/item/reagent_containers/food/drinks/bottle/whiterum
+	description_fluff = "Captain Pete's was involved in a long, expensive lawsuit against Gilthari concerning their claims to be from Cuba. They're actually owned and operated by none other than Centauri Provisions, with no distillaries on Earth to speak of."
+
 /obj/item/reagent_containers/food/drinks/bottle/vermouth
 	description_fluff = "One of Gilthari's less expensive products, Goldeneye Vermouth still manages to sell itself as a drink for only the richest and most successful; giving any number of poseurs a swollen head in the process."
 

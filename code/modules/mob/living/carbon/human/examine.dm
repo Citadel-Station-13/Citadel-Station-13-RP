@@ -101,7 +101,8 @@
 	if(!((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)))
 		//VOREStation Add Start
 		if(custom_species)
-			whoismsg += ", a <b>[src.custom_species]</b>"
+			if(custom_species != SPECIES_HUMAN)
+				whoismsg += ", a <b>[src.custom_species]</b>"
 		else if(looks_synth)
 		//VOREStation Add End
 			var/use_gender = "a synthetic"
@@ -112,7 +113,7 @@
 
 			whoismsg += ", <b><font color='#555555'>[use_gender]!</font></b>"
 
-		else if(species.name != "Human")
+		else if(species.name != SPECIES_HUMAN)
 			whoismsg += ", <b><font color='[species.get_flesh_colour(src)]'>\a [species.get_examine_name()]!</font></b>"
 
 	var/extra_species_text = species.get_additional_examine_text(src)
@@ -554,7 +555,7 @@
 		if(375 to 474)
 			message = "<span class='warning'>[t_He] [t_is] incredibly obese. [t_His] massive potbelly sags over [t_his] waistline while [t_his] fat ass would probably require two chairs to sit down comfortably!</span>"
 		else
-			message += "<span class='warning'>[t_He] [t_is] so morbidly obese, you wonder how [t_he] can even stand, let alone waddle around the station. [t_He] can't get any fatter without being immobilized.</span>"
+			message = "<span class='warning'>[t_He] [t_is] so morbidly obese, you wonder how [t_he] can even stand, let alone waddle around the station. [t_He] can't get any fatter without being immobilized.</span>"
 	return message //Credit to Aronai for helping me actually get this working!
 /*
 /mob/living/carbon/human/proc/examine_nutrition()

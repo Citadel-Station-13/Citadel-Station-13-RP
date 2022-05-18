@@ -99,22 +99,21 @@
 	if (progress < 0.25)
 		return "It's barely started cooking."
 	if (progress < 0.75)
-		return span("notice","It's cooking away nicely.")
+		return SPAN_NOTICE("It's cooking away nicely.")
 	if (progress < 1)
-		return span("notice", "<b>It's almost ready!</b>")
+		return SPAN_NOTICE("<b>It's almost ready!</b>")
 
 	var/half_overcook = (CI.overcook_mult - 1)*0.5
 	if (progress < 1+half_overcook)
-		return span("soghun","<b>It is done !</b>")
+		return SPAN_SOGHUN("<b>It is done !</b>")
 	if (progress < CI.overcook_mult)
-		return span("warning","It looks overcooked, get it out!")
+		return SPAN_WARNING("It looks overcooked, get it out!")
 	else
-		return span("danger","It is burning!!")
+		return SPAN_DANGER("It is burning!!")
 
 /obj/machinery/appliance/update_icon()
-	if (!stat && cooking_objs.len)
+	if (!machine_stat && cooking_objs.len)
 		icon_state = on_icon
-
 	else
 		icon_state = off_icon
 
@@ -140,13 +139,13 @@
 		to_chat(user, "You can't reach [src] from here.")
 		return
 
-	if (stat & POWEROFF)//Its turned off
-		stat &= ~POWEROFF
+	if (machine_stat & POWEROFF)//Its turned off
+		machine_stat &= ~POWEROFF
 		use_power = 1
 		user.visible_message("[user] turns [src] on.", "You turn on [src].")
 
 	else //Its on, turn it off
-		stat |= POWEROFF
+		machine_stat |= POWEROFF
 		use_power = 0
 		user.visible_message("[user] turns [src] off.", "You turn off [src].")
 
@@ -241,8 +240,8 @@
 
 	else return 1
 
-/obj/machinery/appliance/attackby(var/obj/item/I, var/mob/user)
-	if(!cook_type || (stat & (BROKEN)))
+/obj/machinery/appliance/attackby(obj/item/I, mob/user)
+	if(!cook_type || (machine_stat & (BROKEN)))
 		to_chat(user, "<span class='warning'>\The [src] is not working.</span>")
 		return
 

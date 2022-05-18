@@ -114,6 +114,9 @@
 /datum/reagent/ethanol/rum
 	price_tag = 5
 
+/datum/reagent/ethanol/whiterum
+	price_tag = 5
+
 /datum/reagent/ethanol/tequilla
 	price_tag = 5
 

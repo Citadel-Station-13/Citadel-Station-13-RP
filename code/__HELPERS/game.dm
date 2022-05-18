@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /proc/dopage(src,target)
 	var/href_list
@@ -292,21 +291,19 @@
 	var/list/hearturfs = list()
 
 	for(var/thing in hear)
-		if(istype(thing,/obj))
+		if(istype(thing, /obj)) //Can't use isobj() because /atom/movable returns true in that, and so lighting overlays would be included
 			objs += thing
 			hearturfs |= get_turf(thing)
-		else if(istype(thing,/mob))
+		if(ismob(thing))
 			mobs += thing
 			hearturfs |= get_turf(thing)
 
 	//A list of every mob with a client
 	for(var/mob in player_list)
-		//VOREStation Edit - Trying to fix some vorestation bug.
-		if(!istype(mob, /mob))
+		if(!ismob(mob))
 			player_list -= mob
 			crash_with("There is a null or non-mob reference inside player_list ([mob]).")
 			continue
-		//VOREStation Edit End - Trying to fix some vorestation bug.
 		if(get_turf(mob) in hearturfs)
 			mobs |= mob
 			continue
@@ -436,7 +433,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 	return candidates
 
 /proc/ScreenText(obj/O, maptext="", screen_loc="CENTER-7,CENTER-7", maptext_height=480, maptext_width=480)
-	if(!isobj(O))	O = new /obj/screen/text()
+	if(!isobj(O))	O = new /atom/movable/screen/text()
 	O.maptext = maptext
 	O.maptext_height = maptext_height
 	O.maptext_width = maptext_width

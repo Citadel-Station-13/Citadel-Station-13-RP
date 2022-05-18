@@ -5,12 +5,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "bF" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/chemical_dispenser/bar_alc/full,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "cr" = (
 /obj/structure/table/woodentable,
 /obj/random/cigarettes,
@@ -19,23 +19,23 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "cR" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/mobcorpse/syndicatesoldier,
+/atom/movable/spawner/corpse/syndicatesoldier,
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "cZ" = (
 /obj/structure/table/gamblingtable,
 /obj/item/deck/cards,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "dc" = (
 /obj/structure/bed/chair/wood,
 /mob/living/simple_mob/humanoid/merc/ranged,
@@ -43,15 +43,15 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "dM" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "gn" = (
 /obj/machinery/vending/loadout/costume,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "io" = (
 /turf/template_noop,
 /area/template_noop)
@@ -59,14 +59,14 @@
 /obj/structure/table/wooden_reinforced,
 /obj/random/cigarettes,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "jW" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
 /mob/living/simple_mob/humanoid/merc/ranged,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "kG" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -79,46 +79,46 @@
 	},
 /obj/random/cash,
 /turf/simulated/floor/carpet/blucarpet,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "lb" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
 /mob/living/simple_mob/humanoid/merc/melee,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "ln" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "lo" = (
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "lW" = (
 /obj/structure/sink/kitchen{
 	name = "sink";
 	pixel_y = 28
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "nK" = (
 /obj/structure/table/wooden_reinforced,
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "pU" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "qh" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/blucarpet,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "qA" = (
 /obj/item/ammo_casing/spent{
 	pixel_y = -5
@@ -132,15 +132,15 @@
 	pixel_y = 7
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "rL" = (
 /obj/structure/bed/chair/wood,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "sl" = (
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "tl" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -150,7 +150,7 @@
 	},
 /obj/structure/musician/piano,
 /turf/simulated/floor/carpet/blucarpet,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "tt" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -161,13 +161,13 @@
 /obj/structure/railing,
 /mob/living/simple_mob/humanoid/merc/ranged/smg/poi,
 /turf/simulated/floor/carpet/blucarpet,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "ur" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "uK" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -183,13 +183,13 @@
 	},
 /mob/living/simple_mob/humanoid/merc/ranged/deagle,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "wV" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "xI" = (
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "zg" = (
 /obj/structure/table/woodentable,
 /obj/structure/mirror/raider{
@@ -198,12 +198,12 @@
 /obj/item/lipstick/random,
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "zO" = (
 /obj/structure/table/wooden_reinforced,
 /obj/random/drinkbottle,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Bp" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
@@ -211,7 +211,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Dp" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -221,39 +221,39 @@
 	},
 /obj/random/coin,
 /turf/simulated/floor/carpet/blucarpet,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Et" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
-/obj/effect/landmark/mobcorpse/clown,
+/atom/movable/spawner/corpse/clown,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/carpet/blucarpet,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "EJ" = (
 /obj/random/coin,
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "EY" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Fd" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Fm" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Ge" = (
 /obj/machinery/media/jukebox,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Hz" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/dicecup,
@@ -261,13 +261,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "HI" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light/small,
 /obj/random/cigarettes,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "HU" = (
 /obj/structure/railing{
 	dir = 4
@@ -276,14 +276,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "IU" = (
 /obj/machinery/light/small/flicker{
 	dir = 8
 	},
 /obj/random/trash_pile,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "JY" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
@@ -291,7 +291,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Kd" = (
 /obj/structure/table/woodentable,
 /obj/structure/mirror{
@@ -302,25 +302,25 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Lw" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "LV" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/storage/box/glasses/mug,
 /obj/item/storage/box/glasses/mug,
 /obj/item/storage/box/glasses/mug,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "NB" = (
 /obj/random/cash,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "OS" = (
 /obj/structure/railing{
 	dir = 4
@@ -330,12 +330,12 @@
 	},
 /obj/machinery/light/small/flicker,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "PU" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Qs" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
@@ -343,10 +343,10 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "TY" = (
 /turf/simulated/wall/wood,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Up" = (
 /obj/structure/railing{
 	dir = 8
@@ -355,17 +355,17 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "UP" = (
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "WE" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Zm" = (
 /obj/structure/closet/cabinet,
 /obj/random/projectile/shotgun,
@@ -374,7 +374,7 @@
 /obj/item/ammo_magazine/clip/c12g/beanbag,
 /obj/item/ammo_magazine/clip/c12g/beanbag,
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 "Zt" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
@@ -382,7 +382,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood/classh,
-/area/tether_away/beach/desert/poi/saloon)
+/area/class_h/POIs/saloon)
 
 (1,1,1) = {"
 io

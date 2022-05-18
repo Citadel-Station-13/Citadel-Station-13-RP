@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 var/global/list/priority_air_alarms = list()
 var/global/list/minor_air_alarms = list()
@@ -14,69 +13,65 @@ var/global/list/minor_air_alarms = list()
 
 /obj/machinery/computer/atmos_alert/Initialize(mapload)
 	. = ..()
-	SSalarms.atmosphere_alarm.register_alarm(src, /atom/proc/update_icon)
+	atmosphere_alarm.register_alarm(src, /atom/proc/update_icon)
 
 /obj/machinery/computer/atmos_alert/Destroy()
-    SSalarms.atmosphere_alarm.unregister_alarm(src)
-    return ..()
+	atmosphere_alarm.unregister_alarm(src)
+	return ..()
 
 /obj/machinery/computer/atmos_alert/attack_hand(mob/user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/computer/atmos_alert/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
-	var/major_alarms[0]
-	var/minor_alarms[0]
+/obj/machinery/computer/atmos_alert/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AtmosAlertConsole", name)
+		ui.open()
 
-	for(var/datum/alarm/alarm in SSalarms.atmosphere_alarm.major_alarms())
+/obj/machinery/computer/atmos_alert/ui_data(mob/user)
+	var/list/data = list()
+	var/list/major_alarms = list()
+	var/list/minor_alarms = list()
+
+	for(var/datum/alarm/alarm in atmosphere_alarm.major_alarms())
 		major_alarms[++major_alarms.len] = list("name" = sanitize(alarm.alarm_name()), "ref" = "\ref[alarm]")
 
-	for(var/datum/alarm/alarm in SSalarms.atmosphere_alarm.minor_alarms())
+	for(var/datum/alarm/alarm in atmosphere_alarm.minor_alarms())
 		minor_alarms[++minor_alarms.len] = list("name" = sanitize(alarm.alarm_name()), "ref" = "\ref[alarm]")
 
 	data["priority_alarms"] = major_alarms
 	data["minor_alarms"] = minor_alarms
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "atmos_alert.tmpl", src.name, 500, 500)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
+	return data
 
 /obj/machinery/computer/atmos_alert/update_icon()
-	if(!(stat & (NOPOWER|BROKEN)))
-		var/list/alarms = SSalarms.atmosphere_alarm.major_alarms()
+	if(!(machine_stat & (NOPOWER|BROKEN)))
+		var/list/alarms = atmosphere_alarm.major_alarms()
 		if(alarms.len)
 			icon_screen = "alert:2"
 		else
-			alarms = SSalarms.atmosphere_alarm.minor_alarms()
+			alarms = atmosphere_alarm.minor_alarms()
 			if(alarms.len)
 				icon_screen = "alert:1"
 			else
 				icon_screen = initial(icon_screen)
 	..()
 
-/obj/machinery/computer/atmos_alert/Topic(href, href_list)
+/obj/machinery/computer/atmos_alert/ui_act(action, params)
 	if(..())
-		return 1
+		return TRUE
 
-	if(href_list["clear_alarm"])
-		var/datum/alarm/alarm = locate(href_list["clear_alarm"]) in SSalarms.atmosphere_alarm.alarms
-		if(alarm)
-			for(var/datum/alarm_source/alarm_source in alarm.sources)
-				var/obj/machinery/alarm/air_alarm = alarm_source.source
-				if(istype(air_alarm))
-					var/list/new_ref = list("atmos_reset" = 1)
-					air_alarm.Topic(href, new_ref, state = air_alarm_topic)
-		return 1
-
-
-var/datum/topic_state/air_alarm_topic/air_alarm_topic = new()
-
-/datum/topic_state/air_alarm_topic/href_list(var/mob/user)
-	var/list/extra_href = list()
-	extra_href["remote_connection"] = 1
-	extra_href["remote_access"] = 1
-
-	return extra_href
+	switch(action)
+		if("clear")
+			var/datum/alarm/alarm = locate(params["ref"]) in atmosphere_alarm.alarms
+			if(alarm)
+				for(var/datum/alarm_source/alarm_source in alarm.sources)
+					var/obj/machinery/alarm/air_alarm = alarm_source.source
+					if(istype(air_alarm))
+						// I have to leave a note here:
+						// Once upon a time, this called air_alarm.Topic() with a custom topic state
+						// in order to perform three lines of code. In other words, pure insanity.
+						// Whyyyyyyyyyyyyyyyyyyyyyyy.
+						air_alarm.atmos_reset()
+			. = TRUE
+	update_icon()

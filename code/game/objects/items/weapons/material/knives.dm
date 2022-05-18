@@ -36,6 +36,18 @@
 	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
 	icon_state = "switchblade"
 
+/obj/item/material/butterfly/butterfly_golden
+	name = "gold-plated balisong"
+	desc = "An exquisite, gold-plated butterfly knife. The centerpiece of any aspiring knife collector's showcase."
+	icon_state = "butterflyknife_gold"
+	applies_material_colour = 0
+
+/obj/item/material/butterfly/butterfly_wooden
+	name = "wood-handled butterfly knife"
+	desc = "A concealable butterlfly knife with an ornate, wooden handle. Requires far too much care to use more than once."
+	icon_state = "butterflyknife_wooden"
+	applies_material_colour = 0
+
 /obj/item/material/butterfly/boxcutter
 	name = "box cutter"
 	desc = "A thin, inexpensive razor-blade knife designed to open cardboard boxes."
@@ -64,7 +76,7 @@
 	sharp = 1
 	edge = 1
 	force_divisor = 0.15 // 9 when wielded with hardness 60 (steel)
-	matter = list(DEFAULT_WALL_MATERIAL = 12000)
+	matter = list(MAT_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -95,6 +107,17 @@
 	force_divisor = 0.25 // 15 with hardness 60 (steel)
 	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
+	applies_material_colour = 1
+
+/obj/item/material/knife/stiletto
+	name = "stiletto knife"
+	desc = "A fancy-looking, thin bladed dagger designed to be stashed somewhere close to the body. Very lethal. Very illegal."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "stiletto"
+	item_state = "knife"
+	edge = 0 //Shouldn't be able to remove limbs
+	force_divisor = 0.1 //6 when hardness 60 (steel)
+	attack_verb = list("stabbed", "shanked", "punctured", "impaled", "skewered")
 	applies_material_colour = 1
 
 /obj/item/material/knife/tacknife/combatknife/bone
@@ -159,7 +182,7 @@
 	return FALSE
 
 /obj/item/material/knife/machete/armblade/rig
-	default_material = DEFAULT_WALL_MATERIAL
+	default_material = MAT_STEEL
 	canremove = FALSE
 	var/obj/item/rig_module/armblade/storing_module
 

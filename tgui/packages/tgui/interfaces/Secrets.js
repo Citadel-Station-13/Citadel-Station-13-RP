@@ -2,7 +2,6 @@ import { toFixed } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { Button, Flex, LabeledControls, NoticeBox, RoundGauge, Section } from '../components';
-import { FlexItem } from '../components/Flex';
 import { Window } from '../layouts';
 
 const TAB2NAME = [

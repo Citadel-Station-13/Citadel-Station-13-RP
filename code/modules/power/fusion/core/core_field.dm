@@ -1,6 +1,6 @@
 #define FUSION_ENERGY_PER_K 20
-#define PLASMA_TEMP_RADIATION_DIVISIOR 20 //radiation divisior. plasma temp / divisor = radiation.
-
+///radiation divisior. plasma temp / divisor = radiation.
+#define PLASMA_TEMP_RADIATION_DIVISIOR 20
 GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 /obj/effect/fusion_em_field
@@ -43,7 +43,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	ignore_types = typecacheof(list(
 		/obj/effect,
 		/obj/item/projectile,
-		/obj/fire,
+		/atom/movable/fire,
 		/obj/structure/cable,
 		/obj/machinery/atmospherics,
 		/obj/machinery/air_sensor,

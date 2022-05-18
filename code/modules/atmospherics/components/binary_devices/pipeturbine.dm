@@ -49,7 +49,7 @@
 
 /obj/machinery/atmospherics/pipeturbine/process(delta_time)
 	..()
-	if(anchored && !(stat&BROKEN))
+	if(anchored && !(machine_stat & BROKEN))
 		kin_energy *= 1 - kin_loss
 		dP = max(air_in.return_pressure() - air_out.return_pressure(), 0)
 		if(dP > 10)
@@ -248,12 +248,12 @@
 	turbine = null
 	if(src.loc && anchored)
 		turbine = locate(/obj/machinery/atmospherics/pipeturbine) in get_step(src,dir)
-		if (turbine.stat & (BROKEN) || !turbine.anchored || turn(turbine.dir,180) != dir)
+		if (turbine.machine_stat & (BROKEN) || !turbine.anchored || turn(turbine.dir,180) != dir)
 			turbine = null
 
 /obj/machinery/power/turbinemotor/process(delta_time)
 	updateConnection()
-	if(!turbine || !anchored || stat & (BROKEN))
+	if(!turbine || !anchored || machine_stat & (BROKEN))
 		return
 
 	var/power_generated = kin_to_el_ratio * turbine.kin_energy

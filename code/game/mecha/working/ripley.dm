@@ -69,7 +69,7 @@
 	max_universal_equip = 1
 	max_special_equip = 1
 
-/obj/mecha/working/ripley/deathripley/Initialize()
+/obj/mecha/working/ripley/deathripley/Initialize(mapload)
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp/safety
 	ME.attach(src)
@@ -79,7 +79,7 @@
 	desc = "An old, dusty mining ripley."
 	name = "APLU \"Miner\""
 
-/obj/mecha/working/ripley/mining/Initialize()
+/obj/mecha/working/ripley/mining/Initialize(mapload)
 	. = ..()
 	//Attach drill
 	if(prob(25)) //Possible diamond drill... Feeling lucky?
@@ -117,7 +117,7 @@
 
 //Vorestation Edit Start
 
-/obj/mecha/working/ripley/Initialize()
+/obj/mecha/working/ripley/Initialize(mapload)
 	. = ..()
 	orescanner = new /obj/item/mining_scanner
 
@@ -135,7 +135,7 @@
 /obj/mecha/working/ripley/mining/old
 	desc = "An old, dusty mining ripley."
 
-/obj/mecha/working/ripley/mining/old/Initialize()
+/obj/mecha/working/ripley/mining/old/Initialize(mapload)
 	. = ..()
 	health = 25
 	maxhealth = 190	//Just slightly worse.

@@ -2,8 +2,9 @@
 	////////////
 	//SECURITY//
 	////////////
-#define UPLOAD_LIMIT		1048576	//Restricts client uploads to the server to 1MB //Could probably do with being lower.
-
+///Could probably do with being lower.
+///Restricts client uploads to the server to 1MB
+#define UPLOAD_LIMIT		1048576
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
 	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
@@ -171,6 +172,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	tgui_panel = new(src)
 
 	GLOB.ahelp_tickets.ClientLogin(src)
+	SSserver_maint.UpdateHubStatus()
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
 	holder = admin_datums[ckey]
@@ -264,6 +266,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	. = ..()	//calls mob.Login()
 
+	if(!using_perspective)
+		stack_trace("mob login didn't put in perspective")
+
 	if(log_client_to_db() == "BUNKER_DROPPED")
 		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
 		return FALSE
@@ -286,7 +291,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				disconnect_with_message("Your version of BYOND ([byond_version].[byond_build]) is blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]]. Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")
 				return
 
-	if(SSinput.subsystem_initialized)
+	if(SSinput.initialized)
 		set_macros()
 		update_movement_keys()
 
@@ -361,16 +366,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	send_resources()
 
-	if(!void) //ew. will rework this soon once this gets merged.
-		void = new()
-		void.MakeGreed()
-	screen += void
+	mob.reload_rendering()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config_legacy.aggressive_changelog)
-			src.changes()
+			changelog()
 
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
 		to_chat(src, "<span class='warning'>Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you.</span>")
@@ -382,6 +384,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			log_and_message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
 		if(isnum(account_age) && account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
+
+	fully_created = TRUE
 
 	//////////////
 	//DISCONNECT//
@@ -397,10 +401,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.directory -= ckey
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
+	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null
 		admins -= src
 		GLOB.admins -= src //delete them on the managed one too
+	if(using_perspective)
+		set_perspective(null)
+
+	active_mousedown_item = null
+	SSping.currentrun -= src
+
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -685,15 +696,19 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if (isnull(new_size))
 		CRASH("change_view called without argument.")
 
+	if(view == new_size)
+		// unnecessary
+		return
+
 	/*
 	if(prefs && !prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
 		new_size = CONFIG_GET(string/default_view_square)
 	*/
 
 	view = new_size
+	mob.reload_rendering()
 
 	/*
-	apply_clickcatcher()
 	mob.reload_fullscreen()
 	if (isliving(mob))
 		var/mob/living/M = mob
@@ -701,6 +716,29 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if (prefs.auto_fit_viewport)
 		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
 	*/
+
+/**
+ * switch perspective - null will cause us to shunt our eye to nullspace!
+ */
+/client/proc/set_perspective(datum/perspective/P)
+	if(using_perspective)
+		using_perspective.RemoveClient(src, TRUE)
+		if(using_perspective)
+			stack_trace("using perspective didn't clear")
+			using_perspective = null
+	if(!P)
+		eye = null
+		lazy_eye = 0
+		perspective = EYE_PERSPECTIVE
+		return
+	P.AddClient(src)
+	using_perspective = P
+
+/**
+ * reset perspective to default - usually to our mob's
+ */
+/client/proc/reset_perspective()
+	set_perspective(mob.get_perspective())
 
 /mob/proc/MayRespawn()
 	return 0

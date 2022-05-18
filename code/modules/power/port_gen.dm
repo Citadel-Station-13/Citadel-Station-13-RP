@@ -14,7 +14,7 @@
 	var/power_output = 1
 
 /obj/machinery/power/port_gen/proc/IsBroken()
-	return (stat & (BROKEN|EMPED))
+	return (machine_stat & (BROKEN|EMPED))
 
 /obj/machinery/power/port_gen/proc/HasFuel() //Placeholder for fuel check.
 	return 1
@@ -60,27 +60,27 @@
 	var/duration = 6000 //ten minutes
 	switch(severity)
 		if(1)
-			stat &= BROKEN
+			machine_stat &= BROKEN
 			if(prob(75))
 				explode()
 		if(2)
 			if(prob(50))
-				stat &= BROKEN
+				machine_stat &= BROKEN
 			if(prob(10))
 				explode()
 		if(3)
 			if(prob(25))
-				stat &= BROKEN
+				machine_stat &= BROKEN
 			duration = 300
 		if(4)
 			if(prob(10))
-				stat &= BROKEN
+				machine_stat &= BROKEN
 			duration = 300
 
-	stat |= EMPED
+	machine_stat |= EMPED
 	if(duration)
 		spawn(duration)
-			stat &= ~EMPED
+			machine_stat &= ~EMPED
 
 /obj/machinery/power/port_gen/proc/explode()
 	explosion(src.loc, -1, 3, 5, -1)
@@ -522,7 +522,7 @@
 	var/power_gen = 1000 // Enough to power a single APC. 4000 output with T4 capacitor.
 	var/irradiate = TRUE // RTGs irradiate surroundings, but only when panel is open.
 
-/obj/machinery/power/rtg/Initialize()
+/obj/machinery/power/rtg/Initialize(mapload)
 	. = ..()
 	if(ispath(circuit))
 		circuit = new circuit(src)
@@ -672,7 +672,7 @@
 /obj/machinery/power/rtg/abductor/built
 	icon_state = "core"
 
-/obj/machinery/power/rtg/abductor/built/Initialize()
+/obj/machinery/power/rtg/abductor/built/Initialize(mapload)
 	. = ..()
 	alien = new(src)
 	RefreshParts()
@@ -686,7 +686,7 @@
 /obj/machinery/power/rtg/abductor/hybrid/built
 	icon_state = "coreb"
 
-/obj/machinery/power/rtg/abductor/hybrid/built/Initialize()
+/obj/machinery/power/rtg/abductor/hybrid/built/Initialize(mapload)
 	. = ..()
 	alien = new /obj/item/cell/device/weapon/recharge/alien(src)
 	RefreshParts()

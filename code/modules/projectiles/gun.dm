@@ -39,7 +39,7 @@
 	icon_state = "detective"
 	item_state = "gun"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 	w_class = ITEMSIZE_NORMAL
 	throwforce = 5
 	throw_speed = 4
@@ -71,12 +71,13 @@
 
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
-	var/obj/screen/auto_target/auto_target
+	var/atom/movable/screen/auto_target/auto_target
 	var/shooting = 0
 	var/next_fire_time = 0
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
+	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
@@ -86,6 +87,9 @@
 	var/tmp/mob/living/last_moved_mob //Used to fire faster at more than one person.
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
+
+	/// whether or not we have safeties and if safeties are on
+	var/safety_state = GUN_SAFETY_ON
 
 	var/dna_lock = 0				//whether or not the gun is locked to dna
 	var/obj/item/dnalockingchip/attached_lock
@@ -225,6 +229,14 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
+/obj/item/gun/dropped(mob/living/user)
+	. = ..()
+	update_appearance()
+
+/obj/item/gun/equipped(mob/user, slot)
+	. = ..()
+	update_appearance()
+
 /obj/item/gun/afterattack(atom/A, mob/living/user, adjacent, params)
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
 
@@ -234,11 +246,6 @@
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
 		return
-
-	if(user && user.a_intent == INTENT_HELP && user.is_preference_enabled(/datum/client_preference/safefiring)) //regardless of what happens, refuse to shoot if help intent is on
-		to_chat(user, "<span class='warning'>You refrain from firing your [src] as your intent is set to help.</span>")
-		return
-
 	else
 		Fire(A, user, params) //Otherwise, fire normally.
 		return
@@ -349,7 +356,7 @@
 		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
 			return
 
-		if (!( istype(over_object, /obj/screen) ))
+		if (!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 
 		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
@@ -360,7 +367,7 @@
 		if (( usr.restrained() ) || ( usr.stat ))
 			return
 
-		if ((src.loc == usr) && !(istype(over_object, /obj/screen)) && !usr.unEquip(src))
+		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
 			return
 
 		switch(over_object.name)
@@ -386,6 +393,19 @@
 	if(world.time < next_fire_time)
 		if (world.time % 3) //to prevent spam
 			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
+		return
+
+	if(check_safety())
+		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
+		//will reflexively do it anyway
+		if(user.a_intent == INTENT_HARM && prob(50))
+			toggle_safety(user)
+		else
+			handle_click_safety(user)
+			return
+
+	if(user?.client?.is_preference_enabled(/datum/client_preference/help_intent_firing) && user.a_intent == INTENT_HELP)
+		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
 		return
 
 	var/shoot_time = (burst - 1)* burst_delay
@@ -547,8 +567,11 @@
 	if (user)
 		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
 	else
-		src.visible_message("*click click*")
-	playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
+		visible_message("*click click*")
+	playsound(src, 'sound/weapons/empty.ogg', 100, 1)
+
+/obj/item/gun/proc/handle_click_safety(mob/user)
+	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
 
 //called after successfully firing
 /obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
@@ -760,6 +783,8 @@
 	if(firemodes.len > 1)
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		. += "The fire selector is set to [current_mode.name]."
+	if(safety_state != GUN_NO_SAFETY)
+		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)
@@ -771,7 +796,7 @@
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
 	to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
-
+	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
 /obj/item/gun/attack_self(mob/user)
@@ -789,3 +814,53 @@
 	else
 		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
 	return 0
+
+/obj/item/gun/update_overlays()
+	. = ..()
+	if(!(item_flags & IN_INVENTORY))
+		return
+	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
+
+/obj/item/gun/proc/toggle_safety(mob/user)
+	if(user)
+		if(user.stat || user.restrained() || user.incapacitated(INCAPACITATION_DISABLED))
+			to_chat(user, SPAN_WARNING("You can't do that right now."))
+			return
+	if(safety_state == GUN_NO_SAFETY)
+		to_chat(user, SPAN_WARNING("[src] has no safety."))
+		return
+	var/current = check_safety()
+	switch(safety_state)
+		if(GUN_SAFETY_ON)
+			safety_state = GUN_SAFETY_OFF
+		if(GUN_SAFETY_OFF)
+			safety_state = GUN_SAFETY_ON
+	if(user)
+		user.visible_message(
+			SPAN_WARNING("[user] switches the safety of \the [src] [current ? "off" : "on"]."),
+			SPAN_NOTICE("You switch the safety of \the [src] [current ? "off" : "on"]."),
+			SPAN_WARNING("You hear a switch being clicked."),
+			MESSAGE_RANGE_COMBAT_SUBTLE
+		)
+	update_appearance()
+	playsound(src, 'sound/weapons/flipblade.ogg', 10, 1)
+
+/obj/item/gun/verb/toggle_safety_verb()
+	set src in usr
+	set category = "Object"
+	set name = "Toggle Gun Safety"
+
+	if(usr == loc)
+		toggle_safety(usr)
+
+/obj/item/gun/AltClick(mob/user)
+	if(loc == user)
+		toggle_safety(user)
+		return TRUE
+	return ..()
+
+/**
+ * returns TRUE/FALSE based on if we have safeties on
+ */
+/obj/item/gun/proc/check_safety()
+	return (safety_state == GUN_SAFETY_ON)

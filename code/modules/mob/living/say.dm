@@ -98,6 +98,11 @@ proc/get_radio_key_from_channel(var/channel)
 	var/whispering = message_data[3]
 	. = 0
 
+	if(HAS_TRAIT(src, silent) || silent)
+		. = TRUE
+		message_data[1] = ""
+		return
+
 	if((HULK in mutations) && health >= 25 && length_char(message))
 		message = "[uppertext(message)]!!!"
 		verb = pick("yells","roars","hollers")

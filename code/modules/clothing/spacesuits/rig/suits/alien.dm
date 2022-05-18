@@ -48,7 +48,7 @@
 	icon_state = "vox_rig"
 	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 50)
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	siemens_coefficient = 0.2
 	offline_slowdown = 5
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)

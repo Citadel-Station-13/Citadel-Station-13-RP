@@ -17,7 +17,7 @@
 		)
 
 /datum/lore/codex/page/human/add_content()
-	name = "Human"
+	name = SPECIES_HUMAN
 	keywords += list("Humanity")
 	data = "Humans are a race of 'ape'-like creatures from the continental planet Earth in the Sol system. They are the primary driving \
 	force for rapid space expansion, owing to their strong, expansionist central government and opportunistic [quick_link("TSC","Trans-Stellar Corporations")]. \
@@ -29,7 +29,7 @@
 	of other species."
 
 /datum/lore/codex/page/skrell
-	name = "Skrell"
+	name = SPECIES_SKRELL
 	keywords = list("Skrellian")
 	data = "The Skrell are a species of amphibious humanoids, distinguished by their gelatinous appearance and head tentacles. \
 	Skrell come from the world of Sirisai (called Qerr'balak by Skrell), a humid planet with plenty of swamps and jungles. Currently more technologically advanced \
@@ -41,7 +41,7 @@
 	outpaced by the humans. For humans, they were their first contact sentient species, and are their longest, and closest, ally in space."
 
 /datum/lore/codex/page/unathi
-	name = "Unathi"
+	name = SPECIES_UNATHI
 	data = "The Unathi are a race of tall, reptilian humanoids that possess both crocodile-like and serpent-like features. Their scales are hard and \
 	plate-like, save for the softer ones that line the inside of their legs, armpits, and groin. Originating from the planet of Moghes, the Unathi \
 	live in an extremely religious society. The Unathi believe in and closely follow a set of Decrees laid out in their belief system, The Unity. \
@@ -55,7 +55,7 @@
 
 /datum/lore/codex/page/tajaran
 	name = "Tajaran"
-	keywords = list("Tajara")
+	keywords = list(SPECIES_TAJ)
 	data = "The Tajara are a race of humanoid mammalian aliens from Meralar, the fourth planet of the Rarkajar star system. Thickly furred and protected \
 	from cold, they thrive on their subarctic planet, where the only terran temperate areas spread across the equator and tropical belt. \
 	With their own share of bloody wars and great technological advances, the Tajaran are a proud kind. They fiercely believe they belong \
@@ -64,11 +64,11 @@
 	Among these bonds, Humans stand out as valued trade partners and maybe even a friend."
 
 /datum/lore/codex/page/diona/add_content()
-	name = "Diona"
+	name = SPECIES_DIONA
 	keywords += list("Dionaea")
 	data = "The Dionaea are a group of omnivorous, slow-metabolism plantlike organisms that are in fact clusters of individual, smaller organisms. \
 	They exhibit a high degree of structural flexibility, and come in a wide variety of shapes and colors to reflect the intelligence of each individual \
-	creature. They were discovered by the [quick_link("Skrell")] in 2294CE, not on a planet, but in open space between three stars, a figurative hell that made it \
+	creature. They were discovered by the [quick_link(SPECIES_SKRELL)] in 2294CE, not on a planet, but in open space between three stars, a figurative hell that made it \
 	difficult to discover, much less contact them.\
 	<br><br>\
 	Dionaea spread by seeds and are asexual, no gender. When grown into their small 'nymph' state, they are known to eat large amounts of dead plant \
@@ -79,9 +79,9 @@
 	Introduced by the Skrell, and quite slow and peaceful, the Diona share good relations with the other species."
 
 /datum/lore/codex/page/akula/add_content()
-	name = "Akula"
-	keywords += list("Akula")
-	data = "The Akula are a species of amphibious humanoids like the [quick_link("Skrell")], but have an appearance very similar to that of a shark. \
+	name = SPECIES_AKULA
+	keywords += list(SPECIES_AKULA)
+	data = "The Akula are a species of amphibious humanoids like the [quick_link(SPECIES_SKRELL)], but have an appearance very similar to that of a shark. \
 	They were first discovered as a primitive race of underwater dwelling tribal creatures by the Skrell. At first they were not believed to \
 	be noteworthy, but the Akula proved to be such swift and clever learners that the Skrell reclassified them as sentients. Allegedly, \
 	the Akula were also the first sentient life that the Skrell had ever encountered beside themselves, and thus the two species became swift allies \
@@ -92,8 +92,8 @@
 	[quick_link("Virgo-Prime")] nearly impossible if it were not for Skrellean technology to aid them."
 
 /datum/lore/codex/page/nevrean/add_content()
-	name = "Nevrean"
-	keywords += list("Nevrean")
+	name = SPECIES_NEVREAN
+	keywords += list(SPECIES_NEVREAN)
 	data = "An avian species hailing from the planet Eltus in the Vilous system, characterised by their long whiplike \
 	tail-feathers. The species is generally matriarchal, with females tending towards duller, brown coloration and \
 	bulkier bodies, while males are slight and brightly coloured. In both typical mannerisms, culture and physical \
@@ -104,8 +104,8 @@
 	and folded under their jumpsuit sleeves. "
 
 /datum/lore/codex/page/sergal/add_content()
-	name = "Sergal"
-	keywords += list("Sergal")
+	name = SPECIES_SERGAL
+	keywords += list(SPECIES_SERGAL)
 	data = "There are two subspecies of Sergal, Southern and Northern. Northern sergals are a highly aggressive race that \
 	lives in the plains and tundra of their homeworld. They are characterized by long, fluffy fur bodies with cold colors; usually with \
 	white abdomens, somewhat short ears, and thick faces. Southern sergals are much more docile and live in the Gold Ring City and are scattered around \
@@ -118,8 +118,8 @@
 	lived to 5000. Although General Rain's historical existence is disputed, she is nonetheless a symbol of the Sergal's warrior culture."
 
 /datum/lore/codex/page/vulpkanin/add_content()
-	name = "Vulpkanin"
-	keywords += list("Vulpkanin")
+	name = SPECIES_VULPKANIN
+	keywords += list(SPECIES_VULPKANIN)
 	data = "Vulpkanin or \"Vulpa\" are a species of sharp-witted canid bipeds residing on the planet Altam just barely \
 	within the binary Vazzend system. Their politically de-centralized society and independent natures have led them \
 	to become a species and culture both feared and respected for their scientific breakthroughs. Discovery, loyalty, \
@@ -143,9 +143,9 @@
 
 // Bird lore
 /datum/lore/codex/category/teshari/add_content()
-	name = "Teshari"
-	keywords += list("Teshari")
-	data = "The Teshari are reptilian pack predators from the [quick_link("Skrell")] homeworld, Sirisai (Qerr'balak). While they evolved alongside the Skrell, their interactions with them \
+	name = SPECIES_TESHARI
+	keywords += list(SPECIES_TESHARI)
+	data = "The Teshari are reptilian pack predators from the [quick_link(SPECIES_SKRELL)] homeworld, Sirisai (Qerr'balak). While they evolved alongside the Skrell, their interactions with them \
 	tended to be confused and violent, and until peaceful contact was made they largely stayed in their territories on and around the poles, in tundral \
 	terrain far too desolate and cold to be of interest to the Skrell. In more enlightened times, the Teshari are a minority culture on many Skrell worlds, \
 	maintaining their own settlements and cultures, but often finding themselves standing on the shoulders of their more technologically advanced neighbors \
@@ -164,7 +164,7 @@
 	<br><br>\
 	<b>Eshi</b><br>\
 	A large, old, politically neutral pack heavily involved in efforts to get Teshari into space. Probably the most \
-	common pack to see outside of a [quick_link("Skrell")] colony, and probably the most numerous Teshari pack outside of Sirisai and associated colonies.\
+	common pack to see outside of a [quick_link(SPECIES_SKRELL)] colony, and probably the most numerous Teshari pack outside of Sirisai and associated colonies.\
 	<br><br>\
 	<b>Nasemari</b><br>\
 	A very small pack. Generally focused around supporting and providing for packs on the homeworlds, they have devoted \
@@ -189,7 +189,7 @@
 	name = "Physiology of Teshari"
 	data = "The Teshari are, relative to other species, smaller than average, rarely reaching more than 2-3'/1m in height, and weigh less than \
 	90lbs/40kg. They have rapid metabolisms and very efficient digestive systems, and thanks to sharing in \
-	the medical technology of the [quick_link("Skrell")], they tend to have robust and effective immune systems. They evolved \
+	the medical technology of the [quick_link(SPECIES_SKRELL)], they tend to have robust and effective immune systems. They evolved \
 	for very cold and very barren areas, generally the polar regions. Because of this, their skin is a fine \
 	insulator and many of their internal processes are not particularly energy-efficient; they cannot cope \
 	well at all with high temperatures.\
@@ -205,7 +205,7 @@
 	data = "A Positronic being, is an individual with a positronic brain, manufactured \
 	and fostered amongst organic life. Positronic brains enjoy the same legal status as a human in [quick_link("SolGov")] space, although discrimination is \
 	still prevalent, and are considered sapient on all accounts. They can be considered a \"synthetic species\". Half-developed and \
-	half-discovered in the 2280’s by a human black lab studying alien artifacts, the first positronic brain was an inch-wide cube \
+	half-discovered in the 2280ï¿½s by a human black lab studying alien artifacts, the first positronic brain was an inch-wide cube \
 	of an palladium-iridium alloy, nano-etched with billions upon billions of conduits and connections. Upon activation, \
 	hard-booted with an emitter laser, the brain issued a single sentence before the neural pathways collapsed and \
 	it became an inert lump of platinum: \"What is my purpose?\"."
@@ -269,7 +269,7 @@
 	keywords = list("fork")
 	data = "A \"codeline\" is a single type of drone. A codeline represents a significant degree of effort from sapient programmers to realize, as well as \
 	a substantial amount of regulatory fees levied by the government. Each copy of a codeline is called a \"fork\", whether the fork is created from the \
-	codeline’s initial state or from a fully realized individual of that codeline. The degree of similarity between forks of the same codeline varies \
+	codelineï¿½s initial state or from a fully realized individual of that codeline. The degree of similarity between forks of the same codeline varies \
 	on the intelligence of the codeline, with low-level forks being virtually identical to high-level forks being no more similar than family members."
 
 /*
@@ -287,8 +287,8 @@
 	keywords = list("SG-EIO", "SG EIO", "EIO", "Intelligence Oversight")
 	data = "SG-EIO, usually just called EIO, is the organization charged with monitoring existing AI for any threat of dangerous emergence. Their perception in the \
 	public eye is generally positive, with all but the hardest-line Mercurial humans in favor of protection from the dangers of Seed AI. Some positronic rights \
-	groups bristle at the EIO’s human-centric viewpoint, but most are glad to have a different boogeyman in the form of drone intelligences. The tiny population \
-	of A-class drones are generally frightened of the EIO’s total power over them."
+	groups bristle at the EIOï¿½s human-centric viewpoint, but most are glad to have a different boogeyman in the form of drone intelligences. The tiny population \
+	of A-class drones are generally frightened of the EIOï¿½s total power over them."
 
 /*/datum/lore/codex/category/drone_classes
 	name = "Drone Classifications"
@@ -346,7 +346,7 @@
 	name = "A Class"
 	keywords += list("AGI")
 	data = "A-class drones are also referred to as AGI. A-class drones are capable of performing in many contexts and can learn to solve problems from \
-	first principles, with an incredible potential for growth and emergent behavior. However, some abilities fall short of humans’, usually those relating \
+	first principles, with an incredible potential for growth and emergent behavior. However, some abilities fall short of humansï¿½, usually those relating \
 	to socialization, and they often act in ways that are strange or distressing. There is a small but growing lobby of support for the personhood of A-class \
 	drones. The cost of initializing an A-class drone is absolutely massive, as they will be monitored by [quick_link("EIO")] forever. The auditing cost of an A-class drone \
 	codeline is even more staggering, making development and deployment of AGI limited to research, highly difficult and high-throughput operations like habitat \
@@ -358,7 +358,7 @@
 	data = "AA-class drones <b>do not yet exist</b>. Hypothetically, they are equal to living in every respect, with psychology that would not be abnormal in a baseline \
 	human. The type of AA-class drone most frequently discussed is a hypothetical digitized consciousness of a human, a human brain that is somehow translated into \
 	software. Some argue that a small fraction of the A-class drones would more properly be considered AA, but as of yet no action has been taken. Some Mercurials \
-	will jokingly refer to themselves or other organics and positronics as AA’s. Research into brain uploading is heavily regulated and generally illegal."
+	will jokingly refer to themselves or other organics and positronics as AAï¿½s. Research into brain uploading is heavily regulated and generally illegal."
 
 /datum/lore/codex/page/class_aaa
 	name = "AAA Class"

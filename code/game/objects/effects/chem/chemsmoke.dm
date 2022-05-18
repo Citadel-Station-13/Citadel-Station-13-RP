@@ -29,8 +29,8 @@
 	var/datum/seed/seed
 
 /datum/effect_system/smoke_spread/chem/spores/New(seed_name)
-	if(seed_name && plant_controller)
-		seed = plant_controller.seeds[seed_name]
+	if(seed_name && SSplants)
+		seed = SSplants.seeds[seed_name]
 	if(!seed)
 		qdel(src)
 	..()
@@ -211,9 +211,7 @@
 					continue
 				if(!(target in targetTurfs))
 					continue
-				if(current.c_airblock(target)) //this is needed to stop chemsmoke from passing through thin window walls
-					continue
-				if(target.c_airblock(current))
+				if(current.CheckAirBlock(target) == ATMOS_PASS_AIR_BLOCKED) //this is needed to stop chemsmoke from passing through thin window walls
 					continue
 				pending += target
 

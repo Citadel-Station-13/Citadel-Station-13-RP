@@ -12,12 +12,42 @@
 /atom/vv_edit_var(var_name, var_value)
 	if(!GLOB.Debug2)
 		flags |= ADMIN_SPAWNED
-	. = ..()
-		/*
 	switch(var_name)
-		if("color")
+		if(NAMEOF(src, smoothing_junction))
+			set_smoothed_icon_state(var_value)
+			. = TRUE
+		if(NAMEOF(src, opacity))
+			set_opacity(var_value)
+			. = TRUE
+		if(NAMEOF(src, base_pixel_x))
+			set_base_pixel_x(var_value)
+			. = TRUE
+		if(NAMEOF(src, base_pixel_y))
+			set_base_pixel_y(var_value)
+			. = TRUE
+
+	if(!isnull(.))
+		datum_flags |= DF_VAR_EDITED
+		return
+
+	if(!GLOB.Debug2)
+		flags |= ADMIN_SPAWNED
+
+	. = ..()
+
+	switch(var_name)
+		if(NAMEOF(src, color))
 			add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
-		*/
+		if(NAMEOF(src, base_layer), NAMEOF(src, layer))
+			set_base_layer(var_value)
+		if(NAMEOF(src, relative_layer))
+			set_relative_layer(var_value)
+
+/atom/vv_get_var(var_name)
+	switch(var_name)
+		if(NAMEOF(src, base_layer))
+			return debug_variable(isnull(base_layer)? layer : base_layer, vars[var_name], 0, src)
+	return ..()
 
 /**
   * Return the markup to for the dropdown list for the VV panel for this atom
@@ -35,6 +65,8 @@
 	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "Add Reagent")
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EMP, "EMP Pulse")
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_FILTERS, "Edit Filters")
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_COLOR_MATRIX, "Edit Color as Matrix")
 
 /atom/vv_do_topic(list/href_list)
 	. = ..()
@@ -93,9 +125,17 @@
 				var/angle = input(usr, "Choose angle to rotate","Transform Mod") as null|num
 				if(!isnull(angle))
 					transform = M.Turn(angle)
+	if(href_list[VV_HK_EDIT_FILTERS] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_filter_editor(src)
+
+	if(href_list[VV_HK_EDIT_COLOR_MATRIX] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_color_matrix_editor(src)
 
 /atom/vv_get_header()
 	. = ..()
-	var/refid = REF(src)
-	. += "[VV_HREF_TARGETREF_1V(refid, VV_HK_BASIC_EDIT, "<b id='name'>[src]", NAMEOF(src, name))]"
-	. += "<br><font size='1'><a href='?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=left'><<</a> <a href='?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=dir' id='dir'>[dir2text(dir) || dir]</a> <a href='?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=right'>>></a></font>"
+	if(!isliving(src))
+		var/refid = REF(src)
+		. += "[VV_HREF_TARGETREF_1V(refid, VV_HK_BASIC_EDIT, "<b id='name'>[src]", NAMEOF(src, name))]"
+		. += "<br><font size='1'><a href='?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=left'><<</a> <a href='?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=dir' id='dir'>[dir2text(dir) || dir]</a> <a href='?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=right'>>></a></font>"

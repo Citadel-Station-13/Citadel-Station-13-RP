@@ -1,6 +1,7 @@
-#define MOVES_HITSCAN -1		//Not actually hitscan but close as we get without actual hitscan.
-#define MUZZLE_EFFECT_PIXEL_INCREMENT 17	//How many pixels to move the muzzle flash up so your character doesn't look like they're shitting out lasers.
-
+///Not actually hitscan but close as we get without actual hitscan.
+#define MOVES_HITSCAN -1
+///How many pixels to move the muzzle flash up so your character doesn't look like they're shitting out lasers.
+#define MUZZLE_EFFECT_PIXEL_INCREMENT 17
 /obj/item/projectile
 	name = "projectile"
 	icon = 'icons/obj/projectiles.dmi'
@@ -45,6 +46,10 @@
 	var/muzzle_type
 	var/impact_type
 	var/datum/beam_components_cache/beam_components
+
+	var/miss_sounds
+	var/ricochet_sounds
+	var/list/impact_sounds	//for different categories, IMPACT_MEAT etc
 
 	//Fancy hitscan lighting effects!
 	var/hitscan_light_intensity = 1.5
@@ -650,6 +655,7 @@
 	if(result == PROJECTILE_FORCE_MISS)
 		if(!silenced)
 			visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
+			playsound(target_mob.loc, pick(miss_sounds), 60, 1)
 		return FALSE
 
 	//hit messages

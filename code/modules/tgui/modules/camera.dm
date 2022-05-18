@@ -12,12 +12,11 @@
 	// Stuff needed to render the map
 	var/map_name
 	var/const/default_map_size = 15
-	var/obj/screen/map_view/cam_screen
+	var/atom/movable/screen/map_view/cam_screen
 	/// All the plane masters that need to be applied.
 	var/list/cam_plane_masters
-	var/obj/screen/background/cam_background
-	var/obj/screen/background/cam_foreground
-	var/obj/screen/skybox/local_skybox
+	var/atom/movable/screen/background/cam_background
+	var/atom/movable/screen/background/cam_foreground
 	// Stuff for moving cameras
 	var/turf/last_camera_turf
 
@@ -38,16 +37,10 @@
 	cam_plane_masters = get_tgui_plane_masters()
 
 	for(var/plane in cam_plane_masters)
-		var/obj/screen/instance = plane
+		var/atom/movable/screen/instance = plane
 		instance.assigned_map = map_name
 		instance.del_on_map_removal = FALSE
 		instance.screen_loc = "[map_name]:CENTER"
-
-	local_skybox = new()
-	local_skybox.assigned_map = map_name
-	local_skybox.del_on_map_removal = FALSE
-	local_skybox.screen_loc = "[map_name]:CENTER,CENTER"
-	cam_plane_masters += local_skybox
 
 	cam_background = new
 	cam_background.assigned_map = map_name
@@ -63,7 +56,7 @@
 	cam_foreground = new
 	cam_foreground.assigned_map = map_name
 	cam_foreground.del_on_map_removal = FALSE
-	cam_foreground.plane = PLANE_FULLSCREEN
+	cam_foreground.plane = FULLSCREEN_PLANE
 	cam_foreground.add_overlay(scanlines)
 	cam_foreground.add_overlay(noise)
 
@@ -134,7 +127,7 @@
 		return TRUE
 
 	if(action && !issilicon(usr))
-		playsound(ui_host(), "terminal_type", 50, 1)
+		playsound(ui_host(), SFX_ALIAS_TERMINAL, 50, 1)
 
 	if(action == "switch_camera")
 		var/c_tag = params["name"]
@@ -144,7 +137,7 @@
 			UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 		active_camera = C
 		RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
-		playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
+		playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 		update_active_camera_screen()
 		return TRUE
 
@@ -171,7 +164,7 @@
 					UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 				active_camera = target
 				RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
-				playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
+				playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 				update_active_camera_screen()
 				. = TRUE
 
@@ -207,11 +200,6 @@
 
 	cam_foreground.fill_rect(1, 1, size_x, size_y)
 
-	local_skybox.cut_overlays()
-	local_skybox.add_overlay(SSskybox.get_skybox(get_z(newturf)))
-	local_skybox.scale_to_view(size_x)
-	local_skybox.set_position("CENTER", "CENTER", (world.maxx>>1) - newturf.x, (world.maxy>>1) - newturf.y)
-
 // Returns the list of cameras accessible from this computer
 // This proc operates in two distinct ways depending on the context in which the module is created.
 // It can either return a list of cameras sharing the same the internal `network` variable, or
@@ -234,7 +222,7 @@
 		all_networks += additional_networks
 
 	var/list/D = list()
-	for(var/obj/machinery/camera/C in cameranet.cameras)
+	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue
@@ -260,7 +248,6 @@
 	cam_screen.vis_contents.Cut()
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, default_map_size, default_map_size)
-	local_skybox.cut_overlays()
 
 /datum/tgui_module/camera/ui_close(mob/user)
 	. = ..()

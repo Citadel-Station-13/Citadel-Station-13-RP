@@ -53,13 +53,13 @@
 /datum/tgui_module/ship/proc/look(var/mob/user)
 	if(linked)
 		user.set_machine(src)
-		user.reset_view(linked)
+		user.reset_perspective(linked)
 	user.set_viewsize(world.view + extra_view)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unlook)
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module/ship/proc/unlook(var/mob/user)
-	user.reset_view()
+	user.reset_perspective()
 	user.set_viewsize() // reset to default
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	LAZYREMOVE(viewers, WEAKREF(user))
@@ -170,7 +170,7 @@
 			R.fields["y"] = S.y
 			known_sectors[S.name] = R
 	// SENSORS
-	for(var/obj/machinery/shipsensors/S in global.machines)
+	for(var/obj/machinery/shipsensors/S in GLOB.machines)
 		if(linked.check_ownership(S))
 			sensors = S
 			break

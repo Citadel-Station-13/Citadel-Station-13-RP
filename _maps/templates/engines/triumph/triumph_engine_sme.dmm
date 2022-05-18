@@ -23,7 +23,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "at" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -101,6 +101,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
+/obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "cI" = (
@@ -133,7 +134,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "gC" = (
-/obj/machinery/atmospherics/trinary/atmos_filter,
+/obj/machinery/atmospherics/component/trinary/atmos_filter,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "hh" = (
@@ -333,16 +334,22 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "mh" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"ms" = (
+/obj/structure/closet/radiation,
+/obj/item/clothing/glasses/meson,
+/obj/item/clothing/glasses/meson,
+/turf/template_noop,
+/area/template_noop)
 "mQ" = (
 /obj/machinery/camera/network/engine{
 	dir = 1
 	},
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -425,20 +432,12 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "qb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/sign/warning/radioactive,
+/turf/simulated/wall/r_wall,
 /area/engineering/engine_room)
 "qc" = (
 /obj/machinery/shield_diffuser,
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1439;
 	id = "waste_out";
@@ -478,7 +477,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "rL" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -487,7 +486,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "so" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "sY" = (
@@ -504,7 +503,7 @@
 /turf/template_noop,
 /area/template_noop)
 "tj" = (
-/obj/machinery/atmospherics/unary/vent_pump/engine{
+/obj/machinery/atmospherics/component/unary/vent_pump/engine{
 	dir = 1;
 	external_pressure_bound = 100;
 	external_pressure_bound_default = 0;
@@ -565,7 +564,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "vb" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1
 	},
 /turf/simulated/floor,
@@ -589,6 +588,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 9
 	},
+/obj/machinery/light,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "vz" = (
@@ -620,7 +620,7 @@
 	},
 /area/engineering/engine_room)
 "wa" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1;
 	dir = 1
 	},
@@ -825,6 +825,11 @@
 	sensors = list("engine_sensor" = "Engine Core");
 	throwpass = 1
 	},
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Dv" = (
@@ -859,6 +864,12 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"Eb" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Eq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -903,7 +914,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Fb" = (
@@ -1011,7 +1021,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "JR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/cable/cyan{
@@ -1169,7 +1179,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Sj" = (
-/obj/machinery/atmospherics/binary/pump/high_power{
+/obj/machinery/atmospherics/component/binary/pump/high_power{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -1219,7 +1229,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "SW" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
+/obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1438;
 	id = "cooling_in";
@@ -1307,8 +1317,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Vn" = (
-/obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/vault{
+	name = "REACTOR ROOM";
+	req_one_access = list(10)
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "VH" = (
@@ -1486,12 +1499,8 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
-	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
 	},
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -1607,7 +1616,7 @@ XW
 uL
 JR
 YK
-WZ
+qb
 "}
 (6,1,1) = {"
 Vn
@@ -1631,7 +1640,7 @@ Ck
 VK
 "}
 (7,1,1) = {"
-WZ
+qb
 vS
 FN
 FN
@@ -1667,7 +1676,7 @@ jZ
 lS
 WZ
 WZ
-WZ
+qb
 Rm
 MT
 WZ
@@ -1832,7 +1841,7 @@ SI
 hC
 FN
 Vh
-Cu
+Eb
 WZ
 td
 td
@@ -1853,10 +1862,10 @@ Qf
 cI
 FN
 vd
+rL
 qb
-WZ
-td
-td
+ms
+ms
 td
 td
 td

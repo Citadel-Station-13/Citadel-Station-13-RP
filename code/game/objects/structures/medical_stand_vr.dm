@@ -80,7 +80,7 @@
 		qdel(tank)
 	if(breather)
 		breather.remove_from_mob(contained)
-		src.visible_message("<span class='notice'>The mask rapidly retracts just before /the [src] is destroyed!</span>")
+		src.visible_message(SPAN_NOTICE("The mask rapidly retracts just before \the [src] is destroyed!"))
 	qdel(contained)
 	contained = null
 	breather = null
@@ -384,8 +384,9 @@
 		else
 			breather.internals?.icon_state = "internal0"
 			breather.internal = null
+
 	else if (valve_opened)
-		var/datum/gas_mixture/removed = tank.remove_air(0.01)
+		var/datum/gas_mixture/removed = tank.remove_moles(0.01)
 		var/datum/gas_mixture/environment = loc.return_air()
 		environment.merge(removed)
 
@@ -423,7 +424,7 @@
 				return
 
 			// If the human is losing too much blood, beep.
-			if(H.vessel.get_reagent_amount("blood") < BLOOD_VOLUME_SAFE)
+			if(H.vessel.get_reagent_amount("blood") < H.species.blood_volume*H.species.blood_level_safe)
 				visible_message("\The [src] beeps loudly.")
 
 			var/datum/reagent/B = H.take_blood(beaker,amount)
@@ -441,4 +442,3 @@
 	spawn_type = /obj/item/tank/anesthetic
 	mask_type = /obj/item/clothing/mask/breath/medical
 	is_loosen = FALSE
-

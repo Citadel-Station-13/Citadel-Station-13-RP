@@ -2,7 +2,7 @@
 /// Drinks.
 ////////////////////////////////////////////////////////////////////////////////
 //custom_open_sound is for a sound path to use instead of the default opening
-//example: custom_open_sound = 'sound/effects/Explosion1.ogg'
+//example: custom_open_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 /obj/item/reagent_containers/food/drinks
 	name = "drink"
 	desc = "yummy"
@@ -12,6 +12,7 @@
 	icon_state = null
 	flags = OPENCONTAINER
 	amount_per_transfer_from_this = 5
+	possible_transfer_amounts = list(5,10,15,25,30)
 	volume = 50
 	var/custom_open_sound
 
@@ -225,6 +226,58 @@
 /obj/item/reagent_containers/food/drinks/dry_ramen/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("dry_ramen", 30)
+
+/obj/item/reagent_containers/food/drinks/bludboxmax
+	name = "Bludbox MAX carton"
+	desc = "A vampire's best friend! This Bludbox contains only the most delicious of organic, free-range O-Negatives. For all your dietry needs!"
+	volume = 30
+	icon_state = "bludboxmax"
+	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/reagent_containers/food/drinks/bludboxmax/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("blood", 30)
+
+/obj/item/reagent_containers/food/drinks/bludboxmaxlight
+	name = "Bludbox MAX Light carton"
+	desc = "A bloodsucking vegan's hipster alternative to drinking the red stuff. Bludbox light is just the same as drinking straight from the source! Comes in O- flavour."
+	volume = 30
+	icon_state = "bludboxmaxlight"
+	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/reagent_containers/food/drinks/bludboxmaxlight/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("synthblood", 30)
+
+/obj/item/reagent_containers/food/drinks/bludbox
+	name = "Bludbox carton"
+	desc = "The pop alternative to drinking real, human blood! Comes in blood flavour and contains all the dietry requirements for your undead friends."
+	volume = 30
+	icon_state = "bludbox"
+	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/reagent_containers/food/drinks/bludbox/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("blud", 30)
+
+/obj/item/reagent_containers/food/drinks/bludboxlight
+	name = "Bludbox Light carton"
+	desc = "The pop alternative to drinking real, human blood! Comes in blood flavour and contains all the dietry requirements for your undead friends. This one has less sweeteners, gross!"
+	volume = 30
+	icon_state = "bludboxlight"
+	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/reagent_containers/food/drinks/bludboxlight/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("bludlight", 30)
 
 /obj/item/reagent_containers/food/drinks/sillycup
 	name = "paper cup"

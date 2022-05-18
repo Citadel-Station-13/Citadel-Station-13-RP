@@ -5,6 +5,7 @@
 	item_state = "pneumatic"
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	fire_sound_text = "a loud whoosh of moving air"
 	fire_delay = 50
 	fire_sound = 'sound/weapons/grenade_launcher.ogg' // Formerly tablehit1.ogg but I like this better -Ace
@@ -124,17 +125,20 @@
 	..()
 
 /obj/item/gun/launcher/pneumatic/update_icon()
+	. = ..()
+	if (ismob(src.loc))
+		var/mob/M = src.loc
+		M.update_inv_r_hand()
+		M.update_inv_l_hand()
+
+/obj/item/gun/launcher/pneumatic/update_icon_state()
+	. = ..()
 	if(tank)
 		icon_state = "pneumatic-tank"
 		item_state = "pneumatic-tank"
 	else
 		icon_state = "pneumatic"
 		item_state = "pneumatic"
-
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
 
 //Constructable pneumatic cannon.
 
@@ -172,7 +176,7 @@
 			buildstate++
 			update_icon()
 			return
-	else if(istype(W,/obj/item/stack/material) && W.get_material_name() == DEFAULT_WALL_MATERIAL)
+	else if(istype(W,/obj/item/stack/material) && W.get_material_name() == MAT_STEEL)
 		if(buildstate == 2)
 			var/obj/item/stack/material/M = W
 			if(M.use(5))

@@ -7,7 +7,7 @@ proc/createRandomZlevel()
 
 	var/list/potentialRandomZlevels = list()
 	admin_notice("<font color='red'><B> Searching for away missions...</B></font>", R_DEBUG)
-	var/list/Lines = file2list("maps/RandomZLevels/fileList.txt")
+	var/list/Lines = world.file2list("maps/RandomZLevels/fileList.txt")
 	if(!Lines.len)	return
 	for (var/t in Lines)
 		if (!t)
@@ -48,7 +48,7 @@ proc/createRandomZlevel()
 			template.load_new_z()
 			log_world("away mission loaded: [map]")
 		/* VOREStation Removal - We do this in the special landmark init instead.
-		for(var/obj/effect/landmark/L in GLOB.landmarks_list)
+		for(var/atom/movable/landmark/L in GLOB.landmarks_list)
 			if (L.name != "awaystart")
 				continue
 			awaydestinations.Add(L)
@@ -60,15 +60,15 @@ proc/createRandomZlevel()
 		return
 
 //VOREStation Add - This landmark type so it's not so ghetto.
-/obj/effect/landmark/gateway_scatter
+/atom/movable/landmark/gateway_scatter
 	name = "uncalibrated gateway destination"
-/obj/effect/landmark/gateway_scatter/Initialize(mapload)
+/atom/movable/landmark/gateway_scatter/Initialize(mapload)
 	. = ..()
 	awaydestinations += src
 
-/obj/effect/landmark/event_scatter
+/atom/movable/landmark/event_scatter
 	name = "uncalibrated gateway destination"
-/obj/effect/landmark/event_scatter/Initialize(mapload)
+/atom/movable/landmark/event_scatter/Initialize(mapload)
 	. = ..()
 	eventdestinations += src
 //VOREStation Add End

@@ -4,12 +4,12 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndbeacon"
 	use_power = USE_POWER_OFF
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	var/charges = 1
 	var/insisting = 0
 
-/obj/machinery/wish_granter/attack_hand(var/mob/user as mob)
+/obj/machinery/wish_granter/attack_hand(mob/user)
 	usr.set_machine(src)
 
 	if(charges <= 0)
@@ -42,9 +42,8 @@
 
 		if(!(XRAY in user.mutations))
 			user.mutations.Add(XRAY)
-			user.sight |= (SEE_MOBS|SEE_OBJS|SEE_TURFS)
-			user.see_in_dark = 8
-			user.see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			user.ensure_self_perspective()
+			user.handle_regular_hud_updates()
 
 		if(!(COLD_RESISTANCE in user.mutations))
 			user.mutations.Add(COLD_RESISTANCE)

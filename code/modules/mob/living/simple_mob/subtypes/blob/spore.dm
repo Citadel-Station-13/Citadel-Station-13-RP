@@ -68,7 +68,7 @@
 	factory = null
 	if(infested)
 		infested.forceMove(get_turf(src))
-		visible_message(span("warning", "\The [infested] falls to the ground as the blob spore bursts."))
+		visible_message(SPAN_WARNING( "\The [infested] falls to the ground as the blob spore bursts."))
 		infested = null
 	return ..()
 
@@ -136,7 +136,7 @@
 	say_list = new /datum/say_list/infested()
 
 	update_icons()
-	visible_message(span("warning", "The corpse of [H.name] suddenly rises!"))
+	visible_message(SPAN_WARNING( "The corpse of [H.name] suddenly rises!"))
 
 /mob/living/simple_mob/blob/spore/GetIdCard()
 	if(infested) // If we've infested someone, use their ID.
@@ -154,5 +154,5 @@
 		helpers++
 
 	if(helpers)
-		to_chat(src, span("notice", "Your attack is assisted by [helpers] other spore\s."))
+		to_chat(src, SPAN_NOTICE("Your attack is assisted by [helpers] other spore\s."))
 	return damage_to_do

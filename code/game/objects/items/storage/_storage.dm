@@ -21,14 +21,14 @@
 	var/max_w_class = ITEMSIZE_SMALL //Max size of objects that this object can store (in effect only if can_hold isn't set)
 	var/max_storage_space = ITEMSIZE_COST_SMALL * 4 //The sum of the storage costs of all the items in this storage item.
 	var/storage_slots = null //The number of storage slots in this container.  If null, it uses the volume-based storage instead.
-	var/obj/screen/storage/boxes = null
-	var/obj/screen/storage/storage_start = null //storage UI
-	var/obj/screen/storage/storage_continue = null
-	var/obj/screen/storage/storage_end = null
-	var/obj/screen/storage/stored_start = null
-	var/obj/screen/storage/stored_continue = null
-	var/obj/screen/storage/stored_end = null
-	var/obj/screen/close/closer = null
+	var/atom/movable/screen/storage/boxes = null
+	var/atom/movable/screen/storage/storage_start = null //storage UI
+	var/atom/movable/screen/storage/storage_continue = null
+	var/atom/movable/screen/storage/storage_end = null
+	var/atom/movable/screen/storage/stored_start = null
+	var/atom/movable/screen/storage/stored_continue = null
+	var/atom/movable/screen/storage/stored_end = null
+	var/atom/movable/screen/close/closer = null
 	var/use_to_pickup	//Set this to make it possible to use this item in an inverse way, so you can have the item in your hand and click items on the floor to pick them up.
 	var/display_contents_with_number	//Set this to make the storage item group contents of the same type and display them as a number.
 	var/allow_quick_empty	//Set this variable to allow the object to have the 'empty' verb, which dumps all the contents on the floor.
@@ -67,7 +67,7 @@
 			src.open(usr)
 			return
 
-		if (!( istype(over_object, /obj/screen) ))
+		if (!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 
 		// Makes sure that the storage is equipped, so that we can't drag it into our hand from miles away.
@@ -78,7 +78,7 @@
 		if (( usr.restrained() ) || ( usr.stat ))
 			return
 
-		if ((src.loc == usr) && !(istype(over_object, /obj/screen)) && !usr.unEquip(src))
+		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
 			return
 
 		switch(over_object.name)
@@ -555,40 +555,40 @@
 	else
 		verbs -= /obj/item/storage/verb/toggle_gathering_mode
 
-	src.boxes = new /obj/screen/storage(  )
+	src.boxes = new /atom/movable/screen/storage(  )
 	src.boxes.name = "storage"
 	src.boxes.master = src
 	src.boxes.icon_state = "block"
 	src.boxes.screen_loc = "7,7 to 10,8"
 
-	src.storage_start = new /obj/screen/storage(  )
+	src.storage_start = new /atom/movable/screen/storage(  )
 	src.storage_start.name = "storage"
 	src.storage_start.master = src
 	src.storage_start.icon_state = "storage_start"
 	src.storage_start.screen_loc = "7,7 to 10,8"
 
-	src.storage_continue = new /obj/screen/storage(  )
+	src.storage_continue = new /atom/movable/screen/storage(  )
 	src.storage_continue.name = "storage"
 	src.storage_continue.master = src
 	src.storage_continue.icon_state = "storage_continue"
 	src.storage_continue.screen_loc = "7,7 to 10,8"
 
-	src.storage_end = new /obj/screen/storage(  )
+	src.storage_end = new /atom/movable/screen/storage(  )
 	src.storage_end.name = "storage"
 	src.storage_end.master = src
 	src.storage_end.icon_state = "storage_end"
 	src.storage_end.screen_loc = "7,7 to 10,8"
 
-	src.stored_start = new /obj //we just need these to hold the icon
+	src.stored_start = new /atom/movable //we just need these to hold the icon
 	src.stored_start.icon_state = "stored_start"
 
-	src.stored_continue = new /obj
+	src.stored_continue = new /atom/movable
 	src.stored_continue.icon_state = "stored_continue"
 
-	src.stored_end = new /obj
+	src.stored_end = new /atom/movable
 	src.stored_end.icon_state = "stored_end"
 
-	src.closer = new /obj/screen/close(  )
+	src.closer = new /atom/movable/screen/close(  )
 	src.closer.master = src
 	src.closer.icon_state = "storage_close"
 	src.closer.hud_layerise()

@@ -421,7 +421,7 @@
 /obj/item/clothing/accessory/bracelet/material/Initialize(mapload, new_material)
 	. = ..(mapload)
 	if(!new_material)
-		new_material = DEFAULT_WALL_MATERIAL
+		new_material = MAT_STEEL
 	material = get_material_by_name(new_material)
 	if(!istype(material))
 		return INITIALIZE_HINT_QDEL
@@ -552,7 +552,7 @@
 
 // Solution for race-specific sprites for an accessory which is also a suit.
 // Suit icons break if you don't use icon override which then also overrides race-specific sprites.
-/obj/item/clothing/accessory/collar/equipped()
+/obj/item/clothing/accessory/collar/equipped(mob/user, slot)
 	..()
 	setUniqueSpeciesSprite()
 
@@ -750,7 +750,7 @@
 	icon_state = "collar_holo"
 	item_state = "collar_holo_overlay"
 	overlay_state = "collar_holo_overlay"
-	matter = list(DEFAULT_WALL_MATERIAL = 50)
+	matter = list(MAT_STEEL = 50)
 
 /obj/item/clothing/accessory/collar/silvercolor
 	name = "Dyeable Silver tag collar"

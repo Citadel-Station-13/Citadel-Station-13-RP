@@ -72,7 +72,7 @@ var/list/ai_verbs_default = list(
 	var/datum/trackable/track = null
 	var/last_announcement = ""
 	var/control_disabled = 0
-	var/datum/announcement/priority/announcement
+	var/datum/legacy_announcement/priority/announcement
 	var/obj/machinery/ai_powersupply/psupply = null // Backwards reference to AI's powersupply object.
 	var/hologram_follow = 1 //This is used for the AI eye, to determine if a holopad's hologram should follow it or not.
 	var/is_dummy = 0 //Used to prevent dummy AIs from spawning with communicators.
@@ -181,6 +181,7 @@ var/list/ai_verbs_default = list(
 	add_language(LANGUAGE_DAEMON,		1)
 	add_language(LANGUAGE_ENOCHIAN,		1)
 	add_language(LANGUAGE_SQUEAKISH,	1)
+	add_language(LANGUAGE_AKULA,		1)
 
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
@@ -411,7 +412,7 @@ var/list/ai_verbs_default = list(
 
 	// hack to display shuttle timer
 	if(SSemergencyshuttle.online())
-		var/obj/machinery/computer/communications/C = locate() in machines
+		var/obj/machinery/computer/communications/C = locate() in GLOB.machines
 		if(C)
 			C.post_status("shuttle")
 
@@ -477,7 +478,7 @@ var/list/ai_verbs_default = list(
 		unset_machine()
 		src << browse(null, t1)
 	if (href_list["switchcamera"])
-		switchCamera(locate(href_list["switchcamera"])) in cameranet.cameras
+		switchCamera(locate(href_list["switchcamera"])) in GLOB.cameranet.cameras
 	if (href_list["showalerts"])
 		subsystem_alarm_monitor()
 	//Carn: holopad requests
@@ -496,20 +497,10 @@ var/list/ai_verbs_default = list(
 			ai_actual_track(target)
 		else
 			to_chat(src, "<font color='red'>System error. Cannot locate [html_decode(href_list["trackname"])].</font>")
-		return
 
-	return
-
-/mob/living/silicon/ai/reset_view(atom/A)
-	if(camera)
-		camera.set_light(0)
-	if(istype(A,/obj/machinery/camera))
-		camera = A
-	..()
-	if(istype(A,/obj/machinery/camera))
-		if(camera_light_on)	A.set_light(AI_CAMERA_LUMINOSITY)
-		else				A.set_light(0)
-
+/mob/living/silicon/ai/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
+	. = ..()
+	lightNearbyCamera()
 
 /mob/living/silicon/ai/proc/switchCamera(var/obj/machinery/camera/C)
 	if (!C || stat == DEAD) //C.can_use())
@@ -521,7 +512,6 @@ var/list/ai_verbs_default = list(
 	// ok, we're alive, camera is good and in our network...
 	eyeobj.setLoc(get_turf(C))
 	//machine = src
-
 	return 1
 
 /mob/living/silicon/ai/cancel_camera()
@@ -537,7 +527,7 @@ var/list/ai_verbs_default = list(
 		return
 
 	var/list/cameralist = new()
-	for (var/obj/machinery/camera/C in cameranet.cameras)
+	for (var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.can_use())
 			continue
 		var/list/tempnetwork = difflist(C.network,restricted_camera_networks,1)
@@ -561,7 +551,7 @@ var/list/ai_verbs_default = list(
 
 	src.network = network
 
-	for(var/obj/machinery/camera/C in cameranet.cameras)
+	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.can_use())
 			continue
 		if(network in C.network)
@@ -745,7 +735,9 @@ var/list/ai_verbs_default = list(
 // It will get the nearest camera from the eyeobj, lighting it.
 
 /mob/living/silicon/ai/proc/lightNearbyCamera()
-	if(camera_light_on && camera_light_on < world.timeofday)
+	if(camera_light_on)
+		if(camera_light_on > world.timeofday)
+			return
 		if(src.camera)
 			var/obj/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && src.camera != camera)
@@ -764,7 +756,9 @@ var/list/ai_verbs_default = list(
 				src.camera = camera
 				src.camera.set_light(AI_CAMERA_LUMINOSITY)
 		camera_light_on = world.timeofday + 1 * 20 // Update the light every 2 seconds.
-
+	else if(camera)
+		camera.set_light(0)
+		camera = null
 
 /mob/living/silicon/ai/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/aicard))

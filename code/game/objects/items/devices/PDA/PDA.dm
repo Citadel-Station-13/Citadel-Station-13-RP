@@ -487,7 +487,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/MouseDrop(obj/over_object as obj, src_location, over_location)
 	var/mob/M = usr
-	if((!istype(over_object, /obj/screen)) && can_use())
+	if((!istype(over_object, /atom/movable/screen)) && can_use())
 		return attack_self(M)
 	return
 
@@ -700,7 +700,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 			ui.close()
 		return 0
 
-	add_fingerprint(U)
 	U.set_machine(src)
 
 	switch(href_list["choice"])
@@ -894,7 +893,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 		if("Toggle Door")
 			if(cartridge && cartridge.access_remote_door)
-				for(var/obj/machinery/door/blast/M in machines)
+				for(var/obj/machinery/door/blast/M in GLOB.machines)
 					if(M.id == cartridge.remote_door_id)
 						if(M.density)
 							M.open()
@@ -1584,7 +1583,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		results = list(list("entry" = "pressure", "units" = "kPa", "val" = "0", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80))
 	return results
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /obj/item/pda/centcom
 	default_cartridge = /obj/item/cartridge/captain
 	icon_state = "pda-h"

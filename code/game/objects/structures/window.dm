@@ -3,7 +3,7 @@
 	desc = "A window."
 	icon = 'icons/obj/structures_vr.dmi' // VOREStation Edit - New icons
 	density = 1
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	CanAtmosPass = ATMOS_PASS_PROC
 	w_class = ITEMSIZE_NORMAL
 
 	layer = WINDOW_LAYER
@@ -150,11 +150,10 @@
 	else
 		return TRUE
 
-
-/obj/structure/window/CanZASPass(turf/T, is_zone)
-	if(is_fulltile() || get_dir(T, loc) == turn(dir, 180)) // Make sure we're handling the border correctly.
-		return anchored ? ATMOS_PASS_NO : ATMOS_PASS_YES // If it's anchored, it'll block air.
-	return ATMOS_PASS_YES // Don't stop airflow from the other sides.
+/obj/structure/window/CanAtmosPass(turf/T, d)
+	if(is_fulltile() || (d == dir))
+		return anchored? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED
+	return ATMOS_PASS_NOT_BLOCKED
 
 /obj/structure/window/CheckExit(atom/movable/AM, turf/target)
 	if(is_fulltile())
@@ -718,8 +717,7 @@
 /obj/structure/window/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
-			to_chat(user, span("notice", "You deconstruct \the [src]."))
+			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
 			qdel(src)
 			return TRUE
 	return FALSE
-

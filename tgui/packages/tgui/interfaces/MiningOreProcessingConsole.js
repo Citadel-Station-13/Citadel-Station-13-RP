@@ -1,10 +1,8 @@
 import { toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Collapsible, Dropdown, Flex, Input, NoticeBox, Section, LabeledList, AnimatedNumber } from '../components';
+import { useBackend } from "../backend";
+import { Box, Button, Dropdown, Section, LabeledList, AnimatedNumber } from '../components';
 import { Window } from "../layouts";
-import { refocusLayout } from '../layouts';
-import { sortBy } from 'common/collections';
 import { MiningUser } from './common/Mining';
 
 export const MiningOreProcessingConsole = (props, context) => {
@@ -76,7 +74,8 @@ const processingOptions = [
 ];
 
 // Higher in the list == closer to top
-// This is just kind of an arbitrary list to sort by because the machine has no predictable ore order in it's list
+// This is just kind of an arbitrary list to sort by because
+// the machine has no predictable ore order in it's list
 // and alphabetizing them doesn't really make sense
 const oreOrder = [
   "verdantium",
@@ -123,22 +122,23 @@ const MOPCOres = (props, context) => {
     }>
       <LabeledList>
         {ores.length && ores.sort(oreSorter).map(ore => (
-          <LabeledList.Item key={ore.ore} label={toTitleCase(ore.name)} buttons={
-            <Dropdown
-              width="120px"
-              color={
-                ore.processing === 0 && 'red'
+          <LabeledList.Item key={ore.ore} label={toTitleCase(ore.name)}
+            buttons={
+              <Dropdown
+                width="120px"
+                color={
+                  ore.processing === 0 && 'red'
                 || ore.processing === 1 && 'green'
                 || ore.processing === 2 && 'blue'
                 || ore.processing === 3 && 'yellow'
-              }
-              options={processingOptions}
-              selected={processingOptions[ore.processing]}
-              onSelected={val => act("toggleSmelting", {
-                ore: ore.ore,
-                set: processingOptions.indexOf(val),
-              })} />
-          }>
+                }
+                options={processingOptions}
+                selected={processingOptions[ore.processing]}
+                onSelected={val => act("toggleSmelting", {
+                  ore: ore.ore,
+                  set: processingOptions.indexOf(val),
+                })} />
+            }>
             <Box inline>
               <AnimatedNumber value={ore.amount} />
             </Box>

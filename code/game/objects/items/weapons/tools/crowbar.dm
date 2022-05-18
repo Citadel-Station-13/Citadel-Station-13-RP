@@ -15,7 +15,7 @@
 	item_state = "crowbar"
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_ENGINEERING = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 50)
+	matter = list(MAT_STEEL = 50)
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
 	usesound = 'sound/items/crowbar.ogg'
 	drop_sound = 'sound/items/drop/crowbar.ogg'
@@ -28,7 +28,7 @@
 
 /obj/item/tool/crowbar/red
 	icon = 'icons/obj/tools.dmi'
-	icon_state = "red_crowbar"
+	icon_state = "crowbar_red"
 	item_state = "crowbar_red"
 
 /obj/item/tool/crowbar/bone
@@ -133,7 +133,7 @@
 	item_state = "crowbar"
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_ENGINEERING = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 30)
+	matter = list(MAT_STEEL = 30)
 	attack_verb = list("whapped", "smacked", "swatted", "thwacked", "hit")
 	usesound = 'sound/items/crowbar.ogg'
 	toolspeed = 1

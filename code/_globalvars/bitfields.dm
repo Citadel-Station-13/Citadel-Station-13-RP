@@ -1,5 +1,22 @@
+GLOBAL_LIST_INIT(bitfields, generate_bitfields())
+
+/datum/bitfield
+	/// The variable name that contains the bitfield
+	var/variable
+
+	/// An associative list of the readable flag and its true value
+	var/list/flags
+
+/// Turns /datum/bitfield subtypes into a list for use in debugging
+/proc/generate_bitfields()
+	var/list/bitfields = list()
+	for (var/_bitfield in subtypesof(/datum/bitfield))
+		var/datum/bitfield/bitfield = new _bitfield
+		bitfields[bitfield.variable] = bitfield.flags
+	// sue me i haven't slept in 18 hours
+	// tl;dr convert these into DEFINE_BITFIELD's later
 #define FLAG(flag) "[#flag]" = flag
-GLOBAL_LIST_INIT(bitfields, list(
+	return bitfields + list(
 	"appearance_flags" = list(
 		"LONG_GLIDE" = LONG_GLIDE,
 		"RESET_COLOR" = RESET_COLOR,
@@ -130,6 +147,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND" = INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND,
 		"INTERACT_ATOM_NO_FINGERPRINT_INTERACT" = INTERACT_ATOM_NO_FINGERPRINT_INTERACT
 		),
+*/
 	"interaction_flags_machine" = list(
 		"INTERACT_MACHINE_OPEN" = INTERACT_MACHINE_OPEN,
 		"INTERACT_MACHINE_OFFLINE" = INTERACT_MACHINE_OFFLINE,
@@ -137,8 +155,10 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"INTERACT_MACHINE_ALLOW_SILICON" = INTERACT_MACHINE_ALLOW_SILICON,
 		"INTERACT_MACHINE_OPEN_SILICON" = INTERACT_MACHINE_OPEN_SILICON,
 		"INTERACT_MACHINE_REQUIRES_SILICON" = INTERACT_MACHINE_REQUIRES_SILICON,
-		"INTERACT_MACHINE_SET_MACHINE" = INTERACT_MACHINE_SET_MACHINE
+		"INTERACT_MACHINE_SET_MACHINE" = INTERACT_MACHINE_SET_MACHINE,
+		"INTERACT_MACHINE_REQUIRES_SIGHT" = INTERACT_MACHINE_REQUIRES_SIGHT
 		),
+/*
 	"interaction_flags_item" = list(
 		"INTERACT_ITEM_ATTACK_HAND_PICKUP" = INTERACT_ITEM_ATTACK_HAND_PICKUP,
 		),
@@ -226,6 +246,6 @@ GLOBAL_LIST_INIT(bitfields, list(
 	)
 */
 
-	))
+	)
 
 #undef FLAG

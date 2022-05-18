@@ -70,19 +70,16 @@ LOG_ATTACK
 LOG_PDA
 
 ## log world.log messages
-# LOG_WORLD_OUTPUT
+#LOG_WORLD_OUTPUT
 
 ## log all Topic() calls (for use by coders in tracking down Topic issues)
-# LOG_HREFS
+#LOG_HREFS
 
 ## log world.log and runtime errors to a file
-# LOG_RUNTIME
+#LOG_RUNTIME
 
 ## log admin warning messages
 ##LOG_ADMINWARN  ## Also duplicates a bunch of other messages.
-
-## Enable/disable SQL connection (comment out to disable)
-SQL_ENABLED
 
 ## disconnect players who did nothing during the set amount of minutes
 # KICK_INACTIVE 10

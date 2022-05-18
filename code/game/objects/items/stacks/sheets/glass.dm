@@ -42,7 +42,6 @@
 				return
 
 			var/obj/item/stack/material/glass/reinforced/RG = new (user.loc)
-			RG.add_fingerprint(user)
 			RG.add_to_stacks(user)
 			var/obj/item/stack/material/glass/G = src
 			src = null
@@ -51,9 +50,6 @@
 			G.use(1)
 			if (!G && replace)
 				user.put_in_hands(RG)
-
-
-
 
 /*
  * Reinforced glass sheets
@@ -79,7 +75,6 @@
 	if( istype(W, /obj/item/stack/rods) )
 		var/obj/item/stack/rods/V  = W
 		var/obj/item/stack/material/glass/phoronrglass/RG = new (user.loc)
-		RG.add_fingerprint(user)
 		RG.add_to_stacks(user)
 		V.use(1)
 		var/obj/item/stack/material/glass/G = src

@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, Modal, LabeledList, ProgressBar, Section, NoticeBox } from "../components";
+import { Box, Button, Modal, LabeledList, ProgressBar, Section, NoticeBox } from "../components";
 import { Window } from "../layouts";
 import { toTitleCase, decodeHtmlEntities } from 'common/string';
 
@@ -66,7 +65,10 @@ export const MechaControlConsole = (props, context) => {
                   <ProgressBar
                     ranges={{
                       good: [beacon.cellMaxCharge * 0.75, Infinity],
-                      average: [beacon.cellMaxCharge * 0.5, beacon.cellMaxCharge * 0.75],
+                      average: [
+                        beacon.cellMaxCharge * 0.5,
+                        beacon.cellMaxCharge * 0.75,
+                      ],
                       bad: [-Infinity, beacon.cellMaxCharge * 0.5],
                     }}
                     value={beacon.cellCharge}

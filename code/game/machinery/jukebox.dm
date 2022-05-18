@@ -3,18 +3,22 @@
 // Rewritten by Leshana from existing Polaris code, merging in D2K5 and N3X15 work
 //
 
-#define JUKEMODE_NEXT        1 // Advance to next song in the track list
-#define JUKEMODE_RANDOM      2 // Not shuffle, randomly picks next each time.
-#define JUKEMODE_REPEAT_SONG 3 // Play the same song over and over
-#define JUKEMODE_PLAY_ONCE   4 // Play, then stop.
+/// Advance to next song in the track list
+#define JUKEMODE_NEXT        1
+/// Not shuffle, randomly picks next each time.
+#define JUKEMODE_RANDOM      2
+/// Play the same song over and over
+#define JUKEMODE_REPEAT_SONG 3
+/// Play, then stop.
+#define JUKEMODE_PLAY_ONCE   4
 
 /obj/machinery/media/jukebox/
 	name = "space jukebox"
 	icon = 'icons/obj/jukebox.dmi'
 	icon_state = "jukebox2-nopower"
 	var/state_base = "jukebox2"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	power_channel = EQUIP
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
@@ -87,14 +91,14 @@
 			else
 				tracks |= T
 	else if(!LAZYLEN(tracks)) //We don't even have default tracks
-		stat |= BROKEN // No tracks configured this round!
+		machine_stat |= BROKEN // No tracks configured this round!
 
 /obj/machinery/media/jukebox/process(delta_time)
 	if(!playing)
 		return
 	if(inoperable())
 		disconnect_media_source()
-		playing = 0
+		playing = FALSE
 		return
 	// If the current track isn't finished playing, let it keep going
 	if(current_track && world.time < media_start_time + current_track.duration)
@@ -119,7 +123,7 @@
 				current_track = current_track
 			if(JUKEMODE_PLAY_ONCE)
 				current_track = null
-				playing = 0
+				playing = FALSE
 				update_icon()
 	updateDialog()
 	start_stop_song()
@@ -129,7 +133,7 @@
 	if(current_track && playing)
 		media_url = current_track.url
 		media_start_time = world.time
-		visible_message("<span class='notice'>\The [src] begins to play [current_track.display()].</span>")
+		visible_message(SPAN_NOTICE("\The [src] begins to play [current_track.display()]."))
 	else
 		media_url = ""
 		media_start_time = 0
@@ -145,8 +149,6 @@
 	updateDialog()
 
 /obj/machinery/media/jukebox/attackby(obj/item/W as obj, mob/user as mob)
-	src.add_fingerprint(user)
-
 	if(default_deconstruction_screwdriver(user, W))
 		return
 	if(default_deconstruction_crowbar(user, W))
@@ -156,15 +158,19 @@
 	if(istype(W, /obj/item/multitool))
 		return wires.Interact(user)
 	if(W.is_wrench())
+		add_fingerprint(user)
 		if(playing)
 			StopPlaying()
-		user.visible_message("<span class='warning'>[user] has [anchored ? "un" : ""]secured \the [src].</span>", "<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
+		user.visible_message( \
+			SPAN_WARNING("[user] has [anchored ? "un" : ""]secured \the [src]."), \
+			SPAN_NOTICE("You [anchored ? "un" : ""]secure \the [src]."))
+
 		anchored = !anchored
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.usesound, 50, TRUE)
 		power_change()
 		update_icon()
 		if(!anchored)
-			playing = 0
+			playing = FALSE
 			disconnect_media_source()
 		else
 			update_media_source()
@@ -173,18 +179,18 @@
 
 /obj/machinery/media/jukebox/power_change()
 	if(!powered(power_channel) || !anchored)
-		stat |= NOPOWER
+		machine_stat |= NOPOWER
 	else
-		stat &= ~NOPOWER
+		machine_stat &= ~NOPOWER
 
-	if(stat & (NOPOWER|BROKEN) && playing)
+	if(machine_stat & (NOPOWER|BROKEN) && playing)
 		StopPlaying()
 	update_icon()
 
 /obj/machinery/media/jukebox/update_icon()
-	overlays.Cut()
-	if(stat & (NOPOWER|BROKEN) || !anchored)
-		if(stat & BROKEN)
+	cut_overlays()
+	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
+		if(machine_stat & BROKEN)
 			icon_state = "[state_base]-broken"
 		else
 			icon_state = "[state_base]-nopower"
@@ -192,22 +198,22 @@
 	icon_state = state_base
 	if(playing)
 		if(emagged)
-			overlays += "[state_base]-emagged"
+			add_overlay("[state_base]-emagged")
 		else
-			overlays += "[state_base]-running"
+			add_overlay("[state_base]-running")
 	if (panel_open)
-		overlays += "panel_open"
+		add_overlay("panel_open")
 
 /obj/machinery/media/jukebox/Topic(href, href_list)
 	if(..() || !(Adjacent(usr) || istype(usr, /mob/living/silicon)))
 		return
 
 	if(!anchored)
-		to_chat(usr, "<span class='warning'>You must secure \the [src] first.</span>")
+		to_chat(usr, SPAN_WARNING("You must secure \the [src] first."))
 		return
 
 	if(inoperable())
-		to_chat(usr, "\The [src] doesn't appear to function.")
+		to_chat(usr, SPAN_WARNING("\The [src] doesn't appear to function."))
 		return
 
 	if(href_list["change_track"])
@@ -291,15 +297,15 @@
 		ui.open()
 		ui.set_auto_update(playing)
 
-/obj/machinery/media/jukebox/attack_ai(mob/user as mob)
+/obj/machinery/media/jukebox/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/media/jukebox/attack_hand(var/mob/user as mob)
+/obj/machinery/media/jukebox/attack_hand(mob/user)
 	interact(user)
 
 /obj/machinery/media/jukebox/proc/explode()
 	walk_to(src,0)
-	src.visible_message("<span class='danger'>\the [src] blows apart!</span>", 1)
+	src.visible_message(SPAN_DANGER("\The [src] blows apart!"), 1)
 
 	explosion(src.loc, 0, 0, 1, rand(1,2), 1)
 
@@ -310,40 +316,42 @@
 	new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	qdel(src)
 
-/obj/machinery/media/jukebox/attackby(obj/item/W as obj, mob/user as mob)
-	src.add_fingerprint(user)
-
+/obj/machinery/media/jukebox/attackby(obj/item/W, mob/user)
 	if(default_deconstruction_screwdriver(user, W))
 		return
 	if(default_deconstruction_crowbar(user, W))
 		return
 	if(W.is_wrench())
+		add_fingerprint(user)
 		if(playing)
 			StopPlaying()
-		user.visible_message("<span class='warning'>[user] has [anchored ? "un" : ""]secured \the [src].</span>", "<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
+		user.visible_message( \
+			SPAN_WARNING("[user] has [anchored ? "un" : ""]secured \the [src]."), \
+			SPAN_NOTICE("You [anchored ? "un" : ""]secure \the [src]."))
+
 		anchored = !anchored
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.usesound, 50, TRUE)
 		power_change()
 		update_icon()
 		return
 	return ..()
 
-/obj/machinery/media/jukebox/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/media/jukebox/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		emagged = 1
 		StopPlaying()
 	else
 		StopPlaying()
-		visible_message("<span class='notice'>\The [src] abruptly stops and reboots itself, but nothing else happens.</span>")
+		visible_message(SPAN_NOTICE("\The [src] abruptly stops and reboots itself, but nothing else happens."))
 		return 1
-	if (emagged == 1)
+	if(emagged == 1)
 		tracks.Add(emag_tracks)
-		visible_message("<span class='notice'>\The [src] abruptly stops before rebooting itself. A notice flashes on the screen indicating new songs have been added to the tracklist.</span>")
+		visible_message(SPAN_NOTICE("\The [src] abruptly stops before rebooting itself. A notice flashes on the screen indicating new songs have been added to the tracklist."))
 		update_icon()
 		return 1
 
 /obj/machinery/media/jukebox/proc/StopPlaying()
-	playing = 0
+	playing = FALSE
 	update_use_power(USE_POWER_IDLE)
 	update_icon()
 	start_stop_song()
@@ -351,7 +359,7 @@
 /obj/machinery/media/jukebox/proc/StartPlaying()
 	if(!current_track)
 		return
-	playing = 1
+	playing = TRUE
 	update_use_power(USE_POWER_ACTIVE)
 	update_icon()
 	start_stop_song()

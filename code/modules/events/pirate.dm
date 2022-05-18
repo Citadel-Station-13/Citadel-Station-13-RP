@@ -11,20 +11,37 @@
 	var/spawn_area_type
 	var/spawncount = 1
 	var/boss_spawn_count = 1
+	var/piratestring
+	var/toughness
 	var/cloud_hueshift
 	var/isTalon = 0
 	var/list/players = list()
 	has_skybox_image = FALSE
 
 /datum/event/pirate/setup()
-	announceWhen = rand(announceWhen, announceWhen + 3)
+	announceWhen = rand(announceWhen+2, announceWhen + 3)
 	startWhen = announceWhen
 	endWhen = 45
 
 /datum/event/pirate/announce()
-	command_announcement.Announce("Attention Landlubbers of the [station_name()], hand over your booty and your ship and no one gets hurt!", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
+	if	(piratestring == "human")
+		command_announcement.Announce("Attention, Crew of the [station_name()], hand over your valuables and your vessel and no one gets hurt!", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
+	if 	(piratestring == "vox")
+		command_announcement.Announce("Hellos Dustlungs of [station_name()], you be handings over your scrap and tasty Teshari or we wills skrek you up!", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
+	if 	(piratestring =="rats")
+		command_announcement.Announce("Tiny Boarding Torpedos have been detected on Route to [station_name()]. Prepare Crew to repell small boarders.", "Boarding Alert", new_sound = sound('sound/effects/siren.ogg', volume=25))
 
 /datum/event/pirate/start()
+	switch(rand(1,100))
+		if(1 to 60)
+			toughness = 1
+			piratestring = "human"
+		if(61 to 80)
+			toughness = 1
+			piratestring = "vox"
+		else
+			toughness = 2
+			piratestring = "rats"
 	sleep(1)
 	if(isTalon == 0)
 		location = rand(0,4)
@@ -32,70 +49,93 @@
 		if(LOC_CARGO)
 			spawn_area_type = /area/quartermaster
 			locstring = "cargo & mining"
-			spawncount = rand(1 * severity, 3 * severity)
+			spawncount = rand(1 * severity * toughness, 3 * severity * toughness)
 			boss_spawn_count = 1
 		if(LOC_SECURITY)
 			spawn_area_type = /area/security
 			locstring = "security"
-			spawncount = rand(1 * severity, 3 * severity)
-			boss_spawn_count = rand(1,2)
+			spawncount = rand(1 * severity * toughness, 3 * severity * toughness)
+			boss_spawn_count = rand(1,toughness)
 		if(LOC_RESEARCH)
 			spawn_area_type = /area/rnd
 			locstring = "research and development"
-			spawncount = rand(1 * severity, 3 * severity)
-			boss_spawn_count = rand(1,2)
+			spawncount = rand(1 * severity * toughness, 3 * severity * toughness)
+			boss_spawn_count = rand(1,toughness)
 		if(LOC_HALLWAYS)
 			spawn_area_type =  /area/hallway
 			locstring = "public hallways"
-			spawncount = rand(2 * severity, 4 * severity)
-			boss_spawn_count = rand(1,2)
+			spawncount = rand(2 * severity * toughness, 4 * severity * toughness)
+			boss_spawn_count = rand(1,toughness)
 		if(LOC_BRIDGE)
 			spawn_area_type = /area/bridge
 			locstring = "bridge"
-			spawncount = rand(1 * severity, 3 * severity)
-			boss_spawn_count = rand(1,2)
+			spawncount = rand(1 * severity * toughness, 3 * severity * toughness)
+			boss_spawn_count = rand(1,toughness)
 		if(LOC_TALON) //The Talon. Outside of the random range. Should never be picked randomly.
 			spawn_area_type = /area/talon
 			locstring = "talon"
-			spawncount = rand(1 * severity, 3 * severity)
-			boss_spawn_count = rand(0,2)
+			spawncount = rand(1 * severity * toughness, 3 * severity * toughness)
+			boss_spawn_count = rand(0,toughness)
 
 /datum/event/pirate/end()
 	var/list/vents = list()
+	var/pirate_spawn = list()
+	var/pirate_boss = list()
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
-		for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in A.contents)
+		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
 			if(temp_vent.network && ((temp_vent.loc.z in GLOB.using_map.station_levels) || isTalon == 1))
 				vents += temp_vent
 
-	var/pirate_spawn = list(/mob/living/simple_mob/humanoid/pirate,
-	/mob/living/simple_mob/humanoid/pirate/armored,
-	/mob/living/simple_mob/humanoid/pirate/machete,
-	/mob/living/simple_mob/humanoid/pirate/machete/armored,
-	/mob/living/simple_mob/humanoid/pirate/shield,
-	/mob/living/simple_mob/humanoid/pirate/shield/armored,
-	/mob/living/simple_mob/humanoid/pirate/shield/machete,
-	/mob/living/simple_mob/humanoid/pirate/shield/machete/armored,
-	/mob/living/simple_mob/humanoid/pirate/ranged,
-	/mob/living/simple_mob/humanoid/pirate/ranged/armored,
-	/mob/living/simple_mob/humanoid/pirate/ranged/handcannon,
-	/mob/living/simple_mob/humanoid/pirate/ranged/shotgun)
+	if(piratestring == "human")
+		pirate_spawn = list(/mob/living/simple_mob/humanoid/pirate,
+		/mob/living/simple_mob/humanoid/pirate/armored,
+		/mob/living/simple_mob/humanoid/pirate/machete,
+		/mob/living/simple_mob/humanoid/pirate/machete/armored,
+		/mob/living/simple_mob/humanoid/pirate/shield,
+		/mob/living/simple_mob/humanoid/pirate/shield/armored,
+		/mob/living/simple_mob/humanoid/pirate/shield/machete,
+		/mob/living/simple_mob/humanoid/pirate/shield/machete/armored,
+		/mob/living/simple_mob/humanoid/pirate/ranged,
+		/mob/living/simple_mob/humanoid/pirate/ranged/armored,
+		/mob/living/simple_mob/humanoid/pirate/ranged/handcannon,
+		/mob/living/simple_mob/humanoid/pirate/ranged/shotgun)
 
-	var/pirate_boss = list(/mob/living/simple_mob/humanoid/pirate/mate,
-	/mob/living/simple_mob/humanoid/pirate/mate/ranged,
-	/mob/living/simple_mob/humanoid/pirate/mate/ranged/shotgun,
-	/mob/living/simple_mob/humanoid/pirate/mate/ranged/rifle)
+		pirate_boss = list(/mob/living/simple_mob/humanoid/pirate/mate,
+		/mob/living/simple_mob/humanoid/pirate/mate/ranged,
+		/mob/living/simple_mob/humanoid/pirate/mate/ranged/shotgun,
+		/mob/living/simple_mob/humanoid/pirate/mate/ranged/rifle)
+
+	if(piratestring == "vox")
+		pirate_spawn = list(/mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
+		/mob/living/simple_mob/humanoid/merc/voxpirate/boarder,
+		/mob/living/simple_mob/humanoid/merc/voxpirate/shotgun,
+		/mob/living/simple_mob/humanoid/merc/voxpirate/technician,
+		/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor)
+
+		pirate_boss = /mob/living/simple_mob/humanoid/merc/voxpirate/captain
+
+	if(piratestring == "rats")
+		pirate_spawn = list(/mob/living/simple_mob/animal/space/mouse_army/operative,
+		/mob/living/simple_mob/animal/space/mouse_army/pyro,
+		/mob/living/simple_mob/animal/space/mouse_army/ammo,
+		/mob/living/simple_mob/animal/space/mouse_army/stealth)
+
+		pirate_boss = list(/mob/living/simple_mob/mechanical/mecha/mouse_tank/manned,
+		/mob/living/simple_mob/mechanical/mecha/mouse_tank/livewire/manned,
+		/mob/living/simple_mob/mechanical/mecha/mouse_tank/eraticator/manned)
+
 
 	var/num = spawncount
 	while(vents.len > 0 && num > 0)
-		var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
+		var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
 		num--
 		var/spawn_type = pick(pirate_spawn)
 		new spawn_type(V.loc)
 	var/bossnum = boss_spawn_count
 	while(vents.len > 0 && bossnum > 0)
 		bossnum--
-		var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
+		var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
 		var/spawn_type = pick(pirate_boss)
 		new spawn_type(V.loc)
 	isTalon = 0
@@ -103,10 +143,19 @@
 // Overmap version
 /datum/event/pirate/overmap/announce()
 	if(istype(victim, /obj/effect/overmap/visitable/ship/talon))
-		command_announcement.Announce("Attention ye scurvy dogs of the ITV Talon, you are tresspassing on pirate territory, we are sending over some boys to collect your ship and your loot.","Incoming Transmission")
+		if(piratestring == "human")
+			command_announcement.Announce("Attention, Crew of the ITV Talon, thanks for delivering your ship to us suckers!", "Incoming Transmission")
+		if (piratestring == "vox")
+			command_announcement.Announce("Skreking Dustlungs of ITV Talon, yous in Voxy Territory! We's coming over to collect yours scrap", "Incoming Transmission")
+		if (piratestring =="rats")
+			command_announcement.Announce("A tiny teleportation matrix has been detected on the nearby vessel ITV Talon. Prepare Crew to repell small boarders.", "Boarding Alert")
 	else
-		command_announcement.Announce("Attention Landlubbers of [station_name()], you are trespassing on pirate territory, we are sending over some boys to collect your ship and your loot.", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
-
+		if(piratestring == "human")
+			command_announcement.Announce("Attention, Crew of the [station_name()], thanks for delivering your ship to us suckers!", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
+		if (piratestring == "vox")
+			command_announcement.Announce("Skreking Dustlungs of [station_name()], yous in Voxy Territory! We's coming over to collect yours scrap", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
+		if (piratestring =="rats")
+			command_announcement.Announce("Attention [station_name()], a tiny teleportation matrix has been detected on the nearby vessel. Prepare Crew to repell small boarders.", "Boarding Alert", new_sound = sound('sound/effects/siren.ogg', volume=25))
 
 /datum/event/pirate/overmap/start()		// override - cancel if not main ship since it doesn't properly target the actual triggering ship
 	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
@@ -115,3 +164,10 @@
 		isTalon = 1
 		location = 5
 	return ..()
+
+#undef	LOC_CARGO
+#undef	LOC_SECURITY
+#undef	LOC_RESEARCH
+#undef	LOC_HALLWAYS
+#undef	LOC_BRIDGE
+#undef	LOC_TALON

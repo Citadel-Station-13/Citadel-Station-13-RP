@@ -196,7 +196,7 @@ Protectiveness | Armor %
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
-	default_material = DEFAULT_WALL_MATERIAL
+	default_material = MAT_STEEL
 
 /obj/item/clothing/suit/armor/material/makeshift
 	name = "sheet armor"
@@ -282,7 +282,7 @@ Protectiveness | Armor %
 /obj/item/clothing/head/helmet/material
 	name = "helmet"
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
-	default_material = DEFAULT_WALL_MATERIAL
+	default_material = MAT_STEEL
 
 /obj/item/clothing/head/helmet/material/makeshift
 	name = "bucket"

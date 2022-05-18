@@ -1,10 +1,9 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 /obj/machinery/recharger
 	name = "recharger"
 	desc = "A standard recharger for all devices that use power."
-	icon = 'icons/obj/stationobjs_vr.dmi' //VOREStation Edit
+	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "recharger0"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 4
 	active_power_usage = 40000	//40 kW
@@ -14,7 +13,7 @@
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
-	var/portable = 1
+	var/portable = TRUE
 	circuit = /obj/item/circuitboard/recharger
 
 /obj/machinery/recharger/Initialize(mapload)
@@ -31,10 +30,11 @@
 		var/obj/item/cell/C = charging.get_cell()
 		. += "<span class = 'notice'>Current charge: [C.charge] / [C.maxcharge]</span>"
 
-/obj/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
-	var/allowed = 0
+/obj/machinery/recharger/attackby(obj/item/G, mob/user)
+	var/allowed = FALSE
 	for (var/allowed_type in allowed_devices)
-		if(istype(G, allowed_type)) allowed = 1
+		if(istype(G, allowed_type))
+			allowed = TRUE
 
 	if(allowed)
 		if(charging)
@@ -105,8 +105,11 @@
 	else if(default_part_replacement(user, G))
 		return
 
-/obj/machinery/recharger/attack_hand(mob/user as mob)
-	add_fingerprint(user)
+/obj/machinery/recharger/attack_hand(mob/user)
+	if(istype(user,/mob/living/silicon))
+		return
+
+	..()
 
 	if(charging)
 		user.visible_message("[user] removes [charging] from [src].", "You remove [charging] from [src].")
@@ -125,7 +128,7 @@
 			update_icon()
 
 /obj/machinery/recharger/process(delta_time)
-	if(stat & (NOPOWER|BROKEN) || !anchored)
+	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
 		update_use_power(USE_POWER_OFF)
 		icon_state = icon_state_idle
 		return
@@ -186,7 +189,7 @@
 			var/obj/item/gun/projectile/cell_loaded/gunny = charging
 			charge_mag(gunny.ammo_magazine)
 
-/obj/machinery/recharger/proc/charge_mag(var/obj/item/ammo_magazine/cell_mag/maggy)
+/obj/machinery/recharger/proc/charge_mag(obj/item/ammo_magazine/cell_mag/maggy)
 	var/tally = maggy.stored_ammo.len
 	for(var/obj/item/ammo_casing/microbattery/batt in maggy)
 		if(batt.shots_left < initial(batt.shots_left))
@@ -202,7 +205,7 @@
 
 
 /obj/machinery/recharger/emp_act(severity)
-	if(stat & (NOPOWER|BROKEN) || !anchored)
+	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
 		..(severity)
 		return
 

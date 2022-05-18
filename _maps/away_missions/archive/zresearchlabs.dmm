@@ -397,7 +397,7 @@
 /turf/simulated/wall/r_wall,
 /area/awaymission/labs/researchdivision)
 "bH" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor{
 	icon_state = "white"
@@ -458,7 +458,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
 /obj/effect/alien/weeds/node,
@@ -504,7 +504,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "cc" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	frequency = 1379;
 	id_tag = "medsci_pump"
 	},
@@ -612,7 +612,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/researchdivision)
 "ct" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /turf/simulated/floor{
@@ -932,7 +932,7 @@
 /area/awaymission/labs/researchdivision)
 "dj" = (
 /obj/item/bedsheet,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
 /turf/simulated/floor{
@@ -1022,7 +1022,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "dt" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /obj/effect/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
@@ -1177,7 +1177,7 @@
 /area/awaymission/labs/researchdivision)
 "dP" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
 /obj/effect/alien/weeds/node,
@@ -1257,7 +1257,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /obj/effect/alien/weeds{
 	icon_state = "flesh2"
 	},
@@ -1441,7 +1441,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /turf/simulated/floor,
 /area/awaymission/labs/gateway)
 "eD" = (
@@ -1653,7 +1653,7 @@
 /area/awaymission/labs/researchdivision)
 "fh" = (
 /obj/structure/table/reinforced,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4
 	},
 /turf/simulated/floor{
@@ -1773,7 +1773,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "fx" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor{
@@ -1890,7 +1890,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "fL" = (
-/obj/effect/landmark/corpse/scientist{
+/atom/movable/spawner/corpse/scientist{
 	mobname = "Steve Smith";
 	name = "Steve Smith"
 	},
@@ -1917,7 +1917,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/desert)
 "fO" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4
 	},
 /turf/simulated/floor{
@@ -1925,7 +1925,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "fP" = (
-/obj/effect/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Amando Cruz";
 	name = "Amando Cruz"
 	},
@@ -1971,7 +1971,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "fV" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -2118,7 +2118,7 @@
 /area/awaymission/labs/militarydivision)
 "gk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "mining_maineast_pump"
@@ -2323,7 +2323,7 @@
 /area/awaymission/labs/researchdivision)
 "gL" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpse/scientist{
+/atom/movable/spawner/corpse/scientist{
 	mobname = "James MacDonald";
 	name = "James MacDonald"
 	},
@@ -2391,7 +2391,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/simulated/floor{
@@ -2571,7 +2571,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "hs" = (
-/obj/effect/landmark/corpse/scientist{
+/atom/movable/spawner/corpse/scientist{
 	mobname = "Mikhail Ruznov";
 	name = "Mikhail Ruznov"
 	},
@@ -2677,7 +2677,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/militarydivision)
 "hE" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 0;
 	frequency = 1441;
@@ -2700,7 +2700,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
 /turf/simulated/floor{
@@ -3034,7 +3034,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "it" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -3079,7 +3079,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "iB" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	external_pressure_bound = 0;
 	frequency = 1441;
@@ -3160,7 +3160,7 @@
 	pixel_x = 2;
 	pixel_y = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "mining_maineast_pump"
@@ -3221,7 +3221,7 @@
 	},
 /area/awaymission/labs/command)
 "iW" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -3344,7 +3344,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "jl" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 140;
 	pressure_checks = 0
@@ -3562,7 +3562,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "jK" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,
@@ -3628,7 +3628,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
 /turf/simulated/floor{
@@ -3688,7 +3688,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 140;
 	pressure_checks = 0
@@ -3801,7 +3801,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/solars)
 "kz" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -3994,7 +3994,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/command)
 "kT" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "engineering_aux_pump"
@@ -4384,7 +4384,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/command)
 "lG" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	frequency = 1379;
 	id_tag = "medsci_pump"
 	},
@@ -4729,7 +4729,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/command)
 "mr" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	external_pressure_bound = 0;
 	frequency = 1441;
@@ -4781,7 +4781,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "mz" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,
@@ -4832,7 +4832,7 @@
 	},
 /area/awaymission/labs/cargo)
 "mH" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	frequency = 1379;
 	id_tag = "medsci_pump"
 	},
@@ -4873,7 +4873,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "mL" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -4971,13 +4971,13 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/civilian)
 "mX" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
 "mZ" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "mining_outpost_pump"
@@ -5033,7 +5033,7 @@
 	},
 /area/awaymission/labs/civilian)
 "nk" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "engineering_aux_pump"
@@ -5183,7 +5183,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	external_pressure_bound = 0;
 	frequency = 1441;
@@ -5406,7 +5406,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "oh" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "oi" = (
@@ -5832,7 +5832,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "pg" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 140;
 	pressure_checks = 0
@@ -6075,7 +6075,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "engineering_aux_pump"
@@ -6092,7 +6092,7 @@
 /area/awaymission/labs/command)
 "pQ" = (
 /obj/structure/closet/cabinet,
-/obj/item/gun/energy/pulse_rifle/M1911,
+/obj/item/gun/energy/pulse_pistol,
 /obj/item/clothing/accessory/medal/gold/heroism,
 /obj/item/clothing/under/rank/head_of_security/navyblue,
 /obj/item/clothing/accessory/holster/armpit,
@@ -6153,7 +6153,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/labs/cave)
 "qd" = (
-/obj/effect/landmark/corpse/chef{
+/atom/movable/spawner/corpse/chef{
 	mobname = "Harold Brown";
 	name = "Harold Brown"
 	},
@@ -6261,7 +6261,7 @@
 	},
 /area/awaymission/labs/command)
 "qr" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	frequency = 1379;
 	id_tag = "medsci_pump"
 	},
@@ -6505,7 +6505,7 @@
 	},
 /area/awaymission/labs/civilian)
 "rd" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 140;
 	pressure_checks = 0
@@ -6513,7 +6513,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "re" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -6538,7 +6538,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/command)
 "rj" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /obj/effect/alien/weeds/node,
@@ -6788,7 +6788,7 @@
 	},
 /area/awaymission/labs/civilian)
 "rU" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor{
@@ -6863,7 +6863,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "sg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "sh" = (
@@ -6908,7 +6908,7 @@
 	},
 /area/awaymission/labs/civilian)
 "so" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -7118,7 +7118,7 @@
 /area/awaymission/labs/medical)
 "ta" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Elias Smith";
 	name = "Elias Smith"
 	},
@@ -7214,7 +7214,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /turf/simulated/floor,
 /area/awaymission/labs/security)
 "tk" = (
@@ -7262,7 +7262,7 @@
 /obj/structure/table/standard,
 /obj/item/folder/white,
 /obj/item/clothing/accessory/stethoscope,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /turf/simulated/floor{
@@ -7293,7 +7293,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/security)
 "tu" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "engineering_aux_pump"
@@ -7374,7 +7374,7 @@
 	},
 /area/awaymission/labs/medical)
 "tG" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /turf/simulated/floor{
@@ -7422,7 +7422,7 @@
 /area/awaymission/labs/medical)
 "tM" = (
 /obj/machinery/body_scanconsole,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "engineering_aux_pump"
@@ -7782,7 +7782,7 @@
 "uP" = (
 /obj/machinery/recharger,
 /obj/structure/table/reinforced,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4
 	},
 /turf/simulated/floor{

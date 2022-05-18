@@ -25,14 +25,14 @@ BLIND     // can't see anything
 	var/off_state = "degoggles"
 	var/active = 1
 	var/activation_sound = 'sound/items/goggles_charge.ogg'
-	var/obj/screen/overlay = null
+	var/atom/movable/screen/overlay = null
 	var/list/away_planes //Holder for disabled planes
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/teshari/eyes.dmi',
-		"Vox" = 'icons/mob/species/vox/eyes.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/eyes.dmi',
+		SPECIES_VOX = 'icons/mob/species/vox/eyes.dmi'
 		)
 
 /obj/item/clothing/glasses/update_clothing_icon()
@@ -165,7 +165,7 @@ BLIND     // can't see anything
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
-	item_flags = ALLOWINTERNALS //cit change
+	clothing_flags = ALLOWINTERNALS //cit change
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
@@ -212,7 +212,7 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 	clothing_flags = SCAN_REAGENTS
 
@@ -225,7 +225,7 @@ BLIND     // can't see anything
 	desc = "Just some plain old goggles."
 	icon_state = "plaingoggles"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 
 /obj/item/clothing/glasses/night
@@ -237,7 +237,7 @@ BLIND     // can't see anything
 	darkness_view = 7
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	item_flags = ALLOWINTERNALS //  Cit change
+	clothing_flags = ALLOWINTERNALS //  Cit change
 	body_parts_covered = EYES // Cit change
 	off_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
@@ -245,7 +245,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/night/vox
 	name = "Alien Optics"
-	species_restricted = list("Vox")
+	species_restricted = list(SPECIES_VOX)
 	flags = PHORONGUARD
 
 /obj/item/clothing/glasses/night/Initialize(mapload)
@@ -315,7 +315,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
-	item_flags = ALLOWINTERNALS //cit change
+	clothing_flags = ALLOWINTERNALS //cit change
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT)
 
@@ -338,7 +338,7 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	off_state = "denight"
 	vision_flags = SEE_OBJS | SEE_TURFS
-	item_flags = ALLOWINTERNALS //  Cit change
+	clothing_flags = ALLOWINTERNALS //  Cit change
 	body_parts_covered = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
@@ -457,8 +457,8 @@ BLIND     // can't see anything
 	icon_state = "welding-g"
 	item_state_slots = list(slot_r_hand_str = "welding-g", slot_l_hand_str = "welding-g")
 	action_button_name = "Flip Welding Goggles"
-	matter = list(DEFAULT_WALL_MATERIAL = 1500, "glass" = 1000)
-	item_flags = ALLOWINTERNALS
+	matter = list(MAT_STEEL = 1500, MAT_GLASS = 1000)
+	clothing_flags = ALLOWINTERNALS
 	var/up = 0
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
@@ -490,6 +490,11 @@ BLIND     // can't see anything
 			to_chat(usr, "You push \the [src] up out of your face.")
 		update_clothing_icon()
 		usr.update_action_buttons()
+
+/obj/item/clothing/glasses/welding/prescription
+	name = "prescription welding goggles"
+	desc = "Protects the eyes from welders, approved by the mad scientist association. These ones have prescription lenses."
+	prescription = 1
 
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"
@@ -538,13 +543,16 @@ BLIND     // can't see anything
 	name = "\improper HUD sunglasses"
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunSecHud"
-	enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM)
+
+/obj/item/clothing/glasses/sunglasses/sechud/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "tactical HUD"
 	desc = "Flash-resistant goggles with inbuilt combat and security information."
 	icon_state = "swatgoggles"
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator
@@ -591,7 +599,10 @@ BLIND     // can't see anything
 	name = "\improper HUD sunglasses"
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunMedHud"
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)
+
+/obj/item/clothing/glasses/sunglasses/medhud/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(slot_glasses))
 
 /obj/item/clothing/glasses/thermal
 	name = "optical thermal scanner"
@@ -668,7 +679,7 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	action_button_name = "Adjust Orange Goggles"
 	var/up = 0
-	item_flags = ALLOWINTERNALS
+	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 	species_restricted = list(SPECIES_TESHARI)
 
@@ -859,4 +870,4 @@ BLIND     // can't see anything
 	icon_state = "laconic-g"
 	item_state_slots = list(slot_r_hand_str = "welding-g", slot_l_hand_str = "welding-g")
 	action_button_name = "Adjust Goggles"
-	matter = list("brass" = 1500, "glass" = 1000)
+	matter = list("brass" = 1500, MAT_GLASS = 1000)

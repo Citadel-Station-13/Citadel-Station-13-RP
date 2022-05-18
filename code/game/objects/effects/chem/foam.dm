@@ -18,7 +18,7 @@
 	var/dries = 1 //VOREStation Add
 	var/slips = 0 //VOREStation Add
 
-/obj/effect/foam/Initialize(var/mapload, var/ismetal = 0)
+/obj/effect/foam/Initialize(mapload, ismetal = FALSE)
 	. = ..()
 	//icon_state = "[ismetal? "m" : ""]foam" //VOREStation Removal
 	metal = ismetal
@@ -141,7 +141,7 @@
 	anchored = 1
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/metal = 1 // 1 = aluminum, 2 = iron
 
 /obj/structure/foamedmetal/New()

@@ -10,7 +10,7 @@
 	density = TRUE
 	anchored = 1.0
 	pressure_resistance = 4*ONE_ATMOSPHERE
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/win_path = /obj/structure/window/basic
 	var/activated
 
@@ -18,6 +18,7 @@
 	attack_generic()
 
 /obj/effect/wingrille_spawn/attack_ghost()
+	. = ..()
 	attack_generic()
 
 /obj/effect/wingrille_spawn/attack_generic()

@@ -1,6 +1,6 @@
 /datum/species/vox
 	name = SPECIES_VOX
-	name_plural = "Vox"
+	name_plural = SPECIES_VOX
 	icobase = 'icons/mob/human_races/r_vox_old.dmi'
 	deform = 'icons/mob/human_races/r_def_vox_old.dmi'
 	default_language = LANGUAGE_VOX
@@ -48,7 +48,7 @@
 
 	flags = NO_SCAN | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
+	species_appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
 	blood_color = "#9066BD"
 	flesh_color = "#a3a593"
@@ -88,7 +88,6 @@
 		/datum/mob_descriptor/vox_markings = 0
 		)
 
-	min_age = 18
 	wikilink="https://wiki.vore-station.net/Vox"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,

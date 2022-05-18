@@ -28,8 +28,8 @@
 		//environment_heat_capacity = loc:heat_capacity
 		var/turf/heat_turf = get_turf(src)
 		loc_temp = heat_turf.temperature
-	else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-		var/obj/machinery/atmospherics/unary/cryo_cell/C = loc
+	else if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
+		var/obj/machinery/atmospherics/component/unary/cryo_cell/C = loc
 		loc_temp = C.air_contents.temperature
 	else
 		loc_temp = environment.temperature
@@ -103,18 +103,18 @@
 	else
 		if (src.paralysis || src.stunned || src.weakened || (status_flags & FAKEDEATH)) //Stunned etc.
 			if (src.stunned > 0)
-				src.stat = 0
+				src.set_stat(CONSCIOUS)
 			if (src.weakened > 0)
 				src.lying = 0
-				src.stat = 0
+				src.set_stat(CONSCIOUS)
 			if (src.paralysis > 0)
 				src.blinded = 0
 				src.lying = 0
-				src.stat = 0
+				src.set_stat(CONSCIOUS)
 
 		else
 			src.lying = 0
-			src.stat = 0
+			src.set_stat(CONSCIOUS)
 
 	if (src.stuttering) src.stuttering = 0
 
@@ -122,7 +122,8 @@
 		SetBlinded(0)
 		src.blinded = 1
 
-	if (src.ear_deaf > 0) src.ear_deaf = 0
+	if (src.ear_deaf > 0)
+		src.ear_deaf = 0
 	if (src.ear_damage < 25)
 		src.ear_damage = 0
 
@@ -214,7 +215,7 @@
 
 				if(istype(L, /mob/living/carbon/human) && dna) //Ignore slime(wo)men
 					var/mob/living/carbon/human/H = L
-					if(H.species.name == "Promethean")
+					if(H.species.name == SPECIES_PROMETHEAN)
 						continue
 
 				if(!L.canmove) // Only one slime can latch on at a time.

@@ -16,10 +16,10 @@
 
 	// Stuff needed to render the map
 	var/map_name
-	var/obj/screen/map_view/cam_screen
+	var/atom/movable/screen/map_view/cam_screen
 	var/list/cam_plane_masters
-	var/obj/screen/background/cam_background
-	var/obj/screen/skybox/local_skybox
+	var/atom/movable/screen/background/cam_background
+	var/atom/movable/screen/skybox/local_skybox
 	// Stuff for moving cameras
 	var/turf/last_camera_turf
 
@@ -46,7 +46,7 @@
 	cam_plane_masters = get_tgui_plane_masters()
 
 	for(var/plane in cam_plane_masters)
-		var/obj/screen/instance = plane
+		var/atom/movable/screen/instance = plane
 		instance.assigned_map = map_name
 		instance.del_on_map_removal = FALSE
 		instance.screen_loc = "[map_name]:CENTER"
@@ -450,7 +450,7 @@
 			return TRUE
 		target = usr
 
-	return target && (flags & APPEARANCE_SKIN) && target.species.appearance_flags & HAS_SKIN_TONE
+	return target && (flags & APPEARANCE_SKIN) && target.species.species_appearance_flags & HAS_SKIN_TONE
 
 /datum/tgui_module/appearance_changer/proc/can_change_skin_color()
 	var/mob/living/carbon/human/target = owner
@@ -459,7 +459,7 @@
 			return TRUE
 		target = usr
 
-	return target && (flags & APPEARANCE_SKIN) && target.species.appearance_flags & HAS_SKIN_COLOR
+	return target && (flags & APPEARANCE_SKIN) && target.species.species_appearance_flags & HAS_SKIN_COLOR
 
 /datum/tgui_module/appearance_changer/proc/cut_data()
 	// Making the assumption that the available species remain constant

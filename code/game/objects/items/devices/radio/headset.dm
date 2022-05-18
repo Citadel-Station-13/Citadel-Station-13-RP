@@ -4,7 +4,7 @@
 	var/radio_desc = ""
 	icon_state = "headset"
 	item_state = null	// To remove the radio's state
-	matter = list(DEFAULT_WALL_MATERIAL = 75)
+	matter = list(MAT_STEEL = 75)
 	subspace_transmission = 1
 	canhear_range = 0	// Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
@@ -82,6 +82,9 @@
 				append = "_r"
 
 	return "[..()][append]"
+
+/obj/item/radio/headset/ui_state(mob/user)
+	return GLOB.inventory_state
 
 /obj/item/radio/headset/syndicate
 	origin_tech = list(TECH_ILLEGAL = 3)
@@ -414,7 +417,7 @@
 	return
 
 
-/obj/item/radio/headset/proc/recalculateChannels(var/setDescription = 0)
+/obj/item/radio/headset/recalculateChannels(var/setDescription = 0)
 	src.channels = list()
 	src.translate_binary = 0
 	src.translate_hive = 0

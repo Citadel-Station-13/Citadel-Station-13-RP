@@ -60,31 +60,37 @@
 Remember to update _globalvars/traits.dm if you're adding/removing/renaming traits.
 */
 
-/*
 //mob traits
 #define TRAIT_BLIND 			"blind"
-*/
 #define TRAIT_MUTE				"mute"
 /*
 #define TRAIT_EMOTEMUTE			"emotemute"
+*/
 #define TRAIT_DEAF				"deaf"
+/*
 #define TRAIT_NEARSIGHT			"nearsighted"
 #define TRAIT_FAT				"fat"
 #define TRAIT_HUSK				"husk"
 #define TRAIT_BADDNA			"baddna"
 #define TRAIT_CLUMSY			"clumsy"
-#define TRAIT_CHUNKYFINGERS		"chunkyfingers" //means that you can't use weapons with normal trigger guards.
+///means that you can't use weapons with normal trigger guards.
+#define TRAIT_CHUNKYFINGERS		"chunkyfingers"
 #define TRAIT_DUMB				"dumb"
-#define TRAIT_MONKEYLIKE		"monkeylike" //sets IsAdvancedToolUser to FALSE
+///sets IsAdvancedToolUser to FALSE
+#define TRAIT_MONKEYLIKE		"monkeylike"
 #define TRAIT_PACIFISM			"pacifism"
 #define TRAIT_IGNORESLOWDOWN	"ignoreslow"
 #define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
-#define TRAIT_DEATHCOMA			"deathcoma" //Causes death-like unconsciousness
-#define TRAIT_FAKEDEATH			"fakedeath" //Makes the owner appear as dead to most forms of medical examination
+///Causes death-like unconsciousness
+#define TRAIT_DEATHCOMA			"deathcoma"
+///Makes the owner appear as dead to most forms of medical examination
+#define TRAIT_FAKEDEATH			"fakedeath"
 #define TRAIT_DISFIGURED		"disfigured"
 */
-#define TRAIT_XENO_HOST			"xeno_host"	//Tracks whether we're gonna be a baby alien's mummy.
-#define TRAIT_MIMING			"miming" //Tracks whether you're a mime or not.
+///Tracks whether we're gonna be a baby alien's mummy.
+#define TRAIT_XENO_HOST			"xeno_host"
+///Tracks whether you're a mime or not.
+#define TRAIT_MIMING			"miming"
 /*
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
@@ -94,7 +100,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_STABLEHEART		"stable_heart"
 #define TRAIT_STABLELIVER		"stable_liver"
 #define TRAIT_RESISTHEAT		"resist_heat"
-#define TRAIT_RESISTHEATHANDS	"resist_heat_handsonly" //For when you want to be able to touch hot things, but still want fire to be an issue.
+///For when you want to be able to touch hot things, but still want fire to be an issue.
+#define TRAIT_RESISTHEATHANDS	"resist_heat_handsonly"
 #define TRAIT_RESISTCOLD		"resist_cold"
 #define TRAIT_RESISTHIGHPRESSURE	"resist_high_pressure"
 #define TRAIT_RESISTLOWPRESSURE	"resist_low_pressure"
@@ -127,9 +134,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOSOFTCRIT		"nosoftcrit"
 #define TRAIT_MINDSHIELD		"mindshield"
 #define TRAIT_DISSECTED			"dissected"
-#define TRAIT_SIXTHSENSE		"sixth_sense" //I can hear dead people
+///I can hear dead people
+#define TRAIT_SIXTHSENSE		"sixth_sense"
 #define TRAIT_FEARLESS			"fearless"
-#define TRAIT_PARALYSIS_L_ARM	"para-l-arm" //These are used for brain-based paralysis, where replacing the limb won't fix it
+///These are used for brain-based paralysis, where replacing the limb won't fix it
+#define TRAIT_PARALYSIS_L_ARM	"para-l-arm"
 #define TRAIT_PARALYSIS_R_ARM	"para-r-arm"
 #define TRAIT_PARALYSIS_L_LEG	"para-l-leg"
 #define TRAIT_PARALYSIS_R_LEG	"para-r-leg"
@@ -153,20 +162,22 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_OIL_FRIED			"oil_fried"
 #define TRAIT_MEDICAL_HUD		"med_hud"
 #define TRAIT_SECURITY_HUD		"sec_hud"
-#define TRAIT_MEDIBOTCOMINGTHROUGH "medbot" //Is a medbot healing you
+///Is a medibot healing you
+#define TRAIT_MEDIBOTCOMINGTHROUGH "medibot"
 #define TRAIT_PASSTABLE			"passtable"
 
 //non-mob traits
-#define TRAIT_PARALYSIS			"paralysis" //Used for limb-based paralysis, where replacing the limb will fix it
-
+///Used for limb-based paralysis, where replacing the limb will fix it
+#define TRAIT_PARALYSIS			"paralysis"
 // item traits
 */
 #define TRAIT_NODROP            "nodrop"
 #define TRAIT_DISRUPTED			"disrupted"
 /*
-#define TRAIT_T_RAY_VISIBLE     "t-ray-visible" // Visible on t-ray scanners if the atom/var/level == 1
-#define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
-
+/// Visible on t-ray scanners if the atom/var/level == 1
+#define TRAIT_T_RAY_VISIBLE     "t-ray-visible"
+///you just can't
+#define TRAIT_NO_TELEPORT		"no-teleport"
 //quirk traits
 #define TRAIT_ALCOHOL_TOLERANCE	"alcohol_tolerance"
 #define TRAIT_AGEUSIA			"ageusia"
@@ -202,24 +213,30 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define SPECIES_TRAIT "species"
 #define ORGAN_TRAIT "organ"
 */
-#define ROUNDSTART_TRAIT "roundstart" //cannot be removed without admin intervention
+///cannot be removed without admin intervention
+#define ROUNDSTART_TRAIT "roundstart"
+#define GHOSTROLE_TRAIT "ghostrole"
 #define JOB_TRAIT "job"
-#define TRAIT_MIME "mime" //Mime trait.
+///Mime trait.
+#define TRAIT_MIME "mime"
 /*
 #define CYBORG_ITEM_TRAIT "cyborg-item"
 */
-#define ADMIN_TRAIT "admin" // (B)admins only.
+/// (B)admins only.
+#define ADMIN_TRAIT "admin"
 /*
 #define CHANGELING_TRAIT "changeling"
 #define CULT_TRAIT "cult"
-#define CURSED_ITEM_TRAIT "cursed-item" // The item is magically cursed
+/// The item is magically cursed
+#define CURSED_ITEM_TRAIT "cursed-item"
 #define ABSTRACT_ITEM_TRAIT "abstract-item"
 #define STATUS_EFFECT_TRAIT "status-effect"
 */
 #define CLOTHING_TRAIT "clothing"
 /*
 #define GLASSES_TRAIT "glasses"
-#define VEHICLE_TRAIT "vehicle" // inherited from riding vehicles
+/// inherited from riding vehicles
+#define VEHICLE_TRAIT "vehicle"
 #define INNATE_TRAIT "innate"
 
 // unique trait sources, still defines

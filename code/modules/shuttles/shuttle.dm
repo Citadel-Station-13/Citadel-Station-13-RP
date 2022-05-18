@@ -14,7 +14,7 @@
 	var/category = /datum/shuttle
 	var/multiz = 0	// How many multiz levels, starts at 0  TODO Leshana - Are we porting this?
 
-	var/ceiling_type	// Type path of turf to roof over the shuttle when at multi-z landmarks.  Ignored if null.
+	var/ceiling_type = /turf/simulated/shuttle_ceiling	// Type path of turf to roof over the shuttle when at multi-z landmarks.  Ignored if null.
 
 	var/sound_takeoff = 'sound/effects/shuttles/shuttle_takeoff.ogg'
 	var/sound_landing = 'sound/effects/shuttles/shuttle_landing.ogg'
@@ -40,11 +40,25 @@
 	var/list/areas = list()
 	if(!islist(shuttle_area))
 		shuttle_area = list(shuttle_area)
-	for(var/T in shuttle_area)
-		var/area/A = locate(T)
+	for(var/path in shuttle_area)
+		var/area/A = locate(path)
 		if(!istype(A))
-			CRASH("Shuttle \"[name]\" couldn't locate area [T].")
+			CRASH("Shuttle \"[name]\" couldn't locate area [path].")
 		areas += A
+		// todo: less shit shuttle system
+		for(var/turf/T in A.contents)
+			// inject ceiling
+			if(ceiling_type)
+				var/turf/above = GetAbove(T)
+				if(above && !(above.loc in shuttle_area))
+					above.PlaceBelowLogicalBottom(ceiling_type)
+			// inject floor
+			// but only if we are.. floor
+			if(GLOB.multiz_hole_baseturfs[T.type])
+				// don't bother
+				continue
+			T.PlaceBelowLogicalTop(/turf/simulated/floor/plating, CHANGETURF_INHERIT_AIR)
+
 	shuttle_area = areas
 
 	if(initial_location)
@@ -314,8 +328,7 @@
 		if(ceiling_type && HasAbove(current_location.z))
 			for(var/turf/TO in A.contents)
 				var/turf/TA = GetAbove(TO)
-				if(istype(TA, ceiling_type))
-					TA.ChangeTurf(get_base_turf_by_area(TA), 1, 1)
+				TA.ScrapeFromLogicalBottom(CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS, ceiling_type)
 		if(knockdown)
 			for(var/mob/living/M in A)
 				spawn(0)
@@ -347,10 +360,9 @@
 		for(var/area/A in shuttle_area)
 			for(var/turf/TD in A.contents)
 				var/turf/TA = GetAbove(TD)
-				if(istype(TA, get_base_turf_by_area(TA)) || isopenspace(TA))
-					if(get_area(TA) in shuttle_area)
-						continue
-					TA.ChangeTurf(ceiling_type, TRUE, TRUE, TRUE)
+				if(TA.loc in shuttle_area)
+					continue
+				TA.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 
 	// Power-related checks. If shuttle contains power related machinery, update powernets.
 	// Note: Old way was to rebuild ALL powernets: if(powernets.len) SSmachines.makepowernets()

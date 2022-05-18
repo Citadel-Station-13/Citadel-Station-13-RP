@@ -95,12 +95,12 @@
 /area/awaymission/northblock)
 "ay" = (
 /obj/structure/window/reinforced/tinted,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "az" = (
 /obj/structure/window/reinforced/tinted,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "aA" = (
@@ -275,7 +275,7 @@
 /turf/simulated/wall/r_wall,
 /area/awaymission/research)
 "bA" = (
-/mob/living/bot/medbot/mysterious{
+/mob/living/bot/medibot/mysterious{
 	desc = "A dark little medical robot. She looks somewhat underwhelmed.";
 	name = "Nightingale"
 	},
@@ -968,11 +968,11 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "eo" = (
-/obj/machinery/atmospherics/unary/freezer,
+/obj/machinery/atmospherics/component/unary/freezer,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "ep" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "er" = (
@@ -1160,7 +1160,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "eW" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 120;
 	icon_state = "in";
@@ -2727,7 +2727,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "ke" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "kf" = (
@@ -2951,7 +2951,7 @@
 	},
 /area/awaymission/gateroom)
 "kT" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/airless,
@@ -2962,7 +2962,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/airless,
@@ -2996,7 +2996,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "lf" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -3007,7 +3007,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,

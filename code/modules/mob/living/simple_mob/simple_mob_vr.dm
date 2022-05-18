@@ -198,6 +198,10 @@
 	if(LAZYLEN(vore_organs))
 		return
 
+	// Since they have bellies, add verbs to toggle settings on them.
+	verbs |= /mob/living/simple_mob/proc/toggle_digestion
+	verbs |= /mob/living/simple_mob/proc/toggle_fancygurgle
+
 	//A much more detailed version of the default /living implementation
 	var/obj/belly/B = new /obj/belly(src)
 	vore_selected = B
@@ -272,7 +276,7 @@
 	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
 
 /datum/riding/simple_mob/handle_vehicle_layer()
-	ridden.layer = initial(ridden.layer)
+	ridden.set_base_layer(initial(ridden.layer))
 
 /datum/riding/simple_mob/ride_check(mob/living/M)
 	var/mob/living/L = ridden

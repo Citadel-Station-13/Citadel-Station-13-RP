@@ -206,6 +206,18 @@ datum/gear/suit/duster
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
+/datum/gear/suit/halfcloak
+	name = "Rough Half Cloak (Tan)"
+	path = /obj/item/clothing/accessory/poncho/rough_cloak/tan
+
+/datum/gear/suit/halfcloak/colorable
+	name = "Rough Half Cloak (Colorable)"
+	path = /obj/item/clothing/accessory/poncho/rough_cloak
+
+/datum/gear/suit/halfcloak/colorable/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
 /datum/gear/suit/black_lawyer_jacket
 	name = "Suit Jacket - Black"
 	path = /obj/item/clothing/suit/storage/toggle/internalaffairs
@@ -421,3 +433,35 @@ datum/gear/suit/duster
 /datum/gear/suit/jacket_darkfur
 	name = "Vexatious Coat w/ Dark Fur Lining"
 	path = /obj/item/clothing/suit/darkfur
+
+/datum/gear/suit/vainglorious
+	name = "Vainglorious Hoodie"
+	path = /obj/item/clothing/suit/storage/hooded/vainglorious
+
+/datum/gear/suit/raincoat
+	name = "Raincoat"
+	path = /obj/item/clothing/suit/storage/hooded/raincoat
+
+/datum/gear/suit/pullover
+	name = "Pullover Hoodie - Selection"
+	path = /obj/item/clothing/suit/storage/pullover
+
+/datum/gear/suit/pullover/New()
+	..()
+	var/list/pullovers = list()
+	for(var/pullover_style in typesof(/obj/item/clothing/suit/storage/pullover))
+		var/obj/item/clothing/suit/storage/pullover/pullover = pullover_style
+		pullovers[initial(pullover.name)] = pullover
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(pullovers, /proc/cmp_text_asc))
+
+/datum/gear/suit/antediluvian
+	name = "Antediluvian Cloak"
+	path = /obj/item/clothing/accessory/poncho/antediluvian
+
+/datum/gear/suit/rainponcho
+	name = "Plastic Raincoat"
+	path = /obj/item/clothing/suit/storage/hooded/rainponcho
+
+/datum/gear/suit/mekkyaku
+	name = "Mekkyaku Hoodie"
+	path = /obj/item/clothing/suit/storage/mekkyaku

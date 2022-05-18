@@ -60,9 +60,9 @@
 	last_teleport = world.time
 
 	glow = image(icon = icon, icon_state = "[icon_state]-ready")
-	glow.plane = PLANE_LIGHTING_ABOVE
+	glow.plane = ABOVE_LIGHTING_PLANE
 	charge = image(icon = icon, icon_state = "[icon_state]-charging")
-	charge.plane = PLANE_LIGHTING_ABOVE
+	charge.plane = ABOVE_LIGHTING_PLANE
 	shell = image(icon = icon, icon_state = "[icon_state]")
 
 	if(teleport_range)

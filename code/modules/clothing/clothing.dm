@@ -29,7 +29,6 @@
 	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 	var/recent_struggle = 0
 
-	var/clothing_flags = 0
 //Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
 	return
@@ -38,6 +37,15 @@
 /obj/item/clothing/clean_blood()
 	..()
 	gunshot_residue = null
+
+/obj/item/clothing/proc/get_fibers()
+	. = "material from \a [name]"
+	var/list/acc = list()
+	for(var/obj/item/clothing/accessory/A in accessories)
+		if(prob(40) && A.get_fibers())
+			acc += A.get_fibers()
+	if(acc.len)
+		. += " with traces of [english_list(acc)]"
 
 /obj/item/clothing/Initialize(mapload)
 	. = ..()
@@ -51,7 +59,7 @@
 	if(enables_planes)
 		user.recalculate_vis()
 
-/obj/item/clothing/dropped(var/mob/user)
+/obj/item/clothing/dropped(mob/user)
 	..()
 	if(enables_planes)
 		user.recalculate_vis()
@@ -123,7 +131,7 @@
 	//Set species_restricted list
 	switch(target_species)
 		if(SPECIES_HUMAN, SPECIES_SKRELL)	//humanoid bodytypes
-			species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN) //skrell/humans can wear each other's suits
+			species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN, SPECIES_HUMAN_SPACER, SPECIES_HUMAN_GRAV, SPECIES_HUMAN_VATBORN) //skrell/humans can wear each other's suits
 		else
 			species_restricted = list(target_species)
 
@@ -266,6 +274,9 @@
 	if(ring)
 		ring.emp_act(severity)
 	..()
+
+/obj/item/clothing/gloves/get_fibers()
+	return "material from a pair of [name]."
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
 /obj/item/clothing/gloves/proc/Touch(var/atom/A, var/proximity)
@@ -453,17 +464,17 @@
 
 	if(on)
 		// Generate object icon.
-		if(!light_overlay_cache["[light_overlay]_icon"])
-			light_overlay_cache["[light_overlay]_icon"] = image(icon = 'icons/obj/light_overlays.dmi', icon_state = "[light_overlay]")
-		helmet_light = light_overlay_cache["[light_overlay]_icon"]
+		if(!GLOB.light_overlay_cache["[light_overlay]_icon"])
+			GLOB.light_overlay_cache["[light_overlay]_icon"] = image(icon = 'icons/obj/light_overlays.dmi', icon_state = "[light_overlay]")
+		helmet_light = GLOB.light_overlay_cache["[light_overlay]_icon"]
 		add_overlay(helmet_light)
 
 		// Generate and cache the on-mob icon, which is used in update_inv_head().
 		var/body_type = (H && H.species.get_bodytype(H))
 		var/cache_key = "[light_overlay][body_type && sprite_sheets[body_type] ? "_[body_type]" : ""]"
-		if(!light_overlay_cache[cache_key])
+		if(!GLOB.light_overlay_cache[cache_key])
 			var/use_icon = LAZYACCESS(sprite_sheets,body_type) || 'icons/mob/light_overlays.dmi'
-			light_overlay_cache[cache_key] = image(icon = use_icon, icon_state = "[light_overlay]")
+			GLOB.light_overlay_cache[cache_key] = image(icon = use_icon, icon_state = "[light_overlay]")
 
 	else if(helmet_light)
 		cut_overlay(helmet_light)
@@ -608,6 +619,7 @@
 	 istype(I, /obj/item/material/butterfly) || \
 	 istype(I, /obj/item/material/kitchen/utensil) || \
 	 istype(I, /obj/item/storage/box/survival_knife) ||\
+	 istype(I, /obj/item/material/knife/stiletto) ||\
 	 istype(I, /obj/item/material/knife/tacknife)))
 		if(holding)
 			to_chat(user, "<span class='warning'>\The [src] is already holding \a [holding].</span>")

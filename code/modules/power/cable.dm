@@ -21,7 +21,7 @@ If d1 = 0 and d2 = dir, it's a O-X cable, getting from the center of the tile to
 If d1 = dir1 and d2 = dir2, it's a full X-X cable, getting from dir1 to dir2
 By design, d1 is the smallest direction and d2 is the highest
 */
-var/list/possible_cable_coil_colours = list(
+GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		"White" = COLOR_WHITE,
 		"Silver" = COLOR_SILVER,
 		"Gray" = COLOR_GRAY,
@@ -41,7 +41,7 @@ var/list/possible_cable_coil_colours = list(
 		"Orange" = COLOR_ORANGE,
 		"Beige" = COLOR_BEIGE,
 		"Brown" = COLOR_BROWN
-	)
+	))
 
 /obj/structure/cable
 	level = 1
@@ -67,6 +67,40 @@ var/list/possible_cable_coil_colours = list(
 
 	return powernet.draw_power(amount)
 
+/obj/structure/cable/Initialize(mapload, _color, _d1, _d2, auto_merge)
+	. = ..()
+
+	if(_color)
+		add_atom_colour(GLOB.possible_cable_coil_colours[_color] || COLOR_RED, FIXED_COLOUR_PRIORITY)
+
+	if(_d1 || _d2)
+		d1 = _d1
+		d2 = _d2
+	else
+		// ensure d1 & d2 reflect the icon_state for entering and exiting cable
+		var/dash = findtext(icon_state, "-")
+		d1 = text2num( copytext( icon_state, 1, dash ) )
+		d2 = text2num( copytext( icon_state, dash+1 ) )
+
+	var/turf/T = src.loc			// hide if turf is not intact
+	if(level==1)
+		hide(!T.is_plating())
+	cable_list += src //add it to the global cable list
+	if(auto_merge)
+		auto_merge()
+
+// cable refactor when
+/obj/structure/cable/proc/auto_merge()
+	mergeConnectedNetworks(d1) //merge the powernets...
+	mergeConnectedNetworks(d2) //...in the two new cable directions
+	mergeConnectedNetworksOnTurf()
+
+	if(d1 & (d1 - 1))// if the cable is layed diagonally, check the others 2 possible directions
+		mergeDiagonalsNetworks(d1)
+
+	if(d2 & (d2 - 1))// if the cable is layed diagonally, check the others 2 possible directions
+		mergeDiagonalsNetworks(d2)
+
 /obj/structure/cable/yellow
 	color = COLOR_YELLOW
 
@@ -88,23 +122,6 @@ var/list/possible_cable_coil_colours = list(
 /obj/structure/cable/white
 	color = COLOR_WHITE
 
-/obj/structure/cable/Initialize(mapload)
-	. = ..()
-
-	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
-
-	var/dash = findtext(icon_state, "-")
-
-	d1 = text2num( copytext( icon_state, 1, dash ) )
-
-	d2 = text2num( copytext( icon_state, dash+1 ) )
-
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level==1)
-		hide(!T.is_plating())
-	cable_list += src //add it to the global cable list
-
-
 /obj/structure/cable/Destroy()					// called when a cable is deleted
 	if(powernet)
 		cut_cable_from_powernet()				// update the powernets
@@ -113,6 +130,7 @@ var/list/possible_cable_coil_colours = list(
 
 // Ghost examining the cable -> tells him the power
 /obj/structure/cable/attack_ghost(mob/user)
+	. = ..()
 	if(user.client && user.client.inquisitive_ghost)
 		user.examinate(src)
 		// following code taken from attackby (multitool)
@@ -120,8 +138,6 @@ var/list/possible_cable_coil_colours = list(
 			to_chat(user, "<span class='warning'>[powernet.avail]W in power network.</span>")
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
-	return
-
 
 // Rotating cables requires d1 and d2 to be rotated
 /obj/structure/cable/setDir(new_dir)
@@ -513,7 +529,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
@@ -584,9 +600,9 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	if(!selected_color)
 		return
 
-	var/final_color = possible_cable_coil_colours[selected_color]
+	var/final_color = GLOB.possible_cable_coil_colours[selected_color]
 	if(!final_color)
-		final_color = possible_cable_coil_colours["Red"]
+		final_color = GLOB.possible_cable_coil_colours["Red"]
 		selected_color = "red"
 	color = final_color
 	to_chat(user, "<span class='notice'>You change \the [src]'s color to [lowertext(selected_color)].</span>")
@@ -628,7 +644,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	set name = "Change Colour"
 	set category = "Object"
 
-	var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in possible_cable_coil_colours
+	var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in GLOB.possible_cable_coil_colours
 	set_cable_color(selected_type, usr)
 
 // Items usable on a cable coil :
@@ -944,7 +960,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null

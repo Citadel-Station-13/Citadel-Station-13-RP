@@ -5,8 +5,6 @@
 	icon = 'icons/effects/effects.dmi'	//We have an ultra-complex update icons that overlays everything, don't load some stupid random male human
 	icon_state = "nothing"
 
-	has_huds = TRUE 					//We do have HUDs (like health, wanted, status, not inventory slots)
-
 	var/embedded_flag					//To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/obj/item/rig/wearing_rig // This is very not good, but it's much much better than calling get_rig() every update_canmove() call.
 	var/last_push_time					//For human_attackhand.dm, keeps track of the last use of disarm
@@ -21,25 +19,34 @@
 	var/active_regen_delay = 300
 	var/spam_flag = FALSE	//throws byond:tm: errors if placed in human/emote, but not here
 
-/mob/living/carbon/human/Initialize(mapload, var/new_species = null)
+	var/healing = FALSE
+
+/mob/living/carbon/human/Initialize(mapload, datum/species/new_species_or_path)
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()
 
-	if(!species)
-		if(new_species)
-			set_species(new_species,1)
+	if(new_species_or_path)
+		set_species(new_species_or_path)
+	else if(!istype(species))
+		// no one set us yet
+		if(ispath(species))
+			set_species(species)
 		else
 			set_species()
 
-	if(species)
-		real_name = species.get_random_name(gender)
-		name = real_name
-		if(mind)
-			mind.name = real_name
+	if(!species)
+		stack_trace("Why is there no species? Resetting to human.")	// NO NO, YOU DONT GET TO CHICKEN OUT, SET_SPECIES WAS CALLED AND YOU BETTER HAVE ONE
+		// no you don't get to get away
+		set_species(/datum/species/human)
 
+	real_name = species.get_random_name(gender)
+	name = real_name
+	if(mind)
+		mind.name = real_name
 
 	nutrition = rand(200,400)
+	hydration = rand(200,400)
 
 	AddComponent(/datum/component/personal_crafting)
 
@@ -56,13 +63,26 @@
 		dna.real_name = real_name
 		sync_organ_dna()
 
+	init_world_bender_hud()
+
 /mob/living/carbon/human/Destroy()
 	human_mob_list -= src
 	for(var/organ in organs)
 		qdel(organ)
 	QDEL_NULL(nif)	//VOREStation Add
 	QDEL_LIST_NULL(vore_organs) //VOREStation Add
+	cleanup_world_bender_hud()
 	return ..()
+
+/mob/living/carbon/human/prepare_data_huds()
+	//Update med hud images...
+	. = ..()
+	//...sec hud images...
+	update_hud_sec_implants()
+	update_hud_sec_job()
+	update_hud_sec_status()
+	//...and display them.
+	add_to_all_human_data_huds()
 
 /mob/living/carbon/human/Stat()
 	..()
@@ -244,21 +264,15 @@
 	return
 
 // called when something steps onto a human
-// this handles mulebots and vehicles
-// and now mobs on fire
+// this handles mobs on fire - mulebot and vehicle code has been relocated to /mob/living/Crossed()
 /mob/living/carbon/human/Crossed(var/atom/movable/AM)
 	. = ..()
 	if(AM.is_incorporeal())
 		return
-	if(istype(AM, /mob/living/bot/mulebot))
-		var/mob/living/bot/mulebot/MB = AM
-		MB.runOver(src)
-
-	if(istype(AM, /obj/vehicle))
-		var/obj/vehicle/V = AM
-		V.RunOver(src)
 
 	spread_fire(AM)
+
+	..() // call parent because we moved behavior to parent
 
 // Get rank from ID, ID inside PDA, PDA, ID in wallet, etc.
 /mob/living/carbon/human/proc/get_authentification_rank(var/if_no_id = "No id", var/if_no_job = "No job")
@@ -371,8 +385,14 @@
 /mob/living/carbon/human/Topic(href, href_list)
 
 	if (href_list["refresh"])
-		if((machine)&&(in_range(src, usr)))
-			show_inv(machine)
+		if(ismob(machine) && in_range(src, usr))
+			// hi, if you see me on git blame, trust me, this code is dumb
+			// but what came before was dumber
+			// whoever wrote this initially can go to hell, who the fuck in their right mind uses
+			// "machine"  for a mob?
+			// it makes no sense, fuck you, get bent.
+			var/mob/M = machine
+			M.show_inv(usr)
 
 	if (href_list["mach_close"])
 		var/t1 = text("window=[]", href_list["mach_close"])
@@ -410,15 +430,7 @@
 									if(setcriminal != "Cancel")
 										R.fields["criminal"] = setcriminal
 										modified = 1
-
-										spawn()
-											BITSET(hud_updateflag, WANTED_HUD)
-											if(istype(usr,/mob/living/carbon/human))
-												var/mob/living/carbon/human/U = usr
-												U.handle_regular_hud_updates()
-											if(istype(usr,/mob/living/silicon/robot))
-												var/mob/living/silicon/robot/U = usr
-												U.handle_regular_hud_updates()
+										update_hud_sec_status()
 
 			if(!modified)
 				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
@@ -677,7 +689,7 @@
 		I.additional_flash_effects(number)
 	return number
 
-/mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(internal_organs_by_name[O_EYES]) // Eyes are fucked, not a 'weak point'.
 		var/obj/item/organ/internal/eyes/I = internal_organs_by_name[O_EYES]
 		I.additional_flash_effects(intensity)
@@ -747,9 +759,8 @@
 	dna.check_integrity(src)
 	return
 
-/mob/living/carbon/human/get_species()
-	if(!species)
-		set_species()
+/mob/living/carbon/human/get_species_name()
+	// no more species check, if we runtime, fuck you, fix your bugs.
 	return species.name
 
 /mob/living/carbon/human/proc/play_xylophone()
@@ -776,11 +787,6 @@
 /mob/living/carbon/human/proc/morph()
 	set name = "Morph"
 	set category = "Superpower"
-
-	if(stat!=CONSCIOUS)
-		reset_view(0)
-		remoteview_target = null
-		return
 
 	if(!(mMorph in mutations))
 		src.verbs -= /mob/living/carbon/human/proc/morph
@@ -852,14 +858,10 @@
 	set name = "Project mind"
 	set category = "Superpower"
 
-	if(stat!=CONSCIOUS)
-		reset_view(0)
-		remoteview_target = null
-		return
-
 	if(!(mRemotetalk in src.mutations))
 		src.verbs -= /mob/living/carbon/human/proc/remotesay
 		return
+
 	var/list/creatures = list()
 	for(var/mob/living/carbon/h in GLOB.mob_list)
 		creatures += h
@@ -883,18 +885,19 @@
 
 	if(stat!=CONSCIOUS)
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 		return
 
 	if(!(mRemote in src.mutations))
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 		src.verbs -= /mob/living/carbon/human/proc/remoteobserve
 		return
 
-	if(client.eye != client.mob)
+	if(IsRemoteViewing())
+		to_chat(src, SPAN_NOTICE("You stop looking through another perspective."))
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 		return
 
 	var/list/mob/creatures = list()
@@ -909,10 +912,10 @@
 
 	if (target)
 		remoteview_target = target
-		reset_view(target)
+		reset_perspective(target)
 	else
 		remoteview_target = null
-		reset_view(0)
+		reset_perspective()
 
 /mob/living/carbon/human/get_visible_gender()
 	if(wear_suit && wear_suit.flags_inv & HIDEJUMPSUIT && ((head && head.flags_inv & HIDEMASK) || wear_mask))
@@ -1125,78 +1128,77 @@
 	else
 		to_chat(usr, "<span class='warning'>You failed to check the pulse. Try again.</span>")
 
-/mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour, var/regen_icons = TRUE, var/mob/living/carbon/human/example = null)	//VOREStation Edit - send an example
-
-	if(!dna)
-		if(!new_species)
-			new_species = SPECIES_HUMAN
-	else
-		if(!new_species)
-			new_species = dna.species
-		else
-			dna.species = new_species
-
-	// No more invisible screaming wheelchairs because of set_species() typos.
-	if(!GLOB.all_species[new_species])
-		new_species = SPECIES_HUMAN
-
-	if(species)
-
-		if(species.name && species.name == new_species && species.name != "Custom Species")
+/**
+ * Sets a human mob's species.
+ *
+ * Accepts a typepath or species instance
+ *
+ * @param
+ * - species_or_path - species instance or typepath
+ * - regen_icons - immediately update icons?
+ * - force - change even if we are already that species **by type**
+ * - skip - skip most ops that aren't apply or remove which are required for instance cleanup. do not do this unless you absolutely know what you are doing.
+ * - example - dumbshit argument used for vore transformations to copy necessary data, why tf is this not done in the vore module? TODO: REMOVE.
+ */
+/mob/living/carbon/human/proc/set_species(datum/species/species_or_path, regen_icons = TRUE, force = FALSE, skip, mob/living/carbon/human/example)	//VOREStation Edit - send an example
+	// check if we need to
+	if(!force && species_or_path)
+		if(istype(species, istype(species_or_path)? species_or_path.type : species_or_path))
+			// already are that typepath, don't bother
 			return
-		if(species.language)
-			remove_language(species.language)
-		if(species.default_language)
-			remove_language(species.default_language)
-		for(var/datum/language/L in species.assisted_langs)
-			remove_language(L)
-		// Clear out their species abilities.
-		species.remove_inherent_verbs(src)
-		species.remove_inherent_spells(src)
-		holder_type = null
 
-	species = GLOB.all_species[new_species]
+	if(!species_or_path)
+		// try to get default
+		// priority one: dna
+		if(dna?.species)
+			var/path = species_type_by_name(dna.species)
+			if(!path)
+				CRASH("dna species invalid name: [dna.species]")
+			species_or_path = path
+		// priority two: species var
+		else if(ispath(species))
+			species_or_path = species
+		// priority 3: human
+		else
+			species_or_path = /datum/species/human
 
-	if(species.language)
-		add_language(species.language)
+	var/datum/species/S
 
-	if(species.default_language)
-		add_language(species.default_language)
-
-	if(species.icon_scale_x != 1 || species.icon_scale_y != 1)
-		update_transform()
-
-	if(example)						//VOREStation Edit begin
-		if(!(example == src))
-			r_skin = example.r_skin
-			g_skin = example.g_skin
-			b_skin = example.b_skin
-	else if(species.base_color)	//VOREStation Edit end
-		//Apply colour.
-		r_skin = hex2num(copytext(species.base_color,2,4))
-		g_skin = hex2num(copytext(species.base_color,4,6))
-		b_skin = hex2num(copytext(species.base_color,6,8))
+	// if we're a typepath instead of a species instance
+	if(ispath(species_or_path))
+		ASSERT(species_or_path in GLOB.species_meta)		// check that too
+		S = new species_or_path
+	else if(!istype(species_or_path))
+		// make sure no one did a bad call
+		CRASH("Invalid species change attempt: [species_or_path]")
 	else
-		r_skin = 0
-		g_skin = 0
-		b_skin = 0
+		// we're a species datum
+		S = species_or_path
+		// in the future we might have unique instancing so it'd need a check too, for now, mobs can share species
+		// (DO NOT DO THIS OR IT WILL BUG OUT AND I **WILL** FIND YOU)
 
-	if(species.holder_type)
-		holder_type = species.holder_type
+	// clean up old species
+	if(istype(species))
+		species.on_remove(src)
 
-	if(!(gender in species.genders))
-		gender = species.genders[1]
+	// set
+	species = S
 
-	//icon_state = lowertext(species.name) //Necessary?
+	// apply new species, create organs, do post spawn stuff even though we're presumably not spawning half the time
+	// i seriously hate vorecode
+	species.on_apply(src)
 
-	//VOREStation Edit start: swap places of those two procs
-	species.handle_post_spawn(src)
+	// skip the rest
+	if(skip)
+		return
 
 	species.create_organs(src)
-	//VOREStation Edit end: swap places of those two procs
+	species.create_blood(src)
+	species.handle_post_spawn(src)
+	species.update_attack_types() //VOREStation Edit - Required for any trait that updates unarmed_types in setup.
 
-
-	maxHealth = species.total_health
+	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
+	update_hud()
 
 	if(LAZYLEN(descriptors))
 		descriptors = null
@@ -1207,30 +1209,17 @@
 			var/datum/mob_descriptor/descriptor = species.descriptors[desctype]
 			descriptors[desctype] = descriptor.default_value
 
-	spawn(0)
-		if(regen_icons) regenerate_icons()
-		make_blood()
-		if(vessel.total_volume < species.blood_volume)
-			vessel.maximum_volume = species.blood_volume
-			vessel.add_reagent("blood", species.blood_volume - vessel.total_volume)
-		else if(vessel.total_volume > species.blood_volume)
-			vessel.remove_reagent("blood", vessel.total_volume - species.blood_volume)
-			vessel.maximum_volume = species.blood_volume
-		fixblood()
-		species.update_attack_types() //VOREStation Edit - Required for any trait that updates unarmed_types in setup.
+	// dumb shit transformation shit here
+	if(example)						//VOREStation Edit begin
+		if(!(example == src))
+			r_skin = example.r_skin
+			g_skin = example.g_skin
+			b_skin = example.b_skin
 
-	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
-	update_hud()
-
-	//A slew of bits that may be affected by our species change
-	regenerate_icons()
-
-	if(species)
-		//if(mind) //VOREStation Removal
-			//apply_traits() //VOREStation Removal
-		return 1
-	else
-		return 0
+	if(regen_icons)
+		//A slew of bits that may be affected by our species change
+		regenerate_icons()
+		update_transform()
 
 /mob/living/carbon/human/proc/bloody_doodle()
 	set category = "IC"
@@ -1331,10 +1320,10 @@
 	else
 		switch(target_zone)
 			if(BP_HEAD) //If targeting head, check helmets
-				if(head && (head.item_flags & THICKMATERIAL) && !ignore_thickness && !istype(head, /obj/item/clothing/head/helmet/space)) //If they're wearing a head piece, if that head piece is thick, the injector doesn't bypass thickness, and that headpiece isn't a space helmet with an injection port - it fails
+				if(head && (head.clothing_flags & THICKMATERIAL) && !ignore_thickness && !istype(head, /obj/item/clothing/head/helmet/space)) //If they're wearing a head piece, if that head piece is thick, the injector doesn't bypass thickness, and that headpiece isn't a space helmet with an injection port - it fails
 					. = 0
 			else //Otherwise, if not targeting head, check the suit
-				if(wear_suit && (wear_suit.item_flags & THICKMATERIAL) && !ignore_thickness&& !istype(wear_suit, /obj/item/clothing/suit/space)) //If they're wearing a suit piece, if that suit piece is thick, the injector doesn't bypass thickness, and that suit isn't a space suit with an injection port - it fails
+				if(wear_suit && (wear_suit.clothing_flags & THICKMATERIAL) && !ignore_thickness&& !istype(wear_suit, /obj/item/clothing/suit/space)) //If they're wearing a suit piece, if that suit piece is thick, the injector doesn't bypass thickness, and that suit isn't a space suit with an injection port - it fails
 					. = 0
 	if(!. && error_msg && user)
 		if(!fail_msg)
@@ -1416,7 +1405,7 @@
 		if(C.body_parts_covered & FEET)
 			footcoverage_check = TRUE
 			break
-	if((species.flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.item_flags & NOSLIP))) //Footwear negates a species' natural traction.
+	if((species.flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.clothing_flags & NOSLIP))) //Footwear negates a species' natural traction.
 		return 0
 	if(..(slipped_on,stun_duration))
 		return 1
@@ -1478,13 +1467,8 @@
 		return
 	..()
 
-/mob/living/carbon/human/reset_view(atom/A, update_hud = 1)
-	..()
-	if(update_hud)
-		handle_regular_hud_updates()
-
 /mob/living/carbon/human/Check_Shoegrip()
-	if(shoes && (shoes.item_flags & NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
+	if(shoes && (shoes.clothing_flags & NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
 		return 1
 	if(flying) //VOREStation Edit. Checks to see if they have wings and are flying.
 		return 1 //VOREStation Edit.
@@ -1576,7 +1560,7 @@
 		if(stat == DEAD || paralysis || weakened || stunned || restrained() || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs()) //stunned/knocked down by something that isn't the rest verb? Note: This was tried with INCAPACITATION_STUNNED, but that refused to work. //VORE EDIT: Check for has_buckled_mobs() (taur riding)
 			reveal(null)
 		else
-			layer = HIDING_LAYER
+			set_base_layer(HIDING_LAYER)
 
 /mob/living/carbon/human/proc/get_display_species()
 	//Shows species in tooltip
@@ -1628,17 +1612,58 @@
 	return msg
 
 //Crazy alternate human stuff
-/mob/living/carbon/human/Initialize(mapload, new_species)
-	. = ..()
+/mob/living/carbon/human/proc/init_world_bender_hud()
 	var/animal = pick("cow","chicken_brown", "chicken_black", "chicken_white", "chick", "mouse_brown", "mouse_gray", "mouse_white", "lizard", "cat2", "goose", "penguin")
 	var/image/img = image('icons/mob/animal.dmi', src, animal)
+	// hud refactor when
 	img.override = TRUE
-	add_alt_appearance("animals", img, displayTo = alt_farmanimals)
+	LAZYINITLIST(hud_list)
+	hud_list[WORLD_BENDER_ANIMAL_HUD] = img
+	var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
+	A.add_to_hud(src)
 
-/mob/living/carbon/human/Destroy()
-	alt_farmanimals -= src
-
-	. = ..()
+/mob/living/carbon/human/proc/cleanup_world_bender_hud()
+	var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
+	A.remove_from_hud(src)
 
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
+
+/mob/living/carbon/human/inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
+	. = ..()
+	if(isSynthetic())
+		things_to_induce += src
+
+/mob/living/carbon/human/inducer_act(obj/item/inducer/I, amount, inducer_flags)
+	. = ..()
+	if(!isSynthetic())
+		return
+	var/needed = (species.max_nutrition - nutrition)
+	if(needed <= 0)
+		return
+	var/got = min((amount / SYNTHETIC_NUTRITION_CHARGE_RATE), needed)
+	adjust_nutrition(got)
+	return got * SYNTHETIC_NUTRITION_CHARGE_RATE
+
+/mob/living/carbon/human/can_wield_item(obj/item/W)
+	//Since teshari are small by default, they have different logic to allow them to use certain guns despite that.
+	//If any other species need to adapt for this, you can modify this proc with a list instead
+	if(istype(species, /datum/species/teshari))
+		return !W.heavy //return true if it is not heavy, false if it is heavy
+	else return ..()
+
+/mob/living/carbon/human/set_nutrition(amount)
+	nutrition = clamp(amount, 0, species.max_nutrition * 1.5)
+
+/mob/living/carbon/human/get_bullet_impact_effect_type(var/def_zone)
+	var/obj/item/organ/external/E = get_organ(def_zone)
+	if(!E || E.is_stump())
+		return BULLET_IMPACT_NONE
+	if(BP_IS_ROBOTIC(E))
+		return BULLET_IMPACT_METAL
+	return BULLET_IMPACT_MEAT
+
+/mob/living/carbon/human/reduce_cuff_time()
+	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/rig))
+		return 2
+	return ..()

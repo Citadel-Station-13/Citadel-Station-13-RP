@@ -166,7 +166,7 @@
 */
 
 /obj/item/instrument/trumpet/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound (loc, 'sound/instruments/trombone/En4.mid', 100,1,-1)
+	playsound (loc, 'sound/runtime/instruments/trombone/En4.mid', 100,1,-1)
 	..()
 
 /obj/item/instrument/saxophone
@@ -191,7 +191,7 @@
 */
 
 /obj/item/instrument/saxophone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound(loc, 'sound/instruments/saxophone/En4.mid', 100,1,-1)
+	playsound(loc, 'sound/runtime/instruments/saxophone/En4.mid', 100,1,-1)
 	..()
 
 /obj/item/instrument/trombone
@@ -216,7 +216,7 @@
 */
 
 /obj/item/instrument/trombone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound(loc, 'sound/instruments/trombone/Cn4.mid', 100,1,-1)
+	playsound(loc, 'sound/runtime/instruments/trombone/Cn4.mid', 100,1,-1)
 	..()
 
 /obj/item/instrument/recorder

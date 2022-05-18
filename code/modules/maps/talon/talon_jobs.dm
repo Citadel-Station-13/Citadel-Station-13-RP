@@ -1,7 +1,8 @@
 // Used to be tether_jobs.dm and only loaded on tether... Why I do not know - Bloop
 // Make sure to have these z levels defined in whatever map defines you are creating. Tempted to just define them here but thats something to test later
 /*
-#define Z_LEVEL_OFFMAP1					1000	//Change the numbers here as appropriate
+///Change the numbers here as appropriate
+#define Z_LEVEL_OFFMAP1					1000
 #define Z_LEVEL_OFFMAP2					1001
 */
 ///////////////////////////////////
@@ -22,9 +23,9 @@
 	flag = TALCAP
 	department_flag = TALON
 	departments_managed = list(DEPARTMENT_TALON)
-	job_description = "The captain's job is to generate profit through trade or other means such as salvage or even privateering."
+	desc = "The captain's job is to generate profit through trade or other means such as salvage or even privateering."
 	supervisors = "yourself"
-	outfit_type = /decl/hierarchy/outfit/job/talon_captain
+	outfit_type = /datum/outfit/job/talon_captain
 
 	offmap_spawn = TRUE
 	faction = "Station" //Required for SSjob to allow people to join as it
@@ -46,9 +47,9 @@
 	title = "Talon Doctor"
 	flag = TALDOC
 	department_flag = TALON
-	job_description = "The doctor's job is to make sure the crew of the ITV Talon remain in good health and to monitor them when away from the ship."
+	desc = "The doctor's job is to make sure the crew of the ITV Talon remain in good health and to monitor them when away from the ship."
 	supervisors = "the ITV Talon's captain"
-	outfit_type = /decl/hierarchy/outfit/job/talon_doctor
+	outfit_type = /datum/outfit/job/talon_doctor
 
 	offmap_spawn = TRUE
 	faction = "Station" //Required for SSjob to allow people to join as it
@@ -71,9 +72,9 @@
 	title = "Talon Engineer"
 	flag = TALENG
 	department_flag = TALON
-	job_description = "The engineer's job is to ensure the ITV Talon remains in tip-top shape and to repair any damage as well as manage the shields."
+	desc = "The engineer's job is to ensure the ITV Talon remains in tip-top shape and to repair any damage as well as manage the shields."
 	supervisors = "the ITV Talon's captain"
-	outfit_type = /decl/hierarchy/outfit/job/talon_engineer
+	outfit_type = /datum/outfit/job/talon_engineer
 
 	offmap_spawn = TRUE
 	faction = "Station" //Required for SSjob to allow people to join as it
@@ -96,9 +97,9 @@
 	title = "Talon Pilot"
 	flag = TALPIL
 	department_flag = TALON
-	job_description = "The pilot's job is to fly the ITV Talon in the most efficient and profitable way possible."
+	desc = "The pilot's job is to fly the ITV Talon in the most efficient and profitable way possible."
 	supervisors = "the ITV Talon's captain"
-	outfit_type = /decl/hierarchy/outfit/job/talon_pilot
+	outfit_type = /datum/outfit/job/talon_pilot
 
 	offmap_spawn = TRUE
 	faction = "Station" //Required for SSjob to allow people to join as it
@@ -121,9 +122,9 @@
 	title = "Talon Guard"
 	flag = TALSEC
 	department_flag = TALON
-	job_description = "The guard's job is to keep the crew of the ITV Talon safe and ensure the captain's wishes are carried out."
+	desc = "The guard's job is to keep the crew of the ITV Talon safe and ensure the captain's wishes are carried out."
 	supervisors = "the ITV Talon's captain"
-	outfit_type = /decl/hierarchy/outfit/job/talon_security
+	outfit_type = /datum/outfit/job/talon_security
 
 	offmap_spawn = TRUE
 	faction = "Station" //Required for SSjob to allow people to join as it
@@ -142,7 +143,7 @@
 	title = "Talon Security"
 
 
-/decl/hierarchy/outfit/job/talon_captain
+/datum/outfit/job/talon_captain
 	name = OUTFIT_JOB_NAME("Talon Captain")
 
 	id_type = /obj/item/card/id/gold
@@ -157,7 +158,7 @@
 	satchel_one = /obj/item/storage/backpack/satchel/cap/talon
 	messenger_bag = /obj/item/storage/backpack/messenger/com/talon
 
-/decl/hierarchy/outfit/job/talon_pilot
+/datum/outfit/job/talon_pilot
 	name = OUTFIT_JOB_NAME("Talon Pilot")
 
 	id_slot = slot_wear_id
@@ -171,9 +172,9 @@
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/fakesunglasses/aviator
 	uniform_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot1 = 1)
-/decl/hierarchy/outfit/job/talon_doctor
+/datum/outfit/job/talon_doctor
 	name = OUTFIT_JOB_NAME("Talon Doctor")
-	hierarchy_type = /decl/hierarchy/outfit/job
+	abstract_type = /datum/outfit/job
 
 	id_type = /obj/item/card/id/medical
 	id_slot = slot_wear_id
@@ -189,9 +190,9 @@
 	l_hand = /obj/item/storage/firstaid/regular
 	r_pocket = /obj/item/flashlight/pen
 
-/decl/hierarchy/outfit/job/talon_security
+/datum/outfit/job/talon_security
 	name = OUTFIT_JOB_NAME("Talon Security")
-	hierarchy_type = /decl/hierarchy/outfit/job
+	abstract_type = /datum/outfit/job
 
 	id_type = /obj/item/card/id/security
 	id_slot = slot_wear_id
@@ -207,9 +208,9 @@
 	uniform = /obj/item/clothing/under/rank/security
 	l_pocket = /obj/item/flash
 
-/decl/hierarchy/outfit/job/talon_engineer
+/datum/outfit/job/talon_engineer
 	name = OUTFIT_JOB_NAME("Talon Engineer")
-	hierarchy_type = /decl/hierarchy/outfit/job
+	abstract_type = /datum/outfit/job
 
 	id_type = /obj/item/card/id/engineering
 	id_slot = slot_wear_id

@@ -94,6 +94,8 @@ var/list/name_to_material
 	var/icon_base = "metal"                              // Wall and table base icon tag. See header.
 	var/door_icon_base = "metal"                         // Door base icon tag. See header.
 	var/icon_reinf = "reinf_metal"                       // Overlay used
+	/// do we have directional reinforced states on walls?
+	var/icon_reinf_directionals = FALSE
 	var/list/stack_origin_tech = list(TECH_MATERIAL = 1) // Research level for stacks.
 	var/pass_stack_colors = FALSE                        // Will stacks made from this material pass their colors onto objects?
 
@@ -251,6 +253,7 @@ var/list/name_to_material
 	radioactivity = 12
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	icon_colour = "#007A00"
 	weight = 22
 	stack_origin_tech = list(TECH_MATERIAL = 5)
@@ -350,6 +353,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/sandstone
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	icon_colour = "#D9C179"
 	shard_type = SHARD_STONE_PIECE
 	weight = 22
@@ -371,7 +375,7 @@ var/list/name_to_material
 
 
 /datum/material/steel
-	name = DEFAULT_WALL_MATERIAL
+	name = MAT_STEEL
 	stack_type = /obj/item/stack/material/steel
 	integrity = 150
 	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
@@ -407,8 +411,8 @@ var/list/name_to_material
 	spawn_diona_nymph(target)
 
 /datum/material/steel/holographic
-	name = "holo" + DEFAULT_WALL_MATERIAL
-	display_name = DEFAULT_WALL_MATERIAL
+	name = "holo" + MAT_STEEL
+	display_name = MAT_STEEL
 	stack_type = null
 	shard_type = SHARD_NONE
 
@@ -426,7 +430,7 @@ var/list/name_to_material
 	protectiveness = 20 // 50%
 	conductivity = 13 // For the purposes of balance.
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
+	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT, MAT_PLATINUM = SHEET_MATERIAL_AMOUNT) //todo
 	radiation_resistance = 14
 
 /datum/material/plasteel/hull
@@ -456,7 +460,7 @@ var/list/name_to_material
 	protectiveness = 60 // 75%
 	reflectivity = 0.7 // Not a perfect mirror, but close.
 	stack_origin_tech = list(TECH_MATERIAL = 8)
-	composite_material = list("plasteel" = SHEET_MATERIAL_AMOUNT, "diamond" = SHEET_MATERIAL_AMOUNT) //shrug
+	composite_material = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT, MAT_DIAMOND = SHEET_MATERIAL_AMOUNT) //shrug
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	name = MAT_DURASTEELHULL
@@ -522,7 +526,7 @@ var/list/name_to_material
 	var/title = "Sheet-[used_stack.name] ([used_stack.get_amount()] sheet\s left)"
 	var/choice = input(title, "What would you like to construct?") as null|anything in window_options
 
-	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat || user.loc != T)
+	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat)
 		return 1
 
 	// Get data for building windows here.
@@ -592,7 +596,7 @@ var/list/name_to_material
 	hardness = 40
 	weight = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 2, "glass" = SHEET_MATERIAL_AMOUNT)
+	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2, MAT_GLASS = SHEET_MATERIAL_AMOUNT)
 	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
 	created_window = /obj/structure/window/reinforced
 	created_fulltile_window = /obj/structure/window/reinforced/full
@@ -917,6 +921,7 @@ var/list/name_to_material
 	icon_colour = "#42291a"
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	integrity = 65	//a bit stronger than regular wood
 	hardness = 20
 	weight = 20	//likewise, heavier
@@ -965,6 +970,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/snowbrick
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	icon_colour = "#D8FDFF"
 	integrity = 50
 	weight = 2
@@ -1223,3 +1229,14 @@ var/list/name_to_material
 	hardness = 30
 	conductivity = 35
 	stack_type = /obj/item/stack/material/copper
+
+//Moving this here. It was in beehive.dm for some reason.
+/datum/material/wax
+	name = "wax"
+	stack_type = /obj/item/stack/material/wax
+	icon_colour = "#ebe6ac"
+	melting_point = T0C+300
+	weight = 1
+	hardness = 20
+	integrity = 100
+	pass_stack_colors = TRUE

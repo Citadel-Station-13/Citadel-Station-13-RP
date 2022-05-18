@@ -141,7 +141,7 @@
 	icon_state = "sheet-goliath_hide"
 	singular_name = "hide plate"
 	max_amount = 6
-	item_flags = NOBLUDGEON
+	clothing_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_NORMAL
 	layer = MOB_LAYER
 
@@ -165,7 +165,7 @@
 	icon_state = "sheet-dragon_hide"
 	singular_name = "drake plate"
 	max_amount = 10
-	item_flags = NOBLUDGEON
+	clothing_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_NORMAL
 	layer = MOB_LAYER
 
@@ -225,4 +225,3 @@
 			HS.amount = 1
 			wetness = initial(wetness)
 			src.use(1)
-

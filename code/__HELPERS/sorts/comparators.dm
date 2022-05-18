@@ -59,6 +59,9 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_subsystem_priority(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return a.priority - b.priority
 
+/proc/cmp_filter_data_priority(list/A, list/B)
+	return A["priority"] - B["priority"]
+
 /proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
 	return a.timeToRun - b.timeToRun
 
@@ -114,3 +117,43 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
 	return A.priority - B.priority
+
+/**
+ * the lazy man's low performance sort
+ *
+ * uses a datum's compare_to() proc.
+ *
+ * **Do not use this for any high performance context. It is slower than hardcoded comparators.
+ *
+ * **Warning: Only use this between to datums of the same logical type**. E.g. if you use one on another kinid of datum, you're going to get weird results,
+ * because the compar procs are going to typecheck, and if it's not of the right type, you'll get unexpected results!
+ */
+/proc/cmp_auto_compare(datum/A, datum/B)
+	return A.compare_to(B)
+
+/**
+ * standard datum comparison
+ * no types are checked!
+ *
+ * **Do not use this for any high performance context. It is slower than hardcoded comparators.
+ *
+ * **Warning: Only use this between to datums of the same logical type**. E.g. if you use one on another kinid of datum, you're going to get weird results,
+ * because the compar procs are going to typecheck, and if it's not of the right type, you'll get unexpected results!
+ *
+ * with the context of list index 1 = front,
+ * return -1 for "I am infront of B" (list index closer to 1), 1 for "I am behind B" (list index further from 1), 0 for "I am equivalent to B"
+ */
+/datum/proc/compare_to(datum/D)
+	return cmp_text_asc("[src]", "[D]")
+
+// profile stuff
+
+/proc/cmp_profile_avg_time_dsc(list/A, list/B)
+	return (B[PROFILE_ITEM_TIME]/(B[PROFILE_ITEM_COUNT] || 1)) - (A[PROFILE_ITEM_TIME]/(A[PROFILE_ITEM_COUNT] || 1))
+
+/proc/cmp_profile_time_dsc(list/A, list/B)
+	return B[PROFILE_ITEM_TIME] - A[PROFILE_ITEM_TIME]
+
+/proc/cmp_profile_count_dsc(list/A, list/B)
+	return B[PROFILE_ITEM_COUNT] - A[PROFILE_ITEM_COUNT]
+

@@ -1067,7 +1067,7 @@
 	},
 /area/wizard_station)
 "cw" = (
-/obj/item/firstaid_arm_assembly,
+/obj/item/bot_assembly/medibot,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -1106,13 +1106,13 @@
 	},
 /area/wizard_station)
 "cC" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/wizard_station)
 "cD" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

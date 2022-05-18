@@ -22,7 +22,7 @@
 	item_state = "kineticgun"
 	// ammo_type = list(/obj/item/ammo_casing/energy/kinetic)
 	cell_type = /obj/item/cell/device/weapon/empproof
-	item_flags = NONE
+	clothing_flags = NONE
 	charge_meter = FALSE
 	// obj_flags = UNIQUE_RENAME
 	// weapon_weight = WEAPON_LIGHT
@@ -140,13 +140,13 @@
 	holds_charge = TRUE
 	unique_frequency = TRUE
 
-/obj/item/gun/energy/kinetic_accelerator/Initialize()
+/obj/item/gun/energy/kinetic_accelerator/Initialize(mapload)
 	. = ..()
 	if(!holds_charge)
 		empty()
 	AddElement(/datum/element/conflict_checking, CONFLICT_ELEMENT_KA)
 
-/obj/item/gun/energy/kinetic_accelerator/equipped(mob/user)
+/obj/item/gun/energy/kinetic_accelerator/equipped(mob/user, slot)
 	. = ..()
 	if(power_supply.charge < charge_cost)
 		attempt_reload()
@@ -195,10 +195,10 @@
 	overheat = FALSE
 	update_icon()
 
-/obj/item/gun/energy/kinetic_accelerator/update_icon()
-	cut_overlays()
+/obj/item/gun/energy/kinetic_accelerator/update_overlays()
+	. = ..()
 	if(overheat || (power_supply.charge == 0))
-		add_overlay(emptystate)
+		. += emptystate
 
 //Projectiles
 /obj/item/projectile/kinetic
