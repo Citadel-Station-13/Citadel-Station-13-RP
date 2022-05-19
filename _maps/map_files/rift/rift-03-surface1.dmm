@@ -1676,7 +1676,6 @@
 /obj/machinery/conveyor{
 	tag = "mailroom"
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "bHn" = (
@@ -7786,7 +7785,6 @@
 /obj/machinery/conveyor{
 	tag = "mailroom"
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "gXF" = (
@@ -17288,7 +17286,6 @@
 	tag = "mailroom"
 	},
 /obj/structure/disposalpipe/trunk,
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "ovz" = (
