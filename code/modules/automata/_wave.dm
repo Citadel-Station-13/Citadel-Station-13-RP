@@ -149,7 +149,7 @@
 	_T = edges[i];								\
 	if(!_T){									\
 		continue;								\
-	}											\
+	};											\
 	_D = edges[_T];								\
 	_P = returned[_T];
 
@@ -162,11 +162,11 @@
 		if(!edges_next[_expanding]){													\
 			diagonals[_expanding] |= ED;												\
 			diagonal_powers[_expanding] = max(digonal_powers[_expanding], P);			\
-		}																				\
+		};																				\
 		else {																			\
 			powers_next[expanding] = max(powers_next[expanding], P);					\
-		}																				\
-	}
+		};																				\
+	};
 /**
  * marking diagonals: turfs considered for an immediate, quick expansion due to being perpendicular to normal expansions
  *
@@ -347,14 +347,19 @@
 
 /datum/automata/wave/debug/act(turf/T, dirs, power)
 	. = ..()
-	if(T.contains_dense_objects())
+	if(T.density)
 		. -= dense_falloff
+	else
+		for(var/obj/O in T)
+			if(O.density && O.opacity)
+				. -= dense_falloff
+				break
 	T.maptext = "[power]"
 	impacted += T
 
 GLOBAL_DATUM(active_wave_automata_test, /datum/automata/wave)
 
-/proc/wave_automata_test(turf/T, type = WAVE_SPREAD_MINIMAL, power = 50, dense_falloff = 0, dirs)
+/proc/wave_automata_test(turf/T, type = WAVE_SPREAD_MINIMAL, dense_falloff = 0, power = 50, dirs)
 	power = clamp(power, 0, 100)
 	var/datum/automata/wave/debug/W = new
 	W.wave_spread = type
