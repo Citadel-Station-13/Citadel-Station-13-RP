@@ -85,6 +85,12 @@
 	force = 10
 	toolspeed = 0.5
 
+/obj/item/tool/crowbar/RIGset
+	name = "integrated prybar"
+	desc = "If you're seeing this, someone did a dum-dum."
+	usesound = 'sound/items/jaws_pry.ogg'
+	toolspeed = 0.7
+
 /obj/item/tool/crowbar/power
 	name = "jaws of life"
 	desc = "A set of jaws of life, compressed through the magic of science. It's fitted with a prying head."
