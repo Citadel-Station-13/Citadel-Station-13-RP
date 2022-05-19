@@ -46,16 +46,12 @@
 /atom/proc/attack_ghost(mob/observer/dead/user)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_GHOST, user)
-	// TODO: main ai interact bay code fucking disgusts me wtf
-	if(isAdminGhostAI(user))		// admin AI interact
-		AdminAIInteract(user)
-		return
-	if(user.client && user.client.inquisitive_ghost)
-		user.examinate(src)
-
-// defaults to just attack_ai
-/atom/proc/AdminAIInteract(mob/user)
-	return attack_ai(user)
+	if(user.client)
+		if(isAdminGhostAI(user))
+			attack_ai(user)
+		else if(user.client && user.client.inquisitive_ghost)
+			user.examinate(src)
+	return FALSE
 
 // ---------------------------------------
 // And here are some good things for free:
