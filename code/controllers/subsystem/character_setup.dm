@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(character_setup)
 	name = "Character Setup"
 	init_order = INIT_ORDER_DEFAULT
 	priority = FIRE_PRIORITY_CHARSETUP
-	flags = SS_BACKGROUND
+	subsystem_flags = SS_BACKGROUND
 	wait = 1 SECOND
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 

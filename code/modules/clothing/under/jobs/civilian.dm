@@ -266,7 +266,7 @@
 	worn_state = "pilot1"
 	rolled_down = 0
 	rolled_sleeves = 0
-	item_icons = list(slot_w_uniform_str = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/uniform = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
 	icon = 'icons/map_assets/southern_cross/obj/sc_uniforms.dmi'
 	sprite_sheets = list(
 			SPECIES_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'
@@ -280,7 +280,7 @@
 	worn_state = "pilot2"
 	rolled_down = 0
 	rolled_sleeves = 0
-	item_icons = list(slot_w_uniform_str = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/uniform = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
 	icon = 'icons/map_assets/southern_cross/obj/sc_uniforms.dmi'
 	sprite_sheets = list(
 			SPECIES_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'

@@ -100,7 +100,7 @@
 	var/list/timers = active_timers
 	active_timers = null
 	for(var/datum/timedevent/timer as anything in timers)
-		if (timer.spent && !(timer.flags & TIMER_DELETE_ME))
+		if (timer.spent && !(timer.timer_flags & TIMER_DELETE_ME))
 			continue
 		qdel(timer)
 

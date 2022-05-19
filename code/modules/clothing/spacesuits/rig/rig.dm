@@ -197,8 +197,8 @@
 	spark_system = null
 	return ..()
 
-/obj/item/rig/get_worn_icon_file(var/body_type,var/slot_name,var/default_icon,var/inhands)
-	if(!inhands && (slot_name == slot_back_str || slot_name == slot_belt_str))
+/obj/item/rig/get_worn_icon_file(var/body_type,var/slot_id,var/default_icon,var/inhands)
+	if(!inhands && (slot_id == /datum/inventory_slot_meta/inventory/back || slot_id == /datum/inventory_slot_meta/inventory/belt))
 		if(icon_override)
 			return icon_override
 		else if(mob_icon)

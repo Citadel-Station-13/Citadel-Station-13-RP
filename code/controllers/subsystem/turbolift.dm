@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(turbolifts)
 	name = "Turbolifts"
-	flags = SS_NO_TICK_CHECK
+	subsystem_flags = SS_NO_TICK_CHECK
 	wait = 10
 	var/static/list/moving_lifts = list()
 
