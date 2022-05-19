@@ -30,7 +30,6 @@ GLOBAL_DATUM_INIT(see_anywhere_appearance, /mutable_appearance, init_see_anywher
 	I.alpha = 1
 	I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	I.appearance_flags = RESET_TRANSFORM | KEEP_APART | RESET_ALPHA | RESET_COLOR | KEEP_TOGETHER
-	I.vis_flags = VIS_HIDE
 	I.plane = FLOAT_PLANE
 	I.layer = FLOAT_LAYER
 	I.pixel_x = -320

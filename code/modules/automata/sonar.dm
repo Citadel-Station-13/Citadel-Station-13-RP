@@ -2,8 +2,8 @@
 	wave_spread = WAVE_SPREAD_MINIMAL
 	/// global resolution
 	var/resolution = SONAR_RESOLUTION_VISIBLE
-	/// waiting to flick this tick
-	var/list/image/flicking = list()
+	/// flicked this tick
+	var/list/atom/movable/flicking = list()
 
 /datum/automata/wave/sonar/tick()
 	. = ..()
@@ -31,13 +31,20 @@
 	return ..()
 
 /datum/automata/wave/sonar/proc/flick_sonar(atom/movable/AM)
-	var/image/I = AM.make_sonar_image(resolution)
-	if(I)
-		flicking += I
+	var/atom/movable/holder = AM.make_sonar_image(resolution)
+	if(holder)
+		holder.alpha = 0
+		flicking += holder
 
 /datum/automata/wave/sonar/proc/flick_scan(turf/T)
 
-/datum/automata/wave/sonar/proc/flick_images(list/image/images)
+/datum/automata/wave/sonar/proc/flick_images(list/atom/movable/holders)
+	// since image flicking is dead due to byond..
+	for(var/atom/movable/holder as anything in holders)
+		animate(holder, alpha = 255, time = 0.1 SECONDS)
+		animate(alpha = 0, time = 0.5 SECONDS)
+	// end
+	QDEL_LIST_IN(holders, 2 SECONDS)
 
 /datum/automata/wave/sonar/single_mob
 	var/mob/receiver
@@ -46,7 +53,7 @@
 	receiver = null
 	return ..()
 
-/datum/automata/wave/sonar/single_mob/flick_images(list/image/images)
-	if(!receiver.client)
-		return
-	SSsonar.flick_sonar_image(images, list(receiver.client))
+// /datum/automata/wave/sonar/single_mob/flick_images(list/atom/movable/holders)
+// 	if(!receiver.client)
+// 		return
+// 	SSsonar.flick_sonar_image(images, list(receiver.client))
