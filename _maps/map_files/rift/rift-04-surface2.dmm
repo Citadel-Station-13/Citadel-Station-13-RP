@@ -1305,6 +1305,9 @@
 /area/rift/surfacebase/outside/outside2)
 "cD" = (
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Pump Station Access"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "cE" = (
