@@ -344,7 +344,7 @@
 /obj/machinery/vending/Topic(href, href_list)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
-	if(!IsAdminGhost(usr) && (usr.stat || usr.restrained()))
+	if(!isAdminGhostAI(usr) && (usr.stat || usr.restrained()))
 		return
 
 	if(href_list["remove_coin"] && !istype(usr,/mob/living/silicon))
@@ -359,7 +359,7 @@
 		coin = null
 		categories &= ~CAT_COIN
 
-	if(IsAdminGhost(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
+	if(isAdminGhostAI(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		if((href_list["vend"]) && (vend_ready) && (!currently_vending))
 			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
 				to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
@@ -374,7 +374,7 @@
 			if(!(R.category & categories))
 				return
 
-			if((R.price <= 0) || IsAdminGhost(usr))
+			if((R.price <= 0) || isAdminGhostAI(usr))
 				vend(R, usr)
 			else if(istype(usr,/mob/living/silicon)) //If the item is not free, provide feedback if a synth is trying to buy something.
 				to_chat(usr, "<span class='danger'>Lawed unit recognized.  Lawed units cannot complete this transaction.  Purchase canceled.</span>")

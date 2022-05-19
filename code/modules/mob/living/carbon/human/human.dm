@@ -733,17 +733,15 @@
 
 	return 1
 
-/mob/living/carbon/human/IsAdvancedToolUser(var/silent)
-	// VOREstation start
+/mob/living/carbon/human/IsAdvancedToolUser(silent)
 	if(feral)
-		to_chat(src, "<span class='warning'>Your primitive mind can't grasp the concept of that thing.</span>")
-		return 0
-	// VOREstation end
+		to_chat(src, SPAN_WARNING("Your primitive mind can't grasp the concept of that thing."))
+		return FALSE
 	if(species.has_fine_manipulation)
-		return 1
+		return TRUE
 	if(!silent)
-		to_chat(src, "<span class='warning'>You don't have the dexterity to use that!</span>")
-	return 0
+		to_chat(src, SPAN_WARNING("You don't have the dexterity to use that!"))
+	return FALSE
 
 /mob/living/carbon/human/abiotic(var/full_body = 0)
 	if(full_body && ((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )) || (src.back || src.wear_mask || src.head || src.shoes || src.w_uniform || src.wear_suit || src.glasses || src.l_ear || src.r_ear || src.gloves)))

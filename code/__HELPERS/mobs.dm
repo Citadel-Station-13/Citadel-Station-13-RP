@@ -305,3 +305,7 @@ Proc for attack log creation, because really why not
 	else
 		. = getCompoundIcon(desired)
 		cached_character_icons[cachekey] = .
+
+//! You only need to use this if you know you're going to be mocking clients somewhere else.
+/// Gets the client of the mob, allowing for mocking of the client.
+#define GET_CLIENT(mob) (##mob.client || ##mob.mock_client)

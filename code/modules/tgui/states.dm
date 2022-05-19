@@ -1,9 +1,9 @@
 /**
- * Base state and helpers for states. Just does some sanity checks,
- * implement a proper state for in-depth checks.
- *
  *! Copyright (c) 2020 Aleksej Komarov
  *! SPDX-License-Identifier: MIT
+ *
+ * Base state and helpers for states. Just does some sanity checks,
+ * implement a proper state for in-depth checks.
  */
 
 /**
@@ -24,7 +24,7 @@
 
 	if(isobserver(user))
 		// If they turn on ghost AI control, admins can always interact.
-		if(IsAdminGhost(user))
+		if(isAdminGhostAI(user))
 			. = max(., UI_INTERACTIVE)
 
 		// Regular ghosts can always at least view if in range.
@@ -116,7 +116,7 @@
  *
  * return UI_state The state of the UI.
  */
-/mob/living/proc/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE)
+/mob/living/proc/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE, allow_tk = TRUE)
 	// If the object is obscured, close it.
 	if(viewcheck && !(src_object in view(src)))
 		return UI_CLOSE

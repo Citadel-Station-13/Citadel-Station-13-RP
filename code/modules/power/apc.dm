@@ -955,7 +955,7 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
 	if(!user.client)
 		return 0
-	if(IsAdminGhost(user)) //This is to allow nanoUI interaction by ghost admins.
+	if(isAdminGhostAI(user)) //This is to allow nanoUI interaction by ghost admins.
 		return TRUE
 	if(user.stat)
 		return 0

@@ -145,6 +145,9 @@
 /datum/tgui_modal/proc/set_choice(choice)
 	src.choice = choice
 
+/datum/tgui_modal/proc/set_choice(choice)
+	src.choice = choice
+
 /**
  * # async tgui_modal
  *

@@ -1,4 +1,4 @@
-//The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
+/// The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
 var/list/slot_equipment_priority = list( \
 		slot_back,\
 		slot_wear_id,\
@@ -18,11 +18,11 @@ var/list/slot_equipment_priority = list( \
 		slot_r_store\
 	)
 
-/mob
-	var/obj/item/storage/s_active = null // Even ghosts can/should be able to peek into boxes on the ground
+/// Even ghosts can/should be able to peek into boxes on the ground.
+/mob/var/obj/item/storage/s_active = null
 
-//This proc is called whenever someone clicks an inventory ui slot.
-/mob/proc/attack_ui(var/slot)
+/// This proc is called whenever someone clicks an inventory ui slot.
+/mob/proc/attack_ui(slot)
 	var/obj/item/W = get_active_hand()
 
 	var/obj/item/E = get_equipped_item(slot)
@@ -34,7 +34,7 @@ var/list/slot_equipment_priority = list( \
 	else
 		equip_to_slot_if_possible(W, slot)
 
-/* Inventory manipulation */
+//! ## Inventory Manipulation
 
 /mob/proc/put_in_any_hand_if_possible(obj/item/W as obj, del_on_fail = 0, disable_warning = 1, redraw_mob = 1)
 	if(equip_to_slot_if_possible(W, slot_l_hand, del_on_fail, disable_warning, redraw_mob))
@@ -43,10 +43,10 @@ var/list/slot_equipment_priority = list( \
 		return 1
 	return 0
 
-//This is a SAFE proc. Use this instead of equip_to_slot()!
-//set del_on_fail to have it delete W if it fails to equip
-//set disable_warning to disable the 'you are unable to equip that' warning.
-//unset redraw_mob to prevent the mob from being redrawn at the end.
+/// This is a SAFE proc. Use this instead of equip_to_slot()!
+/// set del_on_fail to have it delete W if it fails to equip
+/// set disable_warning to disable the 'you are unable to equip that' warning.
+/// unset redraw_mob to prevent the mob from being redrawn at the end.
 /mob/proc/equip_to_slot_if_possible(obj/item/W as obj, slot, del_on_fail = 0, disable_warning = 0, redraw_mob = 1)
 	if(!W)
 		return 0
@@ -123,65 +123,65 @@ var/list/slot_equipment_priority = list( \
 
 /* Hands */
 
-//Returns the thing in our active hand
+/// Returns the thing in our active hand
 /mob/proc/get_active_hand()
 
-//Returns the thing in our inactive hand
+/// Returns the thing in our inactive hand
 /mob/proc/get_inactive_hand()
 
-// Override for your specific mob's hands or lack thereof.
+/// Override for your specific mob's hands or lack thereof.
 /mob/proc/is_holding_item_of_type(typepath)
 	return FALSE
 
-// Override for your specific mob's hands or lack thereof.
+/// Override for your specific mob's hands or lack thereof.
 /mob/proc/get_all_held_items()
 	return list()
 
-//Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
+/// Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
 	if(lying || !istype(W))
 		return 0
 	return 1
 
-//Puts the item into your r_hand if possible and calls all necessary triggers/updates. returns 1 on success.
+/// Puts the item into your r_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_r_hand(var/obj/item/W)
 	if(lying || !istype(W))
 		return 0
 	return 1
 
-//Puts the item into our active hand if possible. returns 1 on success.
+/// Puts the item into our active hand if possible. returns 1 on success.
 /mob/proc/put_in_active_hand(var/obj/item/W)
 	return 0 // Moved to human procs because only they need to use hands.
 
-//Puts the item into our inactive hand if possible. returns 1 on success.
+/// Puts the item into our inactive hand if possible. returns 1 on success.
 /mob/proc/put_in_inactive_hand(var/obj/item/W)
 	return 0 // As above.
 
-//Puts the item our active hand if possible. Failing that it tries other hands. Returns TRUE on success.
-//If both fail it drops it on the floor and returns FALSE.
-//This is probably the main one you need to know :)
+/// Puts the item our active hand if possible. Failing that it tries other hands. Returns TRUE on success.
+/// If both fail it drops it on the floor and returns FALSE.
+/// This is probably the main one you need to know :)
 /mob/proc/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE)
 	if(!I)
 		return FALSE
 
 	// If the item is a stack and we're already holding a stack then merge
-	if (istype(I, /obj/item/stack))
+	if(istype(I, /obj/item/stack))
 		var/obj/item/stack/I_stack = I
 		var/obj/item/stack/active_stack = get_active_hand()
 
-		if (I_stack.zero_amount())
+		if(I_stack.zero_amount())
 			return FALSE
 
-		if (merge_stacks)
+		if(merge_stacks)
 			if (istype(active_stack) && istype(I_stack, active_stack.stacktype))
 				if (I_stack.merge(active_stack))
-					to_chat(usr, "<span class='notice'>Your [active_stack.name] stack now contains [active_stack.get_amount()] [active_stack.singular_name]\s.</span>")
+					to_chat(usr, SPAN_NOTICE("Your [active_stack.name] stack now contains [active_stack.get_amount()] [active_stack.singular_name]\s."))
 					return TRUE
 			else
 				var/obj/item/stack/inactive_stack = get_inactive_hand()
-				if (istype(inactive_stack) && istype(I_stack, inactive_stack.stacktype))
-					if (I_stack.merge(inactive_stack))
-						to_chat(usr, "<span class='notice'>Your [inactive_stack.name] stack now contains [inactive_stack.get_amount()] [inactive_stack.singular_name]\s.</span>")
+				if(istype(inactive_stack) && istype(I_stack, inactive_stack.stacktype))
+					if(I_stack.merge(inactive_stack))
+						to_chat(usr, SPAN_NOTICE("Your [inactive_stack.name] stack now contains [inactive_stack.get_amount()] [inactive_stack.singular_name]\s."))
 						return TRUE
 
 /*
@@ -215,27 +215,26 @@ var/list/slot_equipment_priority = list( \
 	I.dropped(src)
 	return FALSE
 
-// Removes an item from inventory and places it in the target atom.
-// If canremove or other conditions need to be checked then use unEquip instead.
-
-/mob/proc/drop_from_inventory(var/obj/item/W, var/atom/target = null)
+/// Removes an item from inventory and places it in the target atom.
+/// If canremove or other conditions need to be checked then use unEquip instead.
+/mob/proc/drop_from_inventory(obj/item/W, atom/target = null)
 	if(W)
 		remove_from_mob(W, target)
 		if(!(W && W.loc))
-			return 1 // self destroying objects (tk, grabs)
-		return 1
+			return TRUE // self destroying objects (tk, grabs)
+		return TRUE
+	return FALSE
+
+/// Drops the item in our left hand
+/mob/proc/drop_l_hand(atom/Target)
 	return 0
 
-//Drops the item in our left hand
-/mob/proc/drop_l_hand(var/atom/Target)
+/// Drops the item in our right hand
+/mob/proc/drop_r_hand(atom/Target)
 	return 0
 
-//Drops the item in our right hand
-/mob/proc/drop_r_hand(var/atom/Target)
-	return 0
-
-//Drops the item in our active hand. TODO: rename this to drop_active_hand or something
-/mob/proc/drop_item(var/atom/Target)
+/// Drops the item in our active hand. TODO: rename this to drop_active_hand or something
+/mob/proc/drop_item(atom/Target)
 	return
 
 /*
@@ -271,7 +270,7 @@ var/list/slot_equipment_priority = list( \
 	return slot
 
 
-//This differs from remove_from_mob() in that it checks if the item can be unequipped first.
+/// This differs from remove_from_mob() in that it checks if the item can be unequipped first.
 /mob/proc/unEquip(obj/item/I, force = 0, target) //Force overrides NODROP for things like wizarditis and admin undress.
 	if(!(force || canUnEquip(I)))
 		return FALSE
@@ -279,8 +278,8 @@ var/list/slot_equipment_priority = list( \
 	return TRUE
 
 
-//Attemps to remove an object on a mob.
-/mob/proc/remove_from_mob(var/obj/O, var/atom/target)
+/// Attemps to remove an object on a mob.
+/mob/proc/remove_from_mob(obj/O, atom/target)
 	if(!O) // Nothing to remove, so we succeed.
 		return 1
 	src.u_equip(O)
@@ -298,8 +297,8 @@ var/list/slot_equipment_priority = list( \
 	return 1
 
 
-//Returns the item equipped to the specified slot, if any.
-/mob/proc/get_equipped_item(var/slot)
+/// Returns the item equipped to the specified slot, if any.
+/mob/proc/get_equipped_item(slot)
 	return null
 
 //Outdated but still in use apparently. This should at least be a human proc.

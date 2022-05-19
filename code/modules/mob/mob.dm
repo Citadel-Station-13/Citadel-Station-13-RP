@@ -807,7 +807,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
-	return 0
+	return FALSE
 
 /mob/proc/Stun(amount)
 	if(status_flags & CANSTUN)

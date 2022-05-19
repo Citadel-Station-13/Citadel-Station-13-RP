@@ -6,7 +6,7 @@
 
 /datum/proc/CanUseTopic(var/mob/user, var/datum/topic_state/state)
 	var/src_object = nano_host()
-	if(IsAdminGhost(user))
+	if(isAdminGhostAI(user))
 		return UI_INTERACTIVE
 	return state.can_use_topic(src_object, user)
 

@@ -15,7 +15,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	var/looking_for_personality = 0
 	var/mob/living/silicon/pai/pai
 
-/obj/item/paicard/relaymove(var/mob/user, var/direction)
+/obj/item/paicard/relaymove(mob/user, direction)
 	if(user.stat || user.stunned)
 		return
 	var/obj/item/rig/rig = src.get_rig()

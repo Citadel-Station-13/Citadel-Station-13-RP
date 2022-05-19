@@ -47,7 +47,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_GHOST, user)
 	// TODO: main ai interact bay code fucking disgusts me wtf
-	if(IsAdminGhost(user))		// admin AI interact
+	if(isAdminGhostAI(user))		// admin AI interact
 		AdminAIInteract(user)
 		return
 	if(user.client && user.client.inquisitive_ghost)

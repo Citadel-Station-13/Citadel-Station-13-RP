@@ -465,7 +465,7 @@
 		SStgui.update_uis(src)
 
 /obj/machinery/computer/secure_data/proc/is_not_allowed(var/mob/user)
-	if(IsAdminGhost(user))
+	if(isAdminGhostAI(user))
 		return FALSE
 	return !src.authenticated || user.stat || user.restrained() || (!in_range(src, user) && (!istype(user, /mob/living/silicon)))
 

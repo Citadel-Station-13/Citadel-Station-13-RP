@@ -251,7 +251,7 @@
 		return attack_hand(user)
 
 /obj/machinery/attack_hand(mob/user)
-	if(IsAdminGhost(user))
+	if(isAdminGhostAI(user))
 		return FALSE
 	if(inoperable(MAINT))
 		return TRUE

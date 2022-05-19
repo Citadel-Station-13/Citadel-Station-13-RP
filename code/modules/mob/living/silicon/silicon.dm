@@ -119,7 +119,7 @@
 	return
 
 /mob/living/silicon/IsAdvancedToolUser()
-	return 1
+	return TRUE
 
 /mob/living/silicon/bullet_act(var/obj/item/projectile/Proj)
 
