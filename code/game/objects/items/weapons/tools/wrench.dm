@@ -68,6 +68,12 @@
 	toolspeed = 0.5
 	random_color = FALSE
 
+/obj/item/tool/wrench/RIGset
+	name = "integrated wrench"
+	desc = "If you're seeing this, someone did a dum-dum."
+	usesound = 'sound/items/drill_use.ogg'
+	toolspeed = 0.7
+
 /obj/item/tool/wrench/hybrid	// Slower and bulkier than normal power tools, but it has the power of reach.
 	name = "strange wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."

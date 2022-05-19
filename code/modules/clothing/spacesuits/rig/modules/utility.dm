@@ -494,7 +494,7 @@
 	name = "mounted space cleaner launcher"
 	desc = "A shoulder-mounted micro-cleaner dispenser."
 	selectable = 1
-	icon_state = "grenade_launcher"
+	icon_state = "inttoolset"
 
 	interface_name = "integrated cleaner launcher"
 	interface_desc = "Discharges loaded cleaner grenades against the wearer's location."
@@ -674,3 +674,56 @@
 	interface_desc = "Following complaints regarding the danger of switching equipment in the field, Vey-Med developed internalised defibrillator paddles mounted in the gauntlets of the rescue suit powered by the suit's cell."
 
 	device_type = /obj/item/shockpaddles/standalone/rig
+
+/obj/item/rig_module/device/toolset
+	name = "integrated toolset"
+	desc = "A set of actuators and toolheads for use in RIG-based toolsets."
+	icon_state = "stamp"
+	interface_name = "integrated toolset"
+	interface_desc = "The power of engineering, in the palm of your hand."
+	engage_string = "Switch tool type"
+	usable = 1
+	module_cooldown = 0
+	var/intcrowbar
+	var/intwrench
+	var/intcutter
+	var/intdriver
+
+/obj/item/rig_module/device/toolset/Initialize(mapload)
+	. = ..()
+	intcrowbar = new /obj/item/tool/crowbar/RIGset(src)
+	intwrench = new /obj/item/tool/wrench/RIGset(src)
+	intcutter = new /obj/item/tool/wirecutters/RIGset(src)
+	intdriver = new /obj/item/tool/screwdriver/RIGset(src)
+	//intwelder = new /obj/item/weldingtool/electric/mounted/RIGset(src)
+	device = intcrowbar
+
+/obj/item/rig_module/device/toolset/engage(atom/target)
+	if(!..() || !device)
+		return 0
+
+	if(!target)
+		if(device == intcrowbar)
+			device = intwrench
+			to_chat(holder.wearer, "<span class='notice'>Hydraulic wrench engaged.</span>")
+		else if(device == intwrench)
+			device = intcutter
+			to_chat(holder.wearer, "<span class='notice'>Hydraulic cutters engaged.</span>")
+		else if(device == intcutter)
+			device = intdriver
+			to_chat(holder.wearer, "<span class='notice'>Hydraulic driver engaged.</span>")
+		else if(device == intdriver) // I'm tired and can't think of anything better
+			device = intcrowbar // Feel free to improve this mess
+			to_chat(holder.wearer, "<span class='notice'>Hydraulic crowbar engaged.</span>")
+	interface_name = "[initial(interface_name)] - [device]"
+	return 1
+
+/obj/item/rig_module/device/rigwelder
+	name = "integrated arc-welder"
+	desc = "A set of tubes and canisters to be attached to a RIG."
+	module_cooldown = 0
+	usable = 1
+	interface_name = "Integrated arc-welder"
+	interface_desc = "A RIG-mounted electrical welder. Smells of ozone."
+	engage_string = "Engage/Disengage"
+	device_type = /obj/item/weldingtool/electric/mounted/RIGset
