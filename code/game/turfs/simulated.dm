@@ -17,11 +17,17 @@
 	var/dirt = 0
 	var/special_temperature //Used for Lava HE-Pipe interaction
 
+	// If greater than 0, this turf will apply edge overlays on top of other turfs cardinally adjacent to it, if those adjacent turfs are of a different icon_state,
+	// and if those adjacent turfs have a lower edge_blending_priority.
+	// this is on /simulated even though only floors give borders because floors can render onto other simulated tiles like openspace.
+	var/edge_blending_priority = 0
+	/// edge icon state, overrides icon_state if set
+	var/edge_icon_state
+
 /turf/simulated/Initialize(mapload)
 	. = ..()
-	levelupdate()
-	// HOOK FOR MOB/FREELOOK SYSTEM
-	updateVisibility(src)
+	if(mapload)
+		levelupdate()
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
@@ -109,7 +115,7 @@
 
 			if (bloodDNA)
 				src.AddTracks(H.species.get_move_trail(H),bloodDNA,H.dir,0,bloodcolor) // Coming
-				var/turf/simulated/from = get_step(H,reverse_direction(H.dir))
+				var/turf/simulated/from = get_step(H,REVERSE_DIR(H.dir))
 				if(istype(from) && from)
 					from.AddTracks(H.species.get_move_trail(H),bloodDNA,0,H.dir,bloodcolor) // Going
 

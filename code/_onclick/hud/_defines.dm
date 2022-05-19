@@ -32,23 +32,31 @@
 #define ui_storage2 "CENTER+2:16,SOUTH:5"
 #define ui_smallquad "EAST-4:18,SOUTH:4"
 
-#define ui_alien_head "CENTER-3:12,SOUTH:5"		//aliens
-#define ui_alien_oclothing "CENTER-2:14,SOUTH:5"//aliens
-
-#define ui_inv1 "CENTER-1,SOUTH:5"			//borgs
-#define ui_inv2 "CENTER,SOUTH:5"			//borgs
-#define ui_inv3 "CENTER+1,SOUTH:5"			//borgs
-#define ui_borg_store "CENTER+2,SOUTH:5"	//borgs
-#define ui_borg_inventory "CENTER-2,SOUTH:5"//borgs
-
-#define ui_monkey_mask "WEST+4:14,SOUTH:5"	//monkey
-#define ui_monkey_back "WEST+5:14,SOUTH:5"	//monkey
-
-#define ui_construct_health "EAST:00,CENTER:15" //same height as humans, hugging the right border
+///aliens
+#define ui_alien_head "CENTER-3:12,SOUTH:5"
+///aliens
+#define ui_alien_oclothing "CENTER-2:14,SOUTH:5"
+///borgs
+#define ui_inv1 "CENTER-1,SOUTH:5"
+///borgs
+#define ui_inv2 "CENTER,SOUTH:5"
+///borgs
+#define ui_inv3 "CENTER+1,SOUTH:5"
+///borgs
+#define ui_borg_store "CENTER+2,SOUTH:5"
+///borgs
+#define ui_borg_inventory "CENTER-2,SOUTH:5"
+///monkey
+#define ui_monkey_mask "WEST+4:14,SOUTH:5"
+///monkey
+#define ui_monkey_back "WEST+5:14,SOUTH:5"
+///same height as humans, hugging the right border
+#define ui_construct_health "EAST:00,CENTER:15"
 #define ui_construct_purge "EAST:00,CENTER-1:15"
-#define ui_construct_fire "EAST-1:16,CENTER+1:13" //above health, slightly to the left
-#define ui_construct_pull "EAST-1:28,SOUTH+1:10" //above the zone_sel icon
-
+///above health, slightly to the left
+#define ui_construct_fire "EAST-1:16,CENTER+1:13"
+///above the zone_sel icon
+#define ui_construct_pull "EAST-1:28,SOUTH+1:10"
 //Lower right, persistant menu
 #define ui_dropbutton "EAST-4:22,SOUTH:5"
 #define ui_drop_throw "EAST-1:28,SOUTH+1:7"
@@ -56,8 +64,8 @@
 #define ui_acti "EAST-2:26,SOUTH:5"
 #define ui_movi "EAST-3:24,SOUTH:5"
 #define ui_zonesel "EAST-1:28,SOUTH:5"
-#define ui_acti_alt "EAST-1:28,SOUTH:5" //alternative intent switcher for when the interface is hidden (F12)
-
+///alternative intent switcher for when the interface is hidden (F12)
+#define ui_acti_alt "EAST-1:28,SOUTH:5"
 #define ui_borg_pull "EAST-3:24,SOUTH+1:7"
 #define ui_borg_module "EAST-2:26,SOUTH+1:7"
 #define ui_borg_panel "EAST-1:28,SOUTH+1:7"
@@ -111,9 +119,10 @@
 #define ui_health "EAST-1:28,CENTER:15"
 #define ui_internal "EAST-1:28,CENTER+1:17"
 									//borgs
-#define ui_borg_health "EAST-1:28,CENTER-1:13" //borgs have the health display where humans have the pressure damage indicator.
-#define ui_alien_health "EAST-1:28,CENTER-1:13" //aliens have the health display where humans have the pressure damage indicator.
-
+///borgs have the health display where humans have the pressure damage indicator.
+#define ui_borg_health "EAST-1:28,CENTER-1:13"
+///aliens have the health display where humans have the pressure damage indicator.
+#define ui_alien_health "EAST-1:28,CENTER-1:13"
 #define ui_ling_chemical_display "EAST-1:28,CENTER-3:15"
 #define ui_wiz_energy_display "EAST-1:28,CENTER-3:15"
 //#define ui_wiz_instability_display "EAST-2:28,CENTER-3:15"

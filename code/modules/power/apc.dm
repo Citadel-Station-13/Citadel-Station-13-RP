@@ -1,6 +1,7 @@
 GLOBAL_LIST_EMPTY(apcs)
 
-#define CRITICAL_APC_EMP_PROTECTION 10 // EMP effect duration is divided by this number if the APC has "critical" flag
+/// EMP effect duration is divided by this number if the APC has "critical" flag
+#define CRITICAL_APC_EMP_PROTECTION 10
 //update_state
 #define UPDATE_CELL_IN 1
 #define UPDATE_OPENED1 2
@@ -28,19 +29,22 @@ GLOBAL_LIST_EMPTY(apcs)
 #define APC_UPOVERLAY_OPERATING 8192
 
 
-#define APC_UPDATE_ICON_COOLDOWN 100 // 10 seconds
-
+/// 10 seconds
+#define APC_UPDATE_ICON_COOLDOWN 100
 // the Area Power Controller (APC), formerly Power Distribution Unit (PDU)
 // one per area, needs wire conection to power network through a terminal
 
 // controls power to devices in that area
 // may be opened to change power cell
 // three different channels (lighting/equipment/environ) - may each be set to on, off, or auto
-#define POWERCHAN_OFF      0 // Power channel is off and will stay that way dammit
-#define POWERCHAN_OFF_AUTO 1 // Power channel is off until power rises above a threshold
-#define POWERCHAN_ON       2 // Power channel is on until there is no power
-#define POWERCHAN_ON_AUTO  3 // Power channel is on until power drops below a threshold
-
+/// Power channel is off and will stay that way dammit
+#define POWERCHAN_OFF      0
+/// Power channel is off until power rises above a threshold
+#define POWERCHAN_OFF_AUTO 1
+/// Power channel is on until there is no power
+#define POWERCHAN_ON       2
+/// Power channel is on until power drops below a threshold
+#define POWERCHAN_ON_AUTO  3
 #define NIGHTSHIFT_AUTO 1
 #define NIGHTSHIFT_NEVER 2
 #define NIGHTSHIFT_ALWAYS 3
@@ -68,7 +72,7 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
-	icon = 'icons/obj/power_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/power_vr.dmi'
 	icon_state = "apc0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
@@ -130,7 +134,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/last_nightshift_switch = 0
 
 /obj/machinery/power/apc/updateDialog()
-	if (stat & (BROKEN|MAINT))
+	if (machine_stat & (BROKEN|MAINT))
 		return
 	..()
 
@@ -187,7 +191,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		opened = 1
 		operating = 0
 		name = "[area.name] APC"
-		stat |= MAINT
+		machine_stat |= MAINT
 		src.update_icon()
 
 /obj/machinery/power/apc/Destroy()
@@ -266,7 +270,7 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/examine(mob/user)
 	. = ..()
 	if(Adjacent(user))
-		if(stat & BROKEN)
+		if(machine_stat & BROKEN)
 			. += "This APC is broken."
 			return
 		if(opened)
@@ -361,7 +365,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	if(update & 2)
 		if(overlays.len)
 			overlays.len = 0
-		if(!(stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
+		if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
 			overlays += status_overlays_lock[locked+1]
 			overlays += status_overlays_charging[charging+1]
 			if(operating)
@@ -372,7 +376,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	if(update & 3)
 		if(update_state & UPDATE_BLUESCREEN)
 			set_light(l_range = 2, l_power = 0.25, l_color = "#0000FF")
-		else if(!(stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
+		else if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
 			var/color
 			switch(charging)
 				if(0)
@@ -394,9 +398,9 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	if(cell)
 		update_state |= UPDATE_CELL_IN
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		update_state |= UPDATE_BROKE
-	if(stat & MAINT)
+	if(machine_stat & MAINT)
 		update_state |= UPDATE_MAINT
 	if(opened)
 		if(opened==1)
@@ -482,7 +486,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			if(do_after(user, 50 * W.toolspeed))
 				if (has_electronics==1)
 					has_electronics = 0
-					if ((stat & BROKEN))
+					if ((machine_stat & BROKEN))
 						user.visible_message(\
 							"<span class='warning'>[user.name] has broken the charred power control board inside [src.name]!</span>",\
 							"<span class='notice'>You broke the charred power control board and remove the remains.</span>",
@@ -496,8 +500,8 @@ GLOBAL_LIST_EMPTY(apcs)
 		else if (opened!=2) //cover isn't removed
 			opened = 0
 			update_icon()
-	else if (W.is_crowbar() && !(stat & BROKEN) )
-		if(coverlocked && !(stat & MAINT))
+	else if (W.is_crowbar() && !(machine_stat & BROKEN) )
+		if(coverlocked && !(machine_stat & MAINT))
 			to_chat(user,"<span class='warning'>The cover is locked and cannot be opened.</span>")
 			return
 		else
@@ -507,7 +511,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(cell)
 			to_chat(user,"The [src.name] already has a power cell installed.")
 			return
-		if (stat & MAINT)
+		if (machine_stat & MAINT)
 			to_chat(user,"<span class='warning'>You need to install the wiring and electronics first.</span>")
 			return
 		if(W.w_class != ITEMSIZE_NORMAL)
@@ -530,12 +534,12 @@ GLOBAL_LIST_EMPTY(apcs)
 			else
 				if (has_electronics==1 && terminal)
 					has_electronics = 2
-					stat &= ~MAINT
+					machine_stat &= ~MAINT
 					playsound(src.loc, W.usesound, 50, 1)
 					to_chat(user,"You screw the circuit electronics into place.")
 				else if (has_electronics==2)
 					has_electronics = 1
-					stat |= MAINT
+					machine_stat |= MAINT
 					playsound(src.loc, W.usesound, 50, 1)
 					to_chat(user,"You unfasten the electronics.")
 				else /* has_electronics==0 */
@@ -555,7 +559,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			to_chat(user,"You must close the cover to swipe an ID card.")
 		else if(wiresexposed)
 			to_chat(user,"You must close the wire panel.")
-		else if(stat & (BROKEN|MAINT))
+		else if(machine_stat & (BROKEN|MAINT))
 			to_chat(user,"Nothing happens.")
 		else if(hacker)
 			to_chat(user,"<span class='warning'>Access denied.</span>")
@@ -612,7 +616,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				new /obj/item/stack/cable_coil(loc,10)
 				to_chat(user,"<span class='notice'>You cut the cables and dismantle the power terminal.</span>")
 				qdel(terminal)
-	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && !((stat & BROKEN)))
+	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && !((machine_stat & BROKEN)))
 		user.visible_message("<span class='warning'>[user.name] inserts the power control board into [src].</span>", \
 							"You start to insert the power control board into the frame...")
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -622,7 +626,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				reboot()
 				to_chat(user,"<span class='notice'>You place the power control board inside the frame.</span>")
 				qdel(W)
-	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && ((stat & BROKEN)))
+	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && ((machine_stat & BROKEN)))
 		to_chat(user,"<span class='warning'>The [src] is too broken for that. Repair it first.</span>")
 		return
 	else if (istype(W, /obj/item/weldingtool) && opened && has_electronics==0 && !terminal)
@@ -636,7 +640,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		playsound(src, WT.usesound, 25, 1)
 		if(do_after(user, 50 * WT.toolspeed))
 			if(!src || !WT.remove_fuel(3, user)) return
-			if (emagged || (stat & BROKEN) || opened==2)
+			if (emagged || (machine_stat & BROKEN) || opened==2)
 				new /obj/item/stack/material/steel(loc)
 				user.visible_message(\
 					"<span class='warning'>[src] has been cut apart by [user.name] with the [WT.name].</span>",\
@@ -650,8 +654,8 @@ GLOBAL_LIST_EMPTY(apcs)
 					"You hear welding.")
 			qdel(src)
 			return
-	else if (opened && ((stat & BROKEN) || hacker || emagged))
-		if (istype(W, /obj/item/frame/apc) && (stat & BROKEN))
+	else if (opened && ((machine_stat & BROKEN) || hacker || emagged))
+		if (istype(W, /obj/item/frame/apc) && (machine_stat & BROKEN))
 			if(cell)
 				to_chat(user, "<span class='warning'>You need to remove the power cell first.</span>")
 				return
@@ -661,7 +665,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				user.visible_message("<span class='notice'>[user.name] has replaced the damaged APC cover with a new one.</span>",\
 					"You replace the damaged APC cover with a new one.")
 				qdel(W)
-				stat &= ~BROKEN
+				machine_stat &= ~BROKEN
 				reboot()
 				if (opened==2)
 					opened = 1
@@ -678,7 +682,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				playsound(src.loc, 'sound/machines/chime.ogg', 25, 1)
 				reboot()
 	else
-		if ((stat & BROKEN) \
+		if ((machine_stat & BROKEN) \
 				&& !opened \
 				&& W.force >= 5 \
 				&& W.w_class >= ITEMSIZE_SMALL )
@@ -717,7 +721,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			to_chat(user,"You must close the cover to do that.")
 		else if(wiresexposed)
 			to_chat(user,"You must close the wire panel first.")
-		else if(stat & (BROKEN|MAINT))
+		else if(machine_stat & (BROKEN|MAINT))
 			to_chat(user,"The [src] isn't working.")
 		else
 			flick("apc-spark", src)
@@ -777,7 +781,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			charging = 0
 			src.update_icon()
 		return
-	if(stat & (BROKEN|MAINT))
+	if(machine_stat & (BROKEN|MAINT))
 		return
 	// do APC interaction
 	src.interact(user)
@@ -880,7 +884,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	switch(action)
 		if("lock")
 			if(locked_exception) // Yay code reuse
-				if(emagged || (stat & (BROKEN|MAINT)))
+				if(emagged || (machine_stat & (BROKEN|MAINT)))
 					to_chat(usr, "The APC does not respond to the command.")
 					return
 				locked = !locked
@@ -1044,7 +1048,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 /obj/machinery/power/apc/process(delta_time)
 
-	if(stat & (BROKEN|MAINT))
+	if(machine_stat & (BROKEN|MAINT))
 		return
 	if(!area.requires_power)
 		return
@@ -1269,7 +1273,7 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	// Aesthetically much better!
 	spawn(rand(2,5))
 		src.visible_message("<span class='warning'>[src]'s screen flickers suddenly, then explodes in a rain of sparks and small debris!</span>")
-		stat |= BROKEN
+		machine_stat |= BROKEN
 		operating = 0
 		update_icon()
 		update()

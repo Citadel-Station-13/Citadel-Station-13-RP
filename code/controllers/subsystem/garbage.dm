@@ -321,3 +321,112 @@ SUBSYSTEM_DEF(garbage)
 				SSgarbage.Queue(D)
 	else if(D.gc_destroyed == GC_CURRENTLY_BEING_QDELETED)
 		CRASH("[D.type] destroy proc was called multiple times, likely due to a qdel loop in the Destroy logic")
+
+/**
+ * considered cheap enough to run on live
+ */
+/proc/__memdbg_count_datums()
+	var/list/L = list()
+	var/c = 0
+	var/start = world.timeofday
+	for(var/datum/D)
+		L[D.type]++
+		++c
+	for(var/atom/D in world)
+		L[D.type]++
+		++c
+	var/list/built = list("counted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds")
+	start = world.timeofday
+	sortTim(L, /proc/cmp_numeric_dsc, associative = TRUE)
+	built += "sorted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds"
+	for(var/i in L)
+		built += "[i] - [L[i]]"
+	var/datum/browser/B = new(usr, "datum_count", "datum count")
+	B.set_content(built.Join("<br>"))
+	B.open()
+
+#ifdef TESTING
+/proc/__memdbg_count_datum_refs()
+	var/list/L = list()
+	// var/list/L2 = list()
+	var/c = 0
+	var/static/list/blacklist = list(
+		"parent_type" = TRUE,
+		"type" = TRUE,
+		"vars" = TRUE,
+		"overlays" = TRUE,
+		"underlays" = TRUE,
+		"contents" = TRUE,
+		"locs" = TRUE,
+		"loc" = TRUE,
+		"color" = TRUE,
+		"alpha" = TRUE,
+		"tag" = TRUE,
+		"appearance" = TRUE,
+		"appearance_flags" = TRUE,
+		"blend_mode" = TRUE,
+		"density" = TRUE,
+		"desc" = TRUE,
+		"dir" = TRUE,
+		"filters" = TRUE,
+		"gender" = TRUE,
+		"icon" = TRUE,
+		"icon_state" = TRUE,
+		"verbs" = TRUE,
+		"transform" = TRUE
+	)
+	var/start = world.timeofday
+	var/count
+	var/lcount
+	var/val
+	var/list/L4
+	for(var/datum/D)
+		count = 0
+		lcount = 0
+		for(var/v in D.vars)
+			if(blacklist[v])
+				continue
+			val = D.vars[v]
+			if(isdatum(val))
+				// datum ref
+				count++
+				continue
+			if(islist(val))
+				// list ref
+				count++
+				L4 = val
+				lcount += L4.len
+				continue
+		L["[D.type] - lists"] += lcount
+		L[D.type] += count
+		++c
+	for(var/atom/D in world)
+		count = 0
+		lcount = 0
+		for(var/v in D.vars)
+			if(blacklist[v])
+				continue
+			val = D.vars[v]
+			if(isdatum(val))
+				// datum ref
+				count++
+				continue
+			if(islist(val))
+				// list ref
+				count++
+				L4 = val
+				lcount += L4.len
+				continue
+		L["[D.type] - lists"] += lcount
+		L[D.type] += count
+		++c
+	var/list/built = list("counted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds")
+	start = world.timeofday
+	built += "sorted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds"
+	sortTim(L, /proc/cmp_numeric_dsc, associative = TRUE)
+	for(var/i in L)
+		built += "[i] - [L[i]]"
+	var/datum/browser/B = new(usr, "datum_outgoing_ref_count", "datum outgoing ref count")
+	B.set_content(built.Join("<br>"))
+	B.open()
+#endif

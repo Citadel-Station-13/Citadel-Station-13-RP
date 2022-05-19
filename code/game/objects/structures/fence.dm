@@ -4,9 +4,12 @@
 #define CUT_TIME 10 SECONDS
 #define CLIMB_TIME 5 SECONDS
 
-#define NO_HOLE 0 //section is intact
-#define MEDIUM_HOLE 1 //medium hole in the section - can climb through
-#define LARGE_HOLE 2 //large hole in the section - can walk through
+///section is intact
+#define NO_HOLE 0
+///medium hole in the section - can climb through
+#define MEDIUM_HOLE 1
+///large hole in the section - can walk through
+#define LARGE_HOLE 2
 #define MAX_HOLE_SIZE LARGE_HOLE
 
 /obj/structure/fence

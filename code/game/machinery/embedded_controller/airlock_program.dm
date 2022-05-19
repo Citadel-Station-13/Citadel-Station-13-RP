@@ -9,9 +9,10 @@
 #define TARGET_INOPEN		-1
 #define TARGET_OUTOPEN		-2
 
-#define MIN_TARGET_PRESSURE (ONE_ATMOSPHERE * 0.05) // Never try to pump to pure vacuum, its not happening.
-#define SKIPCYCLE_MARGIN	1 // Skip cycling airlock (just open the doors) if pressures are within this range.
-
+/// Never try to pump to pure vacuum, its not happening.
+#define MIN_TARGET_PRESSURE (ONE_ATMOSPHERE * 0.05)
+/// Skip cycling airlock (just open the doors) if pressures are within this range.
+#define SKIPCYCLE_MARGIN	1
 /datum/computer/file/embedded_program/airlock
 	var/tag_exterior_door
 	var/tag_interior_door

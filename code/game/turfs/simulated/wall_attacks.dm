@@ -1,4 +1,5 @@
-
+// TODO: MAKE FALSEWALLS A F*CKING STRUCTURE
+// WHOEVER WROTE THIS IS HIGH
 //Interactions
 /turf/simulated/wall/proc/toggle_open(var/mob/user)
 
@@ -11,10 +12,9 @@
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_opening", src)
 		density = 0
-		blocks_air = ZONE_BLOCKED
+		blocks_air = FALSE
 		update_icon()
 		update_air()
-		src.blocks_air = 0
 		set_opacity(0)
 		for(var/turf/simulated/turf in loc)
 			air_master.mark_for_update(turf)
@@ -22,10 +22,9 @@
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_closing", src)
 		density = 1
-		blocks_air = AIR_BLOCKED
+		blocks_air = TRUE
 		update_icon()
 		update_air()
-		src.blocks_air = 1
 		set_opacity(1)
 		for(var/turf/simulated/turf in loc)
 			air_master.mark_for_update(turf)
@@ -34,13 +33,19 @@
 	update_icon()
 
 /turf/simulated/wall/proc/update_air()
+	update_thermal(src)
+	air_master.mark_for_update(src)
+	// old code left below because it's by time we had a hall of shame
+	// "turf in loc" on a turf
+	// you for real?
+/*
 	if(!air_master)
 		return
 
 	for(var/turf/simulated/turf in loc)
 		update_thermal(turf)
 		air_master.mark_for_update(turf)
-
+*/
 
 /turf/simulated/wall/proc/update_thermal(var/turf/simulated/source)
 	if(istype(source))

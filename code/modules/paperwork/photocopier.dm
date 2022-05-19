@@ -106,7 +106,7 @@
 
 /obj/machinery/photocopier/Topic(href, href_list)
 	if(href_list["copy"])
-		if(stat & (BROKEN|NOPOWER))
+		if(machine_stat & (BROKEN|NOPOWER))
 			return
 		addtimer(CALLBACK(src, .proc/copy_operation, usr), 0)
 
@@ -126,8 +126,10 @@
 		if(copies < maxcopies)
 			copies++
 	else if(href_list["aipic"])
-		if(!istype(usr,/mob/living/silicon)) return
-		if(stat & (BROKEN|NOPOWER)) return
+		if(!istype(usr,/mob/living/silicon))
+			return
+		if(machine_stat & (BROKEN|NOPOWER))
+			return
 
 		if(toner >= 5)
 			var/mob/living/silicon/tempAI = usr

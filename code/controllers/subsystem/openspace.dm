@@ -1,5 +1,6 @@
 SUBSYSTEM_DEF(openspace)
 	name = "Open Space"
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_LOBBY | RUNLEVEL_POSTGAME
 	init_order = INIT_ORDER_OPENSPACE
 	wait = 10
 

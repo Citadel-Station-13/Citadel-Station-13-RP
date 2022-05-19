@@ -5,6 +5,7 @@
 	plane = TURF_PLANE
 	luminosity = 1
 	level = 1
+
 	var/holy = 0
 
 	// Atmospherics / ZAS Environmental
@@ -50,6 +51,9 @@
 
 	var/list/footstep_sounds = null
 
+	// Outdoors var determines if the game should consider the turf to be 'outdoors', which controls certain things such as weather effects.
+	var/outdoors = FALSE
+
 	/// If true, most forms of teleporting to or from this turf tile will fail.
 	var/block_tele = FALSE
 	/// Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
@@ -77,7 +81,7 @@
 	flags |= INITIALIZED
 
 	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.Cut()
+	vis_contents.len = 0
 
 	assemble_baseturfs()
 
@@ -106,8 +110,6 @@
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
-
-	ComponentInitialize()
 
 	return INITIALIZE_HINT_NORMAL
 

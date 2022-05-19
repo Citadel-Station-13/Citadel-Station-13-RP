@@ -2,8 +2,8 @@
 //but it's safe to say that'll never be finished. So I've merged it into the current player panel.
 //enjoy				~Carn
 /*
-#define NOTESFILE "data/player_notes.sav"	//where the player notes are saved
-
+///where the player notes are saved
+#define NOTESFILE "data/player_notes.sav"
 datum/admins/proc/notes_show(var/ckey)
 	usr << browse("<head><title>Player Notes</title></head><body>[notes_gethtml(ckey)]</body>","window=player_notes;size=700x400")
 

@@ -36,7 +36,7 @@
 		icon_state = "meterX"
 		return 0
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		icon_state = "meter0"
 		return 0
 
@@ -81,7 +81,7 @@
 	if(get_dist(user, src) > 3 && !(istype(user, /mob/living/silicon/ai) || istype(user, /mob/observer/dead)))
 		. += "<span class='warning'>You are too far away to read it.</span>"
 
-	else if(stat & (NOPOWER|BROKEN))
+	else if(machine_stat & (NOPOWER|BROKEN))
 		. += "<span class='warning'>The display is off.</span>"
 
 	else if(src.target)

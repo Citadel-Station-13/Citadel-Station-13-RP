@@ -8,8 +8,8 @@
 //6 = code delta
 
 //config_legacy.alert_desc_blue_downto
-/var/datum/announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/effects/alert_levels/alert_raise.ogg'))
-/var/datum/announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
+/var/datum/legacy_announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/effects/alert_levels/alert_raise.ogg'))
+/var/datum/legacy_announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
 
 /proc/set_security_level(var/level)
 	switch(level)
@@ -69,10 +69,10 @@
 				security_level = SEC_LEVEL_DELTA
 
 		var/newlevel = get_security_level()
-		for(var/obj/machinery/firealarm/FA in machines)
+		for(var/obj/machinery/firealarm/FA in GLOB.machines)
 			if(FA.z in GLOB.using_map.contact_levels)
 				FA.set_security_level(newlevel)
-		for(var/obj/machinery/status_display/FA in machines)
+		for(var/obj/machinery/status_display/FA in GLOB.machines)
 			if(FA.z in GLOB.using_map.contact_levels)
 				FA.display_alert(newlevel)
 				FA.mode = 3

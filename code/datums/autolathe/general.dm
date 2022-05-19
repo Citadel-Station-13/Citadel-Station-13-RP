@@ -138,7 +138,7 @@
 	path = /obj/item/melee/spike
 	hidden = 1
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 
 /datum/category_item/autolathe/general/holocollar
 	name = "Holo-collar"

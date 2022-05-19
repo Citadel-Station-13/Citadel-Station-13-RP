@@ -259,7 +259,7 @@
 
 	add_fingerprint(user)
 
-	if(..() || stat & (BROKEN|NOPOWER))
+	if(..() || machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(!user.IsAdvancedToolUser())
@@ -388,7 +388,7 @@
 	if(!active)
 		return
 
-	if(active && stat & (BROKEN|NOPOWER))
+	if(active && machine_stat & (BROKEN|NOPOWER))
 		active = 0
 		irradiating = 0
 		electrified = 0

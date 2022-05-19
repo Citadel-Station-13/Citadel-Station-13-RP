@@ -271,9 +271,9 @@
 	state = 1
 
 /obj/machinery/atmospherics/tvalve/digital/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/atmospherics/tvalve/digital/update_icon()

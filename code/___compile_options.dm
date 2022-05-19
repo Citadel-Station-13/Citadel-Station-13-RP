@@ -1,13 +1,16 @@
-//#define TESTING				//By using the testing("message") proc you can create debug-feedback for people with this
+///By using the testing("message") proc you can create debug-feedback for people with this
+//#define TESTING
 								//uncommented, but not visible in the release version)
 
-#define ZAS_DEBUG				// uncomment to enable laggy as sin ZAS debugging systems coded in for when doing bugfixes or major systems overhaulling.
+/// uncomment to enable laggy as sin ZAS debugging systems coded in for when doing bugfixes or major systems overhaulling.
+#define ZAS_DEBUG
 	// if you touch anything #if'd behind a block for this you better make sure this works or I will bean you with a shoe.
 
 /// has a performance overhead - runs asserts to ensure all low level maths are correct
 #define ENABLE_OVERMAP_AGGRESSIVE_ASSERT
 
-//#define DATUMVAR_DEBUGGING_MODE	//Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
+///Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
+//#define DATUMVAR_DEBUGGING_MODE
 
 // Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error
 #ifdef DEBUG
@@ -32,13 +35,15 @@
 
 #endif //ifdef REFERENCE_TRACKING
 
-//#define VISUALIZE_ACTIVE_TURFS	//Highlights atmos active turfs in green
+///Highlights atmos active turfs in green
+//#define VISUALIZE_ACTIVE_TURFS
 #endif //ifdef TESTING
 
-//#define UNIT_TESTS			//Enables unit tests via TEST_RUN_PARAMETER
-
+///Enables unit tests via TEST_RUN_PARAMETER
+//#define UNIT_TESTS
 #ifndef PRELOAD_RSC				//set to:
-#define PRELOAD_RSC	2			//	0 to allow using external resources or on-demand behaviour;
+///	0 to allow using external resources or on-demand behaviour;
+#define PRELOAD_RSC	2
 #endif							//	1 to use the default behaviour;
 								//	2 for preloading absolutely everything;
 
@@ -77,5 +82,7 @@ VORESTATION CRAP
 */
 
 // ZAS Compile Options
-//#define ZASDBG	 	// Uncomment to turn on super detailed ZAS debugging that probably won't even compile.
-#define MULTIZAS		// Uncomment to turn on Multi-Z ZAS Support!
+/// Uncomment to turn on super detailed ZAS debugging that probably won't even compile.
+//#define ZASDBG
+/// Uncomment to turn on Multi-Z ZAS Support!
+#define MULTIZAS

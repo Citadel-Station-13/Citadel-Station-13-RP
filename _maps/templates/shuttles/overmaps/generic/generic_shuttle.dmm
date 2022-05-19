@@ -624,7 +624,7 @@
 /area/shuttle/generic_shuttle/gen)
 "bo" = (
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/gen)
 "bp" = (
@@ -633,7 +633,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_vent"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "generic_shuttle_docker";
@@ -652,8 +652,8 @@
 	frequency = 1380;
 	id_tag = "expshuttle_vent"
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	pixel_y = 28
 	},
@@ -669,7 +669,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;

@@ -26,7 +26,8 @@
 
 //Camera networks
 #define NETWORK_TETHER "Tether"
-#define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
+///Using different from Polaris one for better name
+#define NETWORK_TCOMMS "Telecommunications"
 #define NETWORK_OUTSIDE "Outside"
 #define NETWORK_EXPLORATION "Exploration"
 #define NETWORK_XENOBIO "Xenobiology"
@@ -396,11 +397,14 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 		GLOB.lore_atc.msg(message)
 
 // For making the 6-in-1 holomap, we calculate some offsets
-#define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
-#define TETHER_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
-#define TETHER_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TETHER_MAP_SIZE) - TETHER_HOLOMAP_CENTER_GUTTER) / 2) // 80
-#define TETHER_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TETHER_MAP_SIZE)) / 2) // 30
-
+/// Width and height of compiled in tether z levels.
+#define TETHER_MAP_SIZE 140
+/// 40px central gutter between columns
+#define TETHER_HOLOMAP_CENTER_GUTTER 40
+/// 80
+#define TETHER_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TETHER_MAP_SIZE) - TETHER_HOLOMAP_CENTER_GUTTER) / 2)
+/// 30
+#define TETHER_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TETHER_MAP_SIZE)) / 2)
 // We have a bunch of stuff common to the station z levels
 /datum/map_z_level/tether
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b

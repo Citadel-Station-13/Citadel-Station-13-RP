@@ -45,7 +45,7 @@ log transactions
 	spark_system.attach(src)
 
 /obj/machinery/atm/process(delta_time)
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		return
 
 	if(ticks_left_timeout > 0)

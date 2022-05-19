@@ -24,11 +24,21 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	var/autopilot = 0
 	var/autopilot_disabled = TRUE
 	var/list/known_sectors = list()
-	var/dx		//desitnation
-	var/dy		//coordinates
-	var/speedlimit = 1/(20 SECONDS) //top speed for autopilot, 5
-	var/accellimit = 0.001 //manual limiter for acceleration
-	req_one_access = list(access_pilot) //VOREStation Edit
+	var/dx //desitnation
+	var/dy //coordinates
+
+	/// Top speed for autopilot, 5
+	var/speedlimit = 1/(20 SECONDS)
+	/// Manual limiter for acceleration.
+	var/accellimit = 0.001
+	req_one_access = list(access_pilot)
+
+// fancy sprite
+/obj/machinery/computer/ship/helm/adv
+	icon_keyboard = null
+	icon_state = "adv_helm"
+	icon_screen = "adv_helm_screen"
+	light_color = "#70ffa0"
 
 /obj/machinery/computer/ship/helm/Initialize(mapload)
 	. = ..()
@@ -253,7 +263,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 
 	add_fingerprint(usr)
 	if(. && !issilicon(usr))
-		playsound(src, "terminal_type", 50, 1)
+		playsound(src, SFX_ALIAS_TERMINAL, 50, 1)
 
 
 /obj/machinery/computer/ship/navigation
@@ -286,7 +296,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	density = 0
 
 /obj/machinery/computer/ship/navigation/telescreen/update_icon()
-	if(stat & NOPOWER || stat & BROKEN)
+	if(machine_stat & NOPOWER || machine_stat & BROKEN)
 		icon_state = "tele_off"
 		set_light(0)
 	else

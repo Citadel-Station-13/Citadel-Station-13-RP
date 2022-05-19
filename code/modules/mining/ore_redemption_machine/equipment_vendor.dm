@@ -108,9 +108,9 @@
 	default_apply_parts()
 
 /obj/machinery/mineral/equipment_vendor/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 	if(inserted_id && !powered())
 		visible_message("<span class='notice'>The ID slot indicator light flickers on \the [src] as it spits out a card before powering down.</span>")

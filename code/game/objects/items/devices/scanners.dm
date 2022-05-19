@@ -1,4 +1,5 @@
-#define DEFIB_TIME_LIMIT (10 MINUTES)	// Past this many seconds, defib is useless.
+/// Past this many seconds, defib is useless.
+#define DEFIB_TIME_LIMIT (10 MINUTES)
 /*
 CONTAINS:
 T-RAY

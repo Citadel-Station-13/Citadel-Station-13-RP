@@ -112,7 +112,7 @@
 /obj/machinery/atmospherics/component/unary/freezer/process(delta_time)
 	..()
 
-	if(stat & (NOPOWER|BROKEN) || !use_power)
+	if(machine_stat & (NOPOWER|BROKEN) || !use_power)
 		cooling = 0
 		update_icon()
 		return

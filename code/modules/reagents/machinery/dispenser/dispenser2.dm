@@ -182,7 +182,7 @@
 
 /obj/machinery/chemical_dispenser/attack_ghost(mob/user)
 	. = ..()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		return
 	ui_interact(user)
 
@@ -190,7 +190,7 @@
 	attack_hand(user)
 
 /obj/machinery/chemical_dispenser/attack_hand(mob/user)
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		return
 	ui_interact(user)
 

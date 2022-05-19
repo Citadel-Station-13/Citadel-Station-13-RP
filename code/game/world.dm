@@ -333,7 +333,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 		return
 
 
-	var/list/Lines = file2list("data/mode.txt")
+	var/list/Lines = world.file2list("data/mode.txt")
 	if(Lines.len)
 		if(Lines[1])
 			master_mode = Lines[1]
@@ -353,7 +353,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 	if(config_legacy.admin_legacy_system)
 		var/text = file2text("config/moderators.txt")
 		if (!text)
-			log_world("Failed to load config/mods.txt")
+			log_world("Failed to load config/moderators.txt")
 		else
 			var/list/lines = splittext(text, "\n")
 			for(var/line in lines)
@@ -422,7 +422,7 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 		. += "[GLOB.using_map.station_short], "
 
 	. += "[get_security_level()] alert, "
-	
+
 	. += "[GLOB.clients.len] players"
 
 	status = .
@@ -432,7 +432,7 @@ var/failed_db_connections = 0
 var/failed_old_db_connections = 0
 
 /hook/startup/proc/connectDB()
-	if(!config_legacy.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		log_world("SQL connection disabled in config_legacy.")
 	else if(!setup_database_connection())
 		log_world("Your server failed to establish a connection with the feedback database.")
@@ -476,7 +476,7 @@ proc/establish_db_connection()
 
 
 /hook/startup/proc/connectOldDB()
-	if(!config_legacy.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		log_world("SQL connection disabled in config_legacy.")
 	else if(!setup_old_database_connection())
 		log_world("Your server failed to establish a connection with the SQL database.")

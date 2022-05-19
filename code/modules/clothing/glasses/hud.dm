@@ -11,7 +11,7 @@
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
 
-/obj/item/clothing/glasses/hud/health/ComponentInitialize()
+/obj/item/clothing/glasses/hud/health/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(slot_glasses))
 
@@ -29,7 +29,7 @@
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
 
-/obj/item/clothing/glasses/hud/security/ComponentInitialize()
+/obj/item/clothing/glasses/hud/security/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
 
@@ -65,7 +65,7 @@
 	enables_planes = list(VIS_AUGMENTED)
 	plane_slots = list(slot_glasses)
 
-/obj/item/clothing/glasses/omnihud/ComponentInitialize()
+/obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB), list(slot_glasses))
 
@@ -140,7 +140,7 @@
 	tgarscreen_path = /datum/tgui_module/crew_monitor/glasses
 	enables_planes = list(VIS_AUGMENTED)
 
-/obj/item/clothing/glasses/omnihud/med/ComponentInitialize()
+/obj/item/clothing/glasses/omnihud/med/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB, DATA_HUD_MEDICAL), list(slot_glasses))
 
@@ -161,7 +161,7 @@
 	enables_planes = list(VIS_AUGMENTED)
 
 
-/obj/item/clothing/glasses/omnihud/sec/ComponentInitialize()
+/obj/item/clothing/glasses/omnihud/sec/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(slot_glasses))
 
@@ -257,7 +257,7 @@
 	flash_protection = FLASH_PROTECTION_MAJOR
 	enables_planes = list(VIS_AUGMENTED)
 
-/obj/item/clothing/glasses/omnihud/all/ComponentInitialize()
+/obj/item/clothing/glasses/omnihud/all/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(slot_glasses))
 

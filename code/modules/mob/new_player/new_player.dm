@@ -85,7 +85,6 @@
 
 	dat += "<form action='?src=[REF(src)]'>"
 	dat += "<input type='hidden' name='src' value='[REF(src)]'>"
-	dat += HrefTokenFormField()
 	dat += "<select name = 'Month'>"
 	var/monthList = list("January" = 1, "February" = 2, "March" = 3, "April" = 4, "May" = 5, "June" = 6, "July" = 7, "August" = 8, "September" = 9, "October" = 10, "November" = 11, "December" = 12)
 	for(var/month in monthList)
@@ -319,7 +318,7 @@
 			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
 			return
 /*
-		if(!is_alien_whitelisted(src, GLOB.all_species[client.prefs.species]))
+		if(!is_alien_whitelisted(src, GLOB.species_meta[client.prefs.species]))
 			src << alert("You are currently not whitelisted to play [client.prefs.species].")
 			return 0
 */

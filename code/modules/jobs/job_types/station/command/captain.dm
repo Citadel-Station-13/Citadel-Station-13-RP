@@ -1,4 +1,4 @@
-var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
+var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 
 /datum/job/station/captain
 	title = "Facility Director"

@@ -304,7 +304,7 @@
 		if(1) // Basic Build
 			if(istype(object,/turf) && pa.Find("left") && !pa.Find("alt") && !pa.Find("ctrl") )
 				var/turf/T = object
-				if(istype(object,/turf/space))
+				if(istype(object,/turf/space) || istype(object, /turf/simulated/open))
 					T.ChangeTurf(/turf/simulated/floor/plating)
 					return
 				else if(istype(object, /turf/simulated/floor/outdoors))

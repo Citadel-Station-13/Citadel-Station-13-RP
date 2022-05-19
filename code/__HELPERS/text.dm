@@ -536,7 +536,7 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 /proc/random_color()
 	return random_string(6, GLOB.hex_characters)
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 //Readds quotes and apostrophes to HTML-encoded strings
 /proc/readd_quotes(var/t)
 	var/list/repl_chars = list("&#34;" = "\"","&#39;" = "'")

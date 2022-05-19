@@ -140,8 +140,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral)
 
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
 
 VIRGO2_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor)

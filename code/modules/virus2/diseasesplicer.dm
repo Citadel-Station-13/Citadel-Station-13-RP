@@ -95,7 +95,7 @@
 	return data
 
 /obj/machinery/computer/diseasesplicer/process(delta_time)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	if(scanning)

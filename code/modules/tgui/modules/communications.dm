@@ -31,7 +31,7 @@
 	var/stat_msg2
 	var/display_type = "blank"
 
-	var/datum/announcement/priority/crew_announcement
+	var/datum/legacy_announcement/priority/crew_announcement
 
 	var/datum/lore/atc_controller/ATC
 
@@ -379,7 +379,7 @@
 
 /* Etc global procs */
 /proc/enable_prison_shuttle(var/mob/user)
-	for(var/obj/machinery/computer/prison_shuttle/PS in machines)
+	for(var/obj/machinery/computer/prison_shuttle/PS in GLOB.machines)
 		PS.allowedtocall = !(PS.allowedtocall)
 
 /proc/call_shuttle_proc(var/mob/user)

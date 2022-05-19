@@ -7,6 +7,13 @@
 	extra_view = 4
 	var/obj/machinery/shipsensors/sensors
 
+// fancy sprite
+/obj/machinery/computer/ship/sensors/adv
+	icon_keyboard = null
+	icon_state = "adv_sensors"
+	icon_screen = "adv_sensors_screen"
+	light_color = "#05A6A8"
+
 /obj/machinery/computer/ship/sensors/attempt_hook_up(atom/movable/overmap_object/entity/visitable/ship/sector)
 	if(!(. = ..()))
 		return
@@ -15,7 +22,7 @@
 /obj/machinery/computer/ship/sensors/proc/find_sensors()
 	if(!linked)
 		return
-	for(var/obj/machinery/shipsensors/S in global.machines)
+	for(var/obj/machinery/shipsensors/S in GLOB.machines)
 		if(linked.check_ownership(S))
 			sensors = S
 			break
@@ -114,7 +121,7 @@
 				. = TRUE
 
 	if(. && !issilicon(usr))
-		playsound(src, "terminal_type", 50, 1)
+		playsound(src, SFX_ALIAS_TERMINAL, 50, 1)
 
 /obj/machinery/computer/ship/sensors/process()
 	..()
@@ -165,7 +172,8 @@
 	var/turf/T=get_turf(src)
 	if(istype(T))
 		var/datum/gas_mixture/environment = T.return_air()
-		if(environment && environment.return_pressure() > MINIMUM_PRESSURE_DIFFERENCE_TO_SUSPEND)
+		// this is a hardcoded constant now
+		if(environment && environment.return_pressure() > MINIMUM_MEANINGFUL_PRESSURE_VACUUM)
 			return 0
 	return 1
 

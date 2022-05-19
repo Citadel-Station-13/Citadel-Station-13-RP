@@ -33,7 +33,8 @@ two tiles on initialization, and which way a cliff is facing may change during m
 	opacity = FALSE
 	climbable = TRUE
 	climb_delay = 10 SECONDS
-	block_turf_edges = TRUE // Don't want turf edges popping up from the cliff edge.
+	// TODO: IMPLEMENT THIS AGAIN, this was done in a horrifically slow and stupid way
+	// block_turf_edges = TRUE // Don't want turf edges popping up from the cliff edge.
 	register_as_dangerous_object = TRUE
 
 	var/icon_variant = null // Used to make cliffs less repeative by having a selection of sprites to display.

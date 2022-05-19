@@ -1,14 +1,15 @@
 /obj/machinery/space_heater
-	anchored = 0
-	density = 1
-	icon = 'icons/obj/atmos.dmi'
-	icon_state = "sheater0"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
+	icon = 'icons/obj/atmos.dmi'
+	icon_state = "sheater0"
+	anchored = FALSE
+	density = TRUE
+
 	var/obj/item/cell/cell
 	var/cell_type = /obj/item/cell/high
-	var/on = 0
-	var/set_temperature = T0C + 20	//K
+	var/on = FALSE
+	var/set_temperature = T0C + 20 //K
 	var/heating_power = 40000
 
 /obj/machinery/space_heater/Initialize(mapload, newdir)
@@ -39,7 +40,7 @@
 	return !!cell?.charge
 
 /obj/machinery/space_heater/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	if(cell)

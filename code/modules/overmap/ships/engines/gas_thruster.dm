@@ -42,7 +42,7 @@
 			if(nozzle.check_blockage())
 				return
 		nozzle.update_use_power(USE_POWER_IDLE)
-		if(nozzle.stat & NOPOWER)//try again
+		if(nozzle.machine_stat & NOPOWER)//try again
 			nozzle.power_change()
 		if(nozzle.is_on())//if everything is in working order, start booting!
 			nozzle.next_on = world.time + nozzle.boot_time
@@ -59,7 +59,7 @@
 	icon_state = "nozzle"
 	opacity = TRUE
 	density = TRUE
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_FUEL
 
 	// construct_state = /decl/machine_construction/default/panel_closed
@@ -105,11 +105,11 @@
 /obj/machinery/atmospherics/component/unary/engine/proc/get_status()
 	. = list()
 	.+= "Location: [get_area(src)]."
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		.+= list(list("Insufficient power to operate.", "bad"))
 	if(!check_fuel())
 		.+= list(list("Insufficient fuel for a burn.", "bad"))
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		.+= list(list("Inoperable engine configuration.", "bad"))
 	if(blockage)
 		.+= list(list("Obstruction of airflow detected.", "bad"))
@@ -120,7 +120,7 @@
 
 /obj/machinery/atmospherics/component/unary/engine/power_change()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		update_use_power(USE_POWER_OFF)
 
 /obj/machinery/atmospherics/component/unary/engine/proc/is_on()
@@ -137,17 +137,17 @@
 	return
 
 /obj/machinery/atmospherics/component/unary/engine/proc/check_blockage()
-	blockage = FALSE
-	var/exhaust_dir = reverse_direction(dir)
-	var/turf/A = get_step(src, exhaust_dir)
-	var/turf/B = A
-	while(isturf(A) && !(istype(A, /turf/space) || isopenturf(A)))
-		if((B.c_airblock(A)) & AIR_BLOCKED)
-			blockage = TRUE
-			break
-		B = A
-		A = get_step(A, exhaust_dir)
-	return blockage
+	var/exhaust_dir = REVERSE_DIR(dir)
+	var/turf/T = get_step(src, exhaust_dir)		// turf we're on is blocked by ourselves
+	while(!(isspaceturf(T) || (T.z_flags & (Z_AIR_UP | Z_AIR_DOWN))))
+		var/turf/next = get_step(T, exhaust_dir)
+		if(!next)
+			// not found
+			return TRUE
+		if(T.CheckAirBlock(next) == ATMOS_PASS_AIR_BLOCKED)
+			// couldn't go past
+			return TRUE
+	return FALSE
 
 /obj/machinery/atmospherics/component/unary/engine/proc/burn()
 	if(!is_on())
@@ -165,7 +165,7 @@
 	if(network)
 		network.update = 1
 
-	var/exhaust_dir = reverse_direction(dir)
+	var/exhaust_dir = REVERSE_DIR(dir)
 	var/turf/T = get_step(src,exhaust_dir)
 	if(T)
 		T.assume_air(removed)

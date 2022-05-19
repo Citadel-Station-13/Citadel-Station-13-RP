@@ -28,9 +28,12 @@
 #define NIF_ENGMONITOR			16
 #define NIF_ORGANIC_HEAL		17
 #define NIF_SYNTH_HEAL			18
-#define NIF_AUTOSTASIS			19 //These two are just part of
-#define NIF_MED_ALARM			20 //medichines right now
-#define NIF_TOXHEAL				21 //And this, for organics
+///These two are just part of
+#define NIF_AUTOSTASIS			19
+///medichines right now
+#define NIF_MED_ALARM			20
+///And this, for organics
+#define NIF_TOXHEAL				21
 #define NIF_SPAREBREATH			22
 //Combat Related
 #define NIF_BRUTEARMOR			23
@@ -77,8 +80,10 @@
 //Health
 #define NIF_H_ORGREPAIR			0x1
 #define NIF_H_SYNTHREPAIR		0x2
-#define NIF_H_AUTOSTASIS		0x4 //These two are just part of
-#define NIF_H_ALERTMED			0x8 //medichines right now
+///These two are just part of
+#define NIF_H_AUTOSTASIS		0x4
+///medichines right now
+#define NIF_H_ALERTMED			0x8
 #define NIF_H_TOXREGEN			0x10
 #define NIF_H_SPAREBREATH		0x20
 
@@ -94,7 +99,8 @@
 #define NIF_O_APCCHARGE			0x2
 #define NIF_O_PRESSURESEAL		0x4
 #define NIF_O_HEATSINKS			0x8
-#define NIF_O_SCMYSELF			0x10 //Soulcatcher stuff
+///Soulcatcher stuff
+#define NIF_O_SCMYSELF			0x10
 #define NIF_O_SCOTHERS			0x20
 
 ///////////////////

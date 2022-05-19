@@ -127,7 +127,7 @@
 	return 1
 
 /obj/machinery/clonepod/transhuman/process(delta_time)
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		if(occupant)
 			locked = 0
 			go_out()
@@ -228,7 +228,7 @@
 	max_res_amount = store_rating
 
 /obj/machinery/transhuman/synthprinter/process(delta_time)
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		if(busy)
 			busy = 0
 			current_project = null
@@ -349,13 +349,13 @@
 
 	return 1
 
-/obj/machinery/transhuman/synthprinter/attack_hand(mob/user as mob)
-	if((busy == 0) || (stat & NOPOWER))
+/obj/machinery/transhuman/synthprinter/attack_hand(mob/user)
+	if((busy == 0) || (machine_stat & NOPOWER))
 		return
 	to_chat(user, "Current print cycle is [busy]% complete.")
 	return
 
-/obj/machinery/transhuman/synthprinter/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/transhuman/synthprinter/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
@@ -396,7 +396,7 @@
 /obj/machinery/transhuman/synthprinter/update_icon()
 	..()
 	icon_state = "pod_0"
-	if(busy && !(stat & NOPOWER))
+	if(busy && !(machine_stat & NOPOWER))
 		icon_state = "pod_1"
 	else if(broken)
 		icon_state = "pod_g"
@@ -643,7 +643,7 @@
 	set name = "Move INSIDE"
 	set category = "Object"
 	set src in oview(1)
-	if(usr.stat != 0 || stat & (NOPOWER|BROKEN))
+	if(usr.stat != NONE || machine_stat & (NOPOWER|BROKEN))
 		return
 	put_mob(usr)
 	return

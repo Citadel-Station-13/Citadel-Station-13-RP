@@ -95,7 +95,7 @@
 	M.stop_flying()
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/stumble_into(mob/living/M)
-	if((stat & (NOPOWER|BROKEN)) || !istype(M, /mob/living/carbon) || occupant || M.abiotic() || !node)
+	if((machine_stat & (NOPOWER|BROKEN)) || !istype(M, /mob/living/carbon) || occupant || M.abiotic() || !node)
 		return ..()
 	playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 25, 1, -1)
 	visible_message("<span class='warning'>[M] [pick("tripped", "stumbled")] into \the [src]!</span>")

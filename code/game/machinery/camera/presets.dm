@@ -134,6 +134,12 @@ var/global/list/engineering_networks = list(
 /obj/machinery/camera/network/tether
 	network = list(NETWORK_TRIUMPH)
 
+/obj/machinery/camera/network/triumph
+	network = list(NETWORK_TRIUMPH)
+
+/obj/machinery/camera/network/rift
+	network = list(NETWORK_LYTHIOS)
+
 /obj/machinery/camera/network/tcomms
 	network = list(NETWORK_TCOMMS)
 
@@ -178,7 +184,7 @@ var/global/list/engineering_networks = list(
 		number = 1
 		var/area/A = get_area(src)
 		if(A)
-			for(var/obj/machinery/camera/autoname/C in machines)
+			for(var/obj/machinery/camera/autoname/C in GLOB.machines)
 				if(C == src) continue
 				var/area/CA = get_area(C)
 				if(CA.type == A.type)

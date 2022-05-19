@@ -22,16 +22,15 @@
 	/// curernt bounds overlay, if any
 	var/bounds_overlay
 
-	var/known = 1		//shows up on nav computers automatically
-	var/scannable       //if set to TRUE will show up on ship sensors for detailed scans
-	var/scanner_name	// Name for scans, replaces name once scanned
-	var/scanner_desc	// Description for scans
+	/// Does this show up on nav computers automatically.
+	var/known = TRUE
+	/// If set to TRUE will show up on ship sensors for detailed scans.
+	var/scannable
+	/// Name for scans, replaces name once scanned.
+	var/scanner_name
+	/// Description for scans.
+	var/scanner_desc
 
-	var/skybox_icon 		//Icon file to use for skybox
-	var/skybox_icon_state	//Icon state to use for skybox
-	var/skybox_pixel_x		//Shift from lower left corner of skybox
-	var/skybox_pixel_y		//Shift from lower left corner of skybox
-	var/image/cached_skybox_image	//Cachey
 	var/image/real_appearance
 
 	/// parallax vis contents object if any

@@ -14,14 +14,14 @@
 /obj/machinery/appliance/cooker/examine(var/mob/user)
 	. = ..()
 	if(.)	//no need to duplicate adjacency check
-		if(!stat)
+		if(!machine_stat)
 			if(temperature < min_temp)
 				. += SPAN_WARNING( "\The [src] is still heating up and is too cold to cook anything yet.")
 			else
 				. += SPAN_NOTICE("It is running at [round(get_efficiency(), 0.1)]% efficiency!")
 			. += "Temperature: [round(temperature - T0C, 0.1)]C / [round(optimal_temp - T0C, 0.1)]C"
 		else
-			if(stat)
+			if(machine_stat)
 				. += SPAN_WARNING( "It is switched off.")
 
 /obj/machinery/appliance/cooker/list_contents(var/mob/user)
@@ -54,7 +54,7 @@
 /obj/machinery/appliance/cooker/update_icon()
 	cut_overlays()
 	var/image/light
-	if (use_power == 2 && !stat)
+	if (use_power == 2 && !machine_stat)
 		light = image(icon, "light_on")
 	else
 		light = image(icon, "light_off")
@@ -63,7 +63,7 @@
 	add_overlay(light)
 
 /obj/machinery/appliance/cooker/process(delta_time)
-	if (!stat)
+	if (!machine_stat)
 		heat_up()
 	else
 		var/turf/T = get_turf(src)

@@ -1,9 +1,13 @@
 //PIPES
 //Defines for pipe bitmasking
-#define NORTH_FULLPIPE (1<<0) //also just NORTH
-#define SOUTH_FULLPIPE (1<<1) //also just SOUTH
-#define EAST_FULLPIPE (1<<2) //also just EAST
-#define WEST_FULLPIPE (1<<3) //also just WEST
+///also just NORTH
+#define NORTH_FULLPIPE (1<<0)
+///also just SOUTH
+#define SOUTH_FULLPIPE (1<<1)
+///also just EAST
+#define EAST_FULLPIPE (1<<2)
+///also just WEST
+#define WEST_FULLPIPE (1<<3)
 #define NORTH_SHORTPIPE (1<<4)
 #define SOUTH_SHORTPIPE (1<<5)
 #define EAST_SHORTPIPE (1<<6)

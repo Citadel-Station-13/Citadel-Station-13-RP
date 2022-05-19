@@ -2364,7 +2364,7 @@
 /area/medical/medbay3)
 "bWI" = (
 /obj/machinery/door/firedoor/glass,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
 	id_tag = null
@@ -2483,7 +2483,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -5703,7 +5703,7 @@
 	dir = 4;
 	id_tag = "deck3_airlock"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "deck3_airlock";
@@ -6512,7 +6512,7 @@
 	pixel_x = -30;
 	pixel_y = 10
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "fqT" = (
@@ -9987,7 +9987,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "ieP" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -11591,7 +11591,7 @@
 	name = "Public Airlock"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -11750,7 +11750,7 @@
 /area/medical/recoveryrestroom)
 "jNn" = (
 /obj/machinery/door/firedoor/glass,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
 	id_tag = null
@@ -13054,7 +13054,7 @@
 	id_tag = "emt_shuttle_dock";
 	pixel_y = 26
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -13565,7 +13565,7 @@
 /area/rnd/research)
 "lhX" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -13827,7 +13827,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	id_tag = "deck3_airlock"
@@ -14328,8 +14328,8 @@
 	id_tag = "deck3_airlock";
 	pixel_y = -22
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	id_tag = "deck3_airlock"
@@ -16139,7 +16139,7 @@
 /obj/machinery/door/airlock/glass_external{
 	name = "Public Airlock"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -16827,8 +16827,8 @@
 /area/maintenance/fore)
 "nRz" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "emt_shuttle_docker";
@@ -18656,7 +18656,7 @@
 "pfl" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	dir = 1;
 	frequency = 1380;
@@ -19461,7 +19461,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "pFM" = (
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -20730,7 +20730,7 @@
 	pixel_x = -20;
 	pixel_y = -5
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "qzn" = (
@@ -22572,7 +22572,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
 "rLP" = (
@@ -24235,7 +24235,7 @@
 	name = "Public Airlock"
 	},
 /obj/machinery/shield_diffuser,
-/obj/effect/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -28011,7 +28011,7 @@
 "vXc" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 1;
 	frequency = 1380;

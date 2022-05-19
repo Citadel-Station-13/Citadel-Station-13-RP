@@ -123,7 +123,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_LAVALAND_EAST, world.maxx - 4, world.maxy - 4)
 
 /atom/movable/landmark/map_data/lavaland_east
-    height = 3
+    height = 1
 
 // Class G Mining Planet Exploration Zone
 /datum/map_template/triumph_lateload/away_g_world
@@ -276,6 +276,17 @@
 /obj/effect/step_trigger/zlevel_fall/Trigger(var/atom/movable/A) //mostly from /obj/effect/step_trigger/teleporter/planetary_fall, step_triggers.dm L160
 	if(!src:target_z)
 		return
+
+	if(isobserver(A) || A.anchored)
+		return
+	if(A.throwing)
+		return
+	if(!A.can_fall())
+		return
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.is_floating || L.flying)
+			return //Flyers/nograv can ignore it
 
 	var/attempts = 100
 	var/turf/simulated/T
