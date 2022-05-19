@@ -308,6 +308,10 @@
 	if(!get_turf(src))
 		to_chat(src, SPAN_WARNING("Not from here you can't."))
 		return
+	if(TIMER_COOLDOWN_CHECK(COOLDOWN_SONAR_PULSE))
+		to_chat(src, SPAN_WARNING("You need to wait some more to do that!"))
+		return
+	TIMER_COOLDOWN_START(src, COOLDOWN_SONAR_PULSE, 2 SECONDS)
 
 	visible_message(
 		SPAN_WARNING("[src] emits a quiet click."),
