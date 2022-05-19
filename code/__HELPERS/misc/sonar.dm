@@ -74,9 +74,9 @@
 /atom/proc/make_sonar_image(resolution)
 	if(resolution == SONAR_RESOLUTION_NONE)
 		return
-	if(invisibility || !isturf(loc))
+	if(invisibility || !x)		// doing !x is turf or on turf check
 		return
-	var/atom/movable/holder = __vfx_see_anywhere_atom_holder_at(loc)
+	var/atom/movable/holder = __vfx_see_anywhere_atom_holder_at(isturf(src)? src : loc)
 	var/mutable_appearance/MA
 	holder.plane = SONAR_PLANE
 	. = holder
