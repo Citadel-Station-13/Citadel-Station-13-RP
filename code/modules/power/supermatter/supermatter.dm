@@ -509,7 +509,7 @@
 	if(!T)
 		return
 	for(var/atom/movable/AM in range(T, radius))
-		if(!AM.simulated || AM.anchored)		// TODO: move_resist, move_force
+		if(AM.anchored)		// TODO: move_resist, move_force
 			continue
 		step_towards(AM, T)
 		// TODO: atom damage for structures
