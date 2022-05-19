@@ -19,4 +19,3 @@ SUBSYSTEM_DEF(automata)
 		A.tick()
 		if(MC_TICK_CHECK)
 			return
-

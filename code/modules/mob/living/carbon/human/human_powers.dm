@@ -308,7 +308,7 @@
 	if(!get_turf(src))
 		to_chat(src, SPAN_WARNING("Not from here you can't."))
 		return
-	next_sonar_ping += 10 SECONDS
+
 	visible_message(
 		SPAN_WARNING("[src] emits a quiet click."),
 		SPAN_WARNING("You emit a quiet click."),

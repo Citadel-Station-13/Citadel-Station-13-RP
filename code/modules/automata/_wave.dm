@@ -71,7 +71,7 @@
 	_D = edges[_T];								\
 	_ret = act(_T, _D, _P);						\
 	if(_ret < power_considered_dead){			\
-		contune;								\
+		continue;								\
 	}
 // FOR MINIMAL
 /**

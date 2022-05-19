@@ -1,7 +1,7 @@
 /datum/automata/wave/sonar
 	wave_spread = WAVE_SPREAD_MINIMAL
 	/// global resolution
-	var/resolution = SONAR_RESOLUTION_OUTLINE
+	var/resolution = SONAR_RESOLUTION_VISIBLE
 
 /datum/automata/wave/sonar/act(turf/T, dirs, power)
 	. = power - 1

@@ -44,7 +44,7 @@
 
 /datum/controller/subsystem/sonar/proc/remove_sonar_images(list/image/images, list/client/clients, time)
 	for(var/image/I in images)
-		animate(I, alpha = 0, time = time, easing = SINE_EASIN)
+		animate(I, alpha = 0, time = time, easing = SINE_EASING)
 	addtimer(CALLBACK(src, .proc/dispose_sonar_images, images, clients), time, TIMER_CLIENT_TIME)
 
 /datum/controller/subsystem/sonar/proc/dispose_sonar_images(list/image/images, list/client/clients)
@@ -57,8 +57,8 @@
 /atom/proc/__debug_to_sonar_appearance(resolution)
 	appearance = make_sonar_image(src, resolution)
 
-/atom/proc/_debug_flick_sonar(resolution, time, fadein, fadeout, easein, easeout)
-	SSsonar.flick_sonar_image(SSsonar.get_sonar_image(SSsonar.get_sonar_appearance(src, resolution), get_turf(src), GLOB.clients, time, fadein, fadeout, easein, easeout))
+/atom/proc/_debug_flick_sonar(resolution = SONAR_RESOLUTION_VISIBLE)
+	SSsonar.flick_sonar_image(list(make_sonar_image(resolution)), GLOB.clients)
 
 /atom/proc/make_sonar_image(resolution)
 	if(resolution == SONAR_RESOLUTION_NONE)
@@ -72,7 +72,7 @@
 		if(SONAR_RESOLUTION_WALLHACK)
 			I.overlays += vfx_clone_as_greyscale()
 		if(SONAR_RESOLUTION_BLOCKY)
-			var/mutable_appearance/MA = make_sonar_shape
+			var/mutable_appearance/MA = make_sonar_shape()
 			if(MA)
 				I.overlays += MA
 

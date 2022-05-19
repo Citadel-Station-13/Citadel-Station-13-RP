@@ -170,6 +170,8 @@ What is the naming convention for planes or layers?
 	#define BEAM_PROJECTILE_LAYER	2
 	#define SUPERMATTER_WALL_LAYER	3
 
+#define SONAR_PLANE				8
+
 ///Spooooooooky ghooooooosts
 #define PLANE_GHOSTS			10
 ///The AI eye lives here
