@@ -81,7 +81,7 @@
 	. = holder
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)
-			holder.overlays += vfx_clone_as_outline("#ffffff", 127)
+			holder.overlays += vfx_clone_as_outline(127)
 		if(SONAR_RESOLUTION_WALLHACK)
 			holder.overlays += vfx_clone_as_greyscale()
 		if(SONAR_RESOLUTION_BLOCKY)

@@ -1,15 +1,15 @@
 /**
  * clones us as a high-resolution outline
  */
-/atom/proc/vfx_clone_as_outline(color = "#ffffff", alpha = 127)
+/atom/proc/vfx_clone_as_outline(alpha = 127, r = 1, g = 1, b = 1)
 	var/mutable_appearance/MA = new
 	MA.appearance = src
 	MA.filters = list(
-		filter(type = "outline", size = 1, color = color, flags = OUTLINE_SHARP)
+		filter(type = "outline", size = 1, color = "#000000", flags = OUTLINE_SHARP)
 	)
 	MA.vis_contents.len = 0	// y ea let's not copy those
 	MA.alpha = alpha
-	var/static/list/hide_matrix = rgba_construct_color_matrix(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0)
+	var/static/list/hide_matrix = rgba_construct_color_matrix(1, 0, 0, -1, 0, 1, 0, -1, 0, 0, 1, -1, 0, 0, 0, 1, r, g, b, 0)
 	MA.color = hide_matrix
 	MA.appearance_flags = RESET_TRANSFORM | RESET_COLOR
 	MA.plane = FLOAT_PLANE
