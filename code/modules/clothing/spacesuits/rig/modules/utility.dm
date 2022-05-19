@@ -494,7 +494,7 @@
 	name = "mounted space cleaner launcher"
 	desc = "A shoulder-mounted micro-cleaner dispenser."
 	selectable = 1
-	icon_state = "grenadelauncher"
+	icon_state = "inttoolset"
 
 	interface_name = "integrated cleaner launcher"
 	interface_desc = "Discharges loaded cleaner grenades against the wearer's location."
