@@ -58,7 +58,8 @@
 	SSautomata.ticking -= src
 	cleanup_turfs_acting()
 	if(done)
-		on_finish.InvokeAsync()
+		if(on_finish)
+			on_finish.InvokeAsync()
 
 /**
  * cleans up vars

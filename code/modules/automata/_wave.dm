@@ -25,16 +25,16 @@
 			// no directionals at all
 			// we use byond dir bits
 			edges[T] = NORTH|SOUTH|EAST|WEST
-			powers += power
+			powers[T] = power
 		if(WAVE_SPREAD_SHADOW_LIKE)
 			// directionals fully allowed
 			// we use our own dir bits
 			edges[T] = dir? dir : ALL_DIRECTION_BITS
-			powers += power
+			powers[T] = power
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// no directionals. we use cardinal bits, though, due to the algorithm.
 			edges[T] = NORTH|SOUTH|EAST|WEST
-			powers += power
+			powers[T] = power
 		else
 			CRASH("Invalid wave spread [wave_spread].")
 
@@ -82,7 +82,7 @@
  * D - dir to expand in
  * P - power to set expanded turf to
  */
-#define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[T] = D; powers_next += P;
+#define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[_expand] = D; powers_next[_expand] = _P;
 // FOR SHADOWCAST
 /**
  * shadowcast helper
@@ -258,16 +258,17 @@
 #undef SIMPLE_EXPAND
 #undef ITERATION_BASE
 
-	// if next if empty...
-	if(!edges_next.len)
+	// continue
+	// shift everything down
+	src.last = edges
+	src.edges = edges_next
+	src.powers = powers_next
+
+	// call base logic
+	. = ..()
+	// if done..
+	if(!edges.len)
 		stop(TRUE)
-	else
-		// continue
-		// shift everything down
-		src.last = edges
-		src.edges = edges_next
-		src.powers = powers_next
-	return ..()
 
 /datum/automata/wave/cleanup()
 	. = ..()
@@ -312,6 +313,7 @@ GLOBAL_DATUM(active_wave_automata_test, /datum/automata/wave)
 /proc/wave_automata_test(turf/T, type = WAVE_SPREAD_MINIMAL, power = 50, dense_falloff = 0, dirs)
 	power = clamp(power, 0, 100)
 	var/datum/automata/wave/debug/W = new
+	W.wave_spread = type
 	if(GLOB.active_wave_automata_test)
 		QDEL_NULL(GLOB.active_wave_automata_test)
 	GLOB.active_wave_automata_test = W
@@ -319,4 +321,4 @@ GLOBAL_DATUM(active_wave_automata_test, /datum/automata/wave)
 	W.setup_auto(T, power, dirs)
 	W.delay = 0.25 SECONDS
 	W.start()
-	QDEL_IN(W, 10 SECONDS)
+	QDEL_IN(W, 30 SECONDS)
