@@ -10,7 +10,7 @@
 SUBSYSTEM_DEF(xenoarch)
 	name = "Xenoarch"
 	init_order = INIT_ORDER_XENOARCH
-	flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE
 	var/list/artifact_spawning_turfs = list()
 	var/list/digsite_spawning_turfs = list()
 
