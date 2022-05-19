@@ -179,7 +179,7 @@
  * figure it out ;)
  */
 #define SHOCKWAVE_DIAGONAL_MARK(T, D, ED, OP, RP)																								\
-	if(D & ED){																														\
+	if(D & ED){																																	\
 		SHOCKWAVE_DIAGONAL_MARK_SUBSTEP(T, D, (((ED & NORTH) << 2) | ((ED & SOUTH) << 2) | ((ED & EAST) >> 1) | ((ED & WEST) >> 3)), OP, RP);	\
 		SHOCKWAVE_DIAGONAL_MARK_SUBSTEP(T, D, (((ED & NORTH) << 3) | ((ED & SOUTH) << 1) | ((ED & EAST) >> 2) | ((ED & WEST) >> 2)), OP, RP);	\
 	}
@@ -296,6 +296,7 @@
 #undef ITERATION_BASE_DIAGMARK
 #undef ITERATION_BASE_DIAGONAL
 #undef SHOCKWAVE_MARK_CARDINAL
+#undef SHOCKWAVE_DIAGONAL_MARK
 #undef SHOCKWAVE_MARK_DIAGONAL_SUBSTEP
 #undef SHADOWCAST_INIT
 #undef SHADOWCAST
