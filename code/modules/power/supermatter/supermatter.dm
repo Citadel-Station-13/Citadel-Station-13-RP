@@ -511,7 +511,7 @@
 	for(var/atom/movable/AM in range(T, radius))
 		if(!AM.simulated || AM.anchored)		// TODO: move_resist, move_force
 			continue
-		step_towards(AM, src)
+		step_towards(AM, T)
 		// TODO: atom damage for structures
 
 /obj/machinery/power/supermatter/shard //Small subtype, less efficient and more sensitive, but less boom.
