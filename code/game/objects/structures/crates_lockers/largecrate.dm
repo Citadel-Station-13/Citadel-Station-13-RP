@@ -29,7 +29,7 @@
 		new /obj/item/stack/material/wood(src)
 
 		for(var/atom/movable/AM in contents)
-			if(AM.simulated)
+			if(!(AM.flags & AF_ABSTRACT))
 				AM.forceMove(T)
 
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
@@ -151,7 +151,7 @@
 		new /mob/living/simple_mob/animal/passive/bird/parrot/pink_cockatoo(src)
 		var/turf/T = get_turf(src)
 		for(var/atom/movable/AM in contents)
-			if(AM.simulated)
+			if(!(AM.flags & AF_ABSTRACT))
 				AM.forceMove(T)
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
 							 "<span class='notice'>You pry open \the [src].</span>", \

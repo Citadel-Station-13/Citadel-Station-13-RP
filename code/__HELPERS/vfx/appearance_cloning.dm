@@ -9,7 +9,7 @@
 	)
 	MA.vis_contents.len = 0	// y ea let's not copy those
 	MA.alpha = alpha
-	var/static/list/hide_matrix = rgba_construct_color_matrix(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+	var/static/list/hide_matrix = rgba_construct_color_matrix(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0)
 	MA.color = hide_matrix
 	MA.appearance_flags = RESET_TRANSFORM | RESET_COLOR
 	MA.plane = FLOAT_PLANE

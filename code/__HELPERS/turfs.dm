@@ -14,7 +14,7 @@
 
 /proc/turf_clear(turf/T)
 	for(var/atom/A in T)
-		if(A.simulated)
+		if(!(A.flags & AF_ABSTRACT))
 			return 0
 	return 1
 
