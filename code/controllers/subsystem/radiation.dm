@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(radiation)
 	name = "Radiation"
 	wait = 2 SECONDS
-	flags = SS_NO_INIT
+	subsystem_flags = SS_NO_INIT
 
 	var/list/sources = list()			// all radiation source datums
 	var/list/sources_assoc = list()		// Sources indexed by turf for de-duplication.

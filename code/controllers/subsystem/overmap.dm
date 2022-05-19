@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(overmaps)
 	name = "Overmaps"
-	flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE
 	init_order = INIT_ORDER_OVERMAPS
 
 /datum/controller/subsystem/overmaps/Initialize()

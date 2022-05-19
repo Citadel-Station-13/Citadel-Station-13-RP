@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(networks)
 	name = "Networks"
-	flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE
 	// no init order for now
 	// no fire priority for now
 
