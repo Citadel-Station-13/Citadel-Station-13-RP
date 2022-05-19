@@ -267,6 +267,8 @@
 			announce_warning()
 	else
 		shift_light(4,initial(light_color))
+	if(grav_pulling)
+		supermatter_pull(src)
 	// Vary volume by power produced.
 	if(power)
 		// Volume will be 1 at no power, ~12.5 at ENERGY_NITROGEN, and 20+ at ENERGY_PHORON.
@@ -304,7 +306,6 @@
 	if(!env || !removed || !removed.total_moles)
 		damage += max((power - 15*POWER_FACTOR)/10, 0)
 	else if (grav_pulling) //If supermatter is detonating, remove all air from the zone
-		supermatter_pull(src, pull_radius)
 		env.remove(env.total_moles)
 	else
 		damage_archived = damage
