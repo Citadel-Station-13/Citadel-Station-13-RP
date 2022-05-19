@@ -18,9 +18,9 @@
 	flick_sonar(AM)
 
 /datum/automata/wave/sonar/proc/flick_sonar(atom/movable/AM)
-	#warn impl
 
 /datum/automata/wave/sonar/proc/flick_scan(turf/T)
+
 /datum/automata/wave/sonar/single_mob
 	var/mob/receiver
 
@@ -29,5 +29,8 @@
 	return ..()
 
 /datum/automata/wave/sonar/single_mob/flick_sonar(atom/movable/AM)
+	if(!receiver.client)
+		return
+	SSsonar.flick_sonar_image(AM.make_sonar_image(), list(receiver.client))
 
 /datum/automata/wave/sonar/single_mob/flick_scan(turf/T)

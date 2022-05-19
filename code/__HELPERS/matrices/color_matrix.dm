@@ -37,7 +37,7 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
  */
 /proc/color_matrix_saturation_percent(percent)
 	if(percent == 0)
-		return color_matrix_identity()
+		return color_matrix_identity()w
 	percent = clamp(percent, -100, 100)
 	if(percent > 0)
 		percent *= 3
@@ -48,6 +48,14 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 	var/B = LUM_B * inv
 
 	return list(R + x,R,R, G,G + x,G, B,B,B + x)
+
+/**
+ * greyscale matrix
+ */
+/proc/color_matrix_greyscale()
+	return (
+		LUM_R, LUM_R, LUM_R, LUM_G, LUM_G, LUM_G, LUM_B, LUM_B, LUM_B
+	)
 
 //Changes distance colors have from rgb(127,127,127) grey
 //1 is identity. 0 makes everything grey >1 blows out colors and greys

@@ -7,39 +7,30 @@
 /**
  * gets an abstract sonar appearance
  */
-/datum/controller/subsystem/sonar/proc/get_shape_appearance(type, color)
+/datum/controller/subsystem/sonar/proc/get_shape_raw(type, color = "#ffffff")
 	RETURN_TYPE(/mutable_appearance)
-	. = new /mutable_appearance
-
-	#warn impl
-
-/**
- * gets a filter for a given resolution
- */
-/datum/controller/subsystem/sonar/proc/get_sonar_filter(resolution)
-	#warn impl
-
-/**
- * gets an appearance from an input atom and a given resolution
- */
-/datum/controller/subsystem/sonar/proc/get_sonar_appearance(atom/rendering, resolution)
-	// this proc will be very messy
-	#warn impl
-
-/**
- * gets an image for a sonar appearance
- */
-/datum/controller/subsystem/sonar/proc/get_sonar_image(mutable_appearance/MA, loc)
-	var/image/I = new
-	I.appearance = MA
-	I.plane = SONAR_PLANE
-	I.loc = loc
-	return I
+	var/mutable_appearance/MA = new
+	MA.icon = 'icons/screen/rendering/vfx/sonar.dmi'
+	MA.color = color
+	MA.alpha = 127
+	MA.plane = FLOAT_PLANE
+	MA.layer = FLOAT_LAYER
+	MA.appearance_flags = RESET_TRANSFORM | RESET_ALPHA | RESET_COLOR
+	switch(type)
+		if(SONAR_IMAGE_CIRCLE)
+			MA.icon_state = "circle"
+		if(SONAR_IMAGE_HEXAGON)
+			MA.icon_state = "hexagon"
+		if(SONAR_IMAGE_SQUARE)
+			MA.icon_state = "square"
+		if(SONAR_IMAGE_TRIANGLE)
+			MA.icon_state = "triangle"
+		// SONAR_IMAGE_STATIC is not implemented.
 
 /**
  * flicks sonar image(s) to clients
  */
-/datum/controller/subsystem/sonar/proc/flick_sonar_image(list/image/images, list/client/clients, time = 2 SECONDS, fadein, fadeout, easein, easeout)
+/datum/controller/subsystem/sonar/proc/flick_sonar_image(list/image/images, list/client/clients, fadein = 0.1 SECONDS, sustain = 0.2 SECONDS, fadeout = 0.7 SECONDS)
 	if(!islist(images))
 		images = list(images)
 	for(var/image/I as anything in images)
@@ -48,22 +39,76 @@
 	for(var/client/C in clients)
 		C.images += images
 	for(var/image/I as anything in images)
-		animate(I, alpha = 255, time = fadein || (time * 0.25), easing = easin || SINE_EASING)
-	addtimer(CALLBACK(src, .proc/remove_sonar_images, images, clients, fadeout || (time * 0.75), easout || SINE_EASING), time - (fadeout || (time * 0.75)), TIMER_CLIENT_TIME)
+		animate(I, alpha = 255, time = fadein, easing = SINE_EASING)
+	addtimer(CALLBACK(src, .proc/remove_sonar_images, images, clients, fadeout), sustain, TIMER_CLIENT_TIME)
 
-/datum/controller/subsystem/sonar/proc/remove_sonar_images(list/image/images, list/client/clients, time, easing)
+/datum/controller/subsystem/sonar/proc/remove_sonar_images(list/image/images, list/client/clients, time)
 	for(var/image/I in images)
-		animate(I, alpha = 0, time = time, easing = easing)
+		animate(I, alpha = 0, time = time, easing = SINE_EASIN)
 	addtimer(CALLBACK(src, .proc/dispose_sonar_images, images, clients), time, TIMER_CLIENT_TIME)
 
 /datum/controller/subsystem/sonar/proc/dispose_sonar_images(list/image/images, list/client/clients)
 	for(var/client/C in clients)
 		C.images -= images
 	for(var/image/I in images)
+		I.loc = null
 		qdel(I)
 
-/atom/proc/__debug_to_sonar_appearance()
-	appearance = get_sonar_appearance(src, resolution)
+/atom/proc/__debug_to_sonar_appearance(resolution)
+	appearance = make_sonar_image(src, resolution)
 
-/atom/proc/_debug_flick_sonar_all(resolution, time, fadein, fadeout, easein, easeout)
+/atom/proc/_debug_flick_sonar(resolution, time, fadein, fadeout, easein, easeout)
 	SSsonar.flick_sonar_image(SSsonar.get_sonar_image(SSsonar.get_sonar_appearance(src, resolution), get_turf(src), GLOB.clients, time, fadein, fadeout, easein, easeout))
+
+/atom/proc/make_sonar_image(resolution)
+	if(resolution == SONAR_RESOLUTION_NONE)
+		return
+	var/image/I = vfx_get_see_anywhere_image()
+	I.plane = SONAR_PLANE
+	. = I
+	switch(resolution)
+		if(SONAR_RESOLUTION_VISIBLE)
+			I.overlays += vfx_clone_as_outline("#ffffff", 127)
+		if(SONAR_RESOLUTION_WALLHACK)
+			I.overlays += vfx_clone_as_greyscale()
+		if(SONAR_RESOLUTION_BLOCKY)
+			var/mutable_appearance/MA = make_sonar_shape
+			if(MA)
+				I.overlays += MA
+
+/atom/proc/make_sonar_shape()
+	return
+
+/turf/make_sonar_shape()
+	if(!density)
+		return
+	return SSsonar.get_shape_raw(SONAR_IMAGE_SQUARE)
+
+/mob/make_sonar_shape()
+	var/mutable_appearance/MA = SSsonar.get_shape_raw(SONAR_IMAGE_SQUARE)
+	var/scale = 1
+	switch(mob_size)
+		if(MOB_TINY)
+			scale = 0.4
+		if(MOB_MEDIUM)
+			scale = 0.7
+		if(MOB_LARGE)
+			scale = 1
+		if(MOB_MINISCULE)
+			scale = 0.2
+		if(MOB_HUGE)
+			scale = 1.5
+	MA.transform = transform_matrix_construct(scale, 0, 0, scale, 0, 0)
+	MA.pixel_x = MA.pixel_y = round(WORLD_ICON_SIZE * (1 - scale) * 0.5, 1)
+	return MA
+
+/obj/mecha/make_sonar_shape()
+	return SSsonar.get_shape_raw(SONAR_IMAGE_HEXAGON)
+
+/obj/make_sonar_shape()
+	if(!density)
+		return
+	var/mutable_appearance/MA = SSsonar.get_shape_raw(SONAR_IMAGE_SQUARE)
+	MA.transform = transform_matrix_construct(0.5, 0, 0, 0.5, 0, 0)
+	MA.pixel_x = MA.pixel_y = 8
+	return MA
