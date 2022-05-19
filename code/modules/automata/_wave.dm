@@ -151,20 +151,21 @@
 		continue;								\
 	};											\
 	_D = edges[_T];								\
-	_P = returned[_T];
+	_P = powers[_T];							\
+	_ret = returned[_T];
 
 /**
  * diagonal marking internal substep
  */
-#define DIAGONAL_MARK_SUBSTEP(T, D, ED, P)												\
+#define DIAGONAL_MARK_SUBSTEP(T, D, ED, OP, RP)											\
 	_expand = get_step(T, ED);															\
 	if(!last[_expand] && !edges[_expand]){												\
 		if(!edges_next[_expand]){														\
 			diagonals[_expand] |= ED;													\
-			diagonal_powers[_expand] = max(diagonal_powers[_expand], P);				\
+			diagonal_powers[_expand] = min(diagonal_powers[_expand] + RP, OP);			\
 		};																				\
 		else {																			\
-			powers_next[_expand] = max(powers_next[_expand], P);						\
+			powers_next[_expand] = max(powers_next[_expand], RP);						\
 		};																				\
 	};
 /**
@@ -177,10 +178,10 @@
  * second one counterclockwise
  * figure it out ;)
  */
-#define DIAGONAL_MARK(T, D, ED, P)																									\
+#define DIAGONAL_MARK(T, D, ED, OP, RP)																								\
 	if(D & ED){																														\
-		DIAGONAL_MARK_SUBSTEP(T, D, (((ED & NORTH) << 2) | ((ED & SOUTH) << 2) | ((ED & EAST) >> 1) | ((ED & WEST) >> 3)), P);		\
-		DIAGONAL_MARK_SUBSTEP(T, D, (((ED & NORTH) << 3) | ((ED & SOUTH) << 1) | ((ED & EAST) >> 2) | ((ED & WEST) >> 2)), P);		\
+		DIAGONAL_MARK_SUBSTEP(T, D, (((ED & NORTH) << 2) | ((ED & SOUTH) << 2) | ((ED & EAST) >> 1) | ((ED & WEST) >> 3)), OP, RP);	\
+		DIAGONAL_MARK_SUBSTEP(T, D, (((ED & NORTH) << 3) | ((ED & SOUTH) << 1) | ((ED & EAST) >> 2) | ((ED & WEST) >> 2)), OP, RP);	\
 	}
 
 	switch(wave_spread)
@@ -275,10 +276,10 @@
 			// then mark all diagonals. we need to do this after edges to prevent order of processing nondeterminism
 			for(var/i in 1 to edges.len)
 				ITERATION_BASE_DIAGMARK
-				DIAGONAL_MARK(_T, _D, NORTH, _P)
-				DIAGONAL_MARK(_T, _D, SOUTH, _P)
-				DIAGONAL_MARK(_T, _D, EAST, _P)
-				DIAGONAL_MARK(_T, _D, WEST, _P)
+				DIAGONAL_MARK(_T, _D, NORTH, _P, _ret)
+				DIAGONAL_MARK(_T, _D, SOUTH, _P, _ret)
+				DIAGONAL_MARK(_T, _D, EAST, _P, _ret)
+				DIAGONAL_MARK(_T, _D, WEST, _P, _ret)
 			// then, process diagonals
 			// make sure diagonals are added to edges so they're part of the last[] and edges[] exclusion
 			edges += diagonals
