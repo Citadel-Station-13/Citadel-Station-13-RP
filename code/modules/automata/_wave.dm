@@ -82,7 +82,7 @@
  * D - dir to expand in
  * P - power to set expanded turf to
  */
-#define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[_expand] = D; powers_next[_expand] = _P;
+#define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[_expand] = D; powers_next[_expand] = P;
 // FOR SHADOWCAST
 /**
  * shadowcast helper
@@ -113,16 +113,15 @@
 /**
  * runs a specific cardinal
  */
-#define SHOCKWAVE_MARK_CARDINAL(T, P, D)							\
-	_expand = get_step(T, D);										\
-	if(last[_expand] || edges[_expand]){							\
-		continue;													\
-	}																\
-	edges_next[_expand] = _CD = (edges_next[_expand] | D);			\
-	powers_next[_expand] = max(powers_next[_expand], P);			\
-	if(ISDIAGONALDIR(_CD)){											\
-		diagonals[_T] |= _CD;										\
-		diagonal_powers[_T] = max(diagonal_powers[_T], P)			\
+#define SHOCKWAVE_MARK_CARDINAL(T, P, D)									\
+	_expand = get_step(T, D);												\
+	if(!(last[_expand] || edges[_expand])){									\
+		edges_next[_expand] = _CD = (edges_next[_expand] | D);				\
+		powers_next[_expand] = max(powers_next[_expand], P);				\
+		if(ISDIAGONALDIR(_CD)){												\
+			diagonals[_expand] |= _CD;										\
+			diagonal_powers[_expand] = max(diagonal_powers[_expand], P);	\
+		}																	\
 	}
 
 /**
@@ -130,11 +129,11 @@
  */
 #define SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(T, P, D)					\
 	_expand = get_step(T, D);										\
-	if(last[_expand] || edges[_expand]){							\
-		continue;													\
-	}																\
-	edges_next[_expand] |= D;										\
-	powers_next[_expand] = max(powers_next[_expand], P);
+	if(!(last[_expand] || edges[_expand])){							\
+		edges_next[_expand] |= D;									\
+		powers_next[_expand] = max(powers_next[_expand], P);		\
+	}
+
 /**
  * iteration base for diagonals, basically modified ITERATION_BASE
  */
@@ -196,26 +195,26 @@
 				// first step just sets up expanding rings
 				for(var/i in 1 to edges.len)
 					ITERATION_BASE
-					SHADOWCAST_INIT(_T, _P, _D, NORTH_BIT, NORTH, CONICAL_NORTH_BITS)
-					SHADOWCAST_INIT(_T, _P, _D, NORTHEAST_BIT, NORTHEAST, CONICAL_NORTHEAST_BITS)
-					SHADOWCAST_INIT(_T, _P, _D, NORTHWEST_BIT, NORTHWEST, CONICAL_NORTHWEST_BITS)
-					SHADOWCAST_INIT(_T, _P, _D, SOUTH_BIT, SOUTH, CONICAL_SOUTH_BITS)
-					SHADOWCAST_INIT(_T, _P, _D, SOUTHEAST_BIT, SOUTHEAST, CONICAL_SOUTHEAST_BITS)
-					SHADOWCAST_INIT(_T, _P, _D, SOUTHWEST_BIT, SOUTHWEST, CONICAL_SOUTHWEST_BITS)
-					SHADOWCAST_INIT(_T, _P, _D, WEST_BIT, WEST, CONICAL_WEST_BITS)
-					SHADOWCAST_INIT(_T, _P, _D, EAST_BIT, EAST, CONICAL_EAST_BITS)
+					SHADOWCAST_INIT(_T, _ret, _D, NORTH_BIT, NORTH, CONICAL_NORTH_BITS)
+					SHADOWCAST_INIT(_T, _ret, _D, NORTHEAST_BIT, NORTHEAST, NORTHEAST_BIT)
+					SHADOWCAST_INIT(_T, _ret, _D, NORTHWEST_BIT, NORTHWEST, NORTHWEST_BIT)
+					SHADOWCAST_INIT(_T, _ret, _D, SOUTH_BIT, SOUTH, CONICAL_SOUTH_BITS)
+					SHADOWCAST_INIT(_T, _ret, _D, SOUTHEAST_BIT, SOUTHEAST, SOUTHEAST_BIT)
+					SHADOWCAST_INIT(_T, _ret, _D, SOUTHWEST_BIT, SOUTHWEST, SOUTHWEST_BIT)
+					SHADOWCAST_INIT(_T, _ret, _D, WEST_BIT, WEST, CONICAL_WEST_BITS)
+					SHADOWCAST_INIT(_T, _ret, _D, EAST_BIT, EAST, CONICAL_EAST_BITS)
 			else
 				// other steps do full sim
 				for(var/i in 1 to edges.len)
 					ITERATION_BASE
-					SHADOWCAST(_T, _P, _D, NORTH_BIT, NORTH)
-					SHADOWCAST(_T, _P, _D, EAST_BIT, EAST)
-					SHADOWCAST(_T, _P, _D, WEST_BIT, WEST)
-					SHADOWCAST(_T, _P, _D, SOUTH_BIT, SOUTH)
-					SHADOWCAST(_T, _P, _D, NORTHEAST_BIT, NORTHEAST)
-					SHADOWCAST(_T, _P, _D, NORTHWEST_BIT, NORTHWEST)
-					SHADOWCAST(_T, _P, _D, SOUTHEAST_BIT, SOUTHEAST)
-					SHADOWCAST(_T, _P, _D, SOUTHWEST_BIT, SOUTHWEST)
+					SHADOWCAST(_T, _ret, _D, NORTH_BIT, NORTH)
+					SHADOWCAST(_T, _ret, _D, EAST_BIT, EAST)
+					SHADOWCAST(_T, _ret, _D, WEST_BIT, WEST)
+					SHADOWCAST(_T, _ret, _D, SOUTH_BIT, SOUTH)
+					SHADOWCAST(_T, _ret, _D, NORTHEAST_BIT, NORTHEAST)
+					SHADOWCAST(_T, _ret, _D, NORTHWEST_BIT, NORTHWEST)
+					SHADOWCAST(_T, _ret, _D, SOUTHEAST_BIT, SOUTHEAST)
+					SHADOWCAST(_T, _ret, _D, SOUTHWEST_BIT, SOUTHWEST)
 
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// this is annoying
@@ -233,19 +232,19 @@
 			// first, process all edges cardinally
 			for(var/i in 1 to edges.len)
 				ITERATION_BASE
-				SHOCKWAVE_MARK_CARDINAL(_T, _P, NORTH)
-				SHOCKWAVE_MARK_CARDINAL(_T, _P, SOUTH)
-				SHOCKWAVE_MARK_CARDINAL(_T, _P, EAST)
-				SHOCKWAVE_MARK_CARDINAL(_T, _P, WEST)
+				SHOCKWAVE_MARK_CARDINAL(_T, _ret, NORTH)
+				SHOCKWAVE_MARK_CARDINAL(_T, _ret, SOUTH)
+				SHOCKWAVE_MARK_CARDINAL(_T, _ret, EAST)
+				SHOCKWAVE_MARK_CARDINAL(_T, _ret, WEST)
 			// then, process diagonals
 			// make sure diagonals are added to edges so they're part of the last[] and edges[] exclusion
 			edges += diagonals
 			for(_T in diagonals)
 				ITERATION_BASE_DIAGONAL
-				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, NORTH)
-				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, SOUTH)
-				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, EAST)
-				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, WEST)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, NORTH)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, SOUTH)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, EAST)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, WEST)
 			// but also remove them from edges next and powers next because we're done exploding them
 			edges_next -= diagonals
 			powers_next -= diagonals
@@ -307,6 +306,7 @@
 	if(T.contains_dense_objects())
 		. -= dense_falloff
 	T.maptext = "[power]"
+	impacted += T
 
 GLOBAL_DATUM(active_wave_automata_test, /datum/automata/wave)
 
