@@ -12,20 +12,16 @@
 	__vfx_remove_see_anywhere_overlay()
 	appearance_flags |= TILE_BOUND
 
-/**
- * adds and returns an image to make something seen anywhere
- * ... on our turf
- * reason: byond tile bound is awful
- * we could just remove tile bound from ourselves but uh.
- * nah.
- */
-/atom/proc/vfx_get_see_anywhere_image()
-	var/image/I = new
-	I.appearance = GLOB.see_anywhere_appearance
-	I.loc = get_turf(src)
-	return I
-
 GLOBAL_DATUM_INIT(see_anywhere_appearance, /mutable_appearance, init_see_anywhere_overlay())
+
+/proc/__vfx_see_anywhere_atom_holder_at(loc)
+	var/atom/movable/AM = new /atom/movable/vfx_see_anywhere_holder(loc)
+	AM.appearance = GLOB.see_anywhere_appearance
+
+/atom/movable/vfx_see_anywhere_holder
+	vis_flags = VIS_HIDE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = KEEP_TOGETHER
 
 /proc/init_see_anywhere_overlay()
 	var/mutable_appearance/I = new
@@ -34,6 +30,7 @@ GLOBAL_DATUM_INIT(see_anywhere_appearance, /mutable_appearance, init_see_anywher
 	I.alpha = 1
 	I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	I.appearance_flags = RESET_TRANSFORM | KEEP_APART | RESET_ALPHA | RESET_COLOR | KEEP_TOGETHER
+	I.vis_flags = VIS_HIDE
 	I.plane = FLOAT_PLANE
 	I.layer = FLOAT_LAYER
 	I.pixel_x = -320

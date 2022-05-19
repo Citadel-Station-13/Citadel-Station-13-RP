@@ -12,6 +12,8 @@
 
 /datum/automata/wave/sonar/act(turf/T, dirs, power)
 	. = power - 1
+	if(isspaceturf(T))
+		return 0	// nah
 	if(T.density)
 		flick_sonar(T)
 	else
@@ -29,7 +31,9 @@
 	return ..()
 
 /datum/automata/wave/sonar/proc/flick_sonar(atom/movable/AM)
-	flicking += AM.make_sonar_image(resolution)
+	var/image/I = AM.make_sonar_image(resolution)
+	if(I)
+		flicking += I
 
 /datum/automata/wave/sonar/proc/flick_scan(turf/T)
 

@@ -9,8 +9,9 @@
 	)
 	MA.vis_contents.len = 0	// y ea let's not copy those
 	MA.alpha = alpha
-	MA.color = color
-	MA.appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA
+	var/static/list/hide_matrix = rgba_construct_color_matrix(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+	MA.color = hide_matrix
+	MA.appearance_flags = RESET_TRANSFORM | RESET_COLOR
 	return MA
 
 /**
@@ -23,5 +24,5 @@
 	MA.color = static_greyscale_matrix
 	MA.vis_contents.len = 0	// y ea let's not copy those
 	MA.alpha = alpha
-	MA.appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA
+	MA.appearance_flags = RESET_TRANSFORM | RESET_COLOR
 	return MA

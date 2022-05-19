@@ -286,8 +286,9 @@
 #define VIS_PARALLAX		14
 #define VIS_STATUS			15
 #define VIS_SPACE			16
+#define VIS_SONAR			17
 ///Must be highest number from above.
-#define VIS_COUNT			16
+#define VIS_COUNT			17
 //Some mob icon layering defines
 #define BODY_LAYER		-100
 

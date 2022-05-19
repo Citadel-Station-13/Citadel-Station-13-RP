@@ -15,7 +15,7 @@
 	MA.alpha = 127
 	MA.plane = FLOAT_PLANE
 	MA.layer = FLOAT_LAYER
-	MA.appearance_flags = RESET_TRANSFORM | RESET_ALPHA | RESET_COLOR
+	MA.appearance_flags = RESET_TRANSFORM | RESET_COLOR
 	switch(type)
 		if(SONAR_IMAGE_CIRCLE)
 			MA.icon_state = "circle"
@@ -27,9 +27,15 @@
 			MA.icon_state = "triangle"
 		// SONAR_IMAGE_STATIC is not implemented.
 
+// we don't use images because TILE_BOUND is awful
+// therefore we'll just use a plane directly for performance
+// instead of image on atom movable holder
+// i fucking hate this engine
+
 /**
  * flicks sonar image(s) to clients
  */
+/*
 /datum/controller/subsystem/sonar/proc/flick_sonar_image(list/image/images, list/client/clients, fadein = 0.1 SECONDS, sustain = 0.2 SECONDS, fadeout = 0.7 SECONDS)
 	if(!islist(images))
 		images = list(images)
@@ -43,42 +49,45 @@
 	addtimer(CALLBACK(src, .proc/remove_sonar_images, images, clients, fadeout), sustain, TIMER_CLIENT_TIME)
 
 /datum/controller/subsystem/sonar/proc/remove_sonar_images(list/image/images, list/client/clients, time)
-	for(var/image/I in images)
+	for(var/image/I as anything in images)
 		animate(I, alpha = 0, time = time, easing = SINE_EASING)
 	addtimer(CALLBACK(src, .proc/dispose_sonar_images, images, clients), time, TIMER_CLIENT_TIME)
 
 /datum/controller/subsystem/sonar/proc/dispose_sonar_images(list/image/images, list/client/clients)
 	for(var/client/C in clients)
 		C.images -= images
-	for(var/image/I in images)
+	for(var/image/I as anything in images)
 		I.loc = null
+*/
 
 /atom/proc/__debug_to_sonar_appearance(resolution)
 	appearance = make_sonar_image(resolution)
 
+/*
 /atom/proc/_debug_flick_sonar(resolution = SONAR_RESOLUTION_VISIBLE)
-	var/image/I = make_sonar_image(resolution)
+	var/atom/movable/holder = make_sonar_image(resolution)
 	if(!I)
 		return
 	SSsonar.flick_sonar_image(list(I), GLOB.clients)
+*/
 
 /atom/proc/make_sonar_image(resolution)
 	if(resolution == SONAR_RESOLUTION_NONE)
 		return
-	if(invisibility)
+	if(invisibility || !isturf(loc))
 		return
-	var/image/I = vfx_get_see_anywhere_image()
-	I.plane = SONAR_PLANE
-	. = I
+	var/atom/movable/holder = __vfx_see_anywhere_atom_holder_at(loc)
+	holder.plane = SONAR_PLANE
+	. = holder
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)
-			I.overlays += vfx_clone_as_outline("#ffffff", 127)
+			holder.overlays += vfx_clone_as_outline("#ffffff", 127)
 		if(SONAR_RESOLUTION_WALLHACK)
-			I.overlays += vfx_clone_as_greyscale()
+			holder.overlays += vfx_clone_as_greyscale()
 		if(SONAR_RESOLUTION_BLOCKY)
 			var/mutable_appearance/MA = make_sonar_shape()
 			if(MA)
-				I.overlays += MA
+				holder.overlays += MA
 
 /atom/proc/make_sonar_shape()
 	return

@@ -318,10 +318,12 @@
 		SPAN_WARNING("You emit a quiet click."),
 		SPAN_WARNING("You hear a quiet, high-pitched click.")
 	)
+	plane_holder.set_vis(VIS_SONAR, TRUE)
 	var/datum/automata/wave/sonar/single_mob/sonar_automata = new
 	sonar_automata.receiver = src
-	sonar_automata.setup_auto(get_turf(src), 14)
+	sonar_automata.setup_auto(get_turf(src), 9)
 	sonar_automata.start()
+	addtimer(CALLBACK(plane_holder, /datum/plane_holder/proc/set_vis, VIS_SONAR, FALSE), 5 SECONDS, flags = TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /mob/living/carbon/human/proc/regenerate()
 	set name = "Regenerate"
