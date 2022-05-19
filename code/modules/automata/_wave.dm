@@ -3,7 +3,7 @@
  */
 /datum/automata/wave
 	/// type of spread
-	VAR_PROTECTED/wave_spread = WAVE_SPREAD_MINIMAL
+	var/wave_spread = WAVE_SPREAD_MINIMAL
 	/// last turfs, assoc list to true for fast hash lookup. makes sure we don't fold in on ourselves.
 	VAR_PRIVATE/list/last
 	/// current edges = dirs
@@ -69,7 +69,7 @@
 	_T = edges[i];								\
 	if(!_T) {									\
 		continue;								\
-	}											\
+	};											\
 	_P = powers[_T];							\
 	_D = edges[_T];								\
 	_ret = act(_T, _D, _P);						\
