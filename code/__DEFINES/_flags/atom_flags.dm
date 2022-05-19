@@ -11,6 +11,8 @@
 #define OVERLAY_QUEUED				(1<<4)
 /// atom is absolute-abstract - should not be interactable or movable in any way shape or form
 #define AF_ABSTRACT					(1<<5)
+/// we are an holographic atom from a holodeck/AR system
+#define HOLOGRAM					(1<<6)
 
 /// Used for items if they don't want to get a blood overlay.
 #define NOBLOODY					(1<<7)

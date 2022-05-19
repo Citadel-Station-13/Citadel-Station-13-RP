@@ -1479,13 +1479,13 @@ area/shuttle/mining_outpost/shuttle
 
 // Override telescience shielding on some areas
 /area/security/armoury
-	area_flags = AF_AF_BLUE_SHIELDED
+	area_flags = AF_BLUE_SHIELDED
 
 /area/security/tactical
-	area_flags = AF_AF_BLUE_SHIELDED
+	area_flags = AF_BLUE_SHIELDED
 
 /area/security/nuke_storage
-	area_flags = AF_AF_BLUE_SHIELDED
+	area_flags = AF_BLUE_SHIELDED
 
 /area/supply
 

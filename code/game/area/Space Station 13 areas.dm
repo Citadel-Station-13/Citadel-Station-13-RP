@@ -2362,7 +2362,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Security - Armory"
 	icon_state = "armory"
 	ambience = AMBIENCE_HIGHSEC
-	area_flags = AF_AF_BLUE_SHIELDED
+	area_flags = AF_BLUE_SHIELDED
 
 /area/security/briefing_room
 	name = "\improper Security - Briefing Room"
@@ -2422,7 +2422,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Security - Tactical Equipment"
 	icon_state = "Tactical"
 	ambience = AMBIENCE_HIGHSEC
-	area_flags = AF_AF_BLUE_SHIELDED
+	area_flags = AF_BLUE_SHIELDED
 
 /area/security/hallway
 	name = "\improper Security Hallway"
@@ -2502,7 +2502,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Vault"
 	icon_state = "nuke_storage"
 	ambience = AMBIENCE_HIGHSEC
-	area_flags = AF_AF_BLUE_SHIELDED
+	area_flags = AF_BLUE_SHIELDED
 
 /area/security/checkpoint
 	name = "\improper Security Checkpoint"
