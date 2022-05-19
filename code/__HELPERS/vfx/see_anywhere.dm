@@ -37,6 +37,7 @@ GLOBAL_DATUM_INIT(see_anywhere_appearance, /mutable_appearance, init_see_anywher
 	I.layer = FLOAT_LAYER
 	I.pixel_x = -320
 	I.pixel_y = -320
+	return I
 
 /**
  * just applies the see anywhere overlay to the atom.
