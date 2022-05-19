@@ -16,11 +16,11 @@
 /**
  * clones us as a high-resolution greyscale
  */
-/atom/proc/vfx_clone_as_outline(alpha = 127)
+/atom/proc/vfx_clone_as_greyscale(alpha = 127)
 	var/static/list/static_greyscale_matrix = color_matrix_greyscale()
 	var/mutable_appearance/MA = new
 	MA.appearance = src
-	MA.color = static_greyscale_matrix()
+	MA.color = static_greyscale_matrix
 	MA.vis_contents.len = 0	// y ea let's not copy those
 	MA.alpha = alpha
 	MA.appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA
