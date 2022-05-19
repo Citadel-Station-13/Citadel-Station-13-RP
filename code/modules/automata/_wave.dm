@@ -160,15 +160,14 @@
 				// first step just sets up expanding rings
 				for(var/i in 1 to edges.len)
 					ITERATION_BASE
-					if(_D == ALL_DIRECTION_BITS)
-						SIMPLE_EXPAND(_T, NORTH, _ret)
-						SIMPLE_EXPAND(_T, SOUTH, _ret)
-						SIMPLE_EXPAND(_T, EAST, _ret)
-						SIMPLE_EXPAND(_T, WEST, _ret)
-						SIMPLE_EXPAND(_T, NORTHEAST, _ret)
-						SIMPLE_EXPAND(_T, NORTHWEST, _ret)
-						SIMPLE_EXPAND(_T, SOUTHEAST, _ret)
-						SIMPLE_EXPAND(_T, SOUTHWEST, _ret)
+					SIMPLE_EXPAND(_T, NORTH, _ret)
+					SIMPLE_EXPAND(_T, SOUTH, _ret)
+					SIMPLE_EXPAND(_T, EAST, _ret)
+					SIMPLE_EXPAND(_T, WEST, _ret)
+					SIMPLE_EXPAND(_T, NORTHEAST, _ret)
+					SIMPLE_EXPAND(_T, NORTHWEST, _ret)
+					SIMPLE_EXPAND(_T, SOUTHEAST, _ret)
+					SIMPLE_EXPAND(_T, SOUTHWEST, _ret)
 			else
 				// other steps do full sim
 				for(var/i in 1 to edges.len)
@@ -241,12 +240,15 @@
 			// then, process diagonals
 			// make sure diagonals are added to edges so they're part of the last[] and edges[] exclusion
 			edges += diagonals
-			for(var/turf/_T in diagonals)
+			for(_T in diagonals)
 				ITERATION_BASE_DIAGONAL
 				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, NORTH)
 				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, SOUTH)
 				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, EAST)
 				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _P, WEST)
+			// but also remove them from edges next and powers next because we're done exploding them
+			edges_next -= diagonals
+			powers_next -= diagonals
 
 #undef ITERATION_BASE_DIAGONAL
 #undef SHOCKWAVE_MARK_CARDINAL
@@ -290,6 +292,8 @@
 
 /datum/automata/wave/debug/Destroy()
 	clear_impacted()
+	if(GLOB.active_wave_automata_test == src)
+		GLOB.active_wave_automata_test = null
 	return ..()
 
 /datum/automata/wave/debug/proc/clear_impacted()
