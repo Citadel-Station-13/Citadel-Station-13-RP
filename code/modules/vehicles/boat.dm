@@ -28,7 +28,7 @@
 	riding_datum_type = /datum/riding/boat/big
 
 /obj/vehicle/boat/dragon/Initialize(mapload, material_name)
-	..(mapload, material_name)
+	. = ..(mapload, material_name)
 	var/image/I = image(icon, src, "dragon_boat_underlay", BELOW_MOB_LAYER)
 	underlays += I
 
