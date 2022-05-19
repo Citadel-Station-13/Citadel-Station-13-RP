@@ -51,11 +51,14 @@
 	var/_D
 	// next edges, powers
 	var/list/turf/edges_next = list()
-	var/list/turf/powers_next = list()	// current vars - returned
+	var/list/turf/powers_next = list()
+	// current vars - returned
 	var/_ret
 	// current vars - expansions
 	var/turf/_expand
 	var/_ND
+	// current vars - track returned per turf too
+	var/list/turf/returned = list()
 
 // usually i wouldn't bother documenting forbidden defines but
 // just incase someone needs to debug/read later
@@ -70,6 +73,7 @@
 	_P = powers[_T];							\
 	_D = edges[_T];								\
 	_ret = act(_T, _D, _P);						\
+	returned[_T] = _ret							\
 	if(_ret < power_considered_dead){			\
 		continue;								\
 	}
@@ -113,26 +117,19 @@
 /**
  * runs a specific cardinal
  */
-#define SHOCKWAVE_MARK_CARDINAL(T, P, D)									\
-	_expand = get_step(T, D);												\
-	if(!(last[_expand] || edges[_expand])){									\
-		edges_next[_expand] = _CD = (edges_next[_expand] | D);				\
-		powers_next[_expand] = max(powers_next[_expand], P);				\
-		if(ISDIAGONALDIR(_CD)){												\
-			diagonals[_expand] |= _CD;										\
-			diagonal_powers[_expand] = max(diagonal_powers[_expand], P);	\
+#define SHOCKWAVE_MARK_CARDINAL(T, P, D, ED)								\
+	if(D & ED){																\
+		_expand = get_step(T, ED);											\
+		if(!(last[_expand] || edges[_expand])){								\
+			edges_next[_expand] |= ED;										\
+			powers_next[_expand] = max(powers_next[_expand], P);			\
 		}																	\
 	}
 
 /**
  * runs a specific cardinal on diagstep
  */
-#define SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(T, P, D)					\
-	_expand = get_step(T, D);										\
-	if(!(last[_expand] || edges[_expand])){							\
-		edges_next[_expand] |= D;									\
-		powers_next[_expand] = max(powers_next[_expand], P);		\
-	}
+#define SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(T, P, D, ED)	SHOCKWAVE_MARK_CARDINAL(T, P, D, ED)
 
 /**
  * iteration base for diagonals, basically modified ITERATION_BASE
@@ -143,6 +140,47 @@
 	_ret = act(_T, _D, _P);						\
 	if(_ret < power_considered_dead){			\
 		continue;								\
+	}
+
+/**
+ * iteration base for marking diagonals
+ */
+#define ITERATION_BASE_DIAGMARK					\
+	_T = edges[i];								\
+	if(!_T){									\
+		continue;								\
+	}											\
+	_D = edges[_T];								\
+	_P = returned[_T];
+
+/**
+ * diagonal marking internal substep
+ */
+#define DIAGONAL_MARK_SUBSTEP(T, D, ED, P)												\
+	_expanding = get_step(T, ED);														\
+	if(!last[_expanding] && !edges[_expanding]){										\
+		if(!edges_next[_expanding]){													\
+			diagonals[_expanding] |= ED;												\
+			diagonal_powers[_expanding] = max(digonal_powers[_expanding], P);			\
+		}																				\
+		else {																			\
+			powers_next[expanding] = max(powers_next[expanding], P);					\
+		}																				\
+	}
+/**
+ * marking diagonals: turfs considered for an immediate, quick expansion due to being perpendicular to normal expansions
+ *
+ * to explain the dumb math:
+ * turn() has cost
+ * bit ops on constants with constants don't
+ * first one is clockwise
+ * second one counterclockwise
+ * figure it out ;)
+ */
+#define DIAGONAL_MARK(T, D, ED, P)																									\
+	if(D & ED){																														\
+		DIAGONAL_MARK_SUBSTEP(T, D, (((ED & NORTH) << 2) | ((ED & SOUTH) << 2) | ((ED & EAST) >> 1) | ((ED & WEST) >> 3)), P);		\
+		DIAGONAL_MARK_SUBSTEP(T, D, (((ED & NORTH) << 3) | ((ED & SOUTH) << 1) | ((ED & EAST) >> 2) | ((ED & WEST) >> 2)), P);		\
 	}
 
 	switch(wave_spread)
@@ -226,29 +264,35 @@
 			// also set up diags list
 			var/list/turf/diagonals = list()
 			var/list/turf/diagonal_powers = list()
-			// current dir
-			var/_CD
 
 			// first, process all edges cardinally
 			for(var/i in 1 to edges.len)
 				ITERATION_BASE
-				SHOCKWAVE_MARK_CARDINAL(_T, _ret, NORTH)
-				SHOCKWAVE_MARK_CARDINAL(_T, _ret, SOUTH)
-				SHOCKWAVE_MARK_CARDINAL(_T, _ret, EAST)
-				SHOCKWAVE_MARK_CARDINAL(_T, _ret, WEST)
+				SHOCKWAVE_MARK_CARDINAL(_T, _ret, _D, NORTH)
+				SHOCKWAVE_MARK_CARDINAL(_T, _ret, _D, SOUTH)
+				SHOCKWAVE_MARK_CARDINAL(_T, _ret, _D, EAST)
+				SHOCKWAVE_MARK_CARDINAL(_T, _ret, _D, WEST)
+			// then mark all diagonals. we need to do this after edges to prevent order of processing nondeterminism
+			for(var/i in 1 to edges.len)
+				ITERATION_BASE_DIAGMARK
+				DIAGONAL_MARK(_T, _D, NORTH, P)
+				DIAGONAL_MARK(_T, _D, SOUTH, P)
+				DIAGONAL_MARK(_T, _D, EAST, P)
+				DIAGONAL_MARK(_T, _D, WEST, P)
 			// then, process diagonals
 			// make sure diagonals are added to edges so they're part of the last[] and edges[] exclusion
 			edges += diagonals
 			for(_T in diagonals)
 				ITERATION_BASE_DIAGONAL
-				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, NORTH)
-				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, SOUTH)
-				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, EAST)
-				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, WEST)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, _D, NORTH)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, _D, SOUTH)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, _D, EAST)
+				SHOCKWAVE_MARK_DIAGONAL_SUBSTEP(_T, _ret, _D, WEST)
 			// but also remove them from edges next and powers next because we're done exploding them
 			edges_next -= diagonals
 			powers_next -= diagonals
 
+#undef ITERATION_BASE_DIAGMARK
 #undef ITERATION_BASE_DIAGONAL
 #undef SHOCKWAVE_MARK_CARDINAL
 #undef SHOCKWAVE_MARK_DIAGONAL_SUBSTEP
