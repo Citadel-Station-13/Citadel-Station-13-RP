@@ -4,6 +4,9 @@
 // #define EAST 4
 // #define WEST 8
 
+///All the cardinal direction bitflags.
+#define ALL_CARDINALS (NORTH|SOUTH|EAST|WEST)
+
 /// North direction as a string "[1]"
 #define TEXT_NORTH "[NORTH]"
 /// South direction as a string "[2]"

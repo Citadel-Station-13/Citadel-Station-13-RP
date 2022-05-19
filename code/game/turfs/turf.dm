@@ -6,6 +6,9 @@
 	luminosity = 1
 	level = 1
 
+	/// turf flags
+	var/turf_flags = NONE
+
 	var/holy = 0
 
 	// Atmospherics / ZAS Environmental

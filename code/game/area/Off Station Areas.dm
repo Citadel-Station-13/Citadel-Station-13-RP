@@ -434,7 +434,7 @@
 	name = "Away Mission - Trade Port"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 	requires_power = 1
 
 /area/tradeport/facility
@@ -493,7 +493,7 @@
 //////// Mothership areas ////////
 /area/mothership
 	requires_power = 1
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 	icon_state = "blue-red2"
 /area/mothership/breakroom
 	name = "Warship - Breakroom"
@@ -525,7 +525,7 @@
 	name = "Warship - Surgery"
 /area/mothership/vault
 	name = "Warship - Vault"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	area_flags = AF_RAD_SHIELDED | AF_BLUE_SHIELDED
 /area/mothership/teleporter
 	name = "Warship - Teleporter Room"
 /area/mothership/security
@@ -550,7 +550,7 @@
 	name = "Warship - Warden"
 /area/mothership/armory
 	name = "Warship - Armory"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	area_flags = AF_RAD_SHIELDED | AF_BLUE_SHIELDED
 /area/mothership/bridge
 	name = "Warship - Bridge"
 /area/mothership/holodeck
@@ -576,7 +576,7 @@
 	icon_state = "yellow"
 	requires_power = 0
 	dynamic_lighting = 0
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 /area/skipjack_station/transit
 	name = "transit"
@@ -594,7 +594,7 @@
 	name = "\improper Ninja Base"
 	icon_state = "green"
 	requires_power = 0
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 /area/ninja_dojo/dojo
 	name = "\improper Clan Dojo"
@@ -617,7 +617,7 @@
 // Lavaland
 /area/shuttle/excursion/lavaland
 	name = "Shuttle Landing Point"
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 
 /area/lavaland
 	name = "Lava Land"
@@ -752,7 +752,7 @@
 	dynamic_lighting = TRUE
 
 /area/aerostat/surface
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 	ambience = list('sound/ambience/ambimine.ogg', 'sound/ambience/song_game.ogg')
 
 /area/aerostat/surface/explored

@@ -48,7 +48,7 @@ var/global/repository/radiation/radiation_repository = new()
 			continue // Too far to possibly affect
 		if(source.respect_maint)
 			var/atom/A = T.loc
-			if(A.flags & RAD_SHIELDED)
+			if(A.area_flags & RAD_SHIELDED)
 				continue // In shielded area
 		if(source.flat)
 			. = max(., source.rad_power)
