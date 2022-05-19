@@ -35,8 +35,8 @@ GLOBAL_DATUM_INIT(see_anywhere_appearance, /mutable_appearance, init_see_anywher
 	I.appearance_flags = RESET_TRANSFORM | KEEP_APART | RESET_ALPHA | RESET_COLOR | KEEP_TOGETHER
 	I.plane = FLOAT_PLANE
 	I.layer = FLOAT_LAYER
-	I.pixel_x = -320
-	I.pixel_y = -320
+	I.pixel_x = -VFX_SEE_ANYWHERE_PIXEL_SHIFT
+	I.pixel_y = -VFX_SEE_ANYWHERE_PIXEL_SHIFT
 	return I
 
 /**

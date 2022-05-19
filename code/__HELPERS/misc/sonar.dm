@@ -77,13 +77,18 @@
 	if(invisibility || !isturf(loc))
 		return
 	var/atom/movable/holder = __vfx_see_anywhere_atom_holder_at(loc)
+	var/mutable_appearance/MA
 	holder.plane = SONAR_PLANE
 	. = holder
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)
-			holder.overlays += vfx_clone_as_outline(127)
+			MA = vfx_clone_as_outline(127)
+			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
+			holder.overlays += MA
 		if(SONAR_RESOLUTION_WALLHACK)
-			holder.overlays += vfx_clone_as_greyscale()
+			MA = vfx_clone_as_greyscale()
+			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
+			holder.overlays += MA
 		if(SONAR_RESOLUTION_BLOCKY)
 			var/mutable_appearance/MA = make_sonar_shape()
 			if(MA)
