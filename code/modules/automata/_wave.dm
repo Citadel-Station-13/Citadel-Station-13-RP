@@ -164,7 +164,7 @@
 			diagonal_powers[_expand] = max(diagonal_powers[_expand], P);				\
 		};																				\
 		else {																			\
-			powers_next[expanding] = max(powers_next[expanding], P);					\
+			powers_next[_expand] = max(powers_next[_expand], P);						\
 		};																				\
 	};
 /**
