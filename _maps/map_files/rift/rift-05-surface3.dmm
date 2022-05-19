@@ -16219,6 +16219,7 @@
 /area/crew_quarters/kitchen)
 "Ef" = (
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/maintenance/command,
 /turf/simulated/floor/plating,
 /area/bridge)
 "Eg" = (

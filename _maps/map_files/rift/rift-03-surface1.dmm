@@ -13600,6 +13600,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/airlock/maintenance/sec,
 /turf/simulated/floor/plating,
 /area/security/security_cell_hallway)
 "lLS" = (
