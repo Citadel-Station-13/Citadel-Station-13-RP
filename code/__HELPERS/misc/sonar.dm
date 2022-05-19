@@ -55,7 +55,7 @@
 		qdel(I)
 
 /atom/proc/__debug_to_sonar_appearance(resolution)
-	appearance = make_sonar_image(src, resolution)
+	appearance = make_sonar_image(resolution)
 
 /atom/proc/_debug_flick_sonar(resolution = SONAR_RESOLUTION_VISIBLE)
 	SSsonar.flick_sonar_image(list(make_sonar_image(resolution)), GLOB.clients)
