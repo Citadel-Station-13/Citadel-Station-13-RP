@@ -64,10 +64,10 @@
 #define DNA_UI_WING3_R     45
 #define DNA_UI_WING3_G     46
 #define DNA_UI_WING3_B     47
-#define DNA_UI_LENGTH      47 //! Needs to match the highest number above.
-
-#define DNA_SE_LENGTH 50 // (original was UI+11)
-
+///! Needs to match the highest number above.
+#define DNA_UI_LENGTH      47
+/// (original was UI+11)
+#define DNA_SE_LENGTH 50
 // Defines which values mean "on" or "off".
 //  This is to make some of the more OP superpowers a larger PITA to activate,
 //  and to tell our new DNA datum which values to set in order to turn something

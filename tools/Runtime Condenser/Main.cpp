@@ -34,8 +34,8 @@
 
 #define PROGRESS_FPS 10
 #define PROGRESS_BAR_INNER_WIDTH 50
-#define LINEBUFFER (32*1024) //32KiB
-
+///32KiB
+#define LINEBUFFER (32*1024)
 using namespace std;
 
 struct runtime {

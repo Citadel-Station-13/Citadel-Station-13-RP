@@ -18,23 +18,38 @@
 	appearance_flags = TILE_BOUND|KEEP_TOGETHER|LONG_GLIDE
 	var/moving_state = "ship_moving"
 
-	var/vessel_mass = 10000				// Tonnes, arbitrary number, affects acceleration provided by engines
-	var/vessel_size = SHIP_SIZE_LARGE	// Arbitrary number, affects how likely are we to evade meteors
-	var/max_speed = 1/(1 SECOND)		// "Speed of light" for the ship, in turfs/decisecond.
-	var/min_speed = 1/(2 MINUTES)		// Below this, we round speed to 0 to avoid math errors.
+	/// Tonnes, arbitrary number, affects acceleration provided by engines.
+	var/vessel_mass = 10000
+	/// Arbitrary number, affects how likely are we to evade meteors.
+	var/vessel_size = SHIP_SIZE_LARGE
+	/// "Speed of light" for the ship, in turfs/decisecond.
+	var/max_speed = 1/(1 SECOND)
+	/// Below this, we round speed to 0 to avoid math errors.
+	var/min_speed = 1/(2 MINUTES)
 
-	var/position_x						// Pixel coordinates in the world
-	var/position_y						// Pixel coordinates in the world.
-	var/list/speed = list(0,0)			// Speed in x,y direction
-	var/last_burn = 0					// Worldtime when ship last acceleated
-	var/burn_delay = 1 SECOND			// How often ship can do burns
-	var/fore_dir = NORTH				// What dir ship flies towards for purpose of moving stars effect procs
+	/// Pixel coordinates in the world.
+	var/position_x
+	/// Pixel coordinates in the world.
+	var/position_y
+	/// Speed in x,y direction.
+	var/list/speed = list(0,0)
+	/// Worldtime when ship last acceleated.
+	var/last_burn = 0
+	/// How often ship can do burns.
+	var/burn_delay = 1 SECOND
+	/// What dir ship flies towards for purpose of moving stars effect procs.
+	var/fore_dir = NORTH
 
+	/// The list of all the engines we have.
 	var/list/engines = list()
-	var/engines_state = 0				// Global on/off toggle for all engines
-	var/thrust_limit = 1				// Global thrust limit for all engines, 0..1
-	var/halted = 0						// Admin halt or other stop.
-	var/skill_needed = SKILL_ADEPT		// Piloting skill needed to steer it without going in random dir
+	/// Global on/off toggle for all engines.
+	var/engines_state = 0
+	/// Global thrust limit for all engines, 0..1
+	var/thrust_limit = 1
+	/// Admin halt or other stop.
+	var/halted = 0
+	/// Skill needed to steer it without going in random dir.
+	var/skill_needed = SKILL_NONE //We don't like skills.
 	var/operator_skill
 
 /obj/effect/overmap/visitable/ship/Initialize(mapload)
@@ -255,7 +270,7 @@
 
 /obj/effect/overmap/visitable/ship/populate_sector_objects()
 	..()
-	for(var/obj/machinery/computer/ship/S in global.machines)
+	for(var/obj/machinery/computer/ship/S in GLOB.machines)
 		S.attempt_hook_up(src)
 	for(var/datum/ship_engine/E in ship_engines)
 		if(check_ownership(E.holder))

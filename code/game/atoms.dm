@@ -186,6 +186,9 @@
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 
+	if(loc)
+		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) /// Sends a signal that the new atom `src`, has been created at `loc`
+
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
@@ -206,8 +209,6 @@
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guranteed to be on afterwards anyways.
 
-	ComponentInitialize()
-
 	return INITIALIZE_HINT_NORMAL
 
 /**
@@ -223,10 +224,6 @@
  */
 /atom/proc/LateInitialize()
 	set waitfor = FALSE
-
-/// Put your [AddComponent] calls here
-/atom/proc/ComponentInitialize()
-	return
 
 /**
  * Top level of the destroy chain for most atoms
@@ -406,6 +403,21 @@
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /**
+ * Called when a mob examines (shift click or verb) this atom twice (or more) within EXAMINE_MORE_WINDOW (default 1 second)
+ *
+ * This is where you can put extra information on something that may be superfluous or not important in critical gameplay
+ * moments, while allowing people to manually double-examine to take a closer look
+ *
+ * Produces a signal [COMSIG_PARENT_EXAMINE_MORE]
+ */
+/atom/proc/examine_more(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	RETURN_TYPE(/list)
+
+	. = list()
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE_MORE, user, .)
+
+/**
  * Updates the appearence of the icon
  *
  * Mostly delegates to update_name, update_desc, and update_icon
@@ -443,6 +455,7 @@
 
 	. = NONE
 	updates &= ~SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_ICON, updates)
+
 	if(updates & UPDATE_ICON_STATE)
 		update_icon_state()
 		. |= UPDATE_ICON_STATE
@@ -1100,7 +1113,7 @@
 	ASSERT(isnum(new_layer))
 	base_layer = new_layer
 	// rel layer being null is fine
-	layer = base_layer + 0.000001 * relative_layer
+	layer = base_layer + 0.001 * relative_layer
 
 /// Set the relative layer within our layer we should be on.
 /atom/proc/set_relative_layer(new_layer)
@@ -1109,7 +1122,7 @@
 		base_layer = layer
 	relative_layer = new_layer
 	// base layer being null isn't
-	layer = base_layer + 0.000001 * relative_layer
+	layer = base_layer + 0.001 * relative_layer
 
 /atom/proc/get_cell()
 	return

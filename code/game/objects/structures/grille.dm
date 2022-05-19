@@ -221,7 +221,7 @@
 	desc = "A matrice built out of an unknown material, with some sort of force field blocking air around it."
 	icon_state = "grillecult"
 	health = 40 // Make it strong enough to avoid people breaking in too easily.
-	can_atmos_pass = ATMOS_PASS_NO // Make sure air doesn't drain.
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED // Make sure air doesn't drain.
 
 /obj/structure/grille/broken/cult
 	icon_state = "grillecult-b"

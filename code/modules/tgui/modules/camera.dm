@@ -127,7 +127,7 @@
 		return TRUE
 
 	if(action && !issilicon(usr))
-		playsound(ui_host(), "terminal_type", 50, 1)
+		playsound(ui_host(), SFX_ALIAS_TERMINAL, 50, 1)
 
 	if(action == "switch_camera")
 		var/c_tag = params["name"]
@@ -137,7 +137,7 @@
 			UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 		active_camera = C
 		RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
-		playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
+		playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 		update_active_camera_screen()
 		return TRUE
 
@@ -164,7 +164,7 @@
 					UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 				active_camera = target
 				RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
-				playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
+				playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 				update_active_camera_screen()
 				. = TRUE
 
@@ -222,7 +222,7 @@
 		all_networks += additional_networks
 
 	var/list/D = list()
-	for(var/obj/machinery/camera/C in cameranet.cameras)
+	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue

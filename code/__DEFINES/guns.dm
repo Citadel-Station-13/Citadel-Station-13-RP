@@ -1,12 +1,16 @@
-#define HOLD_CASINGS	0 //do not do anything after firing. Manual action, like pump shotguns, or guns that want to define custom behaviour
-#define EJECT_CASINGS	2 //drop spent casings on the ground after firing
-#define CYCLE_CASINGS	3 //cycle casings, like a revolver. Also works for multibarrelled guns
-
+///do not do anything after firing. Manual action, like pump shotguns, or guns that want to define custom behaviour
+#define HOLD_CASINGS	0
+///drop spent casings on the ground after firing
+#define EJECT_CASINGS	2
+///cycle casings, like a revolver. Also works for multibarrelled guns
+#define CYCLE_CASINGS	3
 //Gun loading types
-#define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
-#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
-#define MAGAZINE 		4	//The magazine item itself goes inside the gun
-
+///The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
+#define SINGLE_CASING 	1
+///Transfers casings from the mag to the gun when used.
+#define SPEEDLOADER 	2
+///The magazine item itself goes inside the gun
+#define MAGAZINE 		4
 #define BULLET_IMPACT_NONE  "none"
 #define BULLET_IMPACT_METAL "metal"
 #define BULLET_IMPACT_MEAT  "meat"

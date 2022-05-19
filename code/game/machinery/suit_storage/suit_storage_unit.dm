@@ -55,7 +55,7 @@
 
 /obj/machinery/suit_storage_unit/power_change()
 	..()
-	if(!(stat & NOPOWER))
+	if(!(machine_stat & NOPOWER))
 		ispowered = 1
 		update_icon()
 	else
@@ -80,7 +80,7 @@
 /obj/machinery/suit_storage_unit/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		return
 	if(!user.IsAdvancedToolUser())
 		return 0

@@ -17,26 +17,18 @@
 	var/list/logs = list()
 
 	circuit = /obj/item/circuitboard/telecomms/exonet_node
-// Proc: New()
+
+// Proc: Initialize()
 // Parameters: None
-// Description: Adds components to the machine for deconstruction.
+// Description: Adds components to the machine for deconstruction. Also refreshes the descrition.
 /obj/machinery/exonet_node/map/Initialize(mapload, newdir)
 	. = ..()
 
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/subspace/ansible(src)
-	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/stock_parts/subspace/crystal(src)
-	component_parts += new /obj/item/stock_parts/subspace/treatment(src)
-	component_parts += new /obj/item/stock_parts/subspace/treatment(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 2)
+	default_apply_parts()
 	RefreshParts()
-
-	desc = "This machine is one of many, many nodes inside [GLOB.using_map.starsys_name]'s section of the Exonet, connecting the [GLOB.using_map.station_short] to the rest of the system, at least \
-	electronically."
+	desc = "This machine is one of many, many nodes inside [GLOB.using_map.starsys_name]'s section of the Exonet, connecting the \
+	[GLOB.using_map.station_short] to the rest of the system, at least electronically."
+	update_desc()
 
 // Proc: update_icon()
 // Parameters: None
@@ -55,7 +47,7 @@
 // Description: Sets the device on/off and adjusts power draw based on stat and toggle variables.
 /obj/machinery/exonet_node/proc/update_power()
 	if(toggle)
-		if(stat & (BROKEN|NOPOWER|EMPED))
+		if(machine_stat & (BROKEN|NOPOWER|EMPED))
 			on = 0
 			idle_power_usage = 0
 		else
@@ -70,11 +62,11 @@
 // Parameters: 1 (severity - how strong the EMP is, with lower numbers being stronger)
 // Description: Shuts off the machine for awhile if an EMP hits it.  Ion anomalies also call this to turn it off.
 /obj/machinery/exonet_node/emp_act(severity)
-	if(!(stat & EMPED))
-		stat |= EMPED
+	if(!(machine_stat & EMPED))
+		machine_stat |= EMPED
 		var/duration = (300 * 10)/severity
 		spawn(rand(duration - 20, duration + 20))
-			stat &= ~EMPED
+			machine_stat &= ~EMPED
 	update_icon()
 	..()
 
@@ -175,7 +167,7 @@
 // Parameters: None
 // Description: Helper proc to get a reference to an Exonet node.
 /proc/get_exonet_node(atom/host)
-	for(var/obj/machinery/exonet_node/E in machines)
+	for(var/obj/machinery/exonet_node/E in GLOB.machines)
 		if(E.on && (!host || can_telecomm(host, E)))
 			return E
 

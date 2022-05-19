@@ -21,10 +21,10 @@
 
 ///Adds a html style to a text string. Hacky, but that's how inputted text appear on paper sheets after going through the UI.
 #define PAPER_MARK_TEXT(text, color, font) "<span style=\"color:[color];font-family:'[font]';\">[text]</span>\n \n"
-
+*/
 /// Folder directory for strings
 #define STRING_DIRECTORY "strings"
-
+/*
 // JSON text files found in the tgstation/strings folder
 /// File location for brain damage traumas
 #define BRAIN_DAMAGE_FILE "traumas.json"
@@ -34,8 +34,10 @@
 #define PIRATE_NAMES_FILE "pirates.json"
 /// File location for redpill questions
 #define REDPILL_FILE "redpill.json"
+*/
 /// File location for arcade names
 #define ARCADE_FILE "arcade.json"
+/*
 /// File location for boomer meme catchphrases
 #define BOOMER_FILE "boomer.json"
 /// File location for locations on the station

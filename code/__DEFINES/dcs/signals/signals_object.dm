@@ -26,7 +26,7 @@
 /// From /obj/machinery/destructive_scanner/proc/open(aggressive): Runs when the destructive scanner scans a group of objects. (list/scanned_atoms)
 ////#define COMSIG_MACHINERY_DESTRUCTIVE_SCAN "machinery_destructive_scan"
 /// From /obj/machinery/computer/arcade/prizevend(mob/user, prizes = 1)
-////#define COMSIG_ARCADE_PRIZEVEND "arcade_prizevend"
+#define COMSIG_ARCADE_PRIZEVEND "arcade_prizevend"
 /// From /datum/controller/subsystem/air/proc/start_processing_machine: ()
 ////#define COMSIG_MACHINERY_START_PROCESSING_AIR "start_processing_air"
 /// From /datum/controller/subsystem/air/proc/stop_processing_machine: ()

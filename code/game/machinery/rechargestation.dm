@@ -8,29 +8,33 @@
 	circuit = /obj/item/circuitboard/recharge_station
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
+
 	var/mob/occupant = null
 	var/obj/item/cell/cell = null
-	var/icon_update_tick = 0	// Used to rebuild the overlay only once every 10 ticks
-	var/charging = 0
+	var/charging = FALSE
 
-	var/charging_power			// W. Power rating used for charging the cyborg. 120 kW if un-upgraded
-	var/restore_power_active	// W. Power drawn from APC when an occupant is charging. 40 kW if un-upgraded
-	var/restore_power_passive	// W. Power drawn from APC when idle. 7 kW if un-upgraded
-	var/weld_rate = 0			// How much brute damage is repaired per tick
-	var/wire_rate = 0			// How much burn damage is repaired per tick
+	/// Used to rebuild the overlay only once every 10 ticks.
+	var/icon_update_tick = 0
 
-	var/weld_power_use = 2300	// power used per point of brute damage repaired. 2.3 kW ~ about the same power usage of a handheld arc welder
-	var/wire_power_use = 500	// power used per point of burn damage repaired.
+	/// W. Power rating used for charging the cyborg. 120 kW if un-upgraded.
+	var/charging_power
+	/// W. Power drawn from APC when an occupant is charging. 40 kW if un-upgraded.
+	var/restore_power_active
+	/// W. Power drawn from APC when idle. 7 kW if un-upgraded.
+	var/restore_power_passive
+	/// How much brute damage is repaired per tick.
+	var/weld_rate = 0
+	/// How much burn damage is repaired per tick.
+	var/wire_rate = 0
+
+	/// Power used per point of brute damage repaired. 2.3 kW ~ about the same power usage of a handheld arc welder.
+	var/weld_power_use = 2300
+	/// Power used per point of burn damage repaired.
+	var/wire_power_use = 500
 
 /obj/machinery/recharge_station/Initialize(mapload, newdir)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/capacitor(src)
-	component_parts += new /obj/item/stock_parts/capacitor(src)
-	component_parts += new /obj/item/cell/super(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 5)
+	default_apply_parts()
 	RefreshParts()
 
 	update_icon()
@@ -39,12 +43,12 @@
 	return cell && cell.percent() > 0
 
 /obj/machinery/recharge_station/process(delta_time)
-	if(stat & (BROKEN))
+	if(machine_stat & (BROKEN))
 		return
 	if(!cell) // Shouldn't be possible, but sanity check
 		return
 
-	if((stat & NOPOWER) && !has_cell_power()) // No power and cell is dead.
+	if((machine_stat & NOPOWER) && !has_cell_power()) // No power and cell is dead.
 		if(icon_update_tick)
 			icon_update_tick = 0 //just rebuild the overlay once more only
 			update_icon()
@@ -56,7 +60,7 @@
 
 	//Then, if external power is available, recharge the internal cell
 	var/recharge_amount = 0
-	if(!(stat & NOPOWER))
+	if(!(machine_stat & NOPOWER))
 		// Calculating amount of power to draw
 		recharge_amount = (occupant ? restore_power_active : restore_power_passive) * CELLRATE
 
@@ -149,7 +153,7 @@
 		cell.emp_act(severity)
 	..(severity)
 
-/obj/machinery/recharge_station/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/recharge_station/attackby(obj/item/O, mob/user)
 	if(!occupant)
 		if(default_deconstruction_screwdriver(user, O))
 			return
@@ -166,7 +170,7 @@
 
 	..()
 
-/obj/machinery/recharge_station/MouseDrop_T(var/mob/target, var/mob/user)
+/obj/machinery/recharge_station/MouseDrop_T(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user))
 		return
 
@@ -215,12 +219,12 @@
 
 /obj/machinery/recharge_station/update_icon()
 	..()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "borgcharger0"
 		return
 
 	if(occupant)
-		if((stat & NOPOWER) && !has_cell_power())
+		if((machine_stat & NOPOWER) && !has_cell_power())
 			icon_state = "borgcharger2"
 		else
 			icon_state = "borgcharger1"
@@ -230,10 +234,10 @@
 	if(icon_update_tick == 0)
 		build_overlays()
 
-/obj/machinery/recharge_station/Bumped(var/mob/living/L)
+/obj/machinery/recharge_station/Bumped(mob/living/L)
 	go_in(L)
 
-/obj/machinery/recharge_station/proc/go_in(var/mob/living/L)
+/obj/machinery/recharge_station/proc/go_in(mob/living/L)
 
 	if(occupant)
 		return
@@ -304,13 +308,13 @@
 
 /obj/machinery/recharge_station/ghost_pod_recharger/update_icon()
 	..()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "borg_pod_closed"
 		desc = "It appears broken..."
 		return
 
 	if(occupant)
-		if((stat & NOPOWER) && !has_cell_power())
+		if((machine_stat & NOPOWER) && !has_cell_power())
 			icon_state = "borg_pod_closed"
 			desc = "It appears to be unpowered..."
 		else

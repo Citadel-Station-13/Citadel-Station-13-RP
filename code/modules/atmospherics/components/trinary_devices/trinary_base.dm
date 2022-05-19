@@ -46,9 +46,9 @@
 	update_underlays()
 
 /obj/machinery/atmospherics/component/trinary/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	. = ..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/atmospherics/component/trinary/attackby(var/obj/item/W as obj, var/mob/user as mob)

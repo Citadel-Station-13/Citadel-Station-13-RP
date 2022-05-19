@@ -1,5 +1,5 @@
-#define TIME_MULTIPLIER 0.7 // So I can speed up/slow down shit
-
+/// So I can speed up/slow down shit
+#define TIME_MULTIPLIER 0.7
 /datum/stockEvent
 	var/name = "event"
 	var/next_phase = 0

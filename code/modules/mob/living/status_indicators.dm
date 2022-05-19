@@ -1,7 +1,9 @@
-#define STATUS_INDICATOR_Y_OFFSET 2 // Offset from the edge of the icon sprite, so 32 pixels plus whatever number is here.
-#define STATUS_INDICATOR_ICON_X_SIZE 16 // Don't need to care about the Y size due to the origin being on the bottom side.
-#define STATUS_INDICATOR_ICON_MARGIN 2 // The space between two status indicators.
-
+/// Offset from the edge of the icon sprite, so 32 pixels plus whatever number is here.
+#define STATUS_INDICATOR_Y_OFFSET 2
+/// Don't need to care about the Y size due to the origin being on the bottom side.
+#define STATUS_INDICATOR_ICON_X_SIZE 16
+/// The space between two status indicators.
+#define STATUS_INDICATOR_ICON_MARGIN 2
 // 'Status indicators' are icons that display over a mob's head, that visually indicate that the mob is suffering
 // from some kind of effect, such as being stunned, blinded, confused, asleep, etc.
 // The icons are managed automatically by the mob itself, so that their positions will shift if another indicator is added,

@@ -292,7 +292,19 @@
 			return TRUE
 
 	else if(I.is_crowbar())
+		if(!opened)
+			return FALSE
+		if(!battery)
+			to_chat(usr, SPAN_WARNING("There's no power cell to remove from \the [src]."))
+			return FALSE
+		battery.forceMove(get_turf(src))
 		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
+		to_chat(user, SPAN_NOTICE("You pull \the [battery] out of \the [src]'s power supplier."))
+		battery = null
+		return TRUE
+
+	else if(I.is_screwdriver())
+		playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 		opened = !opened
 		to_chat(user, SPAN_NOTICE("You [opened ? "opened" : "closed"] \the [src]."))
 		update_icon()

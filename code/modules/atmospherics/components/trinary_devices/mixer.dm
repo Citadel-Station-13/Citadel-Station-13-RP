@@ -52,7 +52,7 @@
 	last_power_draw = 0
 	last_flow_rate = 0
 
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 
 	//Figure out the amount of moles to transfer

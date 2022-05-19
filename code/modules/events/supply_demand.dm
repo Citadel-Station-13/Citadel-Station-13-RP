@@ -84,7 +84,7 @@
 		var/message = "The delivery deadline was reached with the following needs outstanding:<hr>"
 		for (var/datum/supply_demand_order/req in required_items)
 			message += req.describe() + "<br>"
-		for (var/obj/machinery/computer/communications/C in machines)
+		for (var/obj/machinery/computer/communications/C in GLOB.machines)
 			if(C.operable())
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
 				P.name = "'[my_department] Mission Summary'"

@@ -21,8 +21,8 @@
 	name = T_BOARD("medical records console")
 	build_path = /obj/machinery/computer/med_data
 
-/obj/item/circuitboard/med_data/laptop
-	name = T_BOARD("medical records laptop")
+/obj/item/circuitboard/med_data/pcu
+	name = T_BOARD("medical records PCU")
 	build_path = /obj/machinery/computer/med_data/laptop
 
 /obj/item/circuitboard/scan_consolenew
@@ -52,8 +52,8 @@
 	name = T_BOARD("security records console")
 	build_path = /obj/machinery/computer/secure_data
 
-/obj/item/circuitboard/skills
-	name = T_BOARD("employment records console")
+/obj/item/circuitboard/skills/pcu
+	name = T_BOARD("employment records PCU")
 	build_path = /obj/machinery/computer/skills
 
 /obj/item/circuitboard/stationalert_engineering
@@ -91,6 +91,11 @@
 	build_path = /obj/machinery/computer/cloning
 	origin_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 
+/obj/item/circuitboard/arcade/amputation
+	name = T_BOARD("mediborg's amputation adventure")
+	build_path = /obj/machinery/computer/arcade/amputation
+	origin_tech = list(TECH_DATA = 1)
+
 /obj/item/circuitboard/arcade/battle
 	name = T_BOARD("battle arcade machine")
 	build_path = /obj/machinery/computer/arcade/battle
@@ -101,6 +106,10 @@
 	build_path = /obj/machinery/computer/arcade/orion_trail
 	origin_tech = list(TECH_DATA = 1)
 
+/obj/item/circuitboard/arcade/clawmachine
+	name = T_BOARD("grab-a-gift arcade machine")
+	build_path = /obj/machinery/computer/arcade/clawmachine
+	origin_tech = list(TECH_DATA = 1)
 /obj/item/circuitboard/turbine_control
 	name = T_BOARD("turbine control console")
 	build_path = /obj/machinery/computer/turbine_computer

@@ -9,7 +9,7 @@
 	var/obj/item/reagent_containers/syringe/sample = null
 
 /obj/machinery/disease2/isolator/update_icon()
-	if (stat & (BROKEN|NOPOWER))
+	if (machine_stat & (BROKEN|NOPOWER))
 		icon_state = "isolator"
 		return
 
@@ -41,8 +41,8 @@
 
 	src.attack_hand(user)
 
-/obj/machinery/disease2/isolator/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+/obj/machinery/disease2/isolator/attack_hand(mob/user)
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	ui_interact(user)
 

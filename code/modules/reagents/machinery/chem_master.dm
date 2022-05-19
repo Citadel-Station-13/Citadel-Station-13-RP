@@ -78,8 +78,8 @@
 
 	return
 
-/obj/machinery/chem_master/attack_hand(mob/user as mob)
-	if(stat & BROKEN)
+/obj/machinery/chem_master/attack_hand(mob/user)
+	if(machine_stat & BROKEN)
 		return
 	user.set_machine(src)
 	ui_interact(user)

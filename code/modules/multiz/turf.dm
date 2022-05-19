@@ -1,3 +1,7 @@
+/turf
+	/// multiz behavior flags
+	var/z_flags = Z_AIR_UP | Z_OPEN_UP
+
 /turf/proc/CanZPass(atom/A, direction)
 	if(z == A.z)	// Moving FROM this turf
 		return direction == UP	//Can't go below
@@ -46,6 +50,7 @@
 	pathweight = 100000		// Seriously, don't try and path over this one numbnuts
 	can_build_into_floor = TRUE
 	allow_gas_overlays = FALSE
+	z_flags = Z_AIR_UP | Z_AIR_DOWN | Z_OPEN_UP | Z_OPEN_DOWN | Z_CONSIDERED_OPEN
 
 	var/turf/below
 
@@ -91,7 +96,6 @@
 */
 /turf/simulated/open/update_icon()
 	cut_overlays() // Edit - Overlays are being crashy when modified.
-	update_icon_edge()// Add - Get grass into open spaces and whatnot.
 	var/turf/below = GetBelow(src)
 	if(below)
 		var/below_is_open = isopenturf(below)

@@ -7,7 +7,7 @@
 	opacity = 0
 	anchored = 1
 	unacidable = 1
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/const/max_health = 200
 	var/health = max_health //The shield can only take so much beating (prevents perma-prisons)
 	var/shield_generate_power = 7500	//how much power we use when regenerating
@@ -183,14 +183,14 @@
 /obj/machinery/shieldgen/power_change()
 	..()
 	if(!active) return
-	if (stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		collapse_shields()
 	else
 		create_shields()
 	update_icon()
 
 /obj/machinery/shieldgen/process(delta_time)
-	if (!active || (stat & NOPOWER))
+	if(!active || (machine_stat & NOPOWER))
 		return
 
 	if(malfunction)
@@ -329,7 +329,7 @@
 
 
 /obj/machinery/shieldgen/update_icon()
-	if(active && !(stat & NOPOWER))
+	if(active && !(machine_stat & NOPOWER))
 		src.icon_state = malfunction ? "shieldonbr":"shieldon"
 	else
 		src.icon_state = malfunction ? "shieldoffbr":"shieldoff"

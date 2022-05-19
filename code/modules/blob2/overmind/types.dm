@@ -511,11 +511,11 @@
 	E.start()
 
 	// Now for sounds.
-	playsound(T, "explosion", 75, 1) // Local sound.
+	playsound(T, SFX_ALIAS_EXPLOSION, 75, 1) // Local sound.
 
 	for(var/mob/M in player_list) // For everyone else.
 		if(M.z == T.z && get_dist(M, T) > world.view && !M.ear_deaf && !istype(M.loc,/turf/space))
-			SEND_SOUND(M, sound('sound/effects/explosionfar.ogg'))
+			SEND_SOUND(M, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 
 	exploding = FALSE
 

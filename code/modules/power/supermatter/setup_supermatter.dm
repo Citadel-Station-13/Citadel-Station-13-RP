@@ -1,14 +1,17 @@
-#define SETUP_OK 1			// All good
-#define SETUP_WARNING 2		// Something that shouldn't happen happened, but it's not critical so we will continue
-#define SETUP_ERROR 3		// Something bad happened, and it's important so we won't continue setup.
-#define SETUP_DELAYED 4		// Wait for other things first.
-
-
-#define ENERGY_NITROGEN 115			// Roughly 8 emitter shots.
-#define ENERGY_CARBONDIOXIDE 150	// Roughly 10 emitter shots.
-#define ENERGY_PHORON 300			// Roughly 20 emitter shots. Phoron can take more but this is enough to max out both SMESs anyway.
-
-
+/// All good
+#define SETUP_OK 1
+/// Something that shouldn't happen happened, but it's not critical so we will continue
+#define SETUP_WARNING 2
+/// Something bad happened, and it's important so we won't continue setup.
+#define SETUP_ERROR 3
+/// Wait for other things first.
+#define SETUP_DELAYED 4
+/// Roughly 8 emitter shots.
+#define ENERGY_NITROGEN 115
+/// Roughly 10 emitter shots.
+#define ENERGY_CARBONDIOXIDE 150
+/// Roughly 20 emitter shots. Phoron can take more but this is enough to max out both SMESs anyway.
+#define ENERGY_PHORON 300
 /datum/admins/proc/setup_supermatter()
 	set category = "Debug"
 	set name = "Setup Supermatter"

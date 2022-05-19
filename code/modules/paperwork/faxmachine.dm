@@ -120,8 +120,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	SSnanoui.update_uis(src)
 
-/obj/machinery/photocopier/faxmachine/proc/sendfax(var/destination)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/photocopier/faxmachine/proc/sendfax(destination)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	use_power(200)
@@ -137,8 +137,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 
-/obj/machinery/photocopier/faxmachine/proc/receivefax(var/obj/item/incoming)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/photocopier/faxmachine/proc/receivefax(obj/item/incoming)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return 0
 
 	if(department == "Unknown")
@@ -163,8 +163,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	use_power(active_power_usage)
 	return 1
 
-/obj/machinery/photocopier/faxmachine/proc/send_admin_fax(var/mob/sender, var/destination)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/photocopier/faxmachine/proc/send_admin_fax(mob/sender, destination)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	use_power(200)

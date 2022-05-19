@@ -67,7 +67,7 @@
 /obj/machinery/computer/curer/process(delta_time)
 	..()
 
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	use_power(500)
 

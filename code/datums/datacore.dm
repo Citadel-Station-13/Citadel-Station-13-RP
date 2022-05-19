@@ -431,7 +431,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 /proc/generate_record_id()
 	return add_zero(num2hex(rand(1, 65535)), 4)	//no point generating higher numbers because of the limitations of num2hex
 
-/datum/datacore/proc/CreateGeneralRecord(var/mob/living/carbon/human/H, var/id, var/hidden)
+/datum/datacore/proc/CreateGeneralRecord(mob/living/carbon/human/H, id, hidden)
 	ResetPDAManifest()
 	var/icon/front
 	var/icon/side

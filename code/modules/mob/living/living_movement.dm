@@ -16,9 +16,6 @@
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	return (!mover.density || !density || lying)
 
-/mob/CanZASPass(turf/T, is_zone)
-	return ATMOS_PASS_YES
-
 /**
   * Toggle the move intent of the mob
   *

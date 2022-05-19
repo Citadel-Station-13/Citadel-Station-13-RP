@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(overmaps)
 	return ..()
 
 /datum/controller/subsystem/overmaps/proc/rebuild_helm_computers()
-	for(var/obj/machinery/computer/ship/helm/H in global.machines)
+	for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
 		H.get_known_sectors()
 
 /datum/controller/subsystem/overmaps/proc/queue_helm_computer_rebuild()

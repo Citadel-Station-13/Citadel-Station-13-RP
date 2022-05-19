@@ -4,11 +4,11 @@ obj/machinery/scanner
 	var/outputdir = 0
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "scanner_idle"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/lastuser = null
 
-obj/machinery/scanner/Initialize()
+/obj/machinery/scanner/Initialize(mapload)
 	. = ..()
 	if(!outputdir)
 		switch(dir)

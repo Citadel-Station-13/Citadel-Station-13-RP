@@ -7,7 +7,7 @@
 
 /obj/machinery/camera/internal_process()
 	// motion camera event loop
-	if (stat & (EMPED|NOPOWER))
+	if (machine_stat & (EMPED|NOPOWER))
 		return
 	if(!isMotion())
 		. = PROCESS_KILL
@@ -42,7 +42,7 @@
 		cancelAlarm()
 
 /obj/machinery/camera/proc/cancelAlarm()
-	if (!status || (stat & NOPOWER))
+	if (!status || (machine_stat & NOPOWER))
 		return FALSE
 	if (detectTime == -1)
 		motion_alarm.clearAlarm(loc, src)
@@ -50,7 +50,7 @@
 	return TRUE
 
 /obj/machinery/camera/proc/triggerAlarm()
-	if (!status || (stat & NOPOWER))
+	if (!status || (machine_stat & NOPOWER))
 		return FALSE
 	if (!detectTime)
 		return FALSE

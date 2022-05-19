@@ -52,6 +52,7 @@
  *
  */
 /datum/controller/subsystem/job/proc/GetRoundstartSpawnpoint(mob/M, client/C, job_path, faction, random = TRUE, harder = FALSE)
+	RETURN_TYPE(/atom/movable/landmark/spawnpoint)
 	if(random)
 		. = list()
 	// Priority 1: Job specific spawnpoints
@@ -99,6 +100,7 @@
  * - harder - used when the first iteration failed, tells spawnpoints to skip certain checks
  */
 /datum/controller/subsystem/job/proc/GetLatejoinSpawnpoint(client/C, job_path, faction = JOB_FACTION_STATION, method, random = TRUE, harder = FALSE)
+	RETURN_TYPE(/atom/movable/landmark/spawnpoint)
 	if(random)
 		. = list()	// Priority 1: Job specific spawnpoints
 	if(job_path && length(job_spawnpoints[job_path]))

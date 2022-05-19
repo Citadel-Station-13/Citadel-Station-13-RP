@@ -475,7 +475,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			spawnloc = get_turf(src.mob)
 
 		if("Arrivals") //Spawn them at a latejoin spawnpoint
-			spawnloc = SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION)
+			spawnloc = SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION)?.GetSpawnLoc()
 
 		else //I have no idea how you're here
 			to_chat(src, "Invalid spawn location choice.")
@@ -991,7 +991,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/list/human_cryopods = list()
 	var/list/robot_cryopods = list()
 
-	for(var/obj/machinery/cryopod/CP in machines)
+	for(var/obj/machinery/cryopod/CP in GLOB.machines)
 		if(!CP.control_computer)
 			continue //Broken pod w/o computer, move on.
 
@@ -1055,4 +1055,3 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","ICS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-

@@ -1,13 +1,14 @@
 #define AUTOHISS_OFF 0
 #define AUTOHISS_BASIC 1
 #define AUTOHISS_FULL 2
-#define AUTOHISS_NUM 3 //The number of autohiss types that we have. Used for sanitization
-
-#define AUTOHISS_TYPE_NONE  0//Equivalent to being off
+///The number of autohiss types that we have. Used for sanitization
+#define AUTOHISS_NUM 3
+///Equivalent to being off
+#define AUTOHISS_TYPE_NONE  0
 #define AUTOHISS_TYPE_UNATHI 1
 #define AUTOHISS_TYPE_TAJARAN 2
-#define AUTOHISS_TYPE_NUM 3 //The number of autohiss types that we have. Used for sanitization
-
+///The number of autohiss types that we have. Used for sanitization
+#define AUTOHISS_TYPE_NUM 3
 // Define a place to save in character setup
 /datum/preferences
 	var/autohiss = AUTOHISS_OFF
@@ -50,7 +51,7 @@
 			. += "<a href='?src=\ref[src];toggle_type_none=1'>None</a> <span class='linkOn'><b>Unathi</b></span> <a href='?src=\ref[src];toggle_type_tajaran=1'>Tajaran</a>"
 		if(AUTOHISS_TYPE_TAJARAN)
 			. += "<a href='?src=\ref[src];toggle_type_none=1'>None</a> <a href='?src=\ref[src];toggle_type_unathi=1'>Unathi</a> <span class='linkOn'><b>Tajaran</b></span>"
-		else 
+		else
 			CRASH("Invalid autohiss type preference! '[pref.autohiss]'")
 
 	. += "<br>"
@@ -63,7 +64,7 @@
 			. += "<a href='?src=\ref[src];toggle_off=1'>Off</a> <span class='linkOn'><b>Basic</b></span> <a href='?src=\ref[src];toggle_full=1'>Full</a>"
 		if(AUTOHISS_FULL)
 			. += "<a href='?src=\ref[src];toggle_off=1'>Off</a> <a href='?src=\ref[src];toggle_basic=1'>Basic</a> <span class='linkOn'><b>Full</b></span>"
-		else 
+		else
 			CRASH("Invalid autohiss preference! '[pref.autohiss]'")
 
 /datum/category_item/player_setup_item/vore/autohiss/OnTopic(var/href, var/list/href_list, var/mob/user)

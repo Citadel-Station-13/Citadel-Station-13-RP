@@ -1,5 +1,5 @@
-#define STAIR_MOVE_DELAY 10 // Animation delay for non-living objects moving up/down stairs
-
+/// Animation delay for non-living objects moving up/down stairs
+#define STAIR_MOVE_DELAY 10
 /obj/structure/stairs
 	name = "Stairs"
 	desc = "Stairs leading to another deck.  Not too useful if the gravity goes out."

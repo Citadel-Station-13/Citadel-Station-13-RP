@@ -183,8 +183,8 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -224,8 +224,8 @@
 /area/shuttle/mackerel_lc)
 "pZ" = (
 /obj/machinery/door/airlock/hatch,
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 10;
 	pixel_x = -8;
@@ -295,7 +295,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = 26
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/structure/railing/grey,
 /obj/random/multiple/corp_crate,
@@ -500,8 +500,8 @@
 /area/shuttle/mackerel_lc)
 "FL" = (
 /obj/machinery/door/airlock/hatch,
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 6;
 	pixel_x = 7;
@@ -641,7 +641,7 @@
 "PL" = (
 /obj/machinery/door/airlock/hatch,
 /obj/machinery/door/firedoor/glass,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_lc)
 "Qu" = (
@@ -699,7 +699,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
@@ -718,8 +718,8 @@
 	dir = 1
 	},
 /obj/structure/handrail,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4

@@ -50,7 +50,7 @@
 	var/last_spark = 0
 
 /obj/machinery/door/airlock/attack_generic(var/mob/living/user, var/damage)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 			if(src.locked || src.welded)
 				visible_message("<span class='danger'>\The [user] begins breaking into \the [src] internals!</span>")
@@ -648,7 +648,7 @@ About the new airlock wires panel:
 	return ((src.aiControlDisabled==1) && (!hackProof) && (!src.isAllPowerLoss()));
 
 /obj/machinery/door/airlock/proc/arePowerSystemsOn()
-	if (stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 	return (src.main_power_lost_until==0 || src.backup_power_lost_until==0)
 
@@ -656,7 +656,7 @@ About the new airlock wires panel:
 	return !(wires.is_cut(WIRE_IDSCAN) || aiDisabledIdScanner)
 
 /obj/machinery/door/airlock/proc/isAllPowerLoss()
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return 1
 	if(mainPowerCablesCut() && backupPowerCablesCut())
 		return 1
@@ -793,18 +793,18 @@ About the new airlock wires panel:
 			overlays = list()
 			if(p_open)
 				overlays += image(icon, "panel_open")
-			if (!(stat & NOPOWER))
-				if(stat & BROKEN)
+			if (!(machine_stat & NOPOWER))
+				if(machine_stat & BROKEN)
 					overlays += image(icon, "sparks_broken")
 				else if (health < maxhealth * 3/4)
 					overlays += image(icon, "sparks_damaged")
 			if(welded)
 				overlays += image(icon, "welded")
-		else if (health < maxhealth * 3/4 && !(stat & NOPOWER))
+		else if (health < maxhealth * 3/4 && !(machine_stat & NOPOWER))
 			overlays += image(icon, "sparks_damaged")
 	else
 		icon_state = "door_open"
-		if((stat & BROKEN) && !(stat & NOPOWER))
+		if((machine_stat & BROKEN) && !(machine_stat & NOPOWER))
 			overlays += image(icon, "sparks_open")
 	return
 
@@ -817,7 +817,7 @@ About the new airlock wires panel:
 					flick("o_door_opening", src)  //can not use flick due to BYOND bug updating overlays right before flicking
 					update_icon()
 			else
-				flick("door_opening", src)//[stat ? "_stat":]
+				flick("door_opening", src)//[machine_stat ? "_stat":]
 				update_icon()
 		if("closing")
 			if(overlays) overlays.Cut()
@@ -1066,7 +1066,7 @@ About the new airlock wires panel:
 		open()
 
 /obj/machinery/door/airlock/proc/can_remove_electronics()
-	return src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && (!src.locked || (stat & BROKEN))))
+	return src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && (!src.locked || (machine_stat & BROKEN))))
 
 /obj/machinery/door/airlock/attackby(obj/item/C, mob/user as mob)
 	//to_world("airlock attackby src [src] obj [C] mob [user]")
@@ -1095,7 +1095,7 @@ About the new airlock wires panel:
 			return
 	else if(C.is_screwdriver())
 		if (src.p_open)
-			if (stat & BROKEN)
+			if (machine_stat & BROKEN)
 				to_chat(usr, "<span class='warning'>The panel is broken and cannot be closed.</span>")
 			else
 				src.p_open = 0
@@ -1134,7 +1134,7 @@ About the new airlock wires panel:
 				da.created_name = src.name
 				da.update_state()
 
-				if(operating == -1 || (stat & BROKEN))
+				if(operating == -1 || (machine_stat & BROKEN))
 					new /obj/item/circuitboard/broken(src.loc)
 					operating = 0
 				else
@@ -1187,7 +1187,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/set_broken()
 	src.p_open = 1
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	if (secured_wires)
 		lock()
 	for (var/mob/O in viewers(src, null))
@@ -1384,7 +1384,7 @@ About the new airlock wires panel:
 		wires = new/datum/wires/airlock(src)
 
 	if(src.closeOtherId != null)
-		for (var/obj/machinery/door/airlock/A in machines)
+		for (var/obj/machinery/door/airlock/A in GLOB.machines)
 			if(A.closeOtherId == src.closeOtherId && A != src)
 				src.closeOther = A
 				break
@@ -1424,7 +1424,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/power_change() //putting this is obj/machinery/door itself makes non-airlock doors turn invisible for some reason
 	..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		// If we lost power, disable electrification
 		// Keeping door lights on, runs on internal battery or something.
 		electrified_until = 0

@@ -61,7 +61,7 @@
 	. = ..()
 	if (dirty)
 		. += image('icons/obj/kitchen.dmi', "grbloody")
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if (!occupant)
 		. += image('icons/obj/kitchen.dmi', "grjam")
@@ -75,7 +75,7 @@
 	return
 
 /obj/machinery/gibber/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(operating)
 		to_chat(user, "<span class='danger'>The gibber is locked and running, wait for it to finish.</span>")

@@ -11,7 +11,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 		world.SetConfig("APP/admin", A, null)
 
 	//load text from file
-	var/list/Lines = file2list("config/admin_ranks.txt")
+	var/list/Lines = world.file2list("config/admin_ranks.txt")
 
 	//process each line seperately
 	for(var/line in Lines)
@@ -73,7 +73,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 		load_admin_ranks()
 
 		//load text from file
-		var/list/Lines = file2list("config/admins.txt")
+		var/list/Lines = world.file2list("config/admins.txt")
 
 		//process each line seperately
 		for(var/line in Lines)

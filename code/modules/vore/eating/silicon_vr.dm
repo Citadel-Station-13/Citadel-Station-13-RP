@@ -1,5 +1,6 @@
 //Dat AI vore yo
-#define HOLO_ORIGINAL_COLOR null //Original hologram color: "#7db4e1"
+///Original hologram color: "#7db4e1"
+#define HOLO_ORIGINAL_COLOR null
 #define HOLO_HARDLIGHT_COLOR "#d97de0"
 #define HOLO_ORIGINAL_ALPHA 120
 #define HOLO_HARDLIGHT_ALPHA 200

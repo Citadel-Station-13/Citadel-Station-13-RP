@@ -23,6 +23,7 @@
 
 	if (message)
 		message = say_emphasis(message)
+		SEND_SIGNAL(src, COMSIG_MOB_CUSTOM_EMOTE, src, message)
 
  // Hearing gasp and such every five seconds is not good emotes were not global for a reason.
  // Maybe some people are okay with that.

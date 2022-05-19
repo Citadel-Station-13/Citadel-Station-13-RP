@@ -203,7 +203,7 @@
 /obj/machinery/computer/HolodeckControl/power_change()
 	var/oldstat
 	..()
-	if (stat != oldstat && active && (stat & NOPOWER))
+	if (machine_stat != oldstat && active && (machine_stat & NOPOWER))
 		emergencyShutdown()
 
 /obj/machinery/computer/HolodeckControl/process(delta_time)

@@ -32,7 +32,7 @@
 
 /obj/machinery/computer/centrifuge/update_icon()
 	..()
-	if(! (stat & (BROKEN|NOPOWER)) && (isolating || curing))
+	if(! (machine_stat & (BROKEN|NOPOWER)) && (isolating || curing))
 		icon_state = "centrifuge_moving"
 
 /obj/machinery/computer/centrifuge/attack_hand(var/mob/user as mob)
@@ -82,7 +82,7 @@
 
 /obj/machinery/computer/centrifuge/process(delta_time)
 	..()
-	if(stat & (NOPOWER|BROKEN)) return
+	if(machine_stat & (NOPOWER|BROKEN)) return
 
 	if(curing)
 		curing -= 1

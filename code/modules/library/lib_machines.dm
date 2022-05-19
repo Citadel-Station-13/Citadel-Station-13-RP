@@ -529,7 +529,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 /obj/machinery/bookbinder/update_icon_state()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "[base_icon_state]-off"
 	else
 		icon_state = base_icon_state

@@ -37,7 +37,7 @@
 
 /obj/machinery/drone_fabricator/update_icon_state()
 	. = ..()
-	if(stat & NOPOWER || !produce_drones)
+	if(machine_stat & NOPOWER || !produce_drones)
 		icon_state = "[base_icon_state]-off"
 	else if(printing)
 		icon_state = "[base_icon_state]-active"
@@ -76,7 +76,7 @@
 
 /obj/machinery/drone_fabricator/proc/create_drone(var/client/player)
 
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		return
 
 	if(!produce_drones || !config_legacy.allow_drone_spawn || count_drones() >= config_legacy.max_maint_drones)
@@ -143,8 +143,8 @@
 		return
 
 	var/list/all_fabricators = list()
-	for(var/obj/machinery/drone_fabricator/DF in machines)
-		if(DF.stat & NOPOWER || !DF.produce_drones)
+	for(var/obj/machinery/drone_fabricator/DF in GLOB.machines)
+		if(DF.machine_stat & NOPOWER || !DF.produce_drones)
 			continue
 		if(DF.drone_progress >= 100)
 			all_fabricators[DF.fabricator_tag] = DF

@@ -17,13 +17,13 @@
 /obj/machinery/computer/aifixer/attackby(obj/item/I, mob/living/user)
 	if(I.is_screwdriver())
 		if(occupier)
-			if(stat & (NOPOWER|BROKEN))
+			if(machine_stat & (NOPOWER|BROKEN))
 				to_chat(user, SPAN_WARNING("The screws on [name]'s screen won't budge."))
 			else
 				to_chat(user, SPAN_WARNING("The screws on [name]'s screen won't budge and it emits a warning beep."))
 			return
 	if(istype(I, /obj/item/aicard))
-		if(stat & (NOPOWER|BROKEN))
+		if(machine_stat & (NOPOWER|BROKEN))
 			to_chat(user, SPAN_WARNING("This terminal isn't functioning right now."))
 			return
 		if(restoring)
@@ -49,7 +49,7 @@
 	return ..()
 
 /obj/machinery/computer/aifixer/attack_hand(mob/user)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	ui_interact(user)
 
@@ -117,7 +117,7 @@
 
 /obj/machinery/computer/aifixer/update_icon()
 	. = ..()
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	if(restoring)

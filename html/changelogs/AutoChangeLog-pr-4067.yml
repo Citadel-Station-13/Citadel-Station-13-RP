@@ -1,0 +1,4 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - bugfix: "stacks no longer delete themselves for no reason"

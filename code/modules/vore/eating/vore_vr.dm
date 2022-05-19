@@ -1,5 +1,5 @@
-#define VORE_VERSION	2	//This is a Define so you don't have to worry about magic numbers.
-
+///This is a Define so you don't have to worry about magic numbers.
+#define VORE_VERSION	2
 //
 // Overrides/additions to stock defines go here, as well as hooks. Sort them by
 // the object they are overriding. So all /mob/living together, etc.

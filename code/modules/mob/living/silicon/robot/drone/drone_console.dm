@@ -99,7 +99,7 @@
 				return
 
 			for(var/obj/machinery/drone_fabricator/fab in oview(3,src))
-				if(fab.stat & NOPOWER)
+				if(fab.machine_stat & NOPOWER)
 					continue
 
 				dronefab = fab

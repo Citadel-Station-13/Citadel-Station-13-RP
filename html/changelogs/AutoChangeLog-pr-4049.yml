@@ -1,0 +1,5 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - bugfix: "gun safety doesn't display the inverse"
+  - bugfix: "admin spawn-character doesn't embed people into spawnpoints rather than their locations"
