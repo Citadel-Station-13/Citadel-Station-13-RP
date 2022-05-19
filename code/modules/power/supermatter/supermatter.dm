@@ -304,6 +304,7 @@
 	if(!env || !removed || !removed.total_moles)
 		damage += max((power - 15*POWER_FACTOR)/10, 0)
 	else if (grav_pulling) //If supermatter is detonating, remove all air from the zone
+		supermatter_pull(src, pull_radius)
 		env.remove(env.total_moles)
 	else
 		damage_archived = damage
@@ -398,7 +399,6 @@
 		"<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
 
 	Consume(user)
-
 
 /obj/machinery/power/supermatter/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -502,6 +502,16 @@
 
 /obj/machinery/power/supermatter/RepelAirflowDest(n)
 	return
+
+/proc/supermatter_pull(T, radius = 20)
+	T = get_turf(T)
+	if(!T)
+		return
+	for(var/atom/movable/AM in range(T, radius))
+		if(!AM.simulated || AM.anchored)		// TODO: move_resist, move_force
+			continue
+		step_towards(AM, src)
+		// TODO: atom damage for structures
 
 /obj/machinery/power/supermatter/shard //Small subtype, less efficient and more sensitive, but less boom.
 	name = "Supermatter Shard"
