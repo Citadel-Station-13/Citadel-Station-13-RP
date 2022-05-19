@@ -31,6 +31,6 @@
 /datum/automata/wave/sonar/single_mob/flick_sonar(atom/movable/AM)
 	if(!receiver.client)
 		return
-	SSsonar.flick_sonar_image(AM.make_sonar_image(), list(receiver.client))
+	SSsonar.flick_sonar_image(AM.make_sonar_image(resolution), list(receiver.client))
 
 /datum/automata/wave/sonar/single_mob/flick_scan(turf/T)
