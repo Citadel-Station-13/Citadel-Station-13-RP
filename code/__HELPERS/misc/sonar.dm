@@ -90,7 +90,8 @@
 			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
 			holder.overlays += MA
 		if(SONAR_RESOLUTION_BLOCKY)
-			var/mutable_appearance/MA = make_sonar_shape()
+			MA = make_sonar_shape()
+			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
 			if(MA)
 				holder.overlays += MA
 
