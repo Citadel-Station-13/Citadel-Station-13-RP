@@ -454,7 +454,7 @@
 
 //End of fruit gland code.
 
-/datum/species/alraune/get_bodytype()
+/datum/species/alraune/get_bodytype_legacy()
 	return base_species
 
 /datum/species/alraune/get_race_key(mob/living/carbon/human/H)

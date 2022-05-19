@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 
 /**
  * returns inventory slot meta for an id
- * 
+ *
  * **You must use a typepath for hardcoded datums.**
  * String IDs are not automatically converted to paths for speed.
  */
@@ -27,7 +27,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 /**
  * inventory slot meta
  * stores all the required information for an inventory slot
- * 
+ *
  * **Typepaths for these are used directly in most circumstances of slot IDs**
  * **Use get_inventory_slot_meta(id) to automatically translate anything to the static datum.**
  */
@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	always_show_on_strip_menu = FALSE
 	abstract_type = /datum/inventory_slot_meta/restraints
 
-/datum/inventory_slot_meta/restraints/handcuffs	
+/datum/inventory_slot_meta/restraints/handcuffs
 	name = "handcuffed"
 	render_key = "handcuffs"
 
@@ -152,3 +152,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 /datum/inventory_slot_meta/abstract/put_in_storage
 	name = "put in storage"
 
+/datum/inventory_slot_meta/abstract/left_hand
+	name = "put in left hand"
+
+/datum/inventory_slot_meta/abstract/right_hand
+	name = "put in right hand"

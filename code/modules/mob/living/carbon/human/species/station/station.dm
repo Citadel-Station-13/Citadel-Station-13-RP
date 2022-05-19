@@ -48,7 +48,7 @@
 	base_color = "#EECEB3"
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Humanity"
 
-/datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
+/datum/species/human/get_bodytype_legacy(var/mob/living/carbon/human/H)
 	return SPECIES_HUMAN
 
 /datum/species/unathi
@@ -901,7 +901,7 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/crewkin)
 		)
 
-/datum/species/shadekin/get_bodytype()
+/datum/species/shadekin/get_bodytype_legacy()
 	return SPECIES_SHADEKIN
 
 /datum/species/shadekin/can_breathe_water()

@@ -38,7 +38,7 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right, "descriptor" = "right foot")
 		)
 
-/datum/species/custom/get_bodytype()
+/datum/species/custom/get_bodytype_legacy()
 	return base_species
 
 /datum/species/custom/get_race_key(mob/living/carbon/human/H)

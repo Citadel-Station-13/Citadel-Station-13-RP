@@ -91,7 +91,7 @@
 			to_chat(user, "You set about modifying the helmet into [helmet].")
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
-				helmet.species_restricted = list(H.species.get_bodytype(H))
+				helmet.species_restricted = list(H.species.get_bodytype_legacy(H))
 		else if(istype(I, /obj/item/clothing/suit/storage/hooded))
 			var/obj/item/clothing/suit/storage/hooded/suit = I
 			suit.name = "[new_name] suit"
@@ -111,7 +111,7 @@
 			to_chat(user, "You set about modifying the suit into [suit].")
 //			var/mob/living/carbon/human/H = user
 //			if(istype(H))
-//				suit.species_restricted = list(H.species.get_bodytype(H)) Does not quite make sense for something usually very pliable.
+//				suit.species_restricted = list(H.species.get_bodytype_legacy(H)) Does not quite make sense for something usually very pliable.
 		else
 			var/obj/item/clothing/suit/space/void/suit = I
 			suit.name = "[new_name] voidsuit"
@@ -125,7 +125,7 @@
 			to_chat(user, "You set about modifying the suit into [suit].")
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
-				suit.species_restricted = list(H.species.get_bodytype(H))
+				suit.species_restricted = list(H.species.get_bodytype_legacy(H))
 		use(1,user)
 
 /obj/item/clothing/head/helmet/space/void/attackby(var/obj/item/O, var/mob/user)

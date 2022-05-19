@@ -123,7 +123,7 @@
 		var/datum/power/shadekin/SKP = new power(src)
 		shadekin_ability_datums.Add(SKP)
 
-/datum/species/shadekin/get_bodytype()
+/datum/species/shadekin/get_bodytype_legacy()
 	return SPECIES_SHADEKIN
 
 /datum/species/shadekin/get_random_name()

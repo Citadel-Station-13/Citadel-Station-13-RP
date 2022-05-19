@@ -120,7 +120,7 @@ var/global/list/limb_icon_cache = list()
 	//Facial hair
 	if(owner.f_style)
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[owner.f_style]
-		if(facial_hair_style && facial_hair_style.species_allowed && (species.get_bodytype(owner) in facial_hair_style.species_allowed))
+		if(facial_hair_style && facial_hair_style.species_allowed && (species.get_bodytype_legacy(owner) in facial_hair_style.species_allowed))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
 				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), facial_hair_style.color_blend_mode)
@@ -133,7 +133,7 @@ var/global/list/limb_icon_cache = list()
 		if(owner.head && (owner.head.flags_inv & BLOCKHEADHAIR))
 			if(!(hair_style.flags & HAIR_VERY_SHORT))
 				hair_style = hair_styles_list["Short Hair"]
-		if(hair_style && (species.get_bodytype(owner) in hair_style.species_allowed))
+		if(hair_style && (species.get_bodytype_legacy(owner) in hair_style.species_allowed))
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			var/icon/hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration && islist(h_col) && h_col.len >= 3)
@@ -150,7 +150,7 @@ var/global/list/limb_icon_cache = list()
 		gender = "m"
 
 	if(!force_icon_key)
-		icon_cache_key = "[icon_name]_[species ? species.get_bodytype() : SPECIES_HUMAN]"
+		icon_cache_key = "[icon_name]_[species ? species.get_bodytype_legacy() : SPECIES_HUMAN]"
 	else
 		icon_cache_key = "[icon_name]_[force_icon_key]"
 
@@ -225,7 +225,7 @@ var/global/list/limb_icon_cache = list()
 
 	if(transparent) //VOREStation edit
 		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
-		if(species && species.get_bodytype(owner) != SPECIES_HUMAN)
+		if(species && species.get_bodytype_legacy(owner) != SPECIES_HUMAN)
 			applying.SetIntensity(1) // Unathi, Taj and Skrell have -very- dark base icons. VOREStation edit fixes this and brings the number back to 1
 		else
 			applying.SetIntensity(1) //VOREStation edit to make Prometheans not look like shit with mob coloring.

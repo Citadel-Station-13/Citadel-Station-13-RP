@@ -40,7 +40,7 @@
 /datum/species/proc/real_race_key(mob/living/carbon/human/H)
 	return name
 
-/datum/species/proc/get_bodytype(var/mob/living/carbon/human/H)
+/datum/species/proc/get_bodytype_legacy(var/mob/living/carbon/human/H)
 	return name
 
 /datum/species/proc/get_knockout_message(var/mob/living/carbon/human/H)

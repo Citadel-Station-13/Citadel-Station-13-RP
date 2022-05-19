@@ -79,7 +79,7 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unseverable/xeno)
 		)
 
-/datum/species/xenos/get_bodytype()
+/datum/species/xenos/get_bodytype_legacy()
 	return SPECIES_XENO
 
 /datum/species/xenos/get_random_name()

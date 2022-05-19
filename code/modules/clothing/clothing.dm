@@ -81,10 +81,10 @@
 
 		if(H.species)
 			if(exclusive)
-				if(!(H.species.get_bodytype(H) in species_restricted))
+				if(!(H.species.get_bodytype_legacy(H) in species_restricted))
 					wearable = 1
 			else
-				if(H.species.get_bodytype(H) in species_restricted)
+				if(H.species.get_bodytype_legacy(H) in species_restricted)
 					wearable = 1
 
 			if(!wearable && !(slot in list(slot_l_store, slot_r_store, slot_s_store)))
@@ -470,7 +470,7 @@
 		add_overlay(helmet_light)
 
 		// Generate and cache the on-mob icon, which is used in update_inv_head().
-		var/body_type = (H && H.species.get_bodytype(H))
+		var/body_type = (H && H.species.get_bodytype_legacy(H))
 		var/cache_key = "[light_overlay][body_type && sprite_sheets[body_type] ? "_[body_type]" : ""]"
 		if(!GLOB.light_overlay_cache[cache_key])
 			var/use_icon = LAZYACCESS(sprite_sheets,body_type) || 'icons/mob/light_overlays.dmi'
@@ -871,8 +871,8 @@
 	var/icon/under_icon
 	if(icon_override)
 		under_icon = icon_override
-	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
-		under_icon = sprite_sheets[H.species.get_bodytype(H)]
+	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype_legacy(H)])
+		under_icon = sprite_sheets[H.species.get_bodytype_legacy(H)]
 	else if(item_icons && item_icons[/datum/inventory_slot_meta/inventory/uniform])
 		under_icon = item_icons[/datum/inventory_slot_meta/inventory/uniform]
 	else if ("[worn_state]_s" in icon_states(rolled_down_icon))
@@ -896,8 +896,8 @@
 	var/icon/under_icon
 	if(icon_override)
 		under_icon = icon_override
-	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
-		under_icon = sprite_sheets[H.species.get_bodytype(H)]
+	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype_legacy(H)])
+		under_icon = sprite_sheets[H.species.get_bodytype_legacy(H)]
 	else if(item_icons && item_icons[/datum/inventory_slot_meta/inventory/uniform])
 		under_icon = item_icons[/datum/inventory_slot_meta/inventory/uniform]
 	else if ("[worn_state]_s" in icon_states(rolled_down_sleeves_icon))
