@@ -31,6 +31,18 @@
 	/// Description for scans.
 	var/scanner_desc
 
+	/// Icon file to use for skybox.
+	var/skybox_icon
+	/// Icon state to use for skybox.
+	var/skybox_icon_state
+	/// Shift from lower left corner of skybox.
+	var/skybox_pixel_x
+	/// Shift from lower left corner of skybox.
+	var/skybox_pixel_y
+
+	//Cache stuff
+	var/image/cached_skybox_image
+
 	var/image/real_appearance
 
 	/// parallax vis contents object if any

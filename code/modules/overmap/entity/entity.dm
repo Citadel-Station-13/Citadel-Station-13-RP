@@ -55,6 +55,12 @@
 	/// are we about to forcemove? used to prevent forceMove hook from firing
 	var/jumping = FALSE
 
+	// location
+	/// our location datum
+	var/datum/overmap_location/location
+	/// our instantiation mode
+	var/instantiation = OVERMAP_ENTITY_INSTANTIATION_VIRTUAL
+
 /atom/movable/overmap_object/entity/New()
 	// assign id immediately
 	id = "[++id_next]"

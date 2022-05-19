@@ -13,3 +13,13 @@
 #define ENTITY_PHYSICS_PAUSE_FOR_DOCKED			"docked"
 /// admin pausing
 #define ENTITY_PHYSICS_PAUSE_FOR_ADMIN			"admin"
+
+// instantiation
+/// entirely virtual
+#define ENTITY_INSTANTIATION_VIRTUAL				0
+/// instantiated
+#define ENTITY_INSTANTIATION_REAL					1
+/// can instantiate but not requested to yet
+#define ENTITY_INSTANTIATION_UNLOADED				2
+/// instantiation errored
+#define ENTITY_INSTANTIATION_ERROR					3

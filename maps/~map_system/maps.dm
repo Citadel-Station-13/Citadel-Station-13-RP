@@ -114,6 +114,7 @@ var/list/all_maps = list()
 	var/use_overmap = 0			// If overmap should be used (including overmap space travel override)
 	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.
 	var/overmap_event_areas = 0	// How many event "clouds" will be generated
+	#warn redo generation
 
 	var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)
 	var/list/lobby_screens = list("mockingjay00")	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.

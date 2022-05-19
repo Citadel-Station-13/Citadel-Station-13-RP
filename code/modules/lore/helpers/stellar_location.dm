@@ -24,7 +24,7 @@
 /datum/stellar_location/proc/distance_to(datum/stellar_location/other)
 	return sqrt(
 		((distance * cos(elevation) * sin(degrees)) - (other.distance * cos(other.elevation) * sin(other.degrees)))**2,
-		((distance * cos(elevation) * cos(degrees)) - (other.distance * cos(other.elevation) * sin(other.degrees))**2,
+		((distance * cos(elevation) * cos(degrees)) - (other.distance * cos(other.elevation) * sin(other.degrees)))**2,
 		((distance * sin(elevation)) - (other.distnace * sin(other.elevation)))**2
 	)
 

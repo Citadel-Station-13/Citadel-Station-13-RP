@@ -1,10 +1,10 @@
 /**
  * While these computers can be placed anywhere, they will only function if placed on either a non-space, non-shuttle turf
- * with an /obj/effect/overmap/visitable/ship present elsewhere on that z level, or else placed in a shuttle area with an /obj/effect/overmap/visitable/ship
+ * with an /atom/movable/overmap_object/entity/visitable/ship present elsewhere on that z level, or else placed in a shuttle area with an /atom/movable/overmap_object/entity/visitable/ship
  * somewhere on that shuttle. Subtypes of these can be then used to perform ship overmap movement functions.
  */
 /obj/machinery/computer/ship
-	var/obj/effect/overmap/visitable/ship/linked
+	var/atom/movable/overmap_object/entity/visitable/ship/linked
 	/// Weakrefs to mobs in direct-view mode.
 	var/list/viewers
 	/// how much the view is increased by when the mob is in overmap mode.

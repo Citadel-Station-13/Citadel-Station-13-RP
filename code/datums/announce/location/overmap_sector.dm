@@ -1,8 +1,8 @@
 /datum/announce_location/overmap_sector
 	/// our overmap sector
-	var/obj/effect/overmap/visitable/sector
+	var/atom/movable/overmap_object/entity/visitable/sector
 
-/datum/announce_location/overmap_sector/New(obj/effect/overmap/visitable/sector)
+/datum/announce_location/overmap_sector/New(atom/movable/overmap_object/entity/visitable/sector)
 	src.sector = sector
 	if(!sector)
 		CRASH("Invalid sector: [sector]")

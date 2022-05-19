@@ -4,7 +4,7 @@
 	var/static/list/tiled_bounds_overlay_cache = list()
 
 /datum/controller/subsystem/overmaps/proc/entity_bounds_overlay(bound_x, bound_y, bound_width, bound_height, color)
-
+	var/key
 #warn impl
 
 /datum/controller/subsystem/overmaps/proc/tiled_bounds_overlay(directions)
