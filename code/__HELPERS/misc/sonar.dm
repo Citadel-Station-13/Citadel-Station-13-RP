@@ -131,3 +131,19 @@
 	MA.transform = transform_matrix_construct(0.5, 0, 0, 0.5, 0, 0)
 	MA.pixel_x = MA.pixel_y = 8
 	return MA
+
+// blacklist dumb things
+/obj/structure/catwalk/make_sonar_image(resolution)
+	return
+
+/obj/structure/grille/make_sonar_image(resolution)
+	return
+
+/obj/structure/lattice/make_sonar_image(resolution)
+	return
+
+/obj/machinery/atmospherics/make_sonar_image(resolution)
+	return
+
+/obj/effect/make_sonar_image(resolution)
+	return
