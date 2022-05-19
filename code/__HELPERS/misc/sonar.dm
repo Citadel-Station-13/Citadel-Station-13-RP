@@ -147,3 +147,6 @@
 
 /obj/effect/make_sonar_image(resolution)
 	return
+
+/obj/structure/cable/make_sonar_image(resolution)
+	return
