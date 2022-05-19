@@ -157,11 +157,11 @@
  * diagonal marking internal substep
  */
 #define DIAGONAL_MARK_SUBSTEP(T, D, ED, P)												\
-	_expanding = get_step(T, ED);														\
-	if(!last[_expanding] && !edges[_expanding]){										\
-		if(!edges_next[_expanding]){													\
-			diagonals[_expanding] |= ED;												\
-			diagonal_powers[_expanding] = max(digonal_powers[_expanding], P);			\
+	_expand = get_step(T, ED);															\
+	if(!last[_expand] && !edges[_expand]){												\
+		if(!edges_next[_expand]){														\
+			diagonals[_expand] |= ED;													\
+			diagonal_powers[_expand] = max(diagonal_powers[_expand], P);					\
 		};																				\
 		else {																			\
 			powers_next[expanding] = max(powers_next[expanding], P);					\
@@ -275,10 +275,10 @@
 			// then mark all diagonals. we need to do this after edges to prevent order of processing nondeterminism
 			for(var/i in 1 to edges.len)
 				ITERATION_BASE_DIAGMARK
-				DIAGONAL_MARK(_T, _D, NORTH, P)
-				DIAGONAL_MARK(_T, _D, SOUTH, P)
-				DIAGONAL_MARK(_T, _D, EAST, P)
-				DIAGONAL_MARK(_T, _D, WEST, P)
+				DIAGONAL_MARK(_T, _D, NORTH, _P)
+				DIAGONAL_MARK(_T, _D, SOUTH, _P)
+				DIAGONAL_MARK(_T, _D, EAST, _P)
+				DIAGONAL_MARK(_T, _D, WEST, _P)
 			// then, process diagonals
 			// make sure diagonals are added to edges so they're part of the last[] and edges[] exclusion
 			edges += diagonals
