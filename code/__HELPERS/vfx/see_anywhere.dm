@@ -14,11 +14,15 @@
 
 /**
  * adds and returns an image to make something seen anywhere
+ * ... on our turf
+ * reason: byond tile bound is awful
+ * we could just remove tile bound from ourselves but uh.
+ * nah.
  */
 /atom/proc/vfx_get_see_anywhere_image()
 	var/image/I = new
 	I.appearance = GLOB.see_anywhere_appearance
-	I.loc = src
+	I.loc = get_turf(src)
 	return I
 
 GLOBAL_DATUM_INIT(see_anywhere_appearance, /mutable_appearance, init_see_anywhere_overlay())

@@ -52,16 +52,20 @@
 		C.images -= images
 	for(var/image/I in images)
 		I.loc = null
-		qdel(I)
 
 /atom/proc/__debug_to_sonar_appearance(resolution)
 	appearance = make_sonar_image(resolution)
 
 /atom/proc/_debug_flick_sonar(resolution = SONAR_RESOLUTION_VISIBLE)
-	SSsonar.flick_sonar_image(list(make_sonar_image(resolution)), GLOB.clients)
+	var/image/I = make_sonar_image(resolution)
+	if(!I)
+		return
+	SSsonar.flick_sonar_image(list(I), GLOB.clients)
 
 /atom/proc/make_sonar_image(resolution)
 	if(resolution == SONAR_RESOLUTION_NONE)
+		return
+	if(invisibility)
 		return
 	var/image/I = vfx_get_see_anywhere_image()
 	I.plane = SONAR_PLANE
