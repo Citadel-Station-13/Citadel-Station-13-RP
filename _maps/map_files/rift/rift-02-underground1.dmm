@@ -4562,6 +4562,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "ip" = (
@@ -11312,6 +11313,20 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
+"uI" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/upper)
 "uL" = (
 /obj/structure/bed/chair/office/dark,
 /obj/machinery/button/remote/blast_door{
@@ -11354,6 +11369,15 @@
 "vI" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_balcony)
+"vR" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
 "wu" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -11399,6 +11423,18 @@
 "xf" = (
 /turf/simulated/wall,
 /area/vacant/vacant_site)
+"xv" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/upper)
 "xD" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -11421,6 +11457,11 @@
 	name = "east bump";
 	pixel_x = 24
 	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "yH" = (
@@ -11486,6 +11527,7 @@
 	desc = "This trash looks like it's had one too many.";
 	name = "Wasted waste"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "zG" = (
@@ -11616,6 +11658,7 @@
 "BN" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "BP" = (
@@ -11660,6 +11703,18 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"Cw" = (
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/maintenance/clean,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
 "CC" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 8
@@ -11729,6 +11784,7 @@
 /obj/random/junk,
 /obj/random/junk,
 /obj/random/maintenance/clean,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "DU" = (
@@ -12345,6 +12401,7 @@
 "MG" = (
 /obj/random/cigarettes,
 /mob/living/simple_mob/vore/aggressive/rat/maurice,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "MQ" = (
@@ -12397,6 +12454,18 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
+"NI" = (
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/maintenance/clean,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
 "NO" = (
 /turf/simulated/floor/tiled/steel,
 /area/vacant/vacant_site)
@@ -12544,6 +12613,7 @@
 /area/hallway/secondary/engineering_hallway)
 "Ra" = (
 /obj/random/junk,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "Rj" = (
@@ -12636,6 +12706,11 @@
 /area/hallway/primary/underone)
 "Sf" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "Su" = (
@@ -12809,6 +12884,12 @@
 "Uw" = (
 /obj/random/cigarettes,
 /obj/random/junk,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "Ux" = (
@@ -12831,6 +12912,7 @@
 /obj/random/junk,
 /obj/random/maintenance/clean,
 /obj/random/tool,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "UI" = (
@@ -12962,6 +13044,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/vacant/vacant_site)
 "VV" = (
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "We" = (
@@ -13213,6 +13296,7 @@
 /obj/random/junk,
 /obj/random/junk,
 /obj/random/maintenance/cargo,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "Zc" = (
@@ -13220,6 +13304,7 @@
 	dir = 4;
 	pixel_x = -23
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "Zk" = (
@@ -25028,7 +25113,7 @@ aG
 aG
 aG
 aG
-aJ
+xv
 bf
 hU
 cK
@@ -25407,16 +25492,16 @@ Do
 Cq
 Uw
 Sf
-gi
-gi
-gi
-gi
-gi
-gi
-gi
-gi
-gi
-aL
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+uI
 bw
 aG
 cQ
@@ -25599,7 +25684,7 @@ VV
 HD
 zG
 Ve
-VV
+vR
 tF
 gi
 gi
@@ -25792,8 +25877,8 @@ Ol
 VV
 DG
 yf
-DG
-DG
+Cw
+NI
 Ol
 aG
 aG

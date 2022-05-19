@@ -137,7 +137,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "afV" = (
-/turf/simulated/open,
+/obj/effect/floor_decal/rust,
+/obj/structure/closet/crate,
+/obj/random/maintenance/cargo,
+/obj/random/maintenance/cargo,
+/turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "afW" = (
 /obj/machinery/light/small{
@@ -7018,9 +7022,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "gtQ" = (
+/obj/structure/railing,
 /obj/structure/catwalk,
-/turf/simulated/mineral/icerock,
-/area/rift/surfacebase/outside/outside1)
+/turf/simulated/open,
+/area/maintenance/cargo)
 "gud" = (
 /obj/structure/bookcase/legal/combo,
 /turf/simulated/floor/wood,
@@ -7377,11 +7382,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "gLH" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/turf/simulated/open,
+/obj/effect/floor_decal/rust,
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "gLW" = (
 /turf/simulated/floor/tiled/steel,
@@ -11191,10 +11194,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "jRt" = (
-/obj/structure/catwalk,
 /obj/effect/floor_decal/rust,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/plating,
+/obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
 /area/maintenance/cargo)
 "jRF" = (
 /obj/structure/catwalk,
@@ -13557,7 +13562,11 @@
 /turf/simulated/floor/wood,
 /area/library)
 "lKC" = (
-/obj/structure/disposalpipe/down,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/structure/catwalk,
 /turf/simulated/open,
 /area/maintenance/cargo)
 "lLp" = (
@@ -17289,10 +17298,13 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "ovz" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/closet/crate,
-/obj/random/maintenance/cargo,
-/obj/random/maintenance/cargo,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "owN" = (
@@ -20593,11 +20605,6 @@
 /obj/item/clothing/mask/muzzle,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/cmo)
-"rex" = (
-/obj/effect/floor_decal/rust,
-/obj/random/trash_pile,
-/turf/simulated/floor/plating,
-/area/maintenance/cargo)
 "reE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -23865,11 +23872,7 @@
 /area/rift/surfaceeva/airlock/main)
 "tMa" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/open,
 /area/maintenance/cargo)
 "tMq" = (
 /obj/structure/bed/chair,
@@ -25612,10 +25615,13 @@
 /area/maintenance/cargo)
 "ves" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/disposalpipe/segment{
+/obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/obj/structure/disposalpipe/down{
+	dir = 4
+	},
+/turf/simulated/open,
 /area/maintenance/cargo)
 "veF" = (
 /obj/effect/overlay/snow/floor/edges,
@@ -26311,7 +26317,10 @@
 	},
 /obj/structure/catwalk,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
 /area/maintenance/cargo)
 "vPg" = (
 /obj/structure/grille,
@@ -27131,6 +27140,9 @@
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/cargo,
 /obj/effect/floor_decal/rust,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "wwZ" = (
@@ -28603,10 +28615,6 @@
 /obj/random/toolbox,
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
-"xPf" = (
-/obj/structure/catwalk,
-/turf/simulated/wall,
-/area/maintenance/starboard)
 "xPm" = (
 /obj/structure/railing{
 	dir = 8
@@ -40857,8 +40865,8 @@ bXZ
 bXZ
 bXZ
 bXZ
-rex
-ovz
+bXZ
+bXZ
 vgL
 weO
 lvh
@@ -41049,12 +41057,12 @@ hYY
 mhi
 bXZ
 afV
-lKC
+kHd
 jRt
 tMa
+gtQ
 fNL
-fNL
-oaA
+ovz
 bXZ
 bXZ
 kSz
@@ -41243,10 +41251,10 @@ fNL
 xkF
 edc
 gLH
-gLH
+kHd
 vPf
 ves
-fNL
+lKC
 fNL
 oaA
 bXZ
@@ -49364,11 +49372,11 @@ hgE
 hgE
 hgE
 kbe
-xPf
-xPf
-xPf
-xPf
-xPf
+kbe
+kbe
+kbe
+kbe
+kbe
 kbe
 iNE
 cPs
@@ -49558,11 +49566,11 @@ hgE
 hgE
 hgE
 hgE
-gtQ
 hgE
 hgE
 hgE
-gtQ
+hgE
+hgE
 kbe
 iNE
 cPs
@@ -49752,11 +49760,11 @@ hgE
 hgE
 hgE
 hgE
-gtQ
 hgE
 hgE
 hgE
-gtQ
+hgE
+hgE
 kbe
 cPs
 cPs
@@ -49946,11 +49954,11 @@ hgE
 hgE
 hgE
 hgE
-gtQ
 hgE
 hgE
 hgE
-gtQ
+hgE
+hgE
 kbe
 iNE
 cPs
@@ -50140,11 +50148,11 @@ hgE
 hgE
 hgE
 hgE
-gtQ
-gtQ
-gtQ
-gtQ
-gtQ
+hgE
+hgE
+hgE
+hgE
+hgE
 kbe
 iNE
 cPs
