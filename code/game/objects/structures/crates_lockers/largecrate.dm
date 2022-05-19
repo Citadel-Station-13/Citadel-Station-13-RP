@@ -12,7 +12,7 @@
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
 	for(var/obj/I in src.loc)
-		if(I.density || I.anchored || I == src || !I.simulated)
+		if(I.density || I.anchored || I == src || (I.flags & AF_ABSTRACT))
 			continue
 		I.forceMove(src)
 	update_icon()
@@ -151,7 +151,8 @@
 		new /mob/living/simple_mob/animal/passive/bird/parrot/pink_cockatoo(src)
 		var/turf/T = get_turf(src)
 		for(var/atom/movable/AM in contents)
-			if(AM.simulated) AM.forceMove(T)
+			if(AM.simulated)
+				AM.forceMove(T)
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
 							 "<span class='notice'>You pry open \the [src].</span>", \
 							 "<span class='notice'>You hear splitting wood.</span>")

@@ -17,11 +17,14 @@ GLOBAL_DATUM_INIT(see_anywhere_appearance, /mutable_appearance, init_see_anywher
 /proc/__vfx_see_anywhere_atom_holder_at(loc)
 	var/atom/movable/AM = new /atom/movable/vfx_see_anywhere_holder(loc)
 	AM.appearance = GLOB.see_anywhere_appearance
+	. = AM
 
 /atom/movable/vfx_see_anywhere_holder
 	vis_flags = VIS_HIDE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = KEEP_TOGETHER
+	anchored = TRUE
+	simulated = FALSE
 
 /proc/init_see_anywhere_overlay()
 	var/mutable_appearance/I = new

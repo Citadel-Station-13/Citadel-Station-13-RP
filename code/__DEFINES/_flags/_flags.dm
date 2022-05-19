@@ -40,26 +40,29 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define DF_ISPROCESSING (1<<2)
 
 ///FLAG BITMASKS - Used in /atom/var/flags
-/// Atom is admin spawned
-#define ADMIN_SPAWNED				(1<<3)
-/// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
-#define HEAR						(1<<4)
 /// The atom is initialized
-#define INITIALIZED					(1<<5)
-/// Used for items if they don't want to get a blood overlay.
-#define NOBLOODY					(1<<6)
-/// When an item has this it produces no "X has been hit by Y with Z" message with the default handler.
-#define NOBLUDGEON					(1<<7)
-/// Reagents don't react inside this container.
-#define NOREACT						(1<<8)
-/// Doesn't Conduct electricity. (metal etc.)
-#define NOCONDUCT					(1<<9)
+#define INITIALIZED					(1<<0)
 /// Item has priority to check when entering or leaving.
-#define ON_BORDER					(1<<10)
+#define ON_BORDER					(1<<1)
+/// Atom is admin spawned
+#define ADMIN_SPAWNED				(1<<2)
+/// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
+#define HEAR						(1<<3)
+/// Atom queued to SSoverlay for COMPILE_OVERLAYS
+#define OVERLAY_QUEUED				(1<<4)
+/// atom is absolute-abstract - should not be interactable or movable in any way shape or form
+#define AF_ABSTRACT					(1<<5)
+
+/// Used for items if they don't want to get a blood overlay.
+#define NOBLOODY					(1<<7)
+/// When an item has this it produces no "X has been hit by Y with Z" message with the default handler.
+#define NOBLUDGEON					(1<<8)
+/// Reagents don't react inside this container.
+#define NOREACT						(1<<7)
+/// Doesn't Conduct electricity. (metal etc.)
+#define NOCONDUCT					(1<<10)
 /// Is an open container for chemistry purposes.
 #define OPENCONTAINER				(1<<11)
-/// Atom queued to SSoverlay for COMPILE_OVERLAYS
-#define OVERLAY_QUEUED				(1<<12)
 /// Does not get contaminated by phoron.
 #define PHORONGUARD					(1<<13)
 /// Does this object require proximity checking in Enter()?
