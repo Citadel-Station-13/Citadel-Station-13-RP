@@ -203,7 +203,7 @@
 
 /obj/item/holder/human
 	icon = 'icons/mob/holder_complex.dmi'
-	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, slot_back_str)
+	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, /datum/inventory_slot_meta/inventory/back)
 	slot_flags = SLOT_BACK
 
 /obj/item/holder/human/sync(var/mob/living/M)
