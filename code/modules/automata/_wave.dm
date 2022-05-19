@@ -161,7 +161,7 @@
 	if(!last[_expand] && !edges[_expand]){												\
 		if(!edges_next[_expand]){														\
 			diagonals[_expand] |= ED;													\
-			diagonal_powers[_expand] = max(diagonal_powers[_expand], P);					\
+			diagonal_powers[_expand] = max(diagonal_powers[_expand], P);				\
 		};																				\
 		else {																			\
 			powers_next[expanding] = max(powers_next[expanding], P);					\
