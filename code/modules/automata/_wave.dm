@@ -138,6 +138,7 @@
 	_P = diagonal_powers[_T];					\
 	_D = diagonals[_T];							\
 	_ret = act(_T, _D, _P);						\
+	returned[_T] = _ret;						\
 	if(_ret < power_considered_dead){			\
 		continue;								\
 	}
@@ -152,12 +153,15 @@
 	};											\
 	_D = edges[_T];								\
 	_P = powers[_T];							\
-	_ret = returned[_T];
+	_ret = returned[_T];						\
+	if(_ret < power_considered_dead){			\
+		continue;								\
+	};
 
 /**
  * diagonal marking internal substep
  */
-#define SHOCKWAVE_DIAGONAL_MARK_SUBSTEP(T, D, ED, OP, RP)											\
+#define SHOCKWAVE_DIAGONAL_MARK_SUBSTEP(T, D, ED, OP, RP)								\
 	_expand = get_step(T, ED);															\
 	if(!last[_expand] && !edges[_expand]){												\
 		if(!edges_next[_expand]){														\
