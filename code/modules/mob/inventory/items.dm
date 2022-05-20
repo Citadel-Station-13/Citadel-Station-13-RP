@@ -49,7 +49,7 @@
  *
  * dropping is defined as moving out of both equipment slots and hand slots
  */
-/obj/item/proc/dropped(mob/user, silent = FALSE)
+/obj/item/proc/dropped(mob/user, accessory, silent)
 	SHOULD_CALL_PARENT(TRUE)
 /*
 	for(var/X in actions)
@@ -74,7 +74,7 @@
  *
  * picking up is defined as moving into either an equipment slot, or hand slots
  */
-/obj/item/proc/pickup(mob/user)
+/obj/item/proc/pickup(mob/user, accessory, silent)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	pixel_x = initial(pixel_x)

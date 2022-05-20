@@ -52,7 +52,7 @@
 		//makes sure that the clothing is equipped so that we can't drag it into our hand from miles away.
 		if (!(src.loc == usr))
 			return
-		
+
 		var/targeted_mouse = (over_object.name == "r_hand") || (over_object.name == "l_hand")
 		if(!isturf(over_object) && !targeted_mouse)
 			return		// shitcode, we can refactor later.
@@ -98,7 +98,6 @@
 		if(user)
 			to_chat(user, "<span class='warning'>You cannot attach more accessories of this type to [src].</span>")
 		return FALSE
-
 
 /obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A)
 	LAZYADD(accessories,A)

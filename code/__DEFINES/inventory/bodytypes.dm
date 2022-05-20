@@ -9,6 +9,14 @@
 #define BODYTYPE_UNATHI				(1<<4)
 /// tajaran bodytype
 #define BODYTYPE_TAJARAN			(1<<5)
+/// vulp bodytype
+#define BODYTYPE_VULPKANIN			(1<<6)
+/// skrell bodytype
+#define BODYTYPE_SKRELL				(1<<7)
+/// sergal bodytype
+#define BODYTYPE_SERGAL				(1<<8)
+/// akula bodytype
+#define BODYTYPE_AKULA				(1<<9)
 
 /// has snout - usually relevant for masks and headgear
 #define BODYTYPE_SNOUT				(1<<20)
@@ -18,6 +26,3 @@
 #define BODYTYPE_TAUR_HORSE			(1<<22)
 /// digitigrade feet - usually relevant for leg covering gear
 #define BODYTYPE_DIGITIGRADE		(1<<23)
-
-#warn impl these
-
