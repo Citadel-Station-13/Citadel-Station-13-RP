@@ -19,10 +19,11 @@
 	var/lightcolor = "#FF6A00"
 	var/stunforce = 0
 	var/agonyforce = 60
-	var/status = 0		//whether the thing is on or not
+	var/status = FALSE		//whether the thing is on or not
 	var/obj/item/cell/bcell = null
 	var/hitcost = 240
 	var/use_external_power = FALSE //only used to determine if it's a cyborg baton
+	var/integrated_cell = FALSE
 
 /obj/item/melee/baton/Initialize(mapload)
 	. = ..()
@@ -74,7 +75,7 @@
 	update_icon()
 
 /obj/item/melee/baton/proc/deductcharge(var/chrgdeductamt)
-	if(status == 1)		//Only deducts charge when it's on
+	if(status == TRUE)		//Only deducts charge when it's on
 		if(bcell)
 			if(bcell.checked_use(chrgdeductamt))
 				return 1
@@ -85,18 +86,18 @@
 /obj/item/melee/baton/proc/powercheck(var/chrgdeductamt)
 	if(bcell)
 		if(bcell.charge < chrgdeductamt)
-			status = 0
+			status = FALSE
 			update_icon()
 
 /obj/item/melee/baton/update_icon()
 	if(status)
-		icon_state = "[initial(name)]_active"
+		icon_state = "[initial(icon_state)]_active"
 	else if(!bcell)
-		icon_state = "[initial(name)]_nocell"
+		icon_state = "[initial(icon_state)]_nocell"
 	else
-		icon_state = "[initial(name)]"
+		icon_state = "[initial(icon_state)]"
 
-	if(icon_state == "[initial(name)]_active")
+	if(icon_state == "[initial(icon_state)]_active")
 		set_light(2, 1, lightcolor)
 	else
 		set_light(0)
@@ -104,9 +105,9 @@
 /obj/item/melee/baton/examine(mob/user)
 	. = ..()
 	if(bcell)
-		. += "<span class='notice'>The baton is [round(bcell.percent())]% charged.</span>"
+		. += "<span class='notice'>The [src] is [round(bcell.percent())]% charged.</span>"
 	if(!bcell)
-		. += "<span class='warning'>The baton does not have a power source installed.</span>"
+		. += "<span class='warning'>The [src] does not have a power source installed.</span>"
 
 /obj/item/melee/baton/attackby(obj/item/W, mob/user)
 	if(use_external_power)
@@ -126,12 +127,12 @@
 
 /obj/item/melee/baton/attack_hand(mob/user as mob)
 	if(user.get_inactive_hand() == src)
-		if(bcell)
+		if(bcell && !integrated_cell)
 			bcell.update_icon()
 			user.put_in_hands(bcell)
 			bcell = null
 			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
-			status = 0
+			status = FALSE
 			update_icon()
 			return
 		..()
@@ -314,3 +315,50 @@
 	desc = "Not actually sharp, this sword is functionally identical to its baton counterpart."
 	icon_state = "stunsword"
 	item_state = "baton"
+
+/obj/item/melee/baton/loaded/mini
+	name = "Personal Defense Baton"
+	desc = "A smaller, more potent version of a hand-held tazer, one zap and the target is sure to be on the ground, and the <b>integrated</b> cell empty. Standard issue to Command staff, indentured sex workers and anyone else who might get mobbed by dissatisfied clientele. Do not lick."
+	icon_state = "mini_baton"
+	item_state = "mini_baton"
+	w_class = ITEMSIZE_SMALL
+	force = 5
+	stunforce = 5
+	throwforce = 2
+	agonyforce = 120	//one-hit
+	integrated_cell = TRUE
+	hitcost = 1200
+
+/obj/item/melee/baton/loaded/mini/New()
+	. = ..()
+	if(!bcell)
+		bcell = new/obj/item/cell/device/weapon(src)
+	update_icon()
+
+/obj/item/melee/baton/loaded/mini/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+	var/mob/living/carbon/human/H
+	if(ishuman(target))
+		H = target
+		if(!status)
+			..(target, user, hit_zone)
+			return
+	else
+		return
+
+	powercheck(hitcost)
+	if(!status)
+		return
+
+	playsound(loc, 'sound/effects/lightningshock.ogg', 50, 1, -1)
+	if(prob(10))
+		playsound(loc, 'sound/effects/shocked_marv.ogg', 50, 1, -1)
+
+	var/init_px = H.pixel_x
+	var/shake_dir = pick(-1, 1)
+	animate(H, transform=turn(matrix(), 16*shake_dir), pixel_x=init_px + 4*shake_dir, time=1)
+	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
+
+	target.stun_effect_act(stunforce, agonyforce, hit_zone, src)
+	msg_admin_attack("[key_name(user)] stunned [key_name(target)] with the [src].")
+
+	deductcharge(hitcost)

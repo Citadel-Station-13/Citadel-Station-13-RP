@@ -23,6 +23,7 @@
 		/obj/item/flash,
 		/obj/item/gps/command,
 		/obj/item/storage/belt/sheath,
+		/obj/item/melee/baton/loaded/mini,
 		/obj/item/storage/box/ids)
 
 /obj/structure/closet/secure_closet/hop
@@ -43,10 +44,10 @@
 		/obj/item/radio/headset/heads/hop/alt,
 		/obj/item/storage/box/ids = 2,
 		/obj/item/gps/command,
-		/obj/item/gun/energy/gun/martin, //VOREStation Add,
-		/obj/item/storage/box/commandkeys, //VOREStation Add,
-		/obj/item/storage/box/servicekeys, //VOREStation Add,
-		///obj/item/gun/projectile/sec/flash, //VOREStation Removal,
+		/obj/item/gun/energy/gun,
+		/obj/item/storage/box/commandkeys,
+		/obj/item/storage/box/servicekeys,
+		/obj/item/melee/baton/loaded/mini,
 		/obj/item/flash)
 
 /obj/structure/closet/secure_closet/hop2
