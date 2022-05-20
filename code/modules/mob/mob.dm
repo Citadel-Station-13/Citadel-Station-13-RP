@@ -1313,7 +1313,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/can_interact_with(atom/A)
 	if(isAdminGhostAI(src) || Adjacent(A))
 		return TRUE
-	var/datum/dna/mob_dna = has_dna()
 	if(TK in mutations)
 		return TRUE
 
