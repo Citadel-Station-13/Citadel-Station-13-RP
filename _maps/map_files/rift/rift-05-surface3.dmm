@@ -26866,14 +26866,14 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/paleblue,
-/obj/item/storage/firstaid{
-	pixel_y = 8
-	},
-/obj/item/robotanalyzer,
 /obj/machinery/alarm{
 	desc = " ";
 	pixel_y = 24
 	},
+/obj/item/storage/firstaid/regular{
+	pixel_y = 8
+	},
+/obj/item/robotanalyzer,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
 "YY" = (
