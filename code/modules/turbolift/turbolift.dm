@@ -162,7 +162,7 @@
 					M.gib()
 				else if(istype(AM, /mob/zshadow))
 					AM.Destroy()		//prevent deleting shadow without deleting shadow's shadows
-				else if(AM.simulated && !(istype(AM, /mob/observer)))
+				else if(!(AM.flags & AF_ABSTRACT) && !(istype(AM, /mob/observer)))
 					qdel(AM)
 
 	origin.move_contents_to(destination)

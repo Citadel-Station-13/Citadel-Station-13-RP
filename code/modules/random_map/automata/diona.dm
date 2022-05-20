@@ -155,7 +155,7 @@
 		for(var/thing in T)
 			if(istype(thing, /atom))
 				var/atom/A = thing
-				if(A.simulated)
+				if(!(A.flags & AF_ABSTRACT))
 					continue
 			qdel(thing)
 

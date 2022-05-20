@@ -96,7 +96,7 @@
 // Shuttle landmark dynamically generated at runtime by champagne bottle.
 //
 /obj/effect/shuttle_landmark/automatic/champagne
-	flags = SLANDMARK_FLAG_ZERO_G // Don't auto-set
+	shuttle_landmark_flags = SLANDMARK_FLAG_ZERO_G // Don't auto-set
 
 /obj/effect/shuttle_landmark/automatic/champagne/Initialize(mapload, base_area, base_turf)
 	src.base_turf = base_turf

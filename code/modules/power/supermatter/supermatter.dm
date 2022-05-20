@@ -174,7 +174,7 @@
 				H.hallucination += max(50, min(300, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)) ) )
 	spawn(pull_time)
 		explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
-		spawn(5) //to allow the explosion to finish
+		sleep(5) //to allow the explosion to finish
 		new /obj/item/broken_sm(TS)
 		qdel(src)
 		return
@@ -401,7 +401,6 @@
 
 	Consume(user)
 
-
 /obj/machinery/power/supermatter/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -499,15 +498,21 @@
 	var/rads = 500
 	SSradiation.radiate(src, rads)
 
-/proc/supermatter_pull(var/atom/target, var/pull_range = 255, var/pull_power = STAGE_FIVE)
-	for(var/atom/A in range(pull_range, target))
-		A.singularity_pull(target, pull_power)
-
 /obj/machinery/power/supermatter/GotoAirflowDest(n) //Supermatter not pushed around by airflow
 	return
 
 /obj/machinery/power/supermatter/RepelAirflowDest(n)
 	return
+
+/proc/supermatter_pull(T, radius = 20)
+	T = get_turf(T)
+	if(!T)
+		return
+	for(var/atom/movable/AM in range(T, radius))
+		if(AM.anchored)		// TODO: move_resist, move_force
+			continue
+		step_towards(AM, T)
+		// TODO: atom damage for structures
 
 /obj/machinery/power/supermatter/shard //Small subtype, less efficient and more sensitive, but less boom.
 	name = "Supermatter Shard"

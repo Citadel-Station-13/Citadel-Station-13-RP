@@ -25,7 +25,7 @@
 		for(var/atom/movable/AM as anything in T)
 			if(AM.anchored)
 				continue
-			if(!AM.simulated)
+			if((AM.flags & AF_ABSTRACT))
 				continue
 			if(istype(AM, /obj/effect/decal))
 				qdel(AM)

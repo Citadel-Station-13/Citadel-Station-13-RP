@@ -257,7 +257,6 @@
 	SEND_SIGNAL(source, COMSIG_CD_STOP(index))
 	TIMER_COOLDOWN_END(source, index)
 
-
 /**
  * Proc used by stoppable timers to end a cooldown before the time has ran out.
  *
