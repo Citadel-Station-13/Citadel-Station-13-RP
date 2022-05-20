@@ -6,7 +6,6 @@
 	icon_state = ""
 	density = 1
 	anchored = 0
-	can_atmos_pass = ATMOS_PASS_DENSITY
 	var/hardness = 1
 	var/oreAmount = 7
 	var/materialType = "steel"

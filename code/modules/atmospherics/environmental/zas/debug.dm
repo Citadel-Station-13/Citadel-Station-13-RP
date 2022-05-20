@@ -76,41 +76,46 @@ proc/soft_assert(thing,fail)
 		return
 
 	if(direction == "N/A")
-		if(!(T.c_airblock(T) & AIR_BLOCKED))
+		if(T.CanAtmosPass(T, NONE) == ATMOS_PASS_AIR_BLOCKED)
 			to_chat(mob, "The turf can pass air! :D")
 		else
 			to_chat(mob, "No air passage :x")
 		return
 
-	var/turf/simulated/other_turf = get_step(T, direction_list[direction])
+	var/turf/other_turf = get_step_multiz(T, direction_list[direction])
 	if(!istype(other_turf))
+		to_chat(mob, "there's no turf in that dir.")
 		return
+	if(!istype(other_turf, /turf/simulated))
+		to_chat(mob, SPAN_RED("the other turf is unsimulated."))
 
-	var/t_block = T.c_airblock(other_turf)
-	var/o_block = other_turf.c_airblock(T)
+	var/t_block = T.CanAtmosPass(other_turf, get_dir_multiz(T, other_turf))
+	var/o_block = other_turf.CanAtmosPass(T, get_dir_multiz(other_turf, T))
 
-	if(o_block & AIR_BLOCKED)
-		if(t_block & AIR_BLOCKED)
+	if(o_block == ATMOS_PASS_AIR_BLOCKED)
+		if(t_block == ATMOS_PASS_AIR_BLOCKED)
 			to_chat(mob, "Neither turf can connect. :(")
 
 		else
 			to_chat(mob, "The initial turf only can connect. :\\")
+		return
 	else
-		if(t_block & AIR_BLOCKED)
+		if(t_block == ATMOS_PASS_AIR_BLOCKED)
 			to_chat(mob, "The other turf can connect, but not the initial turf. :/")
+			return
 
 		else
 			to_chat(mob, "Both turfs can connect! :)")
 
 	to_chat(mob, "Additionally, \...")
 
-	if(o_block & ZONE_BLOCKED)
-		if(t_block & ZONE_BLOCKED)
+	if(o_block == ATMOS_PASS_ZONE_BLOCKED)
+		if(t_block == ATMOS_PASS_ZONE_BLOCKED)
 			to_chat(mob, "neither turf can merge.")
 		else
 			to_chat(mob, "the other turf cannot merge.")
 	else
-		if(t_block & ZONE_BLOCKED)
+		if(t_block == ATMOS_PASS_ZONE_BLOCKED)
 			to_chat(mob, "the initial turf cannot merge.")
 		else
 			to_chat(mob, "both turfs can merge.")

@@ -26,6 +26,7 @@
 	desc = "The compressor stage of a gas turbine generator."
 	icon = 'icons/obj/pipes.dmi'
 	icon_state = "compressor"
+	CanAtmosPass = ATMOS_PASS_PROC
 	anchored = TRUE
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/power_compressor
@@ -95,8 +96,8 @@
 		machine_stat |= BROKEN
 
 // When anchored, don't let air past us.
-/obj/machinery/compressor/CanZASPass(turf/T, is_zone)
-	return anchored ? ATMOS_PASS_NO : ATMOS_PASS_YES
+/obj/machinery/compressor/CanAtmosPass(turf/T, d)
+	return anchored? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED
 
 /obj/machinery/compressor/proc/locate_machinery()
 	if(turbine)

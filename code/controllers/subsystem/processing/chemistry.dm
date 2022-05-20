@@ -1,7 +1,7 @@
 PROCESSING_SUBSYSTEM_DEF(chemistry)
 	name = "Chemistry"
 	wait = 10
-	flags = SS_BACKGROUND|SS_POST_FIRE_TIMING
+	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING
 	init_order = INIT_ORDER_CHEMISTRY
 	var/list/chemical_reactions = list()
 	var/list/chemical_reactions_by_reagent = list()

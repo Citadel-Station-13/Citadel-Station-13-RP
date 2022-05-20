@@ -7,8 +7,8 @@
 	var/allow_gas_overlays = TRUE
 
 /turf/proc/update_air_properties()
-	var/block = c_airblock(src)
-	if(block & AIR_BLOCKED)
+	var/block = CanAtmosPass(src, NONE)
+	if(block == ATMOS_PASS_AIR_BLOCKED)
 		//dbg(blocked)
 		return 1
 
@@ -23,15 +23,15 @@
 		if(!unsim)
 			continue
 
-		block = unsim.c_airblock(src)
+		block = unsim.CanAtmosPass(src, REVERSE_DIR(d))
 
-		if(block & AIR_BLOCKED)
+		if(block == ATMOS_PASS_AIR_BLOCKED)
 			//unsim.dbg(air_blocked, turn(180,d))
 			continue
 
-		var/r_block = c_airblock(unsim)
+		var/r_block = CanAtmosPass(unsim, d)
 
-		if(r_block & AIR_BLOCKED)
+		if(r_block == ATMOS_PASS_AIR_BLOCKED)
 			continue
 
 		if(istype(unsim, /turf/simulated))
@@ -82,7 +82,7 @@
 		#endif
 		for(var/dir in to_check)
 			var/turf/simulated/other = get_step(T, dir)
-			if(istype(other) && other.zone == T.zone && !(other.c_airblock(T) & AIR_BLOCKED) && get_dist(src, other) <= 1)
+			if(istype(other) && other.zone == T.zone && !(other.CanAtmosPass(T, REVERSE_DIR(dir)) == ATMOS_PASS_AIR_BLOCKED) && get_dist(src, other) <= 1)
 				. |= dir
 
 /turf/simulated/update_air_properties()
@@ -90,8 +90,8 @@
 		c_copy_air()
 		zone = null //Easier than iterating through the list at the zone.
 
-	var/s_block = c_airblock(src)
-	if(s_block & AIR_BLOCKED)
+	var/s_block = CanAtmosPass(src, NONE)
+	if(s_block == ATMOS_PASS_AIR_BLOCKED)
 		#ifdef ZASDBG
 		if(verbose) to_chat(world, "Self-blocked.")
 		//dbg(blocked)
@@ -116,13 +116,13 @@
 	for(var/d = 1, d < 16, d *= 2)
 	#endif
 
-		var/turf/unsim = get_step(src, d)
+		var/turf/unsim = get_step_multiz(src, d)
 
 		if(!unsim) //edge of map
 			continue
 
-		var/block = unsim.c_airblock(src)
-		if(block & AIR_BLOCKED)
+		var/block = unsim.CanAtmosPass(src, REVERSE_DIR(d))
+		if(block == ATMOS_PASS_AIR_BLOCKED)
 
 			#ifdef ZASDBG
 			if(verbose) to_chat(world, "[d] is blocked.")
@@ -131,8 +131,8 @@
 
 			continue
 
-		var/r_block = c_airblock(unsim)
-		if(r_block & AIR_BLOCKED)
+		var/r_block = CanAtmosPass(unsim, d)
+		if(r_block == ATMOS_PASS_AIR_BLOCKED)
 
 			#ifdef ZASDBG
 			if(verbose) to_chat(world, "[d] is blocked.")
@@ -164,7 +164,7 @@
 					//We do not merge if
 					//    they are blocking us and we are not blocking them, or if
 					//    we are blocking them and not blocking ourselves - this prevents tiny zones from forming on doorways.
-					if(((block & ZONE_BLOCKED) && !(r_block & ZONE_BLOCKED)) || ((r_block & ZONE_BLOCKED) && !(s_block & ZONE_BLOCKED)))
+					if(((block == ATMOS_PASS_ZONE_BLOCKED) && (r_block != ATMOS_PASS_ZONE_BLOCKED)) || ((r_block == ATMOS_PASS_ZONE_BLOCKED) && (s_block != ATMOS_PASS_ZONE_BLOCKED)))
 						#ifdef ZASDBG
 						if(verbose) to_chat(world, "[d] is zone blocked.")
 						//dbg(zone_blocked, d)

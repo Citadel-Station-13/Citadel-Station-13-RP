@@ -190,3 +190,7 @@ Class Procs:
 
 	//for(var/turf/T in unsimulated_contents)
 	//	to_chat(M, "[T] at ([T.x],[T.y])")
+
+/**
+ * TODO: SUPERCONDUCTION
+ */

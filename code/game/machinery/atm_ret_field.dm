@@ -183,7 +183,7 @@
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 	//mouse_opacity = 0
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/basestate = "arfg_field"
 
 	//light_range = 3

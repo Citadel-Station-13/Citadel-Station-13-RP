@@ -256,7 +256,7 @@
 	desc = "A large machine releasing a constant gust of air."
 	anchored = TRUE
 	density = TRUE
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/buildstacktype = /obj/item/stack/material/steel
 	var/buildstackamount = 5
 

@@ -165,3 +165,6 @@ require only minor tweaks.
 #define AWAY_MISSION_NAME "Away Mission"
 #define VIRT_REALITY_NAME "Virtual Reality"
 */
+
+/// Distance from edge to move to another z-level.
+#define TRANSITIONEDGE				1

@@ -495,7 +495,7 @@
   * * we are not restrained
   */
 /mob/proc/canface()
-	if(world.time < last_turn)
+	if(world.time <= last_turn)
 		return FALSE
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return FALSE
@@ -511,7 +511,7 @@
 	if(!canface())
 		return FALSE
 	setDir(EAST)
-	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	last_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn west
@@ -520,7 +520,7 @@
 	if(!canface())
 		return FALSE
 	setDir(WEST)
-	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	last_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn north
@@ -529,7 +529,7 @@
 	if(!canface())
 		return FALSE
 	setDir(NORTH)
-	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	last_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn south
@@ -538,5 +538,5 @@
 	if(!canface())
 		return FALSE
 	setDir(SOUTH)
-	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	last_turn = world.time
 	return TRUE

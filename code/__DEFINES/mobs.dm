@@ -128,7 +128,7 @@
 ///Default timeout for aggressive actions
 #define DEFAULT_ATTACK_COOLDOWN 8
 #define DEFAULT_QUICK_COOLDOWN  4
-
+#define DEFAULT_PULL_COODDOWN	2
 
 #define MIN_SUPPLIED_LAW_NUMBER 15
 #define MAX_SUPPLIED_LAW_NUMBER 50
@@ -286,8 +286,9 @@
 #define VIS_PARALLAX		14
 #define VIS_STATUS			15
 #define VIS_SPACE			16
+#define VIS_SONAR			17
 ///Must be highest number from above.
-#define VIS_COUNT			16
+#define VIS_COUNT			17
 //Some mob icon layering defines
 #define BODY_LAYER		-100
 

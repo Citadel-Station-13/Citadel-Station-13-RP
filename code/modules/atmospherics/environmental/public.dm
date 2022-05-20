@@ -17,6 +17,16 @@
 	return_air()?.merge(giver)
 
 /**
+ * spawns air from a gas string
+ * this is a turf proc because i want people to understand what they're doing instead of blindly using it,
+ * as return_air() has many different connotations
+ */
+/turf/proc/spawn_air(gas_string)
+	var/datum/gas_mixture/G = new
+	G.parse_gas_string(gas_string)
+	assume_air(G)
+
+/**
  * adds x moles of a specific gasid at y temperature
  * for mass adds, use assume_air with a mixture instead for performance.
  */

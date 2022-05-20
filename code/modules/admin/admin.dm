@@ -650,8 +650,8 @@ proc/admin_notice(var/message, var/rights)
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 //VOREStation Edit to this verb for the purpose of making it compliant with the annunciator system
-var/datum/announcement/priority/admin_pri_announcer = new
-var/datum/announcement/minor/admin_min_announcer = new
+var/datum/legacy_announcement/priority/admin_pri_announcer = new
+var/datum/legacy_announcement/minor/admin_min_announcer = new
 /datum/admins/proc/intercom()
 	set category = "Fun"
 	set name = "Intercom Msg"

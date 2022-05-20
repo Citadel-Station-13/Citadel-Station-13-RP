@@ -331,19 +331,19 @@ SUBSYSTEM_DEF(ticker)
 				if("mercenary") //Nuke wasn't on station when it blew up
 					flick("intro_nuke",cinematic)
 					sleep(35)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					flick("station_intact_fade_red",cinematic)
 					cinematic.icon_state = "summary_nukefail"
 				else
 					flick("intro_nuke",cinematic)
 					sleep(35)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					//flick("end",cinematic)
 
 
 		if(2)	//nuke was nowhere nearby	//TODO: a really distant explosion animation
 			sleep(50)
-			SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+			SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 
 
 		else	//station was destroyed
@@ -354,25 +354,25 @@ SUBSYSTEM_DEF(ticker)
 					flick("intro_nuke",cinematic)
 					sleep(35)
 					flick("station_explode_fade_red",cinematic)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_nukewin"
 				if("AI malfunction") //Malf (screen,explosion,summary)
 					flick("intro_malf",cinematic)
 					sleep(76)
 					flick("station_explode_fade_red",cinematic)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_malf"
 				if("blob") //Station nuked (nuke,explosion,summary)
 					flick("intro_nuke",cinematic)
 					sleep(35)
 					flick("station_explode_fade_red",cinematic)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_selfdes"
 				else //Station nuked (nuke,explosion,summary)
 					flick("intro_nuke",cinematic)
 					sleep(35)
 					flick("station_explode_fade_red", cinematic)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_selfdes"
 			for(var/mob/living/M in living_mob_list)
 				if(M.loc.z in GLOB.using_map.station_levels)
@@ -431,7 +431,7 @@ SUBSYSTEM_DEF(ticker)
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
 
-	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	mode.process(dt)
 
 	var/game_finished = 0

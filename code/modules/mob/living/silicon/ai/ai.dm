@@ -56,9 +56,11 @@ var/list/ai_verbs_default = list(
 	icon_state = "ai"
 	anchored = TRUE
 	density = TRUE
-	status_flags = CANSTUN|CANPARALYSE|CANPUSH
+	status_flags = CANSTUN | CANPARALYSE | CANPUSH
 	shouldnt_see = list(/obj/effect/rune)
 	interaction_range = null
+	can_be_antagged = TRUE
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 
 	var/list/network = list(NETWORK_DEFAULT)
 	var/obj/machinery/camera/camera = null
@@ -75,17 +77,17 @@ var/list/ai_verbs_default = list(
 	var/datum/trackable/track = null
 	var/last_announcement = ""
 	var/control_disabled = 0
-	var/datum/announcement/priority/announcement
+
+	var/datum/legacy_announcement/priority/announcement
 	/// Backwards reference to AI's powersupply object.
 	var/obj/machinery/ai_powersupply/psupply = null
-	///This is used for the AI eye, to determine if a holopad's hologram should follow it or not.
+	/// This is used for the AI eye, to determine if a holopad's hologram should follow it or not.
 	var/hologram_follow = 1
-	///Used to prevent dummy AIs from spawning with communicators.
+	/// Used to prevent dummy AIs from spawning with communicators.
 	var/is_dummy = 0
-
 //! ## MALF VARIABLES
 	/// Master var that determines if AI is malfunctioning.
-	var/malfunctioning = FALSE
+	var/malfunctioning = 0
 	/// Installed piece of hardware.
 	var/datum/malf_hardware/hardware = null
 	/// Malfunction research datum.
@@ -119,11 +121,10 @@ var/list/ai_verbs_default = list(
 	var/datum/ai_icon/selected_sprite
 	/// Whether the selected icon is custom.
 	var/custom_sprite 	= 0
+
+
+	/// Whether the AI is inside a aicard or not.
 	var/carded
-
-	can_be_antagged = TRUE
-
-	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 
 /mob/living/silicon/ai/proc/add_ai_verbs()
 	src.verbs |= ai_verbs_default

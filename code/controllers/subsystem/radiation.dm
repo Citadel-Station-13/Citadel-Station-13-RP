@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(radiation)
 	name = "Radiation"
 	wait = 2 SECONDS
-	flags = SS_NO_INIT
+	subsystem_flags = SS_NO_INIT
 
 	var/list/sources = list()			// all radiation source datums
 	var/list/sources_assoc = list()		// Sources indexed by turf for de-duplication.
@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(radiation)
 			continue // Radiation is not multi-z
 		if(source.respect_maint)
 			var/area/A = T.loc
-			if(A.flags & RAD_SHIELDED)
+			if(A.area_flags & AF_RAD_SHIELDED)
 				continue // In shielded area
 
 		var/dist = get_dist(source.source_turf, T)

@@ -101,7 +101,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	if(machine_stat & NOPOWER)
 		icon_state = "[base_icon_state]-off"
 	else if(busy)
-		icon_state = "[base_icon_state]-active"
+		icon_state = "[base_icon_state]-ani"
 	else
 		icon_state = base_icon_state
 

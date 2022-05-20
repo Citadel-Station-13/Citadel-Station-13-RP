@@ -134,6 +134,12 @@ var/global/list/engineering_networks = list(
 /obj/machinery/camera/network/tether
 	network = list(NETWORK_TRIUMPH)
 
+/obj/machinery/camera/network/triumph
+	network = list(NETWORK_TRIUMPH)
+
+/obj/machinery/camera/network/rift
+	network = list(NETWORK_LYTHIOS)
+
 /obj/machinery/camera/network/tcomms
 	network = list(NETWORK_TCOMMS)
 
