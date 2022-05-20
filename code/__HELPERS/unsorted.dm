@@ -1560,7 +1560,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 //Sender is optional
 /proc/admin_chat_message(var/message = "Debug Message", var/color = "#FFFFFF", var/sender)
 	if(message)	//Adds TGS3 integration to those fancy verbose round event messages
-		world.TgsTargetedChatBroadcast(message, TRUE)
+		send2irc("Event", message)
 	if (!config_legacy.chat_webhook_url || !message)
 		return
 	spawn(0)

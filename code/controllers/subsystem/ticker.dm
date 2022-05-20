@@ -462,7 +462,11 @@ SUBSYSTEM_DEF(ticker)
 			blackbox.save_all_data_to_sql()
 
 		send2irc("Server", "A round of [mode.name] just ended.")
-		world.TgsTargetedChatBroadcast("The round has ended.", FALSE)
+		if(CONFIG_GET(string/chat_roundend_notice_tag))
+			var/broadcastmessage = "The round has ended."
+			if(CONFIG_GET(string/chat_reboot_role))
+				broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
+			send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
 
 		SSpersistence.SavePersistence()
 		ready_for_reboot = TRUE

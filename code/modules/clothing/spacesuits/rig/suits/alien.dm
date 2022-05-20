@@ -133,7 +133,11 @@
 	offline_slowdown = 0
 	seal_delay = 1
 	var/mob/living/carbon/human/myprotean
-	initial_modules = list(/obj/item/rig_module/power_sink)
+	initial_modules = list(
+		/obj/item/rig_module/power_sink,
+		/obj/item/rig_module/device/rigwelder, // Almost forgot these, but who uses blobsuits for their intended purpose anyways?
+		/obj/item/rig_module/device/toolset    // I did say I was going to do it
+		)
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/protean
 	boot_type = /obj/item/clothing/shoes/magboots/rig/protean
