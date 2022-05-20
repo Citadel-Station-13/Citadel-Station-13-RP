@@ -123,40 +123,6 @@ var/list/slot_equipment_priority = list( \
 
 /* Hands */
 
-//Returns the thing in our active hand
-/mob/proc/get_active_hand()
-
-//Returns the thing in our inactive hand
-/mob/proc/get_inactive_hand()
-
-// Override for your specific mob's hands or lack thereof.
-/mob/proc/is_holding_item_of_type(typepath)
-	return FALSE
-
-// Override for your specific mob's hands or lack thereof.
-/mob/proc/get_all_held_items()
-	return list()
-
-//Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
-/mob/proc/put_in_l_hand(var/obj/item/W)
-	if(lying || !istype(W))
-		return 0
-	return 1
-
-//Puts the item into your r_hand if possible and calls all necessary triggers/updates. returns 1 on success.
-/mob/proc/put_in_r_hand(var/obj/item/W)
-	if(lying || !istype(W))
-		return 0
-	return 1
-
-//Puts the item into our active hand if possible. returns 1 on success.
-/mob/proc/put_in_active_hand(var/obj/item/W)
-	return 0 // Moved to human procs because only they need to use hands.
-
-//Puts the item into our inactive hand if possible. returns 1 on success.
-/mob/proc/put_in_inactive_hand(var/obj/item/W)
-	return 0 // As above.
-
 //Puts the item our active hand if possible. Failing that it tries other hands. Returns TRUE on success.
 //If both fail it drops it on the floor and returns FALSE.
 //This is probably the main one you need to know :)
@@ -226,31 +192,6 @@ var/list/slot_equipment_priority = list( \
 		return 1
 	return 0
 
-//Drops the item in our left hand
-/mob/proc/drop_l_hand(var/atom/Target)
-	return 0
-
-//Drops the item in our right hand
-/mob/proc/drop_r_hand(var/atom/Target)
-	return 0
-
-//Drops the item in our active hand. TODO: rename this to drop_active_hand or something
-/mob/proc/drop_item(var/atom/Target)
-	return
-
-/*
-	Removes the object from any slots the mob might have, calling the appropriate icon update proc.
-	Does nothing else.
-
-	DO NOT CALL THIS PROC DIRECTLY. It is meant to be called only by other inventory procs.
-	It's probably okay to use it if you are transferring the item between slots on the same mob,
-	but chances are you're safer calling remove_from_mob() or drop_from_inventory() anyways.
-
-	As far as I can tell the proc exists so that mobs with different inventory slots can override
-	the search through all the slots, without having to duplicate the rest of the item dropping.
-*/
-/mob/proc/u_equip(obj/W as obj)
-
 /mob/proc/isEquipped(obj/item/I)
 	if(!I)
 		return 0
@@ -300,38 +241,3 @@ var/list/slot_equipment_priority = list( \
 			I.dropped(src)
 	return 1
 
-
-//Returns the item equipped to the specified slot, if any.
-/mob/proc/get_equipped_item(var/slot)
-	return null
-
-//Outdated but still in use apparently. This should at least be a human proc.
-/mob/proc/get_equipped_items()
-	var/list/items = new/list()
-
-	if(hasvar(src,"back")) if(src:back) items += src:back
-	if(hasvar(src,"belt")) if(src:belt) items += src:belt
-	if(hasvar(src,"l_ear")) if(src:l_ear) items += src:l_ear
-	if(hasvar(src,"r_ear")) if(src:r_ear) items += src:r_ear
-	if(hasvar(src,"glasses")) if(src:glasses) items += src:glasses
-	if(hasvar(src,"gloves")) if(src:gloves) items += src:gloves
-	if(hasvar(src,"head")) if(src:head) items += src:head
-	if(hasvar(src,"shoes")) if(src:shoes) items += src:shoes
-	if(hasvar(src,"wear_id")) if(src:wear_id) items += src:wear_id
-	if(hasvar(src,"wear_mask")) if(src:wear_mask) items += src:wear_mask
-	if(hasvar(src,"wear_suit")) if(src:wear_suit) items += src:wear_suit
-//	if(hasvar(src,"w_radio")) if(src:w_radio) items += src:w_radio  commenting this out since headsets go on your ears now PLEASE DON'T BE MAD KEELIN
-	if(hasvar(src,"w_uniform")) if(src:w_uniform) items += src:w_uniform
-
-	if(hasvar(src,"l_hand")) if(src:l_hand) items += src:l_hand
-	if(hasvar(src,"r_hand")) if(src:r_hand) items += src:r_hand
-
-	return items
-
-/mob/proc/delete_inventory()
-	for(var/entry in get_equipped_items())
-		drop_from_inventory(entry)
-		qdel(entry)
-
-/mob/proc/transferItemToLoc(obj/item/I, newloc = null, force = FALSE, silent = TRUE)
-	return src.unEquip(I, force, newloc, FALSE, silent)
