@@ -131,6 +131,12 @@
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
 
+/obj/item/tool/screwdriver/RIGset
+	name = "integrated screwdriver"
+	desc = "If you're seeing this, someone did a dum-dum."
+	usesound = 'sound/items/drill_use.ogg'
+	toolspeed = 0.7
+
 /obj/item/tool/screwdriver/power
 	name = "hand drill"
 	desc = "A simple powered hand drill. It's fitted with a screw bit."

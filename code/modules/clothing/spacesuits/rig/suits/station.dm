@@ -198,7 +198,9 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/plasmacutter,
 		/obj/item/rig_module/device/rcd,
-		/obj/item/rig_module/vision/meson
+		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/device/rigwelder, // CE gets tools in their RIG
+		/obj/item/rig_module/device/toolset
 		)
 
 //Research Director's suit. Just add red crowbar.

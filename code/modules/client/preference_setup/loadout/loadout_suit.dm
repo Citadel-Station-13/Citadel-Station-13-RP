@@ -467,5 +467,5 @@ datum/gear/suit/duster
 	path = /obj/item/clothing/suit/storage/mekkyaku
 
 /datum/gear/suit/utility_coat
-	display_name = "Utility Coat"
+	name = "Utility Coat"
 	path = /obj/item/clothing/suit/storage/utility_coat

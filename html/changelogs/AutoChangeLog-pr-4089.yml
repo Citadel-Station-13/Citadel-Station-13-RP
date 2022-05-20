@@ -1,0 +1,5 @@
+author: "FreeStylaLT"
+delete-after: True
+changes: 
+  - rscadd: "handheld tazer
+tweak: swapped out hop holdout to proper energy gun (again)"

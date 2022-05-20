@@ -134,3 +134,17 @@
 	build_path = /obj/item/rig_module/device/rcd
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
 	sort_string = "OBAEA"
+
+/datum/design/item/rig_module/rigwelder
+	name = "RIG arc-welder"
+	id = "rigmod_welder"
+	build_path = /obj/item/rig_module/device/rigwelder
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 4000, MAT_SILVER = 2000, MAT_GOLD = 4000)
+	sort_string = "OBAEB"
+
+/datum/design/item/rig_module/toolset
+	name = "RIG toolset"
+	id = "rigmod_tools"
+	build_path = /obj/item/rig_module/device/toolset
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_SILVER = 2000, MAT_PLASTEEL = 1000)
+	sort_string = "OBAEC"

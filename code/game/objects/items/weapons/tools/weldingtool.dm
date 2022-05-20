@@ -677,6 +677,12 @@
 /obj/item/weldingtool/electric/mounted/cyborg
 	toolspeed = 0.5
 
+
+/obj/item/weldingtool/electric/mounted/RIGset
+	name = "arc welder"
+	toolspeed = 0.7 // Let's see if this works with RIGs
+	desc = "If you're seeing this, someone did a dum-dum."
+
 /obj/item/weldingtool/electric/mounted/exosuit
 	var/obj/item/mecha_parts/mecha_equipment/equip_mount = null
 	flame_intensity = 1
