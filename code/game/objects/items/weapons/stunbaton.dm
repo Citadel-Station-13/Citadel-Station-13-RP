@@ -75,7 +75,7 @@
 	update_icon()
 
 /obj/item/melee/baton/proc/deductcharge(var/chrgdeductamt)
-	if(status == TRUE)		//Only deducts charge when it's on
+	if(status)		//Only deducts charge when it's on
 		if(bcell)
 			if(bcell.checked_use(chrgdeductamt))
 				return 1
@@ -327,9 +327,9 @@
 	throwforce = 2
 	agonyforce = 120	//one-hit
 	integrated_cell = TRUE
-	hitcost = 1200
+	hitcost = 1150
 
-/obj/item/melee/baton/loaded/mini/New()
+/obj/item/melee/baton/loaded/mini/Initialize(mapload)
 	. = ..()
 	if(!bcell)
 		bcell = new/obj/item/cell/device/weapon(src)
@@ -351,7 +351,7 @@
 
 	playsound(loc, 'sound/effects/lightningshock.ogg', 50, 1, -1)
 	if(prob(10))
-		playsound(loc, 'sound/effects/shocked_marv.ogg', 50, 1, -1)
+		playsound(loc, 'sound/effects/shocked_marv.ogg', 50, 1, -1)	//Source: Home Alone 2
 
 	var/init_px = H.pixel_x
 	var/shake_dir = pick(-1, 1)
