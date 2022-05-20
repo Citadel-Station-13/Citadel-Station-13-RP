@@ -10,7 +10,9 @@
 	anchored = TRUE
 	unacidable = TRUE
 	pass_flags = PASSTABLE
+	animate_movement = NO_STEPS // Use SLIDE_STEPS in conjunction with legacy
 	mouse_opacity = 0
+	embed_chance = 0 // Base chance for a projectile to embed
 
 	////TG PROJECTILE SYTSEM
 	//Projectile stuff
@@ -32,7 +34,6 @@
 	var/original_angle = 0		//Angle at firing
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
 	var/spread = 0			//amount (in degrees) of projectile spread
-	animate_movement = 0	//Use SLIDE_STEPS in conjunction with legacy
 	var/ricochets = 0
 	var/ricochets_max = 2
 	var/ricochet_chance = 30
@@ -136,8 +137,6 @@
 	var/antimagic_charges_used = 0
 	/// Multiplier for damage if antimagic is on the target
 	var/antimagic_damage_factor = 0
-
-	embed_chance = 0	//Base chance for a projectile to embed
 
 	var/fire_sound = 'sound/weapons/Gunshot_old.ogg' // Can be overriden in gun.dm's fire_sound var. It can also be null but I don't know why you'd ever want to do that. -Ace
 

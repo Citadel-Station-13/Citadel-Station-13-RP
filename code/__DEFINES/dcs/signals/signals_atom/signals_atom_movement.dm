@@ -26,7 +26,7 @@
 /// (atom/movable/being_pushed)
 ////#define COMSIG_LIVING_PUSHING_MOVABLE "living_pushing_movable"
 /// From base of [/atom/proc/interact]: (mob/user)
-////#define COMSIG_ATOM_UI_INTERACT "atom_ui_interact"
+#define COMSIG_ATOM_UI_INTERACT "atom_ui_interact"
 /// From base of atom/relaymove(): (mob/living/user, direction)
 ////#define COMSIG_ATOM_RELAYMOVE "atom_relaymove"
 	//? Prevents the "you cannot move while buckled! message"

@@ -275,14 +275,14 @@
 				for(var/mob/M in grabbed)
 					M.other_mobs = 1
 					if(mob != M)
-						M.animate_movement = 3
+						M.animate_movement = SYNC_STEPS
 				for(var/mob/M in grabbed)
-					spawn( 0 )
+					spawn(0)
 						step(M, direct)
 						return
-					spawn( 1 )
+					spawn(1)
 						M.other_mobs = null
-						M.animate_movement = 2
+						M.animate_movement = SLIDE_STEPS
 						return
 
 	else

@@ -1,9 +1,8 @@
 // A datum used to link multiple mobs together in some form.
 // The code is from TG, however tweaked to be within the preferred code style.
 
-/mob/living
-	var/list/owned_soul_links	// Soul links we are the owner of.
-	var/list/shared_soul_links	// Soul links we are a/the sharer of.
+/mob/living/var/list/owned_soul_links	// Soul links we are the owner of.
+/mob/living/var/list/shared_soul_links	// Soul links we are a/the sharer of.
 
 /mob/living/Destroy()
 	for(var/s in owned_soul_links)

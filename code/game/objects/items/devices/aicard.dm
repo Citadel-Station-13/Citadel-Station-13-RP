@@ -100,16 +100,16 @@
 /obj/item/aicard/proc/grab_ai(var/mob/living/silicon/ai/ai, var/mob/living/user)
 	if(!ai.client && !ai.deployed_shell)
 		to_chat(user, "<span class='danger'>ERROR:</span> AI [ai.name] is offline. Unable to transfer.")
-		return 0
+		return FALSE
 
 	if(carded_ai)
 		to_chat(user, "<span class='danger'>Transfer failed:</span> Existing AI found on remote device. Remove existing AI to install a new one.")
-		return 0
+		return FALSE
 
 	if(!user.IsAdvancedToolUser() && isanimal(user))
 		var/mob/living/simple_mob/S = user
 		if(!S.IsHumanoidToolUser(src))
-			return 0
+			return FALSE
 
 	user.visible_message("\The [user] starts transferring \the [ai] into \the [src]...", "You start transferring \the [ai] into \the [src]...")
 	show_message(SPAN_CRITICAL("\The [user] is transferring you into \the [src]!"))
@@ -118,15 +118,16 @@
 		if(istype(ai.loc, /turf/))
 			new /obj/structure/AIcore/deactivated(get_turf(ai))
 
-		ai.carded = 1
+		ai.carded = TRUE
 		add_attack_logs(user,ai,"Extracted into AI Card")
 		src.name = "[initial(name)] - [ai.name]"
 
 		ai.forceMove(src)
 		ai.destroy_eyeobj(src)
 		ai.cancel_camera()
-		ai.control_disabled = 1
-		ai.aiRestorePowerRoutine = 0
+		ai.control_disabled = TRUE
+		ai.aiRestorePowerRoutine = FALSE
+		ai.interaction_range = 0
 		carded_ai = ai
 		ai.disconnect_shell("Disconnected from remote shell due to core intelligence transfer.") //If the AI is controlling a borg, force the player back to core!
 

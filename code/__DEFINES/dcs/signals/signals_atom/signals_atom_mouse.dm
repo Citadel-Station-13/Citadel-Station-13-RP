@@ -18,10 +18,10 @@
 #define COMSIG_CLICK_ALT "alt_click"
 	#define COMPONENT_CANCEL_CLICK_ALT (1<<0)
 /// From base of atom/alt_click_secondary(): (/mob)
-////#define COMSIG_CLICK_ALT_SECONDARY "alt_click_secondary"
-	////#define COMPONENT_CANCEL_CLICK_ALT_SECONDARY (1<<0)
+#define COMSIG_CLICK_ALT_SECONDARY "alt_click_secondary"
+	#define COMPONENT_CANCEL_CLICK_ALT_SECONDARY (1<<0)
 /// From base of atom/CtrlShiftClick(/mob)
-////#define COMSIG_CLICK_CTRL_SHIFT "ctrl_shift_click"
+#define COMSIG_CLICK_CTRL_SHIFT "ctrl_shift_click"
 /// From base of atom/MouseDrop(): (/atom/over, /mob/user)
 #define COMSIG_MOUSEDROP_ONTO "mousedrop_onto"
 	#define COMPONENT_NO_MOUSEDROP (1<<0)

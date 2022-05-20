@@ -1,7 +1,7 @@
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
 
-	//* Health and life related vars *//
+//! ## Health and life related vars
 	/// Maximum health that should be possible.  Avoid adjusting this if you can, and instead use modifiers datums.
 	var/maxHealth = 100
 	/// A mob's health
@@ -13,7 +13,7 @@
 	/// A list of all status effects the mob has
 	var/list/status_effects
 
-	//* Damage related vars *// NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS
+//! ## Damage related vars
 	/// Brutal damage caused by brute force. (punching, being clubbed by a toolbox ect... this also accounts for pressure damage)
 	var/bruteloss = 0.0
 	/// Oxygen depravation damage. (no air in lungs)

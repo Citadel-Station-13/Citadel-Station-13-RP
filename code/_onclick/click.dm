@@ -3,20 +3,20 @@
 	~Sayu
 */
 
-// 1 decisecond click delay (above and beyond mob/next_move)
+/// 1 decisecond click delay (above and beyond mob/next_move)
 /mob/var/next_click = 0
 
-/*
-	Before anything else, defer these calls to a per-mobtype handler.  This allows us to
-	remove istype() spaghetti code, but requires the addition of other handler procs to simplify it.
+/**
+ * Before anything else, defer these calls to a per-mobtype handler.  This allows us to
+ * remove istype() spaghetti code, but requires the addition of other handler procs to simplify it.
+ *
+ * Alternately, you could hardcode every mob's variation in a flat ClickOn() proc; however,
+ * that's a lot of code duplication and is hard to maintain.
+ *
+ * Note that this proc can be overridden, and is in the case of screen objects.
+ */
 
-	Alternately, you could hardcode every mob's variation in a flat ClickOn() proc; however,
-	that's a lot of code duplication and is hard to maintain.
-
-	Note that this proc can be overridden, and is in the case of screen objects.
-*/
-
-/atom/Click(var/location, var/control, var/params) // This is their reaction to being clicked on (standard proc)
+/atom/Click(location, control, params) // This is their reaction to being clicked on (standard proc)
 	if(!(flags & INITIALIZED))
 		to_chat(usr, SPAN_WARNING("[type] initialization failure. Click dropped. Contact a coder or admin."))
 		return
@@ -32,26 +32,29 @@
 		usr.DblClickOn(src, params)
 
 /atom/MouseWheel(delta_x,delta_y,location,control,params)
-	usr.MouseWheelOn(src, delta_x, delta_y, params)
+	if(!(flags & INITIALIZED))
+		to_chat(usr, SPAN_WARNING("[type] initialization failure. Click dropped. Contact a coder or admin."))
+		return
+	if(src)
+		usr.MouseWheelOn(src, delta_x, delta_y, params)
 
 
-/*
-	Standard mob ClickOn()
-	Handles exceptions: Buildmode, middle click, modified clicks, mech actions
-
-	After that, mostly just check your state, check whether you're holding an item,
-	check whether you're adjacent to the target, then pass off the click to whoever
-	is recieving it.
-	The most common are:
-	* mob/UnarmedAttack(atom,adjacent) - used here only when adjacent, with no item in hand; in the case of humans, checks gloves
-	* atom/attackby(item,user) - used only when adjacent
-	* item/afterattack(atom,user,adjacent,params) - used both ranged and adjacent
-	* mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
-*/
-/mob/proc/ClickOn(var/atom/A, var/params)
+/**
+ * Standard mob ClickOn()
+ * Handles exceptions: Buildmode, middle click, modified clicks, mech actions
+ *
+ * After that, mostly just check your state, check whether you're holding an item,
+ * check whether you're adjacent to the target, then pass off the click to whoever
+ * is recieving it.
+ * The most common are:
+ * * mob/UnarmedAttack(atom,adjacent) - used here only when adjacent, with no item in hand; in the case of humans, checks gloves
+ * * atom/attackby(item,user) - used only when adjacent
+ * * item/afterattack(atom,user,adjacent,params) - used both ranged and adjacent
+ * * mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
+ */
+/mob/proc/ClickOn(atom/A, params)
 	if(world.time < next_click) // Hard check, before anything else, to avoid crashing
 		return
-
 	next_click = world.time + 1
 
 	if(client.buildmode)
@@ -169,7 +172,7 @@
 			trigger_aiming(TARGET_CAN_CLICK)
 	return 1
 
-/mob/proc/setClickCooldown(var/timeout)
+/mob/proc/setClickCooldown(timeout)
 	next_move = max(world.time + timeout, next_move)
 
 /mob/proc/canClick()
@@ -177,24 +180,24 @@
 		return 1
 	return 0
 
-// Default behavior: ignore double clicks, the second click that makes the doubleclick call already calls for a normal click
-/mob/proc/DblClickOn(var/atom/A, var/params)
+/// Default behavior: ignore double clicks (the second click that makes the doubleclick call already calls for a normal click)
+/mob/proc/DblClickOn(atom/A, params)
 	return
 
-/*
-	Translates into attack_hand, etc.
-
-	Note: proximity_flag here is used to distinguish between normal usage (flag=1),
-	and usage when clicking on things telekinetically (flag=0).  This proc will
-	not be called at ranged except with telekinesis.
-
-	proximity_flag is not currently passed to attack_hand, and is instead used
-	in human click code to allow glove touches only at melee range.
-*/
-/mob/proc/UnarmedAttack(var/atom/A, var/proximity_flag)
+/**
+ * Translates into attack_hand, etc.
+ *
+ * Note: proximity_flag here is used to distinguish between normal usage (flag=1),
+ * and usage when clicking on things telekinetically (flag=0).  This proc will
+ * not be called at ranged except with telekinesis.
+ *
+ * proximity_flag is not currently passed to attack_hand, and is instead used
+ * in human click code to allow glove touches only at melee range.
+ */
+/mob/proc/UnarmedAttack(atom/A, proximity_flag)
 	return
 
-/mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
+/mob/living/UnarmedAttack(atom/A, proximity_flag)
 
 	if(is_incorporeal())
 		return 0
@@ -208,15 +211,15 @@
 
 	return 1
 
-/*
-	Ranged unarmed attack:
-
-	This currently is just a default for all mobs, involving
-	laser eyes and telekinesis.  You could easily add exceptions
-	for things like ranged glove touches, spitting alien acid/neurotoxin,
-	animals lunging, etc.
-*/
-/mob/proc/RangedAttack(var/atom/A, var/params)
+/**
+ * Ranged unarmed attack:
+ *
+ * This currently is just a default for all mobs, involving
+ * laser eyes and telekinesis.  You could easily add exceptions
+ * for things like ranged glove touches, spitting alien acid/neurotoxin,
+ * animals lunging, etc.
+ */
+/mob/proc/RangedAttack(atom/A, params)
 	if(!mutations.len) return
 	if((LASER in mutations) && a_intent == INTENT_HARM)
 		LaserEyes(A) // moved into a proc below
@@ -224,71 +227,92 @@
 		if(get_dist(src, A) > tk_maxrange)
 			return
 		A.attack_tk(src)
-/*
-	Restrained ClickOn
-
-	Used when you are handcuffed and click things.
-	Not currently used by anything but could easily be.
-*/
-/mob/proc/RestrainedClickOn(var/atom/A)
+/**
+ * Restrained ClickOn
+ *
+ * Used when you are handcuffed and click things.
+ * Not currently used by anything but could easily be.
+ */
+/mob/proc/RestrainedClickOn(atom/A)
 	return
 
-/*
-	Middle click
-	Only used for swapping hands
-*/
-/mob/proc/MiddleClickOn(var/atom/A)
+/**
+ * Middle click
+ * Mainly used for swapping hands
+ */
+/mob/proc/MiddleClickOn(atom/A, params)
+	. = SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A, params)
+	if(. & COMSIG_MOB_CANCEL_CLICKON)
+		return
 	swap_hand()
-	return
 
-// In case of use break glass
-/*
-/atom/proc/MiddleClick(var/mob/M as mob)
-	return
-*/
-
-/*
-	Shift middle click
-	Used for pointing.
-*/
-/mob/proc/ShiftMiddleClickOn(atom/A)
-	pointed(A)
-	return
-
-/*
-	Shift click
-	For most mobs, examine.
-	This is overridden in ai.dm
-*/
-/mob/proc/ShiftClickOn(var/atom/A)
+/**
+ * Shift click
+ * For most mobs, examine.
+ * This is overridden in ai.dm
+ */
+/mob/proc/ShiftClickOn(atom/A)
 	A.ShiftClick(src)
 	return
 
-/atom/proc/ShiftClick(var/mob/user)
+/atom/proc/ShiftClick(mob/user)
 	if(user.client && user.allow_examine(src))
 		user.examinate(src)
 
-/*
-	Ctrl click
-	For most objects, pull
-*/
-/mob/proc/CtrlClickOn(var/atom/A)
+/**
+ * Ctrl click
+ * For most objects, pull
+ */
+/mob/proc/CtrlClickOn(atom/A)
 	A.CtrlClick(src)
 	return
-/atom/proc/CtrlClick(var/mob/user)
-	return
 
-/atom/movable/CtrlClick(var/mob/user)
-	if(Adjacent(user))
-		user.start_pulling(src)
+/atom/proc/CtrlClick(mob/user)
+	if(!can_interact(user))
+		return FALSE
+	SEND_SIGNAL(src, COMSIG_CLICK_CTRL, user)
+	SEND_SIGNAL(user, COMSIG_MOB_CTRL_CLICKED, src)
+	var/mob/living/ML = user
+	if(istype(ML))
+		ML.pulled(src)
 
-/*
-	Alt click
-	Unused except for AI
-*/
+/**
+ * Alt click
+ * Unused except for AI
+ */
 /mob/proc/AltClickOn(atom/A)
 	if(!A.AltClick(src))
 		altclick_listed_turf(A)
+	. = SEND_SIGNAL(src, COMSIG_MOB_ALTCLICKON, A)
+	if(. & COMSIG_MOB_CANCEL_CLICKON)
+		return
+	A.AltClick(src)
+
+/atom/proc/AltClick(mob/user)
+	if(!can_interact(user))
+		return FALSE
+	if(SEND_SIGNAL(src, COMSIG_CLICK_ALT, user) & COMPONENT_CANCEL_CLICK_ALT)
+		return
+
+/// The base proc of when something is right clicked on when alt is held - generally use alt_click_secondary instead
+/atom/proc/alt_click_on_secondary(atom/A)
+	. = SEND_SIGNAL(src, COMSIG_MOB_ALTCLICKON_SECONDARY, A)
+	if(. & COMSIG_MOB_CANCEL_CLICKON)
+		return
+	A.alt_click_secondary(src)
+
+/// The base proc of when something is right clicked on when alt is held
+/atom/proc/alt_click_secondary(mob/user)
+	if(!can_interact(user))
+		return FALSE
+	if(SEND_SIGNAL(src, COMSIG_CLICK_ALT_SECONDARY, user) & COMPONENT_CANCEL_CLICK_ALT_SECONDARY)
+		return
+
+// TODO: Implement this instead of hooking inside AltClickOn -- Also remove
+/// Use this instead of [/mob/proc/AltClickOn] where you only want turf content listing without additional atom alt-click interaction
+// /atom/proc/AltClickNoInteract(mob/user, atom/A)
+// 	var/turf/T = get_turf(A)
+// 	altclick_listed_turf(A)
 
 /mob/proc/altclick_listed_turf(atom/A)
 	var/turf/T = get_turf(A)
@@ -299,29 +323,37 @@
 			listed_turf = T
 			client.statpanel = T.name
 
-/atom/proc/AltClick(var/mob/user)
-	return FALSE
-
 /mob/proc/TurfAdjacent(var/turf/T)
 	return T.AdjacentQuick(src)
 
-/*
-	Control+Shift click
-	Unused except for AI
-*/
-/mob/proc/CtrlShiftClickOn(var/atom/A)
+/**
+ * Control+Shift click
+ * Unused except for AI
+ */
+/mob/proc/CtrlShiftClickOn(atom/A)
 	A.CtrlShiftClick(src)
 	return
 
-/atom/proc/CtrlShiftClick(var/mob/user)
+/**
+ * Shift middle click
+ * Used for pointing.
+ */
+/mob/proc/ShiftMiddleClickOn(atom/A)
+	pointed(A)
 	return
 
-/*
-	Misc helpers
+/atom/proc/CtrlShiftClick(mob/user)
+	if(!can_interact(user))
+		return FALSE
+	SEND_SIGNAL(src, COMSIG_CLICK_CTRL_SHIFT, user)
+	return
+/**
+ * Misc helpers
+ *
+ * Laser Eyes: as the name implies, handles this since nothing else does currently
+ * face_atom: turns the mob towards what you clicked on
+ */
 
-	Laser Eyes: as the name implies, handles this since nothing else does currently
-	face_atom: turns the mob towards what you clicked on
-*/
 /mob/proc/LaserEyes(atom/A, params)
 	return
 
@@ -346,7 +378,7 @@
 		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
-/mob/proc/face_atom(var/atom/A)
+/mob/proc/face_atom(atom/A)
 	if(!A || !x || !y || !A.x || !A.y)
 		return
 	if(!canmove)

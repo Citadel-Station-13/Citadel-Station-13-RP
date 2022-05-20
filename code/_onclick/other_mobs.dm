@@ -32,10 +32,10 @@
 /atom/proc/attack_hand(mob/user)
 	. = _try_interact(user)
 
-//Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
+/// Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
 /atom/proc/_try_interact(mob/user)
-	// if(isAdminGhostAI(user))		//admin abuse
-	// 	return interact(user)
+	if(isAdminGhostAI(user)) //admin abuse
+		return interact(user)
 	if(can_interact(user))
 		return interact(user)
 	return FALSE
@@ -67,9 +67,10 @@
 		add_hiddenprint(user)
 	else
 		add_fingerprint(user)
-	// if(interaction_flags_atom & INTERACT_ATOM_UI_INTERACT)
-	return (ui_interact(user) || nano_ui_interact(user))
-	// return FALSE
+	if(interaction_flags_atom & INTERACT_ATOM_UI_INTERACT)
+		SEND_SIGNAL(src, COMSIG_ATOM_UI_INTERACT, user)
+		return ui_interact(user)
+	return FALSE
 
 /mob/living/carbon/human/RestrainedClickOn(var/atom/A)
 	return

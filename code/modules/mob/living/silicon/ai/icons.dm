@@ -10,7 +10,7 @@ var/list/datum/ai_icon/ai_icons
 	var/dead_icon = "ai-crash"
 	var/dead_light = "#000099"
 
-/datum/ai_icon/New(var/name, var/alive_icon, var/nopower_icon, var/dead_icon, var/alive_light, var/nopower_light, var/dead_light)
+/datum/ai_icon/New(name, alive_icon, nopower_icon, dead_icon, alive_light, nopower_light, dead_light)
 	if(name)
 		src.name = name
 		src.alive_icon = alive_icon
@@ -183,7 +183,6 @@ var/list/datum/ai_icon/ai_icons
 	alive_icon = "ai-bored"
 	dead_icon = "ai-eager-crash"
 
-//Eros Research Platform Ports
 /datum/ai_icon/clown2
 	name = "Honk"
 	alive_icon = "ai-clown2"
@@ -256,14 +255,12 @@ var/list/datum/ai_icon/ai_icons
 /datum/ai_icon/godfrey
 	name = "Godfrey"
 	alive_icon = "ai-godfrey"
-//End of Eros Research Platform Ports
 
-//Drof's Ports
 /datum/ai_icon/gondola
 	name = "Gondola"
 	alive_icon = "ai-gondola"
 
-/datum/ai_icon/jackfrost //Hee Ho!
+/datum/ai_icon/jackfrost
 	name = "Jack Frost"
 	alive_icon = "ai-jackfrost"
 
@@ -291,7 +288,6 @@ var/list/datum/ai_icon/ai_icons
 /datum/ai_icon/stern
 	name = "Stern"
 	alive_icon = "ai-stern"
-//End of Drof's Ports
 
 /datum/ai_icon/honeycomb
 	name = "HIVE Queen"

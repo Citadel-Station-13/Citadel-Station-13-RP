@@ -105,7 +105,7 @@
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "arc_shadow"
 	anchored = TRUE
-	animate_movement = 0 // Just like the projectile it's following.
+	animate_movement = NO_STEPS // Just like the projectile it's following.
 
 //////////////
 //	Subtypes

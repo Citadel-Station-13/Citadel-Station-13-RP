@@ -1,9 +1,9 @@
 /mob
 	datum_flags = DF_USE_TAG
-	density = 1
+	density = TRUE
 	layer = MOB_LAYER
 	plane = MOB_PLANE
-	animate_movement = 2
+	animate_movement = SLIDE_STEPS
 	flags = PROXMOVE | HEAR
 
 //! ## Rendering
@@ -80,6 +80,15 @@
 	 */
 	var/atom/movable/screen/zone_sel/zone_sel = null
 
+//! ## Hand Vars
+	/// Set to TRUE to enable the use of hands and the hands hud
+	var/has_hands = FALSE
+	/// Can a player in this mob use things like guns or AI cards?
+	var/humanoid_hands = FALSE
+	/// Used in IsHumanoidToolUser. 'Your X are not fit-'.
+	var/hand_form = "hands"
+
+//! ## Unorganized Vars
 	/// Allows all mobs to use the me verb by default, will have to manually specify they cannot.
 	var/use_me = 1
 	var/damageoverlaytemp = 0
@@ -192,9 +201,8 @@
 	/// Whether or not the mob can pull other mobs.
 	var/can_pull_mobs = MOB_PULL_LARGER
 
-	var/datum/dna/dna = null//?Carbon
+	var/datum/dna/dna = null //?Carbon
 	var/radiation = 0 //?Carbon
-
 	var/list/mutations = list() //?Carbon
 	//see: setup.dm for list of mutations
 
@@ -299,3 +307,6 @@
 
 	/// A mock client, provided by tests and friends
 	var/datum/client_interface/mock_client
+
+	/// How far a mob has to be to interact with something without caring about obsctruction, defaulted to 0 tiles
+	var/interaction_range = 0

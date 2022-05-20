@@ -4073,8 +4073,7 @@ END CITADEL CHANGE */
 /mob/living/simple_mob/slime
 	composition_reagent = "slimejelly"
 
-/mob/living/simple_animal
-	var/kitchen_tag = "animal" //Used for cooking with animals
+/mob/living/simple_animal/var/kitchen_tag = "animal" //Used for cooking with animals
 
 /mob/living/simple_animal/mouse
 	kitchen_tag = "rodent"

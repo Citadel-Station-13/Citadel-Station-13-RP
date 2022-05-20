@@ -102,6 +102,7 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
 	layer = UNDER_JUNK_LAYER
+	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
 
 	var/machine_stat = 0
 	var/emagged = FALSE
@@ -277,33 +278,49 @@
 /obj/machinery/can_interact(mob/user)
 	if((machine_stat & (NOPOWER|BROKEN)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
 		return FALSE
-	var/silicon = issilicon(user)
-	if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN)) // Check if we can interact with an open panel machine, if the panel is open
-		if(!silicon || !(interaction_flags_machine & INTERACT_MACHINE_OPEN_SILICON))
-			return FALSE
-	if(silicon /*|| isAdminGhostAI(user)*/) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
+
+	if(SEND_SIGNAL(user, COMSIG_TRY_USE_MACHINE, src) & COMPONENT_CANT_USE_MACHINE_INTERACT)
+		return FALSE
+
+	if(isAdminGhostAI(user))
+		return TRUE //the Gods have unlimited power and do not care for things such as range or blindness
+
+	if(!isliving(user))
+		return FALSE //no ghosts allowed, sorry
+
+	var/is_dextrous = FALSE
+	if(isanimal(user))
+		var/mob/living/simple_animal/user_as_animal = user
+		if(user_as_animal.humanoid_hands)
+			is_dextrous = TRUE
+
+	if(!issilicon(user) && !is_dextrous && !user.has_hands)
+		return FALSE //spiders gtfo
+
+	if(issilicon(user)) // If we are a silicon, make sure the machine allows silicons to interact with it
 		if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON))
 			return FALSE
-	else if(isliving(user)) // If we are a living human
-		var/mob/living/L = user
-		if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SILICON) // First make sure the machine doesn't require silicon interaction
+
+		if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN) && !(interaction_flags_machine & INTERACT_MACHINE_OPEN_SILICON))
 			return FALSE
 
-		if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SIGHT)
-			if(user.is_blind())
-				to_chat(user, SPAN_WARNING("This machine requires sight to use."))
-				return FALSE
-/*
-		if(!Adjacent(user)) // Next make sure we are next to the machine unless we have telekinesis
-			var/mob/living/carbon/H = L
-			if(!(istype(H) && H.has_dna() && H.dna.check_mutation(TK)))
-				return FALSE
-*/
-		if(L.incapacitated()) // Finally make sure we aren't incapacitated
-			return FALSE
-	else // If we aren't a silicon, living, or admin ghost, bad!
+		return user.can_interact(src) //AIs don't care about petty mortal concerns like needing to be next to a machine to use it, but borgs do care somewhat
+
+	. = ..()
+	if(!.)
 		return FALSE
-	return TRUE // If we pass all these checks, woohoo! We can interact
+
+	if((interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SIGHT) && user.is_blind())
+		to_chat(user, SPAN_WARNING("This machine requires sight to use."))
+		return FALSE
+
+	if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN))
+		return FALSE
+
+	if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SILICON) //if the user was a silicon, we'd have returned out earlier, so the user must not be a silicon
+		return FALSE
+
+	return TRUE // If we passed all of those checks, woohoo! We can interact with this machine.
 
 /obj/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return

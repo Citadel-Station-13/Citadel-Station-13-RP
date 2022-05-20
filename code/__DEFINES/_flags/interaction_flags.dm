@@ -1,28 +1,24 @@
 /// whether can_interact() checks for anchored. only works on movables.
 #define INTERACT_ATOM_REQUIRES_ANCHORED (1<<0)
-/*
+
 /// calls try_interact() on attack_hand() and returns that.
 #define INTERACT_ATOM_ATTACK_HAND (1<<1)
 /// automatically calls and returns ui_interact() on interact().
 #define INTERACT_ATOM_UI_INTERACT (1<<2)
 /// user must be dextrous
-#define INTERACT_ATOM_REQUIRES_DEXTERITY (1<<3)
+////#define INTERACT_ATOM_REQUIRES_DEXTERITY (1<<3)
 /// ignores incapacitated check
-#define INTERACT_ATOM_IGNORE_INCAPACITATED (1<<4)
+////#define INTERACT_ATOM_IGNORE_INCAPACITATED (1<<4)
 /// incapacitated check ignores restrained
-#define INTERACT_ATOM_IGNORE_RESTRAINED (1<<5)
+////#define INTERACT_ATOM_IGNORE_RESTRAINED (1<<5)
 /// incapacitated check checks grab
-#define INTERACT_ATOM_CHECK_GRAB (1<<6)
-*/
+////#define INTERACT_ATOM_CHECK_GRAB (1<<6)
 /// prevents leaving fingerprints automatically on attack_hand
 #define INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND (1<<7)
 /// adds hiddenprints instead of fingerprints on interact
 #define INTERACT_ATOM_NO_FINGERPRINT_INTERACT (1<<8)
-
-/*
 /// attempt pickup on attack_hand for items
-#define INTERACT_ITEM_ATTACK_HAND_PICKUP (1<<0)
-*/
+////#define INTERACT_ITEM_ATTACK_HAND_PICKUP (1<<0)
 /// can_interact() while open
 #define INTERACT_MACHINE_OPEN (1<<0)
 /// can_interact() while offline

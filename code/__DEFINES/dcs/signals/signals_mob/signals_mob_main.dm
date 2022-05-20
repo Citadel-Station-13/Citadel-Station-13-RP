@@ -16,14 +16,14 @@
 /// From base of mob/set_stat(): (new_stat, old_stat)
 ////#define COMSIG_MOB_STATCHANGE "mob_statchange"
 /// From base of mob/clickon(): (atom/A, params)
-////#define COMSIG_MOB_CLICKON "mob_clickon"
+#define COMSIG_MOB_CLICKON "mob_clickon"
 /// From base of mob/MiddleClickOn(): (atom/A)
-////#define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"
+#define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"
 /// From base of mob/AltClickOn(): (atom/A)
-////#define COMSIG_MOB_ALTCLICKON "mob_altclickon"
-	////#define COMSIG_MOB_CANCEL_CLICKON (1<<0)
+#define COMSIG_MOB_ALTCLICKON "mob_altclickon"
+	#define COMSIG_MOB_CANCEL_CLICKON (1<<0)
 /// From base of mob/alt_click_on_secodary(): (atom/A)
-////#define COMSIG_MOB_ALTCLICKON_SECONDARY "mob_altclickon_secondary"
+#define COMSIG_MOB_ALTCLICKON_SECONDARY "mob_altclickon_secondary"
 /// From base of /mob/living/simple_animal/bot/proc/bot_step()
 ////#define COMSIG_MOB_BOT_PRE_STEP "mob_bot_pre_step"
 	///? Should always match COMPONENT_MOVABLE_BLOCK_PRE_MOVE as these are interchangeable and used to block movement.
@@ -133,15 +133,15 @@
 /// From base of obj/item/afterattack(): (atom/target, obj/item/weapon, proximity_flag, click_parameters)
 ////#define COMSIG_MOB_ITEM_AFTERATTACK "mob_item_afterattack"
 /// From base of obj/item/afterattack_secondary(): (atom/target, obj/item/weapon, proximity_flag, click_parameters)
-////#define COMSIG_MOB_ITEM_AFTERATTACK_SECONDARY "mob_item_afterattack_secondary"
+#define COMSIG_MOB_ITEM_AFTERATTACK_SECONDARY "mob_item_afterattack_secondary"
 /// From base of obj/item/attack_qdeleted(): (atom/target, mob/user, proximity_flag, click_parameters)
-////#define COMSIG_MOB_ITEM_ATTACK_QDELETED "mob_item_attack_qdeleted"
+#define COMSIG_MOB_ITEM_ATTACK_QDELETED "mob_item_attack_qdeleted"
 /// From base of mob/RangedAttack(): (atom/A, modifiers)
-////#define COMSIG_MOB_ATTACK_RANGED "mob_attack_ranged"
+#define COMSIG_MOB_ATTACK_RANGED "mob_attack_ranged"
 /// From base of mob/ranged_secondary_attack(): (atom/target, modifiers)
-////#define COMSIG_MOB_ATTACK_RANGED_SECONDARY "mob_attack_ranged_secondary"
+#define COMSIG_MOB_ATTACK_RANGED_SECONDARY "mob_attack_ranged_secondary"
 /// From base of atom/ctrl_click(): (atom/A)
-////#define COMSIG_MOB_CTRL_CLICKED "mob_ctrl_clicked"
+#define COMSIG_MOB_CTRL_CLICKED "mob_ctrl_clicked"
 /// From base of mob/update_movespeed():area
 ////#define COMSIG_MOB_MOVESPEED_UPDATED "mob_update_movespeed"
 /// From /atom/movable/screen/zone_sel/proc/set_selected_zone.
