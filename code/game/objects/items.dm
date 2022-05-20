@@ -373,6 +373,7 @@
 /obj/item/proc/on_found(mob/finder as mob)
 	return
 
+#warn refactor
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
 //If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.
 //Set disable_warning to 1 if you wish it to not give you outputs.
@@ -387,6 +388,7 @@
 
 	var/mob/living/carbon/human/H = M
 	var/list/mob_equip = list()
+	#warn abstract check goes before equip slots
 	if(H.species.hud && H.species.hud.equip_slots)
 		mob_equip = H.species.hud.equip_slots
 
@@ -467,6 +469,7 @@
 				return 0
 	return 1
 
+#warn refactor
 /obj/item/proc/mob_can_unequip(mob/M, slot, disable_warning = 0)
 	if(!slot) return 0
 	if(!M) return 0
@@ -477,6 +480,7 @@
 		return 0
 	return 1
 
+#warn refactor
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
 	set category = "Object"

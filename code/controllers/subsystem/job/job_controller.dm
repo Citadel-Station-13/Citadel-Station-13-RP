@@ -407,7 +407,7 @@ var/global/datum/controller/occupations/job_master
 							custom_equip_leftovers[thing] = metadata
 						else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
 							to_chat(H, "<span class='notice'>Equipping you with \the [G.display_name]!</span>")
-							if(G.slot != slot_tie)
+							if(G.slot != /datum/inventory/abstract/attach_as_accessory)
 								custom_equip_slots.Add(G.slot)
 						else
 							custom_equip_leftovers[thing] = metadata

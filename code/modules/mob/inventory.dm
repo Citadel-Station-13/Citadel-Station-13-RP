@@ -13,7 +13,7 @@ var/list/slot_equipment_priority = list( \
 		SLOT_ID_GLASSES,\
 		SLOT_ID_BELT,\
 		SLOT_ID_SUIT_STORE,\
-		slot_tie,\
+		/datum/inventory/abstract/attach_as_accessory,\
 		SLOT_ID_LEFT_POCKET,\
 		SLOT_ID_RIGHT_POCKET\
 	)

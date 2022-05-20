@@ -48,10 +48,10 @@
 ///Some things may reference this, try to keep it here
 #define slot_r_hand      2
 //Secret slots
-#define slot_tie         18
 #define slot_in_backpack 21
 #define SLOT_TOTAL       21
 
+#warn nuke this from orbit
 //Defines which slots correspond to which slot flags
 var/list/global/slot_flags_enumeration = list(
 	"[SLOT_ID_MASK]" = SLOT_MASK,

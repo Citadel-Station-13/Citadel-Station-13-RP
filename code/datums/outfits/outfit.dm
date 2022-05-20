@@ -31,7 +31,7 @@
 	var/r_hand = null
 	var/l_hand = null
 	// In the list(path=count,otherpath=count) format
-	var/list/uniform_accessories = list() // webbing, armbands etc - fits in slot_tie
+	var/list/uniform_accessories = list() // webbing, armbands etc - fits in /datum/inventory/abstract/attach_as_accessory
 	var/list/backpack_contents = list()
 
 	var/id_type
@@ -136,7 +136,7 @@
 	for(var/path in uniform_accessories)
 		var/number = uniform_accessories[path]
 		for(var/i=0,i<number,i++)
-			H.equip_to_slot_or_del(new path(H), slot_tie)
+			H.equip_to_slot_or_del(new path(H), /datum/inventory/abstract/attach_as_accessory)
 
 	if(H.species)
 		H.species.equip_survival_gear(H, flags&OUTFIT_EXTENDED_SURVIVAL, flags&OUTFIT_COMPREHENSIVE_SURVIVAL)

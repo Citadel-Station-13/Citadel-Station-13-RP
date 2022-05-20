@@ -9,7 +9,7 @@
 	sort_category = "Xenowear"
 
 /datum/gear/xeno/accessories
-	slot = slot_tie
+	slot = /datum/inventory/abstract/attach_as_accessory
 
 /datum/gear/xeno/shoes
 	slot = SLOT_ID_SHOES
@@ -41,7 +41,7 @@
 	whitelisted = SPECIES_TAJ
 
 /datum/gear/xeno/tajaran/accessories
-	slot = slot_tie
+	slot = /datum/inventory/abstract/attach_as_accessory
 
 /datum/gear/xeno/tajaran/shoes
 	slot = SLOT_ID_SHOES
@@ -66,7 +66,7 @@
 	whitelisted = SPECIES_PROMETHEAN
 
 /datum/gear/xeno/promethean/accessories
-	slot = slot_tie
+	slot = /datum/inventory/abstract/attach_as_accessory
 
 /datum/gear/xeno/promethean/shoes
 	slot = SLOT_ID_SHOES
@@ -91,7 +91,7 @@
 	whitelisted = SPECIES_TESHARI
 
 /datum/gear/xeno/teshari/accessories
-	slot = slot_tie
+	slot = /datum/inventory/abstract/attach_as_accessory
 
 /datum/gear/xeno/teshari/shoes
 	slot = SLOT_ID_SHOES
@@ -123,7 +123,7 @@
 	whitelisted = SPECIES_PLASMAMAN
 
 /datum/gear/xeno/phoronoid/accessories
-	slot = slot_tie
+	slot = /datum/inventory/abstract/attach_as_accessory
 
 /datum/gear/xeno/phoronoid/shoes
 	slot = SLOT_ID_SHOES
@@ -156,7 +156,7 @@
 	whitelisted = SPECIES_SKRELL
 
 /datum/gear/xeno/skrell/accessories
-	slot = slot_tie
+	slot = /datum/inventory/abstract/attach_as_accessory
 
 /datum/gear/xeno/skrell/shoes
 	slot = SLOT_ID_SHOES
@@ -189,7 +189,7 @@
 	whitelisted = SPECIES_UNATHI
 
 /datum/gear/xeno/unathi/accessories
-	slot = slot_tie
+	slot = /datum/inventory/abstract/attach_as_accessory
 
 /datum/gear/xeno/unathi/shoes
 	slot = SLOT_ID_SHOES
@@ -222,7 +222,7 @@
 	whitelisted = SPECIES_VOX
 
 /datum/gear/xeno/vox/accessories
-	slot = slot_tie
+	slot = /datum/inventory/abstract/attach_as_accessory
 
 /datum/gear/xeno/vox/shoes
 	slot = SLOT_ID_SHOES

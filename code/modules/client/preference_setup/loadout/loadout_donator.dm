@@ -44,7 +44,7 @@
 
 /datum/gear/donator/stripedcollar
 	name = "Striped collar"
-	slot = slot_tie
+	slot = /datum/inventory/abstract/attach_as_accessory
 	path = /obj/item/clothing/accessory/collar/donator/striped
 	ckeywhitelist = list("jademanique")
 

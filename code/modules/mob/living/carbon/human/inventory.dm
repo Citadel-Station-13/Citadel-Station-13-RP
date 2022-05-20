@@ -199,6 +199,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		return
 	if(!has_organ_for_slot(slot))
 		return
+	#warn abstract check goes before equip slots
 	if(!species || !species.hud || !(slot in species.hud.equip_slots))
 		return
 
@@ -312,6 +313,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			if(src.get_active_hand() == W)
 				src.remove_from_mob(W)
 			W.forceMove(back)
+		#warn move to handle_abstract_slot_insertion
 		if(slot_tie)
 			for(var/obj/item/clothing/C in worn_clothing)
 				if(istype(W, /obj/item/clothing/accessory))
