@@ -3166,7 +3166,8 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4
+	dir = 2;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
@@ -6814,11 +6815,12 @@
 /turf/simulated/wall/r_wall,
 /area/rift/surfaceeva/airlock/main)
 "fNY" = (
-/obj/machinery/hologram/holopad,
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "fOl" = (
 /obj/effect/floor_decal/borderfloor,
@@ -6928,8 +6930,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/disposalpipe/junction{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
@@ -16961,12 +16963,6 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/chemistry_lab)
-"nAL" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/surfaceone)
 "nBa" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 4
@@ -18580,6 +18576,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"oJf" = (
+/obj/effect/ceiling,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "oJs" = (
 /obj/machinery/media/jukebox,
 /obj/structure/railing,
@@ -18588,14 +18588,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
-"oKF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/junction{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/surfaceone)
 "oKV" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/overlay/snow/floor/edges{
@@ -19890,6 +19882,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/item/slime_extract/grey,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "pCh" = (
@@ -24975,7 +24968,8 @@
 /obj/structure/sign/warning/moving_parts{
 	pixel_y = 32
 	},
-/obj/machinery/conveyor_switch{
+/obj/machinery/conveyor_switch/oneway{
+	convdir = -1;
 	tag = "mailroom"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -43722,7 +43716,7 @@ kaF
 eaK
 xtr
 cNc
-bAm
+fNY
 fVs
 cCH
 elH
@@ -43915,7 +43909,7 @@ kaF
 kaF
 xEG
 otM
-nAL
+otM
 otM
 drN
 cCH
@@ -44109,7 +44103,7 @@ ylM
 uii
 afF
 xEW
-fNY
+ncK
 nsK
 hbJ
 cCH
@@ -44303,7 +44297,7 @@ cqd
 vjr
 jzf
 cNg
-oKF
+cNg
 cNg
 olI
 unA
@@ -46489,8 +46483,8 @@ hgE
 hgE
 hgE
 hgE
-iFN
-iFN
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -46682,9 +46676,9 @@ gQl
 gQl
 gQl
 gQl
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -46876,11 +46870,11 @@ eVR
 hMu
 gTZ
 kWZ
-iFN
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -47070,11 +47064,11 @@ qwV
 jsE
 hcl
 kWZ
-iFN
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -47264,11 +47258,11 @@ sph
 aGT
 lPr
 kWZ
-iFN
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -47458,9 +47452,9 @@ gQl
 gQl
 gQl
 gQl
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -47652,9 +47646,9 @@ eVR
 hMu
 gTZ
 vFG
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -47846,10 +47840,10 @@ qwV
 jsE
 hcl
 vFG
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -48040,10 +48034,10 @@ sph
 aGT
 lPr
 vFG
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -48234,10 +48228,10 @@ gQl
 gQl
 gQl
 gQl
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -48428,10 +48422,10 @@ eVR
 hMu
 gTZ
 tvz
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -48622,10 +48616,10 @@ qwV
 jsE
 hcl
 tvz
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -48816,9 +48810,9 @@ sph
 aGT
 lPr
 tvz
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -49010,9 +49004,9 @@ gQl
 gQl
 gQl
 gQl
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -49204,8 +49198,8 @@ sRC
 udp
 jbc
 gQl
-iFN
-iFN
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -49398,8 +49392,8 @@ iJl
 azP
 xUx
 gQl
-iFN
-iFN
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -49592,11 +49586,11 @@ rFg
 bbX
 dfo
 gQl
-iFN
-iFN
+oJf
+oJf
 hgE
-iFN
-iFN
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -49786,11 +49780,11 @@ tjb
 uuC
 drj
 gQl
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
 hgE
-iFN
+oJf
 hgE
 hgE
 hgE
@@ -49980,11 +49974,11 @@ jeN
 dwm
 mhP
 gQl
-iFN
-iFN
+oJf
+oJf
 hgE
 hgE
-iFN
+oJf
 hgE
 hgE
 hgE
@@ -50174,10 +50168,10 @@ bpL
 pBK
 gHD
 gQl
-iFN
-iFN
+oJf
+oJf
 hgE
-iFN
+oJf
 hgE
 hgE
 hgE
@@ -50368,10 +50362,10 @@ asR
 gaQ
 cOz
 gQl
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -50562,9 +50556,9 @@ etk
 etk
 etk
 gQl
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -50743,21 +50737,21 @@ hgE
 hgE
 hgE
 hgE
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -50936,22 +50930,22 @@ hgE
 hgE
 hgE
 hgE
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -51130,20 +51124,20 @@ hgE
 hgE
 hgE
 hgE
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -51326,18 +51320,18 @@ hgE
 hgE
 hgE
 hgE
-iFN
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
-iFN
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
@@ -51528,10 +51522,10 @@ hgE
 hgE
 hgE
 hgE
-iFN
-iFN
-iFN
-iFN
+oJf
+oJf
+oJf
+oJf
 hgE
 hgE
 hgE
