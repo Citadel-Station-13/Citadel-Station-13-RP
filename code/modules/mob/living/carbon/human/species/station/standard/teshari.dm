@@ -1,5 +1,6 @@
 /datum/species/teshari
 	name = SPECIES_TESHARI
+	default_bodytype = BODYTYPE_TESHARI
 	name_plural = "Tesharii"
 	blurb = "A race of feathered raptors who developed alongside the Skrell, inhabiting \
 	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \

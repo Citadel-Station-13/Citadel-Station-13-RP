@@ -10,6 +10,8 @@
 /// tajaran bodytype
 #define BODYTYPE_TAJARAN			(1<<5)
 
+/// has snout - usually relevant for masks and headgear
+#define BODYTYPE_SNOUT				(1<<20)
 /// snake taur bodytype - usually relevant for hardsuits and similar
 #define BODYTYPE_TAUR_SNAKE			(1<<21)
 /// horse taur bodytype - ditto
