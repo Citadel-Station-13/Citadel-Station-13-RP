@@ -411,7 +411,7 @@
 		update_icon()
 
 /obj/item/paper/get_worn_icon_state(var/slot_id)
-	if(slot_id == /datum/inventory_slot_meta/inventory/head)
+	if(slot_id == SLOT_ID_HEAD)
 		return "paper" //Gross, but required for now.
 	return ..()
 

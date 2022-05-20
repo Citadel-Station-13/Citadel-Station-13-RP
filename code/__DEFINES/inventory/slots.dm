@@ -23,6 +23,25 @@
 ///16th bit - higher than this will overflow
 #define SLOT_HOLSTER	0x8000
 
+// slot ids - reference abstract slots by type instead, these are only ids because lots of html/tgui requires strings
+#define SLOT_ID_BACK			"back"
+#define SLOT_ID_UNIFORM			"uniform"
+#define SLOT_ID_HEAD			"head"
+#define SLOT_ID_SUIT			"suit"
+#define SLOT_ID_BELT			"belt"
+#define SLOT_ID_LEFT_POCKET		"lpocket"
+#define SLOT_ID_RIGHT_POCKET	"rpocket"
+#define SLOT_ID_WORN_ID			"id"
+#define SLOT_ID_SHOES			"shoes"
+#define SLOT_ID_GLASSES			"glasses"
+#define SLOT_ID_GLOVES			"gloves"
+#define SLOT_ID_SUIT_STORAGE	"suitstore"
+#define SLOT_ID_MASK			"mask"
+#define SLOT_ID_LEFT_EAR		"lear"
+#define SLOT_ID_RIGHT_EAR		"rear"
+#define SLOT_ID_HANDCUFFED		"handcuffed"
+#define SLOT_ID_LEGCUFFED		"legcuffed"
+
 // Slots as numbers //
 //Hands
 #define slot_l_hand      1

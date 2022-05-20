@@ -22,7 +22,7 @@
 	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/handcuffs.dmi')
 
 /obj/item/handcuffs/get_worn_icon_state(var/slot_id)
-	if(slot_id == /datum/inventory_slot_meta/restraints/handcuffs)
+	if(slot_id == SLOT_ID_HANDCUFFED)
 		return "handcuff1" //Simple
 
 	return ..()
@@ -215,7 +215,7 @@ var/last_chew = 0
 	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acuasal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
 /obj/item/handcuffs/disruptor/get_worn_icon_state(var/slot_id)
-	if(slot_id == /datum/inventory_slot_meta/restraints/handcuffs)
+	if(slot_id == SLOT_ID_HANDCUFFED)
 		return "disruptorcuff1" //Simple
 
 	return ..()
@@ -245,7 +245,7 @@ var/last_chew = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 
 /obj/item/handcuffs/legcuffs/get_worn_icon_state(var/slot_id)
-	if(slot_id == /datum/inventory_slot_meta/restraints/legcuffs)
+	if(slot_id == SLOT_ID_LEGCUFFED)
 		return "legcuff1"
 
 	return ..()

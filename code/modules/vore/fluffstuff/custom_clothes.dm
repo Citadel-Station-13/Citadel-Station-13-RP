@@ -1541,7 +1541,7 @@ END OF CITADEL CHANGES */
 	name = "latex maid dress"
 	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
 
-	item_icons = list(/datum/inventory_slot_meta/inventory/uniform = 'icons/vore/custom_clothes_vr.dmi')
+	item_icons = list(SLOT_ID_UNIFORM = 'icons/vore/custom_clothes_vr.dmi')
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "latexmaid"
 	item_state = "latexmaid_mob"

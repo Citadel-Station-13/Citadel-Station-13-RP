@@ -76,9 +76,9 @@
 	var/append = ""
 	if(icon_override)
 		switch(slot_id)
-			if(/datum/inventory_slot_meta/inventory/ears/left)
+			if(SLOT_ID_LEFT_EAR)
 				append = "_l"
-			if(/datum/inventory_slot_meta/inventory/ears/right)
+			if(SLOT_ID_RIGHT_EAR)
 				append = "_r"
 
 	return "[..()][append]"

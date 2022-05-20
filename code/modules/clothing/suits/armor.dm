@@ -554,7 +554,7 @@
 	name = "plate carrier"
 	desc = "A lightweight black plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
-	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/modular_armor.dmi')
+	item_icons = list(SLOT_ID_SUIT = 'icons/mob/modular_armor.dmi')
 	icon_state = "pcarrier"
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_INSIGNIA\
@@ -819,7 +819,7 @@
 	name = "lightweight harness"
 	desc = "A lightweight harness designed to attach to the torso. It serves as an anchor point for lightweight armor plating, but provides no protection of its own."
 	icon = 'icons/obj/clothing/ties.dmi'
-	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/ties.dmi')
+	item_icons = list(SLOT_ID_SUIT = 'icons/mob/ties.dmi')
 	icon_state = "pilot_webbing1"
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_ARMOR_C\

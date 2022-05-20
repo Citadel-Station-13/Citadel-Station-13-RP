@@ -176,7 +176,7 @@
 /obj/item/clothing/accessory/armor/armguards
 	name = "arm guards"
 	desc = "A pair of black arm pads reinforced with armor plating. Attaches to a plate carrier."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/modular_armor.dmi')
 	icon_state = "armguards"
 	gender = PLURAL
 	body_parts_covered = ARMS
@@ -235,7 +235,7 @@
 /obj/item/clothing/accessory/armor/legguards
 	name = "leg guards"
 	desc = "A pair of armored leg pads in black. Attaches to a plate carrier."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/modular_armor.dmi')
 	icon_state = "legguards"
 	gender = PLURAL
 	body_parts_covered = LEGS
@@ -294,7 +294,7 @@
 /obj/item/clothing/accessory/armor/tag
 	name = "\improper SCG Flag"
 	desc = "An emblem depicting the Solar Confederate Government's flag."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/modular_armor.dmi')
 	icon_state = "solflag"
 	slot = ACCESSORY_SLOT_ARMOR_M
 	w_class = ITEMSIZE_SMALL

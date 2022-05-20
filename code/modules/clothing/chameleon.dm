@@ -77,7 +77,7 @@
 	name = "psychedelic"
 	desc = "Groovy!"
 	icon_state = "psyche"
-	item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "psyche"
+	item_state_slots[SLOT_ID_UNIFORM] = "psyche"
 	update_icon()
 	update_clothing_icon()
 
