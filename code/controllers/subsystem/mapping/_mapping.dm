@@ -269,7 +269,7 @@ SUBSYSTEM_DEF(mapping)
 		// No need to empty() these, because it's world init and they're
 		// already /turf/space/basic.
 		var/turf/T = t
-		T.flags |= UNUSED_RESERVATION_TURF
+		T.turf_flags |= UNUSED_RESERVATION_TURF
 	unused_turfs["[z]"] = block
 	reservation_ready["[z]"] = TRUE
 	clearing_reserved_turfs = FALSE
@@ -280,7 +280,7 @@ SUBSYSTEM_DEF(mapping)
 		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
 		LAZYINITLIST(unused_turfs["[T.z]"])
 		unused_turfs["[T.z]"] |= T
-		T.flags |= UNUSED_RESERVATION_TURF
+		T.turf_flags |= UNUSED_RESERVATION_TURF
 		GLOB.areas_by_type[world.area].contents += T
 		CHECK_TICK
 

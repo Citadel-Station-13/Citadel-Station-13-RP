@@ -7,7 +7,7 @@
 	density = 0
 	opacity = 0
 	plane = ABOVE_PLANE
-	simulated = 0
+	flags = AF_ABSTRACT
 	mouse_opacity = 0
 
 	var/mob/living/aiming_at   // Who are we currently targeting, if anyone?

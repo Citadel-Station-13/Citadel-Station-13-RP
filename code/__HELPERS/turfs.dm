@@ -14,7 +14,7 @@
 
 /proc/turf_clear(turf/T)
 	for(var/atom/A in T)
-		if(A.simulated)
+		if(!(A.flags & AF_ABSTRACT))
 			return 0
 	return 1
 
@@ -131,14 +131,17 @@
 
 	// Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
 	for(var/obj/O in T)
-		if(O.simulated)
-			O.loc = X
-			O.update_light()
-			if(z_level_change)	// The objects still need to know if their z-level changed.
-				O.onTransitZ(T.z, X.z)
+		if(O.flags & AF_ABSTRACT)
+			continue
+		O.loc = X
+		O.update_light()
+		if(z_level_change)	// The objects still need to know if their z-level changed.
+			O.onTransitZ(T.z, X.z)
 
 	// Move the mobs unless it's an AI eye or other eye type.
 	for(var/mob/M in T)
+		if(M.flags & AF_ABSTRACT)
+			continue
 		if(isEye(M)) continue	// If we need to check for more mobs, I'll add a variable
 		M.loc = X
 

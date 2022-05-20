@@ -40,6 +40,7 @@
 	// i hate baycode
 	plane_masters[VIS_PARALLAX] = new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}
 	plane_masters[VIS_SPACE] = new /atom/movable/screen/plane_master/parallax_white{plane = SPACE_PLANE}
+	plane_masters[VIS_SONAR] = new /atom/movable/screen/plane_master{plane = SONAR_PLANE}
 
 /datum/plane_holder/Destroy()
 	my_mob = null
