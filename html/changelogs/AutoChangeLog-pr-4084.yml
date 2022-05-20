@@ -1,0 +1,4 @@
+author: "Ghostcoffeee"
+delete-after: True
+changes: 
+  - rscadd: "Added RIG toolsets and a way to craft them"
