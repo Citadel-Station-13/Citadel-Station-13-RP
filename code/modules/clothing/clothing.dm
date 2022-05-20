@@ -301,7 +301,7 @@
 		return
 */
 
-/obj/item/clothing/gloves/mob_can_equip(mob/user, slot)
+/obj/item/clothing/gloves/mob_can_equip(mob/user, slot, accessory)
 	var/mob/living/carbon/human/H = user
 
 	if(slot && slot == SLOT_ID_GLOVES)

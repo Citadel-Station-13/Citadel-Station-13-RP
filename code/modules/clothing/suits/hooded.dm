@@ -29,7 +29,7 @@
 /obj/item/clothing/suit/storage/hooded/ui_action_click()
 	ToggleHood()
 
-/obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot)
+/obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot, accessory)
 	if(slot != SLOT_ID_SUIT)
 		RemoveHood()
 	..()

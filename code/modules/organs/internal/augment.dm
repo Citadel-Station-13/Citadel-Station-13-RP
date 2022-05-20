@@ -96,19 +96,13 @@
 // Attaches to the end of dropped items' code.
 
 /obj/item
-/// Used by augments to determine if the item should destroy itself when dropped, or return to its master.
-	var/destroy_on_drop = FALSE
 	/// Used to reference the object's host organ.
 	var/obj/item/organ/my_augment = null
 
 /obj/item/dropped(mob/user)
 	. = ..()
-	if(src)
-		if(destroy_on_drop && !QDELETED(src))
-			qdel(src)
-			return
-		if(my_augment)
-			forceMove(my_augment)
+	if(my_augment)
+		forceMove(my_augment)
 
 /*
  * Human-specific mob procs.

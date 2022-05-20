@@ -49,8 +49,6 @@
 #define slot_r_hand      2
 //Secret slots
 #define slot_tie         18
-#define slot_handcuffed  19
-#define slot_legcuffed   20
 #define slot_in_backpack 21
 #define SLOT_TOTAL       21
 

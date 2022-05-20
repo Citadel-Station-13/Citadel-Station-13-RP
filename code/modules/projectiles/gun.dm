@@ -233,7 +233,7 @@
 	. = ..()
 	update_appearance()
 
-/obj/item/gun/equipped(mob/user, slot)
+/obj/item/gun/equipped(mob/user, slot, accessory)
 	. = ..()
 	update_appearance()
 

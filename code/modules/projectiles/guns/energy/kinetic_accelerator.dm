@@ -146,7 +146,7 @@
 		empty()
 	AddElement(/datum/element/conflict_checking, CONFLICT_ELEMENT_KA)
 
-/obj/item/gun/energy/kinetic_accelerator/equipped(mob/user, slot)
+/obj/item/gun/energy/kinetic_accelerator/equipped(mob/user, slot, accessory)
 	. = ..()
 	if(power_supply.charge < charge_cost)
 		attempt_reload()

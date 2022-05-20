@@ -378,8 +378,10 @@
 //Set disable_warning to 1 if you wish it to not give you outputs.
 //Should probably move the bulk of this into mob code some time, as most of it is related to the definition of slots and not item-specific
 /obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = 0)
-	if(!slot) return 0
-	if(!M) return 0
+	if(!slot)
+		return 0
+	if(!M)
+		return 0
 
 	if(!ishuman(M)) return 0
 
@@ -439,10 +441,10 @@
 				return 0
 			if( !(istype(src, /obj/item/pda) || istype(src, /obj/item/pen) || is_type_in_list(src, H.wear_suit.allowed)) )
 				return 0
-		if(slot_legcuffed) //Going to put this check above the handcuff check because the survival of the universe depends on it.
+		if(SLOT_ID_LEGCUFFED) //Going to put this check above the handcuff check because the survival of the universe depends on it.
 			if(!istype(src, /obj/item/handcuffs/legcuffs)) //Putting it here might actually do nothing.
 				return 0
-		if(slot_handcuffed)
+		if(SLOT_ID_HANDCUFFED)
 			if(!istype(src, /obj/item/handcuffs) || istype(src, /obj/item/handcuffs/legcuffs)) //Legcuffs are a child of handcuffs, but we don't want to use legcuffs as handcuffs...
 				return 0 //In theory, this would never happen, but let's just do the legcuff check anyways.
 		if(slot_in_backpack) //used entirely for equipping spawned mobs or at round start

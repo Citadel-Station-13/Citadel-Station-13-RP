@@ -356,7 +356,7 @@
 	selfdeleting = TRUE
 	. = ..()
 
-/obj/item/riding_offhand/equipped(mob/user, slot)
+/obj/item/riding_offhand/equipped(mob/user, slot, accessory)
 	if(loc != rider && loc != parent)
 		selfdeleting = TRUE
 		qdel(src)

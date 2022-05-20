@@ -42,7 +42,7 @@
 	if(has_hands)
 		equip_slots |= slot_l_hand
 		equip_slots |= slot_r_hand
-		equip_slots |= slot_handcuffed
+		equip_slots |= SLOT_ID_HANDCUFFED
 
 	if(SLOT_ID_BACK in equip_slots)
 		equip_slots |= slot_in_backpack
@@ -50,7 +50,7 @@
 	if(SLOT_ID_UNIFORM in equip_slots)
 		equip_slots |= slot_tie
 
-	equip_slots |= slot_legcuffed
+	equip_slots |= SLOT_ID_LEGCUFFED
 
 /datum/hud_data/diona
 	has_internals = 0

@@ -1,15 +1,19 @@
 /obj/item
-	/// currently equipped slot
+	/// currently equipped slot id
 	var/current_equipped_slot
 
-// called after an item is placed in an equipment slot
-// user is mob that equipped it
-// slot uses the slot_X defines found in setup.dm
-// for items that can be placed in multiple slots
-// note this isn't called during the initial dressing of a player
-/obj/item/proc/equipped(mob/user, slot)
+/**
+ * called when an item is equipped to inventory - not picked up
+ *
+ * @params
+ * user - person equipping us
+ * slot - slot id we're equipped to
+ * accessory - TRUE/FALSE, are we equipped as an accessory?
+ * creation - being equipped by a job datum/outfit/etc
+ */
+/obj/item/proc/equipped(mob/user, slot, accessory, creation)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
+	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, accessory, creation)
 	current_equipped_slot = slot
 	// current_equipped_slot = get_inventory_slot_datum(slot)
 	hud_layerise()
@@ -27,7 +31,22 @@
 		playsound(src, pickup_sound, 20, preference = /datum/client_preference/pickup_sounds)
 	user.update_inv_hands()
 
-/// Called when a mob drops an item.
+/**
+ * called when an item is unequipped from inventory - not dropped
+ *
+ * @params
+ * user - person unequipping us
+ * slot - slot id we're unequipping from
+ * accessory - TRUE/FALSE, are we unequipping from being an accessory or due to our accessory unequipping?
+ */
+/obj/item/proc/unequipped(mob/user, slot, accessory)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(COMSIG_ITEM_UNEQUIPPED, user, slot, accessory)
+	current_equipped_slot = null
+
+/**
+ * called when a mob drops an item
+ */
 /obj/item/proc/dropped(mob/user, silent = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 /*
@@ -40,9 +59,7 @@
 
 	item_flags &= ~IN_INVENTORY
 
-	var/old_slot = current_equipped_slot
-	current_equipped_slot = null
-	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, old_slot)
+	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
 	// if(!silent)
 	// 	playsound(src, drop_sound, DROP_SOUND_VOLUME, ignore_walls = FALSE)
 	// user?.update_equipment_speed_mods()

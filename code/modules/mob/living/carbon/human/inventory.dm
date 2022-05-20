@@ -34,9 +34,9 @@ This saves us from having to call add_fingerprint() any time something is put in
 			return has_organ(BP_TORSO)
 		if(SLOT_ID_MASK)
 			return has_organ(BP_HEAD)
-		if(slot_handcuffed)
+		if(SLOT_ID_HANDCUFFED)
 			return has_organ(BP_L_HAND) && has_organ(BP_R_HAND)
-		if(slot_legcuffed)
+		if(SLOT_ID_LEGCUFFED)
 			return has_organ(BP_L_FOOT) && has_organ(BP_R_FOOT)
 		if(slot_l_hand)
 			return has_organ(BP_L_HAND)
@@ -217,10 +217,10 @@ This saves us from having to call add_fingerprint() any time something is put in
 			W.equipped(src, slot)
 			worn_clothing += wear_mask
 			update_inv_wear_mask()
-		if(slot_handcuffed)
+		if(SLOT_ID_HANDCUFFED)
 			src.handcuffed = W
 			update_handcuffed()
-		if(slot_legcuffed)
+		if(SLOT_ID_LEGCUFFED)
 			src.legcuffed = W
 			W.equipped(src, slot)
 			update_inv_legcuffed()
@@ -364,8 +364,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 /mob/living/carbon/human/get_equipped_item(var/slot)
 	switch(slot)
 		if(SLOT_ID_BACK)       return back
-		if(slot_legcuffed)  return legcuffed
-		if(slot_handcuffed) return handcuffed
+		if(SLOT_ID_LEGCUFFED)  return legcuffed
+		if(SLOT_ID_HANDCUFFED) return handcuffed
 		if(SLOT_ID_LEFT_POCKET)    return l_store
 		if(SLOT_ID_RIGHT_POCKET)    return r_store
 		if(SLOT_ID_MASK)  return wear_mask

@@ -19,7 +19,7 @@
 		SLOT_ID_MASK = 'icons/mob/mask.dmi'
 		)
 
-/obj/item/beartrap/equipped(mob/user, slot)
+/obj/item/beartrap/equipped(mob/user, slot, accessory)
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/H = src.loc
 		if(H.wear_mask == src)

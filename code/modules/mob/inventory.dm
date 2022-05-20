@@ -294,7 +294,10 @@ var/list/slot_equipment_priority = list( \
 			I.forceMove(target)
 		else
 			I.dropInto(drop_location())
-		I.dropped(src)
+		if(I.current_equipped_slot)
+			I.unequipped(src, I.current_equipped_slot)
+		if(target != src)
+			I.dropped(src)
 	return 1
 
 

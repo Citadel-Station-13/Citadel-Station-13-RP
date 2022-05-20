@@ -46,7 +46,7 @@
 	return ..()
 
 // Add the spell buttons to the HUD.
-/obj/item/technomancer_core/equipped(mob/user, slot)
+/obj/item/technomancer_core/equipped(mob/user, slot, accessory)
 	wearer = user
 	for(var/obj/spellbutton/spell in spells)
 		wearer.ability_master.add_technomancer_ability(spell, spell.ability_icon_state)

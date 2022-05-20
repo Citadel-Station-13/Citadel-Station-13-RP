@@ -24,9 +24,11 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
  * **You must use a typepath for hardcoded datums.**
  * String IDs are not automatically converted to paths for speed.
  */
-/proc/get_inventory_slot_meta(id)
+/proc/resolve_inventory_slot_meta(datum/inventory_slot_meta/id)
 	RETURN_TYPE(/datum/inventory_slot_meta)
-	if(ispath(id))
+	if(istype(id))
+		return id
+	else if(ispath(id))
 		id = inventory_slot_type_to_id(id)
 	return GLOB.inventory_slot_meta[id]
 

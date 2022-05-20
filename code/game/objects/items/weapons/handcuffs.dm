@@ -67,7 +67,7 @@
 	if(!istype(H))
 		return 0
 
-	if (!H.has_organ_for_slot(slot_handcuffed))
+	if (!H.has_organ_for_slot(SLOT_ID_HANDCUFFED))
 		to_chat(user, "<span class='danger'>\The [H] needs at least two wrists before you can cuff them together!</span>")
 		return 0
 
@@ -107,7 +107,7 @@
 
 /obj/item/handcuffs/equipped(var/mob/living/user,var/slot)
 	. = ..()
-	if(slot == slot_handcuffed)
+	if(slot == SLOT_ID_HANDCUFFED)
 		user.drop_r_hand()
 		user.drop_l_hand()
 		user.stop_pulling()
@@ -222,7 +222,7 @@ var/last_chew = 0
 
 /obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
 	. = ..()
-	if(slot == slot_handcuffed)
+	if(slot == SLOT_ID_HANDCUFFED)
 		user.drop_r_hand()
 		user.drop_l_hand()
 		user.stop_pulling()
@@ -277,7 +277,7 @@ var/last_chew = 0
 	if(!istype(H))
 		return 0
 
-	if (!H.has_organ_for_slot(slot_legcuffed))
+	if (!H.has_organ_for_slot(SLOT_ID_LEGCUFFED))
 		to_chat(user, "<span class='danger'>\The [H] needs at least two ankles before you can cuff them together!</span>")
 		return 0
 
@@ -318,7 +318,7 @@ var/last_chew = 0
 
 /obj/item/handcuffs/legcuffs/equipped(var/mob/living/user,var/slot)
 	. = ..()
-	if(slot == slot_legcuffed)
+	if(slot == SLOT_ID_LEGCUFFED)
 		if(user.m_intent != "walk")
 			user.m_intent = "walk"
 			if(user.hud_used && user.hud_used.move_intent)
@@ -357,7 +357,7 @@ var/last_chew = 0
 		src.dropped()
 		return 0
 
-	if(!H.has_organ_for_slot(slot_legcuffed))
+	if(!H.has_organ_for_slot(SLOT_ID_LEGCUFFED))
 		H.visible_message("<span class='notice'>\The [src] slams into [H], but slides off!</span>")
 		src.dropped()
 		return 0

@@ -374,6 +374,8 @@
 		W.on_enter_storage(src)
 		if (usr.client && usr.s_active != src)
 			usr.client.screen -= W
+		if(W.current_equipped_slot)
+			W.unequipped(user, W.current_equipped_slot)
 		W.dropped(usr)
 		add_fingerprint(usr)
 

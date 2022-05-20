@@ -133,7 +133,7 @@
 		var/obj/structure/ore_box/O = user.pulling
 		O.attackby(src, user)
 
-/obj/item/storage/bag/ore/equipped(mob/user, slot)
+/obj/item/storage/bag/ore/equipped(mob/user, slot, accessory)
 	. = ..()
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/autoload, override = TRUE)
 
