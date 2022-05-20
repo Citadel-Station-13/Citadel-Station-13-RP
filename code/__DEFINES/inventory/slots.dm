@@ -41,15 +41,9 @@
 #define SLOT_ID_RIGHT_EAR		"rear"
 #define SLOT_ID_HANDCUFFED		"handcuffed"
 #define SLOT_ID_LEGCUFFED		"legcuffed"
+// this is an id because SLOT_ID_HANDS is used for current_equipped_slot when something is being held :/
+#define SLOT_ID_HANDS			"hands"
 
-// Slots as numbers //
-//Hands
-#define slot_l_hand      1
-///Some things may reference this, try to keep it here
-#define slot_r_hand      2
-//Secret slots
-#define slot_in_backpack 21
-#define SLOT_TOTAL       21
 
 #warn nuke this from orbit
 //Defines which slots correspond to which slot flags
@@ -79,3 +73,23 @@ var/list/global/slot_flags_enumeration = list(
 // one day i'll come for you, inhand icons.
 // one day.... mark my words...
 
+#warn clean this the fuck up
+//The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
+var/list/slot_equipment_priority = list( \
+		SLOT_ID_BACK,\
+		SLOT_ID_WORN_ID,\
+		SLOT_ID_UNIFORM,\
+		SLOT_ID_SUIT,\
+		SLOT_ID_MASK,\
+		SLOT_ID_HEAD,\
+		SLOT_ID_SHOES,\
+		SLOT_ID_GLOVES,\
+		SLOT_ID_LEFT_EAR,\
+		SLOT_ID_RIGHT_EAR,\
+		SLOT_ID_GLASSES,\
+		SLOT_ID_BELT,\
+		SLOT_ID_SUIT_STORE,\
+		/datum/inventory/abstract/attach_as_accessory,\
+		SLOT_ID_LEFT_POCKET,\
+		SLOT_ID_RIGHT_POCKET\
+	)

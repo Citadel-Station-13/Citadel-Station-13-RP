@@ -3,7 +3,7 @@
 	var/current_equipped_slot
 
 /**
- * called when an item is equipped to inventory - not picked up
+ * called when an item is equipped to inventory or picked up
  *
  * @params
  * user - person equipping us
@@ -32,7 +32,7 @@
 	user.update_inv_hands()
 
 /**
- * called when an item is unequipped from inventory - not dropped
+ * called when an item is unequipped from inventory or moved around in inventory
  *
  * @params
  * user - person unequipping us
@@ -46,6 +46,8 @@
 
 /**
  * called when a mob drops an item
+ *
+ * dropping is defined as moving out of both equipment slots and hand slots
  */
 /obj/item/proc/dropped(mob/user, silent = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -67,7 +69,11 @@
 		zoom() //binoculars, scope, etc
 	appearance_flags &= ~NO_CLIENT_COLOR
 
-// called just as an item is picked up (loc is not yet changed)
+/**
+ * called when a mob picks up an item
+ *
+ * picking up is defined as moving into either an equipment slot, or hand slots
+ */
 /obj/item/proc/pickup(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)

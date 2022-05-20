@@ -186,6 +186,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 
 /datum/inventory_slot_meta/abstract/put_in_hands
 	name = "put in hands"
+	id = SLOT_ID_HANDS
 
 /datum/inventory_slot_meta/abstract/attach_as_accessory
 	name = "attach as accessory"

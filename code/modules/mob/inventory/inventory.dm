@@ -76,4 +76,6 @@
 
 /mob/proc/_unequip_slot(slot)
 
+/mob/proc/_slot_by_item(obj/item/I)
+
 /mob/proc/_item_in_slot(slot)
