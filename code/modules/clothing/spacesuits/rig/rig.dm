@@ -842,19 +842,19 @@
 
 	switch(piece)
 		if("helmet")
-			equip_to = slot_head
+			equip_to = SLOT_ID_HEAD
 			use_obj = helmet
 			check_slot = H.head
 		if("gauntlets")
-			equip_to = slot_gloves
+			equip_to = SLOT_ID_GLOVES
 			use_obj = gloves
 			check_slot = H.gloves
 		if("boots")
-			equip_to = slot_shoes
+			equip_to = SLOT_ID_SHOES
 			use_obj = boots
 			check_slot = H.shoes
 		if("chest")
-			equip_to = slot_wear_suit
+			equip_to = SLOT_ID_SUIT
 			use_obj = chest
 			check_slot = H.wear_suit
 

@@ -68,7 +68,7 @@
 	if(stripping)
 		visible_message("<span class='danger'>\The [user] is trying to remove \the [src]'s [target_slot.name]!</span>")
 	else
-		if(slot_to_strip == slot_wear_mask && istype(held, /obj/item/grenade))
+		if(slot_to_strip == SLOT_ID_MASK && istype(held, /obj/item/grenade))
 			visible_message("<span class='danger'>\The [user] is trying to put \a [held] in \the [src]'s mouth!</span>")
 		else
 			visible_message("<span class='danger'>\The [user] is trying to put \a [held] on \the [src]!</span>")

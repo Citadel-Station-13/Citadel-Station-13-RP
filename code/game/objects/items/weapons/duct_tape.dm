@@ -61,7 +61,7 @@
 					return
 
 				user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s eyes!</span>")
-				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/blindfold/tape(H), slot_glasses)
+				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/blindfold/tape(H), SLOT_ID_GLASSES)
 				H.update_inv_glasses()
 				playsound(src, 'sound/effects/tape.ogg',25)
 
@@ -100,7 +100,7 @@
 
 				user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s mouth!</span>")
 
-				H.equip_to_slot_or_del(new /obj/item/clothing/mask/muzzle/tape(H), slot_wear_mask)
+				H.equip_to_slot_or_del(new /obj/item/clothing/mask/muzzle/tape(H), SLOT_ID_MASK)
 				H.update_inv_wear_mask()
 				playsound(src, 'sound/effects/tape.ogg',25)
 

@@ -60,9 +60,9 @@
 //Called when spawning to equip them with special things.
 /datum/species/custom/equip_survival_gear(var/mob/living/carbon/human/H)
 	/* Example, from Vox:
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), SLOT_ID_MASK)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_back)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK)
 		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H), slot_r_hand)
 		H.internal = H.back
 	else

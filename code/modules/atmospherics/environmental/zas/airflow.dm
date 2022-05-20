@@ -89,7 +89,7 @@ Contains helper procs for airflow, handled in /connection_group.
 		return 0
 	if(buckled)
 		return 0
-	var/obj/item/shoes = get_equipped_item(slot_shoes)
+	var/obj/item/shoes = get_equipped_item(SLOT_ID_SHOES)
 	if(istype(shoes) && (shoes.clothing_flags & NOSLIP))
 		return 0
 	return 1

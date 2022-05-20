@@ -408,19 +408,19 @@
 
 	//Lastly, check special rules for the desired slot.
 	switch(slot)
-		if(slot_l_ear, slot_r_ear)
-			var/slot_other_ear = (slot == slot_l_ear)? slot_r_ear : slot_l_ear
+		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)
+			var/slot_other_ear = (slot == SLOT_ID_LEFT_EAR)? SLOT_ID_RIGHT_EAR : SLOT_ID_LEFT_EAR
 			if( (w_class > ITEMSIZE_TINY) && !(slot_flags & SLOT_EARS) )
 				return 0
 			if( (slot_flags & SLOT_TWOEARS) && H.get_equipped_item(slot_other_ear) )
 				return 0
-		if(slot_wear_id)
-			if(!H.w_uniform && (slot_w_uniform in mob_equip))
+		if(SLOT_ID_WORN_ID)
+			if(!H.w_uniform && (SLOT_ID_UNIFORM in mob_equip))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
 				return 0
-		if(slot_l_store, slot_r_store)
-			if(!H.w_uniform && (slot_w_uniform in mob_equip))
+		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
+			if(!H.w_uniform && (SLOT_ID_UNIFORM in mob_equip))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
 				return 0
@@ -428,8 +428,8 @@
 				return 0
 			if( w_class > ITEMSIZE_SMALL && !(slot_flags & SLOT_POCKET) )
 				return 0
-		if(slot_s_store)
-			if(!H.wear_suit && (slot_wear_suit in mob_equip))
+		if(SLOT_ID_SUIT_STORE)
+			if(!H.wear_suit && (SLOT_ID_SUIT in mob_equip))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a suit before you can attach this [name].</span>")
 				return 0

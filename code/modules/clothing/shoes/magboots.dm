@@ -48,7 +48,7 @@
 	if(H.shoes)
 		shoes = H.shoes
 		if(shoes.overshoes)
-			if(slot && slot == slot_shoes)
+			if(slot && slot == SLOT_ID_SHOES)
 				to_chat(user, "You are unable to wear \the [src] as \the [H.shoes] are in the way.")
 			shoes = null
 			return 0
@@ -57,12 +57,12 @@
 
 	if(!..())
 		if(shoes) 	//Put the old shoes back on if the check fails.
-			if(H.equip_to_slot_if_possible(shoes, slot_shoes))
+			if(H.equip_to_slot_if_possible(shoes, SLOT_ID_SHOES))
 				src.shoes = null
 		return 0
 
 	if (shoes)
-		if(slot && slot == slot_shoes)
+		if(slot && slot == SLOT_ID_SHOES)
 			to_chat(user, "You slip \the [src] on over \the [shoes].")
 	set_slowdown()
 	wearer = H
@@ -72,7 +72,7 @@
 	..()
 	var/mob/living/carbon/human/H = wearer
 	if(shoes)
-		if(!H.equip_to_slot_if_possible(shoes, slot_shoes))
+		if(!H.equip_to_slot_if_possible(shoes, SLOT_ID_SHOES))
 			shoes.forceMove(get_turf(src))
 		src.shoes = null
 	wearer = null

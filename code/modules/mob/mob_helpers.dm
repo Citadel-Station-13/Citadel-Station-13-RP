@@ -573,7 +573,7 @@ var/list/global/organ_rel_size = list(
 		return
 
 	//They may have hidden the icons in the bottom left with the hide button
-	if(!hud_used.inventory_shown && slot > slot_r_store)
+	if(!hud_used.inventory_shown && slot > SLOT_ID_RIGHT_POCKET)
 		item.screen_loc = null
 		return
 

@@ -459,7 +459,7 @@
 	var/obj/item/hat = blob.hat
 	blob.drop_hat()
 	drop_from_inventory(hat) // Hat me baby
-	equip_to_slot_if_possible(hat, slot_head)
+	equip_to_slot_if_possible(hat, SLOT_ID_HEAD)
 	nutrition = blob.nutrition // food good
 
 

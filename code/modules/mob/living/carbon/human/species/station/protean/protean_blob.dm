@@ -327,11 +327,11 @@
 		drop_from_inventory(I)
 
 
-	if(istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
-		drop_from_inventory(slot_gloves)
+	if(istype(SLOT_ID_GLOVES, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
+		drop_from_inventory(SLOT_ID_GLOVES)
 
-	if(istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
-		drop_from_inventory(slot_shoes)
+	if(istype(SLOT_ID_SHOES, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
+		drop_from_inventory(SLOT_ID_SHOES)
 
 	for(var/obj/item/radio/headset/HS in things_to_not_drop)
 		if(HS.keyslot1)

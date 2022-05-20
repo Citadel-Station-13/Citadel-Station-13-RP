@@ -16,7 +16,7 @@ BLIND     // can't see anything
 	icon = 'icons/obj/clothing/glasses.dmi'
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_EYES
-	plane_slots = list(slot_glasses)
+	plane_slots = list(SLOT_ID_GLASSES)
 	var/vision_flags = 0
 	var/darkness_view = 0//Base human is 2
 	var/see_invisible = -1
@@ -546,7 +546,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/sunglasses/sechud/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "tactical HUD"
@@ -602,7 +602,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/sunglasses/medhud/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(slot_glasses))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/thermal
 	name = "optical thermal scanner"

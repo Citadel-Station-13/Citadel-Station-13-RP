@@ -71,7 +71,7 @@
 	ToggleHood_roiz()
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/roiz/equipped(mob/user, slot)
-	if(slot != slot_wear_suit)
+	if(slot != SLOT_ID_SUIT)
 		RemoveHood_roiz()
 	..()
 
@@ -96,7 +96,7 @@
 				to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
 				return
 			else
-				H.equip_to_slot_if_possible(hood,slot_head,0,0,1)
+				H.equip_to_slot_if_possible(hood,SLOT_ID_HEAD,0,0,1)
 				hood_up = 1
 				icon_state = "coatroiz_t"
 				item_state = "coatroiz_mob_t"
@@ -1384,7 +1384,7 @@ END OF CITADEL CHANGES */
 	ToggleHood_kilano()
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/kilanocoat/equipped(mob/user, slot)
-	if(slot != slot_wear_suit)
+	if(slot != SLOT_ID_SUIT)
 		RemoveHood_kilano()
 	..()
 
@@ -1409,7 +1409,7 @@ END OF CITADEL CHANGES */
 				to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
 				return
 			else
-				H.equip_to_slot_if_possible(hood,slot_head,0,0,1)
+				H.equip_to_slot_if_possible(hood,SLOT_ID_HEAD,0,0,1)
 				hood_up = 1
 				icon_state = "kilanocoat_t"
 				item_state = "kilanocoat_mob_t"

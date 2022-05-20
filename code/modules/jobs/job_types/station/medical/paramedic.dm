@@ -39,7 +39,7 @@
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 	l_hand = /obj/item/storage/firstaid/regular
 	belt = /obj/item/storage/belt/medical/emt
-	pda_slot = slot_l_store
+	pda_slot = SLOT_ID_LEFT_POCKET
 	id_type = /obj/item/card/id/medical/paramedic
 	l_ear = /obj/item/radio/headset/headset_med
 	pda_type = /obj/item/pda/medical

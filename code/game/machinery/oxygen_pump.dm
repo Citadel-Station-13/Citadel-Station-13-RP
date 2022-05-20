@@ -80,7 +80,7 @@
 /obj/machinery/oxygen_pump/proc/attach_mask(mob/living/carbon/C)
 	if(C && istype(C))
 		contained.forceMove(get_turf(C))
-		C.equip_to_slot(contained, slot_wear_mask)
+		C.equip_to_slot(contained, SLOT_ID_MASK)
 		if(tank)
 			tank.forceMove(C)
 		breather = C

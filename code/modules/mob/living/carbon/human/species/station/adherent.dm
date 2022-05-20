@@ -179,11 +179,11 @@
 /datum/hud_data/adherent
 	has_internals = FALSE
 	gear = list(
-		"l_ear" = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = slot_l_ear,   "state" = "ears", "toggle" = 1),
-		"head" =  list("loc" = ui_glasses,   "name" = "Hat",      "slot" = slot_head,    "state" = "hair", "toggle" = 1),
-		"back" =  list("loc" = ui_back,      "name" = "Back",     "slot" = slot_back,    "state" = "back"),
-		"id" =    list("loc" = ui_id,        "name" = "ID",       "slot" = slot_wear_id, "state" = "id"),
-		"belt" =  list("loc" = ui_belt,      "name" = "Belt",     "slot" = slot_belt,    "state" = "belt")
+		"l_ear" = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = SLOT_ID_LEFT_EAR,   "state" = "ears", "toggle" = 1),
+		"head" =  list("loc" = ui_glasses,   "name" = "Hat",      "slot" = SLOT_ID_HEAD,    "state" = "hair", "toggle" = 1),
+		"back" =  list("loc" = ui_back,      "name" = "Back",     "slot" = SLOT_ID_BACK,    "state" = "back"),
+		"id" =    list("loc" = ui_id,        "name" = "ID",       "slot" = SLOT_ID_WORN_ID, "state" = "id"),
+		"belt" =  list("loc" = ui_belt,      "name" = "Belt",     "slot" = SLOT_ID_BELT,    "state" = "belt")
 	)
 
 /datum/species/adherent/post_organ_rejuvenate(var/obj/item/organ/org, var/mob/living/carbon/human/H)

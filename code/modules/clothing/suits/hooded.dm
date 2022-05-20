@@ -30,7 +30,7 @@
 	ToggleHood()
 
 /obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot)
-	if(slot != slot_wear_suit)
+	if(slot != SLOT_ID_SUIT)
 		RemoveHood()
 	..()
 
@@ -63,7 +63,7 @@
 					hood.flags |= PHORONGUARD
 				else
 					hood.flags &= ~PHORONGUARD
-				H.equip_to_slot_if_possible(hood,slot_head,0,0,1)
+				H.equip_to_slot_if_possible(hood,SLOT_ID_HEAD,0,0,1)
 				if(armor)
 					hood.armor = armor.Copy()
 				hood_up = TRUE

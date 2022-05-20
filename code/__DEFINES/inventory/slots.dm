@@ -47,24 +47,6 @@
 #define slot_l_hand      1
 ///Some things may reference this, try to keep it here
 #define slot_r_hand      2
-//Shown unless F12 pressed
-#define slot_back        3
-#define slot_wear_id     5
-#define slot_s_store     6
-#define slot_belt        4
-#define slot_l_store     7
-///Some things may reference this, try to keep it here
-#define slot_r_store     8
-//Shown when inventory unhidden
-#define slot_glasses     9
-#define slot_wear_mask   10
-#define slot_gloves      11
-#define slot_head        12
-#define slot_shoes       13
-#define slot_wear_suit   14
-#define slot_w_uniform   15
-#define slot_l_ear       16
-#define slot_r_ear       17
 //Secret slots
 #define slot_tie         18
 #define slot_handcuffed  19
@@ -74,18 +56,18 @@
 
 //Defines which slots correspond to which slot flags
 var/list/global/slot_flags_enumeration = list(
-	"[slot_wear_mask]" = SLOT_MASK,
-	"[slot_back]" = SLOT_BACK,
-	"[slot_wear_suit]" = SLOT_OCLOTHING,
-	"[slot_gloves]" = SLOT_GLOVES,
-	"[slot_shoes]" = SLOT_FEET,
-	"[slot_belt]" = SLOT_BELT,
-	"[slot_glasses]" = SLOT_EYES,
-	"[slot_head]" = SLOT_HEAD,
-	"[slot_l_ear]" = SLOT_EARS|SLOT_TWOEARS,
-	"[slot_r_ear]" = SLOT_EARS|SLOT_TWOEARS,
-	"[slot_w_uniform]" = SLOT_ICLOTHING,
-	"[slot_wear_id]" = SLOT_ID,
+	"[SLOT_ID_MASK]" = SLOT_MASK,
+	"[SLOT_ID_BACK]" = SLOT_BACK,
+	"[SLOT_ID_SUIT]" = SLOT_OCLOTHING,
+	"[SLOT_ID_GLOVES]" = SLOT_GLOVES,
+	"[SLOT_ID_SHOES]" = SLOT_FEET,
+	"[SLOT_ID_BELT]" = SLOT_BELT,
+	"[SLOT_ID_GLASSES]" = SLOT_EYES,
+	"[SLOT_ID_HEAD]" = SLOT_HEAD,
+	"[SLOT_ID_LEFT_EAR]" = SLOT_EARS|SLOT_TWOEARS,
+	"[SLOT_ID_RIGHT_EAR]" = SLOT_EARS|SLOT_TWOEARS,
+	"[SLOT_ID_UNIFORM]" = SLOT_ICLOTHING,
+	"[SLOT_ID_WORN_ID]" = SLOT_ID,
 	"[slot_tie]" = SLOT_TIE,
 	)
 

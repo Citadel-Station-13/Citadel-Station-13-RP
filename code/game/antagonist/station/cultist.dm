@@ -65,8 +65,8 @@ var/datum/antagonist/cultist/cult
 	var/obj/item/paper/talisman/supply/T = new(get_turf(player))
 	var/list/slots = list (
 		"backpack" = slot_in_backpack,
-		"left pocket" = slot_l_store,
-		"right pocket" = slot_r_store,
+		"left pocket" = SLOT_ID_LEFT_POCKET,
+		"right pocket" = SLOT_ID_RIGHT_POCKET,
 		"left hand" = slot_l_hand,
 		"right hand" = slot_r_hand,
 	)

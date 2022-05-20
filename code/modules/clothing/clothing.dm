@@ -87,7 +87,7 @@
 				if(H.species.get_bodytype_legacy(H) in species_restricted)
 					wearable = 1
 
-			if(!wearable && !(slot in list(slot_l_store, slot_r_store, slot_s_store)))
+			if(!wearable && !(slot in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET, SLOT_ID_SUIT_STORE)))
 				to_chat(H, "<span class='danger'>Your species cannot wear [src].</span>")
 				return 0
 	return 1
@@ -304,7 +304,7 @@
 /obj/item/clothing/gloves/mob_can_equip(mob/user, slot)
 	var/mob/living/carbon/human/H = user
 
-	if(slot && slot == slot_gloves)
+	if(slot && slot == SLOT_ID_GLOVES)
 		var/obj/item/clothing/gloves/G = H.gloves
 		if(istype(G))
 			ring = H.gloves
@@ -323,7 +323,7 @@
 
 	if(!..())
 		if(ring) //Put the ring back on if the check fails.
-			if(H.equip_to_slot_if_possible(ring, slot_gloves))
+			if(H.equip_to_slot_if_possible(ring, SLOT_ID_GLOVES))
 				src.ring = null
 		punch_force = initial(punch_force)
 		return 0
@@ -344,7 +344,7 @@
 
 /obj/item/clothing/gloves/proc/restore_over_objects(mob/living/carbon/human/wearer)
 	if(ring)
-		if(!wearer.equip_to_slot_if_possible(ring, slot_gloves))
+		if(!wearer.equip_to_slot_if_possible(ring, SLOT_ID_GLOVES))
 			ring.forceMove(get_turf(src))
 		ring = null
 
@@ -731,7 +731,7 @@
 	var/normalize = TRUE
 
 	//Pyramid of doom-y. Improve somehow?
-	if(!taurized && slot == slot_wear_suit && ishuman(user))
+	if(!taurized && slot == SLOT_ID_SUIT && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(isTaurTail(H.tail_style))
 			var/datum/sprite_accessory/tail/taur/taurtail = H.tail_style

@@ -36,13 +36,13 @@
 		return 0
 
 	var/obj/item/clothing/suit/A = new armor_type(src)
-	src.equip_to_slot_or_del(A, slot_wear_suit)
+	src.equip_to_slot_or_del(A, SLOT_ID_SUIT)
 
 	var/obj/item/clothing/suit/H = new helmet_type(src)
-	src.equip_to_slot_or_del(H, slot_head)
+	src.equip_to_slot_or_del(H, SLOT_ID_HEAD)
 
 	var/obj/item/clothing/shoes/B = new boot_type(src)
-	src.equip_to_slot_or_del(B, slot_shoes)
+	src.equip_to_slot_or_del(B, SLOT_ID_SHOES)
 
 	src.mind.changeling.chem_charges -= chem_cost
 	playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
@@ -134,7 +134,7 @@
 		var/t = stuff_to_equip["head"]
 		if(!M.head && t)
 			var/I = new t
-			M.equip_to_slot_or_del(I, slot_head)
+			M.equip_to_slot_or_del(I, SLOT_ID_HEAD)
 			grown_items_list.Add("a helmet")
 			playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
 			success = 1
@@ -143,7 +143,7 @@
 		t = stuff_to_equip["w_uniform"]
 		if(!M.w_uniform && t)
 			var/I = new t
-			M.equip_to_slot_or_del(I, slot_w_uniform)
+			M.equip_to_slot_or_del(I, SLOT_ID_UNIFORM)
 			grown_items_list.Add("a uniform")
 			playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
 			success = 1
@@ -152,7 +152,7 @@
 		t = stuff_to_equip["gloves"]
 		if(!M.gloves && t)
 			var/I = new t
-			M.equip_to_slot_or_del(I, slot_gloves)
+			M.equip_to_slot_or_del(I, SLOT_ID_GLOVES)
 			grown_items_list.Add("some gloves")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
@@ -161,7 +161,7 @@
 		t = stuff_to_equip["shoes"]
 		if(!M.shoes && t)
 			var/I = new t
-			M.equip_to_slot_or_del(I, slot_shoes)
+			M.equip_to_slot_or_del(I, SLOT_ID_SHOES)
 			grown_items_list.Add("shoes")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
@@ -170,7 +170,7 @@
 		t = stuff_to_equip["belt"]
 		if(!M.belt && t)
 			var/I = new t
-			M.equip_to_slot_or_del(I, slot_belt)
+			M.equip_to_slot_or_del(I, SLOT_ID_BELT)
 			grown_items_list.Add("a belt")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
@@ -179,7 +179,7 @@
 		t = stuff_to_equip["glasses"]
 		if(!M.glasses && t)
 			var/I = new t
-			M.equip_to_slot_or_del(I, slot_glasses)
+			M.equip_to_slot_or_del(I, SLOT_ID_GLASSES)
 			grown_items_list.Add("some glasses")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
@@ -188,7 +188,7 @@
 		t = stuff_to_equip["wear_mask"]
 		if(!M.wear_mask && t)
 			var/I = new t
-			M.equip_to_slot_or_del(I, slot_wear_mask)
+			M.equip_to_slot_or_del(I, SLOT_ID_MASK)
 			grown_items_list.Add("a mask")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
@@ -197,7 +197,7 @@
 		t = stuff_to_equip["back"]
 		if(!M.back && t)
 			var/I = new t
-			M.equip_to_slot_or_del(I, slot_back)
+			M.equip_to_slot_or_del(I, SLOT_ID_BACK)
 			grown_items_list.Add("a backpack")
 			playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
 			success = 1
@@ -206,7 +206,7 @@
 		t = stuff_to_equip["wear_suit"]
 		if(!M.wear_suit && t)
 			var/I = new t
-			M.equip_to_slot_or_del(I, slot_wear_suit)
+			M.equip_to_slot_or_del(I, SLOT_ID_SUIT)
 			grown_items_list.Add("an exosuit")
 			playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
 			success = 1
@@ -215,7 +215,7 @@
 		t = stuff_to_equip["wear_id"]
 		if(!M.wear_id && t)
 			var/I = new t
-			M.equip_to_slot_or_del(I, slot_wear_id)
+			M.equip_to_slot_or_del(I, SLOT_ID_WORN_ID)
 			grown_items_list.Add("an ID card")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
@@ -224,7 +224,7 @@
 		var/feedback = english_list(grown_items_list, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
 
 		to_chat(M, "<span class='notice'>We have grown [feedback].</span>")
-	
+
 		if(success)
 			M.mind.changeling.armor_deployed = 1
 			M.mind.changeling.chem_charges -= 10

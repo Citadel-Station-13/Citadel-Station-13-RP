@@ -246,7 +246,7 @@
 
 /obj/structure/medical_stand/proc/attach_mask(var/mob/living/carbon/C)
 	if(C && istype(C))
-		if(C.equip_to_slot_if_possible(contained, slot_wear_mask))
+		if(C.equip_to_slot_if_possible(contained, SLOT_ID_MASK))
 			if(tank)
 				tank.forceMove(C)
 			breather = C

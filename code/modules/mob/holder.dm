@@ -193,7 +193,7 @@
 	if(self_grab)
 		to_chat(grabber, "<span class='notice'>\The [src] clambers onto you!</span>")
 		to_chat(src, "<span class='notice'>You climb up onto \the [grabber]!</span>")
-		grabber.equip_to_slot_if_possible(H, slot_back, 0, 1)
+		grabber.equip_to_slot_if_possible(H, SLOT_ID_BACK, 0, 1)
 	else
 		to_chat(grabber, "<span class='notice'>You scoop up \the [src]!</span>")
 		to_chat(src, "<span class='notice'>\The [grabber] scoops you up!</span>")

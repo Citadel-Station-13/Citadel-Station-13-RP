@@ -104,28 +104,28 @@
 		return
 
 	if(boots)
-		if (H.equip_to_slot_if_possible(boots, slot_shoes))
+		if (H.equip_to_slot_if_possible(boots, SLOT_ID_SHOES))
 			to_chat(M, "Your suit's magboots deploy with a click.")
 			boots.canremove = 0
 
 	if(helmet)
 		if(H.head)
 			to_chat(M, "You are unable to deploy your suit's helmet as \the [H.head] is in the way.")
-		else if (H.equip_to_slot_if_possible(helmet, slot_head))
+		else if (H.equip_to_slot_if_possible(helmet, SLOT_ID_HEAD))
 			to_chat(M, "Your suit's helmet deploys with a hiss.")
 			helmet.canremove = 0
 
 	if(tank)
 		if(H.s_store) //In case someone finds a way.
 			to_chat(M, "Alarmingly, the valve on your suit's installed tank fails to engage.")
-		else if (H.equip_to_slot_if_possible(tank, slot_s_store))
+		else if (H.equip_to_slot_if_possible(tank, SLOT_ID_SUIT_STORE))
 			to_chat(M, "The valve on your suit's installed tank safely engages.")
 			tank.canremove = 0
 
 	if(cooler)
 		if(H.s_store) //Ditto
 			to_chat(M, "Alarmingly, the cooling unit installed into your suit fails to deploy.")
-		else if (H.equip_to_slot_if_possible(cooler, slot_s_store))
+		else if (H.equip_to_slot_if_possible(cooler, SLOT_ID_SUIT_STORE))
 			to_chat(M, "Your suit's cooling unit deploys.")
 			cooler.canremove = 0
 
@@ -190,7 +190,7 @@
 		if(H.head)
 			to_chat(H, "<span class='danger'>You cannot deploy your helmet while wearing \the [H.head].</span>")
 			return
-		if(H.equip_to_slot_if_possible(helmet, slot_head))
+		if(H.equip_to_slot_if_possible(helmet, SLOT_ID_HEAD))
 			helmet.pickup(H)
 			helmet.canremove = 0
 			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
@@ -224,7 +224,7 @@
 		H.drop_from_inventory(boots)
 		boots.forceMove(src)
 	else
-		if(H.equip_to_slot_if_possible(boots, slot_shoes))
+		if(H.equip_to_slot_if_possible(boots, SLOT_ID_SHOES))
 			boots.pickup(H)
 			boots.canremove = 0
 			to_chat(H, "<span class='info'>You deploy your magboots.</span>")
@@ -270,7 +270,7 @@
 	if(istype(W,/obj/item/clothing/accessory) || istype(W, /obj/item/hand_labeler))
 		return ..()
 
-	if(user.get_inventory_slot(src) == slot_wear_suit)
+	if(user.get_inventory_slot(src) == SLOT_ID_SUIT)
 		to_chat(user, "<span class='warning'>You cannot modify \the [src] while it is being worn.</span>")
 		return
 

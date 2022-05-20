@@ -31,7 +31,7 @@
 
 	if(!..())
 		if(gloves)
-			if(H.equip_to_slot_if_possible(gloves, slot_gloves))
+			if(H.equip_to_slot_if_possible(gloves, SLOT_ID_GLOVES))
 				gloves = null
 			return 0
 	if(gloves)
@@ -49,6 +49,6 @@
 		ring = null
 	. = ..()
 	if(gloves)
-		if(!wearer.equip_to_slot_if_possible(gloves, slot_gloves))
+		if(!wearer.equip_to_slot_if_possible(gloves, SLOT_ID_GLOVES))
 			gloves.forceMove(get_turf(src))
 		gloves = null

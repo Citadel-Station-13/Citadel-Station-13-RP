@@ -50,5 +50,5 @@
 	backpack = /obj/item/storage/backpack/industrial
 	satchel_one = /obj/item/storage/backpack/satchel/eng
 	messenger_bag = /obj/item/storage/backpack/messenger/engi
-	pda_slot = slot_l_store
+	pda_slot = SLOT_ID_LEFT_POCKET
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL

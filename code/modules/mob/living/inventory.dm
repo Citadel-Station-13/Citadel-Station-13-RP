@@ -88,8 +88,8 @@
 	switch(slot)
 		if(slot_l_hand) return l_hand
 		if(slot_r_hand) return r_hand
-		if(slot_back) return back
-		if(slot_wear_mask) return wear_mask
+		if(SLOT_ID_BACK) return back
+		if(SLOT_ID_MASK) return wear_mask
 	return null
 
 /mob/living/show_inv(mob/user as mob)

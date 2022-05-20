@@ -158,7 +158,7 @@
 	. = ..()
 	if(!iscarbon(user))
 		return
-	if(slot != slot_wear_mask)
+	if(slot != SLOT_ID_MASK)
 		owner = null
 		STOP_PROCESSING(SSobj, src) //equipped is triggered when moving from hands to mouth and vice versa
 		return

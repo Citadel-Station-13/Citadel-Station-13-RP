@@ -175,7 +175,7 @@
 
 /obj/item/clothing/head/pilot/equipped(var/mob/user,var/slot)
 	. = ..()
-	if(slot == slot_head && user.client)
+	if(slot == SLOT_ID_HEAD && user.client)
 		user.client.screen |= pilot_hud
 		user.client.images |= raw_images
 

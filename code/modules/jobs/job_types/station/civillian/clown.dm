@@ -35,9 +35,9 @@
 	uniform = /obj/item/clothing/under/rank/clown
 	mask = /obj/item/clothing/mask/gas/clown_hat
 	l_ear = /obj/item/radio/headset
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/civilian
-	pda_slot = slot_belt
+	pda_slot = SLOT_ID_BELT
 	pda_type = /obj/item/pda/clown
 	backpack = /obj/item/storage/backpack/clown
 	r_pocket = /obj/item/bikehorn

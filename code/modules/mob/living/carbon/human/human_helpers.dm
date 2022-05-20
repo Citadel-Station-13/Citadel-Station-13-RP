@@ -154,7 +154,7 @@
 
 	//These things are allowed to add vision flags.
 	//If you code some crazy item that goes on your feet that lets you see ghosts, you need to add a slot here.
-	var/list/slots = list(slot_glasses,slot_head)
+	var/list/slots = list(SLOT_ID_GLASSES,SLOT_ID_HEAD)
 	var/list/compiled_vis = list()
 
 	for(var/slot in slots)

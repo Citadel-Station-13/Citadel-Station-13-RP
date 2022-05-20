@@ -861,9 +861,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(!istype(M))
 		return 0 //not equipped
 
-	if((slot_flags & SLOT_BACK) && M.get_equipped_item(slot_back) == src)
+	if((slot_flags & SLOT_BACK) && M.get_equipped_item(SLOT_ID_BACK) == src)
 		return 1
-	if((slot_flags & SLOT_BACK) && M.get_equipped_item(slot_s_store) == src)
+	if((slot_flags & SLOT_BACK) && M.get_equipped_item(SLOT_ID_SUIT_STORE) == src)
 		return 1
 
 	return 0

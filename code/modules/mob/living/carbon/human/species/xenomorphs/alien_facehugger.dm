@@ -149,7 +149,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 			target.visible_message("<span class='danger'><b> [src] tears [W] off of [target]'s face!</b></span>")
 
-		target.equip_to_slot(src, slot_wear_mask)
+		target.equip_to_slot(src, SLOT_ID_MASK)
 		target.contents += src // Monkey sanity check - Snapshot
 
 		if(!sterile) L.Paralyse(MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings
@@ -410,7 +410,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 			target.visible_message("<span class='danger'><b> [src] tears [W] off of [target]'s face!</b></span>")
 
-		target.equip_to_slot(src, slot_wear_mask)
+		target.equip_to_slot(src, SLOT_ID_MASK)
 		target.contents += src // Monkey sanity check - Snapshot
 
 		if(!sterile) L.Paralyse(MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings

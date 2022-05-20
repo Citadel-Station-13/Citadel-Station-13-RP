@@ -6,9 +6,9 @@
 	l_ear = /obj/item/radio/headset/heads/hop
 	glasses = /obj/item/clothing/glasses/sunglasses
 
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/centcom	//station
-	pda_slot = slot_r_store
+	pda_slot = SLOT_ID_RIGHT_POCKET
 	pda_type = /obj/item/pda/heads
 
 /datum/outfit/nanotrasen/representative

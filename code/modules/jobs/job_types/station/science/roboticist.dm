@@ -43,7 +43,7 @@
 	shoes = /obj/item/clothing/shoes/black
 	belt = /obj/item/storage/belt/utility/full
 	id_type = /obj/item/card/id/science/roboticist
-	pda_slot = slot_r_store
+	pda_slot = SLOT_ID_RIGHT_POCKET
 	pda_type = /obj/item/pda/roboticist
 	backpack = /obj/item/storage/backpack
 	satchel_one = /obj/item/storage/backpack/satchel/norm

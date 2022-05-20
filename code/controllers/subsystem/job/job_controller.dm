@@ -403,7 +403,7 @@ var/global/datum/controller/occupations/job_master
 					// sigh.
 					var/metadata = H.client.prefs.gear[G.name]
 					if(G.slot && !(G.slot in custom_equip_slots))
-						if(G.slot == slot_wear_mask || G.slot == slot_wear_suit || G.slot == slot_head)
+						if(G.slot == SLOT_ID_MASK || G.slot == SLOT_ID_SUIT || G.slot == SLOT_ID_HEAD)
 							custom_equip_leftovers[thing] = metadata
 						else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
 							to_chat(H, "<span class='notice'>Equipping you with \the [G.display_name]!</span>")
@@ -511,7 +511,7 @@ var/global/datum/controller/occupations/job_master
 		if(job.supervisors)
 			to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
 		if(job.has_headset)
-			H.equip_to_slot_or_del(new /obj/item/radio/headset(H), slot_l_ear)
+			H.equip_to_slot_or_del(new /obj/item/radio/headset(H), SLOT_ID_LEFT_EAR)
 			to_chat(H, "<b>To speak on your department's radio channel use :h. For the use of other channels, examine your headset.</b>")
 
 		if(job.req_admin_notify)
@@ -544,7 +544,7 @@ var/global/datum/controller/occupations/job_master
 
 		//Gives glasses to the vision impaired
 		if(H.disabilities & NEARSIGHTED)
-			var/equipped = H.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(H), slot_glasses)
+			var/equipped = H.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(H), SLOT_ID_GLASSES)
 			if(equipped != 1)
 				var/obj/item/clothing/glasses/G = H.glasses
 				G.prescription = 1

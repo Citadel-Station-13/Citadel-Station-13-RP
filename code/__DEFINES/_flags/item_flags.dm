@@ -50,7 +50,7 @@
 /// Prevents from slipping on frozen floors
 #define NOSLIP_ICE				(1<<5)
 */
-/// Prevents syringes, parapens and hyposprays if equipped to slot_suit or slot_head.
+/// Prevents syringes, parapens and hyposprays if equipped to slot_suit or SLOT_ID_HEAD.
 #define THICKMATERIAL			(1<<6)
 /*
 /// The voicebox in this clothing can be toggled.

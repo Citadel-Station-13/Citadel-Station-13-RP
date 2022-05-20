@@ -165,7 +165,7 @@
 
 /obj/item/clothing/mask/ai/equipped(var/mob/user, var/slot)
 	..(user, slot)
-	if(slot == slot_wear_mask)
+	if(slot == SLOT_ID_MASK)
 		eye.owner = user
 		user.eyeobj = eye
 
@@ -211,12 +211,12 @@
 
 /obj/item/clothing/mask/bandana/equipped(var/mob/user, var/slot)
 	switch(slot)
-		if(slot_wear_mask) //Mask is the default for all the settings
+		if(SLOT_ID_MASK) //Mask is the default for all the settings
 			flags_inv = initial(flags_inv)
 			body_parts_covered = initial(body_parts_covered)
 			icon_state = initial(icon_state)
 
-		if(slot_head)
+		if(SLOT_ID_HEAD)
 			flags_inv = 0
 			body_parts_covered = HEAD
 			icon_state = "[initial(icon_state)]_up"
