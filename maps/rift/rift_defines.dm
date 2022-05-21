@@ -1,27 +1,29 @@
 //Normal map defs
-#define Z_LEVEL_UNDERGROUND_DEEP		2
-#define Z_LEVEL_UNDERGROUND				3
-#define Z_LEVEL_SURFACE_LOW				4
-#define Z_LEVEL_SURFACE_MID				5
-#define Z_LEVEL_SURFACE_HIGH			6
+#define Z_LEVEL_UNDERGROUND_FLOOR		2
+#define Z_LEVEL_UNDERGROUND_DEEP		3
+#define Z_LEVEL_UNDERGROUND				4
+#define Z_LEVEL_SURFACE_LOW				5
+#define Z_LEVEL_SURFACE_MID				6
+#define Z_LEVEL_SURFACE_HIGH			7
 
-#define Z_LEVEL_WEST_BASE				7
-#define Z_LEVEL_WEST_CAVERN				8
-#define Z_LEVEL_WEST_PLAIN				9
+#define Z_LEVEL_WEST_BASE				8
+#define Z_LEVEL_WEST_CAVERN				9
+#define Z_LEVEL_WEST_DEEP				10
+#define Z_LEVEL_WEST_PLAIN				11
 
-#define Z_LEVEL_MISC					10
+#define Z_LEVEL_MISC					12
 
-#define Z_LEVEL_DEBRISFIELD				11
-#define Z_LEVEL_PIRATEBASE				12
-#define Z_LEVEL_MININGPLANET			13 // CLASS G
-#define Z_LEVEL_UNKNOWN_PLANET			14 // CLASS D
-#define Z_LEVEL_DESERT_PLANET			15 // CLASS H
-#define Z_LEVEL_GAIA_PLANET				16 // CLASS M
-#define Z_LEVEL_FROZEN_PLANET			17 // CLASS P
-#define Z_LEVEL_TRADEPORT				18
+#define Z_LEVEL_DEBRISFIELD				13
+#define Z_LEVEL_PIRATEBASE				14
+#define Z_LEVEL_MININGPLANET			15 // CLASS G
+#define Z_LEVEL_UNKNOWN_PLANET			16 // CLASS D
+#define Z_LEVEL_DESERT_PLANET			17 // CLASS H
+#define Z_LEVEL_GAIA_PLANET				18 // CLASS M
+#define Z_LEVEL_FROZEN_PLANET			19 // CLASS P
+#define Z_LEVEL_TRADEPORT				20
 
-#define Z_LEVEL_LAVALAND				19
-#define Z_LEVEL_LAVALAND_EAST			20
+#define Z_LEVEL_LAVALAND				21
+#define Z_LEVEL_LAVALAND_EAST			22
 
 /datum/map/rift
 	name = "Rift"
@@ -54,7 +56,8 @@
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_WEST_BASE,
 		Z_LEVEL_WEST_PLAIN)
-	player_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
+	player_levels = list(Z_LEVEL_UNDERGROUND_FLOOR,
+		Z_LEVEL_UNDERGROUND_DEEP,
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
@@ -198,7 +201,9 @@
 
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_WEST_CAVERN, 64, 64)         // Create the mining ore distribution map.
+	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_WEST_DEEP, 64, 64)         // Create the mining ore distribution map.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_WEST_BASE, 64, 64)         // Create the mining ore distribution map.
+	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, 64, 64)         // Create the mining ore distribution map.
 
 	return 1
 
@@ -215,6 +220,12 @@
 	holomap_legend_x = 220
 	holomap_legend_y = 160
 */
+/datum/map_z_level/rift/station/underground_floor
+	z = Z_LEVEL_UNDERGROUND_FLOOR
+	name = "Eastern Canyon"
+	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
+
 /datum/map_z_level/rift/station/underground_deep
 	z = Z_LEVEL_UNDERGROUND_DEEP
 	name = "Underground 2"
@@ -258,11 +269,17 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
 
+/datum/map_z_level/rift/deep
+	z = Z_LEVEL_WEST_DEEP
+	name = "Western Deep Caves"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/open
+
 /datum/map_z_level/rift/caves
 	z = Z_LEVEL_WEST_CAVERN
 	name = "Western Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/open
+	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
 
 /datum/map_z_level/rift/plains
 	z = Z_LEVEL_WEST_PLAIN
