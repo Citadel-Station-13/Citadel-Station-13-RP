@@ -26,7 +26,7 @@
 /mob/living/put_in_inactive_hand(obj/item/I, force)
 	return hand? put_in_r_hand(I, force) : put_in_l_hand(I, force)
 
-/mob/living/get_held_item_of_index)(index)
+/mob/living/get_held_item_of_index(index)
 	switch(index)
 		if(1)
 			return l_hand
