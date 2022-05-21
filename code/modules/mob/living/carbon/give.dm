@@ -8,7 +8,7 @@
 	if(!istype(target) || target.stat || target.lying || target.resting || target.handcuffed || target.client == null)
 		return
 
-	var/obj/item/I = src.get_active_hand()
+	var/obj/item/I = src.get_active_held_item()
 	if(!I)
 		I = src.get_inactive_hand()
 	if(!I)

@@ -136,7 +136,7 @@
 				inserted_id.mining_points += machine.points
 				machine.points = 0
 		else if(href_list["choice"] == "insert")
-			var/obj/item/card/id/I = usr.get_active_hand()
+			var/obj/item/card/id/I = usr.get_active_held_item()
 			if(istype(I))
 				usr.drop_item()
 				I.forceMove(src)

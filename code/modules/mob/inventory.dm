@@ -23,7 +23,7 @@ var/list/slot_equipment_priority = list( \
 
 //This proc is called whenever someone clicks an inventory ui slot.
 /mob/proc/attack_ui(var/slot)
-	var/obj/item/W = get_active_hand()
+	var/obj/item/W = get_active_held_item()
 
 	var/obj/item/E = get_equipped_item(slot)
 	if (istype(E))
@@ -62,11 +62,6 @@ var/list/slot_equipment_priority = list( \
 	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
 	return 1
 
-//This is an UNSAFE proc. It merely handles the actual job of equipping. All the checks on whether you can or can't eqip need to be done before! Use mob_can_equip() for that task.
-//In most cases you will want to use equip_to_slot_if_possible()
-/mob/proc/equip_to_slot(obj/item/W as obj, slot)
-	return
-
 //This is just a commonly used configuration for the equip_to_slot_if_possible() proc, used to equip people when the rounds tarts and when events happen and such.
 /mob/proc/equip_to_slot_or_del(obj/item/W as obj, slot)
 	return equip_to_slot_if_possible(W, slot, 1, 1, 0)
@@ -85,7 +80,7 @@ var/list/slot_equipment_priority = list( \
 	return 0
 
 /obj/item/proc/equip_to_best_slot(mob/M)
-	if(src != M.get_active_hand())
+	if(src != M.get_active_held_item())
 		to_chat(M, "<span class='warning'>You are not holding anything to equip!</span>")
 		return FALSE
 
@@ -103,7 +98,7 @@ var/list/slot_equipment_priority = list( \
 		possible += M:belt
 	if(M.vars.Find("back"))
 		possible += M:back
-	possible += M.get_inactive_hand()
+	possible += M.get_inactive_held_item()
 
 	for(var/i in possible)
 		if(!i)
@@ -133,7 +128,7 @@ var/list/slot_equipment_priority = list( \
 	// If the item is a stack and we're already holding a stack then merge
 	if (istype(I, /obj/item/stack))
 		var/obj/item/stack/I_stack = I
-		var/obj/item/stack/active_stack = get_active_hand()
+		var/obj/item/stack/active_stack = get_active_held_item()
 
 		if (I_stack.zero_amount())
 			return FALSE
@@ -144,7 +139,7 @@ var/list/slot_equipment_priority = list( \
 					to_chat(usr, "<span class='notice'>Your [active_stack.name] stack now contains [active_stack.get_amount()] [active_stack.singular_name]\s.</span>")
 					return TRUE
 			else
-				var/obj/item/stack/inactive_stack = get_inactive_hand()
+				var/obj/item/stack/inactive_stack = get_inactive_held_item()
 				if (istype(inactive_stack) && istype(I_stack, inactive_stack.stacktype))
 					if (I_stack.merge(inactive_stack))
 						to_chat(usr, "<span class='notice'>Your [inactive_stack.name] stack now contains [inactive_stack.get_amount()] [inactive_stack.singular_name]\s.</span>")

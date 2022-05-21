@@ -469,7 +469,7 @@ emp_act
 
 // This does a prob check to catch the thing flying at you, with a minimum of 1%
 /mob/living/carbon/human/proc/can_catch(var/obj/O)
-	if(!get_active_hand())	// If active hand is empty
+	if(!get_active_held_item())	// If active hand is empty
 		var/obj/item/organ/external/temp = organs_by_name["r_hand"]
 		if (hand)
 			temp = organs_by_name["l_hand"]

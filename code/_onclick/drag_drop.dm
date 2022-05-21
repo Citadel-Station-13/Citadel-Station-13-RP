@@ -68,14 +68,14 @@
 /mob/living/carbon/CanMobAutoclick(atom/object, location, params)
 	if(!object.IsAutoclickable())
 		return
-	var/obj/item/h = get_active_hand()
+	var/obj/item/h = get_active_held_item()
 	if(h)
 		. = h.CanItemAutoclick(object, location, params)
 
 /mob/proc/canMobMousedown(atom/object, location, params)
 
 /mob/living/carbon/canMobMousedown(atom/object, location, params)
-	var/obj/item/H = get_active_hand()
+	var/obj/item/H = get_active_held_item()
 	if(H)
 		. = H.canItemMouseDown(object, location, params)
 

@@ -17,6 +17,49 @@
 	if(r_hand)
 		. += r_hand
 
+/mob/living/hands_full()
+	return l_hand && r_hand
+
+/mob/living/put_in_active_hawd(obj/item/I, force)
+	return hand? put_in_l_hand(I, force) : put_in_r_hand(I, force)
+
+/mob/living/put_in_inactive_hand(obj/item/I, force)
+	return hand? put_in_r_hand(I, force) : put_in_l_hand(I, force)
+
+/mob/living/get_held_item_of_index)(index)
+	switch(index)
+		if(1)
+			return l_hand
+		if(2)
+			return r_hand
+
+/mob/living/get_number_of_hands()
+	return 2
+
+#warn impl
+
+#warn has_hands var or something else?
+/mob/living/put_in_l_hand(obj/item/I, force)
+
+/mob/living/put_in_r_hand(obj/item/I, force)
+
+/mob/living/put_in_hand(obj/item/I, index, force)
+	switch(index)
+		if(1)
+			return put_in_l_hand(I, force)
+		if(2)
+			return put_in_r_hand(I, force)
+
+
+
+
+
+
+
+
+
+
+
 
 /mob/living/equip_to_storage(obj/item/newitem)
 	// Try put it in their backpack
@@ -33,53 +76,12 @@
 			return 1
 	return 0
 
-//Returns the thing in our active hand
-/mob/living/get_active_hand()
-	if(hand)	return l_hand
-	else		return r_hand
-
-//Returns the thing in our inactive hand
-/mob/living/get_inactive_hand()
-	if(hand)	return r_hand
-	else		return l_hand
-
-//Drops the item in our active hand. TODO: rename this to drop_active_hand or something
-/mob/living/drop_item(var/atom/Target)
-	if(hand)	return drop_l_hand(Target)
-	else		return drop_r_hand(Target)
-
-//Drops the item in our left hand
-/mob/living/drop_l_hand(var/atom/Target)
-	return drop_from_inventory(l_hand, Target)
-
-//Drops the item in our right hand
-/mob/living/drop_r_hand(var/atom/Target)
-	return drop_from_inventory(r_hand, Target)
-
-/mob/living/proc/hands_are_full()
-	return (r_hand && l_hand)
-
-/mob/living/proc/item_is_in_hands(var/obj/item/I)
-	return (I == r_hand || I == l_hand)
 
 /mob/living/proc/update_held_icons()
 	if(l_hand)
 		l_hand.update_held_icon()
 	if(r_hand)
 		r_hand.update_held_icon()
-
-/mob/living/proc/get_type_in_hands(var/T)
-	if(istype(l_hand, T))
-		return l_hand
-	if(istype(r_hand, T))
-		return r_hand
-	return null
-
-/mob/living/proc/get_left_hand()
-	return l_hand
-
-/mob/living/proc/get_right_hand()
-	return r_hand
 
 /mob/living/u_equip(obj/W as obj)
 	if (W == r_hand)

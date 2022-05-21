@@ -174,7 +174,7 @@
 	if(isrobot(user.mob)) //cyborgs can't drop items
 		return FALSE
 	var/mob/M = user.mob
-	var/obj/item/I = M.get_active_hand()
+	var/obj/item/I = M.get_active_held_item()
 	if(!I)
 		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
 	else

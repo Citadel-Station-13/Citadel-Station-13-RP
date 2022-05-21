@@ -64,7 +64,7 @@
 			src.state = STATE_DEFAULT
 		if("login")
 			var/mob/M = usr
-			var/obj/item/card/id/I = M.get_active_hand()
+			var/obj/item/card/id/I = M.get_active_held_item()
 			if (istype(I, /obj/item/pda))
 				var/obj/item/pda/pda = I
 				I = pda.id

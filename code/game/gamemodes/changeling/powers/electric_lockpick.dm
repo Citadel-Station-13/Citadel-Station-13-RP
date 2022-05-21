@@ -15,7 +15,7 @@
 
 	var/datum/changeling/changeling = changeling_power(5,0,100,CONSCIOUS)
 
-	var/obj/held_item = get_active_hand()
+	var/obj/held_item = get_active_held_item()
 
 	if(!changeling)
 		return 0

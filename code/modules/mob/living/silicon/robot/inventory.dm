@@ -2,7 +2,7 @@
 //as they handle all relevant stuff like adding it to the player's screen and such
 
 //Returns the thing in our active hand (whatever is in our active module-slot, in this case)
-/mob/living/silicon/robot/get_active_hand()
+/mob/living/silicon/robot/get_active_held_item()
 	return module_active
 
 /*-------TODOOOOOOOOOO--------*/
@@ -251,6 +251,8 @@
 			sight_mode |= module_state_3:sight_mode
 	else
 		to_chat(src, "<span class='notice'>You need to disable a module first!</span>")
+
+#warn ughghwiejrtiw splice in wrappers for all inv procs
 
 /mob/living/silicon/robot/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE)
 	I.forceMove(drop_location())

@@ -91,7 +91,7 @@
 	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
 		return 1
 	if(master)
-		var/obj/item/I = usr.get_active_hand()
+		var/obj/item/I = usr.get_active_held_item()
 		if(I)
 			usr.ClickOn(master)
 	return 1
@@ -272,7 +272,7 @@
 							var/list/tanks = list()
 							// first, hand
 							locnames += "in your hand"
-							tanks += C.get_active_hand()
+							tanks += C.get_active_held_item()
 							// yes, the above can result in duplicates.
 							// snowflake rig handling, second highest priority
 							if(istype(C.back, /obj/item/rig))

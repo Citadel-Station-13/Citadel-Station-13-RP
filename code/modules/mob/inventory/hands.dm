@@ -1,11 +1,14 @@
 
 #warn impl - check overrides too
 
-/mob/proc/put_in_hands
+/mob/proc/put_in_hands(obj/item/I, force)
+	return put_in_active_hand(I, force) || put_in_inactive_hand(I, force)
 
-/mob/proc/put_in_r_hand
+/mob/proc/put_in_r_hand(obj/item/I, force)
+	return FALSE
 
-/mob/proc/put_in_l_hand
+/mob/proc/put_in_l_hand(obj/item/I, force)
+	return FALSE
 
 /**
  * returns held items
@@ -14,30 +17,69 @@
 	. = list()
 
 /**
+ * get held items of type
+ */
+/mob/proc/get_held_items_of_type(type)
+	. = list()
+	for(var/obj/item/I as anything in get_held_items())
+		if(istype(I, type))
+			. += I
+
+/**
+ * get first held item of type
+ */
+/mob/proc/get_held_item_of_type(type)
+	for(var/obj/item/I as anything in get_held_items())
+		if(istype(I, type))
+			return I
+
+/**
  * return index of item, or null if not found
  */
 /mob/proc/get_held_index(obj/item/I)
+	return
 
 /**
  * get held item item at index
  */
 /mob/proc/get_held_item_of_index(index)
+	return FALSE
 
 /mob/proc/put_in_active_hand(obj/item/I, force)
+	return FALSE
 
 /mob/proc/put_in_inactive_hand(obj/item/I, force)
+	return FALSE
 
-/mob/proc/put_in_hand(obj/item/I, index, force))
+/mob/proc/put_in_hand(obj/item/I, index, force)
+	return FALSE
+
+/**
+ * hands are full?
+ */
+/mob/proc/hands_full()
+	return FALSE
 
 /**
  * returns held item in active hand
  */
 /mob/proc/get_active_held_item()
+	return
 
 /**
  * returns held item in inactive hand (or any inactive hand if more than 1)
  */
 /mob/proc/get_inactive_held_item()
+	return
+
+/**
+ * get number of hand slots
+ * 
+ * semantically this means "physically there"
+ * a broken hand is still there, a stump isn't
+ */
+/mob/proc/get_number_of_hands()
+	return 0
 
 /**
  * returns if we are holding something

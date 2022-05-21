@@ -164,7 +164,7 @@
 	var/obj/item/spacecash/SC = new (spawnloc)
 
 	SC.set_worth(sum)
-	if (ishuman(human_user) && !human_user.get_active_hand())
+	if (ishuman(human_user) && !human_user.get_active_held_item())
 		human_user.put_in_hands(SC)
 
 /obj/item/spacecash/ewallet

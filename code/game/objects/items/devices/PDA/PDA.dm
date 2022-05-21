@@ -1070,7 +1070,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(O)
 		if(istype(loc, /mob))
 			var/mob/M = loc
-			if(M.get_active_hand() == null)
+			if(M.get_active_held_item() == null)
 				M.put_in_hands(O)
 				to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
 				return
@@ -1277,13 +1277,13 @@ GLOBAL_LIST_EMPTY(PDAs)
 			remove_id()
 			return 1
 		else
-			var/obj/item/I = user.get_active_hand()
+			var/obj/item/I = user.get_active_held_item()
 			if (istype(I, /obj/item/card/id) && user.unEquip(I))
 				I.loc = src
 				id = I
 			return 1
 	else
-		var/obj/item/card/I = user.get_active_hand()
+		var/obj/item/card/I = user.get_active_held_item()
 		if (istype(I, /obj/item/card/id) && I:registered_name && user.unEquip(I))
 			var/obj/old_id = id
 			I.loc = src

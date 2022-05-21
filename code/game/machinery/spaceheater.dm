@@ -55,7 +55,7 @@
 				return
 			else
 				// insert cell
-				var/obj/item/cell/C = usr.get_active_hand()
+				var/obj/item/cell/C = usr.get_active_held_item()
 				if(istype(C))
 					user.drop_item()
 					cell = C
@@ -125,7 +125,7 @@
 				set_temperature = clamp(set_temperature + value, T0C, T0C + 90)
 
 			if("cellremove")
-				if(panel_open && cell && !usr.get_active_hand())
+				if(panel_open && cell && !usr.get_active_held_item())
 					usr.visible_message("<span class='notice'>\The [usr] removes \the [cell] from \the [src].</span>", "<span class='notice'>You remove \the [cell] from \the [src].</span>")
 					cell.update_icon()
 					usr.put_in_hands(cell)
@@ -136,7 +136,7 @@
 
 			if("cellinstall")
 				if(panel_open && !cell)
-					var/obj/item/cell/C = usr.get_active_hand()
+					var/obj/item/cell/C = usr.get_active_held_item()
 					if(istype(C))
 						usr.drop_item()
 						cell = C

@@ -97,7 +97,7 @@
 					inserted_id.forceMove(get_turf(src))
 					inserted_id = null
 		else if(href_list["choice"] == "insert")
-			var/obj/item/card/id/I = usr.get_active_hand()
+			var/obj/item/card/id/I = usr.get_active_held_item()
 			if(istype(I) && !inserted_id && usr.unEquip(I))
 				I.forceMove(src)
 				inserted_id = I

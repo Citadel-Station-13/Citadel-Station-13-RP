@@ -25,7 +25,7 @@
 	var/mob/living/user = null
 	if(isliving(usr))
 		user = usr
-		I = user.get_active_hand()
+		I = user.get_active_held_item()
 		if(!I || !istype(I))
 			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
 			return

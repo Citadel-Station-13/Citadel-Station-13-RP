@@ -158,7 +158,7 @@
 	if(!interactable(user))
 		return
 
-	var/obj/item/I = user.get_active_hand()
+	var/obj/item/I = user.get_active_held_item()
 	var/color = lowertext(params["wire"])
 	holder.add_hiddenprint(user)
 
@@ -220,7 +220,7 @@
  	// TODO: Reimplement this if we ever get Advanced Admin Interaction.
 	// if(user.can_admin_interact())
 		// return TRUE
-	var/obj/item/I = user.get_active_hand()
+	var/obj/item/I = user.get_active_held_item()
 	if(istype(I, /obj/item/multitool/alien))
 		return TRUE
 	return FALSE

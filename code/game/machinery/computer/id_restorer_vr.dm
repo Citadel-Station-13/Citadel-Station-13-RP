@@ -73,7 +73,7 @@
 				return
 			if(ishuman(user))
 				inserted.forceMove(get_turf(src))
-				if(!user.get_active_hand())
+				if(!user.get_active_held_item())
 					user.put_in_hands(inserted)
 				inserted = null
 			else

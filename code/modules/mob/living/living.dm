@@ -1108,7 +1108,7 @@ default behaviour is:
 		return
 	if(target.type == /atom/movable/screen) return
 
-	var/atom/movable/item = src.get_active_hand()
+	var/atom/movable/item = src.get_active_held_item()
 
 	if(!item) return
 

@@ -1303,7 +1303,7 @@
 	..()
 
 /obj/item/perfect_tele/attack_hand(mob/user)
-	if(user.get_inactive_hand() == src && power_source)
+	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
 		power_source = null

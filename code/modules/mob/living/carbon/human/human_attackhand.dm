@@ -278,7 +278,7 @@
 				w_uniform.add_fingerprint(M)
 			var/obj/item/organ/external/affecting = get_organ(ran_zone(M.zone_sel.selecting))
 
-			var/list/holding = list(get_active_hand() = 40, get_inactive_hand = 20)
+			var/list/holding = list(get_active_held_item() = 40, get_inactive_hand = 20)
 
 			//See if they have any guns that might go off
 			for(var/obj/item/gun/W in holding)

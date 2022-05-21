@@ -102,7 +102,7 @@
 	if(..())
 		return TRUE
 
-	var/obj/held_item = usr.get_active_hand()
+	var/obj/held_item = usr.get_active_held_item()
 
 	switch(action)
 		//Actual assembly actions

@@ -12,7 +12,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		var/obj/item/I = H.get_active_hand()
+		var/obj/item/I = H.get_active_held_item()
 		if(I)
 			I.equip_to_best_slot(H)
 
@@ -310,7 +310,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			W.equipped(src, slot)
 			update_inv_s_store()
 		if(slot_in_backpack)
-			if(src.get_active_hand() == W)
+			if(src.get_active_held_item() == W)
 				src.remove_from_mob(W)
 			W.forceMove(back)
 		#warn move to handle_abstract_slot_insertion
@@ -385,20 +385,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(SLOT_ID_LEFT_EAR)      return l_ear
 		if(SLOT_ID_RIGHT_EAR)      return r_ear
 	return ..()
-
-/mob/living/carbon/human/is_holding_item_of_type(typepath)
-	for(var/obj/item/I in list(l_hand, r_hand))
-		if(istype(I, typepath))
-			return I
-	return FALSE
-
-//Puts the item into our active hand if possible. returns 1 on success.
-/mob/living/carbon/human/put_in_active_hand(var/obj/item/W)
-	return (hand ? put_in_l_hand(W) : put_in_r_hand(W))
-
-//Puts the item into our inactive hand if possible. returns 1 on success.
-/mob/living/carbon/human/put_in_inactive_hand(var/obj/item/W)
-	return (hand ? put_in_r_hand(W) : put_in_l_hand(W))
 
 /mob/living/carbon/human/put_in_l_hand(var/obj/item/W)
 	if(!..() || l_hand)
@@ -485,7 +471,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 /mob/living/carbon/human/proc/smart_equipbag() // take most recent item out of bag or place held item in bag
 	if(incapacitated())
 		return
-	var/obj/item/thing = get_active_hand()
+	var/obj/item/thing = get_active_held_item()
 	var/obj/item/equipped_back = get_equipped_item(SLOT_ID_BACK)
 	if(!equipped_back) // We also let you equip a backpack like this
 		if(!thing)
@@ -518,7 +504,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 /mob/living/carbon/human/proc/smart_equipbelt() // put held thing in belt or take most recent item out of belt
 	if(incapacitated())
 		return
-	var/obj/item/thing = get_active_hand()
+	var/obj/item/thing = get_active_held_item()
 	var/obj/item/equipped_belt = get_equipped_item(SLOT_ID_BELT)
 	if(!equipped_belt) // We also let you equip a belt like this
 		if(!thing)

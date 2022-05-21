@@ -156,8 +156,8 @@
 			return TRUE
 
 		if("add_tank")
-			if(istype(usr.get_active_hand(), /obj/item/tank))
-				var/obj/item/tank/T = usr.get_active_hand()
+			if(istype(usr.get_active_held_item(), /obj/item/tank))
+				var/obj/item/tank/T = usr.get_active_held_item()
 				var/slot = params["slot"]
 				if(slot == 1 && !tank1)
 					tank1 = T

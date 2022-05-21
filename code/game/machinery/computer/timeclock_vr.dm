@@ -120,7 +120,7 @@
 				usr.put_in_hands(card)
 				card = null
 			else
-				var/obj/item/I = usr.get_active_hand()
+				var/obj/item/I = usr.get_active_held_item()
 				if (istype(I, /obj/item/card/id) && usr.unEquip(I))
 					I.forceMove(src)
 					card = I

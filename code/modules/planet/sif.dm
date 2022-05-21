@@ -290,8 +290,8 @@ var/datum/planet/sif/planet_sif = null
 				continue // They're indoors, so no need to rain on them.
 
 			// If they have an open umbrella, it'll guard from rain
-			if(istype(L.get_active_hand(), /obj/item/melee/umbrella))
-				var/obj/item/melee/umbrella/U = L.get_active_hand()
+			if(istype(L.get_active_held_item(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_active_held_item()
 				if(U.open)
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
@@ -346,8 +346,8 @@ var/datum/planet/sif/planet_sif = null
 			if(!T.outdoors)
 				continue // They're indoors, so no need to rain on them.
 			// If they have an open umbrella, it'll guard from rain
-			if(istype(L.get_active_hand(), /obj/item/melee/umbrella))
-				var/obj/item/melee/umbrella/U = L.get_active_hand()
+			if(istype(L.get_active_held_item(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_active_held_item()
 				if(U.open)
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
@@ -410,8 +410,8 @@ var/datum/planet/sif/planet_sif = null
 
 			// If they have an open umbrella, it'll guard from hail
 			var/obj/item/melee/umbrella/U
-			if(istype(H.get_active_hand(), /obj/item/melee/umbrella))
-				U = H.get_active_hand()
+			if(istype(H.get_active_held_item(), /obj/item/melee/umbrella))
+				U = H.get_active_held_item()
 			else if(istype(H.get_inactive_hand(), /obj/item/melee/umbrella))
 				U = H.get_inactive_hand()
 			if(U && U.open)

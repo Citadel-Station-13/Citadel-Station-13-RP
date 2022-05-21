@@ -56,7 +56,7 @@
 
 	// Are we placing or stripping?
 	var/stripping
-	var/obj/item/held = user.get_active_hand()
+	var/obj/item/held = user.get_active_held_item()
 	if(!istype(held) || is_robot_module(held))
 		if(!istype(target_slot))  // They aren't holding anything valid and there's nothing to remove, why are we even here?
 			return
@@ -76,7 +76,7 @@
 	if(!do_after(user,HUMAN_STRIP_DELAY,src))
 		return
 
-	if(!stripping && user.get_active_hand() != held)
+	if(!stripping && user.get_active_held_item() != held)
 		return
 
 	if(stripping)
