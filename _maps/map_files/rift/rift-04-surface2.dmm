@@ -1571,14 +1571,11 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
+	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
@@ -4997,15 +4994,12 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass/hidden,
 /obj/machinery/camera/network/civilian{
 	dir = 4
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
@@ -12349,10 +12343,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "wH" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 2
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -12360,9 +12354,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
-	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
 "wI" = (
