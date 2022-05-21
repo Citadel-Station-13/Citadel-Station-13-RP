@@ -1234,10 +1234,10 @@ obj/item/clothing/suit/kamishimo
 	desc = "This crisp white hoodie bears a strange manufacturer's mark. The colorful red accents stand out against the snowy white cloth with evocative flair."
 	icon_state = "mekkyaku"
 
-/obj/item/clothing/suit/storage/utility_coat
-	name = "Utility Coat"
-	desc = "A short coat with a utilitarian look, straps function to hold it against the body. Fur around the neck helps to stay warm."
-	icon_state = "coat_utility"
+/obj/item/clothing/suit/storage/utility_fur_coat
+	name = "Utility Fur Coat"
+	desc = "A form fitting utilitarion coat with straps around the shoulders and holding a sash around the waist. The collar is lined with fur to help stay warm."
+	icon_state = "fur_utility"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
