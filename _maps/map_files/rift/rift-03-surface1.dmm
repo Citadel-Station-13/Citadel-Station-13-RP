@@ -245,21 +245,6 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
-"als" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden,
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfaceone)
 "alt" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -5987,7 +5972,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
@@ -6516,7 +6504,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "fvP" = (
@@ -11018,7 +11011,10 @@
 /area/crew_quarters/medbreak)
 "jcI" = (
 /obj/machinery/door/firedoor/glass/hidden,
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "jcL" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -16965,7 +16961,10 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "nyE" = (
 /obj/structure/cable/green{
@@ -25884,8 +25883,9 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
+	dir = 2
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "ufO" = (
@@ -48114,7 +48114,7 @@ kVL
 fYd
 fYd
 fYd
-als
+ufE
 jcI
 jcI
 jcI

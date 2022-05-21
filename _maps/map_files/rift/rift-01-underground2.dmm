@@ -2620,11 +2620,11 @@
 /obj/machinery/camera/network/engineering{
 	dir = 10
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
@@ -6061,9 +6061,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "mh" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -6082,12 +6079,13 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 1;
+	dir = 2;
 	req_one_access = list(18, 47)
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "mi" = (
@@ -6661,7 +6659,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 1;
+	dir = 2;
 	req_one_access = list(18, 47)
 	},
 /obj/machinery/alarm{
@@ -6671,6 +6669,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "nn" = (
@@ -9779,7 +9778,10 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "xL" = (
 /obj/structure/table/wooden_reinforced,
@@ -10245,6 +10247,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"BN" = (
+/obj/machinery/camera/network/engineering{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/undertwo)
 "BP" = (
 /atom/movable/landmark/spawnpoint/job/shaft_miner,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11299,7 +11313,10 @@
 /area/engineering/engine_room)
 "Km" = (
 /obj/machinery/door/firedoor/glass/hidden,
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "Kn" = (
 /obj/structure/catwalk,
@@ -29275,7 +29292,7 @@ jo
 jo
 nm
 Km
-fA
+BN
 fM
 fM
 to
