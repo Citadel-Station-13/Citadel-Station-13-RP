@@ -212,7 +212,7 @@
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact/flash
 
 /obj/item/gun/projectile/pistol/attack_hand(mob/living/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(silenced)
 			if(!user.item_is_in_hands(src))
 				..()

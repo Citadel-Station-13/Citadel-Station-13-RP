@@ -325,8 +325,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
 					continue
-			else if(istype(L.get_inactive_hand(), /obj/item/melee/umbrella))
-				var/obj/item/melee/umbrella/U = L.get_inactive_hand()
+			else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
 				if(U.open)
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
@@ -381,8 +381,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 						to_chat(L, "<span class='danger'>You struggle to keep hold of your umbrella!</span>")
 						L.Stun(20)	// This is not nearly as long as it seems
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	// Closest sound I've got to "Umbrella in the wind"
-				else if(istype(L.get_inactive_hand(), /obj/item/melee/umbrella))
-					var/obj/item/melee/umbrella/U = L.get_inactive_hand()
+				else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
+					var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
 					if(U.open)
 						to_chat(L, "<span class='danger'>A gust of wind yanks the umbrella from your hand!</span>")
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
@@ -397,8 +397,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 					if(show_message)
 						to_chat(L, pick(effect_message))
 					continue
-			else if(istype(L.get_inactive_hand(), /obj/item/melee/umbrella))
-				var/obj/item/melee/umbrella/U = L.get_inactive_hand()
+			else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
 				if(U.open)
 					if(show_message)
 						to_chat(L, pick(effect_message))
@@ -459,8 +459,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 			var/obj/item/melee/umbrella/U
 			if(istype(H.get_active_held_item(), /obj/item/melee/umbrella))
 				U = H.get_active_held_item()
-			else if(istype(H.get_inactive_hand(), /obj/item/melee/umbrella))
-				U = H.get_inactive_hand()
+			else if(istype(H.get_inactive_held_item(), /obj/item/melee/umbrella))
+				U = H.get_inactive_held_item()
 			if(U && U.open)
 				if(show_message)
 					to_chat(H, pick(effect_message))

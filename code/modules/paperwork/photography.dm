@@ -306,7 +306,7 @@ var/global/photo_count = 0
 
 /obj/item/camera/proc/printpicture(mob/user, obj/item/photo/p)
 	p.loc = user.loc
-	if(!user.get_inactive_hand())
+	if(!user.get_inactive_held_item())
 		user.put_in_inactive_hand(p)
 
 /obj/item/photo/proc/copy(var/copy_id = 0)

@@ -10,7 +10,7 @@
 
 	var/obj/item/I = src.get_active_held_item()
 	if(!I)
-		I = src.get_inactive_hand()
+		I = src.get_inactive_held_item()
 	if(!I)
 		to_chat(src, "<span class='warning'>You don't have anything in your hands to give to \the [target].</span>")
 		return

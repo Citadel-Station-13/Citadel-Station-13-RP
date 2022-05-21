@@ -1082,7 +1082,7 @@ default behaviour is:
 			hud_used.r_hand_hud_object.icon_state = "r_hand_active"
 
 	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
-	var/obj/item/I = get_inactive_hand()
+	var/obj/item/I = get_inactive_held_item()
 	if(I)
 		if(I.zoom)
 			I.zoom()

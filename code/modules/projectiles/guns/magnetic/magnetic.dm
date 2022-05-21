@@ -151,7 +151,7 @@
 	. = ..()
 
 /obj/item/gun/magnetic/attack_hand(var/mob/user)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		var/obj/item/removing
 
 		if(loaded)

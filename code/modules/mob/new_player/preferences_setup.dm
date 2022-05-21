@@ -241,7 +241,7 @@
 				if(G.slot && !(G.slot in equipped_slots))
 					var/metadata = gear[G.display_name]
 					if(mannequin.equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot))
-						if(G.slot != /datum/inventory/abstract/attach_as_accessory)
+						if(G.slot != /datum/inventory_slot_meta/abstract/attach_as_accessory)
 							equipped_slots += G.slot
 
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)

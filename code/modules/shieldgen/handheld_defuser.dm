@@ -60,7 +60,7 @@
 	to_chat(user, "It is [enabled ? "enabled" : "disabled"].")
 
 /obj/item/shield_diffuser/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(cell)
 			cell.update_icon()
 			user.put_in_hands(cell)

@@ -628,7 +628,7 @@
 		return 0
 
 /obj/item/weldingtool/electric/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(power_supply)
 			power_supply.update_icon()
 			user.put_in_hands(power_supply)

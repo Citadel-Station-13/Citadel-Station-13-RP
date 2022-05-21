@@ -448,7 +448,7 @@
 
 
 	// We do this down here, so we don't get the message if we fire an empty gun.
-	if(user.item_is_in_hands(src) && user.hands_are_full())
+	if(user.is_holding(src) && user.hands_full())
 		if(one_handed_penalty >= 20)
 			to_chat(user, "<span class='warning'>You struggle to keep \the [src] pointed at the correct position with just one hand!</span>")
 
@@ -465,7 +465,7 @@
 
 	next_fire_time = world.time + fire_delay
 
-	accuracy = initial(accuracy)	//Reset the gun's accuracy
+	accuracy = initial(accuracy)	//Reset the gun's accuracyw
 
 	if(muzzle_flash)
 		//VOREStation Edit - Flashlights

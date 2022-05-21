@@ -232,7 +232,7 @@
 			var/mob/living/carbon/human/F = H
 			if(F.grabbed_by.len) //If you're grabbed (presumably by someone flying) let's not have you fall. This also allows people to grab onto you while you jump over a railing to prevent you from falling!
 				var/obj/item/grab/G = F.get_active_held_item()
-				var/obj/item/grab/J = F.get_inactive_hand()
+				var/obj/item/grab/J = F.get_inactive_held_item()
 				if(istype(G) || istype(J))
 					//fall
 				else

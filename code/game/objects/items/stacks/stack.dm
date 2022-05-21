@@ -348,7 +348,7 @@
 			break
 
 /obj/item/stack/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		change_stack(user, 1)
 	else
 		return ..()

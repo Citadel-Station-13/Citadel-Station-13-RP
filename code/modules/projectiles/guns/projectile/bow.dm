@@ -52,7 +52,7 @@
 		return
 
 /obj/item/gun/projectile/bow/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
 		return ..()

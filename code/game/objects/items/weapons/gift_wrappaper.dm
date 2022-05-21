@@ -216,7 +216,7 @@
 	if (!( locate(/obj/structure/table, src.loc) ))
 		to_chat(user, "<span class='warning'>You MUST put the paper on a table!</span>")
 	if (W.w_class < ITEMSIZE_LARGE)
-		var/obj/item/I = user.get_inactive_hand()
+		var/obj/item/I = user.get_inactive_held_item()
 		if(I.is_wirecutter())
 			var/a_used = 2 ** (src.w_class - 1)
 			if (src.amount < a_used)

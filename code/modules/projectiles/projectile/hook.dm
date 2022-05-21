@@ -67,7 +67,7 @@
 
 /obj/item/projectile/energy/hook/proc/ranged_disarm(var/mob/living/carbon/human/H)
 	if(istype(H))
-		var/list/holding = list(H.get_active_held_item() = 60, H.get_inactive_hand() = 40)
+		var/list/holding = list(H.get_active_held_item() = 60, H.get_inactive_held_item() = 40)
 
 		for(var/obj/item/gun/W in holding)	// Guns are complex devices, both of a mechanical and electronic nature. A weird gravity ball or other type of object trying to pull or grab it is likely not safe.
 			if(W && prob(holding[W]))

@@ -159,7 +159,7 @@
 // This puts one bullet from the magazine into your hand
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(can_remove_ammo)	// For Smart Magazines
-		if(user.get_inactive_hand() == src)
+		if(user.get_inactive_held_item() == src)
 			if(stored_ammo.len)
 				var/obj/item/ammo_casing/C = stored_ammo[stored_ammo.len]
 				stored_ammo-=C

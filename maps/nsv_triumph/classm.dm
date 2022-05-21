@@ -180,8 +180,8 @@ var/datum/planet/classm/planet_classm = null
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
 					continue
-			else if(istype(L.get_inactive_hand(), /obj/item/melee/umbrella))
-				var/obj/item/melee/umbrella/U = L.get_inactive_hand()
+			else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
 				if(U.open)
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
@@ -232,8 +232,8 @@ var/datum/planet/classm/planet_classm = null
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
 					continue
-			else if(istype(L.get_inactive_hand(), /obj/item/melee/umbrella))
-				var/obj/item/melee/umbrella/U = L.get_inactive_hand()
+			else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
 				if(U.open)
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
