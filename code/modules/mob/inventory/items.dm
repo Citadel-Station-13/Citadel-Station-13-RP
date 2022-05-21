@@ -20,8 +20,6 @@
 	user.position_hud_item(src,slot)
 	if(user.client)
 		user.client.screen |= src
-	if(user.pulling == src)
-		user.stop_pulling()
 	if((slot_flags & slot))
 		if(equip_sound)
 			playsound(src, equip_sound, 30)
@@ -41,7 +39,7 @@
  */
 /obj/item/proc/unequipped(mob/user, slot, accessory)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(COMSIG_ITEM_UNEQUIPPED, user, slot, accessory)
+	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, accessory)
 	current_equipped_slot = null
 
 /**

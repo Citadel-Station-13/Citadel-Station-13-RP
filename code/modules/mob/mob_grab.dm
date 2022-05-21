@@ -39,7 +39,6 @@
 /obj/item/grab/Initialize(mapload, mob/victim)
 	. = ..()
 	var/mob/user = loc
-	loc = user
 	assailant = user
 	affecting = victim
 
