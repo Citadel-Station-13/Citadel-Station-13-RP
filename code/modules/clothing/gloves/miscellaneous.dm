@@ -80,8 +80,7 @@
 	name = "nitrile gloves"
 	desc = "Sterile nitrile gloves"
 	icon_state = "nitrile"
-	item_state = "ngloves"
-//	balloonPath = /obj/item/nitrileballoon
+	item_state = "nitrile"
 
 /obj/item/clothing/gloves/botanic_leather
 	desc = "These leather work gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."

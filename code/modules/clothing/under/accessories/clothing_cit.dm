@@ -4,7 +4,7 @@
 	name = "cloak"
 	desc = "A simple, bland cloak."
 	icon = 'icons/obj/clothing/ties_cit.dmi'
-	icon_override = 'icons/mob/ties_cit.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "cloak"
 	item_state = "cloak"
 

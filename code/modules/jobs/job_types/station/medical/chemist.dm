@@ -33,13 +33,14 @@
 	name = OUTFIT_JOB_NAME("Chemist")
 	uniform = /obj/item/clothing/under/rank/chemist
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/chemist
-	backpack = /obj/item/storage/backpack/chemistry
-	satchel_one = /obj/item/storage/backpack/satchel/chem
+	l_ear = /obj/item/radio/headset/headset_med
+	shoes = /obj/item/clothing/shoes/white
+
 	id_type = /obj/item/card/id/medical/chemist
 	pda_type = /obj/item/pda/chemist
 	pda_slot = slot_l_store
-	backpack = /obj/item/storage/backpack/medic
-	satchel_one = /obj/item/storage/backpack/satchel/med
+
+	backpack = /obj/item/storage/backpack/chemistry
+	satchel_one = /obj/item/storage/backpack/satchel/chem
 	messenger_bag = /obj/item/storage/backpack/messenger/med
-	l_ear = /obj/item/radio/headset/headset_med
-	shoes = /obj/item/clothing/shoes/white
+	dufflebag = /obj/item/storage/backpack/dufflebag/chemistry
