@@ -98,3 +98,11 @@
 
 	// TODO: execute iamcrystalclear for making this var
 	var/last_blood_warn = -INFINITY
+
+	// inventory
+	var/hand = null
+	var/obj/item/l_hand = null
+	var/obj/item/r_hand = null
+	var/obj/item/back = null//Human/Monkey
+	var/obj/item/tank/internal = null//Human/Monkey
+	var/obj/item/clothing/mask/wear_mask = null//Carbon

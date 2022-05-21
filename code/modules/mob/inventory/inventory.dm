@@ -53,6 +53,26 @@
 /mob/proc/get_equipped_items(include_inhands, include_restraints)
 
 /**
+ * wipe our inventory
+ *
+ * @params
+ * include_inhands - include held items too?
+ * include_restraints - include restraints too?
+ */
+/mob/proc/wipe_inventory(include_inhands, include_restraints)
+
+/**
+ * drops everything in our inventory
+ *
+ * @params
+ * include_inhands - include held items too?
+ * include_restraints - include restraints too?
+ * force - ignore nodrop and all that
+ */
+/mob/proc/drop_inventory(include_inhands, include_restraints, force)
+
+
+/**
  * gets the item in a slot
  * null if not in inventory. inhands don't count as inventory.
  */

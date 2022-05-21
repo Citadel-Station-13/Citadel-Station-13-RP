@@ -1,10 +1,22 @@
-/mob/living
-	var/hand = null
-	var/obj/item/l_hand = null
-	var/obj/item/r_hand = null
-	var/obj/item/back = null//Human/Monkey
-	var/obj/item/tank/internal = null//Human/Monkey
-	var/obj/item/clothing/mask/wear_mask = null//Carbon
+/mob/living/get_active_held_item()
+	return hand? l_hand : r_hand
+
+/mob/living/get_inactive_held_item()
+	return hand? r_hand : l_hand
+
+/mob/living/get_held_index(obj/item/I)
+	if(l_hand == I)
+		return 1
+	else if(r_hand == I)
+		return 2
+
+/mob/living/get_held_items()
+	. = list()
+	if(l_hand)
+		. += l_hand
+	if(r_hand)
+		. += r_hand
+
 
 /mob/living/equip_to_storage(obj/item/newitem)
 	// Try put it in their backpack
