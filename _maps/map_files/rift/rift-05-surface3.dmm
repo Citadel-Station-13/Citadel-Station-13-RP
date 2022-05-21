@@ -9998,7 +9998,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "sf" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -10703,7 +10706,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "tz" = (
 /obj/machinery/message_server,
@@ -12726,7 +12732,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -13845,18 +13854,6 @@
 	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
-"zy" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacethree)
 "zz" = (
 /obj/structure/bed/chair/office/dark,
 /atom/movable/landmark/spawnpoint/job/pathfinder,
@@ -14104,7 +14101,10 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "zY" = (
@@ -14945,7 +14945,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "By" = (
@@ -16519,12 +16524,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
-"EG" = (
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/surfacethree)
 "EI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -22098,10 +22097,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
-"PE" = (
-/obj/machinery/door/firedoor/glass/hidden,
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/surfacethree)
 "PF" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -41646,9 +41641,9 @@ YM
 xl
 xl
 xl
-zy
+zX
 se
-EG
+YT
 se
 xk
 Xu
@@ -43976,7 +43971,7 @@ xl
 xl
 zX
 ty
-PE
+ZM
 ty
 Bx
 jr
