@@ -466,6 +466,6 @@ datum/gear/suit/duster
 	name = "Mekkyaku Hoodie"
 	path = /obj/item/clothing/suit/storage/mekkyaku
 
-/datum/gear/suit/utility_coat
-	name = "Utility Coat"
-	path = /obj/item/clothing/suit/storage/utility_coat
+/datum/gear/suit/utility_fur_coat
+	name = "Utility Fur Coat"
+	path = /obj/item/clothing/suit/storage/utility_fur_coat

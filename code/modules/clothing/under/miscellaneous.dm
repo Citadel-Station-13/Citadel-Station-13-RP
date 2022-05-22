@@ -1972,3 +1972,8 @@
 	name = "Hasie skirt"
 	desc = "A daring combination of dark charcoals and vibrant reds and whites, the Hasie skirt/vest combo knows what it's doing. Sporting a low cut charcoal miniskirt and matching midriff button-up, this ensemble wows with the incredible color contrast of its two-tone vest."
 	icon_state = "hasie"
+
+/obj/item/clothing/under/utility_fur_pants
+	name = "Utility Fur Pants"
+	desc = "A pair of pants designed to match the Utility Fur coat."
+	icon_state = "furup"
