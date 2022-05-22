@@ -167,6 +167,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	//isn't connected (wire cut), in either case we draw what we didn't get
 	//from the cell instead.
 	if((drained_energy < amount) && cell)
+		#warn sigh
 		drained_energy += cell.drain_power(0, 0, (amount - drained_energy))
 
 	return drained_energy

@@ -58,14 +58,13 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	color = COLOR_RED
 	var/obj/machinery/power/breakerbox/breaker_box
 
-/obj/structure/cable/drain_power(var/drain_check, var/surge, var/amount = 0)
-	if(drain_check)
-		return 1
-
+/obj/structure/cable/drain_power(datum/acter, amount, flags)
 	if(!powernet)
 		return 0
+	return powernet.drain_power_handler(acter, amount, flags)
 
-	return powernet.draw_power(amount)
+/obj/structure/cable/can_drain_power(datum/acter, flags)
+	return TRUE
 
 /obj/structure/cable/Initialize(mapload, _color, _d1, _d2, auto_merge)
 	. = ..()

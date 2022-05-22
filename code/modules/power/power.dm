@@ -26,13 +26,13 @@
 //////////////////////////////
 
 // common helper procs for all power machines
-/obj/machinery/power/drain_power(var/drain_check, var/surge, var/amount = 0)
-	if(drain_check)
-		return 1
+/obj/machinery/power/drain_power(datum/acter, amount, flags)
+	if(!powernet)
+		return 0
+	return powernet.drain_power_handler(acter, amount, flags)
 
-	if(powernet && powernet.avail)
-		powernet.trigger_warning()
-		return powernet.draw_power(amount)
+/obj/machinery/power/can_drain_power(datum/acter, amount)
+	return TRUE
 
 /obj/machinery/power/proc/add_avail(var/amount)
 	if(powernet)

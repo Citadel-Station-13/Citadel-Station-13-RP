@@ -70,7 +70,7 @@
 			var/mob/living/carbon/human/H = AM
 			if(H.isSynthetic())
 				continue
-		if(AM.drain_power(1) <= 0) // This checks if whatever's in the list can be drained from.
+		if(!AM.can_drain_power(src, NONE))
 			things_to_siphon.Remove(AM)
 
 /obj/item/spell/energy_siphon/proc/stop_siphoning()
@@ -102,12 +102,13 @@
 	if(things_to_drain.len)
 		// Don't bother with empty stuff.
 		for(var/atom/movable/AM in things_to_drain)
-			if(AM.drain_power(1) <= 0)
+			if(!AM.can_drain_power(src, NONE))
 				things_to_drain.Remove(AM)
 		if(!things_to_drain.len)
 			return
 		var/charge_to_steal = round(flow_remaining / things_to_drain.len) // This is to drain all the cells evenly.
 		for(var/atom/movable/AM in things_to_drain)
+			#warn sigh
 			var/big_number = AM.drain_power(0,0,charge_to_steal / CELLRATE) // This drains the cell, and leaves us with a big number.
 			flow_remaining = flow_remaining - (big_number * CELLRATE) // Which we reduce to our needed number by multiplying.
 			AM.update_icon() // So guns and batteries will display correctly.

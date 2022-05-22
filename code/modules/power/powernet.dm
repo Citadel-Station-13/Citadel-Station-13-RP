@@ -140,6 +140,11 @@
 		else
 			return 0
 
+/datum/powernet/proc/drain_power_handler(datum/acter, amount, flags)
+	#warn kj
+	if(flags & POWER_DRAIN_SURGE)
+		trigger_warning()
+
 ////////////////////////////////////////////////
 // Misc.
 ///////////////////////////////////////////////

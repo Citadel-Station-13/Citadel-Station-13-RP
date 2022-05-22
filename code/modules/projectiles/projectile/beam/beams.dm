@@ -14,7 +14,7 @@
 	light_power = 0.5
 	light_color = "#FF0D00"
 	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_LASER_MEAT, BULLET_IMPACT_METAL = SOUNDS_LASER_METAL)
-	
+
 	muzzle_type = /obj/effect/projectile/muzzle/laser
 	tracer_type = /obj/effect/projectile/tracer/laser
 	impact_type = /obj/effect/projectile/impact/laser
@@ -282,7 +282,8 @@
 	if(. && istype(target, /mob/living/silicon/robot) && prob(agony))
 		var/mob/living/silicon/robot/R = target
 		var/drainamt = agony * (rand(5, 15) / 10)
-		R.drain_power(0, 0, drainamt)
+		#warn kJ
+		R.drain_power(drainamt)
 		if(istype(firer, /mob/living/silicon/robot)) // Mischevious sappers, the swarm drones are.
 			var/mob/living/silicon/robot/A = firer
 			if(A.cell)

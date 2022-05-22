@@ -1,12 +1,12 @@
-// the SMES
-// stores power
+/**
+ * smes
+ *
+ * base type of power storage unit
+ *
+ * TODO: generalize to /obj/machinery/power/storage, and split into storage/smes and storage/batteryrack, etc
+ */
 
 GLOBAL_LIST_EMPTY(smeses)
-
-///translates Watt into Kilowattminutes with respect to machinery schedule_interval ~(2s*1W*1min/60s)
-#define SMESRATE 0.03333
-#define SMESMAXCHARGELEVEL 250000
-#define SMESMAXOUTPUT 250000
 
 /obj/machinery/power/smes
 	name = "power storage unit"
@@ -50,14 +50,16 @@ GLOBAL_LIST_EMPTY(smeses)
 	var/should_be_mapped = 0 		// If this is set to 0 it will send out warning on New()
 	var/grid_check = FALSE 			// If true, suspends all I/O.
 
-/obj/machinery/power/smes/drain_power(var/drain_check, var/surge, var/amount = 0)
+/obj/machinery/power/smes/drain_power(datum/acter, amount, flags)
 
+	#warn kj
 	if(drain_check)
 		return 1
 
 	var/smes_amt = min((amount * SMESRATE), charge)
 	charge -= smes_amt
 	return smes_amt / SMESRATE
+
 
 
 /obj/machinery/power/smes/Initialize(mapload, newdir)

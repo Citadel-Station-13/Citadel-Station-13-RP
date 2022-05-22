@@ -397,8 +397,8 @@
 		return 0
 
 	// Is it a valid power source?
-	if(target.drain_power(1) <= 0)
-		return 0
+	if(!target.can_drain_power(src))
+		return FALSE
 
 	to_chat(H, "<span class = 'danger'>You begin draining power from [target]!</span>")
 	interfaced_with = target
@@ -410,7 +410,7 @@
 	return 1
 
 /obj/item/rig_module/power_sink/accepts_item(var/obj/item/input_device, var/mob/living/user)
-	var/can_drain = input_device.drain_power(1)
+	var/can_drain = input_device.can_drain_power(src, NONE)
 	if(can_drain > 0)
 		engage(input_device)
 		return 1
@@ -450,6 +450,7 @@
 
 	// Attempts to drain up to 12.5*cell-capacity kW, determines this value from remaining cell capacity to ensure we don't drain too much.
 	// 1Ws/(12.5*CELLRATE) = 40s to charge
+	#warn deal with this
 	var/to_drain = min(12.5*holder.cell.maxcharge, ((holder.cell.maxcharge - holder.cell.charge) / CELLRATE))
 	var/target_drained = interfaced_with.drain_power(0,0,to_drain)
 	if(target_drained <= 0)
@@ -463,11 +464,13 @@
 	return
 
 /obj/item/rig_module/power_sink/proc/drain_complete(var/mob/living/M)
-
 	if(!interfaced_with)
-		if(M) to_chat(M, "<font color=#4F49AF><b>Total power drained:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
+		if(M)
+			to_chat(M, "<font color=#4F49AF><b>Total power drained:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
 	else
-		if(M) to_chat(M, "<font color=#4F49AF><b>Total power drained from [interfaced_with]:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
+		if(M)
+			#warn sigh
+			to_chat(M, "<font color=#4F49AF><b>Total power drained from [interfaced_with]:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
 		interfaced_with.drain_power(0,1,0) // Damage the victim.
 
 	drain_loc = null

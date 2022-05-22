@@ -223,24 +223,14 @@
 		lawsync()
 		photosync()
 
-/mob/living/silicon/robot/drain_power(var/drain_check, var/surge, var/amount = 0)
-
-	if(drain_check)
-		return 1
-
-	if(!cell || !cell.charge)
+/mob/living/silicon/robot/drain_power(datum/acter, amount, flags)
+	if(!cell)
 		return 0
 
-	// Actual amount to drain from cell, using CELLRATE
-	var/cell_amount = amount * CELLRATE
-
-	if(cell.charge > cell_amount)
-		// Spam Protection
-		if(prob(10))
-			to_chat(src, "<span class='danger'>Warning: Unauthorized access through power channel [rand(11,29)] detected!</span>")
-		cell.use(cell_amount)
-		return amount
-	return 0
+	if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_POWER_DRAIN_WARNING))
+		TIMER_COOLDOWN_START(src, COOLDOWN_POWER_DRAIN_WARNING, 2 SECONDS)
+		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
+	return cell.drain_power(acter, amount, flags)
 
 // setup the PDA and its name
 /mob/living/silicon/robot/proc/setup_PDA()

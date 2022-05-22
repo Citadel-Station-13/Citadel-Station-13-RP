@@ -54,7 +54,8 @@
 	else
 		return PROCESS_KILL
 
-/obj/item/cell/drain_power(var/drain_check, var/surge, var/power = 0)
+/obj/item/cell/drain_power(datum/acter, amount, flags)
+	#warn kj
 
 	if(drain_check)
 		return 1
