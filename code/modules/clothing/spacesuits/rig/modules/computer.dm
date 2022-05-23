@@ -450,15 +450,14 @@
 
 	// Attempts to drain up to 12.5*cell-capacity kW, determines this value from remaining cell capacity to ensure we don't drain too much.
 	// 1Ws/(12.5*CELLRATE) = 40s to charge
-	#warn deal with this
-	var/to_drain = min(12.5*holder.cell.maxcharge, ((holder.cell.maxcharge - holder.cell.charge) / CELLRATE))
-	var/target_drained = interfaced_with.drain_energy(0,0,to_drain)
+	var/to_drain = min(12.5 * holder.cell.maxcharge, holder.cell.maxcharge - holder.cell.charge)
+	var/target_drained = interfaced_with.drain_energy(src, DYNAMIC_CELL_UNITS_TO_KJ(to_drain))
 	if(target_drained <= 0)
 		to_chat(H, "<span class = 'danger'>Your power sink flashes a red light; there is no power left in [interfaced_with].</span>")
 		drain_complete(H)
 		return
 
-	holder.cell.give(target_drained * CELLRATE)
+	holder.cell.give(DYNAMIC_KJ_TO_CELL_UNITS(target_drained))
 	total_power_drained += target_drained
 
 	return
@@ -471,7 +470,7 @@
 		if(M)
 			#warn sigh
 			to_chat(M, "<font color=#4F49AF><b>Total power drained from [interfaced_with]:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
-		interfaced_with.drain_energy(0,1,0) // Damage the victim.
+		interfaced_with.drain_energy(src, 0, POWER_DRAIN_SURGE)
 
 	drain_loc = null
 	interfaced_with = null

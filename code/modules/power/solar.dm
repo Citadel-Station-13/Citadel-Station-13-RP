@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 			if(obscured) //get no light from the SSsun.sun, so don't generate power
 				return
 			var/sgen = GLOB.solar_gen_rate * sunfrac
-			add_avail(sgen)
+			add_avail(sgen * 0.001)
 			control.gen += sgen
 		else //if we're no longer on the same powernet, remove from control computer
 			unset_control()

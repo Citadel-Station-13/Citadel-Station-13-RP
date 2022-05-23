@@ -160,6 +160,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	if(terminal?.powernet)
 		terminal.powernet.trigger_warning()
+		// no conversion - amount = kj, draw_power is in kw
 		drained += terminal.powernet.draw_power(amount)
 
 	//The grid rarely gives the full amount requested, or perhaps the grid

@@ -232,6 +232,9 @@
 		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
 	return cell.drain_energy(acter, amount, flags)
 
+/mob/living/silicon/robot/can_drain_energy(datum/acter, flags)
+	return TRUE
+
 // setup the PDA and its name
 /mob/living/silicon/robot/proc/setup_PDA()
 	if (!rbPDA)

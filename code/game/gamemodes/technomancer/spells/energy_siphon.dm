@@ -18,7 +18,7 @@
 	aspect = ASPECT_SHOCK
 	var/atom/movable/siphoning = null // What the spell is currently draining.  Does nothing if null.
 	var/list/things_to_siphon = list() //Things which are actually drained as a result of the above not being null.
-	var/flow_rate = 1000 // Limits how much electricity can be drained per second.  Measured by default in god knows what.
+	var/flow_rate = 2000 // Limits how much electricity can be drained per second.  Measured in W.
 
 /obj/item/spell/energy_siphon/Initialize(mapload)
 	. = ..()
@@ -108,8 +108,7 @@
 			return
 		var/charge_to_steal = round(flow_remaining / things_to_drain.len) // This is to drain all the cells evenly.
 		for(var/atom/movable/AM in things_to_drain)
-			#warn sigh
-			var/big_number = AM.drain_energy(0,0,charge_to_steal / CELLRATE) // This drains the cell, and leaves us with a big number.
+			var/big_number = AM.drain_energy(user, flow_rate * 0.001) * 1000 // This drains the cell, and leaves us with a big number.
 			flow_remaining = flow_remaining - (big_number * CELLRATE) // Which we reduce to our needed number by multiplying.
 			AM.update_icon() // So guns and batteries will display correctly.
 		charge_to_give = charge_to_give + (flow_rate - flow_remaining) * SIPHON_CELL_TO_ENERGY

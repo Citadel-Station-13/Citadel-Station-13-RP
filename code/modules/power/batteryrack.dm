@@ -200,6 +200,7 @@
 /obj/machinery/power/smes/batteryrack/makeshift/process(delta_time)
 	if(machine_stat & BROKEN)
 		return
+	#warn FUCK YOU
 
 	//store machine state to see if we need to update the icon overlays
 	var/last_disp = chargedisplay()

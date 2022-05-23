@@ -148,7 +148,7 @@ GLOBAL_LIST_EMPTY(smeses)
 			inputting = 1
 		else // Or not at all?
 			inputting = 0
-
+	#warn FUCK YOU
 	//outputting
 	if(outputting && (!output_pulsed && !output_cut) && !grid_check)
 		output_used = min( charge/SMESRATE, output_level)		//limit output to that stored
