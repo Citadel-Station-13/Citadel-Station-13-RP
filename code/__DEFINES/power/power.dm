@@ -144,3 +144,15 @@ GLOBAL_VAR_INIT(cellrate, 0.05)
 
 #define THERMOMACHINE_CHEAT_FACTOR			2.5
 #define RECHARGER_CHEAT_FACTOR				5
+
+/**
+ * LEGACY ENUMS
+ *
+ * D O N O T U S E T H E S E
+ *
+ * The only exception is kilowatts, since machines/apcs opeate on units scale, meaning 1 to 16 million are reasonable!
+ * However when you get to "MEGAWATTS" you are cutting it way too close to comfort
+ * If something uses more than 1 MW it shouldn't be APC wired at all!
+ */
+#define KILOWATTS			* 1000
+#define MEGAWATTS			* 1000000

@@ -160,6 +160,7 @@
 #include "code\__DEFINES\mobs\mobility.dm"
 #include "code\__DEFINES\mobs\silicon_privileges.dm"
 #include "code\__DEFINES\mobs\stat.dm"
+#include "code\__DEFINES\power\power.dm"
 #include "code\__DEFINES\preferences\event_antag.dm"
 #include "code\__DEFINES\procs\do_after.dm"
 #include "code\__DEFINES\procs\drain_power.dm"
