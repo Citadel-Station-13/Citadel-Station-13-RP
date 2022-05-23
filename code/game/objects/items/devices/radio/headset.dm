@@ -9,8 +9,8 @@
 	canhear_range = 0	// Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/ears.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/ears.dmi'
 		)
 
 	var/translate_binary = 0
@@ -495,9 +495,9 @@
 	ks2type = /obj/item/encryptionkey/ert
 
 /obj/item/radio/headset
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
-						SPECIES_WEREBEAST = 'icons/mob/species/werebeast/ears.dmi',
-						SPECIES_VOX = 'icons/mob/species/vox/ears.dmi')
+	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
+						SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi',
+						SPECIES_VOX = 'icons/mob/clothing/species/vox/ears.dmi')
 
 /obj/item/radio/headset/mob_headset	//Adminbus headset for simplemob shenanigans.
 	name = "nonhuman radio implant"

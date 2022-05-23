@@ -6,7 +6,6 @@
 	desc = "You... you're not actually going to wear that, right?"
 	icon_state = "fishskull"
 	icon = 'icons/obj/clothing/hats_vr.dmi'
-	icon_override = 'icons/mob/head_vr.dmi'
 	flags_inv = HIDEEARS|BLOCKHAIR
 
 /obj/item/clothing/head/crown
@@ -14,17 +13,15 @@
 	desc = "How regal!"
 	icon_state = "crown"
 	icon = 'icons/obj/clothing/hats_vr.dmi'
-	icon_override = 'icons/mob/head_vr.dmi'
 
 /obj/item/clothing/head/fancy_crown
 	name = "fancy crown"
 	desc = "How extraordinarily regal!"
 	icon_state = "fancycrown"
 	icon = 'icons/obj/clothing/hats_vr.dmi'
-	icon_override = 'icons/mob/head_vr.dmi'
 
 /obj/item/clothing/head/shiny_hood
-	icon_override = 'icons/mob/modular_shiny_vr.dmi'
+	icon_override = 'icons/mob/clothing/modular_latex.dmi'
 	icon = 'icons/obj/clothing/modular_shiny_vr.dmi'
 	name = "shiny hood"
 	desc = "You can be a super-hero in this! Just don't forget your suit!"
@@ -50,7 +47,6 @@
 	name = "Bear pelt"
 	desc = "A luxurious bear pelt, good to keep warm in winter. Or to sleep through winter."
 	icon = 'icons/obj/clothing/hats_vr.dmi'
-	icon_override = 'icons/mob/head_vr.dmi'
 	icon_state = "bearpelt_brown"
 	item_state = "bearpelt_brown"
 

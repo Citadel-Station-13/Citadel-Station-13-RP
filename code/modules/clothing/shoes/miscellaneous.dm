@@ -248,3 +248,15 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "Antediluvian legwraps"
 	desc = "These thigh-high legwraps are designed to cling tightly to the body. Secured to the feet by stirrups, it is unknown whether shoes were meant to be worn over these."
 	icon_state = "antediluvian"
+
+// The things folks do for fashion...
+/obj/item/clothing/shoes/galoshes/black
+	name = "black galoshes"
+	desc = "A black rubber boots."
+	icon_state = "galoshes_black"
+
+/obj/item/clothing/shoes/galoshes/starcon
+	name = "dark-purple semi-galoshes"
+	desc = "A dark-purple rubber boots. They obviously don't smell like a cotton candy, roses and fresh roasted peanuts."
+	icon_state = "galoshes_sc"
+	slowdown = SHOES_SLOWDOWN

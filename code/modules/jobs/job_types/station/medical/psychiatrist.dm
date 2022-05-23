@@ -44,13 +44,16 @@
 	uniform = /obj/item/clothing/under/rank/psych
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat
 	shoes = /obj/item/clothing/shoes/laceup
-	id_type = /obj/item/card/id/medical/psychiatrist
 	l_ear = /obj/item/radio/headset/headset_med
+
+	id_type = /obj/item/card/id/medical/psychiatrist
 	pda_type = /obj/item/pda/medical
 	pda_slot = slot_l_store
+
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med
+	dufflebag = /obj/item/storage/backpack/dufflebag/med
 
 /datum/outfit/job/station/psychiatrist/psychologist
 	name = OUTFIT_JOB_NAME("Psychologist")

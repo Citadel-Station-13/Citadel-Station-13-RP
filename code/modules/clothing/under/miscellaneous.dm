@@ -82,62 +82,6 @@
 	icon_state = "vice"
 	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
 
-//This set of uniforms looks fairly fancy and is generally used for high-ranking NT personnel from what I've seen, so lets give them appropriate ranks.
-/obj/item/clothing/under/rank/centcom
-	desc = "Gold trim on space-black cloth, this uniform displays the rank of \"Captain.\""
-	name = "\improper Officer's Dress Uniform"
-	icon_state = "officer"
-	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
-	displays_id = 0
-
-/obj/item/clothing/under/rank/centcom_fem
-	desc = "Gold trim on space-black cloth, this uniform displays the rank of \"Captain.\""
-	name = "\improper Officer's Dress Uniform"
-	icon_state = "officer_fem"
-
-/obj/item/clothing/under/rank/centcom_officer
-	desc = "Gold trim on space-black cloth, this uniform displays the rank of \"Admiral.\""
-	name = "\improper Officer's Dress Uniform"
-	icon_state = "officer"
-	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
-	displays_id = 0
-
-/obj/item/clothing/under/rank/centcom_officer_fem
-	name = "\improper Officer's Dress Uniform"
-	desc = "Gold trim on space-black cloth, this uniform displays the rank of \"Admiral.\""
-	icon_state = "officer_fem"
-
-/obj/item/clothing/under/rank/centcom_captain
-	desc = "Gold trim on space-black cloth, this uniform displays the rank of \"Admiral-Executive.\""
-	name = "\improper Officer's Dress Uniform"
-	icon_state = "centcom"
-	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
-	displays_id = 0
-
-/obj/item/clothing/under/rank/centcom_captain_fem
-	name = "\improper Officer's Dress Uniform"
-	desc = "Gold trim on space-black cloth, this uniform displays the rank of \"Admiral-Executive.\""
-	icon_state = "centcom_fem"
-
-/obj/item/clothing/under/ert
-	name = "ERT tactical uniform"
-	desc = "A short-sleeved black uniform, paired with grey digital-camo cargo pants. It looks very tactical."
-	icon_state = "ert_uniform"
-	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
-
-/obj/item/clothing/under/gov
-	desc = "A neat proper uniform of someone on offical business. The collar is <i>immaculately</i> starched."
-	name = "Green formal uniform"
-	icon_state = "greensuit"
-	item_state_slots = list(slot_r_hand_str = "centcom", slot_l_hand_str = "centcom")
-	rolled_sleeves = 0
-	starting_accessories = list(/obj/item/clothing/accessory/tie/darkgreen)
-
-/obj/item/clothing/under/gov/skirt
-	name = "Green formal skirt uniform"
-	desc = "A neat proper uniform of someone on offical business. The top button is sewn shut."
-	icon_state = "greensuit_skirt"
-
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
