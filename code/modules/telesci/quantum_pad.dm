@@ -147,7 +147,7 @@
 
 		// use a lot of power
 		var/power_to_use = 10000 / power_efficiency
-		if(draw_power(power_to_use) != power_to_use)
+		if((draw_power(power_to_use * 0.001) * 1000) != power_to_use)
 			to_chat(user, "<span class='warning'>Power is not sufficient to complete a teleport. Teleport aborted.</span>")
 			return
 

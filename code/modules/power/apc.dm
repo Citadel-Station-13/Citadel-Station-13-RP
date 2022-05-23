@@ -1065,6 +1065,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/last_en = environ
 	var/last_ch = charging
 
+	#warn surplus() is in kw, make sure this works
 	var/excess = surplus()
 
 	if(!src.avail())
@@ -1081,7 +1082,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		// draw power from cell as before to power the area
 		var/cellused = min(cell.charge, CELLRATE * lastused_total)	// clamp deduction to a max, amount left in cell
 		cell.use(cellused)
-
+		#warn fuck you
 		if(excess > lastused_total)		// if power excess recharge the cell
 										// by the same amount just used
 			var/draw = draw_power(cellused/CELLRATE) // draw the power needed to charge this cell
@@ -1110,7 +1111,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			if(excess > 0)		// check to make sure we have enough to charge
 				// Max charge is capped to % per second constant
 				var/ch = min(excess*CELLRATE, cell.maxcharge*chargelevel)
-
+				#warn fuck you
 				ch = draw_power(ch/CELLRATE) // Removes the power we're taking from the grid
 				cell.give(ch*CELLRATE) // actually recharge the cell
 				lastused_charging = ch

@@ -53,7 +53,7 @@
 	..()
 
 /obj/machinery/power/emitter/update_icon()
-	if (active && powernet && avail(active_power_usage))
+	if (active && powernet && avail(active_power_usage * 0.001))
 		icon_state = "emitter_+a"
 	else
 		icon_state = "emitter"
@@ -107,7 +107,7 @@
 		return
 	if(((src.last_shot + src.fire_delay) <= world.time) && (src.active == 1))
 
-		var/actual_load = draw_power(active_power_usage)
+		var/actual_load = draw_power(active_power_usage * 0.001) * 1000
 		if(actual_load >= active_power_usage) //does the laser have enough power to shoot?
 			if(!powered)
 				powered = 1
@@ -258,7 +258,7 @@
 /obj/machinery/power/emitter/proc/adjust_integrity(amount)
 	integrity = between(0, integrity + amount, initial(integrity))
 	if(integrity == 0)
-		if(powernet && avail(active_power_usage)) // If it's powered, it goes boom if killed.
+		if(powernet && avail(active_power_usage * 0.001)) // If it's powered, it goes boom if killed.
 			visible_message(src, "<span class='danger'>\The [src] explodes violently!</span>", "<span class='danger'>You hear an explosion!</span>")
 			explosion(get_turf(src), 1, 2, 4)
 		else

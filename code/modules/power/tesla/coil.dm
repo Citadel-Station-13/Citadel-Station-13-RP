@@ -87,9 +87,10 @@
 	last_zap = world.time
 	var/coeff = (20 - ((input_power_multiplier - 1) * 3))
 	coeff = max(coeff, 10)
-	// up convert from KW to W
+	// upconvert from KW to W
 	var/power = (powernet.avail / 2) * 1000
-	draw_power(power)
+	// downconvert from KW to W
+	draw_power(power * 0.001)
 	playsound(src.loc, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 	tesla_zap(src, 10, power/(coeff/2))
 

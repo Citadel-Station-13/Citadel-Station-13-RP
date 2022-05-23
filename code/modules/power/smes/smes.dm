@@ -138,6 +138,7 @@ GLOBAL_LIST_EMPTY(smeses)
 
 	//inputting
 	if(input_attempt && (!input_pulsed && !input_cut) && !grid_check)
+		#warn fuck you
 		var/target_load = min((capacity-charge)/SMESRATE, input_level)	// charge at set rate, limited to spare capacity
 		var/actual_load = draw_power(target_load)						// add the load to the terminal side network
 		charge += actual_load * SMESRATE								// increase the charge

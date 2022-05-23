@@ -329,7 +329,7 @@
 
 	if(powernet && (running >= SHIELD_RUNNING) && !input_cut)
 		var/energy_buffer = 0
-		energy_buffer = draw_power(min(upkeep_power_usage, input_cap))
+		energy_buffer = draw_power(min(upkeep_power_usage, input_cap) * 0.001) * 1000
 		power_usage += round(energy_buffer)
 
 		if(energy_buffer < upkeep_power_usage)
@@ -341,7 +341,7 @@
 			energy_to_demand = between(0, max_energy - current_energy, input_cap - energy_buffer)
 		else
 			energy_to_demand = max(0, max_energy - current_energy)
-		energy_buffer = draw_power(energy_to_demand)
+		energy_buffer = draw_power(energy_to_demand * 0.001) * 1000
 		power_usage += energy_buffer
 		current_energy += round(energy_buffer)
 	else

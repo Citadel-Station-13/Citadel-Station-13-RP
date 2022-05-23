@@ -5,7 +5,7 @@
  * Reduced efficency the warmer it gets
  * Breaks down when to warm
  * Conversion rate tbd, starting value 100kJ => 1 Point
- * 
+ *
  * Can be configured on how much power it draws or just wipes all avaiable power.
  */
 GLOBAL_VAR_INIT(points_mined, 0)
@@ -30,7 +30,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 
 /obj/machinery/power/crypto_miner/examine(mob/user)
     . = ..()
-    if(GLOB.points_mined)//Only show this if someone actually mined 
+    if(GLOB.points_mined)//Only show this if someone actually mined
         . += "[src] is [power_level? "on":"off"]. Current Power Level reads [power_level]."
         . += "Progress to next Point: [(power_drawn/GLOB.power_per_point) *100] %"
         . += "There are [points_stored] points up for claims."
@@ -38,7 +38,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
         . += "The miner is running at [efficency*100]% Efficency."
         . += "[name] currently needs [GLOB.power_per_point] Joules per point."
         . += "A total of [GLOB.points_mined] points has been mined."
-    
+
 
 /obj/machinery/power/crypto_miner/process(delta_time)
     if(!powernet || !power_level || !anchored)
@@ -48,11 +48,11 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
         power_level = 0
         return
 
-    var/new_power_drawn = draw_power(power_level)
+    var/new_power_drawn = draw_power(power_level * 0.001) * 1000
     power_drawn += new_power_drawn
     heat_environ(new_power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
     process_thermal_properties()//calculates damage and efficency
-    
+
     if(!power_drawn)
         return
 
@@ -64,7 +64,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
         GLOB.power_per_point = round(1 MEGAWATTS * (1.00276 ** GLOB.points_mined))//1.00276 doubles the first time at 250 points, which is the most expansive item in the vendor currently
 
 /obj/machinery/power/crypto_miner/attackby(obj/item/W, mob/user)
-    
+
     if(istype(W, /obj/item/card/id))
         var/obj/item/card/id/used_id = W
         used_id.engineer_points += points_stored
@@ -109,7 +109,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
     if((env.temperature < unsafe_lower_temp) && (temperature_damage < 80))//Lower temperature doesnt completely fry the circuit tho it can causes severe damage
         temperature_damage++
         efficency = min(efficency, 0.1)//Bottles the efficency at 10%
-    
+
     if((env.temperature > safe_storage_temp) && (temperature_damage < 100))//no need to fry it further.
         temperature_damage++
 

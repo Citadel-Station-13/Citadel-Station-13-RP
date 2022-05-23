@@ -34,27 +34,44 @@
 /obj/machinery/power/can_drain_energy(datum/acter, amount)
 	return TRUE
 
-/obj/machinery/power/proc/add_avail(var/amount)
+/**
+ * amount is in KW, NOT W
+ */
+/obj/machinery/power/proc/add_avail(amount)
 	if(powernet)
 		powernet.newavail += amount
 
-/obj/machinery/power/proc/draw_power(var/amount)
+/**
+ * amount is in KW, NOT W
+ */
+/obj/machinery/power/proc/draw_power(amount)
 	if(powernet)
 		return powernet.draw_power(amount)
 	return 0
 
-/obj/machinery/power/proc/surplus()
-	if(powernet)
-		return powernet.avail-powernet.load
-	else
+/**
+ * amount is in KW, NOT W
+ *
+ * include amount to turn this into a boolean check.
+ */
+/obj/machinery/power/proc/surplus(amount)
+	if(!powernet)
 		return 0
+	. = powernet.avail - powernet.load
+	if(!isnull(amount))
+		. = . >= amount
 
-/obj/machinery/power/proc/avail()
-	if(powernet)
-		return powernet.avail
-	else
-		return 0
+/**
+ * amount is in KW, NOT W
+ *
+ * include amount to turn this into a boolean check.
+ */
+/obj/machinery/power/proc/avail(amount)
+	return isnull(amount)? (powernet?.avail || 0) : (powernet?.avail >= amount)
 
+/**
+ * amount is in KW, NOT W
+ */
 /obj/machinery/power/proc/viewload()
 	if(powernet)
 		return powernet.viewload
