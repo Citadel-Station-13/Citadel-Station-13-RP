@@ -80,7 +80,7 @@
 
 	data["battery_charge"] = round(battery?.charge, 0.1)
 	data["battery_max"] = round(battery?.maxcharge, 0.1)
-	data["net_power"] = net_power / CELLRATE
+	data["net_power"] = DYNAMIC_CELL_UNITS_TO_W(net_power, 1)
 
 	// This works because lists are always passed by reference in BYOND, so modifying unremovable_circuits
 	// after setting data["unremovable_circuits"] = unremovable_circuits also modifies data["unremovable_circuits"]

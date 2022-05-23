@@ -145,8 +145,9 @@
 			return 0
 
 /datum/powernet/proc/drain_energy_handler(datum/acter, amount, flags)
-	#warn kj
-	if(flags & POWER_DRAIN_SURGE)
+	// amount is in kj so no conversion needed
+	. = draw_power(amount)
+	if(flags & ENERGY_DRAIN_SURGE)
 		trigger_warning()
 
 ////////////////////////////////////////////////
