@@ -58,12 +58,12 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	color = COLOR_RED
 	var/obj/machinery/power/breakerbox/breaker_box
 
-/obj/structure/cable/drain_power(datum/acter, amount, flags)
+/obj/structure/cable/drain_energy(datum/acter, amount, flags)
 	if(!powernet)
 		return 0
-	return powernet.drain_power_handler(acter, amount, flags)
+	return powernet.drain_energy_handler(acter, amount, flags)
 
-/obj/structure/cable/can_drain_power(datum/acter, flags)
+/obj/structure/cable/can_drain_energy(datum/acter, flags)
 	return TRUE
 
 /obj/structure/cable/Initialize(mapload, _color, _d1, _d2, auto_merge)
@@ -130,11 +130,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 // Ghost examining the cable -> tells him the power
 /obj/structure/cable/attack_ghost(mob/user)
 	. = ..()
-	if(user.client && user.client.inquisitive_ghost)
-		user.examinate(src)
+	if(user.client?.inquisitive_ghost)
 		// following code taken from attackby (multitool)
 		if(powernet && (powernet.avail > 0))
-			to_chat(user, "<span class='warning'>[powernet.avail]W in power network.</span>")
+			to_chat(user, "<span class='warning'>[render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] in power network.</span>")
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
 
@@ -248,7 +247,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	else if(istype(W, /obj/item/multitool))
 
 		if(powernet && (powernet.avail > 0))		// is it powered?
-			to_chat(user, "<span class='warning'>[powernet.avail]W in power network.</span>")
+			to_chat(user, "<span class='warning'>[render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] in power network.</span>")
 
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")

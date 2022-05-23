@@ -10,7 +10,7 @@
  *
  * @return Amount drained
  */
-/atom/proc/drain_power(datum/acter, amount, flags)
+/atom/proc/drain_energy(datum/acter, amount, flags)
 	return 0
 
 /**
@@ -22,7 +22,7 @@
  *
  * @return TRUE/FALSE
  */
-/atom/proc/can_drain_power(datum/acter, flags)
+/atom/proc/can_drain_energy(datum/acter, flags)
 	return FALSE
 
 // TODO: generic use_power() proc with scales.

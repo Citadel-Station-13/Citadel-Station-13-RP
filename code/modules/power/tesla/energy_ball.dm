@@ -163,6 +163,9 @@
 	// C.dust() - Changing to do fatal elecrocution instead
 	C.electrocute_act(500, src, def_zone = BP_TORSO)
 
+/**
+ * scale: watts
+ */
 /proc/tesla_zap(atom/source, zap_range = 3, power, explosive = FALSE, stun_mobs = TRUE)
 	. = source.dir
 	if(power < 1000)

@@ -6,6 +6,8 @@
  * TODO: generalize to /obj/machinery/power/storage, and split into storage/smes and storage/batteryrack, etc
  */
 
+#warn convert everything to interface with grid power right
+
 GLOBAL_LIST_EMPTY(smeses)
 
 /obj/machinery/power/smes
@@ -50,7 +52,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	var/should_be_mapped = 0 		// If this is set to 0 it will send out warning on New()
 	var/grid_check = FALSE 			// If true, suspends all I/O.
 
-/obj/machinery/power/smes/drain_power(datum/acter, amount, flags)
+/obj/machinery/power/smes/drain_energy(datum/acter, amount, flags)
 
 	#warn kj
 	if(drain_check)
@@ -197,7 +199,6 @@ GLOBAL_LIST_EMPTY(smeses)
 
 	if(clev != chargedisplay() ) //if needed updates the icons overlay
 		update_icon()
-	return
 
 //Will return 1 on failure
 /obj/machinery/power/smes/proc/make_terminal(const/mob/user)
@@ -229,12 +230,10 @@ GLOBAL_LIST_EMPTY(smeses)
 		return 0
 	return 1
 
-
 /obj/machinery/power/smes/draw_power(var/amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
 	return 0
-
 
 /obj/machinery/power/smes/attack_ai(mob/user)
 	add_hiddenprint(user)
@@ -431,9 +430,13 @@ GLOBAL_LIST_EMPTY(smeses)
 		ui.set_auto_update(1)
 	..()
 */
+
+/**
+ * returns available terminal power in watts
+ */
 /obj/machinery/power/smes/proc/getTerminalPower()
 	if (terminal && terminal.powernet)//checks if the SMES has a terminal, and if that terminal has a powernet.
-		. = round(terminal.powernet.avail, 0.1)
+		. = round(terminal.powernet.avail * 1000, 0.1)
 	else
 		. = 0
 	return .

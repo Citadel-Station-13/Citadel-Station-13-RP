@@ -214,12 +214,12 @@
 			var/obj/item/mecha_parts/mecha_equipment/ME = new path(src)
 			ME.attach(src)
 
-/obj/mecha/drain_power(datum/acter, amount, flags)
+/obj/mecha/drain_energy(datum/acter, amount, flags)
 	if(!cell)
 		return 0
-	return cell.drain_power(acter, amount, flags)
+	return cell.drain_energy(acter, amount, flags)
 
-/obj/mecha/can_drain_power(datum/acter, amount)
+/obj/mecha/can_drain_energy(datum/acter, amount)
 	return TRUE
 
 /obj/mecha/Initialize(mapload)

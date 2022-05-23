@@ -54,18 +54,13 @@
 	else
 		return PROCESS_KILL
 
-/obj/item/cell/drain_power(datum/acter, amount, flags)
-	#warn kj
-
-	if(drain_check)
-		return 1
-
+/obj/item/cell/drain_energy(datum/acter, amount, flags)
 	if(charge <= 0)
 		return 0
+	return use(DYNAMIC_KJ_TO_CELL_UNITS(amount)) * GLOB.cellrate
 
-	var/cell_amt = power * CELLRATE
-
-	return use(cell_amt) / CELLRATE
+/obj/item/cell/can_drain_energy(datum/acter, flags)
+	return TRUE
 
 #define OVERLAY_FULL	2
 #define OVERLAY_PARTIAL	1
@@ -132,6 +127,18 @@
 		return 0
 	use(amount)
 	return 1
+
+/**
+ * use x cell units, affected by GLOB.cellefficiency
+ */
+/obj/item/cell/proc/use_scaled(units)
+	return use(amount / GLOB.cellefficiency) * GLOB.cellefficiency
+
+/**
+ * uses x cell units but only if we have enough, affected by GLOB.cellefficiency
+ */
+/obj/item/cell/proc/checked_use_scaled(units)
+	return checked_use(amount / GLOB.cellefficiency)? units : 0
 
 // recharge the cell
 /obj/item/cell/proc/give(var/amount)

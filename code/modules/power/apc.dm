@@ -69,6 +69,12 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
 
+/**
+ * APCs
+ *
+ * Power scale: Units.
+ * Power is up-converted to kilowatts for grid.
+ */
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
@@ -146,29 +152,21 @@ GLOBAL_LIST_EMPTY(apcs)
 	if(terminal)
 		terminal.connect_to_network()
 
-/obj/machinery/power/apc/drain_power(var/drain_check, var/surge, var/amount = 0)
+/obj/machinery/power/apc/drain_energy(datum/acter, amount, flags)
+	charging = FALSE
+	// makes sure fully draining apc cell won't break cell charging
 
-	if(drain_check)
-		return 1
+	var/drained = 0
 
-	//This makes sure fully draining an APC cell won't break the cell charging.
-	charging = 0
-
-	var/drained_energy = 0
-
-	//Draws power from the grid first, if available.
-	//This is like draining from a cable, so nins and
-	//twizs can do that without having to pry floortiles.
-	if(terminal && terminal.powernet)
+	if(terminal?.powernet)
 		terminal.powernet.trigger_warning()
-		drained_energy += terminal.powernet.draw_power(amount)
+		drained += terminal.powernet.draw_power(amount)
 
 	//The grid rarely gives the full amount requested, or perhaps the grid
 	//isn't connected (wire cut), in either case we draw what we didn't get
 	//from the cell instead.
 	if((drained_energy < amount) && cell)
-		#warn sigh
-		drained_energy += cell.drain_power(0, 0, (amount - drained_energy))
+		drained_energy += cell.drain_energy(acter, amount, flags)
 
 	return drained_energy
 
@@ -1028,7 +1026,6 @@ GLOBAL_LIST_EMPTY(apcs)
 //Returns 1 if the APC should attempt to charge
 /obj/machinery/power/apc/proc/attempt_charging()
 	return (chargemode && charging == 1 && operating)
-
 
 /obj/machinery/power/apc/draw_power(var/amount)
 	if(terminal && terminal.powernet)

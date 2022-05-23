@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	var/turn_angle = 0
 	var/obj/machinery/power/solar_control/control = null
 
-/obj/machinery/power/solar/can_drain_power(datum/acter, flags)
+/obj/machinery/power/solar/can_drain_energy(datum/acter, flags)
 	return FALSE
 
 /obj/machinery/power/solar/Initialize(mapload, obj/item/solar_assembly/S)
@@ -339,7 +339,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		SC.auto_start()
 	return TRUE
 
-/obj/machinery/power/solar_control/can_drain_power(datum/acter, flags)
+/obj/machinery/power/solar_control/can_drain_energy(datum/acter, flags)
 	return FALSE
 
 /obj/machinery/power/solar_control/disconnect_from_network()

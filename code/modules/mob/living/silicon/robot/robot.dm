@@ -223,14 +223,14 @@
 		lawsync()
 		photosync()
 
-/mob/living/silicon/robot/drain_power(datum/acter, amount, flags)
+/mob/living/silicon/robot/drain_energy(datum/acter, amount, flags)
 	if(!cell)
 		return 0
 
 	if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_POWER_DRAIN_WARNING))
 		TIMER_COOLDOWN_START(src, COOLDOWN_POWER_DRAIN_WARNING, 2 SECONDS)
 		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
-	return cell.drain_power(acter, amount, flags)
+	return cell.drain_energy(acter, amount, flags)
 
 // setup the PDA and its name
 /mob/living/silicon/robot/proc/setup_PDA()

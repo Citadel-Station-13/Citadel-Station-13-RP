@@ -131,20 +131,20 @@
 
 /datum/powernet/proc/get_electrocute_damage()
 	switch(avail)
-		if (1000000 to INFINITY)
+		if (1000 to INFINITY)
 			return min(rand(50,160),rand(50,160))
-		if (200000 to 1000000)
+		if (200 to 1000)
 			return min(rand(25,80),rand(25,80))
-		if (100000 to 200000)//Ave powernet
+		if (100 to 200)//Ave powernet
 			return min(rand(20,60),rand(20,60))
-		if (50000 to 100000)
+		if (50 to 100)
 			return min(rand(15,40),rand(15,40))
-		if (1000 to 50000)
+		if (1 to 50)
 			return min(rand(10,20),rand(10,20))
 		else
 			return 0
 
-/datum/powernet/proc/drain_power_handler(datum/acter, amount, flags)
+/datum/powernet/proc/drain_energy_handler(datum/acter, amount, flags)
 	#warn kj
 	if(flags & POWER_DRAIN_SURGE)
 		trigger_warning()

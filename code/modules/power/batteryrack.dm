@@ -14,6 +14,8 @@
 	var/capacitors_amount = 0
 	var/global/list/br_cache = null
 
+#warn interface with cells right for units to kwh
+
 /obj/machinery/power/smes/batteryrack/Initialize(mapload, newdir)
 	. = ..()
 	RefreshParts()

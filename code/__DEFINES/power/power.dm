@@ -73,7 +73,7 @@
 /proc/render_power(amount, power_scale = ENUM_POWER_SCALE_NONE, unit = ENUM_POWER_UNIT_GENERIC, conversion = TRUE, accuracy = POWER_ACCURACY)
 	if(!conversion)
 		return "[round(amount, accuracy)] [render_power_scale(power_scale)][render_power_unit(unit)]"
-	if(!amount)
+	if(amount <= 0)
 		return "0 [render_power_unit(unit)]"
 	if(amount > 1000)
 		while(amount > 1000)
@@ -118,16 +118,23 @@
 
 #define DYNAMIC_KJ_TO_CELL_UNITS(KJ)		(KJ / GLOB.cellrate)
 #define DYNAMIC_J_TO_CELL_UNITS(J)			((J * 0.001) / GLOB.cellrate)
+#define DYNAMIC_CELL_UNITS_TO_KJ(U)			(U * GLOB.cellrate)
+#define DYNAMIC_CELL_UNITS_TO_J(U)			(U * 1000 * GLOB.cellrate)
 /// dt in seconds
 #define DYNAMIC_W_TO_CELL_UNITS(W, DT)		(DYNAMIC_J_TO_CELL_UNITS(W) * DT)
 /// dt in seconds
 #define DYNAMIC_KW_TO_CELL_UNITS(KW, DT)	(DYNAMIC_KJ_TO_CELL_UNITS(KW) * DT)
+/// dt in "seconds this will be drained over" - usually 1
+#define DYNAMIC_CELL_UNITS_TO_W(U, DT)		(((U * GLOB.cellrate) * 1000) / DT)
+/// dt in "seconds this will sbe drained over" - usually 1
+#define DYNAMIC_CELL_UNITS_TO_KW(U, DT)		((U * GLOB.cellrate) / DT)
 #define DYNAMIC_WH_TO_CELL_UNITS(WH)		((0.36 * WH) / GLOB.cellrate)
 #define DYNAMIC_KWH_TO_CELL_UNITS(KWH)		((3600 * KWH) / GLOB.cellrate)
 
-/// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss. higher = batteries are powerful as all hell, lower = batteries are shitty
-/// handheld equipment becomes more efficient as this goes down.
+/// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
 GLOBAL_VAR_INIT(cellrate, 0.05)
+/// the closest thing we'll get to a cvar - affects cell use_scaled - higher = things use less energy. handheld devices usually use this.
+GLOBAL_VAR_INIT(cellefficiency, 1)
 
 /**
  * OLD CALCS FOR ABOVE
@@ -156,3 +163,13 @@ GLOBAL_VAR_INIT(cellrate, 0.05)
  */
 #define KILOWATTS			* 1000
 #define MEGAWATTS			* 1000000
+
+/**
+ * BALANCING - CELL AND EQUIPMENT
+ */
+/// cost of shield difussion
+#define CELL_COST_SHIELD_DIFFUSION			120
+
+/**
+ * BALANCING - MACHINERY POWER
+ */

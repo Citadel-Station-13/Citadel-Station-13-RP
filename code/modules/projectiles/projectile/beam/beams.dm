@@ -283,7 +283,7 @@
 		var/mob/living/silicon/robot/R = target
 		var/drainamt = agony * (rand(5, 15) / 10)
 		#warn kJ
-		R.drain_power(drainamt)
+		R.drain_energy(drainamt)
 		if(istype(firer, /mob/living/silicon/robot)) // Mischevious sappers, the swarm drones are.
 			var/mob/living/silicon/robot/A = firer
 			if(A.cell)

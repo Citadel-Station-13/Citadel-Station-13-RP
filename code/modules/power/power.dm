@@ -26,12 +26,12 @@
 //////////////////////////////
 
 // common helper procs for all power machines
-/obj/machinery/power/drain_power(datum/acter, amount, flags)
+/obj/machinery/power/drain_energy(datum/acter, amount, flags)
 	if(!powernet)
 		return 0
-	return powernet.drain_power_handler(acter, amount, flags)
+	return powernet.drain_energy_handler(acter, amount, flags)
 
-/obj/machinery/power/can_drain_power(datum/acter, amount)
+/obj/machinery/power/can_drain_energy(datum/acter, amount)
 	return TRUE
 
 /obj/machinery/power/proc/add_avail(var/amount)
@@ -331,13 +331,12 @@
 		power_source = cell
 		shock_damage = cell_damage
 	var/drained_hp = M.electrocute_act(shock_damage, source, siemens_coeff) //zzzzzzap!
-	var/drained_energy = drained_hp*20
-
+	// 10kw per hp
+	var/drained_power = drained_hp * 10000
 	if (source_area)
-		source_area.use_power_oneoff(drained_energy/CELLRATE)
+		source_area.use_power_oneoff(drained_energy)
 	else if (istype(power_source,/datum/powernet))
-		var/drained_power = drained_energy/CELLRATE
-		drained_power = PN.draw_power(drained_power)
+		drained_power = PN.draw_pwer(drained_power)
 	else if (istype(power_source, /obj/item/cell))
-		cell.use(drained_energy)
+		cell.use(DYNAMIC_W_TO_CELL_UNITS(drained_power, 1))
 	return drained_energy

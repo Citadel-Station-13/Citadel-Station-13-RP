@@ -163,7 +163,7 @@
 #include "code\__DEFINES\power\power.dm"
 #include "code\__DEFINES\preferences\event_antag.dm"
 #include "code\__DEFINES\procs\do_after.dm"
-#include "code\__DEFINES\procs\drain_power.dm"
+#include "code\__DEFINES\procs\drain_energy.dm"
 #include "code\__DEFINES\procs\update_icon.dm"
 #include "code\__DEFINES\rendering\alert.dm"
 #include "code\__DEFINES\rendering\atom_huds.dm"
