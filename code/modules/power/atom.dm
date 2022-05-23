@@ -1,9 +1,11 @@
 /**
  * Attempt to drain power from this atom
  *
+ * *Uses universal units.*
+ *
  * @params
  * - acter - thing draining, can be null
- * - amount - amount to drain
+ * - amount - amount to drain in kilojoules
  * - flags
  *
  * @return Amount drained
@@ -22,3 +24,7 @@
  */
 /atom/proc/can_drain_power(datum/acter, flags)
 	return FALSE
+
+// TODO: generic use_power() proc with scales.
+// TODO: generic use_energy() proc with scales.
+// TODO: machinery components for backup batteries?? apc link?? grid link??

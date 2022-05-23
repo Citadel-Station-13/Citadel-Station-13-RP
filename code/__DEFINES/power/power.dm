@@ -1,90 +1,145 @@
-// power balancing file
-// basics
-/// power flow unit
-#define POWER_FLOW_UNIT				"kW"
-/// power energy unit
-#define POWER_ENERGY_UNIT			"kJ"
-/// default power storage unit
-#define POWER_STORAGE_UNIT			"Wh"
-/// energy used for x seconds of power flow
-#define FLOW_TO_ENERGY(f, t)				(f * t)
-/// energy used for x delta_time of power flow
-#define FLOW_TO_ENERGY_DT(p, dt)			(dt * p)
-/// constant - right now this is J per Wh
-#define STORAGE_UNIT_AMOUNT(s)				(s)
-/// storage used for x units of energy drained
-#define ENERGY_TO_STORAGE(e)				(e / STORAGE_UNIT_AMOUNT)
-/// storage used for x seconds of power flow
-#define FLOW_TO_STORAGE
+/**
+ * **MASTER POWER/BALANCING FILE**
+ *
+ * floating point only goes up to 16 million for precision
+ *
+ * hence, everything uses its own units and converts around
+ * mostly, anyways
+ * there is a standard use power proc that is "universal"-ish, which uses kJ, as that's the best "center" for one-off uses, or ticked uses.
+ *
+ * WARNING:
+ * You CANNOT JUST CHANGE THE UNITS.
+ * Math is usually hardcoded for performance, and because things like storage units require a "time" factor for conversion.
+ */
 
-// units
-#define KILOWATTS			* 1000
-#define KILOJOULES			* 1000
-#define MEGAWATTS			* 1000000
-#define MEGAJOULES			* 1000000
-#define GIGAWATTS			* 1000000000
-#define GIGAJOULES			* 1000000000
-#define TERAWATTS			* 1000000000000
-#define TERAJOULES			* 1000000000000
+// DO NOT TOUCH THESE UNLESS YOU KNOW WHAT YOU ARE DOING
+#define ENUM_POWER_UNIT_GENERIC			0
+#define ENUM_POWER_UNIT_JOULE			1
+#define ENUM_POWER_UNIT_WATT			2
+#define ENUM_POWER_UNIT_WATT_HOUR		3
 
-// cell
+// DO NOT TOUCH THESE UNLESS YOU KNOW WHAT YOU ARE DOING
+#define ENUM_POWER_SCALE_NONE			0
+#define ENUM_POWER_SCALE_KILO			1
+#define ENUM_POWER_SCALE_MEGA			2
+#define ENUM_POWER_SCALE_GIGA			3
+#define ENUM_POWER_SCALE_TERA			4
+#define ENUM_POWER_SCALE_PETA			5
 
-// smes
-#define SMES_COIL_STORAGE_BASIC				(250 KILOJOULES)
-#define SMES_COIL_FLOW_BASIC				(250 KILOWATTS)
-#define SMES_COIL_STORAGE_WEAK				(50 KILOJOULES)
-#define SMES_COIL_FLOW_WEAK					(150 KILOWATTS)
-#define SMES_COIL_STORAGE_TRANSMISSION		(100 KILOJOULES)
-#define SMES_COIL_FLOW_TRANSMISSION			(1000 KILOWATTS)
-#define SMES_COIL_STORAGE_CAPACITANCE		(1000 KILOJOULES)
-#define SMES_COIL_FLOW_CAPACITANCE			()
+#define POWER_SCALE_POWER_OF_TEN(S)		(S*3)
 
-///translates Watt into Kilowattminutes with respect to machinery schedule_interval ~(2s*1W*1min/60s)
-#define SMESRATE 0.03333
-#define SMESMAXCHARGELEVEL 250000
-#define SMESMAXOUTPUT 250000
+#define POWER_ACCURACY					0.001
+#define POWER_QUANTIZE(P)				(round(P, POWER_ACCURACY))
 
-	ChargeCapacity = 1000				// 1 kWm
+/* CONVERSION HELPERS */
+#define WH_TO_J(WH)				(60*60*WH)
+#define KWH_TO_KJ(KWH)			(60*60*KWH)
+#define WH_TO_KJ(WH)			(60*60*(WH*0.001)
+#define KWH_TO_J(KWH)			(60*60*1000*KWH)	// WARNING: LOSS OF PRECISION LIKELY
+#define J_TO_WH(J)				(J*(1/(60*60)))
+#define KJ_TO_WH(KJ)			(KJ*(1000/(60*60)))
+#define KJ_TO_KWH(KJ)			(KJ*(1/(60*60)))
+#define J_TO_KWH(J)				(J*(1/(60*60*1000)))
 
+/proc/render_power_unit(unit)
+	switch(unit)
+		if(ENUM_POWER_UNIT_GENERIC)
+			return ""
+		if(ENUM_POWER_UNIT_JOULE)
+			return "J"
+		if(ENUM_POWER_UNIT_WATT)
+			return "W"
+		if(ENUM_POWER_UNIT_WATT_HOUR)
+			return "Wh"
 
-/obj/item/smes_coil
-	name = "superconductive magnetic coil"
-	desc = "The standard superconductive magnetic coil, with average capacity and I/O rating."
-	icon = 'icons/obj/stock_parts.dmi'
-	icon_state = "smes_coil"			// Just few icons patched together. If someone wants to make better icon, feel free to do so!
-	w_class = ITEMSIZE_LARGE 						// It's LARGE (backpack size)
-	var/ChargeCapacity = 6000000		// 100 kWh
-	var/IOCapacity = 250000				// 250 kW
+/proc/render_power_scale(scale)
+	switch(scale)
+		if(ENUM_POWER_SCALE_NONE)
+			return ""
+		if(ENUM_POWER_SCALE_KILO)
+			return "k"
+		if(ENUM_POWER_SCALE_MEGA)
+			return "M"
+		if(ENUM_POWER_SCALE_GIGA)
+			return "G"
+		if(ENUM_POWER_SCALE_TERA)
+			return "T"
+		if(ENUM_POWER_SCALE_PETA)
+			return "P"
 
-// 20% Charge Capacity, 60% I/O Capacity. Used for substation/outpost SMESs.
-/obj/item/smes_coil/weak
-	name = "basic superconductive magnetic coil"
-	desc = "A cheaper model of superconductive magnetic coil. Its capacity and I/O rating are considerably lower."
-	ChargeCapacity = 1200000			// 20 kWh
-	IOCapacity = 150000					// 150 kW
+/**
+ * renders power unit
+ */
+/proc/render_power(amount, power_scale = ENUM_POWER_SCALE_NONE, unit = ENUM_POWER_UNIT_GENERIC, conversion = TRUE, accuracy = POWER_ACCURACY)
+	if(!conversion)
+		return "[round(amount, accuracy)] [render_power_scale(power_scale)][render_power_unit(unit)]"
+	if(!amount)
+		return "0 [render_power_unit(unit)]"
+	if(amount > 1000)
+		while(amount > 1000)
+			amount *= 0.001
+			++power_scale
+	else if(amount < 0)
+		while(amount < 0)
+			amount *= 1000
+			--power_scale
+	return "[round(amount, accuracy)] [render_power_scale(power_scale)][render_power_unit(unit)]"
 
-// 1000% Charge Capacity, 20% I/O Capacity
-/obj/item/smes_coil/super_capacity
-	name = "superconductive capacitance coil"
-	desc = "A specialised type of superconductive magnetic coil with a significantly stronger containment field, allowing for larger power storage. Its IO rating is much lower, however."
-	ChargeCapacity = 60000000			// 1000 kWh
-	IOCapacity = 50000					// 50 kW
+/* universal */
+/// used in drain_energy, use_energy
+#define POWER_UNIT_UNIVERSAL_ENERGY			ENUM_POWER_UNIT_JOULE
+/// used in use_power
+#define POWER_UNIT_UNIVERSAL_FLOW			ENUM_POWER_UNIT_WATT
 
-// 10% Charge Capacity, 400% I/O Capacity. Technically turns SMES into large super capacitor.Ideal for shields.
-/obj/item/smes_coil/super_io
-	name = "superconductive transmission coil"
-	desc = "A specialised type of superconductive magnetic coil with reduced storage capabilites but vastly improved power transmission capabilities, making it useful in systems which require large throughput."
-	ChargeCapacity = 600000				// 10 kWh
-	IOCapacity = 1000000				// 1000 kW
+/* power grid aka /datum/powernet */
+#define POWER_UNIT_GRID_FLOW				ENUM_POWER_UNIT_WATT
+#define POWER_SCALE_GRID_FLOW				ENUM_POWER_SCALE_KILO
 
+/* SMES */
+#define POWER_UNIT_GRID_STORAGE				ENUM_POWER_UNIT_WATT_HOUR
+#define POWER_SCALE_GRID_STORAGE			ENUM_POWER_SCALE_KILO
 
-/// Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
-// = 50Ws/u
-// 1000u -> 50000Ws -> 138.889 Wh
-// 1200u -> 166.667 Wh
-#define CELLRATE 0.002 // It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
+// coil values are at grid storage scales
+#define SMES_COIL_STORAGE_BASIC				(250)
+#define SMES_COIL_FLOW_BASIC				(250)
+#define SMES_COIL_STORAGE_WEAK				(50)
+#define SMES_COIL_FLOW_WEAK					(150)
+#define SMES_COIL_STORAGE_TRANSMISSION		(10)
+#define SMES_COIL_FLOW_TRANSMISSION			(1000)
+#define SMES_COIL_STORAGE_CAPACITANCE		(1000)
+#define SMES_COIL_FLOW_CAPACITANCE			(50)
 
+/* cells */
+// Cells practically use their own power systems
+// "Use power from cell" for **handheld/portable devices**, semantically, should always use cell units and not a "real unit"
+// This way we can tweak balance with just cellrate.
 
-#define KILOWATTS *1000
-#define MEGAWATTS *1000000
-#define GIGAWATTS *1000000000
+// dynamic indicates this isn't constant
+
+#define DYNAMIC_KJ_TO_CELL_UNITS(KJ)		(KJ / GLOB.cellrate)
+#define DYNAMIC_J_TO_CELL_UNITS(J)			((J * 0.001) / GLOB.cellrate)
+/// dt in seconds
+#define DYNAMIC_W_TO_CELL_UNITS(W, DT)		(DYNAMIC_J_TO_CELL_UNITS(W) * DT)
+/// dt in seconds
+#define DYNAMIC_KW_TO_CELL_UNITS(KW, DT)	(DYNAMIC_KJ_TO_CELL_UNITS(KW) * DT)
+#define DYNAMIC_WH_TO_CELL_UNITS(WH)		((0.36 * WH) / GLOB.cellrate)
+#define DYNAMIC_KWH_TO_CELL_UNITS(KWH)		((3600 * KWH) / GLOB.cellrate)
+
+/// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
+GLOBAL_VAR_INIT(cellrate, 0.05)
+
+/**
+ * OLD CALCS FOR ABOVE
+ * Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
+ * = 50Ws/u
+ * 1000u -> 50000Ws -> 138.889 Wh
+ * 1200u -> 166.667 Wh
+ * #define CELLRATE 0.002 // It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
+ */
+
+/**
+ * misc
+ */
+
+#define THERMOMACHINE_CHEAT_FACTOR			2.5
+#define RECHARGER_CHEAT_FACTOR				5

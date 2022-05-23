@@ -1,5 +1,3 @@
-//TODO: Put this under a common parent type with freezers to cut down on the copypasta
-#define HEATER_PERF_MULT 2.5
 
 /obj/machinery/atmospherics/component/unary/heater
 	name = "gas heating system"
@@ -65,7 +63,7 @@
 		return
 
 	if(network && air_contents.total_moles && air_contents.temperature < set_temperature)
-		var/limit = clamp(air_contents.heat_capacity() * (set_temperature - air_contents.temperature), 0, power_rating * HEATER_PERF_MULT)
+		var/limit = clamp(air_contents.heat_capacity() * (set_temperature - air_contents.temperature), 0, power_rating * THERMOMACHINE_CHEAT_FACTOR)
 		air_contents.add_thermal_energy(limit)
 		use_power(power_rating)
 

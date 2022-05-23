@@ -1025,12 +1025,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	else
 		return 0
 
-/obj/machinery/power/apc/proc/last_surplus()
-	if(terminal && terminal.powernet)
-		return terminal.powernet.last_surplus()
-	else
-		return 0
-
 //Returns 1 if the APC should attempt to charge
 /obj/machinery/power/apc/proc/attempt_charging()
 	return (chargemode && charging == 1 && operating)
