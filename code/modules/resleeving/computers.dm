@@ -435,7 +435,7 @@
 	to_chat(attacker, "<span class='warning'>You tear open \the [name].</span>")
 	attacker.unEquip(src)
 	var/obj/item/disk/transcore/newdisk = new(get_turf(src))
-	attacker.put_in_any_hand_if_possible(newdisk)
+	attacker.put_in_hands(newdisk)
 	qdel(src)
 
 /obj/item/disk/transcore

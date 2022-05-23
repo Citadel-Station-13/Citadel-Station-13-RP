@@ -71,7 +71,7 @@
 		var/obj/item/implant/backup/imp = imps[imps.len]
 		imp.forceMove(get_turf(user))
 		imps -= imp
-		user.put_in_any_hand_if_possible(imp)
+		user.put_in_hands(imp)
 		update()
 	else
 		to_chat(user, "<span class='warning'>\The [src] is empty.</span>")

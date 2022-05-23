@@ -78,7 +78,7 @@
 		if(!M.unEquip(src))
 			return
 		src.add_fingerprint(usr)
-		M.put_in_any_hand_if_possible(src)
+		M.put_in_hands(src)
 
 
 /obj/item/defib_kit/attackby(obj/item/W, mob/user, params)

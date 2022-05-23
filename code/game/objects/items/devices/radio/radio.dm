@@ -827,7 +827,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		if(!M.unEquip(src))
 			return
 		add_fingerprint(usr)
-		M.put_in_any_hand_if_possible(src)
+		M.put_in_hands(src)
 
 /obj/item/bluespace_radio/attackby(obj/item/W, mob/user, params)
 	if(W == handset)

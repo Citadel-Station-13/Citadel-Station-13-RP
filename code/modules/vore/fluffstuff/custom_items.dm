@@ -1343,7 +1343,7 @@
 			beacons_left--
 			if(isliving(user))
 				var/mob/living/L = user
-				L.put_in_any_hand_if_possible(nb)
+				L.put_in_hands(nb)
 
 		if("Target Beacon")
 			if(!beacons.len)

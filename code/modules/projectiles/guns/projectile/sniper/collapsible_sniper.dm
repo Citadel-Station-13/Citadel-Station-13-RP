@@ -27,8 +27,8 @@
 			assembly.stock = stock
 			assembly.part_count = 2
 			assembly.update_build()
-			user.put_in_any_hand_if_possible(assembly) || assembly.dropInto(user.loc)
-			user.put_in_any_hand_if_possible(barrel) || barrel.dropInto(user.loc)
+			user.put_in_hands(assembly) || assembly.dropInto(user.loc)
+			user.put_in_hands(barrel) || barrel.dropInto(user.loc)
 
 
 /obj/item/sniper_rifle_part
@@ -87,7 +87,7 @@
 		if(P.trigger_group != P)
 			P.trigger_group = null
 		if(P != src)
-			user.put_in_any_hand_if_possible(P) || P.dropInto(loc)
+			user.put_in_hands(P) || P.dropInto(loc)
 		P.part_count = 1
 
 	update_build()
@@ -166,7 +166,7 @@
 			if(usr && istype(usr, /mob/living/carbon/human))
 				var/mob/living/carbon/human/user = usr
 				user.unEquip(src, force=1)
-				user.put_in_any_hand_if_possible(gun) || gun.dropInto(loc)
+				user.put_in_hands(gun) || gun.dropInto(loc)
 			qdel(src)
 
 /obj/item/gun/projectile/heavysniper/update_icon_state()
