@@ -166,10 +166,10 @@ GLOBAL_LIST_EMPTY(apcs)
 	//The grid rarely gives the full amount requested, or perhaps the grid
 	//isn't connected (wire cut), in either case we draw what we didn't get
 	//from the cell instead.
-	if((drained_energy < amount) && cell)
-		drained_energy += cell.drain_energy(acter, amount, flags)
+	if((drained < amount) && cell)
+		drained += cell.drain_energy(acter, amount, flags)
 
-	return drained_energy
+	return drained
 
 /obj/machinery/power/apc/Initialize(mapload, ndir, building = FALSE)
 	. = ..()

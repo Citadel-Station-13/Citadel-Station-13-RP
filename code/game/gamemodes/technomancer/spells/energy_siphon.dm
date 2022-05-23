@@ -46,8 +46,6 @@
 		return
 	siphon(siphoning, owner)
 
-
-
 /obj/item/spell/energy_siphon/on_ranged_cast(atom/hit_atom, mob/user)
 	if(istype(hit_atom, /atom/movable) && within_range(hit_atom, 4))
 		var/atom/movable/AM = hit_atom
@@ -109,7 +107,7 @@
 		var/charge_to_steal = round(flow_remaining / things_to_drain.len) // This is to drain all the cells evenly.
 		for(var/atom/movable/AM in things_to_drain)
 			var/big_number = AM.drain_energy(user, flow_rate * 0.001) * 1000 // This drains the cell, and leaves us with a big number.
-			flow_remaining = flow_remaining - (big_number * CELLRATE) // Which we reduce to our needed number by multiplying.
+			flow_remaining = flow_remaining - big_number // Which we reduce to our needed number by multiplying.
 			AM.update_icon() // So guns and batteries will display correctly.
 		charge_to_give = charge_to_give + (flow_rate - flow_remaining) * SIPHON_CELL_TO_ENERGY
 	// If we have 'leftover' flow, let's try to do more.
@@ -137,14 +135,14 @@
 	// Now we can actually fill up the core.
 	if(core.energy < core.max_energy)
 		give_energy(charge_to_give)
-		to_chat(user, "<span class='notice'>Stolen [charge_to_give * CELLRATE] kJ and converted to [charge_to_give] Core energy.</span>")
+		to_chat(user, "<span class='notice'>Stolen [charge_to_give * 0.001] kJ and converted to [charge_to_give] Core energy.</span>")
 		if( (core.max_energy - core.energy) < charge_to_give ) // We have some overflow, if this is true.
 			if(user.isSynthetic()) // Let's do something with it, if we're a robot.
 				charge_to_give = charge_to_give - (core.max_energy - core.energy)
 				user.nutrition =  min(user.nutrition + (charge_to_give / SIPHON_FBP_TO_ENERGY), 400)
 				to_chat(user, "<span class='notice'>Redirected energy to internal microcell.</span>")
 	else
-		to_chat(user, "<span class='notice'>Stolen [charge_to_give * CELLRATE] kJ.</span>")
+		to_chat(user, "<span class='notice'>Stolen [charge_to_give * 0.001] kJ.</span>")
 	adjust_instability(2)
 
 	if(flow_remaining == flow_rate) // We didn't drain anything.
