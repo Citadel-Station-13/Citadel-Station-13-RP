@@ -361,6 +361,7 @@
 	interface_desc = "Colloquially known as a power siphon, this module drains power through the suit hands into the suit battery."
 
 	var/atom/interfaced_with // Currently draining power from this device.
+	// in kJ
 	var/total_power_drained = 0
 	var/drain_loc
 
@@ -429,7 +430,7 @@
 		return 0
 
 	holder.spark_system.start()
-	playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)
+	playsound(H, 'sound/effects/sparks2.ogg', 50, 1)
 
 	H.break_cloak()
 
@@ -460,17 +461,15 @@
 	holder.cell.give(DYNAMIC_KJ_TO_CELL_UNITS(target_drained))
 	total_power_drained += target_drained
 
-	return
-
 /obj/item/rig_module/power_sink/proc/drain_complete(var/mob/living/M)
 	if(!interfaced_with)
 		if(M)
-			to_chat(M, "<font color=#4F49AF><b>Total power drained:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
+			to_chat(M, "<font color=#4F49AF><b>Total power drained:</b> [round(DYNAMIC_KJ_TO_CELL_UNITS(total_power_drained))] cell units.</font>")
 	else
 		if(M)
 			#warn sigh
-			to_chat(M, "<font color=#4F49AF><b>Total power drained from [interfaced_with]:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
-		interfaced_with.drain_energy(src, 0, POWER_DRAIN_SURGE)
+			to_chat(M, "<font color=#4F49AF><b>Total power drained from [interfaced_with]:</b> [round(DYNAMIC_KJ_TO_CELL_UNITS(total_power_drained))] cell units.</font>")
+		interfaced_with.drain_energy(src, 0, ENERGY_DRAIN_SURGE)
 
 	drain_loc = null
 	interfaced_with = null

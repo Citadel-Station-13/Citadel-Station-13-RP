@@ -349,11 +349,11 @@
 		shock_damage = cell_damage
 	var/drained_hp = M.electrocute_act(shock_damage, source, siemens_coeff) //zzzzzzap!
 	// 10kw per hp
-	var/drained_power = drained_hp * 10000
+	var/drained_energy = drained_hp * 10000
 	if (source_area)
 		source_area.use_power_oneoff(drained_energy)
 	else if (istype(power_source,/datum/powernet))
-		drained_power = PN.draw_pwer(drained_power)
+		drained_energy = PN.draw_power(drained_energy * 0.001) * 1000
 	else if (istype(power_source, /obj/item/cell))
-		cell.use(DYNAMIC_W_TO_CELL_UNITS(drained_power, 1))
+		cell.use(DYNAMIC_W_TO_CELL_UNITS(drained_energy, 1))
 	return drained_energy

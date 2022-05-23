@@ -1,5 +1,4 @@
 /// Multiplier for amount of power cyborgs use.
-#define CYBORG_POWER_USAGE_MULTIPLIER 2
 /datum/category_item/catalogue/fauna/silicon/robot
 	name = "Silicons - Robot"
 	desc = "The most common form of Silicon encountered on the Frontier, \
@@ -1151,7 +1150,7 @@
 		return 0
 
 	var/power_use = amount * CYBORG_POWER_USAGE_MULTIPLIER
-	if(cell.checked_use(CELLRATE * power_use))
+	if(cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(power_use, 1)))
 		used_power_this_tick += power_use
 		return 1
 	return 0

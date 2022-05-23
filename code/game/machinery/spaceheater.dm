@@ -162,10 +162,10 @@
 				if(removed)
 					var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
 					if(heat_transfer > 0)	//heating air
-						heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater
+						heat_transfer = min(heat_transfer, heating_power) //limit by the power rating of the heater
 
 						removed.add_thermal_energy(heat_transfer)
-						cell.use(heat_transfer*CELLRATE)
+						cell.use(DYNAMIC_W_TO_CELL_UNITS(heat_transfer * SPACE_HEATER_CHEAT_FACTOR, 1))
 					else	//cooling air
 						heat_transfer = abs(heat_transfer)
 
@@ -176,7 +176,7 @@
 						heat_transfer = removed.add_thermal_energy(-heat_transfer)	//get the actual heat transfer
 
 						var/power_used = abs(heat_transfer)/cop
-						cell.use(power_used*CELLRATE)
+						cell.use(DYNAMIC_W_TO_CELL_UNITS(power_used * SPACE_HEATER_CHEAT_FACTOR, 1))
 
 				env.merge(removed)
 		else
@@ -282,7 +282,7 @@
 	else if(heat_transfer > 0)
 		change_mode(MODE_HEATING)
 		power_avail = draw_power(min(heat_transfer, active_power_usage) * 0.001) * 1000
-		removed.add_thermal_energy(min(power_avail*5,heat_transfer))
+		removed.add_thermal_energy(min(power_avail * THERMOREGULATOR_CHEAT_FACTOR, heat_transfer))
 	else
 		change_mode(MODE_COOLING)
 		heat_transfer = abs(heat_transfer)
@@ -290,7 +290,7 @@
 		var/actual_heat_transfer = heat_transfer
 		heat_transfer = min(heat_transfer, active_power_usage*cop)
 		power_avail = draw_power((heat_transfer/cop) * 0.001) * 1000
-		removed.add_thermal_energy(-min(power_avail*5*cop,actual_heat_transfer))
+		removed.add_thermal_energy(-min(power_avail * 5 * cop, actual_heat_transfer))
 	env.merge(removed)
 
 /obj/machinery/power/thermoregulator/update_icon()

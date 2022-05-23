@@ -44,7 +44,7 @@
 /proc/render_power_unit(unit)
 	switch(unit)
 		if(ENUM_POWER_UNIT_GENERIC)
-			return ""
+			return "u"
 		if(ENUM_POWER_UNIT_JOULE)
 			return "J"
 		if(ENUM_POWER_UNIT_WATT)
@@ -70,7 +70,7 @@
 /**
  * renders power unit
  */
-/proc/render_power(amount, power_scale = ENUM_POWER_SCALE_NONE, unit = ENUM_POWER_UNIT_GENERIC, conversion = TRUE, accuracy = POWER_ACCURACY)
+/proc/render_power(amount, power_scale = ENUM_POWER_SCALE_NONE, unit = ENUM_POWER_UNIT_GENERIC, accuracy = POWER_ACCURACY, conversion = TRUE)
 	if(!conversion)
 		return "[round(amount, accuracy)] [render_power_scale(power_scale)][render_power_unit(unit)]"
 	if(amount <= 0)
@@ -149,9 +149,13 @@ GLOBAL_VAR_INIT(cellefficiency, 1)
  * misc
  */
 
-#define THERMOMACHINE_CHEAT_FACTOR			2.5
-#define RECHARGER_CHEAT_FACTOR				5
-#define SYNTHETIC_NUTRITION_KJ_PER_UNIT		2.5
+#define THERMOMACHINE_CHEAT_FACTOR						2.5
+#define RECHARGER_CHEAT_FACTOR							5
+#define SYNTHETIC_NUTRITION_KJ_PER_UNIT					2.5
+#define SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR		2
+#define CYBORG_POWER_USAGE_MULTIPLIER					2
+#define SPACE_HEATER_CHEAT_FACTOR						1.5
+#define THERMOREGULATOR_CHEAT_FACTOR					5
 
 /**
  * LEGACY ENUMS

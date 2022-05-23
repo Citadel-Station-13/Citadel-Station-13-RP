@@ -107,13 +107,13 @@
 			var/load = A.lastused_total // Load.
 			// scale W down to kW
 			total_apc_load += load * 0.001
-			load = reading_to_text(load)
+			load = render_power(load, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01)
 			out += "<td>[load]"
 
 	out += "<br><b>TOTAL AVAILABLE: [render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)]</b>"
 	out += "<br><b>APC LOAD: [render_power(total_apc_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)]</b>"
 	out += "<br><b>OTHER LOAD: [render_power(max(powernet.load - total_apc_load, 0), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)]</b>"
-	out += "<br><b>TOTAL GRID LOAD: [render_power(viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)] ([round((powernet.load / powernet.avail) * 100)]%)</b>"
+	out += "<br><b>TOTAL GRID LOAD: [render_power(powernet.viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)] ([round((powernet.load / powernet.avail) * 100)]%)</b>"
 
 	if(powernet.problem)
 		out += "<br><b>WARNING: Abnormal grid activity detected!</b>"
@@ -155,7 +155,7 @@
 			APC_entry["y"] = A.y
 			APC_entry["z"] = A.z
 			// Other info
-			APC_entry["total_load"] = reading_to_text(A.lastused_total)
+			APC_entry["total_load"] = render_power(A.lastused_total, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01)
 			// Hopefully removes those goddamn \improper s which are screwing up the UI
 			var/N = A.area.name
 			if(findtext(N, "�"))
@@ -169,7 +169,7 @@
 	data["total_avail"] = render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)
 	data["total_used_apc"] = render_power(total_apc_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)
 	data["total_used_other"] = render_power(max(powernet.load - total_apc_load, 0), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)
-	data["total_used_all"] = render_power(viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)
+	data["total_used_all"] = render_power(powernet.viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)
 
 	// Prevents runtimes when avail is 0 (division by zero)
 	if(powernet.avail)
