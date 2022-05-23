@@ -118,7 +118,7 @@
 				if(A.operating && A.cell)
 					var/cur_charge = DYNAMIC_CELL_UNITS_TO_KW(A.cell.charge, 1)
 					var/drain_val = min(apc_drain_rate, cur_charge)
-					A.cell.use(DYNAMIC_KW_TO_CELL_UNITS(drain_val))
+					A.cell.use(DYNAMIC_KW_TO_CELL_UNITS(drain_val, 1))
 					drained += drain_val
 	power_drained += KJ_TO_KWH(drained)
 	return 1

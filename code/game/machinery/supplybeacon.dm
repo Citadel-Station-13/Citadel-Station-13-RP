@@ -105,7 +105,7 @@
 		return PROCESS_KILL
 	if(!use_power)
 		return
-	if((draw_power(0.5) < 0.5)
+	if(draw_power(0.5) < 0.5)
 		deactivate()
 		return
 	if(!target_drop_time)
