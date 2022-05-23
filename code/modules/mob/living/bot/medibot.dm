@@ -618,10 +618,10 @@
 	switch(build_step)
 		if(ASSEMBLY_FIRST_STEP)
 			if(istype(W, /obj/item/healthanalyzer))
-				user.drop_item()
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				healthanalyzer = W.type
 				to_chat(user, SPAN_NOTICE("You add the health sensor to [src]."))
-				qdel(W)
 				name = "First aid/robot arm/health analyzer assembly"
 				add_overlay("[base_icon_state]-scanner")
 				build_step++
@@ -630,7 +630,8 @@
 			if(isprox(W))
 				if(!can_finish_build(W, user))
 					return
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				var/mob/living/bot/medibot/S = new(get_turf(src), skin)
 				to_chat(user, SPAN_NOTICE("You complete the Medibot! Beep boop."))
 				S.name = created_name

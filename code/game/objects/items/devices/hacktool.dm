@@ -30,7 +30,7 @@
 	else
 		..()
 
-/obj/item/multitool/hacktool/resolve_attackby(obj/item/W, mob/user, params, attack_modifier)
+/obj/item/multitool/hacktool/resolve_attackby(obj/item/W, mob/user, params)
 	sanity_check()
 
 	if(!in_hack_mode)

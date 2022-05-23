@@ -358,17 +358,16 @@
 
 		// Superconducting Magnetic Coil - Upgrade the SMES
 		else if(istype(W, /obj/item/smes_coil))
+			if(!user.transfer_item_to_loc(W, src))
+				to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+				return
 			if (cur_coils < max_coils)
-
 				if (failure_probability && prob(failure_probability))
 					total_system_failure(failure_probability, user)
 					return
-
 				to_chat(user, "You install the coil into the SMES unit!")
-				user.drop_item()
 				cur_coils ++
 				component_parts += W
-				W.loc = src
 				recalc_coils()
 			else
 				to_chat(user, "<font color='red'>You can't insert more coils into this SMES unit!</font>")

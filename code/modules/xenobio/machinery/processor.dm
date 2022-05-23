@@ -36,8 +36,8 @@
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 
-/obj/machinery/processor/attackby(obj/item/W, mob/user, params, attack_modifier)
-	if(default_unfasten_wrench(user, W, 40))
+/obj/machinery/processor/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+	if(default_unfasten_wrench(user, I, 40))
 		return
 	return ..()
 

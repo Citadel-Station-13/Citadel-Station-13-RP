@@ -32,17 +32,17 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	pre_attack(A, user)
 	if(!(flags & NOPRINT))
 		add_fingerprint(user)
-	return A.attackby(src, user, params, attack_modifier)
+	return A.attackby(src, user, params, NONE, attack_modifier)
 
 // No comment
-/atom/proc/attackby(obj/item/W, mob/user, params, attack_modifier)
+/atom/proc/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
 	return
 
-/atom/movable/attackby(obj/item/W, mob/user, params, attack_modifier)
-	if(!(W.flags & NOBLUDGEON))
-		visible_message("<span class='danger'>[src] has been hit by [user] with [W].</span>")
+/atom/movable/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+	if(!(I.flags & NOBLUDGEON))
+		visible_message("<span class='danger'>[src] has been hit by [user] with [I].</span>")
 
-/mob/living/attackby(obj/item/I, mob/user, params, attack_modifier)
+/mob/living/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
 	if(!ismob(user))
 		return 0
 	if(can_operate(src) && I.do_surgery(src,user))
@@ -52,7 +52,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 			return 0
 	if(attempt_vr(src,"vore_attackby",args))
 		return //VOREStation Add - The vore, of course.
-	return I.attack(src, user, user.zone_sel.selecting, attack_modifier)
+	return I.attack(src, user, user.zone_sel.selecting, damage_multiplier)
 
 // Used to get how fast a mob should attack, and influences click delay.
 // This is just for inheritence.

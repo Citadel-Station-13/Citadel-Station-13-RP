@@ -95,9 +95,10 @@
 		else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
 			if (charge < (capacity / 100))
 				if (!output_attempt && !input_attempt)
-					user.drop_item()
+					if(!user.transfer_item_to_loc(W, src))
+						to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+						return
 					component_parts += W
-					W.loc = src
 					RefreshParts()
 					to_chat(user, "<span class='notice'>You upgrade the [src] with [W.name].</span>")
 				else

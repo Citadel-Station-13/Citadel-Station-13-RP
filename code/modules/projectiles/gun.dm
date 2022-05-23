@@ -219,7 +219,7 @@
 					"<span class='danger'>\The [user] shoots [TU.himself] in the foot with \the [src]!</span>",
 					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
 					)
-				M.drop_item()
+				M.drop_item_to_ground(src)
 		else
 			handle_click_empty(user)
 		return 0
@@ -262,14 +262,15 @@
 	else
 		return ..() //Pistolwhippin'
 
-/obj/item/gun/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/dnalockingchip))
 		if(dna_lock)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
 			return
+		if(!user.transfer_item_to_loc(A, src))
+			to_chat(user, SPAN_WARNING("[A] is stuck to your hand!"))
+			return
 		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		user.drop_item()
-		A.loc = src
 		attached_lock = A
 		dna_lock = 1
 		verbs += /obj/item/gun/verb/remove_dna

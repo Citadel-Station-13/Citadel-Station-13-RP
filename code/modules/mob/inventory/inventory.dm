@@ -154,7 +154,8 @@
  * force - ignore nodrop and all that
  */
 /mob/proc/drop_inventory(include_inhands = TRUE, include_restraints = TRUE, force = TRUE)
-
+	for(var/obj/item/I as anything in get_equipped_items(include_inhands, include_restraints))
+		drop_item_to_ground(I, force)
 
 /**
  * gets the item in a slot

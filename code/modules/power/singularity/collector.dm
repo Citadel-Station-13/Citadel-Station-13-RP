@@ -42,8 +42,6 @@ var/global/list/rad_collectors = list()
 			eject()
 		else
 			P.air_contents.adjust_gas(/datum/gas/phoron, -0.001*drainratio)
-	return
-
 
 /obj/machinery/power/rad_collector/attack_hand(mob/user as mob)
 	if(anchored)
@@ -57,7 +55,6 @@ var/global/list/rad_collectors = list()
 			to_chat(user, "<font color='red'>The controls are locked!</font>")
 			return
 
-
 /obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tank/phoron))
 		if(!src.anchored)
@@ -66,9 +63,10 @@ var/global/list/rad_collectors = list()
 		if(src.P)
 			to_chat(user, "<font color='red'>There's already a phoron tank loaded.</font>")
 			return 1
-		user.drop_item()
+		if(!user.transfer_item_to_loc(W, src))
+			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+			return
 		src.P = W
-		W.loc = src
 		update_icons()
 		return 1
 	else if(W.is_crowbar())
