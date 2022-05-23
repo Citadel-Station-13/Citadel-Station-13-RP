@@ -38,7 +38,6 @@
 		autolathe_recipes = new()
 	wires = new(src)
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/autolathe/Destroy()
 	QDEL_NULL(wires)

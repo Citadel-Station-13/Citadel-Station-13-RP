@@ -54,7 +54,6 @@
 /obj/machinery/clonepod/Initialize(mapload, newdir)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 	update_icon()
 
 /obj/machinery/clonepod/attack_ai(mob/user)

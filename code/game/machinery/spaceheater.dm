@@ -286,11 +286,11 @@
 	else
 		change_mode(MODE_COOLING)
 		heat_transfer = abs(heat_transfer)
-		var/cop = removed.temperature/TN60C
+		var/cop = removed.temperature / TN60C
 		var/actual_heat_transfer = heat_transfer
-		heat_transfer = min(heat_transfer, active_power_usage*cop)
+		heat_transfer = min(heat_transfer, active_power_usage * cop)
 		power_avail = draw_power((heat_transfer/cop) * 0.001) * 1000
-		removed.add_thermal_energy(-min(power_avail * 5 * cop, actual_heat_transfer))
+		removed.add_thermal_energy(-min(power_avail * THERMOREGULATOR_CHEAT_FACTOR * cop, actual_heat_transfer))
 	env.merge(removed)
 
 /obj/machinery/power/thermoregulator/update_icon()

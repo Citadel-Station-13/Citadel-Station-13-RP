@@ -21,7 +21,6 @@
 /obj/machinery/r_n_d/server/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/r_n_d/server/Destroy()
 	griefProtection()

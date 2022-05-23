@@ -24,7 +24,6 @@
 /obj/machinery/atmospherics/component/unary/heater/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/atmospherics/component/unary/heater/atmos_init()
 	if(node)

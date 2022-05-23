@@ -136,10 +136,9 @@
 /obj/item/integrated_circuit/passive/power/chemical_cell/handle_passive_energy()
 	if(assembly)
 		for(var/I in fuel)
-			if((assembly.battery.maxcharge-assembly.battery.charge) / CELLRATE > fuel[I])
+			if(DYNAMIC_CELL_UNITS_TO_W(assembly.battery.maxcharge - assembly.battery.charge, 1) > fuel[I])
 				if(reagents.remove_reagent(I, 1))
 					assembly.give_power(fuel[I])
-
 
 // For really fat machines.
 /obj/item/integrated_circuit/passive/power/relay/large
