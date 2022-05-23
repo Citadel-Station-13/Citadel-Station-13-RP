@@ -50,7 +50,13 @@
 		if(2)
 			return put_in_r_hand(I, force)
 
-
+/mob/living/proc/_unequip_held(obj/item/I, update_icons)
+	if(l_hand == I)
+		l_hand = null
+	else if(r_hand == I)
+		r_hand = null
+	if(update_icons)
+		update_inv_hands()
 
 
 

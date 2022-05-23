@@ -174,7 +174,8 @@
 		equipping = new equipping(src)
 
 	if(!slot)
-		put_in_any_hand_if_possible(equipping, del_if_failure)
+		if(!put_in_any_hand_if_possible(equipping) && del_if_failure)
+			qdel(equipping)
 
 	else
 		if(slot_is_accessible(slot, equipping, src))

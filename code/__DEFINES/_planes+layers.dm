@@ -210,11 +210,13 @@ What is the naming convention for planes or layers?
 //////////////////////////
 /atom/proc/hud_layerise()
 	plane = PLANE_PLAYER_HUD_ITEMS
-	layer = LAYER_HUD_ITEM
+	set_base_layer(LAYER_HUD_ITEM)
+	appearance_flags |= NO_CLIENT_COLOR
 
-/atom/proc/reset_plane_and_layer()
+/atom/proc/hud_unlayerise()
 	plane = initial(plane)
 	set_base_layer(initial(layer))
+	appearance_flags &= ~(NO_CLIENT_COLOR)
 
 //Check if a mob can "logically" see an atom plane
 #define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible))

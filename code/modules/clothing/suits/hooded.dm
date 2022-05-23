@@ -63,7 +63,7 @@
 					hood.flags |= PHORONGUARD
 				else
 					hood.flags &= ~PHORONGUARD
-				H.equip_to_slot_if_possible(hood,SLOT_ID_HEAD,0,0,1)
+				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
 				if(armor)
 					hood.armor = armor.Copy()
 				hood_up = TRUE

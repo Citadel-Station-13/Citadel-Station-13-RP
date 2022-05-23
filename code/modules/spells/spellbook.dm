@@ -413,7 +413,7 @@
 		magichead.flags_inv = null	//so you can still see their face
 		magichead.voicechange = 1	//NEEEEIIGHH
 		user.drop_from_inventory(user.wear_mask)
-		user.equip_to_slot_if_possible(magichead, SLOT_ID_MASK, 1, 1)
+		user.equip_to_slot_or_del(magichead, SLOT_ID_MASK)
 		qdel(src)
 	else
 		to_chat(user, "<span class='notice'>I say thee neigh</span>")

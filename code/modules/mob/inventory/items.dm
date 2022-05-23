@@ -57,6 +57,7 @@
 	if(item_flags & DROPDEL)
 		qdel(src)
 
+	hud_unlayerise()
 	item_flags &= ~IN_INVENTORY
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
@@ -65,7 +66,6 @@
 	// user?.update_equipment_speed_mods()
 	if(zoom)
 		zoom() //binoculars, scope, etc
-	appearance_flags &= ~NO_CLIENT_COLOR
 
 /**
  * called when a mob picks up an item
@@ -77,6 +77,7 @@
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
+	hud_layerise()
 	item_flags |= IN_INVENTORY
 
 /**
