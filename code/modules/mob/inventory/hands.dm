@@ -74,7 +74,7 @@
 
 /**
  * get number of hand slots
- * 
+ *
  * semantically this means "physically there"
  * a broken hand is still there, a stump isn't
  */

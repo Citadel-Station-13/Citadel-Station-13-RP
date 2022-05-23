@@ -92,6 +92,7 @@
 	if(I)
 		if(client)
 			client.screen -= I
+			I.screen_loc = null
 		if(!(I.flags & DROPDEL))
 			if(newloc == null)
 				I.moveToNullspace()

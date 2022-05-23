@@ -16,13 +16,6 @@
 
 /* Inventory manipulation */
 
-/mob/proc/put_in_hands(obj/item/W as obj, del_on_fail = 0, disable_warning = 1, redraw_mob = 1)
-	if(equip_to_slot_if_possible(W, slot_l_hand, del_on_fail, disable_warning, redraw_mob))
-		return 1
-	else if(equip_to_slot_if_possible(W, slot_r_hand, del_on_fail, disable_warning, redraw_mob))
-		return 1
-	return 0
-
 //This is a SAFE proc. Use this instead of equip_to_slot()!
 //set del_on_fail to have it delete W if it fails to equip
 //set disable_warning to disable the 'you are unable to equip that' warning.
@@ -41,10 +34,6 @@
 
 	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
 	return 1
-
-//This is just a commonly used configuration for the equip_to_slot_if_possible() proc, used to equip people when the rounds tarts and when events happen and such.
-/mob/proc/equip_to_slot_or_del(obj/item/W as obj, slot)
-	return equip_to_slot_if_possible(W, slot, 1, 1, 0)
 
 //Checks if a given slot can be accessed at this time, either to equip or unequip I
 /mob/proc/slot_is_accessible(var/slot, var/obj/item/I, mob/user=null)
@@ -167,25 +156,11 @@
 		return 1
 	return 0
 
-/mob/proc/isEquipped(obj/item/I)
-	if(!I)
-		return 0
-	return get_inventory_slot(I) != 0
-
 /mob/proc/canUnEquip(obj/item/I)
 	if(!I) //If there's nothing to drop, the drop is automatically successful.
 		return 1
 	var/slot = get_inventory_slot(I)
 	return slot && I.mob_can_unequip(src, slot)
-
-/mob/proc/get_inventory_slot(obj/item/I)
-	var/slot = 0
-	for(var/s in 1 to SLOT_TOTAL)
-		if(get_equipped_item(s) == I)
-			slot = s
-			break
-	return slot
-
 
 //This differs from remove_from_mob() in that it checks if the item can be unequipped first.
 /mob/proc/unEquip(obj/item/I, force = 0, target) //Force overrides NODROP for things like wizarditis and admin undress.
