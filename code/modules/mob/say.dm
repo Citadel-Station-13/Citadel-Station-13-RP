@@ -1,16 +1,6 @@
 /mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
-/atom/proc/say_overhead(var/message, whispering, message_range, var/datum/language/speaking = null)
-	var/list/speech_bubble_hearers = list()
-	var/italics
-	if(whispering)
-		italics = TRUE
-	for(var/mob/M in get_mobs_in_view(message_range, src))
-		if(M.client)
-			speech_bubble_hearers += M.client
-	if(length(speech_bubble_hearers))
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
 
 /mob/proc/whisper_wrapper()
 	var/message = input("","whisper (text)") as text|null

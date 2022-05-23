@@ -3,9 +3,11 @@ var/list/floating_chat_colors = list()
 /atom/movable
 	var/list/stored_chat_text
 
-/atom/movable/proc/animate_chat(message, var/datum/language/speaking = null, small, list/show_to, duration)
+/atom/movable/proc/animate_chat(message, var/datum/language/speaking = null, small, list/show_to, duration = 30)
 	set waitfor = FALSE
-
+	if(!speaking)
+		var/datum/language/noise/noise
+		speaking = noise
 	// Get rid of any URL schemes that might cause BYOND to automatically wrap something in an anchor tag
 	var/static/regex/url_scheme = new(@"[A-Za-z][A-Za-z0-9+-\.]*:\/\/", "g")
 	message = replacetext(message, url_scheme, "")
@@ -56,11 +58,8 @@ var/list/floating_chat_colors = list()
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	I.pixel_x = -round(I.maptext_width/2) + 16
 
-	//style = "font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: [size]px; [style]"
-
-	I.maptext = "<span style=\"[style]\"><center>[MAPTEXT(message)]</center></span>" // whoa calm down!!
-	animate(I, 1, alpha = 255, pixel_y = 24 * X.size_multiplier)
-
+	I.maptext = MAPTEXT("<span style=\"[style]\"><center>[message]</center></span>") // whoa calm down!!
+	animate(I, 1, alpha = 255, pixel_y = 24 * (X?.size_multiplier || 1))
 	for(var/image/old in holder.stored_chat_text)
 		animate(old, 2, pixel_y = old.pixel_y + 8)
 	LAZYADD(holder.stored_chat_text, I)
