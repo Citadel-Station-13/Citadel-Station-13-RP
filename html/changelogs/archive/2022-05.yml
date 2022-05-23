@@ -39,3 +39,37 @@
 2022-05-09:
   Zandario:
   - bugfix: Defib works?
+2022-05-23:
+  Bhijn & Myr:
+  - rscadd: The TGS bot is now capable of pinging the reboot role, and the round-end
+      message is now configurable to target a specific tag!
+  Captain277:
+  - rscdel: Removes Protean ventcrawl.
+  FreeStylaLT:
+  - rscadd: 'handheld tazer tweak: swapped out hop holdout to proper energy gun (again)'
+  Ghostcoffeee:
+  - rscadd: Added RIG toolsets and a way to craft them
+  WrongEnd:
+  - imageadd: added moth clothing icons
+  - imageadd: Added sprites for moth-exclusive shoes.
+  Zandario:
+  - rscadd: Stock Market
+  - rscadd: PCUs (Personal Computer Units) instead of superglued laptops.
+  - rscadd: Smoothed sprited for computers.
+  - code_imp: Cleaned some code as well.
+  - bugfix: stools can be seen
+  - rscadd: "The Changelog you're reading this from.\U0001F44B"
+  - bugfix: Fixes Changelog Generation
+  - bugfix: Teleporters work again
+  lingonberry1234:
+  - bugfix: Memory circuits and cell removal
+  silicons:
+  - rscadd: window spawners for mappers
+  - rscadd: power cable helpers for mappers
+  - refactor: species are now instanced, rather than only globally cached
+  - bugfix: ping works again
+  - bugfix: stacks no longer delete themselves for no reason
+  - spellcheck: name sweater_fem --> sweater
+  - bugfix: gun safety doesn't display the inverse
+  - bugfix: admin spawn-character doesn't embed people into spawnpoints rather than
+      their locations
