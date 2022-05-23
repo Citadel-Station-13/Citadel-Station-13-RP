@@ -125,7 +125,8 @@
 #define DYNAMIC_WH_TO_CELL_UNITS(WH)		((0.36 * WH) / GLOB.cellrate)
 #define DYNAMIC_KWH_TO_CELL_UNITS(KWH)		((3600 * KWH) / GLOB.cellrate)
 
-/// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
+/// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss. higher = batteries are powerful as all hell, lower = batteries are shitty
+/// handheld equipment becomes more efficient as this goes down.
 GLOBAL_VAR_INIT(cellrate, 0.05)
 
 /**
