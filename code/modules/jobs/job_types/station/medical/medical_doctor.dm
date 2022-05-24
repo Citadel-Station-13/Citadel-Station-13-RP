@@ -74,11 +74,14 @@
 	id_type = /obj/item/card/id/medical
 	l_ear = /obj/item/radio/headset/headset_med
 	shoes = /obj/item/clothing/shoes/white
+
 	pda_type = /obj/item/pda/medical
 	pda_slot = slot_l_store
+
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med
+	dufflebag = /obj/item/storage/backpack/dufflebag/med
 
 /datum/outfit/job/station/medical_doctor/emergency_physician
 	name = OUTFIT_JOB_NAME("Emergency Physician")
@@ -94,8 +97,10 @@
 	uniform = /obj/item/clothing/under/rank/virologist
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/virologist
 	mask = /obj/item/clothing/mask/surgical
+
 	backpack = /obj/item/storage/backpack/virology
 	satchel_one = /obj/item/storage/backpack/satchel/vir
+	dufflebag = /obj/item/storage/backpack/dufflebag/virology
 
 /datum/outfit/job/station/medical_doctor/nurse
 	name = OUTFIT_JOB_NAME("Nurse")

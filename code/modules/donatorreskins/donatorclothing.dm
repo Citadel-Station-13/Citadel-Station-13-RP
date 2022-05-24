@@ -2,19 +2,19 @@
 	name = "base donator jumpsuit"
 	desc = "Here for ease of use in the future when adding items."
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
 /obj/item/clothing/suit/storage/toggle/labcoat/donator
 	name = "base donator labcoat"
 	desc = "Here for ease of use in the future when adding items."
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
 /obj/item/clothing/suit/armor/vest/donator
 	name = "base donator armor"
 	desc = "Yet again just here for convenience, use it as a base for donator armour-style items."
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/storage/hooded/donator/bee_costume
@@ -23,7 +23,7 @@
 	icon_state = "bee"
 	item_state_slots = list(slot_r_hand_str = "bee", slot_l_hand_str = "bee")
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/donator/bee_hood
@@ -33,7 +33,7 @@
 	desc = "A hood attached to a bee costume."
 	icon_state = "beehood"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	item_state_slots = list(slot_r_hand_str = "bee", slot_l_hand_str = "bee") //Does not exist -S2-
 	body_parts_covered = HEAD
 
@@ -41,7 +41,7 @@
 	name = "Explorer's Red Lensed Mask"
 	desc = "A gas mask with red lenses."
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	body_parts_covered = HEAD
 	icon_state = "gas_mining"
 
@@ -49,7 +49,7 @@
 	name = "Multicolor Coat"
 	desc = "An oddly special looking coat with black, red, and gold"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	item_state = "redgoldjacket_w"
 	icon_state = "redgoldjacket"
 
@@ -58,7 +58,7 @@
 	desc = "A standard version of a prototype cloak given out by Nanotrasen higher ups. It's surprisingly thick and heavy for a cloak despite having most of it's tech stripped. It also comes with a bluespace trinket which calls it's accompanying hat onto the user. A worn inscription on the inside of the cloak reads 'Fleuret' ...the rest is faded away."
 	item_state = "zuliecloak"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "zuliecloak"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
@@ -69,7 +69,7 @@
 	desc = "A hood attached to a cloak."
 	icon_state = "zuliecap"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "zuliecap"
 	body_parts_covered = HEAD
 
@@ -79,7 +79,7 @@
 	icon_state = "pinklatex"
 	item_state = "pinklatex"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
 /obj/item/clothing/under/donator/huni
 	name = "KHI Uniform"
@@ -87,14 +87,14 @@
 	icon_state = "blackuni"
 	item_state = "blackuni"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
 /obj/item/clothing/head/donator/hberet
 	name = "USDF Beret"
 	desc = "United Sol Defense Force headwear for formal occasions, this one is quite battered, much like its wearer."
 	icon_state = "blackberet"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	item_state_slots = list(slot_r_hand_str = "blackberet", slot_l_hand_str = "blackberet")
 	body_parts_covered = HEAD
 
@@ -103,13 +103,13 @@
 	desc = "A vintage wool cap, neatly shaven down the grain, adorning a golden oak leaf on its left half."
 	icon_state = "woolhat"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
 /obj/item/clothing/under/carcharodon
 	name = "Carcharodon Suit"
 	desc = "A hardened leather maillot meant to be worn under denim shorts and chaps. This suit was cut specifically to aid flexibility without sacrificing protection. A small tag bearing an embroidered 'K' is the only manufacturer's mark."
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "carcharodon"
 	item_state = "carcharodon"
 	item_icons = list(slot_r_hand_str = 'icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'icons/mob/inhands/clothing_left.dmi')
@@ -134,7 +134,7 @@
 	name = "Mantle of the Heavens"
 	desc = "A flowing nanosilk kimono, black with a pattern of swallows in silver thread. The interior is lined with a sleek orange synthetic fiber. This garment was cut specifically to maximize ventilation without sacrificing style nor mobility. A small tag bearing an embroidered 'K' is the only manufacturer's mark."
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "mantleofheaven"
 	item_state = "mantleofheaven"
 	item_icons = list(slot_r_hand_str = 'icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'icons/mob/inhands/clothing_left.dmi')
@@ -160,7 +160,7 @@
 	desc = "For when you just wanna summon extraplanar horrors or DAKKA DAKKA PUFF."
 	icon_state = "chaospriest"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	hoodtype = /obj/item/clothing/head/hood/techpriest/chaos
 
 /obj/item/clothing/head/hood/techpriest/chaos
@@ -173,7 +173,7 @@
 	desc = "A well tailored skirt matched with a form fitting blouse, perfect for all those paper pushing needs."
 	icon_state = "hueyskirt"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	rolled_down_sleeves_icon = 'icons/obj/clothing/donatorclothing.dmi'
 	rolled_sleeves = 0
 
@@ -187,7 +187,7 @@
 	desc = " "
 	icon_state = "mikujacket"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
 /obj/item/clothing/head/donator/mikuhair
 	name = "starlight singer hair"
@@ -195,34 +195,34 @@
 	flags_inv = HIDEEARS|BLOCKHEADHAIR
 	icon_state = "mikuhair"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
 /obj/item/clothing/gloves/donator/mikugloves
 	name = "starlight singer gloves"
 	desc = " "
 	icon_state = "mikugloves"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
 /obj/item/clothing/shoes/donator/mikuleggings
 	name = "starlight singer leggings"
 	desc = " "
 	icon_state = "mikuleggings"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 
 /obj/item/clothing/head/donator/dancer
 	name = "belly dancer headscarf"
 	desc = "A lightweight silk headscarf meant to accentuate and flow freely."
 	icon_state = "dancer_scarf"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 /obj/item/clothing/mask/donator/dancer
 	name = "belly dancer veil"
 	desc = "A heavy, ornate veil meant to mask the identity of the user, in spite of its subtle opacity."
 	icon_state = "dancer_veil"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	flags_inv = HIDEFACE
 	action_button_name = "Adjust Veil"
 	var/hanging = 0
@@ -255,13 +255,13 @@
 	desc = "Lightweight silk sleeves designed to flow during acrobatic displays."
 	icon_state = "dancer_sleeves"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 /obj/item/clothing/under/donator/dancer
 	name = "belly dancer costume"
 	desc = "An custom made ornate silk outfit, designed to be provocative without revealing too much of the wearer's body. A small tag bearing an embroidered 'K' is the only manufacturer's mark."
 	icon_state = "dancer_costume"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	rolled_sleeves = -1
 	rolled_down = -1
 	action_button_name = "Reconfigure Suit"
@@ -284,4 +284,4 @@
 	desc = "Soft silk wraps meant to provide some protection without hampering agility."
 	icon_state = "dancer_wraps"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'

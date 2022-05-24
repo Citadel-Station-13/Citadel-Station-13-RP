@@ -758,3 +758,7 @@ Swimsuits
 /datum/gear/uniform/hasie
 	name = "Hasie Designer Skirt/Vest"
 	path = /obj/item/clothing/under/hasie
+
+/datum/gear/uniform/utility_fur_pants
+	name = "Utility Fur Pants"
+	path = /obj/item/clothing/under/utility_fur_pants

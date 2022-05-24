@@ -7,6 +7,7 @@
 	desc = "Used to remove floors and to pry open doors."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar"
+	item_state = "crowbar"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_CROWBAR
 	force = 6

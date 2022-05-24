@@ -855,8 +855,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(icon_state)
 		return icon_state
 
-//Returns the layer that should be used for the worn icon (as a FLOAT_LAYER layer, so negative)
-/obj/item/proc/get_worn_layer(var/default_layer = 0)
+/// Returns the layer that should be used for the worn icon (as a FLOAT_LAYER layer, so negative)
+/obj/item/proc/get_worn_layer(default_layer = 0)
 
 	//1: worn_layer variable
 	if(!isnull(worn_layer)) //Can be zero, so...

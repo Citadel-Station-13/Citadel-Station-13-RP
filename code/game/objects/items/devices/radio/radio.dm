@@ -790,7 +790,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	desc = "A powerful new radio originally gifted to Nanotrasen from Ward Takahashi. Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere."
 	catalogue_data = list()///datum/category_item/catalogue/information/organization/ward_takahashi)
 	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_override = 'icons/mob/back_vr.dmi'
+	icon_override = 'icons/mob/clothing/back.dmi'
 	icon_state = "radiopack"
 	item_state = "radiopack"
 	slot_flags = SLOT_BACK

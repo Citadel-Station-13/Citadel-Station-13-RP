@@ -1,4 +1,0 @@
-author: "Bhijn & Myr"
-delete-after: True
-changes: 
-  - rscadd: "The TGS bot is now capable of pinging the reboot role, and the round-end message is now configurable to target a specific tag!"
