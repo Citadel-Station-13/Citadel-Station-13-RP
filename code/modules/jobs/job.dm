@@ -176,7 +176,7 @@
 
 	return job_master.job_icons[title]
 
-/datum/job/proc/dress_mannequin(var/mob/living/carbon/human/dummy/mannequin/mannequin)
+/datum/job/proc/dress_mannequin(mob/living/carbon/human/dummy/mannequin/mannequin)
 	mannequin.delete_inventory(TRUE)
 	equip_preview(mannequin)
 	if(mannequin.back)
@@ -184,11 +184,11 @@
 		mannequin.drop_from_inventory(O)
 		qdel(O)
 
-// Check client-specific availability rules.
+/// Check client-specific availability rules.
 /datum/job/proc/player_has_enough_pto(client/C)
 	return timeoff_factor >= 0 || (C && LAZYACCESS(C.department_hours, pto_type) > 0)
 
-/datum/job/proc/equip_backpack(var/mob/living/carbon/human/H)
+/datum/job/proc/equip_backpack(mob/living/carbon/human/H)
 	switch(H.backbag)
 		if(2)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), slot_back)
@@ -200,4 +200,5 @@
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/messenger(H), slot_back)
 		if(6)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/rig(H), slot_back)
-
+		if(7)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack/dufflebag(H), slot_back)

@@ -248,6 +248,7 @@
 		icon_state = "defibpaddles[wielded]_cooldown"
 
 /obj/item/shockpaddles/proc/can_use(mob/user, mob/M)
+	update_held_icon()
 	if(busy)
 		return 0
 	if(!check_charge(chargecost))

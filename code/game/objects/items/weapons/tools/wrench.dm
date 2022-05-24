@@ -6,6 +6,7 @@
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "wrench"
+	item_state = "wrench"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WRENCH
 	force = 6

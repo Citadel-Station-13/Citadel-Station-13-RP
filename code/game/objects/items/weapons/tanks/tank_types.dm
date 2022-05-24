@@ -130,7 +130,7 @@
 	name = "double emergency phoron tank"
 	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
 	icon = 'icons/obj/tank_vr.dmi'
-	icon_override = 'icons/mob/belt_vr.dmi'
+	icon_override = 'icons/mob/clothing/belt.dmi'
 	icon_state = "emergency_double_vox"
 	gauge_icon = "indicator_double"
 	gauge_cap = 3

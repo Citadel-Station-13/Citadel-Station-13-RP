@@ -21911,7 +21911,7 @@
 /area/quartermaster/belterdock/refinery)
 "oTt" = (
 /obj/effect/decal/remains,
-/obj/item/clothing/under/rank/centcom_officer,
+/obj/item/clothing/under/rank/centcom/officer,
 /obj/item/clothing/head/beret/centcom/officer,
 /obj/item/clothing/shoes/laceup,
 /turf/simulated/mineral/floor/vacuum,

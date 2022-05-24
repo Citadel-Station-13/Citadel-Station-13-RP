@@ -554,7 +554,7 @@
 	name = "plate carrier"
 	desc = "A lightweight black plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
-	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/modular_armor.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "pcarrier"
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_INSIGNIA\
@@ -731,7 +731,7 @@
 	name = "wolf-taur armor vest"
 	desc = "An armored vest that protects against some damage. It appears to be created for a wolf-taur."
 	species_restricted = null //Species restricted since all it cares about is a taur half
-	icon = 'icons/mob/taursuits_wolf_vr.dmi'
+	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
 	icon_state = "heavy_wolf_armor"
 	item_state = "heavy_wolf_armor"
 	valid_accessory_slots = null
@@ -778,7 +778,7 @@
 	desc = "When I joined the Corps, we didn't have any fancy-schmanzy armor. We had sticks! Two sticks, and a rock for the whole platoon - and we had to <i>share</i> the rock!"
 	icon_state = "unsc_armor"
 	icon = 'icons/obj/clothing/suits_vr.dmi'
-	icon_override = 'icons/mob/suit_vr.dmi'
+	icon_override = 'icons/mob/clothing/suit.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO // ToDo: Break up the armor into smaller bits.
 
 /obj/item/clothing/suit/armor/combat/imperial
@@ -786,7 +786,7 @@
 	desc = "Made out of an especially light metal, it lets you conquer in style."
 	icon_state = "ge_armor"
 	icon = 'icons/obj/clothing/suits_vr.dmi'
-	icon_override = 'icons/mob/suit_vr.dmi'
+	icon_override = 'icons/mob/clothing/suit.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/suit/armor/combat/imperial/centurion
@@ -819,7 +819,7 @@
 	name = "lightweight harness"
 	desc = "A lightweight harness designed to attach to the torso. It serves as an anchor point for lightweight armor plating, but provides no protection of its own."
 	icon = 'icons/obj/clothing/ties.dmi'
-	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/ties.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/ties.dmi')
 	icon_state = "pilot_webbing1"
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_ARMOR_C\
