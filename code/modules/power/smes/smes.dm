@@ -320,13 +320,11 @@ GLOBAL_LIST_EMPTY(smeses)
 		"inputAttempt" = input_attempt,
 		"inputting" = inputting,
 		"inputLevel" = input_level,
-		"inputLevel_text" = DisplayPower(input_level),
 		"inputLevelMax" = input_level_max,
 		"inputAvailable" = getTerminalPower(),
 		"outputAttempt" = output_attempt,
 		"outputting" = outputting,
 		"outputLevel" = round(output_level, 0.1),
-		"outputLevel_text" = DisplayPower(output_level),
 		"outputLevelMax" = round(output_level_max),
 		"outputUsed" = round(output_used, 0.1),
 	)

@@ -74,7 +74,7 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
-		charge -= (output_level_max * SMESRATE)
+		charge -= min(charge, max(KW_TO_KWH(output_level_max, 1), capacity * 0.0033333))
 		if(prob(1)) // Small chance of overload occuring since grounding is disabled.
 			apcs_overload(0,10)
 

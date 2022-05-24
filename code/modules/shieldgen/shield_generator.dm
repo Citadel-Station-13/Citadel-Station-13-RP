@@ -78,7 +78,7 @@
 	max_energy = 0
 	full_shield_strength = 0
 	for(var/obj/item/smes_coil/S in component_parts)
-		full_shield_strength += (S.ChargeCapacity * 5)
+		full_shield_strength += (KWH_TO_WM(S.charge_capacity) * 5)
 	max_energy = full_shield_strength * 20
 	current_energy = between(0, current_energy, max_energy)
 

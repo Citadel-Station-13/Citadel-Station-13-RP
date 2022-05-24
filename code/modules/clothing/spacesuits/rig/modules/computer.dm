@@ -467,7 +467,6 @@
 			to_chat(M, "<font color=#4F49AF><b>Total power drained:</b> [round(DYNAMIC_KJ_TO_CELL_UNITS(total_power_drained))] cell units.</font>")
 	else
 		if(M)
-			#warn sigh
 			to_chat(M, "<font color=#4F49AF><b>Total power drained from [interfaced_with]:</b> [round(DYNAMIC_KJ_TO_CELL_UNITS(total_power_drained))] cell units.</font>")
 		interfaced_with.drain_energy(src, 0, ENERGY_DRAIN_SURGE)
 

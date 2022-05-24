@@ -40,6 +40,15 @@
 #define KJ_TO_WH(KJ)			(KJ*(1000/(60*60)))
 #define KJ_TO_KWH(KJ)			(KJ*(1/(60*60)))
 #define J_TO_KWH(J)				(J*(1/(60*60*1000)))
+#define KW_TO_KWH(KW, T)		((KW*T)*(1/(60*60)))
+#define W_TO_WH(W, T)			((W*T)*(1/(60*60)))
+#define W_TO_KWH(W, T)			((W*T*0.001)*(1/(60*60)))
+#define KW_TO_WH(KW, T)			((KW*T*1000)*(1/(60*60)))
+// watt minutes - why you'd do this is beyond me
+#define WH_TO_WM(WH)			(WH*60)
+#define KWH_TO_WM(KWH)			(KWH*60*1000)
+#define KWH_TO_KWM(KWH)			(KWH*60)
+#define WWH_TO_KWM(WH)			(WH*60*0.001)
 
 /proc/render_power_unit(unit)
 	switch(unit)
@@ -100,9 +109,9 @@
 #define POWER_SCALE_GRID_STORAGE			ENUM_POWER_SCALE_KILO
 
 // coil values are at grid storage scales
-#define SMES_COIL_STORAGE_BASIC				(250)
+#define SMES_COIL_STORAGE_BASIC				(100)
 #define SMES_COIL_FLOW_BASIC				(250)
-#define SMES_COIL_STORAGE_WEAK				(50)
+#define SMES_COIL_STORAGE_WEAK				(20)
 #define SMES_COIL_FLOW_WEAK					(150)
 #define SMES_COIL_STORAGE_TRANSMISSION		(10)
 #define SMES_COIL_FLOW_TRANSMISSION			(1000)
