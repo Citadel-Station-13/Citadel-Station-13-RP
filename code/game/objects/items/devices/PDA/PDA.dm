@@ -1296,9 +1296,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/attackby(obj/item/C as obj, mob/user as mob)
 	..()
 	if(istype(C, /obj/item/cartridge) && !cartridge)
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		cartridge = C
-		user.drop_item()
-		cartridge.loc = src
 		to_chat(usr, "<span class='notice'>You insert [cartridge] into [src].</span>")
 		SSnanoui.update_uis(src) // update all UIs attached to src
 		if(cartridge.radio)
@@ -1323,9 +1323,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 					updateSelfDialog()//Update self dialog on success.
 			return	//Return in case of failed check or when successful.
 		updateSelfDialog()//For the non-input related code.
-	else if(istype(C, /obj/item/paicard) && !src.pai)
-		user.drop_item()
-		C.loc = src
+	else if(istype(C, /obj/item/paicard) && !pai)
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		pai = C
 		to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
 		SSnanoui.update_uis(src) // update all UIs attached to src
@@ -1334,10 +1334,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(O)
 			to_chat(user, "<span class='notice'>There is already a pen in \the [src].</span>")
 		else
-			user.drop_item()
-			C.loc = src
+			if(!user.attempt_insert_item_for_installation(C, src))
+				return
 			to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
-	return
 
 /obj/item/pda/attack(mob/living/C as mob, mob/living/user as mob)
 	if (istype(C, /mob/living/carbon))

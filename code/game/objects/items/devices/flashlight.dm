@@ -225,8 +225,8 @@
 		if(istype(W, /obj/item/cell))
 			if(istype(W, /obj/item/cell/device))
 				if(!cell)
-					user.drop_item()
-					W.loc = src
+					if(!user.attempt_insert_item_for_installation(W, src))
+						return
 					cell = W
 					to_chat(user, SPAN_NOTICE("You install a cell in \the [src]."))
 					playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
@@ -235,7 +235,6 @@
 					to_chat(user, SPAN_NOTICE("\The [src] already has a cell."))
 			else
 				to_chat(user, SPAN_NOTICE("\The [src] cannot use that type of cell."))
-
 	else
 		..()
 

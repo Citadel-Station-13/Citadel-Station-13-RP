@@ -168,13 +168,21 @@
 			hitsound = "swing_hit"
 
 /obj/item/Destroy()
-	if(ismob(loc))
-		var/mob/m = loc
-		m.drop_from_inventory(src)
-		m.update_inv_r_hand()
-		m.update_inv_l_hand()
-		src.loc = null
+	if(current_equipped_slot)
+		if(!ismob(loc))
+			stack_trace("invalid current equipped slot [current_equipped_slot] on an item not on a mob.")
+			return ..()
+		var/mob/M = loc
+		M.temporarily_remove_from_inventory(src, TRUE)
 	return ..()
+
+/obj/item/doMove(atom/destination)
+	// if we're on a mob and we're moving somewhere else, yank us out!
+	if(current_equipped_slot && ismob(loc) && (destination != loc))
+		var/mob/M = loc
+		M.temporarily_remove_from_inventory(src, TRUE)
+	. = ..()
+
 
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
@@ -430,7 +438,7 @@
 				return 0
 			if( w_class > ITEMSIZE_SMALL && !(slot_flags & SLOT_POCKET) )
 				return 0
-		if(SLOT_ID_SUIT_STORE)
+		if(SLOT_ID_SUIT_STORAGE)
 			if(!H.wear_suit && (SLOT_ID_SUIT in mob_equip))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a suit before you can attach this [name].</span>")

@@ -237,6 +237,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 #define CLOTHING_TRAIT "clothing"
 #define MAGBOOT_TRAIT "magboot"
+#define TOGGLE_CLOTHING_TRAIT "toggle_clothing"
 /*
 #define GLASSES_TRAIT "glasses"
 /// inherited from riding vehicles
