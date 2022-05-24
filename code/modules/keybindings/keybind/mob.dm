@@ -178,7 +178,7 @@
 	if(!I)
 		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
 	else
-		M.drop_item(M.drop_location())
+		M.drop_item_to_ground(I)
 	return TRUE
 
 /datum/keybinding/mob/toggle_gun_mode

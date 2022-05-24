@@ -356,7 +356,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	density = 1
 	throwpass = 1
 
-/obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/holohoop/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W
 		if(G.state<2)
@@ -368,7 +368,9 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 		qdel(W)
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
-		user.drop_item(src.loc)
+		if(!user.transfer_item_to_loc(W, loc))
+			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+			return
 		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>", 3)
 		return
 

@@ -99,7 +99,7 @@
 	if(src.magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		canremove = 1
+		REMOVE_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You relax your deathgrip on the flooring.")
 	else
 		//make sure these can only be used when equipped.
@@ -112,7 +112,7 @@
 
 		clothing_flags |= NOSLIP
 		magpulse = 1
-		canremove = 0	//kinda hard to take off magclaws when you are gripping them tightly.
+		ADD_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You dig your claws deeply into the flooring, bracing yourself.")
 	user.update_action_buttons()
 
@@ -123,7 +123,7 @@
 		user.visible_message("The [src] go limp as they are removed from [usr]'s feet.", "The [src] go limp as they are removed from your feet.")
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		canremove = 1
+		REMOVE_TRAIT(src, TRAIT_NODROP, MAGBOOT_TARIT)
 
 /obj/item/clothing/shoes/magboots/vox/examine(mob/user)
 	..(user)

@@ -172,8 +172,8 @@
 
 /obj/item/tool/screwdriver/power/attack_self(mob/user)
 	playsound(get_turf(user),'sound/items/change_drill.ogg',50,1)
-	user.drop_item(src)
-	counterpart.forceMove(get_turf(src))
-	src.forceMove(counterpart)
-	user.put_in_active_hand(counterpart)
+	user.temporarily_remove_from_inventory(src, TRUE)
+	if(!user.put_in_active_hand(counterpart))
+		counterpart.forceMove(get_turf(src))
+	forceMove(counterpar)
 	to_chat(user, "<span class='notice'>You attach the bolt driver bit to [src].</span>")

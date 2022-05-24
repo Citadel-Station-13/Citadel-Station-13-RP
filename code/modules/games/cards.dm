@@ -85,7 +85,7 @@
 
 	if(usr.stat || !Adjacent(usr)) return
 
-	if(user.hands_are_full()) // Safety check lest the card disappear into oblivion
+	if(user.hands_full()) // Safety check lest the card disappear into oblivion
 		to_chat(user,"<span class='notice'>Your hands are full!</span>")
 		return
 
@@ -293,10 +293,8 @@
 
 	H.cards += cards
 	H.parentdeck = src.parentdeck
-	cards.Cut();
-	user.drop_item()
+	cards.Cut()
 	qdel(src)
-
 	H.update_icon()
 	user.put_in_active_hand(H)
 
@@ -371,7 +369,7 @@
 
 	if(user.stat || !Adjacent(user)) return
 
-	if(user.hands_are_full()) // Safety check lest the card disappear into oblivion
+	if(user.hands_full()) // Safety check lest the card disappear into oblivion
 		to_chat(usr,"<span class='danger'>Your hands are full!</span>")
 		return
 

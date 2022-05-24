@@ -199,9 +199,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EMPATH			"empath"
 #define TRAIT_FRIENDLY			"friendly"
 #define TRAIT_GRABWEAKNESS		"grab_weakness"
+*/
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
+/*
 #define EYE_DAMAGE "eye_damage"
 #define GENETIC_MUTATION "genetic"
 #define OBESITY "obesity"
@@ -215,6 +217,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 ///cannot be removed without admin intervention
 #define ROUNDSTART_TRAIT "roundstart"
+#define HOLOGRAM_TRAIT "hologram"
 #define GHOSTROLE_TRAIT "ghostrole"
 #define JOB_TRAIT "job"
 ///Mime trait.
@@ -233,6 +236,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define STATUS_EFFECT_TRAIT "status-effect"
 */
 #define CLOTHING_TRAIT "clothing"
+#define MAGBOOT_TRAIT "magboot"
 /*
 #define GLASSES_TRAIT "glasses"
 /// inherited from riding vehicles

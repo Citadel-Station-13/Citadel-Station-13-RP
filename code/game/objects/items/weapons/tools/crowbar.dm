@@ -118,10 +118,10 @@
 
 /obj/item/tool/crowbar/power/attack_self(mob/user)
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, 1)
-	user.drop_item(src)
-	counterpart.forceMove(get_turf(src))
-	src.forceMove(counterpart)
-	user.put_in_active_hand(counterpart)
+	user.temporarily_remove_from_inventory(src)
+	if(!user.put_in_active_hand(counterpart))
+		counterpart.forceMove(get_turf(src))
+	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the cutting jaws to [src].</span>")
 
 /*

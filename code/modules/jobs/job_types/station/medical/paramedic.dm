@@ -43,7 +43,6 @@
 	id_type = /obj/item/card/id/medical/paramedic
 	l_ear = /obj/item/radio/headset/headset_med
 	pda_type = /obj/item/pda/medical
-	pda_slot = slot_l_store
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med
