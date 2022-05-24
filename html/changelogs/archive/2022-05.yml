@@ -73,3 +73,8 @@
   - bugfix: gun safety doesn't display the inverse
   - bugfix: admin spawn-character doesn't embed people into spawnpoints rather than
       their locations
+2022-05-24:
+  Zandario:
+  - imageadd: Tons of new Teshari Sprites
+  - imageadd: Some TG Clothing Sprites
+  - imageadd: Citadel Logo SVG for TGUI use.
