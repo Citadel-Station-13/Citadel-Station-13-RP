@@ -72,8 +72,6 @@
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up
 	var/slowdown = 0
-	///Mostly for Ninja code at this point but basically will not allow the item to be removed if set to FALSE.
-	var/canremove = TRUE
 	var/list/armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	var/list/armorsoak = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	/// Suit storage stuff.
