@@ -1452,7 +1452,7 @@
 
 /datum/gear/restricted/misc/shoes/janitor
 	name = "Janitor Galoshes - Black"
-	path = /obj/item/clothing/shoes/galoshes/citadel/black
+	path = /obj/item/clothing/shoes/galoshes/black
 	allowed_roles = list("Janitor")
 
 /datum/gear/restricted/janitor/wintercoat
@@ -1462,7 +1462,7 @@
 
 /datum/gear/restricted/misc/shoes/janitor/alt
 	name = "Janitor Galoshes - Dark-Purple"
-	path = /obj/item/clothing/shoes/galoshes/citadel/starcon
+	path = /obj/item/clothing/shoes/galoshes/starcon
 	allowed_roles = list("Janitor")
 	cost = 2
 

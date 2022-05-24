@@ -35,11 +35,14 @@
 	l_hand = /obj/item/storage/firstaid/regular
 	belt = /obj/item/storage/belt/medical/emt
 	pda_slot = SLOT_ID_LEFT_POCKET
-	pda_type = /obj/item/pda/sar //VOREStation Add
-	id_type = /obj/item/card/id/medical/sar
-	id_pda_assignment = "Field Medic" //VOREStation Edit
-	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
 	r_pocket = /obj/item/flashlight/pen
+	pda_type = /obj/item/pda/sar
+	id_type = /obj/item/card/id/medical/sar
+	id_pda_assignment = "Field Medic"
+
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med
+	dufflebag = /obj/item/storage/backpack/dufflebag/med
+
+	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL

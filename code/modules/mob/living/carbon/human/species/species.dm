@@ -41,7 +41,7 @@
 	/// The icon_state used inside OnFire.dmi for when on fire.
 	var/fire_icon_state = "humanoid"
 	/// Icons used for worn items in suit storage slot.
-	var/suit_storage_icon = 'icons/mob/belt_mirror.dmi'
+	var/suit_storage_icon = 'icons/mob/clothing/belt_mirror.dmi'
 
 	/// default bodytype to use for clothing rendering
 	var/default_bodytype = BODYTYPE_NORMAL

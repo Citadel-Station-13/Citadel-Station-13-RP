@@ -10,7 +10,7 @@
 	name_language = LANGUAGE_CANILUNZT
 	primitive_form = SPECIES_MONKEY_VULPKANIN
 	tail = "vulptail"
-	tail_animation = 'icons/mob/species/vulpkanin/tail.dmi' // probably need more than just one of each, but w/e
+	tail_animation = 'icons/mob/clothing/species/vulpkanin/tail.dmi' // probably need more than just one of each, but w/e
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	darksight = 5 //worse than cats, but better than lizards. -- Poojawa
 //	gluttonous = 1

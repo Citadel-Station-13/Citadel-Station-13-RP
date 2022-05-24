@@ -53,9 +53,12 @@
 	uniform = /obj/item/clothing/under/rank/research_director
 	shoes = /obj/item/clothing/shoes/brown
 	l_hand = /obj/item/clipboard
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/rd
+
 	id_type = /obj/item/card/id/science/head
 	pda_type = /obj/item/pda/heads/rd
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat/rd
+
 	backpack = /obj/item/storage/backpack/toxins
 	satchel_one = /obj/item/storage/backpack/satchel/tox
 	messenger_bag = /obj/item/storage/backpack/messenger/tox
+	dufflebag = /obj/item/storage/backpack/dufflebag/sci

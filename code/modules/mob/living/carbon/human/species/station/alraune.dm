@@ -318,33 +318,33 @@
 	return 1
 
 /obj/item/organ/internal/brain/alraune
-	icon = 'icons/mob/species/alraune/organs.dmi'
+	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
 	icon_state = "neurostroma"
 	name = "neuro-stroma"
 	desc = "A knot of fibrous plant matter."
 	parent_organ = BP_TORSO // brains in their core
 
 /obj/item/organ/internal/eyes/alraune
-	icon = 'icons/mob/species/alraune/organs.dmi'
+	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
 	icon_state = "photoreceptors"
 	name = "photoreceptors"
 	desc = "Bulbous and fleshy plant matter."
 
 /obj/item/organ/internal/kidneys/alraune
-	icon = 'icons/mob/species/alraune/organs.dmi'
+	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
 	icon_state = "rhyzofilter"
 	name = "rhyzofilter"
 	desc = "A tangle of root nodules."
 
 /obj/item/organ/internal/liver/alraune
-	icon = 'icons/mob/species/alraune/organs.dmi'
+	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
 	icon_state = "phytoextractor"
 	name = "enzoretector"
 	desc = "A bulbous gourd-like structure."
 
 //Begin fruit gland and its code.
 /obj/item/organ/internal/fruitgland //Amazing name, I know.
-	icon = 'icons/mob/species/alraune/organs.dmi'
+	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
 	icon_state = "phytoextractor"
 	name = "fruit gland"
 	desc = "A bulbous gourd-like structure."

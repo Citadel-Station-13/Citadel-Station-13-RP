@@ -48,6 +48,7 @@
 	var/satchel_two  = /obj/item/storage/backpack/satchel
 	var/messenger_bag = /obj/item/storage/backpack/messenger
 	var/rig = /obj/item/storage/backpack/rig
+	var/dufflebag = /obj/item/storage/backpack/dufflebag
 
 	var/flags // Specific flags
 
@@ -61,7 +62,8 @@
 			if(4) back = satchel_two
 			if(5) back = messenger_bag
 			if(6) back = rig
-			else back = null
+			if(7) back = dufflebag
+			else  back = null
 
 /datum/outfit/proc/post_equip(mob/living/carbon/human/H)
 	if(flags & OUTFIT_HAS_JETPACK)
@@ -71,7 +73,7 @@
 		J.toggle()
 		J.toggle_valve()
 
-/datum/outfit/proc/equip(mob/living/carbon/human/H, var/rank, var/assignment)
+/datum/outfit/proc/equip(mob/living/carbon/human/H, rank, assignment)
 	equip_base(H)
 
 	rank = rank || id_pda_assignment

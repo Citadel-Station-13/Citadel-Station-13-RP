@@ -20,7 +20,7 @@
 	var/mob/living/carbon/owner
 	var/mutable_appearance/head
 	var/headcolor = rgb(0, 0, 0)
-	sprite_sheets = list('icons/mob/mask.dmi')
+	sprite_sheets = list(INV_MASK_DEF_ICON)
 	volume = 20
 
 /obj/item/reagent_containers/hard_candy/Initialize(mapload)

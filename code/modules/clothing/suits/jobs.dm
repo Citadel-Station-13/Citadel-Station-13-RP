@@ -170,21 +170,6 @@
 	/obj/item/clothing/mask/gas, /obj/item/barrier_tape_roll/engineering)
 	body_parts_covered = UPPER_TORSO
 
-/obj/item/clothing/suit/storage/hazardvest/blue
-	name = "blue hazard vest"
-	desc = "A high-visibility vest used in work zones. This one is blue!"
-	icon_state = "hazard_b"
-
-/obj/item/clothing/suit/storage/hazardvest/green
-	name = "green hazard vest"
-	desc = "A high-visibility vest used by emergency responders. This one is green!"
-	icon_state = "hazard_g"
-
-/obj/item/clothing/suit/storage/hazardvest/white
-	name = "white hazard vest"
-	desc = "A high-visibility vest used in work zones. This one has a red cross!"
-	icon_state = "hazard_w"
-
 //Lawyer
 /obj/item/clothing/suit/storage/toggle/lawyer/bluejacket
 	name = "blue suit jacket"

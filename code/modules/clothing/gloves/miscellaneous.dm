@@ -80,8 +80,7 @@
 	name = "nitrile gloves"
 	desc = "Sterile nitrile gloves"
 	icon_state = "nitrile"
-	item_state = "ngloves"
-//	balloonPath = /obj/item/nitrileballoon
+	item_state = "nitrile"
 
 /obj/item/clothing/gloves/botanic_leather
 	desc = "These leather work gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."
@@ -626,3 +625,10 @@
 	desc = "Fashioned from flexible, creamy white leather, one of these gloves has been dyed red. This duality provides the perfect asymmetric flair when paired with the matching Hasie skirt."
 	icon_state = "hasie"
 	fingerprint_chance = 100
+
+/obj/item/clothing/gloves/utility_fur_gloves
+	name = "Utility Fur Gloves"
+	desc = "Warm fur gloves to match the Utility Fur coat."
+	icon_state = "furug"
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE

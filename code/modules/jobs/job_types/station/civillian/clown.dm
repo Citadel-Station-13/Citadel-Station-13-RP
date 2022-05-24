@@ -34,11 +34,13 @@
 	shoes = /obj/item/clothing/shoes/clown_shoes
 	uniform = /obj/item/clothing/under/rank/clown
 	mask = /obj/item/clothing/mask/gas/clown_hat
+	r_pocket = /obj/item/bikehorn
 	l_ear = /obj/item/radio/headset
 	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/civilian
 	pda_slot = SLOT_ID_BELT
 	pda_type = /obj/item/pda/clown
-	backpack = /obj/item/storage/backpack/clown
-	r_pocket = /obj/item/bikehorn
 	id_pda_assignment = "Clown"
+
+	backpack = /obj/item/storage/backpack/clown
+	dufflebag = /obj/item/storage/backpack/dufflebag/clown

@@ -42,9 +42,13 @@
 	uniform = /obj/item/clothing/under/rank/roboticist
 	shoes = /obj/item/clothing/shoes/black
 	belt = /obj/item/storage/belt/utility/full
+
 	id_type = /obj/item/card/id/science/roboticist
 	pda_slot = SLOT_ID_RIGHT_POCKET
 	pda_type = /obj/item/pda/roboticist
+	l_ear = /obj/item/radio/headset/headset_sci
+
 	backpack = /obj/item/storage/backpack
 	satchel_one = /obj/item/storage/backpack/satchel/norm
-	l_ear = /obj/item/radio/headset/headset_sci
+	messenger_bag = /obj/item/storage/backpack/messenger/tox
+	dufflebag = /obj/item/storage/backpack/dufflebag/sci

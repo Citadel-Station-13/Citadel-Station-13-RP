@@ -5,7 +5,7 @@
 	icobase = 'icons/mob/human_races/r_lizard_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_lizard_vr.dmi'
 	tail = "sogtail"
-	tail_animation = 'icons/mob/species/unathi/tail_vr.dmi'
+	tail_animation = 'icons/mob/clothing/species/unathi/tail_vr.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	primitive_form = SPECIES_MONKEY_UNATHI
 	ambiguous_genders = TRUE

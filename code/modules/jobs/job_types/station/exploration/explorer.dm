@@ -39,16 +39,23 @@
 
 /datum/outfit/job/station/explorer
 	name = OUTFIT_JOB_NAME("Explorer")
+	id_pda_assignment = "Explorer"
 	shoes = /obj/item/clothing/shoes/boots/winter/explorer
 	uniform = /obj/item/clothing/under/explorer
 	l_ear = /obj/item/radio/headset/explorer
+
 	id_slot = SLOT_ID_WORN_ID
 	pda_slot = SLOT_ID_LEFT_POCKET
-	pda_type = /obj/item/pda/explorer //VORESTation Edit - Better Brown
-	id_type = /obj/item/card/id/explorer/explorer //VOREStation Edit
-	id_pda_assignment = "Explorer"
-	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
+
+	pda_type = /obj/item/pda/explorer
+	id_type = /obj/item/card/id/explorer/explorer
+
+	backpack = /obj/item/storage/backpack/voyager
 	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/planetside = 1)
+	satchel_one = /obj/item/storage/backpack/satchel/voyager
+	dufflebag = /obj/item/storage/backpack/dufflebag/voyager
+
+	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
 
 /datum/outfit/job/station/explorer2/post_equip(mob/living/carbon/human/H)
 	..()

@@ -11,7 +11,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_state = "electronic"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/id.dmi')
+	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi')
 
 	//Main variables
 	var/pdachoice = 1
@@ -448,15 +448,15 @@ GLOBAL_LIST_EMPTY(PDAs)
 				icon = 'icons/obj/pda_wrist.dmi'
 				item_state = icon_state
 				item_icons = list(
-					SLOT_ID_BELT = 'icons/mob/pda_wrist.dmi',
-					SLOT_ID_WORN_D = 'icons/mob/pda_wrist.dmi',
-					SLOT_ID_GLOVES = 'icons/mob/pda_wrist.dmi'
+					SLOT_ID_BELT = 'icons/mob/clothing/pda_wrist.dmi',
+					SLOT_ID_WORN_ID = 'icons/mob/clothing/pda_wrist.dmi',
+					SLOT_ID_GLOVES = 'icons/mob/clothing/pda_wrist.dmi'
 				)
 				desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a wrist-bound version."
 				slot_flags = SLOT_ID | SLOT_BELT | SLOT_GLOVES
 				sprite_sheets = list(
-				SPECIES_TESHARI = 'icons/mob/species/teshari/pda_wrist.dmi',
-				SPECIES_VR_TESHARI = 'icons/mob/species/teshari/pda_wrist.dmi',
+				SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/pda_wrist.dmi',
+				SPECIES_VR_TESHARI = 'icons/mob/clothing/species/teshari/pda_wrist.dmi',
 				)
 			else
 				icon = 'icons/obj/pda_old.dmi'

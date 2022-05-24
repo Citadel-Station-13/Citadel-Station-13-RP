@@ -19,7 +19,7 @@
 	var/cuff_sound = 'sound/weapons/handcuffs.ogg'
 	var/cuff_type = "handcuffs"
 	var/use_time = 30
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/handcuffs.dmi')
+	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi')
 
 /obj/item/handcuffs/get_worn_icon_state(var/slot_id)
 	if(slot_id == SLOT_ID_HANDCUFFED)
@@ -240,7 +240,7 @@ var/last_chew = 0
 	origin_tech = list(TECH_MATERIAL = 1)
 	breakouttime = 300	//Deciseconds = 30s = 0.5 minute
 	cuff_type = "legcuffs"
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/handcuffs.dmi')
+	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi')
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 

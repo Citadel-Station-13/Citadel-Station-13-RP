@@ -6,6 +6,7 @@
 	desc = "This cuts wires."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "cutters"
+	item_state = "cutters"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WIRECUTTER
 	force = 6

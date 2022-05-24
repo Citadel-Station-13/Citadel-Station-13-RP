@@ -41,7 +41,7 @@
 	damage_mask	= 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
 	blood_mask	= 'icons/mob/human_races/masks/blood_teshari.dmi'
 	damage_overlays	  = 'icons/mob/human_races/masks/dam_teshari.dmi'
-	suit_storage_icon = 'icons/mob/species/teshari/belt_mirror.dmi'
+	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
 	icobase_tail = 1
 	color_mult	 = 1
 

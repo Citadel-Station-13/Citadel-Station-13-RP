@@ -363,7 +363,7 @@
 /obj/effect/protean_ability
 	name = "Activate"
 	desc = ""
-	icon = 'icons/mob/species/protean/protean_powers.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean_powers.dmi'
 	var/ability_name
 	var/to_call
 

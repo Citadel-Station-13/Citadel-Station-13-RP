@@ -27,14 +27,15 @@
 	name = OUTFIT_JOB_NAME("Geneticist")
 	uniform = /obj/item/clothing/under/rank/geneticist
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/genetics
-	backpack = /obj/item/storage/backpack/genetics
 	r_pocket = /obj/item/flashlight/pen
-	satchel_one = /obj/item/storage/backpack/satchel/gen
-	id_type = /obj/item/card/id/medical/geneticist
-	pda_type = /obj/item/pda/geneticist
 	l_ear = /obj/item/radio/headset/headset_med
 	shoes = /obj/item/clothing/shoes/white
 	pda_slot = SLOT_ID_LEFT_POCKET
-	backpack = /obj/item/storage/backpack/medic
-	satchel_one = /obj/item/storage/backpack/satchel/med
+
+	id_type = /obj/item/card/id/medical/geneticist
+	pda_type = /obj/item/pda/geneticist
+
+	backpack = /obj/item/storage/backpack/genetics
+	satchel_one = /obj/item/storage/backpack/satchel/gen
 	messenger_bag = /obj/item/storage/backpack/messenger/med
+	dufflebag = /obj/item/storage/backpack/dufflebag/genetics

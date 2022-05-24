@@ -59,13 +59,13 @@
 	if(info != initial(info))
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
-		info = init_parsepencode(info)
-
-	// TODO: REFACTOR PAPER
-	spawn(0)
-		update_icon()
-		update_space(info)
-		updateinfolinks()
+		INVOKE_ASYNC(src, .proc/init_parsepencode, info)
+	else
+		// TODO: REFACTOR PAPER
+		spawn(0)
+			update_icon()
+			update_space(info)
+			updateinfolinks()
 
 /obj/item/paper/update_icon()
 	if(icon_state == "paper_talisman")
@@ -231,8 +231,10 @@
 	return (user && user.real_name) ? user.real_name : "Anonymous"
 
 /obj/item/paper/proc/init_parsepencode(t, P, user, iscrayon)
-	set waitfor = FALSE
-	parsepencode(t, P, user, iscrayon)
+	info = parsepencode(t, P, user, iscrayon)
+	update_icon()
+	update_space(info)
+	updateinfolinks()
 
 /obj/item/paper/proc/parsepencode(var/t, var/obj/item/pen/P, mob/user as mob, var/iscrayon = 0)
 //	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
