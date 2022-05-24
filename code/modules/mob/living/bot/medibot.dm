@@ -339,9 +339,8 @@
 		if(!isnull(reagent_glass))
 			to_chat(user, SPAN_NOTICE("There is already a beaker loaded."))
 			return
-
-		user.drop_item()
-		O.loc = src
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		reagent_glass = O
 		to_chat(user, SPAN_NOTICE("You insert [O]."))
 		return

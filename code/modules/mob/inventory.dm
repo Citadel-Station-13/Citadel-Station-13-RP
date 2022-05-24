@@ -145,17 +145,6 @@
 	I.dropped(src)
 	return FALSE
 
-// Removes an item from inventory and places it in the target atom.
-// If canremove or other conditions need to be checked then use unEquip instead.
-
-/mob/proc/drop_from_inventory(var/obj/item/W, var/atom/target = null)
-	if(W)
-		remove_from_mob(W, target)
-		if(!(W && W.loc))
-			return 1 // self destroying objects (tk, grabs)
-		return 1
-	return 0
-
 /mob/proc/canUnEquip(obj/item/I)
 	if(!I) //If there's nothing to drop, the drop is automatically successful.
 		return 1
@@ -171,7 +160,7 @@
 
 
 //Attemps to remove an object on a mob.
-/mob/proc/remove_from_mob(var/obj/O, var/atom/target)
+/mob/proc/______remove_from_mob(var/obj/O, var/atom/target)
 	if(!O) // Nothing to remove, so we succeed.
 		return 1
 	src.u_equip(O)

@@ -3261,9 +3261,9 @@
 	if( istype(I, /obj/item/reagent_containers/food/snacks/sliceable/pizza/) ) // Long ass fucking object name
 
 		if( src.open )
-			user.drop_item()
-			I.loc = src
-			src.pizza = I
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
+			pizza = I
 
 			update_icon()
 

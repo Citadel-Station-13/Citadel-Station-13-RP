@@ -276,11 +276,8 @@
 /obj/item/clothing/suit/straight_jacket/equipped(var/mob/living/user,var/slot)
 	. = ..()
 	if(slot == SLOT_ID_SUIT)
-		user.drop_l_hand()
-		user.drop_r_hand()
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.drop_from_inventory(H.handcuffed)
+		user.drop_all_held_items()
+		user.drop_item_to_ground(user.item_by_slot(SLOT_ID_HANDCUFFED), TRUE)
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"

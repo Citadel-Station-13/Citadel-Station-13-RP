@@ -666,16 +666,13 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		var/datum/robot_component/C = R.components["radio"]
 		R.cell_use_power(C.active_usage)
 
-/obj/item/radio/borg/attackby(obj/item/W as obj, mob/user as mob)
-//	..()
+/obj/item/radio/borg/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
 	user.set_machine(src)
-	if (!(W.is_screwdriver() || istype(W, /obj/item/encryptionkey)))
-		return
+	if (!(I.is_screwdriver() || istype(I, /obj/item/encryptionkey)))
+		return ..()
 
 	if(W.is_screwdriver())
 		if(keyslot)
-
-
 			for(var/ch_name in channels)
 				radio_controller.remove_object(src, radiochannels[ch_name])
 				secure_radio_connections[ch_name] = null
@@ -689,24 +686,19 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 			recalculateChannels()
 			to_chat(user, "You pop out the encryption key in the radio!")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, I.usesound, 50, 1)
 
 		else
 			to_chat(user, "This radio doesn't have any encryption keys!")
 
-	if(istype(W, /obj/item/encryptionkey/))
+	if(istype(I, /obj/item/encryptionkey))
 		if(keyslot)
 			to_chat(user, "The radio can't hold another key!")
 			return
-
-		if(!keyslot)
-			user.drop_item()
-			W.loc = src
-			keyslot = W
-
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
+		keyslot = I
 		recalculateChannels()
-
-	return
 
 /obj/item/radio/borg/recalculateChannels()
 	src.channels = list()

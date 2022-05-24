@@ -49,8 +49,8 @@
 		return ..()
 
 	if(!held_card)
-		user.drop_item()
-		O.loc = src
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		held_card = O
 
 		SSnanoui.update_uis(src)
@@ -172,8 +172,8 @@
 					var/obj/item/I = usr.get_active_held_item()
 					if (istype(I, /obj/item/card/id))
 						var/obj/item/card/id/C = I
-						usr.drop_item()
-						C.loc = src
+						if(!usr.attempt_insert_item_for_installation(C, src))
+							return
 						held_card = C
 
 			if("view_account_detail")

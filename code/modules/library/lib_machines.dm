@@ -476,10 +476,10 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	density = 1
 	var/obj/item/book/cache		// Last scanned book
 
-/obj/machinery/libraryscanner/attackby(var/obj/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/book))
-		user.drop_item()
-		O.loc = src
+/obj/machinery/libraryscanner/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/book))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 
 /obj/machinery/libraryscanner/attack_hand(var/mob/user as mob)
 	usr.set_machine(src)

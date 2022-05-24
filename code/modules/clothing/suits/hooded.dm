@@ -37,7 +37,7 @@
 /obj/item/clothing/suit/storage/hooded/proc/RemoveHood()
 	icon_state = toggleicon
 	hood_up = FALSE
-	hood.canremove = TRUE // This shouldn't matter anyways but just incase.
+	REMOVE_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
 	if(ishuman(hood.loc))
 		var/mob/living/carbon/H = hood.loc
 		H.unEquip(hood, 1)
@@ -67,7 +67,7 @@
 				if(armor)
 					hood.armor = armor.Copy()
 				hood_up = TRUE
-				hood.canremove = FALSE
+				add_trait(hood, TRAIT_NODROP, CLOTHING_TRAIT)
 				icon_state = "[toggleicon]_t"
 				H.update_inv_wear_suit()
 	else

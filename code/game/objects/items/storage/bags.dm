@@ -100,7 +100,7 @@
 		if(ismob(new_location))
 			W.hud_layerise()
 		else
-			W.reset_plane_and_layer()
+			W.hud_unlayerise()
 		W.forceMove(new_location)
 	else
 		W.forceMove(get_turf(src))

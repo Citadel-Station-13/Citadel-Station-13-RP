@@ -118,7 +118,7 @@
 
 /obj/item/tool/crowbar/power/attack_self(mob/user)
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, 1)
-	user.temporarily_remove_from_inventory(src)
+	user.temporarily_remove_from_inventory(src, TRUE)
 	if(!user.put_in_active_hand(counterpart))
 		counterpart.forceMove(get_turf(src))
 	forceMove(counterpart)

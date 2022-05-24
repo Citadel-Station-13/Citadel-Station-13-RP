@@ -237,8 +237,8 @@
 /obj/item/bucket_sensor/attackby(var/obj/item/W, var/mob/user)
 	..()
 	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm) || (istype(W, /obj/item/organ/external/arm) && ((W.name == "robotic left arm") || (W.name == "robotic right arm"))))
-		user.drop_item()
-		qdel(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		var/turf/T = get_turf(loc)
 		var/mob/living/bot/cleanbot/A = new /mob/living/bot/cleanbot(T)
 		A.name = created_name

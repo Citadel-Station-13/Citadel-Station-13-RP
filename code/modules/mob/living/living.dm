@@ -940,10 +940,7 @@ default behaviour is:
 
 	if(lying)
 		density = 0
-		if(l_hand)
-			unEquip(l_hand)
-		if(r_hand)
-			unEquip(r_hand)
+		drop_all_held_items()
 		for(var/obj/item/holder/H in get_mob_riding_slots())
 			unEquip(H)
 		update_water() // Submerges the mob.

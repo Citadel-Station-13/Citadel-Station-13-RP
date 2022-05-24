@@ -430,9 +430,9 @@
 	switch(build_step)
 		if(ASSEMBLY_FIRST_STEP)
 			if(isprox(W))
-				user.drop_item()
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				to_chat(user, SPAN_NOTICE("You add the proximity sensor to [src]."))
-				qdel(W)
 				name = "incomplete floorbot assembly"
 				desc = "It's a toolbox with tiles sticking out the top and a sensor attached."
 				add_overlay("[base_icon_state]-prox-[skin]")

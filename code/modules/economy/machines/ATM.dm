@@ -81,7 +81,7 @@ log transactions
 	to_chat(user, SPAN_WARNING("[icon2html(thing = src, target = user)] The [src] beeps: \"[response]\""))
 	return TRUE
 
-/obj/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
+/obj/machinery/atm/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	if(istype(I, /obj/item/card))
@@ -95,8 +95,8 @@ log transactions
 
 		var/obj/item/card/id/idcard = I
 		if(!held_card)
-			usr.drop_item()
-			idcard.loc = src
+			if(!user.attempt_insert_item_for_installation(idcard, src))
+				return
 			held_card = idcard
 			if(authenticated_account && held_card.associated_account_number != authenticated_account.account_number)
 				authenticated_account = null
@@ -441,8 +441,8 @@ log transactions
 					else
 						var/obj/item/I = usr.get_active_held_item()
 						if (istype(I, /obj/item/card/id))
-							usr.drop_item()
-							I.loc = src
+							if(!usr.attempt_insert_item_for_installation(I, src))
+								return
 							held_card = I
 				else
 					release_held_id(usr)

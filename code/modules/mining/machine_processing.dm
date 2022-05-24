@@ -138,14 +138,13 @@
 		else if(href_list["choice"] == "insert")
 			var/obj/item/card/id/I = usr.get_active_held_item()
 			if(istype(I))
-				usr.drop_item()
-				I.forceMove(src)
+				if(!user.attempt_insert_item_for_installation(I, src))
+					return
 				inserted_id = I
 			else
 				to_chat(usr, "<span class='warning'>No valid ID.</span>")
 
 	src.updateUsrDialog()
-	return
 
 /**********************Mineral processing unit**************************/
 

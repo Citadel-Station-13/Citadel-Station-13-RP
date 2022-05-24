@@ -329,8 +329,8 @@
 			to_chat(user, SPAN_WARNING("\The [src] already has \a [battery] inside.  Remove it first if you want to replace it."))
 			return FALSE
 		var/obj/item/cell/device/cell = I
-		user.drop_item(cell)
-		cell.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(cell, src))
+			return
 		battery = cell
 		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 		to_chat(user, SPAN_NOTICE("You slot \the [cell] inside \the [src]'s power supplier."))

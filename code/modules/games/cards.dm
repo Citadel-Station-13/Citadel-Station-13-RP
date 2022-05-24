@@ -96,7 +96,7 @@
 		to_chat(user,"<span class='notice'>There are no cards in the deck.</span>")
 		return
 
-	var/obj/item/hand/H = user.get_type_in_hands(/obj/item/hand)
+	var/obj/item/hand/H = user.get_held_item_of_type(/obj/item/hand)
 	if(H && !(H.parentdeck == src))
 		to_chat(user,"<span class='warning'>You can't mix cards from different decks!</span>")
 		return
