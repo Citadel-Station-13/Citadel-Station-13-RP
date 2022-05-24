@@ -34,7 +34,7 @@
 /* CONVERSION HELPERS */
 #define WH_TO_J(WH)				(60*60*WH)
 #define KWH_TO_KJ(KWH)			(60*60*KWH)
-#define WH_TO_KJ(WH)			(60*60*(WH*0.001)
+#define WH_TO_KJ(WH)			(60*60*(WH*0.001))
 #define KWH_TO_J(KWH)			(60*60*1000*KWH)	// WARNING: LOSS OF PRECISION LIKELY
 #define J_TO_WH(J)				(J*(1/(60*60)))
 #define KJ_TO_WH(KJ)			(KJ*(1000/(60*60)))
@@ -49,6 +49,22 @@
 #define KWH_TO_WM(KWH)			(KWH*60*1000)
 #define KWH_TO_KWM(KWH)			(KWH*60)
 #define WWH_TO_KWM(WH)			(WH*60*0.001)
+#define W_TO_WM(W, T)			((W*T)*(1/60))
+#define KW_TO_WM(KW, T)			((KW*T*1000)*(1/60))
+#define W_TO_KWM(W, T)			((W*T*0.001)*(1/60))
+#define KW_TO_KWM(KW, T)		((KW*T)*(1/60))
+#define KJ_TO_KWM(KJ)			(KJ*(1/60))
+#define J_TO_KWM(J)				((J*0.001)*(1/60))
+#define KJ_TO_WM(KJ)			(KJ*(1000/60))
+#define J_TO_WM(J)				(J*(1/60))
+#define KWM_TO_J(KWM)			(KWM*(60*1000))
+#define KWM_TO_KJ(KWM)			(KWM*60)
+#define WM_TO_J(WM)				(WM*60)
+#define WM_TO_KJ(WM)			(WM*(60*0.001))
+#define KWM_TO_KW(KWM, T)		((KWM*60)/T)
+#define KWM_TO_W(KWM, T)		((KWM*60)*(1000/T))
+#define WM_TO_W(WM, T)			((WM*60)/T)
+#define WM_TO_KW(WM, T)			((WM*(60*0.001))/T)
 
 /proc/render_power_unit(unit)
 	switch(unit)
@@ -118,6 +134,14 @@
 #define SMES_COIL_STORAGE_CAPACITANCE		(1000)
 #define SMES_COIL_FLOW_CAPACITANCE			(50)
 
+/**
+ * OLD CALCS
+ * translates Watt into Kilowattminutes with respect to machinery schedule_interval ~(2s*1W*1min/60s)
+ * #define SMESRATE 0.03333
+ * #define SMESMAXCHARGELEVEL 250000
+ * #define SMESMAXOUTPUT 250000
+ */
+
 /* cells */
 // Cells practically use their own power systems
 // "Use power from cell" for **handheld/portable devices**, semantically, should always use cell units and not a "real unit"
@@ -139,6 +163,12 @@
 #define DYNAMIC_CELL_UNITS_TO_KW(U, DT)		((U * GLOB.cellrate) / DT)
 #define DYNAMIC_WH_TO_CELL_UNITS(WH)		((0.36 * WH) / GLOB.cellrate)
 #define DYNAMIC_KWH_TO_CELL_UNITS(KWH)		((3600 * KWH) / GLOB.cellrate)
+#define DYNAMIC_CELL_UNITS_TO_KWH(U)		((U*GLOB.cellrate) / (60*60))
+#define DYNAMIC_CELL_UNITS_TO_WH(U)			((U*GLOB.cellrate) / ((60*60) / 1000))
+#define DYNAMIC_KWM_TO_CELL_UNITS(KWM)		((KWM * 60) / GLOB.cellrate)
+#define DYNAMIC_WM_TO_CELL_UNITS(WM)		((WM * (60 / 1000)) / GLOB.cellrate)
+#define DYNAMIC_CELL_UNITS_TO_KWM(U)		((U*GLOB.cellrate) / 60)
+#define DYNAMIC_CELL_UNITS_TO_WM(U)			((U*GLOB.cellrate) / (60 / 1000))
 
 /// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
 GLOBAL_VAR_INIT(cellrate, 0.05)

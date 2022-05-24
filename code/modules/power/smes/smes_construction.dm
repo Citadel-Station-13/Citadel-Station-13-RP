@@ -125,10 +125,10 @@
 		input_level_max = 0
 		output_level_max = 0
 		for(var/obj/item/smes_coil/C in component_parts)
-			capacity += C.ChargeCapacity
-			input_level_max += C.IOCapacity
-			output_level_max += C.IOCapacity
-		charge = between(0, charge, capacity)
+			capacity += C.charge_capacity
+			input_level_max += C.flow_capacity
+			output_level_max += C.flow_capacity
+		charge = clamp(charge, 0, capacity)
 		return 1
 	return 0
 

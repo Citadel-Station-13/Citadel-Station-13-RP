@@ -3,6 +3,9 @@
  *
  * base type of power storage unit
  *
+ * storage values are measured in **kilowatt minutes** due to float precision.
+ * flow values are measured in kilowatts.
+ *
  * TODO: generalize to /obj/machinery/power/storage, and split into storage/smes and storage/batteryrack, etc
  */
 
@@ -19,19 +22,24 @@ GLOBAL_LIST_EMPTY(smeses)
 	use_power = USE_POWER_OFF
 	circuit = /obj/item/circuitboard/smes
 
-	var/capacity = 5e6 // maximum charge
-	var/charge = 1e6 // actual charge
+	/// maximum charge in kW-m
+	var/capacity = 5000000
+	/// current charge in kW-m
+	var/charge = 1000000
 
 	var/input_attempt = 0 			// 1 = attempting to charge, 0 = not attempting to charge
 	var/inputting = 0 				// 1 = actually inputting, 0 = not inputting
-	var/input_level = 50000 		// amount of power the SMES attempts to charge by
-	var/input_level_max = 200000 	// cap on input_level
-	var/input_available = 0 		// amount of charge available from input last tick
+	/// attempt to charge with this much kw
+	var/input_level = 50
+	/// max charge rate
+	var/input_level_max = 200
 
 	var/output_attempt = 1 			// 1 = attempting to output, 0 = not attempting to output
 	var/outputting = 1 				// 1 = actually outputting, 0 = not outputting
-	var/output_level = 50000		// amount of power the SMES attempts to output
-	var/output_level_max = 200000	// cap on output_level
+	/// attempt to output this much in kw
+	var/output_level = 50
+	/// max output in kw
+	var/output_level_max = 200
 	var/output_used = 0				// amount of power actually outputted. may be less than output_level if the powernet returns excess power
 
 	//Holders for powerout event.
@@ -53,16 +61,12 @@ GLOBAL_LIST_EMPTY(smeses)
 	var/grid_check = FALSE 			// If true, suspends all I/O.
 
 /obj/machinery/power/smes/drain_energy(datum/acter, amount, flags)
+	var/wanted = min(charge, KJ_TO_KWM(amount))
+	charge -= wanted
+	return KWM_TO_KJ(wanted)
 
-	#warn kj
-	if(drain_check)
-		return 1
-
-	var/smes_amt = min((amount * SMESRATE), charge)
-	charge -= smes_amt
-	return smes_amt / SMESRATE
-
-
+/obj/machinery/power/smes/can_drain_energy(datum/acter, amount)
+	return TRUE
 
 /obj/machinery/power/smes/Initialize(mapload, newdir)
 	. = ..()
@@ -313,6 +317,7 @@ GLOBAL_LIST_EMPTY(smeses)
 		ui.open()
 
 /obj/machinery/power/smes/ui_data()
+	#warn verify tgui
 	var/list/data = list(
 		"capacity" = capacity,
 		"capacityPercent" = round(100.0*charge/capacity, 0.1),
