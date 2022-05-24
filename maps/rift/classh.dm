@@ -7,7 +7,7 @@ var/datum/planet/classh/planet_classh = null
 	name = "Class-H Desert Planet"
 	desc = "A nearly hostile, and almost barren, planet that orbits pretty close to its star. There is a high level of CO2 in the air."
 	current_time = new /datum/time/classh()
-	expected_z_levels = list(15) // Testing.
+	expected_z_levels = list(17) // Testing.
 
 /datum/planet/classh/New()
 	..()

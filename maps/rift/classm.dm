@@ -7,7 +7,7 @@ var/datum/planet/classm/planet_classm = null
 	name = "Class-M Gaia Planet"
 	desc = "A beautiful, lush planet that is owned by the Happy Days and Sunshine Corporation."
 	current_time = new /datum/time/classm()
-	expected_z_levels = list(16) // Debug testing.
+	expected_z_levels = list(18) // Debug testing.
 
 /datum/planet/classm/New()
 	..()

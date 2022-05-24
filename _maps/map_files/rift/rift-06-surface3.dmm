@@ -17096,7 +17096,6 @@
 /area/hallway/secondary/docking_hallway)
 "FL" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
-/obj/item/reagent_containers/glass/cooler_bottle,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "FM" = (

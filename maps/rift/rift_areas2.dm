@@ -162,6 +162,8 @@
 	icon = 'icons/turf/areas_vr.dmi'
 /area/rift/surfacebase/underground
 	name = "Outside - Underground"
+/area/rift/surfacebase/underground/under3
+	icon_state = "red"
 /area/rift/surfacebase/underground/under2
 	icon_state = "under2"
 /area/rift/surfacebase/underground/under1
@@ -346,6 +348,18 @@
 	name = "\improper Public Garden Maintenance"
 
 // Research
+/area/rnd/xenobiology/cell
+	name = "\improper Xenobiology Cell 1"
+/area/rnd/xenobiology/cell/two
+	name = "\improper Xenobiology Cell 2"
+/area/rnd/xenobiology/cell/three
+	name = "\improper Xenobiology Cell 3"
+/area/rnd/xenobiology/cell/four
+	name = "\improper Xenobiology Cell 4"
+/area/rnd/xenobiology/cell/five
+	name = "\improper Xenobiology Cell 5"
+/area/rnd/xenobiology/cell/six
+	name = "\improper Xenobiology Cell 6"
 /area/rnd/xenobiology/xenoflora/lab_atmos
 	name = "\improper Xenoflora Atmospherics Lab"
 /area/rnd/breakroom
@@ -670,6 +684,10 @@ Do this eventually. */
 /area/rift/surfacebase/outside/west_caves
 	name = "Western Plains Caverns"
 	icon_state = "red"
+
+/area/rift/surfacebase/outside/west_deep
+	name = "Western Plains Deep Ice"
+	icon_state = "yellow"
 
 /area/rift/surfacebase/outside/west_base
 	name = "Western Plains Canyon"

@@ -8977,82 +8977,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/turbine_room)
-"sg" = (
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"sh" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"si" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"sj" = (
-/obj/structure/cable/green{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"sk" = (
-/obj/structure/cable/green,
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"sl" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"sm" = (
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"sn" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"so" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"sp" = (
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"sq" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "sr" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -9540,7 +9464,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "wy" = (
 /obj/structure/table/rack,
@@ -9901,7 +9825,7 @@
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "yG" = (
 /obj/machinery/floodlight,
@@ -9912,7 +9836,7 @@
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "za" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -10165,7 +10089,7 @@
 /area/engineering/engine_room)
 "AW" = (
 /obj/effect/blocker,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "AZ" = (
 /obj/structure/disposalpipe/segment{
@@ -11448,10 +11372,10 @@
 "Lg" = (
 /obj/effect/map_effect/portal/master/side_a{
 	dir = 4;
-	name = "center_to_westbase";
-	portal_id = "westbasestep"
+	name = "center_to_westdeep";
+	portal_id = "westdeepstep"
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Lj" = (
 /turf/simulated/wall,
@@ -12153,7 +12077,7 @@
 "Qs" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "QD" = (
 /obj/structure/table/woodentable,
@@ -12565,7 +12489,7 @@
 /area/quartermaster/miningdock)
 "UC" = (
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "UF" = (
 /obj/machinery/door/airlock/maintenance/common{
@@ -12857,7 +12781,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "WA" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "WD" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -12958,7 +12882,7 @@
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Xx" = (
 /obj/effect/floor_decal/chapel,
@@ -13836,9 +13760,9 @@ WA
 WA
 WA
 aa
-sg
-sh
-sg
+aa
+aa
+aa
 aa
 Xh
 "}
@@ -14030,9 +13954,9 @@ WA
 WA
 WA
 aa
-si
-sg
-sl
+aa
+aa
+aa
 aa
 Xh
 "}
@@ -14224,9 +14148,9 @@ WA
 WA
 WA
 aa
-sk
-sj
-sm
+aa
+aa
+aa
 aa
 Xh
 "}
@@ -14418,9 +14342,9 @@ WA
 WA
 WA
 aa
-so
-sp
-sn
+aa
+aa
+aa
 aa
 Xh
 "}
@@ -14612,9 +14536,9 @@ WA
 WA
 WA
 aa
-sg
-sq
-sg
+aa
+aa
+aa
 aa
 Xh
 "}

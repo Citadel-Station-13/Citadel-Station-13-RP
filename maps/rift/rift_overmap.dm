@@ -28,7 +28,9 @@
 
 	extra_z_levels = list(
 		Z_LEVEL_WEST_PLAIN,
-		Z_LEVEL_WEST_CAVERN
+		Z_LEVEL_WEST_CAVERN,
+		Z_LEVEL_WEST_DEEP,
+		Z_LEVEL_WEST_BASE
 	)
 
 /*	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW", "triumph_mining_port")
