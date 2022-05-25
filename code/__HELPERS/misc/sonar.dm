@@ -82,6 +82,7 @@
 	holder.dir = dir
 	holder.pixel_x += pixel_x
 	holder.pixel_y += pixel_y
+	holder.layer = layer
 	. = holder
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)
