@@ -43,10 +43,14 @@
 /datum/reagent/nutriment/affect_ingest(mob/living/carbon/M, alien, removed)
 	var/hyd_removed
 	switch(alien)
-		if(IS_DIONA) return
-		if(IS_UNATHI) removed *= 0.5
-		if(IS_CHIMERA) removed *= 0.25
-		if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
+		if(IS_DIONA)
+			return
+		if(IS_UNATHI)
+			removed *= 0.5
+		if(IS_CHIMERA)
+			removed *= 0.25
+			if(issmall(M))
+				removed *= 2 // Small bodymass, more effect from lower volume.
 	M.heal_organ_damage(0.5 * removed, 0)
 	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
 		M.nutrition += nutriment_factor * removed // For hunger and fatness

@@ -159,7 +159,7 @@ var/list/shell_module_types = list(
 
 var/list/eventdestinations = list() // List of scatter landmarks for event portals
 
-var/global/list/acceptable_fruit_type s= list(
+var/global/list/acceptable_fruit_types = list(
 	"ambrosia",
 	"apple",
 	"banana",

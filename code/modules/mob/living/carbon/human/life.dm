@@ -945,7 +945,9 @@
 			GET_VSC_PROP(atmos_vsc, /atmos/phoron/contamination_loss, loss_per_part)
 			for(var/obj/item/I in src)
 				if(I.contaminated)
-					if(check_belly(I)) continue					if(src.species && !(src.species.flags & CONTAMINATION_IMMUNE))
+					if(check_belly(I))
+						continue
+					if(src.species && !(src.species.flags & CONTAMINATION_IMMUNE))
 						// This is hacky, I'm so sorry.
 						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
