@@ -289,17 +289,12 @@ var/list/infomorph_emotions = list(
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
-		var/mob/living/M = H.loc
-		if(istype(M))
-			M.drop_from_inventory(H)
-		H.loc = get_turf(src)
-		src.loc = get_turf(H)
+		H.forceMove(get_turf(src))
+		forceMove(H.loc)
 
 	// Move us into the card and move the card to the ground.
-	src.loc = card
-	card.loc = get_turf(card)
-	src.forceMove(card)
-	card.forceMove(card.loc)
+	card.forceMove(get_turf(src))
+	forceMove(card)
 	canmove = 1
 	resting = 0
 	icon_state = "[chassis]"

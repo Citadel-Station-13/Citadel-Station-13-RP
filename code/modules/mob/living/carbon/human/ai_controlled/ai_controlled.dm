@@ -81,7 +81,7 @@
 		equip_to_slot_or_del(new to_wear_back(src), SLOT_ID_BACK)
 
 	if(to_wear_l_hand)
-		equip_to_slot_or_del(new to_wear_l_hand(src), slot_l_hand)
+		equip_to_slot_or_del(new to_wear_l_hand(src), /datum/inventory_slot_meta/abstract/left_hand)
 
 	if(to_wear_r_hand)
 		equip_to_slot_or_del(new to_wear_r_hand(src), /datum/inventory_slot_meta/abstract/right_hand)
