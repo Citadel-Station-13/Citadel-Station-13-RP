@@ -10,6 +10,8 @@
 	active_power_usage = 30000 //60 kW. (this the power drawn when charging)
 	/// Will provide the modified power rate when upgraded.
 	var/efficiency = 30000
+	/// base power draw
+	var/base_power_draw = 50000
 	var/chargelevel = -1
 	var/obj/item/cell/charging = null
 	circuit = /obj/item/circuitboard/cell_charger
@@ -130,7 +132,7 @@
 	var/E = 0
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		E += C.rating
-	update_active_power_usage(30000 * E)
+	update_active_power_usage(base_power_draw * E)
 	efficiency = active_power_usage * RECHARGER_CHEAT_FACTOR
 
 //cit change starts
