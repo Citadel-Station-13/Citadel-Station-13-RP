@@ -148,7 +148,7 @@
 			APC_entry["s_lighting"] = S[A.lighting+1]
 			APC_entry["s_environment"] = S[A.environ+1]
 			// Cell Status
-			APC_entry["cell_charge"] = A.cell ? round(A.cell.percent()) : "NO CELL"
+			APC_entry["cell_charge"] = A.cell ? round(A.cell.percent(), 1) : "NO CELL"
 			APC_entry["cell_status"] = A.cell ? chg[A.charging+1] : "N"
 			// Location
 			APC_entry["x"] = A.x
@@ -166,10 +166,10 @@
 			// Add load of this APC to total APC load calculation
 			total_apc_load += A.lastused_total
 	data["apc_data"] = APC_data
-	data["total_avail"] = render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)
-	data["total_used_apc"] = render_power(total_apc_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)
-	data["total_used_other"] = render_power(max(powernet.load - total_apc_load, 0), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)
-	data["total_used_all"] = render_power(powernet.viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)
+	data["total_avail"] = render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
+	data["total_used_apc"] = render_power(total_apc_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
+	data["total_used_other"] = render_power(max(powernet.load - total_apc_load, 0), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
+	data["total_used_all"] = render_power(powernet.viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
 
 	// Prevents runtimes when avail is 0 (division by zero)
 	if(powernet.avail)

@@ -76,6 +76,19 @@ GLOBAL_LIST_EMPTY(apcs)
  * Power is up-converted to kilowatts for grid.
  *
  * TODO: rewrite apcs entirely, the code barely works and it's all awful
+ *
+ * dev notes for the next time i'm insane enough to refactor power for no reason:
+ * - dynamic power channels? probably not due to list overhead but maybe
+ * - apc with 2-5kJ capacitor, letting us have actual accumulation + cell-less apc support
+ * - config option for cell-less apc because i'm honestly evil
+ * - unfuck icon update syste
+ * - more wires, morre remote controls
+ * - wiremod?
+ * - WHY DOES IT HAVE SO MANY UNNECESSARY FLAGS JUST HAVE A SINGLE var/channels_enabled and var/channels_auto GOD
+ * - configurable shutoff intervals??
+ * - brownout support *drooling* (probably far in the future or impossible due to performance)
+ *
+ * ~silicons
  */
 /obj/machinery/power/apc
 	name = "area power controller"

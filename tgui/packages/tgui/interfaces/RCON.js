@@ -221,7 +221,7 @@ const SMESControls = (props, context) => {
               maxValue={levelMax}
               step={5}
               stepPixelSize={4}
-              format={value => formatPower(available * 1000, 1) + "/" + formatPower(value * 1000, 1)}
+              format={value => formatPower(available, 1) + "/" + formatPower(value * 1000, 1)}
               onDrag={(e, value) => act(changeAmountAct, {
                 target: value,
                 smes: RCON_tag,
