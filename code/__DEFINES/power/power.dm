@@ -10,6 +10,10 @@
  * WARNING:
  * You CANNOT JUST CHANGE THE UNITS.
  * Math is usually hardcoded for performance, and because things like storage units require a "time" factor for conversion.
+ *
+ * FAQ:
+ * - "Why is there parentheses vomit everywhere?"
+ *     Because order of operations is important and we want our macros to not mess up when someone does, say, capacity - charge in SMES.
  */
 
 // DO NOT TOUCH THESE UNLESS YOU KNOW WHAT YOU ARE DOING
@@ -26,45 +30,45 @@
 #define ENUM_POWER_SCALE_TERA			4
 #define ENUM_POWER_SCALE_PETA			5
 
-#define POWER_SCALE_POWER_OF_TEN(S)		(S*3)
+#define POWER_SCALE_POWER_OF_TEN(S)		((S)*3)
 
 #define POWER_ACCURACY					0.001
 #define POWER_QUANTIZE(P)				(round(P, POWER_ACCURACY))
 
 /* CONVERSION HELPERS */
-#define WH_TO_J(WH)				(60*60*WH)
-#define KWH_TO_KJ(KWH)			(60*60*KWH)
-#define WH_TO_KJ(WH)			(60*60*(WH*0.001))
-#define KWH_TO_J(KWH)			(60*60*1000*KWH)	// WARNING: LOSS OF PRECISION LIKELY
-#define J_TO_WH(J)				(J*(1/(60*60)))
-#define KJ_TO_WH(KJ)			(KJ*(1000/(60*60)))
-#define KJ_TO_KWH(KJ)			(KJ*(1/(60*60)))
-#define J_TO_KWH(J)				(J*(1/(60*60*1000)))
+#define WH_TO_J(WH)				(60*60*(WH))
+#define KWH_TO_KJ(KWH)			(60*60*(KWH))
+#define WH_TO_KJ(WH)			(60*60*((WH)*0.001))
+#define KWH_TO_J(KWH)			(60*60*1000*(KWH))	// WARNING: LOSS OF PRECISION LIKELY
+#define J_TO_WH(J)				((J)*(1/(60*60)))
+#define KJ_TO_WH(KJ)			((KJ)*(1000/(60*60)))
+#define KJ_TO_KWH(KJ)			((KJ)*(1/(60*60)))
+#define J_TO_KWH(J)				((J)*(1/(60*60*1000)))
 #define KW_TO_KWH(KW, T)		((KW*T)*(1/(60*60)))
-#define W_TO_WH(W, T)			((W*T)*(1/(60*60)))
-#define W_TO_KWH(W, T)			((W*T*0.001)*(1/(60*60)))
-#define KW_TO_WH(KW, T)			((KW*T*1000)*(1/(60*60)))
+#define W_TO_WH(W, T)			(((W)*(T))*(1/(60*60)))
+#define W_TO_KWH(W, T)			(((W)*(T)*0.001)*(1/(60*60)))
+#define KW_TO_WH(KW, T)			(((KW)*(T)*1000)*(1/(60*60)))
 // watt minutes - why you'd do this is beyond me
-#define WH_TO_WM(WH)			(WH*60)
-#define KWH_TO_WM(KWH)			(KWH*60*1000)
-#define KWH_TO_KWM(KWH)			(KWH*60)
-#define WWH_TO_KWM(WH)			(WH*60*0.001)
-#define W_TO_WM(W, T)			((W*T)*(1/60))
-#define KW_TO_WM(KW, T)			((KW*T*1000)*(1/60))
-#define W_TO_KWM(W, T)			((W*T*0.001)*(1/60))
-#define KW_TO_KWM(KW, T)		((KW*T)*(1/60))
-#define KJ_TO_KWM(KJ)			(KJ*(1/60))
-#define J_TO_KWM(J)				((J*0.001)*(1/60))
-#define KJ_TO_WM(KJ)			(KJ*(1000/60))
-#define J_TO_WM(J)				(J*(1/60))
-#define KWM_TO_J(KWM)			(KWM*(60*1000))
-#define KWM_TO_KJ(KWM)			(KWM*60)
-#define WM_TO_J(WM)				(WM*60)
-#define WM_TO_KJ(WM)			(WM*(60*0.001))
-#define KWM_TO_KW(KWM, T)		((KWM*60)/T)
-#define KWM_TO_W(KWM, T)		((KWM*60)*(1000/T))
-#define WM_TO_W(WM, T)			((WM*60)/T)
-#define WM_TO_KW(WM, T)			((WM*(60*0.001))/T)
+#define WH_TO_WM(WH)			((WH)*60)
+#define KWH_TO_WM(KWH)			((KWH)*60*1000)
+#define KWH_TO_KWM(KWH)			((KWH)*60)
+#define WWH_TO_KWM(WH)			((WH)*60*0.001)
+#define W_TO_WM(W, T)			(((W)*(T))*(1/60))
+#define KW_TO_WM(KW, T)			(((KW)*(T)*1000)*(1/60))
+#define W_TO_KWM(W, T)			(((W)*(T)*0.001)*(1/60))
+#define KW_TO_KWM(KW, T)		(((KW)*(T))*(1/60))
+#define KJ_TO_KWM(KJ)			((KJ)*(1/60))
+#define J_TO_KWM(J)				(((J)*0.001)*(1/60))
+#define KJ_TO_WM(KJ)			((KJ)*(1000/60))
+#define J_TO_WM(J)				((J)*(1/60))
+#define KWM_TO_J(KWM)			((KWM)*(60*1000))
+#define KWM_TO_KJ(KWM)			((KWM)*60)
+#define WM_TO_J(WM)				((WM)*60)
+#define WM_TO_KJ(WM)			((WM)*(60*0.001))
+#define KWM_TO_KW(KWM, T)		(((KWM)*60)/(T))
+#define KWM_TO_W(KWM, T)		(((KWM)*60)*(1000/(T)))
+#define WM_TO_W(WM, T)			(((WM)*60)/(T))
+#define WM_TO_KW(WM, T)			(((WM)*(60*0.001))/(T))
 
 /proc/render_power_unit(unit)
 	switch(unit)
@@ -149,26 +153,26 @@
 
 // dynamic indicates this isn't constant
 
-#define DYNAMIC_KJ_TO_CELL_UNITS(KJ)		(KJ / GLOB.cellrate)
-#define DYNAMIC_J_TO_CELL_UNITS(J)			((J * 0.001) / GLOB.cellrate)
-#define DYNAMIC_CELL_UNITS_TO_KJ(U)			(U * GLOB.cellrate)
-#define DYNAMIC_CELL_UNITS_TO_J(U)			(U * 1000 * GLOB.cellrate)
+#define DYNAMIC_KJ_TO_CELL_UNITS(KJ)		((KJ) / GLOB.cellrate)
+#define DYNAMIC_J_TO_CELL_UNITS(J)			(((J) * 0.001) / GLOB.cellrate)
+#define DYNAMIC_CELL_UNITS_TO_KJ(U)			((U) * GLOB.cellrate)
+#define DYNAMIC_CELL_UNITS_TO_J(U)			((U) * 1000 * GLOB.cellrate)
 /// dt in seconds
-#define DYNAMIC_W_TO_CELL_UNITS(W, DT)		(DYNAMIC_J_TO_CELL_UNITS(W) * DT)
+#define DYNAMIC_W_TO_CELL_UNITS(W, DT)		(DYNAMIC_J_TO_CELL_UNITS(W) * (DT))
 /// dt in seconds
-#define DYNAMIC_KW_TO_CELL_UNITS(KW, DT)	(DYNAMIC_KJ_TO_CELL_UNITS(KW) * DT)
+#define DYNAMIC_KW_TO_CELL_UNITS(KW, DT)	(DYNAMIC_KJ_TO_CELL_UNITS(KW) * (DT))
 /// dt in "seconds this will be drained over" - usually 1
-#define DYNAMIC_CELL_UNITS_TO_W(U, DT)		(((U * GLOB.cellrate) * 1000) / DT)
+#define DYNAMIC_CELL_UNITS_TO_W(U, DT)		((((U) * GLOB.cellrate) * 1000) / (DT))
 /// dt in "seconds this will sbe drained over" - usually 1
-#define DYNAMIC_CELL_UNITS_TO_KW(U, DT)		((U * GLOB.cellrate) / DT)
-#define DYNAMIC_WH_TO_CELL_UNITS(WH)		((0.36 * WH) / GLOB.cellrate)
-#define DYNAMIC_KWH_TO_CELL_UNITS(KWH)		((3600 * KWH) / GLOB.cellrate)
-#define DYNAMIC_CELL_UNITS_TO_KWH(U)		((U*GLOB.cellrate) / (60*60))
-#define DYNAMIC_CELL_UNITS_TO_WH(U)			((U*GLOB.cellrate) / ((60*60) / 1000))
-#define DYNAMIC_KWM_TO_CELL_UNITS(KWM)		((KWM * 60) / GLOB.cellrate)
-#define DYNAMIC_WM_TO_CELL_UNITS(WM)		((WM * (60 / 1000)) / GLOB.cellrate)
-#define DYNAMIC_CELL_UNITS_TO_KWM(U)		((U*GLOB.cellrate) / 60)
-#define DYNAMIC_CELL_UNITS_TO_WM(U)			((U*GLOB.cellrate) / (60 / 1000))
+#define DYNAMIC_CELL_UNITS_TO_KW(U, DT)		(((U) * GLOB.cellrate) / (DT))
+#define DYNAMIC_WH_TO_CELL_UNITS(WH)		((0.36 * (WH)) / GLOB.cellrate)
+#define DYNAMIC_KWH_TO_CELL_UNITS(KWH)		((3600 * (KWH)) / GLOB.cellrate)
+#define DYNAMIC_CELL_UNITS_TO_KWH(U)		(((U) * GLOB.cellrate) / (60 * 60))
+#define DYNAMIC_CELL_UNITS_TO_WH(U)			(((U) * GLOB.cellrate) / ((60 * 60) / 1000))
+#define DYNAMIC_KWM_TO_CELL_UNITS(KWM)		(((KWM) * 60) / GLOB.cellrate)
+#define DYNAMIC_WM_TO_CELL_UNITS(WM)		(((WM) * (60 / 1000)) / GLOB.cellrate)
+#define DYNAMIC_CELL_UNITS_TO_KWM(U)		(((U) * GLOB.cellrate) / 60)
+#define DYNAMIC_CELL_UNITS_TO_WM(U)			(((U) * GLOB.cellrate) / (60 / 1000))
 
 /// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
 GLOBAL_VAR_INIT(cellrate, 0.05)
