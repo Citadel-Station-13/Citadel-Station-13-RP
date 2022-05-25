@@ -86,7 +86,6 @@ var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manu
 #define NETWORK_ALARM_ATMOS "Atmosphere Alarms"
 #define NETWORK_ALARM_POWER "Power Alarms"
 #define NETWORK_ALARM_FIRE "Fire Alarms"
-///Using different from Polaris one for better name
 #define NETWORK_TCOMMS "Telecommunications"
 #define NETWORK_OUTSIDE "Outside"
 #define NETWORK_EXPLORATION "Exploration"

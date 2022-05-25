@@ -3,7 +3,6 @@
 //
 
 // Contains temporary debugging code to diagnose extreme tick consumption.
-// Revert file to Polaris version when done.
 
 SUBSYSTEM_DEF(mobs)
 	name = "Mobs"

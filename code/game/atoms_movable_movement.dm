@@ -158,11 +158,9 @@
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc,direct)) //movement failed due to buckled mob(s)
 		return FALSE
 
-	//Polaris stuff
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
 	m_flag = 1
-	//End
 
 	if(. && riding_datum)
 		riding_datum.handle_vehicle_layer()

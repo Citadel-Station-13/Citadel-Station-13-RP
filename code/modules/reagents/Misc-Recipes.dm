@@ -957,7 +957,6 @@
 	name = "Macrocillin"
 	id = "macrocillin"
 	result = "macrocillin"
-	// POLARISTODO requires_heating = 1
 	required_reagents = list("sizeoxadone" = 20, "diethylamine" = 20)
 	result_amount = 1
 
@@ -965,6 +964,5 @@
 	name = "Microcillin"
 	id = "microcillin"
 	result = "microcillin"
-	// POLARISTODO requires_heating = 1
 	required_reagents = list("sizeoxadone" = 20, "sodiumchloride" = 20)
 	result_amount = 1

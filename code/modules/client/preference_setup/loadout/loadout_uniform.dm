@@ -589,12 +589,6 @@
 /datum/gear/uniform/suit/permit
 	name = "Nudity Permit"
 	path = /obj/item/clothing/under/permit
-/*
-// Polaris overrides
-/datum/gear/uniform/solgov/pt/sysguard
-	name = "pt uniform, planetside sec"
-	path = /obj/item/clothing/under/solgov/pt/sysguard
-*/
 
 
 /*

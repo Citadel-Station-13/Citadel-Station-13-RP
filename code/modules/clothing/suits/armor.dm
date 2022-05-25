@@ -756,7 +756,6 @@
 	icon_state = "hostrench"
 	flags_inv = HIDEHOLSTER
 
-// Override Polaris's "confederate" naming convention. I hate it.
 /obj/item/clothing/suit/storage/vest/oricon
 	name = "\improper Orion Confederation Government armored vest"
 	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation Group."

@@ -278,11 +278,9 @@ GLOBAL_REAL_VAR(world_log_redirected) = FALSE
 		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request</span>")
 	else
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
-		//POLARIS START
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
-		//END
-		Master.Shutdown()	//run SS shutdowns
+		Master.Shutdown() //run SS shutdowns
 
 	TgsReboot()
 
