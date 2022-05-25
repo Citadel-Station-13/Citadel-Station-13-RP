@@ -94,7 +94,6 @@ Protectiveness | Armor %
 	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
 	if(istype(loc, /mob/living))
 		var/mob/living/M = loc
-		M.drop_from_inventory(src)
 		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
 			var/obj/item/material/shard/S = material.place_shard(T)
 			M.embed(S)
@@ -242,9 +241,13 @@ Protectiveness | Armor %
 		if(second_plate.material != src.material)
 			to_chat(user, "<span class='warning'>Both plates need to be the same type of material.</span>")
 			return
-		user.drop_from_inventory(src)
-		user.drop_from_inventory(second_plate)
-		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(null, src.material.name)
+		if(!user.temporarily_remove_from_inventory(src))
+			to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+			return
+		if(!user.temporarily_remove_from_inventory(second_plate))
+			to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+			return
+		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(null, material.name)
 		user.put_in_hands(new_armor)
 		qdel(second_plate)
 		qdel(src)

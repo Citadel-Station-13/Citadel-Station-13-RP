@@ -66,13 +66,9 @@
 		finished = new /obj/item/weldingtool/welder_spear(get_turf(user))
 		to_chat(user, "<span class='notice'>You fasten the mini welder to the top of the rod with the cable, nozzle outward.</span>")
 	if(finished)
-		user.drop_from_inventory(src)
-		user.drop_from_inventory(I)
 		qdel(I)
 		qdel(src)
 		user.put_in_hands(finished)
-	update_icon(user)
-
 
 //Sledgehammer construction
 
