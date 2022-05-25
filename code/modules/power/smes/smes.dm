@@ -308,7 +308,6 @@ GLOBAL_LIST_EMPTY(smeses)
 		ui.open()
 
 /obj/machinery/power/smes/ui_data()
-	#warn verify tgui
 	var/list/data = list(
 		"capacityPercent" = round(100.0*charge/capacity, 0.1),
 		"charge" = charge,
