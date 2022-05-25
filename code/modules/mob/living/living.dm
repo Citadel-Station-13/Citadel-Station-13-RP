@@ -1058,9 +1058,9 @@ default behaviour is:
 
 			for(var/C in colors_to_blend)
 				var/RGB = hex2rgb(C)
-				R = between(0, R + RGB[1], 255)
-				G = between(0, G + RGB[2], 255)
-				B = between(0, B + RGB[3], 255)
+				R = clamp( R + RGB[1], 0,  255)
+				G = clamp( G + RGB[2], 0,  255)
+				B = clamp( B + RGB[3], 0,  255)
 			final_color = rgb(R,G,B)
 
 		if(final_color)

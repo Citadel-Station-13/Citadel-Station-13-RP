@@ -2,7 +2,7 @@
 
 // Might be best to make this a /mob/living proc and override.
 /mob/living/simple_mob/slime/xenobio/proc/adjust_nutrition(input, var/heal = 1)
-	nutrition = between(0, nutrition + input, get_max_nutrition())
+	nutrition = clamp( nutrition + input, 0,  get_max_nutrition())
 
 	if(input > 0)
 		// Gain around one level per 50 nutrition.
@@ -45,7 +45,7 @@
 
 	else if(nutrition >= get_grow_nutrition() && amount_grown < 10)
 		adjust_nutrition(-20)
-		amount_grown = between(0, amount_grown + 1, 10)
+		amount_grown = clamp( amount_grown + 1, 0,  10)
 
 // Called if above proc happens while below a nutrition threshold.
 /mob/living/simple_mob/slime/xenobio/proc/handle_starvation()

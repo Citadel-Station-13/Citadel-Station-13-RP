@@ -219,7 +219,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			line+=locate(px,py,M.z)
 	return line
 
-#define LOCATE_COORDS(X, Y, Z) locate(between(1, X, world.maxx), between(1, Y, world.maxy), Z)
+#define LOCATE_COORDS(X, Y, Z) locate(clamp(X, 1, world.maxx), clamp(Y, 1, world.maxy), Z)
 ///Uses a fast Bresenham rasterization algorithm to return the turfs in a thin circle.
 /proc/getcircle(turf/center, var/radius)
 	if(!radius) return list(center)
