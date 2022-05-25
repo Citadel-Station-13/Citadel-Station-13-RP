@@ -52,7 +52,8 @@
  */
 /mob/proc/transfer_item_to_loc(obj/item/I, newloc, force)
 	ASSERT(newloc)
-	ASSERT(is_in_inventory(I))
+	if(!is_in_inventory(I))
+		CRASH("attempted to transfer an item that isn't in our inventory")
 	return _unequip_item(I, force, newloc)
 
 /**
@@ -61,7 +62,8 @@
  * if an item is not in us, this crashes
  */
 /mob/proc/transfer_item_to_nullspace(obj/item/I, force)
-	ASSERT(is_in_inventory(I))
+	if(!is_in_inventory(I))
+		CRASH("attempted to transfer an item that isn't in our inventory")
 	return _unequip_item(I, force, null)
 
 /**

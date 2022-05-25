@@ -60,8 +60,8 @@
 	if(!istype(held) || is_robot_module(held))
 		if(!istype(target_slot))  // They aren't holding anything valid and there's nothing to remove, why are we even here?
 			return
-		if(!target_slot.canremove)
-			to_chat(user, "<span class='warning'>You cannot remove \the [src]'s [target_slot.name].</span>")
+		if(HAS_TRAIT(target_slot, TRAIT_NODROP))
+			to_chat(user, "<span class='warning'>You cannot remove \the [src]'s [target_slot.name], it seems to be stuck!.</span>")
 			return
 		stripping = 1
 
@@ -73,7 +73,7 @@
 		else
 			visible_message("<span class='danger'>\The [user] is trying to put \a [held] on \the [src]!</span>")
 
-	if(!do_after(user,HUMAN_STRIP_DELAY,src))
+	if(!do_after(user, HUMAN_STRIP_DELAY, src))
 		return
 
 	if(!stripping && user.get_active_held_item() != held)
@@ -81,11 +81,12 @@
 
 	if(stripping)
 		add_attack_logs(user,src,"Removed equipment from slot [target_slot]")
-		unEquip(target_slot)
-	else if(user.unEquip(held))
-		equip_to_slot_if_possible(held, text2num(slot_to_strip), silent = TRUE)
-		if(held.loc != src)
-			user.put_in_hands(held)
+		drop_item_to_ground(target_slot)
+	else if(user.temporarily_remove_from_inventory(held))
+		#warn WHAT THE FUCK IS THIS USE SLOT IDS JESUS
+		if(!equip_to_slot_if_possible(held, text2num(slot_to_strip), silent = TRUE))
+			if(!user.put_in_active_hand(held))
+				held.forceMove(user.drop_location())
 
 // Empty out everything in the target's pockets.
 /mob/living/carbon/human/proc/empty_pockets(var/mob/living/user)
@@ -93,9 +94,9 @@
 		to_chat(user, "<span class='warning'>\The [src] has nothing in their pockets.</span>")
 		return
 	if(r_store)
-		unEquip(r_store)
+		drop_item_to_ground(r_store)
 	if(l_store)
-		unEquip(l_store)
+		drop_item_to_ground(l_store)
 	visible_message("<span class='danger'>\The [user] empties \the [src]'s pockets!</span>")
 
 // Modify the current target sensor level.

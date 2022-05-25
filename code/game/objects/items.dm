@@ -309,13 +309,48 @@
 
 /obj/item/OnMouseDropLegacy(atom/over)
 	. = ..()
-	#warn UNFUCK THIS - GENERIC ITEM DRAG TO HAND SLOT
+	#warn UNFUCK THIS - GENERIC ITEM DRAG TO HAND SLOT AND GENERIC DRAG TO GROUND FOR PUT IN HAND/DROP TO GROUND!
 	if(ismob(src.loc))
 		if(!CanMouseDrop(src))
 			return
 		var/mob/M = src.loc
 		add_fingerprint(usr)
 		M.put_in_hands(src)
+
+/**
+ *  for ref lmao
+/obj/item/gun/OnMouseDropLegacy(obj/over_object as obj)
+	if(!canremove)
+		return
+
+	if (ishuman(usr) || issmall(usr)) //so monkeys can take off their backpacks -- Urist
+
+		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
+			return
+
+		if (!( istype(over_object, /atom/movable/screen) ))
+			return ..()
+
+		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
+		//there's got to be a better way of doing this.
+		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
+			return
+
+		if (( usr.restrained() ) || ( usr.stat ))
+			return
+
+		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
+			return
+
+		switch(over_object.name)
+			if("r_hand")
+				usr.u_equip(src)
+				usr.put_in_r_hand(src)
+			if("l_hand")
+				usr.u_equip(src)
+				usr.put_in_l_hand(src)
+		src.add_fingerprint(usr)
+ */
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/robot_module))
@@ -653,7 +688,6 @@
 			return 0 //already bloodied with this blood. Cannot add more.
 		blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
 	return 1 //we applied blood to the item
-
 
 /obj/item/proc/generate_blood_overlay()
 	if(blood_overlay)

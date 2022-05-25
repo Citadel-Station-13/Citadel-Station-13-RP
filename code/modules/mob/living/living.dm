@@ -942,7 +942,7 @@ default behaviour is:
 		density = 0
 		drop_all_held_items()
 		for(var/obj/item/holder/H in get_mob_riding_slots())
-			unEquip(H)
+			drop_item_to_ground(H)
 		update_water() // Submerges the mob.
 	else
 		density = initial(density)

@@ -176,7 +176,8 @@
 		return
 	var/turf/T = get_turf(src)
 	var/mob/M = loc
-	if(istype(M) && !M.unEquip(src, T))
+	if(istype(M) && !M.drop_item_to_ground(src))
+		to_chat(M, SPAN_WARNING("[src] is stuck to your hand!"))
 		return
 
 	active = 1

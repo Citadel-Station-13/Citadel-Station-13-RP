@@ -38,10 +38,6 @@
 	icon_state = toggleicon
 	hood_up = FALSE
 	REMOVE_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
-	if(ishuman(hood.loc))
-		var/mob/living/carbon/H = hood.loc
-		H.unEquip(hood, 1)
-		H.update_inv_wear_suit()
 	hood.forceMove(src)
 
 /obj/item/clothing/suit/storage/hooded/dropped()

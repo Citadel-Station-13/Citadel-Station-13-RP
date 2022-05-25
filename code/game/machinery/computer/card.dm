@@ -58,11 +58,13 @@
 	if(!istype(id_card))
 		return ..()
 
-	if(!scan && (access_change_ids in id_card.access) && (user.unEquip(id_card) || (id_card.loc == user && istype(user,/mob/living/silicon/robot)))) //Grippers. Again. ~Mechoid
-		id_card.forceMove(src)
+	if(!scan && (access_change_ids in id_card.access))
+		if(!user.attempt_insert_item_for_installation(id_card, src))
+			return
 		scan = id_card
 	else if(!modify)
-		id_card.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(id_card, src))
+			return
 		modify = id_card
 
 	SStgui.update_uis(src)
@@ -169,8 +171,9 @@
 					modify = null
 			else
 				var/obj/item/I = usr.get_active_held_item()
-				if(istype(I, /obj/item/card/id) && usr.unEquip(I))
-					I.forceMove(src)
+				if(istype(I, /obj/item/card/id))
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					modify = I
 			. = TRUE
 

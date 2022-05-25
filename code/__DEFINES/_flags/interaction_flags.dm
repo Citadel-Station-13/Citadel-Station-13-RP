@@ -14,8 +14,8 @@
 /// incapacitated check checks grab
 #define INTERACT_ATOM_CHECK_GRAB (1<<6)
 */
-/// prevents leaving fingerprints automatically on attack_hand
-#define INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND (1<<7)
+/// prevents leaving fingerprints automatically on attack_hand, put in hands, other touch procs
+#define INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH (1<<7)
 /// adds hiddenprints instead of fingerprints on interact
 #define INTERACT_ATOM_NO_FINGERPRINT_INTERACT (1<<8)
 

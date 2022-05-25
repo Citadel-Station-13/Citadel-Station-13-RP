@@ -54,42 +54,6 @@
 	QDEL_NULL(closer)
 	. = ..()
 
-/obj/item/storage/OnMouseDropLegacy(obj/over_object as obj)
-	if(!canremove)
-		return
-
-	if (isliving(usr) || isobserver(usr))
-
-		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
-			return
-
-		if(over_object == usr && Adjacent(usr)) // this must come before the screen objects only block
-			src.open(usr)
-			return
-
-		if (!( istype(over_object, /atom/movable/screen) ))
-			return ..()
-
-		// Makes sure that the storage is equipped, so that we can't drag it into our hand from miles away.
-		// There's got to be a better way of doing this.
-		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
-			return
-
-		if (( usr.restrained() ) || ( usr.stat ))
-			return
-
-		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
-			return
-
-		switch(over_object.name)
-			if("r_hand")
-				usr.unEquip(src)
-				usr.put_in_r_hand(src)
-			if("l_hand")
-				usr.unEquip(src)
-				usr.put_in_l_hand(src)
-		src.add_fingerprint(usr)
-
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
 		src.close(user)
