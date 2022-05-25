@@ -72,10 +72,10 @@
 			contains = 1
 		if(contains != 1)
 			return
+		if(!user.attempt_insert_item_for_installation(S, src))
+			return
 		var/obj/item/spacecash/S = W
 		user.visible_message("<span class='notice'>[user] puts [S.worth] [S.worth > 1 ? "thalers" : "thaler"] into \the [src].</span>")
-		user.drop_from_inventory(S)
-		S.loc = src
 		update_icon()
 
 /obj/item/glass_jar/update_icon() // Also updates name and desc

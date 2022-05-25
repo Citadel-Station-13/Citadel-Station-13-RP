@@ -82,5 +82,5 @@
 
 /obj/item/storage/laundry_basket/offhand/dropped(mob/user)
 	. = ..()
-	user.drop_from_inventory(linked)
+	user.drop_item_to_ground(linked)
 

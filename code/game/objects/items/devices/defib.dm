@@ -151,15 +151,12 @@
 	reattach_paddles(user) //paddles attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
 /obj/item/defib_kit/proc/reattach_paddles(mob/user)
-	if(!paddles) return
+	if(!paddles)
+		return
 
 	if(ismob(paddles.loc))
-		var/mob/M = paddles.loc
-		if(M.drop_from_inventory(paddles, src))
-			to_chat(user, "<span class='notice'>\The [paddles] snap back into the main unit.</span>")
-	else
-		paddles.forceMove(src)
-
+		to_chat(paddles.loc, "<span class='notice'>\The [paddles] snap back into the main unit.</span>")
+	paddles.forceMove(src)
 	update_icon()
 
 /*

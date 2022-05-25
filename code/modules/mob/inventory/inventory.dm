@@ -77,6 +77,9 @@
 	PROTECTED_PROC(TRUE)
 	if(!I)
 		return TRUE
+	// enforcement: if it gets to here, you probably did something wrong, given that even forceMove is hooked to unequip automatically.
+	if(I.loc != src)
+		CRASH("Attempting to unequip an item that isn't even in us?")
 	if(!force && HAS_TRAIT(I, TRAIT_NODROP))
 		return FALSE
 

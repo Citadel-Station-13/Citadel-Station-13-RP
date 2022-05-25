@@ -27,19 +27,20 @@
 		if(!b_stat)
 			to_chat(user, "<span class='notice'>[src] is not ready to be attached!</span>")
 			return
+		if(!user.temporarily_remove_from_inventory(W))
+			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+			return
+		if(!user.temporarily_remove_from_inventory(src))
+			to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+			return
 		var/obj/item/assembly/shock_kit/A = new /obj/item/assembly/shock_kit( user )
 		A.icon = 'icons/obj/assemblies.dmi'
-
-		user.drop_from_inventory(W)
-		W.loc = A
+		W.forceMove(A)
 		W.master = A
 		A.part1 = W
-
-		user.drop_from_inventory(src)
-		loc = A
+		forceMove(A)
 		master = A
 		A.part2 = src
-
 		user.put_in_hands(A)
 
 /obj/item/radio/electropack/Topic(href, href_list)

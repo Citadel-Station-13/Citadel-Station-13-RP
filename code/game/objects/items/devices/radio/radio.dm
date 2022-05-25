@@ -865,14 +865,12 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
 /obj/item/bluespace_radio/proc/reattach_handset(mob/user)
-	if(!handset) return
+	if(!handset)
+		return
 
 	if(ismob(handset.loc))
-		var/mob/M = handset.loc
-		if(M.drop_from_inventory(handset, src))
-			to_chat(user, "<span class='notice'>\The [handset] snaps back into the main unit.</span>")
-	else
-		handset.forceMove(src)
+		to_chat(handset.loc, "<span class='notice'>\The [handset] snaps back into the main unit.</span>")
+	handset.forceMove(src)
 
 //Subspace Radio Handset
 /obj/item/radio/bluespace_handset

@@ -1468,8 +1468,8 @@
 		return
 
 	else if(istype(W, /obj/item/mecha_parts/mecha_tracking))
-		user.drop_from_inventory(W)
-		W.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		user.visible_message("[user] attaches [W] to [src].", "You attach [W] to [src]")
 		return
 
@@ -1564,10 +1564,10 @@
 		if(!mmi_as_oc.brainmob || !mmi_as_oc.brainmob.client)
 			to_chat(user, "Consciousness matrix not detected.")
 			return 0
-		else if(mmi_as_oc.brainmob.stat)
+		else if(mmi_as_oc.brainmob.stat == DEAD)
 			to_chat(user, "Beta-rhythm below acceptable level.")
 			return 0
-		user.drop_from_inventory(mmi_as_oc)
+		if(!user.attempt_insert_item_for_installation(mmi_as_oc, src))
 		var/mob/brainmob = mmi_as_oc.brainmob
 	/*
 		brainmob.client.eye = src
@@ -1577,7 +1577,6 @@
 		brainmob.forceMove(src)
 		brainmob.reset_perspective(src)
 		brainmob.canmove = 1
-		mmi_as_oc.forceMove(src)
 		mmi_as_oc.mecha = src
 		src.verbs += /obj/mecha/verb/eject
 		src.Entered(mmi_as_oc)

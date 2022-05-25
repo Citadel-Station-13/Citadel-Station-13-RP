@@ -412,9 +412,8 @@
 						despawn_occupant(bm, TRUE)
 
 	//Drop all items into the pod.
-	for(var/obj/item/W in to_despawn)
-		to_despawn.drop_from_inventory(W)
-		W.forceMove(src)
+	for(var/obj/item/W in to_despawn.get_equipped_items(TRUE, FALSE))
+		to_despawn.transfer_item_to_loc(W, src, TRUE)
 
 		if(W.contents.len) //Make sure we catch anything not handled by qdel() on the items.
 			for(var/obj/item/O in W.contents)

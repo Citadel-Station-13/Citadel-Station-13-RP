@@ -176,11 +176,10 @@
 
 /obj/item/doMove(atom/destination)
 	// if we're on a mob and we're moving somewhere else, yank us out!
-	if(current_equipped_slot && ismob(loc) && (destination != loc))
+	if(ismob(loc))
 		var/mob/M = loc
 		M.temporarily_remove_from_inventory(src, TRUE)
-	. = ..()
-
+	return ..()
 
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)

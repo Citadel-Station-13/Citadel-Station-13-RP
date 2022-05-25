@@ -67,7 +67,7 @@
 				if(armor)
 					hood.armor = armor.Copy()
 				hood_up = TRUE
-				add_trait(hood, TRAIT_NODROP, CLOTHING_TRAIT)
+				ADD_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
 				icon_state = "[toggleicon]_t"
 				H.update_inv_wear_suit()
 	else

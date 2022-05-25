@@ -144,7 +144,10 @@
 /obj/item/duct_tape_roll/proc/stick(var/obj/item/W, mob/user)
 	if(!istype(W, /obj/item/paper))
 		return
-	user.drop_from_inventory(W)
+	if(W.loc == user)
+		if(!user.temporarily_remove_from_inventory(W))
+			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+			returrn
 	var/obj/item/duct_tape_piece/tape = new(get_turf(src))
 	tape.attach(W)
 	user.put_in_hands(tape)
@@ -183,10 +186,9 @@
 		return
 
 	to_chat(user, "You remove \the [initial(name)] from [stuck].")
-
-	user.drop_from_inventory(src)
-	stuck.forceMove(get_turf(src))
-	user.put_in_hands(stuck)
+	user.temporarily_remove_from_inventory(src, TRUE)
+	if(!user.put_in_hands(stuck))
+		stuck.forceMove(user.drop_location())
 	stuck = null
 	overlays = null
 	qdel(src)
@@ -195,8 +197,6 @@
 	if(!(istype(src, /obj/item/handcuffs/cable/tape) || istype(src, /obj/item/clothing/mask/muzzle/tape)))
 		return ..()
 	else
-		user.drop_from_inventory(I)
-		I.loc = src
 		qdel(I)
 		to_chat(user, "<span-class='notice'>You place \the [I] back into \the [src].</span>")
 
@@ -205,7 +205,6 @@
 	return ..() // Pick it up now that it's unanchored.
 
 /obj/item/duct_tape_piece/afterattack(var/A, mob/user, flag, params)
-
 	if(!in_range(user, A) || istype(A, /obj/machinery/door) || !stuck)
 		return
 
@@ -219,9 +218,9 @@
 			to_chat(user, "You cannot reach that from here.")		// can only place stuck papers in cardinal directions, to
 			return											// reduce papers around corners issue.
 
-	user.drop_from_inventory(src)
+	if(!user.attempt_insert_item_for_installation(src, source_turf))
+		return
 	playsound(src, 'sound/effects/tape.ogg',25)
-	forceMove(source_turf)
 	anchored = TRUE
 
 	if(params)
