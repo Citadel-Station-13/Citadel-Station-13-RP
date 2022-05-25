@@ -177,6 +177,7 @@
 		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi')
 
 /obj/item/clothing/ears/attack_hand(mob/user as mob)
+	#warn cancer
 	if (!user) return
 
 	if (src.loc != user || !istype(user,/mob/living/carbon/human))
