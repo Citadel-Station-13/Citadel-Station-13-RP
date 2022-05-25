@@ -154,9 +154,9 @@ var/datum/species/shapeshifter/promethean/prometheans
 	var/obj/item/storage/toolbox/lunchbox/L = new boxtype(get_turf(H))
 	new /obj/item/reagent_containers/food/snacks/candy/proteinbar(L)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(L, slot_r_hand)
+		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/right_hand)
 	else
-		H.equip_to_slot_or_del(L, slot_in_backpack)
+		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/put_in_backpack)
 
 /datum/species/shapeshifter/promethean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 

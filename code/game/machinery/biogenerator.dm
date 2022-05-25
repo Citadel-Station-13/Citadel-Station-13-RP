@@ -116,8 +116,7 @@
 /obj/machinery/biogenerator/proc/insert_beaker(mob/living/user, obj/item/reagent_containers/glass/inserted_beaker)
 	if(!can_interact(user))
 		return
-
-	if(!user.transferItemToLoc(inserted_beaker, src))
+	if(!user.attempt_insert_item_for_installation(inserted_beaker, src))
 		return
 
 	if(beaker)

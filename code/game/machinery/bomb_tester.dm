@@ -97,8 +97,8 @@
 		return
 	if(istype(I, /obj/item/tank))
 		if(!tank1 || !tank2)
-			user.drop_item(I)
-			I.forceMove(src)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			if(!tank1)
 				tank1 = I
 			else
@@ -166,9 +166,8 @@
 				else
 					to_chat(usr, SPAN_WARNING("Slot [slot] is full."))
 					return
-
-				usr.drop_item(T)
-				T.forceMove(src)
+				if(!usr.attempt_insert_item_for_installation(T, src))
+					return
 				return TRUE
 			else
 				to_chat(usr, SPAN_WARNING("You must be wielding a tank to insert it!"))

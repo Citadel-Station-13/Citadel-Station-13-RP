@@ -104,10 +104,10 @@
 
 /obj/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
+		if(!user.attempt_consume_item_for_construction(W))
+			return
 		to_chat(usr, SPAN_NOTICE("You put [W] back in [src]."))
-		user.drop_item()
 		add_fingerprint(usr)
-		qdel(W)
 		return
 	else if(W.is_wrench())
 		add_fingerprint(usr)

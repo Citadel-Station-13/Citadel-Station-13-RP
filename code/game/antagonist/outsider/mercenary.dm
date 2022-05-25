@@ -42,7 +42,7 @@ var/datum/antagonist/mercenary/mercs
 	if(player.backbag == 3) player.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(player), SLOT_ID_BACK)
 	if(player.backbag == 4) player.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(player), SLOT_ID_BACK)
 	if(player.backbag == 5) player.equip_to_slot_or_del(new /obj/item/storage/backpack/messenger(player), SLOT_ID_BACK)
-	player.equip_to_slot_or_del(new /obj/item/reagent_containers/pill/cyanide(player), slot_in_backpack)
+	player.equip_to_slot_or_del(new /obj/item/reagent_containers/pill/cyanide(player), /datum/inventory_slot_meta/abstract/put_in_backpack)
 
 	player.mind.tcrystals = DEFAULT_TELECRYSTAL_AMOUNT
 	player.mind.accept_tcrystals = 1

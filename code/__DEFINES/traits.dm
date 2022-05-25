@@ -290,3 +290,4 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 
 #define CHANGELING_TRAIT "changeling"
+#define TECHNOMANCER_TRAIT "technomancer"

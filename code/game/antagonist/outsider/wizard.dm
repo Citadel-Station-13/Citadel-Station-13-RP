@@ -84,9 +84,9 @@ var/datum/antagonist/wizard/wizards
 	if(wizard_mob.backbag == 3) wizard_mob.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(wizard_mob), SLOT_ID_BACK)
 	if(wizard_mob.backbag == 4) wizard_mob.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(wizard_mob), SLOT_ID_BACK)
 	if(wizard_mob.backbag == 5) wizard_mob.equip_to_slot_or_del(new /obj/item/storage/backpack(wizard_mob), SLOT_ID_BACK)
-	wizard_mob.equip_to_slot_or_del(new /obj/item/storage/box(wizard_mob), slot_in_backpack)
+	wizard_mob.equip_to_slot_or_del(new /obj/item/storage/box(wizard_mob), /datum/inventory_slot_meta/abstract/put_in_backpack)
 	wizard_mob.equip_to_slot_or_del(new /obj/item/teleportation_scroll(wizard_mob), SLOT_ID_RIGHT_POCKET)
-	wizard_mob.equip_to_slot_or_del(new /obj/item/spellbook(wizard_mob), slot_r_hand)
+	wizard_mob.equip_to_slot_or_del(new /obj/item/spellbook(wizard_mob), /datum/inventory_slot_meta/abstract/right_hand)
 	return 1
 
 /datum/antagonist/wizard/check_victory()

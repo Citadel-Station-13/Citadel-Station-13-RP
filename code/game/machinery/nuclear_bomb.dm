@@ -85,8 +85,8 @@ var/bomb_set
 
 	if(extended)
 		if(istype(O, /obj/item/disk/nuclear))
-			usr.drop_item()
-			O.loc = src
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			auth = O
 			add_fingerprint(user)
 			return
@@ -287,8 +287,8 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 			else
 				var/obj/item/I = usr.get_active_held_item()
 				if(istype(I, /obj/item/disk/nuclear))
-					usr.drop_item()
-					I.loc = src
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					auth = I
 		if(auth)
 			if(href_list["type"])

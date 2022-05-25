@@ -27,10 +27,10 @@ var/datum/antagonist/deathsquad/mercenary/commandos
 	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(player), SLOT_ID_GLOVES)
 	player.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal(player), SLOT_ID_GLASSES)
 	player.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/syndicate(player), SLOT_ID_MASK)
-	player.equip_to_slot_or_del(new /obj/item/storage/box(player), slot_in_backpack)
-	player.equip_to_slot_or_del(new /obj/item/ammo_magazine/clip/c45(player), slot_in_backpack)
+	player.equip_to_slot_or_del(new /obj/item/storage/box(player), /datum/inventory_slot_meta/abstract/put_in_backpack)
+	player.equip_to_slot_or_del(new /obj/item/ammo_magazine/clip/c45(player), /datum/inventory_slot_meta/abstract/put_in_backpack)
 	player.equip_to_slot_or_del(new /obj/item/rig/merc(player), SLOT_ID_BACK)
-	player.equip_to_slot_or_del(new /obj/item/gun/energy/pulse_rifle(player), slot_r_hand)
+	player.equip_to_slot_or_del(new /obj/item/gun/energy/pulse_rifle(player), /datum/inventory_slot_meta/abstract/right_hand)
 
 	create_id("Commando", player)
 	create_radio(SYND_FREQ, player)

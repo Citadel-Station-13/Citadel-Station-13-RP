@@ -79,12 +79,10 @@
 
 /obj/machinery/oxygen_pump/proc/attach_mask(mob/living/carbon/C)
 	if(C && istype(C))
-		contained.forceMove(get_turf(C))
-		C.equip_to_slot(contained, SLOT_ID_MASK)
+		C.equip_to_slot_if_possible(contained, SLOT_ID_MASK)
 		if(tank)
 			tank.forceMove(C)
 		breather = C
-		spawn(1)
 		if(!breather.internal && tank)
 			breather.internal = tank
 			if(breather.internals)

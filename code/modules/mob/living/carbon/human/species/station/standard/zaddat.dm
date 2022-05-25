@@ -91,9 +91,9 @@
 
 	var/obj/item/storage/toolbox/lunchbox/survival/zaddat/L = new(get_turf(H))
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(L, slot_r_hand)
+		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/right_hand)
 	else
-		H.equip_to_slot_or_del(L, slot_in_backpack)
+		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/put_in_backpack)
 
 /datum/species/zaddat/handle_environment_special(var/mob/living/carbon/human/H)
 

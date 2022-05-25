@@ -247,10 +247,10 @@
 		if(LAZYLEN(containers) >= container_limit)
 			to_chat(user, SPAN_WARNING("\The [src] has too many containers loaded!"))
 		else if(do_after(user, 1 SECOND))
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			user.visible_message("[user] has loaded \the [W] into \the [src].", "You load \the [W] into \the [src].")
 			containers += W
-			user.drop_item()
-			W.forceMove(src)
 		return
 	else if(W.is_wrench())
 		if(locked && (anchored || occupant))

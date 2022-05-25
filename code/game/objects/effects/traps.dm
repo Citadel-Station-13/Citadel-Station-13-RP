@@ -232,7 +232,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
 
@@ -278,7 +277,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
 

@@ -53,9 +53,9 @@
 		return
 
 	if(is_type_in_list(W, allowed_types) && !inoperable())
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		user.visible_message(SPAN_NOTICE("[user] inserts \the [W] into \the [src] receptable."))
-		user.drop_from_inventory(W)
-		W.forceMove(src)
 		processing |= W
 	else
 		..()
