@@ -430,7 +430,7 @@ GLOBAL_LIST_EMPTY(smeses)
  */
 /obj/machinery/power/smes/proc/getTerminalPower()
 	if (terminal && terminal.powernet)//checks if the SMES has a terminal, and if that terminal has a powernet.
-		. = round(terminal.powernet.avail * 1000, 0.1)
+		. = round(terminal.powernet.avail, 0.1)
 	else
 		. = 0
 	return .
