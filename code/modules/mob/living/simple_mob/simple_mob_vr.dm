@@ -56,8 +56,8 @@
 
 //For all those ID-having mobs
 /mob/living/simple_mob/GetIdCard()
-	if(myid)
-		return myid
+	if(access_card)
+		return access_card
 
 // Update fullness based on size & quantity of belly contents
 /mob/living/simple_mob/proc/update_fullness()

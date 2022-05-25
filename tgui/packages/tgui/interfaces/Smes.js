@@ -2,7 +2,6 @@ import { useBackend } from '../backend';
 import { Box, Button, Flex, LabeledList, ProgressBar, Section, Slider } from '../components';
 import { formatPower } from '../format';
 import { Window } from '../layouts';
-import { round } from 'common/math';
 
 // Common power multiplier
 const POWER_MUL = 1e3;
@@ -37,8 +36,7 @@ export const Smes = (props, context) => {
   return (
     <Window
       width={340}
-      height={350}
-      resizable>
+      height={350}>
       <Window.Content>
         <Section title="Stored Energy">
           <ProgressBar
@@ -47,10 +45,7 @@ export const Smes = (props, context) => {
               good: [0.5, Infinity],
               average: [0.15, 0.5],
               bad: [-Infinity, 0.15],
-            }}>
-            {round(charge/(1000*60), 1)} kWh / {round(capacity/(1000*60))} kWh
-            ({capacityPercent}%)
-          </ProgressBar>
+            }} />
         </Section>
         <Section title="Input">
           <LabeledList>
@@ -61,7 +56,7 @@ export const Smes = (props, context) => {
                   icon={inputAttempt ? 'sync-alt' : 'times'}
                   selected={inputAttempt}
                   onClick={() => act('tryinput')}>
-                  {inputAttempt ? 'On' : 'Off'}
+                  {inputAttempt ? 'Auto' : 'Off'}
                 </Button>
               }>
               <Box color={inputState}>

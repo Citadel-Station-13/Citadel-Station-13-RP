@@ -8,8 +8,10 @@
 		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi'
 		)
 
-	var/access = list()
-	var/registered_name = "Unknown" // The name registered_name on the card
+	/// Access levels held by this card.
+	var/list/access = list()
+	/// The name registered_name on the card.
+	var/registered_name = "Unknown"
 	slot_flags = SLOT_ID | SLOT_EARS
 
 	var/age = "\[UNSET\]"
@@ -97,7 +99,7 @@
 	return
 
 /obj/item/card/id/GetAccess()
-	return access
+	return access.Copy()
 
 /obj/item/card/id/GetID()
 	return src

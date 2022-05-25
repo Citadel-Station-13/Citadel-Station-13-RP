@@ -169,7 +169,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.directory[ckey] = src
 
 	// Instantiate tgui panel
-	tgui_panel = new(src)
+	tgui_panel = new(src, "browseroutput")
 
 	GLOB.ahelp_tickets.ClientLogin(src)
 	SSserver_maint.UpdateHubStatus()
@@ -295,9 +295,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		set_macros()
 		update_movement_keys()
 
+	// Initialize stat panel
+	// stat_panel.initialize(
+	// 	inline_html = file2text('html/statbrowser.html'),
+	// 	inline_js = file2text('html/statbrowser.js'),
+	// 	inline_css = file2text('html/statbrowser.css'),
+	// )
+
 	// Initialize tgui panel
 	tgui_panel.initialize()
-	// src << browse(file('html/statbrowser.html'), "window=statbrowser")
 
 	//if(alert_mob_dupe_login)
 	//	spawn()
