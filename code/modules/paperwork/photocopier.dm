@@ -164,11 +164,13 @@
 			to_chat(user, "<span class='notice'>There is already something in \the [src].</span>")
 	else if(istype(O, /obj/item/toner))
 		if(toner <= 10) //allow replacing when low toner is affecting the print darkness
-			user.drop_item()
+			if(!user.temporarily_remove_from_inventory(O))
+				to_chat(user, SPAN_WARNING("[O] is stuck to your hand!"))
+				return
 			to_chat(user, "<span class='notice'>You insert the toner cartridge into \the [src].</span>")
 			var/obj/item/toner/T = O
 			toner += T.toner_amount
-			qdel(O)
+			qdel(T)
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
 	else if(O.is_wrench())

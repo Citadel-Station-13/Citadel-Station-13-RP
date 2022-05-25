@@ -104,9 +104,9 @@
 		if(prob(.))
 			owner.custom_pain("A jolt of pain surges through your [name]!",1)
 			if(organ_tag == BP_L_ARM) //Specific level 2 'feature
-				owner.drop_l_hand()
+				owner.drop_held_item_of_index(1)
 			else if(organ_tag == BP_R_ARM)
-				owner.drop_r_hand()
+				owner.drop_held_item_of_index(2)
 
 /obj/item/organ/external/arm/right
 	organ_tag = BP_R_ARM
