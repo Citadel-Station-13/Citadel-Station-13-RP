@@ -40,7 +40,7 @@
 		return 0
 	return ..(M, user)
 
-/obj/vehicle/skateboard/MouseDroppedOn(var/atom/movable/C, var/mob/user as mob)
+/obj/vehicle/skateboard/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
 	if(!load(C, user))
 		to_chat(user, "<span class='warning'> You were unable to load \the [C] onto \the [src].</span>")
 		return
@@ -144,7 +144,7 @@
 		grinding = FALSE
 		icon_state = board_icon
 
-/obj/vehicle/skateboard/MouseDrop(atom/over_object)
+/obj/vehicle/skateboard/OnMouseDropLegacy(atom/over_object)
 	. = ..()
 	var/mob/living/carbon/M = usr
 	if(!istype(M) || M.incapacitated() || !Adjacent(M))

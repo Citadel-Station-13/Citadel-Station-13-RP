@@ -498,7 +498,7 @@
 		to_chat(user,"<span class='notice'>You store \the [C] in \the [src].</span>")
 		return
 
-/obj/machinery/transhuman/resleever/MouseDroppedOn(mob/living/carbon/O, mob/user as mob)
+/obj/machinery/transhuman/resleever/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
 		return FALSE //not a mob
 	if(user.incapacitated())
@@ -529,7 +529,7 @@
 
 	add_fingerprint(user)
 
-/obj/machinery/transhuman/resleever/MouseDroppedOn(var/mob/target, var/mob/user) //Allows borgs to put people into resleeving without external assistance
+/obj/machinery/transhuman/resleever/MouseDroppedOnLegacy(var/mob/target, var/mob/user) //Allows borgs to put people into resleeving without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
 	put_mob(target)

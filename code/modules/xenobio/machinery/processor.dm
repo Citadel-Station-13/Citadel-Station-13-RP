@@ -151,7 +151,7 @@
 		return TRUE
 	return FALSE
 
-/obj/machinery/processor/MouseDroppedOn(var/atom/movable/AM, var/mob/living/user)
+/obj/machinery/processor/MouseDroppedOnLegacy(var/atom/movable/AM, var/mob/living/user)
 	if(user.stat || user.incapacitated(INCAPACITATION_DISABLED) || !istype(user))
 		return
 	insert(AM, user)

@@ -87,7 +87,7 @@
 	verbs |= /mob/living/simple_animal/proc/animal_mount
 */
 
-/mob/living/simple_mob/vore/hippo/MouseDroppedOn(mob/living/M, mob/living/user)
+/mob/living/simple_mob/vore/hippo/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return
 
 /datum/say_list/hippo

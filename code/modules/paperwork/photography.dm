@@ -91,7 +91,7 @@ var/global/photo_count = 0
 	item_state = "briefcase"
 	can_hold = list(/obj/item/photo)
 
-/obj/item/storage/photo_album/MouseDrop(obj/over_object as obj)
+/obj/item/storage/photo_album/OnMouseDropLegacy(obj/over_object as obj)
 
 	if((istype(usr, /mob/living/carbon/human)))
 		var/mob/living/carbon/human/M = usr

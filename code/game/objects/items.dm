@@ -307,7 +307,7 @@
 			ghost.assumeform(src)
 			ghost.animate_towards(user)
 
-/obj/item/MouseDrop(atom/over)
+/obj/item/OnMouseDropLegacy(atom/over)
 	. = ..()
 	#warn UNFUCK THIS - GENERIC ITEM DRAG TO HAND SLOT
 	if(ismob(src.loc))

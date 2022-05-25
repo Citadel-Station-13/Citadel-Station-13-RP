@@ -196,7 +196,7 @@
 		scan_item_price(O)
 
 
-/obj/machinery/cash_register/MouseDroppedOn(atom/dropping, mob/user)
+/obj/machinery/cash_register/MouseDroppedOnLegacy(atom/dropping, mob/user)
 	if(Adjacent(dropping) && Adjacent(user) && !user.stat)
 		attackby(dropping, user)
 

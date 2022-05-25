@@ -294,7 +294,7 @@
 	else
 		icon_state = "water_cup_e"
 
-/obj/item/reagent_containers/food/drinks/sillycup/MouseDrop(obj/over_object as obj)
+/obj/item/reagent_containers/food/drinks/sillycup/OnMouseDropLegacy(obj/over_object as obj)
 	if(!reagents.total_volume && istype(over_object, /obj/structure/reagent_dispensers/water_cooler))
 		if(over_object.Adjacent(usr))
 			var/obj/structure/reagent_dispensers/water_cooler/W = over_object

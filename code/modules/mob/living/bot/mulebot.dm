@@ -61,7 +61,7 @@
 
 	name = "Mulebot #[suffix]"
 
-/mob/living/bot/mulebot/MouseDroppedOn(var/atom/movable/C, var/mob/user)
+/mob/living/bot/mulebot/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user)
 	if(user.stat)
 		return
 

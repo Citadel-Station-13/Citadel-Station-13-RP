@@ -70,7 +70,7 @@
 	..()
 
 
-/obj/item/storage/secure/MouseDrop(over_object, src_location, over_location)
+/obj/item/storage/secure/OnMouseDropLegacy(over_object, src_location, over_location)
 	if (locked)
 		src.add_fingerprint(usr)
 		return
@@ -165,7 +165,7 @@
 		src.add_fingerprint(user)
 		return
 
-/obj/item/storage/secure/briefcase/MouseDrop(mob/user as mob)
+/obj/item/storage/secure/briefcase/OnMouseDropLegacy(mob/user as mob)
 	if(ismob(src.loc))
 		if ((src.loc == user) && (src.locked == 1))
 			return

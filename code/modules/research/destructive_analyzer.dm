@@ -82,7 +82,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 		return 1
 	return
 
-/obj/machinery/r_n_d/destructive_analyzer/MouseDroppedOn(atom/dropping, mob/living/user)
+/obj/machinery/r_n_d/destructive_analyzer/MouseDroppedOnLegacy(atom/dropping, mob/living/user)
 	if(istype(dropping, /obj/item/storage/part_replacer))
 		var/obj/item/storage/part_replacer/replacer = dropping
 		replacer.hide_from(user)

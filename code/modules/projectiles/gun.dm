@@ -348,7 +348,7 @@
 	if(pin)
 		pin.emag_act(remaining_charges, user)
 
-/obj/item/gun/MouseDrop(obj/over_object as obj)
+/obj/item/gun/OnMouseDropLegacy(obj/over_object as obj)
 	if(!canremove)
 		return
 

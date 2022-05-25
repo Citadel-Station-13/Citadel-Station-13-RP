@@ -100,7 +100,7 @@
 /obj/machinery/microscope/AltClick()
 	remove_sample(usr)
 
-/obj/machinery/microscope/MouseDrop(var/atom/other)
+/obj/machinery/microscope/OnMouseDropLegacy(var/atom/other)
 	if(usr == other)
 		remove_sample(usr)
 	else

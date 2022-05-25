@@ -51,7 +51,7 @@
 
 	return ..()
 
-/mob/living/simple_mob/MouseDrop(var/obj/structure/stasis_cage/over_object)
+/mob/living/simple_mob/OnMouseDropLegacy(var/obj/structure/stasis_cage/over_object)
 	if(istype(over_object) && Adjacent(over_object) && CanMouseDrop(over_object, usr))
 
 		if(!src.buckled || !istype(src.buckled, /obj/effect/energy_net))

@@ -20,7 +20,7 @@
 	if (pockets.handle_attack_hand(user))
 		..(user)
 
-/obj/item/clothing/suit/storage/MouseDrop(obj/over_object as obj)
+/obj/item/clothing/suit/storage/OnMouseDropLegacy(obj/over_object as obj)
 	if (pockets.handle_mousedrop(usr, over_object))
 		..(over_object)
 

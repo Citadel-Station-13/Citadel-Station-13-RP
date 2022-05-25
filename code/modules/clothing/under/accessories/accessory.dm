@@ -25,7 +25,7 @@
 	on_removed()
 	return ..()
 
-/obj/item/clothing/accessory/MouseDrop(mob/user as mob)
+/obj/item/clothing/accessory/OnMouseDropLegacy(mob/user as mob)
 	if(ismob(src.loc))
 		if(!CanMouseDrop(src))
 			return

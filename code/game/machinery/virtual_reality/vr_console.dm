@@ -85,7 +85,7 @@
 		return
 
 
-/obj/machinery/vr_sleeper/MouseDroppedOn(mob/target, mob/user)
+/obj/machinery/vr_sleeper/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !isliving(target))
 		return
 	go_in(target, user)

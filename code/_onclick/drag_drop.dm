@@ -16,15 +16,68 @@
 	return TRUE
 
 /atom/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)
-	if(!usr || !over) return
-	if(!Adjacent(usr) || !over.Adjacent(usr)) return // should stop you from dragging through windows
+	SHOULD_NOT_OVERRIDE(TRUE)
+	// cache incase thsi somehow gets lost
+	var/user = usr
+	if(!user || !over_object)
+		return
 
-	spawn(0)
-		over.MouseDroppedOn(src,usr)
-	return
+	// first check legacy behaviors - this one always runs
+	if(OnMouseDropLegacy(over_object, src_location, over_location, src_control, over_control, params) != -1)
+		return
 
-// recieve a mousedrop
-/atom/proc/MouseDroppedOn(atom/dropping, mob/user)
+	// shit proximity check, refactor later
+	var/proximity = Adjacent(usr) && over.Adjacent(usr)
+	if(proximity)
+		// this one only runs if the above pass. legacy behavior.
+		MouseDroppedOnLegacy(src, user, params)
+
+	if(SEND_SIGNAL(src, COMSIG_MOUSEDROP_ONTO, over, user, proximity, params) & COMPONENT_NO_MOUSEDROP)
+		return
+	OnMouseDrop(over, user, proximity, params)
+	if(SEND_SIGNAL(over, COMSIG_MOUSEDROPPED_ONTO, src, user, proximity, params) & COMPONENT_NO_MOUSEDROP)
+		return
+	over.MouseDroppedOn(src, user, params)
+
+
+/**
+ * user dropped us onto an atom mouse-drag-drop
+ *
+ * @params
+ * - over - the atom that is being dropped onto us
+ * - user - the person dropping it
+ * - proximity - can we reach the thing?
+ * - params - click params
+ */
+/atom/proc/OnMouseDrop(atom/over, mob/user, proximity, params)
+
+
+/**
+ * we were dropped onto over object
+ * do not continue overriding this proc, use OnMouseDrop
+ * base proc returns -1 to signal we should continue onto new procs
+ * this is awful but whatever
+ */
+/atom/proc/OnMouseDropLegacy(atom/over_object, src_location, over_location, src_control, over_control, params)
+	return -1
+
+/**
+ * user dropped an atom on us with mouse-drag-drop
+ *
+ * @params
+ * - dropping - the atom that is being dropped onto us
+ * - user - the person dropping it
+ * - proximity - can we reach the thing?
+ * - params - click params
+ */
+/atom/proc/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+
+/**
+ * user dropped an atom on us with mouse-drag-drop
+ * legacy because this doesn't have checks for proximity param
+ * do not continue overriding this
+ */
+/atom/proc/MouseDroppedOnLegacy(atom/dropping, mob/user, params)
 	return
 
 /client

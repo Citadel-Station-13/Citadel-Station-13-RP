@@ -47,7 +47,7 @@
 			return
 	return ..()
 
-/obj/item/clothing/MouseDrop(var/obj/over_object)
+/obj/item/clothing/OnMouseDropLegacy(var/obj/over_object)
 	if (over_object && (ishuman(usr) || issmall(usr)))
 		//makes sure that the clothing is equipped so that we can't drag it into our hand from miles away.
 		if (!(src.loc == usr))

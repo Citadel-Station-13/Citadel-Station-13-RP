@@ -57,7 +57,7 @@
 		showcase.layer = src.layer - 0.1
 		underlays += showcase
 
-/obj/structure/vehiclecage/MouseDroppedOn(var/atom/movable/C, mob/user as mob)
+/obj/structure/vehiclecage/MouseDroppedOnLegacy(var/atom/movable/C, mob/user as mob)
 	if(user && (user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C)))
 		return
 

@@ -56,7 +56,7 @@
 		riding_datum = new /datum/riding/simple_animal(src)
 	verbs |= /mob/living/simple_animal/proc/animal_mount
 
-/mob/living/simple_animal/vore/panther/MouseDroppedOn(mob/living/M, mob/living/user)
+/mob/living/simple_animal/vore/panther/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return
 */
 

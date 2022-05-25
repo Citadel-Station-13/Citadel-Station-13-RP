@@ -37,7 +37,7 @@
 	QDEL_NULL(contained)
 	return ..()
 
-/obj/machinery/oxygen_pump/MouseDrop(mob/living/carbon/human/target, src_location, over_location)
+/obj/machinery/oxygen_pump/OnMouseDropLegacy(mob/living/carbon/human/target, src_location, over_location)
 	..()
 	if(istype(target) && CanMouseDrop(target))
 		if(!can_apply_to_target(target, usr)) // There is no point in attempting to apply a mask if it's impossible.

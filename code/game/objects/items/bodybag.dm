@@ -74,7 +74,7 @@
 		return 1
 	return 0
 
-/obj/structure/closet/body_bag/MouseDrop(over_object, src_location, over_location)
+/obj/structure/closet/body_bag/OnMouseDropLegacy(over_object, src_location, over_location)
 	..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr))	return 0
@@ -172,7 +172,7 @@
 		O.desc = "Pretty useless now..."
 		qdel(src)
 
-/obj/structure/closet/body_bag/cryobag/MouseDrop(over_object, src_location, over_location)
+/obj/structure/closet/body_bag/cryobag/OnMouseDropLegacy(over_object, src_location, over_location)
 	. = ..()
 	if(. && syringe)
 		var/obj/item/bodybag/cryobag/folded = .

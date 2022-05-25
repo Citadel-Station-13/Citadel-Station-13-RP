@@ -332,7 +332,7 @@
 		src.attack_hand(user)
 	return
 
-/obj/structure/closet/MouseDroppedOn(atom/movable/O as mob|obj, mob/user as mob)
+/obj/structure/closet/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
 	if(istype(O, /atom/movable/screen))	//fix for HUD elements making their way into the world	-Pete
 		return
 	if(O.loc == user)

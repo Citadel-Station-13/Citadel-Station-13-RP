@@ -4768,7 +4768,7 @@ END CITADEL CHANGE */
 			user.put_in_hands(waste)
 		qdel(src)
 
-/obj/item/reagent_containers/food/snacks/chipplate/MouseDrop(mob/user) //Dropping the chip onto the user
+/obj/item/reagent_containers/food/snacks/chipplate/OnMouseDropLegacy(mob/user) //Dropping the chip onto the user
 	if(istype(user) && user == usr)
 		user.put_in_active_hand(src)
 		src.pickup(user)

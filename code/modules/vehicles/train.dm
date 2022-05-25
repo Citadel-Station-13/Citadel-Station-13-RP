@@ -104,7 +104,7 @@
 
 	return 1
 
-/obj/vehicle/train/MouseDroppedOn(var/atom/movable/C, mob/user as mob)
+/obj/vehicle/train/MouseDroppedOnLegacy(var/atom/movable/C, mob/user as mob)
 	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !user.canmove))
 		return
 	if(istype(C,/obj/vehicle/train))

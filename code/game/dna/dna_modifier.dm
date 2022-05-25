@@ -95,7 +95,7 @@
 		for(var/mob/M in src)//Failsafe so you can get mobs out
 			M.loc = get_turf(src)
 
-/obj/machinery/dna_scannernew/MouseDroppedOn(var/mob/target, var/mob/user) //Allows borgs to clone people without external assistance
+/obj/machinery/dna_scannernew/MouseDroppedOnLegacy(var/mob/target, var/mob/user) //Allows borgs to clone people without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
 	put_in(target)

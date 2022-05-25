@@ -229,7 +229,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 
 // Proc: MouseDrop()
 //Same thing PDAs do
-/obj/item/communicator/MouseDrop(obj/over_object as obj)
+/obj/item/communicator/OnMouseDropLegacy(obj/over_object as obj)
 	var/mob/M = usr
 	if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
 		return

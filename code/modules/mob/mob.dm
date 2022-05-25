@@ -674,7 +674,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /**
  * Controls if a mouse drop succeeds (return null if it doesnt)
  */
-/mob/MouseDrop(mob/M as mob)
+/mob/OnMouseDropLegacy(mob/M as mob)
 	..()
 	if(M != usr) return
 	if(usr == src) return

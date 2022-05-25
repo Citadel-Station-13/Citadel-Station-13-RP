@@ -811,7 +811,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	else
 		..()
 
-/obj/item/bluespace_radio/MouseDrop()
+/obj/item/bluespace_radio/OnMouseDropLegacy()
 	if(ismob(loc))
 		if(!CanMouseDrop(src))
 			return

@@ -238,7 +238,7 @@
 		return
 
 
-/obj/item/deck/MouseDrop(mob/user as mob) // Code from Paper bin, so you can still pick up the deck
+/obj/item/deck/OnMouseDropLegacy(mob/user as mob) // Code from Paper bin, so you can still pick up the deck
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))
 		if(!istype(usr, /mob/living/simple_mob))
 			if( !usr.get_active_held_item() )		//if active hand is empty

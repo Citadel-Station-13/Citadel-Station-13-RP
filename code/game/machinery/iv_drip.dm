@@ -42,7 +42,7 @@
 			filling.icon += reagents.get_color()
 			overlays += filling
 
-/obj/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
+/obj/machinery/iv_drip/OnMouseDropLegacy(over_object, src_location, over_location)
 	..()
 	if(!isliving(usr))
 		return

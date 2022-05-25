@@ -94,7 +94,7 @@
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/structure/medical_stand/MouseDrop(var/mob/living/carbon/human/target, src_location, over_location)
+/obj/structure/medical_stand/OnMouseDropLegacy(var/mob/living/carbon/human/target, src_location, over_location)
 	..()
 	if(istype(target))
 		if(usr.stat == DEAD || !CanMouseDrop(target))

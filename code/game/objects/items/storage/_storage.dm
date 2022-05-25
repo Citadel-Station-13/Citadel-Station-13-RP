@@ -54,7 +54,7 @@
 	QDEL_NULL(closer)
 	. = ..()
 
-/obj/item/storage/MouseDrop(obj/over_object as obj)
+/obj/item/storage/OnMouseDropLegacy(obj/over_object as obj)
 	if(!canremove)
 		return
 

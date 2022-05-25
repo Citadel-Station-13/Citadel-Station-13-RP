@@ -350,7 +350,7 @@
 	anchored = 1
 	var/busy = 0 	//Something's being washed at the moment
 
-/obj/structure/sink/MouseDroppedOn(var/obj/item/thing, var/mob/user)
+/obj/structure/sink/MouseDroppedOnLegacy(var/obj/item/thing, var/mob/user)
 	..()
 	if(!istype(thing) || !thing.is_open_container())
 		return ..()

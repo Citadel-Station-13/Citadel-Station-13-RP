@@ -173,7 +173,7 @@
 	return FALSE
 
 /*
-/mob/living/carbon/human/MouseDroppedOn(atom/dropping, mob/user)
+/mob/living/carbon/human/MouseDroppedOnLegacy(atom/dropping, mob/user)
 	if(ability_flags & AB_PHASE_SHIFTED)
 		return FALSE	//Nope!
 

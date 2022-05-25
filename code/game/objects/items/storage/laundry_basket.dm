@@ -57,7 +57,7 @@
 	else
 		icon_state = "laundry-empty"
 
-/obj/item/storage/laundry_basket/MouseDrop(obj/over_object as obj)
+/obj/item/storage/laundry_basket/OnMouseDropLegacy(obj/over_object as obj)
 	if(over_object == usr)
 		return
 	else

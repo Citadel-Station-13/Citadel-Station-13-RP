@@ -1,4 +1,4 @@
-/mob/living/carbon/alien/diona/MouseDrop(var/atom/over_object)
+/mob/living/carbon/alien/diona/OnMouseDropLegacy(var/atom/over_object)
 	var/mob/living/carbon/human/H = over_object
 	if(!istype(H) || !Adjacent(H))
 		return ..()
