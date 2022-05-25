@@ -26,12 +26,12 @@
 //////////////////////////////
 
 // common helper procs for all power machines
-/obj/machinery/power/drain_energy(datum/acter, amount, flags)
+/obj/machinery/power/drain_energy(datum/actor, amount, flags)
 	if(!powernet)
 		return 0
 	return powernet.drain_energy_handler(acter, amount, flags)
 
-/obj/machinery/power/can_drain_energy(datum/acter, amount)
+/obj/machinery/power/can_drain_energy(datum/actor, amount)
 	return TRUE
 
 /**

@@ -222,7 +222,7 @@
 		lawsync()
 		photosync()
 
-/mob/living/silicon/robot/drain_energy(datum/acter, amount, flags)
+/mob/living/silicon/robot/drain_energy(datum/actor, amount, flags)
 	if(!cell)
 		return 0
 
@@ -231,7 +231,7 @@
 		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
 	return cell.drain_energy(acter, amount, flags)
 
-/mob/living/silicon/robot/can_drain_energy(datum/acter, flags)
+/mob/living/silicon/robot/can_drain_energy(datum/actor, flags)
 	return TRUE
 
 // setup the PDA and its name

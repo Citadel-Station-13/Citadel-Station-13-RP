@@ -58,12 +58,12 @@ GLOBAL_LIST_EMPTY(smeses)
 	var/should_be_mapped = 0 		// If this is set to 0 it will send out warning on New()
 	var/grid_check = FALSE 			// If true, suspends all I/O.
 
-/obj/machinery/power/smes/drain_energy(datum/acter, amount, flags)
+/obj/machinery/power/smes/drain_energy(datum/actor, amount, flags)
 	var/wanted = min(charge, KJ_TO_KWM(amount))
 	charge -= wanted
 	return KWM_TO_KJ(wanted)
 
-/obj/machinery/power/smes/can_drain_energy(datum/acter, amount)
+/obj/machinery/power/smes/can_drain_energy(datum/actor, amount)
 	return TRUE
 
 /obj/machinery/power/smes/Initialize(mapload, newdir)

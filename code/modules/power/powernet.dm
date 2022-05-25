@@ -143,7 +143,7 @@
 		else
 			return 0
 
-/datum/powernet/proc/drain_energy_handler(datum/acter, amount, flags)
+/datum/powernet/proc/drain_energy_handler(datum/actor, amount, flags)
 	// amount is in kj so no conversion needed
 	. = draw_power(amount)
 	if(flags & ENERGY_DRAIN_SURGE)

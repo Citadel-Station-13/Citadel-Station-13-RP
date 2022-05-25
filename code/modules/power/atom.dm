@@ -10,7 +10,7 @@
  *
  * @return Amount drained
  */
-/atom/proc/drain_energy(datum/acter, amount, flags)
+/atom/proc/drain_energy(datum/actor, amount, flags)
 	return 0
 
 /**
@@ -22,7 +22,7 @@
  *
  * @return TRUE/FALSE
  */
-/atom/proc/can_drain_energy(datum/acter, flags)
+/atom/proc/can_drain_energy(datum/actor, flags)
 	return FALSE
 
 // below may be bad ideas, idk yet. COMSIG_USE_CELL_UNITS? COMSIG_GENERIC_USE_POWER? COMSIG_GENERIC_USE_ENERGY?

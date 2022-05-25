@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	if(terminal)
 		terminal.connect_to_network()
 
-/obj/machinery/power/apc/drain_energy(datum/acter, amount, flags)
+/obj/machinery/power/apc/drain_energy(datum/actor, amount, flags)
 	charging = FALSE
 	// makes sure fully draining apc cell won't break cell charging
 

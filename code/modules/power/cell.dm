@@ -54,12 +54,12 @@
 	else
 		return PROCESS_KILL
 
-/obj/item/cell/drain_energy(datum/acter, amount, flags)
+/obj/item/cell/drain_energy(datum/actor, amount, flags)
 	if(charge <= 0)
 		return 0
 	return use(DYNAMIC_KJ_TO_CELL_UNITS(amount)) * GLOB.cellrate
 
-/obj/item/cell/can_drain_energy(datum/acter, flags)
+/obj/item/cell/can_drain_energy(datum/actor, flags)
 	return TRUE
 
 #define OVERLAY_FULL	2
