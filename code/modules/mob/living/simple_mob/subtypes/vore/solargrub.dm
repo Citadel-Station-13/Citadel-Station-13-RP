@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 					var/obj/machinery/power/apc/A = T.master
 					if(A.operating && A.cell)
 						// they're now a threat
-						// but also fuck off with your *pawstomp* comments ~silicons
+						// but also fuck off with your *pawstamp* comments ~silicons
 						A.cell.use(DYNAMIC_KJ_TO_CELL_UNITS(4))
 		else if(!attached && anchored)
 			anchored = 0
