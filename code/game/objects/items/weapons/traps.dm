@@ -52,19 +52,20 @@
 			)
 
 		if (do_after(user, 60))
+			if(!user.drop_item_to_ground(src))
+				to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+				return
 			user.visible_message(
 				"<span class='danger'>[user] has deployed \the [src].</span>",
 				"<span class='danger'>You have deployed \the [src]!</span>",
 				"You hear a latch click loudly."
 				)
 			playsound(src.loc, 'sound/machines/click.ogg',70, 1)
-
-			user.drop_from_inventory(src)
 			activate()
 
 /obj/item/beartrap/proc/activate()
-	deployed = 1
-	anchored = 1
+	deployed = TRUE
+	anchored = TRUE
 	update_icon()
 
 /obj/item/beartrap/attack_hand(mob/user as mob)

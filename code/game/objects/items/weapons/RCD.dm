@@ -88,9 +88,8 @@
 		cartridge.remaining -= can_store
 		if(!cartridge.remaining)
 			to_chat(user, SPAN_WARNING( "\The [cartridge] dissolves as it empties of compressed matter."))
-			user.drop_from_inventory(W)
 			qdel(W)
-		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+		playsound(src, 'sound/machines/click.ogg', 50, 1)
 		to_chat(user, SPAN_NOTICE("The RCD now holds [stored_matter]/[max_stored_matter] matter-units."))
 		update_icon()
 		return TRUE

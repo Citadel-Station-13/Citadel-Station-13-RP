@@ -31,7 +31,7 @@
 
     var/mob/M = src.loc //And finally update the icon
     M.update_inv_w_uniform()
-    update_clothing_icon()
+    update_worn_icon()
 
 
 /obj/item/clothing/under/event_reward/foxmiko/verb/liftskirt() //Verb for parting skirt - lewd. User reporting, flips state, and updates icon
@@ -53,7 +53,7 @@
 
     var/mob/M = src.loc //And finally update the icon
     M.update_inv_w_uniform()
-    update_clothing_icon()
+    update_worn_icon()
 
 
 /obj/item/clothing/under/event_reward/foxmiko/proc/switchsprite() //Handles the ultimate state of the icon as well as what parts of body the attire covers
@@ -92,7 +92,7 @@
 
 	var/mob/M = src.loc //And updates the icon
 	M.update_inv_w_uniform()
-	update_clothing_icon()
+	update_worn_icon()
 
 
 /obj/item/clothing/under/event_reward/foxmiko/verb/hidetie() //Verb for concealing assessory icons on mob spirt - this is a hack of the original code to remove accessories

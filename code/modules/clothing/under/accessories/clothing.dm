@@ -72,7 +72,7 @@
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/clothing/ties.dmi'
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/accessory/poncho/green
 	name = "green poncho"
@@ -150,7 +150,7 @@
 		src.item_state = initial(item_state)
 		flags_inv = HIDEHOLSTER
 		to_chat(user, "You pull the cloak over your shoulder.")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/accessory/poncho/rough_cloak/tan
 	icon_state = "roughcloak_tan"
@@ -397,7 +397,7 @@
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/clothing/ties.dmi'
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/accessory/sweater/pink
 	name = "pink sweater"

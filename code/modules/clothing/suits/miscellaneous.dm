@@ -911,7 +911,7 @@ obj/item/clothing/suit/kamishimo
 		icon_state += "t"
 	if(buttoned)
 		icon_state += "b"
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/suit/storage/flannel/red
 	desc = "A comfy, red flannel shirt.  Unleash your inner hipster."

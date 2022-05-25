@@ -282,7 +282,7 @@
 		icon_state = "[icon_state]_1"
 	else
 		icon_state = initial(icon_state)
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/glasses/hud/engi/eyepatch
 	name = "meson eyeHUD"

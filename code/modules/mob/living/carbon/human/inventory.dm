@@ -314,15 +314,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 			W.equipped(src, slot)
 			worn_clothing += wear_mask
 			update_inv_wear_mask()
-		if(slot_l_hand)
-			src.l_hand = W
-			W.equipped(src, slot)
-			update_inv_l_hand()
-		if(slot_r_hand)
-			src.r_hand = W
-			W.equipped(src, slot)
-			update_inv_r_hand()
 		#warn cancer
+		#warn offear already removed, make SURE to put in behavior in equip/slot checks!
 		if(SLOT_ID_LEFT_EAR)
 			src.l_ear = W
 			if(l_ear.slot_flags & SLOT_TWOEARS)

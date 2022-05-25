@@ -373,7 +373,7 @@
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You tug the gaiter down around your neck.")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/accessory/gaiter/tan
 	name = "neck gaiter (tan)"
@@ -564,7 +564,7 @@
 	if(istype(H))
 		if(H.species.name == SPECIES_TESHARI)
 			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/accessory/collar/on_attached(var/obj/item/clothing/S, var/mob/user)
 	if(!istype(S))

@@ -72,7 +72,7 @@
 			armor = initial(armor)
 			icon_state = initial(icon_state)
 			to_chat(usr, "You pull the mask up to cover your face.")
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/mask/gas/half/verb/toggle()
 	set category = "Object"
@@ -348,7 +348,7 @@
 		if(2)
 			icon_state = "iacc_b"
 			design = 0
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/mask/gas/orchid/verb/toggle_design()
 

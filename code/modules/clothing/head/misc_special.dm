@@ -60,7 +60,7 @@
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
 			to_chat(usr, "You push the [src] up out of your face.")
-		update_clothing_icon()	//so our mob-overlays
+		update_worn_icon()	//so our mob-overlays
 		if (ismob(src.loc)) //should allow masks to update when it is opened/closed
 			var/mob/M = src.loc
 			M.update_inv_wear_mask()

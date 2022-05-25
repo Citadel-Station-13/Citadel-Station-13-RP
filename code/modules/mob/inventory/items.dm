@@ -85,3 +85,41 @@
  */
 /obj/item/proc/get_equipment_speed_mod()
 	return slowdown
+
+/**
+ * update our worn icon if we can
+ */
+/obj/item/proc/update_worn_icon()
+	if(!current_equipped_slot)
+		return	// acceptable
+	ASSERT(ismob(loc))	 // not acceptable
+	var/mob/M = loc
+	switch(current_equipped_slot)
+		if(SLOT_ID_BACK)
+			M.update_inv_back()
+		if(SLOT_ID_BELT)
+			M.update_inv_belt()
+		if(SLOT_ID_GLASSES)
+			M.update_inv_glasses()
+		if(SLOT_ID_GLOVES)
+			M.update_inv_gloves()
+		if(SLOT_ID_HANDCUFFED)
+			M.update_inv_handcuffed()
+		if(SLOT_ID_HANDS)
+			M.update_inv_hands()
+		if(SLOT_ID_HEAD)
+			M.update_inv_head()
+		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)
+			M.update_inv_ears()
+		if(SLOT_ID_MASK)
+			M.update_inv_wear_mask()
+		if(SLOT_ID_SHOES)
+			M.update_inv_shoes()
+		if(SLOT_ID_SUIT)
+			M.update_inv_wear_suit()
+		if(SLOT_ID_SUIT_STORAGE)
+			M.update_inv_s_store()
+		if(SLOT_ID_UNIFORM)
+			M.update_inv_w_uniform()
+		if(SLOT_ID_WORN_ID)
+			M.update_inv_wear_id()

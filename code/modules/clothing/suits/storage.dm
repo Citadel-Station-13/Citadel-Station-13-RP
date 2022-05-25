@@ -56,7 +56,7 @@
 	else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
 		to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
 		return
-	update_clothing_icon()	//so our overlays update
+	update_worn_icon()	//so our overlays update
 
 
 /obj/item/clothing/suit/storage/hooded/toggle
@@ -82,7 +82,7 @@
 		else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
 			to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
 			return
-		update_clothing_icon()	//so our overlays update
+		update_worn_icon()	//so our overlays update
 
 
 //New Vest 4 pocket storage and badge toggles, until suit accessories are a thing.
@@ -111,4 +111,4 @@
 		else
 			to_chat(usr, "\The [src] does not have a badge.")
 			return
-		update_clothing_icon()
+		update_worn_icon()

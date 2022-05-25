@@ -198,4 +198,4 @@
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You lower the visor on the pilot helmet.")
-	update_clothing_icon() //so our mob-overlays update
+	update_worn_icon() //so our mob-overlays update

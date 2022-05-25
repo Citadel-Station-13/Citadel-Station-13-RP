@@ -906,7 +906,7 @@ END OF CITADEL CHANGES */
 			item_state = "vinjjdanaup_mob"
 
 			to_chat(usr, "You push the goggles up out of your face.")
-		update_clothing_icon()	//so our mob-overlays
+		update_worn_icon()	//so our mob-overlays
 		if (ismob(loc)) //should allow masks to update when it is opened/closed
 			var/mob/M = loc
 			M.update_inv_wear_mask()
@@ -1083,7 +1083,7 @@ END OF CITADEL CHANGES */
 			icon_override = 'icons/mob/clothing/species/vox/suit.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/suit/storage/trek/ds9/admiral // Only for adminuz
 	name = "Admiral Overcoat"
@@ -1106,7 +1106,7 @@ END OF CITADEL CHANGES */
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/under/rank/trek/engsec/ds9
 	desc = "The uniform worn by operations officers of the 2380s."
@@ -1121,7 +1121,7 @@ END OF CITADEL CHANGES */
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/under/rank/trek/medsci/ds9
 	desc = "The uniform undershit worn by medsci officers of the 2380s."
@@ -1136,7 +1136,7 @@ END OF CITADEL CHANGES */
 			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	update_clothing_icon()
+	update_worn_icon()
 
 //For general use maybe
 /obj/item/clothing/under/batter //I guess we're going OFF limits.

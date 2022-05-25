@@ -29,10 +29,6 @@
 	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 	var/recent_struggle = 0
 
-//Updates the icons of the mob wearing the clothing item, if any.
-/obj/item/clothing/proc/update_clothing_icon()
-	return
-
 // Aurora forensics port.
 /obj/item/clothing/clean_blood()
 	..()
@@ -176,60 +172,6 @@
 		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi')
 
-/obj/item/clothing/ears/attack_hand(mob/user as mob)
-	#warn cancer
-	if (!user) return
-
-	if (src.loc != user || !istype(user,/mob/living/carbon/human))
-		..()
-		return
-
-	var/mob/living/carbon/human/H = user
-	if(H.l_ear != src && H.r_ear != src)
-		..()
-		return
-
-	if(!canremove)
-		return
-
-	var/obj/item/clothing/ears/O
-	if(slot_flags & SLOT_TWOEARS )
-		O = (H.l_ear == src ? H.r_ear : H.l_ear)
-		user.u_equip(O)
-		if(!istype(src,/obj/item/clothing/ears/offear))
-			qdel(O)
-			O = src
-	else
-		O = src
-
-	user.u_equip(src)
-
-	if (O)
-		user.put_in_hands(O)
-		O.add_fingerprint(user)
-
-	if(istype(src,/obj/item/clothing/ears/offear))
-		qdel(src)
-
-/obj/item/clothing/ears/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_ears()
-
-/obj/item/clothing/ears/offear
-	name = "Other ear"
-	w_class = ITEMSIZE_HUGE
-	icon = 'icons/mob/screen1_Midnight.dmi'
-	icon_state = "block"
-	slot_flags = SLOT_EARS | SLOT_TWOEARS
-
-	New(var/obj/O)
-		name = O.name
-		desc = O.desc
-		icon = O.icon
-		icon_state = O.icon_state
-		setDir(O.dir)
-
 ////////////////////////////////////////////////////////////////////////////////////////
 //Gloves
 /obj/item/clothing/gloves
@@ -263,11 +205,6 @@
 		)
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
-
-/obj/item/clothing/gloves/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_gloves()
 
 /obj/item/clothing/gloves/emp_act(severity)
 	if(cell)
@@ -483,11 +420,6 @@
 
 	user.update_inv_head() //Will redraw the helmet with the light on the mob
 
-/obj/item/clothing/head/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_head()
-
 ///////////////////////////////////////////////////////////////////////
 //Mask
 /obj/item/clothing/mask
@@ -522,11 +454,6 @@
 	var/voicechange = 0
 	var/list/say_messages
 	var/list/say_verbs
-
-/obj/item/clothing/mask/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_wear_mask()
 
 /obj/item/clothing/mask/proc/filter_air(datum/gas_mixture/air)
 	return
@@ -694,11 +621,6 @@
 			to_chat(M, emote) //VOREStation edit end
 	return
 
-/obj/item/clothing/shoes/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_shoes()
-
 ///////////////////////////////////////////////////////////////////////
 //Suit
 /obj/item/clothing/suit
@@ -762,11 +684,6 @@
 			standing.add_overlay(I)
 	else
 		return ..()
-
-/obj/item/clothing/suit/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_wear_suit()
 
 ///////////////////////////////////////////////////////////////////////
 //Under clothing
@@ -887,7 +804,7 @@
 			rolled_down = 0
 	else
 		rolled_down = -1
-	if(H) update_clothing_icon()
+	if(H) update_worn_icon()
 
 /obj/item/clothing/under/proc/update_rollsleeves_status()
 	var/mob/living/carbon/human/H
@@ -912,13 +829,7 @@
 			rolled_sleeves = 0
 	else
 		rolled_sleeves = -1
-	if(H) update_clothing_icon()
-
-/obj/item/clothing/under/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_w_uniform()
-
+	if(H) update_worn_icon()
 
 /obj/item/clothing/under/examine(mob/user)
 	. = ..()
@@ -1001,7 +912,7 @@
 			icon_override = initial(icon_override)
 		item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]"
 		to_chat(usr, "<span class='notice'>You unroll your [src].</span>")
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/under/verb/rollsleeves()
 	set name = "Roll Up Sleeves"
@@ -1033,7 +944,7 @@
 			icon_override = initial(icon_override)
 		item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]"
 		to_chat(usr, "<span class='notice'>You roll down your [src]'s sleeves.</span>")
-	update_clothing_icon()
+	update_worn_icon()
 
 
 /obj/item/clothing/under/rank/Initialize(mapload)

@@ -35,11 +35,6 @@ BLIND     // can't see anything
 		SPECIES_VOX = 'icons/mob/clothing/species/vox/eyes.dmi'
 		)
 
-/obj/item/clothing/glasses/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_glasses()
-
 /obj/item/clothing/glasses/attack_self(mob/user)
 	if(toggleable)
 		if(active)
@@ -283,7 +278,7 @@ BLIND     // can't see anything
 		icon_state = "[icon_state]_1"
 	else
 		icon_state = initial(icon_state)
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/glasses/eyepatch/verb/switcheye()
 	set name = "Switch Eyepatch"
@@ -297,7 +292,7 @@ BLIND     // can't see anything
 		icon_state = "[icon_state]_1"
 	else
 		icon_state = initial(icon_state)
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
@@ -488,7 +483,7 @@ BLIND     // can't see anything
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
 			to_chat(usr, "You push \the [src] up out of your face.")
-		update_clothing_icon()
+		update_worn_icon()
 		usr.update_action_buttons()
 
 /obj/item/clothing/glasses/welding/prescription
@@ -704,7 +699,7 @@ BLIND     // can't see anything
 			body_parts_covered &= ~EYES
 			icon_state = "[initial(icon_state)]up"
 			to_chat(usr, "You push \the [src] up from in front of your eyes.")
-		update_clothing_icon()
+		update_worn_icon()
 		usr.update_action_buttons()
 
 /obj/item/clothing/glasses/jamjar

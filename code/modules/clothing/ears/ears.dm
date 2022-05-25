@@ -36,7 +36,7 @@
 		headphones_on = 1
 		to_chat(usr, "<span class='notice'>You turn the music on.</span>")
 
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/ears/earmuffs/headphones/AltClick(mob/user)
 	if(!Adjacent(user))
