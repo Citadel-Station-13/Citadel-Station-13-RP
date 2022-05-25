@@ -109,7 +109,8 @@
 	desc = "Produces electricity from chemicals."
 	icon_state = "chemical_cell"
 	extended_desc = "This is effectively an internal beaker. It will consume and produce power from phoron, slime jelly, welding fuel, carbon,\
-	 ethanol, nutriments and blood, in order of decreasing efficiency. It will consume fuel only if the battery can take more energy."
+	 ethanol, and nutriments, in order of decreasing efficiency. It will consume fuel only if the battery can take more energy. Blood is also able to be used as \
+	 a source of organic fuel; blood from sapient creatures is more efficient."
 	flags = OPENCONTAINER
 	complexity = 4
 	inputs = list()
@@ -118,7 +119,7 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
 	var/volume = 60
-	var/list/fuel = list(MAT_PHORON = 50000, "slimejelly" = 25000, "fuel" = 15000, MAT_CARBON = 10000, "ethanol"= 10000, "nutriment" =8000, "blood" = 5000)
+	var/list/fuel = list("phoron" = 50000, "slimejelly" = 25000, "fuel" = 15000, "carbon" = 10000, "ethanol"= 10000, "nutriment" =8000, "blood" = 5000)
 
 /obj/item/integrated_circuit/passive/power/chemical_cell/Initialize(mapload)
 	. = ..()
@@ -137,9 +138,15 @@
 	if(assembly)
 		for(var/I in fuel)
 			if((assembly.battery.maxcharge-assembly.battery.charge) / CELLRATE > fuel[I])
+				var/power = fuel[I]
+				if(I == "blood")
+					var/list/data = reagents.get_data(I)
+					if(data && istype(data["donor"], /mob/living/carbon/human))
+						var/mob/living/carbon/human/H = data["donor"]
+						if(H.mind && H.mind.key)
+							power *= 10
 				if(reagents.remove_reagent(I, 1))
 					assembly.give_power(fuel[I])
-
 
 // For really fat machines.
 /obj/item/integrated_circuit/passive/power/relay/large
