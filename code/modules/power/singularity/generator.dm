@@ -43,7 +43,7 @@
 	if(istype(W, /obj/item/smes_coil/super_io) && panel_open)
 		visible_message("<span class='notice'>\The [user] begins to modify \the [src] with \the [W].</span>")
 		if(do_after(user, 10 SECONDS))
-			if(!user.attempt_insert_item_for_installation(W, src))
+			if(!user.attempt_consume_item_for_construction(W))
 				return
 			visible_message("<span class='notice'>\The [user] installs \the [W] onto \the [src].</span>")
 			var/turf/T = get_turf(src)

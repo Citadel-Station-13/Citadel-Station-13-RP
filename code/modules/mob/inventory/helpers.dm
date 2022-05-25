@@ -1,7 +1,7 @@
 /**
  * dels something or says "x is stuck to your hand"
  *
- * WARNING: DELETES THINGS IMMEDIATELY. Don't use if you need to access data.
+ * WARNING: DELS THINGS AFTER CURRENT PROC. DO NOT USE IF YOU NEED IMMEDIATE QDEL!
  */
 /mob/proc/attempt_consume_item_for_construction(obj/item/I)
 	. = temporarily_remove_from_inventory(I)
@@ -9,7 +9,7 @@
 		to_chat(src, SPAN_WARNING("[I] is stuck to your hand!"))
 		return FALSE
 	. = TRUE
-	qdel(I)
+	QDEL_IN(I, 0)
 
 /**
  * standard helper for put something into something else
