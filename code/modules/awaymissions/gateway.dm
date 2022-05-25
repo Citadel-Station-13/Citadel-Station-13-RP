@@ -196,8 +196,8 @@
 /obj/machinery/gateway/centeraway/proc/toggleon(mob/user as mob)
 	if(!ready)			return
 	if(linked.len != 8)	return
-	if(!stationgate || !calibrated) // Vorestation edit. Not like Polaris ever touches this anyway.
-		to_chat(user, "<span class='notice'>Error: No destination found. Please calibrate gateway.</span>")
+	if(!stationgate || !calibrated)
+		to_chat(user, SPAN_NOTICE("Error: No destination found. Please calibrate gateway."))
 		return
 
 	for(var/obj/machinery/gateway/G in linked)

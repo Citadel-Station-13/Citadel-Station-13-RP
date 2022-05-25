@@ -743,7 +743,7 @@
 				to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
 				return 0
 
-// HoS armor improved by Vorestation to be slightly better than normal security stuff.
+// HoS armor improved to be slightly better than normal security stuff.
 /obj/item/clothing/suit/storage/vest/hoscoat
 	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
 

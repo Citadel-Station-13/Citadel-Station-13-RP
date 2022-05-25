@@ -77,11 +77,9 @@
 		if(default_deconstruction_crowbar(user, O))
 			return
 
-	//vorestation edit start - for solargrubs
-	if (istype(O, /obj/item/multitool))
+	// For solargrubs
+	if(istype(O, /obj/item/multitool))
 		return ..()
-	//vorestation edit end
-
 
 	if (istype(O,/obj/item/reagent_containers/glass) || \
 		istype(O,/obj/item/reagent_containers/food/drinks/glass2) || \

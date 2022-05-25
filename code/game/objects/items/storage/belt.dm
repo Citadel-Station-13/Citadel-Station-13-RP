@@ -74,7 +74,7 @@
 		/obj/item/duct_tape_roll,
 		/obj/item/switchtool,
 		/obj/item/integrated_electronics/wirer,
-		/obj/item/integrated_electronics/debugger, //Vorestation edit adding debugger to toolbelt can hold list
+		/obj/item/integrated_electronics/debugger,
 		)
 
 /obj/item/storage/belt/utility/full

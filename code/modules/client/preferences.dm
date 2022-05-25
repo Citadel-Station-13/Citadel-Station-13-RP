@@ -57,9 +57,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/g_facial = 0					//Face hair color
 	var/b_facial = 0					//Face hair color
 	var/s_tone = 0						//Skin tone
-	var/r_skin = 238					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
-	var/g_skin = 206					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
-	var/b_skin = 179					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
+	var/r_skin = 238					//Skin color
+	var/g_skin = 206					//Skin color
+	var/b_skin = 179					//Skin color
 	var/s_base = ""						//For Adherent
 	var/r_eyes = 0						//Eye color
 	var/g_eyes = 0						//Eye color

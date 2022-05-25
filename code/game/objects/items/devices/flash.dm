@@ -181,7 +181,7 @@
 		if(C.stat != DEAD)
 			var/safety = C.eyecheck()
 			if(safety <= 0)
-				var/flash_strength = 10 //Vorestation edit, making flashes behave the same as flash rounds
+				var/flash_strength = 10
 				if(ishuman(C))
 					var/mob/living/carbon/human/H = C
 					flash_strength *= H.species.flash_mod

@@ -221,13 +221,13 @@ var/list/ai_verbs_default = list(
 
 	to_chat(src, radio_text)
 
-	// Vorestation Edit: Meta Info for AI's. Mostly used for Holograms
-	if (client)
+	// Meta Info for AI's. Mostly used for Holograms.
+	if(client)
 		var/meta_info = client.prefs.metadata
-		if (meta_info)
+		if(meta_info)
 			ooc_notes = meta_info
 
-	if (malf && !(mind in malf.current_antagonists))
+	if(malf && !(mind in malf.current_antagonists))
 		show_laws()
 		to_chat(src, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
 

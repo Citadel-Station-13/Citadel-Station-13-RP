@@ -188,8 +188,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/syndicate
 	default_cartridge = /obj/item/cartridge/syndicate
 	icon_state = "pda-syn"
-//	name = "Military PDA" // Vorestation Edit
-//	owner = "John Doe"
 	hidden = 1
 
 /obj/item/pda/chaplain

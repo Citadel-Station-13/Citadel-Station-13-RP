@@ -221,18 +221,18 @@
 	var/allow_occupant_types = list(/mob/living/carbon/human)
 	var/disallow_occupant_types = list()
 
-	var/mob/occupant = null       // Person waiting to be despawned.
-	var/time_till_despawn = 599  // Down to 1 minute to reflect Vorestation respawn times.
-	var/time_entered = 0          // Used to keep track of the safe period.
-	var/obj/item/radio/intercom/announce //
+	var/mob/occupant = null // Person waiting to be despawned.
+	var/time_till_despawn = 599 // Down to 1 minute to reflect our respawn times.
+	var/time_entered = 0 // Used to keep track of the safe period.
+	var/obj/item/radio/intercom/announce
 
 	var/obj/machinery/computer/cryopod/control_computer
 	var/last_no_computer_message = 0
-	var/applies_stasis = 0	//VOREStation Edit: allow people to change their mind
+	var/applies_stasis = 0 // Allow people to change their mind
 
 /obj/machinery/crypod/Initialize(mapload)
 	. = ..()
-	if(type == /obj/machinery/cryopod)	// sue me
+	if(type == /obj/machinery/cryopod) // sue me
 		AddComponent(/datum/component/slaved_atom_to_loc, /atom/movable/landmark/spawnpoint/latejoin/station/cryogenics, TRUE)
 
 /obj/machinery/cryopod/robot

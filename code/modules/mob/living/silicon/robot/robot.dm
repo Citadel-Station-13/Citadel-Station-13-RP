@@ -364,7 +364,7 @@
 			flavor_text = module_flavour
 		else
 			flavor_text = client.prefs.flavour_texts_robot["Default"]
-		// Vorestation Edit: and meta info
+		// Meta info
 		var/meta_info = client.prefs.metadata
 		if (meta_info)
 			ooc_notes = meta_info
