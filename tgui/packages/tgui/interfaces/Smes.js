@@ -88,7 +88,7 @@ export const Smes = (props, context) => {
                     value={inputLevel}
                     fillValue={inputAvailable}
                     minValue={0}
-                    maxValue={inputLevelMaxL}
+                    maxValue={inputLevelMax}
                     step={5}
                     stepPixelSize={4}
                     format={value => formatPower(value * 1000, 1)}
