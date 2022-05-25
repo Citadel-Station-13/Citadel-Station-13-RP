@@ -4,9 +4,6 @@ import { formatPower } from '../format';
 import { Window } from '../layouts';
 import { round } from 'common/math';
 
-// Common power multiplier
-const POWER_MUL = 1e3;
-
 export const Smes = (props, context) => {
   const { act, data } = useBackend(context);
   const {
@@ -88,15 +85,15 @@ export const Smes = (props, context) => {
                 </Flex.Item>
                 <Flex.Item grow={1} mx={1}>
                   <Slider
-                    value={inputLevel / POWER_MUL}
-                    fillValue={inputAvailable / POWER_MUL}
+                    value={inputLevel}
+                    fillValue={inputAvailable}
                     minValue={0}
-                    maxValue={inputLevelMax / POWER_MUL}
+                    maxValue={inputLevelMaxL}
                     step={5}
                     stepPixelSize={4}
-                    format={value => formatPower(value * POWER_MUL, 1)}
+                    format={value => formatPower(value * 1000, 1)}
                     onDrag={(e, value) => act('input', {
-                      target: value * POWER_MUL,
+                      target: value,
                     })} />
                 </Flex.Item>
                 <Flex.Item>
@@ -116,7 +113,7 @@ export const Smes = (props, context) => {
               </Flex>
             </LabeledList.Item>
             <LabeledList.Item label="Available">
-              {formatPower(inputAvailable)}
+              {formatPower(inputAvailable * 1000)}
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -158,14 +155,14 @@ export const Smes = (props, context) => {
                 </Flex.Item>
                 <Flex.Item grow={1} mx={1}>
                   <Slider
-                    value={outputLevel / POWER_MUL}
+                    value={outputLevel}
                     minValue={0}
-                    maxValue={outputLevelMax / POWER_MUL}
+                    maxValue={outputLevelMax}
                     step={5}
                     stepPixelSize={4}
-                    format={value => formatPower(value * POWER_MUL, 1)}
+                    format={value => formatPower(value * 1000, 1)}
                     onDrag={(e, value) => act('output', {
-                      target: value * POWER_MUL,
+                      target: value,
                     })} />
                 </Flex.Item>
                 <Flex.Item>

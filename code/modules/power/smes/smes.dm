@@ -9,8 +9,6 @@
  * TODO: generalize to /obj/machinery/power/storage, and split into storage/smes and storage/batteryrack, etc
  */
 
-#warn convert everything to interface with grid power right
-
 GLOBAL_LIST_EMPTY(smeses)
 
 /obj/machinery/power/smes
@@ -312,7 +310,6 @@ GLOBAL_LIST_EMPTY(smeses)
 /obj/machinery/power/smes/ui_data()
 	#warn verify tgui
 	var/list/data = list(
-		"capacity" = capacity,
 		"capacityPercent" = round(100.0*charge/capacity, 0.1),
 		"charge" = charge,
 		"inputAttempt" = input_attempt,
