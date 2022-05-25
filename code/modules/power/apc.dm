@@ -72,8 +72,10 @@ GLOBAL_LIST_EMPTY(apcs)
 /**
  * APCs
  *
- * Power scale: Units.
+ * Power scale: Watts
  * Power is up-converted to kilowatts for grid.
+ *
+ * TODO: rewrite apcs entirely, the code barely works and it's all awful
  */
 /obj/machinery/power/apc
 	name = "area power controller"
@@ -139,6 +141,9 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/nightshift_setting = NIGHTSHIFT_AUTO
 	var/last_nightshift_switch = 0
 
+	/// tracks how behind we arre in charging TODO: literally rewrite apcs entirely to use a proper accumulator-cell system with an internal buffer, ffs
+	var/lazy_draw_accumulator = 0
+
 /obj/machinery/power/apc/updateDialog()
 	if (machine_stat & (BROKEN|MAINT))
 		return
@@ -167,7 +172,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	//isn't connected (wire cut), in either case we draw what we didn't get
 	//from the cell instead.
 	if((drained < amount) && cell)
-		drained += cell.drain_energy(acter, amount, flags)
+		drained += cell.drain_energy(actor, amount, flags)
 
 	return drained
 
@@ -1081,23 +1086,29 @@ GLOBAL_LIST_EMPTY(apcs)
 		// draw power from cell as before to power the area
 		var/cellused = min(cell.charge, DYNAMIC_W_TO_CELL_UNITS(lastused_total, 1))	// clamp deduction to a max, amount left in cell
 		cell.use(cellused)
-		if((excess * 1000) > lastused_total)		// if power excess recharge the cell
-										// by the same amount just used
-			var/draw = draw_power(DYNAMIC_CELL_UNITS_TO_KW(cellused, 1))
+		// TODO: the rest of this code is war crime territory
+		// TODO: rewrite APCs. entirely.
+		// if we're empty just kill it all
+		if(cell.percent() < 1)
+			charging = 0
+			chargecount = 0
+			// This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
+			equipment = autoset(equipment, 0)
+			lighting = autoset(lighting, 0)
+			environ = autoset(environ, 0)
+			autoflag = 0
+
+		// we're lazy and i'm not writing a real accumulator, and we need to recharge in units of 1 due to floating point bullshit
+		// hence..
+		// we recharge at most lastused kw rounded down
+		var/kw = round(lastused_total * 0.001)
+		lazy_draw_accumulator += lastused_total - kw * 1000
+		if(lazy_draw_accumulator > 1000)
+			kw += round(lazy_draw_accumulator * 0.001)
+			lazy_draw_accumulator = lazy_draw_accumulator % 1000
+		if(excess > kw)
+			var/draw = draw_power(kw)
 			cell.give(DYNAMIC_KW_TO_CELL_UNITS(draw, 1))
-		else		// no excess, and not enough per-apc
-			if( (DYNAMIC_CELL_UNITS_TO_W(cell.charge, 1) + (excess * 1000)) >= lastused_total)		// can we draw enough from cell+grid to cover last usage?
-				var/draw = draw_power(excess)
-				cell.charge = min(cell.maxcharge, cell.charge + DYNAMIC_KW_TO_CELL_UNITS(draw, 1))	//recharge with what we can
-				charging = 0
-			else	// not enough power available to run the last tick!
-				charging = 0
-				chargecount = 0
-				// This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
-				equipment = autoset(equipment, 0)
-				lighting = autoset(lighting, 0)
-				environ = autoset(environ, 0)
-				autoflag = 0
 
 		// Set channels depending on how much charge we have left
 		update_channels()
@@ -1130,7 +1141,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				else
 					chargecount = 0
 
-				if(chargecount >= 10)
+				if(chargecount >= 5)
 
 					chargecount = 0
 					charging = 1

@@ -29,7 +29,7 @@
 /obj/machinery/power/drain_energy(datum/actor, amount, flags)
 	if(!powernet)
 		return 0
-	return powernet.drain_energy_handler(acter, amount, flags)
+	return powernet.drain_energy_handler(actor, amount, flags)
 
 /obj/machinery/power/can_drain_energy(datum/actor, amount)
 	return TRUE

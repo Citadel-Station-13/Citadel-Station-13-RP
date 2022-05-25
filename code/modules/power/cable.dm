@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/structure/cable/drain_energy(datum/actor, amount, flags)
 	if(!powernet)
 		return 0
-	return powernet.drain_energy_handler(acter, amount, flags)
+	return powernet.drain_energy_handler(actor, amount, flags)
 
 /obj/structure/cable/can_drain_energy(datum/actor, flags)
 	return TRUE

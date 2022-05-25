@@ -217,7 +217,7 @@
 /obj/mecha/drain_energy(datum/actor, amount, flags)
 	if(!cell)
 		return 0
-	return cell.drain_energy(acter, amount, flags)
+	return cell.drain_energy(actor, amount, flags)
 
 /obj/mecha/can_drain_energy(datum/actor, amount)
 	return TRUE

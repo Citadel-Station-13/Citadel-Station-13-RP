@@ -4,7 +4,7 @@
  * *Uses universal units.*
  *
  * @params
- * - acter - thing draining, can be null
+ * - actor - thing draining, can be null
  * - amount - amount to drain in kilojoules
  * - flags
  *
@@ -17,7 +17,7 @@
  * checks if we support generic power draining
  *
  * @params
- * - acter - thing draining, can be null
+ * - actor - thing draining, can be null
  * - flags
  *
  * @return TRUE/FALSE

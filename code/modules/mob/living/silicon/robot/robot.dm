@@ -229,7 +229,7 @@
 	if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_POWER_DRAIN_WARNING))
 		TIMER_COOLDOWN_START(src, COOLDOWN_POWER_DRAIN_WARNING, 2 SECONDS)
 		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
-	return cell.drain_energy(acter, amount, flags)
+	return cell.drain_energy(actor, amount, flags)
 
 /mob/living/silicon/robot/can_drain_energy(datum/actor, flags)
 	return TRUE
