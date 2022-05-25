@@ -34,7 +34,7 @@
 #define IN_STORAGE				(1<<14)
 
 
-//! Flags for the clothing_flags var on /obj/item/clothing
+//! Flags for the clothing_flags var on /obj/item
 /*
 #define LAVAPROTECT				(1<<0)
 /// SUIT and HEAD items which stop pressure damage. To stop you taking all pressure damage you must have both a suit and head item with this flag.
@@ -66,8 +66,10 @@
 #define FLEXIBLEMATERIAL		(1<<11)
 /// Allows special survival food items to be eaten through it
 #define ALLOW_SURVIVALFOOD		(1<<12)
-/// ignores "is this limb here" for equip. semantically ignores "do we have jumpsuit for belt" and other checks too if enabled.
+/// ignores "is this limb here" for equip.
 #define EQUIP_IGNORE_DELIMB		(1<<13)
+/// ignores "do we have a jumpsuit" for belt
+#define EQUIP_IGNORE_BELTLINK	(1<<14)
 
 #warn impl on rigs
 #warn impl in mob_can_equip/has limb for equip

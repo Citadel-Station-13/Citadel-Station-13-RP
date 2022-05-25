@@ -252,14 +252,31 @@
 	else
 		to_chat(src, "<span class='notice'>You need to disable a module first!</span>")
 
-#warn ughghwiejrtiw splice in wrappers for all inv procs
+/mob/living/silicon/robot/get_held_items()
+	. = list()
+	if(module_state_1)
+		. += module_state_1
+	if(module_state_2)
+		. += module_state_2
+	if(module_state_3)
+		. += module_state_3
 
-/mob/living/silicon/robot/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE)
-	I.forceMove(drop_location())
-	return TRUE
+/mob/living/silicon/robot/get_number_of_hands()
+	return 3
 
-/mob/living/silicon/robot/is_holding_item_of_type(typepath)
-	for(var/obj/item/I in list(module_state_1, module_state_2, module_state_3))
-		if(istype(I, typepath))
-			return I
-	return FALSE
+/mob/living/silicon/robot/get_held_index(obj/item/I)
+	if(module_state_1 == I)
+		return 1
+	if(module_state_2 == I)
+		return 2
+	if(module_state_3 == I)
+		return 3
+
+/mob/living/silicon/robot/get_held_item_of_index(index)
+	switch(index)
+		if(1)
+			return module_state_1
+		if(2)
+			return module_state_2
+		if(3)
+			return module_state_3

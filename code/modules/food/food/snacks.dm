@@ -34,7 +34,7 @@
 /obj/item/reagent_containers/food/snacks/proc/On_Consume(mob/M)
 	if(!reagents.total_volume)
 		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
-		qdel(src)
+		M.temporarily_remove_from_inventory(src, TRUE)
 		if(trash)
 			if(ispath(trash,/obj/item))
 				var/obj/item/TrashItem = new trash(M)
@@ -42,6 +42,7 @@
 					TrashItem.forceMove(M.drop_location())
 			else if(istype(trash,/obj/item))
 				M.put_in_hands(trash)
+		qdel(src)
 
 /obj/item/reagent_containers/food/snacks/attack_self(mob/user as mob)
 	return
@@ -4036,9 +4037,7 @@ END CITADEL CHANGE */
 
 		if (!feeder)
 			feeder = eater
-
-		feeder.drop_from_inventory(src)	//so icons update :[ //what the fuck is this????
-
+		feeder.temporarily_remove_from_inventory(src, TRUE)
 		if(trash)
 			if(ispath(trash,/obj/item))
 				var/obj/item/TrashItem = new trash(feeder)
@@ -4046,7 +4045,7 @@ END CITADEL CHANGE */
 			else if(istype(trash,/obj/item))
 				feeder.put_in_hands(trash)
 		qdel(src)
-	return
+
 ////////////////////////////////////////////////////////////////////////////////
 /// FOOD END
 ////////////////////////////////////////////////////////////////////////////////

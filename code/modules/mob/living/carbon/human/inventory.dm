@@ -1,3 +1,41 @@
+/mob/living/_slot_by_item(obj/item/I)
+	if(back == I)
+		return SLOT_ID_BACK
+	if(wear_mask == I)
+		return SLOT_ID_MASK
+	return ..()
+
+/mob/living/_item_by_slot(slot)
+	switch(slot)
+		if(SLOT_ID_MASK)
+			return wear_mask
+		if(SLOT_ID_BACK)
+			return back
+		else
+			return ..()
+
+/mob/living/_set_inv_slot(slot, obj/item/I, update_icons)
+	switch(slot)
+		if(SLOT_ID_BACK)
+			back = I
+			if(update_icons)
+				update_inv_back()
+		if(SLOT_ID_MASK)
+			wear_mask = I
+			if(update_icons)
+				update_inv_wear_mask()
+		else
+			return ..()
+
+/mob/living/_get_all_slots(include_restraints)
+	. = ..()
+	if(back)
+		. += back
+	if(wear_mask)
+		. += wear_mask
+
+#warn everything below this line needs evaluated
+
 /*
 Add fingerprints to items when we put them in our hands.
 This saves us from having to call add_fingerprint() any time something is put in a human's hands programmatically.
@@ -5,6 +43,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 /mob/living/carbon/human
 	var/list/worn_clothing = list()	//Contains all CLOTHING items worn
+
+
 
 /mob/living/carbon/human/verb/quick_equip()
 	set name = "quick-equip"

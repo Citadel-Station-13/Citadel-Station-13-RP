@@ -185,10 +185,20 @@
 	return is_in_inventory(I)		// short circuited to that too
 									// if equipped/unequipped didn't set current_equipped_slot well jokes on you lmfao
 
+/mob/proc/_equip_slot(obj/item/I, slot, update_icons)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return _set_inv_slot(slot, I, update_icons)
+
+/mob/proc/_unequip_slot(slot, update_icons)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return _set_inv_slot(slot, null, update_icons)
+
+/mob/proc/_unequip_held(obj/item/I, update_icons)
+	return
+
 /**
  * THESE PROCS MUST BE OVERRIDDEN FOR NEW SLOTS ON MOBS
- * yes, i managed to shove all behaviors that needed overriding into 5 procs
- * not including _unequip_held since hands should be generic anyways
+ * yes, i managed to shove all behaviors that needed overriding into 4 procs
  * you're
  * welcome.
  *
@@ -197,11 +207,7 @@
 
 #warn impl these
 
-/mob/proc/_equip_slot(obj/item/I, slot, update_icons)
-
-/mob/proc/_unequip_slot(slot, update_icons)
-
-/mob/proc/_unequip_held(obj/item/I, update_icons)
+/mob/proc/_set_inv_slot(slot, obj/item/I, update_icons)
 
 /**
  * ""expensive"" proc that scans for the real slot of an item

@@ -837,9 +837,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	apply_layer(SUIT_LAYER)
 
-/mob/living/carbon/human/update_inv_pockets()
-	stack_trace("Someone called update_inv_pockets even though it's dumb")
-
 /mob/living/carbon/human/update_inv_wear_mask()
 	if(QDESTROYING(src))
 		return

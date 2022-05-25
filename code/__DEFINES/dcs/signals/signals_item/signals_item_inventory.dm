@@ -5,6 +5,7 @@
 /// From base of obj/item/equipped(): (/mob/equipper, slot, accessory)
 #define COMSIG_ITEM_EQUIPPED "item_equip"
 /// From base of obj/item/unequipped(): (/mob/unequipped, slot, accessory)
+#define COMSIG_ITEM_UNEQUIPPED "item_unequip"
 /// Called on [/obj/item] before unequip from base of [mob/proc/doUnEquip]: (force, atom/newloc, no_move, invdrop, silent)
 ////#define COMSIG_ITEM_PRE_UNEQUIP "item_pre_unequip"
 	///? Only the pre unequip can be cancelled.
