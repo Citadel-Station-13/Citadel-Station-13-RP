@@ -457,10 +457,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	//For logging later
 	var/admin = key_name_admin(src)
 	var/player_key = picked_client.key
-	//VOREStation Add - Needed for persistence
+	// Needed for persistence
 	var/picked_ckey = picked_client.ckey
 	var/picked_slot = picked_client.prefs.default_slot
-	//VOREStation Add End
 
 	var/mob/living/carbon/human/new_character
 	var/spawnloc
@@ -507,17 +506,15 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				antag_data.add_antagonist(new_character.mind)
 				antag_data.place_mob(new_character)
 
-	//VOREStation Add - Required for persistence
+	// Required for persistence
 	if(new_character.mind)
 		new_character.mind.loaded_from_ckey = picked_ckey
 		new_character.mind.loaded_from_slot = picked_slot
-	//VOREStation Add End
 
 	//If desired, apply equipment.
 	if(equipment)
 		if(charjob)
 			job_master.EquipRank(new_character, charjob, 1)
-		//equip_custom_items(new_character)	//VOREStation Removal
 
 	//If desired, add records.
 	if(records)

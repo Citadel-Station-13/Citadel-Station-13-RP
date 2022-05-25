@@ -56,10 +56,8 @@ var/global/datum/controller/occupations/job_master
 				return 0
 			if(!job.player_old_enough(player.client))
 				return 0
-			//VOREStation Add
 			if(!is_job_whitelisted(player, rank))
 				return 0
-			//VOREStation Add End
 
 			var/position_limit = job.total_positions
 			if(!latejoin)
@@ -94,11 +92,9 @@ var/global/datum/controller/occupations/job_master
 			if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 				Debug("FOC character not old enough, Player: [player]")
 				continue
-			//VOREStation Code Start
 			if(!is_job_whitelisted(player, job.title))
 				Debug("FOC is_job_whitelisted failed, Player: [player]")
 				continue
-			//VOREStation Code End
 			if(flag && !(player.client.prefs.be_special & flag))
 				Debug("FOC flag failed, Player: [player], Flag: [flag], ")
 				continue
@@ -130,11 +126,9 @@ var/global/datum/controller/occupations/job_master
 				Debug("GRJ player not old enough, Player: [player]")
 				continue
 
-			//VOREStation Code Start
 			if(!is_job_whitelisted(player, job.title))
 				Debug("GRJ player not whitelisted for this job, Player: [player], Job: [job.title]")
 				continue
-			//VOREStation Code End
 
 			if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 				Debug("GRJ Random job given, Player: [player], Job: [job]")
@@ -443,7 +437,7 @@ var/global/datum/controller/occupations/job_master
 
 		H.job = rank
 		log_game("JOINED [key_name(H)] as \"[rank]\"")
-		log_game("SPECIES [key_name(H)] is a: \"[H.species.name]\"") //VOREStation Add
+		log_game("SPECIES [key_name(H)] is a: \"[H.species.name]\"")
 
 		// If they're head, give them the account info for their department
 		if(H.mind && job.department_accounts)

@@ -168,7 +168,7 @@
 				icon_state = icon_state_charged
 				update_use_power(USE_POWER_IDLE)
 
-		//VOREStation Add - NSFW Batteries
+		// NSFW Batteries
 		else if(istype(charging, /obj/item/ammo_casing/microbattery))
 			var/obj/item/ammo_casing/microbattery/batt = charging
 			if(batt.shots_left >= initial(batt.shots_left))
@@ -180,7 +180,6 @@
 				batt.shots_left++
 				update_use_power(USE_POWER_ACTIVE)
 			return
-		//VOREStation Add End
 
 		else if(istype(charging, /obj/item/ammo_magazine/cell_mag))
 			charge_mag(charging)

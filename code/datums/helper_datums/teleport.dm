@@ -183,17 +183,6 @@
 		else
 			teleatom.visible_message(SPAN_DANGER("\The [teleatom] bounces off of the portal!"))
 		return FALSE
-	/* VOREStation Removal
-	if(destination.z in GLOB.using_map.admin_levels) //CentCom z-level
-		if(istype(teleatom, /obj/mecha))
-			var/obj/mecha/MM = teleatom
-			to_chat(MM.occupant, SPAN_DANGER("\The [MM] would not survive the jump to a location so far away!"))
-			return FALSE
-		if(!!length(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
-			teleatom.visible_message(SPAN_DANGER("\The [teleatom] bounces off of the portal!"))
-			return FALSE
-	*/ //VOREStation Removal End
-	//VOREStation Edit Start
 	var/obstructed = 0
 	var/turf/dest_turf = get_turf(destination)
 	if(local && !(dest_turf.z in GLOB.using_map.player_levels))
@@ -218,7 +207,6 @@
 		return FALSE
 	else
 		return TRUE
-	//VOREStation Edit End
 
 //! ## VR FILE MERGE ## !//
 

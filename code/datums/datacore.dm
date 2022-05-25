@@ -78,11 +78,9 @@
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CARGO))
 			car[name] = rank
 			department = 1
-		//VOREStation Add Begin
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_PLANET))
 			pla[name] = rank
 			department = 1
-		//VOREStation Add End
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CIVILIAN))
 			civ[name] = rank
 			department = 1
@@ -147,13 +145,11 @@
 		for(name in car)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[car[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	//VOREStation Edit Begin
 	if(pla.len > 0)
 		dat += "<tr><th colspan=3>Exploration</th></tr>"
 		for(name in pla)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[pla[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	//VOREStation Edit End
 	if(civ.len > 0)
 		dat += "<tr><th colspan=3>Civilian</th></tr>"
 		for(name in civ)

@@ -125,7 +125,7 @@
 		/obj/item/reagent_containers/glass/bottle,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
-		/obj/item/storage/quickdraw/syringe_case, //VOREStation Addition - Adds syringe cases,
+		/obj/item/storage/quickdraw/syringe_case,
 		/obj/item/flame/lighter/zippo,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/storage/pill_bottle,

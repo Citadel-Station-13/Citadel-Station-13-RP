@@ -4,9 +4,8 @@
 	icon = 'icons/obj/machines/mining_machines_vr.dmi'	icon_state = "exploration"	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/exploration_equipment_vendor
-	icon_deny = "exploration-deny"	var/icon_vend = "exploration-vend" //VOREStation Add
+	icon_deny = "exploration-deny"	var/icon_vend = "exploration-vend"
 	child = TRUE
-	//VOREStation Edit Start - Heavily modified list
 	prize_list = list(
 		new /datum/data/mining_equipment("1 Marker Beacon",				/obj/item/stack/marker_beacon,								1),
 		new /datum/data/mining_equipment("10 Marker Beacons",			/obj/item/stack/marker_beacon/ten,							10),
@@ -58,7 +57,6 @@
 		new /datum/data/mining_equipment("Durasteel Fishing Rod",		/obj/item/material/fishing_rod/modern/strong,				750),
 		new /datum/data/mining_equipment("Bar Shelter Capsule",			/obj/item/survivalcapsule/luxurybar,						1000)
 		)
-		//VOREStation Edit End
 
 /obj/machinery/mineral/equipment_vendor/survey/interact(mob/user)
 	user.set_machine(src)
@@ -112,7 +110,7 @@
 			else
 				inserted_id.survey_points -= prize.cost
 				to_chat(usr, "<span class='notice'>[src] clanks to life briefly before vending [prize.equipment_name]!</span>")
-				flick(icon_vend, src) //VOREStation Add
+				flick(icon_vend, src)
 				new prize.equipment_path(drop_location())
 		else
 			to_chat(usr, "<span class='warning'>Error: Please insert a valid ID!</span>")

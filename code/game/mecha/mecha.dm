@@ -1848,10 +1848,8 @@
 		verbs += /obj/mecha/verb/eject
 		log_append_to_last("[H] moved in as pilot.")
 		update_icon()
-		//VOREStation Edit Add
 		if(occupant.hud_used)
 			minihud = new (occupant.hud_used, src)
-		//VOREStation Edit Add End
 
 //This part removes all the verbs if you don't have them the _possible on your mech. This is a little clunky, but it lets you just add that to any mech.
 //And it's not like this 10yo code wasn't clunky before.

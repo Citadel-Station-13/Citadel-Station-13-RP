@@ -38,7 +38,7 @@
 	wait = world.time + config_legacy.gateway_delay	//+ thirty minutes default
 	awaygate = locate(/obj/machinery/gateway/centeraway)
 	. = ..()
-	density = 1 //VOREStation Add
+	density = TRUE
 
 /obj/machinery/gateway/centerstation/update_icon()
 	if(active)
@@ -162,7 +162,7 @@
 	update_icon()
 	stationgate = locate(/obj/machinery/gateway/centerstation)
 	. = ..()
-	density = 1 //VOREStation Add
+	density = 1
 
 
 /obj/machinery/gateway/centeraway/update_icon()

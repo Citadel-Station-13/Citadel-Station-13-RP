@@ -155,7 +155,7 @@
 /datum/map_template/submap/level_specific/mountains/normal/crashedcontainmentshuttle
 	name = "Crashed Cargo Shuttle"
 	desc = "A severely damaged military shuttle, its cargo seems to remain intact."
-	suffix = "crashedcontainmentshuttle_vr.dmm"	//VOREStation Edit
+	suffix = "crashedcontainmentshuttle_vr.dmm"
 	cost = 30
 
 /datum/map_template/submap/level_specific/mountains/normal/deadspy

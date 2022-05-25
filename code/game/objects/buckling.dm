@@ -65,15 +65,12 @@
 	M.setDir(buckle_dir ? buckle_dir : dir)
 	M.update_canmove()
 	M.update_floating( M.Check_Dense_Object() )
-//	buckled_mob = M
 	buckled_mobs |= M
 
-	//VOREStation Add
 	if(riding_datum)
 		riding_datum.ridden = src
 		riding_datum.handle_vehicle_offsets()
 	M.update_water()
-	//VOREStation Add End
 
 	post_buckle_mob(M)
 	return TRUE

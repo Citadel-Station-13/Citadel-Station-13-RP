@@ -164,13 +164,11 @@
 	m_flag = 1
 	//End
 
-	//VOREStation Add
 	if(. && riding_datum)
 		riding_datum.handle_vehicle_layer()
 		riding_datum.handle_vehicle_offsets()
-	//VOREStation Add End
 
-//Called after a successful Move(). By this point, we've already moved
+/// Called after a successful Move(). By this point, we've already moved
 /atom/movable/proc/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, Dir, Forced)
@@ -184,8 +182,8 @@
 
 	return TRUE
 
-// Make sure you know what you're doing if you call this, this is intended to only be called by byond directly.
-// You probably want CanPass()
+/// Make sure you know what you're doing if you call this, this is intended to only be called by byond directly.
+/// You probably want CanPass()
 /atom/movable/Cross(atom/movable/AM)
 	. = TRUE
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSS, AM)

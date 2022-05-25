@@ -12,11 +12,11 @@ var/list/dreams = list(
 	"the virologist","the roboticist","the chef","the bartender","the chaplain","the librarian","a mouse","an ert member",
 	"a beach","the holodeck","a smokey room","a voice","the cold","a mouse","an operating table","the bar","the rain","a skrell",
 	"an unathi","a tajaran","the ai core","the mining station","the research station","a beaker of strange liquid",
-	//VOREStation Additions after this
+
 	"slimey surroundings","a sexy squirrel","licking their lips","a gaping maw","an unlikely predator","sinking inside",
 	"vulpine assets","more dakka","churning guts","pools of fluid","an exceptional grip","mawing in faces","gaping throat",
 	"swallowed whole","a fox","a wolf","a cat","a tiger","a dog","a taur","a xenochimera",
-	//Cit dream text!
+	//Species
 	"a teshari","an alarune","a promethean","a vox","a sergal","an akula","a zorren","a nevrean","a chimera","a vasilissan", //actual races not covered in the defaults
 
 	"a fox","a wolf","a dog","a cat","a bird","a shark","an angel","a demon","a dragon", "a xenomorph","a security K9","a medihound","a scrubpuppy","a borgi", //common animals and other common "custom" races. This obviously isn't all of them- suggestions/additions welcome!

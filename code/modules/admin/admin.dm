@@ -649,7 +649,7 @@ proc/admin_notice(var/message, var/rights)
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-//VOREStation Edit to this verb for the purpose of making it compliant with the annunciator system
+/// This verb for the purpose of making it compliant with the announcer system.
 var/datum/legacy_announcement/priority/admin_pri_announcer = new
 var/datum/legacy_announcement/minor/admin_min_announcer = new
 /datum/admins/proc/intercom()

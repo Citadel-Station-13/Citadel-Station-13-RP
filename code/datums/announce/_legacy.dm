@@ -4,8 +4,8 @@
  */
 
 
-//VOREStation Edit - Most of this file has been changed to use the Eris-style PA announcements.
-//You'll need to compare externally, or use your best judgement when merging.
+// Most of this file has been changed to use the Eris-style PA announcements.
+// You'll need to compare externally, or use your best judgement when merging.
 /var/datum/legacy_announcement/priority/priority_announcement = new(do_log = 0)
 /var/datum/legacy_announcement/priority/command/command_announcement = new(do_log = 0, do_newscast = 1)
 

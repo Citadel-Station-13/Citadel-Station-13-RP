@@ -37,6 +37,6 @@
 	l_ear = /obj/item/radio/headset/pilot/alt
 	id_slot = slot_wear_id
 	pda_slot = slot_belt
-	pda_type = /obj/item/pda //VOREStation Edit - Civilian
+	pda_type = /obj/item/pda
 	id_type = /obj/item/card/id/explorer/pilot	id_pda_assignment = "Pilot"
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
