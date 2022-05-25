@@ -209,17 +209,6 @@
 		return attack_hand(user)
 
 /obj/machinery/body_scanconsole/power_change()
-	/* VOREStation Removal
-	if(machine_stat & BROKEN)
-		icon_state = "body_scannerconsole-p"
-	else if(powered() && !panel_open)
-		icon_state = initial(icon_state)
-		machine_stat &= ~NOPOWER
-	else
-		spawn(rand(0, 15))
-			icon_state = "body_scannerconsole-p"
-			machine_stat |= NOPOWER
-	*/
 	update_icon() //Health display for consoles with light and such.
 
 /obj/machinery/body_scanconsole/ex_act(severity)

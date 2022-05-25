@@ -149,7 +149,7 @@
 	user.drop_item()
 	affected.implants += tool
 	tool.loc = affected
-	if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.implant(target)} //VOREStation Add - NIF support
+	if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.implant(target)}
 	affected.cavity = 0
 
 //////////////////////////////////////////////////////////////////
@@ -227,7 +227,7 @@
 					imp.implanted = 0
 					if(istype(obj, /obj/item/implant/mirror))
 						target.mirror = null
-				else if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.unimplant(target)} //VOREStation Add - NIF support
+				else if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.unimplant(target)}
 		else
 			user.visible_message("<font color=#4F49AF>[user] removes \the [tool] from [target]'s [affected.name].</font>", \
 			"<font color=#4F49AF>There's something inside [target]'s [affected.name], but you just missed it this time.</font>" )

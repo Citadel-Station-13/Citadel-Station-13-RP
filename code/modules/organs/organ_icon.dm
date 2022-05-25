@@ -222,7 +222,7 @@ var/global/list/limb_icon_cache = list()
 
 	if(transparent)		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
 		if(species && species.get_bodytype(owner) != SPECIES_HUMAN)
-			applying.SetIntensity(1) // Unathi, Taj and Skrell have -very- dark base icons. VOREStation edit fixes this and brings the number back to 1
+			applying.SetIntensity(1) // Unathi, Taj and Skrell have -very- dark base icons.
 		else
 			applying.SetIntensity(1) // Makes Prometheans not look like shit with mob coloring.
 

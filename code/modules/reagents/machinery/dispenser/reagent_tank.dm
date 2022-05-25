@@ -110,7 +110,6 @@
 	. = ..()
 	reagents.add_reagent("fuel",1000)
 
-//VOREStation Add
 /obj/structure/reagent_dispensers/fueltank/high
 	name = "high-capacity fuel tank"
 	desc = "A highly-pressurized fuel tank made to hold vast amounts of fuel."
@@ -141,7 +140,6 @@
 	if (W.is_wrench()) //can't wrench it shut, it's always open
 		return
 	return ..()
-//VOREStation Add End
 
 /obj/structure/reagent_dispensers/fueltank/examine(mob/user)
 	. = ..()

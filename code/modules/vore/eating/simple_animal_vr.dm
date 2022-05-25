@@ -80,8 +80,6 @@
 				set_AI_busy(FALSE)
 			else if (!ai_holder.target) // no using this to clear a retaliate mob's target
 				ai_holder.target = user //just because you're not tasty doesn't mean you get off the hook. A swat for a swat.
-				//AttackTarget() //VOREStation AI Temporary Removal
-				//LoseTarget() // only make one attempt at an attack rather than going into full rage mode
 		else
 			user.visible_message("<span class='info'>\the [user] swats \the [src] with \the [O]!</span>!")
 			release_vore_contents()

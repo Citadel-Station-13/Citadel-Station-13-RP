@@ -88,15 +88,12 @@
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 		buckled_mob.update_canmove()
 		buckled_mob.update_floating( buckled_mob.Check_Dense_Object() )
-	//	buckled_mob = null
 		buckled_mobs -= buckled_mob
 
-		//VOREStation Add
 		buckled_mob.update_water()
 		if(riding_datum)
 			riding_datum.restore_position(buckled_mob)
 			riding_datum.handle_vehicle_offsets() // So the person in back goes to the front.
-		//VOREStation Add End
 		post_buckle_mob(.)
 
 /atom/movable/proc/unbuckle_all_mobs(force = FALSE)
