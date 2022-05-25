@@ -106,6 +106,8 @@
 		if(QDELETED(I))
 			. = FALSE
 
+	update_action_buttons()
+
 /**
  * equips an item to a slot if possible
  *
@@ -139,6 +141,8 @@
 #warn impl
 /mob/proc/_equip_item(obj/item/I, slot, silent, update_icons, ignore_fluff)
 	#warn this handles stuff like calling equipped/unequipped on slot swaps, etc
+
+	update_action_buttons()
 
 /**
  * get all equipped items

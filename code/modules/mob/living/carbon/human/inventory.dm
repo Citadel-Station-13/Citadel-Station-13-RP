@@ -241,14 +241,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 		worn_clothing -= w_uniform
 		w_uniform = null
 		update_inv_w_uniform()
-	else if (W == gloves)
-		worn_clothing -= gloves
-		gloves = null
-		update_inv_gloves()
-	else if (W == glasses)
-		worn_clothing -= glasses
-		glasses = null
-		update_inv_glasses()
 	else if (W == head)
 		worn_clothing -= head
 		head = null
@@ -259,20 +251,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 				update_inv_ears(0)
 				update_inv_wear_mask(0)
 		update_inv_head()
-	else if (W == l_ear)
-		l_ear = null
-		update_inv_ears()
-	else if (W == r_ear)
-		r_ear = null
-		update_inv_ears()
-	else if (W == shoes)
-		worn_clothing -= shoes
-		shoes = null
-		update_inv_shoes()
-	else if (W == belt)
-		worn_clothing -= belt
-		belt = null
-		update_inv_belt()
 	else if (W == wear_mask)
 		worn_clothing -= wear_mask
 		wear_mask = null
