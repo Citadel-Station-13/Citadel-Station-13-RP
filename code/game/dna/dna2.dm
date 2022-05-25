@@ -179,9 +179,6 @@ var/global/list/datum/gene/dna_genes[0]
 		character.f_style = "Shaved"
 	var/beard	= facial_hair_styles_list.Find(character.f_style)
 
-
-	// VOREStation Edit Start
-
 	// Demi Ears
 	var/ear_style = 0
 	if(character.ear_style)

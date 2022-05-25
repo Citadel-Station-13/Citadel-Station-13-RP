@@ -1,13 +1,10 @@
 /obj/machinery/mineral/equipment_vendor/survey
 	name = "exploration equipment vendor"
 	desc = "An equipment vendor for explorers, points collected with a survey scanner can be spent here."
-	icon = 'icons/obj/machines/mining_machines_vr.dmi' //VOREStation Edit
-	icon_state = "exploration" //VOREStation Edit
-	density = TRUE
+	icon = 'icons/obj/machines/mining_machines_vr.dmi'	icon_state = "exploration"	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/exploration_equipment_vendor
-	icon_deny = "exploration-deny" //VOREStation Edit
-	var/icon_vend = "exploration-vend" //VOREStation Add
+	icon_deny = "exploration-deny"	var/icon_vend = "exploration-vend" //VOREStation Add
 	child = TRUE
 	//VOREStation Edit Start - Heavily modified list
 	prize_list = list(

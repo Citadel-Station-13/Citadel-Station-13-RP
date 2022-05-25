@@ -50,9 +50,7 @@
 	else
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message(
-				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>", //VOREStation Edit
-				"<span class='warning'>You draw \the [holstered], ready to go!</span>" //VOREStation Edit
-				)
+				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>",				"<span class='warning'>You draw \the [holstered], ready to go!</span>"				)
 			if(istype(holstered, /obj/item/gun))
 				var/obj/item/gun/G = holstered
 				if(G.check_safety()) //Reflex un-safetying if we are drawing our gun with intent to harm

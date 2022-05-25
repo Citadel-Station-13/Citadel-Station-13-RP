@@ -145,8 +145,7 @@
 	var/static/image/radial_image_statpanel = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine2")
 
 //Mech actions
-	var/datum/mini_hud/mech/minihud //VOREStation Edit
-	var/strafing = 0 				//Are we strafing or not?
+	var/datum/mini_hud/mech/minihud	var/strafing = 0 				//Are we strafing or not?
 
 	var/defence_mode_possible = 0 	//Can we even use defence mode? This is used to assign it to mechs and check for verbs.
 	var/defence_mode = 0 			//Are we in defence mode
@@ -2193,7 +2192,7 @@
 			output += "Universal Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in special_equipment)
 			output += "Special Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/mecha_parts/mecha_equipment/W in micro_utility_equipment) // VOREstation Edit -  Adds micro equipent to the menu
+		for(var/obj/item/mecha_parts/mecha_equipment/W in micro_utility_equipment)
 			output += "Micro Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in micro_weapon_equipment)
 			output += "Micro Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"

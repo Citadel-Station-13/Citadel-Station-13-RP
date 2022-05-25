@@ -138,5 +138,5 @@ datum/legacy_announcement/proc/Log(message as text, message_title as text)
 			rank = character.mind.role_alt_title
 		AnnounceArrivalSimple(character.real_name, rank, join_message)
 
-/proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "will arrive at the station shortly") //VOREStation Edit - Remove shuttle reference
+/proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "will arrive at the station shortly")
 	GLOB.global_announcer.autosay(join_message, "Arrivals Announcement Computer")

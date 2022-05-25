@@ -33,8 +33,7 @@
 	checkReagents()
 
 /obj/effect/foam/proc/pre_harden()
-	return //VOREStation Edit
-
+	return
 /obj/effect/foam/proc/harden()
 	if(metal)
 		var/obj/structure/foamedmetal/M = new(src.loc)

@@ -192,8 +192,7 @@ var/global/list/limb_icon_cache = list()
 				var/cache_key = "[body_hair]-[icon_name]-[h_col[1]][h_col[2]][h_col[3]]"
 				if(!limb_icon_cache[cache_key])
 					var/icon/I = icon(species.get_icobase(owner), "[icon_name]_[body_hair]")
-					I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY) //VOREStation edit
-					limb_icon_cache[cache_key] = I
+					I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)					limb_icon_cache[cache_key] = I
 				mob_icon.Blend(limb_icon_cache[cache_key], ICON_OVERLAY)
 
 	if(model)
@@ -212,8 +211,7 @@ var/global/list/limb_icon_cache = list()
 			var/cache_key = "[body_hair]-[icon_name]-[h_col[1]][h_col[2]][h_col[3]]"
 			if(!limb_icon_cache[cache_key])
 				var/icon/I = icon(species.get_icobase(owner), "[icon_name]_[body_hair]")
-				I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY) //VOREStation edit
-				limb_icon_cache[cache_key] = I
+				I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)				limb_icon_cache[cache_key] = I
 			mob_icon.Blend(limb_icon_cache[cache_key], ICON_OVERLAY)
 		// VOREStation edit ends here
 
@@ -223,8 +221,7 @@ var/global/list/limb_icon_cache = list()
 
 /obj/item/organ/external/proc/apply_colouration(var/icon/applying)
 
-	if(transparent) //VOREStation edit
-		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
+	if(transparent)		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
 		if(species && species.get_bodytype(owner) != SPECIES_HUMAN)
 			applying.SetIntensity(1) // Unathi, Taj and Skrell have -very- dark base icons. VOREStation edit fixes this and brings the number back to 1
 		else
@@ -242,17 +239,16 @@ var/global/list/limb_icon_cache = list()
 			applying.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
 		icon_cache_key += "_tone_[s_tone]"
 	else if(s_col && s_col.len >= 3)
-		//VOREStation Edit - Support for species.color_mult
+		// Support for species.color_mult
 		if(species && species.color_mult)
 			applying.Blend(rgb(s_col[1], s_col[2], s_col[3]), ICON_MULTIPLY)
 			icon_cache_key += "_color_[s_col[1]]_[s_col[2]]_[s_col[3]]_[ICON_MULTIPLY]"
 		else
 			applying.Blend(rgb(s_col[1], s_col[2], s_col[3]), ICON_ADD)
 			icon_cache_key += "_color_[s_col[1]]_[s_col[2]]_[s_col[3]]_[ICON_ADD]"
-		//VOREStation Edit End
 
 	// Translucency.
-	if(transparent) applying += rgb(,,,180) // SO INTUITIVE TY BYOND //VOREStation Edit
+	if(transparent) applying += rgb(,,,180) // SO INTUITIVE TY BYOND
 
 	return applying
 

@@ -1472,7 +1472,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/Destroy()
 	GLOB.PDAs -= src
-	if (src.id && prob(100)) //IDs are kept in 90% of the cases //VOREStation Edit - 100% of the cases
+	if (src.id && prob(100)) //IDs are kept in 100% of the cases //TODO: WHY?
 		src.id.forceMove(get_turf(src.loc))
 	else
 		QDEL_NULL(src.id)

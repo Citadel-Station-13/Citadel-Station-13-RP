@@ -53,8 +53,7 @@
 			if(!do_after(user, 30, H))
 				return
 		//VOREstation Add End
-		else if(!H.stat && !prototype) //VOREStation Edit
-			if(H != user)
+		else if(!H.stat && !prototype)			if(H != user)
 				if(H.a_intent != INTENT_HELP)
 					to_chat(user, "<span class='notice'>[H] is resisting your attempt to inject them with \the [src].</span>")
 					to_chat(H, "<span class='danger'> [user] is trying to inject you with \the [src]!</span>")

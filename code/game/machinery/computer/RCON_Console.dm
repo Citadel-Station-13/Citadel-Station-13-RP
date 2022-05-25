@@ -8,8 +8,7 @@
 	name = "\improper RCON console"
 	desc = "Console used to remotely control machinery on the station."
 	icon_keyboard = "power_key"
-	icon_screen = "ai_fixer" //VOREStation Edit
-	light_color = "#a97faa"
+	icon_screen = "ai_fixer"	light_color = "#a97faa"
 	circuit = /obj/item/circuitboard/rcon_console
 	req_one_access = list(access_engine)
 	var/current_tag = null
@@ -39,4 +38,4 @@
 /obj/machinery/computer/rcon/update_icon()
 	..()
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		overlays += image(icon, "ai-fixer-empty", overlay_layer) //VOREStation Edit
+		overlays += image(icon, "ai-fixer-empty", overlay_layer)

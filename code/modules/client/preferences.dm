@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/r_synth							//Used with synth_color to color synth parts that normaly can't be colored.
 	var/g_synth							//Same as above
 	var/b_synth							//Same as above
-	var/synth_markings = 1				//Enable/disable markings on synth parts. //VOREStation Edit - 1 by default
+	var/synth_markings = 1				//Enable/disable markings on synth parts.
 
 		//Some faction information.
 	var/home_system = "Unset"           //System of birth.
@@ -361,16 +361,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	else if(href_list["reload"])
 		load_preferences()
 		load_character()
-		attempt_vr(client.prefs_vr,"load_vore","") //VOREStation Edit
-		sanitize_preferences()
+		attempt_vr(client.prefs_vr,"load_vore","")		sanitize_preferences()
 	else if(href_list["load"])
 		if(!IsGuestKey(usr.key))
 			open_load_dialog(usr)
 			return 1
 	else if(href_list["changeslot"])
 		load_character(text2num(href_list["changeslot"]))
-		attempt_vr(client.prefs_vr,"load_vore","") //VOREStation Edit
-		sanitize_preferences()
+		attempt_vr(client.prefs_vr,"load_vore","")		sanitize_preferences()
 		close_load_dialog(usr)
 	else if(href_list["resetslot"])
 		if("No" == alert("This will reset the current slot. Continue?", "Reset current slot?", "No", "Yes"))
@@ -408,7 +406,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	// Ask the preferences datums to apply their own settings to the new mob
 	player_setup.copy_to_mob(character)
 
-	// VOREStation Edit - Sync up all their organs and species one final time
+	// Sync up all their organs and species one final time
 	character.force_update_organs()
 //	character.s_base = s_base //doesn't work, fuck me
 

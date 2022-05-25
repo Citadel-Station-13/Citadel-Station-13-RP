@@ -576,8 +576,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		return -1
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
-		if((!position || !(position.z in level)) && !bluespace_radio) //VOREStation Edit
-			return -1
+		if((!position || !(position.z in level)) && !bluespace_radio)			return -1
 	if(freq in ANTAG_FREQS)
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1

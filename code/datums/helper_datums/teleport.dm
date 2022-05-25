@@ -1,6 +1,5 @@
 //wrapper
-/proc/do_teleport(ateleatom, adestination, aprecision=0, afteleport=1, aeffectin=null, aeffectout=null, asoundin=null, asoundout=null, local=TRUE, bohsafe=FALSE) //VOREStation Edit
-	new /datum/teleport/instant/science(arglist(args))
+/proc/do_teleport(ateleatom, adestination, aprecision=0, afteleport=1, aeffectin=null, aeffectout=null, asoundin=null, asoundout=null, local=TRUE, bohsafe=FALSE)	new /datum/teleport/instant/science(arglist(args))
 	return
 
 /datum/teleport

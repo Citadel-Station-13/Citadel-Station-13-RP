@@ -424,8 +424,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		var/samejob = alert(src,"Found [picked_client.prefs.real_name] in data core. They were [record_found.fields["real_rank"]] this round. Assign same job? They will not be re-added to the manifest/records, either way.","Previously spawned","Yes","Assistant","No")
 		if(samejob == "Yes")
 			charjob = record_found.fields["real_rank"]
-		else if(samejob == USELESS_JOB) //VOREStation Edit - Visitor not Assistant
-			charjob = USELESS_JOB //VOREStation Edit - Visitor not Assistant
+		else if(samejob == USELESS_JOB)
+			charjob = USELESS_JOB
 	else
 		records = alert(src,"No data core entry detected. Would you like add them to the manifest, and sec/med/HR records?","Records","Yes","No","Cancel")
 		if(records == "Cancel")
@@ -791,7 +791,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 /client/proc/cmd_admin_check_contents(mob/living/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Check Contents"
-	set popup_menu = FALSE //VOREStation Edit - Declutter.
+	set popup_menu = FALSE
 
 	var/list/L = M.get_contents()
 	for(var/t in L)

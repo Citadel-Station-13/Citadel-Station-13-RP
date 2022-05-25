@@ -116,7 +116,7 @@ var/global/datum/controller/occupations/job_master
 			if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 				continue
 
-			if(istype(job, GetJob(USELESS_JOB))) // We don't want to give him assistant, that's boring! //VOREStation Edit - Visitor not Assistant
+			if(istype(job, GetJob(USELESS_JOB))) // We don't want to give him visitor, that's boring!
 				continue
 
 			if(SSjob.is_job_in_department(job.title, DEPARTMENT_COMMAND)) //If you want a command position, select it!
@@ -241,7 +241,7 @@ var/global/datum/controller/occupations/job_master
 		Debug("AC1, Candidates: [assistant_candidates.len]")
 		for(var/mob/new_player/player in assistant_candidates)
 			Debug("AC1 pass, Player: [player]")
-			AssignRole(player, USELESS_JOB) //VOREStation Edit - Visitor not Assistant
+			AssignRole(player, USELESS_JOB)
 			assistant_candidates -= player
 		Debug("DO, AC1 end")
 
@@ -322,7 +322,7 @@ var/global/datum/controller/occupations/job_master
 		for(var/mob/new_player/player in unassigned)
 			if(player.client.prefs.alternate_option == BE_ASSISTANT)
 				Debug("AC2 Assistant located, Player: [player]")
-				AssignRole(player, USELESS_JOB) //VOREStation Edit - Visitor not Assistant
+				AssignRole(player, USELESS_JOB)
 
 		//For ones returning to lobby
 		for(var/mob/new_player/player in unassigned)

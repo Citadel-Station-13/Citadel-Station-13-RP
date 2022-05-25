@@ -209,8 +209,7 @@ var/global/list/light_type_cache = list()
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
-	icon = 'icons/obj/lighting_vr.dmi' //VOREStation Edit
-	var/base_state = "tube"		// base description and icon_state
+	icon = 'icons/obj/lighting_vr.dmi'	var/base_state = "tube"		// base description and icon_state
 	icon_state = "tube1"
 	desc = "A lighting fixture."
 	anchored = 1
@@ -280,8 +279,7 @@ var/global/list/light_type_cache = list()
 	start_with_cell = FALSE
 
 /obj/machinery/light/flamp
-	icon = 'icons/obj/lighting.dmi' //VOREStation Edit
-	icon_state = "flamp1"
+	icon = 'icons/obj/lighting.dmi'	icon_state = "flamp1"
 	base_state = "flamp"
 	plane = OBJ_PLANE
 	layer = OBJ_LAYER
@@ -909,8 +907,7 @@ var/global/list/light_type_cache = list()
 	base_state = "ltube"
 	item_state = "c_tube"
 	matter = list(MAT_GLASS = 100)
-	brightness_range = 12	// luminosity when on, also used in power calculation //VOREStation Edit
-	brightness_power = 1
+	brightness_range = 12	// luminosity when on, also used in power calculation	brightness_power = 1
 
 	nightshift_range = 7
 	nightshift_power = 0.5

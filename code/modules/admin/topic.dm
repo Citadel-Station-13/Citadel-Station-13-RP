@@ -1286,7 +1286,6 @@
 				if((R_ADMIN|R_MOD|R_EVENT|R_SERVER) & X.holder.rights)
 					to_chat(X, take_msg)
 			to_chat(M, "<span class='notice'><b>Your adminhelp is being attended to by [usr.client]. Thanks for your patience!</b></span>")
-			// VoreStation Edit Start
 			if (config_legacy.chat_webhook_url)
 				spawn(0)
 					var/query_string = "type=admintake"
@@ -1294,7 +1293,6 @@
 					query_string += "&admin=[url_encode(key_name(usr.client))]"
 					query_string += "&user=[url_encode(key_name(M))]"
 					world.Export("[config_legacy.chat_webhook_url]?[query_string]")
-			// VoreStation Edit End
 		else
 			to_chat(usr, "<span class='warning'>Unable to locate mob.</span>")
 
@@ -1927,7 +1925,7 @@
 	else if(href_list["cryoplayer"])
 		if(!check_rights(R_ADMIN))	return
 
-		var/mob/living/carbon/M = locate(href_list["cryoplayer"]) //VOREStation edit from just an all mob check to mob/living/carbon
+		var/mob/living/carbon/M = locate(href_list["cryoplayer"])
 		if(!istype(M))
 			to_chat(usr,"<span class='warning'>Mob doesn't exist!</span>")
 			return

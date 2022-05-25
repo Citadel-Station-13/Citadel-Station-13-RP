@@ -15,8 +15,7 @@
 /datum/map_template/submap/level_specific/plains/farm1
 	name = "Farm 1"
 	desc = "A small farm tended by a farmbot."
-	suffix = "farm1_vr.dmm" //VOREStation Edit
-	cost = 10
+	suffix = "farm1_vr.dmm"	cost = 10
 
 /datum/map_template/submap/level_specific/plains/construction1
 	name = "Construction Site 1"
@@ -27,14 +26,12 @@
 /datum/map_template/submap/level_specific/plains/camp1
 	name = "Camp Site 1"
 	desc = "A small campsite, complete with housing and bonfire."
-	suffix = "camp1_vr.dmm" //VOREStation Edit
-	cost = 10
+	suffix = "camp1_vr.dmm"	cost = 10
 
 /datum/map_template/submap/level_specific/plains/house1
 	name = "House 1"
 	desc = "A fair sized house out in the frontier, that belonged to a well-traveled explorer."
-	suffix = "house1_vr.dmm" //VOREStation Edit
-	cost = 10
+	suffix = "house1_vr.dmm"	cost = 10
 
 /datum/map_template/submap/level_specific/plains/beacons
 	name = "Collection of Marker Beacons"
@@ -83,8 +80,7 @@
 /datum/map_template/submap/level_specific/plains/Shakden
 	name = "Shakden"
 	desc = "Not to be confused with Shaq Den"
-	suffix = "Shakden_vr.dmm" //VOREStation Edit
-	cost = 10
+	suffix = "Shakden_vr.dmm"	cost = 10
 
 /datum/map_template/submap/level_specific/plains/Field1
 	name = "Field 1"
@@ -95,8 +91,7 @@
 /datum/map_template/submap/level_specific/plains/Thiefc
 	name = "Thieves Cave"
 	desc = "A thieves stash"
-	suffix = "Thiefc_vr.dmm" //VOREStation Edit
-	cost = 20
+	suffix = "Thiefc_vr.dmm"	cost = 20
 
 /datum/map_template/submap/level_specific/plains/smol2
 	name = "Small 2"
@@ -113,14 +108,12 @@
 /datum/map_template/submap/level_specific/plains/Boathouse
 	name = "Boathouse"
 	desc = "A fance house on a lake."
-	suffix = "Boathouse_vr.dmm" //VOREStation Edit
-	cost = 30
+	suffix = "Boathouse_vr.dmm"	cost = 30
 
 /datum/map_template/submap/level_specific/plains/PooledR
 	name = "Pooled Rocks"
 	desc = "An intresting rocky location"
-	suffix = "PooledR_vr.dmm" //VOREStation Edit
-	cost = 15
+	suffix = "PooledR_vr.dmm"	cost = 15
 
 /datum/map_template/submap/level_specific/plains/Smol3
 	name = "Small 3"
@@ -131,8 +124,7 @@
 /datum/map_template/submap/level_specific/plains/Diner
 	name = "Diner"
 	desc = "Old Timey Tasty"
-	suffix = "Diner_vr.dmm" //VOREStation Edit
-	cost = 25
+	suffix = "Diner_vr.dmm"	cost = 25
 
 /datum/map_template/submap/level_specific/plains/snow1
 	name = "Snow1"
@@ -167,8 +159,7 @@
 /datum/map_template/submap/level_specific/plains/RationCache
 	name = "Ration Cache"
 	desc = "A forgotten cache of emergency rations."
-	suffix = "RationCache_vr.dmm" //VOREStation Edit
-	cost = 5
+	suffix = "RationCache_vr.dmm"	cost = 5
 
 /datum/map_template/submap/level_specific/plains/SupplyDrop2
 	name = "Supply Drop 2"
@@ -179,5 +170,4 @@
 /datum/map_template/submap/level_specific/plains/Oldhouse
 	name = "Oldhouse"
 	desc = "Someones old library it seems.."
-	suffix = "Oldhouse_vr.dmm" //VOREStation Edit
-	cost = 15
+	suffix = "Oldhouse_vr.dmm"	cost = 15

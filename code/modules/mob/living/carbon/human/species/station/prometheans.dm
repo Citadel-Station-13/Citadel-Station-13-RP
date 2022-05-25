@@ -160,8 +160,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 /datum/species/shapeshifter/promethean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 
-	if(H.zone_sel.selecting == "head" || H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand") return ..() //VOREStation Edit
-	var/t_him = "them"
+	if(H.zone_sel.selecting == "head" || H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand") return ..()	var/t_him = "them"
 	if(ishuman(target))
 		var/mob/living/carbon/human/T = target
 		switch(T.identifying_gender)
@@ -203,8 +202,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 		t_she = "They are"
 	else if(H.identifying_gender == NEUTER)
 		t_she = "It is"
-	else if(H.identifying_gender == HERM) //VOREStation Edit
-		t_she = "Shi is"
+	else if(H.identifying_gender == HERM)		t_she = "Shi is"
 
 	switch(stored_shock_by_ref["\ref[H]"])
 		if(1 to 10)

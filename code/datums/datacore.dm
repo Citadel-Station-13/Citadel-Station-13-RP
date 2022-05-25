@@ -24,8 +24,7 @@
 	var/list/med = new()
 	var/list/sci = new()
 	var/list/car = new()
-	var/list/pla = new() //VOREStation Edit
-	var/list/civ = new()
+	var/list/pla = new()	var/list/civ = new()
 	var/list/bot = new()
 	var/list/off = new()
 	var/list/misc = new()
@@ -288,7 +287,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		list("cat" = "Medical", "elems" = med),
 		list("cat" = "Science", "elems" = sci),
 		list("cat" = "Cargo", "elems" = car),
-		list("cat" = "Exploration", "elems" = pla), // VOREStation Edit
+		list("cat" = "Exploration", "elems" = pla),
 		list("cat" = "Civilian", "elems" = civ),
 		list("cat" = "Silicon", "elems" = bot),
 		list("cat" = "Miscellaneous", "elems" = misc)

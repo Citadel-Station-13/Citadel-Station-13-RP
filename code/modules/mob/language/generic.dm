@@ -38,8 +38,7 @@
 // Galactic common languages (systemwide accepted standards).
 /datum/language/trader
 	name = LANGUAGE_TRADEBAND
-	desc = "Maintained by the various trading cartels in major systems, this elegant, structured language is used for bartering and bargaining." //VOREstation Edit
-	speech_verb = "enunciates"
+	desc = "Maintained by the various trading cartels in major systems, this elegant, structured language is used for bartering and bargaining."	speech_verb = "enunciates"
 	colour = "say_quote"
 	key = "2"
 	syllables = list(

@@ -142,8 +142,7 @@
 		return TRUE
 
 	if(flying) //VOREStation Edit. Allows movement up/down with wings.
-		return 1 //VOREStation Edit
-
+		return 1
 	if(Process_Spacemove())
 		return TRUE
 

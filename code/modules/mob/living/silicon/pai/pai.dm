@@ -47,10 +47,8 @@
 		"Fox" = "pai-fox",
 		"Parrot" = "pai-parrot",
 		"Rabbit" = "pai-rabbit",
-		"Bear" = "pai-bear",  //VOREStation Edit
-		"Fennec" = "pai-fen",  // VOREStation Edit - Rykka
-		"Fennec" = "pai-typezero"  //VOREStation Edit
-		)
+		"Bear" = "pai-bear", 		"Fennec" = "pai-fen",  // VOREStation Edit - Rykka
+		"Fennec" = "pai-typezero" 		)
 
 	var/global/list/possible_say_verbs = list(
 		"Robotic" = list("states","declares","queries"),
@@ -312,9 +310,7 @@
 	if(istype(T))
 		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
 
-	verbs += /mob/living/silicon/pai/proc/pai_nom //VOREStation edit
-	verbs += /mob/living/proc/set_size //VOREStation edit
-	verbs += /mob/living/proc/shred_limb //VORREStation edit
+	verbs += /mob/living/silicon/pai/proc/pai_nom	verbs += /mob/living/proc/set_size	verbs += /mob/living/proc/shred_limb //VORREStation edit
 
 /mob/living/silicon/pai/verb/fold_up()
 	set category = "pAI Commands"
@@ -373,8 +369,7 @@
 	else
 		resting = !resting
 		icon_state = resting ? "[chassis]_rest" : "[chassis]"
-		update_icon() //VOREStation edit
-		to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
+		update_icon()		to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
 
 	canmove = !resting
 

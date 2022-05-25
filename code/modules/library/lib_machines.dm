@@ -225,8 +225,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			<A href='?src=\ref[src];checkout=1'>(Commit Entry)</A><BR>
 			<A href='?src=\ref[src];switchscreen=0'>(Return to main menu)</A><BR>"}
 		if(4)
-			dat += "<h3>External Archive</h3>" //VOREStation Edit
-			establish_old_db_connection()
+			dat += "<h3>External Archive</h3>"			establish_old_db_connection()
 
 			dat += "<h3><font color=red>Warning: System Administrator has slated this archive for removal. Personal uploads should be taken to the NT board of internal literature.</font></h3>"
 

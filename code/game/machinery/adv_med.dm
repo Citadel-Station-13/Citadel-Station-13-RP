@@ -57,7 +57,7 @@
 			return
 		M.forceMove(src)
 		occupant = M
-		update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+		update_icon() //icon_state = "body_scanner_1" // Health display for consoles with light and such.
 		playsound(src, 'sound/machines/medbayscanner1.ogg', 50) // Beepboop you're being scanned. <3
 		add_fingerprint(user)
 		qdel(G)

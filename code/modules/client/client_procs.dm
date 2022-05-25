@@ -548,14 +548,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		else
 			log_admin("Couldn't perform IP check on [key] with [address]")
 
-	// VOREStation Edit Start - Department Hours
+	// Department Hours
 	if(config_legacy.time_off)
 		var/DBQuery/query_hours = dbcon.NewQuery("SELECT department, hours FROM vr_player_hours WHERE ckey = '[sql_ckey]'")
 		query_hours.Execute()
 		while(query_hours.NextRow())
 			LAZYINITLIST(department_hours)
 			department_hours[query_hours.item[1]] = text2num(query_hours.item[2])
-	// VOREStation Edit End - Department Hours
 
 	if(sql_id)
 		//Player already identified previously, we need to just update the 'lastseen', 'ip' and 'computer_id' variables
