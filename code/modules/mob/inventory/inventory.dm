@@ -224,6 +224,12 @@
 
 #warn impl these
 
+/**
+ * sets a slot to icon or null
+ *
+ * some behaviors may be included other than update icons
+ * even update icons is unpreferred but we're stuck with this for now.
+ */
 /mob/proc/_set_inv_slot(slot, obj/item/I, update_icons)
 	. = FALSE
 	CRASH("Attempting to set inv slot of [slot] to [I] went to base /mob. You probably had someone assigning to a nonexistant slot!")

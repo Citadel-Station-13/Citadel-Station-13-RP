@@ -61,24 +61,57 @@
 
 /mob/living/carbon/human/_set_inv_slot(slot, obj/item/I, update_icons)
 	switch(slot)
-		if()
-
+		if(SLOT_ID_SUIT)
+			wear_suit = I
+			if(update_icons)
+				update_inv_wear_suit()
+		if(SLOT_ID_UNIFORM)
+			w_uniform = I
+			if(update_icons)
+				update_inv_w_uniform()
+		if(SLOT_ID_SHOES)
+			shoes = I
+			if(update_icons)
+				update_inv_shoes()
+		if(SLOT_ID_BELT)
+			belt = I
+			if(update_icons)
+				update_inv_belt()
+		if(SLOT_ID_GLOVES)
+			gloves = I
+			if(update_icons)
+				update_inv_gloves()
+		if(SLOT_ID_GLASSES)
+			glasses = I
+			if(update_icons)
+				update_inv_glasses()
+		if(SLOT_ID_HEAD)
+			head = I
+			if(update_icons)
+				update_inv_head()
+		if(SLOT_ID_LEFT_EAR)
+			l_ear = I
+			if(update_icons)
+				update_inv_ears()
+		if(SLOT_ID_RIGHT_EAR)
+			r_ear = I
+			if(update_icons)
+				update_inv_ears()
+		if(SLOT_ID_WORN_ID)
+			wear_id = I
+			if(update_icons)
+				update_inv_wear_id()
+			update_hud_sec_job()
+			update_hud_sec_status()
+		if(SLOT_ID_RIGHT_POCKET)
+			r_store = I
+		if(SLOT_ID_LEFT_POCKET)
+			l_store = I
+		if(SLOT_ID_SUIT_STORAGE)
+			s_store = I
+			update_inv_s_store()
 		else
 			return ..()
-
-/mob/living/_set_inv_slot(slot, obj/item/I, update_icons)
-	switch(slot)
-		if(SLOT_ID_BACK)
-			back = I
-			if(update_icons)
-				update_inv_back()
-		if(SLOT_ID_MASK)
-			wear_mask = I
-			if(update_icons)
-				update_inv_wear_mask()
-		else
-			return ..()
-
 
 /mob/living/carbon/human/_get_all_slots(include_restraints)
 	. = ..()
@@ -115,11 +148,6 @@
 Add fingerprints to items when we put them in our hands.
 This saves us from having to call add_fingerprint() any time something is put in a human's hands programmatically.
 */
-
-/mob/living/carbon/human
-	var/list/worn_clothing = list()	//Contains all CLOTHING items worn
-
-
 
 /mob/living/carbon/human/verb/quick_equip()
 	set name = "quick-equip"
@@ -258,31 +286,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 				internals.icon_state = "internal0"
 			internal = null
 		update_inv_wear_mask()
-	else if (W == wear_id)
-		wear_id = null
-		update_inv_wear_id()
-		update_hud_sec_job()
-		update_hud_sec_status()
-	else if (W == r_store)
-		r_store = null
-		//update_inv_pockets() //Doesn't do anything.
-	else if (W == l_store)
-		l_store = null
-		//update_inv_pockets() //Doesn't do anything.
-	else if (W == s_store)
-		s_store = null
-		update_inv_s_store()
-	else if (W == back)
-		back = null
-		update_inv_back()
-	else if (W == handcuffed)
-		handcuffed = null
-		if(buckled && buckled.buckle_require_restraints)
-			buckled.unbuckle_mob()
-		update_handcuffed()
-	else if (W == legcuffed)
-		legcuffed = null
-		update_inv_legcuffed()
 	else if (W == r_hand)
 		r_hand = null
 		if(l_hand)
