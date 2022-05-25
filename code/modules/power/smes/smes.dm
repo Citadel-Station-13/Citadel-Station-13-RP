@@ -310,7 +310,7 @@ GLOBAL_LIST_EMPTY(smeses)
 
 /obj/machinery/power/smes/ui_data()
 	var/list/data = list(
-		"capacity" = capacity
+		"capacity" = capacity,
 		"capacityPercent" = round(100.0*charge/capacity, 0.1),
 		"charge" = charge,
 		"inputAttempt" = input_attempt,
