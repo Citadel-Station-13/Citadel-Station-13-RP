@@ -9,7 +9,8 @@
 	use_power = USE_POWER_OFF
 
 	var/active = 0
-	var/power_gen = 5000
+	/// in kw
+	var/power_gen = 5
 	var/recent_fault = 0
 	var/power_output = 1
 
@@ -519,7 +520,7 @@
 	can_buckle = TRUE
 	buckle_lying = FALSE
 
-	var/power_gen = 1000 // Enough to power a single APC. 4000 output with T4 capacitor.
+	var/power_gen = 1 // Enough to power a single APC. 4000 output with T4 capacitor.
 	var/irradiate = TRUE // RTGs irradiate surroundings, but only when panel is open.
 
 /obj/machinery/power/rtg/Initialize(mapload)
@@ -531,14 +532,14 @@
 
 /obj/machinery/power/rtg/process()
 	..()
-	add_avail(power_gen * 0.001)
+	add_avail(power_gen)
 	if(panel_open && irradiate)
 		SSradiation.radiate(src, 60)
 
 /obj/machinery/power/rtg/examine(mob/user)
 	. = ..()
 	if(Adjacent(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Power generation now at <b>[power_gen*0.001]</b>kW.</span>"
+		. += "<span class='notice'>The status display reads: Power generation now at <b>[power_gen]</b>kW.</span>"
 
 /obj/machinery/power/rtg/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user, I))
@@ -555,14 +556,14 @@
 
 /obj/machinery/power/rtg/advanced
 	desc = "An advanced RTG capable of moderating isotope decay, increasing power output but reducing lifetime. It uses plasma-fueled radiation collectors to increase output even further."
-	power_gen = 1250 // 2500 on T1, 10000 on T4.
+	power_gen = 1.25 // 2500 on T1, 10000 on T4.
 	circuit = /obj/item/circuitboard/machine/rtg/advanced
 
 /obj/machinery/power/rtg/fake_gen
 	name = "area power generator"
 	desc = "Some power generation equipment that might be powering the current area."
 	icon_state = "rtg_gen"
-	power_gen = 6000
+	power_gen = 6
 	circuit = /obj/item/circuitboard/machine/rtg
 	can_buckle = FALSE
 
@@ -581,7 +582,7 @@
 	icon_state = "core-nocell"
 	desc = "An alien power source that produces energy seemingly out of nowhere."
 	circuit = /obj/item/circuitboard/machine/abductor/core
-	power_gen = 10000
+	power_gen = 10
 	irradiate = FALSE // Green energy!
 	can_buckle = FALSE
 	pixel_y = 7
@@ -603,7 +604,7 @@
 	visible_message("<span class='danger'>\The [src] lets out an shower of sparks as it starts to lose stability!</span>",\
 		"<span class='italics'>You hear a loud electrical crack!</span>")
 	playsound(src, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
-	tesla_zap(src, 5, power_gen * 0.05)
+	tesla_zap(src, 5, power_gen * 50)
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, get_turf(src), 2, 3, 4, 8), 100) // Not a normal explosion.
 
 /obj/machinery/power/rtg/abductor/bullet_act(obj/item/projectile/Proj)

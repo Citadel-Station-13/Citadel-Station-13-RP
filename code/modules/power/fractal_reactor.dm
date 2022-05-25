@@ -10,7 +10,8 @@
 	icon_state = "tracker" //ICON stolen from solar tracker. There is no need to make new texture for debug item
 	anchored = 1
 	density = 1
-	var/power_generation_rate = 1000000 //Defaults to 1MW of power.
+	/// in kw
+	var/power_generation_rate = 1000 //Defaults to 1MW of power.
 	var/powernet_connection_failed = 0
 	var/mapped_in = 0					//Do not announce creation when it's mapped in.
 
@@ -26,4 +27,4 @@
 			powernet_connection_failed = 1
 			spawn(150) // Error! Check again in 15 seconds.
 				powernet_connection_failed = 0
-	add_avail(power_generation_rate * 0.001)
+	add_avail(power_generation_rate)

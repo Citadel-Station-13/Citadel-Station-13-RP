@@ -324,12 +324,14 @@
 /obj/machinery/power/thermoregulator/overload(var/obj/machinery/power/source)
 	if(!anchored || !powernet)
 		return
-	var/power_avail = draw_power(active_power_usage * 10 * 0.001) * 1000
+	// 1.5 MW
+	var/power_avail = draw_power(1500)
 	var/datum/gas_mixture/env = loc.return_air()
 	if(env)
 		var/datum/gas_mixture/removed = env.remove_ratio(0.99)
 		if(removed)
-			removed.add_thermal_energy(power_avail*5)
+			// OH BOY!
+			removed.add_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
 			env.merge(removed)
 	var/turf/T = get_turf(src)
 	new /obj/effect/decal/cleanable/liquid_fuel(T, 5)
