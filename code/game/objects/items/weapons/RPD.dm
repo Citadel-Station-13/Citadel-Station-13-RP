@@ -94,12 +94,12 @@
 
 /obj/item/pipe_dispenser/equipped(mob/user, slot, initial)
 	. = ..()
-	if(slot == slot_r_hand || slot_l_hand)
+	if(slot == SLOT_ID_HANDS)
 		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, .proc/mouse_wheeled)
 	else
 		UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 
-/obj/item/pipe_dispenser/dropped(mob/user)
+/obj/item/pipe_dispenser/unequipped(mob/user, slot, accessory)
 	UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 	return ..()
 

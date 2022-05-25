@@ -58,16 +58,16 @@
 
 		if(1)
 			if(istype(W, /obj/item/stock_parts/console_screen))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				to_chat(user, "<span class='notice'>You add the lights to \the [src].</span>")
 				increase_step()
 				return
 
 		if(2)
 			if(istype(W, /obj/item/stock_parts/spring))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				to_chat(user, "<span class='notice'>You add the control system to \the [src].</span>")
 				increase_step()
 				return
@@ -100,8 +100,8 @@
 
 		if(4)
 			if(istype(W, /obj/item/cell))
-				user.drop_item()
-				W.forceMove(src)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				cell = W
 				to_chat(user, "<span class='notice'>You add the power supply to \the [src].</span>")
 				increase_step("powered [initial(name)]")
@@ -109,8 +109,8 @@
 
 		if(5)
 			if(istype(W, /obj/item/stock_parts/motor))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				to_chat(user, "<span class='notice'>You add the motor to \the [src].</span>")
 				increase_step()
 				return
@@ -136,7 +136,7 @@
 					playsound(loc, W.usesound, 30, 1)
 					var/obj/vehicle/train/engine/quadbike/built/product = new(src)
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
-					product.loc = get_turf(src)
+					product.forceMove(get_turf(src))
 					product.cell = cell
 					cell.forceMove(product)
 					cell = null
@@ -184,7 +184,6 @@
 				product.loc = get_turf(src)
 				user.drop_from_inventory(src)
 				qdel(src)
-				return
 
 /*
  * Space bike.
@@ -234,24 +233,24 @@
 
 		if(3)
 			if(istype(W, /obj/item/stock_parts/console_screen))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				to_chat(user, "<span class='notice'>You add the lights to \the [src].</span>")
 				increase_step()
 				return
 
 		if(4)
 			if(istype(W, /obj/item/stock_parts/spring))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				to_chat(user, "<span class='notice'>You add the control system to \the [src].</span>")
 				increase_step()
 				return
 
 		if(5)
 			if(istype(W, /obj/item/cell))
-				user.drop_item()
-				W.forceMove(src)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				cell = W
 				to_chat(user, "<span class='notice'>You add the power supply to \the [src].</span>")
 				increase_step("powered [initial(name)]")
@@ -271,4 +270,3 @@
 					cell = null
 					user.drop_from_inventory(src)
 					qdel(src)
-				return

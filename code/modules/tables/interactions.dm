@@ -58,19 +58,6 @@
 			return 1
 	return 1
 
-
-/obj/structure/table/MouseDrop_T(obj/O as obj, mob/user as mob)
-
-	if ((!( istype(O, /obj/item) ) || user.get_active_held_item() != O))
-		return ..()
-	if(isrobot(user))
-		return
-	user.drop_item()
-	if (O.loc != src.loc)
-		step(O, get_dir(O, src))
-	return
-
-
 /obj/structure/table/attackby(obj/item/W, mob/user, params)
 	if (!W)
 		return

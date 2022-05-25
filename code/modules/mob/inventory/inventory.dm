@@ -98,7 +98,10 @@
 				I.moveToNullspace()
 			else if(newloc != FALSE)
 				I.forceMove(newloc)
+		#warn dropped return to stop this from being true
 		I.dropped(src)
+		if(QDELETED(I))
+			. = FALSE
 
 /**
  * equips an item to a slot if possible

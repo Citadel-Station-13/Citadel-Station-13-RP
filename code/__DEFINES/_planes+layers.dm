@@ -218,5 +218,9 @@ What is the naming convention for planes or layers?
 	set_base_layer(initial(layer))
 	appearance_flags &= ~(NO_CLIENT_COLOR)
 
+/atom/proc/reset_plane_and_layer()
+	plane = initial(plane)
+	set_base_layer(initial(layer))
+
 //Check if a mob can "logically" see an atom plane
 #define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible))

@@ -115,12 +115,10 @@
 	throwforce = 7
 	var/board_item_type = null
 
-/obj/item/melee/skateboard/dropped(mob/user as mob)
-	..()
-	..()
+/obj/item/melee/skateboard/dropped(mob/user)
+	. = ..()
 	var/turf/T = get_turf(src)
 	new board_item_type(T)
-	user.drop_item(src)
 	qdel(src)
 
 /obj/item/melee/skateboard/improv

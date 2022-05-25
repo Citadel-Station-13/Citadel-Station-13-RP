@@ -74,9 +74,7 @@ var/global/list/stool_cache = list() //haha stool
 		user.visible_message("<span class='danger'>[user] breaks [src] over [M]'s back!</span>")
 		user.setClickCooldown(user.get_attack_speed())
 		user.do_attack_animation(M)
-
 		user.drop_from_inventory(src)
-
 		user.remove_from_mob(src)
 		dismantle()
 		qdel(src)
@@ -117,10 +115,6 @@ var/global/list/stool_cache = list() //haha stool
 			to_chat(user, "\The [src] is already padded.")
 			return
 		var/obj/item/stack/C = W
-		if(C.get_amount() < 1) // How??
-			user.drop_from_inventory(C)
-			qdel(C)
-			return
 		var/padding_type //This is awful but it needs to be like this until tiles are given a material var.
 		if(istype(W,/obj/item/stack/tile/carpet))
 			padding_type = "carpet"

@@ -96,28 +96,24 @@
 #define BLOCKHAIR			(1<<12)
 
 //!# bitflags for /obj/item/var/body_parts_covered
-#define HEAD        0x1
-#define FACE        0x2
-#define EYES        0x4
-#define UPPER_TORSO 0x8
-#define LOWER_TORSO 0x10
-#define LEG_LEFT    0x20
-#define LEG_RIGHT   0x40
-///  LEG_LEFT | LEG_RIGHT
-#define LEGS        0x60
-#define FOOT_LEFT   0x80
-#define FOOT_RIGHT  0x100
-/// FOOT_LEFT | FOOT_RIGHT
-#define FEET        0x180
-#define ARM_LEFT    0x200
-#define ARM_RIGHT   0x400
-///  ARM_LEFT | ARM_RIGHT
-#define ARMS        0x600
-#define HAND_LEFT   0x800
-#define HAND_RIGHT  0x1000
-/// HAND_LEFT | HAND_RIGHT
-#define HANDS       0x1800
-#define FULL_BODY   0xFFFF
+#define HEAD        (1<<0)
+#define FACE        (1<<1)
+#define EYES        (1<<2)
+#define UPPER_TORSO (1<<3)
+#define LOWER_TORSO (1<<4)
+#define LEG_LEFT    (1<<5)
+#define LEG_RIGHT   (1<<6)
+#define LEGS        (LEG_LEFT | LEG_RIGHT)
+#define FOOT_LEFT   (1<<7)
+#define FOOT_RIGHT  (1<<8)
+#define FEET        (FOOT_LEFT | FOOT_RIGHT)
+#define ARM_LEFT    (1<<9)
+#define ARM_RIGHT   (1<<10)
+#define ARMS        (ARM_LEFT | ARM_RIGHT)
+#define HAND_LEFT   (1<<11)
+#define HAND_RIGHT  (1<<12)
+#define HANDS       (HAND_LEFT | HAND_RIGHT)
+#define FULL_BODY   (ALL)
 
 // Flags for the organ_flags var on /obj/item/organ
 /*

@@ -91,6 +91,7 @@
 //If both fail it drops it on the floor and returns FALSE.
 //This is probably the main one you need to know :)
 /mob/proc/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE)
+	#warn MAKE SURE THIS, AND ALL PUT IN HAND PROCS FORCEMOVE STUFF.
 	if(!I)
 		return FALSE
 
@@ -141,7 +142,7 @@
 		qdel(I)
 		return FALSE
 	I.forceMove(drop_location())
-	I.reset_plane_and_layer()
+	I.hud_unlayerise()
 	I.dropped(src)
 	return FALSE
 
@@ -166,7 +167,7 @@
 	src.u_equip(O)
 	if (src.client)
 		src.client.screen -= O
-	O.reset_plane_and_layer()
+	O.hud_unlayerise()
 	O.screen_loc = null
 	if(istype(O, /obj/item))
 		var/obj/item/I = O
@@ -177,6 +178,7 @@
 		if(I.current_equipped_slot)
 			I.unequipped(src, I.current_equipped_slot)
 		if(target != src)
+			#warn dropped check for qdeleted
 			I.dropped(src)
 	return 1
 

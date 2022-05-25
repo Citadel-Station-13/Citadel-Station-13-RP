@@ -90,32 +90,20 @@
 			to_chat(user, "<span class='notice'>You secure the welder.</span>")
 		else
 			to_chat(user, "<span class='notice'>The welder can now be attached and modified.</span>")
-		src.add_fingerprint(user)
+		add_fingerprint(user)
 		return
 
 	if((!status) && (istype(W,/obj/item/stack/rods)))
 		var/obj/item/stack/rods/R = W
 		R.use(1)
-		var/obj/item/flamethrower/F = new/obj/item/flamethrower(user.loc)
-		src.loc = F
+		var/obj/item/flamethrower/F = new /obj/item/flamethrower(user.drop_location())
+		forceMove(F)
 		F.weldtool = src
-		if (user.client)
-			user.client.screen -= src
-		if (user.r_hand == src)
-			user.remove_from_mob(src)
-		else
-			user.remove_from_mob(src)
-		src.master = F
-		src.layer = initial(src.layer)
-		user.remove_from_mob(src)
-		if (user.client)
-			user.client.screen -= src
-		src.loc = F
-		src.add_fingerprint(user)
+		master = F
+		reset_plane_and_layer()
+		add_fingerprint(user)
 		return
-
 	..()
-	return
 
 /obj/item/weldingtool/process(delta_time)
 	if(welding)

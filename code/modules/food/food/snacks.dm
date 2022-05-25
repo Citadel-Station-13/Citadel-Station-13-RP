@@ -31,21 +31,17 @@
 		reagents.add_reagent("nutriment",nutriment_amt,nutriment_desc)
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
-/obj/item/reagent_containers/food/snacks/proc/On_Consume(var/mob/M)
-	if(!usr)
-		usr = M
+/obj/item/reagent_containers/food/snacks/proc/On_Consume(mob/M)
 	if(!reagents.total_volume)
 		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
-		usr.drop_from_inventory(src)	//so icons update :[
-
+		qdel(src)
 		if(trash)
 			if(ispath(trash,/obj/item))
-				var/obj/item/TrashItem = new trash(usr)
-				usr.put_in_hands(TrashItem)
+				var/obj/item/TrashItem = new trash(M)
+				if(!M.put_in_hands(TrashItem))
+					TrashItem.forceMove(M.drop_location())
 			else if(istype(trash,/obj/item))
-				usr.put_in_hands(trash)
-		qdel(src)
-	return
+				M.put_in_hands(trash)
 
 /obj/item/reagent_containers/food/snacks/attack_self(mob/user as mob)
 	return
@@ -203,11 +199,11 @@
 		if (hide_item)
 			if (W.w_class >= src.w_class || is_robot_module(W))
 				return
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 
 			to_chat(user, "<span class='warning'>You slip \the [W] inside \the [src].</span>")
-			user.drop_from_inventory(W, src)
 			add_fingerprint(user)
-			contents += W
 			return
 
 		if (has_edge(W))
