@@ -42,10 +42,10 @@
 			to_chat(user, "<span class='notice'>\The [src]'s mechanisms look secure.</span>")
 	if(istype(W, /obj/item/smes_coil/super_io) && panel_open)
 		visible_message("<span class='notice'>\The [user] begins to modify \the [src] with \the [W].</span>")
-		if(do_after(user, 300))
-			user.drop_from_inventory(W)
+		if(do_after(user, 10 SECONDS))
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			visible_message("<span class='notice'>\The [user] installs \the [W] onto \the [src].</span>")
-			qdel(W)
 			var/turf/T = get_turf(src)
 			var/new_machine = /obj/machinery/particle_smasher
 			new new_machine(T)
