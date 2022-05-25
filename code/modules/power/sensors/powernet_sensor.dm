@@ -110,10 +110,10 @@
 			load = render_power(load, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01)
 			out += "<td>[load]"
 
-	out += "<br><b>TOTAL AVAILABLE: [render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)]</b>"
-	out += "<br><b>APC LOAD: [render_power(total_apc_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)]</b>"
-	out += "<br><b>OTHER LOAD: [render_power(max(powernet.load - total_apc_load, 0), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)]</b>"
-	out += "<br><b>TOTAL GRID LOAD: [render_power(powernet.viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, FALSE, 0.01)] ([round((powernet.load / powernet.avail) * 100)]%)</b>"
+	out += "<br><b>TOTAL AVAILABLE: [render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)]</b>"
+	out += "<br><b>APC LOAD: [render_power(total_apc_load, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, TRUE)]</b>"
+	out += "<br><b>OTHER LOAD: [render_power(max(powernet.load - total_apc_load, 0), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)]</b>"
+	out += "<br><b>TOTAL GRID LOAD: [render_power(powernet.viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)] ([round((powernet.load / powernet.avail) * 100)]%)</b>"
 
 	if(powernet.problem)
 		out += "<br><b>WARNING: Abnormal grid activity detected!</b>"
@@ -166,10 +166,10 @@
 			// Add load of this APC to total APC load calculation
 			total_apc_load += A.lastused_total
 	data["apc_data"] = APC_data
-	data["total_avail"] = render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
-	data["total_used_apc"] = render_power(total_apc_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
-	data["total_used_other"] = render_power(max(powernet.load - total_apc_load, 0), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
-	data["total_used_all"] = render_power(powernet.viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
+	data["total_avail"] = render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)
+	data["total_used_apc"] = render_power(total_apc_load, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, TRUE)
+	data["total_used_other"] = render_power(max(powernet.load - total_apc_load, 0), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)
+	data["total_used_all"] = render_power(powernet.viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)
 
 	// Prevents runtimes when avail is 0 (division by zero)
 	if(powernet.avail)
