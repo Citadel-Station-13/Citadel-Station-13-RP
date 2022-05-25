@@ -115,14 +115,13 @@
 		if("replacenutri")
 			replaces_nutriment = !replaces_nutriment
 			. = TRUE
-		// VOREStation Edit: No automatic hydroponics
+		// No automatic hydroponics //TODO: Reconsider?
 		// if("collect")
 		// 	collects_produce = !collects_produce
 		// 	. = TRUE
 		// if("removedead")
 		// 	removes_dead = !removes_dead
 		// 	. = TRUE
-		// VOREStation Edit End
 
 /mob/living/bot/farmbot/update_icons()
 	if(on && action)

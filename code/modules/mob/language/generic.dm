@@ -50,7 +50,7 @@
 
 /datum/language/terminus
 	name = LANGUAGE_TERMINUS
-	desc = "A group of languages spoken by the Zorren with a certain degree of mutual intelligibility under each other. Evidence shows it was a single lingua franca which has diverged into many sub languages due to isolation." // VOREstation edit. Original : A soft language spoken by the people of the sparsely populated, socially-conscious Precursors' Crypt region.
+	desc = "A group of languages spoken by the Zorren with a certain degree of mutual intelligibility under each other. Evidence shows it was a single lingua franca which has diverged into many sub languages due to isolation."
 	speech_verb = "mentions"
 	exclaim_verb = "insinuates"
 	colour = "terminus"

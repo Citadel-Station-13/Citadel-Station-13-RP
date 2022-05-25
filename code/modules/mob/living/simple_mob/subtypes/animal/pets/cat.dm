@@ -155,7 +155,7 @@
 	holder_type = /obj/item/holder/cat/fluff/bones
 	randomized = FALSE
 
-// VOREStation Edit - Adds generic tactical kittens
+/// Tactical kittens!
 /obj/item/holder/cat/kitten
 	icon_state = "kitten"
 	w_class = ITEMSIZE_SMALL

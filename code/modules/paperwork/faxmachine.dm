@@ -210,7 +210,5 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 			to_chat(C, msg)
 			SEND_SOUND(C, sound('sound/machines/printer.ogg'))
 
-	// VoreStation Edit Start
 	var/faxid = export_fax(sent)
 	message_chat_admins(sender, faxname, sent, faxid, font_colour)
-	// VoreStation Edit End

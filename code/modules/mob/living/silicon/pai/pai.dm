@@ -47,8 +47,10 @@
 		"Fox" = "pai-fox",
 		"Parrot" = "pai-parrot",
 		"Rabbit" = "pai-rabbit",
-		"Bear" = "pai-bear", 		"Fennec" = "pai-fen",  // VOREStation Edit - Rykka
-		"Fennec" = "pai-typezero" 		)
+		"Bear" = "pai-bear",
+		"Fennec" = "pai-fen",
+		"Fennec" = "pai-typezero",
+		)
 
 	var/global/list/possible_say_verbs = list(
 		"Robotic" = list("states","declares","queries"),
@@ -56,10 +58,11 @@
 		"Beep" = list("beeps","beeps loudly","boops"),
 		"Chirp" = list("chirps","chirrups","cheeps"),
 		"Feline" = list("purrs","yowls","meows"),
-		"Canine" = list("yaps","barks","woofs")
+		"Canine" = list("yaps","barks","woofs"),
 		)
 
-	var/obj/item/pai_cable/cable		// The cable we produce and use when door or camera jacking
+	/// The cable we produce and use when door or camera jacking.
+	var/obj/item/pai_cable/cable
 
 	var/master				// Name of the one who commands us
 	var/master_dna			// DNA string for owner verification
