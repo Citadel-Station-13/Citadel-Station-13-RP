@@ -27,7 +27,7 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	init_rendering()
-	hook_vr("mob_new",list(src)) //VOREStation Code
+	hook_vr("mob_new",list(src))
 	update_transform() // Some mobs may start bigger or smaller than normal.
 	return ..()
 
@@ -435,7 +435,7 @@
 	set src in usr
 	if(usr != src)
 		to_chat(usr, "No.")
-	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)	//VOREStation Edit: separating out OOC notes
+	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)
 
 	if(msg != null)
 		flavor_text = msg

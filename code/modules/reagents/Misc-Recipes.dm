@@ -339,12 +339,9 @@
 		var/mob/living/L = holder.my_atom
 		if(L.stat != DEAD)
 			e.amount *= 0.5
-	//VOREStation Add Start
 	else
 		holder.clear_reagents() //No more powergaming by creating a tiny amount of this
-	//VORESTation Add End
 	e.start()
-	//holder.clear_reagents() //VOREStation Removal
 	return
 
 /datum/chemical_reaction/flash_powder
@@ -389,10 +386,8 @@
 	// 100 created volume = 4 heavy range & 7 light range. A few tiles smaller than traitor EMP grandes.
 	// 200 created volume = 8 heavy range & 14 light range. 4 tiles larger than traitor EMP grenades.
 	empulse(location, round(created_volume / 24), round(created_volume / 20), round(created_volume / 18), round(created_volume / 14), 1)
-	//VOREStation Edit Start
 	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
 		holder.clear_reagents()
-	//VOREStation Edit End
 	return
 
 /datum/chemical_reaction/nitroglycerin
@@ -411,13 +406,10 @@
 		var/mob/living/L = holder.my_atom
 		if(L.stat!=DEAD)
 			e.amount *= 0.5
-	//VOREStation Add Start
 	else
 		holder.clear_reagents() //No more powergaming by creating a tiny amount of this
-	//VOREStation Add End
 	e.start()
 
-	//holder.clear_reagents() //VOREStation Removal
 	return
 
 /datum/chemical_reaction/napalm
@@ -450,10 +442,8 @@
 	playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
 	spawn(0)
 		S.start()
-	//VOREStation Edit Start
 	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
 		holder.clear_reagents()
-	//VOREStation Edit End
 	return
 
 /datum/chemical_reaction/foam
@@ -473,10 +463,8 @@
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(created_volume, location, holder, 0)
 	s.start()
-	//VOREStation Edit Start
 	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
 		holder.clear_reagents()
-	//VOREStation Edit End
 	return
 
 /datum/chemical_reaction/metalfoam
@@ -930,40 +918,6 @@
 	result = "slimejelly"
 	required_reagents = list(MAT_PHORON = 20, "sugar" = 50, "lithium" = 50) //In case a xenobiologist is impatient and is willing to drain their dispenser resources, along with plasma!
 	result_amount = 5
-
-/* //VORESTATION AI TEMPORARY REMOVAL
-/datum/chemical_reaction/slimevore
-	name = "Slime Vore" // Hostile vore mobs only
-	id = "m_tele"
-	result = null
-	required_reagents = list(MAT_PHORON = 20, "nutriment" = 20, "sugar" = 20, "mutationtoxin" = 20) //Can't do slime jelly as it'll conflict with another, but mutation toxin will do.
-	result_amount = 1
-	on_reaction(var/datum/reagents/holder)
-		var/mob_path = /mob/living/simple_mob
-		var/blocked = list(
-			/mob/living/simple_mob/hostile/mimic,
-			/mob/living/simple_mob/animal/space/alien/queen,
-			/mob/living/simple_mob/shadekin
-			)//exclusion list for things you don't want the reaction to create.
-		var/list/voremobs = typesof(mob_path) - mob_path - blocked // list of possible hostile mobs
-
-		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
-/* Removed at some point, unsure what to replace with
-		for(var/mob/living/carbon/human/M in viewers(get_turf(holder.my_atom), null))
-			if(M:eyecheck() <= 0)
-				flick("e_flash", M.flash)
-*/
-		var/spawn_count = rand(1,3)
-		for(var/i = 1, i <= spawn_count, i++)
-			var/chosen = pick(voremobs)
-			var/mob/living/simple_mob/hostile/C = new chosen
-			C.faction = "slimesummon"
-			C.loc = get_turf(holder.my_atom)
-			if(prob(50))
-				for(var/j = 1, j <= rand(1, 3), j++)
-					step(C, pick(NORTH,SOUTH,EAST,WEST))
-*/
-
 
 //Xenochimera revival
 /datum/chemical_reaction/xenolazarus

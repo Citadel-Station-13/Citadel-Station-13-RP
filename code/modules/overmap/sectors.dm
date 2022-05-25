@@ -202,7 +202,7 @@
 		return FALSE
 	has_distress_beacon = TRUE
 
-	admin_chat_message(message = "Overmap panic button hit on z[z] ([name]) by '[user?.ckey || "Unknown"]'", color = "#FF2222") //VOREStation Add
+	admin_chat_message(message = "Overmap panic button hit on z[z] ([name]) by '[user?.ckey || "Unknown"]'", color = "#FF2222")
 	var/message = "This is an automated distress signal from a MIL-DTL-93352-compliant beacon transmitting on [PUB_FREQ*0.1]kHz. \
 	This beacon was launched from '[initial(name)]'. I can provide this additional information to rescuers: [get_distress_info()]. \
 	Per the Interplanetary Convention on Space SAR, those receiving this message must attempt rescue, \

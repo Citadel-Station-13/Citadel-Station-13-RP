@@ -312,7 +312,7 @@
 		return
 
 	var/module_type = GLOB.robot_modules[modtype]
-	transform_with_anim()	//VOREStation edit: sprite animation
+	transform_with_anim()
 	new module_type(src)
 
 	hands.icon_state = lowertext(modtype)
@@ -408,7 +408,7 @@
 	lights_on = !lights_on
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 	handle_light()
-	updateicon() //VOREStation Add - Since dogborgs have sprites for this
+	updateicon()
 
 /mob/living/silicon/robot/verb/self_diagnosis_verb()
 	set category = "Robot Commands"
@@ -761,7 +761,7 @@
 	return
 
 /mob/living/silicon/robot/proc/module_reset()
-	transform_with_anim() //VOREStation edit: sprite animation
+	transform_with_anim()
 	uneq_all()
 	modtype = initial(modtype)
 	hands.icon_state = initial(hands.icon_state)
@@ -1107,12 +1107,12 @@
 			icontype = module_sprites[1]
 	else
 		icontype = input("Select an icon! [triesleft ? "You have [triesleft] more chance\s." : "This is your last try."]", "Robot Icon", icontype, null) in module_sprites
-		if(notransform)				//VOREStation edit start: sprite animation
+		if(notransform)
 			to_chat(src, "Your current transformation has not finished yet!")
 			choose_icon(icon_selection_tries, module_sprites)
 			return
 		else
-			transform_with_anim()	//VOREStation edit end: sprite animation
+			transform_with_anim()
 
 	if(icontype == "Custom")
 		icon = CUSTOM_ITEM_SYNTH

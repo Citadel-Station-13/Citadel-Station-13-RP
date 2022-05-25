@@ -196,7 +196,7 @@
 	desc = "This is the HoP's trusty corgi. He does the best he can."
 	var/turns_since_scan = 0
 	var/obj/movement_target
-	makes_dirt = FALSE	//VOREStation edit: no more dirt
+	makes_dirt = FALSE
 	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/dog/corgi/Ian/Life()

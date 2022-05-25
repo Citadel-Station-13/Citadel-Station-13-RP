@@ -69,8 +69,8 @@
 	human_mob_list -= src
 	for(var/organ in organs)
 		qdel(organ)
-	QDEL_NULL(nif)	//VOREStation Add
-	QDEL_LIST_NULL(vore_organs) //VOREStation Add
+	QDEL_NULL(nif)
+	QDEL_LIST_NULL(vore_organs)
 	cleanup_world_bender_hud()
 	return ..()
 
@@ -657,7 +657,7 @@
 				src << browse(null, "window=flavor_changes")
 				return
 			if("general")
-				var/msg = sanitize(input(usr,"Update the general description of your character. This will be shown regardless of clothing.","Flavor Text",html_decode(flavor_texts[href_list["flavor_change"]])) as message, extra = 0)	//VOREStation Edit: separating out OOC notes
+				var/msg = sanitize(input(usr,"Update the general description of your character. This will be shown regardless of clothing.","Flavor Text",html_decode(flavor_texts[href_list["flavor_change"]])) as message, extra = 0)
 				flavor_texts[href_list["flavor_change"]] = msg
 				return
 			else
@@ -1190,7 +1190,7 @@
 	species.create_organs(src)
 	species.create_blood(src)
 	species.handle_post_spawn(src)
-	species.update_attack_types() //VOREStation Edit - Required for any trait that updates unarmed_types in setup.
+	species.update_attack_types() // Required for any trait that updates unarmed_types in setup.
 
 	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
 	update_hud()
@@ -1205,7 +1205,7 @@
 			descriptors[desctype] = descriptor.default_value
 
 	// dumb shit transformation shit here
-	if(example)						//VOREStation Edit begin
+	if(example)
 		if(!(example == src))
 			r_skin = example.r_skin
 			g_skin = example.g_skin
@@ -1465,8 +1465,8 @@
 /mob/living/carbon/human/Check_Shoegrip()
 	if(shoes && (shoes.clothing_flags & NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
 		return 1
-	if(flying) //VOREStation Edit. Checks to see if they have wings and are flying.
-		return 1 //VOREStation Edit.
+	if(flying) // Checks to see if they have wings and are flying.
+		return 1
 	return 0
 
 /mob/living/carbon/human/can_stand_overridden()
@@ -1560,8 +1560,8 @@
 
 /mob/living/carbon/human/proc/get_display_species()
 	//Shows species in tooltip
-	if(src.custom_species) //VOREStation Add
-		return custom_species //VOREStation Add
+	if(src.custom_species)
+		return custom_species
 	//Beepboops get special text if obviously beepboop
 	if(looksSynthetic())
 		if(gender == MALE)

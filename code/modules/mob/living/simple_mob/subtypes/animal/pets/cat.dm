@@ -32,7 +32,7 @@
 
 	var/mob/living/friend = null // Our best pal, who we'll follow. Meow.
 	var/named = FALSE //have I been named yet?
-	var/friend_name = null //VOREStation Edit - Lock befriending to this character
+	var/friend_name = null // Lock befriending to this character
 
 	meat_amount = 2
 	bone_amount = 2

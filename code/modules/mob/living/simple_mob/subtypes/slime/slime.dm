@@ -173,16 +173,14 @@
 		give_hat(I, user)
 		return
 
-	//VOREStation Edit Start
 	var/can_miss = TRUE
 	for(var/item_type in allowed_attack_types)
 		if(istype(I, item_type))
 			can_miss = FALSE
 			break
-	//VOREStation Edit End
 
 	// Otherwise they're probably fighting the slime.
-	if(prob(25) && can_miss)	//VOREStation Edit
+	if(prob(25) && can_miss)
 		visible_message(SPAN_WARNING( "\The [user]'s [I] passes right through \the [src]!"))
 		user.setClickCooldown(user.get_attack_speed(I))
 		return

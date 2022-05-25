@@ -630,7 +630,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 				t_him = "him"
 			if(FEMALE)
 				t_him = "her"
-	if(H.zone_sel.selecting == "head") //VOREStation Edit - Headpats and Handshakes.
+	if(H.zone_sel.selecting == "head") // Headpats and Handshakes!
 		H.visible_message( \
 			"<span class='notice'>[H] pats [target] on the head.</span>", \
 			"<span class='notice'>You pat [target] on the head.</span>", )

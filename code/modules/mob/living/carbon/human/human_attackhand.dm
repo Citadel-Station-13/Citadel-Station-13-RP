@@ -126,9 +126,7 @@
 
 			H.do_attack_animation(src)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-			//VORESTATION EDIT
 			visible_message("<span class='warning'>[M] has grabbed [src] [(M.zone_sel.selecting == BP_L_HAND || M.zone_sel.selecting == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!</span>")
-			//VORESTATION END END
 
 			return TRUE
 

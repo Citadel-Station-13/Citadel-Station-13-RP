@@ -10,7 +10,6 @@
 #define LIGHT_BURNED 3
 ///K - used value for a 60W bulb
 #define LIGHT_BULB_TEMPERATURE 400
-///VOREStation Edit: why the fuck are lights eating so much power, 2W per thing
 ///5W per luminosity * range
 #define LIGHTING_POWER_FACTOR 2
 ///How much power emergency lights will consume per tick
@@ -267,7 +266,7 @@ var/global/list/light_type_cache = list()
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light/bulb
 	construct_type = /obj/machinery/light_construct/small
-	shows_alerts = FALSE	//VOREStation Edit
+	shows_alerts = FALSE
 
 /obj/machinery/light/small/flicker
 	auto_flicker = TRUE
@@ -286,7 +285,7 @@ var/global/list/light_type_cache = list()
 	desc = "A floor lamp."
 	light_type = /obj/item/light/bulb
 	construct_type = /obj/machinery/light_construct/flamp
-	shows_alerts = FALSE	//VOREStation Edit
+	shows_alerts = FALSE
 	var/lamp_shade = 1
 
 /obj/machinery/light/flamp/Initialize(mapload, obj/machinery/light_construct/construct)
@@ -311,17 +310,15 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/spot
 	name = "spotlight"
 	light_type = /obj/item/light/tube/large
-	shows_alerts = FALSE	//VOREStation Edit
+	shows_alerts = FALSE
 
 /obj/machinery/light/spot/flicker
 	auto_flicker = TRUE
 
-//VOREStation Add - Shadeless!
 /obj/machinery/light/flamp/noshade/Initialize(mapload, obj/machinery/light_construct/construct)
 	. = ..()
 	lamp_shade = 0
 	update(0)
-//VOREStation Add End
 
 // create a new lighting fixture
 /obj/machinery/light/Initialize(mapload, obj/machinery/light_construct/construct)
@@ -354,14 +351,12 @@ var/global/list/light_type_cache = list()
 
 /obj/machinery/light/update_icon()
 
-	switch(status)		// set icon_states
+	switch(status) // set icon_states
 		if(LIGHT_OK)
-			//VOREStation Edit Start
 			if(shows_alerts && current_alert && on)
 				icon_state = "[base_state]-alert-[current_alert]"
 			else
 				icon_state = "[base_state][on]"
-			//VOREStation Edit End
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 			on = 0
@@ -392,7 +387,7 @@ var/global/list/light_type_cache = list()
 	else
 		base_state = "flamp"
 		..()
-//VOREStation Edit Start
+
 /obj/machinery/light/proc/set_alert_atmos()
 	if(shows_alerts)
 		current_alert = "atmos"
@@ -413,17 +408,15 @@ var/global/list/light_type_cache = list()
 		brightness_color = initial(brightness_color) || "" // Workaround for BYOND stupidity. Can't set it to null or it won't clear.
 		if(on)
 			update()
-//VOREstation Edit End
+
 // update lighting
 /obj/machinery/light/proc/update(var/trigger = 1)
 	update_icon()
-	//VOREStation Edit Start
 	if(!on)
 		needsound = TRUE // Play sound next time we turn on
 	else if(needsound)
 		playsound(src.loc, 'sound/effects/lighton.ogg', 65, 1)
 		needsound = FALSE // Don't play sound again until we've been turned off
-	//VOREStation Edit End
 
 	if(on)
 		var/correct_range = nightshift_enabled ? brightness_range_ns : brightness_range

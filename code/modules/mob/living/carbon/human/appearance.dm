@@ -22,7 +22,6 @@
 		return
 
 	src.gender = gender
-	//reset_hair() //VOREStation Remove - Don't just randomize hair on gender swaps for prometheans.
 	update_icons_body()
 	update_dna()
 	return 1

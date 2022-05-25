@@ -3,7 +3,7 @@
 
 	if (transforming)
 		return
-	handle_modifiers() //VOREStation Edit - Needs to be done even if in nullspace.
+	handle_modifiers() // Needs to be done even if in nullspace.
 	if(!loc)
 		return
 
@@ -41,9 +41,6 @@
 
 	//Check if we're on fire
 	handle_fire()
-
-	//stuff in the stomach
-	//handle_stomach() //VOREStation Code
 
 	update_gravity(mob_has_gravity())
 
