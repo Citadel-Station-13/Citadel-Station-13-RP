@@ -72,6 +72,52 @@
 #warn impl on rigs
 #warn impl in mob_can_equip/has limb for equip
 
+//!# bitflags for the /obj/item/var/flags_inv variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
+// WARNING: The following flags apply only to the external suit!
+#define HIDEGLOVES      	(1<<0)
+#define HIDESUITSTORAGE 	(1<<1)
+#define HIDEJUMPSUIT    	(1<<2)
+#define HIDESHOES       	(1<<3)
+#define HIDETAIL        	(1<<4)
+#define HIDETIE         	(1<<5)
+///Some clothing hides holsters, but not all accessories
+#define HIDEHOLSTER     	(1<<6)
+// WARNING: The following flags apply only to the helmets and masks!
+#define HIDEMASK 			(1<<7)
+/// Headsets and such.
+#define HIDEEARS			(1<<8)
+/// Glasses.
+#define HIDEEYES			(1<<9)
+/// Dictates whether we appear as "Unknown".
+#define HIDEFACE			(1<<10)
+/// Hides the user's hair overlay. Leaves facial hair.
+#define BLOCKHEADHAIR		(1<<11)
+/// Hides the user's hair, facial and otherwise.
+#define BLOCKHAIR			(1<<12)
+
+//!# bitflags for /obj/item/var/body_parts_covered
+#define HEAD        0x1
+#define FACE        0x2
+#define EYES        0x4
+#define UPPER_TORSO 0x8
+#define LOWER_TORSO 0x10
+#define LEG_LEFT    0x20
+#define LEG_RIGHT   0x40
+///  LEG_LEFT | LEG_RIGHT
+#define LEGS        0x60
+#define FOOT_LEFT   0x80
+#define FOOT_RIGHT  0x100
+/// FOOT_LEFT | FOOT_RIGHT
+#define FEET        0x180
+#define ARM_LEFT    0x200
+#define ARM_RIGHT   0x400
+///  ARM_LEFT | ARM_RIGHT
+#define ARMS        0x600
+#define HAND_LEFT   0x800
+#define HAND_RIGHT  0x1000
+/// HAND_LEFT | HAND_RIGHT
+#define HANDS       0x1800
+#define FULL_BODY   0xFFFF
 
 // Flags for the organ_flags var on /obj/item/organ
 /*

@@ -128,98 +128,95 @@
 	else
 
 		to_chat(M, "<span class='notice'>We begin growing our new equipment...</span>")
+		playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
 
 		var/list/grown_items_list = list()
 
 		var/t = stuff_to_equip["head"]
 		if(!M.head && t)
-			var/I = new t
+			var/obj/item/I = new t
+			ADD_TRAIT(I, TRAIT_NODROP, CHANGELING_TRAIT)
 			M.equip_to_slot_or_del(I, SLOT_ID_HEAD)
 			grown_items_list.Add("a helmet")
-			playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
 			success = 1
-			sleep(1 SECOND)
 
 		t = stuff_to_equip["w_uniform"]
 		if(!M.w_uniform && t)
-			var/I = new t
+			var/obj/item/I = new t
+			ADD_TRAIT(I, TRAIT_NODROP, CHANGELING_TRAIT)
 			M.equip_to_slot_or_del(I, SLOT_ID_UNIFORM)
 			grown_items_list.Add("a uniform")
-			playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
 			success = 1
-			sleep(1 SECOND)
 
 		t = stuff_to_equip["gloves"]
 		if(!M.gloves && t)
-			var/I = new t
+			var/obj/item/I = new t
+			ADD_TRAIT(I, TRAIT_NODROP, CHANGELING_TRAIT)
 			M.equip_to_slot_or_del(I, SLOT_ID_GLOVES)
 			grown_items_list.Add("some gloves")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
-			sleep(1 SECOND)
 
 		t = stuff_to_equip["shoes"]
 		if(!M.shoes && t)
-			var/I = new t
+			var/obj/item/I = new t
+			ADD_TRAIT(I, TRAIT_NODROP, CHANGELING_TRAIT)
 			M.equip_to_slot_or_del(I, SLOT_ID_SHOES)
 			grown_items_list.Add("shoes")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
-			sleep(1 SECOND)
 
 		t = stuff_to_equip["belt"]
 		if(!M.belt && t)
-			var/I = new t
+			var/obj/item/I = new t
+			ADD_TRAIT(I, TRAIT_NODROP, CHANGELING_TRAIT)
 			M.equip_to_slot_or_del(I, SLOT_ID_BELT)
 			grown_items_list.Add("a belt")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
-			sleep(1 SECOND)
 
 		t = stuff_to_equip["glasses"]
 		if(!M.glasses && t)
-			var/I = new t
+			var/obj/item/I = new t
+			ADD_TRAIT(I, TRAIT_NODROP, CHANGELING_TRAIT)
 			M.equip_to_slot_or_del(I, SLOT_ID_GLASSES)
 			grown_items_list.Add("some glasses")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
-			sleep(1 SECOND)
 
 		t = stuff_to_equip["wear_mask"]
 		if(!M.wear_mask && t)
-			var/I = new t
+			var/obj/item/I = new t
+			ADD_TRAIT(I, TRAIT_NODROP, CHANGELING_TRAIT)
 			M.equip_to_slot_or_del(I, SLOT_ID_MASK)
 			grown_items_list.Add("a mask")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
-			sleep(1 SECOND)
 
 		t = stuff_to_equip["back"]
 		if(!M.back && t)
-			var/I = new t
+			var/obj/item/I = new t
+			ADD_TRAIT(I, TRAIT_NODROP, CHANGELING_TRAIT)
 			M.equip_to_slot_or_del(I, SLOT_ID_BACK)
 			grown_items_list.Add("a backpack")
-			playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
 			success = 1
-			sleep(1 SECOND)
 
 		t = stuff_to_equip["wear_suit"]
 		if(!M.wear_suit && t)
-			var/I = new t
+			var/obj/item/I = new t
+			ADD_TRAIT(I, TRAIT_NODROP, CHANGELING_TRAIT)
 			M.equip_to_slot_or_del(I, SLOT_ID_SUIT)
 			grown_items_list.Add("an exosuit")
-			playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
 			success = 1
-			sleep(1 SECOND)
 
 		t = stuff_to_equip["wear_id"]
 		if(!M.wear_id && t)
-			var/I = new t
+			var/obj/item/I = new t
+			ADD_TRAIT(I, TRAIT_NODROP, CHANGELING_TRAIT)
 			M.equip_to_slot_or_del(I, SLOT_ID_WORN_ID)
 			grown_items_list.Add("an ID card")
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			success = 1
-			sleep(1 SECOND)
 
 		var/feedback = english_list(grown_items_list, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
 

@@ -7,6 +7,10 @@
 	var/item_flags = NONE
 	/// Miscellaneous flags pertaining to equippable objects. - see [code/__DEFINES/_flags/item_flags.dm]
 	var/clothing_flags = NONE
+	/// flags for items hidden by this item when worn. as of right now, some flags only work in some slots.
+	var/flags_inv = 0
+	/// flags for the bodyparts this item covers when worn.
+	var/body_parts_covered = 0
 
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
@@ -53,12 +57,6 @@
 	var/action_button_name
 	/// If 1, bypass the restrained, lying, and stunned checks action buttons normally test for
 	var/action_button_is_hands_free = 0
-
-	//This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
-	//It should be used purely for appearance. For gameplay effects caused by items covering body parts, use body_parts_covered.
-	var/flags_inv = 0
-	/// See setup.dm for appropriate bit flags
-	var/body_parts_covered = 0
 
 	var/tool_behaviour = NONE
 
