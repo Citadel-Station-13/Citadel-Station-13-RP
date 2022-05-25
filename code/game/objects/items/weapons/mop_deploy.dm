@@ -53,7 +53,6 @@
 	. = ..()
 
 /obj/item/mop_deploy/attack_self(mob/user as mob)
-	user.drop_from_inventory(src)
 	qdel(src)
 
 /obj/item/mop_deploy/dropped()

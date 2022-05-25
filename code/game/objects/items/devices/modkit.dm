@@ -24,7 +24,6 @@
 
 	if(!parts)
 		to_chat(user, "<span class='warning'>This kit has no parts for this modification left.</span>")
-		user.drop_from_inventory(src)
 		qdel(src)
 		return
 
@@ -60,7 +59,6 @@
 		parts &= ~MODKIT_SUIT
 
 	if(!parts)
-		user.drop_from_inventory(src)
 		qdel(src)
 
 /obj/item/modkit/examine(mob/user)

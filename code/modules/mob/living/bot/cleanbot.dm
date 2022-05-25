@@ -243,7 +243,6 @@
 		var/mob/living/bot/cleanbot/A = new /mob/living/bot/cleanbot(T)
 		A.name = created_name
 		to_chat(user, "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>")
-		user.drop_from_inventory(src)
 		qdel(src)
 
 	else if(istype(W, /obj/item/stack/material/steel))
@@ -254,7 +253,6 @@
 			var/mob/living/bot/cleanbot/roomba/A = new /mob/living/bot/cleanbot/roomba(T)
 			A.name = created_name
 			to_chat(user, "<span class='notice'>You add the metal sheets onto and around the bucket and sensor assembly. Beep boop!</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need five sheets of metal to encase the sensor.</span>")

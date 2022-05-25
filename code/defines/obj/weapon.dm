@@ -281,7 +281,6 @@
 	if(D.is_wirecutter())
 		to_chat(user, "<span class='notice'>You snap the handle of \the [src] with \the [D].  It's too warped to stand on its own now.</span>")
 		user.put_in_hands(new /obj/item/clothing/suit/armor/caution)
-		user.drop_from_inventory(src)
 		qdel(src)
 	else
 		return ..()

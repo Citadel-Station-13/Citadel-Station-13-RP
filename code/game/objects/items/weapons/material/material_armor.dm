@@ -271,7 +271,6 @@ Protectiveness | Armor %
 			to_chat(user, "<span class='notice'>You apply some [S.material.use_name] to \the [src].  Hopefully it'll make the makeshift helmet stronger.</span>")
 			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(null, S.material.name)
 			user.put_in_hands(helmet)
-			user.drop_from_inventory(src)
 			qdel(src)
 			return
 		else

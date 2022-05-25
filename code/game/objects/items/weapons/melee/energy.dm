@@ -514,7 +514,6 @@
 	return ..()
 
 /obj/item/melee/energy/blade/attack_self(mob/user as mob)
-	user.drop_from_inventory(src)
 	qdel(src)
 
 /obj/item/melee/energy/blade/dropped()

@@ -570,7 +570,6 @@
 		new /obj/item/stack/material/plastic(drop_location(), 6)
 		var/turf/T = get_turf(src)
 		new /obj/item/scooter_frame(T)
-		user.drop_from_inventory(src)
 		qdel(src)
 	if(has_buckled_mobs())
 		var/mob/living/carbon/H = buckled_mobs[1]

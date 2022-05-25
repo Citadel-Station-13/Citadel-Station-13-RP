@@ -81,7 +81,6 @@
 						Trailer.forceMove(get_turf(src))
 						Trailer.increase_step("framed [initial(Trailer.name)]")
 						to_chat(user, "<span class='notice'>You convert \the [src] into \the [Trailer].</span>")
-						user.drop_from_inventory(src)
 						qdel(src)
 				return
 
