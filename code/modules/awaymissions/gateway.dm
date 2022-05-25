@@ -243,12 +243,10 @@
 			to_chat(user, "<font color='black'>The gate is already calibrated, there is no work for you to do here.</font>")
 			return
 		else
-			// VOREStation Add
 			stationgate = locate(/obj/machinery/gateway/centerstation)
 			if(!stationgate)
 				to_chat(user, "<span class='notice'>Error: Recalibration failed. No destination found... That can't be good.</span>")
 				return
-			// VOREStation Add End
 			else
 				to_chat(user, "<font color=#4F49AF><b>Recalibration successful!</b>:</font><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target.</font>")
 				calibrated = 1

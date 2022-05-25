@@ -402,10 +402,8 @@
 	if(href_list["item"])
 		handle_strip(href_list["item"],usr)
 
-	// VOREStation Start
 	if(href_list["ooc_notes"])
 		src.Examine_OOC()
-	// VOREStation End
 
 	if (href_list["criminal"])
 		if(hasHUD(usr,"security"))
@@ -733,12 +731,10 @@
 
 	return 1
 
-/mob/living/carbon/human/IsAdvancedToolUser(var/silent)
-	// VOREstation start
+/mob/living/carbon/human/IsAdvancedToolUser(silent)
 	if(feral)
 		to_chat(src, "<span class='warning'>Your primitive mind can't grasp the concept of that thing.</span>")
 		return 0
-	// VOREstation end
 	if(species.has_fine_manipulation)
 		return 1
 	if(!silent)
