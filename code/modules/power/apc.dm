@@ -1107,7 +1107,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(src.attempt_charging())
 			if(excess > 0)		// check to make sure we have enough to charge
 				// Max charge is capped to % per second constant
-				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.maxcharge * chargelevel)
+				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.maxcharge * chargelevel, cell.maxcharge - cell.charge)
 				ch = draw_power(DYNAMIC_CELL_UNITS_TO_KW(ch, 1)) // Removes the power we're taking from the grid
 				cell.give(ch) // actually recharge the cell
 				lastused_charging = ch

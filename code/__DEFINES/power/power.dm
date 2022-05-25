@@ -156,26 +156,34 @@
 #define DYNAMIC_KJ_TO_CELL_UNITS(KJ)		((KJ) / GLOB.cellrate)
 #define DYNAMIC_J_TO_CELL_UNITS(J)			(((J) * 0.001) / GLOB.cellrate)
 #define DYNAMIC_CELL_UNITS_TO_KJ(U)			((U) * GLOB.cellrate)
-#define DYNAMIC_CELL_UNITS_TO_J(U)			((U) * 1000 * GLOB.cellrate)
+#define DYNAMIC_CELL_UNITS_TO_J(U)			((U) * (1000 * GLOB.cellrate))
 /// dt in seconds
 #define DYNAMIC_W_TO_CELL_UNITS(W, DT)		(DYNAMIC_J_TO_CELL_UNITS(W) * (DT))
 /// dt in seconds
 #define DYNAMIC_KW_TO_CELL_UNITS(KW, DT)	(DYNAMIC_KJ_TO_CELL_UNITS(KW) * (DT))
 /// dt in "seconds this will be drained over" - usually 1
-#define DYNAMIC_CELL_UNITS_TO_W(U, DT)		((((U) * GLOB.cellrate) * 1000) / (DT))
+#define DYNAMIC_CELL_UNITS_TO_W(U, DT)		(DYNAMIC_CELL_UNITS_TO_J(U) / (DT))
 /// dt in "seconds this will sbe drained over" - usually 1
-#define DYNAMIC_CELL_UNITS_TO_KW(U, DT)		(((U) * GLOB.cellrate) / (DT))
-#define DYNAMIC_WH_TO_CELL_UNITS(WH)		((0.36 * (WH)) / GLOB.cellrate)
+#define DYNAMIC_CELL_UNITS_TO_KW(U, DT)		(DYNAMIC_CELL_UNITS_TO_KJ(U) / (DT))
+#define DYNAMIC_WH_TO_CELL_UNITS(WH)		((3.6 * (WH)) / GLOB.cellrate)
 #define DYNAMIC_KWH_TO_CELL_UNITS(KWH)		((3600 * (KWH)) / GLOB.cellrate)
 #define DYNAMIC_CELL_UNITS_TO_KWH(U)		(((U) * GLOB.cellrate) / (60 * 60))
 #define DYNAMIC_CELL_UNITS_TO_WH(U)			(((U) * GLOB.cellrate) / ((60 * 60) / 1000))
 #define DYNAMIC_KWM_TO_CELL_UNITS(KWM)		(((KWM) * 60) / GLOB.cellrate)
 #define DYNAMIC_WM_TO_CELL_UNITS(WM)		(((WM) * (60 / 1000)) / GLOB.cellrate)
-#define DYNAMIC_CELL_UNITS_TO_KWM(U)		(((U) * GLOB.cellrate) / 60)
+#define DYNAMIC_CELL_UNITS_TO_KWM(U)		(((U) * GLOB.cellrate) / (60))
 #define DYNAMIC_CELL_UNITS_TO_WM(U)			(((U) * GLOB.cellrate) / (60 / 1000))
 
 /// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
-GLOBAL_VAR_INIT(cellrate, 0.05)
+GLOBAL_VAR_INIT(cellrate, 0.5)
+/**
+ * current calculations
+ * cellrate 0.5 = 0.5 kj/unit
+ * for 10k cell, 5000kj
+ * 1 Wh = 60J-S*60s/m = 3600J = 3.6kJ
+ * 10k cell --> 1388.89 Wh
+ * damn, future cells be pogging
+ */
 /// the closest thing we'll get to a cvar - affects cell use_scaled - higher = things use less energy. handheld devices usually use this.
 GLOBAL_VAR_INIT(cellefficiency, 1)
 
@@ -183,8 +191,6 @@ GLOBAL_VAR_INIT(cellefficiency, 1)
  * OLD CALCS FOR ABOVE
  * Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
  * = 50Ws/u
- * 1000u -> 50000Ws -> 138.889 Wh
- * 1200u -> 166.667 Wh
  * #define CELLRATE 0.002 // It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
  */
 
