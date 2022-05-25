@@ -142,10 +142,9 @@ GLOBAL_LIST_EMPTY(smeses)
 
 	//inputting
 	if(input_attempt && (!input_pulsed && !input_cut) && !grid_check)
-		#warn fuck you
-		var/target_load = min((capacity-charge)/SMESRATE, input_level)	// charge at set rate, limited to spare capacity
+		var/target_load = min(KWM_TO_KW(capacity - charge, 1), input_level)	// charge at set rate, limited to spare capacity
 		var/actual_load = draw_power(target_load)						// add the load to the terminal side network
-		charge += actual_load * SMESRATE								// increase the charge
+		charge += KW_TO_KWM(actual_load, 1)								// increase the charge
 
 		if (actual_load >= target_load) // Did we charge at full rate?
 			inputting = 2
@@ -153,12 +152,10 @@ GLOBAL_LIST_EMPTY(smeses)
 			inputting = 1
 		else // Or not at all?
 			inputting = 0
-	#warn FUCK YOU
 	//outputting
 	if(outputting && (!output_pulsed && !output_cut) && !grid_check)
-		output_used = min( charge/SMESRATE, output_level)		//limit output to that stored
-
-		charge -= output_used*SMESRATE		// reduce the storage (may be recovered in /restore() if excessive)
+		output_used = min(KWM_TO_KW(charge, 1), output_level)		//limit output to that stored
+		charge -= KW_TO_KWM(output_used, 1)	// reduce the storage (may be recovered in /restore() if excessive)
 
 		add_avail(output_used)				// add output to powernet (smes side)
 
@@ -175,8 +172,6 @@ GLOBAL_LIST_EMPTY(smeses)
 	if(last_disp != chargedisplay() || last_chrg != inputting || last_onln != outputting)
 		update_icon()
 
-
-
 // called after all power processes are finished
 // restores charge level to smes if there was excess this ptick
 /obj/machinery/power/smes/proc/restore()
@@ -190,19 +185,17 @@ GLOBAL_LIST_EMPTY(smeses)
 	var/excess = powernet.netexcess		// this was how much wasn't used on the network last ptick, minus any removed by other SMESes
 
 	excess = min(output_used, excess)				// clamp it to how much was actually output by this SMES last ptick
-
-	excess = min((capacity-charge)/SMESRATE, excess)	// for safety, also limit recharge by space capacity of SMES (shouldn't happen)
+	excess = min(KWM_TO_KW(capacity - charge, 1), excess)	// for safety, also limit recharge by space capacity of SMES (shouldn't happen)
 
 	// now recharge this amount
-
 	var/clev = chargedisplay()
 
-	charge += excess * SMESRATE			// restore unused power
+	charge += KW_TO_KWM(excess, 1)			// restore unused power
 	powernet.netexcess -= excess		// remove the excess from the powernet, so later SMESes don't try to use it
 
 	output_used -= excess
 
-	if(clev != chargedisplay() ) //if needed updates the icons overlay
+	if(clev != chargedisplay()) //if needed updates the icons overlay
 		update_icon()
 
 //Will return 1 on failure
