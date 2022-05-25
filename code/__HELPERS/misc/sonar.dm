@@ -82,6 +82,8 @@
 	holder.dir = dir
 	holder.pixel_x += pixel_x
 	holder.pixel_y += pixel_y
+	// yea...
+	holder.layer = plane * 100 + layer
 	. = holder
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)
