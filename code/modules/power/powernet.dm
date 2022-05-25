@@ -90,7 +90,6 @@
 /datum/powernet/proc/trigger_warning(var/duration_ticks = 20)
 	problem = max(duration_ticks, problem)
 
-
 //handles the power changes in the powernet
 //called every ticks by the powernet controller
 /datum/powernet/proc/reset()

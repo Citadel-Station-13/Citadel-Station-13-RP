@@ -45,7 +45,7 @@ export const Smes = (props, context) => {
               average: [0.15, 0.5],
               bad: [-Infinity, 0.15],
             }}>
-            {round(charge/(1000*60), 1)} kWh / {round(capacity/(1000*60))} kWh
+            {round(charge/(60), 1)} kWh / {round(capacity/(60), 1)} kWh
             ({capacityPercent}%)
           </ProgressBar>
         </Section>
@@ -182,7 +182,7 @@ export const Smes = (props, context) => {
               </Flex>
             </LabeledList.Item>
             <LabeledList.Item label="Outputting">
-              {formatPower(outputUsed)}
+              {formatPower(outputUsed * 1000)}
             </LabeledList.Item>
           </LabeledList>
         </Section>

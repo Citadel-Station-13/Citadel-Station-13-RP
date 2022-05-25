@@ -74,7 +74,8 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
-		charge -= min(charge, max(KW_TO_KWH(output_level_max, 1), capacity * 0.0033333))
+		// whichever's bigger
+		charge -= min(charge, max(KW_TO_KWM(output_level_max, 1), capacity * 0.0033333))
 		if(prob(1)) // Small chance of overload occuring since grounding is disabled.
 			apcs_overload(0,10)
 
@@ -125,7 +126,8 @@
 		input_level_max = 0
 		output_level_max = 0
 		for(var/obj/item/smes_coil/C in component_parts)
-			capacity += C.charge_capacity
+			// convert to kWm
+			capacity += KWH_TO_KWM(C.charge_capacity)
 			input_level_max += C.flow_capacity
 			output_level_max += C.flow_capacity
 		charge = clamp(charge, 0, capacity)

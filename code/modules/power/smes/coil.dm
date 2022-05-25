@@ -7,7 +7,9 @@
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "smes_coil"			// Just few icons patched together. If someone wants to make better icon, feel free to do so!
 	w_class = ITEMSIZE_LARGE 						// It's LARGE (backpack size)
+	/// capacity in kWh
 	var/charge_capacity = SMES_COIL_STORAGE_BASIC
+	/// IO in kW
 	var/flow_capacity = SMES_COIL_FLOW_BASIC
 
 /obj/item/smes_coil/weak

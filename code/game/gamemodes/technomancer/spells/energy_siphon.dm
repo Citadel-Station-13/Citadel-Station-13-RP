@@ -104,7 +104,6 @@
 				things_to_drain.Remove(AM)
 		if(!things_to_drain.len)
 			return
-		var/charge_to_steal = round(flow_remaining / things_to_drain.len) // This is to drain all the cells evenly.
 		for(var/atom/movable/AM in things_to_drain)
 			var/big_number = AM.drain_energy(user, flow_rate * 0.001) * 1000 // This drains the cell, and leaves us with a big number.
 			flow_remaining = flow_remaining - big_number // Which we reduce to our needed number by multiplying.

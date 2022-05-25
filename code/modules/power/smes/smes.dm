@@ -21,9 +21,9 @@ GLOBAL_LIST_EMPTY(smeses)
 	circuit = /obj/item/circuitboard/smes
 
 	/// maximum charge in kW-m
-	var/capacity = 5000000
+	var/capacity = 5000
 	/// current charge in kW-m
-	var/charge = 1000000
+	var/charge = 1000
 
 	var/input_attempt = 0 			// 1 = attempting to charge, 0 = not attempting to charge
 	var/inputting = 0 				// 1 = actually inputting, 0 = not inputting
@@ -150,6 +150,7 @@ GLOBAL_LIST_EMPTY(smeses)
 			inputting = 1
 		else // Or not at all?
 			inputting = 0
+
 	//outputting
 	if(outputting && (!output_pulsed && !output_cut) && !grid_check)
 		output_used = min(KWM_TO_KW(charge, 1), output_level)		//limit output to that stored
@@ -309,6 +310,7 @@ GLOBAL_LIST_EMPTY(smeses)
 
 /obj/machinery/power/smes/ui_data()
 	var/list/data = list(
+		"capacity" = capacity,
 		"capacityPercent" = round(100.0*charge/capacity, 0.1),
 		"charge" = charge,
 		"inputAttempt" = input_attempt,
@@ -519,7 +521,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	outputting(rand(0,1))
 	output_level = rand(0, output_level_max)
 	input_level = rand(0, input_level_max)
-	charge -= 1e6/severity
+	charge -= 1000/severity
 	if (charge < 0)
 		charge = 0
 	update_icon()
@@ -528,27 +530,27 @@ GLOBAL_LIST_EMPTY(smeses)
 /obj/machinery/power/smes/magical
 	name = "magical power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Magically produces power."
-	capacity = 9000000
-	output_level = 250000
+	capacity = 5000
+	output_level = 250
 	should_be_mapped = 1
 
 /obj/machinery/power/smes/magical/process(delta_time)
-	charge = 5000000
+	charge = 5000
 	..()
 
 /obj/machinery/power/smes/buildable/main
 	name = "main smes"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the main one for facility power."
-	charge = 2e7
-	input_level = 500000
-	output_level = 1000000
+	charge = KWH_TO_KWM(SMES_COIL_STORAGE_BASIC * 4 * 0.8)
+	input_level = 500
+	output_level = 1000
 
 /obj/machinery/power/smes/buildable/engine
 	name = "engine smes"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the one dedicated to the engine."
-	charge = 2e6
-	input_level = 100000
-	output_level = 200000
+	charge = KWH_TO_KWM(SMES_COIL_STORAGE_BASIC * 1 * 0.8)
+	input_level = 100
+	output_level = 200
 
 #define SMES_UI_INPUT 1
 #define SMES_UI_OUTPUT 2
