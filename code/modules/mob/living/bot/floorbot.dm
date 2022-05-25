@@ -448,5 +448,4 @@
 				S.name = created_name
 				S.toolbox = toolbox
 				S.robot_arm = robot_arm
-				user.drop_from_inventory(src)
 				qdel(src)

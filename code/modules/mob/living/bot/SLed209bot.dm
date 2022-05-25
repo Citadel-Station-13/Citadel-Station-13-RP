@@ -176,6 +176,5 @@
 				to_chat(user, "<span class='notice'>You complete the ED-209.</span>")
 				var/turf/T = get_turf(src)
 				new /mob/living/bot/secbot/ed209/slime(T,created_name,lasercolor)
-				user.drop_from_inventory(src)
 				qdel(src)
 

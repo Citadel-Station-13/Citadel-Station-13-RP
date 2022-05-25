@@ -186,7 +186,6 @@
 				S.icon_state = icon_state
 				S.build_step = build_step
 				S.created_name = created_name
-				user.drop_from_inventory(src)
 				qdel(src)
 
 			else if(istype(W, /obj/item/gun/energy/taser))
@@ -217,5 +216,4 @@
 				to_chat(user, "<span class='notice'>You complete the ED-209.</span>")
 				var/turf/T = get_turf(src)
 				new /mob/living/bot/secbot/ed209(T,created_name,lasercolor)
-				user.drop_from_inventory(src)
 				qdel(src)

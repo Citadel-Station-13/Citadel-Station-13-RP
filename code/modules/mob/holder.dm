@@ -32,10 +32,9 @@
 	update_state()
 	drop_items()
 
-/obj/item/holder/dropped()
-	..()
-	spawn(1)
-		update_state()
+/obj/item/holder/dropped(mob/user, accessory, silent)
+	. = ..()
+	update_state()
 
 /obj/item/holder/proc/update_state()
 	if(!(contents.len))

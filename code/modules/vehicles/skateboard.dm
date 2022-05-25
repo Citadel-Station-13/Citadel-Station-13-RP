@@ -396,8 +396,8 @@
 
 		if(3)
 			if(istype(W, /obj/item/skate_wheels))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You mount \the [W] on \the [src] trucks.</span>")
 				name = "skateboard frame (loose wheels)"
@@ -417,7 +417,6 @@
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle/skateboard/improv(T)
-				user.drop_from_inventory(src)
 				qdel(src)
 
 //Pro Board
@@ -485,7 +484,6 @@
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle/skateboard/pro(T)
-				user.drop_from_inventory(src)
 				qdel(src)
 
 // Scooters
@@ -552,7 +550,6 @@
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle/skateboard/scooter(T)
-				user.drop_from_inventory(src)
 				qdel(src)
 
 //Decontstruction

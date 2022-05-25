@@ -99,7 +99,7 @@
 	/// Used to reference the object's host organ.
 	var/obj/item/organ/my_augment = null
 
-/obj/item/dropped(mob/user)
+/obj/item/dropped(mob/user, accessory, silent)
 	. = ..()
 	if(my_augment)
 		forceMove(my_augment)

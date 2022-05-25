@@ -182,7 +182,6 @@
 				to_chat(user, "<span class='notice'>You close up \the [src].</span>")
 				var/obj/vehicle/train/trolley/trailer/product = new(src)
 				product.loc = get_turf(src)
-				user.drop_from_inventory(src)
 				qdel(src)
 
 /*

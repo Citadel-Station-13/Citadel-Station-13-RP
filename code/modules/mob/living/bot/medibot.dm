@@ -637,7 +637,6 @@
 				S.firstaid = firstaid
 				S.robot_arm = robot_arm
 				S.healthanalyzer = healthanalyzer
-				user.drop_from_inventory(src)
 				qdel(src)
 
 // Undefine these.
