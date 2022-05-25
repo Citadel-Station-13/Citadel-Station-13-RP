@@ -192,7 +192,8 @@ var/global/list/limb_icon_cache = list()
 				var/cache_key = "[body_hair]-[icon_name]-[h_col[1]][h_col[2]][h_col[3]]"
 				if(!limb_icon_cache[cache_key])
 					var/icon/I = icon(species.get_icobase(owner), "[icon_name]_[body_hair]")
-					I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)					limb_icon_cache[cache_key] = I
+					I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)
+					limb_icon_cache[cache_key] = I
 				mob_icon.Blend(limb_icon_cache[cache_key], ICON_OVERLAY)
 
 	if(model)
@@ -211,7 +212,8 @@ var/global/list/limb_icon_cache = list()
 			var/cache_key = "[body_hair]-[icon_name]-[h_col[1]][h_col[2]][h_col[3]]"
 			if(!limb_icon_cache[cache_key])
 				var/icon/I = icon(species.get_icobase(owner), "[icon_name]_[body_hair]")
-				I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)				limb_icon_cache[cache_key] = I
+				I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)
+				limb_icon_cache[cache_key] = I
 			mob_icon.Blend(limb_icon_cache[cache_key], ICON_OVERLAY)
 
 	dir = EAST
@@ -220,7 +222,8 @@ var/global/list/limb_icon_cache = list()
 
 /obj/item/organ/external/proc/apply_colouration(var/icon/applying)
 
-	if(transparent)		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
+	if(transparent)
+		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
 		if(species && species.get_bodytype(owner) != SPECIES_HUMAN)
 			applying.SetIntensity(1) // Unathi, Taj and Skrell have -very- dark base icons.
 		else

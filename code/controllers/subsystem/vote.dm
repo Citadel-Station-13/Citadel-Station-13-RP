@@ -214,7 +214,9 @@ SUBSYSTEM_DEF(vote)
 					if(SSticker.current_state <= GAME_STATE_SETTING_UP)
 						to_chat(initiator_key, "The crew transfer button has been disabled!")
 						return 0
-				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?"				choices.Add("Initiate Crew Transfer", "Extend the Shift") 			if(VOTE_ADD_ANTAGONIST)
+				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?"
+				choices.Add("Initiate Crew Transfer", "Extend the Shift")
+			if(VOTE_ADD_ANTAGONIST)
 				if(!config_legacy.allow_extra_antags || SSticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
 				for(var/antag_type in GLOB.all_antag_types)

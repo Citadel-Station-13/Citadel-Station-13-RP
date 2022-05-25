@@ -34,17 +34,19 @@
 			if(data[taste]/totalFlavor < 0.1)
 				data -= taste
 
-/datum/reagent/nutriment/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)		M.adjustToxLoss(0.1 * removed)
+/datum/reagent/nutriment/affect_blood(mob/living/carbon/M, alien, removed)
+	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)
+		M.adjustToxLoss(0.1 * removed)
 		return
 	affect_ingest(M, alien, removed)
 
-/datum/reagent/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/nutriment/affect_ingest(mob/living/carbon/M, alien, removed)
 	var/hyd_removed
 	switch(alien)
 		if(IS_DIONA) return
 		if(IS_UNATHI) removed *= 0.5
-		if(IS_CHIMERA) removed *= 0.25	if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
+		if(IS_CHIMERA) removed *= 0.25
+		if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
 	M.heal_organ_damage(0.5 * removed, 0)
 	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
 		M.nutrition += nutriment_factor * removed // For hunger and fatness

@@ -1,7 +1,8 @@
 /obj/structure/stasis_cage
 	name = "stasis cage"
 	desc = "A high-tech animal cage, designed to keep contained fauna docile and safe."
-	icon = 'icons/obj/storage.dmi'	icon_state = "critteropen"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "critteropen"
 	density = 1
 
 	var/mob/living/simple_mob/contained

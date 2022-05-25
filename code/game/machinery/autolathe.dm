@@ -144,7 +144,7 @@
 	if(is_robot_module(O))
 		return FALSE
 
-	if(istype(O,/obj/item/ammo_magazine/clip) || istype(O,/obj/item/ammo_magazine/s357) || istype(O,/obj/item/ammo_magazine/s38) || istype (O,/obj/item/ammo_magazine/s44)
+	if(istype(O,/obj/item/ammo_magazine/clip) || istype(O,/obj/item/ammo_magazine/s357) || istype(O,/obj/item/ammo_magazine/s38) || istype (O,/obj/item/ammo_magazine/s44))
 		to_chat(user, "\The [O] is too hazardous to recycle with the autolathe!")
 		return
 

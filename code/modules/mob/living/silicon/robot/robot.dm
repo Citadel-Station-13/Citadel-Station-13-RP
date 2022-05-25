@@ -1117,7 +1117,8 @@
 	if(icontype == "Custom")
 		icon = CUSTOM_ITEM_SYNTH
 	else // This is to fix an issue where someone with a custom borg sprite chooses a non-custom sprite and turns invisible.
-		vr_sprite_check()	icon_state = module_sprites[icontype]
+		vr_sprite_check()
+		icon_state = module_sprites[icontype]
 	updateicon()
 
 	if (module_sprites.len > 1 && triesleft >= 1 && client)

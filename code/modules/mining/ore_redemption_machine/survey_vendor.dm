@@ -1,10 +1,13 @@
 /obj/machinery/mineral/equipment_vendor/survey
 	name = "exploration equipment vendor"
 	desc = "An equipment vendor for explorers, points collected with a survey scanner can be spent here."
-	icon = 'icons/obj/machines/mining_machines_vr.dmi'	icon_state = "exploration"	density = TRUE
+	icon = 'icons/obj/machines/mining_machines_vr.dmi'
+	icon_state = "exploration"
+	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/exploration_equipment_vendor
-	icon_deny = "exploration-deny"	var/icon_vend = "exploration-vend"
+	icon_deny = "exploration-deny"
+	var/icon_vend = "exploration-vend"
 	child = TRUE
 	prize_list = list(
 		new /datum/data/mining_equipment("1 Marker Beacon",				/obj/item/stack/marker_beacon,								1),

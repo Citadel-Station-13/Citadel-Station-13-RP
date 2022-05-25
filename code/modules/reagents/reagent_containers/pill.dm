@@ -318,4 +318,5 @@
 
 /obj/item/reagent_containers/pill/diet/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("lipozine", 15)	color = reagents.get_color()
+	reagents.add_reagent("lipozine", 15)
+	color = reagents.get_color()

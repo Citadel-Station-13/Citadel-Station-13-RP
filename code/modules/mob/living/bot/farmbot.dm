@@ -235,7 +235,8 @@
 
 		busy = 1
 		while(do_after(src, 10) && tank.reagents.total_volume < tank.reagents.maximum_volume)
-			tank.reagents.add_reagent("water", 100)			if(prob(5))
+			tank.reagents.add_reagent("water", 100)
+			if(prob(5))
 				playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 
 		busy = 0

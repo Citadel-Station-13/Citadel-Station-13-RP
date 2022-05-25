@@ -37,7 +37,8 @@
 
 /obj/effect/overlay/bluespacify
 	name = "Bluespace"
-	icon = 'icons/turf/space.dmi'	icon_state = "bluespacify"
+	icon = 'icons/turf/space.dmi'
+	icon_state = "bluespacify"
 	plane = ABOVE_PLANE
 
 /obj/effect/overlay/wallrot

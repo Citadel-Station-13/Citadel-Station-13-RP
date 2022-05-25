@@ -313,7 +313,9 @@
 	if(istype(T))
 		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
 
-	verbs += /mob/living/silicon/pai/proc/pai_nom	verbs += /mob/living/proc/set_size	verbs += /mob/living/proc/shred_limb //VORREStation edit
+	verbs += /mob/living/silicon/pai/proc/pai_nom
+	verbs += /mob/living/proc/set_size
+	verbs += /mob/living/proc/shred_limb
 
 /mob/living/silicon/pai/verb/fold_up()
 	set category = "pAI Commands"
@@ -372,7 +374,8 @@
 	else
 		resting = !resting
 		icon_state = resting ? "[chassis]_rest" : "[chassis]"
-		update_icon()		to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
+		update_icon()
+		to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))
 
 	canmove = !resting
 

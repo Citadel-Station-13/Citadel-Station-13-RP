@@ -82,7 +82,8 @@
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
 	desc = "A watertank."
-	icon = 'icons/obj/objects_vr.dmi'	icon_state = "watertank"
+	icon = 'icons/obj/objects_vr.dmi'
+	icon_state = "watertank"
 	amount_per_transfer_from_this = 10
 
 /obj/structure/reagent_dispensers/watertank/Initialize(mapload)
@@ -101,7 +102,8 @@
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
 	desc = "A fueltank."
-	icon = 'icons/obj/objects_vr.dmi'	icon_state = "weldtank"
+	icon = 'icons/obj/objects_vr.dmi'
+	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 	var/modded = 0
 	var/obj/item/assembly_holder/rig = null

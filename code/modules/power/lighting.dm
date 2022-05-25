@@ -208,7 +208,8 @@ var/global/list/light_type_cache = list()
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
-	icon = 'icons/obj/lighting_vr.dmi'	var/base_state = "tube"		// base description and icon_state
+	icon = 'icons/obj/lighting_vr.dmi'
+	var/base_state = "tube" // base description and icon_state
 	icon_state = "tube1"
 	desc = "A lighting fixture."
 	anchored = 1
@@ -278,7 +279,8 @@ var/global/list/light_type_cache = list()
 	start_with_cell = FALSE
 
 /obj/machinery/light/flamp
-	icon = 'icons/obj/lighting.dmi'	icon_state = "flamp1"
+	icon = 'icons/obj/lighting.dmi'
+	icon_state = "flamp1"
 	base_state = "flamp"
 	plane = OBJ_PLANE
 	layer = OBJ_LAYER

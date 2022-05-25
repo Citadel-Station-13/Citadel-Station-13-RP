@@ -46,7 +46,8 @@
 	set hidden = 1
 
 	set_typing_indicator(TRUE)
-	var/message = input("","me (text)") as message|null	set_typing_indicator(FALSE)
+	var/message = input("","me (text)") as message|null
+	set_typing_indicator(FALSE)
 
 	if(message)
 		me_verb(message)

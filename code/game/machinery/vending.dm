@@ -716,7 +716,9 @@
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
 	desc = "A softdrink vendor provided by Robust Industries, LLC."
-	icon_state = "Cola_Machine"	icon_vend = "Cola_Machine-purchase"	product_slogans = "Robust Softdrinks: More robust than a toolbox to the head!"
+	icon_state = "Cola_Machine"
+	icon_vend = "Cola_Machine-purchase"
+	product_slogans = "Robust Softdrinks: More robust than a toolbox to the head!"
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."
 	products = list(/obj/item/reagent_containers/food/drinks/cans/battery = 10,
 					/obj/item/reagent_containers/food/drinks/cans/waterbottle = 10,

@@ -1,6 +1,7 @@
 /obj/machinery/gateway
 	name = "gateway"
-	desc = "A mysterious gateway built by unknown hands.  It allows for faster than light travel to far-flung locations and even alternate realities." 	icon = 'icons/obj/machines/gateway.dmi'
+	desc = "A mysterious gateway built by unknown hands.  It allows for faster than light travel to far-flung locations and even alternate realities."
+	icon = 'icons/obj/machines/gateway.dmi'
 	icon_state = "off"
 	density = 1
 	anchored = 1
@@ -85,7 +86,8 @@
 	if(world.time < wait)
 		to_chat(user, "<span class='notice'>Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes.</span>")
 		return
-	if(!awaygate.calibrated && !LAZYLEN(awaydestinations))		to_chat(user, "<span class='notice'>Error: Destination gate uncalibrated. Gateway unsafe to use without far-end calibration update.</span>")
+	if(!awaygate.calibrated && !LAZYLEN(awaydestinations))
+		to_chat(user, SPAN_NOTICE("Error: Destination gate uncalibrated. Gateway unsafe to use without far-end calibration update."))
 		return
 
 	for(var/obj/machinery/gateway/G in linked)

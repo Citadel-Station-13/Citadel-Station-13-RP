@@ -206,7 +206,8 @@
 	icon_state = "survivalknife"
 	item_state = "knife"
 	applies_material_colour = FALSE
-	default_material = "plasteel"	toolspeed = 2 // Use a real axe if you want to chop logs.
+	default_material = "plasteel"
+	toolspeed = 2 // Use a real axe if you want to chop logs.
 
 /obj/item/material/knife/tacknife/survival/bone
 	name = "primitive survival knife"
@@ -228,7 +229,8 @@
 	icon_state = "dataknife"
 	item_state = "knife"
 	applies_material_colour = FALSE
-	default_material = "plasteel"	toolspeed = 2 // Use a real axe if you want to chop logs.
+	default_material = "plasteel"
+	toolspeed = 2 // Use a real axe if you want to chop logs.
 	var/gps_tag = "DAT&#%F0"
 	var/emped = FALSE
 	var/tracking = TRUE		// Will not show other signals or emit its own signal if false.
