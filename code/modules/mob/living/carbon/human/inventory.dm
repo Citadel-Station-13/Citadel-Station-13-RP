@@ -1,16 +1,68 @@
-/mob/living/_slot_by_item(obj/item/I)
-	if(back == I)
-		return SLOT_ID_BACK
-	if(wear_mask == I)
-		return SLOT_ID_MASK
-	return ..()
+/mob/living/carbon/human/_slot_by_item(obj/item/I)
+	if(wear_suit == I)
+		return SLOT_ID_SUIT
+	else if(w_uniform == I)
+		return SLOT_ID_UNIFORM
+	else if(shoes == I)
+		return SLOT_ID_SHOES
+	else if(belt == I)
+		return SLOT_ID_BELT
+	else if(gloves == I)
+		return SLOT_ID_GLOVES
+	else if(glasses == I)
+		return SLOT_ID_GLASSES
+	else if(head == I)
+		return SLOT_ID_HEAD
+	else if(l_ear == I)
+		return SLOT_ID_LEFT_EAR
+	else if(r_ear == I)
+		return SLOT_ID_RIGHT_EAR
+	else if(wear_id)
+		return SLOT_ID_WORN_ID
+	else if(r_store == I)
+		return SLOT_ID_RIGHT_POCKET
+	else if(l_store == I)
+		return SLOT_ID_LEFT_POCKET
+	else if(s_store == I)
+		return SLOT_ID_SUIT_STORAGE
+	else
+		return ..()
 
-/mob/living/_item_by_slot(slot)
+/mob/living/carbon/human/_item_by_slot(slot)
 	switch(slot)
-		if(SLOT_ID_MASK)
-			return wear_mask
-		if(SLOT_ID_BACK)
-			return back
+		if(SLOT_ID_SUIT)
+			return wear_suit
+		if(SLOT_ID_UNIFORM)
+			return w_uniform
+		if(SLOT_ID_BELT)
+			return belt
+		if(SLOT_ID_SHOES)
+			return shoes
+		if(SLOT_ID_GLOVES)
+			return gloves
+		if(SLOT_ID_GLASSES)
+			return glasses
+		if(SLOT_ID_HEAD)
+			return head
+		if(SLOT_ID_LEFT_EAR)
+			return l_ear
+		if(SLOT_ID_RIGHT_EAR)
+			return r_ear
+		if(SLOT_ID_WORN_ID)
+			return wear_id
+		if(SLOT_ID_RIGHT_POCKET)
+			return r_store
+		if(SLOT_ID_LEFT_POCKET)
+			return l_store
+		if(SLOT_ID_SUIT_STORAGE)
+			return s_store
+		else
+			return ..()
+
+/mob/living/carbon/human/_set_inv_slot(slot, obj/item/I, update_icons)
+	switch(slot)
+		if()
+
 		else
 			return ..()
 
@@ -27,12 +79,35 @@
 		else
 			return ..()
 
-/mob/living/_get_all_slots(include_restraints)
+
+/mob/living/carbon/human/_get_all_slots(include_restraints)
 	. = ..()
-	if(back)
-		. += back
-	if(wear_mask)
-		. += wear_mask
+	if(wear_suit)
+		. += wear_suit
+	if(w_uniform)
+		. += w_uniform
+	if(shoes)
+		. += shoes
+	if(belt)
+		. += belt
+	if(gloves)
+		. += gloves
+	if(glasses)
+		. += glasses
+	if(head)
+		. += head
+	if(l_ear)
+		. += l_ear
+	if(r_ear)
+		. += r_ear
+	if(wear_id)
+		. += wear_id
+	if(r_store)
+		. += r_store
+	if(l_store)
+		. += l_store
+	if(s_store)
+		. += s_store
 
 #warn everything below this line needs evaluated
 

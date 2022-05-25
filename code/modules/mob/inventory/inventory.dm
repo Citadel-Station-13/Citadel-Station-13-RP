@@ -120,6 +120,16 @@
  */
 /mob/proc/equip_to_slot_if_possible(obj/item/I, slot, silent, update_icons, ignore_fluff)
 
+/**
+ * forcefully equips an item to a slot
+ *
+ * This CAN fail, so listen to return value
+ * Why? YOU MIGHT EQUIP TO A MOB WITHOUT A CERTAIN SLOT!
+ *
+ * @return TRUE/FALSE
+ */
+/mob/proc/force_equip_to_slot(obj/item/I, slot, update_icons)
+
 
 /mob/proc/equip_to_slot_or_del(obj/item/I, slot, silent, update_icons, ignore_fluff)
 	. = equip_to_slot_if_possible(I, slot, silent, update_icons, ignore_fluff)
@@ -199,6 +209,10 @@
 /mob/proc/_unequip_held(obj/item/I, update_icons)
 	return
 
+/mob/proc/has_slot(id)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return _item_by_slot(id) != -1
+
 /**
  * THESE PROCS MUST BE OVERRIDDEN FOR NEW SLOTS ON MOBS
  * yes, i managed to shove all behaviors that needed overriding into 4 procs
@@ -211,6 +225,8 @@
 #warn impl these
 
 /mob/proc/_set_inv_slot(slot, obj/item/I, update_icons)
+	. = FALSE
+	CRASH("Attempting to set inv slot of [slot] to [I] went to base /mob. You probably had someone assigning to a nonexistant slot!")
 
 /**
  * ""expensive"" proc that scans for the real slot of an item
@@ -218,8 +234,13 @@
  */
 /mob/proc/_slot_by_item(obj/item/I)
 
+/**
+ * doubles as slot detection
+ * returns -1 if no slot
+ * YES, MAGIC VALUE BUT SOLE USER IS 20 LINES ABOVE, SUE ME.
+ */
 /mob/proc/_item_by_slot(slot)
-	return
+	return -1
 
 /mob/proc/_get_all_slots(include_restraints)
 	return list()

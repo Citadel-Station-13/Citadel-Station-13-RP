@@ -108,9 +108,9 @@
 			var/obj/item/stock_parts/SP = I
 			var/new_blast_power = max(1, round(SP.rating / 2) + 1)
 			if(new_blast_power > blast_heavy)
+				if(!user.attempt_consume_item_for_construction(I))
+					return
 				to_chat(user, "<span class='notice'>You install \the [I] into \the [src].</span>")
-				user.drop_from_inventory(I)
-				qdel(I)
 				blast_heavy = new_blast_power
 				blast_light = blast_heavy + round(new_blast_power * 0.5)
 				blast_flash = blast_light + round(new_blast_power * 0.75)

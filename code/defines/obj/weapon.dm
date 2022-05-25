@@ -144,11 +144,10 @@
 
 /obj/item/cane/concealed/attackby(var/obj/item/material/butterfly/W, var/mob/user)
 	if(!src.concealed_blade && istype(W))
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		var/datum/gender/T = gender_datums[user.get_visible_gender()]
 		user.visible_message("<span class='warning'>[user] has sheathed \a [W] into [T.his] [src]!</span>", "You sheathe \the [W] into \the [src].")
-		user.drop_from_inventory(W)
-		W.loc = src
-		src.concealed_blade = W
 		update_icon()
 	else
 		..()

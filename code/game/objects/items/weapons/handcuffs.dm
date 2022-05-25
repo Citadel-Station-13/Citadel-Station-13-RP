@@ -83,6 +83,10 @@
 	if(!can_place(target, user)) //victim may have resisted out of the grab in the meantime
 		return 0
 
+	if(!user.temporarily_remove_from_inventory(src))
+		to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+		return
+
 	add_attack_logs(user,H,"Handcuffed (attempt)")
 	feedback_add_details("handcuffs","H")
 
@@ -94,18 +98,12 @@
 	// Apply cuffs.
 	var/obj/item/handcuffs/cuffs = src
 	if(dispenser)
-		cuffs = new(get_turf(user))
-	else
-		user.drop_from_inventory(cuffs)
-	cuffs.loc = target
-	target.handcuffed = cuffs
-	target.update_handcuffed()
-	target.drop_r_hand()
-	target.drop_l_hand()
-	target.stop_pulling()
+		cuffs = new(target)
+	if(!target.force_equip_to_slot(cuffs, SLOT_ID_HANDCUFFED))
+		forceMove(user.drop_location())
 	return 1
 
-/obj/item/handcuffs/equipped(var/mob/living/user,var/slot)
+/obj/item/handcuffs/equipped(mob/living/user, slot, accessory)
 	. = ..()
 	if(slot == SLOT_ID_HANDCUFFED)
 		user.drop_r_hand()
@@ -293,6 +291,10 @@ var/last_chew = 0
 	if(!can_place(target, user)) //victim may have resisted out of the grab in the meantime
 		return 0
 
+	if(!user.temporarily_remove_from_inventory(src))
+		to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+		return
+
 	add_attack_logs(user,H,"Legcuffed (attempt)")
 	feedback_add_details("legcuffs","H")
 
@@ -305,15 +307,8 @@ var/last_chew = 0
 	var/obj/item/handcuffs/legcuffs/lcuffs = src
 	if(dispenser)
 		lcuffs = new(get_turf(user))
-	else
-		user.drop_from_inventory(lcuffs)
-	lcuffs.loc = target
-	target.legcuffed = lcuffs
-	target.update_inv_legcuffed()
-	if(target.m_intent != "walk")
-		target.m_intent = "walk"
-		if(target.hud_used && user.hud_used.move_intent)
-			target.hud_used.move_intent.icon_state = "walking"
+	if(!target.force_equip_to_slot(lcuffs, SLOT_ID_LEGCUFFED))
+		forceMove(user.drop_location())
 	return 1
 
 /obj/item/handcuffs/legcuffs/equipped(var/mob/living/user,var/slot)

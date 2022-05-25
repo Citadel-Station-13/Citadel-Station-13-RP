@@ -61,7 +61,7 @@
 /mob/living/_slot_by_item(obj/item/I)
 	if(back == I)
 		return SLOT_ID_BACK
-	if(wear_mask == I)
+	else if(wear_mask == I)
 		return SLOT_ID_MASK
 	return ..()
 
@@ -96,7 +96,7 @@
 
 
 
-
+#warn parse below
 
 
 
