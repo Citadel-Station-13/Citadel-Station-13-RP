@@ -52,8 +52,9 @@
 
 /obj/machinery/computer/timeclock/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id))
-		if(!card && user.unEquip(I))
-			I.forceMove(src)
+		if(!card)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			card = I
 			SStgui.update_uis(src)
 			update_icon()
@@ -121,8 +122,9 @@
 				card = null
 			else
 				var/obj/item/I = usr.get_active_held_item()
-				if (istype(I, /obj/item/card/id) && usr.unEquip(I))
-					I.forceMove(src)
+				if (istype(I, /obj/item/card/id))
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					card = I
 			update_icon()
 			return TRUE

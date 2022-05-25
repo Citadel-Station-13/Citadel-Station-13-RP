@@ -240,9 +240,10 @@
 				to_chat(user,"<span class='warning'>\The [src] already has an injector! Remove it first.</span>")
 			else
 				var/obj/item/reagent_containers/syringe/syringe = W
+				if(!user.attempt_insert_item_for_installation(syringe, src))
+					oreturn
 				to_chat(user,"<span class='info'>You insert \the [syringe] into \the [src], and it locks into place.</span>")
-				user.unEquip(syringe)
-				src.syringe = syringe
+				syringe = syringe
 				syringe.loc = null
 				for(var/mob/living/carbon/human/H in contents)
 					inject_occupant(H)

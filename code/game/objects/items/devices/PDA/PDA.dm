@@ -1278,17 +1278,20 @@ GLOBAL_LIST_EMPTY(PDAs)
 			return 1
 		else
 			var/obj/item/I = user.get_active_held_item()
-			if (istype(I, /obj/item/card/id) && user.unEquip(I))
-				I.loc = src
+			if (istype(I, /obj/item/card/id))
+				if(!user.attempt_insert_item_for_installation(I, src))
+					return
 				id = I
 			return 1
 	else
 		var/obj/item/card/I = user.get_active_held_item()
-		if (istype(I, /obj/item/card/id) && I:registered_name && user.unEquip(I))
+		if (istype(I, /obj/item/card/id) && I:registered_name)
 			var/obj/old_id = id
-			I.loc = src
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			id = I
-			user.put_in_hands(old_id)
+			if(old_id && !user.put_in_hands(old_id))
+				return
 			return 1
 	return 0
 

@@ -205,7 +205,7 @@ var/list/table_icon_cache = list()
 	visible_message("<span class='notice'>\The [user] scratches at \the [src]!</span>")
 	return ..()
 
-/obj/structure/table/MouseDrop_T(obj/item/stack/material/what)
+/obj/structure/table/MouseDroppedOn(obj/item/stack/material/what)
 	if(can_reinforce && isliving(usr) && (!usr.stat) && istype(what) && usr.get_active_held_item() == what && Adjacent(usr))
 		reinforce_table(what, usr)
 	else

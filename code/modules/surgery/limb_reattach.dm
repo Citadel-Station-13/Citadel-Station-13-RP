@@ -53,9 +53,11 @@
 
 /datum/surgery_step/limb/attach/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/E = tool
+	if(!user.temporarily_remove_from_inventory(E))
+		to_chat(user, SPAN_WARNING("[E] is stuck to your hand!"))
+		return
 	user.visible_message("<span class='notice'>[user] has attached [target]'s [E.name] to the [E.amputation_point].</span>",	\
 	"<span class='notice'>You have attached [target]'s [E.name] to the [E.amputation_point].</span>")
-	user.drop_from_inventory(E)
 	E.replaced(target)
 	target.update_icons_body(FALSE)
 	target.updatehealth()

@@ -28,9 +28,11 @@
 
 	if(istype(user))
 		user.stop_aiming(no_message=1)
+
+	if(!user.attempt_insert_item_for_installation(holstered, src))
+		return
+
 	holstered = I
-	user.drop_from_inventory(holstered)
-	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
 	w_class = max(w_class, holstered.w_class)
 	user.visible_message("<span class='notice'>[user] [holster_verb]s \the [holstered].</span>", "<span class='notice'>You [holster_verb] \the [holstered].</span>")

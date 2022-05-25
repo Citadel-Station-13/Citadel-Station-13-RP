@@ -60,7 +60,7 @@
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 
-/obj/machinery/optable/MouseDrop_T(obj/O, mob/user)
+/obj/machinery/optable/MouseDroppedOn(obj/O, mob/user)
 	. = ..()
 	if((!(istype(O, /obj/item)) || user.get_active_held_item() != O))
 		return
@@ -102,7 +102,7 @@
 	else
 		icon_state = "table2-idle"
 
-/obj/machinery/optable/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/optable/MouseDroppedOn(mob/target, mob/user)
 
 	var/mob/living/M = user
 	if(user.stat || user.restrained() || !check_table(user) || !iscarbon(target))

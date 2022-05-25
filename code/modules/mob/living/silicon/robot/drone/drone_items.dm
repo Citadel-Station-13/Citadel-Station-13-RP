@@ -277,7 +277,7 @@
 		return
 
 	to_chat(src.loc, "<span class='danger'>You drop \the [wrapped].</span>")
-	wrapped.loc = get_turf(src)
+	wrapped.forceMove(get_turf(src))
 	wrapped = null
 	//update_icon()
 
@@ -292,7 +292,7 @@
 		wrapped = null
 		return
 
-	wrapped.loc = get_turf(src)
+	wrapped.forceMove(get_turf(src))
 	wrapped = null
 	//update_icon()
 
@@ -366,7 +366,7 @@
 		//We can grab the item, finally.
 		if(grab)
 			to_chat(user, "You collect \the [I].")
-			I.loc = src
+			I.forceMove(src)
 			wrapped = I
 			return
 		else
@@ -381,7 +381,7 @@
 
 				A.cell.add_fingerprint(user)
 				A.cell.update_icon()
-				A.cell.loc = src
+				A.cell.forceMove(src)
 				A.cell = null
 
 				A.charging = 0
@@ -399,7 +399,7 @@
 				A.cell.add_fingerprint(user)
 				A.cell.update_icon()
 				A.updateicon()
-				A.cell.loc = src
+				A.cell.forceMove(src)
 				A.cell = null
 
 				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")

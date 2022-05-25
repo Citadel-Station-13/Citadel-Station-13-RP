@@ -4647,14 +4647,16 @@ END CITADEL CHANGE */
 		var/obj/item/reagent_containers/food/snacks/variable/mob/MF = W
 
 		switch (MF.kitchen_tag)
+			// if you see me on git blame, i wasn't the one who made this shiticode, i'm just passing through  ~silicons
 			if ("rodent")
 				result = new /obj/item/reagent_containers/food/snacks/mouseburger(src)
 				to_chat(user, "You make a mouse burger!")
+				qdel(src)
 
-		switch (MF.kitchen_tag)
 			if ("lizard")
 				result = new /obj/item/reagent_containers/food/snacks/mouseburger(src)
 				to_chat(user, "You make a lizard burger!")
+				qdel(src)
 	if (result)
 		if (W.reagents)
 			//Reagents of reuslt objects will be the sum total of both.  Except in special cases where nonfood items are used
@@ -4665,8 +4667,9 @@ END CITADEL CHANGE */
 
 		//If the bun was in your hands, the result will be too
 		if (loc == user)
-			user.drop_from_inventory(src)
+			user.drop_item_to_ground(src, TRUE)
 			user.put_in_hands(result)
+
 
 // Chip update.
 /obj/item/reagent_containers/food/snacks/tortilla

@@ -1755,7 +1755,7 @@
 	src.log_message("Toggled strafing mode [strafing?"on":"off"].")
 	return
 
-/obj/mecha/MouseDrop_T(mob/O, mob/user as mob)
+/obj/mecha/MouseDroppedOn(mob/O, mob/user as mob)
 	//Humans can pilot mechs.
 	if(!ishuman(O))
 		return

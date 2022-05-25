@@ -152,14 +152,6 @@
 	var/slot = get_inventory_slot(I)
 	return slot && I.mob_can_unequip(src, slot)
 
-//This differs from remove_from_mob() in that it checks if the item can be unequipped first.
-/mob/proc/unEquip(obj/item/I, force = 0, target) //Force overrides NODROP for things like wizarditis and admin undress.
-	if(!(force || canUnEquip(I)))
-		return FALSE
-	drop_from_inventory(I, target)
-	return TRUE
-
-
 //Attemps to remove an object on a mob.
 /mob/proc/______remove_from_mob(var/obj/O, var/atom/target)
 	if(!O) // Nothing to remove, so we succeed.

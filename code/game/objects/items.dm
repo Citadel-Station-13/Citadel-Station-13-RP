@@ -294,24 +294,28 @@
 			return
 
 	var/old_loc = src.loc
-	src.pickup(user)
+	#warn thsi should go somewhere else, probably inv procs lmfao
+	pickup(user)
 	if (istype(src.loc, /obj/item/storage))
 		var/obj/item/storage/S = src.loc
 		S.remove_from_storage(src)
 
-	src.throwing = 0
-	if (src.loc == user)
-		if(!user.unEquip(src))
-			return
-	else
-		if(isliving(src.loc))
-			return
+	throwing = 0
 	if(user.put_in_active_hand(src))
 		if(isturf(old_loc))
 			var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
 			ghost.assumeform(src)
 			ghost.animate_towards(user)
-	return
+
+/obj/item/MouseDrop(atom/over)
+	. = ..()
+	#warn UNFUCK THIS - GENERIC ITEM DRAG TO HAND SLOT
+	if(ismob(src.loc))
+		if(!CanMouseDrop(src))
+			return
+		var/mob/M = src.loc
+		add_fingerprint(usr)
+		M.put_in_hands(src)
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/robot_module))

@@ -637,7 +637,7 @@
 	if(occupant)
 		name = "[name] ([occupant])"
 
-/obj/machinery/cryopod/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/cryopod/MouseDroppedOn(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user))
 		return
 	go_in(target, user)

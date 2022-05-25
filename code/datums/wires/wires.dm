@@ -202,7 +202,7 @@
 				to_chat(user, "<span class='error'>You need a remote signaller!</span>")
 				return
 
-			if(user.unEquip(I))
+			if(user.temporarily_remove_from_inventory(I))
 				attach_assembly(color, I)
 				return TRUE
 			else

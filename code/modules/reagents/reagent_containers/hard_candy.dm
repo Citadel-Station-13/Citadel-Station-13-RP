@@ -23,24 +23,17 @@
 	sprite_sheets = list(INV_MASK_DEF_ICON)
 	volume = 20
 
-/obj/item/reagent_containers/hard_candy/Initialize(mapload)
-	. = ..()
-
-/obj/item/reagent_containers/hard_candy/proc/On_Consume(var/mob/M)
-	if(!usr)
-		usr = M
+/obj/item/reagent_containers/hard_candy/proc/On_Consume(mob/M)
 	if(!reagents.total_volume)
 		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
-		usr.drop_from_inventory(src)	//so icons update :[
-
+		M.temporarily_remove_from_inventory(src, TRUE)
 		if(trash)
 			if(ispath(trash,/obj/item))
-				var/obj/item/TrashItem = new trash(usr)
-				usr.put_in_hands(TrashItem)
+				var/obj/item/TrashItem = new trash(user)
+				user.put_in_hands(TrashItem)
 			else if(istype(trash,/obj/item))
-				usr.put_in_hands(trash)
+				user.put_in_hands(trash)
 		qdel(src)
-	return
 
 /obj/item/reagent_containers/hard_candy/attack_self(mob/user as mob)
 	return

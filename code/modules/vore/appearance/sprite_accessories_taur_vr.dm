@@ -78,7 +78,7 @@
 	if(.)
 		buckled_mobs[M] = "riding"
 
-/mob/living/carbon/human/MouseDrop_T(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
+/mob/living/carbon/human/MouseDroppedOn(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
 	return
 
 /mob/living/carbon/human/proc/taur_mount(var/mob/living/M in living_mobs(1))

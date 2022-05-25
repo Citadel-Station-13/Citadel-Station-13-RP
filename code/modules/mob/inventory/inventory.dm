@@ -37,28 +37,42 @@
 
 /**
  * drops an item to ground
+ *
+ * if an item is not in us, this returns true
  */
 /mob/proc/drop_item_to_ground(obj/item/I, force)
+	if(!is_in_inventory(I))
+		return TRUE
 	return _unequip_item(I, force, drop_location())
 
 /**
  * transfers an item somewhere
+ *
+ * if an item is not in us, this crashes
  */
 /mob/proc/transfer_item_to_loc(obj/item/I, newloc, force)
 	ASSERT(newloc)
+	ASSERT(is_in_inventory(I))
 	return _unequip_item(I, force, newloc)
 
 /**
  * transfers an item into nullspace
+ *
+ * if an item is not in us, this crashes
  */
 /mob/proc/transfer_item_to_nullspace(obj/item/I, force)
+	ASSERT(is_in_inventory(I))
 	return _unequip_item(I, force, null)
 
 /**
  * removes an item from inventory. does NOT move it.
  * item MUST be qdel'd or moved after this if it returns TRUE!
+ *
+ * if an item is not in us, this returns true
  */
 /mob/proc/temporarily_remove_from_inventory(obj/item/I, force)
+	if(!is_in_inventory(I))
+		return TRUE
 	return _unequip_item(I, force, FALSE)
 
 /**
@@ -78,8 +92,7 @@
 	if(!I)
 		return TRUE
 	// enforcement: if it gets to here, you probably did something wrong, given that even forceMove is hooked to unequip automatically.
-	if(I.loc != src)
-		CRASH("Attempting to unequip an item that isn't even in us?")
+
 	if(!force && HAS_TRAIT(I, TRAIT_NODROP))
 		return FALSE
 
@@ -87,6 +100,7 @@
 	if(hand)
 		_unequip_held(I, TRUE)
 	else
+		#warn handling for no current equipped slot?
 		_unequip_slot(I.current_equipped_slot, TRUE)
 		I.unequipped(src, I.current_equipped_slot)
 
@@ -122,6 +136,8 @@
  */
 /mob/proc/equip_to_slot_if_possible(obj/item/I, slot, silent, update_icons, ignore_fluff)
 
+
+
 /**
  * forcefully equips an item to a slot
  *
@@ -139,9 +155,9 @@
 		qdel(I)
 
 #warn impl
-/mob/proc/_equip_item(obj/item/I, slot, silent, update_icons, ignore_fluff)
+/mob/proc/_equip_item(obj/item/I, slot, force, silent, update_icons, ignore_fluff)
 	#warn this handles stuff like calling equipped/unequipped on slot swaps, etc
-
+	#warn make sure to shuffle around properly/call the right procs
 	update_action_buttons()
 
 /**

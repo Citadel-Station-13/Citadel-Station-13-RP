@@ -228,7 +228,7 @@
 		playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	return success
 
-/turf/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
+/turf/MouseDroppedOn(atom/movable/O as mob|obj, mob/user as mob)
 	var/turf/T = get_turf(user)
 	var/area/A = T.loc
 	if((istype(A) && !(A.has_gravity)) || (istype(T,/turf/space)))

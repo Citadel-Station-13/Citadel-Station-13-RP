@@ -1053,13 +1053,9 @@
 
 		if(3)
 			if(istype(I, /obj/item/gun/energy)) //the gun installation part
-
-				if(isrobot(user))
+				if(!user.attempt_insert_item_for_installation(I, src))
 					return
 				var/obj/item/gun/energy/E = I //typecasts the item to an energy gun
-				if(!user.unEquip(I))
-					to_chat(user, "<span class='notice'>\the [I] is stuck to your hand, you cannot put it in \the [src]</span>")
-					return
 				installation = I.type //installation becomes I.type
 				gun_charge = E.power_supply.charge //the gun's charge is stored in gun_charge
 				to_chat(user, "<span class='notice'>You add [I] to the turret.</span>")
@@ -1077,12 +1073,10 @@
 
 		if(4)
 			if(isprox(I))
-				build_step = 5
-				if(!user.unEquip(I))
-					to_chat(user, "<span class='notice'>\the [I] is stuck to your hand, you cannot put it in \the [src]</span>")
+				if(!user.attempt_consume_item_for_construction(I))
 					return
+				build_step = 5
 				to_chat(user, "<span class='notice'>You add the prox sensor to the turret.</span>")
-				qdel(I)
 				return
 
 			//attack_hand() removes the gun

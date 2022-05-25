@@ -1046,8 +1046,8 @@
 		locker.locked = 1
 
 		//strip their stuff and stick it in the crate
-		for(var/obj/item/I in M)
-			M.drop_from_inventory(I, locker)
+		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
+			M.transfer_item_to_loc(I, locker, TRUE)
 
 		//so they black out before warping
 		M.Paralyse(5)
@@ -1078,8 +1078,8 @@
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
-		for(var/obj/item/I in M)
-			M.drop_from_inventory(I)
+		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
+			M.drop_item_to_ground(I, TRUE)
 
 		M.Paralyse(5)
 		sleep(5)
@@ -1103,8 +1103,8 @@
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
-		for(var/obj/item/I in M)
-			M.drop_from_inventory(I)
+		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
+			M.drop_item_to_ground(I, TRUE)
 
 		M.Paralyse(5)
 		sleep(5)
@@ -1150,8 +1150,8 @@
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
-		for(var/obj/item/I in M)
-			M.drop_from_inventory(I)
+		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
+			M.drop_item_to_ground(I, TRUE)
 
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/observer = M

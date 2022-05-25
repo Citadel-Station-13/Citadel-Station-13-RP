@@ -205,8 +205,7 @@
 				else
 					return 0
 			else
-				user.drop_from_inventory(ai)
-				ai.forceMove(src)
+				user.transfer_item_to_loc(ai, src, TRUE)
 				ai_card = ai
 				to_chat(ai_mob, "<font color=#4F49AF>You have been transferred to \the [holder]'s [src].</font>")
 				to_chat(user, "<font color=#4F49AF>You load [ai_mob] into \the [holder]'s [src].</font>")

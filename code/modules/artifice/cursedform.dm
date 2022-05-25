@@ -25,7 +25,7 @@
 			"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 
 			if(user.get_inactive_held_item() == src)
-				user.drop_from_inventory(src)
+				user.drop_item_to_ground(src, TRUE)
 
 			new /obj/effect/decal/cleanable/ash(src.loc)
 			qdel(src)

@@ -353,10 +353,11 @@
 	else
 		return ..()
 
-/obj/item/stack/Crossed(obj/o)
-	if(can_merge(o) && !o.throwing)
-		merge(o)
+/obj/item/stack/Crossed(atom/movable/AM)
 	. = ..()
+	// if we're in a mob, do not automerge
+	if(!ismob(loc) && !AM.throwing && can_merge(AM))
+		merge(AM)
 
 /obj/item/stack/proc/merge(obj/item/stack/S) //Merge src into S, as much as possible
 	if(QDELETED(S) || QDELETED(src) || (S == src)) //amusingly this can cause a stack to consume itself, let's not allow that.

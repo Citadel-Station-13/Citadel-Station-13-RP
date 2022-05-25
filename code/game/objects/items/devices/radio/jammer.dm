@@ -89,10 +89,10 @@ var/global/list/active_radio_jammers = list()
 
 /obj/item/radio_jammer/attackby(obj/W, mob/user)
 	if(istype(W,/obj/item/cell/device/weapon) && !power_source)
+		if(!user.attempt_insert_item_for_installation(power_source, src))
+			return
 		power_source = W
 		power_source.update_icon() //Why doesn't a cell do this already? :|
-		user.unEquip(power_source)
-		power_source.forceMove(src)
 		update_icon()
 		to_chat(user,"<span class='notice'>You insert \the [power_source] into \the [src].</span>")
 

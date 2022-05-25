@@ -33,9 +33,11 @@
 			if(blocked)
 				to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 				return
+			if(!user.temporarily_remove_from_inventory(src))
+				to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+				return
 
 			to_chat(M, "<span class='notice'>You swallow \the [src].</span>")
-			M.drop_from_inventory(src) //icon update
 			if(reagents.total_volume)
 				reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
 			qdel(src)
@@ -57,19 +59,16 @@
 		user.setClickCooldown(user.get_attack_speed(src))
 		if(!do_mob(user, M))
 			return
-
-		user.drop_from_inventory(src) //icon update
+		if(!user.temporarily_remove_from_inventory(src))
+			to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+			return
 		user.visible_message("<span class='warning'>[user] forces [M] to swallow \the [src].</span>")
-
 		var/contained = reagentlist()
 		add_attack_logs(user,M,"Fed a pill containing [contained]")
-
 		if(reagents && reagents.total_volume)
 			reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
 		qdel(src)
-
 		return 1
-
 	return 0
 
 /obj/item/reagent_containers/pill/afterattack(obj/target, mob/user, proximity)

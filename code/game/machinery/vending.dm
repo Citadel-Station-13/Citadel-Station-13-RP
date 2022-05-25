@@ -495,7 +495,7 @@
  * calling. W is the item being inserted, R is the associated vending_product entry.
  */
 /obj/machinery/vending/proc/stock(obj/item/W, var/datum/stored_item/vending_product/R, var/mob/user)
-	if(!user.unEquip(W))
+	if(!user.attempt_insert_item_for_installation(W, src))
 		return
 
 	to_chat(user, "<span class='notice'>You insert \the [W] in the product receptor.</span>")

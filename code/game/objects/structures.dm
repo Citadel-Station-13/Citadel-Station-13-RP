@@ -64,7 +64,7 @@
 
 	do_climb(usr)
 
-/obj/structure/MouseDrop_T(mob/target, mob/user)
+/obj/structure/MouseDroppedOn(mob/target, mob/user)
 
 	var/mob/living/H = user
 	if(istype(H) && can_climb(H) && target == user)

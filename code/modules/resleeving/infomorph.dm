@@ -240,13 +240,12 @@ var/list/infomorph_emotions = list(
 					affecting.implants -= card
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
-		holder.drop_from_inventory(card)
 	/*
 	if(src.client)
 		src.client.perspective = EYE_PERSPECTIVE
 		src.client.eye = src
 	*/
-	src.forceMove(get_turf(card))
+	forceMove(get_turf(card))
 	card.forceMove(src)
 	card.screen_loc = null
 

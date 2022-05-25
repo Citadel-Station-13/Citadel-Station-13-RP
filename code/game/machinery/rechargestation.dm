@@ -170,7 +170,7 @@
 
 	..()
 
-/obj/machinery/recharge_station/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/recharge_station/MouseDroppedOn(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user))
 		return
 

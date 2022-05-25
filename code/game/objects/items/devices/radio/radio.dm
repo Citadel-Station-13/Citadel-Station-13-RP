@@ -816,8 +816,6 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		if(!CanMouseDrop(src))
 			return
 		var/mob/M = loc
-		if(!M.unEquip(src))
-			return
 		add_fingerprint(usr)
 		M.put_in_hands(src)
 

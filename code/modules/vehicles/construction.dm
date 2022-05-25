@@ -133,15 +133,12 @@
 				to_chat(user, "<span class='notice'>You begin your finishing touches on \the [src].</span>")
 				if(do_after(user, 20) && build_stage == 7)
 					playsound(loc, W.usesound, 30, 1)
-					var/obj/vehicle/train/engine/quadbike/built/product = new(src)
+					var/obj/vehicle/train/engine/quadbike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
-					product.forceMove(get_turf(src))
 					product.cell = cell
 					cell.forceMove(product)
 					cell = null
-					user.drop_from_inventory(src)
 					qdel(src)
-				return
 
 /obj/item/vehicle_assembly/quadtrailer
 	name = "all terrain trailer"
@@ -260,11 +257,9 @@
 				to_chat(user, "<span class='notice'>You begin your finishing touches on \the [src].</span>")
 				if(do_after(user, 20) && build_stage == 6)
 					playsound(loc, W.usesound, 30, 1)
-					var/obj/vehicle/bike/built/product = new(src)
+					var/obj/vehicle/bike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
-					product.loc = get_turf(src)
 					product.cell = cell
 					cell.forceMove(product)
 					cell = null
-					user.drop_from_inventory(src)
 					qdel(src)

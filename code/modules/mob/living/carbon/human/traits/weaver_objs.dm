@@ -117,7 +117,7 @@ var/global/list/weavable_items = list()
 
 
 
-/obj/effect/weaversilk/trap/MouseDrop_T(atom/movable/AM,mob/user)
+/obj/effect/weaversilk/trap/MouseDroppedOn(atom/movable/AM,mob/user)
 	return
 
 // Items

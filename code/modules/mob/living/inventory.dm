@@ -39,6 +39,9 @@
 #warn impl
 
 #warn has_hands var or something else?
+
+#warn if something is already equipped, make sure to shuffle slots/whatnot properly!
+#warn MAKE SURE TO CHECK CAN UNEQUIP FOR SLOTS...
 /mob/living/put_in_l_hand(obj/item/I, force)
 
 /mob/living/put_in_r_hand(obj/item/I, force)

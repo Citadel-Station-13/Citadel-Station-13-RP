@@ -15,16 +15,16 @@
 		return FALSE // should stop you from dragging through windows
 	return TRUE
 
-/atom/MouseDrop(atom/over)
+/atom/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)
 	if(!usr || !over) return
 	if(!Adjacent(usr) || !over.Adjacent(usr)) return // should stop you from dragging through windows
 
 	spawn(0)
-		over.MouseDrop_T(src,usr)
+		over.MouseDroppedOn(src,usr)
 	return
 
 // recieve a mousedrop
-/atom/proc/MouseDrop_T(atom/dropping, mob/user)
+/atom/proc/MouseDroppedOn(atom/dropping, mob/user)
 	return
 
 /client

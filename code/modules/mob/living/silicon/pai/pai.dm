@@ -419,11 +419,8 @@
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
-		var/mob/living/M = H.loc
-		if(istype(M))
-			M.drop_from_inventory(H)
-		H.loc = get_turf(src)
-		src.loc = get_turf(H)
+		H.forceMove(get_turf(M))
+		forceMove(get_turf(M))
 
 	// Move us into the card and move the card to the ground.
 	card.forceMove(loc)

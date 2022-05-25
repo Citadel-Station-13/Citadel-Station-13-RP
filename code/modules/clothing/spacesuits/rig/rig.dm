@@ -186,9 +186,6 @@
 
 /obj/item/rig/Destroy()
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
-		var/mob/living/M = piece.loc
-		if(istype(M))
-			M.drop_from_inventory(piece)
 		qdel(piece)
 	STOP_PROCESSING(SSobj, src)
 	qdel(wires)

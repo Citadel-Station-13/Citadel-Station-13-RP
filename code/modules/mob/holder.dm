@@ -88,7 +88,7 @@
 /obj/item/holder/container_resist(mob/living/held)
 	var/mob/M = loc
 	if(istype(M))
-		M.drop_from_inventory(src)
+		M.drop_item_to_ground(src, TRUE)
 		to_chat(M, SPAN_WARNING("\The [held] wriggles out of your grip!"))
 		to_chat(held, SPAN_WARNING("You wiggle out of [M]'s grip!"))
 	else if(istype(loc, /obj/item/clothing/accessory/holster))

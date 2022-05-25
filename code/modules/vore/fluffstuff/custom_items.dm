@@ -1202,7 +1202,6 @@
 		var/obj/item/card/id/O = I
 		access |= O.access
 		to_chat(user, "<span class='notice'>You copy the access from \the [I] to \the [src].</span>")
-		user.drop_from_inventory(I)
 		qdel(I)
 		accessset = 1
 	..()

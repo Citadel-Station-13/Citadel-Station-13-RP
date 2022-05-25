@@ -28,7 +28,7 @@
 /obj/effect/hoist_hook/attack_hand(mob/living/user)
 	return // This has to be overridden so that it works properly.
 
-/obj/effect/hoist_hook/MouseDrop_T(atom/movable/AM,mob/user)
+/obj/effect/hoist_hook/MouseDroppedOn(atom/movable/AM,mob/user)
 	if (use_check(user, USE_DISALLOW_SILICONS))
 		return
 

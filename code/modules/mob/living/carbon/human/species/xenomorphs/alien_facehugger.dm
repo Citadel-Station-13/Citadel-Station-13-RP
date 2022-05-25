@@ -32,16 +32,14 @@ var/const/MAX_ACTIVE_TIME = 400
 	var/attached = 0
 
 /obj/item/clothing/mask/facehugger/attack_hand(user as mob)
-
 	if((stat == CONSCIOUS && !sterile))
 		if(Attach(user))
 			return
-
 	..()
 
 /obj/item/clothing/mask/facehugger/attack(mob/living/M as mob, mob/user as mob)
 	..()
-	user.drop_from_inventory(src)
+	user.drop_item_to_ground(src, TRUE)
 	Attach(M)
 
 //Bypasses the config check because it's completely blocking spawn.
