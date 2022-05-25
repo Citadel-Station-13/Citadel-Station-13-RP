@@ -268,13 +268,13 @@
 	//Alright, we've done our loop, now lets see if was anything interesting in range
 	if(closest_atom)
 		//common stuff
-		var/atom/srcLoc = get_turf(source) // VOREStation Edit - Makes beams look nicer
-		srcLoc.Beam(closest_atom, icon_state="lightning[rand(1,12)]", time=5, maxdistance = INFINITY)  // VOREStation Edit - Makes beams look nicer
+		var/atom/srcLoc = get_turf(source)
+		srcLoc.Beam(closest_atom, icon_state="lightning[rand(1,12)]", time=5, maxdistance = INFINITY)
 		var/zapdir = get_dir(source, closest_atom)
 		if(zapdir)
 			. = zapdir
 
-	var/drain_energy = TRUE // Citadel Station Edit: Reactivates drain for reactor. Keeping VS Edits for legacy knowledge.
+	var/drain_energy = TRUE
 
 	//per type stuff:
 	if(closest_tesla_coil)
@@ -297,20 +297,19 @@
 			tesla_zap(closest_mob, 5, power / 1.5, explosive, stun_mobs)
 
 	else if(closest_machine)
-		drain_energy = TRUE // VOREStation Edit - Safety First! Drain Tesla fast when its loose
+		drain_energy = TRUE // Safety First! Drain Tesla fast when its loose
 		closest_machine.tesla_act(power, explosive, stun_mobs)
 
 	else if(closest_blob)
-		drain_energy = TRUE // VOREStation Edit - Safety First! Drain Tesla fast when its loose
+		drain_energy = TRUE // Safety First! Drain Tesla fast when its loose
 		closest_blob.tesla_act(power, explosive, stun_mobs)
 
 	else if(closest_structure)
-		drain_energy = TRUE // VOREStation Edit - Safety First! Drain Tesla fast when its loose
+		drain_energy = TRUE // Safety First! Drain Tesla fast when its loose
 		closest_structure.tesla_act(power, explosive, stun_mobs)
 
-	// VOREStation Edit Start - Safety First! Drain Tesla fast when its loose
+	// Safety First! Drain Tesla fast when its loose
 	if(drain_energy && istype(source, /obj/singularity/energy_ball))
 		var/obj/singularity/energy_ball/EB = source
 		if (EB.energy > 0)
-			EB.energy -= min(EB.energy, max(1, round(EB.energy * 0.001))) // Citadel Station Edit: Reduces Drain speed to allow contained balls to lose power too /Vore station has set to 10 causing rapid decay
-	// VOREStation Edit End
+			EB.energy -= min(EB.energy, max(1, round(EB.energy * 0.001)))

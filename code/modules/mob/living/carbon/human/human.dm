@@ -1137,9 +1137,9 @@
  * - regen_icons - immediately update icons?
  * - force - change even if we are already that species **by type**
  * - skip - skip most ops that aren't apply or remove which are required for instance cleanup. do not do this unless you absolutely know what you are doing.
- * - example - dumbshit argument used for vore transformations to copy necessary data, why tf is this not done in the vore module? TODO: REMOVE.
+ * - example - dumbshit argument used for vore transformations to copy necessary data, why tf is this not done in the vore module? //TODO: REMOVE.
  */
-/mob/living/carbon/human/proc/set_species(datum/species/species_or_path, regen_icons = TRUE, force = FALSE, skip, mob/living/carbon/human/example)	//VOREStation Edit - send an example
+/mob/living/carbon/human/proc/set_species(datum/species/species_or_path, regen_icons = TRUE, force = FALSE, skip, mob/living/carbon/human/example)
 	// check if we need to
 	if(!force && species_or_path)
 		if(istype(species, istype(species_or_path)? species_or_path.type : species_or_path))

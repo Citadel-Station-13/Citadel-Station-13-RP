@@ -136,7 +136,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	color_mult = 1
 	trashcan = TRUE //They have goopy bodies. They can just dissolve things within them.
 
-	wikilink="https://wiki.vore-station.net/Promethean"
+	wikilink = "N/A"
 
 /datum/species/shapeshifter/promethean/New()
 	..()

@@ -154,11 +154,9 @@
 					"<span class='notice'>You hear metal clanking.</span>")
 
 		M.reveal(silent, reveal_message["buckled_mob"]) //Reveal people so they aren't buckled to chairs from behind.
-		//Vore edit start
 		var/mob/living/L = src
 		if(istype(L))
 			L.reveal(silent, reveal_message["buckled_to"])
-		//Vore edit end
 
 /atom/movable/proc/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	var/mob/living/M = unbuckle_mob(buckled_mob)
