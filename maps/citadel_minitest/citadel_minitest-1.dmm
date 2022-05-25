@@ -778,7 +778,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 1.5e+004;
 	cur_coils = 3
 	},
 /turf/simulated/floor/plating,

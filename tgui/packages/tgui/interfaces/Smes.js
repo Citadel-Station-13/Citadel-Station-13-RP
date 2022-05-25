@@ -80,7 +80,7 @@ export const Smes = (props, context) => {
                     icon="backward"
                     disabled={inputLevel === 0}
                     onClick={() => act('input', {
-                      adjust: -10000,
+                      adjust: -10,
                     })} />
                 </Flex.Item>
                 <Flex.Item grow={1} mx={1}>
@@ -101,7 +101,7 @@ export const Smes = (props, context) => {
                     icon="forward"
                     disabled={inputLevel === inputLevelMax}
                     onClick={() => act('input', {
-                      adjust: 10000,
+                      adjust: 10,
                     })} />
                   <Button
                     icon="fast-forward"
