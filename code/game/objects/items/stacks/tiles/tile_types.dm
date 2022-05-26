@@ -121,9 +121,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	no_variants = FALSE
 
 /obj/item/stack/tile/carpet/bcarpet
-	name = "teal carpet"
-	singular_name = "teal carpet"
-	desc = "A piece of teal carpet. It is the same size as a normal floor tile!"
+	name = "black carpet"
+	singular_name = "black carpet"
+	desc = "A piece of black carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-bcarpet"
 /obj/item/stack/tile/carpet/blucarpet
 	name = "blue carpet"
