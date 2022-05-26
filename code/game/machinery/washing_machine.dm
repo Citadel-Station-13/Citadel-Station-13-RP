@@ -28,7 +28,6 @@
 /obj/machinery/washing_machine/Initialize(mapload, newdir)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/washing_machine/verb/start()
 	set name = "Start Washing"

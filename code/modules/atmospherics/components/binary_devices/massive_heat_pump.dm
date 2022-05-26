@@ -68,7 +68,7 @@
 		if(!power_machine || !power_machine.connect_to_network())//returns 0 if it fails to find a
 			return//make sure we are connected to a powernet
 
-	power_rating = power_machine.surplus()//update power rateing to what ever is avaiable
+	power_rating = power_machine.surplus() * 1000 //update power rateing to what ever is avaiable
 	power_rating = clamp(power_rating, 0, power_level)
 
 	if(power_rating <= 0)
@@ -95,7 +95,7 @@
 	if (power_draw >= 0)
 		last_power_draw = power_draw
 
-		power_machine.draw_power(power_draw)
+		power_machine.draw_power(power_draw * 0.001)
 		if(network1)
 			network1.update = 1
 
@@ -209,7 +209,7 @@
 					src.target_temp = max_heat_setting
 				if("set")
 					src.target_temp = input(usr,"Enter new target Temperature","Temperature controll",src.target_temp) as num
-			src.target_temp = between(min_heat_setting, target_temp, max_heat_setting)
+			src.target_temp = clamp( target_temp, min_heat_setting,  max_heat_setting)
 			. = TRUE
 		if("set_pow")
 			var/pow = params["pow"]
@@ -220,7 +220,7 @@
 					power_level = MAX_POWER_FOR_MASSIVE
 				if("set")
 					var/new_power_level = input(usr,"Enter new power level (0-10 GW)","Power control",src.power_level) as num
-					src.power_level = between(0, new_power_level, MAX_POWER_FOR_MASSIVE)
+					src.power_level = clamp( new_power_level, 0,  MAX_POWER_FOR_MASSIVE)
 			. = TRUE
 
 	update_icon()

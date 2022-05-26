@@ -42,8 +42,6 @@ var/global/list/rad_collectors = list()
 			eject()
 		else
 			P.air_contents.adjust_gas(/datum/gas/phoron, -0.001*drainratio)
-	return
-
 
 /obj/machinery/power/rad_collector/attack_hand(mob/user as mob)
 	if(anchored)
@@ -52,11 +50,8 @@ var/global/list/rad_collectors = list()
 			user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
 			"You turn the [src.name] [active? "on":"off"].")
 			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas[/datum/gas/phoron]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
-			return
 		else
 			to_chat(user, "<font color='red'>The controls are locked!</font>")
-			return
-
 
 /obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tank/phoron))
@@ -112,7 +107,6 @@ var/global/list/rad_collectors = list()
 			eject()
 	return ..()
 
-
 /obj/machinery/power/rad_collector/proc/eject()
 	locked = 0
 	var/obj/item/tank/phoron/Z = src.P
@@ -130,11 +124,8 @@ var/global/list/rad_collectors = list()
 	if(P && active)
 		var/power_produced = 0
 		power_produced = (min(P.air_contents.gas[/datum/gas/phoron], 1000)) * pulse_strength * 20
-		add_avail(power_produced)
+		add_avail(power_produced * 0.001)
 		last_power_new = power_produced
-		return
-	return
-
 
 /obj/machinery/power/rad_collector/proc/update_icons()
 	overlays.Cut()
@@ -145,7 +136,6 @@ var/global/list/rad_collectors = list()
 	if(active)
 		overlays += image('icons/obj/singularity.dmi', "on")
 
-
 /obj/machinery/power/rad_collector/proc/toggle_power()
 	active = !active
 	if(active)
@@ -155,4 +145,3 @@ var/global/list/rad_collectors = list()
 		icon_state = "ca"
 		flick("ca_deactive", src)
 	update_icons()
-	return

@@ -1637,9 +1637,9 @@
 	var/needed = (species.max_nutrition - nutrition)
 	if(needed <= 0)
 		return
-	var/got = min((amount / SYNTHETIC_NUTRITION_CHARGE_RATE), needed)
+	var/got = min((((amount * GLOB.cellrate) / SYNTHETIC_NUTRITION_KJ_PER_UNIT) * SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR), needed)
 	adjust_nutrition(got)
-	return got * SYNTHETIC_NUTRITION_CHARGE_RATE
+	return (got * SYNTHETIC_NUTRITION_KJ_PER_UNIT) / GLOB.cellrate / SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR
 
 /mob/living/carbon/human/can_wield_item(obj/item/W)
 	//Since teshari are small by default, they have different logic to allow them to use certain guns despite that.

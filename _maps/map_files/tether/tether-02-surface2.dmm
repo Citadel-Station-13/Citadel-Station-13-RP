@@ -29641,7 +29641,7 @@
 "beY" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Telecomms";
-	charge = 100000;
+	charge = 100;
 	output_attempt = 0
 	},
 /obj/structure/cable/green{

@@ -159,17 +159,6 @@
 	return
 
 /**
- * Returns an amount of power drawn from the object (-1 if it's not viable).
- * Not sure where to define this, so it can sit here for the rest of time.
- *
- * * @params
- * * [drain_check] If is set it will not actually drain power, just return a value.
- * * [surge] If is set, it will destroy/damage the recipient and not return any power.
- */
-/atom/proc/drain_power(var/drain_check,var/surge, var/amount = 0)
-	return -1
-
-/**
  * Show a message to all mobs in earshot of this one
  *
  * This would be for audible actions by the src mob

@@ -183,7 +183,6 @@
 	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/sleeper/Destroy()
 	if(console)
