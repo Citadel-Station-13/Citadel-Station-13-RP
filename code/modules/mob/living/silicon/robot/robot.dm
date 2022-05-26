@@ -1,5 +1,4 @@
 /// Multiplier for amount of power cyborgs use.
-#define CYBORG_POWER_USAGE_MULTIPLIER 2
 /datum/category_item/catalogue/fauna/silicon/robot
 	name = "Silicons - Robot"
 	desc = "The most common form of Silicon encountered on the Frontier, \
@@ -223,24 +222,17 @@
 		lawsync()
 		photosync()
 
-/mob/living/silicon/robot/drain_power(var/drain_check, var/surge, var/amount = 0)
-
-	if(drain_check)
-		return 1
-
-	if(!cell || !cell.charge)
+/mob/living/silicon/robot/drain_energy(datum/actor, amount, flags)
+	if(!cell)
 		return 0
 
-	// Actual amount to drain from cell, using CELLRATE
-	var/cell_amount = amount * CELLRATE
+	if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_POWER_DRAIN_WARNING))
+		TIMER_COOLDOWN_START(src, COOLDOWN_POWER_DRAIN_WARNING, 2 SECONDS)
+		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
+	return cell.drain_energy(actor, amount, flags)
 
-	if(cell.charge > cell_amount)
-		// Spam Protection
-		if(prob(10))
-			to_chat(src, "<span class='danger'>Warning: Unauthorized access through power channel [rand(11,29)] detected!</span>")
-		cell.use(cell_amount)
-		return amount
-	return 0
+/mob/living/silicon/robot/can_drain_energy(datum/actor, flags)
+	return TRUE
 
 // setup the PDA and its name
 /mob/living/silicon/robot/proc/setup_PDA()
@@ -1158,7 +1150,7 @@
 		return 0
 
 	var/power_use = amount * CYBORG_POWER_USAGE_MULTIPLIER
-	if(cell.checked_use(CELLRATE * power_use))
+	if(cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(power_use, 1)))
 		used_power_this_tick += power_use
 		return 1
 	return 0

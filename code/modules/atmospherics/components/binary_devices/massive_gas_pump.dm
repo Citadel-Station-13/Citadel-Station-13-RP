@@ -68,7 +68,7 @@
 			last_flow_rate = last_power_draw = 0
 			return//make sure we are connected to a powernet
 
-	power_rating = power_machine.surplus()//update power rateing to what ever is avaiable
+	power_rating = power_machine.surplus() * 1000 //update power rateing to what ever is avaiable
 	power_rating = clamp(power_rating, 0, power_level)
 
 	if(power_rating <= 0)
@@ -86,7 +86,7 @@
 	if (power_draw >= 0)
 		last_power_draw = power_draw
 
-		power_machine.draw_power(power_draw)
+		power_machine.draw_power(power_draw * 0.001)
 		if(network1)
 			network1.update = 1
 
@@ -172,7 +172,7 @@
 					target_pressure = max_pressure_setting
 				if("set")
 					var/new_pressure = input(usr,"Enter new output pressure (0-[max_pressure_setting]kPa)","Pressure control",src.target_pressure) as num
-					src.target_pressure = between(0, new_pressure, max_pressure_setting)
+					src.target_pressure = clamp( new_pressure, 0,  max_pressure_setting)
 			. = TRUE
 		if("set_pow")
 			var/pow = params["pow"]
@@ -183,7 +183,7 @@
 					power_level = MAX_POWER_FOR_MASSIVE
 				if("set")
 					var/new_power_level = input(usr,"Enter new power level (0-10 GW)","Power control",src.power_level) as num
-					src.power_level = between(0, new_power_level, MAX_POWER_FOR_MASSIVE)
+					src.power_level = clamp( new_power_level, 0,  MAX_POWER_FOR_MASSIVE)
 			. = TRUE
 
 	update_icon()

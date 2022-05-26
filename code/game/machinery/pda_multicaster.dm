@@ -27,7 +27,6 @@
 /obj/machinery/pda_multicaster/prebuilt/Initialize(mapload, newdir)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/pda_multicaster/Destroy()
 	for(var/atom/movable/AM in contents)

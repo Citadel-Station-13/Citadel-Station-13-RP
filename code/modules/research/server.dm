@@ -21,7 +21,6 @@
 /obj/machinery/r_n_d/server/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/r_n_d/server/Destroy()
 	griefProtection()
@@ -55,7 +54,7 @@
 		if(0 to T0C)
 			health = min(100, health + 1)
 		if(T0C to (T20C + 20))
-			health = between(0, health, 100)
+			health = clamp( health, 0,  100)
 		if((T20C + 20) to (T0C + 70))
 			health = max(0, health - 1)
 	if(health <= 0)

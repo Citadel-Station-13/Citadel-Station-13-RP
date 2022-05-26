@@ -18,7 +18,6 @@
 /obj/machinery/bodyscanner/Initialize(mapload, newdir)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/bodyscanner/Destroy()
 	if(console)
