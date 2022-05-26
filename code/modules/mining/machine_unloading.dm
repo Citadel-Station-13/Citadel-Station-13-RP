@@ -2,7 +2,7 @@
 
 /obj/machinery/mineral/unloading_machine
 	name = "unloading machine"
-	icon = 'icons/obj/machines/mining_machines_vr.dmi' // VOREStation Edit
+	icon = 'icons/obj/machines/mining_machines_vr.dmi'
 	icon_state = "unloader"
 	density = 1
 	anchored = 1.0

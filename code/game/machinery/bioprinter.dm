@@ -64,7 +64,6 @@
 /obj/machinery/organ_printer/Initialize(mapload, newdir)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/organ_printer/update_icon_state()
 	. = ..()

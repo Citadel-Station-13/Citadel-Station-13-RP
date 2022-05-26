@@ -40,13 +40,12 @@
 
 /turf/simulated/floor/outdoors/ex_act(severity)
 	switch(severity)
-		//VOREStation Edit - Outdoor turfs less explosion resistant
+		// Outdoor turfs are less explosion resistant
 		if(1)
 			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 		if(2)
 			if(prob(66))
 				ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
-		//VOREStation Edit End
 		if(3)
 			if(prob(15))
 				ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)

@@ -48,7 +48,7 @@
 		dat += {"
 			<a href='?src=\ref[src];goto_scanlist=1'>Back to overview</a><hr>
 			Device ident '[cur_viewed_device.id_tag]' <span style='color: [cur_viewed_device.owned_field ? "green" : "red"]'>[cur_viewed_device.owned_field ? "active" : "inactive"].</span><br>
-			<b>Power status:</b> [cur_viewed_device.avail()]/[cur_viewed_device.active_power_usage] W<br>
+			<b>Power status:</b> [cur_viewed_device.avail()]/[cur_viewed_device.active_power_usage * 0.001] kW<br>
 			<hr>
 			<a href='?src=\ref[src];toggle_active=1'>Bring field [cur_viewed_device.owned_field ? "offline" : "online"].</a><br>
 			<hr>
@@ -103,7 +103,7 @@
 				if(!check_core_status(C))
 					status = "<span style='color: red'>Unresponsive</span>"
 					can_access = 0
-				else if(C.avail() < C.active_power_usage)
+				else if((C.avail() * 0.001) < C.active_power_usage)
 					status = "<span style='color: orange'>Underpowered</span>"
 				else
 					status = "<span style='color: green'>Good</span>"
@@ -175,7 +175,7 @@
 		return
 	if(C.machine_stat & BROKEN)
 		return
-	if(C.idle_power_usage > C.avail())
+	if(C.idle_power_usage > (C.avail() * 0.001))
 		return
 	. = 1
 

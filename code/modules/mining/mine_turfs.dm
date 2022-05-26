@@ -708,8 +708,8 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 			if(7)
 				new /obj/item/stack/material/uranium(src, rand(5,25))
 
-/turf/simulated/mineral/proc/make_ore(var/rare_ore)
-	if(mineral || ignore_mapgen || ignore_oregen) //VOREStation Edit - Makes sense, doesn't it?
+/turf/simulated/mineral/proc/make_ore(rare_ore)
+	if(mineral || ignore_mapgen || ignore_oregen)
 		return
 
 	var/mineral_name

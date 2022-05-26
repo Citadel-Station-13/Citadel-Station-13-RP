@@ -8,6 +8,6 @@ mkdir ci_test/config
 cp tools/ci/ci_config.txt ci_test/config/config.txt
 
 cd ci_test
-DreamDaemon vorestation.dmb -close -trusted -verbose -params "log-directory=ci"
+DreamDaemon citadel.dmb -close -trusted -verbose -params "log-directory=ci"
 cd ..
 cat ci_test/data/logs/ci/clean_run.lk

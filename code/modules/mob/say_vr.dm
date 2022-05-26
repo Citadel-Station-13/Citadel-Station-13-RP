@@ -11,7 +11,7 @@
 		to_chat(usr, "Speech is currently admin-disabled.")
 		return
 
-	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages (within reason)
+	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
 	if(!message)
 		return
 
@@ -74,7 +74,7 @@
 		to_chat(usr, "Speech is currently admin-disabled.")
 		return
 
-	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages (within reason)
+	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
 	if(!message)
 		return
 

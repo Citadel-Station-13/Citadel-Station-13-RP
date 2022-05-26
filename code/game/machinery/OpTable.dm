@@ -18,7 +18,6 @@
 /obj/machinery/optable/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/optable/Initialize(mapload)
 	. = ..()

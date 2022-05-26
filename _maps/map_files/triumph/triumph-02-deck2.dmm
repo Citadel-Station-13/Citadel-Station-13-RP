@@ -7449,7 +7449,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 15000;
 	cur_coils = 3
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,

@@ -56,7 +56,7 @@
 		//Angry buzz or such here
 		return
 
-	add_avail(stored_power)
+	add_avail(stored_power * 0.001)
 
 	power_cycle++
 	if(power_cycle >= power_cycle_delay)

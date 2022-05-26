@@ -1,4 +1,4 @@
-#define FUSION_ENERGY_PER_K 20
+#define FUSION_ENERGY_KW_PER_K 0.02
 ///radiation divisior. plasma temp / divisor = radiation.
 #define PLASMA_TEMP_RADIATION_DIVISIOR 20
 GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
@@ -145,7 +145,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	React()
 
 	// Dump power to our powernet.
-	owned_core.add_avail(FUSION_ENERGY_PER_K * plasma_temperature)
+	owned_core.add_avail(FUSION_ENERGY_KW_PER_K * plasma_temperature)
 
 	// Energy decay.
 	if(plasma_temperature >= 1)

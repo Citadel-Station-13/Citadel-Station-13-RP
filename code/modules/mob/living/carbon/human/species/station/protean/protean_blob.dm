@@ -14,7 +14,6 @@
 	health = 250
 	say_list_type = /datum/say_list/protean_blob
 
-	// ai_inactive = TRUE //Always off //VORESTATION AI TEMPORARY REMOVAL
 	show_stat_health = FALSE //We will do it ourselves
 	has_langs = list(LANGUAGE_GALCOM, LANGUAGE_EAL)
 	response_help = "pats the"

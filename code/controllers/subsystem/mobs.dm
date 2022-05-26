@@ -2,8 +2,7 @@
 // Mobs Subsystem - Process mob.Life()
 //
 
-//VOREStation Edits - Contains temporary debugging code to diagnose extreme tick consumption.
-//Revert file to Polaris version when done.
+// Contains temporary debugging code to diagnose extreme tick consumption.
 
 SUBSYSTEM_DEF(mobs)
 	name = "Mobs"

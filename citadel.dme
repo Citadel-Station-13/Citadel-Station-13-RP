@@ -1,4 +1,4 @@
-// DM Environment file for vorestation.dme
+// DM Environment file for citadel.dme
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
  // New source code should be placed in .dm files: choose File/New --> Code File.
 // BEGIN_INTERNALS
@@ -160,8 +160,10 @@
 #include "code\__DEFINES\mobs\mobility.dm"
 #include "code\__DEFINES\mobs\silicon_privileges.dm"
 #include "code\__DEFINES\mobs\stat.dm"
+#include "code\__DEFINES\power\power.dm"
 #include "code\__DEFINES\preferences\event_antag.dm"
 #include "code\__DEFINES\procs\do_after.dm"
+#include "code\__DEFINES\procs\drain_energy.dm"
 #include "code\__DEFINES\procs\update_icon.dm"
 #include "code\__DEFINES\rendering\alert.dm"
 #include "code\__DEFINES\rendering\atom_huds.dm"
@@ -825,6 +827,7 @@
 #include "code\game\landmarks\spawnpoint\tradeport.dm"
 #include "code\game\landmarks\spawnpoint\station\jobs.dm"
 #include "code\game\landmarks\spawnpoint\station\misc.dm"
+#include "code\game\machinery\_frame.dm"
 #include "code\game\machinery\_machinery.dm"
 #include "code\game\machinery\_machinery_power.dm"
 #include "code\game\machinery\adv_med.dm"
@@ -855,7 +858,6 @@
 #include "code\game\machinery\floor_light.dm"
 #include "code\game\machinery\floorlayer.dm"
 #include "code\game\machinery\fossilrevive.dm"
-#include "code\game\machinery\frame.dm"
 #include "code\game\machinery\hologram.dm"
 #include "code\game\machinery\holoposter.dm"
 #include "code\game\machinery\holosign.dm"
@@ -2147,7 +2149,6 @@
 #include "code\modules\events\spacevine.dm"
 #include "code\modules\events\spider_infestation.dm"
 #include "code\modules\events\spontaneous_appendicitis.dm"
-#include "code\modules\events\spontaneous_appendicitis_vr.dm"
 #include "code\modules\events\supply_demand.dm"
 #include "code\modules\events\wallrot.dm"
 #include "code\modules\examine\examine.dm"
@@ -3332,6 +3333,7 @@
 #include "code\modules\planet\time.dm"
 #include "code\modules\planet\weather.dm"
 #include "code\modules\power\apc.dm"
+#include "code\modules\power\atom.dm"
 #include "code\modules\power\batteryrack.dm"
 #include "code\modules\power\breaker_box.dm"
 #include "code\modules\power\cable.dm"
@@ -3351,8 +3353,6 @@
 #include "code\modules\power\power.dm"
 #include "code\modules\power\powernet.dm"
 #include "code\modules\power\powersupply.dm"
-#include "code\modules\power\smes.dm"
-#include "code\modules\power\smes_construction.dm"
 #include "code\modules\power\solar.dm"
 #include "code\modules\power\terminal.dm"
 #include "code\modules\power\tracker.dm"
@@ -3399,6 +3399,9 @@
 #include "code\modules\power\singularity\particle_accelerator\particle_emitter.dm"
 #include "code\modules\power\singularity\particle_accelerator\particle_power.dm"
 #include "code\modules\power\singularity\particle_accelerator\particle_smasher.dm"
+#include "code\modules\power\smes\coil.dm"
+#include "code\modules\power\smes\smes.dm"
+#include "code\modules\power\smes\smes_construction.dm"
 #include "code\modules\power\supermatter\setup_supermatter.dm"
 #include "code\modules\power\supermatter\supermatter.dm"
 #include "code\modules\power\tesla\coil.dm"

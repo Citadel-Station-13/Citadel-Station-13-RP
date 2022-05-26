@@ -1508,7 +1508,7 @@
 /area/lavaland/central/base/common)
 "CB" = (
 /obj/machinery/power/smes/buildable/main{
-	charge = 4e+007;
+	charge = 40000;
 	input_attempt = 1;
 	inputting = 2
 	},

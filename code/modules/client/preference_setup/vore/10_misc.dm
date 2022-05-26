@@ -54,7 +54,7 @@
 		pref.directory_erptag = new_erptag
 		return TOPIC_REFRESH
 	else if(href_list["directory_ad"])
-		var/msg = sanitize(input(user,"Write your advertisement here!", "Flavor Text", html_decode(pref.directory_ad)) as message, extra = 0)	//VOREStation Edit: separating out OOC notes
+		var/msg = sanitize(input(user,"Write your advertisement here!", "Flavor Text", html_decode(pref.directory_ad)) as message, extra = 0)
 		pref.directory_ad = msg
 		return TOPIC_REFRESH
 	//TFF 5/8/19 - add new thing so you can choose the sensor setting your character can get.

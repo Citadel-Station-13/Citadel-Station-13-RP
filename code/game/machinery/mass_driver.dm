@@ -18,7 +18,6 @@
 /obj/machinery/mass_driver/Initialize(mapload, newdir)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/mass_driver/attackby(obj/item/I, mob/user)
 	if(default_deconstruction_screwdriver(user, I))
