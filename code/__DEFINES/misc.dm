@@ -284,10 +284,10 @@ var/list/economy_station_departments = list(
 	DEPARTMENT_PLANET,
 	DEPARTMENT_RESEARCH,
 	DEPARTMENT_SECURITY
-) //VOREStation Edit
+)
 
 
-// vorstation off-duty time
+// Off-duty time
 #define PTO_CARGO			"Cargo"
 #define PTO_CIVILIAN		"Civilian"
 #define PTO_COMMAND			"Command"

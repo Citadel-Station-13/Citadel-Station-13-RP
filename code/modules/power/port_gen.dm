@@ -504,7 +504,6 @@
 	explosion(src.loc, 3, 6, 12, 16, 1)
 	qdel(src)
 
-//VORE RTG engines
 // Radioisotope Thermoelectric Generator (RTG)
 // Simple power generator that would replace "magic SMES" on various derelicts.
 /obj/machinery/power/rtg

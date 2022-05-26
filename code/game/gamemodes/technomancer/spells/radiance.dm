@@ -35,7 +35,7 @@
 
 	if(!istype(T, /turf/space))
 		env = T.return_air()
-		removed = env.remove(0.25 * env.total_moles)	//Remove gas from surrounding area
+		removed = env.remove(0.25 * env.total_moles) // Remove gas from surrounding area
 
 		var/thermal_power = 300 * adjusted_power
 

@@ -34,21 +34,25 @@
 			if(data[taste]/totalFlavor < 0.1)
 				data -= taste
 
-/datum/reagent/nutriment/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA) //VOREStation Edit
+/datum/reagent/nutriment/affect_blood(mob/living/carbon/M, alien, removed)
+	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)
 		M.adjustToxLoss(0.1 * removed)
 		return
 	affect_ingest(M, alien, removed)
 
-/datum/reagent/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/nutriment/affect_ingest(mob/living/carbon/M, alien, removed)
 	var/hyd_removed
 	switch(alien)
-		if(IS_DIONA) return
-		if(IS_UNATHI) removed *= 0.5
-		if(IS_CHIMERA) removed *= 0.25 //VOREStation Edit
-	if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
+		if(IS_DIONA)
+			return
+		if(IS_UNATHI)
+			removed *= 0.5
+		if(IS_CHIMERA)
+			removed *= 0.25
+			if(issmall(M))
+				removed *= 2 // Small bodymass, more effect from lower volume.
 	M.heal_organ_damage(0.5 * removed, 0)
-	if(!M.species.is_vampire) //VOREStation edit. If this is set to 0, they don't get nutrition from food.
+	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
 		M.nutrition += nutriment_factor * removed // For hunger and fatness
 	M.adjust_hydration(hydration_factor * hyd_removed)
 	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
@@ -75,10 +79,8 @@
 			..(M, alien, removed*1.2) // Teshari get a bit more nutrition from meat.
 		if(IS_UNATHI)
 			..(M, alien, removed*2.25) //Unathi get most of their nutrition from meat.
-		//VOREStation Edit Start
 		if(IS_CHIMERA)
 			..(M, alien, removed*4) //Xenochimera are obligate carnivores.
-		//VOREStation Edit End
 		else
 			..()
 
@@ -691,11 +693,6 @@ End Citadel Change */
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)
 
-	/* VOREStation Removal
-	if(alien == IS_SLIME && water_based)
-		M.adjustToxLoss(removed * 2)
-	*/ //VOREStation Removal End
-
 /datum/reagent/drink/overdose(var/mob/living/carbon/M, var/alien) //Add special interactions here in the future if desired.
 	..()
 
@@ -1011,7 +1008,6 @@ End Citadel Change */
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/tea/icetea/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -1020,7 +1016,6 @@ End Citadel Change */
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/tea/minttea
 	name = "Mint Tea"
@@ -1112,25 +1107,15 @@ End Citadel Change */
 	if(alien == IS_DIONA)
 		return
 	..()
-	//if(alien == IS_TAJARA) //VOREStation Edit Begin
-		//M.adjustToxLoss(0.5 * removed)
-		//M.make_jittery(4) //extra sensitive to caffine
 	if(adj_temp > 0)
 		holder.remove_reagent("frostoil", 10 * removed)
 
 /datum/reagent/drink/coffee/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
-	//if(alien == IS_TAJARA)
-		//M.adjustToxLoss(2 * removed)
-		//M.make_jittery(4)
-		//return
 
 /datum/reagent/drink/coffee/overdose(var/mob/living/carbon/M, var/alien)
 	if(alien == IS_DIONA)
 		return
-	//if(alien == IS_TAJARA)
-		//M.adjustToxLoss(4 * REM)
-		//M.apply_effect(3, STUTTER) //VOREStation Edit end
 	M.make_jittery(5)
 
 /datum/reagent/drink/coffee/icecoffee
@@ -1151,7 +1136,6 @@ End Citadel Change */
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/coffee/icecoffee/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -1160,7 +1144,6 @@ End Citadel Change */
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/coffee/soy_latte
 	name = "Soy Latte"
@@ -1759,7 +1742,6 @@ End Citadel Change */
 			M.bodytemperature -= rand(1,3)
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += rand(1,3)
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/ice/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -1768,7 +1750,6 @@ End Citadel Change */
 			M.bodytemperature -= rand(1,3)
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += rand(1,3)
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/nothing
 	name = "Nothing"
@@ -2170,23 +2151,10 @@ End Citadel Change */
 	M.AdjustSleeping(-2)
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
-	//if(alien == IS_TAJARA)
-		//M.adjustToxLoss(0.5 * removed)
-		//M.make_jittery(4) //extra sensitive to caffine
-
-/datum/reagent/ethanol/coffee/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	//if(alien == IS_TAJARA)
-		//M.adjustToxLoss(2 * removed)
-		//M.make_jittery(4)
-		//return
-	..()
 
 /datum/reagent/ethanol/coffee/overdose(var/mob/living/carbon/M, var/alien)
 	if(alien == IS_DIONA)
 		return
-	//if(alien == IS_TAJARA)
-		//M.adjustToxLoss(4 * REM)
-		//M.apply_effect(3, STUTTER) //VOREStation Edit end
 	M.make_jittery(5)
 
 /datum/reagent/ethanol/coffee/kahlua

@@ -47,7 +47,7 @@
 	character.flavor_texts["hands"]		= pref.flavor_texts["hands"]
 	character.flavor_texts["legs"]		= pref.flavor_texts["legs"]
 	character.flavor_texts["feet"]		= pref.flavor_texts["feet"]
-	character.ooc_notes 				= pref.metadata //VOREStation Add
+	character.ooc_notes 				= pref.metadata
 
 /datum/category_item/player_setup_item/general/flavor/content(var/mob/user)
 	. += "<b>Flavor:</b><br>"
@@ -59,7 +59,7 @@
 		switch(href_list["flavor_text"])
 			if("open")
 			if("general")
-				var/msg = sanitize(input(usr,"Give a general description of your character. This will be shown regardless of clothings.","Flavor Text",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0, max_length = 8192)	//VOREStation Edit: separating out OOC notes
+				var/msg = sanitize(input(usr,"Give a general description of your character. This will be shown regardless of clothings.","Flavor Text",html_decode(pref.flavor_texts[href_list["flavor_text"]])) as message, extra = 0, max_length = 8192)
 				if(CanUseTopic(user))
 					pref.flavor_texts[href_list["flavor_text"]] = msg
 			else

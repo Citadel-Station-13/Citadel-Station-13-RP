@@ -88,7 +88,7 @@
 		/datum/mob_descriptor/vox_markings = 0
 		)
 
-	wikilink="https://wiki.vore-station.net/Vox"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_The_Vox"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash,

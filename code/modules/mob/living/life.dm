@@ -3,7 +3,7 @@
 
 	if (transforming)
 		return
-	handle_modifiers() //VOREStation Edit - Needs to be done even if in nullspace.
+	handle_modifiers() // Needs to be done even if in nullspace.
 	if(!loc)
 		return
 
@@ -12,8 +12,7 @@
 
 	var/datum/gas_mixture/environment = loc.return_air()
 
-	//handle_modifiers() // Do this early since it might affect other things later. //VOREStation Edit
-
+	//handle_modifiers() // Do this early since it might affect other things later.
 	handle_light()
 
 	if(stat != DEAD)
@@ -42,9 +41,6 @@
 
 	//Check if we're on fire
 	handle_fire()
-
-	//stuff in the stomach
-	//handle_stomach() //VOREStation Code
 
 	update_gravity(mob_has_gravity())
 

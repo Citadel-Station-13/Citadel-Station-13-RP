@@ -551,8 +551,6 @@
 		if("Head of Security")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/headofsecurity
 			parent_suit = /obj/item/clothing/suit/space/void/headofsecurity
-		//BEGIN: Space for additional downstream variants
-		//VOREStation Addition Start
 		if("Manager")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/captain
 			parent_suit = /obj/item/clothing/suit/space/void/captain
@@ -592,8 +590,6 @@
 		if("Talon Mercenary")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/mercenary/talon
 			parent_suit = /obj/item/clothing/suit/space/void/refurb/mercenary/talon
-		//VOREStation Addition End
-		//END: downstream variant space
 	if(target_species)
 		//Only run these checks if they have a sprite sheet defined, otherwise they use human's anyways, and there is almost definitely a sprite.
 		if((helmet!=null&&(target_species in helmet.sprite_sheets_obj))||(suit!=null&&(target_species in suit.sprite_sheets_obj)))

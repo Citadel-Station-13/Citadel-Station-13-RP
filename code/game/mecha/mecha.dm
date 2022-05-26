@@ -145,16 +145,23 @@
 	var/static/image/radial_image_statpanel = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine2")
 
 //Mech actions
-	var/datum/mini_hud/mech/minihud //VOREStation Edit
-	var/strafing = 0 				//Are we strafing or not?
+	var/datum/mini_hud/mech/minihud
+	/// re we strafing or not?
+	var/strafing = 0
 
-	var/defence_mode_possible = 0 	//Can we even use defence mode? This is used to assign it to mechs and check for verbs.
-	var/defence_mode = 0 			//Are we in defence mode
-	var/defence_deflect = 35		//How much it deflect
+	/// Can we even use defence mode? This is used to assign it to mechs and check for verbs.
+	var/defence_mode_possible = 0
+	/// Are we in defence mode.
+	var/defence_mode = 0
+	/// How much it deflect.
+	var/defence_deflect = 35
 
-	var/overload_possible = 0 		//Same as above. Don't forget to GRANT the verb&actions if you want everything to work proper.
-	var/overload = 0 				//Are our legs overloaded
-	var/overload_coeff = 1			//How much extra energy you use when use the L E G
+	/// Same as above. Don't forget to GRANT the verb&actions if you want everything to work proper.
+	var/overload_possible = 0
+	/// Are our legs overloaded.
+	var/overload = 0
+	/// How much extra energy you use when use the L E G.
+	var/overload_coeff = 1
 
 	var/zoom = 0
 	var/zoom_possible = 0
@@ -162,22 +169,30 @@
 	var/thrusters = 0
 	var/thrusters_possible = 0
 
-	var/phasing = 0					//Are we currently phasing
-	var/phasing_possible = 0		//This is to allow phasing.
-	var/can_phase = TRUE			//This is an internal check during the relevant procs.
+	/// Are we currently phasing.
+	var/phasing = 0
+	/// This is to allow phasing.
+	var/phasing_possible = 0
+	/// This is an internal check during the relevant procs.
+	var/can_phase = TRUE
 	var/phasing_energy_drain = 200
 
-	var/switch_dmg_type_possible = 0	//Can you switch damage type? It is mostly for the Phazon and its children.
+	/// Can you switch damage type? It is mostly for the Phazon and its children.
+	var/switch_dmg_type_possible = 0
 
 	var/smoke_possible = 0
-	var/smoke_reserve = 5			//How many shots you have. Might make a reload later on. MIGHT.
-	var/smoke_ready = 1				//This is a check for the whether or not the cooldown is ongoing.
-	var/smoke_cooldown = 100		//How long you have between uses.
+	/// How many shots you have. Might make a reload later on. MIGHT.
+	var/smoke_reserve = 5
+	/// This is a check for the whether or not the cooldown is ongoing.
+	var/smoke_ready = 1
+	/// How long you have between uses.
+	var/smoke_cooldown = 100
 	var/datum/effect_system/smoke_spread/smoke_system = new
 
-	var/cloak_possible = FALSE		// Can this exosuit innately cloak?
+	// Can this exosuit innately cloak?
+	var/cloak_possible = FALSE
 
-////All of those are for the HUD buttons in the top left. See Grant and Remove procs in mecha_actions.
+//All of those are for the HUD buttons in the top left. See Grant and Remove procs in mecha_actions.
 
 	var/datum/action/innate/mecha/mech_eject/eject_action = new
 	var/datum/action/innate/mecha/mech_toggle_internals/internals_action = new
@@ -1847,10 +1862,8 @@
 		verbs += /obj/mecha/verb/eject
 		log_append_to_last("[H] moved in as pilot.")
 		update_icon()
-		//VOREStation Edit Add
 		if(occupant.hud_used)
 			minihud = new (occupant.hud_used, src)
-		//VOREStation Edit Add End
 
 //This part removes all the verbs if you don't have them the _possible on your mech. This is a little clunky, but it lets you just add that to any mech.
 //And it's not like this 10yo code wasn't clunky before.
@@ -2191,7 +2204,7 @@
 			output += "Universal Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in special_equipment)
 			output += "Special Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
-		for(var/obj/item/mecha_parts/mecha_equipment/W in micro_utility_equipment) // VOREstation Edit -  Adds micro equipent to the menu
+		for(var/obj/item/mecha_parts/mecha_equipment/W in micro_utility_equipment)
 			output += "Micro Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in micro_weapon_equipment)
 			output += "Micro Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
