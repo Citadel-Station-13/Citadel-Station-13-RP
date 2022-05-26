@@ -1,12 +1,15 @@
-// the SMES
-// stores power
+/**
+ * smes
+ *
+ * base type of power storage unit
+ *
+ * storage values are measured in **kilowatt minutes** due to float precision.
+ * flow values are measured in kilowatts.
+ *
+ * TODO: generalize to /obj/machinery/power/storage, and split into storage/smes and storage/batteryrack, etc
+ */
 
 GLOBAL_LIST_EMPTY(smeses)
-
-///translates Watt into Kilowattminutes with respect to machinery schedule_interval ~(2s*1W*1min/60s)
-#define SMESRATE 0.03333
-#define SMESMAXCHARGELEVEL 250000
-#define SMESMAXOUTPUT 250000
 
 /obj/machinery/power/smes
 	name = "power storage unit"
@@ -17,19 +20,24 @@ GLOBAL_LIST_EMPTY(smeses)
 	use_power = USE_POWER_OFF
 	circuit = /obj/item/circuitboard/smes
 
-	var/capacity = 5e6 // maximum charge
-	var/charge = 1e6 // actual charge
+	/// maximum charge in kW-m
+	var/capacity = 5000
+	/// current charge in kW-m
+	var/charge = 1000
 
 	var/input_attempt = 0 			// 1 = attempting to charge, 0 = not attempting to charge
 	var/inputting = 0 				// 1 = actually inputting, 0 = not inputting
-	var/input_level = 50000 		// amount of power the SMES attempts to charge by
-	var/input_level_max = 200000 	// cap on input_level
-	var/input_available = 0 		// amount of charge available from input last tick
+	/// attempt to charge with this much kw
+	var/input_level = 50
+	/// max charge rate
+	var/input_level_max = 200
 
 	var/output_attempt = 1 			// 1 = attempting to output, 0 = not attempting to output
 	var/outputting = 1 				// 1 = actually outputting, 0 = not outputting
-	var/output_level = 50000		// amount of power the SMES attempts to output
-	var/output_level_max = 200000	// cap on output_level
+	/// attempt to output this much in kw
+	var/output_level = 50
+	/// max output in kw
+	var/output_level_max = 200
 	var/output_used = 0				// amount of power actually outputted. may be less than output_level if the powernet returns excess power
 
 	//Holders for powerout event.
@@ -50,15 +58,13 @@ GLOBAL_LIST_EMPTY(smeses)
 	var/should_be_mapped = 0 		// If this is set to 0 it will send out warning on New()
 	var/grid_check = FALSE 			// If true, suspends all I/O.
 
-/obj/machinery/power/smes/drain_power(var/drain_check, var/surge, var/amount = 0)
+/obj/machinery/power/smes/drain_energy(datum/actor, amount, flags)
+	var/wanted = min(charge, KJ_TO_KWM(amount))
+	charge -= wanted
+	return KWM_TO_KJ(wanted)
 
-	if(drain_check)
-		return 1
-
-	var/smes_amt = min((amount * SMESRATE), charge)
-	charge -= smes_amt
-	return smes_amt / SMESRATE
-
+/obj/machinery/power/smes/can_drain_energy(datum/actor, amount)
+	return TRUE
 
 /obj/machinery/power/smes/Initialize(mapload, newdir)
 	. = ..()
@@ -134,9 +140,9 @@ GLOBAL_LIST_EMPTY(smeses)
 
 	//inputting
 	if(input_attempt && (!input_pulsed && !input_cut) && !grid_check)
-		var/target_load = min((capacity-charge)/SMESRATE, input_level)	// charge at set rate, limited to spare capacity
+		var/target_load = min(KWM_TO_KW(capacity - charge, 1), input_level)	// charge at set rate, limited to spare capacity
 		var/actual_load = draw_power(target_load)						// add the load to the terminal side network
-		charge += actual_load * SMESRATE								// increase the charge
+		charge += KW_TO_KWM(actual_load, 1)								// increase the charge
 
 		if (actual_load >= target_load) // Did we charge at full rate?
 			inputting = 2
@@ -147,9 +153,8 @@ GLOBAL_LIST_EMPTY(smeses)
 
 	//outputting
 	if(outputting && (!output_pulsed && !output_cut) && !grid_check)
-		output_used = min( charge/SMESRATE, output_level)		//limit output to that stored
-
-		charge -= output_used*SMESRATE		// reduce the storage (may be recovered in /restore() if excessive)
+		output_used = min(KWM_TO_KW(charge, 1), output_level)		//limit output to that stored
+		charge -= KW_TO_KWM(output_used, 1)	// reduce the storage (may be recovered in /restore() if excessive)
 
 		add_avail(output_used)				// add output to powernet (smes side)
 
@@ -166,8 +171,6 @@ GLOBAL_LIST_EMPTY(smeses)
 	if(last_disp != chargedisplay() || last_chrg != inputting || last_onln != outputting)
 		update_icon()
 
-
-
 // called after all power processes are finished
 // restores charge level to smes if there was excess this ptick
 /obj/machinery/power/smes/proc/restore()
@@ -181,21 +184,18 @@ GLOBAL_LIST_EMPTY(smeses)
 	var/excess = powernet.netexcess		// this was how much wasn't used on the network last ptick, minus any removed by other SMESes
 
 	excess = min(output_used, excess)				// clamp it to how much was actually output by this SMES last ptick
-
-	excess = min((capacity-charge)/SMESRATE, excess)	// for safety, also limit recharge by space capacity of SMES (shouldn't happen)
+	excess = min(KWM_TO_KW(capacity - charge, 1), excess)	// for safety, also limit recharge by space capacity of SMES (shouldn't happen)
 
 	// now recharge this amount
-
 	var/clev = chargedisplay()
 
-	charge += excess * SMESRATE			// restore unused power
+	charge += KW_TO_KWM(excess, 1)			// restore unused power
 	powernet.netexcess -= excess		// remove the excess from the powernet, so later SMESes don't try to use it
 
 	output_used -= excess
 
-	if(clev != chargedisplay() ) //if needed updates the icons overlay
+	if(clev != chargedisplay()) //if needed updates the icons overlay
 		update_icon()
-	return
 
 //Will return 1 on failure
 /obj/machinery/power/smes/proc/make_terminal(const/mob/user)
@@ -227,12 +227,10 @@ GLOBAL_LIST_EMPTY(smeses)
 		return 0
 	return 1
 
-
 /obj/machinery/power/smes/draw_power(var/amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
 	return 0
-
 
 /obj/machinery/power/smes/attack_ai(mob/user)
 	add_hiddenprint(user)
@@ -241,7 +239,6 @@ GLOBAL_LIST_EMPTY(smeses)
 /obj/machinery/power/smes/attack_hand(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)
-
 
 /obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_screwdriver())
@@ -318,13 +315,11 @@ GLOBAL_LIST_EMPTY(smeses)
 		"inputAttempt" = input_attempt,
 		"inputting" = inputting,
 		"inputLevel" = input_level,
-		"inputLevel_text" = DisplayPower(input_level),
 		"inputLevelMax" = input_level_max,
 		"inputAvailable" = getTerminalPower(),
 		"outputAttempt" = output_attempt,
 		"outputting" = outputting,
 		"outputLevel" = round(output_level, 0.1),
-		"outputLevel_text" = DisplayPower(output_level),
 		"outputLevelMax" = round(output_level_max),
 		"outputUsed" = round(output_used, 0.1),
 	)
@@ -429,6 +424,10 @@ GLOBAL_LIST_EMPTY(smeses)
 		ui.set_auto_update(1)
 	..()
 */
+
+/**
+ * returns available terminal power in watts
+ */
 /obj/machinery/power/smes/proc/getTerminalPower()
 	if (terminal && terminal.powernet)//checks if the SMES has a terminal, and if that terminal has a powernet.
 		. = round(terminal.powernet.avail, 0.1)
@@ -521,7 +520,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	outputting(rand(0,1))
 	output_level = rand(0, output_level_max)
 	input_level = rand(0, input_level_max)
-	charge -= 1e6/severity
+	charge -= 1000/severity
 	if (charge < 0)
 		charge = 0
 	update_icon()
@@ -530,27 +529,27 @@ GLOBAL_LIST_EMPTY(smeses)
 /obj/machinery/power/smes/magical
 	name = "magical power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Magically produces power."
-	capacity = 9000000
-	output_level = 250000
+	capacity = 5000
+	output_level = 250
 	should_be_mapped = 1
 
 /obj/machinery/power/smes/magical/process(delta_time)
-	charge = 5000000
+	charge = 5000
 	..()
 
 /obj/machinery/power/smes/buildable/main
 	name = "main smes"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the main one for facility power."
-	charge = 2e7
-	input_level = 500000
-	output_level = 1000000
+	charge = KWH_TO_KWM(SMES_COIL_STORAGE_BASIC * 4 * 0.8)
+	input_level = 500
+	output_level = 1000
 
 /obj/machinery/power/smes/buildable/engine
 	name = "engine smes"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the one dedicated to the engine."
-	charge = 2e6
-	input_level = 100000
-	output_level = 200000
+	charge = KWH_TO_KWM(SMES_COIL_STORAGE_BASIC * 1 * 0.8)
+	input_level = 100
+	output_level = 200
 
 #define SMES_UI_INPUT 1
 #define SMES_UI_OUTPUT 2

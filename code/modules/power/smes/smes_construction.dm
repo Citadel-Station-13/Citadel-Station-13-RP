@@ -5,38 +5,6 @@
 // This is subtype of SMES that should be normally used. It can be constructed, deconstructed and hacked.
 // It also supports RCON System which allows you to operate it remotely, if properly set.
 
-//MAGNETIC COILS - These things actually store and transmit power within the SMES. Different types have different
-/obj/item/smes_coil
-	name = "superconductive magnetic coil"
-	desc = "The standard superconductive magnetic coil, with average capacity and I/O rating."
-	icon = 'icons/obj/stock_parts.dmi'
-	icon_state = "smes_coil"			// Just few icons patched together. If someone wants to make better icon, feel free to do so!
-	w_class = ITEMSIZE_LARGE 						// It's LARGE (backpack size)
-	var/ChargeCapacity = 6000000		// 100 kWh
-	var/IOCapacity = 250000				// 250 kW
-
-// 20% Charge Capacity, 60% I/O Capacity. Used for substation/outpost SMESs.
-/obj/item/smes_coil/weak
-	name = "basic superconductive magnetic coil"
-	desc = "A cheaper model of superconductive magnetic coil. Its capacity and I/O rating are considerably lower."
-	ChargeCapacity = 1200000			// 20 kWh
-	IOCapacity = 150000					// 150 kW
-
-// 1000% Charge Capacity, 20% I/O Capacity
-/obj/item/smes_coil/super_capacity
-	name = "superconductive capacitance coil"
-	desc = "A specialised type of superconductive magnetic coil with a significantly stronger containment field, allowing for larger power storage. Its IO rating is much lower, however."
-	ChargeCapacity = 60000000			// 1000 kWh
-	IOCapacity = 50000					// 50 kW
-
-// 10% Charge Capacity, 400% I/O Capacity. Technically turns SMES into large super capacitor.Ideal for shields.
-/obj/item/smes_coil/super_io
-	name = "superconductive transmission coil"
-	desc = "A specialised type of superconductive magnetic coil with reduced storage capabilites but vastly improved power transmission capabilities, making it useful in systems which require large throughput."
-	ChargeCapacity = 600000				// 10 kWh
-	IOCapacity = 1000000				// 1000 kW
-
-
 // SMES SUBTYPES - THESE ARE MAPPED IN AND CONTAIN DIFFERENT TYPES OF COILS
 
 // These are used on individual outposts as backup should power line be cut, or engineering outpost lost power.
@@ -63,8 +31,6 @@
 	input_level = input_level_max
 	output_level = output_level_max
 	input_attempt = TRUE
-
-
 
 // END SMES SUBTYPES
 
@@ -108,7 +74,8 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
-		charge -= (output_level_max * SMESRATE)
+		// whichever's bigger
+		charge -= min(charge, max(KW_TO_KWM(output_level_max, 1), capacity * 0.0033333))
 		if(prob(1)) // Small chance of overload occuring since grounding is disabled.
 			apcs_overload(0,10)
 
@@ -159,10 +126,11 @@
 		input_level_max = 0
 		output_level_max = 0
 		for(var/obj/item/smes_coil/C in component_parts)
-			capacity += C.ChargeCapacity
-			input_level_max += C.IOCapacity
-			output_level_max += C.IOCapacity
-		charge = between(0, charge, capacity)
+			// convert to kWm
+			capacity += KWH_TO_KWM(C.charge_capacity)
+			input_level_max += C.flow_capacity
+			output_level_max += C.flow_capacity
+		charge = clamp(charge, 0, capacity)
 		return 1
 	return 0
 
@@ -186,7 +154,6 @@
 	var/mob/living/carbon/human/h_user = user
 	if (!istype(h_user))
 		return
-
 
 	// Preparations
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -368,7 +335,7 @@
 				user.drop_item()
 				cur_coils ++
 				component_parts += W
-				W.loc = src
+				W.forceMove(src)
 				recalc_coils()
 			else
 				to_chat(user, "<font color='red'>You can't insert more coils into this SMES unit!</font>")
@@ -391,12 +358,12 @@
 // Parameters: 1 (new_input - New input value in Watts)
 // Description: Sets input setting on this SMES. Trims it if limits are exceeded.
 /obj/machinery/power/smes/proc/set_input(var/new_input = 0)
-	input_level = between(0, new_input, input_level_max)
+	input_level = clamp( new_input, 0,  input_level_max)
 	update_icon()
 
 // Proc: set_output()
 // Parameters: 1 (new_output - New output value in Watts)
 // Description: Sets output setting on this SMES. Trims it if limits are exceeded.
 /obj/machinery/power/smes/proc/set_output(var/new_output = 0)
-	output_level = between(0, new_output, output_level_max)
+	output_level = clamp( new_output, 0,  output_level_max)
 	update_icon()

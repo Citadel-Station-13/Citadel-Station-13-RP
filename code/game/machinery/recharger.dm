@@ -6,22 +6,21 @@
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 4
-	active_power_usage = 40000	//40 kW
-	var/efficiency = 40000 //will provide the modified power rate when upgraded
+	active_power_usage = 40000	//10 kW
+	var/efficiency = 10000 //will provide the modified power rate when upgraded
 	var/obj/item/charging = null
 	var/list/allowed_devices = list(/obj/item/gun/energy, /obj/item/melee/baton, /obj/item/modular_computer, /obj/item/computer_hardware/battery_module, /obj/item/cell, /obj/item/flashlight, /obj/item/electronic_assembly, /obj/item/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/flash, /obj/item/ammo_casing/microbattery, /obj/item/shield_diffuser, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/projectile/cell_loaded)
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
 	var/portable = TRUE
+	/// base power draw
+	var/base_power_draw = 20000
 	circuit = /obj/item/circuitboard/recharger
 
 /obj/machinery/recharger/Initialize(mapload)
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/capacitor(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 5)
-	RefreshParts()
-	return ..()
+	. = ..()
+	default_apply_parts()
 
 /obj/machinery/recharger/examine(mob/user)
 	. = ..()
@@ -141,7 +140,7 @@
 			var/obj/item/modular_computer/C = charging
 			if(!C.battery_module.battery.fully_charged())
 				icon_state = icon_state_charging
-				C.battery_module.battery.give(CELLRATE*efficiency)
+				C.battery_module.battery.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
 				update_use_power(USE_POWER_ACTIVE)
 			else
 				icon_state = icon_state_charged
@@ -151,7 +150,7 @@
 			var/obj/item/computer_hardware/battery_module/BM = charging
 			if(!BM.battery.fully_charged())
 				icon_state = icon_state_charging
-				BM.battery.give(CELLRATE*efficiency)
+				BM.battery.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
 				update_use_power(USE_POWER_ACTIVE)
 			else
 				icon_state = icon_state_charged
@@ -162,7 +161,7 @@
 		if(istype(C))
 			if(!C.fully_charged())
 				icon_state = icon_state_charging
-				C.give(CELLRATE*efficiency)
+				C.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
 				update_use_power(USE_POWER_ACTIVE)
 			else
 				icon_state = icon_state_charged
@@ -202,8 +201,6 @@
 				icon_state = icon_state_charged
 				update_use_power(USE_POWER_IDLE)
 
-
-
 /obj/machinery/recharger/emp_act(severity)
 	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
 		..(severity)
@@ -226,7 +223,8 @@
 	var/E = 0
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		E += C.rating
-	efficiency = active_power_usage * (1+ (E - 1)*0.5) * 10
+	update_active_power_usage(base_power_draw * E)
+	efficiency = active_power_usage * RECHARGER_CHEAT_FACTOR
 
 /obj/machinery/recharger/wallcharger
 	name = "wall recharger"
@@ -235,8 +233,7 @@
 	icon_state = "wrecharger0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	active_power_usage = 60000	//60 kW , It's more specialized than the standalone recharger (guns, batons, and flashlights only) so make it more powerful
-	efficiency = 60000
+	base_power_draw = 30000
 	allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/projectile/cell_loaded)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"

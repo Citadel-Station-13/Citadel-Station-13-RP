@@ -153,7 +153,7 @@ emp_act
 
 // Returns a number between 0 to 1, with 1 being total protection.
 /mob/living/carbon/human/get_shock_protection()
-	return between(0, 1-get_siemens_coefficient_average(), 1)
+	return clamp( 1-get_siemens_coefficient_average(), 0,  1)
 
 // Returns a list of clothing that is currently covering def_zone.
 /mob/living/carbon/human/proc/get_clothing_list_organ(var/obj/item/organ/external/def_zone, var/type)
@@ -487,7 +487,7 @@ emp_act
 
 	catch_chance -= get_accuracy_penalty()	// Same issues with shooting a gun, or swinging a weapon
 
-	catch_chance = between(1, catch_chance, 100)
+	catch_chance = clamp( catch_chance, 1,  100)
 
 	if(prob(catch_chance))
 		return TRUE

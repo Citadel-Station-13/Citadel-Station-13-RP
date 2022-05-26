@@ -254,7 +254,7 @@
 					say(pick("Evil...", "Kill...", "Tyrant..."))
 				resentment++ // Done after check so first time will never enrage.
 
-	discipline = between(0, discipline + amount, 10)
+	discipline = clamp( discipline + amount, 0,  10)
 
 /mob/living/simple_animal/slime/movement_delay()
 	if(bodytemperature >= 330.23) // 135 F or 57.08 C

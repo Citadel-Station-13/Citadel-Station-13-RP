@@ -1,4 +1,4 @@
-#define ENERGY_PER_K 20
+#define ENERGY_KW_PER_K 20
 #define MINIMUM_PLASMA_TEMPERATURE 10000
 
 /obj/machinery/power/hydromagnetic_trap
@@ -48,7 +48,6 @@
 	for (FF in active_field)
 		if (FF.plasma_temperature >= MINIMUM_PLASMA_TEMPERATURE)
 			icon_state = "mag_trap1"
-			add_avail(ENERGY_PER_K * FF.plasma_temperature)
+			add_avail(ENERGY_KW_PER_K * FF.plasma_temperature)
 		if (FF.plasma_temperature <= MINIMUM_PLASMA_TEMPERATURE)
 			icon_state = "mag_trap0"
-	return

@@ -1,6 +1,12 @@
 /var/global/list/construction_frame_wall
 /var/global/list/construction_frame_floor
 
+// TODO: MAKE FRAMES NOT AWFUL
+// WHY IN THE NAME OF THE SEVEN HELLS ARE THEY NOT STATIC DATUMS AT THIS POINT?!
+// WHY ARE VARIABLES HARD TYPECHECKED?
+// WHY IS CONSTRUCTION LIST ON METAL SHEETS MANUALLY POPULATED?
+// GOD I HATE OLD CODERS
+
 /proc/populate_frame_types()
 	//Create global frame type list if it hasn't been made already.
 	construction_frame_wall = list()

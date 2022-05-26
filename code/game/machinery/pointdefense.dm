@@ -193,7 +193,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 // Decide where to get the power to fire from
 /obj/machinery/power/pointdefense/use_power_oneoff(amount, chan = CURRENT_CHANNEL)
 	if(powernet)
-		return draw_power(amount)
+		return draw_power(amount * 0.001) * 1000
 	// We are not connected to a powernet, so we want APC power.  Reproduce that code here since this is weird.
 	if(chan == CURRENT_CHANNEL)
 		chan = power_channel
