@@ -386,6 +386,7 @@
 		alarm_area.air_scrub_info[id_tag] = signal.data
 	else if(dev_type == "AVP")
 		alarm_area.air_vent_info[id_tag] = signal.data
+	SStgui.update_uis(src)
 
 /obj/machinery/alarm/proc/register_env_machine(var/m_id, var/device_type)
 	var/new_name
