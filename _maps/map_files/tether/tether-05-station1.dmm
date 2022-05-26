@@ -335,11 +335,9 @@
 "aaG" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Power - Main";
-	charge = 2e+007;
-	cur_coils = 4;
 	input_attempt = 1;
-	input_level = 500000;
-	output_level = 1e+006
+	input_level = 500;
+	output_level = 1000
 	},
 /obj/structure/cable{
 	d2 = 4;

@@ -743,7 +743,7 @@
 				to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
 				return 0
 
-// HoS armor improved by Vorestation to be slightly better than normal security stuff.
+// HoS armor improved to be slightly better than normal security stuff.
 /obj/item/clothing/suit/storage/vest/hoscoat
 	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
 
@@ -756,7 +756,6 @@
 	icon_state = "hostrench"
 	flags_inv = HIDEHOLSTER
 
-// Override Polaris's "confederate" naming convention. I hate it.
 /obj/item/clothing/suit/storage/vest/oricon
 	name = "\improper Orion Confederation Government armored vest"
 	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation Group."

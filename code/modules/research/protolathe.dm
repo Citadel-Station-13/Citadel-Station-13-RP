@@ -24,7 +24,6 @@
 /obj/machinery/r_n_d/protolathe/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/r_n_d/protolathe/process(delta_time)
 	..()

@@ -284,10 +284,10 @@ var/list/economy_station_departments = list(
 	DEPARTMENT_PLANET,
 	DEPARTMENT_RESEARCH,
 	DEPARTMENT_SECURITY
-) //VOREStation Edit
+)
 
 
-// vorstation off-duty time
+// Off-duty time
 #define PTO_CARGO			"Cargo"
 #define PTO_CIVILIAN		"Civilian"
 #define PTO_COMMAND			"Command"
@@ -560,6 +560,3 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 		"purple"	= "darkslateblue",	\
 		"pink"		= "lightgrey"		\
 	)
-
-/// The amount of cell charge to use per 1 nutrition, given that synthetics are full at 450 nutrition
-#define SYNTHETIC_NUTRITION_CHARGE_RATE 20

@@ -72,7 +72,7 @@
 	//Handle species-specific deaths.
 	species.handle_death(src, gibbed)
 	animate_tail_stop()
-	stop_flying() //VOREStation Edit.
+	stop_flying()
 
 	//Handle snowflake ling stuff.
 	if(mind && mind.changeling)

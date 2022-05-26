@@ -15,8 +15,8 @@
 	name = "Air Vent"
 	desc = "Has a valve and pump attached to it"
 	use_power = USE_POWER_OFF
-	idle_power_usage = 150		//internal circuitry, friction losses and stuff
-	power_rating = 30000			//7500 W ~ 10 HP //VOREStation Edit - 30000 W
+	idle_power_usage = 150 //internal circuitry, friction losses and stuff
+	power_rating = 30000
 
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY //connects to regular and supply pipes
 
@@ -110,7 +110,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume
 	name = "Large Air Vent"
 	power_channel = EQUIP
-	power_rating = 45000	//15 kW ~ 20 HP //VOREStation Edit - 45000
+	power_rating = 45000
 
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux
 	icon_state = "map_vent_aux"
@@ -121,7 +121,7 @@
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 800
 
-// VOREStation Edit Start - Wall mounted vents
+// Wall mounted vents
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume/wall_mounted
 	name = "Wall Mounted Air Vent"
 
@@ -131,8 +131,6 @@
 	if(isnull(T))
 		return ..()
 	return T.return_air()
-
-// VOREStation Edit End
 
 /obj/machinery/atmospherics/component/unary/vent_pump/engine
 	name = "Engine Core Vent"
@@ -209,7 +207,7 @@
 	if(!can_pump())
 		return 0
 
-	var/datum/gas_mixture/environment = return_air() // VOREStation Edit - Use our own proc
+	var/datum/gas_mixture/environment = return_air()
 
 	var/power_draw = -1
 

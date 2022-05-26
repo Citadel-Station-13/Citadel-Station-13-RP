@@ -40,7 +40,7 @@ Open `code/_compile_options.dm` and uncomment the following line.
 //#define UNIT_TESTS
 ```
 
-Then, run vorestation.dmb in Dream Daemon. Don't bother trying to connect, you won't need to. You'll be able to see the outputs of all the tests. You'll get to see which tests failed and for what reason. If they all pass, you're set!
+Then, run citadel.dmb in Dream Daemon. Don't bother trying to connect, you won't need to. You'll be able to see the outputs of all the tests. You'll get to see which tests failed and for what reason. If they all pass, you're set!
 
 ## How to think about tests
 

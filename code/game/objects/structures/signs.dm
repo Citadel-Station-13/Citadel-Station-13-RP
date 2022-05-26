@@ -3,8 +3,8 @@
 	anchored = 1
 	opacity = 0
 	density = 0
-	plane = OBJ_PLANE //VOREStation Edit
-	layer = ABOVE_JUNK_LAYER //VOREStation Edit
+	plane = OBJ_PLANE
+	layer = ABOVE_JUNK_LAYER
 	w_class = ITEMSIZE_NORMAL
 
 /obj/structure/sign/ex_act(severity)
@@ -364,7 +364,6 @@
 	desc = "A direction sign, pointing out which way the Cargo department is."
 	icon_state = "direction_crg"
 
-// VOREStation Edit - New signs for us
 /obj/structure/sign/directions/command
 	icon = 'icons/obj/decals_vr.dmi'
 	name = "\improper Command department"
@@ -376,7 +375,6 @@
 	name = "\improper Space Elevator"
 	desc = "A direction sign, pointing out which way the Space Elevator is."
 	icon_state = "direction_elv"
-// VOREStation Edit End
 
 /obj/structure/sign/directions/cryo
 	name = "\improper Cryogenic Storage"

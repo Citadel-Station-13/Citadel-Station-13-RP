@@ -162,8 +162,7 @@
 	attack_verb = list("slashed", "chopped", "gouged", "ripped", "cut")
 	can_cleave = TRUE //Now hatchets inherit from the machete, and thus knives. Tables turned.
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
-	default_material = "plasteel" //VOREStation Edit
-
+	default_material = "plasteel"
 /obj/item/material/knife/machete/armblade
 	name = "arm-mounted blade"
 	desc = "A long, machete-like blade, mounted to your arm. The size and location of it lends itself to parrying blows in melee."
@@ -207,15 +206,14 @@
 	icon_state = "survivalknife"
 	item_state = "knife"
 	applies_material_colour = FALSE
-	default_material = "plasteel" //VOREStation Edit
+	default_material = "plasteel"
 	toolspeed = 2 // Use a real axe if you want to chop logs.
 
 /obj/item/material/knife/tacknife/survival/bone
 	name = "primitive survival knife"
 	desc = "A hunting grade survival knife with a sleek leather grip."
 	applies_material_colour =TRUE
-	default_material = "bone" //VOREStation Edit
-
+	default_material = "bone"
 /obj/item/material/knife/machete/deluxe
 	name = "deluxe machete"
 	desc = "A fine example of a machete, with a polished blade, wooden handle and a leather cord loop."
@@ -231,7 +229,7 @@
 	icon_state = "dataknife"
 	item_state = "knife"
 	applies_material_colour = FALSE
-	default_material = "plasteel" //VOREStation Edit
+	default_material = "plasteel"
 	toolspeed = 2 // Use a real axe if you want to chop logs.
 	var/gps_tag = "DAT&#%F0"
 	var/emped = FALSE

@@ -27,14 +27,17 @@
 
 	// Vars for hacking
 	var/datum/wires/jukebox/wires = null
-	var/hacked = 0 // Whether to show the hidden songs or not
-	var/freq = 0 // Currently no effect, will return in phase II of mediamanager.
-	//VOREStation Add
-	var/loop_mode = JUKEMODE_PLAY_ONCE			// Behavior when finished playing a song
-	var/max_queue_len = 3						// How many songs are we allowed to queue up?
+	/// Whether to show the hidden songs or not.
+	var/hacked = 0
+	/// Currently no effect, will return in phase II of mediamanager.
+	var/freq = 0
+	/// Behavior when finished playing a song.
+	var/loop_mode = JUKEMODE_PLAY_ONCE
+	/// How many songs are we allowed to queue up?
+	var/max_queue_len = 3
 	var/list/queue = list()
-	//VOREStation Add End
-	var/current_genre = "Electronic" //What is our current genre?
+	/// What is our current genre?
+	var/current_genre = "Electronic"
 	var/list/genres = list("Arcade", "Alternative", "Classical and Orchestral", "Country and Western", "Disco, Funk, Soul, and R&B", "Electronic", "Folk and Indie", "Hip-Hop and Rap", "Jazz and Lounge", "Metal", "Pop", "Rock", "Sol Common Precursors") //Avaliable genres.
 	var/datum/track/current_track
 	var/list/datum/track/tracks = list(

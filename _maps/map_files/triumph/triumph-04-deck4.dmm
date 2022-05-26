@@ -6393,7 +6393,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 15000;
 	cur_coils = 3
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -15386,7 +15386,7 @@
 /area/ai_upload)
 "kLA" = (
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 15000;
 	cur_coils = 3
 	},
 /obj/structure/cable/cyan{
@@ -30970,10 +30970,10 @@
 /area/maintenance/central)
 "vbU" = (
 /obj/machinery/power/smes/buildable{
-	charge = 5e+006;
+	charge = 5000;
 	input_attempt = 1;
-	input_level = 200000;
-	output_level = 200000
+	input_level = 200;
+	output_level = 200
 	},
 /obj/structure/cable/cyan{
 	d2 = 4;
@@ -34088,7 +34088,7 @@
 /area/security/security_equiptment_storage)
 "wVx" = (
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 15000;
 	cur_coils = 3
 	},
 /obj/structure/cable/cyan,

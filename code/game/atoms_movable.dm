@@ -58,7 +58,7 @@
 	var/old_x = 0
 	var/old_y = 0
 
-	///VOREStation Add - Moved from /obj/vehicle (for some reason?)
+	/// Used for vehicles and other things.
 	var/datum/riding/riding_datum
 	/// Does the atom spin when thrown.
 	var/does_spin = TRUE

@@ -206,7 +206,6 @@ Pipelines + Other Objects -> Pipe network
 	if(pipe_flags & (PIPING_DEFAULT_LAYER_ONLY|PIPING_ALL_LAYER))
 		new_layer = PIPING_LAYER_DEFAULT
 	piping_layer = new_layer
-	// Do it the Polaris way
 	switch(piping_layer)
 		if(PIPING_LAYER_SCRUBBER)
 			icon_state = "[icon_state]-scrubbers"
