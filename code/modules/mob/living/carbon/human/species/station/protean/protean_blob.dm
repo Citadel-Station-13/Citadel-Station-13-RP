@@ -64,7 +64,7 @@
 /mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
 	. = ..()
 	mob_radio = new(src)
-	myid = new(src)
+	access_card = new(src)
 	if(H)
 		humanform = H
 		updatehealth()
@@ -344,10 +344,10 @@
 	for(var/obj/item/pda/P in things_to_not_drop)
 		if(P.id)
 			var/obj/item/card/id/PID = P.id
-			blob.myid.access += PID.access
+			blob.access_card.access += PID.access
 
 	for(var/obj/item/card/id/I in things_to_not_drop)
-		blob.myid.access += I.access
+		blob.access_card.access += I.access
 
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform

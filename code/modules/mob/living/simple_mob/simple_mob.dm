@@ -89,7 +89,7 @@
 	/// The list of lootable objects to drop, with "/path = prob%" structure
 	var/list/loot_list = list()
 	/// An ID card if they have one to give them access to stuff.
-	var/obj/item/card/id/myid
+	var/obj/item/card/id/access_card
 
 	//* Mob environment settings *//
 	/// Minimum "okay" temperature in kelvin
@@ -280,8 +280,8 @@
 
 /mob/living/simple_mob/Destroy()
 	default_language = null
-	if(myid)
-		QDEL_NULL(myid)
+	if(access_card)
+		QDEL_NULL(access_card)
 
 	friends.Cut()
 	languages.Cut()

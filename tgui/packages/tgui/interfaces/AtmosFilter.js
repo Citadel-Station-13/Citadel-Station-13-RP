@@ -1,15 +1,15 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, NumberInput, Section, AnimatedNumber, Box } from '../components';
+import { Button, LabeledList, NumberInput, Section } from '../components';
+import { getGasLabel } from '../constants';
 import { Window } from '../layouts';
 
 export const AtmosFilter = (props, context) => {
   const { act, data } = useBackend(context);
-  const filterTypes = data.filter_types || [];
+  const filter_types = data.filter_types || [];
   return (
     <Window
-      width={390}
-      height={187}
-      resizable>
+      width={420}
+      height={221}>
       <Window.Content>
         <Section>
           <LabeledList>
@@ -21,18 +21,13 @@ export const AtmosFilter = (props, context) => {
                 onClick={() => act('power')} />
             </LabeledList.Item>
             <LabeledList.Item label="Transfer Rate">
-              <Box inline mr={1}>
-                <AnimatedNumber
-                  value={data.last_flow_rate}
-                  format={val => val + " L/s"} />
-              </Box>
               <NumberInput
                 animated
                 value={parseFloat(data.rate)}
                 width="63px"
                 unit="L/s"
                 minValue={0}
-                maxValue={200}
+                maxValue={data.max_rate}
                 onDrag={(e, value) => act('rate', {
                   rate: value,
                 })} />
@@ -45,14 +40,15 @@ export const AtmosFilter = (props, context) => {
                   rate: 'max',
                 })} />
             </LabeledList.Item>
-            <LabeledList.Item label="Filter">
-              {filterTypes.map(filter => (
+            <LabeledList.Item label="Filters">
+              {filter_types.map(filter => (
                 <Button
-                  key={filter.name}
-                  selected={filter.selected}
-                  content={filter.name}
-                  onClick={() => act('filter', {
-                    filterset: filter.f_type,
+                  key={filter.id}
+                  icon={filter.enabled ? 'check-square-o' : 'square-o'}
+                  content={getGasLabel(filter.gas_id, filter.gas_name)}
+                  selected={filter.enabled}
+                  onClick={() => act('toggle_filter', {
+                    val: filter.gas_id,
                   })} />
               ))}
             </LabeledList.Item>

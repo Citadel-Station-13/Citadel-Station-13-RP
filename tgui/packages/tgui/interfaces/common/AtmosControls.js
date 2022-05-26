@@ -1,7 +1,7 @@
 import { decodeHtmlEntities } from 'common/string';
 import { useBackend } from '../../backend';
 import { Button, LabeledList, NumberInput, Section } from '../../components';
-
+import { getGasLabel } from '../../constants';
 
 export const Vent = (props, context) => {
   const { vent } = props;
@@ -37,11 +37,11 @@ export const Vent = (props, context) => {
         <LabeledList.Item label="Mode">
           <Button
             icon="sign-in-alt"
-            content={direction !== "siphon" ? 'Pressurizing' : 'Siphoning'}
-            color={direction === "siphon" && 'danger'}
+            content={direction ? 'Pressurizing' : 'Siphoning'}
+            color={!direction && 'danger'}
             onClick={() => act('direction', {
               id_tag,
-              val: Number(direction === "siphon"),
+              val: Number(!direction),
             })} />
         </LabeledList.Item>
         <LabeledList.Item label="Pressure Regulator">
@@ -121,7 +121,7 @@ export const Scrubber = (props, context) => {
     scrubbing,
     id_tag,
     widenet,
-    filters,
+    filter_types,
   } = scrubber;
   return (
     <Section
@@ -147,18 +147,26 @@ export const Scrubber = (props, context) => {
               id_tag,
               val: Number(!scrubbing),
             })} />
+          <Button
+            icon={widenet ? 'expand' : 'compress'}
+            selected={widenet}
+            content={widenet ? 'Expanded range' : 'Normal range'}
+            onClick={() => act('widenet', {
+              id_tag,
+              val: Number(!widenet),
+            })} />
         </LabeledList.Item>
         <LabeledList.Item label="Filters">
           {scrubbing
-            && filters.map(filter => (
-              <Button key={filter.name}
-                icon={filter.val ? 'check-square-o' : 'square-o'}
-                content={filter.name}
-                title={filter.name}
-                selected={filter.val}
-                onClick={() => act(filter.command, {
+            && filter_types.map(filter => (
+              <Button key={filter.gas_id}
+                icon={filter.enabled ? 'check-square-o' : 'square-o'}
+                content={getGasLabel(filter.gas_id, filter.gas_name)}
+                title={filter.gas_name}
+                selected={filter.enabled}
+                onClick={() => act('toggle_filter', {
                   id_tag,
-                  val: !filter.val,
+                  val: filter.gas_id,
                 })} />
             ))
             || 'N/A'}
