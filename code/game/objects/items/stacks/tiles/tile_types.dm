@@ -121,20 +121,44 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	no_variants = FALSE
 
 /obj/item/stack/tile/carpet/bcarpet
-	icon_state = "tile-carpet"
+	name = "teal carpet"
+	singular_name = "teal carpet"
+	desc = "A piece of teal carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-bcarpet"
 /obj/item/stack/tile/carpet/blucarpet
-	icon_state = "tile-carpet"
+	name = "blue carpet"
+	singular_name = "blue carpet"
+	desc = "A piece of blue carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-blucarpet"
 /obj/item/stack/tile/carpet/turcarpet
-	icon_state = "tile-carpet"
+	name = "tur carpet"
+	singular_name = "tur carpet"
+	desc = "A piece of turquoise carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-turcarpet"
 /obj/item/stack/tile/carpet/sblucarpet
-	icon_state = "tile-carpet"
+	name = "silver-blue carpet"
+	singular_name = "silver-blue carpet"
+	desc = "A piece of silver-blue carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-sblucarpet"
 /obj/item/stack/tile/carpet/gaycarpet
-	icon_state = "tile-carpet"
+	name = "funny carpet"
+	singular_name = "funny carpet"
+	desc = "A piece of funny carpet. Perfect for clowning around on."
+	icon_state = "tile-gaycarpet"
 /obj/item/stack/tile/carpet/purcarpet
-	icon_state = "tile-carpet"
+	name = "purple carpet"
+	singular_name = "purple carpet"
+	desc = "A piece of purple carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-purcarpet"
 /obj/item/stack/tile/carpet/oracarpet
-	icon_state = "tile-carpet"
+	name = "orange carpet"
+	singular_name = "orange carpet"
+	desc = "A piece of orange carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-oracarpet"
 /obj/item/stack/tile/carpet/arcadecarpet
+	name = "arcadey carpet"
+	singular_name = "arcadey carpet"
+	desc = "A piece of arcadey carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-carpet-arcade"
 
 /obj/item/stack/tile/floor
