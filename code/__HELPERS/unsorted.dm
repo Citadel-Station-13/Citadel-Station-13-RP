@@ -1584,7 +1584,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	. += new /atom/movable/screen/plane_master/main{plane = MOB_PLANE}
 	// . += new /atom/movable/screen/plane_master/cloaked								//Cloaked atoms!
 
-	//VOREStation Add - Random other plane masters
+	// Random other plane masters from Virgo
 	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}				//Augmented reality
-	//VOREStation Add End
 	. += new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}

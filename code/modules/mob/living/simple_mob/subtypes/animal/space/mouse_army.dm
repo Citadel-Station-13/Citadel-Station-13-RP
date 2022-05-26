@@ -113,12 +113,10 @@
 	icon_rest = "mouse_[rank]_sleep"
 
 /mob/living/simple_mob/animal/space/mouse_army/Crossed(AM as mob|obj)
-	//VOREStation Edit begin: SHADEKIN
 	var/mob/SK = AM
 	if(istype(SK))
 		if(SK.shadekin_phasing_check())
 			return
-	//VOREStation Edit end: SHADEKIN
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM

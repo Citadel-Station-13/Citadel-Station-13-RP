@@ -671,9 +671,9 @@
 		overlays += image(icon, "[icon_state]_knife")
 	if(contaminated)
 		overlays += contamination_overlay
-	if(gurgled) //VOREStation Edit Start
+	if(gurgled)
 		decontaminate()
-		gurgle_contaminate() //VOREStation Edit End
+		gurgle_contaminate()
 	if(ismob(usr))
 		var/mob/M = usr
 		M.update_inv_shoes()
@@ -683,14 +683,14 @@
 	update_icon()
 	return ..()
 
-/obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, var/running)
-	if(prob(1) && !recent_squish) //VOREStation edit begin
+/obj/item/clothing/shoes/proc/handle_movement(turf/walking, running)
+	if(prob(1) && !recent_squish)
 		recent_squish = 1
 		spawn(100)
 			recent_squish = 0
 		for(var/mob/living/M in contents)
 			var/emote = pick(inside_emotes)
-			to_chat(M, emote) //VOREStation edit end
+			to_chat(M, emote)
 	return
 
 /obj/item/clothing/shoes/update_clothing_icon()

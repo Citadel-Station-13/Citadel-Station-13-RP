@@ -173,8 +173,6 @@
 		if((0 < beard) && (beard <= facial_hair_styles_list.len))
 			H.f_style = facial_hair_styles_list[beard]
 
-		// VORE StationEdit Start
-
 		// Ears
 		var/ears = dna.GetUIValueRange(DNA_UI_EAR_STYLE, ear_styles_list.len + 1) - 1
 		if(ears <= 1)
@@ -255,24 +253,21 @@
 			var/datum/species/alraune/CS = H.species
 			CS.copy_from(dna.base_species,dna.species_traits,src)
 			CS.blood_color = dna.blood_color
-		// VOREStation Edit End
-		H.force_update_organs() //VOREStation Add - Gotta do this too
+		H.force_update_organs()
 		H.force_update_limbs()
-		//H.update_body(0) //VOREStation Edit - Done in force_update_limbs already
+		//H.update_body(0) // Done in force_update_limbs already
 		H.update_eyes()
 		H.update_hair()
 
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
-//VOREStation Add
 /mob/living/carbon/human/proc/force_update_organs()
 	for(var/organ in organs + internal_organs)
 		var/obj/item/organ/O = organ
 		O.species = species
-//VOREStation Add End
 
-// Used below, simple injection modifier.
+/// Used below, simple injection modifier.
 /proc/probinj(var/pr, var/inj)
 	return prob(pr+inj*pr)

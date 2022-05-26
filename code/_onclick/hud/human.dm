@@ -309,7 +309,6 @@
 		mymob.hydration_icon.screen_loc = ui_nutrition_small
 		hud_elements |= mymob.hydration_icon
 
-	//VOREStation Addition begin
 	mymob.shadekin_dark_display = new /atom/movable/screen/shadekin/darkness()
 	mymob.shadekin_dark_display.screen_loc = ui_shadekin_dark_display
 	mymob.shadekin_dark_display.icon_state = "dark"
@@ -324,7 +323,6 @@
 	mymob.xenochimera_danger_display.screen_loc = ui_xenochimera_danger_display
 	mymob.xenochimera_danger_display.icon_state = "danger00"
 	hud_elements |= mymob.xenochimera_danger_display
-	//VOREStation Addition end
 
 	mymob.ling_chem_display = new /atom/movable/screen/ling/chems()
 	mymob.ling_chem_display.screen_loc = ui_ling_chemical_display

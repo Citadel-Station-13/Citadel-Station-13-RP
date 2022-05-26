@@ -26,16 +26,7 @@
 	if(alert != alerting)
 		alerting = !alerting
 		update_icon()
-/* VOREStation Move - Moved to VR File
-// Updates icon of this computer according to current status.
-/obj/machinery/computer/power_monitor/update_icon()
-	if(!(stat & (NOPOWER|BROKEN)))
-		if(alerting)
-			icon_screen = "power:1"
-		else
-			icon_screen = "power:0"
-	..()
-*/
+
 // On creation automatically connects to active sensors. This is delayed to ensure sensors already exist.
 /obj/machinery/computer/power_monitor/Initialize(mapload)
 	. = ..()

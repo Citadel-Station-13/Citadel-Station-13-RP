@@ -304,7 +304,7 @@ SUBSYSTEM_DEF(mapping)
 
 //
 // Mapping subsystem handles initialization of random map elements at server start
-// On VOREStation that means loading our random roundstart engine!
+// For us that means loading our random roundstart engine!
 //
 /datum/controller/subsystem/mapping
 	var/list/map_templates = list()
