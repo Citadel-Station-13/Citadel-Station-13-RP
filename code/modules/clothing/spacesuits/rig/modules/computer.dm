@@ -360,6 +360,7 @@
 	interface_desc = "Colloquially known as a power siphon, this module drains power through the suit hands into the suit battery."
 
 	var/atom/interfaced_with // Currently draining power from this device.
+	// in kJ
 	var/total_power_drained = 0
 	var/drain_loc
 
@@ -396,8 +397,8 @@
 		return 0
 
 	// Is it a valid power source?
-	if(target.drain_power(1) <= 0)
-		return 0
+	if(!target.can_drain_energy(src))
+		return FALSE
 
 	to_chat(H, "<span class = 'danger'>You begin draining power from [target]!</span>")
 	interfaced_with = target
@@ -409,7 +410,7 @@
 	return 1
 
 /obj/item/rig_module/power_sink/accepts_item(var/obj/item/input_device, var/mob/living/user)
-	var/can_drain = input_device.drain_power(1)
+	var/can_drain = input_device.can_drain_energy(src, NONE)
 	if(can_drain > 0)
 		engage(input_device)
 		return 1
@@ -428,7 +429,7 @@
 		return 0
 
 	holder.spark_system.start()
-	playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)
+	playsound(H, 'sound/effects/sparks2.ogg', 50, 1)
 
 	H.break_cloak()
 
@@ -449,25 +450,24 @@
 
 	// Attempts to drain up to 12.5*cell-capacity kW, determines this value from remaining cell capacity to ensure we don't drain too much.
 	// 1Ws/(12.5*CELLRATE) = 40s to charge
-	var/to_drain = min(12.5*holder.cell.maxcharge, ((holder.cell.maxcharge - holder.cell.charge) / CELLRATE))
-	var/target_drained = interfaced_with.drain_power(0,0,to_drain)
+	var/to_drain = min(12.5 * holder.cell.maxcharge, holder.cell.maxcharge - holder.cell.charge)
+	var/target_drained = interfaced_with.drain_energy(src, DYNAMIC_CELL_UNITS_TO_KJ(to_drain))
 	if(target_drained <= 0)
 		to_chat(H, "<span class = 'danger'>Your power sink flashes a red light; there is no power left in [interfaced_with].</span>")
 		drain_complete(H)
 		return
 
-	holder.cell.give(target_drained * CELLRATE)
+	holder.cell.give(DYNAMIC_KJ_TO_CELL_UNITS(target_drained))
 	total_power_drained += target_drained
 
-	return
-
 /obj/item/rig_module/power_sink/proc/drain_complete(var/mob/living/M)
-
 	if(!interfaced_with)
-		if(M) to_chat(M, "<font color=#4F49AF><b>Total power drained:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
+		if(M)
+			to_chat(M, "<font color=#4F49AF><b>Total power drained:</b> [round(DYNAMIC_KJ_TO_CELL_UNITS(total_power_drained))] cell units.</font>")
 	else
-		if(M) to_chat(M, "<font color=#4F49AF><b>Total power drained from [interfaced_with]:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
-		interfaced_with.drain_power(0,1,0) // Damage the victim.
+		if(M)
+			to_chat(M, "<font color=#4F49AF><b>Total power drained from [interfaced_with]:</b> [round(DYNAMIC_KJ_TO_CELL_UNITS(total_power_drained))] cell units.</font>")
+		interfaced_with.drain_energy(src, 0, ENERGY_DRAIN_SURGE)
 
 	drain_loc = null
 	interfaced_with = null

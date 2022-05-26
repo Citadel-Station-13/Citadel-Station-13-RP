@@ -94,8 +94,6 @@
 	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
 	if(allow_items)
 		dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
-		//dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>" //VOREStation Removal - Just log them.
-		//dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>" //VOREStation Removal
 
 	user << browse(dat, "window=cryopod_console")
 	onclose(user, "cryopod_console")
@@ -120,10 +118,8 @@
 		if(!allow_items) return
 
 		var/dat = "<b>Recently stored objects</b><br/><hr/><br/>"
-		//VOREStation Edit Start
 		for(var/I in frozen_items)
 			dat += "[I]<br/>"
-		//VOREStation Edit End
 		dat += "<hr/>"
 
 		user << browse(dat, "window=cryoitems")
@@ -221,18 +217,18 @@
 	var/allow_occupant_types = list(/mob/living/carbon/human)
 	var/disallow_occupant_types = list()
 
-	var/mob/occupant = null       // Person waiting to be despawned.
-	var/time_till_despawn = 599  // Down to 1 minute to reflect Vorestation respawn times.
-	var/time_entered = 0          // Used to keep track of the safe period.
-	var/obj/item/radio/intercom/announce //
+	var/mob/occupant = null // Person waiting to be despawned.
+	var/time_till_despawn = 599 // Down to 1 minute to reflect our respawn times.
+	var/time_entered = 0 // Used to keep track of the safe period.
+	var/obj/item/radio/intercom/announce
 
 	var/obj/machinery/computer/cryopod/control_computer
 	var/last_no_computer_message = 0
-	var/applies_stasis = 0	//VOREStation Edit: allow people to change their mind
+	var/applies_stasis = 0 // Allow people to change their mind
 
 /obj/machinery/crypod/Initialize(mapload)
 	. = ..()
-	if(type == /obj/machinery/cryopod)	// sue me
+	if(type == /obj/machinery/cryopod) // sue me
 		AddComponent(/datum/component/slaved_atom_to_loc, /atom/movable/landmark/spawnpoint/latejoin/station/cryogenics, TRUE)
 
 /obj/machinery/cryopod/robot
@@ -246,7 +242,6 @@
 	on_store_name = "Robotic Storage Oversight"
 	on_enter_occupant_message = "The storage unit broadcasts a sleep signal to you. Your systems start to shut down, and you enter low-power mode."
 	allow_occupant_types = list(/mob/living/silicon/robot)
-	//disallow_occupant_types = list(/mob/living/silicon/robot/drone) //VOREStation Removal - Why? How else do they leave?
 	applies_stasis = FALSE
 
 /obj/machinery/cryopod/robot/door
@@ -366,8 +361,7 @@
 
 	qdel(R.mmi)
 	for(var/obj/item/I in R.module) // the tools the borg has; metal, glass, guns etc
-		for(var/mob/M in I) //VOREStation edit
-			despawn_occupant(M)
+		for(var/mob/M in I)			despawn_occupant(M)
 		for(var/obj/item/O in I) // the things inside the tools, if anything; mainly for janiborg trash bags
 			O.forceMove(R)
 		qdel(I)
@@ -443,14 +437,7 @@
 		if(!preserve)
 			qdel(W)
 		else
-			log_special_item(W,to_despawn) //VOREStation Add
-			/* VOREStation Removal - We do our own thing.
-			if(control_computer && control_computer.allow_items)
-				control_computer.frozen_items += W
-				W.loc = control_computer //VOREStation Edit
-			else
-				W.forceMove(src.loc)
-			VOREStation Removal End */
+			log_special_item(W,to_despawn)
 	for(var/obj/structure/B in items)
 		if(istype(B,/obj/structure/bed))
 			qdel(B)
@@ -516,11 +503,10 @@
 	log_and_message_admins("[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) entered cryostorage.")
 
 
-	//VOREStation Edit begin: Dont delete mobs-in-mobs
+	// Dont delete mobs-in-mobs
 	if(to_despawn.client && to_despawn.stat<2)
 		var/mob/observer/dead/newghost = to_despawn.ghostize()
 		newghost.timeofdeath = world.time
-	//VOREStation Edit end: Dont delete mobs-in-mobs
 
 	//This should guarantee that ghosts don't spawn.
 	to_despawn.ckey = null
@@ -747,16 +733,6 @@
 /obj/machinery/computer/cryopod/gateway
 	name = "teleport oversight console"
 	desc = "An interface between visitors and the teleport oversight systems tasked with keeping track of all visitors who enter or exit from the teleporters."
-/* VOREStation Edit
-/obj/machinery/cryopod/robot/door/dorms
-	desc = "A small elevator that goes down to the residential district."
-	on_enter_occupant_message = "The elevator door closes slowly, ready to bring you down to the residential district."
-	spawnpoint_type = /datum/spawnpoint/elevator
-
-/obj/machinery/computer/cryopod/dorms
-	name = "residential oversight console"
-	desc = "An interface between visitors and the residential oversight systems tasked with keeping track of all visitors in the residential district."
-*/
 
 /obj/machinery/cryopod/proc/log_special_item(atom/movable/item, mob/to_despawn)
 	ASSERT(item && to_despawn)

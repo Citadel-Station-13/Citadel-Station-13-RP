@@ -259,13 +259,14 @@
 	if(!istype(user))
 		return 1
 	var/safety = user.eyecheck()
-	safety = between(-1, safety + eye_safety_modifier, 2)
+	safety = clamp( safety + eye_safety_modifier, -1,  2)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
 		if(!E)
 			return
-		if(H.nif && H.nif.flag_check(NIF_V_UVFILTER,NIF_FLAGS_VISION)) return //VOREStation Add - NIF
+		if(H.nif && H.nif.flag_check(NIF_V_UVFILTER,NIF_FLAGS_VISION))
+			return
 		switch(safety)
 			if(1)
 				to_chat(usr, "<span class='warning'>Your eyes sting a little.</span>")

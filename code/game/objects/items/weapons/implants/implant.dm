@@ -613,12 +613,12 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	return 0
 
 //! ## VR FILE MERGE ## !//
-/obj/item/implant/vrlanguage
+/obj/item/implant/uni_translator
 	name = "language"
 	desc = "Allows the user to understand and speak almost all known languages.."
 	var/uses = 1
 
-/obj/item/implant/vrlanguage/get_data()
+/obj/item/implant/uni_translator/get_data()
 	var/dat = {"
 		<b>Implant Specifications:</b><BR>
 		<b>Name:</b> Language Implant<BR>
@@ -631,7 +631,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		<b>Integrity:</b> Implant can only be used once before the nanobots are depleted."}
 	return dat
 
-/obj/item/implant/vrlanguage/trigger(emote, mob/source as mob)
+/obj/item/implant/uni_translator/trigger(emote, mob/source as mob)
 	if (src.uses < 1)
 		return 0
 	if (emote == "smile")
@@ -651,7 +651,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		source.add_language(LANGUAGE_SLAVIC)
 		source.add_language(LANGUAGE_SOL_COMMON) //In case they're giving a xenomorph an implant or something.
 
-/obj/item/implant/vrlanguage/post_implant(mob/source)
+/obj/item/implant/uni_translator/post_implant(mob/source)
 	source.mind.store_memory("A implant can be activated by using the smile emote, <B>say *smile</B> to attempt to activate.", 0, 0)
 	to_chat(source,"The implanted language implant can be activated by using the smile emote, <B>say *smile</B> to attempt to activate.")
 	return 1

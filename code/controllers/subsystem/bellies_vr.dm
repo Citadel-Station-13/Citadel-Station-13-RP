@@ -2,7 +2,7 @@
 #define SSBELLIES_IGNORED 2
 
 //
-// Bellies subsystem - Process vore bellies
+// Bellies subsystem - Process bellies
 //
 
 SUBSYSTEM_DEF(bellies)

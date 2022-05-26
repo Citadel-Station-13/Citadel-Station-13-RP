@@ -106,7 +106,6 @@
 	H.sync_organ_dna()
 	H.regenerate_icons()
 
-	//Basically all the VORE stuff
 	H.ooc_notes = current_project.body_oocnotes
 	H.flavor_texts = current_project.mydna.flavor.Copy()
 	H.resize(current_project.sizemult, FALSE)
@@ -322,7 +321,6 @@
 	H.sync_organ_dna()
 	H.regenerate_icons()
 
-	//Basically all the VORE stuff
 	H.ooc_notes = current_project.body_oocnotes
 	H.flavor_texts = current_project.mydna.flavor.Copy()
 	H.resize(current_project.sizemult)

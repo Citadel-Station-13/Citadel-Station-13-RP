@@ -205,7 +205,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		// The bigger they are, the harder they fall.
 		// They will take at least 20 damage at the minimum, and tries to scale up to 40% of their max health.
 		// This scaling is capped at 100 total damage, which occurs if the thing that fell has more than 250 health.
-		var/damage = between(20, L.getMaxHealth() * 0.4, 100)
+		var/damage = clamp( L.getMaxHealth() * 0.4, 20,  100)
 		var/target_zone = ran_zone()
 		var/blocked = L.run_armor_check(target_zone, "melee") * harm
 		var/soaked = L.get_armor_soak(target_zone, "melee") * harm

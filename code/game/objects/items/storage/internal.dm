@@ -7,7 +7,6 @@
 /obj/item/storage/internal/Initialize(mapload)
 	. = ..()
 	master_item = loc
-	//name = master_item.name //VOREStation Removal
 	verbs -= /obj/item/verb/verb_pickup	//make sure this is never picked up.
 
 /obj/item/storage/internal/Destroy()

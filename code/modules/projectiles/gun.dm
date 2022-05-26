@@ -96,7 +96,6 @@
 
 	var/last_shot = 0			//records the last shot fired
 
-//VOREStation Add - /tg/ icon system
 	var/charge_sections = 4
 	var/shaded_charge = FALSE
 	var/ammo_x_offset = 2
@@ -128,7 +127,6 @@
 
 	playsound(src, 'sound/machines/button.ogg', 25)
 	update_icon()
-//VOREStation Add End
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()
@@ -437,12 +435,10 @@
 	accuracy = initial(accuracy)	//Reset the gun's accuracyw
 
 	if(muzzle_flash)
-		//VOREStation Edit - Flashlights
 		if(gun_light)
 			set_light(light_brightness)
 		else
 			set_light(0)
-		//VOREStation Edit End
 
 // Similar to the above proc, but does not require a user, which is ideal for things like turrets.
 /obj/item/gun/proc/Fire_userless(atom/target)

@@ -27,8 +27,8 @@ GLOBAL_LIST_EMPTY(solars_list)
 	var/turn_angle = 0
 	var/obj/machinery/power/solar_control/control = null
 
-/obj/machinery/power/solar/drain_power()
-	return -1
+/obj/machinery/power/solar/can_drain_energy(datum/actor, flags)
+	return FALSE
 
 /obj/machinery/power/solar/Initialize(mapload, obj/item/solar_assembly/S)
 	. = ..()
@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 			if(obscured) //get no light from the SSsun.sun, so don't generate power
 				return
 			var/sgen = GLOB.solar_gen_rate * sunfrac
-			add_avail(sgen)
+			add_avail(sgen * 0.001)
 			control.gen += sgen
 		else //if we're no longer on the same powernet, remove from control computer
 			unset_control()
@@ -339,8 +339,8 @@ GLOBAL_LIST_EMPTY(solars_list)
 		SC.auto_start()
 	return TRUE
 
-/obj/machinery/power/solar_control/drain_power()
-	return -1
+/obj/machinery/power/solar_control/can_drain_energy(datum/actor, flags)
+	return FALSE
 
 /obj/machinery/power/solar_control/disconnect_from_network()
 	..()

@@ -1627,7 +1627,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "fitness"
 
 /area/crew_quarters/longue_area
-	name = "\improper Lounge" //VOREStation Edit - Muh speeling.
+	name = "\improper Lounge"
 	icon_state = "recreation_area"
 
 /area/crew_quarters/recreation_area

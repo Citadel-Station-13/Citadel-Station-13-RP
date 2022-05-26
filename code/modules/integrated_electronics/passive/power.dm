@@ -137,7 +137,7 @@
 /obj/item/integrated_circuit/passive/power/chemical_cell/handle_passive_energy()
 	if(assembly)
 		for(var/I in fuel)
-			if((assembly.battery.maxcharge-assembly.battery.charge) / CELLRATE > fuel[I])
+			if(DYNAMIC_CELL_UNITS_TO_W(assembly.battery.maxcharge - assembly.battery.charge, 1) > fuel[I])
 				var/power = fuel[I]
 				if(I == "blood")
 					var/list/data = reagents.get_data(I)
@@ -179,7 +179,7 @@
 	icon_state = "powernet"
 	extended_desc = "The assembly must be anchored, with a wrench, and a wire node must be avaiable directly underneath.<br>\
 	The first pin determines if power is moved at all. The second pin, if true, will draw from the powernet to charge the assembly's \
-	cell, otherwise it will give power from the cell to the powernet."
+	cell, otherwise it will give power from the cell to the powernet. All units are in kilowatts."
 	complexity = 20
 	inputs = list(
 		"active" = IC_PINTYPE_BOOLEAN,
@@ -194,7 +194,7 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_POWER = 2)
 	var/obj/machinery/power/circuit_io/IO = null // Dummy power machine to move energy in/out without a bunch of code duplication.
-	var/throughput = 10000 // Give/take up to 10kW.
+	var/throughput = 10 // Give/take up to 10kW.
 
 /obj/item/integrated_circuit/passive/power/powernet/Initialize(mapload)
 	IO = new(src)
@@ -217,11 +217,11 @@
 
 		if(should_act) // We're gonna give or take from the net.
 			if(drawing)
-				var/to_transfer = min(throughput, assembly.battery.amount_missing() / CELLRATE) // So we don't need to draw 10kW if the cell needs much less.
+				var/to_transfer = min(throughput, DYNAMIC_CELL_UNITS_TO_KW(assembly.battery.amount_missing(), 1)) // So we don't need to draw 10kW if the cell needs much less.
 				var/amount = IO.draw_power(to_transfer)
-				assembly.give_power(amount)
+				assembly.give_power_kw(amount)
 			else
-				var/amount = assembly.draw_power(throughput)
+				var/amount = assembly.draw_power_kw(throughput)
 				IO.add_avail(amount)
 
 		set_pin_data(IC_OUTPUT, 1, IO.avail())

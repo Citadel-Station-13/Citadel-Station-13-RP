@@ -296,3 +296,6 @@
 	var/in_enclosed_vehicle = 0
 
 	var/last_radio_sound = -INFINITY
+
+	/// A mock client, provided by tests and friends
+	var/datum/client_interface/mock_client

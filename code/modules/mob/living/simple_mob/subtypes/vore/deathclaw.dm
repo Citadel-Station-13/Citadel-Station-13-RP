@@ -53,17 +53,6 @@
 	vore_pounce_chance = 0 // Beat them into crit before eating.
 	vore_icons = SA_ICON_LIVING
 
-/* //VOREStation AI Temporary Removal
-/mob/living/simple_animal/hostile/deathclaw/Login()
-	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
-
-/mob/living/simple_animal/hostile/deathclaw/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
-	return
-*/
-
 /datum/ai_holder/simple_mob/melee/deathclaw
 	can_breakthrough = TRUE
 	violent_breakthrough = TRUE

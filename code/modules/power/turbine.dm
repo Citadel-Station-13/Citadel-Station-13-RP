@@ -254,7 +254,7 @@
 	// the TURBGENQ and TURBGENG values
 	lastgen = ((compressor.rpm / TURBGENQ)**TURBGENG) * TURBGENQ * productivity
 
-	add_avail(lastgen)
+	add_avail(lastgen * 0.001)
 
 	// Weird function but it works. Should be something else...
 	var/newrpm = ((compressor.gas_contained.temperature) * compressor.gas_contained.total_moles)/4
@@ -288,7 +288,7 @@
 	user.set_machine(src)
 
 	var/t = "<TT><B>Gas Turbine Generator</B><HR><PRE>"
-	t += "Generated power : [DisplayPower(lastgen)]<BR><BR>"
+	t += "Generated power : [render_power(lastgen, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT)]<BR><BR>"
 	t += "Turbine: [round(compressor.rpm)] RPM<BR>"
 	t += "Starter: [ compressor.starter ? "<A href='?src=\ref[src];str=1'>Off</A> <B>On</B>" : "<B>Off</B> <A href='?src=\ref[src];str=1'>On</A>"]"
 	t += "</PRE><HR><A href='?src=\ref[src];close=1'>Close</A>"
@@ -359,7 +359,7 @@
 	data["door_status"] = door_status ? TRUE : FALSE
 	if(compressor && compressor.turbine)
 		data["online"] = compressor.starter
-		data["power"] = DisplayPower(compressor.turbine.lastgen)
+		data["power"] = render_power(compressor.turbine.lastgen, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT)
 		data["rpm"] = compressor.rpm
 		data["temp"] = compressor.gas_contained.temperature
 

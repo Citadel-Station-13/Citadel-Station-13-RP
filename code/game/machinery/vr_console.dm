@@ -18,7 +18,6 @@
 /obj/machinery/vr_sleeper/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/vr_sleeper/Initialize(mapload)
 	. = ..()

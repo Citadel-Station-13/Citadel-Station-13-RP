@@ -5,8 +5,8 @@
 	slot = ACCESSORY_SLOT_TORSO //Legacy/balance purposes
 	concealed_holster = 1
 	var/obj/item/holstered = null
-	var/list/can_hold //VOREStation Add
-	var/list/cant_hold // cit add
+	var/list/can_hold
+	var/list/cant_hold
 	var/sound_in = 'sound/effects/holster/holsterin.ogg'
 	var/sound_out = 'sound/effects/holster/holsterout.ogg'
 	var/holster_verb = "holster"
@@ -15,14 +15,12 @@
 	if(holstered && istype(user))
 		to_chat(user, "<span class='warning'>There is already \a [holstered] holstered here!</span>")
 		return
-	//VOREStation Edit - Machete scabbard support
 	if (LAZYLEN(can_hold))
 		if(!is_type_in_list(I, can_hold) && !is_type_in_list(I, cant_hold))
 			to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
 			return
 
 	else if (!(I.slot_flags & SLOT_HOLSTER))
-	//VOREStation Edit End
 		to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
 		return
 
@@ -52,9 +50,7 @@
 	else
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message(
-				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>", //VOREStation Edit
-				"<span class='warning'>You draw \the [holstered], ready to go!</span>" //VOREStation Edit
-				)
+				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>",				"<span class='warning'>You draw \the [holstered], ready to go!</span>"				)
 			if(istype(holstered, /obj/item/gun))
 				var/obj/item/gun/G = holstered
 				if(G.check_safety()) //Reflex un-safetying if we are drawing our gun with intent to harm

@@ -25,6 +25,10 @@
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
 
+	// Access levels, used in modules\jobs\access.dm
+	var/list/req_access
+	var/list/req_one_access
+
 /obj/Initialize(mapload)
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()

@@ -32,7 +32,7 @@
 
 	var/mob/living/friend = null // Our best pal, who we'll follow. Meow.
 	var/named = FALSE //have I been named yet?
-	var/friend_name = null //VOREStation Edit - Lock befriending to this character
+	var/friend_name = null // Lock befriending to this character
 
 	meat_amount = 2
 	bone_amount = 2
@@ -96,7 +96,7 @@
 			to_chat(L, SPAN_WARNING( "\The [src] ignores you."))
 			return
 
-	//VOREStation Edit Start - Adds friend_name var checks
+	// friend_name var checks
 	if(!friend_name || L.real_name == friend_name)
 		friend = L
 		face_atom(L)
@@ -108,10 +108,8 @@
 			AI.set_follow(friend)
 	else
 		to_chat(L, SPAN_NOTICE("[src] ignores you."))
-	//VOREStation Edit End
 
 
-//RUNTIME IS ALIVE! SQUEEEEEEEE~
 /mob/living/simple_mob/animal/passive/cat/runtime
 	name = "Runtime"
 	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
@@ -120,7 +118,7 @@
 	icon_state = "cat"
 	item_state = "cat"
 	named = TRUE
-	makes_dirt = 0 //Vorestation Edit
+	makes_dirt = 0
 	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/cat/kitten
@@ -129,7 +127,7 @@
 	icon_state = "kitten"
 	item_state = "kitten"
 	gender = NEUTER
-	holder_type = /obj/item/holder/cat/kitten //VOREStation Edit
+	holder_type = /obj/item/holder/cat/kitten
 
 /mob/living/simple_mob/animal/passive/cat/kitten/Initialize(mapload)
 	if(gender == NEUTER)
@@ -157,7 +155,7 @@
 	holder_type = /obj/item/holder/cat/fluff/bones
 	randomized = FALSE
 
-// VOREStation Edit - Adds generic tactical kittens
+/// Tactical kittens!
 /obj/item/holder/cat/kitten
 	icon_state = "kitten"
 	w_class = ITEMSIZE_SMALL

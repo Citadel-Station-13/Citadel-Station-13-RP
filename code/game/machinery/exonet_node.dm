@@ -25,7 +25,6 @@
 	. = ..()
 
 	default_apply_parts()
-	RefreshParts()
 	desc = "This machine is one of many, many nodes inside [GLOB.using_map.starsys_name]'s section of the Exonet, connecting the \
 	[GLOB.using_map.station_short] to the rest of the system, at least electronically."
 	update_desc()

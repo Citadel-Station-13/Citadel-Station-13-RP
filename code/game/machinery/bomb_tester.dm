@@ -38,7 +38,6 @@
 /obj/machinery/bomb_tester/Initialize(mapload)
 	.=..()
 	default_apply_parts()
-	RefreshParts()
 	faketank = new
 
 /obj/machinery/bomb_tester/Destroy()

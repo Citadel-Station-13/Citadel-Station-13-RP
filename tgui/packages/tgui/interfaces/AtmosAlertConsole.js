@@ -9,8 +9,7 @@ export const AtmosAlertConsole = (props, context) => {
   return (
     <Window
       width={350}
-      height={300}
-      resizable>
+      height={300}>
       <Window.Content scrollable>
         <Section title="Alarms">
           <ul>
@@ -20,12 +19,12 @@ export const AtmosAlertConsole = (props, context) => {
               </li>
             )}
             {priorityAlerts.map(alert => (
-              <li key={alert.name}>
+              <li key={alert}>
                 <Button
                   icon="times"
-                  content={alert.name}
+                  content={alert}
                   color="bad"
-                  onClick={() => act('clear', { ref: alert.ref })} />
+                  onClick={() => act('clear', { zone: alert })} />
               </li>
             ))}
             {minorAlerts.length === 0 && (
@@ -34,12 +33,12 @@ export const AtmosAlertConsole = (props, context) => {
               </li>
             )}
             {minorAlerts.map(alert => (
-              <li key={alert.name}>
+              <li key={alert}>
                 <Button
                   icon="times"
-                  content={alert.name}
+                  content={alert}
                   color="average"
-                  onClick={() => act('clear', { ref: alert.ref })} />
+                  onClick={() => act('clear', { zone: alert })} />
               </li>
             ))}
           </ul>

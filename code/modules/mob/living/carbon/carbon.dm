@@ -149,7 +149,7 @@
 				AdjustSleeping(-5)
 				if(src.sleeping == 0)
 					src.resting = 0
-				if(H) H.in_stasis = 0 //VOREStation Add - Just In Case
+				if(H) H.in_stasis = 0
 				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
 									"<span class='notice'>You shake [src] trying to wake [T.him] up!</span>")
 			else
