@@ -40,15 +40,3 @@
 	w_class = ITEMSIZE_SMALL
 	root_type = /datum/lore/codex/category/main_news
 	libcategory = "Reference"
-
-/* //VORESTATION REMOVAL
-// Combines SOP/Regs/Law
-/obj/item/book/codex/corp_regs
-	name = "NanoTrasen Regulatory Compendium"
-	desc = "Contains large amounts of information on Standard Operating Procedure, Corporate Regulations, and important regional laws.  The best friend of \
-	Internal Affairs."
-	icon_state = "corp_regs"
-	root_type = /datum/lore/codex/category/main_corp_regs
-	throwforce = 5 // Throw the book at 'em.
-	libcategory = "Reference"
-*/

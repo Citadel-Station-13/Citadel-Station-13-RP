@@ -4,8 +4,8 @@
  */
 
 
-//VOREStation Edit - Most of this file has been changed to use the Eris-style PA announcements.
-//You'll need to compare externally, or use your best judgement when merging.
+// Most of this file has been changed to use the Eris-style PA announcements.
+// You'll need to compare externally, or use your best judgement when merging.
 /var/datum/legacy_announcement/priority/priority_announcement = new(do_log = 0)
 /var/datum/legacy_announcement/priority/command/command_announcement = new(do_log = 0, do_newscast = 1)
 
@@ -138,5 +138,5 @@ datum/legacy_announcement/proc/Log(message as text, message_title as text)
 			rank = character.mind.role_alt_title
 		AnnounceArrivalSimple(character.real_name, rank, join_message)
 
-/proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "will arrive at the station shortly") //VOREStation Edit - Remove shuttle reference
+/proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "will arrive at the station shortly")
 	GLOB.global_announcer.autosay(join_message, "Arrivals Announcement Computer")

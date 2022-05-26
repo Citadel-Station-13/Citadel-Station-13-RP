@@ -106,7 +106,6 @@ var/global/list/datum/gene/dna_genes[0]
 	var/b_type = "A+"  // Should probably change to an integer => string map but I'm lazy.
 	var/real_name          // Stores the real name of the person who originally got this dna datum. Used primarily for changelings,
 
-	// VOREStation
 	var/custom_species
 	var/base_species = SPECIES_HUMAN
 	var/list/species_traits = list()
@@ -115,7 +114,6 @@ var/global/list/datum/gene/dna_genes[0]
 	var/custom_ask
 	var/custom_whisper
 	var/custom_exclaim
-	// VOREStation
 
 	// New stuff
 	var/species = SPECIES_HUMAN
@@ -178,9 +176,6 @@ var/global/list/datum/gene/dna_genes[0]
 	if(!character.f_style)
 		character.f_style = "Shaved"
 	var/beard	= facial_hair_styles_list.Find(character.f_style)
-
-
-	// VOREStation Edit Start
 
 	// Demi Ears
 	var/ear_style = 0

@@ -98,7 +98,7 @@
 
 	if(temperature > max_temp && health > 0 && max_temp > 0) // Overheating, reduce structural integrity, emit more rads.
 		health = max(0, health - (temperature / max_temp))
-		health = between(0, health, max_health)
+		health = clamp( health, 0,  max_health)
 		if(health < 1)
 			go_nuclear()
 
@@ -159,8 +159,8 @@
 			var/roddata[0]
 			roddata["rod"] = "\ref[rod]"
 			roddata["name"] = rod.name
-			roddata["integrity_percentage"] = round(between(0, rod.integrity, 100))
-			roddata["life_percentage"] = round(between(0, rod.life, 100))
+			roddata["integrity_percentage"] = round(clamp( rod.integrity, 0,  100))
+			roddata["life_percentage"] = round(clamp( rod.life, 0,  100))
 			roddata["heat"] = round(rod.temperature)
 			roddata["melting_point"] = rod.melting_point
 			roddata["insertion"] = round(rod.insertion * 100)
@@ -183,11 +183,11 @@
 		var/obj/item/fuelrod/rod = locate(href_list["rod_insertion"])
 		if(istype(rod) && rod.loc == src)
 			var/new_insersion = input(usr,"Enter new insertion (0-100)%","Insertion control",rod.insertion * 100) as num
-			rod.insertion = between(0, new_insersion / 100, 1)
+			rod.insertion = clamp( new_insersion / 100, 0,  1)
 
 	if(href_list["cutoff_point"])
 		var/new_cutoff = input(usr,"Enter new cutoff point in Kelvin","Cutoff point",cutoff_temp) as num
-		cutoff_temp = between(0, new_cutoff, max_temp)
+		cutoff_temp = clamp( new_cutoff, 0,  max_temp)
 		if(cutoff_temp == 0)
 			message_admins("[key_name(usr)] switched off auto shutdown on [src]",0,1)
 			log_game("[src] auto shutdown was switched off by [key_name(usr)]")
@@ -258,7 +258,7 @@
 		user.visible_message("<span class='warning'>\The [user.name] begins repairing \the [src].</span>", \
 			"<span class='notice'>You start repairing \the [src].</span>")
 		if(do_after(user, 20 * WT.toolspeed, target = src) && WT.isOn())
-			health = between(1, health + 10, max_health)
+			health = clamp( health + 10, 1,  max_health)
 		repairing = 0
 		return
 
@@ -284,9 +284,9 @@
 	if((abs(temperature-sharer.temperature)>MINIMUM_MEANINGFUL_TEMPERATURE_DELTA) && our_heatcap + share_heatcap)
 		var/new_temperature = ((temperature * our_heatcap) + (sharer.temperature * share_heatcap)) / (our_heatcap + share_heatcap)
 		temperature += (new_temperature - temperature)
-		temperature = between(0, temperature, REACTOR_TEMPERATURE_CUTOFF)
+		temperature = clamp( temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 		sharer.temperature += (new_temperature - sharer.temperature)
-		sharer.temperature = between(0, sharer.temperature, REACTOR_TEMPERATURE_CUTOFF)
+		sharer.temperature = clamp( sharer.temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 
 	env.merge(sharer)
 
@@ -309,7 +309,7 @@
 		return
 	var/new_temperature = total_energy / total_heatcap
 	temperature += (new_temperature - temperature) * gasefficiency // Add efficiency here, since there's no gas.remove for non-gas objects.
-	temperature = between(0, temperature, REACTOR_TEMPERATURE_CUTOFF)
+	temperature = clamp( temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 
 	for(var/i=1,i<=pipes.len,i++)
 		var/obj/machinery/atmospherics/pipe/pipe = pipes[i]
@@ -319,7 +319,7 @@
 				var/datum/gas_mixture/removed = env.remove(gasefficiency * env.total_moles)
 				if(!isnull(removed))
 					removed.temperature += (new_temperature - removed.temperature)
-					removed.temperature = between(0, removed.temperature, REACTOR_TEMPERATURE_CUTOFF)
+					removed.temperature = clamp( removed.temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 				env.merge(removed)
 
 /obj/machinery/power/fission/add_thermal_energy(var/thermal_energy)

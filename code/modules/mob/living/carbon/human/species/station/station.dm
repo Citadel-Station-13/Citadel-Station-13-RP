@@ -860,7 +860,7 @@
 
 	inherent_verbs = list(/mob/living/proc/shred_limb)
 
-	has_glowing_eyes = TRUE	//TODO: port the ability to give neutral traits to all species from vorestation
+	has_glowing_eyes = TRUE
 
 	male_cough_sounds = null
 	female_cough_sounds = null

@@ -1,31 +1,35 @@
-import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, Section } from '../components';
+import { Box, Button, LabeledList, Section, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 export const Wires = (props, context) => {
   const { act, data } = useBackend(context);
-
+  const { proper_name } = data;
   const wires = data.wires || [];
   const statuses = data.status || [];
-
   return (
     <Window
       width={350}
-      height={150 + wires.length * 30}
-      resizable>
+      height={150
+        + (wires.length * 30)
+        + (!!proper_name && 30)}>
       <Window.Content>
+        {(!!proper_name && (
+          <NoticeBox textAlign="center">
+            {proper_name} Wire Configuration
+          </NoticeBox>
+        ))}
         <Section>
           <LabeledList>
             {wires.map(wire => (
               <LabeledList.Item
-                key={wire.seen_color}
+                key={wire.color}
                 className="candystripe"
-                label={wire.color_name}
-                labelColor={wire.seen_color}
-                color={wire.seen_color}
+                label={wire.color}
+                labelColor={wire.color}
+                color={wire.color}
                 buttons={(
-                  <Fragment>
+                  <>
                     <Button
                       content={wire.cut ? 'Mend' : 'Cut'}
                       onClick={() => act('cut', {
@@ -41,7 +45,7 @@ export const Wires = (props, context) => {
                       onClick={() => act('attach', {
                         wire: wire.color,
                       })} />
-                  </Fragment>
+                  </>
                 )}>
                 {!!wire.wire && (
                   <i>
@@ -52,20 +56,15 @@ export const Wires = (props, context) => {
             ))}
           </LabeledList>
         </Section>
-
         {!!statuses.length && (
           <Section>
             {statuses.map(status => (
-              <Box
-                key={status}
-                color="lightgray"
-                mt={0.1}>
+              <Box key={status}>
                 {status}
               </Box>
             ))}
           </Section>
         )}
-
       </Window.Content>
     </Window>
   );

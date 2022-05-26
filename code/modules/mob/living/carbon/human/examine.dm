@@ -99,12 +99,10 @@
 		CRASH("Gender datum was null; key was '[((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)) ? PLURAL : gender]'")
 
 	if(!((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)))
-		//VOREStation Add Start
 		if(custom_species)
 			if(custom_species != SPECIES_HUMAN)
 				whoismsg += ", a <b>[src.custom_species]</b>"
 		else if(looks_synth)
-		//VOREStation Add End
 			var/use_gender = "a synthetic"
 			if(gender == MALE)
 				use_gender = "an android"
@@ -295,19 +293,17 @@
 
 
 	if(attempt_vr(src,"examine_weight",args))
-		. += attempt_vr(src,"examine_weight",args) //VOREStation Code
-//	if(attempt_vr(src,"examine_nutrition",args))
-//		. += attempt_vr(src,"examine_nutrition",args) //VOREStation Code
+		. += attempt_vr(src,"examine_weight",args)
 	if(attempt_vr(src,"examine_bellies",args))
-		. += attempt_vr(src,"examine_bellies",args) //VOREStation Code
+		. += attempt_vr(src,"examine_bellies",args)
 	if(attempt_vr(src,"examine_pickup_size",args))
-		. += attempt_vr(src,"examine_pickup_size",args) //VOREStation Code
+		. += attempt_vr(src,"examine_pickup_size",args)
 	if(attempt_vr(src,"examine_step_size",args))
-		. += attempt_vr(src,"examine_step_size",args) //VOREStation Code
+		. += attempt_vr(src,"examine_step_size",args)
 	if(attempt_vr(src,"examine_nif",args))
-		. += attempt_vr(src,"examine_nif",args) //VOREStation Code
+		. += attempt_vr(src,"examine_nif",args)
 	if(attempt_vr(src,"examine_chimera",args))
-		. += attempt_vr(src,"examine_chimera",args) //VOREStation Code
+		. += attempt_vr(src,"examine_chimera",args)
 
 	if(mSmallsize in mutations)
 		. += "[T.He] [T.is] very short!"
@@ -338,12 +334,10 @@
 			. += "<span class='deadsay'>[T.He] [T.is] [ssd_msg]. It doesn't look like [T.he] [T.is] waking up anytime soon.</span>"
 		else if(!client)
 			. += "<span class='deadsay'>[T.He] [T.is] [ssd_msg].</span>"
-		//VOREStation Add Start
 		if(client && ((client.inactivity / 10) / 60 > 10)) //10 Minutes
 			. += "\[Inactive for [round((client.inactivity/10)/60)] minutes\]"
 		else if(disconnect_time)
 			. += "\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]"
-		//VOREStation Add End
 
 	var/list/wound_flavor_text = list()
 	var/list/is_bleeding = list()
@@ -452,13 +446,11 @@
 	if(print_flavor_text())
 		. += "[print_flavor_text()]"
 
-	// VOREStation Start
 	if(ooc_notes)
 		. += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>"
 
 	. += "<span class='deptradio'><a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>"
 
-	// VOREStation End
 	. += "*---------*</span>"
 	. += applying_pressure
 
@@ -476,7 +468,8 @@
 /proc/hasHUD(mob/M as mob, hudtype)
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if(hasHUD_vr(H,hudtype)) return 1 //VOREStation Add - Added records access for certain modes of omni-hud glasses
+		if(hasHUD_vr(H,hudtype))
+			return 1 // Added records access for certain modes of omni-hud glasses
 		switch(hudtype)
 			if("security")
 				return istype(H.glasses, /obj/item/clothing/glasses/hud/security) || istype(H.glasses, /obj/item/clothing/glasses/sunglasses/sechud)

@@ -2,7 +2,6 @@ import { map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { clamp } from 'common/math';
 import { vecLength, vecSubtract } from 'common/vector';
-import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Box, Button, Icon, LabeledList, Section, Table } from '../components';
 import { Window } from '../layouts';
@@ -14,7 +13,6 @@ export const Gps = (props, context) => {
   const {
     currentArea,
     currentCoords,
-    currentCoordsText,
     globalmode,
     power,
     tag,
@@ -26,8 +24,8 @@ export const Gps = (props, context) => {
       // that's why we roll our own calculations here.
       const dist = signal.dist && (
         Math.round(vecLength(vecSubtract(
-          currentCoords,
-          signal.coords)))
+          coordsToVec(currentCoords),
+          coordsToVec(signal.coords))))
       );
       return { ...signal, dist, index };
     }),
@@ -41,8 +39,7 @@ export const Gps = (props, context) => {
     <Window
       title="Global Positioning System"
       width={470}
-      height={700}
-      resizable>
+      height={700}>
       <Window.Content scrollable>
         <Section
           title="Control"
@@ -77,10 +74,10 @@ export const Gps = (props, context) => {
           </LabeledList>
         </Section>
         {!!power && (
-          <Fragment>
+          <>
             <Section title="Current Location">
               <Box fontSize="18px">
-                {currentArea} ({currentCoordsText})
+                {currentArea} ({currentCoords})
               </Box>
             </Section>
             <Section title="Detected Signals">
@@ -116,13 +113,13 @@ export const Gps = (props, context) => {
                       )}
                     </Table.Cell>
                     <Table.Cell collapsing>
-                      {signal.coordsText}
+                      {signal.coords}
                     </Table.Cell>
                   </Table.Row>
                 ))}
               </Table>
             </Section>
-          </Fragment>
+          </>
         )}
       </Window.Content>
     </Window>

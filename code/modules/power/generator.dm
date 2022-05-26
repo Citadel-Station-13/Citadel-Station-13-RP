@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	if(genlev != lastgenlev)
 		lastgenlev = genlev
 		updateicon()
-	add_avail(effective_gen)
+	add_avail(effective_gen * 0.001)
 
 /obj/machinery/power/generator/attack_ai(mob/user)
 	attack_hand(user)

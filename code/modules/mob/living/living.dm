@@ -361,7 +361,7 @@ default behaviour is:
 	return result
 
 /mob/living/proc/setMaxHealth(var/newMaxHealth)
-	health = (health/maxHealth) * (newMaxHealth) //VOREStation Add - Adjust existing health
+	health = (health/maxHealth) * (newMaxHealth) // Adjust existing health
 	maxHealth = newMaxHealth
 
 /mob/living/Stun(amount)
@@ -712,7 +712,7 @@ default behaviour is:
 	set name = "Examine Meta-Info (OOC)"
 	set category = "OOC"
 	set src in view()
-	//VOREStation Edit Start - Making it so SSD people have prefs with fallback to original style.
+	// Making it so SSD people have prefs with fallback to original style.
 	if(config_legacy.allow_Metadata)
 		if(ooc_notes)
 			to_chat(usr, "[src]'s Metainfo:<br>[ooc_notes]")
@@ -722,7 +722,6 @@ default behaviour is:
 			to_chat(usr, "[src] does not have any stored infomation!")
 	else
 		to_chat(usr, "OOC Metadata is not supported by this server!")
-	//VOREStation Edit End - Making it so SSD people have prefs with fallback to original style.
 	return
 
 
@@ -763,7 +762,8 @@ default behaviour is:
 		else
 			resist_restraints()
 
-	if(attempt_vr(src,"vore_process_resist",args)) return TRUE //VOREStation Code
+	if(attempt_vr(src,"vore_process_resist",args))
+		return TRUE
 
 /mob/living/proc/resist_buckle()
 	if(buckled)
@@ -958,7 +958,6 @@ default behaviour is:
 	if(lying != lying_prev)
 		lying_prev = lying
 		update_transform()
-		//VOREStation Add
 		if(lying && LAZYLEN(buckled_mobs))
 			for(var/rider in buckled_mobs)
 				var/mob/living/L = rider
@@ -969,7 +968,6 @@ default behaviour is:
 				else
 					unbuckle_mob(L)
 				L.Stun(5)
-		//VOREStation Add End
 
 	return canmove
 
@@ -1058,9 +1056,9 @@ default behaviour is:
 
 			for(var/C in colors_to_blend)
 				var/RGB = hex2rgb(C)
-				R = between(0, R + RGB[1], 255)
-				G = between(0, G + RGB[2], 255)
-				B = between(0, B + RGB[3], 255)
+				R = clamp( R + RGB[1], 0,  255)
+				G = clamp( G + RGB[2], 0,  255)
+				B = clamp( B + RGB[3], 0,  255)
 			final_color = rgb(R,G,B)
 
 		if(final_color)

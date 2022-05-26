@@ -7,9 +7,11 @@
 	use_power = USE_POWER_IDLE
 	power_channel = EQUIP
 	idle_power_usage = 5
-	active_power_usage = 60000 //60 kW. (this the power drawn when charging)
+	active_power_usage = 30000 //60 kW. (this the power drawn when charging)
 	/// Will provide the modified power rate when upgraded.
-	var/efficiency = 60000
+	var/efficiency = 30000
+	/// base power draw
+	var/base_power_draw = 50000
 	var/chargelevel = -1
 	var/obj/item/cell/charging = null
 	circuit = /obj/item/circuitboard/cell_charger
@@ -17,7 +19,6 @@
 /obj/machinery/cell_charger/Initialize(mapload, newdir)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/cell_charger/update_icon()
 	icon_state = "ccharger[charging ? 1 : 0]"
@@ -100,11 +101,10 @@
 	if(istype(user, /mob/living/silicon/robot) && Adjacent(user)) // Borgs can remove the cell if they are near enough
 		if(charging)
 			user.visible_message("[user] removes [charging] from [src].", "You remove [charging] from [src].")
-			charging.loc = src.loc
+			charging.forceMove(loc)
 			charging.update_icon()
 			charging = null
 			update_icon()
-
 
 /obj/machinery/cell_charger/emp_act(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -120,7 +120,7 @@
 		return
 
 	if(charging && !charging.fully_charged())
-		charging.give(efficiency*CELLRATE)
+		charging.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
 		update_use_power(USE_POWER_ACTIVE)
 
 		update_icon()
@@ -132,7 +132,8 @@
 	var/E = 0
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		E += C.rating
-	efficiency = active_power_usage * (1+(E-1)*0.5) * 10
+	update_active_power_usage(base_power_draw * E)
+	efficiency = active_power_usage * RECHARGER_CHEAT_FACTOR
 
 //cit change starts
 /obj/item/cell_charger_kit

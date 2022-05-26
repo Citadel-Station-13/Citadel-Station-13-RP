@@ -1,116 +1,202 @@
-import { flow } from 'common/fp';
-import { filter, sortBy } from 'common/collections';
-import { useBackend, useSharedState } from "../backend";
-import { Box, Button, Flex, Input, Section, Dropdown } from "../components";
-import { Window } from "../layouts";
-import { Materials } from "./ExosuitFabricator";
-import { createSearch, toTitleCase } from 'common/string';
-
-const canBeMade = (recipe, materials, mult = 1) => {
-  if (recipe.requirements === null) {
-    return true;
-  }
-
-  let recipeRequiredMaterials = Object.keys(recipe.requirements);
-
-  for (let mat_id of recipeRequiredMaterials) {
-    let material = materials.find(val => val.name === mat_id);
-    if (!material) {
-      continue; // yes, if we cannot find the material, we just ignore it :V
-    }
-    if (material.amount < (recipe.requirements[mat_id] * mult)) {
-      return false;
-    }
-  }
-
-  return true;
-};
+import { useBackend, useLocalState } from '../backend';
+import { Button, LabeledList, Section, ProgressBar, Flex, Box, Table, Collapsible, Input, Dimmer, Icon } from '../components';
+import { Window } from '../layouts';
+import { capitalize } from "common/string";
 
 export const Autolathe = (props, context) => {
   const { act, data } = useBackend(context);
+  // Extract `health` and `color` variables from the `data` object.
   const {
-    recipes,
-    busy,
-    materials,
-    categories,
+    materialtotal,
+    materialsmax,
+    materials = [],
+    categories = [],
+    designs = [],
+    active,
   } = data;
-
-  const [category, setCategory] = useSharedState(context, "category", 0);
-
   const [
-    searchText,
-    setSearchText,
-  ] = useSharedState(context, "search_text", "");
-
-  const testSearch = createSearch(searchText, recipe => recipe.name);
-
-  const recipesToShow = flow([
-    filter(recipe => recipe.category === categories[category]),
-    searchText && filter(testSearch),
-    sortBy(recipe => recipe.name.toLowerCase()),
-  ])(recipes);
-
+    current_category,
+    setCategory,
+  ] = useLocalState(context, 'current_category', "None");
+  const filteredmaterials = materials.filter(material =>
+    material.mineral_amount > 0);
   return (
-    <Window width={550} height={700}>
+    <Window
+      title="Autolathe"
+      width={600}
+      height={600}>
       <Window.Content scrollable>
-        <Section title="Materials">
-          <Materials disableEject />
+        <Section title="Total Materials">
+          <LabeledList>
+            <LabeledList.Item
+              label="Total Materials">
+              <ProgressBar
+                value={materialtotal}
+                minValue={0}
+                maxValue={materialsmax}
+                ranges={{
+                  "good": [materialsmax * 0.85, materialsmax],
+                  "average": [materialsmax * 0.25, materialsmax * 0.85],
+                  "bad": [0, materialsmax * 0.25],
+                }}>
+                {materialtotal + '/' + materialsmax + ' cm³'}
+              </ProgressBar>
+            </LabeledList.Item>
+            <LabeledList.Item>
+              {filteredmaterials.length > 0 && (
+                <Collapsible title="Materials">
+                  <LabeledList>
+                    {filteredmaterials.map(filteredmaterial => (
+                      <LabeledList.Item
+                        key={filteredmaterial.id}
+                        label={capitalize(filteredmaterial.name)}>
+                        <ProgressBar
+                          style={{
+                            transform: 'scaleX(-1) scaleY(1)',
+                          }}
+                          value={materialsmax - filteredmaterial.mineral_amount}
+                          maxValue={materialsmax}
+                          color="black"
+                          backgroundColor={filteredmaterial.matcolour}>
+                          <div style={{ transform: 'scaleX(-1)' }}>{filteredmaterial.mineral_amount + ' cm³'}</div>
+                        </ProgressBar>
+                      </LabeledList.Item>
+                    ))}
+                  </LabeledList>
+                </Collapsible>)}
+            </LabeledList.Item>
+          </LabeledList>
         </Section>
-        <Section title="Recipes" buttons={
-          <Dropdown
-            width="190px"
-            options={categories}
-            selected={categories[category]}
-            onSelected={val => setCategory(categories.indexOf(val))} />
-        }>
-          <Input
-            fluid
-            placeholder="Search for..."
-            onInput={(e, v) => setSearchText(v)}
-            mb={1} />
-          {recipesToShow.map(recipe => (
-            <Flex justify="space-between" align="center" key={recipe.ref}>
-              <Flex.Item>
-                <Button
-                  color={recipe.hidden && "red" || null}
-                  icon="hammer"
-                  iconSpin={busy === recipe.name}
-                  disabled={!canBeMade(recipe, materials, 1)}
-                  onClick={() => act("make", { make: recipe.ref })}>
-                  {toTitleCase(recipe.name)}
-                </Button>
-                {!recipe.is_stack && (
-                  <Box as="span">
-                    <Button
-                      color={recipe.hidden && "red" || null}
-                      disabled={!canBeMade(recipe, materials, 5)}
-                      onClick={() => act("make", { make: recipe.ref, multiplier: 5 })}>
-                      x5
-                    </Button>
-                    <Button
-                      color={recipe.hidden && "red" || null}
-                      disabled={!canBeMade(recipe, materials, 10)}
-                      onClick={() => act("make", { make: recipe.ref, multiplier: 10 })}>
-                      x10
-                    </Button>
-                  </Box>
-                ) || null}
-              </Flex.Item>
-              <Flex.Item>
-                {recipe.requirements && (
-                  Object
-                    .keys(recipe.requirements)
-                    .map(mat => toTitleCase(mat) + ": " + recipe.requirements[mat])
-                    .join(", ")
-                ) || (
-                  <Box>
-                    No resources required.
-                  </Box>
+        <Section
+          title="Search">
+          <Input fluid
+            placeholder="Search Recipes..."
+            selfClear
+            onChange={(e, value) => {
+              if (value.length) {
+                act('search', {
+                  to_search: value,
+                });
+                setCategory('results for "' + value + '"');
+              }
+            }} />
+        </Section>
+        <Section title="Categories">
+          <Box>
+            {categories.map(category => (
+              // eslint-disable-next-line react/jsx-key
+              <Button
+                selected={current_category === category}
+                content={category}
+                onClick={() => {
+                  act('category', {
+                    selectedCategory: category,
+                  });
+                  setCategory(category);
+                }} />
+            ))}
+          </Box>
+        </Section>
+        {current_category.toString() !== "None" && (
+          <Section
+            title={'Displaying ' + current_category.toString()}
+            buttons={(
+              <Button
+                icon="times"
+                content="Close Category"
+                onClick={() => {
+                  act('menu');
+                  setCategory("None");
+                }} />
+            )}>
+            {active === 1 && (
+              <Dimmer fontSize="32px">
+                <Icon name="cog" spin />
+                {'Building items...'}
+              </Dimmer>
+            )}
+            <Flex direction="row" wrap="nowrap">
+              <Table>
+                {designs.length
+                  && (designs.map(design => (
+                    <Table.Row
+                      key={design.id}>
+                      <Flex.Item>
+                        <Button
+                          content={design.name}
+                          disabled={design.buildable}
+                          onClick={() => act('make', {
+                            id: design.id,
+                            multiplier: '1',
+                          })} />
+                      </Flex.Item>
+                      {design.sheet ? (
+                        <Table.Cell>
+                          <Flex.Item grow={1}>
+                            <Button
+                              icon="hammer"
+                              content="10"
+                              disabled={!design.mult10}
+                              onClick={() => act('make', {
+                                id: design.id,
+                                multiplier: '10',
+                              })} />
+                            <Button
+                              icon="hammer"
+                              content="25"
+                              disabled={!design.mult25}
+                              onClick={() => act('make', {
+                                id: design.id,
+                                multiplier: '25',
+                              })} />
+                          </Flex.Item>
+                        </Table.Cell>
+                      ) : (
+                        <Table.Cell>
+                          <Flex.Item grow={3}>
+                            <Button
+                              icon="hammer"
+                              content="5"
+                              disabled={!design.mult5}
+                              onClick={() => act('make', {
+                                id: design.id,
+                                multiplier: '5',
+                              })} />
+                            <Button
+                              icon="hammer"
+                              content="10"
+                              disabled={!design.mult10}
+                              onClick={() => act('make', {
+                                id: design.id,
+                                multiplier: '10',
+                              })} />
+                          </Flex.Item>
+                        </Table.Cell>
+                      )}
+                      <Table.Cell>
+                        <Button.Input
+                          content={"[Max:" + design.maxmult + ']'}
+                          maxValue={design.maxmult}
+                          disabled={design.buildable}
+                          backgroundColor={design.buildable ? '#999999' : 'default'}
+                          onCommit={(e, value) => act('make', {
+                            id: design.id,
+                            multiplier: value,
+                          })} />
+                      </Table.Cell>
+                      {design.cost}
+                    </Table.Row>
+                  ))) || (
+                  <Table.Row>
+                    <Table.Cell>
+                      {"No designs found."}
+                    </Table.Cell>
+                  </Table.Row>
                 )}
-              </Flex.Item>
+              </Table>
             </Flex>
-          ))}
-        </Section>
+          </Section>
+        )}
       </Window.Content>
     </Window>
   );

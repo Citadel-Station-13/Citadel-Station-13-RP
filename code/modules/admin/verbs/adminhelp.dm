@@ -203,7 +203,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 		log_admin("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 		if(admin_number_present <= 0)
 			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the admin irc.</span>")
-	send2adminchat() //VOREStation Add
+	send2adminchat()
 	GLOB.ahelp_tickets.active_tickets += src
 
 /datum/admin_help/Destroy()

@@ -174,13 +174,12 @@
 	return 1
 
 // Proc for toggling on active abilities.
-/obj/item/rig_module/proc/activate(var/skip_engage = 0) //VOREStation Edit - Allow us to skip the engage call.
-	//VOREStation Edit - Allow us to skip the engage call
+/obj/item/rig_module/proc/activate(var/skip_engage = 0) // Allow us to skip the engage call.
+	// Allow us to skip the engage call
 	if(active)
 		return 0
 	if(!skip_engage && !engage())
 		return 0
-	//VOREStation Edit End
 	active = 1
 
 	spawn(1)

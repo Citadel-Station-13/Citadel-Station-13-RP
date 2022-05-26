@@ -83,7 +83,7 @@
 	var/icontype = "beacon"
 
 /obj/machinery/power/singularity_beacon/proc/Activate(mob/user = null)
-	if(surplus() < 1500)
+	if(surplus() < 1.5)
 		if(user)
 			to_chat(user, "<span class='notice'>The connected wire doesn't have enough current.</span>")
 		return
@@ -148,7 +148,8 @@
 	if(!active)
 		return PROCESS_KILL
 	else
-		if(draw_power(1500) < 1500)
+		// 1.5 kw
+		if(draw_power(1.5) < 1.5)
 			Deactivate()
 
 /obj/machinery/power/singularity_beacon/syndicate
