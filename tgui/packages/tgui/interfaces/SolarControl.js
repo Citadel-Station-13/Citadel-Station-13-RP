@@ -1,16 +1,14 @@
 import { useBackend } from '../backend';
 import { Box, Button, Grid, LabeledList, NumberInput, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
-import { round } from 'common/math';
 
 export const SolarControl = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     generated,
     generated_ratio,
-    sun_angle,
-    array_angle,
-    rotation_rate,
+    azimuth_current,
+    azimuth_rate,
     max_rotation_rate,
     tracking_state,
     connected_panels,
@@ -59,9 +57,6 @@ export const SolarControl = (props, context) => {
                     {generated + ' W'}
                   </ProgressBar>
                 </LabeledList.Item>
-                <LabeledList.Item label="Star orientation">
-                  {sun_angle}°
-                </LabeledList.Item>
               </LabeledList>
             </Grid.Column>
           </Grid>
@@ -95,30 +90,27 @@ export const SolarControl = (props, context) => {
                   stepPixelSize={2}
                   minValue={-360}
                   maxValue={+720}
-                  value={array_angle}
-                  format={rate => {
-                    const sign = Math.sign(rate) > 0 ? ' (CW)' : ' (CCW)';
-                    return Math.abs(round(rate)) + sign;
-                  }}
+                  value={azimuth_current}
                   onDrag={(e, value) => act('azimuth', { value })} />
               )}
               {tracking_state === 1 && (
                 <NumberInput
                   width="80px"
-                  unit="deg/h"
-                  step={1}
+                  unit="°/m"
+                  step={0.01}
+                  stepPixelSize={1}
                   minValue={-max_rotation_rate-0.01}
                   maxValue={max_rotation_rate+0.01}
-                  value={rotation_rate}
+                  value={azimuth_rate}
                   format={rate => {
-                    const sign = Math.sign(rate) > 0 ? ' (CW)' : ' (CCW)';
-                    return Math.abs(round(rate)) + sign;
+                    const sign = Math.sign(rate) > 0 ? '+' : '-';
+                    return sign + Math.abs(rate);
                   }}
                   onDrag={(e, value) => act('azimuth_rate', { value })} />
               )}
               {tracking_state === 2 && (
                 <Box inline color="label" mt="3px">
-                  {array_angle + '°'} (auto)
+                  {azimuth_current + ' °'} (auto)
                 </Box>
               )}
             </LabeledList.Item>
