@@ -656,9 +656,9 @@
 
 	if(!message)
 		message = input("Type a message to say.","Speak into Soulcatcher") as text|null
+	message = sanitize(message)
 	if(message)
-		var/sane_message = sanitize(message)
-		soulcatcher.say_into(sane_message,src,null)
+		soulcatcher.say_into(message,src,null)
 
 /mob/living/carbon/brain/caught_soul/verb/nme(message as text|null)
 	set name = "NMe"
@@ -667,6 +667,6 @@
 
 	if(!message)
 		message = input("Type an action to perform.","Emote into Soulcatcher") as text|null
+	message = sanitize(message)
 	if(message)
-		var/sane_message = sanitize(message)
-		soulcatcher.emote_into(sane_message,src,null)
+		soulcatcher.emote_into(message,src,null)
