@@ -1,14 +1,17 @@
 // DM Environment file for citadel.dme
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
- // New source code should be placed in .dm files: choose File/New --> Code File.
+// New source code should be placed in .dm files: choose File/New --> Code File.
 // BEGIN_INTERNALS
 // END_INTERNALS
+
 // BEGIN_FILE_DIR
 #define FILE_DIR .
 // END_FILE_DIR
+
 // BEGIN_PREFERENCES
 #define DEBUG
 // END_PREFERENCES
+
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
 #include "_maps\rift.dm"
@@ -1982,6 +1985,7 @@
 #include "code\modules\clothing\shoes\magboots.dm"
 #include "code\modules\clothing\shoes\miscellaneous.dm"
 #include "code\modules\clothing\shoes\miscellaneous_vr.dm"
+#include "code\modules\clothing\shoes\moth_boots.dm"
 #include "code\modules\clothing\spacesuits\alien.dm"
 #include "code\modules\clothing\spacesuits\breaches.dm"
 #include "code\modules\clothing\spacesuits\miscellaneous.dm"
@@ -2069,6 +2073,7 @@
 #include "code\modules\clothing\under\jobs\medsci.dm"
 #include "code\modules\clothing\under\jobs\miscellaneous_vr.dm"
 #include "code\modules\clothing\under\jobs\security.dm"
+#include "code\modules\clothing\under\xenos\moth.dm"
 #include "code\modules\clothing\under\xenos\teshari.dm"
 #include "code\modules\clothing\under\xenos\vox.dm"
 #include "code\modules\customitems\item_spawning.dm"

@@ -1,0 +1,5 @@
+author: "Ghostcoffeee"
+delete-after: True
+changes: 
+  - rscadd: "Added colored carpet cargo orders"
+  - bugfix: "fixed colored carpet icons"
