@@ -81,10 +81,10 @@
 /obj/item/backup_implanter/attackby(obj/W, mob/user)
 	if(istype(W,/obj/item/implant/backup))
 		if(imps.len < max_implants)
-			user.unEquip(W)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			imps |= W
 			W.germ_level = 0
-			W.forceMove(src)
 			update()
 			to_chat(user, "<span class='notice'>You load \the [W] into \the [src].</span>")
 		else

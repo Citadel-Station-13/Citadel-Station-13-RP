@@ -112,11 +112,11 @@
 			if(cell)
 				to_chat(user, SPAN_WARNING("There is a power cell already installed."))
 				return
-			if(user.unEquip(W))
-				W.forceMove(src)
-				cell = W
-				to_chat(user, SPAN_NOTICE("You insert [cell]."))
-				icon_state = "suspension1"
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
+			cell = W
+			to_chat(user, SPAN_NOTICE("You insert [cell]."))
+			icon_state = "suspension1"
 	else if(istype(W, /obj/item/card/emag))
 		return W.resolve_attackby(src, user)
 	else

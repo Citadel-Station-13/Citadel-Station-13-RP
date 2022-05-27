@@ -489,12 +489,11 @@
 			return //Don't call up else we'll get attack messsages
 	if(istype(W, /obj/item/sleevecard))
 		var/obj/item/sleevecard/C = W
-		user.unEquip(C)
+		if(!user.attempt_consume_item_for_construction(C))
+			return
 		C.removePersonality()
-		qdel(C)
 		sleevecards++
 		to_chat(user,"<span class='notice'>You store \the [C] in \the [src].</span>")
-		return
 
 /obj/machinery/transhuman/resleever/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))

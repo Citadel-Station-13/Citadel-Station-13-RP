@@ -77,9 +77,7 @@
 		if(bcell)
 			to_chat(user, "<span class='notice'>\the [src] already has a cell.</span>")
 		else
-			if(!user.unEquip(W))
-				return
-			W.forceMove(src)
+			if(!user.attempt_insert_item_for_installation(W, src))
 			bcell = W
 			to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
 			update_icon()

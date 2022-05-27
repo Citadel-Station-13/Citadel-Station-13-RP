@@ -122,9 +122,9 @@
 							if(!can_special_reload)
 								to_chat(user, SPAN_WARNING("You can't tactically reload this gun!"))
 								return
-							if(!user.unEquip(AM, src))
-								return
 							if(do_after(user, TACTICAL_RELOAD_SPEED, src))
+								if(!user.attempt_insert_item_for_installation(AM, src))
+									return
 								ammo_magazine.update_icon()
 								user.put_in_hands(ammo_magazine)
 								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
@@ -133,9 +133,9 @@
 							if(!can_special_reload)
 								to_chat(user, SPAN_WARNING("You can't speed reload this gun!"))
 								return
-							if(!user.unEquip(AM, src))
-								return
 							if(do_after(user, SPEED_RELOAD_SPEED, src))
+								if(!user.attempt_insert_item_for_installation(AM, src))
+									return
 								ammo_magazine.update_icon()
 								ammo_magazine.dropInto(user.loc)
 								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),

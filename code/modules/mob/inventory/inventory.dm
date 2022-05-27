@@ -125,6 +125,20 @@
 	update_action_buttons()
 
 /**
+ * checks if we can unequip an item
+ *
+ * @return TRUE/FALSE
+ *
+ * @params
+ * - I - item
+ * - force - ignore nodrops, etc
+ * - dislalow_delay - fail if we'd need to do a do_after, instead of sleeping
+ * - ignore_fluff - ignore equip delay, item zone checks, etc
+ */
+/mob/proc/can_unequip(obj/item/I, force, disallow_delay, ignore_fluff)
+	#warn impl
+
+/**
  * equips an item to a slot if possible
  *
  * @params
@@ -155,6 +169,21 @@
 	. = equip_to_slot_if_possible(I, slot, silent, update_icons, ignore_fluff)
 	if(!.)
 		qdel(I)
+
+/**
+ * checks if we can equip an item to a slot
+ *
+ * @return TRUE/FALSE
+ *
+ * @params
+ * - I - item
+ * - slot - slot ID
+ * - force - we can forcefully dislodge an item if needed, also ignore nodrops
+ * - disallow_delay - fail if we'd need to sleep
+ * - ignore_fluff - ignore self equip delay, item zone checks, etc
+ */
+/mob/proc/can_equip(obj/item/I, slot, force, disallow_delay, ignore_fluff)
+	#warn impl
 
 #warn impl
 /mob/proc/_equip_item(obj/item/I, slot, force, silent, update_icons, ignore_fluff)
