@@ -297,7 +297,7 @@
 	// If shuttle has no internal gravity, update our gravity with destination gravity
 	if((flags & SHUTTLE_FLAGS_ZERO_G))
 		var/new_grav = 1
-		if(destination.flags & SLANDMARK_FLAG_ZERO_G)
+		if(destination.shuttle_landmark_flags & SLANDMARK_FLAG_ZERO_G)
 			var/area/new_area = get_area(destination)
 			new_grav = new_area.has_gravity
 		for(var/area/our_area in shuttle_area)
@@ -314,7 +314,7 @@
 				//if(AM.movable_flags & MOVABLE_FLAG_DEL_SHUTTLE)
 				//	qdel(AM)
 				//	continue
-				if(!AM.simulated)
+				if((AM.flags & AF_ABSTRACT))
 					continue
 				if(isliving(AM))
 					var/mob/living/bug = AM
@@ -339,14 +339,10 @@
 						to_chat(M, "<font color='red'>The floor lurches beneath you!</font>")
 						shake_camera(M, 10, 1)
 						// TODO - tossing?
-						//M.visible_message("<span class='warning'>[M.name] is tossed around by the sudden acceleration!</span>")
-						//M.throw_at_random(FALSE, 4, 1)
 						if(istype(M, /mob/living/carbon))
 							M.Weaken(3)
-							//VOREStation Add
 							if(move_direction)
 								throw_a_mob(M,move_direction)
-							//VOREStation Add End
 		// We only need to rebuild powernets for our cables.  No need to check machines because they are on top of cables.
 		for(var/obj/structure/cable/C in A)
 			powernets |= C.powernet

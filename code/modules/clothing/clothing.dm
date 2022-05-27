@@ -173,8 +173,8 @@
 	throwforce = 2
 	slot_flags = SLOT_EARS
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/ears.dmi')
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi')
 
 /obj/item/clothing/ears/attack_hand(mob/user as mob)
 	if (!user) return
@@ -256,9 +256,9 @@
 	slot_flags = SLOT_GLOVES
 	attack_verb = list("challenged")
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/gloves.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/gloves.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/hands.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/gloves.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/gloves.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/hands.dmi'
 		)
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
@@ -393,9 +393,9 @@
 	var/image/helmet_light
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/head.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/head.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/head.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/head.dmi'
 		)
 
 	drop_sound = 'sound/items/drop/hat.ogg'
@@ -500,22 +500,22 @@
 	slot_flags = SLOT_MASK
 	body_parts_covered = FACE|EYES
 	item_icons = list(
-		slot_wear_mask_str = 'icons/mob/mask.dmi'
+		/datum/inventory_slot_meta/inventory/mask = 'icons/mob/clothing/mask.dmi'
 		) //custom species support.
 	blood_sprite_state = "maskblood"
 	sprite_sheets = list(
-		SPECIES_TESHARI		= 'icons/mob/species/teshari/masks.dmi',
-		SPECIES_VOX 		= 'icons/mob/species/vox/masks.dmi',
-		SPECIES_TAJ 		= 'icons/mob/species/tajaran/mask_vr.dmi',
-		SPECIES_UNATHI 		= 'icons/mob/species/unathi/mask_vr.dmi',
-		SPECIES_SERGAL 		= 'icons/mob/species/sergal/mask_vr.dmi',
-		SPECIES_NEVREAN 	= 'icons/mob/species/nevrean/mask_vr.dmi',
-		SPECIES_ZORREN_HIGH	= 'icons/mob/species/fox/mask_vr.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi',
-		SPECIES_AKULA 		= 'icons/mob/species/akula/mask_vr.dmi',
-		SPECIES_VULPKANIN 	= 'icons/mob/species/vulpkanin/mask.dmi',
-		SPECIES_XENOCHIMERA	= 'icons/mob/species/tajaran/mask_vr.dmi',
-		SPECIES_WEREBEAST	= 'icons/mob/species/werebeast/masks.dmi'
+		SPECIES_TESHARI		= 'icons/mob/clothing/species/teshari/masks.dmi',
+		SPECIES_VOX 		= 'icons/mob/clothing/species/vox/masks.dmi',
+		SPECIES_TAJ 		= 'icons/mob/clothing/species/tajaran/mask_vr.dmi',
+		SPECIES_UNATHI 		= 'icons/mob/clothing/species/unathi/mask_vr.dmi',
+		SPECIES_SERGAL 		= 'icons/mob/clothing/species/sergal/mask_vr.dmi',
+		SPECIES_NEVREAN 	= 'icons/mob/clothing/species/nevrean/mask_vr.dmi',
+		SPECIES_ZORREN_HIGH	= 'icons/mob/clothing/species/fox/mask_vr.dmi',
+		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/mask_vr.dmi',
+		SPECIES_AKULA 		= 'icons/mob/clothing/species/akula/mask_vr.dmi',
+		SPECIES_VULPKANIN 	= 'icons/mob/clothing/species/vulpkanin/mask.dmi',
+		SPECIES_XENOCHIMERA	= 'icons/mob/clothing/species/tajaran/mask_vr.dmi',
+		SPECIES_WEREBEAST	= 'icons/mob/clothing/species/werebeast/masks.dmi'
 		) //custom species support.
 
 	var/voicechange = 0
@@ -563,9 +563,9 @@
 	var/overshoes = 0
 	species_restricted = list("exclude",SPECIES_TESHARI, SPECIES_VOX)
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/shoes.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/feet.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/shoes.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/shoes.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi'
 		)
 	drop_sound = 'sound/items/drop/shoes.ogg'
 	pickup_sound = 'sound/items/pickup/shoes.ogg'
@@ -671,9 +671,9 @@
 		overlays += image(icon, "[icon_state]_knife")
 	if(contaminated)
 		overlays += contamination_overlay
-	if(gurgled) //VOREStation Edit Start
+	if(gurgled)
 		decontaminate()
-		gurgle_contaminate() //VOREStation Edit End
+		gurgle_contaminate()
 	if(ismob(usr))
 		var/mob/M = usr
 		M.update_inv_shoes()
@@ -683,14 +683,14 @@
 	update_icon()
 	return ..()
 
-/obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, var/running)
-	if(prob(1) && !recent_squish) //VOREStation edit begin
+/obj/item/clothing/shoes/proc/handle_movement(turf/walking, running)
+	if(prob(1) && !recent_squish)
 		recent_squish = 1
 		spawn(100)
 			recent_squish = 0
 		for(var/mob/living/M in contents)
 			var/emote = pick(inside_emotes)
-			to_chat(M, emote) //VOREStation edit end
+			to_chat(M, emote)
 	return
 
 /obj/item/clothing/shoes/update_clothing_icon()
@@ -719,15 +719,15 @@
 
 	var/taurized = FALSE //Easier than trying to 'compare icons' to see if it's a taur suit
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/suit.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/suit.dmi')
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suit.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/suit.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/suit.dmi')
 
 	valid_accessory_slots = (ACCESSORY_SLOT_OVER | ACCESSORY_SLOT_ARMBAND)
 	restricted_accessory_slots = (ACCESSORY_SLOT_ARMBAND)
 
 //taurized suit support
-/obj/item/clothing/suit/equipped(var/mob/user, var/slot)
+/obj/item/clothing/suit/equipped(mob/user, slot)
 	var/normalize = TRUE
 
 	//Pyramid of doom-y. Improve somehow?
@@ -735,7 +735,7 @@
 		var/mob/living/carbon/human/H = user
 		if(isTaurTail(H.tail_style))
 			var/datum/sprite_accessory/tail/taur/taurtail = H.tail_style
-			if(taurtail.suit_sprites && (get_worn_icon_state(slot_wear_suit_str) in icon_states(taurtail.suit_sprites)))
+			if(taurtail.suit_sprites && (get_worn_icon_state(/datum/inventory_slot_meta/inventory/suit) in icon_states(taurtail.suit_sprites)))
 				icon_override = taurtail.suit_sprites
 				normalize = FALSE
 				taurized = TRUE
@@ -746,7 +746,7 @@
 
 	return ..()
 
-/obj/item/clothing/suit/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer = 0,var/icon/clip_mask) // Taur suits need to be shifted so its centered on their taur half.
+/obj/item/clothing/suit/make_worn_icon(var/body_type,var/slot_id,var/inhands,var/default_icon,var/default_layer = 0,var/icon/clip_mask) // Taur suits need to be shifted so its centered on their taur half.
 	var/image/standing = ..()
 	if(taurized) //Special snowflake var on suits
 		standing.pixel_x = -16
@@ -798,9 +798,9 @@
 	var/rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	var/rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/uniform.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/uniform.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/uniform.dmi')
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/uniform.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/uniform.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/uniform.dmi')
 
 	//convenience var for defining the icon state for the overlay used when the clothing is worn.
 	//Also used by rolling/unrolling.
@@ -821,8 +821,8 @@
 		|ACCESSORY_SLOT_TIE\
 		|ACCESSORY_SLOT_OVER)
 
-	var/icon/rolled_down_icon = 'icons/mob/uniform_rolled_down.dmi'
-	var/icon/rolled_down_sleeves_icon = 'icons/mob/uniform_sleeves_rolled.dmi'
+	var/icon/rolled_down_icon = 'icons/mob/clothing/uniform_rolled_down.dmi'
+	var/icon/rolled_down_sleeves_icon = 'icons/mob/clothing/uniform_sleeves_rolled.dmi'
 
 /obj/item/clothing/under/attack_hand(var/mob/user)
 	if(LAZYLEN(accessories))
@@ -837,7 +837,7 @@
 	if(worn_state)
 		if(!item_state_slots)
 			item_state_slots = list()
-		item_state_slots[slot_w_uniform_str] = worn_state
+		item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = worn_state
 	else
 		worn_state = icon_state
 
@@ -873,8 +873,8 @@
 		under_icon = icon_override
 	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
 		under_icon = sprite_sheets[H.species.get_bodytype(H)]
-	else if(item_icons && item_icons[slot_w_uniform_str])
-		under_icon = item_icons[slot_w_uniform_str]
+	else if(item_icons && item_icons[/datum/inventory_slot_meta/inventory/uniform])
+		under_icon = item_icons[/datum/inventory_slot_meta/inventory/uniform]
 	else if ("[worn_state]_s" in icon_states(rolled_down_icon))
 		under_icon = rolled_down_icon
 	else
@@ -898,8 +898,8 @@
 		under_icon = icon_override
 	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
 		under_icon = sprite_sheets[H.species.get_bodytype(H)]
-	else if(item_icons && item_icons[slot_w_uniform_str])
-		under_icon = item_icons[slot_w_uniform_str]
+	else if(item_icons && item_icons[/datum/inventory_slot_meta/inventory/uniform])
+		under_icon = item_icons[/datum/inventory_slot_meta/inventory/uniform]
 	else if ("[worn_state]_s" in icon_states(rolled_down_sleeves_icon))
 		under_icon = rolled_down_sleeves_icon
 	else
@@ -989,16 +989,16 @@
 		body_parts_covered &= ~(UPPER_TORSO|ARMS)
 		if("[worn_state]_s" in icon_states(rolled_down_icon))
 			icon_override = rolled_down_icon
-			item_state_slots[slot_w_uniform_str] = "[worn_state]"
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]"
 		else
-			item_state_slots[slot_w_uniform_str] = "[worn_state]_d"
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]_d"
 
 		to_chat(usr, "<span class='notice'>You roll your [src].</span>")
 	else
 		body_parts_covered = initial(body_parts_covered)
 		if(icon_override == rolled_down_icon)
 			icon_override = initial(icon_override)
-		item_state_slots[slot_w_uniform_str] = "[worn_state]"
+		item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]"
 		to_chat(usr, "<span class='notice'>You unroll your [src].</span>")
 	update_clothing_icon()
 
@@ -1022,15 +1022,15 @@
 		body_parts_covered &= ~(ARMS)
 		if("[worn_state]_s" in icon_states(rolled_down_sleeves_icon))
 			icon_override = rolled_down_sleeves_icon
-			item_state_slots[slot_w_uniform_str] = "[worn_state]"
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]"
 		else
-			item_state_slots[slot_w_uniform_str] = "[worn_state]_r"
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]_r"
 		to_chat(usr, "<span class='notice'>You roll up your [src]'s sleeves.</span>")
 	else
 		body_parts_covered = initial(body_parts_covered)
 		if(icon_override == rolled_down_sleeves_icon)
 			icon_override = initial(icon_override)
-		item_state_slots[slot_w_uniform_str] = "[worn_state]"
+		item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]"
 		to_chat(usr, "<span class='notice'>You roll down your [src]'s sleeves.</span>")
 	update_clothing_icon()
 

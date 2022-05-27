@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(overmaps)
 	name = "Overmaps"
-	flags = SS_TICKER
+	subsystem_flags = SS_TICKER
 	wait = 1
 	priority = FIRE_PRIORITY_OVERMAPS
 	init_order = INIT_ORDER_OVERMAPS

@@ -163,7 +163,7 @@
 /area/shuttle/screebarge/fore)
 "av" = (
 /obj/machinery/power/smes/buildable{
-	charge = 5e+006
+	charge = 5e+003
 	},
 /obj/structure/cable/cyan,
 /turf/simulated/floor/reinforced,

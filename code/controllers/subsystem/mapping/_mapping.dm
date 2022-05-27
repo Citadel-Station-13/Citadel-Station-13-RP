@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(used_engine, "None")
 SUBSYSTEM_DEF(mapping)
 	name = "Mapping"
 	init_order = INIT_ORDER_MAPPING
-	flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE
 
 	var/list/areas_in_z = list()
 
@@ -269,7 +269,7 @@ SUBSYSTEM_DEF(mapping)
 		// No need to empty() these, because it's world init and they're
 		// already /turf/space/basic.
 		var/turf/T = t
-		T.flags |= UNUSED_RESERVATION_TURF
+		T.turf_flags |= UNUSED_RESERVATION_TURF
 	unused_turfs["[z]"] = block
 	reservation_ready["[z]"] = TRUE
 	clearing_reserved_turfs = FALSE
@@ -280,7 +280,7 @@ SUBSYSTEM_DEF(mapping)
 		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
 		LAZYINITLIST(unused_turfs["[T.z]"])
 		unused_turfs["[T.z]"] |= T
-		T.flags |= UNUSED_RESERVATION_TURF
+		T.turf_flags |= UNUSED_RESERVATION_TURF
 		GLOB.areas_by_type[world.area].contents += T
 		CHECK_TICK
 
@@ -304,7 +304,7 @@ SUBSYSTEM_DEF(mapping)
 
 //
 // Mapping subsystem handles initialization of random map elements at server start
-// On VOREStation that means loading our random roundstart engine!
+// For us that means loading our random roundstart engine!
 //
 /datum/controller/subsystem/mapping
 	var/list/map_templates = list()
@@ -313,7 +313,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/shelter_templates = list()
 
 /datum/controller/subsystem/mapping/Recover()
-	flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
+	subsystem_flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
 	shelter_templates = SSmapping.shelter_templates
 
 /datum/controller/subsystem/mapping/proc/load_map_templates()

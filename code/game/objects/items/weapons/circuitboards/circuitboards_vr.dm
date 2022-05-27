@@ -2,8 +2,6 @@
 #error T_BOARD macro is not defined but we need it!
 #endif
 
-// VOREStation specific circuit boards!
-
 // Board for the parts lathe in partslathe.dm
 /obj/item/circuitboard/partslathe
 	name = T_BOARD("parts lathe")

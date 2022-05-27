@@ -128,7 +128,7 @@
 		trigger_aiming(TARGET_CAN_CLICK)
 		return 1
 
-	// VOREStation Addition Start: inbelly item interaction
+	// Inbelly item interaction
 	if(isbelly(loc) && (loc == A.loc))
 		if(W)
 			var/resolved = W.resolve_attackby(A, src, params)
@@ -139,7 +139,6 @@
 				setClickCooldown(get_attack_speed())
 			UnarmedAttack(A, 1)
 		return
-	// VOREStation Addition End
 
 	if(!isturf(loc)) // This is going to stop you from telekinesing from inside a closet, but I don't shed many tears for that
 		return

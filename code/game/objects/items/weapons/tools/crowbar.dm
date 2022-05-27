@@ -7,6 +7,7 @@
 	desc = "Used to remove floors and to pry open doors."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar"
+	item_state = "crowbar"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_CROWBAR
 	force = 6
@@ -84,6 +85,12 @@
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 10
 	toolspeed = 0.5
+
+/obj/item/tool/crowbar/RIGset
+	name = "integrated prybar"
+	desc = "If you're seeing this, someone did a dum-dum."
+	usesound = 'sound/items/jaws_pry.ogg'
+	toolspeed = 0.7
 
 /obj/item/tool/crowbar/power
 	name = "jaws of life"

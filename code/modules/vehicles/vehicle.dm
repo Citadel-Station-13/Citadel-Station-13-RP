@@ -42,8 +42,6 @@
 	var/load_offset_y = 0		//pixel_y offset for item overlay
 	var/mob_offset_y = 0		//pixel_y offset for mob overlay
 
-	//var/datum/riding/riding_datum = null //VOREStation Edit - Moved to movables.
-
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
@@ -162,7 +160,7 @@
 	healthcheck()
 
 /obj/vehicle/proc/adjust_health(amount)
-	health = between(0, health + amount, maxhealth)
+	health = clamp( health + amount, 0,  maxhealth)
 	healthcheck()
 
 /obj/vehicle/ex_act(severity)

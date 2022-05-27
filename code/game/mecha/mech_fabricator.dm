@@ -100,7 +100,6 @@
 		materials[Name] = 0
 
 	default_apply_parts()
-	RefreshParts()
 	files = new /datum/research(src) //Setup the research data holder.
 
 

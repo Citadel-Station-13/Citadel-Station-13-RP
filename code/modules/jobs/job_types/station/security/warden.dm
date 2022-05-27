@@ -25,14 +25,16 @@
 	name = OUTFIT_JOB_NAME("Warden")
 	uniform = /obj/item/clothing/under/rank/warden
 	l_pocket = /obj/item/flash
-	id_type = /obj/item/card/id/security/warden
-	pda_type = /obj/item/pda/warden
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud
 	l_ear = /obj/item/radio/headset/headset_sec
 	gloves = /obj/item/clothing/gloves/black
 	shoes = /obj/item/clothing/shoes/boots/jackboots
-	backpack = /obj/item/storage/backpack/security
-	satchel_one = /obj/item/storage/backpack/satchel/sec
-	backpack_contents = list(/obj/item/handcuffs = 1)
-	messenger_bag = /obj/item/storage/backpack/messenger/sec
 
+	id_type = /obj/item/card/id/security/warden
+	pda_type = /obj/item/pda/warden
+
+	backpack = /obj/item/storage/backpack/security
+	backpack_contents = list(/obj/item/handcuffs = 1)
+	satchel_one = /obj/item/storage/backpack/satchel/sec
+	messenger_bag = /obj/item/storage/backpack/messenger/sec
+	dufflebag = /obj/item/storage/backpack/dufflebag/sec

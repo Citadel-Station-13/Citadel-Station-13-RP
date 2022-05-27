@@ -63,7 +63,7 @@
 					return FALSE
 
 				if(transfer_amount && assembly.draw_power(amount_to_move)) // CELLRATE is already handled in draw_power()
-					cell.give(transfer_amount * CELLRATE)
+					cell.give(DYNAMIC_W_TO_CELL_UNITS(transfer_amount, 1))
 				AM.update_icon()
 
 				set_pin_data(IC_OUTPUT, 1, cell.charge)

@@ -12,3 +12,6 @@
 							/obj/item/stock_parts/capacitor = 2,
 							/obj/item/stock_parts/manipulator = 2,
 							/obj/item/cell = 1)
+	def_components = list(
+		/obj/item/cell = /obj/item/cell/super
+	)

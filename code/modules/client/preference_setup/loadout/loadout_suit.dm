@@ -141,37 +141,9 @@ datum/gear/suit/duster
 	name = "Labcoat"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat
 
-/datum/gear/suit/labcoat/blue
-	name = "Labcoat - Blue"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/blue
-
-/datum/gear/suit/labcoat/blue_edge
-	name = "Labcoat - Blue-Edged"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/blue_edge
-
 /datum/gear/suit/labcoat/green
 	name = "Labcoat - Green"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/green
-
-/datum/gear/suit/labcoat/orange
-	name = "Labcoat - Orange"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/orange
-
-/datum/gear/suit/labcoat/purple
-	name = "Labcoat - Purple"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/purple
-
-/datum/gear/suit/labcoat/pink
-	name = "Labcoat - Pink"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/pink
-
-/datum/gear/suit/labcoat/red
-	name = "Labcoat - Red"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/red
-
-/datum/gear/suit/labcoat/yellow
-	name = "Labcoat - Yellow"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/yellow
 
 /datum/gear/suit/overalls
 	name = "Overalls"
@@ -466,6 +438,6 @@ datum/gear/suit/duster
 	name = "Mekkyaku Hoodie"
 	path = /obj/item/clothing/suit/storage/mekkyaku
 
-/datum/gear/suit/utility_coat
-	display_name = "Utility Coat"
-	path = /obj/item/clothing/suit/storage/utility_coat
+/datum/gear/suit/utility_fur_coat
+	name = "Utility Fur Coat"
+	path = /obj/item/clothing/suit/storage/utility_fur_coat

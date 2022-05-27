@@ -1,6 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "PCUs (Personal Computer Units) instead of superglued laptops."
-  - rscadd: "Smoothed sprited for computers."
-  - code_imp: "Cleaned some code as well."

@@ -177,7 +177,6 @@
 			entry_vent = null
 	else if(entry_vent)
 		if(get_dist(src, entry_vent) <= 1)
-			//VOREStation Edit Start
 			var/obj/machinery/atmospherics/component/unary/vent_pump/exit_vent = get_safe_ventcrawl_target(entry_vent)
 			if(!exit_vent)
 				return
@@ -204,8 +203,6 @@
 					var/area/new_area = get_area(loc)
 					if(new_area)
 						new_area.Entered(src)
-
-	//=================
 
 	if(isturf(loc))
 		skitter()

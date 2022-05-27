@@ -66,8 +66,6 @@
 	maxHealth = 80
 	health = 80 // Polar bear will fuck you up.
 
-	//stop_when_pulled = 0 //VORESTATION AI TEMPORARY REMOVAL
-	//turns_per_move = 5 //VORESTATION AI TEMPORARY REMOVAL
 	see_in_dark = 6
 
 	response_help  = "pets"
@@ -79,7 +77,6 @@
 
 	minbodytemp = 0
 
-	//speak_chance = 1 //VORESTATION AI TEMPORARY REMOVAL
 	meat_type = /obj/item/reagent_containers/food/snacks/bearmeat
 /datum/say_list/polar_bear
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")

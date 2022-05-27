@@ -9,9 +9,6 @@
 /turf
 	var/list/image/obfuscations
 
-/turf/drain_power()
-	return -1
-
 // STRUCTURES
 
 /obj/structure/Destroy()

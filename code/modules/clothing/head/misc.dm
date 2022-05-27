@@ -401,7 +401,6 @@
 	name = "beanie"
 	desc = "A head-hugging brimless winter cap. This one is tight."
 	icon_state = "beanie"
-	addblends = "beanie_a"
 	body_parts_covered = 0
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
@@ -640,14 +639,12 @@
 	desc = "Reproduction headgear fashioned after the standard helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
 	icon_state = "ge_helm"
 	icon = 'icons/obj/clothing/hats_vr.dmi'
-	icon_override = 'icons/mob/head_vr.dmi'
 
 /obj/item/clothing/head/imperial_officer_replica
 	name = "imperial officer helmet"
 	desc = "Reproduction headgear fashioned after the officer's helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
 	icon_state = "ge_helmcent"
 	icon = 'icons/obj/clothing/hats_vr.dmi'
-	icon_override = 'icons/mob/head_vr.dmi'
 
 /obj/item/clothing/head/papersack
 	name = "paper sack hat"

@@ -174,7 +174,7 @@
 				H.hallucination += max(50, min(300, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)) ) )
 	spawn(pull_time)
 		explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
-		spawn(5) //to allow the explosion to finish
+		sleep(5) //to allow the explosion to finish
 		new /obj/item/broken_sm(TS)
 		qdel(src)
 		return
@@ -194,7 +194,7 @@
 /obj/machinery/power/supermatter/proc/announce_warning()
 	var/integrity = get_integrity()
 	var/alert_msg = " Integrity at [integrity]%"
-	var/message_sound = 'sound/ambience/matteralarm.ogg' // VOREStation Edit - Rykka adds SM Delam alarm
+	var/message_sound = 'sound/ambience/matteralarm.ogg'
 
 	if(damage > emergency_point)
 		alert_msg = emergency_alert + alert_msg
@@ -215,10 +215,10 @@
 		//Public alerts
 		if((damage > emergency_point) && !public_alert)
 			GLOB.global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
-			for(var/mob/M in player_list) // VOREStation Edit - Rykka adds SM Delam alarm
-				if(!istype(M,/mob/new_player) && !isdeaf(M)) // VOREStation Edit - Rykka adds SM Delam alarm
-					SEND_SOUND(M, message_sound) // VOREStation Edit - Rykka adds SM Delam alarm
-			admin_chat_message(message = "SUPERMATTER DELAMINATING!", color = "#FF2222") //VOREStation Add
+			for(var/mob/M in player_list)
+				if(!istype(M,/mob/new_player) && !isdeaf(M))
+					SEND_SOUND(M, message_sound)
+			admin_chat_message(message = "SUPERMATTER DELAMINATING!", color = "#FF2222")
 			public_alert = 1
 			log_game("SUPERMATTER([x],[y],[z]) Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
 		else if((damage > emergency_point) && public_alert)
@@ -347,14 +347,14 @@
 			visible_message("[src]: Releasing additional [round((heat_capacity_new - heat_capacity)*removed.temperature)] W with exhaust gasses.")
 
 		removed.add_thermal_energy(thermal_power)
-		removed.temperature = between(0, removed.temperature, 10000)
+		removed.temperature = clamp( removed.temperature, 0,  10000)
 
 		env.merge(removed)
 
 	for(var/mob/living/carbon/human/l in view(src, min(7, round(sqrt(power/6))))) // If they can see it without mesons on.  Bad on them.
 		if(l.isSynthetic() || (PLANE_MESONS in l.planes_visible))
 			continue
-		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // VOREStation Edit - Only mesons can protect you!
+		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // Only mesons can protect you!
 			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
 
 	SSradiation.radiate(src, max(power * 1.5, 50) ) //Better close those shutters!
@@ -400,7 +400,6 @@
 		"<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
 
 	Consume(user)
-
 
 /obj/machinery/power/supermatter/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -499,15 +498,21 @@
 	var/rads = 500
 	SSradiation.radiate(src, rads)
 
-/proc/supermatter_pull(var/atom/target, var/pull_range = 255, var/pull_power = STAGE_FIVE)
-	for(var/atom/A in range(pull_range, target))
-		A.singularity_pull(target, pull_power)
-
 /obj/machinery/power/supermatter/GotoAirflowDest(n) //Supermatter not pushed around by airflow
 	return
 
 /obj/machinery/power/supermatter/RepelAirflowDest(n)
 	return
+
+/proc/supermatter_pull(T, radius = 20)
+	T = get_turf(T)
+	if(!T)
+		return
+	for(var/atom/movable/AM in range(T, radius))
+		if(AM.anchored)		// TODO: move_resist, move_force
+			continue
+		step_towards(AM, T)
+		// TODO: atom damage for structures
 
 /obj/machinery/power/supermatter/shard //Small subtype, less efficient and more sensitive, but less boom.
 	name = "Supermatter Shard"

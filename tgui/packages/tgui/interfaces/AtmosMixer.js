@@ -7,8 +7,7 @@ export const AtmosMixer = (props, context) => {
   return (
     <Window
       width={370}
-      height={195}
-      resizable>
+      height={165}>
       <Window.Content>
         <Section>
           <LabeledList>
@@ -40,11 +39,7 @@ export const AtmosMixer = (props, context) => {
                   pressure: 'max',
                 })} />
             </LabeledList.Item>
-            <LabeledList.Divider size={1} />
-            <LabeledList.Item color="label">
-              <u>Concentrations</u>
-            </LabeledList.Item>
-            <LabeledList.Item label={"Node 1 (" + data.node1_dir + ")"}>
+            <LabeledList.Item label="Main Node" labelColor="green">
               <NumberInput
                 animated
                 value={data.node1_concentration}
@@ -57,7 +52,7 @@ export const AtmosMixer = (props, context) => {
                   concentration: value,
                 })} />
             </LabeledList.Item>
-            <LabeledList.Item label={"Node 2 (" + data.node2_dir + ")"}>
+            <LabeledList.Item label="Side Node" labelColor="blue">
               <NumberInput
                 animated
                 value={data.node2_concentration}

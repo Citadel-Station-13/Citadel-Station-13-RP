@@ -43,7 +43,7 @@
 		return
 	if (ishuman(user) && src.loc == user)
 		var/mob/living/carbon/human/H = user
-		if(src == H.w_uniform) // VOREStation Edit - Un-equip on single click, but not on uniform.
+		if(src == H.w_uniform) // Un-equip on single click, but not on uniform.
 			return
 	return ..()
 
@@ -52,7 +52,7 @@
 		//makes sure that the clothing is equipped so that we can't drag it into our hand from miles away.
 		if (!(src.loc == usr))
 			return
-		
+
 		var/targeted_mouse = (over_object.name == "r_hand") || (over_object.name == "l_hand")
 		if(!isturf(over_object) && !targeted_mouse)
 			return		// shitcode, we can refactor later.

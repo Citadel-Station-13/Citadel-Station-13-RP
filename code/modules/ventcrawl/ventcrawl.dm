@@ -12,9 +12,6 @@ var/list/ventcrawl_machinery = list(
 	/obj/belly,
 	/atom/movable/screen
 	)
-	//VOREStation Edit : added /obj/belly, to this list, travis is complaining about this in his indentation check
-	//mob/living/simple_mob/borer, //VORESTATION AI TEMPORARY REMOVAL REPLACE BACK IN LIST WHEN RESOLVED //VOREStation Edit
-
 /mob/living/var/list/icon/pipes_shown = list()
 /mob/living/var/last_played_vent
 /mob/living/var/is_ventcrawling = 0

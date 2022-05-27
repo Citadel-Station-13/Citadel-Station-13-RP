@@ -101,12 +101,6 @@
 	GLOB.using_map.player_levels |= map_z
 	if(!in_space)
 		GLOB.using_map.sealed_levels |= map_z
-	/* VOREStation Removal - We have a map system that does this already.
-	if(base)
-		global.using_map.station_levels |= map_z
-		global.using_map.contact_levels |= map_z
-		global.using_map.map_levels |= map_z
-	*/
 
 /atom/movable/overmap_object/entity/visitable/proc/unregister_z_levels()
 	map_sectors -= map_z
@@ -114,12 +108,6 @@
 	GLOB.using_map.player_levels -= map_z
 	if(!in_space)
 		GLOB.using_map.sealed_levels -= map_z
-	/* VOREStation Removal - We have a map system that does this already.
-	if(base)
-		global.using_map.station_levels -= map_z
-		global.using_map.contact_levels -= map_z
-		global.using_map.map_levels -= map_z
-	*/
 
 /atom/movable/overmap_object/entity/visitable/get_scan_data()
 	if(!known)
@@ -204,7 +192,7 @@
 		return FALSE
 	has_distress_beacon = TRUE
 
-	admin_chat_message(message = "Overmap panic button hit on z[z] ([name]) by '[user?.ckey || "Unknown"]'", color = "#FF2222") //VOREStation Add
+	admin_chat_message(message = "Overmap panic button hit on z[z] ([name]) by '[user?.ckey || "Unknown"]'", color = "#FF2222")
 	var/message = "This is an automated distress signal from a MIL-DTL-93352-compliant beacon transmitting on [PUB_FREQ*0.1]kHz. \
 	This beacon was launched from '[initial(name)]'. I can provide this additional information to rescuers: [get_distress_info()]. \
 	Per the Interplanetary Convention on Space SAR, those receiving this message must attempt rescue, \

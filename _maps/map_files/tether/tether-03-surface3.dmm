@@ -40554,7 +40554,7 @@
 /area/tether/surfacebase/surface_three_hall)
 "pnM" = (
 /obj/machinery/power/smes/buildable{
-	charge = 500000
+	charge = 500
 	},
 /obj/structure/cable{
 	d2 = 8;

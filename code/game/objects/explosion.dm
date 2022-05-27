@@ -97,9 +97,10 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 
 				if(!T)
 					T = locate(x0,y0,z0)
-				for(var/atom_movable in T.contents)	//bypass type checking since only atom/movable can be contained by turfs anyway
-					var/atom/movable/AM = atom_movable
-					if(AM && AM.simulated)	AM.ex_act(dist)
+				for(var/atom/movable/AM as anything in T.contents)	//bypass type checking since only atom/movable can be contained by turfs anyway
+					if(AM.flags & AF_ABSTRACT)
+						continue
+					AM.ex_act(dist)
 
 				T.ex_act(dist)
 

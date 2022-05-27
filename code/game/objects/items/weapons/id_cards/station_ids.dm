@@ -5,11 +5,13 @@
 	item_state = "card-id"
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/id.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi'
 		)
 
-	var/access = list()
-	var/registered_name = "Unknown" // The name registered_name on the card
+	/// Access levels held by this card.
+	var/list/access = list()
+	/// The name registered_name on the card.
+	var/registered_name = "Unknown"
 	slot_flags = SLOT_ID | SLOT_EARS
 
 	var/age = "\[UNSET\]"
@@ -97,7 +99,7 @@
 	return
 
 /obj/item/card/id/GetAccess()
-	return access
+	return access.Copy()
 
 /obj/item/card/id/GetID()
 	return src
@@ -113,8 +115,8 @@
 	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
 	return
 
-/obj/item/card/id/get_worn_icon_state(var/slot_name)
-	if(slot_name == slot_wear_id_str)
+/obj/item/card/id/get_worn_icon_state(var/slot_id)
+	if(slot_id == /datum/inventory_slot_meta/inventory/id)
 		return "id" //Legacy, just how it is. There's only one sprite.
 
 	return ..()
@@ -386,8 +388,8 @@
 	job_access_type = /datum/job/station/quartermaster
 
 /obj/item/card/id/assistant
-	assignment = USELESS_JOB //VOREStation Edit - Visitor not Assistant
-	rank = USELESS_JOB //VOREStation Edit - Visitor not Assistant
+	assignment = USELESS_JOB
+	rank = USELESS_JOB
 	job_access_type = /datum/job/station/assistant
 
 /obj/item/card/id/civilian

@@ -5,9 +5,9 @@
 	icon_state = "energynet"
 	anchored = 1
 	unacidable = 1
-	simulated = 0
+	flags = AF_ABSTRACT
 	invisibility = 101
-	flags = SLANDMARK_FLAG_AUTOSET	// We generally want to use current area/turf as base.
+	var/shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET	// We generally want to use current area/turf as base.
 
 	// ID of the landmark
 	var/landmark_tag
@@ -29,7 +29,7 @@
 	if(docking_controller)
 		. = INITIALIZE_HINT_LATELOAD
 
-	if(flags & SLANDMARK_FLAG_AUTOSET)
+	if(shuttle_landmark_flags & SLANDMARK_FLAG_AUTOSET)
 		if(ispath(base_area))
 			var/area/A = locate(base_area)
 			if(!istype(A))
@@ -122,7 +122,7 @@
 /obj/effect/shuttle_landmark/automatic
 	name = "Navpoint"
 	landmark_tag = "navpoint"
-	flags = SLANDMARK_FLAG_AUTOSET
+	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 	var/original_name = null // Save our mapped-in name so we can rebuild our name when moving sectors.
 
 /obj/effect/shuttle_landmark/automatic/Initialize(mapload)

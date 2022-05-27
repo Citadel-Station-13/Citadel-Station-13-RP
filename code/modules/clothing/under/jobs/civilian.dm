@@ -266,7 +266,7 @@
 	worn_state = "pilot1"
 	rolled_down = 0
 	rolled_sleeves = 0
-	item_icons = list(slot_w_uniform_str = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/uniform = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
 	icon = 'icons/map_assets/southern_cross/obj/sc_uniforms.dmi'
 	sprite_sheets = list(
 			SPECIES_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'
@@ -280,7 +280,7 @@
 	worn_state = "pilot2"
 	rolled_down = 0
 	rolled_sleeves = 0
-	item_icons = list(slot_w_uniform_str = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/uniform = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
 	icon = 'icons/map_assets/southern_cross/obj/sc_uniforms.dmi'
 	sprite_sheets = list(
 			SPECIES_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'
@@ -292,5 +292,5 @@
 	name = "janitor's uniform"
 	desc = "It's the official uniform of the station's janitor with minor modifications. It has minor protection from biohazards, but not from the harshness of space."
 	icon = 'icons/obj/clothing/uniforms_cit.dmi'
-	icon_override = 'icons/mob/uniform_cit.dmi'
+	icon_override = 'icons/mob/clothing/uniform.dmi'
 	icon_state = "janitor_sc"

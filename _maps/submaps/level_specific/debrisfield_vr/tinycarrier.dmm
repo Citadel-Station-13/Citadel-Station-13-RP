@@ -780,9 +780,9 @@
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bu" = (
 /obj/machinery/power/smes/buildable/outpost_substation{
-	charge = 3e+006;
+	charge = 3e+003;
 	input_attempt = 1;
-	input_level = 200000
+	input_level = 200
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"

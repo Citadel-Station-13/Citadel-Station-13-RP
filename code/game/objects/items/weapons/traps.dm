@@ -16,7 +16,7 @@
 	var/trap_damage = 30
 	slot_flags = SLOT_MASK
 	item_icons = list(
-		slot_wear_mask_str = 'icons/mob/mask.dmi'
+		/datum/inventory_slot_meta/inventory/mask = 'icons/mob/clothing/mask.dmi'
 		)
 
 /obj/item/beartrap/equipped(mob/user, slot)

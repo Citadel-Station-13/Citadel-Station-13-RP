@@ -2,14 +2,14 @@
 #define SSBELLIES_IGNORED 2
 
 //
-// Bellies subsystem - Process vore bellies
+// Bellies subsystem - Process bellies
 //
 
 SUBSYSTEM_DEF(bellies)
 	name = "Bellies"
 	priority = 5
 	wait = 1 SECONDS
-	flags = SS_KEEP_TIMING|SS_NO_INIT
+	subsystem_flags = SS_KEEP_TIMING|SS_NO_INIT
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
 	var/static/list/belly_list = list()
