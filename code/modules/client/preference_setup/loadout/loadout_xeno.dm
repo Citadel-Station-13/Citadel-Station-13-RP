@@ -862,7 +862,153 @@
 /datum/gear/xeno/teshari/accessories/neckscarf_colorable/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+	
+	
+//*Moth
+// Will be restricted in the future, when moths have a separate species. For now, rely on the sprites looking goofy as fuck on anything other than moths to keep people away. - WrongEnd
 
+/datum/gear/xeno/uniform/puffy_pants
+	name = "Moth - Puffy Pants Selection"
+	description = "Selection of Puffy Moth Pants."
+
+/datum/gear/xeno/uniform/puffy_pants/New()
+	..()
+	var/list/puffy_pants = list()
+	for(var/puffy_pant in typesof(/obj/item/clothing/under/moth/puffy_pants))
+		var/obj/item/clothing/under/moth/puffy_pants/puffy_pant_type = puffy_pant
+		puffy_pants[initial(puffy_pant_type.name)] = puffy_pant_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(puffy_pants, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/uniform/tight_pants
+	name = "Moth - Pants Selection"
+	description = "Selection of Moth Pants."
+	
+/datum/gear/xeno/uniform/tight_pants/New()
+	..()
+	var/list/tight_pants = list()
+	for(var/tight_pant in typesof(/obj/item/clothing/under/moth/tight_pants))
+		var/obj/item/clothing/under/moth/tight_pants/tight_pant_type = tight_pant
+		tight_pants[initial(tight_pant_type.name)] = tight_pant_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(tight_pants, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/uniform/moth_skirt
+	name = "Moth - Skirt Selection"
+	description = "Selection of Moth Skirts."
+	
+/datum/gear/xeno/uniform/moth_skirt/New()
+	..()
+	var/list/moth_skirt = list()
+	for(var/moth_skirts in typesof(/obj/item/clothing/under/moth/moth_skirt))
+		var/obj/item/clothing/under/moth/moth_skirt/moth_skirts_type = moth_skirts
+		moth_skirt[initial(moth_skirts_type.name)] = moth_skirts_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(moth_skirt, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/accessories/abdomen_guard
+	name = "Moth - Abdomen Guards Selection"
+	description = "Selection of Abdomen Guards."
+
+/datum/gear/xeno/accessories/abdomen_guard/New()
+	..()
+	var/list/abdomen_guard = list()
+	for(var/abdomen_guards in typesof(/obj/item/clothing/accessory/vest/moth/abdomen_guard))
+		var/obj/item/clothing/accessory/vest/moth/abdomen_guard/abdomen_guards_type = abdomen_guards
+		abdomen_guard[initial(abdomen_guards_type.name)] = abdomen_guards_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(abdomen_guard, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/accessories/tunic_top
+	name = "Moth - Tunic Tops Selection"
+	description = "Selection of Moth Tunic Tops."
+	
+/datum/gear/xeno/accessories/tunic_top/New()
+	..()
+	var/list/tunic_top = list()
+	for(var/tunic_tops in typesof(/obj/item/clothing/accessory/vest/moth/tunic_top))
+		var/obj/item/clothing/accessory/vest/moth/tunic_top/tunic_tops_type = tunic_tops
+		tunic_top[initial(tunic_tops_type.name)] = tunic_tops_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(tunic_top, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/accessories/cloth_strap_top
+	name = "Moth - Cloth Strap Tops Selection"
+	description = "Selection of Moth Cloth Strap Tops."
+	
+/datum/gear/xeno/accessories/cloth_strap_top/New()
+	..()
+	var/list/cloth_strap_top = list()
+	for(var/cloth_strap_tops in typesof(/obj/item/clothing/accessory/vest/moth/cloth_strap_top))
+		var/obj/item/clothing/accessory/vest/moth/cloth_strap_top/cloth_strap_tops_type = cloth_strap_tops
+		cloth_strap_top[initial(cloth_strap_tops_type.name)] = cloth_strap_tops_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(cloth_strap_top, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/accessories/shoulder_pad_right
+	name = "Moth - Right Shoulder Pads Selection"
+	description = "Selection of Moth Right Shoulder Pads."
+	
+/datum/gear/xeno/accessories/shoulder_pad_right/New()
+	..()
+	var/list/shoulder_pad_right = list()
+	for(var/shoulder_pad_rights in typesof(/obj/item/clothing/accessory/vest/moth/shoulder_pad_right))
+		var/obj/item/clothing/accessory/vest/moth/shoulder_pad_right/shoulder_pad_rights_type = shoulder_pad_rights
+		shoulder_pad_right[initial(shoulder_pad_rights_type.name)] = shoulder_pad_rights_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(shoulder_pad_right, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/accessories/shoulder_pad_left
+	name = "Moth - Left Shoulder Pads Selection"
+	description = "Selection of Moth Left Shoulder Pads."
+	
+/datum/gear/xeno/accessories/shoulder_pad_left/New()
+	..()
+	var/list/shoulder_pad_left = list()
+	for(var/shoulder_pad_lefts in typesof(/obj/item/clothing/accessory/vest/moth/shoulder_pad_left))
+		var/obj/item/clothing/accessory/vest/moth/shoulder_pad_left/shoulder_pad_lefts_type = shoulder_pad_lefts
+		shoulder_pad_left[initial(shoulder_pad_lefts_type.name)] = shoulder_pad_lefts_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(shoulder_pad_left, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/accessories/front_tunic
+	name = "Moth - Front Tunics Selection"
+	description = "Selection of Moth Front Tunics."
+
+/datum/gear/xeno/accessories/front_tunic/New()
+	..()
+	var/list/front_tunic = list()
+	for(var/front_tunics in typesof(/obj/item/clothing/accessory/vest/moth/front_tunic))
+		var/obj/item/clothing/accessory/vest/moth/front_tunic/front_tunics_type = front_tunics
+		front_tunic[initial(front_tunics_type.name)] = front_tunics_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(front_tunic, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/accessories/gaiter
+	name = "Moth - Gaiters Selection"
+	description = "Selection of Moth Gaiters."
+	
+/datum/gear/xeno/accessories/gaiter/New()
+	..()
+	var/list/gaiter = list()
+	for(var/gaiters in typesof(/obj/item/clothing/accessory/vest/moth/gaiter))
+		var/obj/item/clothing/accessory/vest/moth/gaiter/gaiters_type = gaiters
+		gaiter[initial(gaiters_type.name)] = gaiters_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(gaiter, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/shoes/legwrap
+	name = "Moth - Legwraps Selection"
+	description = "Selection of Moth Legwraps."
+	
+/datum/gear/xeno/shoes/legwrap/New()
+	..()
+	var/list/legwrap = list()
+	for(var/legwraps in typesof(/obj/item/clothing/shoes/moth/legwrap))
+		var/obj/item/clothing/shoes/moth/legwrap/legwraps_type = legwraps
+		legwrap[initial(legwraps_type.name)] = legwraps_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(legwrap, /proc/cmp_text_asc))
+	
+/datum/gear/xeno/shoes/moth/jackboots
+	name = "Moth - Jackboots"
+	path = /obj/item/clothing/shoes/boots/jackboots/moth
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
+
+/datum/gear/xeno/shoes/moth/workboots
+	name = "Moth - Workboots"
+	path = /obj/item/clothing/shoes/boots/moth
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Research Director", "Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
+	
 
 
 //*Non-Restricted Items (THIS SHOULD BE KEPT MINIMAL. IF IT HAS A SPECIFIC SPECIES, PLACE IT THERE.)
