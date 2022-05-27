@@ -37,14 +37,13 @@
 
 	// merging bundles
 	else if(istype(W, /obj/item/paper_bundle))
-		user.drop_from_inventory(W)
+		if(!user.attempt_consume_item_for_construction(W))
+			return
 		for(var/obj/O in W)
-			O.loc = src
+			O.forceMove(src)
 			O.add_fingerprint(usr)
 			pages.Add(O)
-
 		to_chat(user, "<span class='notice'>You add \the [W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
-		qdel(W)
 	else
 		if(istype(W, /obj/item/duct_tape_roll))
 			return 0
@@ -56,7 +55,6 @@
 	update_icon()
 	attack_self(usr) //Update the browsed page.
 	add_fingerprint(usr)
-	return
 
 /obj/item/paper_bundle/proc/insert_sheet_at(mob/user, var/index, obj/item/sheet)
 	if(istype(sheet, /obj/item/paper))
