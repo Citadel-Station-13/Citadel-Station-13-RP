@@ -59,15 +59,6 @@
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 
-/obj/machinery/optable/MouseDroppedOnLegacy(obj/O, mob/user)
-	. = ..()
-	if((!(istype(O, /obj/item)) || user.get_active_held_item() != O))
-		return
-	user.drop_item()
-	if(O.loc != src.loc)
-		step(O, get_dir(O, src))
-	return
-
 /obj/machinery/optable/proc/check_victim()
 	if(locate(/mob/living/carbon/human, src.loc))
 		var/mob/living/carbon/human/M = locate(/mob/living/carbon/human, src.loc)

@@ -298,7 +298,7 @@
 					affecting.implants -= card
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
-		holder.drop_from_inventory(card)
+		holder.drop_item_to_ground(card, TRUE)
 	else if(istype(card.loc,/obj/item/pda))
 		var/obj/item/pda/holder = card.loc
 		holder.pai = null

@@ -16,11 +16,11 @@
 
 /obj/structure/foodcart/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/reagent_containers/food))
-		user.drop_item()
-		O.loc = src
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		update_icon()
-	else
 		return
+	return ..()
 
 /obj/structure/foodcart/attack_hand(var/mob/user as mob)
 	if(contents.len)

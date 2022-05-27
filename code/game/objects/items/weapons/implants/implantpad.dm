@@ -42,8 +42,8 @@
 		..()
 		if(istype(C, /obj/item/implantcase))
 			if(!( src.case ))
-				user.drop_item()
-				C.loc = src
+				if(!user.attempt_insert_item_for_installation(C, src))
+					return
 				src.case = C
 		else
 			return

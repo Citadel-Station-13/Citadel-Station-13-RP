@@ -23,21 +23,23 @@
 		return
 
 	// first check legacy behaviors - this one always runs
+	// if it doesn't call parent skip everything else
 	if(OnMouseDropLegacy(over_object, src_location, over_location, src_control, over_control, params) != -1)
 		return
 
 	// shit proximity check, refactor later
-	var/proximity = Adjacent(usr) && over.Adjacent(usr)
+	var/proximity = Adjacent(usr) && over_object.Adjacent(usr)
 	if(proximity)
 		// this one only runs if the above pass. legacy behavior.
 		MouseDroppedOnLegacy(src, user, params)
 
-	if(SEND_SIGNAL(src, COMSIG_MOUSEDROP_ONTO, over, user, proximity, params) & COMPONENT_NO_MOUSEDROP)
+	if(SEND_SIGNAL(src, COMSIG_MOUSEDROP_ONTO, over_object, user, proximity, params) & COMPONENT_NO_MOUSEDROP)
 		return
-	OnMouseDrop(over, user, proximity, params)
-	if(SEND_SIGNAL(over, COMSIG_MOUSEDROPPED_ONTO, src, user, proximity, params) & COMPONENT_NO_MOUSEDROP)
+	if(OnMouseDrop(over_object, user, proximity, params) & CLICK_CHAIN_DO_NOT_PROPAGATE)
 		return
-	over.MouseDroppedOn(src, user, params)
+	if(SEND_SIGNAL(over_object, COMSIG_MOUSEDROPPED_ONTO, src, user, proximity, params) & COMPONENT_NO_MOUSEDROP)
+		return
+	over_object.MouseDroppedOn(src, user, params)
 
 
 /**

@@ -186,10 +186,9 @@
 		if(beaker)
 			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
 			return
-
+		if(!user.attempt_insert_item_for_installation(G, src))
+			return
 		beaker =  G
-		user.drop_item()
-		G.loc = src
 		user.visible_message("[user] adds \a [G] to \the [src]!", "You add \a [G] to \the [src]!")
 		update_icon()
 

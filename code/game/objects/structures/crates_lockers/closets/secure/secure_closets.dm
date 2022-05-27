@@ -78,9 +78,7 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		user.drop_item()
-		if(W)
-			W.forceMove(src.loc)
+		user.transfer_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/melee/energy/blade))
 		if(emag_act(INFINITY, user, "<span class='danger'>The locker has been sliced open by [user] with \an [W]</span>!", "<span class='danger'>You hear metal being sliced and sparks flying.</span>"))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()

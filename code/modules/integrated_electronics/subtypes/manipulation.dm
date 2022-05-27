@@ -34,10 +34,10 @@
 		if(installed_gun)
 			to_chat(user, "<span class='warning'>There's already a weapon installed.</span>")
 			return
-		user.drop_from_inventory(gun)
+		if(!user.attempt_insert_item_for_installation(gun, src))
+			return
 		installed_gun = gun
 		size += gun.w_class
-		gun.forceMove(src)
 		to_chat(user, "<span class='notice'>You slide \the [gun] into the firing mechanism.</span>")
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 	else
@@ -45,7 +45,7 @@
 
 /obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(var/mob/user)
 	if(installed_gun)
-		installed_gun.forceMove(get_turf(src))
+		user.put_in_hands_or_drop(installed_gun)
 		to_chat(user, "<span class='notice'>You slide \the [installed_gun] out of the firing mechanism.</span>")
 		size = initial(size)
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)

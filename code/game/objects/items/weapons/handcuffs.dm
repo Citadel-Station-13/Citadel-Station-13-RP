@@ -106,8 +106,7 @@
 /obj/item/handcuffs/equipped(mob/living/user, slot, accessory)
 	. = ..()
 	if(slot == SLOT_ID_HANDCUFFED)
-		user.drop_r_hand()
-		user.drop_l_hand()
+		user.drop_all_held_items()
 		user.stop_pulling()
 
 var/last_chew = 0
@@ -221,9 +220,6 @@ var/last_chew = 0
 /obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
 	. = ..()
 	if(slot == SLOT_ID_HANDCUFFED)
-		user.drop_r_hand()
-		user.drop_l_hand()
-		user.stop_pulling()
 		ADD_TRAIT(user, TRAIT_DISRUPTED, CLOTHING_TRAIT)
 
 //Legcuffs. Not /really/ handcuffs, but its close enough.

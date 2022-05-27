@@ -221,7 +221,7 @@
 			make_jittery(1000)
 	if (disabilities & COUGHING)
 		if ((prob(5) && paralysis <= 1))
-			drop_item()
+			drop_active_held_item()
 			spawn( 0 )
 				emote("cough")
 				return
@@ -251,7 +251,7 @@
 	if(getBrainLoss() >= 35)
 		if(7 <= rn && rn <= 9) if(get_active_held_item())
 			to_chat(src, "<span class='danger'>Your hand won't respond properly, you drop what you're holding!</span>")
-			drop_item()
+			drop_active_held_item()
 	if(getBrainLoss() >= 45)
 		if(10 <= rn && rn <= 12)
 			if(prob(50))
@@ -260,8 +260,6 @@
 			else if(!lying)
 				to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down!</span>")
 				Weaken(10)
-
-
 
 /mob/living/carbon/human/handle_mutations_and_radiation()
 	if(inStasisNow())

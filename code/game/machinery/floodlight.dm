@@ -119,8 +119,8 @@
 			if(cell)
 				to_chat(user, SPAN_NOTICE("There is a power cell already installed."))
 			else
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				cell = W
 				to_chat(user, SPAN_NOTICE("You insert the power cell."))
 	update_icon()

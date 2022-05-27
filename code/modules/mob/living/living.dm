@@ -826,11 +826,6 @@ default behaviour is:
 /mob/living/proc/slip(var/slipped_on,stun_duration=8)
 	return 0
 
-/mob/living/carbon/drop_from_inventory(var/obj/item/W, var/atom/Target = null)
-	if(W in internal_organs)
-		return
-	..()
-
 //damage/heal the mob ears and adjust the deaf amount
 /mob/living/adjustEarDamage(var/damage, var/deaf)
 	ear_damage = max(0, ear_damage + damage)
@@ -1098,15 +1093,17 @@ default behaviour is:
 		swap_hand()
 
 /mob/living/throw_item(atom/target)
+	// TODO: refactor to not be hardcoded active held item
 	src.throw_mode_off()
 	if(usr.stat || !target)
 		return
-	if(target.type == /atom/movable/screen) return
+	if(target.type == /atom/movable/screen)
+		return
 
 	var/atom/movable/item = src.get_active_held_item()
 
-	if(!item) return
-
+	if(!item)
+		return
 	var/throw_range = item.throw_range
 	if (istype(item, /obj/item/grab))
 		var/obj/item/grab/G = item
@@ -1120,9 +1117,14 @@ default behaviour is:
 			var/turf/end_T = get_turf(target)
 			if(end_T)
 				add_attack_logs(src,M,"Thrown via grab to [end_T.x],[end_T.y],[end_T.z]")
-			src.drop_from_inventory(G)
+			drop_item_to_ground(G, TRUE)
+		else
+			return		// wild
+	else
+		if(!drop_item_to_ground(item))
+			to_chat(src, SPAN_WARNING("[item] is stuck to your hand!"))
+			return
 
-	src.drop_from_inventory(item)
 	if(!item || !isturf(item.loc))
 		return
 

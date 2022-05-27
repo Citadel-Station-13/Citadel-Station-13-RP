@@ -124,8 +124,8 @@
 	if(use_cell)
 		if(istype(W, cell_type))
 			if(!bcell)
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				bcell = W
 				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
 				update_icon()

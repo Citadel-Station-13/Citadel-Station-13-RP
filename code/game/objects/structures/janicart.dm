@@ -29,9 +29,9 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 /obj/structure/janitorialcart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/storage/bag/trash) && !mybag)
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		mybag = I
-		I.loc = src
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
@@ -46,33 +46,33 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 				playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 				return
 		if(!mymop)
-			user.drop_item()
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			mymop = I
-			I.loc = src
 			update_icon()
 			updateUsrDialog()
 			to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
 
 	else if(istype(I, /obj/item/reagent_containers/spray) && !myspray)
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		myspray = I
-		I.loc = src
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
 
 	else if(istype(I, /obj/item/lightreplacer) && !myreplacer)
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(i, src))
+			return
 		myreplacer = I
-		I.loc = src
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
 
 	else if(istype(I, /obj/item/caution))
 		if(signs < 4)
-			user.drop_item()
-			I.loc = src
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			signs++
 			update_icon()
 			updateUsrDialog()

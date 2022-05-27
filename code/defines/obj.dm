@@ -93,9 +93,8 @@
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
 
-	afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
-		user.drop_item()
-		src.throw_at(target, throw_range, throw_speed, user)
+/obj/item/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
+	user.throw_item(target)
 
 /obj/effect/stop
 	icon_state = "empty"

@@ -485,7 +485,8 @@ var/list/organ_cache = list()
 	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
 	blood_splatter(src,B,1)
 
-	user.drop_from_inventory(src)
+	user.temporarily_remove_from_inventory(src, TRUE)
+
 	var/obj/item/reagent_containers/food/snacks/organ/O = new(get_turf(src))
 	O.name = name
 	O.icon = icon
@@ -494,9 +495,12 @@ var/list/organ_cache = list()
 	// Pass over the blood.
 	reagents.trans_to(O, reagents.total_volume)
 
-	if(fingerprints) O.fingerprints = fingerprints.Copy()
-	if(fingerprintshidden) O.fingerprintshidden = fingerprintshidden.Copy()
-	if(fingerprintslast) O.fingerprintslast = fingerprintslast
+	if(fingerprints)
+		O.fingerprints = fingerprints.Copy()
+	if(fingerprintshidden)
+		O.fingerprintshidden = fingerprintshidden.Copy()
+	if(fingerprintslast)
+		O.fingerprintslast = fingerprintslast
 
 	user.put_in_active_hand(O)
 	qdel(src)

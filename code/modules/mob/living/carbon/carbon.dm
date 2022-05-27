@@ -312,8 +312,7 @@
 
 /mob/living/carbon/proc/update_handcuffed()
 	if(handcuffed)
-		drop_l_hand()
-		drop_r_hand()
+		drop_all_held_items()
 		stop_pulling()
 	update_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_inv_handcuffed()

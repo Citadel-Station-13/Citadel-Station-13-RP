@@ -1237,16 +1237,17 @@ Note that amputating the affected organ does in fact remove the infection from t
 		src.visible_message("<font color='red'>[owner] has been seriously wounded by [W]!</font>")
 		W.add_blood(owner)
 		return 0
+	if(ismob(W.loc))
+		var/mob/M = W.loc
+		if(!M.can_unequip(W))
+			return
 	if(!silent)
 		owner.visible_message("<span class='danger'>\The [W] sticks in the wound!</span>")
 	implants += W
 	owner.embedded_flag = 1
 	owner.verbs += /mob/proc/yank_out_object
 	W.add_blood(owner)
-	if(ismob(W.loc))
-		var/mob/living/H = W.loc
-		H.drop_from_inventory(W)
-	W.loc = owner
+	W.forceMove(owner)
 
 /obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)
 	if(!owner)

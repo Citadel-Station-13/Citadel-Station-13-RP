@@ -118,8 +118,7 @@
 	log_and_message_admins("emagged \an [W].")
 
 	if(uses<1)
-		user.visible_message("<span class='warning'>\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent.</span>")
-		user.drop_item()
+		to_chat(user, "<span class='warning'>\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent.</span>")
 		var/obj/item/card/emag_broken/junk = new(user.loc)
 		junk.add_fingerprint(user)
 		qdel(src)

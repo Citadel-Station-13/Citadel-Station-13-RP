@@ -90,8 +90,8 @@
 
 	var/obj/item/clothing/accessory/acc = A
 	if(can_attach_accessory(acc))
-		if(user)
-			user.drop_item()
+		if(!user.attempt_insert_item_for_installation(acc, src))
+			return
 		attach_accessory(user, acc)
 		return TRUE
 	else

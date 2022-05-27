@@ -124,6 +124,7 @@
 #include "code\__DEFINES\color\color.dm"
 #include "code\__DEFINES\color\colour_priority.dm"
 #include "code\__DEFINES\color\lum.dm"
+#include "code\__DEFINES\combat\clickcode.dm"
 #include "code\__DEFINES\controllers\_subsystems.dm"
 #include "code\__DEFINES\controllers\ticker.dm"
 #include "code\__DEFINES\dcs\flags.dm"

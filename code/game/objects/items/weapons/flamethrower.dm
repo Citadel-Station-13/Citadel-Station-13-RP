@@ -92,10 +92,12 @@
 
 	if(isigniter(W))
 		var/obj/item/assembly/igniter/I = W
-		if(I.secured)	return
-		if(igniter)		return
-		user.drop_item()
-		I.loc = src
+		if(I.secured)
+			return
+		if(igniter)
+			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		igniter = I
 		update_icon()
 		return
@@ -104,9 +106,9 @@
 		if(ptank)
 			to_chat(user, "<span class='notice'>There appears to already be a phoron tank loaded in [src]!</span>")
 			return
-		user.drop_item()
+		if(!user.attempt_insert_item_or_installation(W, src))
+			return
 		ptank = W
-		W.loc = src
 		update_icon()
 		return
 

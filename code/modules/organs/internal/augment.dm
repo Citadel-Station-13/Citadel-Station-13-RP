@@ -62,7 +62,6 @@
 	if(removed && integrated_object && integrated_object.loc != src)
 		if(isliving(integrated_object.loc))
 			var/mob/living/L = integrated_object.loc
-			L.drop_from_inventory(integrated_object)
 		integrated_object.forceMove(src)
 	..(removed)
 

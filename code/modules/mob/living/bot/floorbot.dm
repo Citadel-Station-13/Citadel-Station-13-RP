@@ -398,7 +398,6 @@
 		user.put_in_hands(B)
 		to_chat(user, SPAN_NOTICE("You add the tiles into the empty toolbox. They protrude from the top."))
 		B.toolbox = type
-		user.drop_from_inventory(src)
 		qdel(src)
 	else
 		to_chat(user, SPAN_WARNING("You need 10 floor tiles for a floorbot."))

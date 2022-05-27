@@ -3230,9 +3230,8 @@
 				boxestoadd += i
 
 			if( (boxes.len+1) + boxestoadd.len <= 5 )
-				user.drop_item()
-
-				box.loc = src
+				if(!user.attempt_insert_item_for_installation(box, src))
+					return
 				box.boxes = list() // Clear the box boxes so we don't have boxes inside boxes. - Xzibit
 				src.boxes.Add( boxestoadd )
 

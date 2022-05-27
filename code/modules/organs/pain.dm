@@ -45,7 +45,7 @@
 		if(maxdam > 10 && paralysis)
 			AdjustParalysis(-round(maxdam/10))
 		if(maxdam > 50 && prob(maxdam / 5))
-			drop_item()
+			drop_active_held_item()
 		var/burning = damaged_organ.burn_dam > damaged_organ.brute_dam
 		var/msg
 		if(painmsg)

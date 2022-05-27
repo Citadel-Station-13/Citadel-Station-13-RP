@@ -99,12 +99,15 @@
 
 /obj/machinery/portable_atmospherics/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if ((istype(W, /obj/item/tank) && !( src.destroyed )))
-		if (src.holding)
+		if (holding && (user.a_intent != INTENT_GRAB))
+			return
+		if(!user.attempt_insert_item_for_installation(T, src))
 			return
 		var/obj/item/tank/T = W
-		user.drop_item()
-		T.loc = src
-		src.holding = T
+		if(holding)
+			holding.forceMove(drop_location())
+			to_chat(user, SPAN_NOTICE("You quickly swap the tanks with the quick release valve."))
+		holding = T
 		update_icon()
 		return
 
@@ -133,9 +136,6 @@
 	else if ((istype(W, /obj/item/analyzer)) && Adjacent(user))
 		var/obj/item/analyzer/A = W
 		A.analyze_gases(src, user)
-		return
-
-	return
 
 /obj/machinery/portable_atmospherics/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
@@ -185,13 +185,13 @@
 		if(cell)
 			to_chat(user, "There is already a power cell installed.")
 			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 
 		var/obj/item/cell/C = I
 
-		user.drop_item()
 		C.add_fingerprint(user)
 		cell = C
-		C.loc = src
 		user.visible_message("<span class='notice'>[user] opens the panel on [src] and inserts [C].</span>", "<span class='notice'>You open the panel on [src] and insert [C].</span>")
 		power_change()
 		return
@@ -204,7 +204,7 @@
 		user.visible_message("<span class='notice'>[user] opens the panel on [src] and removes [cell].</span>", "<span class='notice'>You open the panel on [src] and remove [cell].</span>")
 		playsound(src, I.usesound, 50, 1)
 		cell.add_fingerprint(user)
-		cell.loc = src.loc
+		cell.forceMove(drop_location())
 		cell = null
 		power_change()
 		return

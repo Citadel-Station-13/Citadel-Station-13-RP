@@ -67,6 +67,8 @@
 			if(istype(modifier_type, /datum/modifier/no_borg))
 				to_chat(user, SPAN_WARNING("\The [src] appears to reject this brain.  It is incompatable."))
 				return
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 
 		user.visible_message(SPAN_NOTICE("\The [user] sticks \a [O] into \the [src]."))
 		B.preserved = TRUE
@@ -79,9 +81,7 @@
 		dead_mob_list -= brainmob//Update dem lists
 		living_mob_list += brainmob
 
-		user.drop_item()
 		brainobj = O
-		brainobj.loc = src
 
 		name = "man-machine interface ([brainmob.real_name])"
 		icon_state = "mmi_full"

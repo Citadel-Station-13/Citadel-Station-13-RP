@@ -108,9 +108,9 @@
 			return
 		else
 			if(W.reagents.total_volume)
+				if(!user.attempt_insert_item_for_installation(w, src))
+					return
 				to_chat(user, "<span class='notice'>You add \the [W] to the assembly.</span>")
-				user.drop_item()
-				W.loc = src
 				beakers += W
 				stage = 1
 				name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"

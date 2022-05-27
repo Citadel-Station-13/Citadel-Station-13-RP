@@ -54,9 +54,9 @@
 	user.do_attack_animation(target)
 
 	if(do_after(user, 50) && in_range(user, target))
-		user.drop_item()
-		src.target = target
-		loc = null
+		if(!user.attempt_void_item_for_installation(src))
+			return
+		target = target
 
 		if (ismob(target))
 			add_attack_logs(user, target, "planted [name] on with [timer] second fuse")

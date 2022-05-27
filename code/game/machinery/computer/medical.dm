@@ -227,8 +227,8 @@
 			else
 				var/obj/item/I = usr.get_active_held_item()
 				if(istype(I, /obj/item/card/id))
-					usr.drop_item()
-					I.forceMove(src)
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					scan = I
 		if("login")
 			var/login_type = text2num(params["login_type"])

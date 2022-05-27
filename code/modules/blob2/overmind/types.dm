@@ -625,15 +625,18 @@
 	if(damage > 0 && attacker && get_dist(B, attacker) <= 2 && prob(min(damage, 70)) && istype(attacker, /mob/living/carbon/human)) // Melee weapons of any type carried by a human will have a high chance of being stolen.
 		var/mob/living/carbon/human/H = attacker
 		var/obj/item/I = H.get_active_held_item()
-		H.drop_item()
-		if(I)
-			if((I.sharp || I.edge) && !istype(I, /obj/item/gun))
-				I.forceMove(get_turf(B)) // Disarmed entirely.
-				B.visible_message("<span class='danger'>The [name] heaves, \the [attacker]'s weapon becoming stuck in the churning mass!</span>")
-			else
-				I.throw_at(B, 2, 4) // Just yoinked.
-				B.visible_message("<span class='danger'>The [name] heaves, pulling \the [attacker]'s weapon from their hands!</span>")
+		if(!I)
+			return ..()
 		B.blob_attack_animation(attacker, B.overmind)
+		if(!H.drop_item_to_ground(I))
+			B.visible_message(SPAN_DANGER("[name] heaves and pulls at [H]'s [I], struggling to pull it from their grip!"))
+			return ..()
+		if((I.sharp || I.edge) && !istype(I, /obj/item/gun))
+			I.forceMove(get_turf(B)) // Disarmed entirely.
+			B.visible_message("<span class='danger'>The [name] heaves, \the [attacker]'s weapon becoming stuck in the churning mass!</span>")
+		else
+			I.throw_at(B, 2, 4) // Just yoinked.
+			B.visible_message("<span class='danger'>The [name] heaves, pulling \the [attacker]'s weapon from their hands!</span>")
 	return ..()
 
 /datum/blob_type/volatile_alluvium/on_water(obj/structure/blob/B, amount)

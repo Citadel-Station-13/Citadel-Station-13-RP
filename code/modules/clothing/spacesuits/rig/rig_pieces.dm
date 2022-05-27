@@ -114,9 +114,9 @@
 	if(istype(I, /obj/item/material/knife/tacknife))
 		if(tacknife)
 			return
-		M.drop_item()
+		if(!M.attempt_insert_item_for_installation(I, src))
+			return
 		tacknife = I
-		I.loc = src
 		to_chat(M, "<span class='notice'>You slide the [I] into [src].</span>")
 		playsound(M, 'sound/weapons/flipblade.ogg', 40, 1)
 		update_icon()

@@ -310,6 +310,7 @@
 /obj/item/OnMouseDropLegacy(atom/over)
 	. = ..()
 	#warn UNFUCK THIS - GENERIC ITEM DRAG TO HAND SLOT AND GENERIC DRAG TO GROUND FOR PUT IN HAND/DROP TO GROUND!
+	#warn generic sliding items around if already on ground
 	if(ismob(src.loc))
 		if(!CanMouseDrop(src))
 			return

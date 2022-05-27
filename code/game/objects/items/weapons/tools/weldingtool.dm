@@ -602,8 +602,8 @@
 	if(istype(W, /obj/item/cell))
 		if(istype(W, /obj/item/cell/device))
 			if(!power_supply)
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				power_supply = W
 				to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
 				update_icon()
