@@ -281,8 +281,8 @@
 /datum/ai_holder/simple_mob/intentional/sakimm/pre_melee_attack(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
-		if(holder.get_active_held_item())	// Are we holding something? If so, drop it, we have a new target to kill, and we shouldn't use their weapons.
-			holder.drop_from_inventory(holder.get_active_held_item(), get_turf(holder))
+		// Are we holding something? If so, drop it, we have a new target to kill, and we shouldn't use their weapons.
+		holder.drop_active_held_item()
 
 		if(ishuman(L))
 			if(L.incapacitated(INCAPACITATION_DISABLED))	// Is our target on the ground? If so, let's scratch!
@@ -351,7 +351,7 @@
 		lose_target()
 		max_home_distance = 1
 	if(get_dist(holder, home_turf) <= max_home_distance)
-		holder.drop_from_inventory(holder.get_active_held_item(), get_turf(holder))
+		holder.drop_active_held_item()
 	if(!holder.get_active_held_item())
 		max_home_distance = original_home_distance
 

@@ -56,8 +56,7 @@
 /mob/living/carbon/AIize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	transforming = 1
 	canmove = 0
 	icon = null

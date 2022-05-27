@@ -137,8 +137,8 @@
 		if(tank)
 			to_chat(user, SPAN_WARNING("\The [src] already has a tank installed!"))
 		else
-			user.drop_item()
-			W.forceMove(src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			tank = W
 			user.visible_message( \
 				SPAN_NOTICE("\The [user] installs \the [tank] into \the [src]."), \

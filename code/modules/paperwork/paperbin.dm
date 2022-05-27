@@ -83,14 +83,15 @@
 	return
 
 
-/obj/item/paper_bin/attackby(obj/item/paper/i as obj, mob/user as mob)
-	if(!istype(i))
+/obj/item/paper_bin/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+	if(!istype(I, /obj/item/paper))
+		return ..()
+
+	if(!user.attempt_insert_item_for_installation(I, src))
 		return
 
-	user.drop_item()
-	i.loc = src
-	to_chat(user, "<span class='notice'>You put [i] in [src].</span>")
-	papers.Add(i)
+	to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+	papers.Add(I)
 	update_icon()
 	amount++
 
@@ -102,8 +103,6 @@
 			. += "<span class='notice'>There " + (amount > 1 ? "are [amount] papers" : "is one paper") + " in the bin.</span>"
 		else
 			. += "<span class='notice'>There are no papers in the bin.</span>"
-	return
-
 
 /obj/item/paper_bin/update_icon()
 	if(amount < 1)

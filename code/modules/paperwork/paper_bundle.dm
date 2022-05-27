@@ -57,13 +57,12 @@
 	add_fingerprint(usr)
 
 /obj/item/paper_bundle/proc/insert_sheet_at(mob/user, var/index, obj/item/sheet)
+	if(!user.attempt_insert_item_for_installation(sheet, src))
+		return
 	if(istype(sheet, /obj/item/paper))
 		to_chat(user, "<span class='notice'>You add [(sheet.name == "paper") ? "the paper" : sheet.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
 	else if(istype(sheet, /obj/item/photo))
 		to_chat(user, "<span class='notice'>You add [(sheet.name == "photo") ? "the photo" : sheet.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
-
-	user.drop_from_inventory(sheet)
-	sheet.loc = src
 
 	pages.Insert(index, sheet)
 
@@ -86,7 +85,7 @@
 				"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 
 				if(user.get_inactive_held_item() == src)
-					user.drop_from_inventory(src)
+					user.drop_inactive_held_item()
 
 				new /obj/effect/decal/cleanable/ash(src.loc)
 				qdel(src)
@@ -170,10 +169,9 @@
 
 			if(pages.len <= 1)
 				var/obj/item/paper/P = src[1]
-				usr.drop_from_inventory(src)
+				usr.temporarily_remove_from_inventory(src, TRUE)
 				usr.put_in_hands(P)
 				qdel(src)
-
 				return
 
 			if(page > pages.len)
@@ -205,13 +203,10 @@
 
 	to_chat(usr, "<span class='notice'>You loosen the bundle.</span>")
 	for(var/obj/O in src)
-		O.loc = usr.loc
-		O.layer = initial(O.layer)
+		O.forceMove(usr.loc)
+		O.reset_plane_and_layer()
 		O.add_fingerprint(usr)
-	usr.drop_from_inventory(src)
 	qdel(src)
-	return
-
 
 /obj/item/paper_bundle/update_icon()
 	var/obj/item/paper/P = pages[1]

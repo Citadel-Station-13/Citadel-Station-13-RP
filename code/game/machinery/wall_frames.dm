@@ -47,8 +47,6 @@
 	M.fingerprints = fingerprints
 	M.fingerprintshidden = fingerprintshidden
 	M.fingerprintslast = fingerprintslast
-	if(istype(src.loc, /obj/item/gripper)) //Typical gripper shenanigans
-		user.drop_item()
 	qdel(src)
 
 /obj/item/frame/proc/try_build(turf/on_wall, mob/user as mob)
@@ -96,8 +94,6 @@
 	M.fingerprints = fingerprints
 	M.fingerprintshidden = fingerprintshidden
 	M.fingerprintslast = fingerprintslast
-	if(istype(src.loc, /obj/item/gripper)) //Typical gripper shenanigans
-		user.drop_item()
 	qdel(src)
 
 /obj/item/frame/light

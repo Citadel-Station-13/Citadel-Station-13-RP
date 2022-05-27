@@ -1347,22 +1347,20 @@
 
 	if(istype(W, /obj/item/mecha_parts/mecha_equipment))
 		var/obj/item/mecha_parts/mecha_equipment/E = W
-		spawn()
-			if(E.can_attach(src))
-				user.drop_item()
-				E.attach(src)
-				user.visible_message("[user] attaches [W] to [src]", "You attach [W] to [src]")
-			else
-				to_chat(user, "You were unable to attach [W] to [src]")
+		if(E.can_attach(src))
+			if(!user.attempt_insert_item_for_installation(E, src))
+				return
+			E.attach(src)
+			user.visible_message("[user] attaches [W] to [src]", "You attach [W] to [src]")
+		else
+			to_chat(user, "You were unable to attach [W] to [src]")
 		return
 
 	if(istype(W, /obj/item/mecha_parts/component) && state == MECHA_CELL_OUT)
 		var/obj/item/mecha_parts/component/MC = W
-		spawn()
-			if(MC.attach(src))
-				user.drop_item()
-				MC.forceMove(src)
-				user.visible_message("[user] installs \the [W] in \the [src]", "You install \the [W] in \the [src].")
+		if(MC.attach(src))
+			user.transfer_item_to_loc(W, src, TRUE)
+			user.visible_message("[user] installs \the [W] in \the [src]", "You install \the [W] in \the [src].")
 		return
 
 	if(istype(W, /obj/item/card/robot))
@@ -1455,9 +1453,9 @@
 	else if(istype(W, /obj/item/cell))
 		if(state==MECHA_CELL_OUT)
 			if(!src.cell)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				to_chat(user, "You install the powercell")
-				user.drop_item()
-				W.forceMove(src)
 				src.cell = W
 				src.log_message("Powercell installed")
 			else

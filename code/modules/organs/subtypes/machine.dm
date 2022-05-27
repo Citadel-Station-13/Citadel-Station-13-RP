@@ -99,8 +99,6 @@
 	..()
 
 	var/mob/living/holder_mob = loc
-	if(istype(holder_mob))
-		holder_mob.drop_from_inventory(src)
 	qdel(src)
 
 /obj/item/organ/internal/mmi_holder/emp_act(severity)

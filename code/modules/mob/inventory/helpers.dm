@@ -2,6 +2,7 @@
  * dels something or says "x is stuck to your hand"
  *
  * WARNING: DELS THINGS AFTER CURRENT PROC. DO NOT USE IF YOU NEED IMMEDIATE QDEL!
+ * This is so procs can still access data.
  */
 /mob/proc/attempt_consume_item_for_construction(obj/item/I)
 	. = temporarily_remove_from_inventory(I)

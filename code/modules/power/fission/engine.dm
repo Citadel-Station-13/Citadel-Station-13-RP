@@ -224,9 +224,9 @@
 			user.visible_message("[user.name] carefully starts to load \the [W] into to \the [src].", \
 				"You carefully start loading \the [W] into to \the [src].", \
 				"You hear a metallic rattling.")
-			if(do_after(user, 40))
-				user.drop_from_inventory(rod)
-				rod.loc = src
+			if(do_after(user, 20))
+				if(!user.attempt_insert_item_for_installation(rod, src))
+					reurn
 				rods += rod
 
 				rod.insertion = 0

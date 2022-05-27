@@ -35,9 +35,22 @@
 
 #warn impl
 
+// So why do all of these return true if the item is null?
+// Semantically, transferring/dropping nothing always works
+// This lets us tidy up other pieces of code by not having to typecheck everything.
+// However, if you do pass in an invalid object instead of null, the procs will fail or pass
+// depending on needed behavior.
+// Use the helpers when you can, it's easier for everyone and makes replacing behaviors later easier.
+
+// This logic is actually **stricter** than the previous logic, which was "if item doesn't exist, it always works"
+
 /**
  * drops an item to ground
  *
+ * semantically returns true if the thing is no longer in our inventory after our call, whether or not we dropped it
+ * if you require better checks, check if something is in inventory first.
+ *
+ * if the item is null, this returns true
  * if an item is not in us, this returns true
  */
 /mob/proc/drop_item_to_ground(obj/item/I, force)
@@ -47,29 +60,43 @@
 
 /**
  * transfers an item somewhere
+ * newloc MUST EXIST, use transfer_item_to_nullspace otherwise
  *
+ * semantically returns true if we transferred something from our inventory to newloc in the call
+ *
+ * if the item is null, this returns true
  * if an item is not in us, this crashes
  */
 /mob/proc/transfer_item_to_loc(obj/item/I, newloc, force)
+	if(!I)
+		return TRUE
 	ASSERT(newloc)
 	if(!is_in_inventory(I))
-		CRASH("attempted to transfer an item that isn't in our inventory")
+		return FALSE
 	return _unequip_item(I, force, newloc)
 
 /**
  * transfers an item into nullspace
  *
+ * semantically returns true if we transferred something from our inventory to null in the call
+ *
+ * if the item is null, this returns true
  * if an item is not in us, this crashes
  */
 /mob/proc/transfer_item_to_nullspace(obj/item/I, force)
+	if(!I)
+		return TRUE
 	if(!is_in_inventory(I))
-		CRASH("attempted to transfer an item that isn't in our inventory")
+		return FALSE
 	return _unequip_item(I, force, null)
 
 /**
  * removes an item from inventory. does NOT move it.
  * item MUST be qdel'd or moved after this if it returns TRUE!
  *
+ * semantically returns true if the passed item is no longer in our inventory after the call
+ *
+ * if the item is null, ths returns true
  * if an item is not in us, this returns true
  */
 /mob/proc/temporarily_remove_from_inventory(obj/item/I, force)
@@ -237,7 +264,7 @@
  * SLOT_ID_HANDS if in hands
  */
 /mob/proc/is_in_inventory(obj/item/I)
-	return (I.loc == src) && I.current_equipped_slot
+	return I && (I.loc == src) && I.current_equipped_slot
 	// we use entirely cached vars for speed.
 	// if this returns bad data well fuck you, don't break equipped()/unequipped().
 

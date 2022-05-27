@@ -53,17 +53,12 @@
 			if(cell)
 				to_chat(user, "There is already a power cell inside.")
 				return
-			else
-				// insert cell
-				var/obj/item/cell/C = usr.get_active_held_item()
-				if(istype(C))
-					user.drop_item()
-					cell = C
-					C.loc = src
-					C.add_fingerprint(usr)
-
-					user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
-					power_change()
+			if(!user.attempt_insert_item_for_installation(C, src))
+				return
+			cell = C
+			C.add_fingerprint(usr)
+			user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
+			power_change()
 		else
 			to_chat(user, "The hatch must be open to insert a power cell.")
 			return
@@ -138,9 +133,9 @@
 				if(panel_open && !cell)
 					var/obj/item/cell/C = usr.get_active_held_item()
 					if(istype(C))
-						usr.drop_item()
+						if(!usr.attempt_insert_item_for_installation(C, src))
+							return
 						cell = C
-						C.loc = src
 						C.add_fingerprint(usr)
 						power_change()
 						usr.visible_message("<span class='notice'>[usr] inserts \the [C] into \the [src].</span>", "<span class='notice'>You insert \the [C] into \the [src].</span>")
@@ -149,7 +144,6 @@
 	else
 		usr << browse(null, "window=spaceheater")
 		usr.unset_machine()
-	return
 
 /obj/machinery/space_heater/process(delta_time)
 	if(on)

@@ -26,10 +26,9 @@
 	return
 
 /obj/item/clipboard/attackby(obj/item/W as obj, mob/user as mob)
-
 	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo))
-		user.drop_item()
-		W.loc = src
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		if(istype(W, /obj/item/paper))
 			toppaper = W
 		to_chat(user, "<span class='notice'>You clip the [W] onto \the [src].</span>")
@@ -38,8 +37,9 @@
 	else if(istype(toppaper) && istype(W, /obj/item/pen))
 		toppaper.attackby(W, usr)
 		update_icon()
+		return
 
-	return
+	return ..()w
 
 /obj/item/clipboard/attack_self(mob/user as mob)
 	var/dat = "<title>Clipboard</title>"
@@ -82,8 +82,8 @@
 			if(!haspen)
 				var/obj/item/pen/W = usr.get_active_held_item()
 				if(istype(W, /obj/item/pen))
-					usr.drop_item()
-					W.loc = src
+					if(!usr.attempt_insert_item_for_installation(W, src))
+						return
 					haspen = W
 					to_chat(usr, "<span class='notice'>You slot the pen into \the [src].</span>")
 

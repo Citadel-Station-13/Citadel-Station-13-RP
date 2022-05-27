@@ -855,18 +855,21 @@ var/list/sacrificed = list()
 					to_chat(user, "<span class='warning'>The [cultist] is already free.</span>")
 					return
 				cultist.buckled = null
-				if (cultist.handcuffed)
-					cultist.drop_from_inventory(cultist.handcuffed)
-				if (cultist.legcuffed)
-					cultist.drop_from_inventory(cultist.legcuffed)
+				cultist.drop_item_to_ground(cultist.handcuffed, TRUE)
+				cultist.drop_item_to_ground(cultist.legcuffed, TRUE)
 				if (istype(cultist.wear_mask, /obj/item/clothing/mask/muzzle))
-					cultist.drop_from_inventory(cultist.wear_mask)
-				if(istype(cultist.loc, /obj/structure/closet)&&cultist.loc:welded)
-					cultist.loc:welded = 0
-				if(istype(cultist.loc, /obj/structure/closet/secure_closet)&&cultist.loc:locked)
-					cultist.loc:locked = 0
-				if(istype(cultist.loc, /obj/machinery/dna_scannernew)&&cultist.loc:locked)
-					cultist.loc:locked = 0
+					cultist.drop_item_to_ground(cultist.wear_mask, TRUE)
+				if(istype(cultist.loc, /obj/structure/closet))
+					var/obj/structure/closet/C = cultist.loc
+					C.welded = FALSE
+					if(istype(C, /obj/structure/closet/secure_closet))
+						var/obj/structure/closet/secure_closet/SC = cultist.loc
+						SC.locked = FALSE
+					C.update_appearance()
+				if(istype(cultist.loc, /obj/machinery/dna_scannernew))
+					var/obj/machinery/dna_scannernew/S = cultist.loc
+					S.locked = FALSE
+					S.update_appearance()
 				for(var/mob/living/carbon/C in users)
 					user.take_overall_damage(dam, 0)
 					C.say("Khari[pick("'","`")]d! Gual'te nikka!")
