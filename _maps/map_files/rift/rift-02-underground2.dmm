@@ -2669,7 +2669,6 @@
 /obj/item/storage/firstaid/regular,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/bodybag/cryobag,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos)
 "fF" = (
@@ -5139,8 +5138,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/manifold/visible/blue{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/visible/blue{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -5366,9 +5365,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)

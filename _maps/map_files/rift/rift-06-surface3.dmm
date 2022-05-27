@@ -5046,7 +5046,7 @@
 	alarms_hidden = 1;
 	dir = 4;
 	pixel_x = -24;
-	target_temperature = 91
+	target_temperature = 80
 	},
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -5354,10 +5354,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "jd" = (
-/obj/machinery/holoposter{
-	pixel_x = -32
+/obj/machinery/door/airlock/command{
+	name = "Head of Personnel";
+	req_access = list(57)
 	},
-/turf/simulated/floor/carpet/blue,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "je" = (
 /obj/structure/cable/green{
@@ -44548,7 +44549,7 @@ wW
 Pg
 Pg
 Pg
-Pg
+jd
 Pg
 Pg
 YF
@@ -44742,7 +44743,7 @@ Bv
 Pg
 NR
 iD
-jd
+TE
 IJ
 Pg
 lS

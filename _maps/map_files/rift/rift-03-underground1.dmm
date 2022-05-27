@@ -3294,7 +3294,6 @@
 /obj/structure/table/reinforced,
 /obj/random/medical,
 /obj/item/storage/firstaid/regular,
-/obj/item/bodybag/cryobag,
 /turf/simulated/floor/tiled/monofloor,
 /area/hallway/secondary/engineering_hallway)
 "gg" = (
