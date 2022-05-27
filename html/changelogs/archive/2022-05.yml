@@ -78,3 +78,15 @@
   - imageadd: Tons of new Teshari Sprites
   - imageadd: Some TG Clothing Sprites
   - imageadd: Citadel Logo SVG for TGUI use.
+2022-05-27:
+  Cursor:
+  - rscadd: Added four new songs to the Jukebox; Off the Meds by EKSE, Masters of
+      War by Bob Dylan, Dice of a Generation by DEMONDICE and Misery Business by Paramore.
+  Ghostcoffeee:
+  - rscadd: Added colored carpet cargo orders
+  - bugfix: fixed colored carpet icons
+  WrongEnd:
+  - rscadd: Added moth clothes to the loadout. Not currently species restricted, but
+      will look incredibly stupid on anything that doesn't use moth limbs.
+  Zandario:
+  - bugfix: Fixes the remote AirAlarm Console.
