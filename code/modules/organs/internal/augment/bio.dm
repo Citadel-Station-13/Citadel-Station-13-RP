@@ -58,7 +58,7 @@
 			to_chat(src, "<span class='notice'>\The [glasses] block your shades from deploying.</span>")
 		else if(istype(glasses, /obj/item/clothing/glasses/hud/security/jensenshades))
 			var/obj/item/G = glasses
-			if(G.canremove)
+			if(!HAS_TRAIT(G, TRAIT_NODROP, AUGMENT_TRAIT))
 				to_chat(src, "<span class='notice'>\The [G] are not your integrated shades.</span>")
 			else
 				drop_from_inventory(G)

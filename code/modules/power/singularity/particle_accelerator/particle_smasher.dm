@@ -82,7 +82,7 @@
 	else if(istype(W, /obj/item/card/id))
 		to_chat(user, "<span class='notice'>Swiping \the [W] on \the [src] doesn't seem to do anything...</span>")
 		return ..()
-	else if(((isrobot(user) && istype(W.loc, /obj/item/gripper)) || (!isrobot(user) && W.canremove)) && storage.len < max_storage)
+	else if(storage.len < max_storage)
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		storage += W

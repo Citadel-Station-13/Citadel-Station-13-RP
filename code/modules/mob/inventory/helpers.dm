@@ -53,3 +53,16 @@
 		var/obj/item/I = item_by_slot(slot)
 		. = transfer_item_to_loc(I, A, force)
 		cb?.Invoke(I, .)
+
+/mob/proc/get_equipped_items_in_slots(list/slots)
+	. = list()
+	var/obj/item/I
+	if(islist(slots))
+		for(var/slot in slots)
+			I = item_by_slot(slot)
+			if(I)
+				. += I
+	else
+		I = item_by_slot(slots)
+		if(I)
+			. += I

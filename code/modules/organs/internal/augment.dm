@@ -47,7 +47,12 @@
 
 	if(integrated_object_type)
 		integrated_object = new integrated_object_type(src)
-		integrated_object.canremove = FALSE
+		ADD_TRAIT(integrated_object, TRAIT_NODROP, AUGMENT_TRAIT)
+
+/obj/item/organ/internal/augment/Destroy()
+	if(integrated_object)
+		QDEL_NULL(integrated_object)
+	return ..()
 
 /obj/item/organ/internal/augment/proc/setup_radial_icon()
 	if(!radial_icon)

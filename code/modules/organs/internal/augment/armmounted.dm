@@ -195,7 +195,7 @@
 			if(!integrated_tools[path])
 				integrated_tools[path] = new path(src)
 			var/obj/item/I = integrated_tools[path]
-			I.canremove = FALSE
+			ADD_TRAIT(I, TRAIT_NODROP, AUGMENT_TRAIT)
 			I.toolspeed = toolspeed
 			I.my_augment = src
 			I.name = "integrated [I.name]"
