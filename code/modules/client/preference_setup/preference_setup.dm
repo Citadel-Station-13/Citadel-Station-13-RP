@@ -1,3 +1,6 @@
+
+var/global/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
+
 #define PREF_FBP_CYBORG "cyborg"
 #define PREF_FBP_POSI "posi"
 #define PREF_FBP_SOFTWARE "software"
@@ -30,7 +33,7 @@
 	var/datum/preferences/preferences
 	var/datum/category_group/player_setup_category/selected_category = null
 
-/datum/category_collection/player_setup_collection/New(var/datum/preferences/preferences)
+/datum/category_collection/player_setup_collection/New(datum/preferences/preferences)
 	src.preferences = preferences
 	..()
 	selected_category = categories[1]
@@ -44,23 +47,23 @@
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.sanitize_setup()
 
-/datum/category_collection/player_setup_collection/proc/load_character(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/load_character(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.load_character(S)
 
-/datum/category_collection/player_setup_collection/proc/save_character(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/save_character(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.save_character(S)
 
-/datum/category_collection/player_setup_collection/proc/load_preferences(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/load_preferences(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.load_preferences(S)
 
-/datum/category_collection/player_setup_collection/proc/save_preferences(var/savefile/S)
+/datum/category_collection/player_setup_collection/proc/save_preferences(savefile/S)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.save_preferences(S)
 
-/datum/category_collection/player_setup_collection/proc/copy_to_mob(var/mob/living/carbon/human/C)
+/datum/category_collection/player_setup_collection/proc/copy_to_mob(mob/living/carbon/human/C)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.copy_to_mob(C)
 
@@ -73,11 +76,11 @@
 			dat += "<a href='?src=\ref[src];category=\ref[PS]'>[PS.name]</a> "
 	return dat
 
-/datum/category_collection/player_setup_collection/proc/content(var/mob/user)
+/datum/category_collection/player_setup_collection/proc/content(mob/user)
 	if(selected_category)
 		return selected_category.content(user)
 
-/datum/category_collection/player_setup_collection/Topic(var/href,var/list/href_list)
+/datum/category_collection/player_setup_collection/Topic(href, list/href_list)
 	if(..())
 		return 1
 	var/mob/user = usr
@@ -111,34 +114,34 @@
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.sanitize_character()
 
-/datum/category_group/player_setup_category/proc/load_character(var/savefile/S)
+/datum/category_group/player_setup_category/proc/load_character(savefile/S)
 	// Load all data, then sanitize it.
 	// Need due to, for example, the 01_basic module relying on species having been loaded to sanitize correctly but that isn't loaded until module 03_body.
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.load_character(S)
 
-/datum/category_group/player_setup_category/proc/save_character(var/savefile/S)
+/datum/category_group/player_setup_category/proc/save_character(savefile/S)
 	// Sanitize all data, then save it
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.sanitize_character()
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.save_character(S)
 
-/datum/category_group/player_setup_category/proc/load_preferences(var/savefile/S)
+/datum/category_group/player_setup_category/proc/load_preferences(savefile/S)
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.load_preferences(S)
 
-/datum/category_group/player_setup_category/proc/save_preferences(var/savefile/S)
+/datum/category_group/player_setup_category/proc/save_preferences(savefile/S)
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.sanitize_preferences()
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.save_preferences(S)
 
-/datum/category_group/player_setup_category/proc/copy_to_mob(var/mob/living/carbon/human/C)
+/datum/category_group/player_setup_category/proc/copy_to_mob(mob/living/carbon/human/C)
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.copy_to_mob(C)
 
-/datum/category_group/player_setup_category/proc/content(var/mob/user)
+/datum/category_group/player_setup_category/proc/content(mob/user)
 	. = "<table style='width:100%'><tr style='vertical-align:top'><td style='width:50%'>"
 	var/current = 0
 	var/halfway = items.len / 2
@@ -171,34 +174,24 @@
 		return cmp_numeric_asc(sort_order, I.sort_order)
 	return ..()
 
-/*
-* Called when the item is asked to load per character settings
-*/
-/datum/category_item/player_setup_item/proc/load_character(var/savefile/S)
+/// Called when the item is asked to load per character settings.
+/datum/category_item/player_setup_item/proc/load_character(savefile/S)
 	return
 
-/*
-* Called when the item is asked to save per character settings
-*/
-/datum/category_item/player_setup_item/proc/save_character(var/savefile/S)
+/// Called when the item is asked to save per character settings.
+/datum/category_item/player_setup_item/proc/save_character(savefile/S)
 	return
 
-/*
-* Called when the item is asked to load user/global settings
-*/
-/datum/category_item/player_setup_item/proc/load_preferences(var/savefile/S)
+/// Called when the item is asked to load user/global settings.
+/datum/category_item/player_setup_item/proc/load_preferences(savefile/S)
 	return
 
-/*
-* Called when the item is asked to save user/global settings
-*/
-/datum/category_item/player_setup_item/proc/save_preferences(var/savefile/S)
+/// Called when the item is asked to save user/global settings.
+/datum/category_item/player_setup_item/proc/save_preferences(savefile/S)
 	return
 
-/*
-* Called when the item is asked to apply its per character settings to a new mob.
-*/
-/datum/category_item/player_setup_item/proc/copy_to_mob(var/mob/living/carbon/human/C)
+/// Called when the item is asked to apply its per character settings to a new mob.
+/datum/category_item/player_setup_item/proc/copy_to_mob(mob/living/carbon/human/C)
 	return
 
 /datum/category_item/player_setup_item/proc/content()
@@ -210,7 +203,7 @@
 /datum/category_item/player_setup_item/proc/sanitize_preferences()
 	return
 
-/datum/category_item/player_setup_item/Topic(var/href,var/list/href_list)
+/datum/category_item/player_setup_item/Topic(href, list/href_list)
 	if(..())
 		return 1
 	var/mob/pref_mob = preference_mob()
@@ -224,10 +217,10 @@
 	if(. & TOPIC_REFRESH)
 		pref_mob.client.prefs.ShowChoices(usr)
 
-/datum/category_item/player_setup_item/CanUseTopic(var/mob/user)
+/datum/category_item/player_setup_item/CanUseTopic(mob/user)
 	return 1
 
-/datum/category_item/player_setup_item/proc/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/proc/OnTopic(href, list/href_list, mob/user)
 	return TOPIC_NOACTION
 
 /datum/category_item/player_setup_item/proc/preference_mob()
@@ -240,13 +233,13 @@
 	if(pref.client)
 		return pref.client.mob
 
-// Checks in a really hacky way if a character's preferences say they are an FBP or not.
+/// Checks in a really hacky way if a character's preferences say they are an FBP or not.
 /datum/category_item/player_setup_item/proc/is_FBP()
 	if(pref.organ_data && pref.organ_data[BP_TORSO] != "cyborg")
 		return FALSE
 	return TRUE
 
-// Returns what kind of FBP the player's prefs are.  Returns 0 if they're not an FBP.
+/// Returns what kind of FBP the player's prefs are.  Returns 0 if they're not an FBP.
 /datum/category_item/player_setup_item/proc/get_FBP_type()
 	if(!is_FBP())
 		return 0 // Not a robot.

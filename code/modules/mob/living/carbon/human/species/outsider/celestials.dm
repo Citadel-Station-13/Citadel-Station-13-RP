@@ -16,7 +16,6 @@
 	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
-	color_mult = 1
 	icobase = 'icons/mob/human_races/r_human_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
@@ -59,7 +58,6 @@
 	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
-	color_mult = 1
 	icobase = 'icons/mob/human_races/r_human_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR

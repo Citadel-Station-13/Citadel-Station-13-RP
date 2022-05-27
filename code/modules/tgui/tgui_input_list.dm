@@ -145,7 +145,7 @@
 	. = list()
 	.["init_value"] = default || items[1]
 	.["items"] = items
-	.["large_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
+	.["large_buttons"] = TRUE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
 	.["message"] = message
 	.["swapped_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_swapped)
 	.["title"] = title

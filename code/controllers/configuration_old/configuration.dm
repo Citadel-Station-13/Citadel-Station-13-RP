@@ -51,7 +51,6 @@
 	var/objectives_disabled = 0 			//if objectives are disabled or not
 	var/protect_roles_from_antagonist = 0// If security and such can be traitor/cult/other
 	var/continous_rounds = 0			// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
-	var/allow_Metadata = 0				// Metadata is supported.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/fps = 20
 	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
@@ -76,7 +75,7 @@
 
 	var/respawn = 1
 	var/static/respawn_time = 3000		// time before a dead player is allowed to respawn (in ds, though the config file asks for minutes, and it's converted below)
-	var/static/respawn_message = "<span class='notice'><B>Make sure to play a different character, and please roleplay correctly!</B></span>"
+	var/static/respawn_message = SPAN_BOLDNOTICE("Make sure to play a different character, and please roleplay correctly!")
 
 	var/guest_jobban = 1
 	var/usewhitelist = 0
@@ -517,9 +516,6 @@
 
 				if ("feature_object_spell_system")
 					config_legacy.feature_object_spell_system = 1
-
-				if ("allow_metadata")
-					config_legacy.allow_Metadata = 1
 
 				if ("traitor_scaling")
 					config_legacy.traitor_scaling = 1

@@ -58,7 +58,6 @@
 	flesh_color = "#FFC896"
 	blood_color = "#A10808"
 	base_color = "#f0f0f0"
-	color_mult = 1
 
 	has_glowing_eyes = TRUE
 

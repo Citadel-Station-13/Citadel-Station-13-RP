@@ -42,7 +42,7 @@ var/XENOMORPH_EGG 	= SPECIES_XENO
 
 	else if(href_list["vore_egg_type"])
 		var/list/vore_egg_types = global_vore_egg_types
-		var/selection = input(user, "Choose your character's egg type:", "Character Preference", pref.vore_egg_type) as null|anything in vore_egg_types
+		var/selection = input(user, "Choose your character's egg type:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.vore_egg_type) as null|anything in vore_egg_types
 		if(selection)
 			pref.vore_egg_type = vore_egg_types[selection]
 			return TOPIC_REFRESH

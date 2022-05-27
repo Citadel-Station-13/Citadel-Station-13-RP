@@ -1,11 +1,11 @@
-//! *ALL DEFINES RELATED TO ORGANS GO HERE* !//
+//* ALL DEFINES RELATED TO ORGANS GO HERE *//
 
 /// Global list of organs for future use.
 #define O_ALL (O_ALL_STANDARD + O_ALL_NONSTANDARD)
 /// Global list of all standard body parts.
 ///TODO: Currently used for random limb dmg, needs a refactor to make it species-based instead.
 #define BP_ALL BP_ALL_STANDARD
-//* GENERIC INTERNAL ORGANS *//
+//! ## GENERIC INTERNAL ORGANS
 #define O_APPENDIX "appendix"
 #define O_BRAIN "brain"
 #define O_EYES "eyes"
@@ -16,7 +16,7 @@
 #define O_LUNGS "lungs"
 #define O_SPLEEN "spleen"
 #define O_STOMACH "stomach"
-#define O_VOICE "voicebox"
+#define O_VOICE "larynx"
 ///List of all standard organs.
 #define O_ALL_STANDARD list( \
 		O_EYES, \
@@ -32,7 +32,7 @@
 		O_INTESTINE)
 
 
-//* AUGMENTS *//
+//! ## AUGMENTS
 #define O_AUG_EYES "occular augment"
 #define O_AUG_L_FOREARM "left forearm augment"
 #define O_AUG_L_HAND "left hand augment"
@@ -57,7 +57,7 @@
 		O_AUG_SPINE)
 
 
-//* NON-STANDARD ORGANS *//
+//! ## NON-STANDARD ORGANS
 #define O_ACID "acid gland"
 #define O_ANCHOR "anchoring ligament"
 #define O_AREJECT "immune hub"
@@ -109,7 +109,7 @@
 		O_VRLINK)
 
 
-//* FBP ORGANS *//
+//! ## FBP ORGANS
 #define O_CYCLER "reagent cycler"
 #define O_DIAGNOSTIC "diagnostic controller"
 #define O_HEATSINK "thermal regulator"
@@ -122,7 +122,7 @@
 		O_PUMP)
 
 
-//* GENERIC EXTERAL ORGANS *//
+//! ## GENERIC EXTERAL ORGANS
 #define BP_GROIN  "groin"
 #define BP_HEAD   "head"
 #define BP_L_ARM  "l_arm"
@@ -149,23 +149,23 @@
 		BP_TORSO)
 
 
-//* ADHERENT EXTERNAL ORGANS *//
-#define BP_COOLING_FINS "cooling fins"
-#define BP_FLOAT "floatation disc"
-#define BP_JETS "maneuvering jets"
+//! ## ADHERENT ORGANS
+#define O_COOLING_FINS "cooling fins"
+#define O_FLOAT "floatation disc"
+#define O_JETS "maneuvering jets"
 /// List of all Adherent body parts.
-#define BP_ALL_ADHERENT list( \
-		BP_COOLING_FINS, \
-		BP_FLOAT, \
-		BP_JETS)
+#define O_ALL_ADHERENT list( \
+		O_COOLING_FINS, \
+		O_FLOAT, \
+		O_JETS)
 
 
-//* SYNTH INTERNAL COLORS *//
+//! ## SYNTH INTERNAL COLORS
 #define SYNTH_BLOOD_COLOUR "#030303"
 #define SYNTH_FLESH_COLOUR "#575757"
 
 
-//* FBP BRAIN TYPES *//
+//! ## FBP BRAIN TYPES
 #define FBP_NONE ""
 #define FBP_CYBORG "Cyborg"
 #define FBP_POSI "Positronic"
@@ -173,14 +173,15 @@
 
 // Similar to above but for borgs.
 // Seperate defines are unfortunately required since borgs display the brain differently for some reason.
-//* BORG BRAIN TYPES *//
+//! ## BORG BRAIN TYPES
 #define BORG_BRAINTYPE_CYBORG "Cyborg"
 #define BORG_BRAINTYPE_POSI "Robot"
 #define BORG_BRAINTYPE_DRONE "Drone"
 #define BORG_BRAINTYPE_AI_SHELL "AI Shell"
 
 
-//* CARBON TASTE SENSITIVITY *// Used in mob/living/carbon/proc/ingest
+// Used in mob/living/carbon/proc/ingest
+//! ## CARBON TASTE SENSITIVITY
 ///anything below 5%
 #define TASTE_HYPERSENSITIVE 3
 ///anything below 7%
@@ -191,7 +192,8 @@
 #define TASTE_DULL 0.5
 ///anything below 150%
 #define TASTE_NUMB 0.1
-//* ORGAN FLAGS *//
+
+//! ## ORGAN FLAGS
 #define BP_IS_ASSISTED(org) ((org) && ((org).robotic == ORGAN_ASSISTED))
 #define BP_IS_BRITTLE(org)  ((org) && ((org).status == ORGAN_BRITTLE))
 #define BP_IS_CRYSTAL(org)  ((org) && ((org).robotic == ORGAN_CRYSTAL))

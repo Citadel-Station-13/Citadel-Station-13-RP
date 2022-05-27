@@ -146,7 +146,7 @@
 /datum/tgui_input_number/ui_static_data(mob/user)
 	. = list()
 	.["init_value"] = default // Default is a reserved keyword
-	.["large_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
+	.["large_buttons"] = TRUE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
 	.["max_value"] = max_value
 	.["message"] = message
 	.["min_value"] = min_value

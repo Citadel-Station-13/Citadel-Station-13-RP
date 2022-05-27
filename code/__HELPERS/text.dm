@@ -22,8 +22,8 @@
  * Text sanitization
  */
 
-//Used for preprocessing entered text
-/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1)
+/// Used for preprocessing entered text.
+/proc/sanitize(input, max_length = MAX_MESSAGE_LEN, encode = TRUE, trim = TRUE, extra = TRUE)
 	if(!input)
 		return
 

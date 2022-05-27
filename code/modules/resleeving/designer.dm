@@ -311,7 +311,7 @@
 		return
 
 	if(href_list["size_multiplier"])
-		var/new_size = input(user, "Choose your character's size, ranging from 25% to 200%", "Character Preference") as num|null
+		var/new_size = input(user, "Choose your character's size, ranging from 25% to 200%", CHARACTER_PREFERENCE_INPUT_TITLE) as num|null
 		if(new_size && ISINRANGE(new_size,25,200))
 			active_br.sizemult = (new_size/100)
 			preview_icon = null
@@ -339,7 +339,7 @@
 	ASSERT(istype(E))
 
 	if(href_list["bio_gender"])
-		var/new_gender = input(user, "Choose your character's biological gender:", "Character Preference", active_br.bodygender) as null|anything in G.get_genders()
+		var/new_gender = input(user, "Choose your character's biological gender:", CHARACTER_PREFERENCE_INPUT_TITLE, active_br.bodygender) as null|anything in G.get_genders()
 		if(new_gender)
 			active_br.bodygender = new_gender
 			active_br.mydna.dna.SetUIState(DNA_UI_GENDER, new_gender!=MALE, 1)

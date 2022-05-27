@@ -149,7 +149,7 @@
 
 /datum/tgui_input_text/ui_static_data(mob/user)
 	. = list()
-	.["large_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
+	.["large_buttons"] = TRUE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
 	.["max_length"] = max_length
 	.["message"] = message
 	.["multiline"] = multiline

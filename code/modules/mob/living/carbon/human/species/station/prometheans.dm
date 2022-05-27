@@ -133,7 +133,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	active_regen_mult = 0.66 //As of writing, original was 1 (good)
 	heal_rate = 0.35
-	color_mult = 1
 	trashcan = TRUE //They have goopy bodies. They can just dissolve things within them.
 
 	wikilink = "N/A"

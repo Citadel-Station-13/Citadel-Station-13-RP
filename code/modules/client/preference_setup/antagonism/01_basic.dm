@@ -50,11 +50,11 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 			return TOPIC_REFRESH
 
 	if(href_list["antagfaction"])
-		var/choice = input(user, "Please choose an antagonistic faction to work for.", "Character Preference", pref.antag_faction) as null|anything in antag_faction_choices + list("None","Other")
+		var/choice = input(user, "Please choose an antagonistic faction to work for.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.antag_faction) as null|anything in antag_faction_choices + list("None","Other")
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
 		if(choice == "Other")
-			var/raw_choice = sanitize(input(user, "Please enter a faction.", "Character Preference")  as text|null, MAX_NAME_LEN)
+			var/raw_choice = sanitize(input(user, "Please enter a faction.", CHARACTER_PREFERENCE_INPUT_TITLE)  as text|null, MAX_NAME_LEN)
 			if(raw_choice)
 				pref.antag_faction = raw_choice
 		else
@@ -62,7 +62,7 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 		return TOPIC_REFRESH
 
 	if(href_list["antagvis"])
-		var/choice = input(user, "Please choose an antagonistic visibility level.", "Character Preference", pref.antag_vis) as null|anything in antag_visiblity_choices
+		var/choice = input(user, "Please choose an antagonistic visibility level.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.antag_vis) as null|anything in antag_visiblity_choices
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
 		else

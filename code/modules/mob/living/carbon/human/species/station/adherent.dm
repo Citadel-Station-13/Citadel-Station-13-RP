@@ -45,7 +45,7 @@
 
 	flags =		NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
 	spawn_flags =	SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
-	species_appearance_flags =	HAS_EYE_COLOR | HAS_SKIN_COLOR//BASE_SKIN_COLOR
+	species_appearance_flags =	HAS_EYE_COLOR | HAS_BASE_SKIN_COLOURS | HAS_NO_HAIR
 
 	language =			LANGUAGE_ADHERENT
 	species_language =	LANGUAGE_ADHERENT
@@ -74,24 +74,24 @@
 	)
 
 	has_organ = list(
-		BP_BRAIN =        /obj/item/organ/internal/brain/adherent,
-		BP_EYES =         /obj/item/organ/internal/eyes/adherent,
-		BP_JETS =         /obj/item/organ/internal/powered/jets,
-		BP_FLOAT =        /obj/item/organ/internal/powered/float,
-		BP_CELL =         /obj/item/organ/internal/cell/adherent,
-		BP_COOLING_FINS = /obj/item/organ/internal/powered/cooling_fins
+		O_BRAIN =        /obj/item/organ/internal/brain/adherent,
+		O_EYES =         /obj/item/organ/internal/eyes/adherent,
+		O_JETS =         /obj/item/organ/internal/powered/jets,
+		O_FLOAT =        /obj/item/organ/internal/powered/float,
+		O_CELL =         /obj/item/organ/internal/cell/adherent,
+		O_COOLING_FINS = /obj/item/organ/internal/powered/cooling_fins
 		)
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/snake
-	//If you wanna copy this for your mob, dont
+
 	base_skin_colours = list(
-		"",
-		"_green",
-		"_purple",
-		"_blue",
-		"_red",
-		"_yellow",
-		"_white",
-		"_black"
+		"Turquoise"   = "",
+		"Emerald"     = "_green",
+		"Amethyst"    = "_purple",
+		"Sapphire"    = "_blue",
+		"Ruby"        = "_red",
+		"Topaz"       = "_yellow",
+		"Quartz"      = "_white",
+		"Jet"         = "_black"
 	)
 
 /datum/species/adherent/New()

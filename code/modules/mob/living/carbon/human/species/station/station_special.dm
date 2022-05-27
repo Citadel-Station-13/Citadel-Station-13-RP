@@ -22,7 +22,6 @@
 	num_alternate_languages = 5
 	secondary_langs = list("Sol Common")
 
-	//color_mult = 1 //It seemed to work fine in testing, but I've been informed it's unneeded.
 	tail = "tail" //Scree's tail. Can be disabled in the Species Customization tab by choosing "hide species specific tail sprite"
 	icobase_tail = 1
 	inherent_verbs = list(
@@ -653,7 +652,6 @@
 
 	num_alternate_languages = 2
 	secondary_langs = list(LANGUAGE_VESPINAE)
-	color_mult = 1
 	tail = "tail" //Spider tail.
 	icobase_tail = 1
 
@@ -735,7 +733,6 @@
 	secondary_langs = list(LANGUAGE_CANILUNZT)
 	name_language = LANGUAGE_CANILUNZT
 	primitive_form = SPECIES_MONKEY_VULPKANIN
-	color_mult = 1
 
 	max_age = 200
 
@@ -790,7 +787,6 @@
 
 	num_alternate_languages = 2
 	secondary_langs = list(LANGUAGE_VESPINAE)
-	color_mult = 1
 	tail = "tail" //Bee tail. I've desaturated it for the sprite sheet.
 	icobase_tail = 1
 

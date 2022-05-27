@@ -41,7 +41,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair)
 
-	color_mult = 1
 	icobase = 'icons/mob/human_races/r_human_vr.dmi'
 	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
@@ -160,7 +159,6 @@
 
 	descriptors = list()
 
-	color_mult = 1
 	gluttonous = 0
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Unathi"
 	inherent_verbs = list(
@@ -256,7 +254,6 @@
 		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
 
-	color_mult = 1
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Tajarans"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
@@ -324,7 +321,13 @@
 	breath_heat_level_2 = 500	//Default 450
 	breath_heat_level_3 = 1350	//Default 1250
 
-	reagent_tag = null
+	reagent_tag = IS_SKRELL
+
+	descriptors = list(
+		/datum/mob_descriptor/height = 1,
+		/datum/mob_descriptor/build = 0,
+		/datum/mob_descriptor/headtail_length = 0
+	)
 
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
@@ -340,8 +343,10 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 		)
 
-	color_mult = 1
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Skrell"
+
+/datum/species/skrell/get_sex(mob/living/carbon/human/H)
+	return istype(H) && (H.descriptors["headtail length"] == 1 ? MALE : FEMALE)
 
 /datum/species/skrell/can_breathe_water()
 	return TRUE
@@ -482,7 +487,6 @@
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SAGARU)
 	name_language = LANGUAGE_SAGARU
-	color_mult = 1
 
 	max_age = 120
 
@@ -543,7 +547,6 @@
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SKRELLIAN
-	color_mult = 1
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
@@ -592,7 +595,6 @@
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_BIRDSONG)
 	name_language = LANGUAGE_BIRDSONG
-	color_mult = 1
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/flying_toggle,
@@ -660,7 +662,6 @@
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
 	blood_color = "#240bc4"
-	color_mult = 1
 
 	heat_discomfort_strings = list(
 		"Your fur prickles in the heat.",
@@ -706,7 +707,6 @@
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
 	blood_color = "#240bc4"
-	color_mult = 1
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
@@ -734,7 +734,6 @@
 	darksight = 5 //worse than cats, but better than lizards. -- Poojawa
 //	gluttonous = 1
 	num_alternate_languages = 3
-	color_mult = 1
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
@@ -771,7 +770,6 @@
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_BIRDSONG)
 	name_language = null
-	color_mult = 1
 	inherent_verbs = list(
 		/mob/living/proc/flying_toggle,
 		/mob/living/proc/start_wings_hovering,
@@ -856,7 +854,6 @@
 	flesh_color = "#FFC896"
 	blood_color = "#A10808"
 	base_color = "#f0f0f0"
-	color_mult = 1
 
 	inherent_verbs = list(/mob/living/proc/shred_limb)
 

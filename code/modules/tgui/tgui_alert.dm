@@ -128,7 +128,7 @@
 	.["autofocus"] = autofocus
 	.["buttons"] = buttons
 	.["message"] = message
-	.["large_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
+	.["large_buttons"] = TRUE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
 	.["swapped_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_swapped)
 	.["title"] = title
 

@@ -755,7 +755,7 @@
 		pass = FALSE
 
 	//No OOC notes
-	if (config_legacy.allow_Metadata && client && client.prefs && (isnull(client.prefs.metadata) || length(client.prefs.metadata) < 15))
+	if (CONFIG_GET(flag/allow_metadata) && client && client.prefs && (isnull(client.prefs.metadata) || length(client.prefs.metadata) < 15))
 		to_chat(src,"<span class='warning'>Please set informative OOC notes related to ERP preferences. Set them using the 'OOC Notes' button on the 'General' tab in character setup.</span>")
 		pass = FALSE
 

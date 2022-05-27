@@ -33,6 +33,9 @@
 //! ## Icon/appearance vars.
 	/// Normal icon set.
 	var/icobase = 'icons/mob/human_races/r_human.dmi'
+	/// This is for overriding tail rendering with a specific icon in icobase, for static tails only, since tails would wag when dead if you used this.
+	var/icobase_tail = FALSE
+
 	/// Mutated icon set.
 	var/deform = 'icons/mob/human_races/r_def_human.dmi'
 
@@ -42,6 +45,9 @@
 	var/fire_icon_state = "humanoid"
 	/// Icons used for worn items in suit storage slot.
 	var/suit_storage_icon = 'icons/mob/clothing/belt_mirror.dmi'
+
+	var/eye_icon = "eyes_s"
+	var/eye_icon_location = 'icons/mob/human_face.dmi'
 
 //! ## Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/masks/dam_human.dmi'
@@ -56,11 +62,17 @@
 	var/flesh_color = "#FFC896"
 	/// Used by changelings. Should also be used for icon previews.
 	var/base_color
+	/// The method we want to use to blend their limb sprites together.
+	/// Use Multiply for grey-scaled sprites, otherwise use add.
+	var/limb_blend = ICON_MULTIPLY
 
 	/// Name of tail state in species effects icon file.
 	var/tail
 	/// If set, the icon to obtain tail animation states from.
 	var/tail_animation
+	/// The method we want to use to blend their tail sprite together.
+	/// Use Multiply for grey-scaled sprites, otherwise use add.
+	var/tail_blend = ICON_MULTIPLY
 	var/tail_hair
 
 	/// Makes the icon wider/thinner.
@@ -355,7 +367,8 @@
 
 	/// The basic skin colours this species uses.
 	var/list/base_skin_colours
-	var/list/genders = list(MALE, FEMALE)
+	/// What genders does this species have.
+	var/list/genders = list(MALE, FEMALE, PLURAL)
 	/// If true, people examining a member of this species whom are not also the same species will see them as gender neutral.	Because aliens.
 	var/ambiguous_genders = FALSE
 
@@ -377,12 +390,6 @@
 	var/list/descriptors = list()
 	/// traits
 	var/list/traits = list()
-
-	/// This is used in character setup preview generation (prefences_setup.dm) and human mob rendering (update_icons.dm)
-	var/color_mult = 0
-
-	/// This is for overriding tail rendering with a specific icon in icobase, for static tails only, since tails would wag when dead if you used this.
-	var/icobase_tail = 0
 
 	var/wing_hair
 	var/wing
@@ -830,7 +837,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	tail = to_copy.tail
 	tail_animation = to_copy.tail_animation
 	icobase_tail = to_copy.icobase_tail
-	color_mult = to_copy.color_mult
+	limb_blend = to_copy.limb_blend
+	tail_blend = to_copy.tail_blend
 	primitive_form = to_copy.primitive_form
 	species_appearance_flags = to_copy.species_appearance_flags
 	flesh_color = to_copy.flesh_color

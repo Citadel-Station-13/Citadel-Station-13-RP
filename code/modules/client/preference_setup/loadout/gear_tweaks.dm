@@ -99,7 +99,7 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/gear_tweak/matrix_recol
 	return valid_paths[1]
 
 /datum/gear_tweak/path/get_metadata(var/user, var/metadata)
-	return input(user, "Choose a type.", "Character Preference", metadata) as null|anything in valid_paths
+	return input(user, "Choose a type.", CHARACTER_PREFERENCE_INPUT_TITLE, metadata) as null|anything in valid_paths
 
 /datum/gear_tweak/path/tweak_gear_data(var/metadata, var/datum/gear_data/gear_data)
 	if(!(metadata in valid_paths))
@@ -130,7 +130,7 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/gear_tweak/matrix_recol
 	for(var/i = metadata.len to valid_contents.len)
 		metadata += "Random"
 	for(var/i = 1 to valid_contents.len)
-		var/entry = input(user, "Choose an entry.", "Character Preference", metadata[i]) as null|anything in (valid_contents[i] + list("Random", "None"))
+		var/entry = input(user, "Choose an entry.", CHARACTER_PREFERENCE_INPUT_TITLE, metadata[i]) as null|anything in (valid_contents[i] + list("Random", "None"))
 		if(entry)
 			. += entry
 		else
@@ -169,7 +169,7 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/gear_tweak/matrix_recol
 	return "Random"
 
 /datum/gear_tweak/reagents/get_metadata(var/user, var/list/metadata)
-	. = input(user, "Choose an entry.", "Character Preference", metadata) as null|anything in (valid_reagents + list("Random", "None"))
+	. = input(user, "Choose an entry.", CHARACTER_PREFERENCE_INPUT_TITLE, metadata) as null|anything in (valid_reagents + list("Random", "None"))
 	if(!.)
 		return metadata
 
@@ -210,7 +210,7 @@ var/datum/gear_tweak/custom_name/gear_tweak_free_name = new()
 		to_chat(user, WARNING("You are banned from using custom loadout names/descriptions."))
 		return
 	if(valid_custom_names)
-		return input(user, "Choose an item name.", "Character Preference", metadata) as null|anything in valid_custom_names
+		return input(user, "Choose an item name.", CHARACTER_PREFERENCE_INPUT_TITLE, metadata) as null|anything in valid_custom_names
 	return sanitize(input(user, "Choose the item's name. Leave it blank to use the default name.", "Item Name", metadata) as text|null, MAX_LNAME_LEN, extra = 0)
 
 /datum/gear_tweak/custom_name/tweak_item(var/obj/item/I, var/metadata)
@@ -241,7 +241,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		to_chat(user, WARNING("You are banned from using custom loadout names/descriptions."))
 		return
 	if(valid_custom_desc)
-		return input(user, "Choose an item description.", "Character Preference", metadata) as null|anything in valid_custom_desc
+		return input(user, "Choose an item description.", CHARACTER_PREFERENCE_INPUT_TITLE, metadata) as null|anything in valid_custom_desc
 	return sanitize(input(user, "Choose the item's description. Leave it blank to use the default description.", "Item Description", metadata) as message|null, extra = 0)
 
 /datum/gear_tweak/custom_desc/tweak_item(var/obj/item/I, var/metadata)
@@ -298,7 +298,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	var/entry = input(user, "Choose a processor.", "Character Preference") in names
+	var/entry = input(user, "Choose a processor.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -310,7 +310,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a battery.", "Character Preference") in names
+	entry = input(user, "Choose a battery.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -322,7 +322,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a hard drive.", "Character Preference") in names
+	entry = input(user, "Choose a hard drive.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -334,7 +334,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a network card.", "Character Preference") in names
+	entry = input(user, "Choose a network card.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -346,7 +346,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a nanoprinter.", "Character Preference") in names
+	entry = input(user, "Choose a nanoprinter.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -358,7 +358,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a card slot.", "Character Preference") in names
+	entry = input(user, "Choose a card slot.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -370,7 +370,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a tesla link.", "Character Preference") in names
+	entry = input(user, "Choose a tesla link.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 /datum/gear_tweak/tablet/get_default()
@@ -447,7 +447,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	var/entry = input(user, "Choose a processor.", "Character Preference") in names
+	var/entry = input(user, "Choose a processor.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -459,7 +459,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a battery.", "Character Preference") in names
+	entry = input(user, "Choose a battery.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -471,7 +471,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a hard drive.", "Character Preference") in names
+	entry = input(user, "Choose a hard drive.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -483,7 +483,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a network card.", "Character Preference") in names
+	entry = input(user, "Choose a network card.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -495,7 +495,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a nanoprinter.", "Character Preference") in names
+	entry = input(user, "Choose a nanoprinter.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -507,7 +507,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a card slot.", "Character Preference") in names
+	entry = input(user, "Choose a card slot.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 	names = list()
@@ -519,7 +519,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a tesla link.", "Character Preference") in names
+	entry = input(user, "Choose a tesla link.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
 	. += names[entry]
 
 /datum/gear_tweak/laptop/get_default()
@@ -557,7 +557,7 @@ var/datum/gear_tweak/custom_desc/gear_tweak_free_desc = new()
 	return ""
 
 /datum/gear_tweak/collar_tag/get_metadata(var/user, var/metadata)
-	return sanitize( input(user, "Choose the tag text", "Character Preference", metadata) as text , MAX_NAME_LEN )
+	return sanitize( input(user, "Choose the tag text", CHARACTER_PREFERENCE_INPUT_TITLE, metadata) as text , MAX_NAME_LEN )
 
 /datum/gear_tweak/collar_tag/tweak_item(var/obj/item/clothing/accessory/collar/C, var/metadata)
 	if(metadata == "")

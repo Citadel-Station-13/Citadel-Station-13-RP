@@ -24,7 +24,6 @@
 	health_hud_intensity = 2
 	num_alternate_languages = 5  // Let's not make them know every language, past me.
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
-	color_mult = TRUE
 
 	darksight = 3 // Major darksight is a bit much, regular one will do for the moment.
 

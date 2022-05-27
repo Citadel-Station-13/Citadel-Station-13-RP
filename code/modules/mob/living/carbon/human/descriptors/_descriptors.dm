@@ -16,15 +16,24 @@
 				LAZYADD(., descriptor.get_comparative_value_descriptor(descriptors[entry], user, src))
 
 /datum/mob_descriptor
-	var/name                                       // String ident.
-	var/chargen_label                              // String ident for chargen.
-	var/default_value                              // Initial value for this descriptor.
-	var/comparison_offset = 0                      // Used for examining similar properties between different species.
-	var/comparative_value_descriptor_equivalent    // String for looking at someone with roughly the same property.
-	var/list/standalone_value_descriptors          // String set for initial descriptor text.
-	var/list/comparative_value_descriptors_smaller // String set for looking at someone smaller than you.
-	var/list/comparative_value_descriptors_larger  // String set for looking at someone larger than you.
-	var/list/chargen_value_descriptors             // Used for chargen selection of values in cases where there is a hidden meaning.
+	/// String ident.
+	var/name
+	/// String ident for chargen.
+	var/chargen_label
+	/// Initial value for this descriptor.
+	var/default_value
+	/// Used for examining similar properties between different species.
+	var/comparison_offset = 0
+	/// String for looking at someone with roughly the same property.
+	var/comparative_value_descriptor_equivalent
+	/// String set for initial descriptor text.
+	var/list/standalone_value_descriptors
+	/// String set for looking at someone smaller than you.
+	var/list/comparative_value_descriptors_smaller
+	/// String set for looking at someone larger than you.
+	var/list/comparative_value_descriptors_larger
+	/// Used for chargen selection of values in cases where there is a hidden meaning.
+	var/list/chargen_value_descriptors
 	var/skip_species_mention
 
 /datum/mob_descriptor/New()

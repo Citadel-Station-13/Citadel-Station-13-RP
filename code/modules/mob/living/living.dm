@@ -713,7 +713,7 @@ default behaviour is:
 	set category = "OOC"
 	set src in view()
 	// Making it so SSD people have prefs with fallback to original style.
-	if(config_legacy.allow_Metadata)
+	if(CONFIG_GET(flag/allow_metadata))
 		if(ooc_notes)
 			to_chat(usr, "[src]'s Metainfo:<br>[ooc_notes]")
 		else if(client)
@@ -721,7 +721,7 @@ default behaviour is:
 		else
 			to_chat(usr, "[src] does not have any stored infomation!")
 	else
-		to_chat(usr, "OOC Metadata is not supported by this server!")
+		to_chat(usr, SPAN_WARNING("OOC Metadata is not supported by this server!"))
 	return
 
 

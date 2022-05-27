@@ -290,7 +290,7 @@ var/global/list/datum/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, facial_hair_styles_list.len,1)
 
 	body_markings.Cut()
-	//s_base = character.s_base //doesn't work, fuck me
+	s_base = character.s_base
 	for(var/obj/item/organ/external/E in character.organs)
 		E.s_base = s_base
 		if(E.markings.len)

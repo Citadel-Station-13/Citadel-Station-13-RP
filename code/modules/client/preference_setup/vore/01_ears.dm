@@ -274,14 +274,14 @@
 				pretty_ear_styles[instance.name] = path
 
 		// Present choice to user
-		var/new_ear_style = input(user, "Pick ears", "Character Preference", pref.ear_style) as null|anything in pretty_ear_styles
+		var/new_ear_style = input(user, "Pick ears", CHARACTER_PREFERENCE_INPUT_TITLE, pref.ear_style) as null|anything in pretty_ear_styles
 		if(new_ear_style)
 			pref.ear_style = pretty_ear_styles[new_ear_style]
 
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_color"])
-		var/new_earc = input(user, "Choose your character's ear colour:", "Character Preference",
+		var/new_earc = input(user, "Choose your character's ear colour:", CHARACTER_PREFERENCE_INPUT_TITLE,
 			rgb(pref.r_ears, pref.g_ears, pref.b_ears)) as color|null
 		if(new_earc)
 			pref.r_ears = hex2num(copytext(new_earc, 2, 4))
@@ -290,7 +290,7 @@
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_color2"])
-		var/new_earc2 = input(user, "Choose your character's secondary ear colour:", "Character Preference",
+		var/new_earc2 = input(user, "Choose your character's secondary ear colour:", CHARACTER_PREFERENCE_INPUT_TITLE,
 			rgb(pref.r_ears2, pref.g_ears2, pref.b_ears2)) as color|null
 		if(new_earc2)
 			pref.r_ears2 = hex2num(copytext(new_earc2, 2, 4))
@@ -299,7 +299,7 @@
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_color3"])
-		var/new_earc3 = input(user, "Choose your character's tertiary ear colour:", "Character Preference",
+		var/new_earc3 = input(user, "Choose your character's tertiary ear colour:", CHARACTER_PREFERENCE_INPUT_TITLE,
 			rgb(pref.r_ears3, pref.g_ears3, pref.b_ears3)) as color|null
 		if(new_earc3)
 			pref.r_ears3 = hex2num(copytext(new_earc3, 2, 4))
@@ -316,14 +316,14 @@
 				pretty_tail_styles[instance.name] = path
 
 		// Present choice to user
-		var/new_tail_style = input(user, "Pick tails", "Character Preference", pref.tail_style) as null|anything in pretty_tail_styles
+		var/new_tail_style = input(user, "Pick tails", CHARACTER_PREFERENCE_INPUT_TITLE, pref.tail_style) as null|anything in pretty_tail_styles
 		if(new_tail_style)
 			pref.tail_style = pretty_tail_styles[new_tail_style]
 
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color"])
-		var/new_tailc = input(user, "Choose your character's tail/taur colour:", "Character Preference",
+		var/new_tailc = input(user, "Choose your character's tail/taur colour:", CHARACTER_PREFERENCE_INPUT_TITLE,
 			rgb(pref.r_tail, pref.g_tail, pref.b_tail)) as color|null
 		if(new_tailc)
 			pref.r_tail = hex2num(copytext(new_tailc, 2, 4))
@@ -332,7 +332,7 @@
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color2"])
-		var/new_tailc2 = input(user, "Choose your character's secondary tail/taur colour:", "Character Preference",
+		var/new_tailc2 = input(user, "Choose your character's secondary tail/taur colour:", CHARACTER_PREFERENCE_INPUT_TITLE,
 			rgb(pref.r_tail2, pref.g_tail2, pref.b_tail2)) as color|null
 		if(new_tailc2)
 			pref.r_tail2 = hex2num(copytext(new_tailc2, 2, 4))
@@ -341,7 +341,7 @@
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color3"])
-		var/new_tailc3 = input(user, "Choose your character's tertiary tail/taur colour:", "Character Preference",
+		var/new_tailc3 = input(user, "Choose your character's tertiary tail/taur colour:", CHARACTER_PREFERENCE_INPUT_TITLE,
 			rgb(pref.r_tail3, pref.g_tail3, pref.b_tail3)) as color|null
 		if(new_tailc3)
 			pref.r_tail3 = hex2num(copytext(new_tailc3, 2, 4))
@@ -358,14 +358,14 @@
 				pretty_wing_styles[instance.name] = path
 
 		// Present choice to user
-		var/new_wing_style = input(user, "Pick wings", "Character Preference", pref.wing_style) as null|anything in pretty_wing_styles
+		var/new_wing_style = input(user, "Pick wings", CHARACTER_PREFERENCE_INPUT_TITLE, pref.wing_style) as null|anything in pretty_wing_styles
 		if(new_wing_style)
 			pref.wing_style = pretty_wing_styles[new_wing_style]
 
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_color"])
-		var/new_wingc = input(user, "Choose your character's wing colour:", "Character Preference",
+		var/new_wingc = input(user, "Choose your character's wing colour:", CHARACTER_PREFERENCE_INPUT_TITLE,
 			rgb(pref.r_wing, pref.g_wing, pref.b_wing)) as color|null
 		if(new_wingc)
 			pref.r_wing = hex2num(copytext(new_wingc, 2, 4))
@@ -374,7 +374,7 @@
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_color2"])
-		var/new_wingc2 = input(user, "Choose your character's secondary wing colour:", "Character Preference",
+		var/new_wingc2 = input(user, "Choose your character's secondary wing colour:", CHARACTER_PREFERENCE_INPUT_TITLE,
 			rgb(pref.r_wing2, pref.g_wing2, pref.b_wing2)) as color|null
 		if(new_wingc2)
 			pref.r_wing2 = hex2num(copytext(new_wingc2, 2, 4))
@@ -383,7 +383,7 @@
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_color3"])
-		var/new_wingc3 = input(user, "Choose your character's tertiary wing colour:", "Character Preference",
+		var/new_wingc3 = input(user, "Choose your character's tertiary wing colour:", CHARACTER_PREFERENCE_INPUT_TITLE,
 			rgb(pref.r_wing3, pref.g_wing3, pref.b_wing3)) as color|null
 		if(new_wingc3)
 			pref.r_wing3 = hex2num(copytext(new_wingc3, 2, 4))
@@ -392,7 +392,7 @@
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["grad_wingcolor"])
-		var/new_gradwing = input(user, "Choose your character's wing gradiant color:", "Character Preference", rgb(pref.r_gradwing, pref.g_gradwing, pref.b_gradwing)) as color|null
+		var/new_gradwing = input(user, "Choose your character's wing gradiant color:", CHARACTER_PREFERENCE_INPUT_TITLE, rgb(pref.r_gradwing, pref.g_gradwing, pref.b_gradwing)) as color|null
 		if(new_gradwing && CanUseTopic(user))
 			pref.r_gradwing = hex2num(copytext(new_gradwing, 2, 4))
 			pref.g_gradwing = hex2num(copytext(new_gradwing, 4, 6))
@@ -402,7 +402,7 @@
 	else if(href_list["grad_wingstyle"])
 		var/list/valid_gradients = GLOB.hair_gradients
 
-		var/new_grad_wingstyle = input(user, "Choose a color pattern for your wings:", "Character Preference", pref.grad_wingstyle)  as null|anything in valid_gradients
+		var/new_grad_wingstyle = input(user, "Choose a color pattern for your wings:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.grad_wingstyle)  as null|anything in valid_gradients
 		if(new_grad_wingstyle && CanUseTopic(user))
 			pref.grad_wingstyle = new_grad_wingstyle
 			return TOPIC_REFRESH_UPDATE_PREVIEW

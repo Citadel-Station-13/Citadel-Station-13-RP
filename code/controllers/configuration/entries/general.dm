@@ -47,3 +47,7 @@
 /datum/config_entry/number/min_char_age
 	config_entry_value = 18
 	min_val = 0
+
+/// If metadata is supported.
+/datum/config_entry/flag/allow_metadata
+	config_entry_value = TRUE

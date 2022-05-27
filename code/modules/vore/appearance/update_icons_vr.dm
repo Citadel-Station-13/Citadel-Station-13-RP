@@ -26,7 +26,7 @@ var/global/list/wing_icon_cache = list()
 	var/datum/robolimb/model = isSynthetic()
 	if(istype(model) && model.includes_tail && !tail_style)
 		var/icon/tail_s = new/icon("icon" = synthetic.icon, "icon_state" = "tail")
-		tail_s.Blend(rgb(src.r_skin, src.g_skin, src.b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
+		tail_s.Blend(rgb(src.r_skin, src.g_skin, src.b_skin), species.tail_blend)
 		return image(tail_s)
 
 	//If you have a custom tail selected

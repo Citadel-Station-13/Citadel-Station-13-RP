@@ -42,6 +42,9 @@
 	/// Skin flag
 	var/skin_state = SKIN_NORMAL
 
+	// Skin base. //Mainly for Adherent.
+	var/s_base = ""
+
 //! ## ears, tails, wings and custom species.
 	var/datum/sprite_accessory/ears/ear_style = null
 	var/r_ears = 30
@@ -103,8 +106,6 @@
 	var/b_synth
 	///Enables/disables markings on synth parts.
 	var/synth_markings = 0
-	///For adherent coloring....
-	var/s_base
 
 	///multiplies melee combat damage
 	var/damage_multiplier = 1

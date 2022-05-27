@@ -67,16 +67,16 @@ datum/preferences/proc/set_biological_gender(gender)
 	. = list()
 	. += "<b>Name:</b> "
 	. += "<a href='?src=\ref[src];rename=1'><b>[pref.real_name]</b></a><br>"
+	. += "<b>Nickname:</b> "
+	. += "<a href='?src=\ref[src];nickname=1'><b>[pref.nickname]</b></a><br>"
 	. += "<a href='?src=\ref[src];random_name=1'>Randomize Name</A><br>"
 	. += "<a href='?src=\ref[src];always_random_name=1'>Always Random Name: [pref.be_random_name ? "Yes" : "No"]</a><br>"
-	. += "<b>Nickname:</b> "
-	. += "<a href='?src=\ref[src];nickname=1'><b>[pref.nickname]</b></a>"
 	. += "<br>"
 	. += "<b>Biological Sex:</b> <a href='?src=\ref[src];bio_gender=1'><b>[gender2text(pref.biological_gender)]</b></a><br>"
 	. += "<b>Pronouns:</b> <a href='?src=\ref[src];id_gender=1'><b>[gender2text(pref.identifying_gender)]</b></a><br>"
 	. += "<b>Age:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
 	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
-	if(config_legacy.allow_Metadata)
+	if(CONFIG_GET(flag/allow_metadata))
 		. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
 	. = jointext(.,null)
 
@@ -92,6 +92,12 @@ datum/preferences/proc/set_biological_gender(gender)
 				to_chat(user, SPAN_WARNING("Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and ."))
 				return TOPIC_NOACTION
 
+	else if(href_list["nickname"])
+		var/new_nickname = tgui_input_text(user, "Choose your character's nickname:", "Character Nickname", pref.nickname, MAX_NAME_LEN)
+		if(!isnull(new_nickname) && CanUseTopic(user))
+			pref.nickname = sanitizeSafe(new_nickname)
+			return TOPIC_REFRESH
+
 	else if(href_list["random_name"])
 		pref.real_name = random_name(pref.identifying_gender, pref.species)
 		return TOPIC_REFRESH
@@ -100,25 +106,14 @@ datum/preferences/proc/set_biological_gender(gender)
 		pref.be_random_name = !pref.be_random_name
 		return TOPIC_REFRESH
 
-	else if(href_list["nickname"])
-		var/raw_nickname = input(user, "Choose your character's nickname:", "Character Nickname")  as text|null
-		if (!isnull(raw_nickname) && CanUseTopic(user))
-			var/new_nickname = sanitize_name(raw_nickname, pref.species)
-			if(new_nickname)
-				pref.nickname = new_nickname
-				return TOPIC_REFRESH
-			else
-				to_chat(user, SPAN_WARNING("Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and ."))
-				return TOPIC_NOACTION
-
 	else if(href_list["bio_gender"])
-		var/new_gender = input(user, "Choose your character's biological sex:", "Character Preference", pref.biological_gender) as null|anything in get_genders()
+		var/new_gender = tgui_input_list(user, "Choose your character's biological sex:", CHARACTER_PREFERENCE_INPUT_TITLE, get_genders(), pref.biological_gender)
 		if(new_gender && CanUseTopic(user))
 			pref.set_biological_gender(new_gender)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["id_gender"])
-		var/new_gender = input(user, "Choose your character's pronouns:", "Character Preference", pref.identifying_gender) as null|anything in all_genders_define_list
+		var/new_gender = tgui_input_list(user, "Choose your character's pronouns:", CHARACTER_PREFERENCE_INPUT_TITLE, all_genders_define_list, pref.identifying_gender)
 		if(new_gender && CanUseTopic(user))
 			pref.identifying_gender = new_gender
 		return TOPIC_REFRESH
@@ -126,7 +121,7 @@ datum/preferences/proc/set_biological_gender(gender)
 	else if(href_list["age"])
 		var/min_age = get_min_age()
 		var/max_age = get_max_age()
-		var/new_age = tgui_input_number(user, "Choose your character's age:\n([min_age]-[max_age])", "Character Preference", pref.age, max_age, min_age, round_value = TRUE)
+		var/new_age = tgui_input_number(user, "Choose your character's age:\n([min_age]-[max_age])", CHARACTER_PREFERENCE_INPUT_TITLE, pref.age, max_age, min_age, round_value = TRUE)
 		if(new_age && CanUseTopic(user))
 			pref.age = new_age
 			return TOPIC_REFRESH
@@ -135,14 +130,14 @@ datum/preferences/proc/set_biological_gender(gender)
 		var/list/spawnkeys = list()
 		for(var/spawntype in spawntypes)
 			spawnkeys += spawntype
-		var/choice = input(user, "Where would you like to spawn when late-joining?") as null|anything in spawnkeys
+		var/choice = tgui_input_list(user, "Where would you like to spawn when late-joining?", CHARACTER_PREFERENCE_INPUT_TITLE, spawnkeys, pref.spawnpoint)
 		if(!choice || !spawntypes[choice] || !CanUseTopic(user))
 			return TOPIC_NOACTION
 		pref.spawnpoint = choice
 		return TOPIC_REFRESH
 
 	else if(href_list["metadata"])
-		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , html_decode(pref.metadata)) as message, extra = 0)
+		var/new_metadata = tgui_input_text(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.metadata, multiline = TRUE)
 		if(new_metadata && CanUseTopic(user))
 			pref.metadata = new_metadata
 			return TOPIC_REFRESH

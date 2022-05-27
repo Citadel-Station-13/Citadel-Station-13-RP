@@ -38,7 +38,6 @@ var/list/organ_cache = list()
 	var/datum/dna/dna
 	/// Original species.
 	var/datum/species/species
-	var/s_base
 
 	//* Damage vars. *//
 	/// Damage before considered bruised
@@ -160,14 +159,12 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/update_health()
 	return
 
-/obj/item/organ/proc/set_dna(var/datum/dna/new_dna)
+/obj/item/organ/proc/set_dna(datum/dna/new_dna)
 	if(new_dna)
 		dna = new_dna.Clone()
 		if(blood_DNA)
 			blood_DNA.Cut()
 			blood_DNA[dna.unique_enzymes] = dna.b_type
-
-	s_base = new_dna.s_base
 
 /obj/item/organ/proc/die()
 	if(robotic < ORGAN_ROBOT)
@@ -234,7 +231,7 @@ var/list/organ_cache = list()
 ///A little wonky: internal organs stop calling this (they return early in process) when dead, but external ones cause further damage when dead
 /obj/item/organ/proc/handle_germ_effects()
 	//* Handle the effects of infections
-	if(robotic >= ORGAN_ROBOT) //Just in case!
+	if(BP_IS_ROBOTIC(src)) //Just in case!
 		germ_level = 0
 		return 0
 
@@ -478,7 +475,7 @@ var/list/organ_cache = list()
 
 /obj/item/organ/proc/bitten(mob/user)
 
-	if(robotic >= ORGAN_ROBOT)
+	if(BP_IS_ROBOTIC(src))
 		return
 
 	to_chat(user, SPAN_NOTICE("You take an experimental bite out of \the [src]."))
@@ -521,7 +518,7 @@ var/list/organ_cache = list()
 		if(istype(O, /obj/machinery/gibber))	// The great equalizer.
 			return TRUE
 
-		if(robotic >= ORGAN_ROBOT)
+		if(BP_IS_ROBOTIC(src))
 			if(O.is_screwdriver())
 				return TRUE
 
@@ -532,7 +529,7 @@ var/list/organ_cache = list()
 	return FALSE
 
 /obj/item/organ/proc/butcher(var/obj/item/O, var/mob/living/user, var/atom/newtarget)
-	if(robotic >= ORGAN_ROBOT)
+	if(BP_IS_ROBOTIC(src))
 		user?.visible_message(SPAN_NOTICE("[user] disassembles \the [src]."))
 
 	else

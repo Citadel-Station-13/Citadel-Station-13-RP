@@ -186,7 +186,7 @@
 			the species completely.")
 			return TOPIC_REFRESH*/ //There was no reason to have this.
 		var/raw_choice = sanitize(input(user, "Input your custom species name:",
-			"Character Preference", pref.custom_species) as null|text, MAX_NAME_LEN)
+			CHARACTER_PREFERENCE_INPUT_TITLE, pref.custom_species) as null|text, MAX_NAME_LEN)
 		if (CanUseTopic(user))
 			pref.custom_species = raw_choice
 		return TOPIC_REFRESH

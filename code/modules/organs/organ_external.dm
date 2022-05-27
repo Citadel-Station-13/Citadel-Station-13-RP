@@ -60,6 +60,8 @@
 	var/gendered_icon = 0
 	/// Skin tone.
 	var/s_tone
+	/// Skin base.
+	var/s_base = ""
 	/// Skin colour
 	var/list/s_col
 	/// How the skin colour is applied.
@@ -159,6 +161,11 @@
 	implants.Cut() // Remove these too!
 
 	return ..()
+
+/obj/item/organ/external/set_dna(datum/dna/new_dna)
+	..()
+	s_col_blend = species.limb_blend
+	s_base = new_dna.s_base
 
 /obj/item/organ/external/emp_act(severity)
 	if(!(robotic >= ORGAN_ROBOT))
@@ -586,7 +593,7 @@ This function completely restores a damaged organ to perfect condition.
 				var/datum/wound/W = pick(compatible_wounds)
 				W.open_wound(damage)
 				if(prob(25))
-					if(robotic >= ORGAN_ROBOT)
+					if(BP_IS_ROBOTIC(src))
 						owner.visible_message("<span class='danger'>The damage to [owner.name]'s [name] worsens.</span>",\
 						"<span class='danger'>The damage to your [name] worsens.</span>",\
 						"<span class='danger'>You hear the screech of abused metal.</span>")
@@ -941,7 +948,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			parent_organ.update_damages()
 		else
 			var/obj/item/organ/external/stump/stump = new (victim, 0, src)
-			if(robotic >= ORGAN_ROBOT)
+			if(BP_IS_ROBOTIC(src))
 				stump.robotize()
 			stump.wounds |= W
 			victim.organs |= stump
@@ -978,7 +985,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			qdel(src)
 		if(DROPLIMB_BLUNT)
 			var/obj/effect/decal/cleanable/blood/gibs/gore
-			if(robotic >= ORGAN_ROBOT)
+			if(BP_IS_ROBOTIC(src))
 				gore = new /obj/effect/decal/cleanable/blood/gibs/robot(droploc)
 			else
 				gore = new /obj/effect/decal/cleanable/blood/gibs(droploc)
@@ -1092,7 +1099,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	return rval
 
 /obj/item/organ/external/proc/fracture()
-	if(robotic >= ORGAN_ROBOT)
+	if(BP_IS_ROBOTIC(src))
 		return	//ORGAN_BROKEN doesn't have the same meaning for robot limbs
 	if((status & ORGAN_BROKEN) || cannot_break)
 		return
@@ -1125,7 +1132,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	return 1
 
 /obj/item/organ/external/proc/mend_fracture()
-	if(robotic >= ORGAN_ROBOT)
+	if(BP_IS_ROBOTIC(src))
 		return 0	//ORGAN_BROKEN doesn't have the same meaning for robot limbs
 	if(brute_dam > min_broken_damage * config_legacy.organ_health_multiplier)
 		return 0	//will just immediately fracture again
@@ -1153,7 +1160,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/robotize(var/company, var/skip_prosthetics = 0, var/keep_organs = 0)
 
-	if(robotic >= ORGAN_ROBOT)
+	if(BP_IS_ROBOTIC(src))
 		return
 
 	..()
@@ -1339,7 +1346,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		. += "tear at [amputation_point] so severe that it hangs by a scrap of flesh"
 
 	//Handle robotic and synthetic organ damage
-	if(robotic >= ORGAN_ROBOT)
+	if(BP_IS_ROBOTIC(src))
 		var/LL //Life-Like, aka only show that it's robotic in heavy damage
 		if(robotic >= ORGAN_LIFELIKE)
 			LL = 1

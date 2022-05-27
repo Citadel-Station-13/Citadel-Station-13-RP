@@ -296,7 +296,7 @@ var/list/wrapped_species_by_ref = list()
 			pretty_ear_styles[instance.name] = path
 
 	// Present choice to user
-	var/new_ear_style = tgui_input_list(src, "Pick some ears!", "Character Preference", pretty_ear_styles)
+	var/new_ear_style = tgui_input_list(src, "Pick some ears!", CHARACTER_PREFERENCE_INPUT_TITLE, pretty_ear_styles)
 	if(!new_ear_style)
 		return
 
@@ -350,7 +350,7 @@ var/list/wrapped_species_by_ref = list()
 			pretty_tail_styles[instance.name] = path
 
 	// Present choice to user
-	var/new_tail_style = tgui_input_list(src, "Pick a tail!", "Character Preference", pretty_tail_styles)
+	var/new_tail_style = tgui_input_list(src, "Pick a tail!", CHARACTER_PREFERENCE_INPUT_TITLE, pretty_tail_styles)
 	if(!new_tail_style)
 		return
 
@@ -404,7 +404,7 @@ var/list/wrapped_species_by_ref = list()
 			pretty_wing_styles[instance.name] = path
 
 	// Present choice to user
-	var/new_wing_style = tgui_input_list(src, "Pick some wings!", "Character Preference", pretty_wing_styles)
+	var/new_wing_style = tgui_input_list(src, "Pick some wings!", CHARACTER_PREFERENCE_INPUT_TITLE, pretty_wing_styles)
 	if(!new_wing_style)
 		return
 

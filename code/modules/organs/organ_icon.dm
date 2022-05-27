@@ -9,33 +9,31 @@ var/global/list/limb_icon_cache = list()
 				overlays += child.mob_icon
 		add_overlay(organ.mob_icon)
 
-/obj/item/organ/external/proc/sync_colour_to_human(var/mob/living/carbon/human/human)
+/obj/item/organ/external/proc/sync_colour_to_human(mob/living/carbon/human/human)
 	s_tone = null
 	s_col = null
-	h_col = null
-	if(robotic >= ORGAN_ROBOT)
+	s_base = ""
+	h_col = list(human.r_hair, human.g_hair, human.b_hair)
+	if(BP_IS_ROBOTIC(src) && !(human.species.species_appearance_flags & HAS_BASE_SKIN_COLOURS))
 		var/datum/robolimb/franchise = GLOB.all_robolimbs[model]
 		if(!(franchise && franchise.skin_tone) && !(franchise && franchise.skin_color))
 			if(human.synth_color)
 				s_col = list(human.r_synth, human.g_synth, human.b_synth)
 			return
-	if(robotic && !(human.species.species_appearance_flags & BASE_SKIN_COLOR))
-		var/datum/robolimb/franchise = GLOB.all_robolimbs[model]
-		if(!(franchise && franchise.skin_tone))
-			return
 	if(species && human.species && species.name != human.species.name)
 		return
 	if(!isnull(human.s_tone) && (human.species.species_appearance_flags & HAS_SKIN_TONE))
 		s_tone = human.s_tone
+	if(!isnull(human.s_base) && (human.species.species_appearance_flags & HAS_BASE_SKIN_COLOURS))
+		s_base = human.s_base
 	if(human.species.species_appearance_flags & HAS_SKIN_COLOR)
 		s_col = list(human.r_skin, human.g_skin, human.b_skin)
-	h_col = list(human.r_hair, human.g_hair, human.b_hair)
 
 /obj/item/organ/external/proc/sync_colour_to_dna()
 	s_tone = null
 	s_col = null
 	h_col = null
-	if(robotic >= ORGAN_ROBOT)
+	if(BP_IS_ROBOTIC(src))
 		var/datum/robolimb/franchise = GLOB.all_robolimbs[model]
 		if(!(franchise && franchise.skin_tone) && !(franchise && franchise.skin_color))
 			return
@@ -143,58 +141,57 @@ var/global/list/limb_icon_cache = list()
 
 	return res
 
-/obj/item/organ/external/proc/get_icon(var/skeletal)
+/obj/item/organ/external/proc/get_icon(skeletal)
+	var/gender = "_m"
+	if(!gendered_icon)
+		gender = null
+	else if (dna && dna.GetUIState(DNA_UI_GENDER))
+		gender = "_f"
+	else if(owner && owner.gender == FEMALE)
+		gender = "_f"
 
-	var/gender = "f"
-	if(owner && owner.gender == MALE)
-		gender = "m"
+	icon_state = "[icon_name][gender]"
+	if(species.base_skin_colours && !isnull(species.base_skin_colours[s_base]))
+		icon_state += species.base_skin_colours[s_base]
 
 	if(!force_icon_key)
-		icon_cache_key = "[icon_name]_[species ? species.get_bodytype() : SPECIES_HUMAN]"
+		icon_cache_key = "[icon_state]_[species ? species.get_bodytype() : SPECIES_HUMAN]"
 	else
-		icon_cache_key = "[icon_name]_[force_icon_key]"
+		icon_cache_key = "[icon_state]_[force_icon_key]"
 
 	if(force_icon)
-		mob_icon = new /icon(force_icon, "[icon_name][gendered_icon ? "_[gender]" : ""]")
+		icon = force_icon
+	else if(BP_IS_ROBOTIC(src))
+		icon = 'icons/mob/human_races/robotic.dmi'
+	else if(!dna)
+		icon = 'icons/mob/human_races/r_human.dmi'
+	else if (status & ORGAN_MUTATED)
+		icon = species.deform
+	else if(skeletal)
+		icon = 'icons/mob/human_races/r_skeleton.dmi'
 	else
-		if(!dna)
-			mob_icon = new /icon('icons/mob/human_races/r_human.dmi', "[icon_name][gendered_icon ? "_[gender]" : ""]")
-		else
+		icon = species.get_icobase(owner)
 
-			if(!gendered_icon)
-				gender = null
-			else
-				if(dna.GetUIState(DNA_UI_GENDER))
-					gender = "f"
-				else
-					gender = "m"
+	mob_icon = apply_colouration(new/icon(icon, icon_state))
+	log_qdel("generated a [species] specific [src] with [icon_state] and [s_base][gender]")
 
-			if(skeletal)
-				mob_icon = new /icon('icons/mob/human_races/r_skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
-			else if (robotic >= ORGAN_ROBOT && species == !SPECIES_ADHERENT)
-				mob_icon = new /icon('icons/mob/human_races/robotic.dmi', "[icon_name][s_base ? "[s_base]" : ""][gender ? "_[gender]" : ""]")
-			else
-				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
-				log_qdel("generated a [species] specific [src] with [icon_name] and _[s_base]")
-			apply_colouration(mob_icon)
+	//Body markings, actually does not include head this time. Done separately above.
+	if(!istype(src,/obj/item/organ/external/head))
+		for(var/M in markings)
+			var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
+			var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
+			mark_s.Blend(markings[M]["color"], mark_style.color_blend_mode)
+			add_overlay(mark_s) //So when it's not on your body, it has icons
+			mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
+			icon_cache_key += "[M][markings[M]["color"]]"
 
-			//Body markings, actually does not include head this time. Done separately above.
-			if(!istype(src,/obj/item/organ/external/head))
-				for(var/M in markings)
-					var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
-					var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
-					mark_s.Blend(markings[M]["color"], mark_style.color_blend_mode)
-					add_overlay(mark_s) //So when it's not on your body, it has icons
-					mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
-					icon_cache_key += "[M][markings[M]["color"]]"
-
-			if(body_hair && islist(h_col) && h_col.len >= 3)
-				var/cache_key = "[body_hair]-[icon_name]-[h_col[1]][h_col[2]][h_col[3]]"
-				if(!limb_icon_cache[cache_key])
-					var/icon/I = icon(species.get_icobase(owner), "[icon_name]_[body_hair]")
-					I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)
-					limb_icon_cache[cache_key] = I
-				mob_icon.Blend(limb_icon_cache[cache_key], ICON_OVERLAY)
+	if(body_hair && islist(h_col) && h_col.len >= 3)
+		var/cache_key = "[body_hair]-[icon_state]-[h_col[1]][h_col[2]][h_col[3]]"
+		if(!limb_icon_cache[cache_key])
+			var/icon/I = icon(species.get_icobase(owner), "[icon_name]_[body_hair]")
+			I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)
+			limb_icon_cache[cache_key] = I
+		mob_icon.Blend(limb_icon_cache[cache_key], ICON_OVERLAY)
 
 	if(model)
 		icon_cache_key += "_model_[model]"
@@ -220,7 +217,7 @@ var/global/list/limb_icon_cache = list()
 	icon = mob_icon
 	return mob_icon
 
-/obj/item/organ/external/proc/apply_colouration(var/icon/applying)
+/obj/item/organ/external/proc/apply_colouration(icon/applying)
 
 	if(transparent)
 		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
@@ -241,13 +238,8 @@ var/global/list/limb_icon_cache = list()
 			applying.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
 		icon_cache_key += "_tone_[s_tone]"
 	else if(s_col && s_col.len >= 3)
-		// Support for species.color_mult
-		if(species && species.color_mult)
-			applying.Blend(rgb(s_col[1], s_col[2], s_col[3]), ICON_MULTIPLY)
-			icon_cache_key += "_color_[s_col[1]]_[s_col[2]]_[s_col[3]]_[ICON_MULTIPLY]"
-		else
-			applying.Blend(rgb(s_col[1], s_col[2], s_col[3]), ICON_ADD)
-			icon_cache_key += "_color_[s_col[1]]_[s_col[2]]_[s_col[3]]_[ICON_ADD]"
+		applying.Blend(rgb(s_col[1], s_col[2], s_col[3]), species.limb_blend)
+		icon_cache_key += "_color_[s_col[1]]_[s_col[2]]_[s_col[3]]_[species.limb_blend]"
 
 	// Translucency.
 	if(transparent) applying += rgb(,,,180) // SO INTUITIVE TY BYOND
