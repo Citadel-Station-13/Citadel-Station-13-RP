@@ -2,7 +2,7 @@
 	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	num_alternate_languages = 3 //cit lore change
+	num_alternate_languages = 3
 	language = LANGUAGE_VERNAL
 	species_language = LANGUAGE_VERNAL
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
@@ -13,7 +13,7 @@
 	metabolic_rate = 0.75 // slow metabolism
 	item_slowdown_mod = 0.25 //while they start slow, they don't get much slower
 	bloodloss_rate = 0.1 //While they do bleed, they bleed out VERY slowly
-	max_age = 500 //cit lore change
+	max_age = 500
 	health_hud_intensity = 1.5
 	base_species = SPECIES_ALRAUNE
 	selects_bodytype = TRUE

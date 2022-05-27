@@ -486,7 +486,7 @@
 		var/datum/trait/T = all_traits[name]
 		T.remove(src, H)
 
-/datum/species/proc/sanitize_name(var/name)
+/datum/species/proc/sanitize_name(name)
 	return sanitizeName(name, MAX_NAME_LEN)
 
 GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(

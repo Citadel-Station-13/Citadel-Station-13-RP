@@ -10,30 +10,27 @@
 //	silent_steps = TRUE
 
 	meat_type = null
-//	bone_material = null
-//	skin_material = null
 
-	genders =                 list(PLURAL)
-//	cyborg_noun =             null
+	genders = list(PLURAL)
 
-	icon_template =           'icons/mob/human_races/adherent/template.dmi'
-	icobase =                 'icons/mob/human_races/adherent/body.dmi'
-//	deform =                  'icons/mob/human_races/r_adherent.dmi'
-//	preview_icon =            'icons/mob/human_races/adherent/preview.dmi'
-	damage_overlays =         'icons/mob/human_races/adherent/damage_overlay.dmi'
-	damage_mask =             'icons/mob/human_races/adherent/damage_mask.dmi'
-	blood_mask =              'icons/mob/human_races/adherent/blood_mask.dmi'
+	icon_template = 'icons/mob/human_races/adherent/template.dmi'
+	icobase = 'icons/mob/human_races/adherent/body.dmi'
+//	deform = 'icons/mob/human_races/r_adherent.dmi'
+//	preview_icon = 'icons/mob/human_races/adherent/preview.dmi'
+	damage_overlays = 'icons/mob/human_races/adherent/damage_overlay.dmi'
+	damage_mask = 'icons/mob/human_races/adherent/damage_mask.dmi'
+	blood_mask = 'icons/mob/human_races/adherent/blood_mask.dmi'
 
-	siemens_coefficient =     0
-	rarity_value =            6
-	min_age =                 10000
-	max_age =                 12000
-//	antaghud_offset_y =       14
-	warning_low_pressure =    50
-	hazard_low_pressure =     -1
-	mob_size =                MOB_LARGE
-//	strength =                STR_HIGH
-	has_glowing_eyes = 		1
+	siemens_coefficient = 0
+	rarity_value = 6
+	min_age = 10000
+	max_age = 12000
+//	antaghud_offset_y = 14
+	warning_low_pressure = 50
+	hazard_low_pressure = -1
+	mob_size = MOB_LARGE
+//	strength = STR_HIGH
+	has_glowing_eyes = TRUE
 
 	speech_sounds = list('sound/voice/chime.ogg')
 	speech_chance = 25
@@ -46,12 +43,12 @@
 	heat_level_2 = 1000
 	heat_level_3 = 2000
 
-	flags =				NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
-	spawn_flags =		SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	flags =		NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
+	spawn_flags =	SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
 	species_appearance_flags =	HAS_EYE_COLOR | HAS_SKIN_COLOR//BASE_SKIN_COLOR
 
-	language = 			LANGUAGE_ADHERENT
-	species_language = 	LANGUAGE_ADHERENT
+	language =			LANGUAGE_ADHERENT
+	species_language =	LANGUAGE_ADHERENT
 	num_alternate_languages = 2
 
 	blood_color = "#2de00d"
@@ -61,25 +58,7 @@
 	slowdown = -0.5
 
 	hud_type = /datum/hud_data/adherent
-/*
-	available_cultural_info = list(
-		TAG_CULTURE = list(
-			CULTURE_ADHERENT
-		),
-		TAG_HOMEWORLD = list(
-			HOME_SYSTEM_ADHERENT,
-			HOME_SYSTEM_ADHERENT_MOURNER
-		),
-		TAG_FACTION = list(
-			FACTION_ADHERENT_PRESERVERS,
-			FACTION_ADHERENT_LOYALISTS,
-			FACTION_ADHERENT_SEPARATISTS
-		),
-		TAG_RELIGION =  list(
-			RELIGION_OTHER
-		)
-	)
-*/
+
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest/crystal),
 		BP_GROIN =  list("path" = /obj/item/organ/external/groin/crystal),

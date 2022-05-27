@@ -43,3 +43,7 @@
 
 /datum/config_entry/flag/cache_assets
 	default = TRUE
+
+/datum/config_entry/number/min_char_age
+	config_entry_value = 18
+	min_val = 0
