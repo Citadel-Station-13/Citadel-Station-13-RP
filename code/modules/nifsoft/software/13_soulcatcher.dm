@@ -648,3 +648,25 @@
 
 	QDEL_NULL(eyeobj)
 	soulcatcher.notify_into("[src] ended AR projection.")
+
+/mob/living/carbon/brain/caught_soul/verb/nsay(message as text|null)
+	set name = "NSay"
+	set desc = "Speak into the NIF's Soulcatcher (circumventing AR speaking)."
+	set category = "Soulcatcher"
+
+	if(!message)
+		message = input("Type a message to say.","Speak into Soulcatcher") as text|null
+	if(message)
+		var/sane_message = sanitize(message)
+		soulcatcher.say_into(sane_message,src,null)
+
+/mob/living/carbon/brain/caught_soul/verb/nme(message as text|null)
+	set name = "NMe"
+	set desc = "Emote into the NIF's Soulcatcher (circumventing AR speaking)."
+	set category = "Soulcatcher"
+
+	if(!message)
+		message = input("Type an action to perform.","Emote into Soulcatcher") as text|null
+	if(message)
+		var/sane_message = sanitize(message)
+		soulcatcher.emote_into(sane_message,src,null)
