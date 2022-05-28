@@ -1,0 +1,4 @@
+author: "Ghostcoffeee"
+delete-after: True
+changes: 
+  - bugfix: "fixes stray pixels in the carpet icons"
