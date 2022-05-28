@@ -92,8 +92,8 @@
 /obj/vehicle/train/security/engine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/key/cargo_train))
 		if(!key)
-			user.drop_item()
-			W.forceMove(src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			key = W
 			verbs += /obj/vehicle/train/security/engine/verb/remove_key
 		return

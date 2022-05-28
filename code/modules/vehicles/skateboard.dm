@@ -463,8 +463,8 @@
 
 		if(4)
 			if(istype(W, /obj/item/skate_wheels))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You mount \the [W] on \the [src] trucks.</span>")
 				name = "skateboard frame (loose wheels)"
@@ -537,8 +537,8 @@
 
 		if(1)
 			if(istype(W, /obj/item/skate_wheels))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You install \the [W] on \the [src].</span>")
 				name = "scooter frame (loose wheels)"

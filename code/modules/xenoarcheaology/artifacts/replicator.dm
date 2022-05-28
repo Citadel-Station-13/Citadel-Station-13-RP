@@ -176,7 +176,7 @@
 	if(!W.canremove || !user.canUnEquip(W)) //No armblades, no grabs. No other-thing-I-didn't-think-of.
 		to_chat(user, SPAN_NOTICE("You cannot put \the [W] into the machine."))
 		return
-	user.drop_item()
-	W.loc = src
+	if(!user.attempt_insert_item_for_installation(W, src))
+		return
 	stored_materials.Add(W)
 	visible_message(SPAN_NOTICE("\The [user] inserts \the [W] into \the [src]."))

@@ -563,7 +563,7 @@
 								brain.forceMove(src)
 								items_preserved |= brain
 						else
-							T.drop_from_inventory(I, src)
+							T.transfer_item_to_loco(I, src, TRUE)
 					if(ishuman(T))
 						var/mob/living/carbon/human/Prey = T
 						volume = (Prey.bloodstr.total_volume + Prey.ingested.total_volume + Prey.touching.total_volume + Prey.weight) * Prey.size_multiplier

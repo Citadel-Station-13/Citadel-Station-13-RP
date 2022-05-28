@@ -81,7 +81,7 @@ var/global/list/total_extraction_beacons = list()
 			*/
 			uses_left--
 			if(uses_left <= 0)
-				user.drop_from_inventory(src, A)
+				user.temporarily_remove_from_inventory(src, TRUE)
 			var/mutable_appearance/balloon
 			var/mutable_appearance/balloon2
 			var/mutable_appearance/balloon3

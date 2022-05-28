@@ -52,9 +52,9 @@
 		if(src.beaker)
 			to_chat(user, "\A [beaker] is already loaded into the machine.")
 			return
+		if(!user.attempt_insert_item_for_installation(B, src))
+			return
 		src.beaker = B
-		user.drop_item()
-		B.loc = src
 		to_chat(user, "You add \the [B] to the machine.")
 		update_icon()
 
@@ -63,10 +63,10 @@
 		if(src.loaded_pill_bottle)
 			to_chat(user, "A \the [loaded_pill_bottle] s already loaded into the machine.")
 			return
+		if(!user.attempt_insert_item_for_installation(B, src))
+			return
 
 		src.loaded_pill_bottle = B
-		user.drop_item()
-		B.loc = src
 		to_chat(user, "You add \the [loaded_pill_bottle] into the dispenser slot.")
 
 	else if(default_unfasten_wrench(user, B, 20))

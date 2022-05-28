@@ -637,8 +637,8 @@
 		else if(W.w_class != ITEMSIZE_NORMAL)
 			to_chat(user, "\The [W] is too [W.w_class < ITEMSIZE_NORMAL ? "small" : "large"] to fit here.")
 		else
-			user.drop_item()
-			W.loc = src
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			cell = W
 			to_chat(user, "You insert the power cell.")
 
@@ -711,9 +711,8 @@
 			to_chat(usr, "The upgrade is locked and cannot be used yet!")
 		else
 			if(U.action(src))
+				user.transfer_item_to_loc(U, src, TRUE)
 				to_chat(usr, "You apply the upgrade to [src]!")
-				usr.drop_item()
-				U.loc = src
 			else
 				to_chat(usr, "Upgrade error!")
 

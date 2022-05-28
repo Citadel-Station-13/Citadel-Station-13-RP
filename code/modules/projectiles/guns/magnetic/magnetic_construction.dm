@@ -27,8 +27,8 @@
 		return
 
 	if(istype(thing, /obj/item/pipe) && construction_stage == 3)
-		user.drop_from_inventory(thing)
-		qdel(thing)
+		if(!user.attempt_consume_item_for_construction(thing))
+			return
 		user.visible_message("<span class='notice'>\The [user] jams \the [thing] into \the [src].</span>")
 		increment_construction_stage()
 		return
@@ -60,9 +60,9 @@
 		return
 
 	if(istype(thing, /obj/item/smes_coil) && construction_stage >= 6 && construction_stage <= 8)
+		if(!user.attempt_consume_item_for_construction(thing))
+			return
 		user.visible_message("<span class='notice'>\The [user] installs \a [thing] into \the [src].</span>")
-		user.drop_from_inventory(thing)
-		qdel(thing)
 		increment_construction_stage()
 		return
 

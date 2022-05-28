@@ -127,15 +127,13 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		else
 			to_chat(user, "<span class='notice'>Machine cannot accept disks in that format.</span>")
 			return
-		user.drop_item()
-		D.loc = src
+		if(!user.attempt_insert_item_for_installation(D, src))
+			return
 		to_chat(user, "<span class='notice'>You add \the [D] to the machine.</span>")
+		SStgui.update_uis(src)
 	else
 		//The construction/deconstruction of the console code.
-		..()
-
-	SStgui.update_uis(src)
-	return
+		return ..()
 
 /obj/machinery/computer/rdconsole/emp_act(var/remaining_charges, var/mob/user)
 	if(!emagged)

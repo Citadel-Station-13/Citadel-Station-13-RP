@@ -290,9 +290,8 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		usr.drop_item()
-		if(W)
-			W.forceMove(src.loc)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 	else if(istype(W, /obj/item/packageWrap))
 		return
 	else if(istype(W, /obj/item/extraction_pack)) //so fulton extracts dont open closets

@@ -285,28 +285,60 @@
 // TODO: put in hands should try to put into grippers ~silicons
 
 /mob/living/silicon/robot/is_in_inventory(obj/item/I)
-	return I.loc == src || I.loc == module
+	return is_module_item(I) || is_in_gripper(I)
 
 /mob/living/silicon/robot/proc/considered_removable(obj/item/I)
-	return (is_in_inventory(I) && !is_holding(I) && !(I.loc == module))
+	return (!is_module_item(I))
+
+/mob/living/silicon/robot/proc/is_module_item(obj/item/I)
+	if(!module)
+		return FALSE
+	return (I in module.modules) || (I in module.emag)
+
+/mob/living/silicon/robot/proc/is_in_gripper(obj/item/I, require_active_module)
+	return (
+		I.loc == src?
+		!is_module_item(I) :
+		(istype(I.loc, /obj/item/gripper) && (require_active_module? is_holding(I.loc) : is_module_item(I.loc)))
+	)
+
+/mob/living/silicon/robot/proc/unreference_from_gripper(obj/item/I)
+	if(!istype(I.loc, /obj/item/gripper))
+		return
+	var/obj/item/gripper/G = I.loc
+	if(!is_module_item(G))
+		return
+	if(G.wrapped != I)
+		return
+	G.wrapped = null
 
 /mob/living/silicon/robot/temporarily_remove_from_inventory(obj/item/I, force)
-	return considered_removable(I)
+	if(!is_in_inventory(I))
+		return TRUE
+	. = considered_removable(I)
+	if(!.)
+		return
+	if(istype(I.loc, /obj/item/gripper))
+		var/obj/item/gripper/G = I.loc
+		G.wrapped = null
 
 /mob/living/silicon/robot/transfer_item_to_loc(obj/item/I, newloc, force)
-	if(considered_removable(I))
+	if(is_in_inventory(I) && considered_removable(I))
+		unreference_from_gripper(I)
 		I.forceMove(newloc)
 		return TRUE
 	return FALSE
 
 /mob/living/silicon/robot/transfer_item_to_nullspace(obj/item/I, force)
-	if(considered_removable(I))
+	if(is_in_inventory(I) && considered_removable(I))
+		unreference_from_gripper(I)
 		I.moveToNullspace()
 		return TRUE
 	return FALSE
 
 /mob/living/silicon/robot/drop_item_to_ground(obj/item/I, force)
-	if(considered_removable(I))
+	if(is_in_inventory(I) && considered_removable(I))
+		unreference_from_gripper(I)
 		I.forceMove(drop_location())
 		return TRUE
 	return FALSE

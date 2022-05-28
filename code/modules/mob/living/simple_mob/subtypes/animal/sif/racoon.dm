@@ -113,9 +113,8 @@
 		if(user == src)
 			if(istype(get_active_held_item(), /obj/item/clothing/head))
 				hat = get_active_held_item()
-				drop_from_inventory(hat, src)
-				hat.forceMove(src)
-				to_chat(user, "<span class='notice'>You put on the hat.</span>")
+				transfer_item_to_loc(hat, src, TRUE)
+				to_chat(src, "<span class='notice'>You put on the hat.</span>")
 				update_icon()
 			return
 		else if(ishuman(user))
@@ -123,7 +122,8 @@
 
 			if(istype(H.get_active_held_item(), /obj/item/clothing/head) && !get_active_held_item())
 				var/obj/item/clothing/head/newhat = H.get_active_held_item()
-				H.drop_from_inventory(newhat, get_turf(src))
+				if(!H.attempt_insert_item_for_installation(newhat, get_turf(src)))
+					return
 				if(!stat)
 					a_intent = INTENT_HELP
 					newhat.attack_hand(src)

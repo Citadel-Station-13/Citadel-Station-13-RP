@@ -30,10 +30,10 @@
 	if(sample)
 		to_chat(user, "\The [src] is already loaded.")
 		return
+	if(!user.attempt_insert_item_for_installation(S, src))
+		return
 
 	sample = S
-	user.drop_item()
-	S.loc = src
 
 	user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
 	SStgui.update_uis(src)

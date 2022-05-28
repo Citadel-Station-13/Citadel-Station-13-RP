@@ -118,11 +118,11 @@
 			user.visible_message("<span class='notice'>[user] begins loading [W] into \the [src].</span>","<span class='notice'>You start loading [W] into \the [src].</span>")
 			if(!do_after(user,30) || loaded_vial || !(W in user))
 				return 0
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			if(W.is_open_container())
 				W.flags ^= OPENCONTAINER
 				W.update_icon()
-			user.drop_item()
-			W.loc = src
 			loaded_vial = W
 			reagents.maximum_volume = loaded_vial.reagents.maximum_volume
 			loaded_vial.reagents.trans_to_holder(reagents,volume)

@@ -76,12 +76,12 @@
 /obj/vehicle/train/engine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, key_type))
 		if(!key)
-			user.drop_item()
-			W.forceMove(src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return CLICK_CHAIN_DO_NOT_PROPAGATE
 			key = W
 			verbs += /obj/vehicle/train/engine/verb/remove_key
-		return
-	..()
+		return CLICK_CHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /*
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead

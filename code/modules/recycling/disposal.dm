@@ -55,6 +55,11 @@
 
 // attack by item places it in to disposal
 /obj/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
+	if(user.a_intent != INTENT_HELP)
+		return ..()
+
+	. = CLICK_CHAIN_DO_NOT_PROPAGATE
+
 	if(machine_stat & BROKEN || !I || !user)
 		return
 
@@ -98,10 +103,6 @@
 				to_chat(user, "You need more welding fuel to complete this task.")
 				return
 
-	if(istype(I, /obj/item/melee/energy/blade))
-		to_chat(user, "You can't place that item inside the disposal unit.")
-		return
-
 	if(istype(I, /obj/item/storage/bag/trash))
 		var/obj/item/storage/bag/trash/T = I
 		to_chat(user, "<font color=#4F49AF>You empty the bag.</font>")
@@ -137,14 +138,8 @@
 				add_attack_logs(user,GM,"Disposals dunked")
 		return
 
-	if(isrobot(user))
+	if(!user.attempt_insert_item_for_installation(I, src))
 		return
-	if(!I || I.anchored || !I.canremove)
-		return
-
-	user.drop_item()
-	if(I)
-		I.forceMove(src)
 
 	to_chat(user, "You place \the [I] into the [src].")
 	for(var/mob/M in viewers(src))

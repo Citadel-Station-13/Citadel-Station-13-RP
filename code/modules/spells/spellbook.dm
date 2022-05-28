@@ -411,7 +411,7 @@
 		ADD_TRAIT(magichead, TRAIT_NODROP, MAGIC_TRAIT)
 		magichead.flags_inv = null	//so you can still see their face
 		magichead.voicechange = 1	//NEEEEIIGHH
-		user.drop_from_inventory(user.wear_mask)
+		user.drop_item_to_ground(user.wear_mask, TRUE)
 		user.equip_to_slot_or_del(magichead, SLOT_ID_MASK)
 		qdel(src)
 	else

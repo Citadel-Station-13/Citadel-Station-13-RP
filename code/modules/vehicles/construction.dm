@@ -155,8 +155,8 @@
 				if(Q.build_stage > 2)
 					to_chat(user, "<span class='notice'>\The [Q] is too advanced to be of use with \the [src]</span>")
 					return
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				increase_step("framed [initial(name)]")
 
 		if(1)
@@ -174,10 +174,9 @@
 
 		if(2)
 			if(W.is_screwdriver())
-				playsound(loc, W.usesound, 50, 1)
+				playsound(src, W.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You close up \the [src].</span>")
-				var/obj/vehicle/train/trolley/trailer/product = new(src)
-				product.loc = get_turf(src)
+				var/obj/vehicle/train/trolley/trailer/product = new(get_turf(src))
 				qdel(src)
 
 /*
@@ -196,8 +195,8 @@
 	switch(build_stage)
 		if(0)
 			if(istype(W, /obj/item/tank/jetpack) || istype(W, /obj/item/borg/upgrade/jetpack))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				increase_step()
 
 		if(1)

@@ -17,8 +17,7 @@
 /obj/item/kit/proc/use(var/amt, var/mob/user)
 	uses -= amt
 	playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-	if(uses<1)
-		user.drop_item()
+	if(uses < 1)
 		qdel(src)
 
 /obj/item/kit/proc/can_customize(var/obj/item/I)

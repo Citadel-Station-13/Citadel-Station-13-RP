@@ -61,9 +61,8 @@
 	..()
 	if(is_open_container())
 		to_chat(usr, "<span class = 'notice'>You crush \the [src] in your hands.</span>")
-		user.drop_item(src)
 		playsound(loc, 'sound/effects/slime_squish.ogg', 50, 1)
-		qdel()
+		qdel(src)
 		var/crushed_organic_container = /obj/item/stack/material/wax
 		new crushed_organic_container(get_turf(user))
 	else
