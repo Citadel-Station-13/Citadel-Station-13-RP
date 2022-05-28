@@ -39,7 +39,7 @@
 
 /obj/item/beartrap/attack_self(mob/user as mob)
 	..()
-	if(!deployed && can_use(user))
+	if(!deployed)
 		user.visible_message(
 			"<span class='danger'>[user] starts to deploy \the [src].</span>",
 			"<span class='danger'>You begin deploying \the [src]!</span>",
@@ -81,7 +81,7 @@
 		anchored = FALSE
 
 /obj/item/beartrap/attack_hand(mob/user as mob)
-	if(deployed && can_use(user))
+	if(deployed)
 		user.visible_message(
 			"<span class='danger'>[user] starts to disarm \the [src].</span>",
 			"<span class='notice'>You begin disarming \the [src]!</span>",
