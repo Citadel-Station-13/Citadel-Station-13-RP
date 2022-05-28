@@ -856,7 +856,7 @@ export const ResearchConsole = (props, context) => {
     locked,
   } = data;
 
-  const [menu, setMenu] = useSharedState(context, "rdmenu", 0);
+  const [menu, setMenu] = useLocalState(context, "rdmenu", 0);
 
   let allTabsDisabled = false;
   if (busy_msg || locked) {

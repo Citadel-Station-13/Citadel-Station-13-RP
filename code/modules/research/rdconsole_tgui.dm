@@ -319,21 +319,21 @@
 	switch(action)
 		if("search")
 			search = params["search"]
-			update_static_data(usr, ui)
+			send_tgui_data_immediate(tgui_GetProtolatheDesigns(lniked_lathe, design_page))
 			return TRUE
 		if("design_page")
 			if(params["reset"])
 				design_page = 0
 			else
 				design_page = max(design_page + (1 * params["reverse"]), 0)
-			update_static_data(usr, ui)
+			send_tgui_data_immediate(tgui_GetProtolatheDesigns(linked_lathe, design_page))
 			return TRUE
 		if("builder_page")
 			if(params["reset"])
 				builder_page = 0
 			else
 				builder_page = max(builder_page + (1 * params["reverse"]), 0)
-			update_static_data(usr, ui)
+			send_tgui_data_immediate(tgui_GetImprinterDesigns(linked_imprinter, design_page))
 			return TRUE
 
 		if("updt_tech") //Update the research holder with information from the technology disk.
