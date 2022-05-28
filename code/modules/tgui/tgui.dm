@@ -245,7 +245,7 @@
 		return
 	if(!force && status < UI_UPDATE)
 		return
-	window.send_message("update", list("data" = data))
+	window.send_message("data", list("data" = data))
 
 /**
  * private

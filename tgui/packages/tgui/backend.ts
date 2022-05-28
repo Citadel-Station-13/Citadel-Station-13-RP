@@ -78,6 +78,18 @@ export const backendReducer = (state = initialState, action) => {
     };
   }
 
+  if (type === 'backend/data') {
+    const data = {
+      ...state.data,
+      ...payload.data,
+    };
+    return {
+      ...state,
+      data,
+      suspended: false,
+    };
+  }
+
   if (type === 'backend/setSharedState') {
     const { key, nextState } = payload;
     return {
