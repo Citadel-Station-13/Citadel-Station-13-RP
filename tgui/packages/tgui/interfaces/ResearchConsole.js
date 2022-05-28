@@ -1,6 +1,6 @@
 import { toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
-import { useBackend, useLocalState, useSharedState } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, Input, NumberInput, Table, Divider } from "../components";
 import { Window } from '../layouts';
 
@@ -128,7 +128,7 @@ const TechDisk = (props, context) => {
     return null;
   }
 
-  const [saveDialog, setSaveDialog] = useSharedState(context, "saveDialogTech", false);
+  const [saveDialog, setSaveDialog] = useLocalState(context, "saveDialogTech", false);
 
   if (saveDialog) {
     return (
@@ -228,7 +228,7 @@ const DataDisk = (props, context) => {
     return null;
   }
 
-  const [saveDialog, setSaveDialog] = useSharedState(context, "saveDialogData", false);
+  const [saveDialog, setSaveDialog] = useLocalState(context, "saveDialogData", false);
 
   if (saveDialog) {
     return (
@@ -524,7 +524,7 @@ const ResearchConsoleConstructor = (props, context) => {
     queue,
   } = linked;
 
-  const [protoTab, setProtoTab] = useSharedState(context, "protoTab", 0);
+  const [protoTab, setProtoTab] = useLocalState(context, "protoTab", 0);
 
   let queueColor = "transparent";
   let queueSpin = false;
@@ -729,7 +729,7 @@ const ResearchConsoleSettings = (props, context) => {
     linked_lathe,
   } = data.info;
 
-  const [settingsTab, setSettingsTab] = useSharedState(context, "settingsTab", 0);
+  const [settingsTab, setSettingsTab] = useLocalState(context, "settingsTab", 0);
 
   return (
     <Section title="Settings">

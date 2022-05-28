@@ -1,98 +1,74 @@
-import { classes } from 'common/react';
+/* eslint-disable max-len */
 import { useBackend } from "../backend";
-import { Icon, Section, Table, Tooltip } from "../components";
+import { Box, Section, Table } from "../components";
 import { Window } from "../layouts";
+import { COLORS } from "../constants";
+import { decodeHtmlEntities } from "common/string";
 
-const commandJobs = [
-  "Head of Personnel",
-  "Head of Security",
-  "Chief Engineer",
-  "Research Director",
-  "Chief Medical Officer",
-];
+/*
+ * Shared by the following templates (and used individually too)
+ * - Communicator.js
+ * - IdentificationComputer.js
+ * - pda/pda_manifest.js
+ * In order to fuel this UI, you must use the following code in your ui_data
+ * (or static data, doesn't really matter)
+ * ```dm
+if(data_core)
+    data_core.get_manifest_list()
+data["manifest"] = GLOB.PDA_Manifest
+ * ```
+ */
 
 export const CrewManifest = (props, context) => {
-  const { data: { manifest, positions } } = useBackend(context);
-
   return (
-    <Window title="Crew Manifest" width={350} height={500}>
+    <Window width={400} height={600}>
       <Window.Content scrollable>
-        {Object.entries(manifest).map(([dept, crew]) => (
-          <Section
-            className={"CrewManifest--" + dept}
-            key={dept}
-            title={
-              dept + (dept !== "Misc"
-                ? ` (${positions[dept].open} positions open)` : "")
-            }
-          >
-            <Table>
-              {Object.entries(crew).map(([crewIndex, crewMember]) => (
-                <Table.Row key={crewIndex}>
-                  <Table.Cell className={"CrewManifest__Cell"}>
-                    {crewMember.name}
-                  </Table.Cell>
-                  <Table.Cell
-                    className={classes([
-                      "CrewManifest__Cell",
-                      "CrewManifest__Icons",
-                    ])}
-                    collapsing
-                  >
-                    {positions[dept].exceptions.includes(crewMember.rank) && (
-
-                      <Tooltip
-                        content="No position limit"
-                        position="bottom"
-                      >
-                        <Icon className="CrewManifest__Icon" name="infinity" />
-                      </Tooltip>
-                    )}
-                    {crewMember.rank === "Captain" && (
-                      <Tooltip
-                        content="Captain"
-                        position="bottom"
-                      >
-                        <Icon
-                          className={classes([
-                            "CrewManifest__Icon",
-                            "CrewManifest__Icon--Command",
-                          ])}
-                          name="star"
-                        />
-                      </Tooltip>
-                    )}
-                    {commandJobs.includes(crewMember.rank) && (
-                      <Tooltip
-                        content="Member of command"
-                        position="bottom"
-                      >
-                        <Icon
-                          className={classes([
-                            "CrewManifest__Icon",
-                            "CrewManifest__Icon--Command",
-                            "CrewManifest__Icon--Chevron",
-                          ])}
-                          name="chevron-up"
-                        />
-                      </Tooltip>
-                    )}
-                  </Table.Cell>
-                  <Table.Cell
-                    className={classes([
-                      "CrewManifest__Cell",
-                      "CrewManifest__Cell--Rank",
-                    ])}
-                    collapsing
-                  >
-                    {crewMember.rank}
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table>
-          </Section>
-        ))}
+        <CrewManifestContent />
       </Window.Content>
     </Window>
+  );
+};
+
+export const CrewManifestContent = (props, context) => {
+  const { act, data } = useBackend(context);
+
+  const {
+    manifest,
+  } = data;
+
+  return (
+    <Section title="Crew Manifest" noTopPadding>
+      {manifest.map(category => !!category.elems.length && (
+        <Section
+          title={(
+            <Box
+              backgroundColor={COLORS.department[category.cat.toLowerCase()]}
+              m={-1}
+              pt={1}
+              pb={1}>
+              <Box ml={1} textAlign="center" fontSize={1.4}>
+                {category.cat}
+              </Box>
+            </Box>
+          )}
+          key={category.cat}
+          level={2}>
+          <Table>
+            <Table.Row header color="white">
+              <Table.Cell>Name</Table.Cell>
+              <Table.Cell>Rank</Table.Cell>
+              <Table.Cell>Active</Table.Cell>
+            </Table.Row>
+            {category.elems.map(person => (
+              <Table.Row color="average" key={person.name + person.rank}>
+                <Table.Cell>{decodeHtmlEntities(person.name)}</Table.Cell>
+                <Table.Cell>{person.rank}</Table.Cell>
+                <Table.Cell>{person.active}</Table.Cell>
+              </Table.Row>
+            ))}
+          </Table>
+        </Section>
+      ))}
+    </Section>
   );
 };
