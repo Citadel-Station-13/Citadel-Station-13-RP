@@ -2,6 +2,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Flex, LabeledList, ProgressBar, Section, Slider } from '../components';
 import { formatPower } from '../format';
 import { Window } from '../layouts';
+import { round } from 'common/math';
 
 export const Smes = (props, context) => {
   const { act, data } = useBackend(context);
@@ -33,7 +34,8 @@ export const Smes = (props, context) => {
   return (
     <Window
       width={340}
-      height={350}>
+      height={350}
+      resizable>
       <Window.Content>
         <Section title="Stored Energy">
           <ProgressBar
@@ -56,7 +58,7 @@ export const Smes = (props, context) => {
                   icon={inputAttempt ? 'sync-alt' : 'times'}
                   selected={inputAttempt}
                   onClick={() => act('tryinput')}>
-                  {inputAttempt ? 'Auto' : 'Off'}
+                  {inputAttempt ? 'On' : 'Off'}
                 </Button>
               }>
               <Box color={inputState}>

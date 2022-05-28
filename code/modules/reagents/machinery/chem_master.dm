@@ -30,6 +30,7 @@
 
 /obj/machinery/chem_master/Initialize(mapload, newdir)
 	. = ..()
+	default_apply_parts()
 	create_reagents(1000)
 
 /obj/machinery/chem_master/ex_act(severity)

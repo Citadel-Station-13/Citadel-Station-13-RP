@@ -353,11 +353,11 @@
 "aE" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Surface Three";
-	charge = 2e+006;
+	charge = 2000;
 	input_attempt = 1;
-	input_level = 210000;
+	input_level = 210;
 	inputting = 2;
-	output_level = 190000
+	output_level = 190
 	},
 /obj/structure/cable/green{
 	d2 = 8;
@@ -22803,10 +22803,10 @@
 "QU" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "AI Power Reserve";
-	charge = 5e+006;
+	charge = 5000;
 	input_attempt = 1;
-	input_level = 250000;
-	output_level = 100000
+	input_level = 250;
+	output_level = 100
 	},
 /obj/machinery/camera/network/command{
 	dir = 8
