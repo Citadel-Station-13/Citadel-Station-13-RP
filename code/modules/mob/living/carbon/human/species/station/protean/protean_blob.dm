@@ -506,8 +506,8 @@
 		B.forceMove(src)
 		B.owner = src
 
-	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
-	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
+	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.
+	if(blob.prev_right_hand) put_in_right_hand(blob.prev_right_hand)
 
 	Life(1) //Fix my blindness right meow //Has to be moved up here, there exists a circumstance where blob could be deleted without vore organs moving right.
 

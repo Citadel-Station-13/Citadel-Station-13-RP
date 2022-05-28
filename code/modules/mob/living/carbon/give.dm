@@ -37,9 +37,11 @@
 		to_chat(src, "<span class='warning'>Their hands are full.</span>")
 		return
 
-	if(src.unEquip(I))
-		target.put_in_hands(I) // If this fails it will just end up on the floor, but that's fitting for things like dionaea.
+	if(transfer_item_to_loc(I, target))
+		target.put_in_hands_or_drop(I) // If this fails it will just end up on the floor, but that's fitting for things like dionaea.
 		target.visible_message("<span class='notice'>\The [src] handed \the [I] to \the [target].</span>")
+	else
+		to_chat(src, SPAN_WARNING("[I] is stuck to your hand!"))
 
 /mob/living/carbon/human/proc/valid_give_mobs()
 	var/static/list/living_typecache = typecacheof(/mob/living)

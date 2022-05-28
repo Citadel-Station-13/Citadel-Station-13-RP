@@ -55,10 +55,10 @@
 				return TRUE
 
 	if(istype(O,/obj/item/integrated_circuit))
+		if(!user.attempt_consume_item_for_construction(O))
+			return
 		to_chat(user, SPAN_NOTICE("You insert the circuit into \the [src]."))
-		user.unEquip(O)
 		metal = min(metal + O.w_class, max_metal)
-		qdel(O)
 		attack_self(user)
 		return TRUE
 

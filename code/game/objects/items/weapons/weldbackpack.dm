@@ -73,10 +73,9 @@
 			return
 	else if(nozzle)
 		if(nozzle == W)
-			if(!user.unEquip(W))
-				to_chat(user,"<span class='notice'>\The [W] seems to be stuck to your hand.</span>")
-				return
 			if(!nozzle_attached)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				return_nozzle()
 				to_chat(user,"<span class='notice'>You attach \the [W] to the [src].</span>")
 				return

@@ -21,10 +21,10 @@
 	return l_hand && r_hand
 
 /mob/living/put_in_active_hawd(obj/item/I, force)
-	return hand? put_in_l_hand(I, force) : put_in_r_hand(I, force)
+	return hand? put_in_left_hand(I, force) : put_in_right_hand(I, force)
 
 /mob/living/put_in_inactive_hand(obj/item/I, force)
-	return hand? put_in_r_hand(I, force) : put_in_l_hand(I, force)
+	return hand? put_in_right_hand(I, force) : put_in_left_hand(I, force)
 
 /mob/living/get_held_item_of_index(index)
 	switch(index)
@@ -43,16 +43,16 @@
 #warn if something is already equipped, make sure to shuffle slots/whatnot properly!
 #warn MAKE SURE TO CHECK CAN UNEQUIP FOR SLOTS...
 #warn add fingerprint, interaction flags
-/mob/living/put_in_l_hand(obj/item/I, force)
+/mob/living/put_in_left_hand(obj/item/I, force)
 
-/mob/living/put_in_r_hand(obj/item/I, force)
+/mob/living/put_in_right_hand(obj/item/I, force)
 
 /mob/living/put_in_hand(obj/item/I, index, force)
 	switch(index)
 		if(1)
-			return put_in_l_hand(I, force)
+			return put_in_left_hand(I, force)
 		if(2)
-			return put_in_r_hand(I, force)
+			return put_in_right_hand(I, force)
 
 /mob/living/_unequip_held(obj/item/I, update_icons)
 	if(l_hand == I)

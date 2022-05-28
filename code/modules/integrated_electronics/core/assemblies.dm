@@ -283,13 +283,15 @@
 		return TRUE
 
 	else if(istype(I, /obj/item/integrated_circuit))
-		if(!user.unEquip(I) && !istype(user, /mob/living/silicon/robot)) //Robots cannot de-equip items in grippers.
-			return FALSE
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		if(add_circuit(I, user))
 			to_chat(user, SPAN_NOTICE("You slide \the [I] inside \the [src]."))
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 			ui_interact(user)
 			return TRUE
+		else
+			I.forceMove(drop_location())
 
 	else if(I.is_crowbar())
 		if(!opened)

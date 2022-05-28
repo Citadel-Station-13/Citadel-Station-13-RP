@@ -11,18 +11,19 @@
 	var/report_num = 0
 
 /obj/machinery/microscope/attackby(obj/item/W as obj, mob/user as mob)
-
 	if(sample)
 		to_chat(user, "<span class='warning'>There is already a slide in the microscope.</span>")
-		return
+		return ..()
 
 	if(istype(W, /obj/item/forensics/swab)|| istype(W, /obj/item/sample/fibers) || istype(W, /obj/item/sample/print))
+		. = CLICK_CHAIN_DO_NOT_PROPAGATE
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		to_chat(user, "<span class='notice'>You insert \the [W] into the microscope.</span>")
-		user.unEquip(W)
-		W.forceMove(src)
 		sample = W
 		update_icon()
 		return
+	return ..()
 
 /obj/machinery/microscope/attack_hand(mob/user)
 

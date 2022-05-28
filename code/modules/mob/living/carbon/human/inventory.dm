@@ -400,7 +400,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 	return 1
 
 
-/mob/living/carbon/human/put_in_l_hand(var/obj/item/W)
+/mob/living/carbon/human/put_in_left_hand(var/obj/item/W)
 	if(!..() || l_hand)
 		return 0
 	W.forceMove(src)
@@ -410,7 +410,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 	update_inv_l_hand()
 	return 1
 
-/mob/living/carbon/human/put_in_r_hand(var/obj/item/W)
+/mob/living/carbon/human/put_in_right_hand(var/obj/item/W)
 	if(!..() || r_hand)
 		return 0
 	W.forceMove(src)

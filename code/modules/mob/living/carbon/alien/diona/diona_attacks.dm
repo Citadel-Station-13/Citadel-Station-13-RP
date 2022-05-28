@@ -16,8 +16,9 @@
 		if(hat)
 			to_chat(user, "<span class='warning'>\The [src] is already wearing \the [hat].</span>")
 			return
-		user.unEquip(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		wear_hat(W)
 		user.visible_message("<span class='notice'>\The [user] puts \the [W] on \the [src].</span>")
-		return
+		return CLICK_CHAIN_DO_NOT_PROPAGATE
 	return ..()

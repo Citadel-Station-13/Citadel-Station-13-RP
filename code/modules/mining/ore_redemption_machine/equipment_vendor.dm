@@ -166,8 +166,9 @@
 					inserted_id = null
 		else if(href_list["choice"] == "insert")
 			var/obj/item/card/id/I = usr.get_active_held_item()
-			if(istype(I) && !inserted_id && usr.unEquip(I))
-				I.forceMove(src)
+			if(istype(I) && !inserted_id)
+				if(!usr.attempt_insert_item_for_installation(I, src))
+					return
 				inserted_id = I
 				interact(usr)
 				to_chat(usr, "<span class='notice'>You insert the ID into [src]'s card slot.</span>")
@@ -197,24 +198,25 @@
 /obj/machinery/mineral/equipment_vendor/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user, I))
 		updateUsrDialog()
-		return
+		return CLICK_CHAIN_DO_NOT_PROPAGATE
 	if(default_part_replacement(user, I))
-		return
+		return CLICK_CHAIN_DO_NOT_PROPAGATE
 	if(default_deconstruction_crowbar(user, I))
-		return
+		return CLICK_CHAIN_DO_NOT_PROPAGATE
 	if(istype(I, /obj/item/mining_voucher))
 		if(!powered())
 			return
 		RedeemVoucher(I, user)
-		return
+		return CLICK_CHAIN_DO_NOT_PROPAGATE
 	if(istype(I,/obj/item/card/id))
 		if(!powered())
-			return
-		else if(!inserted_id && user.unEquip(I))
-			I.forceMove(src)
+			return CLICK_CHAIN_DO_NOT_PROPAGATE
+		else if(!inserted_id)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			inserted_id = I
 			interact(user)
-		return
+		return CLICK_CHAIN_DO_NOT_PROPAGATE
 	..()
 
 /obj/machinery/mineral/equipment_vendor/dismantle()

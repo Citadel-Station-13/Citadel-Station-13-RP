@@ -21,9 +21,9 @@
 /mob/living/simple_mob/put_in_active_hand(var/obj/item/W)
 	if(!has_hands)
 		return FALSE
-	return (hand ? put_in_l_hand(W) : put_in_r_hand(W))
+	return (hand ? put_in_left_hand(W) : put_in_right_hand(W))
 
-/mob/living/simple_mob/put_in_l_hand(var/obj/item/W)
+/mob/living/simple_mob/put_in_left_hand(var/obj/item/W)
 	if(!..() || l_hand)
 		return 0
 	W.forceMove(src)
@@ -33,7 +33,7 @@
 	update_inv_l_hand()
 	return TRUE
 
-/mob/living/simple_mob/put_in_r_hand(var/obj/item/W)
+/mob/living/simple_mob/put_in_right_hand(var/obj/item/W)
 	if(!..() || r_hand)
 		return 0
 	W.forceMove(src)

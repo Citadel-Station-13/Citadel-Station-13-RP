@@ -121,7 +121,6 @@
 				playsound(src, 'sound/effects/tape.ogg',25)
 
 				if(!T.place_handcuffs(H, user))
-					user.unEquip(T)
 					qdel(T)
 			else
 				return ..()

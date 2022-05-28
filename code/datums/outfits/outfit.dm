@@ -131,9 +131,9 @@
 		H.equip_to_slot_or_del(new suit_store(H),SLOT_ID_SUIT_STORE)
 
 	if(l_hand)
-		H.put_in_l_hand(new l_hand(H))
+		H.put_in_left_hand(new l_hand(H))
 	if(r_hand)
-		H.put_in_r_hand(new r_hand(H))
+		H.put_in_right_hand(new r_hand(H))
 
 	for(var/path in uniform_accessories)
 		var/number = uniform_accessories[path]

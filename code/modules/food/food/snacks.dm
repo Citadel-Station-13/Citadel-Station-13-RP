@@ -1794,9 +1794,6 @@
 	H.set_species(species_type_by_name(monkey_type))
 	H.real_name = H.species.get_random_name()
 	H.name = H.real_name
-	if(ismob(loc))
-		var/mob/M = loc
-		M.unEquip(src)
 	qdel(src)
 	return 1
 

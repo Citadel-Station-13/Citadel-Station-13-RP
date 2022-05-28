@@ -47,29 +47,6 @@
 			return
 	return ..()
 
-/obj/item/clothing/OnMouseDropLegacy(var/obj/over_object)
-	if (over_object && (ishuman(usr) || issmall(usr)))
-		//makes sure that the clothing is equipped so that we can't drag it into our hand from miles away.
-		if (!(src.loc == usr))
-			return
-
-		var/targeted_mouse = (over_object.name == "r_hand") || (over_object.name == "l_hand")
-		if(!isturf(over_object) && !targeted_mouse)
-			return		// shitcode, we can refactor later.
-
-		if (( usr.restrained() ) || ( usr.stat ))
-			return
-
-		if (!usr.unEquip(src))
-			return
-
-		switch(over_object.name)
-			if("r_hand")
-				usr.put_in_r_hand(src)
-			if("l_hand")
-				usr.put_in_l_hand(src)
-		src.add_fingerprint(usr)
-
 /obj/item/clothing/examine(var/mob/user)
 	. = ..()
 	if(LAZYLEN(accessories))

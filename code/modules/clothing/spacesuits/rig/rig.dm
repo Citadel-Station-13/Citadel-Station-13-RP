@@ -529,9 +529,6 @@
 	var/mob/living/M
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
 		if(piece.loc != src && !(wearer && piece.loc == wearer))
-			if(istype(piece.loc, /mob/living))
-				M = piece.loc
-				M.unEquip(piece)
 			piece.forceMove(src)
 	// Run through cooling
 	coolingProcess()
@@ -794,19 +791,13 @@
 
 	if(istype(M.back, /obj/item/rig) && istype(M.belt, /obj/item/rig))
 		to_chat(M, "<span class='notice'>You try to put on the [src], but it won't fit.</span>")
-		if(M && (M.back == src || M.belt == src))
-			if(!M.unEquip(src))
-				return
-		src.forceMove(get_turf(src))
+		forceMove(get_turf(src))
 		return
 
 	if(seal_delay > 0 && istype(M) && (M.back == src || M.belt == src))
 		M.visible_message("<font color=#4F49AF>[M] starts putting on \the [src]...</font>", "<font color=#4F49AF>You start putting on \the [src]...</font>")
 		if(!do_after(M,seal_delay))
-			if(M && (M.back == src || M.belt == src))
-				if(!M.unEquip(src))
-					return
-			src.forceMove(get_turf(src))
+			forceMove(get_turf(src))
 			return
 
 	if(istype(M) && (M.back == src || M.belt == src))

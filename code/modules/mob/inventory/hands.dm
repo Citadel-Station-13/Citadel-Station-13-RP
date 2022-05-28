@@ -19,10 +19,10 @@
 		return FALSE
 	return TRUE
 
-/mob/proc/put_in_r_hand(obj/item/I, force)
+/mob/proc/put_in_right_hand(obj/item/I, force)
 	return FALSE
 
-/mob/proc/put_in_l_hand(obj/item/I, force)
+/mob/proc/put_in_left_hand(obj/item/I, force)
 	return FALSE
 
 /**

@@ -16,9 +16,9 @@
 	. = FALSE
 	switch(slot)
 		if(/datum/inventory_slot_meta/abstract/left_hand)
-			return put_in_l_hand(I, force)
+			return put_in_left_hand(I, force)
 		if(/datum/inventory_slot_meta/abstract/right_hand)
-			return put_in_r_hand(I, force)
+			return put_in_right_hand(I, force)
 		if(/datum/inventory_slot_meta/abstract/put_in_belt)
 
 		if(/datum/inventory_slot_meta/abstract/put_in_backpack)

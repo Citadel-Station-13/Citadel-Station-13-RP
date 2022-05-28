@@ -346,10 +346,10 @@
 		switch(over_object.name)
 			if("r_hand")
 				usr.u_equip(src)
-				usr.put_in_r_hand(src)
+				usr.put_in_right_hand(src)
 			if("l_hand")
 				usr.u_equip(src)
-				usr.put_in_l_hand(src)
+				usr.put_in_left_hand(src)
 		src.add_fingerprint(usr)
  */
 
